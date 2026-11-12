@@ -32,9 +32,9 @@ type NotifyStrategyConfig struct {
 	//
 	// example:
 	//
-	// 生产环境告警通知策略
+	// Production environment alert notification policy
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The noise reduction settings.
+	// The grouping and merging settings.
 	//
 	// This parameter is required.
 	GroupingSetting *NotifyStrategyConfigGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
@@ -165,25 +165,25 @@ func (s *NotifyStrategyConfigCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyConfigGroupingSetting struct {
-	// The event fields by which events are grouped. Events in the same group are merged into a single notification. An empty array indicates no grouping.
+	// The event fields used for grouping and merging. Events in the same group are merged into a single notification. An empty array indicates no grouping.
 	//
 	// example:
 	//
 	// ["alertname"]
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
-	// This parameter does not take effect for this operation. You do not need to set this parameter.
+	// This parameter does not take effect for this API operation and does not need to be set.
 	//
 	// example:
 	//
 	// 0
 	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// This parameter does not take effect for this operation. You do not need to set this parameter.
+	// This parameter does not take effect for this API operation and does not need to be set.
 	//
 	// example:
 	//
 	// 0
 	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	// This parameter does not take effect for this operation. You do not need to set this parameter.
+	// This parameter does not take effect for this API operation and does not need to be set.
 	//
 	// example:
 	//
@@ -246,11 +246,11 @@ type NotifyStrategyConfigRoutes struct {
 	//
 	// []
 	Channels []*NotifyStrategyConfigRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The digital employee name. Required when enableRca is set to true.
+	// The name of the digital employee. This parameter is required when enableRca is set to true.
 	//
 	// example:
 	//
-	// 数字员工名
+	// Digital employee name
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The effective time range.
 	EffectTimeRange *NotifyStrategyConfigRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
@@ -260,7 +260,7 @@ type NotifyStrategyConfigRoutes struct {
 	//
 	// false
 	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	// The route-level event filter conditions.
+	// The route-level event filtering conditions.
 	//
 	// example:
 	//
@@ -345,21 +345,21 @@ func (s *NotifyStrategyConfigRoutes) Validate() error {
 }
 
 type NotifyStrategyConfigRoutesChannels struct {
-	// The channel type. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. Lowercase values are not supported. For email, text message, or phone call notifications, use CONTACT with enabledSubChannels.
+	// The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. The values must be in uppercase. Lowercase values are not supported. For email, text messages, and voice calls, use CONTACT with enabledSubChannels.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// WEBHOOK
+	// DING
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// Required only for CONTACT, GROUP, or DUTY. The sub-channel types in uppercase. Valid values: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK.
+	// Required only for CONTACT, GROUP, and DUTY. Valid values for sub-channels: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK. The values must be in uppercase.
 	//
 	// example:
 	//
 	// ["EMAIL","SMS"]
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	// The list of receiver identifiers. At least one receiver is required. Specify a webhook UUID for WEBHOOK, a robot UUID for chatbots, or a contact ID for CONTACT.
+	// The list of receiver identifiers. At least one receiver is required. For WEBHOOK, specify the webhook UUID. For a chatbot, specify the chatbot UUID. For CONTACT, specify the contact ID.
 	//
 	// This parameter is required.
 	//
@@ -409,7 +409,7 @@ func (s *NotifyStrategyConfigRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyConfigRoutesEffectTimeRange struct {
-	// The effective days. Valid values: 0 to 6 (0 = Sunday, 6 = Saturday). The value 7 is not supported.
+	// The effective days of the week. Valid values: 0 to 6. A value of 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *CreateDataPipelineResponseBody) Validate() error {
 }
 
 type CreateDataPipelineResponseBodyPipeline struct {
-	// The creation time. The time is in UTC and follows the ISO 8601 format. Example: 2026-08-10T05:00:00Z.
+	// The creation time in UTC, following the ISO 8601 format. Example: 2026-08-10T05:00:00Z.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type CreateDataPipelineResponseBodyPipeline struct {
 	//
 	// traces
 	SignalType *string `json:"signalType,omitempty" xml:"signalType,omitempty"`
-	// The output destination.
+	// The output destinations.
 	//
 	// This parameter is required.
 	Sinks []*CreateDataPipelineResponseBodyPipelineSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
@@ -132,7 +132,7 @@ type CreateDataPipelineResponseBodyPipeline struct {
 	//
 	// Pipeline is running.
 	StatusMessage *string `json:"statusMessage,omitempty" xml:"statusMessage,omitempty"`
-	// The update time. The time is in UTC and follows the ISO 8601 format. Example: 2026-08-10T05:10:00Z.
+	// The update time in UTC, following the ISO 8601 format. Example: 2026-08-10T05:10:00Z.
 	//
 	// This parameter is required.
 	//
@@ -438,6 +438,10 @@ type CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extension parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -701,33 +705,33 @@ func (s *CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjection
 }
 
 type CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
 	// 2
 	KeepSuffix *int32 `json:"keepSuffix,omitempty" xml:"keepSuffix,omitempty"`
-	// The sensitive keyword.
+	// The sensitive keywords.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
 	// The mask character.
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The data masking mode.
+	// The masking mode.
 	//
 	// example:
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive type.
+	// The built-in sensitive data types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -999,7 +1003,7 @@ type CreateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricNam
 	//
 	// EXACT
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The metric name.
+	// The metric names.
 	//
 	// example:
 	//
@@ -1213,6 +1217,10 @@ type CreateDataPipelineResponseBodyPipelineProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extension parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*CreateDataPipelineResponseBodyPipelineProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -1476,33 +1484,33 @@ func (s *CreateDataPipelineResponseBodyPipelineProcessorsConfigProjections) Vali
 }
 
 type CreateDataPipelineResponseBodyPipelineProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
 	// 2
 	KeepSuffix *int32 `json:"keepSuffix,omitempty" xml:"keepSuffix,omitempty"`
-	// The sensitive keyword.
+	// The sensitive keywords.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
 	// The mask character.
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The data masking mode.
+	// The masking mode.
 	//
 	// example:
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive type.
+	// The built-in sensitive data types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -1774,7 +1782,7 @@ type CreateDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName struc
 	//
 	// EXACT
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The metric name.
+	// The metric names.
 	//
 	// example:
 	//

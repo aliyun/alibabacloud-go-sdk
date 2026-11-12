@@ -62,7 +62,9 @@ func (s *GetDeliveryTaskResponseBody) Validate() error {
 }
 
 type GetDeliveryTaskResponseBodyDeliveryTask struct {
-	// The creation time. The time is displayed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+	// The creation time.
+	//
+	// The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -70,19 +72,27 @@ type GetDeliveryTaskResponseBodyDeliveryTask struct {
 	//
 	// 2025-07-24T02:08:27Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the data source, which is the Prometheus instance ID.
+	// The data source ID (Prometheus instance ID).
 	//
 	// example:
 	//
 	// rw-xxxxxx
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
 	// The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
+	//
+	// example:
+	//
+	// {"region":"cn-hangzhou"}
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
 	// The extended information.
 	ExtraInfo *GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo `json:"extraInfo,omitempty" xml:"extraInfo,omitempty" type:"Struct"`
-	// The metric filtering conditions, used in conjunction with labelFiltersType. The key is the metric label name and the value is the matching value.
+	// The metric filter conditions used in conjunction with labelFiltersType. The key is the metric label name and the value is the match value.
+	//
+	// example:
+	//
+	// {"__name__":"up"}
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
-	// The metric filtering mode.
+	// The metric filter mode.
 	//
 	// example:
 	//
@@ -102,7 +112,7 @@ type GetDeliveryTaskResponseBodyDeliveryTask struct {
 	//
 	// Enable
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The resource group tags.
+	// The keys of the resource group tags.
 	Tags []*GetDeliveryTaskResponseBodyDeliveryTaskTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The description of the task.
 	//
@@ -122,7 +132,9 @@ type GetDeliveryTaskResponseBodyDeliveryTask struct {
 	//
 	// test-task
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The update time. The time is displayed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+	// The update time.
+	//
+	// The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -320,7 +332,11 @@ func (s *GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo) Validate() error {
 }
 
 type GetDeliveryTaskResponseBodyDeliveryTaskSinkList struct {
-	// The detailed configuration of the delivery destination. The meanings of the key and value vary based on the sinkType. For more information, see the CreateDeliveryTask documentation.
+	// The detailed configuration of the delivery destination. The meanings of the key and value vary based on the sinkType. For more information, see the CreateDeliveryTask description.
+	//
+	// example:
+	//
+	// {"Url":"https://example.com/api/v1/write","Network":"PublicNetwork","AuthType":"None"}
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
 	// The type of the delivery destination.
 	//

@@ -38,7 +38,7 @@ type CreateOncallScheduleRequest struct {
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
 	// The list of rotations.
 	Rotations []*CreateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the shift reminder chatbot.
+	// The ID of the shift reminder bot.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateOncallScheduleRequest struct {
 	ShiftRobotId *string `json:"shiftRobotId,omitempty" xml:"shiftRobotId,omitempty"`
 	// The list of substitution rules.
 	Substitudes []*CreateOncallScheduleRequestSubstitudes `json:"substitudes,omitempty" xml:"substitudes,omitempty" type:"Repeated"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type CreateOncallScheduleRequestRotations struct {
 	//
 	// 1
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every week.
+	// The unit of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 1 week.
 	//
 	// This parameter is required.
 	//

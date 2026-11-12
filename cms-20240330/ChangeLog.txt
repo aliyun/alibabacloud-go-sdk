@@ -1,3 +1,6 @@
+2026-11-12 Version: v10.7.2
+- Generated golang 2024-03-30 for Cms.
+
 2026-11-02 Version: v10.7.1
 - Update API CreateContact: add request parameters body.phoneCode.
 - Update API DeleteAlertActions: add response parameters Body.deletedCount.

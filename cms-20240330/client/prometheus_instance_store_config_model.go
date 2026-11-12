@@ -22,29 +22,31 @@ type iPrometheusInstanceStoreConfig interface {
 }
 
 type PrometheusInstanceStoreConfig struct {
-	// The concurrency per host. If this parameter is not specified, the default value is 2. Valid values: 1 to 8.
+	// The concurrency per host. Valid values: 1 to 8. Default value: 2.
 	//
 	// example:
 	//
 	// 2
 	ParallelCountPerHost *int32 `json:"parallelCountPerHost,omitempty" xml:"parallelCountPerHost,omitempty"`
-	// Specifies whether to enable parallel query. If this parameter is not specified, the value is considered as false.
+	// Specifies whether to enable parallel query. If not returned, the value is considered false.
+	//
+	// example:
+	//
+	// false
 	ParallelEnable *bool `json:"parallelEnable,omitempty" xml:"parallelEnable,omitempty"`
-	// The parallel query mode. Valid values:
-	//
-	// - auto
-	//
-	// - static
-	//
-	// If this parameter is not specified, the default value is auto.
+	// The parallel query mode. Valid values: auto, static. Default value: auto.
 	//
 	// example:
 	//
 	// static
 	ParallelMode *string `json:"parallelMode,omitempty" xml:"parallelMode,omitempty"`
-	// Specifies whether to enable query cache. If this parameter is not specified, the value is considered as false.
+	// Specifies whether to enable the query cache. If not returned, the value is considered false.
+	//
+	// example:
+	//
+	// false
 	QueryCacheEnable *bool `json:"queryCacheEnable,omitempty" xml:"queryCacheEnable,omitempty"`
-	// The global concurrency. If this parameter is not specified, the default value is 8. Valid values: 2 to 64.
+	// The global concurrency. Valid values: 2 to 64. Default value: 8.
 	//
 	// example:
 	//

@@ -70,7 +70,7 @@ type GetIntegrationPolicyResponseBodyPolicy struct {
 	//
 	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The information about the bound resources.
+	// The bound resource information.
 	BindResource *GetIntegrationPolicyResponseBodyPolicyBindResource `json:"bindResource,omitempty" xml:"bindResource,omitempty" type:"Struct"`
 	// The installation status of umodel in the container environment.
 	//
@@ -88,7 +88,7 @@ type GetIntegrationPolicyResponseBodyPolicy struct {
 	//
 	// policy-c9efed2b99c348d49e589c5f780fc074
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The rule name.
+	// The policy name.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroup struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// Access policy for production environment resources
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The entity group ID.
 	//
@@ -525,9 +525,9 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
 	FieldRules []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
 	// The instance IDs.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	// The IP matching rule.
+	// The IP address matching rule.
 	IpMatchRule *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
-	// The tags.
+	// The labels.
 	Labels []*GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// The list of region IDs.
 	RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
@@ -676,7 +676,7 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules) Validate(
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations struct {
-	// The operation to be performed.
+	// The operation performed.
 	//
 	// example:
 	//
@@ -740,7 +740,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules stru
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
 	// The field content.
 	FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
-	// The operation to be performed.
+	// The operation performed.
 	//
 	// example:
 	//
@@ -794,7 +794,7 @@ type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule str
 	//
 	// 10.10.0.1/16
 	IpCidr *string `json:"ipCidr,omitempty" xml:"ipCidr,omitempty"`
-	// The key of the IP field.
+	// The key of the IP address field.
 	//
 	// example:
 	//
@@ -833,7 +833,7 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels struct {
-	// The operation to be performed.
+	// The operation performed.
 	//
 	// example:
 	//
@@ -889,7 +889,7 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels) Val
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags struct {
-	// The operation to be performed.
+	// The operation performed.
 	//
 	// example:
 	//

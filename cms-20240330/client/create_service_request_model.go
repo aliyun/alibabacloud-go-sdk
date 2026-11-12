@@ -40,13 +40,13 @@ type CreateServiceRequest struct {
 	//
 	// example:
 	//
-	// Mag test application
+	// mag test application
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
-	// Mag test application
+	// mag test application
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The application ID. Generally, you do not need to specify this parameter.
 	//
@@ -82,7 +82,7 @@ type CreateServiceRequest struct {
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// The tags.
+	// The tag array.
 	Tags []*CreateServiceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 

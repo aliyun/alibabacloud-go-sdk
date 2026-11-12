@@ -120,13 +120,19 @@ func (s *ListPrometheusInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
-	// The access type. Valid values: readWrite, readOnly, and httpReadOnly.
+	// The access type. Valid values:
+	//
+	// - readWrite
+	//
+	// - readOnly
+	//
+	// - httpReadOnly
 	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
+	// The time when the instance was created. The time is displayed in UTC+0 and formatted as yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
@@ -140,13 +146,13 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go based on the number of metrics.
+	// - POSTPAY: Pay-as-you-go based on the number of metrics.
 	//
-	// - POSTPAY_GB: pay-as-you-go based on the amount of written data.
+	// - POSTPAY_GB: Pay-as-you-go based on the amount of written data.
 	//
-	// - PREPAY: subscription.
+	// - PREPAY: Subscription.
 	//
-	// - FREE: free.
+	// - FREE: Free.
 	//
 	// example:
 	//
@@ -206,7 +212,7 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// example:
 	//
-	// *
+	// V1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// The workspace to which the Prometheus instance belongs.
 	//

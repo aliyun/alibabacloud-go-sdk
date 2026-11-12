@@ -16,7 +16,7 @@ type iCreateAlertActionResponseBody interface {
 }
 
 type CreateAlertActionResponseBody struct {
-	// The ID of the alert action integration.
+	// The ID of the action integration.
 	//
 	// example:
 	//

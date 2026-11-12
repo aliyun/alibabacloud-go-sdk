@@ -15,6 +15,10 @@ type iObserveGroupInstance interface {
 	GetDimension() map[string]*string
 	SetEntityDomain(v string) *ObserveGroupInstance
 	GetEntityDomain() *string
+	SetEntityId(v string) *ObserveGroupInstance
+	GetEntityId() *string
+	SetEntityRole(v string) *ObserveGroupInstance
+	GetEntityRole() *string
 	SetEntityType(v string) *ObserveGroupInstance
 	GetEntityType() *string
 	SetGroupId(v string) *ObserveGroupInstance
@@ -40,6 +44,10 @@ type ObserveGroupInstance struct {
 	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
 	// 实体域（如 acs）。
 	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
+	// UModel 实体 ID，与实体域和类型共同标识成员。
+	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+	// 实体角色，main 为主实体、related 为关联子实体。
+	EntityRole *string `json:"entityRole,omitempty" xml:"entityRole,omitempty"`
 	// 实体类型（如 acs.ecs.instance）。
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
 	// 所属观测分组 ID。
@@ -76,6 +84,14 @@ func (s *ObserveGroupInstance) GetDimension() map[string]*string {
 
 func (s *ObserveGroupInstance) GetEntityDomain() *string {
 	return s.EntityDomain
+}
+
+func (s *ObserveGroupInstance) GetEntityId() *string {
+	return s.EntityId
+}
+
+func (s *ObserveGroupInstance) GetEntityRole() *string {
+	return s.EntityRole
 }
 
 func (s *ObserveGroupInstance) GetEntityType() *string {
@@ -122,6 +138,16 @@ func (s *ObserveGroupInstance) SetDimension(v map[string]*string) *ObserveGroupI
 
 func (s *ObserveGroupInstance) SetEntityDomain(v string) *ObserveGroupInstance {
 	s.EntityDomain = &v
+	return s
+}
+
+func (s *ObserveGroupInstance) SetEntityId(v string) *ObserveGroupInstance {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ObserveGroupInstance) SetEntityRole(v string) *ObserveGroupInstance {
+	s.EntityRole = &v
 	return s
 }
 

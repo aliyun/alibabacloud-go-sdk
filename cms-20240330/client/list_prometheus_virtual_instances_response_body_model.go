@@ -30,7 +30,7 @@ type ListPrometheusVirtualInstancesResponseBody struct {
 	//
 	// 100
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The next token for the next page. This parameter is empty when all results are returned.
+	// The next token for pagination. It is empty when all results are returned.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// Id of the request
 	//
@@ -39,6 +39,10 @@ type ListPrometheusVirtualInstancesResponseBody struct {
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The total number of returned instances.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -115,13 +119,13 @@ type ListPrometheusVirtualInstancesResponseBodyInstances struct {
 	//
 	// 1750315319946
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The HTTP API endpoint.
+	// The HTTP API URL.
 	//
 	// example:
 	//
 	// http://xxxxxxxx
 	HttpApiUrl *string `json:"httpApiUrl,omitempty" xml:"httpApiUrl,omitempty"`
-	// The applicable data source type: PROMETHEUS_DS.
+	// Applicable data source type: PROMETHEUS_DS.
 	//
 	// The Prometheus instance ID.
 	//
@@ -129,7 +133,7 @@ type ListPrometheusVirtualInstancesResponseBodyInstances struct {
 	//
 	// rw-b8cfbbe94194ac37fe83f3d2d16a
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The applicable query type: CMS_BASIC_QUERY.
+	// Applicable query type: CMS_BASIC_QUERY.
 	//
 	// The namespace of the metric.
 	//

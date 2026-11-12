@@ -24,7 +24,7 @@ type iUpdateAlertWebhookRequest interface {
 }
 
 type UpdateAlertWebhookRequest struct {
-	// The content type. Valid values:
+	// The data content type. Valid values:
 	//
 	// - JSON
 	//
@@ -35,6 +35,10 @@ type UpdateAlertWebhookRequest struct {
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// headers
+	//
+	// example:
+	//
+	// {"X-Total-Count":"0"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The language. Valid values:
 	//
@@ -56,13 +60,13 @@ type UpdateAlertWebhookRequest struct {
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The name of the webhook.
+	// The webhook name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL of the alert callback.
+	// The alert callback URL.
 	//
 	// example:
 	//

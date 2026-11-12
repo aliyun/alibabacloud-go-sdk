@@ -21,6 +21,10 @@ type iListPrometheusVirtualInstancesRequest interface {
 
 type ListPrometheusVirtualInstancesRequest struct {
 	// The maximum number of instances to return per page.
+	//
+	// example:
+	//
+	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The optional cloud services.
 	//
@@ -28,7 +32,7 @@ type ListPrometheusVirtualInstancesRequest struct {
 	//
 	// ack-csi-fuse
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The next token for the paging query.
+	// The next paging token for a paged query.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The tenant ID.
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`

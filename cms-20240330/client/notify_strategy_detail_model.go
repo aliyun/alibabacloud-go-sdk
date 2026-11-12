@@ -32,7 +32,7 @@ type NotifyStrategyDetail struct {
 	//
 	// example:
 	//
-	// 生产环境告警通知策略
+	// Production environment alert notification policy
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The grouping and merging settings.
 	GroupingSetting *NotifyStrategyDetailGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
@@ -161,7 +161,7 @@ func (s *NotifyStrategyDetailCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyDetailGroupingSetting struct {
-	// The event fields by which events are grouped for noise reduction. Events in the same group are merged into a single notification. An empty array indicates no grouping.
+	// The event fields used for grouping and merging. Events in the same group are merged into a single notification. An empty array indicates that no grouping is applied.
 	//
 	// example:
 	//
@@ -173,13 +173,13 @@ type NotifyStrategyDetailGroupingSetting struct {
 	//
 	// 0
 	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// The silence duration in seconds.
+	// The mute period in seconds.
 	//
 	// example:
 	//
 	// 0
 	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	// The number of trigger times.
+	// The number of triggers.
 	//
 	// example:
 	//
@@ -242,21 +242,21 @@ type NotifyStrategyDetailRoutes struct {
 	//
 	// []
 	Channels []*NotifyStrategyDetailRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The digital employee name. This parameter is required when enableRca is set to true.
+	// The name of the digital employee. This parameter is required when enableRca is set to true.
 	//
 	// example:
 	//
-	// 数字员工名
+	// Digital employee name
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The effective time range.
 	EffectTimeRange *NotifyStrategyDetailRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Specifies whether to enable root cause analysis (RCA).
+	// Specifies whether to enable Root Cause Analysis (RCA).
 	//
 	// example:
 	//
 	// false
 	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	// The route-level event filter conditions.
+	// The route-level event filtering conditions.
 	//
 	// example:
 	//
@@ -341,11 +341,11 @@ func (s *NotifyStrategyDetailRoutes) Validate() error {
 }
 
 type NotifyStrategyDetailRoutesChannels struct {
-	// The channel type. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
+	// The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
 	//
 	// example:
 	//
-	// WEBHOOK
+	// DING
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	// The enabled sub-channels. Valid values: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK.
 	//
@@ -401,7 +401,7 @@ func (s *NotifyStrategyDetailRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyDetailRoutesEffectTimeRange struct {
-	// The effective days of the week. Valid values: 0 to 6 (0 = Sunday, 6 = Saturday). The value 7 is not supported.
+	// The days of the week when the policy takes effect. Valid values: 0 to 6. 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
 	//
 	// example:
 	//

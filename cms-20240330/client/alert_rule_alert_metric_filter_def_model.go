@@ -34,7 +34,7 @@ type AlertRuleAlertMetricFilterDef struct {
 	//
 	// status
 	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	// Specifies whether to disable the dimension. If set to true, the filter item does not appear in the group by clause of PromQL.
+	// Specifies whether the filter item is excluded from the group by clause in PromQL. If set to true, the filter item does not appear in the group by clause.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type AlertRuleAlertMetricFilterDef struct {
 	//
 	// Application Status
 	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	// Specifies whether to hide the filter. If hidden, the filter is not displayed in frontend interactions, but its value can be passed when rendering PromQL. A typical example is the pid filter in APM scenarios, which is typically not displayed through configuration but shown as a separate application search list in the frontend.
+	// Specifies whether the filter is hidden. If the filter is hidden, it is not displayed in the frontend, but its value can be passed when rendering PromQL. A typical example is the pid filter in APM scenarios, which is generally not displayed through configuration but shown as an independent application search list on the frontend.
 	//
 	// example:
 	//
 	// true
 	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	// Specifies whether to disable the label. If set to true, the filter item does not appear in the label filter of PromQL.
+	// Specifies whether the filter item is excluded from the label filter in PromQL. If set to true, the filter item does not appear in the label filter.
 	//
 	// example:
 	//

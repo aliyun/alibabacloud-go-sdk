@@ -30,19 +30,19 @@ type iQueries interface {
 }
 
 type Queries struct {
-	// The end offset of the time range for SLS_MULTI_QUERY (mutually exclusive with window).
+	// The end offset of the time range for SLS_MULTI_QUERY, which is mutually exclusive with window.
 	//
 	// example:
 	//
 	// 100
 	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
-	// The query expression (PromQL for PROMETHEUS_MULTI_QUERY and SPL for SLS_MULTI_QUERY).
+	// The query expression, which is PromQL for PROMETHEUS_MULTI_QUERY and SPL for SLS_MULTI_QUERY.
 	//
 	// example:
 	//
 	// 示例值
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// The label filter conditions for UMODEL_METRICSET_MULTI_QUERY (optional and independent per query).
+	// The label filter conditions for UMODEL_METRICSET_MULTI_QUERY, which are optional and independent per query.
 	//
 	// example:
 	//
@@ -60,25 +60,25 @@ type Queries struct {
 	//
 	// 示例名称
 	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	// The query name for PROMETHEUS_MULTI_QUERY or UMODEL_METRICSET_MULTI_QUERY (such as $A or $B, referenced by condition triggers).
+	// The query name for PROMETHEUS_MULTI_QUERY or UMODEL_METRICSET_MULTI_QUERY, such as $A or $B, which is referenced by condition triggers.
 	//
 	// example:
 	//
 	// 示例名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The start offset of the time range for SLS_MULTI_QUERY (mutually exclusive with window).
+	// The start offset of the time range for SLS_MULTI_QUERY, which is mutually exclusive with window.
 	//
 	// example:
 	//
 	// 100
 	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
-	// The time unit for SLS_MULTI_QUERY (day, hour, minute, or second).
+	// The time unit for SLS_MULTI_QUERY, which can be day, hour, minute, or second.
 	//
 	// example:
 	//
 	// second
 	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
-	// The alignment window size for SLS_MULTI_QUERY (mutually exclusive with start and end).
+	// The alignment window size for SLS_MULTI_QUERY, which is mutually exclusive with start and end.
 	//
 	// example:
 	//

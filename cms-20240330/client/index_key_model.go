@@ -20,25 +20,29 @@ type iIndexKey interface {
 }
 
 type IndexKey struct {
-	// Indicates whether the value contains Chinese characters.
+	// Specifies whether Chinese characters are included.
 	//
-	// - `true`: Contains Chinese characters.
+	// - true: Chinese characters are included.
 	//
-	// - `false`: Does not contain Chinese characters.
+	// - false: Chinese characters are not included.
 	//
 	// example:
 	//
 	// true
 	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
-	// Specifies the model name.
+	// The model name.
 	//
 	// example:
 	//
 	// text-embedding-v4
 	Embedding *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
-	// Describes the json keys.
+	// json key
+	//
+	// example:
+	//
+	// {"message":{"type":"text","chn":true}}
 	JsonKeys map[string]*IndexJsonKey `json:"jsonKeys,omitempty" xml:"jsonKeys,omitempty"`
-	// Specifies the field type.
+	// The field type.
 	//
 	// example:
 	//

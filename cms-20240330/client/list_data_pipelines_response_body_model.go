@@ -493,6 +493,10 @@ type ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*ListDataPipelinesResponseBodyPipelinesOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -1268,6 +1272,10 @@ type ListDataPipelinesResponseBodyPipelinesProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*ListDataPipelinesResponseBodyPipelinesProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`

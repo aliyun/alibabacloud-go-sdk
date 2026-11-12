@@ -23,6 +23,10 @@ type PreviewDataPipelineResponseBody struct {
 	// The dataset preview results.
 	Datasets []*PreviewDataPipelineResponseBodyDatasets `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
 	// The aggregation diagnostics.
+	//
+	// example:
+	//
+	// {"emittedPoints":2,"displayTruncated":false}
 	Diagnostics map[string]interface{} `json:"diagnostics,omitempty" xml:"diagnostics,omitempty"`
 	// The effective SPL.
 	//
@@ -100,13 +104,13 @@ type PreviewDataPipelineResponseBodyDatasets struct {
 	Data []map[string]interface{} `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The field metadata.
 	Meta []*PreviewDataPipelineResponseBodyDatasetsMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
 	// error_spans
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of samples.
+	// The sample count.
 	//
 	// example:
 	//
@@ -172,13 +176,13 @@ func (s *PreviewDataPipelineResponseBodyDatasets) Validate() error {
 }
 
 type PreviewDataPipelineResponseBodyDatasetsMeta struct {
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// trace_id
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the field.
+	// The field type.
 	//
 	// example:
 	//

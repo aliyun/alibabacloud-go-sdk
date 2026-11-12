@@ -18,13 +18,13 @@ type iListIntegrationPolicyStorageRequirementsRequest interface {
 }
 
 type ListIntegrationPolicyStorageRequirementsRequest struct {
-	// The name of the add-on release.
+	// The add-on release name.
 	//
 	// example:
 	//
 	// release-1234357
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the add-on release.
+	// The add-on release name.
 	//
 	// example:
 	//

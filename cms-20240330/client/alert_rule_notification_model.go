@@ -40,33 +40,41 @@ type iAlertRuleNotification interface {
 type AlertRuleNotification struct {
 	// The list of contact IDs.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// The list of custom webhook Notification Recipient IDs.
+	// The list of custom webhook notification recipient IDs.
 	CustomWebhooks []*string `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	// The list of DingTalk Cool App webhook Notification Recipient IDs.
+	// The list of DingTalk cool app webhook notification recipient IDs.
 	DingCoolAppWebhooks []*string `json:"dingCoolAppWebhooks,omitempty" xml:"dingCoolAppWebhooks,omitempty" type:"Repeated"`
-	// The list of DingTalk webhook Notification Recipient IDs.
+	// The list of DingTalk webhook notification recipient IDs.
 	DingWebhooks []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	// The list of Lark webhook Notification Recipient IDs.
+	// The list of Lark webhook notification recipient IDs.
 	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
 	// The list of contact group IDs.
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	// The notification time window. Notifications are sent only within this time window.
+	// The notification time period during which notifications are sent.
 	NotifyTime *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
-	// The Qwen (Qwencloud) Notification Recipient configuration. Both the outer key and inner key are custom identity values. The inner Boolean value specifies whether the Notification Recipient is enabled.
+	// The Qwen notification recipient configuration. The outer and inner keys are custom identifiers, and the inner Boolean value specifies whether to enable the notification recipient.
+	//
+	// example:
+	//
+	// {"teamA":{"oncall":true}}
 	QwencloudContacts map[string]map[string]interface{} `json:"qwencloudContacts,omitempty" xml:"qwencloudContacts,omitempty"`
-	// Specifies whether to send recovery notifications. Each severity level in severityNotifications can independently override this setting.
+	// Specifies whether to send a recovery notification. This setting can be independently overridden for each severity level in severityNotifications.
 	SendOk *bool `json:"sendOk,omitempty" xml:"sendOk,omitempty"`
-	// The Notification Recipients and channels configured by severity level. This parameter is mutually exclusive with the top-level contacts, groups, and similar parameters. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
+	// The notification recipients and channels configured by severity level, which are mutually exclusive with top-level contacts and groups. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
+	//
+	// example:
+	//
+	// {"CRITICAL":{"sendRecoverNotification":true}}
 	SeverityNotifications map[string]*SeverityNotifyConfig `json:"severityNotifications,omitempty" xml:"severityNotifications,omitempty"`
-	// The notification mute duration. Unit: seconds.
+	// The notification mute period, in seconds.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int64 `json:"silenceTime,omitempty" xml:"silenceTime,omitempty"`
-	// The list of Slack webhook Notification Recipient IDs.
+	// The list of Slack webhook notification recipient IDs.
 	SlackWebhooks []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	// The list of WeChat webhook Notification Recipient IDs.
+	// The list of WeChat webhook notification recipient IDs.
 	WxWebhooks []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 

@@ -34,7 +34,11 @@ type PreviewNotifyTemplateResponseBody struct {
 	//
 	// 452faed9-ab3b-4340-8a92-bc7d9b98f17a
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Specifies whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -93,8 +97,16 @@ func (s *PreviewNotifyTemplateResponseBody) Validate() error {
 
 type PreviewNotifyTemplateResponseBodyData struct {
 	// The mapping of failed rendering results. The key is the template identifier, and the value is the cause of the failure, such as a template syntax error or a reference to an undefined variable.
+	//
+	// example:
+	//
+	// {"subject":"Template syntax error"}
 	Failed map[string]interface{} `json:"failed,omitempty" xml:"failed,omitempty"`
 	// The mapping of successful rendering results. The key is the template identifier, which corresponds to templates[].key in the request, and the value is the rendered string content.
+	//
+	// example:
+	//
+	// {"subject":"Alert notification"}
 	Success map[string]interface{} `json:"success,omitempty" xml:"success,omitempty"`
 }
 

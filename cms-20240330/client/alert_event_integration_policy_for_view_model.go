@@ -64,7 +64,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether it is enabled.
+	// Indicates whether it is enabled.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// {"region":"cn-hangzhou"}
 	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
-	// The reporting entry key for the integration.
+	// The key for the integrated reporting endpoint.
 	//
 	// example:
 	//

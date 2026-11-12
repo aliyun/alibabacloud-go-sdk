@@ -48,7 +48,7 @@ type AddonMeta struct {
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The component category information.
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// The list of component dashboard diagrams.
+	// The list of component diagrams.
 	Dashboards []*AddonMetaDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -92,7 +92,7 @@ type AddonMeta struct {
 	//
 	// example:
 	//
-	// true/false
+	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
 	// The scenario.
 	//
@@ -275,15 +275,15 @@ type AddonMetaDashboards struct {
 	//
 	// example:
 	//
-	// Description
+	// Description information
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The dashboard diagram name.
+	// The diagram name.
 	//
 	// example:
 	//
 	// ECS monitoring overview dashboard
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The dashboard diagram URL.
+	// The diagram URL.
 	//
 	// example:
 	//
@@ -331,23 +331,23 @@ func (s *AddonMetaDashboards) Validate() error {
 }
 
 type AddonMetaEnvironments struct {
-	// The list of bound CommonSchemas.
+	// The list of associated CommonSchemas.
 	CommonSchemaRefs []*AddonMetaEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
 	// The dependency description.
 	Dependencies *AddonMetaEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
-	// The environment type description.
+	// The description of the environment type.
 	//
 	// example:
 	//
-	// Supports workload monitoring for container clusters
+	// Supports workload coverage monitoring for container clusters
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether it is enabled.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The environment type display name.
+	// The display name of the environment type.
 	//
 	// example:
 	//
@@ -359,7 +359,7 @@ type AddonMetaEnvironments struct {
 	//
 	// CS/ECS/Cloud/Client
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The control policy combination information for the component.
+	// The control policy combination information of the component.
 	Policies *AddonMetaEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
 	// The policy type.
 	//
@@ -473,13 +473,13 @@ func (s *AddonMetaEnvironments) Validate() error {
 }
 
 type AddonMetaEnvironmentsCommonSchemaRefs struct {
-	// The CommonSchema group name.
+	// The group name of the CommonSchema.
 	//
 	// example:
 	//
 	// acs-ecs
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The CommonSchema group version.
+	// The group version of the CommonSchema.
 	//
 	// example:
 	//
@@ -521,6 +521,10 @@ type AddonMetaEnvironmentsDependencies struct {
 	// The supported cluster types.
 	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
 	// The probe dependency description and component name. This field is replaced by the collectors field in the new version.
+	//
+	// example:
+	//
+	// {"metric-agent":true}
 	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
 	// The list of dependent services.
 	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
@@ -566,7 +570,7 @@ func (s *AddonMetaEnvironmentsDependencies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPolicies struct {
-	// Specifies whether alert rules are enabled by default after installation.
+	// Specifies whether alert rules are enabled after default installation.
 	//
 	// example:
 	//
@@ -576,33 +580,33 @@ type AddonMetaEnvironmentsPolicies struct {
 	//
 	// example:
 	//
-	// true/false
+	// true
 	BindDefaultPolicy *bool `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
 	// The bound target entity information.
 	BindEntity *AddonMetaEnvironmentsPoliciesBindEntity `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
-	// Specifies whether it is installed by default.
+	// Specifies whether to install by default.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
-	// Specifies whether internal authorization token allocation is enabled.
+	// Specifies whether to enable internal authorization token allocation.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The data check rule after the component is integrated.
 	MetricCheckRule *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Specifies whether to prompt for a workload restart after integration.
+	// Specifies whether to prompt to restart the workload after integration.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
 	// The list of supported client protocol information.
 	Protocols []*AddonMetaEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// The target component name for redirection.
+	// The name of the target component to navigate to.
 	//
 	// example:
 	//
@@ -727,7 +731,7 @@ type AddonMetaEnvironmentsPoliciesBindEntity struct {
 	//
 	// example:
 	//
-	// true/false
+	// true
 	EntityGroupMode *bool `json:"entityGroupMode,omitempty" xml:"entityGroupMode,omitempty"`
 	// The entity type.
 	//
@@ -739,9 +743,9 @@ type AddonMetaEnvironmentsPoliciesBindEntity struct {
 	//
 	// example:
 	//
-	// true/false
+	// true
 	SingleEntityMode *bool `json:"singleEntityMode,omitempty" xml:"singleEntityMode,omitempty"`
-	// The field used to extract the VPC ID from the entity.
+	// The field used to extract the VPC ID information from the entity.
 	//
 	// example:
 	//
@@ -828,7 +832,7 @@ type AddonMetaEnvironmentsPoliciesProtocols struct {
 	//
 	// example:
 	//
-	// Writes metric data by using the Prometheus protocol
+	// Use the Prometheus protocol to write metric data
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The protocol display icon.
 	//

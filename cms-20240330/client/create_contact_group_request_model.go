@@ -26,7 +26,7 @@ type CreateContactGroupRequest struct {
 	//
 	// test
 	ContactGroupId *string `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
-	// The contact IDs.
+	// The IDs of the contacts.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
 	// The name of the contact.
 	//

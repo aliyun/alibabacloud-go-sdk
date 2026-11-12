@@ -40,7 +40,11 @@ type CreateContactRequest struct {
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The instant messaging (IM) user ID mapping, which supports multi-platform integration. The key is the IM type, such as DING or WEIXIN, and the value is the corresponding user ID.
+	// The instant messaging (IM) user ID mapping, which supports multi-platform integration. The key is the IM type (such as DING or WEIXIN), and the value is the corresponding user ID.
+	//
+	// example:
+	//
+	// {"DING":"ding_user_abc","WEIXIN":"wx_user_def"}
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
 	// The language.
 	//
@@ -54,13 +58,13 @@ type CreateContactRequest struct {
 	//
 	// test_07
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The mobile phone number. Currently, only Chinese mobile phone numbers are supported.
+	// The mobile phone number. Currently, only mobile phone numbers in China are supported.
 	//
 	// example:
 	//
 	// 13012345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// 号码国家码，可带前导 +，如 86、+86。传入后 phone 必须是纯数字，服务端按 <phoneCode>-<phone> 拼号发送，因此 phone 内不能再带 +、00 或区号。不传时按手机号码原样发送。
+	// The country code.
 	//
 	// example:
 	//

@@ -45,6 +45,8 @@ type iObserveGroup interface {
 	GetResourceGroupId() *string
 	SetSourceOrigin(v string) *ObserveGroup
 	GetSourceOrigin() *string
+	SetSourceReadOnly(v bool) *ObserveGroup
+	GetSourceReadOnly() *bool
 	SetTags(v []*ObserveGroupTags) *ObserveGroup
 	GetTags() []*ObserveGroupTags
 	SetWorkspaceId(v string) *ObserveGroup
@@ -88,6 +90,8 @@ type ObserveGroup struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 数据来源：native_2_0（2.0 原生）/ synced_from_1_0（从 1.0 应用分组同步）。
 	SourceOrigin *string `json:"sourceOrigin,omitempty" xml:"sourceOrigin,omitempty"`
+	// 源云监控 1.0 分组是否已持久只读，true 时目标 2.0 分组可独立维护。
+	SourceReadOnly *bool `json:"sourceReadOnly,omitempty" xml:"sourceReadOnly,omitempty"`
 	// 资源标签（阿里云标准标签），键值对数组。
 	Tags []*ObserveGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 分组归属的 workspace ID（workspace 级归属，创建后不可变）。
@@ -172,6 +176,10 @@ func (s *ObserveGroup) GetResourceGroupId() *string {
 
 func (s *ObserveGroup) GetSourceOrigin() *string {
 	return s.SourceOrigin
+}
+
+func (s *ObserveGroup) GetSourceReadOnly() *bool {
+	return s.SourceReadOnly
 }
 
 func (s *ObserveGroup) GetTags() []*ObserveGroupTags {
@@ -269,6 +277,11 @@ func (s *ObserveGroup) SetResourceGroupId(v string) *ObserveGroup {
 
 func (s *ObserveGroup) SetSourceOrigin(v string) *ObserveGroup {
 	s.SourceOrigin = &v
+	return s
+}
+
+func (s *ObserveGroup) SetSourceReadOnly(v bool) *ObserveGroup {
+	s.SourceReadOnly = &v
 	return s
 }
 

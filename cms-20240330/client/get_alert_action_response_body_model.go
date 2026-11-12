@@ -74,7 +74,7 @@ type GetAlertActionResponseBodyAlertActions struct {
 	//
 	// testName
 	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	// The event bus parameters.
+	// The EventBridge parameters.
 	EbParam *GetAlertActionResponseBodyAlertActionsEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
 	// The elastic scaling parameters.
 	EssParam *GetAlertActionResponseBodyAlertActionsEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
@@ -88,7 +88,7 @@ type GetAlertActionResponseBodyAlertActions struct {
 	PagerDutyParam *GetAlertActionResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *GetAlertActionResponseBodyAlertActionsSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the alert action integration.
+	// The alert action integration type.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ func (s *GetAlertActionResponseBodyAlertActions) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsEbParam struct {
-	// The event provider.
+	// The event source.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ func (s *GetAlertActionResponseBodyAlertActionsEssParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsFc3Param struct {
-	// The name of the function.
+	// The function name.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ type GetAlertActionResponseBodyAlertActionsFcParam struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The service name in Function Compute.
+	// The service name of Function Compute.
 	//
 	// example:
 	//
@@ -505,13 +505,13 @@ func (s *GetAlertActionResponseBodyAlertActionsFcParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsMnsParam struct {
-	// The resource type of Simple Message Queue (formerly MNS).
+	// The Simple Message Queue (formerly MNS) resource type.
 	//
 	// example:
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// - If the resource type is queue, the resource name is the queue name.
 	//
@@ -569,13 +569,13 @@ func (s *GetAlertActionResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsPagerDutyParam struct {
-	// The integration key of PagerDuty.
+	// The integration key for PagerDuty.
 	//
 	// example:
 	//
 	// EWR4WR4T4GREG4ET453T5Y
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The PagerDuty integration webhook. Both V1 and V2 are supported.
+	// The PagerDuty integration webhook. Versions 1 and 2 are supported.
 	//
 	// example:
 	//
@@ -681,6 +681,10 @@ type GetAlertActionResponseBodyAlertActionsWebhookParam struct {
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// The request header information.
+	//
+	// example:
+	//
+	// {"X-Total-Count":"0"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The webhook request method.
 	//
@@ -688,7 +692,7 @@ type GetAlertActionResponseBodyAlertActionsWebhookParam struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The alert callback URL.
+	// The URL for the alert callback.
 	//
 	// example:
 	//

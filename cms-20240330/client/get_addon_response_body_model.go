@@ -16,7 +16,7 @@ type iGetAddonResponseBody interface {
 }
 
 type GetAddonResponseBody struct {
-	// The list of data corresponding to the request header.
+	// The data list corresponding to the request header.
 	Data *GetAddonResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,13 +62,13 @@ func (s *GetAddonResponseBody) Validate() error {
 }
 
 type GetAddonResponseBodyData struct {
-	// The alias of the component.
+	// The alias of the integrated component.
 	//
 	// example:
 	//
 	// resume_vector_alias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The list of category directories for the component.
+	// The list of category directories for the integrated component.
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
 	// The list of dashboards.
 	Dashboards []*GetAddonResponseBodyDataDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
@@ -94,7 +94,7 @@ type GetAddonResponseBodyData struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The latest creation time.
+	// The latest release creation time.
 	//
 	// example:
 	//
@@ -539,6 +539,10 @@ type GetAddonResponseBodyDataEnvironmentsDependencies struct {
 	// The dependencies on cluster types.
 	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
 	// The dependencies on probes.
+	//
+	// example:
+	//
+	// {"metric-agent":true}
 	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
 	// The dependencies on activated services.
 	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
@@ -604,7 +608,7 @@ type GetAddonResponseBodyDataEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Specifies whether to initiate a pod restart guide immediately after the add-on installation is completed during integration.
+	// Specifies whether the pod restart guide is triggered immediately after the add-on is installed during integration.
 	//
 	// example:
 	//
@@ -710,7 +714,7 @@ func (s *GetAddonResponseBodyDataEnvironmentsPolicies) Validate() error {
 }
 
 type GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule struct {
-	// The data check rule executed after installation.
+	// The data check rule after installation.
 	PromQL []*string `json:"promQL,omitempty" xml:"promQL,omitempty" type:"Repeated"`
 }
 

@@ -40,7 +40,7 @@ type iIncidentEventStruct interface {
 }
 
 type IncidentEventStruct struct {
-	// The time of automatic recovery.
+	// The automatic recovery time.
 	//
 	// example:
 	//
@@ -50,17 +50,25 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// Detected that the CPU usage of the user-service instance i-abc123 has reached 95%, triggering an alert.
+	// The CPU utilization of the user-service instance i-abc123 reached 95%, triggering an alert
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The total count.
+	// The statistical count.
 	//
 	// example:
 	//
 	// 6
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// The dimension.
+	//
+	// example:
+	//
+	// {"regionId":"cn-hangzhou"}
 	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	// The dimension for grouping.
+	// The dimension used for grouping.
+	//
+	// example:
+	//
+	// {"severity":"Critical"}
 	GroupBy map[string]*string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
 	// The incident event ID.
 	//
@@ -74,19 +82,23 @@ type IncidentEventStruct struct {
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// The time of the last occurrence.
+	// The last time.
 	//
 	// example:
 	//
 	// 1741234567890
 	LastTime *int64 `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
-	// The time of manual recovery.
+	// The manual recovery time.
 	//
 	// example:
 	//
 	// 1741234567890
 	RecoverTime *int64 `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
-	// The resource associated with the event.
+	// The information about the resources associated with the event.
+	//
+	// example:
+	//
+	// {"resourceId":"i-example001"}
 	Resource map[string]*string `json:"resource,omitempty" xml:"resource,omitempty"`
 	// The status.
 	//
@@ -104,7 +116,7 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// User service CPU usage is too high.
+	// High CPU utilization of the user service
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The user ID.
 	//

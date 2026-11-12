@@ -30,15 +30,23 @@ type iUpdateDeliveryTaskRequest interface {
 }
 
 type UpdateDeliveryTaskRequest struct {
-	// The data source ID (Prometheus instance ID).
+	// The data source ID, which is the Prometheus instance ID.
 	//
 	// example:
 	//
 	// rw-5f2b4sc7es4d66
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
+	// The additional labels appended to all shipped metrics. The key is the label name, and the value is the label value.
+	//
+	// example:
+	//
+	// {"region":"cn-hangzhou"}
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// The metric filter conditions. The entire value is replaced and incremental merging is not performed.
+	// The metric filtering conditions. The existing conditions are entirely replaced rather than incrementally merged.
+	//
+	// example:
+	//
+	// {"__name__":"up"}
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
 	// The metric filtering mode.
 	//
@@ -52,19 +60,19 @@ type UpdateDeliveryTaskRequest struct {
 	//
 	// rg-aekzoiafjtr7zyq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The list of delivery targets.
+	// The list of shipping destinations.
 	SinkList []*UpdateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
-	// The task status. This parameter is used to start or stop a task. Valid values:
+	// The task status, which is used to start or stop the task. Valid values:
 	//
-	// - Enable: enables the task.
+	// Enable: Starts the task.
 	//
-	// - Disable: disables the task.
+	// Disable: Stops the task.
 	//
-	// - Running: the task is running.
+	// Running: The task is running.
 	//
 	// example:
 	//
-	// Enable
+	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The task description.
 	//
@@ -72,7 +80,7 @@ type UpdateDeliveryTaskRequest struct {
 	//
 	// updated desc
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
-	// The task name. The name can contain letters, digits, underscores (_), and hyphens (-), and can be in Chinese.
+	// The task name. Chinese characters, English letters, underscores (_), and hyphens (-) are supported.
 	//
 	// example:
 	//
@@ -183,9 +191,13 @@ func (s *UpdateDeliveryTaskRequest) Validate() error {
 }
 
 type UpdateDeliveryTaskRequestSinkList struct {
-	// The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
+	// The detailed configuration of the shipping destination. The meanings of keys and values vary based on the sink type.
+	//
+	// example:
+	//
+	// {"Url":"https://example.com/api/v1/write","Network":"PublicNetwork","AuthType":"None"}
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The delivery target type.
+	// The type of the shipping destination.
 	//
 	// if can be null:
 	// true

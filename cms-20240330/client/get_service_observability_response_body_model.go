@@ -39,6 +39,10 @@ type GetServiceObservabilityResponseBody struct {
 	// arms=serverless;xtrace=serverless
 	FeeType *string `json:"feeType,omitempty" xml:"feeType,omitempty"`
 	// The quota configurations.
+	//
+	// example:
+	//
+	// {"arms_agent_hour":"48"}
 	Quotas map[string]*string `json:"quotas,omitempty" xml:"quotas,omitempty"`
 	// The region.
 	//
@@ -53,6 +57,10 @@ type GetServiceObservabilityResponseBody struct {
 	// 4852B9B5-345C-5CBC-A15F-786D83ECCBBA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The system configurations.
+	//
+	// example:
+	//
+	// {"trace_aggregate":"enable"}
 	Settings map[string]*string `json:"settings,omitempty" xml:"settings,omitempty"`
 	// The resource initialization status.
 	//

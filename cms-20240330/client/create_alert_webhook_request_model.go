@@ -38,7 +38,11 @@ type CreateAlertWebhookRequest struct {
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The HTTP request headers.
+	// The collection of HTTP request headers.
+	//
+	// example:
+	//
+	// {"X-Total-Count":"0"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The language. Valid values:
 	//

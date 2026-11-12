@@ -72,7 +72,7 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// resume_vector_alias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The list of tags for the integration component.
+	// The list of categories for the integration component.
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
 	// The list of dashboards.
 	Dashboards []*ListAddonsResponseBodyAddonsDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
@@ -84,7 +84,7 @@ type ListAddonsResponseBodyAddons struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of supported integration policy types.
 	Environments []*ListAddonsResponseBodyAddonsEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// The icon URL.
+	// The URL of the icon.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The time of the latest release. The time is in ISO 8601 format and includes the UTC identifier or time zone offset.
+	// The time when the latest version was created. The time follows the ISO 8601 standard and includes a UTC identifier or time zone offset.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
-	// The component scenario.
+	// The scenario of the component.
 	//
 	// example:
 	//
 	// middleware
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//
@@ -363,7 +363,7 @@ type ListAddonsResponseBodyAddonsEnvironments struct {
 	//
 	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether it is enabled.
+	// Specifies whether the integration policy type is enabled.
 	//
 	// example:
 	//
@@ -383,7 +383,7 @@ type ListAddonsResponseBodyAddonsEnvironments struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The integration policy configurations.
 	Policies *ListAddonsResponseBodyAddonsEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
-	// The integration center policy type.
+	// The policy type of the integration center.
 	//
 	// example:
 	//
@@ -543,6 +543,10 @@ type ListAddonsResponseBodyAddonsEnvironmentsDependencies struct {
 	// The supported cluster types.
 	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
 	// The probes required for integration dependencies.
+	//
+	// example:
+	//
+	// {"metric-agent":true}
 	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
 	// The list of dependent services.
 	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
@@ -594,7 +598,7 @@ type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Specifies whether to install by default.
+	// Specifies whether to install the component by default.
 	//
 	// example:
 	//
@@ -608,13 +612,13 @@ type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Specifies whether to initiate a pod restart guide immediately after the plug-in installation is completed during integration.
+	// Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
 	//
 	// example:
 	//
 	// true
 	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	// The supported protocol types for configuration.
+	// The supported protocol types in the configuration.
 	Protocols []*ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// The name of the target add-on.
 	//
@@ -740,13 +744,13 @@ func (s *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule) Valida
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols struct {
-	// The protocol description.
+	// The description of the protocol.
 	//
 	// example:
 	//
 	// Support OpenTelemetry Protocal
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The icon URL.
+	// The URL of the icon.
 	//
 	// example:
 	//
@@ -758,7 +762,7 @@ type ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols struct {
 	//
 	// OpenTelemetry
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The protocol name.
+	// The name of the protocol.
 	//
 	// example:
 	//

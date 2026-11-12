@@ -35,6 +35,10 @@ type CreateDatasetRequest struct {
 	// The table schema.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"message":{"type":"text","chn":true}}
 	Schema map[string]*IndexKey `json:"schema,omitempty" xml:"schema,omitempty"`
 }
 

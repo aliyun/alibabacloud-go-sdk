@@ -16,6 +16,8 @@ type iDeleteAlertNotifyTemplatesResponseBody interface {
 }
 
 type DeleteAlertNotifyTemplatesResponseBody struct {
+	// The actual number of deleted records.
+	//
 	// example:
 	//
 	// 0

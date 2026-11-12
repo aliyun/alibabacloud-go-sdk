@@ -16,9 +16,9 @@ type iGetPrometheusInstanceResponseBody interface {
 }
 
 type GetPrometheusInstanceResponseBody struct {
-	// The details of the Prometheus instance.
+	// The Prometheus instance details.
 	PrometheusInstance *GetPrometheusInstanceResponseBodyPrometheusInstance `json:"prometheusInstance,omitempty" xml:"prometheusInstance,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -62,25 +62,19 @@ func (s *GetPrometheusInstanceResponseBody) Validate() error {
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
-	// The permission type. Valid values:
-	//
-	// - readWrite
-	//
-	// - readOnly
-	//
-	// - httpReadOnly
+	// The access type. Valid values: readWrite, readOnly, and httpReadOnly.
 	//
 	// example:
 	//
 	// readOnly
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving, and a value of 3650 indicates permanent retention.
+	// The number of days to automatically archive data after the storage expires. A value of 0 indicates that data is not archived. A value of 3650 indicates permanent retention.
 	//
 	// example:
 	//
 	// 90
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
+	// The auth-free read policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -104,7 +98,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// The authentication-free write policy. IP CIDR blocks and VPC IDs are supported.
+	// The auth-free write policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -128,31 +122,31 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// The authentication token string.
+	// The auth token.
 	//
 	// example:
 	//
 	// eJwixxxxx
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
-	// The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
+	// The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Indicates whether authentication-free read is enabled.
+	// Specifies whether auth-free read is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Indicates whether authentication-free write is enabled.
+	// Specifies whether auth-free write is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
-	// Indicates whether the authentication token is enabled.
+	// Specifies whether the authentication token is enabled.
 	//
 	// example:
 	//
@@ -160,7 +154,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
 	// The extended information.
 	ExtraInfo map[string]*string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
-	// The dashboard directory URL.
+	// The URL of the dashboard folder.
 	//
 	// example:
 	//
@@ -172,25 +166,25 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// SHARED
 	GrafanaInstanceId *string `json:"grafanaInstanceId,omitempty" xml:"grafanaInstanceId,omitempty"`
-	// The name of the associated managed Grafana instance.
+	// The name of the bound managed Grafana instance.
 	//
 	// example:
 	//
-	// Shared Edition
+	// Shared edition
 	GrafanaInstanceName *string `json:"grafanaInstanceName,omitempty" xml:"grafanaInstanceName,omitempty"`
-	// The HTTP public endpoint.
+	// The public HTTP endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
 	HttpApiInterUrl *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
-	// The HTTP internal endpoint.
+	// The internal HTTP endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
 	HttpApiInternalUrl *string `json:"httpApiInternalUrl,omitempty" xml:"httpApiInternalUrl,omitempty"`
-	// The HTTP private endpoint.
+	// The HTTP private network endpoint.
 	//
 	// example:
 	//
@@ -204,21 +198,21 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go by metric reporting volume.
+	// - POSTPAY: Pay-as-you-go based on the volume of reported metrics.
 	//
-	// - POSTPAY_GB: pay-as-you-go by metric write volume.
+	// - POSTPAY_GB: Pay-as-you-go based on the volume of written metrics.
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The time when the instance billing method was modified, in UTC format.
+	// The time when the billing method of the instance was updated (UTC format).
 	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	PaymentTypeUpdateTime *string `json:"paymentTypeUpdateTime,omitempty" xml:"paymentTypeUpdateTime,omitempty"`
-	// The product to which the Prometheus instance belongs (arms or cms).
+	// The product to which the Prometheus instance belongs, such as ARMS or CMS.
 	//
 	// example:
 	//
@@ -236,19 +230,19 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// The PushGateway public endpoint.
+	// The public PushGateway endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
 	PushGatewayInterUrl *string `json:"pushGatewayInterUrl,omitempty" xml:"pushGatewayInterUrl,omitempty"`
-	// The PushGateway internal endpoint.
+	// The internal PushGateway endpoint.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
 	PushGatewayInternalUrl *string `json:"pushGatewayInternalUrl,omitempty" xml:"pushGatewayInternalUrl,omitempty"`
-	// The PushGateway private endpoint.
+	// The PushGateway private network endpoint.
 	//
 	// example:
 	//
@@ -266,7 +260,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// http://workspace-default-cms-xxxxxxx
 	RemoteReadInterUrl *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
-	// The RemoteRead internal endpoint.
+	// The internal RemoteRead endpoint.
 	//
 	// example:
 	//
@@ -284,7 +278,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// https://workspace-default-cms-xxxxxxxxxx
 	RemoteWriteInterUrl *string `json:"remoteWriteInterUrl,omitempty" xml:"remoteWriteInterUrl,omitempty"`
-	// The RemoteWrite internal endpoint.
+	// The internal RemoteWrite endpoint.
 	//
 	// example:
 	//
@@ -302,7 +296,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The fixed value: PrometheusInstance.
+	// The resource type. Fixed value: PrometheusInstance.
 	//
 	// example:
 	//

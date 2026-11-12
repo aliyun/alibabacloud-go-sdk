@@ -48,7 +48,7 @@ type CreateDataPipelineRequest struct {
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The common processors.
 	Processors []*CreateDataPipelineRequestProcessors `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The output destination.
+	// The output destinations.
 	Sinks []*CreateDataPipelineRequestSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
 	// The data source.
 	Source *CreateDataPipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -286,6 +286,10 @@ type CreateDataPipelineRequestOutputsProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extension parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*CreateDataPipelineRequestOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -549,33 +553,33 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) Validate()
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
 	// 2
 	KeepSuffix *int32 `json:"keepSuffix,omitempty" xml:"keepSuffix,omitempty"`
-	// The sensitive keyword.
+	// The sensitive keywords.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
 	// The mask character.
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The data masking mode.
+	// The masking mode.
 	//
 	// example:
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive type.
+	// The built-in sensitive data types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -847,7 +851,7 @@ type CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName struct {
 	//
 	// EXACT
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The metric name.
+	// The metric names.
 	//
 	// example:
 	//
@@ -1061,6 +1065,10 @@ type CreateDataPipelineRequestProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extension parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*CreateDataPipelineRequestProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -1324,33 +1332,33 @@ func (s *CreateDataPipelineRequestProcessorsConfigProjections) Validate() error 
 }
 
 type CreateDataPipelineRequestProcessorsConfigRules struct {
-	// The length of the prefix to retain.
+	// The length of the retained prefix.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the suffix to retain.
+	// The length of the retained suffix.
 	//
 	// example:
 	//
 	// 2
 	KeepSuffix *int32 `json:"keepSuffix,omitempty" xml:"keepSuffix,omitempty"`
-	// The sensitive keyword.
+	// The sensitive keywords.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
 	// The mask character.
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
-	// The data masking mode.
+	// The masking mode.
 	//
 	// example:
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive type.
+	// The built-in sensitive data types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -1622,7 +1630,7 @@ type CreateDataPipelineRequestProcessorsConfigScopeMetricName struct {
 	//
 	// EXACT
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The metric name.
+	// The metric names.
 	//
 	// example:
 	//

@@ -73,32 +73,36 @@ type AlertRuleV2 struct {
 	// The action integration configuration.
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
 	// The annotations.
+	//
+	// example:
+	//
+	// {"platform":"github"}
 	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	// The ARMS integration configuration.
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The business source (read-only, such as managed_service_for_prometheus / umodel / application_insights / cloud_monitoring / sls).
+	// The business source. This parameter is read-only. Examples include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
 	//
 	// example:
 	//
 	// 示例值
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	// The detection condition configuration aggregate (Prometheus simple / UModel / APM simple / APM composite).
+	// The detection condition configuration aggregation, including simple Prometheus, UModel, simple APM, and composite APM.
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
 	// The content template.
 	//
 	// example:
 	//
-	// Alert triggered: ${metricName} current value ${currentValue} exceeds threshold ${threshold}
+	// 告警触发: ${metricName} 当前值 ${currentValue} 超过阈值 ${threshold}
 	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	// The creation time (read-only), in ISO 8601 format.
+	// The creation time in ISO 8601 format. This parameter is read-only.
 	//
 	// example:
 	//
 	// 1751595283143
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The datasource configuration aggregate (shared by PROMETHEUS / UMODEL / APM in a single object; fields are selected based on the type).
+	// The datasource config aggregation. The PROMETHEUS, UMODEL, and APM data sources share the same object, and fields are selected based on the type.
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	// The datasource type (read-only, derived).
+	// The data source type. This parameter is read-only and derived.
 	//
 	// example:
 	//
@@ -108,25 +112,29 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// CPU resource usage alert 95%
+	// CPU水位告警95%
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Specifies whether the alert rule is enabled.
+	// Specifies whether the rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The labels.
+	//
+	// example:
+	//
+	// {"platform":"github"}
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates that the rule was created and managed by the corresponding cloud service.
+	// The manager of the rule. This parameter is read-only. An empty value indicates a user-created rule. A non-empty value indicates that the rule is created and managed by the corresponding cloud service logic.
 	//
 	// example:
 	//
 	// integrationCenter
 	ManagedBy *string `json:"managedBy,omitempty" xml:"managedBy,omitempty"`
-	// The notification configuration aggregate (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
+	// The notification configuration aggregation. Currently, only DIRECT_NOTIFY is supported, which corresponds to DirectNotifyConfig.
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	// The notification policy ID (read-only, derived from the first entry in the notification policy list).
+	// The notification strategy ID. This parameter is read-only and derived from the first item in the notification strategy list.
 	//
 	// example:
 	//
@@ -136,59 +144,59 @@ type AlertRuleV2 struct {
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Specifies whether the rule applies to all resources of the resource type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
+	// **[Deprecated]*	- Specifies whether the rule takes effect on all resources of this type. This parameter is read-only and derived. For new integrations, check whether observeResourceConfig.relationType is set to ALL to determine the equivalent semantics.
 	//
 	// example:
 	//
 	// true
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// The observable resource ID list (read-only, derived).
+	// The list of observable resource IDs. This parameter is read-only and derived.
 	ObserveResourceList []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The observable resource type (read-only, derived). For new integrations, use observeResourceConfig.entityType instead.
+	// **[Deprecated]*	- The observable resource type. This parameter is read-only and derived. For new integrations, use observeResourceConfig.entityType instead.
 	//
 	// example:
 	//
 	// default
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	// The partition key (read-only, maintained by the system for rule routing and sharding).
+	// The partition key. This parameter is read-only and maintained by the system for rule routing and sharding.
 	//
 	// example:
 	//
 	// 示例值
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	// The query configuration aggregate (PROMETHEUS_SINGLE_QUERY / UMODEL_METRICSET_QUERY / APM_MULTI_QUERY).
+	// The query configuration aggregation, including PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, and APM_MULTI_QUERY.
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	// The RCA (root cause analysis) configuration.
+	// The root cause analysis (RCA) configuration.
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// The region ID (aligned with V1 AlertRule.regionId; priority: request body regionId > gateway callerRegionId).
+	// The region ID. This parameter is aligned with V1 AlertRule.regionId. Priority: regionId in the request body > callerRegionId in the gateway.
 	//
 	// example:
 	//
 	// example-id-001
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The scheduling configuration aggregate (currently only FIXED is supported).
+	// The schedule configuration aggregation. Currently, only FIXED is supported.
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The severity levels covered by this rule, comma-separated (read-only, derived; consistent with the filter.severityLevels query parameter format).
+	// The severity levels covered by this rule, separated by commas. This parameter is read-only and derived. The format is consistent with the filter.severityLevels query parameter.
 	//
 	// example:
 	//
 	// 1
 	SeverityLevels *string `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
-	// The alert status (read-only).
+	// The alert status. This parameter is read-only.
 	//
 	// example:
 	//
 	// Alarm
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time (read-only), in ISO 8601 format.
+	// The update time in ISO 8601 format. This parameter is read-only.
 	//
 	// example:
 	//
 	// 1764556086388
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The rule UUID (system-generated, read-only).
+	// The UUID of the rule. This parameter is generated by the system and is read-only.
 	//
 	// example:
 	//

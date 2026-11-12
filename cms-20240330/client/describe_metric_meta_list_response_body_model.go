@@ -40,7 +40,7 @@ type DescribeMetricMetaListResponseBody struct {
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The metric configuration information of the resources.
+	// The configuration information of the metrics in the resource.
 	Resources []*DescribeMetricMetaListResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -123,13 +123,17 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// ECS CPU Utilization
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The dimension information description.
+	// The description of the dimension information.
 	DimensionDescription []*DescribeMetricMetaListResponseBodyResourcesDimensionDescription `json:"dimensionDescription,omitempty" xml:"dimensionDescription,omitempty" type:"Repeated"`
 	// The resource filtering dimensions of CloudMonitor Basic.
 	Dimensions []*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
 	// The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
+	//
+	// example:
+	//
+	// {"DefaultTemplate":"false","alertDefault":"80","alertUnit":"%","is_alarm":"true","metricCategory":"instanceId","minAlertPeriod":"60","productCategory":"ecs","unitFactor":"1"}
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor Basic monitoring metrics.
+	// The metadata source. CMS indicates CloudMonitor Basic monitoring metrics, and PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
 	//
 	// Example value:
 	//
@@ -139,7 +143,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// CMS
 	//
-	// PROM_BASIC.
+	// PROM_BASIC
 	//
 	// example:
 	//

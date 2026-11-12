@@ -132,10 +132,18 @@ type ListDeliveryTasksResponseBodyDeliveryTasks struct {
 	// rw-5f2b4c7e66342s
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
 	// The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
+	//
+	// example:
+	//
+	// {"region":"cn-hangzhou"}
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
 	// The extended information.
 	ExtraInfo *ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo `json:"extraInfo,omitempty" xml:"extraInfo,omitempty" type:"Struct"`
 	// The metric filter conditions, used in conjunction with labelFiltersType. The key is the metric label name, and the value is the matched value.
+	//
+	// example:
+	//
+	// {"__name__":"up"}
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
 	// The metric filter mode.
 	//
@@ -376,6 +384,10 @@ func (s *ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo) Validate() error {
 
 type ListDeliveryTasksResponseBodyDeliveryTasksSinkList struct {
 	// The detailed configuration of the delivery sink. The meanings of the key and value vary based on the sinkType.
+	//
+	// example:
+	//
+	// {"Url":"https://example.com/api/v1/write","Network":"PublicNetwork","AuthType":"None"}
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
 	// The type of the delivery sink.
 	//

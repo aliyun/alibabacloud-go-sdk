@@ -41,8 +41,12 @@ type iObserveGroupDetail interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *ObserveGroupDetail
 	GetResourceGroupId() *string
+	SetRuleCounts(v []*ObserveGroupRuleCount) *ObserveGroupDetail
+	GetRuleCounts() []*ObserveGroupRuleCount
 	SetSourceOrigin(v string) *ObserveGroupDetail
 	GetSourceOrigin() *string
+	SetSourceReadOnly(v bool) *ObserveGroupDetail
+	GetSourceReadOnly() *bool
 	SetTags(v []*ObserveGroupDetailTags) *ObserveGroupDetail
 	GetTags() []*ObserveGroupDetailTags
 	SetWorkspaceId(v string) *ObserveGroupDetail
@@ -81,8 +85,12 @@ type ObserveGroupDetail struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// 阿里云资源组 ID。
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// 各纳管规则的主实体、关联子实体及总数。
+	RuleCounts []*ObserveGroupRuleCount `json:"ruleCounts,omitempty" xml:"ruleCounts,omitempty" type:"Repeated"`
 	// 数据来源：native_2_0（2.0 原生）/ synced_from_1_0（从 1.0 应用分组同步）。
 	SourceOrigin *string `json:"sourceOrigin,omitempty" xml:"sourceOrigin,omitempty"`
+	// 源云监控 1.0 分组是否已持久只读，true 时目标 2.0 分组可独立维护。
+	SourceReadOnly *bool `json:"sourceReadOnly,omitempty" xml:"sourceReadOnly,omitempty"`
 	// 资源标签（阿里云标准标签），键值对数组。
 	Tags []*ObserveGroupDetailTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 分组归属的 workspace ID（workspace 级归属，创建后不可变）。
@@ -161,8 +169,16 @@ func (s *ObserveGroupDetail) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *ObserveGroupDetail) GetRuleCounts() []*ObserveGroupRuleCount {
+	return s.RuleCounts
+}
+
 func (s *ObserveGroupDetail) GetSourceOrigin() *string {
 	return s.SourceOrigin
+}
+
+func (s *ObserveGroupDetail) GetSourceReadOnly() *bool {
+	return s.SourceReadOnly
 }
 
 func (s *ObserveGroupDetail) GetTags() []*ObserveGroupDetailTags {
@@ -253,8 +269,18 @@ func (s *ObserveGroupDetail) SetResourceGroupId(v string) *ObserveGroupDetail {
 	return s
 }
 
+func (s *ObserveGroupDetail) SetRuleCounts(v []*ObserveGroupRuleCount) *ObserveGroupDetail {
+	s.RuleCounts = v
+	return s
+}
+
 func (s *ObserveGroupDetail) SetSourceOrigin(v string) *ObserveGroupDetail {
 	s.SourceOrigin = &v
+	return s
+}
+
+func (s *ObserveGroupDetail) SetSourceReadOnly(v bool) *ObserveGroupDetail {
+	s.SourceReadOnly = &v
 	return s
 }
 
@@ -296,6 +322,15 @@ func (s *ObserveGroupDetail) Validate() error {
 			}
 		}
 	}
+	if s.RuleCounts != nil {
+		for _, item := range s.RuleCounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -317,6 +352,10 @@ type ObserveGroupDetailEntitySummaries struct {
 	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
 	// 实体类型。
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// 该类型主实体数量。
+	MainCount *int64 `json:"mainCount,omitempty" xml:"mainCount,omitempty"`
+	// 该类型关联子实体数量。
+	RelatedCount *int64 `json:"relatedCount,omitempty" xml:"relatedCount,omitempty"`
 }
 
 func (s ObserveGroupDetailEntitySummaries) String() string {
@@ -343,6 +382,14 @@ func (s *ObserveGroupDetailEntitySummaries) GetEntityType() *string {
 	return s.EntityType
 }
 
+func (s *ObserveGroupDetailEntitySummaries) GetMainCount() *int64 {
+	return s.MainCount
+}
+
+func (s *ObserveGroupDetailEntitySummaries) GetRelatedCount() *int64 {
+	return s.RelatedCount
+}
+
 func (s *ObserveGroupDetailEntitySummaries) SetEntityCategory(v string) *ObserveGroupDetailEntitySummaries {
 	s.EntityCategory = &v
 	return s
@@ -360,6 +407,16 @@ func (s *ObserveGroupDetailEntitySummaries) SetEntityDomain(v string) *ObserveGr
 
 func (s *ObserveGroupDetailEntitySummaries) SetEntityType(v string) *ObserveGroupDetailEntitySummaries {
 	s.EntityType = &v
+	return s
+}
+
+func (s *ObserveGroupDetailEntitySummaries) SetMainCount(v int64) *ObserveGroupDetailEntitySummaries {
+	s.MainCount = &v
+	return s
+}
+
+func (s *ObserveGroupDetailEntitySummaries) SetRelatedCount(v int64) *ObserveGroupDetailEntitySummaries {
+	s.RelatedCount = &v
 	return s
 }
 

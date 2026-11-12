@@ -34,13 +34,13 @@ type iCreateAlertActionRequest interface {
 }
 
 type CreateAlertActionRequest struct {
-	// The unique identifier of the alert action integration.
+	// The unique identifier of the action integration.
 	//
 	// example:
 	//
 	// testId
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
-	// The name of the alert action integration.
+	// The name of the action integration.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateAlertActionRequest struct {
 	PagerDutyParam *CreateAlertActionRequestPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *CreateAlertActionRequestSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The alert action integration type.
+	// The action integration type.
 	//
 	// This parameter is required.
 	//
@@ -238,7 +238,7 @@ type CreateAlertActionRequestEbParam struct {
 	//
 	// test
 	EventBusName *string `json:"eventBusName,omitempty" xml:"eventBusName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -551,7 +551,7 @@ type CreateAlertActionRequestPagerDutyParam struct {
 	//
 	// fds3wr54rvcxfr4543t6435
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook for PagerDuty. Both V1 and V2 are supported.
+	// The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -656,9 +656,9 @@ type CreateAlertActionRequestWebhookParam struct {
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The request headers.
+	// The request header information.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The webhook request method.
+	// The HTTP method for the webhook request.
 	//
 	// example:
 	//

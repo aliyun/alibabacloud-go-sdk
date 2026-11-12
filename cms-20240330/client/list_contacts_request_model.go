@@ -62,7 +62,7 @@ type ListContactsRequest struct {
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The mobile phone number of the alert contact.
+	// The phone number of the alert contact.
 	//
 	// example:
 	//

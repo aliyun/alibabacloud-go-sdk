@@ -11,12 +11,12 @@ type iScheduleValue interface {
 	GoString() string
 	SetContactId(v string) *ScheduleValue
 	GetContactId() *string
-	SetContactName(v string) *ScheduleValue
-	GetContactName() *string
 	SetEnd(v string) *ScheduleValue
 	GetEnd() *string
 	SetStart(v string) *ScheduleValue
 	GetStart() *string
+	SetContactName(v string) *ScheduleValue
+	GetContactName() *string
 }
 
 type ScheduleValue struct {
@@ -26,12 +26,6 @@ type ScheduleValue struct {
 	//
 	// testId
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// The name of the on-call contact.
-	//
-	// example:
-	//
-	// testName
-	ContactName *string `json:"contactName,omitempty" xml:"contactName,omitempty"`
 	// The end time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
@@ -44,6 +38,12 @@ type ScheduleValue struct {
 	//
 	// 2024-10-01 22:00:00
 	Start *string `json:"start,omitempty" xml:"start,omitempty"`
+	// The name of the on-call contact.
+	//
+	// example:
+	//
+	// testName
+	ContactName *string `json:"contactName,omitempty" xml:"contactName,omitempty"`
 }
 
 func (s ScheduleValue) String() string {
@@ -58,10 +58,6 @@ func (s *ScheduleValue) GetContactId() *string {
 	return s.ContactId
 }
 
-func (s *ScheduleValue) GetContactName() *string {
-	return s.ContactName
-}
-
 func (s *ScheduleValue) GetEnd() *string {
 	return s.End
 }
@@ -70,13 +66,12 @@ func (s *ScheduleValue) GetStart() *string {
 	return s.Start
 }
 
-func (s *ScheduleValue) SetContactId(v string) *ScheduleValue {
-	s.ContactId = &v
-	return s
+func (s *ScheduleValue) GetContactName() *string {
+	return s.ContactName
 }
 
-func (s *ScheduleValue) SetContactName(v string) *ScheduleValue {
-	s.ContactName = &v
+func (s *ScheduleValue) SetContactId(v string) *ScheduleValue {
+	s.ContactId = &v
 	return s
 }
 
@@ -87,6 +82,11 @@ func (s *ScheduleValue) SetEnd(v string) *ScheduleValue {
 
 func (s *ScheduleValue) SetStart(v string) *ScheduleValue {
 	s.Start = &v
+	return s
+}
+
+func (s *ScheduleValue) SetContactName(v string) *ScheduleValue {
+	s.ContactName = &v
 	return s
 }
 

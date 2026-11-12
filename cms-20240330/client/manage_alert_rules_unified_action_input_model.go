@@ -62,7 +62,7 @@ type iManageAlertRulesUnifiedActionInput interface {
 }
 
 type ManageAlertRulesUnifiedActionInput struct {
-	// The action type.
+	// The operation type.
 	//
 	// This parameter is required.
 	//
@@ -88,11 +88,11 @@ type ManageAlertRulesUnifiedActionInput struct {
 	//
 	// {"enabled":false}
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The business source. Valid values include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls. Pass this field as needed for CREATE, UPDATE, and PATCH actions.
+	// The business source (optional). Examples include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls. Pass as needed for CREATE, UPDATE, and PATCH.
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
 	// The condition aggregation configuration.
 	//
@@ -104,7 +104,7 @@ type ManageAlertRulesUnifiedActionInput struct {
 	//
 	// example:
 	//
-	// 实例 {{instance}} CPU 使用率超过 {{threshold}}%
+	// Instance {{instance}} CPU usage exceeds {{threshold}}%
 	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
 	// The data source aggregation configuration.
 	//
@@ -118,23 +118,23 @@ type ManageAlertRulesUnifiedActionInput struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The alert drill evaluation time in Unix milliseconds. This field is required by the backend when drillMode is ONE_SHOT. The time cannot be later than the current time or earlier than 90 days ago.
+	// The alert drill time, in Unix milliseconds. Required by the backend when drillMode is ONE_SHOT. It cannot be later than the current time or earlier than 90 days ago.
 	//
 	// example:
 	//
 	// 1783728000000
 	DrillEvalTime *int64 `json:"drillEvalTime,omitempty" xml:"drillEvalTime,omitempty"`
-	// The alert drill mode. This field is required by the backend when the action is DRILL_ALERT. Valid values: ONE_SHOT specifies a single point in time to simulate a complete lifecycle consisting of three events: OCCURRED, PERSISTENT, and RECOVERED. TIME_TRAVEL specifies a time range to simulate the lifecycle in multiple rounds based on the rule scheduling interval.
+	// The alert drill mode. Required by the backend when action is DRILL_ALERT. ONE_SHOT specifies a single time point to simulate a complete lifecycle (three events: OCCURRED, PERSISTENT, and RECOVERED). TIME_TRAVEL specifies a time period to simulate round by round according to the rule scheduling interval (OCCURRED, PERSISTENT, ..., RECOVERED).
 	//
 	// example:
 	//
 	// ONE_SHOT
 	DrillMode *string `json:"drillMode,omitempty" xml:"drillMode,omitempty"`
-	// The alert drill time range in Unix milliseconds. This field is required by the backend when drillMode is TIME_TRAVEL. The endTime must be later than the startTime and cannot be later than the current time. The lifecycle is simulated in multiple rounds based on the rule scheduling interval. The maximum number of rounds is 500. If the limit is exceeded, the backend returns a 400 error.
+	// The alert drill time range, in Unix milliseconds. Required by the backend when drillMode is TIME_TRAVEL. The endTime must be later than the startTime and cannot be later than the current time. The span between endTime and startTime cannot exceed 1 hour (the backend returns 400 if exceeded). Simulates round by round according to the rule scheduling interval, with a maximum of 500 rounds (the backend returns 400 if exceeded).
 	//
 	// example:
 	//
-	// {"startTime":1783728000000,"endTime":1783814400000}
+	// {"startTime":1783728000000,"endTime":1783731600000}
 	DrillTimeRange *ManageAlertRulesUnifiedActionInputDrillTimeRange `json:"drillTimeRange,omitempty" xml:"drillTimeRange,omitempty" type:"Struct"`
 	// Specifies whether the rule is enabled.
 	//
@@ -162,7 +162,7 @@ type ManageAlertRulesUnifiedActionInput struct {
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The ID of the monitored object instance. For new integrations, use observeResourceConfig.resources instead. This field is retained only for compatibility with legacy SDKs.
+	// **[Deprecated]*	- The monitored object instance ID. Use observeResourceConfig.resources for new integrations. Retained only for compatibility with legacy SDKs.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type ManageAlertRulesUnifiedActionInput struct {
 	ObserveResourceInstanceId *string `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The resource type of the monitored object. For new integrations, use observeResourceConfig.entityType instead. This field is retained only for compatibility with legacy SDKs.
+	// **[Deprecated]*	- The monitored object resource type. Use observeResourceConfig.entityType for new integrations. Retained only for compatibility with legacy SDKs.
 	//
 	// example:
 	//
@@ -182,37 +182,37 @@ type ManageAlertRulesUnifiedActionInput struct {
 	//
 	// {"type":"PROMETHEUS_SINGLE_QUERY","expr":"up > 0"}
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	// The root cause analysis (RCA) configuration. Pass this field as needed for CREATE, UPDATE, and PATCH actions.
+	// The root cause analysis (RCA) configuration (optional). Pass as needed for CREATE, UPDATE, and PATCH.
 	//
 	// example:
 	//
 	// {"enabled":false}
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// The region ID. This aligns with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
+	// The region ID. Aligned with V1 AlertRule.regionId. The gateway callerRegionId is used if not provided.
 	//
 	// example:
 	//
 	// example-id-001
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The schedule aggregation configuration.
+	// The scheduling aggregation configuration.
 	//
 	// example:
 	//
 	// {"type":"FIXED","intervalSecs":60}
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The UUID of the rule. This field is required for UPDATE and PATCH actions.
+	// The rule UUID. Required for UPDATE and PATCH.
 	//
 	// example:
 	//
 	// xxx-xxx-xxx
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// The list of UUIDs for the rules to be deleted. This is used for the BATCH_DELETE action.
+	// The list of rule UUIDs to be deleted (BATCH_DELETE).
 	//
 	// example:
 	//
 	// ["cms_v2_81d01768-fee9-459f-af49-ab2704f1db2b"]
 	UuidList []*string `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
-	// The workspace ID. This field is required for CREATE, UPDATE, PATCH, DELETE, ENABLE, DISABLE, BATCH_DELETE, BATCH_ENABLE, and BATCH_DISABLE actions. It identifies the CloudMonitor workspace to which the rule belongs.
+	// The workspace (for CREATE, UPDATE, and other actions).
 	//
 	// example:
 	//
@@ -508,13 +508,13 @@ func (s *ManageAlertRulesUnifiedActionInput) Validate() error {
 }
 
 type ManageAlertRulesUnifiedActionInputDrillTimeRange struct {
-	// The drill end time in Unix milliseconds. The end time must be later than the start time.
+	// The drill end time, in Unix milliseconds. Must be later than the start time, and the span from the start time cannot exceed 1 hour.
 	//
 	// example:
 	//
-	// 1783814400000
+	// 1783731600000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The drill start time in Unix milliseconds.
+	// The drill start time, in Unix milliseconds.
 	//
 	// example:
 	//

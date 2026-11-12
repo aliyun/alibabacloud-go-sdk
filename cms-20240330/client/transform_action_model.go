@@ -39,6 +39,10 @@ type TransformAction struct {
 	// labelkey1
 	LabelKey *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
 	// The mapping configuration.
+	//
+	// example:
+	//
+	// {"warning":"WARNING"}
 	Mapping map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
 	// The regular expression.
 	//
@@ -64,7 +68,7 @@ type TransformAction struct {
 	//
 	// SET_FIELD
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The configured value.
+	// The set value.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iListUserNotifyHistoriesResponseBody interface {
 type ListUserNotifyHistoriesResponseBody struct {
 	// The notification history list.
 	HistoryList []*ListUserNotifyHistoriesResponseBodyHistoryList `json:"historyList,omitempty" xml:"historyList,omitempty" type:"Repeated"`
-	// The maximum number of records returned for the current request.
+	// The maximum number of entries returned for the current request.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListUserNotifyHistoriesResponseBody struct {
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of notification history records that meet the query conditions.
+	// The total number of notification history entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	//
 	// example:
 	//
-	// Zhang San, Li Si
+	// Zhang San,Li Si
 	Contacts *string `json:"contacts,omitempty" xml:"contacts,omitempty"`
 	// The list of contact groups. Multiple contact groups are separated by commas.
 	//
 	// example:
 	//
-	// O&M group, on-call group
+	// O&M group,On-call group
 	Groups *string `json:"groups,omitempty" xml:"groups,omitempty"`
 	// The incident ID.
 	//
@@ -149,9 +149,9 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
 	// Indicates whether the notification record has no actual delivery channel. Valid values:
 	//
-	// - true: No channel. The notifyResult is NO_CHANNEL.
+	// - true: the record has no channel, which means the notifyResult is NO_CHANNEL.
 	//
-	// - false: Has an actual delivery channel.
+	// - false: the record has an actual delivery channel.
 	NoChannel *bool `json:"noChannel,omitempty" xml:"noChannel,omitempty"`
 	// The notification policy ID.
 	//
@@ -171,7 +171,7 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	//
 	// 13800138000
 	Receiver *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
-	// The notification delivery result details. This is the original response content returned by the channel, such as the API response from a DingTalk or Lark bot.
+	// The details of the notification delivery result. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
 	//
 	// example:
 	//
@@ -191,11 +191,11 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// The notification delivery type. Valid values:
 	//
-	// - SUBSCRIBE: Subscription notification.
+	// - SUBSCRIBE: subscription notifications
 	//
-	// - DIRECT: Direct event notification.
+	// - DIRECT: direct event notifications
 	//
-	// - ITSM: Ticket or action notification.
+	// - ITSM: ticket or action notifications
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	SendType *string `json:"sendType,omitempty" xml:"sendType,omitempty"`
 	// The alert severity. Valid values:
 	//
-	// - CRITICAL: Critical.
+	// - CRITICAL: critical
 	//
-	// - ERROR: Error.
+	// - ERROR: error
 	//
-	// - WARNING: Warning.
+	// - WARNING: warning
 	//
-	// - INFO: Info.
+	// - INFO: info
 	//
 	// example:
 	//
@@ -217,23 +217,23 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 	// The incident status. Valid values:
 	//
-	// - TRIGGERED: Triggered.
+	// - TRIGGERED: triggered
 	//
-	// - RESOLVED: Resolved.
+	// - RESOLVED: resolved
 	//
-	// - ACK: Acknowledged.
+	// - ACK: acknowledged
 	//
-	// - ESCALATED: Escalated.
+	// - ESCALATED: escalated
 	//
-	// - MANUAL_RESOLVED: Manually resolved.
+	// - MANUAL_RESOLVED: manually resolved
 	//
-	// - TIMEOUT: Automatically resolved due to timeout.
+	// - TIMEOUT: automatically resolved due to timeout
 	//
-	// - RETRIGGERED: Retriggered.
+	// - RETRIGGERED: retriggered
 	//
-	// - PARTIAL_RESOLVED: Partially resolved.
+	// - PARTIAL_RESOLVED: partially resolved
 	//
-	// - INVALID: Invalid.
+	// - INVALID: invalid
 	//
 	// example:
 	//
@@ -253,11 +253,11 @@ type ListUserNotifyHistoriesResponseBodyHistoryList struct {
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	// Indicates whether the notification was delivered successfully. Valid values:
 	//
-	// - true: Delivered successfully.
+	// - true: the delivery was successful.
 	//
-	// - false: Delivery failed.
+	// - false: the delivery failed.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The time of the notification record. The value is a UNIX timestamp in seconds.
+	// The time when the notification was recorded. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iUpdatePipelineRequest interface {
 }
 
 type UpdatePipelineRequest struct {
-	// The pipeline description.
+	// The description.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type UpdatePipelineRequest struct {
 	ExecutePolicy *UpdatePipelineRequestExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
 	// The pipeline configuration.
 	Pipeline *UpdatePipelineRequestPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
-	// The data sink configuration.
+	// The data sink.
 	Sink *UpdatePipelineRequestSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// The data source configuration.
+	// The data source.
 	Source *UpdatePipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
@@ -122,9 +122,9 @@ type UpdatePipelineRequestExecutePolicy struct {
 	//
 	// runOnce
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The one-time execution configuration.
+	// The configuration for one-time execution.
 	RunOnce *UpdatePipelineRequestExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
-	// The scheduled execution configuration.
+	// The configuration for scheduled execution.
 	Scheduled *UpdatePipelineRequestExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -229,7 +229,7 @@ type UpdatePipelineRequestExecutePolicyScheduled struct {
 	//
 	// 1772519013
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The execution interval.
+	// The time interval.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ func (s *UpdatePipelineRequestExecutePolicyScheduled) Validate() error {
 }
 
 type UpdatePipelineRequestPipeline struct {
-	// The pipeline nodes.
+	// The nodes.
 	Nodes []*UpdatePipelineRequestPipelineNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
 
@@ -309,7 +309,11 @@ type UpdatePipelineRequestPipelineNodes struct {
 	//
 	// node_1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The node parameters.
+	// The parameters.
+	//
+	// example:
+	//
+	// {"output":"ID,key_0,key_2,key_3,key_4","workspace":"workspace-test-dataset","field":"key_0","global":true,"dataset":"dataset_1"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The node type.
 	//
@@ -359,9 +363,9 @@ func (s *UpdatePipelineRequestPipelineNodes) Validate() error {
 }
 
 type UpdatePipelineRequestSink struct {
-	// The destination dataset configuration.
+	// The dataset.
 	Dataset *UpdatePipelineRequestSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The sink type.
+	// The data sink type.
 	//
 	// example:
 	//
@@ -405,7 +409,7 @@ func (s *UpdatePipelineRequestSink) Validate() error {
 }
 
 type UpdatePipelineRequestSinkDataset struct {
-	// The dataset name.
+	// The dataset.
 	//
 	// example:
 	//
@@ -450,9 +454,9 @@ func (s *UpdatePipelineRequestSinkDataset) Validate() error {
 }
 
 type UpdatePipelineRequestSource struct {
-	// The Log Service Logstore configuration.
+	// The Simple Log Service Logstore information.
 	Logstore *UpdatePipelineRequestSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
-	// The source type.
+	// The data source type.
 	//
 	// example:
 	//
@@ -496,13 +500,13 @@ func (s *UpdatePipelineRequestSource) Validate() error {
 }
 
 type UpdatePipelineRequestSourceLogstore struct {
-	// The Logstore name.
+	// The Simple Log Service Logstore name.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The filter query.
+	// The filter statement.
 	//
 	// example:
 	//

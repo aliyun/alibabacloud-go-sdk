@@ -32,15 +32,15 @@ type iNotifyConfigUnified interface {
 }
 
 type NotifyConfigUnified struct {
-	// The days of the week on which notifications are sent, 1-7.
+	// The days of the week when notifications are sent, ranging from 1 to 7.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	// The daily notification effective end time.
+	// The daily end time for the notification effective period.
 	//
 	// example:
 	//
 	// 20:00
 	ActiveEndTime *string `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
-	// The daily notification effective start time.
+	// The daily start time for the notification effective period.
 	//
 	// example:
 	//
@@ -48,17 +48,21 @@ type NotifyConfigUnified struct {
 	ActiveStartTime *string `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
 	// The list of notification channels.
 	Channels []*DirectNotifyChannel `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The list of notification policy IDs (type=NOTIFY_POLICY, currently a maximum of 1 per service. Mutually exclusive with channels/silenceTimeSecs/activeDays/activeStartTime/activeEndTime/utcOffset of DIRECT_NOTIFY).
+	// The list of notification policy IDs.
 	NotifyStrategies []*string `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
-	// Specifies whether to send recovery notifications (type=DIRECT_NOTIFY). Default value: true. Each severity level in severityChannels can independently override this setting.
+	// Specifies whether to send a recovery notification. Default value: true. This setting can be independently overridden for each severity level in severityChannels.
 	//
 	// example:
 	//
 	// true
 	SendRecoverNotification *bool `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
-	// The Notification Recipients and channels configured by severity level (type=DIRECT_NOTIFY, new mode, mutually exclusive with channels). The key is the severity level: CRITICAL/ERROR/WARNING/INFO.
+	// The notification recipients and channels configured for each severity level. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
+	//
+	// example:
+	//
+	// {"CRITICAL":{"sendRecoverNotification":true}}
 	SeverityChannels map[string]*SeverityNotifyConfig `json:"severityChannels,omitempty" xml:"severityChannels,omitempty"`
-	// The mute for epoch in seconds.
+	// The mute epoch in seconds.
 	//
 	// example:
 	//

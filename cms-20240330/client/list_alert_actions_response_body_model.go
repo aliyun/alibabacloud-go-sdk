@@ -22,7 +22,7 @@ type iListAlertActionsResponseBody interface {
 }
 
 type ListAlertActionsResponseBody struct {
-	// The list of alert action integration configurations.
+	// The list of action integration configurations.
 	AlertActions []*ListAlertActionsResponseBodyAlertActions `json:"alertActions,omitempty" xml:"alertActions,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -117,13 +117,13 @@ func (s *ListAlertActionsResponseBody) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActions struct {
-	// The unique identifiers of the alert action integrations.
+	// The unique identifiers of the action integrations.
 	//
 	// example:
 	//
 	// test
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
-	// The name of the alert action integration.
+	// The name of the action integration.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListAlertActionsResponseBodyAlertActions struct {
 	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
 	// The EventBridge parameters.
 	EbParam *ListAlertActionsResponseBodyAlertActionsEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
-	// The elastic scaling parameters.
+	// The Auto Scaling parameters.
 	EssParam *ListAlertActionsResponseBodyAlertActionsEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
 	// The Function Compute 3.0 parameters.
 	Fc3Param *ListAlertActionsResponseBodyAlertActionsFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
@@ -143,7 +143,7 @@ type ListAlertActionsResponseBodyAlertActions struct {
 	PagerDutyParam *ListAlertActionsResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *ListAlertActionsResponseBodyAlertActionsSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the alert action integration.
+	// The type of the action integration.
 	//
 	// example:
 	//
@@ -380,13 +380,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsEbParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsEssParam struct {
-	// The ID of the elastic scaling group.
+	// The ID of the Auto Scaling group.
 	//
 	// example:
 	//
 	// testId
 	EssGroupId *string `json:"essGroupId,omitempty" xml:"essGroupId,omitempty"`
-	// The ID of the elastic scaling rule.
+	// The ID of the Auto Scaling rule.
 	//
 	// example:
 	//
@@ -512,7 +512,7 @@ type ListAlertActionsResponseBodyAlertActionsFcParam struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The service name in Function Compute.
+	// The service name of Function Compute.
 	//
 	// example:
 	//
@@ -560,7 +560,7 @@ func (s *ListAlertActionsResponseBodyAlertActionsFcParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsMnsParam struct {
-	// The resource type in Simple Message Queue (formerly MNS).
+	// The resource type of Simple Message Queue (formerly MNS).
 	//
 	// example:
 	//
@@ -624,13 +624,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsPagerDutyParam struct {
-	// The integration key of PagerDuty.
+	// The integration key for PagerDuty.
 	//
 	// example:
 	//
 	// fsfer4543t5t65g4t4
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook URL of PagerDuty. Both V1 and V2 are supported.
+	// The integration webhook for PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -736,6 +736,10 @@ type ListAlertActionsResponseBodyAlertActionsWebhookParam struct {
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// The request headers.
+	//
+	// example:
+	//
+	// {"X-Total-Count":"0"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The webhook request method.
 	//

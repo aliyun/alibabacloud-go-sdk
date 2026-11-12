@@ -16,7 +16,7 @@ type iPreviewNotifyTemplateRequest interface {
 }
 
 type PreviewNotifyTemplateRequest struct {
-	// The rendering context data in key-value pair format. It serves as the data source to populate Go template placeholders, such as {{.incident.title}}, in the templates.
+	// The rendering context data in a key-value pair structure. It serves as the data source to populate Go template placeholders in the template, such as {{.incident.title}}.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ func (s *PreviewNotifyTemplateRequest) Validate() error {
 }
 
 type PreviewNotifyTemplateRequestTemplates struct {
-	// The template identifier. It is customized by the frontend and returned as-is. Use semantic names such as title or content.
+	// The template identifier. It is custom-defined by the frontend and returned as-is. Use semantic names such as title or content.
 	//
 	// This parameter is required.
 	//

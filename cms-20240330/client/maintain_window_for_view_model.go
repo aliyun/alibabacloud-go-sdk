@@ -52,7 +52,7 @@ type MaintainWindowForView struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The effective period range.
 	EffectTimeRange *MaintainWindowForViewEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// The crontab expression.
+	// The Crontab expression.
 	//
 	// example:
 	//

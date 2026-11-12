@@ -70,7 +70,7 @@ type GetPipelineResponseBody struct {
 	//
 	// 3430AE20-AFFF-597C-B553-2DF04B2933AA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The output destination.
+	// The data sink.
 	Sink *GetPipelineResponseBodySink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 	// The data source.
 	Source *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -416,6 +416,10 @@ type GetPipelineResponseBodyPipelineNodes struct {
 	// node_1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {"output":"ID,key_0,key_2,key_3,key_4","workspace":"workspace-test-dataset","field":"key_0","global":true,"dataset":"dataset_1"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The node type.
 	//
@@ -467,7 +471,7 @@ func (s *GetPipelineResponseBodyPipelineNodes) Validate() error {
 type GetPipelineResponseBodySink struct {
 	// The dataset information.
 	Dataset *GetPipelineResponseBodySinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The output destination type.
+	// The data sink type.
 	//
 	// example:
 	//

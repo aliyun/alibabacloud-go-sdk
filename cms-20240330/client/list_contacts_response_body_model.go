@@ -138,6 +138,10 @@ type ListContactsResponseBodyContacts struct {
 	// The alert contact groups to which the alert contact belongs.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
 	// The mapping of IM user IDs. Multiple instant messaging tools are supported.
+	//
+	// example:
+	//
+	// {"dingtalk":"abc123","wechat":"def456"}
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
 	// The language.
 	//
@@ -151,13 +155,13 @@ type ListContactsResponseBodyContacts struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The mobile phone number of the alert contact.
+	// The phone number of the alert contact.
 	//
 	// example:
 	//
 	// 130123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Indicates whether the mobile phone number is verified.
+	// Indicates whether the phone number is verified.
 	//
 	// example:
 	//

@@ -52,7 +52,7 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The query token.
+	// The next token.
 	//
 	// if can be null:
 	// true
@@ -70,7 +70,7 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// rw-00001,rw-00002,rw-00003
 	PrometheusInstanceIds *string `json:"prometheusInstanceIds,omitempty" xml:"prometheusInstanceIds,omitempty"`
-	// The name of the instance. Partial matching is supported.
+	// The instance name. Partial match is supported.
 	//
 	// if can be null:
 	// true
@@ -98,7 +98,7 @@ type ListPrometheusInstancesRequest struct {
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The list of tags.
 	Tag []*ListPrometheusInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The version of the instance.
+	// The instance version.
 	//
 	// if can be null:
 	// true

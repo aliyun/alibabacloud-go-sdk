@@ -15,6 +15,8 @@ type iUpdatePrometheusInstanceRequest interface {
 	GetAuthFreeReadPolicy() *string
 	SetAuthFreeWritePolicy(v string) *UpdatePrometheusInstanceRequest
 	GetAuthFreeWritePolicy() *string
+	SetDryrun(v bool) *UpdatePrometheusInstanceRequest
+	GetDryrun() *bool
 	SetEnableAuthFreeRead(v bool) *UpdatePrometheusInstanceRequest
 	GetEnableAuthFreeRead() *bool
 	SetEnableAuthFreeWrite(v bool) *UpdatePrometheusInstanceRequest
@@ -36,11 +38,11 @@ type iUpdatePrometheusInstanceRequest interface {
 }
 
 type UpdatePrometheusInstanceRequest struct {
-	// The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving. Valid values for archive days:
+	// The number of days to automatically archive and retain data after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive retention period:
 	//
-	// V1: 1 to 365 days. Only supported for billing by metric write volume.
+	// V1: 1 to 365 days. Supported only for the pay-by-ingested-data billing method.
 	//
-	// V2: 1 to 3650 days (3650 indicates permanent retention).
+	// V2: 1 to 3650 days. A value of 3650 indicates permanent retention.
 	//
 	// if can be null:
 	// true
@@ -49,7 +51,7 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// 365
 	ArchiveDuration *int `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
+	// The authentication-free read policy. IP address ranges and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -73,7 +75,7 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
+	// The authentication-free read policy. IP address ranges and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -97,6 +99,12 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// true: sends a precheck request without updating the instance. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	//
+	// false: sends a regular request. If the request passes the precheck, the instance is updated. This is the default value.
+	Dryrun *bool `json:"dryrun,omitempty" xml:"dryrun,omitempty"`
 	// Specifies whether to enable authentication-free read.
 	//
 	// example:
@@ -115,33 +123,33 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The billing method. This can be modified only once during the instance lifetime:
+	// The billing method. You can change the billing method only once during the lifecycle of the instance. Valid values:
 	//
-	// POSTPAY: pay-as-you-go by metric reporting volume.
+	// POSTPAY: pay-as-you-go based on the number of reported metrics.
 	//
-	// POSTPAY_GB: pay-as-you-go by metric write volume.
+	// POSTPAY_GB: pay-as-you-go based on the volume of ingested data.
 	//
 	// example:
 	//
 	// POSTPAY_GB
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// Instance storage database status of the instance. Only RUNNING is supported. If left empty, instance storage database status is not changed.
+	// The status of the instance storage database. Only RUNNING is supported. If this parameter is left empty, the status of the storage database is not changed.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The storage duration (days):
+	// The storage duration in days. Valid values:
 	//
-	// By write volume: 90, 180.
+	// For the pay-by-ingested-data billing method: 90 and 180.
 	//
-	// By metric reporting volume: 15, 30, 60, 90, 180.
+	// For the pay-by-reported-metrics billing method: 15, 30, 60, 90, and 180.
 	//
 	// example:
 	//
@@ -175,6 +183,10 @@ func (s *UpdatePrometheusInstanceRequest) GetAuthFreeReadPolicy() *string {
 
 func (s *UpdatePrometheusInstanceRequest) GetAuthFreeWritePolicy() *string {
 	return s.AuthFreeWritePolicy
+}
+
+func (s *UpdatePrometheusInstanceRequest) GetDryrun() *bool {
+	return s.Dryrun
 }
 
 func (s *UpdatePrometheusInstanceRequest) GetEnableAuthFreeRead() *bool {
@@ -225,6 +237,11 @@ func (s *UpdatePrometheusInstanceRequest) SetAuthFreeReadPolicy(v string) *Updat
 
 func (s *UpdatePrometheusInstanceRequest) SetAuthFreeWritePolicy(v string) *UpdatePrometheusInstanceRequest {
 	s.AuthFreeWritePolicy = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetDryrun(v bool) *UpdatePrometheusInstanceRequest {
+	s.Dryrun = &v
 	return s
 }
 

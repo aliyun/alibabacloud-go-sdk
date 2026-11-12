@@ -44,9 +44,9 @@ type GetOncallScheduleResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of shifts.
+	// The list of rotations.
 	Rotations []*GetOncallScheduleResponseBodyRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the shift reminder chatbot.
+	// The ID of the robot for shift change reminders.
 	//
 	// example:
 	//
@@ -156,41 +156,41 @@ func (s *GetOncallScheduleResponseBody) Validate() error {
 }
 
 type GetOncallScheduleResponseBodyRotations struct {
-	// The days of the week when the shift is active.
+	// The days of the week when the rotation takes effect.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
 	// The IDs of the contacts.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// The end time of the shift. Format: HH:mm.
+	// The end time of the rotation. Format: HH:mm.
 	//
 	// example:
 	//
 	// 24:00
 	RotationEndTime *string `json:"rotationEndTime,omitempty" xml:"rotationEndTime,omitempty"`
-	// The name of the shift.
+	// The name of the rotation.
 	//
 	// example:
 	//
 	// testName
 	RotationName *string `json:"rotationName,omitempty" xml:"rotationName,omitempty"`
-	// The start time of the shift. Format: HH:mm.
+	// The start time of the rotation. Format: HH:mm.
 	//
 	// example:
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift recurrence cycle. Used in conjunction with the shift recurrence frequency. For example, rotate to the next on-call contact every 3 days.
+	// The length of the shift recurrence period. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 3 days.
 	//
 	// example:
 	//
 	// 4
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every 1 week.
+	// The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 1 week.
 	//
 	// example:
 	//
 	// WEEKLY
 	ShiftRecurrenceFrequency *string `json:"shiftRecurrenceFrequency,omitempty" xml:"shiftRecurrenceFrequency,omitempty"`
-	// The start date of the shift. Format: yyyy-MM-dd.
+	// The start date of the rotation. Format: yyyy-MM-dd.
 	//
 	// example:
 	//

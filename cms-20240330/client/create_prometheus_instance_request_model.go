@@ -15,6 +15,8 @@ type iCreatePrometheusInstanceRequest interface {
 	GetAuthFreeReadPolicy() *string
 	SetAuthFreeWritePolicy(v string) *CreatePrometheusInstanceRequest
 	GetAuthFreeWritePolicy() *string
+	SetDryrun(v bool) *CreatePrometheusInstanceRequest
+	GetDryrun() *bool
 	SetEnableAuthFreeRead(v bool) *CreatePrometheusInstanceRequest
 	GetEnableAuthFreeRead() *bool
 	SetEnableAuthFreeWrite(v bool) *CreatePrometheusInstanceRequest
@@ -38,7 +40,7 @@ type iCreatePrometheusInstanceRequest interface {
 }
 
 type CreatePrometheusInstanceRequest struct {
-	// The number of days to automatically archive data after the storage period expires. A value of 0 indicates that data is not archived. Valid values:
+	// The number of days to automatically archive data after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive duration:
 	//
 	// 	- V1: 60 to 365 days.
 	//
@@ -51,7 +53,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// 60
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The authentication-free read policy, which supports IP address ranges and VPC IDs.
+	// The authentication-free read policy. IP address ranges and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -99,31 +101,37 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// Specifies whether to enable authentication-free read access. Supported only in V2.
+	// Specifies whether to perform a dry run only. Valid values:
+	//
+	// 	- true: performs a dry run without creating the instance. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, an error is returned. If the request passes the check, the DryRunOperation error code is returned.
+	//
+	// 	- false: sends a normal request and creates the instance directly after the request passes the check. This is the default value.
+	Dryrun *bool `json:"dryrun,omitempty" xml:"dryrun,omitempty"`
+	// Specifies whether to enable authentication-free read access. This feature is supported only in V2.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable authentication-free write access. Supported only in V2.
+	// Specifies whether to enable authentication-free write access. This feature is supported only in V2.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
-	// Specifies whether to enable the authorization token. Supported only in V1.
+	// Specifies whether to enable the authorization token. This feature is supported only in V1.
 	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The Billable methods. Valid values:
+	// Billable methods. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go by reported metric volume.
+	// 	- POSTPAY: pay-as-you-go based on the volume of reported metrics.
 	//
-	// 	- POSTPAY_GB: pay-as-you-go by ingested data volume.
+	// 	- POSTPAY_GB: pay-as-you-go based on the volume of written metrics.
 	//
-	// Note: An empty value uses the default Billable methods configured for the user. If no default is configured, the system defaults to billing by reported metric volume.
+	// Note: If this parameter is left empty, the default billing method configured for the user is used. If no default billing method is configured, the system uses the pay-as-you-go billing method based on the volume of reported metrics by default.
 	//
 	// example:
 	//
@@ -149,17 +157,17 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The storage duration in days. Valid values:
+	// The storage duration in days.
 	//
-	// 	- Pay-by-ingested-data: 90 and 180.
+	// 	- By written data volume: 90 and 180.
 	//
-	// 	- Pay-by-reported-metrics: 15, 30, 60, 90, and 180.
+	// 	- By reported metric volume: 15, 30, 60, 90, and 180.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
-	// The tag values.
+	// The tags.
 	Tags []*CreatePrometheusInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The workspace to which the instance belongs. Default value: default-cms-{userId}-{regionId}.
 	//
@@ -187,6 +195,10 @@ func (s *CreatePrometheusInstanceRequest) GetAuthFreeReadPolicy() *string {
 
 func (s *CreatePrometheusInstanceRequest) GetAuthFreeWritePolicy() *string {
 	return s.AuthFreeWritePolicy
+}
+
+func (s *CreatePrometheusInstanceRequest) GetDryrun() *bool {
+	return s.Dryrun
 }
 
 func (s *CreatePrometheusInstanceRequest) GetEnableAuthFreeRead() *bool {
@@ -241,6 +253,11 @@ func (s *CreatePrometheusInstanceRequest) SetAuthFreeReadPolicy(v string) *Creat
 
 func (s *CreatePrometheusInstanceRequest) SetAuthFreeWritePolicy(v string) *CreatePrometheusInstanceRequest {
 	s.AuthFreeWritePolicy = &v
+	return s
+}
+
+func (s *CreatePrometheusInstanceRequest) SetDryrun(v bool) *CreatePrometheusInstanceRequest {
+	s.Dryrun = &v
 	return s
 }
 

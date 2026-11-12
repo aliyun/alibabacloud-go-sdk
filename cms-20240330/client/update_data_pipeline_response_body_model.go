@@ -62,7 +62,7 @@ func (s *UpdateDataPipelineResponseBody) Validate() error {
 }
 
 type UpdateDataPipelineResponseBodyPipeline struct {
-	// The creation time in UTC format based on the ISO 8601 standard, such as 2026-08-10T05:00:00Z.
+	// The creation time in UTC and ISO 8601 format, for example, 2026-08-10T05:00:00Z.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type UpdateDataPipelineResponseBodyPipeline struct {
 	//
 	// traces
 	SignalType *string `json:"signalType,omitempty" xml:"signalType,omitempty"`
-	// The output destinations.
+	// The output destination.
 	//
 	// This parameter is required.
 	Sinks []*UpdateDataPipelineResponseBodyPipelineSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
@@ -132,7 +132,7 @@ type UpdateDataPipelineResponseBodyPipeline struct {
 	//
 	// Pipeline is running.
 	StatusMessage *string `json:"statusMessage,omitempty" xml:"statusMessage,omitempty"`
-	// The update time in ISO 8601 format in UTC, such as 2026-08-10T05:10:00Z.
+	// The update time in UTC and ISO 8601 format, for example, 2026-08-10T05:10:00Z.
 	//
 	// This parameter is required.
 	//
@@ -314,7 +314,7 @@ func (s *UpdateDataPipelineResponseBodyPipeline) Validate() error {
 }
 
 type UpdateDataPipelineResponseBodyPipelineOutputs struct {
-	// The name of the output.
+	// The output name.
 	//
 	// example:
 	//
@@ -364,15 +364,15 @@ func (s *UpdateDataPipelineResponseBodyPipelineOutputs) Validate() error {
 }
 
 type UpdateDataPipelineResponseBodyPipelineOutputsProcessors struct {
-	// The processor configuration.
+	// The configuration of the processor.
 	Config *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The processor name.
+	// The name of the processor.
 	//
 	// example:
 	//
 	// drop-health-check
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The processor type.
+	// The type of the processor.
 	//
 	// example:
 	//
@@ -438,12 +438,16 @@ type UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
 	// The list of data masking rules.
 	Rules []*UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The effective scope of pipeline processing.
+	// The effective scope of the pipeline processing.
 	Scope *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -701,13 +705,13 @@ func (s *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjection
 }
 
 type UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules struct {
-	// The length of the retained prefix.
+	// The length of the prefix to retain.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the retained suffix.
+	// The length of the suffix to retain.
 	//
 	// example:
 	//
@@ -719,7 +723,7 @@ type UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules struct {
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
 	// The data masking mode.
 	//
@@ -800,9 +804,9 @@ func (s *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules) Val
 type UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope struct {
 	// The additional field conditions.
 	Conditions []*UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The metric name scope.
+	// The scope of metric names.
 	MetricName *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName `json:"metricName,omitempty" xml:"metricName,omitempty" type:"Struct"`
-	// The service name scope.
+	// The scope of service names.
 	ServiceName *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName `json:"serviceName,omitempty" xml:"serviceName,omitempty" type:"Struct"`
 }
 
@@ -934,7 +938,7 @@ type UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeCondition
 	//
 	// label
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The name of the field or dimension.
+	// The field or dimension name.
 	//
 	// example:
 	//
@@ -1079,7 +1083,7 @@ func (s *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServi
 }
 
 type UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector struct {
-	// The service name list.
+	// The list of service names.
 	//
 	// example:
 	//
@@ -1139,15 +1143,15 @@ func (s *UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget) Va
 }
 
 type UpdateDataPipelineResponseBodyPipelineProcessors struct {
-	// The processor configuration.
+	// The configuration of the processor.
 	Config *UpdateDataPipelineResponseBodyPipelineProcessorsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The processor name.
+	// The name of the processor.
 	//
 	// example:
 	//
 	// drop-health-check
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The processor type.
+	// The type of the processor.
 	//
 	// example:
 	//
@@ -1213,12 +1217,16 @@ type UpdateDataPipelineResponseBodyPipelineProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*UpdateDataPipelineResponseBodyPipelineProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
 	// The list of data masking rules.
 	Rules []*UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	// The effective scope of the pipeline processing.
+	// The effective scope of pipeline processing.
 	Scope *UpdateDataPipelineResponseBodyPipelineProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
@@ -1476,13 +1484,13 @@ func (s *UpdateDataPipelineResponseBodyPipelineProcessorsConfigProjections) Vali
 }
 
 type UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules struct {
-	// The length of the retained prefix.
+	// The length of the prefix to retain.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The length of the retained suffix.
+	// The length of the suffix to retain.
 	//
 	// example:
 	//
@@ -1494,7 +1502,7 @@ type UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules struct {
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
 	// The data masking mode.
 	//
@@ -1575,9 +1583,9 @@ func (s *UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules) Validate()
 type UpdateDataPipelineResponseBodyPipelineProcessorsConfigScope struct {
 	// The additional field conditions.
 	Conditions []*UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The metric name scope.
+	// The scope of metric names.
 	MetricName *UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName `json:"metricName,omitempty" xml:"metricName,omitempty" type:"Struct"`
-	// The service name scope.
+	// The scope of service names.
 	ServiceName *UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName `json:"serviceName,omitempty" xml:"serviceName,omitempty" type:"Struct"`
 }
 
@@ -1709,7 +1717,7 @@ type UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField 
 	//
 	// field
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The name of the field or dimension.
+	// The field or dimension name.
 	//
 	// example:
 	//
@@ -1854,7 +1862,7 @@ func (s *UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName)
 }
 
 type UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector struct {
-	// The service name list.
+	// The list of service names.
 	//
 	// example:
 	//
@@ -1914,7 +1922,7 @@ func (s *UpdateDataPipelineResponseBodyPipelineProcessorsConfigTarget) Validate(
 }
 
 type UpdateDataPipelineResponseBodyPipelineSinks struct {
-	// The dataset list.
+	// The list of datasets.
 	Datasets []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
 	// SLS Logstore
 	//
@@ -1922,7 +1930,7 @@ type UpdateDataPipelineResponseBodyPipelineSinks struct {
 	//
 	// error-spans
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The output destination name.
+	// The name of the output destination.
 	//
 	// example:
 	//
@@ -1934,7 +1942,7 @@ type UpdateDataPipelineResponseBodyPipelineSinks struct {
 	//
 	// customer-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The output destination type.
+	// The type of the output destination.
 	//
 	// example:
 	//
@@ -2002,7 +2010,7 @@ func (s *UpdateDataPipelineResponseBodyPipelineSinks) Validate() error {
 type UpdateDataPipelineResponseBodyPipelineSource struct {
 	// The datasource config.
 	Config *UpdateDataPipelineResponseBodyPipelineSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The data source type.
+	// The type of the data source.
 	//
 	// example:
 	//
@@ -2052,13 +2060,13 @@ type UpdateDataPipelineResponseBodyPipelineSourceConfig struct {
 	//
 	// continuous
 	RunMode *string `json:"runMode,omitempty" xml:"runMode,omitempty"`
-	// The start position.
+	// The start point for reading.
 	//
 	// example:
 	//
 	// latest
 	StartFrom *string `json:"startFrom,omitempty" xml:"startFrom,omitempty"`
-	// The backfill time range.
+	// The time range for backfilling.
 	TimeRange *UpdateDataPipelineResponseBodyPipelineSourceConfigTimeRange `json:"timeRange,omitempty" xml:"timeRange,omitempty" type:"Struct"`
 }
 

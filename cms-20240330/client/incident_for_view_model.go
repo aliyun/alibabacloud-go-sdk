@@ -60,27 +60,31 @@ type iIncidentForView interface {
 }
 
 type IncidentForView struct {
-	// The expiration time of the notification block.
+	// The expiration time for suppressing notifications.
 	//
 	// example:
 	//
-	// -1 indicates that notifications are not blocked
+	// -1
 	BlockingExpireTimestamp *int64 `json:"blockingExpireTimestamp,omitempty" xml:"blockingExpireTimestamp,omitempty"`
 	// The detailed content of the incident.
 	//
 	// example:
 	//
-	// "{"description":"High CPU usage on the ECS instance","impact":"Payment service delay"}"
+	// "{"description":"High CPU usage on the ECS instance","impact":"Payment service latency"}"
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The list of escalation policies.
 	Escalations []*IncidentEscalationPolicyForView `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// The group identifier.
+	// The identifier of the group.
 	//
 	// example:
 	//
 	// "group-123456"
 	GroupUuid *string `json:"groupUuid,omitempty" xml:"groupUuid,omitempty"`
 	// The grouping key-value pairs.
+	//
+	// example:
+	//
+	// {"resourceId":"i-bp123456","severity":"Critical"}
 	GroupingKeys map[string]*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty"`
 	// The unique identifier of the incident.
 	//
@@ -100,7 +104,7 @@ type IncidentForView struct {
 	//
 	// "notify-strategy-789"
 	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	// The operator information.
+	// The information about the operator.
 	Operator *ContactForIncidentView `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The list of owners.
 	Owners []*ContactForIncidentView `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
@@ -146,9 +150,13 @@ type IncidentForView struct {
 	//
 	// "subscription-abc"
 	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
-	// The array of tags.
+	// The tag array.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The timestamp when the incident was created.
+	// The creation timestamp of the incident.
 	//
 	// example:
 	//

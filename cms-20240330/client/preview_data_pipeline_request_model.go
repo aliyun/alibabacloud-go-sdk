@@ -62,7 +62,7 @@ type PreviewDataPipelineRequest struct {
 	Sinks []*PreviewDataPipelineRequestSinks `json:"sinks,omitempty" xml:"sinks,omitempty" type:"Repeated"`
 	// The data source.
 	Source *PreviewDataPipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
-	// The end time for the preview. The value is a UNIX timestamp in seconds.
+	// The end time for the preview, specified as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -320,6 +320,10 @@ type PreviewDataPipelineRequestOutputsProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*PreviewDataPipelineRequestOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -601,7 +605,7 @@ type PreviewDataPipelineRequestOutputsProcessorsConfigRules struct {
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
 	// The data masking mode.
 	//
@@ -609,7 +613,7 @@ type PreviewDataPipelineRequestOutputsProcessorsConfigRules struct {
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive data types.
+	// The built-in sensitive types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -1095,6 +1099,10 @@ type PreviewDataPipelineRequestProcessorsConfig struct {
 	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {"vendor":"example"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The list of field projections.
 	Projections []*PreviewDataPipelineRequestProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
@@ -1376,7 +1384,7 @@ type PreviewDataPipelineRequestProcessorsConfigRules struct {
 	//
 	// example:
 	//
-	// *
+	// #
 	MaskChar *string `json:"maskChar,omitempty" xml:"maskChar,omitempty"`
 	// The data masking mode.
 	//
@@ -1384,7 +1392,7 @@ type PreviewDataPipelineRequestProcessorsConfigRules struct {
 	//
 	// keyword
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The built-in sensitive data types.
+	// The built-in sensitive types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
@@ -1796,7 +1804,7 @@ func (s *PreviewDataPipelineRequestProcessorsConfigTarget) Validate() error {
 }
 
 type PreviewDataPipelineRequestSinks struct {
-	// The list of datasets.
+	// The dataset list.
 	Datasets []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
 	// SLS Logstore
 	//
@@ -1804,7 +1812,7 @@ type PreviewDataPipelineRequestSinks struct {
 	//
 	// error-spans
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the output destination.
+	// The output destination name.
 	//
 	// example:
 	//
@@ -1816,7 +1824,7 @@ type PreviewDataPipelineRequestSinks struct {
 	//
 	// customer-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The type of the output destination.
+	// The output destination type.
 	//
 	// example:
 	//
@@ -1884,7 +1892,7 @@ func (s *PreviewDataPipelineRequestSinks) Validate() error {
 type PreviewDataPipelineRequestSource struct {
 	// The datasource config.
 	Config *PreviewDataPipelineRequestSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// example:
 	//

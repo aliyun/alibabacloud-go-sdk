@@ -17,6 +17,8 @@ type iObserveGroupDiscoverRule interface {
 	GetEntityTypes() []*string
 	SetGmtCreate(v int64) *ObserveGroupDiscoverRule
 	GetGmtCreate() *int64
+	SetIncludeRelatedEntities(v bool) *ObserveGroupDiscoverRule
+	GetIncludeRelatedEntities() *bool
 	SetInstanceIds(v []*string) *ObserveGroupDiscoverRule
 	GetInstanceIds() []*string
 	SetNameRules(v *ObserveGroupDiscoverRuleNameRules) *ObserveGroupDiscoverRule
@@ -48,6 +50,8 @@ type ObserveGroupDiscoverRule struct {
 	EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
 	// 规则创建时间（Unix 毫秒时间戳），控制台展示用。
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 是否自动纳管同 domain、同实体 group 且由指定关系直接出边关联的子实体，历史缺省为 false。
+	IncludeRelatedEntities *bool `json:"includeRelatedEntities,omitempty" xml:"includeRelatedEntities,omitempty"`
 	// 手动指定的实例 ID 列表（枚举型，含 1.0 手动实例同步）。
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	// 名称匹配规则。
@@ -92,6 +96,10 @@ func (s *ObserveGroupDiscoverRule) GetEntityTypes() []*string {
 
 func (s *ObserveGroupDiscoverRule) GetGmtCreate() *int64 {
 	return s.GmtCreate
+}
+
+func (s *ObserveGroupDiscoverRule) GetIncludeRelatedEntities() *bool {
+	return s.IncludeRelatedEntities
 }
 
 func (s *ObserveGroupDiscoverRule) GetInstanceIds() []*string {
@@ -151,6 +159,11 @@ func (s *ObserveGroupDiscoverRule) SetEntityTypes(v []*string) *ObserveGroupDisc
 
 func (s *ObserveGroupDiscoverRule) SetGmtCreate(v int64) *ObserveGroupDiscoverRule {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *ObserveGroupDiscoverRule) SetIncludeRelatedEntities(v bool) *ObserveGroupDiscoverRule {
+	s.IncludeRelatedEntities = &v
 	return s
 }
 

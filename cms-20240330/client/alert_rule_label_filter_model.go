@@ -17,8 +17,12 @@ type iAlertRuleLabelFilter interface {
 
 type AlertRuleLabelFilter struct {
 	// The label filter.
+	//
+	// example:
+	//
+	// {"regionId":"cn-shanghai"}
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The relational operator between multiple labels.
+	// The relational operator for multiple labels.
 	//
 	// example:
 	//

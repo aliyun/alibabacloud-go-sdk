@@ -52,7 +52,7 @@ type UpdateAlertActionRequest struct {
 	PagerDutyParam *UpdateAlertActionRequestPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *UpdateAlertActionRequestSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the action integration.
+	// The action integration type.
 	//
 	// example:
 	//
@@ -412,7 +412,7 @@ type UpdateAlertActionRequestFcParam struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The service name in Function Compute.
+	// The service name of Function Compute.
 	//
 	// example:
 	//
@@ -460,13 +460,13 @@ func (s *UpdateAlertActionRequestFcParam) Validate() error {
 }
 
 type UpdateAlertActionRequestMnsParam struct {
-	// The resource type of Simple Message Queue (formerly MNS).
+	// The Simple Message Queue (formerly MNS) resource type.
 	//
 	// example:
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// - If the resource type is queue, the resource name is the queue name.
 	//
@@ -524,13 +524,13 @@ func (s *UpdateAlertActionRequestMnsParam) Validate() error {
 }
 
 type UpdateAlertActionRequestPagerDutyParam struct {
-	// The integration key of PagerDuty.
+	// The integration key for PagerDuty.
 	//
 	// example:
 	//
 	// fwe4rwr543t543t43t43t43
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook URL of PagerDuty. V1 and V2 are supported.
+	// The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -569,13 +569,13 @@ func (s *UpdateAlertActionRequestPagerDutyParam) Validate() error {
 }
 
 type UpdateAlertActionRequestSlsParam struct {
-	// The name of the Logstore.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// testLogstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the project.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -636,6 +636,10 @@ type UpdateAlertActionRequestWebhookParam struct {
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// The request headers.
+	//
+	// example:
+	//
+	// {"X-Total-Count":"0"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The webhook request method.
 	//
@@ -643,7 +647,7 @@ type UpdateAlertActionRequestWebhookParam struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The URL of the alert callback.
+	// The URL for the alert callback.
 	//
 	// example:
 	//

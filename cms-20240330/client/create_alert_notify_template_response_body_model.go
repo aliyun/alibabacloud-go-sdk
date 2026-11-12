@@ -22,7 +22,7 @@ type CreateAlertNotifyTemplateResponseBody struct {
 	//
 	// testId
 	AlertNotifyTemplateId *string `json:"alertNotifyTemplateId,omitempty" xml:"alertNotifyTemplateId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

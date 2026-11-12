@@ -34,7 +34,7 @@ type iCreatePrometheusViewRequest interface {
 type CreatePrometheusViewRequest struct {
 	// Deprecated
 	//
-	// Not yet enabled.
+	// Not enabled.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type CreatePrometheusViewRequest struct {
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether authentication-free read is supported.
+	// Specifies whether password-free read is supported.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether authToken is supported.
+	// Specifies whether AuthToken is supported.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreatePrometheusViewRequest struct {
 	//
 	// This parameter is required.
 	PrometheusInstances []*CreatePrometheusViewRequestPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// The Prometheus view name.
+	// The name of the Prometheus view.
 	//
 	// This parameter is required.
 	//
@@ -90,19 +90,17 @@ type CreatePrometheusViewRequest struct {
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Not yet enabled.
+	// Not enabled.
 	//
 	// example:
 	//
-	// null
+	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The operation to perform.
+	// The tags.
 	Tags []*CreatePrometheusViewRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Valid values:
+	// - V1: legacy version
 	//
-	// - V1: Legacy version.
-	//
-	// - V2: New version.
+	// - V2: new version
 	//
 	// This parameter is required.
 	//

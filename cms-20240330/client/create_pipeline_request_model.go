@@ -40,7 +40,7 @@ type CreatePipelineRequest struct {
 	//
 	// pipeline-name-1
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The data sink.
+	// The sink.
 	Sink *CreatePipelineRequestSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 	// The data source.
 	Source *CreatePipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -327,6 +327,10 @@ type CreatePipelineRequestPipelineNodes struct {
 	// node_1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {"output":"ID,key_0,key_2,key_3,key_4","workspace":"workspace-test-dataset","field":"key_0","global":true,"dataset":"dataset_1"}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The node type.
 	//
@@ -378,7 +382,7 @@ func (s *CreatePipelineRequestPipelineNodes) Validate() error {
 type CreatePipelineRequestSink struct {
 	// The dataset information.
 	Dataset *CreatePipelineRequestSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The data sink type.
+	// The sink type.
 	//
 	// example:
 	//

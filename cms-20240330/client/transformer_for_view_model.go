@@ -36,7 +36,7 @@ type iTransformerForView interface {
 }
 
 type TransformerForView struct {
-	// The transform actions.
+	// The transform operations.
 	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -58,7 +58,7 @@ type TransformerForView struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Specifies whether to exit after a match is processed.
+	// Indicates whether to exit after match processing.
 	//
 	// example:
 	//
