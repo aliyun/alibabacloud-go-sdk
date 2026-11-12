@@ -100,20 +100,20 @@ type iDescribeSmartAccessGatewayAttributeResponseBody interface {
 }
 
 type DescribeSmartAccessGatewayAttributeResponseBody struct {
-	// The peak bandwidth of application acceleration for the SAG instance. Unit: Mbit/s.
+	// The peak bandwidth for application acceleration of the Smart Access Gateway instance. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 1
 	AccelerateBandwidth *int64 `json:"AccelerateBandwidth,omitempty" xml:"AccelerateBandwidth,omitempty"`
-	// The ID of the access point of the SAG instance.
+	// The ID of the access point for the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// 238
 	AccessPointId *string                                                `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
 	AclIds        *DescribeSmartAccessGatewayAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
-	// The status of the application acceleration bandwidth package instance.
+	// The status of the bandwidth plan for application acceleration instance. Valid values:
 	//
 	// - **Abnormal**: Abnormal.
 	//
@@ -123,78 +123,78 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	//
 	// Normal
 	ApplicationBandwidthPackageBussinessStatus *string `json:"ApplicationBandwidthPackageBussinessStatus,omitempty" xml:"ApplicationBandwidthPackageBussinessStatus,omitempty"`
-	// The ID of the application acceleration bandwidth package associated with the SAG instance.
+	// The ID of the bandwidth plan for application acceleration associated with the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// abwp-7963l7iqnquyj3****
 	ApplicationBandwidthPackageId *string `json:"ApplicationBandwidthPackageId,omitempty" xml:"ApplicationBandwidthPackageId,omitempty"`
-	// The name of the application acceleration bandwidth package associated with the SAG instance.
+	// The name of the bandwidth plan for application acceleration associated with the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// testname
 	ApplicationBandwidthPackageName *string `json:"ApplicationBandwidthPackageName,omitempty" xml:"ApplicationBandwidthPackageName,omitempty"`
-	// The lock information of the application acceleration bandwidth package instance.
+	// The lock information of the bandwidth plan for application acceleration instance.
 	ApplicationBandwidthPackageOperationLocks *DescribeSmartAccessGatewayAttributeResponseBodyApplicationBandwidthPackageOperationLocks `json:"ApplicationBandwidthPackageOperationLocks,omitempty" xml:"ApplicationBandwidthPackageOperationLocks,omitempty" type:"Struct"`
-	// The ID of the CCN instance associated with the SAG instance.
+	// The ID of the Cloud Connect Network (CCN) instance associated with the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// ccn-iz26o9zye6lhoo****
 	AssociatedCcnId *string `json:"AssociatedCcnId,omitempty" xml:"AssociatedCcnId,omitempty"`
-	// The name of the Cloud Connect Network (CCN) instance associated with the SAG instance.
+	// The name of the Cloud Connect Network (CCN) instance associated with the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// testname
 	AssociatedCcnName *string `json:"AssociatedCcnName,omitempty" xml:"AssociatedCcnName,omitempty"`
-	// The public IP address of the standby SAG device.
+	// The public IP address of the standby Smart Access Gateway device.
 	//
 	// example:
 	//
 	// 112.XX.XX.27
 	BackupBoxControllerIp *string `json:"BackupBoxControllerIp,omitempty" xml:"BackupBoxControllerIp,omitempty"`
-	// The public IP address of the primary SAG device.
+	// The public IP address of the active Smart Access Gateway device.
 	//
 	// example:
 	//
 	// 112.XX.XX.25
 	BoxControllerIp *string `json:"BoxControllerIp,omitempty" xml:"BoxControllerIp,omitempty"`
-	// The private CIDR block used for communication between the on-premises network or clients and the cloud.
+	// The private CIDR block of the on-premises network or client that needs to communicate with Alibaba Cloud.
 	//
 	// example:
 	//
 	// 10.0.9.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The ID of the city where the SAG device is located.
+	// The ID of the city where the Smart Access Gateway device is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The creation timestamp of the SAG instance.
+	// The creation timestamp of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// 1622617250000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data plan of the SAG instance. Unit: GB.
+	// The data plan of the Smart Access Gateway instance. Unit: GB.
 	//
-	// > Currently, only 5 GB of complimentary data traffic is provided for each account per month.
+	// > Currently, only 5 GB of free data traffic is provided per account each month.
 	//
 	// example:
 	//
 	// 5
 	DataPlan *int64 `json:"DataPlan,omitempty" xml:"DataPlan,omitempty"`
-	// The description of the SAG instance.
+	// The description of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// testdesc
 	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
 	Devices     *DescribeSmartAccessGatewayAttributeResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Struct"`
-	// Indicates whether the optimized retransmission feature is enabled for the SAG instance.
+	// Indicates whether the optimized retransmission feature is enabled for the Smart Access Gateway instance. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -204,17 +204,17 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	//
 	// false
 	EnableOptimization *bool `json:"EnableOptimization,omitempty" xml:"EnableOptimization,omitempty"`
-	// Indicates whether connection log auditing is enabled for the SAG APP instance. Valid values:
+	// Indicates whether connection log auditing is enabled for the Smart Access Gateway app instance. Valid values:
 	//
-	// - **true**: Connection log auditing is enabled for the SAG APP instance.
+	// - **true**: Enables connection log auditing for the Smart Access Gateway app instance.
 	//
-	// - **false**: Connection log auditing is disabled for the SAG APP instance.
+	// - **false**: Shutdown connection log auditing for the Smart Access Gateway app instance.
 	//
 	// example:
 	//
 	// true
 	EnableSoftwareConnectionAudit *bool `json:"EnableSoftwareConnectionAudit,omitempty" xml:"EnableSoftwareConnectionAudit,omitempty"`
-	// The expiration timestamp of the SAG instance.
+	// The UNIX timestamp when the Smart Access Gateway instance expires.
 	//
 	// example:
 	//
@@ -222,21 +222,21 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	EndTime    *int64                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FlowLogIds *DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds `json:"FlowLogIds,omitempty" xml:"FlowLogIds,omitempty" type:"Struct"`
 	IRIds      *DescribeSmartAccessGatewayAttributeResponseBodyIRIds      `json:"IRIds,omitempty" xml:"IRIds,omitempty" type:"Struct"`
-	// The type of the SAG instance.
+	// The type of the Smart Access Gateway instance. Valid values:
 	//
-	// - **sag-1000**: The instance is a hardware SAG instance with a SAG-1000 device.
+	// - **sag-1000**: The instance is a Smart Access Gateway hardware instance and the associated device is a SAG-1000 device.
 	//
-	// - **sag-10wm**: The instance is a hardware SAG instance with a SAG-100WM device.
+	// - **sag-10wm**: The instance is a Smart Access Gateway hardware instance and the associated device is a SAG-100WM device.
 	//
-	// - **sag-software**: The instance is an SAG APP instance.
+	// - **sag-software**: The instance is a SAG app instance.
 	//
-	// - **sag-vcpe**: The instance is an SAG vCPE instance.
+	// - **sag-vcpe**: The instance is a Smart Access Gateway vCPE instance.
 	//
 	// example:
 	//
 	// sag-vcpe
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The status of the IPsec-VPN connection.
+	// The connection status of the IPsec-VPN. Valid values:
 	//
 	// - **up**: The IPsec-VPN connection is normal.
 	//
@@ -247,25 +247,25 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	// up
 	IpsecStatus *string                                               `json:"IpsecStatus,omitempty" xml:"IpsecStatus,omitempty"`
 	Links       *DescribeSmartAccessGatewayAttributeResponseBodyLinks `json:"Links,omitempty" xml:"Links,omitempty" type:"Struct"`
-	// The peak bandwidth of the SAG instance. Unit: Mbit/s.
+	// The peak bandwidth of the Smart Access Gateway instance. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 50 M
 	MaxBandwidth *string `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
-	// The name of the SAG instance.
+	// The name of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// testname
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The optimized retransmission type of the SAG instance. After the optimized retransmission type is enabled, the default value is **fec**.
+	// The optimized retransmission type of the Smart Access Gateway instance. After optimized retransmission is enabled, the default value is **fec**.
 	//
 	// example:
 	//
 	// fec
 	OptimizationType *bool `json:"OptimizationType,omitempty" xml:"OptimizationType,omitempty"`
-	// The location of the SAG device.
+	// The location of the device.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	//
 	// F02D092B-A0B7-4BA1-BCA7-014B953C5DC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the reseller instance.
+	// The instance ID of the reseller.
 	//
 	// example:
 	//
@@ -290,43 +290,41 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	//
 	// 1210123456123456
 	ResellerUid *string `json:"ResellerUid,omitempty" xml:"ResellerUid,omitempty"`
-	// The ID of the resource group to which the SAG instance belongs.
+	// The ID of the resource group to which the Smart Access Gateway instance belongs.
 	//
 	// example:
 	//
 	// rg-acfm2iu4fnc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The routing synchronization method of the SAG instance.
+	// The on-premises route synchronization method of the Smart Access Gateway instance. Valid values:
 	//
 	// - **static**: Static routing.
 	//
-	// - **dynamic**: Dynamic routing.
+	// - **dynamic**: Dynamic route.
 	//
 	// example:
 	//
 	// static
 	RoutingStrategy *string `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	// The time threshold for locking the SAG device when it goes offline.
-	//
-	// Unit: seconds.
+	// The time threshold for locking the Smart Access Gateway device when it goes offline. Unit: seconds.
 	//
 	// example:
 	//
 	// 3600
 	SecurityLockThreshold *int32 `json:"SecurityLockThreshold,omitempty" xml:"SecurityLockThreshold,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// sage6gsdllbidl****,sage6nniq3d****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// example:
 	//
 	// sag-6z21oj0vjjrx6s****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The status of the SAG instance.
+	// The instance status of the Smart Access Gateway. Valid values:
 	//
 	// - **Ordered**: Pending delivery.
 	//
@@ -340,37 +338,37 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	//
 	// - **Offline**: Offline.
 	//
-	// - **Arrearage**: Locked due to overdue payment.
+	// - **Arrearage**: Locked due to overdue payments.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The serial number of the SAG device that is currently responsible for transmitting traffic.
+	// The serial number of the Smart Access Gateway device that is currently primarily responsible for traffic transmission.
 	//
 	// example:
 	//
 	// sage6nniq3d****
 	TrafficMasterSn *string `json:"TrafficMasterSn,omitempty" xml:"TrafficMasterSn,omitempty"`
-	// The maximum upstream bandwidth of the 4G public network for the SAG device. Unit: Mbit/s.
+	// The maximum upstream bandwidth over the 4G public network for the Smart Access Gateway device. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 3
 	UpBandwidth4G *int32 `json:"UpBandwidth4G,omitempty" xml:"UpBandwidth4G,omitempty"`
-	// The maximum upstream bandwidth of the WAN port for the SAG device. Unit: Mbit/s.
+	// The maximum upstream bandwidth of the WAN port for the Smart Access Gateway device. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 4
 	UpBandwidthWan *int32 `json:"UpBandwidthWan,omitempty" xml:"UpBandwidthWan,omitempty"`
-	// The number of client accounts of the SAG instance.
+	// The number of client accounts for the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// 3
 	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	// The status of the aliVPN connection.
+	// The connection status of aliVPN. Valid values:
 	//
 	// - **up**: The aliVPN connection is normal.
 	//
@@ -851,7 +849,7 @@ func (s *DescribeSmartAccessGatewayAttributeResponseBodyAclIds) Validate() error
 }
 
 type DescribeSmartAccessGatewayAttributeResponseBodyApplicationBandwidthPackageOperationLocks struct {
-	// The reason for the lock.
+	// The lock reason.
 	//
 	// example:
 	//

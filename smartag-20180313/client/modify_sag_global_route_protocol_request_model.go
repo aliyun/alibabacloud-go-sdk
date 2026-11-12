@@ -30,7 +30,7 @@ type iModifySagGlobalRouteProtocolRequest interface {
 type ModifySagGlobalRouteProtocolRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the SAG instance.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type ModifySagGlobalRouteProtocolRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The routing protocol. Valid values:
 	//
-	// 	- **STATIC**: static routing protocol
+	// - **STATIC**: static routing protocol
 	//
-	// 	- **OSPF**: Open Shortest Path First protocol (OSPF)
+	// - **OSPF**: OSPF dynamic routing protocol
 	//
-	// 	- **BGP**: Border Gateway Protocol (BGP)
+	// - **BGP**: BGP dynamic routing protocol
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifySagGlobalRouteProtocolRequest struct {
 	//
 	// OSPF
 	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ModifySagGlobalRouteProtocolRequest struct {
 	//
 	// sag-whfn****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The serial number of the SAG device that is associated with the SAG instance.
+	// The serial number of the associated Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//

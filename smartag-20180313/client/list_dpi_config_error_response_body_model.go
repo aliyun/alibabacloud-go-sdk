@@ -22,15 +22,15 @@ type iListDpiConfigErrorResponseBody interface {
 }
 
 type ListDpiConfigErrorResponseBody struct {
-	// A list of DPI configuration errors.
+	// The list of DPI configuration exceptions.
 	DpiConfigError []*ListDpiConfigErrorResponseBodyDpiConfigError `json:"DpiConfigError,omitempty" xml:"DpiConfigError,omitempty" type:"Repeated"`
-	// The maximum number of configuration errors to return on each page.
+	// The maximum number of entries allowed per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDpiConfigErrorResponseBody struct {
 	//
 	// F47B5293-27B6-48EF-A9C6-E90A41449813
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of DPI configuration errors.
+	// The total number of DPI configuration exception entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListDpiConfigErrorResponseBody) Validate() error {
 }
 
 type ListDpiConfigErrorResponseBodyDpiConfigError struct {
-	// The type of the configuration error.
+	// The type of the configuration exception. Valid values:
 	//
-	// - DeviceNotSupported: The Smart Access Gateway device does not support the DPI feature.
+	// - **DeviceNotSupported**: The SAG device does not support the DPI feature.
 	//
-	// - VersionNotSupported: The DPI version of the Smart Access Gateway device is too old.
+	// - **VersionNotSupported**: The DPI version running Smart Access Gateway device is too low.
 	//
-	// - **NotEnable**: The DPI feature is disabled for the Smart Access Gateway device.
+	// - **NotEnable**: The DPI feature is not enabled Smart Access Gateway device.
 	//
 	// example:
 	//
 	// DeviceNotSupported
 	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
-	// A list of rule configuration errors.
+	// The list of DPI configuration exceptions.
 	RuleConfigErrorList []*ListDpiConfigErrorResponseBodyDpiConfigErrorRuleConfigErrorList `json:"RuleConfigErrorList,omitempty" xml:"RuleConfigErrorList,omitempty" type:"Repeated"`
 	// The serial number of the Smart Access Gateway device.
 	//
@@ -137,7 +137,7 @@ type ListDpiConfigErrorResponseBodyDpiConfigError struct {
 	//
 	// sag-2160808****
 	SN *string `json:"SN,omitempty" xml:"SN,omitempty"`
-	// The ID of the Smart Access Gateway instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// example:
 	//
@@ -203,15 +203,15 @@ func (s *ListDpiConfigErrorResponseBodyDpiConfigError) Validate() error {
 }
 
 type ListDpiConfigErrorResponseBodyDpiConfigErrorRuleConfigErrorList struct {
-	// A list of IDs of application groups that have configuration errors.
+	// The IDs of the application groups that have configuration exceptions.
 	DpiGroupIds []*string `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Repeated"`
-	// A list of IDs of applications that have configuration errors.
+	// The IDs of the applications that have configuration exceptions.
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
-	// The ID of the rule that is associated with the application that has a configuration error.
+	// The instance IDs of the rules associated with the applications that have configuration exceptions.
 	//
-	// - If you query DPI configuration errors for Resource Access Management, this parameter indicates the ID of the Resource Access Management rule instance that has a configuration error.
+	// - If you are querying the access control DPI configuration exception information, the instance ID of the access control rule instance that has a configuration exception is displayed.
 	//
-	// - If you query DPI configuration errors for a QoS policy, this parameter indicates the ID of the quintuple rule instance that has a configuration error.
+	// - If you are querying the QoS policy DPI configuration exception information, the instance ID of the 5-tuple-based quintuple rules instance that has a configuration exception is displayed.
 	//
 	// example:
 	//

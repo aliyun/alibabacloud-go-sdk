@@ -28,9 +28,7 @@ type iDescribeSagVbrRelationsRequest interface {
 type DescribeSagVbrRelationsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// The region ID of the Smart Access Gateway instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions supported by Smart Access Gateway and their corresponding region IDs.
 	//
 	// example:
 	//
@@ -38,7 +36,7 @@ type DescribeSagVbrRelationsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the VBRs.
+	// The instance IDs of the virtual border routers (VBRs) used for routing. You can query multiple VBR instance IDs at a time. The maximum value of N is **20**.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +44,7 @@ type DescribeSagVbrRelationsRequest struct {
 	//
 	// vbr-bp15ihkk93ezxppkd****
 	VbrInstanceIds []*string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty" type:"Repeated"`
-	// The ID of the region where the VBR is deployed.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the virtual border router (VBR) instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

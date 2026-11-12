@@ -22,26 +22,26 @@ type iDescribeSmartAccessGatewaysResponseBody interface {
 }
 
 type DescribeSmartAccessGatewaysResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ADE68CEE-8E4F-4D0B-9EE9-2C2FFAABF41F
 	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmartAccessGateways *DescribeSmartAccessGatewaysResponseBodySmartAccessGateways `json:"SmartAccessGateways,omitempty" xml:"SmartAccessGateways,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iUpdateSmartAccessGatewayAdminPasswordResponseBody interface {
 }
 
 type UpdateSmartAccessGatewayAdminPasswordResponseBody struct {
-	// The response code. A value of 200 indicates that the task is successful.
+	// The response code. A value of 200 indicates that the query task is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message. A value of Successful indicates that the task is successful.
+	// The response message. A value of Successful indicates that the query task is successful.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UpdateSmartAccessGatewayAdminPasswordResponseBody struct {
 	//
 	// EC8487CD-9338-5FCF-896A-B6D1BB1646A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the modification is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//

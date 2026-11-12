@@ -40,7 +40,7 @@ type DeleteSmartAccessGatewayDnsForwardResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

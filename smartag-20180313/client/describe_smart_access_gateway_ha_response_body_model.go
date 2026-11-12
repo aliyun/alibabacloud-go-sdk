@@ -26,48 +26,48 @@ type iDescribeSmartAccessGatewayHaResponseBody interface {
 }
 
 type DescribeSmartAccessGatewayHaResponseBody struct {
-	// The serial number of the standby SAG device.
+	// The serial number of the standby device.
 	//
 	// example:
 	//
 	// sag11axxxx
 	BackupDeviceId *string `json:"BackupDeviceId,omitempty" xml:"BackupDeviceId,omitempty"`
-	// Indicates whether device-based HA is enabled. Valid values:
+	// The device-level backup state. Valid values:
 	//
-	// 	- **ON**: enabled
+	// - **ON**: Enabled.
 	//
-	// 	- **OFF**: disabled
+	// - **OFF**: Disabled.
 	//
 	// example:
 	//
 	// OFF
 	DeviceLevelBackupState *string `json:"DeviceLevelBackupState,omitempty" xml:"DeviceLevelBackupState,omitempty"`
-	// The deployment mode of the SAG devices that have HA enabled. Valid values:
+	// The device-level high-availability type. Valid values:
 	//
-	// 	- **warm_backup**: active-active mode.
+	// - **warm_backup**: Active-active mode.
 	//
-	// 	- **cold_backup**: active-standby mode.
+	// - **cold_backup**: Active-standby mode.
 	//
-	// 	- **no_backup**: HA is disabled.
+	// - **no_backup**: No backup.
 	//
 	// example:
 	//
 	// cold_backup
 	DeviceLevelBackupType *string                                                     `json:"DeviceLevelBackupType,omitempty" xml:"DeviceLevelBackupType,omitempty"`
 	LinkBackupInfoList    *DescribeSmartAccessGatewayHaResponseBodyLinkBackupInfoList `json:"LinkBackupInfoList,omitempty" xml:"LinkBackupInfoList,omitempty" type:"Struct"`
-	// The serial number of the active SAG device.
+	// The serial number of the active device.
 	//
 	// example:
 	//
 	// sag11axxxx
 	MainDeviceId *string `json:"MainDeviceId,omitempty" xml:"MainDeviceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 582FE511-FEFE-42BC-BBF4-4F8ECF92Exxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// example:
 	//

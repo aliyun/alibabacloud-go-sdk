@@ -30,31 +30,31 @@ type DescribeSagRouteProtocolBgpResponseBody struct {
 	//
 	// 9
 	HoldTime *int32 `json:"HoldTime,omitempty" xml:"HoldTime,omitempty"`
-	// The time interval at which keep-alive packets are sent. Unit: seconds.
+	// The keepalive interval. Unit: seconds.
 	//
 	// example:
 	//
 	// 3
 	KeepAlive *int32 `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
-	// The autonomous system (AS) number to which the SAG device belongs.
+	// The autonomous system (AS) number of the Smart Access Gateway.
 	//
 	// example:
 	//
 	// 65536
 	LocalAs *int32 `json:"LocalAs,omitempty" xml:"LocalAs,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2F39E4FE-B45C-47FF-9921-95780486F52D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the BGP router.
+	// The BGP router ID.
 	//
 	// example:
 	//
 	// 192.XX.XX.1
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The details about the query task.
+	// The status of the query task.
 	TaskStates []*DescribeSagRouteProtocolBgpResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -134,43 +134,43 @@ func (s *DescribeSagRouteProtocolBgpResponseBody) Validate() error {
 }
 
 type DescribeSagRouteProtocolBgpResponseBodyTaskStates struct {
-	// The timestamp when the task was created.
+	// The timestamp when the query task was created.
 	//
 	// example:
 	//
 	// 1586765938000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code returned. A value of 200 indicates that the query task is successful.
+	// The error code. 200 indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned. A value of Successful indicates that the query task is successful.
+	// The error message. Successful indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The state of the query task. Valid values:
+	// The status of the asynchronous task. Valid values:
 	//
-	// 	- **Initialized**: The query task is initialized.
+	// - **Initialized**: The query task is initialized.
 	//
-	// 	- **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device comes online.
 	//
-	// 	- **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+	// - **Succeed**: The query task succeeded.
 	//
-	// 	- **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+	// - **Processing**: The query task is being delivered.
 	//
-	// 	- **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this feature.
 	//
-	// 	- **BuildRequestError**: The query task is not supported by the controller of the SAG device.
+	// - **BuildRequestError**: The management and control system does not support the operation.
 	//
-	// 	- **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+	// - **HardwareError**: The query task failed to be delivered due to a device error.
 	//
-	// 	- **TaskNotExist**: The query task does not exist.
+	// - **TaskNotExist**: The query task does not exist.
 	//
-	// 	- **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered after the device comes online.
 	//
 	// example:
 	//

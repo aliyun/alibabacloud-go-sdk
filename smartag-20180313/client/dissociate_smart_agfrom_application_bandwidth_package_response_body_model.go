@@ -14,7 +14,7 @@ type iDissociateSmartAGFromApplicationBandwidthPackageResponseBody interface {
 }
 
 type DissociateSmartAGFromApplicationBandwidthPackageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

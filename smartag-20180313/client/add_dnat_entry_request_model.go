@@ -36,9 +36,9 @@ type iAddDnatEntryRequest interface {
 }
 
 type AddDnatEntryRequest struct {
-	// The public IP address.
+	// The external public IP address.
 	//
-	// >  If the DNAT entry is used to forward packets transmitted over the Internet, the DNAT entry automatically recognizes the current public IP address.
+	// > If the DNAT type is Internet, the system automatically identifies the current public IP address. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AddDnatEntryRequest struct {
 	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
 	// The public port.
 	//
-	// Valid values: **1 to 65535**.
+	// Valid values: **1-65535**.
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type AddDnatEntryRequest struct {
 	//
 	// 192.168.0.1
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The destination private port.
+	// The destination private port number.
 	//
-	// Valid values: **1 to 65535**.
+	// Valid values: **1-65535**.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type AddDnatEntryRequest struct {
 	//
 	// 80
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	// The protocol used in DNAT. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **TCP**: forwards TCP packets.
+	// - **TCP**: forwards TCP packets.
 	//
-	// 	- **UDP**: The NAT gateway forwards UDP packets.
+	// - **UDP**: forwards UDP packets.
 	//
-	// 	- **Any**: forwards packets of all protocols.
+	// - **Any**: forwards packets of all protocols.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type AddDnatEntryRequest struct {
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -98,9 +98,9 @@ type AddDnatEntryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
-	// >  Only SAG instances used to manage SAG devices support DNAT.
+	// > Currently, only hardware instances are supported.
 	//
 	// This parameter is required.
 	//
@@ -108,11 +108,11 @@ type AddDnatEntryRequest struct {
 	//
 	// sag-kdhg*******
 	SagId *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
-	// The type of the DNAT entry. Valid values:
+	// The DNAT type. Valid values:
 	//
-	// 	- **Intranet**: translates the destination IP address to a specific internal IP address. This is the default value.
+	// - **Intranet**: private network DNAT. This is the default value.
 	//
-	// 	- **Internet**: translates the destination IP address to a specific public IP address.
+	// - **Internet**: public network DNAT.
 	//
 	// example:
 	//

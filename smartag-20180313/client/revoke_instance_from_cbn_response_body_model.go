@@ -14,7 +14,7 @@ type iRevokeInstanceFromCbnResponseBody interface {
 }
 
 type RevokeInstanceFromCbnResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

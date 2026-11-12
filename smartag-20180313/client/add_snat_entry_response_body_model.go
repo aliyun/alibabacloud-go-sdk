@@ -16,13 +16,13 @@ type iAddSnatEntryResponseBody interface {
 }
 
 type AddSnatEntryResponseBody struct {
-	// The ID of the SNAT instance.
+	// The SNAT instance ID.
 	//
 	// example:
 	//
 	// snat-m2obgkt5ya1puz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

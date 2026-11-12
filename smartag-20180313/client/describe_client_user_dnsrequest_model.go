@@ -26,7 +26,7 @@ type iDescribeClientUserDNSRequest interface {
 type DescribeClientUserDNSRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG app instance is deployed.
+	// The region ID of the Smart Access Gateway app instance.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeClientUserDNSRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG app instance.
+	// The instance ID of the Smart Access Gateway app.
 	//
 	// This parameter is required.
 	//

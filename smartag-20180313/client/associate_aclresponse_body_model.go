@@ -14,7 +14,7 @@ type iAssociateACLResponseBody interface {
 }
 
 type AssociateACLResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

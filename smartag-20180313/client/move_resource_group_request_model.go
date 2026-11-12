@@ -28,9 +28,9 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
-	// The ID of the new resource group.
+	// The ID of the destination resource group.
 	//
-	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
+	// You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups).
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type MoveResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// This parameter is required.
 	//
@@ -60,21 +60,21 @@ type MoveResourceGroupRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- **smartag**: an SAG CPE or SAG vCPE instance
+	// - **smartag**: Smart Access Gateway hardware instance or vCPE instance.
 	//
-	// 	- **smartag_s**: an SAG app instance
+	// - **smartag_s**: SAG app instance.
 	//
-	// 	- **acl**: an access control list (ACL)
+	// - **acl**: Access control instance.
 	//
-	// 	- **flowlog**: a flow log
+	// - **flowlog**: Flow log instance.
 	//
-	// 	- **qos**: a quality of service (QoS) policy
+	// - **qos**: QoS policy instance.
 	//
-	// 	- **ccn**: a Cloud Connect Network (CCN) instance
+	// - **ccn**: Cloud Connect Network (CCN) instance.
 	//
-	// 	- **abwp**: a bandwidth plan for application acceleration
+	// - **abwp**: Bandwidth plan for application acceleration instance.
 	//
 	// This parameter is required.
 	//

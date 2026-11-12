@@ -18,7 +18,7 @@ type iViewSmartAccessGatewayDnsForwardsRequest interface {
 }
 
 type ViewSmartAccessGatewayDnsForwardsRequest struct {
-	// The ID of the region in which the SAG instance resides.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ViewSmartAccessGatewayDnsForwardsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ViewSmartAccessGatewayDnsForwardsRequest struct {
 	//
 	// sag-v9un1ccz22owd76lf8
 	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
-	// The serial number (SN) of the device.
+	// The serial number of the device.
 	//
 	// This parameter is required.
 	//

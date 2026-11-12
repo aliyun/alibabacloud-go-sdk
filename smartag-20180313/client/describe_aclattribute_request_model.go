@@ -34,7 +34,7 @@ type iDescribeACLAttributeRequest interface {
 }
 
 type DescribeACLAttributeRequest struct {
-	// The ID of the access control list (ACL) instance.
+	// The ID of the access control instance.
 	//
 	// This parameter is required.
 	//
@@ -42,21 +42,21 @@ type DescribeACLAttributeRequest struct {
 	//
 	// acl-ohlexqptfhyaq****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The direction of the access control rule. Valid values:
+	// The direction in which the access control rule is applied. Valid values:
 	//
-	// - **in**: inbound. Refers to traffic from external sources accessing the local branch where the Smart Access Gateway (SAG) instance is deployed.
+	// - **in**: inbound, which indicates traffic from external networks to the local branch where the Smart Access Gateway instance is deployed.
 	//
-	// - **out**: outbound. Refers to traffic from the local branch where the SAG instance is deployed accessing external destinations.
+	// - **out**: outbound, which indicates traffic from the local branch where the Smart Access Gateway instance is deployed to external networks.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The name of the ACL instance.
+	// The name of the access control instance.
 	//
-	// The name must be 2 to 100 characters in length and must start with an uppercase letter, a lowercase letter, or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or Chinese character.
 	//
-	// > This parameter supports fuzzy search.
+	// > Fuzzy search is supported for this parameter.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeACLAttributeRequest struct {
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number in a paginated query. Default value: **1**.
+	// The page number for a paging query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of access control rule entries to display per page in a paginated query.
+	// The number of access control rule entries to return on each page in a paging query.
 	//
 	// Valid values: **1*	- to **50**.
 	//
@@ -86,7 +86,7 @@ type DescribeACLAttributeRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the access control list (ACL) instance.
+	// The region ID of the access control instance.
 	//
 	// This parameter is required.
 	//

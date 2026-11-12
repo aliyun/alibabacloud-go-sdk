@@ -16,13 +16,13 @@ type iAddDnatEntryResponseBody interface {
 }
 
 type AddDnatEntryResponseBody struct {
-	// The ID of the DNAT entry.
+	// The DNAT entry ID.
 	//
 	// example:
 	//
 	// fwd-kxe4fq3xuzczze****
 	DnatEntryId *string `json:"DnatEntryId,omitempty" xml:"DnatEntryId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

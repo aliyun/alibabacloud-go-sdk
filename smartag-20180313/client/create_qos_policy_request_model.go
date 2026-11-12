@@ -50,7 +50,7 @@ type iCreateQosPolicyRequest interface {
 type CreateQosPolicyRequest struct {
 	// The description of the traffic classification rule for the QoS policy.
 	//
-	// The description must be 1 to 512 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
+	// The description must be 1 to 512 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateQosPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
 	//
-	// The destination CIDR block is in CIDR notation. Example: 192.168.10.0/24.
+	// The destination CIDR block must be in CIDR format. Example: 192.168.10.0/24.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type CreateQosPolicyRequest struct {
 	//
 	// Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Examples of destination port range formats:
+	// Examples of the destination port range format:
 	//
-	// - **1/200**: port range 1 to 200.
+	// - **1/200**: specifies ports 1 to 200.
 	//
-	// - **80/80**: port 80.
+	// - **80/80**: specifies port 80.
 	//
-	// - **-1/-1**: all ports.
+	// - **-1/-1**: specifies all ports.
 	//
 	// This parameter is required.
 	//
@@ -96,17 +96,17 @@ type CreateQosPolicyRequest struct {
 	//
 	// 1
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
-	// The time when the traffic classification rule expires.
+	// The end time when the traffic classification rule of the quality of service policy takes effect.
 	//
-	// The time is expressed in ISO 8601 format and uses UTC+8. Format: `YYYY-MM-DDThh:mm:ss+0800`.
+	// The time is specified in the ISO 8601 standard in the UTC+8 time zone. Format: `YYYY-MM-DDThh:mm:ss+0800`.
 	//
 	// example:
 	//
 	// 2022-09-14T16:41:33+0800
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The protocol type to which the traffic classification rule applies.
+	// The protocol type applied to the traffic classification rule.
 	//
-	// For the protocol types supported by the traffic classification rule, refer to the console.
+	// For the protocol types supported by traffic classification rules, refer to the console.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +116,7 @@ type CreateQosPolicyRequest struct {
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The name of the traffic classification rule for the QoS policy.
 	//
-	// The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, hyphens (-), and underscores (_).
+	// The name must be 2 to 100 characters in length and start with a letter or a Chinese character. It can contain digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type CreateQosPolicyRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the rate limiting rule to which the traffic classification rule belongs.
+	// The priority of the bandwidth throttling rule to which the traffic classification rule belongs.
 	//
 	// Valid values: **1*	- to **3**. A smaller value indicates a higher priority.
 	//
@@ -142,7 +142,7 @@ type CreateQosPolicyRequest struct {
 	//
 	// qos-xitd8690ucu8ro****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The region ID of the QoS policy instance.
+	// The region ID of the QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -154,7 +154,7 @@ type CreateQosPolicyRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The source CIDR block.
 	//
-	// The source CIDR block is in CIDR notation. Example: 192.168.1.0/24.
+	// The source CIDR block must be in CIDR format. Example: 192.168.1.0/24.
 	//
 	// This parameter is required.
 	//
@@ -166,13 +166,13 @@ type CreateQosPolicyRequest struct {
 	//
 	// Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Examples of source port range formats:
+	// Examples of the source port range format:
 	//
-	// - **1/200**: port range 1 to 200.
+	// - **1/200**: specifies ports 1 to 200.
 	//
-	// - **80/80**: port 80.
+	// - **80/80**: specifies port 80.
 	//
-	// - **-1/-1**: all ports.
+	// - **-1/-1**: specifies all ports.
 	//
 	// This parameter is required.
 	//
@@ -180,9 +180,9 @@ type CreateQosPolicyRequest struct {
 	//
 	// 80/80
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The effective period start time of the traffic categorization rule for the QoS policy.
+	// The start time of the effective period for the traffic classification rule of the QoS policy.
 	//
-	// The time is expressed in ISO 8601 format and uses UTC+8. Format: `YYYY-MM-DDThh:mm:ss+0800`.
+	// Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss+0800 format. The time must be in UTC+8.
 	//
 	// example:
 	//

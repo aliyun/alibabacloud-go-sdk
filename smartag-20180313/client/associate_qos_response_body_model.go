@@ -14,7 +14,7 @@ type iAssociateQosResponseBody interface {
 }
 
 type AssociateQosResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

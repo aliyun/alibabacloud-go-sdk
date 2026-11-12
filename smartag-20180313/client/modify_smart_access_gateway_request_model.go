@@ -38,35 +38,35 @@ type iModifySmartAccessGatewayRequest interface {
 }
 
 type ModifySmartAccessGatewayRequest struct {
-	// The CIDR blocks of terminals in the private network. Make sure that the CIDR blocks do not overlap with each other.
+	// The private CIDR block used by clients at the on-premises site for communication. Make sure that private CIDR blocks do not conflict with each other.
 	//
-	// If the LAN ports of the terminals use dynamic routing, the IP addresses within the first private CIDR block are allocated to the terminals that have Dynamic Host Configuration Protocol (DHCP) enabled.
+	// If the LAN port of the Smart Access Gateway device is configured in dynamic mode, the IP addresses used by on-premises clients with DHCP enabled are allocated from the first private CIDR block that you specify.
 	//
 	// example:
 	//
 	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description of the SAG instance.
+	// The description of the Smart Access Gateway instance.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// SAG description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to audit the network connection logs of the SAS app instance.
+	// Specifies whether to enable connection log auditing for the SAG app. Valid values:
 	//
-	// - **true**: yes
+	// - **true**: enables connection log auditing for the SAG app.
 	//
-	// - **false**: no
+	// - **false**: disables connection log auditing for the SAG app.
 	//
 	// example:
 	//
 	// true
 	EnableSoftwareConnectionAudit *bool `json:"EnableSoftwareConnectionAudit,omitempty" xml:"EnableSoftwareConnectionAudit,omitempty"`
-	// The name of the SAG instance.
+	// The name of the Smart Access Gateway instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ModifySmartAccessGatewayRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The location where the SAG instance is deployed.
+	// The location where the Smart Access Gateway instance is deployed.
 	//
 	// example:
 	//
 	// [ { "adcode":"", "label":"Hangzhou, Zhejiang xx zone xx Road xx number", "value":"B0FFGxxxx", "center":"120.190xxxx, 30.182xxxx", "_new":"true" } ]
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -90,17 +90,17 @@ type ModifySmartAccessGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The policy that is used to advertise routes to Alibaba Cloud. Valid values:
+	// The route synchronization mode for the on-premises network. Valid values:
 	//
-	// - **static**: static routing
+	// - **static**: static routing.
 	//
-	// - **dynamic**: dynamic routing
+	// - **dynamic**: dynamic routing.
 	//
 	// example:
 	//
 	// static
 	RoutingStrategy *string `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	// The time during which the disconnected SAG instance remains locked. Valid values: an integer that is greater than or equal to 0.
+	// The threshold configured by the user for the offline lock feature. The value must be greater than or equal to 0.
 	//
 	// Unit: seconds.
 	//
@@ -108,7 +108,7 @@ type ModifySmartAccessGatewayRequest struct {
 	//
 	// 3
 	SecurityLockThreshold *int32 `json:"SecurityLockThreshold,omitempty" xml:"SecurityLockThreshold,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//

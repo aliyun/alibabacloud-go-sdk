@@ -30,7 +30,7 @@ type iDescribeUserFlowStatisticsRequest interface {
 type DescribeUserFlowStatisticsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region where the SAG APP instance is deployed.
+	// The region ID of the Smart Access Gateway app instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeUserFlowStatisticsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG APP instance.
+	// The instance ID of the Smart Access Gateway app instance.
 	//
 	// This parameter is required.
 	//
@@ -48,21 +48,17 @@ type DescribeUserFlowStatisticsRequest struct {
 	//
 	// sag-mfkg*****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The month during which the data transfer statistics are collected.
+	// The statistical date in the YYYYMM format.
 	//
-	// If you do not specify a month, the current month is queried.
+	// > If this parameter is not specified, the current month is used by default.
 	//
 	// example:
 	//
 	// 201905
 	StatisticsDate *string `json:"StatisticsDate,omitempty" xml:"StatisticsDate,omitempty"`
-	// The list of usernames of client accounts. Maximum value of N: 50.
+	// The list of usernames. The list can contain up to 50 usernames.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 

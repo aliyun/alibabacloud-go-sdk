@@ -18,7 +18,7 @@ type iDeleteSmartAccessGatewayRequest interface {
 }
 
 type DeleteSmartAccessGatewayRequest struct {
-	// The ID of the SAG instance that you want to delete.
+	// The instance ID of the Smart Access Gateway instance that you want to delete.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteSmartAccessGatewayRequest struct {
 	//
 	// sag-far8v6owtdxlua****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//

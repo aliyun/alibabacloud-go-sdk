@@ -44,69 +44,69 @@ type iCreateFlowLogRequest interface {
 }
 
 type CreateFlowLogRequest struct {
-	// The output interval under active connections. Valid values: **60 to 6000**. Unit: seconds. Default value: **300**.
+	// The output interval for active flows. Valid values: **60*	- to **6000**. Unit: seconds. Default value: **300**.
 	//
 	// example:
 	//
 	// 300
 	ActiveAging *int32 `json:"ActiveAging,omitempty" xml:"ActiveAging,omitempty"`
-	// The description of the flow log.
+	// The description of the flow log instance.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The output interval under inactive connections. Valid values: **10 to 600**. Unit: seconds. Default value: **15**.
+	// The output interval for inactive flows. Valid values: **10*	- to **600**. Unit: seconds. Default value: **15**.
 	//
 	// example:
 	//
 	// 15
 	InactiveAging *int32 `json:"InactiveAging,omitempty" xml:"InactiveAging,omitempty"`
-	// The Logstore in Log Service.
+	// The name of the Simple Log Service Logstore.
 	//
-	// If OutputType is set to **sls*	- or **all**, this parameter is required.
+	// This parameter is required when the output type of the flow log is **sls*	- or **all**.
 	//
 	// example:
 	//
 	// config-operation-log
 	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
-	// The name of the flow log.
+	// The name of the flow log instance.
 	//
 	// example:
 	//
 	// sag-flowlog-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IP address of the NetFlow collector where the flow log is stored.
+	// The IP address of the NetFlow server that stores the flow log.
 	//
-	// If OutputType is set to **netflow*	- or **all**, this parameter is required.
+	// This parameter is required when the output type of the flow log is **netflow*	- or **all**.
 	//
 	// example:
 	//
 	// 192.168.0.2
 	NetflowServerIp *string `json:"NetflowServerIp,omitempty" xml:"NetflowServerIp,omitempty"`
-	// The port number of the NetFlow collector where the flow log is stored. Default value: **9995**.
+	// The server port of the NetFlow server that stores the flow log. Default value: **9995**.
 	//
-	// If OutputType is set to **netflow*	- or **all**, this parameter is required.
+	// This parameter is required when the output type of the flow log is **netflow*	- or **all**.
 	//
 	// example:
 	//
 	// 9995
 	NetflowServerPort *int32 `json:"NetflowServerPort,omitempty" xml:"NetflowServerPort,omitempty"`
-	// The version of the NetFlow collector where the flow log is stored. Valid values: **V5**, **V9**, and **V10**. Default value: **V9**.
+	// The version of the NetFlow protocol used to store the flow log. Valid values: **V5**, **V9**, and **V10**. Default value: **V9**.
 	//
-	// If OutputType is set to **netflow*	- or **all**, this parameter is required.
+	// This parameter is required when the output type of the flow log is **netflow*	- or **all**.
 	//
 	// example:
 	//
 	// V9
 	NetflowVersion *string `json:"NetflowVersion,omitempty" xml:"NetflowVersion,omitempty"`
-	// The type of the flow log. Valid values:
+	// The output type of the flow log. Valid values:
 	//
-	// 	- **sls**: The flow log is stored in Log Service.
+	// - **sls**: The flow log is stored in Simple Log Service.
 	//
-	// 	- **netflow**: The flow log is stored on a NetFlow collector.
+	// - **netflow**: The flow log is stored on the NetFlow server that you configure.
 	//
-	// 	- **all**: The flow log is stored both in Log Service and on a NetFlow collector.
+	// - **all**: The flow log is stored in both Simple Log Service and the NetFlow server that you configure.
 	//
 	// example:
 	//
@@ -114,17 +114,17 @@ type CreateFlowLogRequest struct {
 	OutputType   *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The project in Log Service.
+	// The name of the Simple Log Service project.
 	//
-	// If OutputType is set to **sls*	- or **all**, this parameter is required.
+	// This parameter is required when the output type of the flow log is **sls*	- or **all**.
 	//
 	// example:
 	//
 	// sag-flowlog-shanghai
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the region to which the flow log belongs.
+	// The region ID of the flow log instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -134,9 +134,9 @@ type CreateFlowLogRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the region where Log Service is deployed.
+	// The region ID of Simple Log Service.
 	//
-	// If OutputType is set to **sls*	- or **all**, this parameter is required.
+	// This parameter is required when the output type of the flow log is **sls*	- or **all**.
 	//
 	// example:
 	//

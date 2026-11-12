@@ -32,13 +32,13 @@ type iCreateSmartAccessGatewaySoftwareRequest interface {
 }
 
 type CreateSmartAccessGatewaySoftwareRequest struct {
-	// Specifies whether to automatically complete the payment of the order. Valid values:
+	// Specifies whether to enable automatic payment for the bills of the Smart Access Gateway app instance. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false*	- (default): no
+	// - **false*	- (default): no.
 	//
-	// If you set the parameter to false, go to Billing Management to complete the payment after you call this operation. The instance is created only after you complete the payment.
+	// If you set this parameter to false, you must go to the Orders page in the console to complete the payment after you invoke this operation. Otherwise, the instance cannot be created.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateSmartAccessGatewaySoftwareRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The billing method of the SAG app instance. Set the value to **PREPAY**. This value indicates that the SAG app instance is a subscription resource.
+	// The billing method of the Smart Access Gateway app instance. Valid value: **PREPAY*	- (upfront). This value serves as an identity indicating that the Smart Access Gateway app instance is a resource that requires upfront payment before use.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type CreateSmartAccessGatewaySoftwareRequest struct {
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The size of the free data plan that is allocated to each client account per month. Unit: GB. Valid value: **5**.
+	// The monthly data plan provided for each client account. Unit: GB. Valid value: **5**.
 	//
-	// >  This value specifies that a free data plan of 5 GB is allocated to each client account per month.
+	// > Currently, only a free monthly data plan of 5 GB is supported for each client account.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,7 @@ type CreateSmartAccessGatewaySoftwareRequest struct {
 	DataPlan     *int64  `json:"DataPlan,omitempty" xml:"DataPlan,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the SAG app instance. Unit: months.
-	//
-	// Valid values: **1*	- to **9**, **12**, **24**, and **36**.
+	// The purchase duration of the Smart Access Gateway app instance. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +74,7 @@ type CreateSmartAccessGatewaySoftwareRequest struct {
 	//
 	// 12
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region where you want to create the SAG app instance.
+	// The region ID of the Smart Access Gateway app instance.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +84,7 @@ type CreateSmartAccessGatewaySoftwareRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The maximum number of client accounts that can be created on the SAG app instance.
+	// The number of client accounts for the Smart Access Gateway app instance.
 	//
 	// This parameter is required.
 	//

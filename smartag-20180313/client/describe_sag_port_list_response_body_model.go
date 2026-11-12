@@ -18,15 +18,15 @@ type iDescribeSagPortListResponseBody interface {
 }
 
 type DescribeSagPortListResponseBody struct {
-	// The list of the port information.
+	// The list of port information.
 	Ports []*DescribeSagPortListResponseBodyPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CE6642D4-21EB-4168-9BF9-F217953F9892
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the query task.
+	// The status of the query task.
 	TaskStates []*DescribeSagPortListResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -88,41 +88,43 @@ func (s *DescribeSagPortListResponseBody) Validate() error {
 }
 
 type DescribeSagPortListResponseBodyPorts struct {
-	// The Mac address of the port.
+	// The MAC address of the port.
 	//
 	// example:
 	//
 	// c4:00:ad:a2:f5:****
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The name of the port.
+	// The port name.
 	//
 	// example:
 	//
 	// 5
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// Port role:
+	// The port role. Valid values:
 	//
-	// - **NONE**: No role is assigned to the port.
+	// - **NONE**: The port role is unassigned.
 	//
-	// - **WAN**: The port is used as a WAN port. The WAN port supports a Dynamic Host Configuration Protocol (DHCP) client, PPPoE, or a static IP address to access the Internet.
+	// - **WAN**: The port is a WAN port. A WAN port is used to connect to the Internet and supports DHCP client, PPPoE, and static IP access methods.
 	//
-	// - **LAN**: The port is used as a LAN port. The LAN port supports a DHCP server or a static IP address to connect to a local terminal or switch.
+	// - **LAN**: The port is a LAN port. A LAN port is used to connect to local clients or switches and supports DHCP server and static IP access methods.
 	//
-	// - **ECC**: The port is used as a leased line port to connect to a leased line.
+	// - **ECC**: The port is a dedicated connection port used to connect to a dedicated connection.
 	//
-	// - **MGT**: The port is used as the management port.
+	// - **MGT**: The port is a management port.
+	//
+	// - **CELLULAR**: The port is a 4G port.
 	//
 	// example:
 	//
 	// NONE
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Port states:
+	// The port status. Valid values:
 	//
 	// - **Up**: The port is enabled.
 	//
 	// - **Down**: The port is disabled.
 	//
-	// - **Unavailable**: The SAG device is disconnected from Alibaba Cloud.
+	// - **Unavailable**: The device is offline.
 	//
 	// example:
 	//
@@ -185,37 +187,37 @@ type DescribeSagPortListResponseBodyTaskStates struct {
 	//
 	// 1586762479000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code. 200 indicates that the query task is successful.
+	// The error code. A value of 200 indicates that the query task is successful.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. Successful indicates that the query task is successful.
+	// The error message. A value of Successful indicates that the query task is successful.
 	//
 	// example:
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Asynchronous task states:
+	// The status of the asynchronous task. Valid values:
 	//
 	// - **Initialized**: The query task is initialized.
 	//
-	// - **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. When the SAG device is connected to Alibaba Cloud, Alibaba Cloud continues to assign the query task to the SAG device.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device goes online.
 	//
-	// - **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+	// - **Succeed**: The query task is delivered.
 	//
-	// - **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+	// - **Processing**: The query task is being delivered.
 	//
-	// - **VersionNotSupport**: not supported by the current version of the SAG device.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this feature.
 	//
-	// - **BuildRequestError**: not supported by the control and management center in the cloud.
+	// - **BuildRequestError**: The management and control system does not support this operation.
 	//
-	// - **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+	// - **HardwareError**: The query task failed to be delivered due to a device error.
 	//
 	// - **TaskNotExist**: The query task does not exist.
 	//
-	// - **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. When the SAG device is connected to Alibaba Cloud, Alibaba Cloud does not assign the query task to the SAG device.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered after the device goes online.
 	//
 	// example:
 	//

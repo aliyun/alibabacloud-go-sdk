@@ -24,36 +24,36 @@ type iDescribeSagRemoteAccessResponseBody interface {
 }
 
 type DescribeSagRemoteAccessResponseBody struct {
-	// The error code. The 200 error code indicates that the query task is successful.
+	// The error code. 200 indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. The Successful error message indicates that the query task is successful.
+	// The error message. Successful indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// successful
 	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RemoteAccesses *DescribeSagRemoteAccessResponseBodyRemoteAccesses `json:"RemoteAccesses,omitempty" xml:"RemoteAccesses,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E38E950D-28A4-4C41-9428-A8908EC6AE5C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the SAG instance.
+	// The Smart Access Gateway instance ID.
 	//
 	// example:
 	//
 	// sag-1um5x5nwhilymw****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// Indicates whether the query task is successful. Valid values:
+	// Indicates whether the query task succeeded.
 	//
-	// 	- **true**: The query task is successful.
+	// - **true**: The query task succeeded.
 	//
-	// 	- **false**: The query task failed.
+	// - **false**: The query task failed.
 	//
 	// example:
 	//

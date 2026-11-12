@@ -46,19 +46,19 @@ type iAddACLRuleResponseBody interface {
 }
 
 type AddACLRuleResponseBody struct {
-	// The ID of the ACL.
+	// The instance ID of the access control instance.
 	//
 	// example:
 	//
 	// acl-xhwhyuo43l0*******
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the ACL rule.
+	// The ID of the access control rule.
 	//
 	// example:
 	//
 	// acr-c1hkd054qywi******
 	AcrId *string `json:"AcrId,omitempty" xml:"AcrId,omitempty"`
-	// The description of the ACL rule.
+	// The description of the access control rule.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type AddACLRuleResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
 	//
-	// For example: 192.168.10.0/24.
+	// The destination CIDR block must be in CIDR format. Example: 192.168.10.0/24.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type AddACLRuleResponseBody struct {
 	//
 	// 1/65535
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
-	// The direction of traffic to which the ACL rule applies. Valid values:
+	// The direction in which the access control rule is applied. Valid values:
 	//
-	// - **in**: inbound. Traffic from an external network to the local branch where the SAG instance is deployed.
+	// - **in**: inbound. Traffic from external networks to the local branch where the Smart Access Gateway instance is deployed.
 	//
-	// - **out**: outbound. Traffic from the local branch where the SAG instance is deployed to an external network.
+	// - **out**: outbound. Traffic from the local branch where the Smart Access Gateway instance is deployed to external networks.
 	//
 	// example:
 	//
@@ -90,39 +90,39 @@ type AddACLRuleResponseBody struct {
 	Direction       *string                                `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	DpiGroupIds     *AddACLRuleResponseBodyDpiGroupIds     `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Struct"`
 	DpiSignatureIds *AddACLRuleResponseBodyDpiSignatureIds `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Struct"`
-	// The UNIX timestamp when the ACL rule was created.
+	// The timestamp when the access control rule was created.
 	//
-	// This value is a long integer. If rules have the same priority, the one with the earlier timestamp takes precedence.
+	// The timestamp is of the Long type. If multiple rules have the same priority, the rule with the smaller timestamp takes effect first.
 	//
 	// example:
 	//
 	// 1553766882689
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The protocol to which the ACL rule applies.
+	// The protocol to which the access control rule is applied.
 	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The name of the ACL rule.
+	// The name of the access control rule.
 	//
 	// example:
 	//
 	// doctest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The authorization policy of the ACL rule.
+	// The authorization policy of the access control rule.
 	//
-	// - **accept**: allows access.
+	// - **accept**: Allows the traffic.
 	//
-	// - **drop**: denies access.
+	// - **drop**: Denies the traffic.
 	//
 	// example:
 	//
 	// drop
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The priority of the ACL rule.
+	// The priority of the access control rule.
 	//
-	// A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is first delivered to the Smart Access Gateway device takes precedence.
+	// A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is first delivered to the Smart Access Gateway device takes effect first.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type AddACLRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The source CIDR block.
 	//
-	// The source CIDR block is in the CIDR format. For example: 192.168.1.0/24.
+	// The source CIDR block must be in CIDR format. Example: 192.168.1.0/24.
 	//
 	// example:
 	//
@@ -148,11 +148,11 @@ type AddACLRuleResponseBody struct {
 	//
 	// 1/65535
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The type of the ACL rule.
+	// The type of the access control rule.
 	//
-	// - **LAN**: private network. The ACL rule controls traffic on private networks.
+	// - **LAN**: private network, indicating the Settings of access control rules for traffic with a private endpoint.
 	//
-	// - **WAN**: public network. The ACL rule controls traffic on public networks.
+	// - **WAN**: public network, indicating the Settings of access control rules for traffic with public IP addresses.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteFlowLogResponseBody interface {
 }
 
 type DeleteFlowLogResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

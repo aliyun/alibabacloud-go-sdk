@@ -14,7 +14,7 @@ type iModifySagUserDnsResponseBody interface {
 }
 
 type ModifySagUserDnsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

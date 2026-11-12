@@ -14,7 +14,7 @@ type iClearSagCipherResponseBody interface {
 }
 
 type ClearSagCipherResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

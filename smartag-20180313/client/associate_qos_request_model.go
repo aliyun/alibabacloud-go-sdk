@@ -36,7 +36,7 @@ type AssociateQosRequest struct {
 	//
 	// qos-awfxl1adxeqyk****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the region to which the QoS policy belongs.
+	// The region ID of the QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type AssociateQosRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance to which the QoS policy is to be applied.
+	// The Smart Access Gateway instance ID to which the QoS policy is applied.
 	//
 	// This parameter is required.
 	//

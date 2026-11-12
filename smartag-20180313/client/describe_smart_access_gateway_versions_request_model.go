@@ -30,7 +30,7 @@ type iDescribeSmartAccessGatewayVersionsRequest interface {
 type DescribeSmartAccessGatewayVersionsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeSmartAccessGatewayVersionsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The Smart Access Gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type DescribeSmartAccessGatewayVersionsRequest struct {
 	//
 	// sag-d3m51apgw4po5*****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// sage62x022502****
 	SmartAGSn *string `json:"SmartAGSn,omitempty" xml:"SmartAGSn,omitempty"`
-	// The type of software run by the SAG device. Valid values:
+	// The software type of the Smart Access Gateway device. Valid values:
 	//
-	// 	- **Device**: The operating system run by the SAG device. This is the default value.
+	// - **Device**: the operating system software that runs on the Smart Access Gateway device. Default value.
 	//
-	// 	- **Dpi**: The signature database used by the SAG device.
+	// - **Dpi**: the application signature library software that runs on the Smart Access Gateway device.
 	//
 	// example:
 	//

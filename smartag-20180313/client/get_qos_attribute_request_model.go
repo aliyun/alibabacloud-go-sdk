@@ -16,7 +16,7 @@ type iGetQosAttributeRequest interface {
 }
 
 type GetQosAttributeRequest struct {
-	// The ID of the QoS policy.
+	// The instance ID of the QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -24,9 +24,7 @@ type GetQosAttributeRequest struct {
 	//
 	// qos-1iqifund3gcno5****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the region where the QoS policy is deployed.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the QoS policy instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

@@ -36,9 +36,9 @@ type AddSmartAccessGatewayDnsForwardRequest struct {
 	//
 	// >
 	//
-	// 	- Wildcard domain names are supported. You can use the wildcard character asterisk (\\*) to specify a wildcard domain name.
+	// >- Wildcard domain names and full match are supported. You can enter an asterisk (*) for the domain name to match all. Examples:
 	//
-	// For example, you can enter \\*.baidu.com to specify the domain name baidu.com.
+	// *.baidu.com. The allowed input format is baidu.com.
 	//
 	// This parameter is required.
 	//
@@ -56,49 +56,41 @@ type AddSmartAccessGatewayDnsForwardRequest struct {
 	MasterIp *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
 	// The forwarding mode.
 	//
-	// >
-	//
-	// 	- This parameter is not in use. Ignore this parameter.
+	// >- This field is invalid. You can ignore it.
 	//
 	// example:
 	//
 	// first
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of the egress port.
+	// The outbound port index.
 	//
-	// >
+	// >- This parameter is optional when OutboundPortType is set to PhysicalPort, and is not required when OutboundPortType is set to Tunnel.
 	//
-	// 	- This parameter is optional if OutboundPortType is set to PhysicalPort. Ignore this parameter if OutboundPortType is set to Tunnel.
-	//
-	// 	- The value of OutboundPortIndex is the unique index of the port name specified by poOutboundPortName. For example, 0 is the index for the port named eth0, and 2 is the index for the port named lte.
+	// >- OutboundPortIndex and OutboundPortName have a one-to-one mapping: 0 - eth0; 2 - lte.
 	//
 	// example:
 	//
 	// 0
 	OutboundPortIndex *string `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
-	// The egress port.
+	// The outbound port.
 	//
-	// >
+	// >- This parameter is optional when OutboundPortType is set to PhysicalPort, and is not required when OutboundPortType is set to Tunnel.
 	//
-	// 	- This parameter is optional if OutboundPortType is set to PhysicalPort. Ignore this parameter if OutboundPortType is set to Tunnel.
-	//
-	// 	- The value of OutboundPortIndex is the unique index of the port name specified by poOutboundPortName. For example, 0 is the index for the port named eth0, and 2 is the index for the port named lte.
+	// >- OutboundPortIndex and OutboundPortName have a one-to-one mapping: 0 - eth0; 2 - lte.
 	//
 	// example:
 	//
 	// eth0
 	OutboundPortName *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
-	// The type of the egress port.
+	// The outbound port type.
 	//
-	// >
-	//
-	// 	- A value of Tunnel specifies a tunnel, and a value of PhysicalPort specifies a physical port.
+	// >- A value of Tunnel indicates a tunnel port, and a value of PhysicalPort indicates a physical port.
 	//
 	// example:
 	//
 	// Tunnel
 	OutboundPortType *string `json:"OutboundPortType,omitempty" xml:"OutboundPortType,omitempty"`
-	// The ID of the region where the instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +98,7 @@ type AddSmartAccessGatewayDnsForwardRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +106,7 @@ type AddSmartAccessGatewayDnsForwardRequest struct {
 	//
 	// sag-v9un1ccz22owd76lf8
 	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
-	// The serial number (SN) of the device.
+	// The serial number of the device.
 	//
 	// This parameter is required.
 	//

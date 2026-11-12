@@ -20,7 +20,7 @@ type iDeleteSmartAccessGatewayDnsForwardRequest interface {
 }
 
 type DeleteSmartAccessGatewayDnsForwardRequest struct {
-	// The ID of the DNS forwarding rule.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DeleteSmartAccessGatewayDnsForwardRequest struct {
 	//
 	// sagv3dnsforward-nc7qabskj17werc7su
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The ID of the region where the Smart Access Gateway instance resides.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteSmartAccessGatewayDnsForwardRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeleteSmartAccessGatewayDnsForwardRequest struct {
 	//
 	// sag-v9un1ccz22owd76lf8
 	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
-	// The serial number (SN) of the device.
+	// The SN of the device.
 	//
 	// This parameter is required.
 	//

@@ -32,7 +32,7 @@ type iUnbindVbrRequest interface {
 type UnbindVbrRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UnbindVbrRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type UnbindVbrRequest struct {
 	//
 	// sag-pek29fu47tmpj0****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the SAG instance belongs.
+	// The ID of the Alibaba Cloud account to which the Smart Access Gateway instance belongs.
 	//
 	// example:
 	//
 	// 253460731706911258
 	SmartAGUid *int64 `json:"SmartAGUid,omitempty" xml:"SmartAGUid,omitempty"`
-	// The ID of the VBR.
+	// The instance ID of the virtual border routing device to be disassociated.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type UnbindVbrRequest struct {
 	//
 	// vbr-wz90rs6ef1m2fq0yn****
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The region ID of the virtual border router.
 	//
 	// This parameter is required.
 	//

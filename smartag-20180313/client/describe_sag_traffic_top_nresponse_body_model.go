@@ -16,13 +16,13 @@ type iDescribeSagTrafficTopNResponseBody interface {
 }
 
 type DescribeSagTrafficTopNResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AFF7E5A6-6897-4FDC-A5A8-1978B5B3E545
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the data transfer rate of the SAG instance.
+	// The list of traffic rate information for Smart Access Gateway instances.
 	TrafficTopN []*DescribeSagTrafficTopNResponseBodyTrafficTopN `json:"TrafficTopN,omitempty" xml:"TrafficTopN,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,25 @@ func (s *DescribeSagTrafficTopNResponseBody) Validate() error {
 }
 
 type DescribeSagTrafficTopNResponseBodyTrafficTopN struct {
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// sag-whfn****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the SAG instance.
+	// The name of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The data transfer rate of the SAG instance. Unit: bit/s
+	// The traffic rate of the Smart Access Gateway instance. Unit: bps.
 	//
 	// example:
 	//

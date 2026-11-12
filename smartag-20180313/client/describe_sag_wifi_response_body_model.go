@@ -34,7 +34,7 @@ type iDescribeSagWifiResponseBody interface {
 type DescribeSagWifiResponseBody struct {
 	// The authentication type. Valid values:
 	//
-	// - **NONE**: authentication is disabled.
+	// - **NONE**: Authentication is disabled.
 	//
 	// - **WPA-PSK**: WPA-PSK authentication is enabled.
 	//
@@ -44,79 +44,79 @@ type DescribeSagWifiResponseBody struct {
 	//
 	// WPA2-PSK
 	AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
-	// The bandwidth of the Wi-Fi channel. Valid values:
+	// The spectrum bandwidth. Valid values:
 	//
-	// - **Automatic**
+	// - **Auto**.
 	//
-	// - **20 HMz**
+	// - **20MHz**.
 	//
-	// - **40 MHz**
+	// - **40MHz**.
 	//
 	// example:
 	//
 	// Automatic
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The Wi-Fi channel.
+	// The channel.
 	//
 	// example:
 	//
 	// 0
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The encryption algorithm.
+	// The encryption algorithm. Valid values:
 	//
-	// - **AUTO**: automatically selects the encryption algorithm.
+	// - **AUTO**: Automatic encryption.
 	//
-	// - **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
+	// - **TKIP**: Temporal Key Integrity Protocol.
 	//
-	// - **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
+	// - **AES**: Advanced Encryption Standard.
 	//
 	// example:
 	//
 	// AES
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
-	// Indicates whether wireless security is enabled.
+	// Indicates whether the wireless security feature is enabled. Valid values:
 	//
-	// - **True**: wireless security is enabled.
+	// - **True**: The wireless security feature is enabled.
 	//
-	// - **False**: wireless security is disabled.
+	// - **False**: The wireless security feature is disabled.
 	//
 	// example:
 	//
 	// True
 	IsAuth *string `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
-	// Indicates whether broadcast over Wi-Fi is enabled. Valid values:
+	// Indicates whether the Wi-Fi broadcast feature is enabled. Valid values:
 	//
-	// - **True**: broadcast is enabled.
+	// - **True**: The Wi-Fi broadcast feature is enabled.
 	//
-	// - **False**: broadcast is disabled.
+	// - **False**: The Wi-Fi broadcast feature is disabled.
 	//
 	// example:
 	//
 	// True
 	IsBroadcast *string `json:"IsBroadcast,omitempty" xml:"IsBroadcast,omitempty"`
-	// Indicates whether wireless connections are enabled. Valid values:
+	// Indicates whether the wireless feature is enabled. Valid values:
 	//
-	// - **True**: wireless connections are enabled.
+	// - **True**: Enabled.
 	//
-	// - **False**: wireless connections are disabled.
+	// - **False**: Disabled.
 	//
 	// example:
 	//
 	// True
 	IsEnable *string `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E93884AC-6C21-4FEA-8E3A-7377D33B194F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service set identifier (SSID) of the Wi-Fi network.
+	// The Wi-Fi name.
 	//
 	// example:
 	//
 	// aliyun_sag_123456***
 	Ssid *string `json:"Ssid,omitempty" xml:"Ssid,omitempty"`
-	// The information about the query task.
+	// The status of the query task.
 	TaskStates []*DescribeSagWifiResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -238,37 +238,37 @@ type DescribeSagWifiResponseBodyTaskStates struct {
 	//
 	// 1586843621000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code returned for a query task. The 200 error code indicates that the query task is successful.
+	// The error code. A value of 200 indicates that the query task is successful.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned for a query task. The Successful error message indicates that the query task is successful.
+	// The error message. A value of Successful indicates that the query task is successful.
 	//
 	// example:
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The status of the query task. Valid values:
+	// The status of the asynchronous task. Valid values:
 	//
-	// - **Initialized**: The query task has been initialized.
+	// - **Initialized**: The query task is initialized.
 	//
-	// - **Offline**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will be dispatched after the SAG device is connected to Alibaba Cloud.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device goes online.
 	//
-	// - **Succeed**: The query task has been dispatched.
+	// - **Succeed**: The query task is delivered.
 	//
-	// - **Processing**: The query task is being dispatched.
+	// - **Processing**: The query task is being delivered.
 	//
-	// - **VersionNotSupport**: The current version of the SAG device does not support query tasks.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this feature.
 	//
-	// - **BuildRequestError**: The SAG control system does not support query tasks.
+	// - **BuildRequestError**: The management system does not support the operation.
 	//
-	// - **HardwareError**: The query task failed to be dispatched due to device errors.
+	// - **HardwareError**: The query task fails to be delivered due to device errors.
 	//
 	// - **TaskNotExist**: The query task does not exist.
 	//
-	// - **OfflineNotConfiged**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will not be dispatched after the device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered even after the device goes online.
 	//
 	// example:
 	//

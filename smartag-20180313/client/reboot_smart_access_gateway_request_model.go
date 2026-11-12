@@ -42,7 +42,7 @@ type RebootSmartAccessGatewayRequest struct {
 	//
 	// example:
 	//
-	// a1b2c3d4e****
+	// a1b2c3d4e5f6g7h8f9
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The ID of the SAG instance.
 	//

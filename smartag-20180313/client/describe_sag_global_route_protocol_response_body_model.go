@@ -18,25 +18,25 @@ type iDescribeSagGlobalRouteProtocolResponseBody interface {
 }
 
 type DescribeSagGlobalRouteProtocolResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3712F0B2-721E-4FBF-BBEF-888E3BFE0A20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The routing protocol. Valid values:
+	// The routable protocol. Valid values:
 	//
-	// 	- **STATIC**: static routing
+	// - **STATIC**: static routable protocol
 	//
-	// 	- **OSPF**: Open Shortest Path First protocol (OSPF)
+	// - **OSPF**: OSPF dynamic routable protocol
 	//
-	// 	- **BGP**: Border Gateway Protocol (BGP)
+	// - **BGP**: BGP dynamic routable protocol
 	//
 	// example:
 	//
 	// STATIC
 	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
-	// The state of the query task.
+	// The status of the query task.
 	TaskStates []*DescribeSagGlobalRouteProtocolResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -89,13 +89,13 @@ func (s *DescribeSagGlobalRouteProtocolResponseBody) Validate() error {
 }
 
 type DescribeSagGlobalRouteProtocolResponseBodyTaskStates struct {
-	// The timestamp that indicates the time when the query task was created.
+	// The time when the query task was created.
 	//
 	// example:
 	//
 	// 1586855592000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code returned. A value of 200 indicates that the query task is successful.
+	// The error code. A value of 200 indicates that the query task is successful.
 	//
 	// example:
 	//
@@ -107,25 +107,25 @@ type DescribeSagGlobalRouteProtocolResponseBodyTaskStates struct {
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The state of the query task. Valid values:
+	// The status of the asynchronous task. Valid values:
 	//
-	// 	- **Initialized**: The query task is initialized.
+	// - **Initialized**: The query task is initialized.
 	//
-	// 	- **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device comes online.
 	//
-	// 	- **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+	// - **Succeed**: The query task is delivered.
 	//
-	// 	- **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+	// - **Processing**: The query task is being delivered.
 	//
-	// 	- **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support the feature.
 	//
-	// 	- **BuildRequestError**: The query task is not supported by the controller of the SAG device.
+	// - **BuildRequestError**: The management and control system does not support the operation.
 	//
-	// 	- **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+	// - **HardwareError**: The query task delivery failed due to a device error.
 	//
-	// 	- **TaskNotExist**: The query task does not exist.
+	// - **TaskNotExist**: The query task does not exist.
 	//
-	// 	- **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered after the device comes online.
 	//
 	// example:
 	//

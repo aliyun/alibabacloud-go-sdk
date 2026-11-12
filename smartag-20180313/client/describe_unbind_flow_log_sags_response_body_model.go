@@ -18,13 +18,13 @@ type iDescribeUnbindFlowLogSagsResponseBody interface {
 }
 
 type DescribeUnbindFlowLogSagsResponseBody struct {
-	// The total number of the SAG instances.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

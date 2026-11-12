@@ -18,11 +18,11 @@ type iDescribeClientUserDNSResponseBody interface {
 }
 
 type DescribeClientUserDNSResponseBody struct {
-	// The active and standby DNS servers that the SAG app instance uses when it connects to private networks.
+	// The primary and secondary DNS configurations used when the client of the Smart Access Gateway app instance connects to a private network.
 	AppDNS []*string `json:"AppDNS,omitempty" xml:"AppDNS,omitempty" type:"Repeated"`
-	// The active and standby DNS servers that the SAG app instance uses when it disconnects from private networks.
+	// The primary and secondary DNS configurations used when the client of the Smart Access Gateway app instance disconnects from a private network.
 	RecoveredDNS []*string `json:"RecoveredDNS,omitempty" xml:"RecoveredDNS,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

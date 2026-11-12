@@ -16,13 +16,13 @@ type iDescribeSagRouteListResponseBody interface {
 }
 
 type DescribeSagRouteListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CE6642D4-21EB-4168-9BF9-F217953F9892
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The routes.
+	// The list of routes.
 	Routes []*DescribeSagRouteListResponseBodyRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,9 @@ func (s *DescribeSagRouteListResponseBody) Validate() error {
 }
 
 type DescribeSagRouteListResponseBodyRoutes struct {
-	// The list of CIDR blocks that overlap with each other.
+	// The list of conflicting CIDR blocks.
 	ConflictCidrs []*string `json:"ConflictCidrs,omitempty" xml:"ConflictCidrs,omitempty" type:"Repeated"`
-	// The cost of the route.
-	//
-	// The number on the left side of the forward slash (/) indicates the administrative distance (AD) of the routing protocol.
-	//
-	// The number on the right side of the forward slash (/) indicates the metric value.
+	// The routing cost value. The number to the left of the forward slash (/) indicates the administrative distance (AD) of the routing protocol. The number to the right of the forward slash (/) indicates the metric.
 	//
 	// example:
 	//
@@ -90,19 +86,19 @@ type DescribeSagRouteListResponseBodyRoutes struct {
 	//
 	// 192.XX.XX.1
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The name of the port. If the port name is -1, data is transferred through a VPN tunnel to Alibaba Cloud.
+	// The port name. A value of -1 indicates that data traffic enters Alibaba Cloud through a VPN connection.
 	//
 	// example:
 	//
 	// 2
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The routing protocol. Valid values:
+	// The routing protocol type. Valid values:
 	//
-	// 	- **STATIC**: a static routing protocol.
+	// - **STATIC**: Static routing protocol.
 	//
-	// 	- **OSPF**: the Open Shortest Path First (OSPF) dynamic routing protocol.
+	// - **OSPF**: OSPF dynamic routing protocol.
 	//
-	// 	- **BGP**: the Border Gateway Protocol (BGP) dynamic routing protocol.
+	// - **BGP**: BGP dynamic routing protocol.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iDescribeSagStaticRouteListResponseBody interface {
 }
 
 type DescribeSagStaticRouteListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CE6642D4-21EB-4168-9BF9-F217953F9892
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the static route.
+	// The list of static routes.
 	StaticRoutes []*DescribeSagStaticRouteListResponseBodyStaticRoutes `json:"StaticRoutes,omitempty" xml:"StaticRoutes,omitempty" type:"Repeated"`
-	// The state of the query task.
+	// The status of the query tasks.
 	TaskStates []*DescribeSagStaticRouteListResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -100,7 +100,7 @@ type DescribeSagStaticRouteListResponseBodyStaticRoutes struct {
 	//
 	// 192.XX.XX.1
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The name of the port.
+	// The port name.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribeSagStaticRouteListResponseBodyTaskStates struct {
 	//
 	// 1586857309000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code returned. A value of 200 indicates that the query task is successful.
+	// The error code. A value of 200 indicates that the query task is successful.
 	//
 	// example:
 	//
@@ -181,25 +181,25 @@ type DescribeSagStaticRouteListResponseBodyTaskStates struct {
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The state of the query task. Valid values:
+	// The status of the asynchronous task. Valid values:
 	//
-	// 	- **Initialized**: The query task is initialized.
+	// - **Initialized**: The query task is initialized.
 	//
-	// 	- **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device goes online.
 	//
-	// 	- **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+	// - **Succeed**: The query task is delivered successfully.
 	//
-	// 	- **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+	// - **Processing**: The query task is being delivered.
 	//
-	// 	- **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this feature.
 	//
-	// 	- **BuildRequestError**: The query task is not supported by the controller of the SAG device.
+	// - **BuildRequestError**: The management and control system does not support the request.
 	//
-	// 	- **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+	// - **HardwareError**: The query task failed to be delivered due to a device error.
 	//
-	// 	- **TaskNotExist**: The query task does not exist.
+	// - **TaskNotExist**: The query task does not exist.
 	//
-	// 	- **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered even after the device goes online.
 	//
 	// example:
 	//

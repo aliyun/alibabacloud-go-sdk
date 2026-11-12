@@ -26,7 +26,7 @@ type iRevokeInstanceFromCbnRequest interface {
 }
 
 type RevokeInstanceFromCbnRequest struct {
-	// The ID of the CCN instance.
+	// The Cloud Connect Network (CCN) instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RevokeInstanceFromCbnRequest struct {
 	//
 	// ccn-n2935s1mnwv8i*****
 	CcnInstanceId *string `json:"CcnInstanceId,omitempty" xml:"CcnInstanceId,omitempty"`
-	// The ID of the CEN instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RevokeInstanceFromCbnRequest struct {
 	CenInstanceId *string `json:"CenInstanceId,omitempty" xml:"CenInstanceId,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the CCN instance is deployed.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

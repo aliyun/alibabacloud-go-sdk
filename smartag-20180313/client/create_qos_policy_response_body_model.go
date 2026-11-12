@@ -42,7 +42,7 @@ type iCreateQosPolicyResponseBody interface {
 }
 
 type CreateQosPolicyResponseBody struct {
-	// The description of the traffic classification rule for the QoS policy.
+	// The description of the traffic classification rule.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ type CreateQosPolicyResponseBody struct {
 	DestPortRange   *string                                     `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
 	DpiGroupIds     *CreateQosPolicyResponseBodyDpiGroupIds     `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Struct"`
 	DpiSignatureIds *CreateQosPolicyResponseBodyDpiSignatureIds `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Struct"`
-	// The time when the traffic classification rule expires.
+	// The end time when the traffic classification rule of the quality of service (QoS) policy takes effect. The time follows the ISO 8601 standard and uses the UTC+8 time zone, in the YYYY-MM-DDThh:mm:ss+0800 format.
 	//
 	// example:
 	//
 	// 2022-09-14T16:41:33+0800
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The protocol type to which the traffic classification rule applies.
+	// The protocol type applied to the traffic classification rule.
 	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The name of the traffic classification rule for the QoS policy.
+	// The name of the traffic classification rule.
 	//
 	// example:
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority of the rate limiting rule to which the traffic classification rule belongs.
+	// The priority of the bandwidth throttling rule to which the traffic classification rule belongs.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type CreateQosPolicyResponseBody struct {
 	//
 	// 80/80
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The time when the traffic classification rule takes effect.
+	// The effective start time of the traffic classification rule for the QoS policy. The time is expressed in the ISO 8601 standard and uses the UTC+8 time zone in the YYYY-MM-DDThh:mm:ss+0800 format.
 	//
 	// example:
 	//

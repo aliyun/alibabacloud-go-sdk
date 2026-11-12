@@ -26,7 +26,7 @@ type iAssociateACLRequest interface {
 }
 
 type AssociateACLRequest struct {
-	// The ID of ACL.
+	// The ID of the access control list.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,7 @@ type AssociateACLRequest struct {
 	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the ACL is created.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +46,7 @@ type AssociateACLRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance to be associated with the ACL.
+	// The ID of the Smart Access Gateway instance to which you want to attach the access control list.
 	//
 	// This parameter is required.
 	//

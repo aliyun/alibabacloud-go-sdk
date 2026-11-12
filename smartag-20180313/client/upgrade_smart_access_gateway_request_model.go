@@ -23,14 +23,18 @@ type iUpgradeSmartAccessGatewayRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *UpgradeSmartAccessGatewayRequest
 	GetResourceOwnerId() *int64
+	SetRestoreTime(v string) *UpgradeSmartAccessGatewayRequest
+	GetRestoreTime() *string
 	SetSmartAGId(v string) *UpgradeSmartAccessGatewayRequest
 	GetSmartAGId() *string
 }
 
 type UpgradeSmartAccessGatewayRequest struct {
-	// Indicates whether to automatically pay the bill for a subscription instance.
+	// Specifies whether automatic payment is enabled for the bills of upfront instances. Valid values:
 	//
-	// Valid values: **true | false**. Default value: false
+	// - **true**: Yes.
+	//
+	// - **false**: No.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +42,13 @@ type UpgradeSmartAccessGatewayRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The bandwidth of the SAG instance.
+	// The bandwidth of the Smart Access Gateway instance.
 	//
-	// 	- Value range for an SAG-100WM device: 2 to 50. Unit: Mbit/s
+	// - If the device specification is sag-100wm, the value ranges from 2 to 50 Mbit/s.
 	//
-	// 	- Value range for an SAG-1000 device: 10 to 500. Unit: Mbit/s
+	//
+	//
+	// - If the device specification is sag-1000, the value ranges from 10 to 500 Mbit/s.
 	//
 	// example:
 	//
@@ -50,7 +56,7 @@ type UpgradeSmartAccessGatewayRequest struct {
 	BandWidthSpec *int64  `json:"BandWidthSpec,omitempty" xml:"BandWidthSpec,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the SAG instance belongs.
+	// The region ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +66,13 @@ type UpgradeSmartAccessGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The revert epoch for a temporary upgrade. This parameter specifies the expiration epoch of the temporary bandwidth upgrade. By default, if this parameter is left empty, the upgrade remains effective until the end-of-life (EOL) of the instance. If a specific epoch is specified, the bandwidth automatically reverts to the pre-upgrade configuration at the specified epoch.
+	//
+	// example:
+	//
+	// 2026-11-10 18
+	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	// The Smart Access Gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -106,6 +118,10 @@ func (s *UpgradeSmartAccessGatewayRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *UpgradeSmartAccessGatewayRequest) GetRestoreTime() *string {
+	return s.RestoreTime
+}
+
 func (s *UpgradeSmartAccessGatewayRequest) GetSmartAGId() *string {
 	return s.SmartAGId
 }
@@ -142,6 +158,11 @@ func (s *UpgradeSmartAccessGatewayRequest) SetResourceOwnerAccount(v string) *Up
 
 func (s *UpgradeSmartAccessGatewayRequest) SetResourceOwnerId(v int64) *UpgradeSmartAccessGatewayRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpgradeSmartAccessGatewayRequest) SetRestoreTime(v string) *UpgradeSmartAccessGatewayRequest {
+	s.RestoreTime = &v
 	return s
 }
 

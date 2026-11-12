@@ -16,7 +16,7 @@ type iDescribeSagDropTopNResponseBody interface {
 }
 
 type DescribeSagDropTopNResponseBody struct {
-	// The list of packet loss information about Smart Access Gateway instances.
+	// The list of packet loss information for the Smart Access Gateway instances.
 	DropTopN []*DescribeSagDropTopNResponseBodyDropTopN `json:"DropTopN,omitempty" xml:"DropTopN,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeSagDropTopNResponseBodyDropTopN struct {
 	//
 	// 0.0
 	DropRate *string `json:"DropRate,omitempty" xml:"DropRate,omitempty"`
-	// The ID of the Smart Access Gateway instance.
+	// The instance ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//

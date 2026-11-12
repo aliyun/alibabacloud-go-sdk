@@ -16,7 +16,7 @@ type iDescribeUserFlowStatisticsResponseBody interface {
 }
 
 type DescribeUserFlowStatisticsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteCloudConnectNetworkResponseBody interface {
 }
 
 type DeleteCloudConnectNetworkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

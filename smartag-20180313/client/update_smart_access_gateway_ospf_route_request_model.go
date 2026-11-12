@@ -50,7 +50,7 @@ type iUpdateSmartAccessGatewayOspfRouteRequest interface {
 type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	// The OSPF area ID.
 	//
-	// The value must be an integer from **1*	- to **2147483647**.
+	// Valid values: **1*	- to **2147483647**.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	//
 	// 1
 	AreaId *int32 `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The authentication method. Valid values:
+	// The authentication type. Valid values:
 	//
-	// - **NONE**: No authentication is configured.
+	// - **NONE**: disables authentication.
 	//
-	// - **CLEARTEXT**: Plaintext authentication is used.
+	// - **CLEARTEXT**: uses plaintext authentication.
 	//
-	// - **MD5**: MD5 authentication is used.
+	// - **MD5**: uses MD5 authentication.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	//
 	// MD5
 	AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
-	// Specifies whether to query only the SAG instances that belong to other Alibaba Cloud accounts. Valid values:
+	// Specifies whether to query only cross-account Smart Access Gateway instances. Valid values:
 	//
-	// - **false*	- (default): No.
+	// - **false*	- (default): no.
 	//
-	// - **true**: Yes.
+	// - **true**: yes.
 	//
 	// example:
 	//
 	// false
 	CrossAccount *bool `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
-	// The dead interval. Unit: seconds.
+	// The OSPF dead interval. Unit: seconds.
 	//
-	// The value must be an integer from **1*	- to **65535**.
+	// Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	DeadTime *int32 `json:"DeadTime,omitempty" xml:"DeadTime,omitempty"`
 	// The interval at which Hello packets are sent. Unit: seconds.
 	//
-	// The value must be an integer from **1*	- to **65535**.
+	// Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -104,51 +104,51 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	HelloTime *int32 `json:"HelloTime,omitempty" xml:"HelloTime,omitempty"`
 	// The port name.
 	//
-	// > This parameter is not in use.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
 	// 2
 	InterfaceName *string `json:"InterfaceName,omitempty" xml:"InterfaceName,omitempty"`
-	// The MD5 key.
+	// The value of the MD5 key.
 	//
-	// The value must be 1 to **47*	- characters in length.
+	// Valid values: **1*	- to **47**.
 	//
-	// > This parameter is required only when you set **AuthenticationType*	- to **MD5**.
+	// > This parameter is required only when **AuthenticationType*	- is set to **MD5**.
 	//
 	// example:
 	//
 	// 5
 	Md5Key *string `json:"Md5Key,omitempty" xml:"Md5Key,omitempty"`
-	// The MD5 key ID.
+	// The ID of the MD5 key.
 	//
-	// The value must be an integer from 1 to **2147483647**.
+	// Valid values: **1*	- to **2147483647**.
 	//
-	// > This parameter is required only when you set **AuthenticationType*	- to **MD5**.
+	// > This parameter is required only when **AuthenticationType*	- is set to **MD5**.
 	//
 	// example:
 	//
 	// 7
 	Md5KeyId *int32 `json:"Md5KeyId,omitempty" xml:"Md5KeyId,omitempty"`
-	// The network segment.
+	// The CIDR block.
 	//
-	// > This parameter is not in use.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
 	// 192.168.10.0/24
 	Networks *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
-	// The cost of the OSPF route.
+	// The OSPF route cost.
 	//
-	// > This parameter is not in use.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
-	// [110/11]
+	// 11
 	OspfCost *int32 `json:"OspfCost,omitempty" xml:"OspfCost,omitempty"`
-	// The OSPF network type.
+	// The OSPF area type.
 	//
-	// > This parameter is not in use.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	//
 	// The password must be 1 to 8 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
-	// > This parameter is required only when you set **AuthenticationType*	- to **CLEARTEXT**.
+	// > This parameter is required only when **AuthenticationType*	- is set to **CLEARTEXT**.
 	//
 	// example:
 	//
@@ -166,15 +166,15 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The route redistribution protocol.
 	//
-	// > This parameter is not in use.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
 	// OSPF
 	RedistributeProtocol *string `json:"RedistributeProtocol,omitempty" xml:"RedistributeProtocol,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
-	// For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/69813.html).
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to obtain region IDs.
 	//
 	// This parameter is required.
 	//
@@ -196,7 +196,7 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	//
 	// 192.XX.XX.1
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The ID of the SAG instance.
+	// The Smart Access Gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +204,7 @@ type UpdateSmartAccessGatewayOspfRouteRequest struct {
 	//
 	// sag-3manef62evrfr6****
 	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//

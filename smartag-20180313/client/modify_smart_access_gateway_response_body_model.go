@@ -14,7 +14,7 @@ type iModifySmartAccessGatewayResponseBody interface {
 }
 
 type ModifySmartAccessGatewayResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

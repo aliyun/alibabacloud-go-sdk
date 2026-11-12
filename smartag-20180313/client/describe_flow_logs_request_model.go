@@ -36,31 +36,31 @@ type iDescribeFlowLogsRequest interface {
 }
 
 type DescribeFlowLogsRequest struct {
-	// The description of the flow log.
+	// The description of the flow log instance.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of a flow log.
+	// The ID of the flow log instance.
 	//
 	// example:
 	//
 	// fl-7a56mar1kfw9vj****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	// The name of the flow log.
+	// The name of the flow log instance.
 	//
 	// example:
 	//
 	// DDE
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The location where the flow log is stored. Valid values:
+	// The output type of the flow log. Valid values:
 	//
-	// 	- **sls**: The flow log is stored in Log Service.
+	// - **sls**: Flow logs are stored in Simple Log Service.
 	//
-	// 	- **netflow**: The flow log is stored on a NetFlow collector.
+	// - **netflow**: Flow logs are stored on the NetFlow server that you configured.
 	//
-	// 	- **all**: The flow log is stored both in Log Service and on a NetFlow collector.
+	// - **all**: Flow logs are stored in both Simple Log Service and the NetFlow server that you configured.
 	//
 	// example:
 	//
@@ -68,19 +68,19 @@ type DescribeFlowLogsRequest struct {
 	OutputType   *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries to return on each page in a paging query. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region that the flow logs are stored.
+	// The region ID of the flow log instance.
 	//
 	// This parameter is required.
 	//
@@ -90,11 +90,11 @@ type DescribeFlowLogsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the flow log. Valid values:
+	// The status of the flow log instance. Valid values:
 	//
-	// 	- **Active**: The flow log is enabled.
+	// - **Active**: Started.
 	//
-	// 	- **Inactive**: The flow log is disabled.
+	// - **Inactive**: Not started.
 	//
 	// example:
 	//

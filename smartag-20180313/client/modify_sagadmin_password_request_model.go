@@ -30,19 +30,19 @@ type iModifySAGAdminPasswordRequest interface {
 type ModifySAGAdminPasswordRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The new logon password for the SAG device.
+	// The new logon password for the Smart Access Gateway device.
 	//
-	// The password must be 8 to 30 characters in length and can contain letters, digits, and underscores (_).
+	// Password format requirements: The password must be 8 to 30 characters in length and can contain uppercase letters, lowercase letters, digits, and underscores (_).
 	//
-	// >  In the example, asterisks (\\*) are used to conceal the real password. This does not mean that the password supports asterisks (\\*). The actual format requirement prevails.
+	// > The example shows a partially masked synthetic format for demonstration purposes and does not correspond to a real device password. An asterisk (\\*) indicates a masked character and does not mean that asterisks (\\*) are supported in passwords. When entering a password, refer to the password format requirements.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ********
+	// DemoPass_2***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ModifySAGAdminPasswordRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ModifySAGAdminPasswordRequest struct {
 	//
 	// sag-tq3sazs17smldn****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The serial number (SN) of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//

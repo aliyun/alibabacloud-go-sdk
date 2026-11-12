@@ -14,7 +14,7 @@ type iDiagnoseSmartAccessGatewayResponseBody interface {
 }
 
 type DiagnoseSmartAccessGatewayResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

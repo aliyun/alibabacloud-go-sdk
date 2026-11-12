@@ -32,7 +32,7 @@ type iModifySagUserDnsRequest interface {
 type ModifySagUserDnsRequest struct {
 	// The IP address of the primary DNS server.
 	//
-	// >  If you do not set this parameter, the IP address of the existing DNS server will be cleared.
+	// > If you do not specify this parameter, the DNS configuration is cleared.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModifySagUserDnsRequest struct {
 	MasterDns    *string `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ModifySagUserDnsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The IP address of the secondary DNS server.
 	//
-	// >  If you do not set this parameter, the IP address of the existing DNS server will be cleared.
+	// > If you do not specify this parameter, the secondary DNS configuration is cleared.
 	//
 	// example:
 	//
 	// 192.XX.XX.2
 	SlaveDns *string `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ModifySagUserDnsRequest struct {
 	//
 	// sag-whfn****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The serial number of the SAG device associated with the SAG instance.
+	// The serial number of the bound Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//

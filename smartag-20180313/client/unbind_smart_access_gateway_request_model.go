@@ -28,7 +28,7 @@ type iUnbindSmartAccessGatewayRequest interface {
 }
 
 type UnbindSmartAccessGatewayRequest struct {
-	// The ID of the CCN instance.
+	// The ID of the Cloud Connect Network (CCN).
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UnbindSmartAccessGatewayRequest struct {
 	CcnId        *string `json:"CcnId,omitempty" xml:"CcnId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UnbindSmartAccessGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type UnbindSmartAccessGatewayRequest struct {
 	//
 	// sag-0ovhf732a********
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the SAG instance belongs.
+	// The user ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//

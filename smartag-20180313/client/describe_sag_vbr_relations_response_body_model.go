@@ -16,13 +16,13 @@ type iDescribeSagVbrRelationsResponseBody interface {
 }
 
 type DescribeSagVbrRelationsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 17D79124-104A-42DB-8FCA-CE2957CD1723
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the specified VBR is associated with an SAG instance.
+	// The association information.
 	SagVbrRelations []*DescribeSagVbrRelationsResponseBodySagVbrRelations `json:"SagVbrRelations,omitempty" xml:"SagVbrRelations,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeSagVbrRelationsResponseBody) Validate() error {
 }
 
 type DescribeSagVbrRelationsResponseBodySagVbrRelations struct {
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// example:
 	//
 	// sag-0nnteglltw6z4b****
 	SagInstanceId *string `json:"SagInstanceId,omitempty" xml:"SagInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the SAG instance belongs.
+	// The ID of the Alibaba Cloud account to which the Smart Access Gateway instance belongs.
 	//
 	// example:
 	//
 	// 16884015121212****
 	SagUid *string `json:"SagUid,omitempty" xml:"SagUid,omitempty"`
-	// The ID of the VBR.
+	// The instance ID of the virtual border router (VBR) used for routing.
 	//
 	// example:
 	//

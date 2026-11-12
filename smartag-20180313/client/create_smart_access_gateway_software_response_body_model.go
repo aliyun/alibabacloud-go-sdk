@@ -20,25 +20,25 @@ type iCreateSmartAccessGatewaySoftwareResponseBody interface {
 }
 
 type CreateSmartAccessGatewaySoftwareResponseBody struct {
-	// The ID of the order that you placed to purchase the SAG app instance.
+	// The order ID for purchasing the Smart Access Gateway app instance.
 	//
 	// example:
 	//
 	// 203000000000000
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 24675405-74DF-4C94-82C6-B749580C498E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the SAG app instance belongs.
+	// The ID of the resource group to which the Smart Access Gateway app instance belongs.
 	//
 	// example:
 	//
 	// rg-acfm2iu4fnc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the SAG app instance.
+	// The instance ID of the Smart Access Gateway app.
 	//
 	// example:
 	//

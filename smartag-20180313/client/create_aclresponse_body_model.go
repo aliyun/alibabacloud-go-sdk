@@ -20,13 +20,13 @@ type iCreateACLResponseBody interface {
 }
 
 type CreateACLResponseBody struct {
-	// The access control instance ID.
+	// The ID of the access control instance.
 	//
 	// example:
 	//
 	// acl-o6yol7zowii5n2****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The type of the Smart Access Gateway instance associated with the access control instance.
+	// The type of the Smart Access Gateway (SAG) instance associated with the access control instance.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateACLResponseBody struct {
 	//
 	// EE837E9F-BD50-4C2B-9E47-260F9D848480
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID of the access control instance.
+	// The ID of the resource group to which the access control instance belongs.
 	//
 	// example:
 	//

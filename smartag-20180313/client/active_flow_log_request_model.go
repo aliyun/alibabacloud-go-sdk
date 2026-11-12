@@ -24,7 +24,7 @@ type iActiveFlowLogRequest interface {
 }
 
 type ActiveFlowLogRequest struct {
-	// The instance ID of the flow log.
+	// The flow log instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ActiveFlowLogRequest struct {
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the flow log belongs.
+	// The region ID of the flow log.
 	//
 	// This parameter is required.
 	//

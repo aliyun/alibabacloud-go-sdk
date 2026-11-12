@@ -14,7 +14,7 @@ type iModifySAGAdminPasswordResponseBody interface {
 }
 
 type ModifySAGAdminPasswordResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

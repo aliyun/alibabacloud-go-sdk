@@ -22,7 +22,7 @@ type iListDpiGroupsResponseBody interface {
 type ListDpiGroupsResponseBody struct {
 	// The list of application groups.
 	DpiGroup []*ListDpiGroupsResponseBodyDpiGroup `json:"DpiGroup,omitempty" xml:"DpiGroup,omitempty" type:"Repeated"`
-	// The token for the next page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListDpiGroupsResponseBody struct {
 	//
 	// EC184A86-3C93-49D6-BB34-6C193E14D37F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of application groups returned.
+	// The total number of application groups returned by the current query.
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ func (s *ListDpiGroupsResponseBody) Validate() error {
 }
 
 type ListDpiGroupsResponseBodyDpiGroup struct {
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// example:
 	//
 	// 1
 	DpiGroupId *string `json:"DpiGroupId,omitempty" xml:"DpiGroupId,omitempty"`
-	// The name of the application group.
+	// The application group name.
 	//
 	// example:
 	//
 	// P2P
 	DpiGroupName *string `json:"DpiGroupName,omitempty" xml:"DpiGroupName,omitempty"`
-	// The minimum version of the deep packet inspection (DPI) engine that supports the application group.
+	// The minimum database engine version of the DPI engine that supports the application group.
 	//
 	// example:
 	//
 	// 0-0.0.1
 	MinEngineVersion *string `json:"MinEngineVersion,omitempty" xml:"MinEngineVersion,omitempty"`
-	// The minimum version of the signature database that supports the application group.
+	// The minimum signature database version that supports the application group.
 	//
 	// example:
 	//

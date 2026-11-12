@@ -23,13 +23,13 @@ type iDescribeACLAttributeResponseBody interface {
 
 type DescribeACLAttributeResponseBody struct {
 	Acrs *DescribeACLAttributeResponseBodyAcrs `json:"Acrs,omitempty" xml:"Acrs,omitempty" type:"Struct"`
-	// The page number in a paginated query.
+	// The page number for a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of access control rule entries displayed per page in a paginated query.
+	// The number of access control rule entries returned on each page in a paging query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeACLAttributeResponseBody struct {
 	//
 	// 8F62CE77-FBA2-4F8D-AED9-0A02814EDA69
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of access control rule entries in the current ACL instance.
+	// The total number of access control rule entries in the access control instance.
 	//
 	// example:
 	//

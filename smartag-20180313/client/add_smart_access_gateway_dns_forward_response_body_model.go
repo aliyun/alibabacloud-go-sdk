@@ -24,13 +24,13 @@ type iAddSmartAccessGatewayDnsForwardResponseBody interface {
 }
 
 type AddSmartAccessGatewayDnsForwardResponseBody struct {
-	// The error code. A value of 200 indicates that the call is successful.
+	// The error code. A value of 200 indicates that the task was queried successfully.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information returned for the request.
+	// The business data.
 	Data *AddSmartAccessGatewayDnsForwardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type AddSmartAccessGatewayDnsForwardResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type AddSmartAccessGatewayDnsForwardResponseBodyData struct {
 	//
 	// yfiy.cn
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -154,19 +154,19 @@ type AddSmartAccessGatewayDnsForwardResponseBodyData struct {
 	//
 	// first
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of the egress port.
+	// The outbound port index.
 	//
 	// example:
 	//
 	// 0
 	OutboundPortIndex *int32 `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
-	// The egress port.
+	// The outbound port.
 	//
 	// example:
 	//
 	// eth0
 	OutboundPortName *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
-	// The type of the egress port.
+	// The outbound port type.
 	//
 	// example:
 	//

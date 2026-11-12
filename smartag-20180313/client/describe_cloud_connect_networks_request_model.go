@@ -32,15 +32,15 @@ type iDescribeCloudConnectNetworksRequest interface {
 }
 
 type DescribeCloudConnectNetworksRequest struct {
-	// The ID of the CCN.
+	// The instance ID of the Cloud Connect Network (CCN).
 	//
 	// example:
 	//
 	// ccn-l9340rlu5enst*****
 	CcnId *string `json:"CcnId,omitempty" xml:"CcnId,omitempty"`
-	// The name of the CCN.
+	// The name of the Cloud Connect Network (CCN) instance.
 	//
-	// The name must be 2 to 100 characters long, start with a letter or a Chinese character, and can contain digits, underscores (_), periods (.), and hyphens (-).
+	// The name must be 2 to 100 characters in length, and can contain digits, underscores (_), periods (.), and hyphens (-). It must start with a letter or a Chinese character.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type DescribeCloudConnectNetworksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Maximum value: **50**.
+	// The number of entries to return on each page for paging in a paged query. Default value: **10**. Maximum value: **50**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the CCN is located.
+	// The ID of the region to which the Cloud Connect Network (CCN) instance belongs.
 	//
 	// This parameter is required.
 	//
@@ -70,11 +70,11 @@ type DescribeCloudConnectNetworksRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags to filter CCN instances.
+	// The labels used to query Cloud Connect Network (CCN) instances.
 	//
 	// example:
 	//
-	// DescribeCloudConnectNetworks
+	// [{"Key":"test","Value":"test"}]
 	Tag []*DescribeCloudConnectNetworksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

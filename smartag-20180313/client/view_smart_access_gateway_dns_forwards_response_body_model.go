@@ -32,13 +32,13 @@ type ViewSmartAccessGatewayDnsForwardsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1914
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A DNS forwarding list.
+	// The list of DNS forwarding instances.
 	Data []*ViewSmartAccessGatewayDnsForwardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -46,7 +46,7 @@ type ViewSmartAccessGatewayDnsForwardsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type ViewSmartAccessGatewayDnsForwardsResponseBodyData struct {
 	//
 	// www.baidu.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -171,27 +171,25 @@ type ViewSmartAccessGatewayDnsForwardsResponseBodyData struct {
 	MasterIp *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
 	// The forwarding mode.
 	//
-	// >
-	//
-	// 	- This parameter is not in use. Ignore this parameter.
+	// > - Invalid field. Ignore this field.
 	//
 	// example:
 	//
 	// first
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of the egress port.
+	// The outbound interface index.
 	//
 	// example:
 	//
 	// 0
 	OutboundPortIndex *int32 `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
-	// The egress port.
+	// The outbound interface.
 	//
 	// example:
 	//
 	// eth0
 	OutboundPortName *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
-	// The type of the egress port.
+	// The outbound interface type.
 	//
 	// example:
 	//

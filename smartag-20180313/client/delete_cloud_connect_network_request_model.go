@@ -24,7 +24,7 @@ type iDeleteCloudConnectNetworkRequest interface {
 }
 
 type DeleteCloudConnectNetworkRequest struct {
-	// The ID of the CCN instance.
+	// The ID of the Cloud Connect Network (CCN).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteCloudConnectNetworkRequest struct {
 	CcnId        *string `json:"CcnId,omitempty" xml:"CcnId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the CCN instance is deployed.
+	// The ID of the region to which the Cloud Connect Network (CCN) belongs.
 	//
 	// example:
 	//

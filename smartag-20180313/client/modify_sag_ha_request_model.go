@@ -32,13 +32,13 @@ type iModifySagHaRequest interface {
 }
 
 type ModifySagHaRequest struct {
-	// The HA mode. Valid values:
+	// The HA pattern. Valid values:
 	//
-	// 	- **NONE**: disables HA.
+	// - **NONE**: The HA feature is disabled.
 	//
-	// 	- **STATIC**: enables static HA.
+	// - **STATIC**: static pattern
 	//
-	// 	- **DYNAMIC**: enables dynamic HA.
+	// - **DYNAMIC**: dynamic schema
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type ModifySagHaRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The port name.
 	//
-	// >  If Mode is set to STATIC, you must specify a port name.
+	// > If the HA mode is set to STATIC, you must specify a port name.
 	//
 	// example:
 	//
 	// 5
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The region ID of the SAG instance.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ModifySagHaRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The SAG instance ID.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ModifySagHaRequest struct {
 	//
 	// sag-whfn****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The serial number of the SAG device associated with the SAG instance.
+	// The serial number of the associated Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type ModifySagHaRequest struct {
 	SmartAGSn *string `json:"SmartAGSn,omitempty" xml:"SmartAGSn,omitempty"`
 	// The virtual IP address.
 	//
-	// >  If Mode is set to STATIC, you must specify a virtual IP address.
+	// > If the HA mode is set to STATIC, you must specify a virtual IP address.
 	//
 	// example:
 	//

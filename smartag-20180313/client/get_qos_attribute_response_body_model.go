@@ -24,29 +24,29 @@ type iGetQosAttributeResponseBody interface {
 }
 
 type GetQosAttributeResponseBody struct {
-	// The number of Smart Access Gateway (SAG) instances that have exceptional configurations.
+	// The number of Smart Access Gateway instances with configuration errors.
 	//
 	// example:
 	//
 	// 1
 	ErrorConfigSmartAGCount *int32 `json:"ErrorConfigSmartAGCount,omitempty" xml:"ErrorConfigSmartAGCount,omitempty"`
-	// The traffic throttling rule applied to the QoS policies that have exceptional configurations.
+	// The rate limiting rules with configuration errors in the QoS policy.
 	QosCars []*GetQosAttributeResponseBodyQosCars `json:"QosCars,omitempty" xml:"QosCars,omitempty" type:"Repeated"`
-	// The description of the QoS policy.
+	// The description of the QoS policy instance.
 	//
 	// example:
 	//
 	// test
 	QosDescription *string `json:"QosDescription,omitempty" xml:"QosDescription,omitempty"`
-	// The name of the QoS policy.
+	// The name of the QoS policy instance.
 	//
 	// example:
 	//
 	// test
 	QosName *string `json:"QosName,omitempty" xml:"QosName,omitempty"`
-	// List of QoS policies based on 5-tuple.
+	// The list of 5-tuple rules for the QoS policy instance.
 	QosPolicies []*GetQosAttributeResponseBodyQosPolicies `json:"QosPolicies,omitempty" xml:"QosPolicies,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -139,11 +139,11 @@ func (s *GetQosAttributeResponseBody) Validate() error {
 }
 
 type GetQosAttributeResponseBodyQosCars struct {
-	// The type of traffic throttling. Valid values:
+	// The rate limiting type. Valid values:
 	//
-	// 	- **Absolute**: throttles traffic based on a specific range of bandwidth.
+	// - **Absolute**: by bandwidth value.
 	//
-	// 	- **Percent**: throttles traffic based on a specific range of bandwidth percentage.
+	// - **Percent**: by percentage.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type GetQosAttributeResponseBodyQosCars struct {
 	//
 	// 2
 	MaxBandwidthAbs *int32 `json:"MaxBandwidthAbs,omitempty" xml:"MaxBandwidthAbs,omitempty"`
-	// The maximum bandwidth percentage that the traffic is throttled to.
+	// The maximum bandwidth percentage.
 	//
 	// example:
 	//
@@ -173,37 +173,35 @@ type GetQosAttributeResponseBodyQosCars struct {
 	//
 	// 10
 	MinBandwidthPercent *int32 `json:"MinBandwidthPercent,omitempty" xml:"MinBandwidthPercent,omitempty"`
-	// Bandwidth type when traffic is throttled to a percentage of the total bandwidth of the network.
+	// The bandwidth type when rate limiting is based on percentage. Valid values:
 	//
-	// 	- **CcnBandwidth**: Cloud Connect Network (CCN) bandwidth.
+	// - **CcnBandwidth**: Cloud Connect Network (CCN) bandwidth.
 	//
-	// 	- **InternetUpBandwidth**: Internet upstream bandwidth.
+	// - **InternetUpBandwidth**: Internet upstream bandwidth.
 	//
 	// example:
 	//
 	// InternetUpBandwidth
 	PercentSourceType *string `json:"PercentSourceType,omitempty" xml:"PercentSourceType,omitempty"`
-	// The priority of the traffic throttling rule.
-	//
-	// Valid values are from **1*	- to **3**. A smaller value indicates a higher priority.
+	// The priority of the rate limiting rule. Valid values: **1*	- to **3**. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The description of the traffic throttling rule.
+	// The description of the rate limiting rule.
 	//
 	// example:
 	//
 	// test
 	QosCarDescription *string `json:"QosCarDescription,omitempty" xml:"QosCarDescription,omitempty"`
-	// The ID of the traffic throttling rule.
+	// The ID of the rate limiting rule.
 	//
 	// example:
 	//
 	// qoscar-xir1apa8ayjp56ei****
 	QosCarId *string `json:"QosCarId,omitempty" xml:"QosCarId,omitempty"`
-	// The name of the traffic throttling rule.
+	// The name of the rate limiting rule.
 	//
 	// example:
 	//
@@ -314,85 +312,77 @@ func (s *GetQosAttributeResponseBodyQosCars) Validate() error {
 }
 
 type GetQosAttributeResponseBodyQosPolicies struct {
-	// The range of the destination CIDR block.
+	// The destination CIDR block.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	DestCidr *string `json:"DestCidr,omitempty" xml:"DestCidr,omitempty"`
-	// The range of destination ports.
+	// The destination port range. Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Valid values: **1*	- to **65535*	- and **-1**.
+	// Examples of the destination port range format:
 	//
-	// Examples of the format of the destination port range:
+	// - **1/200**: indicates ports 1 to 200.
 	//
-	// 	- **1/200**: a port range from 1 to 200.
+	// - **80/80**: indicates port 80.
 	//
-	// 	- **80/80**: port 80.
-	//
-	// 	- **-1/-1**: all ports.
+	// - **-1/-1**: indicates that ports are not restricted.
 	//
 	// example:
 	//
 	// -1/-1
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
-	// The end time of the valid time of the 5-tuple.
-	//
-	// The time must be in UTC+8.
+	// The expiration time of the 5-tuple rules. The time is displayed in Beijing time. Format: UTC+8.
 	//
 	// example:
 	//
 	// 2021-07-29T00:00:00+0800
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the protocol that is applied to the 5-tuple rule.
+	// The protocol type applied to the 5-tuple rules.
 	//
 	// example:
 	//
 	// ALL
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The priority of the traffic throttling rule that is applied to the 5-tuple.rule.
-	//
-	// A smaller value indicates a higher priority.
+	// The priority of the rate limiting rule to which the 5-tuple rules belong. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The description of the 5-tuple.
+	// The description of the 5-tuple rules.
 	//
 	// example:
 	//
 	// test
 	QosPolicieDescription *string `json:"QosPolicieDescription,omitempty" xml:"QosPolicieDescription,omitempty"`
-	// The name of the 5-tuple.
+	// The name of the 5-tuple rules.
 	//
 	// example:
 	//
 	// test
 	QosPolicieName *string `json:"QosPolicieName,omitempty" xml:"QosPolicieName,omitempty"`
-	// The range of the source CIDR block.
+	// The source CIDR block.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
-	// The range of source ports.
+	// The source port range. Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Valid values: **1*	- to **65535*	- and **-1**.
+	// Examples of the source port range format:
 	//
-	// Examples of the format of the source port range:
+	// - **1/200**: indicates ports 1 to 200.
 	//
-	// 	- **1/200**: a port range from 1 to 200.
+	// - **80/80**: indicates port 80.
 	//
-	// 	- **80/80**: port 80.
-	//
-	// 	- **-1/-1**: all ports.
+	// - **-1/-1**: indicates that ports are not restricted.
 	//
 	// example:
 	//
 	// -1/-1
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The start time of the valid time of the 5-tuple.
+	// The start of the effective period for the 5-tuple rules. The time is displayed in Beijing time. Format: UTC+8.
 	//
 	// example:
 	//

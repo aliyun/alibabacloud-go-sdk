@@ -24,9 +24,9 @@ type iListDpiConfigErrorRequest interface {
 }
 
 type ListDpiConfigErrorRequest struct {
-	// The type of instance for which the DPI feature is configured:
+	// The type of the instance for which the DPI feature is configured. Valid values:
 	//
-	// - **acl**: a Resource Access Management instance.
+	// - **acl**: an access control instance.
 	//
 	// - **qos**: a QoS policy instance.
 	//
@@ -36,7 +36,7 @@ type ListDpiConfigErrorRequest struct {
 	//
 	// qos
 	DpiConfigType *string `json:"DpiConfigType,omitempty" xml:"DpiConfigType,omitempty"`
-	// The maximum number of configuration errors to return on each page.
+	// The maximum number of entries allowed per page in a paged query.
 	//
 	// Valid values: **1*	- to **100**.
 	//
@@ -46,13 +46,15 @@ type ListDpiConfigErrorRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the Smart Access Gateway instance is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions and their IDs that Smart Access Gateway supports.
+	// The region ID of the Smart Access Gateway instance.
+	//
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions supported by Smart Access Gateway and the corresponding region IDs.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +62,13 @@ type ListDpiConfigErrorRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance for which the DPI feature is configured.
+	// The instance ID for which the DPI feature is configured.
 	//
 	// example:
 	//
 	// qos-1strcafl4wghpb****
 	RuleInstanceId *string `json:"RuleInstanceId,omitempty" xml:"RuleInstanceId,omitempty"`
-	// The ID of the Smart Access Gateway instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// example:
 	//

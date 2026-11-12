@@ -26,19 +26,19 @@ type iDescribeSagWan4GResponseBody interface {
 }
 
 type DescribeSagWan4GResponseBody struct {
-	// The IP address of the 4G SIM card.
+	// The IP address of the 4G NIC.
 	//
 	// example:
 	//
 	// 192.XX.XX.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The MAC address of the 4G SIM card.
+	// The MAC address of the 4G NIC.
 	//
 	// example:
 	//
 	// c4:00:ad:a2:f5:****
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The priority of the 4G SIM card. The default value is **99**, which indicates the lowest priority and cannot be modified.
+	// The priority of the 4G NIC. The default value is **99**, which indicates the lowest priority. The priority cannot be modified.
 	//
 	// example:
 	//
@@ -50,37 +50,37 @@ type DescribeSagWan4GResponseBody struct {
 	//
 	// CE6642D4-21EB-4168-9BF9-F217953F9892
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the 4G SIM card. Valid value:
+	// The status of the 4G NIC. Valid values:
 	//
-	// 	- **Normal**: The 4G SIM card is available.
+	// - **Normal**: The status is normal.
 	//
-	// 	- **Abnormal**: The 4G SIM card encountered an error.
+	// - **Abnormal**: The status is abnormal.
 	//
-	// 	- **Unavailable**: No 4G SIM card is inserted.
+	// - **Unavailable**: No 4G NIC is available.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The signal strength of the 4G network. Valid values:
+	// The 4G signal strength. Valid values:
 	//
-	// 	- **High**: strong signals.
+	// - **High**: Strong.
 	//
-	// 	- **Middle**: medium-strength signals.
+	// - **Middle**: Medium.
 	//
-	// 	- **Low**: weak signals.
+	// - **Low**: Weak.
 	//
-	// 	- **Unavailable**: no signal.
+	// - **Unavailable**: No signal.
 	//
 	// example:
 	//
 	// High
 	Strength *string `json:"Strength,omitempty" xml:"Strength,omitempty"`
-	// The network status of the 4G SIM card. Valid values:
+	// The traffic status of the 4G NIC. Valid values:
 	//
-	// 	- **active**: The 4G SIM card is used to establish the active connection. Network traffic is transmitted over the 4G SIM card first.
+	// - **active**: The 4G NIC acts as the active link, and current traffic is transmitted through this 4G NIC.
 	//
-	// 	- **standby**: The 4G SIM card is used to establish a standby connection. Network traffic is not transmitted over the 4G SIM card unless the active connection fails.
+	// - **standby**: The 4G NIC acts as the standby link and does not forward traffic. If the active link fails, traffic is transmitted through this 4G NIC.
 	//
 	// example:
 	//

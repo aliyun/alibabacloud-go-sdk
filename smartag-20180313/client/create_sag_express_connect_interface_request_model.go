@@ -42,7 +42,7 @@ type CreateSagExpressConnectInterfaceRequest struct {
 	//
 	// 192.XX.XX.1
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The subnet mask of the IP address.
+	// The IP address mask.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateSagExpressConnectInterfaceRequest struct {
 	Mask         *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the Express Connect port.
+	// The name of the dedicated connection port.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateSagExpressConnectInterfaceRequest struct {
 	//
 	// 5
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The ID of the region where the Smart Access Gateway (SAG) instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CreateSagExpressConnectInterfaceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateSagExpressConnectInterfaceRequest struct {
 	//
 	// sag-whfn****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The serial number of the SAG device associated with the SAG instance.
+	// The serial number of the bound Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//
@@ -86,17 +86,15 @@ type CreateSagExpressConnectInterfaceRequest struct {
 	//
 	// sag32a30****
 	SmartAGSn *string `json:"SmartAGSn,omitempty" xml:"SmartAGSn,omitempty"`
-	// The VLAN ID of the subinterface.
+	// The VLAN ID of the dedicated connection sub-interface.
 	//
-	// Value: **0 to 4094**.
+	// Valid values: **0 to 4094**.
 	//
-	// >
+	// > - If the VLAN ID is 0, the port is a physical port and the VLAN sub-interface mode is not used.
 	//
-	// 	- If the VLAN ID is 0, this port is a physical port and does not support VLAN subinterfaces.
+	// - If the VLAN ID is 1 to 4094, the port uses a VLAN-based Layer 3 sub-interface.
 	//
-	// 	- If the VLAN ID is 1 to 4094, this port supports VLAN subinterfaces based on the Layer 3 protocols.
-	//
-	// 	- You can create a maximum of 5 VLAN subinterfaces.
+	// - You can create up to 5 VLANs.
 	//
 	// example:
 	//
