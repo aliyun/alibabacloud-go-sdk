@@ -30,7 +30,7 @@ type GeneralRephotographyDetectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The recapture detection result.
 	Data *GeneralRephotographyDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The return message or failure description.
+	// The response message or failure description.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type GeneralRephotographyDetectionResponseBodyDataResult struct {
 	//
 	// true
 	IsFake *bool `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
-	// The detection type. The value is fixed to general.
+	// The detection type. Fixed to general.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type GeneralRephotographyDetectionResponseBodyDataResultGrounding struct {
 	//
 	// complete
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The target array. It contains up to 12 items and can be empty if no relevant targets are found.
+	// The target array. A maximum of 12 items are returned. This can be empty if no relevant targets are found.
 	Regions []*GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -276,7 +276,7 @@ func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) Validate(
 type GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions struct {
 	// The bounding box coordinates.
 	Bbox2d []*float32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The target category. For enumerations, see the following table.
+	// The target category. For valid values, see the following table.
 	//
 	// example:
 	//

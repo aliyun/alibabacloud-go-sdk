@@ -22,7 +22,7 @@ type iVideoGenerationResponseBody interface {
 }
 
 type VideoGenerationResponseBody struct {
-	// The response code. A value of success indicates that the call is successful, and a value of failed indicates that the call fails.
+	// The response code. success indicates a successful call, and failed indicates a failed call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type VideoGenerationResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the call is successful. true indicates success, and false indicates failure.
 	//
 	// example:
 	//

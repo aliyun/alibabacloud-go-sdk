@@ -18,7 +18,7 @@ type iMerchandisePlacementDetectionProRequest interface {
 }
 
 type MerchandisePlacementDetectionProRequest struct {
-	// The HTTPS URL of the display image to detect.
+	// The HTTPS URL of the display image to be detected.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type MerchandisePlacementDetectionProRequest struct {
 	//
 	// https://example.com/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The detection rule. When non-empty, this value takes priority as the model prompt.
+	// The detection rule. If this parameter is not empty, it is preferentially used as the model prompt.
 	//
 	// example:
 	//
-	// Identify all Genki Forest beverages on the shelf and mark their positions
+	// Recognize all Genki Forest beverages on the shelf and draw bounding boxes around them
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The product type. This parameter must be set to Genki Forest when Rule is empty.
+	// The product type. If the Rule parameter is empty, you must set this parameter to Genki Forest.
 	//
 	// example:
 	//
-	// 元气森林
+	// Genki Forest
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

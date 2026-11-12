@@ -30,7 +30,7 @@ type MerchandisePlacementDetectionLiteResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *MerchandisePlacementDetectionLiteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The return message or failure description.
 	//
 	// example:
 	//
@@ -115,7 +115,11 @@ func (s *MerchandisePlacementDetectionLiteResponseBody) Validate() error {
 type MerchandisePlacementDetectionLiteResponseBodyData struct {
 	// The result.
 	Result *MerchandisePlacementDetectionLiteResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The usage map. The value is {"ProcessingCount":1} for a successful call, and an empty object for a failed call.
+	// The usage map. The value is {"ProcessingCount":1} if the call is successful, or an empty object if the call fails.
+	//
+	// example:
+	//
+	// {"ProcessingCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
@@ -155,13 +159,13 @@ func (s *MerchandisePlacementDetectionLiteResponseBodyData) Validate() error {
 }
 
 type MerchandisePlacementDetectionLiteResponseBodyDataResult struct {
-	// The supplementary element grounding results.
+	// The supplementary element grounding result.
 	Grounding *MerchandisePlacementDetectionLiteResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
 	// The product items.
 	Products []*MerchandisePlacementDetectionLiteResponseBodyDataResultProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
-	// The deduplicated list of SkuIds.
+	// The deduplicated list of SkuId values.
 	SkuIds []*string `json:"SkuIds,omitempty" xml:"SkuIds,omitempty" type:"Repeated"`
-	// The result type, which is fixed to sku.
+	// The result type. The value is fixed as sku.
 	//
 	// example:
 	//
@@ -232,19 +236,19 @@ func (s *MerchandisePlacementDetectionLiteResponseBodyDataResult) Validate() err
 }
 
 type MerchandisePlacementDetectionLiteResponseBodyDataResultGrounding struct {
-	// The coverage status. Valid values:
+	// The coverage status of the grounding. Valid values:
 	//
-	// - complete: The relevant visible targets are complete.
+	// - complete: All relevant visible targets are complete.
 	//
 	// - partial: Only some targets are valid or recognizable.
 	//
-	// - Empty string: No valid supplementary grounding results are obtained.
+	// - Empty string: No valid supplementary grounding result is obtained.
 	//
 	// example:
 	//
 	// complete
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The target array, which contains up to 12 items. This array can be empty when no relevant targets are found.
+	// The array of targets, containing up to 12 items. This array can be empty if no relevant targets are found.
 	Regions []*MerchandisePlacementDetectionLiteResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -296,7 +300,7 @@ type MerchandisePlacementDetectionLiteResponseBodyDataResultGroundingRegions str
 	//
 	// price_tag
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The confirmable short name or text of up to 24 characters. This field is an empty string when the text is unclear.
+	// The confirmable short name or text of up to 24 characters. This field is an empty string if the text is unclear.
 	//
 	// example:
 	//
@@ -346,7 +350,7 @@ func (s *MerchandisePlacementDetectionLiteResponseBodyDataResultGroundingRegions
 type MerchandisePlacementDetectionLiteResponseBodyDataResultProducts struct {
 	// The bounding boxes corresponding to the SKU.
 	Boxes []*MerchandisePlacementDetectionLiteResponseBodyDataResultProductsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	// The recognition code, which is obtained by removing the trailing _ce from the recognition name.
+	// The recognition code, which is obtained by removing the _ce suffix from the recognition name.
 	//
 	// example:
 	//
@@ -410,7 +414,7 @@ type MerchandisePlacementDetectionLiteResponseBodyDataResultProductsBoxes struct
 	//
 	// example:
 	//
-	// (\\"874\\")
+	// 874
 	Right *int64 `json:"Right,omitempty" xml:"Right,omitempty"`
 	// The bottom coordinate.
 	//

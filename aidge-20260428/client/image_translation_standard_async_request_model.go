@@ -70,7 +70,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand text in the product area.
+	// Specifies whether to translate the brand text in the product area.
 	//
 	// example:
 	//

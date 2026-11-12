@@ -170,6 +170,10 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	// task-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The usage information. This field is empty for free API operations.
+	//
+	// example:
+	//
+	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

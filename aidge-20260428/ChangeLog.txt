@@ -1,3 +1,7 @@
+2026-11-12 Version: v5.12.0
+- Support API VacancyDetection.
+
+
 2026-11-11 Version: v5.11.0
 - Support API ProductVideoGeneration.
 - Update API AiTryOn: add request parameters Mode.

@@ -22,15 +22,15 @@ type iSubmitProductMatchResponseBody interface {
 }
 
 type SubmitProductMatchResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submit result of the matching product identification asynchronous task.
+	// The submission result of the asynchronous task for identical product identification.
 	Data *SubmitProductMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type SubmitProductMatchResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: Successful.
 	//
-	// - false: The call failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *SubmitProductMatchResponseBody) Validate() error {
 }
 
 type SubmitProductMatchResponseBodyData struct {
-	// The task acceptance time in ISO 8601 UTC format.
+	// The time when the task was accepted, in ISO 8601 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-20T09:30:00Z
 	SubmittedAt *string `json:"SubmittedAt,omitempty" xml:"SubmittedAt,omitempty"`
-	// The asynchronous task ID used for QueryAsyncTaskResult queries.
+	// The ID of the asynchronous task used to query the task result by calling QueryAsyncTaskResult.
 	//
 	// example:
 	//

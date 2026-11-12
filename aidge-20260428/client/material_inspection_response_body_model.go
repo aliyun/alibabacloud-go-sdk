@@ -22,7 +22,7 @@ type iMaterialInspectionResponseBody interface {
 }
 
 type MaterialInspectionResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type MaterialInspectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The material display detection result.
 	Data *MaterialInspectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type MaterialInspectionResponseBody struct {
 	//
 	// - true: The call is successful.
 	//
-	// - false: The call failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *MaterialInspectionResponseBody) Validate() error {
 type MaterialInspectionResponseBodyData struct {
 	// The inspection result.
 	Result *MaterialInspectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The usage information. The key is the usage metric name and the value is the count.
+	// The usage information. The key is the usage name and the value is the count.
 	//
 	// example:
 	//
@@ -163,19 +163,19 @@ func (s *MaterialInspectionResponseBodyData) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResult struct {
-	// The natural language summary, such as "1 rule: 1 PASS, all inspection items are compliant."
+	// The natural language summary, such as \\"1 rule: 1 PASS, all detection items are compliant\\".
 	//
 	// example:
 	//
-	// 1 rule: 1 PASS, all inspection items are compliant
+	// 1 rule: 1 PASS, all detection items are compliant
 	Evidence *string `json:"Evidence,omitempty" xml:"Evidence,omitempty"`
-	// The overall determination result. Valid values: PASS and FAIL.
+	// The overall judgment. Valid values: PASS and FAIL.
 	//
 	// example:
 	//
 	// PASS
 	OverallResult *string `json:"OverallResult,omitempty" xml:"OverallResult,omitempty"`
-	// The request ID returned as-is from the request.
+	// The request ID returned as-is.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ func (s *MaterialInspectionResponseBodyDataResult) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResultSteps struct {
-	// The determination result of the step. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
+	// The judgment result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iTextTranslateAsyncResponseBody interface {
 }
 
 type TextTranslateAsyncResponseBody struct {
-	// The response code for the submission call. A success example is success.
+	// The response code of the submission call. Example of a successful call: success.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the text translation asynchronous node.
+	// The commit result of the text translation asynchronous node.
 	Data *TextTranslateAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The call description. A success example is Success. If the call fails, read the actual error message.
+	// The call description. Example of a successful call: Success. If the call fails, read the actual error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the submission request. It is used for troubleshooting.
+	// The ID of the submission request, which is used for troubleshooting.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the submission call is successful. It does not indicate that the translation is complete.
+	// Indicates whether the submission call is successful. A successful call does not mean that the translation is complete.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *TextTranslateAsyncResponseBody) Validate() error {
 }
 
 type TextTranslateAsyncResponseBodyData struct {
-	// The ID of the asynchronous task. It is used for result queries and notification association. Do not use the example prefix as a business validation rule.
+	// The ID of the asynchronous task, which is used for result queries and notification association. Do not use the example prefix as a business validation rule.
 	//
 	// example:
 	//

@@ -176,6 +176,10 @@ type QueryDisplayKnowledgeResponseBodyData struct {
 	// 20
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 	// The usage information. This parameter is empty for free API operations.
+	//
+	// example:
+	//
+	// {"ProcessingCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

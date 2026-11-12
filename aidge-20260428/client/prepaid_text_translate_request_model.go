@@ -26,31 +26,31 @@ type iPrepaidTextTranslateRequest interface {
 }
 
 type PrepaidTextTranslateRequest struct {
-	// The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, game. If not specified or an invalid value is passed, the general translation policy is used by default.
+	// The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, and game. If this parameter is not specified or is invalid, the general translation policy is used by default.
 	//
 	// example:
 	//
-	// Alibaba-商品
+	// Alibaba-Product
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The format type of the source text. This parameter is optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
+	// The format type of the source text. This parameter is optional. Valid values: text (plain text format) and html (web page format, which retains HTML tags).
 	//
 	// example:
 	//
 	// text
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	// The intervention glossary ID. This parameter is optional. The glossary must be created separately in the console, and its ID must be provided. If the glossary ID is empty, the translation result is not modified.
+	// The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If the provided intervention glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
 	// custom_glossary
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The source language code. This parameter is optional. If not specified, the language is automatically detected. You can pass auto for language detection.
+	// The source language code. This parameter is optional. If you do not specify this parameter, the language is automatically detected. You can set this parameter to auto for language detection.
 	//
 	// example:
 	//
 	// auto
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The list of texts to translate. This parameter is required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
+	// The list of text to be translated. This parameter is required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type PrepaidTextTranslateRequest struct {
 	//
 	// ["Hello world"]
 	SourceTextList []*string `json:"SourceTextList,omitempty" xml:"SourceTextList,omitempty" type:"Repeated"`
-	// The target language code. This parameter is required. More than 100 language directions are supported. For details, refer to the supported language directions list.
+	// The target language code. This parameter is required. More than 100 language pairs are supported. For details, see the supported language pairs list.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type PrepaidTextTranslateRequest struct {
 	//
 	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The format of the translation text. Valid values: html (web page format. This setting processes both the source text and translated text in HTML format) and text (text format. This setting processes both the source text and translated text as plain text without any format processing).
+	// The format of the translated text. Valid values: html (web page format. Setting this parameter processes the source and translated text in HTML format) and text (text format. Setting this parameter processes the source and translated text as plain text without format processing).
 	//
 	// example:
 	//

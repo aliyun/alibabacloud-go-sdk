@@ -28,9 +28,9 @@ type MerchandisePlacementDetectionProResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detection result of product display detection Pro.
+	// The detection result of the retail display detection Pro edition.
 	Data *MerchandisePlacementDetectionProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The returned message or failure description.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type MerchandisePlacementDetectionProResponseBodyData struct {
 	//
 	// 3
 	BoxCount *int32 `json:"BoxCount,omitempty" xml:"BoxCount,omitempty"`
-	// The list of per-box detection details.
+	// The list of detection details for each bounding box.
 	Data []*MerchandisePlacementDetectionProResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The usage information.
 	//
@@ -178,15 +178,15 @@ func (s *MerchandisePlacementDetectionProResponseBodyData) Validate() error {
 }
 
 type MerchandisePlacementDetectionProResponseBodyDataData struct {
-	// The normalized bounding box coordinates [x1,y1,x2,y2], with values in the range 0–1000.
+	// The normalized bounding box coordinates in the [x1,y1,x2,y2] format. Valid values: 0 to 1000.
 	Bbox2d []*int32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The detected product name. The value is unknown if the name cannot be determined.
+	// The name of the detected product. If the name cannot be determined, the value is unknown.
 	//
 	// example:
 	//
 	// unknown
 	DetectedSkuName *string `json:"DetectedSkuName,omitempty" xml:"DetectedSkuName,omitempty"`
-	// The bounding box index, starting from 1.
+	// The index of the bounding box, starting from 1.
 	//
 	// example:
 	//

@@ -299,6 +299,10 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	// The list of selected attribute value texts, such as ["iOS","Android"].
 	SelectedValues []*string `json:"SelectedValues,omitempty" xml:"SelectedValues,omitempty" type:"Repeated"`
 	// The list of selected attribute value IDs, such as [30127,30128].
+	//
+	// example:
+	//
+	// [30127,30128]
 	SelectedVids []*int32 `json:"SelectedVids,omitempty" xml:"SelectedVids,omitempty" type:"Repeated"`
 }
 

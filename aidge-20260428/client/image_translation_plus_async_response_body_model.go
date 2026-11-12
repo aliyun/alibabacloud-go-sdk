@@ -22,7 +22,7 @@ type iImageTranslationPlusAsyncResponseBody interface {
 }
 
 type ImageTranslationPlusAsyncResponseBody struct {
-	// The response code for the submission call. The value success indicates a successful call.
+	// The response code for the submission call. A value of success indicates that the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ImageTranslationPlusAsyncResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The submission result of the Image Translation Plus asynchronous task.
 	Data *ImageTranslationPlusAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, such as "The content contains sensitive data. Try another input."
+	// The error message, such as The content contains sensitive data. Try another input.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ImageTranslationPlusAsyncResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the submission call is successful. This does not mean that the translation is completed. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the submission call is successful. This does not indicate that the translation is complete. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ImageTranslationPlusAsyncResponseBody) Validate() error {
 }
 
 type ImageTranslationPlusAsyncResponseBodyData struct {
-	// The identifier of the asynchronous task, which is used for result query and notification association. Do not use the example prefix as a business validation rule.
+	// The identifier of the asynchronous task. This ID is used for result queries and notification association. Do not use the example prefix as a business validation rule.
 	//
 	// example:
 	//

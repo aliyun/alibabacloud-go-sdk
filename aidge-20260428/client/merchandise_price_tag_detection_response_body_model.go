@@ -28,9 +28,9 @@ type MerchandisePriceTagDetectionResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The scenario recognition result.
+	// The recognition result.
 	Data *MerchandisePriceTagDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The return message or failure description.
+	// The returned message or failure description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type MerchandisePriceTagDetectionResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *MerchandisePriceTagDetectionResponseBody) Validate() error {
 }
 
 type MerchandisePriceTagDetectionResponseBodyData struct {
-	// The detection and recognition result details.
+	// The details of the detection and recognition result.
 	Result *MerchandisePriceTagDetectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The usage information.
 	//
@@ -159,11 +159,11 @@ func (s *MerchandisePriceTagDetectionResponseBodyData) Validate() error {
 }
 
 type MerchandisePriceTagDetectionResponseBodyDataResult struct {
-	// The localization information.
+	// The grounding information.
 	Grounding *MerchandisePriceTagDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
-	// The price tag list. This can be an empty array if no price tags are recognized under normal conditions.
+	// The list of price tags. This can be an empty array if no price tags are recognized.
 	PriceTags []*MerchandisePriceTagDetectionResponseBodyDataResultPriceTags `json:"PriceTags,omitempty" xml:"PriceTags,omitempty" type:"Repeated"`
-	// The value is fixed to priceTag.
+	// Fixed to priceTag.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type MerchandisePriceTagDetectionResponseBodyDataResultGrounding struct {
 	//
 	// complete
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The region list.
+	// The list of regions.
 	Regions []*MerchandisePriceTagDetectionResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -339,19 +339,19 @@ type MerchandisePriceTagDetectionResponseBodyDataResultPriceTags struct {
 	//
 	// 6
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The selling price, retained as a string to avoid being parsed as a reserved word or reserved character.
+	// The selling price, retained as a string.
 	//
 	// example:
 	//
 	// 5.50
 	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
-	// The associated product code.
+	// The code of the associated product.
 	//
 	// example:
 	//
 	// 001
 	SkuCode *string `json:"SkuCode,omitempty" xml:"SkuCode,omitempty"`
-	// The associated product name.
+	// The name of the associated product.
 	//
 	// example:
 	//

@@ -22,27 +22,31 @@ type iGenerateProductContentResponseBody interface {
 }
 
 type GenerateProductContentResponseBody struct {
-	// The error code. This parameter is not returned for successful calls.
+	// The error code. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The processing result. Contains copy data upon success. Returns null upon business failure.
+	// The processing result. Contains copy data upon success. Returns a fixed value when the business processing fails.
 	Data *GenerateProductContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls.
+	// The error message. This parameter is not returned for normal calls.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used for troubleshooting. This parameter may be empty in extreme exception scenarios.
+	// The request ID, used for troubleshooting. It may be empty in extreme exception cases.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the business processing is successful. Valid values: true (the output passes verification) and false (the business processing fails).
+	// Specifies whether the business processing is successful. Valid values:
+	//
+	// - true: The output passes the verification.
+	//
+	// - false: The business processing fails.
 	//
 	// example:
 	//
@@ -131,9 +135,9 @@ type GenerateProductContentResponseBodyData struct {
 	//
 	// ru
 	OutputLanguage *string `json:"OutputLanguage,omitempty" xml:"OutputLanguage,omitempty"`
-	// The number of characters for each selling point, which corresponds to data.points one by one. This parameter is returned only when bullet points are successfully processed.
+	// Returned only when bullet point processing is successful. The number of characters for each point, corresponding to data.points one by one.
 	PointLengths []*int32 `json:"PointLengths,omitempty" xml:"PointLengths,omitempty" type:"Repeated"`
-	// The selling point texts arranged in output order. This parameter is returned only when bullet points are successfully processed.
+	// Returned only when bullet point processing is successful. The selling point texts arranged in output order.
 	Points []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 	// The final copy. Generated keywords are separated by commas and spaces. Rewritten keywords are separated by spaces. Bullet points are separated by line breaks.
 	//

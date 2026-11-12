@@ -42,7 +42,7 @@ type ImageTranslationProAsyncResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the submission call is successful. This does not mean that the translation is completed.
+	// Indicates whether the submission call is successful. This does not indicate that the translation is complete.
 	//
 	// example:
 	//

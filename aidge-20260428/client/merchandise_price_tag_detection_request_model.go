@@ -14,7 +14,7 @@ type iMerchandisePriceTagDetectionRequest interface {
 }
 
 type MerchandisePriceTagDetectionRequest struct {
-	// The HTTP(S) URL of the image to be detected.
+	// The HTTP or HTTPS URL of the image to be detected.
 	//
 	// This parameter is required.
 	//

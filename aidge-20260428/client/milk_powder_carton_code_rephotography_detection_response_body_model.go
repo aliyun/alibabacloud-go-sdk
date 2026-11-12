@@ -115,7 +115,7 @@ func (s *MilkPowderCartonCodeRephotographyDetectionResponseBody) Validate() erro
 type MilkPowderCartonCodeRephotographyDetectionResponseBodyData struct {
 	// The details of the recapture detection result.
 	Result *MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The usage information. The value is `{"ProcessingCount":1}` if the call is successful, or an empty object if the call fails.
+	// The usage information. If the call is successful, the value is `{"ProcessingCount":1}`. If the call fails, the value is an empty object.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ func (s *MilkPowderCartonCodeRephotographyDetectionResponseBodyData) Validate() 
 }
 
 type MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResult struct {
-	// The supplementary element grounding results.
+	// The supplementary element grounding result.
 	Grounding *MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
 	// Indicates whether the image is recaptured.
 	//
@@ -185,13 +185,13 @@ type MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResult struct {
 	//
 	// 1
 	PhotoStatus *int32 `json:"PhotoStatus,omitempty" xml:"PhotoStatus,omitempty"`
-	// The confidence score for recapture detection.
+	// The recapture confidence score.
 	//
 	// example:
 	//
 	// 0.89
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The detection type. The value is fixed to `boxCode`.
+	// Fixed to `boxCode`.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ func (s *MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResult) Valid
 }
 
 type MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGrounding struct {
-	// The coverage of the grounding. Valid values:
+	// The coverage. Valid values:
 	//
 	// - `complete`: The relevant visible targets are complete.
 	//
@@ -281,7 +281,7 @@ type MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGrounding s
 	//
 	// complete
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The array of targets, which contains up to 12 items. This array can be empty if no relevant targets are found.
+	// The target array, containing up to 12 items. This array can be empty if no relevant targets are found.
 	Regions []*MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -325,15 +325,21 @@ func (s *MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGroundi
 }
 
 type MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGroundingRegions struct {
-	// The coordinates of the bounding box in the `[top-left x, top-left y, bottom-right x, bottom-right y]` format. The value range is 0 to 1000. The left value must be less than the right value, and the top value must be less than the bottom value.
+	// The bounding box coordinates.
+	//
+	// - `[top-left x, top-left y, bottom-right x, bottom-right y]`
+	//
+	// - Value range: 0 to 1000.
+	//
+	// - The left value must be less than the right value, and the top value must be less than the bottom value.
 	Bbox2d []*float32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The category of the target. For enumerated values, see the following table.
+	// The target category. For valid values, see the following table.
 	//
 	// example:
 	//
 	// milk_powder
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The confirmed short name or text, which contains up to 24 characters. This field is an empty string if the text is unclear.
+	// The confirmed short name or text, up to 24 characters. If the text is unclear, an empty string is returned.
 	//
 	// example:
 	//

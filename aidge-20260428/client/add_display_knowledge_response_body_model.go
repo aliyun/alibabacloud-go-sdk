@@ -168,6 +168,10 @@ type AddDisplayKnowledgeResponseBodyData struct {
 	// 0ea3b66e88a543658520c994f08896a0
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The usage information. This parameter is empty for free API operations.
+	//
+	// example:
+	//
+	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

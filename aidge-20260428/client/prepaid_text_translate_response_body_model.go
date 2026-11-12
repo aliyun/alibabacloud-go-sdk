@@ -22,27 +22,27 @@ type iPrepaidTextTranslateResponseBody interface {
 }
 
 type PrepaidTextTranslateResponseBody struct {
-	// The response code. The value "success" is returned for successful calls.
+	// The response code. If the call is successful, success is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The translation result data, including the translation list and usage information.
+	// The translation result data, which includes the translation list and usage information.
 	Data *PrepaidTextTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. The value "Success" is returned for successful calls. For exceptions, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
+	// The error message. If the call is successful, Success is returned. If an exception occurs, a specific error message is returned, such as "The parameter contains sensitive information. Try another input".
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to uniquely identify a request.
+	// The ID of the request, which is used to identify a unique API call.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,9 +113,13 @@ func (s *PrepaidTextTranslateResponseBody) Validate() error {
 }
 
 type PrepaidTextTranslateResponseBodyData struct {
-	// The translation result list. Each element corresponds to a translation result for an entry in the input text list.
+	// The list of translation results. Each element corresponds to a translation result for an item in the input text list.
 	Translations []*PrepaidTextTranslateResponseBodyDataTranslations `json:"Translations,omitempty" xml:"Translations,omitempty" type:"Repeated"`
-	// The usage information, including the input character count.
+	// The usage information, which includes the number of input characters.
+	//
+	// example:
+	//
+	// {"InputCharacterCount":5}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
@@ -175,7 +179,7 @@ type PrepaidTextTranslateResponseBodyDataTranslations struct {
 	//
 	// example:
 	//
-	// Hello World
+	// Hello world
 	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
 }
 

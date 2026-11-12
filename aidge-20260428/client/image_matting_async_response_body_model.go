@@ -28,7 +28,7 @@ type ImageMattingAsyncResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the intelligent image matting asynchronous task.
+	// The submit result of the intelligent image matting asynchronous node.
 	Data *ImageMattingAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. This parameter is not returned for normal calls.
 	//
@@ -113,7 +113,7 @@ func (s *ImageMattingAsyncResponseBody) Validate() error {
 }
 
 type ImageMattingAsyncResponseBodyData struct {
-	// The task ID used to query the result of the asynchronous task.
+	// The ID of the node, which is used to query the result of the asynchronous node.
 	//
 	// example:
 	//

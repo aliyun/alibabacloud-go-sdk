@@ -30,7 +30,7 @@ type MerchandiseSceneDetectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The display scene detection result.
 	Data *MerchandiseSceneDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The return message or failure description.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type MerchandiseSceneDetectionResponseBodyDataResult struct {
 	Grounding *MerchandiseSceneDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
 	// The list of recognized scenes.
 	Scenes []*MerchandiseSceneDetectionResponseBodyDataResultScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	// Fixed value: scene.
+	// The type. Fixed value: scene.
 	//
 	// example:
 	//
@@ -276,6 +276,10 @@ func (s *MerchandiseSceneDetectionResponseBodyDataResultGrounding) Validate() er
 
 type MerchandiseSceneDetectionResponseBodyDataResultGroundingRegions struct {
 	// The 2D bounding box in the format of [top-left x, top-left y, bottom-right x, bottom-right y]. Valid values: 0 to 1000. The left coordinate must be less than the right coordinate, and the top coordinate must be less than the bottom coordinate.
+	//
+	// example:
+	//
+	// [0,130,1000,850]
 	Bbox2d []*float64 `json:"Bbox_2d,omitempty" xml:"Bbox_2d,omitempty" type:"Repeated"`
 	// The label.
 	//
@@ -287,7 +291,7 @@ type MerchandiseSceneDetectionResponseBodyDataResultGroundingRegions struct {
 	//
 	// example:
 	//
-	// Multi-tier product display shelf
+	// Multi-layer product display shelf
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -337,13 +341,13 @@ type MerchandiseSceneDetectionResponseBodyDataResultScenes struct {
 	//
 	// 0.985
 	AreaRate *float64 `json:"AreaRate,omitempty" xml:"AreaRate,omitempty"`
-	// Optional. The purity metric for proprietary products. The specific business criteria are subject to the recognition service.
+	// Optional. The purity metric for proprietary products. The specific business definition is subject to the recognition service.
 	//
 	// example:
 	//
 	// 0
 	OwnPurity *float64 `json:"OwnPurity,omitempty" xml:"OwnPurity,omitempty"`
-	// Optional. The display plumpness metric.
+	// Optional. The display fullness metric.
 	//
 	// example:
 	//
@@ -353,11 +357,15 @@ type MerchandiseSceneDetectionResponseBodyDataResultScenes struct {
 	//
 	// example:
 	//
-	// Air-cooled display cabinet
+	// Refrigerated display cabinet
 	SceneActualName *string `json:"SceneActualName,omitempty" xml:"SceneActualName,omitempty"`
 	// The center point of the scene, which retains the original normalized coordinates. If omitted, the value is an empty array.
+	//
+	// example:
+	//
+	// [0.501,0.493]
 	SceneCenter []*float64 `json:"SceneCenter,omitempty" xml:"SceneCenter,omitempty" type:"Repeated"`
-	// The list of region points. Each item is in the {x,y} format and retains the original normalized coordinates. If omitted, the value is an empty array.
+	// The list of area points. Each item is in the format of {x,y} and retains the original normalized coordinates. If omitted, the value is an empty array.
 	SceneLocation []*MerchandiseSceneDetectionResponseBodyDataResultScenesSceneLocation `json:"SceneLocation,omitempty" xml:"SceneLocation,omitempty" type:"Repeated"`
 	// The scene identifier. This parameter is required and cannot be empty.
 	//
@@ -365,7 +373,7 @@ type MerchandiseSceneDetectionResponseBodyDataResultScenes struct {
 	//
 	// yl_cj_lfg
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Optional. The shelf distribution proportion metric. The specific business criteria are subject to the recognition service.
+	// Optional. The shelf distribution proportion metric. The specific business definition is subject to the recognition service.
 	//
 	// example:
 	//
@@ -467,13 +475,13 @@ func (s *MerchandiseSceneDetectionResponseBodyDataResultScenes) Validate() error
 }
 
 type MerchandiseSceneDetectionResponseBodyDataResultScenesSceneLocation struct {
-	// The x-coordinate of the region point.
+	// The x-coordinate of the area point.
 	//
 	// example:
 	//
 	// 0.431
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-coordinate of the region point.
+	// The y-coordinate of the area point.
 	//
 	// example:
 	//

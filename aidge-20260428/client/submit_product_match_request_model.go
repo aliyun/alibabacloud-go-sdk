@@ -26,19 +26,19 @@ type iSubmitProductMatchRequest interface {
 }
 
 type SubmitProductMatchRequest struct {
-	// The product brand. If this value is not specified, the system attempts to extract the brand from the shop name.
+	// The product brand. If missing, the service attempts to extract it from the shop name.
 	//
 	// example:
 	//
 	// FILA
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// The Miaojie product category. Currently used for extension and auditing purposes.
+	// The Miaojie product category, which is currently used for extension and auditing.
 	//
 	// example:
 	//
-	// Children\\"s Shoes
+	// Children\\"s shoes
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The HTTP or HTTPS URL of the product main image.
+	// The HTTP/HTTPS URL of the product main image.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type SubmitProductMatchRequest struct {
 	//
 	// 228516909
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The HTTP or HTTPS URL of the product detail page.
+	// The HTTP/HTTPS URL of the product detail page.
 	//
 	// example:
 	//
 	// https://example.com/items/228516909
 	ProductUrl *string `json:"ProductUrl,omitempty" xml:"ProductUrl,omitempty"`
-	// The shop name. This value is also used as the extraction source when the brand name is missing.
+	// The shop name, which is also used as the extraction source when the brand is missing.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// FILA斐乐官方旗舰店
+	// FILA Official Flagship Store
 	ShopName *string `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
 	// The product title.
 	//
@@ -74,7 +74,7 @@ type SubmitProductMatchRequest struct {
 	//
 	// example:
 	//
-	// FILA Kids Training Shoes
+	// FILA children\\"s training shoes
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

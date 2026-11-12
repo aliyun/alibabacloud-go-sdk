@@ -113,7 +113,7 @@ func (s *StorefrontSceneRecognitionResponseBody) Validate() error {
 }
 
 type StorefrontSceneRecognitionResponseBodyData struct {
-	// The scene recognition result details.
+	// The details of the scene recognition result.
 	Result *StorefrontSceneRecognitionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The usage information.
 	//
@@ -159,11 +159,11 @@ func (s *StorefrontSceneRecognitionResponseBodyData) Validate() error {
 }
 
 type StorefrontSceneRecognitionResponseBodyDataResult struct {
-	// The classification details. This can be an empty array.
+	// The classification details, which can be an empty array.
 	Details []*StorefrontSceneRecognitionResponseBodyDataResultDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// The localization information.
 	Grounding *StorefrontSceneRecognitionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
-	// The non-empty scene classification array.
+	// The non-empty array of scene classifications.
 	Scenes []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
 }
 
@@ -225,9 +225,9 @@ type StorefrontSceneRecognitionResponseBodyDataResultDetails struct {
 	//
 	// example:
 	//
-	// oppo vivo smartphone specialty store
+	// oppo vivo smartphone store
 	Clazz *string `json:"Clazz,omitempty" xml:"Clazz,omitempty"`
-	// A finite numerical value. The source document does not specify a value range.
+	// A finite numerical value. The source document does not specify the value range.
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ type StorefrontSceneRecognitionResponseBodyDataResultGrounding struct {
 	//
 	// partial
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The region list.
+	// The list of regions.
 	Regions []*StorefrontSceneRecognitionResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -317,6 +317,10 @@ func (s *StorefrontSceneRecognitionResponseBodyDataResultGrounding) Validate() e
 
 type StorefrontSceneRecognitionResponseBodyDataResultGroundingRegions struct {
 	// The bounding box coordinates.
+	//
+	// example:
+	//
+	// [0,0,456,398]
 	Bbox2d []*float32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
 	// The label.
 	//

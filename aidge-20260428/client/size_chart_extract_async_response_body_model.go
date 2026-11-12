@@ -22,7 +22,7 @@ type iSizeChartExtractAsyncResponseBody interface {
 }
 
 type SizeChartExtractAsyncResponseBody struct {
-	// The error code. This parameter is not returned for normal calls.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -30,19 +30,23 @@ type SizeChartExtractAsyncResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The submission result of the asynchronous task for size chart extraction.
 	Data *SizeChartExtractAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for normal calls.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used to identify a unique request.
+	// The request ID. It is used to identify a unique request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -113,7 +117,7 @@ func (s *SizeChartExtractAsyncResponseBody) Validate() error {
 }
 
 type SizeChartExtractAsyncResponseBodyData struct {
-	// The task ID used to query the asynchronous task result.
+	// The task ID, which is used to query the result of the asynchronous task.
 	//
 	// example:
 	//

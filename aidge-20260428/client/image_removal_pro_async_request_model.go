@@ -16,7 +16,7 @@ type iImageRemovalProAsyncRequest interface {
 }
 
 type ImageRemovalProAsyncRequest struct {
-	// The business ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+	// The business ID of the caller. It is recorded when the request is accepted and returned as is when you query the result of the asynchronous task.
 	//
 	// example:
 	//

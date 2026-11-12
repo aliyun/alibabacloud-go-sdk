@@ -42,7 +42,7 @@ type ImageMattingAsyncRequest struct {
 	//
 	// 255,255,255
 	BgColor *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	// The business order number of the caller. It is recorded upon acceptance and returned as is when querying the asynchronous task result.
+	// The business ID of the caller. It is recorded upon acceptance and returned as is when you query the result of the asynchronous node.
 	//
 	// example:
 	//

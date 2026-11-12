@@ -28,7 +28,7 @@ type EcomVideoRecreationResponseBody struct {
   // 
   // success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The submission result of the asynchronous task.
+  // The asynchronous task submission result.
   Data *EcomVideoRecreationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
   // The return message. If the call fails, an error description is returned.
   // 
@@ -42,7 +42,7 @@ type EcomVideoRecreationResponseBody struct {
   // 
   // 70CBEFDF-BB17-1EB3-8A21-569F3124738F
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the submission was successful.
+  // Indicates whether the submission is successful.
   // 
   // example:
   // 
@@ -113,7 +113,7 @@ func (s *EcomVideoRecreationResponseBody) Validate() error {
 }
 
 type EcomVideoRecreationResponseBodyData struct {
-  // The ID of the asynchronous task, which is used to query the task result by calling QueryAsyncTaskResult.
+  // The asynchronous task ID used to query the task result by calling QueryAsyncTaskResult.
   // 
   // example:
   // 

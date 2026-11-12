@@ -28,7 +28,7 @@ type MaterialInspectionRequest struct {
 	//
 	// fb0012f49b004f889207a3c5e6ef8da9
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The URL of the reference image. This parameter is optional. If a non-empty value is specified, multi-image differential comparison is performed.
+	// The URL of the reference image. This parameter is optional. If it is not empty, the multi-image difference comparison mode is used.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type MaterialInspectionRequest struct {
 	//
 	// https://example.com/store.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The business request identity. This parameter is optional. The value is returned as-is in the response for Tracing Analysis purposes.
+	// The business request identity. This parameter is optional and is returned as-is to facilitate Tracing Analysis.
 	//
 	// example:
 	//
 	// req-2026-06-04-001
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	// The rule prompt in natural language.
+	// The rule prompt.
 	//
 	// example:
 	//
-	// The door-shaped display stand must be placed in the entrance area; the functional card stand must be placed on the counter surface
+	// Door-shaped display stands must be placed in the entrance area. Functional table cards must be placed on the middle counter
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 

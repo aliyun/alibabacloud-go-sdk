@@ -14,7 +14,7 @@ type iMerchandiseSceneDetectionRequest interface {
 }
 
 type MerchandiseSceneDetectionRequest struct {
-	// The HTTP(S) URL of the display image to be detected.
+	// The HTTP or HTTPS URL of the display image to be detected.
 	//
 	// This parameter is required.
 	//

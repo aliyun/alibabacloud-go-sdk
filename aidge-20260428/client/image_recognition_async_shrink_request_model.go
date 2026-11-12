@@ -30,7 +30,7 @@ type iImageRecognitionAsyncShrinkRequest interface {
 }
 
 type ImageRecognitionAsyncShrinkRequest struct {
-	// The business order ID of the caller. It is recorded upon acceptance and returned as is when you query the result of the asynchronous task.
+	// The business order ID of the caller. It is recorded upon acceptance and returned as is when querying the asynchronous task result.
 	//
 	// example:
 	//
@@ -44,41 +44,43 @@ type ImageRecognitionAsyncShrinkRequest struct {
 	//
 	// https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The types of elements to be detected outside the image subject. Valid values: 1: Watermark. 2: Logo. 3: Text. 4: Text-containing color block. You can specify multiple values. This parameter and ObjectDetectElements cannot be both empty.
+	// The types of elements to detect outside the image subject. Valid values: 1 (watermark), 2 (logo), 3 (text), and 4 (text-containing color block). You can specify multiple values. This parameter and ObjectDetectElements cannot be empty at the same time.
+	//
+	// example:
+	//
+	// [1,2,3,4]
 	NonObjectDetectElementsShrink *string `json:"NonObjectDetectElements,omitempty" xml:"NonObjectDetectElements,omitempty"`
-	// The types of elements to be detected on the image subject. Valid values: 1: Watermark. 2: Logo. 3: Text. 4: Text-containing color block. You can specify multiple values.
+	// The types of elements to detect on the image subject. Valid values: 1 (watermark), 2 (logo), 3 (text), and 4 (text-containing color block). You can specify multiple values.
+	//
+	// example:
+	//
+	// [1,2,3,4]
 	ObjectDetectElementsShrink *string `json:"ObjectDetectElements,omitempty" xml:"ObjectDetectElements,omitempty"`
-	// Specifies whether to return the marginalization distance of the subject. Valid values: 1: Yes. 0: No. Default value: 0.
+	// Specifies whether to return the marginalization distance of the subject. Valid values: 1 (yes) and 0 (no). Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	ReturnBorderPixel *int32 `json:"ReturnBorderPixel,omitempty" xml:"ReturnBorderPixel,omitempty"`
-	// Specifies whether to return the OCR result of the text in the recognized area. Valid values: 1: Yes. 0: No. Default value: 0.
+	// Specifies whether to return the OCR results of the text in the recognized area. Valid values: 1 (yes) and 0 (no). Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	ReturnCharacter *int32 `json:"ReturnCharacter,omitempty" xml:"ReturnCharacter,omitempty"`
-	// Specifies whether to return the text proportion. Valid values: 1: Yes. 0: No. Default value: 0.
-	//
-	// This parameter takes effect only when the following two conditions are met:
-	//
-	// 1. ReturnCharacter is set to 1.
-	//
-	// 2. ObjectDetectElements or NonObjectDetectElements is set to 3, which means text recognition is required.
+	// Specifies whether to return the text proportion. Valid values: 1 (yes) and 0 (no). Default value: 0. This parameter takes effect only when the following conditions are met: 1. ReturnCharacter is set to 1. 2. ObjectDetectElements or NonObjectDetectElements is set to 3, which means text recognition is required.
 	//
 	// example:
 	//
 	// 1
 	ReturnCharacterProp *int32 `json:"ReturnCharacterProp,omitempty" xml:"ReturnCharacterProp,omitempty"`
-	// Specifies whether to return the number of subjects. Valid values: 1: Yes. 0: No. Default value: 0.
+	// Specifies whether to return the number of subjects. Valid values: 1 (yes) and 0 (no). Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	ReturnProductNum *int32 `json:"ReturnProductNum,omitempty" xml:"ReturnProductNum,omitempty"`
-	// Specifies whether to return the area proportion of the subject. Valid values: 1: Yes. 0: No. Default value: 0.
+	// Specifies whether to return the area proportion of the subject. Valid values: 1 (yes) and 0 (no). Default value: 0.
 	//
 	// example:
 	//

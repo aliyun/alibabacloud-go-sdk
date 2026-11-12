@@ -30,7 +30,7 @@ type MilkPowderCanBottomCodeRephotographyDetectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The recapture detection result.
 	Data *MilkPowderCanBottomCodeRephotographyDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The return message or failure description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type MilkPowderCanBottomCodeRephotographyDetectionResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the call is successful. A valid business conclusion does not mean that the review is passed.
+	// Indicates whether the call is successful. A valid business conclusion does not mean the review is passed.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *MilkPowderCanBottomCodeRephotographyDetectionResponseBody) Validate() e
 type MilkPowderCanBottomCodeRephotographyDetectionResponseBodyData struct {
 	// The details of the recapture detection result.
 	Result *MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The usage information. If the call is successful, the value is `{"ProcessingCount":1}`. If the call fails, an empty object is returned.
+	// The usage information. If the call is successful, the value is `{"ProcessingCount":1}`. If the call fails, the value is an empty object.
 	//
 	// example:
 	//
@@ -161,13 +161,13 @@ func (s *MilkPowderCanBottomCodeRephotographyDetectionResponseBodyData) Validate
 type MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResult struct {
 	// The localization information.
 	Grounding *MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
-	// Specifies whether the image is recaptured.
+	// Indicates whether the image is recaptured.
 	//
 	// example:
 	//
 	// true
 	IsFake *bool `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
-	// The detection type. The value is fixed to canBottom.
+	// The detection type, which is fixed to canBottom.
 	//
 	// example:
 	//
@@ -274,9 +274,9 @@ func (s *MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResultGrou
 }
 
 type MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResultGroundingRegions struct {
-	// The bounding box coordinates in the format of `[top-left x, top-left y, bottom-right x, bottom-right y]`. Valid values: 0 to 1000. The left value must be less than the right value, and the top value must be less than the bottom value.
+	// The bounding box coordinates in the format of `[top-left x, top-left y, bottom-right x, bottom-right y]`. The value range is 0 to 1000. The left coordinate is less than the right coordinate, and the top coordinate is less than the bottom coordinate.
 	Bbox2d []*float32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The target category. For valid values, see the following table.
+	// The target category. For enumerations, see the following table.
 	//
 	// example:
 	//

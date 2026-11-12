@@ -22,7 +22,7 @@ type iImageRemovalProAsyncResponseBody interface {
 }
 
 type ImageRemovalProAsyncResponseBody struct {
-	// The error code. This parameter is not returned for successful calls.
+	// The error code. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -30,23 +30,19 @@ type ImageRemovalProAsyncResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The submission result of the Intelligent Erasure Pro asynchronous task.
 	Data *ImageRemovalProAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls. Example: "The parameters contain sensitive information. Please try another input."
+	// The error message. This parameter is not returned if the call is successful. Example: "The parameters contain sensitive information. Try another input."
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: The call is successful.
-	//
-	// - false: The call fails.
+	// Indicates whether the call is successful. Valid values: true and false.
 	//
 	// example:
 	//
@@ -117,7 +113,7 @@ func (s *ImageRemovalProAsyncResponseBody) Validate() error {
 }
 
 type ImageRemovalProAsyncResponseBodyData struct {
-	// The ID of the task used to query the asynchronous task result.
+	// The ID of the task, which is used to query the result of the asynchronous task.
 	//
 	// example:
 	//

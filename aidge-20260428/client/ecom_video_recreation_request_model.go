@@ -16,11 +16,11 @@ type iEcomVideoRecreationRequest interface {
 }
 
 type EcomVideoRecreationRequest struct {
-  // The input parameters for video replication.
+  // The video variation input parameters.
   // 
   // This parameter is required.
   Input *EcomVideoRecreationRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-  // The output specifications for the final video.
+  // The final video output specifications.
   Output *EcomVideoRecreationRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 }
 
@@ -65,9 +65,7 @@ func (s *EcomVideoRecreationRequest) Validate() error {
 }
 
 type EcomVideoRecreationRequestInput struct {
-  // The description or supplementary constraints for the target person during person replacement. The length ranges from 1 to 500 characters. This parameter is required if PersonReferenceImageUrls is not provided.   
-  // 
-  // Example value: The target person is an adult male. Keep the original clothing and actions.
+  // The description or supplementary constraints for the target person in person replacement. The length is 1 to 500 characters. This parameter is required when PersonReferenceImageUrls is not provided. Example: The target person is an adult male, retaining the original clothing and actions.
   // 
   // example:
   // 
@@ -79,15 +77,11 @@ type EcomVideoRecreationRequestInput struct {
   // 
   // product_replacement
   Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-  // The URLs of the reference images for the target person during person replacement. You can provide 1 to 5 images, which must be of the same person. We recommend arranging them in the order of facial close-up, front, 45-degree angle, side, and back.  
-  // 
-  // Example value: ["https://example.com/person.jpg"]
+  // The URLs of the target person reference images for person replacement. You can provide 1 to 5 images, which must be of the same person. We recommend arranging them in the order of facial close-up, front, 45-degree angle, side, and back. Example: `["https://example.com/person.jpg"]`.
   PersonReferenceImageUrls []*string `json:"PersonReferenceImageUrls,omitempty" xml:"PersonReferenceImageUrls,omitempty" type:"Repeated"`
-  // Required for product replacement. The URLs of the target product images. You can upload 1 to 8 images for the same SKU. We recommend that the subject be clear, unoccluded, and have a clean background.   
-  // 
-  // Example value: ["https://example.com/product.png"]
+  // Required for product replacement. The URLs of the target product images. You can upload 1 to 8 images for the same SKU. We recommend that the main subject be clear, unoccluded, and have a clean background. Example: `["https://example.com/product.png"]`.
   ProductImageUrls []*string `json:"ProductImageUrls,omitempty" xml:"ProductImageUrls,omitempty" type:"Repeated"`
-  // The information about the target product. We recommend that you specify this parameter to improve the accuracy of the voiceover.
+  // The target product information. We recommend filling in this information to improve voiceover accuracy.
   ProductInfo *EcomVideoRecreationRequestInputProductInfo `json:"ProductInfo,omitempty" xml:"ProductInfo,omitempty" type:"Struct"`
   // The generation method. Default value: reference. Valid values: reference (directly references the original video) and rebuild (breaks down the original video before regenerating).
   // 
@@ -95,7 +89,7 @@ type EcomVideoRecreationRequestInput struct {
   // 
   // reference
   RecreateMode *string `json:"RecreateMode,omitempty" xml:"RecreateMode,omitempty"`
-  // The HTTP or HTTPS URL of the reference video. The duration ranges from 2 to 360 seconds. The URL must remain accessible during task execution. We recommend that the validity period be no less than 24 hours.
+  // The HTTP(S) URL of the reference video. The duration ranges from 2 to 360 seconds. The URL must remain accessible during task execution. We recommend that the validity period be no less than 24 hours.
   // 
   // This parameter is required.
   // 
@@ -186,25 +180,19 @@ func (s *EcomVideoRecreationRequestInput) Validate() error {
 }
 
 type EcomVideoRecreationRequestInputProductInfo struct {
-  // The category of the product.  
-  // 
-  // Example value: Women\\"s clothing/Sun protection clothing.
+  // The product category. Example: Women\\"s clothing/Sun-protective clothing.
   // 
   // example:
   // 
   // Women\\"s clothing/sun protection clothing
   Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-  // The actual information about the product, such as SKU, brand, color, material, size, specifications, logo, and usage instructions. This information is used to constrain the facts in the voiceover.  
-  // 
-  // Example value: Pale yellow, cooling fabric, sun protection down to the back of the hand, UPF50+
+  // The actual product information, such as SKU, brand, color, material, size, specifications, logo, and usage instructions. This is used to constrain voiceover facts. Example: Light yellow, cooling fabric, sun protection down to the back of the hand, UPF50+.
   // 
   // example:
   // 
   // Light moon yellow, cool-touch fabric, sun protection extending to the back of the hand, UPF50+
   Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-  // Required for product replacement. The name of the target product to be replaced. Maximum length: 200 characters.  
-  // 
-  // Example value: Pale yellow cooling sun protection clothing.
+  // Required for product replacement. The name of the target product to be replaced. The maximum length is 200 characters. Example: Light yellow cooling sun-protective clothing.
   // 
   // example:
   // 
@@ -252,7 +240,7 @@ func (s *EcomVideoRecreationRequestInputProductInfo) Validate() error {
 }
 
 type EcomVideoRecreationRequestOutput struct {
-  // The target duration in seconds. In reference mode, the input value is ignored and forced to -1, following the duration of the original video. In rebuild mode, you can pass an integer from 5 to 60, or pass -1 to indicate an automatic duration.
+  // The target duration in seconds. In reference mode, the input value is ignored and forced to -1, following the original video duration. In rebuild mode, you can pass an integer from 5 to 60 seconds, or pass -1 for automatic duration.
   // 
   // example:
   // 

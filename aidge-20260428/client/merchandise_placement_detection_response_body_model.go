@@ -22,15 +22,15 @@ type iMerchandisePlacementDetectionResponseBody interface {
 }
 
 type MerchandisePlacementDetectionResponseBody struct {
-	// The error code. This parameter is not returned for successful calls.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The display detection result.
+	// The display detection results.
 	Data *MerchandisePlacementDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type MerchandisePlacementDetectionResponseBody struct {
 	//
 	// - true: The call is successful.
 	//
-	// - false: The call failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type MerchandisePlacementDetectionResponseBodyData struct {
 	BoxCount *int32 `json:"BoxCount,omitempty" xml:"BoxCount,omitempty"`
 	// The list of retrieval details for each detection box.
 	Data []*MerchandisePlacementDetectionResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The usage information, where the key is the usage name and the value is the count.
+	// The usage information. The key is the usage metric name and the value is the count.
 	//
 	// example:
 	//
@@ -182,13 +182,13 @@ func (s *MerchandisePlacementDetectionResponseBodyData) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyDataData struct {
-	// The detection box position coordinates in the format [x1,y1,x2,y2].
+	// The coordinates of the detection box in the [x1,y1,x2,y2] format.
 	Bbox []*float32 `json:"Bbox,omitempty" xml:"Bbox,omitempty" type:"Repeated"`
-	// The failure reason for a single detection box. The value is null if the detection is successful.
+	// The reason for the failure of the detection box. This parameter is null if the detection is successful.
 	//
 	// example:
 	//
-	// "embedding failed"
+	// "Embedding failed"
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The index of the detection box.
 	//
@@ -196,9 +196,9 @@ type MerchandisePlacementDetectionResponseBodyDataData struct {
 	//
 	// 1
 	Idx *int32 `json:"Idx,omitempty" xml:"Idx,omitempty"`
-	// The top-1 recalled product for the detection box.
+	// The top-1 retrieved product for the detection box.
 	Top1 *MerchandisePlacementDetectionResponseBodyDataDataTop1 `json:"Top1,omitempty" xml:"Top1,omitempty" type:"Struct"`
-	// The list of top-K recalled products for the detection box.
+	// The list of top-K retrieved products for the detection box.
 	Topk []*MerchandisePlacementDetectionResponseBodyDataDataTopk `json:"Topk,omitempty" xml:"Topk,omitempty" type:"Repeated"`
 }
 
@@ -274,23 +274,23 @@ func (s *MerchandisePlacementDetectionResponseBodyDataData) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyDataDataTop1 struct {
-	// The similarity score, ranging from 0 to 1.
+	// The similarity score. Valid values: 0 to 1.
 	//
 	// example:
 	//
 	// 0.53
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The ID of the recalled product.
+	// The ID of the retrieved product.
 	//
 	// example:
 	//
 	// 123
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The name of the recalled product.
+	// The name of the retrieved product.
 	//
 	// example:
 	//
-	// 光明牛奶500ml
+	// Bright Dairy Milk 500ml
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 }
 
@@ -334,29 +334,29 @@ func (s *MerchandisePlacementDetectionResponseBodyDataDataTop1) Validate() error
 }
 
 type MerchandisePlacementDetectionResponseBodyDataDataTopk struct {
-	// The recall rank.
+	// The retrieval rank.
 	//
 	// example:
 	//
 	// 1
 	Rank *int32 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The similarity score, ranging from 0 to 1.
+	// The similarity score. Valid values: 0 to 1.
 	//
 	// example:
 	//
 	// 0.82
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The ID of the recalled product.
+	// The ID of the retrieved product.
 	//
 	// example:
 	//
 	// 123
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The name of the recalled product.
+	// The name of the retrieved product.
 	//
 	// example:
 	//
-	// 光明牛奶500ml
+	// Bright Dairy Milk 500ml
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 }
 

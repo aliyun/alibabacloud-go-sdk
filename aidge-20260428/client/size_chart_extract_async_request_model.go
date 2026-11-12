@@ -20,7 +20,7 @@ type iSizeChartExtractAsyncRequest interface {
 }
 
 type SizeChartExtractAsyncRequest struct {
-	// The business order number of the caller. It is recorded when the request is accepted and returned as is when you query the asynchronous task result.
+	// The business ID of the caller. It is recorded when the request is accepted and returned as-is when you query the result of the asynchronous task.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type SizeChartExtractAsyncRequest struct {
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The list of column names to be extracted, such as Size, Bust, and Length.
 	ColumnNameList []*string `json:"ColumnNameList,omitempty" xml:"ColumnNameList,omitempty" type:"Repeated"`
-	// The image URL. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
+	// The image URL. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 pixels and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type SizeChartExtractAsyncRequest struct {
 	//
 	// https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The output language. If you do not specify this parameter, the original language is used. If the original image language is Chinese or English, entering en outputs English, and entering cn outputs Chinese.
+	// The output language format. If you do not specify this parameter, the original language of the image is retained. If the original language of the image is Chinese or English, set this parameter to en to output English, or set it to cn to output Chinese.
 	//
 	// example:
 	//

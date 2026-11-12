@@ -119,13 +119,13 @@ type ProductVideoGenerationResponseBodyData struct {
 	//
 	// AUTO_PLAN
 	Route *string `json:"route,omitempty" xml:"route,omitempty"`
-	// The current status.
+	// The current status of the task.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task ID of this service.
+	// The task ID of the service.
 	//
 	// example:
 	//
