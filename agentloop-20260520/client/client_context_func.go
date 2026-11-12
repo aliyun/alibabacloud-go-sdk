@@ -355,6 +355,63 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, agentSpace *
 
 // Summary:
 //
+// Creates a named historical version for a dataset in a specified agent workspace to preserve the historical state of the dataset. You can call ListDatasetVersions to query version information. If a version is no longer needed, you can call DeleteDatasetVersion to delete the version.
+//
+// @param request - CreateDatasetVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetVersionResponse
+func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, agentSpace *string, datasetName *string, request *CreateDatasetVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatasetVersion"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName)) + "/version"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasetVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an evaluation task.
 //
 // Description:
@@ -1157,6 +1214,47 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, agentSpace *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a historical version of a dataset in a specified agent workspace. After deletion, the version no longer appears in the list returned by ListDatasetVersions. This operation does not delete the dataset itself, the current data, or other historical versions.
+//
+// @param request - DeleteDatasetVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetVersionResponse
+func (client *Client) DeleteDatasetVersionWithContext(ctx context.Context, agentSpace *string, datasetName *string, version *string, request *DeleteDatasetVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDatasetVersion"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName)) + "/version/" + dara.PercentEncode(dara.StringValue(version))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatasetVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2326,20 +2424,26 @@ func (client *Client) GetPipelineStatsWithContext(ctx context.Context, agentSpac
 //
 // Supports filtering by region.
 //
-// @param request - ListAgentSpacesRequest
+// @param tmpReq - ListAgentSpacesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAgentSpacesResponse
-func (client *Client) ListAgentSpacesWithContext(ctx context.Context, request *ListAgentSpacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAgentSpacesResponse, _err error) {
+func (client *Client) ListAgentSpacesWithContext(ctx context.Context, tmpReq *ListAgentSpacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAgentSpacesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListAgentSpacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("tag"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentSpace) {
 		query["agentSpace"] = request.AgentSpace
@@ -2355,6 +2459,10 @@ func (client *Client) ListAgentSpacesWithContext(ctx context.Context, request *L
 
 	if !dara.IsNil(request.RegionId) {
 		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["tag"] = request.TagShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2487,6 +2595,57 @@ func (client *Client) ListContextStoresWithContext(ctx context.Context, agentSpa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListContextStoresResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query to retrieve the historical versions of a dataset in a specified agent workspace and returns the version names, descriptions, and creation time. Deleted versions are not included in the list. Do not specify nextToken in the first request. For subsequent requests, use the nextToken value from the previous response for paging to retrieve the next page.
+//
+// @param request - ListDatasetVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetVersionsResponse
+func (client *Client) ListDatasetVersionsWithContext(ctx context.Context, agentSpace *string, datasetName *string, request *ListDatasetVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatasetVersions"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName)) + "/version"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatasetVersionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -30,7 +30,7 @@ type ListAgentSpacesResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. This parameter is empty if no next page is available.
+	// The pagination token. This parameter is empty if there are no more pages.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAgentSpacesResponseBody struct {
 	//
 	// 4E4AC775-2358-5B52-B6FB-171459D7B14B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -157,6 +157,12 @@ type ListAgentSpacesResponseBodyAgentSpaces struct {
 	//
 	// default-cms-1152309027070167-cn-beijing
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// Returns only the tags of AgentSpaces that are active in the current region and match the local instance. An empty array is returned when it is confirmed that there are no tags. This field is omitted for entries in other regions, inactive entries, or entries that do not match the local instance. Omission of this field does not indicate the absence of tags.
+	//
+	// example:
+	//
+	// [{\\"key\\": \\"env\\", \\"value\\": \\"test\\"}]
+	Tags []*ListAgentSpacesResponseBodyAgentSpacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -203,6 +209,10 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) GetSlsProject() *string {
 	return s.SlsProject
 }
 
+func (s *ListAgentSpacesResponseBodyAgentSpaces) GetTags() []*ListAgentSpacesResponseBodyAgentSpacesTags {
+	return s.Tags
+}
+
 func (s *ListAgentSpacesResponseBodyAgentSpaces) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -242,6 +252,11 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) SetSlsProject(v string) *ListAg
 	return s
 }
 
+func (s *ListAgentSpacesResponseBodyAgentSpaces) SetTags(v []*ListAgentSpacesResponseBodyAgentSpacesTags) *ListAgentSpacesResponseBodyAgentSpaces {
+	s.Tags = v
+	return s
+}
+
 func (s *ListAgentSpacesResponseBodyAgentSpaces) SetUpdateTime(v string) *ListAgentSpacesResponseBodyAgentSpaces {
 	s.UpdateTime = &v
 	return s
@@ -253,11 +268,20 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) Validate() error {
 			return err
 		}
 	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type ListAgentSpacesResponseBodyAgentSpacesMseNamespace struct {
-	// The attach method of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+	// The method used to attach the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
 	//
 	// example:
 	//
@@ -313,5 +337,50 @@ func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) SetNamespaceName(v 
 }
 
 func (s *ListAgentSpacesResponseBodyAgentSpacesMseNamespace) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAgentSpacesResponseBodyAgentSpacesTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value, which can be an empty string.
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListAgentSpacesResponseBodyAgentSpacesTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAgentSpacesResponseBodyAgentSpacesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentSpacesResponseBodyAgentSpacesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListAgentSpacesResponseBodyAgentSpacesTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListAgentSpacesResponseBodyAgentSpacesTags) SetKey(v string) *ListAgentSpacesResponseBodyAgentSpacesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAgentSpacesResponseBodyAgentSpacesTags) SetValue(v string) *ListAgentSpacesResponseBodyAgentSpacesTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListAgentSpacesResponseBodyAgentSpacesTags) Validate() error {
 	return dara.Validate(s)
 }

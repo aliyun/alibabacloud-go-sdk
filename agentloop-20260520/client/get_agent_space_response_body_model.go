@@ -27,6 +27,8 @@ type iGetAgentSpaceResponseBody interface {
 	GetRequestId() *string
 	SetSlsProject(v string) *GetAgentSpaceResponseBody
 	GetSlsProject() *string
+	SetTags(v []*GetAgentSpaceResponseBodyTags) *GetAgentSpaceResponseBody
+	GetTags() []*GetAgentSpaceResponseBodyTags
 	SetUpdateTime(v string) *GetAgentSpaceResponseBody
 	GetUpdateTime() *string
 }
@@ -84,6 +86,10 @@ type GetAgentSpaceResponseBody struct {
 	//
 	// default-cms-1837787111545040-cn-beijing
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// example:
+	//
+	// [{\\"key\\": \\"env\\", \\"value\\": \\"test\\"}]
+	Tags []*GetAgentSpaceResponseBodyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -138,6 +144,10 @@ func (s *GetAgentSpaceResponseBody) GetSlsProject() *string {
 	return s.SlsProject
 }
 
+func (s *GetAgentSpaceResponseBody) GetTags() []*GetAgentSpaceResponseBodyTags {
+	return s.Tags
+}
+
 func (s *GetAgentSpaceResponseBody) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -187,6 +197,11 @@ func (s *GetAgentSpaceResponseBody) SetSlsProject(v string) *GetAgentSpaceRespon
 	return s
 }
 
+func (s *GetAgentSpaceResponseBody) SetTags(v []*GetAgentSpaceResponseBodyTags) *GetAgentSpaceResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetAgentSpaceResponseBody) SetUpdateTime(v string) *GetAgentSpaceResponseBody {
 	s.UpdateTime = &v
 	return s
@@ -196,6 +211,15 @@ func (s *GetAgentSpaceResponseBody) Validate() error {
 	if s.MseNamespace != nil {
 		if err := s.MseNamespace.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -258,5 +282,46 @@ func (s *GetAgentSpaceResponseBodyMseNamespace) SetNamespaceName(v string) *GetA
 }
 
 func (s *GetAgentSpaceResponseBodyMseNamespace) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAgentSpaceResponseBodyTags struct {
+	// example:
+	//
+	// env
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAgentSpaceResponseBodyTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentSpaceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentSpaceResponseBodyTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetAgentSpaceResponseBodyTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetAgentSpaceResponseBodyTags) SetKey(v string) *GetAgentSpaceResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetAgentSpaceResponseBodyTags) SetValue(v string) *GetAgentSpaceResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
+func (s *GetAgentSpaceResponseBodyTags) Validate() error {
 	return dara.Validate(s)
 }
