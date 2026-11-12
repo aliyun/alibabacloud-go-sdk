@@ -30,7 +30,7 @@ type ListInventorySynchronizationJobsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call, which is used to retrieve the next page.
+	// The pagination token returned by the current call for subsequent paged queries.
 	//
 	// example:
 	//
@@ -253,9 +253,9 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResult struct {
-	// The statistics of the agent synchronization results.
+	// The statistics of the agent synchronization result.
 	AgentStatistics *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatistics `json:"AgentStatistics,omitempty" xml:"AgentStatistics,omitempty" type:"Struct"`
-	// The statistics of the asset synchronization results.
+	// The statistics of the asset synchronization result.
 	AssetStatistics *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatistics `json:"AssetStatistics,omitempty" xml:"AssetStatistics,omitempty" type:"Struct"`
 	// The error code of the synchronization result.
 	//
@@ -330,13 +330,13 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatistics struct {
-	// The statistics of the creation results.
+	// The statistics of the creation result.
 	Created *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// The statistics of the deletion results.
+	// The statistics of the deletion result.
 	Deleted *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// The statistics of the unchanged results.
+	// The statistics of unchanged items.
 	Same *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// The statistics of the update results.
+	// The statistics of the update result.
 	Updated *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -409,25 +409,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsCreated struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -484,25 +484,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsDeleted struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -559,25 +559,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsSame struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -634,25 +634,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsUpdated struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -709,13 +709,13 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatistics struct {
-	// The statistics of the creation results.
+	// The statistics of the creation result.
 	Created *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// The statistics of the deletion results.
+	// The statistics of the deletion result.
 	Deleted *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// The statistics of the unchanged results.
+	// The statistics of unchanged items.
 	Same *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// The statistics of the update results.
+	// The statistics of the update result.
 	Updated *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -788,25 +788,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsCreated struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -863,25 +863,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsDeleted struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -938,25 +938,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsSame struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -1013,25 +1013,25 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsUpdated struct {
-	// The number of failed creations.
+	// The number of failed items.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of skipped creations.
+	// The number of skipped items.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
-	// The number of successful creations.
+	// The number of successful items.
 	//
 	// example:
 	//
 	// 3
 	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of items.
 	//
 	// example:
 	//

@@ -64,9 +64,9 @@ func (s *GetAuthorizationRuleResponseBody) Validate() error {
 type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	// The authorization resource scope. Valid values:
 	//
-	// - global: All resources under the project.
+	// - global: Global resources under the project.
 	//
-	// - custom: Specified resources within the project scope.
+	// - custom: Resources under a specified project scope.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// - system_init: Created by the system.
 	//
-	// - user_custom: Created by the user.
+	// - user_custom: Created by a user.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// Asset
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
-	// The subject ID associated with the authorization rule.
+	// The ID of the subject associated with the authorization rule.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// shared
 	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
-	// The subject type associated with the authorization rule. This parameter is valid only when the authorization rule subject scope is exclusive. Valid values:
+	// The subject type associated with the authorization rule. This parameter is valid only when the subject scope of the authorization rule is exclusive. Valid values:
 	//
 	// - application: Application.
 	//
@@ -130,7 +130,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// user
 	AuthorizationRuleSubjectType *string `json:"AuthorizationRuleSubjectType,omitempty" xml:"AuthorizationRuleSubjectType,omitempty"`
-	// The creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The project ID associated with the authorization rule.
+	// The ID of the project associated with the authorization rule.
 	//
 	// example:
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The authorization rule status. Valid values:
+	// The status of the authorization rule. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -164,7 +164,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time, in UNIX timestamp format. Unit: milliseconds.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

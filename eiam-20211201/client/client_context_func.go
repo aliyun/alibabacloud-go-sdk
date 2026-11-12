@@ -1584,6 +1584,10 @@ func (client *Client) CreateAuthorizationRuleWithContext(ctx context.Context, re
 		query["ProjectId"] = request.ProjectId
 	}
 
+	if !dara.IsNil(request.SubjectType) {
+		query["SubjectType"] = request.SubjectType
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -8843,7 +8847,7 @@ func (client *Client) GetAuthorizationResourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about an authorization rule.
+// Queries the details of an authorization rule.
 //
 // @param request - GetAuthorizationRuleRequest
 //
@@ -10328,7 +10332,7 @@ func (client *Client) GetInstanceTrialStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries resource synchronization tasks.
+// Queries a resource synchronization task.
 //
 // @param request - GetInventorySynchronizationJobRequest
 //
@@ -12452,7 +12456,7 @@ func (client *Client) ListClientPublicKeysWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Invokes ListCloudAccountResources to perform a paged query of cloud account resources by using paging.
+// Invokes ListCloudAccountResources to perform a paged query of cloud account resources through paging.
 //
 // @param request - ListCloudAccountResourcesRequest
 //
@@ -12520,7 +12524,7 @@ func (client *Client) ListCloudAccountResourcesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Calls ListCloudAccountResourcesForCloudPermissionTemplate to perform a paging query for the list of cloud account resources associated with a specified cloud permission template.
+// Queries the list of cloud account resources associated with a specified cloud permission template by using paging.
 //
 // @param request - ListCloudAccountResourcesForCloudPermissionTemplateRequest
 //
@@ -14002,7 +14006,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 //
 // You can use one of the following two methods to view the returned data:
 //
-// - Method 1: When paged query the first page, you only need to set MaxResults to limit the number of returned entries. The NextToken value in the response is used as the token to query the next page. When paged query subsequent pages, set the NextToken parameter to the NextToken value obtained from the previous response, and set MaxResults to limit the number of returned entries. If no more pages exist, NextToken is not returned. The maximum value of MaxResults is 100.
+// - Method 1: When paged query the first page, set only MaxResults to limit the number of returned entries. The NextToken value in the response is used as the token to query the next page. When paged query subsequent pages, set the NextToken parameter to the NextToken value returned in the previous response, and set MaxResults to limit the number of returned entries. If no more pages exist, NextToken is not returned. The maximum value of MaxResults is 100.
 //
 // - Method 2: Set PageSize to specify the number of entries to return per page, and set PageNumber to specify the page number.
 //

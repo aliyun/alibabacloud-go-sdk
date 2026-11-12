@@ -24,13 +24,13 @@ type iListCloudAccountResourcesResponseBody interface {
 type ListCloudAccountResourcesResponseBody struct {
 	// The list of cloud account resources.
 	CloudAccountResources []*ListCloudAccountResourcesResponseBodyCloudAccountResources `json:"CloudAccountResources,omitempty" xml:"CloudAccountResources,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page for paging in a paged query.
+	// The maximum number of entries returned per page during paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned by the current call, which is used for the next paginated query.
+	// The query token returned by the current call for the next pagination query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAccountResourcesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListCloudAccountResourcesResponseBodyCloudAccountResources struct {
 	//
 	// 123456789012xxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The identifier of the resource entity, which is a unique identifier on the remote end.
+	// The unique remote identifier of the resource entity.
 	//
 	// example:
 	//
 	// System:AliyunIntelligentcockpitReadOnlyAccessexample
 	CloudAccountResourceEntityId *string `json:"CloudAccountResourceEntityId,omitempty" xml:"CloudAccountResourceEntityId,omitempty"`
-	// The resource entity type. Valid values: ram_role.
+	// The type of the resource entity. Valid values: ram_role.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ func (s *ListCloudAccountResourcesResponseBodyCloudAccountResources) Validate() 
 }
 
 type ListCloudAccountResourcesResponseBodyCloudAccountResourcesCloudAccountResourceMeta struct {
-	// The JSON document of the Tencent Cloud CAM policy. This parameter is returned only for Tencent Cloud accounts.
+	// The JSON string of the Tencent Cloud CAM policy document. This parameter is returned only for Tencent Cloud accounts.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type ListCloudAccountResourcesResponseBodyCloudAccountResourcesCloudAccountResou
 	//
 	// qcs
 	CamPolicyType *string `json:"CamPolicyType,omitempty" xml:"CamPolicyType,omitempty"`
-	// The JSON document of the AWS IAM policy. This parameter is returned only for AWS cloud accounts.
+	// The JSON string of the AWS IAM policy document. This parameter is returned only for AWS cloud accounts.
 	//
 	// example:
 	//
@@ -292,7 +292,7 @@ type ListCloudAccountResourcesResponseBodyCloudAccountResourcesCloudAccountResou
 	//
 	// aws
 	IamPolicyType *string `json:"IamPolicyType,omitempty" xml:"IamPolicyType,omitempty"`
-	// The JSON document of the RAM policy. This parameter is returned only by the Get operation.
+	// The JSON string of the RAM policy document. This parameter is returned only by the Get operation.
 	//
 	// example:
 	//

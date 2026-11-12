@@ -18,7 +18,7 @@ type iGetCloudAccountResourceResponseBody interface {
 type GetCloudAccountResourceResponseBody struct {
 	// The cloud account resource information.
 	CloudAccountResource *GetCloudAccountResourceResponseBodyCloudAccountResource `json:"CloudAccountResource,omitempty" xml:"CloudAccountResource,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,39 +62,39 @@ func (s *GetCloudAccountResourceResponseBody) Validate() error {
 }
 
 type GetCloudAccountResourceResponseBodyCloudAccountResource struct {
-	// The ID of the cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// 123456789012xxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The identifier of the resource entity, which is a unique remote identifier.
+	// The unique remote identifier of the resource entity.
 	//
 	// example:
 	//
 	// System:AliyunIntelligentcockpitReadOnlyAccess
 	CloudAccountResourceEntityId *string `json:"CloudAccountResourceEntityId,omitempty" xml:"CloudAccountResourceEntityId,omitempty"`
-	// The type of the resource entity. Valid values: ram_policy.
+	// The resource entity type. Valid values: ram_policy.
 	//
 	// example:
 	//
 	// ram_policy
 	CloudAccountResourceEntityType *string `json:"CloudAccountResourceEntityType,omitempty" xml:"CloudAccountResourceEntityType,omitempty"`
-	// The ID of the cloud account resource.
+	// The cloud account resource ID.
 	//
 	// example:
 	//
 	// car_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	CloudAccountResourceId *string `json:"CloudAccountResourceId,omitempty" xml:"CloudAccountResourceId,omitempty"`
-	// The metadata information of the resource.
+	// The resource metadata information.
 	CloudAccountResourceMeta *GetCloudAccountResourceResponseBodyCloudAccountResourceCloudAccountResourceMeta `json:"CloudAccountResourceMeta,omitempty" xml:"CloudAccountResourceMeta,omitempty" type:"Struct"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
 	// eiam-sso-role
 	CloudAccountResourceName *string `json:"CloudAccountResourceName,omitempty" xml:"CloudAccountResourceName,omitempty"`
-	// The time when the resource was created. The value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetCloudAccountResourceResponseBodyCloudAccountResource struct {
 	//
 	// Cloud account resource used for SSO
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the resource was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -213,37 +213,37 @@ func (s *GetCloudAccountResourceResponseBodyCloudAccountResource) Validate() err
 }
 
 type GetCloudAccountResourceResponseBodyCloudAccountResourceCloudAccountResourceMeta struct {
-	// The JSON string of the Tencent Cloud CAM policy document. This parameter is returned only for Tencent Cloud accounts.
+	// The Tencent Cloud CAM policy document in JSON format. This parameter is returned only for Tencent Cloud accounts.
 	//
 	// example:
 	//
 	// {"Version":"1","Statement":[]}
 	CamPolicyDocument *string `json:"CamPolicyDocument,omitempty" xml:"CamPolicyDocument,omitempty"`
-	// The type of the Tencent Cloud CAM policy. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
+	// The Tencent Cloud CAM policy type. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
 	//
 	// example:
 	//
 	// qcs
 	CamPolicyType *string `json:"CamPolicyType,omitempty" xml:"CamPolicyType,omitempty"`
-	// The JSON string of the AWS IAM policy document. This parameter is returned only for AWS cloud accounts.
+	// The AWS IAM policy document in JSON format. This parameter is returned only for AWS cloud accounts.
 	//
 	// example:
 	//
 	// {"Version":"2012-10-17","Statement":[]}
 	IamPolicyDocument *string `json:"IamPolicyDocument,omitempty" xml:"IamPolicyDocument,omitempty"`
-	// The type of the AWS IAM policy. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
+	// The AWS IAM policy type. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
 	//
 	// example:
 	//
 	// aws
 	IamPolicyType *string `json:"IamPolicyType,omitempty" xml:"IamPolicyType,omitempty"`
-	// The JSON string of the RAM policy document. This parameter is returned only by the Get operation.
+	// The RAM policy document in JSON format. This parameter is returned only by the Get operation.
 	//
 	// example:
 	//
 	// {"Version":"1","Statement":[]}
 	RamPolicyDocument *string `json:"RamPolicyDocument,omitempty" xml:"RamPolicyDocument,omitempty"`
-	// The type of the RAM policy. Valid values: system and custom.
+	// The RAM policy type. Valid values: system and custom.
 	//
 	// example:
 	//

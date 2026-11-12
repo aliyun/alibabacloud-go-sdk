@@ -42,13 +42,13 @@ type ListInventorySynchronizationJobsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the synchronization targets.
 	InventorySourceIds []*string `json:"InventorySourceIds,omitempty" xml:"InventorySourceIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per page in a paging query. Default value: 20. Maximum value: 100.
+	// The number of entries to return per page in paging. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. The value is the NextToken parameter value returned from the previous API call.
+	// The query token. Set the value to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//

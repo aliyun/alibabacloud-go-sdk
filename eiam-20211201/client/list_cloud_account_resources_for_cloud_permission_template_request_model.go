@@ -32,7 +32,7 @@ type ListCloudAccountResourcesForCloudPermissionTemplateRequest struct {
 	//
 	// 123456789012xxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// Filters by resource entity type. Valid value: ram_policy.
+	// The resource entity type used for filtering. Valid values: ram_policy.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListCloudAccountResourcesForCloudPermissionTemplateRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page in a paging query. Default value: 20. Maximum value: 100.
+	// The number of entries per page in a paging query. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//

@@ -196,15 +196,15 @@ type UpdateCloudPermissionTemplateRequestApplicableScope struct {
 	//
 	// example:
 	//
-	// group_d6sbsusdfa4h66ec3il7yxxxx
+	// ["group_d6sbsusdfa4h66ec3il7yxxxx"]
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The list of organizational unit IDs.
 	//
 	// example:
 	//
-	// ou_d6sbsuudfgf4h66ec3il7yxxxx
+	// ["ou_d6sbsuudfgf4h66ec3il7yxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The application scope type. Valid values: global and custom.
+	// The application scope type. Valid values: global, custom.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type UpdateCloudPermissionTemplateRequestApplicableScope struct {
 	//
 	// example:
 	//
-	// user_d6sbsuumeta4h66ec3il7yxxxx
+	// ["user_d6sbsuumeta4h66ec3il7yxxxx"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

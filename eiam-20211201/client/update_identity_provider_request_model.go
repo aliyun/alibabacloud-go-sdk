@@ -82,7 +82,7 @@ type UpdateIdentityProviderRequest struct {
 	//
 	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The OIDC-related configuration.
+	// The OIDC configuration.
 	OidcConfig *UpdateIdentityProviderRequestOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
 	// The SAML IdP configuration.
 	SamlConfig *UpdateIdentityProviderRequestSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
@@ -343,13 +343,13 @@ type UpdateIdentityProviderRequestLarkConfig struct {
 	//
 	// KiiLzh5Dueh4wbLxxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The EncryptKey of the custom Lark application.
+	// The encryptKey of the custom Lark application.
 	//
 	// example:
 	//
 	// VkdWw91mdkrjVFr3ObNwefap21dfbZbKxxxx
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// The VerificationToken of the custom Lark application.
+	// The verificationToken of the custom Lark application.
 	//
 	// example:
 	//
@@ -553,7 +553,7 @@ type UpdateIdentityProviderRequestOidcConfig struct {
 	//
 	// example:
 	//
-	// openid
+	// ["openid"]
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
 	// The OIDC grant type.
 	//
@@ -821,7 +821,7 @@ type UpdateIdentityProviderRequestSamlConfig struct {
 	//
 	// 180
 	MaxClockSkew *int64 `json:"MaxClockSkew,omitempty" xml:"MaxClockSkew,omitempty"`
-	// Specifies whether to require the request to be signed.
+	// Specifies whether to require requests to be signed.
 	//
 	// example:
 	//
@@ -965,7 +965,7 @@ func (s *UpdateIdentityProviderRequestSamlConfigCertificates) Validate() error {
 }
 
 type UpdateIdentityProviderRequestWeComConfig struct {
-	// The AgentId of the WeCom custom application.
+	// The AgentId of the WeCom self-built application.
 	//
 	// example:
 	//
@@ -983,7 +983,7 @@ type UpdateIdentityProviderRequestWeComConfig struct {
 	//
 	// mPLLiWv-_9witxxxEJCpk1xkF5hOgBzpRt4kBkxxx
 	ContactSecret *string `json:"ContactSecret,omitempty" xml:"ContactSecret,omitempty"`
-	// The CorpSecret of the WeCom custom application.
+	// The CorpSecret of the WeCom self-built application.
 	//
 	// example:
 	//

@@ -23,14 +23,16 @@ type iCreateAuthorizationRuleRequest interface {
 	GetInstanceId() *string
 	SetProjectId(v string) *CreateAuthorizationRuleRequest
 	GetProjectId() *string
+	SetSubjectType(v string) *CreateAuthorizationRuleRequest
+	GetSubjectType() *string
 }
 
 type CreateAuthorizationRuleRequest struct {
-	// The authorization resource scope. Valid values:
+	// The scope of authorized resources. Valid values:
 	//
-	// - global: all resources under the project.
+	// - global: global resources under the project
 	//
-	// - custom: specified resources under the project.
+	// - custom: resources under a specified project scope
 	//
 	// example:
 	//
@@ -50,7 +52,7 @@ type CreateAuthorizationRuleRequest struct {
 	//
 	// privileged_cloud_account
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
-	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// The client token that is used to ensure the idempotence of the request. You can generate the value from your client and make sure that the value is unique across different requests. The ClientToken parameter only supports ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -72,7 +74,7 @@ type CreateAuthorizationRuleRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the project associated with the authorization rule. If you are unsure which project to associate, you can associate the default project. The default project ID is iprj_system_default.
+	// The ID of the project associated with the authorization rule. If you are unsure about the project to associate, you can use the default project. The ID of the default project is iprj_system_default.
 	//
 	// This parameter is required.
 	//
@@ -80,6 +82,12 @@ type CreateAuthorizationRuleRequest struct {
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of subject to which the authorization rule applies, such as user (for human users) or application (for machine users). When explicitly specified, only privileged cloud account rules with a custom resource scope are supported. If this field is omitted for custom scope rules in this scenario, the default value is user.
+	//
+	// example:
+	//
+	// application
+	SubjectType *string `json:"SubjectType,omitempty" xml:"SubjectType,omitempty"`
 }
 
 func (s CreateAuthorizationRuleRequest) String() string {
@@ -118,6 +126,10 @@ func (s *CreateAuthorizationRuleRequest) GetProjectId() *string {
 	return s.ProjectId
 }
 
+func (s *CreateAuthorizationRuleRequest) GetSubjectType() *string {
+	return s.SubjectType
+}
+
 func (s *CreateAuthorizationRuleRequest) SetAuthorizationResourceScope(v string) *CreateAuthorizationRuleRequest {
 	s.AuthorizationResourceScope = &v
 	return s
@@ -150,6 +162,11 @@ func (s *CreateAuthorizationRuleRequest) SetInstanceId(v string) *CreateAuthoriz
 
 func (s *CreateAuthorizationRuleRequest) SetProjectId(v string) *CreateAuthorizationRuleRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateAuthorizationRuleRequest) SetSubjectType(v string) *CreateAuthorizationRuleRequest {
+	s.SubjectType = &v
 	return s
 }
 

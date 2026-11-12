@@ -22,11 +22,11 @@ type iUpdateAuthorizationRuleRequest interface {
 }
 
 type UpdateAuthorizationRuleRequest struct {
-	// The authorization resource scope. Valid values:
+	// The scope of authorized resources. Valid values:
 	//
 	// - global: global resources under the project
 	//
-	// - custom: resources under a specified project scope
+	// - custom: resources within a specified project scope
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateAuthorizationRuleRequest struct {
 	//
 	// test_rule
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a client token on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//

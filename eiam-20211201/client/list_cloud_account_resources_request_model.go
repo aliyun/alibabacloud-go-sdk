@@ -40,13 +40,13 @@ type ListCloudAccountResourcesRequest struct {
 	//
 	// ram_policy
 	CloudAccountResourceEntityType *string `json:"CloudAccountResourceEntityType,omitempty" xml:"CloudAccountResourceEntityType,omitempty"`
-	// Performs a fuzzy match on the resource name, which is equivalent to LIKE \\"%value%\\".
+	// The keyword used for fuzzy matching of the resource name. This is equivalent to LIKE \\"%value%\\".
 	//
 	// example:
 	//
 	// sso
 	CloudAccountResourceNameContains *string `json:"CloudAccountResourceNameContains,omitempty" xml:"CloudAccountResourceNameContains,omitempty"`
-	// Matches resources by resource name prefix.
+	// The prefix of the resource name used for matching.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type ListCloudAccountResourcesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return per page for paging in a paged query. Default value: 20. Maximum value: 100.
+	// The maximum number of entries to return per page during paging in a paged query. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. The value is the NextToken parameter value returned by the previous API call.
+	// The query token. Set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetCloudAccountResourceRequest interface {
 }
 
 type GetCloudAccountResourceRequest struct {
-	// The ID of the cloud account.
+	// The cloud account ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetCloudAccountResourceRequest struct {
 	//
 	// 123456789012xxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The ID of the cloud account resource.
+	// The cloud account resource ID.
 	//
 	// This parameter is required.
 	//

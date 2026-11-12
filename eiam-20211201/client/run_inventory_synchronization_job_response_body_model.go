@@ -16,13 +16,13 @@ type iRunInventorySynchronizationJobResponseBody interface {
 }
 
 type RunInventorySynchronizationJobResponseBody struct {
-	// The ID of the synchronization task.
+	// The ID of the synchronization job.
 	//
 	// example:
 	//
 	// sync_xxxxxxxxxx
 	InventorySynchronizationJobId *string `json:"InventorySynchronizationJobId,omitempty" xml:"InventorySynchronizationJobId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
