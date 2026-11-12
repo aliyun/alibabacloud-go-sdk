@@ -28,19 +28,19 @@ type PostFinishCustomizeRuleTestResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The return value of the request.
 	//
 	// example:
 	//
 	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type PostFinishCustomizeRuleTestResponseBody struct {
 	//
 	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

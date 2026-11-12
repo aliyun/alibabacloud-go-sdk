@@ -20,23 +20,23 @@ type iDeleteCustomizeRuleRequest interface {
 }
 
 type DeleteCustomizeRuleRequest struct {
-	// The region where the product is deployed.
+	// The region where the product is located.
 	//
 	// example:
 	//
-	// cn-shanghai
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
+	// The user ID of the member whose view the administrator switches to. This parameter allows the administrator to switch to the view of a specified member, bypassing the order validity check but still requiring permission verification. The target account must have activated Cloud SIEM, and the caller must have the required RAM permissions.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view.
+	// The view type. Valid values:
 	//
-	// - 0: The view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account
 	//
-	// - 1: The view of all accounts in your enterprise.
+	// - 1: the view of all accounts in the enterprise
 	//
 	// example:
 	//

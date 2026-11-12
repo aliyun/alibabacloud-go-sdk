@@ -18,17 +18,17 @@ type iDescribeUserSiemOrderStatusRequest interface {
 }
 
 type DescribeUserSiemOrderStatusRequest struct {
-	// The region of the data management center for threat detection and response. Select the data management center based on the region where your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: assets in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets are in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: assets in regions outside China.
+	// - ap-southeast-1: Assets are in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator uses to switch to another member\\"s perspective.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type DescribeUserSiemOrderStatusRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account view.
+	// - 0: Current Alibaba Cloud account view.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: View of all accounts in the enterprise.
 	//
 	// example:
 	//

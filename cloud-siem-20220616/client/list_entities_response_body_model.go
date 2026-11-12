@@ -28,13 +28,13 @@ type ListEntitiesResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The request return value.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *ListEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type ListEntitiesResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -168,19 +172,19 @@ func (s *ListEntitiesResponseBodyData) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataPageInfo struct {
-	// The current page number of the list.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of records returned per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -229,32 +233,32 @@ func (s *ListEntitiesResponseBodyDataPageInfo) Validate() error {
 
 type ListEntitiesResponseBodyDataResponseData struct {
 	AgentAnalysisReason *string `json:"AgentAnalysisReason,omitempty" xml:"AgentAnalysisReason,omitempty"`
-	// The confidence level of the entity as determined by the agent.
+	// The confidence level of the entity evaluation by the agent.
 	//
 	// example:
 	//
 	// 85
 	AgentConfidence *string `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
-	// The recommended disposal method from the agent.
+	// The remediation method recommended by the agent.
 	//
 	// example:
 	//
 	// delete_file
 	AgentDisposalMethod *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
-	// The UUID of the playbook recommended by the agent for disposal.
+	// The UUID of the remediation playbook recommended by the agent.
 	//
 	// example:
 	//
 	// 12XAD-SFQ-WAF-2ca2
 	AgentDisposalPlaybookUuid *string `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
 	AgentDisposalReason       *string `json:"AgentDisposalReason,omitempty" xml:"AgentDisposalReason,omitempty"`
-	// The disposal suggestion recommended by the agent.
+	// The remediation suggestions provided by the agent.
 	//
 	// example:
 	//
 	// {}
 	AgentDisposalSuggestion *string `json:"AgentDisposalSuggestion,omitempty" xml:"AgentDisposalSuggestion,omitempty"`
-	// The list of disposal suggestions recommended by the agent.
+	// The list of remediation suggestions provided by the agent.
 	AgentDisposes []*ListEntitiesResponseBodyDataResponseDataAgentDisposes `json:"AgentDisposes,omitempty" xml:"AgentDisposes,omitempty" type:"Repeated"`
 	// The number of alerts associated with the entity.
 	//
@@ -274,7 +278,7 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 123456789****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The cloud code of the entity source. Valid values:
+	// The code of the source cloud for the entity. Valid values:
 	//
 	// - aliyun: Alibaba Cloud.
 	//
@@ -292,7 +296,7 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 12345****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The entity display information in JSON format.
+	// The display information of the entity in JSON format.
 	//
 	// example:
 	//
@@ -305,6 +309,24 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	// 123.123.123.123
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// The entity type. Valid values:
+	//
+	// - ip: IP address
+	//
+	// - domain: Domain name
+	//
+	// - url: URL
+	//
+	// - process: Process
+	//
+	// - file: File
+	//
+	// - host: Host
+	//
+	// - cloud_account: Cloud account
+	//
+	// - container: Container
+	//
+	// - bucket: OSS bucket
 	//
 	// example:
 	//
@@ -340,7 +362,7 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 123456789***
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The incident UUID. You can obtain this value from the incident list operation.
+	// The incident UUID, which can be obtained from the incident list API operation.
 	//
 	// example:
 	//
@@ -348,11 +370,19 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// Indicates whether the entity is an asset. Valid values:
 	//
+	// - 0: No.
+	//
+	// - 1: Yes.
+	//
 	// example:
 	//
 	// 1
 	IsAsset *string `json:"IsAsset,omitempty" xml:"IsAsset,omitempty"`
-	// Specifies whether the entity is malicious. Valid values:
+	// Indicates whether the entity is malicious. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
 	//
 	// example:
 	//
@@ -364,13 +394,13 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// aliyun.siem.sas.alert_tag.webshell
 	MalwareType *string `json:"MalwareType,omitempty" xml:"MalwareType,omitempty"`
-	// The linked account ID associated with the entity.
+	// The ID of the account associated with the entity.
 	//
 	// example:
 	//
 	// 113091674488****
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The entity tags. The value is a JSON array string in the following format:
+	// The entity tags. The format is a JSON array string:
 	//
 	// `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`
 	//
@@ -636,13 +666,13 @@ func (s *ListEntitiesResponseBodyDataResponseData) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataResponseDataAgentDisposes struct {
-	// The disposal suggestion recommended by the agent.
+	// The remediation method recommended by the agent.
 	//
 	// example:
 	//
 	// {}
 	AgentDisposalMethod *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
-	// The UUID of the playbook recommended by the agent for disposal.
+	// The UUID of the remediation playbook recommended by the agent.
 	//
 	// example:
 	//

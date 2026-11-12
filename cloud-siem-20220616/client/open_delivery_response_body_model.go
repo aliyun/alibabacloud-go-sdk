@@ -18,15 +18,15 @@ type iOpenDeliveryResponseBody interface {
 type OpenDeliveryResponseBody struct {
 	// Indicates whether log delivery is enabled. Valid values:
 	//
-	// - true: Enabled
+	// - true: Log delivery is enabled.
 	//
-	// - false: Failed
+	// - false: Log delivery failed to be enabled.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

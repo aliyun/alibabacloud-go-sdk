@@ -38,13 +38,13 @@ type iListAutomateResponseConfigsRequest interface {
 }
 
 type ListAutomateResponseConfigsRequest struct {
-	// The type of the handling action. Valid values:
+	// The type of the action. Valid values:
 	//
-	// - **doPlaybook**: executes a playbook.
+	// - **doPlaybook**: Execute a playbook.
 	//
-	// - **changeEventStatus**: changes the status of an event.
+	// - **changeEventStatus**: Change the event status.
 	//
-	// - **changeThreatLevel**: changes the threat level of an event.
+	// - **changeThreatLevel**: Change the event threat level.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type ListAutomateResponseConfigsRequest struct {
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The type of the automated response. Valid values:
 	//
-	// - **event**
+	// - **event**: Event.
 	//
-	// - **alert**
+	// - **alert**: Alert.
 	//
 	// example:
 	//
 	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
-	// The page number. The value must be 1 or greater.
+	// The current page number. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ListAutomateResponseConfigsRequest struct {
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of entries per page. The maximum value is 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -82,43 +82,43 @@ type ListAutomateResponseConfigsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the playbook.
+	// The UUID of the playbook.
 	//
 	// example:
 	//
 	// system_aliyun_aegis_kill_quara_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The region of the Data Management center. Select a region based on the region where your assets are located. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region based on the region where your assets are located. Valid values:
 	//
-	// - **cn-hangzhou**: your assets are in the Chinese mainland or China (Hong Kong).
+	// - **cn-hangzhou**: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - **ap-southeast-1**: your assets are in a region outside China.
+	// - **ap-southeast-1**: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the response rule.
+	// The type of the response rule. Valid values:
 	//
-	// - preset: predefined
+	// - preset: Predefined.
 	//
-	// - custom: custom
+	// - custom: Custom.
 	//
 	// example:
 	//
 	// custom
 	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
-	// The ID of the member to which the administrator switches.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: Current Alibaba Cloud account view.
 	//
-	// - 1: the view of all accounts that belong to the enterprise.
+	// - 1: View of all accounts in the enterprise.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type ListAutomateResponseConfigsRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// - **0**: disabled
+	// - **0**: Disabled.
 	//
-	// - **100**: enabled
+	// - **100**: Enabled.
 	//
 	// example:
 	//

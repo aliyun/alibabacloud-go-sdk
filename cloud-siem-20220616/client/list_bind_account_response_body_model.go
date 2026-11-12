@@ -66,23 +66,23 @@ func (s *ListBindAccountResponseBody) Validate() error {
 }
 
 type ListBindAccountResponseBodyData struct {
-	// The AccessKey ID of the account.
+	// The AccessId of the account.
 	//
 	// example:
 	//
 	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The ID of the cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the account.
+	// The account name.
 	//
 	// example:
 	//
-	// XXXX Company
+	// SampleCompany
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The binding ID.
 	//
@@ -90,7 +90,7 @@ type ListBindAccountResponseBodyData struct {
 	//
 	// 123xxxxxxx
 	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
-	// The code of the cloud service provider. Valid values:
+	// The code of the multi-cloud provider. Valid values:
 	//
 	// - qcloud: Tencent Cloud.
 	//
@@ -108,13 +108,13 @@ type ListBindAccountResponseBodyData struct {
 	//
 	// 123xxxxxxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The number of data sources that are bound to the account.
+	// The number of data sources bound to the account.
 	//
 	// example:
 	//
 	// 2
 	DataSourceCount *int64 `json:"DataSourceCount,omitempty" xml:"DataSourceCount,omitempty"`
-	// The time when the binding was modified.
+	// The modification time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

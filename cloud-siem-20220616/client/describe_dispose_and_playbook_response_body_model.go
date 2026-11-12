@@ -22,7 +22,7 @@ type iDescribeDisposeAndPlaybookResponseBody interface {
 }
 
 type DescribeDisposeAndPlaybookResponseBody struct {
-	// The response status code.
+	// The request status code.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type DescribeDisposeAndPlaybookResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -117,6 +121,7 @@ func (s *DescribeDisposeAndPlaybookResponseBody) Validate() error {
 }
 
 type DescribeDisposeAndPlaybookResponseBodyData struct {
+	// Indicates whether an available playbook for processing exists.
 	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeDisposeAndPlaybookResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
@@ -184,7 +189,7 @@ type DescribeDisposeAndPlaybookResponseBodyDataPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -244,7 +249,7 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	//
 	// 1
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	// The disposition object.
+	// The object to be processed.
 	//
 	// example:
 	//
@@ -264,42 +269,47 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
 	// The entity type. Valid values:
 	//
-	// - ip: IP address
+	// - ip: IP address.
 	//
-	// - domain: domain name
+	// - domain: Domain name.
 	//
-	// - url: URL
+	// - url: URL.
 	//
-	// - process: process
+	// - process: Process.
 	//
-	// - file: file
+	// - file: File.
 	//
-	// - host: host
+	// - host: Host.
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
-	// The key-value pairs of opcode and oplevel.
+	// The entity UUID.
 	//
 	// example:
 	//
-	// 12345
+	// 85ea4241-798f-4684-a876-65d4f0c3****
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The key-value pairs of opcode and opLevel.
+	//
+	// example:
+	//
+	// {"key":"{\\"7\\",\\"2\\"}"}
 	OpcodeMap map[string]*string `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
-	// The recommended playbook opcodes for entity disposition.
+	// The recommended playbook code for processing the entity.
 	//
 	// example:
 	//
 	// [1,3]
 	OpcodeSet []*string `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
-	// The list of playbooks that can dispose of the entity.
+	// The list of playbooks that can process the entity.
 	//
 	// example:
 	//
-	// [{"name":"Security Center - Cloud Server Security","code":"1"}]
+	// [{"name":"Security Center-ECS security","code":"1"}]
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
-	// The disposition scope, which is the list of user IDs that can perform the disposition.
+	// The processing scope and the list of user IDs that can be processed.
 	//
 	// example:
 	//
@@ -419,7 +429,11 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) Validate() erro
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
-	// Indicates whether the playbook is available.
+	// Specifies whether the playbook is available. Valid values:
+	//
+	// - 1: Available.
+	//
+	// - 0: Unavailable.
 	//
 	// example:
 	//
@@ -436,28 +450,38 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	// example:
 	//
 	// WafBlockIP
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The processing status.
 	DisposeStatus *string `json:"DisposeStatus,omitempty" xml:"DisposeStatus,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The playbook name, which is the unique identifier of the playbook.
+	// The processing error message.
+	//
+	// example:
+	//
+	// DisposalEntity failed which description is Aegis Quarantine File , return_info failed which description is Check Aegis Process Result , [ERROR DETAIL] *******.php:file not found
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The name of the playbook, which is the unique identifier of the playbook.
 	//
 	// example:
 	//
 	// kill_process_isolate_file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The playbook opcode, which corresponds to the recommended playbook opcode for entity disposition.
+	// The playbook opcode, which corresponds to the recommended playbook opcode for processing the entity.
 	//
 	// example:
 	//
 	// 7
 	OpCode *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
-	// Specifies whether the playbook is selected by default for one-click incident disposition. Valid values:
+	// Specifies whether the one-click processing for the event is selected by default. Valid values:
+	//
+	// - 2: Selected.
+	//
+	// - 1: Displayed but not selected.
 	//
 	// example:
 	//
 	// 2
 	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
-	// The parameter list of the playbook and the corresponding parameter properties.
+	// The list of parameters and the corresponding parameter attributes of the playbook.
 	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 	// The opcode configuration.
 	//
@@ -465,25 +489,27 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// {"opCode":"3"}
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
-	// The code that indicates why the playbook is unavailable.
-	//
-	// Valid values:
+	// The code indicating why the playbook is unavailable. Valid values:
 	//
 	// - PARAM_INVALID: The input parameters are invalid.
 	//
-	// - NO_INGESTION: The corresponding product is not connected.
+	// - NO_INGESTION: The corresponding service is not connected.
 	//
 	// example:
 	//
 	// PARAM_INVALID
 	UnAvailableCode *string `json:"UnAvailableCode,omitempty" xml:"UnAvailableCode,omitempty"`
-	// The playbook UUID, which is the unique identifier of the playbook.
+	// The UUID of the playbook, which is the unique identifier of the playbook.
 	//
 	// example:
 	//
 	// kill_process_isolate_file
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// Indicates whether the playbook is a WAF playbook. Valid values:
+	// Specifies whether the playbook is a WAF playbook. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//

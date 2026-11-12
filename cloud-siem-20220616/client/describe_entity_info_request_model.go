@@ -32,39 +32,39 @@ type DescribeEntityInfoRequest struct {
 	//
 	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The feature value of the entity. You can perform a fuzzy search for the entity.
+	// The feature value of the entity. You can use this parameter to perform a fuzzy search for handled entities.
 	//
 	// example:
 	//
 	// test22.php
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
-	// The globally unique UUID of the event.
+	// The globally unique UUID of the incident.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The region of the Data Management center. Select a region based on the region where your assets are located. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. The administrator can use this ID to switch to the view of this member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account
 	//
-	// - 1: the view of all accounts that belong to the enterprise.
+	// - 1: the view of all accounts in the enterprise
 	//
 	// example:
 	//

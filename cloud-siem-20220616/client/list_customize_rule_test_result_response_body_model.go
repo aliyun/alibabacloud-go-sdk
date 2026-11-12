@@ -28,7 +28,7 @@ type ListCustomizeRuleTestResultResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data returned in the response.
 	//
 	// example:
 	//
@@ -40,17 +40,17 @@ type ListCustomizeRuleTestResultResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -253,37 +253,37 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	//
 	// The account you logged in this time is not in the legal account category defined by you. Please confirm the legality of the login behavior。
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	// The details of the alert, in JSON format.
+	// The details of the alert in JSON format.
 	//
 	// example:
 	//
 	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "218.92.XX.XX"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	// The source product of the alert that is associated with the event.
+	// The product from which the alert associated with the event originates.
 	//
 	// example:
 	//
 	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	// The sub-module of the source product of the alert that is associated with the event.
+	// The submodule of the product from which the alert associated with the event originates.
 	//
 	// example:
 	//
 	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	// The ATT\\&CK attack technique tag.
+	// The ATT&CK technique tag.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The name of the alert. This value corresponds to the name of the custom rule.
+	// The name of the alert, which corresponds to the name of the custom rule.
 	//
 	// example:
 	//
 	// waf_scan
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The threat type. This parameter is equivalent to the alert type.
+	// The threat type, which is the alerting type.
 	//
 	// example:
 	//
@@ -301,25 +301,25 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	//
 	// remind
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The log source that corresponds to the rule.
+	// The log source corresponding to the rule.
 	//
 	// example:
 	//
 	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The time when the alert was recorded.
+	// The time when the alert is recorded. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	// The log type that corresponds to the rule.
+	// The log type corresponding to the rule.
 	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The ID of the main Alibaba Cloud account for Security Information and Event Management (SIEM) that is associated with the alert.
+	// The ID of the primary account associated with the alert in SIEM.
 	//
 	// example:
 	//
@@ -327,15 +327,15 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	MainUserId *string `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The status of the alert data. Valid values:
 	//
-	// - test: business test
+	// - test: business testing
 	//
-	// - online: published
+	// - online: online
 	//
 	// example:
 	//
 	// test
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	// The ID of the member account that is associated with the alert.
+	// The ID of the Alibaba Cloud account associated with the alert.
 	//
 	// example:
 	//
@@ -347,11 +347,11 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The result of verifying the alert based on the alert template.
+	// The verification result of the alert based on the alert template. Valid values:
 	//
-	// - true: The verification is passed.
+	// - true: passed
 	//
-	// - false: The verification failed.
+	// - false: failed
 	//
 	// example:
 	//

@@ -66,8 +66,9 @@ type iListDisposeStrategyShrinkRequest interface {
 }
 
 type ListDisposeStrategyShrinkRequest struct {
+	// The UUID of the alert.
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The current page number, which must be greater than or equal to 1.
+	// The number of the current page. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -75,13 +76,17 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The policy status. Valid values:
+	// The status of the policy. Valid values:
+	//
+	// - 0: invalid
+	//
+	// - 1: valid
 	//
 	// example:
 	//
 	// 0
 	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
-	// The query end time, in milliseconds.
+	// The end time of the query. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -89,48 +94,71 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The entity characteristic value, which can be used for fuzzy match on response entities.
+	// The identity value of the entity. You can use this parameter to perform a fuzzy search for response entities.
 	//
 	// example:
 	//
 	// test22.php
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
-	// The entity type. Valid values:
+	// The type of the entity. Valid values:
+	//
+	// - ip: IP address
+	//
+	// - process: process
+	//
+	// - file: file
 	//
 	// example:
 	//
 	// ip
-	EntityType           *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The list of entity UUIDs.
 	EntityUuidListShrink *string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty"`
-	GroupBy              *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	GroupKey             *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	// The event ID.
+	// The grouping dimension.
+	//
+	// example:
+	//
+	// Incident
+	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The grouping key value.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef
+	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	// The ID of the incident.
 	//
 	// example:
 	//
 	// 49670d3bbf7aa9556a2fff3dbaa9****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The sort direction. Valid values:
+	// The maximum number of records to return in a single query.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to query the next page.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - desc: descending order
+	//
+	// - asc: ascending order
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field used to sort results. Valid values:
+	// The field used for sorting. Valid values:
 	//
-	// - GmtModified: sorts results by update time.
+	// - GmtModified: sort by update time
 	//
-	// - GmtCreate: sorts results by creation time.
+	// - GmtCreate: sort by creation time
 	//
-	// - FinishTime: sorts results by policy end time.
+	// - FinishTime: sort by policy end time
 	//
 	// example:
 	//
 	// GmtModified
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The number of entries per page, with a maximum of 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -138,15 +166,15 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier name of the playbook.
+	// The unique name of the playbook.
 	//
 	// example:
 	//
 	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	// The playbook type. Valid values:
+	// The type of the playbook. Valid values:
 	//
-	// - system: manual handling
+	// - system: manual response
 	//
 	// - custom: event-triggered playbook
 	//
@@ -160,39 +188,53 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// system
 	PlaybookTypes *string `json:"PlaybookTypes,omitempty" xml:"PlaybookTypes,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
 	// example:
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	QueryMode    *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Specify the management center based on the region of your assets. Valid values:
+	// The query mode.
+	//
+	// example:
+	//
+	// Group
+	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. You must select the region of the management center based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: assets reside in the Chinese mainland and Hong Kong (China)
+	//
+	// - ap-southeast-1: assets reside in regions outside China
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the response rule.
 	ResponseRuleId *string `json:"ResponseRuleId,omitempty" xml:"ResponseRuleId,omitempty"`
-	// The Alibaba Cloud account ID of the member to which the administrator switches the view.
+	// The Alibaba Cloud account ID of the member whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The type of the view. Valid values:
+	//
+	// - 0: view of the current Alibaba Cloud account
+	//
+	// - 1: view of all accounts in the enterprise
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The SOAR response policy ID.
+	// The ID of the Security Orchestration, Automation, and Response (SOAR) response policy.
 	//
 	// example:
 	//
 	// a50a49b7-6044-4593-ab15-2b46567c****
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	// The query start time, in milliseconds.
+	// The start time of the query. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -200,12 +242,13 @@ type ListDisposeStrategyShrinkRequest struct {
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The response policy status.
+	// The status of the response policy.
 	//
 	// example:
 	//
 	// 200
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the response policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 

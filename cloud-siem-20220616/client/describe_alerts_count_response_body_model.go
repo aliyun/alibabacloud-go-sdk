@@ -22,19 +22,19 @@ type iDescribeAlertsCountResponseBody interface {
 }
 
 type DescribeAlertsCountResponseBody struct {
-	// The HTTP status code returned.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The return value of the request.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeAlertsCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type DescribeAlertsCountResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -127,7 +127,11 @@ type DescribeAlertsCountResponseBodyData struct {
 	//
 	// 75
 	All *int64 `json:"All,omitempty" xml:"All,omitempty"`
-	// The number of alerts for each severity level.
+	// The counts by severity level.
+	//
+	// example:
+	//
+	// {"key":12}
 	CountMap map[string]*int64 `json:"CountMap,omitempty" xml:"CountMap,omitempty"`
 	// The number of high-risk alerts.
 	//

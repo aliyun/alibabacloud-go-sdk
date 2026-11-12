@@ -34,7 +34,7 @@ type iDescribeAlertsWithEntityRequest interface {
 }
 
 type DescribeAlertsWithEntityRequest struct {
-	// The number of the page to return. The value must be greater than or equal to 1.
+	// The page number of the current page. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeAlertsWithEntityRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the query. The unit is milliseconds.
+	// The end time of the query. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeAlertsWithEntityRequest struct {
 	//
 	// 123456789
 	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
-	// The globally unique ID of the event.
+	// The globally unique ID of the incident.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The number of entries to return on each page. The maximum value is 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -74,39 +74,39 @@ type DescribeAlertsWithEntityRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the data management center for threat analysis. Select a region based on the location of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: your assets are in the Chinese mainland and China (Hong Kong).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: your assets are outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches.
+	// The ID of the user whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account
 	//
-	// - 1: the view of all accounts that are managed by your enterprise.
+	// - 1: the view of all accounts in the enterprise
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The ID of the Security Orchestration, Automation, and Response (SOAR) handling policy.
+	// The ID of the SOAR playbook.
 	//
 	// example:
 	//
 	// 577bbf90-a770-44a7-8154-586aa2d318fa
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	// The start time of the query. The unit is milliseconds.
+	// The start time of the query. Unit: milliseconds.
 	//
 	// example:
 	//

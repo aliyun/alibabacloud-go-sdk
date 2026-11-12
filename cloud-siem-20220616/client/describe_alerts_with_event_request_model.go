@@ -80,7 +80,7 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// hostname-****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The current page number. The value must be greater than or equal to 1.
+	// The page number of the current page. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -112,17 +112,17 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// Specifies whether the alert has been defended. Valid values:
+	// Specifies whether the threat is blocked. Valid values:
 	//
-	// - 0: detected
+	// - 0: Detected.
 	//
-	// - 1: blocked
+	// - 1: Blocked.
 	//
 	// example:
 	//
 	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	// The threat level in JSON array format. Valid values:
+	// The threat level. The value is a JSON array. Valid values:
 	//
 	// - serious: High.
 	//
@@ -142,17 +142,17 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The member account ID of the resource directory.
+	// The ID of the member account in the resource directory.
 	//
 	// example:
 	//
@@ -160,15 +160,15 @@ type DescribeAlertsWithEventRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The alert data source.
+	// The data source of the alert.
 	//
 	// example:
 	//

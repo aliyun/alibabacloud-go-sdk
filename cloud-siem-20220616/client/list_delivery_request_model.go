@@ -18,27 +18,27 @@ type iListDeliveryRequest interface {
 }
 
 type ListDeliveryRequest struct {
-	// The region of the data management center for threat analysis. Select the region based on where your assets are located. Valid values:
+	// The region of the data management center for Threat Analysis. Select the region of the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Select this value if your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Select this value if your assets are in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Select this value if your assets are in regions outside China.
+	// - ap-southeast-1: Select this value if your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud account ID of a member. An administrator can use this parameter to view data from the perspective of the member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of view. Valid values:
+	// The view type. Valid values:
 	//
-	// - 0: The view for the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: The view for all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//

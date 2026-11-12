@@ -22,7 +22,7 @@ type iOpenDeliveryRequest interface {
 }
 
 type OpenDeliveryRequest struct {
-	// The code for a specific log of the cloud service, such as the process log of Security Center. This parameter is optional. If you do not specify this parameter, the operation applies to all logs of the service.
+	// The log code of the cloud service, such as the process log in Security Center. This parameter is optional. If you do not specify this parameter, the operation applies to all logs of the cloud service.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type OpenDeliveryRequest struct {
 	//
 	// - qcloud_waf
 	//
-	// - qcloud_cfw
+	// - qlcoud_cfw
 	//
 	// - hcloud_waf
 	//
@@ -82,27 +82,27 @@ type OpenDeliveryRequest struct {
 	//
 	// cfw
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region where the Data Management center of threat analysis is located. Select a region based on the location of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Select this value if your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Select this value if your assets are located in the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: Select this value if your assets are in a region outside China.
+	// - ap-southeast-1: Select this value if your assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member account that the administrator wants to access.
+	// The ID of the member whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type. Valid values:
 	//
-	// - 0: The view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: The view of all accounts within the enterprise.
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//

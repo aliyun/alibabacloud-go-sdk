@@ -28,15 +28,15 @@ type ListAccountAccessIdResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data []*ListAccountAccessIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The returned message description.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ListAccountAccessIdResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -121,47 +121,47 @@ func (s *ListAccountAccessIdResponseBody) Validate() error {
 }
 
 type ListAccountAccessIdResponseBodyData struct {
-	// The attached AccessKey ID.
+	// The bound AccessKeyId.
 	//
 	// example:
 	//
 	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The MD5 value of the multicloud AccessKey ID.
+	// The MD5 value of the multi-cloud AccessKeyId.
 	//
 	// example:
 	//
 	// abcXXXXXXXX
 	AccessIdMd5 *string `json:"AccessIdMd5,omitempty" xml:"AccessIdMd5,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The information of the account to which the multicloud AccessKey ID belongs. The format is: Alibaba Cloud account ID|Alibaba Cloud account name|Multicloud AccessKey ID.
+	// The account information of the multi-cloud AccessKeyId. The format is Alibaba Cloud account ID|Alibaba Cloud account name|multi-cloud AccessKeyId.
 	//
 	// example:
 	//
 	// 123xxxxxx|xxxx|ABCXXXXX
 	AccountStr *string `json:"AccountStr,omitempty" xml:"AccountStr,omitempty"`
-	// Indicates whether the AccessKey ID is attached to threat analysis. Valid values:
+	// Indicates whether the AccessKeyId is bound to threat detection and response. Valid values:
 	//
-	// - 0: Not attached.
+	//  - 0: Not bound.
 	//
-	// - 1: Attached.
+	//  - 1: Bound.
 	//
 	// example:
 	//
 	// 1
 	Bound *int32 `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	// The code for the multicloud environment.
+	// The code of the multi-cloud provider.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the Alibaba Cloud account that corresponds to the multicloud AccessKey ID.
+	// The Alibaba Cloud account ID that corresponds to the multi-cloud AccessKeyId.
 	//
 	// example:
 	//

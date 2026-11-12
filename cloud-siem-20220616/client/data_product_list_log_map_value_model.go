@@ -28,57 +28,57 @@ type iDataProductListLogMapValue interface {
 }
 
 type DataProductListLogMapValue struct {
-	// The code of the log.
+	// The log code.
 	//
 	// example:
 	//
 	// cloud_siem_config_log
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// audit log
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// audit log
 	LogNameEn *string `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
-	// The language code of the log that is used to indicate the language in which the log is displayed.
+	// The language code of the log, which is used to display multilingual names.
 	//
 	// example:
 	//
 	// ${sas.cloudsiem.prod.cloud_siem_aegis_crack_from_beaver}
 	LogNameKey *string `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
-	// The status of the log delivery. Valid values:
+	// The log delivery status. Valid values:
 	//
-	// 	- true: The logs are being delivered.
+	// - true: Delivery is in progress.
 	//
-	// 	- false: The log delivery feature is disabled.
+	// - false: Delivery is disabled.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
+	// Specifies whether the log delivery switch can be operated. Only the delegated administrator of Threat Analysis can operate the log delivery switch. Valid values:
 	//
-	// 	- true
+	// - true: The switch can be operated.
 	//
-	// 	- false
+	// - false: The switch cannot be operated.
 	//
 	// example:
 	//
 	// true
 	CanOperateOrNot *bool `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
-	// The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+	// The topic of the log in the Logstore. It is an index field of the Logstore and can be used to distinguish different logs.
 	//
 	// example:
 	//
 	// sas_login_event
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The extended parameter.
+	// The extended parameters.
 	ExtraParameters []*DataProductListLogMapValueExtraParameters `json:"ExtraParameters,omitempty" xml:"ExtraParameters,omitempty" type:"Repeated"`
 }
 
@@ -176,7 +176,7 @@ func (s *DataProductListLogMapValue) Validate() error {
 }
 
 type DataProductListLogMapValueExtraParameters struct {
-	// The ID of the extended parameter.
+	// The identifier of the extended parameter.
 	//
 	// example:
 	//

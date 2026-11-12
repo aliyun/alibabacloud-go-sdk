@@ -28,13 +28,13 @@ type PostRuleStatusChangeResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type PostRuleStatusChangeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//

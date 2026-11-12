@@ -28,13 +28,13 @@ type DescribeEntityInfoResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeEntityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the request.
+	// The response message.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type DescribeEntityInfoResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: successful
 	//
-	// - false: The request failed.
+	// - false: failed
 	//
 	// example:
 	//
@@ -127,25 +127,25 @@ type DescribeEntityInfoResponseBodyData struct {
 	//
 	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The information about the entity.
+	// The entity information.
 	//
 	// example:
 	//
-	// { location: "xian", net_connect_dir: "in", malware_type: "${aliyun.siem.sas.alert_tag.login_unusual_account}" }
+	// {"location": "xian", "net_connect_dir": "in", "malware_type": "${aliyun.siem.sas.alert_tag.login_unusual_account}"}
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
-	// The type of the entity. Valid values:
+	// The entity type. Valid values:
 	//
 	// - ip: IP address
 	//
-	// - domain: domain name
+	// - domain: Domain name
 	//
 	// - url: URL
 	//
-	// - process: process
+	// - process: Process
 	//
-	// - file: file
+	// - file: File
 	//
-	// - host: host
+	// - host: Host
 	//
 	// example:
 	//

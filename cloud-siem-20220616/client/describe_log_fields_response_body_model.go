@@ -135,7 +135,7 @@ type DescribeLogFieldsResponseBodyData struct {
 	//
 	// example:
 	//
-	// sas.cloudsiem.prod.activity_name
+	// ${sas.cloudsiem.prod.alert_desc}
 	FieldDesc *string `json:"FieldDesc,omitempty" xml:"FieldDesc,omitempty"`
 	// The name of the rule field.
 	//

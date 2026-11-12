@@ -18,7 +18,7 @@ type iDescribeDataSourceParametersRequest interface {
 }
 
 type DescribeDataSourceParametersRequest struct {
-	// The code for the multicloud environment.
+	// The multi-cloud code.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type DescribeDataSourceParametersRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The type of the data source. Valid values:
+	// The type of the connected data source. Valid values:
 	//
-	// - **ckafka**: Tencent Cloud CKafka.
+	//  - **ckafka**: Tencent Cloud CKafka.
 	//
-	// - **obs**: Huawei Cloud OBS.
+	//  - **obs**: Huawei Cloud OBS.
 	//
-	// - **wafApi**: Tencent Cloud WAF attack log download API.
+	//  - **wafApi**: Tencent Cloud WAF attack log download API.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type DescribeDataSourceParametersRequest struct {
 	//
 	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The region where the Data Management center for threat analysis is deployed. Select a region based on the region where your assets are located. Valid values:
+	// The region of the data management center for Threat Analysis. Select the region of the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iDescribeAutomateResponseConfigCounterResponseBody interface {
 }
 
 type DescribeAutomateResponseConfigCounterResponseBody struct {
-	// The request status code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeAutomateResponseConfigCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message returned by the request.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type DescribeAutomateResponseConfigCounterResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

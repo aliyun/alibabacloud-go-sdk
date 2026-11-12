@@ -20,27 +20,27 @@ type iDescribeAlertTypeRequest interface {
 }
 
 type DescribeAlertTypeRequest struct {
-	// The region of the data management center for threat analysis. Specify the management center region based on the region where your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are deployed. Valid values:
 	//
-	// - cn-hangzhou: assets in the Chinese mainland and Hong Kong (China).
+	// - cn-hangzhou: Assets are deployed in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: assets outside China.
+	// - ap-southeast-1: Assets are deployed in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator switches to for viewing as another member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertTypeRequest struct {
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The rule type. Valid values:
 	//
-	// - predefine: predefined.
+	// - predefine: Predefined.
 	//
-	// - customize: custom.
+	// - customize: Custom.
 	//
 	// example:
 	//

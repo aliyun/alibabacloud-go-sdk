@@ -32,6 +32,7 @@ type iDescribeDisposeAndPlaybookRequest interface {
 }
 
 type DescribeDisposeAndPlaybookRequest struct {
+	// Specifies whether to return only available playbooks.
 	AvailableOnly *bool `json:"AvailableOnly,omitempty" xml:"AvailableOnly,omitempty"`
 	// The current page number. The value must be greater than or equal to 1.
 	//
@@ -41,18 +42,29 @@ type DescribeDisposeAndPlaybookRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The entity type. Valid values:
 	//
+	// - ip: IP address.
+	//
+	// - process: Process.
+	//
+	// - file: File.
+	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity UUID.
+	// The UUID of the entity.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
-	EntityUuid     *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The list of entity UUIDs. Separate multiple UUIDs with commas (,).
+	//
+	// example:
+	//
+	// 6c740667-80b2-476d-8924-2e706feb****,6c740667-80b2-476d-8924-2e706feb****
 	EntityUuidList *string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty"`
-	// The incident UUID.
+	// The UUID of the incident.
 	//
 	// example:
 	//
@@ -64,23 +76,27 @@ type DescribeDisposeAndPlaybookRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the threat analysis data management center is located. Specify the management center region based on the region of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are located in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are located outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The ID of the user whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
+	//
+	// - 0: Current Alibaba Cloud account view.
+	//
+	// - 1: View of all accounts in the enterprise.
 	//
 	// example:
 	//

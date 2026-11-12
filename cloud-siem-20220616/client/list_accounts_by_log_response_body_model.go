@@ -16,7 +16,7 @@ type iListAccountsByLogResponseBody interface {
 }
 
 type ListAccountsByLogResponseBody struct {
-	// The return value of the request.
+	// The response data.
 	Data []*ListAccountsByLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,23 +66,23 @@ func (s *ListAccountsByLogResponseBody) Validate() error {
 }
 
 type ListAccountsByLogResponseBodyData struct {
-	// The ID of the Alibaba Cloud account.
+	// The ID of the cloud account.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the Alibaba Cloud account.
+	// The name of the cloud account.
 	//
 	// example:
 	//
 	// sas_account_xxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the account has been added. Valid values:
+	// Indicates whether the account is connected. Valid values:
 	//
-	// -1: The account has been added.
+	//  - 1: Connected.
 	//
-	// -0: The account has not been added.
+	//  - 0: Not connected.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListAccountsByLogResponseBodyData struct {
 	//
 	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
+	// The ID of the cloud account that purchased CTDR.
 	//
 	// example:
 	//
 	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The code of the product that corresponds to the log.
+	// The product code corresponding to the log.
 	//
 	// example:
 	//
 	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account that is used for Threat Analysis.
+	// The ID of the CTDR cloud account.
 	//
 	// example:
 	//

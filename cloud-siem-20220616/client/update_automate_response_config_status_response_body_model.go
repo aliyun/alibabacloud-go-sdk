@@ -28,19 +28,19 @@ type UpdateAutomateResponseConfigStatusResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value of the request.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned for the request.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type UpdateAutomateResponseConfigStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//

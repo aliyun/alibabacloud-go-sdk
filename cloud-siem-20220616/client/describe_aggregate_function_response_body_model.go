@@ -22,35 +22,35 @@ type iDescribeAggregateFunctionResponseBody interface {
 }
 
 type DescribeAggregateFunctionResponseBody struct {
-	// The status code of the request.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data []*DescribeAggregateFunctionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ func (s *DescribeAggregateFunctionResponseBody) Validate() error {
 }
 
 type DescribeAggregateFunctionResponseBodyData struct {
-	// The aggregate function.
+	// The aggregation function.
 	//
 	// example:
 	//
 	// count
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The display name of the aggregate function.
+	// The display name of the aggregation function.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iAddDataSourceLogRequest interface {
 }
 
 type AddDataSourceLogRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The ID of the cloud account.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type AddDataSourceLogRequest struct {
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The code for the multicloud environment. Valid values:
+	// The code of the multi-cloud provider. Valid values:
 	//
 	// - qcloud: Tencent Cloud.
 	//
-	// - aliyun: Alibaba Cloud.
-	//
 	// - hcloud: Huawei Cloud.
+	//
+	// - aliyun: Alibaba Cloud. This value is only used for Alibaba Cloud data source scenarios. When you query available multi-cloud data source types, the ListDataSourceTypes operation only supports qcloud and hcloud.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type AddDataSourceLogRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. Threat Analysis calculates this ID as an MD5 hash value based on specific parameters. To obtain the data source ID, call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation.
+	// The ID of the data source instance. You can call the ListBindDataSources operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AddDataSourceLogRequest struct {
 	//
 	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	// The details of the data source parameters. The value must be a JSON array.
+	// The details of the data source parameters. The value is a JSON array.
 	//
 	// This parameter is required.
 	//
@@ -62,17 +62,17 @@ type AddDataSourceLogRequest struct {
 	//
 	// [{"LogCode":"cloud_siem_qcloud_waf_alert_log","LogParas":"[{\\"ParaCode\\":\\"api_name\\",\\"ParaValue\\":\\"GetAttackDownloadRecords\\"}]"}]
 	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
-	// The code of the log.
+	// The log code.
 	//
 	// example:
 	//
 	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The region where the Data Management Center of Threat Analysis is deployed. Select the region where your assets are located. Valid values:
+	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets are in the Chinese mainland and Hong Kong (China).
+	// - cn-hangzhou: Your assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Assets are outside China.
+	// - ap-southeast-1: Your assets are located outside China.
 	//
 	// example:
 	//

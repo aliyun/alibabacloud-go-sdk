@@ -28,13 +28,13 @@ type iModifyBindAccountRequest interface {
 }
 
 type ModifyBindAccountRequest struct {
-	// The AccessKey ID of the Alibaba Cloud account.
+	// The AccessKey ID of the cloud account.
 	//
 	// example:
 	//
 	// ABCXXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The ID of the cloud account.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ModifyBindAccountRequest struct {
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the multicloud account.
+	// The name of the multi-cloud account.
 	//
 	// example:
 	//
 	// sas_account_xxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the binding record. This is the BindId value returned by the ListBindAccount operation.
+	// The ID of the binding record. This is the BindId returned by the ListBindAccount operation.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,11 @@ type ModifyBindAccountRequest struct {
 	//
 	// 123
 	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
-	// The code of the multicloud service.
+	// The code of the multi-cloud provider. Valid values:
+	//
+	// - **hcloud**: Huawei Cloud.
+	//
+	// - **qcloud**: Tencent Cloud.
 	//
 	// This parameter is required.
 	//
@@ -64,23 +68,23 @@ type ModifyBindAccountRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The region where the Data Management center for threat analysis is located. Select a region based on the location of your assets. Valid values:
+	// The region where the threat detection and response (CTDR) data management center resides. Select the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are outside China.
+	// - ap-southeast-1: The assets belong to regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. An administrator can specify this parameter to switch to the member\\"s view.
+	// The ID of the member account to which the administrator switches the view.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
 	// - 0: The view of the current Alibaba Cloud account.
 	//

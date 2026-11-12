@@ -16,9 +16,9 @@ type iDescribeDataSourceParametersResponseBody interface {
 }
 
 type DescribeDataSourceParametersResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data []*DescribeDataSourceParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ func (s *DescribeDataSourceParametersResponseBody) Validate() error {
 type DescribeDataSourceParametersResponseBodyData struct {
 	// Indicates whether the parameter is editable. Valid values:
 	//
-	// - **0**: The parameter cannot be modified.
+	//  - **0**: Modification is disabled.
 	//
-	// - **1**: The parameter can be modified.
+	//  - **1**: Modification is allowed.
 	//
 	// example:
 	//
-	// wafApi
+	// 0
 	CanEditted *int32 `json:"CanEditted,omitempty" xml:"CanEditted,omitempty"`
-	// The code for the multicloud environment. Valid values:
+	// The multi-cloud code. Valid values:
 	//
 	// - **qcloud**: Tencent Cloud.
 	//
@@ -88,87 +88,87 @@ type DescribeDataSourceParametersResponseBodyData struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// - **obs**: Huawei Cloud OBS.
+	//  - **obs**: Huawei Cloud OBS.
 	//
-	// - **wafApi**: Tencent Cloud WAF download API.
+	//  - **wafApi**: Tencent Cloud WAF download API.
 	//
-	// - **ckafka**: Tencent Cloud CKafka.
+	//  - **ckafka**: Tencent Cloud CKafka.
 	//
 	// example:
 	//
 	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The default value of the parameter.
+	// The default parameter value.
 	//
 	// example:
 	//
 	// wafApi
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Indicates whether the parameter can be modified. Valid values:
+	// Indicates whether modification is disabled. Valid values:
 	//
-	// - **true**: The parameter cannot be modified.
+	//  - **true**: Modification is disabled.
 	//
-	// - **false**: The parameter can be modified.
+	//  - **false**: Modification is allowed.
 	//
 	// example:
 	//
-	// wafApi
+	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The format check method.
+	// The format validation method.
 	//
 	// example:
 	//
 	// email
 	FormatCheck *string `json:"FormatCheck,omitempty" xml:"FormatCheck,omitempty"`
-	// Additional information.
+	// The additional description.
 	//
 	// example:
 	//
 	// obs docment
 	Hit *string `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	// The code of the parameter.
+	// The parameter code.
 	//
 	// example:
 	//
 	// region_code
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
-	// The level of the parameter. Valid values:
+	// The parameter level. Valid values:
 	//
-	// - **1**: data source parameter.
+	//  - **1**: Data source parameter.
 	//
-	// - **2**: log parameter.
+	// - **2**: Log parameter.
 	//
 	// example:
 	//
 	// 1
 	ParaLevel *int32 `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// region local
 	ParaName *string `json:"ParaName,omitempty" xml:"ParaName,omitempty"`
-	// The type of the parameter.
+	// The parameter type.
 	//
 	// example:
 	//
 	// string
 	ParaType *string `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
-	// The list of parameters.
+	// The specific parameter list.
 	ParamValue []*DescribeDataSourceParametersResponseBodyDataParamValue `json:"ParamValue,omitempty" xml:"ParamValue,omitempty" type:"Repeated"`
 	// Indicates whether the parameter is required. Valid values:
 	//
-	// - **1**: The parameter is required.
+	//  - **1**: Required.
 	//
-	// - **0**: The parameter is optional.
+	//  - **0**: Optional.
 	//
 	// example:
 	//
-	// string
+	// 1
 	Required *int32 `json:"Required,omitempty" xml:"Required,omitempty"`
-	// The prompt for the parameter value.
+	// The parameter value hint.
 	//
 	// example:
 	//
@@ -324,13 +324,13 @@ func (s *DescribeDataSourceParametersResponseBodyData) Validate() error {
 }
 
 type DescribeDataSourceParametersResponseBodyDataParamValue struct {
-	// The displayed content.
+	// The display content.
 	//
 	// example:
 	//
 	// guangzhou
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The actual value of the parameter.
+	// The actual parameter content.
 	//
 	// example:
 	//

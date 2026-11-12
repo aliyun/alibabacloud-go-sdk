@@ -34,13 +34,13 @@ type DescribeWhiteRuleListRequest struct {
 	//
 	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The alert type.
+	// The alerting type.
 	//
 	// example:
 	//
 	// scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The page number. The value must be greater than or equal to 1.
+	// The current page number. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type DescribeWhiteRuleListRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The universally unique identifier (UUID) of the event.
+	// The globally unique UUID of the incident.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The number of entries per page. The maximum value is 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -62,27 +62,27 @@ type DescribeWhiteRuleListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the data management center of Threat Analysis is deployed. You must select the region where your assets are located. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are deployed in the Chinese mainland or in the China (Hong Kong) region.
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are deployed in regions outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member. This parameter is used in a multi-account management scenario. An administrator can specify this parameter to query the data of a member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account
 	//
-	// - 1: the view of all accounts that are managed by the administrator account.
+	// - 1: the view of all accounts in the enterprise
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type DescribeAutomateResponseConfigFeatureResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data []*DescribeAutomateResponseConfigFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAutomateResponseConfigFeatureResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -137,9 +137,9 @@ type DescribeAutomateResponseConfigFeatureResponseBodyData struct {
 	//
 	// alert_desc
 	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	// The enumeration of the right operand that corresponds to the field.
+	// The enumeration values of the right value corresponding to the field.
 	RightValueEnums []*DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums `json:"RightValueEnums,omitempty" xml:"RightValueEnums,omitempty" type:"Repeated"`
-	// The operators that the field supports.
+	// The list of operators supported by the field.
 	SupportOperators []*DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators `json:"SupportOperators,omitempty" xml:"SupportOperators,omitempty" type:"Repeated"`
 }
 
@@ -210,13 +210,13 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyData) Validate() error
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums struct {
-	// The enumeration value of the right operand.
+	// The enumeration value of the right value.
 	//
 	// example:
 	//
 	// serious
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The Medusa code for the enumeration value of the right operand.
+	// The Medusa code of the right value enumeration.
 	//
 	// example:
 	//
@@ -255,17 +255,17 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums) V
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struct {
-	// Indicates whether a right operand is required. Valid values:
+	// Specifies whether a right value is required. Valid values:
 	//
-	// - true: A right operand is required.
+	// - true: Required.
 	//
-	// - false: A right operand is not required.
+	// - false: Not required.
 	//
 	// example:
 	//
 	// false
 	HasRightValue *bool `json:"HasRightValue,omitempty" xml:"HasRightValue,omitempty"`
-	// The position of the operator in the list of operators.
+	// The position of the operator in the operator list.
 	//
 	// example:
 	//
@@ -295,13 +295,13 @@ type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struc
 	//
 	// <=
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The data types that the operator supports. Multiple data types are separated by commas.
+	// The data types supported by the current operator, separated by commas.
 	//
 	// example:
 	//
 	// varchar
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	// The scenarios that the operator supports. Multiple scenarios are separated by commas, such as aggregation. By default, this parameter is empty.
+	// The scenarios supported by the operator. Multiple scenarios are separated by commas, such as aggregation. Default value: empty.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetEntitiyStatResponseBody interface {
 }
 
 type GetEntitiyStatResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type GetEntitiyStatResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -125,6 +125,11 @@ func (s *GetEntitiyStatResponseBody) Validate() error {
 }
 
 type GetEntitiyStatResponseBodyData struct {
+	// The number of alerts associated with the entity.
+	//
+	// example:
+	//
+	// 1
 	AlertNum *int64 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
 	// The number of entities.
 	//
@@ -143,8 +148,13 @@ type GetEntitiyStatResponseBodyData struct {
 	// example:
 	//
 	// 5cde2118666ffda40783ebd7cec9a60a
-	EntityUuid  *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
-	IncidentNum *int64  `json:"IncidentNum,omitempty" xml:"IncidentNum,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The number of incidents associated with the entity.
+	//
+	// example:
+	//
+	// 1
+	IncidentNum *int64 `json:"IncidentNum,omitempty" xml:"IncidentNum,omitempty"`
 }
 
 func (s GetEntitiyStatResponseBodyData) String() string {

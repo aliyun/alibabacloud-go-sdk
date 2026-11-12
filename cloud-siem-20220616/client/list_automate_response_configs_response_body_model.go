@@ -22,35 +22,35 @@ type iListAutomateResponseConfigsResponseBody interface {
 }
 
 type ListAutomateResponseConfigsResponseBody struct {
-	// The request status code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data returned in the response.
 	//
 	// example:
 	//
 	// 123456
 	Data *ListAutomateResponseConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *ListAutomateResponseConfigsResponseBodyData) Validate() error {
 }
 
 type ListAutomateResponseConfigsResponseBodyDataPageInfo struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *ListAutomateResponseConfigsResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
-	// The action configuration of the automated response rule. The value is a JSON array.
+	// The action configuration of the automated response rule, in JSON array format.
 	//
 	// example:
 	//
@@ -250,19 +250,19 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	//
 	// ]
 	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
-	// The handling action. Multiple values are separated by commas. Valid values:
+	// The types of the actions. Multiple values are separated by commas. Valid values:
 	//
-	// - **doPlaybook**: executes a playbook.
+	// - **doPlaybook**: Execute a playbook.
 	//
-	// - **changeEventStatus**: changes the status of an event.
+	// - **changeEventStatus**: Change the event status.
 	//
-	// - **changeThreatLevel**: changes the threat level of an event.
+	// - **changeThreatLevel**: Change the event threat level.
 	//
 	// example:
 	//
 	// doPlaybook,changeEventStatus
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The ID of the Alibaba Cloud account that is associated with the rule.
+	// The ID of the primary Alibaba Cloud account associated with the SIEM rule.
 	//
 	// example:
 	//
@@ -270,9 +270,9 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// The type of the automated response. Valid values:
 	//
-	// - **event**
+	// - **event**: Event.
 	//
-	// - **alert**
+	// - **alert**: Alert.
 	//
 	// example:
 	//
@@ -282,9 +282,9 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	//
 	// example:
 	//
-	// varchar
+	// 1
 	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The trigger condition of the automated response rule. The value is in the JSON format.
+	// The cause of the automated response rule, in JSON format.
 	//
 	// example:
 	//
@@ -308,11 +308,11 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the response rule.
+	// The type of the response rule. Valid values:
 	//
-	// - preset: predefined
+	// - preset: Predefined.
 	//
-	// - custom: custom
+	// - custom: Custom.
 	//
 	// example:
 	//
@@ -326,9 +326,9 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// - **0**: disabled
+	// - **0**: Disabled.
 	//
-	// - **100**: enabled
+	// - **100**: Enabled.
 	//
 	// example:
 	//

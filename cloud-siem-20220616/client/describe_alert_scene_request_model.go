@@ -18,27 +18,27 @@ type iDescribeAlertSceneRequest interface {
 }
 
 type DescribeAlertSceneRequest struct {
-	// The region where the data management center of Threat Analysis is deployed. You must select the region where your assets are located. Valid values:
+	// The location of the data management center for Threat Analysis. Select the location of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: your assets are outside China.
+	// - ap-southeast-1: Assets are located in regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. An administrator can use this ID to switch to the member\\"s perspective.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view.
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts within the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//

@@ -22,35 +22,35 @@ type iDescribeCloudSiemAssetsResponseBody interface {
 }
 
 type DescribeCloudSiemAssetsResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data returned in the response.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeCloudSiemAssetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: successful
 	//
-	// - false: The request failed.
+	// - false: failed
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *DescribeCloudSiemAssetsResponseBodyData) Validate() error {
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataPageInfo struct {
-	// The page number of the returned page.
+	// The number of the current page.
 	//
 	// example:
 	//
@@ -232,13 +232,13 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataPageInfo) Validate() error {
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseData struct {
-	// The UUID of the alert that is associated with the event.
+	// The UUID of the alert associated with the incident.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The ID of the primary Alibaba Cloud account for SIEM.
 	//
 	// example:
 	//
@@ -250,13 +250,13 @@ type DescribeCloudSiemAssetsResponseBodyDataResponseData struct {
 	//
 	// 0616caeb-acb8-45e0-8520-4ee5fbe251f0
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The asset information, in a JSON array.
+	// The display information of the asset, in JSON array format.
 	//
 	// example:
 	//
 	// [{"KeyName": "${aliyun.siem.asset.asset_name}","Values": "zsw-agentless-ubuntu20","Key": "asset_name"}]
 	AssetInfo []*DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo `json:"AssetInfo,omitempty" xml:"AssetInfo,omitempty" type:"Repeated"`
-	// The asset name.
+	// The name of the asset.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type DescribeCloudSiemAssetsResponseBodyDataResponseData struct {
 	//
 	// domain
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The cloud service provider of the entity. Valid values:
+	// The code of the cloud provider from which the entity originates. Valid values:
 	//
 	// - aliyun: Alibaba Cloud
 	//
@@ -304,19 +304,19 @@ type DescribeCloudSiemAssetsResponseBodyDataResponseData struct {
 	//
 	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The asset ID.
+	// The ID of the asset.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The UUID of the event.
+	// The UUID of the incident.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The ID of the linked account.
+	// The ID of the account associated with the asset.
 	//
 	// example:
 	//
@@ -454,19 +454,19 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataResponseData) Validate() error {
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo struct {
-	// The key of the alert property.
+	// The key of the detailed alert property.
 	//
 	// example:
 	//
 	// suspicious.wbd.wb.trojanpath
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the alert property.
+	// The name of the detailed alert data.
 	//
 	// example:
 	//
 	// Trojan Path
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The value of the alert property.
+	// The value of the detailed alert data.
 	//
 	// example:
 	//

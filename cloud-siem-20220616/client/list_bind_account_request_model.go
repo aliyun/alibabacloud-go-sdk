@@ -20,11 +20,9 @@ type iListBindAccountRequest interface {
 }
 
 type ListBindAccountRequest struct {
-	// The code of the cloud service provider. Valid values:
+	// The code of the multi-cloud provider. Valid values:
 	//
 	// - qcloud: Tencent Cloud.
-	//
-	// - aliyun: Alibaba Cloud.
 	//
 	// - hcloud: Huawei Cloud.
 	//
@@ -34,27 +32,27 @@ type ListBindAccountRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The region where the data management center of Threat Analysis is deployed. Select the region of the data management center based on the region of your assets. Valid values:
+	// The region where the threat detection and response data management center resides. Specify the management center based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are outside China.
+	// - ap-southeast-1: Your assets reside outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose perspective the administrator wants to switch to.
+	// The ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
 	//
-	// - 0: The view of the current Alibaba Cloud account.
+	// - 0: the current Alibaba Cloud account view.
 	//
-	// - 1: The view of all accounts that are managed by the enterprise.
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//

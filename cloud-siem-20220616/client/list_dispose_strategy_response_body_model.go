@@ -28,13 +28,13 @@ type ListDisposeStrategyResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The request return value.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *ListDisposeStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type ListDisposeStrategyResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: successful
+	//
+	// - false: failed
 	//
 	// example:
 	//
@@ -117,6 +121,7 @@ func (s *ListDisposeStrategyResponseBody) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyData struct {
+	// The list of response record groups.
 	Groups []*ListDisposeStrategyResponseBodyDataGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListDisposeStrategyResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
@@ -187,18 +192,70 @@ func (s *ListDisposeStrategyResponseBodyData) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyDataGroups struct {
-	FailedCount         *int64                                              `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	FirstOccurrenceTime *int64                                              `json:"FirstOccurrenceTime,omitempty" xml:"FirstOccurrenceTime,omitempty"`
-	GroupBy             *string                                             `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	GroupKey            *string                                             `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	GroupMeta           *ListDisposeStrategyResponseBodyDataGroupsGroupMeta `json:"GroupMeta,omitempty" xml:"GroupMeta,omitempty" type:"Struct"`
-	GroupName           *string                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupTitle          *string                                             `json:"GroupTitle,omitempty" xml:"GroupTitle,omitempty"`
-	LastOccurrenceTime  *int64                                              `json:"LastOccurrenceTime,omitempty" xml:"LastOccurrenceTime,omitempty"`
-	LatestModifiedTime  *int64                                              `json:"LatestModifiedTime,omitempty" xml:"LatestModifiedTime,omitempty"`
-	RunningCount        *int64                                              `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
-	SuccessCount        *int64                                              `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TotalCount          *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of failed response records in the group.
+	//
+	// example:
+	//
+	// 2
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The first occurrence time of the response records in the group.
+	//
+	// example:
+	//
+	// 0
+	FirstOccurrenceTime *int64 `json:"FirstOccurrenceTime,omitempty" xml:"FirstOccurrenceTime,omitempty"`
+	// The grouping dimension.
+	//
+	// example:
+	//
+	// Strategy
+	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The grouping key value.
+	//
+	// example:
+	//
+	// fedcba9876543210fedcba9876543210
+	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	// The group metadata.
+	GroupMeta *ListDisposeStrategyResponseBodyDataGroupsGroupMeta `json:"GroupMeta,omitempty" xml:"GroupMeta,omitempty" type:"Struct"`
+	// The name of the response record group.
+	//
+	// example:
+	//
+	// Automatic response rule
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The group title.
+	GroupTitle *string `json:"GroupTitle,omitempty" xml:"GroupTitle,omitempty"`
+	// The last occurrence time of handling records in the group.
+	//
+	// example:
+	//
+	// 0
+	LastOccurrenceTime *int64 `json:"LastOccurrenceTime,omitempty" xml:"LastOccurrenceTime,omitempty"`
+	// The latest modification time of handling records in the group.
+	//
+	// example:
+	//
+	// 0
+	LatestModifiedTime *int64 `json:"LatestModifiedTime,omitempty" xml:"LatestModifiedTime,omitempty"`
+	// The number of in-progress response records in the group.
+	//
+	// example:
+	//
+	// 2
+	RunningCount *int64 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
+	// The number of successful response records in the group.
+	//
+	// example:
+	//
+	// 6
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The total number of response records in the group.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDisposeStrategyResponseBodyDataGroups) String() string {
@@ -327,6 +384,7 @@ func (s *ListDisposeStrategyResponseBodyDataGroups) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyDataGroupsGroupMeta struct {
+	// The group information.
 	GroupInfo interface{} `json:"GroupInfo,omitempty" xml:"GroupInfo,omitempty"`
 }
 
@@ -352,13 +410,13 @@ func (s *ListDisposeStrategyResponseBodyDataGroupsGroupMeta) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyDataPageInfo struct {
-	// The current page number of the list.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of records returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -412,6 +470,11 @@ func (s *ListDisposeStrategyResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyDataResponseData struct {
+	// The name of the associated alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The alert UUID.
 	//
@@ -419,13 +482,17 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The SIEM primary account ID associated with the policy.
+	// The ID of the SIEM primary account associated with the policy.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The policy status. Valid values:
+	// The status of the policy. Valid values:
+	//
+	// - 0: invalid
+	//
+	// - 1: valid
 	//
 	// example:
 	//
@@ -443,20 +510,31 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// 123456789
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The entity type. Valid values:
+	// The type of the entity. Valid values:
+	//
+	// - ip: IP address
+	//
+	// - process: process
+	//
+	// - file: file
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code of the response task.
+	//
+	// example:
+	//
+	// python.Internal.Params
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The failure summary of the task.
 	//
 	// example:
 	//
 	// DisposalEntity failed which description is Aegis Quarantine File , return_info failed which description is Check Aegis Process Result , [ERROR DETAIL] *******.php:file not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The finish time of the task.
+	// The end time of the task. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -468,7 +546,7 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -492,15 +570,15 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The unique identifier name of the playbook.
+	// The unique name of the playbook.
 	//
 	// example:
 	//
 	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	// The playbook type. Valid values:
+	// The type of the playbook. Valid values:
 	//
-	// - system: manual handling
+	// - system: manual response
 	//
 	// - custom: event-triggered playbook
 	//
@@ -514,19 +592,19 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// system
 	PlaybookType *string `json:"PlaybookType,omitempty" xml:"PlaybookType,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
 	// example:
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The disposition scope.
+	// The response scope.
 	//
 	// example:
 	//
 	// [{ aliUid: 1766185894104675 }]
 	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
-	// The SOAR response policy ID.
+	// The ID of the Security Orchestration, Automation, and Response (SOAR) response policy.
 	//
 	// example:
 	//
@@ -534,11 +612,19 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 	// The playbook invocation status. Valid values:
 	//
+	// - 200: successful
+	//
+	// - 10: deleted
+	//
+	// - 5: failed
+	//
+	// - 0: initial status
+	//
 	// example:
 	//
 	// 10
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Alibaba Cloud account ID that configured the policy.
+	// The ID of the Alibaba Cloud account that configured the policy.
 	//
 	// example:
 	//

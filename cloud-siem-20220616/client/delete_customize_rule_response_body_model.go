@@ -34,23 +34,23 @@ type DeleteCustomizeRuleResponseBody struct {
 	//
 	// 123456
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: successful
 	//
-	// - false: The request failed.
+	// - false: failed
 	//
 	// example:
 	//

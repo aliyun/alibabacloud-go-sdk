@@ -26,39 +26,39 @@ type iAddUserSourceLogConfigRequest interface {
 }
 
 type AddUserSourceLogConfigRequest struct {
-	// Specifies whether to add or delete the log collection task. Valid values:
+	// Specifies the ingestion action. Valid values:
 	//
-	// - -1: Deletes the task.
+	// - -1: Deletes the ingestion.
 	//
-	// - 0: Adds the task.
+	// - 0: Adds the ingestion.
 	//
 	// example:
 	//
 	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The detailed information about the SLS log to be collected.
+	// The detailed Simple Log Service (SLS) information for log ingestion.
 	//
 	// example:
 	//
 	// cn-shanghai.siem-project.siem-logstore
 	DisPlayLine *string `json:"DisPlayLine,omitempty" xml:"DisPlayLine,omitempty"`
-	// The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: The assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are in regions outside China.
+	// - ap-southeast-1: The assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The code of the log.
+	// The log code.
 	//
 	// example:
 	//
 	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	// The detailed information about the Simple Log Service (SLS) log to be collected. The value is a JSON string.
+	// The detailed Simple Log Service (SLS) information for log ingestion in JSON format.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type AddUserSourceLogConfigRequest struct {
 	//
 	// {"project":"wafnew-project-1335759343513432-cn-hangzhou","logStore":"wafnew-logstore","regionCode":"cn-hangzhou","prodCode":"waf"}
 	SourceLogInfo *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
-	// The code of the product.
+	// The product code.
 	//
 	// example:
 	//
 	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account for which you want to collect logs.
+	// The Alibaba Cloud account ID for log ingestion.
 	//
 	// This parameter is required.
 	//

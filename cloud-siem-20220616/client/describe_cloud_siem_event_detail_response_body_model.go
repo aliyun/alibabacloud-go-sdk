@@ -34,23 +34,23 @@ type DescribeCloudSiemEventDetailResponseBody struct {
 	//
 	// 123456
 	Data *DescribeCloudSiemEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: successful.
+	// - true: successful
 	//
-	// - false: failed.
+	// - false: failed
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	//
 	// 4
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	// The collection of ATT&CK attack technique labels.
+	// The collection of ATT&CK attack technique tags.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
 	// The event type. Valid values:
 	//
-	// - net-attack: expert rule.
+	// - net-attack: expert rule
 	//
-	// - graph: graph computing.
+	// - graph: graph computing
 	//
-	// - singleToSingle: alert pass-through.
+	// - singleToSingle: alert pass-through
 	//
-	// - allToSingle: alert aggregation.
+	// - allToSingle: alert aggregation
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The associated account.
 	ReferAccount *string `json:"ReferAccount,omitempty" xml:"ReferAccount,omitempty"`
-	// The remarks of the event.
+	// The remark for the event.
 	//
 	// example:
 	//
@@ -229,15 +229,15 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	//
 	// net-attack/101
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - 0: unhandled.
+	// - 0: unhandled
 	//
-	// - 1: handling.
+	// - 1: processing
 	//
-	// - 5: handling failed.
+	// - 5: processing failed
 	//
-	// - 10: handled.
+	// - 10: handled
 	//
 	// example:
 	//
@@ -245,17 +245,17 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The threat level. Valid values:
 	//
-	// - serious: high.
+	// - serious: high
 	//
-	// - suspicious: medium.
+	// - suspicious: medium
 	//
-	// - remind: low.
+	// - remind: low
 	//
 	// example:
 	//
 	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-	// The threat score of the event, ranging from 0 to 100. A higher score indicates a higher risk level.
+	// The threat score of the event. Valid values: 0 to 100. A higher score indicates a higher risk level.
 	//
 	// example:
 	//
@@ -480,7 +480,7 @@ type DescribeCloudSiemEventDetailResponseBodyDataAttckStages struct {
 	//
 	// 21
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	// The ATT&CK attack stage ID.
+	// The ID of the ATT&CK attack stage.
 	//
 	// example:
 	//

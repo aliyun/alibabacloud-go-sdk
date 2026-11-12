@@ -28,13 +28,13 @@ type DescribeCloudSiemEventsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value of the request.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeCloudSiemEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the request.
+	// The response message.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type DescribeCloudSiemEventsResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: successful
+	// - true: Successful.
 	//
-	// - false: failed
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *DescribeCloudSiemEventsResponseBodyData) Validate() error {
 }
 
 type DescribeCloudSiemEventsResponseBodyDataPageInfo struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *DescribeCloudSiemEventsResponseBodyDataPageInfo) Validate() error {
 }
 
 type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
-	// The number of alerts that are associated with the event.
+	// The number of alerts associated with the event.
 	//
 	// example:
 	//
@@ -244,13 +244,13 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The number of assets that are associated with the event.
+	// The number of assets associated with the event.
 	//
 	// example:
 	//
 	// 4
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	// The tags of the ATT\\&CK attack technique.
+	// The collection of ATT&CK attack technique tags.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
 	// The list of attack stages.
 	AttckStages []*DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages `json:"AttckStages,omitempty" xml:"AttckStages,omitempty" type:"Repeated"`
-	// The cloud services that generated the alerts, which are associated with the event.
+	// The products from which the alerts associated with the event originate.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
-	// The extended information about the event, in the JSON format.
+	// The extended information of the event in JSON format.
 	//
 	// example:
 	//
@@ -306,11 +306,11 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
-	// The event type.
+	// The event type. Valid values:
 	//
-	// - net-attack: expert rule
+	// - net-attack: Expert rule.
 	//
-	// - graph: graph computing
+	// - graph: Graph computing.
 	//
 	// example:
 	//
@@ -328,7 +328,7 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// 127608589417****
 	ReferAccount *string `json:"ReferAccount,omitempty" xml:"ReferAccount,omitempty"`
-	// The remarks on the event.
+	// The remark for the event.
 	//
 	// example:
 	//
@@ -342,13 +342,13 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// - 0: unhandled
+	// - 0: Unhandled.
 	//
-	// - 1: in progress
+	// - 1: Processing.
 	//
-	// - 5: failed
+	// - 5: Processing failed.
 	//
-	// - 10: handled
+	// - 10: Handled.
 	//
 	// example:
 	//
@@ -356,17 +356,17 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The threat level. Valid values:
 	//
-	// - serious: high
+	// - serious: High.
 	//
-	// - suspicious: medium
+	// - suspicious: Medium.
 	//
-	// - remind: low
+	// - remind: Low.
 	//
 	// example:
 	//
 	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-	// The threat score of the event. The score ranges from 0 to 100. A higher score indicates a higher risk level.
+	// The threat score of the event. Valid values: 0 to 100. A higher score indicates a higher threat level.
 	//
 	// example:
 	//
@@ -585,13 +585,13 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) Validate() error {
 }
 
 type DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages struct {
-	// The number of alerts that are associated with the attack stage.
+	// The number of alerts associated with the attack stage.
 	//
 	// example:
 	//
 	// 21
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	// The ID of the ATT\\&CK attack stage.
+	// The ATT&CK attack stage ID.
 	//
 	// example:
 	//

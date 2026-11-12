@@ -16,7 +16,7 @@ type iSubmitImportLogTasksResponseBody interface {
 }
 
 type SubmitImportLogTasksResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *SubmitImportLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *SubmitImportLogTasksResponseBody) Validate() error {
 }
 
 type SubmitImportLogTasksResponseBodyData struct {
-	// The number of log ingestion tasks that are successfully submitted.
+	// The number of log onboarding tasks that are successfully submitted.
 	//
 	// example:
 	//

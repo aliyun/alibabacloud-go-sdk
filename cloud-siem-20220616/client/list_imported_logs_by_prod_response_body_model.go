@@ -16,7 +16,7 @@ type iListImportedLogsByProdResponseBody interface {
 }
 
 type ListImportedLogsByProdResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data []*ListImportedLogsByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,51 +66,51 @@ func (s *ListImportedLogsByProdResponseBody) Validate() error {
 }
 
 type ListImportedLogsByProdResponseBodyData struct {
-	// Indicates whether logs are automatically ingested for new accounts. Valid values:
+	// Indicates whether new accounts are automatically onboarded. Valid values:
 	//
-	// - 1: Logs are automatically ingested.
+	// - 1: Automatically onboarded.
 	//
-	// - 0: Logs are not automatically ingested.
+	// - 0: Not automatically onboarded.
 	//
 	// example:
 	//
-	// 2023-11-23 12:30:00
+	// 1
 	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
-	// The multicloud code. Valid values:
+	// The multi-cloud code. Valid values:
+	//
+	// - hcloud: Huawei Cloud.
 	//
 	// - qcloud: Tencent Cloud.
 	//
 	// - aliyun: Alibaba Cloud.
 	//
-	// - hcloud: Huawei Cloud.
-	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// Indicates whether the log is ingested. Valid values:
+	// Indicates whether the log is onboarded. Valid values:
 	//
-	// - 1: The log is ingested.
+	// - 1: Onboarded.
 	//
-	// - 0: The log is not ingested.
+	// - 0: Not onboarded.
 	//
 	// example:
 	//
-	// 2023-11-23 12:30:00
+	// 1
 	Imported *int32 `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	// The number of users who have ingested the log.
+	// The number of users that have onboarded the log.
 	//
 	// example:
 	//
 	// 2
 	ImportedUserCount *int32 `json:"ImportedUserCount,omitempty" xml:"ImportedUserCount,omitempty"`
-	// The code of the log.
+	// The log code.
 	//
 	// example:
 	//
 	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The display code of the log.
+	// The log display code.
 	//
 	// example:
 	//
@@ -118,21 +118,23 @@ type ListImportedLogsByProdResponseBodyData struct {
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
 	// The log type. Valid values:
 	//
-	// - 1: Ingested on the threat analysis side.
+	// - 1: Centralized onboarding.
 	//
-	// - 2: Predefined Simple Log Service log. -3: Custom Simple Log Service log.
+	// - 2: Predefined Log Service.
+	//
+	// - 3: Custom Log Service.
 	//
 	// example:
 	//
-	// 2023-11-23 12:30:00
+	// 1
 	LogType *int32 `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The time when the log was last ingested.
+	// The last onboarding time of the log. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-11-23 12:30:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The code of the product to which the log belongs.
+	// The product code corresponding to the log.
 	//
 	// example:
 	//
@@ -144,7 +146,7 @@ type ListImportedLogsByProdResponseBodyData struct {
 	//
 	// 5
 	TotalUserCount *int32 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
-	// The number of users who have not ingested the log.
+	// The number of users that have not onboarded the log.
 	//
 	// example:
 	//

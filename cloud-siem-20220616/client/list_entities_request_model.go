@@ -38,7 +38,7 @@ type iListEntitiesRequest interface {
 }
 
 type ListEntitiesRequest struct {
-	// The current page number, which must be greater than or equal to 1.
+	// The number of the current page. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -53,6 +53,24 @@ type ListEntitiesRequest struct {
 	// host1****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// The entity type. Valid values:
+	//
+	// - ip: IP address
+	//
+	// - domain: Domain name
+	//
+	// - url: URL
+	//
+	// - process: Process
+	//
+	// - file: File
+	//
+	// - host: Host
+	//
+	// - cloud_account: Cloud account
+	//
+	// - container: Container
+	//
+	// - bucket: OSS bucket
 	//
 	// example:
 	//
@@ -80,6 +98,10 @@ type ListEntitiesRequest struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// Specifies whether the entity is malicious. Valid values:
 	//
+	// - 0: No.
+	//
+	// - 1: Yes.
+	//
 	// example:
 	//
 	// 1
@@ -90,7 +112,7 @@ type ListEntitiesRequest struct {
 	//
 	// aliyun.siem.sas.alert_tag.miner_software
 	MalwareType *string `json:"MalwareType,omitempty" xml:"MalwareType,omitempty"`
-	// The number of entries per page, up to a maximum of 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -98,29 +120,33 @@ type ListEntitiesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the data management center of threat analysis is located. Select the management center based on the region of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The ID of the user whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type.
+	// The view type. Valid values:
+	//
+	// - 0: The view of the current Alibaba Cloud account.
+	//
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The entity tags. The value is a JSON array string:
+	// The entity tags. The format is a JSON array string:
 	//
 	// `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`
 	//

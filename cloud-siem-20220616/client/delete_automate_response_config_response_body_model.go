@@ -22,19 +22,19 @@ type iDeleteAutomateResponseConfigResponseBody interface {
 }
 
 type DeleteAutomateResponseConfigResponseBody struct {
-	// The status code of the request.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value of the request.
+	// The response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned for the request.
+	// The returned message.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DeleteAutomateResponseConfigResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
 	// - false: The request failed.
 	//

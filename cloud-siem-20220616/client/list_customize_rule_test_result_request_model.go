@@ -32,7 +32,7 @@ type iListCustomizeRuleTestResultRequest interface {
 }
 
 type ListCustomizeRuleTestResultRequest struct {
-	// The page number. The value must be greater than or equal to 1.
+	// The current page number. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type ListCustomizeRuleTestResultRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the custom rule. You can obtain the rule ID from the rule list.
+	// The ID of the custom rule. You can obtain the rule ID by calling the rule list API operation.
 	//
 	// example:
 	//
 	// dr-53np4nguf5jmh1vc****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
-	// The end time.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListCustomizeRuleTestResultRequest struct {
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of entries per page. The maximum value is 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -66,43 +66,43 @@ type ListCustomizeRuleTestResultRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets are deployed. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: assets in the Chinese mainland and China (Hong Kong)
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: assets outside China
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. This parameter is used by an administrator to switch to the perspective of the member.
+	// The ID of the user whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view.
+	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account
 	//
-	// - 1: the view of all accounts that belong to the enterprise.
+	// - 1: the view of all accounts in the enterprise
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1723057091000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The verification result for the accuracy of alert fields based on the alert template.
+	// The verification result of the accuracy of alert fields based on the alert template. Valid values:
 	//
-	// - true: The verification is passed. Alerts that are generated for enabled rules can be synchronized to the product.
+	// - true: Passed. Alerts from enabled rules can be synchronized to the product side.
 	//
-	// - false: The verification failed. Alerts cannot be synchronized to the product.
+	// - false: Failed. Alerts cannot pass the product-side verification.
 	//
 	// example:
 	//

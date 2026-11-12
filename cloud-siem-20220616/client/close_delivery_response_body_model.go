@@ -16,17 +16,17 @@ type iCloseDeliveryResponseBody interface {
 }
 
 type CloseDeliveryResponseBody struct {
-	// The result of the request. Valid values:
+	// The result of disabling the service in Threat Analysis. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The service is disabled.
 	//
-	// - false: The request failed.
+	// - false: The service fails to be disabled.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

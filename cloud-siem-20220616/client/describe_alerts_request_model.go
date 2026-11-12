@@ -74,7 +74,7 @@ type DescribeAlertsRequest struct {
 	//
 	// Scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The unique ID of the alert.
+	// The ID of the alert associated with the event.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeAlertsRequest struct {
 	//
 	// hostname-****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The page number. The value must be greater than or equal to 1.
+	// The current page number of the list. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type DescribeAlertsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the query. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -118,41 +118,41 @@ type DescribeAlertsRequest struct {
 	//
 	// launch-advisor-*****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// Specifies whether the threat is defended. Valid values:
+	// Specifies whether the threat is blocked. Valid values:
 	//
-	// - `0`: detected
+	// - 0: Detected.
 	//
-	// - `1`: blocked
+	// - 1: Blocked.
 	//
 	// example:
 	//
 	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	// The alert type. Valid values:
+	// The alert query type. Valid values:
 	//
-	// - `system`: An alert generated from aggregated analysis
+	// - system: Aggregation analysis alert.
 	//
-	// - `custom`: An alert generated from custom analysis
+	// - custom: Custom analysis alert.
 	//
-	// - `cfw`: firewall
+	// - cfw: Cloud Firewall.
 	//
-	// - `waf`: web application firewall
+	// - waf: Web Application Firewall.
 	//
-	// - `edr`: endpoint detection and response
+	// - edr: Endpoint Detection and Response.
 	//
-	// - `other`: other
+	// - other: Other.
 	//
 	// example:
 	//
 	// custom
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The threat levels. This parameter is a JSON array. Valid values:
+	// The threat level. The value is a JSON array. Valid values:
 	//
-	// - `serious`: high
+	// - serious: High risk.
 	//
-	// - `suspicious`: medium
+	// - suspicious: Medium risk.
 	//
-	// - `remind`: low
+	// - remind: Low risk.
 	//
 	// example:
 	//
@@ -166,45 +166,45 @@ type DescribeAlertsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the data management center of the threat analysis feature resides. You are required to specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - `cn-hangzhou`: Your assets reside in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets in the Chinese mainland and Hong Kong (China).
 	//
-	// - `ap-southeast-1`: Your assets reside outside the Chinese mainland.
+	// - ap-southeast-1: Assets in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user who is used to switch the account to view the data of the member.
+	// The ID of the user whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type of the alert. Valid values:
+	// The view type. Valid values:
 	//
-	// - `0`: current account
+	// - 0: View of the current Alibaba Cloud account.
 	//
-	// - `1`: all accounts
+	// - 1: View of all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The source of the alert.
+	// The source product of the alert associated with the event.
 	//
 	// example:
 	//
 	// sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is associated with the alert.
+	// The ID of the Alibaba Cloud account actually associated with the alert.
 	//
 	// example:
 	//

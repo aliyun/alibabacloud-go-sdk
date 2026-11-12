@@ -16,17 +16,17 @@ type iDescribeAuthResponseBody interface {
 }
 
 type DescribeAuthResponseBody struct {
-	// Indicates whether the permissions are granted.
+	// The return value of the request. Valid values:
 	//
-	// - true: The permissions are granted.
+	// - true: Permissions are enabled.
 	//
-	// - false: The permissions are not granted.
+	// - false: Permissions are not enabled.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

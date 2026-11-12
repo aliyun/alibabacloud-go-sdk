@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("cloud-siem")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,7 +66,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a data source to an attached multicloud account.
+// Adds a data source under the bound multi-cloud account.
+//
+// Description:
+//
+// Before calling this operation to add a data source, complete the following prerequisites in sequence:
+//
+// 1. Call the AddCloudVendorAccountAK operation of Security Center (Sas) to add the AccessKey pair configuration for the multi-cloud account.
+//
+// 2. Call the BindAccount operation to bind the multi-cloud account.
+//
+// 3. Call this operation (AddDataSource) to add a data source under the bound multi-cloud account.
 //
 // @param request - AddDataSourceRequest
 //
@@ -126,7 +144,17 @@ func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, ru
 
 // Summary:
 //
-// Adds a data source to an attached multicloud account.
+// Adds a data source under the bound multi-cloud account.
+//
+// Description:
+//
+// Before calling this operation to add a data source, complete the following prerequisites in sequence:
+//
+// 1. Call the AddCloudVendorAccountAK operation of Security Center (Sas) to add the AccessKey pair configuration for the multi-cloud account.
+//
+// 2. Call the BindAccount operation to bind the multi-cloud account.
+//
+// 3. Call this operation (AddDataSource) to add a data source under the bound multi-cloud account.
 //
 // @param request - AddDataSourceRequest
 //
@@ -144,7 +172,17 @@ func (client *Client) AddDataSource(request *AddDataSourceRequest) (_result *Add
 
 // Summary:
 //
-// Adds a log for a data source.
+// Adds logs.
+//
+// Description:
+//
+// Before calling this operation to add logs for a data source, complete the following prerequisites in sequence:
+//
+// 1. Call the EnableAccessForCloudSiem operation to enable the SIEM service role.
+//
+// 2. Call the BindAccount operation to bind a multi-cloud account. You must provide the AccessKey of the third-party cloud provider.
+//
+// 3. Call the AddDataSource operation to create a data source instance and obtain the DataSourceInstanceId.
 //
 // @param request - AddDataSourceLogRequest
 //
@@ -208,7 +246,17 @@ func (client *Client) AddDataSourceLogWithOptions(request *AddDataSourceLogReque
 
 // Summary:
 //
-// Adds a log for a data source.
+// Adds logs.
+//
+// Description:
+//
+// Before calling this operation to add logs for a data source, complete the following prerequisites in sequence:
+//
+// 1. Call the EnableAccessForCloudSiem operation to enable the SIEM service role.
+//
+// 2. Call the BindAccount operation to bind a multi-cloud account. You must provide the AccessKey of the third-party cloud provider.
+//
+// 3. Call the AddDataSource operation to create a data source instance and obtain the DataSourceInstanceId.
 //
 // @param request - AddDataSourceLogRequest
 //
@@ -226,7 +274,7 @@ func (client *Client) AddDataSourceLog(request *AddDataSourceLogRequest) (_resul
 
 // Summary:
 //
-// Adds a log collection task to import log data into Threat Analysis for alerting and event analysis.
+// Adds a log ingestion task to ingest the corresponding log data into Threat Analysis for subsequent alerting and event analysis.
 //
 // @param request - AddUserSourceLogConfigRequest
 //
@@ -294,7 +342,7 @@ func (client *Client) AddUserSourceLogConfigWithOptions(request *AddUserSourceLo
 
 // Summary:
 //
-// Adds a log collection task to import log data into Threat Analysis for alerting and event analysis.
+// Adds a log ingestion task to ingest the corresponding log data into Threat Analysis for subsequent alerting and event analysis.
 //
 // @param request - AddUserSourceLogConfigRequest
 //
@@ -312,7 +360,7 @@ func (client *Client) AddUserSourceLogConfig(request *AddUserSourceLogConfigRequ
 
 // Summary:
 //
-// Binds a multicloud account from Multicloud Assets of Security Center to Threat Analysis.
+// Binds a multi-cloud account configured in the multi-cloud assets of Security Center to Threat Analysis.
 //
 // @param request - BindAccountRequest
 //
@@ -380,7 +428,7 @@ func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtim
 
 // Summary:
 //
-// Binds a multicloud account from Multicloud Assets of Security Center to Threat Analysis.
+// Binds a multi-cloud account configured in the multi-cloud assets of Security Center to Threat Analysis.
 //
 // @param request - BindAccountRequest
 //
@@ -398,7 +446,7 @@ func (client *Client) BindAccount(request *BindAccountRequest) (_result *BindAcc
 
 // Summary:
 //
-// Stops log delivery from a connected cloud service. Once stopped, no new logs are added to your Logstore.
+// Disables log delivery for an integrated cloud service. After the delivery is disabled, no new logs of the corresponding type are written to the user\\"s Logstore.
 //
 // @param request - CloseDeliveryRequest
 //
@@ -458,7 +506,7 @@ func (client *Client) CloseDeliveryWithOptions(request *CloseDeliveryRequest, ru
 
 // Summary:
 //
-// Stops log delivery from a connected cloud service. Once stopped, no new logs are added to your Logstore.
+// Disables log delivery for an integrated cloud service. After the delivery is disabled, no new logs of the corresponding type are written to the user\\"s Logstore.
 //
 // @param request - CloseDeliveryRequest
 //
@@ -476,7 +524,7 @@ func (client *Client) CloseDelivery(request *CloseDeliveryRequest) (_result *Clo
 
 // Summary:
 //
-// Deletes an automated response rule by its ID.
+// Deletes the automated response rule with the specified ID.
 //
 // @param request - DeleteAutomateResponseConfigRequest
 //
@@ -532,7 +580,7 @@ func (client *Client) DeleteAutomateResponseConfigWithOptions(request *DeleteAut
 
 // Summary:
 //
-// Deletes an automated response rule by its ID.
+// Deletes the automated response rule with the specified ID.
 //
 // @param request - DeleteAutomateResponseConfigRequest
 //
@@ -550,7 +598,7 @@ func (client *Client) DeleteAutomateResponseConfig(request *DeleteAutomateRespon
 
 // Summary:
 //
-// Detaches the AccessKey of a multicloud account, such as a Tencent Cloud or Huawei Cloud account, from a threat analysis data source. You can then attach a new account.
+// Dissociates the AccessKey of a multi-cloud sub-account from the threat analysis data source module. After the dissociation, you can bind a different account.
 //
 // @param request - DeleteBindAccountRequest
 //
@@ -618,7 +666,7 @@ func (client *Client) DeleteBindAccountWithOptions(request *DeleteBindAccountReq
 
 // Summary:
 //
-// Detaches the AccessKey of a multicloud account, such as a Tencent Cloud or Huawei Cloud account, from a threat analysis data source. You can then attach a new account.
+// Dissociates the AccessKey of a multi-cloud sub-account from the threat analysis data source module. After the dissociation, you can bind a different account.
 //
 // @param request - DeleteBindAccountRequest
 //
@@ -636,7 +684,7 @@ func (client *Client) DeleteBindAccount(request *DeleteBindAccountRequest) (_res
 
 // Summary:
 //
-// You can customize rules for a specific ID.
+// Deletes a custom rule by the specified ID.
 //
 // @param request - DeleteCustomizeRuleRequest
 //
@@ -692,7 +740,7 @@ func (client *Client) DeleteCustomizeRuleWithOptions(request *DeleteCustomizeRul
 
 // Summary:
 //
-// You can customize rules for a specific ID.
+// Deletes a custom rule by the specified ID.
 //
 // @param request - DeleteCustomizeRuleRequest
 //
@@ -710,7 +758,7 @@ func (client *Client) DeleteCustomizeRule(request *DeleteCustomizeRuleRequest) (
 
 // Summary:
 //
-// Call this operation to delete a data source that is no longer required.
+// Deletes a data source that is no longer in use.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -766,7 +814,7 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 
 // Summary:
 //
-// Call this operation to delete a data source that is no longer required.
+// Deletes a data source that is no longer in use.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -784,7 +832,7 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 
 // Summary:
 //
-// Removes a log.
+// Deletes a log.
 //
 // @param request - DeleteDataSourceLogRequest
 //
@@ -844,7 +892,7 @@ func (client *Client) DeleteDataSourceLogWithOptions(request *DeleteDataSourceLo
 
 // Summary:
 //
-// Removes a log.
+// Deletes a log.
 //
 // @param request - DeleteDataSourceLogRequest
 //
@@ -862,7 +910,7 @@ func (client *Client) DeleteDataSourceLog(request *DeleteDataSourceLogRequest) (
 
 // Summary:
 //
-// Deletes an alert whitelist rule with the specified ID.
+// Deletes the alert whitelist rule with the specified ID.
 //
 // @param request - DeleteWhiteRuleListRequest
 //
@@ -918,7 +966,7 @@ func (client *Client) DeleteWhiteRuleListWithOptions(request *DeleteWhiteRuleLis
 
 // Summary:
 //
-// Deletes an alert whitelist rule with the specified ID.
+// Deletes the alert whitelist rule with the specified ID.
 //
 // @param request - DeleteWhiteRuleListRequest
 //
@@ -936,7 +984,7 @@ func (client *Client) DeleteWhiteRuleList(request *DeleteWhiteRuleListRequest) (
 
 // Summary:
 //
-// Describes the aggregate functions that are supported by custom rules.
+// Retrieves the list of aggregate functions supported by custom rules.
 //
 // @param request - DescribeAggregateFunctionRequest
 //
@@ -988,7 +1036,7 @@ func (client *Client) DescribeAggregateFunctionWithOptions(request *DescribeAggr
 
 // Summary:
 //
-// Describes the aggregate functions that are supported by custom rules.
+// Retrieves the list of aggregate functions supported by custom rules.
 //
 // @param request - DescribeAggregateFunctionRequest
 //
@@ -1006,7 +1054,7 @@ func (client *Client) DescribeAggregateFunction(request *DescribeAggregateFuncti
 
 // Summary:
 //
-// Queries the scenarios in which alerts can be whitelisted.
+// Retrieves alert allowlist scenarios.
 //
 // @param request - DescribeAlertSceneRequest
 //
@@ -1058,7 +1106,7 @@ func (client *Client) DescribeAlertSceneWithOptions(request *DescribeAlertSceneR
 
 // Summary:
 //
-// Queries the scenarios in which alerts can be whitelisted.
+// Retrieves alert allowlist scenarios.
 //
 // @param request - DescribeAlertSceneRequest
 //
@@ -1076,7 +1124,7 @@ func (client *Client) DescribeAlertScene(request *DescribeAlertSceneRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of alert whitelisting scenarios and objects.
+// Retrieves the alert whitelist scenarios and whitelist targets.
 //
 // @param request - DescribeAlertSceneByEventRequest
 //
@@ -1132,7 +1180,7 @@ func (client *Client) DescribeAlertSceneByEventWithOptions(request *DescribeAler
 
 // Summary:
 //
-// Retrieves a list of alert whitelisting scenarios and objects.
+// Retrieves the alert whitelist scenarios and whitelist targets.
 //
 // @param request - DescribeAlertSceneByEventRequest
 //
@@ -1150,7 +1198,7 @@ func (client *Client) DescribeAlertSceneByEvent(request *DescribeAlertSceneByEve
 
 // Summary:
 //
-// Retrieves a list of alert sources.
+// Retrieves a list of alert data sources.
 //
 // @param request - DescribeAlertSourceRequest
 //
@@ -1214,7 +1262,7 @@ func (client *Client) DescribeAlertSourceWithOptions(request *DescribeAlertSourc
 
 // Summary:
 //
-// Retrieves a list of alert sources.
+// Retrieves a list of alert data sources.
 //
 // @param request - DescribeAlertSourceRequest
 //
@@ -1232,7 +1280,7 @@ func (client *Client) DescribeAlertSource(request *DescribeAlertSourceRequest) (
 
 // Summary:
 //
-// Retrieves the alert data sources associated with an event.
+// Retrieves the list of alert data sources associated with an incident.
 //
 // @param request - DescribeAlertSourceWithEventRequest
 //
@@ -1288,7 +1336,7 @@ func (client *Client) DescribeAlertSourceWithEventWithOptions(request *DescribeA
 
 // Summary:
 //
-// Retrieves the alert data sources associated with an event.
+// Retrieves the list of alert data sources associated with an incident.
 //
 // @param request - DescribeAlertSourceWithEventRequest
 //
@@ -1380,7 +1428,7 @@ func (client *Client) DescribeAlertType(request *DescribeAlertTypeRequest) (_res
 
 // Summary:
 //
-// Gets the list of alerts for a user.
+// Retrieves the list of alerts for the user.
 //
 // @param request - DescribeAlertsRequest
 //
@@ -1504,7 +1552,7 @@ func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, 
 
 // Summary:
 //
-// Gets the list of alerts for a user.
+// Retrieves the list of alerts for the user.
 //
 // @param request - DescribeAlertsRequest
 //
@@ -1522,7 +1570,7 @@ func (client *Client) DescribeAlerts(request *DescribeAlertsRequest) (_result *D
 
 // Summary:
 //
-// Queries the count of alerts for different severity levels.
+// Retrieves the counts of alerts by severity level.
 //
 // @param request - DescribeAlertsCountRequest
 //
@@ -1586,7 +1634,7 @@ func (client *Client) DescribeAlertsCountWithOptions(request *DescribeAlertsCoun
 
 // Summary:
 //
-// Queries the count of alerts for different severity levels.
+// Retrieves the counts of alerts by severity level.
 //
 // @param request - DescribeAlertsCountRequest
 //
@@ -1604,7 +1652,7 @@ func (client *Client) DescribeAlertsCount(request *DescribeAlertsCountRequest) (
 
 // Summary:
 //
-// Queries for alerts that are associated with an entity.
+// Retrieves the list of alerts associated with an entity.
 //
 // @param request - DescribeAlertsWithEntityRequest
 //
@@ -1688,7 +1736,7 @@ func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlert
 
 // Summary:
 //
-// Queries for alerts that are associated with an entity.
+// Retrieves the list of alerts associated with an entity.
 //
 // @param request - DescribeAlertsWithEntityRequest
 //
@@ -1706,7 +1754,7 @@ func (client *Client) DescribeAlertsWithEntity(request *DescribeAlertsWithEntity
 
 // Summary:
 //
-// Retrieves the list of alerts associated with an incident.
+// Queries the list of alerts associated with an incident.
 //
 // @param request - DescribeAlertsWithEventRequest
 //
@@ -1822,7 +1870,7 @@ func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlerts
 
 // Summary:
 //
-// Retrieves the list of alerts associated with an incident.
+// Queries the list of alerts associated with an incident.
 //
 // @param request - DescribeAlertsWithEventRequest
 //
@@ -1840,7 +1888,7 @@ func (client *Client) DescribeAlertsWithEvent(request *DescribeAlertsWithEventRe
 
 // Summary:
 //
-// Checks whether an Alibaba Cloud account has granted permissions to Cloud SIEM and the AliyunServiceRoleForSasCloudSiem role has been created.
+// Checks whether the Alibaba Cloud account has authorized SIEM and created the AliyunServiceRoleForSasCloudSiem role.
 //
 // @param request - DescribeAuthRequest
 //
@@ -1884,7 +1932,7 @@ func (client *Client) DescribeAuthWithOptions(request *DescribeAuthRequest, runt
 
 // Summary:
 //
-// Checks whether an Alibaba Cloud account has granted permissions to Cloud SIEM and the AliyunServiceRoleForSasCloudSiem role has been created.
+// Checks whether the Alibaba Cloud account has authorized SIEM and created the AliyunServiceRoleForSasCloudSiem role.
 //
 // @param request - DescribeAuthRequest
 //
@@ -1902,7 +1950,7 @@ func (client *Client) DescribeAuth(request *DescribeAuthRequest) (_result *Descr
 
 // Summary:
 //
-// Returns the number of automated response rules.
+// Queries the number of automated response rules.
 //
 // @param request - DescribeAutomateResponseConfigCounterRequest
 //
@@ -1954,7 +2002,7 @@ func (client *Client) DescribeAutomateResponseConfigCounterWithOptions(request *
 
 // Summary:
 //
-// Returns the number of automated response rules.
+// Queries the number of automated response rules.
 //
 // @param request - DescribeAutomateResponseConfigCounterRequest
 //
@@ -1972,7 +2020,7 @@ func (client *Client) DescribeAutomateResponseConfigCounter(request *DescribeAut
 
 // Summary:
 //
-// Retrieves the configurable fields and operators for automated response rules.
+// Retrieves the configurable fields and operators for automated rule policies.
 //
 // @param request - DescribeAutomateResponseConfigFeatureRequest
 //
@@ -2028,7 +2076,7 @@ func (client *Client) DescribeAutomateResponseConfigFeatureWithOptions(request *
 
 // Summary:
 //
-// Retrieves the configurable fields and operators for automated response rules.
+// Retrieves the configurable fields and operators for automated rule policies.
 //
 // @param request - DescribeAutomateResponseConfigFeatureRequest
 //
@@ -2046,7 +2094,7 @@ func (client *Client) DescribeAutomateResponseConfigFeature(request *DescribeAut
 
 // Summary:
 //
-// Queries a list of assets that are associated with an event.
+// Retrieves the list of assets associated with an incident.
 //
 // @param request - DescribeCloudSiemAssetsRequest
 //
@@ -2122,7 +2170,7 @@ func (client *Client) DescribeCloudSiemAssetsWithOptions(request *DescribeCloudS
 
 // Summary:
 //
-// Queries a list of assets that are associated with an event.
+// Retrieves the list of assets associated with an incident.
 //
 // @param request - DescribeCloudSiemAssetsRequest
 //
@@ -2288,7 +2336,7 @@ func (client *Client) DescribeCloudSiemEventDetail(request *DescribeCloudSiemEve
 
 // Summary:
 //
-// Retrieves a list of threat analysis events.
+// Retrieves a list of Cloud Threat Detection and Response (CTDR) events.
 //
 // @param request - DescribeCloudSiemEventsRequest
 //
@@ -2388,7 +2436,7 @@ func (client *Client) DescribeCloudSiemEventsWithOptions(request *DescribeCloudS
 
 // Summary:
 //
-// Retrieves a list of threat analysis events.
+// Retrieves a list of Cloud Threat Detection and Response (CTDR) events.
 //
 // @param request - DescribeCloudSiemEventsRequest
 //
@@ -2698,7 +2746,7 @@ func (client *Client) DescribeDataSourceInstance(request *DescribeDataSourceInst
 
 // Summary:
 //
-// Describes the parameters for a data source.
+// Retrieves the details of data source parameters.
 //
 // @param request - DescribeDataSourceParametersRequest
 //
@@ -2750,7 +2798,7 @@ func (client *Client) DescribeDataSourceParametersWithOptions(request *DescribeD
 
 // Summary:
 //
-// Describes the parameters for a data source.
+// Retrieves the details of data source parameters.
 //
 // @param request - DescribeDataSourceParametersRequest
 //
@@ -2768,7 +2816,7 @@ func (client *Client) DescribeDataSourceParameters(request *DescribeDataSourcePa
 
 // Summary:
 //
-// Retrieves the list of entities that require disposition and the list of playbooks.
+// Retrieves the list of entities and playbooks to be handled.
 //
 // @param request - DescribeDisposeAndPlaybookRequest
 //
@@ -2850,7 +2898,7 @@ func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDis
 
 // Summary:
 //
-// Retrieves the list of entities that require disposition and the list of playbooks.
+// Retrieves the list of entities and playbooks to be handled.
 //
 // @param request - DescribeDisposeAndPlaybookRequest
 //
@@ -3896,7 +3944,7 @@ func (client *Client) DescribeUserBuyStatus(request *DescribeUserBuyStatusReques
 
 // Summary:
 //
-// Queries the purchase status of a user\\"s SIEM.
+// Queries the purchase status of the user\\"s SIEM.
 //
 // @param request - DescribeUserSiemOrderStatusRequest
 //
@@ -3948,7 +3996,7 @@ func (client *Client) DescribeUserSiemOrderStatusWithOptions(request *DescribeUs
 
 // Summary:
 //
-// Queries the purchase status of a user\\"s SIEM.
+// Queries the purchase status of the user\\"s SIEM.
 //
 // @param request - DescribeUserSiemOrderStatusRequest
 //
@@ -4040,7 +4088,7 @@ func (client *Client) DescribeWafScope(request *DescribeWafScopeRequest) (_resul
 
 // Summary:
 //
-// Queries the rules in the alert whitelist.
+// Retrieves a list of alert allowlist rules.
 //
 // @param request - DescribeWhiteRuleListRequest
 //
@@ -4112,7 +4160,7 @@ func (client *Client) DescribeWhiteRuleListWithOptions(request *DescribeWhiteRul
 
 // Summary:
 //
-// Queries the rules in the alert whitelist.
+// Retrieves a list of alert allowlist rules.
 //
 // @param request - DescribeWhiteRuleListRequest
 //
@@ -4418,11 +4466,11 @@ func (client *Client) GetDataStorage(request *GetDataStorageRequest) (_result *G
 
 // Summary:
 //
-// Queries entity counts.
+// Queries the entity count.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. A supporting utility class is provided with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetEntitiyStatRequest
 //
@@ -4514,11 +4562,11 @@ func (client *Client) GetEntitiyStatWithOptions(request *GetEntitiyStatRequest, 
 
 // Summary:
 //
-// Queries entity counts.
+// Queries the entity count.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. A supporting utility class is provided with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetEntitiyStatRequest
 //
@@ -4606,7 +4654,15 @@ func (client *Client) GetStorage(request *GetStorageRequest) (_result *GetStorag
 
 // Summary:
 //
-// Lists the AccessKey IDs for attached multicloud accounts.
+// Queries the list of multi-cloud AccessKeyIds that are already bound.
+//
+// Description:
+//
+// Before calling this operation to view the list of bound multi-cloud AccessKeys, complete the following preparations:
+//
+// 1. Activate the Cloud Threat Detection and Response (CTDR) service in Security Center.
+//
+// 2. Configure the SIEM AccessKey for threat detection and response.
 //
 // @param request - ListAccountAccessIdRequest
 //
@@ -4662,7 +4718,15 @@ func (client *Client) ListAccountAccessIdWithOptions(request *ListAccountAccessI
 
 // Summary:
 //
-// Lists the AccessKey IDs for attached multicloud accounts.
+// Queries the list of multi-cloud AccessKeyIds that are already bound.
+//
+// Description:
+//
+// Before calling this operation to view the list of bound multi-cloud AccessKeys, complete the following preparations:
+//
+// 1. Activate the Cloud Threat Detection and Response (CTDR) service in Security Center.
+//
+// 2. Configure the SIEM AccessKey for threat detection and response.
 //
 // @param request - ListAccountAccessIdRequest
 //
@@ -4680,7 +4744,11 @@ func (client *Client) ListAccountAccessId(request *ListAccountAccessIdRequest) (
 
 // Summary:
 //
-// Queries the accounts associated with a log.
+// Queries the list of accounts by log.
+//
+// Description:
+//
+// Before calling this operation to query the list of accounts by log, you must activate the Cloud Threat Detection and Response (CTDR) service. You can activate the service by calling the EnableServiceForCloudSiem operation or through the threat analysis console in Security Center. This operation is unavailable if the service is not activated.
 //
 // @param request - ListAccountsByLogRequest
 //
@@ -4744,7 +4812,11 @@ func (client *Client) ListAccountsByLogWithOptions(request *ListAccountsByLogReq
 
 // Summary:
 //
-// Queries the accounts associated with a log.
+// Queries the list of accounts by log.
+//
+// Description:
+//
+// Before calling this operation to query the list of accounts by log, you must activate the Cloud Threat Detection and Response (CTDR) service. You can activate the service by calling the EnableServiceForCloudSiem operation or through the threat analysis console in Security Center. This operation is unavailable if the service is not activated.
 //
 // @param request - ListAccountsByLogRequest
 //
@@ -4762,7 +4834,7 @@ func (client *Client) ListAccountsByLog(request *ListAccountsByLogRequest) (_res
 
 // Summary:
 //
-// Lists the cloud products supported by Threat Analysis for data ingestion.
+// Queries the list of cloud services that are supported for data ingestion by threat detection and response.
 //
 // @param request - ListAllProdsRequest
 //
@@ -4814,7 +4886,7 @@ func (client *Client) ListAllProdsWithOptions(request *ListAllProdsRequest, runt
 
 // Summary:
 //
-// Lists the cloud products supported by Threat Analysis for data ingestion.
+// Queries the list of cloud services that are supported for data ingestion by threat detection and response.
 //
 // @param request - ListAllProdsRequest
 //
@@ -4942,7 +5014,7 @@ func (client *Client) ListAutomateResponseConfigs(request *ListAutomateResponseC
 
 // Summary:
 //
-// Lists multicloud accounts bound to Threat Analysis.
+// Lists the multi-cloud accounts that are bound to threat detection and response.
 //
 // @param request - ListBindAccountRequest
 //
@@ -4998,7 +5070,7 @@ func (client *Client) ListBindAccountWithOptions(request *ListBindAccountRequest
 
 // Summary:
 //
-// Lists multicloud accounts bound to Threat Analysis.
+// Lists the multi-cloud accounts that are bound to threat detection and response.
 //
 // @param request - ListBindAccountRequest
 //
@@ -5016,7 +5088,7 @@ func (client *Client) ListBindAccount(request *ListBindAccountRequest) (_result 
 
 // Summary:
 //
-// Queries all bound data sources.
+// Enumerates all data sources.
 //
 // @param request - ListBindDataSourcesRequest
 //
@@ -5068,7 +5140,7 @@ func (client *Client) ListBindDataSourcesWithOptions(request *ListBindDataSource
 
 // Summary:
 //
-// Queries all bound data sources.
+// Enumerates all data sources.
 //
 // @param request - ListBindDataSourcesRequest
 //
@@ -5334,7 +5406,7 @@ func (client *Client) ListCloudSiemPredefinedRules(request *ListCloudSiemPredefi
 
 // Summary:
 //
-// Retrieves the list of test results for a custom rule.
+// Queries the list of test results for custom rules.
 //
 // @param request - ListCustomizeRuleTestResultRequest
 //
@@ -5414,7 +5486,7 @@ func (client *Client) ListCustomizeRuleTestResultWithOptions(request *ListCustom
 
 // Summary:
 //
-// Retrieves the list of test results for a custom rule.
+// Queries the list of test results for custom rules.
 //
 // @param request - ListCustomizeRuleTestResultRequest
 //
@@ -5432,7 +5504,7 @@ func (client *Client) ListCustomizeRuleTestResult(request *ListCustomizeRuleTest
 
 // Summary:
 //
-// Lists the logs for a data source.
+// Queries the logs of a data source.
 //
 // @param request - ListDataSourceLogsRequest
 //
@@ -5488,7 +5560,7 @@ func (client *Client) ListDataSourceLogsWithOptions(request *ListDataSourceLogsR
 
 // Summary:
 //
-// Lists the logs for a data source.
+// Queries the logs of a data source.
 //
 // @param request - ListDataSourceLogsRequest
 //
@@ -5506,7 +5578,7 @@ func (client *Client) ListDataSourceLogs(request *ListDataSourceLogsRequest) (_r
 
 // Summary:
 //
-// Lists the types of multicloud data sources that Threat Analysis supports.
+// Enumerates the multi-cloud data source types that are supported by threat analysis.
 //
 // @param request - ListDataSourceTypesRequest
 //
@@ -5554,7 +5626,7 @@ func (client *Client) ListDataSourceTypesWithOptions(request *ListDataSourceType
 
 // Summary:
 //
-// Lists the types of multicloud data sources that Threat Analysis supports.
+// Enumerates the multi-cloud data source types that are supported by threat analysis.
 //
 // @param request - ListDataSourceTypesRequest
 //
@@ -5572,7 +5644,7 @@ func (client *Client) ListDataSourceTypes(request *ListDataSourceTypesRequest) (
 
 // Summary:
 //
-// Lists the products and logs that are connected to threat analysis for an enterprise or a member, and the data shipping status of these logs.
+// Queries the products and logs integrated with Threat Analysis for the entire enterprise or regular members, along with the data delivery status of these logs.
 //
 // @param request - ListDeliveryRequest
 //
@@ -5624,7 +5696,7 @@ func (client *Client) ListDeliveryWithOptions(request *ListDeliveryRequest, runt
 
 // Summary:
 //
-// Lists the products and logs that are connected to threat analysis for an enterprise or a member, and the data shipping status of these logs.
+// Queries the products and logs integrated with Threat Analysis for the entire enterprise or regular members, along with the data delivery status of these logs.
 //
 // @param request - ListDeliveryRequest
 //
@@ -5642,7 +5714,7 @@ func (client *Client) ListDelivery(request *ListDeliveryRequest) (_result *ListD
 
 // Summary:
 //
-// Retrieves the list of system-recommended response policies.
+// Queries the list of system-recommended response policies.
 //
 // @param tmpReq - ListDisposeStrategyRequest
 //
@@ -5798,7 +5870,7 @@ func (client *Client) ListDisposeStrategyWithOptions(tmpReq *ListDisposeStrategy
 
 // Summary:
 //
-// Retrieves the list of system-recommended response policies.
+// Queries the list of system-recommended response policies.
 //
 // @param request - ListDisposeStrategyRequest
 //
@@ -5926,7 +5998,7 @@ func (client *Client) ListEntities(request *ListEntitiesRequest) (_result *ListE
 
 // Summary:
 //
-// Queries the log ingestion details for a specific product.
+// Queries the log onboarding details for the product.
 //
 // @param request - ListImportedLogsByProdRequest
 //
@@ -5986,7 +6058,7 @@ func (client *Client) ListImportedLogsByProdWithOptions(request *ListImportedLog
 
 // Summary:
 //
-// Queries the log ingestion details for a specific product.
+// Queries the log onboarding details for the product.
 //
 // @param request - ListImportedLogsByProdRequest
 //
@@ -6078,7 +6150,7 @@ func (client *Client) ListProjectLogStores(request *ListProjectLogStoresRequest)
 
 // Summary:
 //
-// Lists the Alibaba Cloud accounts that are managed by the multi-account control feature of Threat Analysis. An account must be managed to use features such as log collection and event handling.
+// Lists the Alibaba Cloud accounts that are managed by the multi-account management feature of Threat Analysis. Only managed accounts can use features such as log ingestion and event handling in Threat Analysis.
 //
 // @param request - ListRdUsersRequest
 //
@@ -6122,7 +6194,7 @@ func (client *Client) ListRdUsersWithOptions(request *ListRdUsersRequest, runtim
 
 // Summary:
 //
-// Lists the Alibaba Cloud accounts that are managed by the multi-account control feature of Threat Analysis. An account must be managed to use features such as log collection and event handling.
+// Lists the Alibaba Cloud accounts that are managed by the multi-account management feature of Threat Analysis. Only managed accounts can use features such as log ingestion and event handling in Threat Analysis.
 //
 // @param request - ListRdUsersRequest
 //
@@ -6140,7 +6212,17 @@ func (client *Client) ListRdUsers(request *ListRdUsersRequest) (_result *ListRdU
 
 // Summary:
 //
-// Modifies a bound Alibaba Cloud account.
+// Modifies a bound cloud account.
+//
+// Description:
+//
+// Before calling this operation to modify a bound cloud account, complete the following steps in order:
+//
+// 1. Configure the AccessKey credentials of a third-party cloud provider (Tencent Cloud or Huawei Cloud) in Security Center (SAS).
+//
+// 2. Call the BindAccount operation to create a binding record and obtain the BindId.
+//
+// 3. Call this operation (ModifyBindAccount) with the BindId to modify the bound account.
 //
 // @param request - ModifyBindAccountRequest
 //
@@ -6212,7 +6294,17 @@ func (client *Client) ModifyBindAccountWithOptions(request *ModifyBindAccountReq
 
 // Summary:
 //
-// Modifies a bound Alibaba Cloud account.
+// Modifies a bound cloud account.
+//
+// Description:
+//
+// Before calling this operation to modify a bound cloud account, complete the following steps in order:
+//
+// 1. Configure the AccessKey credentials of a third-party cloud provider (Tencent Cloud or Huawei Cloud) in Security Center (SAS).
+//
+// 2. Call the BindAccount operation to create a binding record and obtain the BindId.
+//
+// 3. Call this operation (ModifyBindAccount) with the BindId to modify the bound account.
 //
 // @param request - ModifyBindAccountRequest
 //
@@ -6231,6 +6323,16 @@ func (client *Client) ModifyBindAccount(request *ModifyBindAccountRequest) (_res
 // Summary:
 //
 // Modifies the description of an existing data source.
+//
+// Description:
+//
+// Before you call this operation to modify a data source, you must complete the following prerequisites in sequence:
+//
+// 1. Purchase the Cloud SIEM service.
+//
+// 2. Call the BindAccount operation to bind a third-party cloud account.
+//
+// 3. Call the AddDataSource operation to create a data source instance and obtain the data source ID (DataSourceInstanceId).
 //
 // @param request - ModifyDataSourceRequest
 //
@@ -6304,6 +6406,16 @@ func (client *Client) ModifyDataSourceWithOptions(request *ModifyDataSourceReque
 //
 // Modifies the description of an existing data source.
 //
+// Description:
+//
+// Before you call this operation to modify a data source, you must complete the following prerequisites in sequence:
+//
+// 1. Purchase the Cloud SIEM service.
+//
+// 2. Call the BindAccount operation to bind a third-party cloud account.
+//
+// 3. Call the AddDataSource operation to create a data source instance and obtain the data source ID (DataSourceInstanceId).
+//
 // @param request - ModifyDataSourceRequest
 //
 // @return ModifyDataSourceResponse
@@ -6320,7 +6432,7 @@ func (client *Client) ModifyDataSource(request *ModifyDataSourceRequest) (_resul
 
 // Summary:
 //
-// Modifies the description of a data source log.
+// Modifies the description of logs added to a data source.
 //
 // @param request - ModifyDataSourceLogRequest
 //
@@ -6392,7 +6504,7 @@ func (client *Client) ModifyDataSourceLogWithOptions(request *ModifyDataSourceLo
 
 // Summary:
 //
-// Modifies the description of a data source log.
+// Modifies the description of logs added to a data source.
 //
 // @param request - ModifyDataSourceLogRequest
 //
@@ -6410,7 +6522,7 @@ func (client *Client) ModifyDataSourceLog(request *ModifyDataSourceLogRequest) (
 
 // Summary:
 //
-// Enables log delivery for integrated cloud services.
+// Enables log delivery for onboarded cloud services.
 //
 // @param request - OpenDeliveryRequest
 //
@@ -6470,7 +6582,7 @@ func (client *Client) OpenDeliveryWithOptions(request *OpenDeliveryRequest, runt
 
 // Summary:
 //
-// Enables log delivery for integrated cloud services.
+// Enables log delivery for onboarded cloud services.
 //
 // @param request - OpenDeliveryRequest
 //
@@ -7002,7 +7114,7 @@ func (client *Client) PostEventWhiteruleList(request *PostEventWhiteruleListRequ
 
 // Summary:
 //
-// Finishes the test for a custom rule.
+// Ends the custom rule test.
 //
 // @param request - PostFinishCustomizeRuleTestRequest
 //
@@ -7058,7 +7170,7 @@ func (client *Client) PostFinishCustomizeRuleTestWithOptions(request *PostFinish
 
 // Summary:
 //
-// Finishes the test for a custom rule.
+// Ends the custom rule test.
 //
 // @param request - PostFinishCustomizeRuleTestRequest
 //
@@ -7076,7 +7188,7 @@ func (client *Client) PostFinishCustomizeRuleTest(request *PostFinishCustomizeRu
 
 // Summary:
 //
-// Updates the statuses of custom rules.
+// Updates the status of a custom rule.
 //
 // @param request - PostRuleStatusChangeRequest
 //
@@ -7140,7 +7252,7 @@ func (client *Client) PostRuleStatusChangeWithOptions(request *PostRuleStatusCha
 
 // Summary:
 //
-// Updates the statuses of custom rules.
+// Updates the status of a custom rule.
 //
 // @param request - PostRuleStatusChangeRequest
 //
@@ -7228,7 +7340,7 @@ func (client *Client) RestoreCapacity(request *RestoreCapacityRequest) (_result 
 
 // Summary:
 //
-// Sets user settings, such as the storage duration and storage region.
+// Saves user-configured storage information such as the retention period and storage region.
 //
 // @param request - SetStorageRequest
 //
@@ -7288,7 +7400,7 @@ func (client *Client) SetStorageWithOptions(request *SetStorageRequest, runtime 
 
 // Summary:
 //
-// Sets user settings, such as the storage duration and storage region.
+// Saves user-configured storage information such as the retention period and storage region.
 //
 // @param request - SetStorageRequest
 //
@@ -7306,7 +7418,7 @@ func (client *Client) SetStorage(request *SetStorageRequest) (_result *SetStorag
 
 // Summary:
 //
-// Submits a batch of log ingestion tasks.
+// Submits multiple onboarding tasks.
 //
 // @param request - SubmitImportLogTasksRequest
 //
@@ -7378,7 +7490,7 @@ func (client *Client) SubmitImportLogTasksWithOptions(request *SubmitImportLogTa
 
 // Summary:
 //
-// Submits a batch of log ingestion tasks.
+// Submits multiple onboarding tasks.
 //
 // @param request - SubmitImportLogTasksRequest
 //
@@ -7396,7 +7508,7 @@ func (client *Client) SubmitImportLogTasks(request *SubmitImportLogTasksRequest)
 
 // Summary:
 //
-// Updates the status of an automated response rule.
+// Updates the status of automated response rules.
 //
 // @param request - UpdateAutomateResponseConfigStatusRequest
 //
@@ -7456,7 +7568,7 @@ func (client *Client) UpdateAutomateResponseConfigStatusWithOptions(request *Upd
 
 // Summary:
 //
-// Updates the status of an automated response rule.
+// Updates the status of automated response rules.
 //
 // @param request - UpdateAutomateResponseConfigStatusRequest
 //

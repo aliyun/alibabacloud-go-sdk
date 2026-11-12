@@ -16,9 +16,9 @@ type iAddUserSourceLogConfigResponseBody interface {
 }
 
 type AddUserSourceLogConfigResponseBody struct {
-	// The return value of the request.
+	// The response data.
 	Data *AddUserSourceLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,49 +62,57 @@ func (s *AddUserSourceLogConfigResponseBody) Validate() error {
 }
 
 type AddUserSourceLogConfigResponseBodyData struct {
-	// The detailed information about the SLS log.
+	// The detailed Simple Log Service (SLS) information for log ingestion.
 	//
 	// example:
 	//
 	// cn-shanghai.siem-project.siem-logstore
 	DiplayLine *string `json:"DiplayLine,omitempty" xml:"DiplayLine,omitempty"`
-	// Indicates whether the details of the log collection task are returned. Valid values:
+	// Indicates whether the ingestion details are returned. Valid values:
+	//
+	// - true: The ingestion details are returned.
+	//
+	// - false: The ingestion details are not returned.
 	//
 	// example:
 	//
-	// 0
+	// true
 	Displayed *bool `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
-	// Indicates whether the log is collected. Valid values:
+	// Indicates whether the logs are ingested. Valid values:
+	//
+	// - true: The logs are ingested.
+	//
+	// - false: The logs are not ingested.
 	//
 	// example:
 	//
-	// 0
+	// true
 	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
+	// The Alibaba Cloud account ID that purchased Threat Analysis.
 	//
 	// example:
 	//
 	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The code of the log.
+	// The log code.
 	//
 	// example:
 	//
 	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	// The code of the product.
+	// The product code.
 	//
 	// example:
 	//
 	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account for which the logs are collected.
+	// The Alibaba Cloud account ID for Threat Analysis.
 	//
 	// example:
 	//
 	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The name of the Alibaba Cloud account for which the logs are collected.
+	// The name of the Alibaba Cloud account for Threat Analysis.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListAllProdsResponseBody interface {
 }
 
 type ListAllProdsResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *ListAllProdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -146,7 +146,7 @@ func (s *ListAllProdsResponseBodyData) Validate() error {
 }
 
 type ListAllProdsResponseBodyDataProdList struct {
-	// The multicloud code. Valid values:
+	// The code of the cloud service provider. Valid values:
 	//
 	// - qcloud: Tencent Cloud.
 	//
@@ -158,19 +158,19 @@ type ListAllProdsResponseBodyDataProdList struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The number of ingested logs for the product.
+	// The number of logs that have been ingested for the product.
 	//
 	// example:
 	//
 	// 10
 	ImportedLogCount *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
-	// The time when logs were last ingested for the product.
+	// The most recent time when logs were ingested for the product. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-11-23 12:12:12
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The code of the cloud product.
+	// The product code.
 	//
 	// example:
 	//

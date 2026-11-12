@@ -22,7 +22,7 @@ type iDescribeAlertTypeResponseBody interface {
 }
 
 type DescribeAlertTypeResponseBody struct {
-	// The request status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeAlertTypeResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeAlertTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertTypeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: successful.
+	// - true: Successful.
 	//
-	// - false: failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -137,11 +137,11 @@ type DescribeAlertTypeResponseBodyData struct {
 	//
 	// identity_access
 	AlertTypeCategory *string `json:"AlertTypeCategory,omitempty" xml:"AlertTypeCategory,omitempty"`
-	// The threat type category name in the language of the current request. Empty if no translation is available.
+	// The name of the threat type category in the requested language. This parameter is empty if the translation is missing.
 	//
 	// example:
 	//
-	// Identity and Access
+	// Identity and access
 	AlertTypeCategoryMds *string `json:"AlertTypeCategoryMds,omitempty" xml:"AlertTypeCategoryMds,omitempty"`
 	// The display order of the threat type category.
 	//
@@ -155,17 +155,17 @@ type DescribeAlertTypeResponseBodyData struct {
 	//
 	// siem_rule_type_process_abnormal_command
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	// The English name of the threat type. Empty if no translation is available.
+	// The English name of the threat type. This parameter is empty if the translation is missing.
 	//
 	// example:
 	//
 	// Unusual Logon
 	AlertTypeNameEn *string `json:"AlertTypeNameEn,omitempty" xml:"AlertTypeNameEn,omitempty"`
-	// The Chinese name of the threat type. Empty if no translation is available.
+	// The Chinese name of the threat type. This parameter is empty if the translation is missing.
 	//
 	// example:
 	//
-	// 异常登录
+	// Unusual logon
 	AlertTypeNameZh *string `json:"AlertTypeNameZh,omitempty" xml:"AlertTypeNameZh,omitempty"`
 }
 

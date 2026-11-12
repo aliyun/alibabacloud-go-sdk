@@ -16,7 +16,7 @@ type iListRdUsersResponseBody interface {
 }
 
 type ListRdUsersResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data []*ListRdUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *ListRdUsersResponseBody) Validate() error {
 }
 
 type ListRdUsersResponseBodyData struct {
-	// Indicates whether the account is delegated to view its own resources.
+	// Specifies whether the account is delegated to view its own resources.
 	//
 	// example:
 	//
 	// true
 	DelegatedOrNot *bool `json:"DelegatedOrNot,omitempty" xml:"DelegatedOrNot,omitempty"`
-	// Indicates whether the account is managed by the multi-account control feature of Threat Analysis. Valid values:
+	// Specifies whether the account is managed by the multi-account management feature of Threat Analysis. Valid values:
 	//
 	// - true: The account is managed.
 	//
@@ -82,25 +82,25 @@ type ListRdUsersResponseBodyData struct {
 	//
 	// true
 	Joined *bool `json:"Joined,omitempty" xml:"Joined,omitempty"`
-	// The time when the account was added.
+	// The time when the account was added to management.
 	//
 	// example:
 	//
 	// 2013-10-01 00:00:00
 	JoinedTime *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
-	// The ID of the Alibaba Cloud account that purchased Threat Analysis.
+	// The Alibaba Cloud account ID that purchased Threat Analysis.
 	//
 	// example:
 	//
 	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The ID of the member Alibaba Cloud account.
+	// The Alibaba Cloud account ID for Threat Analysis.
 	//
 	// example:
 	//
 	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The name of the member Alibaba Cloud account.
+	// The name of the Alibaba Cloud account managed by Threat Analysis.
 	//
 	// example:
 	//

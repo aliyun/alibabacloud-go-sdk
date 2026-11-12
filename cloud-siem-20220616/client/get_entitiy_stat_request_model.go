@@ -38,36 +38,41 @@ type iGetEntitiyStatRequest interface {
 }
 
 type GetEntitiyStatRequest struct {
-	// The asset ID associated with the incident.
+	// The ID of the asset associated with the incident.
 	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The asset ID associated with the incident.
+	// The ID of the asset associated with the incident.
 	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
 	AssetUuid *string `json:"AssetUuid,omitempty" xml:"AssetUuid,omitempty"`
-	// The asset ID associated with the incident.
+	// The ID of the asset associated with the incident.
 	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The asset ID associated with the incident.
+	// The ID of the asset associated with the incident.
 	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The asset ID associated with the incident.
+	// The ID of the asset associated with the incident.
 	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
-	EntityUuid  *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The list of entity UUIDs. Separate multiple UUIDs with commas.
+	//
+	// example:
+	//
+	// 6c740667-80b2-476d-8924-2e706feb****,6c740667-80b2-476d-8924-2e706feb****
 	EntityUuids *string `json:"EntityUuids,omitempty" xml:"EntityUuids,omitempty"`
 	// The incident ID.
 	//
@@ -77,7 +82,7 @@ type GetEntitiyStatRequest struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The asset ID associated with the incident.
+	// The ID of the asset associated with the incident.
 	//
 	// example:
 	//
@@ -85,45 +90,45 @@ type GetEntitiyStatRequest struct {
 	IsAsset *string `json:"IsAsset,omitempty" xml:"IsAsset,omitempty"`
 	// The sort order of the incident list. Valid values:
 	//
-	// - desc: descending order.
+	// - desc: descending order
 	//
-	// - asc: ascending order.
+	// - asc: ascending order
 	//
 	// example:
 	//
 	// desc
 	IsMalwareEntity *string `json:"IsMalwareEntity,omitempty" xml:"IsMalwareEntity,omitempty"`
-	// The region where the threat detection and response data management center resides. Select the management center based on the region of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets reside in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: The assets belong to regions outside China.
+	// - ap-southeast-1: Assets reside in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The ID of the user whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 1637941677243702
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The view type. Valid values:
+	// The role type. Valid values:
 	//
-	// - 0: single-account logon.
+	// - 0: single-account logon
 	//
-	// - 1: global view.
+	// - 1: global view
 	//
-	// - 2: switched view.
+	// - 2: switched view
 	//
-	// - 3: partial view.
+	// - 3: local view
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The entity tags. The value is a JSON array string in the following format: \\"[{\\"tagKey1\\":\\"tagValue1\\"},{\\"tagKey2\\":\\"tagValue2\\"}]\\"
+	// The entity tags. The value is a JSON array string in the following format: "[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]".
 	//
 	// example:
 	//

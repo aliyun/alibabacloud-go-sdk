@@ -16,7 +16,7 @@ type iListDeliveryResponseBody interface {
 }
 
 type ListDeliveryResponseBody struct {
-	// The returned data.
+	// The detailed response data.
 	Data *ListDeliveryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListDeliveryResponseBody) Validate() error {
 }
 
 type ListDeliveryResponseBodyData struct {
-	// The URL of the dashboard on the log analysis page.
+	// The URL for dashboard display on the log analysis page.
 	//
 	// example:
 	//
@@ -70,31 +70,31 @@ type ListDeliveryResponseBodyData struct {
 	//
 	// /dashboard/cloud-siem?isShare=true&hideTopbar=true&hideSidebar=true&ignoreTabLocalStorage=true
 	DashboardUrl *string `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
-	// Indicates whether to display the delivery switch. The default value is true. Valid values:
+	// Specifies whether to display the delivery switch. Default value: true. Valid values:
 	//
-	// - true: The delivery switch is displayed.
+	// - true: Display the delivery switch.
 	//
-	// - false: The delivery switch is hidden.
+	// - false: Hide the delivery switch.
 	//
 	// example:
 	//
 	// true
 	DisplaySwitchOrNot *bool `json:"DisplaySwitchOrNot,omitempty" xml:"DisplaySwitchOrNot,omitempty"`
-	// The name of your LogStore for threat analysis. The format is \\`cloud_siem\\`.
+	// The name of the Logstore on the user side of Threat Analysis. Format: cloud_siem.
 	//
 	// example:
 	//
 	// cloud-siem
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// A list of products.
+	// The list of products.
 	ProductList []*ListDeliveryResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	// The name of your Simple Log Service (SLS) project for threat analysis. The format is \\`aliyun-cloudsiem-data-${aliUid}-${region}\\`.
+	// The name of the Log Service project on the user side of Threat Analysis. Format: aliyun-cloudsiem-data-${aliUid}-${region}.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-127608589417****-cn-shanghai
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The URL of the Search & Analysis page in the SLS console.
+	// The URL for query and analysis on the log analysis page.
 	//
 	// example:
 	//
@@ -180,15 +180,19 @@ func (s *ListDeliveryResponseBodyData) Validate() error {
 }
 
 type ListDeliveryResponseBodyDataProductList struct {
-	// A list of logs for cloud products that do not have subcategories.
+	// The cloud services that do not have finer categories.
 	LogList []*ListDeliveryResponseBodyDataProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// A list of logs that are categorized. For example, Security Center logs are categorized into groups such as Host and Network. The group is the key, and the logs in the group are the value.
+	// The list of logs that have categories. For example, Security Center has groups such as host and network. The group information is the key, and the logs included in the group are the value.
+	//
+	// example:
+	//
+	// {"key":[{"LogCode":"cloud_siem_config_log","LogName":"audit log","LogNameEn":"audit log","LogNameKey":"${sas.cloudsiem.prod.cloud_siem_aegis_crack_from_beaver}","Status":true,"CanOperateOrNot":true,"Topic":"sas_login_event","ExtraParameters":[{"Key":"flag","Value":"value"}]}]}
 	LogMap map[string][]*DataProductListLogMapValue `json:"LogMap,omitempty" xml:"LogMap,omitempty"`
-	// The code of the cloud product. Valid values:
+	// The code of the cloud service. Valid values:
 	//
 	// - qcloud_waf
 	//
-	// - qcloud_cfw
+	// - qlcoud_cfw
 	//
 	// - hcloud_waf
 	//
@@ -236,7 +240,7 @@ type ListDeliveryResponseBodyDataProductList struct {
 	//
 	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// This parameter is deprecated. You can ignore it.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
@@ -302,7 +306,7 @@ func (s *ListDeliveryResponseBodyDataProductList) Validate() error {
 }
 
 type ListDeliveryResponseBodyDataProductListLogList struct {
-	// Indicates whether the log delivery switch can be operated. Only the delegated administrator for threat analysis can operate the switch. Valid values:
+	// Specifies whether the log delivery switch can be operated. Only the delegated administrator of Threat Analysis can operate the log delivery switch. Valid values:
 	//
 	// - true: The switch can be operated.
 	//
@@ -312,7 +316,7 @@ type ListDeliveryResponseBodyDataProductListLogList struct {
 	//
 	// true
 	CanOperateOrNot *bool `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
-	// Additional parameters.
+	// The extended parameters.
 	ExtraParameters []*ListDeliveryResponseBodyDataProductListLogListExtraParameters `json:"ExtraParameters,omitempty" xml:"ExtraParameters,omitempty" type:"Repeated"`
 	// The log code.
 	//
@@ -320,19 +324,19 @@ type ListDeliveryResponseBodyDataProductListLogList struct {
 	//
 	// cloud_siem_config_log
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// This parameter is deprecated. You can ignore it.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// audit log
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// This parameter is deprecated. You can ignore it.
+	// **[Deprecated]*	- This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// audit log
 	LogNameEn *string `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
-	// The language key of the log name. This key is used to display the log name in different languages.
+	// The language code of the log, which is used to display multilingual names.
 	//
 	// example:
 	//
@@ -348,7 +352,7 @@ type ListDeliveryResponseBodyDataProductListLogList struct {
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The topic of the log in the LogStore. This parameter is an index field in the LogStore and is used to differentiate logs.
+	// The topic of the log in the Logstore. It is an index field of the Logstore and can be used to distinguish different logs.
 	//
 	// example:
 	//
@@ -450,13 +454,13 @@ func (s *ListDeliveryResponseBodyDataProductListLogList) Validate() error {
 }
 
 type ListDeliveryResponseBodyDataProductListLogListExtraParameters struct {
-	// The key of the additional parameter.
+	// The identifier of the extended parameter.
 	//
 	// example:
 	//
 	// flag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the additional parameter.
+	// The value of the extended parameter.
 	//
 	// example:
 	//

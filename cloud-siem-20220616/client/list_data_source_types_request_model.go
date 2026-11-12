@@ -16,7 +16,7 @@ type iListDataSourceTypesRequest interface {
 }
 
 type ListDataSourceTypesRequest struct {
-	// The code of the multicloud service.
+	// The code of the multi-cloud provider.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type ListDataSourceTypesRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The region where the Data Management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	// - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets are in a region outside China.
+	// - ap-southeast-1: The assets belong to regions outside China.
 	//
 	// example:
 	//
