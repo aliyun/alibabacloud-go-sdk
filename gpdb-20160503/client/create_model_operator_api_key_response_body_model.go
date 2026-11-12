@@ -13,6 +13,8 @@ type iCreateModelOperatorApiKeyResponseBody interface {
 	GetApiKeyId() *int32
 	SetRequestId(v string) *CreateModelOperatorApiKeyResponseBody
 	GetRequestId() *string
+	SetStatus(v string) *CreateModelOperatorApiKeyResponseBody
+	GetStatus() *string
 }
 
 type CreateModelOperatorApiKeyResponseBody struct {
@@ -28,6 +30,12 @@ type CreateModelOperatorApiKeyResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns Creating after the creation request is accepted. The plaintext and endpoint are not returned.
+	//
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateModelOperatorApiKeyResponseBody) String() string {
@@ -46,6 +54,10 @@ func (s *CreateModelOperatorApiKeyResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *CreateModelOperatorApiKeyResponseBody) GetStatus() *string {
+	return s.Status
+}
+
 func (s *CreateModelOperatorApiKeyResponseBody) SetApiKeyId(v int32) *CreateModelOperatorApiKeyResponseBody {
 	s.ApiKeyId = &v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateModelOperatorApiKeyResponseBody) SetApiKeyId(v int32) *CreateMode
 
 func (s *CreateModelOperatorApiKeyResponseBody) SetRequestId(v string) *CreateModelOperatorApiKeyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateModelOperatorApiKeyResponseBody) SetStatus(v string) *CreateModelOperatorApiKeyResponseBody {
+	s.Status = &v
 	return s
 }
 

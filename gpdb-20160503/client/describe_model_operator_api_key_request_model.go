@@ -14,7 +14,7 @@ type iDescribeModelOperatorApiKeyRequest interface {
 }
 
 type DescribeModelOperatorApiKeyRequest struct {
-	// API KEY ID。
+	// The API key ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListModelOperatorServicesRequest interface {
 }
 
 type ListModelOperatorServicesRequest struct {
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//

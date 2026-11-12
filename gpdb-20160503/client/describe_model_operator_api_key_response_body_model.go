@@ -21,16 +21,18 @@ type iDescribeModelOperatorApiKeyResponseBody interface {
 	GetEndpoint() *string
 	SetRequestId(v string) *DescribeModelOperatorApiKeyResponseBody
 	GetRequestId() *string
+	SetStatus(v string) *DescribeModelOperatorApiKeyResponseBody
+	GetStatus() *string
 }
 
 type DescribeModelOperatorApiKeyResponseBody struct {
-	// The API key content.
+	// The content of the API key.
 	//
 	// example:
 	//
 	// QEDGOTAJOG
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// API KEY ID。
+	// The API key ID.
 	//
 	// example:
 	//
@@ -60,6 +62,12 @@ type DescribeModelOperatorApiKeyResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the API key. Valid values: Creating, Running, Locked, and Deleting.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeModelOperatorApiKeyResponseBody) String() string {
@@ -94,6 +102,10 @@ func (s *DescribeModelOperatorApiKeyResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeModelOperatorApiKeyResponseBody) GetStatus() *string {
+	return s.Status
+}
+
 func (s *DescribeModelOperatorApiKeyResponseBody) SetApiKey(v string) *DescribeModelOperatorApiKeyResponseBody {
 	s.ApiKey = &v
 	return s
@@ -121,6 +133,11 @@ func (s *DescribeModelOperatorApiKeyResponseBody) SetEndpoint(v string) *Describ
 
 func (s *DescribeModelOperatorApiKeyResponseBody) SetRequestId(v string) *DescribeModelOperatorApiKeyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeModelOperatorApiKeyResponseBody) SetStatus(v string) *DescribeModelOperatorApiKeyResponseBody {
+	s.Status = &v
 	return s
 }
 

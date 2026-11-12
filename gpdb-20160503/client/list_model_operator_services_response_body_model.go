@@ -22,7 +22,7 @@ type iListModelOperatorServicesResponseBody interface {
 }
 
 type ListModelOperatorServicesResponseBody struct {
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
@@ -123,6 +123,24 @@ type ListModelOperatorServicesResponseBodyServices struct {
 	//
 	// agdb-xxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The status of the model operator service. Valid values:
+	//
+	// - active: Normal.
+	//
+	// - locking: Locking.
+	//
+	// - locked: Locked.
+	//
+	// - unlocking: Unlocking.
+	//
+	// - deleting: Releasing.
+	//
+	// This status indicates the processing status of the control plane and does not mean that data plane propagation of the MO gateway is complete.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListModelOperatorServicesResponseBodyServices) String() string {
@@ -137,8 +155,17 @@ func (s *ListModelOperatorServicesResponseBodyServices) GetServiceId() *string {
 	return s.ServiceId
 }
 
+func (s *ListModelOperatorServicesResponseBodyServices) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListModelOperatorServicesResponseBodyServices) SetServiceId(v string) *ListModelOperatorServicesResponseBodyServices {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *ListModelOperatorServicesResponseBodyServices) SetStatus(v string) *ListModelOperatorServicesResponseBodyServices {
+	s.Status = &v
 	return s
 }
 

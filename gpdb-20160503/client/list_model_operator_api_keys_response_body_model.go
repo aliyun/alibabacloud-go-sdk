@@ -30,7 +30,7 @@ type ListModelOperatorApiKeysResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListModelOperatorApiKeysResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListModelOperatorApiKeysResponseBody) Validate() error {
 }
 
 type ListModelOperatorApiKeysResponseBodyApiKeys struct {
-	// API KEY ID。
+	// The API key ID.
 	//
 	// example:
 	//
@@ -141,6 +141,12 @@ type ListModelOperatorApiKeysResponseBodyApiKeys struct {
 	//
 	// https://xxxx
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The status of the key. Valid values: Creating, Running, Locked, and Deleting.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListModelOperatorApiKeysResponseBodyApiKeys) String() string {
@@ -167,6 +173,10 @@ func (s *ListModelOperatorApiKeysResponseBodyApiKeys) GetEndpoint() *string {
 	return s.Endpoint
 }
 
+func (s *ListModelOperatorApiKeysResponseBodyApiKeys) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListModelOperatorApiKeysResponseBodyApiKeys) SetApiKeyId(v int32) *ListModelOperatorApiKeysResponseBodyApiKeys {
 	s.ApiKeyId = &v
 	return s
@@ -184,6 +194,11 @@ func (s *ListModelOperatorApiKeysResponseBodyApiKeys) SetDescription(v string) *
 
 func (s *ListModelOperatorApiKeysResponseBodyApiKeys) SetEndpoint(v string) *ListModelOperatorApiKeysResponseBodyApiKeys {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *ListModelOperatorApiKeysResponseBodyApiKeys) SetStatus(v string) *ListModelOperatorApiKeysResponseBodyApiKeys {
+	s.Status = &v
 	return s
 }
 

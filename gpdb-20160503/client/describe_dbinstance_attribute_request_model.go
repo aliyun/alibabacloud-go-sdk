@@ -20,7 +20,7 @@ type iDescribeDBInstanceAttributeRequest interface {
 type DescribeDBInstanceAttributeRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	//
 	// This parameter is required.
 	//

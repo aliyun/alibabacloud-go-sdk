@@ -24,7 +24,7 @@ type AddAINodeRequest struct {
 	//
 	// aipool-xxxxx
 	AINodePoolId *string `json:"AINodePoolId,omitempty" xml:"AINodePoolId,omitempty"`
-	// The node specifications of the AI node.
+	// The node specifications of the AI nodes.
 	//
 	// This parameter is required.
 	AINodeSpecInfos []*AddAINodeRequestAINodeSpecInfos `json:"AINodeSpecInfos,omitempty" xml:"AINodeSpecInfos,omitempty" type:"Repeated"`

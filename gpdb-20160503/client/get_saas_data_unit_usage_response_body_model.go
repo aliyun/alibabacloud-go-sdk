@@ -28,28 +28,38 @@ type iGetSaasDataUnitUsageResponseBody interface {
 }
 
 type GetSaasDataUnitUsageResponseBody struct {
-	// 按DataUnit降序，未知金额排末尾，同值按场景码、项目ID和名称升序。按场景和项目ID分组；无ID但有名称按名称分组；两者均缺失的记录为未关联项目。完整结果各项之和等于汇总；缺失或空白的日志场景归other（其他）；有值但未配置映射的场景保留原值作为编码和展示名，正常计入总量；无记录的other不创建空行。
+	// The business distribution. The items are sorted in descending order of DataUnit. Items with unknown amounts are placed at the end. Items with the same value are sorted in ascending order of scenario code, project ID, and name. The items are grouped by scenario and project ID. Items without an ID but with a name are grouped by name. Records missing both are grouped as unassociated projects. The sum of all items in the complete result equals the summary. Missing or blank log scenarios are classified as other. Scenarios with values but no configured mapping retain the original values as codes and display names, and are normally included in the total. No empty rows are created for other if there are no records.
 	Distribution []*GetSaasDataUnitUsageResponseBodyDistribution `json:"Distribution,omitempty" xml:"Distribution,omitempty" type:"Repeated"`
+	// The actual end time of the query.
+	//
 	// example:
 	//
 	// 2026-10-20T02:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// mock_req_success
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SaaS service ID.
+	//
 	// example:
 	//
 	// agdb-example
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The actual start time of the query.
+	//
 	// example:
 	//
 	// 2026-10-20T00:00:00Z
-	StartTime *string                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Summary   *GetSaasDataUnitUsageResponseBodySummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
-	// 按UTC桶起点升序。完整查询补齐零桶；未知金额为null，不以零替代。
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The usage summary.
+	Summary *GetSaasDataUnitUsageResponseBodySummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+	// The time trend. The items are sorted in ascending order of the UTC bucket start time. Zero buckets are padded for complete queries. The value is null for unknown amounts and is not replaced with zero.
 	TimeSeries []*GetSaasDataUnitUsageResponseBodyTimeSeries `json:"TimeSeries,omitempty" xml:"TimeSeries,omitempty" type:"Repeated"`
-	Warnings   []*GetSaasDataUnitUsageResponseBodyWarnings   `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
+	// The product notifications.
+	Warnings []*GetSaasDataUnitUsageResponseBodyWarnings `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
 }
 
 func (s GetSaasDataUnitUsageResponseBody) String() string {
@@ -169,7 +179,7 @@ func (s *GetSaasDataUnitUsageResponseBody) Validate() error {
 }
 
 type GetSaasDataUnitUsageResponseBodyDistribution struct {
-	// 精确非负十进制字符串，不使用浮点或指数格式；金额不完整时为null。
+	// The exact non-negative decimal string. Floating-point or exponential formats are not used. The value is null when the amount is incomplete.
 	//
 	// if can be null:
 	// true
@@ -178,7 +188,7 @@ type GetSaasDataUnitUsageResponseBodyDistribution struct {
 	//
 	// 2.82
 	DataUnit *string `json:"DataUnit,omitempty" xml:"DataUnit,omitempty"`
-	// 调用时的项目归因；缺失时为null，不影响总量。
+	// The project attribution at the time of the call. The value is null when missing, which does not affect the total amount.
 	//
 	// if can be null:
 	// true
@@ -187,20 +197,22 @@ type GetSaasDataUnitUsageResponseBodyDistribution struct {
 	//
 	// project-1
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 同一场景和项目ID取查询范围内最新非空名称快照，同秒取字典序最大值；缺失为null。
+	// The project name. For the same scenario and project ID, the latest non-empty name snapshot within the query range is used. If multiple snapshots exist in the same second, the maximum value in lexicographical order is used. The value is null when missing.
 	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 场景重制
+	// Scenario remake
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The business scenario code.
+	//
 	// example:
 	//
 	// drama_game_oneshot
 	UsageScene *string `json:"UsageScene,omitempty" xml:"UsageScene,omitempty"`
-	// 由Meta原值到中文名的字典补充，不是SLS字段。UsageScene始终保留日志原值；无中文名则名称也用原值；空白归其他。同中文名不同编码不合并。
+	// The display name of the business scenario. This name is supplemented by a dictionary that maps the original Meta values to Chinese names, and is not an SLS field. UsageScene always retains the original log value. If no Chinese name is available, the original value is used as the name. Blank values are classified as other. Different codes with the same Chinese name are not merged.
 	//
 	// example:
 	//
@@ -266,7 +278,7 @@ func (s *GetSaasDataUnitUsageResponseBodyDistribution) Validate() error {
 }
 
 type GetSaasDataUnitUsageResponseBodySummary struct {
-	// 精确非负十进制字符串，不使用浮点或指数格式；金额不完整时为null。
+	// The exact non-negative decimal string. Floating-point or exponential formats are not used. The value is null when the amount is incomplete.
 	//
 	// if can be null:
 	// true
@@ -299,7 +311,7 @@ func (s *GetSaasDataUnitUsageResponseBodySummary) Validate() error {
 }
 
 type GetSaasDataUnitUsageResponseBodyTimeSeries struct {
-	// 精确非负十进制字符串，不使用浮点或指数格式；金额不完整时为null。
+	// The exact non-negative decimal string. Floating-point or exponential formats are not used. The value is null when the amount is incomplete.
 	//
 	// if can be null:
 	// true
@@ -307,8 +319,11 @@ type GetSaasDataUnitUsageResponseBodyTimeSeries struct {
 	// example:
 	//
 	// 2.82
-	DataUnit *string                                             `json:"DataUnit,omitempty" xml:"DataUnit,omitempty"`
-	Scenes   []*GetSaasDataUnitUsageResponseBodyTimeSeriesScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	DataUnit *string `json:"DataUnit,omitempty" xml:"DataUnit,omitempty"`
+	// The scenario usage within the bucket.
+	Scenes []*GetSaasDataUnitUsageResponseBodyTimeSeriesScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	// The start time of the UTC bucket.
+	//
 	// example:
 	//
 	// 2026-10-20T00:00:00Z
@@ -364,7 +379,7 @@ func (s *GetSaasDataUnitUsageResponseBodyTimeSeries) Validate() error {
 }
 
 type GetSaasDataUnitUsageResponseBodyTimeSeriesScenes struct {
-	// 精确非负十进制字符串，不使用浮点或指数格式；金额不完整时为null。
+	// The exact non-negative decimal string. Floating-point or exponential formats are not used. The value is null when the amount is incomplete.
 	//
 	// if can be null:
 	// true
@@ -373,7 +388,7 @@ type GetSaasDataUnitUsageResponseBodyTimeSeriesScenes struct {
 	//
 	// 2.82
 	DataUnit *string `json:"DataUnit,omitempty" xml:"DataUnit,omitempty"`
-	// 调用时的项目归因；缺失时为null，不影响总量。
+	// The project attribution at the time of the call. The value is null when missing, which does not affect the total amount.
 	//
 	// if can be null:
 	// true
@@ -382,15 +397,17 @@ type GetSaasDataUnitUsageResponseBodyTimeSeriesScenes struct {
 	//
 	// project-1
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 同一场景和项目ID取查询范围内最新非空名称快照，同秒取字典序最大值；缺失为null。
+	// The project name. For the same scenario and project ID, the latest non-empty name snapshot within the query range is used. If multiple snapshots exist in the same second, the maximum value in lexicographical order is used. The value is null when missing.
 	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 场景重制
+	// Scenario remake
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The business scenario code.
+	//
 	// example:
 	//
 	// game_translation
@@ -446,15 +463,17 @@ func (s *GetSaasDataUnitUsageResponseBodyTimeSeriesScenes) Validate() error {
 }
 
 type GetSaasDataUnitUsageResponseBodyWarnings struct {
-	// 包括DATA_INCOMPLETE和DATA_UNIT_PENDING。
+	// The notification code. Valid values include DATA_INCOMPLETE and DATA_UNIT_PENDING.
 	//
 	// example:
 	//
 	// DATA_INCOMPLETE
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The notification message.
+	//
 	// example:
 	//
-	// 部分用量尚未就绪
+	// Partial usage is not ready yet
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

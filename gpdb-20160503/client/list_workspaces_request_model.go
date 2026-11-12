@@ -22,7 +22,7 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The maximum number of entries to return in this request. Default value: 10.
+	// The maximum number of entries to return for this request. Default value: 10.
 	//
 	// example:
 	//

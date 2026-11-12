@@ -95,62 +95,92 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
-	AvailabilityValue         *string                                                              `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	CacheStorageSize          *string                                                              `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
-	ConnectionMode            *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	ConnectionString          *string                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	CoreVersion               *string                                                              `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
-	CpuCores                  *int32                                                               `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CpuCoresPerNode           *int32                                                               `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
-	CreationTime              *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DBInstanceCategory        *string                                                              `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceClass           *string                                                              `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceClassType       *string                                                              `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	DBInstanceCpuCores        *int32                                                               `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
-	DBInstanceDescription     *string                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceDiskMBPS        *int64                                                               `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
-	DBInstanceGroupCount      *string                                                              `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	DBInstanceId              *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMemory          *int64                                                               `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	DBInstanceMode            *string                                                              `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	DBInstanceNetType         *string                                                              `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	DBInstanceStatus          *string                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStorage         *int64                                                               `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	DeployMode                *string                                                              `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	EncryptionKey             *string                                                              `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType            *string                                                              `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine                    *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion             *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime                *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GraphEngineStatus         *string                                                              `json:"GraphEngineStatus,omitempty" xml:"GraphEngineStatus,omitempty"`
-	HostType                  *string                                                              `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	IdleTime                  *int32                                                               `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	InstanceNetworkType       *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceSpec              *string                                                              `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	LockMode                  *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason                *string                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTime           *string                                                              `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime         *string                                                              `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MasterAISpec              *string                                                              `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
-	MasterCU                  *int32                                                               `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	MasterNodeNum             *int32                                                               `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	MaxConnections            *int32                                                               `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	MemoryPerNode             *int32                                                               `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
-	MemorySize                *int64                                                               `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	MemoryUnit                *string                                                              `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
-	MinorVersion              *string                                                              `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	PayType                   *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                      *string                                                              `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProdType                  *string                                                              `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
-	ReadDelayTime             *string                                                              `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	RegionId                  *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId           *string                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RunningTime               *string                                                              `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	SecurityIPList            *string                                                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SegDiskPerformanceLevel   *string                                                              `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
-	SegNodeNum                *int32                                                               `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	SegmentAISpec             *string                                                              `json:"SegmentAISpec,omitempty" xml:"SegmentAISpec,omitempty"`
-	SegmentCounts             *int32                                                               `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
+	AvailabilityValue     *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
+	CacheStorageSize      *string `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
+	ConnectionMode        *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
+	ConnectionString      *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CoreVersion           *string `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
+	CpuCores              *int32  `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	CpuCoresPerNode       *int32  `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
+	CreationTime          *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DBInstanceCategory    *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClassType   *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
+	DBInstanceCpuCores    *int32  `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceDiskMBPS    *int64  `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
+	DBInstanceGroupCount  *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMemory      *int64  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	DBInstanceMode        *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	DBInstanceNetType     *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorage     *int64  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	DeployMode            *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// 实例磁盘告警阈值，百分比字符串；未配置时为空。
+	//
+	// example:
+	//
+	// 80%
+	DiskNotifyThreshold *string `json:"DiskNotifyThreshold,omitempty" xml:"DiskNotifyThreshold,omitempty"`
+	EncryptionKey       *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionType      *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	Engine              *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GraphEngineStatus   *string `json:"GraphEngineStatus,omitempty" xml:"GraphEngineStatus,omitempty"`
+	HostType            *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	IdleTime            *int32  `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceSpec        *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// 实例类型：main表示主实例，readonly表示只读实例
+	//
+	// example:
+	//
+	// readonly
+	InstanceType      *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	LockMode          *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason        *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MasterAISpec      *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
+	MasterCU          *int32  `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
+	// master磁盘锁定阈值，百分比字符串；未配置时为空。
+	//
+	// example:
+	//
+	// 95%
+	MasterDiskLockThreshold *string `json:"MasterDiskLockThreshold,omitempty" xml:"MasterDiskLockThreshold,omitempty"`
+	MasterNodeNum           *int32  `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	MaxConnections          *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MemoryPerNode           *int32  `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
+	MemorySize              *int64  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemoryUnit              *string `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
+	MinorVersion            *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	PayType                 *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Port                    *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 主实例ID；当前实例为主实例时为空
+	//
+	// example:
+	//
+	// gp-2ze3iph733ou550t7
+	PrimaryDBInstanceId     *string `json:"PrimaryDBInstanceId,omitempty" xml:"PrimaryDBInstanceId,omitempty"`
+	ProdType                *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
+	ReadDelayTime           *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RunningTime             *string `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
+	SecurityIPList          *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
+	SegNodeNum              *int32  `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegmentAISpec           *string `json:"SegmentAISpec,omitempty" xml:"SegmentAISpec,omitempty"`
+	SegmentCounts           *int32  `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
+	// segment磁盘锁定阈值，百分比字符串；未配置时为空。
+	//
+	// example:
+	//
+	// 95%
+	SegmentDiskLockThreshold  *string                                                              `json:"SegmentDiskLockThreshold,omitempty" xml:"SegmentDiskLockThreshold,omitempty"`
 	ServerlessMode            *string                                                              `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
 	ServerlessResource        *int32                                                               `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	StandbyZoneId             *string                                                              `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
@@ -263,6 +293,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetDep
 	return s.DeployMode
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetDiskNotifyThreshold() *string {
+	return s.DiskNotifyThreshold
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetEncryptionKey() *string {
 	return s.EncryptionKey
 }
@@ -303,6 +337,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetIns
 	return s.InstanceSpec
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetInstanceType() *string {
+	return s.InstanceType
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetLockMode() *string {
 	return s.LockMode
 }
@@ -325,6 +363,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetMas
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetMasterCU() *int32 {
 	return s.MasterCU
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetMasterDiskLockThreshold() *string {
+	return s.MasterDiskLockThreshold
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetMasterNodeNum() *int32 {
@@ -357,6 +399,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetPay
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetPort() *string {
 	return s.Port
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetPrimaryDBInstanceId() *string {
+	return s.PrimaryDBInstanceId
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetProdType() *string {
@@ -397,6 +443,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetSeg
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetSegmentCounts() *int32 {
 	return s.SegmentCounts
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetSegmentDiskLockThreshold() *string {
+	return s.SegmentDiskLockThreshold
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetServerlessMode() *string {
@@ -565,6 +615,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDep
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDiskNotifyThreshold(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DiskNotifyThreshold = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetEncryptionKey(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.EncryptionKey = &v
 	return s
@@ -615,6 +670,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetIns
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.InstanceType = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetLockMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.LockMode = &v
 	return s
@@ -642,6 +702,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMas
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMasterCU(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MasterCU = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMasterDiskLockThreshold(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.MasterDiskLockThreshold = &v
 	return s
 }
 
@@ -682,6 +747,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPay
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetPrimaryDBInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.PrimaryDBInstanceId = &v
 	return s
 }
 
@@ -732,6 +802,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSeg
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegmentCounts(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SegmentCounts = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegmentDiskLockThreshold(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.SegmentDiskLockThreshold = &v
 	return s
 }
 

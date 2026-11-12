@@ -28,7 +28,7 @@ type iListWorkspacesResponseBody interface {
 type ListWorkspacesResponseBody struct {
 	// The list of workspace details.
 	Items []*ListWorkspacesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in this request. Default value: 10.
+	// The maximum number of entries to return for this request. Default value: 10.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 type ListWorkspacesResponseBodyItems struct {
 	// The list of API keys in the workspace.
 	Apikeys []*ListWorkspacesResponseBodyItemsApikeys `json:"Apikeys,omitempty" xml:"Apikeys,omitempty" type:"Repeated"`
-	// The time when the workspace was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -161,17 +161,17 @@ type ListWorkspacesResponseBodyItems struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The services in the workspace.
 	Services []*ListWorkspacesResponseBodyItemsServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// gp-ws-wkb4fp3j9u79ha
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
-	// - The maximum length is 50 characters.
+	// - Maximum length: 50 characters.
 	//
-	// - The name must be unique.
+	// - Must be unique.
 	//
 	// - Special characters are not allowed.
 	//
@@ -259,7 +259,7 @@ func (s *ListWorkspacesResponseBodyItems) Validate() error {
 type ListWorkspacesResponseBodyItemsApikeys struct {
 	// The services authorized for the API key.
 	AuthServices []*ListWorkspacesResponseBodyItemsApikeysAuthServices `json:"AuthServices,omitempty" xml:"AuthServices,omitempty" type:"Repeated"`
-	// The time when the API key was created.
+	// The creation time of the API key.
 	//
 	// example:
 	//
@@ -367,13 +367,13 @@ func (s *ListWorkspacesResponseBodyItemsApikeys) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsApikeysAuthServices struct {
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//
 	// agdb-eqxwj5tj5ojx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
 	// - memory
 	//
@@ -416,8 +416,9 @@ func (s *ListWorkspacesResponseBodyItemsApikeysAuthServices) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsServices struct {
+	// The list of service components.
 	Components []*ListWorkspacesResponseBodyItemsServicesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The time when the workspace was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -429,6 +430,8 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// 1
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// Specifies whether release protection is enabled.
+	//
 	// example:
 	//
 	// false
@@ -441,13 +444,13 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go
 	//
-	// - **PREPAY**: subscription.
+	// - **PREPAY**: subscription
 	//
-	// > - If this parameter is not specified, the default value is POSTPAY.
+	// > - If this parameter is not specified, the pay-as-you-go billing method is used by default.
 	//
-	// > - In subscription mode, a discount is provided if you purchase a subscription for one year or longer. Select a billing method based on your business requirements.
+	// > - In subscription mode, a discount is provided when you purchase a subscription for one year or longer. Select a billing method based on your business requirements.
 	//
 	// example:
 	//
@@ -459,19 +462,19 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// deprecated
 	Plan *string `json:"Plan,omitempty" xml:"Plan,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//
 	// agdb-xxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// agdb-xxxx
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The type of the service. Valid values:
+	// The service type. Valid values:
 	//
 	// - memory
 	//
@@ -481,7 +484,7 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// memory
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The status of the service. Valid values:
+	// The service status. Valid values:
 	//
 	// - creating: The service is being created.
 	//
@@ -614,26 +617,44 @@ func (s *ListWorkspacesResponseBodyItemsServices) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsServicesComponents struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-03-09T02:26:48Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The compute resources.
+	//
 	// example:
 	//
 	// 2
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// Specifies whether release protection is enabled.
+	//
 	// example:
 	//
 	// True
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The service component status. Valid values:
+	//
+	// - creating: The component is being created.
+	//
+	// - active: The component is running.
+	//
 	// example:
 	//
 	// true
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The component ID.
+	//
 	// example:
 	//
 	// sas-xxxx
 	ComponentId *string `json:"componentId,omitempty" xml:"componentId,omitempty"`
+	// The component type. Valid values:
+	//
+	// - game
+	//
 	// example:
 	//
 	// game
