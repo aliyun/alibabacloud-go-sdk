@@ -18,18 +18,28 @@ type iImportAgentJobsRequest interface {
 }
 
 type ImportAgentJobsRequest struct {
+	// agentname
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 名称
+	// Name
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2027179f-20b1-4e0b-841b-d86f2bc7ebf7
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The strategy for synchronizing scheduled tasks. Valid values:
+	//
+	// - 1: Migrates both the content and the scheduling time of local scheduled tasks from the agent to the cloud.
+	//
+	// - 2: Migrates only the scheduling time to the cloud. When the scheduled time arrives, the platform notifies the agent, and the agent executes the task based on the local task content. The task content is always retained locally.
+	//
 	// example:
 	//
 	// 1

@@ -16,7 +16,7 @@ type iDeleteDatasourceRequest interface {
 }
 
 type DeleteDatasourceRequest struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteDatasourceRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// DataSource ID, which can be obtained by invoking the ListDatasources API.
+	// The data source ID. You can obtain the ID by calling the ListDatasources operation.
 	//
 	// This parameter is required.
 	//

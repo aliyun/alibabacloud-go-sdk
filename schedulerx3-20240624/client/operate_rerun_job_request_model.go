@@ -26,6 +26,11 @@ type iOperateRerunJobRequest interface {
 }
 
 type OperateRerunJobRequest struct {
+	// The application ID.
+	//
+	// example:
+	//
+	// 1625
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The application name.
 	//
@@ -43,7 +48,7 @@ type OperateRerunJobRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The data timestamp.
+	// The data timestamp, in the HH:mm:ss format.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +56,7 @@ type OperateRerunJobRequest struct {
 	//
 	// 14:11:10
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	// The end time.
+	// The end time, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +64,7 @@ type OperateRerunJobRequest struct {
 	//
 	// 1698458024000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The node ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +72,7 @@ type OperateRerunJobRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The start time.
+	// The start time, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

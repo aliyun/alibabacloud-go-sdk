@@ -22,6 +22,11 @@ type iListExecutorsRequest interface {
 }
 
 type ListExecutorsRequest struct {
+	// The application group ID.
+	//
+	// example:
+	//
+	// 1625
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//

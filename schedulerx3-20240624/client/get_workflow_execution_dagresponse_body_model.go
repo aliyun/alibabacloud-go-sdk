@@ -28,7 +28,7 @@ type GetWorkflowExecutionDAGResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned for the request.
+	// The query result.
 	Data *GetWorkflowExecutionDAGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -36,17 +36,17 @@ type GetWorkflowExecutionDAGResponseBody struct {
 	//
 	// Parameter format error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call succeeded.
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - `true`: The call succeeded.
+	// - true: The call is successful.
 	//
-	// - `false`: The call failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *GetWorkflowExecutionDAGResponseBody) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyData struct {
-	// A list of edges in the workflow DAG.
+	// The list of edges in the workflow.
 	Edges []*GetWorkflowExecutionDAGResponseBodyDataEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
-	// A list of nodes in the workflow DAG.
+	// The node information.
 	Nodes []*GetWorkflowExecutionDAGResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -172,13 +172,13 @@ func (s *GetWorkflowExecutionDAGResponseBodyData) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyDataEdges struct {
-	// The ID of the source node.
+	// The task execution ID of the source node.
 	//
 	// example:
 	//
 	// 1000
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the target node.
+	// The task execution ID of the target node.
 	//
 	// example:
 	//
@@ -223,53 +223,53 @@ type GetWorkflowExecutionDAGResponseBodyDataNodes struct {
 	//
 	// cua-xxl-job-executor
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The coordinates of the node.
+	// The coordinate information of the node.
 	Coordinate *GetWorkflowExecutionDAGResponseBodyDataNodesCoordinate `json:"Coordinate,omitempty" xml:"Coordinate,omitempty" type:"Struct"`
-	// The unique ID for the job execution (node).
+	// The ID.
 	//
 	// example:
 	//
 	// 7491777526619542799
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 9
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job type.
+	// The task type.
 	//
 	// example:
 	//
 	// script_shell
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The job name.
+	// The task name.
 	//
 	// example:
 	//
 	// job1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The execution status of the job. Valid values:
+	// The task execution status. Valid values:
 	//
-	// - 0: Unknown
+	// - 0: unknown
 	//
-	// - 1: Waiting
+	// - 1: waiting
 	//
-	// - 2: Queued
+	// - 2: queued
 	//
-	// - 3: Running
+	// - 3: running
 	//
-	// - 4: Succeeded
+	// - 4: success
 	//
-	// - 5: Failed
+	// - 5: failed
 	//
-	// - 6: Killed
+	// - 6: killed
 	//
-	// - 7: Held
+	// - 7: held
 	//
-	// - 8: Marked as successful
+	// - 8: mark_success
 	//
-	// - 9: Skipped
+	// - 9: skipped
 	//
 	// example:
 	//
@@ -358,25 +358,25 @@ func (s *GetWorkflowExecutionDAGResponseBodyDataNodes) Validate() error {
 }
 
 type GetWorkflowExecutionDAGResponseBodyDataNodesCoordinate struct {
-	// The height of the node. This parameter is optional.
+	// The height of the node. This field is optional.
 	//
 	// example:
 	//
 	// 20
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The width of the node. This parameter is optional.
+	// The width of the node. This field is optional.
 	//
 	// example:
 	//
 	// 100
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The x-coordinate of the node.
+	// The X-axis coordinate of the node.
 	//
 	// example:
 	//
 	// 50
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-coordinate of the node.
+	// The Y-axis coordinate of the node.
 	//
 	// example:
 	//

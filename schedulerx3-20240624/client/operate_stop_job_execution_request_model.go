@@ -22,6 +22,7 @@ type iOperateStopJobExecutionRequest interface {
 }
 
 type OperateStopJobExecutionRequest struct {
+	// The application ID.
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -47,7 +48,7 @@ type OperateStopJobExecutionRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// The subtask IDs.
+	// The subtask ID.
 	TaskList []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 }
 

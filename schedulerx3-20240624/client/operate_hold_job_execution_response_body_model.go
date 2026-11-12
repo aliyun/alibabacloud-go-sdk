@@ -32,17 +32,17 @@ type OperateHoldJobExecutionResponseBody struct {
 	//
 	// not support query script history, please upgrade engine version to 2.2.2+
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 2ECA6FC9-7557-5576-AF5F-FC3E7BCC9C21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The call is successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

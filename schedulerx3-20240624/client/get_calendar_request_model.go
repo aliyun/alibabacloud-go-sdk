@@ -18,7 +18,7 @@ type iGetCalendarRequest interface {
 }
 
 type GetCalendarRequest struct {
-	// The name of the calendar.
+	// The calendar name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetCalendarRequest struct {
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//

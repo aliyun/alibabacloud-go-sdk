@@ -18,7 +18,7 @@ type iOperateHoldWorkflowExecutionRequest interface {
 }
 
 type OperateHoldWorkflowExecutionRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type OperateHoldWorkflowExecutionRequest struct {
 	//
 	// xxl-job-executor-sample
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type OperateHoldWorkflowExecutionRequest struct {
 	//
 	// xxljob-d6a5243b6fa
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the Workflow Execution.
+	// The workflow instance ID.
 	//
 	// This parameter is required.
 	//

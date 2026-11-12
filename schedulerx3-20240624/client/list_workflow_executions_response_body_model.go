@@ -26,21 +26,21 @@ type iListWorkflowExecutionsResponseBody interface {
 }
 
 type ListWorkflowExecutionsResponseBody struct {
-	// The response code. A value of `200` indicates a successful request.
+	// The total number of entries that meet the request conditions. This parameter is optional and is not returned by default.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The paginated results of workflow execution records.
 	Data *ListWorkflowExecutionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The maximum number of entries to return per page.
+	// The maximum number of entries to return for this request. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response message. If the request fails, this parameter provides details about the error.
+	// The position from which the current call returns data. An empty value indicates that all data has been read.
 	//
 	// This parameter is required.
 	//
@@ -48,23 +48,23 @@ type ListWorkflowExecutionsResponseBody struct {
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
+	// The token that specifies the position from which the query starts. An empty value indicates that all data has been read. You do not need to specify this parameter for the first query.
 	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The unique request ID. Use this ID to troubleshoot issues.
+	// Id of the request
 	//
 	// example:
 	//
 	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The call is successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -159,15 +159,15 @@ type ListWorkflowExecutionsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// -
+	// The workflow execution records on the current page.
 	Records []*ListWorkflowExecutionsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The total number of matching workflow executions.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type ListWorkflowExecutionsResponseBodyDataRecords struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The data time of the workflow execution.
+	// The node data timestamp. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-11-12 14:52:42
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	// The end time of the workflow execution.
+	// The task end time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -257,51 +257,51 @@ type ListWorkflowExecutionsResponseBodyDataRecords struct {
 	//
 	// 1827811800526000
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	// The schedule time of the workflow execution.
+	// The task scheduling time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-11-12 14:52:42
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The start time of the workflow execution.
+	// The start time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-11-04 01:09:27
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the workflow execution. Valid values:
+	// The task execution status. Valid values:
 	//
-	// - 0: UNKNOWN
+	// - 0: UNKNOWN (Unknown).
 	//
-	// - 1: WAITING
+	// - 1: WAITING (Waiting).
 	//
-	// - 2: READY
+	// - 2: READY (Ready).
 	//
-	// - 3: RUNNING
+	// - 3: RUNNING (Running).
 	//
-	// - 4: SUCCESS
+	// - 4: SUCCESS (Successful).
 	//
-	// - 5: FAILED
+	// - 5: FAILED (Failed).
 	//
-	// - 6: PAUSED
+	// - 6: PAUSED (Paused).
 	//
-	// - 7: SUBMITTED
+	// - 7: SUBMITTED (Submitted).
 	//
-	// - 8: REJECTED
+	// - 8: REJECTED (Rejected).
 	//
-	// - 9: ACCEPTED
+	// - 9: ACCEPTED (Accepted).
 	//
-	// - 10: PARTIAL_FAILED
+	// - 10: PARTIAL_FAILED (Partially failed).
 	//
-	// - 11: SKIPPED
+	// - 11: SKIPPED (Skipped).
 	//
-	// - 12: REMOVED
+	// - 12: REMOVED (Removed).
 	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The workflow execution ID.
+	// The workflow instance ID.
 	//
 	// example:
 	//

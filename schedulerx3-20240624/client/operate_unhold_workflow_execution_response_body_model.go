@@ -26,23 +26,23 @@ type OperateUnholdWorkflowExecutionResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The detailed information.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
-	// - `true`: The request was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

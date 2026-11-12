@@ -20,7 +20,7 @@ type iUpdateJobExecutionRequest interface {
 }
 
 type UpdateJobExecutionRequest struct {
-	// AppName
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateJobExecutionRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateJobExecutionRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Job execution ID.
+	// The job execution ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdateJobExecutionRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// Schedule time
+	// The scheduling time.
 	//
 	// example:
 	//

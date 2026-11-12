@@ -34,55 +34,55 @@ type iListAlarmEventRequest interface {
 }
 
 type ListAlarmEventRequest struct {
-	// The channel for sending alarm notifications. Valid values:
+	// The alert channel. Valid values:
 	//
-	// - `sms`: SMS
+	// - `sms`: SMS.
 	//
-	// - `mail`: Email
+	// - `mail`: Email.
 	//
-	// - `phone`: Phone call
+	// - `phone`: Phone call.
 	//
-	// - `webhook`: Webhook
+	// - `webhook`: Webhook.
 	//
 	// example:
 	//
 	// webhook
 	AlarmChannel *string `json:"AlarmChannel,omitempty" xml:"AlarmChannel,omitempty"`
-	// The delivery status of the alarm notification. Valid values:
+	// The alert status. Valid values:
 	//
-	// - `true`: The notification delivery succeeded.
+	// - `true`: The alert message is sent successfully.
 	//
-	// - `false`: The notification delivery failed.
+	// - `false`: The alert message fails to be sent.
 	//
 	// example:
 	//
 	// true
 	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	// The type of the alarm. Valid values:
+	// The alert type. Valid values:
 	//
-	// - **`schedulerx3_no_designate_machine_alarm`**: The Designated Machine is unavailable.
+	// - **`schedulerx3_no_designate_machine_alarm`**: Unavailable designated machine alert.
 	//
-	// - **`schedulerx3_all_busy_alarm`**: All available machines are busy.
+	// - **`schedulerx3_all_busy_alarm`**: All machines busy alert.
 	//
-	// - **`schedulerx3_no_machine_alarm`**: No machines are available to run the job.
+	// - **`schedulerx3_no_machine_alarm`**: No available machine alert.
 	//
-	// - **`schedulerx3_timeout_alarm`**: The job timed out.
+	// - **`schedulerx3_timeout_alarm`**: Job timeout alert.
 	//
-	// - **`schedulerx3_fail_alarm`**: The job failed to run.
+	// - **`schedulerx3_fail_alarm`**: Job execution failure alert.
 	//
-	// - **`schedulerx3_job_success_notice`**: The job ran successfully.
+	// - **`schedulerx3_job_success_notice`**: Job execution success notice.
 	//
 	// example:
 	//
 	// schedulerx3_fail_alarm
 	AlarmType *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -90,13 +90,13 @@ type ListAlarmEventRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range for querying events. This value is a Unix timestamp in milliseconds.
+	// The end time of the retrieved events. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1731636011558
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type ListAlarmEventRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Set to true to return results in descending order.
+	// Specifies whether to sort the results in descending order.
 	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The start of the time range for querying events. This value is a Unix timestamp in milliseconds.
+	// The start time of the retrieved events. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

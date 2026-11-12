@@ -34,48 +34,74 @@ type iGetPageLogRequest interface {
 }
 
 type GetPageLogRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777292662000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// job01
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// hello word
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to sort the results in descending order. Valid values:
+	//
+	// - **true**: Sorts the results in descending order.
+	//
+	// - **false**: Sorts the results in ascending order.
+	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The start timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1777292662000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The executor address.
+	//
 	// example:
 	//
 	// 192.168.1.100

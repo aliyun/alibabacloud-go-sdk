@@ -26,23 +26,23 @@ type OperateUnskipJobExecutionResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// AA3538A0-FBE6-5E31-AD88-A02C6FF0DACC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

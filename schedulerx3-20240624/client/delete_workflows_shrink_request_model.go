@@ -36,13 +36,13 @@ type DeleteWorkflowsShrinkRequest struct {
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// If set to `true`, all jobs within the specified workflows are also deleted.
+	// Specifies whether to delete all jobs in the workflow.
 	//
 	// example:
 	//
 	// false
 	DeleteJobs *bool `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
-	// A list of workflow IDs to delete.
+	// The list of workflow IDs.
 	//
 	// This parameter is required.
 	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`

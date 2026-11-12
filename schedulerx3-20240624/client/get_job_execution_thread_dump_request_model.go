@@ -38,7 +38,7 @@ type GetJobExecutionThreadDumpRequest struct {
 	//
 	// http://192.168.0.215:9966/
 	ExecutorAddr *string `json:"ExecutorAddr,omitempty" xml:"ExecutorAddr,omitempty"`
-	// The job execution ID.
+	// The task execution ID.
 	//
 	// example:
 	//

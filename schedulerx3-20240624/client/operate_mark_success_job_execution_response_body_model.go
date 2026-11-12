@@ -32,17 +32,17 @@ type OperateMarkSuccessJobExecutionResponseBody struct {
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// AA3538A0-FBE6-5E31-AD88-A02C6FF0DACC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - `true`: The call was successful.
+	// - true: The call is successful.
 	//
-	// - `false`: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

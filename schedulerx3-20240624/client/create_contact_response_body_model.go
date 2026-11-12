@@ -22,19 +22,32 @@ type iCreateContactResponseBody interface {
 }
 
 type CreateContactResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
 	Data *CreateContactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 2C3E52FF-CBE9-5C0E-8252-37ACFF1F5EFF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
+	//
 	// example:
 	//
 	// true
@@ -104,7 +117,7 @@ func (s *CreateContactResponseBody) Validate() error {
 }
 
 type CreateContactResponseBodyData struct {
-	// 新建联系人的 id，后续 Update/Delete 时使用
+	// The contact ID.
 	//
 	// example:
 	//

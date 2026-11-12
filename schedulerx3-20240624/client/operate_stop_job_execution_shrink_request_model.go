@@ -22,6 +22,7 @@ type iOperateStopJobExecutionShrinkRequest interface {
 }
 
 type OperateStopJobExecutionShrinkRequest struct {
+	// The application ID.
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -47,7 +48,7 @@ type OperateStopJobExecutionShrinkRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// The subtask IDs.
+	// The subtask ID.
 	TaskListShrink *string `json:"TaskList,omitempty" xml:"TaskList,omitempty"`
 }
 

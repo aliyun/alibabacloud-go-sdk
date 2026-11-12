@@ -18,17 +18,19 @@ type iListContactsRequest interface {
 }
 
 type ListContactsRequest struct {
+	// The name of the alert contact.
+	//
 	// example:
 	//
 	// Tom
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 页码，从 1 开始，默认 1
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// 每页条数，默认 20，最大 100
+	// The number of entries per page.
 	//
 	// example:
 	//

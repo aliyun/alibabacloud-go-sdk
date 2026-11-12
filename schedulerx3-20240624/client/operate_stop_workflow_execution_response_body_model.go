@@ -32,17 +32,17 @@ type OperateStopWorkflowExecutionResponseBody struct {
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// D0DE9C33-992A-580B-89C4-B609A292748D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

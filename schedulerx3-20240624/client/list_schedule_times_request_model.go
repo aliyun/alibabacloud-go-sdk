@@ -32,7 +32,7 @@ type ListScheduleTimesRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the calendar to use for scheduling, such as a business day calendar.
+	// The calendar.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListScheduleTimesRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The time expression, such as a cron expression.
+	// The time expression. For cron scheduling, use the Quartz cron format (second minute hour day-of-month month day-of-week).
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type ListScheduleTimesRequest struct {
 	//
 	// 0 0/10 	- 	- 	- ?
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// The time type. The only supported type is cron.
+	// The time type. Currently, only cron is supported. Valid values:
 	//
-	// - 1: cron
+	// - 1: cron.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ListScheduleTimesRequest struct {
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The time zone used to evaluate the time expression.
+	// The time zone.
 	//
 	// example:
 	//

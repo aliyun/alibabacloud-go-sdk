@@ -26,6 +26,11 @@ type iOperateExecuteJobRequest interface {
 }
 
 type OperateExecuteJobRequest struct {
+	// The application ID.
+	//
+	// example:
+	//
+	// 1625
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -49,7 +54,7 @@ type OperateExecuteJobRequest struct {
 	//
 	// name=zhangsan
 	InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
-	// The node ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +68,7 @@ type OperateExecuteJobRequest struct {
 	//
 	// gray
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The workerAddr of the specified machine.
+	// The worker address of the specified machine.
 	//
 	// example:
 	//

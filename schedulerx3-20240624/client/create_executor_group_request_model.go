@@ -38,54 +38,92 @@ type iCreateExecutorGroupRequest interface {
 }
 
 type CreateExecutorGroupRequest struct {
+	// The client secret.
+	//
 	// example:
 	//
 	// HfGUG/Qf8qRCCWlv5RT6WA==
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The authentication type.
+	//
 	// example:
 	//
 	// api_key
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AutoScale *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The auto scaling configuration.
+	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The CloudMonitor Service (CMS) workspace ID.
 	CmsWorkspaceId *string `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
+	// The description of the worker group.
+	//
 	// example:
 	//
 	// group1
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The integration method of the executor. Valid values: manual (indicates manual entry) and acs (indicates ACS integration).
+	//
+	// example:
+	//
+	// manual
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
+	// The name of the worker group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network type. Valid values: public and private.
+	//
 	// example:
 	//
 	// public
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The backend protocol. Valid values:
+	//
+	// - **HTTP*	- (default): Supports association with HTTPS, HTTP, and QUIC listeners.
+	//
+	// - **HTTPS**: Supports association with HTTPS listeners.
+	//
+	// - **gRPC**: Supports association with HTTPS and QUIC listeners.
+	//
+	// > If **ServerGroupType*	- is set to **Fc**, you do not need to configure the backend protocol.
+	//
 	// example:
 	//
 	// HTTPS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The worker type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// openclaw
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	// The list of workers in JSON format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"address":"http://47.111.188.191:18789"}]
 	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
-	XAttrs  *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
+	// The extended configuration of the executor group.
+	//
+	// example:
+	//
+	// Not publicly available
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s CreateExecutorGroupRequest) String() string {

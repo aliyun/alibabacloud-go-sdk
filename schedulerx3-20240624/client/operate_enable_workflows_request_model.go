@@ -18,7 +18,7 @@ type iOperateEnableWorkflowsRequest interface {
 }
 
 type OperateEnableWorkflowsRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type OperateEnableWorkflowsRequest struct {
 	//
 	// xxl-job-executor-sample
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type OperateEnableWorkflowsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A list of workflow IDs.
+	// The list of workflow IDs.
 	//
 	// This parameter is required.
 	WorkflowIds []*int64 `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty" type:"Repeated"`

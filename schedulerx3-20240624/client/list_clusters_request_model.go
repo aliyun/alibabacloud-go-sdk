@@ -36,6 +36,8 @@ type ListClustersRequest struct {
 	//
 	// cluster-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The cluster type.
+	//
 	// example:
 	//
 	// 1
@@ -46,13 +48,14 @@ type ListClustersRequest struct {
 	//
 	// 5
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag      []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of tags used to filter clusters.
+	Tag []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -131,7 +134,17 @@ func (s *ListClustersRequest) Validate() error {
 }
 
 type ListClustersRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// environment
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

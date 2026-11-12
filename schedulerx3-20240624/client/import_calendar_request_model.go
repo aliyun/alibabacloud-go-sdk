@@ -28,7 +28,7 @@ type ImportCalendarRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The days of each month, in JSON format.
+	// The month.
 	//
 	// This parameter is required.
 	//

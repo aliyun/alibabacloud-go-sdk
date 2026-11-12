@@ -20,7 +20,7 @@ type iGetJobExecutionRequest interface {
 }
 
 type GetJobExecutionRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetJobExecutionRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetJobExecutionRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the job execution.
+	// The job execution ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,12 @@ type GetJobExecutionRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	// The MSE session ID.
+	//
+	// example:
+	//
+	// 1234567890123456_1794190484000
+	MseSessionId *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetJobExecutionRequest) String() string {

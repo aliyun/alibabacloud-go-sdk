@@ -20,7 +20,7 @@ type iImportJobsRequest interface {
 }
 
 type ImportJobsRequest struct {
-	// Determines whether to automatically create the Application if it does not exist.
+	// Specifies whether to enable automatic creation of applications.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ImportJobsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The jobs to import, formatted as a JSON string.
+	// The content to import.
 	//
 	// example:
 	//
@@ -148,11 +148,11 @@ type ImportJobsRequest struct {
 	//
 	// }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Determines whether to overwrite jobs if they already exist. The default is **true**.
+	// Specifies whether to overwrite the task if it already exists. Default value: true.
 	//
-	// - **true**: Overwrites existing jobs.
+	// - true: Overwrite.
 	//
-	// - **false**: Does not overwrite existing jobs.
+	// - false: Do not overwrite.
 	//
 	// example:
 	//

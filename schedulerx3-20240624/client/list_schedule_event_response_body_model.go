@@ -28,23 +28,23 @@ type ListScheduleEventResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The paginated results of scheduling events.
 	Data *ListScheduleEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier for the request, which is used to troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B880122A-B0E4-52E8-8F54-87DB7779EB74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The call succeeded.
+	// - **true**: The call was successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -129,9 +129,9 @@ type ListScheduleEventResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The array of event records.
+	// The result set.
 	Records []*ListScheduleEventResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type ListScheduleEventResponseBodyDataRecords struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The event content.
+	// The content.
 	//
 	// example:
 	//
 	// hello word
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The event status.
+	// The event ID.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type ListScheduleEventResponseBodyDataRecords struct {
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The timestamp of the event. The time is in the `yyyy-MM-dd HH:mm:ss` format.
+	// The log printing time, in the `yyyy-MM-dd HH:mm:ss` format.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ type ListScheduleEventResponseBodyDataRecords struct {
 	//
 	// http://192.168.1.5:9999/
 	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
-	// The workflow execution ID.
+	// The workflow execution record ID.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type ListScheduleEventResponseBodyDataRecords struct {
 	//
 	// example:
 	//
-	// 工作流0001
+	// Workflow0001
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 

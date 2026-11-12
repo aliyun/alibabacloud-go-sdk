@@ -20,13 +20,13 @@ type iUpdateDatasourceResponseBody interface {
 }
 
 type UpdateDatasourceResponseBody struct {
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UpdateDatasourceResponseBody struct {
 	//
 	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call is successful.
 	//
-	// - true: The invocation succeeded.
+	// - true: The call is successful.
 	//
-	// - false: The invocation failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

@@ -24,6 +24,11 @@ type iOperateRetryJobExecutionRequest interface {
 }
 
 type OperateRetryJobExecutionRequest struct {
+	// The application ID.
+	//
+	// example:
+	//
+	// 1625
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -49,9 +54,9 @@ type OperateRetryJobExecutionRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// The list of subtask execution IDs (for broadcast jobs).
+	// The list of subtask execution IDs for sharded broadcast tasks.
 	//
-	// >To rerun a subtask of a broadcast job, set this field to the execution ID of the corresponding subtask.
+	// > To rerun a subtask of a sharded broadcast task, set this field to the execution ID of the corresponding subtask.
 	TaskList []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 	// Specifies whether to trigger downstream nodes.
 	TriggerChild *bool `json:"TriggerChild,omitempty" xml:"TriggerChild,omitempty"`

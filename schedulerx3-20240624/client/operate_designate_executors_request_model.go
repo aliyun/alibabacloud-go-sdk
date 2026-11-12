@@ -30,7 +30,12 @@ type OperateDesignateExecutorsRequest struct {
 	//
 	// This parameter is required.
 	AddressList []*string `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
-	AppGroupId  *int64    `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application ID.
+	//
+	// example:
+	//
+	// 1625
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -47,11 +52,11 @@ type OperateDesignateExecutorsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the designated machine. Valid values:
+	// The type of machine to designate. Valid values:
 	//
-	// - **1**: designated worker.
+	// - **1**: Designates a worker.
 	//
-	// - **2**: designated label.
+	// - **2**: Designates a label.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +64,7 @@ type OperateDesignateExecutorsRequest struct {
 	//
 	// 1
 	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +72,7 @@ type OperateDesignateExecutorsRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Specifies whether to enable failover.
+	// Specifies whether failover is enabled.
 	//
 	// example:
 	//

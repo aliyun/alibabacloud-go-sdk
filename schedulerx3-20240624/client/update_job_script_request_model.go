@@ -38,7 +38,7 @@ type UpdateJobScriptRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type UpdateJobScriptRequest struct {
 	//
 	// echo "xxl-job: hello shell"
 	//
-	// echo "脚本位置: $0"
+	// echo "Script path: $0"
 	//
-	// echo "任务参数: $1"
+	// echo "Task parameter: $1"
 	//
-	// echo "分片序号 = $2"
+	// echo "Shard index = $2"
 	//
-	// echo "分片总数 = $3"
+	// echo "Total shards = $3"
 	//
 	// echo "Good bye!"
 	//
 	// exit 0
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
-	// The description of the script version.
+	// The script version description.
 	//
 	// This parameter is required.
 	//

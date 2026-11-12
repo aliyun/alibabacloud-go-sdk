@@ -24,13 +24,13 @@ type iListCalendarsRequest interface {
 }
 
 type ListCalendarsRequest struct {
-	// The name of the calendar.
+	// The calendar name.
 	//
 	// example:
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +38,23 @@ type ListCalendarsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to return calendar details. The default value is `false`.
+	// Specifies whether to retrieve calendar details. Default value: false.
 	//
-	// - `false`: Does not return the detailed list of days for each month. Only basic information is returned.
+	// - false: The detailed list of days for each month is not returned. Only basic information is returned.
 	//
-	// - `true`: Returns the detailed list of days for each month.
+	// - true: The detailed list of days for each month is returned.
 	//
 	// example:
 	//
 	// false
 	FetchCalendarDetail *bool `json:"FetchCalendarDetail,omitempty" xml:"FetchCalendarDetail,omitempty"`
-	// The maximum number of entries returned per page. The default value is 10.
+	// The maximum number of entries to return for the current request. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. Set this parameter to the `NextToken` value from the previous response. Omit this parameter for the first request.
+	// The token that specifies the position where the current call starts to read data. An empty value indicates that all data has been read. You do not need to specify this parameter for the first query.
 	//
 	// example:
 	//

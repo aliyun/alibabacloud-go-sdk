@@ -20,25 +20,27 @@ type iUpdateContactRequest interface {
 }
 
 type UpdateContactRequest struct {
-	// 渠道参数配置 JSON 字符串（可选，传入则更新）
+	// The JSON character string for channel parameter settings. This parameter is optional. If specified, the settings are updated.
 	//
 	// example:
 	//
 	// {"channels":[{"channelType":"dingtalk","clientId":"xxx","clientSecret":"xxx","targetType":"group","targetId":"xxx","robotCode":"xxx"}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the contact to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Tom
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// 是否启用（true/false，可选）
+	// Specifies whether to enable or disable the notification channel for the contact.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 渠道大类（可选，传入则更新）
+	// The type of the contact.
 	//
 	// example:
 	//

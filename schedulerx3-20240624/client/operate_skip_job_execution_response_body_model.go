@@ -32,17 +32,17 @@ type OperateSkipJobExecutionResponseBody struct {
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// C78E2AD2-5985-515B-BAD2-31A248AFC263
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request succeeded.
+	// - true: The call was successful.
 	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

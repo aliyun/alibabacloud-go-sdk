@@ -20,29 +20,29 @@ type iOperateBackfillWorkflowResponseBody interface {
 }
 
 type OperateBackfillWorkflowResponseBody struct {
-	// The HTTP status code. A value of `200` indicates that the request was successful.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID generated for the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The call is successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call fails.
 	//
 	// example:
 	//

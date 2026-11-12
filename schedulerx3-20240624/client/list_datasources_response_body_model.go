@@ -22,31 +22,31 @@ type iListDatasourcesResponseBody interface {
 }
 
 type ListDatasourcesResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *ListDatasourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The invocation succeeded.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed to invoke.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,33 +117,33 @@ func (s *ListDatasourcesResponseBody) Validate() error {
 }
 
 type ListDatasourcesResponseBodyData struct {
-	// Maximum Data Volume to read in this request. Default Value is 10.
+	// The maximum number of entries to return for this request. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// When the data matching the query conditions has not been fully read, the server returns a nextToken. You can use this nextToken to continue reading subsequent data. This parameter is not required for the first query.
+	// The token used to retrieve the next page of results. If the data that meets the query conditions is not completely read, the server returns this token. You can use this token to continue reading the subsequent data. You do not need to specify this parameter for the first query.
 	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// -
+	// The list of data source records on the current page.
 	Records []*ListDatasourcesResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -227,39 +227,39 @@ func (s *ListDatasourcesResponseBodyData) Validate() error {
 }
 
 type ListDatasourcesResponseBodyDataRecords struct {
-	// Data source connection parameters.
+	// The connection parameters of the data source.
 	//
 	// example:
 	//
 	// {"host":"rm-bp1f03mxxxxx.mysql.rds.aliyuncs.com","port":3306,"userName":"test01","database":"test01","other":{"useSSL":"false"}}
 	ConnectionParams *string `json:"ConnectionParams,omitempty" xml:"ConnectionParams,omitempty"`
-	// DataSource ID.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 145
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// Job description.
+	// The task description.
 	//
 	// example:
 	//
 	// my first workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Job name.
+	// The task name.
 	//
 	// example:
 	//
 	// job01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specific pronunciation rule Type. Options:
+	// The specific pronunciation rule type. Valid values:
 	//
-	// - replacement: A rule that directly replaces Word with Pronunciation.
+	// - replacement: A rule that directly replaces a word with its pronunciation.
 	//
 	// example:
 	//
-	// target
+	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Updater.
+	// The updater.
 	//
 	// example:
 	//

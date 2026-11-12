@@ -24,7 +24,7 @@ type iUpdateDatasourceRequest interface {
 }
 
 type UpdateDatasourceRequest struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type UpdateDatasourceRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Data source connection parameters
+	// The datasource connection parameters.
 	//
 	// example:
 	//
 	// {"host":"rm-bp1f03mxxxxx.mysql.rds.aliyuncs.com","port":3306,"userName":"test01","database":"test01","other":{"useSSL":"false"}}
 	ConnectionParams *string `json:"ConnectionParams,omitempty" xml:"ConnectionParams,omitempty"`
-	// DataSource ID, which can be obtained by calling the ListDatasources API.
+	// The datasource ID. You can obtain this ID by calling the ListDatasources operation.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type UpdateDatasourceRequest struct {
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// Data source description
+	// The datasource description.
 	//
 	// example:
 	//
 	// None
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Datasource Name
+	// The datasource name.
 	//
 	// example:
 	//
-	// 账单拉取-支付宝团购
+	// Bill pull - Alipay group buying
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Database password
+	// The database password.
 	//
 	// example:
 	//

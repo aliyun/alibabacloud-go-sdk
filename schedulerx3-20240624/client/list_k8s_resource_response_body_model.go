@@ -28,7 +28,7 @@ type ListK8sResourceResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// - An array of k8s resources.
+	// The list of Kubernetes resources.
 	Data []*ListK8sResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -36,17 +36,17 @@ type ListK8sResourceResponseBody struct {
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The Request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 2ECA6FC9-7557-5576-AF5F-FC3E7BCC9C21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *ListK8sResourceResponseBody) Validate() error {
 }
 
 type ListK8sResourceResponseBodyData struct {
-	// The ID of the k8s resource.
+	// The ID of the Kubernetes resource.
 	//
 	// example:
 	//
 	// xxljob-01632622cda2f
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the k8s resource.
+	// The name of the Kubernetes resource.
 	//
 	// example:
 	//

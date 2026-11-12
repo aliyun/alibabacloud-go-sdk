@@ -20,19 +20,29 @@ type iDeleteExecutorGroupRequest interface {
 }
 
 type DeleteExecutorGroupRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DeleteJobs *bool   `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to synchronously delete tasks.
+	DeleteJobs *bool `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
+	// The ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 83163
-	Id   *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the executor group.
+	//
+	// example:
+	//
+	// group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

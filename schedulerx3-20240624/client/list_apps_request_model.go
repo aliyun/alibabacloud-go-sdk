@@ -23,10 +23,18 @@ type iListAppsRequest interface {
 
 type ListAppsRequest struct {
 	// The application name.
+	//
+	// example:
+	//
+	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The page number.
 	//
@@ -38,9 +46,13 @@ type ListAppsRequest struct {
 	//
 	// example:
 	//
-	// 20
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The title.
+	//
+	// example:
+	//
+	// Test application
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

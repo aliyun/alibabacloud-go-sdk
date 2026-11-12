@@ -28,7 +28,7 @@ type ListCalendarsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// - The returned data.
+	// The calendar list and pagination information.
 	Data *ListCalendarsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -36,17 +36,17 @@ type ListCalendarsResponseBody struct {
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call is successful.
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The call is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListCalendarsResponseBody) Validate() error {
 }
 
 type ListCalendarsResponseBodyData struct {
-	// The maximum number of entries returned per page.
+	// The maximum number of entries to return for the current request. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. If this parameter is not returned, all results have been retrieved.
+	// The token that is returned by the server when the data that meets the query conditions is not completely read. You can use this token to continue reading the remaining data. You do not need to specify this parameter for the first query.
 	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of calendars.
+	// The list of records.
 	Records []*ListCalendarsResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -197,13 +197,13 @@ func (s *ListCalendarsResponseBodyData) Validate() error {
 }
 
 type ListCalendarsResponseBodyDataRecords struct {
-	// The name of the calendar.
+	// The calendar name.
 	//
 	// example:
 	//
 	// workday
 	CalendarName *string `json:"CalendarName,omitempty" xml:"CalendarName,omitempty"`
-	// A JSON string that represents an array of months and their corresponding days.
+	// The calendar for each month in JSON array format.
 	//
 	// example:
 	//

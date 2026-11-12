@@ -29,6 +29,8 @@ type iListJobsRequest interface {
 	GetPageSize() *int32
 	SetStatus(v string) *ListJobsRequest
 	GetStatus() *string
+	SetTimeType(v []*int32) *ListJobsRequest
+	GetTimeType() []*int32
 	SetWorkflowId(v int64) *ListJobsRequest
 	GetWorkflowId() *int64
 }
@@ -40,7 +42,7 @@ type ListJobsRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The cluster ID.
+	// The cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,27 +54,27 @@ type ListJobsRequest struct {
 	//
 	// example:
 	//
-	// job01 standalone task
+	// job01 standalone job
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The `jobhandler` name.
+	// The jobhandler name.
 	//
 	// example:
 	//
 	// jobDemoHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 10
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task name.
+	// The job name.
 	//
 	// example:
 	//
 	// job01
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The task label filter condition.
+	// The job label condition.
 	//
 	// example:
 	//
@@ -96,6 +98,12 @@ type ListJobsRequest struct {
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of time types.
+	//
+	// example:
+	//
+	// 1
+	TimeType []*int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty" type:"Repeated"`
 	// The workflow ID.
 	//
 	// example:
@@ -152,6 +160,10 @@ func (s *ListJobsRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListJobsRequest) GetTimeType() []*int32 {
+	return s.TimeType
+}
+
 func (s *ListJobsRequest) GetWorkflowId() *int64 {
 	return s.WorkflowId
 }
@@ -203,6 +215,11 @@ func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetStatus(v string) *ListJobsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetTimeType(v []*int32) *ListJobsRequest {
+	s.TimeType = v
 	return s
 }
 

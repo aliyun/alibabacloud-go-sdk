@@ -20,29 +20,29 @@ type iOperateUnholdJobExecutionResponseBody interface {
 }
 
 type OperateUnholdJobExecutionResponseBody struct {
-	// The Response Code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The Error Message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The Request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// D0DE9C33-992A-580B-89C4-B609A292748D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request succeeded.
+	// - true: The call was successful.
 	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

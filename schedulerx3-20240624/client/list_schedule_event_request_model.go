@@ -46,7 +46,7 @@ type ListScheduleEventRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -54,27 +54,27 @@ type ListScheduleEventRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query events. This is a Unix timestamp in milliseconds.
+	// The end time of the retrieved events, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1728872796295
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The event status to filter by. Valid values:
+	// The event ID. Valid values:
 	//
-	// - Scheduled
+	// - Scheduled.
 	//
-	// - Running
+	// - Running.
 	//
-	// - Succeeded
+	// - Succeed.
 	//
-	// - Failed
+	// - Failed.
 	//
-	// - Failing_Auto_Retry
+	// - Failing_Auto_Retry.
 	//
-	// - Skip_Schedule
+	// - Skip_Schedule.
 	//
-	// - Execute_Log
+	// - Execute_Log.
 	//
 	// example:
 	//
@@ -98,31 +98,31 @@ type ListScheduleEventRequest struct {
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The search keyword.
+	// The query keyword.
 	//
 	// example:
 	//
 	// hello word
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of events to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to sort the results in descending order. Set to `true` for descending order or `false` for ascending order. Default is `false`.
+	// Specifies whether to sort the results in descending order.
 	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The start of the time range to query events. This is a Unix timestamp in milliseconds.
+	// The start time of the retrieved events, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ListScheduleEventRequest struct {
 	//
 	// example:
 	//
-	// 流程001
+	// Workflow001
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 

@@ -24,14 +24,16 @@ type UpdateClusterRequest struct {
 	//
 	// example:
 	//
-	// xxljob-c20f7ec9a78
+	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The cluster name.
 	//
 	// example:
 	//
-	// xx-test-1107
+	// qianxi-test-0812
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The instance-level IP whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.0/24

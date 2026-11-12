@@ -40,13 +40,13 @@ type iGetLogEventRequest interface {
 }
 
 type GetLogEventRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// xxl-job-executor-perf-test-241
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The unique identifier for the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -54,81 +54,81 @@ type GetLogEventRequest struct {
 	//
 	// xxljob-684d02ee5a6
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the query\\"s time range, specified as a Unix timestamp in milliseconds.
+	// The end time.
 	//
 	// example:
 	//
 	// 1721636220
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The severity level for filtering events.
+	// The event.
 	//
 	// example:
 	//
 	// INFO
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The type of event to retrieve.
+	// The event type.
 	//
 	// example:
 	//
 	// JOB
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The unique identifier for the job execution.
+	// The job execution ID.
 	//
 	// example:
 	//
 	// 101
 	JobExecutionId *int64 `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
 	// test
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// A keyword to search for in log events.
+	// The keyword.
 	//
 	// example:
 	//
 	// test_partition_tbl
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number to retrieve.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The maximum number of results to return per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies the sort order of events.
+	// Specifies whether to sort the results in descending order. Valid values:
 	//
-	// - **true**: Sorts events in descending order.
+	// - **true**: Sorts the results in descending order.
 	//
-	// - **false**: Sorts events in ascending order.
+	// - **false**: Sorts the results in ascending order.
 	//
 	// example:
 	//
 	// false
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The start of the query\\"s time range, specified as a Unix timestamp in milliseconds.
+	// The start time. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1721268302000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The unique identifier for the workflow execution.
+	// The workflow execution ID.
 	//
 	// example:
 	//
 	// 1450568762586578000
 	WorkflowExecutionId *int64 `json:"WorkflowExecutionId,omitempty" xml:"WorkflowExecutionId,omitempty"`
-	// The name of the workflow.
+	// The workflow name.
 	//
 	// example:
 	//
-	// 流程001
+	// Workflow001
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 

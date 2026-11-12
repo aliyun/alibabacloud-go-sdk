@@ -14,11 +14,13 @@ type iDeleteContactRequest interface {
 }
 
 type DeleteContactRequest struct {
+	// The name of the alert contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 黄永丰
+	// Huang Yongfeng
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 }
 

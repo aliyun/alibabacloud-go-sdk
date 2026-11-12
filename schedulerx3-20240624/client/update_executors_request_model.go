@@ -28,7 +28,7 @@ type UpdateExecutorsRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UpdateExecutorsRequest struct {
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The Worker type.
+	// The executor type.
 	//
 	// example:
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
-	// A JSON-formatted string that contains a list of Workers.
+	// The list of specified machines in JSON format.
 	//
 	// example:
 	//

@@ -22,21 +22,21 @@ type iGetExecutorConfigResponseBody interface {
 }
 
 type GetExecutorConfigResponseBody struct {
-	// The status code returned for the request.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configuration data for the Executor.
+	// The query result.
 	Data *GetExecutorConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
 	// not support query script history, please upgrade engine version to 2.2.2+
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -113,43 +113,43 @@ func (s *GetExecutorConfigResponseBody) Validate() error {
 }
 
 type GetExecutorConfigResponseBodyData struct {
-	// The default global configuration for Data Integration tasks. This configuration specifies the default handling policies for different types of DDL messages. Example:
+	// The default global configuration content for the Data Integration synchronization Solutions node, which specifies the default processing policy for different DDL message types. Example:
 	//
-	// `{"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}`
+	// {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}
 	//
-	// The DDL message types are as follows:
+	// DDL message types:
 	//
-	// - RENAMECOLUMN: `RENAME COLUMN`
+	// - RENAMECOLUMN: Rename a column.
 	//
-	// - DROPTABLE: `DROP TABLE`
+	// - DROPTABLE: Delete a table.
 	//
-	// - CREATETABLE: `CREATE TABLE`
+	// - CREATETABLE: Create a table.
 	//
-	// - MODIFYCOLUMN: `MODIFY COLUMN`
+	// - MODIFYCOLUMN: Modify a column type.
 	//
-	// - TRUNCATETABLE: `TRUNCATE TABLE`
+	// - TRUNCATETABLE: Truncate a table.
 	//
-	// - DROPCOLUMN: `DROP COLUMN`
+	// - DROPCOLUMN: Delete a column.
 	//
-	// - ADDCOLUMN: `ADD COLUMN`
+	// - ADDCOLUMN: Add a column.
 	//
-	// - RENAMETABLE: `RENAME TABLE`
+	// - RENAMETABLE: Rename a table.
 	//
-	// When DataWorks receives a DDL message, it applies one of the following handling policies:
+	// When DataWorks receives a DDL message of the corresponding type, the processing policy is as follows:
 	//
-	// - WARNING: Discards the message and logs a warning in the Real-time Synchronization Task log.
+	// - WARNING: Discard the message directly and record alerting information in the real-time synchronization log, indicating that the message was discarded due to an execute error.
 	//
-	// - IGNORE: Discards the message without sending it to the Destination Data Source.
+	// - IGNORE: Discard the message directly without sending it to the destination data source.
 	//
-	// - CRITICAL: Causes the Real-time Synchronization Task to fail.
+	// - CRITICAL: Set the real-time synchronization node to the error state and stop the node.
 	//
-	// - NORMAL: Forwards the message to the Destination Data Source. Because handling of DDL messages can vary by Destination Data Source, DataWorks only forwards the message.
+	// - NORMAL: Forward the message to the destination data source for processing. Because different destination data sources may have a different processing policy for DDL messages, DataWorks only forwards the message.
 	//
 	// example:
 	//
 	// [{"cluster":"c2c619b5129e0400fa3df263b249622aa","namespace":"default","service":"xxljob-http-demo1-svc"}]
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The type of the Executor.
+	// The executor type.
 	//
 	// example:
 	//

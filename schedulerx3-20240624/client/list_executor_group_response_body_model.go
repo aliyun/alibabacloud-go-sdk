@@ -26,29 +26,42 @@ type iListExecutorGroupResponseBody interface {
 }
 
 type ListExecutorGroupResponseBody struct {
+	// The total count of data under the current request conditions. This parameter is optional and is not returned by default.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query results.
 	Data *ListExecutorGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The maximum number of entries to return for this request. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The position from which the current call returns data. An empty value indicates that all data has been read.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token that specifies the position from which the current call returns data. An empty value indicates that all data has been read. You do not need to specify this parameter for the first query.
+	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -136,15 +149,22 @@ func (s *ListExecutorGroupResponseBody) Validate() error {
 }
 
 type ListExecutorGroupResponseBodyData struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*ListExecutorGroupResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// -
+	Records []*ListExecutorGroupResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -209,51 +229,115 @@ func (s *ListExecutorGroupResponseBodyData) Validate() error {
 }
 
 type ListExecutorGroupResponseBodyDataRecords struct {
+	// The client key.
+	//
 	// example:
 	//
 	// f/HElmWgOgmb0mlbRRkNuQ==
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The authentication type.
+	//
 	// example:
 	//
 	// api_key
-	AuthType       *string                                             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AutoScale      *bool                                               `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	CiteList       []*ListExecutorGroupResponseBodyDataRecordsCiteList `json:"CiteList,omitempty" xml:"CiteList,omitempty" type:"Repeated"`
-	CmsWorkspaceId *string                                             `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
-	CurrentJobs    *int32                                              `json:"CurrentJobs,omitempty" xml:"CurrentJobs,omitempty"`
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Specifies whether to enable **automatic start and stop**. Valid values:
+	//
+	// - true: Enabled. If no tasks are scheduled for a period of time, the agent automatically hibernates. If tasks are scheduled for a period of time, the agent wakes up in advance.
+	//
+	// - false: Disabled.
+	//
+	// example:
+	//
+	// false
+	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The list of referenced applications.
+	CiteList []*ListExecutorGroupResponseBodyDataRecordsCiteList `json:"CiteList,omitempty" xml:"CiteList,omitempty" type:"Repeated"`
+	// The CloudMonitor workspace.
+	//
+	// example:
+	//
+	// scx-workspace-acd09a5d-4133-43cc-889d-c33a122afb6e
+	CmsWorkspaceId *string `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
+	// The current number of tasks.
+	//
+	// example:
+	//
+	// 10
+	CurrentJobs *int32 `json:"CurrentJobs,omitempty" xml:"CurrentJobs,omitempty"`
+	// The description of the executor group.
+	//
 	// example:
 	//
 	// my first workflow
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableJobs      *int32  `json:"EnableJobs,omitempty" xml:"EnableJobs,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableJobs  *int32  `json:"EnableJobs,omitempty" xml:"EnableJobs,omitempty"`
+	// The integration method. Valid values:
+	//
+	// - manual
+	//
+	// - acs_sandbox
+	//
+	// - k8s_service
+	//
+	// example:
+	//
+	// acs_sandbox
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
-	MaxJobs         *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	// The maximum number of tasks.
+	//
+	// example:
+	//
+	// 1000
+	MaxJobs *int32 `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	// The name of the executor group.
+	//
 	// example:
 	//
 	// job01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network configuration.
+	//
 	// example:
 	//
 	// public
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The protocol.
+	//
 	// example:
 	//
 	// openai
-	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The list of resolved workers.
+	//
+	// example:
+	//
+	// [{"address":"http://192.168.2.34:8084"}]
 	ResolvedWorkers *string `json:"ResolvedWorkers,omitempty" xml:"ResolvedWorkers,omitempty"`
+	// The ID of the executor group.
+	//
 	// example:
 	//
 	// 12
 	WorkerId *int64 `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	// The executor type.
+	//
 	// example:
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	// The list of specified machines in JSON format.
+	//
 	// example:
 	//
 	// [{"address":"http://47.111.188.191:18789"}]
 	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
-	XAttrs  *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
+	// The extended parameters.
+	//
+	// example:
+	//
+	// {}
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s ListExecutorGroupResponseBodyDataRecords) String() string {
@@ -440,10 +524,14 @@ func (s *ListExecutorGroupResponseBodyDataRecords) Validate() error {
 }
 
 type ListExecutorGroupResponseBodyDataRecordsCiteList struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// Tornado
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The description of the application.
+	//
 	// example:
 	//
 	// group1

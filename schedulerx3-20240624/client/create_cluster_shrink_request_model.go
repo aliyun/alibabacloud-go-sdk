@@ -34,7 +34,7 @@ type iCreateClusterShrinkRequest interface {
 }
 
 type CreateClusterShrinkRequest struct {
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
@@ -43,6 +43,10 @@ type CreateClusterShrinkRequest struct {
 	// The name of the cluster.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// qianxi-test-0812
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The cluster specification. Valid values:
 	//
@@ -54,7 +58,11 @@ type CreateClusterShrinkRequest struct {
 	//
 	// - scx.medium.x1
 	//
-	// - scx.medium.x2.
+	// - scx.medium.x2
+	//
+	// example:
+	//
+	// scx.dev.x1
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The cluster type.
 	//
@@ -69,6 +77,10 @@ type CreateClusterShrinkRequest struct {
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The engine type. Valid values: xxljob.
+	//
+	// example:
+	//
+	// xxljob
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The pricing cycle.
 	//
@@ -82,11 +94,15 @@ type CreateClusterShrinkRequest struct {
 	//
 	// schedulerx
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The list of tags. A maximum of 20 tags are supported.
+	// The list of tags. You can add up to 20 tags.
 	Tag []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The information about the vSwitches.
+	// The vSwitch information.
 	VSwitchesShrink *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-aa1a18236n90rqhuhhnhh
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -212,8 +228,16 @@ func (s *CreateClusterShrinkRequest) Validate() error {
 
 type CreateClusterShrinkRequestTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

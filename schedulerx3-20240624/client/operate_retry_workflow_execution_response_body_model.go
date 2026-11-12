@@ -32,15 +32,15 @@ type OperateRetryWorkflowExecutionResponseBody struct {
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call succeeded.
+	// - true: The call was successful.
 	//
 	// - false: The call failed.
 	//

@@ -38,52 +38,82 @@ type iUpdateExecutorGroupRequest interface {
 }
 
 type UpdateExecutorGroupRequest struct {
+	// The client secret.
+	//
 	// example:
 	//
 	// K4KWGINZVY9JwcZT0/vpSg==
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The authentication type.
+	//
 	// example:
 	//
 	// APP
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AutoScale *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Specifies whether to enable auto scaling.
+	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-d6a5243b6fa
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The CMS workspace ID.
 	CmsWorkspaceId *string `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
+	// The description of the executor group.
+	//
 	// example:
 	//
 	// group1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Deprecated
 	//
+	// The ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 110176
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the executor group.
+	//
+	// example:
+	//
+	// group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network configuration.
+	//
 	// example:
 	//
 	// public
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The protocol.
+	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The executor type.
+	//
 	// example:
 	//
 	// openclaw
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	// The list of specified machines in JSON format.
+	//
 	// example:
 	//
 	// [{"address":"http://47.111.188.191:18789"}]
 	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
-	XAttrs  *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
+	// The extended configuration of the executor group.
+	//
+	// example:
+	//
+	// Not publicly available
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s UpdateExecutorGroupRequest) String() string {

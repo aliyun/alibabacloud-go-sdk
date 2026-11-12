@@ -36,7 +36,7 @@ type UpdateWorkflowDAGVersionRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The Workflow DAG version.
+	// The workflow DAG version number.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdateWorkflowDAGVersionRequest struct {
 	//
 	// v1
 	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
-	// The Workflow ID.
+	// The workflow ID.
 	//
 	// This parameter is required.
 	//

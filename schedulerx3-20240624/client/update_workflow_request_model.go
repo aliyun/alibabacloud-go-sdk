@@ -42,13 +42,13 @@ type UpdateWorkflowRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of a custom calendar to exclude specific dates from the schedule.
+	// The custom calendar.
 	//
 	// example:
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// A unique token that you provide to ensure the request is idempotent. The token can be up to 64 ASCII characters long.
+	// The client token that is used to ensure the idempotence of the request. You can generate the value on the client side. Ensure that the value is unique across different requests and contains a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type UpdateWorkflowRequest struct {
 	//
 	// my first workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum concurrency for the workflow.
+	// The maximum concurrency.
 	//
-	// > The maximum number of concurrent instances that can run for the same workflow. A value of `1` prevents overlapping runs. If the number of running instances reaches this limit, subsequent scheduled runs are skipped.
+	// > The maximum number of instances that can run concurrently for the same workflow. A value of 1 indicates that concurrent execution is not allowed. If the concurrency limit is exceeded, the current scheduling task is skipped.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type UpdateWorkflowRequest struct {
 	//
 	// myWorkflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cron expression for the schedule. This parameter is required only when `TimeType` is set to `1` (cron).
+	// The time expression. Configure the time expression based on the selected time type.
 	//
-	// - If `TimeType` is `-1` (none), this parameter is not required.
+	// - none: Leave this parameter empty.
 	//
-	// - If `TimeType` is `1` (cron), specify a standard cron expression.
+	// - cron: Enter a standard cron expression. Online verification is supported.
 	//
-	// - If `TimeType` is `100` (api), this parameter is not required.
+	// - api: Leave this parameter empty.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ type UpdateWorkflowRequest struct {
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
 	// The scheduling type. Valid values:
 	//
-	// - `-1` (none): The workflow is not scheduled and must be triggered on demand.
+	// - -1: none
 	//
-	// - `1` (cron): The workflow runs based on the cron expression in the `TimeExpression` parameter.
+	// - 1: cron
 	//
-	// - `100` (api): The workflow is triggered by an API call.
+	// - 100: api
 	//
 	// example:
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The time zone for the schedule.
+	// The time zone.
 	//
-	// > Defaults to the time zone of the SchedulerX server.
+	// > By default, the time zone of the SchedulerX server is used.
 	//
 	// example:
 	//

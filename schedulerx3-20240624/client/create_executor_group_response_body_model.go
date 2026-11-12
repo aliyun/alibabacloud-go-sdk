@@ -22,19 +22,32 @@ type iCreateExecutorGroupResponseBody interface {
 }
 
 type CreateExecutorGroupResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateExecutorGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter format error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,38 +117,62 @@ func (s *CreateExecutorGroupResponseBody) Validate() error {
 }
 
 type CreateExecutorGroupResponseBodyData struct {
+	// The authentication method used by devices under the product to connect to the IoT platform. Valid values:
+	//
+	// - **secret**: Uses the device secret for device identity authentication.
+	//
+	// - **id2**: Uses IoT Internet Device ID (ID²).
+	//
+	// - **x509**: Uses the device X.509 certificate for device identity authentication.
+	//
 	// example:
 	//
 	// md5_spell
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The workflow description.
+	//
 	// example:
 	//
 	// my first workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Kubernetes services that failed to be imported.
+	//
 	// example:
 	//
 	// [{"cluster":"xxxxx","namespace":"xxxxx","service":"xxxxx"}]
 	FailedService *string `json:"FailedService,omitempty" xml:"FailedService,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// myWorkflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The domain name rule.
+	//
 	// example:
 	//
 	// NORMAL
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The protocol types supported by the domain name. Valid values: HTTP (supports only the HTTP protocol), HTTPS (supports only the HTTPS protocol), and HTTP,HTTPS (supports both HTTP and HTTPS protocols).
+	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The worker ID of the deployment task. You can obtain this ID by calling the [ListWorkerResource](https://help.aliyun.com/document_detail/2712224.html) operation.
+	//
 	// example:
 	//
-	// ins-95mfvqrtg6fkijt1uko000
+	// 12
 	WorkerId *int64 `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	// The executor type.
+	//
 	// example:
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
+	// The list of specified machines in JSON format.
+	//
 	// example:
 	//
 	// [{"cluster":"xxxxx","namespace":"xxxxx","service":"xxxxx"}]

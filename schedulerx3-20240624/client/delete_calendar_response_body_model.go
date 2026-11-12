@@ -26,23 +26,23 @@ type DeleteCalendarResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier for the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// CF99C381-C8F6-5A8D-8C24-57F46B706D2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the call is successful.
 	//
-	// - **true**: The request was successful.
+	// - **true**: The call is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

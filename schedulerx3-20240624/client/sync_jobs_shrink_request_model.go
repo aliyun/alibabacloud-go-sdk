@@ -22,11 +22,11 @@ type iSyncJobsShrinkRequest interface {
 }
 
 type SyncJobsShrinkRequest struct {
-	// A list of job IDs.
+	// The list of node IDs.
 	//
 	// This parameter is required.
 	JobIdsShrink *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	// The name of the source application that contains the jobs.
+	// The name of the original application where the nodes are located.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SyncJobsShrinkRequest struct {
 	//
 	// test-source
 	OriginalAppName *string `json:"OriginalAppName,omitempty" xml:"OriginalAppName,omitempty"`
-	// The ID of the source cluster that contains the jobs.
+	// The ID of the original cluster where the nodes are located.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type SyncJobsShrinkRequest struct {
 	//
 	// xxljob-00ed7f0d742b1
 	OriginalClusterId *string `json:"OriginalClusterId,omitempty" xml:"OriginalClusterId,omitempty"`
-	// The name of the destination application.
+	// The name of the target application to which the nodes are synchronized.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type SyncJobsShrinkRequest struct {
 	//
 	// test-target
 	TargetAppName *string `json:"TargetAppName,omitempty" xml:"TargetAppName,omitempty"`
-	// The ID of the destination cluster.
+	// The ID of the target cluster to which the nodes are synchronized.
 	//
 	// This parameter is required.
 	//

@@ -20,7 +20,7 @@ type iCreateExecutorsRequest interface {
 }
 
 type CreateExecutorsRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateExecutorsRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateExecutorsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The worker type. The only valid value is `k8s_service`.
+	// The executor type.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateExecutorsRequest struct {
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
-	// A JSON string that contains an array of workers.
+	// The list of specified machines in JSON format.
 	//
 	// This parameter is required.
 	//

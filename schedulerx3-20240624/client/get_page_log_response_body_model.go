@@ -22,19 +22,32 @@ type iGetPageLogResponseBody interface {
 }
 
 type GetPageLogResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated log results.
 	Data *GetPageLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// CalendarName is already existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +117,22 @@ func (s *GetPageLogResponseBody) Validate() error {
 }
 
 type GetPageLogResponseBodyData struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 10
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*GetPageLogResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of log records on the current page.
+	Records []*GetPageLogResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 65
@@ -177,30 +197,44 @@ func (s *GetPageLogResponseBodyData) Validate() error {
 }
 
 type GetPageLogResponseBodyDataRecords struct {
+	// The application name.
+	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The job execution ID.
+	//
 	// example:
 	//
 	// 101
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// test
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The content output by the current command in the current output stream.
+	//
 	// example:
 	//
 	// [2026-02-10 10:23:36]tStart writing to Recall Enginen
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// The print time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-10-31 16:43:51
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// zhangsan
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The worker address.
+	//
 	// example:
 	//
 	// 030225016025_9357_60125@127.0.0.1:51363

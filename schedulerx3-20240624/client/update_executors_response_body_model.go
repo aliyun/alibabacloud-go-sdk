@@ -28,21 +28,21 @@ type UpdateExecutorsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// - The returned data.
+	// -
 	Data *UpdateExecutorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The Request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the call was successful.
 	//
 	// - **true**: The call was successful.
 	//
@@ -117,37 +117,37 @@ func (s *UpdateExecutorsResponseBody) Validate() error {
 }
 
 type UpdateExecutorsResponseBodyData struct {
-	// The Application Group ID.
+	// The application group ID.
 	//
 	// example:
 	//
 	// 1
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
-	// The Application type.
+	// The application type.
 	//
 	// example:
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The Kubernetes services that failed to import.
+	// The Kubernetes services that failed to be imported.
 	//
 	// example:
 	//
 	// [{"cluster":"xxxxx","namespace":"xxxxx","service":"xxxxx"}]
 	FailedService *string `json:"FailedService,omitempty" xml:"FailedService,omitempty"`
-	// The Worker ID.
+	// The executor ID.
 	//
 	// example:
 	//
 	// 1
 	WorkId *int32 `json:"WorkId,omitempty" xml:"WorkId,omitempty"`
-	// The Worker type.
+	// The executor type.
 	//
 	// example:
 	//
 	// k8s_service
 	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
-	// A JSON-formatted string that contains a list of Workers.
+	// The list of specified machines in JSON format.
 	//
 	// example:
 	//

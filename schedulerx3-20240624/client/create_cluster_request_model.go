@@ -34,7 +34,7 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
@@ -43,6 +43,10 @@ type CreateClusterRequest struct {
 	// The name of the cluster.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// qianxi-test-0812
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The cluster specification. Valid values:
 	//
@@ -54,7 +58,11 @@ type CreateClusterRequest struct {
 	//
 	// - scx.medium.x1
 	//
-	// - scx.medium.x2.
+	// - scx.medium.x2
+	//
+	// example:
+	//
+	// scx.dev.x1
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The cluster type.
 	//
@@ -69,6 +77,10 @@ type CreateClusterRequest struct {
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The engine type. Valid values: xxljob.
+	//
+	// example:
+	//
+	// xxljob
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The pricing cycle.
 	//
@@ -82,11 +94,15 @@ type CreateClusterRequest struct {
 	//
 	// schedulerx
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The list of tags. A maximum of 20 tags are supported.
+	// The list of tags. You can add up to 20 tags.
 	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The information about the vSwitches.
+	// The vSwitch information.
 	VSwitches []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-aa1a18236n90rqhuhhnhh
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -221,8 +237,16 @@ func (s *CreateClusterRequest) Validate() error {
 
 type CreateClusterRequestTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -257,9 +281,17 @@ func (s *CreateClusterRequestTag) Validate() error {
 }
 
 type CreateClusterRequestVSwitches struct {
-	// The ID of the vSwitch.
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-2ze745n3r2sfqtahhubpl
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the vSwitch.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

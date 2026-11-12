@@ -24,37 +24,37 @@ type iListRegionZoneResponseBody interface {
 }
 
 type ListRegionZoneResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The response data.
 	Data []*ListRegionZoneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// IllegalRequest
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request UUID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 438737AC-760A-57D9-B646-B7EF79426243
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - **true**: The invocation succeeded.
+	// - **true**: The call is successful.
 	//
-	// - **false**: Failed to invoke.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *ListRegionZoneResponseBody) Validate() error {
 }
 
 type ListRegionZoneResponseBodyData struct {
-	// Local name.
+	// The local name.
 	//
 	// example:
 	//
 	// E
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// zone id
+	// The zone ID.
 	//
 	// example:
 	//

@@ -38,11 +38,11 @@ type UpdateWorkflowDAGShrinkRequest struct {
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The directed acyclic graph (DAG) of the workflow.
+	// The workflow DAG information.
 	//
 	// This parameter is required.
 	DagShrink *string `json:"Dag,omitempty" xml:"Dag,omitempty"`
-	// The version of the DAG. To obtain this value, call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation.
+	// The workflow version number. You can call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation to obtain the value of this parameter.
 	//
 	// example:
 	//

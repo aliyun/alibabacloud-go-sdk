@@ -20,6 +20,11 @@ type iOperateDisableJobsShrinkRequest interface {
 }
 
 type OperateDisableJobsShrinkRequest struct {
+	// The application ID.
+	//
+	// example:
+	//
+	// 1625
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -36,7 +41,8 @@ type OperateDisableJobsShrinkRequest struct {
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The list of task IDs.
 	JobIdsShrink *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 }
 

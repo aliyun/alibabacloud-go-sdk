@@ -48,7 +48,7 @@ type ListJobExecutionsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end time.
+	// The end time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListJobExecutionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

@@ -20,27 +20,27 @@ type iOperateHoldWorkflowExecutionResponseBody interface {
 }
 
 type OperateHoldWorkflowExecutionResponseBody struct {
-	// The Response Code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The Error Message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
 	// not support query script history, please upgrade engine version to 2.2.2+
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID generated for this request.
+	// Id of the request
 	//
 	// example:
 	//
 	// D0DE9C33-992A-580B-89C4-B609A292748D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The call is successful.
 	//
 	// - **false**: The call failed.
 	//

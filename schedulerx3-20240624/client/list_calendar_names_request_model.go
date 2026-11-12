@@ -14,7 +14,7 @@ type iListCalendarNamesRequest interface {
 }
 
 type ListCalendarNamesRequest struct {
-	// The Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//

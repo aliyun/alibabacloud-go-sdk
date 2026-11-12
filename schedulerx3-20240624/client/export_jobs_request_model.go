@@ -36,13 +36,13 @@ type ExportJobsRequest struct {
   // 
   // xxljob-b6ec1xxxx
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-  // The type of jobs to export. The default value is 1.
+  // The export task type. Default value: 1.
   // 
   // example:
   // 
   // 1
   ExportJobType *int32 `json:"ExportJobType,omitempty" xml:"ExportJobType,omitempty"`
-  // A list of job IDs.
+  // The list of task IDs.
   JobIds []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
 }
 

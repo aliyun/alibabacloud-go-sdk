@@ -20,6 +20,11 @@ type iDeleteJobsRequest interface {
 }
 
 type DeleteJobsRequest struct {
+	// The application ID.
+	//
+	// example:
+	//
+	// 1625
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -36,8 +41,9 @@ type DeleteJobsRequest struct {
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	JobIds    []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The list of task IDs.
+	JobIds []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteJobsRequest) String() string {

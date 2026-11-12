@@ -26,23 +26,23 @@ type CreateCalendarResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
 	// CalendarName is already existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// B880122A-B0E4-52E8-8F54-87DB7779EB74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The call was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

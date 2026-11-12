@@ -20,7 +20,7 @@ type iGetWorkflowDAGPreviewRequest interface {
 }
 
 type GetWorkflowDAGPreviewRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetWorkflowDAGPreviewRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The unique identifier for the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetWorkflowDAGPreviewRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The version of the workflow DAG.
+	// The version number of the workflow DAG.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GetWorkflowDAGPreviewRequest struct {
 	//
 	// v1
 	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
-	// The unique identifier for the workflow.
+	// The workflow ID.
 	//
 	// example:
 	//

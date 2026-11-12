@@ -20,29 +20,29 @@ type iOperateConnectDatasourceResponseBody interface {
 }
 
 type OperateConnectDatasourceResponseBody struct {
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the invocation succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The invocation succeeded.
+	// - true: The call was successful.
 	//
-	// - false: The invocation failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

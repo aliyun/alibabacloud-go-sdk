@@ -34,7 +34,7 @@ type OperateStopWorkflowExecutionRequest struct {
 	//
 	// xxljob-a1804a3226d
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The workflow execution ID.
+	// The workflow instance ID.
 	//
 	// This parameter is required.
 	//

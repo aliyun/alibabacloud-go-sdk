@@ -26,7 +26,7 @@ type iListDatasourcesRequest interface {
 }
 
 type ListDatasourcesRequest struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -34,41 +34,45 @@ type ListDatasourcesRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Maximum data volume to read in this request. Default value is 10.
+	// The maximum number of entries to return for this request. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Job Name.
+	// The task name.
 	//
 	// example:
 	//
-	// 修正券统计数据
+	// Corrected voucher statistics
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates the current read position returned by the call. An empty value means all data has been read. This parameter is not required for the first query.
+	// The token that indicates the position from which the current call returns data. An empty value indicates that all data has been read. You do not need to specify this parameter for the first query.
 	//
 	// example:
 	//
 	// eCKqVlS5FKF5EWGGOo8EgQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Grafana dashboard type, including: dash-db: Dashboard; dash-folder: Folder (which can contain dashboards).
+	// The Grafana dashboard type. Valid values:
+	//
+	// - dash-db: Dashboard.
+	//
+	// - dash-folder: Folder, which can contain dashboards.
 	//
 	// example:
 	//
-	// REDIS
+	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

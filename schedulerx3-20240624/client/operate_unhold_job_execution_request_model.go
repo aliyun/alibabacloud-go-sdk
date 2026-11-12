@@ -18,7 +18,7 @@ type iOperateUnholdJobExecutionRequest interface {
 }
 
 type OperateUnholdJobExecutionRequest struct {
-	// The Application name.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type OperateUnholdJobExecutionRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type OperateUnholdJobExecutionRequest struct {
 	//
 	// xxljob-d6a5243b6fa
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The Job Execution ID.
+	// The job execution ID.
 	//
 	// example:
 	//

@@ -42,13 +42,13 @@ type CreateWorkflowRequest struct {
 	//
 	// xxl-job-executor-sample
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The custom calendar. This parameter applies only when `TimeType` is `cron`.
+	// The custom calendar. This parameter is optional when the time type is cron.
 	//
 	// example:
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// A unique client token to ensure request idempotence. The token must contain only ASCII characters. If you omit this parameter, the system uses the RequestId as the ClientToken. The RequestId is unique to each request.
+	// The client token that is used to ensure the idempotence of the request. You can generate the value from your client and ensure that the value is unique across different requests. The client token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId may be different for each API request.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateWorkflowRequest struct {
 	//
 	// my first workflow for data analyse
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum concurrency for the workflow.
+	// The maximum concurrency of the workflow.
 	//
 	// example:
 	//
@@ -82,33 +82,33 @@ type CreateWorkflowRequest struct {
 	//
 	// my-workflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the workflow. By default, the workflow is disabled. Valid values:
+	// The workflow status. Default value: 0. Valid values:
 	//
-	// - 0: Disabled
+	// - 0: Disabled.
 	//
-	// - 1: Enabled
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time expression, which depends on the `TimeType` parameter.
+	// The time expression. Set the time expression based on the selected time type.
 	//
-	// - **none**: This parameter is not required.
+	// - **none**: Not required.
 	//
 	// - **cron**: Enter a standard cron expression. Online validation is supported.
 	//
-	// - **api**: This parameter is not required.
+	// - **api**: Not required.
 	//
 	// example:
 	//
 	// 0 0 4 ? 	- Mon/1
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// The schedule type. Valid values:
+	// The time type. Valid values:
 	//
-	// - -1: none<br>
+	// - -1: none<br/>
 	//
-	// - 1: cron<br>
+	// - 1: cron<br/>
 	//
 	// - 100: api
 	//
@@ -116,7 +116,7 @@ type CreateWorkflowRequest struct {
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The time zone for the schedule.
+	// The time zone.
 	//
 	// example:
 	//

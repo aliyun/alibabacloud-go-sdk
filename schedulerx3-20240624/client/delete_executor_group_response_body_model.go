@@ -20,18 +20,30 @@ type iDeleteExecutorGroupResponseBody interface {
 }
 
 type DeleteExecutorGroupResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful.
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true

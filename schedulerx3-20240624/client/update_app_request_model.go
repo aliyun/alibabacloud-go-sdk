@@ -32,7 +32,7 @@ type UpdateAppRequest struct {
 	//
 	// example:
 	//
-	// f312159702f4469585586ed5a6904163v3
+	// demo-app-key-20261109
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// The application name.
 	//
@@ -52,21 +52,23 @@ type UpdateAppRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable logging.
 	//
-	// - `true`: Enables logging.
+	// - true: Enabled.
 	//
-	// - `false`: Disables logging.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The label routing strategy.
+	//
 	// example:
 	//
 	// 1
 	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
-	// The task execution queue size.
+	// The size of the task execution queue.
 	//
-	// > Sets the maximum number of concurrent task instances in the application group. Additional task instances are queued for execution and not discarded.
+	// > The maximum number of task instances that can run concurrently for an application. Task instances that exceed the concurrency limit are not discarded, but are placed in a queue to wait for execution.
 	//
 	// example:
 	//
@@ -78,8 +80,10 @@ type UpdateAppRequest struct {
 	//
 	// example:
 	//
-	// 测试应用
+	// Test application
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The primary key ID of the worker group.
+	//
 	// example:
 	//
 	// 1

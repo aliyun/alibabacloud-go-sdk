@@ -78,7 +78,7 @@ type UpdateJobRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The retry interval upon node failure.
+	// The retry interval for a failed job.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type UpdateJobRequest struct {
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// The child node IDs, separated by commas.
+	// The IDs of child jobs. Separate multiple IDs with commas.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
-	// The node description.
+	// The job description.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type UpdateJobRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The client blocking strategy. Valid values:
 	//
-	// - 1: serial execution on a single machine
+	// - 1: single-machine serial execution
 	//
 	// - 2: ignore subsequent scheduling
 	//
@@ -128,13 +128,13 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// The jobhandler name.
+	// The name of the job handler.
 	//
 	// example:
 	//
 	// testJobVoidHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
-	// The node ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -142,27 +142,27 @@ type UpdateJobRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The node label information.
+	// The tag information of the job.
 	//
 	// example:
 	//
 	// {key:value}
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The maximum number of retry attempts upon node failure.
+	// The maximum number of retries for a failed job.
 	//
 	// example:
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum concurrency of the node.
+	// The maximum number of concurrent instances for a job.
 	//
-	// >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
+	// > The maximum number of instances that can run concurrently for the same job. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
 	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The node name.
+	// The job name.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ type UpdateJobRequest struct {
 	NoticeConfig *UpdateJobRequestNoticeConfig `json:"NoticeConfig,omitempty" xml:"NoticeConfig,omitempty" type:"Struct"`
 	// The notification contact configuration.
 	NoticeContacts []*UpdateJobRequestNoticeContacts `json:"NoticeContacts,omitempty" xml:"NoticeContacts,omitempty" type:"Repeated"`
-	// The node parameters.
+	// The job parameters.
 	//
 	// example:
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The execution priority of the node. Valid values:
+	// The execution priority of the job. Valid values:
 	//
 	// - 1: low
 	//
@@ -208,19 +208,19 @@ type UpdateJobRequest struct {
 	//
 	// - 7: consistent hashing
 	//
-	// - 8: shard broadcast
+	// - 8: sharding broadcast
 	//
 	// example:
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	// The script configured for non-BEAN nodes.
+	// The script configuration for non-BEAN jobs.
 	//
 	// example:
 	//
 	// echo "hello world"
 	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// The scheduling start time.
+	// The start time of the scheduling.
 	//
 	// example:
 	//
@@ -232,17 +232,17 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	StartTimeType *string `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
-	// The time expression. Set the time expression based on the selected time type.
+	// The time expression. Configure the time expression based on the selected time type.
 	//
-	// - none: No value is required.
+	// - none: not required
 	//
 	// - cron: Enter a standard cron expression. Online verification is supported.
 	//
-	// - api: No value is required.
+	// - api: not required
 	//
-	// - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+	// - fixed_rate: Enter a fixed frequency value in seconds. For example, 30 indicates that the job is triggered every 30 seconds.
 	//
-	// - one_time: Enter a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - one_time: Enter the scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds, such as "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -266,19 +266,19 @@ type UpdateJobRequest struct {
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 	// The time zone.
 	//
-	// > Default value: the time zone of the SchedulerX server.
+	// > By default, the time zone of the SchedulerX server is used.
 	//
 	// example:
 	//
 	// Hongkong
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The node weight.
+	// The weight of the job.
 	//
 	// example:
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// The extended properties of the node.
+	// The extended properties of the job.
 	//
 	// example:
 	//
@@ -565,7 +565,7 @@ func (s *UpdateJobRequest) Validate() error {
 }
 
 type UpdateJobRequestNoticeConfig struct {
-	// The early completion threshold, in seconds.
+	// The threshold for early completion, in seconds.
 	//
 	// example:
 	//
@@ -573,11 +573,11 @@ type UpdateJobRequestNoticeConfig struct {
 	EndEarly *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
 	// Specifies whether to enable the early completion alert.
 	EndEarlyEnable *bool `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
-	// Specifies whether to enable the failure alert. Valid values:
+	// Specifies whether to enable failure alerts. Valid values:
 	//
-	// - **true**: Enables the failure alert.
+	// - **true**: enabled
 	//
-	// - **false**: Disables the failure alert.
+	// - **false**: disabled
 	//
 	// example:
 	//
@@ -585,17 +585,17 @@ type UpdateJobRequestNoticeConfig struct {
 	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
 	// The number of consecutive failures.
 	//
-	// > An alert is sent only when the number of consecutive failures exceeds the configured value.
+	// > An alert is triggered only when the number of consecutive failures exceeds the configured threshold.
 	//
 	// example:
 	//
 	// true
 	FailLimitTimes *int32 `json:"FailLimitTimes,omitempty" xml:"FailLimitTimes,omitempty"`
-	// Specifies whether to enable the no-available-machine alert. Valid values:
+	// Specifies whether to enable alerts for unavailable workers. Valid values:
 	//
-	// - **true**: Enables the no-available-machine alert.
+	// - **true**: enabled
 	//
-	// - **false**: Disables the no-available-machine alert.
+	// - **false**: disabled
 	//
 	// example:
 	//
@@ -603,9 +603,9 @@ type UpdateJobRequestNoticeConfig struct {
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
 	// The notification channel. Valid values:
 	//
-	//  - sms: SMS
+	// - sms: SMS
 	//
-	//  - phone: phone call
+	// - phone: phone call
 	//
 	// - mail: email
 	//
@@ -617,17 +617,17 @@ type UpdateJobRequestNoticeConfig struct {
 	//
 	// webhook,sms,mail,phone
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	// Specifies whether to enable the success notification. Valid values:
+	// Specifies whether to enable success notifications. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled
 	//
-	// - false: Disabled.
+	// - false: disabled
 	//
 	// example:
 	//
 	// true
 	SuccessNotice *bool `json:"SuccessNotice,omitempty" xml:"SuccessNotice,omitempty"`
-	// The node execution timeout period, in seconds.
+	// The timeout period for job execution, in seconds.
 	//
 	// example:
 	//
@@ -635,19 +635,19 @@ type UpdateJobRequestNoticeConfig struct {
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// Specifies whether to enable the timeout alert. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled
 	//
-	// - false: Disabled.
+	// - false: disabled
 	//
 	// example:
 	//
 	// true
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Specifies whether to enable the timeout termination for the current trigger. Valid values:
+	// Specifies whether to terminate the current trigger upon timeout. Valid values:
 	//
-	// - **true**: Enables the timeout termination.
+	// - **true**: enabled
 	//
-	// - **false**: Disables the timeout termination.
+	// - **false**: disabled
 	//
 	// example:
 	//
@@ -760,7 +760,7 @@ func (s *UpdateJobRequestNoticeConfig) Validate() error {
 type UpdateJobRequestNoticeContacts struct {
 	// The contact type.
 	//
-	// >Default configurations: 1.
+	// > Default configurations: 1.
 	//
 	// example:
 	//

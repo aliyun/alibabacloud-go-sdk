@@ -38,7 +38,7 @@ type OperateBackfillWorkflowRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end date of the backfill, in YYYY-MM-DD format.
+	// The end date for backfilling data. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type OperateBackfillWorkflowRequest struct {
 	//
 	// 2025-11-03
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start date of the backfill, in YYYY-MM-DD format.
+	// The start date for backfilling data. The format is YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//

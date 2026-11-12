@@ -28,7 +28,7 @@ type ListCalendarNamesResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// -
+	// The list of calendar names.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -42,11 +42,11 @@ type ListCalendarNamesResponseBody struct {
 	//
 	// AA3538A0-FBE6-5E31-AD88-A02C6FF0DACC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

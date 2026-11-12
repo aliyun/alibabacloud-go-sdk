@@ -16,7 +16,7 @@ type iDeleteAppRequest interface {
 }
 
 type DeleteAppRequest struct {
-	// The name of the App Group.
+	// The application name.
 	//
 	// This parameter is required.
 	//

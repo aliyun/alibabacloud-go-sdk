@@ -52,7 +52,7 @@ type GetLogRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end time. This value is a UNIX timestamp.
+	// The end time.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GetLogRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// The keyword to search for.
+	// The search keyword.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetLogRequest struct {
 	//
 	// INFO
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The number of log entries to return.
+	// The LineNum.
 	//
 	// example:
 	//
@@ -94,23 +94,23 @@ type GetLogRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// Specifies whether to sort the results in descending order.
+	// Specifies whether to sort the results in descending order. Valid values:
 	//
-	// - **true**: sorts the results in descending order.
+	// - **true**: Sorts the results in descending order.
 	//
-	// - **false**: sorts the results in ascending order.
+	// - **false**: Sorts the results in ascending order.
 	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The time when the job was scheduled. This value is a UNIX timestamp.
+	// The scheduling time.
 	//
 	// example:
 	//
-	// 2023-10-01 12:00:00
+	// 1696132800000
 	ScheduleTime *int64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The start time. This value is a UNIX timestamp.
+	// The start time.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListK8sResourceRequest interface {
 }
 
 type ListK8sResourceRequest struct {
-	// The Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type ListK8sResourceRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the Kubernetes cluster used for synchronizing namespaces. The cluster is added to the service mesh specified by ServiceMeshId. This parameter is required when you query a k8s namespace or a k8s service.
+	// The ID of the Kubernetes cluster for which namespaces are synchronized. The Kubernetes cluster is added to the service mesh specified by ServiceMeshId. This parameter is required when you query Kubernetes namespaces or services.
 	//
 	// example:
 	//
 	// cadb451ed7af04b0297f4be396a2196fc
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	// The name of the namespace in the k8s cluster. This parameter is required when you query a k8s service.
+	// The namespace ID of the Kubernetes cluster. This parameter is required when you query Kubernetes services.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListK8sResourceRequest struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The VPC ID. This parameter is required if ResourceType is set to \\"cluster\\".
+	// The VPC ID. This parameter is required when ResourceType is set to cluster.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iCreateAppRequest interface {
 }
 
 type CreateAppRequest struct {
-	// The access token.
+	// The access token of the application.
 	//
 	// example:
 	//
 	// ltk1ZXHv6LvibZypFkPHzRA
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The app name.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateAppRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The app type.
+	// The application type.
 	//
 	// example:
 	//
@@ -56,23 +56,27 @@ type CreateAppRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Indicates whether to enable logging.
+	// Specifies whether to enable logging.
 	//
 	// example:
 	//
 	// true
 	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The label routing strategy.
-	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
-	// The maximum concurrency.
 	//
-	// > This parameter specifies the maximum number of task instances that can run concurrently for the app. Task instances that exceed this limit are not discarded. They are queued for execution.
+	// example:
+	//
+	// 1
+	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
+	// The size of the task execution queue.
+	//
+	// > The maximum number of task instances that can run concurrently for an application. Task instances that exceed the concurrency limit are not discarded but are placed in a queue for execution.
 	//
 	// example:
 	//
 	// 10
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The title of the app.
+	// The title.
 	//
 	// This parameter is required.
 	//

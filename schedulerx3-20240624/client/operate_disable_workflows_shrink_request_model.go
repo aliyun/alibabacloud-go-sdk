@@ -34,7 +34,7 @@ type OperateDisableWorkflowsShrinkRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A list of workflow IDs.
+	// The list of workflow IDs.
 	//
 	// This parameter is required.
 	WorkflowIdsShrink *string `json:"WorkflowIds,omitempty" xml:"WorkflowIds,omitempty"`
