@@ -9,6 +9,10 @@ type iUpdateServiceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *UpdateServiceRequest
+	GetClientToken() *string
+	SetDryRun(v bool) *UpdateServiceRequest
+	GetDryRun() *bool
 	SetMemberToUpdate(v string) *UpdateServiceRequest
 	GetMemberToUpdate() *string
 	SetUpdateType(v string) *UpdateServiceRequest
@@ -18,18 +22,43 @@ type iUpdateServiceRequest interface {
 }
 
 type UpdateServiceRequest struct {
+	// The client token used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 5db780a0-9d3e-4f35-a84a-xxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to only precheck the request.
+	//
+	// - true: sends a precheck request without performing the actual operation. If the precheck fails, the corresponding error is returned. If the precheck succeeds, the error code DryRunOperation is returned.
+	//
+	// - false: sends a normal request. This is the default value.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The type of the child service to update. Note: This parameter takes effect only for aggregated services.
+	//
+	// example:
+	//
+	// LLMPrefill
 	MemberToUpdate *string `json:"MemberToUpdate,omitempty" xml:"MemberToUpdate,omitempty"`
-	// The type of the service update. Valid values: merge and replace. By default, merge is used if you do not specify this parameter.
+	// The update type of the service. Both merge and replace modes are supported. If this parameter is not specified, the merge mode is used by default.
 	//
-	// 	- merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
+	// - merge: the merge mode. If the original service configuration JSON is
 	//
-	// 	- replace: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"c":"d"}` after the service update.
+	// `{"a":"b"}` and the updated configuration is `{"c":"d"}`, the final configuration in merge mode is `{"a":"b","c":"d"}`.
+	//
+	// - replace: the replace mode. If the original service configuration JSON is
+	//
+	// `{"a":"b"}` and the updated configuration is `{"c":"d"}`, the final configuration in replace mode is `{"c":"d"}`.
 	//
 	// example:
 	//
 	// merge
 	UpdateType *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
-	// The request body. The body includes the request parameters that you want to update. For more information about the request parameters, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
+	// The updated configuration. For more information about parameter settings, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
 	//
 	// example:
 	//
@@ -63,6 +92,14 @@ func (s UpdateServiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateServiceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdateServiceRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *UpdateServiceRequest) GetMemberToUpdate() *string {
 	return s.MemberToUpdate
 }
@@ -73,6 +110,16 @@ func (s *UpdateServiceRequest) GetUpdateType() *string {
 
 func (s *UpdateServiceRequest) GetBody() *string {
 	return s.Body
+}
+
+func (s *UpdateServiceRequest) SetClientToken(v string) *UpdateServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetDryRun(v bool) *UpdateServiceRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *UpdateServiceRequest) SetMemberToUpdate(v string) *UpdateServiceRequest {

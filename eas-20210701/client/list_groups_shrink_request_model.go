@@ -28,15 +28,19 @@ type iListGroupsShrinkRequest interface {
 }
 
 type ListGroupsShrinkRequest struct {
-	// The filter name. Fuzzy match is supported.
+	// The name filter. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// foo
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The user-defined labels.
+	// The custom labels.
+	//
+	// example:
+	//
+	// {"key1":"value1","key2":null}
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The sort order of the results.
+	// The sort order.
 	//
 	// example:
 	//
@@ -48,19 +52,19 @@ type ListGroupsShrinkRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of service groups to display on each page in a paged query. Settings for paging default to 100.
+	// The Settings for the number of service groups to return on each page during paging in a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
 	//
 	// example:
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The traffic allocation method used to filter service groups.
+	// The traffic distribution mode filter.
 	//
 	// example:
 	//

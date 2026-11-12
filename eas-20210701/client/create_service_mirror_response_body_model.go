@@ -16,7 +16,7 @@ type iCreateServiceMirrorResponseBody interface {
 }
 
 type CreateServiceMirrorResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//

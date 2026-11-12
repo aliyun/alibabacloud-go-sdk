@@ -18,11 +18,11 @@ type iCreateServiceRolloutRequest interface {
 }
 
 type CreateServiceRolloutRequest struct {
-	// The configuration for the Batch strategy.
+	// The configuration for automatic batching.
 	Batch *CreateServiceRolloutRequestBatch `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
-	// The configuration for the Partition strategy.
+	// The configuration for manual batching.
 	Partition *CreateServiceRolloutRequestPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
-	// Specifies whether to pause the rollout.
+	// Specifies whether to pause the update.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreateServiceRolloutRequestBatch struct {
 	//
 	// 1
 	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
-	// The wait interval after each batch completes.
+	// The wait interval after each batch update is completed.
 	//
 	// example:
 	//

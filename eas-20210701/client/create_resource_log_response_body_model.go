@@ -16,7 +16,7 @@ type iCreateResourceLogResponseBody interface {
 }
 
 type CreateResourceLogResponseBody struct {
-	// The returned message.
+	// The operation result message.
 	//
 	// example:
 	//

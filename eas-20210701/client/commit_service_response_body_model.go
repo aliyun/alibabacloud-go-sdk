@@ -16,7 +16,7 @@ type iCommitServiceResponseBody interface {
 }
 
 type CommitServiceResponseBody struct {
-	// The returned message.
+	// The returned result message.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type ListConfigsResponseBody struct {
 	//
 	// [{"Key": "rate_limit", "Value": "{\\"limit\\": 100}", "CreatedAt": "2024-01-15T10:30:00Z", "UpdatedAt": "2024-01-15T10:30:00Z"}]
 	Configs []*ListConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Indicates if more entries are available. `true` if more entries exist; otherwise, `false`.
+	// Indicates whether more data exists.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ListConfigsResponseBody struct {
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries found.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ func (s *ListConfigsResponseBody) Validate() error {
 }
 
 type ListConfigsResponseBodyConfigs struct {
-	// The time when the dynamic parameter was created, in UTC and ISO 8601 format.
+	// The time when the dynamic parameter was created, in UTC in RFC 3339 format.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListConfigsResponseBodyConfigs struct {
 	//
 	// rate_limit
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The time when the dynamic parameter was last updated, in UTC and ISO 8601 format.
+	// The time when the dynamic parameter was last updated, in UTC in RFC 3339 format.
 	//
 	// example:
 	//

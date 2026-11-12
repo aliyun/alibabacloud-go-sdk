@@ -20,9 +20,9 @@ type iCreateServiceAutoScalerRequest interface {
 }
 
 type CreateServiceAutoScalerRequest struct {
-	// The Autoscaler operation.
+	// The behavior during auto-scaling.
 	Behavior *CreateServiceAutoScalerRequestBehavior `json:"behavior,omitempty" xml:"behavior,omitempty" type:"Struct"`
-	// The maximum number of instances in the service. The value of max must be greater than the value of min.
+	// The maximum number of instances. The value must be greater than the minimum number of instances.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateServiceAutoScalerRequest struct {
 	//
 	// 8
 	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
-	// The minimum number of instances in the service.
+	// The minimum number of instances. The value must be greater than 0.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateServiceAutoScalerRequest struct {
 	//
 	// 2
 	Min *int32 `json:"min,omitempty" xml:"min,omitempty"`
-	// The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+	// The list of scaling policies.
 	//
 	// This parameter is required.
 	ScaleStrategies []*CreateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
@@ -107,11 +107,11 @@ func (s *CreateServiceAutoScalerRequest) Validate() error {
 }
 
 type CreateServiceAutoScalerRequestBehavior struct {
-	// The operation that reduces the number of instances to 0.
+	// The behavior when scaling in to zero.
 	OnZero *CreateServiceAutoScalerRequestBehaviorOnZero `json:"onZero,omitempty" xml:"onZero,omitempty" type:"Struct"`
-	// The scale-in operation.
+	// The behavior during scale-in.
 	ScaleDown *CreateServiceAutoScalerRequestBehaviorScaleDown `json:"scaleDown,omitempty" xml:"scaleDown,omitempty" type:"Struct"`
-	// The scale-out operation.
+	// The behavior during scale-out.
 	ScaleUp *CreateServiceAutoScalerRequestBehaviorScaleUp `json:"scaleUp,omitempty" xml:"scaleUp,omitempty" type:"Struct"`
 }
 
@@ -170,13 +170,13 @@ func (s *CreateServiceAutoScalerRequestBehavior) Validate() error {
 }
 
 type CreateServiceAutoScalerRequestBehaviorOnZero struct {
-	// The time window that is required before the number of instances is reduced to 0. The number of instances can be reduced to 0 only if no request is available or no traffic exists in the specified time window. Default value: 600.
+	// The grace period before scaling in to zero. When the metrics meet the conditions for scaling in to zero, the scale-in to zero is executed after the grace period elapses. Default value: 600.
 	//
 	// example:
 	//
 	// 600
 	ScaleDownGracePeriodSeconds *int32 `json:"scaleDownGracePeriodSeconds,omitempty" xml:"scaleDownGracePeriodSeconds,omitempty"`
-	// The number of instances that you want to create at a time if the number of instances is 0. Default value: 1.
+	// The number of instances created at a time when scaling out from zero. Default value: 1.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ func (s *CreateServiceAutoScalerRequestBehaviorOnZero) Validate() error {
 }
 
 type CreateServiceAutoScalerRequestBehaviorScaleDown struct {
-	// The time window that is required before the scale-in operation is performed. The scale-in operation can be performed only if the specified metric drops below the specified threshold in the specified time window. Default value: 300.
+	// The stabilization window period for scale-in. Default value: 300. Scale-in is executed only when the metrics do not meet the specified conditions over the past period of time.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ func (s *CreateServiceAutoScalerRequestBehaviorScaleDown) Validate() error {
 }
 
 type CreateServiceAutoScalerRequestBehaviorScaleUp struct {
-	// The time window that is required before the scale-out operation is performed. The scale-out operation can be performed only if the specified metric exceeds the specified threshold in the specified time window. Default value: 0.
+	// The stabilization window period for scale-out. Default value: 0. Scale-out is executed only when the metrics meet the specified conditions over the past period of time.
 	//
 	// example:
 	//
@@ -275,13 +275,13 @@ func (s *CreateServiceAutoScalerRequestBehaviorScaleUp) Validate() error {
 }
 
 type CreateServiceAutoScalerRequestScaleStrategies struct {
-	// The name of the metric for triggering auto scaling. Valid values:
+	// The name of the metric. Valid values:
 	//
-	// - qps: the queries per second (qps) for an individual instance.
+	// - qps: the queries per second (QPS) threshold per instance
 	//
-	// - cpu: the cpu utilization.
+	// - cpu: the CPU utilization threshold
 	//
-	// - gpu[util]: gpu utilization.
+	// - gpu[util]: the GPU utilization threshold
 	//
 	// This parameter is required.
 	//
@@ -289,19 +289,19 @@ type CreateServiceAutoScalerRequestScaleStrategies struct {
 	//
 	// qps
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+	// The service to which the metric belongs. If this parameter is not specified, the current service is used by default.
 	//
 	// example:
 	//
 	// demo_svc
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// The threshold of the metric that triggers auto scaling.
+	// The threshold that triggers auto-scaling.
 	//
-	// - If you set metricName to qps, scale-out is triggered when the average qps for a single instance is greater than this threshold.
+	// - If the metric name is set to qps, scale-out is triggered when the average QPS per instance exceeds this value.
 	//
-	// - If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+	// - If the metric name is set to cpu, scale-out is triggered when the average CPU utilization per instance exceeds this value.
 	//
-	// - If you set metricName to gpu, scale-out is triggered when the average gpu utilization for a single instance is greater than this threshold.
+	// - If the metric name is set to gpu[util], scale-out is triggered when the average GPU utilization per instance exceeds this value.
 	//
 	// This parameter is required.
 	//

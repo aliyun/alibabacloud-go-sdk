@@ -20,7 +20,7 @@ type iUpdateConfigResponseBody interface {
 }
 
 type UpdateConfigResponseBody struct {
-	// The time the configuration was created.
+	// The time when the dynamic parameter was created, in UTC in RFC 3339 format.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type UpdateConfigResponseBody struct {
 	//
 	// llm_gateway.route_policy
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The time the configuration was last updated.
+	// The time when the dynamic parameter was last updated, in UTC in RFC 3339 format.
 	//
 	// example:
 	//

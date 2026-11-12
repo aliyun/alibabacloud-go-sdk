@@ -16,7 +16,7 @@ type iUpdateGatewayLabelResponseBody interface {
 }
 
 type UpdateGatewayLabelResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

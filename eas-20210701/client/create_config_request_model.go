@@ -14,7 +14,7 @@ type iCreateConfigRequest interface {
 }
 
 type CreateConfigRequest struct {
-	// The dynamic parameter value.
+	// The dynamic parameter value. This parameter is required.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDeleteResourceLogResponseBody interface {
 }
 
 type DeleteResourceLogResponseBody struct {
-	// The returned message.
+	// The operation result message.
 	//
 	// example:
 	//
 	// Log service for resource [eas-r-asdas****] is deleting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

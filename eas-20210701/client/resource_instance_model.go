@@ -160,7 +160,7 @@ type ResourceInstance struct {
 	//
 	// example:
 	//
-	// 192.168.XX.XX
+	// 192.168.xx.xx
 	InstanceTenantIp *string `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
 	// The instance type.
 	//

@@ -24,19 +24,19 @@ type iListGatewayResponseBody interface {
 type ListGatewayResponseBody struct {
 	// The list of private gateways.
 	Gateways []*ListGatewayResponseBodyGateways `json:"Gateways,omitempty" xml:"Gateways,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number of the returned gateway list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of gateways returned on each page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -119,15 +119,15 @@ func (s *ListGatewayResponseBody) Validate() error {
 type ListGatewayResponseBodyGateways struct {
 	// The billing method. Valid values:
 	//
-	// - PrePaid: Subscription.
+	// - PrePaid: subscription.
 	//
-	// - PostPaid: Pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the private gateway was created. The time is in UTC.
+	// The time when the private gateway was created. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListGatewayResponseBodyGateways struct {
 	//
 	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The public network endpoint.
+	// The domain name for public network access.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListGatewayResponseBodyGateways struct {
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// The internal network endpoint.
+	// The domain name for internal network access.
 	//
 	// example:
 	//
@@ -171,15 +171,15 @@ type ListGatewayResponseBodyGateways struct {
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	// Indicates whether internal network access is enabled.
 	IntranetEnabled *bool `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
-	// Indicates whether it is the default private gateway.
+	// Indicates whether the private gateway is the default private gateway.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The list of gateway tags.
+	// The list of gateway labels.
 	Labels []*ListGatewayResponseBodyGatewaysLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The number of nodes for the private gateway.
+	// The number of nodes in the private gateway.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type ListGatewayResponseBodyGateways struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the private gateway was last updated. The time is in UTC.
+	// The time when the private gateway was updated. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -362,13 +362,13 @@ func (s *ListGatewayResponseBodyGateways) Validate() error {
 }
 
 type ListGatewayResponseBodyGatewaysLabels struct {
-	// The key of the gateway tag.
+	// The key of the gateway label.
 	//
 	// example:
 	//
 	// key1
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The value of the gateway tag.
+	// The value of the gateway label.
 	//
 	// example:
 	//

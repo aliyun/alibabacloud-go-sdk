@@ -18,23 +18,23 @@ type iUpdateServiceRolloutRequest interface {
 }
 
 type UpdateServiceRolloutRequest struct {
-	// The batch rollout configuration. This parameter is mutually exclusive with `Partition`.
+	// **Batch*	-
 	//
-	// - Type: object
+	// 	- Type: object
 	//
-	// - Required: No
+	// 	- Required: no
 	//
-	// - Description: The batch rollout configuration for adjusting batch policy parameters. This parameter is mutually exclusive with Partition.
+	// 	- Description: The batch rollout configuration. Used to adjust batch policy parameters. Mutually exclusive with Partition.
 	Batch *UpdateServiceRolloutRequestBatch `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
-	// The partition rollout configuration. This parameter is mutually exclusive with `Batch`.
+	// **Partition*	-
 	//
-	// - Type: object
+	// 	- Type: object
 	//
-	// - Required: No
+	// 	- Required: no
 	//
-	// - Description: The partition rollout configuration. This parameter adjusts the parameters for the partition strategy. It is mutually exclusive with `Batch`.
+	// 	- Description: The partition rollout configuration. Used to adjust partition policy parameters. Mutually exclusive with Batch.
 	Partition *UpdateServiceRolloutRequestPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
-	// Set to `true` to pause the rollout or `false` to resume it.
+	// Specifies whether to pause the rollout. A value of `true` indicates that the rollout is paused. A value of `false` indicates that the rollout is resumed.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ func (s *UpdateServiceRolloutRequest) Validate() error {
 }
 
 type UpdateServiceRolloutRequestBatch struct {
-	// The number of replicas to update in each batch. This can be an integer or a percentage. The default is `"25%"`.
+	// The batch size. The number of replicas to update in each batch. Integer or percentage formats are supported. Default value: `"25%"`.
 	//
 	// example:
 	//
 	// 25%
 	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
-	// The interval to wait between batches. Supported units include `s` (seconds), `m` (minutes), and `h` (hours).
+	// The batch interval. The wait time between two rollouts. Supported units: `s` (seconds), `m` (minutes), and `h` (hours).
 	//
 	// example:
 	//
@@ -137,27 +137,27 @@ func (s *UpdateServiceRolloutRequestBatch) Validate() error {
 }
 
 type UpdateServiceRolloutRequestPartition struct {
-	// **Partition value**
+	// **Partition*	-
 	//
-	// - Type: string
+	// 	- Type: string
 	//
-	// - Required: Yes
+	// 	- Required: yes
 	//
-	// - Description: The partition value. This parameter specifies the number or percentage of old-version replicas to retain. It supports two formats:
+	// 	- Description: The partition value. Two formats are supported:
 	//
-	//   1. An integer, such as "5", for the number of replicas.
+	//   1. Integer format: such as "5", which indicates that 5 old replicas are retained.
 	//
-	//   2. A percentage, such as "50%", for the proportion of replicas.
+	//   2. Percentage format: such as "50%", which indicates that 50% of the old replicas are retained.
 	//
-	//   Adjustment strategy:
+	//   Adjustment strategies:
 	//
-	//   - Increasing the value rolls back to the previous version by increasing the number of old-version replicas.
+	//   - Increase the value: Roll back to the old version and increase the proportion of old replicas.
 	//
-	//   - Decreasing the value continues the rollout by reducing the number of old-version replicas.
+	//   - Decrease the value: Proceed to the new version and decrease the proportion of old replicas.
 	//
-	//   - Setting the value to "0" or "0%" completes the rollout, replacing all old-version replicas.
+	//   - Set to "0%": Complete the full update and switch all replicas to the new version.
 	//
-	// - Example: 30%
+	// 	- Example: 30%
 	//
 	// example:
 	//

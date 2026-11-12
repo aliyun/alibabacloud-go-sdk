@@ -22,27 +22,27 @@ type iListResourceServicesResponseBody interface {
 }
 
 type ListResourceServicesResponseBody struct {
-	// The page number.
+	// The page number of the returned service list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of services returned on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The services.
+	// The list of services.
 	Services []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of services.
 	//
 	// example:
 	//

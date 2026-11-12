@@ -16,9 +16,9 @@ type iCreateGatewayIntranetLinkedVpcPeerShrinkRequest interface {
 }
 
 type CreateGatewayIntranetLinkedVpcPeerShrinkRequest struct {
-	// The list of VPC peers.
+	// The list of peered VPCs.
 	PeerVpcsShrink *string `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty"`
-	// The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	// The ID of the VPC. For information about how to obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
 	//
 	// example:
 	//

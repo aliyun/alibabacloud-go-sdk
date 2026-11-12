@@ -36,47 +36,51 @@ type iListResourceInstancesShrinkRequest interface {
 }
 
 type ListResourceInstancesShrinkRequest struct {
-	// Filters instances by billing method. Valid values:
+	// The billing method of the machines to filter. Valid values:
 	//
-	// - PrePaid: subscription.
+	// - PrePaid: Subscription.
 	//
-	// - PostPaid: pay-as-you-go.
+	// - PostPaid: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// A keyword for the search. You can search by instance ID or IP address.
+	// The search keyword. You can search by machine ID or IP address.
 	//
 	// example:
 	//
 	// 10.224.xx.xx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The IP address of the instance.
+	// The IP address of the machine.
 	//
 	// example:
 	//
 	// 10.224.xx.xx
 	InstanceIP *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
-	// Filter by instance ID. For more information, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+	// Filters the results by instance ID. For information about how to obtain the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
 	//
 	// example:
 	//
 	// i-bp1jd6x3uots****a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Filter by instance name.
+	// Filters the results by instance name.
 	//
 	// example:
 	//
 	// e-xxxx***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The status of the instance.
+	// The status of the machine.
 	//
 	// example:
 	//
 	// Ready
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// Filter by label.
+	// Filters the results by label.
+	//
+	// example:
+	//
+	// {"key1":"value1","key2":null}
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sort order.
 	//
@@ -84,25 +88,25 @@ type ListResourceInstancesShrinkRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. The value starts from 1. The default value is 1.
+	// The page number of the machine instance list in the dedicated resource group. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of instances to return on each page. Default value: 100.
+	// The paging Settings for the number of machines to return on each page in a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The zone of the instance.
+	// The zone of the machine.
 	//
 	// example:
 	//

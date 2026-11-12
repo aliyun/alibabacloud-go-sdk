@@ -18,22 +18,32 @@ type iUpdateResourceInstanceRequest interface {
 }
 
 type UpdateResourceInstanceRequest struct {
-	// The scheduling behavior to update for the instance in the dedicated resource group. Valid values:
+	// Updates the schedulable behavior of the machine instance in the dedicated resource group. Valid values:
 	//
-	// - Uncordon: Allows services to be scheduled to the instance.
+	// - Uncordon: Allows services to be scheduled to this instance.
 	//
-	// - Cordon: Prevents services from being scheduled to the instance.
+	// - Cordon: Prevents services from being scheduled to this instance.
 	//
-	// - Drain: Evicts the service instances that are running on the instance.
+	// - Drain: Evicts service instances that are already scheduled to this instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cordon
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The size of the system cloud disk after scaling, in GiB.
+	//
+	// example:
+	//
+	// 500
 	NewDiskSize *string `json:"NewDiskSize,omitempty" xml:"NewDiskSize,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Takes effect when Action is set to Cordon or Drain. Records the reason for the operation.
+	//
+	// example:
+	//
+	// Node maintenance
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s UpdateResourceInstanceRequest) String() string {

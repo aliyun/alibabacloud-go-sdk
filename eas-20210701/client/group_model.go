@@ -38,20 +38,25 @@ type iGroup interface {
 }
 
 type Group struct {
-	// The access token for the traffic entry of the service group.
+	// The access token for the traffic ingress of the service group.
 	//
 	// example:
 	//
 	// MzJiMDI5MDliODc0MTlkYmI0ZDhlYmExYjczYTIyZTE3Zm********
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	CallerUid   *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The region in which the service group resides.
+	// The UID of the account that created the service group.
+	//
+	// example:
+	//
+	// 20123*******
+	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// The ID of the cluster where the service group is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The time when the service group was created. The time is in UTC.
+	// The time when the service group was created. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -68,17 +73,24 @@ type Group struct {
 	// example:
 	//
 	// http://1110*****.vpc.cn-hangzhou.pai-eas.aliyuncs.com/api/predict/test_group
-	IntranetEndpoint *string        `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	Labels           []*GroupLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	// The list of labels for the service group.
+	Labels []*GroupLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The name of the service group.
 	//
 	// example:
 	//
 	// foo
-	Name      *string       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Network   *GroupNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	ParentUid *string       `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// The queue services contained in the service group.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The virtual private cloud (VPC) configuration of the service group.
+	Network *GroupNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The UID of the parent account that created the service group.
+	//
+	// example:
+	//
+	// 11234*******
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	// The queue services included in the service group.
 	//
 	// example:
 	//
@@ -90,7 +102,7 @@ type Group struct {
 	//
 	// auto
 	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
-	// The time when the service group was last updated. The time is in UTC.
+	// The time when the service group was updated. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -242,7 +254,17 @@ func (s *Group) Validate() error {
 }
 
 type GroupLabels struct {
-	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// The label key.
+	//
+	// example:
+	//
+	// key1
+	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// The label value.
+	//
+	// example:
+	//
+	// value1
 	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
 }
 
@@ -277,10 +299,30 @@ func (s *GroupLabels) Validate() error {
 }
 
 type GroupNetwork struct {
-	GatewayId       *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The dedicated gateway ID.
+	//
+	// example:
+	//
+	// gw-248xxxxxxvlkhtbrda
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-584xxxxxx7h08llvoww5tv5gl
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-bp1xxxxxxwmssgq28gye8
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp1xxxxxx0qrykjr9b
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GroupNetwork) String() string {

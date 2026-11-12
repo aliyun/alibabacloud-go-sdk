@@ -16,9 +16,13 @@ type iCloneServiceShrinkRequest interface {
 }
 
 type CloneServiceShrinkRequest struct {
-	// The label of the service to be cloned.
+	// The labels for the copied service.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
+	// The request body. For more information about parameter settings, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
 	//
 	// example:
 	//

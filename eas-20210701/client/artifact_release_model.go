@@ -24,12 +24,42 @@ type iArtifactRelease interface {
 }
 
 type ArtifactRelease struct {
+	// The artifact reference name.
+	//
+	// example:
+	//
+	// python-env
 	ArtifactRef *string `json:"ArtifactRef,omitempty" xml:"ArtifactRef,omitempty"`
-	CreatedAt   *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The creation time of the artifact release record.
+	//
+	// example:
+	//
+	// 2024-01-15T10:30:00Z
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The artifact description.
+	//
+	// example:
+	//
+	// Container image for model inference
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Image       *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The container image address used by the artifact.
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/eas/echo_cn-shanghai:v0.0.1-20210129111320
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The artifact type.
+	//
+	// example:
+	//
+	// Image
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The artifact version.
+	//
+	// example:
+	//
+	// V2.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ArtifactRelease) String() string {

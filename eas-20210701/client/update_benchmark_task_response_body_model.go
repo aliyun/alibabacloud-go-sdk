@@ -16,7 +16,7 @@ type iUpdateBenchmarkTaskResponseBody interface {
 }
 
 type UpdateBenchmarkTaskResponseBody struct {
-	// The returned message.
+	// The success message of the operation.
 	//
 	// example:
 	//

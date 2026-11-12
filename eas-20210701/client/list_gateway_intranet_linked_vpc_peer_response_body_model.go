@@ -18,15 +18,15 @@ type iListGatewayIntranetLinkedVpcPeerResponseBody interface {
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBody struct {
-	// The private gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// A list of peer VPCs.
+	// The list of peered VPCs.
 	PeerVpcList []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList `json:"PeerVpcList,omitempty" xml:"PeerVpcList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,9 +83,9 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) Validate() error {
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList struct {
-	// A list of peer VPC IDs.
+	// The list of peered VPC IDs.
 	PeerVpcs []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -133,14 +133,19 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) Validate() err
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs struct {
-	// The region where the peer VPC is located.
+	// The region where the peered VPC is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The network connectivity status of the peered VPC.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the peer VPC.
+	// The ID of the peered VPC.
 	//
 	// example:
 	//

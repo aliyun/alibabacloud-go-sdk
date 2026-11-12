@@ -16,13 +16,13 @@ type iUpdateResourceRequest interface {
 }
 
 type UpdateResourceRequest struct {
-	// The new name of the resource group after the update. The name can be up to 27 characters in length.
+	// The new name of the resource group. The name cannot exceed 27 characters in length.
 	//
 	// example:
 	//
 	// iot
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The configuration items of the self-managed resource group.
+	// The configuration options for the self-managed resource group.
 	SelfManagedResourceOptions *UpdateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,13 @@ func (s *UpdateResourceRequest) Validate() error {
 }
 
 type UpdateResourceRequestSelfManagedResourceOptions struct {
-	// Tag tag key-value pairs for nodes.
+	// The set of label key-value pairs for nodes.
+	//
+	// example:
+	//
+	// "key1": "value1"
 	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	// Tolerations for nodes.
+	// The list of tolerations for node taints.
 	NodeTolerations []*UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
 }
 
@@ -110,14 +114,6 @@ func (s *UpdateResourceRequestSelfManagedResourceOptions) Validate() error {
 type UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
 	// The effect.
 	//
-	// Valid values:
-	//
-	// - PreferNoSchedule
-	//
-	// - NoSchedule
-	//
-	// - NoExecute
-	//
 	// example:
 	//
 	// NoSchedule
@@ -128,13 +124,7 @@ type UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Relationship between key names and key values.
-	//
-	// Valid values:
-	//
-	// - Equal
-	//
-	// - Exists
+	// The relationship between the key name and the key value.
 	//
 	// example:
 	//

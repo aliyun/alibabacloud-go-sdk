@@ -22,7 +22,7 @@ type ListServiceVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of versions to return on each page in the paging Settings for a paged query. Default value: 100.
 	//
 	// example:
 	//

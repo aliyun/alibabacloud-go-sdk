@@ -16,9 +16,9 @@ type iCreateGatewayIntranetLinkedVpcPeerRequest interface {
 }
 
 type CreateGatewayIntranetLinkedVpcPeerRequest struct {
-	// The list of VPC peers.
+	// The list of peered VPCs.
 	PeerVpcs []*CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
-	// The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	// The ID of the VPC. For information about how to obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *CreateGatewayIntranetLinkedVpcPeerRequest) Validate() error {
 }
 
 type CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {
-	// The region where the VPC peer resides.
+	// The region where the peered VPC resides.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the VPC peer. To obtain the VPC ID, see [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html).
+	// The ID of the peered VPC. For information about how to obtain the VPC ID, see [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html).
 	//
 	// example:
 	//

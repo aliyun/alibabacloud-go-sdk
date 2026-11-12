@@ -16,7 +16,7 @@ type iDeleteBenchmarkTaskResponseBody interface {
 }
 
 type DeleteBenchmarkTaskResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//

@@ -14,9 +14,13 @@ type iUpdateGatewayLabelRequest interface {
 }
 
 type UpdateGatewayLabelRequest struct {
-	// The custom gateway labels.
+	// The custom gateway tags.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
 

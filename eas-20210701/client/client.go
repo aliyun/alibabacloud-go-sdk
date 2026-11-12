@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("eas")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-beijing":            dara.String("pai-eas.cn-beijing.aliyuncs.com"),
@@ -41,19 +49,19 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shanghai-finance-1": dara.String("pai-eas.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("pai-eas.cn-north-2-gov-1.aliyuncs.com"),
 		"cn-chengdu":            dara.String("pai-eas.cn-chengdu.aliyuncs.com"),
+		"cn-zhongwei":           dara.String("pai-eas.cn-zhongwei.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("pai-eas.cn-wulanchabu.aliyuncs.com"),
+		"cn-heyuan":             dara.String("pai-eas.cn-heyuan.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("pai-eas.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("pai-eas.ap-northeast-1.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("pai-eas.cn-guangzhou.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("pai-eas.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("pai-eas.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("pai-eas.ap-southeast-8.aliyuncs.com"),
 		"us-southeast-1":        dara.String("pai-eas.us-southeast-1.aliyuncs.com"),
 		"na-south-1":            dara.String("pai-eas.na-south-1.aliyuncs.com"),
 		"me-east-1":             dara.String("pai-eas.me-east-1.aliyuncs.com"),
 		"me-central-1":          dara.String("pai-eas.me-central-1.aliyuncs.com"),
-		"cn-zhongwei":           dara.String("pai-eas.cn-zhongwei.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("pai-eas.cn-wulanchabu.aliyuncs.com"),
-		"cn-heyuan":             dara.String("pai-eas.cn-heyuan.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("pai-eas.cn-guangzhou.aliyuncs.com"),
-		"ap-southeast-8":        dara.String("pai-eas.ap-southeast-8.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("pai-eas.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("pai-eas.ap-southeast-3.aliyuncs.com"),
-		"ap-northeast-2":        dara.String("pai-eas.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("pai-eas.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -88,7 +96,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Binds a custom domain name to a private gateway.
+// Binds a custom domain name to a dedicated gateway.
+//
+// Description:
+//
+// Before binding a custom domain name to a dedicated gateway, enable internal network access (EnableIntranet) or public network access (EnableInternet) by calling UpdateGateway. To enable internal network access, determine the VpcId and VSwitchIds first. Query existing resources by calling ListGateway, DescribeGateway, DescribeVpcs, and DescribeVSwitches in sequence. If necessary, call CreateVSwitch to create a vSwitch, and then call UpdateGateway to complete the network configuration.
 //
 // @param tmpReq - AttachGatewayDomainRequest
 //
@@ -141,7 +153,11 @@ func (client *Client) AttachGatewayDomainWithOptions(ClusterId *string, GatewayI
 
 // Summary:
 //
-// Binds a custom domain name to a private gateway.
+// Binds a custom domain name to a dedicated gateway.
+//
+// Description:
+//
+// Before binding a custom domain name to a dedicated gateway, enable internal network access (EnableIntranet) or public network access (EnableInternet) by calling UpdateGateway. To enable internal network access, determine the VpcId and VSwitchIds first. Query existing resources by calling ListGateway, DescribeGateway, DescribeVpcs, and DescribeVSwitches in sequence. If necessary, call CreateVSwitch to create a vSwitch, and then call UpdateGateway to complete the network configuration.
 //
 // @param request - AttachGatewayDomainRequest
 //
@@ -160,7 +176,7 @@ func (client *Client) AttachGatewayDomain(ClusterId *string, GatewayId *string, 
 
 // Summary:
 //
-// Clones a service.
+// Copies a service.
 //
 // @param tmpReq - CloneServiceRequest
 //
@@ -214,7 +230,7 @@ func (client *Client) CloneServiceWithOptions(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Clones a service.
+// Copies a service.
 //
 // @param request - CloneServiceRequest
 //
@@ -233,7 +249,7 @@ func (client *Client) CloneService(ClusterId *string, ServiceName *string, reque
 
 // Summary:
 //
-// Commits the Worker0 container in the custom container service and deploys the container as a new image.
+// Commits the Worker0 container in a custom container service as a new image and redeploys the service.
 //
 // @param request - CommitServiceRequest
 //
@@ -274,7 +290,7 @@ func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *s
 
 // Summary:
 //
-// Commits the Worker0 container in the custom container service and deploys the container as a new image.
+// Commits the Worker0 container in a custom container service as a new image and redeploys the service.
 //
 // @param request - CommitServiceRequest
 //
@@ -293,7 +309,7 @@ func (client *Client) CommitService(ClusterId *string, ServiceName *string, requ
 
 // Summary:
 //
-// Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
+// Creates access permissions for a private gateway to allow specified IP address segments to access the gateway.
 //
 // @param tmpReq - CreateAclPolicyRequest
 //
@@ -350,7 +366,7 @@ func (client *Client) CreateAclPolicyWithOptions(ClusterId *string, GatewayId *s
 
 // Summary:
 //
-// Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
+// Creates access permissions for a private gateway to allow specified IP address segments to access the gateway.
 //
 // @param request - CreateAclPolicyRequest
 //
@@ -369,7 +385,7 @@ func (client *Client) CreateAclPolicy(ClusterId *string, GatewayId *string, requ
 
 // Summary:
 //
-// Creates an application service to obtain the inference capabilities of large models.
+// Creates an application service to obtain large language model inference capabilities.
 //
 // @param request - CreateAppServiceRequest
 //
@@ -386,6 +402,14 @@ func (client *Client) CreateAppServiceWithOptions(request *CreateAppServiceReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.QuotaId) {
 		query["QuotaId"] = request.QuotaId
 	}
@@ -446,7 +470,7 @@ func (client *Client) CreateAppServiceWithOptions(request *CreateAppServiceReque
 
 // Summary:
 //
-// Creates an application service to obtain the inference capabilities of large models.
+// Creates an application service to obtain large language model inference capabilities.
 //
 // @param request - CreateAppServiceRequest
 //
@@ -530,15 +554,15 @@ func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API creates a new dynamic parameter by sending a POST request to a specified path.
+// - This API operation sends a POST request to a specified path to create a dynamic parameter.
 //
-// - The dynamic parameter name (`ConfigKey`) can contain letters, digits, periods (.), underscores (_), hyphens (-), and forward slashes (/). The maximum length is 100 characters.
+// - The dynamic parameter name (ConfigKey) supports letters, digits, periods, underscores, hyphens, and forward slashes, with a maximum length of 100 characters.
 //
-// - The request body must include the dynamic parameter value (`Value`).
+// - The request body must contain the specific value (Value) of the dynamic parameter.
 //
-// - If successful, the API returns the new dynamic parameter\\"s name (`Key`), value (`Value`), creation time, and update time.
+// - After the dynamic parameter is created, the API returns key information about the new dynamic parameter, including the parameter name (Key), value (Value), and the creation and update timestamps.
 //
 // @param request - CreateConfigRequest
 //
@@ -589,15 +613,15 @@ func (client *Client) CreateConfigWithOptions(ClusterId *string, ConfigType *str
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API creates a new dynamic parameter by sending a POST request to a specified path.
+// - This API operation sends a POST request to a specified path to create a dynamic parameter.
 //
-// - The dynamic parameter name (`ConfigKey`) can contain letters, digits, periods (.), underscores (_), hyphens (-), and forward slashes (/). The maximum length is 100 characters.
+// - The dynamic parameter name (ConfigKey) supports letters, digits, periods, underscores, hyphens, and forward slashes, with a maximum length of 100 characters.
 //
-// - The request body must include the dynamic parameter value (`Value`).
+// - The request body must contain the specific value (Value) of the dynamic parameter.
 //
-// - If successful, the API returns the new dynamic parameter\\"s name (`Key`), value (`Value`), creation time, and update time.
+// - After the dynamic parameter is created, the API returns key information about the new dynamic parameter, including the parameter name (Key), value (Value), and the creation and update timestamps.
 //
 // @param request - CreateConfigRequest
 //
@@ -620,7 +644,7 @@ func (client *Client) CreateConfig(ClusterId *string, ConfigType *string, Name *
 //
 // Description:
 //
-// *Before you use this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateFaultInjectionRequest
 //
@@ -675,7 +699,7 @@ func (client *Client) CreateFaultInjectionWithOptions(ClusterId *string, Service
 //
 // Description:
 //
-// *Before you use this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateFaultInjectionRequest
 //
@@ -794,11 +818,11 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 
 // Summary:
 //
-// Creates an internal endpoint for a private gateway.
+// Creates an internal access endpoint for a private gateway.
 //
 // Description:
 //
-// *Make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you use this operation.**
+// *Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS.**
 //
 // @param request - CreateGatewayIntranetLinkedVpcRequest
 //
@@ -857,11 +881,11 @@ func (client *Client) CreateGatewayIntranetLinkedVpcWithOptions(ClusterId *strin
 
 // Summary:
 //
-// Creates an internal endpoint for a private gateway.
+// Creates an internal access endpoint for a private gateway.
 //
 // Description:
 //
-// *Make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you use this operation.**
+// *Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS.**
 //
 // @param request - CreateGatewayIntranetLinkedVpcRequest
 //
@@ -880,7 +904,7 @@ func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 
 // Summary:
 //
-// Creates a VPC peering connection on an internal endpoint of a gateway.
+// Creates a cross-VPC connection for the internal access endpoint of a gateway.
 //
 // @param tmpReq - CreateGatewayIntranetLinkedVpcPeerRequest
 //
@@ -937,7 +961,7 @@ func (client *Client) CreateGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *s
 
 // Summary:
 //
-// Creates a VPC peering connection on an internal endpoint of a gateway.
+// Creates a cross-VPC connection for the internal access endpoint of a gateway.
 //
 // @param request - CreateGatewayIntranetLinkedVpcPeerRequest
 //
@@ -960,7 +984,7 @@ func (client *Client) CreateGatewayIntranetLinkedVpcPeer(ClusterId *string, Gate
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing of Elastic Algorithm Service (EAS) and its [pricing](https://help.aliyun.com/document_detail/144261.html).**.
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you call this operation.**
 //
 // @param request - CreateGroupRequest
 //
@@ -1023,7 +1047,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, header
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing of Elastic Algorithm Service (EAS) and its [pricing](https://help.aliyun.com/document_detail/144261.html).**.
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you call this operation.**
 //
 // @param request - CreateGroupRequest
 //
@@ -1042,11 +1066,11 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Create a new resource group.
+// Creates a resource group.
 //
 // Description:
 //
-// *Before calling this API, make sure you understand the billing method and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS before you call this operation.**
 //
 // @param request - CreateResourceRequest
 //
@@ -1133,11 +1157,11 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 
 // Summary:
 //
-// Create a new resource group.
+// Creates a resource group.
 //
 // Description:
 //
-// *Before calling this API, make sure you understand the billing method and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS before you call this operation.**
 //
 // @param request - CreateResourceRequest
 //
@@ -1156,11 +1180,11 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 
 // Summary:
 //
-// Creates machine instances in a dedicated resource group.
+// Creates a new machine instance in a dedicated resource group.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/document_detail/144261.html)**&#x20;of Elastic Algorithm Service (EAS).**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateResourceInstancesRequest
 //
@@ -1235,11 +1259,11 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 
 // Summary:
 //
-// Creates machine instances in a dedicated resource group.
+// Creates a new machine instance in a dedicated resource group.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/document_detail/144261.html)**&#x20;of Elastic Algorithm Service (EAS).**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
 //
 // @param request - CreateResourceInstancesRequest
 //
@@ -1258,7 +1282,7 @@ func (client *Client) CreateResourceInstances(ClusterId *string, ResourceId *str
 
 // Summary:
 //
-// Enables the LogShipper feature of Log Service for a resource group.
+// Enables the Simple Log Service (SLS) log delivery feature for a resource group.
 //
 // @param request - CreateResourceLogRequest
 //
@@ -1309,7 +1333,7 @@ func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId
 
 // Summary:
 //
-// Enables the LogShipper feature of Log Service for a resource group.
+// Enables the Simple Log Service (SLS) log delivery feature for a resource group.
 //
 // @param request - CreateResourceLogRequest
 //
@@ -1328,11 +1352,11 @@ func (client *Client) CreateResourceLog(ClusterId *string, ResourceId *string, r
 
 // Summary:
 //
-// Creates a model service in Elastic Algorithm Service (EAS).
+// Creates a PAI-EAS service.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS.**
 //
 // @param tmpReq - CreateServiceRequest
 //
@@ -1355,8 +1379,16 @@ func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, hea
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Develop) {
 		query["Develop"] = request.Develop
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.LabelsShrink) {
@@ -1394,11 +1426,11 @@ func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, hea
 
 // Summary:
 //
-// Creates a model service in Elastic Algorithm Service (EAS).
+// Creates a PAI-EAS service.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS.**
 //
 // @param request - CreateServiceRequest
 //
@@ -1417,7 +1449,7 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 
 // Summary:
 //
-// Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+// Enables the auto-scaling feature for a service and creates an auto-scaling controller for the service.
 //
 // @param request - CreateServiceAutoScalerRequest
 //
@@ -1476,7 +1508,7 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 
 // Summary:
 //
-// Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+// Enables the auto-scaling feature for a service and creates an auto-scaling controller for the service.
 //
 // @param request - CreateServiceAutoScalerRequest
 //
@@ -1495,7 +1527,7 @@ func (client *Client) CreateServiceAutoScaler(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Creates a scheduled auto scaling rule for a service.
+// Enables the scheduled scaling feature for a service.
 //
 // @param request - CreateServiceCronScalerRequest
 //
@@ -1546,7 +1578,7 @@ func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, Serv
 
 // Summary:
 //
-// Creates a scheduled auto scaling rule for a service.
+// Enables the scheduled scaling feature for a service.
 //
 // @param request - CreateServiceCronScalerRequest
 //
@@ -1565,7 +1597,7 @@ func (client *Client) CreateServiceCronScaler(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Call this operation to obtain a token and a WebSocket URL for logging on to a container.
+// Retrieves the token and WebSocket URL required to log on to a container.
 //
 // @param request - CreateServiceInstanceTokenRequest
 //
@@ -1616,7 +1648,7 @@ func (client *Client) CreateServiceInstanceTokenWithOptions(ClusterId *string, S
 
 // Summary:
 //
-// Call this operation to obtain a token and a WebSocket URL for logging on to a container.
+// Retrieves the token and WebSocket URL required to log on to a container.
 //
 // @param request - CreateServiceInstanceTokenRequest
 //
@@ -1635,7 +1667,7 @@ func (client *Client) CreateServiceInstanceToken(ClusterId *string, ServiceName 
 
 // Summary:
 //
-// Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+// Enables the service traffic mirroring feature to mirror requests received by one service to another service.
 //
 // @param request - CreateServiceMirrorRequest
 //
@@ -1686,7 +1718,7 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 
 // Summary:
 //
-// Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+// Enables the service traffic mirroring feature to mirror requests received by one service to another service.
 //
 // @param request - CreateServiceMirrorRequest
 //
@@ -1705,23 +1737,23 @@ func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string
 
 // Summary:
 //
-// Creates a service rollout.
+// Creates a service rollout plan.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **Mutually exclusive strategies**: You can use either the `Partition` or the `Batch` strategy, but not both.
+// - **Mutually exclusive policies**: You can choose only one of the Partition (partition-based rollout) and Batch (batch-based rollout) policies. They cannot be used at the same time.
 //
-// - **Request rate limit**: Up to 100 requests per second.
+// - **Request rate limit**: A maximum of 100 requests per second.
 //
-// - **Authorization**: This operation requires the `eas:CreateServiceRollout` permission.
+// - **Authorization information**: You must have the eas:CreateServiceRollout permission to call this operation.
 //
-// - **ARN**: `acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}`.
+// - **Resource ARN**: acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}.
 //
-// - **Pause a rollout**: To pause the service rollout, set the `Paused` parameter to `true`. You can then resume or cancel the rollout by calling the `UpdateServiceRollout` operation.
+// - **Pause a rollout**: You can pause the rollout process by setting the Paused parameter to true. You can then resume or cancel the rollout by calling the UpdateServiceRollout operation.
 //
-// - **Monitoring and rollback**: Monitor service metrics during the service rollout to promptly identify and resolve issues. To perform a rollback, you can adjust the `Partition` value or delete the rollout strategy.
+// - **Monitoring and rollback**: Continuously monitor service metrics during the rollout to identify and resolve issues promptly. To roll back, adjust the Partition value or delete the rollout policy.
 //
 // @param request - CreateServiceRolloutRequest
 //
@@ -1776,23 +1808,23 @@ func (client *Client) CreateServiceRolloutWithOptions(ClusterId *string, Service
 
 // Summary:
 //
-// Creates a service rollout.
+// Creates a service rollout plan.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **Mutually exclusive strategies**: You can use either the `Partition` or the `Batch` strategy, but not both.
+// - **Mutually exclusive policies**: You can choose only one of the Partition (partition-based rollout) and Batch (batch-based rollout) policies. They cannot be used at the same time.
 //
-// - **Request rate limit**: Up to 100 requests per second.
+// - **Request rate limit**: A maximum of 100 requests per second.
 //
-// - **Authorization**: This operation requires the `eas:CreateServiceRollout` permission.
+// - **Authorization information**: You must have the eas:CreateServiceRollout permission to call this operation.
 //
-// - **ARN**: `acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}`.
+// - **Resource ARN**: acs:eas:{#regionId}:{#accountId}:service/{#ServiceName}.
 //
-// - **Pause a rollout**: To pause the service rollout, set the `Paused` parameter to `true`. You can then resume or cancel the rollout by calling the `UpdateServiceRollout` operation.
+// - **Pause a rollout**: You can pause the rollout process by setting the Paused parameter to true. You can then resume or cancel the rollout by calling the UpdateServiceRollout operation.
 //
-// - **Monitoring and rollback**: Monitor service metrics during the service rollout to promptly identify and resolve issues. To perform a rollback, you can adjust the `Partition` value or delete the rollout strategy.
+// - **Monitoring and rollback**: Continuously monitor service metrics during the rollout to identify and resolve issues promptly. To roll back, adjust the Partition value or delete the rollout policy.
 //
 // @param request - CreateServiceRolloutRequest
 //
@@ -1885,7 +1917,7 @@ func (client *Client) CreateVirtualResource(request *CreateVirtualResourceReques
 
 // Summary:
 //
-// Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
+// Removes access permissions for a gateway. The removed IP address ranges no longer have access to the gateway.
 //
 // @param tmpReq - DeleteAclPolicyRequest
 //
@@ -1942,7 +1974,7 @@ func (client *Client) DeleteAclPolicyWithOptions(ClusterId *string, GatewayId *s
 
 // Summary:
 //
-// Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
+// Removes access permissions for a gateway. The removed IP address ranges no longer have access to the gateway.
 //
 // @param request - DeleteAclPolicyRequest
 //
@@ -1961,7 +1993,7 @@ func (client *Client) DeleteAclPolicy(ClusterId *string, GatewayId *string, requ
 
 // Summary:
 //
-// Deletes a stress testing task.
+// Deletes a specified stress testing task.
 //
 // @param request - DeleteBenchmarkTaskRequest
 //
@@ -2002,7 +2034,7 @@ func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName
 
 // Summary:
 //
-// Deletes a stress testing task.
+// Deletes a specified stress testing task.
 //
 // @param request - DeleteBenchmarkTaskRequest
 //
@@ -2025,9 +2057,9 @@ func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string, r
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API deletes a specific configuration by its region ID, configuration type, service name, and configuration key. Ensure all parameter values are accurate to avoid accidentally deleting critical configurations.
+// This API allows you to delete a specific configuration item by specifying the cluster ID, configuration type, service name, and configuration item name. Ensure that the provided parameter values are accurate to prevent accidental deletion of important configurations.
 //
 // @param request - DeleteConfigRequest
 //
@@ -2072,9 +2104,9 @@ func (client *Client) DeleteConfigWithOptions(ClusterId *string, ConfigType *str
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This API deletes a specific configuration by its region ID, configuration type, service name, and configuration key. Ensure all parameter values are accurate to avoid accidentally deleting critical configurations.
+// This API allows you to delete a specific configuration item by specifying the cluster ID, configuration type, service name, and configuration item name. Ensure that the provided parameter values are accurate to prevent accidental deletion of important configurations.
 //
 // @param request - DeleteConfigRequest
 //
@@ -2513,7 +2545,7 @@ func (client *Client) DeleteGroup(ClusterId *string, GroupName *string, request 
 
 // Summary:
 //
-// Deletes a resource group that contains no resources or instances.
+// Deletes an existing resource group. A resource group can be deleted only when it contains no task services or resource instances.
 //
 // @param request - DeleteResourceRequest
 //
@@ -2554,7 +2586,7 @@ func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *s
 
 // Summary:
 //
-// Deletes a resource group that contains no resources or instances.
+// Deletes an existing resource group. A resource group can be deleted only when it contains no task services or resource instances.
 //
 // @param request - DeleteResourceRequest
 //
@@ -2795,7 +2827,7 @@ func (client *Client) DeleteResourceInstances(ClusterId *string, ResourceId *str
 
 // Summary:
 //
-// Disables the LogShipper feature of Log Service for a dedicated resource group.
+// Disables the Simple Log Service (SLS) log delivery feature for a dedicated resource group.
 //
 // @param request - DeleteResourceLogRequest
 //
@@ -2836,7 +2868,7 @@ func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId
 
 // Summary:
 //
-// Disables the LogShipper feature of Log Service for a dedicated resource group.
+// Disables the Simple Log Service (SLS) log delivery feature for a dedicated resource group.
 //
 // @param request - DeleteResourceLogRequest
 //
@@ -2855,7 +2887,7 @@ func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string, r
 
 // Summary:
 //
-// Deletes a service.
+// Deletes a specified service.
 //
 // @param request - DeleteServiceRequest
 //
@@ -2871,8 +2903,18 @@ func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *s
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteService"),
@@ -2896,7 +2938,7 @@ func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *s
 
 // Summary:
 //
-// Deletes a service.
+// Deletes a specified service.
 //
 // @param request - DeleteServiceRequest
 //
@@ -3261,25 +3303,11 @@ func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string
 
 // Summary:
 //
-// Deletes a service rollout.
+// Deletes the update plan of a service.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - **不可恢复**：删除操作不可撤销，请谨慎操作。
-//
-// - **不自动回退**：删除策略不会回退已更新的副本。
-//
-// - **停止发布**：正在进行的发布会立即停止。
-//
-// - **状态保留**：已更新的副本保持新版本，未更新的保持旧版本。
-//
-// - 删除后，后续服务更新将采用默认的滚动更新方式。
-//
-// - 在删除前，请确认要删除的服务名称和地域，并了解当前发布状态（可以通过调用`DescribeServiceRollout`接口获取）。
-//
-// - 如果需要回退版本，请在删除策略后通过重新创建策略或直接更新服务镜像来实现。
+// Deletes the update plan of a specified service.
 //
 // @param request - DeleteServiceRolloutRequest
 //
@@ -3320,25 +3348,11 @@ func (client *Client) DeleteServiceRolloutWithOptions(ClusterId *string, Service
 
 // Summary:
 //
-// Deletes a service rollout.
+// Deletes the update plan of a service.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - **不可恢复**：删除操作不可撤销，请谨慎操作。
-//
-// - **不自动回退**：删除策略不会回退已更新的副本。
-//
-// - **停止发布**：正在进行的发布会立即停止。
-//
-// - **状态保留**：已更新的副本保持新版本，未更新的保持旧版本。
-//
-// - 删除后，后续服务更新将采用默认的滚动更新方式。
-//
-// - 在删除前，请确认要删除的服务名称和地域，并了解当前发布状态（可以通过调用`DescribeServiceRollout`接口获取）。
-//
-// - 如果需要回退版本，请在删除策略后通过重新创建策略或直接更新服务镜像来实现。
+// Deletes the update plan of a specified service.
 //
 // @param request - DeleteServiceRolloutRequest
 //
@@ -4393,7 +4407,7 @@ func (client *Client) DescribeServiceEndpoints(ClusterId *string, ServiceName *s
 
 // Summary:
 //
-// Queries recent deployment events for a specified service.
+// Queries recent deployment events for a service.
 //
 // @param request - DescribeServiceEventRequest
 //
@@ -4460,7 +4474,7 @@ func (client *Client) DescribeServiceEventWithOptions(ClusterId *string, Service
 
 // Summary:
 //
-// Queries recent deployment events for a specified service.
+// Queries recent deployment events for a service.
 //
 // @param request - DescribeServiceEventRequest
 //
@@ -4697,23 +4711,23 @@ func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *stri
 
 // Summary:
 //
-// Retrieves the details of a service rollout.
+// Queries the service update plan.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于查询特定服务的发布策略（Rollout）配置和当前执行状态。
+// - This operation queries the rollout configuration and current execution status of a specific service.
 //
-// - 返回的信息包括但不限于发布策略的具体参数、当前发布进度等。
+// - The returned information includes but is not limited to the specific parameters of the rollout strategy and the current rollout progress.
 //
-// - 请求时需提供`ClusterId`和服务名称`ServiceName`作为路径参数。
+// - Specify `ClusterId` and the service name `ServiceName` as path parameters in the request.
 //
-// - 注意，请求速率限制为每秒最多100次。
+// - The request rate limit is 100 requests per second.
 //
-// - 如果服务不存在或未创建发布策略，调用此接口将返回错误。
+// - If the service does not exist or no rollout strategy has been created, this operation returns an error.
 //
-// - 返回的状态是实时查询的结果，可能会随时间而变化，请根据实际需要调整轮询间隔。
+// - The returned status is a real-time query result that may change over time. Adjust the polling interval as needed.
 //
 // @param request - DescribeServiceRolloutRequest
 //
@@ -4754,23 +4768,23 @@ func (client *Client) DescribeServiceRolloutWithOptions(ClusterId *string, Servi
 
 // Summary:
 //
-// Retrieves the details of a service rollout.
+// Queries the service update plan.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于查询特定服务的发布策略（Rollout）配置和当前执行状态。
+// - This operation queries the rollout configuration and current execution status of a specific service.
 //
-// - 返回的信息包括但不限于发布策略的具体参数、当前发布进度等。
+// - The returned information includes but is not limited to the specific parameters of the rollout strategy and the current rollout progress.
 //
-// - 请求时需提供`ClusterId`和服务名称`ServiceName`作为路径参数。
+// - Specify `ClusterId` and the service name `ServiceName` as path parameters in the request.
 //
-// - 注意，请求速率限制为每秒最多100次。
+// - The request rate limit is 100 requests per second.
 //
-// - 如果服务不存在或未创建发布策略，调用此接口将返回错误。
+// - If the service does not exist or no rollout strategy has been created, this operation returns an error.
 //
-// - 返回的状态是实时查询的结果，可能会随时间而变化，请根据实际需要调整轮询间隔。
+// - The returned status is a real-time query result that may change over time. Adjust the polling interval as needed.
 //
 // @param request - DescribeServiceRolloutRequest
 //
@@ -5197,7 +5211,11 @@ func (client *Client) ListAclPolicy(ClusterId *string, GatewayId *string, reques
 
 // Summary:
 //
-// Lists all deployed stress testing tasks.
+// Queries all stress testing tasks deployed by the current user.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS.**
 //
 // @param request - ListBenchmarkTaskRequest
 //
@@ -5276,7 +5294,11 @@ func (client *Client) ListBenchmarkTaskWithOptions(request *ListBenchmarkTaskReq
 
 // Summary:
 //
-// Lists all deployed stress testing tasks.
+// Queries all stress testing tasks deployed by the current user.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS.**
 //
 // @param request - ListBenchmarkTaskRequest
 //
@@ -5295,21 +5317,23 @@ func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_res
 
 // Summary:
 //
-// Retrieves a list of dynamic parameters for a specified service.
+// Queries the list of dynamic parameters under a specified service.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// - `ClusterId` specifies the service\\"s region.
+// - This API operation queries the list of dynamic parameters under a specific service.
 //
-// - `ConfigType` specifies the configuration type. Only `service` is supported.
+// - ClusterId specifies the region to which the service belongs.
 //
-// - `Name` specifies the service name.
+// - ConfigType currently supports only the `service` type.
 //
-// - Use the `Page` and `PageSize` parameters to paginate the results.
+// - Name specifies the service name.
 //
-// - The response contains the details of the dynamic parameters and pagination information.
+// - Use the Page and PageSize parameters for paged query. By default, 100 records are displayed per page, with a maximum of 200.
+//
+// - The response includes dynamic parameter details and paging information.
 //
 // @param request - ListConfigsRequest
 //
@@ -5360,21 +5384,23 @@ func (client *Client) ListConfigsWithOptions(ClusterId *string, ConfigType *stri
 
 // Summary:
 //
-// Retrieves a list of dynamic parameters for a specified service.
+// Queries the list of dynamic parameters under a specified service.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// - `ClusterId` specifies the service\\"s region.
+// - This API operation queries the list of dynamic parameters under a specific service.
 //
-// - `ConfigType` specifies the configuration type. Only `service` is supported.
+// - ClusterId specifies the region to which the service belongs.
 //
-// - `Name` specifies the service name.
+// - ConfigType currently supports only the `service` type.
 //
-// - Use the `Page` and `PageSize` parameters to paginate the results.
+// - Name specifies the service name.
 //
-// - The response contains the details of the dynamic parameters and pagination information.
+// - Use the Page and PageSize parameters for paged query. By default, 100 records are displayed per page, with a maximum of 200.
+//
+// - The response includes dynamic parameter details and paging information.
 //
 // @param request - ListConfigsRequest
 //
@@ -5393,7 +5419,7 @@ func (client *Client) ListConfigs(ClusterId *string, ConfigType *string, Name *s
 
 // Summary:
 //
-// Lists private gateways.
+// Queries a list of private gateways.
 //
 // @param tmpReq - ListGatewayRequest
 //
@@ -5490,7 +5516,7 @@ func (client *Client) ListGatewayWithOptions(tmpReq *ListGatewayRequest, headers
 
 // Summary:
 //
-// Lists private gateways.
+// Queries a list of private gateways.
 //
 // @param request - ListGatewayRequest
 //
@@ -5509,7 +5535,7 @@ func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGat
 
 // Summary:
 //
-// Lists the custom domain names for a private gateway.
+// Queries the list of custom domain names for a dedicated gateway.
 //
 // @param request - ListGatewayDomainsRequest
 //
@@ -5550,7 +5576,7 @@ func (client *Client) ListGatewayDomainsWithOptions(ClusterId *string, GatewayId
 
 // Summary:
 //
-// Lists the custom domain names for a private gateway.
+// Queries the list of custom domain names for a dedicated gateway.
 //
 // @param request - ListGatewayDomainsRequest
 //
@@ -5637,7 +5663,7 @@ func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId 
 
 // Summary:
 //
-// Lists the VPC peering connections for a gateway\\"s private network endpoint.
+// Retrieves the list of cross-VPC connections for the internal access endpoint of a gateway.
 //
 // @param request - ListGatewayIntranetLinkedVpcPeerRequest
 //
@@ -5684,7 +5710,7 @@ func (client *Client) ListGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *str
 
 // Summary:
 //
-// Lists the VPC peering connections for a gateway\\"s private network endpoint.
+// Retrieves the list of cross-VPC connections for the internal access endpoint of a gateway.
 //
 // @param request - ListGatewayIntranetLinkedVpcPeerRequest
 //
@@ -5703,7 +5729,7 @@ func (client *Client) ListGatewayIntranetLinkedVpcPeer(ClusterId *string, Gatewa
 
 // Summary:
 //
-// Obtains the zones supported by a gateway within an intranet.
+// Queries the zones supported by the internal network of a private gateway.
 //
 // @param request - ListGatewayIntranetSupportedZoneRequest
 //
@@ -5744,7 +5770,7 @@ func (client *Client) ListGatewayIntranetSupportedZoneWithOptions(GatewayId *str
 
 // Summary:
 //
-// Obtains the zones supported by a gateway within an intranet.
+// Queries the zones supported by the internal network of a private gateway.
 //
 // @param request - ListGatewayIntranetSupportedZoneRequest
 //
@@ -5763,7 +5789,7 @@ func (client *Client) ListGatewayIntranetSupportedZone(GatewayId *string, Cluste
 
 // Summary:
 //
-// Lists created service groups.
+// Lists existing service groups.
 //
 // @param tmpReq - ListGroupsRequest
 //
@@ -5844,7 +5870,7 @@ func (client *Client) ListGroupsWithOptions(tmpReq *ListGroupsRequest, headers m
 
 // Summary:
 //
-// Lists created service groups.
+// Lists existing service groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -5957,7 +5983,7 @@ func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *
 
 // Summary:
 //
-// Lists the instances in a specified dedicated resource group.
+// Queries the machine instances in a specified dedicated resource group.
 //
 // @param tmpReq - ListResourceInstancesRequest
 //
@@ -6054,7 +6080,7 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 
 // Summary:
 //
-// Lists the instances in a specified dedicated resource group.
+// Queries the machine instances in a specified dedicated resource group.
 //
 // @param request - ListResourceInstancesRequest
 //
@@ -6075,7 +6101,7 @@ func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *strin
 //
 // Summary:
 //
-// Queries a list of services that are deployed in the dedicated resource group.
+// Lists the services deployed in a dedicated resource group.
 //
 // @param request - ListResourceServicesRequest
 //
@@ -6128,7 +6154,7 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 //
 // Summary:
 //
-// Queries a list of services that are deployed in the dedicated resource group.
+// Lists the services deployed in a dedicated resource group.
 //
 // @param request - ListResourceServicesRequest
 //
@@ -6516,7 +6542,7 @@ func (client *Client) ListServiceInstances(ClusterId *string, ServiceName *strin
 
 // Summary:
 //
-// Queries the information about the historical versions of a service.
+// Queries the historical versions of a service.
 //
 // @param request - ListServiceVersionsRequest
 //
@@ -6567,7 +6593,7 @@ func (client *Client) ListServiceVersionsWithOptions(ClusterId *string, ServiceN
 
 // Summary:
 //
-// Queries the information about the historical versions of a service.
+// Queries the historical versions of a service.
 //
 // @param request - ListServiceVersionsRequest
 //
@@ -6762,7 +6788,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// Queries a list of tenant plug-ins.
+// Queries the list of tenant plugins.
 //
 // @param headers - map
 //
@@ -6795,7 +6821,7 @@ func (client *Client) ListTenantAddonsWithOptions(headers map[string]*string, ru
 
 // Summary:
 //
-// Queries a list of tenant plug-ins.
+// Queries the list of tenant plugins.
 //
 // @return ListTenantAddonsResponse
 func (client *Client) ListTenantAddons() (_result *ListTenantAddonsResponse, _err error) {
@@ -6812,7 +6838,7 @@ func (client *Client) ListTenantAddons() (_result *ListTenantAddonsResponse, _er
 
 // Summary:
 //
-// Queries the virtual resource groups for the current user.
+// Retrieves the list of virtual resource groups for the current user.
 //
 // @param request - ListVirtualResourceRequest
 //
@@ -6879,7 +6905,7 @@ func (client *Client) ListVirtualResourceWithOptions(request *ListVirtualResourc
 
 // Summary:
 //
-// Queries the virtual resource groups for the current user.
+// Retrieves the list of virtual resource groups for the current user.
 //
 // @param request - ListVirtualResourceRequest
 //
@@ -6972,7 +6998,7 @@ func (client *Client) MigrateResourceInstance(ClusterId *string, ResourceId *str
 
 // Summary:
 //
-// Resets tenant configurations.
+// Resets the tenant configuration.
 //
 // @param request - ReinstallTenantAddonRequest
 //
@@ -7013,7 +7039,7 @@ func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantA
 
 // Summary:
 //
-// Resets tenant configurations.
+// Resets the tenant configuration.
 //
 // @param request - ReinstallTenantAddonRequest
 //
@@ -7118,8 +7144,18 @@ func (client *Client) RestartServiceWithOptions(ClusterId *string, ServiceName *
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RestartService"),
@@ -7232,7 +7268,7 @@ func (client *Client) ScaleService(ClusterId *string, ServiceName *string, reque
 
 // Summary:
 //
-// Starts a stress testing task.
+// Starts the specified stress testing task.
 //
 // @param request - StartBenchmarkTaskRequest
 //
@@ -7273,7 +7309,7 @@ func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName 
 
 // Summary:
 //
-// Starts a stress testing task.
+// Starts the specified stress testing task.
 //
 // @param request - StartBenchmarkTaskRequest
 //
@@ -7292,7 +7328,7 @@ func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string, re
 
 // Summary:
 //
-// Starts a service.
+// Starts a stopped service.
 //
 // @param request - StartServiceRequest
 //
@@ -7308,8 +7344,18 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("StartService"),
@@ -7333,7 +7379,7 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Starts a service.
+// Starts a stopped service.
 //
 // @param request - StartServiceRequest
 //
@@ -7352,7 +7398,7 @@ func (client *Client) StartService(ClusterId *string, ServiceName *string, reque
 
 // Summary:
 //
-// Stops a stress testing task.
+// Stops a specified stress testing task.
 //
 // @param request - StopBenchmarkTaskRequest
 //
@@ -7393,7 +7439,7 @@ func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *
 
 // Summary:
 //
-// Stops a stress testing task.
+// Stops a specified stress testing task.
 //
 // @param request - StopBenchmarkTaskRequest
 //
@@ -7428,8 +7474,18 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("StopService"),
@@ -7564,7 +7620,11 @@ func (client *Client) UpdateAppService(ClusterId *string, ServiceName *string, r
 
 // Summary:
 //
-// Updates a stress testing task.
+// Updates a specified stress testing task.
+//
+// Description:
+//
+// Updates a specified stress testing task. Only stress testing tasks whose mode is manual or async and that are in the Running state can be updated. You can call the DescribeBenchmarkTask operation to query the task status. If the task is in the Stopped state, you must first call the StartBenchmarkTask operation and wait until the task enters the Running state.
 //
 // @param request - UpdateBenchmarkTaskRequest
 //
@@ -7606,7 +7666,11 @@ func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName
 
 // Summary:
 //
-// Updates a stress testing task.
+// Updates a specified stress testing task.
+//
+// Description:
+//
+// Updates a specified stress testing task. Only stress testing tasks whose mode is manual or async and that are in the Running state can be updated. You can call the DescribeBenchmarkTask operation to query the task status. If the task is in the Stopped state, you must first call the StartBenchmarkTask operation and wait until the task enters the Running state.
 //
 // @param request - UpdateBenchmarkTaskRequest
 //
@@ -7625,13 +7689,13 @@ func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, r
 
 // Summary:
 //
-// Updates a dynamic parameter for a specific cluster and service.
+// Updates the value of a single dynamic parameter under a specified cluster and service.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to update a dynamic parameter by providing its `ClusterId`, `ConfigType`, `Name`, and `ConfigKey`. The request body must contain the new parameter value in the `Value` field. Ensure you provide the correct path parameters to avoid errors.
+// This API allows you to update the value of a specific dynamic parameter by specifying ClusterId, ConfigType, Name, and ConfigKey. The request body must contain the new parameter value Value. Ensure that the provided path parameters are accurate to avoid updating the wrong dynamic parameter.
 //
 // @param request - UpdateConfigRequest
 //
@@ -7678,13 +7742,13 @@ func (client *Client) UpdateConfigWithOptions(ClusterId *string, ConfigType *str
 
 // Summary:
 //
-// Updates a dynamic parameter for a specific cluster and service.
+// Updates the value of a single dynamic parameter under a specified cluster and service.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Use this API to update a dynamic parameter by providing its `ClusterId`, `ConfigType`, `Name`, and `ConfigKey`. The request body must contain the new parameter value in the `Value` field. Ensure you provide the correct path parameters to avoid errors.
+// This API allows you to update the value of a specific dynamic parameter by specifying ClusterId, ConfigType, Name, and ConfigKey. The request body must contain the new parameter value Value. Ensure that the provided path parameters are accurate to avoid updating the wrong dynamic parameter.
 //
 // @param request - UpdateConfigRequest
 //
@@ -7801,11 +7865,11 @@ func (client *Client) UpdateGateway(GatewayId *string, ClusterId *string, reques
 
 // Summary:
 //
-// Adds a gateway label or updates an existing one.
+// Adds a gateway tag or updates an existing gateway tag.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS before you call this operation.**
 //
 // @param request - UpdateGatewayLabelRequest
 //
@@ -7852,11 +7916,11 @@ func (client *Client) UpdateGatewayLabelWithOptions(ClusterId *string, GatewayId
 
 // Summary:
 //
-// Adds a gateway label or updates an existing one.
+// Adds a gateway tag or updates an existing gateway tag.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of EAS before you call this operation.**
 //
 // @param request - UpdateGatewayLabelRequest
 //
@@ -7949,7 +8013,7 @@ func (client *Client) UpdateGroup(ClusterId *string, GroupName *string, request 
 
 // Summary:
 //
-// Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+// Updates the information of a dedicated resource group.
 //
 // @param request - UpdateResourceRequest
 //
@@ -8000,7 +8064,7 @@ func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *s
 
 // Summary:
 //
-// Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+// Updates the information of a dedicated resource group.
 //
 // @param request - UpdateResourceRequest
 //
@@ -8097,7 +8161,7 @@ func (client *Client) UpdateResourceDLink(ClusterId *string, ResourceId *string,
 
 // Summary:
 //
-// Updates the scheduling status of an instance in a dedicated resource group.
+// Updates the scheduling status of a machine instance in a dedicated resource group.
 //
 // @param request - UpdateResourceInstanceRequest
 //
@@ -8152,7 +8216,7 @@ func (client *Client) UpdateResourceInstanceWithOptions(ClusterId *string, Resou
 
 // Summary:
 //
-// Updates the scheduling status of an instance in a dedicated resource group.
+// Updates the scheduling status of a machine instance in a dedicated resource group.
 //
 // @param request - UpdateResourceInstanceRequest
 //
@@ -8171,7 +8235,7 @@ func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *stri
 
 // Summary:
 //
-// Updates the tag of an instance in a resource group.
+// Updates the instance labels in a resource group.
 //
 // @param tmpReq - UpdateResourceInstanceLabelRequest
 //
@@ -8234,7 +8298,7 @@ func (client *Client) UpdateResourceInstanceLabelWithOptions(ClusterId *string, 
 
 // Summary:
 //
-// Updates the tag of an instance in a resource group.
+// Updates the instance labels in a resource group.
 //
 // @param request - UpdateResourceInstanceLabelRequest
 //
@@ -8253,7 +8317,7 @@ func (client *Client) UpdateResourceInstanceLabel(ClusterId *string, ResourceId 
 
 // Summary:
 //
-// Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+// Updates the model or processor of a service. If only the metadata.instance field is updated, this operation scales the service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -8270,6 +8334,14 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.MemberToUpdate) {
 		query["MemberToUpdate"] = request.MemberToUpdate
 	}
@@ -8305,7 +8377,7 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 
 // Summary:
 //
-// Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+// Updates the model or processor of a service. If only the metadata.instance field is updated, this operation scales the service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -8402,7 +8474,7 @@ func (client *Client) UpdateServiceAutoScaler(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Updates the scheduled auto scaling configuration for a service.
+// Updates the scheduled scaling configuration of a service.
 //
 // @param request - UpdateServiceCronScalerRequest
 //
@@ -8453,7 +8525,7 @@ func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, Serv
 
 // Summary:
 //
-// Updates the scheduled auto scaling configuration for a service.
+// Updates the scheduled scaling configuration of a service.
 //
 // @param request - UpdateServiceCronScalerRequest
 //
@@ -8472,11 +8544,11 @@ func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Updates the properties of a service instance. This operation applies only to fencing service instances.
+// Updates the attributes of a service instance. Currently, only service instance isolation is supported.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you call this operation.**
 //
 // @param request - UpdateServiceInstanceRequest
 //
@@ -8537,11 +8609,11 @@ func (client *Client) UpdateServiceInstanceWithOptions(ClusterId *string, Servic
 
 // Summary:
 //
-// Updates the properties of a service instance. This operation applies only to fencing service instances.
+// Updates the attributes of a service instance. Currently, only service instance isolation is supported.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).**
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS) before you call this operation.**
 //
 // @param request - UpdateServiceInstanceRequest
 //
@@ -8560,7 +8632,7 @@ func (client *Client) UpdateServiceInstance(ClusterId *string, ServiceName *stri
 
 // Summary:
 //
-// Adds service tags or updates existing service tags.
+// Creates a service tag or updates an existing service tag.
 //
 // @param request - UpdateServiceLabelRequest
 //
@@ -8607,7 +8679,7 @@ func (client *Client) UpdateServiceLabelWithOptions(ClusterId *string, ServiceNa
 
 // Summary:
 //
-// Adds service tags or updates existing service tags.
+// Creates a service tag or updates an existing service tag.
 //
 // @param request - UpdateServiceLabelRequest
 //
@@ -8626,7 +8698,11 @@ func (client *Client) UpdateServiceLabel(ClusterId *string, ServiceName *string,
 
 // Summary:
 //
-// Updates the traffic mirroring configurations of a service.
+// Updates the traffic mirror configuration of a service.
+//
+// Description:
+//
+// Updates the traffic mirror configuration of a service. Before calling this operation, you must enable traffic mirroring for the target service by calling CreateServiceMirror. If traffic mirroring is not enabled, an InvalidServiceMirror.NotFound error is returned.
 //
 // @param request - UpdateServiceMirrorRequest
 //
@@ -8677,7 +8753,11 @@ func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceN
 
 // Summary:
 //
-// Updates the traffic mirroring configurations of a service.
+// Updates the traffic mirror configuration of a service.
+//
+// Description:
+//
+// Updates the traffic mirror configuration of a service. Before calling this operation, you must enable traffic mirroring for the target service by calling CreateServiceMirror. If traffic mirroring is not enabled, an InvalidServiceMirror.NotFound error is returned.
 //
 // @param request - UpdateServiceMirrorRequest
 //
@@ -8696,21 +8776,21 @@ func (client *Client) UpdateServiceMirror(ClusterId *string, ServiceName *string
 
 // Summary:
 //
-// Updates a service rollout.
+// Updates a service rollout plan.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request notes
 //
-// - **Provide at least one parameter**: Specify at least one of the `Partition`, `Batch`, or `Paused` parameters.
+// - **Provide at least one parameter**: Specify at least one of the `Partition`, `Batch`, or `Paused` parameters in the request.
 //
-// - **Mutually exclusive strategies**: You cannot specify both the `Partition` and `Batch` parameters in the same request.
+// - **Mutually exclusive parameters**: The `Partition` and `Batch` parameters are mutually exclusive.
 //
-// - **Immediate effect**: Updates take effect immediately and affect ongoing service rollouts.
+// - **Immediate effect**: Updates take effect immediately and affect the ongoing service rollout process.
 //
-// - **Rollback**: You can perform a rollback by increasing the `Partition` value. However, this is not an automatic process, and you must manually update the service image.
+// - **Rollback operations**: Increase the `Partition` value to roll back to a previous version. This action does not trigger automatically and requires a manual update of the service image.
 //
-// - **Pause does not affect parameters**: Pausing a rollout does not change the configured `Partition` or `Batch` parameters. It only suspends the current rollout strategy.
+// - **Pausing does not affect parameters**: Pausing the rollout does not change the configured `Partition` or `Batch` parameters. It only pauses the execution of the current policy.
 //
 // @param request - UpdateServiceRolloutRequest
 //
@@ -8765,21 +8845,21 @@ func (client *Client) UpdateServiceRolloutWithOptions(ClusterId *string, Service
 
 // Summary:
 //
-// Updates a service rollout.
+// Updates a service rollout plan.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request notes
 //
-// - **Provide at least one parameter**: Specify at least one of the `Partition`, `Batch`, or `Paused` parameters.
+// - **Provide at least one parameter**: Specify at least one of the `Partition`, `Batch`, or `Paused` parameters in the request.
 //
-// - **Mutually exclusive strategies**: You cannot specify both the `Partition` and `Batch` parameters in the same request.
+// - **Mutually exclusive parameters**: The `Partition` and `Batch` parameters are mutually exclusive.
 //
-// - **Immediate effect**: Updates take effect immediately and affect ongoing service rollouts.
+// - **Immediate effect**: Updates take effect immediately and affect the ongoing service rollout process.
 //
-// - **Rollback**: You can perform a rollback by increasing the `Partition` value. However, this is not an automatic process, and you must manually update the service image.
+// - **Rollback operations**: Increase the `Partition` value to roll back to a previous version. This action does not trigger automatically and requires a manual update of the service image.
 //
-// - **Pause does not affect parameters**: Pausing a rollout does not change the configured `Partition` or `Batch` parameters. It only suspends the current rollout strategy.
+// - **Pausing does not affect parameters**: Pausing the rollout does not change the configured `Partition` or `Batch` parameters. It only pauses the execution of the current policy.
 //
 // @param request - UpdateServiceRolloutRequest
 //
@@ -8864,7 +8944,7 @@ func (client *Client) UpdateServiceSafetyLock(ClusterId *string, ServiceName *st
 
 // Summary:
 //
-// Updates the version of a service or rolls back the service to a specific version.
+// Updates the current version of a service to a historical version to enable rollback.
 //
 // @param request - UpdateServiceVersionRequest
 //
@@ -8911,7 +8991,7 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 
 // Summary:
 //
-// Updates the version of a service or rolls back the service to a specific version.
+// Updates the current version of a service to a historical version to enable rollback.
 //
 // @param request - UpdateServiceVersionRequest
 //
@@ -8930,7 +9010,81 @@ func (client *Client) UpdateServiceVersion(ClusterId *string, ServiceName *strin
 
 // Summary:
 //
-// Updates the information about a virtual resource group.
+// Updates the remarks for a service version.
+//
+// Description:
+//
+// Updates the traffic mirroring configuration for a service. Before you call this operation, you must enable traffic mirroring for the target service by calling CreateServiceMirror. If traffic mirroring is not enabled, the InvalidServiceMirror.NotFound error is returned.
+//
+// @param request - UpdateServiceVersionRemarkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceVersionRemarkResponse
+func (client *Client) UpdateServiceVersionRemarkWithOptions(ClusterId *string, ServiceName *string, Version *string, request *UpdateServiceVersionRemarkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceVersionRemarkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Remark) {
+		body["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateServiceVersionRemark"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/version/" + dara.PercentEncode(dara.StringValue(Version)) + "/remark"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServiceVersionRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the remarks for a service version.
+//
+// Description:
+//
+// Updates the traffic mirroring configuration for a service. Before you call this operation, you must enable traffic mirroring for the target service by calling CreateServiceMirror. If traffic mirroring is not enabled, the InvalidServiceMirror.NotFound error is returned.
+//
+// @param request - UpdateServiceVersionRemarkRequest
+//
+// @return UpdateServiceVersionRemarkResponse
+func (client *Client) UpdateServiceVersionRemark(ClusterId *string, ServiceName *string, Version *string, request *UpdateServiceVersionRemarkRequest) (_result *UpdateServiceVersionRemarkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceVersionRemarkResponse{}
+	_body, _err := client.UpdateServiceVersionRemarkWithOptions(ClusterId, ServiceName, Version, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the information of a virtual resource group.
 //
 // @param request - UpdateVirtualResourceRequest
 //
@@ -8985,7 +9139,7 @@ func (client *Client) UpdateVirtualResourceWithOptions(ClusterId *string, Virtua
 
 // Summary:
 //
-// Updates the information about a virtual resource group.
+// Updates the information of a virtual resource group.
 //
 // @param request - UpdateVirtualResourceRequest
 //

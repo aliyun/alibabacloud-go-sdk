@@ -30,26 +30,51 @@ type iListBenchmarkTaskRequest interface {
 }
 
 type ListBenchmarkTaskRequest struct {
-	// The filter used to query tasks. If you specify this parameter, the system returns tasks whose names or associated service names match the filter value.
+	// The filter parameter. If specified, the system searches for records that match the specified value in the EAS service name and stress testing task name.
 	//
 	// example:
 	//
 	// test_bench
-	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The model ID.
+	//
+	// example:
+	//
+	// Qwen3.5-27B
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	Order   *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The sort order. Valid values:
+	//
+	// - desc: Descending order. This is the default value.
+	//
+	// - asc: Ascending order.
+	//
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number of the stress testing task list. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the Elastic Algorithm Service (EAS) service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	// The number of stress testing tasks to return on each page. Default value: 100.
 	//
 	// example:
 	//
 	// 10
-	PageSize      *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request method for stress testing. Valid values:
+	//
+	// - concurrency: Fixed concurrency mode.
+	//
+	// - requestRate: Fixed request rate mode.
+	//
+	// - peakThroughput: Peak throughput mode.
+	//
+	// example:
+	//
+	// requestRate
 	RequestMethod *string `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
 	// The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
@@ -57,8 +82,18 @@ type ListBenchmarkTaskRequest struct {
 	//
 	// test_bench_srv
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sort field.
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The execution status used to filter stress testing tasks.
+	//
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListBenchmarkTaskRequest) String() string {

@@ -16,13 +16,13 @@ type iUpdateVirtualResourceResponseBody interface {
 }
 
 type UpdateVirtualResourceResponseBody struct {
-	// The returned message.
+	// The operation result message.
 	//
 	// example:
 	//
 	// Successfully updated virtual resource eas-vr-npovr28onap1xxxxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

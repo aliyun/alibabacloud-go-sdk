@@ -20,7 +20,7 @@ type iCreateConfigResponseBody interface {
 }
 
 type CreateConfigResponseBody struct {
-	// The creation time.
+	// The creation time in UTC, in RFC 3339 format.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateConfigResponseBody struct {
 	//
 	// model-config
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The update time.
+	// The update time in UTC, in RFC 3339 format.
 	//
 	// example:
 	//

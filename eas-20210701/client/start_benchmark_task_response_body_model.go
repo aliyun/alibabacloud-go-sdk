@@ -16,7 +16,7 @@ type iStartBenchmarkTaskResponseBody interface {
 }
 
 type StartBenchmarkTaskResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//

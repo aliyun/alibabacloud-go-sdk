@@ -18,9 +18,9 @@ type iCreateResourceInstancesResponseBody interface {
 }
 
 type CreateResourceInstancesResponseBody struct {
-	// A list of machine instance IDs.
+	// The list of machine instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The message returned for a successful operation.
+	// The message returned when the operation is successful.
 	//
 	// example:
 	//

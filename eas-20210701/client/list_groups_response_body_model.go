@@ -24,13 +24,13 @@ type iListGroupsResponseBody interface {
 type ListGroupsResponseBody struct {
 	// The list of service groups.
 	Groups []*Group `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The current page number of the returned group list.
+	// The current page number of the group list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of groups displayed per page.
+	// The number of groups returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListGroupsResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of service groups.
+	// The total count.
 	//
 	// example:
 	//

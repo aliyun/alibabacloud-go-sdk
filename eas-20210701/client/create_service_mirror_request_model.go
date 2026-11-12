@@ -16,13 +16,13 @@ type iCreateServiceMirrorRequest interface {
 }
 
 type CreateServiceMirrorRequest struct {
-	// The percentage of the traffic that is mirrored to the destination service. Valid values: 0 to 100.
+	// The ratio. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 30
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The instances.
+	// The list of service instances.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 

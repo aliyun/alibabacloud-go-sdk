@@ -24,13 +24,13 @@ type iCreateResourceResponseBody interface {
 }
 
 type CreateResourceResponseBody struct {
-	// The ID of the cluster that contains the resource group.
+	// The ID of the cluster to which the resource group belongs.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The instance IDs.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The UID of the resource group owner.
 	//
@@ -44,7 +44,7 @@ type CreateResourceResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

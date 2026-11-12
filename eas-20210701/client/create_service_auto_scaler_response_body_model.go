@@ -16,7 +16,7 @@ type iCreateServiceAutoScalerResponseBody interface {
 }
 
 type CreateServiceAutoScalerResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//

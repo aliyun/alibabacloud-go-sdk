@@ -64,7 +64,7 @@ type iDescribeResourceResponseBody interface {
 }
 
 type DescribeResourceResponseBody struct {
-	// The ID of the cluster that contains the resource group.
+	// The ID of the cluster where the resource group resides.
 	//
 	// example:
 	//
@@ -82,19 +82,19 @@ type DescribeResourceResponseBody struct {
 	//
 	// 8
 	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	// The time the resource group was created.
+	// The time when the resource group was created, in UTC and RFC 3339 format.
 	//
 	// example:
 	//
 	// 2020-05-19T14:19:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Additional information, such as the VPC connection status and the SLS log status.
+	// The additional information, such as the VPC connectivity status and Simple Log Service status.
 	//
 	// example:
 	//
 	// {"vswitch_id":"vsw-bp17uo6xebcusy****","gpu_share":true,"aux_vswitch_id_list":["vsw-bp13b3pvjap3vxn****","vsw-bp1nls8o5hk8mt8*****"],"security_group_id":"sg-bp1j1z7297hcink*****","vpc_id":"vpc-bp1kjr3rfyhx01*****","destination_cidr":"172.16.0.12/28","role_arn":"acs:ram::1157703270*****:role/AliyunServiceRoleForPaiEas","sls_project":"","sls_logstore":"","sls_status":"ResourceReady","sls_message":"","update_time":""}
 	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// The features that the resource group supports.
+	// The set of features supported by the resource group.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// The total number of GPUs.
 	//
@@ -108,31 +108,31 @@ type DescribeResourceResponseBody struct {
 	//
 	// 2
 	GpuUsed *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
-	// The total number of instances in the resource group.
+	// The total number of machine instances in the resource group.
 	//
 	// example:
 	//
 	// 4
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The maximum number of CPU cores that can be allocated to a single instance in the resource group.
+	// The maximum number of allocatable CPU cores per node in the resource group.
 	//
 	// example:
 	//
 	// 16
 	InstanceMaxAllocatableCPU *int32 `json:"InstanceMaxAllocatableCPU,omitempty" xml:"InstanceMaxAllocatableCPU,omitempty"`
-	// The maximum number of GPUs that can be allocated to a single instance in the resource group.
+	// The maximum number of allocatable GPUs per node in the resource group.
 	//
 	// example:
 	//
 	// 2
 	InstanceMaxAllocatableGPU *float32 `json:"InstanceMaxAllocatableGPU,omitempty" xml:"InstanceMaxAllocatableGPU,omitempty"`
-	// The maximum amount of memory that can be allocated to a single instance in the resource group, in MB.
+	// The maximum allocatable memory size per node in the resource group.
 	//
 	// example:
 	//
 	// 2048
 	InstanceMaxAllocatableMemory *int32 `json:"InstanceMaxAllocatableMemory,omitempty" xml:"InstanceMaxAllocatableMemory,omitempty"`
-	// The total memory size, in MB.
+	// The total memory, in MB.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeResourceResponseBody struct {
 	//
 	// 2048
 	MemoryUsed *int32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	// A message that provides details about the status of the resource group.
+	// The returned message.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type DescribeResourceResponseBody struct {
 	//
 	// 14401087478****
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The total number of pay-as-you-go instances in the resource group.
+	// The total number of pay-as-you-go machine instances in the resource group.
 	//
 	// example:
 	//
 	// 3
 	PostPaidInstanceCount *int32 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
-	// The total number of subscription instances in the resource group.
+	// The total number of subscription machine instances in the resource group.
 	//
 	// example:
 	//
@@ -174,23 +174,23 @@ type DescribeResourceResponseBody struct {
 	//
 	// 902976F2-6FAF-5404-8A4D-6CC223***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The Elastic Algorithm Service resource ID.
 	//
 	// example:
 	//
 	// eas-r-glkfpsxuw57x1h*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource group.
+	// The Elastic Algorithm Service resource name.
 	//
 	// example:
 	//
 	// my-resouce****
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource group. Valid values:
+	// The resource group type. Valid values:
 	//
-	// - `Dedicated`: a dedicated resource group.
+	// - Dedicated: dedicated resource group
 	//
-	// - `SelfManaged`: a self-managed resource group.
+	// - SelfManaged: self-managed resource group
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type DescribeResourceResponseBody struct {
 	//
 	// ResourceReady
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time the resource group was last updated.
+	// The time when the resource group was last updated, in UTC and RFC 3339 format.
 	//
 	// example:
 	//

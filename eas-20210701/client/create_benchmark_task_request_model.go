@@ -14,7 +14,7 @@ type iCreateBenchmarkTaskRequest interface {
 }
 
 type CreateBenchmarkTaskRequest struct {
-	// The request body. The body includes the parameters that are set to create a stress testing task.
+	// The configuration parameters of the stress testing task.
 	//
 	// example:
 	//

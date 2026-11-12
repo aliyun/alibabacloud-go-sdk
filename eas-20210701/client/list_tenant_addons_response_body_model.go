@@ -16,7 +16,7 @@ type iListTenantAddonsResponseBody interface {
 }
 
 type ListTenantAddonsResponseBody struct {
-	// The information about the plug-in.
+	// The plugin information.
 	Addons []*ListTenantAddonsResponseBodyAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,9 +66,9 @@ func (s *ListTenantAddonsResponseBody) Validate() error {
 }
 
 type ListTenantAddonsResponseBodyAddons struct {
-	// The attributes of the plug-in.
+	// The plugin attributes.
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The name of the plug-in.
+	// The plugin name.
 	//
 	// example:
 	//

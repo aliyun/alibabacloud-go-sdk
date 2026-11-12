@@ -18,7 +18,7 @@ type iUpdateResourceInstanceResponseBody interface {
 }
 
 type UpdateResourceInstanceResponseBody struct {
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateResourceInstanceResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

@@ -9,6 +9,10 @@ type iCreateAppServiceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *CreateAppServiceRequest
+	GetClientToken() *string
+	SetDryRun(v bool) *CreateAppServiceRequest
+	GetDryRun() *bool
 	SetQuotaId(v string) *CreateAppServiceRequest
 	GetQuotaId() *string
 	SetWorkspaceId(v string) *CreateAppServiceRequest
@@ -28,6 +32,22 @@ type iCreateAppServiceRequest interface {
 }
 
 type CreateAppServiceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 5db780a0-9d3e-4f35-a84a-xxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: performs a dry run and does not create the instance. The system checks whether the required parameters are specified, the request format is valid, the service limits are met, and the ECS inventory is sufficient. If the request fails the check, an error is returned. If the request passes the check, the DryRunOperation error code is returned.
+	//
+	// - false (default): performs a normal request and creates the instance if the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The quota ID.
 	//
 	// example:
@@ -40,17 +60,7 @@ type CreateAppServiceRequest struct {
 	//
 	// 12****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The application service type.
-	//
-	// Valid values:
-	//
-	// 	- LLM
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of the application service.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +74,11 @@ type CreateAppServiceRequest struct {
 	//
 	// v1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The additional configurations that are required for service deployment.
+	// The additional configuration information required for deployment.
+	//
+	// example:
+	//
+	// { "ModelStorage": "oss", "OssPath": "oss://examplebucket/xxxx/" }
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The number of instances.
 	//
@@ -74,7 +88,7 @@ type CreateAppServiceRequest struct {
 	//
 	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// This parameter is required.
 	//
@@ -84,25 +98,25 @@ type CreateAppServiceRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service specifications. Valid values:
 	//
-	// 	- llama_7b_fp16
+	// - llama_7b_fp16
 	//
-	// 	- llama_7b_int8
+	// - llama_7b_int8
 	//
-	// 	- llama_13b_fp16
+	// - llama_13b_fp16
 	//
-	// 	- llama_7b_int8
+	// - llama_7b_int8
 	//
-	// 	- chatglm_6b_fp16
+	// - chatglm_6b_fp16
 	//
-	// 	- chatglm_6b_int8
+	// - chatglm_6b_int8
 	//
-	// 	- chatglm2_6b_fp16
+	// - chatglm2_6b_fp16
 	//
-	// 	- baichuan_7b_int8
+	// - baichuan_7b_int8
 	//
-	// 	- baichuan_13b_fp16
+	// - baichuan_13b_fp16
 	//
-	// 	- baichuan_7b_fp16
+	// - baichuan_7b_fp16
 	//
 	// This parameter is required.
 	//
@@ -118,6 +132,14 @@ func (s CreateAppServiceRequest) String() string {
 
 func (s CreateAppServiceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppServiceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateAppServiceRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateAppServiceRequest) GetQuotaId() *string {
@@ -150,6 +172,16 @@ func (s *CreateAppServiceRequest) GetServiceName() *string {
 
 func (s *CreateAppServiceRequest) GetServiceSpec() *string {
 	return s.ServiceSpec
+}
+
+func (s *CreateAppServiceRequest) SetClientToken(v string) *CreateAppServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetDryRun(v bool) *CreateAppServiceRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *CreateAppServiceRequest) SetQuotaId(v string) *CreateAppServiceRequest {

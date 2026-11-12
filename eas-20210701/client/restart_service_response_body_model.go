@@ -16,13 +16,13 @@ type iRestartServiceResponseBody interface {
 }
 
 type RestartServiceResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// Service is restarting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

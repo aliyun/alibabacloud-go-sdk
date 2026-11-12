@@ -66,11 +66,13 @@ type iListServicesShrinkRequest interface {
 }
 
 type ListServicesShrinkRequest struct {
+	// Filters services by visibility. PUBLIC indicates a public service, and PRIVATE indicates a private service.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// Specifies whether to enable Auto Scaling for the service.
+	// Specifies whether elastic scaling is enabled for the service.
 	//
 	// example:
 	//
@@ -82,61 +84,65 @@ type ListServicesShrinkRequest struct {
 	//
 	// 19989224166xxxxxxx
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// Specifies whether to enable scheduled auto scaling for the service.
+	// Specifies whether scheduled scaling is enabled for the service.
 	//
 	// example:
 	//
 	// true
 	CronscalerEnabled *bool `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
-	// The keyword for a fuzzy search. This parameter supports fuzzy searches by service name only.
+	// The fuzzy match field. Only fuzzy matching by service name is supported.
 	//
 	// example:
 	//
 	// foo
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The private gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The name of the service group. To learn how to obtain this name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	// The name of the service group. For information about how to obtain the service group name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
 	//
 	// example:
 	//
 	// foo
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Specifies whether to include services that do not belong to any workspace. The default value is true.
+	// Specifies whether to include services that do not belong to any workspace. Default value: true.
 	//
 	// example:
 	//
 	// true
 	IncludeNoWorkspace *bool `json:"IncludeNoWorkspace,omitempty" xml:"IncludeNoWorkspace,omitempty"`
-	// Filters services by label.
+	// The label used to filter services.
+	//
+	// example:
+	//
+	// {"key1":"value1","key2":null}
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - `desc` (default): descending.
+	// - desc: Descending order. This is the default value.
 	//
-	// - `asc`: ascending.
+	// - asc: Ascending order.
 	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the results to return. The default value is 1.
+	// The page number of the service list to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of services to return per page. The default value is 100.
+	// The number of services to return on each page during a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The UID of the primary service. This parameter applies to member services in a service group.
+	// The ID of the primary service that corresponds to the band member service.
 	//
 	// example:
 	//
@@ -154,13 +160,13 @@ type ListServicesShrinkRequest struct {
 	//
 	// example
 	ResourceAliasName *string `json:"ResourceAliasName,omitempty" xml:"ResourceAliasName,omitempty"`
-	// Specifies whether to enable a burstable resource pool for the service.
+	// Specifies whether the burstable resource pool is enabled for the service.
 	//
 	// example:
 	//
 	// true
 	ResourceBurstable *bool `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
-	// The ID of the resource group. To learn how to query for this ID, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	// The ID of the resource group. For information about how to query the resource group ID, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
 	//
 	// example:
 	//
@@ -168,13 +174,13 @@ type ListServicesShrinkRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Deprecated
 	//
-	// The name or ID of the service\\"s resource group.
+	// The name or ID of the resource group to which the service belongs.
 	//
 	// example:
 	//
 	// eas-r-hd0qwy8cxxxx
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of resource the service uses. Valid values:
+	// The type of resource used by the service. Valid values:
 	//
 	// - PublicResource
 	//
@@ -194,13 +200,13 @@ type ListServicesShrinkRequest struct {
 	//
 	// LLMGateway
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// example:
 	//
 	// echo_test
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The status of the service.
+	// The running status of the service.
 	//
 	// example:
 	//
@@ -222,7 +228,7 @@ type ListServicesShrinkRequest struct {
 	//
 	// - LLMGatewayService
 	//
-	// - OfflineTask
+	// - Offline Task
 	//
 	// - SDCluster
 	//
@@ -236,19 +242,19 @@ type ListServicesShrinkRequest struct {
 	//
 	// Standard
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The service UID.
+	// The UID of the service.
 	//
 	// example:
 	//
 	// eas-m-c9iw3yitxxxx
 	ServiceUid *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	// The sort field. By default, results are sorted by timestamp in descending order.
+	// The sort field. By default, timestamp fields are sorted in descending order.
 	//
 	// example:
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Specifies whether the service accepts group traffic. This parameter applies only to services within a service group.
+	// Specifies whether to receive group traffic. This parameter is valid only for group services.
 	//
 	// example:
 	//

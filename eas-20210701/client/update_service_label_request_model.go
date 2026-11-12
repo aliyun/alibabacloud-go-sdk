@@ -17,6 +17,10 @@ type UpdateServiceLabelRequest struct {
 	// The custom service tags.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
 

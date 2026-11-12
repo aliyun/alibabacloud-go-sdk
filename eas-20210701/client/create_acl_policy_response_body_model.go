@@ -18,19 +18,19 @@ type iCreateAclPolicyResponseBody interface {
 }
 
 type CreateAclPolicyResponseBody struct {
-	// The private gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// Successfully add acl policy for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

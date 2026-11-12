@@ -30,7 +30,7 @@ type iDescribeVirtualResourceResponseBody interface {
 }
 
 type DescribeVirtualResourceResponseBody struct {
-	// The time when the virtual resource group was created.
+	// The time when the virtual resource group was created, in UTC in RFC 3339 format.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeVirtualResourceResponseBody struct {
 	//
 	// true
 	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
-	// The collection of features for the virtual resource group. This identifies the attributes that the resource group supports.
+	// The set of features of the virtual resource group, which identifies the capabilities supported by the resource group.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type DescribeVirtualResourceResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of resources in the virtual resource group.
+	// The list of resources contained in the virtual resource group.
 	Resources []*DescribeVirtualResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The number of deployed services.
 	//
@@ -58,13 +58,13 @@ type DescribeVirtualResourceResponseBody struct {
 	//
 	// 1
 	ServiceCount *int32 `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
-	// The time when the virtual resource group was last updated.
+	// The time when the virtual resource group was last updated, in UTC in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2024-10-16T19:52:49Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the virtual resource group.
+	// The virtual resource group ID.
 	//
 	// example:
 	//
@@ -187,31 +187,31 @@ type DescribeVirtualResourceResponseBodyResources struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The scheduling priority of the resource. A larger value indicates a higher priority.
+	// The scheduling priority of the resource. A larger value indicates a higher scheduling priority.
 	//
 	// example:
 	//
 	// 3
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the Lingjun resource quota.
+	// The Lingjun resource quota ID.
 	//
 	// example:
 	//
 	// quota185lqxxxxxx
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The region where the resource is located.
+	// The region where the resource resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the dedicated resource group.
+	// The dedicated resource group ID.
 	//
 	// example:
 	//
 	// eas-r-g55ieatgg3buxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The maximum price for a spot instance in the public resource group.
+	// The maximum price for spot instances in the public resource group.
 	//
 	// example:
 	//

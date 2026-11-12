@@ -192,7 +192,7 @@ type Resource struct {
 	//
 	// example:
 	//
-	// ResourceReady
+	// ResouceReady
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time the resource group was last updated, in ISO 8601 format.
 	//

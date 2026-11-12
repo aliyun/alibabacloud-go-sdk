@@ -16,13 +16,13 @@ type iDescribeServiceRolloutResponseBody interface {
 }
 
 type DescribeServiceRolloutResponseBody struct {
-	// The request ID. This ID is unique to each request and is used for troubleshooting.
+	// The request ID. A unique identifier returned with each request, used for troubleshooting and tracing.
 	//
 	// example:
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the service rollout, including the rollout strategy (`Strategy`) and execution status (`Status`).
+	// The rollout strategy information. Contains the strategy configuration (Strategy) and execution status (Status).
 	Rollout *DescribeServiceRolloutResponseBodyRollout `json:"Rollout,omitempty" xml:"Rollout,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *DescribeServiceRolloutResponseBody) Validate() error {
 }
 
 type DescribeServiceRolloutResponseBodyRollout struct {
-	// The current progress and phase of the rollout.
+	// The rollout execution status. Contains the current rollout progress and phase information.
 	Status *DescribeServiceRolloutResponseBodyRolloutStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
-	// The rollout strategy configuration. This object contains the parameters for a canary release or batch release.
+	// The rollout strategy configuration. Contains the specific configuration parameters for partition-based or batch-based rollout.
 	Strategy *DescribeServiceRolloutResponseBodyRolloutStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -109,47 +109,47 @@ func (s *DescribeServiceRolloutResponseBodyRollout) Validate() error {
 }
 
 type DescribeServiceRolloutResponseBodyRolloutStatus struct {
-	// The identifier for the currently running revision.
+	// The current revision. The identifier of the version that is currently running.
 	//
 	// example:
 	//
 	// service-abc123-v1
 	CurrentRevision *string `json:"CurrentRevision,omitempty" xml:"CurrentRevision,omitempty"`
-	// The scheduled start time for the next batch.
+	// The time when the next batch starts updating, in the format of YYYY/MM/DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026/05/08 16:10:56
 	NextBatchStartTime *string `json:"NextBatchStartTime,omitempty" xml:"NextBatchStartTime,omitempty"`
-	// The current release phase. Valid values:
+	// The rollout phase. Valid values:
 	//
-	// - `Pending`: The rollout is waiting to start.
+	// - Pending: Waiting to start the rollout.
 	//
-	// - `Running`: The rollout is in progress.
+	// - Running: The rollout is in progress.
 	//
-	// - `Paused`: The rollout is paused.
+	// - Paused: The rollout is paused.
 	//
-	// - `Completed`: The rollout is complete.
+	// - Completed: The rollout is completed.
 	//
-	// - `Failed`: The rollout has failed.
+	// - Failed: The rollout failed.
 	//
 	// example:
 	//
 	// Running
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The total number of desired replicas for the service.
+	// The total number of replicas for the service.
 	//
 	// example:
 	//
 	// 10
 	TotalReplicas *int32 `json:"TotalReplicas,omitempty" xml:"TotalReplicas,omitempty"`
-	// The identifier for the target revision.
+	// The update revision. The identifier of the target version to which the service is being updated.
 	//
 	// example:
 	//
 	// service-abc123-v2
 	UpdateRevision *string `json:"UpdateRevision,omitempty" xml:"UpdateRevision,omitempty"`
-	// The number of replicas updated to the new revision.
+	// The number of replicas that have been updated to the new version.
 	//
 	// example:
 	//
@@ -224,9 +224,9 @@ func (s *DescribeServiceRolloutResponseBodyRolloutStatus) Validate() error {
 }
 
 type DescribeServiceRolloutResponseBodyRolloutStrategy struct {
-	// The configuration for a batch release. This object is returned only when the batch release strategy is used.
+	// The batch rollout configuration. This field is returned only if a batch-based rollout strategy is used.
 	Batch *DescribeServiceRolloutResponseBodyRolloutStrategyBatch `json:"Batch,omitempty" xml:"Batch,omitempty" type:"Struct"`
-	// The configuration for a canary release. This object is returned only when the canary release strategy is used.
+	// The partition rollout configuration. This field is returned only if a partition-based rollout strategy is used.
 	Partition *DescribeServiceRolloutResponseBodyRolloutStrategyPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
 }
 
@@ -271,13 +271,13 @@ func (s *DescribeServiceRolloutResponseBodyRolloutStrategy) Validate() error {
 }
 
 type DescribeServiceRolloutResponseBodyRolloutStrategyBatch struct {
-	// The number or percentage of replicas to update in each batch.
+	// The batch size. The number or percentage of replicas to update in each batch.
 	//
 	// example:
 	//
 	// 1
 	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
-	// The time to wait between batches.
+	// The batch interval. The wait time between two consecutive rollout batches.
 	//
 	// example:
 	//
@@ -316,7 +316,7 @@ func (s *DescribeServiceRolloutResponseBodyRolloutStrategyBatch) Validate() erro
 }
 
 type DescribeServiceRolloutResponseBodyRolloutStrategyPartition struct {
-	// Specifies the number or percentage of old replicas to keep. For example, a value of `50%` indicates that 50% of the old replicas are retained.
+	// The partition value. Specifies the number or percentage of old replicas to retain. For example, \\"50%\\" indicates that 50% of the old replicas are retained.
 	//
 	// example:
 	//

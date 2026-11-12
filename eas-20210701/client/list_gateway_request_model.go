@@ -42,7 +42,7 @@ type ListGatewayRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the private gateway. You can obtain the ID from the private_gateway_id field in the response of the ListResources operation.
+	// The ID of the private gateway. For information about how to obtain the ID of a private gateway, see the private_gateway_id field in the response of the ListResources operation.
 	//
 	// example:
 	//
@@ -60,13 +60,17 @@ type ListGatewayRequest struct {
 	//
 	// Application
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// Specifies whether to enable access over the public network.
+	// Specifies whether Internet access is enabled.
 	//
 	// example:
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// Filter by tag.
+	// The label used to filter gateways.
+	//
+	// example:
+	//
+	// {"key1":"value1","key2":null}
 	Label map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sort order.
 	//
@@ -74,25 +78,25 @@ type ListGatewayRequest struct {
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the gateway list to return. The default value is 1.
+	// The page number of the gateway list. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of gateways to return on each page. The default value is 100.
+	// The paging Settings for the number of entries to return per page in a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. You can obtain the ID from the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	// The ID of the resource group. For information about how to obtain the ID of a resource group, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
 	//
 	// example:
 	//
 	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The field to sort by.
+	// The field used for sorting.
 	//
 	// example:
 	//

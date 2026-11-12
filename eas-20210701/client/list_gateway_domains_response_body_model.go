@@ -20,7 +20,7 @@ type iListGatewayDomainsResponseBody interface {
 type ListGatewayDomainsResponseBody struct {
 	// The list of custom domain names.
 	CustomDomains []*ListGatewayDomainsResponseBodyCustomDomains `json:"CustomDomains,omitempty" xml:"CustomDomains,omitempty" type:"Repeated"`
-	// The message returned for the request.
+	// The response message.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *ListGatewayDomainsResponseBody) Validate() error {
 }
 
 type ListGatewayDomainsResponseBodyCustomDomains struct {
-	// The expiration date of the certificate.
+	// The certificate expiration date in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2023-10-25
 	CertificateEndDate *string `json:"CertificateEndDate,omitempty" xml:"CertificateEndDate,omitempty"`
-	// The ID of the SSL certificate attached to the domain name. To obtain the certificate ID, upload or purchase a certificate in the [Digital Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after uploading or purchasing a certificate in [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc&p=cas).
 	//
 	// example:
 	//
 	// 1473**25
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The name of the SSL certificate.
+	// The SSL certificate name.
 	//
 	// example:
 	//
 	// cert-9955038
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The issuance date of the certificate.
+	// The certificate issuance date in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2018-07-13
 	CertificateStartDate *string `json:"CertificateStartDate,omitempty" xml:"CertificateStartDate,omitempty"`
-	// The status of the domain name.
+	// The domain name status.
 	//
 	// example:
 	//
 	// Succeeded
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The time when the domain name was created.
+	// The time when the domain name was created, in UTC and RFC 3339 format.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ type ListGatewayDomainsResponseBodyCustomDomains struct {
 	//
 	// test.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The type of the domain name.
+	// The domain name type.
 	//
 	// example:
 	//
 	// intranet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the domain name was last updated.
+	// The time when the domain name was last updated, in UTC and RFC 3339 format.
 	//
 	// example:
 	//

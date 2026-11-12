@@ -16,15 +16,17 @@ type iCreateServiceInstanceTokenRequest interface {
 }
 
 type CreateServiceInstanceTokenRequest struct {
-	// Type of URL to return. Valid values:
+	// The type of URL to retrieve. Valid values:
 	//
-	// - **WorkBench**: Log on to the container using Workbench.
+	// - **WorkBench**: Logs on to the container through the Workbench page.
+	//
+	// - **WebShell**: Logs on to the container through a WebSocket URL. This value is not supported for processor-type services or services created before June 2026.
 	//
 	// example:
 	//
 	// WorkBench
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// Name of the service worker. Call the ListServiceContainers operation to get the worker name.
+	// The name of the service worker. You can call the ListServiceContainers operation to obtain the worker name.
 	//
 	// example:
 	//

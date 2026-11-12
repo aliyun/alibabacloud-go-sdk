@@ -38,7 +38,7 @@ type CreateAppServiceResponseBody struct {
 	//
 	// http://pai-eas-vpc.cn-shanghai.****
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// The region ID of the service.
+	// The region where the service is located.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type CreateAppServiceResponseBody struct {
 	//
 	// eas-m-aaxxxddf
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// example:
 	//
 	// foo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service state.
+	// The status of the service.
 	//
 	// example:
 	//

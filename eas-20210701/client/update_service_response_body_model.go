@@ -16,13 +16,13 @@ type iUpdateServiceResponseBody interface {
 }
 
 type UpdateServiceResponseBody struct {
-	// The returned message.
+	// The operation result message.
 	//
 	// example:
 	//
 	// Succeed to update service [foo] in region [cn-shanghai]
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

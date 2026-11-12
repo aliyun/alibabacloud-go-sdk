@@ -22,13 +22,13 @@ type iListVirtualResourceResponseBody interface {
 }
 
 type ListVirtualResourceResponseBody struct {
-	// The page number of the returned list of virtual resource groups.
+	// The page number of the returned virtual resource group list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of virtual resource groups returned on each page.
+	// The number of virtual resource groups displayed per page.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListVirtualResourceResponseBody) Validate() error {
 }
 
 type ListVirtualResourceResponseBodyVirtualResources struct {
-	// The time when the virtual resource group was created.
+	// The time when the virtual resource group was created, in UTC in RFC 3339 format.
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type ListVirtualResourceResponseBodyVirtualResources struct {
 	//
 	// 1
 	ServiceCount *int32 `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
-	// The time when the virtual resource group was last updated.
+	// The time when the virtual resource group was last updated, in UTC in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2024-10-16T19:52:49Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the virtual resource group.
+	// The virtual resource group ID.
 	//
 	// example:
 	//
 	// eas-vr-npovr28onap1xxxxxx
 	VirtualResourceId *string `json:"VirtualResourceId,omitempty" xml:"VirtualResourceId,omitempty"`
-	// The name of the virtual resource group.
+	// The virtual resource group name.
 	//
 	// example:
 	//

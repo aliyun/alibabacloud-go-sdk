@@ -48,7 +48,7 @@ type iDescribeGatewayResponseBody interface {
 }
 
 type DescribeGatewayResponseBody struct {
-	// The billing method.
+	// The billing method. Valid values:
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeGatewayResponseBody struct {
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// The status of public network access enablement or disablement.
+	// The status of public network access. Valid values:
 	//
 	// example:
 	//
@@ -107,15 +107,21 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
-	IntranetDomain  *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	IntranetEnabled *bool   `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
-	// Indicates whether the dedicated gateway is the default one.
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// Indicates whether internal network access is enabled. A value of true indicates that internal network access is enabled. A value of false indicates that internal network access is not enabled.
 	//
 	// example:
 	//
 	// true
-	IsDefault *bool                                `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels    []*DescribeGatewayResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	IntranetEnabled *bool `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
+	// Indicates whether the dedicated gateway is the default gateway.
+	//
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The list of gateway labels.
+	Labels []*DescribeGatewayResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The number of nodes in the dedicated gateway.
 	//
 	// example:
@@ -134,7 +140,7 @@ type DescribeGatewayResponseBody struct {
 	//
 	// true
 	SSLRedirectionEnabled *bool `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
-	// The status of the dedicated gateway.
+	// The status of the dedicated gateway. Valid values:
 	//
 	// example:
 	//
@@ -332,10 +338,14 @@ func (s *DescribeGatewayResponseBody) Validate() error {
 }
 
 type DescribeGatewayResponseBodyLabels struct {
+	// The gateway label key.
+	//
 	// example:
 	//
 	// key1
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// The gateway label value.
+	//
 	// example:
 	//
 	// value1

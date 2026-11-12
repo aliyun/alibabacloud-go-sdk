@@ -16,13 +16,13 @@ type iDeleteConfigResponseBody interface {
 }
 
 type DeleteConfigResponseBody struct {
-	// The number of configurations deleted.
+	// The number of deleted configurations.
 	//
 	// example:
 	//
 	// 1
 	Deleted *int32 `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	// A message indicating the operation result.
+	// The operation result message.
 	//
 	// example:
 	//

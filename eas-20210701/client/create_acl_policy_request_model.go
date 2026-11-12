@@ -16,7 +16,7 @@ type iCreateAclPolicyRequest interface {
 }
 
 type CreateAclPolicyRequest struct {
-	// The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+	// The whitelist of IP address segments that are allowed to access the VPC.
 	//
 	// This parameter is required.
 	AclPolicyList []*CreateAclPolicyRequestAclPolicyList `json:"AclPolicyList,omitempty" xml:"AclPolicyList,omitempty" type:"Repeated"`
@@ -68,13 +68,13 @@ func (s *CreateAclPolicyRequest) Validate() error {
 }
 
 type CreateAclPolicyRequestAclPolicyList struct {
-	// The comment on the IP CIDR block in the VPC that can access the private gateway.
+	// The description of the IP address segment that is allowed to access the VPC.
 	//
 	// example:
 	//
 	// default
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The IP CIDR block in the VPC that can access the private gateway.
+	// The IP address segment that is allowed to access the VPC.
 	//
 	// This parameter is required.
 	//

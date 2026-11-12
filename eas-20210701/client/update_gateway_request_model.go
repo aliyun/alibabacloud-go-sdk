@@ -30,25 +30,25 @@ type iUpdateGatewayRequest interface {
 }
 
 type UpdateGatewayRequest struct {
-	// Specifies whether to enable public network access. The default value is false.
+	// Specifies whether to enable public network access. Default value: false.
 	//
 	// example:
 	//
 	// false
 	EnableInternet *bool `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
-	// Specifies whether to enable intranet access. The default value is true.
+	// Specifies whether to enable internal network access. Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
-	// Specifies whether to enable HTTP to HTTPS redirection. The default value is false.
+	// Specifies whether to enable HTTP to HTTPS redirection. Default value: false.
 	//
 	// example:
 	//
 	// false
 	EnableSSLRedirection *bool `json:"EnableSSLRedirection,omitempty" xml:"EnableSSLRedirection,omitempty"`
-	// The instance type of the private gateway. Valid values:
+	// The instance type used by the private gateway. Valid values:
 	//
 	// - 2c4g
 	//
@@ -62,7 +62,7 @@ type UpdateGatewayRequest struct {
 	//
 	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies whether the gateway is the default private gateway.
+	// Specifies whether the private gateway is the default private gateway.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type UpdateGatewayRequest struct {
 	//
 	// mygateway1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of private gateway nodes.
+	// The number of nodes in the private gateway.
 	//
 	// example:
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The list of vSwitches. This parameter applies only to application-type dedicated gateways.
+	// The list of vSwitches. This parameter applies only to dedicated gateways for applications.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The VPC where the gateway resides. This parameter applies only to application-type dedicated gateways.
+	// The ID of the VPC to which the gateway belongs. This parameter applies only to dedicated gateways for applications.
 	//
 	// example:
 	//

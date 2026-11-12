@@ -21,14 +21,18 @@ type iCreateGroupRequest interface {
 
 type CreateGroupRequest struct {
 	// The user-defined labels.
+	//
+	// example:
+	//
+	// {"key1":"value1","key2":null}
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The name of the group.
+	// The name of the service group. Only lowercase letters, digits, and underscores are allowed. The format is [a-z0-9_]+.
 	//
 	// example:
 	//
 	// foo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The virtual private cloud (VPC) configuration.
+	// The VPC configuration.
 	Network *CreateGroupRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The workspace ID.
 	//
@@ -92,7 +96,7 @@ func (s *CreateGroupRequest) Validate() error {
 }
 
 type CreateGroupRequestNetwork struct {
-	// The dedicated gateway ID.
+	// The dedicated gateway ID. This parameter is required. If this parameter is not specified, the request fails.
 	//
 	// example:
 	//
@@ -110,7 +114,7 @@ type CreateGroupRequestNetwork struct {
 	//
 	// vsw-bp1xxxxxxwmssgq28gye8
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The VPC ID. This parameter is required when GatewayId is set to an ALB gateway, and you must specify the VPC ID associated with the gateway. You can call the ListGatewayIntranetLinkedVpc operation to query the association.
 	//
 	// example:
 	//

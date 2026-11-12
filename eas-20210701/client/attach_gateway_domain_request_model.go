@@ -47,7 +47,7 @@ func (s *AttachGatewayDomainRequest) Validate() error {
 }
 
 type AttachGatewayDomainRequestCustomDomain struct {
-	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after uploading or purchasing a certificate in [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc&p=cas).
 	//
 	// example:
 	//
@@ -62,12 +62,6 @@ type AttachGatewayDomainRequestCustomDomain struct {
 	// test.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The domain name type.
-	//
-	// Valid value:
-	//
-	// 	- intranet: internal network.
-	//
-	// 	- internet: public network.
 	//
 	// This parameter is required.
 	//

@@ -20,13 +20,13 @@ type iCreateBenchmarkTaskResponseBody interface {
 }
 
 type CreateBenchmarkTaskResponseBody struct {
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// Benchmark  task [foo] is Creating
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the region where the stress testing task is performed.
+	// The region where the stress testing task resides.
 	//
 	// example:
 	//

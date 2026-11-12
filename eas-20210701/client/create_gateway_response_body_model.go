@@ -32,7 +32,7 @@ type CreateGatewayResponseBody struct {
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The message returned for the request.
+	// The message returned in the response.
 	//
 	// example:
 	//

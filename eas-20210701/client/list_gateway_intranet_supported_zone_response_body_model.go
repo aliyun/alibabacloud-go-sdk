@@ -22,7 +22,7 @@ type ListGatewayIntranetSupportedZoneResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zones that are supported by the region.
+	// The list of zones supported in the current region.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 

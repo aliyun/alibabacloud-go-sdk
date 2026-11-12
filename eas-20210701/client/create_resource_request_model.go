@@ -36,9 +36,9 @@ type iCreateResourceRequest interface {
 type CreateResourceRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - `false` (default): Auto-renewal is disabled.
+	// - false (default): disables auto-renewal.
 	//
-	// - `true`: Auto-renewal is enabled.
+	// - true: enables auto-renewal.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type CreateResourceRequest struct {
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - `PrePaid`: subscription.
+	// - PrePaid: subscription.
 	//
-	// - `PostPaid`: pay-as-you-go.
+	// - PostPaid: pay-as-you-go.
 	//
-	// > This parameter is required when `ResourceType` is set to `Dedicated`.
+	// > This parameter is required when ResourceType is set to Dedicated.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateResourceRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The number of instances.
 	//
-	// > This parameter is required when `ResourceType` is set to `Dedicated`.
+	// > This parameter is required when ResourceType is set to Dedicated.
 	//
 	// example:
 	//
@@ -66,13 +66,17 @@ type CreateResourceRequest struct {
 	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
 	// The ECS instance type.
 	//
-	// > This parameter is required when `ResourceType` is set to `Dedicated`.
+	// > This parameter is required when ResourceType is set to Dedicated.
 	//
 	// example:
 	//
 	// ecs.c6.8xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
 	// The user-defined labels.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The name of the resource group.
 	//
@@ -82,11 +86,11 @@ type CreateResourceRequest struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// - `Dedicated`: a dedicated resource group.
+	// - Dedicated: dedicated resource group.
 	//
-	// - `SelfManaged`: a self-managed resource group.
+	// - SelfManaged: self-managed resource group.
 	//
-	// > You must be whitelisted to use self-managed resource groups.
+	// > To use a self-managed resource group, you must apply to be added to the whitelist.
 	//
 	// example:
 	//
@@ -94,14 +98,19 @@ type CreateResourceRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The configuration options for the self-managed resource group.
 	SelfManagedResourceOptions *CreateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
-	// The size of the system disk, in GiB. The value must be between 200 and 2,000. If unspecified, the default is 200 GiB.
+	// The size of the system cloud disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
 	//
 	// example:
 	//
 	// 200
-	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	UsageMode      *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
-	// The zone in which to create the instance.
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The usage mode of the resource group. Valid values: inference (inference service resource group) and sandbox (sandbox resource group).
+	//
+	// example:
+	//
+	// inference
+	UsageMode *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
+	// The zone to which the instance belongs.
 	//
 	// example:
 	//
@@ -232,11 +241,15 @@ type CreateResourceRequestSelfManagedResourceOptions struct {
 	//
 	// cf0386f250f2545689ca7fdd1cd******
 	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// The node labels to match, specified as key-value pairs.
+	// The label key-value pairs for nodes.
+	//
+	// example:
+	//
+	// "key1": "value1"
 	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	// A list of tolerations for node taints.
+	// The list of tolerations for node taints.
 	NodeTolerations []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	// The name of the RAM role that grants PAI-EAS the required permissions.
+	// The name of the RAM role to which PAI-EAS-related permissions are granted.
 	//
 	// example:
 	//
@@ -302,25 +315,25 @@ func (s *CreateResourceRequestSelfManagedResourceOptions) Validate() error {
 }
 
 type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
-	// The effect of the toleration.
+	// The effect.
 	//
 	// example:
 	//
 	// NoSchedule
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// The key of the toleration.
+	// The key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The toleration operator, which defines the relationship between the key and value.
+	// The operator that defines the relationship between the key and the value.
 	//
 	// example:
 	//
 	// Equal
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The toleration value.
+	// The value.
 	//
 	// example:
 	//

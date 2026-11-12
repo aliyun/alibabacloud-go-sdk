@@ -22,13 +22,13 @@ type iListBenchmarkTaskResponseBody interface {
 }
 
 type ListBenchmarkTaskResponseBody struct {
-	// The page number of the returned list of tasks.
+	// The page number of the returned stress testing task list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of tasks to return on each page.
+	// The number of stress testing tasks returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListBenchmarkTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of tasks.
 	Tasks []*ListBenchmarkTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of tasks.
+	// The total number of tasks queried.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListBenchmarkTaskResponseBodyTasks struct {
 	//
 	// 2
 	AvailableAgent *int64 `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
-	// The time when the stress testing task was created.
+	// The time when the stress testing task was created. The time is in UTC and follows the RFC3339 format.
 	//
 	// example:
 	//
 	// 2020-02-04T02:43:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// A summary of the task.
+	// The summary information of the service.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListBenchmarkTaskResponseBodyTasks struct {
 	//
 	// benchmark-larec-test-1076
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The time when the stress testing task was last updated.
+	// The time when the stress testing task was updated. The time is in UTC and follows the RFC3339 format.
 	//
 	// example:
 	//

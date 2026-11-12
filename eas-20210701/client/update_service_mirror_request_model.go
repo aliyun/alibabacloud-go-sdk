@@ -16,13 +16,13 @@ type iUpdateServiceMirrorRequest interface {
 }
 
 type UpdateServiceMirrorRequest struct {
-	// The percentage of traffic that you want to mirror. Valid values: 0 to 100.
+	// The traffic ratio. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 30
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// The service instances.
+	// The list of service instances.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 

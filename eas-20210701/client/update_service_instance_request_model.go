@@ -20,31 +20,31 @@ type iUpdateServiceInstanceRequest interface {
 }
 
 type UpdateServiceInstanceRequest struct {
-	// Specifies whether the instance is a replica.
+	// Specifies whether the current instance is an instance unit.
 	//
 	// example:
 	//
 	// false
 	IsReplica *bool `json:"IsReplica,omitempty" xml:"IsReplica,omitempty"`
-	// Specifies whether to fence the service instance. After an instance is fenced, it is no longer managed by the VPC controller and a new instance is created. The fenced instance is reserved for troubleshooting or debugging. Note: You cannot unfence an instance. Valid values:
+	// Specifies whether to isolate the service instance. After an instance is isolated, it is no longer managed by the controller, and a new instance is created. The isolated instance is used to preserve the state or for debugging. Note: An isolated instance cannot be unisolated. Valid values:
 	//
-	// - true: Fences the instance.
+	// - true: The instance is isolated.
 	//
 	// example:
 	//
 	// true
 	Detach *bool `json:"Detach,omitempty" xml:"Detach,omitempty"`
-	// > This parameter is for an invitational preview. It is not generally available.
+	// >This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// 0
 	Hibernate *bool `json:"Hibernate,omitempty" xml:"Hibernate,omitempty"`
-	// Specifies whether to isolate the instance. Valid values:
+	// Specifies whether the instance receives traffic. Valid values:
 	//
-	// - true: The instance is isolated and does not receive traffic.
+	// - true: The instance receives traffic.
 	//
-	// - false: The instance is not isolated and receives traffic.
+	// - false: The instance does not receive traffic.
 	//
 	// example:
 	//

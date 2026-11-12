@@ -22,13 +22,13 @@ type iListServiceVersionsResponseBody interface {
 }
 
 type ListServiceVersionsResponseBody struct {
-	// The page number.
+	// The current page number of the returned historical versions.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of historical versions returned on each page.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListServiceVersionsResponseBody struct {
 	//
 	// E089D584-B6F4-50C4-9902-DA2295B7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of versions.
 	//
 	// example:
 	//
 	// 166
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The historical versions of the service.
+	// The list of versions.
 	Versions []*ListServiceVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -117,19 +117,19 @@ func (s *ListServiceVersionsResponseBody) Validate() error {
 }
 
 type ListServiceVersionsResponseBodyVersions struct {
-	// The time when the service version was created. The time is displayed in UTC.
+	// The UTC time when the version was created.
 	//
 	// example:
 	//
 	// 2022-08-29T22:02:14Z
 	BuildTime *string `json:"BuildTime,omitempty" xml:"BuildTime,omitempty"`
-	// Indicates whether the image is available. Valid values:
+	// The availability of the image. Valid values:
 	//
-	// - true: The image is available.
+	// - true: Available.
 	//
-	// - false: The image is unavailable.
+	// - false: Unavailable.
 	//
-	// - unknown: The availability of the image is unknown.
+	// - unknown: Unknown.
 	//
 	// example:
 	//
@@ -141,13 +141,19 @@ type ListServiceVersionsResponseBodyVersions struct {
 	//
 	// 4
 	ImageId *int32 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The returned message.
+	// The summary of the service.
 	//
 	// example:
 	//
 	// Service is Running
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The service deployment configurations. This parameter is returned only if the service is deployed by using a custom image.
+	// The remarks.
+	//
+	// example:
+	//
+	// new version.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The deployment configuration of the service. This field is returned only for custom image deployments.
 	//
 	// example:
 	//
@@ -167,13 +173,13 @@ type ListServiceVersionsResponseBodyVersions struct {
 	//
 	// }
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// Indicates whether Elastic Algorithm service (EAS) is activated. Valid values:
+	// Indicates whether the EAS service is enabled. Valid values:
 	//
-	// - true: EAS is activated.
+	// - true: Enabled.
 	//
-	// - false: EAS is not activated.
+	// - false: Disabled.
 	//
-	// - unknown: The activation of EAS is unknown.
+	// - unknown: Unknown.
 	//
 	// example:
 	//
@@ -205,6 +211,10 @@ func (s *ListServiceVersionsResponseBodyVersions) GetMessage() *string {
 	return s.Message
 }
 
+func (s *ListServiceVersionsResponseBodyVersions) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *ListServiceVersionsResponseBodyVersions) GetServiceConfig() *string {
 	return s.ServiceConfig
 }
@@ -230,6 +240,11 @@ func (s *ListServiceVersionsResponseBodyVersions) SetImageId(v int32) *ListServi
 
 func (s *ListServiceVersionsResponseBodyVersions) SetMessage(v string) *ListServiceVersionsResponseBodyVersions {
 	s.Message = &v
+	return s
+}
+
+func (s *ListServiceVersionsResponseBodyVersions) SetRemark(v string) *ListServiceVersionsResponseBodyVersions {
+	s.Remark = &v
 	return s
 }
 

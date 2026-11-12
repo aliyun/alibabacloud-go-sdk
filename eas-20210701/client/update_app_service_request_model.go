@@ -40,16 +40,6 @@ type UpdateAppServiceRequest struct {
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The application type.
 	//
-	// Valid values:
-	//
-	// 	- LLM: the large language model (LLM) application
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// LLM
@@ -60,35 +50,39 @@ type UpdateAppServiceRequest struct {
 	//
 	// v1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The additional configurations that are required for service deployment.
+	// The additional configuration information required for deployment.
+	//
+	// example:
+	//
+	// { "ModelStorage": "oss", "OssPath": "oss://examplebucket/xxxx/" }
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The number of instances. This value must be greater than 0.
+	// The number of instances. The value must be greater than 0.
 	//
 	// example:
 	//
 	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The service specifications. Valid values:
+	// The service specification. Valid values:
 	//
-	// 	- llama_7b_fp16
+	// - llama_7b_fp16
 	//
-	// 	- llama_7b_int8
+	// - llama_7b_int8
 	//
-	// 	- llama_13b_fp16
+	// - llama_13b_fp16
 	//
-	// 	- llama_7b_int8
+	// - llama_7b_int8
 	//
-	// 	- chatglm_6b_fp16
+	// - chatglm_6b_fp16
 	//
-	// 	- chatglm_6b_int8
+	// - chatglm_6b_int8
 	//
-	// 	- chatglm2_6b_fp16
+	// - chatglm2_6b_fp16
 	//
-	// 	- baichuan_7b_int8
+	// - baichuan_7b_int8
 	//
-	// 	- baichuan_13b_fp16
+	// - baichuan_13b_fp16
 	//
-	// 	- baichuan_7b_fp16
+	// - baichuan_7b_fp16
 	//
 	// example:
 	//

@@ -26,19 +26,19 @@ type iCreateServiceResponseBody interface {
 }
 
 type CreateServiceResponseBody struct {
-	// The public endpoint of the created service.
+	// The public endpoint of the newly created service.
 	//
 	// example:
 	//
 	// http://pai-eas.vpc.cn-shanghai.****
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	// The internal endpoint of the created service.
+	// The internal endpoint of the newly created service.
 	//
 	// example:
 	//
 	// http://pai-eas.cn-shanghai.****
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// The region ID of the created service.
+	// The region ID of the newly created service.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type CreateServiceResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the created service.
+	// The ID of the newly created service.
 	//
 	// example:
 	//
 	// eas-m-aaxxxddf
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the created service.
+	// The name of the newly created service.
 	//
 	// example:
 	//
 	// yourname
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service state.
+	// The current status of the new service.
 	//
 	// example:
 	//

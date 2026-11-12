@@ -16,7 +16,7 @@ type iDeleteServiceResponseBody interface {
 }
 
 type DeleteServiceResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//

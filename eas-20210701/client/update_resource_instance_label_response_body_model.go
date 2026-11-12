@@ -16,7 +16,7 @@ type iUpdateResourceInstanceLabelResponseBody interface {
 }
 
 type UpdateResourceInstanceLabelResponseBody struct {
-	// The message.
+	// The returned message.
 	//
 	// example:
 	//

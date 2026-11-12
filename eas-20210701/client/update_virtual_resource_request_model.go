@@ -18,15 +18,15 @@ type iUpdateVirtualResourceRequest interface {
 }
 
 type UpdateVirtualResourceRequest struct {
-	// Specifies whether to disable the retention period of preemptible instances.
+	// Specifies whether to disable the protection period for spot instances.
 	//
 	// example:
 	//
 	// true
 	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
-	// The resources in the virtual resource group.
+	// The list of resources contained in the virtual resource group.
 	//
-	// >  If you specify this parameter, previous data is overwritten.
+	// 	Notice: If specified, the previous data is overwritten.
 	Resources []*UpdateVirtualResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The new name of the virtual resource group.
 	//
@@ -87,43 +87,43 @@ func (s *UpdateVirtualResourceRequest) Validate() error {
 type UpdateVirtualResourceRequestResources struct {
 	// The instance type of the public resource group.
 	//
-	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	// 	Notice: You must specify exactly one of the following fields: InstanceType, ResourceId, and QuotaId.
 	//
 	// example:
 	//
 	// ecs.s6-c1m2.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The priority of resource scheduling. A greater number indicates a higher priority.
+	// The scheduling priority of the resource. A larger value indicates a higher scheduling priority.
 	//
 	// example:
 	//
 	// 6
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the Lingjun resource quota.
+	// The Lingjun resource quota ID.
 	//
-	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	// 	Notice: You must specify exactly one of the following fields: InstanceType, ResourceId, and QuotaId.
 	//
 	// example:
 	//
 	// quota185lqf994k6
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The region in which the resource resides.
+	// The region where the resource resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the dedicated resource group. For information about how to obtain the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+	// The ID of the dedicated resource group. For more information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
 	//
-	// >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+	// 	Notice: You must specify exactly one of the following fields: InstanceType, ResourceId, and QuotaId.
 	//
 	// example:
 	//
 	// eas-r-g55ieatgg3butwrn7a
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The maximum price of preemptible instances in a public resource group.
+	// The maximum price for spot instances in the public resource group.
 	//
-	// >  If you leave this parameter empty, preemptible instances are not used.
+	// <notice>If not specified, spot instances are not used.
 	//
 	// example:
 	//

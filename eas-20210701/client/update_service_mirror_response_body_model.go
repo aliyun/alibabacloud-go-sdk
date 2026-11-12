@@ -16,7 +16,7 @@ type iUpdateServiceMirrorResponseBody interface {
 }
 
 type UpdateServiceMirrorResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

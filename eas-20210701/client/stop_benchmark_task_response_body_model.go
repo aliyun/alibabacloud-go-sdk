@@ -16,7 +16,7 @@ type iStopBenchmarkTaskResponseBody interface {
 }
 
 type StopBenchmarkTaskResponseBody struct {
-	// The returned message.
+	// The operation result message.
 	//
 	// example:
 	//

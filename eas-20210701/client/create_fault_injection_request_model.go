@@ -16,37 +16,155 @@ type iCreateFaultInjectionRequest interface {
 }
 
 type CreateFaultInjectionRequest struct {
-	// The parameters for each fault type are described as follows:
+	// Detailed parameters for each fault type:
 	//
-	// 1. CpuFullloadTask (CPU full load fault)
+	// 1. CpuFullloadTask (CPU full-load fault)
 	//
-	//    `{ "FaultType": "CpuFullloadTask", "FaultArgs": { "FaultAction": "fullload", "CpuPercent": 50 } }`
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "CpuFullloadTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "fullload",
+	//
+	//     "CpuPercent": 50
+	//
+	//   }
+	//
+	// }
+	//
+	// `
 	//
 	// 2. MemLoadTask (Memory load fault)
 	//
-	//    `{ "FaultType": "MemLoadTask", "FaultArgs": { "FaultAction": "load", "MemPercent": 80 } }`
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "MemLoadTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "load",
+	//
+	//     "MemPercent": 80
+	//
+	//   }
+	//
+	// }
+	//
+	// `
 	//
 	// 3. NetworkTask (Network fault)
 	//
-	//    3.a. NetworkDelayAction (Network delay)
+	// 3.a. NetworkDelayAction (Network delay)
 	//
-	//    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "delay", "Time": 3000, "Offset": 100 } }`
+	// `
 	//
-	//    3.b. NetworkCorruptAction (Network packet corruption)
+	// {
 	//
-	//    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "corrupt", "Percent": 50 } }`
+	//   "FaultType": "NetworkTask",
 	//
-	//    3.c. NetworkLossAction (Network packet loss)
+	//   "FaultArgs": {
 	//
-	//    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "loss", "Percent": 30 } }`
+	//     "FaultAction": "delay",
+	//
+	//     "Time": 3000,
+	//
+	//     "Offset": 100
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 3.b. NetworkCorruptAction (Network packet corruption)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "NetworkTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "corrupt",
+	//
+	//     "Percent": 50
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 3.c. NetworkLossAction (Network packet loss)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "NetworkTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "loss",
+	//
+	//     "Percent": 30
+	//
+	//   }
+	//
+	// }
+	//
+	// `
 	//
 	// 4. DiskBurnTask (Disk read/write fault)
 	//
-	//    `{ "FaultType": "DiskBurnTask", "FaultArgs": { "FaultAction": "burn", "Read": true, "Write": true, "Size": 100 } }`
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "DiskBurnTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "burn",
+	//
+	//     "Read": true,
+	//
+	//     "Write": true,
+	//
+	//     "Size": 100
+	//
+	//   }
+	//
+	// }
+	//
+	// `
 	//
 	// 5. DiskFillTask (Disk fill fault)
 	//
-	//    `{ "FaultType": "DiskFillTask", "FaultArgs": { "FaultAction": "fill", "Percent": 80 } }`
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "DiskFillTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "fill",
+	//
+	//     "Percent": 80
+	//
+	//   }
+	//
+	// }
+	//
+	// `
 	//
 	// example:
 	//
@@ -64,9 +182,7 @@ type CreateFaultInjectionRequest struct {
 	//
 	// }
 	FaultArgs interface{} `json:"FaultArgs,omitempty" xml:"FaultArgs,omitempty"`
-	// The fault type.
-	//
-	// Device faults: 1. CPU full load fault. 2. Memory load fault. 3. Network fault. 4. Disk read/write fault. 5. Disk fill fault.
+	// The fault type. Device faults: 1. CPU full-load fault. 2. Memory load fault. 3. Network fault. 4. Disk read/write hang fault. 5. Disk fill fault.
 	//
 	// example:
 	//

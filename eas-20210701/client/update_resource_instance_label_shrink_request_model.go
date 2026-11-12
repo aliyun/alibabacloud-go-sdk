@@ -18,7 +18,7 @@ type iUpdateResourceInstanceLabelShrinkRequest interface {
 }
 
 type UpdateResourceInstanceLabelShrinkRequest struct {
-	// Specifies whether the modification takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+	// Specifies whether the operation applies to all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
 	//
 	// example:
 	//
@@ -26,7 +26,11 @@ type UpdateResourceInstanceLabelShrinkRequest struct {
 	AllInstances *bool `json:"AllInstances,omitempty" xml:"AllInstances,omitempty"`
 	// The instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The custom tag.
+	// The user-defined tags.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
 

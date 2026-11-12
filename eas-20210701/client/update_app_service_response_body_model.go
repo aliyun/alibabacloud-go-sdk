@@ -16,7 +16,7 @@ type iUpdateAppServiceResponseBody interface {
 }
 
 type UpdateAppServiceResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

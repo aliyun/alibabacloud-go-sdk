@@ -36,7 +36,7 @@ type DescribeServiceEventResponseBody struct {
 	//
 	// 3D491C94-6239-5318-B4B4-799D859***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of events.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeServiceEventResponseBody) Validate() error {
 }
 
 type DescribeServiceEventResponseBodyEvents struct {
-	// The event message, which is a JSON-formatted string.
+	// The event information (a formatted JSON string).
 	//
 	// example:
 	//
 	// {\\"versionId\\":1,\\"message\\":\\"Stage scale complete\\",\\"availableInstance\\":1,\\"unavailableInstance\\":0}
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The reason for the event, which indicates a change in the service status.
+	// The reason for the event (information about service status changes).
 	//
 	// example:
 	//
@@ -131,15 +131,15 @@ type DescribeServiceEventResponseBodyEvents struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - Service: a service.
+	// - Service: service.
 	//
-	// - Pod: a service instance.
+	// - Pod: service instance.
 	//
 	// example:
 	//
 	// Service
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The time when the event occurred, in UTC.
+	// The UTC time when the event occurred.
 	//
 	// example:
 	//
@@ -147,9 +147,9 @@ type DescribeServiceEventResponseBodyEvents struct {
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - Normal: a normal event.
+	// - Normal: normal events.
 	//
-	// - Warning: a warning event.
+	// - Warning: abnormal events.
 	//
 	// example:
 	//

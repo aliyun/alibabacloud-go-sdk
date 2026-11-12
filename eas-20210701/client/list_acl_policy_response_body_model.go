@@ -150,7 +150,7 @@ type ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList struct {
 	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// 10.23.XX.XX/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -239,13 +239,13 @@ type ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList struct {
 	//
 	// example:
 	//
-	// default
+	// Test Entry
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The IP CIDR block in the VPC that can access the private gateway over the internal network.
 	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// 192.168.XX.XX/24
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 

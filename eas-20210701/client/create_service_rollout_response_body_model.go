@@ -16,13 +16,13 @@ type iCreateServiceRolloutResponseBody interface {
 }
 
 type CreateServiceRolloutResponseBody struct {
-	// A message that indicates the result of the operation.
+	// The response message that describes the result of the request.
 	//
 	// example:
 	//
 	// Rollout created successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID. Use this ID for troubleshooting and traceability.
+	// The request ID. It is a unique identifier returned for each request and is used for troubleshooting and tracking.
 	//
 	// example:
 	//

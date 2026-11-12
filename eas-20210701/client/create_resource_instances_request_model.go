@@ -30,9 +30,9 @@ type iCreateResourceInstancesRequest interface {
 type CreateResourceInstancesRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - false (default): Auto-renewal is disabled.
+	// - false (default): disables auto-renewal.
 	//
-	// - true: Auto-renewal is enabled.
+	// - true: enables auto-renewal.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateResourceInstancesRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of new instances to create. The value must be between 1 and 100.
+	// The number of instances to create. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateResourceInstancesRequest struct {
 	//
 	// 5
 	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	// The instance type. This corresponds to an ECS instance type.
+	// The instance type, which corresponds to an ECS instance type.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,13 @@ type CreateResourceInstancesRequest struct {
 	//
 	// ecs.s6-c1m2.xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	// The user-defined tags.
+	// The user-defined labels.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The size of the system disk, in GiB. The value must be between 200 and 2,000. If you do not configure this parameter, the default value is 200 GiB.
+	// The size of the system cloud disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
 	//
 	// example:
 	//
@@ -76,13 +80,13 @@ type CreateResourceInstancesRequest struct {
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// Deprecated
 	//
-	// The custom user data. This parameter is not currently used.
+	// The custom user data. This parameter is not used.
 	//
 	// example:
 	//
 	// x112223333
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The zone where the instance belongs.
+	// The zone to which the instance belongs.
 	//
 	// example:
 	//

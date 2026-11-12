@@ -16,7 +16,7 @@ type iUpdateServiceInstanceResponseBody interface {
 }
 
 type UpdateServiceInstanceResponseBody struct {
-	// A message that indicates a successful operation.
+	// The success message.
 	//
 	// example:
 	//

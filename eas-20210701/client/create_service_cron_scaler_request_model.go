@@ -16,9 +16,9 @@ type iCreateServiceCronScalerRequest interface {
 }
 
 type CreateServiceCronScalerRequest struct {
-	// A list of cron expressions for dates to exclude.
+	// The list of cron expressions for the dates to be excluded.
 	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	// The scheduled scaling tasks.
+	// The scheduled scaling jobs.
 	//
 	// This parameter is required.
 	ScaleJobs []*CreateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
@@ -64,13 +64,13 @@ func (s *CreateServiceCronScalerRequest) Validate() error {
 }
 
 type CreateServiceCronScalerRequestScaleJobs struct {
-	// The name of the scheduled auto-scaling task.
+	// The name of the scheduled scaling job.
 	//
 	// example:
 	//
 	// scale-job-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cron expression that specifies when to run the scaling task. For more information about how to configure a cron expression, see the **Cron expressions*	- section.
+	// The cron expression for the scaling job. For information about how to configure a cron expression, see the **Supplementary request parameter descriptions*	- section.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateServiceCronScalerRequestScaleJobs struct {
 	//
 	// 0 18 	- 	- 	- *
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The target number of instances for the scaling task.
+	// The target number of instances for the scaling job.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateServiceCronScalerRequestScaleJobs struct {
 	//
 	// 1
 	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
-	// The time zone for the scheduled scaling task.
+	// The time zone configuration used to parse the execution time of the scheduled scaling job.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iListResourceInstancesResponseBody interface {
 type ListResourceInstancesResponseBody struct {
 	// The list of instances.
 	Instances []*ResourceInstance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number of the returned list of instances.
+	// The page number of the returned machine instance list in the resource group.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of instances returned on each page.
+	// The number of machines returned on each page.
 	//
 	// example:
 	//

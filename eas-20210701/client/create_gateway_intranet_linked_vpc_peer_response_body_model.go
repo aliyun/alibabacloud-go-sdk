@@ -24,13 +24,13 @@ type CreateGatewayIntranetLinkedVpcPeerResponseBody struct {
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The message that is returned.
+	// The message returned in the response.
 	//
 	// example:
 	//
 	// Successfully add intranet linked vpc Peer for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

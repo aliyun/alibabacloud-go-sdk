@@ -16,7 +16,7 @@ type iStopServiceResponseBody interface {
 }
 
 type StopServiceResponseBody struct {
-	// The returned message.
+	// The message returned in the response.
 	//
 	// example:
 	//
