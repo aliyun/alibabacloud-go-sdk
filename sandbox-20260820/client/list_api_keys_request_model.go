@@ -38,7 +38,7 @@ type ListApiKeysRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of API keys to return on each page. Default value: 10. Valid values: 1 to 100.
+	// The number of API keys to return per page. Default value: 10. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -50,7 +50,11 @@ type ListApiKeysRequest struct {
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	// Filters API keys by status. Valid values: active (enabled), inactive (disabled).
+	// Filters API keys by status. Valid values:
+	//
+	// - active: Enabled.
+	//
+	// - inactive: Disabled.
 	//
 	// example:
 	//

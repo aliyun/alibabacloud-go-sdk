@@ -46,15 +46,7 @@ type ListVolumesRequest struct {
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	// Filters by storage volume status. Valid values:
-	//
-	// - CREATING: The storage volume is being created.
-	//
-	// - AVAILABLE: The storage volume is available.
-	//
-	// - ERROR: The storage volume is in an error state.
-	//
-	// - DELETING: The storage volume is being deleted.
+	// Filters storage volumes by status. Valid values: CREATING (creating), AVAILABLE (available), ERROR (error), and DELETING (deleting).
 	//
 	// example:
 	//

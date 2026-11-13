@@ -21,6 +21,8 @@ type iPublicTemplateRuntimeConfig interface {
 	GetMemorySize() *int32
 	SetSandboxConfig(v *PublicTemplateSandboxConfig) *PublicTemplateRuntimeConfig
 	GetSandboxConfig() *PublicTemplateSandboxConfig
+	SetVpcBindings(v []*string) *PublicTemplateRuntimeConfig
+	GetVpcBindings() []*string
 	SetVpcConfig(v *PublicTemplateVPCConfig) *PublicTemplateRuntimeConfig
 	GetVpcConfig() *PublicTemplateVPCConfig
 }
@@ -50,7 +52,13 @@ type PublicTemplateRuntimeConfig struct {
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The image and startup configuration of the sandbox instance.
 	SandboxConfig *PublicTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	// The VPC configuration of the sandbox instance.
+	// The set of allowed inbound source VPCs configured for Generation 2 templates. An omitted or empty array indicates that no inbound VPC bindings are configured, and this field can be omitted for historical records without configurations. This configuration is independent of the egress network vpcConfig. Subsequent template updates do not overwrite the bindings of functions used by existing sandboxes. When the feature switch is enabled, POST /init requests without query parameters to the standard E2B sandbox envd port 49983 are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
+	//
+	// example:
+	//
+	// ["vpc-examplea","vpc-exampleb"]
+	VpcBindings []*string `json:"vpcBindings" xml:"vpcBindings" type:"Repeated"`
+	// The virtual private cloud (VPC) configuration of the sandbox instance.
 	VpcConfig *PublicTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -86,6 +94,10 @@ func (s *PublicTemplateRuntimeConfig) GetSandboxConfig() *PublicTemplateSandboxC
 	return s.SandboxConfig
 }
 
+func (s *PublicTemplateRuntimeConfig) GetVpcBindings() []*string {
+	return s.VpcBindings
+}
+
 func (s *PublicTemplateRuntimeConfig) GetVpcConfig() *PublicTemplateVPCConfig {
 	return s.VpcConfig
 }
@@ -117,6 +129,11 @@ func (s *PublicTemplateRuntimeConfig) SetMemorySize(v int32) *PublicTemplateRunt
 
 func (s *PublicTemplateRuntimeConfig) SetSandboxConfig(v *PublicTemplateSandboxConfig) *PublicTemplateRuntimeConfig {
 	s.SandboxConfig = v
+	return s
+}
+
+func (s *PublicTemplateRuntimeConfig) SetVpcBindings(v []*string) *PublicTemplateRuntimeConfig {
+	s.VpcBindings = v
 	return s
 }
 

@@ -26,7 +26,7 @@ type GetTeamResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. The value is success for a successful request.
+	// The response message. The value is success if the request succeeds.
 	//
 	// example:
 	//

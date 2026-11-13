@@ -30,7 +30,7 @@ type DescribeApiKeyResponseBody struct {
 	//
 	// asdfjoY87-9IUHH
 	ApiKey *ApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The response code. A value of 200 indicates success.
+	// The response code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeApiKeyResponseBody struct {
 	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
 	// The list of IP address whitelist rules.
 	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
-	// The response message. The value is success for a successful request.
+	// The response message. The value is success when the request is successful.
 	//
 	// example:
 	//

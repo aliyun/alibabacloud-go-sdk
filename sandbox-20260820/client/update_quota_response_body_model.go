@@ -20,7 +20,7 @@ type iUpdateQuotaResponseBody interface {
 }
 
 type UpdateQuotaResponseBody struct {
-	// The response code. A value of 200 indicates success.
+	// The response code. The value is 200 if the request is successful.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iIPConfig interface {
 }
 
 type IPConfig struct {
-	// The description of the IP rule. The description can be up to 128 characters in length.
+	// The description of the IP rule. The length cannot exceed 128 characters.
 	//
 	// example:
 	//
-	// Office network egress address
+	// 办公网出口地址
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The IPv4 address or CIDR block. IPv6 is not supported.
 	//

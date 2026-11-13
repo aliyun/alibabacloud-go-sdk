@@ -26,7 +26,7 @@ type ListTemplatesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of nextToken returned in the response of the previous page.
+	// The pagination token. Use the nextToken value returned in the previous response.
 	//
 	// example:
 	//

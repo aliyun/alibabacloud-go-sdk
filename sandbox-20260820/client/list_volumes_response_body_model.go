@@ -36,7 +36,7 @@ type ListVolumesResponseBody struct {
 	//
 	// 4
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. A value of success indicates that the request was successful.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//

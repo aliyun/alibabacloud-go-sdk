@@ -28,13 +28,13 @@ type ListTemplateCacheRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token returned from the previous request.
+	// The pagination token returned in the response of the previous request.
 	//
 	// example:
 	//
 	// cae5f900-8b1d-4c0e-9c2a-1a2b3c4d5e6f
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters results by cache status. Valid values: InProgress, Success, Failed, Deleting, and Evicted.
+	// Filters by cache status. Valid values: InProgress, Success, Failed, Deleting, and Evicted.
 	//
 	// example:
 	//

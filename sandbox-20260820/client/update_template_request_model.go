@@ -16,7 +16,7 @@ type iUpdateTemplateRequest interface {
 }
 
 type UpdateTemplateRequest struct {
-	// The request struct for updating a template. Specify only the fields to be updated.
+	// The request struct for updating the template. Specify only the fields that you want to modify.
 	Body *PublicUpdateTemplateInput `json:"body,omitempty" xml:"body,omitempty"`
 	// The team ID.
 	//

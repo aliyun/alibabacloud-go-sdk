@@ -20,7 +20,7 @@ type iCreateTemplateCacheResponseBody interface {
 }
 
 type CreateTemplateCacheResponseBody struct {
-	// The error code. A value of 200 indicates success.
+	// The error code. The value is 200 if the request succeeds.
 	//
 	// example:
 	//

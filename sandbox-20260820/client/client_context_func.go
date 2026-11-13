@@ -95,6 +95,10 @@ func (client *Client) CreateTeamWithContext(ctx context.Context, request *Create
 //
 // Creates a template.
 //
+// Description:
+//
+// Creates a template. runtimeConfig.vpcBindings is supported only for second-generation templates. A null value is treated as omitted. First-generation templates return a 400 error if an empty or non-empty array is explicitly provided. Inbound bindings are independent of the egress vpcConfig and API key source policies. When the feature switch is enabled, POST /init requests without query parameters to the standard envd port 49983 of the E2B sandbox are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
+//
 // @param request - CreateTemplateRequest
 //
 // @param headers - map
@@ -624,6 +628,192 @@ func (client *Client) DescribeTemplateCacheWithContext(ctx context.Context, temp
 
 // Summary:
 //
+// 查询监控指标
+//
+// Description:
+//
+// 查看某一时刻的监控指标，或查询一段时间内的变化趋势。支持按账号、团队、模板或沙箱查询。
+//
+// @param tmpReq - GetMetricDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetricDataResponse
+func (client *Client) GetMetricDataWithContext(ctx context.Context, tmpReq *GetMetricDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMetricDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetMetricDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GroupBy) {
+		request.GroupByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupBy, dara.String("groupBy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MetricNames) {
+		request.MetricNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricNames, dara.String("metricNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GroupByShrink) {
+		query["groupBy"] = request.GroupByShrink
+	}
+
+	if !dara.IsNil(request.MetricNamesShrink) {
+		query["metricNames"] = request.MetricNamesShrink
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["period"] = request.Period
+	}
+
+	if !dara.IsNil(request.SandboxID) {
+		query["sandboxID"] = request.SandboxID
+	}
+
+	if !dara.IsNil(request.SandboxPlan) {
+		query["sandboxPlan"] = request.SandboxPlan
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	if !dara.IsNil(request.TemplateID) {
+		query["templateID"] = request.TemplateID
+	}
+
+	if !dara.IsNil(request.Time) {
+		query["time"] = request.Time
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMetricData"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/metrics"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMetricDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries resource usage.
+//
+// Description:
+//
+// Queries the CPU, memory, and disk usage over a specified period. You can view the cumulative usage and usage trends by account, team, or template.
+//
+// @param tmpReq - GetResourceUsageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceUsageResponse
+func (client *Client) GetResourceUsageWithContext(ctx context.Context, tmpReq *GetResourceUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetResourceUsageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GroupBy) {
+		request.GroupByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupBy, dara.String("groupBy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UsageNames) {
+		request.UsageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UsageNames, dara.String("usageNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.GroupByShrink) {
+		query["groupBy"] = request.GroupByShrink
+	}
+
+	if !dara.IsNil(request.SandboxPlan) {
+		query["sandboxPlan"] = request.SandboxPlan
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	if !dara.IsNil(request.TemplateID) {
+		query["templateID"] = request.TemplateID
+	}
+
+	if !dara.IsNil(request.UsageNamesShrink) {
+		query["usageNames"] = request.UsageNamesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetResourceUsage"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/resource-usage"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetResourceUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a specified team.
 //
 // @param request - GetTeamRequest
@@ -830,7 +1020,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// Performs a paging query to retrieve the quota configuration list for the current account.
+// Queries the quota configuration list for the current account by using paging.
 //
 // @param request - ListQuotaRequest
 //
@@ -944,7 +1134,7 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 
 // Summary:
 //
-// Performs a paged query on template caches with paging support.
+// Queries template caches by paging.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1007,7 +1197,7 @@ func (client *Client) ListTemplateCacheWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Performs a paging query on the template list.
+// Performs a paging query to retrieve the template list.
 //
 // @param tmpReq - ListTemplatesRequest
 //
@@ -1072,7 +1262,7 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Queries the list of storage volumes by using paging.
+// Queries a list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1149,6 +1339,10 @@ func (client *Client) ListVolumesWithContext(ctx context.Context, request *ListV
 //
 // Resets a specified API key.
 //
+// Description:
+//
+// Rotates the credential value of an API key while retaining the original API key ID, IP address whitelist, IP address blacklist, and vpcBindings source policy. The apiKey field in the response returns the retained policy.
+//
 // @param request - ResetApiKeyRequest
 //
 // @param headers - map
@@ -1189,6 +1383,10 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, apiKeyID *stri
 // Summary:
 //
 // Updates the configuration of a specified API key.
+//
+// Description:
+//
+// Updates an API key. IP blacklists and whitelists follow a paired replacement rule. If you commit a non-null array for one list and omit the other list or set it to null, the omitted list is cleared. If both lists are omitted or set to null, they are retained. The vpcBindings field is updated independently. If it is omitted or set to null, the current value is retained. A non-empty array replaces the current value, and an empty array [] clears it. Updates to IP addresses and VPCs do not clear each other. Source restrictions are retained if the source is null or if you update only other fields. An empty request body {} clears the IP address whitelist, IP blacklist, and VPC restrictions. You can also explicitly commit empty IP and VPC arrays to clear all source restrictions. To update the access policy, you must commit only the permissionPolicy and expectedPolicyVersion fields. Do not include other fields, including source fields with null values.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -1315,6 +1513,10 @@ func (client *Client) UpdateTeamWithContext(ctx context.Context, teamID *string,
 // Summary:
 //
 // Updates a template.
+//
+// Description:
+//
+// Updates a template. For Generation 2 templates, runtimeConfig.vpcBindings supports omission or null retention, full replacement with a non-empty array, or clearing with an empty array. The new list takes effect upon a successful build of the new version. Existing sandboxes continue to use the original functions and policies. If the build fails, the previously effective version is retained. For Generation 1 templates, explicitly passing an empty or non-empty array returns a 400 error. Before switching to Generation 1, you must clear the bindings and wait for the update to succeed. When the feature switch is enabled, POST /init requests without query parameters to the standard envd port 49983 of E2B sandboxes are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
 //
 // @param request - UpdateTemplateRequest
 //

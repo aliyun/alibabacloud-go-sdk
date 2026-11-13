@@ -21,18 +21,20 @@ type iPublicUpdateTemplateRuntimeConfig interface {
 	GetMemorySize() *int32
 	SetSandboxConfig(v *PublicUpdateTemplateSandboxConfig) *PublicUpdateTemplateRuntimeConfig
 	GetSandboxConfig() *PublicUpdateTemplateSandboxConfig
+	SetVpcBindings(v []*string) *PublicUpdateTemplateRuntimeConfig
+	GetVpcBindings() []*string
 	SetVpcConfig(v *PublicUpdateTemplateVPCConfig) *PublicUpdateTemplateRuntimeConfig
 	GetVpcConfig() *PublicUpdateTemplateVPCConfig
 }
 
 type PublicUpdateTemplateRuntimeConfig struct {
-	// The number of vCPUs.
+	// The number of vCPU cores.
 	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The system cloud disk size, in MB.
+	// The size of the system cloud disk in MB.
 	//
 	// example:
 	//
@@ -42,7 +44,7 @@ type PublicUpdateTemplateRuntimeConfig struct {
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The log configuration.
 	LogConfig *PublicUpdateTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	// The memory size, in MB.
+	// The memory size in MB.
 	//
 	// example:
 	//
@@ -50,6 +52,12 @@ type PublicUpdateTemplateRuntimeConfig struct {
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The sandbox configuration.
 	SandboxConfig *PublicUpdateTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
+	// Supported only for generation 2 templates. Omitting this field or setting it to null retains the original list. A non-empty array replaces the entire allowed set. An explicit empty array [] clears the inbound VPC restrictions for the new version. This field is independent of vpcConfig. An empty request body {}, an empty runtimeConfig, or a runtimeConfig containing only vpcBindings: null returns a 400 error and does not clear the bindings. The actual JSON received by the server prevails. An empty array omitted by the SDK cannot clear the list. If the target is a generation 1 template, explicitly passing an empty or non-empty array returns a 400 error. If non-empty bindings already exist, you must first clear them on the generation 2 template and wait for the update to succeed before switching to generation 1.
+	//
+	// example:
+	//
+	// ["vpc-examplea","vpc-exampleb"]
+	VpcBindings []*string `json:"vpcBindings" xml:"vpcBindings" type:"Repeated"`
 	// The VPC network configuration.
 	VpcConfig *PublicUpdateTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
@@ -86,6 +94,10 @@ func (s *PublicUpdateTemplateRuntimeConfig) GetSandboxConfig() *PublicUpdateTemp
 	return s.SandboxConfig
 }
 
+func (s *PublicUpdateTemplateRuntimeConfig) GetVpcBindings() []*string {
+	return s.VpcBindings
+}
+
 func (s *PublicUpdateTemplateRuntimeConfig) GetVpcConfig() *PublicUpdateTemplateVPCConfig {
 	return s.VpcConfig
 }
@@ -117,6 +129,11 @@ func (s *PublicUpdateTemplateRuntimeConfig) SetMemorySize(v int32) *PublicUpdate
 
 func (s *PublicUpdateTemplateRuntimeConfig) SetSandboxConfig(v *PublicUpdateTemplateSandboxConfig) *PublicUpdateTemplateRuntimeConfig {
 	s.SandboxConfig = v
+	return s
+}
+
+func (s *PublicUpdateTemplateRuntimeConfig) SetVpcBindings(v []*string) *PublicUpdateTemplateRuntimeConfig {
+	s.VpcBindings = v
 	return s
 }
 

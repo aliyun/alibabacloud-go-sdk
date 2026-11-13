@@ -30,19 +30,19 @@ type ListQuotaResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The maximum number of entries returned per page. This field is returned only if a positive integer is specified for maxResults in the request.
+	// The maximum number of entries to return per page. This field is returned only if a positive integer is specified for maxResults in the request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. The value is success if the request is successful.
+	// The response message. A value of success indicates success.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page, which can be used in subsequent queries.
+	// The pagination token for the next page.
 	//
 	// example:
 	//

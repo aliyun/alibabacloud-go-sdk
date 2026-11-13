@@ -28,13 +28,13 @@ type iListApiKeysResponseBody interface {
 type ListApiKeysResponseBody struct {
 	// The list of API keys.
 	ApiKeys []*ApiKey `json:"apiKeys" xml:"apiKeys" type:"Repeated"`
-	// The response code. A value of 200 indicates success.
+	// The response code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. The value is success if the request succeeds.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page used in the current query.
+	// The number of entries per page for the current query.
 	//
 	// example:
 	//

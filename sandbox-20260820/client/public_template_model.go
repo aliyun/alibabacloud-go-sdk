@@ -27,6 +27,8 @@ type iPublicTemplate interface {
 	GetTeamName() *string
 	SetTemplateID(v string) *PublicTemplate
 	GetTemplateID() *string
+	SetTemplateType(v string) *PublicTemplate
+	GetTemplateType() *string
 }
 
 type PublicTemplate struct {
@@ -36,7 +38,7 @@ type PublicTemplate struct {
 	//
 	// 2026-08-20T08:30:00Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The name of the template, which is unique within a team.
+	// The template name, which is unique within a team.
 	//
 	// example:
 	//
@@ -50,7 +52,7 @@ type PublicTemplate struct {
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
 	// The resource tags.
 	ResourceTags []*PublicTemplateResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
-	// The runtime configuration of the template, which determines the specifications and environment of the sandbox instances created from the template.
+	// The runtime configuration of the template, which determines the specifications and environment of sandbox instances created from this template.
 	RuntimeConfig *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
 	// The current status of the template.
 	Status *PublicTemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
@@ -60,18 +62,24 @@ type PublicTemplate struct {
 	//
 	// 5f4a2c18-****
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	// The name of the team.
+	// The team name.
 	//
 	// example:
 	//
 	// sandbox-dev
 	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
-	// The ID of the sandbox template.
+	// The sandbox template ID.
 	//
 	// example:
 	//
 	// tm-8f3a2c7b5e14d806
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// The templatetype. An empty value indicates a runtime template.
+	//
+	// example:
+	//
+	// layer
+	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
 }
 
 func (s PublicTemplate) String() string {
@@ -118,6 +126,10 @@ func (s *PublicTemplate) GetTemplateID() *string {
 	return s.TemplateID
 }
 
+func (s *PublicTemplate) GetTemplateType() *string {
+	return s.TemplateType
+}
+
 func (s *PublicTemplate) SetCreatedTime(v string) *PublicTemplate {
 	s.CreatedTime = &v
 	return s
@@ -160,6 +172,11 @@ func (s *PublicTemplate) SetTeamName(v string) *PublicTemplate {
 
 func (s *PublicTemplate) SetTemplateID(v string) *PublicTemplate {
 	s.TemplateID = &v
+	return s
+}
+
+func (s *PublicTemplate) SetTemplateType(v string) *PublicTemplate {
+	s.TemplateType = &v
 	return s
 }
 

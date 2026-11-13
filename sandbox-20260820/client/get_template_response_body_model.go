@@ -33,6 +33,8 @@ type iGetTemplateResponseBody interface {
 	GetTeamName() *string
 	SetTemplateID(v string) *GetTemplateResponseBody
 	GetTemplateID() *string
+	SetTemplateType(v string) *GetTemplateResponseBody
+	GetTemplateType() *string
 }
 
 type GetTemplateResponseBody struct {
@@ -54,7 +56,7 @@ type GetTemplateResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type GetTemplateResponseBody struct {
 	ResourceTags []*GetTemplateResponseBodyResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
 	// The runtime configuration of the template.
 	RuntimeConfig *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
-	// The status of the template.
+	// The template status.
 	Status *PublicTemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
 	// The team ID.
 	//
@@ -84,7 +86,7 @@ type GetTemplateResponseBody struct {
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	// The name of the team.
+	// The team name.
 	//
 	// example:
 	//
@@ -96,6 +98,12 @@ type GetTemplateResponseBody struct {
 	//
 	// us7dxqaezw5uu7aa2cm5
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// The templatetype. The default value is runtime template if it is not returned.
+	//
+	// example:
+	//
+	// layer
+	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -152,6 +160,10 @@ func (s *GetTemplateResponseBody) GetTeamName() *string {
 
 func (s *GetTemplateResponseBody) GetTemplateID() *string {
 	return s.TemplateID
+}
+
+func (s *GetTemplateResponseBody) GetTemplateType() *string {
+	return s.TemplateType
 }
 
 func (s *GetTemplateResponseBody) SetCode(v string) *GetTemplateResponseBody {
@@ -211,6 +223,11 @@ func (s *GetTemplateResponseBody) SetTeamName(v string) *GetTemplateResponseBody
 
 func (s *GetTemplateResponseBody) SetTemplateID(v string) *GetTemplateResponseBody {
 	s.TemplateID = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetTemplateType(v string) *GetTemplateResponseBody {
+	s.TemplateType = &v
 	return s
 }
 

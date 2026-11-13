@@ -14,7 +14,7 @@ type iUpdateApiKeyRequest interface {
 }
 
 type UpdateApiKeyRequest struct {
-	// The request parameters for updating the API key.
+	// The request parameters for updating an API key.
 	Body *UpdateApiKeyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -20,13 +20,13 @@ type iGetVolumeResponseBody interface {
 }
 
 type GetVolumeResponseBody struct {
-	// The response code. A value of 200 indicates success.
+	// The response code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. The value is success for a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
