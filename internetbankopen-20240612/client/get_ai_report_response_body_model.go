@@ -16,9 +16,9 @@ type iGetAiReportResponseBody interface {
 }
 
 type GetAiReportResponseBody struct {
-	// The report query result, which includes ReportStatus. The Report object is included only when the report is available.
+	// The report query result, which contains ReportStatus. The Report object is included only when the report is available.
 	Data *GetAiReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this identity when you troubleshoot exceptions.
+	// The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this ID when you troubleshoot exceptions.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type GetAiReportResponseBodyData struct {
 	//
 	// - NOT_APPLICABLE: The product does not include a report.
 	//
-	// - WAITING_DATA: The data call result is not yet determined.
+	// - WAITING_DATA: The data call result is not determined.
 	//
 	// - NO_DATA: No data is found, and no per-use report is generated.
 	//
-	// - WAITING_PERIOD: The query result for the callId of a periodic product. You must obtain the ReportId by calling ListProductReports and then query the status.
+	// - WAITING_PERIOD: The query result for the callId of a periodic product. You must obtain the ReportId by calling ListProductReports and then query the report.
 	//
 	// - QUEUED: The report task is queued.
 	//
@@ -130,7 +130,7 @@ func (s *GetAiReportResponseBodyData) Validate() error {
 }
 
 type GetAiReportResponseBodyDataReport struct {
-	// The expiration time of the report content retention period. The time is in UTC RFC 3339 format, ends with Z, and may contain fractional seconds. No download URL is issued after this time. If the delivery is not suspended, EXPIRED is returned. If the delivery is also suspended, UNAVAILABLE is returned preferentially. This is the content expiration time, not the single-link expiration time.
+	// The expiration time of the report content retention period. The time is in UTC RFC 3339 format, ends with Z, and may contain fractional seconds. No download URL is issued after this time. If the delivery is not suspended, EXPIRED is returned. If the delivery is also suspended, UNAVAILABLE is returned preferentially. This is the content expiration time, not the expiration time of a single URL.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type GetAiReportResponseBodyDataReport struct {
 	//
 	// report-3f2b8c1e-6d4a-4b7e-9a1c-2e5f7d8b9c0a
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The expiration time of the current DownloadUrl. The time is in UTC RFC 3339 format, ends with Z, and may contain fractional seconds. You cannot continue to use the URL after it expires, and this time is no later than ContentExpiresAt.
+	// The expiration time of the current DownloadUrl. The time is in UTC RFC 3339 format, ends with Z, and may contain fractional seconds. You cannot use the URL after it expires, and this time is no later than ContentExpiresAt.
 	//
 	// example:
 	//

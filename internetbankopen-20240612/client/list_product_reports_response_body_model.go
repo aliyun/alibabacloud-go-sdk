@@ -16,9 +16,9 @@ type iListProductReportsResponseBody interface {
 }
 
 type ListProductReportsResponseBody struct {
-	// The query result of the periodic report list, which contains the Reports array. The array is empty if no available reports exist.
+	// The query results of the periodic report list, which includes the Reports array. The array is empty if no available reports exist.
 	Data *ListProductReportsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this ID when troubleshooting exceptions.
+	// The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this identity when troubleshooting exceptions.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListProductReportsResponseBody) Validate() error {
 }
 
 type ListProductReportsResponseBodyData struct {
-	// The available report records sorted by period from newest to oldest. By default, up to ten records are returned. If LatestOnly is set to true, at most one record is returned. The array is empty if no reports exist. A single natural week may have multiple report records. Use ReportId to distinguish them. The list does not contain download URLs. The actual download status is subject to the result of GetAiReport.
+	// The available report records sorted by period in descending order. By default, up to ten records are returned. If LatestOnly is set to true, at most one record is returned. The array is empty if no reports exist. A single natural week may have multiple report records; use ReportId to distinguish them. The list does not contain download URLs. The actual download status is subject to GetAiReport.
 	Reports []*ListProductReportsResponseBodyDataReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
 }
 
