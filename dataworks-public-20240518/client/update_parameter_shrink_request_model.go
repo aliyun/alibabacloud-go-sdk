@@ -24,7 +24,7 @@ type UpdateParameterShrinkRequest struct {
 	//
 	// example:
 	//
-	// 这是一个测试参数
+	// This is a test parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter ID.
 	//

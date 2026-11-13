@@ -16,7 +16,7 @@ type iStartWorkflowInstancesShrinkRequest interface {
 }
 
 type StartWorkflowInstancesShrinkRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//

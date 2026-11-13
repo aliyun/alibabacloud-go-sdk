@@ -62,11 +62,21 @@ func (s *CreateSkillResponseBody) Validate() error {
 }
 
 type CreateSkillResponseBodySkill struct {
-	// The content of the SKILL.md file.
+	// The body of the SKILL.md file.
 	//
 	// example:
 	//
-	// -
+	// ---
+	//
+	// name: example-skill
+	//
+	// description: Sample skill.
+	//
+	// ---
+	//
+	// # Sample skill
+	//
+	// Summarize the text provided by the user
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The ID of the creator.
 	//
@@ -74,7 +84,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// 123456
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The skill description.
+	// The description of the skill.
 	//
 	// example:
 	//
@@ -102,7 +112,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// The skill name.
+	// The name of the skill.
 	//
 	// example:
 	//
@@ -217,9 +227,9 @@ func (s *CreateSkillResponseBodySkill) Validate() error {
 }
 
 type CreateSkillResponseBodySkillVisibilityScope struct {
-	// The IDs of the visible projects.
+	// The IDs of the projects in which the skill is visible.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The IDs of the visible users. This field is returned only when Visibility is set to USER.
+	// The IDs of the users who can see the skill. This field takes effect when Visibility is set to USER.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

@@ -20,7 +20,7 @@ type iBuildImageRequest interface {
 }
 
 type BuildImageRequest struct {
-	// The compute units (CUs) for the build.
+	// The number of compute units (CUs) for the image build.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type BuildImageRequest struct {
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies the image build execution ID, which is used as an idempotence token.
+	// The image build execution ID, used as an idempotence token.
 	//
 	// example:
 	//
 	// 582d4896-d224-413b-b883-239eeebe0bc5
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The unique identifier of the resource group.
+	// The unique identifier of the general-purpose resource group.
 	//
 	// This parameter is required.
 	//

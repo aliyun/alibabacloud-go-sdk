@@ -303,7 +303,7 @@ type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
 	//
 	// example:
 	//
-	// chat，cli
+	// chat
 	ExecutionLane *string `json:"ExecutionLane,omitempty" xml:"ExecutionLane,omitempty"`
 	// The authorization mode for script execution. OpenAPI currently supports only the yolo mode. Valid values:
 	//

@@ -38,9 +38,9 @@ type iListTasksShrinkRequest interface {
 }
 
 type ListTasksShrinkRequest struct {
-	// The ID of the task.
+	// The list of task IDs. You can query multiple tasks at a time by specifying task IDs.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The name of the task. Fuzzy match is supported.
+	// The name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -52,31 +52,25 @@ type ListTasksShrinkRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries per page. Default value: 10. Maximum value: 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace environment.
-	//
-	// Valid values:
-	//
-	// - Prod
-	//
-	// - Dev
+	// The project environment.
 	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -84,13 +78,13 @@ type ListTasksShrinkRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The information about the resource group. Set this parameter to the ID of a resource group for scheduling.
+	// The resource group information. Specify the identifier of the scheduling resource group.
 	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// The field that is used to sort tasks. This parameter is configured in the format of "Sorting field Sorting order". You can set the sorting order to Desc or Asc. If you do not specify the sorting order, Asc is used by default. Valid values:
+	// The sort field. You can sort by fields such as modification time and creation time. The format is "Sort field + Sort order (Desc/Asc)". Asc can be omitted. Valid values for the sort field:
 	//
 	// - `ModifyTime (Desc/Asc)`
 	//
@@ -98,13 +92,13 @@ type ListTasksShrinkRequest struct {
 	//
 	// - `Id (Desc/Asc)`
 	//
-	//   Default value: `Id Desc`.
+	// Default value: `Id Desc`.
 	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Examples:
 	//
 	// - ODPS_SQL
 	//
@@ -150,27 +144,13 @@ type ListTasksShrinkRequest struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The run mode when triggered. Valid only if TriggerType is Scheduler.
-	//
-	// Valid values:
-	//
-	// - Pause
-	//
-	// - Skip
-	//
-	// - Normal
+	// The running mode upon triggering. This parameter takes effect only when TriggerType is set to Scheduler.
 	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The trigger type.
-	//
-	// Valid values:
-	//
-	// - Scheduler: Triggered by schedule.
-	//
-	// - Manual: Triggered manually.
 	//
 	// example:
 	//

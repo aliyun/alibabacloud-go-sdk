@@ -18,13 +18,13 @@ type iRemoveTaskInstanceDependenciesRequest interface {
 }
 
 type RemoveTaskInstanceDependenciesRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The instance ID.
+	// The node instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type RemoveTaskInstanceDependenciesRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IDs of ancestor instances of the instance
+	// The list of upstream node instance IDs.
 	UpstreamTaskInstanceIds []*int64 `json:"UpstreamTaskInstanceIds,omitempty" xml:"UpstreamTaskInstanceIds,omitempty" type:"Repeated"`
 }
 

@@ -22,31 +22,31 @@ type iDataQualityEvaluationTaskInstance interface {
 }
 
 type DataQualityEvaluationTaskInstance struct {
-	// The time at which the instance was generated.
+	// The creation time of the task instance.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time at which the instance finished running.
+	// The end time of the task instance.
 	//
 	// example:
 	//
 	// 1710239005403
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The instance ID.
+	// The task instance ID.
 	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the instance.
+	// The current running status.
 	//
 	// example:
 	//
 	// Passed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The snapshot of the configurations for the data quality monitoring task when the task starts.
+	// The snapshot of the data quality check task at the start of the check.
 	Task *DataQualityEvaluationTaskInstanceTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -113,49 +113,49 @@ func (s *DataQualityEvaluationTaskInstance) Validate() error {
 }
 
 type DataQualityEvaluationTaskInstanceTask struct {
-	// The ID of the data source that is used for task running.
+	// The ID of the data source used to execute the data quality check task.
 	//
 	// example:
 	//
 	// 201
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The callback settings during the lifecycle of the data quality evaluation task instance. Currently, only one hook that blocks a scheduled task is supported.
+	// The callback settings for the lifecycle of the data quality check task instance. Currently, only one hook that blocks the scheduled task is supported.
 	Hooks []*DataQualityEvaluationTaskInstanceTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// The ID of the data quality monitoring task.
+	// The ID of the data quality check task.
 	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks.
+	// The name of the data quality check task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 255 characters in length.
 	//
 	// example:
 	//
-	// Data quality evaluation task
+	// Quality check task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The subscription configurations for alert notifications.
+	// The alert subscription configuration of the data quality check task.
 	Notifications []*DataQualityEvaluationTaskInstanceTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 2626
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The settings used when accessing the data source. Currently, only the EMR YARN queue and the SQL engine used to collect EMR tables can be specified. Supported SQL engines: SPARK_SQL, KYUUBI, PRESTO_SQL, and HIVE_SQL.
+	// The settings used when the data source is accessed. Currently, you can only specify the YARN queue for EMR and set the SQL engine to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL when collecting EMR tables.
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// The monitored object of the data quality monitoring task.
+	// The monitored object of the data quality check task.
 	Target *DataQualityEvaluationTaskInstanceTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The DataWorks tenant ID.
+	// The ID of the DataWorks tenant.
 	//
 	// example:
 	//
 	// 195820716552192
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The trigger configuration of the data quality monitoring task.
+	// The trigger configuration of the data quality check task.
 	Trigger *DataQualityEvaluationTaskInstanceTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -290,13 +290,15 @@ func (s *DataQualityEvaluationTaskInstanceTask) Validate() error {
 }
 
 type DataQualityEvaluationTaskInstanceTaskHooks struct {
-	// The trigger configuration of the callback event.
+	// The trigger condition of the hook.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The subsequent action type. BlockTaskInstance: blocks execution of a DataWorks task instance.
+	// The type of the subsequent action. Valid values:
+	//
+	// - BlockTaskInstance: Blocks the execution of the DataWorks task instance.
 	//
 	// example:
 	//
@@ -335,13 +337,13 @@ func (s *DataQualityEvaluationTaskInstanceTaskHooks) Validate() error {
 }
 
 type DataQualityEvaluationTaskInstanceTaskNotifications struct {
-	// The trigger condition of the alert notification.
+	// The alert trigger condition.
 	//
 	// example:
 	//
 	// ${blockType} == "Strong"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The configurations for the alert notification.
+	// The specific message notification settings.
 	Notifications []*DataQualityEvaluationTaskInstanceTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -385,9 +387,9 @@ func (s *DataQualityEvaluationTaskInstanceTaskNotifications) Validate() error {
 }
 
 type DataQualityEvaluationTaskInstanceTaskNotificationsNotifications struct {
-	// The alert notification methods.
+	// The notification channel.
 	NotificationChannels []*DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// The alert recipient configurations.
+	// The notification recipient configuration.
 	NotificationReceivers []*DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -440,11 +442,11 @@ func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotifications) Valida
 }
 
 type DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels struct {
-	// The alert notification methods.
+	// The notification channel.
 	//
 	// example:
 	//
-	// Mail
+	// ["Mail"]
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -470,19 +472,19 @@ func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotifica
 }
 
 type DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers struct {
-	// The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
+	// The extension information in JSON format. For example, DingTalk chatbots support mentioning all users.
 	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The alert recipient configuration.
+	// The notification recipient type.
 	//
 	// example:
 	//
 	// AliUid
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The alert recipients.
+	// The notification recipient values.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -526,41 +528,41 @@ func (s *DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotifica
 }
 
 type DataQualityEvaluationTaskInstanceTaskTarget struct {
-	// The type of the database to which the table belongs. Valid values:
+	// The database type to which the table belongs, applicable when the dataset is of the table type. Valid values:
 	//
-	// 	- maxcompute
+	// - maxcompute
 	//
-	// 	- emr
+	// - emr
 	//
-	// 	- cdh
+	// - cdh
 	//
-	// 	- hologres
+	// - hologres
 	//
-	// 	- analyticdb_for_postgresql
+	// - analyticdb_for_postgresql
 	//
-	// 	- analyticdb_for_mysql
+	// - analyticdb_for_mysql
 	//
-	// 	- starrocks
+	// - starrocks
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The configuration of the partitioned table.
+	// The partition settings of the partitioned table.
 	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The ID of the table in Data Map.
+	// The unique ID of the table in DataWorks Data Map.
 	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitored object. Valid values:
+	// The monitored object type.
 	//
-	// 	- Table
+	// - Table
 	//
 	// example:
 	//
@@ -617,11 +619,11 @@ func (s *DataQualityEvaluationTaskInstanceTaskTarget) Validate() error {
 }
 
 type DataQualityEvaluationTaskInstanceTaskTrigger struct {
-	// Specifies the scheduled nodes whose instances can trigger the quality evaluation task after running successfully. This setting takes effect when type is ByScheduledTaskInstance.
+	// The IDs of the scheduled nodes whose successful instance execution triggers the check. This parameter takes effect only when Type is set to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The trigger condition of the task. Valid values:
+	// The type of event that triggers the execution of the quality check task. Valid values:
 	//
-	// 	- ByScheduledTaskInstance: The task is triggered when the instance of an auto triggered node is successfully run.
+	// - ByScheduledTaskInstance: A scheduled instance completes successfully.
 	//
 	// example:
 	//

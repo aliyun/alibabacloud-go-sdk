@@ -20,7 +20,7 @@ type iListServerIdeInstancesResponseBody interface {
 }
 
 type ListServerIdeInstancesResponseBody struct {
-	// The maximum number of entries returned in the current response.
+	// The maximum number of entries used for this response.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListServerIdeInstancesResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The pagination information.
 	PagingInfo *ListServerIdeInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListServerIdeInstancesResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// 10
 	Cu *int32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The datasets mounted to the instance.
+	// The list of datasets mounted to the instance.
 	Datasets []*ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// The reason why the instance entered the failed state.
 	//
@@ -228,13 +228,13 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstances struct {
 	//
 	// notebook_dev
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The account ID of the user that owns the instance.
+	// The account ID of the user who owns the instance.
 	//
 	// example:
 	//
 	// 20933221576142****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
@@ -468,13 +468,13 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstances) Validate() error
 }
 
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfig struct {
-	// The environment variable role key.
+	// The environment variable key for the role.
 	//
 	// example:
 	//
 	// 0
 	AliyunEnvRoleKey *string `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
-	// The credential configurations.
+	// The list of credential configurations.
 	Configs []*ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 	// Specifies whether credential injection is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
@@ -535,9 +535,9 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfig
 	//
 	// 0
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The roles in the credential configuration.
+	// The list of roles in the credential configuration.
 	Roles []*ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The credential configuration type. Valid values:
+	// The type of the credential configuration. Valid values:
 	//
 	// - Role: single role assumption
 	//
@@ -598,7 +598,7 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigCo
 }
 
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRoles struct {
-	// The Alibaba Cloud account ID of the entity to which the assumed role belongs.
+	// The Alibaba Cloud account ID of the principal to which the assumed role belongs.
 	//
 	// example:
 	//
@@ -693,7 +693,7 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigCo
 }
 
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRolesUserInfo struct {
-	// The temporary AccessKey ID used for credential injection.
+	// The temporary access key ID used for credential injection.
 	//
 	// example:
 	//
@@ -774,13 +774,13 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigCo
 }
 
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets struct {
-	// The custom mount attributes of the dataset. The content is passed as mount options.
+	// The custom mount properties of the dataset. The content is passed as mount options.
 	//
 	// example:
 	//
 	// {"fs.oss.download.thread.concurrency":"10"}
 	ExtOptions *string `json:"ExtOptions,omitempty" xml:"ExtOptions,omitempty"`
-	// The dataset identifier.
+	// The identifier of the dataset.
 	//
 	// example:
 	//
@@ -800,7 +800,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets struct {
 	//
 	// oss://example-bucket/data/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The dataset version number.
+	// The version number of the dataset.
 	//
 	// example:
 	//
@@ -877,19 +877,19 @@ func (s *ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets) Validate
 type ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpc struct {
 	// The list of port forwarding configurations.
 	ForwardInfos []*ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-bp1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp1****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -989,7 +989,7 @@ type ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos st
 	//
 	// ssh
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The NAT gateway ID.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//

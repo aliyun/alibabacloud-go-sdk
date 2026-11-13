@@ -24,19 +24,19 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
-	// The name of the file resource. Fuzzy match is supported.
+	// The name of the file resource. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the owner, which is the UID of the workspace administrator account. You can log on to the Alibaba Cloud Management Console and view the account UID in the Security Management section of Account Management.
+	// The ID of the owner, which is the UID of the workspace administrator account. You can log on to the Alibaba Cloud Management Console and view the account UID in the Security Settings section of the Account Center.
 	//
 	// example:
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of the page to return.
+	// The page number of the requested data.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListResourcesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID. This parameter specifies the DataWorks workspace for the API operation.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID. This parameter specifies the DataWorks workspace for the API operation.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ListResourcesRequest struct {
 	//
 	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The filter condition for the resource type. Valid values:
+	// The resource type used as a filter condition. Valid values:
 	//
 	// - Python
 	//

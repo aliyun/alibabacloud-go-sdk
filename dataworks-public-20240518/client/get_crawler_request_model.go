@@ -14,7 +14,7 @@ type iGetCrawlerRequest interface {
 }
 
 type GetCrawlerRequest struct {
-	// The metadata crawler ID. You can call ListCrawlers to query this ID.
+	// The ID of the metadata crawler. You can call ListCrawlers to query the ID.
 	//
 	// This parameter is required.
 	//

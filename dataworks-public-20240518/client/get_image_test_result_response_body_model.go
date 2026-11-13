@@ -18,7 +18,7 @@ type iGetImageTestResultResponseBody interface {
 }
 
 type GetImageTestResultResponseBody struct {
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type GetImageTestResultResponseBodyTestResult struct {
 	//
 	// 1727055811000
 	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	// The ID of the process.
+	// The process ID.
 	//
 	// example:
 	//
 	// 582d4896-d224-413b-b883-239eeebe0bc5
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The publishing status of the image. Valid values:
+	// The image publishing status. Valid values:
 	//
 	// - Untest: Not tested.
 	//
@@ -135,13 +135,13 @@ type GetImageTestResultResponseBodyTestResult struct {
 	//
 	// Unpublished
 	PublishStage *string `json:"PublishStage,omitempty" xml:"PublishStage,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// Serverless_res_group_****
+	// 123456789
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the test process. Valid values:
+	// The test process status. Valid values:
 	//
 	// - running: Running.
 	//

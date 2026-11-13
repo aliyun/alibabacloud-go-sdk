@@ -20,13 +20,13 @@ type iGetCrawlerResponseBody interface {
 type GetCrawlerResponseBody struct {
 	// The metadata crawler details.
 	Crawler *GetCrawlerResponseBodyCrawler `json:"Crawler,omitempty" xml:"Crawler,omitempty" type:"Struct"`
-	// The request ID. Used for locating logs and troubleshooting issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 9252F32F-D855-549E-8898-61CF5A733050
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -75,7 +75,7 @@ func (s *GetCrawlerResponseBody) Validate() error {
 }
 
 type GetCrawlerResponseBodyCrawler struct {
-	// The creation time, in millisecond-level UNIX timestamp.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -87,9 +87,13 @@ type GetCrawlerResponseBodyCrawler struct {
 	//
 	// 12345
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Indicates whether AI metadata description is enabled.
+	// Indicates whether AI metadata descriptions are enabled.
 	EnableAiComment *bool `json:"EnableAiComment,omitempty" xml:"EnableAiComment,omitempty"`
-	// The DataWorks environment type. Valid values: Dev, Prod.
+	// The DataWorks environment type. Valid values:
+	//
+	// - Dev
+	//
+	// - Prod
 	//
 	// example:
 	//
@@ -101,25 +105,37 @@ type GetCrawlerResponseBodyCrawler struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The latest run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN. This value may be empty if the crawler has not been run.
+	// The latest run status. Valid values:
+	//
+	// - WAITING
+	//
+	// - RUNNING
+	//
+	// - SUCCESS
+	//
+	// - ERROR
+	//
+	// - SHUTDOWN
+	//
+	// This parameter may be empty if the crawler has not been run.
 	//
 	// example:
 	//
 	// SUCCESS
 	LastRunStatus *string `json:"LastRunStatus,omitempty" xml:"LastRunStatus,omitempty"`
-	// The DataWorks task instance ID associated with the latest run. This value may be empty if the crawler has not been run.
+	// The DataWorks task instance ID associated with the latest run. This parameter may be empty if the crawler has not been run.
 	//
 	// example:
 	//
 	// 1234
 	LastRunTaskInstanceId *int64 `json:"LastRunTaskInstanceId,omitempty" xml:"LastRunTaskInstanceId,omitempty"`
-	// The meta entity ID associated with the crawler, which can be used to connect to metadata query APIs.
+	// The ID of the meta-entity associated with the crawler. You can use this ID in metadata query APIs.
 	//
 	// example:
 	//
 	// starrocks:example-instance
 	MetaEntityId *string `json:"MetaEntityId,omitempty" xml:"MetaEntityId,omitempty"`
-	// The modification time, in millisecond-level UNIX timestamp.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -131,7 +147,11 @@ type GetCrawlerResponseBodyCrawler struct {
 	//
 	// example_crawler
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The extended configuration for the crawler type.
+	// The extension configuration for the crawler type.
+	//
+	// example:
+	//
+	// {"CollectRecyclebin":"false"}
 	Options map[string]*string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The DataWorks user ID of the crawler owner.
 	//
@@ -145,23 +165,27 @@ type GetCrawlerResponseBodyCrawler struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The Serverless 2.0 resource group ID used to run the collection task.
+	// The ID of the Serverless 2.0 resource group used to run the crawl task.
 	//
 	// example:
 	//
 	// Serverless_res_group_1234567890123456_1234567890
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The schedule configuration.
+	// The schedule settings.
 	ScheduleConfig *GetCrawlerResponseBodyCrawlerScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The collection scope configuration.
+	// The crawl scope configuration.
 	Scope *GetCrawlerResponseBodyCrawlerScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	// The crawler status. The value is VALID if the crawler configuration is valid and the associated data source exists. Otherwise, the value is INVALID.
+	// The crawler status. Valid values:
+	//
+	// - VALID: The crawler configuration is valid and the associated data source exists.
+	//
+	// - INVALID: The crawler configuration is invalid or the associated data source does not exist.
 	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DataWorks scheduling task ID associated with the crawler, which can be used to call GetTask to query the task definition.
+	// The DataWorks scheduled task ID associated with the crawler. You can call GetTask to query the task definition.
 	//
 	// example:
 	//
@@ -375,7 +399,11 @@ type GetCrawlerResponseBodyCrawlerScheduleConfig struct {
 	//
 	// 0 0 2 ? 	- *
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
-	// The schedule type. Valid values: MANUAL, NORMAL.
+	// The scheduling type. Valid values:
+	//
+	// - MANUAL
+	//
+	// - NORMAL
 	//
 	// example:
 	//
@@ -414,15 +442,23 @@ func (s *GetCrawlerResponseBodyCrawlerScheduleConfig) Validate() error {
 }
 
 type GetCrawlerResponseBodyCrawlerScope struct {
-	// The exclusion regular expression for the collection scope.
+	// The regular expression used to exclude items from the crawl scope.
 	//
 	// example:
 	//
 	// ^tmp_.*
 	ExcludeRegex *string `json:"ExcludeRegex,omitempty" xml:"ExcludeRegex,omitempty"`
-	// The collection scope entries.
+	// The crawl scope items.
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The collection scope granularity. Valid values: PROJECT, DATABASE, INSTANCE, CATALOG.
+	// The crawl scope granularity. Valid values:
+	//
+	// - PROJECT
+	//
+	// - DATABASE
+	//
+	// - INSTANCE
+	//
+	// - CATALOG
 	//
 	// example:
 	//

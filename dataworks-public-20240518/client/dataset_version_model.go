@@ -42,7 +42,7 @@ type DatasetVersion struct {
 	//
 	// Initial version
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Creation time, represented by a timestamp in milliseconds
+	// The creation timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DatasetVersion struct {
 	//
 	// 17815XXX61016173
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The corresponding dataset ID.
+	// The associated dataset ID.
 	//
 	// example:
 	//
@@ -66,54 +66,55 @@ type DatasetVersion struct {
 	//
 	// dataworks-datasetVersion:0gfxxxjx155usz3hrv:1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The storage import configuration for the dataset. The required configuration varies by storage type.
-	//
+	// The storage import configuration of the dataset. The required configuration information varies based on the storage type.
 	//
 	// <details>
 	//
 	// <summary>NAS</summary>
 	//
-	// For values, see the response of the File Storage NAS DescribeFileSystems API.
-	//
+	// For valid values, refer to the response of the DescribeFileSystems API operation.
 	//
 	// ```JSON
 	//
 	// {
 	//
-	//   "fileSystemId": "3b6XXX89c9", // The file system ID.
+	//   "fileSystemId": "3b6XXX89c9", // File system ID
 	//
-	//   "fileSystemStorageType": "Performance", // The file system storage type.
+	//   "fileSystemStorageType": "Performance", // Storage specification of the file system
 	//
-	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // VPC ID of the mount target
 	//
 	// }
 	//
 	// ```
 	//
-	//
 	// </details>
+	//
+	// example:
+	//
+	// {"fileSystemId":"3b6XXX89c9","fileSystemStorageType":"Performance","vpcId":"vpc-uf66oxxxrqge1t2gson7s"}
 	ImportInfo map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The PAI dataset label.
+	// The PAI dataset labels.
 	Labels []*DatasetLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Modification time, represented by a timestamp in milliseconds
+	// The modification timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1736756055000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The mount path. Defaults to /mnt/data.
+	// The mount path. Default value: /mnt/data.
 	//
 	// example:
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// Storage type (read-only); consistent with the corresponding property of the parent dataset.
+	// The storage type. This property is read-only and remains consistent with the corresponding property of the associated dataset.
 	//
 	// example:
 	//
 	// OSS
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// URL
+	// The URL.
 	//
 	// example:
 	//

@@ -56,7 +56,7 @@ type iListTaskInstancesRequest interface {
 }
 
 type ListTaskInstancesRequest struct {
-	// The business date. Typically, this is 00:00:00 of the day before the scheduled time of the periodic instance, in the format of a millisecond-level timestamp, such as 1743350400000.
+	// The business date. Typically, this is 00:00:00 of the day before the scheduled time of the scheduled instance, in the format of a millisecond-level timestamp, such as 1743350400000.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The filter conditions in JSON format. Multiple filter conditions are combined with the AND logical operator. Supported fields: `startedTimeStart`, `startedTimeEnd`, `finishedTimeStart`, `finishedTimeEnd`, `createTimeStart`, and `createTimeEnd`.
+	// The filter conditions. The value must be in JSON format. Multiple filter conditions are connected by the logical AND operator. Supported fields: `startedTimeStart`, `startedTimeEnd`, `finishedTimeStart`, `finishedTimeEnd`, `createTimeStart`, and `createTimeEnd`.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type ListTaskInstancesRequest struct {
 	//
 	// }
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The task instance ID. A task instance may be rerun. If you specify this parameter, the response includes historical rerun records, which are distinguished by RunNumber.
+	// The task instance ID. Task instances may be rerun. If you specify this parameter, the response includes historical information about reruns. Each piece of historical information is distinguished by RunNumber.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The task instance IDs. You can specify multiple task instance IDs to query task instances in batches.
+	// The list of task instance IDs. You can use this parameter to query multiple task instances in batches based on task instance IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The account ID of the task owner.
 	//
@@ -110,11 +110,11 @@ type ListTaskInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The project environment. Valid values:
+	// The project environment.
 	//
-	// - Prod: production
+	// - Prod: Production.
 	//
-	// - Dev: development
+	// - Dev: Development.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// The sort field. Fields such as scheduled time and start time are supported. The format is \\"Sort field + Sort order (Desc/Asc)\\", where Asc can be omitted. Valid values for the sort field:
+	// The sort field. Fields such as scheduled time and start time are supported. The format is "Sort field + Sort order (Desc/Asc)" (Asc can be omitted). The valid values for the sort field are as follows:
 	//
 	// - `TriggerTime (Desc/Asc)`
 	//
@@ -146,7 +146,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// - `Id (Desc/Asc)`
 	//
-	//   Default value: `Id Desc`
+	//   Default value: `Id Desc`.
 	//
 	// example:
 	//
@@ -154,17 +154,17 @@ type ListTaskInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The status of the task instance. Valid values:
 	//
-	// - `NotRun`: not run
+	// - `NotRun`: Not run.
 	//
-	// - `Running`: running
+	// - `Running`: Running.
 	//
-	// - `Failure`: failed
+	// - `Failure`: Failed.
 	//
-	// - `Success`: successful
+	// - `Success`: Successful.
 	//
-	// - `WaitTime`: waiting for scheduled time
+	// - `WaitTime`: Waiting for scheduled time.
 	//
-	// - `WaitResource`: waiting for resources
+	// - `WaitResource`: Waiting for resources.
 	//
 	// example:
 	//
@@ -176,73 +176,73 @@ type ListTaskInstancesRequest struct {
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task IDs. You can specify multiple task IDs to query task instances in batches.
+	// The list of task IDs. You can use this parameter to query task instances in batches based on task IDs.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The task name. Fuzzy match is supported.
+	// The name of the task. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// SQL node
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task type. For the valid values of TaskType for each node, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html).
+	// The task type. For the valid values of TaskType for different nodes, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The run mode upon triggering. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
+	// The running mode upon triggering. This parameter takes effect only when TriggerType is set to Scheduler.
 	//
-	// - Pause: pause
+	// - Pause: Paused.
 	//
-	// - Skip: dry run
+	// - Skip: Dry run.
 	//
-	// - Normal: normal run
+	// - Normal: Normal execution.
 	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The trigger type. Valid values:
+	// The trigger type.
 	//
-	// - Scheduler: periodic scheduling
+	// - Scheduler: Triggered by periodic scheduling.
 	//
-	// - Manual: manual
+	// - Manual: Triggered manually.
 	//
 	// example:
 	//
-	// Normal
+	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The unified workflow instance ID. This value is the same for all task instances within a specific business date under a single trigger.
+	// The unified workflow instance ID. The value of this field is the same for all task instances within a specific business date under a single trigger.
 	//
 	// example:
 	//
 	// 1234
 	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
-	// The ID of the associated workflow.
+	// The ID of the workflow to which the task belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The ID of the associated workflow instance.
+	// The ID of the workflow instance.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance. Valid values:
+	// The type of the workflow instance.
 	//
-	// - SmokeTest: test
+	// - SmokeTest: Test.
 	//
-	// - Manual: manual task
+	// - Manual: Manual task.
 	//
-	// - SupplementData: data backfill
+	// - SupplementData: Data backfill.
 	//
-	// - ManualWorkflow: manual workflow
+	// - ManualWorkflow: Manual workflow.
 	//
-	// - Normal: periodic scheduling
+	// - Normal: Periodic scheduling.
 	//
-	// - TriggerWorkflow: triggered workflow
+	// - TriggerWorkflow: Triggered workflow.
 	//
 	// example:
 	//

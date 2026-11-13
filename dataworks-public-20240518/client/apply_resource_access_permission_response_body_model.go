@@ -16,9 +16,9 @@ type iApplyResourceAccessPermissionResponseBody interface {
 }
 
 type ApplyResourceAccessPermissionResponseBody struct {
-	// The list of request order IDs.
+	// The list of application IDs.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID. Used for log identification and troubleshooting.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

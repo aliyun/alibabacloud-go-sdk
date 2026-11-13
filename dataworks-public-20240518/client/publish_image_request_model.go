@@ -24,7 +24,7 @@ type PublishImageRequest struct {
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The image publish execution ID, which is used as an idempotence identifier.
+	// The ID of the image publishing execution, which is used as an idempotency token.
 	//
 	// example:
 	//

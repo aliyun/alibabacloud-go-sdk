@@ -18,7 +18,7 @@ type iListTasksResponseBody interface {
 type ListTasksResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListTasksResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tasks.
+	// The list of tasks.
 	Tasks []*ListTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -150,25 +150,27 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The creation time.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the task.
 	//
 	// example:
 	//
 	// 1000
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The information about the associated data source.
+	// The associated data source information.
 	DataSource *ListTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The task ID.
+	// The unique identifier of the task.
 	//
 	// example:
 	//
@@ -176,9 +178,9 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance generation mode. Valid values:
 	//
-	// - T+1
+	// - T+1: Generated on the next day.
 	//
-	// - Immediately
+	// - Immediately: Generated immediately.
 	//
 	// example:
 	//
@@ -186,17 +188,19 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The modification time.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who modified the task.
 	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The name of the task.
+	// The name.
 	//
 	// example:
 	//
@@ -208,57 +212,43 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	// The task priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The environment of the workspace.
-	//
-	// Valid values:
-	//
-	// - Prod: production environment
-	//
-	// - Dev: development environment
+	// The project environment.
 	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun interval. Unit: seconds.
+	// The retry time interval, in seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The rerun mode.
-	//
-	// Valid values:
-	//
-	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-	//
-	// - FailureAllowed: The task can be rerun only after it fails to run.
-	//
-	// - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// The rerun configuration of the task.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	// The number of retries. This parameter takes effect only when the task is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The configurations of the runtime environment, such as the resource group information.
+	// The runtime environment configuration, such as the resource group information.
 	RuntimeResource *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The list of script parameters.
 	//
@@ -266,15 +256,15 @@ type ListTasksResponseBodyPagingInfoTasks struct {
 	//
 	// para1=$bizdate para2=$[yyyymmdd]
 	ScriptParameters *string `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
-	// The timeout period of task running. Unit: seconds.
+	// The task execution timeout period, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The method to trigger task scheduling.
+	// The trigger type of the task.
 	Trigger *ListTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
@@ -553,19 +543,19 @@ func (s *ListTasksResponseBodyPagingInfoTasksDataSource) Validate() error {
 }
 
 type ListTasksResponseBodyPagingInfoTasksRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The number of compute units (CUs) consumed by the task run configuration.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The ID of the image configured for the task runtime.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the scheduling resource group configured for the task runtime.
 	//
 	// example:
 	//
@@ -613,45 +603,35 @@ func (s *ListTasksResponseBodyPagingInfoTasksRuntimeResource) Validate() error {
 }
 
 type ListTasksResponseBodyPagingInfoTasksTrigger struct {
-	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The cron expression. This parameter takes effect only when type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The expiration time for periodic triggers. This parameter takes effect only when type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
-	//
-	// Valid values:
-	//
-	// - Pause
-	//
-	// - Skip
-	//
-	// - Normal
+	// The running mode upon trigger. This parameter takes effect only when type is set to Scheduler.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The effective time for periodic triggers. This parameter takes effect only when type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type.
-	//
-	// Valid values:
-	//
-	// - Scheduler: scheduling cycle-based trigger
-	//
-	// - Manual: manual trigger
 	//
 	// example:
 	//

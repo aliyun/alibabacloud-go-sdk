@@ -20,13 +20,13 @@ type iUpdateDataAssetTagRequest interface {
 }
 
 type UpdateDataAssetTagRequest struct {
-	// The label description.
+	// The tag description.
 	//
 	// example:
 	//
 	// This is a description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label key.
+	// The tag key.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type UpdateDataAssetTagRequest struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The list of label administrators.
+	// The list of tag administrators.
 	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
-	// The list of label values.
+	// The list of tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

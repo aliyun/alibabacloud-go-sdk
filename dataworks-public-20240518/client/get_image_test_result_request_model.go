@@ -24,7 +24,7 @@ type GetImageTestResultRequest struct {
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the test process.
+	// The test process ID.
 	//
 	// This parameter is required.
 	//

@@ -170,29 +170,29 @@ func (client *Client) AddEntityIntoMetaCollectionWithContext(ctx context.Context
 
 // Summary:
 //
-// Commits an access permissions request for specific resources.
+// Submits an application for access permissions to specific resources.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - **Reason**: The reason for the request. This parameter is required.
+// - **Reason**: The reason for the application. This parameter is required.
 //
-// - **ApplyContents**: Contains multiple resource permission request entries. Each entry includes a resource description (Resource), a grantee description (Grantee), access types (AccessTypes), and a permission expiration time (ExpirationTime). A maximum of 400 entries can be submitted in a single request.
+// - **ApplyContents**: The list of resource permission applications. Each item includes the resource description (Resource), grantee description (Grantee), access types (AccessTypes), and expiration time (ExpirationTime). The maximum number of items per request is 400.
 //
-// - **Resource**: The resource description. You must specify the ResourceSchema.name and version on which the resource parsing depends, as well as the resource metadata (MetaData).
+// - **Resource**: The resource description. You must specify the ResourceSchema.name and version on which resource parsing depends, as well as the resource metadata (MetaData).
 //
 // - **Grantee**: The grantee description. You must specify the principal type (PrincipalType) and principal ID (PrincipalId).
 //
-// - **AccessTypes**: The list of access types. Multiple access type combinations are supported.
+// - **AccessTypes**: The list of permission types. Multiple permission combinations are supported.
 //
-// - **ExpirationTime**: The permission expiration time, provided as a millisecond-level timestamp.
+// - **ExpirationTime**: The expiration time of the permissions, provided as a millisecond timestamp.
 //
-// - **AuthMethod**: Optional. Specifies the authorization method. The system uses the built-in default authorization method if this parameter is not specified.
+// - **AuthMethod**: The authorization method. This parameter is optional. By default, the built-in default authorization method is used.
 //
 // - **ClientToken**: The client token used to prevent duplicate requests. This parameter is optional.
 //
-// Make sure that all required fields are correctly specified and meet the corresponding constraints. For example, the DefVersion and MetaData in Resource must match the selected DefSchema.
+// Make sure that all required fields are correctly filled in and meet the corresponding constraints. For example, the DefVersion and MetaData in Resource must match the selected DefSchema.
 //
 // @param tmpReq - ApplyResourceAccessPermissionRequest
 //
@@ -668,11 +668,11 @@ func (client *Client) BatchDeleteMetaEntitiesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Updates multiple nodes in batches by using incremental updates.
+// Applies incremental updates to multiple tasks in a batch.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// DataWorks Basic Edition or later is required.
 //
 // @param tmpReq - BatchUpdateTasksRequest
 //
@@ -730,7 +730,7 @@ func (client *Client) BatchUpdateTasksWithContext(ctx context.Context, tmpReq *B
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. DataWorks Basic Edition or higher is required.
 //
 // 2. **Ensure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this API operation.**
 //
@@ -858,7 +858,7 @@ func (client *Client) CancelAgentSessionWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a more advanced edition to use this feature.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this operation.**
 //
@@ -1604,23 +1604,23 @@ func (client *Client) CreateComputeResourceWithContext(ctx context.Context, requ
 //
 // ## Scenarios
 //
-// Creates a metadata crawler for a specified data source and configures the collection scope, resource group, scheduling method, and extended configurations.
+// Create a metadata crawler for a specified data source, and configure the collection scope, resource group, scheduling method, and extended configurations.
 //
-// ## Recommended workflow
+// ## Recommended procedure
 //
-// 1. Call `GetCrawlerTypeCapabilities` to query the crawler types and their configuration capabilities supported in the current region.
+// 1. Call GetCrawlerTypeCapabilities to query the crawler types supported in the current region and their configuration capabilities.
 //
-// 2. Create a crawler by using a data source that matches the `Type` value. Before creating a crawler, ensure that the data source and the selected resource group pass the connectivity test by calling the `TestDataSourceConnectivity` API to avoid creating an invalid crawler.
+// 2. Create a crawler by using a data source that matches the Type. Before you create the crawler, make sure that the data source and the selected resource group pass the connectivity test by calling the TestDataSourceConnectivity API. This prevents you from creating an invalid crawler.
 //
-// 3. After the crawler is created, call `RunCrawler` to manually run it, or configure periodic scheduling for automatic execution.
+// 3. After the crawler is created, call RunCrawler to manually run the crawler, or configure periodic scheduling to automatically run the crawler.
 //
 // ## Edition requirements
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // ## Precautions
 //
-// A successful creation only indicates that the crawler configuration has been generated. Metadata collection is not immediately executed.
+// A successful creation only indicates that the crawler configuration is generated. The metadata collection is not immediately executed.
 //
 // @param tmpReq - CreateCrawlerRequest
 //
@@ -2558,7 +2558,7 @@ func (client *Client) CreateDataQualityRuleTemplateWithContext(ctx context.Conte
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or later to use this feature.
 //
 // @param tmpReq - CreateDataQualityScanRequest
 //
@@ -2926,7 +2926,7 @@ func (client *Client) CreateDataSourceSharedRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a dataset. You can create a dataset only in a workspace that you have joined. Only DataWorks datasets are supported. The maximum number of datasets per tenant is 2000.
+// Creates a dataset. Datasets can only be created in workspaces that you have joined. Currently, only DataWorks datasets are supported. The maximum number of datasets per tenant is 2,000.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -3000,7 +3000,7 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Creates a dataset version. Currently, only DataWorks datasets are supported. The maximum number of versions is 20.
+// Creates a dataset version. Currently, only DataWorks datasets are supported, and the maximum number of versions is 20.
 //
 // @param tmpReq - CreateDatasetVersionRequest
 //
@@ -3592,13 +3592,13 @@ func (client *Client) CreateLineageRelationshipWithContext(ctx context.Context, 
 //
 // ## Request description
 //
-// - After you submit the request, the system verifies the availability of the MCP server based on the connection information you provided.
+// - After submission, the system verifies the availability of the MCP server based on the provided connection information.
 //
-// - If the connection to the MCP server is unavailable, the API returns an error message.
+// - If the MCP server connection is unavailable, the API returns the corresponding error message.
 //
-// - The `Name` field must start with a lowercase letter and can contain only lowercase letters, digits, underscores (_), and hyphens (-). The name must be unique within the current account.
+// - The Name field must start with a lowercase letter and can contain only lowercase letters, digits, underscores (_), and hyphens (-). It must be unique within the current account.
 //
-// - The `Visibility` field defines the visibility level of the MCP server. Valid values: `TENANT` (visible within the account), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). Specify the `VisibilityScope` parameter to further define the visibility scope based on the selected value.
+// - The Visibility field defines the visibility level of the MCP server. Valid values: `TENANT` (visible within the account), `PROJECT` (visible to specified projects), and `USER` (visible to specified users). Depending on the selected value, you must provide the corresponding VisibilityScope parameter to further specify the visibility scope.
 //
 // @param tmpReq - CreateMcpServerRequest
 //
@@ -4068,23 +4068,23 @@ func (client *Client) CreatePipelineRunWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a new approval process definition, supporting custom configuration of approval rules and notification services.
+// Creates an approval flow definition with custom approval rules and notification services.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - This API operation allows you to create a new approval process definition, including setting basic information such as the approval policy name, description, type, and subtype.
+// - This API allows you to create an approval flow definition, including setting basic information such as the policy name, description, type, and subtype.
 //
-// - You can define a list of condition rules (RuleConditions) to specify the conditions under which the approval process is triggered.
+// - You can define a list of condition rules (RuleConditions) to specify the conditions under which the approval flow is triggered.
 //
-// - Multiple notification services (NotificationServices) can be configured to send notifications to relevant personnel at different stages of the approval process.
+// - You can configure multiple notification services (NotificationServices) to send notifications to relevant personnel at different stages of the approval flow.
 //
-// - The approval node list (ApprovalNodes) defines the nodes that must be traversed during the approval process and the approver information for each node.
+// - The list of approval nodes (ApprovalNodes) defines the nodes that the approval process must pass through and the approver information.
 //
-// - You can choose whether to immediately enable the newly created approval process definition.
+// - You can choose whether to immediately enable the newly created approval flow definition.
 //
-// - Note: Certain fields such as Type have specific value constraints. Refer to the constraint descriptions in the documentation.
+// - Note: Some fields, such as Type, have specific value limits. Refer to the constraint description section in the documentation.
 //
 // @param tmpReq - CreateProcessDefinitionRequest
 //
@@ -4786,25 +4786,25 @@ func (client *Client) CreateSecurityStrategyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Saves a reusable semantic job definition. If you use a single-file source, apply for and complete the attachment upload first. After creation, call RunSemanticJob with the returned Name.
+// Saves a reusable semantic task definition. If you use a single-file source, apply for and complete the attachment upload first. After the definition is created, call RunSemanticJob with the returned Name.
 //
 // Description:
 //
 // ## Scenarios
 //
-// Creates and saves a reusable semantic job definition. This operation only saves the data source, resource group, and reference file configurations without immediately executing the job.
+// Creates and saves a reusable semantic task definition. This API operation only saves the configurations of the data source, resource group, and reference files, and does not execute the task immediately.
 //
-// ## Recommended workflow
+// ## Recommended procedure
 //
-// 1. When `Source.type=singleTableFile`, call `UploadSemanticFile` first, use the returned `Data.UploadUrl` to complete the PUT upload, and then specify `Data.FileId` in `ReferenceFileIds`. Alternatively, you can provide a single accessible URI.
+// 1. If `Source.type` is set to `singleTableFile`, call `UploadSemanticFile` first, use the returned `Data.UploadUrl` to complete the PUT upload, and then specify `Data.FileId` in `ReferenceFileIds`. Alternatively, you can provide a single accessible URI.
 //
-// 2. Configure `Source`, `ProjectId`, and `ResourceGroupId`, and then call this operation to save the job.
+// 2. Configure `Source`, `ProjectId`, and `ResourceGroupId`, and then call this operation to save the task.
 //
-// 3. Use `Data.Name` from the response to call `RunSemanticJob`. After the job is complete, use `DownloadSemanticResults` to retrieve the output.
+// 3. Call `RunSemanticJob` by using `Data.Name` in the response. After the task is completed, call `DownloadSemanticResults` to obtain the output.
 //
-// ## Before you begin
+// ## Precautions
 //
-// `Name` must be unique within the current tenant. The reference file quantity rules differ between single-file sources and other sources. For details, refer to the descriptions of the `ReferenceFileIds` and `ReferenceFileUris` fields.
+// `Name` must be unique within the current tenant. The rules for the number of reference files differ between single-file sources and other sources. For details, refer to the descriptions of the `ReferenceFileIds` and `ReferenceFileUris` fields.
 //
 // @param tmpReq - CreateSemanticJobRequest
 //
@@ -4996,9 +4996,9 @@ func (client *Client) CreateServerIdeInstanceWithContext(ctx context.Context, tm
 //
 // - You must specify either the SkillMdOverride or BundleUrl parameter.
 //
-// - You can set Visibility to TENANT, PROJECT, or USER, which indicates that the skill is visible to the entire tenant, specific projects, or specific users.
+// - You can set Visibility to TENANT, PROJECT, or USER, which indicates that the skill is visible within the account, visible to specified projects, or visible to specified users, respectively.
 //
-// - If you set Visibility to PROJECT, you must use VisibilityScope.ProjectIds to specify the IDs of the visible projects. If you set Visibility to USER, you must use VisibilityScope.UserIds to specify the IDs of the visible users.
+// - If Visibility is set to PROJECT, you must specify the IDs of the projects in which the skill is visible by using VisibilityScope.ProjectIds. If Visibility is set to USER, you must specify the IDs of the users who can see the skill by using VisibilityScope.UserIds.
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -5226,11 +5226,11 @@ func (client *Client) CreateWorkflowDefinitionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a workflow instance based on configurations, such as a data backfill workflow instance.
+// Creates a workflow instance from the specified configuration, for example, a data backfill workflow instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or higher to use this operation.
 //
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
@@ -7656,7 +7656,7 @@ func (client *Client) DeleteSkillWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or later to use this feature.
 //
 // @param request - DeleteTaskRequest
 //
@@ -8943,19 +8943,17 @@ func (client *Client) GetAlertRuleWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Queries the content of resource permission applications under the specified process instance ID.
+// Retrieves the details of a resource access request for the specified process instance ID.
 //
 // Description:
 //
-// ## Request Description
+// ## Request description
 //
-// - This API is used to query the details of resource permission applications based on the provided `ProcessInstanceId`.
+// - Specify a valid `ProcessInstanceId` to retrieve the corresponding resource access request.
 //
-// - A valid `ProcessInstanceId` parameter must be provided in the request.
+// - The response includes the basic details and status of the request, along with its items.
 //
-// - The response includes the basic information, status, and the list of specific application contents.
-//
-// - Each application content includes detailed resource information, the grantee, the requested operation permissions, and more.
+// - Each item includes information about the resource, the grantee, and the requested operation permissions.
 //
 // @param request - GetApplicationContentsRequest
 //
@@ -9499,15 +9497,15 @@ func (client *Client) GetComputeResourceAuthUserMappingsWithContext(ctx context.
 //
 // ## Recommended workflow
 //
-// 1. Call `ListCrawlers` to query crawler IDs.
+// 1. Call ListCrawlers to query the crawler ID.
 //
-// 2. Call this operation to retrieve crawler details.
+// 2. Call this operation to obtain the crawler details.
 //
-// 3. To query the complete run history, call `ListCrawlerRuns`.
+// 3. To query the complete run history, call ListCrawlerRuns.
 //
 // ## Edition requirements
 //
-// DataWorks Basic Edition or higher is required.
+// You must purchase DataWorks Basic Edition or a more advanced edition to use this operation.
 //
 // ## Precautions
 //
@@ -10116,11 +10114,11 @@ func (client *Client) GetDataQualityScanWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the run details of a data quality scan task by its ID.
+// Creates a data quality monitoring run instance.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// DataWorks Basic Edition or higher is required.
 //
 // @param request - GetDataQualityScanRunRequest
 //
@@ -10806,13 +10804,13 @@ func (client *Client) GetImageWithContext(ctx context.Context, request *GetImage
 
 // Summary:
 //
-// Retrieves the details of an image test result.
+// Retrieves the details of the image test result.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or later is required.
+// 1. DataWorks Basic Edition or higher is required.
 //
-// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this operation.**
+// 2. **Ensure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this API operation.**
 //
 // @param request - GetImageTestResultRequest
 //
@@ -10890,6 +10888,118 @@ func (client *Client) GetJobStatusWithContext(ctx context.Context, request *GetJ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves information about a specified knowledge base and the current caller’s access role.
+//
+// Description:
+//
+// Retrieves a knowledge base. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseResponse
+func (client *Client) GetKnowledgeBaseWithContext(ctx context.Context, request *GetKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBase"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current details of a single knowledge point, supporting local graphs, topic pages, and knowledge content.
+//
+// Description:
+//
+// Retrieves the current details of a knowledge point. GRAPH returns a one-hop local graph centered on the specified node. WIKI and KNOWLEDGE_CONTENT return readable content.
+//
+// @param request - GetKnowledgePointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgePointResponse
+func (client *Client) GetKnowledgePointWithContext(ctx context.Context, request *GetKnowledgePointRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgePointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgePoint"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgePointResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11354,19 +11464,19 @@ func (client *Client) GetPipelineRunWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves the approval policy for a given process definition ID.
+// Retrieves the details of an approval policy based on the specified process definition ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API retrieves the details of a specific approval process definition using the `ID` parameter.
+// - This operation queries all information about a specific approval process definition by using the specified `Id` parameter.
 //
-// - The `ID` parameter is required and must be a valid process definition ID.
+// - `Id` is required and must be a valid process definition ID.
 //
-// - The response includes the basic properties of the approval process definition, rule conditions, notification service configurations, and approval nodes.
+// - The returned information includes but is not limited to the basic attributes, rule conditions, notification service configurations, and approval nodes of the process definition.
 //
-// - A successful request returns the complete process definition object. A failed request returns an error code and message for troubleshooting.
+// - If the request is successful, the data containing the complete process definition object is returned. If the request fails, the corresponding error code and message are provided to help troubleshoot the issue.
 //
 // @param request - GetProcessDefinitionRequest
 //
@@ -12388,7 +12498,7 @@ func (client *Client) GetUpdateTaskResultWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// This feature requires DataWorks Basic Edition or a higher edition.
+// DataWorks Basic Edition or higher is required to use this feature.
 //
 // @param request - GetWorkflowRequest
 //
@@ -14040,17 +14150,17 @@ func (client *Client) ListCrossProjectPipelineRunsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Lists custom agents with pagination.
+// Returns a paginated list of custom agents.
 //
 // Description:
 //
 // ## Request description
 //
-// - **Search keyword**: Use the `Q` parameter to perform a fuzzy match on agent names.
+// - **Search keyword**: You can use the `Q` parameter to perform a fuzzy match by agent name.
 //
-// - **Visibility level filter**: Use the `Visibility` parameter to filter results by visibility level, such as `TENANT`, `PROJECT`, or `USER`.
+// - **Visibility level filter**: You can use the `Visibility` parameter to filter results by visibility level, such as `TENANT`, `PROJECT`, or `USER`.
 //
-// - **Paging information**: Use the `MaxResults` and `NextToken` parameters to implement a paged query. The `NextToken` parameter is used to retrieve the next page of data.
+// - **Paging information**: You can use the `MaxResults` and `NextToken` parameters to implement a paged query. The `NextToken` parameter is used to retrieve the next page of data.
 //
 // @param tmpReq - ListCustomAgentsRequest
 //
@@ -14664,11 +14774,11 @@ func (client *Client) ListDataQualityEvaluationTasksWithContext(ctx context.Cont
 //
 // Summary:
 //
-// Queries a list of data quality results by using paging.
+// Lists data quality check results with pagination.
 //
 // Description:
 //
-// 需要购买DataWorks基础版及以上版本才能使用
+// You must purchase DataWorks Basic Edition or higher to use this API.
 //
 // @param request - ListDataQualityResultsRequest
 //
@@ -16180,6 +16290,118 @@ func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListIma
 
 // Summary:
 //
+// Queries the knowledge bases that the current caller has permission to view in a specified region by using paging.
+//
+// Description:
+//
+// Lists knowledge bases. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request *ListKnowledgeBasesRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBases"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists knowledge points in a knowledge base by type with pagination.
+//
+// Description:
+//
+// Lists the currently visible knowledge points in a knowledge base in a paginated manner. You can filter the knowledge points by type, such as GRAPH, WIKI, and KNOWLEDGE_CONTENT.
+//
+// @param request - ListKnowledgePointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgePointsResponse
+func (client *Client) ListKnowledgePointsWithContext(ctx context.Context, request *ListKnowledgePointsRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgePointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgePoints"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgePointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of data lineage relationships between two given entities (such as tables, fields, or OSS files) in DataWorks Data Map.
 //
 // Description:
@@ -16546,23 +16768,23 @@ func (client *Client) ListMetaEntityDefsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries all resource access permission application orders initiated by the current user.
+// Lists all requests for resource access permissions submitted by the current user.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API supports paginated queries, controlled by the `NextToken` and `PageSize` parameters.
+// - Use `NextToken` and `PageSize` to paginate the results.
 //
-// - `DefSchema` is a required parameter that specifies the resource type.
+// - `DefSchema` is required and specifies the resource type.
 //
-// - The `ResourceType` list can contain multiple resource types for more precise filtering of application orders.
+// - Specify multiple resource types in `ResourceType` to narrow the results.
 //
-// - You can set `StartTime` and `EndTime` to limit the time range of the query.
+// - Use `StartTime` and `EndTime` to restrict the query to a time range.
 //
-// - `Statuses` allows you to filter application orders by specific statuses, such as pending approval and authorized.
+// - Use `Statuses` to filter requests by status, such as pending approval or authorization succeeded.
 //
-// - If you need to filter by specific resources or authorization targets, you can provide detailed information through the `Resource` and `Grantee` fields.
+// - To filter by specific resources or grantees, specify the details in `Resource` and `Grantee`.
 //
 // @param tmpReq - ListMyApplicationsRequest
 //
@@ -16648,21 +16870,21 @@ func (client *Client) ListMyApplicationsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Query all permission application orders where the current user is an approver or stakeholder.
+// Lists all permission requests for which the current user is an approver or a related party.
 //
 // Description:
 //
-// ## Request Description
+// ## Request description
 //
-// - This API is used to retrieve all permission application orders where the current user is an approver, including pending and processed application orders.
+// - This operation lists permission requests for which the current user is an approver, including requests pending approval and requests that have already been reviewed.
 //
-// - You can use the `Statuses` parameter to filter application orders by specific status.
+// - Use `Statuses` to filter requests by status.
 //
-// - `NextToken` is used for paginated requests. It can be omitted or set to `null` for the first request. For subsequent requests, pass the `NextToken` value from the previous response.
+// - For the first page, omit `NextToken` or set it to `null`. For subsequent pages, pass the `NextToken` value returned in the previous response.
 //
-// - `PageSize` defaults to 10, with a maximum of 200.
+// - `PageSize` defaults to 10 and supports a maximum of 200.
 //
-// - `DefSchema` and `ResourceType` are required fields. Other parameters can be filled in as needed.
+// - `DefSchema` and `ResourceType` are required. Other parameters are optional.
 //
 // @param tmpReq - ListMyRelatedApprovalsRequest
 //
@@ -17086,45 +17308,45 @@ func (client *Client) ListPartitionsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Retrieves the list of pending permission request orders for which the current user is the approver.
+// Queries the pending permission requests for which the current user is the approver.
 //
 // Description:
 //
-// ## Request Description
+// ## Request description
 //
-// This API is used to query all pending permission request orders for which the current logged-in user is the approver. It supports filtering by multiple conditions, including resource type, time range, and approval status, to more precisely locate specific request orders.
+// This operation queries all pending permission requests for which the current logged-on user is the approver. You can filter the applications by using various conditions, such as resource type, time range, and approval status, to accurately locate specific applications.
 //
-// - **ResourceType**: Specifies the resource type (such as table), which can have multiple values.
+// - **ResourceType**: specifies the resource types, such as tables. Multiple values are supported.
 //
-// - **Resource**: Provides specific resource search conditions, such as the project, database, or table name.
+// - **Resource**: specifies the exact resource search conditions, such as the project, database, or table name.
 //
-// - **StartTime and EndTime**: Define the time range during which the request was submitted.
+// - **StartTime and EndTime**: define the time range when the applications were initiated.
 //
-// - **Statuses**: Allows filtering results by approval status, for example, to view only pending approval requests.
+// - **Statuses**: filters the results by approval status, such as viewing only the pending approval status.
 //
-// - **Grantee**: Filters request orders based on the authorization principal information.
+// - **Grantee**: filters the applications based on the grantee information.
 //
-// - **AccessTypes**: Filters based on the specific permission types requested (such as read or update).
+// - **AccessTypes**: filters the applications based on the specific permission types requested, such as read or update.
 //
-// - **PageSize and NextToken**: Used for pagination control, specifying the amount of data returned per request and the cursor needed to retrieve the next page of data.
+// - **PageSize and NextToken**: are used for pagination control. PageSize specifies the number of entries to return per page, and NextToken specifies the cursor required to retrieve the next page.
 //
-// Notes:
+// Precautions:
 //
-// - If no filtering conditions are provided, all matching records are returned by default.
+// - If no filter conditions are provided, all matching records are returned by default.
 //
-// - The `NextToken` parameter can be empty or omitted for the first call. Subsequent page requests must use the `NextToken` value provided in the previous response.
+// - The `NextToken` parameter can be left empty or omitted in the first call. For subsequent page requests, you must use the `NextToken` value provided in the previous response.
 //
 // - The default value of `PageSize` is 10, and the maximum value is 200. If the specified value exceeds the maximum limit, the maximum value is used.
 //
-// - When there is no more data to return, the `HasMore` field is set to `false`, and `NextToken` will be empty or absent.
+// - When no more data is available, the `HasMore` field is set to `false`, and `NextToken` is empty or does not exist.
 //
-// ## Response Description
+// ## Response description
 //
-// After a successful call to this API, the response body contains paginated results and detailed information for each request order, such as the application time, resource description, authorization principal, requested permissions, and more. Additionally, the approval process status and other related metadata are provided.
+// After a successful API call, the response body contains the paginated results and the details of each application, such as the application time, resource description, grantee, and requested permissions. In addition, the status of the approval process and other related metadata are provided.
 //
-// - **Data**: The paginated result set, including page size (`PageSize`), cursor (`NextToken`), and whether more data is available (`HasMore`).
+// - **Data**: the paginated result set, which includes information such as the page size (`PageSize`), cursor (`NextToken`), and whether more data is available (`HasMore`).
 //
-// - **ApplicationQueryResponse**: The specific content of each request order, including the reason for the request, submission time, status, and a detailed list of request content.
+// - **ApplicationQueryResponse**: the specific content of each application, including the application reason, initiation time, status, and the detailed list of application contents.
 //
 // @param tmpReq - ListPendingApprovalsRequest
 //
@@ -17258,13 +17480,11 @@ func (client *Client) ListPipelineRunItemsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieve a paginated list of deployment processes. You can also filter this list based on specific criteria.
+// Retrieves a paginated list of deployment pipelines. You can also filter the results.
 //
 // Description:
 //
-//	Notice:
-//
-// Earlier SDK versions may not include this interface. If so, use the ListDeployments interface. It accepts the same parameters.
+//	Notice: This operation may not be available in earlier versions of the SDK. In this case, use the ListDeployments operation, which uses the same parameters as described in this document.</notice>
 //
 // @param request - ListPipelineRunsRequest
 //
@@ -17800,7 +18020,7 @@ func (client *Client) ListResourceGroupsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Retrieves a paginated list of resource files and filters resources.
+// Lists resource files with pagination and optional filters.
 //
 // @param request - ListResourcesRequest
 //
@@ -18072,25 +18292,25 @@ func (client *Client) ListSemanticJobRunsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the semantic node definitions of the current tenant with paging. The Name, ProjectId, and Source fields in the list items can be used for running/deleting nodes, querying run details, and verifying input scope, respectively.
+// Lists semantic job definitions for the current tenant with pagination. Use Name to run or delete a job, ProjectId to query run details, and Source to verify the input scope.
 //
 // Description:
 //
 // ## Scenarios
 //
-// Queries the saved semantic node definitions of the current tenant with paging. Use this operation to display the node list, select a node to run, or obtain the workspace to which a node belongs.
+// List saved semantic job definitions for the current tenant to display available jobs, select a job to run, or find the workspace that owns a job.
 //
-// ## Invoke flow
+// ## Workflow
 //
-// 1. Use `PageNumber` and `PageSize` to read `Data.SemanticJobs` with paging.
+// 1. Use `PageNumber` and `PageSize` to page through `Data.SemanticJobs`.
 //
-// 2. Use the `Name` field of a list item to invoke `RunSemanticJob`, `DeleteSemanticJob`, or `ListSemanticJobRuns`.
+// 2. Use the `Name` of a list item to invoke `RunSemanticJob`, `DeleteSemanticJob`, or `ListSemanticJobRuns`.
 //
-// 3. Use the `ProjectId` field of a list item together with `ExecutorJobId` to invoke the details, log, and stop operations.
+// 3. Use the `ProjectId` of a list item together with `ExecutorJobId` to invoke the details, log, and stop operations.
 //
-// ## Notes
+// ## Precautions
 //
-// This operation returns node definitions, not real-time run statuses. To query run statuses, invoke `ListSemanticJobRuns`.
+// This operation returns job definitions. For current run status, call `ListSemanticJobRuns`.
 //
 // @param request - ListSemanticJobsRequest
 //
@@ -18266,11 +18486,11 @@ func (client *Client) ListServerIdeImagesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Performs a paging query of personal development environment instances. When you invoke this operation, use the DataWorks endpoint that corresponds to the region of the target workspace.
+// Lists personal development environment instances with pagination. Use the DataWorks endpoint for the region of the target workspace.
 //
 // Description:
 //
-// Performs a paging query of personal development environment (ServerIDE) instances. You can filter the instances by workspace, resource group, keyword, owner, and instance subtype.
+// Lists personal development environment (ServerIDE) instances with pagination. You can filter by workspace, resource group, keyword, owner, and instance subtype.
 //
 // @param request - ListServerIdeInstancesRequest
 //
@@ -18346,21 +18566,21 @@ func (client *Client) ListServerIdeInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Performs a paging query to list skills under the current account.
+// Returns a paginated list of skills for the current account.
 //
 // Description:
 //
 // ## Request description
 //
-// This API performs a paging query to list the skills under the current account. It supports filtering by conditions such as search keywords and visibility levels.
+// This operation returns a paginated list of skills for the current account. You can filter the results by search keywords and visibility levels.
 //
-// - **Q**: Optional. Used for fuzzy match by skill name.
+// - **Q**: Optional. The search keyword used for fuzzy match by skill name.
 //
-// - **Visibility**: Optional. Used to filter by visibility level. Multiple values can be passed.
+// - **Visibility**: Optional. The visibility levels used to filter the results. You can specify multiple values.
 //
-// - **MaxResults**: Optional. Specifies the maximum number of entries to return in this request.
+// - **MaxResults**: Optional. The maximum number of entries to return in the current request.
 //
-// - **NextToken**: Optional. Used to obtain the next page of data during paging. Do not pass this parameter for the first query. For subsequent queries, pass the NextToken returned in the previous response to obtain the next page of data.
+// - **NextToken**: Optional. The paging token used to retrieve the next page of results. Do not specify this parameter in the first request. In subsequent requests, specify the NextToken value returned in the previous response to retrieve the next page.
 //
 // @param tmpReq - ListSkillsRequest
 //
@@ -18580,7 +18800,7 @@ func (client *Client) ListTaskInstanceOperationLogsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves a paged list of task instances. You can also perform a filtered query based on conditions.
+// Queries a paginated list of task instances. You can also perform a filtered query based on specified conditions.
 //
 // Description:
 //
@@ -18768,11 +18988,11 @@ func (client *Client) ListTaskOperationLogsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+// Queries a paginated list of tasks. You can also filter the results by specifying conditions.
 //
 // Description:
 //
-// DataWorks Basic Edition or higher is required.
+// You must purchase DataWorks Basic Edition or a later edition to use this feature.
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -19108,11 +19328,11 @@ func (client *Client) ListWorkflowInstancesWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Retrieves a list of workflows with paging, and supports filtered query by conditions.
+// Retrieves a paginated list of workflows with optional filters.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this operation.
+// You must purchase DataWorks Basic Edition or a later edition to use this feature.
 //
 // @param tmpReq - ListWorkflowsRequest
 //
@@ -19768,9 +19988,9 @@ func (client *Client) PromptAgentSessionWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// 1. You must purchase DataWorks Basic Edition or later to use this operation.
 //
-// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks has been created before you call this operation.**
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this operation.**
 //
 // @param request - PublishImageRequest
 //
@@ -19872,11 +20092,11 @@ func (client *Client) RemoveEntityFromMetaCollectionWithContext(ctx context.Cont
 
 // Summary:
 //
-// Removes multiple upstream dependencies of an instance at a time.
+// Removes multiple upstream dependencies of a node instance in batches.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or a later edition to use this operation.
 //
 // @param tmpReq - RemoveTaskInstanceDependenciesRequest
 //
@@ -20206,11 +20426,11 @@ func (client *Client) ReplyAgentSessionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Reruns multiple node instances in a batch.
+// Reruns multiple task instances in a batch.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a more advanced edition to use this operation.
+// Requires DataWorks Basic Edition or higher.
 //
 // @param tmpReq - RerunTaskInstancesRequest
 //
@@ -20362,7 +20582,7 @@ func (client *Client) RerunWorkflowInstancesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Resumes multiple suspended instances at a time.
+// Resumes multiple paused task instances.
 //
 // Description:
 //
@@ -20410,6 +20630,76 @@ func (client *Client) ResumeTaskInstancesWithContext(ctx context.Context, tmpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeTaskInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches one or more authorized knowledge bases for knowledge points and returns summaries, relationship paths, and candidates for ambiguous references.
+//
+// Description:
+//
+// Searches one or more knowledge bases that the caller is authorized to access and returns knowledge point summaries, relationship paths, and candidates for ambiguous references.
+//
+// @param tmpReq - RetrieveKnowledgePointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetrieveKnowledgePointsResponse
+func (client *Client) RetrieveKnowledgePointsWithContext(ctx context.Context, tmpReq *RetrieveKnowledgePointsRequest, runtime *dara.RuntimeOptions) (_result *RetrieveKnowledgePointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RetrieveKnowledgePointsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.FocusObjects) {
+		request.FocusObjectsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FocusObjects, dara.String("FocusObjects"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.KnowledgeBaseIds) {
+		request.KnowledgeBaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeBaseIds, dara.String("KnowledgeBaseIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FocusObjectsShrink) {
+		body["FocusObjects"] = request.FocusObjectsShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseIdsShrink) {
+		body["KnowledgeBaseIds"] = request.KnowledgeBaseIdsShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetrieveKnowledgePoints"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetrieveKnowledgePointsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20784,11 +21074,11 @@ func (client *Client) RunSemanticJobWithContext(ctx context.Context, request *Ru
 
 // Summary:
 //
-// Sets the statuses of multiple instances to successful at a time.
+// Marks multiple task instances as successful.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or higher to use this operation.
 //
 // @param tmpReq - SetSuccessTaskInstancesRequest
 //
@@ -20940,11 +21230,11 @@ func (client *Client) StartServerIdeInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Starts multiple workflow instances in a batch.
+// Starts multiple workflow instances.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param tmpReq - StartWorkflowInstancesRequest
 //
@@ -21218,15 +21508,15 @@ func (client *Client) StopServerIdeInstanceWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or higher to use this operation.
 //
 // Instance termination mechanism and precautions:
 //
-// 1. Instance termination is an asynchronous operation. A termination request does not immediately stop the instance. Continue to query the instance status after the request to confirm the termination result. If external compute resources are involved, verify the actual status of the remote job.
+// 1. Instance termination is an asynchronous operation. Sending a termination request does not mean that the instance stops immediately. Continue to query the instance status after the request to confirm the termination result. If external compute resources are involved, you must also verify the actual status of the remote job.
 //
-// 2. The DataWorks instance status may differ from the remote job status. For tasks that depend on external compute resources (such as MaxCompute, EMR, and SSH), DataWorks sends a termination request to the remote end through a client. Due to network exceptions or client compatibility issues, a DataWorks instance may be marked as failed while the remote job is still running. Therefore, do not rely solely on the DataWorks instance status to determine whether the remote job has stopped. Check the corresponding compute platform and manually terminate the job if necessary to prevent it from continuing to run or consuming extra resources.
+// 2. The DataWorks instance status may not be consistent with the remote job status. For tasks that rely on external compute resources (such as MaxCompute, EMR, and SSH), DataWorks sends a termination request to the remote end through a client. Due to network exceptions, client compatibility, and other factors, the DataWorks instance may be marked as failed while the remote job is still running. Therefore, you cannot determine that the remote job has terminated based only on the DataWorks instance status. Go to the corresponding computing platform to check the status and manually terminate the job if necessary to prevent the job from continuing to run or consuming additional resources.
 //
-// 3. Pay special attention to MaxCompute tasks that use shared resource groups for scheduling. DataWorks shared resource groups for scheduling will soon be retired. Due to component version and compatibility limits, termination commands for some MaxCompute tasks may not take effect on the remote end. If this occurs, check the actual status of the corresponding instance in MaxCompute. If the instance is still running, run a kill command in MaxCompute and verify that the instance has stopped.
+// 3. Pay special attention to MaxCompute tasks that run in public scheduling resource groups. DataWorks public scheduling resource groups will be taken offline soon. Due to component version and compatibility limitations, the termination commands for some MaxCompute tasks may not take effect on the remote end. In this case, go to MaxCompute to query the actual status of the corresponding instance. If it is still running, execute the kill operation in MaxCompute and confirm again that it has terminated.
 //
 // @param tmpReq - StopTaskInstancesRequest
 //
@@ -21284,7 +21574,7 @@ func (client *Client) StopTaskInstancesWithContext(ctx context.Context, tmpReq *
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param tmpReq - StopWorkflowInstancesRequest
 //
@@ -21460,7 +21750,7 @@ func (client *Client) SubmitFileWithContext(ctx context.Context, request *Submit
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// You must purchase DataWorks Basic Edition or higher to use this operation.
 //
 // @param tmpReq - SuspendTaskInstancesRequest
 //
@@ -21784,19 +22074,19 @@ func (client *Client) UnTagDataAssetsWithContext(ctx context.Context, tmpReq *Un
 
 // Summary:
 //
-// Updates the definition of a specified agent, increments the definition version, and optionally publishes the agent immediately. This operation is available only when the canary release feature is enabled. Before calling this operation, make sure that the canary release feature is enabled for the current account and the target region.
+// Updates the definition of a specified agent and increments the definition version, with the option to publish immediately. This operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
 //
 // Description:
 //
-// This operation is available only when the canary release feature is enabled. Before calling this operation, make sure that the canary release feature is enabled for the current account and the target region.
+// This operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
 //
-// Updates a custom agent that the current identity has administrative permissions for. The Name parameter is used to locate the target agent and cannot be used to rename the agent. Call the GetAgent operation first to read the current AgentVersion, and then explicitly pass the ExpectedVersion parameter during the update. If a conflict occurs, read the version again and verify the differences instead of blindly overwriting the agent.
+// Updates a custom agent that the current identity has administrative permissions for. The Name parameter is used to locate the target agent and is not used for renaming. Call GetAgent first to read the current AgentVersion, and explicitly pass ExpectedVersion during the update. If a conflict occurs, re-read the version and verify the differences instead of blindly overwriting.
 //
-// Omit reference lists that do not need to be modified. The current new backend retains existing references for empty arrays of Tools, Skills, and CallableAgents, but clears references for an empty array of ExpertSuites. A unified empty array clearing rule cannot be used. The Tools parameter already includes Kind and the corresponding tool configurations, and uses the same structure as CreateAgent. Specifying only Name does not constitute a valid tool configuration.
+// Omit reference lists that do not need to be modified. The current new backend retains existing references for empty arrays of Tools, Skills, and CallableAgents, but clears references for an empty array of ExpertSuites. A unified empty array clearing rule cannot be used. Tools already includes Kind and the corresponding tool configurations, using the same structure as CreateAgent. Specifying only Name is not a valid tool configuration.
 //
-// For official skills, specify only Source=OFFICIAL and SkillId. For official suites, specify only Source=OFFICIAL and SuiteId. Do not mix in name, version, or artifact fields. The integer Version and VersionSelector parameters for custom resources are mutually exclusive. The version selection capability depends on the deployment of the target server.
+// For official skills, specify only Source=OFFICIAL and SkillId. For official suites, specify only Source=OFFICIAL and SuiteId, without mixing in name, version, or artifact fields. The integer Version and VersionSelector for custom resources are mutually exclusive. The version selection capability depends on the deployment of the target server.
 //
-// If PublishImmediately is omitted or set to false, only the definition is saved. If it is set to true, a new draft version is saved first and then a publish request is initiated. Saving and publishing are not atomic operations. If publishing fails, the draft version may have already been incremented. In this case, call GetAgent to read the current version back before deciding whether to retry, to avoid generating duplicate versions.
+// If PublishImmediately is omitted or set to false, only the definition is saved. If it is set to true, a new draft version is saved before requesting publication. Saving and publishing are not atomic operations. If publishing fails, the draft version may have already been incremented. In this case, call GetAgent to read the current version before deciding whether to retry, to avoid generating duplicate versions.
 //
 // @param tmpReq - UpdateAgentRequest
 //
@@ -22876,11 +23166,11 @@ func (client *Client) UpdateDIJobWithContext(ctx context.Context, tmpReq *Update
 
 // Summary:
 //
-// Updates a label.
+// Updates a tag.
 //
 // Description:
 //
-// You must purchase DataWorks Enterprise Edition or a higher edition to use this feature.
+// You must purchase DataWorks Enterprise Edition or a later edition to use this feature.
 //
 // @param tmpReq - UpdateDataAssetTagRequest
 //
@@ -24518,15 +24808,15 @@ func (client *Client) UpdateParameterWithContext(ctx context.Context, tmpReq *Up
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Use this API to modify an existing approval process definition, including its name, description, rule conditions, notification service, and approval nodes.
+// - This operation allows you to modify an existing approval process definition, including the name, description, rule conditions, notification services, and approval nodes.
 //
-// - The required `Id` parameter identifies the approval process definition to update.
+// - `Id` is a required parameter used to specify the approval process definition to be updated.
 //
 // - To overwrite the existing configuration, set the `Overwrite` parameter to `true`.
 //
-// - The optional `ClientToken` parameter ensures request idempotency.
+// - `ClientToken` is optional and used to ensure the idempotency of the request.
 //
 // @param tmpReq - UpdateProcessDefinitionRequest
 //
@@ -25558,11 +25848,11 @@ func (client *Client) UpdateTaskAsyncWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// Modify the properties of multiple task instances in batch, including priority, resource group, data source, and more.
+// Modifies the properties of multiple node instances, including the priority, scheduling resource group, and data source.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or higher to use this feature.
 //
 // @param tmpReq - UpdateTaskInstancesRequest
 //
@@ -25704,11 +25994,11 @@ func (client *Client) UpdateUdfFileWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Updates a specified workflow by using the full update method. Fields that can be synchronously updated to Data Studio include: owner, data source, schedule resource group, description, and trigger run mode (Normal, Skip, or Pause).
+// Performs a full update of the specified workflow. The owner, data source, scheduling resource group, description, and trigger run mode (normal, dry run, or paused) can be synchronized to Data Studio.
 //
 // Description:
 //
-// DataWorks Basic Edition or a more advanced edition is required.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param tmpReq - UpdateWorkflowRequest
 //
@@ -25870,6 +26160,68 @@ func (client *Client) UpdateWorkflowDefinitionWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWorkflowDefinitionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传 Agent 会话附件
+//
+// Description:
+//
+// 将文件通过 OSS 上传到当前账号有权访问的 Agent 会话。先用 prepare 获取 5 分钟公网 PUT 签名，上传原始字节后用 complete 确认，由会话 runtime 下载、校验并写入工作目录。UploadMode 必填，不接受 ContentBase64。须同时检查 POP/BFF 外层错误与 JsonRpcResponse.Error。
+//
+// @param tmpReq - UploadAgentSessionFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadAgentSessionFileResponse
+func (client *Client) UploadAgentSessionFileWithContext(ctx context.Context, tmpReq *UploadAgentSessionFileRequest, runtime *dara.RuntimeOptions) (_result *UploadAgentSessionFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UploadAgentSessionFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadAgentSessionFile"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadAgentSessionFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

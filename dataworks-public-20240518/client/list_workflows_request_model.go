@@ -32,7 +32,11 @@ type iListWorkflowsRequest interface {
 }
 
 type ListWorkflowsRequest struct {
-	// The project environment.
+	// The project environment. Valid values:
+	//
+	// - Prod: Production.
+	//
+	// - Dev: Development.
 	//
 	// example:
 	//
@@ -40,7 +44,7 @@ type ListWorkflowsRequest struct {
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The list of workflow IDs. You can specify multiple workflow IDs to query multiple workflows at a time.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The name. Fuzzy match is supported.
+	// The workflow name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -72,7 +76,7 @@ type ListWorkflowsRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sort field. You can sort by fields such as modification time and creation time. The format is \\"SortField+SortOrder(Desc/Asc)\\", where Asc can be omitted. Valid values for the sort field:
+	// The sort field. You can sort workflows by fields such as modification time and creation time. The format is \\"SortField+SortOrder(Desc/Asc)\\". You can omit Asc. Valid values for the sort field:
 	//
 	// - ModifyTime (Desc/Asc)
 	//
@@ -86,7 +90,7 @@ type ListWorkflowsRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The list of tags. If a workflow matches any of the specified tags, it is returned in the result.
+	// The list of tags. If you specify multiple tags, workflows that match at least one of the tags are returned.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The trigger type. Valid values:
 	//

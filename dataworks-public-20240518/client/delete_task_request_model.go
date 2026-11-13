@@ -16,7 +16,7 @@ type iDeleteTaskRequest interface {
 }
 
 type DeleteTaskRequest struct {
-	// The ID of the task.
+	// The task ID.
 	//
 	// This parameter is required.
 	//

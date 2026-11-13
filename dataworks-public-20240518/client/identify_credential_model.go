@@ -22,25 +22,25 @@ type iIdentifyCredential interface {
 type IdentifyCredential struct {
 	// The data source.
 	DataSource *IdentifyCredentialDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The project ID. This parameter is optional.
+	// The workspace ID. This parameter is optional.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The user UID. If the `UserType` is `Role`, you must prefix this value with `ROLE_`.
+	// The user ID. For a role, add the ROLE_ prefix.
 	//
 	// example:
 	//
 	// ROLE_300888674340307309
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The user type. Supported values are:
+	// The user type. Valid values:
 	//
-	// - primary account: `PrimaryAccount`
+	// - PrimaryAccount: Alibaba Cloud account.
 	//
-	// - subaccount: `SubAccount`
+	// - SubAccount: RAM user.
 	//
-	// - role: `Role`
+	// - Role: role.
 	//
 	// example:
 	//
@@ -118,31 +118,31 @@ type IdentifyCredentialDataSource struct {
 	//
 	// example:
 	//
-	// ***
+	// ExamplePass***2026
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The user role for the data source. Valid values are:
+	// The data source user type. Valid values:
 	//
-	// - `Admin`
+	// - Admin: administrator.
 	//
-	// - `RegularUser`
+	// - RegularUser: regular user.
 	//
 	// example:
 	//
 	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The data source type. Supported values are:
+	// The data source type. Valid values:
 	//
-	// - `hive`
+	// - hive
 	//
-	// - `lindorm_for_engine`
+	// - lindorm_for_engine
 	//
-	// - `starrocks`
+	// - starrocks
 	//
 	// example:
 	//
 	// hologres
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The data source user name.
+	// The data source username.
 	//
 	// example:
 	//

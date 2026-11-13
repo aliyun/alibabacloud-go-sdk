@@ -32,17 +32,17 @@ type iListMyRelatedApprovalsShrinkRequest interface {
 }
 
 type ListMyRelatedApprovalsShrinkRequest struct {
-	// Filter by requested permissions.
+	// Filters by the requested permissions.
 	//
-	// Note: Different resource levels support different application permission types, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+	// Note: The types of permissions that can be requested vary based on the resource level and are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
 	//
-	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Reference: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	AccessTypesShrink *string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty"`
-	// Filter by resource type.
+	// Filters by resource type.
 	//
-	// Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	// Note: The resource types supported for application are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
 	//
-	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Reference: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -50,39 +50,39 @@ type ListMyRelatedApprovalsShrinkRequest struct {
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// Application time end (millisecond timestamp)
+	// The end time of the application. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Filter by authorization principal.
+	// Filters by authorization principal.
 	//
-	// Note: The authorization principal types supported by the system are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+	// Note: The authorization principal types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
 	//
-	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Reference: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	GranteeShrink *string `json:"Grantee,omitempty" xml:"Grantee,omitempty"`
-	// Pagination cursor
+	// The pagination cursor.
 	//
 	// example:
 	//
 	// eyJpZCI6MTIzfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Page size (default 10, maximum 200)
+	// The number of entries per page. Default value: 10. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filter by resource with exact/generalized matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+	// Performs exact or generalized filtering based on resources. The resource description is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).
 	//
-	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Reference: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	ResourceShrink *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Filter by minimum permission resource type.
+	// Filters by least privilege resource type.
 	//
-	// Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+	// Note: The least privilege resource types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
 	//
-	// Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Reference: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -90,27 +90,27 @@ type ListMyRelatedApprovalsShrinkRequest struct {
 	//
 	// ["table", "column"]
 	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Application time start (millisecond timestamp)
+	// The start time of the application. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1771948800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Filter by approval status. Enum values:
+	// Filters by approval status. Valid values:
 	//
-	// - WaitApproval: Pending approval
+	// - WaitApproval: Pending approval.
 	//
-	// - Confirmed: Pending authorization
+	// - Confirmed: Pending authorization.
 	//
-	// - RejectApproval: Approval rejected
+	// - RejectApproval: Rejected.
 	//
-	// - AuthorizeSucceed: Authorization succeeded
+	// - AuthorizeSucceed: Authorized.
 	//
-	// - AuthorizeFailed: Authorization failed
+	// - AuthorizeFailed: Authorization failed.
 	//
-	// - Deleted: Deleted
+	// - Deleted: Deleted.
 	//
-	// - Canceled: Withdrawn
+	// - Canceled: Withdrawn.
 	//
 	// example:
 	//

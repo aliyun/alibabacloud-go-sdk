@@ -18,23 +18,23 @@ type iApplyResourceAccessPermissionRequest interface {
 }
 
 type ApplyResourceAccessPermissionRequest struct {
-	// The list of resource permission request entries.
+	// The list of resource permission applications.
 	//
 	// This parameter is required.
 	ApplyContents []*ApplyResourceAccessPermissionRequestApplyContents `json:"ApplyContents,omitempty" xml:"ApplyContents,omitempty" type:"Repeated"`
-	// The idempotency token. Used to prevent duplicate operations caused by multiple calls.
+	// The idempotency token used to prevent duplicate operations caused by multiple calls.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The reason for the request.
+	// The reason for the application.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Business development needs
+	// Business development requirements
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -87,25 +87,25 @@ func (s *ApplyResourceAccessPermissionRequest) Validate() error {
 }
 
 type ApplyResourceAccessPermissionRequestApplyContents struct {
-	// The list of requested access types.
+	// The list of requested permissions.
 	//
-	// **Note**: Different resource levels support different access types. All access types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+	// **Note**: The types of permissions that can be applied for vary across resources at different levels. All are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
 	//
-	// See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	AccessTypes []*string `json:"AccessTypes,omitempty" xml:"AccessTypes,omitempty" type:"Repeated"`
-	// The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying an authorization method: ranger or starrocksManager.
+	// The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying the authorization method: ranger and starrocksManager.
 	//
-	// **Note**: Different resources support different authorization methods. All authorization methods are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
+	// **Note**: The authorization methods supported vary across resources. All are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
 	//
-	// See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
 	// ranger
 	AuthMethod *string `json:"AuthMethod,omitempty" xml:"AuthMethod,omitempty"`
-	// The permission expiration time, in millisecond-level timestamp format.
+	// The expiration time of the permissions, specified as a millisecond timestamp.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type ApplyResourceAccessPermissionRequestApplyContents struct {
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// The grantee description.
 	//
-	// **Note**: The supported principal types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+	// **Note**: The principal types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
 	//
-	// See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	Grantee *ApplyResourceAccessPermissionRequestApplyContentsGrantee `json:"Grantee,omitempty" xml:"Grantee,omitempty" type:"Struct"`
@@ -191,13 +191,13 @@ func (s *ApplyResourceAccessPermissionRequestApplyContents) Validate() error {
 }
 
 type ApplyResourceAccessPermissionRequestApplyContentsGrantee struct {
-	// The principal ID. The ID has different meanings depending on the principal type:
+	// The principal ID. The mapped IDs have different semantics for different principal types:
 	//
-	// - RamUser: DataWorks UserId
+	// - RamUser: the DataWorks user ID.
 	//
-	// - RamRole: DataWorks UserId prefixed with "ROLE_"
+	// - RamRole: the DataWorks user ID that starts with "ROLE_".
 	//
-	// - DlfRole: DlfNext role name
+	// - DlfRole: the DlfNext role name.
 	//
 	// This parameter is required.
 	//
@@ -254,9 +254,9 @@ func (s *ApplyResourceAccessPermissionRequestApplyContentsGrantee) Validate() er
 type ApplyResourceAccessPermissionRequestApplyContentsResource struct {
 	// The resource type.
 	//
-	// **Note**: The resource types that can be requested are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
+	// **Note**: The resource types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
 	//
-	// See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// This parameter is required.
 	//
@@ -264,9 +264,9 @@ type ApplyResourceAccessPermissionRequestApplyContentsResource struct {
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The resource parsing version, constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).version.
+	// The resource parsing version is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).version.
 	//
-	// [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
 	//
 	// example:
 	//
@@ -274,9 +274,13 @@ type ApplyResourceAccessPermissionRequestApplyContentsResource struct {
 	DefVersion *string `json:"DefVersion,omitempty" xml:"DefVersion,omitempty"`
 	// The resource metadata declaration.
 	//
-	// **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
+	// **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include metadata for the full resource path from level 0 through the validLeaf level.
 	//
-	// See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	//
+	// example:
+	//
+	// {"workspace": "449656", "project": "sync_destination", "table": "order_table", "threeTierModel": false}
 	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 

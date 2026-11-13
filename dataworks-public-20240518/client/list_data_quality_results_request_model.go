@@ -44,13 +44,13 @@ type ListDataQualityResultsRequest struct {
 	//
 	// 2024-05-04
 	BizdateTo *string `json:"BizdateTo,omitempty" xml:"BizdateTo,omitempty"`
-	// The earliest time when the data quality evaluation result was generated.
+	// The earliest time when the data quality check results were generated.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
-	// The latest time when the data quality evaluation result was generated.
+	// The latest time when the data quality check results were generated.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListDataQualityResultsRequest struct {
 	//
 	// 100001
 	DataQualityRuleId *int64 `json:"DataQualityRuleId,omitempty" xml:"DataQualityRuleId,omitempty"`
-	// The page number for the paging query. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size for the paging query. Default value: 10.
+	// The number of results per page. Default value: 10.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iRerunTaskInstancesShrinkRequest interface {
 }
 
 type RerunTaskInstancesShrinkRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of node instance IDs.
+	// The list of task instance IDs.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Specifies whether to rerun instances with the latest configuration.
+	// Specifies whether to rerun the task instance with the latest configuration.
 	//
 	// example:
 	//

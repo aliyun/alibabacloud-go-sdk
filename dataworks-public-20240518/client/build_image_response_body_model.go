@@ -22,9 +22,9 @@ type BuildImageResponseBody struct {
 	//
 	// example:
 	//
-	// true
+	// {"ProcessId": "582d4896-d224-413b-b883-239eeebe0bc5", "Success": true}
 	Data *BuildImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The request ID, used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type BuildImageResponseBodyData struct {
 	//
 	// 582d4896-d224-413b-b883-239eeebe0bc5
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// Indicates whether the build was successfully triggered.
+	// Indicates whether the image build was triggered successfully.
 	//
 	// example:
 	//

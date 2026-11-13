@@ -246,6 +246,10 @@ type GetPipelineRunResponseBodyPipelineStages struct {
 	// Phase description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The detailed information about the stage.
+	//
+	// example:
+	//
+	// {"checkerList": [{"code": "BuildPackageChecker", "name": "Build_Package_Checker"}, {"code": "NodeParentDependency", "name": "Downstream_Dependency_Checker"}, {"code": "NodeInProcess", "name": "Decommissioning_Process_Checker"}]}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The exception message of the deployment stage.
 	//

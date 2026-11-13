@@ -26,7 +26,7 @@ type iCreateDatasetShrinkRequest interface {
 }
 
 type CreateDatasetShrinkRequest struct {
-	// The description of the dataset. The value can be up to 1024 characters in length.
+	// The description of the dataset. It cannot exceed 1,024 characters in length.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type CreateDatasetShrinkRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The data type. Valid values:
 	//
-	// - COMMON: general-purpose (default).
+	// - COMMON: General (default).
 	//
-	// - PIC: image.
+	// - PIC: Image.
 	//
-	// - TEXT: text.
+	// - TEXT: Text.
 	//
-	// - TABLE: table.
+	// - TABLE: Table.
 	//
-	// - VIDEO: video.
+	// - VIDEO: Video.
 	//
-	// - AUDIO: audio.
+	// - AUDIO: Audio.
 	//
-	// - INDEX: index.
+	// - INDEX: Index.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateDatasetShrinkRequest struct {
 	//
 	// This parameter is required.
 	InitVersionShrink *string `json:"InitVersion,omitempty" xml:"InitVersion,omitempty"`
-	// The name of the dataset. The value must be a non-empty string that is up to 128 characters in length.
+	// The name of the dataset. It must be a non-empty string and cannot exceed 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type CreateDatasetShrinkRequest struct {
 	//
 	// test_oss_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The origin of the dataset. Only DataWorks is supported.
+	// The source of the dataset. Currently, only DataWorks is supported.
 	//
 	// example:
 	//
 	// DataWorks
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The DataWorks workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -82,9 +82,9 @@ type CreateDatasetShrinkRequest struct {
 	//
 	// - OSS: Object Storage Service.
 	//
-	// - NAS: general-purpose NAS file storage.
+	// - NAS: General-purpose NAS file storage.
 	//
-	// - EXTREMENAS: extreme NAS file storage.
+	// - EXTREMENAS: Extreme NAS file storage.
 	//
 	// - DLF_LANCE: Data Lake Formation.
 	//

@@ -18,15 +18,15 @@ type iListSemanticJobsResponseBody interface {
 }
 
 type ListSemanticJobsResponseBody struct {
-	// The paginated result of job definitions. Use the Name field of a list item to run, delete, query run records, or download results. Use the ProjectId field to query run details, logs, or stop a run.
+	// The paged results of job definitions. Use the Name of a list item to run or delete a job, query its run records, or download its results. Use the ProjectId to query run details and logs, or stop a run.
 	Data *ListSemanticJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. Used for locating logs and troubleshooting issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 676271D6-53B4-57BE-89FA-72F7AE1418DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -75,13 +75,13 @@ func (s *ListSemanticJobsResponseBody) Validate() error {
 }
 
 type ListSemanticJobsResponseBodyData struct {
-	// The page number returned, starting from 1.
+	// The page number of the returned page. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of job definitions per page returned.
+	// The number of job definitions returned on each page.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ListSemanticJobsResponseBodyData struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of job definitions.
 	SemanticJobs []*ListSemanticJobsResponseBodyDataSemanticJobs `json:"SemanticJobs,omitempty" xml:"SemanticJobs,omitempty" type:"Repeated"`
-	// The total number of job definitions that meet the conditions in the current tenant.
+	// The total number of job definitions that meet the query conditions in the current tenant.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ func (s *ListSemanticJobsResponseBodyData) Validate() error {
 }
 
 type ListSemanticJobsResponseBodyDataSemanticJobs struct {
-	// The user identifier of the semantic job creator.
+	// The user identifier of the creator of the semantic job.
 	//
 	// example:
 	//
 	// user-demo
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creation time, expressed as a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1700000000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time, expressed as a UNIX timestamp in milliseconds.
+	// The last modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -179,37 +179,41 @@ type ListSemanticJobsResponseBodyDataSemanticJobs struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The job name. Used for RunSemanticJob, DeleteSemanticJob, ListSemanticJobRuns, and DownloadSemanticResults.
+	// The job name. This name is used in RunSemanticJob, DeleteSemanticJob, ListSemanticJobRuns, and DownloadSemanticResults.
 	//
 	// example:
 	//
 	// semantic-job-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The workspace ID to which the job belongs. Used for GetSemanticJobDetail, GetSemanticJobLog, and KillSemanticJob.
+	// The ID of the workspace to which the job belongs. This ID is used in GetSemanticJobDetail, GetSemanticJobLog, and KillSemanticJob.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of uploaded file IDs associated with the job.
+	// The list of IDs of the uploaded files associated with the job.
 	ReferenceFileIds []*string `json:"ReferenceFileIds,omitempty" xml:"ReferenceFileIds,omitempty" type:"Repeated"`
-	// The list of external reference file URIs associated with the job.
+	// The list of URIs of the external reference files associated with the job.
 	ReferenceFileUris []*string `json:"ReferenceFileUris,omitempty" xml:"ReferenceFileUris,omitempty" type:"Repeated"`
-	// The resource group identifier used when running this job.
+	// The identifier of the resource group used to run the job.
 	//
 	// example:
 	//
 	// rg-demo
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The input datasource config saved with the node. This configuration determines the analysis scope at runtime.
+	// The input data source configuration saved for the job. The job uses this configuration to determine the analysis scope at runtime.
+	//
+	// example:
+	//
+	// {"type":"maxcompute","domain":"sales","pinnedScopeInfo":[{"type":"project","name":"mc_project"}]}
 	Source map[string]interface{} `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The Source.type data source type saved with the job.
+	// The data source type saved in the Source.type field of the job.
 	//
 	// example:
 	//
 	// maxcompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The user identifier of the semantic job creator.
+	// The user identifier of the creator of the semantic job.
 	//
 	// example:
 	//

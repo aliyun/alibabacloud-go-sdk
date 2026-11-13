@@ -96,7 +96,7 @@ type GetProcessInstanceResponseBodyProcessInstance struct {
 	//
 	// example:
 	//
-	// 业务需要
+	// Business need
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The time when the approval process started.
 	//
@@ -120,7 +120,7 @@ type GetProcessInstanceResponseBodyProcessInstance struct {
 	//
 	// example:
 	//
-	// MaxCompute表权限申请
+	// MaxCompute table access request
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -247,7 +247,7 @@ type GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition stru
 	//
 	// example:
 	//
-	// 流程定义描述
+	// Process definition description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the policy is enabled.
 	//
@@ -706,7 +706,7 @@ type GetProcessInstanceResponseBodyProcessInstanceApprovalTasks struct {
 	//
 	// example:
 	//
-	// 同意
+	// Approved
 	ApprovalComment *string `json:"ApprovalComment,omitempty" xml:"ApprovalComment,omitempty"`
 	// The approval decision. Valid values:
 	//
@@ -730,7 +730,7 @@ type GetProcessInstanceResponseBodyProcessInstanceApprovalTasks struct {
 	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
 	// The time when the task was completed.
 	//
@@ -994,7 +994,7 @@ type GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates st
 	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
 	// The user ID of the approver.
 	//

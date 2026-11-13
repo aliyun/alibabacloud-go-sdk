@@ -18,9 +18,9 @@ type iGetWorkflowRequest interface {
 type GetWorkflowRequest struct {
 	// The project environment. Valid values:
 	//
-	// - Prod: Production environment.
+	// - Prod: production.
 	//
-	// - Dev: Development environment.
+	// - Dev: development.
 	//
 	// example:
 	//

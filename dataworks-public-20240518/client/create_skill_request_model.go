@@ -28,13 +28,13 @@ type iCreateSkillRequest interface {
 }
 
 type CreateSkillRequest struct {
-	// The **download URL of the bundle.zip file*	- (HTTP or HTTPS). This parameter and SkillMdOverride are mutually exclusive.
+	// The downloadable URL (HTTP or HTTPS) of the bundle.zip file. This parameter and SkillMdOverride are mutually exclusive.
 	//
 	// example:
 	//
 	// https://example.com/skill.zip
 	BundleUrl *string `json:"BundleUrl,omitempty" xml:"BundleUrl,omitempty"`
-	// The **skill description**.
+	// The description of the skill.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateSkillRequest struct {
 	//
 	// {"appId":"APP_CWJMV36CT9SAFW1QEHX7"}
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The **skill name**. The name must be unique within the current account.
+	// The name of the skill. The name must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,29 @@ type CreateSkillRequest struct {
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The content of the SKILL.md file. This parameter and BundleUrl are mutually exclusive. If you do not provide a bundle, use this parameter to create a lightweight skill that contains only the SKILL.md file.
+	// The body of the SKILL.md file. This parameter and BundleUrl are mutually exclusive. If you do not provide a bundle, use this field to create a lightweight skill that contains only the SKILL.md file.
 	//
 	// example:
 	//
-	// -
+	// ---
+	//
+	// name: example-skill
+	//
+	// description: Sample skill.
+	//
+	// ---
+	//
+	// # Sample skill
+	//
+	// Summarize the text provided by the user
 	SkillMdOverride *string `json:"SkillMdOverride,omitempty" xml:"SkillMdOverride,omitempty"`
-	// The **version note**.
+	// The release notes of the version.
 	//
 	// example:
 	//
 	// Initial version
 	VersionNote *string `json:"VersionNote,omitempty" xml:"VersionNote,omitempty"`
-	// The **visibility level**. Valid values: TENANT (visible to the entire tenant), PROJECT (visible to specific projects), and USER (visible to specific users).
+	// The visibility level. Valid values: TENANT: visible within the account. PROJECT: visible to specified projects. USER: visible to specified users.
 	//
 	// example:
 	//
@@ -166,9 +176,9 @@ func (s *CreateSkillRequest) Validate() error {
 }
 
 type CreateSkillRequestVisibilityScope struct {
-	// The IDs of the visible projects. This parameter takes effect only when Visibility is set to PROJECT.
+	// The IDs of the projects in which the skill is visible. This field takes effect when Visibility is set to PROJECT.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The IDs of the visible users. This parameter takes effect only when Visibility is set to USER.
+	// The IDs of the users who can see the skill. This field takes effect when Visibility is set to USER.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

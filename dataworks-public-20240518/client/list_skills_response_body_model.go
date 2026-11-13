@@ -62,13 +62,13 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodyPagingInfo struct {
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries returned in the current response.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page. An empty value indicates that the last page has been reached.
+	// The token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListSkillsResponseBodyPagingInfo struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The list of skills.
 	Skills []*ListSkillsResponseBodyPagingInfoSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The total number of matching entries.
+	// The total number of entries that meet the specified conditions.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListSkillsResponseBodyPagingInfoSkills struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time.
 	//
-	// The format is a 13-digit number, such as `1780555634000`.
+	// The value is a 13-digit number, such as `1780555634000`.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

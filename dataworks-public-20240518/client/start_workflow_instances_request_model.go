@@ -16,7 +16,7 @@ type iStartWorkflowInstancesRequest interface {
 }
 
 type StartWorkflowInstancesRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//

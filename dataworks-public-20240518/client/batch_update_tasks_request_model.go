@@ -22,7 +22,7 @@ type BatchUpdateTasksRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of nodes.
+	// The list of tasks.
 	Tasks []*BatchUpdateTasksRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -68,7 +68,7 @@ func (s *BatchUpdateTasksRequest) Validate() error {
 type BatchUpdateTasksRequestTasks struct {
 	// The associated data source information.
 	DataSource *BatchUpdateTasksRequestTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The description.
+	// The description of the task.
 	//
 	// example:
 	//
@@ -76,15 +76,15 @@ type BatchUpdateTasksRequestTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment. Valid values:
 	//
-	// - Prod: production
+	// - Prod: Production.
 	//
-	// - Dev: development
+	// - Dev: Development.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The node ID.
+	// The ID of the task.
 	//
 	// This parameter is required.
 	//
@@ -92,13 +92,13 @@ type BatchUpdateTasksRequestTasks struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name.
+	// The name of the task.
 	//
 	// example:
 	//
 	// SQL node
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account ID of the node owner.
+	// The account ID of the task owner.
 	//
 	// example:
 	//
@@ -110,35 +110,35 @@ type BatchUpdateTasksRequestTasks struct {
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// Specifies whether the node can be rerun. Valid values:
+	// Specifies whether the task can be rerun. Valid values:
 	//
-	// - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
+	// - AllDenied: The task cannot be rerun after either success or failure.
 	//
-	// - FailureAllowed: The node can be rerun only after it fails.
+	// - FailureAllowed: The task can be rerun only after failure.
 	//
-	// - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
+	// - AllAllowed: The task can be rerun after either success or failure.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
+	// The number of retries. This parameter takes effect only when the task is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The runtime environment configuration, such as resource group information.
+	// The runtime environment configurations, such as the resource group information.
 	RuntimeResource *BatchUpdateTasksRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The list of node tags.
+	// The list of task tags.
 	Tags []*BatchUpdateTasksRequestTasksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timeout period for node execution, in seconds. The value must be greater than 3600.
+	// The timeout period for task execution, in seconds. The value must be greater than 3600.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger configuration of the node.
+	// The task trigger type.
 	Trigger *BatchUpdateTasksRequestTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -296,7 +296,7 @@ func (s *BatchUpdateTasksRequestTasks) Validate() error {
 }
 
 type BatchUpdateTasksRequestTasksDataSource struct {
-	// The data source name.
+	// The name of the data source.
 	//
 	// example:
 	//
@@ -326,19 +326,19 @@ func (s *BatchUpdateTasksRequestTasksDataSource) Validate() error {
 }
 
 type BatchUpdateTasksRequestTasksRuntimeResource struct {
-	// The compute unit (CU) consumption configured for node execution.
+	// The number of compute units (CUs) consumed by the task run configuration.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The image ID configured for node execution.
+	// The ID of the image configured for task execution.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the schedule resource group configured for node execution.
+	// The identifier of the scheduling resource group configured for task execution.
 	//
 	// example:
 	//
@@ -433,31 +433,31 @@ func (s *BatchUpdateTasksRequestTasksTags) Validate() error {
 }
 
 type BatchUpdateTasksRequestTasksTrigger struct {
-	// The cron expression. This parameter takes effect only when type is set to Scheduler.
+	// The cron expression. This parameter takes effect only when Type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The time when the periodic trigger expires. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+	// The expiration time of the periodic trigger. This parameter takes effect only when Type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode when the node is triggered. This parameter takes effect only when type is set to Scheduler. Valid values:
+	// The run mode when the task is triggered. This parameter takes effect only when Type is set to Scheduler. Valid values:
 	//
-	// - Pause: paused
+	// - Pause: Paused.
 	//
-	// - Skip: dry run
+	// - Skip: Dry run.
 	//
-	// - Normal: normal execution
+	// - Normal: Normal execution.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The time when the periodic trigger takes effect. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+	// The start time for periodic triggers. This parameter takes effect only when Type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
@@ -465,9 +465,9 @@ type BatchUpdateTasksRequestTasksTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: triggered by scheduling cycle
+	// - Scheduler: Triggered by a scheduling cycle.
 	//
-	// - Manual: manually triggered
+	// - Manual: Manually triggered.
 	//
 	// example:
 	//

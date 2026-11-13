@@ -22,7 +22,7 @@ type UpdateTaskInstancesRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The instances.
+	// The list of node instances.
 	TaskInstances []*UpdateTaskInstancesRequestTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
 }
 
@@ -68,7 +68,7 @@ func (s *UpdateTaskInstancesRequest) Validate() error {
 type UpdateTaskInstancesRequestTaskInstances struct {
 	// The information about the associated data source.
 	DataSource *UpdateTaskInstancesRequestTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The instance ID.
+	// The node instance ID.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type UpdateTaskInstancesRequestTaskInstances struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The priority of the instance. Valid values: 1, 3, 5, 7, and 8.
+	// The runtime priority of the instance. Valid values: 1, 3, 5, 7, and 8.
 	//
 	// A larger value indicates a higher priority. Default value: 1.
 	//
@@ -84,7 +84,7 @@ type UpdateTaskInstancesRequestTaskInstances struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The resource group information. Set this parameter to the ID of a resource group for scheduling.
+	// The resource group information. Specify the identifier of the scheduling resource group.
 	//
 	// example:
 	//

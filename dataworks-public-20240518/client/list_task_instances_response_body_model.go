@@ -18,7 +18,7 @@ type iListTaskInstancesResponseBody interface {
 type ListTaskInstancesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -148,13 +148,17 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The business date. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The business date.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The creation time. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The creation time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
@@ -174,7 +178,9 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The completion time. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The completion time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
@@ -186,19 +192,21 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The update time. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The modification time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the user who last modified the instance.
+	// The account ID of the user who modified the instance.
 	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The type of the latest operation performed on the instance.
+	// The type of the latest operation on the instance.
 	//
 	// example:
 	//
@@ -210,23 +218,23 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The cycle number. This indicates the cycle round of the task instance on the current day.
+	// The cycle number. It indicates which scheduling cycle of the day the task instance belongs to.
 	//
 	// example:
 	//
 	// 1
 	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
-	// The running priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	// The priority of the task run. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The project environment. Valid values:
+	// The project environment.
 	//
-	// - Prod: production
+	// - Prod: Production.
 	//
-	// - Dev: development
+	// - Dev: Development.
 	//
 	// example:
 	//
@@ -238,19 +246,19 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun configuration for the task. Valid values:
+	// Specifies whether the task can be rerun. Valid values:
 	//
-	// - AllDenied: Reruns are not allowed regardless of success or failure.
+	// - AllDenied: The task cannot be rerun regardless of whether it succeeds or fails.
 	//
-	// - FailureAllowed: Reruns are allowed only after failures.
+	// - FailureAllowed: The task can be rerun only when it fails.
 	//
-	// - AllAllowed: Reruns are allowed after both successes and failures.
+	// - AllAllowed: The task can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The current run number. Default value: 1.
+	// The current number of runs. Default value: 1.
 	//
 	// example:
 	//
@@ -266,13 +274,15 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// para1=val1 para2=val2
 	ScriptParameters *string `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
-	// The start time. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The start time of the run.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The running status of the instance. Valid values:
+	// The run status of the instance. Valid values:
 	//
 	// - NotRun: Not run.
 	//
@@ -290,7 +300,7 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// - Checking: Submitted for data quality check.
 	//
-	// - WaitTrigger: Waiting for an external trigger. Trigger-based nodes change to this status after the waiting time.
+	// - WaitTrigger: Waiting for an external trigger. A trigger node changes to this status after the waiting period.
 	//
 	// example:
 	//
@@ -314,25 +324,29 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The timeout period for task execution, in seconds. Note: The scheduling system rounds the configured value to the whole hours.
+	// The timeout period for task execution, in seconds.
+	//
+	// Note: The scheduling system rounds the configured value to a whole number of hours.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The running mode when the node is triggered. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
+	// The run mode when the node is triggered. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
 	//
-	// - Pause: The node is paused.
+	// - Pause: Paused.
 	//
-	// - Skip: The node performs a dry run.
+	// - Skip: Dry run.
 	//
-	// - Normal: The node runs normally.
+	// - Normal: Normal run.
 	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The scheduled trigger time. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The scheduled trigger time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
@@ -348,7 +362,7 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The unified workflow instance ID. This value is the same for all task instances within a specific business date under a single trigger.
+	// The unified workflow instance ID. The value of this field is the same for all task instances within a specific business date under a single trigger.
 	//
 	// example:
 	//
@@ -360,31 +374,33 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1710239005403
 	WaitingResourceTime *int64 `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
-	// The time when the instance starts waiting for the scheduled trigger time. The value is a 13-digit timestamp, such as `1710239005403`.
+	// The time when the instance starts waiting for the scheduled time.
+	//
+	// The value is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	WaitingTriggerTime *int64 `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
-	// The ID of the associated workflow.
+	// The ID of the workflow to which the task belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The ID of the associated workflow instance.
+	// The ID of the workflow instance.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance to which the task instance belongs. Valid values:
+	// The type of the workflow instance to which the task belongs. Valid values:
 	//
-	// - SmokeTest: Smoke test.
+	// - SmokeTest: Test.
 	//
 	// - SupplementData: Data backfill.
 	//
-	// - Manual: Manual execution.
+	// - Manual: Manual.
 	//
 	// - ManualWorkflow: Manual workflow.
 	//
@@ -396,7 +412,7 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// Normal
 	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
-	// The name of the workflow to which the task instance belongs.
+	// The name of the workflow to which the task belongs.
 	//
 	// example:
 	//
@@ -840,19 +856,19 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) Validate()
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
-	// The number of compute units (CUs) consumed during task execution.
+	// The number of compute units (CUs) consumed by the task run configuration.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task execution.
+	// The ID of the image configured for the task run.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the schedule resource group configured for task execution.
+	// The identifier of the scheduling resource group configured for the task run.
 	//
 	// example:
 	//

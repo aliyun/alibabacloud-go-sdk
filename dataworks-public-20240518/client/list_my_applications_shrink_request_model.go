@@ -30,9 +30,9 @@ type iListMyApplicationsShrinkRequest interface {
 type ListMyApplicationsShrinkRequest struct {
 	// Filters by resource type.
 	//
-	// Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+	// Note: The resource types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
 	//
-	// See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// For more information, see [ResourceSchema documentation for Alibaba Cloud International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListMyApplicationsShrinkRequest struct {
 	//
 	// MaxCompute
 	DefSchema *string `json:"DefSchema,omitempty" xml:"DefSchema,omitempty"`
-	// The end time of the application period (millisecond timestamp).
+	// The end of the request submission time range, as a timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListMyApplicationsShrinkRequest struct {
 	//
 	// 1779724799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The pagination cursor.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -60,22 +60,19 @@ type ListMyApplicationsShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by resource with exact or generalized matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+	// Filters by exact or generalized resource. The resource description is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).
 	//
-	//
-	//
-	//
-	// See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// For more information, see [ResourceSchema documentation for Alibaba Cloud International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions).
 	ResourceShrink *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Filters by minimum permission resource type.
+	// Filters by least privilege resource type.
 	//
-	// Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+	// Note: The least privilege resource types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
 	//
-	// See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// For more information, see [ResourceSchema documentation for Alibaba Cloud International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions).
 	//
 	// This parameter is required.
 	ResourceTypeShrink *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start time of the application period (millisecond timestamp).
+	// The start of the request submission time range, as a timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -85,19 +82,19 @@ type ListMyApplicationsShrinkRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Filters by approval status. Valid values:
 	//
-	// - WaitApproval: pending approval.
+	// - WaitApproval: pending approval
 	//
-	// - Confirmed: pending authorization.
+	// - Confirmed: pending authorization
 	//
-	// - RejectApproval: approval rejected.
+	// - RejectApproval: approval rejected
 	//
-	// - AuthorizeSucceed: authorization succeeded.
+	// - AuthorizeSucceed: authorization succeeded
 	//
-	// - AuthorizeFailed: authorization failed.
+	// - AuthorizeFailed: authorization failed
 	//
-	// - Deleted: deleted.
+	// - Deleted: deleted
 	//
-	// - Canceled: withdrawn.
+	// - Canceled: withdrawn
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListResourcesResponseBody interface {
 type ListResourcesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListResourcesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
+	// The unique ID of the request. You can use the ID to troubleshoot issues if an error occurs.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyPagingInfo struct {
-	// The number of the page to return.
+	// The page number of the requested data.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListResourcesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resources returned by the query.
+	// The list of resources returned by the query.
 	Resources []*ListResourcesResponseBodyPagingInfoResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries that meet the conditions.
 	//
@@ -152,7 +152,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	DataSource *ListResourcesResponseBodyPagingInfoResourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The unique identifier of the file resource.
 	//
-	// 	Notice: Before SDK 8.0.0, this field is of the Long type. In SDK 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK, and the parameter is still returned based on the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
+	// 	Notice: The data type of this field is Long in SDK versions earlier than 8.0.0, and String in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The SDK returns this field in the type defined by that version**. However, if you upgrade the SDK across version 8.0.0, the data type change may cause project compilation failures. In this case, you must manually correct the data type.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
 	//
 	// example:
 	//
@@ -192,31 +192,31 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	SourcePath *string `json:"SourcePath,omitempty" xml:"SourcePath,omitempty"`
 	// The source storage type of the file resource. Valid values:
 	//
-	// - Local: local storage
+	// - Local: local storage.
 	//
-	// - Oss: Object Storage Service (OSS)
+	// - Oss: Object Storage Service (OSS).
 	//
 	// example:
 	//
-	// Local
+	// local
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The destination storage path of the file resource.
+	// The target storage path of the file resource.
 	//
 	// example:
 	//
 	// XXX/unknown/ide/1/XXX/20240820200851_963a9da676de44ef8d06a6576a8c4d6a.py
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The destination storage type of the file resource. Valid values:
+	// The target file storage type. Valid values:
 	//
-	// - Gateway: gateway
+	// - Gateway: gateway.
 	//
-	// - Oss: Object Storage Service (OSS)
+	// - Oss: Object Storage Service.
 	//
-	// - Hdfs: Hadoop Distributed File System (HDFS)
+	// - Hdfs: Hadoop Distributed File System (HDFS).
 	//
 	// example:
 	//
-	// Oss
+	// oss
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The type of the resource. Valid values:
 	//
@@ -230,7 +230,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// example:
 	//
-	// Jar
+	// jar
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -421,7 +421,7 @@ func (s *ListResourcesResponseBodyPagingInfoResourcesDataSource) Validate() erro
 type ListResourcesResponseBodyPagingInfoResourcesScript struct {
 	// The ID of the script.
 	//
-	// 	Notice: Before SDK 8.0.0, this field is of the Long type. In SDK 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK, and the parameter is still returned based on the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
+	// 	Notice: The data type of this field is Long in SDK versions earlier than 8.0.0, and String in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The SDK returns this field in the type defined by that version**. However, if you upgrade the SDK across version 8.0.0, the data type change may cause project compilation failures. In this case, you must manually correct the data type.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListPipelineRunsResponseBody interface {
 type ListPipelineRunsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListPipelineRunsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListPipelineRunsResponseBody) Validate() error {
 }
 
 type ListPipelineRunsResponseBodyPagingInfo struct {
-	// The returned page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListPipelineRunsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of deployment pipeline runs.
+	// The list of deployment pipelines.
 	PipelineRuns []*ListPipelineRunsResponseBodyPagingInfoPipelineRuns `json:"PipelineRuns,omitempty" xml:"PipelineRuns,omitempty" type:"Repeated"`
-	// The total number of entries that meet the filter criteria.
+	// The total number of entries that meet the filter conditions.
 	//
 	// example:
 	//
@@ -142,65 +142,67 @@ func (s *ListPipelineRunsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListPipelineRunsResponseBodyPagingInfoPipelineRuns struct {
-	// The creation timestamp of the deployment pipeline run.
+	// The timestamp when the deployment package was created.
 	//
 	// example:
 	//
 	// 1702736654000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator of the deployment pipeline run.
+	// The creator of the deployment pipeline.
 	//
 	// example:
 	//
 	// 110755000425XXXX
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description of the deployment pipeline run.
+	// The description of the deployment pipeline.
 	//
 	// example:
 	//
-	// 发布流程描述信息
+	// Deployment pipeline description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the deployment pipeline run.
+	// The ID of the deployment pipeline.
 	//
 	// example:
 	//
 	// 097c73fe-ed6e-4fb1-b109-a5d59e46cd58
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message returned if the deployment pipeline run fails.
+	// The error message returned when an error occurs during a deployment stage.
 	//
 	// example:
 	//
 	// Error message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The last modification timestamp of the deployment pipeline run.
+	// The time when the deployment pipeline was updated.
+	//
+	// The value is a 13-digit timestamp, such as `1702736654000`.
 	//
 	// example:
 	//
 	// 1702736654000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// 70199
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// A list of deployment stages.
+	// The list of deployment stages.
 	Stages []*ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages `json:"Stages,omitempty" xml:"Stages,omitempty" type:"Repeated"`
-	// The status of the deployment pipeline run.
+	// The status of the deployment pipeline.
 	//
 	// Valid values:
 	//
-	// - `Init`: Initializing
+	// - Init: Initialized.
 	//
-	// - `Running`: Running
+	// - Running: Running.
 	//
-	// - `Success`: Succeeded
+	// - Success: Succeeded.
 	//
-	// - `Fail`: Failed
+	// - Fail: Failed.
 	//
-	// - `Termination`: Terminated
+	// - Termination: Terminated.
 	//
-	// - `Cancel`: Canceled
+	// - Cancel: Canceled.
 	//
 	// example:
 	//
@@ -317,21 +319,25 @@ type ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages struct {
 	//
 	// DEV_CHECK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The stage description.
+	// The description of the deployment stage.
 	//
 	// example:
 	//
 	// Check before going online to development
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Additional information about the deployment stage.
+	// The additional supplementary information about the deployment stage.
+	//
+	// example:
+	//
+	// {"checkerList": [{"code": "BuildPackageChecker", "name": "package check"}, {"code": "NodeParentDependency", "name": "downstream dependency check"}, {"code": "NodeInProcess", "name": "offline process check"}]}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The error message returned if the deployment stage fails.
+	// The error message returned when an error occurs during a deployment stage.
 	//
 	// example:
 	//
 	// Error message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The stage name.
+	// The name of the deployment stage.
 	//
 	// example:
 	//
@@ -341,17 +347,17 @@ type ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages struct {
 	//
 	// Valid values:
 	//
-	// - `Init`: Initializing
+	// - Init: Initialized.
 	//
-	// - `Running`: Running
+	// - Running: Running.
 	//
-	// - `Success`: Succeeded
+	// - Success: Succeeded.
 	//
-	// - `Fail`: Failed
+	// - Fail: Failed.
 	//
-	// - `Termination`: Terminated
+	// - Termination: Terminated.
 	//
-	// - `Cancel`: Canceled
+	// - Cancel: Canceled.
 	//
 	// example:
 	//
@@ -363,19 +369,19 @@ type ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages struct {
 	//
 	// 1
 	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The type of the deployment stage.
+	// The type of the deployment stage. This parameter categorizes the operation type of the deployment stage.
 	//
 	// Valid values:
 	//
-	// - `Deploy`: A deploy operation
+	// - Deploy: Deployment operation.
 	//
-	// - `Check`: A check operation
+	// - Check: Check operation.
 	//
-	// - `Offline`: An offline operation
+	// - Offline: Undeployment operation.
 	//
-	// - `Build`: A build operation
+	// - Build: Build operation.
 	//
-	// - `Delete`: A delete operation
+	// - Delete: Delete operation.
 	//
 	// example:
 	//

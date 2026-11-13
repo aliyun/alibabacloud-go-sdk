@@ -18,11 +18,11 @@ type iCancelImageTestResponseBody interface {
 }
 
 type CancelImageTestResponseBody struct {
-	// The API request result.
+	// The result of the API request.
 	//
 	// example:
 	//
-	// true
+	// {"ProcessId": "582d4896-d224-413b-b883-239eeebe0bc5", "Success": true}
 	Data *CancelImageTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
@@ -30,7 +30,7 @@ type CancelImageTestResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *CancelImageTestResponseBody) Validate() error {
 }
 
 type CancelImageTestResponseBodyData struct {
-	// The execution ID of the canceled image test.
+	// The ID of the canceled image test execution.
 	//
 	// example:
 	//

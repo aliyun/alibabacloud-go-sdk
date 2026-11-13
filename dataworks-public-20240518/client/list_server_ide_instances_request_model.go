@@ -60,25 +60,25 @@ type ListServerIdeInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The account ID of the user that owns the instance.
+	// The account ID of the user who owns the instance. This parameter is used to filter instances.
 	//
 	// example:
 	//
 	// 20933221576142****
 	RelatedUserId *string `json:"RelatedUserId,omitempty" xml:"RelatedUserId,omitempty"`
-	// The DataWorks resource group identifier. You can use the numeric ID of the resource group or the full identifier in the Serverless_res_group_{tenantId}_{resgId} format.
+	// The identifier of the DataWorks resource group. You can specify the numeric ID of the resource group or the full identifier in the Serverless_res_group_{tenantId}_{resgId} format.
 	//
 	// example:
 	//
 	// Serverless_res_group_123456789012345_9876543210****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The instance subtype. Valid values:
+	// The subtype of the instance. Valid values:
 	//
 	// - PERSONAL_DEV: personal development environment
 	//

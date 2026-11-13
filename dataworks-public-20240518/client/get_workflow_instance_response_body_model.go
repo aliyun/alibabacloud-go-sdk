@@ -199,11 +199,11 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	//
 	// example:
 	//
-	// Scheduled workflow：
+	// Scheduled workflow:
 	//
 	// key1=value1 key2=value2
 	//
-	// Manual workflow：
+	// Manual workflow:
 	//
 	// {"key1":"value1", "key2": "value2"}
 	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`

@@ -16,13 +16,13 @@ type iCreateDataQualityScanResponseBody interface {
 }
 
 type CreateDataQualityScanResponseBody struct {
-	// Returns the ID of the created data source sharing rule, which uniquely identifies the rule.
+	// The ID of the created data source sharing rule, which is the unique identifier of the data source sharing rule.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

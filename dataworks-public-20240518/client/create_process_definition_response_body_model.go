@@ -16,13 +16,13 @@ type iCreateProcessDefinitionResponseBody interface {
 }
 
 type CreateProcessDefinitionResponseBody struct {
-	// The ID of the process definition.
+	// The ID of the flow definition.
 	//
 	// example:
 	//
 	// 1010543619
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
+	// **The API request ID.**
 	//
 	// example:
 	//

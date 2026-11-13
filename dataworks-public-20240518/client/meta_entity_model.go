@@ -32,51 +32,57 @@ type iMetaEntity interface {
 }
 
 type MetaEntity struct {
-	// Entity attributes. Complex values are represented as JSON strings.
+	// The entity properties. Complex values are represented as JSON strings.
+	//
+	// example:
+	//
+	// {"key1": "v1"}
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Comment
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Creation time as a millisecond-level timestamp
+	// The creation time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780553640613
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Custom attribute values. The key is the custom attribute identifier. The value is a list of attribute values.
+	// The custom attribute values. The key is the custom attribute identifier, and the value is a list of attribute values.
+	//
+	// example:
+	//
+	// {"owner_name":["Zhang San"]}
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
-	// Entity type
+	// The entity type.
 	//
 	// example:
 	//
 	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// Entity ID
+	// The entity ID.
 	//
 	// example:
 	//
 	// custom_entity-customer_api:api_001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Attribute definition of the custom entity.
-	//
-	// 	Notice: For historical reasons, this property is not returned and its value is empty. We recommend that you use the GetMetaEntityDef API to obtain the entity type definition.
+	// The property definition of the custom entity. <notice>This legacy property is not populated. To retrieve the entity type definition, call GetMetaEntityDef.</notice>
 	MetaEntityDef *MetaEntityDef `json:"MetaEntityDef,omitempty" xml:"MetaEntityDef,omitempty"`
-	// Modification time as a millisecond-level timestamp
+	// The modification time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1763380628000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Entity name
+	// The entity name.
 	//
 	// example:
 	//
 	// api_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Owner ID. The default value is the Alibaba Cloud UID of the creator.
+	// The owner ID. Default value: the Alibaba Cloud UID of the creator.
 	//
 	// example:
 	//

@@ -26,21 +26,21 @@ type iUpdateProcessDefinitionShrinkRequest interface {
 }
 
 type UpdateProcessDefinitionShrinkRequest struct {
-	// A list of approval nodes. This parameter does not apply to system policies.
+	// The list of approval nodes. Note: System policies do not take effect.
 	ApprovalNodesShrink *string `json:"ApprovalNodes,omitempty" xml:"ApprovalNodes,omitempty"`
-	// An idempotent parameter. It ensures that retried requests do not result in duplicate operations.
+	// The idempotency token. Used to prevent duplicate operations caused by multiple calls.
 	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the process definition.
+	// The description of the approval process definition.
 	//
 	// example:
 	//
-	// MaxCompute table approval policy for the lwt_ide_simple project
+	// Approval policy for MaxCompute tables in the lwt_ide_simple project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the process definition.
+	// The ID of the approval process definition.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type UpdateProcessDefinitionShrinkRequest struct {
 	//
 	// 177554881536128
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the process definition.
+	// The name of the approval process definition.
 	//
 	// example:
 	//
 	// MaxCompute table approval
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The notification service configurations.
+	// The notification service declaration.
 	NotificationServicesShrink *string `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty"`
-	// A list of rule conditions. This parameter does not apply to system policies.
+	// The list of conditional rules. Note: System policies do not take effect.
 	RuleConditionsShrink *string `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty"`
 }
 

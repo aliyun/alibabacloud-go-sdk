@@ -14,7 +14,7 @@ type iUpdateProcessDefinitionResponseBody interface {
 }
 
 type UpdateProcessDefinitionResponseBody struct {
-	// The request ID.
+	// The ID of the API request.
 	//
 	// example:
 	//

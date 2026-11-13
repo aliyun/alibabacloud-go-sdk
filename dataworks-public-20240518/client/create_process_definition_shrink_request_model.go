@@ -34,13 +34,13 @@ type CreateProcessDefinitionShrinkRequest struct {
 	//
 	// This parameter is required.
 	ApprovalNodesShrink *string `json:"ApprovalNodes,omitempty" xml:"ApprovalNodes,omitempty"`
-	// The idempotency token. We recommend that you use a UUID.
+	// The client token that is used to ensure idempotence. We recommend using a UUID.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the process definition.
+	// The description of the flow definition.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type CreateProcessDefinitionShrinkRequest struct {
 	//
 	// This is a sample policy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the process definition.
+	// Specifies whether to enable the flow definition.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the process definition.
+	// The name of the flow definition.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// My Approval Policy
+	// My approval policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The notification service declarations.
 	NotificationServicesShrink *string `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty"`
@@ -80,7 +80,7 @@ type CreateProcessDefinitionShrinkRequest struct {
 	//
 	// Table
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The type of the process definition. Valid values:
+	// The type of the flow definition. Valid values:
 	//
 	// 1. MaxCompute
 	//

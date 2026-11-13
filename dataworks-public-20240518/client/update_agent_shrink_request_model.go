@@ -58,19 +58,19 @@ type UpdateAgentShrinkRequest struct {
 	//
 	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The agent definition version used for concurrency control. We recommend that you explicitly specify the AgentVersion just obtained from GetAgent for each call. The update is rejected if the version does not match the current version on the server. To ensure compatibility with different deployment versions, do not rely on the server-side processing when this parameter is omitted.
+	// The agent definition version used for concurrency control. We recommend explicitly specifying the AgentVersion you just obtained from GetAgent for each call. The update is rejected if the version does not match the current version on the server. To ensure compatibility with different deployment versions, do not rely on the server-side processing when this parameter is omitted.
 	//
 	// example:
 	//
 	// 2
 	ExpectedVersion *int32 `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
-	// The list of expert suite references. If omitted, existing references are retained. An explicit empty array clears the references. For official suites, specify only Source=OFFICIAL and SuiteId. Version, VersionSelector, or client artifact fields are not accepted. For custom suites, use SuiteId, and you can explicitly specify an existing integer Version.
+	// The list of expert suite references. If omitted, the existing references are retained. An explicit empty array clears the references. For official suites, specify only Source=OFFICIAL and SuiteId. Version, VersionSelector, or client artifact fields are not accepted. For custom suites, use SuiteId, and you can explicitly specify an existing integer Version.
 	//
 	// example:
 	//
 	// [{"SuiteId":"suite_example","Version":3}]
 	ExpertSuitesShrink *string `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty"`
-	// The extended metadata. If omitted, existing metadata is retained. If passed, business metadata is updated, and the server retains protected system metadata.
+	// The extended metadata. If omitted, the existing metadata is retained. If provided, the business metadata is updated, and the server retains the protected system metadata.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type UpdateAgentShrinkRequest struct {
 	//
 	//         }
 	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the agent to be updated. Use the Name returned by GetAgent. This field is used to locate the target agent and cannot be used to rename the agent.
+	// The name of the agent to be updated. Use the Name returned by GetAgent. This field is used to locate the target agent and is not used for renaming.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type UpdateAgentShrinkRequest struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to publish the agent immediately after the update. Valid values: true: saves a new draft version first and then requests publishing. false or omitted: saves only the definition. Saving and publishing are not atomic operations. If the operation fails, call GetAgent to read the current version back before retrying, to avoid blindly repeating the update.
+	// Specifies whether to publish the agent immediately after the update. If this parameter is set to true, the operation saves a new draft version before requesting publication. If this parameter is set to false or omitted, it saves only the definition. Saving and publishing are not atomic operations. If the operation fails, call GetAgent to read the current version before retrying to avoid blindly repeating the update.
 	//
 	// example:
 	//
@@ -112,19 +112,19 @@ type UpdateAgentShrinkRequest struct {
 	//
 	// You are an excellent ETL engineer
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The list of tool references. Omit this parameter if no modification is required. The current new backend retains existing tools even if an empty array is passed. A non-empty array replaces the references. Each item must include Kind and the corresponding configuration, and cannot include only Name. Replace the MCP service and tool names in the example with actual values available to the current identity.
+	// The list of tool references. Omit this parameter if no modification is required. The current new backend retains existing tools even for an empty array. A non-empty array replaces the references. Each item must include Kind and the corresponding configuration, and cannot include only Name. Replace the MCP service and tool names in the example with actual values available to the current identity.
 	//
 	// example:
 	//
 	// [{"Kind":"MCP_TOOLSET","McpServerName":"mcp-a","McpItems":["only-this-tool"]}]
 	ToolsShrink *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
-	// The visibility level. Valid values: <br>`TENANT`: visible within the account. <br>`PROJECT`: visible to specified projects. <br>`USER`: visible to specified users.
+	// The visibility level.<br>TENANT: visible within the account.<br>PROJECT: visible to specified projects.<br>USER: visible to specified users.
 	//
 	// example:
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is used based on the Visibility parameter.
+	// The visibility scope. The corresponding field is used based on the Visibility value.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

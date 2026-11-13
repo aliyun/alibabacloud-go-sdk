@@ -24,19 +24,19 @@ type iListPipelineRunsRequest interface {
 }
 
 type ListPipelineRunsRequest struct {
-	// Filters the results by the creator of the pipeline.
+	// The creator of the deployment pipeline. This parameter is used as a filter condition.
 	//
 	// example:
 	//
 	// 110755000425****
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the artifact.
+	// The ID of the deployment object.
 	//
 	// example:
 	//
 	// 860438872620113XXXX
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The page number. Pages start from 1. The default value is 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListPipelineRunsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can obtain this ID from the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
 	//
-	// This parameter specifies the DataWorks workspace to use for the API call.
+	// This parameter specifies the DataWorks workspace for the current API invoke operation.
 	//
 	// This parameter is required.
 	//
@@ -58,21 +58,21 @@ type ListPipelineRunsRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Filters the results by the current status of the pipeline.
+	// The current status of the deployment pipeline. This parameter is used as a filter condition.
 	//
 	// Valid values:
 	//
-	// - `Init`: initializing
+	// - Init: Initialized.
 	//
-	// - `Running`: running
+	// - Running: Running.
 	//
-	// - `Success`: succeeded
+	// - Success: Succeeded.
 	//
-	// - `Fail`: failed
+	// - Fail: Failed.
 	//
-	// - `Termination`: terminated
+	// - Termination: Terminated.
 	//
-	// - `Cancel`: canceled
+	// - Cancel: Canceled.
 	//
 	// example:
 	//

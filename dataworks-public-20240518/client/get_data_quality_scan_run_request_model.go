@@ -14,7 +14,7 @@ type iGetDataQualityScanRunRequest interface {
 }
 
 type GetDataQualityScanRunRequest struct {
-	// The data quality monitoring run record ID.
+	// The ID of the data quality monitor run record.
 	//
 	// example:
 	//

@@ -26,21 +26,21 @@ type iUpdateProcessDefinitionRequest interface {
 }
 
 type UpdateProcessDefinitionRequest struct {
-	// A list of approval nodes. This parameter does not apply to system policies.
+	// The list of approval nodes. Note: System policies do not take effect.
 	ApprovalNodes []*UpdateProcessDefinitionRequestApprovalNodes `json:"ApprovalNodes,omitempty" xml:"ApprovalNodes,omitempty" type:"Repeated"`
-	// An idempotent parameter. It ensures that retried requests do not result in duplicate operations.
+	// The idempotency token. Used to prevent duplicate operations caused by multiple calls.
 	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the process definition.
+	// The description of the approval process definition.
 	//
 	// example:
 	//
-	// MaxCompute table approval policy for the lwt_ide_simple project
+	// Approval policy for MaxCompute tables in the lwt_ide_simple project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the process definition.
+	// The ID of the approval process definition.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type UpdateProcessDefinitionRequest struct {
 	//
 	// 177554881536128
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the process definition.
+	// The name of the approval process definition.
 	//
 	// example:
 	//
 	// MaxCompute table approval
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The notification service configurations.
+	// The notification service declaration.
 	NotificationServices []*UpdateProcessDefinitionRequestNotificationServices `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty" type:"Repeated"`
-	// A list of rule conditions. This parameter does not apply to system policies.
+	// The list of conditional rules. Note: System policies do not take effect.
 	RuleConditions []*UpdateProcessDefinitionRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 }
 
@@ -163,60 +163,61 @@ func (s *UpdateProcessDefinitionRequest) Validate() error {
 }
 
 type UpdateProcessDefinitionRequestApprovalNodes struct {
-	// The approver type for the node. Valid values:
+	// The type of approver for the node. Valid values:
 	//
+	// - DataWorksProjectRole: Workspace role
 	//
+	// - DataWorksProjectMember: Workspace member
 	//
+	// - TableAdministrator: Table owner
 	//
-	// - `DataWorksProjectRole`: A workspace role.
+	// - TableOrProjectAdministrator: Table or workspace administrator
 	//
-	// - `DataWorksProjectMember`: A workspace member.
+	// - AliyunResourceOwner: Alibaba Cloud account
 	//
-	// - `TableAdministrator`: A table owner.
+	// - MaxComputeRole: MaxCompute administrator
 	//
-	// - `TableOrProjectAdministrator`: The administrator of the table or workspace.
+	// - DLFAdmin: DLF legacy administrator
 	//
-	// - `AliyunResourceOwner`: An Alibaba Cloud account.
+	// - DLFNextAdmin: DLFNext administrator
 	//
-	// - `MaxComputeRole`: A MaxCompute administrator.
+	// - TenantRole: Tenant role
 	//
-	// - `DLFAdmin`: A DlfLegacy administrator.
+	// - EmrAdministrator: EMR administrator
 	//
-	// - `DLFNextAdmin`: A DLFNext administrator.
+	// - LindormAdministrator: Lindorm administrator
 	//
-	// - `TenantRole`: A tenant role.
-	//
-	// - `EmrAdministrator`: An EMR administrator.
-	//
-	// - `LindormAdministrator`: A Lindorm administrator.
-	//
-	// - `AliyunRamUser`: A RAM user.
+	// - AliyunRamUser: RAM user
 	//
 	// example:
 	//
 	// TableOrProjectAdministrator
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// Specifies the approvers. The required value depends on the `AccountType`:
+	// The assignees. The semantics vary based on the AccountType:
 	//
-	// - If `AccountType` is `DataWorksProjectMember`, this parameter specifies the user IDs of workspace members.
+	// - DataWorksProjectMember: Specifies the user ID of the workspace member.
 	//
-	// - If `AccountType` is `DataWorksProjectRole`, this parameter specifies the codes of workspace roles.
+	// - DataWorksProjectRole: Specifies the code of the workspace role.
 	//
-	// - If `AccountType` is `MaxComputeRole`, this parameter specifies the MaxCompute roles.
+	// - MaxComputeRole: Specifies the MaxCompute role.
 	//
-	// - If `AccountType` is `TenantRole`, this parameter specifies the codes of tenant roles.
+	// - TenantRole: Specifies the code of the tenant role.
 	//
-	// - If `AccountType` is `AliyunRamUser`, this parameter specifies the user IDs of RAM users.
+	// - AliyunRamUser: Specifies the RAM user ID.
 	//
 	// example:
 	//
 	// DataWorksProjectMember
 	Assignees *string `json:"Assignees,omitempty" xml:"Assignees,omitempty"`
-	// Additional properties that are required for specific `AccountType` values:
+	// The extension properties. Different additional declarations are required based on the AccountType:
 	//
-	// - If `AccountType` is `DataWorksProjectMember`: The key is `projectId` and the value is the user ID of a workspace member. Use commas (,) to separate multiple user IDs.
+	// - `DataWorksProjectMember`: The key is projectId, and the value is the user ID of the workspace member. Separate multiple values with commas.
 	//
-	// - If `AccountType` is `MaxComputeRole`: The key is the MaxCompute project name and the value is the role name in MaxCompute. Use commas (,) to separate multiple role names.
+	// - `MaxComputeRole`: The key is the MaxCompute project, and the value is the role name in MaxCompute. Separate multiple values with commas.
+	//
+	// example:
+	//
+	// {"449656": "role_project_admin,role_project_pe"}
 	ExtensionProperties map[string]interface{} `json:"ExtensionProperties,omitempty" xml:"ExtensionProperties,omitempty"`
 	// The name of the node.
 	//
@@ -289,13 +290,13 @@ type UpdateProcessDefinitionRequestNotificationServices struct {
 	//
 	// Mail
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// Additional information in JSON format. For example, use {"atAll":"true"} to specify whether to notify all members.
+	// The extended information in JSON format. For example, `{"atAll":"true"}` specifies whether to mention all users.
 	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The webhook URL. This parameter is required when `Channel` is set to `DingRobot` or `Weixin`.
+	// The Webhook URL. This parameter is required when the channel is DingRobot or Weixin.
 	//
 	// example:
 	//
@@ -343,23 +344,23 @@ func (s *UpdateProcessDefinitionRequestNotificationServices) Validate() error {
 }
 
 type UpdateProcessDefinitionRequestRuleConditions struct {
-	// The conditional expression. Format: ((#type==\\"typeValue\\")). For example: ((#odpsProject==\\"PX_BEIJING_TEST\\")).
+	// The conditional expression, such as `((#type==\\"typeValue\\"))` or `((#odpsProject==\\"PX_BEIJING_TEST\\"))`.
 	//
 	// example:
 	//
 	// ((#odpsProject==\\"PX_BEIJING_TEST\\"))
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The phase in which the rule takes effect. Valid values:
+	// The stage where the rule takes effect. Valid values:
 	//
-	// - **Deployment**: Determines whether the approval policy applies when an application is submitted.
+	// - **Deployment**: Used to determine whether the approval policy is matched when the application is submitted.
 	//
-	// - **Running**: Determines whether to skip the approval during the approval process. This phase is supported only for MaxCompute.
+	// - **Running**: Used to determine whether to skip approval while the approval process runs. [Supported only for MaxCompute]
 	//
 	// example:
 	//
 	// Deployment
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the condition. Valid values:
+	// The condition type. Valid values:
 	//
 	// - `odpsProject`
 	//

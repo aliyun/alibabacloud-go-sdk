@@ -64,7 +64,7 @@ func (s *ListCustomAgentsResponseBody) Validate() error {
 type ListCustomAgentsResponseBodyPagingInfo struct {
 	// The list of custom agents.
 	Agents []*ListCustomAgentsResponseBodyPagingInfoAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this response.
+	// The maximum number of entries returned for this request.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListCustomAgentsResponseBodyPagingInfo struct {
 	//
 	// 5
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries that meet the query conditions.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListCustomAgentsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyPagingInfoAgents struct {
-	// **The creator ID.**
+	// **The ID of the creator.**
 	//
 	// example:
 	//
@@ -158,27 +158,27 @@ type ListCustomAgentsResponseBodyPagingInfoAgents struct {
 	//
 	// example:
 	//
-	// My Assistant
+	// My assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// **The creation time (UNIX timestamp in milliseconds).**
+	// **The creation time (millisecond timestamp).**
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *int64 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// **The last modification time (UNIX timestamp in milliseconds).**
+	// **The last modified time (millisecond timestamp).**
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtModifiedTime *int64 `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// **The last modifier ID.**
+	// **The ID of the last modifier.**
 	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// **The agent name.**
+	// **The name of the agent.**
 	//
 	// example:
 	//

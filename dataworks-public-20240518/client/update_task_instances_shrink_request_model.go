@@ -22,7 +22,7 @@ type UpdateTaskInstancesShrinkRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The instances.
+	// The list of node instances.
 	TaskInstancesShrink *string `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty"`
 }
 

@@ -62,7 +62,7 @@ func (s *UpdateAgentResponseBody) Validate() error {
 }
 
 type UpdateAgentResponseBodyAgent struct {
-	// The version of the updated agent definition.
+	// The updated agent definition version.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type UpdateAgentResponseBodyAgent struct {
 	AgentVersion *int32 `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	// The bound expert suites.
 	ExpertSuites []*UpdateAgentResponseBodyAgentExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The creation time of the agent. It is a UNIX timestamp in milliseconds.
+	// The time when the agent was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *int64 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modified time of the agent. It is a UNIX timestamp in milliseconds.
+	// The time when the agent was last modified. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type UpdateAgentResponseBodyAgentExpertSuites struct {
 	//
 	// example:
 	//
-	// Collection of data analytics expert capabilities
+	// Data analytics expert capability collection
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the bound version.
 	//
@@ -318,7 +318,7 @@ type UpdateAgentResponseBodyAgentSkills struct {
 	//
 	// my-business-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the official skill.
+	// The official skill ID.
 	//
 	// example:
 	//

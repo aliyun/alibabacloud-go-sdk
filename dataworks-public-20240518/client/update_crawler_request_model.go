@@ -35,6 +35,10 @@ type UpdateCrawlerRequest struct {
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The extension configurations for the crawler type. Only the specified configuration items are updated. Unspecified configuration items remain unchanged. The supported keys and values are determined by the SupportedOptionKeys returned by GetCrawlerTypeCapabilities.
+	//
+	// example:
+	//
+	// {"CollectRecyclebin":"false"}
 	Options map[string]*string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The ID of the Serverless 2.0 resource group used to run the collection task. Whether this parameter is supported and whether it is required depend on the capabilities returned by GetCrawlerTypeCapabilities. If this parameter is not specified, the existing value remains unchanged.
 	//

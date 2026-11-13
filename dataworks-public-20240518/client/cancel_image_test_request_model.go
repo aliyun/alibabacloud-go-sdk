@@ -24,7 +24,7 @@ type CancelImageTestRequest struct {
 	//
 	// Custom_image_xxxx_xxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution ID of the image test to cancel.
+	// The ID of the image test execution to cancel.
 	//
 	// example:
 	//

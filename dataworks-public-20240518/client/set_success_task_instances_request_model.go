@@ -16,13 +16,13 @@ type iSetSuccessTaskInstancesRequest interface {
 }
 
 type SetSuccessTaskInstancesRequest struct {
-	// Remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID list of the task instance.
+	// The list of task instance IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 }
 

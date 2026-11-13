@@ -26,7 +26,7 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
-	// The description of the dataset. The value can be up to 1024 characters in length.
+	// The description of the dataset. It cannot exceed 1,024 characters in length.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type CreateDatasetRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The data type. Valid values:
 	//
-	// - COMMON: general-purpose (default).
+	// - COMMON: General (default).
 	//
-	// - PIC: image.
+	// - PIC: Image.
 	//
-	// - TEXT: text.
+	// - TEXT: Text.
 	//
-	// - TABLE: table.
+	// - TABLE: Table.
 	//
-	// - VIDEO: video.
+	// - VIDEO: Video.
 	//
-	// - AUDIO: audio.
+	// - AUDIO: Audio.
 	//
-	// - INDEX: index.
+	// - INDEX: Index.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateDatasetRequest struct {
 	//
 	// This parameter is required.
 	InitVersion *CreateDatasetRequestInitVersion `json:"InitVersion,omitempty" xml:"InitVersion,omitempty" type:"Struct"`
-	// The name of the dataset. The value must be a non-empty string that is up to 128 characters in length.
+	// The name of the dataset. It must be a non-empty string and cannot exceed 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type CreateDatasetRequest struct {
 	//
 	// test_oss_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The origin of the dataset. Only DataWorks is supported.
+	// The source of the dataset. Currently, only DataWorks is supported.
 	//
 	// example:
 	//
 	// DataWorks
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The DataWorks workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -82,9 +82,9 @@ type CreateDatasetRequest struct {
 	//
 	// - OSS: Object Storage Service.
 	//
-	// - NAS: general-purpose NAS file storage.
+	// - NAS: General-purpose NAS file storage.
 	//
-	// - EXTREMENAS: extreme NAS file storage.
+	// - EXTREMENAS: Extreme NAS file storage.
 	//
 	// - DLF_LANCE: Data Lake Formation.
 	//
@@ -177,37 +177,41 @@ func (s *CreateDatasetRequest) Validate() error {
 }
 
 type CreateDatasetRequestInitVersion struct {
-	// The description. The value can be up to 1024 characters in length.
+	// The description. It cannot exceed 1,024 characters in length.
 	//
 	// example:
 	//
 	// Initial Version
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The storage import configuration of the dataset. The required configuration varies depending on the storage type.
+	// The storage import configuration for the dataset. The required configuration information varies based on the storage type.
 	//
 	// <details>
 	//
 	// <summary>NAS</summary>
 	//
-	// The values can be obtained from the response of the File Storage NAS API DescribeFileSystems operation.
+	// For the values, refer to the response of the DescribeFileSystems API operation.
 	//
 	// ```JSON
 	//
 	// {
 	//
-	//   "fileSystemId": "3b6XXX89c9", // File system ID
+	//   "fileSystemId": "3b6XXX89c9", // The ID of the file system.
 	//
-	//   "fileSystemStorageType": "Performance", // Storage specification of the file system
+	//   "fileSystemStorageType": "Performance", // The storage specification of the file system.
 	//
-	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // VPC ID of the mount target
+	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount target.
 	//
 	// }
 	//
 	// ```
 	//
 	// </details>
+	//
+	// example:
+	//
+	// {"fileSystemId":"3b6XXX89c9","fileSystemStorageType":"Performance","vpcId":"vpc-uf66oxxxrqge1t2gson7s"}
 	ImportInfo map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The mount path. The value must start with /mnt/. Default value: /mnt/data.
+	// The mount path. It must start with /mnt/. Default value: /mnt/data.
 	//
 	// example:
 	//

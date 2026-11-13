@@ -58,19 +58,19 @@ type UpdateAgentRequest struct {
 	//
 	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The agent definition version used for concurrency control. We recommend that you explicitly specify the AgentVersion just obtained from GetAgent for each call. The update is rejected if the version does not match the current version on the server. To ensure compatibility with different deployment versions, do not rely on the server-side processing when this parameter is omitted.
+	// The agent definition version used for concurrency control. We recommend explicitly specifying the AgentVersion you just obtained from GetAgent for each call. The update is rejected if the version does not match the current version on the server. To ensure compatibility with different deployment versions, do not rely on the server-side processing when this parameter is omitted.
 	//
 	// example:
 	//
 	// 2
 	ExpectedVersion *int32 `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
-	// The list of expert suite references. If omitted, existing references are retained. An explicit empty array clears the references. For official suites, specify only Source=OFFICIAL and SuiteId. Version, VersionSelector, or client artifact fields are not accepted. For custom suites, use SuiteId, and you can explicitly specify an existing integer Version.
+	// The list of expert suite references. If omitted, the existing references are retained. An explicit empty array clears the references. For official suites, specify only Source=OFFICIAL and SuiteId. Version, VersionSelector, or client artifact fields are not accepted. For custom suites, use SuiteId, and you can explicitly specify an existing integer Version.
 	//
 	// example:
 	//
 	// [{"SuiteId":"suite_example","Version":3}]
 	ExpertSuites []*UpdateAgentRequestExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The extended metadata. If omitted, existing metadata is retained. If passed, business metadata is updated, and the server retains protected system metadata.
+	// The extended metadata. If omitted, the existing metadata is retained. If provided, the business metadata is updated, and the server retains the protected system metadata.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type UpdateAgentRequest struct {
 	//
 	//         }
 	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the agent to be updated. Use the Name returned by GetAgent. This field is used to locate the target agent and cannot be used to rename the agent.
+	// The name of the agent to be updated. Use the Name returned by GetAgent. This field is used to locate the target agent and is not used for renaming.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type UpdateAgentRequest struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to publish the agent immediately after the update. Valid values: true: saves a new draft version first and then requests publishing. false or omitted: saves only the definition. Saving and publishing are not atomic operations. If the operation fails, call GetAgent to read the current version back before retrying, to avoid blindly repeating the update.
+	// Specifies whether to publish the agent immediately after the update. If this parameter is set to true, the operation saves a new draft version before requesting publication. If this parameter is set to false or omitted, it saves only the definition. Saving and publishing are not atomic operations. If the operation fails, call GetAgent to read the current version before retrying to avoid blindly repeating the update.
 	//
 	// example:
 	//
@@ -112,19 +112,19 @@ type UpdateAgentRequest struct {
 	//
 	// You are an excellent ETL engineer
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The list of tool references. Omit this parameter if no modification is required. The current new backend retains existing tools even if an empty array is passed. A non-empty array replaces the references. Each item must include Kind and the corresponding configuration, and cannot include only Name. Replace the MCP service and tool names in the example with actual values available to the current identity.
+	// The list of tool references. Omit this parameter if no modification is required. The current new backend retains existing tools even for an empty array. A non-empty array replaces the references. Each item must include Kind and the corresponding configuration, and cannot include only Name. Replace the MCP service and tool names in the example with actual values available to the current identity.
 	//
 	// example:
 	//
 	// [{"Kind":"MCP_TOOLSET","McpServerName":"mcp-a","McpItems":["only-this-tool"]}]
 	Tools []*UpdateAgentRequestTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	// The visibility level. Valid values: <br>`TENANT`: visible within the account. <br>`PROJECT`: visible to specified projects. <br>`USER`: visible to specified users.
+	// The visibility level.<br>TENANT: visible within the account.<br>PROJECT: visible to specified projects.<br>USER: visible to specified users.
 	//
 	// example:
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is used based on the Visibility parameter.
+	// The visibility scope. The corresponding field is used based on the Visibility value.
 	VisibilityScope *UpdateAgentRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -338,7 +338,7 @@ func (s *UpdateAgentRequestCallableAgents) Validate() error {
 }
 
 type UpdateAgentRequestExpertSuites struct {
-	// The source of the expert suite. OFFICIAL: official suite. DB or omitted: custom suite. Both types of references use SuiteId. Version fields apply only to custom resources.
+	// The source of the expert suite. OFFICIAL: official suite. DB or omitted: custom suite. Both types of references use SuiteId, and the version fields apply only to custom resources.
 	//
 	// example:
 	//
@@ -356,7 +356,7 @@ type UpdateAgentRequestExpertSuites struct {
 	//
 	// 3
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The semantic version selection expression of the custom expert suite, such as ^1.2.3. Use this parameter only when the custom resource version selection capability is deployed on the target server. This parameter is mutually exclusive with Version. This field is not accepted when Source is set to OFFICIAL. To ensure compatibility with servers whose version capabilities are unconfirmed, use an existing integer Version.
+	// The semantic version selection expression of the custom expert suite, such as ^1.2.3. Use this parameter only when the target server has deployed the custom resource version selection capability. This parameter is mutually exclusive with Version. This field is not accepted when Source is set to OFFICIAL. To ensure compatibility with servers of unconfirmed versions, use an existing integer Version.
 	//
 	// example:
 	//
@@ -437,7 +437,7 @@ type UpdateAgentRequestSkills struct {
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The semantic version selection expression of the custom skill, such as ^1.2.3. Use this parameter only when the custom resource version selection capability is deployed on the target server. This parameter is mutually exclusive with Version. This field is not accepted when Source is set to OFFICIAL. To ensure compatibility with servers whose version capabilities are unconfirmed, use an existing integer Version.
+	// The semantic version selection expression of the custom skill, such as ^1.2.3. Use this parameter only when the target server has deployed the custom resource version selection capability. This parameter is mutually exclusive with Version. This field is not accepted when Source is set to OFFICIAL. To ensure compatibility with servers of unconfirmed versions, use an existing integer Version.
 	//
 	// example:
 	//
@@ -515,7 +515,7 @@ type UpdateAgentRequestTools struct {
 	//
 	// MCP_TOOLSET
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The list of selected MCP tool names. If this parameter is omitted or an empty array is passed, tools are not filtered by name. Each item must be the name of a tool that actually exists in the target service.
+	// The list of selected MCP tool names. If this parameter is omitted or an empty array is provided, no filtering by tool name is performed. Each item must be an actual tool name in the target service.
 	//
 	// example:
 	//
@@ -593,7 +593,7 @@ func (s *UpdateAgentRequestTools) Validate() error {
 }
 
 type UpdateAgentRequestVisibilityScope struct {
-	// The list of visible project IDs. This parameter takes effect when Visibility is set to `PROJECT`.
+	// The list of visible project IDs. This parameter takes effect when Visibility is set to PROJECT.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
 	// The list of visible user IDs. This parameter is used when Visibility is set to USER.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`

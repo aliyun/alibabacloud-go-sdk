@@ -42,7 +42,7 @@ type CreateDataQualityScanShrinkRequest struct {
 	//
 	// a-customized-uuid
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The compute engine used at runtime. If not specified, the data source defined in the Spec is used.
+	// The compute engine used when the data quality monitor runs. This parameter is optional. If it is not specified, the data source connection specified in the Spec is used.
 	ComputeResourceShrink *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
 	// The description of the data quality monitor.
 	//
@@ -50,31 +50,31 @@ type CreateDataQualityScanShrinkRequest struct {
 	//
 	// Daily data quality scanning of ods tables.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Hook configurations after the data quality monitoring run ends.
+	// The configuration for hooks that run after the data quality monitor finishes.
 	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
-	// The data quality monitoring name.
+	// The name of the data quality monitor.
 	//
 	// example:
 	//
 	// data_quality_scan_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the user who owns of the data quality monitor.
+	// The user ID of the owner of the data quality monitor.
 	//
 	// example:
 	//
 	// 95279527****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The definition of execution parameters for the data quality monitoring.
+	// The execution parameter definitions of the data quality monitor.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/overview) and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/overview) and go to the Workspace Management page to obtain the workspace ID. This parameter specifies the DataWorks workspace for the API call.
 	//
 	// example:
 	//
 	// 101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The resource group used during execution of the data quality monitoring.
+	// The resource group used when the data quality monitor runs.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// Spec code for the content of the data quality monitoring. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
+	// The Spec code that defines the data quality monitor. For more information, see [Data quality spec configuration guide](https://help.aliyun.com/document_detail/2963394.html).
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type CreateDataQualityScanShrinkRequest struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The trigger configurations of the data quality monitoring task.
+	// The trigger settings of the data quality monitor.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
