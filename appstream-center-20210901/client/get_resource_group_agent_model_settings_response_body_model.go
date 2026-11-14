@@ -18,7 +18,7 @@ type iGetResourceGroupAgentModelSettingsResponseBody interface {
 }
 
 type GetResourceGroupAgentModelSettingsResponseBody struct {
-	// The list of model settings for resource groups. One record is returned for each resource group ID specified in the request. If a resource group is not associated with a model group under the specified agent platform and provider, ModelTemplateId and ModelTemplateName are empty.
+	// The list of model settings for resource groups. A record is returned for each resource group ID in the request. If a resource group is not bound to a model group under the specified agent platform and provider, ModelTemplateId and ModelTemplateName are empty.
 	Data []*GetResourceGroupAgentModelSettingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID, which uniquely identifies the request.
 	//

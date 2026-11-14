@@ -28,7 +28,7 @@ type DescribeShareImageResponseBody struct {
 	//
 	// Image.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned object.
+	// The response object.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeShareImageResponseBody) Validate() error {
 }
 
 type DescribeShareImageResponseBodyData struct {
-	// The list of Alibaba Cloud account IDs to which the image is shared.
+	// The list of Alibaba Cloud account IDs with which the image is shared.
 	AliUidList []*int64 `json:"AliUidList,omitempty" xml:"AliUidList,omitempty" type:"Repeated"`
 }
 

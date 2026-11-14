@@ -18,11 +18,11 @@ type iUnbindAppRequest interface {
 }
 
 type UnbindAppRequest struct {
-	// The list of application IDs to dissociate from the specified image version. Verify that each application is associated with the selected image version beforehand.
+	// The list of application IDs to disassociate from the specified image version. Verify that each application is associated with the selected image version.
 	//
 	// This parameter is required.
 	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	// The ID of the image from which the applications are to be dissociated. The image must be a custom image or community image manageable by the current account.
+	// The ID of the image from which the applications are to be disassociated. The image must be a custom image or a community image manageable by the current account.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UnbindAppRequest struct {
 	//
 	// imgc-bp1example****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the image version from which the applications are to be dissociated. If omitted, the current active version of the image is used. If specified, the version must belong to the image specified by ImageId.
+	// The ID of the image version from which the applications are to be disassociated. If this parameter is omitted, the current active version of the image is used. If specified, the version must belong to the image specified by ImageId.
 	//
 	// example:
 	//

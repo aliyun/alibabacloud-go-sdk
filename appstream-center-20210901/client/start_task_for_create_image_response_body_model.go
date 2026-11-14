@@ -22,7 +22,7 @@ type iStartTaskForCreateImageResponseBody interface {
 }
 
 type StartTaskForCreateImageResponseBody struct {
-	// The business status code. A value of 200 indicates that the request is processed successfully. Other values indicate that the request fails.
+	// The business status code. A value of `200` indicates that the request is processed. Other values indicate that the request fails.
 	//
 	// example:
 	//

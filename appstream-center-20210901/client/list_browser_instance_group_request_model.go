@@ -44,7 +44,7 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// set-3jm9d0abc00example
 	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
-	// Filters cloud browser groups by business region.
+	// Filters browser groups by business region.
 	//
 	// example:
 	//
@@ -62,18 +62,18 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// Office
 	BrowserInstanceGroupName *string `json:"BrowserInstanceGroupName,omitempty" xml:"BrowserInstanceGroupName,omitempty"`
-	// Filters cloud browser groups by name or ID based on partial match.
+	// Filters by browser group name or ID by using partial match.
 	//
 	// example:
 	//
 	// Office
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	// Excludes cloud browser groups that are authorized to the specified user groups.
+	// Excludes browser groups that are authorized to the specified user groups.
 	//
 	// if can be null:
 	// true
 	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
-	// Filters cloud browser groups by the ID of the office network to which they belong.
+	// Filters browser groups by the ID of the office network to which they belong.
 	//
 	// example:
 	//
@@ -91,13 +91,13 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters cloud browser groups by status.
+	// Filters by browser group status.
 	//
 	// **Limit:*	- You can specify only one status at a time.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tag filtering parameter. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
+	// The tag filter parameter. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
 	Tag []*ListBrowserInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Filters cloud browser groups by browser version. Valid values:
+	// Filters by the version of the browser. Valid values:
 	//
 	// - `Basic`: Basic Edition.
 	//
@@ -109,7 +109,7 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// Pro
 	Tier *string `json:"Tier,omitempty" xml:"Tier,omitempty"`
-	// Filters cloud browser groups by the IDs of authorized user groups.
+	// Filters by the IDs of authorized user groups.
 	//
 	// if can be null:
 	// true

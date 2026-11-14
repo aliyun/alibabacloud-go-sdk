@@ -26,7 +26,7 @@ type iQueryUserUsageReportResponseBody interface {
 }
 
 type QueryUserUsageReportResponseBody struct {
-	// The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
+	// The business status code. A value of `200` indicates that the request was successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type QueryUserUsageReportResponseBody struct {
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The description of the request processing result. Typically, success is returned when the request is successful.
+	// The description of the request processing result. Typically, `success` is returned when the request is successful.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type QueryUserUsageReportResponseBody struct {
 	//
 	// 200
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the request. You can use this ID to troubleshoot request issues.
+	// The unique identifier of the request, which can be used to troubleshoot the request.
 	//
 	// example:
 	//
@@ -177,19 +177,19 @@ type QueryUserUsageReportResponseBodyUserUsageReportDataModel struct {
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The last connection time. Format: `yyyy-MM-dd HH:mm:ss`. If no current or historical connection record exists, - is returned. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
+	// The last connection time. Format: `yyyy-MM-dd HH:mm:ss`. If no current or historical connection record exists, `-` is returned. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 2026-09-01 10:00:00
 	LastConnectedTime *string `json:"LastConnectedTime,omitempty" xml:"LastConnectedTime,omitempty"`
-	// The current version does not return a valid region ID. Callers should not rely on this field. To filter by business region, use the BizRegionId request parameter.
+	// The current version does not return a valid region ID. Callers should not rely on this field. To filter by business region, use the `BizRegionId` request parameter.
 	//
 	// example:
 	//
 	// null
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cumulative session persistence duration within the query range. This is the duration during which the user occupies the session from session attach to session release. Multiple sessions under the same app instance group are accumulated. Unit: hours.
+	// The cumulative session persistence duration within the query range, which refers to the time a user occupies a session from attach to release. If multiple sessions exist under the same app instance group, their durations are accumulated. Unit: hours.
 	//
 	// example:
 	//

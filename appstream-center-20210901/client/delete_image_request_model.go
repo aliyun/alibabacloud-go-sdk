@@ -14,7 +14,7 @@ type iDeleteImageRequest interface {
 }
 
 type DeleteImageRequest struct {
-	// The WUYING image ID.
+	// The ID of the WUYING image.
 	//
 	// example:
 	//

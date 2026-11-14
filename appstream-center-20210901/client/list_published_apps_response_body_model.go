@@ -22,27 +22,27 @@ type iListPublishedAppsResponseBody interface {
 }
 
 type ListPublishedAppsResponseBody struct {
-	// The list of application records on the current page. Each record corresponds to a deployed application in a published delivery group. The list is sorted by the creation time of the delivery group in descending order. An empty list is returned if no results match or the requested page exceeds the result range.
+	// The list of application records on the current page. Each record corresponds to a deployed application in a published delivery group, sorted in descending order of the creation time of the associated delivery group. If no matching results are found or the requested page exceeds the result range, an empty list is returned.
 	Apps []*ListPublishedAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The page number specified in this request.
+	// The page number specified in the current request.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page specified in this request. This value does not represent the actual number of records returned on the current page. The actual number may be less than this value.
+	// The number of records per page specified in the current request. This value does not represent the actual number of records returned on the current page. The actual number on the current page may be less than this value.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID. You can use this ID to locate and troubleshoot issues.
+	// The unique identifier of the current request, which can be used to troubleshoot request issues.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match all filter conditions. Records are counted on a per-delivery-group-plus-application basis. If the same application appears in multiple published delivery groups, each combination is counted separately. This value does not represent the number of records returned on the current page. The value is `0` if no results match.
+	// The total number of records that meet all filter conditions. The count is based on the "delivery group + application" combination. If the same application appears in multiple published delivery groups, it is counted separately. This value is not the number of records returned on the current page. If no matching results are found, the value is `0`.
 	//
 	// example:
 	//
@@ -117,35 +117,35 @@ func (s *ListPublishedAppsResponseBody) Validate() error {
 }
 
 type ListPublishedAppsResponseBodyApps struct {
-	// The URL of the application icon.
+	// The access URL of the application icon.
 	//
 	// example:
 	//
 	// https://app-center-icon-****.png
 	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
-	// The application ID. Pass this value together with `AppInstanceGroupId` when you invoke the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to authorize users for this application.
+	// The application ID. When you invoke the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to grant authorization to a user for this application, pass this value together with `AppInstanceGroupId`.
 	//
 	// example:
 	//
 	// ca-i87mycyn419nu****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the published delivery group to which this application belongs.
+	// The ID of the published delivery group to which the application belongs.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the published delivery group to which this application belongs.
+	// The name of the published delivery group to which the application belongs.
 	//
 	// example:
 	//
-	// OfficeApps
+	// Office applications
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The application name.
 	//
 	// example:
 	//
-	// OfficeApps
+	// Office applications
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The application version number.
 	//
@@ -153,13 +153,13 @@ type ListPublishedAppsResponseBodyApps struct {
 	//
 	// 1.0.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The application version name, which is the name assigned to this version when the application was published.
+	// The application version name, which is the name set for this version when the application is published.
 	//
 	// example:
 	//
 	// Initial version
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	// The number of users authorized by application for this application within its delivery group. Only users authorized through [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) by application are counted. The value is `0` if no users have been authorized by application.
+	// The number of users currently authorized for this application on a per-application basis within the associated delivery group. Only users authorized on a per-application basis through [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) are counted. If no users are authorized on a per-application basis, `0` is returned.
 	//
 	// example:
 	//

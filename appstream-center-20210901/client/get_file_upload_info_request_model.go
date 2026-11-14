@@ -14,7 +14,7 @@ type iGetFileUploadInfoRequest interface {
 }
 
 type GetFileUploadInfoRequest struct {
-	// The file type. Currently supported values: BrowserBookmarks and BrowserRestrictionUrls.
+	// The file type. Valid values: BrowserBookmarks and BrowserRestrictionUrls.
 	//
 	// This parameter is required.
 	//

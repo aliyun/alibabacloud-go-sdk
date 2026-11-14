@@ -20,7 +20,7 @@ type iQuerySessionDataResponseBody interface {
 }
 
 type QuerySessionDataResponseBody struct {
-	// The return code. It is empty when the request is successful and data is found. NO_DATA is returned when the query result is empty. A corresponding error code is returned when the request fails. For example, InvalidParameter.DateFormat is returned when the format of the statistical parameter is invalid.
+	// The return code. It is empty when the request is successful and data is found. NO_DATA is returned when the query result is empty. If the request fails, the corresponding error code is returned, such as InvalidParameter.DateFormat when the format of the statistical parameter is invalid.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type QuerySessionDataResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of session trend data, sorted in ascending order by hour and minute. An empty array is returned when there is no session data on the specified date, and the return code is NO_DATA.
 	IndexData []*QuerySessionDataResponseBodyIndexData `json:"IndexData,omitempty" xml:"IndexData,omitempty" type:"Repeated"`
-	// The return message. It is empty when the request is successful. A corresponding error description is returned when the request fails.
+	// The return message. It is empty when the request is successful. If the request fails, the corresponding error description is returned.
 	//
 	// example:
 	//
 	// The parameter DateFormat is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, used to locate call records and troubleshoot issues. The example is a partially desensitized value.
+	// The ID of the request, used to locate call records and troubleshoot issues. The example shows a partially desensitized value.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *QuerySessionDataResponseBody) Validate() error {
 }
 
 type QuerySessionDataResponseBodyIndexData struct {
-	// The hour to which the session data belongs, with a value range of 00 to 23 (full hours).
+	// The hour to which the session data belongs, with a value range of 00-23 (full hours).
 	//
 	// example:
 	//
 	// 10
 	Hh *string `json:"Hh,omitempty" xml:"Hh,omitempty"`
-	// The minute to which the session data belongs, aggregated in 10-minute intervals, with a value range of 00 to 50 (namely 00, 10, 20, 30, 40, and 50).
+	// The minute to which the session data belongs, aggregated in 10-minute intervals, with a value range of 00-50 (namely 00, 10, 20, 30, 40, and 50).
 	//
 	// example:
 	//
 	// 30
 	Mi *string `json:"Mi,omitempty" xml:"Mi,omitempty"`
-	// The total number of sessions within the hour and minute interval (10-minute granularity).
+	// The aggregated session count within the hour and minute interval (10-minute granularity).
 	//
 	// example:
 	//

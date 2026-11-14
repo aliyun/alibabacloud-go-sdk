@@ -42,7 +42,7 @@ type ListRelatedResourceResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. A value of true indicates that the request is successful, and a value of false indicates that the request fails.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

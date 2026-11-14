@@ -36,13 +36,13 @@ type ModifyShareImageRequest struct {
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The product type, such as cloud desktop, cloud application, or workstation.
+	// The product type, such as cloud desktop, cloud application, and workstation.
 	//
 	// example:
 	//
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The Alibaba Cloud account IDs to remove from the share list.
+	// The Alibaba Cloud account IDs to remove from sharing.
 	RemoveAccount []*int64 `json:"RemoveAccount,omitempty" xml:"RemoveAccount,omitempty" type:"Repeated"`
 }
 

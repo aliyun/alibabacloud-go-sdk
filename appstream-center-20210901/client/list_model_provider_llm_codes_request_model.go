@@ -30,19 +30,19 @@ type iListModelProviderLlmCodesRequest interface {
 }
 
 type ListModelProviderLlmCodesRequest struct {
-	// The display language of the model. Valid values: zh-CN (Simplified Chinese), en-US (English), ja-JP (Japanese), and zh-TW (Traditional Chinese). Default value: zh-CN. Currently, zh-TW returns Simplified Chinese, and ja-JP returns English. If the model is not included in Model Studio or the English text is missing, the original source text is retained without automatic translation.
+	// The display language for models. Valid values: zh-CN (Simplified Chinese), en-US (English), ja-JP (Japanese), and zh-TW (Traditional Chinese). Default value: zh-CN. Currently, zh-TW returns Simplified Chinese, and ja-JP returns English. If the text is not recorded in Model Studio or the English text is missing, the original source text is retained without automatic translation.
 	//
 	// example:
 	//
 	// en-US
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The LLM code used for fuzzy match filtering.
+	// The LLM code for fuzzy match filtering.
 	//
 	// example:
 	//
 	// qwen3-max
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
-	// The list of model brands in a JSON array string. Supports multi-select filtering. Models matching any of the specified brands are returned.
+	// The list of model brands as a JSON array string. Supports multi-select filtering. Models matching any of the specified brands are returned.
 	ModelBrands []*string `json:"ModelBrands,omitempty" xml:"ModelBrands,omitempty" type:"Repeated"`
 	// The page number. Pages start from 1. Default value: 1.
 	//
@@ -74,7 +74,7 @@ type ListModelProviderLlmCodesRequest struct {
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
 	// Specifies whether to filter models by recommendation status. If this parameter is not specified, models are not filtered by recommendation status.
 	Recommended *bool `json:"Recommended,omitempty" xml:"Recommended,omitempty"`
-	// The list of recommendation levels. This parameter takes effect only for wuying-plan. Models matching any of the specified levels and meeting other filter conditions such as region and brand are returned. If this parameter is not specified or an empty array is passed, models are not filtered by recommendation level.
+	// The list of recommended tiers. This parameter takes effect only for wuying-plan. Models matching any of the selected tiers and meeting other filter conditions such as region and brand are returned. If this parameter is not specified or an empty array is passed, models are not filtered by tier.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type GetImageDistributeInfoResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The image information returned by the query.
 	Data *GetImageDistributeInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The processing information returned by the API.
+	// The processing message returned by the API.
 	//
 	// example:
 	//

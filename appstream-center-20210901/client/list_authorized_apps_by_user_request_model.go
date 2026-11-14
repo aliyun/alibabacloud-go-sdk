@@ -28,31 +28,31 @@ type iListAuthorizedAppsByUserRequest interface {
 }
 
 type ListAuthorizedAppsByUserRequest struct {
-	// The application ID used to filter results. Fuzzy match by containment is used. This parameter can be combined with other filter parameters. You can obtain the application ID from the Apps list returned by the [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation.
+	// The application ID, which is used to filter results. Fuzzy match based on inclusion is used. This parameter can be used in combination with other filter parameters. You can obtain the value from the Apps list returned by the [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation.
 	//
 	// example:
 	//
 	// ca-i87mycyn419nu****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The delivery group ID used to filter results. Fuzzy match by containment is used. This parameter can be combined with other filter parameters. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the delivery group ID.
+	// The app instance group ID, which is used to filter results. Fuzzy match based on inclusion is used. This parameter can be used in combination with other filter parameters. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name used to filter results. Fuzzy match by name is used. This parameter can be combined with other filter parameters.
+	// The app instance group name, which is used to filter results. Fuzzy match based on the name is used. This parameter can be used in combination with other filter parameters.
 	//
 	// example:
 	//
-	// OfficeApp
+	// Office applications
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The application name used to filter results. Fuzzy match by name is used. This parameter can be combined with other filter parameters.
+	// The application name, which is used to filter results. Fuzzy match based on the name is used. This parameter can be used in combination with other filter parameters.
 	//
 	// example:
 	//
-	// OfficeApp
+	// Office applications
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The username to query. **Required**. The user must already exist under the current account. Call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the username.
+	// The username to query. **Required**. The user must exist in the current account. You can call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the username.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListAuthorizedAppsByUserRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The page number of the results. **Required**. The value starts from 1.
+	// The page number of the returned results. **Required**. The value starts from 1.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ListAuthorizedAppsByUserRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. **Required**. Valid values: 1 to 100.
+	// The number of entries to return on each page. **Required**. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -76,11 +76,11 @@ type ListAuthorizedAppsByUserRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product type. **Required**. The value is case-insensitive.
+	// The product type. **Required**. The value is not case-sensitive.
 	//
-	// This operation queries per-application authorization records. This authorization method applies to WUYING Cloud Application delivery groups. Valid values:
+	// This operation queries application-level authorization records. This authorization method applies to WUYING Cloud App instance groups. Valid values:
 	//
-	// - CloudApp: WUYING Cloud Application.
+	// - CloudApp: WUYING Cloud App.
 	//
 	// This parameter is required.
 	//

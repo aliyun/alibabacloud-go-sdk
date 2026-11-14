@@ -22,7 +22,7 @@ type iGetImageByIdResponseBody interface {
 }
 
 type GetImageByIdResponseBody struct {
-	// The response code. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+	// The response code. 200 indicates success. If the call fails, the corresponding error code is returned.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetImageByIdResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The image information returned by the query.
 	Data *GetImageByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *GetImageByIdResponseBody) Validate() error {
 type GetImageByIdResponseBodyData struct {
 	// The list of adapted applications for the image version.
 	AdaptorInfoBOList []*GetImageByIdResponseBodyDataAdaptorInfoBOList `json:"AdaptorInfoBOList,omitempty" xml:"AdaptorInfoBOList,omitempty" type:"Repeated"`
-	// The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
+	// The ID of the Alibaba Cloud account to which the image belongs. The account ID for system images is 0.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// imgc-xxx
 	BaseImageId *string `json:"BaseImageId,omitempty" xml:"BaseImageId,omitempty"`
-	// The ID of the base image version.
+	// The base image version ID.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The name of the OSS bucket where the image files are stored.
+	// The name of the OSS bucket where the image file is stored.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// BUILDER_MANUAL
 	ImageCreateMode *string `json:"ImageCreateMode,omitempty" xml:"ImageCreateMode,omitempty"`
-	// The image extended information, including disk specifications and GPU driver information. For VHD or container images, the extended information of the base image and base version is used.
+	// The image extended information, which includes cloud disk specifications and GPU driver information. For VHD or container images, the extended information of the base image and base version is used.
 	ImageExtendInfoModel *GetImageByIdResponseBodyDataImageExtendInfoModel `json:"ImageExtendInfoModel,omitempty" xml:"ImageExtendInfoModel,omitempty" type:"Struct"`
 	// The image ID.
 	//
@@ -225,7 +225,7 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// User
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The image language. If the encapsulation type is VHD or Container, this property is inherited from the image with the ECS encapsulation type in the image combination.
+	// The image language. If the packaging type is VHD or Container, this property is inherited from the image with the ECS packaging type in the same image combination.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// iv-xxx
 	LatestVersionId *string `json:"LatestVersionId,omitempty" xml:"LatestVersionId,omitempty"`
-	// Indicates whether the returned version is the active version. Valid values:
+	// Indicates whether the returned version is the online version. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -265,15 +265,15 @@ type GetImageByIdResponseBodyData struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The image package type. Valid values:
 	//
-	// - Ecs: ECS image.
+	// - Ecs: ECS image
 	//
-	// - Vhd: Virtual disk image.
+	// - Vhd: Virtual disk image
 	//
-	// - Container: Container image.
+	// - Container: Container image
 	//
-	// - Ecs_Container: ECS and container combined image.
+	// - Ecs_Container: ECS and container composite image
 	//
-	// - K8s_Node: Kubernetes node image.
+	// - K8s_Node: Kubernetes node image
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// imgc-xxx
 	ParentImageId *string `json:"ParentImageId,omitempty" xml:"ParentImageId,omitempty"`
-	// The ID of the parent image version.
+	// The parent image version ID.
 	//
 	// example:
 	//
@@ -303,13 +303,13 @@ type GetImageByIdResponseBodyData struct {
 	//
 	// Windows Server 2022
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	// The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud Application), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
+	// The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (cloud application), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The extended properties of the image version, in key-value pair format.
+	// The extended properties of the image version in key-value pairs.
 	//
 	// example:
 	//
@@ -327,7 +327,7 @@ type GetImageByIdResponseBodyData struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The image status. Valid values:
 	//
-	// - INIT: Initialized.
+	// - INIT: Initial.
 	//
 	// - CREATING: Creating.
 	//
@@ -691,7 +691,7 @@ func (s *GetImageByIdResponseBodyData) Validate() error {
 }
 
 type GetImageByIdResponseBodyDataAdaptorInfoBOList struct {
-	// The adapter ID.
+	// The adaptor ID.
 	//
 	// example:
 	//
@@ -781,13 +781,13 @@ type GetImageByIdResponseBodyDataAdaptorInfoBOList struct {
 	//
 	// 1.0.0
 	AppVersionNumber *string `json:"AppVersionNumber,omitempty" xml:"AppVersionNumber,omitempty"`
-	// The ID of the business line to which the application belongs.
+	// The number of the business line to which the application belongs.
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The name of the OSS bucket where the application files are stored.
+	// The name of the OSS bucket where the application file is stored.
 	//
 	// example:
 	//
@@ -811,7 +811,7 @@ type GetImageByIdResponseBodyDataAdaptorInfoBOList struct {
 	//
 	// {}
 	ControlParam *string `json:"ControlParam,omitempty" xml:"ControlParam,omitempty"`
-	// The ID of the disk where the application files are stored.
+	// The ID of the disk where the application file is stored.
 	//
 	// example:
 	//
@@ -823,7 +823,7 @@ type GetImageByIdResponseBodyDataAdaptorInfoBOList struct {
 	//
 	// abc.text
 	ExecuteFileAddress *string `json:"ExecuteFileAddress,omitempty" xml:"ExecuteFileAddress,omitempty"`
-	// The extended information of the adapted application.
+	// The extension information of the adapted application.
 	//
 	// example:
 	//
@@ -859,7 +859,7 @@ type GetImageByIdResponseBodyDataAdaptorInfoBOList struct {
 	//
 	// 2025-04-25 15:13:57
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The optimization parameters configured in the administrator backend.
+	// The optimization parameters that can be configured by administrators in the backend.
 	//
 	// example:
 	//
@@ -871,7 +871,7 @@ type GetImageByIdResponseBodyDataAdaptorInfoBOList struct {
 	//
 	// CLIENT_BASE
 	OriginAppType *string `json:"OriginAppType,omitempty" xml:"OriginAppType,omitempty"`
-	// The operating system type supported by the application.
+	// The operating system type applicable to the application.
 	//
 	// example:
 	//
@@ -1261,7 +1261,7 @@ func (s *GetImageByIdResponseBodyDataAdaptorInfoBOList) Validate() error {
 }
 
 type GetImageByIdResponseBodyDataImageExtendInfoModel struct {
-	// The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
+	// The ID of the Alibaba Cloud account to which the image belongs. The account ID for system images is 0.
 	//
 	// example:
 	//
@@ -1305,15 +1305,15 @@ type GetImageByIdResponseBodyDataImageExtendInfoModel struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The image package type. Valid values:
 	//
-	// - Ecs: ECS image.
+	// - Ecs: ECS image
 	//
-	// - Vhd: Virtual disk image.
+	// - Vhd: Virtual disk image
 	//
-	// - Container: Container image.
+	// - Container: Container image
 	//
-	// - Ecs_Container: ECS and container combined image.
+	// - Ecs_Container: ECS and container composite image
 	//
-	// - K8s_Node: Kubernetes node image.
+	// - K8s_Node: Kubernetes node image
 	//
 	// example:
 	//
@@ -1436,7 +1436,7 @@ func (s *GetImageByIdResponseBodyDataImageExtendInfoModel) Validate() error {
 }
 
 type GetImageByIdResponseBodyDataImageRegionDistributeList struct {
-	// The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
+	// The ID of the Alibaba Cloud account to which the image belongs. The account ID for system images is 0.
 	//
 	// example:
 	//
@@ -1466,7 +1466,7 @@ type GetImageByIdResponseBodyDataImageRegionDistributeList struct {
 	//
 	// imgc-xxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The processing information reported by the region distribution task.
+	// The processing message reported by the region distribution task.
 	//
 	// example:
 	//
@@ -1486,13 +1486,13 @@ type GetImageByIdResponseBodyDataImageRegionDistributeList struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The region distribution status. Valid values:
 	//
-	// - CREATING: Distributing.
+	// - CREATING: Distributing
 	//
-	// - AVAILABLE: Available.
+	// - AVAILABLE: Available
 	//
-	// - CREATE_FAILED: Distribution failed.
+	// - CREATE_FAILED: Distribution failed
 	//
-	// - DELETE: Deleted.
+	// - DELETE: Deleted
 	//
 	// example:
 	//

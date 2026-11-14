@@ -30,7 +30,7 @@ type ListPublishedAppInstanceGroupResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of delivery groups per page specified in the request. Unit: delivery groups. This value does not represent the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
+	// The number of delivery groups per page specified in the request. Unit: delivery groups. This value does not indicate the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
 	// The list of deployed applications in the image of the delivery group. The AppId and AppName parameters in the request only determine whether the delivery group is selected, and do not trim this list to the matched applications.
 	Apps []*ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The expiration time of the delivery group. For delivery groups sold as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery group itself is returned. The time is in the ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The expiration time of the delivery group. For delivery groups sold as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery groups themselves is returned. The time is in the ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Specifies whether mixed authorization for users and user groups is supported.
+	// Indicates whether mixed authorization of users and user groups is supported.
 	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
 	// The authorization mode for users and user groups.
 	//

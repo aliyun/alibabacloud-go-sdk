@@ -16,7 +16,7 @@ type iDescribeWuyingServerEipInfoResponseBody interface {
 }
 
 type DescribeWuyingServerEipInfoResponseBody struct {
-	// The EIP information.
+	// The elastic IP address (EIP) information.
 	EipInfoModel *DescribeWuyingServerEipInfoResponseBodyEipInfoModel `json:"EipInfoModel,omitempty" xml:"EipInfoModel,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,7 +62,7 @@ func (s *DescribeWuyingServerEipInfoResponseBody) Validate() error {
 }
 
 type DescribeWuyingServerEipInfoResponseBodyEipInfoModel struct {
-	// The EIP ID.
+	// The ID of the EIP.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeWuyingServerEipInfoResponseBodyEipInfoModel struct {
 	//
 	// 171.xxx.xxx.221
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The network interface controller (NIC) ID.
+	// The ID of the network interface.
 	//
 	// example:
 	//

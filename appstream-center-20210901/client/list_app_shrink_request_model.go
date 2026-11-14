@@ -36,13 +36,13 @@ type iListAppShrinkRequest interface {
 }
 
 type ListAppShrinkRequest struct {
-	// The application ID for exact query. If this parameter is omitted, applications are not filtered by application ID.
+	// The application ID used for exact match. If omitted, applications are not filtered by application ID.
 	//
 	// example:
 	//
 	// app-bp1example****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name filter. Contains matching is supported.
+	// The application name used for filtering. Contains matching is supported.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type ListAppShrinkRequest struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The source type of the application. Valid values:
 	//
-	// - **USER_APP**: User-created applications.
+	// - **USER_APP**: user-created applications
 	//
-	// - **SYS_APP**: System-provided applications.
+	// - **SYS_APP**: system-provided applications
 	//
-	// - **VIRTUAL_APP**: Virtual applications.
+	// - **VIRTUAL_APP**: virtual applications
 	//
 	// example:
 	//
@@ -62,37 +62,37 @@ type ListAppShrinkRequest struct {
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// Filters by a single business type. If specified together with BizTypeList, the intersection is used. Valid values:
 	//
-	// - **1**: Basic products.
+	// - **1**: basic products
 	//
-	// - **2**: Personal cloud.
+	// - **2**: personal cloud
 	//
-	// - **3**: Cloud office.
+	// - **3**: cloud office
 	//
-	// - **4**: Cloud Flow.
+	// - **4**: Cloud Flow
 	//
-	// - **10**: Personal Edition.
+	// - **10**: Personal Edition
 	//
-	// - **20**: Business Edition.
+	// - **20**: Business Edition
 	//
-	// - **60**: Linggou Team Edition.
+	// - **60**: Linggou Team Edition
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The list of business types for filtering. A match with any business type in the list is considered a match. If specified together with BizType, the single-value condition must still be met.
+	// The list of business types for filtering. An application is matched if it belongs to any business type in the list. If specified together with BizType, the single-value condition must still be met.
 	BizTypeListShrink *string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty"`
 	// The form of the application. Valid values:
 	//
-	// - **CLIENT_BASE**: Client applications.
+	// - **CLIENT_BASE**: client applications
 	//
-	// - **WEB_BASE**: Browser applications.
+	// - **WEB_BASE**: browser applications
 	//
-	// - **CLOUD_NATIVE_BASE**: Cloud-native applications.
+	// - **CLOUD_NATIVE_BASE**: cloud-native applications
 	//
-	// - **PORT_SERVICE_BASE**: Port service applications.
+	// - **PORT_SERVICE_BASE**: port service applications
 	//
-	// - **AGENT_SERVICE_BASE**: Agent applications.
+	// - **AGENT_SERVICE_BASE**: agent applications
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ type ListAppShrinkRequest struct {
 	OriginAppType *string `json:"OriginAppType,omitempty" xml:"OriginAppType,omitempty"`
 	// The type of operating system used by the application. Valid values:
 	//
-	// - **Unknown**: The operating system is unknown.
+	// - **Unknown**: unknown operating system
 	//
-	// - **Windows**: Windows operating system.
+	// - **Windows**: Windows operating system
 	//
-	// - **Linux**: Linux operating system.
+	// - **Linux**: Linux operating system
 	//
-	// - **Android**: Android operating system.
+	// - **Android**: Android operating system
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The page number for the query. Start from 1. If this parameter is omitted, set to 0, or set to 1, the first page is queried.
+	// The page number. We recommend that you start from 1. If this parameter is omitted, set to 0, or set to 1, the first page is queried.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return on each page. If this parameter is omitted or set to a value less than 1, the value 10 is used.
+	// The number of entries to return on each page. If this parameter is omitted or set to a value less than 1, the value 10 is used.
 	//
 	// example:
 	//
@@ -126,55 +126,55 @@ type ListAppShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Filters by a single associated product. If specified together with ProductTypeList, the intersection is used. Valid values:
 	//
-	// - **CloudGame**: Cloud game.
+	// - **CloudGame**: cloud gaming
 	//
-	// - **CloudApp**: Wuying cloud application.
+	// - **CloudApp**: Wuying Cloud Application
 	//
-	// - **CloudBrowser**: Secure browser.
+	// - **CloudBrowser**: secure browser
 	//
-	// - **CloudDesktop**: Wuying cloud desktop.
+	// - **CloudDesktop**: Wuying Cloud Computer
 	//
-	// - **ImageBuilder**: Image builder resources.
+	// - **ImageBuilder**: image builder resources
 	//
-	// - **ImageValidate**: Image validation resources.
+	// - **ImageValidate**: image validation resources
 	//
-	// - **AndroidCloud**: Android cloud.
+	// - **AndroidCloud**: Android cloud
 	//
-	// - **GpuRender**: GPU rendering.
+	// - **GpuRender**: GPU rendering
 	//
-	// - **AndroidGpuRender**: Android cloud GPU rendering.
+	// - **AndroidGpuRender**: Android cloud GPU rendering
 	//
-	// - **WuyingServer**: Enterprise Edition workstation.
+	// - **WuyingServer**: Enterprise Edition workstation
 	//
-	// - **GpuProxy**: GPU remote rendering proxy.
+	// - **GpuProxy**: GPU remote rendering proxy
 	//
-	// - **GpuCache**: GPU remote rendering cache.
+	// - **GpuCache**: GPU remote rendering cache
 	//
-	// - **AIAgent**: AI Agent service.
+	// - **AIAgent**: AI agent service
 	//
-	// - **HostedDesktop**: Hosted desktop.
+	// - **HostedDesktop**: hosted computer
 	//
-	// - **WuyingWorkstation**: Personal Edition container workstation.
+	// - **WuyingWorkstation**: Personal Edition container workstation
 	//
-	// - **WuyingWorkstationBusiness**: Business Edition container workstation.
+	// - **WuyingWorkstationBusiness**: Business Edition container workstation
 	//
-	// - **WuyingWorkstationTeam**: Linggou Team Edition container workstation.
+	// - **WuyingWorkstationTeam**: Linggou Team Edition container workstation
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The list of associated products for filtering. A match with any product in the list is considered a match. If specified together with ProductType, the single-value condition must still be met.
+	// The list of associated products for filtering. An application is matched if it belongs to any product in the list. If specified together with ProductType, the single-value condition must still be met.
 	ProductTypeListShrink *string `json:"ProductTypeList,omitempty" xml:"ProductTypeList,omitempty"`
 	// The subtype of the application. Valid values:
 	//
-	// - **PWA**: Progressive web applications.
+	// - **PWA**: progressive web applications
 	//
-	// - **SAAS**: Software as a Service (SaaS) applications.
+	// - **SAAS**: SaaS applications
 	//
-	// - **SANDBOX**: Sandbox applications.
+	// - **SANDBOX**: sandbox applications
 	//
-	// - **CONTAINER**: Container applications.
+	// - **CONTAINER**: container applications
 	//
 	// example:
 	//

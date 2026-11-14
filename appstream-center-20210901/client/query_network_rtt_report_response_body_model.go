@@ -26,7 +26,7 @@ type iQueryNetworkRttReportResponseBody interface {
 }
 
 type QueryNetworkRttReportResponseBody struct {
-	// The business status code. `200` indicates that the request is processed successfully. Other values indicate that the processing failed.
+	// The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type QueryNetworkRttReportResponseBody struct {
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The description of the request processing result. If the request is successful, `success` is usually returned.
+	// The description of the request processing result. The value success is usually returned when the request is successful.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type QueryNetworkRttReportResponseBodyNetworkRttReportDataModel struct {
 	//
 	// 85
 	LowRttUserCount *int64 `json:"LowRttUserCount,omitempty" xml:"LowRttUserCount,omitempty"`
-	// The ratio of low-RTT users to the total number of users involved in the statistics. Valid values: 0 to 1. To obtain the percentage, multiply the value by 100.
+	// The ratio of low-RTT users to the total number of users included in the statistics. Valid values: 0 to 1. To obtain the percentage, multiply the value by 100.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type QueryNetworkRttReportResponseBodyNetworkRttReportDataModel struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The average RTT of all users involved in the statistics. Unit: milliseconds.
+	// The average RTT of all users included in the statistics. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type QueryNetworkRttReportResponseBodyNetworkRttReportDataModel struct {
 	//
 	// 2026-09-01 10:00:00
 	StatStartDate *string `json:"StatStartDate,omitempty" xml:"StatStartDate,omitempty"`
-	// The total number of users involved in the RTT calculation for the current statistical window. Unit: users.
+	// The total number of users included in the RTT calculation for the current statistical window. Unit: users.
 	//
 	// example:
 	//

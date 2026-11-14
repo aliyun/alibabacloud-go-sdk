@@ -62,7 +62,7 @@ func (s *DescribeWuyingServerResponseBody) Validate() error {
 }
 
 type DescribeWuyingServerResponseBodyData struct {
-	// The bandwidth size, in Mbit/s.
+	// The bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -74,25 +74,25 @@ type DescribeWuyingServerResponseBodyData struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The creation time, in US English date and time format with a 12-hour clock.
+	// The creation time. The time is displayed in the 12-hour US English date and time format.
 	//
 	// example:
 	//
 	// Sep 2, 2026 1:46:41 PM
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The maximum number of private IP addresses per NIC, including the primary IP address.
+	// The maximum number of private IP addresses per elastic network interface (ENI), including the primary IP address.
 	//
 	// example:
 	//
 	// 10
 	EniPrivateIpAddressQuantity *int32 `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
-	// The expiration time, in US English date and time format with a 12-hour clock.
+	// The expiration time. The time is displayed in the 12-hour US English date and time format.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeWuyingServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// Default Workspace
+	// Default workspace
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The workspace type.
 	//
@@ -154,13 +154,13 @@ type DescribeWuyingServerResponseBodyData struct {
 	//
 	// true
 	SupportASP *bool `json:"SupportASP,omitempty" xml:"SupportASP,omitempty"`
-	// The type of the system cloud disk.
+	// The category of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_essd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The size of the system cloud disk, in GB.
+	// The size of the system cloud disk. Unit: GB.
 	//
 	// example:
 	//
@@ -382,11 +382,7 @@ func (s *DescribeWuyingServerResponseBodyData) Validate() error {
 }
 
 type DescribeWuyingServerResponseBodyDataPrivateIpSets struct {
-	// Indicates whether the IP address is the primary private IP address. Valid values:
-	//
-	// - true: The IP address is the primary private IP address.
-	//
-	// - false: The IP address is a secondary private IP address.
+	// Indicates whether the IP address is the primary private IP address. Valid values: true: The IP address is the primary private IP address. false: The IP address is a secondary private IP address.
 	//
 	// example:
 	//

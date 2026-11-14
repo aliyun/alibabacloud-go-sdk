@@ -30,7 +30,7 @@ type QueryAppInstanceGroupReportListResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of app instance group report data.
+	// The list of delivery group report data.
 	IndexData []*QueryAppInstanceGroupReportListResponseBodyIndexData `json:"IndexData,omitempty" xml:"IndexData,omitempty" type:"Repeated"`
 	// The description of the request processing result. If the request is successful, `success` is usually returned.
 	//
@@ -134,41 +134,39 @@ func (s *QueryAppInstanceGroupReportListResponseBody) Validate() error {
 }
 
 type QueryAppInstanceGroupReportListResponseBodyIndexData struct {
-	// The ID of the app instance group.
+	// The delivery group ID.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the app instance group.
+	// The delivery group name.
 	//
 	// example:
 	//
 	// R&D workstation group
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The current status of the app instance group.
+	// The current status of the delivery group. Valid values:
 	//
-	// Valid values:
+	// - `DEPLOYING`: deploying
 	//
-	// - `DEPLOYING`: Deploying.
+	// - `DEPLOYED`: deployed but not published
 	//
-	// - `DEPLOYED`: Deployed but not published.
+	// - `PUBLISHED`: published and available to provide services based on the current configuration
 	//
-	// - `PUBLISHED`: Published and available to provide services based on the current configurations.
+	// - `STOPPING`: stopping
 	//
-	// - `STOPPING`: Stopping.
+	// - `STOPPED`: stopped
 	//
-	// - `STOPPED`: Stopped.
+	// - `MAINTAINING`: maintaining
 	//
-	// - `MAINTAINING`: Maintaining.
+	// - `FAILED`: deployment or execution failed
 	//
-	// - `FAILED`: Deployment or running failed.
+	// - `MAINTAIN_FAILED`: maintenance failed
 	//
-	// - `MAINTAIN_FAILED`: Maintenance failed.
+	// - `DELETING`: deleting
 	//
-	// - `DELETING`: Deleting.
-	//
-	// - `DELETED`: Deleted.
+	// - `DELETED`: deleted
 	//
 	// example:
 	//

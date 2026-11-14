@@ -30,13 +30,13 @@ type ListBrowserBookmarksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which is used to troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//

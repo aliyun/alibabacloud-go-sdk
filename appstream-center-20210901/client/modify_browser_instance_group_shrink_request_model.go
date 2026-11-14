@@ -30,7 +30,7 @@ type iModifyBrowserInstanceGroupShrinkRequest interface {
 }
 
 type ModifyBrowserInstanceGroupShrinkRequest struct {
-	// Specifies whether to send notification emails for authorization and deauthorization.
+	// Specifies whether to send notification emails for authorization and revocation.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	// The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
+	// The maximum resource count. This parameter takes effect for the pay-as-you-go billing method based on monthly active users.
 	//
 	// example:
 	//

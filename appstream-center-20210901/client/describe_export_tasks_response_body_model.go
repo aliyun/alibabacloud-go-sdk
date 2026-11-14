@@ -30,13 +30,13 @@ type DescribeExportTasksResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of export tasks, sorted in descending order of task creation time, with the most recently created tasks listed first. If no tasks meet the conditions, an empty array is returned.
 	ExportTaskModel []*DescribeExportTasksResponseBodyExportTaskModel `json:"ExportTaskModel,omitempty" xml:"ExportTaskModel,omitempty" type:"Repeated"`
-	// The actual page number used for this query, which is the echoed value of the PageNumber request parameter.
+	// The actual page number used in this query, which is the echoed value of the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The actual number of tasks per page used for this query, which is the echoed value of the PageSize request parameter.
+	// The actual number of tasks per page used in this query, which is the echoed value of the PageSize request parameter.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *DescribeExportTasksResponseBody) Validate() error {
 }
 
 type DescribeExportTasksResponseBodyExportTaskModel struct {
-	// The creation time of the task. The format is yyyy-MM-dd HH:mm:ss, accurate to seconds. The returned string does not include the time zone offset.
+	// The task creation time, in yyyy-MM-dd HH:mm:ss format, accurate to seconds. The returned string does not include the time zone offset.
 	//
 	// example:
 	//
 	// 2026-07-27 19:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The OSS pre-signed download URL of the export file. This field is returned only for tasks whose Status is FINISHED. The default maximum validity period of the signature is 1 hour and does not exceed the 24-hour validity period after the task is created. When the remaining validity period is less than 10 minutes, the server automatically refreshes and returns a new URL. If the task is not completed, the task has expired, or the URL refresh fails, this field is empty. The domain name and path in the example URL are for demonstration purposes. The actual returned value is a complete URL with signature parameters. Use the URL returned by the most recent query for downloading.
+	// The OSS pre-signed download URL of the export file. This field is returned only for tasks whose Status is FINISHED. The default maximum validity period of the signature is 1 hour and does not exceed the 24-hour validity period after the task is created. When the remaining validity period is less than 10 minutes, the server automatically refreshes and returns a new URL. If the task is not completed, the task has expired, or the URL refresh fails, this field is empty. The domain name and path in the example URL are for illustration purposes only. The actual returned value is a complete URL with signature parameters. Use the URL returned by the most recent query for downloading.
 	//
 	// example:
 	//
 	// https://example.oss-cn-hangzhou.aliyuncs.com/...
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The cause of the task execution failure. This field is returned only when Status is FAILED. The content is the English error description recorded by the server and can be directly displayed to users or used for troubleshooting. This field is empty in other states.
+	// The cause of the task execution failure. This field is returned only when Status is FAILED. The content is the English error description recorded by the server and can be directly displayed to users or used for troubleshooting. In other states, this field is empty.
 	//
 	// example:
 	//
 	// The export sub type is not supported.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The name of the export file. The name consists of the task type, task creation time in yyyyMMddHHmmss format, and the first 8 characters of the task ID, connected by underscores, with the .xlsx extension. If the file is not generated, this field is empty.
+	// The export file name, which consists of the task type, task creation time (in yyyyMMddHHmmss format), and the first 8 characters of the task ID, connected by underscores. The file extension is .xlsx. If the file is not generated, this field is empty.
 	//
 	// example:
 	//
 	// WUYING_SERVER_LIST_20260727190000_8119078c.xlsx
 	ExportFileName *string `json:"ExportFileName,omitempty" xml:"ExportFileName,omitempty"`
-	// The progress of the export task, in percentage. Valid values: 0 to 100. This value is updated based on the execution stage of the task and is 100 when the task is completed.
+	// The export task progress, in percentage. Valid values: 0 to 100. This value is updated based on the execution stage of the task and is 100 when the task is completed.
 	//
 	// example:
 	//
 	// 100
 	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The status of the export task. This operation returns the following valid values:
+	// The export task status. This operation returns the following values:
 	//
 	// - INIT: The task is created and waiting to be executed. Continue polling.
 	//
@@ -157,19 +157,19 @@ type DescribeExportTasksResponseBodyExportTaskModel struct {
 	//
 	// - FAILED: The task execution failed. Stop polling and check ErrorMsg.
 	//
-	// The server also has an EXPIRED state, but this operation does not return tasks in this state.
+	// The server also has an internal EXPIRED state, but this operation does not return tasks in this state.
 	//
 	// example:
 	//
 	// FINISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the export task, which is a 32-character UUID string without hyphens. You can use this value as the TaskId parameter for this operation to poll the task.
+	// The export task ID, which is a 32-character UUID string without hyphens. You can use this value as the TaskId parameter of this operation to poll the task.
 	//
 	// example:
 	//
 	// 8119078c29e948dba2e0a9917995332a
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the export task. For the meaning of each value, see the TaskType request parameter.
+	// The export task type. For the meaning of each value, see the TaskType request parameter.
 	//
 	// example:
 	//

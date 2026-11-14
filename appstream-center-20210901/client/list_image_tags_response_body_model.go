@@ -46,7 +46,7 @@ type ListImageTagsResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListImageTagsResponseBody) Validate() error {
 }
 
 type ListImageTagsResponseBodyData struct {
-	// The label categorization.
+	// The tag categorization.
 	//
 	// example:
 	//

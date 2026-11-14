@@ -33,13 +33,13 @@ type ListTagCloudResourcesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// ptnJAAAAAAAxNzE5OTEwNQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of resource IDs. A maximum of 50 resource IDs are supported. You do not need to specify this parameter when the resource type is tenant ID.
+	// The resource IDs. A maximum of 50 resource IDs are supported. This parameter is not required when the resource type is tenant ID.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The cloud resource type.
 	//

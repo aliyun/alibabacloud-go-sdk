@@ -46,13 +46,13 @@ type StartTaskForDistributeImageRequest struct {
 	//
 	// RETRY
 	RetryType *string `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
-	// The source region from which the image is copied. If this parameter is not specified, a random region is selected.
+	// The source region from which the image is copied. If you do not specify this parameter, a region is randomly selected.
 	//
 	// example:
 	//
 	// cn-shanghai
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
-	// The image version ID. If this parameter is not specified, the latest image version is used.
+	// The image version ID. If you do not specify this parameter, the latest image version is used by default.
 	//
 	// example:
 	//

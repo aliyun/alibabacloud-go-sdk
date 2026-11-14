@@ -24,13 +24,13 @@ type iListModelProviderTemplatesResponseBody interface {
 type ListModelProviderTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListModelProviderTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the current query result.
+	// The page number of the current returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in the query result.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListModelProviderTemplatesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of query results.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListModelProviderTemplatesResponseBody) Validate() error {
 }
 
 type ListModelProviderTemplatesResponseBodyData struct {
-	// The model provider configuration JSON object.
+	// The JSON object for the model provider configuration.
 	//
 	// example:
 	//
@@ -135,9 +135,9 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud Bailian provider
+	// Alibaba Cloud Model Studio provider
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the WUYING secure gateway proxy is enabled.
+	// Specifies whether the Wuying security gateway proxy is enabled.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud Bailian
+	// Alibaba Cloud Model Studio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The model provider name.
 	//
@@ -167,7 +167,7 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// WuyingCredit
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The ProviderKey of the WUYING secure gateway proxy.
+	// The ProviderKey of the Wuying security gateway proxy.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListAuthorizedAppsByUserResponseBody interface {
 }
 
 type ListAuthorizedAppsByUserResponseBody struct {
-	// The list of applications authorized to the user. Each record corresponds to one application within one delivery group.
+	// The list of applications authorized for the user. Each record corresponds to an application within an app instance group.
 	Apps []*ListAuthorizedAppsByUserResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
 	// The page number of the returned results.
 	//
@@ -30,7 +30,7 @@ type ListAuthorizedAppsByUserResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizedAppsByUserResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of authorization records that match the query conditions.
+	// The total number of authorization records that meet the query conditions.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListAuthorizedAppsByUserResponseBody) Validate() error {
 }
 
 type ListAuthorizedAppsByUserResponseBodyApps struct {
-	// The URL of the application icon. This value is empty if the deployment details of the application cannot be obtained.
+	// The access URL of the application icon. This parameter is empty when the deployment details of the application cannot be obtained.
 	//
 	// example:
 	//
@@ -129,37 +129,37 @@ type ListAuthorizedAppsByUserResponseBodyApps struct {
 	//
 	// ca-i87mycyn419nu****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the delivery group to which the application belongs.
+	// The ID of the app instance group to which the application belongs.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the delivery group to which the application belongs. If the delivery group information cannot be obtained, the value is the same as AppInstanceGroupId.
+	// The name of the app instance group to which the application belongs. If the app instance group information cannot be obtained, the returned value is the same as the AppInstanceGroupId.
 	//
 	// example:
 	//
-	// OfficeApp
+	// Office applications
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The application name. If the deployment details of the application cannot be obtained, the value is the same as AppId.
+	// The application name. If the deployment details of the application cannot be obtained, the returned value is the same as the AppId.
 	//
 	// example:
 	//
-	// OfficeApp
+	// Office applications
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version. This value is empty if the deployment details of the application cannot be obtained.
+	// The application version. This parameter is empty when the deployment details of the application cannot be obtained.
 	//
 	// example:
 	//
 	// 1.0.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The application version name. This value is empty if the deployment details of the application cannot be obtained.
+	// The application version name. This parameter is empty when the deployment details of the application cannot be obtained.
 	//
 	// example:
 	//
-	// InitialVersion
+	// Initial version
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	// The number of authorized users for the application within its delivery group. This value is empty if the deployment details of the application cannot be obtained.
+	// The number of users authorized to access the application in the app instance group to which the application belongs. This parameter is empty when the deployment details of the application cannot be obtained.
 	//
 	// example:
 	//

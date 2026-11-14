@@ -36,17 +36,7 @@ type ListLlmTemplatesRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The display language of the model. Valid values:
-	//
-	// - zh-CN: Simplified Chinese.
-	//
-	// - en-US: English.
-	//
-	// - ja-JP: Japanese.
-	//
-	// - zh-TW: Traditional Chinese.
-	//
-	// Default value: zh-CN. Currently, zh-TW returns Simplified Chinese, and ja-JP returns English. If the model is not included in Alibaba Cloud Model Studio or the English text is missing, the original source text is retained without automatic translation.
+	// The display language of the model. Valid values: zh-CN (Simplified Chinese), en-US (English), ja-JP (Japanese), and zh-TW (Traditional Chinese). Default value: zh-CN. Currently, zh-TW returns Simplified Chinese, and ja-JP returns English. If the model is not recorded in Model Studio or the English copy is missing, the original source copy is retained without automatic translation.
 	//
 	// example:
 	//
@@ -66,7 +56,7 @@ type ListLlmTemplatesRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The page number. Pages start from 1. A value of 0 returns the same result as 1.
+	// The page number. Pages start from page 1. If you set this parameter to 0, the system returns the same result as when you set it to 1.
 	//
 	// example:
 	//
@@ -84,13 +74,7 @@ type ListLlmTemplatesRequest struct {
 	//
 	// mpt-xxxx
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
-	// Specifies whether to query smart models. Valid values:
-	//
-	// - true: Only LLMs under system-preset smart models are returned. In this case, BizType is required.
-	//
-	// - false: Smart models are not specifically filtered.
-	//
-	// Default value: false.
+	// Specifies whether to query smart models. If you set this parameter to true, only LLMs under system-preset smart models are returned, and BizType is required. Default value: false.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ type iCreateBrowserInstanceGroupRequest interface {
 }
 
 type CreateBrowserInstanceGroupRequest struct {
-	// The package identifier.
+	// The package ID.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -100,7 +100,7 @@ type CreateBrowserInstanceGroupRequest struct {
 	//
 	// -
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The identifier of the business region. This parameter is required.
+	// The ID of the business region. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type CreateBrowserInstanceGroupRequest struct {
 	BrowserConfig *CreateBrowserInstanceGroupRequestBrowserConfig `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty" type:"Struct"`
 	// The resource billing method.
 	//
-	// **For MAU scenarios:*	- Set this parameter to `AppInstance`, which indicates billing by instance resources.
+	// **For MAU scenarios:*	- Set this parameter to `AppInstance`, which indicates billing by instance resource.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type CreateBrowserInstanceGroupRequest struct {
 	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
 	// The billing method.
 	//
-	// **For MAU scenarios:*	- Set this parameter to PostPaid, which indicates pay-as-you-go.
+	// **For MAU scenarios:*	- Set this parameter to `PostPaid`, which indicates pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The name of the cloud browser group. This parameter cannot be empty. It is used to distinguish different browser groups in business management scenarios.
+	// The name of the cloud browser group. This parameter is required. It is used to distinguish different browser groups in business management scenarios.
 	//
 	// This parameter is required.
 	//
@@ -138,7 +138,7 @@ type CreateBrowserInstanceGroupRequest struct {
 	//
 	// If this parameter is omitted, the default image available for the account is used. If no default image is available, the creation may fail.
 	//
-	// **Usage conditions:*	- When CookiesSync is enabled, explicitly specify an image that supports cookie synchronization.
+	// **Usage condition:*	- When `CookiesSync` is enabled, explicitly specify an image that supports cookie synchronization.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type CreateBrowserInstanceGroupRequest struct {
 	//
 	// appstreaming.general.basic
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The capacity configuration in MAU billing scenarios.
+	// The capacity configuration for the MAU billing scenario.
 	//
 	// example:
 	//
 	// 5
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The configurations for the office network and website access restrictions. The selected office network must belong to the current account and reside in the region specified by BizRegionId.
+	// The configurations of the office network and website access restrictions. The selected office network must belong to the current account and reside in the region specified by BizRegionId.
 	Network *CreateBrowserInstanceGroupRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The node pool configuration.
 	//
@@ -176,7 +176,7 @@ type CreateBrowserInstanceGroupRequest struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The number of billing cycles for the purchase.
+	// The number of subscription periods.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -184,7 +184,7 @@ type CreateBrowserInstanceGroupRequest struct {
 	//
 	// -
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the billing cycle for the purchase.
+	// The unit of the subscription period.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -192,11 +192,11 @@ type CreateBrowserInstanceGroupRequest struct {
 	//
 	// -
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// Configures policies for the clipboard, video, watermark, session, and client access.
+	// The configurations of clipboard, video, watermark, session, and client access policies.
 	Policy *CreateBrowserInstanceGroupRequestPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The promotion identifier, which is used to specify the promotional offer applied to the order.
+	// The promotion ID, which is used to specify the promotional offer applied to the order.
 	//
-	// Applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
+	// The applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
 	//
 	// example:
 	//
@@ -208,27 +208,27 @@ type CreateBrowserInstanceGroupRequest struct {
 	StoragePolicy *CreateBrowserInstanceGroupRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
 	// The billing sub-type.
 	//
-	// **You must explicitly set this parameter to mau, which indicates billing by monthly active users (MAUs).*	- Omitting this parameter does not enable MAU billing.
+	// **You must explicitly set this parameter to `mau`, which indicates billing by monthly active users.*	- Omitting this parameter does not enable MAU billing.
 	//
 	// example:
 	//
 	// mau
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
 	// -
 	Tag []*CreateBrowserInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
 	// -
 	Timers []*CreateBrowserInstanceGroupRequestTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
-	// The list of authorized user group IDs. You can specify up to 10 IDs. The user groups must belong to the current account and match the account type of the office network.
+	// The list of authorized user group IDs. You can specify up to 10 user group IDs. The user groups must belong to the current account and match the account type of the office network.
 	//
-	// **Limits:*	- This parameter cannot be specified together with a non-empty Users parameter.
+	// **Limits:*	- This parameter cannot be specified together with a non-empty `Users` parameter.
 	//
 	// if can be null:
 	// true
@@ -561,9 +561,9 @@ func (s *CreateBrowserInstanceGroupRequest) Validate() error {
 type CreateBrowserInstanceGroupRequestBrowserConfig struct {
 	// The list of browser bookmarks.
 	//
-	// **Limits:*	- This parameter cannot be specified together with a non-empty BookmarksFilePath parameter, and bookmark URLs cannot be duplicated.
+	// **Limits:*	- This parameter cannot be specified together with a non-empty `BookmarksFilePath`, and bookmark URLs cannot be duplicated.
 	Bookmarks []*CreateBrowserInstanceGroupRequestBrowserConfigBookmarks `json:"Bookmarks,omitempty" xml:"Bookmarks,omitempty" type:"Repeated"`
-	// The path of the uploaded bookmark file. This parameter cannot be specified together with a non-empty Bookmarks parameter.
+	// The path of the uploaded bookmark file. This parameter cannot be specified together with a non-empty `Bookmarks` parameter.
 	//
 	// **File format:*	- A CSV file without a header. Specify the following four columns in order:
 	//
@@ -585,7 +585,7 @@ type CreateBrowserInstanceGroupRequestBrowserConfig struct {
 	//
 	// cn-hangzhou/aig_upm/xxx/temp/BrowserBookmarks/BrowserBookmarkTemplate.csv
 	BookmarksFilePath *string `json:"BookmarksFilePath,omitempty" xml:"BookmarksFilePath,omitempty"`
-	// The browser startup parameters. For example, --incognito indicates that an incognito window is used.
+	// The browser startup parameters. For example, `--incognito` indicates that an incognito window is used.
 	//
 	// example:
 	//
@@ -597,7 +597,7 @@ type CreateBrowserInstanceGroupRequestBrowserConfig struct {
 	//
 	// false
 	CookiesSync *bool `json:"CookiesSync,omitempty" xml:"CookiesSync,omitempty"`
-	// The homepage URL opened when the browser starts. The URL must conform to the URI syntax.
+	// The homepage URL that opens when the browser starts. The URL must conform to the URI syntax.
 	//
 	// example:
 	//
@@ -684,7 +684,7 @@ type CreateBrowserInstanceGroupRequestBrowserConfigBookmarks struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud website
+	// Alibaba Cloud official website
 	BookmarkName *string `json:"BookmarkName,omitempty" xml:"BookmarkName,omitempty"`
 	// The URL of the bookmark. This parameter is required when you create a bookmark. The length cannot exceed 1024 characters after leading and trailing spaces are removed.
 	//
@@ -738,33 +738,33 @@ func (s *CreateBrowserInstanceGroupRequestBrowserConfigBookmarks) Validate() err
 type CreateBrowserInstanceGroupRequestNetwork struct {
 	// The website access restriction mode.
 	//
-	// - ALLOW_ALL: Allows access to all domain names.
+	// - `ALLOW_ALL`: allows access to all domain names.
 	//
-	// - ALLOW_LIST: Allows access only to websites in the whitelist.
+	// - `ALLOW_LIST`: allows access only to websites in the whitelist.
 	//
 	// example:
 	//
 	// ALLOW_ALL
 	AccessRestriction *string `json:"AccessRestriction,omitempty" xml:"AccessRestriction,omitempty"`
-	// The identifier of the created office network. The office network must belong to the current account and reside in the target region specified by BizRegionId. You can view the office network ID on the Network & Storage > Office Networks page in the Elastic Desktop Service Enterprise Edition console, or call the DescribeOfficeSites operation of Elastic Desktop Service Enterprise Edition to query the ID.
+	// The ID of the created office network. The office network must belong to the current account and reside in the target region specified by BizRegionId. You can view the office network ID on the Office Networks page in the Elastic Desktop Service Enterprise Edition console, or call the DescribeOfficeSites operation of Elastic Desktop Service Enterprise Edition to query the ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The list of websites that are allowed for access. This parameter is used in ALLOW_LIST mode.
+	// The list of websites that are allowed for access. This parameter is used in `ALLOW_LIST` mode.
 	//
 	// **Limits:**
 	//
-	// - You can specify up to 20 URLs directly. To specify more than 20 URLs, use RestrictedURLsFilePath to import them from a file.
+	// - You can specify up to 20 URLs directly. To specify more than 20 URLs, use RestrictedURLsFilePath to import the URLs from a file.
 	//
 	// - This parameter cannot be specified together with RestrictedURLsFilePath.
 	//
-	// - The URLs in the list cannot be duplicated.
+	// - The URLs in the list must be unique.
 	RestrictedURLs []*CreateBrowserInstanceGroupRequestNetworkRestrictedURLs `json:"RestrictedURLs,omitempty" xml:"RestrictedURLs,omitempty" type:"Repeated"`
-	// The path of the uploaded website whitelist file. This parameter is used in ALLOW_LIST mode.
+	// The path of the uploaded website whitelist file. This parameter is used in `ALLOW_LIST` mode.
 	//
-	// If you need to specify more than 20 URLs, import them from a file. By default, you can configure up to 1,000 URLs.
+	// If you need to specify more than 20 URLs, import the URLs from a file. By default, you can configure up to 1,000 URLs.
 	//
 	// This parameter cannot be specified together with RestrictedURLs.
 	//
@@ -772,7 +772,7 @@ type CreateBrowserInstanceGroupRequestNetwork struct {
 	//
 	// cn-hangzhou/aig_upm/xxx/temp/BrowserRestrictionUrls/URL_whitelist_template.csv
 	RestrictedURLsFilePath *string `json:"RestrictedURLsFilePath,omitempty" xml:"RestrictedURLsFilePath,omitempty"`
-	// The list of vSwitch identifiers.
+	// The list of vSwitch IDs.
 	//
 	// **Usage condition:*	- This parameter is required only when you use a custom office network. Do not specify this parameter for other types of office networks.
 	//
@@ -885,7 +885,7 @@ type CreateBrowserInstanceGroupRequestNodePool struct {
 	//
 	// -
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The identity of the node specifications.
+	// The node specifications identity.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -893,7 +893,7 @@ type CreateBrowserInstanceGroupRequestNodePool struct {
 	//
 	// -
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	// The node scaling policy.
+	// The node scaling strategy.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -945,39 +945,39 @@ func (s *CreateBrowserInstanceGroupRequestNodePool) Validate() error {
 type CreateBrowserInstanceGroupRequestPolicy struct {
 	// The screen capture prevention switch.
 	//
-	// - on: Enables screen capture prevention.
+	// - `on`: enables screen capture prevention.
 	//
-	// - off: Disables screen capture prevention.
+	// - `off`: disables screen capture prevention.
 	//
 	// example:
 	//
 	// on
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The client access IP address whitelist, which is used to restrict the source IP addresses of clients that can access the cloud browser.
+	// The IP address whitelist for client access, which is used to restrict the source IP addresses of clients that can access the cloud browser.
 	AuthorizeAccessPolicyRules []*CreateBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
-	// The client access control list.
+	// The access control list for clients.
 	ClientTypes []*CreateBrowserInstanceGroupRequestPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
-	// Specifies the clipboard transfer direction, content types, and size limits. read indicates transfer from the local PC to the cloud browser, and write indicates transfer from the cloud browser to the local PC.
+	// Sets the clipboard transfer direction, content type, and size limits. read indicates transfer from the local PC to the cloud browser, and write indicates transfer from the cloud browser to the local PC.
 	ClipboardPolicy *CreateBrowserInstanceGroupRequestPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
-	// Specifies the data retention policy for sessions after disconnection.
+	// The data retention policy for sessions after disconnection.
 	//
-	// - `customTime`: Retains the session according to the data retention policy. Custom duration through `DisconnectKeepSessionTime` is not supported.
+	// - `customTime`: Retains the session based on the data retention policy. Custom durations through `DisconnectKeepSessionTime` are not supported.
 	//
-	// - `persistent`: The session is not subject to automatic release based on disconnection duration.
+	// - `persistent`: The session is not automatically released based on the disconnection duration.
 	//
-	// **Note:*	- `persistent` is still subject to authorization and other release policies.
+	// **Note:*	- `persistent` is still affected by authorization and other release policies.
 	//
 	// example:
 	//
 	// customTime
 	DisconnectKeepSession *string `json:"DisconnectKeepSession,omitempty" xml:"DisconnectKeepSession,omitempty"`
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
 	// -
 	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
-	// Specifies whether to enable the file manager floating button.
+	// The floating ball file manager switch.
 	//
 	// - `on`: Enabled.
 	//
@@ -989,15 +989,15 @@ type CreateBrowserInstanceGroupRequestPolicy struct {
 	//
 	// off
 	FileManager *string `json:"FileManager,omitempty" xml:"FileManager,omitempty"`
-	// Specifies the file transfer policy for the web client.
+	// The file transfer policy for the web client.
 	//
-	// - `off`: Prohibits file transfer.
+	// - `off`: Disables transfer.
 	//
 	// - `upload`: Allows upload only.
 	//
 	// - `download`: Allows download only.
 	//
-	// - `full`: Allows both upload and download.
+	// - `full`: Allows upload and download.
 	//
 	// Configure this parameter in conjunction with the clipboard policy.
 	//
@@ -1005,45 +1005,45 @@ type CreateBrowserInstanceGroupRequestPolicy struct {
 	//
 	// full
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// Specifies whether to enable the dual-screen mode for the cloud browser.
+	// The cloud browser dual-screen switch.
 	//
 	// example:
 	//
 	// off
 	MultiScreen *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
-	// Specifies whether to enable automatic disconnection on inactivity. The value is not case-sensitive.
+	// The automatic disconnection switch for inactivity. The value is case-insensitive.
 	//
 	// - `on`: Enabled.
 	//
 	// - `off`: Disabled.
 	//
-	// When enabled, use `NoOperationDisconnectTime` to set the idle timeout.
+	// When enabled, use `NoOperationDisconnectTime` to set the wait time.
 	//
 	// example:
 	//
 	// on
 	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
-	// Specifies the idle timeout in seconds before automatic disconnection is triggered.
+	// The wait time in seconds before disconnection is triggered due to user inactivity.
 	//
-	// **Prerequisite:*	- When `NoOperationDisconnect` is enabled, you must specify a value greater than 0.
+	// **Conditions:*	- When `NoOperationDisconnect` is enabled, you must specify a value greater than 0.
 	//
 	// example:
 	//
 	// 300
 	NoOperationDisconnectTime *int32 `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
-	// Specifies the policy version. The value is not case-sensitive.
+	// The policy version. The value is case-insensitive.
 	//
 	// - `DEFAULT`: Legacy policy.
 	//
 	// - `CENTER`: Centralized policy.
 	//
-	// **Default value:*	- `DEFAULT`. The effective policy version is subject to the policy configuration available for the account.
+	// **Default value:*	- `DEFAULT`. The effective policy version is subject to the policy configurations available for the account.
 	//
 	// example:
 	//
 	// CENTER
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// Specifies the video display policy for the browser session.
+	// The video display policy for browser sessions.
 	VideoPolicy *CreateBrowserInstanceGroupRequestPolicyVideoPolicy `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
 	// The watermark display configuration for browser sessions.
 	WatermarkPolicy *CreateBrowserInstanceGroupRequestPolicyWatermarkPolicy `json:"WatermarkPolicy,omitempty" xml:"WatermarkPolicy,omitempty" type:"Struct"`
@@ -1227,7 +1227,7 @@ type CreateBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules struct {
 	//
 	// 192.168.1.0/24
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the client access IP address whitelist rule.
+	// The description of the IP address whitelist rule for client access.
 	//
 	// example:
 	//
@@ -1268,15 +1268,15 @@ func (s *CreateBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules) Vali
 type CreateBrowserInstanceGroupRequestPolicyClientTypes struct {
 	// The type of the client for which you want to configure an access policy.
 	//
-	// - windows: Windows client.
+	// - `windows`: Windows client.
 	//
-	// - macos: macOS client.
+	// - `macos`: macOS client.
 	//
-	// - html5: Web client.
+	// - `html5`: Web client.
 	//
-	// - android: Android client.
+	// - `android`: Android client.
 	//
-	// - ios: iOS client.
+	// - `ios`: iOS client.
 	//
 	// example:
 	//
@@ -1284,9 +1284,9 @@ type CreateBrowserInstanceGroupRequestPolicyClientTypes struct {
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The access policy switch for the client type.
 	//
-	// - on: Allows access from this type of client.
+	// - `on`: allows access from this type of client.
 	//
-	// - off: Denies access from this type of client.
+	// - `off`: denies access from this type of client.
 	//
 	// example:
 	//
@@ -1325,23 +1325,23 @@ func (s *CreateBrowserInstanceGroupRequestPolicyClientTypes) Validate() error {
 }
 
 type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
-	// Specifies the clipboard transfer direction. The value is not case-sensitive.
+	// The clipboard transfer direction. The value is case-insensitive.
 	//
-	// - `off`: Prohibits bidirectional transfer.
+	// - `off`: Disables bidirectional transfer.
 	//
 	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
 	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Allows bidirectional copy and paste.
+	// - `readwrite`: Allows bidirectional transfer.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// Specifies the clipboard size limit for inbound transfer (from the local PC to the cloud browser).
+	// The clipboard size limit for inbound transfer from the local PC to the cloud browser.
 	//
-	// **Value range:*	- 1 to 102400. The unit is specified by ClipboardSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 102400, and the unit is specified by ClipboardSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1349,7 +1349,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1024
 	ClipboardReadLimit *int32 `json:"ClipboardReadLimit,omitempty" xml:"ClipboardReadLimit,omitempty"`
-	// Specifies the clipboard control granularity.
+	// The clipboard control granularity.
 	//
 	// - `global`: Unified control.
 	//
@@ -1359,7 +1359,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// grained
 	ClipboardScope *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
-	// Specifies the clipboard size unit.
+	// The clipboard size unit.
 	//
 	// - `B`: Bytes.
 	//
@@ -1369,9 +1369,9 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// KB
 	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
-	// Specifies the clipboard size limit for outbound transfer (from the cloud browser to the local PC).
+	// The clipboard size limit for outbound transfer from the cloud browser to the local PC.
 	//
-	// **Value range:*	- 1 to 102400. The unit is specified by ClipboardSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 102400, and the unit is specified by ClipboardSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1379,37 +1379,37 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1024
 	ClipboardWriteLimit *int32 `json:"ClipboardWriteLimit,omitempty" xml:"ClipboardWriteLimit,omitempty"`
-	// Specifies the clipboard transfer direction. The value is not case-sensitive.
+	// The clipboard transfer direction. The value is case-insensitive.
 	//
-	// - `off`: Prohibits bidirectional transfer.
+	// - `off`: Disables bidirectional transfer.
 	//
 	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
 	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Allows bidirectional copy and paste.
+	// - `readwrite`: Allows bidirectional transfer.
 	//
 	// example:
 	//
 	// off
 	FileClipboard *string `json:"FileClipboard,omitempty" xml:"FileClipboard,omitempty"`
-	// Specifies the clipboard transfer direction. The value is not case-sensitive.
+	// The clipboard transfer direction. The value is case-insensitive.
 	//
-	// - `off`: Prohibits bidirectional transfer.
+	// - `off`: Disables bidirectional transfer.
 	//
 	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
 	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Allows bidirectional copy and paste.
+	// - `readwrite`: Allows bidirectional transfer.
 	//
 	// example:
 	//
 	// off
 	RichTextClipboard *string `json:"RichTextClipboard,omitempty" xml:"RichTextClipboard,omitempty"`
-	// Specifies the clipboard size limit for rich text.
+	// The rich text clipboard size limit.
 	//
-	// **Value range:*	- 1 to 204800. The unit is specified by RichTextClipboardSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 204800, and the unit is specified by RichTextClipboardSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1417,9 +1417,9 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1024
 	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
-	// Specifies the clipboard size limit for inbound transfer (from the local PC to the cloud browser).
+	// The clipboard size limit for inbound transfer from the local PC to the cloud browser.
 	//
-	// **Value range:*	- 1 to 204800. The unit is specified by RichTextClipboardReadSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 204800, and the unit is specified by RichTextClipboardReadSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1427,7 +1427,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	RichTextClipboardReadLimit *int32 `json:"RichTextClipboardReadLimit,omitempty" xml:"RichTextClipboardReadLimit,omitempty"`
-	// Specifies the clipboard size unit.
+	// The clipboard size unit.
 	//
 	// - `B`: Bytes.
 	//
@@ -1439,7 +1439,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// KB
 	RichTextClipboardReadSizeUnit *string `json:"RichTextClipboardReadSizeUnit,omitempty" xml:"RichTextClipboardReadSizeUnit,omitempty"`
-	// Specifies the clipboard size unit.
+	// The clipboard size unit.
 	//
 	// - `B`: Bytes.
 	//
@@ -1449,9 +1449,9 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// KB
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
-	// Specifies the clipboard size limit for outbound transfer (from the cloud browser to the local PC).
+	// The clipboard size limit for outbound transfer from the cloud browser to the local PC.
 	//
-	// **Value range:*	- 1 to 204800. The unit is specified by RichTextClipboardWriteSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 204800, and the unit is specified by RichTextClipboardWriteSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1459,7 +1459,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	RichTextClipboardWriteLimit *int32 `json:"RichTextClipboardWriteLimit,omitempty" xml:"RichTextClipboardWriteLimit,omitempty"`
-	// Specifies the clipboard size unit.
+	// The clipboard size unit.
 	//
 	// - `B`: Bytes.
 	//
@@ -1471,23 +1471,23 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// KB
 	RichTextClipboardWriteSizeUnit *string `json:"RichTextClipboardWriteSizeUnit,omitempty" xml:"RichTextClipboardWriteSizeUnit,omitempty"`
-	// Specifies the clipboard transfer direction. The value is not case-sensitive.
+	// The clipboard transfer direction. The value is case-insensitive.
 	//
-	// - `off`: Prohibits bidirectional transfer.
+	// - `off`: Disables bidirectional transfer.
 	//
 	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
 	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Allows bidirectional copy and paste.
+	// - `readwrite`: Allows bidirectional transfer.
 	//
 	// example:
 	//
 	// readwrite
 	TextClipboard *string `json:"TextClipboard,omitempty" xml:"TextClipboard,omitempty"`
-	// Specifies the clipboard size limit for inbound transfer (from the local PC to the cloud browser).
+	// The clipboard size limit for inbound transfer from the local PC to the cloud browser.
 	//
-	// **Value range:*	- 1 to 102400. The unit is specified by TextClipboardReadSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 102400, and the unit is specified by TextClipboardReadSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1495,7 +1495,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	TextClipboardReadLimit *int32 `json:"TextClipboardReadLimit,omitempty" xml:"TextClipboardReadLimit,omitempty"`
-	// Specifies the clipboard size unit.
+	// The clipboard size unit.
 	//
 	// - `B`: Bytes.
 	//
@@ -1507,9 +1507,9 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// KB
 	TextClipboardReadSizeUnit *string `json:"TextClipboardReadSizeUnit,omitempty" xml:"TextClipboardReadSizeUnit,omitempty"`
-	// Specifies the clipboard size limit for outbound transfer (from the cloud browser to the local PC).
+	// The clipboard size limit for outbound transfer from the cloud browser to the local PC.
 	//
-	// **Value range:*	- 1 to 102400. The unit is specified by TextClipboardWriteSizeUnit.
+	// **Value limits:*	- The value ranges from 1 to 102400, and the unit is specified by TextClipboardWriteSizeUnit.
 	//
 	// This value range does not change with unit conversion.
 	//
@@ -1517,7 +1517,7 @@ type CreateBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	TextClipboardWriteLimit *int32 `json:"TextClipboardWriteLimit,omitempty" xml:"TextClipboardWriteLimit,omitempty"`
-	// Specifies the clipboard size unit.
+	// The clipboard size unit.
 	//
 	// - `B`: Bytes.
 	//
@@ -1706,7 +1706,7 @@ func (s *CreateBrowserInstanceGroupRequestPolicyClipboardPolicy) Validate() erro
 }
 
 type CreateBrowserInstanceGroupRequestPolicyVideoPolicy struct {
-	// Specifies the frame rate for the browser session.
+	// The frame rate for browser sessions.
 	//
 	// example:
 	//
@@ -1742,7 +1742,7 @@ type CreateBrowserInstanceGroupRequestPolicyWatermarkPolicy struct {
 	//
 	// - `OFF`: Disables the watermark.
 	//
-	// The watermark content type list is not used when the watermark is disabled.
+	// When the watermark is disabled, the watermark content type list is not used.
 	//
 	// example:
 	//
@@ -1750,11 +1750,11 @@ type CreateBrowserInstanceGroupRequestPolicyWatermarkPolicy struct {
 	WatermarkSwitch *string `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
 	// The list of watermark content types.
 	//
-	// - `EndUserId`: The user identifier.
+	// - `EndUserId`: the user identifier.
 	//
-	// - `InstanceGroupId`: The delivery group identifier.
+	// - `InstanceGroupId`: the delivery group identifier.
 	//
-	// - `ClientTime`: The current time of the client.
+	// - `ClientTime`: the current time of the client.
 	//
 	// Use the watermark types supported by the browser and the client.
 	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
@@ -1797,7 +1797,7 @@ type CreateBrowserInstanceGroupRequestSecurityPolicy struct {
 	//
 	// - `false`: Performs the check.
 	//
-	// If SecurityPolicy is configured but this field is omitted, the user authorization check is performed.
+	// If `SecurityPolicy` is configured but this field is omitted, the user authorization check is performed.
 	//
 	// **Note:*	- This field cannot be used to skip OpenAPI authentication and RAM permission verification.
 	//
@@ -1911,13 +1911,13 @@ func (s *CreateBrowserInstanceGroupRequestStoragePolicyUserProfile) Validate() e
 }
 
 type CreateBrowserInstanceGroupRequestTag struct {
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
 	// -
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
@@ -1956,13 +1956,13 @@ func (s *CreateBrowserInstanceGroupRequestTag) Validate() error {
 }
 
 type CreateBrowserInstanceGroupRequestTimers struct {
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
 	// -
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// This parameter is not supported and does not need to be specified.
+	// Not supported. Leave this parameter empty.
 	//
 	// example:
 	//
@@ -2003,7 +2003,7 @@ func (s *CreateBrowserInstanceGroupRequestTimers) Validate() error {
 type CreateBrowserInstanceGroupRequestUserInfo struct {
 	// The account type of the authorized user.
 	//
-	// - `simple`: Convenience account.
+	// - `simple`: convenience account.
 	//
 	// - `ad`: AD domain account.
 	//
@@ -2037,7 +2037,7 @@ func (s *CreateBrowserInstanceGroupRequestUserInfo) Validate() error {
 }
 
 type CreateBrowserInstanceGroupRequestUsers struct {
-	// The identity of the authorized user for authorization.
+	// The identity of the authorized user to be granted authorization.
 	//
 	// example:
 	//

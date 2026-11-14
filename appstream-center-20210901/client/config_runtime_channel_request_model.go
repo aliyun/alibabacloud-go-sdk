@@ -36,11 +36,11 @@ type ConfigRuntimeChannelRequest struct {
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
 	// The agent provider.
 	//
-	// - JVS Computer: Set to OpenClaw.
+	// - JVS Computer: Enter OpenClaw.
 	//
-	// - OpenClaw: Set to OpenClaw.
+	// - OpenClaw: Enter OpenClaw.
 	//
-	// - Hermes Agent: Set to HermesAgent.
+	// - Hermes Agent: Enter HermesAgent.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ConfigRuntimeChannelRequest struct {
 	//
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The JSON string for channel configuration.
+	// The channel configuration JSON string.
 	//
 	// - Example of the simple configuration mode:
 	//

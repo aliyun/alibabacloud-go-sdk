@@ -22,7 +22,7 @@ type iImportImageResponseBody interface {
 }
 
 type ImportImageResponseBody struct {
-	// The return code of the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+	// The response code. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type ImportImageResponseBody struct {
 	//
 	// 8737D130-BFD0-5D51-96F6-C08EB1139A25
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: successful.
+	// - true: Successful.
 	//
-	// - false: failed.
+	// - false: Failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

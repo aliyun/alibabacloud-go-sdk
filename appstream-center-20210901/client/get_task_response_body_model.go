@@ -22,7 +22,7 @@ type iGetTaskResponseBody interface {
 }
 
 type GetTaskResponseBody struct {
-	// The error code. This parameter is returned when the request fails. A successful response may not contain this parameter.
+	// The error code. Returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type GetTaskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The task details.
 	Data *GetTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error or result message. This parameter is used to describe the cause when the request fails. A successful response may not contain this parameter.
+	// The error or result message. Used to explain the cause when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
 	// Internal error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request. You can provide this value when you troubleshoot issues.
+	// The unique identifier of this request. You can provide this value for troubleshooting.
 	//
 	// example:
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To determine whether an asynchronous task is completed, you must query the task status separately.
+	// Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To determine whether an asynchronous task is completed, you must query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -115,13 +115,13 @@ type GetTaskResponseBodyData struct {
 	//
 	// 100931896542****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The prompt or execution result description of the current step of the task.
+	// The prompt or execution result description of the current task step.
 	//
 	// example:
 	//
 	// [code=Builder.Failed,httpStatusCode=<null>,message=Builder environment deploy failed.]
 	CurrentTaskMessage *string `json:"CurrentTaskMessage,omitempty" xml:"CurrentTaskMessage,omitempty"`
-	// The identifier of the step that the task is currently executing. You can call the ListTaskStep operation to query the image creation and application adaptation steps.
+	// The identifier of the step currently being executed in the task. You can call ListTaskStep to query the image creation and application adaptation steps.
 	//
 	// example:
 	//
@@ -149,17 +149,17 @@ type GetTaskResponseBodyData struct {
 	//
 	// Valid values:
 	//
-	// - **CPU**: CPU compute resource
+	// - **CPU**: CPU compute resource.
 	//
-	// - **GPU**: GPU compute resource
+	// - **GPU**: GPU compute resource.
 	//
 	// example:
 	//
 	// CPU
 	PerformanceType *string `json:"PerformanceType,omitempty" xml:"PerformanceType,omitempty"`
-	// **Not enabled. The system does not return valid task progress.*	- Determine the task execution status based on the Status, CurrentTaskStep, and TaskStepList parameters.
+	// **Not enabled. Currently, no valid task progress is returned.*	- Determine the task execution status based on Status, CurrentTaskStep, and TaskStepList.
 	//
-	// The example "Not applicable (not enabled)" is only a description of the field status, not an actual API response example.
+	// The example "Not applicable (not enabled)" is only a description of the field status, not an actual API return sample.
 	//
 	// example:
 	//
@@ -171,9 +171,9 @@ type GetTaskResponseBodyData struct {
 	//
 	// Valid values:
 	//
-	// - **NORMAL**: normal running mode
+	// - **NORMAL**: Normal running mode.
 	//
-	// - **COMPATIBLE**: compatible running mode
+	// - **COMPATIBLE**: Compatible running mode.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type GetTaskResponseBodyData struct {
 	//
 	// START
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The system disk capacity of the task creation environment. Unit: GiB.
+	// The system cloud disk capacity of the task creation environment. Unit: GiB.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type GetTaskResponseBodyData struct {
 	//
 	// imgc-bp1parent****
 	SystemImageId *string `json:"SystemImageId,omitempty" xml:"SystemImageId,omitempty"`
-	// The task ID. You can use this ID to call the GetTask operation to query the task status.
+	// The task ID. You can use it to call GetTask to query the task status.
 	//
 	// example:
 	//
@@ -223,81 +223,81 @@ type GetTaskResponseBodyData struct {
 	//
 	// Valid values:
 	//
-	// - **AUTO_ADAPT**: automatic adaptation
+	// - **AUTO_ADAPT**: Automatic adaptation.
 	//
-	// - **AUTO_CREATE_IMAGE**: automatic image creation
+	// - **AUTO_CREATE_IMAGE**: Automatic image creation.
 	//
-	// - **RETRY_ADAPT**: retry of automatic adaptation
+	// - **RETRY_ADAPT**: Retry automatic adaptation.
 	//
-	// - **RETRY_CREATE_IMAGE**: retry of automatic image creation
+	// - **RETRY_CREATE_IMAGE**: Retry automatic image creation.
 	//
-	// - **AUTO_OTA_IMAGE**: automatic image OTA
+	// - **AUTO_OTA_IMAGE**: Automatic image OTA.
 	//
-	// - **AUTO_CREATE_VHD**: automatic VHD creation
+	// - **AUTO_CREATE_VHD**: Automatic VHD creation.
 	//
-	// - **RETRY_VHD**: retry of VHD creation
+	// - **RETRY_VHD**: Retry VHD creation.
 	//
-	// - **AUTO_CREATE_IMAGE_VHD**: automatic VHD image creation
+	// - **AUTO_CREATE_IMAGE_VHD**: Automatic VHD image creation.
 	//
-	// - **RETRY_CREATE_IMAGE_VHD**: retry of VHD image creation
+	// - **RETRY_CREATE_IMAGE_VHD**: Retry VHD image creation.
 	//
-	// - **AUTO_VALIDATE_VHD**: automatic VHD validation
+	// - **AUTO_VALIDATE_VHD**: Automatic VHD validation.
 	//
-	// - **RETRY_VALIDATE_VHD**: retry of VHD validation
+	// - **RETRY_VALIDATE_VHD**: Retry VHD validation.
 	//
-	// - **SYNCHRONIZE_APP_IMAGE**: application image synchronization
+	// - **SYNCHRONIZE_APP_IMAGE**: Synchronize application image.
 	//
-	// - **APPLY_VHD_BUILDER**: application for VHD application recording environment
+	// - **APPLY_VHD_BUILDER**: Apply for VHD application recording environment.
 	//
-	// - **RETRY_VHD_BUILDER**: retry of application for VHD recording environment
+	// - **RETRY_VHD_BUILDER**: Retry applying for VHD recording environment.
 	//
-	// - **ADAPT_AUTO**: automatic application adaptation creation
+	// - **ADAPT_AUTO**: Automatic application adaptation creation.
 	//
-	// - **ADAPT_AUTO_RETRY**: retry of automatic application adaptation creation
+	// - **ADAPT_AUTO_RETRY**: Retry automatic application adaptation creation.
 	//
-	// - **ADAPT_MANUAL**: manual application adaptation creation
+	// - **ADAPT_MANUAL**: Manual application adaptation creation.
 	//
-	// - **ADAPT_MANUAL_RETRY**: retry of manual application adaptation creation
+	// - **ADAPT_MANUAL_RETRY**: Retry manual application adaptation creation.
 	//
-	// - **IMAGE_AUTO**: automatic image creation
+	// - **IMAGE_AUTO**: Automatic image creation.
 	//
-	// - **IMAGE_AUTO_RETRY**: retry of automatic image creation
+	// - **IMAGE_AUTO_RETRY**: Retry automatic image creation.
 	//
-	// - **IMAGE_AUTO_VALIDATE**: automatic image validation
+	// - **IMAGE_AUTO_VALIDATE**: Automatic image validation.
 	//
-	// - **IMAGE_AUTO_VALIDATE_RETRY**: retry of automatic image validation
+	// - **IMAGE_AUTO_VALIDATE_RETRY**: Retry automatic image validation.
 	//
-	// - **IMAGE_MANUAL**: manual image creation
+	// - **IMAGE_MANUAL**: Manual image creation.
 	//
-	// - **IMAGE_MANUAL_RETRY**: retry of manual image creation
+	// - **IMAGE_MANUAL_RETRY**: Retry manual image creation.
 	//
-	// - **DESKTOP_CUSTOM_IMAGE**: cloud desktop custom image creation
+	// - **DESKTOP_CUSTOM_IMAGE**: Create cloud desktop custom image.
 	//
-	// - **DESKTOP_CUSTOM_IMAGE_RETRY**: retry of cloud desktop custom image creation
+	// - **DESKTOP_CUSTOM_IMAGE_RETRY**: Retry creating cloud desktop custom image.
 	//
-	// - **DESKTOP_SYNC_IMAGE**: cloud desktop image synchronization across regions
+	// - **DESKTOP_SYNC_IMAGE**: Synchronize cloud desktop image across regions.
 	//
-	// - **DESKTOP_SYNC_IMAGE_RETRY**: retry of cloud desktop image synchronization across regions
+	// - **DESKTOP_SYNC_IMAGE_RETRY**: Retry synchronizing cloud desktop image across regions.
 	//
-	// - **IMAGE_DISTRIBUTE**: image distribution to multiple regions
+	// - **IMAGE_DISTRIBUTE**: Distribute image to multiple regions.
 	//
-	// - **IMAGE_DISTRIBUTE_RETRY**: retry of image distribution
+	// - **IMAGE_DISTRIBUTE_RETRY**: Retry image distribution.
 	//
-	// - **IMAGE_FROM_INSTANCE**: image creation based on an instance
+	// - **IMAGE_FROM_INSTANCE**: Create image based on instance.
 	//
-	// - **IMAGE_FROM_INSTANCE_RETRY**: retry of image creation based on an instance
+	// - **IMAGE_FROM_INSTANCE_RETRY**: Retry creating image based on instance.
 	//
-	// - **SNAPSHOT_DISTRIBUTE**: snapshot distribution to multiple regions
+	// - **SNAPSHOT_DISTRIBUTE**: Distribute snapshot to multiple regions.
 	//
-	// - **SNAPSHOT_DISTRIBUTE_RETRY**: retry of snapshot distribution
+	// - **SNAPSHOT_DISTRIBUTE_RETRY**: Retry snapshot distribution.
 	//
-	// - **SNAPSHOT_FROM_DISK**: snapshot creation based on a disk
+	// - **SNAPSHOT_FROM_DISK**: Create snapshot based on disk.
 	//
-	// - **SNAPSHOT_FROM_DISK_RETRY**: retry of snapshot creation based on a disk
+	// - **SNAPSHOT_FROM_DISK_RETRY**: Retry creating snapshot based on disk.
 	//
-	// - **IMAGE_CLEAN_AND_CREATE**: temporary instance creation based on an image, cleanup, and final image creation
+	// - **IMAGE_CLEAN_AND_CREATE**: Create a temporary instance based on an image, and create the final image after cleanup.
 	//
-	// - **IMAGE_CLEAN_AND_CREATE_RETRY**: retry of final image creation after cleanup
+	// - **IMAGE_CLEAN_AND_CREATE_RETRY**: Retry creating the final image after cleanup.
 	//
 	// example:
 	//
@@ -480,7 +480,7 @@ func (s *GetTaskResponseBodyData) Validate() error {
 }
 
 type GetTaskResponseBodyDataResourceList struct {
-	// The resource content corresponding to ResourceType. For the URL type, specify or return an accessible resource address.
+	// The resource content corresponding to ResourceType. For the URL type, enter or return an accessible resource address.
 	//
 	// example:
 	//
@@ -490,11 +490,11 @@ type GetTaskResponseBodyDataResourceList struct {
 	//
 	// Valid values:
 	//
-	// - **HOSTED**: hosted resource
+	// - **HOSTED**: Hosted resource.
 	//
-	// - **TEXT**: text resource
+	// - **TEXT**: Text resource.
 	//
-	// - **URL**: resource provided through a URL
+	// - **URL**: Resource provided through a URL.
 	//
 	// example:
 	//
@@ -533,13 +533,13 @@ func (s *GetTaskResponseBodyDataResourceList) Validate() error {
 }
 
 type GetTaskResponseBodyDataTaskStepList struct {
-	// The end time of the step. The time is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds. This parameter may not be returned if the step has not ended.
+	// The end time of the step. It is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds. This field may not be returned if the step has not ended.
 	//
 	// example:
 	//
 	// 1790130491000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the step. The time is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds.
+	// The start time of the step. It is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -559,13 +559,13 @@ type GetTaskResponseBodyDataTaskStepList struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ISO 8601 string of the step end time, including the time zone offset. In the example, +08:00 indicates UTC+8. This parameter represents the same time as EndTime and is parsed according to the offset in the returned value. This parameter may not be returned if the step has not ended.
+	// The ISO 8601 string of the step end time, including the time zone offset. In the example, +08:00 indicates UTC+8. It represents the same time as EndTime and is parsed according to the offset in the return value. This field may not be returned if the step has not ended.
 	//
 	// example:
 	//
 	// 2026-09-23T10:28:11+08:00
 	StepEndTime *string `json:"StepEndTime,omitempty" xml:"StepEndTime,omitempty"`
-	// The ISO 8601 string of the step start time, including the time zone offset. In the example, +08:00 indicates UTC+8. This parameter represents the same time as StartTime and is parsed according to the offset in the returned value.
+	// The ISO 8601 string of the step start time, including the time zone offset. In the example, +08:00 indicates UTC+8. It represents the same time as StartTime and is parsed according to the offset in the return value.
 	//
 	// example:
 	//
@@ -577,7 +577,7 @@ type GetTaskResponseBodyDataTaskStepList struct {
 	//
 	// [code=Builder.Failed,httpStatusCode=<null>,message=Builder environment deploy failed.]
 	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
-	// The task step identifier corresponding to this record. You can call the ListTaskStep operation to query the image creation and application adaptation steps.
+	// The task step identifier corresponding to this record. You can call ListTaskStep to query the image creation and application adaptation steps.
 	//
 	// example:
 	//

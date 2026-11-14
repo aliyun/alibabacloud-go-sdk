@@ -30,7 +30,7 @@ type ListRelatedResourceRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of delivery groups returned per page, which is the same as the PageSize request parameter.
+	// The number of delivery groups returned per page. This value is the same as the PageSize request parameter.
 	//
 	// example:
 	//

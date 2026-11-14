@@ -26,31 +26,31 @@ type iListAuthorizedUserGroupsRequest interface {
 }
 
 type ListAuthorizedUserGroupsRequest struct {
-	// The ID of the delivery group.
+	// The ID of the app instance group.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the delivery group set. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
+	// The ID of the app instance group set. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
 	//
 	// example:
 	//
 	// set-3jm9d0abc00example
 	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
-	// The ID of the user group. This parameter is used for exact match.
+	// The ID of the user group. Exact match is supported.
 	//
 	// example:
 	//
 	// ug-00001
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group. This parameter is used for fuzzy match.
+	// The name of the user group. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// UserGroup001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The page number, starting from 1.
+	// The page number. Pages start from 1.
 	//
 	// This parameter is required.
 	//

@@ -22,21 +22,21 @@ type iGetUploadInfoResponseBody interface {
 }
 
 type GetUploadInfoResponseBody struct {
-	// The return code of the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+	// The response code of the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The file upload endpoint and temporary credentials.
+	// The file upload address and temporary credentials.
 	Data *GetUploadInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the API.
+	// The processing message returned by the API.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request. It is used to locate and troubleshoot the request.
+	// The request ID, which is used to locate and troubleshoot the request.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type GetUploadInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: Successful.
 	//
-	// - false: The call fails.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type GetUploadInfoResponseBodyData struct {
 	//
 	// STS.NUexample****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The AccessKey Secret of the STS temporary access credential. It is used together with AccessKeyId and StsToken.
+	// The AccessKey secret of the STS temporary access credential. This parameter is used together with AccessKeyId and StsToken.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type GetUploadInfoResponseBodyData struct {
 	//
 	// 123
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// The OSS directory prefix where files are allowed to be uploaded. The path of the uploaded object must be located under this directory.
+	// The OSS directory prefix where files are allowed to be uploaded. The path of the uploaded object must be located in this directory.
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// The OSS endpoint for public network access.
 	//
@@ -155,7 +155,7 @@ type GetUploadInfoResponseBodyData struct {
 	//
 	// oss-cn-shanghai-internal.aliyuncs.com
 	OssPointInternal *string `json:"OssPointInternal,omitempty" xml:"OssPointInternal,omitempty"`
-	// The STS temporary security token. It is used together with AccessKeyId and AccessKeySecret for file uploads.
+	// The STS temporary security token. This parameter is used together with AccessKeyId and AccessKeySecret for file upload.
 	//
 	// example:
 	//

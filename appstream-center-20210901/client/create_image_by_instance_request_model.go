@@ -34,7 +34,7 @@ type iCreateImageByInstanceRequest interface {
 }
 
 type CreateImageByInstanceRequest struct {
-	// This parameter is currently applicable only to cloud desktop scenarios. Specifies whether to clear user personal data. If you set this parameter to true, the created image clears data in all directories under C:\\Users except the Administrator and Public directories.
+	// This parameter is applicable only to cloud desktop instances. Specifies whether to clear personal user data. If you set this parameter to true, the created image clears the data in all directories under C:\\Users except the Administrator and Public directories.
 	//
 	// example:
 	//
@@ -46,25 +46,25 @@ type CreateImageByInstanceRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Specifies whether to copy user profile data.
+	// Specifies whether to copy personal user data.
 	//
 	// example:
 	//
 	// false
 	CopyProfile *bool `json:"CopyProfile,omitempty" xml:"CopyProfile,omitempty"`
-	// The image description.
+	// The description of the image.
 	//
 	// example:
 	//
 	// my test image v1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of disk data included in the image. By default, the image includes both the system cloud disk and data cloud disk of the instance.
+	// The types of disk data included in the image. By default, the image includes the system cloud disk and data cloud disks of the instance.
 	//
 	// example:
 	//
 	// ALL
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateImageByInstanceRequest struct {
 	//
 	// ws-0buj1s9gm******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type.
+	// The type of the instance.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type CreateImageByInstanceRequest struct {
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The sub-instance ID. This parameter does not apply to cloud desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
+	// The sub-instance ID. This parameter is not applicable to cloud desktop scenarios. In workstation scenarios, you must specify the persistent session ID to locate a specific instance.
 	//
 	// example:
 	//
 	// p-0cc7s3n1l*****
 	SubInstanceId *string `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
-	// The tag list.
+	// The list of tags.
 	TagList []*CreateImageByInstanceRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 

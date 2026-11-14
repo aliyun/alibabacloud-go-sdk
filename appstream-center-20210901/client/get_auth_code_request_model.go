@@ -42,11 +42,11 @@ type GetAuthCodeRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The type of resource to connect to.
+	// The type of the resource to connect to. Valid values:
 	//
-	// - **BUILDER**: Connects to the creation environment.
+	// - **BUILDER**: connect to the creation environment
 	//
-	// - **VALIDATE**: Connects to the validation environment.
+	// - **VALIDATE**: connect to the validation environment
 	//
 	// The corresponding environment must be created and in a connectable state.
 	//
@@ -64,55 +64,53 @@ type GetAuthCodeRequest struct {
 	//
 	// tid-bp1example****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The actual task type. It must match the creation or validation task corresponding to the TaskId. Use the TaskType returned by GetTask. The task must also have connectable creation or validation resources. You cannot obtain an authorization code for distribution or snapshot tasks that do not have connection resources.
+	// The actual task type. It must match the creation or validation task corresponding to the TaskId. Use the TaskType returned by GetTask. The task must also have connectable creation or validation resources. You cannot obtain an authorization code for distribution or snapshot tasks that do not have connection resources. Valid values:
 	//
-	// Recognized task types:
+	// - **AUTO_CREATE_IMAGE_VHD**: automatically create a VHD image
 	//
-	// - **AUTO_CREATE_IMAGE_VHD**: Automatically creates a VHD image.
+	// - **RETRY_CREATE_IMAGE_VHD**: retry VHD image creation
 	//
-	// - **RETRY_CREATE_IMAGE_VHD**: Retries VHD image creation.
+	// - **AUTO_CREATE_VHD**: automatically create a VHD
 	//
-	// - **AUTO_CREATE_VHD**: Automatically creates a VHD.
+	// - **RETRY_VHD**: retry VHD creation
 	//
-	// - **RETRY_VHD**: Retries VHD creation.
+	// - **AUTO_VALIDATE_VHD**: automatically validate a VHD
 	//
-	// - **AUTO_VALIDATE_VHD**: Automatically validates a VHD.
+	// - **RETRY_VALIDATE_VHD**: retry VHD validation
 	//
-	// - **RETRY_VALIDATE_VHD**: Retries VHD validation.
+	// - **APPLY_VHD_BUILDER**: apply for a VHD application recording environment
 	//
-	// - **APPLY_VHD_BUILDER**: Applies for a VHD application recording environment.
+	// - **ADAPT_AUTO**: automatically create application adaptation
 	//
-	// - **ADAPT_AUTO**: Automatically creates application adaptation.
+	// - **ADAPT_AUTO_RETRY**: retry automatic application adaptation creation
 	//
-	// - **ADAPT_AUTO_RETRY**: Retries automatic application adaptation creation.
+	// - **ADAPT_MANUAL**: manually create application adaptation
 	//
-	// - **ADAPT_MANUAL**: Manually creates application adaptation.
+	// - **ADAPT_MANUAL_RETRY**: retry manual application adaptation creation
 	//
-	// - **ADAPT_MANUAL_RETRY**: Retries manual application adaptation creation.
+	// - **DESKTOP_CUSTOM_IMAGE**: create a custom image for cloud desktop
 	//
-	// - **DESKTOP_CUSTOM_IMAGE**: Creates a custom image for cloud desktops.
+	// - **DESKTOP_CUSTOM_IMAGE_RETRY**: retry custom image creation for cloud desktop
 	//
-	// - **DESKTOP_CUSTOM_IMAGE_RETRY**: Retries custom image creation for cloud desktops.
+	// - **IMAGE_MANUAL**: manually create an image
 	//
-	// - **IMAGE_MANUAL**: Manually creates an image.
+	// - **IMAGE_MANUAL_RETRY**: retry manual image creation
 	//
-	// - **IMAGE_MANUAL_RETRY**: Retries manual image creation.
+	// - **IMAGE_FROM_INSTANCE**: create an image from an instance
 	//
-	// - **IMAGE_FROM_INSTANCE**: Creates an image based on an instance.
+	// - **IMAGE_FROM_INSTANCE_RETRY**: retry image creation from an instance
 	//
-	// - **IMAGE_FROM_INSTANCE_RETRY**: Retries image creation based on an instance.
+	// - **IMAGE_DISTRIBUTE**: distribute an image to multiple regions
 	//
-	// - **IMAGE_DISTRIBUTE**: Distributes an image to multiple regions.
+	// - **IMAGE_DISTRIBUTE_RETRY**: retry image distribution
 	//
-	// - **IMAGE_DISTRIBUTE_RETRY**: Retries image distribution.
+	// - **SNAPSHOT_DISTRIBUTE**: distribute a snapshot to multiple regions
 	//
-	// - **SNAPSHOT_DISTRIBUTE**: Distributes a snapshot to multiple regions.
+	// - **SNAPSHOT_DISTRIBUTE_RETRY**: retry snapshot distribution
 	//
-	// - **SNAPSHOT_DISTRIBUTE_RETRY**: Retries snapshot distribution.
+	// - **SNAPSHOT_FROM_DISK**: create a snapshot from a disk
 	//
-	// - **SNAPSHOT_FROM_DISK**: Creates a snapshot based on a disk.
-	//
-	// - **SNAPSHOT_FROM_DISK_RETRY**: Retries snapshot creation based on a disk.
+	// - **SNAPSHOT_FROM_DISK_RETRY**: retry snapshot creation from a disk
 	//
 	// This parameter is required.
 	//

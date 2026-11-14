@@ -22,7 +22,7 @@ type iStartTaskForDistributeImageResponseBody interface {
 }
 
 type StartTaskForDistributeImageResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type StartTaskForDistributeImageResponseBody struct {
 	//
 	// tid-06xnr5lyp77e7****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 419F31B9-1FDF-5644-ABA3-D00026FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -58,7 +58,7 @@ type DescribeEventsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of events that meet all filter conditions within the 30-day retrievable window. Unit: entries.
+	// The total number of events that meet all filter conditions within the 30-day retrievable window. Unit: records.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribeEventsResponseBodyEventList struct {
 	//
 	// R&D workstation group
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The event detail text. The content varies based on the `EventType` and may be empty. For example, a session release event may return a JSON text that describes the release cause.
+	// The event detail text. The content varies with `EventType` and may be empty. For example, a session release event may return JSON text that describes the release reason.
 	//
 	// example:
 	//

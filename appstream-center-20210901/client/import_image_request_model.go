@@ -40,7 +40,7 @@ type iImportImageRequest interface {
 }
 
 type ImportImageRequest struct {
-	// The business region ID. Example: cn-hangzhou.
+	// The business region ID, such as cn-hangzhou.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ImportImageRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The boot mode of the image. Valid values:
+	// The image boot mode. Valid values:
 	//
-	// - BIOS: legacy BIOS boot.
+	// - BIOS: Legacy BIOS boot.
 	//
 	// - UEFI: UEFI boot.
 	//
@@ -66,19 +66,19 @@ type ImportImageRequest struct {
 	//
 	// example:
 	//
-	// Custom cloud desktop image
+	// Custom Cloud Desktop image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the image security check. Valid values:
 	//
-	// - true: enables the security check.
+	// - true: Enabled.
 	//
-	// - false: disables the security check.
+	// - false: Disabled.
 	EnableSecurityCheck *bool `json:"EnableSecurityCheck,omitempty" xml:"EnableSecurityCheck,omitempty"`
 	// Specifies whether the image is a GPU image. Valid values:
 	//
-	// - true: yes.
+	// - true: Yes.
 	//
-	// - false: no.
+	// - false: No.
 	GpuCategory *bool `json:"GpuCategory,omitempty" xml:"GpuCategory,omitempty"`
 	// The GPU driver type. Valid values:
 	//
@@ -86,7 +86,7 @@ type ImportImageRequest struct {
 	//
 	// - gpu_grid12: GRID 12 driver.
 	//
-	// - gpu_custom: custom driver.
+	// - gpu_custom: Custom driver.
 	//
 	// example:
 	//
@@ -100,11 +100,11 @@ type ImportImageRequest struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The operating system license type. Valid values:
 	//
-	// - Auto: automatically selected.
+	// - Auto: Automatically selected.
 	//
-	// - Aliyun: provided by Alibaba Cloud.
+	// - Aliyun: Provided by Alibaba Cloud.
 	//
-	// - BYOL: Bring Your Own License.
+	// - BYOL: Bring your own license.
 	//
 	// Default value: Auto.
 	//
@@ -120,13 +120,13 @@ type ImportImageRequest struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The complete OSS object URL of the image file to be imported, including the bucket domain name and file path. The file must be uploaded before you call this operation. Example: https://BucketName.oss-cn-hangzhou.aliyuncs.com/FilePath.
 	OssObjectPath *string `json:"OssObjectPath,omitempty" xml:"OssObjectPath,omitempty"`
-	// The product type. Currently, only CloudDesktop (cloud desktop) is supported.
+	// The product type. Currently, only CloudDesktop (Cloud Desktop) is supported.
 	//
 	// example:
 	//
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The connection protocol of the image. Valid values: ASP and HDX. Default value: ASP.
+	// The image connection protocol. Valid values: ASP and HDX. Default value: ASP.
 	//
 	// example:
 	//

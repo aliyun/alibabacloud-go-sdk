@@ -36,7 +36,7 @@ type ListBrowserInstanceGroupResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The current configuration of the browser.
+	// The current configurations of the browser.
 	BrowserConfig *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfig `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty" type:"Struct"`
 	// The ID of the cloud browser instance group.
 	//
@@ -203,9 +203,9 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The policy configuration returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
+	// The policy configurations returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
 	Policy *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The status of the browser group. Valid values:
+	// The browser group status. Valid values:
 	//
 	// - `DEPLOYING`: Deploying.
 	//
@@ -229,13 +229,13 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sub-billing method. In the MAU scenario, `mau` is returned, which indicates billing by monthly active users.
+	// The sub-billing type. In the MAU scenario, `mau` is returned, which indicates billing by monthly active users.
 	//
 	// example:
 	//
 	// mau
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// Indicates whether mixed authorization of users and user groups is supported. A value of `true` indicates that it is supported, and a value of `false` indicates that it is not supported. Evaluate this parameter based on the current authorization mode.
+	// Specifies whether mixed authorization of users and user groups is supported. A value of `true` indicates that mixed authorization is supported, and a value of `false` indicates that mixed authorization is not supported. Evaluate this parameter based on the current authorization mode.
 	//
 	// example:
 	//
@@ -255,15 +255,15 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels struct {
 	//
 	// Pro
 	Tier *string `json:"Tier,omitempty" xml:"Tier,omitempty"`
-	// The session timer configuration returned. This is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
+	// The session timer configuration returned. This parameter is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
 	Timers []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 	// The current authorization mode. Valid values:
 	//
-	// - `Mixed`: Mixed authorization of users and user groups.
+	// - `Mixed`: mixed authorization of users and user groups.
 	//
-	// - `User`: User authorization.
+	// - `User`: user authorization.
 	//
-	// - `UserGroup`: User group authorization.
+	// - `UserGroup`: user group authorization.
 	//
 	// example:
 	//
@@ -625,7 +625,7 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfig
 	//
 	// true
 	CookiesSync *string `json:"CookiesSync,omitempty" xml:"CookiesSync,omitempty"`
-	// The homepage URL that opens when the browser starts.
+	// The URL of the homepage that opens when the browser starts.
 	//
 	// example:
 	//
@@ -769,7 +769,7 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsNetwork struc
 	//
 	// - `ALLOW_LIST`: Allows only websites in the whitelist.
 	//
-	// The returned value reflects the existing configuration of the browser instance group.
+	// The returned value reflects the existing configurations of the browser instance group.
 	//
 	// example:
 	//
@@ -781,7 +781,7 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsNetwork struc
 	//
 	// cn-hangzhou+dir-843734****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where a custom network is configured.
+	// The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where custom networks are configured.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -841,7 +841,7 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy struct
 	ClientTypes []*ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// Sets the clipboard transfer direction, content type, and size limit. `read` indicates transfer from the local PC to the cloud browser, and `write` indicates transfer from the cloud browser to the local PC.
 	ClipboardPolicy *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
-	// The dual-screen switch for the cloud browser.
+	// The dual-screen switch for cloud browsers.
 	//
 	// example:
 	//
@@ -1089,15 +1089,15 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyCli
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClipboardPolicy struct {
-	// The clipboard transfer direction. The value is not case-sensitive. Valid values:
+	// The clipboard transfer direction. The value is case-insensitive. Valid values:
 	//
-	// - `off`: Prohibits transfer in both directions.
+	// - `off`: Disables transfer in both directions.
 	//
 	// - `read`: Allows copy and paste from the local PC to the cloud browser.
 	//
 	// - `write`: Allows copy and paste from the cloud browser to the local PC.
 	//
-	// - `readwrite`: Allows transfer in both directions.
+	// - `readwrite`: Enables transfer in both directions.
 	//
 	// example:
 	//
@@ -1157,13 +1157,13 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyVid
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyWatermarkPolicy struct {
-	// The watermark switch. The value is case-insensitive. Valid values:
+	// Specifies whether to enable the watermark. Values are case-insensitive. Valid values:
 	//
 	// - `ON`: Enables the watermark.
 	//
 	// - `OFF`: Disables the watermark.
 	//
-	// If the watermark is disabled, the watermark content type list is not used.
+	// When the watermark is disabled, the watermark content type list is not used.
 	//
 	// example:
 	//
@@ -1171,11 +1171,11 @@ type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyWaterma
 	WatermarkSwitch *string `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
 	// The list of watermark content types. Valid values:
 	//
-	// - `EndUserId`: The user identifier.
+	// - `EndUserId`: the user identifier.
 	//
-	// - `InstanceGroupId`: The delivery group identifier.
+	// - `InstanceGroupId`: the delivery group identifier.
 	//
-	// - `ClientTime`: The current time of the client.
+	// - `ClientTime`: the current time of the client.
 	//
 	// Use the watermark types supported by the browser and the client.
 	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
@@ -1302,7 +1302,7 @@ func (s *ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers) V
 }
 
 type ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit struct {
-	// The number of user quotas.
+	// The user quota.
 	//
 	// example:
 	//

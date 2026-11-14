@@ -22,7 +22,7 @@ type iCreateImageByInstanceResponseBody interface {
 }
 
 type CreateImageByInstanceResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type CreateImageByInstanceResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned object.
 	Data *CreateImageByInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned if the request failed.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
 	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateImageByInstanceResponseBody) Validate() error {
 }
 
 type CreateImageByInstanceResponseBodyData struct {
-	// The WUYING image ID.
+	// The ID of the WUYING image.
 	//
 	// example:
 	//

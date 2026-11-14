@@ -20,7 +20,7 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
-	// The delivery group ID.
+	// The ID of the app instance group.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListNodesRequest struct {
 	//
 	// aig-53fvrq1oanz6c****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The page number of the query results to display, starting from 1.
+	// The number of the page to return. Pages start from 1.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListNodesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of query results per page. Valid values: 1 to 200.
+	// The number of entries to return on each page. Valid values: 1 to 200.
 	//
 	// This parameter is required.
 	//

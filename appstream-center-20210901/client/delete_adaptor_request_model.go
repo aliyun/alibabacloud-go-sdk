@@ -28,25 +28,25 @@ type DeleteAdaptorRequest struct {
 	//
 	// adt-bp1example****
 	AdaptorId *string `json:"AdaptorId,omitempty" xml:"AdaptorId,omitempty"`
-	// The ID of the application. **Required**. It must match the application corresponding to AdaptorId.
+	// The application ID. **Required**. It must correspond to the same application as AdaptorId.
 	//
 	// example:
 	//
 	// app-bp1example****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the application version. **Required**. It must match the application version corresponding to AdaptorId. This parameter is not the image version ID.
+	// The application version ID. **Required**. It must correspond to the same application version as AdaptorId. This parameter is not the image version ID.
 	//
 	// example:
 	//
 	// apv-bp1example****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	// The ID of the image to be dissociated. **Must be provided together with VersionId**. If both parameters are not specified at the same time, the adaptation deletion process starts.
+	// The ID of the image to be dissociated. **Must be provided together with VersionId**. If they are not both specified, the adaptation deletion process is initiated.
 	//
 	// example:
 	//
 	// imgc-bp1example****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the image version to be dissociated. It must be provided together with ImageId and belong to the specified image.
+	// The ID of the image version to be dissociated. It must be provided together with ImageId and belong to the image.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iListBindInfoResponseBody interface {
 }
 
 type ListBindInfoResponseBody struct {
-	// The list of binding information returned.
+	// The list of returned binding information.
 	BindInfoModels []*ListBindInfoResponseBodyBindInfoModels `json:"BindInfoModels,omitempty" xml:"BindInfoModels,omitempty" type:"Repeated"`
-	// The page number of the query results currently displayed.
+	// The current page number of the query results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of query results per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//

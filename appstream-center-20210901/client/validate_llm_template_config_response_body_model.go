@@ -62,9 +62,9 @@ func (s *ValidateLlmTemplateConfigResponseBody) Validate() error {
 }
 
 type ValidateLlmTemplateConfigResponseBodyData struct {
-	// Indicates whether the configuration is valid. The value is true if all validation checks pass.
+	// Indicates whether the configuration is valid. The value is true if all validation items pass.
 	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
-	// The list of validation errors. This list is empty when Valid is true.
+	// The list of validation errors. This list is empty if Valid is true.
 	ValidationErrors []*ValidateLlmTemplateConfigResponseBodyDataValidationErrors `json:"ValidationErrors,omitempty" xml:"ValidationErrors,omitempty" type:"Repeated"`
 }
 

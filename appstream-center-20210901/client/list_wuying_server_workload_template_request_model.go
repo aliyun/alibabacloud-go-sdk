@@ -18,13 +18,13 @@ type iListWuyingServerWorkloadTemplateRequest interface {
 }
 
 type ListWuyingServerWorkloadTemplateRequest struct {
-	// A compatibility field. The current version does not read this parameter. The operation returns a fixed maximum of the first 100 templates.
+	// The compatibility field. The current version does not read this parameter. This operation returns a fixed maximum of the first 100 templates.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A compatibility field. The current version does not read this parameter and does not support token-based pagination.
+	// The compatibility field. The current version does not read this parameter and does not support token-based pagination.
 	//
 	// example:
 	//

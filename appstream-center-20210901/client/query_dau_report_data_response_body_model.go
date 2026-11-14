@@ -26,7 +26,7 @@ type iQueryDauReportDataResponseBody interface {
 }
 
 type QueryDauReportDataResponseBody struct {
-	// The business status code. A value of 200 indicates that the request is processed successfully. Other values indicate that the processing failed.
+	// The business status code. A value of `200` indicates that the request is successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type QueryDauReportDataResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of daily active user report data.
 	DauReportDataModel []*QueryDauReportDataResponseBodyDauReportDataModel `json:"DauReportDataModel,omitempty" xml:"DauReportDataModel,omitempty" type:"Repeated"`
-	// The description of the request processing result. Typically, success is returned if the request is successful.
+	// The description of the request processing result. Typically, `success` is returned when the request is successful.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type QueryDauReportDataResponseBodyDauReportDataModel struct {
 	//
 	// 128
 	Dau *int64 `json:"Dau,omitempty" xml:"Dau,omitempty"`
-	// The statistics date. Format: yyyy-MM-dd. The string does not contain a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+	// The statistics date. Format: `yyyy-MM-dd`. The string does not contain a time zone and is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//

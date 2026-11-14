@@ -22,7 +22,7 @@ type iGetEffectiveImageByIdResponseBody interface {
 }
 
 type GetEffectiveImageByIdResponseBody struct {
-	// The response code returned by the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+	// The status code returned by the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetEffectiveImageByIdResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID used to locate and troubleshoot the request.
+	// The request ID, which is used to locate and troubleshoot the request.
 	//
 	// example:
 	//
@@ -123,17 +123,7 @@ type GetEffectiveImageByIdResponseBodyData struct {
 	//
 	// 100931896542****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The business line to which the image belongs. Valid values:
-	//
-	// - 1: Basic business.
-	//
-	// - 2: Personal Edition.
-	//
-	// - 3: Cloud Office.
-	//
-	// - 4: Cloud Streaming.
-	//
-	// - 10: Standard Edition.
+	// The business line to which the image belongs. 1: basic business. 2: Personal Edition. 3: Cloud Office. 4: Cloud Streaming. 10: Standard Edition.
 	//
 	// example:
 	//
@@ -163,7 +153,7 @@ type GetEffectiveImageByIdResponseBodyData struct {
 	//
 	// 2026-03-10T01:33:37Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last update time. The time follows the RFC 3339 format. The Z in the example indicates the UTC time zone.
+	// The last update time. The time is in RFC 3339 format. The Z in the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -181,7 +171,7 @@ type GetEffectiveImageByIdResponseBodyData struct {
 	//
 	// img-bp1234567890abcde
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The details of the image version that actually takes effect in each region. For the same region, the configured newer version takes precedence.
+	// The details of the image versions that actually take effect in each region. For the same region, the configured newer version takes precedence.
 	ImageInfoRegionModelList []*GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList `json:"ImageInfoRegionModelList,omitempty" xml:"ImageInfoRegionModelList,omitempty" type:"Repeated"`
 	// The image name.
 	//
@@ -193,13 +183,13 @@ type GetEffectiveImageByIdResponseBodyData struct {
 	ImageRegionList []*string `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
 	// The image type. Valid values:
 	//
-	// - System: System image.
+	// - System: system images.
 	//
-	// - User: Custom image.
+	// - User: custom images.
 	//
-	// - Shared: Shared image.
+	// - Shared: shared images.
 	//
-	// - Community: Community image.
+	// - Community: community images.
 	//
 	// example:
 	//
@@ -237,31 +227,13 @@ type GetEffectiveImageByIdResponseBodyData struct {
 	//
 	// a7b3c0c8-xxxx
 	OnlineVersionVolumeEncryptionKey *string `json:"OnlineVersionVolumeEncryptionKey,omitempty" xml:"OnlineVersionVolumeEncryptionKey,omitempty"`
-	// The operating system type of the image. Valid values:
-	//
-	// - Windows: Windows operating system.
-	//
-	// - Linux: Linux operating system.
-	//
-	// - Android: Android operating system.
-	//
-	// - Unknown: Unknown operating system.
+	// The operating system type of the image. Windows: Windows system. Linux: Linux system. Android: Android system. Unknown: unknown system.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The image packaging type. Valid values:
-	//
-	// - Ecs: ECS image.
-	//
-	// - Vhd: Virtual disk image.
-	//
-	// - Container: Container image.
-	//
-	// - Ecs_Container: Combined ECS and container image.
-	//
-	// - K8s_Node: Kubernetes node image.
+	// The image packaging type. Ecs: ECS image. Vhd: virtual disk image. Container: container image. Ecs_Container: combined ECS and container image. K8s_Node: Kubernetes node image.
 	//
 	// example:
 	//
@@ -273,39 +245,25 @@ type GetEffectiveImageByIdResponseBodyData struct {
 	//
 	// imgc-xxx
 	ParentImageId *string `json:"ParentImageId,omitempty" xml:"ParentImageId,omitempty"`
-	// The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
+	// The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
 	//
 	// example:
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The connection protocol used by the image. Valid values:
-	//
-	// - ASP: Alibaba Cloud Streaming Protocol.
-	//
-	// - HDX: HDX protocol.
+	// The connection protocol used by the image. ASP: Alibaba Cloud Streaming Protocol. HDX: HDX protocol.
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The rating score of the image, out of 100.
+	// The rating score of the image, with a maximum score of 100.
 	//
 	// example:
 	//
 	// 95
 	Rating *int32 `json:"Rating,omitempty" xml:"Rating,omitempty"`
-	// The image status. Valid values:
-	//
-	// - INIT: Initializing.
-	//
-	// - CREATING: Creating.
-	//
-	// - AVAILABLE: Available.
-	//
-	// - CREATE_FAILED: Creation failed.
-	//
-	// - DELETE: Deleted.
+	// The image status. INIT: initializing. CREATING: creating. AVAILABLE: available. CREATE_FAILED: creation failed. DELETE: deleted.
 	//
 	// example:
 	//
@@ -630,17 +588,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// iv-adbef134****
 	BaseImageVersion *string `json:"BaseImageVersion,omitempty" xml:"BaseImageVersion,omitempty"`
-	// The business line to which the image belongs. Valid values:
-	//
-	// - 1: Basic business.
-	//
-	// - 2: Personal Edition.
-	//
-	// - 3: Cloud Office.
-	//
-	// - 4: Cloud Streaming.
-	//
-	// - 10: Standard Edition.
+	// The business line to which the image belongs. 1: basic business. 2: Personal Edition. 3: Cloud Office. 4: Cloud Streaming. 10: Standard Edition.
 	//
 	// example:
 	//
@@ -672,7 +620,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// 2023-09-12T13:01:09Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last update time. The time follows the RFC 3339 format. The Z in the example indicates the UTC time zone.
+	// The last update time. The time is in RFC 3339 format. The Z in the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -684,7 +632,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// BUILDER_MANUAL
 	ImageCreateMode *string `json:"ImageCreateMode,omitempty" xml:"ImageCreateMode,omitempty"`
-	// The image extension information, including disk specifications and GPU driver information. VHD or Container images use the extension information of their base image and base version.
+	// The image extended information, including disk specifications and GPU driver information. VHD or Container images use the extended information of their base image and base version.
 	//
 	// example:
 	//
@@ -712,13 +660,13 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	ImageSource *string `json:"ImageSource,omitempty" xml:"ImageSource,omitempty"`
 	// The image type. Valid values:
 	//
-	// - System: System image.
+	// - System: system images.
 	//
-	// - User: Custom image.
+	// - User: custom images.
 	//
-	// - Shared: Shared image.
+	// - Shared: shared images.
 	//
-	// - Community: Community image.
+	// - Community: community images.
 	//
 	// example:
 	//
@@ -736,7 +684,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// iv-1wder3ere****
 	LatestVersionId *string `json:"LatestVersionId,omitempty" xml:"LatestVersionId,omitempty"`
-	// Indicates whether the returned version is the active version. Valid values: true: Yes. false: No.
+	// Indicates whether the returned version is the online version. Valid values: true: Yes. false: No.
 	//
 	// example:
 	//
@@ -748,31 +696,13 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// iv-1wder3ere****
 	OnlineVersionId *string `json:"OnlineVersionId,omitempty" xml:"OnlineVersionId,omitempty"`
-	// The operating system type of the image. Valid values:
-	//
-	// - Windows: Windows operating system.
-	//
-	// - Linux: Linux operating system.
-	//
-	// - Android: Android operating system.
-	//
-	// - Unknown: Unknown operating system.
+	// The operating system type of the image. Windows: Windows system. Linux: Linux system. Android: Android system. Unknown: unknown system.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The image packaging type. Valid values:
-	//
-	// - Ecs: ECS image.
-	//
-	// - Vhd: Virtual disk image.
-	//
-	// - Container: Container image.
-	//
-	// - Ecs_Container: Combined ECS and container image.
-	//
-	// - K8s_Node: Kubernetes node image.
+	// The image packaging type. Ecs: ECS image. Vhd: virtual disk image. Container: container image. Ecs_Container: combined ECS and container image. K8s_Node: Kubernetes node image.
 	//
 	// example:
 	//
@@ -796,13 +726,13 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// 33
 	Platform *int32 `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The name of the operating system platform, which corresponds to Platform.
+	// The operating system platform name, which corresponds to Platform.
 	//
 	// example:
 	//
 	// Windows Server 2022
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	// The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
+	// The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
 	//
 	// example:
 	//
@@ -814,11 +744,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// {}
 	PropertyMap map[string]*string `json:"PropertyMap,omitempty" xml:"PropertyMap,omitempty"`
-	// The connection protocol used by the image. Valid values:
-	//
-	// - ASP: Alibaba Cloud Streaming Protocol.
-	//
-	// - HDX: HDX protocol.
+	// The connection protocol used by the image. ASP: Alibaba Cloud Streaming Protocol. HDX: HDX protocol.
 	//
 	// example:
 	//
@@ -830,17 +756,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The image status. Valid values:
-	//
-	// - INIT: Initializing.
-	//
-	// - CREATING: Creating.
-	//
-	// - AVAILABLE: Available.
-	//
-	// - CREATE_FAILED: Creation failed.
-	//
-	// - DELETE: Deleted.
+	// The image status. INIT: initializing. CREATING: creating. AVAILABLE: available. CREATE_FAILED: creation failed. DELETE: deleted.
 	//
 	// example:
 	//
@@ -1216,7 +1132,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBOL
 	//
 	// adt-13ff3****
 	AdaptorId *string `json:"AdaptorId,omitempty" xml:"AdaptorId,omitempty"`
-	// The adapter message.
+	// The adaptor message.
 	//
 	// example:
 	//
@@ -1288,25 +1204,25 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBOL
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The name of the OSS bucket where the application files are stored.
+	// The name of the OSS bucket where the application files are located.
 	//
 	// example:
 	//
 	// xiaowutest-j
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The level-2 application category, such as design software, office, or browser. This parameter is not available to the public.
+	// The level-2 application category, such as design software, office, and browsers. This parameter is not available to the public.
 	//
 	// example:
 	//
 	// 123
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The level-1 application category, such as cloud application or cloud game. This parameter is not available to the public.
+	// The level-1 application category, such as cloud applications and cloud games. This parameter is not available to the public.
 	//
 	// example:
 	//
 	// 1
 	CategoryType *int32 `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// The control parameter. This parameter can be configured by tenants and internal administrators and is not available to the public.
+	// The control parameters that can be configured by tenants and administrators. This parameter is not available to the public.
 	//
 	// example:
 	//
@@ -1336,7 +1252,7 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBOL
 	//
 	// 102400
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The optimization parameter configured in the backend by internal administrators.
+	// The optimization parameters configured in the backend by administrators.
 	//
 	// example:
 	//
@@ -1372,19 +1288,19 @@ type GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBOL
 	//
 	// WINDOWS_MULTI_SESSION
 	RuntimeEnv *string `json:"RuntimeEnv,omitempty" xml:"RuntimeEnv,omitempty"`
-	// Specifies whether silent installation is enabled. This parameter can be configured by tenants and internal administrators and is not available to the public.
+	// Specifies whether silent installation is enabled. This parameter can be configured by tenants and administrators, but is not available to the public.
 	//
 	// example:
 	//
 	// {}
 	SilenceFlag *string `json:"SilenceFlag,omitempty" xml:"SilenceFlag,omitempty"`
-	// The silent installation parameter. This parameter is not available to the public.
+	// The silent installation parameters. This parameter is not available to the public.
 	//
 	// example:
 	//
 	// {}
 	SilenceParam *string `json:"SilenceParam,omitempty" xml:"SilenceParam,omitempty"`
-	// The application adaptation status. For example, ADAPT_DONE indicates that the adaptation is complete.
+	// The application adaptation status. For example, ADAPT_DONE indicates that the adaptation is completed.
 	//
 	// example:
 	//

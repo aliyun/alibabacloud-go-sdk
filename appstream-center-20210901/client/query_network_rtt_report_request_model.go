@@ -26,7 +26,7 @@ type iQueryNetworkRttReportRequest interface {
 }
 
 type QueryNetworkRttReportRequest struct {
-	// The ID of the app instance group, which is used to filter data for a specified app instance group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID. If you do not specify this parameter, data is not filtered by app instance group.
+	// The ID of the app instance group, which is used to filter data for a specified app instance group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID. If this parameter is not specified, data is not filtered by app instance group.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type QueryNetworkRttReportRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The end time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The end time cannot be earlier than `StartDate`. The statistical interval includes the start time but excludes the end time. The time span cannot exceed 60 months. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
+	// The end time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The value cannot be earlier than StartDate. The statistical interval includes the start time but excludes the end time. The time span cannot exceed 60 months. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
 	//
 	// example:
 	//
 	// 2026-09-02 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The page number to query. Explicitly pass a value starting from `1`. If you do not specify this parameter, the service processes the request as the first page, but the response may return `0`.
+	// The page number to query. We recommend that you explicitly specify a value starting from 1. If this parameter is not specified, the service processes the request as the first page, but the response may return 0.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. If you do not specify this parameter, the default value is 200. If the value is greater than 1,500, it is processed as 1,500.
+	// The number of entries per page. Default value: 200. If the specified value is greater than 1,500, it is processed as 1,500.
 	//
 	// example:
 	//
@@ -60,21 +60,21 @@ type QueryNetworkRttReportRequest struct {
 	//
 	// Valid values:
 	//
-	// - `CloudApp`: Wuying Cloud App.
+	// - CloudApp: WUYING Cloud App.
 	//
-	// - `CloudBrowser`: Cloud browser.
+	// - CloudBrowser: Cloud Browser.
 	//
-	// - `WuyingServer`: Enterprise Edition workstation.
+	// - WuyingServer: Enterprise Edition workstation.
 	//
-	// - `WuyingWorkstation`: Personal Edition Linggou container workstation.
+	// - WuyingWorkstation: Personal Edition Linggou container workstation.
 	//
-	// - `WuyingWorkstationTeam`: Linggou Team Edition container workstation.
+	// - WuyingWorkstationTeam: Linggou Team Edition container workstation.
 	//
-	// - `WuyingWorkstationBusiness`: Linggou Dedicated Edition container workstation.
+	// - WuyingWorkstationBusiness: Linggou Dedicated Edition container workstation.
 	//
-	// - `AndroidCloud`: Cloud phone.
+	// - AndroidCloud: Cloud Phone.
 	//
-	// - `AIAgent`: AgentBay (AI agent).
+	// - AIAgent: AgentBay (AI agent).
 	//
 	// example:
 	//

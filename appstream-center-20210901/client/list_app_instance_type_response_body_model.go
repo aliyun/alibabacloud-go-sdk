@@ -22,7 +22,7 @@ type iListAppInstanceTypeResponseBody interface {
 }
 
 type ListAppInstanceTypeResponseBody struct {
-	// The list of session instance types on the current page.
+	// The list of session specifications on the current page.
 	AppInstanceTypeModels []*ListAppInstanceTypeResponseBodyAppInstanceTypeModels `json:"AppInstanceTypeModels,omitempty" xml:"AppInstanceTypeModels,omitempty" type:"Repeated"`
 	// The page number used in this query, which corresponds to the request parameters and the total number of entries.
 	//
@@ -42,7 +42,7 @@ type ListAppInstanceTypeResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instance types that meet all filtering conditions, not the number of entries on the current page.
+	// The total number of specifications that meet all filtering conditions, not the number of entries on the current page.
 	//
 	// example:
 	//
@@ -117,69 +117,69 @@ func (s *ListAppInstanceTypeResponseBody) Validate() error {
 }
 
 type ListAppInstanceTypeResponseBodyAppInstanceTypeModels struct {
-	// The session instance type code, which can be used as the session instance type parameter for subsequent operations.
+	// The session specification code, which can be used as the session specification parameter for subsequent operations.
 	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	// The instance type family code to which the session instance type belongs.
+	// The specification family code to which the session specification belongs.
 	//
 	// example:
 	//
 	// ecs.g6
 	AppInstanceTypeFamily *string `json:"AppInstanceTypeFamily,omitempty" xml:"AppInstanceTypeFamily,omitempty"`
-	// The number of CPU cores included in the instance type, represented by a numeric string. Unit: cores.
+	// The number of CPU cores included in the specification, represented by a numeric string. Unit: cores.
 	//
 	// example:
 	//
 	// 4
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The data cloud disk capacity of the instance type. Unit: GB.
+	// The data cloud disk capacity of the specification. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	DataDiskSize *int64 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	// Not enabled yet. The example value is only used to demonstrate the format and does not represent the actual number of GPUs returned by this operation.
+	// Not enabled yet. The example value is only used to display the format and does not represent the actual number of GPUs returned by this operation.
 	//
 	// example:
 	//
 	// 1
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The GPU memory capacity of the instance type. Unit: MB.
+	// The GPU memory capacity of the specification. Unit: MB.
 	//
 	// example:
 	//
 	// 4096
 	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The display value or display range of the GPU memory. Display it as the returned text. Do not directly use it as a numeric value for capacity conversion.
+	// The display value or display range of the GPU memory. It should be displayed as the returned text and should not be directly used as a numerical value for capacity conversion.
 	//
 	// example:
 	//
 	// 1~2
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The identifier of the instance type record. When integrating with pricing or creation operations, use `AppInstanceType`. Do not use this field to replace the instance type code.
+	// The identifier of the specification record. When you connect to the price inquiry or creation operation, use `AppInstanceType`. Do not use this field to replace the specification code.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The display name of the instance type. The Chinese name is used only when `Language` is set to `zh-CN`. For other values or when omitted, the instance type code is used.
+	// The display name of the specification. The Chinese name is used only when `Language=zh-CN`. For other values or when omitted, the specification code is used.
 	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g
 	InstanceTypeName *string `json:"InstanceTypeName,omitempty" xml:"InstanceTypeName,omitempty"`
-	// The inventory information of the instance type. This parameter is returned only when the inventory is queried and the relevant information is obtained. If this parameter is not returned, it does not mean that the inventory is 0.
+	// The inventory information of the specification. It is returned only when the inventory is queried and relevant information is obtained. If it is not returned, it does not mean that the inventory is 0.
 	InventoryInfo *ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfo `json:"InventoryInfo,omitempty" xml:"InventoryInfo,omitempty" type:"Struct"`
-	// The memory capacity of the instance type. Unit: MB.
+	// The memory capacity of the specification. Unit: MB.
 	//
 	// example:
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The type of the product to which the instance type belongs. The current document displays the following values:
+	// The type of the product to which the specification belongs. The current document displays the following value:
 	//
 	// - `CloudApp`: Wuying Cloud Application.
 	//
@@ -187,7 +187,7 @@ type ListAppInstanceTypeResponseBodyAppInstanceTypeModels struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The system cloud disk capacity of the instance type. Unit: GB.
+	// The system cloud disk capacity of the specification. Unit: GB.
 	//
 	// example:
 	//
@@ -336,7 +336,7 @@ type ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfo struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance type inventory status obtained in the current query.
+	// The specification inventory status obtained in the current query.
 	//
 	// - `Available`: The total inventory of the queried zones is greater than 0.
 	//
@@ -399,13 +399,13 @@ func (s *ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfo) Vali
 }
 
 type ListAppInstanceTypeResponseBodyAppInstanceTypeModelsInventoryInfoZoneInventoryInfo struct {
-	// The available quantity in the zone obtained in this query. Unit: instances. This value is an inventory snapshot and does not indicate that resources have been reserved for the current account.
+	// The available quantity in the zone obtained in this query. Unit: count. This value is an inventory snapshot and does not indicate that resources have been reserved for the current account.
 	//
 	// example:
 	//
 	// 10
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The zone ID, which can be queried by calling the [ListZones](https://api.aliyun.com/document/appstream-center/2021-09-01/ListZones) operation.
+	// The zone ID, which can be queried by calling [ListZones](https://api.aliyun.com/document/appstream-center/2021-09-01/ListZones).
 	//
 	// example:
 	//

@@ -70,7 +70,7 @@ type iCreateWuyingServerRequest interface {
 }
 
 type CreateWuyingServerRequest struct {
-	// The quantity.
+	// The number of workstations.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
@@ -114,41 +114,41 @@ type CreateWuyingServerRequest struct {
 	//
 	// true
 	ErdmaEnabled *bool `json:"ErdmaEnabled,omitempty" xml:"ErdmaEnabled,omitempty"`
-	// The GPU driver configuration version, such as grid19.
+	// The version of the GPU driver, such as grid19.
 	//
 	// example:
 	//
 	// grid19
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
-	// The hostname. The following limits apply:
+	// The hostname. The hostname must meet the following requirements:
 	//
-	// - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive use is not allowed.
+	// - The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-).
 	//
-	// - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.), consecutive hyphens, or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+	// - For a Windows workstation: The hostname must be 2 to 15 characters in length. It cannot contain periods (.) or consecutive hyphens (-), and cannot contain only digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
-	// - Linux workstations:
+	// - For a Linux workstation:
 	//
-	//   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment between periods can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//   - The hostname must be 2 to 64 characters in length. It can contain multiple periods (.). The string between two consecutive periods is a segment. Each segment can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
-	//   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the created ECS instance ID is `i-123abc****`, the hostname of the instance is `k8s-i-123abc****`.
+	//   - You can use the `${instance_id}` placeholder to pass the instance ID to the HostName parameter. For example, if you set HostName to `k8s-${instance_id}` and the created ECS instance ID is `i-123abc****`, the hostname of the instance is `k8s-i-123abc****`.
 	//
-	// - When creating multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to uniformly name multiple workstations. For example, if you set Hostname to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
+	// - When you create multiple workstations at a time, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the workstations in a unified manner. For example, if you set HostName to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
 	//
-	//   - `name_prefix`: The prefix of the hostname.
+	//   - `name_prefix`: the prefix of the hostname.
 	//
-	//   - `[begin_number,bits]`: The sequential number in the hostname.
+	//   - `[begin_number,bits]`: the sequential number in the hostname.
 	//
-	//     - `begin_number`: The starting number. Valid values: 0 to 999999. Default value: 0. If an invalid value is specified, the value is set to 0.
+	//     - `begin_number`: the start number. Valid values: 0 to 999999. Default value: 0. If the specified value is invalid, the default value 0 is used.
 	//
-	//     - `bits`: The number of digits. Valid values: 1 to 6. Default value: 6. If an invalid value is specified, the value is set to 6.
+	//     - `bits`: the number of digits. Valid values: 1 to 6. Default value: 6. If the specified value is invalid, the default value 6 is used.
 	//
-	//   - `name_suffix`: The suffix of the hostname.
+	//   - `name_suffix`: the suffix of the hostname.
 	//
 	// example:
 	//
 	// testhost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The idempotency token that ensures operation uniqueness.
+	// The idempotence token that is used to ensure the uniqueness of the operation.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// 0.05
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The network policy type (invite-only preview).
+	// The network policy type. This feature is in invitational preview.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// cn-hangzhou+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The workstation logon password.
+	// The logon password of the workstation.
 	//
 	// example:
 	//
@@ -190,16 +190,16 @@ type CreateWuyingServerRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit.
+	// The unit of the subscription duration.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The discount ID.
+	// The promotion ID.
 	//
 	//
-	// > If PromotionId is specified, the corresponding discount is applied.
+	// > If PromotionId is specified, the system attempts to apply the corresponding discount.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// spn-ce3f5b4fk**46CY
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
-	// The workstation instance type.
+	// The instance type of the workstation.
 	//
 	// example:
 	//
@@ -223,31 +223,31 @@ type CreateWuyingServerRequest struct {
 	//
 	// 22/22
 	ServerPortRange *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
-	// The sub-billing type.
+	// The sub-billing method.
 	//
 	// example:
 	//
 	// postPaid
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The system cloud disk type.
+	// The category of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The system cloud disk performance level.
+	// The performance level of the system cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The system cloud disk size. Unit: GB.
+	// The size of the system cloud disk. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The list of office network vSwitches.
+	// The list of vSwitches in the office network.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The virtual node pool ID.
 	//
@@ -255,7 +255,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// vnp-0b************gyw
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
-	// The workstation name. When creating multiple workstations, a numeric suffix is automatically appended.
+	// The name of the workstation. When you create multiple workstations, a numeric suffix is automatically added.
 	//
 	// example:
 	//
@@ -546,19 +546,19 @@ func (s *CreateWuyingServerRequest) Validate() error {
 }
 
 type CreateWuyingServerRequestDataDisk struct {
-	// The data cloud disk type.
+	// The category of the data cloud disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The data cloud disk performance level.
+	// The performance level of the data cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The data cloud disk size.
+	// The size of the data cloud disk.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListZonesResponseBody interface {
 type ListZonesResponseBody struct {
 	// The zone query result.
 	ListZonesModel *ListZonesResponseBodyListZonesModel `json:"ListZonesModel,omitempty" xml:"ListZonesModel,omitempty" type:"Struct"`
-	// The request ID. You can use this ID to locate and troubleshoot issues.
+	// The unique identifier of the request, which can be used to troubleshoot request issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListZonesResponseBody) Validate() error {
 }
 
 type ListZonesResponseBodyListZonesModel struct {
-	// The list of available zone IDs for the specified product type and operating system type in the current region. When creating a resource that requires a vSwitch, select a vSwitch in one of these zones.
+	// The list of available zone IDs for the specified product type and operating system type in the current region. When you create a resource and specify a vSwitch, select a vSwitch located in one of these zones.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 

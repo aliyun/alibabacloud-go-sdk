@@ -14,7 +14,7 @@ type iDeleteWuyingServerRequest interface {
 }
 
 type DeleteWuyingServerRequest struct {
-	// The workstation ID.
+	// The ID of the workstation.
 	//
 	// This parameter is required.
 	//

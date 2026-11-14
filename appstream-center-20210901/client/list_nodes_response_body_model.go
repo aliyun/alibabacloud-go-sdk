@@ -22,7 +22,7 @@ type iListNodesResponseBody interface {
 }
 
 type ListNodesResponseBody struct {
-	// The total number of data entries that can be returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListNodesResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of resource nodes.
 	NodeModels []*ListNodesResponseBodyNodeModels `json:"NodeModels,omitempty" xml:"NodeModels,omitempty" type:"Repeated"`
-	// The page size of the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListNodesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The page number of the currently returned data.
+	// The current page number.
 	//
 	// example:
 	//
@@ -117,17 +117,17 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyNodeModels struct {
-	// The billing type of the resource node.
+	// The billing method of the resource node.
 	//
-	// > This parameter is returned only when the billing mode of the delivery group is resource-based billing (ChargeResourceMode=Node).
+	// > This parameter is returned only when the billing mode of the associated app instance group is set to resource-based billing (ChargeResourceMode=Node).
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The resource node ID.
+	// The ID of the resource node.
 	//
-	// > This parameter is returned only when the billing mode of the delivery group is resource-based billing (ChargeResourceMode=Node).
+	// > This parameter is returned only when the billing mode of the associated app instance group is set to resource-based billing (ChargeResourceMode=Node).
 	//
 	// example:
 	//

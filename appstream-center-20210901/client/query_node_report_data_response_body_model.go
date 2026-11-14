@@ -26,7 +26,7 @@ type iQueryNodeReportDataResponseBody interface {
 }
 
 type QueryNodeReportDataResponseBody struct {
-	// The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
+	// The business status code. A value of `200` indicates that the request is successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type QueryNodeReportDataResponseBody struct {
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The description of the request processing result. If the request is successful, success is usually returned.
+	// The description of the request processing result. If the request is successful, `success` is usually returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number corresponding to the current response.
+	// The page number of the current response.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page used in the current response.
+	// The number of entries per page in the current response.
 	//
 	// example:
 	//
@@ -157,19 +157,19 @@ type QueryNodeReportDataResponseBodyReportDataModel struct {
 	//
 	// 20
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The number of pay-as-you-go nodes in the record.
+	// The number of pay-as-you-go nodes for the record.
 	//
 	// example:
 	//
 	// 8
 	PostpaidNodeCount *int64 `json:"PostpaidNodeCount,omitempty" xml:"PostpaidNodeCount,omitempty"`
-	// The number of subscription nodes in the record.
+	// The number of subscription nodes for the record.
 	//
 	// example:
 	//
 	// 12
 	PrepaidNodeCount *int64 `json:"PrepaidNodeCount,omitempty" xml:"PrepaidNodeCount,omitempty"`
-	// The statistical time. The 1d granularity returns the time in the yyyy-MM-dd format. The 1m, 30m, and 6h granularities return the time in the yyyy-MM-dd HH:mm format. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+	// The statistical time. The `1d` granularity returns `yyyy-MM-dd`. The `1m`, `30m`, and `6h` granularities return `yyyy-MM-dd HH:mm`. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
 	//
 	// example:
 	//

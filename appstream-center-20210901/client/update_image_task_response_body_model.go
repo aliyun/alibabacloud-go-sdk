@@ -22,7 +22,7 @@ type iUpdateImageTaskResponseBody interface {
 }
 
 type UpdateImageTaskResponseBody struct {
-	// The error code. Returned when the request fails. A successful response may not contain this field.
+	// The error code. This field is returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateImageTaskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error or result message. Used to describe the cause when the request fails. A successful response may not contain this field.
+	// The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateImageTaskResponseBody struct {
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. A value of true indicates that the request is successful. To check whether an asynchronous task is completed, you must query the task status separately.
+	// Indicates whether the request is successful. A value of true indicates that the request is successful. To check whether an asynchronous task is completed, query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

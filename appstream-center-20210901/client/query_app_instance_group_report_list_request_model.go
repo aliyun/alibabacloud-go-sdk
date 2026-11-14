@@ -34,37 +34,37 @@ type iQueryAppInstanceGroupReportListRequest interface {
 }
 
 type QueryAppInstanceGroupReportListRequest struct {
-	// The filter condition for the app instance group ID, which matches the exact ID. If this parameter is not specified, the results are not filtered by ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
+	// The filter condition for the delivery group ID, which matches the exact ID. If this parameter is not specified, the results are not filtered by ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The filter condition for the app instance group name, which supports inclusion matching. If this parameter is not specified, the results are not filtered by name.
+	// The filter condition for the delivery group name, which supports inclusion matching. If this parameter is not specified, the results are not filtered by name.
 	//
 	// example:
 	//
 	// R&D workstation
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The ID of the business region to which the app instance group belongs. You can call [ListRegions](~~ListRegions~~) to obtain the ID. If this parameter is not specified, the results are not filtered by business region.
+	// The business region ID of the delivery group. You can call [ListRegions](~~ListRegions~~) to obtain the ID. If this parameter is not specified, the results are not filtered by business region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The end date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with `StartDate` and cannot be earlier than the start date. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+	// The end date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with StartDate and cannot be earlier than the start date. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 20260930
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The ID of the end user, which is used to filter app instance groups based on the current valid authorization relationship. Before the call, make sure that the user has at least one valid authorization. If no valid authorization exists, the current version does not narrow down the results based on this parameter. If this parameter is not specified, the results are not filtered by user.
+	// The ID of the end user, which is used to filter delivery groups based on the current valid authorization relationship. Before calling this operation, make sure that the user has at least one valid authorization. If the user does not have a valid authorization, the current version does not narrow down the results based on this parameter. If this parameter is not specified, the results are not filtered by user.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The page number to query. Specify a value starting from `1`. If this parameter is not specified, the service processes the request as the first page, but the response may return `0`.
+	// The page number to query. Specify this parameter starting from `1`. If this parameter is not specified, the service processes the request as the first page, but the response may return `0`.
 	//
 	// example:
 	//
@@ -76,47 +76,45 @@ type QueryAppInstanceGroupReportListRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID for OpenAPI access, which is used for request authentication and routing. To filter business data by region, use `BizRegionId`.
+	// The region ID for OpenAPI access, which is used for request authentication and routing. To filter business data by region, use BizRegionId.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with `EndDate`, and the interval includes the start and end dates. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+	// The start date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with EndDate, and the interval includes the start and end dates. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 20260901
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The statistical date for a single day. Format: `yyyyMMdd`. If this parameter is specified along with `StartDate` and `EndDate`, the results must meet both the single-day and interval conditions. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+	// The statistical date for a single day. Format: `yyyyMMdd`. If this parameter is specified together with StartDate and EndDate, the results must meet both the single-day and interval conditions. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 20260901
 	StatDate *string `json:"StatDate,omitempty" xml:"StatDate,omitempty"`
-	// The list of app instance group statuses. Multiple values have an OR relationship. Unrecognized values do not participate in filtering. If all values are unrecognized, the results are not filtered by status.
+	// The list of delivery group statuses. Multiple values have an OR relationship. Unrecognized values do not participate in filtering. If all values are unrecognized, it is equivalent to not filtering by status. Valid values:
 	//
-	// Valid values:
+	// - `DEPLOYING`: deploying
 	//
-	// - `DEPLOYING`: Deploying.
+	// - `DEPLOYED`: deployed but not published
 	//
-	// - `DEPLOYED`: Deployed but not published.
+	// - `PUBLISHED`: published and available to provide services based on the current configuration
 	//
-	// - `PUBLISHED`: Published and available to provide services based on the current configurations.
+	// - `STOPPING`: stopping
 	//
-	// - `STOPPING`: Stopping.
+	// - `STOPPED`: stopped
 	//
-	// - `STOPPED`: Stopped.
+	// - `MAINTAINING`: maintaining
 	//
-	// - `MAINTAINING`: Maintaining.
+	// - `FAILED`: deployment or execution failed
 	//
-	// - `FAILED`: Deployment or running failed.
+	// - `MAINTAIN_FAILED`: maintenance failed
 	//
-	// - `MAINTAIN_FAILED`: Maintenance failed.
+	// - `DELETING`: deleting
 	//
-	// - `DELETING`: Deleting.
-	//
-	// - `DELETED`: Deleted.
+	// - `DELETED`: deleted
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 

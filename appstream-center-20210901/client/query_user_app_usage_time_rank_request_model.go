@@ -24,7 +24,7 @@ type iQueryUserAppUsageTimeRankRequest interface {
 }
 
 type QueryUserAppUsageTimeRankRequest struct {
-	// The app instance group ID, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
+	// The ID of the app instance group, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type QueryUserAppUsageTimeRankRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The end date of the statistical period, in `yyyyMMdd` format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than `StartDate`, and cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+	// The end date of the statistical period, in `yyyyMMdd` format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than `StartDate` and cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//

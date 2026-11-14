@@ -34,7 +34,7 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 6
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of user group information.
+	// The list of user groups.
 	UserGroups []*ListAuthorizedUserGroupsResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
 
@@ -117,13 +117,13 @@ func (s *ListAuthorizedUserGroupsResponseBody) Validate() error {
 }
 
 type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
-	// The ID of the delivery group.
+	// The ID of the app instance group.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the delivery group set.
+	// The ID of the app instance group set.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *GetModelProviderTemplateResponseBody) Validate() error {
 }
 
 type GetModelProviderTemplateResponseBodyData struct {
-	// The JSON configuration object of the model provider template.
+	// The JSON object for the model provider template configuration.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type GetModelProviderTemplateResponseBodyData struct {
 	//
 	// example:
 	//
-	// 阿里云百炼服务商。
+	// Alibaba Cloud Model Studio provider
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the WUYING secure gateway proxy is enabled.
+	// Indicates whether the Wuying security gateway proxy is enabled.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetModelProviderTemplateResponseBodyData struct {
 	//
 	// example:
 	//
-	// 阿里云百炼。
+	// Alibaba Cloud Model Studio
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the model provider.
 	//

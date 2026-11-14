@@ -20,25 +20,25 @@ type iListWuyingServerWorkloadTemplateResponseBody interface {
 }
 
 type ListWuyingServerWorkloadTemplateResponseBody struct {
-	// A compatibility field. The current version does not use this field to indicate the number of returned entries.
+	// The compatibility field. The current version does not use this field to indicate the number of returned entries.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A compatibility field. The current version does not generate a next page token.
+	// The compatibility field. The current version does not generate a next page token.
 	//
 	// example:
 	//
 	// unused
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The unique identifier of the request, which can be used to troubleshoot request issues.
+	// The unique identifier of the request. You can use this ID to troubleshoot request issues.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of workload templates. Up to 100 templates are returned, sorted by template configuration order.
+	// The list of workload templates. The templates are returned in the order of their configuration, with a maximum of 100 entries.
 	WorkloadTemplates []*ListWuyingServerWorkloadTemplateResponseBodyWorkloadTemplates `json:"WorkloadTemplates,omitempty" xml:"WorkloadTemplates,omitempty" type:"Repeated"`
 }
 

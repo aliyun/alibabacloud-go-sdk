@@ -26,7 +26,7 @@ type iQuerySessionReportDataResponseBody interface {
 }
 
 type QuerySessionReportDataResponseBody struct {
-	// The business status code. A value of `200` indicates that the request is successful. Other values indicate that the request failed.
+	// The business status code. A value of `200` indicates that the request is processed successfully. Other values indicate that the request fails to be processed.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type QuerySessionReportDataResponseBody struct {
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The description of the request processing result. If the request is successful, `success` is usually returned.
+	// The description of the request processing result. Typically, `success` is returned when the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the current response.
+	// The page number corresponding to the current response.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page in the current response.
+	// The number of entries per page used in the current response.
 	//
 	// example:
 	//
@@ -151,25 +151,25 @@ func (s *QuerySessionReportDataResponseBody) Validate() error {
 }
 
 type QuerySessionReportDataResponseBodyReportDataModel struct {
-	// The number of sessions in the connected state in this record.
+	// The number of connected sessions in the record.
 	//
 	// example:
 	//
 	// 30
 	ConnectSessionCount *int64 `json:"ConnectSessionCount,omitempty" xml:"ConnectSessionCount,omitempty"`
-	// The total number of sessions corresponding to this record.
+	// The total number of sessions corresponding to the record.
 	//
 	// example:
 	//
 	// 36
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The statistical time. The `1d` granularity returns `yyyy-MM-dd`. The `1m`, `30m`, and `6h` granularities return `yyyy-MM-dd HH:mm`. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+	// The statistical time. The `1d` granularity returns `yyyy-MM-dd`. The `1m`, `30m`, and `6h` granularities return `yyyy-MM-dd HH:mm`. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
 	//
 	// example:
 	//
 	// 2026-09-01
 	StatDate *string `json:"StatDate,omitempty" xml:"StatDate,omitempty"`
-	// The number of sessions established through streaming access in this record.
+	// The number of sessions established through streaming access in the record.
 	//
 	// example:
 	//

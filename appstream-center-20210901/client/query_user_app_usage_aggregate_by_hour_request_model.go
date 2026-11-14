@@ -24,7 +24,7 @@ type iQueryUserAppUsageAggregateByHourRequest interface {
 }
 
 type QueryUserAppUsageAggregateByHourRequest struct {
-	// The ID of the app instance group, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
+	// The app instance group ID, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type QueryUserAppUsageAggregateByHourRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The end date for statistics in the yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than StartDate or 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+	// The end date for statistics, in yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than StartDate or 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type QueryUserAppUsageAggregateByHourRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start date for statistics in the yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+	// The start date for statistics, in yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 20260901
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The ID of the end user to query. This parameter must be explicitly provided. If it is not provided, no matching records are usually returned.
+	// The ID of the end user to be queried. This parameter must be explicitly provided. If it is not provided, no matching records are usually returned.
 	//
 	// example:
 	//

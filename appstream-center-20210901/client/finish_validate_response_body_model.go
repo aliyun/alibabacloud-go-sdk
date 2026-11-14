@@ -34,7 +34,7 @@ type FinishValidateResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error or result message. This field describes the cause of a failed request and may not be included in a successful response.
+	// The error or result message. It describes the cause of a failed request. This field may not be included in a successful response.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type FinishValidateResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//

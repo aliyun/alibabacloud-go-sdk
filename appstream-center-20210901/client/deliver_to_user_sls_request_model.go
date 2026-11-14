@@ -32,25 +32,25 @@ type DeliverToUserSlsRequest struct {
 	//
 	// [{"productType":"China_China"}]
 	DeliveryScopes []*DeliverToUserSlsRequestDeliveryScopes `json:"DeliveryScopes,omitempty" xml:"DeliveryScopes,omitempty" type:"Repeated"`
-	// The name of an existing SLS project. Either this parameter or ProjectName must be specified.
+	// The name of the existing SLS project. You must specify either this parameter or ProjectName.
 	//
 	// example:
 	//
 	// elastic-desktop-xxx
 	ExistedProjectName *string `json:"ExistedProjectName,omitempty" xml:"ExistedProjectName,omitempty"`
-	// The LogStore name.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// elastic_desktop_xxx
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The SLS project name. Either this parameter or ExistedProjectName must be specified.
+	// The name of the SLS project. You must specify either this parameter or ExistedProjectName.
 	//
 	// example:
 	//
 	// elastic-desktop-xxx
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region ID of the SLS instance.
+	// The region ID of SLS.
 	//
 	// This parameter is required.
 	//

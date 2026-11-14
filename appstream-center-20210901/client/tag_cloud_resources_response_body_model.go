@@ -72,7 +72,7 @@ type TagCloudResourcesResponseBodyFailedResources struct {
 	//
 	// TAG_KEY_DUPLICATED
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//

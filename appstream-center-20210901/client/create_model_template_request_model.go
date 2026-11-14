@@ -24,13 +24,13 @@ type iCreateModelTemplateRequest interface {
 }
 
 type CreateModelTemplateRequest struct {
-	// The Agent platform.
+	// The agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The Agent provider name.
+	// The name of the agent provider.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type CreateModelTemplateRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The template group description.
+	// The description of the template group.
 	//
 	// example:
 	//
 	// Test model group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The template group name.
+	// The name of the template group.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateModelTemplateRequest struct {
 	//
 	// model-template-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The authorization scope. This parameter is optional and effective only for Common model groups. Valid values: ALL_USER and USER_MIXED (strictly uppercase). If not specified, Common model groups default to USER_MIXED. Non-Common groups ignore this parameter and use RESOURCE_MIXED.
+	// The authorization scope. This parameter is optional and takes effect only for Common model groups. Valid values: ALL_USER and USER_MIXED. The value must be strictly uppercase. If this parameter is not specified, the default value for Common groups is USER_MIXED. For non-Common groups, this parameter is ignored and fixed to RESOURCE_MIXED.
 	//
 	// example:
 	//

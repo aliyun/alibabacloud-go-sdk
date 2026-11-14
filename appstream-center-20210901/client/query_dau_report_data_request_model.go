@@ -38,49 +38,49 @@ type QueryDauReportDataRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The end time of the statistics period. This parameter is required. Format: yyyy-MM-dd HH:mm:ss. The value cannot be earlier than StartDate. The service extracts the natural day in the yyyy-MM-dd format. The string does not contain a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+	// The end time of the statistics period. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The value cannot be earlier than StartDate. The service extracts the calendar day based on `yyyy-MM-dd`. The string does not contain a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 2026-09-30 23:59:59
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The page number to query. Specify a value starting from 1. If this parameter is not specified, the service processes the request as the first page, but the response may return 0.
+	// The page number to query. Explicitly specify a value starting from `1`. If this parameter is not specified, the service processes the request as the first page, but the response may return `0`.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page. Default value: 200. If the specified value is greater than 1,500, the value is processed as 1,500.
+	// The number of entries per page. Default value: 200. If the specified value is greater than 1,500, the value 1,500 is used.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product type. This parameter is optional. If this parameter is not specified or is unrecognized, the query defaults to CloudApp.
+	// The product type. Optional. If this parameter is not specified or cannot be recognized, the query defaults to `CloudApp`.
 	//
 	// Valid values:
 	//
-	// - CloudApp: Wuying Cloud App.
+	// - `CloudApp`: Wuying Cloud App.
 	//
-	// - CloudBrowser: Cloud browser.
+	// - `CloudBrowser`: Cloud browser.
 	//
-	// - WuyingServer: Enterprise Edition workstation.
+	// - `WuyingServer`: Enterprise Edition workstation.
 	//
-	// - WuyingWorkstation: Personal Edition Linggou container workstation.
+	// - `WuyingWorkstation`: Personal Edition Linggou container workstation.
 	//
-	// - WuyingWorkstationTeam: Linggou Team Edition container workstation.
+	// - `WuyingWorkstationTeam`: Team Edition Linggou container workstation.
 	//
-	// - WuyingWorkstationBusiness: Linggou Dedicated Edition container workstation.
+	// - `WuyingWorkstationBusiness`: Dedicated Edition Linggou container workstation.
 	//
-	// - AndroidCloud: Cloud phone.
+	// - `AndroidCloud`: Cloud phone.
 	//
-	// - AIAgent: AgentBay (AI agent).
+	// - `AIAgent`: AgentBay (AI agent).
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The start time of the statistics period. This parameter is required. Format: yyyy-MM-dd HH:mm:ss. The service extracts the natural day in the yyyy-MM-dd format. The date range is inclusive and cannot exceed 180 days. The string does not contain a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+	// The start time of the statistics period. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The service extracts the calendar day based on `yyyy-MM-dd`. The date range is inclusive and cannot exceed 180 days. The string does not contain a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//

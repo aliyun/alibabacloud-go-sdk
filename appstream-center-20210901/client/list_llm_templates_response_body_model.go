@@ -24,7 +24,7 @@ type iListLlmTemplatesResponseBody interface {
 type ListLlmTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListLlmTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the returned query results.
+	// The current page number of the query results.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The credit consumption multiplier. An empty value indicates that the model does not participate in credit billing.
+	// The credit consumption multiplier. An empty value indicates that the model is not billed by credits.
 	CreditMultiplier *ListLlmTemplatesResponseBodyDataCreditMultiplier `json:"CreditMultiplier,omitempty" xml:"CreditMultiplier,omitempty" type:"Struct"`
 	// The template description.
 	//
@@ -167,7 +167,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// The inference metadata, including request and response modalities.
 	InferenceMetadata *ListLlmTemplatesResponseBodyDataInferenceMetadata `json:"InferenceMetadata,omitempty" xml:"InferenceMetadata,omitempty" type:"Struct"`
-	// Indicates whether the model is the default model in the associated model group.
+	// Specifies whether the model is the default model in the associated model group.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	//
 	// mpt-xxxx
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
-	// The published time in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
+	// The time when the model was published. The time follows the ISO 8601 standard, such as 2026-03-04T06:25:17.000+00:00.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	//
 	// ALL_USER
 	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
-	// The number of route policies configured for the model tier. This parameter is returned only when SmartModel is true. If no policies are configured for the tier, 0 is returned.
+	// The number of route policies. This is the number of route policies configured for the model tier. This parameter is returned only when SmartModel is true. If no policies are configured for the tier, 0 is returned.
 	//
 	// example:
 	//
@@ -392,13 +392,13 @@ func (s *ListLlmTemplatesResponseBodyData) Validate() error {
 }
 
 type ListLlmTemplatesResponseBodyDataCreditMultiplier struct {
-	// The maximum multiplier. An empty value indicates no upper limit. For example, if Min is 1 and Max is empty, it is displayed as starting from 1x.
+	// The upper limit of the multiplier. An empty value indicates no upper limit. For example, if Min=1 and Max is empty, it is displayed as starting from 1x.
 	//
 	// example:
 	//
 	// 3
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
+	// The lower limit of the multiplier. When it is equal to the maximum value, it is a fixed multiplier. For example, if Min=Max=2, it is displayed as 2x.
 	//
 	// example:
 	//
@@ -476,7 +476,7 @@ func (s *ListLlmTemplatesResponseBodyDataInferenceMetadata) Validate() error {
 type ListLlmTemplatesResponseBodyDataPrices struct {
 	// The list of prices within the range.
 	Prices []*ListLlmTemplatesResponseBodyDataPricesPrices `json:"Prices,omitempty" xml:"Prices,omitempty" type:"Repeated"`
-	// The range name, such as Default or 0-1M tokens.
+	// The name of the range, such as Default or 0-1M tokens.
 	//
 	// example:
 	//
@@ -530,7 +530,7 @@ type ListLlmTemplatesResponseBodyDataPricesPrices struct {
 	//
 	// 20
 	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
-	// The price name, such as input, output, or image generation.
+	// The name of the price, such as input, output, or image generation.
 	//
 	// example:
 	//

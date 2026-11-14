@@ -18,7 +18,7 @@ type iListImageTagsRequest interface {
 }
 
 type ListImageTagsRequest struct {
-	// The label categorization to query.
+	// The tag categorization to query.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListImageTagsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to determine whether a next query is available. This parameter is not currently supported.
+	// The token used to determine whether the next query is available. This parameter is not supported.
 	//
 	// example:
 	//

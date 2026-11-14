@@ -20,7 +20,7 @@ type iQueryUserAppUsageTimeRankResponseBody interface {
 }
 
 type QueryUserAppUsageTimeRankResponseBody struct {
-	// The business status code. A value of `200` indicates that the request is processed successfully. Other values indicate that the processing failed.
+	// The business status code. A value of `200` indicates that the request was processed successfully. Other values indicate that the processing failed.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *QueryUserAppUsageTimeRankResponseBody) Validate() error {
 }
 
 type QueryUserAppUsageTimeRankResponseBodyIndexData struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// app-9ciijz60n4xsv****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type QueryUserAppUsageTimeRankResponseBodyIndexData struct {
 	//
 	// 200
 	AppTimeCnt *string `json:"AppTimeCnt,omitempty" xml:"AppTimeCnt,omitempty"`
-	// The application version. The current version may not return this value, and callers should not rely on this field. A non-empty value indicates the application version.
+	// The version of the application. The current version may not return this value, and callers should not rely on this field. A non-empty value indicates the application version.
 	//
 	// example:
 	//

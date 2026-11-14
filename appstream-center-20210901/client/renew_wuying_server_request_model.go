@@ -34,13 +34,13 @@ type RenewWuyingServerRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal duration.
+	// The unit for the renewal period.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The discount ID.
+	// The promotion ID.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type RenewWuyingServerRequest struct {
 	//
 	// >
 	//
-	// > - The workstation must have a completed order payment (AutoPay=true during creation or manually paid through the console payment page) before it can be renewed. Calling this API for an unpaid workstation returns WuyingServerError.NotFound.
+	// > - A workstation can be renewed only after the order payment is completed (AutoPay=true during creation or manual payment is made through the console payment page). Calling this API for an unpaid workstation returns WuyingServerError.NotFound.
 	//
 	// example:
 	//

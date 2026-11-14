@@ -20,19 +20,19 @@ type iQuerySessionDataRequest interface {
 }
 
 type QuerySessionDataRequest struct {
-	// The delivery group ID, used to filter session data for a specified delivery group. If not provided, the summary of session data for all delivery groups under the current account is returned.
+	// The delivery group ID, used to filter session data for a specified delivery group. If not provided, the aggregated session data for all delivery groups under the current account is returned.
 	//
 	// example:
 	//
 	// aig-89ibriac2wudyph38
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The business region ID, which specifies the region for which to query session data. The server uses this value as the region filter condition for session data. If not provided, no region filtering is applied, and the summary of session data for all regions is returned.
+	// The business region ID, which specifies the region for which to query session data. The server uses this value as the region filter condition for session data. If not provided, no region filtering is applied and the aggregated session data for all regions is returned.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The region ID, which is a common request parameter for the gateway. The region actually used to filter session data in this operation is specified by BizRegionId.
+	// The region ID, which is a common request parameter for the gateway. The actual region used to filter session data in this operation is specified by BizRegionId.
 	//
 	// example:
 	//

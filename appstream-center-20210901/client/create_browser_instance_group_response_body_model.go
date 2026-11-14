@@ -68,7 +68,7 @@ type CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel struct {
 	//
 	// big-0bz55ixxxxx9xi9w9
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
-	// The order ID generated for this creation.
+	// The ID of the order generated for this creation.
 	//
 	// example:
 	//

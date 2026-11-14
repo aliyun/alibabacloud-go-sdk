@@ -30,7 +30,7 @@ type DeleteAppResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the operation was successful. A value of true indicates that the operation was successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
+	// The error message or result prompt. This field describes the cause when a request fails. A successful response may not contain this field.
 	//
 	// example:
 	//

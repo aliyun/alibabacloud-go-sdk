@@ -20,7 +20,7 @@ type iGetAgentRuntimeStatisticResponseBody interface {
 type GetAgentRuntimeStatisticResponseBody struct {
 	// The list of runtime statistics grouped by agent platform and agent provider. If AgentProvider is specified but no matching runtimes are found, a record with all statistical values set to 0 is returned.
 	Data []*GetAgentRuntimeStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID, which uniquely identifies the request.
+	// The request ID, which is used to uniquely identify the request.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *GetAgentRuntimeStatisticResponseBody) Validate() error {
 }
 
 type GetAgentRuntimeStatisticResponseBodyData struct {
-	// The agent display name, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
+	// The display name of the agent, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
 	//
 	// example:
 	//
@@ -101,31 +101,31 @@ type GetAgentRuntimeStatisticResponseBodyData struct {
 	//
 	// AgenticComputer
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// The number of expired runtime resources in the group. A runtime is counted as expired if its resource status is Expired or Ceased, case-insensitive.
+	// The number of expired runtime resources in this group. A runtime is counted as expired if its resource status is Expired or Ceased, case-insensitive.
 	//
 	// example:
 	//
 	// 0
 	ExpiredCount *int32 `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
-	// The number of runtime resources without channel configurations in the group, which is the total number of runtime resources minus the number of runtime resources with channel configurations.
+	// The number of runtime resources without a configured channel in this group, which is the total number of runtime resources minus the number of runtime resources with a configured channel.
 	//
 	// example:
 	//
 	// 3
 	NoChannelConfiguredRuntimeCount *int32 `json:"NoChannelConfiguredRuntimeCount,omitempty" xml:"NoChannelConfiguredRuntimeCount,omitempty"`
-	// The number of runtime resources without model configurations in the group. A runtime is considered to have a model configured if a model is configured for the runtime itself or its associated resource group.
+	// The number of runtime resources without a configured model in this group. A runtime is considered to have a configured model if either the runtime itself or its associated resource group has a model configured.
 	//
 	// example:
 	//
 	// 2
 	NoModelConfiguredRuntimeCount *int32 `json:"NoModelConfiguredRuntimeCount,omitempty" xml:"NoModelConfiguredRuntimeCount,omitempty"`
-	// The number of risky runtime resources in the group, deduplicated by runtime ID. A runtime is counted as risky if it has any of the following risks: model configuration modified, third-party channel configuration modified, or agent being uninstalled.
+	// The number of risky runtime resources in this group, deduplicated by runtime ID. A runtime is counted as risky if it has any of the following risks: the model configuration is modified, the third-party channel configuration is modified, or the agent is being uninstalled.
 	//
 	// example:
 	//
 	// 1
 	RiskyRuntimeCount *int32 `json:"RiskyRuntimeCount,omitempty" xml:"RiskyRuntimeCount,omitempty"`
-	// The total number of runtime resources in the group, deduplicated by runtime ID.
+	// The total number of runtime resources in this group, deduplicated by runtime ID.
 	//
 	// example:
 	//

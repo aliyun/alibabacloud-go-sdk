@@ -26,7 +26,7 @@ type iQueryMauReportDataResponseBody interface {
 }
 
 type QueryMauReportDataResponseBody struct {
-	// The business status code. A value of `200` indicates that the request is processed successfully. Other values indicate that the request fails to be processed.
+	// The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *QueryMauReportDataResponseBody) Validate() error {
 }
 
 type QueryMauReportDataResponseBodyMauReportDataModel struct {
-	// The app instance group ID.
+	// The ID of the app instance group.
 	//
 	// example:
 	//
@@ -163,19 +163,19 @@ type QueryMauReportDataResponseBodyMauReportDataModel struct {
 	//
 	// 286
 	Mau *int64 `json:"Mau,omitempty" xml:"Mau,omitempty"`
-	// The business region ID to which the report data belongs.
+	// The ID of the business region to which the report data belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The statistical cutoff date used for the month. Format: `yyyy-MM-dd`. For the last month, this is usually the day before the requested `EndDate`. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+	// The statistical cutoff date used for the month. Format: `yyyy-MM-dd`. For the last month, the date is usually the day before the requested EndDate. The date is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//
 	// 2026-09-29
 	StatDate *string `json:"StatDate,omitempty" xml:"StatDate,omitempty"`
-	// The statistical month. Format: `yyyy-MM`. The month is interpreted as a calendar month in the Asia/Shanghai (UTC+8) time zone.
+	// The statistical month. Format: `yyyy-MM`. The month is interpreted as a natural month in the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iModifyBrowserInstanceGroupRequest interface {
 }
 
 type ModifyBrowserInstanceGroupRequest struct {
-	// Specifies whether to send notification emails for authorization and deauthorization.
+	// Specifies whether to send notification emails for authorization and revocation.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyBrowserInstanceGroupRequest struct {
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	// The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
+	// The maximum resource count. This parameter takes effect for the pay-as-you-go billing method based on monthly active users.
 	//
 	// example:
 	//
@@ -299,7 +299,7 @@ type ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks struct {
 	//
 	// test
 	BookmarkFolder *string `json:"BookmarkFolder,omitempty" xml:"BookmarkFolder,omitempty"`
-	// The bookmark ID. This parameter is required only for modification scenarios.
+	// The bookmark ID. This parameter is required only for update scenarios.
 	//
 	// example:
 	//
@@ -382,11 +382,11 @@ type ModifyBrowserInstanceGroupRequestNetwork struct {
 	RemoveRestrictedURLIds []*string `json:"RemoveRestrictedURLIds,omitempty" xml:"RemoveRestrictedURLIds,omitempty" type:"Repeated"`
 	// The restricted domain name configurations.
 	RestrictedURLs []*ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs `json:"RestrictedURLs,omitempty" xml:"RestrictedURLs,omitempty" type:"Repeated"`
-	// The file path for network-restricted URLs.
+	// The file path for network restricted URLs.
 	//
 	// example:
 	//
-	// cn-hangzhou/aig_upm/xxx/temp/BrowserRestrictionUrls/URL_whitelist_template.csv
+	// cn-hangzhou/aig_upm/xxx/temp/BrowserRestrictionUrls/URLWhitelistTemplate.csv
 	RestrictedURLsFilePath *string `json:"RestrictedURLsFilePath,omitempty" xml:"RestrictedURLsFilePath,omitempty"`
 }
 
@@ -501,7 +501,7 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
 	// The server-side access IP address whitelist.
 	AuthorizeAccessPolicyRules []*ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
-	// The logon client type control.
+	// The client type control for logon.
 	ClientTypes []*ModifyBrowserInstanceGroupRequestPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The clipboard policies.
 	ClipboardPolicy *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
@@ -517,7 +517,7 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// 15
 	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
-	// The floating ball file manager switch.
+	// The switch for the file manager in the floating button.
 	//
 	// example:
 	//
@@ -529,19 +529,19 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The cloud browser dual-screen switch.
+	// The dual-screen switch for the cloud browser.
 	//
 	// example:
 	//
 	// off
 	MultiScreen *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
-	// The no-operation disconnect policy.
+	// The policy for disconnecting upon inactivity.
 	//
 	// example:
 	//
 	// on
 	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
-	// The no-operation disconnect time in seconds.
+	// The inactivity disconnect time, in seconds.
 	//
 	// example:
 	//
@@ -862,7 +862,7 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// off
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The clipboard read length limit.
+	// The read length limit for the clipboard.
 	//
 	// example:
 	//
@@ -880,7 +880,7 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// B
 	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
-	// The clipboard write length limit.
+	// The write length limit for the clipboard.
 	//
 	// example:
 	//
@@ -904,13 +904,13 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
-	// The rich text clipboard read size.
+	// The outbound size limit for rich text in the clipboard.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardReadLimit *int32 `json:"RichTextClipboardReadLimit,omitempty" xml:"RichTextClipboardReadLimit,omitempty"`
-	// The rich text clipboard read size unit.
+	// The outbound size unit for rich text in the clipboard.
 	//
 	// example:
 	//
@@ -922,13 +922,13 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// B
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
-	// The rich text clipboard write size.
+	// The inbound size limit for rich text in the clipboard.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardWriteLimit *int32 `json:"RichTextClipboardWriteLimit,omitempty" xml:"RichTextClipboardWriteLimit,omitempty"`
-	// The rich text clipboard write size unit.
+	// The inbound size unit for rich text in the clipboard.
 	//
 	// example:
 	//
@@ -940,25 +940,25 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// off
 	TextClipboard *string `json:"TextClipboard,omitempty" xml:"TextClipboard,omitempty"`
-	// The text clipboard read size.
+	// The outbound size limit for text in the clipboard.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardReadLimit *int32 `json:"TextClipboardReadLimit,omitempty" xml:"TextClipboardReadLimit,omitempty"`
-	// The text clipboard read size unit.
+	// The outbound size unit for text in the clipboard.
 	//
 	// example:
 	//
 	// KB
 	TextClipboardReadSizeUnit *string `json:"TextClipboardReadSizeUnit,omitempty" xml:"TextClipboardReadSizeUnit,omitempty"`
-	// The text clipboard write size.
+	// The inbound size limit for text in the clipboard.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardWriteLimit *int32 `json:"TextClipboardWriteLimit,omitempty" xml:"TextClipboardWriteLimit,omitempty"`
-	// The text clipboard write size unit.
+	// The inbound size unit for text in the clipboard.
 	//
 	// example:
 	//

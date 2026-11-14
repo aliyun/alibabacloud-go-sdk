@@ -22,7 +22,7 @@ type iGetMqttTicketRequest interface {
 }
 
 type GetMqttTicketRequest struct {
-	// The client operating system.
+	// The operating system of the client.
 	//
 	// This parameter is required.
 	//
@@ -30,21 +30,7 @@ type GetMqttTicketRequest struct {
 	//
 	// Windows 10
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The client type. Valid values:
-	//
-	// - 0: hardware terminal
-	//
-	// - 1: Windows software terminal
-	//
-	// - 2: macOS software terminal
-	//
-	// - 3: iOS client
-	//
-	// - 4: Android client
-	//
-	// - 5: web client
-	//
-	// - 6: tenant console
+	// The client type. Valid values: 0: hardware terminal; 1: Windows software terminal; 2: macOS software terminal; 3: iOS client; 4: Android client; 5: web client; 6: tenant console.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +38,7 @@ type GetMqttTicketRequest struct {
 	//
 	// 1
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The client version.
+	// The version number of the client.
 	//
 	// This parameter is required.
 	//

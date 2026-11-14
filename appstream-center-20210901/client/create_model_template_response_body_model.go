@@ -62,7 +62,7 @@ func (s *CreateModelTemplateResponseBody) Validate() error {
 }
 
 type CreateModelTemplateResponseBodyData struct {
-	// The model group ID.
+	// The ID of the model group.
 	//
 	// example:
 	//

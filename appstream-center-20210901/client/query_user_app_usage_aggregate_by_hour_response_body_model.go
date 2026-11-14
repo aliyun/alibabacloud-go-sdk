@@ -20,15 +20,15 @@ type iQueryUserAppUsageAggregateByHourResponseBody interface {
 }
 
 type QueryUserAppUsageAggregateByHourResponseBody struct {
-	// The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
+	// The business status code. A value of 200 indicates that the request was processed successfully. Other values indicate that the processing failed.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of hourly aggregated user application usage data. A maximum of five records are returned for each hour.
+	// The list of user application usage data aggregated by hour. A maximum of five records are returned for each hour.
 	IndexData []*QueryUserAppUsageAggregateByHourResponseBodyIndexData `json:"IndexData,omitempty" xml:"IndexData,omitempty" type:"Repeated"`
-	// The description of the request processing result. A value of success is usually returned when the request is successful.
+	// The description of the request processing result. The value success is usually returned when the request is successful.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type QueryUserAppUsageAggregateByHourResponseBodyIndexData struct {
 	//
 	// 200
 	AppTimeCnt *string `json:"AppTimeCnt,omitempty" xml:"AppTimeCnt,omitempty"`
-	// The statistical hour in a two-digit 24-hour format string. Valid values: 00 to 23. Hour boundaries are divided based on the Asia/Shanghai (UTC+8) time zone.
+	// The statistical hour, represented as a two-digit 24-hour format string with values ranging from 00 to 23. Hour boundaries are divided based on the Asia/Shanghai (UTC+8) time zone.
 	//
 	// example:
 	//

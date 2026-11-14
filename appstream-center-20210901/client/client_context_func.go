@@ -514,6 +514,54 @@ func (client *Client) BuilderImageByParentWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
+// Clears the memory of a specified agent instance.
+//
+// Description:
+//
+// First, call `ListAgentInstanceMemory` to query the target instance ID and the associated user. **Verify the instance and user before clearing the memory.**
+//
+// @param request - ClearAgentInstanceMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearAgentInstanceMemoryResponse
+func (client *Client) ClearAgentInstanceMemoryWithContext(ctx context.Context, request *ClearAgentInstanceMemoryRequest, runtime *dara.RuntimeOptions) (_result *ClearAgentInstanceMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentInstanceId) {
+		body["AgentInstanceId"] = request.AgentInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClearAgentInstanceMemory"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClearAgentInstanceMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the model group for a resource group.
 //
 // Description:
@@ -590,7 +638,7 @@ func (client *Client) ConfigResourceGroupModelTemplateWithContext(ctx context.Co
 //
 // You can configure third-party channels for agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. These channels serve as extended agent communication methods in addition to the AgentIM channel.
 //
-// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this operation.
+// Before you call this operation, make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - ConfigRuntimeChannelRequest
 //
@@ -662,7 +710,7 @@ func (client *Client) ConfigRuntimeChannelWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Configures the model group for agent runtime resources.
+// Configures model groups for agent runtime resources.
 //
 // Description:
 //
@@ -720,13 +768,13 @@ func (client *Client) ConfigRuntimeModelTemplateWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates an application and binds it to a specified image version.
+// Creates an application and binds the application to a specified image version.
 //
 // Description:
 //
-// Only custom images and community images that can be managed by the current account are supported. If VersionId is omitted, the current active version of the image is used. If specified, the version must belong to the image specified by ImageId.
+// Only custom images and community images manageable by the current account are supported. If VersionId is omitted, the current active version of the image is used. If specified, it must belong to the image corresponding to ImageId.
 //
-// Call ListImage to select an image first. After the application is created, save the returned AppId, AppVersionId, ImageId, and VersionId. To dissociate the application, call UnbindApp.
+// Call ListImage first to select an image. After creation, save the returned AppId, AppVersionId, ImageId, and VersionId. To dissociate the application, call UnbindApp.
 //
 // @param request - CreateAndBindAppRequest
 //
@@ -988,15 +1036,15 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a cloud browser group billed by monthly active users (MAUs).
+// Creates a cloud browser group billed by monthly active users (MAU).
 //
 // Description:
 //
-// ## Before you begin
+// ## Prerequisites
 //
-// - Prepare available office networks, images, and specifications in the target business region, and ensure that your account has the corresponding browser configurations and resource quotas.
+// - Prepare an available office network, image, and specification in the target business region, and ensure that the account has the corresponding browser configurations and resource quotas.
 //
-// - Specify CloudBrowserName and BizRegionId. You must set OsType to Windows.
+// - Specify CloudBrowserName and BizRegionId. You must set OsType to `Windows`.
 //
 // - The authorized users must be created in advance and match the account type. The authorized user groups must belong to the current account and match the account type of the office network.
 //
@@ -1004,25 +1052,25 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 //
 // ## MAU billing parameters
 //
-// - Set ChargeType to PostPaid.
+// - Set ChargeType to `PostPaid`.
 //
-// - **You must explicitly set SubPayType to mau. Omitting this parameter does not enable MAU billing.**
+// - **You must explicitly set SubPayType to `mau`. Omitting this parameter does not enable MAU billing.**
 //
-// - Set ChargeResourceMode to AppInstance.
+// - Set ChargeResourceMode to `AppInstance`.
 //
 // - You do not need to specify Period, PeriodUnit, AppPackageType, AutoPay, AutoRenew, or NodePool.
 //
-// ## Post-processing
+// ## Post-call processing
 //
-// **A successful API response does not indicate that the browser resources are ready.*	- After creation, query the status of the browser group and use it only after confirming that it is connectable.
+// **A successful API response does not indicate that the browser resources are ready.*	- After the creation, query the status of the browser group and use it only after you confirm that it is connectable.
 //
 // This operation creates a new cloud browser group. You do not need to create a delivery group in advance.
 //
 // ## Example descriptions
 //
-// Field examples demonstrate how to specify parameters. Replace resource identifiers with actual values under your current account. Capacity examples do not represent default values or upper limits.
+// Field examples are provided to show how to specify parameters. Replace resource identifiers with the actual values under the current account. Capacity examples do not represent default values or upper limits.
 //
-// An example value of - indicates that the parameter is not required. When calling the API, omit the corresponding parameter instead of passing the - character.
+// An example value of `-` indicates that the parameter is not required. When you call the operation, omit the corresponding parameter and do not pass the `-` character.
 //
 // @param tmpReq - CreateBrowserInstanceGroupRequest
 //
@@ -1216,13 +1264,13 @@ func (client *Client) CreateBrowserInstanceGroupWithContext(ctx context.Context,
 //
 // Description:
 //
-// Creates an export task and returns the task ID and initial status. The exported file is not returned synchronously.
+// This operation creates an export task and returns the task ID and initial status. The exported file is not returned synchronously.
 //
-// After the task is created, save the TaskId and call DescribeExportTasks to query the task status and progress. We recommend a polling interval of 5 to 10 seconds. If the status is FINISHED, use the DownloadUrl in the latest query result to download the XLSX file. If the status is FAILED, check the ErrorMsg and stop polling.
+// After the task is created, save TaskId and call DescribeExportTasks to query the task status and progress. The recommended polling interval is 5 to 10 seconds. When the status is FINISHED, use the DownloadUrl in the latest query result to download the XLSX file. When the status is FAILED, check ErrorMsg and stop polling.
 //
 // The task is valid for 24 hours after creation. The download URL has an independent signature validity period of up to 1 hour, which does not exceed the remaining validity period of the task. Query the latest URL before downloading. You cannot obtain a valid download URL after the task expires.
 //
-// The WUYING server list export only accepts the filter fields listed in QueryParamJson. Pagination is controlled by the server, and a single task can export up to 100,000 records. The cloud browser bookmarks and URL whitelist exports retrieve the complete list of the target delivery group, which is not affected by the list search terms or the current page. The ownership and product type of the delivery group are verified before execution. Data is read in pages during execution, and no consistent snapshot is provided. A successful creation does not guarantee that subsequent verification, query, or file generation will succeed.
+// The WUYING server list export only accepts the filter fields listed in QueryParamJson. Pagination is controlled by the server. A single task can export up to 100,000 records. The cloud browser bookmarks and URL whitelist exports export the complete list of the target delivery group. This is not affected by the list search terms or the current page. The ownership and product type of the delivery group are verified before execution. Data is read in pages during execution, and no consistent snapshot is provided. A successful creation does not guarantee that subsequent verification, query, or file generation will succeed.
 //
 // @param request - CreateExportTaskRequest
 //
@@ -1274,7 +1322,7 @@ func (client *Client) CreateExportTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a custom image from a deployed WUYING instance. You can use the custom image to quickly create more WUYING instances with the same configurations, without having to repeatedly configure the instance environment each time.
+// Creates a custom image from a deployed WUYING instance to quickly create more WUYING instances with the same configurations and avoid repeated environment configurations.
 //
 // @param request - CreateImageByInstanceRequest
 //
@@ -1412,13 +1460,13 @@ func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a model provider template for model creation.
+// Creates a provider template for model creation.
 //
 // Description:
 //
-// You can create a model provider template for model creation under the model templates in the Wuying Agent Management Center to configure the connection information and keys for model services (such as Alibaba Cloud Bailian, Token Plan, and Moonshot AI) that can be invoked by agents. The created model provider template is automatically associated with the specified model template.
+// You can create a provider template for model creation under the model templates in the Wuying Agent Management Center to configure the connection information and keys for model services (such as Alibaba Cloud Model Studio, Token Plan, and Moonshot AI) that can be invoked by agents. The created model provider template is automatically associated with the specified model template.
 //
-// Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
+// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - CreateModelProviderTemplateRequest
 //
@@ -1498,13 +1546,11 @@ func (client *Client) CreateModelProviderTemplateWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a model template.
+// Creates a template for model creation.
 //
 // Description:
 //
-// You can create a model group in the Wuying Agent Management Center to manage the model providers and model scope that an Agent can invoke. After model creation, you can attach the model group to a cloud computer as the inference engine configuration for Agent task execution.
-//
-// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before invoking this operation.
+// You can create a model creation group in the Wuying Agent Management Center to manage the model service providers and model scopes that can be invoked by agents. After creation, you can attach the model creation group to a cloud computer as the inference engine configuration for agents to execute nodes. Ensure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this API operation.
 //
 // @param request - CreateModelTemplateRequest
 //
@@ -1572,11 +1618,11 @@ func (client *Client) CreateModelTemplateWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// 1. A project corresponds to the resource configuration module in the CloudFlow console.
+// 1. A project is equivalent to the resource configuration module in the CloudFlow console.
 //
-// 2. When the ContentId input parameter has multiple versions, this API <notice>uses the default version</notice> and bindss it at the same time.
+// 2. If the ContentId parameter has multiple versions, this operation <notice>uses the default version</notice> for binding.
 //
-// 3. This operation succeeds only when the default version of the Content is in an available state.
+// 3. This operation succeeds only when the default version of the content is in the available state.
 //
 // @param request - CreateWuyingServerRequest
 //
@@ -1735,17 +1781,17 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a specified application adaptation, or dissociates the adaptation from a specified image version.
+// Deletes a specified application adaptation or dissociates the adaptation from a specified image version.
 //
 // Description:
 //
 // *Confirm the deletion scope first.**
 //
-// - If both ImageId and VersionId are specified: only the association between the adaptation and the specified image version is dissociated.
+// - If both ImageId and VersionId are specified: only dissociates the adaptation from the specified image version.
 //
-// - If ImageId and VersionId are not both specified: the adaptation deletion process starts. The adaptation cannot be deleted if it is still referenced by multiple images. If the application still has other adaptations, the application cannot be deleted along with it.
+// - If ImageId and VersionId are not both specified: initiates the adaptation deletion process. The adaptation cannot be deleted if it is still referenced by multiple images. If the application has other adaptations, it cannot be deleted together with the application.
 //
-// **AdaptorId, AppVersionId, and AppId must be provided together and correspond to the same application adaptation.*	- Verify these identifiers by querying the application and image first.
+// **AdaptorId, AppVersionId, and AppId must be provided at the same time and correspond to the same application adaptation.*	- Verify these identifiers through the application and image query results first.
 //
 // @param request - DeleteAdaptorRequest
 //
@@ -1805,15 +1851,15 @@ func (client *Client) DeleteAdaptorWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a specified application version, or deletes the entire application and its adapters if the version ID is omitted.
+// Deletes a specified application version. If the version ID is omitted, deletes the entire application and its adapters.
 //
 // Description:
 //
-// *You must dissociate all image associations from the target application or version before deletion.**
+// *You must disassociate all images from the target application or version before deletion.**
 //
 // 1. Call ListApp to obtain the AppId and confirm whether the application can be deleted.
 //
-// 2. Use UnbindApp or DeleteAdaptor to dissociate the related image associations.
+// 2. Use UnbindApp or DeleteAdaptor to disassociate the related images.
 //
 // 3. Specify AppVersionId to delete a single application version, or omit this parameter to delete the entire application.
 //
@@ -1977,11 +2023,11 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 //
 // Description:
 //
-// - Only custom images that belong to your account can be deleted.
+// - You can only delete custom images that you own.
 //
-// - For images associated with WUYING Workspace pools, WUYING Cloud Apps, or WUYING Workstations, ensure that no WUYING instances are using the image before you delete it.
+// - For images used in the WUYING Cloud Computer Pool, WUYING Cloud App, and WUYING Workstation product lines, ensure that no WUYING instances are using the image before you delete it.
 //
-// - If a WUYING Cloud Desktop template references the image, the template is also deleted when you delete the image.
+// - If a WUYING cloud desktop template references the image, the template is also deleted when you delete the image.
 //
 // - If the image is available in multiple regions, deleting the image removes it from all regions.
 //
@@ -2031,7 +2077,9 @@ func (client *Client) DeleteImageWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-// You can delete a model template created under a model service provider template in the Wuying Agent Management Center. Before you delete the template, make sure that the model is not the default model of an associated model group. Otherwise, the deletion fails. After the deletion, the model configurations of associated cloud computers are automatically refreshed. Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
+// You can delete a model template created under a model service provider template in the Wuying Agent Management Center. Before deletion, make sure that the model is not the default model of an associated model group. Otherwise, the deletion fails. After the model template is deleted, the model configurations of the associated cloud desktops are automatically refreshed.
+//
+// Before you call this operation, make sure that you fully understand the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - DeleteLlmTemplateRequest
 //
@@ -2079,9 +2127,9 @@ func (client *Client) DeleteLlmTemplateWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// You can delete a model provider template created under model templates in the Wuying Agent Management Center. Before deletion, ensure that the model provider is not the provider of the default model and is not a system-preset provider, such as the Wuying credit package. After deletion, the associated models and key configurations are also cleared.
+// You can delete a model provider template created under model templates in the Wuying Agent Management Center. Before deletion, ensure that the model provider is not the provider of the default model and is not a system-preset provider (such as the Wuying credit package). After deletion, the associated models and key configurations are also removed.
 //
-// Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
+// Before you call this operation, make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - DeleteModelProviderTemplateRequest
 //
@@ -2129,9 +2177,9 @@ func (client *Client) DeleteModelProviderTemplateWithContext(ctx context.Context
 //
 // Description:
 //
-// You can delete a model group created in the Wuying Agent Management Center. Before you delete the model group, make sure that the template is not authorized for any resources. Otherwise, the deletion fails. After the model group is deleted, the model providers and models in the model group are also removed.
+// You can delete a model group created in the Wuying Agent Management Center. Before deletion, ensure that the template is not authorized for any resources. Otherwise, the deletion fails. After the model group is deleted, the model providers and models in the model group are also removed.
 //
-// Before you call this operation, make sure that you fully understand the operations and usage of the Wuying Agent Management Center.
+// Before you use this API operation, ensure that you fully understand the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - DeleteModelTemplateRequest
 //
@@ -2223,7 +2271,7 @@ func (client *Client) DeleteWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Configures SLS log delivery.
+// Configures Simple Log Service (SLS) log delivery.
 //
 // @param request - DeliverToUserSlsRequest
 //
@@ -2290,11 +2338,11 @@ func (client *Client) DeliverToUserSlsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Performs a paged query for the resource and session events of the current account within the last 30 days. Paging is supported.
+// Performs a paged query to retrieve the resource and session events of the current account within the last 30 days by using paging.
 //
 // Description:
 //
-// Queries the resource and session events of the current account. Both StartTime and EndTime must be specified, and the time range is inclusive. The service only retrieves logs from 30 days before the call time to the current time, so events outside this window are not returned. If multiple filter parameters are specified, the intersection of the conditions is applied. The results are returned in descending order of the event log time. For pagination, specify PageSize and PageNumber. The current version does not use MaxResults and NextToken.
+// Queries the resource and session events of the current account. `StartTime` and `EndTime` must be specified at the same time, and the time range includes the start and end times. The service only retrieves logs from 30 days before the call time to the current time, so events outside this window are not returned. If multiple filter parameters are specified, the intersection of the conditions is used. Results are returned in descending order of the event log time. To use page number-based pagination, specify `PageSize` and `PageNumber`. The current version does not use `MaxResults` and `NextToken`.
 //
 // @param request - DescribeEventsRequest
 //
@@ -2398,17 +2446,17 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries the execution status, progress, and download URLs of export tasks by paging.
+// Queries the execution status, progress, and download URLs of export tasks by page.
 //
 // Description:
 //
-// You can call this operation to query export tasks under the current Alibaba Cloud account by paging, and obtain the task status, execution progress, export file name, and download URL. Export tasks are created by calling CreateExportTask. This operation only reads task information and does not create, modify, or retry tasks.
+// Calls this operation to query the export tasks under the current Alibaba Cloud account by page to obtain the task status, execution progress, export file names, and download URLs. Export tasks are created by CreateExportTask. This operation only reads task information and does not create, modify, or retry tasks.
 //
 // The query results are returned in descending order of task creation time, with the most recently created tasks listed first. Only tasks in the INIT, RUNNING, FINISHED, and FAILED states are returned. Tasks marked as EXPIRED are not included in the results.
 //
 // When polling a single task by TaskId, set PageNumber to 1 and PageSize to 1, set the polling interval to 5 to 10 seconds, and stop polling after the task enters the FINISHED or FAILED state.
 //
-// A task is valid for 24 hours after creation and is marked as expired by a background task after 25 hours. Therefore, within the 24- to 25-hour window, you may still query a FINISHED task, but the DownloadUrl is empty. After a task is marked as expired, the query result is an empty array.
+// A task is valid for 24 hours after creation and is marked as expired by a background task after 25 hours. Therefore, within the 24- to 25-hour window, a FINISHED task may still be queried, but its DownloadUrl is empty. After a task is marked as expired, the query result is an empty array.
 //
 // If the query result is an empty array, it may be because there are no visible tasks under the current account, the task type does not match, the page number is out of bounds, or the tasks have expired. This operation always returns an array structure and does not return an error when the query result is empty.
 //
@@ -2468,7 +2516,7 @@ func (client *Client) DescribeExportTasksWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the list of Alibaba Cloud accounts to which the current image is shared.
+// Queries the list of Alibaba Cloud accounts with which the current image is shared.
 //
 // @param request - DescribeShareImageRequest
 //
@@ -2502,6 +2550,66 @@ func (client *Client) DescribeShareImageWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeShareImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the system default path rules or the user data roaming rules of a specified app instance group or app instance group set.
+//
+// Description:
+//
+// When querying a specified target, specify either the app instance group ID or the app instance group set ID. When querying a set, the rules of the primary app instance group are returned. You can use the query result as a reference for modifying rules and then call SetUserProfilePathRules to submit the complete rule list.
+//
+// @param request - DescribeUserProfilePathRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserProfilePathRulesResponse
+func (client *Client) DescribeUserProfilePathRulesWithContext(ctx context.Context, request *DescribeUserProfilePathRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserProfilePathRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		body["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		body["RuleType"] = request.RuleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserProfilePathRules"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserProfilePathRulesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2556,7 +2664,7 @@ func (client *Client) DescribeWuyingServerWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the Elastic IP Address (EIP) information of a Wuying workspace.
+// Queries the elastic IP address (EIP) information of a Wuying workstation.
 //
 // @param request - DescribeWuyingServerEipInfoRequest
 //
@@ -2604,7 +2712,7 @@ func (client *Client) DescribeWuyingServerEipInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Confirms the successful verification of the image or application creation process.
+// Confirms the successful verification of an image or application build.
 //
 // @param request - FinishValidateRequest
 //
@@ -2660,7 +2768,7 @@ func (client *Client) FinishValidateWithContext(ctx context.Context, request *Fi
 
 // Summary:
 //
-// Queries the statistics of runtimes of a specified type under the current Alibaba Cloud account, grouped by agent platform and agent provider, including the total count, the count of runtimes without model configurations, the count of runtimes without channel configurations, the count of risky runtimes, and the count of expired runtimes.
+// Queries the statistics of runtimes of a specified type under the current Alibaba Cloud account, grouped by agent platform and agent provider. The statistics include the total number of runtimes, the number of runtimes without a configured model, the number of runtimes without a configured channel, the number of risky runtimes, and the number of expired runtimes.
 //
 // @param request - GetAgentRuntimeStatisticRequest
 //
@@ -2774,7 +2882,7 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 //
 // 2. Specify ResourceType to obtain the connection information for the creation or validation environment.
 //
-// 3. Use the returned authorization code along with the user, resource group, and application identifiers in the same response for connection.
+// 3. Use the returned authorization code together with the user, resource group, and application identifiers in the same response for connection.
 //
 // The authorization code is a sensitive connection credential. Do not record it in public documents or logs. When specifying AppId, you must also specify the matching AppVersionId.
 //
@@ -2848,19 +2956,19 @@ func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAu
 //
 // ## Before you begin
 //
-// Obtain the ID of a cloud browser group within the current account. You can call `ListBrowserInstanceGroup` to obtain the ID.
+// You have obtained the ID of a cloud browser group under the current account. You can call the `ListBrowserInstanceGroup` operation to obtain the ID.
 //
 // ## Response content
 //
-// Returns the current configuration, status, and authorization statistics of the browser group. The bookmark and website access lists in the details return up to the first 20 entries each. To query the complete lists, call `ListBrowserBookmarks` and `ListBrowserRestrictedURLs` respectively.
+// The operation returns the current configuration, status, and authorization statistics of the browser group. The details return up to the first 20 bookmarks and website access records. To query the complete lists, call the `ListBrowserBookmarks` and `ListBrowserRestrictedURLs` operations.
 //
 // ## What to do next
 //
-// This operation only queries the configuration and does not modify resources. After reading the returned status, perform connection or management operations that match the status.
+// This operation only queries configurations and does not modify resources. After you read the returned status, perform connection or management operations that match the status.
 //
-// ## Example description
+// ## Examples
 //
-// In the examples, `-` indicates that the current scenario does not apply or the field is not returned. It is not a string actually returned by the operation. Examples of common resource IDs are masked. Use the actual query results.
+// In the examples, `-` indicates that the field is not applicable or not returned in the current scenario, and is not an actual string returned by the operation. Common resource ID examples are desensitized. Use the actual query results.
 //
 // @param request - GetBrowserInstanceGroupRequest
 //
@@ -3068,7 +3176,7 @@ func (client *Client) GetDebugAppInstanceWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Queries the effective image versions in various regions by ImageId. If a newer version is configured in the same region, the newer version is returned first. You can specify BizRegionId to limit the query to a specific region. The returned results are also constrained by the product type and the regions visible to the account. To query the details of a specific version, call GetImageById.
+// Queries the effective versions of an image in various regions by ImageId. If a image version is configured in the same region, the image version is returned first. You can specify BizRegionId to limit the query to a specific region. The returned results are also constrained by the product type and the regions visible to the account. To query the details of a specific version, call GetImageById.
 //
 // @param request - GetEffectiveImageByIdRequest
 //
@@ -3140,7 +3248,7 @@ func (client *Client) GetEffectiveImageByIdWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// Visitor information is filled in on the lead capture page when visitors execute a cloud flow. Therefore, the usage mode of cloud applications does not generate visitor information.
+// Visitor information is filled in by visitors on the lead capture page when they execute a cloud flow. Therefore, the usage of cloud applications does not generate visitor information.
 //
 // @param request - GetFileUploadInfoRequest
 //
@@ -3188,7 +3296,7 @@ func (client *Client) GetFileUploadInfoWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// You must specify at least one of ImageId and VersionId. If you specify only ImageId, the online version is queried. If you specify VersionId, the specified version is queried. If you specify both parameters, the VersionId must belong to the specified image. To query the effective version in each region, call GetEffectiveImageById.
+// You must specify at least one of ImageId and VersionId. If only ImageId is specified, the online version is queried. If VersionId is specified, the specified version is queried. If both parameters are specified, VersionId must belong to the specified image. To query the effective version in each region, call GetEffectiveImageById.
 //
 // @param request - GetImageByIdRequest
 //
@@ -3256,7 +3364,7 @@ func (client *Client) GetImageByIdWithContext(ctx context.Context, request *GetI
 //
 // Description:
 //
-// Queries the region distribution status of an image by ImageId. If VersionId is not specified, the online version is queried. If VersionId is specified, the specified version is queried. Returns the non-deleted region distribution records and the corresponding list of region IDs.
+// Queries the region distribution status of an image by ImageId. If VersionId is not specified, the online version is queried. If VersionId is specified, the specified version is queried. Returns the non-deleted region distribution records and the list of corresponding region IDs.
 //
 // @param request - GetImageDistributeInfoRequest
 //
@@ -3308,9 +3416,9 @@ func (client *Client) GetImageDistributeInfoWithContext(ctx context.Context, req
 //
 // Description:
 //
-// You can query the details of a specified model provider template in the WUYING Agent Management Center, including the provider name, description, and connection configuration list.
+// You can query the details of a specified model provider template in the Wuying Agent Management Center, including the provider name, description, and connection configuration list.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Before you call this operation, make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - GetModelProviderTemplateRequest
 //
@@ -3358,17 +3466,17 @@ func (client *Client) GetModelProviderTemplateWithContext(ctx context.Context, r
 //
 // Description:
 //
-// Retrieves the credentials and connection information required for a client to establish an MQTT connection.
+// Call this operation to retrieve the credentials and connection information required for a client to establish an MQTT connection.
 //
-// 1. Use MqttUsername and MqttPassword as the username and password when connecting the MQTT client.
+// 1. Use `MqttUsername` and `MqttPassword` as the username and password when connecting the MQTT client.
 //
-// 2. Use MqttEndpoint as the connection endpoint. If the client meets the VPC network access requirements, you can use MqttVPCEndpoint. MqttInstanceId is used for token authentication, and MqttGroupId is used to concatenate the MQTT ClientId.
+// 2. Use `MqttEndpoint` as the connection endpoint. If the client meets the required VPC network access conditions, you can use `MqttVPCEndpoint`. `MqttInstanceId` is used for token authentication, and `MqttGroupId` is used to concatenate the MQTT ClientId.
 //
-// 3. Distinguish between publish and subscribe topics based on the topic, type, and permission fields of each item in TopicList. W indicates publish permission, and R indicates subscribe permission.
+// 3. Distinguish between publish and subscribe topics based on the `topic`, `type`, and `permission` fields of each item in `TopicList`. `W` indicates publish permission, and `R` indicates subscribe permission.
 //
-// 4. ExpireTimeStamp is the UNIX timestamp in milliseconds when the password expires. Credentials may be reused. Retrieve new credentials based on the expiration time returned in the response.
+// 4. `ExpireTimeStamp` is the UNIX timestamp in milliseconds when the password expires. Credentials may be reused. Retrieve new credentials based on the expiration time returned in the response.
 //
-// The device identity and request IDs in the documentation are demonstration data. The domain name uses the `example.com` sample domain. Credentials and instance identity are exemplified or desensitized. These examples cannot be used directly for actual connections.
+// The device identity and request IDs in the documentation are demo data. The domain name uses the `example.com` sample domain. Credentials and instance identity are sample or desensitized values. These examples cannot be used directly for actual connections.
 //
 // @param tmpReq - GetMqttTicketRequest
 //
@@ -3534,17 +3642,17 @@ func (client *Client) GetResourceGroupAgentModelSettingsWithContext(ctx context.
 
 // Summary:
 //
-// Queries the pricing and discount information required to scale out a subscription delivery group to a specified total number of nodes.
+// Queries the price and discount information required to scale out a subscription delivery group to a specified total number of nodes.
 //
 // Description:
 //
-// This operation queries the resource scale-out price of an existing delivery group. A successful call returns only a quote and does not create an order or add nodes.
+// This operation queries the resource scale-out price for an existing delivery group. A successful call returns only a quote and does not create an order or add nodes.
 //
-// **Verify the following conditions before you call this operation:**
+// **Before you call this operation, verify the following conditions:**
 //
 // - The delivery group belongs to the current account and is located in a supported region in the Chinese mainland.
 //
-// - The product type is WUYING Cloud App or Cloud Browser, and the billing method is subscription and billed by node. Pay-as-you-go or browser groups billed by monthly active user (MAU) are not supported.
+// - The product type is WUYING Cloud App or Cloud Browser, and the billing method is subscription and purchased by node. This operation does not apply to browser groups that use the pay-as-you-go billing method or are billed by monthly active users (MAU).
 //
 // - The order status of the delivery group is normal, a resource node pool is associated, and no paid but ineffective renewal or scale-in orders exist.
 //
@@ -3552,23 +3660,23 @@ func (client *Client) GetResourceGroupAgentModelSettingsWithContext(ctx context.
 //
 // **Parameter relationships:**
 //
-// - ProductType, AppInstanceGroupId, and Amount are all required and must be specified together.
+// - ProductType, AppInstanceGroupId, and Amount are all required parameters and must be specified at the same time.
 //
 // - ProductType must match the product corresponding to AppInstanceGroupId.
 //
-// - **Amount is the total number of nodes after the scale-out, not the number of nodes added in this operation.*	- The region, node specifications, and billing method are determined by the existing delivery group and do not need to be specified.
+// - **Amount is the total number of nodes after the scale-out, not the number of nodes added in this operation.*	- The region, node specifications, and billing method are determined by the existing delivery group and do not need to be passed separately.
 //
-// **Procedure:**
+// **Call sequence:**
 //
-// 1. Confirm the target delivery group and the current number of purchased nodes. For common scenarios of cloud apps, you can first invoke [ListAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/ListAppInstanceGroup) to obtain the identity, and then invoke [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query the configuration and `NodePool.NodeAmount`.
+// 1. Confirm the target delivery group and the current number of purchased nodes. For cloud app Common scenarios, you can first invoke [ListAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/ListAppInstanceGroup) to obtain the identity, and then invoke [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query the configuration and NodePool.NodeAmount.
 //
-// 2. Invoke this operation with the same product type, delivery group identity, and target total number of nodes to read the price, coupons, and pricing rules.
+// 2. Invoke this operation with the same product type, delivery group identity, and target total number of nodes to read the price, coupons, and price calculation rules.
 //
-// 3. After confirming the quote, if you want to execute the scale-out, you can invoke [ModifyNodePoolAmount](https://api.aliyun.com/document/appstream-center/2021-09-01/ModifyNodePoolAmount) and specify the target total number in `NodePool.NodeAmount` as required by the operation. **A successful price inquiry does not mean that an order is created or the scale-out is completed.**
+// 3. After confirming the quote, if you need to execute the scale-out, you can invoke [ModifyNodePoolAmount](https://api.aliyun.com/document/appstream-center/2021-09-01/ModifyNodePoolAmount) and fill in the target total number in NodePool.NodeAmount as required by the operation. **A successful price inquiry does not mean that an order has been created or the scale-out has been completed.**
 //
 // **Example scenario:**
 //
-// If a cloud app delivery group currently has 1 purchased subscription node and you want to scale out to 2 nodes, specify ProductType=CloudApp, the AppInstanceGroupId of the delivery group, and Amount=2. Replace the masked resource IDs with the actual values under the current account. The example quantities do not represent default values or quota limits. The price examples only illustrate the relationship among the original price, discount amount, and final price, and do not represent the fixed selling price of the specifications.
+// If a cloud app delivery group currently has 1 purchased subscription node and the target is to scale out to 2 nodes, set ProductType to CloudApp, AppInstanceGroupId to the ID of the delivery group, and Amount to 2. Replace the masked resource ID with the actual value under the current account. The example quantity does not represent a default value or quota limit. The price example only illustrates the relationship between the original price, discount amount, and discounted price, and does not represent the fixed selling price of the specification.
 //
 // @param request - GetResourceModifyPriceRequest
 //
@@ -3700,9 +3808,9 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 //
 // **Parameter relationships:**
 //
-// - ResourceType and ProductType are required.
+// - `ResourceType` and `ProductType` are required.
 //
-// - BizRegionId and ChargeType are optional query conditions and can be specified at the same time. They must be consistent with subsequent purchase or authorization operations.
+// - `BizRegionId` and `ChargeType` are optional query conditions and can be specified at the same time. They must be consistent with subsequent purchase or authorization operations.
 //
 // - If the region or billing method is omitted, the general quota for the corresponding dimension is queried. The quotas of different regions or billing methods are not added together.
 //
@@ -3710,13 +3818,13 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 //
 // **Call sequence:**
 //
-// 1. Select the resource type, product, business region, and billing method for the payer based on subsequent business needs.
+// 1. Select the resource type, product, business region, and billing method of the payer based on subsequent business needs.
 //
 // 2. Invoke this operation to read `Data`. Query `AppInstanceGroup` before creating a delivery group, query `AppAuthUser` before authorizing an authorized user, and query `PoolNodeAmount` before purchasing or scaling out nodes.
 //
-// 3. Query the current usage in combination with the resources, and then verify the current operation through subsequent creation, authorization, or scale-out operations. **This query does not reserve quotas or guarantee the success of subsequent purchases.**
+// 3. Query the current usage in combination with resources, and then verify the current operation through subsequent creation, authorization, or scale-out operations. **This query does not reserve quotas or guarantee the success of subsequent purchases.**
 //
-// Data=2147483647 indicates that no smaller quota limit is obtained in this query. It does not mean that the physical inventory is unlimited.
+// `Data=2147483647` indicates that no smaller quota limit is obtained in this query. It does not mean that the physical inventory is unlimited.
 //
 // @param request - GetResourceQuotaRequest
 //
@@ -3828,13 +3936,13 @@ func (client *Client) GetResourceRenewPriceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the third-party channel configurations of an Agent runtime.
+// Queries the third-party channel configurations for agent runtimes.
 //
 // Description:
 //
-// You can query the third-party channel configuration status of Agents such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center.
+// You can query the third-party channel configuration status for agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Before calling this operation, make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - GetRuntimeChannelRequest
 //
@@ -3894,11 +4002,11 @@ func (client *Client) GetRuntimeChannelWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of the model configuration for a cloud desktop.
+// Queries the model configuration details of a cloud desktop.
 //
 // Description:
 //
-// You can query the details of the model configuration currently bound to a specified cloud desktop in the Wuying Agent Management Center, including the model group, the list of model providers, and their associated model information. When the risk information mode is enabled, you can also identify discrepancies between the actual configuration of the end user and the configuration delivered by the administrator.
+// You can query the details of the model configuration currently bound to a specified cloud desktop in the Wuying Agent Management Center, including the model group, model provider list, and associated model information. When the risk information mode is enabled, you can also identify discrepancies between the end user\\"s actual configuration and the configuration delivered by the administrator.
 //
 // @param request - GetRuntimeModelConfigRequest
 //
@@ -3923,6 +4031,10 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.IncludeRiskInfo) {
 		query["IncludeRiskInfo"] = request.IncludeRiskInfo
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.RuntimeId) {
@@ -3968,11 +4080,11 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 //
 // Supports two query methods:
 //
-// - **By task ID**: Pass the TaskId parameter. This method takes precedence over querying by resource information.
+// - **By task ID**: Pass TaskId. This method takes precedence over resource information queries.
 //
-// - **By resource**: Omit the TaskId parameter, and pass the EntityId, EntityType, and TaskCategory parameters at the same time. You can use the EntityVersionId parameter to specify the resource version.
+// - **By resource**: Omit TaskId, and pass EntityId, EntityType, and TaskCategory. You can use EntityVersionId to specify the resource version.
 //
-// The API returns the current task status and recorded step information. Determine the overall task result based on the Status parameter. The success of a single step does not mean the entire task is successful. You can call the ListTaskStep operation to query the names and categories of image creation and application adaptation steps.
+// The API returns the current task status and recorded step information. Determine the overall task result based on Status. The success of a single step does not mean the entire task is successful. You can call ListTaskStep to query the names and categories of image creation and application adaptation steps.
 //
 // @param request - GetTaskRequest
 //
@@ -4036,11 +4148,71 @@ func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRe
 
 // Summary:
 //
-// Retrieves the Object Storage Service (OSS) endpoint, directory, and Security Token Service (STS) temporary credentials required to upload image task files.
+// Queries the tenant-level memory configurations of the current account by agent provider, business platform, and business type.
 //
 // Description:
 //
-// Currently, FileType only supports TASK. Use the returned OSS endpoint, bucket, file directory, and temporary credentials to upload files. After the file is uploaded, you can pass the complete OSS object path to ImportImage. Expiration is not supported.
+// Specify the agent provider, business platform, and business type corresponding to the configuration. After modification, you can use the same combination to query whether the configuration has been updated.
+//
+// @param request - GetTenantMemoryConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTenantMemoryConfigResponse
+func (client *Client) GetTenantMemoryConfigWithContext(ctx context.Context, request *GetTenantMemoryConfigRequest, runtime *dara.RuntimeOptions) (_result *GetTenantMemoryConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentInstanceId) {
+		body["AgentInstanceId"] = request.AgentInstanceId
+	}
+
+	if !dara.IsNil(request.AgentPlatform) {
+		body["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		body["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTenantMemoryConfig"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTenantMemoryConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the OSS endpoint, directory, and STS temporary credentials required to upload image task files.
+//
+// Description:
+//
+// FileType currently supports only TASK. Use the returned OSS endpoint, bucket, file directory, and temporary credentials to upload files. After the file is uploaded, you can pass the complete OSS object path to ImportImage. Expiration is not supported.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -4088,7 +4260,7 @@ func (client *Client) GetUploadInfoWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Imports an image file from Object Storage Service (OSS) as a custom cloud desktop image and returns the image ID and version ID.
+// Imports an image file from Object Storage Service (OSS) as a custom Cloud Desktop image and returns the image ID and version ID.
 //
 // Description:
 //
@@ -4188,6 +4360,90 @@ func (client *Client) ImportImageWithContext(ctx context.Context, request *Impor
 
 // Summary:
 //
+// Queries the memory configurations, memory statistics, and backup summary of agent instances for the current account by using a paged query with paging.
+//
+// Description:
+//
+// Filter by agent provider, business platform, business type, end user, and instance memory switch as needed. Retain the filter conditions and increment the page number when navigating to the next page.
+//
+// @param request - ListAgentInstanceMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentInstanceMemoryResponse
+func (client *Client) ListAgentInstanceMemoryWithContext(ctx context.Context, request *ListAgentInstanceMemoryRequest, runtime *dara.RuntimeOptions) (_result *ListAgentInstanceMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EndUserIds) {
+		query["EndUserIds"] = request.EndUserIds
+	}
+
+	if !dara.IsNil(request.ExcludedEndUserIds) {
+		query["ExcludedEndUserIds"] = request.ExcludedEndUserIds
+	}
+
+	if !dara.IsNil(request.MemoryStatuses) {
+		query["MemoryStatuses"] = request.MemoryStatuses
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchKeyword) {
+		query["SearchKeyword"] = request.SearchKeyword
+	}
+
+	if !dara.IsNil(request.SearchType) {
+		query["SearchType"] = request.SearchType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentInstanceMemory"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentInstanceMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a deduplicated list of version numbers of undeleted agent instances under a specified tenant, aggregated by agent provider and optionally filtered by agent platform. The results are returned in ascending order of version numbers.
 //
 // @param request - ListAgentInstanceVersionsRequest
@@ -4236,13 +4492,13 @@ func (client *Client) ListAgentInstanceVersionsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the valid applications of the current account by paging based on conditions such as the application ID, name, type, and associated product.
+// Queries valid applications of the current account by using paging based on conditions such as the application ID, name, type, and associated product.
 //
 // Description:
 //
-// When multiple filter conditions are specified at the same time, they take effect together. AppName supports contains matching. When a single-value filter and the corresponding list filter are specified at the same time, the intersection is used. To avoid empty results, specify only one of the forms.
+// When multiple filter conditions are specified, they take effect together. AppName supports contains matching. If a single-value filter and the corresponding list filter are specified at the same time, the intersection is used. To avoid empty results, specify only one of them.
 //
-// If PageSize is omitted, the value is 10. Start from 1 for PageNumber and query page by page until the number of retrieved records reaches Count. Before deleting an application, check Deletable.
+// If PageSize is omitted, the default value is 10. We recommend that you start from page 1 and query page by page until the number of retrieved records reaches the value of Count. Before you delete an application, check the Deletable field.
 //
 // @param tmpReq - ListAppRequest
 //
@@ -4438,35 +4694,35 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the available session instance types for the current account by paging based on the product, region, operating system, and instance type conditions.
+// Performs a paged query on the available session specifications for the current account based on the product, region, operating system, and specification conditions, returning results through paging.
 //
 // Description:
 //
-// This operation is used to select session instance types and does not create resources. The returned results are affected by the available instance types for the account and the business region. An empty result does not indicate a request failure.
+// This operation is used to select session specifications and does not create resources. The returned scope is affected by the available specifications and business region of the account. An empty result does not indicate a request failure.
 //
 // **Filtering and pagination:**
 //
 // - `ProductType` is required. Explicitly specify `BizRegionId`, `PageNumber`, and `PageSize`.
 //
-// - If `BizRegionId` is not provided, the region of the current request is used. You can call the [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) operation to obtain the business region.
+// - If `BizRegionId` is not provided, the region of the current request is used. You can call [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) to obtain the business region.
 //
-// - You can specify both `AppInstanceType` and `AppInstanceTypeList`. In this case, only the instance types that meet both conditions are returned. Neither parameter overrides the other. The list can contain up to 100 items.
+// - You can specify both `AppInstanceType` and `AppInstanceTypeList`. In this case, only the specifications that meet both conditions are returned. No priority override exists. The list can contain up to 100 items.
 //
-// - The instance type family, CPU, memory, GPU memory, operating system, and category conditions are filtered by intersection. The union is not automatically applied.
+// - The specification family, CPU, memory, GPU memory, operating system, and category conditions are filtered by intersection. The union is not automatically applied.
 //
 // - Pass `PageNumber` starting from 1. Use `TotalCount`, `PageSize`, and `PageNumber` to continue pagination until all matching results are read.
 //
 // **Inventory and subsequent calls:**
 //
-// - Inventory is queried only when `QueryInventory` is set to `true`. If inventory information is not obtained, do not assume that the inventory is 0.
+// - Inventory is queried only when `QueryInventory=true`. If inventory information is not obtained, you cannot determine that the inventory is 0.
 //
-// - The inventory reflects the current query result and does not indicate a successful reservation.
+// - The inventory is the current query result and does not represent a successful reservation.
 //
-// - After obtaining the `AppInstanceType`, you can query the price based on the session instance type parameter requirements of [GetResourcePrice](https://api.aliyun.com/document/appstream-center/2021-09-01/GetResourcePrice).
+// - After obtaining `AppInstanceType`, you can query the price based on the session specification parameter requirements of [GetResourcePrice](https://api.aliyun.com/document/appstream-center/2021-09-01/GetResourcePrice).
 //
-// - The current query does not use `AppCenterImageId` to filter instance types. Do not use this parameter to determine the compatibility between images and instance types.
+// - The current query does not use `AppCenterImageId` to filter specifications. Do not use this parameter to determine the compatibility between images and specifications.
 //
-// Field examples are used to demonstrate how to fill in the fields and do not guarantee that the example instance types exist in the selected region or account. The GPU count field currently does not provide a value. Use the GPU memory field to understand the instance type.
+// Field examples are used to demonstrate how to fill in the fields. The existence of example specifications in the selected region or account is not guaranteed. The GPU count field does not currently provide values. Use the GPU memory field to understand the specifications.
 //
 // @param request - ListAppInstanceTypeRequest
 //
@@ -4728,43 +4984,43 @@ func (client *Client) ListAppsByAppInstanceGroupIdWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the delivery groups for which a specified user has obtained access permissions through delivery group-level authorization. Supports paging and fuzzy filtering by delivery group ID, delivery group name, app ID, and app name.
+// Performs a paging query on the app instance groups for which a specified user has obtained access permissions through app instance group-level authorization, and supports fuzzy filtering by app instance group ID, app instance group name, application ID, and application name.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation queries the list of delivery groups for which a specified user (EndUserId) has been granted **delivery group-level authorization**. It returns the basic information of each delivery group (such as ID, name, status, region, creation time, and expiration time) and the list of apps deployed in the delivery group.
+// This operation queries the list of app instance groups to which a specified user (EndUserId) has been granted **app instance group-level authorization**. It returns the basic information of each app instance group (such as ID, name, status, region, creation time, and expiration time) and the list of applications deployed in the app instance group.
 //
 // Scope of returned results:
 //
-// - Only delivery groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records of individual app authorizations granted through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
+// - Only app instance groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records authorized for individual applications through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
 //
-// - Only delivery groups whose product type matches ProductType and that are not deleted are returned. If no apps are deployed in the delivery group image, the delivery group is not returned.
+// - Only app instance groups whose product type matches ProductType and that are not deleted are returned. If no applications are deployed in the app instance group image, the app instance group is not returned.
 //
-// - Results are sorted in descending order based on the update time of the authorization records. The most recently authorized or modified delivery groups are listed first.
+// - The results are sorted in descending order based on the update time of the authorization records. The most recently authorized or modified app instance groups are ranked first.
 //
 // ## Before you begin
 //
-// - The [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation has been called to authorize the delivery group to the user.
+// - The [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation is called to authorize the app instance group to the user.
 //
-// ## Metric description
+// ## Parameter description
 //
 // - **ProductType and EndUserId are required**. If ProductType is not specified, the error code `InvalidParameter.ProductType` is returned. If EndUserId is not specified, the error code `InvalidParameter.UserId` is returned.
 //
-// - EndUserId uses **exact match*	- based on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName use **fuzzy match**. A hit occurs if the string is contained. If multiple filter conditions are specified, all conditions must be met.
+// - EndUserId uses **exact match*	- based on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName use **fuzzy match*	- (a hit occurs if the string is contained). If multiple filter conditions are specified, all conditions must be met.
 //
 // - PageNumber starts from 1. Valid values for PageSize: 1 to 100.
 //
-// - If the user does not have any authorization delivery groups that meet the conditional requirements, the operation returns a normal response: AppInstanceGroupModels is an empty list and TotalCount is 0.
+// - If the user does not have any app instance groups with authorization that meet the conditional requirements, the operation returns a normal response: AppInstanceGroupModels is an empty list and TotalCount is 0.
 //
 // ## Call sequence
 //
-// 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID, and then call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize the delivery group to the user.
+// 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID, and then call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize the app instance group to the user.
 //
-// 2. Call this operation to query the delivery groups authorized to the user and the apps deployed in the delivery groups.
+// 2. Call this operation to query the app instance groups authorized for the user and the applications deployed in the app instance groups.
 //
-// 3. To obtain the app connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation based on the returned AppInstanceGroupId and the AppId in Apps.
+// 3. To obtain the application connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation based on the returned AppInstanceGroupId and the AppId in Apps.
 //
 // @param request - ListAuthorizedAppInstanceGroupByUserRequest
 //
@@ -4840,37 +5096,37 @@ func (client *Client) ListAuthorizedAppInstanceGroupByUserWithContext(ctx contex
 
 // Summary:
 //
-// Queries the applications for which a specified user has obtained access permissions through per-application authorization by paging. You can filter results by delivery group ID, delivery group name, application ID, or application name using fuzzy match.
+// Performs a paging query to retrieve the applications for which a specified user has obtained access permissions through application authorization, and supports fuzzy filtering by app instance group ID, app instance group name, application ID, or application name.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation queries the applications that a specified user is authorized to access at the application granularity. **Only records authorized at the application level are returned*	- (for example, authorizations completed through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation). Authorizations granted to an entire delivery group through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are not included in the response.
+// This operation queries the applications authorized for a specified user at the application level. **It returns only the records of applications authorized for the user at the application level*	- (for example, authorization completed by calling the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation). Authorization granted for an entire app instance group by calling the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation is not included in the response.
 //
-// The results are deduplicated by the combination of delivery group and application. Each record corresponds to one application within one delivery group.
+// The response is deduplicated by the combination of app instance group and application. Each record corresponds to an application within an app instance group.
 //
 // ## Before you begin
 //
-// - The user must already exist under the current account. If the user does not exist, the error code `User.NotFound` is returned. Call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the username.
+// - The user exists in the current account. If the user does not exist, the error code User.NotFound is returned. You can call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the username.
 //
-// - The delivery group that contains the application must already be created, and the application must have been authorized to the user at the application level. If no per-application authorization has been performed, an empty application list is returned.
+// - The app instance group to which the application belongs has been created, and the application has been authorized for the user at the application level. If no application-level authorization has been performed, an empty application list is returned.
 //
-// ## Parameter description
+// ## Metric description
 //
-// - **`EndUserId` and `ProductType` are required.*	- Set `ProductType` to `CloudApp`, which indicates WUYING Cloud Application.
+// - **EndUserId and ProductType are required.*	- Set ProductType to CloudApp, which indicates WUYING Cloud App.
 //
-// - `AppInstanceGroupId`, `AppId`, `AppInstanceGroupName`, and `AppName` are optional filter conditions. All of them use fuzzy match and can be combined in any way. If all are omitted, all per-application authorization records for the user are returned.
+// - AppInstanceGroupId, AppId, AppInstanceGroupName, and AppName are optional filter conditions. Fuzzy match is used for all these parameters, and they can be used in any combination. If all of them are omitted, all application-level authorization records for the user are returned.
 //
-// - Use `PageNumber` and `PageSize` for paging. `PageNumber` starts from 1, and `PageSize` ranges from 1 to 100. Use the returned `TotalCount` to determine whether to continue querying.
+// - Use PageNumber and PageSize for paging. PageNumber starts from 1, and the valid values for PageSize range from 1 to 100. You can determine whether to continue the query based on the returned TotalCount.
 //
 // ## Call sequence
 //
-// 1. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) or [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation to obtain the delivery group ID (AppInstanceGroupId) and the application IDs of deployed applications within the delivery group (AppId in the Apps list).
+// 1. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) or [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation to obtain the app instance group ID (AppInstanceGroupId) and the application IDs (AppId in the Apps list) of the applications deployed in the app instance group.
 //
-// 2. Call the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to authorize the application to the target user.
+// 2. Call the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to authorize the applications for the target user.
 //
-// 3. Call this operation to query the applications that the user is authorized to access.
+// 3. Call this operation to query the applications authorized for the user.
 //
 // @param request - ListAuthorizedAppsByUserRequest
 //
@@ -4942,7 +5198,7 @@ func (client *Client) ListAuthorizedAppsByUserWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the list of user groups authorized by a specified delivery group.
+// Queries the user groups authorized for an app instance group.
 //
 // @param request - ListAuthorizedUserGroupsRequest
 //
@@ -5010,55 +5266,55 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the list of authorized users for a specified delivery group or delivery group set by using paging. Supports exact or fuzzy filtering by username.
+// Performs a paging query on the authorized user list of a specified app instance group or app instance group set, and supports exact or fuzzy filtering by username.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation queries the currently authorized users of a specified delivery group (AppInstanceGroupId) or delivery group set (AppInstanceGroupSetId). It returns each user\\"s username, account type, email address, phone number, and the authorization mode of the associated delivery group.
+// This operation queries the currently authorized users of a specified app instance group (AppInstanceGroupId) or app instance group set (AppInstanceGroupSetId). It returns the username, account type, email address, phone number, and the authorization mode of the app instance group to which each user belongs.
 //
-// - This operation returns **authorization relationships*	- and does not indicate whether users are currently online or have established connections.
+// - This operation returns **authorization relationships**, which does not indicate that the users are currently online or have established connections.
 //
-// - In the Cloud Browser product, a delivery group corresponds to a cloud browser group, and a delivery group ID corresponds to a browser group ID.
+// - In the Cloud Browser product, an app instance group is a cloud browser group, and the app instance group ID is the browser group ID.
 //
-// The scope of results depends on the authorization mode of the delivery group (response parameter AuthMode):
+// The return scope depends on the authorization mode of the app instance group (the AuthMode response parameter):
 //
-// - When the authorization mode is `App` (application-level authorization) or `AppInstanceGroup` (delivery group-level authorization): Returns users authorized through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation at the delivery group level, as well as users authorized through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation at the application level. If AppId is specified, only users **authorized for that specific application*	- are returned.
+// - When the authorization mode is `App` (application authorization) or `AppInstanceGroup` (app instance group authorization): returns the users authorized by app instance group through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation and the users authorized by application through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation. If AppId is specified, only the users **specifically authorized for this application*	- are returned.
 //
-// - When the authorization mode is `Session` (session-level authorization): Returns users who have been granted persistent sessions. The AppInstancePersistentIds field lists all persistent session IDs granted to each user. If AppInstancePersistentId is specified, only users granted that session are returned.
+// - When the authorization mode is `Session` (session authorization): returns the users who are granted persistent sessions, and lists all persistent session IDs granted to each user in AppInstancePersistentIds. If AppInstancePersistentId is specified, only the users granted this session are returned.
 //
-// - When querying by delivery group set: Returns users authorized for the set. The response parameter AppInstanceGroupId is the primary delivery group ID of the set, and AppInstanceGroupSetId is the queried set ID.
+// - When querying by app instance group set: returns the users authorized to the set. The AppInstanceGroupId response parameter is the primary app instance group ID of the set, and AppInstanceGroupSetId is the ID of the queried set.
 //
-// When querying by delivery group, results are sorted in descending order by authorization time, with the most recently authorized users listed first.
+// When querying by app instance group, the results are sorted in descending order of authorization time, with the most recently authorized users listed first.
 //
 // ## Before you begin
 //
-// - The target delivery group or delivery group set must be created, belong to the current account, and match the specified ProductType. Otherwise, a resource-not-found error code is returned.
+// - The target app instance group or app instance group set has been created, belongs to the current account, and its product type matches ProductType. Otherwise, a resource not found error code is returned.
 //
-// - Users must have been authorized through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) or [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation. If no users have been authorized, the operation returns normally with an empty Users list and TotalCount of 0.
+// - Users have been authorized through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) or [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation. If no users have been authorized, the operation returns a normal response with Users as an empty list and TotalCount as 0.
 //
 // ## Parameter description
 //
-// - **ProductType, PageNumber, and PageSize are required**. If ProductType has an invalid value, the error code `ProductTypeInvalid` is returned.
+// - **ProductType, PageNumber, and PageSize are required**. If the value of ProductType is invalid, the `ProductTypeInvalid` error code is returned.
 //
-// - **Exactly one of AppInstanceGroupId and AppInstanceGroupSetId must be specified**. If both or neither are specified, the error code `InvalidParameter.AppInstanceGroupId/AppInstanceGroupSetId` is returned.
+// - **You must specify either AppInstanceGroupId or AppInstanceGroupSetId, but not both**. If both are specified or neither is specified, the `InvalidParameter.AppInstanceGroupId/AppInstanceGroupSetId` error code is returned.
 //
-// - **AppId and AppInstancePersistentId are not supported when querying by delivery group set**. If specified, the error codes `InvalidParameter.AppId` and `InvalidParameter.AppInstancePersistentId` are returned respectively.
+// - **AppId and AppInstancePersistentId are not supported when querying by app instance group set**. If either is specified, the `InvalidParameter.AppId` or `InvalidParameter.AppInstancePersistentId` error code is returned.
 //
-// - EndUserId performs **exact matching*	- by username. UserIdFuzzy performs **fuzzy matching*	- by username (a hit occurs if the username contains the keyword). Both can be specified simultaneously, in which case both conditions must be met.
+// - EndUserId performs **exact match*	- by username, and UserIdFuzzy performs **fuzzy match*	- by username (a hit occurs if the username contains the keyword). Both can be specified at the same time, and both conditions must be met.
 //
-// - PageNumber starts from 1. Valid values of PageSize: 1 to 100.
+// - PageNumber starts from 1. The value range of PageSize is 1 to 100.
 //
-// - When the authorization mode is `App` or `AppInstanceGroup`, TotalCount is the number of **authorization records*	- that match the conditions. If the same user has multiple authorization records (for example, authorized for multiple applications), the records are merged into a single user entry in Users. Therefore, the number of users returned on the current page may be less than PageSize. Use TotalCount to determine whether to continue paging. When the authorization mode is `Session`, TotalCount is the deduplicated user count.
+// - When the authorization mode is `App` or `AppInstanceGroup`, TotalCount is the **number of authorization records*	- that meet the conditions. If the same user has multiple authorization records (for example, authorized for multiple applications), the user is merged into one in Users. Therefore, the number of users returned on the current page may be less than PageSize. Use TotalCount to determine whether to continue paging. When the authorization mode is `Session`, TotalCount is the number of deduplicated users.
 //
 // ## Call sequence
 //
-// 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID. For cloud browser groups, call the [ListBrowserInstanceGroup](~~ListBrowserInstanceGroup~~) operation.
+// 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID. For cloud browser groups, call the [ListBrowserInstanceGroup](~~ListBrowserInstanceGroup~~) operation.
 //
-// 2. Call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize at the delivery group level, or call the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to authorize at the application level.
+// 2. Call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize by app instance group, or call the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to authorize by application.
 //
-// 3. Call this operation to query authorized users. To remove authorization, pass the returned EndUserId values to the UnAuthorizeUserIds parameter of the authorization operations mentioned above.
+// 3. Call this operation to query the authorized users. To remove authorization, pass the returned EndUserId to the UnAuthorizeUserIds parameter of the preceding authorization operations.
 //
 // ## Error codes
 //
@@ -5066,17 +5322,17 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 //
 // - `InvalidParameter.AppInstanceGroupId/AppInstanceGroupSetId`: Both AppInstanceGroupId and AppInstanceGroupSetId are specified, or neither is specified.
 //
-// - `InvalidParameter.AppId`: AppId is specified when querying by delivery group set.
+// - `InvalidParameter.AppId`: AppId is specified when querying by app instance group set.
 //
-// - `InvalidParameter.AppInstancePersistentId`: AppInstancePersistentId is specified when querying by delivery group set.
+// - `InvalidParameter.AppInstancePersistentId`: AppInstancePersistentId is specified when querying by app instance group set.
 //
-// - `InvalidAppInstanceGroupSpecItem.NotFound`: The delivery group does not exist, does not belong to the current account, or the product type does not match.
+// - `InvalidAppInstanceGroupSpecItem.NotFound`: The app instance group does not exist, does not belong to the current account, or the product type does not match.
 //
 // - `InvalidBrowserInstanceGroup.NotFound`: When ProductType is `CloudBrowser`, the cloud browser group does not exist, does not belong to the current account, or the product type does not match.
 //
-// - `InvalidAppInstanceGroupSet.NotFound`: The delivery group set does not exist, does not belong to the current account, the product type does not match, or the set does not have an available primary delivery group.
+// - `InvalidAppInstanceGroupSet.NotFound`: The app instance group set does not exist, does not belong to the current account, the product type does not match, or there is no available primary app instance group in the set.
 //
-// - `InvalidAppInstanceGroupSet.ActivationFailed`: The delivery group set is not in an available state.
+// - `InvalidAppInstanceGroupSet.ActivationFailed`: The app instance group set is not in an available state.
 //
 // @param request - ListAuthorizedUsersRequest
 //
@@ -5154,7 +5410,7 @@ func (client *Client) ListAuthorizedUsersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the bindng information between users and resources.
+// Queries the binding information between users and resources.
 //
 // @param request - ListBindInfoRequest
 //
@@ -5222,7 +5478,7 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Performs a paging query to retrieve the list of bookmarks under a specified cloud browser group or delivery group set.
+// Queries the list of bookmarks under a specified cloud browser group or delivery group set by using paging.
 //
 // @param request - ListBrowserBookmarksRequest
 //
@@ -5282,27 +5538,27 @@ func (client *Client) ListBrowserBookmarksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Performs a paging query of cloud browser groups and their current statuses.
+// Queries cloud browser groups and their current status by page.
 //
 // Description:
 //
-// This topic describes how paged query cloud browser groups in the monthly active user (MAU) billing scenario.
+// This topic describes the query usage for the monthly active user (MAU) billing scenario.
 //
 // ## Query conditions
 //
-// You can filter cloud browser groups by browser group ID, name, business region, office network, set, authorized user group, and status. You can specify only one status value at a time for status filtering.
+// You can filter by browser group ID, name, business region, office network, set, authorized user groups, and status. You can specify only one status value at a time.
 //
 // ## Pagination
 //
-// Use PageNumber and PageSize paged query data by page. You can determine whether paged query the next page based on the returned TotalCount.
+// Use `PageNumber` and `PageSize` to perform a paged query. Determine whether to query the next page based on the returned `TotalCount`.
 //
 // ## What to do next
 //
-// To view the detailed configurations of a single browser group, call GetBrowserInstanceGroup by using the returned ID.
+// To view the detailed configuration of a single browser group, call `GetBrowserInstanceGroup` by using the returned ID.
 //
-// ## Example notes
+// ## Example description
 //
-// The hyphen (`-`) in the examples indicates that the field is not applicable or not returned in the current scenario, and is not an actual string returned by the API operation. The common resource IDs in the examples are desensitized. Use the actual query results when you use the API operation.
+// A hyphen (`-`) in the examples indicates that the field is not applicable or not returned in the current scenario. It is not a string actually returned by the API operation. Common resource ID examples are masked. Use the actual query results.
 //
 // @param request - ListBrowserInstanceGroupRequest
 //
@@ -5745,7 +6001,7 @@ func (client *Client) ListImageWithContext(ctx context.Context, request *ListIma
 
 // Summary:
 //
-// Retrieves the basic information of images by using paging and a paged query, including the image name, type, status, and version identity.
+// Performs a paged query to retrieve the basic information of images, including the image name, type, status, and version identity, with paging support.
 //
 // Description:
 //
@@ -5889,9 +6145,9 @@ func (client *Client) ListImageTagsWithContext(ctx context.Context, request *Lis
 //
 // Description:
 //
-// You can use paging to perform a paged query of the model template list under a model provider template in the Wuying Agent Management Center. You can filter the results by model group ID, model provider template ID, model template ID, and model encoding. When you query by the model group dimension, the default model is automatically pinned to the top.
+// You can use paging to query the list of model templates under a model provider template in the Wuying Agent Management Center. You can filter the results by model group ID, model provider template ID, model template ID, and model encoding. When you query by model group, the default model is automatically pinned to the top.
 //
-// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Before you call this operation, make sure that you fully understand the operations and usage of the Wuying Agent Management Center.
 //
 // @param tmpReq - ListLlmTemplatesRequest
 //
@@ -5973,7 +6229,7 @@ func (client *Client) ListLlmTemplatesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Queries the list of model provider endpoints.
+// Queries a list of model provider endpoints.
 //
 // @param request - ListModelProviderEndpointsRequest
 //
@@ -6029,7 +6285,7 @@ func (client *Client) ListModelProviderEndpointsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the list of available LLM model codes for a specified model provider. It supports filtering by LLM code, model brand, recommendation level, and recommendation status, and returns model information such as the model name, description, release time, features, inference modality, pricing, credit multiplier, and risk type.
+// Queries the list of available LLM model codes for a specified model provider. Supports filtering by LLM code, model brand, recommended tier, and recommendation status, and returns model information such as the model name, description, release time, features, inference modality, pricing, credit multiplier, and risk type.
 //
 // @param request - ListModelProviderLlmCodesRequest
 //
@@ -6105,13 +6361,11 @@ func (client *Client) ListModelProviderLlmCodesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of model provider templates.
+// Queries a list of model provider templates.
 //
 // Description:
 //
-// You can perform a paged query to retrieve the list of model provider templates under a specified model group in the WUYING Agent Management Center. You can filter results by provider name, model group ID, and provider template ID. Paging is supported.
-//
-// Before you call this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// You can use paging to query the list of model provider templates under a specified model group in the Wuying Agent Management Center. You can filter the templates by provider name, model group ID, and provider template ID. Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param tmpReq - ListModelProviderTemplatesRequest
 //
@@ -6631,7 +6885,7 @@ func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Performs a paged query to retrieve the published delivery groups and their application information for a specified product type under the current Alibaba Cloud account. Supports filtering by delivery group, application, and user authorization during paging.
+// Queries published delivery groups and their application information for a specified product type under the current Alibaba Cloud account by page, and supports filtering by delivery group, application, and user authorization status.
 //
 // Description:
 //
@@ -6645,9 +6899,9 @@ func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context,
 //
 // - **You must explicitly specify ProductType, PageNumber, and PageSize.*	- The page number starts from 1, and the number of entries per page ranges from 1 to 100.
 //
-// - AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName all support fuzzy match. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met. If both AppId and AppName are specified, the same application must meet both conditions.
+// - AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName all support fuzzy match. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met. If both AppId and AppName are specified, they must be met by the same application.
 //
-// - If an optional filter parameter is not specified or is set to an empty string, the results are not filtered by this condition. The query results are sorted in descending order of the delivery group creation time. The same delivery group is not returned multiple times even if it contains multiple matched applications.
+// - If an optional filter parameter is not specified or an empty string is specified, the condition is not used for filtering. The query results are sorted in descending order of the delivery group creation time. A delivery group is not returned multiple times even if it contains multiple matched applications.
 //
 // - ExcludeUserId is used to exclude delivery groups for which all applications have been directly authorized to a specified user. It cannot be used to determine whether the user has no access permissions at all.
 //
@@ -6655,13 +6909,13 @@ func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context,
 //
 // ## Call sequence
 //
-// 1. Initiate a query with PageNumber=1 and the desired PageSize. For WUYING Cloud App scenarios, set ProductType=CloudApp.
+// 1. Initiate a query with PageNumber=1 and the required PageSize. For Wuying Cloud App scenarios, set ProductType=CloudApp.
 //
-// 2. Read AppInstanceGroupModels. To retrieve the next page, keep the product type and filter conditions unchanged and increment PageNumber. If no delivery groups match the conditions, the total count is 0 and the list is empty. If the page number exceeds the range of the current results, the list may also be empty, but the total count still represents the total number of all matched delivery groups.
+// 2. Read AppInstanceGroupModels. To retrieve the next page, keep the product type and filter conditions unchanged and increment PageNumber. If no delivery groups match the conditions, the total count is 0 and the list is empty. If the page number exceeds the range of the current results, the list may also be empty, but the total count still indicates the total number of all matched delivery groups.
 //
 // 3. To obtain the details of a single delivery group, pass the complete AppInstanceGroupId returned and the same ProductType to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
 //
-// The masked identity in the examples is used to demonstrate the format. Replace it with your actual identity when you call the operation.
+// The desensitized identity in the examples is used to demonstrate the format. Replace it with your actual identity when you call the operation.
 //
 // @param request - ListPublishedAppInstanceGroupRequest
 //
@@ -6737,39 +6991,39 @@ func (client *Client) ListPublishedAppInstanceGroupWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries deployed applications in published delivery groups under the current Alibaba Cloud account for a specified product type by paging, and returns each application along with its delivery group and the number of authorized users by application. Supports filtering by delivery group, application, and user authorization status.
+// Performs a paging query on applications deployed in published delivery groups of a specified product type under the current Alibaba Cloud account. Returns each application along with its delivery group and the number of users granted authorization for the application. Supports filtering by delivery group, application, and user authorization status.
 //
 // Description:
 //
-// ## Before you begin
+// ## Prerequisites
 //
-// When you call this operation by using a RAM user or Security Token Service (STS) credential, you must have the `appstreaming:ListPublishedApps` permission.
+// To call this operation as a RAM user or by using STS credentials, you must have the `appstreaming:ListPublishedApps` permission.
 //
-// Only delivery groups in the published state whose images contain deployed applications are included in the query results. This operation only queries information. It does not create delivery groups or grant or revoke application access permissions.
+// Only applications deployed in the images of published delivery groups are returned in the query results. This operation only queries information. It does not create delivery groups, nor does it grant or revoke application access permissions.
 //
-// ## Response granularity
+// ## Return granularity
 //
-// Results are returned on a per-delivery-group-plus-application basis. If the same application is deployed in multiple published delivery groups, a separate record is returned for each combination. `TotalCount` also reflects the number of such combinations. The list is sorted by the creation time of the delivery group in descending order.
+// Results are returned item by item based on the "delivery group + application" combination. If the same application is deployed in multiple published delivery groups, multiple records are returned. `TotalCount` also counts the number of combinations. The list is sorted in descending order of the creation time of the associated delivery groups.
 //
 // ## Query and pagination
 //
-// - **You must explicitly specify `ProductType`, `PageNumber`, and `PageSize`.*	- Page numbers start from `1`, and the page size ranges from `1` to `100`. Invalid values return error codes `InvalidParameter.PageNumber` and `InvalidParameter.PageSize`, respectively.
+// - **You must explicitly specify `ProductType`, `PageNumber`, and `PageSize`.*	- The page number starts from `1`, and the number of entries per page ranges from `1` to `100`. If the values are invalid, the error codes `InvalidParameter.PageNumber` and `InvalidParameter.PageSize` are returned, respectively.
 //
-// - `AppInstanceGroupId`, `AppInstanceGroupName`, `AppId`, and `AppName` all support substring matching. You can specify them individually or in combination. When multiple conditions are specified, all conditions must be met.
+// - `AppInstanceGroupId`, `AppInstanceGroupName`, `AppId`, and `AppName` all support substring matching. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met.
 //
-// - If an optional filter parameter is not specified or is set to an empty string, filtering is not applied for that condition.
+// - If an optional filter parameter is not specified or an empty string is passed, filtering is not performed based on this condition.
 //
-// - `ExcludeUserId` excludes applications that have been authorized to the specified user by application, which helps you find applications that can still be authorized to that user. **Access permissions granted through delivery-group-level authorization or user groups are not evaluated by this condition.**
+// - `ExcludeUserId` is used to exclude applications that have been authorized for a specified user on a per-application basis, making it easier to filter out applications that can still be authorized for the user. **Access permissions obtained through overall delivery group authorization or user groups are not evaluated by this condition.**
 //
-// ## Invocation sequence
+// ## Call sequence
 //
-// 1. Initiate a query with `PageNumber=1` and the desired `PageSize`. For WUYING Cloud Application common scenarios, use `ProductType=CloudApp`.
+// 1. Initiate a query with `PageNumber=1` and the desired `PageSize`. For WUYING Cloud App scenarios, use `ProductType=CloudApp`.
 //
-// 2. Read `Apps`. To retrieve the next page, increment `PageNumber` while keeping the product type and filter conditions unchanged. If no results match, `TotalCount` is `0` and `Apps` is an empty list. If the page number exceeds the result range, `Apps` may also be empty, but `TotalCount` still indicates the total number of matching records.
+// 2. Read `Apps`. To retrieve the next page, keep the product type and filter conditions unchanged and increment `PageNumber`. If no matching results are found, `TotalCount` is `0` and `Apps` is an empty list. If the page number exceeds the result range, `Apps` may also be empty, but `TotalCount` still indicates the total number of matching records.
 //
-// 3. To authorize users for a specific application by application, pass the returned `AppInstanceGroupId`, `AppId`, and the same `ProductType` to [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~). To view delivery group details, pass `AppInstanceGroupId` and `ProductType` to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
+// 3. When you need to grant authorization to a user for an application on a per-application basis, pass the returned `AppInstanceGroupId`, `AppId`, and the same `ProductType` to [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~). To view delivery group details, pass `AppInstanceGroupId` and `ProductType` to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
 //
-// The masked identities in the examples are for format demonstration purposes. Replace them with your actual identities when you invoke the operation.
+// The masked identity in the examples is used to demonstrate the format. Replace it with your actual identity when you invoke the operation.
 //
 // @param request - ListPublishedAppsRequest
 //
@@ -7055,49 +7309,49 @@ func (client *Client) ListTagCloudResourcesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries tags bound to one or more delivery groups, or filters delivery groups that have specific tags bound by tag key-value pairs.
+// Queries the tags bound to one or more delivery groups, or filters delivery groups that are bound to specified tags by tag keys and values.
 //
 // Description:
 //
-// This operation complies with the Alibaba Cloud tagging standard and is used to query tags bound to Elastic Cloud Application (China) delivery groups. You can query tags bound to resources by resource ID, or filter resources that have specific tags bound by tag key-value pairs.
+// This operation follows the Alibaba Cloud tagging specification and is used to query tags bound to Wuying Cloud App delivery groups. You can view the tags bound to resources by resource ID, or filter resources bound to specified tags by tag keys and values.
 //
 // ## Before you begin
 //
-// - A delivery group is created. You can call the ListAppInstanceGroup operation to obtain the delivery group ID.
+// - A delivery group is created. You can obtain the delivery group ID by calling the ListAppInstanceGroup operation.
 //
-// - Tags are bound to the delivery group. You can bind tags by calling the TagResources operation, or by using the console or the Tag service.
+// - Tags are bound to the delivery group. You can bind tags by calling the TagResources operation, or bind them in the console or Tag service.
 //
 // ## Parameter description
 //
 // - **ResourceType is required**. Only `APPINSTANCEGROUP` (delivery group) is supported. If you specify other values, the error code `InvalidResourceType.Invalid` is returned.
 //
-// - **Specify at least one of ResourceId.N and Tag.N**. If neither is specified, the error code `MissingParameter.ResourceIdsOrTags` is returned.
+// - **You must specify at least one of ResourceId.N and Tag.N**. If neither is specified, the error code `MissingParameter.ResourceIdsOrTags` is returned.
 //
-//   - If only ResourceId.N is specified: all tags attached to the specified resources are returned.
+//   - If only ResourceId.N is specified: all tags bound to these resources are returned.
 //
-//   - If only Tag.N is specified: all resources that have the specified tags attached and their matching tags are returned.
+//   - If only Tag.N is specified: all resources bound to the specified tags and their matched tags are returned.
 //
-//   - If both are specified: only records of the specified resources that have the specified tags attached are returned.
+//   - If both are specified: only records of the specified resources bound to the specified tags are returned.
 //
-// - Tag.N.Key is required. If it is empty, the error code `InvalidTagPolicy.KeyInvalid` is returned. Tag.N.Value is optional. If it is not specified, the value of the tag key is not restricted, which means any tag value under the key is matched.
+// - Tag.N.Key is required. If it is empty, the error code `InvalidTagPolicy.KeyInvalid` is returned. Tag.N.Value is optional. If it is not specified, the value corresponding to the tag key is not limited.
 //
-// - Multiple Tag.N conditions have an AND relationship. A resource is returned only if it has all specified tags attached.
+// - Multiple Tag.N parameters have an AND relationship. A resource is returned only if it is bound to all specified tags.
 //
 // ## Response description
 //
-// - Each record in the response corresponds to a resource-tag key-value pair. If a resource has multiple tags bound, multiple records are returned.
+// - The response returns one record for each resource and tag key-value pair. If a resource is bound to multiple tags, multiple records are returned.
 //
-// - TotalCount indicates the number of records returned.
+// - TotalCount indicates the number of records returned in the current request.
 //
-// - This operation returns all matching results at a time. An empty NextToken value indicates that no more data is available.
+// - This operation returns all matched results at once. An empty NextToken in the response indicates that no more data is available.
 //
-// ## Invocation sequence
+// ## Procedure
 //
-// 1. Invoke the ListAppInstanceGroup operation to obtain the delivery group ID.
+// 1. Call ListAppInstanceGroup to obtain the delivery group ID.
 //
-// 2. Invoke the TagResources operation to attach tags to the delivery group.
+// 2. Call TagResources to bind tags to the delivery group.
 //
-// 3. Invoke this operation to query tag bindings by resource ID or tag conditions.
+// 3. Call this operation to query the binding relationships by resource ID or tag condition.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7166,7 +7420,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // Returns application adaptation steps when Type is set to ADAPTOR, and image creation steps when Type is set to IMAGE.
 //
-// This operation returns step definitions, not the actual progress of a specific task. Read the step definitions first, and then combine them with the current step and step status returned by GetTask to display the task progress. The step sets vary across different task types. Do not use the step index as the completion percentage.
+// This operation returns step definitions, not the actual progress of a specific task. Read the step definitions first, and then display the task progress based on the current step and step status returned by GetTask. The step sets vary across different task types. Do not use the step index as the completion percentage.
 //
 // @param request - ListTaskStepRequest
 //
@@ -7341,11 +7595,11 @@ func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the Wuying Workstation workload templates available for a specified virtual node pool.
+// Queries the available Wuying workstation workload templates for a specified virtual node pool.
 //
 // Description:
 //
-// Queries the workload templates available for a specified virtual node pool. Before calling this operation, call [ListWuyingServer](~~ListWuyingServer~~) to obtain the `VirtualNodePoolId` of the current account. The operation verifies the ownership of the node pool and returns up to 100 records sorted by template configuration order. The template content is Base64-encoded after being encoded in UTF-8. You must decode the Base64 string before use. The current version does not use `MaxResults` and `NextToken` for pagination.
+// Queries the available workload templates for a specified virtual node pool. Before calling this operation, call [ListWuyingServer](~~ListWuyingServer~~) to obtain the `VirtualNodePoolId` under the current account. This operation verifies the ownership of the node pool and returns up to the first 100 records sorted by template configuration order. The template content is Base64-encoded after being encoded in UTF-8. You must decode the Base64 string before use. The current version does not use `MaxResults` and `NextToken` for pagination.
 //
 // @param request - ListWuyingServerWorkloadTemplateRequest
 //
@@ -7397,33 +7651,33 @@ func (client *Client) ListWuyingServerWorkloadTemplateWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the list of available zone IDs for a specified region, product type, and operating system type.
+// Queries the list of available zone IDs for a specified product type and operating system type in a specified region.
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
-// This operation returns the list of available zone IDs for the current Alibaba Cloud account based on the specified region, product type, and operating system type. A typical use case is to check which zones are available before creating a resource that requires a vSwitch, and then select a vSwitch in one of those zones.
+// This operation returns a list of available zone IDs that can be selected by the current Alibaba Cloud account based on the region, product type, and operating system type. A typical use case is to confirm which zones are available before creating a resource that requires a specified vSwitch, and then select a vSwitch located in one of these zones.
 //
 // This operation only queries information. It does not create resources or incur fees.
 //
 // ## Before you begin
 //
-// - When calling this operation with a RAM user or STS credential, the `appstreaming:ListAppInstanceType` permission is required. If the permission is insufficient, the error code `Forbidden.NoPermission` is returned.
+// - When you call this operation as a RAM user or by using STS credentials, you must have the appstreaming:ListAppInstanceType permission. If you do not have the required permissions, the error code Forbidden.NoPermission is returned.
 //
-// - **`ProductType`, `BizRegionId`, and `OsType` are all required.*	- If any of these parameters is missing, empty, or set to an unrecognized value, the error code `InvalidParameter.ValueInvalid` is returned.
+// - **ProductType, BizRegionId, and OsType are all required.*	- If any of these parameters is missing, empty, or has an unrecognized value, the error code InvalidParameter.ValueInvalid is returned.
 //
-// - `BizRegionId` must be a region ID supported by WUYING Cloud Application. Call [ListRegions](~~ListRegions~~) first to obtain the supported region IDs.
+// - BizRegionId must be a region ID supported by App Streaming. You can call [ListRegions](~~ListRegions~~) to obtain the supported region IDs.
 //
 // ## Call sequence
 //
 // 1. Call [ListRegions](~~ListRegions~~) to obtain the supported region IDs.
 //
-// 2. Call this operation with the region ID, target product type, and operating system type, and read the returned `ListZonesModel.Zones`.
+// 2. Call this operation by using the region ID, target product type, and operating system type, and then read the returned ListZonesModel.Zones.
 //
-// 3. When creating a resource that requires a vSwitch, select a vSwitch in one of the returned zones. For example, pass the corresponding vSwitch ID when calling [CreateAppInstanceGroup](~~CreateAppInstanceGroup~~) or [CreateWuyingServer](~~CreateWuyingServer~~).
+// 3. When you create a resource and need to specify a vSwitch, select a vSwitch located in one of the returned zones. For example, pass the corresponding vSwitch ID when you call [CreateAppInstanceGroup](~~CreateAppInstanceGroup~~) or [CreateWuyingServer](~~CreateWuyingServer~~).
 //
-// The returned zone list is determined by the available resources in the current region and may change over time. Query the list in real time before creating resources instead of caching it for extended periods.
+// The returned list of available zones is determined by the available resources in the current region and may change over time. Query the list in real time before creating resources instead of caching the list for a long time.
 //
 // @param request - ListZonesRequest
 //
@@ -7517,6 +7771,58 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithContext(ctx context
 		BodyType:    dara.String("json"),
 	}
 	_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables or disables the memory feature for specified agent instances.
+//
+// Description:
+//
+// Call `ListAgentInstanceMemory` to obtain the target instance IDs. The server validates all instances in the request before updating the memory status. After the update, you can query the memory status of the instances.
+//
+// @param request - ModifyAgentInstanceMemoryConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAgentInstanceMemoryConfigResponse
+func (client *Client) ModifyAgentInstanceMemoryConfigWithContext(ctx context.Context, request *ModifyAgentInstanceMemoryConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAgentInstanceMemoryConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentInstanceIds) {
+		body["AgentInstanceIds"] = request.AgentInstanceIds
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAgentInstanceMemoryConfig"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAgentInstanceMemoryConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7631,33 +7937,33 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// Changes the billing method of a specified delivery group to a target billing method and returns the ID of the billing conversion task to be created.
+// Changes the billing method of a specified app instance group to the target billing method and returns the ID of the billing conversion task to be created.
 //
 // Description:
 //
-// This operation performs billing method conversion, which may create orders and trigger subsequent billing changes. **A successful response or a returned task ID does not indicate that the new billing method has taken effect.**
+// This operation converts the billing method, which may create an order and trigger subsequent billing changes. **A successful response or a returned task ID does not indicate that the new billing method has taken effect.**
 //
 // **Prerequisites:**
 //
-// - The resources belong to the current account, and the product and business region match the request. Only one delivery group can be specified per request.
+// - The resources belong to the current account, and the product and business region match the request. Only one app instance group can be specified per request.
 //
-// - The target billing method must be different from the current billing method, and the target resource specifications must support the corresponding sales and Billable methods.
+// - The target billing method must be different from the current one, and the target resource specifications must support the corresponding sales and Billable methods.
 //
-// - Delivery groups that have been added to a valid collection cannot have their Billable methods converted individually.
+// - App instance groups that have been added to a valid collection cannot have their Billable methods converted individually.
 //
-// - Multiple delivery groups created in the same batch of orders cannot have their Billable methods converted separately.
+// - Multiple app instance groups created in the same batch of orders cannot have their Billable methods converted separately.
 //
 // **Parameter relationships and call sequence:**
 //
-// 1. Query the resource details first to confirm the product, business region, and current ChargeType. You can use [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query cloud application delivery groups.
+// 1. Query the resource details first to confirm the product, business region, and current `ChargeType`. You can use [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query cloud app instance groups.
 //
-// 2. Explicitly specify the target ChargeType. If you need to purchase a subscription, specify the purchase duration by combining Period and PeriodUnit. The period combination must comply with the sales rules currently supported by the resource.
+// 2. Explicitly specify the target `ChargeType`. If you need to purchase a subscription, specify the purchase duration by combining `Period` and `PeriodUnit`. The period combination must comply with the sales rules currently supported by the resource.
 //
-// 3. Set AutoPay based on whether automatic payment is allowed. If auto-renewal is involved, explicitly set AutoRenew.
+// 3. Set `AutoPay` based on whether automatic payment is allowed. If auto-renewal is involved, explicitly set `AutoRenew`.
 //
-// 4. After the call, save the returned AppInstanceGroupModel.TaskId. If there are unpaid orders, complete the payment first, and then query the resource details again to confirm that the billing method has been changed.
+// 4. After the call, save the returned `AppInstanceGroupModel.TaskId`. If there are unpaid orders, complete the payment first, and then query the resource details again to confirm that the billing method has been changed.
 //
-// This operation does not accept an expiration time parameter. Do not pass the expiration time from other operations into this request. The task examples only illustrate the purpose of the ID and do not define a fixed prefix or length for real task IDs.
+// This operation does not accept an expiration time parameter. Do not pass the expiration time from other operations into this request. The task examples only illustrate the purpose of the ID and do not define a fixed prefix or length for actual task IDs.
 //
 // @param tmpReq - ModifyAppInstanceGroupChargeTypeRequest
 //
@@ -8037,7 +8343,7 @@ func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Shares an image with other WUYING users or unshares a shared image.
+// Shares an image with other WUYING users or cancels image sharing.
 //
 // @param request - ModifyShareImageRequest
 //
@@ -8131,6 +8437,66 @@ func (client *Client) ModifyTenantConfigWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyTenantConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the tenant-level memory configuration for the current account based on the agent provider, business platform, and business type.
+//
+// Description:
+//
+// *Changing the switch also updates existing instances that have the corresponding memory feature configured under the same business combination.*	- After the update, call `GetTenantMemoryConfig` and pass the same provider, platform, and business type to verify the configuration.
+//
+// @param request - ModifyTenantMemoryConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTenantMemoryConfigResponse
+func (client *Client) ModifyTenantMemoryConfigWithContext(ctx context.Context, request *ModifyTenantMemoryConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyTenantMemoryConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		body["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		body["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyTenantMemoryConfig"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyTenantMemoryConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8257,11 +8623,11 @@ func (client *Client) PageListAppInstanceGroupUserWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries app instance group reports by region, app instance group, status, user authorization relationship, or statistical date.
+// Queries delivery group reports by region, delivery group, status, user authorization relationship, or statistical date.
 //
 // Description:
 //
-// Queries the IDs, names, and statuses of app instance groups in app instance group reports. You can call [ListRegions](~~ListRegions~~) to obtain the business regions and then call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the app instance groups. `AppInstanceGroupId` matches the exact ID, and `AppInstanceGroupName` filters by inclusion. If multiple filter conditions are specified at the same time, the intersection is used. When filtering by date, `StatDate` specifies a single day, and `StartDate` and `EndDate` must be specified in pairs to represent a closed interval. If both a single day and an interval are specified, the results must meet both conditions. Before using `EndUserId`, make sure that the user has a valid authorization relationship.
+// Queries the delivery group ID, name, and status in delivery group reports. You can call [ListRegions](~~ListRegions~~) to obtain the business region, and then call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the delivery group. AppInstanceGroupId matches the exact ID, and AppInstanceGroupName filters by inclusion. If multiple filter conditions are specified at the same time, the intersection is used. When filtering by date, StatDate specifies a single day, and StartDate and EndDate must be specified in pairs to represent a closed interval. If both a single day and an interval are specified, the results must meet both conditions. Before using EndUserId, make sure that the user has a valid authorization relationship.
 //
 // @param request - QueryAppInstanceGroupReportListRequest
 //
@@ -8421,7 +8787,7 @@ func (client *Client) QueryConnectionReportWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// Queries the daily active user (DAU) report. StartDate and EndDate are required. The date range is inclusive and cannot exceed 180 days. If ProductType is not specified or is unrecognized, the query defaults to CloudApp. You can use BizRegionId and AppInstanceGroupId to narrow down the scope. If neither is specified, the query returns aggregated data for all business regions. Results are returned in pages, with a maximum of 1,500 records per page.
+// Queries the daily active user (DAU) report. StartDate and EndDate are required. The date range is inclusive and cannot exceed 180 days. If ProductType is not specified or cannot be recognized, the query defaults to `CloudApp`. You can use BizRegionId and AppInstanceGroupId to narrow down the scope. If neither is specified, the query returns aggregated data for all business regions. Results are returned in pages, with a maximum of 1,500 records per page.
 //
 // @param request - QueryDauReportDataRequest
 //
@@ -8493,7 +8859,7 @@ func (client *Client) QueryDauReportDataWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Queries the monthly active user (MAU) report. `ProductType`, `StartDate`, and `EndDate` are required for server-side validation, and the time span cannot exceed 60 months. The API returns statistical values by month. To adapt to offline data generated on the next day, the last month in the query range uses the day before `EndDate` as the statistical cutoff date. Results are returned in pages, with a maximum of 1,500 entries per page.
+// Queries the monthly active user (MAU) report. ProductType, StartDate, and EndDate are required for server-side validation, and the time span cannot exceed 60 months. The API returns statistical values by month. To adapt to offline data generated on the next day, the last month in the query range uses the day before EndDate as the statistical cutoff date. Results are returned by page, with a maximum of 1,500 entries per page.
 //
 // @param request - QueryMauReportDataRequest
 //
@@ -8561,11 +8927,11 @@ func (client *Client) QueryMauReportDataWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the network RTT and low-RTT user statistics within a specified time range.
+// Queries network RTT and low-RTT user statistics within a specified time range.
 //
 // Description:
 //
-// Queries network round-trip time (RTT) reports. `ProductType`, `StartDate`, and `EndDate` are required for server-side validation. The statistical interval is `[StartDate, EndDate)`. The minimum, maximum, and average RTT values are measured in milliseconds. The low-RTT threshold is determined by the report statistical caliber, and the current API operation does not return this threshold. Results are returned in pages, with a maximum of 1,500 entries per page.
+// Queries network round-trip time (RTT) reports. ProductType, StartDate, and EndDate are required for server-side validation. The statistical interval is [StartDate, EndDate). The minimum, maximum, and average RTT values are measured in milliseconds. The low-RTT threshold is determined by the report statistical caliber, and the current API operation does not return this threshold. Results are returned in pages, with a maximum of 1,500 entries per page.
 //
 // @param request - QueryNetworkRttReportRequest
 //
@@ -8637,7 +9003,7 @@ func (client *Client) QueryNetworkRttReportWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// Queries node quantity reports. StartDate, EndDate, and StatDateType are required. The query span limit is determined by the statistical granularity: up to 1 day for 1m and 30m, up to 15 days for 6h, and up to 180 days for 1d. Both the start and end boundaries are included in the query range. Results are returned in pages, with a maximum of 1,500 entries per page.
+// Queries node quantity reports. StartDate, EndDate, and StatDateType are required. The query span limit is determined by the statistical granularity: up to 1 day for `1m` and `30m`, up to 15 days for `6h`, and up to 180 days for `1d`. Both the start and end boundaries are included in the query range. Results are returned in pages, with a maximum of 1,500 entries per page.
 //
 // @param request - QueryNodeReportDataRequest
 //
@@ -8709,17 +9075,17 @@ func (client *Client) QueryNodeReportDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the trend of session counts at various time points on a specified date, returned in 10-minute intervals.
+// Queries the session count trend at various time points on a specified date, returned in 10-minute intervals.
 //
 // Description:
 //
-// Call this operation to query the session count trend data for the current Alibaba Cloud account on a specified date. The data is an offline statistical result, organized by day, and returns the session counts at various time points on that date.
+// Call this operation to query the session count trend data for the current Alibaba Cloud account on a specified date. The data consists of offline statistical results organized by day and returns the session counts at various time points on that date.
 //
-// The returned results are aggregated in 10-minute intervals: each data point is identified by an hour (Hh, values 00-23) and a minute (Mi, values 00, 10, 20, 30, 40, 50) representing a time point, and SessionCntMi is the total number of sessions within the 10-minute interval of that time point. The results are sorted in ascending order by hour and minute.
+// The returned results are aggregated in 10-minute intervals. Each data point is identified by an hour (Hh, values 00-23) and a minute (Mi, values 00, 10, 20, 30, 40, 50) representing a time point, and SessionCntMi is the aggregated session count within the 10-minute interval for that time point. The results are sorted in ascending order by hour and minute.
 //
-// You can specify a business region by using BizRegionId and filter session data by delivery group by using AppInstanceGroupId. If neither is provided, the summary of session data for all regions and all delivery groups under the current account is returned. The region actually used to filter session data is subject to BizRegionId.
+// You can specify a business region by using BizRegionId and filter by delivery group by using AppInstanceGroupId. If neither parameter is provided, the aggregated session data for all regions and all delivery groups under the current account is returned. The actual region used to filter session data is determined by BizRegionId.
 //
-// StatDate is the statistical date in the yyyyMMdd format. If not provided, the data for yesterday is queried by default. Only dates within the last 90 days are supported. If there is no session data on the specified date, an empty list is returned, and the return code is NO_DATA.
+// StatDate is the statistical date in the yyyyMMdd format. If this parameter is not provided, the data for yesterday is queried by default. Only dates within the last 90 days are supported. If there is no session data on the specified date, an empty list is returned and the return code is NO_DATA.
 //
 // @param request - QuerySessionDataRequest
 //
@@ -8855,7 +9221,7 @@ func (client *Client) QuerySessionReportDataWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Queries the application usage of a specified user on an hourly basis. StartDate and EndDate use the yyyyMMdd format. If either parameter is not provided, it defaults to yesterday. Both dates must be within the last 90 days, and the start date cannot be later than the end date. The query range includes the start and end dates. UserId must be set to the ID of the user to query. A maximum of the top five applications by usage duration are returned for each hour.
+// Queries the application usage of a specified user on an hourly basis. StartDate and EndDate use the yyyyMMdd format. If either parameter is not provided, it defaults to yesterday. Both dates must be within the last 90 days, and the start date cannot be later than the end date. The query range includes the start and end dates. UserId must be set to the ID of the user to be queried. A maximum of the top five applications by usage duration are returned for each hour.
 //
 // @param request - QueryUserAppUsageAggregateByHourRequest
 //
@@ -8991,7 +9357,7 @@ func (client *Client) QueryUserAppUsageTimeRankWithContext(ctx context.Context, 
 //
 // Description:
 //
-// Queries user usage reports. ProductType, StartDate, and EndDate are required for server-side validation, and the time span cannot exceed 60 months. During the query, the start and end times are converted to `yyyyMMdd` and aggregated by natural days in a closed interval. The results are paginated in descending order of cumulative usage duration, with a maximum of 1,500 records per page. You can combine ConnectionStatus, UserId, BizRegionId, and AppInstanceGroupId for filtering.
+// Queries user usage reports. `ProductType`, `StartDate`, and `EndDate` are required for server-side validation, and the time span cannot exceed 60 months. During the query, the start and end times are converted to the `yyyyMMdd` format and aggregated in a closed interval of natural days. The results are paginated in descending order of cumulative usage duration, with a maximum of 1,500 records per page. You can combine `ConnectionStatus`, `UserId`, `BizRegionId`, and `AppInstanceGroupId` for filtering.
 //
 // @param request - QueryUserUsageReportRequest
 //
@@ -9067,17 +9433,17 @@ func (client *Client) QueryUserUsageReportWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Removes model groups from a resource group.
+// Removes a model group from resource groups.
 //
 // Description:
 //
-// You can authorize model groups for resources that belong to Agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. These model groups serve as inference engines for Agents to execute tasks within the resource group.
+// You can authorize model groups for the resources to which agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent belong in the Wuying Agent Management Center. These model groups serve as inference engines for agents in the resource groups to execute tasks.
 //
-// When an Agent runtime has its own model group configured and the resource group it belongs to also has a model group configured, the model group bound to the resource group takes effect. The resource group setting has a higher priority than the Agent runtime setting.
+// If an agent runtime is configured with a model group and its resource group is also configured with a model group, the model group bound to the resource group takes effect. That is, the resource group settings take precedence over the agent runtime settings.
 //
-// When you remove the model group from the resource group to which an Agent runtime belongs, the model group configured on the Agent runtime itself automatically takes effect.
+// When you remove the model group from the resource group to which the agent runtime belongs, the model group configured for the agent runtime automatically takes effect.
 //
-// Before calling this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Make sure that you fully understand the operations and usage of the Wuying Agent Management Center before you call this operation.
 //
 // @param request - RemoveResourceGroupModelTemplateRequest
 //
@@ -9133,15 +9499,15 @@ func (client *Client) RemoveResourceGroupModelTemplateWithContext(ctx context.Co
 //
 // Make sure that you are fully familiar with the operations and usage of the WUYING Agent Management Center before you call this operation.
 //
-// Before you begin:
+// Prerequisites:
 //
-// - The RuntimeIds passed to this operation must be agent runtimes managed by the WUYING Agent Management Center. The cloud desktops that host these runtimes must be created by using API operations such as CreateDesktop of the Elastic Desktop Service (EDS) product. Example of a cross-product call chain: CreateDesktop → ListDesktops → Use the DesktopId as RuntimeIds.
+// - The RuntimeIds passed to this operation must be agent runtimes managed by the WUYING Agent Management Center. The hosted cloud desktops are created by API operations such as CreateDesktop of the Elastic Desktop Service (EDS) product. Example of a cross-product call chain: CreateDesktop → ListDesktops → Use DesktopId as RuntimeIds.
 //
 // - OpenClaw scenario: RuntimeIds are cloud desktop IDs in the format of ecd-xxxx, which are the DesktopId values returned by the ListDesktops operation of the EDS product.
 //
-// - JVS Computer and Hermes Agent scenarios: RuntimeIds are the corresponding JVS IDs in the format of jvs-xxxx. The cloud desktops that host these runtimes are also created by using API operations such as CreateDesktop of the EDS product.
+// - JVS Computer and Hermes Agent scenarios: RuntimeIds are the corresponding JVS IDs in the format of jvs-xxxx. The hosted cloud desktops are also created by API operations such as CreateDesktop of the EDS product.
 //
-// - You can call the ListDesktopAgentRuntime operation of this product to query the agent runtimes managed by the WUYING Agent Management Center. If the query result is empty, it indicates that the corresponding cloud desktop is not managed. In this case, you must first call the CreateDesktop operation of the EDS product to create the cloud desktop. The WUYING Agent Management Center automatically manages the cloud desktop after it receives a desktop lifecycle event. After that, you can call this operation.
+// - You can call the ListDesktopAgentRuntime operation of this product to query the agent runtimes managed by the WUYING Agent Management Center. If the query result is empty, the corresponding cloud desktop is not managed. You must first call the CreateDesktop operation of the EDS product to create the desktop. The WUYING Agent Management Center automatically manages the desktop after receiving the desktop lifecycle event. Then, you can call this operation.
 //
 // @param request - RemoveRuntimeChannelRequest
 //
@@ -9460,6 +9826,70 @@ func (client *Client) RestartWuyingServerWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Sets user profile path rules for an app instance group or an app instance group set.
+//
+// Description:
+//
+// Call `DescribeUserProfilePathRules` to query the target rules before you submit the complete list of rules to retain. **The submission overwrites the existing rules of the target. Passing an empty array or omitting the rule list sets the target rules to an empty list.*	- When a set ID is used, the rules apply to the members of the set. After the rules are set, you can call the query operation to verify the settings.
+//
+// @param request - SetUserProfilePathRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetUserProfilePathRulesResponse
+func (client *Client) SetUserProfilePathRulesWithContext(ctx context.Context, request *SetUserProfilePathRulesRequest, runtime *dara.RuntimeOptions) (_result *SetUserProfilePathRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		body["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserProfilePathRules) {
+		body["UserProfilePathRules"] = request.UserProfilePathRules
+	}
+
+	if !dara.IsNil(request.UserProfileRuleType) {
+		body["UserProfileRuleType"] = request.UserProfileRuleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetUserProfilePathRules"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetUserProfilePathRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts an image creation task for an existing image version, or resumes an existing creation task.
 //
 // @param request - StartTaskForCreateImageRequest
@@ -9616,7 +10046,7 @@ func (client *Client) StartTaskForDistributeImageWithContext(ctx context.Context
 
 // Summary:
 //
-// Starts a workstation.
+// Starts one or more workstations.
 //
 // @param request - StartWuyingServerRequest
 //
@@ -9822,45 +10252,45 @@ func (client *Client) TagCloudResourcesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates and binds tags to specified China Office (Chinese: Wuying) delivery groups in compliance with Alibaba Cloud tag specifications. If a tag key already exists on a resource, the tag value is updated to the value specified in the current request. Currently, only delivery group (`APPINSTANCEGROUP`) resource types are supported.
+// Creates and binds tags to specified app instance groups according to Alibaba Cloud tag specifications. If a tag with the same key already exists on a resource, the tag value is updated to the value specified in the current request. Currently, only the app instance group (`APPINSTANCEGROUP`) resource type is supported.
 //
 // Description:
 //
-// ## Before you begin
+// ## Prerequisites
 //
-// When you use a RAM user or Security Token Service (STS) credential to call this operation, you must have the `appstreaming:TagResources` permission.
+// When you call this operation as a RAM user or by using STS credentials, you must have the `appstreaming:TagResources` permission.
 //
-// The resources to which you want to bind tags must belong to the current Alibaba Cloud account. **This operation currently supports only delivery group resources.*	- You can set `ResourceType` only to `APPINSTANCEGROUP`. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain delivery group IDs.
+// The resources to which you want to bind tags must belong to the current Alibaba Cloud account. **This operation currently supports only app instance group resources**. You must set ResourceType to `APPINSTANCEGROUP`. You can obtain the app instance group ID by calling [ListAppInstanceGroup](~~ListAppInstanceGroup~~).
 //
 // ## Tag rules
 //
-// - In a single request, you can bind up to **20 tags*	- to up to **50 resources**. Duplicate resource IDs are automatically deduplicated.
+// - A single request can bind up to **20 tags*	- to up to **50 resources**. Duplicate resource IDs are automatically deduplicated.
 //
-// - A tag key must be 1 to 128 characters in length. A tag value must be 0 to 256 characters in length. Both are case-sensitive.
+// - A tag key must be 1 to 128 characters in length, and a tag value must be 0 to 256 characters in length. Both are case-sensitive.
 //
 // - A tag key cannot start with `aliyun` or `acs:` (case-insensitive). Neither tag keys nor tag values can contain `http://` or `https://`.
 //
-// - Tag keys in the same request must be unique. Otherwise, the error code `InvalidTag.Duplicated` is returned.
+// - Tag keys in the same request cannot be duplicate. Otherwise, the error code `InvalidTag.Duplicated` is returned.
 //
-// - Each tag key on a resource can correspond to only one tag value. If the tag key already exists on the resource, the tag value is updated to the new value.
+// - A tag key on a resource can correspond to only one tag value. If the tag key already exists on the resource, the tag value is updated to the new value.
 //
-// - A maximum of 20 custom tags can be bound to a single resource. If this limit is exceeded, the error code `ResourceTag.CustomTagCountExceed` is returned.
+// - A single resource can be bound to up to 20 custom tags. If this limit is exceeded, the error code `ResourceTag.CustomTagCountExceed` is returned.
 //
-// ## Results
+// ## Execution results
 //
-// - **If any specified delivery group does not exist or does not belong to the current account, the entire request fails.*	- The error code `InvalidAppInstanceGroup.NotFound` is returned, and no tags are bound to any resource.
+// - **If any specified app instance group does not exist or does not belong to the current account, the entire request fails**, and the error code `InvalidAppInstanceGroup.NotFound` is returned. No tags are bound to any resources.
 //
-// - If the binding succeeds, the response contains only `RequestId` and does not return tag details.
+// - If the binding is successful, the response contains only RequestId and does not return tag details.
 //
-// - If multiple resources are specified and only some of them fail to be bound, the operation still returns a success response without failure details. Call `ListTagResources` to verify the binding results. If only one resource is specified and the binding fails, the operation returns the corresponding error code.
+// - If multiple resources are specified and the binding fails for only some of the resources, the operation still returns a success response, and the response does not contain failure details. Call ListTagResources to verify the binding results. If only one resource is specified and the binding fails, the operation directly returns the corresponding error code.
 //
 // ## Call sequence
 //
-// 1. Call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the IDs of the delivery groups to which you want to add tags.
+// 1. Call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the IDs of the app instance groups to which you want to bind tags.
 //
-// 2. Call this operation with `ResourceType=APPINSTANCEGROUP`, `ResourceId.N`, and `Tag.N.Key`/`Tag.N.Value`.
+// 2. Call this operation and specify ResourceType=`APPINSTANCEGROUP`, ResourceId.N, and Tag.N.Key/Tag.N.Value.
 //
-// 3. To view the tags bound to resources, call `ListTagResources`. To unbind tags, call `UntagResources`.
+// 3. To view the tags bound to a resource, call ListTagResources. To unbind tags, call UntagResources.
 //
 // The masked identifiers in the examples are used to demonstrate the format. Replace them with your actual identifiers when you call the operation.
 //
@@ -9918,7 +10348,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Unbinds secondary private IP addresses from a development host.
+// Disassociates secondary private IP addresses from a development host.
 //
 // @param request - UnassignWuyingServerPrivateAddressesRequest
 //
@@ -10026,11 +10456,13 @@ func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequ
 
 // Summary:
 //
-// Dissociates applications from a specified image version in batches.
+// Disassociates multiple applications from a specified image version.
 //
 // Description:
 //
-// Only custom images and community images manageable by the current account are supported. If VersionId is omitted, the current active version is used. If specified, the version must belong to the image specified by ImageId. Verify the association between the applications and the version through the image query results before submitting AppIdList. **Dissociating applications does not directly delete application records.*	- To delete applications, call DeleteApp separately.
+// Only custom images and community images manageable by the current account are supported. If VersionId is omitted, the current active version is used. If specified, the version must belong to the image specified by ImageId.
+//
+// Verify the association between the applications and the version through image query results before submitting AppIdList. **Disassociating an application does not delete the application record.*	- To delete an application, call DeleteApp.
 //
 // @param request - UnbindAppRequest
 //
@@ -10085,7 +10517,7 @@ func (client *Client) UnbindAppWithContext(ctx context.Context, request *UnbindA
 
 // Summary:
 //
-// Unbinds tags from cloud resources in a unified manner.
+// Dissociates tags from cloud resources.
 //
 // @param request - UntagCloudResourcesRequest
 //
@@ -10137,47 +10569,47 @@ func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Untags the specified Wuying app instance groups according to Alibaba Cloud tagging specifications. You can remove specific tags by specifying tag keys, or remove all custom tags from the resources at once by setting `All=true` without specifying tag keys. Currently, only the app instance group (`APPINSTANCEGROUP`) resource type is supported.
+// Removes tags from the specified Wuying app instance groups according to Alibaba Cloud tag specifications. You can remove specific tags by tag key, or remove all custom tags from the resources at once by setting All to true without specifying tag keys. Currently, only the app instance group (APPINSTANCEGROUP) resource type is supported.
 //
 // Description:
 //
 // ## Prerequisites
 //
-// To call this operation as a RAM user or by using STS credentials, you must have the `appstreaming:UntagResources` permission.
+// When you call this operation as a RAM user or by using STS credentials, you must have the appstreaming:UntagResources permission.
 //
-// The resources to be untagged must belong to the current Alibaba Cloud account. **This operation currently supports only app instance group resources**. You must set `ResourceType` to `APPINSTANCEGROUP`. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID, and call the [ListTagResources](~~ListTagResources~~) operation to query the tags bound to the resources.
+// The resources from which you want to remove tags must belong to the current Alibaba Cloud account. **This operation currently supports only app instance group resources**. You must set ResourceType to APPINSTANCEGROUP. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID, and call the [ListTagResources](~~ListTagResources~~) operation to query the tags bound to the resources.
 //
-// ## Metric description
+// ## metric description
 //
-// - A single request can detach labels from up to **50 resources**. Duplicate resource IDs are automatically deduplicated.
+// - A single request can remove labels from up to **50 resources**. Duplicate resource IDs are automatically deduplicated.
 //
-// - **You must specify at least one of `TagKey.N` and `All`**: If neither is specified, or if `TagKey.N` is not specified and `All` is set to `false`, the operation returns the error code `InvalidParameter.TagKeyListOrAll`.
+// - **You must specify at least one of TagKey.N and All**: If neither is specified, or if TagKey.N is not specified and All is set to false, the error code InvalidParameter.TagKeyListOrAll is returned.
 //
-//   - If `TagKey.N` is specified: Only the labels corresponding to these label keys are detached. A maximum of 20 label keys can be specified in a single request. In this case, the `All` parameter is ignored.
+//   - If TagKey.N is specified: Only the labels corresponding to these label keys are removed. A maximum of 20 label keys can be specified in a single request. In this case, the All parameter is ignored.
 //
-//   - If `TagKey.N` is not specified and `All` is set to `true`: All custom labels on the resources are detached, including Wuying system labels that start with `System/` and were attached by calling the [TagResources](~~TagResources~~) operation.
+//   - If TagKey.N is not specified and All is set to true: All custom labels on the resources are removed, including Wuying system labels that start with `System/` and are attached by calling the [TagResources](~~TagResources~~) operation.
 //
 // - If a specified label key does not exist on a resource, the label key is skipped and no fault is returned.
 //
-// - Label keys that start with `System/` are Wuying system labels. Only `System/Scheduler/GRAYSCALE` and `System/Scheduler/STOP_NEW_USER_CONNECTION` are supported. If you specify other label keys that start with `System/`, the operation returns the error code `InvalidTagPolicy.KeyInvalid` or `InvalidTag.SystemKeyNotAllow`.
+// - Label keys that start with `System/` are Wuying system labels. Only System/Scheduler/GRAYSCALE and System/Scheduler/STOP_NEW_USER_CONNECTION are supported. If you specify other label keys that start with `System/`, the error code InvalidTagPolicy.KeyInvalid or InvalidTag.SystemKeyNotAllow is returned.
 //
 // ## Execution results
 //
-// - **If any specified app instance group does not exist or does not belong to the current account, the entire request fails**, and the operation returns the error code `InvalidAppInstanceGroup.NotFound`. No resources are untagged.
+// - **If any specified app instance group does not exist or does not belong to the current account, the entire request fails**, and the error code InvalidAppInstanceGroup.NotFound is returned. No tags are removed from any resources.
 //
-// - If the untagging is successful, the response contains only `RequestId` and does not return tag details.
+// - If tags are successfully removed, the response contains only RequestId and does not return tag details.
 //
-// - If multiple resources are specified and the untagging fails for only some of the resources, the operation still returns a success response, and the response does not contain failure details. Call the [ListTagResources](~~ListTagResources~~) operation to verify the untagging results. If only one resource is specified and the untagging fails, the operation directly returns the corresponding error code.
+// - If multiple resources are specified and tags are removed from only some of the resources, the operation still returns a success response, and the response does not contain failure details. You can call the [ListTagResources](~~ListTagResources~~) operation to verify the tag removal results. If only one resource is specified and tag removal fails, the operation directly returns the corresponding error code.
 //
 // ## Call sequence
 //
 // 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the app instance group ID. To confirm the tag keys bound to the resources, call the [ListTagResources](~~ListTagResources~~) operation.
 //
-// 2. Call this operation, specify `ResourceType=APPINSTANCEGROUP` and `ResourceId.N`, and specify `TagKey.N` or set `All=true` to indicate the tags to be removed.
+// 2. Call this operation, set ResourceType to APPINSTANCEGROUP, specify ResourceId.N, and specify TagKey.N or set All to true to indicate the tags to be removed.
 //
-// 3. To rebind tags, call the [TagResources](~~TagResources~~) operation.
+// 3. To bind tags again, call the [TagResources](~~TagResources~~) operation.
 //
-// The masked identifiers in the examples are used to demonstrate the format. Replace them with your actual identifiers when you call the operation.
+// The desensitized identifiers in the examples are used to demonstrate the format. Replace them with your actual identifiers when you call the operation.
 //
 // @param request - UntagResourcesRequest
 //
@@ -10381,9 +10813,9 @@ func (client *Client) UpdateAppInstanceGroupImageWithContext(ctx context.Context
 //
 // Description:
 //
-// You can only modify images that are owned by the current account and allow modifications. Images shared with the current account cannot be modified.
+// You can only modify images that are owned by the current account and allow modifications. Shared images cannot be modified.
 //
-// You must provide at least one of ImageId and VersionId. If both are provided, they must point to the same image. If VersionId is omitted, the current effective version of the image is used. Passing a non-empty AdaptorIdList updates the application adapter associations for the selected version based on the complete list. Make sure to include the adapters that you still want to retain.
+// You must provide at least one of ImageId and VersionId. If both are provided, they must point to the same image. If VersionId is omitted, the current effective version of the image is used. Passing a non-empty AdaptorIdList updates the application adapter associations of the selected version based on the complete list. Make sure to include the adapters that you want to retain.
 //
 // @param request - UpdateImageRequest
 //
@@ -10459,9 +10891,7 @@ func (client *Client) UpdateImageWithContext(ctx context.Context, request *Updat
 //
 // Description:
 //
-// The task must exist before you call this operation, and the corresponding creation resource and resource node must be available. The TaskType must match the actual type of the task.
-//
-// **This operation does not support modifying the task step, image version, or destination region by using TaskStep, VersionId, or BizRegionId. Do not pass these three parameters.*	- A successful request only indicates that the status update call is completed. To query the final status of the task, call GetTask.
+// The task must exist before you call this operation, and the corresponding creation resource and resource node must be available. The TaskType must match the actual type of the task. **This operation does not support modifying the task step, image version, or destination region by using TaskStep, VersionId, or BizRegionId. Do not pass these three parameters.*	- A successful request only indicates that the status update call is completed. To query the final status of the task, call GetTask.
 //
 // @param request - UpdateImageTaskRequest
 //

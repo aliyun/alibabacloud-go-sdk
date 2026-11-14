@@ -68,7 +68,7 @@ type GetRuntimeModelConfigResponseBodyData struct {
 	//
 	// bailian/qwen3.6-plus
 	DefaultModel *string `json:"DefaultModel,omitempty" xml:"DefaultModel,omitempty"`
-	// The list of model providers.
+	// The list of model service providers.
 	ModelProviderList []*GetRuntimeModelConfigResponseBodyDataModelProviderList `json:"ModelProviderList,omitempty" xml:"ModelProviderList,omitempty" type:"Repeated"`
 	// The ID of the configured model group.
 	//
@@ -88,7 +88,7 @@ type GetRuntimeModelConfigResponseBodyData struct {
 	//
 	// Runtime
 	ModelTemplateRefType *string `json:"ModelTemplateRefType,omitempty" xml:"ModelTemplateRefType,omitempty"`
-	// The ID of the resource group to which the runtime belongs. If the runtime does not belong to any resource group, the value is null.
+	// The ID of the resource group to which the runtime belongs. This value is null if the runtime does not belong to a resource group.
 	//
 	// example:
 	//
@@ -174,19 +174,19 @@ func (s *GetRuntimeModelConfigResponseBodyData) Validate() error {
 type GetRuntimeModelConfigResponseBodyDataModelProviderList struct {
 	// The list of model information.
 	LlmInfoList []*GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList `json:"LlmInfoList,omitempty" xml:"LlmInfoList,omitempty" type:"Repeated"`
-	// The ID of the model provider template.
+	// The ID of the model service provider template.
 	//
 	// example:
 	//
 	// mpt-xxxx
 	ModelProviderTemplateId *string `json:"ModelProviderTemplateId,omitempty" xml:"ModelProviderTemplateId,omitempty"`
-	// The name of the model provider template.
+	// The name of the model service provider template.
 	//
 	// example:
 	//
-	// Model Studio
+	// Bailian
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the model provider.
+	// The name of the model service provider.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
 	//
 	// example:
 	//
-	// The Qwen3.6 native vision-language Plus model series demonstrates exceptional performance comparable to current top-tier frontier models, with significantly improved model effects compared to the 3.5 series. The model shows significant enhancements in coding capabilities such as agentic coding, front-end programming, and vibe coding, as well as in multimodal universal recognition, OCR, and object localization
+	// The Qwen3.6 native vision-language Plus series models demonstrate exceptional performance comparable to current top-tier frontier models, with significantly improved model effects compared to the 3.5 series. The models show significant enhancements in coding capabilities such as agentic coding, front-end programming, and vibe coding, as well as multimodal universal recognition, OCR, and object localization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of model features, such as function-calling, web-search, and structured-outputs.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
@@ -282,7 +282,7 @@ type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList struct {
 	//
 	// 2026-03-04T06:25:17.000+00:00
 	PublishedTime *string `json:"PublishedTime,omitempty" xml:"PublishedTime,omitempty"`
-	// The model risk type. This parameter is returned only when the IncludeRiskInfo request parameter is set to true.
+	// The model risk type. This parameter is returned only when the request parameter IncludeRiskInfo is set to true.
 	//
 	// example:
 	//
@@ -385,13 +385,13 @@ func (s *GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList) Vali
 }
 
 type GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier struct {
-	// The upper limit of the multiplier. If this parameter is empty, it indicates that there is no upper limit. For example, if Min is 1 and Max is empty, it is displayed as 1x and above.
+	// The upper limit of the multiplier. If this parameter is empty, it indicates no upper limit. For example, if Min=1 and Max is empty, it is displayed as starting from 1x.
 	//
 	// example:
 	//
 	// 3
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The lower limit of the multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
+	// The lower limit of the multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min=Max=2, it is displayed as 2x.
 	//
 	// example:
 	//

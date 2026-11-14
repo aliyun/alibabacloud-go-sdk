@@ -26,7 +26,7 @@ type GetRuntimeChannelResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type GetRuntimeChannelResponseBodyData struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The channel configuration JSON string.
 	//
-	// Currently, only the simple configuration mode is supported. You must pass AppKey and AppSecret.
+	// Currently, only the simple configuration mode is supported. You must specify the AppKey and AppSecret.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ type GetRuntimeChannelResponseBodyData struct {
 	//
 	// Simple
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The QR code configuration notification page URL (returned only for ENTERPRISE/ENTERPRISE_JVS platforms).
+	// The QR code configuration notification page URL (returned only for the ENTERPRISE or ENTERPRISE_JVS platform).
 	//
 	// example:
 	//
 	// https://eds.console.aliyun.com/public/scan-pair?taskId=e7eb5d86-1b94-4d58-****-3b78b01df99e&code=dingtalk-connector&region=cn-shanghai
 	QrCodeNotifyUrl *string `json:"QrCodeNotifyUrl,omitempty" xml:"QrCodeNotifyUrl,omitempty"`
-	// The QR code configuration status (returned only when not in a desired state).
+	// The QR code configuration status (returned only in non-terminal states).
 	//
 	// example:
 	//

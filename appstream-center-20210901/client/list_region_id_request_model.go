@@ -18,15 +18,15 @@ type ListRegionIdRequest struct {
 	//
 	// - **CloudGame**: cloud gaming
 	//
-	// - **CloudApp**: WUYING Cloud App
+	// - **CloudApp**: WUYING cloud application
 	//
 	// - **CloudBrowser**: secure browser
 	//
-	// - **CloudDesktop**: WUYING Cloud Desktop
+	// - **CloudDesktop**: WUYING cloud desktop
 	//
-	// - **ImageBuilder**: image creation resources
+	// - **ImageBuilder**: image creation resource
 	//
-	// - **ImageValidate**: image validation resources
+	// - **ImageValidate**: image validation resource
 	//
 	// - **AndroidCloud**: Android cloud
 	//
@@ -34,7 +34,7 @@ type ListRegionIdRequest struct {
 	//
 	// - **AndroidGpuRender**: Android cloud GPU rendering
 	//
-	// - **WuyingServer**: Enterprise Edition workstation
+	// - **WuyingServer**: enterprise workstation
 	//
 	// - **GpuProxy**: GPU remote rendering proxy
 	//
@@ -42,13 +42,13 @@ type ListRegionIdRequest struct {
 	//
 	// - **AIAgent**: AI agent service
 	//
-	// - **HostedDesktop**: hosted desktop
+	// - **HostedDesktop**: hosted computer
 	//
-	// - **WuyingWorkstation**: Personal Edition container workstation
+	// - **WuyingWorkstation**: personal container workstation
 	//
-	// - **WuyingWorkstationBusiness**: Business Edition container workstation
+	// - **WuyingWorkstationBusiness**: business container workstation
 	//
-	// - **WuyingWorkstationTeam**: Linggou container workstation Team Edition
+	// - **WuyingWorkstationTeam**: LingGou container workstation team edition
 	//
 	// example:
 	//
