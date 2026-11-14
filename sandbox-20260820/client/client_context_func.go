@@ -97,7 +97,7 @@ func (client *Client) CreateTeamWithContext(ctx context.Context, request *Create
 //
 // Description:
 //
-// Creates a template. runtimeConfig.vpcBindings is supported only for second-generation templates. A null value is treated as omitted. First-generation templates return a 400 error if an empty or non-empty array is explicitly provided. Inbound bindings are independent of the egress vpcConfig and API key source policies. When the feature switch is enabled, POST /init requests without query parameters to the standard envd port 49983 of the E2B sandbox are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
+// Creates a template. If runtimeConfig.vpcBindings is null, it is treated as omitted. Inbound bindings are independent of the egress vpcConfig and API key source policy.
 //
 // @param request - CreateTemplateRequest
 //
@@ -213,6 +213,48 @@ func (client *Client) CreateVolumeWithContext(ctx context.Context, request *Crea
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVolumeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a warm pool.
+//
+// @param request - CreateWarmPoolRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWarmPoolResponse
+func (client *Client) CreateWarmPoolWithContext(ctx context.Context, teamID *string, request *CreateWarmPoolRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWarmPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWarmPool"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/teams/" + dara.PercentEncode(dara.StringValue(teamID)) + "/warmPools"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWarmPoolResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -493,6 +535,47 @@ func (client *Client) DeleteVolumeWithContext(ctx context.Context, volumeID *str
 
 // Summary:
 //
+// Deletes a warm pool.
+//
+// @param request - DeleteWarmPoolRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWarmPoolResponse
+func (client *Client) DeleteWarmPoolWithContext(ctx context.Context, teamID *string, templateID *string, request *DeleteWarmPoolRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWarmPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWarmPool"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/teams/" + dara.PercentEncode(dara.StringValue(teamID)) + "/warmPools/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DeleteWarmPoolResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a specified API key.
 //
 // @param request - DescribeApiKeyRequest
@@ -618,6 +701,47 @@ func (client *Client) DescribeTemplateCacheWithContext(ctx context.Context, temp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTemplateCacheResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the warm pool.
+//
+// @param request - DescribeWarmPoolRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWarmPoolResponse
+func (client *Client) DescribeWarmPoolWithContext(ctx context.Context, teamID *string, templateID *string, request *DescribeWarmPoolRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeWarmPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWarmPool"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/teams/" + dara.PercentEncode(dara.StringValue(teamID)) + "/warmPools/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWarmPoolResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1337,6 +1461,57 @@ func (client *Client) ListVolumesWithContext(ctx context.Context, request *ListV
 
 // Summary:
 //
+// Queries the list of warm pools.
+//
+// @param request - ListWarmPoolsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWarmPoolsResponse
+func (client *Client) ListWarmPoolsWithContext(ctx context.Context, teamID *string, request *ListWarmPoolsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWarmPoolsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWarmPools"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/teams/" + dara.PercentEncode(dara.StringValue(teamID)) + "/warmPools"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWarmPoolsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets a specified API key.
 //
 // Description:
@@ -1516,7 +1691,7 @@ func (client *Client) UpdateTeamWithContext(ctx context.Context, teamID *string,
 //
 // Description:
 //
-// Updates a template. For Generation 2 templates, runtimeConfig.vpcBindings supports omission or null retention, full replacement with a non-empty array, or clearing with an empty array. The new list takes effect upon a successful build of the new version. Existing sandboxes continue to use the original functions and policies. If the build fails, the previously effective version is retained. For Generation 1 templates, explicitly passing an empty or non-empty array returns a 400 error. Before switching to Generation 1, you must clear the bindings and wait for the update to succeed. When the feature switch is enabled, POST /init requests without query parameters to the standard envd port 49983 of E2B sandboxes are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
+// Updates a template. For runtimeConfig.vpcBindings, you can omit the field or set it to null to retain the current bindings, provide a non-empty array to replace the entire list, or provide an empty array [] to clear the list. The new list takes effect when the new version is successfully built. Existing sandboxes continue to use the original configuration. If the build fails, the original effective version is retained.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -1602,6 +1777,48 @@ func (client *Client) UpdateVolumeWithContext(ctx context.Context, volumeID *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVolumeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the capacity policy of a warm pool.
+//
+// @param request - UpdateWarmPoolRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWarmPoolResponse
+func (client *Client) UpdateWarmPoolWithContext(ctx context.Context, teamID *string, templateID *string, request *UpdateWarmPoolRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWarmPoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWarmPool"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/teams/" + dara.PercentEncode(dara.StringValue(teamID)) + "/warmPools/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWarmPoolResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

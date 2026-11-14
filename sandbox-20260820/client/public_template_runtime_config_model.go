@@ -28,13 +28,13 @@ type iPublicTemplateRuntimeConfig interface {
 }
 
 type PublicTemplateRuntimeConfig struct {
-	// The CPU specification of the sandbox instance, in cores.
+	// The CPU specifications of the sandbox instance, in cores.
 	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The disk specification of the sandbox instance, in MB.
+	// The disk specifications of the sandbox instance, in MB.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type PublicTemplateRuntimeConfig struct {
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The log delivery configuration of the sandbox instance.
 	LogConfig *PublicTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	// The memory specification of the sandbox instance, in MB.
+	// The memory specifications of the sandbox instance, in MB.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type PublicTemplateRuntimeConfig struct {
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The image and startup configuration of the sandbox instance.
 	SandboxConfig *PublicTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	// The set of allowed inbound source VPCs configured for Generation 2 templates. An omitted or empty array indicates that no inbound VPC bindings are configured, and this field can be omitted for historical records without configurations. This configuration is independent of the egress network vpcConfig. Subsequent template updates do not overwrite the bindings of functions used by existing sandboxes. When the feature switch is enabled, POST /init requests without query parameters to the standard E2B sandbox envd port 49983 are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
+	// The collection of inbound source VPCs allowed by the current template configuration. Omitting this field or providing an empty array indicates that no inbound VPC bindings are configured. This configuration is independent of the egress network vpcConfig. Subsequent template updates do not change the inbound VPC bindings of existing sandbox instances.
 	//
 	// example:
 	//
 	// ["vpc-examplea","vpc-exampleb"]
 	VpcBindings []*string `json:"vpcBindings" xml:"vpcBindings" type:"Repeated"`
-	// The virtual private cloud (VPC) configuration of the sandbox instance.
+	// The VPC configuration of the sandbox instance.
 	VpcConfig *PublicTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 

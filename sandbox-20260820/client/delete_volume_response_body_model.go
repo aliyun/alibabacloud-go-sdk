@@ -18,13 +18,13 @@ type iDeleteVolumeResponseBody interface {
 }
 
 type DeleteVolumeResponseBody struct {
-	// The response code. 200 indicates success.
+	// The response code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. success indicates a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//

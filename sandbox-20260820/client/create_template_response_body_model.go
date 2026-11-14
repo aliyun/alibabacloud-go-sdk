@@ -38,7 +38,7 @@ type CreateTemplateResponseBody struct {
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The unique identifier of the created template.
+	// The unique ID of the created template.
 	//
 	// example:
 	//

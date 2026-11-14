@@ -34,7 +34,7 @@ type PublicUpdateTemplateRuntimeConfig struct {
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The size of the system cloud disk in MB.
+	// The system cloud disk size in MB.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type PublicUpdateTemplateRuntimeConfig struct {
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The sandbox configuration.
 	SandboxConfig *PublicUpdateTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	// Supported only for generation 2 templates. Omitting this field or setting it to null retains the original list. A non-empty array replaces the entire allowed set. An explicit empty array [] clears the inbound VPC restrictions for the new version. This field is independent of vpcConfig. An empty request body {}, an empty runtimeConfig, or a runtimeConfig containing only vpcBindings: null returns a 400 error and does not clear the bindings. The actual JSON received by the server prevails. An empty array omitted by the SDK cannot clear the list. If the target is a generation 1 template, explicitly passing an empty or non-empty array returns a 400 error. If non-empty bindings already exist, you must first clear them on the generation 2 template and wait for the update to succeed before switching to generation 1.
+	// If omitted or set to null, the original list is retained. A non-empty array replaces the entire allowed set. An explicit empty array [] clears the inbound VPC restrictions for the new version. This field is independent of vpcConfig. An empty request body {}, an empty runtimeConfig, or a runtimeConfig that contains only vpcBindings: null returns a 400 error and does not clear the bindings. The actual JSON received by the server prevails. An empty array omitted by the SDK cannot clear the list.
 	//
 	// example:
 	//

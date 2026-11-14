@@ -30,7 +30,7 @@ type CreateApiKeyInput struct {
 	//
 	// ci-pipeline-key
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	// The expiration time of the API key in UTC. The time must be in RFC 3339 format. If this parameter is left empty, the API key never expires.
+	// The expiration time of the API key. The time must be in UTC and follow the RFC 3339 format. If this parameter is left empty, the API key never expires.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type CreateApiKeyInput struct {
 	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
 	// The IP address whitelist. After you configure this parameter, only the IP addresses in the list can use the API key. This parameter is mutually exclusive with ipBlacklist.
 	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
-	// The ID of the team to which the API key belongs. The ID must be in UUID format. If this parameter is not specified, the default team of the current account is used.
+	// The ID of the team to which the API key belongs. The ID must be in the UUID format. If this parameter is not specified, the default team of the current account is used.
 	//
 	// example:
 	//
 	// 5f4a2c18-****
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	// The list of source VPC IDs that are allowed to use this API key to initiate management requests. The list is matched as a set. If this parameter is omitted, set to null, or set to an empty array, no restrictions are applied to source VPCs. If this parameter is not empty, only requests from trusted source VPCs that match the list are allowed. Requests from the Internet or from unverified source VPCs are rejected. You can configure this parameter together with an IP address whitelist or blacklist. Requests must meet both restrictions. This field does not create VPC bindings for underlying functions.
+	// The list of source VPC IDs that are allowed to use this API key to initiate management and control requests. The list is matched as a set. If this parameter is omitted, set to null, or set to an empty array, no restrictions are imposed on the source VPCs. If this parameter is not empty, only requests from trusted source VPCs that match the list are allowed. Requests from the Internet or from unverified source VPCs are rejected. This parameter can be configured together with the IP address whitelist or blacklist. Requests must meet both restrictions. This field is independent of the vpcBindings field of the template.
 	//
 	// example:
 	//
