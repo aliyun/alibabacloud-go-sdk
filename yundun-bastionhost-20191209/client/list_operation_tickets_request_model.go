@@ -9,10 +9,14 @@ type iListOperationTicketsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApprovalStatus(v int32) *ListOperationTicketsRequest
+	GetApprovalStatus() *int32
 	SetAssetAddress(v string) *ListOperationTicketsRequest
 	GetAssetAddress() *string
 	SetInstanceId(v string) *ListOperationTicketsRequest
 	GetInstanceId() *string
+	SetOperationTicketId(v string) *ListOperationTicketsRequest
+	GetOperationTicketId() *string
 	SetPageNumber(v string) *ListOperationTicketsRequest
 	GetPageNumber() *string
 	SetPageSize(v string) *ListOperationTicketsRequest
@@ -24,6 +28,16 @@ type iListOperationTicketsRequest interface {
 }
 
 type ListOperationTicketsRequest struct {
+	// The approval status. Valid values:
+	//
+	// - 1: Pending approval.
+	//
+	// - 2: Processed.
+	//
+	// example:
+	//
+	// 1
+	ApprovalStatus *int32 `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
 	// The address of the O&M asset for exact search.
 	//
 	// example:
@@ -40,7 +54,13 @@ type ListOperationTicketsRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the page to return in a paged query. Default value: **1**.
+	// The ID of the O&M ticket.
+	//
+	// example:
+	//
+	// 1
+	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
+	// The page number for a paged query. Default value: **1**.
 	//
 	// example:
 	//
@@ -48,7 +68,7 @@ type ListOperationTicketsRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The maximum number of entries to return on each page in a paged query.
 	//
-	// The maximum value of the PageSize parameter is 1000. The default value is 20. If this parameter is left empty, 20 entries are returned by default.
+	// The maximum value of the PageSize parameter is 1000. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
 	// > We recommend that you specify a value for the PageSize parameter.
 	//
@@ -64,7 +84,7 @@ type ListOperationTicketsRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -80,12 +100,20 @@ func (s ListOperationTicketsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListOperationTicketsRequest) GetApprovalStatus() *int32 {
+	return s.ApprovalStatus
+}
+
 func (s *ListOperationTicketsRequest) GetAssetAddress() *string {
 	return s.AssetAddress
 }
 
 func (s *ListOperationTicketsRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListOperationTicketsRequest) GetOperationTicketId() *string {
+	return s.OperationTicketId
 }
 
 func (s *ListOperationTicketsRequest) GetPageNumber() *string {
@@ -104,6 +132,11 @@ func (s *ListOperationTicketsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListOperationTicketsRequest) SetApprovalStatus(v int32) *ListOperationTicketsRequest {
+	s.ApprovalStatus = &v
+	return s
+}
+
 func (s *ListOperationTicketsRequest) SetAssetAddress(v string) *ListOperationTicketsRequest {
 	s.AssetAddress = &v
 	return s
@@ -111,6 +144,11 @@ func (s *ListOperationTicketsRequest) SetAssetAddress(v string) *ListOperationTi
 
 func (s *ListOperationTicketsRequest) SetInstanceId(v string) *ListOperationTicketsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationTicketsRequest) SetOperationTicketId(v string) *ListOperationTicketsRequest {
+	s.OperationTicketId = &v
 	return s
 }
 

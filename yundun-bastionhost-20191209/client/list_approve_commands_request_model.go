@@ -9,6 +9,10 @@ type iListApproveCommandsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApprovalStatus(v int32) *ListApproveCommandsRequest
+	GetApprovalStatus() *int32
+	SetApproveCommandId(v string) *ListApproveCommandsRequest
+	GetApproveCommandId() *string
 	SetInstanceId(v string) *ListApproveCommandsRequest
 	GetInstanceId() *string
 	SetPageNumber(v string) *ListApproveCommandsRequest
@@ -22,9 +26,25 @@ type iListApproveCommandsRequest interface {
 }
 
 type ListApproveCommandsRequest struct {
-	// The instance ID of the Bastionhost instance.
+	// The approval status. Valid values:
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
+	// - 1: Pending.
+	//
+	// - 2: Processed.
+	//
+	// example:
+	//
+	// 1
+	ApprovalStatus *int32 `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The ID of the command approval.
+	//
+	// example:
+	//
+	// 1
+	ApproveCommandId *string `json:"ApproveCommandId,omitempty" xml:"ApproveCommandId,omitempty"`
+	// The instance ID of the Bastionhost.
+	//
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +52,7 @@ type ListApproveCommandsRequest struct {
 	//
 	// bastionhost-cn-zvp2xvysf08
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the page to return in a paged query. Default value: **1**.
+	// The page number of the current page for a paged query. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +60,11 @@ type ListApproveCommandsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries to return on each page in a paged query.
+	// The maximum number of entries to return on each page for a paged query.
 	//
-	// The maximum value of the PageSize parameter is 1000. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+	// The maximum value of the PageSize parameter is 1000. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
 	//
-	// > Specify the PageSize parameter.
+	// > Specify a value for the PageSize parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +80,7 @@ type ListApproveCommandsRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -74,6 +94,14 @@ func (s ListApproveCommandsRequest) String() string {
 
 func (s ListApproveCommandsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListApproveCommandsRequest) GetApprovalStatus() *int32 {
+	return s.ApprovalStatus
+}
+
+func (s *ListApproveCommandsRequest) GetApproveCommandId() *string {
+	return s.ApproveCommandId
 }
 
 func (s *ListApproveCommandsRequest) GetInstanceId() *string {
@@ -94,6 +122,16 @@ func (s *ListApproveCommandsRequest) GetProjectId() *int64 {
 
 func (s *ListApproveCommandsRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListApproveCommandsRequest) SetApprovalStatus(v int32) *ListApproveCommandsRequest {
+	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *ListApproveCommandsRequest) SetApproveCommandId(v string) *ListApproveCommandsRequest {
+	s.ApproveCommandId = &v
+	return s
 }
 
 func (s *ListApproveCommandsRequest) SetInstanceId(v string) *ListApproveCommandsRequest {

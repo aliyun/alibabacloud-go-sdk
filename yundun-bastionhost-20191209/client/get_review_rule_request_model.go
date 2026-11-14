@@ -18,9 +18,9 @@ type iGetReviewRuleRequest interface {
 }
 
 type GetReviewRuleRequest struct {
-	// The instance ID of the Bastionhost instance.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetReviewRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The audit policy ID.
+	// The ID of the audit policy.
 	//
 	// > You can invoke the ListReviewRules operation to obtain this parameter.
 	//

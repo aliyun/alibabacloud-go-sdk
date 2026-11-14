@@ -83,25 +83,35 @@ func (s *ListApproveCommandsResponseBody) Validate() error {
 }
 
 type ListApproveCommandsResponseBodyApproveCommands struct {
+	// The approval status. Valid values:
+	//
+	// - 1: Pending.
+	//
+	// - 2: Processed.
+	//
+	// example:
+	//
+	// 1
+	ApprovalStatus *int32 `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
 	// The ID of the command pending approval.
 	//
 	// example:
 	//
 	// 1
 	ApproveCommandId *string `json:"ApproveCommandId,omitempty" xml:"ApproveCommandId,omitempty"`
-	// The name of the asset account.
+	// The name of the asset account used for O&M.
 	//
 	// example:
 	//
 	// root
 	AssetAccountName *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
-	// The IP address of the O&M asset.
+	// The IP address of the asset for O&M.
 	//
 	// example:
 	//
 	// 10.167.XX.XX
 	AssetIp *string `json:"AssetIp,omitempty" xml:"AssetIp,omitempty"`
-	// The name of the O&M asset.
+	// The name of the asset for O&M.
 	//
 	// example:
 	//
@@ -131,7 +141,7 @@ type ListApproveCommandsResponseBodyApproveCommands struct {
 	//
 	// 1679393152
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the O&M protocol.
+	// The name of the protocol used for O&M.
 	//
 	// example:
 	//
@@ -143,9 +153,9 @@ type ListApproveCommandsResponseBodyApproveCommands struct {
 	//
 	// 95f873ab64a76d5b0000000000004d5e
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The approval status.
+	// The approval status. Valid values:
 	//
-	// **Wait**: Pending approval.
+	// - **Wait**: Pending.
 	//
 	// example:
 	//
@@ -159,6 +169,10 @@ func (s ListApproveCommandsResponseBodyApproveCommands) String() string {
 
 func (s ListApproveCommandsResponseBodyApproveCommands) GoString() string {
 	return s.String()
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) GetApprovalStatus() *int32 {
+	return s.ApprovalStatus
 }
 
 func (s *ListApproveCommandsResponseBodyApproveCommands) GetApproveCommandId() *string {
@@ -203,6 +217,11 @@ func (s *ListApproveCommandsResponseBodyApproveCommands) GetSessionId() *string 
 
 func (s *ListApproveCommandsResponseBodyApproveCommands) GetState() *string {
 	return s.State
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetApprovalStatus(v int32) *ListApproveCommandsResponseBodyApproveCommands {
+	s.ApprovalStatus = &v
+	return s
 }
 
 func (s *ListApproveCommandsResponseBodyApproveCommands) SetApproveCommandId(v string) *ListApproveCommandsResponseBodyApproveCommands {

@@ -32,7 +32,7 @@ type ModifyNetworkDomainRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// This network domain is used for the test environment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The instance ID of the Bastionhost instance to which the network domain to be modified belongs.
 	//
@@ -78,7 +78,7 @@ type ModifyNetworkDomainRequest struct {
 	Proxies []*ModifyNetworkDomainRequestProxies `json:"Proxies,omitempty" xml:"Proxies,omitempty" type:"Repeated"`
 	// The region ID of the Bastionhost instance to which the network domain to be modified belongs.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type ModifyNetworkDomainRequestProxies struct {
 	//
 	// 114.21**.**
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The type of the proxy server node to be modified. Valid values:
+	// The node type of the proxy server. Valid values:
 	//
 	// - **Master**: Primary proxy server.
 	//
@@ -200,7 +200,7 @@ type ModifyNetworkDomainRequestProxies struct {
 	//
 	// example:
 	//
-	// ***
+	// Demo****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The new Server Port of the proxy server.
 	//

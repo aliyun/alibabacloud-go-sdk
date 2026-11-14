@@ -40,7 +40,7 @@ type iModifyInstanceLDAPAuthServerRequest interface {
 }
 
 type ModifyInstanceLDAPAuthServerRequest struct {
-	// The account of the server.
+	// The server account.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// dc=test,dc=com
 	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
-	// The server attribute name that corresponds to the user email address.
+	// The server attribute name that maps to the user email address.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The instance ID of the Bastionhost instance.
 	//
-	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the parameter value.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -88,29 +88,29 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	//
 	// true
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// The server attribute name that corresponds to the user logon name.
+	// The server attribute name that maps to the user logon name.
 	//
 	// example:
 	//
 	// userNameAttr
 	LoginNameMapping *string `json:"LoginNameMapping,omitempty" xml:"LoginNameMapping,omitempty"`
-	// The server attribute name that corresponds to the user mobile phone number.
+	// The server attribute name that maps to the user mobile phone number.
 	//
 	// example:
 	//
 	// mobileAttr
 	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
-	// The server attribute name that corresponds to the username.
+	// The server attribute name that maps to the username.
 	//
 	// example:
 	//
 	// nameAttr
 	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
-	// The password of the server account. This parameter is required when you add an LDAP authentication server. When you modify the information of an LDAP authentication server, if you do not specify this parameter, the current password is retained.
+	// The password of the server account. This parameter is required when you add an LDAP authentication server. If you do not specify this parameter when you modify the LDAP authentication server, the current password is retained.
 	//
 	// example:
 	//
-	// ******
+	// Demo****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port used to access the server.
 	//

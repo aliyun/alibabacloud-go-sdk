@@ -22,9 +22,9 @@ type iModifyHostsProjectRequest interface {
 }
 
 type ModifyHostsProjectRequest struct {
-	// The IDs of the hosts that you want to move. This parameter is a JSON-formatted string. You can specify up to 100 host IDs. Separate multiple host IDs with commas (,).
+	// The IDs of the hosts to be moved. The value is a JSON string. You can specify up to 100 host IDs. Separate multiple host IDs with commas (,).
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query this parameter.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type ModifyHostsProjectRequest struct {
 	//
 	// 1
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The instance ID of the bastion host.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type ModifyHostsProjectRequest struct {
 	//
 	// 3
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the target project to which you want to move the hosts.
+	// The ID of the destination project to which you want to move the hosts.
 	//
-	// > You can call the ListProjectsForProjectAuthorizationPrincipal operation to query this parameter.
+	// > You can call the ListProjectsForProjectAuthorizationPrincipal operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

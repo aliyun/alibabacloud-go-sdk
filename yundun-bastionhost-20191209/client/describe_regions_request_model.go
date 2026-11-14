@@ -16,7 +16,7 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language of the response. Valid values:
+	// Specifies the language of the response. Valid values:
 	//
 	// - **zh-CN*	- (default): Chinese
 	//
@@ -28,7 +28,7 @@ type DescribeRegionsRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

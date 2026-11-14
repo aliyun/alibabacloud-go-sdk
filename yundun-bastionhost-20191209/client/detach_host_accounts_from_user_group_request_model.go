@@ -22,11 +22,11 @@ type iDetachHostAccountsFromUserGroupRequest interface {
 }
 
 type DetachHostAccountsFromUserGroupRequest struct {
-	// The host IDs and host account IDs that you want to remove from the user group.
+	// Specifies the IDs of the hosts and host accounts whose authorization you want to remove from the user group.
 	//
-	// You can specify up to 10 host IDs, and each host supports up to 10 host account IDs. You do not need to specify host account IDs. If you do not specify host account IDs, the authorized host and all authorized host accounts of the host are removed from the user group. For the specific structure of this parameter, see the Hosts parameter structure description below the request parameters list.
+	// You can specify up to 10 host IDs, and up to 10 host account IDs for each host. You can leave the host account IDs empty. If you do not specify host account IDs, the host and all its authorized host accounts are removed from the user group. For more information about the structure of this parameter, see the Hosts parameter structure description in the request parameters section.
 	//
-	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query host IDs and call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query host account IDs.
+	// > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain host IDs and call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to obtain host account IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type DetachHostAccountsFromUserGroupRequest struct {
 	//
 	// [ {"HostId":"1"}, {"HostId":"2","HostAccountIds":["1","2","3",...]}, {"HostId":"3","HostAccountIds":["4","5","6"]}, {"HostId":"4","HostAccountIds":["9","8","7"]} ]
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
-	// The instance ID of the bastion host where the user group from which you want to remove authorization for hosts and host accounts resides.
+	// Specifies the instance ID of the Bastionhost instance that manages the user group for which you want to remove the authorization of hosts and host accounts.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,17 @@ type DetachHostAccountsFromUserGroupRequest struct {
 	//
 	// 3
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region ID of the bastion host instance where the user group from which you want to remove authorized hosts and host accounts resides.
+	// Specifies the region ID of the Bastionhost instance that manages the user group from which you want to remove authorized hosts and host accounts.
 	//
-	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group from which you want to remove authorized hosts and host accounts.
+	// Specifies the ID of the user group from which you want to remove authorized hosts and host accounts.
 	//
-	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query this parameter.
+	// > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//

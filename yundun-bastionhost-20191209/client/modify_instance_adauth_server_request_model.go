@@ -56,7 +56,7 @@ type iModifyInstanceADAuthServerRequest interface {
 }
 
 type ModifyInstanceADAuthServerRequest struct {
-	// The server account.
+	// The account of the server.
 	//
 	// This parameter is required.
 	//
@@ -92,9 +92,9 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// (objectClass=top)
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The instance ID of the Bastionhost instance.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// bastionhost-cn-st220aw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the AD authentication server is the default server. A value of true indicates that the server is the default AD authentication server. A value of false indicates that the server is not the default AD authentication server.
+	// Specifies whether the AD authentication server is the default server. Valid values: true and false. A value of true indicates that the server is the default AD authentication server, and a value of false indicates that the server is not the default AD authentication server.
 	//
 	// example:
 	//
@@ -118,25 +118,25 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// true
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// Specifies whether to synchronize the email address. A value of true indicates that the email address is synchronized. A value of false indicates that the email address is not synchronized.
+	// Specifies whether to synchronize the email address. Valid values: true and false. A value of true indicates that the email address is synchronized, and a value of false indicates that the email address is not synchronized.
 	//
 	// example:
 	//
 	// true
 	IsSyncEmailAttr *string `json:"IsSyncEmailAttr,omitempty" xml:"IsSyncEmailAttr,omitempty"`
-	// Specifies whether to synchronize the mobile phone number. A value of true indicates that the mobile phone number is synchronized. A value of false indicates that the mobile phone number is not synchronized.
+	// Specifies whether to synchronize the mobile phone number. Valid values: true and false. A value of true indicates that the mobile phone number is synchronized, and a value of false indicates that the mobile phone number is not synchronized.
 	//
 	// example:
 	//
 	// true
 	IsSyncMobileAttr *string `json:"IsSyncMobileAttr,omitempty" xml:"IsSyncMobileAttr,omitempty"`
-	// Specifies whether to synchronize the display name. A value of true indicates that the display name is synchronized. A value of false indicates that the display name is not synchronized.
+	// Specifies whether to synchronize the display name. Valid values: true and false. A value of true indicates that the display name is synchronized, and a value of false indicates that the display name is not synchronized.
 	//
 	// example:
 	//
 	// true
 	IsSyncNameAttr *string `json:"IsSyncNameAttr,omitempty" xml:"IsSyncNameAttr,omitempty"`
-	// Specifies whether to synchronize the organization to which the user belongs as a user group. A value of true indicates that the organization is synchronized as a user group. A value of false indicates that the organization is not synchronized as a user group.
+	// Specifies whether to synchronize the organization to which the user belongs as a user group. Valid values: true and false. A value of true indicates that the organization is synchronized as a user group, and a value of false indicates that the organization is not synchronized as a user group.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// example:
 	//
-	// ******
+	// Demo****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port used to access the server.
 	//
@@ -196,12 +196,15 @@ type ModifyInstanceADAuthServerRequest struct {
 	//
 	// 192.168.XX.XX
 	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
-	// The interval at which user snapshots are automatically synchronized, in hours. Valid values: 0, and 4 to 168. A value of 0 indicates that automatic synchronization is disabled.
+	// The interval at which user snapshots are automatically synchronized. Unit: hours. Valid values: 0, and 4 to 168. A value of 0 indicates that automatic synchronization is disabled.
 	//
 	// example:
 	//
 	// 12
 	SyncInterval *string `json:"SyncInterval,omitempty" xml:"SyncInterval,omitempty"`
+	// example:
+	//
+	// 39
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 }
 

@@ -1,3 +1,12 @@
+2026-11-14 Version: v2.7.1
+- Update API ListApproveCommands: add request parameters ApprovalStatus.
+- Update API ListApproveCommands: add request parameters ApproveCommandId.
+- Update API ListApproveCommands: add response parameters Body.ApproveCommands.$.ApprovalStatus.
+- Update API ListOperationTickets: add request parameters ApprovalStatus.
+- Update API ListOperationTickets: add request parameters OperationTicketId.
+- Update API ListOperationTickets: add response parameters Body.OperationTickets.$.ApprovalStatus.
+
+
 2026-10-26 Version: v2.7.0
 - Support API AttachMembersToProject.
 - Support API AttachProjectManagersToProjectAuthorization.

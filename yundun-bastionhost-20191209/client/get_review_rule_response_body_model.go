@@ -68,13 +68,17 @@ type GetReviewRuleResponseBodyReviewRule struct {
 	//
 	// rule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The auditor information associated with the audit policy.
+	// The information about the auditors associated with the audit policy.
 	Principals []*GetReviewRuleResponseBodyReviewRulePrincipals `json:"Principals,omitempty" xml:"Principals,omitempty" type:"Repeated"`
-	// The array of project IDs specified as auditable in the audit policy. This parameter is valid only when the value of ScopeType is 2.
+	// The array of project IDs that can be audited based on the audit policy. This parameter is valid only when the value of ScopeType is 2.
+	//
+	// example:
+	//
+	// [2,3]
 	ProjectIds []*int64 `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The auditable project information.
+	// The information about the projects that can be audited.
 	Projects []*GetReviewRuleResponseBodyReviewRuleProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	// The audit policy ID.
+	// The ID of the audit policy.
 	//
 	// example:
 	//
@@ -86,7 +90,7 @@ type GetReviewRuleResponseBodyReviewRule struct {
 	//
 	// name
 	ReviewRuleName *string `json:"ReviewRuleName,omitempty" xml:"ReviewRuleName,omitempty"`
-	// The type of the auditable asset scope rule specified in the audit policy. Valid values:
+	// The type of the asset scope rule specified in the audit policy. Valid values:
 	//
 	// - **1**: All projects.
 	//
@@ -192,19 +196,19 @@ func (s *GetReviewRuleResponseBodyReviewRule) Validate() error {
 }
 
 type GetReviewRuleResponseBodyReviewRulePrincipals struct {
-	// If the value of PrincipalType is RamUser, the returned value is the RAM user ID of the associated auditor. If the value of PrincipalType is RamRole, the returned value is the ARN of the RAM role of the associated auditor.
+	// If the PrincipalType parameter is set to RamUser, this parameter returns the ID of the RAM user that acts as the auditor. If the PrincipalType parameter is set to RamRole, this parameter returns the ARN of the RAM role that acts as the auditor.
 	//
 	// example:
 	//
 	// 2061****5219
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The display name of the RAM user or RAM role of the associated auditor.
+	// The display name of the RAM user or RAM role that acts as the auditor.
 	//
 	// example:
 	//
 	// name
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The auditor type. Valid values:
+	// The type of the auditor. Valid values:
 	//
 	// - **RamUser**: Resource Access Management (RAM) user.
 	//
@@ -256,7 +260,7 @@ func (s *GetReviewRuleResponseBodyReviewRulePrincipals) Validate() error {
 }
 
 type GetReviewRuleResponseBodyReviewRuleProjects struct {
-	// The project description.
+	// The description of the project.
 	//
 	// example:
 	//
@@ -272,13 +276,13 @@ type GetReviewRuleResponseBodyReviewRuleProjects struct {
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// project1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//

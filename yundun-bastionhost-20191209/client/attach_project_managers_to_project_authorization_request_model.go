@@ -22,7 +22,7 @@ type iAttachProjectManagersToProjectAuthorizationRequest interface {
 type AttachProjectManagersToProjectAuthorizationRequest struct {
 	// The project authorization ID.
 	//
-	// > You can call the ListProjectAuthorizations operation to query this parameter.
+	// > You can call the ListProjectAuthorizations operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type AttachProjectManagersToProjectAuthorizationRequest struct {
 	//
 	// 2
 	AuthorizationId *int64 `json:"AuthorizationId,omitempty" xml:"AuthorizationId,omitempty"`
-	// The instance ID of the bastion host.
+	// The instance ID of the Bastionhost instance.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type AttachProjectManagersToProjectAuthorizationRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The information about the project administrators specified in the project authorization.
 	Principals []*AttachProjectManagersToProjectAuthorizationRequestPrincipals `json:"Principals,omitempty" xml:"Principals,omitempty" type:"Repeated"`
-	// The region ID of the bastion host.
+	// The region ID of the Bastionhost instance.
 	//
-	// > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ func (s *AttachProjectManagersToProjectAuthorizationRequest) Validate() error {
 }
 
 type AttachProjectManagersToProjectAuthorizationRequestPrincipals struct {
-	// When PrincipalType is set to RamUser, specify the ID of the RAM user to be designated as the project administrator. When PrincipalType is set to RamRole, specify the ARN of the RAM role to be designated as the project administrator.
+	// The ID of the RAM user or the ARN of the RAM role to be specified as a project administrator. If PrincipalType is set to RamUser, specify the ID of the RAM user. If PrincipalType is set to RamRole, specify the ARN of the RAM role.
 	//
 	// example:
 	//
 	// 160****2519
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The display name of the RAM user or RAM role designated as the project administrator.
+	// The display name of the RAM user or RAM role specified as the project administrator.
 	//
 	// example:
 	//

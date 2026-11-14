@@ -40,7 +40,7 @@ type VerifyInstanceLDAPAuthServerRequest struct {
 	//
 	// cn=Manager,dc=test,dc=com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Base DN.
+	// The base distinguished name (Base DN).
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type VerifyInstanceLDAPAuthServerRequest struct {
 	//
 	// (objectClass=top)
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type VerifyInstanceLDAPAuthServerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether SSL is supported. Valid values:
 	//
-	// - **true**: supported
+	// - **true**: Supported.
 	//
-	// - **false**: not supported
+	// - **false**: Not supported.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type VerifyInstanceLDAPAuthServerRequest struct {
 	//
 	// example:
 	//
-	// ******
+	// Demo****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port used to access the server.
 	//
@@ -86,7 +86,7 @@ type VerifyInstanceLDAPAuthServerRequest struct {
 	//
 	// 389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID of the Bastionhost instance. For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// The region ID of the Bastionhost instance. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type iVerifyInstanceADAuthServerRequest interface {
 }
 
 type VerifyInstanceADAuthServerRequest struct {
-	// The account of the server.
+	// The server account.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type VerifyInstanceADAuthServerRequest struct {
 	//
 	// cn=Manager,dc=test,dc=com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Base DN.
+	// The base distinguished name (Base DN).
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type VerifyInstanceADAuthServerRequest struct {
 	//
 	// dc=test,dc=com
 	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
-	// The domain on the Active Directory server.
+	// The domain on the AD server.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type VerifyInstanceADAuthServerRequest struct {
 	//
 	// (objectClass=top)
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// The instance ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type VerifyInstanceADAuthServerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether SSL is supported. Valid values:
 	//
-	// - **true**: supported
+	// - **true**: Supported.
 	//
-	// - **false**: not supported
+	// - **false**: Not supported.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type VerifyInstanceADAuthServerRequest struct {
 	//
 	// example:
 	//
-	// ******
+	// Demo****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port.
 	//
@@ -98,7 +98,7 @@ type VerifyInstanceADAuthServerRequest struct {
 	//
 	// 389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID of the Bastionhost instance. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// The region ID of the Bastionhost instance. For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
