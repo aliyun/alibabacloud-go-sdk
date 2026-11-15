@@ -38,25 +38,25 @@ type iSearchKnowledgeBaseResponseBody interface {
 }
 
 type SearchKnowledgeBaseResponseBody struct {
-	// The access denial details.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:SearchKnowledgeBase"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The status code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// Optional. Conditionally returned. Required when includeWiki is set to true. The cursor for the next page of evidence. Null for the last page. Not used for legacy results pagination. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":4096}.
+	// Optional or conditionally returned. Required when includeWiki is set to true. The cursor for the next page of evidence, which is null for the last page. Not used for legacy results pagination. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":4096}.
 	//
 	// example:
 	//
 	// example-opaque-next-token
 	EvidenceNextToken *string `json:"evidenceNextToken,omitempty" xml:"evidenceNextToken,omitempty"`
-	// Optional. Conditionally returned. Returned only when includeWiki is set to true. The current page of unified and merged evidence. Constraints: {"minItems":0,"maxItems":100}.
+	// Optional or conditionally returned. Returned only when includeWiki is set to true. The current page of unified and merged results. Constraints: {"minItems":0,"maxItems":100}.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	//
 	// 019FCC42-90DE-56D3-A10D-3C06995DED17
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of retrieval results.
+	// The list of search results.
 	Results []*SearchKnowledgeBaseResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful.
 	//
@@ -102,7 +102,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of results.
+	// The total count.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ func (s *SearchKnowledgeBaseResponseBody) Validate() error {
 }
 
 type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -266,7 +266,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// null
 	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -274,7 +274,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// null
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
-	// Required. Always returned. The readable evidence text. Constraints: {"maxLength":65535}.
+	// Required and always returned. The readable evidence text. Constraints: {"maxLength":65535}.
 	//
 	// This parameter is required.
 	//
@@ -282,7 +282,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// The warranty period for Product A is 18 months
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -290,7 +290,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// null
 	DocumentId *string `json:"documentId,omitempty" xml:"documentId,omitempty"`
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -298,7 +298,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// null
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. An opaque business ID generated by the server. Ownership is validated, and arbitrary paths are not accepted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -306,7 +306,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// wiki_section_page_1_sec_1_rev_7
 	EvidenceId *string `json:"evidenceId,omitempty" xml:"evidenceId,omitempty"`
-	// Required. Always returned. The actual evidence object type. Constraints: {"enum":["raw","wiki_page","wiki_section","graph_fact"],"maxLength":64}.
+	// Required and always returned. The actual evidence object type. Constraints: {"enum":["raw","wiki_page","wiki_section","graph_fact"],"maxLength":64}.
 	//
 	// This parameter is required.
 	//
@@ -314,7 +314,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// wiki_section
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. An opaque business ID generated by the server. Ownership is validated, and arbitrary paths are not accepted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -322,7 +322,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// example_kb
 	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -330,7 +330,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// page_1
 	PageId *string `json:"pageId,omitempty" xml:"pageId,omitempty"`
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -338,7 +338,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// null
 	RelationId *string `json:"relationId,omitempty" xml:"relationId,omitempty"`
-	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. An opaque business ID generated by the server. Ownership is validated, and arbitrary paths are not accepted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -346,7 +346,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// example_value
 	RevisionId *string `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
-	// Required. Always returned. The finite numerical value used for unified ranking. For hybrid, it is the relevance of the existing Dealer.rerank. For rerank, it is the text and model hybrid relevance of the existing Dealer.rerank_by_model, along the semanticWeight and rank feature, which is not a relevance probability. The minScore is applied according to the existing unified scoring rules. Can be null for non-ranking fact evidence. Null is allowed. The not-equal-to condition can be omitted.
+	// Required and always returned. A finite numerical value used for unified ranking. For hybrid, it is the relevance of the existing Dealer.rerank. For rerank, it is the text and model hybrid relevance of the existing Dealer.rerank_by_model, along semanticWeight and rank features, and is not a relevance probability. minScore is applied according to the existing unified scoring rules. Can be null for non-ranked factual evidence. Null is allowed and can be omitted.
 	//
 	// This parameter is required.
 	//
@@ -354,7 +354,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// 0.62
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
-	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -362,7 +362,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// sec_1
 	SectionId *string `json:"sectionId,omitempty" xml:"sectionId,omitempty"`
-	// Required. Always returned. The total number of source chunk references. Authorization is performed on the full set. Constraints: {"minimum":1,"maximum":9223372036854775807}.
+	// Required and always returned. The total number of source chunk references. Authentication is performed on the full set. Constraints: {"minimum":1,"maximum":9223372036854775807}.
 	//
 	// This parameter is required.
 	//
@@ -370,7 +370,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// 1
 	SourceRefCount *int64 `json:"sourceRefCount,omitempty" xml:"sourceRefCount,omitempty"`
-	// Required. Always returned. The actually supported sources. Constraints: {"minItems":1,"maxItems":1000}.
+	// Required and always returned. The actually supported sources. Constraints: {"minItems":1,"maxItems":1000}.
 	//
 	// This parameter is required.
 	//
@@ -378,7 +378,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// [{"documentId":"doc_manual","chunkId":"chunk_1","sourceRevisionId":"source_rev_7","version":"DRAFT","contentHash":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}]
 	SourceRefs []*SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs `json:"sourceRefs,omitempty" xml:"sourceRefs,omitempty" type:"Repeated"`
-	// Required. Always returned. True when a single sourceRefs contains only the first 1000 items. You can paginate and verify by using sourceTaskId.
+	// Required and always returned. True when a single sourceRefs contains only the first 1,000 items. You can paginate and verify by using sourceTaskId.
 	//
 	// This parameter is required.
 	//
@@ -386,7 +386,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// false
 	SourceRefsTruncated *bool `json:"sourceRefsTruncated,omitempty" xml:"sourceRefsTruncated,omitempty"`
-	// Required. Always returned. The entry point for complete sources. Must be a non-null locator when sourceRefsTruncated is true. The source operation references held by the artifact or revision remain readable, and archiving task details does not delete this source manifest. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":32,"maxLength":32,"pattern":"^[0-9a-f]{32}$"}.
+	// Required and always returned. The entry for complete sources. Must be a non-null locator when sourceRefsTruncated is true. Source operation references held by artifacts or revisions remain readable, and archiving task details does not delete the source manifest. Null is allowed and can be omitted. Constraints: {"minLength":32,"maxLength":32,"pattern":"^[0-9a-f]{32}$"}.
 	//
 	// This parameter is required.
 	//
@@ -394,7 +394,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
 	//
 	// null
 	SourceTaskId *string `json:"sourceTaskId,omitempty" xml:"sourceTaskId,omitempty"`
-	// Required. Always returned. The display title after authorization. Constraints: {"maxLength":1024}.
+	// Required and always returned. The display title after authorization. Constraints: {"maxLength":1024}.
 	//
 	// This parameter is required.
 	//
@@ -588,7 +588,7 @@ func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) Validate() error {
 }
 
 type SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs struct {
-	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. An opaque business ID generated by the server. Ownership is validated, and arbitrary paths are not accepted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -596,7 +596,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs struct {
 	//
 	// example_value
 	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
-	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. An opaque business ID generated by the server. Ownership is validated, and arbitrary paths are not accepted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -604,31 +604,31 @@ type SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs struct {
 	//
 	// example_value
 	DocumentId *string `json:"documentId,omitempty" xml:"documentId,omitempty"`
-	// Optional. Conditionally returned. The document name returned only after authorization. Constraints: {"maxLength":1024}.
+	// Optional or conditionally returned. The document name that can be returned only after authorization. Constraints: {"maxLength":1024}.
 	//
 	// example:
 	//
 	// example_value
 	DocumentName *string `json:"documentName,omitempty" xml:"documentName,omitempty"`
-	// Optional. Conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minimum":0,"maximum":9223372036854775807}.
+	// Optional or conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minimum":0,"maximum":9223372036854775807}.
 	//
 	// example:
 	//
 	// 0
 	MediaEndMs *int64 `json:"mediaEndMs,omitempty" xml:"mediaEndMs,omitempty"`
-	// Optional. Conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minimum":0,"maximum":9223372036854775807}.
+	// Optional or conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minimum":0,"maximum":9223372036854775807}.
 	//
 	// example:
 	//
 	// 0
 	MediaStartMs *int64 `json:"mediaStartMs,omitempty" xml:"mediaStartMs,omitempty"`
-	// Optional. Conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minimum":1,"maximum":9223372036854775807}.
+	// Optional or conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed and can be omitted. Constraints: {"minimum":1,"maximum":9223372036854775807}.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	// Required and always returned. An opaque business ID generated by the server. Ownership is validated, and arbitrary paths are not accepted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
 	//
 	// This parameter is required.
 	//
@@ -636,7 +636,7 @@ type SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs struct {
 	//
 	// example_value
 	SourceRevisionId *string `json:"sourceRevisionId,omitempty" xml:"sourceRevisionId,omitempty"`
-	// Required. Always returned. The display name of the version. Does not fall back to draft if invalid or unavailable. Constraints: {"maxLength":64,"pattern":"^(DRAFT|LATEST_PUBLISHED|v[1-9][0-9]*)$","default":"DRAFT"}.
+	// Required and always returned. The display name of the version. Does not fall back to draft if invalid or unavailable. Constraints: {"maxLength":64,"pattern":"^(DRAFT|LATEST_PUBLISHED|v[1-9][0-9]*)$","default":"DRAFT"}.
 	//
 	// This parameter is required.
 	//
@@ -763,7 +763,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	DocumentName *string `json:"documentName,omitempty" xml:"documentName,omitempty"`
 	// The list of associated images.
 	Images []*SearchKnowledgeBaseResponseBodyResultsImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// The ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
@@ -771,19 +771,19 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
 	// The list of document locations.
 	Locations []*SearchKnowledgeBaseResponseBodyResultsLocations `json:"locations,omitempty" xml:"locations,omitempty" type:"Repeated"`
-	// The end time of the audio or video chunk in the original media, in milliseconds. This parameter is not returned for non-media chunks.
+	// The end time of the audio or video chunk in the original media, in milliseconds. This field is not returned for non-media chunks.
 	//
 	// example:
 	//
 	// 8400
 	MediaEndMs *int64 `json:"mediaEndMs,omitempty" xml:"mediaEndMs,omitempty"`
-	// The start time of the audio or video chunk in the original media, in milliseconds. This parameter is not returned for non-media chunks.
+	// The start time of the audio or video chunk in the original media, in milliseconds. This field is not returned for non-media chunks.
 	//
 	// example:
 	//
 	// 1250
 	MediaStartMs *int64 `json:"mediaStartMs,omitempty" xml:"mediaStartMs,omitempty"`
-	// The time range of each sentence or paragraph within the chunk in the original media. This parameter is not returned for non-audio chunks.
+	// The time ranges of sentence-by-sentence or paragraph-by-paragraph content within the chunk in the original media. This field is not returned for non-audio chunks.
 	MediaTimeline []*SearchKnowledgeBaseResponseBodyResultsMediaTimeline `json:"mediaTimeline,omitempty" xml:"mediaTimeline,omitempty" type:"Repeated"`
 	// The parent chunk ID.
 	//
@@ -791,7 +791,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	//
 	// parent-chunk-id
 	ParentChunkId *string `json:"parentChunkId,omitempty" xml:"parentChunkId,omitempty"`
-	// The scalar columns of the structured knowledge base. The columns are returned by their original names and are not used for retrieval.
+	// The scalar fields of the structured knowledge base. These fields are returned by their original column names and are not used for retrieval.
 	//
 	// example:
 	//
@@ -803,7 +803,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	//
 	// 0.26136884
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
-	// The relevance score details.
+	// The relevance details.
 	ScoreDetails *SearchKnowledgeBaseResponseBodyResultsScoreDetails `json:"scoreDetails,omitempty" xml:"scoreDetails,omitempty" type:"Struct"`
 	// The list of tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
@@ -1043,13 +1043,13 @@ func (s *SearchKnowledgeBaseResponseBodyResultsImages) Validate() error {
 }
 
 type SearchKnowledgeBaseResponseBodyResultsLocations struct {
-	// The bottom edge.
+	// The bottom boundary.
 	//
 	// example:
 	//
 	// 364
 	Bottom *int32 `json:"bottom,omitempty" xml:"bottom,omitempty"`
-	// The left edge.
+	// The left boundary.
 	//
 	// example:
 	//
@@ -1061,13 +1061,13 @@ type SearchKnowledgeBaseResponseBodyResultsLocations struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The right edge.
+	// The right boundary.
 	//
 	// example:
 	//
 	// 566
 	Right *int32 `json:"right,omitempty" xml:"right,omitempty"`
-	// The top edge.
+	// The top boundary.
 	//
 	// example:
 	//
@@ -1145,7 +1145,7 @@ type SearchKnowledgeBaseResponseBodyResultsMediaTimeline struct {
 	//
 	// 1250
 	StartMs *int64 `json:"startMs,omitempty" xml:"startMs,omitempty"`
-	// The text of the segment.
+	// The segment text.
 	//
 	// example:
 	//

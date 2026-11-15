@@ -1,3 +1,7 @@
+2026-11-15 Version: v1.0.4
+- Update API SearchKnowledgeBase: add request parameters body.retrievalConfig.enableEvidenceCompletion.
+
+
 2026-11-02 Version: v1.0.3
 - Update API SearchKnowledgeBase: add request parameters body.evidencePageToken.
 - Update API SearchKnowledgeBase: add request parameters body.includeWiki.

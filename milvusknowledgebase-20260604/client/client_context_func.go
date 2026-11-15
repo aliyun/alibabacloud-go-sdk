@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Registers files that have been uploaded to knowledge base storage as knowledge base documents and **automatically triggers parsing*	- (chunking and embedding). Two import types are supported:
+// Registers files that have been uploaded to the knowledge base storage as knowledge base documents and **automatically triggers parsing*	- (chunking and embedding). Supports two types of import:
 //
-// - `LOCAL_UPLOAD`: Works with the `GetKnowledgeBasePreSignedUrl` direct upload flow. This operation only registers the file and does not verify whether the file has actually been uploaded. Therefore, you must complete the PUT upload before calling this operation.
+// - `LOCAL_UPLOAD`: Used with the `GetKnowledgeBasePreSignedUrl` direct upload process. This operation only registers the files and does not verify whether the files have been actually uploaded. Therefore, you must complete the PUT upload first.
 //
-// - `OSS_IMPORT`: Imports files from an external OSS bucket. The operation creates an asynchronous import task and returns a `knowledge_import_task_id`. The system downloads and registers the files in the background.
+// - `OSS_IMPORT`: Imports files from an external OSS bucket. This operation creates an asynchronous import task and returns the `knowledge_import_task_id`. The system downloads and registers the files in the background.
 //
-// A maximum of 100 files can be imported in a single request.
+// A maximum of 100 files can be processed at a time.
 //
 // @param request - AddDocumentsRequest
 //
@@ -90,7 +90,7 @@ func (client *Client) AddDocumentsWithContext(ctx context.Context, datasetId *st
 
 // Summary:
 //
-// Generates an **OSS pre-signed PUT URL*	- pointing to the knowledge base dedicated storage for each file in `Documents`. The caller uses the URL to upload file content directly to Object Storage Service (OSS), and then calls `AddDocuments` to register the files. A maximum of 100 files can be processed per request.
+// Generates an **Object Storage Service (OSS) pre-signed PUT URL*	- pointing to the dedicated storage of the knowledge base for each file in `Documents`. Callers use the URL to upload file content directly to OSS and then call `AddDocuments` to complete the registration. A maximum of 100 files can be processed at a time.
 //
 // @param request - GetKnowledgeBasePreSignedUrlRequest
 //
@@ -149,7 +149,7 @@ func (client *Client) GetKnowledgeBasePreSignedUrlWithContext(ctx context.Contex
 //
 // Description:
 //
-// Searches a specified knowledge base by using a query or an image. For the version, use the display name DRAFT, LATEST_PUBLISHED, or vN. Pass tag filter conditions based on the actual operators used by the backend.
+// Searches a specified knowledge base by using a text query or an image. For the version parameter, use the display name DRAFT, LATEST_PUBLISHED, or vN. Pass tag filter conditions based on the actual operators used by the backend.
 //
 // @param request - SearchKnowledgeBaseRequest
 //

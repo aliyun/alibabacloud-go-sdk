@@ -22,7 +22,7 @@ type iGetKnowledgeBasePreSignedUrlResponseBody interface {
 }
 
 type GetKnowledgeBasePreSignedUrlResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetKnowledgeBasePreSignedUrlResponseBody struct {
 	//
 	// 403
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *GetKnowledgeBasePreSignedUrlResponseBody) Validate() error {
 }
 
 type GetKnowledgeBasePreSignedUrlResponseBodyData struct {
-	// The bucket name.
+	// The name of the bucket.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type GetKnowledgeBasePreSignedUrlResponseBodyData struct {
 	//
 	// 3600
 	ExpiresIn *int32 `json:"expiresIn,omitempty" xml:"expiresIn,omitempty"`
-	// The list of pre-signed PUT URLs. **The order corresponds one-to-one with the `Documents` in the request.**
+	// The list of pre-signed PUT URLs. **The order corresponds one-to-one with the `Documents` in the request**.
 	PreSignedUrls []*string `json:"preSignedUrls,omitempty" xml:"preSignedUrls,omitempty" type:"Repeated"`
 }
 

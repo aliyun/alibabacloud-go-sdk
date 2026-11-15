@@ -38,25 +38,25 @@ type AddDocumentsRequest struct {
 	//
 	// LOCAL_UPLOAD
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
-	// The knowledge base ID.
+	// The ID of the knowledge base.
 	//
 	// example:
 	//
 	// kb-3bd02617e9be335f
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The batch label configuration. The key must be a label field that is already defined in the knowledge base. The value supports string, int64, float32, bool, and list types.
+	// The batch tag configuration. The key must be a tag field defined in the knowledge base. The value supports the string, int64, float32, bool, and list data types.
 	//
 	// example:
 	//
 	// {"department":"legal","topics":["policy","contract"],"reviewed":true}
 	MetaFields interface{} `json:"MetaFields,omitempty" xml:"MetaFields,omitempty"`
-	// The processing strategy ID.
+	// The ID of the processing strategy.
 	//
 	// example:
 	//
 	// kb-strategy-7043984ca395eabd
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	DingTalkConfiguration *AddDocumentsRequestDingTalkConfiguration `json:"dingTalkConfiguration,omitempty" xml:"dingTalkConfiguration,omitempty" type:"Struct"`
 	// Defaults to root when omitted.
 	//
@@ -215,25 +215,25 @@ func (s *AddDocumentsRequestDedup) Validate() error {
 }
 
 type AddDocumentsRequestDocuments struct {
-	// The document name.
+	// The name of the document.
 	//
 	// example:
 	//
 	// CHANGELOG.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The document path. This is the file name or relative path used during upload, which must be consistent with the pre-signed URL request.
+	// The document path, which is the file name or relative path used during upload. It must be consistent with the pre-signed request.
 	//
 	// example:
 	//
 	// 2026_06_23_17_49_52WwGSUezpG2u2iHWxyYGzkf9KtormhkxN/CHANGELOG.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The file size.
+	// The size of the file.
 	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The processing strategy ID.
+	// The ID of the processing strategy.
 	//
 	// example:
 	//
@@ -290,43 +290,43 @@ func (s *AddDocumentsRequestDocuments) Validate() error {
 }
 
 type AddDocumentsRequestDingTalkConfiguration struct {
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
 	// ignore
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
 	// ignore
 	AppPassword *string `json:"appPassword,omitempty" xml:"appPassword,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
 	// ignore
 	DingDocMcpLink *string `json:"dingDocMcpLink,omitempty" xml:"dingDocMcpLink,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
 	// ignore
 	DingTableMcpLink *string `json:"dingTableMcpLink,omitempty" xml:"dingTableMcpLink,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
 	// ignore
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
 	// ignore
 	KnowledgeType *string `json:"knowledgeType,omitempty" xml:"knowledgeType,omitempty"`
-	// Not supported. Ignore this parameter.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//

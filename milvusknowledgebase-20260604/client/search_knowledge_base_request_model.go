@@ -46,7 +46,7 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// false
 	EnableKnowledgeGraph *bool `json:"enableKnowledgeGraph,omitempty" xml:"enableKnowledgeGraph,omitempty"`
-	// Optional. This parameter is returned conditionally and can be passed only when includeWiki is set to true. Omit this parameter for the first evidence page. For subsequent pages, pass the evidenceNextToken from the previous page as is. The candidate pool, subject, parameters, and page size are fixed and expire after 5 minutes without renewal. If the token expires, a 409 error is returned and no automatic re-search is performed. The pageNumber parameter only controls the legacy results. Constraints: {"minLength":1,"maxLength":4096}.
+	// The evidence page token. This parameter is optional and conditionally returned. It can only be passed when includeWiki is set to true. Omit this parameter for the first evidence page, and pass the evidenceNextToken from the previous page as is for subsequent pages. The candidate pool, subject, parameters, and page size are fixed, and the token expires in 5 minutes without renewal. An expired token returns a 409 error and does not trigger an automatic re-search. The pageNumber parameter only controls the legacy results. Constraint: {"minLength":1,"maxLength":4096}.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type SearchKnowledgeBaseRequest struct {
 	EvidencePageToken *string `json:"evidencePageToken,omitempty" xml:"evidencePageToken,omitempty"`
 	// The image search input.
 	Image *SearchKnowledgeBaseRequestImage `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
-	// Optional. This parameter is returned conditionally and is added for compatibility. Default value: false. If set to true, the unified evidenceResults are additionally returned, and Wiki content is not disguised as original text. Constraints: {"default":false}.
+	// Specifies whether to use Wiki evidence. This parameter is optional and conditionally returned, and is added for backward compatibility. Default value: false. If set to true, a unified evidenceResults field is additionally returned without disguising Wiki content as original text. Constraint: {"default":false}.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// What is the tax amount on the invoice?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The ID of the rerank model.
+	// The rerank model ID.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type SearchKnowledgeBaseRequest struct {
 	RetrievalConfig *SearchKnowledgeBaseRequestRetrievalConfig `json:"retrievalConfig,omitempty" xml:"retrievalConfig,omitempty" type:"Struct"`
 	// The tag filter.
 	TagFilter *SearchKnowledgeBaseRequestTagFilter `json:"tagFilter,omitempty" xml:"tagFilter,omitempty" type:"Struct"`
-	// The version of the knowledge base.
+	// The knowledge base version.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type SearchKnowledgeBaseRequestImage struct {
 	//
 	// uploaded/invoice.png
 	ObjectKey *string `json:"objectKey,omitempty" xml:"objectKey,omitempty"`
-	// The URL of the image.
+	// The image URL.
 	//
 	// example:
 	//
@@ -307,12 +307,18 @@ func (s *SearchKnowledgeBaseRequestImage) Validate() error {
 }
 
 type SearchKnowledgeBaseRequestRetrievalConfig struct {
-	// The number of recalled candidates.
+	// The number of candidates to recall.
 	//
 	// example:
 	//
 	// 5
 	CandidateCount *int32 `json:"candidateCount,omitempty" xml:"candidateCount,omitempty"`
+	// Specifies whether to enable multi-hop evidence completion. Default value: false. For pilot knowledge bases, this feature can be used on the first page of DRAFT text retrieval. The pageSize can be 5, 10, or 20, which requires a minimum candidateCount of 40, 48, or 64, respectively. When enabled, results are returned by document.
+	//
+	// example:
+	//
+	// true
+	EnableEvidenceCompletion *bool `json:"enableEvidenceCompletion,omitempty" xml:"enableEvidenceCompletion,omitempty"`
 	// Specifies whether to enable query expansion.
 	//
 	// example:
@@ -325,7 +331,7 @@ type SearchKnowledgeBaseRequestRetrievalConfig struct {
 	//
 	// 0.2
 	MinScore *float32 `json:"minScore,omitempty" xml:"minScore,omitempty"`
-	// The weight of semantic relevance.
+	// The weight for semantic relevance.
 	//
 	// example:
 	//
@@ -347,6 +353,10 @@ func (s *SearchKnowledgeBaseRequestRetrievalConfig) GetCandidateCount() *int32 {
 	return s.CandidateCount
 }
 
+func (s *SearchKnowledgeBaseRequestRetrievalConfig) GetEnableEvidenceCompletion() *bool {
+	return s.EnableEvidenceCompletion
+}
+
 func (s *SearchKnowledgeBaseRequestRetrievalConfig) GetEnableQueryExpansion() *bool {
 	return s.EnableQueryExpansion
 }
@@ -365,6 +375,11 @@ func (s *SearchKnowledgeBaseRequestRetrievalConfig) GetTranslationLanguages() []
 
 func (s *SearchKnowledgeBaseRequestRetrievalConfig) SetCandidateCount(v int32) *SearchKnowledgeBaseRequestRetrievalConfig {
 	s.CandidateCount = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseRequestRetrievalConfig) SetEnableEvidenceCompletion(v bool) *SearchKnowledgeBaseRequestRetrievalConfig {
+	s.EnableEvidenceCompletion = &v
 	return s
 }
 
@@ -395,7 +410,7 @@ func (s *SearchKnowledgeBaseRequestRetrievalConfig) Validate() error {
 type SearchKnowledgeBaseRequestTagFilter struct {
 	// The list of tag conditions.
 	Conditions []*SearchKnowledgeBaseRequestTagFilterConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The logical relation between conditions.
+	// The condition relation.
 	//
 	// example:
 	//

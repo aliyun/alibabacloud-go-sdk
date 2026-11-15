@@ -18,7 +18,7 @@ type iGetKnowledgeBasePreSignedUrlRequest interface {
 }
 
 type GetKnowledgeBasePreSignedUrlRequest struct {
-	// The list of files to upload. You can specify 1 to 100 files.
+	// The list of files to be uploaded. You can specify 1 to 100 files.
 	Documents []*GetKnowledgeBasePreSignedUrlRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
 	// The validity period of the pre-signed URL in seconds. Default value: `3600`.
 	//
@@ -26,7 +26,7 @@ type GetKnowledgeBasePreSignedUrlRequest struct {
 	//
 	// 3600
 	ExpiresIn *int32 `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
-	// The knowledge base ID. Either this parameter or datasetId must be specified. This parameter takes priority.
+	// The ID of the knowledge base. This parameter and datasetId are mutually exclusive. If both are specified, this parameter takes precedence.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *GetKnowledgeBasePreSignedUrlRequest) Validate() error {
 }
 
 type GetKnowledgeBasePreSignedUrlRequestDocuments struct {
-	// The display name of the file. If not specified, the file name from Path is used.
+	// The display name of the file. If not specified, the file name from Path is used by default.
 	//
 	// example:
 	//
 	// CHANGELOG.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The file name or relative path for local upload scenarios. The value cannot start with `direct_upload/` or `uploaded/`, cannot contain empty segments, `.`, or `..`, and must be 1024 bytes or less.
+	// The **file name or relative path*	- for local upload scenarios. The path cannot start with `direct_upload/` or `uploaded/`, cannot contain empty segments, `.`, or `..`, and must be less than or equal to 1,024 bytes in length.
 	//
 	// example:
 	//
 	// contract-2026.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The file size in bytes.
+	// The size of the file in bytes.
 	//
 	// example:
 	//

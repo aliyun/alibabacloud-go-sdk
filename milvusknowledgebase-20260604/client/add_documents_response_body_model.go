@@ -26,13 +26,13 @@ type iAddDocumentsResponseBody interface {
 }
 
 type AddDocumentsResponseBody struct {
-	// The details of the permission verification failure.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","AuthPrincipalOwnerId":"1234567890123456","AuthPrincipalType":"SubUser","AuthPrincipalDisplayName":"1234567890123456","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:ListDatasets"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type AddDocumentsResponseBody struct {
 	//
 	// DDDBE0E5-4314-156F-B7F1-C4BCFD25A509
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -193,19 +193,19 @@ func (s *AddDocumentsResponseBodyData) Validate() error {
 }
 
 type AddDocumentsResponseBodyDataDocuments struct {
-	// The chunk count.
+	// The number of chunks.
 	//
 	// example:
 	//
 	// 0
 	ChunkCount *int32 `json:"chunkCount,omitempty" xml:"chunkCount,omitempty"`
-	// The chunk method.
+	// The chunking method.
 	//
 	// example:
 	//
 	// naive
 	ChunkMethod *string `json:"chunkMethod,omitempty" xml:"chunkMethod,omitempty"`
-	// The knowledge base ID.
+	// The ID of the knowledge base.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type AddDocumentsResponseBodyDataDocuments struct {
 	//
 	// uploaded/doc-id/example.pdf
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// The document name.
+	// The name of the document.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type AddDocumentsResponseBodyDataDocuments struct {
 	//
 	// RUNNING
 	Run *string `json:"run,omitempty" xml:"run,omitempty"`
-	// The file size.
+	// The size of the file.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type AddDocumentsResponseBodyDataDocuments struct {
 	//
 	// ""
 	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	// The token count.
+	// The number of tokens.
 	//
 	// example:
 	//
