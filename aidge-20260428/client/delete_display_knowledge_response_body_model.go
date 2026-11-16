@@ -155,7 +155,7 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	//
 	// 50
 	RemainingCount *int32 `json:"RemainingCount,omitempty" xml:"RemainingCount,omitempty"`
-	// The processing results for each record.
+	// The processing result of each record.
 	Results []*DeleteDisplayKnowledgeResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 	// Indicates whether the business processing was successful.
 	//
@@ -163,13 +163,13 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The asynchronous task ID. This field is empty for synchronous API operations.
+	// The ID of the asynchronous task. This parameter is empty for synchronous API operations.
 	//
 	// example:
 	//
 	// task-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The usage information. This field is empty for free API operations.
+	// The usage information. This parameter is empty for free API operations.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ type DeleteDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The index in the original request array.
+	// The index of the item in the original request array.
 	//
 	// example:
 	//
@@ -322,19 +322,19 @@ type DeleteDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// 2746611117
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The SKU ID. This field is empty for deletion results.
+	// The SKU ID. This parameter is empty in the deletion result.
 	//
 	// example:
 	//
 	// sku-001
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The record status. This field is empty for deletion results.
+	// The record status. This parameter is empty in the deletion result.
 	//
 	// example:
 	//
-	// Empty for deletion API operations
+	// Empty for the delete operation
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

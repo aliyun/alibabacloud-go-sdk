@@ -52,7 +52,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
 	// The source language.
 	//
@@ -74,7 +74,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
 	// Specifies whether to use the image editor protocol.
 	//

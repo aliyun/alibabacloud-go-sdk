@@ -32,7 +32,7 @@ type VacancyDetectionRequest struct {
 	//
 	// You are a helpful assistant.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The optional user prompt. If this parameter is empty, the complete vacancy detection prompt is used. Plain text and JSON containing only text in messages or content are supported.
+	// The optional user prompt. If this parameter is left empty, the complete vacancy detection prompt is used. Plain text and JSON containing only text in messages/content are supported.
 	//
 	// example:
 	//

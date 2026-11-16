@@ -150,6 +150,10 @@ type CategoryMatchResponseBodyData struct {
 	// The core of the product is a cat collar with AirTag tracking functionality, which belongs to the \\"Location and Activity Trackers\\" category. The leaf node semantics precisely match its tracking function and cat-specific attributes
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The usage information.
+	//
+	// example:
+	//
+	// {"ProcessingCount":1}
 	UsageMap map[string]*int32 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

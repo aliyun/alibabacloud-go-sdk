@@ -22,7 +22,7 @@ type iImageTranslationProResponseBody interface {
 }
 
 type ImageTranslationProResponseBody struct {
-	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+	// The response code. A value of 200 indicates a successful call. For other response codes, see Error codes.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type ImageTranslationProResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data. ResultList contains the URLs of the translation results, and EditInfo in GenFiles contains the recognized text information.
 	Data *ImageTranslationProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for successful calls. Specific error messages are returned for exceptions, such as "The content contains sensitive data. Try another input."
+	// The error message. Success is returned for a successful call. For an exception, a specific error message is returned, such as "The content contains sensitive data. Try another input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used to uniquely identify a request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -123,7 +123,11 @@ type ImageTranslationProResponseBodyData struct {
 	//
 	// abc123-task-id
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The usage information, which includes the number of processed images.
+	// The usage information, including the number of processed images.
+	//
+	// example:
+	//
+	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
@@ -198,7 +202,7 @@ type ImageTranslationProResponseBodyDataGenFiles struct {
 	EditInfo *ImageTranslationProResponseBodyDataGenFilesEditInfo `json:"EditInfo,omitempty" xml:"EditInfo,omitempty" type:"Struct"`
 	// The collection of translation results.
 	ResultList []*ImageTranslationProResponseBodyDataGenFilesResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
-	// The URL of the source image.
+	// The URL of the original image.
 	//
 	// example:
 	//
@@ -262,11 +266,11 @@ func (s *ImageTranslationProResponseBodyDataGenFiles) Validate() error {
 type ImageTranslationProResponseBodyDataGenFilesEditInfo struct {
 	// The list of font types.
 	Font []*string `json:"Font,omitempty" xml:"Font,omitempty" type:"Repeated"`
-	// The coordinate information of the product bounding box area.
+	// The coordinate information of the product area bounding box.
 	GoodsRects *ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects `json:"GoodsRects,omitempty" xml:"GoodsRects,omitempty" type:"Struct"`
 	// The list of target languages for translation.
 	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	// The URL of the image with all text erased.
+	// The URL of the image with all text masked.
 	//
 	// example:
 	//
@@ -459,7 +463,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas struct {
 	//
 	// example:
 	//
-	// Cute design · Crisp bell
+	// Cute design · crisp bell
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The font size.
 	//
@@ -479,7 +483,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas struct {
 	//
 	// 1
 	LineCount *int32 `json:"LineCount,omitempty" xml:"LineCount,omitempty"`
-	// The list of translated texts, where each element corresponds to the translation result in a target language.
+	// The list of translated texts. Each element corresponds to the translation result in a target language.
 	Texts []*ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 	// The vertical layout method. Valid values: center, top, and down.
 	//
@@ -592,7 +596,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts struct {
 	//
 	// center
 	HorizontalLayout *string `json:"HorizontalLayout,omitempty" xml:"HorizontalLayout,omitempty"`
-	// The coordinates of the image repair area.
+	// The coordinates of the image inpainting area.
 	ImageRect *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect `json:"ImageRect,omitempty" xml:"ImageRect,omitempty" type:"Struct"`
 	// The code of the target language for translation.
 	//
@@ -608,7 +612,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts struct {
 	LineCount *int32 `json:"LineCount,omitempty" xml:"LineCount,omitempty"`
 	// The coordinates of the text box area.
 	TextRect *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect `json:"TextRect,omitempty" xml:"TextRect,omitempty" type:"Struct"`
-	// Indicates whether the text item is valid. If this value is missing or set to false, the text item is invalid.
+	// Indicates whether the TextItem is valid. If this value does not exist or is false, the item is invalid.
 	//
 	// example:
 	//

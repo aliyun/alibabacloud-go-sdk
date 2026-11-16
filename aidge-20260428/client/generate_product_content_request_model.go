@@ -27,6 +27,8 @@ type iGenerateProductContentRequest interface {
 	GetProductAttributes() *string
 	SetProductCategory(v string) *GenerateProductContentRequest
 	GetProductCategory() *string
+	SetPrompt(v string) *GenerateProductContentRequest
+	GetPrompt() *string
 	SetSourceLanguage(v string) *GenerateProductContentRequest
 	GetSourceLanguage() *string
 	SetSourceText(v string) *GenerateProductContentRequest
@@ -94,6 +96,10 @@ type GenerateProductContentRequest struct {
 	//
 	// Kitchen utensils
 	ProductCategory *string `json:"ProductCategory,omitempty" xml:"ProductCategory,omitempty"`
+	// example:
+	//
+	// 自定义
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// The source language. Valid values: zh and en. Automatic language identification is not supported. Supported source languages: Chinese (zh) and English (en).
 	//
 	// This parameter is required.
@@ -162,6 +168,10 @@ func (s *GenerateProductContentRequest) GetProductCategory() *string {
 	return s.ProductCategory
 }
 
+func (s *GenerateProductContentRequest) GetPrompt() *string {
+	return s.Prompt
+}
+
 func (s *GenerateProductContentRequest) GetSourceLanguage() *string {
 	return s.SourceLanguage
 }
@@ -216,6 +226,11 @@ func (s *GenerateProductContentRequest) SetProductAttributes(v string) *Generate
 
 func (s *GenerateProductContentRequest) SetProductCategory(v string) *GenerateProductContentRequest {
 	s.ProductCategory = &v
+	return s
+}
+
+func (s *GenerateProductContentRequest) SetPrompt(v string) *GenerateProductContentRequest {
+	s.Prompt = &v
 	return s
 }
 

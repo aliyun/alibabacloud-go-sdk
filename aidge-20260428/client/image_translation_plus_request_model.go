@@ -72,7 +72,7 @@ type ImageTranslationPlusRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	UseImageEditor *bool `json:"UseImageEditor,omitempty" xml:"UseImageEditor,omitempty"`
 }
 

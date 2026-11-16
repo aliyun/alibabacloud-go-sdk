@@ -120,6 +120,10 @@ type VideoGenerationResponseBodyData struct {
 	// 778fa8bd21804828a5d147050e30edac
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The metering and usage information.
+	//
+	// example:
+	//
+	// {"ProcessedVideoDurationSeconds":10}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

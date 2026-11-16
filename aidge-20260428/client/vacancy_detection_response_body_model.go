@@ -117,7 +117,7 @@ func (s *VacancyDetectionResponseBody) Validate() error {
 }
 
 type VacancyDetectionResponseBodyData struct {
-	// The ID of the asynchronous task. You can use this ID to call QueryAsyncTaskResult to query the result later.
+	// The ID of the asynchronous task. You can use this ID to query the result by calling QueryAsyncTaskResult later.
 	//
 	// example:
 	//

@@ -146,6 +146,10 @@ type GenerateProductContentResponseBodyData struct {
 	// Чашка Для Мороженого Из Нержавеющей Стали 14,5x10,8 см
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The usage information.
+	//
+	// example:
+	//
+	// {"OutputCharacterCount":53,"InputCharacterCount":8408}
 	UsageMap map[string]*int32 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

@@ -138,6 +138,10 @@ type QueryAsyncTaskResultResponseBodyData struct {
 	// task-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The usage information.
+	//
+	// example:
+	//
+	// {"ProcessedDocumentPageCount":"1"}
 	UsageMap map[string]interface{} `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 

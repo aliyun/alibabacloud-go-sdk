@@ -88,6 +88,10 @@ type VideoGenerationRequestInput struct {
 	// The asset binding list.
 	AssetBindings []*VideoGenerationRequestInputAssetBindings `json:"AssetBindings,omitempty" xml:"AssetBindings,omitempty" type:"Repeated"`
 	// The extended information.
+	//
+	// example:
+	//
+	// {}
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The list of product image URLs (1 to 8 images), which must be accessible over the Internet.
 	//

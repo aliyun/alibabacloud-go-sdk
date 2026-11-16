@@ -1,3 +1,7 @@
+2026-11-16 Version: v5.12.1
+- Update API GenerateProductContent: add request parameters Prompt.
+
+
 2026-11-12 Version: v5.12.0
 - Support API VacancyDetection.
 
