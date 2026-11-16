@@ -13191,6 +13191,11 @@ func (client *Client) RestartWuyingServerWithOptions(request *RestartWuyingServe
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableRestartRetry) {
+		query["EnableRestartRetry"] = request.EnableRestartRetry
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ProductType) {
 		body["ProductType"] = request.ProductType
@@ -13204,7 +13209,8 @@ func (client *Client) RestartWuyingServerWithOptions(request *RestartWuyingServe
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RestartWuyingServer"),

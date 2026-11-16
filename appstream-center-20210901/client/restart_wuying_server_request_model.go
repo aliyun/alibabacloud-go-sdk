@@ -9,6 +9,8 @@ type iRestartWuyingServerRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableRestartRetry(v bool) *RestartWuyingServerRequest
+	GetEnableRestartRetry() *bool
 	SetProductType(v string) *RestartWuyingServerRequest
 	GetProductType() *string
 	SetWuyingServerIdList(v []*string) *RestartWuyingServerRequest
@@ -16,6 +18,8 @@ type iRestartWuyingServerRequest interface {
 }
 
 type RestartWuyingServerRequest struct {
+	// Specifies whether to enable the restart retry feature.
+	EnableRestartRetry *bool `json:"EnableRestartRetry,omitempty" xml:"EnableRestartRetry,omitempty"`
 	// The product type.
 	//
 	// example:
@@ -34,12 +38,21 @@ func (s RestartWuyingServerRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RestartWuyingServerRequest) GetEnableRestartRetry() *bool {
+	return s.EnableRestartRetry
+}
+
 func (s *RestartWuyingServerRequest) GetProductType() *string {
 	return s.ProductType
 }
 
 func (s *RestartWuyingServerRequest) GetWuyingServerIdList() []*string {
 	return s.WuyingServerIdList
+}
+
+func (s *RestartWuyingServerRequest) SetEnableRestartRetry(v bool) *RestartWuyingServerRequest {
+	s.EnableRestartRetry = &v
+	return s
 }
 
 func (s *RestartWuyingServerRequest) SetProductType(v string) *RestartWuyingServerRequest {
