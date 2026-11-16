@@ -20,7 +20,7 @@ type iGenerateYikeLoginTokenResponseBody interface {
 }
 
 type GenerateYikeLoginTokenResponseBody struct {
-	// The session expiration time (millisecond timestamp).
+	// The session expiration time (timestamp in milliseconds).
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GenerateYikeLoginTokenResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The login token.
+	// The logon token.
 	//
 	// example:
 	//

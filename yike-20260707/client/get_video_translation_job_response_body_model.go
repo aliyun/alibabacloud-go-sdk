@@ -18,7 +18,7 @@ type iGetVideoTranslationJobResponseBody interface {
 type GetVideoTranslationJobResponseBody struct {
 	// The video translation job.
 	Job *GetVideoTranslationJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	// The request ID, used for Tracing Analysis and troubleshooting.
+	// The request ID used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//
@@ -68,37 +68,37 @@ type GetVideoTranslationJobResponseBodyJob struct {
 	//
 	// 60.5
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The editing project ID for single-target-language jobs. For multi-target-language results, retrieve the value from Output.AiResult.ResultMap.
+	// The ID of the editing project for a single-target-language job. For multi-target-language results, obtain the IDs from Output.AiResult.ResultMap.
 	//
 	// example:
 	//
 	// editing-project-001
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
-	// The business error code returned when the job fails. This field is not returned when the job is not in a failed state.
+	// The business error code returned when the job fails. This parameter is usually not returned for non-failed states.
 	//
 	// example:
 	//
 	// InvalidInput
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error message returned when the job fails. This field is not returned when the job is not in a failed state.
+	// The business error message returned when the job fails. This parameter is usually not returned for non-failed states.
 	//
 	// example:
 	//
 	// Input video is invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The normalized input configuration JSON string saved at submission time.
+	// The normalized JSON string of the input configuration saved upon submission.
 	//
 	// example:
 	//
 	// {"VideoMediaId":"media-video-001"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The video translation job ID.
+	// The ID of the video translation job.
 	//
 	// example:
 	//
 	// vtj_0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The normalized job parameters JSON string, including default values supplemented by the service.
+	// The normalized JSON string of the job parameters, including the default values supplemented by the service.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetVideoTranslationJobResponseBodyJob struct {
 	//
 	// VoiceTranslate
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The job output JSON string. On success, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
+	// The JSON string of the job output. If the job is successful, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
 	//
 	// example:
 	//

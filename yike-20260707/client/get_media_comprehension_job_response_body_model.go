@@ -80,13 +80,13 @@ func (s *GetMediaComprehensionJobResponseBody) Validate() error {
 }
 
 type GetMediaComprehensionJobResponseBodyJob struct {
-	// The error code. This parameter is returned when the job status is Failed.
+	// The error code. This parameter is returned when the status is Failed.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This parameter is of the String type and is returned when the job status is Failed.
+	// The error message. The value is a string. This parameter is returned when the status is Failed.
 	//
 	// example:
 	//
@@ -100,23 +100,23 @@ type GetMediaComprehensionJobResponseBodyJob struct {
 	//
 	// http://xxxx.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The job status. Valid values:
+	// The file status. Valid values:
 	//
-	// - **Created**: The job is created.
+	// - **Created**: Created.
 	//
-	// - **Executing**: The job is being executed.
+	// - **Executing**: Executing.
 	//
-	// - **Finished**: The job is completed.
+	// - **Finished**: Finished.
 	//
-	// - **Failed**: The job failed.
+	// - **Failed**: Failed.
 	//
-	// - **Deleted**: The job is deleted.
+	// - **Deleted**: Deleted.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined parameter. The value is a JSON string.
+	// The user-defined parameter, which is a JSON-formatted string.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type GetMediaComprehensionJobResponseBodyMediaComprehensionJob struct {
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This parameter is of the String type and is returned when the job status is Failed.
+	// The error message. The value is a string. This parameter is returned when the status is Failed.
 	//
 	// example:
 	//
@@ -215,29 +215,29 @@ type GetMediaComprehensionJobResponseBodyMediaComprehensionJob struct {
 	//
 	// ******307e9971f1******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The analysis result. The value is a JSON string.
+	// The analysis result, which is a JSON-formatted string.
 	//
 	// example:
 	//
 	// "{\\"source_video_url\\":\\"http://xxx.mp4\\",\\"narrative_overview\\":{******}}"
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The job status. Valid values:
+	// The file status. Valid values:
 	//
-	// - **Created**: The job is created.
+	// - **Created**: Created.
 	//
-	// - **Executing**: The job is being executed.
+	// - **Executing**: Executing.
 	//
-	// - **Finished**: The job is completed.
+	// - **Finished**: Finished.
 	//
-	// - **Failed**: The job failed.
+	// - **Failed**: Failed.
 	//
-	// - **Deleted**: The job is deleted.
+	// - **Deleted**: Deleted.
 	//
 	// example:
 	//
 	// Executing
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The user-defined parameter. The value is a JSON string.
+	// The user-defined parameter, which is a JSON-formatted string.
 	//
 	// example:
 	//

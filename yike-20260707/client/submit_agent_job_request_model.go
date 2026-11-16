@@ -30,27 +30,27 @@ type SubmitAgentJobRequest struct {
 	//
 	// qwen3.7-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The callback URL. Currently, only HTTP and HTTPS addresses are supported.
+	// The callback URL. Only HTTP and HTTPS URLs are supported.
 	//
 	// example:
 	//
 	// https://api.ai-x.vip/callback
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// The prompt. Defined by the business as needed.
+	// The prompt. The specific content is defined by your business.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Compare the battle records of Yue Jin and Guan Yu in real history to determine who was stronger
+	// Compare the military records of Yue Jin and Guan Yu in real history to determine who was stronger
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The skill identifier, provided by the skill provider.
+	// The skill identifier used for the task, which is provided by the skill provider.
 	//
 	// example:
 	//
 	// wf://xxx
 	Skill *string `json:"Skill,omitempty" xml:"Skill,omitempty"`
-	// The custom user data. This value is returned as-is in the callback.
+	// The user-defined information. This information is returned as-is in the callback.
 	//
 	// example:
 	//

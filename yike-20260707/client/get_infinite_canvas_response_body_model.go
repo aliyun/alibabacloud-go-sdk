@@ -16,7 +16,7 @@ type iGetInfiniteCanvasResponseBody interface {
 }
 
 type GetInfiniteCanvasResponseBody struct {
-	// The infinite canvas details.
+	// The details of the infinite canvas.
 	InfiniteCanvas *GetInfiniteCanvasResponseBodyInfiniteCanvas `json:"InfiniteCanvas,omitempty" xml:"InfiniteCanvas,omitempty" type:"Struct"`
 	// The request ID.
 	//

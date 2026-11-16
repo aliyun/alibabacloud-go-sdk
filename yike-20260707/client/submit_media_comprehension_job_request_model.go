@@ -20,13 +20,13 @@ type iSubmitMediaComprehensionJobRequest interface {
 }
 
 type SubmitMediaComprehensionJobRequest struct {
-	// The input material. It is a JSON string with the following structure:
+	// The input media assets. The value is a JSON string with the following structure:
 	//
-	// - Medias (Array<Object>, required): The list of media assets. It contains 1 to 10 elements. Each element includes the following fields:
+	// - Medias (Array<Object>, required): The list of media assets. Valid values: 1 to 10 elements. Each element contains the following fields:
 	//
 	//   - Type (String, required): The type of the media asset. Valid values: video and image. The value is not case-sensitive.
 	//
-	//   - Url (String, mutually exclusive with MediaId): The URL of the media asset. It must start with http:// or https:// and be up to 2,048 characters in length. Unregistered URLs are automatically registered as media assets.
+	//   - Url (String, mutually exclusive with MediaId): The URL of the media asset. The URL must start with http:// or https:// and be up to 2,048 characters in length. Unregistered URLs are automatically registered as media assets.
 	//
 	//   - MediaId (String, mutually exclusive with Url): The ID of the registered media asset. If both Url and MediaId are specified, MediaId takes precedence.
 	//
@@ -34,7 +34,7 @@ type SubmitMediaComprehensionJobRequest struct {
 	//
 	// {"Medias":[{"Type":"video","Url":"https://xxx.mp4"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The analysis parameters. It is a JSON string with a maximum length of 65,536 characters and a maximum of 20 fields.
+	// The analysis parameters. The value is a JSON string up to 65,536 characters in length and contains a maximum of 20 fields.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type SubmitMediaComprehensionJobRequest struct {
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
 	// The job type. Valid values:
 	//
-	// - VideoBreakdown: viral video breakdown. The Medias array must contain exactly one element with Type set to video.
+	// - VideoBreakdown: Viral video breakdown. The Medias array must contain exactly one element with Type set to video.
 	//
-	// - ProductRecognition: product image information recognition. All elements in the Medias array must have Type set to image.
+	// - ProductRecognition: Product image information recognition. All elements in the Medias array must have Type set to image.
 	//
 	// example:
 	//
 	// VideoBreakdown
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The custom parameters. It is a JSON string that is returned as-is in the callback result, such as newsKey. NotifyAddress is a system-reserved field for the callback URL. A callback is triggered to this URL after the job is completed.
+	// The custom parameters. The value is a JSON string that is returned as-is in the callback result, such as newsKey. NotifyAddress is a system-reserved field that specifies the callback URL. The system sends a callback to this URL after the job is completed.
 	//
 	// example:
 	//

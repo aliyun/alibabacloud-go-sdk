@@ -66,11 +66,87 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Retrieves information about multiple media assets in a batch.
+// Adds members to a project.
 //
 // Description:
 //
-// ## Request description.
+// Adds users under the same Alibaba Cloud account to a specified project in the default workspace of the Alibaba Cloud account, and grants the Edit permission by default. ProjectId specifies the project ID. YikeUserIds specifies a comma-separated list of Yike user IDs, which are not Alibaba Cloud UIDs. Currently, only the default workspace of the Alibaba Cloud account is supported, and projects in newly created workspaces are not supported. This operation follows the behavior of the original member API operation: adding an existing member resets the project permissions. Regular members are assigned the Edit permission, and SuperAdmins of the default workspace retain the Manage permission. Only Alibaba Cloud accounts that have activated ProductionOpenAPI are supported. Default Alibaba Cloud account projects (pd_Alibaba Cloud account ID) are not supported.
+//
+// @param request - AddProjectMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddProjectMembersResponse
+func (client *Client) AddProjectMembersWithOptions(request *AddProjectMembersRequest, runtime *dara.RuntimeOptions) (_result *AddProjectMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.YikeUserIds) {
+		query["YikeUserIds"] = request.YikeUserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddProjectMembers"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddProjectMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds members to a project.
+//
+// Description:
+//
+// Adds users under the same Alibaba Cloud account to a specified project in the default workspace of the Alibaba Cloud account, and grants the Edit permission by default. ProjectId specifies the project ID. YikeUserIds specifies a comma-separated list of Yike user IDs, which are not Alibaba Cloud UIDs. Currently, only the default workspace of the Alibaba Cloud account is supported, and projects in newly created workspaces are not supported. This operation follows the behavior of the original member API operation: adding an existing member resets the project permissions. Regular members are assigned the Edit permission, and SuperAdmins of the default workspace retain the Manage permission. Only Alibaba Cloud accounts that have activated ProductionOpenAPI are supported. Default Alibaba Cloud account projects (pd_Alibaba Cloud account ID) are not supported.
+//
+// @param request - AddProjectMembersRequest
+//
+// @return AddProjectMembersResponse
+func (client *Client) AddProjectMembers(request *AddProjectMembersRequest) (_result *AddProjectMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddProjectMembersResponse{}
+	_body, _err := client.AddProjectMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the information of multiple media assets.
+//
+// Description:
+//
+// ## Request description
+//
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - BatchGetMediasRequest
 //
@@ -126,11 +202,13 @@ func (client *Client) BatchGetMediasWithOptions(request *BatchGetMediasRequest, 
 
 // Summary:
 //
-// Retrieves information about multiple media assets in a batch.
+// Retrieves the information of multiple media assets.
 //
 // Description:
 //
-// ## Request description.
+// ## Request description
+//
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - BatchGetMediasRequest
 //
@@ -148,7 +226,77 @@ func (client *Client) BatchGetMedias(request *BatchGetMediasRequest) (_result *B
 
 // Summary:
 //
-// Cancels an AI generation task.
+// Queries video character replacement jobs in batches.
+//
+// Description:
+//
+// Queries the status and results of video character replacement jobs in batches. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from Result.
+//
+// @param request - BatchGetVideoCharacterReplaceJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetVideoCharacterReplaceJobsResponse
+func (client *Client) BatchGetVideoCharacterReplaceJobsWithOptions(request *BatchGetVideoCharacterReplaceJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchGetVideoCharacterReplaceJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobIds) {
+		query["JobIds"] = request.JobIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetVideoCharacterReplaceJobs"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetVideoCharacterReplaceJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries video character replacement jobs in batches.
+//
+// Description:
+//
+// Queries the status and results of video character replacement jobs in batches. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from Result.
+//
+// @param request - BatchGetVideoCharacterReplaceJobsRequest
+//
+// @return BatchGetVideoCharacterReplaceJobsResponse
+func (client *Client) BatchGetVideoCharacterReplaceJobs(request *BatchGetVideoCharacterReplaceJobsRequest) (_result *BatchGetVideoCharacterReplaceJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchGetVideoCharacterReplaceJobsResponse{}
+	_body, _err := client.BatchGetVideoCharacterReplaceJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels a generation task.
 //
 // @param request - CancelGenerationJobRequest
 //
@@ -192,7 +340,7 @@ func (client *Client) CancelGenerationJobWithOptions(request *CancelGenerationJo
 
 // Summary:
 //
-// Cancels an AI generation task.
+// Cancels a generation task.
 //
 // @param request - CancelGenerationJobRequest
 //
@@ -214,7 +362,7 @@ func (client *Client) CancelGenerationJob(request *CancelGenerationJobRequest) (
 //
 // Description:
 //
-// Categories support up to three levels, and each level supports up to 100 subcategories.
+// Categories support up to three levels of hierarchy, and each level supports up to 100 subcategories.
 //
 // @param request - CreateAssetCategoryRequest
 //
@@ -266,7 +414,7 @@ func (client *Client) CreateAssetCategoryWithOptions(request *CreateAssetCategor
 //
 // Description:
 //
-// Categories support up to three levels, and each level supports up to 100 subcategories.
+// Categories support up to three levels of hierarchy, and each level supports up to 100 subcategories.
 //
 // @param request - CreateAssetCategoryRequest
 //
@@ -288,9 +436,9 @@ func (client *Client) CreateAssetCategory(request *CreateAssetCategoryRequest) (
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - CreateInfiniteCanvasRequest
 //
@@ -311,6 +459,10 @@ func (client *Client) CreateInfiniteCanvasWithOptions(request *CreateInfiniteCan
 
 	if !dara.IsNil(request.ProductionId) {
 		query["ProductionId"] = request.ProductionId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.Title) {
@@ -350,9 +502,9 @@ func (client *Client) CreateInfiniteCanvasWithOptions(request *CreateInfiniteCan
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - CreateInfiniteCanvasRequest
 //
@@ -370,11 +522,159 @@ func (client *Client) CreateInfiniteCanvas(request *CreateInfiniteCanvasRequest)
 
 // Summary:
 //
+// Creates a project.
+//
+// Description:
+//
+// Creates a project in a specified workspace and returns the ProjectId. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
+//
+// @param request - CreateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a project.
+//
+// Description:
+//
+// Creates a project in a specified workspace and returns the ProjectId. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a studio.
+//
+// Description:
+//
+// Creates a studio and triggers automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can directly use the ProjectId without creating the default project again.
+//
+// @param request - CreateWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResponse
+func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UserCountLimit) {
+		query["UserCountLimit"] = request.UserCountLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspace"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a studio.
+//
+// Description:
+//
+// Creates a studio and triggers automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can directly use the ProjectId without creating the default project again.
+//
+// @param request - CreateWorkspaceRequest
+//
+// @return CreateWorkspaceResponse
+func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CreateWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a media asset category.
 //
 // Description:
 //
-// This operation also deletes all subcategories (including second-level and third-level categories). Proceed with caution.
+// This operation also deletes its subcategories, including level-2 and level-3 subcategories. Proceed with caution.
 //
 // @param request - DeleteAssetCategoryRequest
 //
@@ -422,7 +722,7 @@ func (client *Client) DeleteAssetCategoryWithOptions(request *DeleteAssetCategor
 //
 // Description:
 //
-// This operation also deletes all subcategories (including second-level and third-level categories). Proceed with caution.
+// This operation also deletes its subcategories, including level-2 and level-3 subcategories. Proceed with caution.
 //
 // @param request - DeleteAssetCategoryRequest
 //
@@ -444,9 +744,9 @@ func (client *Client) DeleteAssetCategory(request *DeleteAssetCategoryRequest) (
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - DeleteInfiniteCanvasRequest
 //
@@ -494,9 +794,9 @@ func (client *Client) DeleteInfiniteCanvasWithOptions(request *DeleteInfiniteCan
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - DeleteInfiniteCanvasRequest
 //
@@ -588,11 +888,85 @@ func (client *Client) DeleteMedias(request *DeleteMediasRequest) (_result *Delet
 
 // Summary:
 //
-// Retrieves a login token for an enterprise account.
+// Deletes a project.
 //
 // Description:
 //
-//	Notice:  The AI generation-related API operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
+// Deletes a project by ProjectId. The caller must have project management permissions.
+//
+// Default projects cannot be deleted. If you attempt to delete a default project, DefaultProductionNotSupported is returned. This operation marks the project as deleted and does not physically delete all assets in the project.
+//
+// @param request - DeleteProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a project.
+//
+// Description:
+//
+// Deletes a project by ProjectId. The caller must have project management permissions.
+//
+// Default projects cannot be deleted. If you attempt to delete a default project, DefaultProductionNotSupported is returned. This operation marks the project as deleted and does not physically delete all assets in the project.
+//
+// @param request - DeleteProjectRequest
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the logon token for an enterprise account.
+//
+// Description:
+//
+//	Notice:  The AI generation-related API operations in the current 2026-03-19 API version will be retired soon. Upgrade to the 2026-07-07 API version.
 //
 // @param request - GenerateYikeLoginTokenRequest
 //
@@ -664,11 +1038,11 @@ func (client *Client) GenerateYikeLoginTokenWithOptions(request *GenerateYikeLog
 
 // Summary:
 //
-// Retrieves a login token for an enterprise account.
+// Retrieves the logon token for an enterprise account.
 //
 // Description:
 //
-//	Notice:  The AI generation-related API operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
+//	Notice:  The AI generation-related API operations in the current 2026-03-19 API version will be retired soon. Upgrade to the 2026-07-07 API version.
 //
 // @param request - GenerateYikeLoginTokenRequest
 //
@@ -686,7 +1060,7 @@ func (client *Client) GenerateYikeLoginToken(request *GenerateYikeLoginTokenRequ
 
 // Summary:
 //
-// Queries an agent asynchronous task.
+// Queries an asynchronous task of the agent node.
 //
 // @param request - GetAgentJobRequest
 //
@@ -730,7 +1104,7 @@ func (client *Client) GetAgentJobWithOptions(request *GetAgentJobRequest, runtim
 
 // Summary:
 //
-// Queries an agent asynchronous task.
+// Queries an asynchronous task of the agent node.
 //
 // @param request - GetAgentJobRequest
 //
@@ -748,7 +1122,7 @@ func (client *Client) GetAgentJob(request *GetAgentJobRequest) (_result *GetAgen
 
 // Summary:
 //
-// Retrieves the information of a specified category and the list of its subcategories (immediate child categories).
+// Retrieves the details of a specified category and a list of its subcategories.
 //
 // @param request - GetAssetCategoryRequest
 //
@@ -792,7 +1166,7 @@ func (client *Client) GetAssetCategoryWithOptions(request *GetAssetCategoryReque
 
 // Summary:
 //
-// Retrieves the information of a specified category and the list of its subcategories (immediate child categories).
+// Retrieves the details of a specified category and a list of its subcategories.
 //
 // @param request - GetAssetCategoryRequest
 //
@@ -876,9 +1250,9 @@ func (client *Client) GetImageGenerationJob(request *GetImageGenerationJobReques
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API is used to query a media asset content understanding job.
+// This API queries media asset content understanding jobs.
 //
 // @param request - GetInfiniteCanvasRequest
 //
@@ -926,9 +1300,9 @@ func (client *Client) GetInfiniteCanvasWithOptions(request *GetInfiniteCanvasReq
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API is used to query a media asset content understanding job.
+// This API queries media asset content understanding jobs.
 //
 // @param request - GetInfiniteCanvasRequest
 //
@@ -946,13 +1320,13 @@ func (client *Client) GetInfiniteCanvas(request *GetInfiniteCanvasRequest) (_res
 
 // Summary:
 //
-// Queries a media asset.
+// Queries media assets.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query a media content analysis job.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - GetMediaRequest
 //
@@ -1008,13 +1382,13 @@ func (client *Client) GetMediaWithOptions(request *GetMediaRequest, runtime *dar
 
 // Summary:
 //
-// Queries a media asset.
+// Queries media assets.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query a media content analysis job.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - GetMediaRequest
 //
@@ -1106,6 +1480,76 @@ func (client *Client) GetMediaComprehensionJob(request *GetMediaComprehensionJob
 
 // Summary:
 //
+// Queries the details of a project.
+//
+// Description:
+//
+// Queries the basic information of a project and the project permissions of the current caller by ProjectId. The project information is located in the Project object of the response and does not include the project asset list.
+//
+// @param request - GetProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
+func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a project.
+//
+// Description:
+//
+// Queries the basic information of a project and the project permissions of the current caller by ProjectId. The project information is located in the Project object of the response and does not include the project asset list.
+//
+// @param request - GetProjectRequest
+//
+// @return GetProjectResponse
+func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetProjectResponse{}
+	_body, _err := client.GetProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a creative script generation task.
 //
 // @param request - GetRemakeScriptJobRequest
@@ -1168,7 +1612,81 @@ func (client *Client) GetRemakeScriptJob(request *GetRemakeScriptJobRequest) (_r
 
 // Summary:
 //
-// Queries a video creative generation job.
+// Queries a video character replacement task.
+//
+// Description:
+//
+// Queries the status and result of a single task by using the JobId returned by the submit operation. When Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
+//
+// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each item contains MediaId and OutputUrl.
+//
+// @param request - GetVideoCharacterReplaceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoCharacterReplaceJobResponse
+func (client *Client) GetVideoCharacterReplaceJobWithOptions(request *GetVideoCharacterReplaceJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoCharacterReplaceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoCharacterReplaceJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoCharacterReplaceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a video character replacement task.
+//
+// Description:
+//
+// Queries the status and result of a single task by using the JobId returned by the submit operation. When Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
+//
+// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each item contains MediaId and OutputUrl.
+//
+// @param request - GetVideoCharacterReplaceJobRequest
+//
+// @return GetVideoCharacterReplaceJobResponse
+func (client *Client) GetVideoCharacterReplaceJob(request *GetVideoCharacterReplaceJobRequest) (_result *GetVideoCharacterReplaceJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVideoCharacterReplaceJobResponse{}
+	_body, _err := client.GetVideoCharacterReplaceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries video creative generation jobs.
 //
 // @param request - GetVideoCreativeGenerationJobRequest
 //
@@ -1212,7 +1730,7 @@ func (client *Client) GetVideoCreativeGenerationJobWithOptions(request *GetVideo
 
 // Summary:
 //
-// Queries a video creative generation job.
+// Queries video creative generation jobs.
 //
 // @param request - GetVideoCreativeGenerationJobRequest
 //
@@ -1230,11 +1748,11 @@ func (client *Client) GetVideoCreativeGenerationJob(request *GetVideoCreativeGen
 
 // Summary:
 //
-// Queries the status, input parameters, and video result of a video text erasure task.
+// Queries the status, input parameters, and video results of a video text removal job.
 //
 // Description:
 //
-// Queries the status, input, parameters, and desired state result of a video text erasure task based on `JobId`.
+// Queries the status, input, parameters, and final results of a video text removal job based on the `JobId`.
 //
 // @param request - GetVideoDetextJobRequest
 //
@@ -1278,11 +1796,11 @@ func (client *Client) GetVideoDetextJobWithOptions(request *GetVideoDetextJobReq
 
 // Summary:
 //
-// Queries the status, input parameters, and video result of a video text erasure task.
+// Queries the status, input parameters, and video results of a video text removal job.
 //
 // Description:
 //
-// Queries the status, input, parameters, and desired state result of a video text erasure task based on `JobId`.
+// Queries the status, input, parameters, and final results of a video text removal job based on the `JobId`.
 //
 // @param request - GetVideoDetextJobRequest
 //
@@ -1300,7 +1818,7 @@ func (client *Client) GetVideoDetextJob(request *GetVideoDetextJobRequest) (_res
 
 // Summary:
 //
-// Queries a video generation task.
+// Queries a video generation job.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -1348,7 +1866,7 @@ func (client *Client) GetVideoGenerationJobWithOptions(request *GetVideoGenerati
 
 // Summary:
 //
-// Queries a video generation task.
+// Queries a video generation job.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -1357,6 +1875,76 @@ func (client *Client) GetVideoGenerationJob(request *GetVideoGenerationJobReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetVideoGenerationJobResponse{}
 	_body, _err := client.GetVideoGenerationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a content understanding and creative script generation task.
+//
+// Description:
+//
+// Queries the task status based on the JobId returned by SubmitVideoRemakeJob. Upon completion, returns the download URLs of the JSON files for the video content understanding results and the creative script. If the task fails, returns ErrorCode and ErrorMessage.
+//
+// @param request - GetVideoRemakeJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoRemakeJobResponse
+func (client *Client) GetVideoRemakeJobWithOptions(request *GetVideoRemakeJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoRemakeJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoRemakeJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoRemakeJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a content understanding and creative script generation task.
+//
+// Description:
+//
+// Queries the task status based on the JobId returned by SubmitVideoRemakeJob. Upon completion, returns the download URLs of the JSON files for the video content understanding results and the creative script. If the task fails, returns ErrorCode and ErrorMessage.
+//
+// @param request - GetVideoRemakeJobRequest
+//
+// @return GetVideoRemakeJobResponse
+func (client *Client) GetVideoRemakeJob(request *GetVideoRemakeJobRequest) (_result *GetVideoRemakeJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVideoRemakeJobResponse{}
+	_body, _err := client.GetVideoRemakeJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1432,7 +2020,7 @@ func (client *Client) GetVideoRenderJob(request *GetVideoRenderJobRequest) (_res
 //
 // Description:
 //
-// Queries the status, input, parameters, and final results of a video translation job by `JobId`.
+// Queries the status, input, parameters, and final results of a video translation job based on JobId.
 //
 // @param request - GetVideoTranslationJobRequest
 //
@@ -1480,7 +2068,7 @@ func (client *Client) GetVideoTranslationJobWithOptions(request *GetVideoTransla
 //
 // Description:
 //
-// Queries the status, input, parameters, and final results of a video translation job by `JobId`.
+// Queries the status, input, parameters, and final results of a video translation job based on JobId.
 //
 // @param request - GetVideoTranslationJobRequest
 //
@@ -1498,7 +2086,7 @@ func (client *Client) GetVideoTranslationJob(request *GetVideoTranslationJobRequ
 
 // Summary:
 //
-// Retrieves the membership plan and credit information for a Yike primary account.
+// Retrieves the membership plan and credit information of the Yike main account.
 //
 // @param request - GetYikeAccountCreditRequest
 //
@@ -1535,7 +2123,7 @@ func (client *Client) GetYikeAccountCreditWithOptions(request *GetYikeAccountCre
 
 // Summary:
 //
-// Retrieves the membership plan and credit information for a Yike primary account.
+// Retrieves the membership plan and credit information of the Yike main account.
 //
 // @param request - GetYikeAccountCreditRequest
 //
@@ -1553,7 +2141,7 @@ func (client *Client) GetYikeAccountCredit(request *GetYikeAccountCreditRequest)
 
 // Summary:
 //
-// Queries the actual credit consumption of a task.
+// Queries the actual credits consumed by a task.
 //
 // @param request - GetYikeJobCreditRequest
 //
@@ -1597,7 +2185,7 @@ func (client *Client) GetYikeJobCreditWithOptions(request *GetYikeJobCreditReque
 
 // Summary:
 //
-// Queries the actual credit consumption of a task.
+// Queries the actual credits consumed by a task.
 //
 // @param request - GetYikeJobCreditRequest
 //
@@ -1615,13 +2203,13 @@ func (client *Client) GetYikeJobCredit(request *GetYikeJobCreditRequest) (_resul
 
 // Summary:
 //
-// Imports a media asset.
+// Imports media assets.
 //
 // Description:
 //
 // ## Request description
 //
-// This API is used to query media content analysis jobs.
+// This API operation queries media content understanding jobs.
 //
 // @param request - ImportMediaRequest
 //
@@ -1680,6 +2268,10 @@ func (client *Client) ImportMediaWithOptions(request *ImportMediaRequest, runtim
 		query["Overwrite"] = request.Overwrite
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegisterConfig) {
 		query["RegisterConfig"] = request.RegisterConfig
 	}
@@ -1721,13 +2313,13 @@ func (client *Client) ImportMediaWithOptions(request *ImportMediaRequest, runtim
 
 // Summary:
 //
-// Imports a media asset.
+// Imports media assets.
 //
 // Description:
 //
 // ## Request description
 //
-// This API is used to query media content analysis jobs.
+// This API operation queries media content understanding jobs.
 //
 // @param request - ImportMediaRequest
 //
@@ -1745,7 +2337,7 @@ func (client *Client) ImportMedia(request *ImportMediaRequest) (_result *ImportM
 
 // Summary:
 //
-// Retrieves a paged list of categories.
+// Retrieves a paginated list of categories.
 //
 // @param request - ListAssetCategoriesRequest
 //
@@ -1793,7 +2385,7 @@ func (client *Client) ListAssetCategoriesWithOptions(request *ListAssetCategorie
 
 // Summary:
 //
-// Retrieves a paged list of categories.
+// Retrieves a paginated list of categories.
 //
 // @param request - ListAssetCategoriesRequest
 //
@@ -1817,7 +2409,7 @@ func (client *Client) ListAssetCategories(request *ListAssetCategoriesRequest) (
 //
 // ## Request description
 //
-// This API operation queries media asset content understanding jobs.
+// This operation queries media asset content understanding jobs.
 //
 // @param request - ListInfiniteCanvasesRequest
 //
@@ -1891,7 +2483,7 @@ func (client *Client) ListInfiniteCanvasesWithOptions(request *ListInfiniteCanva
 //
 // ## Request description
 //
-// This API operation queries media asset content understanding jobs.
+// This operation queries media asset content understanding jobs.
 //
 // @param request - ListInfiniteCanvasesRequest
 //
@@ -1909,7 +2501,241 @@ func (client *Client) ListInfiniteCanvases(request *ListInfiniteCanvasesRequest)
 
 // Summary:
 //
-// Queries media assets that match the specified parameters.
+// Queries the list of projects.
+//
+// Description:
+//
+// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace.
+//
+// For pagination, specify both PageNo and PageSize with valid positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response returns ProjectList but does not return TotalCount. MaxResults and NextToken are retained for compatibility and are not used for current pagination.
+//
+// @param request - ListProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjects"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of projects.
+//
+// Description:
+//
+// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace.
+//
+// For pagination, specify both PageNo and PageSize with valid positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response returns ProjectList but does not return TotalCount. MaxResults and NextToken are retained for compatibility and are not used for current pagination.
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of workspaces.
+//
+// Description:
+//
+// Queries a list of workspaces accessible to the current caller. Pagination is supported by using PageNo and PageSize. The default value of PageNo is 1, and the default value of PageSize is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
+//
+// @param request - ListWorkspacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspacesResponse
+func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaces"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of workspaces.
+//
+// Description:
+//
+// Queries a list of workspaces accessible to the current caller. Pagination is supported by using PageNo and PageSize. The default value of PageNo is 1, and the default value of PageSize is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
+//
+// @param request - ListWorkspacesRequest
+//
+// @return ListWorkspacesResponse
+func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.ListWorkspacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Pre-validates a video character replacement task.
+//
+// Description:
+//
+// Validates the input materials of a specified application before submitting a task. AppParams is a JSON-serialized string. The field names must be consistent with the input definition of the application corresponding to AppId. Image, audio, and video materials must match the input types and be accessible.
+//
+// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter Key and ErrorCode for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
+//
+// @param request - PrecheckVideoCharacterReplaceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PrecheckVideoCharacterReplaceJobResponse
+func (client *Client) PrecheckVideoCharacterReplaceJobWithOptions(request *PrecheckVideoCharacterReplaceJobRequest, runtime *dara.RuntimeOptions) (_result *PrecheckVideoCharacterReplaceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		query["AppParams"] = request.AppParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PrecheckVideoCharacterReplaceJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PrecheckVideoCharacterReplaceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Pre-validates a video character replacement task.
+//
+// Description:
+//
+// Validates the input materials of a specified application before submitting a task. AppParams is a JSON-serialized string. The field names must be consistent with the input definition of the application corresponding to AppId. Image, audio, and video materials must match the input types and be accessible.
+//
+// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter Key and ErrorCode for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
+//
+// @param request - PrecheckVideoCharacterReplaceJobRequest
+//
+// @return PrecheckVideoCharacterReplaceJobResponse
+func (client *Client) PrecheckVideoCharacterReplaceJob(request *PrecheckVideoCharacterReplaceJobRequest) (_result *PrecheckVideoCharacterReplaceJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PrecheckVideoCharacterReplaceJobResponse{}
+	_body, _err := client.PrecheckVideoCharacterReplaceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves media asset information that matches the specified parameters.
 //
 // @param request - SearchMediaRequest
 //
@@ -1942,6 +2768,10 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.ScrollToken) {
@@ -1977,7 +2807,7 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 
 // Summary:
 //
-// Queries media assets that match the specified parameters.
+// Retrieves media asset information that matches the specified parameters.
 //
 // @param request - SearchMediaRequest
 //
@@ -1995,7 +2825,7 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 
 // Summary:
 //
-// Submits an agent asynchronous node.
+// Submits an asynchronous task for an agent node.
 //
 // @param request - SubmitAgentJobRequest
 //
@@ -2059,7 +2889,7 @@ func (client *Client) SubmitAgentJobWithOptions(request *SubmitAgentJobRequest, 
 
 // Summary:
 //
-// Submits an agent asynchronous node.
+// Submits an asynchronous task for an agent node.
 //
 // @param request - SubmitAgentJobRequest
 //
@@ -2077,7 +2907,7 @@ func (client *Client) SubmitAgentJob(request *SubmitAgentJobRequest) (_result *S
 
 // Summary:
 //
-// Submits an image generation request.
+// Submits an image generation task.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -2157,7 +2987,7 @@ func (client *Client) SubmitImageGenerationJobWithOptions(request *SubmitImageGe
 
 // Summary:
 //
-// Submits an image generation request.
+// Submits an image generation task.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -2265,7 +3095,7 @@ func (client *Client) SubmitMediaComprehensionJob(request *SubmitMediaComprehens
 //
 // Description:
 //
-// This operation generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in callbacks.
+// This API generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in the callback.
 //
 // @param request - SubmitRemakeScriptJobRequest
 //
@@ -2321,7 +3151,7 @@ func (client *Client) SubmitRemakeScriptJobWithOptions(request *SubmitRemakeScri
 //
 // Description:
 //
-// This operation generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in callbacks.
+// This API generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in the callback.
 //
 // @param request - SubmitRemakeScriptJobRequest
 //
@@ -2330,6 +3160,92 @@ func (client *Client) SubmitRemakeScriptJob(request *SubmitRemakeScriptJobReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitRemakeScriptJobResponse{}
 	_body, _err := client.SubmitRemakeScriptJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video character replacement task.
+//
+// Description:
+//
+// Submits a video character replacement node via asynchronous commit. Invoke PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to validate the input assets first.
+//
+// The returned JobId only indicates that the node is submitted, not completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId specifies the project, and FolderId specifies the file folder.
+//
+// @param request - SubmitVideoCharacterReplaceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoCharacterReplaceJobResponse
+func (client *Client) SubmitVideoCharacterReplaceJobWithOptions(request *SubmitVideoCharacterReplaceJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoCharacterReplaceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		body["AppParams"] = request.AppParams
+	}
+
+	if !dara.IsNil(request.FolderId) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoCharacterReplaceJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoCharacterReplaceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video character replacement task.
+//
+// Description:
+//
+// Submits a video character replacement node via asynchronous commit. Invoke PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to validate the input assets first.
+//
+// The returned JobId only indicates that the node is submitted, not completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId specifies the project, and FolderId specifies the file folder.
+//
+// @param request - SubmitVideoCharacterReplaceJobRequest
+//
+// @return SubmitVideoCharacterReplaceJobResponse
+func (client *Client) SubmitVideoCharacterReplaceJob(request *SubmitVideoCharacterReplaceJobRequest) (_result *SubmitVideoCharacterReplaceJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitVideoCharacterReplaceJobResponse{}
+	_body, _err := client.SubmitVideoCharacterReplaceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2433,11 +3349,11 @@ func (client *Client) SubmitVideoCreativeGenerationJob(request *SubmitVideoCreat
 
 // Summary:
 //
-// Submits an asynchronous video text removal job. Supports full-frame removal, time range–based removal, and region-based removal.
+// Submits an asynchronous video text erasure task that supports full-area erasure, time ranges, and specified regions.
 //
 // Description:
 //
-// Submits an asynchronous video text removal job. The input can be an accessible video URL or a Yike media asset ID. You can configure the removal time range and text regions.
+// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a Yike video media asset ID. You can configure the erasure time range and text region.
 //
 // @param request - SubmitVideoDetextJobRequest
 //
@@ -2497,11 +3413,11 @@ func (client *Client) SubmitVideoDetextJobWithOptions(request *SubmitVideoDetext
 
 // Summary:
 //
-// Submits an asynchronous video text removal job. Supports full-frame removal, time range–based removal, and region-based removal.
+// Submits an asynchronous video text erasure task that supports full-area erasure, time ranges, and specified regions.
 //
 // Description:
 //
-// Submits an asynchronous video text removal job. The input can be an accessible video URL or a Yike media asset ID. You can configure the removal time range and text regions.
+// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a Yike video media asset ID. You can configure the erasure time range and text region.
 //
 // @param request - SubmitVideoDetextJobRequest
 //
@@ -2625,6 +3541,84 @@ func (client *Client) SubmitVideoGenerationJob(request *SubmitVideoGenerationJob
 
 // Summary:
 //
+// Submits a content understanding and creative script generation task.
+//
+// Description:
+//
+// Submits the original video and remake information such as new products and characters to asynchronously complete video content understanding and creative script generation. Uses the returned JobId to call GetVideoRemakeJob to query the progress and outputs. Video rendering requires a separate call to SubmitVideoRenderJob.
+//
+// @param request - SubmitVideoRemakeJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoRemakeJobResponse
+func (client *Client) SubmitVideoRemakeJobWithOptions(request *SubmitVideoRemakeJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoRemakeJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.RemakeParams) {
+		query["RemakeParams"] = request.RemakeParams
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoRemakeJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoRemakeJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a content understanding and creative script generation task.
+//
+// Description:
+//
+// Submits the original video and remake information such as new products and characters to asynchronously complete video content understanding and creative script generation. Uses the returned JobId to call GetVideoRemakeJob to query the progress and outputs. Video rendering requires a separate call to SubmitVideoRenderJob.
+//
+// @param request - SubmitVideoRemakeJobRequest
+//
+// @return SubmitVideoRemakeJobResponse
+func (client *Client) SubmitVideoRemakeJob(request *SubmitVideoRemakeJobRequest) (_result *SubmitVideoRemakeJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitVideoRemakeJobResponse{}
+	_body, _err := client.SubmitVideoRemakeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a video rendering and compositing task.
 //
 // @param request - SubmitVideoRenderJobRequest
@@ -2695,11 +3689,11 @@ func (client *Client) SubmitVideoRenderJob(request *SubmitVideoRenderJobRequest)
 
 // Summary:
 //
-// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle erasure, and on-screen text translation.
+// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle removal, and on-screen text translation.
 //
 // Description:
 //
-// Submits an asynchronous video translation task. The input supports media URLs or Yike media asset IDs. The task parameters are used to select the source language, target language, and the translation capabilities to enable.
+// Submits an asynchronous video translation task. The input supports a media URL or a Yike media asset ID. The task parameters are used to select the source language, target language, and the translation capabilities to be enabled.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -2771,11 +3765,11 @@ func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoT
 
 // Summary:
 //
-// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle erasure, and on-screen text translation.
+// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle removal, and on-screen text translation.
 //
 // Description:
 //
-// Submits an asynchronous video translation task. The input supports media URLs or Yike media asset IDs. The task parameters are used to select the source language, target language, and the translation capabilities to enable.
+// Submits an asynchronous video translation task. The input supports a media URL or a Yike media asset ID. The task parameters are used to select the source language, target language, and the translation capabilities to be enabled.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -2797,7 +3791,7 @@ func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJ
 //
 // Description:
 //
-// After creating a media asset category, you can call this operation to locate and update the name of the category by category ID.
+// After you create a media asset category, you can call this operation to update the name of the category by specifying its ID.
 //
 // @param request - UpdateAssetCategoryRequest
 //
@@ -2849,7 +3843,7 @@ func (client *Client) UpdateAssetCategoryWithOptions(request *UpdateAssetCategor
 //
 // Description:
 //
-// After creating a media asset category, you can call this operation to locate and update the name of the category by category ID.
+// After you create a media asset category, you can call this operation to update the name of the category by specifying its ID.
 //
 // @param request - UpdateAssetCategoryRequest
 //
@@ -2871,9 +3865,9 @@ func (client *Client) UpdateAssetCategory(request *UpdateAssetCategoryRequest) (
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - UpdateInfiniteCanvasRequest
 //
@@ -2929,9 +3923,9 @@ func (client *Client) UpdateInfiniteCanvasWithOptions(request *UpdateInfiniteCan
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - UpdateInfiniteCanvasRequest
 //
@@ -2953,9 +3947,9 @@ func (client *Client) UpdateInfiniteCanvas(request *UpdateInfiniteCanvasRequest)
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - UpdateMediaRequest
 //
@@ -3043,9 +4037,9 @@ func (client *Client) UpdateMediaWithOptions(request *UpdateMediaRequest, runtim
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - UpdateMediaRequest
 //
@@ -3054,6 +4048,80 @@ func (client *Client) UpdateMedia(request *UpdateMediaRequest) (_result *UpdateM
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateMediaResponse{}
 	_body, _err := client.UpdateMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name of a project.
+//
+// Description:
+//
+// Updates the name of a project specified by ProjectId. Use Title to specify the new name. This operation only supports modifying the project name. You cannot modify the description or cover image. The caller must have edit permissions for the project.
+//
+// @param request - UpdateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name of a project.
+//
+// Description:
+//
+// Updates the name of a project specified by ProjectId. Use Title to specify the new name. This operation only supports modifying the project name. You cannot modify the description or cover image. The caller must have edit permissions for the project.
+//
+// @param request - UpdateProjectRequest
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.UpdateProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

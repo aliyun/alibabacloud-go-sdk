@@ -18,7 +18,7 @@ type iSubmitVideoRenderJobResponseBody interface {
 }
 
 type SubmitVideoRenderJobResponseBody struct {
-	// The error code. This parameter is returned when the task is in the Failed state.
+	// The error code. This parameter is returned when the job is in the Failed state.
 	//
 	// example:
 	//

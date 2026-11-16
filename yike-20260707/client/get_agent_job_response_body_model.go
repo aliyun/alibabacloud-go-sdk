@@ -16,7 +16,7 @@ type iGetAgentJobResponseBody interface {
 }
 
 type GetAgentJobResponseBody struct {
-	// The task information.
+	// The job information.
 	Job *GetAgentJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,29 +62,19 @@ func (s *GetAgentJobResponseBody) Validate() error {
 }
 
 type GetAgentJobResponseBodyJob struct {
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// bc30a1080b21434f961a0d9a391b30b9
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task output JSON string. Different tasks return different structures, which are defined by the business side.
+	// The output JSON string of the job. The returned structure varies by job and is defined by the service provider.
 	//
 	// example:
 	//
 	// {\\"OssUri\\":\\"oss://ice-ai-saas/ice-ai-saas-prd/1123668546389636/210606863/generate/ag_3a506706a33f44008aec6274d2e38d58/\\"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The task status. Valid values:
-	//
-	// - Created
-	//
-	// - Queuing
-	//
-	// - Executing
-	//
-	// - Finished
-	//
-	// - Failed
+	// The job status. Valid values: Created, Queuing, Executing, Finished, and Failed.
 	//
 	// example:
 	//

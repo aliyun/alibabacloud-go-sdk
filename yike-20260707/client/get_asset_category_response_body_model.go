@@ -115,17 +115,17 @@ type GetAssetCategoryResponseBodyCategory struct {
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The category level. Valid values:
 	//
-	// - **0**: level-1 category.
+	// - **0**: Level-1 category.
 	//
-	// - **1**: level-2 category.
+	// - **1**: Level-2 category.
 	//
-	// - **2**: level-3 category.
+	// - **2**: Level-3 category.
 	//
 	// example:
 	//
 	// 1
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The parent category ID.
+	// The ID of the parent category.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type GetAssetCategoryResponseBodySubCategories struct {
 	//
 	// 2
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The parent category ID.
+	// The ID of the parent category.
 	//
 	// example:
 	//

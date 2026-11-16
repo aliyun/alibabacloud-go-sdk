@@ -16,7 +16,7 @@ type iGetImageGenerationJobResponseBody interface {
 }
 
 type GetImageGenerationJobResponseBody struct {
-	// The image generation task.
+	// The image generation job.
 	ImageGenerationJob *GetImageGenerationJobResponseBodyImageGenerationJob `json:"ImageGenerationJob,omitempty" xml:"ImageGenerationJob,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,37 +62,37 @@ func (s *GetImageGenerationJobResponseBody) Validate() error {
 }
 
 type GetImageGenerationJobResponseBodyImageGenerationJob struct {
-	// The video aspect ratio.
+	// The aspect ratio of the video.
 	//
 	// example:
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The error message. This parameter is returned only when the task is in the Failed state.
+	// The error message. The value is a string. This field is returned when the job status is Failed.
 	//
 	// example:
 	//
 	// Input file not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The task input.
+	// The job input.
 	//
 	// example:
 	//
-	// {"Prompt":"Image 1 is on a basketball court, using Image 2 to perform a slam dunk"}
+	// {"Prompt":"Image 1 is on the basketball court, performing a slam dunk using Image 2"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// ag_68ca759b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task feature configuration. No configuration is required at this time.
+	// The job feature configurations. No configuration is required at this time.
 	//
 	// example:
 	//
 	// {}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The task type.
+	// The job type.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 1
 	N *string `json:"N,omitempty" xml:"N,omitempty"`
-	// The generation result in JSON string format. Fields:
+	// The generation result. The value is a JSON string that contains the following fields:
 	//
-	// - Medias: a list of media information (Media objects). Fields of a Media object:
+	// - Medias: the list of media information (Media objects). A Media object contains the following fields:
 	//
 	//   - MediaId: String. The media asset ID.
 	//
-	//   - OutputUrl: String. The media URL (with authentication string).
+	//   - OutputUrl: String. The media URL, including the authentication string.
 	//
 	// example:
 	//
@@ -128,23 +128,23 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 1K
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The scene type. Currently only `general` is supported.
+	// The scene type. Currently, only `general` is supported.
 	//
 	// example:
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The task status. Valid values:
+	// The job status. Valid values:
 	//
-	// - Created: The task is created.
+	// - Created: The job is created.
 	//
-	// - Queuing: The task is queuing.
+	// - Queuing: The job is queuing.
 	//
-	// - Executing: The task is being executed.
+	// - Executing: The job is executing.
 	//
-	// - Finished: The task is completed.
+	// - Finished: The job succeeded.
 	//
-	// - Failed: The task failed.
+	// - Failed: The job failed.
 	//
 	// example:
 	//

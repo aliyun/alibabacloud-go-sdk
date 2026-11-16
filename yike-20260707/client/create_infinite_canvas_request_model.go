@@ -13,6 +13,8 @@ type iCreateInfiniteCanvasRequest interface {
 	GetCoverUrl() *string
 	SetProductionId(v string) *CreateInfiniteCanvasRequest
 	GetProductionId() *string
+	SetProjectId(v string) *CreateInfiniteCanvasRequest
+	GetProjectId() *string
 	SetTitle(v string) *CreateInfiniteCanvasRequest
 	GetTitle() *string
 	SetWorkspaceId(v string) *CreateInfiniteCanvasRequest
@@ -26,12 +28,18 @@ type CreateInfiniteCanvasRequest struct {
 	//
 	// https://tagvvcloud-material-center-prod.oss-cn-hangzhou.aliyuncs.com/sumvideo/utils_image/sumvideo-video-cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The project ID.
+	// The project ID. **[Deprecated]*	- Use ProjectId instead.
 	//
 	// example:
 	//
 	// pd_061716****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The project ID. This field takes precedence.
+	//
+	// example:
+	//
+	// pd_061716****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The project title.
 	//
 	// This parameter is required.
@@ -64,6 +72,10 @@ func (s *CreateInfiniteCanvasRequest) GetProductionId() *string {
 	return s.ProductionId
 }
 
+func (s *CreateInfiniteCanvasRequest) GetProjectId() *string {
+	return s.ProjectId
+}
+
 func (s *CreateInfiniteCanvasRequest) GetTitle() *string {
 	return s.Title
 }
@@ -79,6 +91,11 @@ func (s *CreateInfiniteCanvasRequest) SetCoverUrl(v string) *CreateInfiniteCanva
 
 func (s *CreateInfiniteCanvasRequest) SetProductionId(v string) *CreateInfiniteCanvasRequest {
 	s.ProductionId = &v
+	return s
+}
+
+func (s *CreateInfiniteCanvasRequest) SetProjectId(v string) *CreateInfiniteCanvasRequest {
+	s.ProjectId = &v
 	return s
 }
 

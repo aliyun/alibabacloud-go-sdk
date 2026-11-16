@@ -9,11 +9,65 @@ import (
 
 // Summary:
 //
-// Retrieves information about multiple media assets in a batch.
+// Adds members to a project.
 //
 // Description:
 //
-// ## Request description.
+// Adds users under the same Alibaba Cloud account to a specified project in the default workspace of the Alibaba Cloud account, and grants the Edit permission by default. ProjectId specifies the project ID. YikeUserIds specifies a comma-separated list of Yike user IDs, which are not Alibaba Cloud UIDs. Currently, only the default workspace of the Alibaba Cloud account is supported, and projects in newly created workspaces are not supported. This operation follows the behavior of the original member API operation: adding an existing member resets the project permissions. Regular members are assigned the Edit permission, and SuperAdmins of the default workspace retain the Manage permission. Only Alibaba Cloud accounts that have activated ProductionOpenAPI are supported. Default Alibaba Cloud account projects (pd_Alibaba Cloud account ID) are not supported.
+//
+// @param request - AddProjectMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddProjectMembersResponse
+func (client *Client) AddProjectMembersWithContext(ctx context.Context, request *AddProjectMembersRequest, runtime *dara.RuntimeOptions) (_result *AddProjectMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.YikeUserIds) {
+		query["YikeUserIds"] = request.YikeUserIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddProjectMembers"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddProjectMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the information of multiple media assets.
+//
+// Description:
+//
+// ## Request description
+//
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - BatchGetMediasRequest
 //
@@ -69,7 +123,55 @@ func (client *Client) BatchGetMediasWithContext(ctx context.Context, request *Ba
 
 // Summary:
 //
-// Cancels an AI generation task.
+// Queries video character replacement jobs in batches.
+//
+// Description:
+//
+// Queries the status and results of video character replacement jobs in batches. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from Result.
+//
+// @param request - BatchGetVideoCharacterReplaceJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetVideoCharacterReplaceJobsResponse
+func (client *Client) BatchGetVideoCharacterReplaceJobsWithContext(ctx context.Context, request *BatchGetVideoCharacterReplaceJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchGetVideoCharacterReplaceJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobIds) {
+		query["JobIds"] = request.JobIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchGetVideoCharacterReplaceJobs"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchGetVideoCharacterReplaceJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels a generation task.
 //
 // @param request - CancelGenerationJobRequest
 //
@@ -117,7 +219,7 @@ func (client *Client) CancelGenerationJobWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Categories support up to three levels, and each level supports up to 100 subcategories.
+// Categories support up to three levels of hierarchy, and each level supports up to 100 subcategories.
 //
 // @param request - CreateAssetCategoryRequest
 //
@@ -169,9 +271,9 @@ func (client *Client) CreateAssetCategoryWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - CreateInfiniteCanvasRequest
 //
@@ -192,6 +294,10 @@ func (client *Client) CreateInfiniteCanvasWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.ProductionId) {
 		query["ProductionId"] = request.ProductionId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.Title) {
@@ -227,11 +333,115 @@ func (client *Client) CreateInfiniteCanvasWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Creates a project.
+//
+// Description:
+//
+// Creates a project in a specified workspace and returns the ProjectId. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
+//
+// @param request - CreateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a studio.
+//
+// Description:
+//
+// Creates a studio and triggers automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can directly use the ProjectId without creating the default project again.
+//
+// @param request - CreateWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResponse
+func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *CreateWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UserCountLimit) {
+		query["UserCountLimit"] = request.UserCountLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspace"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a media asset category.
 //
 // Description:
 //
-// This operation also deletes all subcategories (including second-level and third-level categories). Proceed with caution.
+// This operation also deletes its subcategories, including level-2 and level-3 subcategories. Proceed with caution.
 //
 // @param request - DeleteAssetCategoryRequest
 //
@@ -279,9 +489,9 @@ func (client *Client) DeleteAssetCategoryWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - DeleteInfiniteCanvasRequest
 //
@@ -381,11 +591,61 @@ func (client *Client) DeleteMediasWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Retrieves a login token for an enterprise account.
+// Deletes a project.
 //
 // Description:
 //
-//	Notice:  The AI generation-related API operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 API version.</notice>
+// Deletes a project by ProjectId. The caller must have project management permissions.
+//
+// Default projects cannot be deleted. If you attempt to delete a default project, DefaultProductionNotSupported is returned. This operation marks the project as deleted and does not physically delete all assets in the project.
+//
+// @param request - DeleteProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the logon token for an enterprise account.
+//
+// Description:
+//
+//	Notice:  The AI generation-related API operations in the current 2026-03-19 API version will be retired soon. Upgrade to the 2026-07-07 API version.
 //
 // @param request - GenerateYikeLoginTokenRequest
 //
@@ -457,7 +717,7 @@ func (client *Client) GenerateYikeLoginTokenWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries an agent asynchronous task.
+// Queries an asynchronous task of the agent node.
 //
 // @param request - GetAgentJobRequest
 //
@@ -501,7 +761,7 @@ func (client *Client) GetAgentJobWithContext(ctx context.Context, request *GetAg
 
 // Summary:
 //
-// Retrieves the information of a specified category and the list of its subcategories (immediate child categories).
+// Retrieves the details of a specified category and a list of its subcategories.
 //
 // @param request - GetAssetCategoryRequest
 //
@@ -593,9 +853,9 @@ func (client *Client) GetImageGenerationJobWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API is used to query a media asset content understanding job.
+// This API queries media asset content understanding jobs.
 //
 // @param request - GetInfiniteCanvasRequest
 //
@@ -639,13 +899,13 @@ func (client *Client) GetInfiniteCanvasWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a media asset.
+// Queries media assets.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query a media content analysis job.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - GetMediaRequest
 //
@@ -751,6 +1011,54 @@ func (client *Client) GetMediaComprehensionJobWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Queries the details of a project.
+//
+// Description:
+//
+// Queries the basic information of a project and the project permissions of the current caller by ProjectId. The project information is located in the Project object of the response and does not include the project asset list.
+//
+// @param request - GetProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
+func (client *Client) GetProjectWithContext(ctx context.Context, request *GetProjectRequest, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a creative script generation task.
 //
 // @param request - GetRemakeScriptJobRequest
@@ -795,7 +1103,57 @@ func (client *Client) GetRemakeScriptJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a video creative generation job.
+// Queries a video character replacement task.
+//
+// Description:
+//
+// Queries the status and result of a single task by using the JobId returned by the submit operation. When Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
+//
+// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each item contains MediaId and OutputUrl.
+//
+// @param request - GetVideoCharacterReplaceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoCharacterReplaceJobResponse
+func (client *Client) GetVideoCharacterReplaceJobWithContext(ctx context.Context, request *GetVideoCharacterReplaceJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoCharacterReplaceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoCharacterReplaceJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoCharacterReplaceJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries video creative generation jobs.
 //
 // @param request - GetVideoCreativeGenerationJobRequest
 //
@@ -839,11 +1197,11 @@ func (client *Client) GetVideoCreativeGenerationJobWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the status, input parameters, and video result of a video text erasure task.
+// Queries the status, input parameters, and video results of a video text removal job.
 //
 // Description:
 //
-// Queries the status, input, parameters, and desired state result of a video text erasure task based on `JobId`.
+// Queries the status, input, parameters, and final results of a video text removal job based on the `JobId`.
 //
 // @param request - GetVideoDetextJobRequest
 //
@@ -887,7 +1245,7 @@ func (client *Client) GetVideoDetextJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a video generation task.
+// Queries a video generation job.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -925,6 +1283,54 @@ func (client *Client) GetVideoGenerationJobWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVideoGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a content understanding and creative script generation task.
+//
+// Description:
+//
+// Queries the task status based on the JobId returned by SubmitVideoRemakeJob. Upon completion, returns the download URLs of the JSON files for the video content understanding results and the creative script. If the task fails, returns ErrorCode and ErrorMessage.
+//
+// @param request - GetVideoRemakeJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoRemakeJobResponse
+func (client *Client) GetVideoRemakeJobWithContext(ctx context.Context, request *GetVideoRemakeJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoRemakeJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoRemakeJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoRemakeJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -983,7 +1389,7 @@ func (client *Client) GetVideoRenderJobWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// Queries the status, input, parameters, and final results of a video translation job by `JobId`.
+// Queries the status, input, parameters, and final results of a video translation job based on JobId.
 //
 // @param request - GetVideoTranslationJobRequest
 //
@@ -1027,7 +1433,7 @@ func (client *Client) GetVideoTranslationJobWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves the membership plan and credit information for a Yike primary account.
+// Retrieves the membership plan and credit information of the Yike main account.
 //
 // @param request - GetYikeAccountCreditRequest
 //
@@ -1064,7 +1470,7 @@ func (client *Client) GetYikeAccountCreditWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the actual credit consumption of a task.
+// Queries the actual credits consumed by a task.
 //
 // @param request - GetYikeJobCreditRequest
 //
@@ -1108,13 +1514,13 @@ func (client *Client) GetYikeJobCreditWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Imports a media asset.
+// Imports media assets.
 //
 // Description:
 //
 // ## Request description
 //
-// This API is used to query media content analysis jobs.
+// This API operation queries media content understanding jobs.
 //
 // @param request - ImportMediaRequest
 //
@@ -1173,6 +1579,10 @@ func (client *Client) ImportMediaWithContext(ctx context.Context, request *Impor
 		query["Overwrite"] = request.Overwrite
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegisterConfig) {
 		query["RegisterConfig"] = request.RegisterConfig
 	}
@@ -1214,7 +1624,7 @@ func (client *Client) ImportMediaWithContext(ctx context.Context, request *Impor
 
 // Summary:
 //
-// Retrieves a paged list of categories.
+// Retrieves a paginated list of categories.
 //
 // @param request - ListAssetCategoriesRequest
 //
@@ -1268,7 +1678,7 @@ func (client *Client) ListAssetCategoriesWithContext(ctx context.Context, reques
 //
 // ## Request description
 //
-// This API operation queries media asset content understanding jobs.
+// This operation queries media asset content understanding jobs.
 //
 // @param request - ListInfiniteCanvasesRequest
 //
@@ -1336,7 +1746,171 @@ func (client *Client) ListInfiniteCanvasesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries media assets that match the specified parameters.
+// Queries the list of projects.
+//
+// Description:
+//
+// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace.
+//
+// For pagination, specify both PageNo and PageSize with valid positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response returns ProjectList but does not return TotalCount. MaxResults and NextToken are retained for compatibility and are not used for current pagination.
+//
+// @param request - ListProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
+func (client *Client) ListProjectsWithContext(ctx context.Context, request *ListProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjects"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of workspaces.
+//
+// Description:
+//
+// Queries a list of workspaces accessible to the current caller. Pagination is supported by using PageNo and PageSize. The default value of PageNo is 1, and the default value of PageSize is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
+//
+// @param request - ListWorkspacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspacesResponse
+func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWorkspacesRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaces"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Pre-validates a video character replacement task.
+//
+// Description:
+//
+// Validates the input materials of a specified application before submitting a task. AppParams is a JSON-serialized string. The field names must be consistent with the input definition of the application corresponding to AppId. Image, audio, and video materials must match the input types and be accessible.
+//
+// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter Key and ErrorCode for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
+//
+// @param request - PrecheckVideoCharacterReplaceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PrecheckVideoCharacterReplaceJobResponse
+func (client *Client) PrecheckVideoCharacterReplaceJobWithContext(ctx context.Context, request *PrecheckVideoCharacterReplaceJobRequest, runtime *dara.RuntimeOptions) (_result *PrecheckVideoCharacterReplaceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		query["AppParams"] = request.AppParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PrecheckVideoCharacterReplaceJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PrecheckVideoCharacterReplaceJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves media asset information that matches the specified parameters.
 //
 // @param request - SearchMediaRequest
 //
@@ -1369,6 +1943,10 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	if !dara.IsNil(request.ScrollToken) {
@@ -1404,7 +1982,7 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 
 // Summary:
 //
-// Submits an agent asynchronous node.
+// Submits an asynchronous task for an agent node.
 //
 // @param request - SubmitAgentJobRequest
 //
@@ -1468,7 +2046,7 @@ func (client *Client) SubmitAgentJobWithContext(ctx context.Context, request *Su
 
 // Summary:
 //
-// Submits an image generation request.
+// Submits an image generation task.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -1614,7 +2192,7 @@ func (client *Client) SubmitMediaComprehensionJobWithContext(ctx context.Context
 //
 // Description:
 //
-// This operation generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in callbacks.
+// This API generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in the callback.
 //
 // @param request - SubmitRemakeScriptJobRequest
 //
@@ -1656,6 +2234,68 @@ func (client *Client) SubmitRemakeScriptJobWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitRemakeScriptJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video character replacement task.
+//
+// Description:
+//
+// Submits a video character replacement node via asynchronous commit. Invoke PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to validate the input assets first.
+//
+// The returned JobId only indicates that the node is submitted, not completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId specifies the project, and FolderId specifies the file folder.
+//
+// @param request - SubmitVideoCharacterReplaceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoCharacterReplaceJobResponse
+func (client *Client) SubmitVideoCharacterReplaceJobWithContext(ctx context.Context, request *SubmitVideoCharacterReplaceJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoCharacterReplaceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		body["AppParams"] = request.AppParams
+	}
+
+	if !dara.IsNil(request.FolderId) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoCharacterReplaceJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoCharacterReplaceJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1742,11 +2382,11 @@ func (client *Client) SubmitVideoCreativeGenerationJobWithContext(ctx context.Co
 
 // Summary:
 //
-// Submits an asynchronous video text removal job. Supports full-frame removal, time range–based removal, and region-based removal.
+// Submits an asynchronous video text erasure task that supports full-area erasure, time ranges, and specified regions.
 //
 // Description:
 //
-// Submits an asynchronous video text removal job. The input can be an accessible video URL or a Yike media asset ID. You can configure the removal time range and text regions.
+// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a Yike video media asset ID. You can configure the erasure time range and text region.
 //
 // @param request - SubmitVideoDetextJobRequest
 //
@@ -1894,6 +2534,62 @@ func (client *Client) SubmitVideoGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Submits a content understanding and creative script generation task.
+//
+// Description:
+//
+// Submits the original video and remake information such as new products and characters to asynchronously complete video content understanding and creative script generation. Uses the returned JobId to call GetVideoRemakeJob to query the progress and outputs. Video rendering requires a separate call to SubmitVideoRenderJob.
+//
+// @param request - SubmitVideoRemakeJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoRemakeJobResponse
+func (client *Client) SubmitVideoRemakeJobWithContext(ctx context.Context, request *SubmitVideoRemakeJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoRemakeJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.RemakeParams) {
+		query["RemakeParams"] = request.RemakeParams
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoRemakeJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoRemakeJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a video rendering and compositing task.
 //
 // @param request - SubmitVideoRenderJobRequest
@@ -1946,11 +2642,11 @@ func (client *Client) SubmitVideoRenderJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle erasure, and on-screen text translation.
+// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle removal, and on-screen text translation.
 //
 // Description:
 //
-// Submits an asynchronous video translation task. The input supports media URLs or Yike media asset IDs. The task parameters are used to select the source language, target language, and the translation capabilities to enable.
+// Submits an asynchronous video translation task. The input supports a media URL or a Yike media asset ID. The task parameters are used to select the source language, target language, and the translation capabilities to be enabled.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -2026,7 +2722,7 @@ func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, 
 //
 // Description:
 //
-// After creating a media asset category, you can call this operation to locate and update the name of the category by category ID.
+// After you create a media asset category, you can call this operation to update the name of the category by specifying its ID.
 //
 // @param request - UpdateAssetCategoryRequest
 //
@@ -2078,9 +2774,9 @@ func (client *Client) UpdateAssetCategoryWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media asset content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - UpdateInfiniteCanvasRequest
 //
@@ -2136,9 +2832,9 @@ func (client *Client) UpdateInfiniteCanvasWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation is used to query media content understanding jobs.
+// This API queries media asset content understanding jobs.
 //
 // @param request - UpdateMediaRequest
 //
@@ -2212,6 +2908,58 @@ func (client *Client) UpdateMediaWithContext(ctx context.Context, request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMediaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name of a project.
+//
+// Description:
+//
+// Updates the name of a project specified by ProjectId. Use Title to specify the new name. This operation only supports modifying the project name. You cannot modify the description or cover image. The caller must have edit permissions for the project.
+//
+// @param request - UpdateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProjectWithContext(ctx context.Context, request *UpdateProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateProject"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateProjectResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

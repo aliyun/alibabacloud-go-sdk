@@ -62,19 +62,19 @@ func (s *GetVideoRenderJobResponseBody) Validate() error {
 }
 
 type GetVideoRenderJobResponseBodyJob struct {
-	// The ID of the online editing project, which can be used for secondary editing of the produced video.
+	// The ID of the online editing project, which can be used for secondary editing of the final video.
 	//
 	// example:
 	//
 	// 8239345231244512***
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
-	// The error code. This parameter is returned when the job is in the Failed state.
+	// The error code, returned when the task status is Failed.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This parameter is returned when the job is in the Failed state.
+	// The error message of the String type, returned when the task status is Failed.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetVideoRenderJobResponseBodyJob struct {
 	//
 	// 68ca759e798b40b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The voiceover language of the produced video.
+	// The voiceover language of the final video.
 	//
 	// example:
 	//
@@ -98,23 +98,23 @@ type GetVideoRenderJobResponseBodyJob struct {
 	//
 	// https://xxxx.mp4
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The job status. Valid values:
+	// The file status. Valid values:
 	//
-	// - Created: The job is created.
+	// - Created: The file is created.
 	//
-	// - Executing: The job is being executed.
+	// - Executing: The file is executing.
 	//
-	// - Finished: The job is completed.
+	// - Finished: The file is finished.
 	//
-	// - Failed: The job failed.
+	// - Failed: The file has failed.
 	//
-	// - Deleted: The job is deleted.
+	// - Deleted: The file is deleted.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined parameter, which is a JSON-formatted string.
+	// The user-defined parameters in JSON format.
 	//
 	// example:
 	//

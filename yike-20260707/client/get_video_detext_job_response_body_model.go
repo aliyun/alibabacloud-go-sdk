@@ -16,7 +16,7 @@ type iGetVideoDetextJobResponseBody interface {
 }
 
 type GetVideoDetextJobResponseBody struct {
-	// The video text erasure task.
+	// The video text removal job.
 	Job *GetVideoDetextJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// The request ID, which is used for Tracing Analysis and troubleshooting.
 	//
@@ -62,49 +62,49 @@ func (s *GetVideoDetextJobResponseBody) Validate() error {
 }
 
 type GetVideoDetextJobResponseBodyJob struct {
-	// The business error code returned when the task fails. This field is typically not returned for non-failure states.
+	// The business error code returned when the job fails. This field is typically not returned when the job is not in a failed state.
 	//
 	// example:
 	//
 	// InvalidInput
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error message returned when the task fails. This field is typically not returned for non-failure states.
+	// The business error message returned when the job fails. This field is typically not returned when the job is not in a failed state.
 	//
 	// example:
 	//
 	// Input video is invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The normalized input configuration JSON string saved at submission time.
+	// The normalized JSON string of the input configuration saved during submission.
 	//
 	// example:
 	//
 	// {"VideoUrl":"https://example.com/input.mp4"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The video text erasure task ID.
+	// The ID of the video text removal job.
 	//
 	// example:
 	//
 	// vdt_0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The normalized text erasure parameter JSON string.
+	// The normalized JSON string of the text removal parameters.
 	//
 	// example:
 	//
 	// {"EraseAllText":false,"TextTargets":[{"Box":[0.1,0.8,0.8,0.15],"TimeRanges":[[0,30]]}]}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The task type. The value is fixed to VIDEO_DETEXT.
+	// The job type. The value is fixed as VIDEO_DETEXT.
 	//
 	// example:
 	//
 	// VIDEO_DETEXT
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The task result JSON string. When Status is Finished, deserialize this field and read AiResult.DetextVideoURL to obtain the URL of the video after text erasure. The video URL is not guaranteed to be included when the task has not completed successfully. If Output.OssUri is specified at submission time, the result is stored in the specified OSS location. Otherwise, a signed URL is returned.
+	// The JSON character string of the task result. When Status is Finished, deserialize the sequence of this field and read AiResult.DetextVideoURL to obtain the URL of the video with text removed. If the node is not successfully completed, the video URL is not guaranteed to be included. If Output.OssUri is specified during commit, the result is stored in the specified OSS bucket. Otherwise, a signed URL is returned.
 	//
 	// example:
 	//
 	// {"AiResult":{"DetextVideoURL":"https://example.com/detext/detext.mp4"}}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The task status. Valid values: Created, Queuing, Executing, Finished, and Failed.
+	// The job status. Valid values: Created, Queuing, Executing, Finished, and Failed.
 	//
 	// example:
 	//

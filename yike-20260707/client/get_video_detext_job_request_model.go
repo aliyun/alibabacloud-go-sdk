@@ -14,7 +14,7 @@ type iGetVideoDetextJobRequest interface {
 }
 
 type GetVideoDetextJobRequest struct {
-	// The video text erasure task ID returned by SubmitVideoDetextJob.
+	// The ID of the video text removal job returned by SubmitVideoDetextJob.
 	//
 	// This parameter is required.
 	//

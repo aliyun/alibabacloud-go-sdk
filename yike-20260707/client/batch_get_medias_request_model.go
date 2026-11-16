@@ -20,14 +20,14 @@ type iBatchGetMediasRequest interface {
 }
 
 type BatchGetMediasRequest struct {
-	// The validity period of the signed file access URL. Unit: seconds.
+	// Specifies the validity period, in seconds, for accessing file URLs that require authentication.
 	//
 	// example:
 	//
 	// 3600
 	AuthTimeout *int64  `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
 	BizConfig   *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
-	// The IDs of the media assets to query, separated by commas.
+	// The IDs of the media assets to be queried, separated by commas.
 	//
 	// example:
 	//

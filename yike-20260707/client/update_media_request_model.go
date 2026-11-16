@@ -37,11 +37,13 @@ type UpdateMediaRequest struct {
 	// Specifies whether to update the Tags field in append mode.
 	AppendTags *bool   `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
 	BizConfig  *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 1
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The cover image URL. This parameter is valid only for video media assets.
+	// The URL of the cover image. This parameter is valid only for video media assets.
 	//
 	// example:
 	//
@@ -65,17 +67,17 @@ type UpdateMediaRequest struct {
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The media asset ID.
+	// The ID of the media asset.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags. Separate multiple tags with commas (,).
+	// The tags. Separate multiple tags with commas.
 	//
 	// example:
 	//
-	// 剪映动画
+	// CapCut Animation
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	// The title.
 	//
@@ -83,7 +85,7 @@ type UpdateMediaRequest struct {
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user data. Maximum length: 1024 bytes.
+	// The user data. Maximum size: 1,024 bytes.
 	//
 	// example:
 	//

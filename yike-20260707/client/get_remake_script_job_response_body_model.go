@@ -62,19 +62,19 @@ func (s *GetRemakeScriptJobResponseBody) Validate() error {
 }
 
 type GetRemakeScriptJobResponseBodyJob struct {
-	// The error code. Returned when the status is Failed.
+	// The error code. This parameter is returned when the status is Failed.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. Returned when the status is Failed.
+	// The error message. This parameter is of the String type and is returned when the status is Failed.
 	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
@@ -86,17 +86,17 @@ type GetRemakeScriptJobResponseBodyJob struct {
 	//
 	// http://xxxx.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The status. Valid values:
+	// The file status. Valid values:
 	//
-	// - Created: The task is created.
+	// - Created: Created.
 	//
-	// - Executing: The task is executing.
+	// - Executing: Executing.
 	//
-	// - Finished: The task is finished.
+	// - Finished: Finished.
 	//
-	// - Failed: The task failed.
+	// - Failed: Failed.
 	//
-	// - Deleted: The task is deleted.
+	// - Deleted: Deleted.
 	//
 	// example:
 	//

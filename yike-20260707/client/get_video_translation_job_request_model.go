@@ -14,7 +14,7 @@ type iGetVideoTranslationJobRequest interface {
 }
 
 type GetVideoTranslationJobRequest struct {
-	// The video translation job ID returned by SubmitVideoTranslationJob.
+	// The ID of the video translation job returned by SubmitVideoTranslationJob.
 	//
 	// This parameter is required.
 	//

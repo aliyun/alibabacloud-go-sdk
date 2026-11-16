@@ -34,53 +34,59 @@ type iSubmitImageGenerationJobRequest interface {
 type SubmitImageGenerationJobRequest struct {
 	// The aspect ratio. Valid values: 16:9 (default), 9:16, 4:3, 3:4, 1:1, and 21:9.
 	//
-	// - qwen-image-3.0 additionally supports: 4:5, 5:4, 2:3, and 3:2.
+	// - The qwen-image-3.0 model also supports the following values: 4:5, 5:4, 2:3, and 3:2.
 	//
 	// example:
 	//
 	// 4:3
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The idempotency token. A unique, case-sensitive string of up to 32 characters. This token ensures that the request is processed only once, preventing duplicate operations caused by multiple retries.
+	// The idempotency parameter. A unique, case-sensitive, 32-character random string used to ensure that the request is completed only once. This prevents duplicate operations caused by multiple retries.
 	//
 	// example:
 	//
 	// ****3e761e9d11edba640c42a1b7****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The task input. This parameter is required. The value is a JSON string that contains the following fields:
+	// The task input. Required. A JSON string that contains the following fields:
 	//
-	// - Prompt: String. Required. The prompt text.
+	// - Prompt: the prompt. String. Required.
 	//
-	// - Medias: A list of media items. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
+	// - Medias: the list of media files. Required when the task type is `image_to_image`. Up to 9 files.
 	//
-	// > The Media structure contains the following fields: Type, the media type, String, valid value: image. URL, the media download URL, String. MediaId, the media asset ID, String.
+	// > The Media structure contains the following fields: Type, the media type. String. Valid value: image. URL, the download URL of the media file. String. MediaId, the media asset ID. String.
 	//
 	// >
 	//
 	// example:
 	//
-	// {"Prompt":"xxx","Medias":[{"Type":"image","URL":"xxx"}]}
+	// {"Prompt":"xxx","Medias":[{"Type":"image","URL":"http://test.oss-cn-shanghai.aliyuncs.com/test.png"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task parameters. The value is a JSON string.
+	// The task feature parameters. A JSON string that contains the following fields:
 	//
-	// - PromptExtend: Specifies whether to enable prompt optimization. Boolean. Valid values: `true` and `false`.
+	// - PromptExtend: specifies whether to optimize the prompt. Boolean. Valid values: `true` and `false`.
 	//
-	// - PromptExtendMode: The prompt extension mode. Valid values: `direct` (default) and `agent` (supported for text-to-image generation). Only qwen-image-3.0 supports this parameter.
+	// - PromptExtendMode: the prompt optimization mode. Valid values: `direct` (default) and `agent` (supported only for text-to-image). Only the qwen-image-3.0 model supports this parameter.
 	//
 	// example:
 	//
 	// {}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The type of the generation task. This parameter is required. Valid values:
+	// The type of the generation task. Required. Valid values:
 	//
-	// - text_to_image: text-to-image generation.
+	// - text_to_image: text-to-image
 	//
-	// - image_to_image: image-to-image generation.
+	// - image_to_image: image-to-image
 	//
 	// example:
 	//
 	// text_to_image
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The model name. This parameter is required. Valid values:
+	// The name of the model. Required. Valid values:
+	//
+	// - Wonder-Image-2.5-Pro
+	//
+	// - Wonder-Image-2.5-Fast
+	//
+	// - Wonder-Image-2
 	//
 	// - qwen-image-3.0
 	//
@@ -106,7 +112,7 @@ type SubmitImageGenerationJobRequest struct {
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The scenario. This is an enumeration type. Currently, only `general` is supported.
+	// The scene. Valid values: `general`.
 	//
 	// example:
 	//

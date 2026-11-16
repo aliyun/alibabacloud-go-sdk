@@ -16,13 +16,13 @@ type iGetVideoGenerationJobRequest interface {
 }
 
 type GetVideoGenerationJobRequest struct {
-	// The idempotency token.
+	// The client token.
 	//
 	// example:
 	//
 	// xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//

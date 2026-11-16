@@ -16,13 +16,13 @@ type iSubmitVideoDetextJobResponseBody interface {
 }
 
 type SubmitVideoDetextJobResponseBody struct {
-	// The ID of the video text removal job. Use this ID to call GetVideoDetextJob to query the job.
+	// The video text erasure task ID, which is used to call GetVideoDetextJob to query the task.
 	//
 	// example:
 	//
 	// vdt_0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID, used for Tracing Analysis and troubleshooting.
+	// The request ID, which is used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//

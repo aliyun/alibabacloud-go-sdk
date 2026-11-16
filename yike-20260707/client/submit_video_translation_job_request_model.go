@@ -28,7 +28,7 @@ type iSubmitVideoTranslationJobRequest interface {
 }
 
 type SubmitVideoTranslationJobRequest struct {
-	// The user-level idempotency token, which can be up to 40 characters in length. If the same user submits the request repeatedly with the same token, the original task is returned.
+	// The user-level idempotency token, which can be up to 40 characters in length. If the same user repeatedly submits a request with the same token, the original task is returned.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// {"VideoMediaId":"media-video-001"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The job parameters JSON string. It must include at least SourceLanguage and TargetLanguage. You can also configure primary subtitle erasure, voice translation, on-screen text translation, and final editing.
+	// The job parameters JSON string. It must include at least SourceLanguage and TargetLanguage. You can also configure primary subtitle removal, voice translation, on-screen text translation, lip sync, and final editing.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// VoiceTranslate
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The output configuration JSON string. OssUri is the optional customer OSS output directory. If OssUri is not specified, a signed URL for the service-owned output is returned.
+	// The output configuration JSON string. OssUri is the optional OSS output directory for the customer. If OssUri is not specified, a signed URL for the service-owned output is returned.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// example:
 	//
-	// English translation of product introduction video
+	// Product introduction video English translation
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user-defined data JSON string. When specifying an MNS queue to receive asynchronous notifications, set `NotifyAddress` to the pure queue name starting with `yike-callback-` instead of the full queue URL. You can optionally set `NotifyMnsEndpoint` to the MNS endpoint of the task account.
+	// The user-defined data JSON string. When specifying a Message Service (MNS) queue to receive asynchronous notifications, set NotifyAddress to the pure queue name starting with yike-callback- instead of the full queue URL. You can optionally set NotifyMnsEndpoint to the MNS endpoint of the task account.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type CancelGenerationJobResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status. The value is Canceled.
+	// The task status, which is Canceled.
 	//
 	// example:
 	//

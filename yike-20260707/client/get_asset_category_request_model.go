@@ -14,15 +14,15 @@ type iGetAssetCategoryRequest interface {
 }
 
 type GetAssetCategoryRequest struct {
-	// The category ID. You can obtain the category ID by using the following methods:
+	// The category ID. You can obtain the category ID by using one of the following methods:
 	//
-	// - When you create a category by calling the CreateAssetCategory operation, the category ID is the value of CategoryId in the response.
+	// - When you create a category by calling the CreateAssetCategory operation, the category ID is the value of the CategoryId response parameter.
 	//
-	// - When you query the category list by calling the ListAssetCategories operation, the category ID is the value of CategoryId in the corresponding entry in the response.
+	// - When you query the category list by calling the ListAssetCategories operation, the category ID is the value of the CategoryId parameter in the corresponding returned entry.
 	//
 	// example:
 	//
-	// scenery
+	// 45
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 

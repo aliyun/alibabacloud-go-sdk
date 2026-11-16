@@ -28,19 +28,19 @@ type iGetVideoCreativeGenerationJobResponseBody interface {
 }
 
 type GetVideoCreativeGenerationJobResponseBody struct {
-	// The job creation time in UTC format (yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\").
+	// The time when the job was created. The time is displayed in UTC in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
 	//
 	// example:
 	//
 	// 2026-02-06T18:53:34.001+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code. This parameter is returned only when the job status is Failed.
+	// The error code. This field is returned only when the job status is Failed.
 	//
 	// example:
 	//
 	// WorkflowTaskFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The job completion time in UTC format.
+	// The time when the job was completed. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetVideoCreativeGenerationJobResponseBody struct {
 	//
 	// ****3e761e9d11edba640c42a1b7****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task results of the node. This parameter is valid only when the job status is Succeeded. Each element represents the output for a single language.
+	// The task result. This field is valid only when the node status is Succeeded. Each element represents a single-language video output.
 	JobResult []*GetVideoCreativeGenerationJobResponseBodyJobResult `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Repeated"`
 	// The job status. Valid values: Running, Succeeded, and Failed.
 	//
@@ -66,7 +66,7 @@ type GetVideoCreativeGenerationJobResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The custom user data, which is returned as-is.
+	// The user-defined parameter. This value is returned as is.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ func (s *GetVideoCreativeGenerationJobResponseBody) Validate() error {
 }
 
 type GetVideoCreativeGenerationJobResponseBodyJobResult struct {
-	// The online editing project ID.
+	// The ID of the online editing project.
 	//
 	// example:
 	//
 	// 01a6adbbd181437eb5030d3d93e0182d
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
-	// The media asset ID of the output video.
+	// The media asset ID of the produced video.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type GetVideoCreativeGenerationJobResponseBodyJobResult struct {
 	//
 	// CN
 	OutputLanguage *string `json:"OutputLanguage,omitempty" xml:"OutputLanguage,omitempty"`
-	// The signed download URL of the output video. The URL is time-limited.
+	// The download URL of the produced video. The URL is signed and time-sensitive.
 	//
 	// example:
 	//

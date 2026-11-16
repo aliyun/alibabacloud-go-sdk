@@ -22,7 +22,7 @@ type ListAssetCategoriesRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The page size. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

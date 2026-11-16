@@ -26,7 +26,7 @@ type iListInfiniteCanvasesRequest interface {
 }
 
 type ListInfiniteCanvasesRequest struct {
-	// The keyword used to query site monitoring tasks. Note: Fuzzy match is supported based on the task name or task address.
+	// The keyword used to query site monitoring tasks. Note: Fuzzy match is supported based on the task name or task URL.
 	//
 	// example:
 	//
@@ -50,17 +50,19 @@ type ListInfiniteCanvasesRequest struct {
 	//
 	// pd_abc1234567
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	// The sort field and sort order. Separate multiple values with commas (,).
+	// The sort fields and sort orders. Separate multiple values with commas (,).
 	//
 	// example:
 	//
 	// utcCreate:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort direction. Valid values:
+	// The sort direction.
 	//
-	// - Asc: ascending order
+	// Valid values:
 	//
-	// - Desc: descending order
+	// - Asc: Ascending order.
+	//
+	// - Desc: Descending order.
 	//
 	// Default value: Desc.
 	//

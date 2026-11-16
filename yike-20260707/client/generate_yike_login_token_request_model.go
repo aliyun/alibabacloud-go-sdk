@@ -34,7 +34,7 @@ type GenerateYikeLoginTokenRequest struct {
 	//
 	// false
 	AutoCreateProduction *string `json:"AutoCreateProduction,omitempty" xml:"AutoCreateProduction,omitempty"`
-	// The token expiration time, in seconds. Default value: 30 days.
+	// The expiration time of the token, in seconds. Default value: 30 days.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type GenerateYikeLoginTokenRequest struct {
 	//
 	// - Format check: The maximum length is 50 characters.
 	//
-	// - Special format validation: Chinese characters, English characters, digits, _ \\ / () ] [
+	// - Special format check: Chinese and English characters, digits, and _ \\ / () ] [.
 	//
 	// example:
 	//
-	// 冯凯
+	// Feng Kai
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The role of the user in the project.
 	//

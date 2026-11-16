@@ -20,21 +20,21 @@ type iDeleteMediasRequest interface {
 }
 
 type DeleteMediasRequest struct {
-	// The business configuration. It is a JSON string that can contain ProductionId (the project ID).
+	// The business configuration. A JSON string that can include ProductionId (the project ID).
 	//
 	// example:
 	//
 	// {"ProductionId":"pd_abc1234567"}
 	BizConfig *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
-	// Specifies whether to delete physical files at the same time.
+	// Specifies whether to delete the physical files at the same time.
 	//
 	// example:
 	//
 	// false
 	DeletePhysicalFiles *bool `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
-	// Not supported.
+	// This parameter is not supported.
 	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
-	// The media asset IDs, separated by commas. Invalid IDs are added to IgnoredList.
+	// The media asset IDs, separated by commas. Invalid IDs are added to the IgnoredList.
 	//
 	// example:
 	//

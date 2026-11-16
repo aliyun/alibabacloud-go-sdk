@@ -31,6 +31,8 @@ type iImportMediaRequest interface {
 	GetMediaType() *string
 	SetOverwrite(v bool) *ImportMediaRequest
 	GetOverwrite() *bool
+	SetProjectId(v string) *ImportMediaRequest
+	GetProjectId() *string
 	SetRegisterConfig(v string) *ImportMediaRequest
 	GetRegisterConfig() *string
 	SetTitle(v string) *ImportMediaRequest
@@ -43,17 +45,19 @@ type iImportMediaRequest interface {
 
 type ImportMediaRequest struct {
 	BizConfig *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 1
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The cover image URL. This parameter is valid only for video media assets.
+	// The URL of the cover image. This parameter is valid only for video media assets.
 	//
 	// example:
 	//
 	// https://outin-55c9ab3fb1b911ee817b00163e32b0a3.oss-cn-shanghai.aliyuncs.com/60425a2758a971f181385017f0e90102/covers/ice-generated/d4aee2d6c6f84769ac89f18c667699c6-cover.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The description of the media asset.
+	// The description.
 	//
 	// example:
 	//
@@ -83,11 +87,11 @@ type ImportMediaRequest struct {
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The tags of the media asset. Separate multiple tags with commas (,).
+	// The tags. Separate multiple tags with commas.
 	//
 	// example:
 	//
-	// AdvancedImageToVideo,AIGenerated
+	// Advanced image-to-video, AI-generated
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	// The type of the media asset.
 	//
@@ -101,19 +105,25 @@ type ImportMediaRequest struct {
 	//
 	// True
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// pd_123456
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The configuration for registering the media asset.
 	//
 	// example:
 	//
 	// {\\"SearchLibName\\":\\"AiSaasLib_34140718_MA\\"}
 	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
-	// The title of the media asset.
+	// The title.
 	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user data. Maximum length: 1024 bytes.
+	// The user data. Maximum size: 1024 bytes.
 	//
 	// example:
 	//
@@ -172,6 +182,10 @@ func (s *ImportMediaRequest) GetMediaType() *string {
 
 func (s *ImportMediaRequest) GetOverwrite() *bool {
 	return s.Overwrite
+}
+
+func (s *ImportMediaRequest) GetProjectId() *string {
+	return s.ProjectId
 }
 
 func (s *ImportMediaRequest) GetRegisterConfig() *string {
@@ -242,6 +256,11 @@ func (s *ImportMediaRequest) SetMediaType(v string) *ImportMediaRequest {
 
 func (s *ImportMediaRequest) SetOverwrite(v bool) *ImportMediaRequest {
 	s.Overwrite = &v
+	return s
+}
+
+func (s *ImportMediaRequest) SetProjectId(v string) *ImportMediaRequest {
+	s.ProjectId = &v
 	return s
 }
 

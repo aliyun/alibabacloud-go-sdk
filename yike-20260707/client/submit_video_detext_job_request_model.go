@@ -22,13 +22,13 @@ type iSubmitVideoDetextJobRequest interface {
 }
 
 type SubmitVideoDetextJobRequest struct {
-	// The user-level idempotency token. Maximum length: 40 characters. If the same user submits a request with the same token, the original job is returned.
+	// The user-level idempotency token. The token can be up to 40 characters in length. If the same user submits the request repeatedly with the same token, the original task is returned.
 	//
 	// example:
 	//
 	// detext-client-20260820-001
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The input configuration JSON string. You must provide exactly one of VideoUrl or VideoMediaId.
+	// The input configuration JSON string. You must specify either VideoUrl or VideoMediaId, but not both.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type SubmitVideoDetextJobRequest struct {
 	//
 	// {"VideoUrl":"https://example.com/input.mp4"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The text removal parameters JSON string. TextTargets detects and removes text within specified regions. FullEraseTargets repairs entire rectangular regions regardless of text detection. EraseAllText controls only text filtering and does not expand the removal region. For parameter details, default behavior, and combination examples, see the supplementary request parameter description.
+	// The text erasure parameters JSON string. TextTargets is used to detect and erase text. FullEraseTargets is used to inpaint entire regions. EraseAllText only controls text filtering and does not expand the region. For parameters, default behaviors, and combination examples, see the supplementary description of request parameters.
 	//
 	// example:
 	//
 	// {"EraseAllText":true,"TimeRanges":[[12,15]],"TextTargets":[{"Box":[0.1,0.8,0.8,0.15]}]}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The output configuration JSON string. OssUri specifies an OSS directory or MP4 file path in the format oss://bucket/path. It cannot contain query parameters or fragments. A directory path automatically appends detext.mp4. A path ending in .mp4 without a trailing slash is used directly as the target file. If not specified, a signed URL for the result is returned in the query response.
+	// The output configuration JSON string. You can use OssUri to specify an OSS directory or an MP4 file path. The path cannot contain query parameters or fragments. If a directory is specified, detext.mp4 is automatically appended. If the path ends with .mp4 and has no trailing slash, it is used directly as the destination file. If OssUri is not specified, a signed URL for the processing result is returned in the query result.
 	//
 	// example:
 	//
 	// {"OssUri":"oss://example-bucket/video-detext/job-001/"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The custom data JSON string used for pass-through in desired-state notifications. For MNS callbacks, use NotifyAddress to specify a queue name prefixed with yike-callback, and use NotifyMnsEndpoint to specify the MNS endpoint of the same account. For HTTP(S) callbacks, use NotifyAddress to specify the full URL.
+	// The custom data JSON string used for pass-through in final state notifications. For Message Service (MNS) callbacks, use NotifyAddress to specify the queue name prefixed with yike-callback, and use NotifyMnsEndpoint to specify the MNS endpoint of the same account. For HTTP or HTTPS callbacks, use NotifyAddress to specify the complete URL.
 	//
 	// example:
 	//

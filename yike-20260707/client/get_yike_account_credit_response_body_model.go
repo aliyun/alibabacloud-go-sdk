@@ -80,37 +80,37 @@ func (s *GetYikeAccountCreditResponseBody) Validate() error {
 }
 
 type GetYikeAccountCreditResponseBodyCreditInfo struct {
-	// The total granted credits.
+	// The total granted credit quota.
 	//
 	// example:
 	//
 	// 200
 	GrantedCreditQuota *float64 `json:"GrantedCreditQuota,omitempty" xml:"GrantedCreditQuota,omitempty"`
-	// The remaining granted credits.
+	// The granted credit balance.
 	//
 	// example:
 	//
 	// 0
 	GrantedCreditQuotaUsage *float64 `json:"GrantedCreditQuotaUsage,omitempty" xml:"GrantedCreditQuotaUsage,omitempty"`
-	// The total credits of the booster pack.
+	// The total credit quota of the top-up package.
 	//
 	// example:
 	//
 	// 20000
 	PackCreditQuota *float64 `json:"PackCreditQuota,omitempty" xml:"PackCreditQuota,omitempty"`
-	// The remaining credits of the booster pack.
+	// The credit balance of the top-up package.
 	//
 	// example:
 	//
 	// 5000
 	PackCreditQuotaUsage *float64 `json:"PackCreditQuotaUsage,omitempty" xml:"PackCreditQuotaUsage,omitempty"`
-	// The total credits of the membership plan.
+	// The total credit quota of the membership plan.
 	//
 	// example:
 	//
 	// 10000
 	ResourceCreditQuota *float64 `json:"ResourceCreditQuota,omitempty" xml:"ResourceCreditQuota,omitempty"`
-	// The remaining credits of the membership plan.
+	// The credit balance of the membership plan.
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ type GetYikeAccountCreditResponseBodyMembershipInfo struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The membership level. Valid values:
 	//
-	// - basic: Basic Edition.
+	// - basic: Basic Edition
 	//
-	// - standard: Standard Edition.
+	// - standard: Standard Edition
 	//
-	// - professional: Ultimate Edition.
+	// - professional: Ultimate Edition
 	//
-	// - ultra: Ultra Edition.
+	// - ultra: Supreme Edition
 	//
 	// example:
 	//
