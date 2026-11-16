@@ -135,7 +135,7 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Decreasing total capacity
+	// Total decreasing type
 	CapacitiyTypeName *string `json:"CapacitiyTypeName,omitempty" xml:"CapacitiyTypeName,omitempty"`
 	// The capacity type.
 	CapacityType *DescribeFrInstancesResponseBodyDataCapacityType `json:"CapacityType,omitempty" xml:"CapacityType,omitempty" type:"Struct"`
@@ -157,7 +157,7 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Performance Testing
+	// Performance testing
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The current capacity base unit.
 	//
@@ -197,11 +197,11 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// Hour
 	CycleTypeName *string `json:"CycleTypeName,omitempty" xml:"CycleTypeName,omitempty"`
-	// The list of regions where deductions are applicable.
+	// The list of deductible regions.
 	DeductRegions []*DescribeFrInstancesResponseBodyDataDeductRegions `json:"DeductRegions,omitempty" xml:"DeductRegions,omitempty" type:"Repeated"`
 	// Indicates whether the deduction rule is enabled.
 	EnableDeductRule *bool `json:"EnableDeductRule,omitempty" xml:"EnableDeductRule,omitempty"`
-	// Indicates whether exchanges are supported.
+	// Indicates whether exchange is supported.
 	//
 	// example:
 	//
@@ -213,13 +213,13 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// false
 	EnableRenew *bool `json:"EnableRenew,omitempty" xml:"EnableRenew,omitempty"`
-	// Indicates whether upgrades are supported.
+	// Indicates whether upgrade is supported.
 	//
 	// example:
 	//
 	// false
 	EnableUpgrade *bool `json:"EnableUpgrade,omitempty" xml:"EnableUpgrade,omitempty"`
-	// The expiration time. The value is a UNIX timestamp in milliseconds.
+	// The expiration time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// 1000.000000
 	PeriodCapacityViewValue *string `json:"PeriodCapacityViewValue,omitempty" xml:"PeriodCapacityViewValue,omitempty"`
-	// The period time unit, such as hour for hours.
+	// The period time unit, such as hour.
 	//
 	// example:
 	//
@@ -291,9 +291,9 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Performance Testing
+	// Performance testing
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The purchase time. The value is a UNIX timestamp in milliseconds.
+	// The purchase time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -303,7 +303,7 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// *
+	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The region name.
 	//
@@ -311,13 +311,13 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// cn-qingdao
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The specifications.
+	// The specification.
 	//
 	// example:
 	//
-	// *
+	// 1000CU
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The effective period. The value is a UNIX timestamp in milliseconds.
+	// The effective period. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -351,13 +351,13 @@ type DescribeFrInstancesResponseBodyData struct {
 	//
 	// new_test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The periodic capacity base unit.
+	// The base unit of the period capacity.
 	//
 	// example:
 	//
 	// CU
 	PeriodCapacityBaseUnit *string `json:"periodCapacityBaseUnit,omitempty" xml:"periodCapacityBaseUnit,omitempty"`
-	// The periodic capacity base value.
+	// The base value of the period capacity.
 	//
 	// example:
 	//
@@ -845,7 +845,7 @@ func (s *DescribeFrInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataAutoPurchase struct {
-	// Indicates whether the resource has been auto-purchased.
+	// Indicates whether auto-purchase is already applied.
 	AlreadyAutoPurchase *bool `json:"AlreadyAutoPurchase,omitempty" xml:"AlreadyAutoPurchase,omitempty"`
 	// Indicates whether auto-purchase is configured.
 	SettingAutoPurchase *bool `json:"SettingAutoPurchase,omitempty" xml:"SettingAutoPurchase,omitempty"`
@@ -893,17 +893,17 @@ func (s *DescribeFrInstancesResponseBodyDataAutoPurchase) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataCapacityType struct {
-	// The attribute code.
+	// The property code.
 	//
 	// example:
 	//
 	// deadlineAcc
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name.
+	// The property name.
 	//
 	// example:
 	//
-	// Decreasing total capacity
+	// Total decreasing type
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -938,13 +938,13 @@ func (s *DescribeFrInstancesResponseBodyDataCapacityType) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataCommodity struct {
-	// The attribute code.
+	// The property code.
 	//
 	// example:
 	//
 	// slb_albcubag_dp_cn
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name.
+	// The property name.
 	//
 	// example:
 	//
@@ -1028,13 +1028,13 @@ func (s *DescribeFrInstancesResponseBodyDataCycleType) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataDeductRegions struct {
-	// The code of the region where deductions are applicable.
+	// The code of the deductible region.
 	//
 	// example:
 	//
 	// cn-beijing
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The region where deductions are applicable.
+	// The deductible region.
 	//
 	// example:
 	//
@@ -1073,13 +1073,13 @@ func (s *DescribeFrInstancesResponseBodyDataDeductRegions) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataProduct struct {
-	// The attribute code.
+	// The property code.
 	//
 	// example:
 	//
 	// slb
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name.
+	// The property name.
 	//
 	// example:
 	//
@@ -1118,13 +1118,13 @@ func (s *DescribeFrInstancesResponseBodyDataProduct) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataStatus struct {
-	// The attribute code.
+	// The property code.
 	//
 	// example:
 	//
 	// valid
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name.
+	// The property name.
 	//
 	// example:
 	//
@@ -1163,17 +1163,17 @@ func (s *DescribeFrInstancesResponseBodyDataStatus) Validate() error {
 }
 
 type DescribeFrInstancesResponseBodyDataTemplate struct {
-	// The attribute code.
+	// The property code.
 	//
 	// example:
 	//
 	// alb_cubag*******
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name.
+	// The property name.
 	//
 	// example:
 	//
-	// Mainland China
+	// Chinese mainland region
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

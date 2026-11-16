@@ -69,8 +69,8 @@ func (s *DataModuleMapListSpnTypeMapListValue) Validate() error {
 }
 
 type DataModuleMapListSpnTypeMapListValueFilterModules struct {
-	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -82,25 +82,25 @@ func (s DataModuleMapListSpnTypeMapListValueFilterModules) GoString() string {
 	return s.String()
 }
 
-func (s *DataModuleMapListSpnTypeMapListValueFilterModules) GetModuleId() *int64 {
-	return s.ModuleId
-}
-
 func (s *DataModuleMapListSpnTypeMapListValueFilterModules) GetModuleCode() *string {
 	return s.ModuleCode
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueFilterModules) GetModuleId() *int64 {
+	return s.ModuleId
 }
 
 func (s *DataModuleMapListSpnTypeMapListValueFilterModules) GetModuleName() *string {
 	return s.ModuleName
 }
 
-func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleId(v int64) *DataModuleMapListSpnTypeMapListValueFilterModules {
-	s.ModuleId = &v
+func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleCode(v string) *DataModuleMapListSpnTypeMapListValueFilterModules {
+	s.ModuleCode = &v
 	return s
 }
 
-func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleCode(v string) *DataModuleMapListSpnTypeMapListValueFilterModules {
-	s.ModuleCode = &v
+func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleId(v int64) *DataModuleMapListSpnTypeMapListValueFilterModules {
+	s.ModuleId = &v
 	return s
 }
 
@@ -114,8 +114,8 @@ func (s *DataModuleMapListSpnTypeMapListValueFilterModules) Validate() error {
 }
 
 type DataModuleMapListSpnTypeMapListValueShowModules struct {
-	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -127,25 +127,25 @@ func (s DataModuleMapListSpnTypeMapListValueShowModules) GoString() string {
 	return s.String()
 }
 
-func (s *DataModuleMapListSpnTypeMapListValueShowModules) GetModuleId() *int64 {
-	return s.ModuleId
-}
-
 func (s *DataModuleMapListSpnTypeMapListValueShowModules) GetModuleCode() *string {
 	return s.ModuleCode
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueShowModules) GetModuleId() *int64 {
+	return s.ModuleId
 }
 
 func (s *DataModuleMapListSpnTypeMapListValueShowModules) GetModuleName() *string {
 	return s.ModuleName
 }
 
-func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleId(v int64) *DataModuleMapListSpnTypeMapListValueShowModules {
-	s.ModuleId = &v
+func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleCode(v string) *DataModuleMapListSpnTypeMapListValueShowModules {
+	s.ModuleCode = &v
 	return s
 }
 
-func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleCode(v string) *DataModuleMapListSpnTypeMapListValueShowModules {
-	s.ModuleCode = &v
+func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleId(v int64) *DataModuleMapListSpnTypeMapListValueShowModules {
+	s.ModuleId = &v
 	return s
 }
 

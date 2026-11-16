@@ -68,13 +68,13 @@ type DescribeFrInstancesRequest struct {
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
 	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*DescribeFrInstancesRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The end time, specified as a UNIX timestamp in milliseconds.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710604800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The resource dimension.
+	// The resource dimension to query.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeFrInstancesRequest struct {
 	//
 	// alb_cubag*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The label value of the resource plan instance tag.
+	// The tag value of the resource plan instance.
 	//
 	// example:
 	//
@@ -122,19 +122,19 @@ type DescribeFrInstancesRequest struct {
 	//
 	// startTime
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
-	// The sorting collation.
+	// The sorting rule.
 	//
 	// example:
 	//
 	// asc
 	SortRule *string `json:"SortRule,omitempty" xml:"SortRule,omitempty"`
-	// The specifications.
+	// The specification.
 	//
 	// example:
 	//
 	// *
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The start time, specified as a UNIX timestamp in milliseconds.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -338,7 +338,7 @@ func (s *DescribeFrInstancesRequest) Validate() error {
 }
 
 type DescribeFrInstancesRequestEcIdAccountIds struct {
-	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
+	// The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The enterprise entity ID.
 	//

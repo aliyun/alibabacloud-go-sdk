@@ -30,9 +30,9 @@ type QueryMonthlySlaListResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data list.
+	// The list of data.
 	Data []*QueryMonthlySlaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryMonthlySlaListResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// 99.9155
 	AvailableRate *float64 `json:"AvailableRate,omitempty" xml:"AvailableRate,omitempty"`
-	// The unique identifier of the damaged record, which is used to call the applyCoupon operation for targeted claim.
+	// The unique identifier of the damage record, which is used for targeted claims.
 	//
 	// example:
 	//
 	// 9b7***9413
 	DamagedId *string `json:"DamagedId,omitempty" xml:"DamagedId,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// 202603
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
-	// The monthly service charge.
+	// The monthly service fee.
 	//
 	// example:
 	//
@@ -170,31 +170,25 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// SLA compensation
 	PayDescription *string `json:"PayDescription,omitempty" xml:"PayDescription,omitempty"`
-	// The compensation ratio, in percentage (%).
+	// The compensation ratio, in percentage.
 	//
 	// example:
 	//
 	// 10
 	PayRate *float64 `json:"PayRate,omitempty" xml:"PayRate,omitempty"`
-	// The compensation status. Valid values:
-	//
-	// - 0: not compensated.
-	//
-	// - 1: compensated.
-	//
-	// - 2: no compensation required.
+	// The compensation status. Valid values: 0: Not compensated. 1: Compensated. 2: No compensation required.
 	//
 	// example:
 	//
 	// 1
 	PayStatus *int32 `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
-	// The product code.
+	// The code of the product.
 	//
 	// example:
 	//
 	// oss
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The compensation amount that should be paid.
+	// The compensation amount to be paid.
 	//
 	// example:
 	//

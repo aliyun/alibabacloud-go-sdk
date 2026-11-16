@@ -129,21 +129,21 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// icloudtest
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The deducted commodity.
+	// The offset commodity.
 	BillingCommodity *DescribeDeductLogsResponseBodyDataBillingCommodity `json:"BillingCommodity,omitempty" xml:"BillingCommodity,omitempty" type:"Struct"`
-	// The deducted commodity code.
+	// The offset commodity code.
 	//
 	// example:
 	//
 	// snapshot
 	BillingCommodityCode *string `json:"BillingCommodityCode,omitempty" xml:"BillingCommodityCode,omitempty"`
-	// The name of the offset commodity.
+	// The offset commodity name.
 	//
 	// example:
 	//
-	// Elastic Compute Service (ECS) - Snapshot
+	// ECS - Snapshot
 	BillingCommodityName *string `json:"BillingCommodityName,omitempty" xml:"BillingCommodityName,omitempty"`
-	// The expiration time, specified as a UNIX timestamp in milliseconds.
+	// The expiration time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -167,45 +167,45 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Zero-discount used capacity
+	// Fully offset used capacity
 	BillingPriceFieldName *string `json:"BillingPriceFieldName,omitempty" xml:"BillingPriceFieldName,omitempty"`
-	// The effective period, specified as a UNIX timestamp in milliseconds.
+	// The effective period. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1679032800000
 	BillingStartTime *int64 `json:"BillingStartTime,omitempty" xml:"BillingStartTime,omitempty"`
-	// The display unit of the capacity after deduction.
+	// The display unit for capacity after offset.
 	//
 	// example:
 	//
 	// GB
 	CapacityAfterDeductViewUnit *string `json:"CapacityAfterDeductViewUnit,omitempty" xml:"CapacityAfterDeductViewUnit,omitempty"`
-	// The display value of the capacity after deduction.
+	// The display value for capacity after offset.
 	//
 	// example:
 	//
 	// 23.896484
 	CapacityAfterDeductViewValue *string `json:"CapacityAfterDeductViewValue,omitempty" xml:"CapacityAfterDeductViewValue,omitempty"`
-	// The display unit of the capacity before deduction.
+	// The display unit for capacity before offset.
 	//
 	// example:
 	//
 	// GB
 	CapacityBeforeDeductViewUnit *string `json:"CapacityBeforeDeductViewUnit,omitempty" xml:"CapacityBeforeDeductViewUnit,omitempty"`
-	// The display value of the capacity before deduction.
+	// The display value for capacity before offset.
 	//
 	// example:
 	//
 	// 40.000000
 	CapacityBeforeDeductViewValue *string `json:"CapacityBeforeDeductViewValue,omitempty" xml:"CapacityBeforeDeductViewValue,omitempty"`
-	// The display unit of the deducted capacity.
+	// The display unit for offset capacity.
 	//
 	// example:
 	//
 	// GB
 	CapacityDeductedViewUnit *string `json:"CapacityDeductedViewUnit,omitempty" xml:"CapacityDeductedViewUnit,omitempty"`
-	// The display value of the deducted capacity.
+	// The display value for offset capacity.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Object Storage Service (OSS) resource plan (subscription)
+	// OSS resource plan (subscription)
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The commitment period.
 	CycleType *DescribeDeductLogsResponseBodyDataCycleType `json:"CycleType,omitempty" xml:"CycleType,omitempty" type:"Struct"`
@@ -253,67 +253,67 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// Hour
 	CycleTypeName *string `json:"CycleTypeName,omitempty" xml:"CycleTypeName,omitempty"`
-	// The deduction time. This value is a UNIX timestamp in milliseconds.
+	// The offset time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1679039572000
 	DeductTime *int64 `json:"DeductTime,omitempty" xml:"DeductTime,omitempty"`
-	// The offset factor.
+	// The deduction factor.
 	//
 	// example:
 	//
 	// 1
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// The account ID of the instance owner.
+	// The ID of the account to which the instance belongs.
 	//
 	// example:
 	//
 	// 1990699401005016
 	InstanceBelongAccountId *int64 `json:"InstanceBelongAccountId,omitempty" xml:"InstanceBelongAccountId,omitempty"`
-	// The account name of the instance owner.
+	// The name of the account to which the instance belongs.
 	//
 	// example:
 	//
 	// icloudtest
 	InstanceBelongAccountName *string `json:"InstanceBelongAccountName,omitempty" xml:"InstanceBelongAccountName,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// OSSBAG-cn-****s
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The display unit of the metered amount after offset.
+	// The display unit of the usage after deduction.
 	//
 	// example:
 	//
 	// Byte
 	MeasureAfterDeductViewUnit *string `json:"MeasureAfterDeductViewUnit,omitempty" xml:"MeasureAfterDeductViewUnit,omitempty"`
-	// The display value of the metered amount after offset.
+	// The display value of the usage after deduction.
 	//
 	// example:
 	//
 	// 0
 	MeasureAfterDeductViewValue *string `json:"MeasureAfterDeductViewValue,omitempty" xml:"MeasureAfterDeductViewValue,omitempty"`
-	// The display unit of the metered amount before offset.
+	// The display unit of the usage before deduction.
 	//
 	// example:
 	//
 	// GB
 	MeasureBeforeDeductViewUnit *string `json:"MeasureBeforeDeductViewUnit,omitempty" xml:"MeasureBeforeDeductViewUnit,omitempty"`
-	// The display value of the metered amount before offset.
+	// The display value of the usage before deduction.
 	//
 	// example:
 	//
 	// 16.103515
 	MeasureBeforeDeductViewValue *string `json:"MeasureBeforeDeductViewValue,omitempty" xml:"MeasureBeforeDeductViewValue,omitempty"`
-	// The display unit of the metered offset amount.
+	// The display unit of the deducted usage.
 	//
 	// example:
 	//
 	// GB
 	MeasureDeductedViewUnit *string `json:"MeasureDeductedViewUnit,omitempty" xml:"MeasureDeductedViewUnit,omitempty"`
-	// The display value of the metered offset amount.
+	// The display value of the deducted usage.
 	//
 	// example:
 	//
@@ -333,7 +333,7 @@ type DescribeDeductLogsResponseBodyData struct {
 	//
 	// Object Storage Service
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The ID of the account for deduction.
+	// The ID of the deduction account.
 	//
 	// example:
 	//
@@ -814,17 +814,17 @@ func (s *DescribeDeductLogsResponseBodyData) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataBillingCommodity struct {
-	// The property code.
+	// The attribute code.
 	//
 	// example:
 	//
 	// snapshot
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//
-	// Elastic Compute Service (ECS) - Snapshot
+	// ECS - Snapshot
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -859,17 +859,17 @@ func (s *DescribeDeductLogsResponseBodyDataBillingCommodity) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataBillingPriceField struct {
-	// The property code.
+	// The attribute code.
 	//
 	// example:
 	//
 	// Storage
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//
-	// Zero-discount used capacity
+	// Fully offset used capacity
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -904,13 +904,13 @@ func (s *DescribeDeductLogsResponseBodyDataBillingPriceField) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataCapacityType struct {
-	// The property code.
+	// The attribute code.
 	//
 	// example:
 	//
 	// absolute
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//
@@ -949,17 +949,17 @@ func (s *DescribeDeductLogsResponseBodyDataCapacityType) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataCommodity struct {
-	// The property code.
+	// The attribute code.
 	//
 	// example:
 	//
 	// ossbag
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//
-	// Object Storage Service (OSS) resource plan (subscription)
+	// OSS resource plan (subscription)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1039,13 +1039,13 @@ func (s *DescribeDeductLogsResponseBodyDataCycleType) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataProduct struct {
-	// The property code.
+	// The attribute code.
 	//
 	// example:
 	//
 	// oss
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//
@@ -1084,13 +1084,13 @@ func (s *DescribeDeductLogsResponseBodyDataProduct) Validate() error {
 }
 
 type DescribeDeductLogsResponseBodyDataTemplate struct {
-	// The property code.
+	// The attribute code.
 	//
 	// example:
 	//
 	// FPT_ossbag********
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//

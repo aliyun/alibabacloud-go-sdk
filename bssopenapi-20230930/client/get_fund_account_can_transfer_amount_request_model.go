@@ -16,7 +16,7 @@ type iGetFundAccountCanTransferAmountRequest interface {
 }
 
 type GetFundAccountCanTransferAmountRequest struct {
-	// Currency
+	// The currency.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetFundAccountCanTransferAmountRequest struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// Transfer source account ID. If not specified, the account ID owned by the current account is used by default.
+	// The ID of the source fund account. If you do not specify this parameter, the ID of the fund account owned by the current account is used by default.
 	//
 	// example:
 	//

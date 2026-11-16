@@ -38,7 +38,7 @@ type GetFundAccountTransactionDetailsResponseBody struct {
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// 2323203243
 	BillNumber *string `json:"BillNumber,omitempty" xml:"BillNumber,omitempty"`
-	// The external transaction serial number.
+	// The external transaction reference number.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Sample account name
+	// Name of the user
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
 	// The Alibaba Cloud account ID of the account owner.
 	//
@@ -188,7 +188,7 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// ACCT_BOOK
 	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
-	// The primary marketplace.
+	// The primary sales channel.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// 26842
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// The corresponding transaction account, such as the Alipay top-up account or the counterparty account for a transfer.
+	// The corresponding transaction account, such as the Alipay top-up account or the peer account for transfers.
 	//
 	// example:
 	//
@@ -218,23 +218,23 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// 10
 	TransactionAmount *string `json:"TransactionAmount,omitempty" xml:"TransactionAmount,omitempty"`
-	// The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
+	// The list of transaction channels. If you specify transaction channels, the query returns results of the specified channels. If this parameter is not specified, all transaction channels are queried by default. Valid values:
 	//
-	// - ACCT_CASH: User balance.
+	// - ACCT_CASH: Account balance.
 	//
 	// - ALIPAY: Alipay.
 	//
 	// - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
 	//
-	// - OFFLINE_REMIT: Corporate remittance.
+	// - OFFLINE_REMIT: Offline remittance.
 	//
 	// - REFUND: Credit limit refund.
 	//
 	// - UNION_PAY_BANK: Online banking.
 	//
-	// - CREDIT_CARD: Credit card. Available only on the international site.
+	// - CREDIT_CARD: Credit card. (Available only on the international site.)
 	//
-	// - AYPAL: PayPal. Available only on the international site.
+	// - PAYPAL: PayPal. (Available only on the international site.)
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// 2024-12-01 12:00:00
 	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
-	// The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+	// The transaction type. If you specify a transaction type, the query returns results of the specified type. If no results exist, an empty result is returned. If this parameter is not specified, all transaction types are returned by default. Valid values:
 	//
 	// - CHARGE: Top-up.
 	//
@@ -272,7 +272,7 @@ type GetFundAccountTransactionDetailsResponseBodyData struct {
 	//
 	// - ADJUST: Adjustment.
 	//
-	// - PAY_FAILED: Refund for failed order.
+	// - PAY_FAILED: Refund for an invalid order.
 	//
 	// example:
 	//

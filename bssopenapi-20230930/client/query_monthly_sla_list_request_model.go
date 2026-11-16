@@ -34,21 +34,21 @@ type QueryMonthlySlaListRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
+	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*QueryMonthlySlaListRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// Optional. The instance IDs used for filtering.
+	// The instance IDs used for filtering.
 	//
 	// example:
 	//
 	// ["instance_1","instance_2"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// Optional. The list of months in the yyyyMM format.
+	// The list of months in the yyyyMM format.
 	//
 	// example:
 	//
 	// [202602,202603]
 	Months []*int32 `json:"Months,omitempty" xml:"Months,omitempty" type:"Repeated"`
-	// The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	// The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type QueryMonthlySlaListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Optional. The compensation statuses used for filtering. Valid values: 0 and 1.
+	// The compensation statuses used for filtering. Valid values: 0 and 1.
 	PayStatuses []*int32 `json:"PayStatuses,omitempty" xml:"PayStatuses,omitempty" type:"Repeated"`
-	// Optional. The product codes used for filtering.
+	// The product codes used for filtering.
 	//
 	// example:
 	//
@@ -164,9 +164,9 @@ func (s *QueryMonthlySlaListRequest) Validate() error {
 }
 
 type QueryMonthlySlaListRequestEcIdAccountIds struct {
-	// The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
+	// The list of account IDs to access. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The enterprise entity ID.
+	// The ID of the enterprise entity.
 	//
 	// example:
 	//

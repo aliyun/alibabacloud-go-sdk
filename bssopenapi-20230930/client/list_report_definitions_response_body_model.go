@@ -18,11 +18,11 @@ type iListReportDefinitionsResponseBody interface {
 }
 
 type ListReportDefinitionsResponseBody struct {
-	// Response structure metadata
+	// The metadata of the response structure.
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Report definition list
+	// The data list.
 	ReportDefinitions []*ListReportDefinitionsResponseBodyReportDefinitions `json:"ReportDefinitions,omitempty" xml:"ReportDefinitions,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,65 +79,61 @@ func (s *ListReportDefinitionsResponseBody) Validate() error {
 }
 
 type ListReportDefinitionsResponseBodyReportDefinitions struct {
-	// Whether to enable tag fields
-	AutoTagFields *bool `json:"AutoTagFields,omitempty" xml:"AutoTagFields,omitempty"`
-	// Push start billing cycle. After the subscription is successfully created, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly billing PDF subscriptions and does not re-push historical data. A maximum of data from the last 1 year can be pushed.
+	// The start billing cycle for data push. After a successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and historical data is not pushed again. Data for up to the last year can be pushed.
 	//
 	// example:
 	//
 	// 2025-05
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
-	// Name of the OSS bucket where files are stored.
+	// The name of the OSS bucket where files are stored.
 	//
 	// example:
 	//
 	// oss-bill
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// UID of the OSS owner that stores the files. Specify this parameter if you subscribe as a BID/ReSeller and want to push data to the OSS of a sub-account. The specified account must be a sub-account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The default value is the calling account.
+	// The UID of the OSS bucket owner. Specify this parameter if the subscription is made by a bidder or reseller and data needs to be pushed to the OSS bucket of a RAM user. The target account must be a RAM user of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. By default, the calling account is used.
 	//
 	// example:
 	//
 	// 1234567812345678
 	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
-	// OSS bucket storage path.
+	// The storage path in the OSS bucket.
 	//
 	// example:
 	//
 	// bill/
 	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
-	// Name of the subscription source.
+	// The name of the subscription source.
 	//
 	// example:
 	//
 	// OSS
 	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
-	// Type of the subscription source. Valid values: OSS and MC.
+	// The type of the subscription source, such as OSS or MC.
 	//
 	// example:
 	//
 	// OSS
 	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
-	// Billing subscription task ID.
+	// The ID of the bill subscription task.
 	//
 	// example:
 	//
 	// 123321
 	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
-	// Subscription type. Valid values:
+	// The subscription type. Valid values:
 	//
-	// - BillingItemDetailForBillingPeriod: billing item consumption details.
+	// - BillingItemDetailForBillingPeriod: billing item consumption details
 	//
-	// - InstanceDetailForBillingPeriod: instance consumption details.
+	// - InstanceDetailForBillingPeriod: instance consumption details
 	//
-	// - BillingItemDetailMonthly: billing item consumption summary by billing cycle.
+	// - BillingItemDetailMonthly: billing item consumption summary by billing cycle
 	//
 	// example:
 	//
 	// BillingItemDetailForBillingPeriod
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// Specified subscribed fields
-	SelectedFields []*string `json:"SelectedFields,omitempty" xml:"SelectedFields,omitempty" type:"Repeated"`
-	// Time when the subscription was created.
+	// The time when the subscription was created.
 	//
 	// example:
 	//
@@ -151,10 +147,6 @@ func (s ListReportDefinitionsResponseBodyReportDefinitions) String() string {
 
 func (s ListReportDefinitionsResponseBodyReportDefinitions) GoString() string {
 	return s.String()
-}
-
-func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetAutoTagFields() *bool {
-	return s.AutoTagFields
 }
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetBeginBillingCycle() *string {
@@ -189,17 +181,8 @@ func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetReportType() *st
 	return s.ReportType
 }
 
-func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetSelectedFields() []*string {
-	return s.SelectedFields
-}
-
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) GetSubscribeCreateTime() *string {
 	return s.SubscribeCreateTime
-}
-
-func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetAutoTagFields(v bool) *ListReportDefinitionsResponseBodyReportDefinitions {
-	s.AutoTagFields = &v
-	return s
 }
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetBeginBillingCycle(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
@@ -239,11 +222,6 @@ func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportTaskId(v i
 
 func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportType(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
 	s.ReportType = &v
-	return s
-}
-
-func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetSelectedFields(v []*string) *ListReportDefinitionsResponseBodyReportDefinitions {
-	s.SelectedFields = v
 	return s
 }
 

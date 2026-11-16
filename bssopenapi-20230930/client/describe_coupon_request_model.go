@@ -102,17 +102,21 @@ type DescribeCouponRequest struct {
 	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
 	// Specifies whether to include shared coupons.
 	IncludeShare *bool `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
-	// The maximum number of entries to return for a single request.
+	// The maximum number of entries to return for a single query.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The first-level site information.
+	// The level-1 site information.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The token for the next query. If this parameter is empty, no more pages are available.
+	// The token used to start the next query. If this parameter is left empty, no more pages exist.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page size.
+	// The number of items per page.
 	//
 	// This parameter is required.
 	//
@@ -121,6 +125,10 @@ type DescribeCouponRequest struct {
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product code.
+	//
+	// example:
+	//
+	// sfm
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The status.
 	//
@@ -305,7 +313,7 @@ func (s *DescribeCouponRequest) Validate() error {
 }
 
 type DescribeCouponRequestEcIdAccountIds struct {
-	// The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
+	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The enterprise entity ID.
 	//

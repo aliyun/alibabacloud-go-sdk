@@ -26,7 +26,7 @@ type QueryCostCenterRuleRequest struct {
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
 	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*QueryCostCenterRuleRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	// The ID of the level-1 marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ func (s *QueryCostCenterRuleRequest) Validate() error {
 type QueryCostCenterRuleRequestEcIdAccountIds struct {
 	// The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The enterprise entity ID.
+	// The ID of the enterprise entity.
 	//
 	// This parameter is required.
 	//

@@ -729,54 +729,48 @@ func (client *Client) CreateInvoiceWithContext(ctx context.Context, tmpReq *Crea
 //
 // - You can subscribe to only one type of billing file at a time.
 //
-// - Except for monthly billing PDFs, starting from the day after the subscription is created, a billing file containing all detailed data from the beginning of the current month to the current day is pushed daily. A full billing file for the entire previous billing cycle is pushed before the 4th day of each month.
+// - Except for monthly billing PDF files, starting from the day after the subscription is created, a billing file that contains all detailed data from the beginning of the current month to the current day is pushed every day. A full billing file for the entire previous billing cycle is pushed before the 4th day of each month.
 //
-// - Monthly billing PDFs for the previous month are pushed before the 4th day of each month.
+// - Monthly billing PDF files for the previous month are pushed before the 4th day of each month.
 //
-// - Billing files generated on a daily basis may be delayed. Delayed bills are pushed on the day after they are generated and may include bills that were delayed and generated on the previous day. Pull the full files for the previous month at the beginning of each month.
+// - Billing files generated on a daily basis may be delayed. Delayed billing files are pushed on the day after they are generated, and may also include billing files that were delayed and generated on the previous day. Pull the full files for the previous month at the beginning of each month.
 //
-// > Apply for the billing subscription permissions as described in the documentation: [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
+// > Apply for permissions by following the instructions in [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
 //
-// - This subscription and the billing subscription in the Expenses and Costs console are the same feature, and subscriptions are interoperable.
+// - This subscription and the billing subscription feature in Expenses and Costs are the same feature, and subscriptions are interoperable.
 //
 // - When you subscribe to a directory under a bucket, make sure that the directory naming conventions are met:
 //
-//   - Emojis are not allowed. Use valid UTF-8 characters.
+//   - Do not use emojis. Use valid UTF-8 characters.
 //
-//   - The forward slash (/) is used to separate paths and create subdirectories. Do not start the path with a forward slash (/) or a backslash (\\), and do not use consecutive forward slashes.
+//   - Use forward slashes (/) to separate paths and quickly create subdirectories. Do not start a path with a forward slash (/) or a backslash (\\), and do not use consecutive forward slashes.
 //
-//   - Subdirectories named .. are not allowed.
+//   - Do not use subdirectories named `..`.
 //
-//   - The total length must be 1 to 254 characters.
+//   - Limit the total length to 1 to 254 characters.
 //
 // - File names:
 //
 //   - Example: **consumeDetailBillV2*	- (billing item details)
 //
-//   - Format of the file name pushed daily: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMMDD}`. Example: `169**_2688801000001_consumeDetailBillV2_20190312`.
+//   - Format of the file name pushed every day: `{Account UID}_{Site ID}_{Billing type}_{YYYYMM|YYYYMMDD}`. Example: `169**_2688801000001_consumeDetailBillV2_20190312`.
 //
-//   - Format of the complete file name pushed at the beginning of the next month: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMM}`. Example: `169**_2688801000001_consumeDetailBillV2_201903`.
+//   - Format of the complete file name pushed at the beginning of the next month: `{Account UID}_{Site ID}_{Billing type}_{YYYYMM|YYYYMM}`. Example: `169**_2688801000001_consumeDetailBillV2_201903`.
 //
 // - Monthly billing PDF files are in the .pdf format, and other files are in the .csv format. When the data volume is large, the system automatically splits an exported bill into multiple files and compresses them into one or more ZIP files. The ZIP file names follow the same format.
 //
-// @param tmpReq - CreateReportDefinitionRequest
+// @param request - CreateReportDefinitionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateReportDefinitionResponse
-func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, tmpReq *CreateReportDefinitionRequest, runtime *dara.RuntimeOptions) (_result *CreateReportDefinitionResponse, _err error) {
+func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, request *CreateReportDefinitionRequest, runtime *dara.RuntimeOptions) (_result *CreateReportDefinitionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
+		_err = request.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
-	request := &CreateReportDefinitionShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.SelectedFields) {
-		request.SelectedFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedFields, dara.String("SelectedFields"), dara.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginBillingCycle) {
 		query["BeginBillingCycle"] = request.BeginBillingCycle
@@ -808,10 +802,6 @@ func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, tmp
 
 	if !dara.IsNil(request.ReportType) {
 		query["ReportType"] = request.ReportType
-	}
-
-	if !dara.IsNil(request.SelectedFieldsShrink) {
-		query["SelectedFields"] = request.SelectedFieldsShrink
 	}
 
 	if !dara.IsNil(request.SendWithAttach) {
@@ -1095,7 +1085,7 @@ func (client *Client) DeleteReportDefinitionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of coupons.
+// Queries the list of coupons.
 //
 // @param tmpReq - DescribeCouponRequest
 //
@@ -1213,7 +1203,7 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 
 // Summary:
 //
-// Queries the list of products available for a coupon.
+// Queries the products available for a coupon.
 //
 // @param tmpReq - DescribeCouponItemListRequest
 //
@@ -1283,7 +1273,7 @@ func (client *Client) DescribeCouponItemListWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries resource plan deduction records.
+// Queries the deduction records of resource plans.
 //
 // @param tmpReq - DescribeDeductLogsRequest
 //
@@ -1693,7 +1683,7 @@ func (client *Client) GetFundAccountCanRecycleAmountWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Query the transferable amount of a fund account
+// Queries the transferable amount of a fund account.
 //
 // @param request - GetFundAccountCanTransferAmountRequest
 //
@@ -1785,7 +1775,7 @@ func (client *Client) GetFundAccountCanWithdrawAmountWithContext(ctx context.Con
 
 // Summary:
 //
-// # Query Fund Account Low Balance Alert
+// Queries the low balance alert for a fund account.
 //
 // @param request - GetFundAccountLowAvailableAmountAlarmRequest
 //
@@ -2251,6 +2241,100 @@ func (client *Client) GetSavingPlanUserDeductRuleWithContext(ctx context.Context
 
 // Summary:
 //
+// Queries the consumption summary for a specified billing month or billing date, and supports viewing expenses by dimensions such as billing item, resource, product, and account.
+//
+// Description:
+//
+// 1. The final billing details for the current month will be issued at 12:00 on the 3rd day of the following month. Query results before this time are for reference only and should not be used as a basis for reconciliation (minor scenarios that may occur during the month include but are not limited to delayed billing, refunds, adjustments, and overdue payment write-offs).
+//
+// 2. Billing details are updated with a 24-hour delay compared to actual expense consumption, and information related to instance IDs (resource names) is updated with a 48-hour delay.
+//
+// 3. Billing data does not support providing specific expenses for each attached resource (such as domain names, buckets, and EIPs) of split-type cloud products (such as CDN, OSS, and Internet Shared Bandwidth). To view data including attached resources, go to split bills.
+//
+// 4. Data for the last 18 months is supported.
+//
+// 5. Amounts, usage, and durations are returned as character strings. Use decimal numeric types to process amounts to avoid precision loss caused by binary floating-point numbers.
+//
+// 6. Whether a field has a value depends on the aggregation dimension, product Billable methods, and billing data. Null values or unreturned fields do not indicate that the value is zero.
+//
+// 7. This operation uses the field Glossary of the new version of bills. For related concepts, see [Differences and field descriptions of the new version of bills](https://www.alibabacloud.com/help/en/user-center/v2-version-bill-field-description). The English paths in the help documentation are OSS subscribe fields. The parameter names, field names, and return structures of this operation are subject to this topic.
+//
+// @param tmpReq - ListConsumeSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumeSummaryResponse
+func (client *Client) ListConsumeSummaryWithContext(ctx context.Context, tmpReq *ListConsumeSummaryRequest, runtime *dara.RuntimeOptions) (_result *ListConsumeSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListConsumeSummaryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CommonFilters) {
+		request.CommonFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonFilters, dara.String("CommonFilters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EcIdAccountIds) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Period) {
+		request.PeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Period, dara.String("Period"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommonFiltersShrink) {
+		query["CommonFilters"] = request.CommonFiltersShrink
+	}
+
+	if !dara.IsNil(request.DimensionType) {
+		query["DimensionType"] = request.DimensionType
+	}
+
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PeriodShrink) {
+		query["Period"] = request.PeriodShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumeSummary"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumeSummaryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询优惠券设置的抵扣标签
 //
 // @param tmpReq - ListCouponDeductTagRequest
@@ -2535,7 +2619,7 @@ func (client *Client) ListInvoiceCandidateWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// # View subscribed report list
+// Queries the list of subscribed reports.
 //
 // @param request - ListReportDefinitionsRequest
 //
@@ -2569,6 +2653,108 @@ func (client *Client) ListReportDefinitionsWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListReportDefinitionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the split bill summary for a specified billing month or date. This operation supports viewing the costs of resources and split items, and filtering by product, account, financial unit, resource group, and tag.
+//
+// Description:
+//
+// 1. This operation aggregates split bill records by day or month. It can be used to view the cost attribution of split resources. For products that support automatic splitting, you can view costs by attached resource, such as OSS buckets, CDN domain names, and EIPs of Internet Shared Bandwidth. For the supported scope, refer to [Split bill details](https://www.alibabacloud.com/help/en/user-center/splitting-bill).
+//
+// 2. The final split bill data for the current month is generated at 12:00 on the fourth day of the next month. Query results before this time are for reference only and must not be used as the final basis for reconciliation. The generation of costs for attached resources is delayed. If the data is incomplete, query again after the update.
+//
+// 3. Amounts, usage, and durations are returned as character strings. Use decimal numeric types to process amounts and avoid precision loss caused by binary floating-point numbers.
+//
+// 4. Whether a field has a value depends on the product billing method, splitting rules, and bill data. A null value or an unreturned field does not mean the value is zero. Information such as public IP, private IP, and resource names also depends on the resource information query capabilities of the product.
+//
+// 5. This operation uses the field terminology of the new bill version. For related concepts, refer to [Differences and field descriptions of the new bill version](https://www.alibabacloud.com/help/en/user-center/v2-version-bill-field-description). The parameter names and response structure of this operation are subject to this topic.
+//
+// @param tmpReq - ListSplitSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSplitSummaryResponse
+func (client *Client) ListSplitSummaryWithContext(ctx context.Context, tmpReq *ListSplitSummaryRequest, runtime *dara.RuntimeOptions) (_result *ListSplitSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSplitSummaryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CommonFilters) {
+		request.CommonFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonFilters, dara.String("CommonFilters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CostCategoriesFilters) {
+		request.CostCategoriesFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CostCategoriesFilters, dara.String("CostCategoriesFilters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EcIdAccountIds) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Period) {
+		request.PeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Period, dara.String("Period"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TagFilters) {
+		request.TagFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagFilters, dara.String("TagFilters"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommonFiltersShrink) {
+		query["CommonFilters"] = request.CommonFiltersShrink
+	}
+
+	if !dara.IsNil(request.CostCategoriesFiltersShrink) {
+		query["CostCategoriesFilters"] = request.CostCategoriesFiltersShrink
+	}
+
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PeriodShrink) {
+		query["Period"] = request.PeriodShrink
+	}
+
+	if !dara.IsNil(request.TagFiltersShrink) {
+		query["TagFilters"] = request.TagFiltersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSplitSummary"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSplitSummaryResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2977,11 +3163,11 @@ func (client *Client) QueryCostCenterResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the automatic allocation rules of a cost center.
+// Queries cost center rules.
 //
 // Description:
 //
-// Queries a parent cost center and its child cost centers.
+// Queries the parent cost center and its child cost centers.
 //
 // @param request - QueryCostCenterRuleRequest
 //
@@ -3099,11 +3285,11 @@ func (client *Client) QueryCostCenterShareRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the SLA compensation list for a user.
+// Queries the SLA compensation list for users.
 //
 // Description:
 //
-// Queries the SLA compensation details list for a user. Only data from the last two months is available.
+// Provides the list of SLA compensation details for users, including only data from the last two months.
 //
 // @param request - QueryMonthlySlaListRequest
 //

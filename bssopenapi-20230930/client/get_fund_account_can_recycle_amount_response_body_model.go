@@ -26,7 +26,7 @@ type iGetFundAccountCanRecycleAmountResponseBody interface {
 }
 
 type GetFundAccountCanRecycleAmountResponseBody struct {
-	// The available balance of the account from which funds are reclaimed.
+	// The available balance of the reclaimed account.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type GetFundAccountCanRecycleAmountResponseBody struct {
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The ID of the source account from which funds are reclaimed.
+	// The ID of the source account for reclamation.
 	//
 	// example:
 	//
 	// 1232122132
 	RecycleFromFundAccountId *string `json:"RecycleFromFundAccountId,omitempty" xml:"RecycleFromFundAccountId,omitempty"`
-	// The list of accounts to which funds can be reclaimed.
+	// The list of accounts to which the funds can be reclaimed.
 	RecycleToFundAccountList []*GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList `json:"RecycleToFundAccountList,omitempty" xml:"RecycleToFundAccountList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -58,7 +58,7 @@ type GetFundAccountCanRecycleAmountResponseBody struct {
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transfer ledger balance.
+	// The balance of the transfer ledger.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ func (s *GetFundAccountCanRecycleAmountResponseBody) Validate() error {
 }
 
 type GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList struct {
-	// The ID of the target account to which funds can be reclaimed.
+	// The ID of the reclaimable account.
 	//
 	// example:
 	//
 	// 122323121
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
-	// The name of the target account to which funds can be reclaimed.
+	// The name of the reclaimable account.
 	//
 	// example:
 	//
-	// 云某的账户
+	// Yun\\"s account
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
-	// The account ID that owns the target account to which funds can be reclaimed.
+	// The ID of the account that owns the reclaimable account.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList struct {
 	//
 	// 120
 	MaxRecyclableAmount *string `json:"MaxRecyclableAmount,omitempty" xml:"MaxRecyclableAmount,omitempty"`
-	// The remaining transfer amount that can be reclaimed through the original transfer path.
+	// The transfer amount that can be reclaimed through the original route.
 	//
 	// example:
 	//

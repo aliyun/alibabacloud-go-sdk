@@ -28,7 +28,7 @@ type SubmitSlaCouponApplyResponseBody struct {
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The unique identifier of the request, which is used to mark the request and facilitate troubleshooting.
+	// The unique identifier of the request, which is used to mark a request and facilitate troubleshooting.
 	//
 	// example:
 	//

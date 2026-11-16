@@ -42,13 +42,13 @@ type DescribeDeductLogsRequest struct {
 	//
 	// ecs-******
 	BillInstanceId *string `json:"BillInstanceId,omitempty" xml:"BillInstanceId,omitempty"`
-	// The commodity code for deduction.
+	// The commodity code of the deducted item.
 	//
 	// example:
 	//
 	// snapshot
 	BillingCommodityCode *string `json:"BillingCommodityCode,omitempty" xml:"BillingCommodityCode,omitempty"`
-	// The billing end time. The value is a UNIX timestamp in milliseconds.
+	// The end time of the billing cycle. The time is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeDeductLogsRequest struct {
 	//
 	// 1679068799999
 	BillingEndTime *int64 `json:"BillingEndTime,omitempty" xml:"BillingEndTime,omitempty"`
-	// The billing start time. The value is a UNIX timestamp in milliseconds.
+	// The start time of the billing cycle. The time is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type DescribeDeductLogsRequest struct {
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*DescribeDeductLogsRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The resource dimension.
+	// The resource dimension to query.
 	//
 	// example:
 	//
 	// oss_rc
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// OSSBAG-cn******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	// The ID of the level-1 marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeDeductLogsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of accounts for deduction.
+	// The list of deduction accounts.
 	RelationAccountIds []*int64 `json:"RelationAccountIds,omitempty" xml:"RelationAccountIds,omitempty" type:"Repeated"`
 }
 
@@ -238,7 +238,7 @@ func (s *DescribeDeductLogsRequest) Validate() error {
 type DescribeDeductLogsRequestEcIdAccountIds struct {
 	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The enterprise entity ID.
+	// The ID of the enterprise entity.
 	//
 	// This parameter is required.
 	//

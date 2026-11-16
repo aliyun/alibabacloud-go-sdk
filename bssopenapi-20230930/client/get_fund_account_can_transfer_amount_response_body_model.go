@@ -38,79 +38,79 @@ type iGetFundAccountCanTransferAmountResponseBody interface {
 }
 
 type GetFundAccountCanTransferAmountResponseBody struct {
-	// Available amount
+	// The available amount.
 	//
 	// example:
 	//
 	// 100
 	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
-	// Cash ledger balance
+	// The cash ledger balance.
 	//
 	// example:
 	//
 	// 500
 	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// Currency
+	// The currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// Enterprise entity ID of the account owner
+	// The enterprise entity ID of the fund account owner.
 	//
 	// example:
 	//
 	// 2032121324
 	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
-	// Account ID
+	// The fund account ID.
 	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
-	// Account name
+	// The fund account name.
 	//
 	// example:
 	//
-	// 云某的账户
+	// Yun\\"s account
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
-	// Alibaba Cloud account ID of the fund account owner
+	// The Alibaba Cloud account ID of the fund account owner.
 	//
 	// example:
 	//
 	// 154738212323
 	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
-	// Transferable amount
+	// The maximum transferable amount.
 	//
 	// example:
 	//
 	// 100
 	MaxTransferableAmount *string `json:"MaxTransferableAmount,omitempty" xml:"MaxTransferableAmount,omitempty"`
-	// Response metadata
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Primary marketplace
+	// The primary sales site.
 	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Site
+	// The site.
 	//
 	// example:
 	//
 	// 26842
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// Transfer ledger balance
+	// The transfer ledger balance.
 	//
 	// example:
 	//

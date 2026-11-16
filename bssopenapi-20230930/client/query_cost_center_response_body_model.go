@@ -32,7 +32,7 @@ type QueryCostCenterResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The response metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type QueryCostCenterResponseBodyCostCenterDtoList struct {
 	//
 	// Resource group
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
-	// The node level of the cost center.
+	// The level of the cost center node.
 	//
 	// example:
 	//
-	// loose
+	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the owner account for the cost center.
+	// The ID of the owner account of the cost center.
 	//
 	// example:
 	//

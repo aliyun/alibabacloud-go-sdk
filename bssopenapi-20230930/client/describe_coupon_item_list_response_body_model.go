@@ -30,7 +30,7 @@ type DescribeCouponItemListResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data list.
 	Data []*DescribeCouponItemListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeCouponItemListResponseBody) Validate() error {
 }
 
 type DescribeCouponItemListResponseBodyData struct {
-	// The product code.
+	// The commodity code.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type DescribeCouponItemListResponseBodyData struct {
 	//
 	// example:
 	//
-	// 云服务器ECS
+	// Elastic Compute Service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

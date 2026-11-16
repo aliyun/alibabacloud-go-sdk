@@ -32,15 +32,15 @@ type QueryCostCenterRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
+	// The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*QueryCostCenterRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The ID of the level-1 sales site. If this parameter is left empty, the ID of the sales site to which the current user belongs is used by default.
+	// The ID of the level-1 marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The ID of the owner account for the cost center.
+	// The ID of the owner account of the cost center.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ func (s *QueryCostCenterRequest) Validate() error {
 }
 
 type QueryCostCenterRequestEcIdAccountIds struct {
-	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
+	// The list of accounts to access. If this parameter is left empty, all accounts under the current enterprise entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The ID of the enterprise entity.
 	//

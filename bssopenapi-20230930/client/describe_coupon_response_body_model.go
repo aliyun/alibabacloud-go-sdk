@@ -30,7 +30,7 @@ type DescribeCouponResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data list.
 	Data []*DescribeCouponResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page size.
+	// The number of items per page.
 	//
 	// example:
 	//
@@ -124,6 +124,10 @@ type DescribeCouponResponseBodyData struct {
 	// 9929.750000
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// CertainAmount
+	//
+	// example:
+	//
+	// 100.00
 	CertainAmount *string `json:"CertainAmount,omitempty" xml:"CertainAmount,omitempty"`
 	// The coupon ID.
 	//
@@ -155,13 +159,13 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The end time in ISO 8601 format. The time is displayed in UTC.
+	// The end time in ISO 8601 format. The time zone is UTC.
 	//
 	// example:
 	//
 	// 2021-03-06T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the coupon is limited to first-time purchases.
+	// Indicates whether a first-purchase limit applies.
 	FirstBuy *bool `json:"FirstBuy,omitempty" xml:"FirstBuy,omitempty"`
 	// The time when the coupon was issued.
 	//
@@ -181,7 +185,7 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// example:
 	//
-	// Subscription rule: The coupon can be used only for purchase orders with a duration greater than 3,600 seconds
+	// Subscription rule: The coupon can be used only for orders with a duration greater than 3,600 seconds
 	OrderTimeRule *string `json:"OrderTimeRule,omitempty" xml:"OrderTimeRule,omitempty"`
 	// The remaining amount.
 	//
@@ -197,7 +201,7 @@ type DescribeCouponResponseBodyData struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The list of shared accounts.
 	ShareUidList []*DescribeCouponResponseBodyDataShareUidList `json:"ShareUidList,omitempty" xml:"ShareUidList,omitempty" type:"Repeated"`
-	// Specifies whether the tag deduction button is displayed.
+	// Indicates whether the tag deduction button is displayed.
 	//
 	// example:
 	//
@@ -215,7 +219,7 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// Official website direct sales
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The start time in ISO 8601 format. The time is displayed in UTC.
+	// The start time in ISO 8601 format. The time zone is UTC.
 	//
 	// example:
 	//
@@ -233,7 +237,7 @@ type DescribeCouponResponseBodyData struct {
 	//
 	// 1902671110151254
 	SuitAccount *string `json:"SuitAccount,omitempty" xml:"SuitAccount,omitempty"`
-	// The applicable product type: all for all products, white for specified applicable products, and black for specified inapplicable products.
+	// The applicable product type. Valid values: all: Applicable to all products. white: Applicable to specified products. black: Not applicable to specified products.
 	//
 	// example:
 	//

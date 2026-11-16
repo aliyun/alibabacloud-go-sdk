@@ -34,7 +34,7 @@ type iQueryCostCenterRuleResponseBody interface {
 }
 
 type QueryCostCenterRuleResponseBody struct {
-	// The cost center ID.
+	// The ID of the cost center.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ type QueryCostCenterRuleResponseBody struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The deletion status. Valid values:
 	//
-	// 	- **0**: Active.
+	// 	- **0**: active.
 	//
-	// 	- **1**: Inactive.
+	// 	- **1**: inactive.
 	//
 	// example:
 	//
-	// false
+	// 0
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The response struct metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The owner of the cost center.
+	// The owner account of the cost center.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type QueryCostCenterRuleResponseBody struct {
 	//
 	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root cost center ID.
+	// The ID of the root cost center.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type QueryCostCenterRuleResponseBody struct {
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
 	// The status. Valid values:
 	//
-	// - on: Active.
+	// - on: valid.
 	//
-	// - off: Inactive.
+	// - off: invalid.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type QueryCostCenterRuleResponseBodyFilterExpression struct {
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
 	// The sub-condition filter.
 	FilterValues *QueryCostCenterRuleResponseBodyFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
-	// The filter condition (deprecated).
+	// **[Deprecated]*	- The filter condition.
 	//
 	// example:
 	//
@@ -316,19 +316,19 @@ type QueryCostCenterRuleResponseBodyFilterExpressionFilterValues struct {
 	//
 	// TAG-test-xxx-key
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The condition filter key name (deprecated).
+	// **[Deprecated]*	- The name of the condition filter key.
 	//
 	// example:
 	//
 	// None
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	// The association between the code and value.
+	// The association between code and value.
 	//
 	// example:
 	//
 	// IN
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	// The attribute value type corresponding to the module Code. Valid values:
+	// The property value type corresponding to the module code. Valid values:
 	//
 	// - single_float: single value type.
 	//
