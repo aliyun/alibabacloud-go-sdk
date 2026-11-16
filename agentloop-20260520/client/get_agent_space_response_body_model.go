@@ -86,9 +86,11 @@ type GetAgentSpaceResponseBody struct {
 	//
 	// default-cms-1837787111545040-cn-beijing
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// The complete standard tags of the active AgentSpace in the current region. An empty array is returned if it is confirmed that no tags exist. This field is omitted if the AgentSpace is not active or the tags cannot be determined. The omission of this field does not indicate that no tags exist.
+	//
 	// example:
 	//
-	// [{\\"key\\": \\"env\\", \\"value\\": \\"test\\"}]
+	// [{"key":"env","value":"test"}]
 	Tags []*GetAgentSpaceResponseBodyTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The update time.
 	//
@@ -226,7 +228,7 @@ func (s *GetAgentSpaceResponseBody) Validate() error {
 }
 
 type GetAgentSpaceResponseBodyMseNamespace struct {
-	// The attach type of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+	// The attach type of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that you select and attach an existing namespace when creating the AgentSpace.
 	//
 	// example:
 	//
@@ -286,10 +288,14 @@ func (s *GetAgentSpaceResponseBodyMseNamespace) Validate() error {
 }
 
 type GetAgentSpaceResponseBodyTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value, which can be an empty string.
+	//
 	// example:
 	//
 	// test

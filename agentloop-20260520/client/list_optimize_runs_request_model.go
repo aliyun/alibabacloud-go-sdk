@@ -22,7 +22,7 @@ type iListOptimizeRunsRequest interface {
 }
 
 type ListOptimizeRunsRequest struct {
-	// The maximum number of entries to return. Default value: 20. Maximum value: 100.
+	// The maximum number of results to return. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
@@ -34,23 +34,23 @@ type ListOptimizeRunsRequest struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The status used to filter results.
+	// The status used to filter the results.
 	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The lower bound of the window start time in UNIX seconds.
+	// The lower bound of the window start time, in UNIX seconds.
 	//
 	// example:
 	//
-	// 1786432688000
+	// 1786432688
 	WindowStartTimeBegin *int64 `json:"windowStartTimeBegin,omitempty" xml:"windowStartTimeBegin,omitempty"`
-	// The upper bound of the window start time in UNIX seconds.
+	// The upper bound of the window start time, in UNIX seconds.
 	//
 	// example:
 	//
-	// 1786432690000
+	// 1786432690
 	WindowStartTimeEnd *int64 `json:"windowStartTimeEnd,omitempty" xml:"windowStartTimeEnd,omitempty"`
 }
 

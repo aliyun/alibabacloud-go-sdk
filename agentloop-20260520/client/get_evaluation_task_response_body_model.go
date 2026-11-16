@@ -25,6 +25,8 @@ type iGetEvaluationTaskResponseBody interface {
 	GetDescription() *string
 	SetEvaluators(v []*Evaluator) *GetEvaluationTaskResponseBody
 	GetEvaluators() []*Evaluator
+	SetQualityMetrics(v map[string]interface{}) *GetEvaluationTaskResponseBody
+	GetQualityMetrics() map[string]interface{}
 	SetRegionId(v string) *GetEvaluationTaskResponseBody
 	GetRegionId() *string
 	SetRequestId(v string) *GetEvaluationTaskResponseBody
@@ -46,7 +48,7 @@ type iGetEvaluationTaskResponseBody interface {
 }
 
 type GetEvaluationTaskResponseBody struct {
-	// The AgentSpace name.
+	// The name of the AgentSpace.
 	//
 	// example:
 	//
@@ -58,19 +60,19 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The data source and execution configuration. Tasks with `dataType=trace` typically contain backend-populated `project`, `storeName`, and `dataScope` fields.
+	// The data source and execution configurations. Tasks with `dataType=trace` typically include the `project`, `storeName`, and `dataScope` fields populated by the backend.
 	//
 	// example:
 	//
 	// {"project":"agentspace-project","storeName":"logstore-tracing","dataScope":"trace"}
 	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	// The creation time, in seconds as a UNIX timestamp.
+	// The creation time, represented as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1782816000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The evaluation data filter conditions, returned by the backend as a JSON string.
+	// The filter conditions for evaluation data. The backend returns this value as a JSON string.
 	//
 	// example:
 	//
@@ -86,7 +88,7 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// example:
 	//
-	// Evaluate the task completion of the online Agent pipeline
+	// Evaluate the task completion rate of online agent workflows
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of evaluator configurations.
 	//
@@ -94,55 +96,61 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// [{"evaluatorRef":"Builtin.agent_task_completion","resultName":"agent_task_completion","resultType":"score","variableMapping":{"input":"trace.input","output":"trace.output","agent_trajectory":"trace.agent_trajectory"}}]
 	Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
+	// The quality score and coverage snapshot of the most recent evaluator run. This field is empty when the feature is not enabled.
+	//
+	// example:
+	//
+	// {}
+	QualityMetrics map[string]interface{} `json:"qualityMetrics,omitempty" xml:"qualityMetrics,omitempty"`
 	// The region to which the task belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The structured run strategy configuration, including the parsed backfill strategy and continuous evaluation strategy.
+	// The structured configuration of the run strategy, including the parsed backfill strategy and continuous evaluation strategy.
 	//
 	// example:
 	//
 	// {"backfill":{"enabled":true,"startTime":1782816000000,"endTime":1782902400000},"continuous":{"enabled":true,"intervalUnit":"HOUR","intervalValue":1,"dataDelayMinutes":5}}
 	RunStrategyConfig *RunStrategies `json:"runStrategyConfig,omitempty" xml:"runStrategyConfig,omitempty"`
-	// The evaluation task status.
+	// The status of the evaluation task.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The key-value pairs of task tags. Empty if not set.
+	// The key-value pairs of task tags. This field is empty when no tags are set.
 	//
 	// example:
 	//
 	// {"serviceId":"checkout-service","env":"prod"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The evaluation task ID.
+	// The ID of the evaluation task.
 	//
 	// example:
 	//
 	// eval-task-8b36f2e2b1f94f9c91ce7a4b0f6d9c25
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The evaluation task mode.
+	// The mode of the evaluation task.
 	//
 	// example:
 	//
 	// batch
 	TaskMode *string `json:"taskMode,omitempty" xml:"taskMode,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
 	// trace_task_completion_eval
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The last update time, in seconds as a UNIX timestamp.
+	// The last update time, represented as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -188,6 +196,10 @@ func (s *GetEvaluationTaskResponseBody) GetDescription() *string {
 
 func (s *GetEvaluationTaskResponseBody) GetEvaluators() []*Evaluator {
 	return s.Evaluators
+}
+
+func (s *GetEvaluationTaskResponseBody) GetQualityMetrics() map[string]interface{} {
+	return s.QualityMetrics
 }
 
 func (s *GetEvaluationTaskResponseBody) GetRegionId() *string {
@@ -263,6 +275,11 @@ func (s *GetEvaluationTaskResponseBody) SetDescription(v string) *GetEvaluationT
 
 func (s *GetEvaluationTaskResponseBody) SetEvaluators(v []*Evaluator) *GetEvaluationTaskResponseBody {
 	s.Evaluators = v
+	return s
+}
+
+func (s *GetEvaluationTaskResponseBody) SetQualityMetrics(v map[string]interface{}) *GetEvaluationTaskResponseBody {
+	s.QualityMetrics = v
 	return s
 }
 

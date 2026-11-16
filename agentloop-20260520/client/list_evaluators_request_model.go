@@ -32,13 +32,13 @@ type ListEvaluatorsRequest struct {
 	//
 	// prod-agentspace
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The number of entries per page. Default value: 20. Maximum value: 100.
+	// The number of entries returned per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The fuzzy match condition for the evaluator name.
+	// The fuzzy search condition for the evaluator name.
 	//
 	// example:
 	//

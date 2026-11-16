@@ -21,6 +21,8 @@ type iGetEvaluationRunResponseBody interface {
 	GetEvaluators() *string
 	SetFailedCount(v int32) *GetEvaluationRunResponseBody
 	GetFailedCount() *int32
+	SetQualityMetrics(v map[string]interface{}) *GetEvaluationRunResponseBody
+	GetQualityMetrics() map[string]interface{}
 	SetRequestId(v string) *GetEvaluationRunResponseBody
 	GetRequestId() *string
 	SetRunId(v string) *GetEvaluationRunResponseBody
@@ -42,31 +44,31 @@ type iGetEvaluationRunResponseBody interface {
 }
 
 type GetEvaluationRunResponseBody struct {
-	// The creation time, in seconds-level UNIX timestamp.
+	// The creation time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1782816000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The end time of the run data window, in seconds-level UNIX timestamp.
+	// The end time of the run data window. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1782902400
 	DataEndTime *int64 `json:"dataEndTime,omitempty" xml:"dataEndTime,omitempty"`
-	// The start time of the run data window, in seconds-level UNIX timestamp.
+	// The start time of the run data window. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1782816000
 	DataStartTime *int64 `json:"dataStartTime,omitempty" xml:"dataStartTime,omitempty"`
-	// The list of progress entries by evaluator.
+	// The progress list by evaluator dimension.
 	//
 	// example:
 	//
 	// [{"evaluatorName":"Builtin.agent_task_completion","totalCount":100,"successCount":96,"failedCount":4}]
 	EvaluatorProgress []*GetEvaluationRunResponseBodyEvaluatorProgress `json:"evaluatorProgress,omitempty" xml:"evaluatorProgress,omitempty" type:"Repeated"`
-	// The snapshot of the evaluator configuration at the time the run was created, in JSON string format.
+	// The snapshot of the evaluator configuration when the run is created. The value is a JSON string.
 	//
 	// example:
 	//
@@ -78,31 +80,37 @@ type GetEvaluationRunResponseBody struct {
 	//
 	// 4
 	FailedCount *int32 `json:"failedCount,omitempty" xml:"failedCount,omitempty"`
-	// The request ID.
+	// The snapshot of the evaluator quality scores and coverage for the current run. This field is empty if the feature is not enabled.
+	//
+	// example:
+	//
+	// {}
+	QualityMetrics map[string]interface{} `json:"qualityMetrics,omitempty" xml:"qualityMetrics,omitempty"`
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The run ID.
+	// The ID of the run.
 	//
 	// example:
 	//
 	// eval-run-4fd47f3d7e684e15b1d3d178c6a5b81a
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The run name.
+	// The name of the run.
 	//
 	// example:
 	//
 	// trace_task_completion_eval-backfill
 	RunName *string `json:"runName,omitempty" xml:"runName,omitempty"`
-	// The run type.
+	// The type of the run.
 	//
 	// example:
 	//
 	// backfill
 	RunType *string `json:"runType,omitempty" xml:"runType,omitempty"`
-	// The run status.
+	// The status of the run.
 	//
 	// example:
 	//
@@ -114,19 +122,19 @@ type GetEvaluationRunResponseBody struct {
 	//
 	// 96
 	SuccessCount *int32 `json:"successCount,omitempty" xml:"successCount,omitempty"`
-	// The evaluation task ID.
+	// The ID of the evaluation task.
 	//
 	// example:
 	//
 	// eval-task-8b36f2e2b1f94f9c91ce7a4b0f6d9c25
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The total number of evaluation items.
+	// The total number of evaluated items.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// The update time, in seconds-level UNIX timestamp.
+	// The update time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -164,6 +172,10 @@ func (s *GetEvaluationRunResponseBody) GetEvaluators() *string {
 
 func (s *GetEvaluationRunResponseBody) GetFailedCount() *int32 {
 	return s.FailedCount
+}
+
+func (s *GetEvaluationRunResponseBody) GetQualityMetrics() map[string]interface{} {
+	return s.QualityMetrics
 }
 
 func (s *GetEvaluationRunResponseBody) GetRequestId() *string {
@@ -232,6 +244,11 @@ func (s *GetEvaluationRunResponseBody) SetFailedCount(v int32) *GetEvaluationRun
 	return s
 }
 
+func (s *GetEvaluationRunResponseBody) SetQualityMetrics(v map[string]interface{}) *GetEvaluationRunResponseBody {
+	s.QualityMetrics = v
+	return s
+}
+
 func (s *GetEvaluationRunResponseBody) SetRequestId(v string) *GetEvaluationRunResponseBody {
 	s.RequestId = &v
 	return s
@@ -291,25 +308,25 @@ func (s *GetEvaluationRunResponseBody) Validate() error {
 }
 
 type GetEvaluationRunResponseBodyEvaluatorProgress struct {
-	// The evaluator name.
+	// The name of the evaluator.
 	//
 	// example:
 	//
 	// Builtin.agent_task_completion
 	EvaluatorName *string `json:"evaluatorName,omitempty" xml:"evaluatorName,omitempty"`
-	// The number of failed items for this evaluator.
+	// The number of failed items for the evaluator.
 	//
 	// example:
 	//
 	// 4
 	FailedCount *int32 `json:"failedCount,omitempty" xml:"failedCount,omitempty"`
-	// The number of successful items for this evaluator.
+	// The number of successful items for the evaluator.
 	//
 	// example:
 	//
 	// 96
 	SuccessCount *int32 `json:"successCount,omitempty" xml:"successCount,omitempty"`
-	// The total number of items for this evaluator.
+	// The total number of items for the evaluator.
 	//
 	// example:
 	//

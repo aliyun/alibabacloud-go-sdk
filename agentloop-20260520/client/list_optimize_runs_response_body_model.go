@@ -42,7 +42,7 @@ type ListOptimizeRunsResponseBody struct {
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -147,7 +147,23 @@ type ListOptimizeRunsResponseBodyOptimizeRuns struct {
 	//
 	// The optimize run failed.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The execution summary and finite-state information. To obtain complete result references, frozen outputs, and publish receipts, call GetOptimizeRun.
+	// The execution summary and finite-state information. Complete result references, frozen outputs, and publish receipts can be obtained by calling GetOptimizeRun.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"inputSelection": "trigger-re",
+	//
+	// 	"inputSelectorHash": "sha256:43cfdbfc0260d11d3491c4987478a1a0e9966dda88*************",
+	//
+	// 	"sourceTrajectoryScanSkipped": true,
+	//
+	// 	"featureTriggerTrajectoryCount": 1011,
+	//
+	// 	"incompleteTriggerTrajectoryCount": 0
+	//
+	// }
 	Extra map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
 	// The completion time.
 	//
@@ -174,8 +190,22 @@ type ListOptimizeRunsResponseBodyOptimizeRuns struct {
 	// efficiency-analysis
 	OptimizeTaskName *string `json:"optimizeTaskName,omitempty" xml:"optimizeTaskName,omitempty"`
 	// The current execution progress. The fields are defined by the task type.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"total": 1469,
+	//
+	// 	"skipped": 2,
+	//
+	// 	"processed": 370,
+	//
+	// 	"succeeded": 368
+	//
+	// }
 	Progress map[string]interface{} `json:"progress,omitempty" xml:"progress,omitempty"`
-	// The initial start time.
+	// The first start time.
 	//
 	// example:
 	//
@@ -199,23 +229,23 @@ type ListOptimizeRunsResponseBodyOptimizeRuns struct {
 	//
 	// Scheduled
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// The snapshot of the task type.
+	// The task type snapshot.
 	//
 	// example:
 	//
 	// EfficiencyAnalysis
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The end time of the analysis window in UNIX seconds.
+	// The end time of the analysis window, in UNIX seconds.
 	//
 	// example:
 	//
-	// 1786432690000
+	// 1786432690
 	WindowEndTime *int64 `json:"windowEndTime,omitempty" xml:"windowEndTime,omitempty"`
-	// The start time of the analysis window in UNIX seconds.
+	// The start time of the analysis window, in UNIX seconds.
 	//
 	// example:
 	//
-	// 1786432688000
+	// 1786432688
 	WindowStartTime *int64 `json:"windowStartTime,omitempty" xml:"windowStartTime,omitempty"`
 }
 

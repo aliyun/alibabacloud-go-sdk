@@ -18,15 +18,15 @@ type iPreviewPipelineResponseBody interface {
 }
 
 type PreviewPipelineResponseBody struct {
-	// The collection of sample rows for the preview result. Each row is a key-value structure. The array contains only the first N rows, up to 5 rows by default, and does not reflect the complete write plan.
+	// The collection of sample rows. This array of maps includes only the first N rows (up to 5 rows by default) and does not reflect the complete write plan.
 	//
 	// example:
 	//
-	// [{"status":"200","method":"POST"}]
+	// [{\\"type\\": \\"saturation\\", \\"value\\": 0}, {\\"type\\": \\"load\\", \\"value\\": 0}, {\\"type\\": \\"latency\\", \\"value\\": 1}, {\\"type\\": \\"error\\", \\"value\\": 0}]
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The query metadata.
 	Meta *PreviewPipelineResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The request ID. You can use this ID to locate the request when you troubleshoot issues.
+	// The request ID used to locate the request during troubleshooting.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 	- | SELECT status, count(*) AS cnt GROUP BY status
 	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
-	// The list of data types for each column. This field provides a mapping from column names to data types, such as string, long, double, and json.
+	// The mapping from column names to data types, such as string, long, double, or json.
 	//
 	// example:
 	//
@@ -115,13 +115,13 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 1200
 	ElapsedMillisecond *int64 `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
-	// Specifies whether an SQL query is used.
+	// Indicates whether an SQL query is used.
 	//
 	// example:
 	//
 	// true
 	HasSQL *bool `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
-	// Specifies whether nanosecond-level ordering is enabled.
+	// Indicates whether nanosecond-level ordering is enabled.
 	//
 	// example:
 	//
@@ -133,19 +133,19 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// ["status","method","path"]
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// The maximum number of rows returned in the result.
+	// The maximum number of returned rows.
 	//
 	// example:
 	//
 	// 5
 	Limited *int32 `json:"limited,omitempty" xml:"limited,omitempty"`
-	// The identifier of the query mode.
+	// The query mode identifier.
 	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The number of bytes of processed data.
+	// The number of processed data bytes.
 	//
 	// example:
 	//
@@ -157,19 +157,19 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 10000
 	ProcessedRows *int64 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
-	// The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is completed.
+	// The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is finished.
 	//
 	// example:
 	//
 	// Complete
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
-	// The number of bytes of scanned raw data.
+	// The number of scanned raw data bytes.
 	//
 	// example:
 	//
 	// 1048576
 	ScanBytes *int64 `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
-	// The dataset schema of the final pipeline output. The keys are field names, and the type in the values supports text, long, double, and json. The field order is determined by the keys.
+	// The dataset schema for the final output of the pipeline. The keys are field names, and the type in the values supports text, long, double, and json. The field order is determined by the keys field.
 	//
 	// example:
 	//

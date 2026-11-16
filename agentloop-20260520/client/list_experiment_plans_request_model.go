@@ -24,19 +24,19 @@ type iListExperimentPlansRequest interface {
 }
 
 type ListExperimentPlansRequest struct {
-	// The number of entries to return. Default value: 20.
+	// The maximum number of entries to return. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Optional. Use `offset` and `limit` for pagination instead.
+	// Optional. For pagination, use `offset` and `limit` instead.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Use `offset` and `limit` for pagination instead.
+	// Optional. For pagination, use `offset` and `limit` instead.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ListExperimentPlansRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Fuzzy matches experiment plans by plan name.
+	// The plan name used for fuzzy match.
 	//
 	// example:
 	//
 	// arms_agent
 	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
-	// Filters experiment plans by exact status.
+	// The exact status used for filtering.
 	//
 	// example:
 	//

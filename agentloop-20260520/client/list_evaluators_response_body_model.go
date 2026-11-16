@@ -28,7 +28,7 @@ type ListEvaluatorsResponseBody struct {
 	//
 	// [{"name":"trace_task_completion","type":"AGENT","latestVersion":"1.0.0"}]
 	Evaluators []*ListEvaluatorsResponseBodyEvaluators `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
-	// The number of entries per page used in this request.
+	// The number of entries per page used for this request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListEvaluatorsResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of evaluators that match the filter conditions.
+	// The total number of evaluators that meet the conditions.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *ListEvaluatorsResponseBody) Validate() error {
 }
 
 type ListEvaluatorsResponseBodyEvaluators struct {
-	// The list of annotations.
+	// The list of annotation tags.
 	//
 	// example:
 	//
 	// ["__en"]
 	Annotations []*string `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
-	// The creation time, in seconds-level UNIX timestamp.
+	// The creation time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -137,13 +137,13 @@ type ListEvaluatorsResponseBodyEvaluators struct {
 	//
 	// example:
 	//
-	// 判断 Agent 是否完成用户任务
+	// Determines whether the agent has completed the user task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name.
 	//
 	// example:
 	//
-	// 链路任务完成度
+	// Pipeline task completion rate
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The latest version number.
 	//
@@ -175,7 +175,7 @@ type ListEvaluatorsResponseBodyEvaluators struct {
 	//
 	// AGENT
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The update time, in seconds-level UNIX timestamp.
+	// The update time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

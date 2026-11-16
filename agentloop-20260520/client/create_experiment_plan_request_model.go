@@ -32,7 +32,7 @@ type iCreateExperimentPlanRequest interface {
 }
 
 type CreateExperimentPlanRequest struct {
-	// The ID of the associated dataset. If you do not specify this parameter, the execution phase is processed in simple mode.
+	// The ID of the associated dataset. If this parameter is not specified, the execution phase is processed in simple mode.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type CreateExperimentPlanRequest struct {
 	//
 	// rca_benchmark_eval_experiment offline experiment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of evaluators. After you configure this parameter, an evaluation is automatically triggered when the experiment is completed.
+	// The list of evaluators. After configuration, evaluation can be automatically triggered when the experiment is completed.
 	//
 	// example:
 	//
 	// [{"evaluatorRef": "Builtin.agent_correctness", "name": "Builtin.agent_correctness", "type": "AGENT", "resultName": "Builtin.agent_correctness", "resultType": "score", "variableMapping": {"input": "experiment_input", "output": "experiment_output", "expected_output": "dataset.ground_truth_json"}, "filters": {"query": "", "sample": "100"}, "config": {"variables": [], "prompt": ""}}, {"evaluatorRef": "rca-toxicity-safety-accuracy", "name": "rca-toxicity-safety-accuracy", "type": "AGENT", "resultName": "rca-toxicity-safety-accuracy", "resultType": "score", "variableMapping": {"input": "experiment_input", "output": "experiment_output", "question": "dataset.question", "expected_output": "dataset.ground_truth_json", "payload_json": "dataset.payload_json"}, "filters": {"query": "", "sample": "100"}, "config": {"variables": [], "prompt": ""}}]
 	Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
-	// The type of the experiment. Valid values: OFFLINE and ONLINE.
+	// The type of the experiment. Valid values: `OFFLINE` and `ONLINE`.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateExperimentPlanRequest struct {
 	//
 	// OFFLINE
 	ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
-	// The list of experiment configurations. You can specify up to 5 configurations. This parameter is optional or can be left empty for offline experiments. For online experiments, you must specify at least one configuration.
+	// The list of experiment configurations. A maximum of five configurations can be specified. This parameter is optional or can be an empty array for offline experiments. For online experiments, at least one configuration must be specified.
 	//
 	// This parameter is required.
 	//
@@ -72,9 +72,13 @@ type CreateExperimentPlanRequest struct {
 	//
 	// {"question": "How do I request a refund?"}
 	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	// The name of the associated data processing pipeline. This parameter is optional. After you associate a pipeline, when the experiment execution under this plan is completed and the experiment results are written to the Logstore, the system filters the data by the traceId of the current experiment trace and calls PreviewPipeline to write the results processed by the pipeline.
+	// The name of the associated data processing pipeline. This parameter is optional. After association, when the experiment execution under this plan is completed and the experiment results are written to the Logstore, the system filters by the traceId of the current experiment trace and calls PreviewPipeline to write the results processed by the pipeline together.
+	//
+	// example:
+	//
+	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The name of the experiment plan. The name must be unique within the same account in an AgentSpace.
+	// The name of the experiment plan. The name must be unique within the same account in the same AgentSpace.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +86,13 @@ type CreateExperimentPlanRequest struct {
 	//
 	// rca_benchmark_eval_experiment
 	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
-	// The custom query SQL clause in partial dataset mode. You can use this parameter when selectedItemIds is empty.
+	// The custom query SQL clause in partial dataset mode. This parameter can be used when `selectedItemIds` is empty.
 	//
 	// example:
 	//
 	// status=\\"OK\\"
 	QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
-	// The list of selected data item IDs in partial dataset mode. This parameter must be used together with the datasetId parameter.
+	// The list of selected data item IDs in partial dataset mode. This parameter must be used together with `datasetId`.
 	//
 	// example:
 	//

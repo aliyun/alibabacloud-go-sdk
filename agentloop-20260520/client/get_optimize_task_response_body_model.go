@@ -32,9 +32,25 @@ type iGetOptimizeTaskResponseBody interface {
 }
 
 type GetOptimizeTaskResponseBody struct {
-	// The scheduling checkpoint, which stores states such as the general scheduling watermark.
+	// The scheduling checkpoint that stores states such as the general scheduling watermark.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"lastWindowEndTime": 1787133600000,
+	//
+	// 	"lastScheduleStatus": "Succeeded",
+	//
+	// 	"nextWindowStartTime": 1787133600000,
+	//
+	// 	"lastScheduleAttemptTime": 1787137386912,
+	//
+	// 	"lastScheduleSuccessTime": 1787137386912
+	//
+	// }
 	Checkpoint map[string]interface{} `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	// The type-specific configuration. Optional prompts for ExperienceMining or SkillOptimize support only inline Markdown. The body is saved to inputs.prompt.content, which must be a non-empty UTF-8 string of up to 16 KiB.
+	// The type-specific configuration. Optional prompts for ExperienceMining or SkillOptimize support only inline Markdown. The main text is stored in inputs.prompt.content, which must be non-empty UTF-8 and up to 16 KiB in size.
 	//
 	// example:
 	//
@@ -52,7 +68,7 @@ type GetOptimizeTaskResponseBody struct {
 	//
 	// 2026-08-13T16:00:00Z
 	NextTriggerTime *string `json:"nextTriggerTime,omitempty" xml:"nextTriggerTime,omitempty"`
-	// The optimization task name.
+	// The name of the optimization task.
 	//
 	// example:
 	//
@@ -70,13 +86,13 @@ type GetOptimizeTaskResponseBody struct {
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The task status. Valid values: Enabled, Disabled.
+	// The task status. Valid values: Enabled and Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The optimization task type.
+	// The type of the optimization task.
 	//
 	// example:
 	//

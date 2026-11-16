@@ -24,7 +24,7 @@ type iUpdateEvaluatorSkillRequest interface {
 }
 
 type UpdateEvaluatorSkillRequest struct {
-	// The AgentSpace name.
+	// The name of the AgentSpace.
 	//
 	// This parameter is required.
 	//
@@ -36,27 +36,27 @@ type UpdateEvaluatorSkillRequest struct {
 	//
 	// example:
 	//
-	// 读取链路上下文辅助评估
+	// Read trace context to assist evaluation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the skill.
 	//
 	// example:
 	//
-	// Trace 上下文读取
+	// Read Trace Context
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Specifies whether to enable the skill.
+	// Specifies whether the skill is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The list of skill files. When provided, the skill file content is updated.
+	// The list of skill files. If specified, the content of the skill files is updated.
 	//
 	// example:
 	//
-	// [{"name":"SKILL.md","content":"# Trace Context Loader","remark":"主技能说明"}]
+	// [{"name":"SKILL.md","content":"# Trace Context Loader","remark":"Primary skill description"}]
 	Files []*UpdateEvaluatorSkillRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency comparison.
+	// The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency checks.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ func (s *UpdateEvaluatorSkillRequest) Validate() error {
 }
 
 type UpdateEvaluatorSkillRequestFiles struct {
-	// The skill file content.
+	// The content of the skill file.
 	//
 	// This parameter is required.
 	//
@@ -148,7 +148,7 @@ type UpdateEvaluatorSkillRequestFiles struct {
 	//
 	// # Trace Context Loader
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The skill file name.
+	// The name of the skill file.
 	//
 	// This parameter is required.
 	//
@@ -156,11 +156,11 @@ type UpdateEvaluatorSkillRequestFiles struct {
 	//
 	// SKILL.md
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The file remark.
+	// The remark for the file.
 	//
 	// example:
 	//
-	// 主技能说明
+	// Primary skill description
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 

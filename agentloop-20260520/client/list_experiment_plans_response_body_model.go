@@ -26,7 +26,7 @@ type iListExperimentPlansResponseBody interface {
 }
 
 type ListExperimentPlansResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of returned entries.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListExperimentPlansResponseBody struct {
 	//
 	// example:
 	//
-	// [{"planId": "exp-plan-e95bff54685a4ae29ff3a834c1008a71", "planName": "rca_benchmark_eval_experiment", "experimentType": "offline", "description": "", "status": "pending", "datasetId": "rca_benckmark_eval", "querySql": "", "experimentCount": 5, "createdAt": 1784612365000, "updatedAt": 1784619562000}, {"planId": "exp-plan-0242d983f5d340fd8479cf2c19eb279e", "planName": "arms_agent_experiment", "experimentType": "online", "description": "", "status": "stopped", "datasetId": "arms_customer_agent_level1", "querySql": "", "experimentCount": 4, "createdAt": 1784257858000, "updatedAt": 1784721811000}, {"planId": "b7f0ad3d-3765-446a-a744-ab64ab8bf386", "planName": "arms_customer_agent_plan", "experimentType": "offline", "description": "", "status": "stopped", "datasetId": "arms_customer_agent_level1", "querySql": "where \\"input\\" LIKE \\"%探针%\\"", "experimentCount": 65, "createdAt": 1782310430000, "updatedAt": 1784692254000}]
+	// [{"planId": "exp-plan-e95bff54685a4ae29ff3a834c1008a71", "planName": "rca_benchmark_eval_experiment", "experimentType": "offline", "description": "", "status": "pending", "datasetId": "rca_benckmark_eval", "querySql": "", "experimentCount": 5, "createdAt": 1784612365000, "updatedAt": 1784619562000}, {"planId": "exp-plan-0242d983f5d340fd8479cf2c19eb279e", "planName": "arms_agent_experiment", "experimentType": "online", "description": "", "status": "stopped", "datasetId": "arms_customer_agent_level1", "querySql": "", "experimentCount": 4, "createdAt": 1784257858000, "updatedAt": 1784721811000}, {"planId": "b7f0ad3d-3765-446a-a744-ab64ab8bf386", "planName": "arms_customer_agent_plan", "experimentType": "offline", "description": "", "status": "stopped", "datasetId": "arms_customer_agent_level1", "querySql": "where \\"input\\" LIKE \\"%probe%\\"", "experimentCount": 65, "createdAt": 1782310430000, "updatedAt": 1784692254000}]
 	Plans []*ExperimentPlanData `json:"plans,omitempty" xml:"plans,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ type ListExperimentPlansResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of records that match the filter conditions.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iUpdateContextStoreResponseBody interface {
 }
 
 type UpdateContextStoreResponseBody struct {
-	// The configuration properties after updating the runtime recall switch. This block is not returned for other library update operations.
+	// The attributes returned after the runtime recall switch is updated. This block is not returned for other library update operations.
 	Config *UpdateContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The request ID. You can use this ID to locate the request when troubleshooting issues.
+	// The request ID. It is used to locate the request when you troubleshoot issues.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version number is the same as before the update.
+	// The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version is the same as the one before the update.
 	//
 	// example:
 	//
@@ -79,9 +79,9 @@ func (s *UpdateContextStoreResponseBody) Validate() error {
 }
 
 type UpdateContextStoreResponseBodyConfig struct {
-	// Indicates whether runtime recall is allowed after the experience library is updated.
+	// Specifies whether runtime recall is allowed after the experience library is updated.
 	RuntimeRecallEnabled *bool `json:"runtimeRecallEnabled,omitempty" xml:"runtimeRecallEnabled,omitempty"`
-	// The runtime recall property version that takes effect after this update.
+	// The version of the runtime recall attributes that takes effect after the current update.
 	//
 	// example:
 	//

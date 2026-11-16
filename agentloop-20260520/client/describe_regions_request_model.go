@@ -30,7 +30,7 @@ type DescribeRegionsRequest struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The maximum number of entries to return in a single request.
+	// The maximum number of results to return.
 	//
 	// example:
 	//

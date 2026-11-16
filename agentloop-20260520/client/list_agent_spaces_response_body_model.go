@@ -22,7 +22,7 @@ type iListAgentSpacesResponseBody interface {
 }
 
 type ListAgentSpacesResponseBody struct {
-	// The information about the AgentSpaces.
+	// The AgentSpaces information.
 	AgentSpaces []*ListAgentSpacesResponseBodyAgentSpaces `json:"agentSpaces,omitempty" xml:"agentSpaces,omitempty" type:"Repeated"`
 	// The maximum number of returned results.
 	//
@@ -30,7 +30,7 @@ type ListAgentSpacesResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. This parameter is empty if there are no more pages.
+	// The pagination token. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -157,11 +157,11 @@ type ListAgentSpacesResponseBodyAgentSpaces struct {
 	//
 	// default-cms-1152309027070167-cn-beijing
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// Returns only the tags of AgentSpaces that are active in the current region and match the local instance. An empty array is returned when it is confirmed that there are no tags. This field is omitted for entries in other regions, inactive entries, or entries that do not match the local instance. Omission of this field does not indicate the absence of tags.
+	// Returns only AgentSpace tags that are active in the current region and match the local instance. An empty array is returned when it is confirmed that no tags exist. This field is omitted for entries in other regions, inactive entries, or entries that do not match the local instance. Omission of this field does not indicate the absence of tags.
 	//
 	// example:
 	//
-	// [{\\"key\\": \\"env\\", \\"value\\": \\"test\\"}]
+	// [{"key":"env","value":"test"}]
 	Tags []*ListAgentSpacesResponseBodyAgentSpacesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The update time.
 	//
@@ -281,7 +281,7 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) Validate() error {
 }
 
 type ListAgentSpacesResponseBodyAgentSpacesMseNamespace struct {
-	// The method used to attach the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+	// The attach method for the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
 	//
 	// example:
 	//

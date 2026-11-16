@@ -20,13 +20,13 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The maximum number of entries returned per request.
+	// The maximum number of records returned in a single request.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. If no more pages are available, this parameter is empty.
+	// The pagination token. This value is empty if no more pages are available.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// example:
 	//
-	// 华东1（杭州）
+	// China (Hangzhou)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
 	// The region ID.
 	//

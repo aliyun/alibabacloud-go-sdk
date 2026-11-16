@@ -32,13 +32,13 @@ type ListOptimizeTasksRequest struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The task status.
+	// Filters the results by status.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task type.
+	// Filters the results by task type.
 	//
 	// example:
 	//

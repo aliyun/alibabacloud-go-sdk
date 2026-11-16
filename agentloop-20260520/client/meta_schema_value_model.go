@@ -14,7 +14,7 @@ type iMetaSchemaValue interface {
 }
 
 type MetaSchemaValue struct {
-	// The dataset field types. Valid values: text, long, double, and json.
+	// The dataset field type. Valid values: text, long, double, and json.
 	//
 	// example:
 	//

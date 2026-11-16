@@ -22,13 +22,13 @@ type iListOptimizeTasksResponseBody interface {
 }
 
 type ListOptimizeTasksResponseBody struct {
-	// The maximum number of results per page.
+	// The maximum number of results returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListOptimizeTasksResponseBody struct {
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total count.
+	// The total number of tasks.
 	//
 	// example:
 	//
@@ -117,7 +117,23 @@ func (s *ListOptimizeTasksResponseBody) Validate() error {
 }
 
 type ListOptimizeTasksResponseBodyOptimizeTasks struct {
-	// The scheduling checkpoint that stores states such as the general scheduling watermark.
+	// The scheduling checkpoint, which stores states such as the general scheduling watermark.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"lastWindowEndTime": 1787133600000,
+	//
+	// 	"lastScheduleStatus": "Succeeded",
+	//
+	// 	"nextWindowStartTime": 1787133600000,
+	//
+	// 	"lastScheduleAttemptTime": 1787137386912,
+	//
+	// 	"lastScheduleSuccessTime": 1787137386912
+	//
+	// }
 	Checkpoint map[string]interface{} `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
 	// The type-specific configuration. For ExperienceMining and SkillOptimize, optional prompts support only inline Markdown, and the body is stored in inputs.prompt.content (non-empty UTF-8, up to 16 KiB).
 	//
@@ -125,13 +141,13 @@ type ListOptimizeTasksResponseBodyOptimizeTasks struct {
 	//
 	// {"ioVersion":2,"inputs":{"experienceLibrary":{"type":"dataset","dataset":"experiences"},"trajectory":{"type":"sls","project":"my-project","logstore":"agent-trajectory","format":"atif"},"prompt":{"type":"inline","format":"markdown","content":"# Guidance\\\\nExtract evidence-backed tool contracts."}},"outputs":{"changePlan":{"type":"dataset","dataset":"experience-plans"}},"operators":["tool_contract"],"application":{"mode":"manual"}}
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The creation time.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 2026-08-12T10:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The next scheduling trigger time.
+	// The next scheduled trigger time.
 	//
 	// example:
 	//
@@ -149,7 +165,7 @@ type ListOptimizeTasksResponseBodyOptimizeTasks struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The task status.
+	// The status of the task.
 	//
 	// example:
 	//
@@ -161,7 +177,7 @@ type ListOptimizeTasksResponseBodyOptimizeTasks struct {
 	//
 	// EfficiencyAnalysis
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The update time.
+	// The time when the task was updated.
 	//
 	// example:
 	//

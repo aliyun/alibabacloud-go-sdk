@@ -526,7 +526,7 @@ func (client *Client) CreateDataset(agentSpace *string, request *CreateDatasetRe
 
 // Summary:
 //
-// Creates a named historical version for a dataset in a specified agent workspace to preserve the historical state of the dataset. You can call ListDatasetVersions to query version information. If a version is no longer needed, you can call DeleteDatasetVersion to delete the version.
+// Creates a named historical version for a dataset in a specified agent workspace to preserve the historical state of the dataset. You can call ListDatasetVersions to query version information. When a version is no longer needed, you can call DeleteDatasetVersion to delete it.
 //
 // @param request - CreateDatasetVersionRequest
 //
@@ -583,7 +583,7 @@ func (client *Client) CreateDatasetVersionWithOptions(agentSpace *string, datase
 
 // Summary:
 //
-// Creates a named historical version for a dataset in a specified agent workspace to preserve the historical state of the dataset. You can call ListDatasetVersions to query version information. If a version is no longer needed, you can call DeleteDatasetVersion to delete the version.
+// Creates a named historical version for a dataset in a specified agent workspace to preserve the historical state of the dataset. You can call ListDatasetVersions to query version information. When a version is no longer needed, you can call DeleteDatasetVersion to delete it.
 //
 // @param request - CreateDatasetVersionRequest
 //
@@ -926,7 +926,7 @@ func (client *Client) CreateEvaluatorSkill(name *string, request *CreateEvaluato
 //
 // Description:
 //
-// Creates an experiment plan in a specified AgentSpace. You can use this operation to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to initiate the execution.
+// Calls CreateExperimentPlan to create an experiment plan in a specified AgentSpace. This operation is used to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to initiate the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -1013,7 +1013,7 @@ func (client *Client) CreateExperimentPlanWithOptions(agentSpace *string, reques
 //
 // Description:
 //
-// Creates an experiment plan in a specified AgentSpace. You can use this operation to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to initiate the execution.
+// Calls CreateExperimentPlan to create an experiment plan in a specified AgentSpace. This operation is used to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to initiate the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -1656,7 +1656,7 @@ func (client *Client) DeleteDataset(agentSpace *string, datasetName *string, req
 
 // Summary:
 //
-// Deletes a historical version of a dataset in a specified agent workspace. After deletion, the version no longer appears in the list returned by ListDatasetVersions. This operation does not delete the dataset itself, the current data, or other historical versions.
+// Deletes a historical version of a dataset in a specified agent space. After the deletion, the version no longer appears in the list returned by ListDatasetVersions. This operation does not delete the dataset itself, current data, or other historical versions.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -1697,7 +1697,7 @@ func (client *Client) DeleteDatasetVersionWithOptions(agentSpace *string, datase
 
 // Summary:
 //
-// Deletes a historical version of a dataset in a specified agent workspace. After deletion, the version no longer appears in the list returned by ListDatasetVersions. This operation does not delete the dataset itself, the current data, or other historical versions.
+// Deletes a historical version of a dataset in a specified agent space. After the deletion, the version no longer appears in the list returned by ListDatasetVersions. This operation does not delete the dataset itself, current data, or other historical versions.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -3232,7 +3232,11 @@ func (client *Client) GetPipeline(agentSpace *string, pipelineName *string, requ
 
 // Summary:
 //
-// Queries the details of a single pipeline run.
+// Queries the details of a single run, including the data window, execute status, retry information, run statistics, and fault message.
+//
+// Description:
+//
+// Invokes GetPipelineRun to retrieve the details of a single pipeline run, including the data window, execute status, retry information, run statistics, and fault message.
 //
 // @param request - GetPipelineRunRequest
 //
@@ -3273,7 +3277,11 @@ func (client *Client) GetPipelineRunWithOptions(agentSpace *string, pipelineName
 
 // Summary:
 //
-// Queries the details of a single pipeline run.
+// Queries the details of a single run, including the data window, execute status, retry information, run statistics, and fault message.
+//
+// Description:
+//
+// Invokes GetPipelineRun to retrieve the details of a single pipeline run, including the data window, execute status, retry information, run statistics, and fault message.
 //
 // @param request - GetPipelineRunRequest
 //
@@ -3614,7 +3622,7 @@ func (client *Client) ListContextStores(agentSpace *string, request *ListContext
 
 // Summary:
 //
-// Performs a paged query to retrieve the historical versions of a dataset in a specified agent workspace and returns the version names, descriptions, and creation time. Deleted versions are not included in the list. Do not specify nextToken in the first request. For subsequent requests, use the nextToken value from the previous response for paging to retrieve the next page.
+// Performs a paged query to retrieve the historical versions of a dataset in a specified agent space and returns the version names, descriptions, and creation time. Deleted versions are not returned in the list. Do not specify nextToken in the first request. For subsequent requests, use the nextToken from the previous response to continue paging.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -3665,7 +3673,7 @@ func (client *Client) ListDatasetVersionsWithOptions(agentSpace *string, dataset
 
 // Summary:
 //
-// Performs a paged query to retrieve the historical versions of a dataset in a specified agent workspace and returns the version names, descriptions, and creation time. Deleted versions are not included in the list. Do not specify nextToken in the first request. For subsequent requests, use the nextToken value from the previous response for paging to retrieve the next page.
+// Performs a paged query to retrieve the historical versions of a dataset in a specified agent space and returns the version names, descriptions, and creation time. Deleted versions are not returned in the list. Do not specify nextToken in the first request. For subsequent requests, use the nextToken from the previous response to continue paging.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -4014,7 +4022,7 @@ func (client *Client) ListEvaluatorSkills(name *string, request *ListEvaluatorSk
 
 // Summary:
 //
-// Queries a list of evaluators.
+// Queries the list of evaluators.
 //
 // @param request - ListEvaluatorsRequest
 //
@@ -4081,7 +4089,7 @@ func (client *Client) ListEvaluatorsWithOptions(request *ListEvaluatorsRequest, 
 
 // Summary:
 //
-// Queries a list of evaluators.
+// Queries the list of evaluators.
 //
 // @param request - ListEvaluatorsRequest
 //
@@ -4104,7 +4112,7 @@ func (client *Client) ListEvaluators(request *ListEvaluatorsRequest) (_result *L
 //
 // Description:
 //
-// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. Supports fuzzy match by plan name, filtering by status, and pagination by using `offset`/`limit`.
+// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. This operation supports fuzzy match by plan name, filtering by status, and pagination by using `offset` and `limit`.
 //
 // @param request - ListExperimentPlansRequest
 //
@@ -4175,7 +4183,7 @@ func (client *Client) ListExperimentPlansWithOptions(agentSpace *string, request
 //
 // Description:
 //
-// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. Supports fuzzy match by plan name, filtering by status, and pagination by using `offset`/`limit`.
+// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. This operation supports fuzzy match by plan name, filtering by status, and pagination by using `offset` and `limit`.
 //
 // @param request - ListExperimentPlansRequest
 //
@@ -4296,7 +4304,7 @@ func (client *Client) ListExperimentRuns(agentSpace *string, request *ListExperi
 
 // Summary:
 //
-// Performs a paging query on the run records of a specified optimization task. To obtain complete result references and frozen outputs, call GetOptimizeRun.
+// Queries the run records of a specified optimization task by using paging. Complete result references and frozen outputs are queried by calling GetOptimizeRun.
 //
 // @param request - ListOptimizeRunsRequest
 //
@@ -4359,7 +4367,7 @@ func (client *Client) ListOptimizeRunsWithOptions(agentSpace *string, optimizeTa
 
 // Summary:
 //
-// Performs a paging query on the run records of a specified optimization task. To obtain complete result references and frozen outputs, call GetOptimizeRun.
+// Queries the run records of a specified optimization task by using paging. Complete result references and frozen outputs are queried by calling GetOptimizeRun.
 //
 // @param request - ListOptimizeRunsRequest
 //
@@ -4378,7 +4386,7 @@ func (client *Client) ListOptimizeRuns(agentSpace *string, optimizeTaskName *str
 
 // Summary:
 //
-// Queries optimization tasks in a specified AgentSpace by using paging and returns the task status, configurations, and scheduling checkpoints.
+// Performs a paging query on the optimization tasks in a specified AgentSpace and returns the task status, configurations, and scheduling checkpoints.
 //
 // @param request - ListOptimizeTasksRequest
 //
@@ -4437,7 +4445,7 @@ func (client *Client) ListOptimizeTasksWithOptions(agentSpace *string, request *
 
 // Summary:
 //
-// Queries optimization tasks in a specified AgentSpace by using paging and returns the task status, configurations, and scheduling checkpoints.
+// Performs a paging query on the optimization tasks in a specified AgentSpace and returns the task status, configurations, and scheduling checkpoints.
 //
 // @param request - ListOptimizeTasksRequest
 //
@@ -4456,7 +4464,11 @@ func (client *Client) ListOptimizeTasks(agentSpace *string, request *ListOptimiz
 
 // Summary:
 //
-// Queries the run history. Supports filtering by status, trigger type, and time range, and cursor-based pagination.
+// Queries the run history. Supports filtering by status, trigger type, and time range, and uses cursor-based pagination.
+//
+// Description:
+//
+// Calls the ListPipelineRuns operation to query the pipeline run history. You can filter the results by status, trigger type, and time range, and use cursor-based pagination.
 //
 // @param request - ListPipelineRunsRequest
 //
@@ -4523,7 +4535,11 @@ func (client *Client) ListPipelineRunsWithOptions(agentSpace *string, pipelineNa
 
 // Summary:
 //
-// Queries the run history. Supports filtering by status, trigger type, and time range, and cursor-based pagination.
+// Queries the run history. Supports filtering by status, trigger type, and time range, and uses cursor-based pagination.
+//
+// Description:
+//
+// Calls the ListPipelineRuns operation to query the pipeline run history. You can filter the results by status, trigger type, and time range, and use cursor-based pagination.
 //
 // @param request - ListPipelineRunsRequest
 //
@@ -4700,9 +4716,9 @@ func (client *Client) PausePipeline(agentSpace *string, pipelineName *string, re
 //
 // ## Request description
 //
-// - **agentSpace*	- must be an AgentSpace instance created under the current account.
+// - **agentSpace*	- must be an existing AgentSpace instance under the current account.
 //
-// - **source.type*	- currently supports only the `logstore` type, and `logstore.project` and `logstore.logstore` must be authorized within the AgentSpace and reside in the same region.
+// - **source.type*	- currently supports only the `logstore` type. The `logstore.project` and `logstore.logstore` must be authorized within the AgentSpace and reside in the same region.
 //
 // - **pipeline.nodes*	- must contain at least one `Source` node and cannot be empty.
 //
@@ -4773,9 +4789,9 @@ func (client *Client) PreviewPipelineWithOptions(agentSpace *string, request *Pr
 //
 // ## Request description
 //
-// - **agentSpace*	- must be an AgentSpace instance created under the current account.
+// - **agentSpace*	- must be an existing AgentSpace instance under the current account.
 //
-// - **source.type*	- currently supports only the `logstore` type, and `logstore.project` and `logstore.logstore` must be authorized within the AgentSpace and reside in the same region.
+// - **source.type*	- currently supports only the `logstore` type. The `logstore.project` and `logstore.logstore` must be authorized within the AgentSpace and reside in the same region.
 //
 // - **pipeline.nodes*	- must contain at least one `Source` node and cannot be empty.
 //

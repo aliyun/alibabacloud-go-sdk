@@ -22,7 +22,7 @@ type iListPipelineRunsResponseBody interface {
 }
 
 type ListPipelineRunsResponseBody struct {
-	// The maximum number of entries per page specified in the request, echoed in the response.
+	// The maximum number of entries per page specified in the request. This value is echoed in the response.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListPipelineRunsResponseBody struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID, which is used to locate the request during troubleshooting.
+	// The request ID. You can use this ID to locate the request when troubleshooting issues.
 	//
 	// example:
 	//
@@ -123,15 +123,23 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// my-agent-space
 	AgentSpaceName *string `json:"agentSpaceName,omitempty" xml:"agentSpaceName,omitempty"`
-	// The current number of retries.
+	// The current attempt number.
 	//
 	// example:
 	//
 	// 0
 	Attempt *int32 `json:"attempt,omitempty" xml:"attempt,omitempty"`
 	// The semantic error code.
+	//
+	// example:
+	//
+	// ExpressionEvaluationError
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Failed to evaluate filter expression in node \\"node-1\\": column \\"score\\" does not exist.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// The finish time in ISO 8601 UTC format.
 	//
@@ -141,13 +149,13 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// 2026-01-01T00:00:10.000Z
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	// The start time of the data window, in UNIX seconds.
+	// The start time of the data window. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735660800
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of attempts.
 	//
 	// example:
 	//
@@ -173,7 +181,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// run-20260101-0001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The execution start time in ISO 8601 UTC format.
+	// The start time of the execution in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -181,7 +189,11 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// 2026-01-01T00:00:01.000Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The run statistics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of consumed tokens).
+	// The run statistics metrics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of consumed tokens).
+	//
+	// example:
+	//
+	// {"processedRows":1000,"elapsedMs":2500}
 	Stats map[string]interface{} `json:"stats,omitempty" xml:"stats,omitempty"`
 	// The run status. Valid values: Pending, Running, Succeeded, Failed, and Cancelled.
 	//
@@ -189,7 +201,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The end time of the data window, in UNIX seconds.
+	// The end time of the data window. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -203,7 +215,7 @@ type ListPipelineRunsResponseBodyRuns struct {
 	//
 	// 2026-01-01T00:00:00.000Z
 	TriggerTime *string `json:"triggerTime,omitempty" xml:"triggerTime,omitempty"`
-	// The trigger type. Valid values: Scheduled, Manual, RunOnce, and Continuous (continuous micro-batch execution).
+	// The trigger type. Valid values: Scheduled, Manual, and RunOnce.
 	//
 	// example:
 	//

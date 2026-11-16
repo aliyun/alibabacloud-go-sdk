@@ -48,23 +48,31 @@ type iGetPipelineRunResponseBody interface {
 }
 
 type GetPipelineRunResponseBody struct {
-	// The name of the AgentSpace to which the pipeline belongs.
+	// The name of the AgentSpace.
 	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpaceName *string `json:"agentSpaceName,omitempty" xml:"agentSpaceName,omitempty"`
-	// The current retry count.
+	// The current number of retries.
 	//
 	// example:
 	//
 	// 0
 	Attempt *int32 `json:"attempt,omitempty" xml:"attempt,omitempty"`
 	// The semantic error code.
+	//
+	// example:
+	//
+	// ExpressionEvaluationError
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Failed to evaluate filter expression in node \\"node-1\\": column \\"score\\" does not exist.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The finish time, in ISO 8601 UTC format.
+	// The finish time in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -72,7 +80,7 @@ type GetPipelineRunResponseBody struct {
 	//
 	// 2026-01-01T00:00:10.000Z
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	// The start of the data window, in UNIX seconds.
+	// The start time of the data window, in UNIX seconds.
 	//
 	// example:
 	//
@@ -84,7 +92,7 @@ type GetPipelineRunResponseBody struct {
 	//
 	// 3
 	MaxAttempts *int32 `json:"maxAttempts,omitempty" xml:"maxAttempts,omitempty"`
-	// The next retry time, in ISO 8601 UTC format.
+	// The next retry time in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -98,13 +106,17 @@ type GetPipelineRunResponseBody struct {
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The ID of the request, which is used to locate the request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The inline run results. This field is returned only when output.inline is set to true at trigger time.
+	// The inline run results, which are returned only when output.inline is set to true during triggering.
+	//
+	// example:
+	//
+	// {"outputRows": 100, "summary": "processed 100 rows, 92 matched", "passed": true}
 	Results map[string]interface{} `json:"results,omitempty" xml:"results,omitempty"`
 	// Run Id
 	//
@@ -112,7 +124,7 @@ type GetPipelineRunResponseBody struct {
 	//
 	// run-20260101-0001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The execution start time, in ISO 8601 UTC format.
+	// The execution start time in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -120,31 +132,25 @@ type GetPipelineRunResponseBody struct {
 	//
 	// 2026-01-01T00:00:01.000Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The run statistics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of tokens consumed).
+	// The run statistics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of consumed tokens).
+	//
+	// example:
+	//
+	// {"processedRows":1000,"elapsedMs":2500}
 	Stats map[string]interface{} `json:"stats,omitempty" xml:"stats,omitempty"`
-	// The run status. Valid values:
-	//
-	// - Pending
-	//
-	// - Running
-	//
-	// - Succeeded
-	//
-	// - Failed
-	//
-	// - Cancelled
+	// The status of the run. Valid values: Pending, Running, Succeeded, Failed, and Cancelled.
 	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The end of the data window, in UNIX seconds.
+	// The end time of the data window, in UNIX seconds.
 	//
 	// example:
 	//
 	// 1735747200
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
-	// The trigger time, in ISO 8601 UTC format.
+	// The trigger time in ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -152,13 +158,7 @@ type GetPipelineRunResponseBody struct {
 	//
 	// 2026-01-01T00:00:00.000Z
 	TriggerTime *string `json:"triggerTime,omitempty" xml:"triggerTime,omitempty"`
-	// The trigger type. Valid values:
-	//
-	// - Scheduled
-	//
-	// - Manual
-	//
-	// - RunOnce
+	// The trigger type. Valid values: Scheduled, Manual, and RunOnce.
 	//
 	// example:
 	//
