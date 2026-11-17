@@ -22,7 +22,7 @@ type iListAgentInstanceMemoryResponseBody interface {
 }
 
 type ListAgentInstanceMemoryResponseBody struct {
-	// The memory configurations and statistics information of the agent instances on the current page.
+	// The memory configurations and statistics information of agent instances on the current page.
 	Data []*ListAgentInstanceMemoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The current page number. Pages start from 1.
 	//
@@ -117,19 +117,19 @@ func (s *ListAgentInstanceMemoryResponseBody) Validate() error {
 }
 
 type ListAgentInstanceMemoryResponseBodyData struct {
-	// The ID of the agent instance, which can be used to configure the instance memory switch or clear the instance memory.
+	// The Agent instance ID, which can be used to set the instance memory switch or clear the instance memory.
 	//
 	// example:
 	//
 	// agi-08vm****
 	AgentInstanceId *string `json:"AgentInstanceId,omitempty" xml:"AgentInstanceId,omitempty"`
-	// The instance lifetime and epoch status of the agent instance.
+	// The lifecycle status of the agent instance.
 	//
-	// - `UNDEPLOYED`: No deployment.
+	// - `UNDEPLOYED`: Undeployed.
 	//
-	// - `DEPLOYING`: Deployment in progress.
+	// - `DEPLOYING`: Deploying.
 	//
-	// - `DEPLOYED`: Deployment completed.
+	// - `DEPLOYED`: Deployed.
 	//
 	// - `STARTING`: Starting.
 	//
@@ -139,13 +139,13 @@ type ListAgentInstanceMemoryResponseBodyData struct {
 	//
 	// - `STOPPED`: Stopped.
 	//
-	// - `UNAVAILABLE`: Not active.
+	// - `UNAVAILABLE`: Unavailable.
 	//
 	// - `FAILED`: Failed.
 	//
-	// - `UPGRADING`: Upgrade in progress.
+	// - `UPGRADING`: Upgrading.
 	//
-	// - `REBUILDING`: Reset in progress.
+	// - `REBUILDING`: Resetting.
 	//
 	// - `DELETING`: Deleting.
 	//
@@ -155,13 +155,13 @@ type ListAgentInstanceMemoryResponseBodyData struct {
 	//
 	// RUNNING
 	AgentInstanceStatus *string `json:"AgentInstanceStatus,omitempty" xml:"AgentInstanceStatus,omitempty"`
-	// The business platform to which the agent belongs.
+	// The business platform to which the Agent belongs.
 	//
 	// example:
 	//
 	// ENTERPRISE_AGENTIC_COMPUTER
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The provider of the agent.
+	// The Agent provider.
 	//
 	// example:
 	//
@@ -179,13 +179,13 @@ type ListAgentInstanceMemoryResponseBodyData struct {
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time of the last memory update. The time is returned in the YYYY-MM-DDThh:mm:ss format, with optional fractional seconds. The time value uses the default time zone of the server, and the string does not include a time zone offset. This field is omitted if the last update time is unavailable.
+	// The time of the last memory update. The time is returned in the YYYY-MM-DDThh:mm:ss format, which may include fractional seconds. The time value uses the default time zone of the server, and the string does not contain a time zone offset. This field is omitted if the last update time is unavailable.
 	//
 	// example:
 	//
 	// 2026-10-26T21:14:36.693
 	LastMemoryUpdatedAt *string `json:"LastMemoryUpdatedAt,omitempty" xml:"LastMemoryUpdatedAt,omitempty"`
-	// The time of the latest backup. The time is returned in the YYYY-MM-DDThh:mm:ss format, with optional fractional seconds. The time value uses the default time zone of the server, and the string does not include a time zone offset. This field is omitted if the backup time is unavailable.
+	// The time of the latest backup. The time is returned in the YYYY-MM-DDThh:mm:ss format, which may include fractional seconds. The time value uses the default time zone of the server, and the string does not contain a time zone offset. This field is omitted if the backup time is unavailable.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ListAgentInstanceMemoryResponseBodyData struct {
 	//
 	// true
 	MemoryEnabled *string `json:"MemoryEnabled,omitempty" xml:"MemoryEnabled,omitempty"`
-	// The ID of the region where the runtime environment is located.
+	// The ID of the region where the runtime is located.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type ListAgentInstanceMemoryResponseBodyData struct {
 	//
 	// ecd-d8ut****
 	RuntimeId *string `json:"RuntimeId,omitempty" xml:"RuntimeId,omitempty"`
-	// The name of the runtime environment. The name of the associated resource is returned first. If the resource name is unavailable, the instance name is returned.
+	// The runtime name. The associated resource name is returned in preference. If the resource name is unavailable, the instance name is returned.
 	//
 	// example:
 	//
@@ -438,13 +438,13 @@ func (s *ListAgentInstanceMemoryResponseBodyData) Validate() error {
 }
 
 type ListAgentInstanceMemoryResponseBodyDataUserGroups struct {
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
 	// group-aliy****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group.
+	// The user group name.
 	//
 	// example:
 	//
@@ -483,13 +483,13 @@ func (s *ListAgentInstanceMemoryResponseBodyDataUserGroups) Validate() error {
 }
 
 type ListAgentInstanceMemoryResponseBodyDataUserOrgs struct {
-	// The ID of the organization.
+	// The organization ID.
 	//
 	// example:
 	//
 	// org-aliy****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The name of the organization.
+	// The organization name.
 	//
 	// example:
 	//

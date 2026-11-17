@@ -66,13 +66,13 @@ type BatchCreateLlmTemplatesResponseBodyData struct {
 	LlmTemplateIds []*string `json:"LlmTemplateIds,omitempty" xml:"LlmTemplateIds,omitempty" type:"Repeated"`
 	// The list of skipped model configuration items.
 	SkippedItems []*BatchCreateLlmTemplatesResponseBodyDataSkippedItems `json:"SkippedItems,omitempty" xml:"SkippedItems,omitempty" type:"Repeated"`
-	// The number of successfully created model templates.
+	// The number of successfully created items.
 	//
 	// example:
 	//
 	// 5
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The total number of requested model templates.
+	// The total number of requested items.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type BatchCreateLlmTemplatesResponseBodyDataSkippedItems struct {
 	//
 	// qwen3.5-plus
 	LlmCode *string `json:"LlmCode,omitempty" xml:"LlmCode,omitempty"`
-	// The reason why the model configuration item was skipped.
+	// The reason why the item is skipped.
 	//
 	// example:
 	//

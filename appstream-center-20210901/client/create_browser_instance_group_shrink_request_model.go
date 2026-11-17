@@ -66,7 +66,7 @@ type iCreateBrowserInstanceGroupShrinkRequest interface {
 }
 
 type CreateBrowserInstanceGroupShrinkRequest struct {
-	// The package ID.
+	// The package identifier.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -75,6 +75,8 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	// -
 	AppPackageType *string `json:"AppPackageType,omitempty" xml:"AppPackageType,omitempty"`
 	// Specifies whether to send notification emails for authorization and deauthorization.
+	//
+	// Valid values:
 	//
 	// - `true`: Sends notification emails.
 	//
@@ -100,7 +102,7 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// -
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the business region. This parameter is required.
+	// The business region identifier. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +114,7 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	BrowserConfigShrink *string `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty"`
 	// The resource billing method.
 	//
-	// **For MAU scenarios:*	- Set this parameter to `AppInstance`, which indicates billing by instance resource.
+	// **For MAU scenarios:*	- Set this parameter to `AppInstance`, which indicates billing by instance resources.
 	//
 	// example:
 	//
@@ -126,7 +128,7 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The name of the cloud browser group. This parameter is required. It is used to distinguish different browser groups in business management scenarios.
+	// The name of the cloud browser group. This parameter cannot be empty. It is used to distinguish different browser groups in business management scenarios.
 	//
 	// This parameter is required.
 	//
@@ -138,7 +140,7 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// If this parameter is omitted, the default image available for the account is used. If no default image is available, the creation may fail.
 	//
-	// **Usage condition:*	- When `CookiesSync` is enabled, explicitly specify an image that supports cookie synchronization.
+	// **Usage condition:*	- When CookiesSync is enabled, explicitly specify an image that supports cookie synchronization.
 	//
 	// example:
 	//
@@ -152,13 +154,13 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// appstreaming.general.basic
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The capacity configuration for the MAU billing scenario.
+	// The capacity configuration for MAU billing scenarios.
 	//
 	// example:
 	//
 	// 5
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The configurations of the office network and website access restrictions. The selected office network must belong to the current account and reside in the region specified by BizRegionId.
+	// The configurations for the office network and website access restrictions. The selected office network must belong to the current account and be located in the region specified by `BizRegionId`.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The node pool configuration.
 	//
@@ -170,13 +172,13 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
 	// The operating system type. This parameter is required.
 	//
-	// Only `Windows` is supported. Other operating systems are not supported.
+	// Only Windows is supported. Other operating systems are not supported.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The number of subscription periods.
+	// The number of billing cycles for the purchase.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -184,7 +186,7 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// -
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription period.
+	// The unit of the billing cycle for the purchase.
 	//
 	// You do not need to specify this parameter.
 	//
@@ -192,23 +194,23 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// -
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The configurations of clipboard, video, watermark, session, and client access policies.
+	// The configurations for clipboard, video, watermark, session, and client access policies.
 	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The promotion ID, which is used to specify the promotional offer applied to the order.
+	// The promotion identifier, which is used to specify the promotional offer applied to the order.
 	//
-	// The applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
+	// Applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
 	//
 	// example:
 	//
 	// 17440009****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The connection security policy of the browser group.
+	// The connection security policy for the browser group.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The user data storage configuration of the browser group.
+	// The user data storage configuration for the browser group.
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 	// The billing sub-type.
 	//
-	// **You must explicitly set this parameter to `mau`, which indicates billing by monthly active users.*	- Omitting this parameter does not enable MAU billing.
+	// **You must explicitly set this parameter to `mau`, which indicates billing by monthly active users.*	- Omitting this field does not enable MAU billing.
 	//
 	// example:
 	//
@@ -226,18 +228,18 @@ type CreateBrowserInstanceGroupShrinkRequest struct {
 	//
 	// -
 	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
-	// The list of authorized user group IDs. You can specify up to 10 user group IDs. The user groups must belong to the current account and match the account type of the office network.
+	// The list of authorized user group IDs. You can specify up to 10 user group IDs. The user groups must belong to the current account and match the office network account type.
 	//
-	// **Limits:*	- This parameter cannot be specified together with a non-empty `Users` parameter.
+	// **Limits:*	- This parameter cannot be specified together with a non-empty Users parameter.
 	//
 	// if can be null:
 	// true
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// The authorized user account information. The information must match the user and office network types.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-	// The list of authorized users. You can specify up to 200 users. The users must be created in advance and match the account type.
+	// The list of authorized users. You can specify up to 200 users. Users must be created in advance and match the account type.
 	//
-	// **Limit:*	- This parameter cannot be specified together with a non-empty UserGroupIds parameter.
+	// **Limits:*	- This parameter cannot be specified together with a non-empty `UserGroupIds` parameter.
 	UsersShrink *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 

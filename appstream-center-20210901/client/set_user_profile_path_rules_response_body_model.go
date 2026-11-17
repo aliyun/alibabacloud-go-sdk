@@ -30,7 +30,7 @@ type SetUserProfilePathRulesResponseBody struct {
 	//
 	// The parameter UserProfileRuleType is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, which can be used for troubleshooting.
+	// The unique identifier of the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

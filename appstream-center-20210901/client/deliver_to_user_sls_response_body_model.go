@@ -14,7 +14,7 @@ type iDeliverToUserSlsResponseBody interface {
 }
 
 type DeliverToUserSlsResponseBody struct {
-	// The request ID.
+	// The ID of the request. It is used to troubleshoot call issues.
 	//
 	// example:
 	//

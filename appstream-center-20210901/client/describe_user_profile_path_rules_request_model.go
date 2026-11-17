@@ -20,19 +20,19 @@ type iDescribeUserProfilePathRulesRequest interface {
 }
 
 type DescribeUserProfilePathRulesRequest struct {
-	// The ID of the app instance group. Specify either this parameter or AppInstanceGroupSetId when querying app instance group rules. This parameter can be omitted when querying system default rules.
+	// The app instance group ID. Specify either this parameter or AppInstanceGroupSetId when querying app instance group rules. This parameter can be omitted when querying system default rules.
 	//
 	// example:
 	//
 	// aig-0bi83v****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the app instance group set. Specify either this parameter or AppInstanceGroupId when querying app instance group set rules. This parameter can be omitted when querying system default rules.
+	// The app instance group set ID. Specify either this parameter or AppInstanceGroupId when querying app instance group set rules. This parameter can be omitted when querying system default rules.
 	//
 	// example:
 	//
 	// set-3jm9d0abc00example
 	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
-	// The region ID of the request. When querying or setting the rules for a specified app instance group, use the region where the target app instance group is located.
+	// The region ID of the request. When querying or setting rules for a specified app instance group, use the region where the target app instance group is located.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type DescribeUserProfilePathRulesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The path rule type. Valid values:
 	//
-	// - Default: Queries the system default rules. Both target IDs can be omitted.
+	// - `Default`: Queries system default rules. Both target IDs can be omitted.
 	//
-	// - AppInstanceGroup: Queries the rules of an app instance group or an app instance group set.
+	// - `AppInstanceGroup`: Queries the rules of an app instance group or an app instance group set.
 	//
 	// This parameter is required.
 	//

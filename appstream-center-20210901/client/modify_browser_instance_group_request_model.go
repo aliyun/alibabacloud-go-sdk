@@ -58,13 +58,13 @@ type ModifyBrowserInstanceGroupRequest struct {
 	//
 	// 5
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The network configurations.
+	// The network configuration.
 	Network *ModifyBrowserInstanceGroupRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The access policy.
 	Policy *ModifyBrowserInstanceGroupRequestPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The storage-related policy.
+	// The storage-related policies.
 	StoragePolicy *ModifyBrowserInstanceGroupRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
-	// The timer.
+	// The timers.
 	Timers []*ModifyBrowserInstanceGroupRequestTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 }
 
@@ -372,7 +372,7 @@ func (s *ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks) Validate() err
 }
 
 type ModifyBrowserInstanceGroupRequestNetwork struct {
-	// The type of access restriction.
+	// The access restriction type.
 	//
 	// example:
 	//
@@ -380,13 +380,13 @@ type ModifyBrowserInstanceGroupRequestNetwork struct {
 	AccessRestriction *string `json:"AccessRestriction,omitempty" xml:"AccessRestriction,omitempty"`
 	// The list of domain names to remove.
 	RemoveRestrictedURLIds []*string `json:"RemoveRestrictedURLIds,omitempty" xml:"RemoveRestrictedURLIds,omitempty" type:"Repeated"`
-	// The restricted domain name configurations.
+	// The restricted domain name configuration.
 	RestrictedURLs []*ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs `json:"RestrictedURLs,omitempty" xml:"RestrictedURLs,omitempty" type:"Repeated"`
-	// The file path for network restricted URLs.
+	// The network restricted URL file path.
 	//
 	// example:
 	//
-	// cn-hangzhou/aig_upm/xxx/temp/BrowserRestrictionUrls/URLWhitelistTemplate.csv
+	// cn-hangzhou/aig_upm/xxx/temp/BrowserRestrictionUrls/URL_allowlist_template.csv
 	RestrictedURLsFilePath *string `json:"RestrictedURLsFilePath,omitempty" xml:"RestrictedURLsFilePath,omitempty"`
 }
 
@@ -448,7 +448,7 @@ func (s *ModifyBrowserInstanceGroupRequestNetwork) Validate() error {
 }
 
 type ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs struct {
-	// The ID of the domain name configuration. This parameter is required only when you modify the configuration.
+	// The domain name configuration ID. Required only when modifying an existing configuration.
 	//
 	// example:
 	//
@@ -499,49 +499,53 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// off
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The server-side access IP address whitelist.
+	// The server access IP address whitelist.
 	AuthorizeAccessPolicyRules []*ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
-	// The client type control for logon.
+	// The logon client type control settings.
 	ClientTypes []*ModifyBrowserInstanceGroupRequestPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The clipboard policies.
 	ClipboardPolicy *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
-	// The data retention policy upon disconnection.
+	// The data retention policy after disconnection.
 	//
 	// example:
 	//
 	// customTime
 	DisconnectKeepSession *string `json:"DisconnectKeepSession,omitempty" xml:"DisconnectKeepSession,omitempty"`
-	// The session retention duration upon disconnection.
+	// The session retention duration after disconnection.
 	//
 	// example:
 	//
 	// 15
 	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
-	// The switch for the file manager in the floating button.
+	// The floating button file manager switch.
 	//
 	// example:
 	//
 	// off
 	FileManager *string `json:"FileManager,omitempty" xml:"FileManager,omitempty"`
-	// The file transfer policy for the web client.
+	// The web client file transfer policy.
 	//
 	// example:
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The dual-screen switch for the cloud browser.
+	// The cloud browser dual-screen switch.
+	//
+	// - `on`: Enables the dual-screen feature.
+	//
+	// - `off`: Disables the dual-screen feature.
 	//
 	// example:
 	//
 	// off
 	MultiScreen *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
-	// The policy for disconnecting upon inactivity.
+	// The disconnect on inactivity policy.
 	//
 	// example:
 	//
 	// on
 	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
-	// The inactivity disconnect time, in seconds.
+	// The inactivity disconnect time in seconds.
 	//
 	// example:
 	//
@@ -559,7 +563,7 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// Center
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The server access IP address whitelist to be revoked.
+	// The server access IP address whitelists to be revoked.
 	RevokeAccessPolicyRules []*ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules `json:"RevokeAccessPolicyRules,omitempty" xml:"RevokeAccessPolicyRules,omitempty" type:"Repeated"`
 	// The video policy.
 	VideoPolicy *ModifyBrowserInstanceGroupRequestPolicyVideoPolicy `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
@@ -811,7 +815,7 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules) Vali
 }
 
 type ModifyBrowserInstanceGroupRequestPolicyClientTypes struct {
-	// The type of the client.
+	// The client type.
 	//
 	// example:
 	//
@@ -862,7 +866,7 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// off
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The read length limit for the clipboard.
+	// The clipboard read length limit.
 	//
 	// example:
 	//
@@ -880,7 +884,7 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// B
 	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
-	// The write length limit for the clipboard.
+	// The clipboard write length limit.
 	//
 	// example:
 	//
@@ -904,13 +908,13 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
-	// The outbound size limit for rich text in the clipboard.
+	// The rich text clipboard read limit.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardReadLimit *int32 `json:"RichTextClipboardReadLimit,omitempty" xml:"RichTextClipboardReadLimit,omitempty"`
-	// The outbound size unit for rich text in the clipboard.
+	// The rich text clipboard read size unit.
 	//
 	// example:
 	//
@@ -922,13 +926,13 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// B
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
-	// The inbound size limit for rich text in the clipboard.
+	// The rich text clipboard write limit.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardWriteLimit *int32 `json:"RichTextClipboardWriteLimit,omitempty" xml:"RichTextClipboardWriteLimit,omitempty"`
-	// The inbound size unit for rich text in the clipboard.
+	// The rich text clipboard write size unit.
 	//
 	// example:
 	//
@@ -940,25 +944,25 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// off
 	TextClipboard *string `json:"TextClipboard,omitempty" xml:"TextClipboard,omitempty"`
-	// The outbound size limit for text in the clipboard.
+	// The text clipboard read limit.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardReadLimit *int32 `json:"TextClipboardReadLimit,omitempty" xml:"TextClipboardReadLimit,omitempty"`
-	// The outbound size unit for text in the clipboard.
+	// The text clipboard read size unit.
 	//
 	// example:
 	//
 	// KB
 	TextClipboardReadSizeUnit *string `json:"TextClipboardReadSizeUnit,omitempty" xml:"TextClipboardReadSizeUnit,omitempty"`
-	// The inbound size limit for text in the clipboard.
+	// The text clipboard write limit.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardWriteLimit *int32 `json:"TextClipboardWriteLimit,omitempty" xml:"TextClipboardWriteLimit,omitempty"`
-	// The inbound size unit for text in the clipboard.
+	// The text clipboard write size unit.
 	//
 	// example:
 	//
@@ -1141,7 +1145,7 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) Validate() erro
 }
 
 type ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules struct {
-	// The IPv4 address or CIDR block to be revoked.
+	// The IPv4 addresses or CIDR blocks to be revoked.
 	//
 	// example:
 	//
@@ -1257,7 +1261,7 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy) Validate() erro
 }
 
 type ModifyBrowserInstanceGroupRequestStoragePolicy struct {
-	// The user roaming-related policy.
+	// The user roaming-related policies.
 	UserProfile *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
 }
 

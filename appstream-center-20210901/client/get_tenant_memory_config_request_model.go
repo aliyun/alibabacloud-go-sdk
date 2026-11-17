@@ -26,7 +26,7 @@ type GetTenantMemoryConfigRequest struct {
 	//
 	// N/A (not enabled)
 	AgentInstanceId *string `json:"AgentInstanceId,omitempty" xml:"AgentInstanceId,omitempty"`
-	// The business platform to which the agent belongs. Specify the platform corresponding to the tenant memory configuration, such as `ENTERPRISE` for the enterprise platform.
+	// The business platform to which the agent belongs. Specify the platform corresponding to the tenant memory configuration, such as the enterprise platform `ENTERPRISE`.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetTenantMemoryConfigRequest struct {
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// The business type code. This parameter is used together with the provider and business platform. Common values include `1` for Enterprise Edition, `10` for Personal Edition, and `20` for Commercial Edition.
+	// The business type code. This parameter is used together with the provider and business platform. Common values include `1` (Enterprise Edition), `10` (Personal Edition), and `20` (Commercial Edition).
 	//
 	// example:
 	//

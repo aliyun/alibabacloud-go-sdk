@@ -26,7 +26,7 @@ type BatchCreateLlmTemplatesRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The ID of the model provider template to which the model templates belong.
+	// The ID of the model provider template.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ func (s *BatchCreateLlmTemplatesRequest) Validate() error {
 }
 
 type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
-	// The JSON object for model configuration.
+	// The model configuration JSON object.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type BatchCreateLlmTemplatesRequestLlmTemplateItems struct {
 	//
 	// Qwen Plus series models
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to set the model as the default model. Each model group can have at most one default model.
+	// Specifies whether to set the model as the default model. A model group can have at most one default model.
 	//
 	// example:
 	//
 	// false
 	IsDefaultModel *bool `json:"IsDefaultModel,omitempty" xml:"IsDefaultModel,omitempty"`
-	// The model code. It must be unique under the same provider.
+	// The model code. The code must be unique under the same provider.
 	//
 	// example:
 	//

@@ -58,13 +58,13 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	//
 	// 5
 	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	// The network configurations.
+	// The network configuration.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The access policy.
 	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The storage-related policy.
+	// The storage-related policies.
 	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	// The timer.
+	// The timers.
 	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
 }
 

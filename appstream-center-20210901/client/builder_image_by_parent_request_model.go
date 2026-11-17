@@ -56,45 +56,45 @@ type iBuilderImageByParentRequest interface {
 type BuilderImageByParentRequest struct {
 	// The business type to which the image belongs. **Required**. Valid values:
 	//
-	// - **1**: Basic product.
+	// - **1**: basic product
 	//
-	// - **2**: Personal cloud.
+	// - **2**: personal cloud
 	//
-	// - **3**: Cloud office.
+	// - **3**: cloud office
 	//
-	// - **4**: Cloud Flow.
+	// - **4**: cloud flow
 	//
-	// - **10**: Personal edition.
+	// - **10**: personal edition
 	//
-	// - **20**: Business edition.
+	// - **20**: business edition
 	//
-	// - **60**: Linggou team edition.
+	// - **60**: Linggou team edition
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The capacity of the data cloud disk in the creation environment. Unit: GiB. Specify this parameter when a data cloud disk is required, and ensure that it meets the disk requirements of the selected resource specifications.
+	// The capacity of the data cloud disk in the creation environment. Unit: GiB. Specify this parameter when a data cloud disk is required and make sure that the capacity meets the cloud disk requirements of the selected resource specifications.
 	//
 	// example:
 	//
 	// 100
 	DataDiskSize *int32 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	// The description of the new image, which facilitates subsequent queries and differentiation of images.
+	// The description of the new image. This helps you query and distinguish images later.
 	//
 	// example:
 	//
 	// Business image that includes office applications and standard configurations
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The operating system distribution information of the image. Enter the distribution identifier that is consistent with the parent image used.
+	// The operating system distribution information of the image. Enter a distribution identifier that is consistent with the parent image used.
 	//
 	// example:
 	//
 	// Ubuntu 22.04 64-bit
 	Distro *string `json:"Distro,omitempty" xml:"Distro,omitempty"`
-	// The list of driver IDs used when creating the image. A maximum of 200 items are supported. When you need to specify drivers, enter the IDs of existing drivers that are applicable to the target image.
+	// The list of driver IDs used when creating the image. You can specify up to 200 driver IDs. When you need to specify drivers, enter the IDs of existing drivers that are applicable to the target image.
 	//
-	// **If PropertyMap.DRIVER_LIST is also specified, this parameter overwrites the driver list in it.**
+	// **If PropertyMap.DRIVER_LIST is also specified, this parameter overwrites the driver list in PropertyMap.DRIVER_LIST.**
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type BuilderImageByParentRequest struct {
 	DriverIdList []*string `json:"DriverIdList,omitempty" xml:"DriverIdList,omitempty" type:"Repeated"`
 	// The image creation mode. Use the following mode:
 	//
-	// - **BUILDER_MANUAL**: Manually enter the creation environment to install applications and configure the image.
+	// - **BUILDER_MANUAL**: manually enter the creation environment to install applications and configure the image.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type BuilderImageByParentRequest struct {
 	//
 	// BUILDER_MANUAL
 	ImageCreateMode *string `json:"ImageCreateMode,omitempty" xml:"ImageCreateMode,omitempty"`
-	// The name of the new image. **Required**. The name must start with a letter or a Chinese character, and can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-). It cannot start with http:// or https://. The length is calculated as 3 for each Chinese character and 1 for each other character. The total length must be 2 to 64 characters.
+	// The name of the new image. **Required**. The name must start with a letter or a Chinese character and can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-). It cannot start with http:// or https://. The name must be 2 to 64 characters in length. Each Chinese character counts as 3 characters, and each other character counts as 1 character.
 	//
 	// example:
 	//
@@ -118,47 +118,47 @@ type BuilderImageByParentRequest struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The language of the image. Valid values:
 	//
-	// - **zh-CN**: Simplified Chinese.
+	// - **zh-CN**: Simplified Chinese
 	//
-	// - **zh-HK**: Traditional Chinese (Hong Kong).
+	// - **zh-HK**: Traditional Chinese (Hong Kong)
 	//
-	// - **en-US**: English.
+	// - **en-US**: English
 	//
-	// - **ja-JP**: Japanese.
+	// - **ja-JP**: Japanese
 	//
-	// - **CN**: Compatible value for Simplified Chinese.
+	// - **CN**: compatible value for Simplified Chinese
 	//
-	// - **EN**: Compatible value for English.
+	// - **EN**: compatible value for English
 	//
-	// - **JP**: Compatible value for Japanese.
+	// - **JP**: compatible value for Japanese
 	//
-	// - **CN-HK**: Compatible value for Traditional Chinese (Hong Kong).
+	// - **CN-HK**: compatible value for Traditional Chinese (Hong Kong)
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The ID of the node specifications for the creation resources. You can invoke ListNodeInstanceType to query the ID. Select a specification that is active in the creation region and under the associated product, and meets the CPU or GPU computing requirements.
+	// The ID of the node specifications for the creation resources. You can call ListNodeInstanceType to query the ID. Select node specifications that are active in the creation region and for the associated product, and that meet the CPU or GPU computing requirements.
 	//
 	// example:
 	//
 	// appstreaming.general.4c8g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	// The ID of the office network used by the creation resources. Specify this parameter when a specific office network is required, and ensure that it is consistent with the creation region.
+	// The ID of the office network used by the creation resources. Specify this parameter when a specific office network is required and make sure that the office network is in the creation region.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-example****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The package type of the image. Keep it consistent with the selected parent image and creation scenario. Valid values:
+	// The package type of the image. Make sure that the package type is consistent with the selected parent image and creation scenario. Valid values:
 	//
 	// - **Ecs**: ECS instance image.
 	//
 	// - **Vhd**: VHD application image.
 	//
-	// - **Container**: Container image.
+	// - **Container**: container image.
 	//
-	// - **Ecs_Container**: ECS and container combined image.
+	// - **Ecs_Container**: combined ECS and container image.
 	//
 	// - **K8s_Node**: Kubernetes node image.
 	//
@@ -168,7 +168,7 @@ type BuilderImageByParentRequest struct {
 	//
 	// Ecs
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The ID of the parent image used to create the new image. **Required**. You can call ListImage to query the ID. An available distribution record of the parent image must exist in the region where the image is created.
+	// The ID of the parent image used to create the new image. **Required**. You can call ListImage to query the ID. An available distribution record of the parent image must exist in the creation region.
 	//
 	// This parameter is required.
 	//
@@ -176,11 +176,11 @@ type BuilderImageByParentRequest struct {
 	//
 	// imgc-bp1parent****
 	ParentImageId *string `json:"ParentImageId,omitempty" xml:"ParentImageId,omitempty"`
-	// The computing type of the creation resources.
+	// The computing type of the creation resources. Valid values:
 	//
-	// - **CPU**: Uses CPU compute resources.
+	// - **CPU**: CPU compute resources.
 	//
-	// - **GPU**: Uses GPU compute resources.
+	// - **GPU**: GPU compute resources.
 	//
 	// This parameter is required.
 	//
@@ -188,73 +188,73 @@ type BuilderImageByParentRequest struct {
 	//
 	// CPU
 	PerformanceType *string `json:"PerformanceType,omitempty" xml:"PerformanceType,omitempty"`
-	// The product to which the image belongs. **Required**. Use an activated product and keep it consistent with the selected parent image. Valid values:
+	// The product to which the image belongs. **Required**. Use an activated product and make sure that it is consistent with the selected parent image. Valid values:
 	//
-	// - **CloudGame**: Cloud game.
+	// - **CloudGame**: cloud gaming
 	//
-	// - **CloudApp**: Wuying Cloud App.
+	// - **CloudApp**: Wuying cloud application
 	//
-	// - **CloudBrowser**: Secure browser.
+	// - **CloudBrowser**: secure browser
 	//
-	// - **CloudDesktop**: Wuying Cloud Computer.
+	// - **CloudDesktop**: Wuying cloud desktop
 	//
-	// - **ImageBuilder**: Image creation resource.
+	// - **ImageBuilder**: image creation resource
 	//
-	// - **ImageValidate**: Image validation resource.
+	// - **ImageValidate**: image validation resource
 	//
-	// - **AndroidCloud**: Android cloud.
+	// - **AndroidCloud**: Android cloud
 	//
-	// - **GpuRender**: GPU rendering.
+	// - **GpuRender**: GPU rendering
 	//
-	// - **AndroidGpuRender**: Android cloud GPU rendering.
+	// - **AndroidGpuRender**: Android cloud GPU rendering
 	//
-	// - **WuyingServer**: Enterprise edition workstation.
+	// - **WuyingServer**: enterprise edition workstation
 	//
-	// - **GpuProxy**: GPU remote rendering proxy.
+	// - **GpuProxy**: GPU remote rendering proxy
 	//
-	// - **GpuCache**: GPU remote rendering cache.
+	// - **GpuCache**: GPU remote rendering cache
 	//
-	// - **AIAgent**: AI agent service.
+	// - **AIAgent**: AI agent service
 	//
-	// - **HostedDesktop**: Hosted computer.
+	// - **HostedDesktop**: hosted desktop
 	//
-	// - **WuyingWorkstation**: Personal edition container workstation.
+	// - **WuyingWorkstation**: personal edition container workstation
 	//
-	// - **WuyingWorkstationBusiness**: Business edition container workstation.
+	// - **WuyingWorkstationBusiness**: business edition container workstation
 	//
-	// - **WuyingWorkstationTeam**: Linggou container workstation team edition.
+	// - **WuyingWorkstationTeam**: Linggou container workstation team edition
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The extended properties of the image. Both keys and values are strings. This parameter can be omitted when no extended configuration is required.
+	// The extended properties of the image. Both keys and values are strings. You can omit this parameter if no extended configuration is required.
 	//
-	// The property key for the driver list is DRIVER_LIST, and the value is a JSON string of an array of driver IDs. We recommend that you specify drivers by using DriverIdList. **If both DriverIdList and PropertyMap.DRIVER_LIST are specified, DriverIdList takes precedence.*	- Specify other extended properties only when their purposes and values are confirmed.
+	// The property key for the driver list is DRIVER_LIST, and the value is a JSON string of an array of driver IDs. We recommend that you specify drivers by using DriverIdList. **If both DriverIdList and PropertyMap.DRIVER_LIST are specified, DriverIdList takes precedence.*	- Specify other extended properties only when you have confirmed their purposes and values.
 	//
 	// example:
 	//
 	// {"DRIVER_LIST":"[\\"6d4af751-f522-40d7-ab6c-4a0ae587****\\",\\"b5bdf6c0-41de-4878-8963-e8324106****\\"]"}
 	PropertyMap map[string]*string `json:"PropertyMap,omitempty" xml:"PropertyMap,omitempty"`
-	// The list of resources required for image creation, such as the download URLs of applications to be installed. A maximum of 100 items are supported. The ResourceType and Resource of each item must correspond to each other.
+	// The list of resources required for image creation, such as the download URLs of applications to be installed. You can specify up to 100 resources. The ResourceType and Resource of each resource must correspond to each other.
 	ResourceList []*BuilderImageByParentRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 	// The running mode of the image creation environment. Valid values:
 	//
-	// - **NORMAL**: Normal running mode.
+	// - **NORMAL**: normal running mode.
 	//
-	// - **COMPATIBLE**: Compatible running mode.
+	// - **COMPATIBLE**: compatible running mode.
 	//
 	// example:
 	//
 	// NORMAL
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	// The ID of the region where the image is created. The selected parent image must have been distributed to this region. Available regions are also affected by the region configurations of the account and product.
+	// The ID of the creation region. The selected parent image must have been distributed to this region. Available regions are also affected by the region configurations of the account and product.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
-	// The capacity of the system cloud disk in the creation environment. Unit: GiB. The capacity cannot be smaller than the system cloud disk capacity required by the parent image, and must meet the disk requirements of the selected resource specifications.
+	// The capacity of the system cloud disk in the creation environment. Unit: GiB. The capacity cannot be smaller than the system cloud disk capacity required by the parent image and must meet the cloud disk requirements of the selected resource specifications.
 	//
 	// This parameter is required.
 	//
@@ -262,9 +262,9 @@ type BuilderImageByParentRequest struct {
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The list of vSwitch IDs used by the creation resources. A maximum of 100 items are supported. The vSwitches must belong to the selected office network and be located in the creation region.
+	// The list of vSwitch IDs used by the creation resources. You can specify up to 100 vSwitch IDs. The vSwitches must belong to the selected office network and be located in the creation region.
 	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
-	// The display name of the new image version, which is used to differentiate different versions of the same image.
+	// The display name of the new image version. This helps you distinguish different versions of the same image.
 	//
 	// example:
 	//
@@ -483,7 +483,7 @@ func (s *BuilderImageByParentRequest) Validate() error {
 }
 
 type BuilderImageByParentRequestResourceList struct {
-	// The resource content corresponding to ResourceType. For the URL type, enter or return an accessible resource URL.
+	// The resource content that corresponds to ResourceType. For the URL type, enter or return an accessible resource URL.
 	//
 	// example:
 	//
@@ -491,11 +491,11 @@ type BuilderImageByParentRequestResourceList struct {
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The provision method of the resource content. Valid values:
 	//
-	// - **HOSTED**: Hosted resource.
+	// - **HOSTED**: hosted resource.
 	//
-	// - **TEXT**: Text resource.
+	// - **TEXT**: text resource.
 	//
-	// - **URL**: Resource provided through a URL.
+	// - **URL**: resource provided by using a URL.
 	//
 	// example:
 	//

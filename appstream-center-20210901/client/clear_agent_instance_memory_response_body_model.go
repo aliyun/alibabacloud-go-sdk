@@ -14,7 +14,7 @@ type iClearAgentInstanceMemoryResponseBody interface {
 }
 
 type ClearAgentInstanceMemoryResponseBody struct {
-	// The unique identifier of the request, which can be used for troubleshooting.
+	// The unique ID of the request, which can be used for troubleshooting.
 	//
 	// example:
 	//

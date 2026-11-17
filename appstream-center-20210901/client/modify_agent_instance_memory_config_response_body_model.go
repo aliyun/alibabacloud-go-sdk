@@ -14,7 +14,7 @@ type iModifyAgentInstanceMemoryConfigResponseBody interface {
 }
 
 type ModifyAgentInstanceMemoryConfigResponseBody struct {
-	// The unique identifier of the request, which can be used for troubleshooting.
+	// The unique identifier of the request, which can be used to troubleshoot issues.
 	//
 	// example:
 	//

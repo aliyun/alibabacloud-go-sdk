@@ -18,7 +18,7 @@ type iAssignWuyingServerPrivateAddressesResponseBody interface {
 type AssignWuyingServerPrivateAddressesResponseBody struct {
 	// The list of assigned secondary private IP addresses.
 	AssignedPrivateIpAddresses []*string `json:"AssignedPrivateIpAddresses,omitempty" xml:"AssignedPrivateIpAddresses,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

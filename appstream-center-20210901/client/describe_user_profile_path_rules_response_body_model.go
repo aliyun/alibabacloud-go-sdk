@@ -26,7 +26,7 @@ type DescribeUserProfilePathRulesResponseBody struct {
 	//
 	// InvalidParameter.RuleType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The path rules and user data roaming configurations.
+	// The path rules and user profile roaming configurations.
 	Data *DescribeUserProfilePathRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned when the request fails.
 	//
@@ -96,37 +96,33 @@ func (s *DescribeUserProfilePathRulesResponseBody) Validate() error {
 }
 
 type DescribeUserProfilePathRulesResponseBodyData struct {
-	// The ID of the app instance group to which the rule applies. When querying set rules, this is the ID of the primary app instance group.
+	// The app instance group ID corresponding to the rule. When querying set rules, this is the primary app instance group ID.
 	//
 	// example:
 	//
 	// aig-0bi83v****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The ID of the app instance group set to which the rule applies. This parameter is returned when querying set rules.
+	// The app instance group set ID corresponding to the rule. This is returned when querying set rules.
 	//
 	// example:
 	//
 	// set-3jm9d0abc00example
 	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
-	// The ID of the user data roaming storage domain bound to the app instance group. This parameter may be omitted if no domain is bound.
+	// The user profile roaming storage domain ID bound to the app instance group. This field may be omitted if no domain is bound.
 	//
 	// example:
 	//
 	// domain-existing
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// This field is not enabled. The current query result does not provide the file system ID. The example is used to illustrate the field status.
+	// Not enabled. The current query result does not provide the file system ID. The example is used to illustrate the field status.
 	//
 	// example:
 	//
-	// N/A (not enabled)
+	// Not applicable (not enabled)
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// Specifies whether user data roaming is enabled. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
+	// The user profile roaming switch. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
 	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
-	// The remote storage path for user data roaming. If the app instance group is not separately configured with this path, the app instance group ID is returned.
+	// The remote storage path for user profile roaming. If this path is not separately configured for the app instance group, the app instance group ID is returned.
 	//
 	// example:
 	//
@@ -134,27 +130,23 @@ type DescribeUserProfilePathRulesResponseBodyData struct {
 	RemoteStoragePath *string `json:"RemoteStoragePath,omitempty" xml:"RemoteStoragePath,omitempty"`
 	// The path rule type. Valid values:
 	//
-	// - Default: Queries the system default rules. Both target IDs can be omitted.
+	// - `Default`: Queries system default rules. Both target IDs can be omitted.
 	//
-	// - AppInstanceGroup: Queries the rules of an app instance group or an app instance group set.
+	// - `AppInstanceGroup`: Queries the rules of an app instance group or an app instance group set.
 	//
 	// example:
 	//
 	// AppInstanceGroup
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The list of user data roaming path rules.
+	// The list of user profile roaming path rules.
 	Rules []*DescribeUserProfilePathRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The storage quota for user data roaming, in GB. This parameter may be omitted if it is not configured.
+	// The storage quota for user profile roaming, in GB. This field may be omitted if it is not configured.
 	//
 	// example:
 	//
 	// 30
 	UserProfileSize *int64 `json:"UserProfileSize,omitempty" xml:"UserProfileSize,omitempty"`
-	// Specifies whether user data roaming is enabled. The value is the same as ProfileFollowSwitch. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
+	// The user profile roaming switch. The value is the same as ProfileFollowSwitch. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
 	UserProfileSwitch *bool `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
 }
 
@@ -270,9 +262,9 @@ func (s *DescribeUserProfilePathRulesResponseBodyData) Validate() error {
 }
 
 type DescribeUserProfilePathRulesResponseBodyDataRules struct {
-	// The file or directory excluded from user data roaming.
+	// The file or directory excluded from user profile roaming.
 	BlackPath *DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath `json:"BlackPath,omitempty" xml:"BlackPath,omitempty" type:"Struct"`
-	// The list of files or directories that still participate in user data roaming under the excluded directories.
+	// The list of files or directories that still participate in user profile roaming under the excluded directories.
 	WhitePaths []*DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths `json:"WhitePaths,omitempty" xml:"WhitePaths,omitempty" type:"Repeated"`
 }
 
@@ -329,9 +321,9 @@ type DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath struct {
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The path type. Valid values:
 	//
-	// - file: File.
+	// - `file`: File.
 	//
-	// - folder: Folder.
+	// - `folder`: Folder.
 	//
 	// example:
 	//
@@ -378,9 +370,9 @@ type DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths struct {
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The path type. Valid values:
 	//
-	// - file: File.
+	// - `file`: File.
 	//
-	// - folder: Folder.
+	// - `folder`: Folder.
 	//
 	// example:
 	//

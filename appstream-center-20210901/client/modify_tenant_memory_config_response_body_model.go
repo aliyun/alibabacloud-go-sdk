@@ -14,7 +14,7 @@ type iModifyTenantMemoryConfigResponseBody interface {
 }
 
 type ModifyTenantMemoryConfigResponseBody struct {
-	// The unique identifier of the request. You can use this ID to troubleshoot issues.
+	// The unique identifier of the request, which can be used for troubleshooting.
 	//
 	// example:
 	//

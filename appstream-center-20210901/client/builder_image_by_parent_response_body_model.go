@@ -28,9 +28,9 @@ type BuilderImageByParentResponseBody struct {
 	//
 	// ExceedBuilderQuota
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The business data returned by this operation.
+	// The business data returned by the operation.
 	Data *BuilderImageByParentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this parameter.
+	// The error message or result prompt. This parameter describes the cause of a failed request. A successful response may not contain this parameter.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type BuilderImageByParentResponseBody struct {
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To check whether the asynchronous task is completed, you must query the task status separately.
+	// Indicates whether the request is successful. A value of true indicates that the request is successful. To check whether the asynchronous task is complete, you must query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -109,19 +109,19 @@ func (s *BuilderImageByParentResponseBody) Validate() error {
 }
 
 type BuilderImageByParentResponseBodyData struct {
-	// The image ID, which is used for subsequent queries or modifications of the image.
+	// The ID of the image. You can use this ID to query or modify the image later.
 	//
 	// example:
 	//
 	// imgc-bp1example****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The task ID, which can be used to call GetTask to query the task status.
+	// The ID of the task. You can use this ID to call GetTask to query the task status.
 	//
 	// example:
 	//
 	// tid-bp1example****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The image version ID, which is used to query or manage the specified version of the image.
+	// The ID of the image version. You can use this ID to query or manage the specified version of the image.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateBrowserInstanceGroupResponseBody interface {
 }
 
 type CreateBrowserInstanceGroupResponseBody struct {
-	// The creation result of the cloud browser group, including the resource ID and the order ID.
+	// The creation result of the cloud browser group, including the resource ID and order ID.
 	BrowserInstanceGroupModel *CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel `json:"BrowserInstanceGroupModel,omitempty" xml:"BrowserInstanceGroupModel,omitempty" type:"Struct"`
 	// The unique ID of the request, which can be used for troubleshooting.
 	//
@@ -68,7 +68,7 @@ type CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel struct {
 	//
 	// big-0bz55ixxxxx9xi9w9
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
-	// The ID of the order generated for this creation.
+	// The order ID generated for this creation.
 	//
 	// example:
 	//

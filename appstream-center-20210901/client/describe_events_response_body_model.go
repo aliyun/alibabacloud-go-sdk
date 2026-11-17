@@ -28,13 +28,13 @@ type iDescribeEventsResponseBody interface {
 type DescribeEventsResponseBody struct {
 	// The list of events on the current page, returned in descending order of the event log time.
 	EventList []*DescribeEventsResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// A compatibility field. The current version does not set this field. Do not rely on its value.
+	// The compatibility field. The current version does not set this field. Do not rely on its value.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A compatibility field. The current version does not generate a next page token. Do not use this field for pagination.
+	// The compatibility field. The current version does not generate a next page token. Do not use this field for pagination.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescribeEventsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the request, which can be used to troubleshoot request issues.
+	// The unique identifier of the request, which can be used to troubleshoot the request.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of events that meet all filter conditions within the 30-day retrievable window. Unit: records.
+	// The total number of events that meet all filter conditions within the retrievable window of the last 30 days. Unit: events.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ func (s *DescribeEventsResponseBody) Validate() error {
 }
 
 type DescribeEventsResponseBodyEventList struct {
-	// The ID of the delivery group associated with the event. This field may be empty if the event is not associated with a delivery group.
+	// The delivery group ID associated with the event. This field may be empty if the event is not associated with a delivery group.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The name of the delivery group associated with the event. This field may be empty if the event is not associated with a delivery group.
+	// The delivery group name associated with the event. This field may be empty if the event is not associated with a delivery group.
 	//
 	// example:
 	//
 	// R&D workstation group
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The event detail text. The content varies with `EventType` and may be empty. For example, a session release event may return JSON text that describes the release reason.
+	// The event detail text. The content varies with `EventType` and may be empty. For example, a session release event may return a JSON text that describes the release cause.
 	//
 	// example:
 	//
@@ -193,19 +193,19 @@ type DescribeEventsResponseBodyEventList struct {
 	//
 	// 2026-09-29 14:17:33
 	OccurredTime *string `json:"OccurredTime,omitempty" xml:"OccurredTime,omitempty"`
-	// The ID of the office network associated with the event. This field may be empty if it is not applicable.
+	// The office network ID associated with the event. This field may be empty if it is not applicable.
 	//
 	// example:
 	//
 	// cn-shanghai+dir-123456****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The product type to which the event belongs. This field is an open string and may be extended as supported event sources expand. Callers should not restrict the value to the products currently listed in the `ProductType` request parameter.
+	// The product type to which the event belongs. This field is an open string and may be extended as supported event sources increase. The caller should not restrict the values to the products currently listed in the `ProductType` request parameter.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the end user who generated the event. This field may be empty if the event is not associated with an end user.
+	// The end user ID that generated the event. This field may be empty if the event is not associated with an end user.
 	//
 	// example:
 	//

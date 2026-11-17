@@ -38,7 +38,7 @@ type iListBrowserInstanceGroupRequest interface {
 }
 
 type ListBrowserInstanceGroupRequest struct {
-	// The ID of the browser group set. This parameter is used to query the valid members of the set by exact match.
+	// The browser group set ID. This parameter is used to query the valid members of the set by exact match.
 	//
 	// example:
 	//
@@ -50,25 +50,25 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The ID of the cloud browser group. This parameter is used for exact match.
+	// The cloud browser group ID, which is used for exact match queries.
 	//
 	// example:
 	//
 	// big-0c7loey7fzjq****
 	BrowserInstanceGroupId *string `json:"BrowserInstanceGroupId,omitempty" xml:"BrowserInstanceGroupId,omitempty"`
-	// The name of the browser group. Fuzzy match is supported.
+	// The browser group name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// Office
 	BrowserInstanceGroupName *string `json:"BrowserInstanceGroupName,omitempty" xml:"BrowserInstanceGroupName,omitempty"`
-	// Filters by browser group name or ID by using partial match.
+	// Filters browser groups by name or ID by using a contains match.
 	//
 	// example:
 	//
 	// Office
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
-	// Excludes browser groups that are authorized to the specified user groups.
+	// Excludes browser groups that are authorized for the specified user groups.
 	//
 	// if can be null:
 	// true
@@ -79,7 +79,7 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// cn-hangzhou+dir-843734****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
@@ -91,13 +91,13 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by browser group status.
+	// Filters browser groups by status.
 	//
 	// **Limit:*	- You can specify only one status at a time.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tag filter parameter. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
+	// The tag filtering parameter. This parameter is not supported in current customer-facing scenarios. Do not specify this parameter.
 	Tag []*ListBrowserInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Filters by the version of the browser. Valid values:
+	// Filters browser groups by the version of the browser. Valid values:
 	//
 	// - `Basic`: Basic Edition.
 	//
@@ -109,7 +109,7 @@ type ListBrowserInstanceGroupRequest struct {
 	//
 	// Pro
 	Tier *string `json:"Tier,omitempty" xml:"Tier,omitempty"`
-	// Filters by the IDs of authorized user groups.
+	// Filters browser groups by authorized user group ID.
 	//
 	// if can be null:
 	// true
@@ -255,13 +255,13 @@ func (s *ListBrowserInstanceGroupRequest) Validate() error {
 }
 
 type ListBrowserInstanceGroupRequestTag struct {
-	// The tag key. Do not specify this parameter in customer-facing scenarios.
+	// The tag key. Do not specify this parameter in current customer-facing scenarios.
 	//
 	// example:
 	//
 	// -
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Do not specify this parameter in customer-facing scenarios.
+	// The tag value. Do not specify this parameter in current customer-facing scenarios.
 	//
 	// example:
 	//
