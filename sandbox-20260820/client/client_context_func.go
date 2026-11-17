@@ -51,6 +51,48 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
+// Creates a custom domain name.
+//
+// @param request - CreateCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomDomainResponse
+func (client *Client) CreateCustomDomainWithContext(ctx context.Context, request *CreateCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCustomDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomDomain"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/custom-domains"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a team.
 //
 // @param request - CreateTeamRequest
@@ -306,6 +348,47 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, apiKeyID *str
 
 // Summary:
 //
+// Deletes a custom domain name.
+//
+// @param request - DeleteCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomDomainResponse
+func (client *Client) DeleteCustomDomainWithContext(ctx context.Context, domainName *string, request *DeleteCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomDomain"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/custom-domains/" + dara.PercentEncode(dara.StringValue(domainName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the quota configuration for a specified team.
 //
 // @param request - DeleteQuotaRequest
@@ -535,7 +618,7 @@ func (client *Client) DeleteVolumeWithContext(ctx context.Context, volumeID *str
 
 // Summary:
 //
-// Deletes a warm pool.
+// Deletes a warm-up pool.
 //
 // @param request - DeleteWarmPoolRequest
 //
@@ -752,11 +835,52 @@ func (client *Client) DescribeWarmPoolWithContext(ctx context.Context, teamID *s
 
 // Summary:
 //
-// 查询监控指标
+// Queries custom domain names.
+//
+// @param request - GetCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomDomainResponse
+func (client *Client) GetCustomDomainWithContext(ctx context.Context, domainName *string, request *GetCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomDomain"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/custom-domains/" + dara.PercentEncode(dara.StringValue(domainName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries monitoring metrics.
 //
 // Description:
 //
-// 查看某一时刻的监控指标，或查询一段时间内的变化趋势。支持按账号、团队、模板或沙箱查询。
+// Views monitoring metrics at a specific point in time or queries trends over a period of time. Supports querying by account, team, template, or sandbox.
 //
 // @param tmpReq - GetMetricDataRequest
 //
@@ -1134,6 +1258,57 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiKeysResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query of custom domain names.
+//
+// @param request - ListCustomDomainsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomDomainsResponse
+func (client *Client) ListCustomDomainsWithContext(ctx context.Context, request *ListCustomDomainsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCustomDomainsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomDomains"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/custom-domains"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCustomDomainsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1593,6 +1768,48 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyID *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom domain name.
+//
+// @param request - UpdateCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomDomainResponse
+func (client *Client) UpdateCustomDomainWithContext(ctx context.Context, domainName *string, request *UpdateCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateCustomDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCustomDomain"),
+		Version:     dara.String("2026-08-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-08-20/custom-domains/" + dara.PercentEncode(dara.StringValue(domainName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCustomDomainResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

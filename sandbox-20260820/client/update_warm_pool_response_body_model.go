@@ -20,7 +20,7 @@ type iUpdateWarmPoolResponseBody interface {
 }
 
 type UpdateWarmPoolResponseBody struct {
-	// The response business code.
+	// The business code in the response.
 	//
 	// example:
 	//

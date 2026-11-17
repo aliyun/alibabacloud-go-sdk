@@ -20,25 +20,25 @@ type iGetMetricDataResponseBody interface {
 }
 
 type GetMetricDataResponseBody struct {
-	// 成功时为 200。失败时为对应的错误码。
+	// The status code. A value of 200 indicates success. If the request fails, the corresponding error code is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 本次请求的结果说明。
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 各指标的查询结果及对应的时间和分组。
+	// The query results of each metric, along with the corresponding time and grouping information.
 	//
 	// example:
 	//
 	// {"period":60,"startTime":"2026-11-05T00:00:00Z","endTime":"2026-11-05T00:02:00Z","groupBy":["teamID"],"results":[{"metricName":"cpuUsedCores","unit":"Core","series":[{"dimensions":{"teamID":"70d1c834-0333-58d8-97ac-5336eb9179eb"},"points":[{"timestamp":"2026-11-05T00:00:00Z","value":0.25},{"timestamp":"2026-11-05T00:01:00Z","value":0.5}]}]}]}
 	MetricData *MetricData `json:"metricData,omitempty" xml:"metricData,omitempty"`
-	// 本次请求的唯一标识。
+	// The unique identifier of the request.
 	//
 	// example:
 	//
