@@ -26,7 +26,7 @@ type iCustomerNoteListDetailResponseBody interface {
 }
 
 type CustomerNoteListDetailResponseBody struct {
-	// The access denied details returned by the POP API when RAM permissions are missing.
+	// The detailed information about the access denial returned in the POP API response when the RAM user lacks the required permissions.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CustomerNoteListDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *CustomerNoteListDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned by the POP API.
+	// The HTTP status code used in the POP API response.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CustomerNoteListDetailResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The prompt message. This is the same as Message.
+	// The prompt message, which is the same as Message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ func (s *CustomerNoteListDetailResponseBody) Validate() error {
 }
 
 type CustomerNoteListDetailResponseBodyData struct {
-	// The AI parsing result (JSON string).
+	// The AI analysis result. The value is a JSON string.
 	//
 	// example:
 	//
-	// {"TouchDate":"2026-07-17 10:00:01"}
+	// {"Contact date":"2026-07-17 10:00:01"}
 	AiResult *string `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
-	// The attachment list.
+	// The list of attachments.
 	Attachment []*CustomerNoteListDetailResponseBodyDataAttachment `json:"Attachment,omitempty" xml:"Attachment,omitempty" type:"Repeated"`
 	// The contact information.
 	//
@@ -161,11 +161,11 @@ type CustomerNoteListDetailResponseBodyData struct {
 	//
 	// 13833333333
 	ContactInformation *string `json:"ContactInformation,omitempty" xml:"ContactInformation,omitempty"`
-	// The contact name.
+	// The name of the contact.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	// The UID of the creator.
 	//
@@ -177,51 +177,51 @@ type CustomerNoteListDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The customer name.
+	// The name of the customer.
 	//
 	// example:
 	//
 	// XXXX Co., Ltd
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	// The customer UID.
+	// The UID of the customer.
 	//
 	// example:
 	//
 	// 1271202085096245
 	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
-	// The creation time in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the note was created. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-05-07 10:27:46
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The note content.
+	// The content of the note.
 	//
 	// example:
 	//
 	// Note content
 	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
-	// The note ID.
+	// The ID of the note.
 	//
 	// example:
 	//
 	// 1620737
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	// The note type (CUSTOMER).
+	// The type of the note.
 	//
 	// example:
 	//
 	// CUSTOMER
 	NoteType *string `json:"NoteType,omitempty" xml:"NoteType,omitempty"`
-	// The note type label.
+	// The name of the note type.
 	//
 	// example:
 	//
 	// Customer
 	NoteTypeLabel *string `json:"NoteTypeLabel,omitempty" xml:"NoteTypeLabel,omitempty"`
-	// The touch date (timestamp).
+	// The contact date. The value is a timestamp.
 	//
 	// example:
 	//
@@ -377,33 +377,37 @@ func (s *CustomerNoteListDetailResponseBodyData) Validate() error {
 }
 
 type CustomerNoteListDetailResponseBodyDataAttachment struct {
-	// The attachment signature.
+	// The download URL of the attachment.
+	//
+	// example:
+	//
+	// http://geoip-sdk-user.oss-cn-zhangjiakou.aliyuncs.com/product/v1/ipv4-inner/common/v1.20251010002216.dex?Expires=1760062445&OSSAccessKeyId=x6R87i97yKeKRggz&Signature=****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The attachment ID.
+	// The ID of the attachment.
 	//
 	// example:
 	//
 	// 307
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The attachment name.
+	// The name of the attachment.
 	//
 	// example:
 	//
-	// Course Training
+	// Course training
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The attachment signature.
+	// The signature of the attachment.
 	//
 	// example:
 	//
 	// hF2UrEMc4XWy990sh9LGM0+ScI8=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// The attachment size in bytes.
+	// The size of the attachment. Unit: bytes.
 	//
 	// example:
 	//
 	// 111222121
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The attachment type.
+	// The type of the attachment.
 	//
 	// example:
 	//

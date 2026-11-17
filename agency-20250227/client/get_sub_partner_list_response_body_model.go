@@ -30,7 +30,7 @@ type GetSubPartnerListResponseBody struct {
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The current page number.
 	//
@@ -157,7 +157,7 @@ type GetSubPartnerListResponseBodySubPartnerList struct {
 	//
 	// example:
 	//
-	// xxx街道xxx号
+	// xxx Street, No. xxx
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The agreement status code.
 	//
@@ -169,31 +169,31 @@ type GetSubPartnerListResponseBodySubPartnerList struct {
 	//
 	// example:
 	//
-	// 生效期
+	// Effective period
 	AgreementStatusDesc *string `json:"AgreementStatusDesc,omitempty" xml:"AgreementStatusDesc,omitempty"`
 	// The city of the registered address.
 	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The name of the secondary distributor.
 	//
 	// example:
 	//
-	// xxx有限公司
+	// xxx Co., Ltd.
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
 	// The name of the contact.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
 	// The district or county of the registered address.
 	//
 	// example:
 	//
-	// 西湖区
+	// Xihu District
 	District *string `json:"District,omitempty" xml:"District,omitempty"`
 	// The time when the secondary distributor first joined.
 	//
@@ -205,7 +205,7 @@ type GetSubPartnerListResponseBodySubPartnerList struct {
 	//
 	// example:
 	//
-	// xxxxxx有限公司主账号
+	// Primary account of xxxxxx Co., Ltd.
 	MasterAccount *string `json:"MasterAccount,omitempty" xml:"MasterAccount,omitempty"`
 	// The UID of the primary account of the secondary distributor.
 	//
@@ -223,7 +223,7 @@ type GetSubPartnerListResponseBodySubPartnerList struct {
 	//
 	// example:
 	//
-	// 浙江省
+	// Zhejiang Province
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

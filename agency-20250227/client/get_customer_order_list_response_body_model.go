@@ -230,7 +230,7 @@ type GetCustomerOrderListResponseBodyData struct {
 	//
 	// example:
 	//
-	// C类
+	// Type C
 	CustomerClassification *string `json:"CustomerClassification,omitempty" xml:"CustomerClassification,omitempty"`
 	// The customer UID.
 	//
@@ -316,6 +316,10 @@ type GetCustomerOrderListResponseBodyData struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The employee who follows up with the customer.
 	RamAccountForCustomerManagers []*string `json:"RamAccountForCustomerManagers,omitempty" xml:"RamAccountForCustomerManagers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	RebateType *int32 `json:"RebateType,omitempty" xml:"RebateType,omitempty"`
 }
 
 func (s GetCustomerOrderListResponseBodyData) String() string {
@@ -396,6 +400,10 @@ func (s *GetCustomerOrderListResponseBodyData) GetProjectId() *int64 {
 
 func (s *GetCustomerOrderListResponseBodyData) GetRamAccountForCustomerManagers() []*string {
 	return s.RamAccountForCustomerManagers
+}
+
+func (s *GetCustomerOrderListResponseBodyData) GetRebateType() *int32 {
+	return s.RebateType
 }
 
 func (s *GetCustomerOrderListResponseBodyData) SetAmountDiscount(v float64) *GetCustomerOrderListResponseBodyData {
@@ -485,6 +493,11 @@ func (s *GetCustomerOrderListResponseBodyData) SetProjectId(v int64) *GetCustome
 
 func (s *GetCustomerOrderListResponseBodyData) SetRamAccountForCustomerManagers(v []*string) *GetCustomerOrderListResponseBodyData {
 	s.RamAccountForCustomerManagers = v
+	return s
+}
+
+func (s *GetCustomerOrderListResponseBodyData) SetRebateType(v int32) *GetCustomerOrderListResponseBodyData {
+	s.RebateType = &v
 	return s
 }
 

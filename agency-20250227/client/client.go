@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Agency")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":              dara.String("agency.aliyuncs.com"),
@@ -82,7 +90,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("agency.aliyuncs.com"),
 		"us-east-1":                   dara.String("agency.aliyuncs.com"),
 		"us-west-1":                   dara.String("agency.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("agency.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -199,7 +206,7 @@ func (client *Client) CustomerNoteCreate(request *CustomerNoteCreateRequest) (_r
 
 // Summary:
 //
-// Edits a customer note.
+// Updates a customer note.
 //
 // @param request - CustomerNoteEditRequest
 //
@@ -259,7 +266,7 @@ func (client *Client) CustomerNoteEditWithOptions(request *CustomerNoteEditReque
 
 // Summary:
 //
-// Edits a customer note.
+// Updates a customer note.
 //
 // @param request - CustomerNoteEditRequest
 //
@@ -277,7 +284,7 @@ func (client *Client) CustomerNoteEdit(request *CustomerNoteEditRequest) (_resul
 
 // Summary:
 //
-// Queries a paged query list of customer notes with paging support.
+// Queries the customer note list by using paging.
 //
 // @param request - CustomerNoteListRequest
 //
@@ -329,7 +336,7 @@ func (client *Client) CustomerNoteListWithOptions(request *CustomerNoteListReque
 
 // Summary:
 //
-// Queries a paged query list of customer notes with paging support.
+// Queries the customer note list by using paging.
 //
 // @param request - CustomerNoteListRequest
 //
@@ -409,7 +416,7 @@ func (client *Client) CustomerNoteListDetail(request *CustomerNoteListDetailRequ
 
 // Summary:
 //
-// Queries exported bill files.
+// Queries the bill export file of a China partner for a specific billing cycle. The system pushes the file to the OSS bucket specified by the partner.
 //
 // @param request - GetBillDetailFileListRequest
 //
@@ -477,7 +484,7 @@ func (client *Client) GetBillDetailFileListWithOptions(request *GetBillDetailFil
 
 // Summary:
 //
-// Queries exported bill files.
+// Queries the bill export file of a China partner for a specific billing cycle. The system pushes the file to the OSS bucket specified by the partner.
 //
 // @param request - GetBillDetailFileListRequest
 //
@@ -674,6 +681,10 @@ func (client *Client) GetCustomerOrderListWithOptions(tmpReq *GetCustomerOrderLi
 		query["RamAccountForCustomerManager"] = request.RamAccountForCustomerManager
 	}
 
+	if !dara.IsNil(request.RebateType) {
+		query["RebateType"] = request.RebateType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -717,13 +728,13 @@ func (client *Client) GetCustomerOrderList(request *GetCustomerOrderListRequest)
 
 // Summary:
 //
-// Downloads the commission details of an international partner.
+// Downloads the commission details of international partners.
 //
 // Description:
 //
-// Ensure that the current caller identity is a T1 distribution partner.
+// Ensure that the current caller account is a T1 distribution partner.
 //
-// <notice>Available only for international site.</notice>.
+// <notice>Available only on the international site.</notice>
 //
 // @param request - GetIntlCommissionDetailFileListRequest
 //
@@ -791,13 +802,13 @@ func (client *Client) GetIntlCommissionDetailFileListWithOptions(request *GetInt
 
 // Summary:
 //
-// Downloads the commission details of an international partner.
+// Downloads the commission details of international partners.
 //
 // Description:
 //
-// Ensure that the current caller identity is a T1 distribution partner.
+// Ensure that the current caller account is a T1 distribution partner.
 //
-// <notice>Available only for international site.</notice>.
+// <notice>Available only on the international site.</notice>
 //
 // @param request - GetIntlCommissionDetailFileListRequest
 //

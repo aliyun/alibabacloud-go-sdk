@@ -140,7 +140,7 @@ type GetSubPartnerOrderListShrinkRequest struct {
 	//
 	// example:
 	//
-	// 弹性计算
+	// Elastic computing
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The opportunity ID.
 	//
@@ -152,7 +152,7 @@ type GetSubPartnerOrderListShrinkRequest struct {
 	//
 	// example:
 	//
-	// XXX有限公司
+	// XXX Co., Ltd.
 	SubPartnerName *string `json:"SubPartnerName,omitempty" xml:"SubPartnerName,omitempty"`
 	// The UID of the secondary partner.
 	//

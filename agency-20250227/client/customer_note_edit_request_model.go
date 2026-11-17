@@ -32,21 +32,21 @@ type CustomerNoteEditRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// John Smith
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	// The content of the note.
 	//
 	// example:
 	//
-	// 日常拜访客户，讨论客户agent建设方案
+	// Routine customer visit to discuss the agent development plan for the customer
 	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
-	// The note ID. This parameter is required.
+	// The ID of the note. This parameter is required.
 	//
 	// example:
 	//
 	// 1629862
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	// The touch date. The value is a UNIX timestamp in milliseconds.
+	// The time when the contact was made. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//

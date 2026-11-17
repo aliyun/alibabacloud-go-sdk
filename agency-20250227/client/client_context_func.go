@@ -73,7 +73,7 @@ func (client *Client) CustomerNoteCreateWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Edits a customer note.
+// Updates a customer note.
 //
 // @param request - CustomerNoteEditRequest
 //
@@ -133,7 +133,7 @@ func (client *Client) CustomerNoteEditWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a paged query list of customer notes with paging support.
+// Queries the customer note list by using paging.
 //
 // @param request - CustomerNoteListRequest
 //
@@ -229,7 +229,7 @@ func (client *Client) CustomerNoteListDetailWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries exported bill files.
+// Queries the bill export file of a China partner for a specific billing cycle. The system pushes the file to the OSS bucket specified by the partner.
 //
 // @param request - GetBillDetailFileListRequest
 //
@@ -458,6 +458,10 @@ func (client *Client) GetCustomerOrderListWithContext(ctx context.Context, tmpRe
 		query["RamAccountForCustomerManager"] = request.RamAccountForCustomerManager
 	}
 
+	if !dara.IsNil(request.RebateType) {
+		query["RebateType"] = request.RebateType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -483,13 +487,13 @@ func (client *Client) GetCustomerOrderListWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Downloads the commission details of an international partner.
+// Downloads the commission details of international partners.
 //
 // Description:
 //
-// Ensure that the current caller identity is a T1 distribution partner.
+// Ensure that the current caller account is a T1 distribution partner.
 //
-// <notice>Available only for international site.</notice>.
+// <notice>Available only on the international site.</notice>
 //
 // @param request - GetIntlCommissionDetailFileListRequest
 //

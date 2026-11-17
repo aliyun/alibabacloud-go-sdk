@@ -24,7 +24,7 @@ type iCustomerNoteEditResponseBody interface {
 }
 
 type CustomerNoteEditResponseBody struct {
-	// The details of the access denial returned by the POP API when RAM permissions are not granted.
+	// The details about the access denial. This parameter is returned by the POP API operation when the RAM user does not have the required permissions.
 	//
 	// example:
 	//
@@ -36,25 +36,25 @@ type CustomerNoteEditResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned by the POP API.
+	// The HTTP status code returned by the POP API operation.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned by the operation.
+	// The message returned by the API operation.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Same as Message.
+	// The message. This parameter is the same as Message.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

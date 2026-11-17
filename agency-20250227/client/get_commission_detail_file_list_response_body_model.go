@@ -34,7 +34,7 @@ type GetCommissionDetailFileListResponseBody struct {
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
@@ -182,25 +182,25 @@ type GetCommissionDetailFileListResponseBodyDataFileList struct {
 	//
 	// example:
 	//
-	// 处理中
+	// Processing
 	BucketSyncStatus *string `json:"BucketSyncStatus,omitempty" xml:"BucketSyncStatus,omitempty"`
 	// The policy name.
 	//
 	// example:
 	//
-	// 参考【APS佣金查询下载功能】的政策名称
+	// The policy name. For more information, see the APS commission query and download feature.
 	CommissionPolicyName *string `json:"CommissionPolicyName,omitempty" xml:"CommissionPolicyName,omitempty"`
 	// The file name.
 	//
 	// example:
 	//
-	// 佣金202502021112
+	// Commission202502021112
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The file type.
 	//
 	// example:
 	//
-	// 总代政策为拓渠、普通政策为拓客
+	// Distributor policies are used to expand channels, and standard policies are used to acquire customers.
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	// The file URL.
 	//

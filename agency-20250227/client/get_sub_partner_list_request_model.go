@@ -40,7 +40,7 @@ type GetSubPartnerListRequest struct {
 	//
 	// example:
 	//
-	// xxx有限公司
+	// xxx Co., Ltd.
 	SubPartnerCompanyName *string `json:"SubPartnerCompanyName,omitempty" xml:"SubPartnerCompanyName,omitempty"`
 	// The PID of the secondary partner.
 	//

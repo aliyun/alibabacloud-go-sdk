@@ -18,7 +18,7 @@ type iCustomerNoteListRequest interface {
 }
 
 type CustomerNoteListRequest struct {
-	// The UID of the customer.
+	// The customer UID.
 	//
 	// example:
 	//

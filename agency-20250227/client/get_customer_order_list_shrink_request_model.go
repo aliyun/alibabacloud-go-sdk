@@ -45,6 +45,8 @@ type iGetCustomerOrderListShrinkRequest interface {
 	GetProjectId() *int64
 	SetRamAccountForCustomerManager(v string) *GetCustomerOrderListShrinkRequest
 	GetRamAccountForCustomerManager() *string
+	SetRebateType(v int32) *GetCustomerOrderListShrinkRequest
+	GetRebateType() *int32
 }
 
 type GetCustomerOrderListShrinkRequest struct {
@@ -152,7 +154,7 @@ type GetCustomerOrderListShrinkRequest struct {
 	//
 	// example:
 	//
-	// 弹性计算
+	// Elastic computing
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The opportunity ID.
 	//
@@ -166,6 +168,10 @@ type GetCustomerOrderListShrinkRequest struct {
 	//
 	// 1234532
 	RamAccountForCustomerManager *string `json:"RamAccountForCustomerManager,omitempty" xml:"RamAccountForCustomerManager,omitempty"`
+	// example:
+	//
+	// 1
+	RebateType *int32 `json:"RebateType,omitempty" xml:"RebateType,omitempty"`
 }
 
 func (s GetCustomerOrderListShrinkRequest) String() string {
@@ -246,6 +252,10 @@ func (s *GetCustomerOrderListShrinkRequest) GetProjectId() *int64 {
 
 func (s *GetCustomerOrderListShrinkRequest) GetRamAccountForCustomerManager() *string {
 	return s.RamAccountForCustomerManager
+}
+
+func (s *GetCustomerOrderListShrinkRequest) GetRebateType() *int32 {
+	return s.RebateType
 }
 
 func (s *GetCustomerOrderListShrinkRequest) SetCustomerAccount(v string) *GetCustomerOrderListShrinkRequest {
@@ -335,6 +345,11 @@ func (s *GetCustomerOrderListShrinkRequest) SetProjectId(v int64) *GetCustomerOr
 
 func (s *GetCustomerOrderListShrinkRequest) SetRamAccountForCustomerManager(v string) *GetCustomerOrderListShrinkRequest {
 	s.RamAccountForCustomerManager = &v
+	return s
+}
+
+func (s *GetCustomerOrderListShrinkRequest) SetRebateType(v int32) *GetCustomerOrderListShrinkRequest {
+	s.RebateType = &v
 	return s
 }
 

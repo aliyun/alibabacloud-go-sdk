@@ -36,13 +36,13 @@ type GetBillDetailFileListResponseBody struct {
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Same as Message.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Id of the request
 	//
@@ -144,7 +144,7 @@ type GetBillDetailFileListResponseBodyData struct {
 	//
 	// example:
 	//
-	// 账单202502021112
+	// Bill202502021112
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The file URL.
 	//
@@ -154,21 +154,21 @@ type GetBillDetailFileListResponseBodyData struct {
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// The OSS file push status. Valid values:
 	//
-	// - 1: pending
+	// - 1: Pending.
 	//
-	// - 2: processing
+	// - 2: Processing.
 	//
-	// - 3: completed.
+	// - 3: Completed.
 	//
 	// example:
 	//
 	// 3
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type. Valid values: customer acquisition or channel expansion.
+	// The type. Valid values: Customer Acquisition, Channel Expansion.
 	//
 	// example:
 	//
-	// 拓渠
+	// Channel Expansion
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

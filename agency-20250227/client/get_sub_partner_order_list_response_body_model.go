@@ -40,7 +40,7 @@ type GetSubPartnerOrderListResponseBody struct {
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number.
 	//
@@ -190,7 +190,7 @@ type GetSubPartnerOrderListResponseBodyData struct {
 	//
 	// example:
 	//
-	// C类
+	// Type C
 	CustomerClassification *string `json:"CustomerClassification,omitempty" xml:"CustomerClassification,omitempty"`
 	// The coupon amount.
 	//
@@ -272,7 +272,7 @@ type GetSubPartnerOrderListResponseBodyData struct {
 	//
 	// example:
 	//
-	// 弹性计算
+	// Elastic computing
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The opportunity ID.
 	//
@@ -284,7 +284,7 @@ type GetSubPartnerOrderListResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx有限公司
+	// xxx Co., Ltd.
 	SubPartnerName *string `json:"SubPartnerName,omitempty" xml:"SubPartnerName,omitempty"`
 	// The UID of the secondary partner.
 	//

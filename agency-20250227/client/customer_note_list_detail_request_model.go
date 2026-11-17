@@ -14,7 +14,7 @@ type iCustomerNoteListDetailRequest interface {
 }
 
 type CustomerNoteListDetailRequest struct {
-	// The note ID.
+	// The ID of the note.
 	//
 	// example:
 	//

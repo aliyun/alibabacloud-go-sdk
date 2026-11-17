@@ -34,7 +34,7 @@ type GetRenewalRateListResponseBody struct {
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
@@ -205,7 +205,7 @@ type GetRenewalRateListResponseBodyData struct {
 	//
 	// example:
 	//
-	// XX有限公司
+	// XX Co., Ltd.
 	MasterPidName *string `json:"MasterPidName,omitempty" xml:"MasterPidName,omitempty"`
 	// The customer acquisition commission renewal rate including special approvals.
 	//

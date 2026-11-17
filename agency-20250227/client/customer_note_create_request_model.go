@@ -30,31 +30,31 @@ type CustomerNoteCreateRequest struct {
 	//
 	// 13833333333
 	ContactInformation *string `json:"ContactInformation,omitempty" xml:"ContactInformation,omitempty"`
-	// The name of the contact.
+	// The contact name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The name of the customer.
+	// The customer name.
 	//
 	// example:
 	//
-	// XXXX有限公司
+	// XXXX Co., Ltd
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	// The UID of the customer.
+	// The customer UID.
 	//
 	// example:
 	//
 	// 1647796581073291
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
-	// The content of the note.
+	// The note content.
 	//
 	// example:
 	//
-	// 日常拜访客户，讨论客户agent建设方案
+	// Routine customer visit to discuss the agent implementation plan for the customer
 	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
-	// The touch time. This value is a UNIX timestamp in milliseconds.
+	// The contact time (timestamp, in milliseconds).
 	//
 	// example:
 	//

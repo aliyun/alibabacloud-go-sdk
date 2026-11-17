@@ -26,7 +26,7 @@ type iCustomerNoteListResponseBody interface {
 }
 
 type CustomerNoteListResponseBody struct {
-	// The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
+	// The details of the access denial returned by the POP API when the RAM user lacks the required permissions.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CustomerNoteListResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The prompt message, same as message.
+	// The prompt message. This parameter is the same as Message.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *CustomerNoteListResponseBody) Validate() error {
 }
 
 type CustomerNoteListResponseBodyData struct {
-	// The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
+	// The details of the access denial returned by the POP API when the RAM user lacks the required permissions.
 	//
 	// example:
 	//
@@ -173,13 +173,13 @@ type CustomerNoteListResponseBodyData struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The prompt message, same as message.
+	// The prompt message. This parameter is the same as Message.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The pagination information compatible with the legacy interface (deprecated).
+	// **[Deprecated]*	- The pagination information compatible with the legacy fenxiao-service API.
 	PageInfo *CustomerNoteListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The current page number.
 	//
@@ -337,7 +337,7 @@ type CustomerNoteListResponseBodyDataData struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	// The UID of the creator.
 	//
@@ -349,9 +349,9 @@ type CustomerNoteListResponseBodyDataData struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The creation time in the format of yyyy-MM-dd HH:mm:ss.
+	// The creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -361,27 +361,27 @@ type CustomerNoteListResponseBodyDataData struct {
 	//
 	// example:
 	//
-	// 讨论技术方案
+	// Discuss technical solutions
 	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
-	// The ID of the note.
+	// The note ID.
 	//
 	// example:
 	//
 	// 2932252
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	// The type of the note (CUSTOMER).
+	// The note type. Valid value: CUSTOMER.
 	//
 	// example:
 	//
 	// CUSTOMER
 	NoteType *string `json:"NoteType,omitempty" xml:"NoteType,omitempty"`
-	// The label of the note type.
+	// The name of the note type.
 	//
 	// example:
 	//
-	// 客户
+	// Customer
 	NoteTypeLabel *string `json:"NoteTypeLabel,omitempty" xml:"NoteTypeLabel,omitempty"`
-	// The touch date (timestamp).
+	// The contact date. The value is a timestamp.
 	//
 	// example:
 	//

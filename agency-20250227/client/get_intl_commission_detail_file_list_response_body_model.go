@@ -30,7 +30,7 @@ type GetIntlCommissionDetailFileListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data.
 	Data *GetIntlCommissionDetailFileListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message information.
+	// The message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetIntlCommissionDetailFileListResponseBody struct {
 	//
 	// 2103a30617045934095083027d88c5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *GetIntlCommissionDetailFileListResponseBody) Validate() error {
 }
 
 type GetIntlCommissionDetailFileListResponseBodyData struct {
-	// The bill month.
+	// The billing month.
 	//
 	// example:
 	//
@@ -178,19 +178,19 @@ func (s *GetIntlCommissionDetailFileListResponseBodyData) Validate() error {
 }
 
 type GetIntlCommissionDetailFileListResponseBodyDataFileList struct {
-	// The OSS file push status. Valid values: init, processing, succeeded, or failed.
+	// The push status of the file to OSS. Valid values: Initialized, Processing, Succeeded, Failed.
 	//
 	// example:
 	//
 	// PROCESSING
 	BucketSyncStatus *string `json:"BucketSyncStatus,omitempty" xml:"BucketSyncStatus,omitempty"`
-	// The commission policy name.
+	// The name of the policy.
 	//
 	// example:
 	//
 	// 202606_FY27_TEST
 	CommissionPolicyName *string `json:"CommissionPolicyName,omitempty" xml:"CommissionPolicyName,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
