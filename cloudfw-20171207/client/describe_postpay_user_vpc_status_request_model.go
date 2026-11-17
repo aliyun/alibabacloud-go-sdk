@@ -22,7 +22,7 @@ type DescribePostpayUserVpcStatusRequest struct {
 	//
 	// cfw_elasticity_public_cn-************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language in which messages are received. Valid values:
+	// The language in which you want to receive messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//

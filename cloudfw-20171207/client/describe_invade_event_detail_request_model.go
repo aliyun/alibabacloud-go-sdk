@@ -22,7 +22,7 @@ type iDescribeInvadeEventDetailRequest interface {
 }
 
 type DescribeInvadeEventDetailRequest struct {
-	// The ID of the asset.
+	// The asset ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeInvadeEventDetailRequest struct {
 	//
 	// i-bp135d2rmbwpt****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// The UUID of the threat detection event.
+	// The UUID of the compromise awareness event.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeInvadeEventDetailRequest struct {
 	//
 	// 92498578-7c42-4845-8c73-7e824782****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// The language of the content within the response.
+	// The language type of the received messages.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeInvadeEventDetailRequest struct {
 	//
 	// 182.92.103.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

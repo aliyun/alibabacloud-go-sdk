@@ -22,13 +22,15 @@ type iModifyFirewallV2RoutePolicySwitchRequest interface {
 }
 
 type ModifyFirewallV2RoutePolicySwitchRequest struct {
-	// The instance ID of the VPC boundary firewall.
+	// The instance ID of the virtual private cloud (VPC) firewalls.
+	//
+	// **Note**: This parameter is actually required. If it is not provided, the operation returns ErrorParameters (-360103).
 	//
 	// example:
 	//
 	// vfw-tr-5b202e7f0be64611****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -48,17 +50,21 @@ type ModifyFirewallV2RoutePolicySwitchRequest struct {
 	//
 	// false
 	ShouldRecover *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
-	// The ID of the routing policy for the firewall.
+	// The ID of the firewall route policy.
+	//
+	// **Note**: This parameter is actually required. If it is not provided or the policy does not exist, the operation returns ErrorTrFirewallPolicyNotFound (-361043). You can call DescribeTrFirewallV2RoutePolicyList to query valid route policy IDs.
 	//
 	// example:
 	//
 	// policy-93684cc5caa44b2e****
 	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
-	// The status of the policy. Valid values:
+	// The status of the policy switch. Valid values:
 	//
-	// - open: Enables the policy.
+	// - open: Enabled.
 	//
-	// - close: Disables the policy.
+	// - close: Disabled.
+	//
+	// **Note**: This parameter is actually required. If it is not provided or the value is not within the preceding range, the operation returns ErrorParameters (-360103).
 	//
 	// example:
 	//

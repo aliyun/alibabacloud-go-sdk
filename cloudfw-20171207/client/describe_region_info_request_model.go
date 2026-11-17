@@ -36,7 +36,7 @@ type DescribeRegionInfoRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

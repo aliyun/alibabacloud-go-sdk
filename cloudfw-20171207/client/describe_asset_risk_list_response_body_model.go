@@ -18,15 +18,15 @@ type iDescribeAssetRiskListResponseBody interface {
 }
 
 type DescribeAssetRiskListResponseBody struct {
-	// The asset details returned.
+	// The details of the returned assets.
 	AssetList []*DescribeAssetRiskListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 443C5781-1C03-5FCD-8EC5-FB9C0B9AC396
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -83,25 +83,23 @@ func (s *DescribeAssetRiskListResponseBody) Validate() error {
 }
 
 type DescribeAssetRiskListResponseBodyAssetList struct {
-	// The server IP address.
+	// The IP address of the server.
 	//
 	// example:
 	//
 	// 39.108.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The IP address version of the assets protected by Cloud Firewall.
+	// The IP version of the asset protected by Cloud Firewall. Valid values:
 	//
-	// Valid values:
+	// - **4**: IPv4 address
 	//
-	// - **4**: IPv4 address.
-	//
-	// - **6**: IPv6 address.
+	// - **6**: IPv6 address
 	//
 	// example:
 	//
 	// 4
 	IpVersion *int64 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The risk reason.
+	// The cause of the risk.
 	//
 	// example:
 	//
@@ -109,11 +107,11 @@ type DescribeAssetRiskListResponseBodyAssetList struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **low**: low risk
+	// - **low**: Low risk
 	//
-	// - **middle**: medium risk
+	// - **middle**: Medium risk
 	//
-	// - **high**: high risk
+	// - **high**: High risk
 	//
 	// example:
 	//

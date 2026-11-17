@@ -22,19 +22,19 @@ type iDescribeDnsFirewallPolicyResponseBody interface {
 }
 
 type DescribeDnsFirewallPolicyResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return in the current query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DNS firewall access control policies.
+	// The information about the access control policy of the DNS firewall.
 	Policys []*DescribeDnsFirewallPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -42,7 +42,7 @@ type DescribeDnsFirewallPolicyResponseBody struct {
 	//
 	// 0A4ACDE9-9F9F-56C1-B3B7-60971BA1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeDnsFirewallPolicyResponseBody) Validate() error {
 }
 
 type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
-	// The action that is performed on traffic that matches the access control policy. Valid values:
+	// The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
 	//
-	// - **accept**: allows the traffic.
+	// - **accept**: Allow
 	//
-	// - **drop**: denies the traffic.
+	// - **drop**: Deny
 	//
-	// - **log**: monitors the traffic.
+	// - **log**: Monitor
 	//
 	// example:
 	//
@@ -135,31 +135,31 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	//
 	// 01281255-d220-4db1-8f4f-c4df221a****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The description of the access control policy.
+	// The description of the access control policy of the DNS border firewall.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination address in the access control policy. Valid values:
+	// The destination address in the access control policy of the DNS border firewall. Valid values:
 	//
-	// - If **DestinationType*	- is `net`, the value of this parameter is a destination CIDR block.
+	// - If **DestinationType*	- is set to `net`, the value of Destination is the destination CIDR block.
 	//
-	// - If **DestinationType*	- is `domain`, the value of this parameter is a destination domain.
+	// - If **DestinationType*	- is set to `domain`, the value of Destination is the destination domain name.
 	//
-	// - If **DestinationType*	- is `group`, the value of this parameter is the name of a destination address book.
+	// - If **DestinationType*	- is set to `group`, the value of Destination is the name of the destination address book.
 	//
 	// example:
 	//
 	// x.x.x.x/32
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The destination addresses in the address book.
+	// The list of addresses in the destination address book.
 	DestinationAddrs []*string `json:"DestinationAddrs,omitempty" xml:"DestinationAddrs,omitempty" type:"Repeated"`
 	// The type of the destination address book in the access control policy. Valid values:
 	//
-	// - **ip**: an IP address book
+	// - **ip**: IP address book, which contains one or more CIDR blocks
 	//
-	// - **domain**: a domain address book
+	// - **domain**: domain name address book, which contains one or more domain names
 	//
 	// example:
 	//
@@ -171,15 +171,15 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	//
 	// - **group**: destination address book
 	//
-	// - **domain**: destination domain
+	// - **domain**: destination domain name
 	//
-	// - **location**: destination location
+	// - **location**: destination region
 	//
 	// example:
 	//
 	// net
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The direction of the traffic to which the access control policy applies. Valid values:
+	// The traffic direction of the access control policy. Valid values:
 	//
 	// - **in**: inbound traffic
 	//
@@ -189,7 +189,7 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The last time the policy was hit. The value is a UNIX timestamp. Unit: seconds.
+	// The latest hit UNIX timestamp. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	//
 	// 100
 	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
-	// The IP version supported by the access control policy. Valid values:
+	// The IP address version. Valid values:
 	//
 	// - **4**: IPv4
 	//
@@ -217,11 +217,11 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	//
 	// 110
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Indicates whether the access control policy is enabled. After a policy is created, it is enabled by default. Valid values:
+	// The status of the access control policy. By default, the policy is enabled after it is created. Valid values:
 	//
-	// - **true**: enabled
+	// - **true**: Enabled
 	//
-	// - **false**: disabled
+	// - **false**: Disabled
 	//
 	// example:
 	//
@@ -229,11 +229,11 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
-	// - If **SourceType*	- is `net`, the value of this parameter is a source CIDR block. Example: 192.0.XX.XX/24.
+	// - If **SourceType*	- is set to `net`, the source address is a CIDR block. Example: 192.0.XX.XX/24.
 	//
-	// - If **SourceType*	- is `group`, the value of this parameter is the name of a source address book. Example: db_group.
+	// - If **SourceType*	- is set to `group`, the source address is the name of the source address book. Example: db_group.
 	//
-	// - If **SourceType*	- is `location`, the value of this parameter is a location. For more information about the valid values of this parameter, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
+	// - If **SourceType*	- is set to `location`, the source address is an area. For more information about the specific area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\\].
 	//
 	// example:
 	//
@@ -243,25 +243,25 @@ type DescribeDnsFirewallPolicyResponseBodyPolicys struct {
 	SourceAddrs []*string `json:"SourceAddrs,omitempty" xml:"SourceAddrs,omitempty" type:"Repeated"`
 	// The type of the source address book in the access control policy. Valid values:
 	//
-	// - **ip**: an IP address book
+	// - **ip**: IP address book, which contains one or more CIDR blocks.
 	//
-	// - **tag**: a tag address book
+	// - **tag**: ECS tag-based address book, which contains the IP addresses of one or more ECS tags.
 	//
-	// - **domain**: a domain address book
+	// - **domain**: domain name address book, which contains one or more domain names.
 	//
-	// - **threat**: a threat intelligence address book
+	// - **threat**: threat intelligence address book, which contains one or more malicious IP addresses or domain names.
 	//
-	// - **backsrc**: a back-to-origin address book
+	// - **backsrc**: back-to-origin address book, which contains the back-to-origin IP addresses of one or more Anti-DDoS or WAF instances.
 	//
 	// example:
 	//
 	// ip
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
-	// The type of the source address in the access control policy. Valid values:
+	// The type of the source address in the access control policy of the DNS border firewall. Valid values:
 	//
-	// - **net**: a source CIDR block
+	// - **net**: source CIDR block
 	//
-	// - **group**: a source address book
+	// - **group**: source address book
 	//
 	// example:
 	//

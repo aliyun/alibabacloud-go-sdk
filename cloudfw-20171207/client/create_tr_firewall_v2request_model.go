@@ -50,7 +50,7 @@ type iCreateTrFirewallV2Request interface {
 }
 
 type CreateTrFirewallV2Request struct {
-	// The ID of the CEN instance. Create a CEN instance in the CEN console and make sure that an Enterprise Edition transit router is created.
+	// The ID of the CEN instance. Create a CEN instance in the CEN console first and make sure that an Enterprise Edition transit router is created.
 	//
 	// > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
 	//
@@ -82,7 +82,7 @@ type CreateTrFirewallV2Request struct {
 	//
 	// - **MultiPrimary**: active-active mode
 	//
-	// > If this parameter is not specified, the system automatically selects the deployment mode based on the capabilities of the transit router. If the value is invalid, ErrorFwServiceMode (-360437) is returned. The MultiPrimary mode does not support specifying zones.
+	// > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If the value is invalid, ErrorFwServiceMode (-360437) is returned. The MultiPrimary mode does not support specifying zones.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type CreateTrFirewallV2Request struct {
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	// Deprecated
 	//
-	// The primary CIDR block of the subnet used to connect to the transit router in the firewall VPC in automatic mode.
+	// The primary CIDR block of the subnet used to connect to the TR in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type CreateTrFirewallV2Request struct {
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
 	// Deprecated
 	//
-	// The secondary CIDR block of the subnet used to connect to the transit router in the firewall VPC in automatic mode.
+	// The secondary CIDR block of the subnet used to connect to the TR in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type CreateTrFirewallV2Request struct {
 	//
 	// cn-chengdu-b
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The list of zone IDs used for the transit router connection.
+	// The list of zone IDs used for the TR connection.
 	TrAttachmentZones []*string `json:"TrAttachmentZones,omitempty" xml:"TrAttachmentZones,omitempty" type:"Repeated"`
 	// The ID of the Enterprise Edition transit router instance. The transit router must belong to the CEN instance specified by CenId.
 	//

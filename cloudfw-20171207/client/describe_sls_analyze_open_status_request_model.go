@@ -14,7 +14,7 @@ type iDescribeSlsAnalyzeOpenStatusRequest interface {
 }
 
 type DescribeSlsAnalyzeOpenStatusRequest struct {
-	// The language type for receiving messages. Valid values:
+	// The language in which messages are received. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//

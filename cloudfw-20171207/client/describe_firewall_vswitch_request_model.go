@@ -28,7 +28,7 @@ type iDescribeFirewallVSwitchRequest interface {
 }
 
 type DescribeFirewallVSwitchRequest struct {
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The virtual private cloud (VPC) border firewalls instance ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeFirewallVSwitchRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//

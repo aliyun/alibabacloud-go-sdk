@@ -26,7 +26,7 @@ type iDescribeAccessInstanceVSwitchListRequest interface {
 }
 
 type DescribeAccessInstanceVSwitchListRequest struct {
-	// The UID of the Alibaba Cloud account to which the resource belongs.
+	// The Alibaba Cloud UID to which the resource belongs.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescribeAccessInstanceVSwitchListRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-qzeaol304m***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The ID of the VPC-connected instance.
 	//
 	// example:
 	//

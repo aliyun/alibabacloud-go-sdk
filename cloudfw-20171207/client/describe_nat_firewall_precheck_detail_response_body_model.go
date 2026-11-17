@@ -18,7 +18,7 @@ type iDescribeNatFirewallPrecheckDetailResponseBody interface {
 }
 
 type DescribeNatFirewallPrecheckDetailResponseBody struct {
-	// Indicates whether a task exists.
+	// Indicates whether the task exists.
 	//
 	// example:
 	//
@@ -79,25 +79,25 @@ func (s *DescribeNatFirewallPrecheckDetailResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetail struct {
-	// The ID of the firewall instance.
+	// The firewall instance ID.
 	//
 	// example:
 	//
 	// vfw-tr-7a9c8901ed394****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// example:
 	//
 	// vpc-m5emh0w6v2e15****
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
-	// The list of precheck item groups.
+	// The list of precheck entity groups.
 	PrecheckEntityGroups []*DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroups `json:"PrecheckEntityGroups,omitempty" xml:"PrecheckEntityGroups,omitempty" type:"Repeated"`
-	// The status of the precheck. Valid values:
+	// The precheck status. Valid values:
 	//
 	// - **running**: The precheck is in progress.
 	//
-	// - **passed**: The precheck is passed.
+	// - **passed**: The precheck passed.
 	//
 	// - **failed**: The precheck failed.
 	//
@@ -205,11 +205,11 @@ type DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGr
 	//
 	// example:
 	//
-	// test
+	// Account And Region Check
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The execution status of each precheck item.
 	PrecheckEntities []*DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities `json:"PrecheckEntities,omitempty" xml:"PrecheckEntities,omitempty" type:"Repeated"`
-	// The status of the precheck. Valid values:
+	// The status of the precheck entity group. Valid values:
 	//
 	// - **running**
 	//
@@ -281,7 +281,7 @@ func (s *DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEnti
 }
 
 type DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities struct {
-	// The information about the failed precheck item.
+	// The information about the check failure.
 	//
 	// example:
 	//
@@ -297,7 +297,7 @@ type DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGr
 	//
 	// - **running**: The precheck is in progress.
 	//
-	// - **passed**: The precheck is passed.
+	// - **passed**: The precheck passed.
 	//
 	// - **failed**: The precheck failed.
 	//
@@ -305,7 +305,7 @@ type DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGr
 	//
 	// passed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The suggested solution.
+	// The recommended solution.
 	//
 	// example:
 	//

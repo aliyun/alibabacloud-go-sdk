@@ -26,7 +26,7 @@ type iDescribeAclAppsRequest interface {
 type DescribeAclAppsRequest struct {
 	// The ACL type. Valid values:
 	//
-	// - **Internet**
+	// - **Internet*	-
 	//
 	// - **NAT**
 	//
@@ -40,11 +40,11 @@ type DescribeAclAppsRequest struct {
 	//
 	// VPC
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeAclAppsRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -68,11 +68,11 @@ type DescribeAclAppsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether the application is common. Valid values:
 	//
-	// - **1**: common
+	// - 1: Common.
 	//
-	// - **0**: not common
+	// - 0: Uncommon.
 	//
-	// - If you omit this parameter (the default), all applications are returned.
+	// - Empty (default): All.
 	//
 	// example:
 	//

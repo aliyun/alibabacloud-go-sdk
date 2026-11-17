@@ -30,13 +30,13 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Comment for batch whitelisting
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The traffic direction controlled by the access control policy. Valid values:
 	//
-	// - **in**: Inbound traffic.
+	// - **in**: inbound
 	//
-	// - **out**: Outbound traffic.
+	// - **out**: outbound
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language for receiving messages. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -58,15 +58,15 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// This parameter is required.
 	ObjectList []*string `json:"ObjectList,omitempty" xml:"ObjectList,omitempty" type:"Repeated"`
-	// The operation to perform on the object, such as adding to or removing from a whitelist, or subscribing to or unsubscribing from the object. Valid values:
+	// The operation to whitelist, remove from the whitelist, follow, or unfollow an object. Valid values:
 	//
-	// - **subscribe**: Subscribes to the object.
+	// - **subscribe**: follow
 	//
-	// - **unsubscribe**: Unsubscribes from the object.
+	// - **unsubscribe**: unfollow
 	//
-	// - **ignore**: Adds the object to the whitelist.
+	// - **ignore**: add to the whitelist
 	//
-	// - **cancelIgnore**: Removes the object from the whitelist.
+	// - **cancelIgnore**: remove from the whitelist
 	//
 	// This parameter is required.
 	//
@@ -74,15 +74,15 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// ignore
 	ObjectOperation *string `json:"ObjectOperation,omitempty" xml:"ObjectOperation,omitempty"`
-	// The type of the outbound connection whitelist or subscription. Valid values:
+	// The type of the object to whitelist or follow for outbound connections. Valid values:
 	//
-	// - **assetsIp**: Asset IP address.
+	// - **assetsIp**: asset IP address
 	//
-	// - **destinationIp**: Destination IP address.
+	// - **destinationIp**: destination IP address
 	//
-	// - **destinationPort**: Destination port.
+	// - **destinationPort**: destination port
 	//
-	// - **destinationDomain**: Destination domain name.
+	// - **destinationDomain**: destination domain name
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// destinationDomain
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

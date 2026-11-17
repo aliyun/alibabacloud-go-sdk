@@ -26,7 +26,7 @@ type DescribeThreatIntelligenceSwitchResponseBody struct {
 	//
 	// 6B8E0379-2629-59A1-B811-96F3E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -85,15 +85,15 @@ func (s *DescribeThreatIntelligenceSwitchResponseBody) Validate() error {
 type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
 	// The action of the rule. Valid values:
 	//
-	//  **alert**: monitor mode.
+	//  **alert**: Monitor.
 	//
-	//  **drop**: Block Mode.
+	//  **drop**: Block.
 	//
 	// example:
 	//
 	// alert
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The category description.
+	// The description of the category.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
 	//
 	// 3000037
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The category name.
+	// The name of the category.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ type DescribeThreatIntelligenceSwitchResponseBodyCategoryList struct {
 	//
 	// 123
 	CategoryParentId *string `json:"CategoryParentId,omitempty" xml:"CategoryParentId,omitempty"`
-	// The enabling status. Valid values:
+	// The enable status. Valid values:
 	//
-	//  **1**: enabled.
+	//  **1**: Enabled.
 	//
-	//  **0**: disabled.
+	//  **0**: Disabled.
 	//
 	// example:
 	//

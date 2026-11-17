@@ -22,7 +22,7 @@ type DescribeInternetServiceNameListResponseBody struct {
 	//
 	// 91B01BCD-DFB0-5CA8-9191-5B38C62****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of application names.
+	// The list of application names.
 	ServiceNameList []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
 }
 

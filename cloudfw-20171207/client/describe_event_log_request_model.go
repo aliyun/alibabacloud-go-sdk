@@ -25,6 +25,8 @@ type iDescribeEventLogRequest interface {
 	GetLogType() *string
 	SetPageSize(v string) *DescribeEventLogRequest
 	GetPageSize() *string
+	SetRuleId(v string) *DescribeEventLogRequest
+	GetRuleId() *string
 	SetRuleResult(v string) *DescribeEventLogRequest
 	GetRuleResult() *string
 	SetSourceCode(v string) *DescribeEventLogRequest
@@ -33,6 +35,8 @@ type iDescribeEventLogRequest interface {
 	GetSourceIp() *string
 	SetSrcIP(v string) *DescribeEventLogRequest
 	GetSrcIP() *string
+	SetSslHandshakeRes(v string) *DescribeEventLogRequest
+	GetSslHandshakeRes() *string
 	SetStartTime(v string) *DescribeEventLogRequest
 	GetStartTime() *string
 }
@@ -42,15 +46,15 @@ type DescribeEventLogRequest struct {
 	//
 	// - **1**: Abnormal connection.
 	//
-	// - **2**: Command execution.
+	// - **2**: execute commands.
 	//
-	// - **3**: Brute-force attack.
+	// - **3**: brute-force attacks.
 	//
-	// - **4**: Scanning.
+	// - **4**: Scan.
 	//
 	// - **5**: Other.
 	//
-	// - **6**: Information leakage.
+	// - **6**: Information leak.
 	//
 	// - **7**: DoS attack.
 	//
@@ -60,25 +64,25 @@ type DescribeEventLogRequest struct {
 	//
 	// - **10**: Trojan backdoor.
 	//
-	// - **11**: Viruses and worms.
+	// - **11**: Virus and worm.
 	//
 	// - **12**: Mining behavior.
 	//
 	// - **13**: Reverse shell.
 	//
-	// > If you do not specify this parameter, all attack types are queried.
+	// > If you do not specify the Settings for this parameter, events of all attack types are queried.
 	//
 	// example:
 	//
 	// 13
 	AttackType *int64 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The page number for a paged query.
+	// The page number for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The destination IP address to query. If you specify this parameter, the system queries intrusion prevention events that involve this destination IP address.
+	// The destination IP address to query. If you specify this parameter, the intrusion prevention events that involve this destination IP address are queried.
 	//
 	// example:
 	//
@@ -92,9 +96,9 @@ type DescribeEventLogRequest struct {
 	//
 	// 1731551104
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the Cloud Firewall. Valid values:
+	// The type of Cloud Firewall. Valid values:
 	//
-	// - **VpcFirewall**: virtual private cloud (VPC) firewalls.
+	// - **VpcFirewall**: virtual private cloud (VPC) firewalls at the border.
 	//
 	// - **InternetFirewall*	- (default): the Internet Border firewall.
 	//
@@ -110,7 +114,7 @@ type DescribeEventLogRequest struct {
 	//
 	// ]
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The language of the response message.
+	// The language for receiving messages.
 	//
 	// example:
 	//
@@ -122,21 +126,27 @@ type DescribeEventLogRequest struct {
 	//
 	// 1
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The number of entries to return on each page.
+	// Specifies the number of results per page for a paginated query.
 	//
-	// Default value: **6**, which indicates that 6 entries are returned on each page. Maximum value: **10**.
+	// Default value: **6**, which indicates that 6 results are returned per page. Maximum value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The defense status of the Cloud Firewall. Valid values:
+	// Filters event logs by rule hits. The value must be the same as the RuleId value in the response. If LogType is set to ips, pass the UUID of the IPS rule (the RuleUuid value returned by DescribeIPSRules) instead of the numeric format (font style) of the RuleId. If both RuleId and AttackType are specified, records that meet both conditions are returned. This parameter takes effect for ips, app_ctl, web_filter, and threat_intelligence. If LogType is set to tls and this parameter is specified, a parameter fault is returned. If no matching records are found, TotalCount is 0. If you do not specify this parameter, event logs are not filtered by rule hit.
+	//
+	// example:
+	//
+	// c0f5caed-d6a5-11e8-8298-00163e109533
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The defense status of Cloud Firewall. Valid values:
 	//
 	// - **1**: Alert.
 	//
 	// - **2**: Block.
 	//
-	// > If you do not specify this parameter, all defense statuses are queried.
+	// > If you do not specify this parameter, events of all defense statuses are queried.
 	//
 	// example:
 	//
@@ -150,18 +160,24 @@ type DescribeEventLogRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address of the requester.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//
 	// 60.182.79.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The source IP address to query. If you specify this parameter, the system queries intrusion prevention events that involve this source IP address.
+	// The source IP address to query. If you specify this parameter, the intrusion prevention events that involve this source IP address are queried.
 	//
 	// example:
 	//
 	// 47.92.x.x
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// Filters by the exact TLS handshake result. This parameter takes effect only when LogType is set to tls and is ignored for other types. Valid values: bypass, alert, and failed (handshake failure). If this parameter is not specified, records of the bypass, alert, and failed types are returned, and normal traffic with successful handshakes (success) is not returned.
+	//
+	// example:
+	//
+	// failed
+	SslHandshakeRes *string `json:"SslHandshakeRes,omitempty" xml:"SslHandshakeRes,omitempty"`
 	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
@@ -212,6 +228,10 @@ func (s *DescribeEventLogRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *DescribeEventLogRequest) GetRuleId() *string {
+	return s.RuleId
+}
+
 func (s *DescribeEventLogRequest) GetRuleResult() *string {
 	return s.RuleResult
 }
@@ -226,6 +246,10 @@ func (s *DescribeEventLogRequest) GetSourceIp() *string {
 
 func (s *DescribeEventLogRequest) GetSrcIP() *string {
 	return s.SrcIP
+}
+
+func (s *DescribeEventLogRequest) GetSslHandshakeRes() *string {
+	return s.SslHandshakeRes
 }
 
 func (s *DescribeEventLogRequest) GetStartTime() *string {
@@ -272,6 +296,11 @@ func (s *DescribeEventLogRequest) SetPageSize(v string) *DescribeEventLogRequest
 	return s
 }
 
+func (s *DescribeEventLogRequest) SetRuleId(v string) *DescribeEventLogRequest {
+	s.RuleId = &v
+	return s
+}
+
 func (s *DescribeEventLogRequest) SetRuleResult(v string) *DescribeEventLogRequest {
 	s.RuleResult = &v
 	return s
@@ -289,6 +318,11 @@ func (s *DescribeEventLogRequest) SetSourceIp(v string) *DescribeEventLogRequest
 
 func (s *DescribeEventLogRequest) SetSrcIP(v string) *DescribeEventLogRequest {
 	s.SrcIP = &v
+	return s
+}
+
+func (s *DescribeEventLogRequest) SetSslHandshakeRes(v string) *DescribeEventLogRequest {
+	s.SslHandshakeRes = &v
 	return s
 }
 

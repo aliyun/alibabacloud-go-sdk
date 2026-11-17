@@ -30,9 +30,9 @@ type iCreateAckClusterConnectorRequest interface {
 }
 
 type CreateAckClusterConnectorRequest struct {
-	// The ID of the ACK cluster. Value sources:
+	// The ID of the ACK cluster. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAckClusters](~~DescribeAckClusters~~): Lists ACK clusters.
+	// - [DescribeAckClusters](~~DescribeAckClusters~~): Queries the list of ACK clusters.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The primary vSwitch of the ACK cluster connector. Value sources:
+	// The ID of the primary vSwitch for the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of vSwitches for synchronization nodes.
 	//
 	// This parameter is required.
 	//
@@ -64,15 +64,15 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// vsw-2zerfbbje7dvnbii2****
 	PrimaryVswitchId *string `json:"PrimaryVswitchId,omitempty" xml:"PrimaryVswitchId,omitempty"`
-	// The IP address of the primary vSwitch of the ACK cluster connector.
+	// The IP address of the primary vSwitch for the ACK cluster connector.
 	//
 	// example:
 	//
 	// 10.100.1.1
 	PrimaryVswitchIp *string `json:"PrimaryVswitchIp,omitempty" xml:"PrimaryVswitchIp,omitempty"`
-	// The region ID of the ACK cluster connector. Value sources:
+	// The region ID of the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of regions for synchronization nodes.
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the regions of synchronization nodes.
 	//
 	// > For more information about the regions where Cloud Firewall supports ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
 	//
@@ -82,15 +82,15 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The secondary vSwitch of the ACK cluster connector. Value sources:
+	// The ID of the secondary vSwitch for the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of vSwitches for synchronization nodes.
 	//
 	// example:
 	//
 	// vsw-2ze2gtlfozrab01cfo****
 	StandbyVswitchId *string `json:"StandbyVswitchId,omitempty" xml:"StandbyVswitchId,omitempty"`
-	// The IP address of the secondary vSwitch of the ACK cluster connector.
+	// The IP address of the secondary vSwitch for the ACK cluster connector.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iDescribeNatFirewallTimeTopResponseBody interface {
 }
 
 type DescribeNatFirewallTimeTopResponseBody struct {
-	// The number of results.
+	// The number of returned results.
 	//
 	// example:
 	//
 	// 2
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The list of data.
+	// The data list.
 	DataList []*DescribeNatFirewallTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C5DDD596-1191-5F36-A504-8733045A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The point in time when the traffic data was collected. This is a UNIX timestamp. Unit: seconds.
+	// The point in time for the traffic. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeNatFirewallTimeTopResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallTimeTopResponseBodyDataList struct {
-	// The inbound bandwidth. Unit: bps.
+	// The inbound bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type DescribeNatFirewallTimeTopResponseBodyDataList struct {
 	//
 	// vfw-test
 	NatFirewallName *string `json:"NatFirewallName,omitempty" xml:"NatFirewallName,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
 	// ngw-uf6pnry5vpawb****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT Gateway.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribeNatFirewallTimeTopResponseBodyDataList struct {
 	//
 	// 27
 	NewConn *string `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// The outbound bandwidth. Unit: bps.
+	// The outbound bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeNatFirewallTimeTopResponseBodyDataList struct {
 	//
 	// cn-qingdao
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the asset instance.
+	// The asset instance ID.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type DescribeNatFirewallTimeTopResponseBodyDataList struct {
 	//
 	// 27
 	SessionCount *string `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The total bandwidth. Unit: bps.
+	// The total bandwidth. Unit: bit/s.
 	//
 	// example:
 	//

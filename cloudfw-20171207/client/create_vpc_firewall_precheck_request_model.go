@@ -26,7 +26,7 @@ type iCreateVpcFirewallPrecheckRequest interface {
 }
 
 type CreateVpcFirewallPrecheckRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateVpcFirewallPrecheckRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account of Cloud Firewall.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type CreateVpcFirewallPrecheckRequest struct {
 	//
 	// cn-chengdu
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the transit router instance.
+	// The transit router instance ID.
 	//
 	// example:
 	//
 	// tr-t4n16htuv1jalj9cq****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

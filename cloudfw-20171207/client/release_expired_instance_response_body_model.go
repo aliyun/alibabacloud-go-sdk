@@ -26,7 +26,7 @@ type ReleaseExpiredInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether the instance was released:
+	// Indicates whether the release is successful. Valid values:
 	//
 	// - **true**: Successful.
 	//
@@ -42,7 +42,7 @@ type ReleaseExpiredInstanceResponseBody struct {
 	//
 	// 9EC1DB0F-EE53-5D36-B5DA-71CB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

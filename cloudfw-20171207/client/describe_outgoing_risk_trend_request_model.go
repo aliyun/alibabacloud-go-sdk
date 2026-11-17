@@ -26,13 +26,13 @@ type DescribeOutgoingRiskTrendRequest struct {
 	//
 	// 1755051062
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language type for receiving messages.
+	// The language of the response message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

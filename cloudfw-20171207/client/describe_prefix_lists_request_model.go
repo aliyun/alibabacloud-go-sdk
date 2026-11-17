@@ -24,7 +24,7 @@ type DescribePrefixListsRequest struct {
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The source IP address of the caller.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

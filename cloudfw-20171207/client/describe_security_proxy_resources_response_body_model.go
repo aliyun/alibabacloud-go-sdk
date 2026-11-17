@@ -122,7 +122,7 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcList struct {
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The UID of the member accounts.
+	// The UID of member accounts.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcList struct {
 	//
 	// vpc-8vbuzirdl3w1r7exw****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC-connected instance.
+	// The VPC-connected instance name.
 	//
 	// example:
 	//
@@ -312,19 +312,35 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNat
 	//
 	// 10.0.70.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
+	// The current traffic redirection status of the route entry. Valid values:
+	//
+	// - diverted: Traffic is redirected to the firewall.
+	//
+	// - undiverted: Traffic is not redirected and still points to the NAT gateway.
+	//
+	// - diverting: Traffic redirection is in progress.
+	//
+	// - undiverting: Traffic redirection cancellation is in progress.
+	//
+	// - abnormal: Traffic redirection is abnormal.
+	//
+	// example:
+	//
+	// diverted
+	DivertStatus *string `json:"DivertStatus,omitempty" xml:"DivertStatus,omitempty"`
 	// The next hop instance ID.
 	//
 	// example:
 	//
 	// ngw-2zey0w2u02u1x584m****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The network type of the next hop.
+	// The next hop network type.
 	//
 	// example:
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The ID of the route table.
+	// The route table ID.
 	//
 	// example:
 	//
@@ -344,6 +360,10 @@ func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateway
 	return s.DestinationCidr
 }
 
+func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList) GetDivertStatus() *string {
+	return s.DivertStatus
+}
+
 func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList) GetNextHopId() *string {
 	return s.NextHopId
 }
@@ -358,6 +378,11 @@ func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateway
 
 func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList) SetDestinationCidr(v string) *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList {
 	s.DestinationCidr = &v
+	return s
+}
+
+func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList) SetDivertStatus(v string) *DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList {
+	s.DivertStatus = &v
 	return s
 }
 

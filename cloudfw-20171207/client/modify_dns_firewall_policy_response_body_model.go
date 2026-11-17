@@ -14,7 +14,7 @@ type iModifyDnsFirewallPolicyResponseBody interface {
 }
 
 type ModifyDnsFirewallPolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

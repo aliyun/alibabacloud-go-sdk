@@ -201,7 +201,7 @@ type DescribeFirewallTaskResponseBodyTaskSteps struct {
 	//
 	// abcd
 	StepInfo *string `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
-	// Creating Cloud Firewall security.
+	// Creates Cloud Firewall security.
 	//
 	// example:
 	//

@@ -34,13 +34,13 @@ type DescribeLocationInfoResponseBody struct {
 	CnList []*DescribeLocationInfoResponseBodyCnList `json:"CnList,omitempty" xml:"CnList,omitempty" type:"Repeated"`
 	// The province and city information in the Chinese mainland.
 	CnProvinceList []*DescribeLocationInfoResponseBodyCnProvinceList `json:"CnProvinceList,omitempty" xml:"CnProvinceList,omitempty" type:"Repeated"`
-	// The number of regions outside the Chinese mainland.
+	// The number of regions outside China.
 	//
 	// example:
 	//
 	// 238
 	OverseasCount *int32 `json:"OverseasCount,omitempty" xml:"OverseasCount,omitempty"`
-	// The list of regions outside the Chinese mainland.
+	// The list of regions outside China.
 	OverseasList []*DescribeLocationInfoResponseBodyOverseasList `json:"OverseasList,omitempty" xml:"OverseasList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

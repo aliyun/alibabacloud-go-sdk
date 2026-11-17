@@ -18,9 +18,9 @@ type iDescribeInvadeEventNameListResponseBody interface {
 }
 
 type DescribeInvadeEventNameListResponseBody struct {
-	// A list of anomalous activity names.
+	// The list of abnormal event names.
 	EventNameList []*DescribeInvadeEventNameListResponseBodyEventNameList `json:"EventNameList,omitempty" xml:"EventNameList,omitempty" type:"Repeated"`
-	// A list of vulnerability names.
+	// The list of vulnerability names.
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
 	// The request ID.
 	//

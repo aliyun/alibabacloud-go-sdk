@@ -22,7 +22,7 @@ type iDescribeAckClustersResponseBody interface {
 }
 
 type DescribeAckClustersResponseBody struct {
-	// A list of ACK clusters.
+	// The list of ACK clusters.
 	Clusters []*DescribeAckClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeAckClustersResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -129,37 +129,49 @@ type DescribeAckClustersResponseBodyClusters struct {
 	//
 	// ack-cluster-name
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The specification of the ACK cluster.
+	// The specifications of the ACK cluster.
 	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The type of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	// The type of the ACK cluster. Valid values:
 	//
-	// - [DescribeClustersV1](~~DescribeClustersV1~~): Returns a list of ACK clusters in your account that meet specific criteria, such as the cluster type and specifications.
+	// - **ManagedKubernetes**: managed ACK clusters, including ACK managed clusters (Pro Edition and Basic Edition), ACK Serverless clusters (Pro Edition and Basic Edition), ACK Edge clusters (Pro Edition and Basic Edition), and ACK Lingjun clusters (Pro Edition)
+	//
+	// - **ExternalKubernetes**: registered clusters
+	//
+	// - **Kubernetes**: dedicated ACK clusters
 	//
 	// example:
 	//
 	// ManagedKubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
+	// The Alibaba Cloud account ID to which the ACK cluster resources belong.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The network plugin of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	// The network plug-in of the ACK cluster. Valid values:
 	//
-	// - [DescribeClustersV1](~~DescribeClustersV1~~): Lists the ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+	// - **terway-eniip**: the Terway-eniip network plug-in
+	//
+	// - **Flannel**: the Flannel network plug-in
 	//
 	// example:
 	//
 	// terway-eniip
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The subtype of the cluster. This parameter is available only when `ClusterType` is set to `ManagedKubernetes`. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	// When `ClusterType` is set to `ManagedKubernetes` (managed ACK clusters), this parameter indicates the subtype of the cluster. Valid values:
 	//
-	// - [DescribeClustersV1](~~DescribeClustersV1~~): Lists ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+	// - **Default**: ACK managed clusters, including ACK managed clusters Pro Edition and Basic Edition
+	//
+	// - **Serverless**: ACK Serverless clusters, including ACK Serverless clusters Pro Edition and Basic Edition
+	//
+	// - **Edge**: ACK Edge clusters, including ACK Edge clusters Pro Edition and Basic Edition
+	//
+	// - **Lingjun**: ACK Lingjun clusters, available only in Pro Edition
 	//
 	// example:
 	//
@@ -171,15 +183,37 @@ type DescribeAckClustersResponseBodyClusters struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The running status of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
+	// The running status of the ACK cluster. Valid values:
 	//
-	// - [DescribeClustersV1](~~DescribeClustersV1~~): Retrieves a list of ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+	// - **initial**: The cluster is being created.
+	//
+	// - **running**: The cluster is running.
+	//
+	// - **scaling**: The cluster is being scaled.
+	//
+	// - **stopped**: The cluster is stopped.
+	//
+	// - **upgrading**: The cluster is being upgraded.
+	//
+	// - **updating**: The cluster configurations are being updated.
+	//
+	// - **deleting**: The cluster is being deleted.
+	//
+	// - **deleted**: The cluster is deleted.
+	//
+	// - **draining**: Nodes are being drained.
+	//
+	// - **removing**: Nodes are being removed.
+	//
+	// - **failed**: The cluster failed to be created.
+	//
+	// - **delete_failed**: The cluster failed to be deleted.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the VPC where the ACK cluster is deployed.
+	// The ID of the VPC to which the ACK cluster belongs.
 	//
 	// example:
 	//

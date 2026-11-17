@@ -50,49 +50,49 @@ type iDescribeInvadeEventDetailResponseBody interface {
 }
 
 type DescribeInvadeEventDetailResponseBody struct {
-	// The instance ID of the asset.
+	// The asset instance ID.
 	//
 	// example:
 	//
 	// i-8vb2nmm070m****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// The name of the asset.
+	// The asset name.
 	//
 	// example:
 	//
 	// ECS_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// The description of the event.
+	// The event description.
 	//
 	// example:
 	//
 	// test
 	EventDesc *string `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
-	// The details of the event.
+	// The event details.
 	//
 	// example:
 	//
 	// test
 	EventDetail *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
-	// The key of the event.
+	// The event key.
 	//
 	// example:
 	//
 	// C&CActivity
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the event.
+	// The event name.
 	//
 	// example:
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The UUID of the threat detection event.
+	// The UUID of the compromise awareness event.
 	//
 	// example:
 	//
 	// aa6e786c-5034-457a-8e05-1c63fab****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// The time when the event first occurred. This value is a UNIX timestamp. Unit: seconds.
+	// The time when the event first occurred. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeInvadeEventDetailResponseBody struct {
 	//
 	// false
 	IsIgnore *bool `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// The time when the event last occurred. This value is a UNIX timestamp. Unit: seconds.
+	// The time when the event last occurred. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeInvadeEventDetailResponseBody struct {
 	//
 	// 10.21.186.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The handling status of the event.
+	// The processing status.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeInvadeEventDetailResponseBody struct {
 	//
 	// 8022D695-4A35-50BC-8697-EA9C233A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The risk level of the event.
+	// The risk level.
 	//
 	// example:
 	//
@@ -360,7 +360,7 @@ func (s *DescribeInvadeEventDetailResponseBody) Validate() error {
 }
 
 type DescribeInvadeEventDetailResponseBodyOperationList struct {
-	// The parameters for the operation.
+	// The operation parameters.
 	//
 	// example:
 	//
@@ -405,7 +405,7 @@ func (s *DescribeInvadeEventDetailResponseBodyOperationList) Validate() error {
 }
 
 type DescribeInvadeEventDetailResponseBodyUnhandleOperationList struct {
-	// The parameters for the operation.
+	// The operation parameters.
 	//
 	// example:
 	//

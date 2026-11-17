@@ -18,17 +18,13 @@ type iDescribeVpcFirewallZoneResponseBody interface {
 }
 
 type DescribeVpcFirewallZoneResponseBody struct {
-	// The deployment mode of the virtual private cloud (VPC) firewall service. Valid values:
-	//
-	// - **PrimaryStandby**: active/standby mode.
-	//
-	// - **MultiPrimary**: active-active mode.
+	// The deployment mode of the VPC firewall service. Valid values: **PrimaryStandby*	- (primary/secondary mode) and **MultiPrimary*	- (active-active mode).
 	//
 	// example:
 	//
 	// PrimaryStandby
 	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -78,18 +74,18 @@ func (s *DescribeVpcFirewallZoneResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallZoneResponseBodyZoneList struct {
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-c
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The zone name.
 	//
 	// example:
 	//
 	// Hangzhou Zone C
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-c
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVpcFirewallZoneResponseBodyZoneList) String() string {
@@ -100,21 +96,21 @@ func (s DescribeVpcFirewallZoneResponseBodyZoneList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVpcFirewallZoneResponseBodyZoneList) GetZoneId() *string {
-	return s.ZoneId
-}
-
 func (s *DescribeVpcFirewallZoneResponseBodyZoneList) GetLocalName() *string {
 	return s.LocalName
 }
 
-func (s *DescribeVpcFirewallZoneResponseBodyZoneList) SetZoneId(v string) *DescribeVpcFirewallZoneResponseBodyZoneList {
-	s.ZoneId = &v
-	return s
+func (s *DescribeVpcFirewallZoneResponseBodyZoneList) GetZoneId() *string {
+	return s.ZoneId
 }
 
 func (s *DescribeVpcFirewallZoneResponseBodyZoneList) SetLocalName(v string) *DescribeVpcFirewallZoneResponseBodyZoneList {
 	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallZoneResponseBodyZoneList) SetZoneId(v string) *DescribeVpcFirewallZoneResponseBodyZoneList {
+	s.ZoneId = &v
 	return s
 }
 

@@ -84,7 +84,7 @@ func (s *DescribeInternetOpenDetailResponseBody) Validate() error {
 }
 
 type DescribeInternetOpenDetailResponseBodyDataList struct {
-	// The ID of the asset instance.
+	// The asset instance ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeInternetOpenDetailResponseBodyDataList struct {
 	//
 	// EcsEIP
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	// The ID of the details.
+	// The detail ID.
 	//
 	// example:
 	//
@@ -120,19 +120,19 @@ type DescribeInternetOpenDetailResponseBodyDataList struct {
 	//
 	// 0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The port that is exposed to the Internet.
+	// The open public port.
 	//
 	// example:
 	//
 	// 3389
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The security threat.
+	// The security risk.
 	//
 	// example:
 	//
 	// test
 	ProbRisk *string `json:"ProbRisk,omitempty" xml:"ProbRisk,omitempty"`
-	// The description of the security threat.
+	// The description of the security risk.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeInternetOpenDetailResponseBodyDataList struct {
 	//
 	// 39.101.167.XX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance resides.
 	//
 	// example:
 	//
@@ -186,25 +186,25 @@ type DescribeInternetOpenDetailResponseBodyDataList struct {
 	//
 	// 0
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The percentage of traffic in the last 24 hours.
+	// The traffic proportion over the last 1 day.
 	//
 	// example:
 	//
 	// 10
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	// The percentage of traffic in the last 30 days.
+	// The traffic proportion over the last 30 days.
 	//
 	// example:
 	//
 	// 48
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	// The percentage of traffic in the last 7 days.
+	// The traffic proportion over the last 7 days.
 	//
 	// example:
 	//
 	// 30
 	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	// The reason why the protocol is not detected when the protocol is identified as Unknown.
+	// The reason why the protocol is not identified when the recognized protocol is Unknown.
 	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
@@ -410,19 +410,19 @@ func (s *DescribeInternetOpenDetailResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetOpenDetailResponseBodyPageInfo struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

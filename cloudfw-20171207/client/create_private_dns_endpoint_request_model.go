@@ -68,7 +68,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// UDP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of Alibaba Cloud member accounts.
+	// The UID of the Alibaba Cloud member accounts.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
-	// The ID of the primary vSwitch. This parameter is required. If this parameter is not specified, -200103 is returned. The region and zone of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS firewalls.
+	// The ID of the primary vSwitch. This parameter is required. If this parameter is not specified, the error code -200103 is returned. The region and zone of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS firewalls.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 1.1.1.2
 	StandbyDns *string `json:"StandbyDns,omitempty" xml:"StandbyDns,omitempty"`
-	// The ID of the secondary vSwitch. The zones of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS. Otherwise, -200534 is returned. The region must also be in the support list.
+	// The ID of the secondary vSwitch. The zones of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS. Otherwise, the error code -200534 is returned. The region must also be in the supported list.
 	//
 	// example:
 	//

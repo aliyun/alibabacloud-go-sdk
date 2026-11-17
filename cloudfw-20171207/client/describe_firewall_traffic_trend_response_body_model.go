@@ -20,15 +20,15 @@ type iDescribeFirewallTrafficTrendResponseBody interface {
 }
 
 type DescribeFirewallTrafficTrendResponseBody struct {
-	// The returned data list.
+	// The list of returned data.
 	DataList []*DescribeFirewallTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The timestamp when the peak total traffic occurred. The value is a UNIX timestamp in seconds.
+	// The timestamp when the total traffic peaks. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1758470400
 	MaxBandwidthTime *int64 `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
-	// The traffic distribution at the time of peak total traffic.
+	// The traffic distribution at the time when the total traffic peaks.
 	MaxBandwidthTimeBps *DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps `json:"MaxBandwidthTimeBps,omitempty" xml:"MaxBandwidthTimeBps,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -101,33 +101,33 @@ func (s *DescribeFirewallTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeFirewallTrafficTrendResponseBodyDataList struct {
-	// The Internet firewall traffic.
+	// The traffic of the Internet firewall.
 	//
 	// example:
 	//
 	// 100
 	InternetBps *int64 `json:"InternetBps,omitempty" xml:"InternetBps,omitempty"`
-	// The NAT firewall traffic.
+	// The traffic of the NAT firewall.
 	//
 	// example:
 	//
 	// 100
 	NatBps *int64 `json:"NatBps,omitempty" xml:"NatBps,omitempty"`
-	// The time when the traffic occurred. The value is a UNIX timestamp in seconds.
+	// The time when the traffic is generated. The value is a UNIX timestamp in seconds.
 	//
-	// If the data at this point in time has not been processed, the values of other fields are -1.
+	// If the data for this time point is not processed, the values of other fields are -1.
 	//
 	// example:
 	//
 	// 1758470400
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The total firewall traffic.
+	// The total traffic of the firewall.
 	//
 	// example:
 	//
 	// 300
 	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
-	// The VPC firewall traffic.
+	// The traffic of the VPC firewall.
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ func (s *DescribeFirewallTrafficTrendResponseBodyDataList) Validate() error {
 }
 
 type DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps struct {
-	// The Internet firewall traffic at the time of peak total traffic.
+	// The traffic of the Internet firewall at the time when the total traffic peaks.
 	//
 	// example:
 	//
 	// 100
 	InternetBps *int64 `json:"InternetBps,omitempty" xml:"InternetBps,omitempty"`
-	// The NAT firewall traffic at the time of peak total traffic.
+	// The traffic of the NAT firewall at the time when the total traffic peaks.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps struct {
 	//
 	// 1000
 	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
-	// The VPC firewall traffic at the time of peak total traffic.
+	// The traffic of the VPC firewall at the time when the total traffic peaks.
 	//
 	// example:
 	//

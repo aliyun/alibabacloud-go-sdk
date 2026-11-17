@@ -95,7 +95,7 @@ type DescribeFirewallVswitchResourcesResponseBodyVswitchList struct {
 	//
 	// 192.168.0.XX/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The details of the event.
+	// The event details.
 	//
 	// example:
 	//
@@ -111,9 +111,9 @@ type DescribeFirewallVswitchResourcesResponseBodyVswitchList struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The type of the route table. Valid values:
 	//
-	// - **Custom**: a custom route table.
+	// - **Custom**: custom route table
 	//
-	// - **System**: a system route table.
+	// - **System**: system route table
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeFirewallVswitchResourcesResponseBodyVswitchList struct {
 	//
 	// vsw-test
 	VswitchName *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ func (s *DescribeFirewallVswitchResourcesResponseBodyVswitchList) Validate() err
 }
 
 type DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList struct {
-	// The ID of the firewall instance.
+	// The firewall instance ID.
 	//
 	// example:
 	//

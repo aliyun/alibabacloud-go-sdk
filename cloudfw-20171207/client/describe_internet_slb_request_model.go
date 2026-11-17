@@ -34,19 +34,19 @@ type iDescribeInternetSlbRequest interface {
 }
 
 type DescribeInternetSlbRequest struct {
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the SLB instance. Fuzzy search is supported.
+	// The ID of the SLB instance. Fuzzy matching is supported.
 	//
 	// example:
 	//
 	// lb-2ze8v2x5kd9qyvp2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the SLB instance. Fuzzy search is supported.
+	// The name of the SLB instance. Fuzzy matching is supported.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type DescribeInternetSlbRequest struct {
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The language of the response message.
+	// The language in which messages are received.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -76,25 +76,25 @@ type DescribeInternetSlbRequest struct {
 	//
 	// 63389
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The public IP address. Fuzzy search is supported. If you do not specify this parameter, all public IP addresses are queried.
+	// The public IP address. Fuzzy matching is supported. If not specified, all public IP addresses are queried.
 	//
 	// example:
 	//
 	// 47.108.60.XXX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The region. If you do not specify this parameter, all regions are queried.
+	// The region. If not specified, all regions are queried.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the client.
 	//
 	// example:
 	//
 	// 112.64.233.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The tag. If you do not specify this parameter, all tags are searched.
+	// The tag. If not specified, all tags are queried.
 	//
 	// example:
 	//

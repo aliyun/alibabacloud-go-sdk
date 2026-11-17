@@ -15,6 +15,8 @@ type iDescribeFirewallTaskRequest interface {
 	GetLang() *string
 	SetTaskId(v string) *DescribeFirewallTaskRequest
 	GetTaskId() *string
+	SetTaskName(v string) *DescribeFirewallTaskRequest
+	GetTaskName() *string
 	SetTaskType(v string) *DescribeFirewallTaskRequest
 	GetTaskType() *string
 }
@@ -42,6 +44,12 @@ type DescribeFirewallTaskRequest struct {
 	//
 	// 199431783
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The action of the task, which is used to filter tasks by action. Valid values: init, open, close, delete, and change_route. This parameter takes effect only when TaskType is set to NAT. If TaskId is specified, this parameter is ignored. If this parameter is not specified, the most recently started task of the instance is retrieved, regardless of the action.
+	//
+	// example:
+	//
+	// open
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the task. Valid values:
 	//
 	// - **NAT**: NAT firewall task
@@ -74,6 +82,10 @@ func (s *DescribeFirewallTaskRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *DescribeFirewallTaskRequest) GetTaskName() *string {
+	return s.TaskName
+}
+
 func (s *DescribeFirewallTaskRequest) GetTaskType() *string {
 	return s.TaskType
 }
@@ -90,6 +102,11 @@ func (s *DescribeFirewallTaskRequest) SetLang(v string) *DescribeFirewallTaskReq
 
 func (s *DescribeFirewallTaskRequest) SetTaskId(v string) *DescribeFirewallTaskRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeFirewallTaskRequest) SetTaskName(v string) *DescribeFirewallTaskRequest {
+	s.TaskName = &v
 	return s
 }
 

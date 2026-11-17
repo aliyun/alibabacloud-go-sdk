@@ -20,25 +20,25 @@ type iDescribeInvadeEventStatisticRequest interface {
 }
 
 type DescribeInvadeEventStatisticRequest struct {
-	// The end time. This is a UNIX timestamp that is accurate to the second.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1774713600
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 52.130.200.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time. This is a UNIX timestamp that is accurate to the second.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

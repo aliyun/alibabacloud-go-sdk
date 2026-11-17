@@ -22,17 +22,7 @@ type DescribeTaskDispatchStatusResponseBody struct {
 	//
 	// 71209DFE-XXX-XXX-52B4A4E9DA3B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// - PENDING: Pending.
-	//
-	// - RUNNING: Running.
-	//
-	// - SUCCESS: Successful.
-	//
-	// - FAILED: Failed.
-	//
-	// - CANCELLED: Cancelled.
+	// The task status. Valid values: PENDING (pending execution), RUNNING (running), SUCCESS (successful), FAILED (failed), and CANCELLED (canceled).
 	//
 	// example:
 	//

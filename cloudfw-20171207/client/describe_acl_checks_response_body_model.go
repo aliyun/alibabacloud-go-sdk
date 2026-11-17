@@ -62,7 +62,7 @@ func (s *DescribeAclChecksResponseBody) Validate() error {
 }
 
 type DescribeAclChecksResponseBodyCheckRecords struct {
-	// The type of ACL check.
+	// The ACL check type.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type DescribeAclChecksResponseBodyCheckRecordsRecords struct {
 	//
 	// Checked
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The type of ACL check.
+	// The ACL check type.
 	//
 	// example:
 	//
 	// AddressBookGather
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The UNIX timestamp of the last check, in seconds.
+	// The timestamp of the latest check. Unit: seconds.
 	//
 	// example:
 	//

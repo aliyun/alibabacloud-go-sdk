@@ -96,7 +96,7 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// No recommended intelligent policies are available.
+	// 当前无智能策略推荐
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
 	// The instance ID.
 	//
@@ -182,7 +182,7 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Previous traffic is all malicious traffic.
+	// 历史流量均为黑流量
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
 	// The application list.
 	ServiceNameList []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`

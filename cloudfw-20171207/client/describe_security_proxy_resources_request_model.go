@@ -24,7 +24,7 @@ type DescribeSecurityProxyResourcesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member accounts.
+	// The UID of member accounts.
 	//
 	// example:
 	//

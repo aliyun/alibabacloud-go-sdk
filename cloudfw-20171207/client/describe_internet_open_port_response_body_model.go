@@ -102,19 +102,19 @@ type DescribeInternetOpenPortResponseBodyDataList struct {
 	//
 	// 117200
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The open port.
+	// The open ports.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The security threat.
+	// The security risk.
 	//
 	// example:
 	//
 	// test
 	ProbRisk *string `json:"ProbRisk,omitempty" xml:"ProbRisk,omitempty"`
-	// The description of the security threat.
+	// The description of the security risk.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeInternetOpenPortResponseBodyDataList struct {
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of public IP addresses that have the port open.
+	// The number of open public IP addresses.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeInternetOpenPortResponseBodyDataList struct {
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The description of the risk.
+	// The risk description.
 	//
 	// example:
 	//
@@ -158,25 +158,25 @@ type DescribeInternetOpenPortResponseBodyDataList struct {
 	//
 	// 621404
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The percentage of traffic in the last 24 hours. Valid values: **1*	- to **100**.
+	// The traffic proportion. Valid values: **1*	- to **100**.
 	//
 	// example:
 	//
 	// 10
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	// The percentage of traffic in the last 30 days.
+	// The traffic proportion over the last 30 days.
 	//
 	// example:
 	//
 	// 48
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	// The percentage of traffic in the last 7 days.
+	// The traffic proportion over the last 7 days.
 	//
 	// example:
 	//
 	// 30
 	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	// The reason why the protocol is not identified when the protocol is detected as Unknown.
+	// The reason why the protocol is not identified when the recognized protocol is Unknown.
 	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 

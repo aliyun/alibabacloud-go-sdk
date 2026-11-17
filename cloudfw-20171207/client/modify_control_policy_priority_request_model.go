@@ -16,7 +16,7 @@ type iModifyControlPolicyPriorityRequest interface {
 }
 
 type ModifyControlPolicyPriorityRequest struct {
-	// The unique ID of the access control policy.
+	// The unique identifier of the access control policy.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ModifyControlPolicyPriorityRequest struct {
 	//
 	// 3770d603-3534-4878-b845-f00095ee****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The priority of the access control policy.
+	// The priority of the access control policy. Valid values: 1 to the number of policies in the same direction and of the same IP version. You can call DescribeControlPolicy to query the number of policies in the same direction and determine the valid upper limit. If the value exceeds the range, the ErrorParametersNewOrder (-200119) error is returned.
 	//
 	// This parameter is required.
 	//

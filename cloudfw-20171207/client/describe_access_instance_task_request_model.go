@@ -22,19 +22,19 @@ type iDescribeAccessInstanceTaskRequest interface {
 }
 
 type DescribeAccessInstanceTaskRequest struct {
-	// The synchronization node ID. You must specify at least one of AccessInstanceId and TaskId. If both are empty, the error MissingParameter.TaskIdOrAccessInstanceId (-200550) is returned.
+	// The ID of the synchronization node. You must specify at least one of AccessInstanceId and TaskId. If both are left empty, the MissingParameter.TaskIdOrAccessInstanceId (-200550) error is returned.
 	//
 	// example:
 	//
 	// pdi-3bc2f91695ee48bd9377
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
-	// The synchronization node type.
+	// The type of the synchronization node.
 	//
 	// example:
 	//
 	// AckClusterConnector
 	AccessInstanceType *string `json:"AccessInstanceType,omitempty" xml:"AccessInstanceType,omitempty"`
-	// The language of the response message.
+	// The language in which messages are received.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeAccessInstanceTaskRequest struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The task ID. You must specify at least one of TaskId and AccessInstanceId. If both are empty, the error MissingParameter.TaskIdOrAccessInstanceId (-200550, TaskId and AccessInstanceId cannot be empty at the same time. Provide at least one.) is returned.
+	// The task ID. You must specify at least one of TaskId and AccessInstanceId. If both are left empty, the MissingParameter.TaskIdOrAccessInstanceId (-200550, TaskId and AccessInstanceId cannot be empty at the same time. Provide at least one.) error is returned.
 	//
 	// example:
 	//

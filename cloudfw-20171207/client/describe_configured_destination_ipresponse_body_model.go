@@ -22,7 +22,7 @@ type iDescribeConfiguredDestinationIPResponseBody interface {
 }
 
 type DescribeConfiguredDestinationIPResponseBody struct {
-	// The list of destinations returned.
+	// The returned list of destinations.
 	Destinations []*DescribeConfiguredDestinationIPResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
 	// The page number of the current page.
 	//
@@ -141,7 +141,7 @@ type DescribeConfiguredDestinationIPResponseBodyDestinations struct {
 	//
 	// cn-shenzhen
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
-	// The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
+	// The operation time. The value is a UNIX timestamp in seconds, such as 1672502400.
 	//
 	// example:
 	//

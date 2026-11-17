@@ -24,13 +24,13 @@ type iDescribePostpayBillRequest interface {
 }
 
 type DescribePostpayBillRequest struct {
-	// The Settings for the page number of the current page during paging in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the bill query. The time is a UNIX timestamp accurate to seconds and must be later than StartTime.
+	// The end time of the bill query. The time is a UNIX timestamp accurate to seconds and must be later than the start time.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,15 @@ type DescribePostpayBillRequest struct {
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval for querying data. This parameter is required. If this parameter is not specified, ERR_PARAMS_INVALID is returned. Valid values:
+	// The aggregation interval of the bill data. Unit: seconds. This parameter is required. If you do not specify this parameter, the ERR_PARAMS_INVALID error is returned. Valid values:
 	//
-	// - 3600: hourly data.
+	// - 3600: Hourly aggregation.
 	//
-	// - 86400: daily data.
+	// - 86400: Daily aggregation.
 	//
 	// example:
 	//
-	// 60
+	// 3600
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The language. Valid values:
 	//
@@ -60,7 +60,7 @@ type DescribePostpayBillRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return per page during paging in a paged query. Default value: 10.
+	// The maximum number of entries to return on each page in a paging query. Default value: 10.
 	//
 	// example:
 	//

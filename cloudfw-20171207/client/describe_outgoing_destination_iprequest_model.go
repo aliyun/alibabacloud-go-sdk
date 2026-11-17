@@ -40,7 +40,7 @@ type iDescribeOutgoingDestinationIPRequest interface {
 }
 
 type DescribeOutgoingDestinationIPRequest struct {
-	// The application type supported by the access control policy.
+	// The Protocol Type supported by the access control policy. Valid values:
 	//
 	// - **FTP**
 	//
@@ -72,43 +72,43 @@ type DescribeOutgoingDestinationIPRequest struct {
 	//
 	// - **VNC**
 	//
-	// > The supported application types depend on the protocol type specified in the Proto parameter. If Proto is set to TCP, all application types listed above are supported. If both ApplicationName and ApplicationNameList are specified, the value of ApplicationNameList takes precedence.
+	// > The valid values of this parameter depend on the value of the Proto parameter. If Proto is set to TCP, ApplicationNameList supports all the preceding Protocol Types. If both ApplicationNameList and ApplicationName are specified, ApplicationNameList takes precedence.
 	//
 	// example:
 	//
 	// FTP
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The ID of the service category. Valid values:
+	// The category ID. Default value: null. Valid values:
 	//
-	// - **All**: all categories
+	// - **All**: All categories.
 	//
-	// - **RiskDomain**: risk domains
+	// - **RiskDomain**: Risky domain names.
 	//
-	// - **RiskIP**: risk IPs
+	// - **RiskIP**: Risky IP addresses.
 	//
-	// - **AliYun**: Alibaba Cloud services
+	// - **AliYun**: Alibaba Cloud services.
 	//
-	// - **NotAliYun**: services other than Alibaba Cloud services
+	// - **NotAliYun**: Non-Alibaba Cloud services.
 	//
 	// example:
 	//
 	// All
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The page number to return.
+	// Sets the paging settings to specify the page number to return for a paged query.
 	//
-	// Default value: 1.
+	// Default value: 1, which means the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The destination IP address of the outbound connection.
+	// The destination IP address of the domain name for outbound connections.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The end of the time range to query. The value is a timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp accurate to seconds.
 	//
 	// This parameter is required.
 	//
@@ -128,17 +128,17 @@ type DescribeOutgoingDestinationIPRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **asc**: ascending order.
+	// - **asc**: Ascending order.
 	//
-	// - **desc*	- (default): descending order.
+	// - **desc*	- (default): Descending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries to return on each page.
+	// Sets the paging settings to specify the number of entries to return on each page for a paged query.
 	//
-	// Default value: 6. Maximum value: 10.
+	// Default value: 6, which means 6 entries are returned on each page. Maximum value: 10.
 	//
 	// example:
 	//
@@ -164,15 +164,15 @@ type DescribeOutgoingDestinationIPRequest struct {
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
 	// The field by which to sort the results. Valid values:
 	//
-	// - **SessionCount*	- (default): request count.
+	// - **SessionCount*	- (default): The number of requests.
 	//
-	// - **TotalBytes**: total traffic.
+	// - **TotalBytes**: The total volume of traffic.
 	//
 	// example:
 	//
 	// SessionCount
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start of the time range to query. The value is a timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp accurate to seconds.
 	//
 	// This parameter is required.
 	//
@@ -180,81 +180,81 @@ type DescribeOutgoingDestinationIPRequest struct {
 	//
 	// 1656837360
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the threat intelligence tag. Valid values:
+	// The intelligence tag ID. Valid values:
 	//
-	// - **AliYun**: Alibaba Cloud service
+	// - **AliYun**: Alibaba Cloud services.
 	//
-	// - **RiskDomain**: risk domain
+	// - **RiskDomain**: Risky domain names.
 	//
-	// - **RiskIP**: risk IP
+	// - **RiskIP**: Risky IP addresses.
 	//
-	// - **TrustedDomain**: trusted website
+	// - **TrustedDomain**: Trusted websites.
 	//
-	// - **AliPay**: Alipay
+	// - **AliPay**: Alipay.
 	//
-	// - **DingDing**: DingTalk
+	// - **DingDing**: DingTalk.
 	//
-	// - **WeChat**: WeChat
+	// - **WeChat**: WeChat.
 	//
-	// - **QQ**: Tencent QQ
+	// - **QQ**: Tencent QQ.
 	//
-	// - **SecurityService**: security service
+	// - **SecurityService**: Security services.
 	//
-	// - **Microsoft**: Microsoft
+	// - **Microsoft**: Microsoft.
 	//
-	// - **Amazon**: Amazon
+	// - **Amazon**: Amazon.
 	//
-	// - **Pan**: cloud drive
+	// - **Pan**: Cloud disks.
 	//
-	// - **Map**: map
+	// - **Map**: Maps.
 	//
-	// - **Code**: code hosting
+	// - **Code**: Code hosting.
 	//
-	// - **SystemService**: system service
+	// - **SystemService**: System services.
 	//
-	// - **Taobao**: Taobao
+	// - **Taobao**: Taobao.
 	//
-	// - **Google**: Google
+	// - **Google**: Google.
 	//
-	// - **ThirdPartyService**: third-party service
+	// - **ThirdPartyService**: Third-party platform services.
 	//
-	// - **FirstFlow**: first access
+	// - **FirstFlow**: First visit.
 	//
-	// - **Downloader**: malicious downloader
+	// - **Downloader**: Malicious download.
 	//
-	// - **Alexa Top1M**: popular website
+	// - **Alexa Top1M**: Popular website.
 	//
-	// - **Miner**: mining pool
+	// - **Miner**: Miner Pool.
 	//
-	// - **Intelligence**: threat intelligence
+	// - **Intelligence**: Threat intelligence.
 	//
-	// - **DDoS**: DDoS trojan
+	// - **DDoS**: DDoS Trojan.
 	//
-	// - **Ransomware**: ransomware
+	// - **Ransomware**: Ransomware.
 	//
-	// - **Spyware**: spyware
+	// - **Spyware**: Spyware.
 	//
-	// - **Rogue**: rogue software
+	// - **Rogue**: Rogue software.
 	//
-	// - **Botnet**: botnet
+	// - **Botnet**: Botnets.
 	//
-	// - **Suspicious**: suspicious website
+	// - **Suspicious**: Suspicious websites.
 	//
-	// - **C\\&C**: command and control (C\\&C)
+	// - **C&C**: Remote control.
 	//
-	// - **Gang**: threat actor group
+	// - **Gang**: Gangs.
 	//
-	// - **CVE**: CVE
+	// - **CVE**: CVE vulnerabilities.
 	//
-	// - **Backdoor**: backdoor
+	// - **Backdoor**: Backdoor Trojans.
 	//
-	// - **Phishing**: phishing website
+	// - **Phishing**: Phishing websites.
 	//
-	// - **APT**: APT attack
+	// - **APT**: APT attacks.
 	//
-	// - **Supply Chain Attack**: supply chain attack
+	// - **Supply Chain Attack**: Supply chain attacks.
 	//
-	// - **Malicious software**: malware
+	// - **Malicious software**: Malware.
 	//
 	// example:
 	//

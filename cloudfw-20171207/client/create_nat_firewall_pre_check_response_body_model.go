@@ -16,7 +16,7 @@ type iCreateNatFirewallPreCheckResponseBody interface {
 }
 
 type CreateNatFirewallPreCheckResponseBody struct {
-	// The dry run ID.
+	// The precheck ID.
 	//
 	// example:
 	//

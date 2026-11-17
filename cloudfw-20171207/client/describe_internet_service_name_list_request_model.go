@@ -16,13 +16,13 @@ type iDescribeInternetServiceNameListRequest interface {
 }
 
 type DescribeInternetServiceNameListRequest struct {
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

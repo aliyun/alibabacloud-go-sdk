@@ -50,7 +50,7 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end time. Specify a UNIX timestamp in seconds.
+	// The end time. Use a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// 50
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The rule protection result.
+	// The rule defense result.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// 1
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// Specifies whether to display country names.
+	// Specifies whether to display the country name.
 	//
 	// example:
 	//
 	// China
 	ShowCountryName *string `json:"ShowCountryName,omitempty" xml:"ShowCountryName,omitempty"`
-	// The sort method.
+	// The sort order.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// 117.82.14.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time. Specify a UNIX timestamp in seconds.
+	// The start time. Use a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

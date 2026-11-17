@@ -83,7 +83,7 @@ func (s *DescribeFirewallVSwitchResponseBody) Validate() error {
 }
 
 type DescribeFirewallVSwitchResponseBodyVswitchList struct {
-	// The number of available IP addresses.
+	// The available IP address count.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DescribeFirewallVSwitchResponseBodyVswitchList struct {
 	FirewallCount *string `json:"FirewallCount,omitempty" xml:"FirewallCount,omitempty"`
 	// The list of firewalls.
 	FirewallList []*DescribeFirewallVSwitchResponseBodyVswitchListFirewallList `json:"FirewallList,omitempty" xml:"FirewallList,omitempty" type:"Repeated"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ type DescribeFirewallVSwitchResponseBodyVswitchList struct {
 	//
 	// vpc-2zeez7gymz5r4pi****am
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp10qla9mgi42eo****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The name of the vSwitch.
+	// The vSwitch name.
 	//
 	// example:
 	//

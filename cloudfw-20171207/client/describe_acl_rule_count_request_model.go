@@ -26,7 +26,7 @@ type DescribeAclRuleCountRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

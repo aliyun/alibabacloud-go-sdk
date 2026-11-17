@@ -32,19 +32,19 @@ type iDescribeInternetOpenStatisticResponseBody interface {
 }
 
 type DescribeInternetOpenStatisticResponseBody struct {
-	// The total number of public IP addresses exposed to the Internet.
+	// The total number of open public IP addresses.
 	//
 	// example:
 	//
 	// 9
 	InternetIpNum *int32 `json:"InternetIpNum,omitempty" xml:"InternetIpNum,omitempty"`
-	// The total number of ports exposed to the Internet.
+	// The total number of open ports.
 	//
 	// example:
 	//
 	// 38
 	InternetPortNum *int32 `json:"InternetPortNum,omitempty" xml:"InternetPortNum,omitempty"`
-	// The number of risky public IP addresses exposed to the Internet.
+	// The number of risky open public IP addresses.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ type DescribeInternetOpenStatisticResponseBody struct {
 	//
 	// 3
 	InternetRiskServiceNum *int32 `json:"InternetRiskServiceNum,omitempty" xml:"InternetRiskServiceNum,omitempty"`
-	// The total number of applications exposed to the Internet.
+	// The total number of open applications.
 	//
 	// example:
 	//
 	// 15
 	InternetServiceNum *int32 `json:"InternetServiceNum,omitempty" xml:"InternetServiceNum,omitempty"`
-	// The number of public IP addresses of Server Load Balancer (SLB) instances.
+	// The number of SLB public IP addresses.
 	//
 	// example:
 	//
 	// 10
 	InternetSlbIpNum *int32 `json:"InternetSlbIpNum,omitempty" xml:"InternetSlbIpNum,omitempty"`
-	// The number of public ports of SLB instances.
+	// The number of SLB public ports.
 	//
 	// example:
 	//
 	// 16
 	InternetSlbIpPortNum *int32 `json:"InternetSlbIpPortNum,omitempty" xml:"InternetSlbIpPortNum,omitempty"`
-	// The number of ports that are not protected by an access control list (ACL).
+	// The number of ports that are not protected by access control lists (ACLs).
 	//
 	// example:
 	//

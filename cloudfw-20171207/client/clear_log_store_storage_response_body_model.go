@@ -30,11 +30,7 @@ type ClearLogStoreStorageResponseBody struct {
 	//
 	// 21C27710-2DB1-5F2A-8588-72D0541B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// - true: The request is successful.
-	//
-	// - false: The request failed.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

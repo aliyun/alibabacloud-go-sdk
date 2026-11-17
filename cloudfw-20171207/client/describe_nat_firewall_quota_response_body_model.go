@@ -46,7 +46,7 @@ type DescribeNatFirewallQuotaResponseBody struct {
 	//
 	// 20
 	UnprotectedCount *int64 `json:"UnprotectedCount,omitempty" xml:"UnprotectedCount,omitempty"`
-	// The number of used quotas.
+	// The used count.
 	//
 	// example:
 	//

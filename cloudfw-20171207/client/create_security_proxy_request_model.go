@@ -9,6 +9,8 @@ type iCreateSecurityProxyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBasicDefenseEnabled(v string) *CreateSecurityProxyRequest
+	GetBasicDefenseEnabled() *string
 	SetFirewallServiceMode(v string) *CreateSecurityProxyRequest
 	GetFirewallServiceMode() *string
 	SetFirewallServiceZones(v []*string) *CreateSecurityProxyRequest
@@ -19,16 +21,34 @@ type iCreateSecurityProxyRequest interface {
 	GetFwVswitchZoneId() *string
 	SetLang(v string) *CreateSecurityProxyRequest
 	GetLang() *string
+	SetMasterVSwitchCidr(v string) *CreateSecurityProxyRequest
+	GetMasterVSwitchCidr() *string
+	SetMasterZoneId(v string) *CreateSecurityProxyRequest
+	GetMasterZoneId() *string
 	SetNatGatewayId(v string) *CreateSecurityProxyRequest
 	GetNatGatewayId() *string
+	SetNatMode(v string) *CreateSecurityProxyRequest
+	GetNatMode() *string
 	SetNatRouteEntryList(v []*CreateSecurityProxyRequestNatRouteEntryList) *CreateSecurityProxyRequest
 	GetNatRouteEntryList() []*CreateSecurityProxyRequestNatRouteEntryList
 	SetProxyName(v string) *CreateSecurityProxyRequest
 	GetProxyName() *string
 	SetRegionNo(v string) *CreateSecurityProxyRequest
 	GetRegionNo() *string
+	SetRuleClass(v string) *CreateSecurityProxyRequest
+	GetRuleClass() *string
+	SetRunMode(v string) *CreateSecurityProxyRequest
+	GetRunMode() *string
+	SetStandbyVSwitchCidr(v string) *CreateSecurityProxyRequest
+	GetStandbyVSwitchCidr() *string
+	SetStandbyZoneId(v string) *CreateSecurityProxyRequest
+	GetStandbyZoneId() *string
 	SetStrictMode(v int32) *CreateSecurityProxyRequest
 	GetStrictMode() *int32
+	SetThreatIntelEnabled(v string) *CreateSecurityProxyRequest
+	GetThreatIntelEnabled() *string
+	SetVirtualPatchEnabled(v string) *CreateSecurityProxyRequest
+	GetVirtualPatchEnabled() *string
 	SetVpcId(v string) *CreateSecurityProxyRequest
 	GetVpcId() *string
 	SetVswitchAuto(v string) *CreateSecurityProxyRequest
@@ -40,11 +60,21 @@ type iCreateSecurityProxyRequest interface {
 }
 
 type CreateSecurityProxyRequest struct {
+	// Specifies whether to enable the basic protection policies of the IPS. If this parameter is not specified, the system default (enabled) is used. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
+	//
+	// example:
+	//
+	// 1
+	BasicDefenseEnabled *string `json:"BasicDefenseEnabled,omitempty" xml:"BasicDefenseEnabled,omitempty"`
 	// The deployment mode of the firewall service. Valid values:
 	//
-	// - PrimaryStandby: primary/secondary mode
+	// - **PrimaryStandby**: primary/secondary mode.
 	//
-	// - MultiPrimary: active-active mode
+	// - **MultiPrimary**: active-active mode.
 	//
 	// example:
 	//
@@ -54,9 +84,9 @@ type CreateSecurityProxyRequest struct {
 	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
 	// The security protection switch. Valid values:
 	//
-	// - **open**: enable
+	// - **open**: enabled.
 	//
-	// - **close**: disable
+	// - **close**: disabled.
 	//
 	// example:
 	//
@@ -78,6 +108,18 @@ type CreateSecurityProxyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The vSwitch CIDR block of the GWLB endpoint (GWLBe) in the active zone. This parameter applies only to NAT firewalls that use the GWLB architecture. For the GWLB architecture, this parameter is required along with MasterZoneId, StandbyZoneId, and StandbyVSwitchCidr. If any of these parameters is missing, ErrorParameters is returned. The vSwitch is created by the firewall creation node based on this vSwitch CIDR block. This parameter is not read for the ENI architecture.
+	//
+	// example:
+	//
+	// 192.168.0.0/24
+	MasterVSwitchCidr *string `json:"MasterVSwitchCidr,omitempty" xml:"MasterVSwitchCidr,omitempty"`
+	// The ID of the primary zone. This parameter applies only to NAT firewalls that use the GWLB architecture. For the GWLB architecture, this parameter is required along with MasterVSwitchCidr, StandbyZoneId, and StandbyVSwitchCidr. If any of these parameters is missing, ErrorParameters is returned. The value must be the same as the zone where the NAT gateway resides. This parameter is not read for the ENI architecture.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
 	// The ID of the NAT gateway.
 	//
 	// This parameter is required.
@@ -86,9 +128,13 @@ type CreateSecurityProxyRequest struct {
 	//
 	// ngw-bp1okz6k7******
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The list of routes to be switched for the NAT gateway.
+	// The architecture type of the NAT firewall. Valid values: **eni*	- (traditional ENI architecture) and **gwlb*	- (new GWLB architecture). If this parameter is omitted or left empty, the firewall is created by using the ENI architecture, and no implicit selection is performed on the server side. You can obtain the recommended architecture from the response of the DescribeNatFirewallArchitecture operation and pass it back when you create the firewall.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// gwlb
+	NatMode *string `json:"NatMode,omitempty" xml:"NatMode,omitempty"`
+	// The list of routes to be switched for the NAT gateway.
 	NatRouteEntryList []*CreateSecurityProxyRequestNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
 	// The name of the NAT firewall. The name must be 4 to 50 characters in length and can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It cannot start with an underscore.
 	//
@@ -108,17 +154,73 @@ type CreateSecurityProxyRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The level of the IPS rule group. This parameter is valid only in block mode. If this parameter is not specified, the system default (medium) is used. Valid values:
+	//
+	// - **0**: none. The value is forced to 0 in monitor mode.
+	//
+	// - **1**: loose.
+	//
+	// - **2**: medium.
+	//
+	// - **3**: strict.
+	//
+	// example:
+	//
+	// 2
+	RuleClass *string `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	// The IPS defense mode. This parameter is supported only by NAT firewalls that use the GWLB architecture. If this parameter is not specified, the system default (Block Mode) is used. Valid values:
+	//
+	// - **0**: monitor mode. Only alerting is triggered, and traffic is not blocked.
+	//
+	// - **1**: Block Mode.
+	//
+	// example:
+	//
+	// 1
+	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	// The vSwitch CIDR block of the GWLBe in the standby zone. This parameter applies only to NAT firewalls that use the GWLB architecture. For the GWLB architecture, this parameter is required along with MasterZoneId, MasterVSwitchCidr, and StandbyZoneId. If any of these parameters is missing, ErrorParameters is returned. The vSwitch is created by the firewall creation node based on this vSwitch CIDR block. This parameter is not read for the ENI architecture.
+	//
+	// example:
+	//
+	// 192.168.1.0/24
+	StandbyVSwitchCidr *string `json:"StandbyVSwitchCidr,omitempty" xml:"StandbyVSwitchCidr,omitempty"`
+	// The ID of the secondary zone. This parameter applies only to NAT firewalls that use the GWLB architecture. For the GWLB architecture, this parameter is required along with MasterZoneId, MasterVSwitchCidr, and StandbyVSwitchCidr. If any of these parameters is missing, ErrorParameters is returned. The value cannot be the same as MasterZoneId. If they are the same, ErrorZoneIdInvalid is returned. This parameter is not read for the ENI architecture.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
 	// Specifies whether to enable strict mode. Valid values:
 	//
-	// - 1: Enable strict mode.
+	// - **1**: enables strict mode.
 	//
-	// - 0: Disable strict mode.
+	// - **0**: disables strict mode.
 	//
 	// example:
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// The VPC-connected instance ID.
+	// Specifies whether to enable the threat intelligence rules of the IPS. If this parameter is not specified, the system default (enabled) is used. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
+	//
+	// example:
+	//
+	// 1
+	ThreatIntelEnabled *string `json:"ThreatIntelEnabled,omitempty" xml:"ThreatIntelEnabled,omitempty"`
+	// Specifies whether to enable the Virtual Patches of the IPS. If this parameter is not specified, the system default (enabled) is used. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
+	//
+	// example:
+	//
+	// 1
+	VirtualPatchEnabled *string `json:"VirtualPatchEnabled,omitempty" xml:"VirtualPatchEnabled,omitempty"`
+	// The instance ID of the VPC.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +234,7 @@ type CreateSecurityProxyRequest struct {
 	//
 	// - **false**: manual mode.
 	//
-	// > Default value: true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
+	// > Default value: **true**. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
 	//
 	// example:
 	//
@@ -160,6 +262,10 @@ func (s CreateSecurityProxyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSecurityProxyRequest) GetBasicDefenseEnabled() *string {
+	return s.BasicDefenseEnabled
+}
+
 func (s *CreateSecurityProxyRequest) GetFirewallServiceMode() *string {
 	return s.FirewallServiceMode
 }
@@ -180,8 +286,20 @@ func (s *CreateSecurityProxyRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *CreateSecurityProxyRequest) GetMasterVSwitchCidr() *string {
+	return s.MasterVSwitchCidr
+}
+
+func (s *CreateSecurityProxyRequest) GetMasterZoneId() *string {
+	return s.MasterZoneId
+}
+
 func (s *CreateSecurityProxyRequest) GetNatGatewayId() *string {
 	return s.NatGatewayId
+}
+
+func (s *CreateSecurityProxyRequest) GetNatMode() *string {
+	return s.NatMode
 }
 
 func (s *CreateSecurityProxyRequest) GetNatRouteEntryList() []*CreateSecurityProxyRequestNatRouteEntryList {
@@ -196,8 +314,32 @@ func (s *CreateSecurityProxyRequest) GetRegionNo() *string {
 	return s.RegionNo
 }
 
+func (s *CreateSecurityProxyRequest) GetRuleClass() *string {
+	return s.RuleClass
+}
+
+func (s *CreateSecurityProxyRequest) GetRunMode() *string {
+	return s.RunMode
+}
+
+func (s *CreateSecurityProxyRequest) GetStandbyVSwitchCidr() *string {
+	return s.StandbyVSwitchCidr
+}
+
+func (s *CreateSecurityProxyRequest) GetStandbyZoneId() *string {
+	return s.StandbyZoneId
+}
+
 func (s *CreateSecurityProxyRequest) GetStrictMode() *int32 {
 	return s.StrictMode
+}
+
+func (s *CreateSecurityProxyRequest) GetThreatIntelEnabled() *string {
+	return s.ThreatIntelEnabled
+}
+
+func (s *CreateSecurityProxyRequest) GetVirtualPatchEnabled() *string {
+	return s.VirtualPatchEnabled
 }
 
 func (s *CreateSecurityProxyRequest) GetVpcId() *string {
@@ -214,6 +356,11 @@ func (s *CreateSecurityProxyRequest) GetVswitchCidr() *string {
 
 func (s *CreateSecurityProxyRequest) GetVswitchId() *string {
 	return s.VswitchId
+}
+
+func (s *CreateSecurityProxyRequest) SetBasicDefenseEnabled(v string) *CreateSecurityProxyRequest {
+	s.BasicDefenseEnabled = &v
+	return s
 }
 
 func (s *CreateSecurityProxyRequest) SetFirewallServiceMode(v string) *CreateSecurityProxyRequest {
@@ -241,8 +388,23 @@ func (s *CreateSecurityProxyRequest) SetLang(v string) *CreateSecurityProxyReque
 	return s
 }
 
+func (s *CreateSecurityProxyRequest) SetMasterVSwitchCidr(v string) *CreateSecurityProxyRequest {
+	s.MasterVSwitchCidr = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetMasterZoneId(v string) *CreateSecurityProxyRequest {
+	s.MasterZoneId = &v
+	return s
+}
+
 func (s *CreateSecurityProxyRequest) SetNatGatewayId(v string) *CreateSecurityProxyRequest {
 	s.NatGatewayId = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetNatMode(v string) *CreateSecurityProxyRequest {
+	s.NatMode = &v
 	return s
 }
 
@@ -261,8 +423,38 @@ func (s *CreateSecurityProxyRequest) SetRegionNo(v string) *CreateSecurityProxyR
 	return s
 }
 
+func (s *CreateSecurityProxyRequest) SetRuleClass(v string) *CreateSecurityProxyRequest {
+	s.RuleClass = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetRunMode(v string) *CreateSecurityProxyRequest {
+	s.RunMode = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetStandbyVSwitchCidr(v string) *CreateSecurityProxyRequest {
+	s.StandbyVSwitchCidr = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetStandbyZoneId(v string) *CreateSecurityProxyRequest {
+	s.StandbyZoneId = &v
+	return s
+}
+
 func (s *CreateSecurityProxyRequest) SetStrictMode(v int32) *CreateSecurityProxyRequest {
 	s.StrictMode = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetThreatIntelEnabled(v string) *CreateSecurityProxyRequest {
+	s.ThreatIntelEnabled = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetVirtualPatchEnabled(v string) *CreateSecurityProxyRequest {
+	s.VirtualPatchEnabled = &v
 	return s
 }
 
@@ -308,7 +500,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// 0.0.0.0/0
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The next hop address of the original NAT gateway.
+	// The next hop ID of the original NAT gateway.
 	//
 	// This parameter is required.
 	//
@@ -324,7 +516,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The route table to which the default route of the NAT gateway belongs.
+	// The ID of the route table to which the default route of the NAT gateway belongs.
 	//
 	// This parameter is required.
 	//

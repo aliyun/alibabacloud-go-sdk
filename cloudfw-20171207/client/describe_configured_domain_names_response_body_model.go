@@ -104,7 +104,7 @@ type DescribeConfiguredDomainNamesResponseBodyDomainNames struct {
 	//
 	// example:
 	//
-	// test
+	// Office network domain name
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The domain name.
 	//
@@ -112,11 +112,11 @@ type DescribeConfiguredDomainNamesResponseBodyDomainNames struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether the domain name is one of the malicious domain names. Valid values: 0: Not malicious. 1: Malicious.
+	// Specifies whether the domain name is malicious. Valid values: 0 (not malicious), 1 (malicious).
 	//
 	// example:
 	//
-	// 0
+	// false
 	IsMalicious *bool `json:"IsMalicious,omitempty" xml:"IsMalicious,omitempty"`
 	// The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
 	//

@@ -18,13 +18,13 @@ type iDescribeNatFirewallPrecheckDetailRequest interface {
 }
 
 type DescribeNatFirewallPrecheckDetailRequest struct {
-	// The language of the request and response messages.
+	// The language type of the request and response messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway. Although this parameter is marked as optional in the API definition, it is required when you call this operation. If this parameter is not specified or its value does not start with `ngw-`, the API returns a 400 error (`ErrorParameters`, error code `-360103`).
 	//
 	// example:
 	//

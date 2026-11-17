@@ -117,19 +117,19 @@ func (s *DescribeAccessInstanceVpcListResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceVpcListResponseBodyVpcList struct {
-	// Indicates whether the VPC is managed by Cloud Firewall.
+	// Indicates whether the VPC is a firewall-managed VPC.
 	//
 	// example:
 	//
 	// false
 	FirewallVpc *bool `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty"`
-	// The ID of the VPC instance.
+	// The ID of the VPC-connected instance.
 	//
 	// example:
 	//
 	// vpc-2ze1t4irqj0fljlbb****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC instance.
+	// The name of the VPC-connected instance.
 	//
 	// example:
 	//

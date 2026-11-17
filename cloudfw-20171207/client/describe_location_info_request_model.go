@@ -24,7 +24,7 @@ type DescribeLocationInfoRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The tracing code.
+	// The source code.
 	//
 	// This parameter is required.
 	//

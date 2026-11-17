@@ -24,7 +24,7 @@ type DescribeClearAuthInfoResponseBody struct {
 	//
 	// 1755964800
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of remaining clearances.
+	// The number of remaining clearance operations.
 	//
 	// example:
 	//

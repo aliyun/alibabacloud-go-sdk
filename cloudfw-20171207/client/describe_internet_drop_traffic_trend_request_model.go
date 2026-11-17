@@ -24,13 +24,13 @@ type iDescribeInternetDropTrafficTrendRequest interface {
 }
 
 type DescribeInternetDropTrafficTrendRequest struct {
-	// The traffic direction.
+	// The direction.
 	//
 	// example:
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end time of the query, specified as a timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeInternetDropTrafficTrendRequest struct {
 	//
 	// 1756346821
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The traceability code.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeInternetDropTrafficTrendRequest struct {
 	//
 	// 120.136.21.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time, specified as a timestamp in seconds.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

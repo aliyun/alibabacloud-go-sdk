@@ -20,7 +20,7 @@ type iDescribeInvadeEventNameListRequest interface {
 }
 
 type DescribeInvadeEventNameListRequest struct {
-	// The end time. This is a UNIX timestamp in seconds.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DescribeInvadeEventNameListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 36.112.73.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time. This is a UNIX timestamp in seconds.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

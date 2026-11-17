@@ -34,15 +34,15 @@ type iDescribeDnsFirewallPolicyRequest interface {
 }
 
 type DescribeDnsFirewallPolicyRequest struct {
-	// The action that is performed on traffic that hits the DNS firewall policy. Valid values:
+	// The action that Cloud Firewall performs on the traffic in the access control policy of the DNS border firewall. Valid values:
 	//
-	// - **accept**: allows the traffic.
+	// - **accept**: Allow
 	//
-	// - **drop**: denies the traffic.
+	// - **drop**: Deny
 	//
-	// - **log**: monitors the traffic.
+	// - **log**: Monitor
 	//
-	// > If you do not specify this parameter, policies of all action types are queried.
+	// > If you do not specify this parameter, all actions are queried.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDnsFirewallPolicyRequest struct {
 	//
 	// b6c8f905-2eb6-442a-ba35-9416e****
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The page number to return. Default value: 1.
+	// The page number of the current page for a paging query. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -62,21 +62,21 @@ type DescribeDnsFirewallPolicyRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The description of the DNS firewall policy.
+	// The description of the DNS border firewall policy.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination address in the DNS firewall policy. Fuzzy match is supported.
+	// The destination address in the access control policy of the DNS border firewall. Fuzzy match is supported.
 	//
-	// > The value of Destination can be a CIDR block, a domain name, or an address book.
+	// > Destination can be a single CIDR block, a domain name, or an address book name.
 	//
 	// example:
 	//
 	// 10.2.XX.XX/24
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The IP version that is supported. Valid values:
+	// The IP address version. Valid values:
 	//
 	// - **4**: IPv4
 	//
@@ -86,13 +86,17 @@ type DescribeDnsFirewallPolicyRequest struct {
 	//
 	// 4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the response messages. Valid values: **zh*	- (Chinese) and **en*	- (English).
+	// The language of the request and response. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return in the current query.
 	//
 	// This parameter is required.
 	//
@@ -100,25 +104,25 @@ type DescribeDnsFirewallPolicyRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the access control policy. The policy is enabled by default after it is created. Valid values:
+	// The status of the access control policy. By default, the policy is enabled after it is created. Valid values:
 	//
-	// - **true**: enables the access control policy.
+	// - **true**: Enabled
 	//
-	// - **false**: disables the access control policy.
+	// - **false**: Disabled
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The source address in the DNS firewall policy. Fuzzy match is supported.
+	// The source address in the access control policy of the DNS border firewall. Fuzzy match is supported.
 	//
-	// > The value of Source can be a CIDR block or an address book.
+	// > Source can be a single CIDR block or an address book name.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/24
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeInstanceRdAccountsResponseBody interface {
 type DescribeInstanceRdAccountsResponseBody struct {
 	// The account information.
 	Accounts []*DescribeInstanceRdAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeInstanceRdAccountsResponseBodyAccounts struct {
 	//
 	// 171054237268****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account.
+	// The name of the member.
 	//
 	// example:
 	//

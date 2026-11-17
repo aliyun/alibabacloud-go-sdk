@@ -16,7 +16,7 @@ type iDescribeAclChecksRequest interface {
 }
 
 type DescribeAclChecksRequest struct {
-	// The type of ACL check.
+	// The ACL check type.
 	//
 	// This parameter is required.
 	//

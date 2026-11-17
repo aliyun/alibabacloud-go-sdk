@@ -42,7 +42,7 @@ type DescribeAckClusterConnectorsResponseBody struct {
 	//
 	// E7F333E0-7B70-54DA-A307-4B2B49DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *DescribeAckClusterConnectorsResponseBody) Validate() error {
 }
 
 type DescribeAckClusterConnectorsResponseBodyAckClusterConnectors struct {
-	// The ACK cluster ID. You can call the following operation to obtain the value:
+	// The ID of the ACK cluster. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAckClusters](~~DescribeAckClusters~~): Queries a list of ACK clusters in batches.
+	// - [DescribeAckClusters](~~DescribeAckClusters~~): Lists the ACK clusters.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type DescribeAckClusterConnectorsResponseBodyAckClusterConnectors struct {
 	//
 	// ac-7c1bad6c3cc84c33baab
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -161,17 +161,17 @@ type DescribeAckClusterConnectorsResponseBodyAckClusterConnectors struct {
 	//
 	// 1760493347
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The list of address book UUIDs created on the ACK cluster connector.
+	// The list of UUIDs of the address books created for the ACK cluster connector.
 	GroupUuids []*string `json:"GroupUuids,omitempty" xml:"GroupUuids,omitempty" type:"Repeated"`
-	// The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
+	// The Alibaba Cloud UID to which the ACK cluster resources belong.
 	//
 	// example:
 	//
 	// 159663371500****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The primary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of synchronization node vSwitches in batches.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches for synchronization nodes.
 	//
 	// example:
 	//
@@ -183,47 +183,47 @@ type DescribeAckClusterConnectorsResponseBodyAckClusterConnectors struct {
 	//
 	// 10.100.2.XXX
 	PrimaryVswitchIp *string `json:"PrimaryVswitchIp,omitempty" xml:"PrimaryVswitchIp,omitempty"`
-	// The zone of the primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The zone of the primary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Queries the list of synchronization node vSwitch zones in batches.
+	// - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of the vSwitches for synchronization nodes.
 	//
 	// example:
 	//
 	// cn-beijing-g
 	PrimaryVswitchZoneId *string `json:"PrimaryVswitchZoneId,omitempty" xml:"PrimaryVswitchZoneId,omitempty"`
-	// The region ID of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The region ID of the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of synchronization node regions.
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of regions for synchronization nodes.
 	//
-	// > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
+	// > For more information about the regions supported by Cloud Firewall for ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The secondary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of synchronization node vSwitches in batches.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches for synchronization nodes.
 	//
 	// example:
 	//
 	// vsw-2zerfbbje7dvnbii2****
 	StandbyVswitchId *string `json:"StandbyVswitchId,omitempty" xml:"StandbyVswitchId,omitempty"`
-	// The IP address of the standby vSwitch of the ACK cluster connector.
+	// The IP address of the secondary vSwitch of the ACK cluster connector.
 	//
 	// example:
 	//
 	// 10.100.1.XXX
 	StandbyVswitchIp *string `json:"StandbyVswitchIp,omitempty" xml:"StandbyVswitchIp,omitempty"`
-	// The zone of the standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The zone of the secondary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
 	//
-	// - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Queries the list of synchronization node vSwitch zones in batches.
+	// - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of the vSwitches for synchronization nodes.
 	//
 	// example:
 	//
 	// cn-beijing-h
 	StandbyVswitchZoneId *string `json:"StandbyVswitchZoneId,omitempty" xml:"StandbyVswitchZoneId,omitempty"`
-	// The container synchronization cycle of the ACK cluster connector.
+	// The synchronization cycle of the container for the ACK cluster connector.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type DescribeAckClusterConnectorsResponseBodyAckClusterConnectors struct {
 	//
 	// The ACK cluster status is unavailable.
 	UnhealthyReason *string `json:"UnhealthyReason,omitempty" xml:"UnhealthyReason,omitempty"`
-	// The instance ID of the VPC-connected instance to which the ACK cluster belongs.
+	// The VPC-connected instance ID of the ACK cluster.
 	//
 	// example:
 	//

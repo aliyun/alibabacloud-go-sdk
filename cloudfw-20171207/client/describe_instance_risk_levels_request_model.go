@@ -18,7 +18,7 @@ type iDescribeInstanceRiskLevelsRequest interface {
 type DescribeInstanceRiskLevelsRequest struct {
 	// The list of instances.
 	Instances []*DescribeInstanceRiskLevelsRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The language of the response. Valid values:
+	// The language in which messages are received. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//

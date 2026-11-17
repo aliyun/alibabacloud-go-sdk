@@ -16,7 +16,7 @@ type iDescribePolicyAdvancedConfigResponseBody interface {
 }
 
 type DescribePolicyAdvancedConfigResponseBody struct {
-	// The status of strict mode. Valid values:
+	// The enabling status of strict mode for access control policies. Valid values:
 	//
 	// - **on**: Strict mode is enabled.
 	//

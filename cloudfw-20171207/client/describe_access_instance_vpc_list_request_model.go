@@ -22,7 +22,7 @@ type iDescribeAccessInstanceVpcListRequest interface {
 }
 
 type DescribeAccessInstanceVpcListRequest struct {
-	// The UID of the Alibaba Cloud account that owns the resource.
+	// The Alibaba Cloud UID of the resource owner.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeAccessInstanceVpcListRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the VPC instance.
+	// The ID of the VPC-connected instance.
 	//
 	// example:
 	//

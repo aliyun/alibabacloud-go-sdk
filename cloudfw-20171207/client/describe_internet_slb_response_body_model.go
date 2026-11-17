@@ -18,7 +18,7 @@ type iDescribeInternetSlbResponseBody interface {
 }
 
 type DescribeInternetSlbResponseBody struct {
-	// The list of data.
+	// The data list.
 	DataList []*DescribeInternetSlbResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeInternetSlbResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
@@ -90,7 +90,7 @@ type DescribeInternetSlbResponseBodyDataList struct {
 	//
 	// acl-uf66n6l9mf3fgq8xs****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The status of access control.
+	// The access control status.
 	//
 	// example:
 	//
@@ -260,13 +260,13 @@ func (s *DescribeInternetSlbResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetSlbResponseBodyPageInfo struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//

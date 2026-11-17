@@ -24,9 +24,9 @@ type DescribeAITrafficAnalysisStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The enabling status. Valid values:
 	//
-	// - **open**
+	// - **open**: Enabled.
 	//
-	// - **close**
+	// - **close**: Disabled.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateNatFirewallSyncTaskRequest interface {
 }
 
 type CreateNatFirewallSyncTaskRequest struct {
-	// The language type for receiving messages.
+	// The language of the response message.
 	//
 	// example:
 	//

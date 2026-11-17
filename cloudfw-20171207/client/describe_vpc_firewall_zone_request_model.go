@@ -44,7 +44,7 @@ type DescribeVpcFirewallZoneRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the Cloud Firewall member accounts.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type DescribeVpcFirewallZoneRequest struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 222.212.86.7XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The transit router instance ID.
+	// The ID of the transit router instance used for forward routing.
 	//
 	// example:
 	//

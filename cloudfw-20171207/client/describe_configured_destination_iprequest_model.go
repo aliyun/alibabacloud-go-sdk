@@ -32,7 +32,7 @@ type iDescribeConfiguredDestinationIPRequest interface {
 }
 
 type DescribeConfiguredDestinationIPRequest struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeConfiguredDestinationIPRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The group name.
+	// The name of the group.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type DescribeConfiguredDestinationIPRequest struct {
 	//
 	// ignore
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The language for receiving messages.
+	// The language type for receiving messages.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeConfiguredDestinationIPRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tracing code.
+	// The source code.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type DescribeTrafficLogResponseBody struct {
 	DataList []*DescribeTrafficLogResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeTrafficLogResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The query ID. If the query is too large, the query ID is returned first. You can use the query ID to query the results later.
+	// The query ID. If the query scope is too large, the query ID is returned first. You can use the query ID to query the results later.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ func (s *DescribeTrafficLogResponseBody) Validate() error {
 }
 
 type DescribeTrafficLogResponseBodyDataList struct {
-	// The ID of the ACL pre-matched policy. An empty value indicates all policies.
+	// The ID of the ACL pre-matched policy. If you do not specify this parameter, all policies are queried.
 	//
 	// example:
 	//
@@ -115,11 +115,11 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	AclPreRuleName *string `json:"AclPreRuleName,omitempty" xml:"AclPreRuleName,omitempty"`
 	// The ACL pre-matching status. Valid values:
 	//
-	// - **app_unknown**: The application is not identified.
+	// **app_unknown**: The application is not identified.
 	//
-	// - **domain_unknown**: The domain name is not identified.
+	// **domain_unknown**: The domain name is not identified.
 	//
-	// - **normal**: Normal.
+	// **normal**: Normal.
 	//
 	// example:
 	//
@@ -127,21 +127,21 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	AclPreState *string `json:"AclPreState,omitempty" xml:"AclPreState,omitempty"`
 	// The DPI status. Valid values:
 	//
-	// - **none**: Initial status.
+	// **none**: Initial status.
 	//
-	// - **policy_discard**: The connection fails to be established and is blocked by user ACLs or threat intelligence.
+	// **policy_discard**: The connection fails to be established and is blocked by user ACLs or threat intelligence.
 	//
-	// - **tcp_not_establish**: The TCP connection fails to be established.
+	// **tcp_not_establish**: The TCP connection fails to be established.
 	//
-	// - **no_payload**: The connection is established, but DPI has analyzed zero payloads.
+	// **no_payload**: The connection is established, but DPI has analyzed zero payloads.
 	//
-	// - **analysing**: Identifying.
+	// **analysing**: Identifying.
 	//
-	// - **unknown_loose**: In loose mode, identification fails and the system continues to identify.
+	// **unknown_loose**: In loose mode, identification fails and the system continues to identify.
 	//
-	// - **unknown_strict**: In strict mode, identification fails.
+	// **unknown_strict**: In strict mode, identification fails.
 	//
-	// - **success**: Identification succeeds.
+	// **success**: Identified.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// FI
 	CityId *string `json:"CityId,omitempty" xml:"CityId,omitempty"`
-	// The closure reason.
+	// The close reason.
 	//
 	// example:
 	//
@@ -197,9 +197,9 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
 	// The traffic direction. Valid values:
 	//
-	// - **in**: Inbound.
+	// - **in**: inbound.
 	//
-	// - **out**: Outbound.
+	// - **out**: outbound.
 	//
 	// example:
 	//
@@ -229,15 +229,15 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 80
 	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	// The destination VPC information.
+	// The list of destination VPC information.
 	DstVpc *DescribeTrafficLogResponseBodyDataListDstVpc `json:"DstVpc,omitempty" xml:"DstVpc,omitempty" type:"Struct"`
-	// The end time of the data. The time is in the UNIX timestamp format. Unit: seconds.
+	// The end time of the data. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1751423363
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The other extended data.
+	// The additional extended data.
 	//
 	// example:
 	//
@@ -279,7 +279,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// Hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The UID of the Cloud Firewall member account.
+	// The UID of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
@@ -339,13 +339,13 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The final result of the traffic. Valid values:
+	// The final action on the traffic. Valid values:
 	//
-	// - **0**: Allowed.
+	// - **0**: allow.
 	//
-	// - **1**: Alerted.
+	// - **1**: alert.
 	//
-	// - **2**: Dropped.
+	// - **2**: drop.
 	//
 	// example:
 	//
@@ -353,15 +353,15 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	RuleResult *int32 `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
 	// The source of the matched detection rule. Valid values:
 	//
-	// - **0**: None.
+	// - **0**: none.
 	//
-	// - **1**: Basic protection.
+	// - **1**: basic protection.
 	//
-	// - **2**: Virtual patches.
+	// - **2**: virtual patches.
 	//
-	// - **3**: Access control.
+	// - **3**: access control.
 	//
-	// - **4**: Threat intelligence.
+	// - **4**: threat intelligence.
 	//
 	// example:
 	//
@@ -381,7 +381,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 20206
 	SrcPort *int32 `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
-	// The source private IP address.
+	// The private IP address of the source.
 	//
 	// example:
 	//
@@ -389,7 +389,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
 	// The source VPC information.
 	SrcVpc *DescribeTrafficLogResponseBodyDataListSrcVpc `json:"SrcVpc,omitempty" xml:"SrcVpc,omitempty" type:"Struct"`
-	// The start time of the data. The time is in the UNIX timestamp format. Unit: seconds.
+	// The start time of the data. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -407,7 +407,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// test
 	TlsRuleName *string `json:"TlsRuleName,omitempty" xml:"TlsRuleName,omitempty"`
-	// The ID of the TLS inspection scope.
+	// The TLS inspection scope ID.
 	//
 	// example:
 	//
@@ -906,7 +906,7 @@ type DescribeTrafficLogResponseBodyDataListDstVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The VPC-connected instance ID.
+	// The instance ID of the VPC.
 	//
 	// example:
 	//
@@ -972,7 +972,7 @@ type DescribeTrafficLogResponseBodyDataListRules struct {
 	//
 	// sharepoint
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule source.
+	// The source of the rule.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeAttackAppCategoryResponseBody interface {
 }
 
 type DescribeAttackAppCategoryResponseBody struct {
-	// The list of attack application categories.
+	// The attack application categories.
 	AppCategories []*DescribeAttackAppCategoryResponseBodyAppCategories `json:"AppCategories,omitempty" xml:"AppCategories,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,7 +66,7 @@ func (s *DescribeAttackAppCategoryResponseBody) Validate() error {
 }
 
 type DescribeAttackAppCategoryResponseBodyAppCategories struct {
-	// The list of attack applications.
+	// The attack applications.
 	AttackApps []*string `json:"AttackApps,omitempty" xml:"AttackApps,omitempty" type:"Repeated"`
 	// The name of the attack application category.
 	//

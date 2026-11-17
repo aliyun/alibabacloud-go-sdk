@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Cloudfw")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("central")
 	client.EndpointMap = map[string]*string{
 		"ap-southeast-1": dara.String("cloudfw.ap-southeast-1.aliyuncs.com"),
@@ -459,7 +467,7 @@ func (client *Client) AddControlPolicy(request *AddControlPolicyRequest) (_resul
 
 // Summary:
 //
-// Adds a DNS firewall ACL.
+// Creates a DNS firewall ACL.
 //
 // Description:
 //
@@ -469,7 +477,7 @@ func (client *Client) AddControlPolicy(request *AddControlPolicyRequest) (_resul
 //
 // DNS firewall policies are counted independently in the DNS policy table (counted separately by IP version), but **share the same quota limit*	- with Internet access control policies (determined by the Cloud Firewall edition). If the number of address combinations expanded from a single policy exceeds the limit, or the total number of policies exceeds the limit, the system returns ErrorAclExtendedCountExceed (-200139).
 //
-// > The DescribeAclCheckQuota operation returns the quota for the number of ACL policy checks, which is unrelated to firewall policy count quota and cannot be used to predict whether the quota for this operation is sufficient. Check firewall policy count quota in the Cloud Firewall console.
+// > The DescribeAclCheckQuota operation returns the quota for the number of ACL policy checks, which is unrelated to firewall policy count quota. You cannot use it to predict whether the quota for this operation is sufficient. Check firewall policy count quota in the Cloud Firewall console.
 //
 // @param request - AddDnsFirewallPolicyRequest
 //
@@ -557,7 +565,7 @@ func (client *Client) AddDnsFirewallPolicyWithOptions(request *AddDnsFirewallPol
 
 // Summary:
 //
-// Adds a DNS firewall ACL.
+// Creates a DNS firewall ACL.
 //
 // Description:
 //
@@ -567,7 +575,7 @@ func (client *Client) AddDnsFirewallPolicyWithOptions(request *AddDnsFirewallPol
 //
 // DNS firewall policies are counted independently in the DNS policy table (counted separately by IP version), but **share the same quota limit*	- with Internet access control policies (determined by the Cloud Firewall edition). If the number of address combinations expanded from a single policy exceeds the limit, or the total number of policies exceeds the limit, the system returns ErrorAclExtendedCountExceed (-200139).
 //
-// > The DescribeAclCheckQuota operation returns the quota for the number of ACL policy checks, which is unrelated to firewall policy count quota and cannot be used to predict whether the quota for this operation is sufficient. Check firewall policy count quota in the Cloud Firewall console.
+// > The DescribeAclCheckQuota operation returns the quota for the number of ACL policy checks, which is unrelated to firewall policy count quota. You cannot use it to predict whether the quota for this operation is sufficient. Check firewall policy count quota in the Cloud Firewall console.
 //
 // @param request - AddDnsFirewallPolicyRequest
 //
@@ -586,6 +594,16 @@ func (client *Client) AddDnsFirewallPolicy(request *AddDnsFirewallPolicyRequest)
 // Summary:
 //
 // Creates a real-time domain name resolution task.
+//
+// Description:
+//
+// This operation creates a real-time domain name resolution task for a specified domain name.
+//
+// ## Before you begin
+//
+// - Before you call this operation, you must activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn, International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+//
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If the returned value is false, the current account has not purchased or activated Cloud Firewall.
 //
 // @param request - AddDomainResolveRealtimeTaskRequest
 //
@@ -638,6 +656,16 @@ func (client *Client) AddDomainResolveRealtimeTaskWithOptions(request *AddDomain
 // Summary:
 //
 // Creates a real-time domain name resolution task.
+//
+// Description:
+//
+// This operation creates a real-time domain name resolution task for a specified domain name.
+//
+// ## Before you begin
+//
+// - Before you call this operation, you must activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn, International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+//
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If the returned value is false, the current account has not purchased or activated Cloud Firewall.
 //
 // @param request - AddDomainResolveRealtimeTaskRequest
 //
@@ -753,7 +781,7 @@ func (client *Client) AddInstanceMembers(request *AddInstanceMembersRequest) (_r
 //
 // ## QPS limits
 //
-// The QPS limit per user for this operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API operation at a reasonable frequency.
+// The QPS limit per user for this operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - AddPrivateDnsDomainNameRequest
 //
@@ -813,7 +841,7 @@ func (client *Client) AddPrivateDnsDomainNameWithOptions(request *AddPrivateDnsD
 //
 // ## QPS limits
 //
-// The QPS limit per user for this operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API operation at a reasonable frequency.
+// The QPS limit per user for this operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - AddPrivateDnsDomainNameRequest
 //
@@ -1072,7 +1100,7 @@ func (client *Client) ClearLogStoreStorage(request *ClearLogStoreStorageRequest)
 //
 // ## QPS limits
 //
-// The QPS limit for a single user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable frequency.
 //
 // @param request - CreateAckClusterConnectorRequest
 //
@@ -1154,7 +1182,7 @@ func (client *Client) CreateAckClusterConnectorWithOptions(request *CreateAckClu
 //
 // ## QPS limits
 //
-// The QPS limit for a single user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable frequency.
 //
 // @param request - CreateAckClusterConnectorRequest
 //
@@ -1233,6 +1261,170 @@ func (client *Client) CreateAclCheck(request *CreateAclCheckRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAclCheckResponse{}
 	_body, _err := client.CreateAclCheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates custom rules in batches for a specified application template. You can create up to 100 rules at a time, and the total number of rules in the template cannot exceed 100.
+//
+// @param tmpReq - CreateApplicationCustomRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationCustomRulesResponse
+func (client *Client) CreateApplicationCustomRulesWithOptions(tmpReq *CreateApplicationCustomRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationCustomRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateApplicationCustomRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Rules) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, dara.String("Rules"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	if !dara.IsNil(request.RulesShrink) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationCustomRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationCustomRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates custom rules in batches for a specified application template. You can create up to 100 rules at a time, and the total number of rules in the template cannot exceed 100.
+//
+// @param request - CreateApplicationCustomRulesRequest
+//
+// @return CreateApplicationCustomRulesResponse
+func (client *Client) CreateApplicationCustomRules(request *CreateApplicationCustomRulesRequest) (_result *CreateApplicationCustomRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationCustomRulesResponse{}
+	_body, _err := client.CreateApplicationCustomRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an application program template. The template is at the user granularity and can be referenced by the access control policy for the Internet border, NAT, and virtual private cloud (VPC) firewalls. Before creating a template, ensure that the application program control feature is enabled and the number of templates does not exceed the quota for the instance specifications.
+//
+// @param tmpReq - CreateApplicationTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationTemplateResponse
+func (client *Client) CreateApplicationTemplateWithOptions(tmpReq *CreateApplicationTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateApplicationTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddBuiltInApplicationCustomActions) {
+		request.AddBuiltInApplicationCustomActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddBuiltInApplicationCustomActions, dara.String("AddBuiltInApplicationCustomActions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddBuiltInApplicationCustomActionsShrink) {
+		query["AddBuiltInApplicationCustomActions"] = request.AddBuiltInApplicationCustomActionsShrink
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateName) {
+		query["ApplicationTemplateName"] = request.ApplicationTemplateName
+	}
+
+	if !dara.IsNil(request.BuiltInApplicationStatus) {
+		query["BuiltInApplicationStatus"] = request.BuiltInApplicationStatus
+	}
+
+	if !dara.IsNil(request.CustomRuleStatus) {
+		query["CustomRuleStatus"] = request.CustomRuleStatus
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.TemplateStatus) {
+		query["TemplateStatus"] = request.TemplateStatus
+	}
+
+	if !dara.IsNil(request.UnknownAction) {
+		query["UnknownAction"] = request.UnknownAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an application program template. The template is at the user granularity and can be referenced by the access control policy for the Internet border, NAT, and virtual private cloud (VPC) firewalls. Before creating a template, ensure that the application program control feature is enabled and the number of templates does not exceed the quota for the instance specifications.
+//
+// @param request - CreateApplicationTemplateRequest
+//
+// @return CreateApplicationTemplateResponse
+func (client *Client) CreateApplicationTemplate(request *CreateApplicationTemplateRequest) (_result *CreateApplicationTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationTemplateResponse{}
+	_body, _err := client.CreateApplicationTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1392,7 +1584,7 @@ func (client *Client) CreateInstanceSyncTask(request *CreateInstanceSyncTaskRequ
 //
 // - The target NAT gateway must be managed by Cloud Firewall and asset synchronization must be completed. Asset synchronization is an asynchronous task. If you call this operation before the synchronization of a newly created NAT gateway is completed, the error code -103204 is returned.
 //
-// - If SNAT is configured for the NAT gateway, you must enable session logging first. Otherwise, the error code -103583 is returned.
+// - If SNAT is configured for the NAT gateway, you must enable session logs first. Otherwise, the error code -103583 is returned.
 //
 // @param request - CreateIpsPrivateAssocRequest
 //
@@ -1450,7 +1642,7 @@ func (client *Client) CreateIpsPrivateAssocWithOptions(request *CreateIpsPrivate
 //
 // - The target NAT gateway must be managed by Cloud Firewall and asset synchronization must be completed. Asset synchronization is an asynchronous task. If you call this operation before the synchronization of a newly created NAT gateway is completed, the error code -103204 is returned.
 //
-// - If SNAT is configured for the NAT gateway, you must enable session logging first. Otherwise, the error code -103583 is returned.
+// - If SNAT is configured for the NAT gateway, you must enable session logs first. Otherwise, the error code -103583 is returned.
 //
 // @param request - CreateIpsPrivateAssocRequest
 //
@@ -1630,11 +1822,11 @@ func (client *Client) CreateNatFirewallControlPolicy(request *CreateNatFirewallC
 
 // Summary:
 //
-// Creates a dry run for a NAT firewall.
+// Creates a precheck for a NAT firewall.
 //
 // Description:
 //
-// Creates a policy that allows, denies, or monitors traffic that passes through a NAT firewall.
+// Creates a policy that allows, denies, or monitors traffic passing through a NAT firewall.
 //
 // @param request - CreateNatFirewallPreCheckRequest
 //
@@ -1692,11 +1884,11 @@ func (client *Client) CreateNatFirewallPreCheckWithOptions(request *CreateNatFir
 
 // Summary:
 //
-// Creates a dry run for a NAT firewall.
+// Creates a precheck for a NAT firewall.
 //
 // Description:
 //
-// Creates a policy that allows, denies, or monitors traffic that passes through a NAT firewall.
+// Creates a policy that allows, denies, or monitors traffic passing through a NAT firewall.
 //
 // @param request - CreateNatFirewallPreCheckRequest
 //
@@ -1715,6 +1907,16 @@ func (client *Client) CreateNatFirewallPreCheck(request *CreateNatFirewallPreChe
 // Summary:
 //
 // Creates a NAT firewall asset synchronization task.
+//
+// Description:
+//
+// Creates a NAT firewall asset synchronization task.
+//
+// ## Before you begin
+//
+// - Before calling this operation, ensure that you have purchased and activated a Cloud Firewall instance. Both subscription and pay-as-you-go billing methods are supported.
+//
+// - You can activate Cloud Firewall on the buy page (Chinese site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn and International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl). After activation, call the DescribeUserBuyVersion operation and check the UserStatus parameter to confirm the activation status.
 //
 // @param request - CreateNatFirewallSyncTaskRequest
 //
@@ -1760,6 +1962,16 @@ func (client *Client) CreateNatFirewallSyncTaskWithOptions(request *CreateNatFir
 //
 // Creates a NAT firewall asset synchronization task.
 //
+// Description:
+//
+// Creates a NAT firewall asset synchronization task.
+//
+// ## Before you begin
+//
+// - Before calling this operation, ensure that you have purchased and activated a Cloud Firewall instance. Both subscription and pay-as-you-go billing methods are supported.
+//
+// - You can activate Cloud Firewall on the buy page (Chinese site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn and International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl). After activation, call the DescribeUserBuyVersion operation and check the UserStatus parameter to confirm the activation status.
+//
 // @param request - CreateNatFirewallSyncTaskRequest
 //
 // @return CreateNatFirewallSyncTaskResponse
@@ -1780,7 +1992,7 @@ func (client *Client) CreateNatFirewallSyncTask(request *CreateNatFirewallSyncTa
 //
 // Description:
 //
-// Creates a private DNS firewall endpoint. When you call this operation, you must specify PrimaryVSwitchId, and the region and zone of the primary and secondary vSwitches must support private DNS firewalls.
+// Creates a private DNS firewall endpoint. When you call this operation, you must specify PrimaryVSwitchId. The region and zone of the primary and secondary vSwitches must support private DNS firewalls.
 //
 // @param request - CreatePrivateDnsEndpointRequest
 //
@@ -1880,7 +2092,7 @@ func (client *Client) CreatePrivateDnsEndpointWithOptions(request *CreatePrivate
 //
 // Description:
 //
-// Creates a private DNS firewall endpoint. When you call this operation, you must specify PrimaryVSwitchId, and the region and zone of the primary and secondary vSwitches must support private DNS firewalls.
+// Creates a private DNS firewall endpoint. When you call this operation, you must specify PrimaryVSwitchId. The region and zone of the primary and secondary vSwitches must support private DNS firewalls.
 //
 // @param request - CreatePrivateDnsEndpointRequest
 //
@@ -1913,6 +2125,10 @@ func (client *Client) CreateSecurityProxyWithOptions(request *CreateSecurityProx
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BasicDefenseEnabled) {
+		query["BasicDefenseEnabled"] = request.BasicDefenseEnabled
+	}
+
 	if !dara.IsNil(request.FirewallServiceMode) {
 		query["FirewallServiceMode"] = request.FirewallServiceMode
 	}
@@ -1933,8 +2149,20 @@ func (client *Client) CreateSecurityProxyWithOptions(request *CreateSecurityProx
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.MasterVSwitchCidr) {
+		query["MasterVSwitchCidr"] = request.MasterVSwitchCidr
+	}
+
+	if !dara.IsNil(request.MasterZoneId) {
+		query["MasterZoneId"] = request.MasterZoneId
+	}
+
 	if !dara.IsNil(request.NatGatewayId) {
 		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NatMode) {
+		query["NatMode"] = request.NatMode
 	}
 
 	if !dara.IsNil(request.NatRouteEntryList) {
@@ -1949,8 +2177,32 @@ func (client *Client) CreateSecurityProxyWithOptions(request *CreateSecurityProx
 		query["RegionNo"] = request.RegionNo
 	}
 
+	if !dara.IsNil(request.RuleClass) {
+		query["RuleClass"] = request.RuleClass
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		query["RunMode"] = request.RunMode
+	}
+
+	if !dara.IsNil(request.StandbyVSwitchCidr) {
+		query["StandbyVSwitchCidr"] = request.StandbyVSwitchCidr
+	}
+
+	if !dara.IsNil(request.StandbyZoneId) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
 	if !dara.IsNil(request.StrictMode) {
 		query["StrictMode"] = request.StrictMode
+	}
+
+	if !dara.IsNil(request.ThreatIntelEnabled) {
+		query["ThreatIntelEnabled"] = request.ThreatIntelEnabled
+	}
+
+	if !dara.IsNil(request.VirtualPatchEnabled) {
+		query["VirtualPatchEnabled"] = request.VirtualPatchEnabled
 	}
 
 	if !dara.IsNil(request.VpcId) {
@@ -2078,11 +2330,11 @@ func (client *Client) CreateSlsLogDispatch(request *CreateSlsLogDispatchRequest)
 
 // Summary:
 //
-// Creates a VPC firewall for a transit router. Prerequisites: (1) Purchase Cloud Firewall is completed. (2) A Cloud Enterprise Network (CEN) instance is created and an Enterprise Edition transit router (TR) to forward traffic and manage routing is enabled. (3) TR synchronization to Cloud Firewall is completed.
+// Creates a VPC firewall for a transit router. Prerequisites: (1) Cloud Firewall is purchased. (2) A CEN instance is created and an Enterprise Edition transit router is enabled. (3) The TR is synchronized to Cloud Firewall.
 //
 // Description:
 //
-// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before calling this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the transit router to Cloud Firewall. Then, call this operation by using the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
+// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before you call this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the TR to Cloud Firewall. Then, call this operation by specifying the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -2198,11 +2450,11 @@ func (client *Client) CreateTrFirewallV2WithOptions(request *CreateTrFirewallV2R
 
 // Summary:
 //
-// Creates a VPC firewall for a transit router. Prerequisites: (1) Purchase Cloud Firewall is completed. (2) A Cloud Enterprise Network (CEN) instance is created and an Enterprise Edition transit router (TR) to forward traffic and manage routing is enabled. (3) TR synchronization to Cloud Firewall is completed.
+// Creates a VPC firewall for a transit router. Prerequisites: (1) Cloud Firewall is purchased. (2) A CEN instance is created and an Enterprise Edition transit router is enabled. (3) The TR is synchronized to Cloud Firewall.
 //
 // Description:
 //
-// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before calling this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the transit router to Cloud Firewall. Then, call this operation by using the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
+// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before you call this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the TR to Cloud Firewall. Then, call this operation by specifying the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -2448,11 +2700,11 @@ func (client *Client) CreateVpcFirewallCenConfigure(request *CreateVpcFirewallCe
 //
 // Description:
 //
-// This operation is generally used to create a VPC firewall for VPC-connected instances in a Cloud Enterprise Network (CEN). The virtual private cloud (VPC) firewalls protect the mutual access traffic between VPC-connected instances in the CEN and the specified VPC. VPC-connected instances include VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs). It does not protect traffic between VBRs, between CCNs, or between a VBR and a CCN. For more information, see [Limits on virtual private cloud (VPC) firewalls](https://help.aliyun.com/document_detail/172295.html).
+// This operation is typically used to create a VPC firewall for VPC-connected instances in a Cloud Enterprise Network (CEN). The VPC firewall protects the traffic between network instances in the CEN and the specified VPC. The network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs). The VPC firewall does not protect the traffic between VBRs, between CCNs, or between a VBR and a CCN. For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
 // ## QPS limits
 //
-// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke this operation at a reasonable frequency.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke the API at a reasonable frequency.
 //
 // @param request - CreateVpcFirewallCenManualConfigureRequest
 //
@@ -2522,11 +2774,11 @@ func (client *Client) CreateVpcFirewallCenManualConfigureWithOptions(request *Cr
 //
 // Description:
 //
-// This operation is generally used to create a VPC firewall for VPC-connected instances in a Cloud Enterprise Network (CEN). The virtual private cloud (VPC) firewalls protect the mutual access traffic between VPC-connected instances in the CEN and the specified VPC. VPC-connected instances include VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs). It does not protect traffic between VBRs, between CCNs, or between a VBR and a CCN. For more information, see [Limits on virtual private cloud (VPC) firewalls](https://help.aliyun.com/document_detail/172295.html).
+// This operation is typically used to create a VPC firewall for VPC-connected instances in a Cloud Enterprise Network (CEN). The VPC firewall protects the traffic between network instances in the CEN and the specified VPC. The network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs). The VPC firewall does not protect the traffic between VBRs, between CCNs, or between a VBR and a CCN. For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
 // ## QPS limits
 //
-// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke this operation at a reasonable frequency.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke the API at a reasonable frequency.
 //
 // @param request - CreateVpcFirewallCenManualConfigureRequest
 //
@@ -2829,11 +3081,11 @@ func (client *Client) CreateVpcFirewallControlPolicy(request *CreateVpcFirewallC
 
 // Summary:
 //
-// Creates a precheck task before you create a VPC firewall.
+// Creates a prerequisite task for enabling a VPC firewall.
 //
 // Description:
 //
-// This operation creates a policy to accept, deny, or monitor traffic that passes through a NAT firewall.
+// Creates a policy to allow, deny, or monitor traffic passing through a NAT firewall.
 //
 // @param request - CreateVpcFirewallPrecheckRequest
 //
@@ -2901,11 +3153,11 @@ func (client *Client) CreateVpcFirewallPrecheckWithOptions(request *CreateVpcFir
 
 // Summary:
 //
-// Creates a precheck task before you create a VPC firewall.
+// Creates a prerequisite task for enabling a VPC firewall.
 //
 // Description:
 //
-// This operation creates a policy to accept, deny, or monitor traffic that passes through a NAT firewall.
+// Creates a policy to allow, deny, or monitor traffic passing through a NAT firewall.
 //
 // @param request - CreateVpcFirewallPrecheckRequest
 //
@@ -2923,15 +3175,15 @@ func (client *Client) CreateVpcFirewallPrecheck(request *CreateVpcFirewallPreche
 
 // Summary:
 //
-// Creates a sync task for VPC firewall assets.
+// Creates a VPC firewall asset synchronization task.
 //
 // Description:
 //
-// This operation creates a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. The VPC firewall does not protect cross-region traffic, cross-account traffic, or traffic between a VPC and a Virtual Border Router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
+// This operation is typically used to create a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using Express Connect. The VPC firewall does not support protecting cross-region or cross-account traffic between VPCs, or traffic between a VPC and a virtual border router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
-// ### QPS limits
+// ### QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, your API calls will be throttled. Plan your calls accordingly.
+// The QPS limit on this operation is 10 queries per second per account. API calls that exceed this limit are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - CreateVpcFirewallTaskRequest
 //
@@ -2987,15 +3239,15 @@ func (client *Client) CreateVpcFirewallTaskWithOptions(request *CreateVpcFirewal
 
 // Summary:
 //
-// Creates a sync task for VPC firewall assets.
+// Creates a VPC firewall asset synchronization task.
 //
 // Description:
 //
-// This operation creates a VPC firewall that protects traffic between two VPCs connected by an Express Connect circuit. The VPC firewall does not protect cross-region traffic, cross-account traffic, or traffic between a VPC and a Virtual Border Router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
+// This operation is typically used to create a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using Express Connect. The VPC firewall does not support protecting cross-region or cross-account traffic between VPCs, or traffic between a VPC and a virtual border router (VBR). For more information, see [Limits on VPC firewalls](https://help.aliyun.com/document_detail/172295.html).
 //
-// ### QPS limits
+// ### QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, your API calls will be throttled. Plan your calls accordingly.
+// The QPS limit on this operation is 10 queries per second per account. API calls that exceed this limit are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - CreateVpcFirewallTaskRequest
 //
@@ -3013,13 +3265,155 @@ func (client *Client) CreateVpcFirewallTask(request *CreateVpcFirewallTaskReques
 
 // Summary:
 //
+// Creates web filtering rules in batches under a specified web filtering template. A maximum of 100 rules can be created at a time, and the total number of rules in the template after creation must not exceed 100.
+//
+// @param tmpReq - CreateWebFilterRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebFilterRulesResponse
+func (client *Client) CreateWebFilterRulesWithOptions(tmpReq *CreateWebFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateWebFilterRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateWebFilterRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Rules) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, dara.String("Rules"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RulesShrink) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	if !dara.IsNil(request.WebFilterTemplateId) {
+		query["WebFilterTemplateId"] = request.WebFilterTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWebFilterRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWebFilterRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates web filtering rules in batches under a specified web filtering template. A maximum of 100 rules can be created at a time, and the total number of rules in the template after creation must not exceed 100.
+//
+// @param request - CreateWebFilterRulesRequest
+//
+// @return CreateWebFilterRulesResponse
+func (client *Client) CreateWebFilterRules(request *CreateWebFilterRulesRequest) (_result *CreateWebFilterRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWebFilterRulesResponse{}
+	_body, _err := client.CreateWebFilterRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a web filtering template. The template is at the user granularity and can be referenced by access control policies of Internet, NAT, and virtual private cloud (VPC) firewalls. Web filtering rules can be added to the template. Before creating a template, ensure that the web filtering feature is enabled and the number of templates does not exceed the instance quota.
+//
+// @param request - CreateWebFilterTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebFilterTemplateResponse
+func (client *Client) CreateWebFilterTemplateWithOptions(request *CreateWebFilterTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateWebFilterTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWebFilterTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWebFilterTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a web filtering template. The template is at the user granularity and can be referenced by access control policies of Internet, NAT, and virtual private cloud (VPC) firewalls. Web filtering rules can be added to the template. Before creating a template, ensure that the web filtering feature is enabled and the number of templates does not exceed the instance quota.
+//
+// @param request - CreateWebFilterTemplateRequest
+//
+// @return CreateWebFilterTemplateResponse
+func (client *Client) CreateWebFilterTemplate(request *CreateWebFilterTemplateRequest) (_result *CreateWebFilterTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWebFilterTemplateResponse{}
+	_body, _err := client.CreateWebFilterTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an ACK cluster connector.
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+// The rate limit for this API operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DeleteAckClusterConnectorRequest
 //
@@ -3067,9 +3461,9 @@ func (client *Client) DeleteAckClusterConnectorWithOptions(request *DeleteAckClu
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+// The rate limit for this API operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DeleteAckClusterConnectorRequest
 //
@@ -3091,11 +3485,11 @@ func (client *Client) DeleteAckClusterConnector(request *DeleteAckClusterConnect
 //
 // Description:
 //
-// This operation deletes a backup of an access control address book.
+// This operation is typically used to delete address books in access control.
 //
-// ## QPS limit
+// ## Rate limits
 //
-// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
+// The rate limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DeleteAclBackupDataRequest
 //
@@ -3151,11 +3545,11 @@ func (client *Client) DeleteAclBackupDataWithOptions(request *DeleteAclBackupDat
 //
 // Description:
 //
-// This operation deletes a backup of an access control address book.
+// This operation is typically used to delete address books in access control.
 //
-// ## QPS limit
+// ## Rate limits
 //
-// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
+// The rate limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DeleteAclBackupDataRequest
 //
@@ -3250,6 +3644,136 @@ func (client *Client) DeleteAddressBook(request *DeleteAddressBookRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAddressBookResponse{}
 	_body, _err := client.DeleteAddressBookWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom application rules in batches. You can delete up to 100 rules in a single request. This operation is idempotent. If none of the specified rule IDs exist, the operation still returns a success response.
+//
+// @param tmpReq - DeleteApplicationCustomRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationCustomRulesResponse
+func (client *Client) DeleteApplicationCustomRulesWithOptions(tmpReq *DeleteApplicationCustomRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationCustomRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteApplicationCustomRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ApplicationCustomRuleIds) {
+		request.ApplicationCustomRuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationCustomRuleIds, dara.String("ApplicationCustomRuleIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCustomRuleIdsShrink) {
+		query["ApplicationCustomRuleIds"] = request.ApplicationCustomRuleIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationCustomRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationCustomRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom application rules in batches. You can delete up to 100 rules in a single request. This operation is idempotent. If none of the specified rule IDs exist, the operation still returns a success response.
+//
+// @param request - DeleteApplicationCustomRulesRequest
+//
+// @return DeleteApplicationCustomRulesResponse
+func (client *Client) DeleteApplicationCustomRules(request *DeleteApplicationCustomRulesRequest) (_result *DeleteApplicationCustomRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteApplicationCustomRulesResponse{}
+	_body, _err := client.DeleteApplicationCustomRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an application program template. You cannot delete a template if it contains custom application program rules or is referenced by an access control policy.
+//
+// @param request - DeleteApplicationTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationTemplateResponse
+func (client *Client) DeleteApplicationTemplateWithOptions(request *DeleteApplicationTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an application program template. You cannot delete a template if it contains custom application program rules or is referenced by an access control policy.
+//
+// @param request - DeleteApplicationTemplateRequest
+//
+// @return DeleteApplicationTemplateResponse
+func (client *Client) DeleteApplicationTemplate(request *DeleteApplicationTemplateRequest) (_result *DeleteApplicationTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteApplicationTemplateResponse{}
+	_body, _err := client.DeleteApplicationTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3431,11 +3955,11 @@ func (client *Client) DeleteControlPolicyTemplate(request *DeleteControlPolicyTe
 
 // Summary:
 //
-// Deletes a DNS firewall policy.
+// Deletes a DNS firewall rule.
 //
 // Description:
 //
-// You can call this operation to delete a DNS firewall policy.
+// Creates a policy to allow, deny, or monitor traffic that passes through a NAT firewall.
 //
 // @param request - DeleteDnsFirewallPolicyRequest
 //
@@ -3487,11 +4011,11 @@ func (client *Client) DeleteDnsFirewallPolicyWithOptions(request *DeleteDnsFirew
 
 // Summary:
 //
-// Deletes a DNS firewall policy.
+// Deletes a DNS firewall rule.
 //
 // Description:
 //
-// You can call this operation to delete a DNS firewall policy.
+// Creates a policy to allow, deny, or monitor traffic that passes through a NAT firewall.
 //
 // @param request - DeleteDnsFirewallPolicyRequest
 //
@@ -3735,7 +4259,7 @@ func (client *Client) DeleteInstanceMembers(request *DeleteInstanceMembersReques
 
 // Summary:
 //
-// Creates a private network association for an IPS.
+// Creates IPS private network association information.
 //
 // @param request - DeleteIpsPrivateAssocRequest
 //
@@ -3783,7 +4307,7 @@ func (client *Client) DeleteIpsPrivateAssocWithOptions(request *DeleteIpsPrivate
 
 // Summary:
 //
-// Creates a private network association for an IPS.
+// Creates IPS private network association information.
 //
 // @param request - DeleteIpsPrivateAssocRequest
 //
@@ -3957,15 +4481,15 @@ func (client *Client) DeleteNatFirewallControlPolicyBatch(request *DeleteNatFire
 
 // Summary:
 //
-// Deletes all private DNS domain names.
+// Clears private DNS domain names.
 //
 // Description:
 //
-// This API call is used to delete all private domain names.
+// This API operation is typically used to retrieve the DNS resolution results of a domain name. Currently, resolution results can only be retrieved from Alibaba Cloud DNS. To retrieve the resolution results, the domain name to be queried must use Alibaba Cloud DNS.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// Each user is limited to 10 queries per second (QPS) for this API call. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you plan your API calls accordingly.
+// The QPS limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DeletePrivateDnsAllDomainNameRequest
 //
@@ -4013,15 +4537,15 @@ func (client *Client) DeletePrivateDnsAllDomainNameWithOptions(request *DeletePr
 
 // Summary:
 //
-// Deletes all private DNS domain names.
+// Clears private DNS domain names.
 //
 // Description:
 //
-// This API call is used to delete all private domain names.
+// This API operation is typically used to retrieve the DNS resolution results of a domain name. Currently, resolution results can only be retrieved from Alibaba Cloud DNS. To retrieve the resolution results, the domain name to be queried must use Alibaba Cloud DNS.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// Each user is limited to 10 queries per second (QPS) for this API call. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you plan your API calls accordingly.
+// The QPS limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DeletePrivateDnsAllDomainNameRequest
 //
@@ -4039,11 +4563,11 @@ func (client *Client) DeletePrivateDnsAllDomainName(request *DeletePrivateDnsAll
 
 // Summary:
 //
-// # Delete private DNS domain names
+// Deletes a private DNS domain name.
 //
 // Description:
 //
-// Deletes domain names that require private DNS resolution.
+// Deletes a domain name that requires private DNS resolution.
 //
 // @param request - DeletePrivateDnsDomainNameRequest
 //
@@ -4095,11 +4619,11 @@ func (client *Client) DeletePrivateDnsDomainNameWithOptions(request *DeletePriva
 
 // Summary:
 //
-// # Delete private DNS domain names
+// Deletes a private DNS domain name.
 //
 // Description:
 //
-// Deletes domain names that require private DNS resolution.
+// Deletes a domain name that requires private DNS resolution.
 //
 // @param request - DeletePrivateDnsDomainNameRequest
 //
@@ -4121,7 +4645,7 @@ func (client *Client) DeletePrivateDnsDomainName(request *DeletePrivateDnsDomain
 //
 // Description:
 //
-// You can use this operation to create a policy that allows, denies, or monitors traffic that passes through a NAT firewall.
+// Creates a policy to allow, deny, or monitor traffic that passes through a NAT firewall.
 //
 // @param request - DeletePrivateDnsEndpointRequest
 //
@@ -4173,7 +4697,7 @@ func (client *Client) DeletePrivateDnsEndpointWithOptions(request *DeletePrivate
 //
 // Description:
 //
-// You can use this operation to create a policy that allows, denies, or monitors traffic that passes through a NAT firewall.
+// Creates a policy to allow, deny, or monitor traffic that passes through a NAT firewall.
 //
 // @param request - DeletePrivateDnsEndpointRequest
 //
@@ -4593,7 +5117,137 @@ func (client *Client) DeleteVpcFirewallControlPolicy(request *DeleteVpcFirewallC
 
 // Summary:
 //
-// Queries the trend chart of Internet access control interceptions.
+// Deletes web filtering rules in batches. A maximum of 100 rules can be deleted in a single request. This operation is idempotent and returns a success response even if none of the specified rule IDs exist.
+//
+// @param tmpReq - DeleteWebFilterRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebFilterRulesResponse
+func (client *Client) DeleteWebFilterRulesWithOptions(tmpReq *DeleteWebFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteWebFilterRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteWebFilterRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WebFilterRuleIds) {
+		request.WebFilterRuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WebFilterRuleIds, dara.String("WebFilterRuleIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WebFilterRuleIdsShrink) {
+		query["WebFilterRuleIds"] = request.WebFilterRuleIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWebFilterRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWebFilterRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes web filtering rules in batches. A maximum of 100 rules can be deleted in a single request. This operation is idempotent and returns a success response even if none of the specified rule IDs exist.
+//
+// @param request - DeleteWebFilterRulesRequest
+//
+// @return DeleteWebFilterRulesResponse
+func (client *Client) DeleteWebFilterRules(request *DeleteWebFilterRulesRequest) (_result *DeleteWebFilterRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWebFilterRulesResponse{}
+	_body, _err := client.DeleteWebFilterRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a web filtering template. Deleting a template also deletes all web filtering rules within the template. A template cannot be deleted if it is referenced by an access control policy.
+//
+// @param request - DeleteWebFilterTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebFilterTemplateResponse
+func (client *Client) DeleteWebFilterTemplateWithOptions(request *DeleteWebFilterTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteWebFilterTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WebFilterTemplateId) {
+		query["WebFilterTemplateId"] = request.WebFilterTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWebFilterTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWebFilterTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a web filtering template. Deleting a template also deletes all web filtering rules within the template. A template cannot be deleted if it is referenced by an access control policy.
+//
+// @param request - DeleteWebFilterTemplateRequest
+//
+// @return DeleteWebFilterTemplateResponse
+func (client *Client) DeleteWebFilterTemplate(request *DeleteWebFilterTemplateRequest) (_result *DeleteWebFilterTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWebFilterTemplateResponse{}
+	_body, _err := client.DeleteWebFilterTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the trend chart for Internet access control blocks.
 //
 // @param request - DescribeACLProtectTrendRequest
 //
@@ -4661,7 +5315,7 @@ func (client *Client) DescribeACLProtectTrendWithOptions(request *DescribeACLPro
 
 // Summary:
 //
-// Queries the trend chart of Internet access control interceptions.
+// Queries the trend chart for Internet access control blocks.
 //
 // @param request - DescribeACLProtectTrendRequest
 //
@@ -4679,11 +5333,23 @@ func (client *Client) DescribeACLProtectTrend(request *DescribeACLProtectTrendRe
 
 // Summary:
 //
-// Queries the enabling status of AI-powered traffic analysis.
+// Queries the enabling status of AI-based network traffic analysis.
 //
 // Description:
 //
-// The statistics apply to the current Cloud Firewall instance and include all data from the date of purchase.
+// The statistical scope covers the current Cloud Firewall instance of the user, including all data since the purchase date.
+//
+// ## Before you begin
+//
+// - Before you call this operation, the account must have purchased Purchase Cloud Firewall instance. If no instance is purchased, the operation returns the error code `202`.
+//
+// - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the purchase status. The `UserStatus` field in the response indicates whether the Cloud Firewall instance is valid. A value of `false` indicates that the instance is invalid or not activated.
+//
+// - Purchase Purchase Cloud Firewall instance:
+//
+//   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
+//
+//   - International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4712,11 +5378,23 @@ func (client *Client) DescribeAITrafficAnalysisStatusWithOptions(runtime *dara.R
 
 // Summary:
 //
-// Queries the enabling status of AI-powered traffic analysis.
+// Queries the enabling status of AI-based network traffic analysis.
 //
 // Description:
 //
-// The statistics apply to the current Cloud Firewall instance and include all data from the date of purchase.
+// The statistical scope covers the current Cloud Firewall instance of the user, including all data since the purchase date.
+//
+// ## Before you begin
+//
+// - Before you call this operation, the account must have purchased Purchase Cloud Firewall instance. If no instance is purchased, the operation returns the error code `202`.
+//
+// - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the purchase status. The `UserStatus` field in the response indicates whether the Cloud Firewall instance is valid. A value of `false` indicates that the instance is invalid or not activated.
+//
+// - Purchase Purchase Cloud Firewall instance:
+//
+//   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
+//
+//   - International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl
 //
 // @return DescribeAITrafficAnalysisStatusResponse
 func (client *Client) DescribeAITrafficAnalysisStatus() (_result *DescribeAITrafficAnalysisStatusResponse, _err error) {
@@ -4732,7 +5410,7 @@ func (client *Client) DescribeAITrafficAnalysisStatus() (_result *DescribeAITraf
 
 // Summary:
 //
-// Queries the list of regions for sync nodes.
+// Queries the regions for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceRegionListRequest
 //
@@ -4772,7 +5450,7 @@ func (client *Client) DescribeAccessInstanceRegionListWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the list of regions for sync nodes.
+// Queries the regions for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceRegionListRequest
 //
@@ -4790,7 +5468,7 @@ func (client *Client) DescribeAccessInstanceRegionList(request *DescribeAccessIn
 
 // Summary:
 //
-// Queries the task progress of a synchronization node.
+// Queries the progress of a synchronization node task.
 //
 // @param request - DescribeAccessInstanceTaskRequest
 //
@@ -4830,7 +5508,7 @@ func (client *Client) DescribeAccessInstanceTaskWithOptions(request *DescribeAcc
 
 // Summary:
 //
-// Queries the task progress of a synchronization node.
+// Queries the progress of a synchronization node task.
 //
 // @param request - DescribeAccessInstanceTaskRequest
 //
@@ -4906,7 +5584,7 @@ func (client *Client) DescribeAccessInstanceVSwitchList(request *DescribeAccessI
 
 // Summary:
 //
-// Queries the VPCs associated with synchronization nodes.
+// Queries the list of VPCs for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceVpcListRequest
 //
@@ -4946,7 +5624,7 @@ func (client *Client) DescribeAccessInstanceVpcListWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the VPCs associated with synchronization nodes.
+// Queries the list of VPCs for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceVpcListRequest
 //
@@ -4964,7 +5642,7 @@ func (client *Client) DescribeAccessInstanceVpcList(request *DescribeAccessInsta
 
 // Summary:
 //
-// Returns a list of available zones for access instances.
+// Queries the list of zones available for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceZoneListRequest
 //
@@ -5004,7 +5682,7 @@ func (client *Client) DescribeAccessInstanceZoneListWithOptions(request *Describ
 
 // Summary:
 //
-// Returns a list of available zones for access instances.
+// Queries the list of zones available for synchronization nodes.
 //
 // @param request - DescribeAccessInstanceZoneListRequest
 //
@@ -5088,13 +5766,13 @@ func (client *Client) DescribeAckClusterConnector(request *DescribeAckClusterCon
 
 // Summary:
 //
-// Queries a list of ACK cluster connectors in batches.
+// Lists the ACK cluster connectors.
 //
 // Description:
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls properly.
+// The rate limit for this API operation is 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAckClusterConnectorsRequest
 //
@@ -5166,13 +5844,13 @@ func (client *Client) DescribeAckClusterConnectorsWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries a list of ACK cluster connectors in batches.
+// Lists the ACK cluster connectors.
 //
 // Description:
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls properly.
+// The rate limit for this API operation is 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAckClusterConnectorsRequest
 //
@@ -5190,7 +5868,7 @@ func (client *Client) DescribeAckClusterConnectors(request *DescribeAckClusterCo
 
 // Summary:
 //
-// Queries the namespaces in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
+// Queries the namespaces of an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterNamespacesRequest
 //
@@ -5234,7 +5912,7 @@ func (client *Client) DescribeAckClusterNamespacesWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the namespaces in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
+// Queries the namespaces of an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterNamespacesRequest
 //
@@ -5252,7 +5930,7 @@ func (client *Client) DescribeAckClusterNamespaces(request *DescribeAckClusterNa
 
 // Summary:
 //
-// Queries the labels within an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
+// Queries the tags of an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterPodLabelsRequest
 //
@@ -5296,7 +5974,7 @@ func (client *Client) DescribeAckClusterPodLabelsWithOptions(request *DescribeAc
 
 // Summary:
 //
-// Queries the labels within an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
+// Queries the tags of an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DescribeAckClusterPodLabelsRequest
 //
@@ -5314,7 +5992,7 @@ func (client *Client) DescribeAckClusterPodLabels(request *DescribeAckClusterPod
 
 // Summary:
 //
-// Queries for Container Service for Kubernetes (ACK) clusters based on specified conditions, such as cluster type and specifications.
+// Queries a list of Alibaba Cloud Container Service for Kubernetes (ACK) clusters that meet specified conditions, such as cluster type and specifications.
 //
 // @param request - DescribeAckClustersRequest
 //
@@ -5386,7 +6064,7 @@ func (client *Client) DescribeAckClustersWithOptions(request *DescribeAckCluster
 
 // Summary:
 //
-// Queries for Container Service for Kubernetes (ACK) clusters based on specified conditions, such as cluster type and specifications.
+// Queries a list of Alibaba Cloud Container Service for Kubernetes (ACK) clusters that meet specified conditions, such as cluster type and specifications.
 //
 // @param request - DescribeAckClustersRequest
 //
@@ -5404,13 +6082,13 @@ func (client *Client) DescribeAckClusters(request *DescribeAckClustersRequest) (
 
 // Summary:
 //
-// Queries multiple ACL applications.
+// Lists access control applications.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The single-user QPS limit for this operation is 10 requests per second. Calls that exceed this limit are throttled, which may impact your business.
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAclAppsRequest
 //
@@ -5450,13 +6128,13 @@ func (client *Client) DescribeAclAppsWithOptions(request *DescribeAclAppsRequest
 
 // Summary:
 //
-// Queries multiple ACL applications.
+// Lists access control applications.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The single-user QPS limit for this operation is 10 requests per second. Calls that exceed this limit are throttled, which may impact your business.
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAclAppsRequest
 //
@@ -5474,7 +6152,7 @@ func (client *Client) DescribeAclApps(request *DescribeAclAppsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of ACL backups.
+// Queries the access control backup list.
 //
 // @param request - DescribeAclBackupListRequest
 //
@@ -5530,7 +6208,7 @@ func (client *Client) DescribeAclBackupListWithOptions(request *DescribeAclBacku
 
 // Summary:
 //
-// Queries a list of ACL backups.
+// Queries the access control backup list.
 //
 // @param request - DescribeAclBackupListRequest
 //
@@ -5548,13 +6226,13 @@ func (client *Client) DescribeAclBackupList(request *DescribeAclBackupListReques
 
 // Summary:
 //
-// Queries the details of an Access Control List (ACL) check.
+// Queries the details of an ACL check.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// This API is limited to 10 queries per second (QPS) per user. Calls exceeding this limit are throttled.
+// The QPS limit for a single user is 10 queries per second. If this limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeAclCheckRequest
 //
@@ -5594,13 +6272,13 @@ func (client *Client) DescribeAclCheckWithOptions(request *DescribeAclCheckReque
 
 // Summary:
 //
-// Queries the details of an Access Control List (ACL) check.
+// Queries the details of an ACL check.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// This API is limited to 10 queries per second (QPS) per user. Calls exceeding this limit are throttled.
+// The QPS limit for a single user is 10 queries per second. If this limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeAclCheckRequest
 //
@@ -5618,13 +6296,13 @@ func (client *Client) DescribeAclCheck(request *DescribeAclCheckRequest) (_resul
 
 // Summary:
 //
-// Queries the quota for access control list (ACL) checks.
+// Queries the ACL check quota.
 //
 // Description:
 //
-// ## QPS limits
+// ## QPS limit
 //
-// Each user can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// The QPS limit per user for this API operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Plan your API calls accordingly.
 //
 // @param request - DescribeAclCheckQuotaRequest
 //
@@ -5664,13 +6342,13 @@ func (client *Client) DescribeAclCheckQuotaWithOptions(request *DescribeAclCheck
 
 // Summary:
 //
-// Queries the quota for access control list (ACL) checks.
+// Queries the ACL check quota.
 //
 // Description:
 //
-// ## QPS limits
+// ## QPS limit
 //
-// Each user can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// The QPS limit per user for this API operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Plan your API calls accordingly.
 //
 // @param request - DescribeAclCheckQuotaRequest
 //
@@ -5688,13 +6366,13 @@ func (client *Client) DescribeAclCheckQuota(request *DescribeAclCheckQuotaReques
 
 // Summary:
 //
-// Queries Access Control List (ACL) checks in batches.
+// Queries ACL check records in batches.
 //
 // Description:
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, your API calls are throttled. This may affect your business. We recommend that you plan your calls accordingly.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DescribeAclChecksRequest
 //
@@ -5734,13 +6412,13 @@ func (client *Client) DescribeAclChecksWithOptions(request *DescribeAclChecksReq
 
 // Summary:
 //
-// Queries Access Control List (ACL) checks in batches.
+// Queries ACL check records in batches.
 //
 // Description:
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, your API calls are throttled. This may affect your business. We recommend that you plan your calls accordingly.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DescribeAclChecksRequest
 //
@@ -5758,13 +6436,13 @@ func (client *Client) DescribeAclChecks(request *DescribeAclChecksRequest) (_res
 
 // Summary:
 //
-// Retrieves the total number of access control policy configurations.
+// Retrieves the total number of ACL configurations.
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
+// The rate limit for this API operation is 10 queries per second (QPS) per user. Exceeding this limit triggers throttling, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAclRuleCountRequest
 //
@@ -5812,13 +6490,13 @@ func (client *Client) DescribeAclRuleCountWithOptions(request *DescribeAclRuleCo
 
 // Summary:
 //
-// Retrieves the total number of access control policy configurations.
+// Retrieves the total number of ACL configurations.
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
+// The rate limit for this API operation is 10 queries per second (QPS) per user. Exceeding this limit triggers throttling, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAclRuleCountRequest
 //
@@ -5840,9 +6518,9 @@ func (client *Client) DescribeAclRuleCount(request *DescribeAclRuleCountRequest)
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
+// The rate limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeAclWhitelistRequest
 //
@@ -5894,9 +6572,9 @@ func (client *Client) DescribeAclWhitelistWithOptions(request *DescribeAclWhitel
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
+// The rate limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeAclWhitelistRequest
 //
@@ -6017,6 +6695,68 @@ func (client *Client) DescribeAddressBook(request *DescribeAddressBookRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeAddressBookResponse{}
 	_body, _err := client.DescribeAddressBookWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of applications in the built-in application signature library, grouped by application category, risk level, and technology type. The statistics apply to the global built-in application library and are not limited by Alibaba Cloud accounts or time ranges.
+//
+// @param request - DescribeApplicationStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationStatisticsResponse
+func (client *Client) DescribeApplicationStatisticsWithOptions(request *DescribeApplicationStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationStatistics"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of applications in the built-in application signature library, grouped by application category, risk level, and technology type. The statistics apply to the global built-in application library and are not limited by Alibaba Cloud accounts or time ranges.
+//
+// @param request - DescribeApplicationStatisticsRequest
+//
+// @return DescribeApplicationStatisticsResponse
+func (client *Client) DescribeApplicationStatistics(request *DescribeApplicationStatisticsRequest) (_result *DescribeApplicationStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationStatisticsResponse{}
+	_body, _err := client.DescribeApplicationStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6160,7 +6900,7 @@ func (client *Client) DescribeAssetList(request *DescribeAssetListRequest) (_res
 
 // Summary:
 //
-// Retrieves the risk level list of assets.
+// Retrieves the list of asset risk levels.
 //
 // @param request - DescribeAssetRiskListRequest
 //
@@ -6216,7 +6956,7 @@ func (client *Client) DescribeAssetRiskListWithOptions(request *DescribeAssetRis
 
 // Summary:
 //
-// Retrieves the risk level list of assets.
+// Retrieves the list of asset risk levels.
 //
 // @param request - DescribeAssetRiskListRequest
 //
@@ -6304,15 +7044,15 @@ func (client *Client) DescribeAssetStatistic(request *DescribeAssetStatisticRequ
 
 // Summary:
 //
-// Queries the list of attack categories.
+// Queries the attack categories.
 //
 // Description:
 //
-// This operation is typically used to perform a paged query for information about assets protected by Cloud Firewall by using paging.
+// This operation is typically used to perform paging queries on the information about assets protected by Cloud Firewall.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// The QPS limit per user for this operation is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke the operation at a reasonable rate.
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke the API at a reasonable rate.
 //
 // @param request - DescribeAttackAppCategoryRequest
 //
@@ -6356,15 +7096,15 @@ func (client *Client) DescribeAttackAppCategoryWithOptions(request *DescribeAtta
 
 // Summary:
 //
-// Queries the list of attack categories.
+// Queries the attack categories.
 //
 // Description:
 //
-// This operation is typically used to perform a paged query for information about assets protected by Cloud Firewall by using paging.
+// This operation is typically used to perform paging queries on the information about assets protected by Cloud Firewall.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// The QPS limit per user for this operation is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke the operation at a reasonable rate.
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke the API at a reasonable rate.
 //
 // @param request - DescribeAttackAppCategoryRequest
 //
@@ -6450,7 +7190,7 @@ func (client *Client) DescribeBatchSlsDispatchStatus(request *DescribeBatchSlsDi
 //
 // Summary:
 //
-// Queries the firewall risk level.
+// Queries the firewall risk levels.
 //
 // @param request - DescribeCfwRiskLevelSummaryRequest
 //
@@ -6504,7 +7244,7 @@ func (client *Client) DescribeCfwRiskLevelSummaryWithOptions(request *DescribeCf
 //
 // Summary:
 //
-// Queries the firewall risk level.
+// Queries the firewall risk levels.
 //
 // @param request - DescribeCfwRiskLevelSummaryRequest
 //
@@ -6523,13 +7263,13 @@ func (client *Client) DescribeCfwRiskLevelSummary(request *DescribeCfwRiskLevelS
 
 // Summary:
 //
-// Retrieves the authorization clearance information.
+// Retrieves the authorization information for clearing.
 //
 // Description:
 //
 // ### QPS limits
 //
-// The QPS limit per user for this API operation is 10 calls per second. If you exceed the limit, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
+// The QPS limit per user for this API operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this API operation at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6558,13 +7298,13 @@ func (client *Client) DescribeClearAuthInfoWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Retrieves the authorization clearance information.
+// Retrieves the authorization information for clearing.
 //
 // Description:
 //
 // ### QPS limits
 //
-// The QPS limit per user for this API operation is 10 calls per second. If you exceed the limit, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
+// The QPS limit per user for this API operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this API operation at a reasonable rate.
 //
 // @return DescribeClearAuthInfoResponse
 func (client *Client) DescribeClearAuthInfo() (_result *DescribeClearAuthInfoResponse, _err error) {
@@ -6580,7 +7320,7 @@ func (client *Client) DescribeClearAuthInfo() (_result *DescribeClearAuthInfoRes
 
 // Summary:
 //
-// Queries the Outbound IP Address list for outbound connections.
+// Queries the list of outbound IP addresses for outbound connections.
 //
 // @param request - DescribeConfiguredDestinationIPRequest
 //
@@ -6664,7 +7404,7 @@ func (client *Client) DescribeConfiguredDestinationIPWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the Outbound IP Address list for outbound connections.
+// Queries the list of outbound IP addresses for outbound connections.
 //
 // @param request - DescribeConfiguredDestinationIPRequest
 //
@@ -6682,7 +7422,7 @@ func (client *Client) DescribeConfiguredDestinationIP(request *DescribeConfigure
 
 // Summary:
 //
-// Queries the list of outbound domains for outbound connections.
+// Queries the list of outbound domains.
 //
 // @param request - DescribeConfiguredDomainNamesRequest
 //
@@ -6758,7 +7498,7 @@ func (client *Client) DescribeConfiguredDomainNamesWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the list of outbound domains for outbound connections.
+// Queries the list of outbound domains.
 //
 // @param request - DescribeConfiguredDomainNamesRequest
 //
@@ -7022,15 +7762,15 @@ func (client *Client) DescribeCreatedNatFirewall(request *DescribeCreatedNatFire
 
 // Summary:
 //
-// Queries a list of member accounts.
+// Retrieves a list of member accounts.
 //
 // Description:
 //
-// This operation queries information about the member accounts of Cloud Firewall.
+// This operation is generally used to query information about Cloud Firewall member accounts.
 //
-// ## QPS limits
+// ## Rate limit
 //
-// This operation is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. Throttling may affect your business. We recommend that you call this operation at a reasonable rate.
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke this operation at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7059,15 +7799,15 @@ func (client *Client) DescribeCtrlInstanceMemberAccountsWithOptions(runtime *dar
 
 // Summary:
 //
-// Queries a list of member accounts.
+// Retrieves a list of member accounts.
 //
 // Description:
 //
-// This operation queries information about the member accounts of Cloud Firewall.
+// This operation is generally used to query information about Cloud Firewall member accounts.
 //
-// ## QPS limits
+// ## Rate limit
 //
-// This operation is limited to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. Throttling may affect your business. We recommend that you call this operation at a reasonable rate.
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Invoke this operation at a reasonable rate.
 //
 // @return DescribeCtrlInstanceMemberAccountsResponse
 func (client *Client) DescribeCtrlInstanceMemberAccounts() (_result *DescribeCtrlInstanceMemberAccountsResponse, _err error) {
@@ -7145,7 +7885,7 @@ func (client *Client) DescribeDefaultIPSConfig(request *DescribeDefaultIPSConfig
 
 // Summary:
 //
-// Queries the list of access control lists (ACLs) for the DNS firewall.
+// Queries the DNS firewall ACL list.
 //
 // @param request - DescribeDnsFirewallPolicyRequest
 //
@@ -7233,7 +7973,7 @@ func (client *Client) DescribeDnsFirewallPolicyWithOptions(request *DescribeDnsF
 
 // Summary:
 //
-// Queries the list of access control lists (ACLs) for the DNS firewall.
+// Queries the DNS firewall ACL list.
 //
 // @param request - DescribeDnsFirewallPolicyRequest
 //
@@ -7350,7 +8090,7 @@ func (client *Client) DescribeDomainResolve(request *DescribeDomainResolveReques
 
 // Summary:
 //
-// Queries the information and download URLs of file download tasks.
+// Queries file download tasks, including task information and download URLs.
 //
 // @param request - DescribeDownloadTaskRequest
 //
@@ -7406,7 +8146,7 @@ func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadT
 
 // Summary:
 //
-// Queries the information and download URLs of file download tasks.
+// Queries file download tasks, including task information and download URLs.
 //
 // @param request - DescribeDownloadTaskRequest
 //
@@ -7502,11 +8242,11 @@ func (client *Client) DescribeDownloadTaskType(request *DescribeDownloadTaskType
 //
 // Description:
 //
-// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. Log details are returned in pages. StartTime and EndTime are UNIX timestamps in seconds. The time span of a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the VPC firewall, set FirewallType to VpcFirewall.
+// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. Log details are returned with paging. StartTime and EndTime are UNIX timestamps in seconds. The time span of a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the virtual private cloud (VPC) firewalls at the border, set FirewallType to VpcFirewall.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// The QPS limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable frequency.
+// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeEventLogRequest
 //
@@ -7557,6 +8297,10 @@ func (client *Client) DescribeEventLogWithOptions(request *DescribeEventLogReque
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
 	if !dara.IsNil(request.RuleResult) {
 		query["RuleResult"] = request.RuleResult
 	}
@@ -7571,6 +8315,10 @@ func (client *Client) DescribeEventLogWithOptions(request *DescribeEventLogReque
 
 	if !dara.IsNil(request.SrcIP) {
 		query["SrcIP"] = request.SrcIP
+	}
+
+	if !dara.IsNil(request.SslHandshakeRes) {
+		query["SslHandshakeRes"] = request.SslHandshakeRes
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -7606,11 +8354,11 @@ func (client *Client) DescribeEventLogWithOptions(request *DescribeEventLogReque
 //
 // Description:
 //
-// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. Log details are returned in pages. StartTime and EndTime are UNIX timestamps in seconds. The time span of a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the VPC firewall, set FirewallType to VpcFirewall.
+// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. Log details are returned with paging. StartTime and EndTime are UNIX timestamps in seconds. The time span of a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the virtual private cloud (VPC) firewalls at the border, set FirewallType to VpcFirewall.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// The QPS limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable frequency.
+// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeEventLogRequest
 //
@@ -7630,13 +8378,13 @@ func (client *Client) DescribeEventLog(request *DescribeEventLogRequest) (_resul
 //
 // Summary:
 //
-// Retrieves statistics on packets dropped by the firewall.
+// Retrieves firewall DROP statistics.
 //
 // Description:
 //
-// ### QPS limit
+// ### Rate limit
 //
-// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, your API calls are throttled. This may affect your business operations. We recommend that you make API calls at a reasonable rate.
+// The rate limit for this API operation is 10 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7668,13 +8416,13 @@ func (client *Client) DescribeFirewallDropStatisticsWithOptions(runtime *dara.Ru
 //
 // Summary:
 //
-// Retrieves statistics on packets dropped by the firewall.
+// Retrieves firewall DROP statistics.
 //
 // Description:
 //
-// ### QPS limit
+// ### Rate limit
 //
-// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, your API calls are throttled. This may affect your business operations. We recommend that you make API calls at a reasonable rate.
+// The rate limit for this API operation is 10 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @return DescribeFirewallDropStatisticsResponse
 // Deprecated
@@ -7691,7 +8439,7 @@ func (client *Client) DescribeFirewallDropStatistics() (_result *DescribeFirewal
 
 // Summary:
 //
-// Retrieves the overall firewall interception trends, including Internet, VPC, and NAT traffic.
+// Retrieves the overall firewall blocking trends, including Internet, VPC, and NAT traffic.
 //
 // @param request - DescribeFirewallDropTrendRequest
 //
@@ -7743,7 +8491,7 @@ func (client *Client) DescribeFirewallDropTrendWithOptions(request *DescribeFire
 
 // Summary:
 //
-// Retrieves the overall firewall interception trends, including Internet, VPC, and NAT traffic.
+// Retrieves the overall firewall blocking trends, including Internet, VPC, and NAT traffic.
 //
 // @param request - DescribeFirewallDropTrendRequest
 //
@@ -7761,13 +8509,13 @@ func (client *Client) DescribeFirewallDropTrend(request *DescribeFirewallDropTre
 
 // Summary:
 //
-// Retrieves firewall tasks.
+// Retrieves a firewall task.
 //
 // Description:
 //
 // ### QPS limit
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
+// The rate limit for this API operation is 10 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DescribeFirewallTaskRequest
 //
@@ -7796,6 +8544,10 @@ func (client *Client) DescribeFirewallTaskWithOptions(request *DescribeFirewallT
 
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
 	}
 
 	if !dara.IsNil(request.TaskType) {
@@ -7827,13 +8579,13 @@ func (client *Client) DescribeFirewallTaskWithOptions(request *DescribeFirewallT
 
 // Summary:
 //
-// Retrieves firewall tasks.
+// Retrieves a firewall task.
 //
 // Description:
 //
 // ### QPS limit
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
+// The rate limit for this API operation is 10 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DescribeFirewallTaskRequest
 //
@@ -7851,7 +8603,7 @@ func (client *Client) DescribeFirewallTask(request *DescribeFirewallTaskRequest)
 
 // Summary:
 //
-// Queries the traffic trend of a firewall.
+// Queries the traffic trends of the firewall.
 //
 // @param request - DescribeFirewallTrafficTrendRequest
 //
@@ -7903,7 +8655,7 @@ func (client *Client) DescribeFirewallTrafficTrendWithOptions(request *DescribeF
 
 // Summary:
 //
-// Queries the traffic trend of a firewall.
+// Queries the traffic trends of the firewall.
 //
 // @param request - DescribeFirewallTrafficTrendRequest
 //
@@ -7921,13 +8673,13 @@ func (client *Client) DescribeFirewallTrafficTrend(request *DescribeFirewallTraf
 
 // Summary:
 //
-// Retrieves the vSwitches created by the firewall.
+// Queries the vSwitches created by the firewall.
 //
 // Description:
 //
-// ### Rate limit
+// ### QPS limit
 //
-// The rate limit for this API operation is 10 queries per second (QPS) per user. If you exceed this limit, throttling is triggered, which may affect your services. Call this API operation at a reasonable frequency.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable rate.
 //
 // @param request - DescribeFirewallVSwitchRequest
 //
@@ -8003,13 +8755,13 @@ func (client *Client) DescribeFirewallVSwitchWithOptions(request *DescribeFirewa
 
 // Summary:
 //
-// Retrieves the vSwitches created by the firewall.
+// Queries the vSwitches created by the firewall.
 //
 // Description:
 //
-// ### Rate limit
+// ### QPS limit
 //
-// The rate limit for this API operation is 10 queries per second (QPS) per user. If you exceed this limit, throttling is triggered, which may affect your services. Call this API operation at a reasonable frequency.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable rate.
 //
 // @param request - DescribeFirewallVSwitchRequest
 //
@@ -8027,7 +8779,7 @@ func (client *Client) DescribeFirewallVSwitch(request *DescribeFirewallVSwitchRe
 
 // Summary:
 //
-// Queries the vSwitch resources for Cloud Firewall.
+// Queries firewall vSwitch resources.
 //
 // @param request - DescribeFirewallVswitchResourcesRequest
 //
@@ -8087,7 +8839,7 @@ func (client *Client) DescribeFirewallVswitchResourcesWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the vSwitch resources for Cloud Firewall.
+// Queries firewall vSwitch resources.
 //
 // @param request - DescribeFirewallVswitchResourcesRequest
 //
@@ -8166,6 +8918,10 @@ func (client *Client) DescribeIPSRulesWithOptions(request *DescribeIPSRulesReque
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProxyId) {
+		query["ProxyId"] = request.ProxyId
 	}
 
 	if !dara.IsNil(request.QueryModify) {
@@ -8345,7 +9101,7 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 
 // Summary:
 //
-// Retrieves the account in a resource directory for an instance.
+// Retrieves the account in a resource directory for the instance.
 //
 // @param request - DescribeInstanceRdAccountsRequest
 //
@@ -8413,7 +9169,7 @@ func (client *Client) DescribeInstanceRdAccountsWithOptions(request *DescribeIns
 
 // Summary:
 //
-// Retrieves the account in a resource directory for an instance.
+// Retrieves the account in a resource directory for the instance.
 //
 // @param request - DescribeInstanceRdAccountsRequest
 //
@@ -8497,13 +9253,13 @@ func (client *Client) DescribeInstanceRiskLevels(request *DescribeInstanceRiskLe
 
 // Summary:
 //
-// # Internet security trends
+// Queries Internet defense trends.
 //
 // Description:
 //
 // ## QPS limit
 //
-// This API is limited to 10 requests per second per user. Exceeding this limit triggers throttling, which can disrupt your service. Plan your API calls accordingly.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable rate.
 //
 // @param request - DescribeInternetDropTrafficTrendRequest
 //
@@ -8571,13 +9327,13 @@ func (client *Client) DescribeInternetDropTrafficTrendWithOptions(request *Descr
 
 // Summary:
 //
-// # Internet security trends
+// Queries Internet defense trends.
 //
 // Description:
 //
 // ## QPS limit
 //
-// This API is limited to 10 requests per second per user. Exceeding this limit triggers throttling, which can disrupt your service. Plan your API calls accordingly.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable rate.
 //
 // @param request - DescribeInternetDropTrafficTrendRequest
 //
@@ -8595,7 +9351,7 @@ func (client *Client) DescribeInternetDropTrafficTrend(request *DescribeInternet
 
 // Summary:
 //
-// You can obtain details about Internet access.
+// Retrieves the details of Internet exposure.
 //
 // @param request - DescribeInternetOpenDetailRequest
 //
@@ -8707,7 +9463,7 @@ func (client *Client) DescribeInternetOpenDetailWithOptions(request *DescribeInt
 
 // Summary:
 //
-// You can obtain details about Internet access.
+// Retrieves the details of Internet exposure.
 //
 // @param request - DescribeInternetOpenDetailRequest
 //
@@ -8835,13 +9591,13 @@ func (client *Client) DescribeInternetOpenIp(request *DescribeInternetOpenIpRequ
 
 // Summary:
 //
-// Queries the ports that are open to the Internet.
+// Queries open ports on the Internet.
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeInternetOpenPortRequest
 //
@@ -8929,13 +9685,13 @@ func (client *Client) DescribeInternetOpenPortWithOptions(request *DescribeInter
 
 // Summary:
 //
-// Queries the ports that are open to the Internet.
+// Queries open ports on the Internet.
 //
 // Description:
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DescribeInternetOpenPortRequest
 //
@@ -8953,13 +9709,13 @@ func (client *Client) DescribeInternetOpenPort(request *DescribeInternetOpenPort
 
 // Summary:
 //
-// Queries services exposed to the Internet.
+// Queries Internet-facing open services.
 //
 // Description:
 //
 // ## QPS limits
 //
-// You can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you make API calls at a reasonable rate.
+// The QPS limit for a single user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeInternetOpenServiceRequest
 //
@@ -9047,13 +9803,13 @@ func (client *Client) DescribeInternetOpenServiceWithOptions(request *DescribeIn
 
 // Summary:
 //
-// Queries services exposed to the Internet.
+// Queries Internet-facing open services.
 //
 // Description:
 //
 // ## QPS limits
 //
-// You can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you make API calls at a reasonable rate.
+// The QPS limit for a single user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeInternetOpenServiceRequest
 //
@@ -9071,7 +9827,7 @@ func (client *Client) DescribeInternetOpenService(request *DescribeInternetOpenS
 
 // Summary:
 //
-// Retrieves statistics about assets exposed to the Internet.
+// Retrieves Internet exposure statistics.
 //
 // @param request - DescribeInternetOpenStatisticRequest
 //
@@ -9131,7 +9887,7 @@ func (client *Client) DescribeInternetOpenStatisticWithOptions(request *Describe
 
 // Summary:
 //
-// Retrieves statistics about assets exposed to the Internet.
+// Retrieves Internet exposure statistics.
 //
 // @param request - DescribeInternetOpenStatisticRequest
 //
@@ -9149,7 +9905,7 @@ func (client *Client) DescribeInternetOpenStatistic(request *DescribeInternetOpe
 
 // Summary:
 //
-// Retrieves a list of Internet service names.
+// Retrieves the list of Internet service names.
 //
 // @param request - DescribeInternetServiceNameListRequest
 //
@@ -9201,7 +9957,7 @@ func (client *Client) DescribeInternetServiceNameListWithOptions(request *Descri
 
 // Summary:
 //
-// Retrieves a list of Internet service names.
+// Retrieves the list of Internet service names.
 //
 // @param request - DescribeInternetServiceNameListRequest
 //
@@ -9219,7 +9975,7 @@ func (client *Client) DescribeInternetServiceNameList(request *DescribeInternetS
 
 // Summary:
 //
-// Retrieves the details of Internet-facing SLB instances.
+// Retrieves Internet-facing SLB instances.
 //
 // @param request - DescribeInternetSlbRequest
 //
@@ -9307,7 +10063,7 @@ func (client *Client) DescribeInternetSlbWithOptions(request *DescribeInternetSl
 
 // Summary:
 //
-// Retrieves the details of Internet-facing SLB instances.
+// Retrieves Internet-facing SLB instances.
 //
 // @param request - DescribeInternetSlbRequest
 //
@@ -9325,7 +10081,7 @@ func (client *Client) DescribeInternetSlb(request *DescribeInternetSlbRequest) (
 
 // Summary:
 //
-// This operation queries the Top-N internet traffic over time.
+// Queries the top Internet traffic by time.
 //
 // @param request - DescribeInternetTimeTopRequest
 //
@@ -9429,7 +10185,7 @@ func (client *Client) DescribeInternetTimeTopWithOptions(request *DescribeIntern
 
 // Summary:
 //
-// This operation queries the Top-N internet traffic over time.
+// Queries the top Internet traffic by time.
 //
 // @param request - DescribeInternetTimeTopRequest
 //
@@ -9655,7 +10411,7 @@ func (client *Client) DescribeInternetTrafficTrend(request *DescribeInternetTraf
 
 // Summary:
 //
-// Queries the trend of vulnerabilities on ECS instances.
+// Queries ECS vulnerability trends.
 //
 // @param request - DescribeInvadeEcsTrendRequest
 //
@@ -9715,7 +10471,7 @@ func (client *Client) DescribeInvadeEcsTrendWithOptions(request *DescribeInvadeE
 
 // Summary:
 //
-// Queries the trend of vulnerabilities on ECS instances.
+// Queries ECS vulnerability trends.
 //
 // @param request - DescribeInvadeEcsTrendRequest
 //
@@ -9733,7 +10489,7 @@ func (client *Client) DescribeInvadeEcsTrend(request *DescribeInvadeEcsTrendRequ
 
 // Summary:
 //
-// Retrieves the details of a threat detection event.
+// Retrieves the details of a compromise awareness event.
 //
 // @param request - DescribeInvadeEventDetailRequest
 //
@@ -9797,7 +10553,7 @@ func (client *Client) DescribeInvadeEventDetailWithOptions(request *DescribeInva
 
 // Summary:
 //
-// Retrieves the details of a threat detection event.
+// Retrieves the details of a compromise awareness event.
 //
 // @param request - DescribeInvadeEventDetailRequest
 //
@@ -10019,7 +10775,117 @@ func (client *Client) DescribeInvadeEventNameList(request *DescribeInvadeEventNa
 
 // Summary:
 //
-// Queries statistics about intrusion events.
+// Retrieves the original payload of a vulnerability event.
+//
+// Description:
+//
+// Queries the original packet payload of a specified intrusion event. You can locate a single event by using the event UUID (EventUuid) or filter events by public IP address, private IP address, asset instance ID, and time range. StartTime and EndTime are required and must be UNIX timestamps in seconds. The response includes the original payload, the payload length (PayloadLen), and the start and end positions of the matched content in the highlight interval (HighlightStart and HighlightEnd) to help restore alert details.
+//
+// ## QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
+//
+// @param request - DescribeInvadeEventPayloadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInvadeEventPayloadResponse
+func (client *Client) DescribeInvadeEventPayloadWithOptions(request *DescribeInvadeEventPayloadRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvadeEventPayloadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetsInstanceId) {
+		query["AssetsInstanceId"] = request.AssetsInstanceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventUuid) {
+		query["EventUuid"] = request.EventUuid
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PrivateIP) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !dara.IsNil(request.PublicIP) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvadeEventPayload"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInvadeEventPayloadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the original payload of a vulnerability event.
+//
+// Description:
+//
+// Queries the original packet payload of a specified intrusion event. You can locate a single event by using the event UUID (EventUuid) or filter events by public IP address, private IP address, asset instance ID, and time range. StartTime and EndTime are required and must be UNIX timestamps in seconds. The response includes the original payload, the payload length (PayloadLen), and the start and end positions of the matched content in the highlight interval (HighlightStart and HighlightEnd) to help restore alert details.
+//
+// ## QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
+//
+// @param request - DescribeInvadeEventPayloadRequest
+//
+// @return DescribeInvadeEventPayloadResponse
+func (client *Client) DescribeInvadeEventPayload(request *DescribeInvadeEventPayloadRequest) (_result *DescribeInvadeEventPayloadResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInvadeEventPayloadResponse{}
+	_body, _err := client.DescribeInvadeEventPayloadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves vulnerability event statistics.
 //
 // @param request - DescribeInvadeEventStatisticRequest
 //
@@ -10079,7 +10945,7 @@ func (client *Client) DescribeInvadeEventStatisticWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries statistics about intrusion events.
+// Retrieves vulnerability event statistics.
 //
 // @param request - DescribeInvadeEventStatisticRequest
 //
@@ -10097,15 +10963,15 @@ func (client *Client) DescribeInvadeEventStatistic(request *DescribeInvadeEventS
 
 // Summary:
 //
-// Queries the list of IPS Private IP Tracing associations.
+// Queries the IPS private IP tracing list.
 //
 // Description:
 //
-// This operation queries information about assets that are protected by Cloud Firewall. The results are paginated.
+// This operation is generally used to perform paged queries on the information about assets protected by Cloud Firewall.
 //
-// ## Limits
+// ## QPS limits
 //
-// This operation is limited to 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled. This may affect your business. Call this operation at a reasonable rate.
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
 //
 // @param request - DescribeIpsPrivateAssocRequest
 //
@@ -10173,15 +11039,15 @@ func (client *Client) DescribeIpsPrivateAssocWithOptions(request *DescribeIpsPri
 
 // Summary:
 //
-// Queries the list of IPS Private IP Tracing associations.
+// Queries the IPS private IP tracing list.
 //
 // Description:
 //
-// This operation queries information about assets that are protected by Cloud Firewall. The results are paginated.
+// This operation is generally used to perform paged queries on the information about assets protected by Cloud Firewall.
 //
-// ## Limits
+// ## QPS limits
 //
-// This operation is limited to 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled. This may affect your business. Call this operation at a reasonable rate.
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
 //
 // @param request - DescribeIpsPrivateAssocRequest
 //
@@ -10750,7 +11616,7 @@ func (client *Client) DescribeNatFirewallDropTrafficTrend(request *DescribeNatFi
 
 // Summary:
 //
-// Retrieves the details of NAT firewalls.
+// Queries the details of NAT firewalls.
 //
 // @param request - DescribeNatFirewallListRequest
 //
@@ -10834,7 +11700,7 @@ func (client *Client) DescribeNatFirewallListWithOptions(request *DescribeNatFir
 
 // Summary:
 //
-// Retrieves the details of NAT firewalls.
+// Queries the details of NAT firewalls.
 //
 // @param request - DescribeNatFirewallListRequest
 //
@@ -10934,7 +11800,7 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsed(request *DescribeNatFir
 
 // Summary:
 //
-// Queries the precheck details for a NAT firewall.
+// Queries the precheck results of a NAT firewall.
 //
 // @param request - DescribeNatFirewallPrecheckDetailRequest
 //
@@ -10974,7 +11840,7 @@ func (client *Client) DescribeNatFirewallPrecheckDetailWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the precheck details for a NAT firewall.
+// Queries the precheck results of a NAT firewall.
 //
 // @param request - DescribeNatFirewallPrecheckDetailRequest
 //
@@ -11006,7 +11872,15 @@ func (client *Client) DescribeNatFirewallQuotaWithOptions(request *DescribeNatFi
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11015,7 +11889,7 @@ func (client *Client) DescribeNatFirewallQuotaWithOptions(request *DescribeNatFi
 		Version:     dara.String("2017-12-07"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -11050,7 +11924,7 @@ func (client *Client) DescribeNatFirewallQuota(request *DescribeNatFirewallQuota
 
 // Summary:
 //
-// Queries the top traffic data of a NAT firewall at a specific point in time.
+// Queries the top traffic of a NAT firewall at a specific point in time.
 //
 // @param request - DescribeNatFirewallTimeTopRequest
 //
@@ -11090,7 +11964,7 @@ func (client *Client) DescribeNatFirewallTimeTopWithOptions(request *DescribeNat
 
 // Summary:
 //
-// Queries the top traffic data of a NAT firewall at a specific point in time.
+// Queries the top traffic of a NAT firewall at a specific point in time.
 //
 // @param request - DescribeNatFirewallTimeTopRequest
 //
@@ -11456,7 +12330,7 @@ func (client *Client) DescribeNetworkTrafficTopRatio(request *DescribeNetworkTra
 
 // Summary:
 //
-// Retrieves statistics about access sources for public IP addresses.
+// Retrieves the statistics of access sources for open IP addresses. Before calling this operation, you must purchase and activate Cloud Firewall. You can check the activation status by using the UserStatus parameter returned by DescribeUserBuyVersion. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - DescribeOpenIpAccessSrcStatRequest
 //
@@ -11516,7 +12390,7 @@ func (client *Client) DescribeOpenIpAccessSrcStatWithOptions(request *DescribeOp
 
 // Summary:
 //
-// Retrieves statistics about access sources for public IP addresses.
+// Retrieves the statistics of access sources for open IP addresses. Before calling this operation, you must purchase and activate Cloud Firewall. You can check the activation status by using the UserStatus parameter returned by DescribeUserBuyVersion. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - DescribeOpenIpAccessSrcStatRequest
 //
@@ -11884,7 +12758,17 @@ func (client *Client) DescribeOutgoingDestinationCategory(request *DescribeOutgo
 
 // Summary:
 //
-// Displays the destination IP of an active outbound connection.
+// Queries the destination IP addresses of outbound connections.
+//
+// Description:
+//
+// This operation queries the destination IP addresses of outbound connections.
+//
+// ## Before you begin
+//
+// - Make sure that Cloud Firewall is activated for your account. Both subscription and pay-as-you-go editions are supported.
+//
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - DescribeOutgoingDestinationIPRequest
 //
@@ -11980,7 +12864,17 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 
 // Summary:
 //
-// Displays the destination IP of an active outbound connection.
+// Queries the destination IP addresses of outbound connections.
+//
+// Description:
+//
+// This operation queries the destination IP addresses of outbound connections.
+//
+// ## Before you begin
+//
+// - Make sure that Cloud Firewall is activated for your account. Both subscription and pay-as-you-go editions are supported.
+//
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - DescribeOutgoingDestinationIPRequest
 //
@@ -12356,7 +13250,7 @@ func (client *Client) DescribeOutgoingDomainDetail(request *DescribeOutgoingDoma
 
 // Summary:
 //
-// Queries the number of intrusion prevention threats.
+// Retrieves the number of intrusion prevention risks. Before you call this operation, activate Cloud Firewall. You can check the activation status by using the UserStatus parameter returned by DescribeUserBuyVersion. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - DescribeOutgoingRiskDomainAndIpCountRequest
 //
@@ -12396,7 +13290,7 @@ func (client *Client) DescribeOutgoingRiskDomainAndIpCountWithOptions(request *D
 
 // Summary:
 //
-// Queries the number of intrusion prevention threats.
+// Retrieves the number of intrusion prevention risks. Before you call this operation, activate Cloud Firewall. You can check the activation status by using the UserStatus parameter returned by DescribeUserBuyVersion. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - DescribeOutgoingRiskDomainAndIpCountRequest
 //
@@ -12414,7 +13308,17 @@ func (client *Client) DescribeOutgoingRiskDomainAndIpCount(request *DescribeOutg
 
 // Summary:
 //
-// Queries outbound connection risk trends.
+// Queries the trend of outbound connection risks.
+//
+// Description:
+//
+// This operation queries the trend of outbound connection risks.
+//
+// ## Before you begin
+//
+// - Ensure that Cloud Firewall is activated before you call this operation.
+//
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If false is returned, the service is not activated.
 //
 // @param request - DescribeOutgoingRiskTrendRequest
 //
@@ -12474,7 +13378,17 @@ func (client *Client) DescribeOutgoingRiskTrendWithOptions(request *DescribeOutg
 
 // Summary:
 //
-// Queries outbound connection risk trends.
+// Queries the trend of outbound connection risks.
+//
+// Description:
+//
+// This operation queries the trend of outbound connection risks.
+//
+// ## Before you begin
+//
+// - Ensure that Cloud Firewall is activated before you call this operation.
+//
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If false is returned, the service is not activated.
 //
 // @param request - DescribeOutgoingRiskTrendRequest
 //
@@ -12767,15 +13681,19 @@ func (client *Client) DescribePageDocuments(request *DescribePageDocumentsReques
 
 // Summary:
 //
-// Queries the status of strict mode for access control policies.
+// Queries the enabling status of strict mode for access control policies.
 //
 // Description:
 //
-// You can call this operation to query the status of strict mode for access control policies.
+// This operation is typically used to query the enabling status of strict mode for access control policies.
 //
-// ## QPS limits
+// ## Before you begin
 //
-// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
+// - Before calling this operation, you must purchase and activate Cloud Firewall. You can activate the service on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+//
+// ## Rate limit
+//
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribePolicyAdvancedConfigRequest
 //
@@ -12827,15 +13745,19 @@ func (client *Client) DescribePolicyAdvancedConfigWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries the status of strict mode for access control policies.
+// Queries the enabling status of strict mode for access control policies.
 //
 // Description:
 //
-// You can call this operation to query the status of strict mode for access control policies.
+// This operation is typically used to query the enabling status of strict mode for access control policies.
 //
-// ## QPS limits
+// ## Before you begin
 //
-// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
+// - Before calling this operation, you must purchase and activate Cloud Firewall. You can activate the service on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+//
+// ## Rate limit
+//
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribePolicyAdvancedConfigRequest
 //
@@ -12943,11 +13865,11 @@ func (client *Client) DescribePolicyPriorUsed(request *DescribePolicyPriorUsedRe
 
 // Summary:
 //
-// Queries the bills for pay-as-you-go 2.0.
+// Queries pay-as-you-go 2.0 bills.
 //
 // Description:
 //
-// The details are accurate to the specific resource instance level for pay-as-you-go users. For subscription users, only overall queries are supported.
+// For pay-as-you-go users, the billing details are accurate to the specific resource instance level. For subscription users, only overall queries are supported.
 //
 // @param request - DescribePostpayBillRequest
 //
@@ -13011,11 +13933,11 @@ func (client *Client) DescribePostpayBillWithOptions(request *DescribePostpayBil
 
 // Summary:
 //
-// Queries the bills for pay-as-you-go 2.0.
+// Queries pay-as-you-go 2.0 bills.
 //
 // Description:
 //
-// The details are accurate to the specific resource instance level for pay-as-you-go users. For subscription users, only overall queries are supported.
+// For pay-as-you-go users, the billing details are accurate to the specific resource instance level. For subscription users, only overall queries are supported.
 //
 // @param request - DescribePostpayBillRequest
 //
@@ -13845,9 +14767,9 @@ func (client *Client) DescribePrivateDnsStatistics(request *DescribePrivateDnsSt
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DescribeRegionInfoRequest
 //
@@ -13907,9 +14829,9 @@ func (client *Client) DescribeRegionInfoWithOptions(request *DescribeRegionInfoR
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - DescribeRegionInfoRequest
 //
@@ -14083,7 +15005,7 @@ func (client *Client) DescribeResourceTypeAutoEnable(request *DescribeResourceTy
 
 // Summary:
 //
-// Queries the detailed data of intrusion prevention events.
+// Retrieves the detailed data of intrusion prevention events.
 //
 // Description:
 //
@@ -14091,7 +15013,7 @@ func (client *Client) DescribeResourceTypeAutoEnable(request *DescribeResourceTy
 //
 // ## QPS limits
 //
-// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable rate.
+// The QPS limit per user for this operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
 //
 // @param request - DescribeRiskEventGroupRequest
 //
@@ -14231,7 +15153,7 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 
 // Summary:
 //
-// Queries the detailed data of intrusion prevention events.
+// Retrieves the detailed data of intrusion prevention events.
 //
 // Description:
 //
@@ -14239,7 +15161,7 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 //
 // ## QPS limits
 //
-// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable rate.
+// The QPS limit per user for this operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
 //
 // @param request - DescribeRiskEventGroupRequest
 //
@@ -15860,7 +16782,7 @@ func (client *Client) DescribeSlsAnalyzeOpenStatus(request *DescribeSlsAnalyzeOp
 
 // Summary:
 //
-// Queries the execution status of a log configuration update task.
+// Queries the execution status of a log configuration modification task.
 //
 // Description:
 //
@@ -15908,7 +16830,7 @@ func (client *Client) DescribeTaskDispatchStatusWithOptions(request *DescribeTas
 
 // Summary:
 //
-// Queries the execution status of a log configuration update task.
+// Queries the execution status of a log configuration modification task.
 //
 // Description:
 //
@@ -15930,11 +16852,11 @@ func (client *Client) DescribeTaskDispatchStatus(request *DescribeTaskDispatchSt
 
 // Summary:
 //
-// Queries the threat intelligence configuration information.
+// Queries the information about threat intelligence configurations.
 //
 // Description:
 //
-// This operation is generally used to perform a paged query on the information about access control policies of NAT firewalls.
+// This operation is typically used to perform paging queries on the information about NAT firewall access control policies.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -15963,11 +16885,11 @@ func (client *Client) DescribeThreatIntelligenceSwitchWithOptions(runtime *dara.
 
 // Summary:
 //
-// Queries the threat intelligence configuration information.
+// Queries the information about threat intelligence configurations.
 //
 // Description:
 //
-// This operation is generally used to perform a paged query on the information about access control policies of NAT firewalls.
+// This operation is typically used to perform paging queries on the information about NAT firewall access control policies.
 //
 // @return DescribeThreatIntelligenceSwitchResponse
 func (client *Client) DescribeThreatIntelligenceSwitch() (_result *DescribeThreatIntelligenceSwitchResponse, _err error) {
@@ -16145,7 +17067,7 @@ func (client *Client) DescribeTrFirewallV2RoutePolicyList(request *DescribeTrFir
 //
 // Description:
 //
-// Queries the details of a virtual private cloud (VPC) firewall for an Enterprise Edition transit router. You can call DescribeTrFirewallsV2List to obtain the FirewallId. If no firewall has been created, prepare an Enterprise Edition transit router in the Cloud Enterprise Network (CEN) console first, and then call CreateTrFirewallV2 to create a firewall and obtain the FirewallId.
+// Queries the details of a VPC firewall for an Enterprise Edition transit router. You can obtain the FirewallId by calling DescribeTrFirewallsV2List. If the firewall has not been created, you must first prepare an Enterprise Edition transit router in Cloud Enterprise Network (CEN) and then call CreateTrFirewallV2 to create the firewall and obtain the FirewallId.
 //
 // @param request - DescribeTrFirewallsV2DetailRequest
 //
@@ -16197,7 +17119,7 @@ func (client *Client) DescribeTrFirewallsV2DetailWithOptions(request *DescribeTr
 //
 // Description:
 //
-// Queries the details of a virtual private cloud (VPC) firewall for an Enterprise Edition transit router. You can call DescribeTrFirewallsV2List to obtain the FirewallId. If no firewall has been created, prepare an Enterprise Edition transit router in the Cloud Enterprise Network (CEN) console first, and then call CreateTrFirewallV2 to create a firewall and obtain the FirewallId.
+// Queries the details of a VPC firewall for an Enterprise Edition transit router. You can obtain the FirewallId by calling DescribeTrFirewallsV2List. If the firewall has not been created, you must first prepare an Enterprise Edition transit router in Cloud Enterprise Network (CEN) and then call CreateTrFirewallV2 to create the firewall and obtain the FirewallId.
 //
 // @param request - DescribeTrFirewallsV2DetailRequest
 //
@@ -17612,7 +18534,7 @@ func (client *Client) DescribeVpcFirewallAssetList(request *DescribeVpcFirewallA
 
 // Summary:
 //
-// Queries the regions where the VPC firewall is enabled for asset protection.
+// Queries the regions where VPC firewall assets are enabled.
 //
 // @param request - DescribeVpcFirewallAssetRegionListRequest
 //
@@ -17652,7 +18574,7 @@ func (client *Client) DescribeVpcFirewallAssetRegionListWithOptions(request *Des
 
 // Summary:
 //
-// Queries the regions where the VPC firewall is enabled for asset protection.
+// Queries the regions where VPC firewall assets are enabled.
 //
 // @param request - DescribeVpcFirewallAssetRegionListRequest
 //
@@ -17984,11 +18906,15 @@ func (client *Client) DescribeVpcFirewallCenSummaryList(request *DescribeVpcFire
 
 // Summary:
 //
-// Queries all access control policy information for a specified virtual private cloud (VPC) firewall.
+// Queries all access control policies of the specified virtual private cloud (VPC) firewalls.
 //
 // Description:
 //
-// This operation is used to query access control policies of virtual private cloud (VPC) firewalls. Virtual private cloud (VPC) firewalls use different access control policies when protecting traffic between two VPCs connected through Cloud Enterprise Network (CEN) or traffic between two VPCs connected through Express Connect.
+// This operation is typically used to query the access control policies of virtual private cloud (VPC) firewalls. Virtual private cloud (VPC) firewalls use different access control policies when protecting traffic between two VPCs connected by Cloud Enterprise Network (CEN) and traffic between two VPCs connected by Express Connect.
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit per user for this operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallControlPolicyRequest
 //
@@ -18080,11 +19006,15 @@ func (client *Client) DescribeVpcFirewallControlPolicyWithOptions(request *Descr
 
 // Summary:
 //
-// Queries all access control policy information for a specified virtual private cloud (VPC) firewall.
+// Queries all access control policies of the specified virtual private cloud (VPC) firewalls.
 //
 // Description:
 //
-// This operation is used to query access control policies of virtual private cloud (VPC) firewalls. Virtual private cloud (VPC) firewalls use different access control policies when protecting traffic between two VPCs connected through Cloud Enterprise Network (CEN) or traffic between two VPCs connected through Express Connect.
+// This operation is typically used to query the access control policies of virtual private cloud (VPC) firewalls. Virtual private cloud (VPC) firewalls use different access control policies when protecting traffic between two VPCs connected by Cloud Enterprise Network (CEN) and traffic between two VPCs connected by Express Connect.
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit per user for this operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeVpcFirewallControlPolicyRequest
 //
@@ -19300,7 +20230,7 @@ func (client *Client) DescribeVpcFirewallTrafficTrend(request *DescribeVpcFirewa
 
 // Summary:
 //
-// Queries the list of zones available for a VPC firewall.
+// Queries the list of zones available for VPC firewalls.
 //
 // @param request - DescribeVpcFirewallZoneRequest
 //
@@ -19368,7 +20298,7 @@ func (client *Client) DescribeVpcFirewallZoneWithOptions(request *DescribeVpcFir
 
 // Summary:
 //
-// Queries the list of zones available for a VPC firewall.
+// Queries the list of zones available for VPC firewalls.
 //
 // @param request - DescribeVpcFirewallZoneRequest
 //
@@ -19812,6 +20742,127 @@ func (client *Client) EnableSdlProtectedAsset(request *EnableSdlProtectedAssetRe
 
 // Summary:
 //
+// Queries the details of a specified application template, including the status of each switch, the action for unidentified applications, and the list of built-in application actions.
+//
+// @param request - GetApplicationTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationTemplateResponse
+func (client *Client) GetApplicationTemplateWithOptions(request *GetApplicationTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	if !dara.IsNil(request.BuiltInApplicationActionType) {
+		query["BuiltInApplicationActionType"] = request.BuiltInApplicationActionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApplicationTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApplicationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified application template, including the status of each switch, the action for unidentified applications, and the list of built-in application actions.
+//
+// @param request - GetApplicationTemplateRequest
+//
+// @return GetApplicationTemplateResponse
+func (client *Client) GetApplicationTemplate(request *GetApplicationTemplateRequest) (_result *GetApplicationTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetApplicationTemplateResponse{}
+	_body, _err := client.GetApplicationTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the activation status of the application control and web filtering features for the current Alibaba Cloud account. This operation does not require request parameters and always returns the status of these two features.
+//
+// @param request - GetFirewallFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFirewallFeatureResponse
+func (client *Client) GetFirewallFeatureWithOptions(request *GetFirewallFeatureRequest, runtime *dara.RuntimeOptions) (_result *GetFirewallFeatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFirewallFeature"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFirewallFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the activation status of the application control and web filtering features for the current Alibaba Cloud account. This operation does not require request parameters and always returns the status of these two features.
+//
+// @param request - GetFirewallFeatureRequest
+//
+// @return GetFirewallFeatureResponse
+func (client *Client) GetFirewallFeature(request *GetFirewallFeatureRequest) (_result *GetFirewallFeatureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFirewallFeatureResponse{}
+	_body, _err := client.GetFirewallFeatureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the download path for the certificate of a Transport Layer Security (TLS) inspection policy.
 //
 // Description:
@@ -19882,6 +20933,366 @@ func (client *Client) GetTlsInspectCertificateDownloadUrl(request *GetTlsInspect
 
 // Summary:
 //
+// Performs a paged query to retrieve the list of custom rules under a specified application program template, sorted by priority in ascending order. Supports paging, fuzzy search by rule name, and filtering by rule ID, priority, action, and application ID.
+//
+// @param request - ListApplicationCustomRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationCustomRulesResponse
+func (client *Client) ListApplicationCustomRulesWithOptions(request *ListApplicationCustomRulesRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationCustomRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCustomRuleId) {
+		query["ApplicationCustomRuleId"] = request.ApplicationCustomRuleId
+	}
+
+	if !dara.IsNil(request.ApplicationCustomRuleName) {
+		query["ApplicationCustomRuleName"] = request.ApplicationCustomRuleName
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationCustomRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationCustomRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query to retrieve the list of custom rules under a specified application program template, sorted by priority in ascending order. Supports paging, fuzzy search by rule name, and filtering by rule ID, priority, action, and application ID.
+//
+// @param request - ListApplicationCustomRulesRequest
+//
+// @return ListApplicationCustomRulesResponse
+func (client *Client) ListApplicationCustomRules(request *ListApplicationCustomRulesRequest) (_result *ListApplicationCustomRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationCustomRulesResponse{}
+	_body, _err := client.ListApplicationCustomRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query to retrieve the list of application program templates under the current Alibaba Cloud account. Supports paging, fuzzy search by template name and description, batch exact filtering by template ID, and exact filtering by switch statuses and actions for unrecognized applications.
+//
+// @param request - ListApplicationTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationTemplateResponse
+func (client *Client) ListApplicationTemplateWithOptions(request *ListApplicationTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationTemplateIds) {
+		query["ApplicationTemplateIds"] = request.ApplicationTemplateIds
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateName) {
+		query["ApplicationTemplateName"] = request.ApplicationTemplateName
+	}
+
+	if !dara.IsNil(request.BuiltInApplicationStatus) {
+		query["BuiltInApplicationStatus"] = request.BuiltInApplicationStatus
+	}
+
+	if !dara.IsNil(request.CustomRuleStatus) {
+		query["CustomRuleStatus"] = request.CustomRuleStatus
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TemplateStatus) {
+		query["TemplateStatus"] = request.TemplateStatus
+	}
+
+	if !dara.IsNil(request.UnknownAction) {
+		query["UnknownAction"] = request.UnknownAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query to retrieve the list of application program templates under the current Alibaba Cloud account. Supports paging, fuzzy search by template name and description, batch exact filtering by template ID, and exact filtering by switch statuses and actions for unrecognized applications.
+//
+// @param request - ListApplicationTemplateRequest
+//
+// @return ListApplicationTemplateResponse
+func (client *Client) ListApplicationTemplate(request *ListApplicationTemplateRequest) (_result *ListApplicationTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationTemplateResponse{}
+	_body, _err := client.ListApplicationTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the version update records of the built-in application signature library and returns the paging results in descending sequence of update time. Each record corresponds to an incremental update of the signature library and includes the list of application programs added or updated in this update.
+//
+// @param request - ListApplicationUpdateDynamicsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationUpdateDynamicsResponse
+func (client *Client) ListApplicationUpdateDynamicsWithOptions(request *ListApplicationUpdateDynamicsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationUpdateDynamicsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationUpdateDynamics"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationUpdateDynamicsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the version update records of the built-in application signature library and returns the paging results in descending sequence of update time. Each record corresponds to an incremental update of the signature library and includes the list of application programs added or updated in this update.
+//
+// @param request - ListApplicationUpdateDynamicsRequest
+//
+// @return ListApplicationUpdateDynamicsResponse
+func (client *Client) ListApplicationUpdateDynamics(request *ListApplicationUpdateDynamicsRequest) (_result *ListApplicationUpdateDynamicsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationUpdateDynamicsResponse{}
+	_body, _err := client.ListApplicationUpdateDynamicsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the applications in the built-in application signature library by using paging. Supports fuzzy match by application name, description, technology type, category name, and group name, exact filtering by application ID and category ID, and filtering by risk level. The query targets the global built-in application library regardless of the Alibaba Cloud account.
+//
+// @param request - ListApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsResponse
+func (client *Client) ListApplicationsWithOptions(request *ListApplicationsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationName) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.CategoryName) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Risk) {
+		query["Risk"] = request.Risk
+	}
+
+	if !dara.IsNil(request.Technology) {
+		query["Technology"] = request.Technology
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplications"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the applications in the built-in application signature library by using paging. Supports fuzzy match by application name, description, technology type, category name, and group name, exact filtering by application ID and category ID, and filtering by risk level. The query targets the global built-in application library regardless of the Alibaba Cloud account.
+//
+// @param request - ListApplicationsRequest
+//
+// @return ListApplicationsResponse
+func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.ListApplicationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the CA certificates for TLS inspection.
 //
 // @param request - ListTlsInspectCACertificatesRequest
@@ -19943,6 +21354,166 @@ func (client *Client) ListTlsInspectCACertificates(request *ListTlsInspectCACert
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListTlsInspectCACertificatesResponse{}
 	_body, _err := client.ListTlsInspectCACertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the web filtering rules. Supports paging and exact filtering by web filtering template ID, rule ID, and rule action.
+//
+// @param request - ListWebFilterRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebFilterRulesResponse
+func (client *Client) ListWebFilterRulesWithOptions(request *ListWebFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *ListWebFilterRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.WebFilterRuleId) {
+		query["WebFilterRuleId"] = request.WebFilterRuleId
+	}
+
+	if !dara.IsNil(request.WebFilterTemplateId) {
+		query["WebFilterTemplateId"] = request.WebFilterTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWebFilterRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWebFilterRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the web filtering rules. Supports paging and exact filtering by web filtering template ID, rule ID, and rule action.
+//
+// @param request - ListWebFilterRulesRequest
+//
+// @return ListWebFilterRulesResponse
+func (client *Client) ListWebFilterRules(request *ListWebFilterRulesRequest) (_result *ListWebFilterRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWebFilterRulesResponse{}
+	_body, _err := client.ListWebFilterRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the web filtering templates under the current Alibaba Cloud account by using paging. Supports fuzzy search by name and description, exact filtering by status, and batch exact filtering by template IDs.
+//
+// @param request - ListWebFilterTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebFilterTemplatesResponse
+func (client *Client) ListWebFilterTemplatesWithOptions(request *ListWebFilterTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListWebFilterTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WebFilterTemplateIds) {
+		query["WebFilterTemplateIds"] = request.WebFilterTemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWebFilterTemplates"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWebFilterTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the web filtering templates under the current Alibaba Cloud account by using paging. Supports fuzzy search by name and description, exact filtering by status, and batch exact filtering by template IDs.
+//
+// @param request - ListWebFilterTemplatesRequest
+//
+// @return ListWebFilterTemplatesResponse
+func (client *Client) ListWebFilterTemplates(request *ListWebFilterTemplatesRequest) (_result *ListWebFilterTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWebFilterTemplatesResponse{}
+	_body, _err := client.ListWebFilterTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20451,11 +22022,15 @@ func (client *Client) ModifyControlPolicyPosition(request *ModifyControlPolicyPo
 //
 // Description:
 //
-// You can call this operation to modify the priority of an access control policy. An access control policy determines whether to allow, deny, or monitor traffic that passes through Cloud Firewall.
+// This operation is typically used to modify the configuration of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
-// ## QPS limit
+// ## Before you begin
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second per user. Exceeding this limit triggers throttling, which may affect your business. We recommend that you plan your calls accordingly.
+// Before calling this operation, call DescribeControlPolicy and pass the same Direction parameter to obtain the current policy list and the number of policies. This helps you determine the valid value range of the Order parameter, which is from 1 to the number of policies.
+//
+// ## Rate limit
+//
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - ModifyControlPolicyPriorityRequest
 //
@@ -20507,11 +22082,15 @@ func (client *Client) ModifyControlPolicyPriorityWithOptions(request *ModifyCont
 //
 // Description:
 //
-// You can call this operation to modify the priority of an access control policy. An access control policy determines whether to allow, deny, or monitor traffic that passes through Cloud Firewall.
+// This operation is typically used to modify the configuration of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
-// ## QPS limit
+// ## Before you begin
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second per user. Exceeding this limit triggers throttling, which may affect your business. We recommend that you plan your calls accordingly.
+// Before calling this operation, call DescribeControlPolicy and pass the same Direction parameter to obtain the current policy list and the number of policies. This helps you determine the valid value range of the Order parameter, which is from 1 to the number of policies.
+//
+// ## Rate limit
+//
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - ModifyControlPolicyPriorityRequest
 //
@@ -20725,7 +22304,19 @@ func (client *Client) ModifyDnsFirewallPolicy(request *ModifyDnsFirewallPolicyRe
 
 // Summary:
 //
-// Enables or disables a routing policy.
+// Modifies the route policy switch.
+//
+// Description:
+//
+// This operation modifies the route policy switch of the virtual private cloud (VPC) firewalls for a transit router (TR).
+//
+// ## Before you begin
+//
+// - You have created virtual private cloud (VPC) firewalls for a transit router (TR) and obtained the FirewallId by calling CreateTrFirewallV2.
+//
+// - You have created a route policy and obtained the TrFirewallRoutePolicyId by calling CreateTrFirewallV2RoutePolicy.
+//
+// - You can call DescribeTrFirewallsV2List and DescribeTrFirewallV2RoutePolicyList to query and confirm the preceding resources.
 //
 // @param request - ModifyFirewallV2RoutePolicySwitchRequest
 //
@@ -20785,7 +22376,19 @@ func (client *Client) ModifyFirewallV2RoutePolicySwitchWithOptions(request *Modi
 
 // Summary:
 //
-// Enables or disables a routing policy.
+// Modifies the route policy switch.
+//
+// Description:
+//
+// This operation modifies the route policy switch of the virtual private cloud (VPC) firewalls for a transit router (TR).
+//
+// ## Before you begin
+//
+// - You have created virtual private cloud (VPC) firewalls for a transit router (TR) and obtained the FirewallId by calling CreateTrFirewallV2.
+//
+// - You have created a route policy and obtained the TrFirewallRoutePolicyId by calling CreateTrFirewallV2RoutePolicy.
+//
+// - You can call DescribeTrFirewallsV2List and DescribeTrFirewallV2RoutePolicyList to query and confirm the preceding resources.
 //
 // @param request - ModifyFirewallV2RoutePolicySwitchRequest
 //
@@ -20967,7 +22570,11 @@ func (client *Client) ModifyIpsRules(request *ModifyIpsRulesRequest) (_result *M
 
 // Summary:
 //
-// Resets IPS rules to default.
+// Restores IPS rules to default.
+//
+// Description:
+//
+// Restores user-defined intrusion prevention system (IPS) rules to the system defaults by deleting user override records. After restoration, the rules follow the default values of the rule library. This operation uses the FirewallType parameter to determine the scope and input constraints:\\n- **InternetFirewall / VpcFirewall**: The scope is the entire account. RuleType is required. You must specify at least one of Rules or AttackApp.\\n- **NatFirewall**: The scope is a single NAT firewall instance specified by ProxyId. RuleType is optional. Both Rules and AttackApp are optional.\\nThe two branches handle an empty array for Rules differently. For the Internet or VPC firewall, passing [] is equivalent to restoring all rules of the specified RuleType. For the NAT firewall, passing [] returns a 400 ErrorParameters error. To restore all rules for a NAT firewall, do not pass the Rules parameter.
 //
 // @param request - ModifyIpsRulesToDefaultRequest
 //
@@ -20996,6 +22603,10 @@ func (client *Client) ModifyIpsRulesToDefaultWithOptions(request *ModifyIpsRules
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ProxyId) {
+		query["ProxyId"] = request.ProxyId
 	}
 
 	if !dara.IsNil(request.RuleType) {
@@ -21035,7 +22646,11 @@ func (client *Client) ModifyIpsRulesToDefaultWithOptions(request *ModifyIpsRules
 
 // Summary:
 //
-// Resets IPS rules to default.
+// Restores IPS rules to default.
+//
+// Description:
+//
+// Restores user-defined intrusion prevention system (IPS) rules to the system defaults by deleting user override records. After restoration, the rules follow the default values of the rule library. This operation uses the FirewallType parameter to determine the scope and input constraints:\\n- **InternetFirewall / VpcFirewall**: The scope is the entire account. RuleType is required. You must specify at least one of Rules or AttackApp.\\n- **NatFirewall**: The scope is a single NAT firewall instance specified by ProxyId. RuleType is optional. Both Rules and AttackApp are optional.\\nThe two branches handle an empty array for Rules differently. For the Internet or VPC firewall, passing [] is equivalent to restoring all rules of the specified RuleType. For the NAT firewall, passing [] returns a 400 ErrorParameters error. To restore all rules for a NAT firewall, do not pass the Rules parameter.
 //
 // @param request - ModifyIpsRulesToDefaultRequest
 //
@@ -21289,7 +22904,21 @@ func (client *Client) ModifyNatFirewallControlPolicyPosition(request *ModifyNatF
 
 // Summary:
 //
-// Modifies the operations of an object group.
+// Modifies object group operations.
+//
+// Description:
+//
+// ## Before you begin
+//
+// - Before you call this operation, you must activate a Cloud Firewall instance.
+//
+// - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the activation status. The UserStatus field in the response indicates whether the Cloud Firewall instance is valid. A value of false indicates that the instance is invalid or not activated.
+//
+// - Activate a Cloud Firewall instance:
+//
+//   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
+//
+//   - International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl
 //
 // @param request - ModifyObjectGroupOperationRequest
 //
@@ -21357,7 +22986,21 @@ func (client *Client) ModifyObjectGroupOperationWithOptions(request *ModifyObjec
 
 // Summary:
 //
-// Modifies the operations of an object group.
+// Modifies object group operations.
+//
+// Description:
+//
+// ## Before you begin
+//
+// - Before you call this operation, you must activate a Cloud Firewall instance.
+//
+// - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the activation status. The UserStatus field in the response indicates whether the Cloud Firewall instance is valid. A value of false indicates that the instance is invalid or not activated.
+//
+// - Activate a Cloud Firewall instance:
+//
+//   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
+//
+//   - International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl
 //
 // @param request - ModifyObjectGroupOperationRequest
 //
@@ -23109,7 +24752,7 @@ func (client *Client) ModifyVpcFirewallDefaultIPSConfig(request *ModifyVpcFirewa
 
 // Summary:
 //
-// Modifies the intrusion prevention system (IPS) whitelist for a VPC firewall.
+// Modifies the IPS whitelist for a VPC firewall. Before calling this operation, ensure that Cloud Firewall is activated. You can check the activation status by using the UserStatus parameter returned by the DescribeUserBuyVersion operation. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - ModifyVpcFirewallIPSWhitelistRequest
 //
@@ -23173,7 +24816,7 @@ func (client *Client) ModifyVpcFirewallIPSWhitelistWithOptions(request *ModifyVp
 
 // Summary:
 //
-// Modifies the intrusion prevention system (IPS) whitelist for a VPC firewall.
+// Modifies the IPS whitelist for a VPC firewall. Before calling this operation, ensure that Cloud Firewall is activated. You can check the activation status by using the UserStatus parameter returned by the DescribeUserBuyVersion operation. A value of false indicates that Cloud Firewall is not activated.
 //
 // @param request - ModifyVpcFirewallIPSWhitelistRequest
 //
@@ -24136,8 +25779,16 @@ func (client *Client) SwitchSecurityProxyWithOptions(request *SwitchSecurityProx
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.NatRouteEntryList) {
+		query["NatRouteEntryList"] = request.NatRouteEntryList
+	}
+
 	if !dara.IsNil(request.ProxyId) {
 		query["ProxyId"] = request.ProxyId
+	}
+
+	if !dara.IsNil(request.RouteAction) {
+		query["RouteAction"] = request.RouteAction
 	}
 
 	if !dara.IsNil(request.Switch) {
@@ -24331,9 +25982,9 @@ func (client *Client) UpdateAckClusterConnector(request *UpdateAckClusterConnect
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - UpdateAclCheckDetailStatusRequest
 //
@@ -24393,9 +26044,9 @@ func (client *Client) UpdateAclCheckDetailStatusWithOptions(request *UpdateAclCh
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - UpdateAclCheckDetailStatusRequest
 //
@@ -24404,6 +26055,256 @@ func (client *Client) UpdateAclCheckDetailStatus(request *UpdateAclCheckDetailSt
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAclCheckDetailStatusResponse{}
 	_body, _err := client.UpdateAclCheckDetailStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies custom application rules in batches. You can modify up to 20 rules at a time. The template to which a rule belongs is queried based on the rule ID, so you do not need to specify the template ID.
+//
+// @param tmpReq - UpdateApplicationCustomRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationCustomRulesResponse
+func (client *Client) UpdateApplicationCustomRulesWithOptions(tmpReq *UpdateApplicationCustomRulesRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationCustomRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateApplicationCustomRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Rules) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, dara.String("Rules"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RulesShrink) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationCustomRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationCustomRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies custom application rules in batches. You can modify up to 20 rules at a time. The template to which a rule belongs is queried based on the rule ID, so you do not need to specify the template ID.
+//
+// @param request - UpdateApplicationCustomRulesRequest
+//
+// @return UpdateApplicationCustomRulesResponse
+func (client *Client) UpdateApplicationCustomRules(request *UpdateApplicationCustomRulesRequest) (_result *UpdateApplicationCustomRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationCustomRulesResponse{}
+	_body, _err := client.UpdateApplicationCustomRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the name, switch status, action for unidentified applications, or custom actions for built-in applications of an application template. The template ID must belong to the current Alibaba Cloud account.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
+//
+// @param tmpReq - UpdateApplicationTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationTemplateResponse
+func (client *Client) UpdateApplicationTemplateWithOptions(tmpReq *UpdateApplicationTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateApplicationTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AddBuiltInApplicationCustomActions) {
+		request.AddBuiltInApplicationCustomActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddBuiltInApplicationCustomActions, dara.String("AddBuiltInApplicationCustomActions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RemoveBuiltInApplicationCustomActions) {
+		request.RemoveBuiltInApplicationCustomActionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RemoveBuiltInApplicationCustomActions, dara.String("RemoveBuiltInApplicationCustomActions"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddBuiltInApplicationCustomActionsShrink) {
+		query["AddBuiltInApplicationCustomActions"] = request.AddBuiltInApplicationCustomActionsShrink
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateName) {
+		query["ApplicationTemplateName"] = request.ApplicationTemplateName
+	}
+
+	if !dara.IsNil(request.BuiltInApplicationStatus) {
+		query["BuiltInApplicationStatus"] = request.BuiltInApplicationStatus
+	}
+
+	if !dara.IsNil(request.CustomRuleStatus) {
+		query["CustomRuleStatus"] = request.CustomRuleStatus
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RemoveBuiltInApplicationCustomActionsShrink) {
+		query["RemoveBuiltInApplicationCustomActions"] = request.RemoveBuiltInApplicationCustomActionsShrink
+	}
+
+	if !dara.IsNil(request.TemplateStatus) {
+		query["TemplateStatus"] = request.TemplateStatus
+	}
+
+	if !dara.IsNil(request.UnknownAction) {
+		query["UnknownAction"] = request.UnknownAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the name, switch status, action for unidentified applications, or custom actions for built-in applications of an application template. The template ID must belong to the current Alibaba Cloud account.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
+//
+// @param request - UpdateApplicationTemplateRequest
+//
+// @return UpdateApplicationTemplateResponse
+func (client *Client) UpdateApplicationTemplate(request *UpdateApplicationTemplateRequest) (_result *UpdateApplicationTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationTemplateResponse{}
+	_body, _err := client.UpdateApplicationTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the application control or web filtering feature for the current Alibaba Cloud account. Only enabling is supported. This feature cannot be enabled for Finance Cloud Free Edition or pay-as-you-go 1.0 instances.
+//
+// @param request - UpdateFirewallFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFirewallFeatureResponse
+func (client *Client) UpdateFirewallFeatureWithOptions(request *UpdateFirewallFeatureRequest, runtime *dara.RuntimeOptions) (_result *UpdateFirewallFeatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FeatureName) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFirewallFeature"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFirewallFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the application control or web filtering feature for the current Alibaba Cloud account. Only enabling is supported. This feature cannot be enabled for Finance Cloud Free Edition or pay-as-you-go 1.0 instances.
+//
+// @param request - UpdateFirewallFeatureRequest
+//
+// @return UpdateFirewallFeatureResponse
+func (client *Client) UpdateFirewallFeature(request *UpdateFirewallFeatureRequest) (_result *UpdateFirewallFeatureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateFirewallFeatureResponse{}
+	_body, _err := client.UpdateFirewallFeatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24688,6 +26589,148 @@ func (client *Client) UpdateSecurityProxy(request *UpdateSecurityProxyRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateSecurityProxyResponse{}
 	_body, _err := client.UpdateSecurityProxyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the actions and match conditions of web filtering rules in batches. You can update up to 20 rules at a time. The rule IDs in the list must be unique.
+//
+// @param tmpReq - UpdateWebFilterRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebFilterRulesResponse
+func (client *Client) UpdateWebFilterRulesWithOptions(tmpReq *UpdateWebFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebFilterRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateWebFilterRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Rules) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, dara.String("Rules"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RulesShrink) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWebFilterRules"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWebFilterRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the actions and match conditions of web filtering rules in batches. You can update up to 20 rules at a time. The rule IDs in the list must be unique.
+//
+// @param request - UpdateWebFilterRulesRequest
+//
+// @return UpdateWebFilterRulesResponse
+func (client *Client) UpdateWebFilterRules(request *UpdateWebFilterRulesRequest) (_result *UpdateWebFilterRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWebFilterRulesResponse{}
+	_body, _err := client.UpdateWebFilterRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the name, status, or description of a web filtering template. The template ID must belong to the current Alibaba Cloud account.
+//
+// @param request - UpdateWebFilterTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebFilterTemplateResponse
+func (client *Client) UpdateWebFilterTemplateWithOptions(request *UpdateWebFilterTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebFilterTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WebFilterTemplateId) {
+		query["WebFilterTemplateId"] = request.WebFilterTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWebFilterTemplate"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWebFilterTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the name, status, or description of a web filtering template. The template ID must belong to the current Alibaba Cloud account.
+//
+// @param request - UpdateWebFilterTemplateRequest
+//
+// @return UpdateWebFilterTemplateResponse
+func (client *Client) UpdateWebFilterTemplate(request *UpdateWebFilterTemplateRequest) (_result *UpdateWebFilterTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWebFilterTemplateResponse{}
+	_body, _err := client.UpdateWebFilterTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

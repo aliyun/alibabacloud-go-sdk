@@ -46,7 +46,7 @@ type DescribeAccessInstanceVSwitchListResponseBody struct {
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of zones.
+	// The zones.
 	Zones []*DescribeAccessInstanceVSwitchListResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *DescribeAccessInstanceVSwitchListResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceVSwitchListResponseBodyZones struct {
-	// The list of vSwitches.
+	// The vSwitches.
 	VSwitchList []*DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
@@ -179,13 +179,13 @@ type DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList struct {
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// Indicates whether the vSwitch is in a VPC that is managed by Cloud Firewall.
+	// Indicates whether the VPC is managed by a firewall.
 	//
 	// example:
 	//
 	// false
 	FirewallVSwitch *bool `json:"FirewallVSwitch,omitempty" xml:"FirewallVSwitch,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//

@@ -24,11 +24,11 @@ type iDescribeBatchSlsDispatchStatusResponseBody interface {
 }
 
 type DescribeBatchSlsDispatchStatusResponseBody struct {
-	// The detailed information list of Logstores.
+	// The list of Logstore details.
 	InfoList []*DescribeBatchSlsDispatchStatusResponseBodyInfoList `json:"InfoList,omitempty" xml:"InfoList,omitempty" type:"Repeated"`
 	// The list of log services.
 	ItemList []*DescribeBatchSlsDispatchStatusResponseBodyItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
-	// The log version. A value of 1 indicates only one Logstore, and a value of 2 indicates two Logstores.
+	// The log version. A value of 1 indicates one Logstore, and a value of 2 indicates two Logstores.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeBatchSlsDispatchStatusResponseBody struct {
 	//
 	// cloudfirewallnew-project-199053910542****-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The request ID of the returned result.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeBatchSlsDispatchStatusResponseBodyInfoList struct {
 	//
 	// cloudfirewall-project-1204872307283650-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The site. A value of cn represents the Chinese mainland, intl represents regions outside the Chinese mainland, and global represents global.
+	// The site. A value of cn indicates the Chinese mainland, intl indicates regions outside the Chinese mainland, and global indicates global.
 	//
 	// example:
 	//
@@ -225,13 +225,13 @@ type DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList struct {
 	//
 	// success_finished
 	ConfigStatus *string `json:"ConfigStatus,omitempty" xml:"ConfigStatus,omitempty"`
-	// The Chinese name of the delivery type.
+	// The name of the delivery type.
 	//
 	// example:
 	//
 	// internet-traffic-log
 	DispatchName *string `json:"DispatchName,omitempty" xml:"DispatchName,omitempty"`
-	// The key for classified logs. Valid values:
+	// The log classification key. Valid values:
 	//
 	// **internet_log**
 	//
@@ -247,15 +247,15 @@ type DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList struct {
 	//
 	// ipv6_firewall_log
 	DispatchValue *string `json:"DispatchValue,omitempty" xml:"DispatchValue,omitempty"`
-	// The switch status of the delivery type.
+	// The enablement status of the delivery type.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The detailed delivery configurations for the Internet and VPC.
+	// The detailed delivery configuration for the Internet and VPC firewalls.
 	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
-	// The value is fixed as log_type and can be ignored.
+	// The name of the search type. This parameter is fixed as log_type and can be ignored.
 	//
 	// example:
 	//
@@ -336,13 +336,13 @@ type DescribeBatchSlsDispatchStatusResponseBodyItemList struct {
 	//
 	// success_finished
 	ConfigStatus *string `json:"ConfigStatus,omitempty" xml:"ConfigStatus,omitempty"`
-	// The delivery name.
+	// The name of the delivery type.
 	//
 	// example:
 	//
 	// internet-traffic-log
 	DispatchName *string `json:"DispatchName,omitempty" xml:"DispatchName,omitempty"`
-	// The value of the delivery log.
+	// The value of the log classification.
 	//
 	// example:
 	//
@@ -354,9 +354,9 @@ type DescribeBatchSlsDispatchStatusResponseBodyItemList struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The supported filter conditions.
+	// The supported filter conditions for the Internet and VPC firewalls.
 	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
-	// The name of the search type.
+	// The name of the search type. This parameter is fixed as log_type and can be ignored.
 	//
 	// example:
 	//

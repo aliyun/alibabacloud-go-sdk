@@ -24,7 +24,7 @@ type iDescribeACLProtectTrendRequest interface {
 }
 
 type DescribeACLProtectTrendRequest struct {
-	// The end time of the query. The value is a UNIX timestamp in seconds.
+	// The end time of the query. Specify the time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -32,17 +32,17 @@ type DescribeACLProtectTrendRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the firewall border. Valid values:
 	//
-	// - **internet*	- (default): Internet Border firewall, which monitors traffic between the Internet and your assets.
+	// - **internet*	- (default): the Internet Border firewall.
 	//
-	// - **vpc**: virtual private cloud (VPC) firewalls, which monitor traffic between VPCs.
+	// - **vpc**: virtual private cloud (VPC) firewalls.
 	//
-	// - **nat**: NAT firewalls, which monitor traffic from internal-facing assets to the Internet.
+	// - **nat**: NAT firewalls.
 	//
 	// example:
 	//
 	// vpc
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The time aggregation granularity for trend data, in seconds. Valid values:
+	// The time aggregation granularity of the trend data, in seconds. Valid values:
 	//
 	// - **60**: 1-minute granularity (uses the minute-level detail table).
 	//
@@ -68,13 +68,13 @@ type DescribeACLProtectTrendRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// 223.95.87.130
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time of the query. The value is a UNIX timestamp in seconds.
+	// The start time of the query. Specify the time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//

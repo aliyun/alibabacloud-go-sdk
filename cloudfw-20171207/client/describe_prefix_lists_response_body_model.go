@@ -16,7 +16,7 @@ type iDescribePrefixListsResponseBody interface {
 }
 
 type DescribePrefixListsResponseBody struct {
-	// An array of prefix lists.
+	// The array of prefix list information.
 	PrefixList []*DescribePrefixListsResponseBodyPrefixList `json:"PrefixList,omitempty" xml:"PrefixList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -68,9 +68,9 @@ func (s *DescribePrefixListsResponseBody) Validate() error {
 type DescribePrefixListsResponseBodyPrefixList struct {
 	// The address family of the prefix list. Valid values:
 	//
-	// - IPv4.
+	// - IPv4
 	//
-	// - IPv6.
+	// - IPv6
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDescribeAclCheckRequest interface {
 }
 
 type DescribeAclCheckRequest struct {
-	// The language of the response.
+	// The language in which messages are received.
 	//
 	// example:
 	//

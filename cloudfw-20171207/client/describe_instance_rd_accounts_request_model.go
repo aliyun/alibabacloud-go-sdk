@@ -32,13 +32,13 @@ type DescribeInstanceRdAccountsRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language type for the request and response messages.
+	// The language of the request and response messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The remarks of the Cloud Firewall member accounts.
+	// The description of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeInstanceRdAccountsRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IP address of the requester.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DescribeCtrlInstanceMemberAccountsResponseBody struct {
 	//
 	// 3
 	InstanceMemberCount *int64 `json:"InstanceMemberCount,omitempty" xml:"InstanceMemberCount,omitempty"`
-	// The maximum number of member accounts supported by Cloud Firewall.
+	// The maximum quota for Cloud Firewall member accounts.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type AddDnsFirewallPolicyResponseBody struct {
 	//
 	// f88dae6f-XXX-XXX-613de9ab2be8
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

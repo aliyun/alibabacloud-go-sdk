@@ -18,9 +18,9 @@ type iDescribeInternetOpenServiceResponseBody interface {
 }
 
 type DescribeInternetOpenServiceResponseBody struct {
-	// The list of data.
+	// The data list.
 	DataList []*DescribeInternetOpenServiceResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The paging information.
+	// The pagination information.
 	PageInfo *DescribeInternetOpenServiceResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -104,13 +104,13 @@ type DescribeInternetOpenServiceResponseBodyDataList struct {
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The list of open ports.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	// The security threat.
+	// The security risk.
 	//
 	// example:
 	//
 	// test
 	ProbRisk *string `json:"ProbRisk,omitempty" xml:"ProbRisk,omitempty"`
-	// The description of the security threat.
+	// The description of the security risk.
 	//
 	// example:
 	//
@@ -122,19 +122,19 @@ type DescribeInternetOpenServiceResponseBodyDataList struct {
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of exposed public IP addresses.
+	// The number of open public IP addresses.
 	//
 	// example:
 	//
 	// 3
 	PublicIpNum *int32 `json:"PublicIpNum,omitempty" xml:"PublicIpNum,omitempty"`
-	// The risk level.
+	// The risk level. Valid values: -1: Evaluating. 0: None. 1: Low. 2: Medium. 3: High. If you do not specify this parameter, all risk levels are queried.
 	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The description of the risk.
+	// The risk description.
 	//
 	// example:
 	//
@@ -158,25 +158,25 @@ type DescribeInternetOpenServiceResponseBodyDataList struct {
 	//
 	// 621404
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The traffic percentage over the last 24 hours.
+	// The traffic proportion in the last 1 day.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	// The traffic percentage over the last 30 days.
+	// The traffic proportion in the last 30 days.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	// The traffic percentage over the last 7 days.
+	// The traffic proportion in the last 7 days.
 	//
 	// example:
 	//
 	// 77
 	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	// The reason why the protocol is not identified if the detected protocol is \\`Unknown\\`.
+	// The reason why the protocol is not identified when the protocol is recognized as Unknown.
 	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
@@ -352,7 +352,7 @@ type DescribeInternetOpenServiceResponseBodyPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The score.
 	//
 	// example:
 	//

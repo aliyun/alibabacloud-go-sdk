@@ -16,7 +16,7 @@ type iDescribeInstanceRiskLevelsResponseBody interface {
 }
 
 type DescribeInstanceRiskLevelsResponseBody struct {
-	// The list of instance threats.
+	// The list of instance risks.
 	InstanceRisks []*DescribeInstanceRiskLevelsResponseBodyInstanceRisks `json:"InstanceRisks,omitempty" xml:"InstanceRisks,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,7 +66,7 @@ func (s *DescribeInstanceRiskLevelsResponseBody) Validate() error {
 }
 
 type DescribeInstanceRiskLevelsResponseBodyInstanceRisks struct {
-	// The list of threats for the ECS instances.
+	// The list of ECS instance risks.
 	Details []*DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// The ID of the Cloud Firewall instance.
 	//
@@ -74,9 +74,9 @@ type DescribeInstanceRiskLevelsResponseBodyInstanceRisks struct {
 	//
 	// vipcloudfw-cn-7mz2fj8nm0u
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The threat level. Valid value:
+	// The risk level. Valid values:
 	//
-	// - **medium**: medium
+	// - **medium**: Medium
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails struct {
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The threat level. Valid value:
+	// The risk level. Valid values:
 	//
-	// - **medium**: medium
+	// - **medium**: Medium
 	//
 	// example:
 	//

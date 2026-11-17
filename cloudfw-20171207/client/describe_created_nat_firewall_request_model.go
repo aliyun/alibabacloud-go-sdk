@@ -22,7 +22,7 @@ type DescribeCreatedNatFirewallRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the requester.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

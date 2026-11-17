@@ -15,6 +15,8 @@ type iModifyIpsRulesToDefaultRequest interface {
 	GetFirewallType() *string
 	SetLang(v string) *ModifyIpsRulesToDefaultRequest
 	GetLang() *string
+	SetProxyId(v string) *ModifyIpsRulesToDefaultRequest
+	GetProxyId() *string
 	SetRuleType(v string) *ModifyIpsRulesToDefaultRequest
 	GetRuleType() *string
 	SetRules(v string) *ModifyIpsRulesToDefaultRequest
@@ -30,17 +32,17 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// PHP
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
-	// The type of the cloud firewall. Valid values:
+	// The Cloud Firewall type. Valid values:
 	//
-	// - **VpcFirewall**: virtual private cloud (VPC) firewalls.
+	// - **VpcFirewall**: virtual private cloud (VPC) firewall
 	//
-	// - **InternetFirewall*	- (default): the Internet border firewall.
+	// - **InternetFirewall*	- (default): the Internet firewall
 	//
 	// example:
 	//
 	// InternetFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The language of the content. Valid values:
+	// The language type. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -50,19 +52,23 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Instance ID of the NAT firewall instance. This parameter is required only when FirewallType is set to **NatFirewall**. In this case, the scope is the rules under this instance. This parameter is ignored for Internet and VPC firewalls. You can call the [ListNatFirewallIpsConfigs](https://help.aliyun.com/document_detail/2879296.html) operation to query instance ID.
+	//
+	// example:
+	//
+	// proxy-nat53f4bbc233234271a1d7
+	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
 	// The rule type. Valid values:
 	//
 	// - **basicRule**
 	//
 	// - **customize**
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The rule list. Conditional requirement: when RuleType is set to customize, you must specify at least one of this parameter or AttackApp. If you specify only RuleType without Rules or AttackApp, the API returns ErrorParameters.
+	// The list of rules. This parameter is conditionally required: when RuleType is set to customize, you must specify at least one of this parameter or AttackApp. If you specify only RuleType without Rules or AttackApp, the API returns an ErrorParameters error.
 	//
 	// example:
 	//
@@ -74,7 +80,7 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// ]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
@@ -102,6 +108,10 @@ func (s *ModifyIpsRulesToDefaultRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ModifyIpsRulesToDefaultRequest) GetProxyId() *string {
+	return s.ProxyId
+}
+
 func (s *ModifyIpsRulesToDefaultRequest) GetRuleType() *string {
 	return s.RuleType
 }
@@ -126,6 +136,11 @@ func (s *ModifyIpsRulesToDefaultRequest) SetFirewallType(v string) *ModifyIpsRul
 
 func (s *ModifyIpsRulesToDefaultRequest) SetLang(v string) *ModifyIpsRulesToDefaultRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ModifyIpsRulesToDefaultRequest) SetProxyId(v string) *ModifyIpsRulesToDefaultRequest {
+	s.ProxyId = &v
 	return s
 }
 

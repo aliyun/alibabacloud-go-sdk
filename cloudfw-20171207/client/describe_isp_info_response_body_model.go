@@ -87,7 +87,7 @@ type DescribeIspInfoResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// isp-dhyw2lxfpc****
+	// 1000323
 	IspId *int32 `json:"IspId,omitempty" xml:"IspId,omitempty"`
 	// The ISP name.
 	//

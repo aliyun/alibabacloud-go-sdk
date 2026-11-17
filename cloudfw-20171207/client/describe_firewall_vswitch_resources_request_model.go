@@ -28,7 +28,7 @@ type DescribeFirewallVswitchResourcesRequest struct {
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The language of the response message.
+	// The language in which messages are received.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeFirewallVswitchResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC instance ID.
 	//
 	// This parameter is required.
 	//

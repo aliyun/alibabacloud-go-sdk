@@ -18,7 +18,7 @@ type iCreateAclCheckRequest interface {
 }
 
 type CreateAclCheckRequest struct {
-	// The ACL check type.
+	// The type of the ACL check.
 	//
 	// This parameter is required.
 	//
@@ -27,8 +27,10 @@ type CreateAclCheckRequest struct {
 	// Internet
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The list of ACL check names.
+	//
+	// **Note**: This parameter is required in actual calls. Provide at least one check name. If no check name is provided, the API returns ErrorParameters (-200103).
 	CheckNames []*string `json:"CheckNames,omitempty" xml:"CheckNames,omitempty" type:"Repeated"`
-	// The language of the request and response.
+	// The language type of the request and response messages.
 	//
 	// example:
 	//

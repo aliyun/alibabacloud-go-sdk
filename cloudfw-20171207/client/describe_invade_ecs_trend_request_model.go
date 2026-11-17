@@ -20,25 +20,25 @@ type iDescribeInvadeEcsTrendRequest interface {
 }
 
 type DescribeInvadeEcsTrendRequest struct {
-	// The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1733796528
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language for receiving messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 120.230.45.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. This is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

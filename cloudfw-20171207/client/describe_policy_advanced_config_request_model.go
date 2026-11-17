@@ -28,7 +28,7 @@ type DescribePolicyAdvancedConfigRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the requester.
+	// The source IP address of the request.
 	//
 	// example:
 	//

@@ -79,7 +79,7 @@ func (s *DescribeAccessInstanceZoneListResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceZoneListResponseBodyZones struct {
-	// The name of the zone in the local language.
+	// The local name of the zone.
 	//
 	// example:
 	//

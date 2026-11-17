@@ -28,7 +28,7 @@ type DescribeAclBackupListRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the response.
+	// The language type for receiving messages.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAclBackupListRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//

@@ -46,55 +46,55 @@ type iDescribeInternetOpenDetailRequest interface {
 }
 
 type DescribeInternetOpenDetailRequest struct {
-	// The ID of the asset. Fuzzy search is supported.
+	// The asset ID. Supports fuzzy search.
 	//
 	// example:
 	//
 	// i-uf6faknmuby7ezht****
 	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	// The name of the asset. Fuzzy search is supported.
+	// The asset name. Supports fuzzy search.
 	//
 	// example:
 	//
 	// instance_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// The type of the asset for an exact match. If you leave this parameter empty, all asset types are queried.
+	// The asset type. Supports exact match. If not specified, all asset types are queried.
 	//
 	// example:
 	//
 	// EcsPublicIP
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1745251200
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The port for an exact match. The value must be an integer from 1 to 65535. If you leave this parameter empty, all ports are queried.
+	// The port number. Supports exact match for ports from 1 to 65535. If not specified, all ports are queried.
 	//
 	// example:
 	//
 	// 9100
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The public IP address for an exact match. If you leave this parameter empty, all public IP addresses are queried.
+	// The public IP address. Supports exact match. If not specified, all public IP addresses are queried.
 	//
 	// example:
 	//
@@ -106,33 +106,33 @@ type DescribeInternetOpenDetailRequest struct {
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The risk level. If you leave this parameter empty, all risk levels are queried.
+	// The risk level. If not specified, all risk levels are queried.
 	//
 	// example:
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The name of the application for an exact match. If you leave this parameter empty, all applications are queried.
+	// The application name. Supports exact match. If not specified, all applications are queried.
 	//
 	// example:
 	//
 	// SMB
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The name of the application for a fuzzy match. If you leave this parameter empty, all applications are queried.
+	// The application name. Supports fuzzy match. If not specified, all applications are queried.
 	//
 	// example:
 	//
 	// SMB
 	ServiceNameFuzzy *string `json:"ServiceNameFuzzy,omitempty" xml:"ServiceNameFuzzy,omitempty"`
-	// The sorting conditions.
+	// The sort list.
 	SortList []*DescribeInternetOpenDetailRequestSortList `json:"SortList,omitempty" xml:"SortList,omitempty" type:"Repeated"`
-	// The source IP address of the access request.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 222.212.86.7XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -327,7 +327,7 @@ type DescribeInternetOpenDetailRequestSortList struct {
 	//
 	// asc
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The sorting key.
+	// The sort field.
 	//
 	// example:
 	//

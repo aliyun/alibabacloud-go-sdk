@@ -80,7 +80,7 @@ type DescribeAclCheckQuotaResponseBodyQuota struct {
 	//
 	// 2000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The time when the quota was last updated. This value is a UNIX timestamp. Unit: seconds.
+	// The last update time of the quota. Unit: seconds.
 	//
 	// example:
 	//

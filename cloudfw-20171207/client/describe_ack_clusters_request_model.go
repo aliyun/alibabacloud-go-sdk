@@ -40,19 +40,19 @@ type DescribeAckClustersRequest struct {
 	//
 	// ack-cluster-name
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The specification of the ACK cluster.
+	// The specifications of the ACK cluster.
 	//
 	// example:
 	//
 	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The status of the ACK cluster connector.
+	// The instance status of the connector in the ACK cluster.
 	//
 	// example:
 	//
 	// ready
 	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
-	// The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
+	// The Alibaba Cloud account ID to which the ACK cluster resources belong.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeAckClustersRequest struct {
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// This parameter is required.
 	//

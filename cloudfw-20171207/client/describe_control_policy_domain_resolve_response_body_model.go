@@ -16,7 +16,7 @@ type iDescribeControlPolicyDomainResolveResponseBody interface {
 }
 
 type DescribeControlPolicyDomainResolveResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeControlPolicyDomainResolveResponseBodyResolveResult struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The list of IP addresses.
+	// The IP address list.
 	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
 	// The supported IP address version.
 	//

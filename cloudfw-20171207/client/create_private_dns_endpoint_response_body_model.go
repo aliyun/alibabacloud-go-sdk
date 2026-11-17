@@ -30,7 +30,7 @@ type CreatePrivateDnsEndpointResponseBody struct {
 	//
 	// 850A84D6************00090125EEB1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID, which is the unique identifier of the task.
+	// The task ID, which uniquely identifies the task.
 	//
 	// example:
 	//

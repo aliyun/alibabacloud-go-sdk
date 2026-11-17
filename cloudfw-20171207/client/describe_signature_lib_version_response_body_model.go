@@ -89,7 +89,7 @@ type DescribeSignatureLibVersionResponseBodyVersion struct {
 	//
 	// ips
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The update time of the signature library version. The value is a UNIX timestamp accurate to seconds.
+	// The update time of the signature library version. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

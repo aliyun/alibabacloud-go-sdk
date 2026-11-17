@@ -26,13 +26,13 @@ type DescribeOutgoingRiskDomainAndIpCountResponseBody struct {
 	//
 	// EE258AC0-6EDD-5929-AB47-165E9B54****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of risk domain names.
+	// The number of risky domain names.
 	//
 	// example:
 	//
 	// 6
 	RiskDomainCount *int64 `json:"RiskDomainCount,omitempty" xml:"RiskDomainCount,omitempty"`
-	// The number of risk IP addresses.
+	// The number of risky IP addresses.
 	//
 	// example:
 	//

@@ -168,7 +168,7 @@ func (s *DescribePostpayBillResponseBody) Validate() error {
 }
 
 type DescribePostpayBillResponseBodyBillList struct {
-	// The end time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
+	// The end time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 0
 	IsDerated *int32 `json:"IsDerated,omitempty" xml:"IsDerated,omitempty"`
-	// The usage duration of Simple Log Service. Unit: TB × h.
+	// The usage duration of Simple Log Service. Unit: TB×h.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 2
 	NatTraffic *float32 `json:"NatTraffic,omitempty" xml:"NatTraffic,omitempty"`
-	// The usage duration of sensitive data leak detection. Unit: h.
+	// The usage duration of sensitive data leak detection. Unit: hours.
 	//
 	// example:
 	//
@@ -224,13 +224,13 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 1
 	SdlTraffic *float32 `json:"SdlTraffic,omitempty" xml:"SdlTraffic,omitempty"`
-	// The start time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
+	// The start time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
 	//
 	// example:
 	//
 	// 1710206070000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The usage duration of threat intelligence. Unit: h.
+	// The usage duration of threat intelligence. Unit: hours.
 	//
 	// example:
 	//

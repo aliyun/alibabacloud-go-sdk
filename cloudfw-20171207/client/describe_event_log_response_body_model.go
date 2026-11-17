@@ -18,7 +18,7 @@ type iDescribeEventLogResponseBody interface {
 }
 
 type DescribeEventLogResponseBody struct {
-	// The list of ISPs.
+	// The data list.
 	DataList []*DescribeEventLogResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -113,7 +113,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **VNC**
 	//
-	// - **ANY*	- (all application types)
+	// - **ANY**: All application types.
 	//
 	// example:
 	//
@@ -129,15 +129,15 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **1**: Abnormal connection.
 	//
-	// - **2**: Command execution.
+	// - **2**: execute commands.
 	//
-	// - **3**: Brute-force attack.
+	// - **3**: brute-force attacks.
 	//
-	// - **4**: Scanning.
+	// - **4**: Scan.
 	//
 	// - **5**: Other.
 	//
-	// - **6**: Information leakage.
+	// - **6**: Information leak.
 	//
 	// - **7**: DoS attack.
 	//
@@ -147,7 +147,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **10**: Trojan backdoor.
 	//
-	// - **11**: Viruses and worms.
+	// - **11**: Virus and worm.
 	//
 	// - **12**: Mining behavior.
 	//
@@ -167,7 +167,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The destination IP address that is queried. This indicates that the intrusion prevention event involves this destination IP address.
+	// The destination IP address. This indicates that the intrusion prevention event involves this destination IP address.
 	//
 	// example:
 	//
@@ -179,13 +179,13 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// 80
 	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	// The hit content.
+	// The matched content.
 	//
 	// example:
 	//
 	// www.example.com
 	HitContent *string `json:"HitContent,omitempty" xml:"HitContent,omitempty"`
-	// The hit type.
+	// The match type.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of the Cloud Firewall member account.
+	// The UID of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **1**: Basic protection.
 	//
-	// - **2**: Virtual patches.
+	// - **2**: Virtual Patches.
 	//
 	// - **4**: Threat intelligence.
 	//
@@ -237,13 +237,13 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// 0
 	RuleSource *int64 `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The SNI used when the TLS connection is established.
+	// The Server Name Indication (SNI) used when the TLS connection is established.
 	//
 	// example:
 	//
 	// www.example.com
 	Sni *string `json:"Sni,omitempty" xml:"Sni,omitempty"`
-	// The source IP address that is queried. This indicates that the intrusion prevention event involves this source IP address.
+	// The source IP address. This indicates that the intrusion prevention event involves this source IP address.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// 20206
 	SrcPort *int32 `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
-	// The cipher suite used for TLS handshake negotiation, such as TLS_AES_128_GCM_SHA256.
+	// The cipher suite negotiated during the TLS handshake, such as TLS_AES_128_GCM_SHA256.
 	//
 	// example:
 	//
@@ -267,13 +267,13 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// Certificate
 	SslErrorIndex *string `json:"SslErrorIndex,omitempty" xml:"SslErrorIndex,omitempty"`
-	// The reason why the TLS handshake fails, such as BAD_PACKET_LENGTH.
+	// The reason for the TLS handshake failure, such as BAD_PACKET_LENGTH.
 	//
 	// example:
 	//
 	// BAD_PACKET_LENGTH
 	SslErrorMsg *string `json:"SslErrorMsg,omitempty" xml:"SslErrorMsg,omitempty"`
-	// The TLS handshake result. For example, success indicates that the handshake is successful.
+	// The TLS handshake result. For example, success indicates a successful handshake.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// TLSv1.3
 	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
-	// The start time of the data. The value is a timestamp in seconds.
+	// The start time of the data. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1751423362
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The document path.
+	// The URL path.
 	//
 	// example:
 	//

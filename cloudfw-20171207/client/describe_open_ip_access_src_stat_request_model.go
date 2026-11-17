@@ -22,7 +22,7 @@ type iDescribeOpenIpAccessSrcStatRequest interface {
 }
 
 type DescribeOpenIpAccessSrcStatRequest struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type DescribeOpenIpAccessSrcStatRequest struct {
 	//
 	// 47.100.102.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DescribeAclWhitelistResponseBody struct {
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Not enabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAclWhitelistResponseBody struct {
 	//
 	// false
 	NatDomainGroupUseDns *bool `json:"NatDomainGroupUseDns,omitempty" xml:"NatDomainGroupUseDns,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -40,13 +40,13 @@ type DescribeInternetOpenServiceRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1753804800
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type DescribeInternetOpenServiceRequest struct {
 	//
 	// 2
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The name of the application for an exact match. If you do not specify this parameter, all applications are queried.
+	// The application name for exact match. If you do not specify this parameter, all applications are queried.
 	//
 	// example:
 	//
 	// SMB
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The name of the application for a fuzzy match. If you do not specify this parameter, all applications are queried.
+	// The application name for fuzzy match. If you do not specify this parameter, all applications are queried.
 	//
 	// example:
 	//
 	// SMB
 	ServiceNameFuzzy *string `json:"ServiceNameFuzzy,omitempty" xml:"ServiceNameFuzzy,omitempty"`
-	// The source IP address of the visitor.
+	// The originating IP address of the requester.
 	//
 	// example:
 	//
 	// 122.200.64.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

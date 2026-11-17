@@ -20,15 +20,15 @@ type iDescribeFirewallDropTrendResponseBody interface {
 }
 
 type DescribeFirewallDropTrendResponseBody struct {
-	// The returned data list.
+	// The list of returned data.
 	DataList []*DescribeFirewallDropTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The maximum number of total blocked sessions.
+	// The maximum number of blocked sessions.
 	//
 	// example:
 	//
 	// 300
 	MaxDropSession *int64 `json:"MaxDropSession,omitempty" xml:"MaxDropSession,omitempty"`
-	// The time when the maximum number of total blocked sessions occurred. The value is a UNIX timestamp in seconds, such as 1672502400.
+	// The time when the maximum number of blocked sessions occurred. The value is a UNIX timestamp in seconds, such as 1672502400.
 	//
 	// example:
 	//
@@ -112,9 +112,7 @@ type DescribeFirewallDropTrendResponseBodyDataList struct {
 	//
 	// 100
 	NatDropSession *int64 `json:"NatDropSession,omitempty" xml:"NatDropSession,omitempty"`
-	// The time when the traffic occurred. The value is a UNIX timestamp in seconds.
-	//
-	// If the data at this point in time has not been processed, the values of all other fields are -1.
+	// The time when the traffic occurred. The value is a UNIX timestamp in seconds. If the data for this time point is not processed, the values of other fields are -1.
 	//
 	// example:
 	//

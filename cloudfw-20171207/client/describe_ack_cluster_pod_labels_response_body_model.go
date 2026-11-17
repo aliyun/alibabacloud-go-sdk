@@ -16,7 +16,7 @@ type iDescribeAckClusterPodLabelsResponseBody interface {
 }
 
 type DescribeAckClusterPodLabelsResponseBody struct {
-	// A list of ACK labels.
+	// The list of ACK tags.
 	AckLabels []*DescribeAckClusterPodLabelsResponseBodyAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
 	// The request ID.
 	//

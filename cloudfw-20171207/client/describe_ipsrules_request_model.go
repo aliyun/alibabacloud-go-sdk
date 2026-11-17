@@ -31,6 +31,8 @@ type iDescribeIPSRulesRequest interface {
 	GetPageNo() *int64
 	SetPageSize(v int64) *DescribeIPSRulesRequest
 	GetPageSize() *int64
+	SetProxyId(v string) *DescribeIPSRulesRequest
+	GetProxyId() *string
 	SetQueryModify(v string) *DescribeIPSRulesRequest
 	GetQueryModify() *string
 	SetRuleAction(v string) *DescribeIPSRulesRequest
@@ -54,15 +56,15 @@ type iDescribeIPSRulesRequest interface {
 }
 
 type DescribeIPSRulesRequest struct {
-	// The attacked application.
+	// The attack application.
 	//
 	// example:
 	//
 	// SMB
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
-	// The list of categories of the attacked applications. Specify the value in the ["AttackAppCategory1","AttackAppCategory2"] format.
+	// The list of categories of the attacked applications, in the format of ["AttackAppCategory1","AttackAppCategory2"].
 	AttackAppCategory []*string `json:"AttackAppCategory,omitempty" xml:"AttackAppCategory,omitempty" type:"Repeated"`
-	// The list of attacked applications.
+	// The list of attack applications.
 	AttackApps []*string `json:"AttackApps,omitempty" xml:"AttackApps,omitempty" type:"Repeated"`
 	// The attack application type.
 	//
@@ -116,6 +118,12 @@ type DescribeIPSRulesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The instance ID of the NAT firewall. This parameter is required only when FirewallType is set to **NatFirewall*	- and is mutually exclusive with VpcFirewallId. You can obtain the ID by calling the [ListNatFirewallIpsConfigs](https://help.aliyun.com/document_detail/2879296.html) operation.
+	//
+	// example:
+	//
+	// proxy-nat53f4bbc233234271a1d7
+	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
 	// Specifies whether the rule has been modified.
 	//
 	// example:
@@ -166,13 +174,13 @@ type DescribeIPSRulesRequest struct {
 	//
 	// UpdateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The source IP address of the requester.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//
 	// 8.139.222.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The instance ID of the virtual private cloud (VPC) firewalls.
+	// The instance ID of the virtual private cloud (VPC) border firewalls.
 	//
 	// example:
 	//
@@ -230,6 +238,10 @@ func (s *DescribeIPSRulesRequest) GetPageNo() *int64 {
 
 func (s *DescribeIPSRulesRequest) GetPageSize() *int64 {
 	return s.PageSize
+}
+
+func (s *DescribeIPSRulesRequest) GetProxyId() *string {
+	return s.ProxyId
 }
 
 func (s *DescribeIPSRulesRequest) GetQueryModify() *string {
@@ -324,6 +336,11 @@ func (s *DescribeIPSRulesRequest) SetPageNo(v int64) *DescribeIPSRulesRequest {
 
 func (s *DescribeIPSRulesRequest) SetPageSize(v int64) *DescribeIPSRulesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeIPSRulesRequest) SetProxyId(v string) *DescribeIPSRulesRequest {
+	s.ProxyId = &v
 	return s
 }
 

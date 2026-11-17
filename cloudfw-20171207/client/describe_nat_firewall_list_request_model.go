@@ -32,11 +32,11 @@ type iDescribeNatFirewallListRequest interface {
 }
 
 type DescribeNatFirewallListRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeNatFirewallListRequest struct {
 	//
 	// 147783******
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The NAT gateway ID.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -60,21 +60,21 @@ type DescribeNatFirewallListRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of NAT firewalls to display on each page in a paged query.
+	// The number of NAT firewalls to return on each page in a paged query.
 	//
-	// Default value: **10**, which indicates that each page contains **10*	- results. Maximum value: **50**.
+	// Default value: **10**, which indicates that **10*	- results are returned per page. Maximum value: **50**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The NAT firewall ID.
+	// The ID of the NAT firewall.
 	//
 	// example:
 	//
 	// proxy-nat97a******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The NAT firewall name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+	// The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore.
 	//
 	// example:
 	//
@@ -88,21 +88,21 @@ type DescribeNatFirewallListRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The Cloud Firewall status. Valid values:
+	// The status of the NAT firewall. Valid values:
 	//
-	// - configuring: being created
+	// - configuring: Creating.
 	//
-	// - deleting: being deleted
+	// - deleting: Deleting.
 	//
-	// - normal: normal
+	// - normal: Normal.
 	//
-	// - abnormal: abnormal
+	// - abnormal: Abnormal.
 	//
-	// - opening: being enabled
+	// - opening: Enabling.
 	//
-	// - closing: being disabled
+	// - closing: Disabling.
 	//
-	// - closed: disabled
+	// - closed: Disabled.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DescribeOpenIpAccessSrcStatResponseBody struct {
 	//
 	// 0DC783F1-B3A7-578D-8A63-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of statistics.
+	// The statistics list.
 	StatList []*DescribeOpenIpAccessSrcStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeOpenIpAccessSrcStatResponseBody) Validate() error {
 }
 
 type DescribeOpenIpAccessSrcStatResponseBodyStatList struct {
-	// The number of abnormal source IP addresses.
+	// The number of abnormal IP addresses.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeOpenIpAccessSrcStatResponseBodyStatList struct {
 	//
 	// HTTP
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The number of normal source IP addresses.
+	// The number of normal IP addresses.
 	//
 	// example:
 	//

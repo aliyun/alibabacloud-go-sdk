@@ -26,7 +26,7 @@ type iDescribeInvadeEcsTrendResponseBody interface {
 type DescribeInvadeEcsTrendResponseBody struct {
 	// The data list.
 	DataList []*DescribeInvadeEcsTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The end of the time range. This is a UNIX timestamp. Unit: seconds.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeInvadeEcsTrendResponseBody struct {
 	//
 	// F90E816D-BEE7-5BD6-95ED-474F54****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range. This is a UNIX timestamp. Unit: seconds.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

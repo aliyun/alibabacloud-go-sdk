@@ -42,7 +42,7 @@ type iDescribeInternetTimeTopRequest interface {
 }
 
 type DescribeInternetTimeTopRequest struct {
-	// The direction of the traffic.
+	// The traffic direction.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end of the query time range, specified as a Unix timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// Public
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The time interval in seconds.
+	// The time interval.
 	//
 	// example:
 	//
 	// 60
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The language of the response.
+	// The language of the response message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return. The value must be between 1 and 50. Default value: 50.
+	// The maximum number of top entries to return. Default value: 50. Valid values: 1 to 50.
 	//
 	// example:
 	//
 	// 5
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The NAT public IP address. If omitted, traffic data for all assets is returned.
+	// The public IP address of the NAT gateway. If you leave this parameter empty, all asset IP addresses are queried.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The metric by which to sort the results.
+	// The sorting method.
 	//
 	// example:
 	//
 	// in_bps
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The identifier for the trace source.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// 8.153.18.XX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	// The start of the query time range, specified as a Unix timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1749434787
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The traffic timestamp to query, specified as a Unix timestamp in seconds.
+	// The traffic time to query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

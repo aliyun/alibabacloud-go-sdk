@@ -83,13 +83,13 @@ func (s *DescribeDownloadTaskResponseBody) Validate() error {
 }
 
 type DescribeDownloadTaskResponseBodyTasks struct {
-	// The time when the task was created. This is a UNIX timestamp in seconds.
+	// The time when the task was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1706595827
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the task expires. This is a UNIX timestamp in seconds.
+	// The time when the task expires. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeDownloadTaskResponseBodyTasks struct {
 	//
 	// 24.04KB
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The URL of the Object Storage Service (OSS) file.
+	// The URL of the OSS file.
 	//
 	// example:
 	//
@@ -109,19 +109,19 @@ type DescribeDownloadTaskResponseBodyTasks struct {
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// - **finish**: The task is complete.
+	// - **finish**: The task is completed.
 	//
-	// - **start**: The task has started.
+	// - **start**: The task is started.
 	//
 	// - **error**: The task failed.
 	//
-	// - **expire**: The task has expired. The task file is no longer valid and cannot be downloaded.
+	// - **expire**: The task has expired. The task file is invalid and cannot be downloaded.
 	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

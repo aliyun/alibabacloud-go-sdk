@@ -18,15 +18,15 @@ type iDescribeAclBackupListResponseBody interface {
 }
 
 type DescribeAclBackupListResponseBody struct {
-	// The backup records.
+	// The collection of backup records.
 	Backups []*DescribeAclBackupListResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6C9105F2-9F31-5A62-8D52-FA65A3E5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,19 +83,19 @@ func (s *DescribeAclBackupListResponseBody) Validate() error {
 }
 
 type DescribeAclBackupListResponseBodyBackups struct {
-	// The number of access control policies in the backup.
+	// The number of ACLs.
 	//
 	// example:
 	//
 	// 10
 	AclCount *int32 `json:"AclCount,omitempty" xml:"AclCount,omitempty"`
-	// The time when the backup was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The backup time. The value is a UNIX timestamp in seconds, which indicates the number of seconds that have elapsed since January 1, 1970 (UTC).
 	//
 	// example:
 	//
 	// 1743683400
 	BackUpTime *int64 `json:"BackUpTime,omitempty" xml:"BackUpTime,omitempty"`
-	// The description of the backup.
+	// The description of the backup task.
 	//
 	// example:
 	//

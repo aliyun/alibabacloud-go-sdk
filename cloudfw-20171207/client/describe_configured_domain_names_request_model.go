@@ -28,7 +28,7 @@ type iDescribeConfiguredDomainNamesRequest interface {
 }
 
 type DescribeConfiguredDomainNamesRequest struct {
-	// The current page number.
+	// The page number of the current page.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeConfiguredDomainNamesRequest struct {
 	//
 	// ignore
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The language of the request and response messages.
+	// The language of the request and response.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeConfiguredDomainNamesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tracing code.
+	// The source code.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type DescribeConfiguredDomainNamesRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

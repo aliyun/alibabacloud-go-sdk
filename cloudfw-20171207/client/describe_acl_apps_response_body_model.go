@@ -18,7 +18,7 @@ type iDescribeAclAppsResponseBody interface {
 }
 
 type DescribeAclAppsResponseBody struct {
-	// The list of ACL applications.
+	// The list of access control applications.
 	AclApps []*DescribeAclAppsResponseBodyAclApps `json:"AclApps,omitempty" xml:"AclApps,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeAclAppsResponseBody struct {
 	//
 	// 9063AB86-6FFA-5B2D-A16D-697C966D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -93,39 +93,39 @@ type DescribeAclAppsResponseBodyAclApps struct {
 	//
 	// example:
 	//
-	// test
+	// HTTP
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Indicates whether the application is common. Valid values:
+	// Specifies whether the application is common. Valid values:
 	//
-	// - **1**: common
+	// - 1: Common.
 	//
-	// - **0**: not common
+	// - 0: Uncommon.
 	//
-	// -
+	// - Empty (default): All.
 	//
 	// example:
 	//
 	// 1
 	Popular *int32 `json:"Popular,omitempty" xml:"Popular,omitempty"`
-	// The protocols supported by the application.
+	// The list of protocol types.
 	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The risk level. Valid values:
+	// The risk assessment level. Valid values:
 	//
-	// - **1**: Low
+	// - **1**: Low-risk.
 	//
-	// - **2**: Medium
+	// - **2**: Medium-risk.
 	//
-	// - **3**: High
+	// - **3**: High-risk.
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Indicates whether the application supports `FQDN`. Valid values:
+	// Specifies whether **FQDN*	- is supported. Valid values:
 	//
-	// - **0**: No
+	// - **0**: Not supported.
 	//
-	// - **1**: Yes
+	// - **1**: Supported.
 	//
 	// example:
 	//

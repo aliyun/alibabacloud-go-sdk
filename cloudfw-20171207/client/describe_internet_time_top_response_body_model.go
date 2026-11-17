@@ -20,21 +20,21 @@ type iDescribeInternetTimeTopResponseBody interface {
 }
 
 type DescribeInternetTimeTopResponseBody struct {
-	// The number of entries returned.
+	// The number of returned entries.
 	//
 	// example:
 	//
 	// 19
 	DataCount *int32 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The list of data entries.
+	// The list of returned data.
 	DataList []*DescribeInternetTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7F2D5C04-731F-50B0-ADE1-01637B3C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp of the traffic data. Unit: seconds.
+	// The traffic time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeInternetTimeTopResponseBody) Validate() error {
 }
 
 type DescribeInternetTimeTopResponseBodyDataList struct {
-	// The public IP address.
+	// The IP address.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribeInternetTimeTopResponseBodyDataList struct {
 	//
 	// 27
 	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// The outbound traffic. Unit: bit/s.
+	// The outbound bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type DescribeInternetTimeTopResponseBodyDataList struct {
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the asset instance.
+	// The instance ID of the resource.
 	//
 	// example:
 	//
 	// lb-bp14ue2rgktunncq****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The name of the asset.
+	// The name of the asset instance.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type DescribeInternetTimeTopResponseBodyDataList struct {
 	//
 	// 88
 	TotalPps *int64 `json:"TotalPps,omitempty" xml:"TotalPps,omitempty"`
-	// The ID of the virtual private cloud (VPC) instance.
+	// The instance ID of the VPC-connected instance.
 	//
 	// example:
 	//

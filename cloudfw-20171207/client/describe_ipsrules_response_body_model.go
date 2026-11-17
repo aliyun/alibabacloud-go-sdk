@@ -30,7 +30,7 @@ type iDescribeIPSRulesResponseBody interface {
 }
 
 type DescribeIPSRulesResponseBody struct {
-	// The total number of rules with the block action.
+	// The total number of block rules.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *DescribeIPSRulesResponseBody) Validate() error {
 }
 
 type DescribeIPSRulesResponseBodyRules struct {
-	// The attacked application.
+	// The attack application.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type DescribeIPSRulesResponseBodyRules struct {
 	//
 	// example:
 	//
-	// Exception connection
+	// Abnormal connection
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The current action.
 	//
@@ -223,7 +223,7 @@ type DescribeIPSRulesResponseBodyRules struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The supported engine mode.
 	//
-	// This value is valid only when DefaultMode is set to drop (Block). In other modes, this value is meaningless.
+	// This value takes effect only when DefaultMode is set to drop (Block). It is not applicable in other modes.
 	//
 	// example:
 	//
@@ -247,19 +247,19 @@ type DescribeIPSRulesResponseBodyRules struct {
 	//
 	// Nmap scan detection
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The UUID of the rule.
+	// The rule UUID.
 	//
 	// example:
 	//
 	// d401b0cb-dc64-4bbe-bba0-3e7c744****
 	RuleUuid *string `json:"RuleUuid,omitempty" xml:"RuleUuid,omitempty"`
-	// The timestamp when the rule was modified.
+	// The timestamp when the rule was updated.
 	//
 	// example:
 	//
 	// 1775101028
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Specifies whether the rule is a custom rule.
+	// Indicates whether the rule is a custom rule.
 	//
 	// example:
 	//

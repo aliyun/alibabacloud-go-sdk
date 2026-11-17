@@ -26,13 +26,13 @@ type DeleteDnsFirewallPolicyRequest struct {
 	//
 	// 498946f4-c98a-45c0-9038-635c******
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The language of the request and response. Valid values: **zh*	- for Chinese and **en*	- for English.
+	// The language of the request and response. Valid values: - **zh**: Chinese. - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//

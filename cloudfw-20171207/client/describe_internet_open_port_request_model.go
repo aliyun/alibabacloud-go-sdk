@@ -34,25 +34,25 @@ type iDescribeInternetOpenPortRequest interface {
 }
 
 type DescribeInternetOpenPortRequest struct {
-	// The page number for a paged query.
+	// The page number for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1748358644
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeInternetOpenPortRequest struct {
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The name of the application. This is an exact match. If you do not specify this parameter, all applications are queried.
+	// The application name. Exact match. If this parameter is not specified, all applications are queried.
 	//
 	// example:
 	//
 	// SMB
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The name of the application. This is a fuzzy match. If you do not specify this parameter, all applications are queried.
+	// The application name. Fuzzy match. If this parameter is not specified, all applications are queried.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeInternetOpenPortRequest struct {
 	//
 	// 114.242.33.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

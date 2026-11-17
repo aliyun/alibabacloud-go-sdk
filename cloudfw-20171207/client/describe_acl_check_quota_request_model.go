@@ -14,7 +14,7 @@ type iDescribeAclCheckQuotaRequest interface {
 }
 
 type DescribeAclCheckQuotaRequest struct {
-	// The language of the response.
+	// The language.
 	//
 	// example:
 	//

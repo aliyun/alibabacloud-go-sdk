@@ -26,7 +26,7 @@ type DescribeRegionInfoResponseBody struct {
 	//
 	// 25E655B0-CAED-53D4-8054-F983126****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
