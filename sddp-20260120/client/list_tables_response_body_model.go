@@ -34,7 +34,7 @@ type ListTablesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned by the query.
+	// The list of records returned for the current query.
 	Items []*ListTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The pagination cursor used for the current query.
 	//
@@ -54,19 +54,19 @@ type ListTablesResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request. You can use the ID to locate the API call.
+	// The request ID. You can use this ID to locate the API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the current statistical or query scope.
+	// The total number of entries that meet the current statistics or query scope.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Indicates whether more pages exist. A value of true indicates that more data exists. A value of false indicates that no more data exists.
+	// Indicates whether subsequent pages exist. The string true indicates that more data is available, and false indicates that no more data is available.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ListTablesResponseBodyItems struct {
 	//
 	// Customer contact information
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the data object was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type ListTablesResponseBodyItems struct {
 	//
 	// rm-2ze1abcdefgh****
 	DataAssetSourceId *string `json:"DataAssetSourceId,omitempty" xml:"DataAssetSourceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -204,19 +204,19 @@ type ListTablesResponseBodyItems struct {
 	//
 	// customer
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the database table.
+	// The cloud account ID of the database table owner.
 	//
 	// example:
 	//
 	// 123456789012****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The code of the cloud service.
+	// The cloud service code.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the sensitivity level.
+	// The sensitivity level ID.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type ListTablesResponseBodyItems struct {
 	RuleList []*ListTablesResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 	// Indicates whether the data is detected as sensitive data.
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
-	// The number of sensitive data entries within the current statistical scope.
+	// The number of sensitive data entries within the current statistics scope.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type ListTablesResponseBodyItems struct {
 	//
 	// Business tenant
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The total number of entries that meet the current statistical or query scope.
+	// The total number of entries that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type ListTablesResponseBodyItemsRuleList struct {
 	//
 	// Phone number
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the sensitivity level.
+	// The sensitivity level ID.
 	//
 	// example:
 	//

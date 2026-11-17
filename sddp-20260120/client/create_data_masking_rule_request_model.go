@@ -44,7 +44,7 @@ type CreateDataMaskingRuleRequest struct {
 	//
 	// AES_256_GCM
 	EncAlgorithm *string `json:"EncAlgorithm,omitempty" xml:"EncAlgorithm,omitempty"`
-	// The identifier of the Key Management Service (KMS) key. You can obtain it from Items[].KeyId in the response of the ListKmsKeys operation. Provide this parameter when you use a KMS key. Do not pass this parameter in local key scenarios.
+	// The KMS key identifier. You can obtain it from Items[].KeyId in the response of ListKmsKeys. Provide this parameter when you use a KMS key. Do not pass this parameter in local key scenarios.
 	//
 	// example:
 	//
@@ -52,23 +52,23 @@ type CreateDataMaskingRuleRequest struct {
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
 	// The key mode. Valid values:
 	//
-	// - client_key: local key
+	// - client_key: local key.
 	//
-	// - kms_key: KMS key
+	// - kms_key: KMS key.
 	//
-	// When you use kms_key, you must specify EncryptionKeyId.
+	// If you use kms_key, you must specify EncryptionKeyId.
 	//
 	// example:
 	//
 	// client_key
 	EncryptionKeyMode *string `json:"EncryptionKeyMode,omitempty" xml:"EncryptionKeyMode,omitempty"`
-	// The type of the database engine. The value must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
+	// The database engine type. The value must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
 	//
 	// example:
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The expiration time of the plaintext permission. The value is a UNIX timestamp in milliseconds since 00:00:00 UTC on January 1, 1970. Specify this parameter only when ExpireTimeOperation is set to SET. The value must be later than the current time and no greater than 2145953410000. The server saves the value with second precision. Do not specify this parameter when ExpireTimeOperation is set to PRESERVE or CLEAR.
+	// The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 00:00:00 UTC on January 1, 1970. Specify this parameter only when ExpireTimeOperation is set to SET. The value must be later than the current time and no greater than 2145953410000. The server saves the value with second precision. Do not pass this parameter when ExpireTimeOperation is set to PRESERVE or CLEAR.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateDataMaskingRuleRequest struct {
 	//
 	// PRESERVE
 	ExpireTimeOperation *string `json:"ExpireTimeOperation,omitempty" xml:"ExpireTimeOperation,omitempty"`
-	// The instance identity. You can obtain it from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+	// The database instance identity. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
 	//
 	// example:
 	//
@@ -96,29 +96,29 @@ type CreateDataMaskingRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the response description. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also passed, the two must correspond to each other.
+	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you pass ProductId at the same time, the two values must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The identifier of the cloud service type. Valid values:
+	// The cloud service type identifier. Valid values:
 	//
-	// - 5: RDS
+	// - 5: RDS.
 	//
-	// - 8: POLARDB
+	// - 8: POLARDB.
 	//
-	// - 27: PolarDBX2
+	// - 27: PolarDBX2.
 	//
-	// When specified together with ProductCode, the values must correspond to each other.
+	// If you specify this parameter together with ProductCode, the values must match.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type CreateDataMaskingRuleRequest struct {
 	RiskHandleId *int64 `json:"RiskHandleId,omitempty" xml:"RiskHandleId,omitempty"`
 	// The list of column encryption targets grouped by database and table.
 	SubRuleList []*CreateDataMaskingRuleRequestSubRuleList `json:"SubRuleList,omitempty" xml:"SubRuleList,omitempty" type:"Repeated"`
-	// The list of database accounts to which the fullAccess plaintext permission is granted. The accounts must belong to the target instance.
+	// The list of database accounts to which the fullAccess plaintext access permissions are granted. The accounts must belong to the target instance.
 	UserList []*CreateDataMaskingRuleRequestUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -284,7 +284,7 @@ func (s *CreateDataMaskingRuleRequest) Validate() error {
 }
 
 type CreateDataMaskingRuleRequestSubRuleList struct {
-	// The list of target column names. Multiple column names are separated by commas (,).
+	// The list of target column names. Separate multiple column names with commas (,).
 	//
 	// example:
 	//
@@ -344,11 +344,11 @@ func (s *CreateDataMaskingRuleRequestSubRuleList) Validate() error {
 }
 
 type CreateDataMaskingRuleRequestUserList struct {
-	// The identifier of the database account. You can obtain it from Items[].Id in the response of the ListDataAssetAccounts operation. Pass the value as a string.
+	// The name of the database account. Obtain the value from Items[].AccountName in the target instance record returned by ListDataAssetAccounts and pass it as a string as is. Do not pass Items[].Id. When you create a rule, the account belongs to the instance specified by the top-level InstanceId.
 	//
 	// example:
 	//
-	// 1001
+	// app_reader
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The authentication database for MongoDB accounts. This parameter is required when you select a MongoDB account. You do not need to pass this parameter for other services.
 	//

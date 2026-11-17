@@ -28,15 +28,15 @@ type ListDataMaskingInstancesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned by the current query.
+	// The list of records returned in this query.
 	Items []*ListDataMaskingInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page in the current query.
+	// The number of entries returned per page in this query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which can be used to locate the current API call.
+	// The request ID. You can use the ID to locate this API call.
 	//
 	// example:
 	//
@@ -117,6 +117,12 @@ func (s *ListDataMaskingInstancesResponseBody) Validate() error {
 }
 
 type ListDataMaskingInstancesResponseBodyItems struct {
+	// The description of the instance.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current column encryption algorithm of the instance.
 	//
 	// example:
@@ -153,7 +159,7 @@ type ListDataMaskingInstancesResponseBodyItems struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2.
+	// The ID of the cloud service type. Valid values: 5 (RDS), 8 (PolarDB), and 27 (PolarDB-X 2.0).
 	//
 	// example:
 	//
@@ -179,6 +185,10 @@ func (s ListDataMaskingInstancesResponseBodyItems) String() string {
 
 func (s ListDataMaskingInstancesResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataMaskingInstancesResponseBodyItems) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListDataMaskingInstancesResponseBodyItems) GetEncryptionAlgorithm() *string {
@@ -215,6 +225,11 @@ func (s *ListDataMaskingInstancesResponseBodyItems) GetRegionId() *string {
 
 func (s *ListDataMaskingInstancesResponseBodyItems) GetRegionName() *string {
 	return s.RegionName
+}
+
+func (s *ListDataMaskingInstancesResponseBodyItems) SetDescription(v string) *ListDataMaskingInstancesResponseBodyItems {
+	s.Description = &v
+	return s
 }
 
 func (s *ListDataMaskingInstancesResponseBodyItems) SetEncryptionAlgorithm(v string) *ListDataMaskingInstancesResponseBodyItems {

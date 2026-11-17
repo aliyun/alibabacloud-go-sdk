@@ -44,15 +44,7 @@ type iListDataSourcesRequest interface {
 }
 
 type ListDataSourcesRequest struct {
-	// The connection status of the data source. Valid values:
-	//
-	// - UnConnected: Not connected.
-	//
-	// - Processing: Connecting.
-	//
-	// - Success: Connected.
-	//
-	// - Failed: Connection failed.
+	// The connection status of the data source. Valid values: UnConnected: not connected. Processing: connecting. Success: connected. Failed: connection failed.
 	//
 	// example:
 	//
@@ -98,23 +90,7 @@ type ListDataSourcesRequest struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The status of the data source detection switch. Valid values:
-	//
-	// - Enable: Submitted for enabling.
-	//
-	// - Enabling: Enabling.
-	//
-	// - Enabled: Enabled.
-	//
-	// - EnableFailed: Enabling failed.
-	//
-	// - Disable: Submitted for disabling.
-	//
-	// - Disabling: Disabling.
-	//
-	// - Disabled: Disabled.
-	//
-	// - DisableFailed: Disabling failed.
+	// The status of the data source detection switch. Valid values: Enable: submitted for enabling. Enabling: enabling. Enabled: enabled. EnableFailed: enabling failed. Disable: submitted for disabling. Disabling: disabling. Disabled: disabled. DisableFailed: disabling failed.
 	//
 	// example:
 	//
@@ -126,11 +102,7 @@ type ListDataSourcesRequest struct {
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response message. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response description. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//
@@ -154,7 +126,7 @@ type ListDataSourcesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The port for the database connection.
+	// The database connection port.
 	//
 	// example:
 	//
@@ -166,7 +138,7 @@ type ListDataSourcesRequest struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The identifier of the cloud service type. 5: ApsaraDB RDS; 8: PolarDB; 27: PolarDB-X 2.0. If this parameter is specified together with ProductCode, the values must match.
+	// The identifier of the cloud service type. 5: ApsaraDB RDS. 8: PolarDB. 27: PolarDB-X 2.0. If this parameter is specified together with ProductCode, the values must match.
 	//
 	// example:
 	//

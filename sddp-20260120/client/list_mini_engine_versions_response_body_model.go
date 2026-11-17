@@ -66,13 +66,13 @@ func (s *ListMiniEngineVersionsResponseBody) Validate() error {
 }
 
 type ListMiniEngineVersionsResponseBodyKernelVersions struct {
-	// The release type of the kernel version, which follows the return values of the corresponding database service. For example, for RDS, LTS indicates the long-term support version and BETA indicates the preview version. For PolarDB, the value may be Stable, Old, HighRisk, or Beta.
+	// The release type of the kernel version, which follows the return values of the corresponding database service. For example, for RDS, LTS indicates the long-term support version and BETA indicates the preview version. PolarDB may return Stable, Old, HighRisk, or Beta.
 	//
 	// example:
 	//
 	// LTS
 	KernelReleaseType *string `json:"KernelReleaseType,omitempty" xml:"KernelReleaseType,omitempty"`
-	// The available kernel version number.
+	// The available kernel version.
 	//
 	// example:
 	//

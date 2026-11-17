@@ -40,19 +40,19 @@ type ListDataSourcesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A compatible pagination cursor field. The ListDataSources operation uses page number-based pagination and does not rely on this field to determine whether more pages exist.
+	// A compatible pagination cursor field. The ListDataSources operation uses page number-based pagination and does not rely on this field to determine whether a next page exists.
 	//
 	// example:
 	//
 	// token-example
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of records returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request identity, which is active when you invoke this API call.
+	// The ID of the request. You can use the ID to locate the API call.
 	//
 	// example:
 	//
@@ -151,15 +151,7 @@ func (s *ListDataSourcesResponseBody) Validate() error {
 }
 
 type ListDataSourcesResponseBodyItems struct {
-	// The connection status of the data source. Valid values:
-	//
-	// - UnConnected: Not connected.
-	//
-	// - Processing: Connecting.
-	//
-	// - Success: Connected.
-	//
-	// - Failed: Connection failed.
+	// The connection status of the data source. Valid values: UnConnected: not connected. Processing: connecting. Success: connected. Failed: connection failed.
 	//
 	// example:
 	//
@@ -201,41 +193,25 @@ type ListDataSourcesResponseBodyItems struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The business error code of the record or operation. This field can be empty if no error occurs. Evaluate this field together with ErrorMessage.
+	// The business error code for the record or operation. This parameter may be empty if no error occurs. Evaluate this parameter together with ErrorMessage.
 	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error message of the record or operation.
+	// The business error message for the record or operation.
 	//
 	// example:
 	//
 	// The instance is not in the running state
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The identifier of the record.
+	// The ID of the record.
 	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the data source detection switch. Valid values:
-	//
-	// - Enable: Submitted for enabling.
-	//
-	// - Enabling: Enabling.
-	//
-	// - Enabled: Enabled.
-	//
-	// - EnableFailed: Enabling failed.
-	//
-	// - Disable: Submitted for disabling.
-	//
-	// - Disabling: Disabling.
-	//
-	// - Disabled: Disabled.
-	//
-	// - DisableFailed: Disabling failed.
+	// The status of the data source detection switch. Valid values: Enable: submitted for enabling. Enabling: enabling. Enabled: enabled. EnableFailed: enabling failed. Disable: submitted for disabling. Disabling: disabling. Disabled: disabled. DisableFailed: disabling failed.
 	//
 	// example:
 	//
@@ -253,7 +229,7 @@ type ListDataSourcesResponseBodyItems struct {
 	//
 	// 123456789012****
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The port for the database connection.
+	// The database connection port.
 	//
 	// example:
 	//
@@ -265,25 +241,25 @@ type ListDataSourcesResponseBodyItems struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The identifier of the cloud service type. 5: ApsaraDB RDS; 8: PolarDB; 27: PolarDB-X 2.0.
+	// The identifier of the cloud service type. 5: ApsaraDB RDS. 8: PolarDB. 27: PolarDB-X 2.0.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The ID of the region where the asset resides.
+	// The ID of the region where the asset is located.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region where the asset resides.
+	// The name of the region where the asset is located.
 	//
 	// example:
 	//
 	// China (Zhangjiakou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The ID of the resource group to which the asset belongs.
+	// The identifier of the resource group to which the asset belongs.
 	//
 	// example:
 	//

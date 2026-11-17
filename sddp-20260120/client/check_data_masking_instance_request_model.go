@@ -20,7 +20,7 @@ type iCheckDataMaskingInstanceRequest interface {
 }
 
 type CheckDataMaskingInstanceRequest struct {
-	// The database instance identity. You can obtain the value from Items[].InstanceId in the response of ListDataMaskingInstances.
+	// The database instance identity. You can obtain this value from Items[].InstanceId in the response of ListDataMaskingInstances.
 	//
 	// example:
 	//
@@ -28,27 +28,27 @@ type CheckDataMaskingInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the response description. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
+	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud service type identifier. Valid values:
+	// The cloud product type identifier. Valid values:
 	//
-	// - 5: RDS
+	// - 5: RDS.
 	//
-	// - 8: POLARDB
+	// - 8: POLARDB.
 	//
-	// - 27: PolarDBX2
+	// - 27: PolarDBX2.
 	//
 	// If this parameter is specified together with ProductCode, the values must match.
 	//

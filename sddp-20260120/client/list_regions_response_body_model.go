@@ -18,7 +18,7 @@ type iListRegionsResponseBody interface {
 type ListRegionsResponseBody struct {
 	// The list of regions where the assets are located.
 	RegionList []*ListRegionsResponseBodyRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	// The request ID. You can use this ID to locate the API call.
+	// The request ID, which can be used to locate the API call.
 	//
 	// example:
 	//

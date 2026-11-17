@@ -46,7 +46,7 @@ type ListColumnsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance identity of the cloud database. Set this parameter to the InstanceId in the instance list.
+	// The cloud database instance ID. Set this parameter to the InstanceId in the instance list.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListColumnsRequest struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both parameters are specified, DataAssetSourceId is used.
+	// The compatible parameter for the instance ID. DataAssetSourceId takes precedence. If both parameters are specified, DataAssetSourceId is used.
 	//
 	// example:
 	//

@@ -32,13 +32,13 @@ type iListDataAssetAccountsRequest interface {
 }
 
 type ListDataAssetAccountsRequest struct {
-	// The database account name. The system filters accounts by the exact account name.
+	// The database account name. Filters by the exact account name.
 	//
 	// example:
 	//
 	// app_reader
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The authentication database of the MongoDB account. This parameter is used to distinguish accounts with the same name in different authentication databases.
+	// The authentication database for MongoDB accounts. This is used to distinguish accounts with the same name in different authentication databases.
 	//
 	// example:
 	//
@@ -46,39 +46,41 @@ type ListDataAssetAccountsRequest struct {
 	AuthDb *string `json:"AuthDb,omitempty" xml:"AuthDb,omitempty"`
 	// The column encryption access permissions. Valid values:
 	//
-	// - fullAccess: plaintext access
+	// - fullAccess: plaintext access.
 	//
-	// - restrictedAccess: restricted access
+	// - restrictedAccess: restricted access.
 	//
-	// - noneAccess: decryption prohibited. This value applies only to ApsaraDB RDS for MySQL instances whose current effective key mode is client_key.
+	// - noneAccess: decryption prohibited.
+	//
+	// The noneAccess value applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
 	//
 	// example:
 	//
 	// fullAccess
 	AuthRole *string `json:"AuthRole,omitempty" xml:"AuthRole,omitempty"`
-	// The business scenario for the query. Set this parameter to DataMasking for the column encryption scenario. Note that the value is case-sensitive.
+	// The business scenario to query. Use DataMasking for the column encryption scenario. Note that the value is case-sensitive.
 	//
 	// example:
 	//
 	// DataMasking
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The page number of the current page. Pages start from 1.
+	// The page number of the current query. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The database instance ID. You can obtain this value from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
+	// The database instance identity. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response message. Valid values:
+	// The language of the response description. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -90,13 +92,13 @@ type ListDataAssetAccountsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
+	// The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The list of cloud service type IDs. Separate multiple values with commas (,). For the column encryption scenario, the valid values are 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+	// The list of cloud service type identifiers. Separate multiple values with commas (,). For the column encryption scenario, the values are 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
 	//
 	// example:
 	//

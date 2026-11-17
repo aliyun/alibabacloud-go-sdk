@@ -28,15 +28,15 @@ type ListColumnsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned in the current query.
+	// The list of records returned for the current query.
 	Items []*ListColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page in the current query.
+	// The number of entries returned per page for the current query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID. You can use the ID to locate this API call.
+	// The request ID, which can be used to locate this API invoke.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListColumnsResponseBody) Validate() error {
 }
 
 type ListColumnsResponseBodyItems struct {
-	// The creation time of the data object. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation time of the data object. The value is a UNIX timestamp in milliseconds that represents the time elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// example:
 	//
 	// 1788566400000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance identity of the cloud instance.
+	// The cloud instance ID.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The instance identity of the cloud instance to which the column belongs. This is a compatible field.
+	// The cloud instance ID to which the column belongs. This is a compatible field.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The compatibility field for the column encryption status. To query the column encryption results, call ListDataMaskingColumns.
+	// The compatibility field for the column encryption status. To query column encryption results, call ListDataMaskingColumns.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the region where the asset is located.
+	// The identifier of the region where the asset is located.
 	//
 	// example:
 	//

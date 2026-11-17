@@ -14,7 +14,7 @@ type iSyncDataAssetsResponseBody interface {
 }
 
 type SyncDataAssetsResponseBody struct {
-	// The request ID, which can be used to locate the API call.
+	// The request ID, which can be used to locate this API call.
 	//
 	// example:
 	//

@@ -20,17 +20,13 @@ type iGetInstanceAttributeRequest interface {
 }
 
 type GetInstanceAttributeRequest struct {
-	// The database instance ID. You can obtain this value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+	// The database instance ID. You can obtain this value from Items[].InstanceId returned by ListDataMaskingInstances.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response description. Valid values:
-	//
-	// - zh: Chinese.
-	//
-	// - en: English.
+	// The language of the response description. Valid values: zh: Chinese; en: English.
 	//
 	// example:
 	//
@@ -42,15 +38,7 @@ type GetInstanceAttributeRequest struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud service type identifier. Valid values:
-	//
-	// - 5: RDS.
-	//
-	// - 8: POLARDB.
-	//
-	// - 27: PolarDBX2.
-	//
-	// If this parameter is specified together with ProductCode, the values must match.
+	// The cloud service type identifier. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2. If this parameter is specified together with ProductCode, the values must match.
 	//
 	// example:
 	//

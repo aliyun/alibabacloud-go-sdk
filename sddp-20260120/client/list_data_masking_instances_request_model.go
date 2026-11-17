@@ -70,25 +70,35 @@ type ListDataMaskingInstancesRequest struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The database instance identity. You can obtain the identity from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
+	// The database instance identity. You can obtain the value from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response description. Valid values: zh: Chinese. en: English.
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The column encryption status filter. Valid values: NotEncrypted: not encrypted. Success: encrypted. Failed: encryption failed.
+	// The column encryption status filter. Valid values:
+	//
+	// - NotEncrypted: Unencrypted.
+	//
+	// - Success: Encrypted successfully.
+	//
+	// - Failed: Encryption failed.
 	//
 	// example:
 	//
 	// NotEncrypted
 	MaskingStatus *string `json:"MaskingStatus,omitempty" xml:"MaskingStatus,omitempty"`
-	// The ID of the model tag. This parameter is used to filter data that matches the specified model tag.
+	// The ID of the model tag. This parameter is used to limit the data that matches the corresponding model tag.
 	//
 	// example:
 	//
@@ -100,31 +110,39 @@ type ListDataMaskingInstancesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If you specify this parameter and ProductId at the same time, the values must match.
+	// The code of the cloud service. Column encryption supports RDS, PolarDB, and PolarDB-X 2.0. If this parameter is specified together with ProductId, the values must correspond to each other.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2. If you specify this parameter and ProductCode at the same time, the values must match.
+	// The ID of the cloud service type. Valid values:
+	//
+	// - 5: RDS.
+	//
+	// - 8: PolarDB.
+	//
+	// - 27: PolarDB-X 2.0.
+	//
+	// If this parameter is specified together with ProductCode, the values must correspond to each other.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The list of cloud service type IDs. Separate multiple values with commas (,). In column encryption scenarios, the valid values are 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+	// The list of cloud service type IDs. Separate multiple values with commas (,). In column encryption scenarios, the valid values are 5 (RDS), 8 (PolarDB), and 27 (PolarDB-X 2.0).
 	//
 	// example:
 	//
 	// 5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
-	// The ID of the sensitivity level. You can obtain the ID from the response of the ListRiskLevels operation.
+	// The ID of the sensitivity level. You can obtain the value from the response list of the ListRiskLevels operation.
 	//
 	// example:
 	//
 	// 1
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The list of sensitivity level IDs. Separate multiple values with commas (,). Select the values from the response of the ListRiskLevels operation that corresponds to the same TemplateId.
+	// The list of sensitivity level IDs. Separate multiple values with commas (,). Select the values from the response of the ListRiskLevels operation corresponding to the same TemplateId.
 	//
 	// example:
 	//
@@ -136,13 +154,13 @@ type ListDataMaskingInstancesRequest struct {
 	//
 	// customer
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The ID must be consistent with the selected sensitivity level and identification model.
+	// The ID of the data classification template. You can obtain the value from the Items[].Id parameter in the response of the ListTemplates operation. The value must be consistent with the selected sensitivity level and identification model.
 	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The list of identification model IDs. Separate multiple values with commas (,). Select the values from the response of the ListIdentifyModels operation that corresponds to the same TemplateId.
+	// The list of identification model IDs. Separate multiple values with commas (,). Select the values from the response of the ListIdentifyModels operation corresponding to the same TemplateId.
 	//
 	// example:
 	//

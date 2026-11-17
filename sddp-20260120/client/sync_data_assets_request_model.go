@@ -16,7 +16,7 @@ type iSyncDataAssetsRequest interface {
 }
 
 type SyncDataAssetsRequest struct {
-	// The language of the response. Valid values: zh: Chinese. en: English.
+	// The language of the response description. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//

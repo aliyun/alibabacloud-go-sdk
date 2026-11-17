@@ -36,7 +36,7 @@ type ListDataMaskingColumnsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request. It can be used to locate the current API call.
+	// The ID of the request. You can use it to locate the API call.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The business error code of the record or operation. It can be empty if no error occurs. Evaluate it together with ErrorMessage.
+	// The business error code for the record or operation. It can be empty if no error occurs. Evaluate it together with ErrorMessage.
 	//
 	// example:
 	//
 	// data_masking_not_running
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error message of the record or operation.
+	// The business error message for the record or operation.
 	//
 	// example:
 	//
@@ -159,7 +159,19 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The column encryption status. Valid values: NotEncrypted: not encrypted; Processing: processing; Success: encrypted successfully; Failed: encryption failed; Deleting: disabling; DeleteFailed: disabling failed.
+	// The column encryption status. Valid values:
+	//
+	// - NotEncrypted: Not encrypted.
+	//
+	// - Processing: Processing.
+	//
+	// - Success: Encryption succeeded.
+	//
+	// - Failed: Encryption failed.
+	//
+	// - Deleting: Disabling.
+	//
+	// - DeleteFailed: Disabling failed.
 	//
 	// example:
 	//
@@ -179,7 +191,7 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the cloud service type. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2.
+	// The ID of the cloud service type. Valid values: 5 for RDS, 8 for POLARDB, and 27 for PolarDBX2.
 	//
 	// example:
 	//
@@ -213,7 +225,7 @@ type ListDataMaskingColumnsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Mobile phone number
+	// Phone number
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The name of the table.
 	//

@@ -16,13 +16,13 @@ type iListIdentifyModelsResponseBody interface {
 }
 
 type ListIdentifyModelsResponseBody struct {
-	// The request ID, which is active for locating this API invoke.
+	// The request ID, which is active and can be used to locate the request when you invoke this API.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of recognition models or rules.
+	// The list of detection models or rules.
 	RuleList []*ListIdentifyModelsResponseBodyRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *ListIdentifyModelsResponseBody) Validate() error {
 }
 
 type ListIdentifyModelsResponseBodyRuleList struct {
-	// The ID of the recognition model.
+	// The ID of the detection model.
 	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the recognition model or rule.
+	// The name of the detection model or rule.
 	//
 	// example:
 	//

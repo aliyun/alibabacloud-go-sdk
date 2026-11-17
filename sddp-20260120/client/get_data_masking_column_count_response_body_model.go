@@ -18,7 +18,7 @@ type iGetDataMaskingColumnCountResponseBody interface {
 type GetDataMaskingColumnCountResponseBody struct {
 	// The statistics on the number of encrypted columns.
 	ColumnCount *GetDataMaskingColumnCountResponseBodyColumnCount `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty" type:"Struct"`
-	// The request ID, which can be used to locate the API call.
+	// The ID of the request, which can be used to locate the API call.
 	//
 	// example:
 	//

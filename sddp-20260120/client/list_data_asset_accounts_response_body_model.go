@@ -28,21 +28,21 @@ type ListDataAssetAccountsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned in the current query.
+	// The list of records returned in this query.
 	Items []*ListDataAssetAccountsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page in the current query.
+	// The number of entries returned per page in this query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which can be used to trace the current API call.
+	// The request ID. You can use it to locate this API call.
 	//
 	// example:
 	//
 	// 7C6D8E9F-1234-5678-ABCD-0123456789AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the current statistics or query conditions.
+	// The total number of entries that meet the current statistics or query scope.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListDataAssetAccountsResponseBody) Validate() error {
 }
 
 type ListDataAssetAccountsResponseBodyItems struct {
-	// The database account name.
+	// The database account name. When creating a column encryption rule or modifying account permissions, use this field as-is for UserList[].AccountId and combine it with the InstanceId of this record to select the target account.
 	//
 	// example:
 	//
 	// app_reader
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the asset belongs.
+	// The identifier of the Alibaba Cloud account to which the asset belongs.
 	//
 	// example:
 	//
 	// 123456789012****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The authentication database of the MongoDB account. This parameter must be passed together with AccountName when modifying permissions.
+	// The authentication database for MongoDB accounts. This field must be passed together with AccountName when modifying permissions.
 	//
 	// example:
 	//
@@ -137,23 +137,31 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	AuthDb *string `json:"AuthDb,omitempty" xml:"AuthDb,omitempty"`
 	// The column encryption access permissions. Valid values:
 	//
-	// - fullAccess: plaintext access
+	// - fullAccess: plaintext access.
 	//
-	// - restrictedAccess: restricted access
+	// - restrictedAccess: restricted access.
 	//
-	// - noneAccess: decryption prohibited. This value applies only to ApsaraDB RDS for MySQL instances whose current effective key mode is client_key.
+	// - noneAccess: decryption prohibited.
+	//
+	// The noneAccess value applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
 	//
 	// example:
 	//
 	// fullAccess
 	AuthRole *string `json:"AuthRole,omitempty" xml:"AuthRole,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current effective column encryption key mode. Valid values:
 	//
-	// - client_key: local key
+	// - client_key: local key.
 	//
-	// - kms_key: KMS key
+	// - kms_key: KMS key.
 	//
-	// This parameter is not returned if no effective configuration exists.
+	// This field is not returned if no effective configuration exists.
 	//
 	// example:
 	//
@@ -165,19 +173,19 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The expiration time of the plaintext access permissions. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. This parameter is not returned if no validity period is set.
+	// The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. This field is not returned if the validity period Settings are not configured.
 	//
 	// example:
 	//
 	// 2145953410000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The database account ID. This ID is used as AccountId when configuring permissions.
+	// The ID of the Data Security Center (DSC) data asset account record. This is not the database account name. When creating a column encryption rule or modifying account permissions, set AccountId to the AccountName of this record instead of this Id.
 	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The database instance ID.
+	// The database instance identity.
 	//
 	// example:
 	//
@@ -189,7 +197,13 @@ type ListDataAssetAccountsResponseBodyItems struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud service type ID. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+	// The cloud service type identifier. Valid values:
+	//
+	// - 5: RDS.
+	//
+	// - 8: POLARDB.
+	//
+	// - 27: PolarDBX2.
 	//
 	// example:
 	//
@@ -231,6 +245,10 @@ func (s *ListDataAssetAccountsResponseBodyItems) GetAuthDb() *string {
 
 func (s *ListDataAssetAccountsResponseBodyItems) GetAuthRole() *string {
 	return s.AuthRole
+}
+
+func (s *ListDataAssetAccountsResponseBodyItems) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListDataAssetAccountsResponseBodyItems) GetEncryptionKeyMode() *string {
@@ -286,6 +304,11 @@ func (s *ListDataAssetAccountsResponseBodyItems) SetAuthDb(v string) *ListDataAs
 
 func (s *ListDataAssetAccountsResponseBodyItems) SetAuthRole(v string) *ListDataAssetAccountsResponseBodyItems {
 	s.AuthRole = &v
+	return s
+}
+
+func (s *ListDataAssetAccountsResponseBodyItems) SetDescription(v string) *ListDataAssetAccountsResponseBodyItems {
+	s.Description = &v
 	return s
 }
 

@@ -68,19 +68,29 @@ type ListDataMaskingColumnsRequest struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The instance identity of the database. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
+	// The database instance identity. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response description. Valid values: zh: Chinese; en: English.
+	// The language of the response description. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The filter for the column encryption status. Valid values: NotEncrypted: not encrypted; Success: encrypted successfully; Failed: encryption failed.
+	// The filter for the column encryption status. Valid values:
+	//
+	// - NotEncrypted: Not encrypted.
+	//
+	// - Success: Encryption succeeded.
+	//
+	// - Failed: Encryption failed.
 	//
 	// example:
 	//
@@ -92,19 +102,19 @@ type ListDataMaskingColumnsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also provided, the two must correspond to each other.
+	// The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also provided, the two must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the cloud service type. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2. It must correspond to ProductCode if both are specified.
+	// The ID of the cloud service type. Valid values: 5 for RDS, 8 for POLARDB, and 27 for PolarDBX2. If specified together with ProductCode, they must match.
 	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The compatible parameter for the list of product IDs. For the current column query, use a single ProductId or ProductCode. Call the operation separately to query multiple products.
+	// The compatible parameter for a list of product IDs. For the current column query, use a single ProductId or ProductCode. Call the operation separately to query multiple products.
 	//
 	// example:
 	//
@@ -122,7 +132,7 @@ type ListDataMaskingColumnsRequest struct {
 	//
 	// 1,2
 	RiskLevelIds *string `json:"RiskLevelIds,omitempty" xml:"RiskLevelIds,omitempty"`
-	// The name of the table. In PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
+	// The name of the table. For PostgreSQL or Oracle scenarios, preserve the schema.table format obtained from the table list.
 	//
 	// example:
 	//

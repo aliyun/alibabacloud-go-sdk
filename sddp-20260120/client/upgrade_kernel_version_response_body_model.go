@@ -14,7 +14,7 @@ type iUpgradeKernelVersionResponseBody interface {
 }
 
 type UpgradeKernelVersionResponseBody struct {
-	// The ID of the request. You can use the ID to locate the API call.
+	// The request ID. You can use this ID to locate the API call.
 	//
 	// example:
 	//

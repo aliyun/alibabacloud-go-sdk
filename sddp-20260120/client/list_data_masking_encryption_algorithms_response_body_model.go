@@ -18,7 +18,7 @@ type iListDataMaskingEncryptionAlgorithmsResponseBody interface {
 type ListDataMaskingEncryptionAlgorithmsResponseBody struct {
 	// The list of column encryption algorithms.
 	Algorithms []*ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
-	// The request ID, which can be used to locate this API call.
+	// The request ID, which can be used to trace the API call.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ListDataMaskingEncryptionAlgorithmsResponseBody) Validate() error {
 }
 
 type ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms struct {
-	// The business error code for the record or operation. This parameter can be empty when no error occurs. Evaluate this parameter together with ErrorMessage.
+	// The business error code for the record or operation. This parameter can be empty if no error occurs. Evaluate this parameter together with ErrorMessage.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type GetDataMaskingColumnCountRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The list of cloud product type identifiers. Separate multiple values with commas (,). For column encryption scenarios, the values correspond to 5 (ApsaraDB RDS), 8 (PolarDB), and 27 (PolarDB-X).
+	// The list of cloud product type identifiers. Separate multiple values with commas (,). For column encryption scenarios, the corresponding values are 5 (RDS), 8 (PolarDB), and 27 (PolarDB-X).
 	//
 	// example:
 	//
 	// 5
 	ProductIds *string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty"`
-	// The data classification template ID. You can obtain the ID from the Items[].Id parameter in the ListTemplates response. The ID must be consistent with the selected sensitivity level and detection model.
+	// The identifier of the data classification template. You can obtain it from Items[].Id in the response of ListTemplates. It must be consistent with the selected sensitivity level and detection model.
 	//
 	// example:
 	//
