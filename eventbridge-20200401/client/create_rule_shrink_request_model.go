@@ -40,13 +40,13 @@ type CreateRuleShrinkRequest struct {
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The list of event targets.
 	EventTargetsShrink *string `json:"EventTargets,omitempty" xml:"EventTargets,omitempty"`
-	// The event pattern in JSON format. The following patterns are supported:
+	// The event pattern in JSON format. Valid values:
 	//
-	// - stringEqual pattern
+	// stringEqual mode.
 	//
-	// - stringExpression pattern
+	// stringExpression mode.
 	//
-	// Each field supports up to five expressions in a map structure.
+	// Up to 5 expressions are supported for each field (map structure).
 	//
 	// This parameter is required.
 	//
@@ -98,9 +98,9 @@ type CreateRuleShrinkRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// - ENABLE: The rule is enabled. This is the default status.
+	// ENABLE: The rule is enabled. This is the default status.
 	//
-	// - DISABLE: The rule is disabled.
+	// DISABLE: The rule is disabled.
 	//
 	// example:
 	//

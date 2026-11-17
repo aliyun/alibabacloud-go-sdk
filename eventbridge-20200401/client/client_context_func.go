@@ -849,11 +849,11 @@ func (client *Client) CreateRuleWithContext(ctx context.Context, tmpReq *CreateR
 
 // Summary:
 //
-// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
+// Creates a service-linked role based on the service-linked role name associated with a product.
 //
 // Description:
 //
-// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
+// Creates a service-linked role based on the service-linked role name associated with a product.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -1475,7 +1475,7 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 //
 // Description:
 //
-// You can call this API operation to delete an event rule.
+// Deletes an event rule.
 //
 // @param request - DeleteRuleRequest
 //
@@ -6025,11 +6025,11 @@ func (client *Client) UpdateEventSourceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
+// Modifies the basic information, event source, event filter pattern, or event target of an event stream.
 //
 // Description:
 //
-// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
+// Modifies the basic information, event source, event filter pattern, or event target of an event stream.
 //
 // @param tmpReq - UpdateEventStreamingRequest
 //

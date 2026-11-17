@@ -30,36 +30,23 @@ type iSinkBaiLianParameters interface {
 }
 
 type SinkBaiLianParameters struct {
-	// The post-processing logic executed after the main operation is completed.
 	After *SinkBaiLianParametersAfter `json:"After,omitempty" xml:"After,omitempty" type:"Struct"`
-	// The type of the Model Studio application to be invoked.
-	//
 	// example:
 	//
 	// KnowledgeBase
-	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The pre-processing logic executed before the event is sent to the target.
-	Before *SinkBaiLianParametersBefore `json:"Before,omitempty" xml:"Before,omitempty" type:"Struct"`
-	// The context information of the application, which must be a JSON object.
-	//
+	ApplicationType *string                      `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	Before          *SinkBaiLianParametersBefore `json:"Before,omitempty" xml:"Before,omitempty" type:"Struct"`
 	// example:
 	//
 	// {"k1":"v1"}
 	Context interface{} `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The additional key-value pairs passed to the event target, which must be a valid JSON object.
-	//
 	// example:
 	//
 	// {"k1":"v1"}
-	Extend interface{} `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The offset for reading the event from a stream or queue, which is used for stateful processing.
-	Offset *SinkBaiLianParametersOffset `json:"Offset,omitempty" xml:"Offset,omitempty" type:"Struct"`
-	// The operation to be performed by the Model Studio application.
-	Op *SinkBaiLianParametersOp `json:"Op,omitempty" xml:"Op,omitempty" type:"Struct"`
-	// The partition key of the event, which is used to route the event to a specific partition of the target service to ensure ordered processing.
+	Extend    interface{}                     `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Offset    *SinkBaiLianParametersOffset    `json:"Offset,omitempty" xml:"Offset,omitempty" type:"Struct"`
+	Op        *SinkBaiLianParametersOp        `json:"Op,omitempty" xml:"Op,omitempty" type:"Struct"`
 	Partition *SinkBaiLianParametersPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
-	// The unique ID of the Model Studio workspace.
-	//
 	// example:
 	//
 	// llm-a1b2c3d4e5f6g7h8
@@ -185,20 +172,14 @@ func (s *SinkBaiLianParameters) Validate() error {
 }
 
 type SinkBaiLianParametersAfter struct {
-	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
-	//
 	// example:
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
-	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
-	//
 	// example:
 	//
 	// example
@@ -245,20 +226,14 @@ func (s *SinkBaiLianParametersAfter) Validate() error {
 }
 
 type SinkBaiLianParametersBefore struct {
-	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
-	//
 	// example:
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
-	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
-	//
 	// example:
 	//
 	// example
@@ -305,20 +280,14 @@ func (s *SinkBaiLianParametersBefore) Validate() error {
 }
 
 type SinkBaiLianParametersOffset struct {
-	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
-	//
 	// example:
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
-	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
-	//
 	// example:
 	//
 	// example
@@ -365,20 +334,14 @@ func (s *SinkBaiLianParametersOffset) Validate() error {
 }
 
 type SinkBaiLianParametersOp struct {
-	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
-	//
 	// example:
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
-	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
-	//
 	// example:
 	//
 	// example
@@ -425,20 +388,14 @@ func (s *SinkBaiLianParametersOp) Validate() error {
 }
 
 type SinkBaiLianParametersPartition struct {
-	// The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
-	//
 	// example:
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
-	//
 	// example:
 	//
 	// ${partition}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
-	//
 	// example:
 	//
 	// example

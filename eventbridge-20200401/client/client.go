@@ -1160,11 +1160,11 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 
 // Summary:
 //
-// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
+// Creates a service-linked role based on the service-linked role name associated with a product.
 //
 // Description:
 //
-// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
+// Creates a service-linked role based on the service-linked role name associated with a product.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -1208,11 +1208,11 @@ func (client *Client) CreateServiceLinkedRoleForProductWithOptions(request *Crea
 
 // Summary:
 //
-// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
+// Creates a service-linked role based on the service-linked role name associated with a product.
 //
 // Description:
 //
-// Creates a service-linked role based on the service-linked role name associated with an Alibaba Cloud service.
+// Creates a service-linked role based on the service-linked role name associated with a product.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -2030,7 +2030,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 //
 // Description:
 //
-// You can call this API operation to delete an event rule.
+// Deletes an event rule.
 //
 // @param request - DeleteRuleRequest
 //
@@ -2082,7 +2082,7 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 //
 // Description:
 //
-// You can call this API operation to delete an event rule.
+// Deletes an event rule.
 //
 // @param request - DeleteRuleRequest
 //
@@ -8207,11 +8207,11 @@ func (client *Client) UpdateEventSource(request *UpdateEventSourceRequest) (_res
 
 // Summary:
 //
-// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
+// Modifies the basic information, event source, event filter pattern, or event target of an event stream.
 //
 // Description:
 //
-// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
+// Modifies the basic information, event source, event filter pattern, or event target of an event stream.
 //
 // @param tmpReq - UpdateEventStreamingRequest
 //
@@ -8301,11 +8301,11 @@ func (client *Client) UpdateEventStreamingWithOptions(tmpReq *UpdateEventStreami
 
 // Summary:
 //
-// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
+// Modifies the basic information, event source, event filter pattern, or event target of an event stream.
 //
 // Description:
 //
-// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
+// Modifies the basic information, event source, event filter pattern, or event target of an event stream.
 //
 // @param request - UpdateEventStreamingRequest
 //

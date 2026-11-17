@@ -44,7 +44,7 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// example:
 	//
-	// myeventstreaming
+	// my_streaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
 	// The event filtering rule. If you do not specify this parameter, all events are matched.
 	//
@@ -84,13 +84,13 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The common JSON configurations for the event provider. This parameter is mutually exclusive with Source.
+	// The common JSON Configurations for event providers. This parameter is mutually exclusive with Source.
 	//
 	// example:
 	//
 	// {"key":"value"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The resource group ID. If you do not specify this parameter, the created event stream belongs to the default resource group of the account.
+	// The ID of the resource group. If you do not specify this parameter, the created event stream belongs to the default resource group of the account.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type CreateEventStreamingShrinkRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The runtime environment parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must select exactly one type of sink to configure.
+	// The event target. You must select one and only one sink.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider. You must select exactly one source type and configure its parameters.
+	// The event provider. You must specify exactly one source.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The list of tags. You can specify up to 20 tags.
+	// The list of tags. Up to 20 tags are supported.
 	Tags []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The configuration for transforms.
+	// The transform configurations.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 

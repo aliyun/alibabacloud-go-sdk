@@ -20,13 +20,13 @@ type iCreateApiDestinationResponseBody interface {
 }
 
 type CreateApiDestinationResponseBody struct {
-	// The API status code or POP error code. Valid values: Success: The operation is successful.
+	// The API status code or POP error code. Valid values: Success: The call is successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data structure returned upon successful creation of the API destination.
+	// The data structure returned when the API destination is successfully created.
 	Date *CreateApiDestinationResponseBodyDate `json:"Date,omitempty" xml:"Date,omitempty" type:"Struct"`
 	// The returned message.
 	//

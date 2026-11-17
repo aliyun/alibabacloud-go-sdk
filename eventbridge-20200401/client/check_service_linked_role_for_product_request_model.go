@@ -14,7 +14,7 @@ type iCheckServiceLinkedRoleForProductRequest interface {
 }
 
 type CheckServiceLinkedRoleForProductRequest struct {
-	// The name of the service-linked role associated with the cloud service.
+	// The name of the service-linked role associated with the Alibaba Cloud service.
 	//
 	// example:
 	//

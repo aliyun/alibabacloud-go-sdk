@@ -16,7 +16,7 @@ type iDeleteEventSourceRequest interface {
 }
 
 type DeleteEventSourceRequest struct {
-	// The event bus to which the event source is attached.
+	// The bound event bus.
 	//
 	// example:
 	//

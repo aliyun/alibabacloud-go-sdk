@@ -62,11 +62,11 @@ type UpdateEventSourceShrinkRequest struct {
 	//
 	// myrabbitmq.source
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
-	// The external data source configuration.
+	// The external datasource config.
 	//
 	// example:
 	//
-	// {\\"ConsumePosition\\":\\"end\\",\\"LogStore\\":\\"oss_log\\",\\"Project\\":\\"slsaudit-center-5795350335281001-cn-beijing\\",\\"RoleName\\":\\"sls-beijing-tf\\"}
+	// {"IsBase64Decode":true,"QueueName":"queue-1"}
 	ExternalSourceConfigShrink *string `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
 	// The type of the external data source.
 	//
@@ -80,21 +80,21 @@ type UpdateEventSourceShrinkRequest struct {
 	//
 	// true
 	LinkedExternalSource *bool `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
-	// The SourceHttpEventParameters request parameter.
+	// The request parameter SourceHttpEventParameters.
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
-	// The SourceKafkaParameters request parameter.
+	// The request parameter SourceKafkaParameters.
 	SourceKafkaParametersShrink *string `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty"`
-	// The parameters for a Simple Message Queue (formerly MNS) event source.
+	// The parameters for the Simple Message Queue (formerly MNS) event source.
 	SourceMNSParametersShrink *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
-	// The parameters for an OSS event source.
+	// The parameters for the OSS event source.
 	SourceOSSEventParametersShrink *string `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty"`
-	// The SourceRabbitMQParameters request parameter.
+	// The request parameter SourceRabbitMQParameters.
 	SourceRabbitMQParametersShrink *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
-	// The SourceRocketMQParameters request parameter.
+	// The request parameter SourceRocketMQParameters.
 	SourceRocketMQParametersShrink *string `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty"`
-	// The parameters for a Simple Log Service event source.
+	// The parameters for the Simple Log Service event source.
 	SourceSLSParametersShrink *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
-	// The SourceScheduledEventParameters request parameter.
+	// The request parameter SourceScheduledEventParameters.
 	SourceScheduledEventParametersShrink *string `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty"`
 }
 

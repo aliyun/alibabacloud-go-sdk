@@ -62,11 +62,11 @@ type UpdateEventSourceRequest struct {
 	//
 	// myrabbitmq.source
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
-	// The external data source configuration.
+	// The external datasource config.
 	//
 	// example:
 	//
-	// {\\"ConsumePosition\\":\\"end\\",\\"LogStore\\":\\"oss_log\\",\\"Project\\":\\"slsaudit-center-5795350335281001-cn-beijing\\",\\"RoleName\\":\\"sls-beijing-tf\\"}
+	// {"IsBase64Decode":true,"QueueName":"queue-1"}
 	ExternalSourceConfig map[string]interface{} `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
 	// The type of the external data source.
 	//
@@ -80,21 +80,21 @@ type UpdateEventSourceRequest struct {
 	//
 	// true
 	LinkedExternalSource *bool `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
-	// The SourceHttpEventParameters request parameter.
+	// The request parameter SourceHttpEventParameters.
 	SourceHttpEventParameters *UpdateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
-	// The SourceKafkaParameters request parameter.
+	// The request parameter SourceKafkaParameters.
 	SourceKafkaParameters *UpdateEventSourceRequestSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The parameters for a Simple Message Queue (formerly MNS) event source.
+	// The parameters for the Simple Message Queue (formerly MNS) event source.
 	SourceMNSParameters *UpdateEventSourceRequestSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
-	// The parameters for an OSS event source.
+	// The parameters for the OSS event source.
 	SourceOSSEventParameters *UpdateEventSourceRequestSourceOSSEventParameters `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty" type:"Struct"`
-	// The SourceRabbitMQParameters request parameter.
+	// The request parameter SourceRabbitMQParameters.
 	SourceRabbitMQParameters *UpdateEventSourceRequestSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The SourceRocketMQParameters request parameter.
+	// The request parameter SourceRocketMQParameters.
 	SourceRocketMQParameters *UpdateEventSourceRequestSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
-	// The parameters for a Simple Log Service event source.
+	// The parameters for the Simple Log Service event source.
 	SourceSLSParameters *UpdateEventSourceRequestSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
-	// The SourceScheduledEventParameters request parameter.
+	// The request parameter SourceScheduledEventParameters.
 	SourceScheduledEventParameters *UpdateEventSourceRequestSourceScheduledEventParameters `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty" type:"Struct"`
 }
 
@@ -277,7 +277,7 @@ func (s *UpdateEventSourceRequest) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceHttpEventParameters struct {
-	// The CIDR block for security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
+	// The CIDR block for the security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
 	// The HTTP request methods supported by the generated webhook. You can select multiple values. Valid values:
 	//
@@ -299,15 +299,15 @@ type UpdateEventSourceRequestSourceHttpEventParameters struct {
 	//
 	// - CONNECT
 	Method []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
-	// The secure domain name for security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
+	// The secure domain name for the security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
 	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
 	// The type of the security configuration. Valid values:
 	//
 	// - none: No configuration is required.
 	//
-	// - ip: CIDR block.
+	// - ip: CIDR block
 	//
-	// - referer: Secure domain name.
+	// - referer: Secure domain name
 	//
 	// example:
 	//
@@ -397,7 +397,7 @@ type UpdateEventSourceRequestSourceKafkaParameters struct {
 	//
 	// cbwp-bp1o3m66wcjgbkssm3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The concurrency quota, which is the number of consumers.
+	// The concurrency quota, which indicates the number of consumers.
 	//
 	// example:
 	//
@@ -550,7 +550,7 @@ func (s *UpdateEventSourceRequestSourceKafkaParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceMNSParameters struct {
-	// Specifies whether to enable Base64 decoding. Default value: true.
+	// Specifies whether to enable Base64 decoding. By default, this option is selected, which indicates that Base64 decoding is enabled.
 	//
 	// example:
 	//
@@ -814,7 +814,7 @@ type UpdateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The group ID of the ApsaraMQ for RocketMQ instance.
+	// The group ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
@@ -852,9 +852,9 @@ type UpdateEventSourceRequestSourceRocketMQParameters struct {
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4: 4.0 instance.
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance.
 	//
-	// - Cloud_5: 5.0 instance.
+	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
 	// example:
 	//
@@ -884,7 +884,7 @@ type UpdateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// - CONSUME_FROM_FIRST_OFFSET: Consumes messages from the earliest offset.
 	//
-	// - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified point in time.
+	// - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified timestamp.
 	//
 	// Default value: CONSUME_FROM_LAST_OFFSET.
 	//
@@ -1075,7 +1075,7 @@ func (s *UpdateEventSourceRequestSourceRocketMQParameters) Validate() error {
 }
 
 type UpdateEventSourceRequestSourceSLSParameters struct {
-	// The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds to consume from a specified point in time.
+	// The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds to consume from the specified time.
 	//
 	// example:
 	//
@@ -1093,7 +1093,7 @@ type UpdateEventSourceRequestSourceSLSParameters struct {
 	//
 	// VideoTestProject
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// When authorizing EventBridge to use this role to read Simple Log Service log content, the following conditions must be met: when creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
+	// When authorizing EventBridge to use this role to read Simple Log Service logs, the following conditions must be met: When creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and select EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
 	//
 	// example:
 	//

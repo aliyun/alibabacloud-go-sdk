@@ -22,11 +22,11 @@ type iUpdateEventSourceResponseBody interface {
 }
 
 type UpdateEventSourceResponseBody struct {
-	// The API response code:
+	// The API return code:
 	//
 	// - Success: indicates success.
 	//
-	// - Other values: indicate error codes. For more information, see Error codes.
+	// - Other values: indicate an error code. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateEventSourceResponseBody struct {
 	//
 	// c057d379-ea65-41ec-a8a8-90627a9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

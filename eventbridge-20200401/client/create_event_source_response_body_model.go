@@ -22,11 +22,11 @@ type iCreateEventSourceResponseBody interface {
 }
 
 type CreateEventSourceResponseBody struct {
-	// The API response code. Valid values:
+	// The API return code. Valid values:
 	//
 	// - Success: The operation is successful.
 	//
-	// - Other values: An error code.
+	// - Other values: Error codes.
 	//
 	// For more information, see Error codes.
 	//
@@ -48,7 +48,7 @@ type CreateEventSourceResponseBody struct {
 	//
 	// 2922208e-e1c6-43ee-bfd1-aca50263bc8a
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *CreateEventSourceResponseBody) Validate() error {
 }
 
 type CreateEventSourceResponseBodyData struct {
-	// The resource ARN.
+	// The ARN of the resource.
 	//
 	// example:
 	//

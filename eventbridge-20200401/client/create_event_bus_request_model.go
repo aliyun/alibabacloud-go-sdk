@@ -34,13 +34,13 @@ type CreateEventBusRequest struct {
 	//
 	// MyEventBus
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// The ID of the resource group. If you do not specify this parameter, the created event bus belongs to the default resource group of the account.
+	// The ID of the resource group. If you do not specify this parameter, the event bus belongs to the default resource group of the account.
 	//
 	// example:
 	//
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags.
+	// The tag list.
 	Tags []*CreateEventBusRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -108,7 +108,7 @@ type CreateEventBusRequestTags struct {
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the first tag in the tag list.
 	//
 	// example:
 	//

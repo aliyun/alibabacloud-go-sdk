@@ -63,6 +63,10 @@ type CreateEventSourceRequest struct {
 	// myrabbitmq.sourc
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	// The external data source configuration.
+	//
+	// example:
+	//
+	// {"IsBase64Decode":true,"QueueName":"queue-1"}
 	ExternalSourceConfig map[string]interface{} `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
 	// The type of the external data source.
 	//
@@ -80,7 +84,7 @@ type CreateEventSourceRequest struct {
 	SourceHttpEventParameters *CreateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
 	// The request parameter SourceKafkaParameters.
 	SourceKafkaParameters *CreateEventSourceRequestSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The parameters for a Simple Message Queue (formerly MNS) event source. If you select Simple Message Queue (formerly MNS) as the event source, the RegionId, IsBase64Decode, and QueueName parameters are required.
+	// The Simple Message Queue (formerly MNS) event source parameters. When you select Simple Message Queue (formerly MNS) as the event source, the RegionId, IsBase64Decode, and QueueName parameters are required.
 	SourceMNSParameters *CreateEventSourceRequestSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters for an OSS event source.
 	SourceOSSEventParameters *CreateEventSourceRequestSourceOSSEventParameters `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty" type:"Struct"`
@@ -273,7 +277,7 @@ func (s *CreateEventSourceRequest) Validate() error {
 }
 
 type CreateEventSourceRequestSourceHttpEventParameters struct {
-	// The CIDR block for security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
+	// The CIDR block security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
 	// The HTTP request methods supported by the generated webhook. You can select multiple values. Valid values:
 	//
@@ -295,7 +299,7 @@ type CreateEventSourceRequestSourceHttpEventParameters struct {
 	//
 	// - CONNECT
 	Method []*string `json:"Method,omitempty" xml:"Method,omitempty" type:"Repeated"`
-	// The secure domain name for security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
+	// The secure domain name configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
 	Referer []*string `json:"Referer,omitempty" xml:"Referer,omitempty" type:"Repeated"`
 	// The type of the security configuration. Valid values:
 	//
@@ -393,13 +397,13 @@ type CreateEventSourceRequestSourceKafkaParameters struct {
 	//
 	// pc-2zehmg67txzuyuuwl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The concurrency quota, which is the number of consumers.
+	// The concurrency quota (number of consumers).
 	//
 	// example:
 	//
 	// 1
 	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	// The network configuration. Valid values: Default and PublicNetwork.
+	// The network configuration. Valid values: Default (default network) and PublicNetwork (self-managed network).
 	//
 	// example:
 	//
@@ -558,9 +562,7 @@ type CreateEventSourceRequestSourceMNSParameters struct {
 	//
 	// MyQueue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The region where the Simple Message Queue (formerly MNS) queue resides.
-	//
-	// Valid values: cn-qingdao, cn-beijing, cn-zhangjiakou, cn-huhehaote, cn-wulanchabu, cn-hangzhou, cn-shanghai, cn-shenzhen, cn-guangzhou, cn-chengdu, cn-hongkong, ap-southeast-1, ap-southeast-2, ap-southeast-3, ap-southeast-5, ap-northeast-1, eu-central-1, us-west-1, us-east-1, ap-south-1, me-east-1, and cn-north-2-gov-1.
+	// The region where the Simple Message Queue (formerly MNS) queue resides. Valid values: cn-qingdao, cn-beijing, cn-zhangjiakou, cn-huhehaote, cn-wulanchabu, cn-hangzhou, cn-shanghai, cn-shenzhen, cn-guangzhou, cn-chengdu, cn-hongkong, ap-southeast-1, ap-southeast-2, ap-southeast-3, ap-southeast-5, ap-northeast-1, eu-central-1, us-west-1, us-east-1, ap-south-1, me-east-1, and cn-north-2-gov-1.
 	//
 	// example:
 	//
@@ -737,7 +739,7 @@ type CreateEventSourceRequestSourceRabbitMQParameters struct {
 	//
 	// amqp-cn-nif22u74****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The queue name of the ApsaraMQ for RabbitMQ instance, such as eb-connect. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// eb-connect: The queue name of the ApsaraMQ for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
@@ -806,13 +808,13 @@ func (s *CreateEventSourceRequestSourceRabbitMQParameters) Validate() error {
 }
 
 type CreateEventSourceRequestSourceRocketMQParameters struct {
-	// The authentication type. Valid values: ACL. You can also leave this parameter empty.
+	// The authentication type. Valid values: ACL or leave empty.
 	//
 	// example:
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The group ID of the ApsaraMQ for RocketMQ instance.
+	// The group ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
@@ -824,7 +826,7 @@ type CreateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// registry-vpc****.aliyuncs.com
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The instance ID of the ApsaraMQ for RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// The instance ID of ApsaraMQ for RocketMQ. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// example:
 	//
@@ -850,9 +852,9 @@ type CreateEventSourceRequestSourceRocketMQParameters struct {
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4: Version 4.0 instance.
+	// - Cloud_4: 4.0 instance.
 	//
-	// - Cloud_5: Version 5.0 instance.
+	// - Cloud_5: 5.0 instance.
 	//
 	// example:
 	//
@@ -870,7 +872,7 @@ type CreateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// vsw-bp10rbrt6rb6vrd89****
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
-	// The ID of the virtual private cloud (VPC). Required for VPCs.
+	// The ID of the VPC. Required for VPCs.
 	//
 	// example:
 	//
@@ -878,11 +880,11 @@ type CreateEventSourceRequestSourceRocketMQParameters struct {
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The consumption offset of the message. Valid values:
 	//
-	// - CONSUME_FROM_LAST_OFFSET: Consumes messages from the latest offset.
+	// - CONSUME_FROM_LAST_OFFSET: Consumes from the latest offset.
 	//
-	// - CONSUME_FROM_FIRST_OFFSET: Consumes messages from the earliest offset.
+	// - CONSUME_FROM_FIRST_OFFSET: Consumes from the earliest offset.
 	//
-	// - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified point in time.
+	// - CONSUME_FROM_TIMESTAMP: Consumes from the offset at a specified point in time.
 	//
 	// Default value: CONSUME_FROM_LAST_OFFSET.
 	//
@@ -1073,7 +1075,7 @@ func (s *CreateEventSourceRequestSourceRocketMQParameters) Validate() error {
 }
 
 type CreateEventSourceRequestSourceSLSParameters struct {
-	// The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds.
+	// The start consumption offset. You can select the earliest or latest offset, which corresponds to begin or end. You can also specify a point in time to start consumption, in seconds.
 	//
 	// example:
 	//
@@ -1091,7 +1093,7 @@ type CreateEventSourceRequestSourceSLSParameters struct {
 	//
 	// test-project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// When granting authorization to EventBridge to read Simple Log Service logs by using this role, the following conditions must be met: When you create the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service as the trusted entity and EventBridge as the trusted service. For more information about the access policy for this role, see Custom event source: Simple Log Service.
+	// When authorizing EventBridge to use this role to read Simple Log Service logs, the following conditions must be met: When creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service as the trusted entity and EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iDeleteConnectionResponseBody interface {
 }
 
 type DeleteConnectionResponseBody struct {
-	// The API operation status or POP error code. Valid values: Success: The operation is successful.
+	// The API operation status code or POP error code. Valid values: Success: The operation is successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
+	// The additional information. If the request is successful, success is returned. If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//

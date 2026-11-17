@@ -20,7 +20,7 @@ type iUpdateEventStreamingResponseBody interface {
 }
 
 type UpdateEventStreamingResponseBody struct {
-	// The response code. A value of Success indicates that the request was successful. Other values indicate error codes. For more information, see Error codes.
+	// The API return code. A value of Success indicates that the call was successful. Other values indicate error codes. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UpdateEventStreamingResponseBody struct {
 	//
 	// 0FDD73AA-7A2D-5BD4-B4C0-88AFEBF5F0F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. A value of true indicates that the operation was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

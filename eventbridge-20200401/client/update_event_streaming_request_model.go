@@ -42,7 +42,7 @@ type UpdateEventStreamingRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
+	// The event filter pattern. If you do not specify this parameter, all events are matched. For more information, see [Event patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type UpdateEventStreamingRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The common JSON Configurations for event providers. This parameter is mutually exclusive with Source.
+	// The common JSON configurations for the event provider. This parameter is mutually exclusive with Source.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type UpdateEventStreamingRequest struct {
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The runtime environment parameters.
 	RunOptions *UpdateEventStreamingRequestRunOptions `json:"RunOptions,omitempty" xml:"RunOptions,omitempty" type:"Struct"`
-	// The event target. You must select one sink, and you can configure only one sink.
+	// The event target. You must select exactly one sink.
 	Sink *UpdateEventStreamingRequestSink `json:"Sink,omitempty" xml:"Sink,omitempty" type:"Struct"`
-	// The event provider. You must select exactly one source type and configure its parameters.
+	// The event provider. You must specify one and only one source type.
 	Source *UpdateEventStreamingRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 	// The transform configurations.
 	Transforms []*UpdateEventStreamingRequestTransforms `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
@@ -205,31 +205,27 @@ func (s *UpdateEventStreamingRequest) Validate() error {
 }
 
 type UpdateEventStreamingRequestRunOptions struct {
-	// The batch window.
+	// The batching window.
 	BatchWindow *UpdateEventStreamingRequestRunOptionsBatchWindow `json:"BatchWindow,omitempty" xml:"BatchWindow,omitempty" type:"Struct"`
 	// The business options.
 	BusinessOption *UpdateEventStreamingRequestRunOptionsBusinessOption `json:"BusinessOption,omitempty" xml:"BusinessOption,omitempty" type:"Struct"`
 	// Specifies whether to enable the dead-letter queue. By default, the dead-letter queue is disabled, and messages that exceed the retry policy are discarded.
 	DeadLetterQueue *UpdateEventStreamingRequestRunOptionsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
-	// The error tolerance policy. Valid values:
-	//
-	// - NONE: No tolerance for errors.
-	//
-	// - ALL: Tolerance for all errors.
+	// The error tolerance policy. Valid values: NONE (no error tolerance) and ALL (tolerates all errors).
 	//
 	// example:
 	//
 	// ALL
 	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	// The number of concurrent tasks.
+	// The maximum number of concurrent tasks.
 	//
 	// example:
 	//
 	// 2
 	MaximumTasks *int64 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	// The retry policy used when an event fails to be pushed.
+	// The retry strategy used when event delivery fails.
 	RetryStrategy *UpdateEventStreamingRequestRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
-	// The throttling value.
+	// The throttling limit.
 	//
 	// example:
 	//
@@ -333,13 +329,13 @@ func (s *UpdateEventStreamingRequestRunOptions) Validate() error {
 }
 
 type UpdateEventStreamingRequestRunOptionsBatchWindow struct {
-	// The maximum number of events that the window can accommodate. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when the condition is met for any of the windows.
+	// The maximum number of events that the window can hold. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window reaches its threshold.
 	//
 	// example:
 	//
 	// 100
 	CountBasedWindow *int32 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
-	// The maximum time window in seconds for accumulating events. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when the condition is met for any of the windows.
+	// The maximum time window in seconds for batching events. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window reaches its threshold.
 	//
 	// example:
 	//
@@ -544,11 +540,7 @@ type UpdateEventStreamingRequestRunOptionsRetryStrategy struct {
 	//
 	// 2
 	MaximumRetryAttempts *int64 `json:"MaximumRetryAttempts,omitempty" xml:"MaximumRetryAttempts,omitempty"`
-	// The retry policy. Valid values:
-	//
-	// - BACKOFF_RETRY: Backoff retry.
-	//
-	// - EXPONENTIAL_DECAY_RETRY: Exponential decay retry.
+	// The retry strategy. Valid values: BACKOFF_RETRY (backoff retry) and EXPONENTIAL_DECAY_RETRY (exponential decay retry).
 	//
 	// example:
 	//
@@ -596,21 +588,23 @@ func (s *UpdateEventStreamingRequestRunOptionsRetryStrategy) Validate() error {
 }
 
 type UpdateEventStreamingRequestSink struct {
+	// The parameters for the AgentCore knowledge base.
+	SinkAgentCoreKnowledgeBaseParameters *SinkAgentCoreKnowledgeBaseParameters `json:"SinkAgentCoreKnowledgeBaseParameters,omitempty" xml:"SinkAgentCoreKnowledgeBaseParameters,omitempty"`
 	// The delivery parameters for the agent runtime.
 	SinkAgentRunParameters *SinkAgentRunParameters `json:"SinkAgentRunParameters,omitempty" xml:"SinkAgentRunParameters,omitempty"`
 	// The description.
 	SinkApacheKafkaParameters *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters `json:"SinkApacheKafkaParameters,omitempty" xml:"SinkApacheKafkaParameters,omitempty" type:"Struct"`
 	// The event source type.
 	SinkApacheRocketMQCheckpointParameters *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
-	// The API destination target parameters.
+	// The parameters for the API destination sink.
 	SinkApiDestinationParameters *SinkApiDestinationParameters `json:"SinkApiDestinationParameters,omitempty" xml:"SinkApiDestinationParameters,omitempty"`
-	// The Model Studio delivery parameters.
+	// The delivery parameters for Model Studio.
 	SinkBaiLianParameters *SinkBaiLianParameters `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
-	// The sink Kafka connector parameters.
+	// The Kafka sink connector parameters.
 	SinkCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
-	// The sink Kafka parameters.
+	// The Kafka sink parameters.
 	SinkCustomizedKafkaParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
-	// The sink DashVector parameters.
+	// The DashVector sink parameters.
 	SinkDashVectorParameters *UpdateEventStreamingRequestSinkSinkDashVectorParameters `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	// The DataHub sink parameters.
 	SinkDataHubParameters *UpdateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
@@ -618,39 +612,39 @@ type UpdateEventStreamingRequestSink struct {
 	SinkDataWorksTriggerParameters *SinkDataWorksTriggerParameters `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
 	// The event source type.
 	SinkDorisParameters *UpdateEventStreamingRequestSinkSinkDorisParameters `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
-	// The name of the event target.
+	// The event target name.
 	SinkEventHouseParameters *UpdateEventStreamingRequestSinkSinkEventHouseParameters `json:"SinkEventHouseParameters,omitempty" xml:"SinkEventHouseParameters,omitempty" type:"Struct"`
 	// The function target.
 	SinkFcParameters *UpdateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
-	// The Sink Fnf parameters.
+	// The Sink FNF parameters.
 	SinkFnfParameters *UpdateEventStreamingRequestSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
-	// The HTTPS target parameters.
+	// The parameters for the HTTPS sink.
 	SinkHttpsParameters *SinkHttpsParameters `json:"SinkHttpsParameters,omitempty" xml:"SinkHttpsParameters,omitempty"`
-	// The sink Kafka parameters.
+	// The Sink Kafka parameters.
 	SinkKafkaParameters *UpdateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
-	// The knowledge base delivery parameters.
+	// The delivery parameters for the knowledge base.
 	SinkKnowledgeBaseParameters *SinkKnowledgeBaseParameters `json:"SinkKnowledgeBaseParameters,omitempty" xml:"SinkKnowledgeBaseParameters,omitempty"`
-	// The Simple Message Queue (formerly MNS) event target, which is an MSMQ service.
+	// The Simple Message Queue (formerly MNS) event target.
 	SinkMNSParameters *UpdateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
-	// The MQTT delivery parameters.
+	// The delivery parameters for MQTT.
 	SinkMQTTParameters *SinkMQTTParameters `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
-	// The Object Storage Service (OSS) delivery parameters.
+	// The delivery parameters for Object Storage Service (OSS).
 	SinkOSSParameters *SinkOSSParameters `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
 	// The parameters for the self-managed RabbitMQ sink.
 	SinkOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The parameters for the Prometheus sink.
+	// The Sink Prometheus parameters.
 	SinkPrometheusParameters *UpdateEventStreamingRequestSinkSinkPrometheusParameters `json:"SinkPrometheusParameters,omitempty" xml:"SinkPrometheusParameters,omitempty" type:"Struct"`
-	// The metadata delivery parameters for Message Queue for RabbitMQ.
+	// The metadata delivery parameters for the MSMQ RabbitMQ message queue.
 	SinkRabbitMQMetaParameters *SinkRabbitMQMetaParameters `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
-	// The message synchronization delivery parameters for Message Queue for RabbitMQ.
+	// The message synchronization delivery parameters for MSMQ RabbitMQ.
 	SinkRabbitMQMsgSyncParameters *SinkRabbitMQMsgSyncParameters `json:"SinkRabbitMQMsgSyncParameters,omitempty" xml:"SinkRabbitMQMsgSyncParameters,omitempty"`
 	// The parameters for the ApsaraMQ for RabbitMQ sink.
 	SinkRabbitMQParameters *UpdateEventStreamingRequestSinkSinkRabbitMQParameters `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
 	// The event source type.
 	SinkRocketMQCheckpointParameters *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters `json:"SinkRocketMQCheckpointParameters,omitempty" xml:"SinkRocketMQCheckpointParameters,omitempty" type:"Struct"`
-	// The destination parameters for the MSMQ RocketMQ message.
+	// The sink parameters for Message Queue for RocketMQ.
 	SinkRocketMQParameters *UpdateEventStreamingRequestSinkSinkRocketMQParameters `json:"SinkRocketMQParameters,omitempty" xml:"SinkRocketMQParameters,omitempty" type:"Struct"`
-	// The Simple Log Service (SLS) sink parameters.
+	// The Simple Log Service sink parameters.
 	SinkSLSParameters *UpdateEventStreamingRequestSinkSinkSLSParameters `json:"SinkSLSParameters,omitempty" xml:"SinkSLSParameters,omitempty" type:"Struct"`
 }
 
@@ -660,6 +654,10 @@ func (s UpdateEventStreamingRequestSink) String() string {
 
 func (s UpdateEventStreamingRequestSink) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkAgentCoreKnowledgeBaseParameters() *SinkAgentCoreKnowledgeBaseParameters {
+	return s.SinkAgentCoreKnowledgeBaseParameters
 }
 
 func (s *UpdateEventStreamingRequestSink) GetSinkAgentRunParameters() *SinkAgentRunParameters {
@@ -772,6 +770,11 @@ func (s *UpdateEventStreamingRequestSink) GetSinkRocketMQParameters() *UpdateEve
 
 func (s *UpdateEventStreamingRequestSink) GetSinkSLSParameters() *UpdateEventStreamingRequestSinkSinkSLSParameters {
 	return s.SinkSLSParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkAgentCoreKnowledgeBaseParameters(v *SinkAgentCoreKnowledgeBaseParameters) *UpdateEventStreamingRequestSink {
+	s.SinkAgentCoreKnowledgeBaseParameters = v
+	return s
 }
 
 func (s *UpdateEventStreamingRequestSink) SetSinkAgentRunParameters(v *SinkAgentRunParameters) *UpdateEventStreamingRequestSink {
@@ -915,6 +918,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkSLSParameters(v *UpdateEventStr
 }
 
 func (s *UpdateEventStreamingRequestSink) Validate() error {
+	if s.SinkAgentCoreKnowledgeBaseParameters != nil {
+		if err := s.SinkAgentCoreKnowledgeBaseParameters.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SinkAgentRunParameters != nil {
 		if err := s.SinkAgentRunParameters.Validate(); err != nil {
 			return err
@@ -1059,13 +1067,13 @@ func (s *UpdateEventStreamingRequestSink) Validate() error {
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
-	// The acknowledgment mode for writing data to Kafka. Valid values:
+	// The Kafka write acknowledgment mode. Valid values:
 	//
-	// - acks=0: No response from the server is required. This mode delivers high performance but carries a high risk of data loss.
+	// - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node successfully writes the data. This mode delivers medium performance and carries a medium risk of data loss. Data may be lost if the primary node fails.
+	// - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but ensures higher data security. Data is lost only if both the primary and secondary nodes fail.
+	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides lower performance but higher data security. Data is lost only if both the primary and secondary nodes go down.
 	//
 	// example:
 	//
@@ -1083,11 +1091,11 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	//
 	// "CompressionType"
 	CompressionType *string `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
-	// The target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following configuration modes are supported:
+	// Specifies the target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
 	//
-	// 1. **Static constant mode**: Enter a fixed topic name string, such as "order_created". All messages are sent to this topic.
+	//     1. **Static constant mode**: Enter a fixed topic name string (for example, "order_created"). All messages are sent to this topic.
 	//
-	// 2. **Dynamic extraction mode**: Enter a standard JSONPath expression, such as "$.user.id" or "$.metadata.category". The system parses the upstream message body and extracts the value of the matched field as the target topic name.
+	//     2. **Dynamic extraction mode**: Enter a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matched field as the target topic name.
 	DynamicTopic *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
 	// The message headers.
 	Headers *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
@@ -1095,19 +1103,19 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	Key *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
 	// The network type.
 	NetworkType *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
-	// The SASL authentication mechanism of Kafka.
+	// The Kafka SASL authentication mechanism.
 	//
 	// example:
 	//
 	// "SaslMechanism"
 	SaslMechanism *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	// The SASL authentication password of Kafka.
+	// The Kafka SASL authentication password.
 	//
 	// example:
 	//
 	// yourPassword
 	SaslPassword *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	// The SASL authentication username of Kafka.
+	// The Kafka SASL authentication username.
 	//
 	// example:
 	//
@@ -1115,7 +1123,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	SaslUser *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
 	// The security group ID.
 	SecurityGroupId *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	// The security protocol type of Kafka. Valid values:
+	// The Kafka security protocol type. Valid values:
 	//
 	// - SASL_SSL
 	//
@@ -1127,37 +1135,37 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	//
 	// SASL_SSL
 	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	// [Required for encrypted private keys] The password for the Kafka client private key. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag), you must provide the decryption password. If the private key is not encrypted, leave this parameter empty. Note: This password is used only to decrypt the private key and is unrelated to Kafka authentication.
+	// [Required for encrypted private keys] The Kafka client private key password. This parameter is required when the client private key is encrypted (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag). Leave this parameter empty if the private key is not encrypted. Note: This password is only used to decrypt the private key and is unrelated to Kafka authentication.
 	//
 	// example:
 	//
 	// yourPassword
 	SslKeyPassword *string `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
-	// [Required for mutual authentication] The Kafka client certificate chain. If mutual SSL authentication (ssl.client.auth=required) is enabled on the Kafka server, you must provide this parameter. Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (the client certificate first, followed by intermediate CA certificates, and the root CA certificate is optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenating and Base64-encoding them.
+	// [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when mutual SSL authentication is enabled on the Kafka server (ssl.client.auth=required). Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, and root CA certificate optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenation and Base64 encoding.
 	//
 	// example:
 	//
 	// "SslKeystoreCertificateChain"
 	SslKeystoreCertificateChain *string `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
-	// [Required for bidirectional authentication] The SSL private key configuration object. When bidirectional SSL authentication is enabled on the Kafka server, you must provide the client private key. The key only supports the KMS mode: specify the Key Management Service (KMS) resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {"KmsArn": "acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx", "KmsSecretValueKey": "keystore_private_key"}.
+	// [Required for mutual authentication] The SSL private key configuration object. When mutual SSL authentication is enabled on the Kafka server, the client private key must be provided. The key only supports the KMS mode: specify the Key Management Service resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory to ensure higher security. Configuration example: {"KmsArn": "acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx", "KmsSecretValueKey": "keystore_private_key"}.
 	SslKeystoreKey *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
-	// [Required in SSL scenarios] The Kafka server trust certificate. It is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirements: PEM format with Base64 encoding, which usually contains the CA certificate of the Kafka server or the server certificate itself. Example: Perform Base64 encoding on the PEM file content of the CA certificate (ensure that it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, you must provide the CA certificate that issued the certificate.
+	// [Required for SSL] The Kafka server trust certificate. It is used to verify the validity of the Kafka broker SSL certificate and prevent man-in-the-middle attacks. Format requirements: Base64-encoded PEM format, typically containing the Kafka server CA certificate or the server certificate itself. Example: Base64-encode the PEM file content of the CA certificate (ensure it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued it.
 	//
 	// example:
 	//
 	// "SslTruststoreCertificates"
 	SslTruststoreCertificates *string `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
-	// The name of the topic.
+	// The topic name.
 	//
 	// example:
 	//
 	// LTC_CACHE_PRD
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The list of vSwitch IDs for the Kafka source.
+	// The vSwitch IDs of the Kafka event source.
 	VSwitchIds *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 	// The message body.
 	Value *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -1399,11 +1407,11 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic struct {
-	// The conversion type. Valid values:
+	// The transformation type. Valid values:
 	//
-	// - CONSTANT: A fixed value.
+	// - CONSTANT: a fixed value.
 	//
-	// - JSONPATH: Extracted from the upstream message based on the specified path.
+	// - JSONPATH: extracted from the upstream message based on the path.
 	//
 	// example:
 	//
@@ -1413,7 +1421,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic struct
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The value.
 	//
@@ -1463,7 +1471,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) V
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1473,7 +1481,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The message headers.
 	//
@@ -1523,7 +1531,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1533,7 +1541,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The message key.
 	//
@@ -1583,7 +1591,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey) Validate()
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1593,7 +1601,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType struct 
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The network type.
 	//
@@ -1643,7 +1651,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType) Va
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1653,7 +1661,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId str
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The security group ID.
 	//
@@ -1703,13 +1711,13 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey struct {
-	// [Required] The ARN of the KMS resource that stores the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
+	// [Required] The KMS resource ARN for storing the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
 	//
 	// example:
 	//
 	// "KmsArn"
 	KmsArn *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
-	// [KMS KV mode] The key name in the KMS secret. If the secret stored in KMS is in a key-value pair (KV) structure, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plain text mode (directly storing the PEM content of the private key), leave this parameter empty.
+	// [KMS KV mode] The key name in the KMS secret. When the KMS secret is a key-value (KV) pair, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plaintext mode (directly storing the PEM content of the private key), leave this parameter empty.
 	//
 	// example:
 	//
@@ -1748,7 +1756,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey)
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1758,9 +1766,9 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The list of vSwitch IDs for the Kafka source.
+	// The vSwitch IDs of the Kafka event source.
 	//
 	// example:
 	//
@@ -1808,7 +1816,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds) Val
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1818,7 +1826,7 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The message body.
 	//
@@ -1868,7 +1876,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -1878,9 +1886,9 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -1938,7 +1946,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters struc
 	//
 	// 192.168.1.1:9876
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The password.
+	// The password of the user.
 	//
 	// example:
 	//
@@ -1966,7 +1974,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters struc
 	//
 	// sg-2ze5bmpw6adn0q******
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The topic of the ApsaraMQ for RocketMQ instance.
+	// The topic of the RocketMQ instance.
 	Topic *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	//
@@ -1974,7 +1982,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters struc
 	//
 	// vsw-uf62oqt1twuevrt******
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -2100,7 +2108,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters) 
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersConsumeTimestamp struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -2110,7 +2118,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersConsum
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The timestamp.
 	//
@@ -2160,7 +2168,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersCo
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersGroup struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -2170,7 +2178,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersGroup 
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The consumer group.
 	//
@@ -2220,7 +2228,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersGr
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersTopic struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -2230,9 +2238,9 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersTopic 
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic in the ApsaraMQ for RocketMQ instance.
+	// The name of the topic in the RocketMQ instance.
 	//
 	// example:
 	//
@@ -2286,7 +2294,7 @@ type UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters struc
 	//
 	// "https://examplebucket.oss-cn-hangzhou.aliyuncs.com/testDoc/Old_Homebrew/2024-06-26%2022%3A34%3A08/opt/homebrew/homebrew/Library/Homebrew/test/support/fixtures/cask/AppWithBinary.zip?OSSAccessKeyId=ri&Expires=1725539627&Signature=rb8q3OpV2i3gZJ"
 	ConnectorPackageUrl *string `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
-	// The properties file in the current ZIP package.
+	// Parses the properties file in the current ZIP package.
 	ConnectorParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
 	// The instance configuration.
 	//
@@ -2450,7 +2458,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	//
 	// collection1
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The schema field definition of the table item when inserting data into DashVector. The result after event content transformation must be in JSON format.
+	// The schema field definitions for the table entry when inserting data into DashVector. The transformed event content must be in JSON format.
 	DashVectorSchemaParameters []*UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -2468,7 +2476,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	//
 	// PublicNetwork
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The DashVector database operation type. Valid values:
+	// The type of DashVector database operation. Valid values:
 	//
 	// - Delete
 	//
@@ -2482,7 +2490,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	Partition *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
 	// The primary key ID used when inserting or deleting a record. If this field is not specified, a random primary key ID is used.
 	PrimaryKeyId *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId `json:"PrimaryKeyId,omitempty" xml:"PrimaryKeyId,omitempty" type:"Struct"`
-	// The vector of the DashVector record to be inserted.
+	// The vector to be inserted into the DashVector record.
 	Vector *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
 }
 
@@ -2604,11 +2612,11 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) Validate() err
 }
 
 type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters struct {
-	// The property name.
+	// The name of the property.
 	Name *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
 	// The DashVector property type.
 	Type *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType `json:"Type,omitempty" xml:"Type,omitempty" type:"Struct"`
-	// The property value.
+	// The value of the property.
 	Value *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
@@ -2667,7 +2675,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchema
 }
 
 type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -2677,9 +2685,9 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPara
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The property name.
+	// The name of the property.
 	//
 	// example:
 	//
@@ -2727,7 +2735,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchema
 }
 
 type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -2737,7 +2745,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPara
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The DashVector property type.
 	//
@@ -2787,7 +2795,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchema
 }
 
 type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -2799,7 +2807,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPara
 	//
 	// ${content}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The property value.
+	// The value of the property.
 	//
 	// example:
 	//
@@ -2863,11 +2871,9 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition struct {
 	//
 	// ${partition}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value.
+	// - If Form is set to CONSTANT, this field specifies the constant value.
 	//
-	// - If Form is CONSTANT: the constant value.
-	//
-	// - If Form is JSONPATH: the content extracted by using JSONPath.
+	// - If Form is set to JSONPATH, this field specifies the content extracted by JSONPath.
 	//
 	// > The Value field cannot exceed 10,240 characters.
 	//
@@ -2933,11 +2939,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId struct 
 	//
 	// ${ID}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value.
-	//
-	// - If Form is JSONPATH: the content extracted by using JSONPath.
-	//
-	// - If Form is TEMPLATE: the template variable.
+	// If Form is set to JSONPATH, this field specifies the content extracted by JSONPath. If Form is set to TEMPLATE, this field specifies the template variable.
 	//
 	// > The Value field cannot exceed 10,240 characters.
 	//
@@ -2999,7 +3001,7 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersVector struct {
 	//
 	// ${vector}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The content extracted by using JSONPath.
+	// The content extracted by JSONPath.
 	//
 	// > The Value field cannot exceed 10,240 characters.
 	//
@@ -3053,17 +3055,17 @@ type UpdateEventStreamingRequestSinkSinkDataHubParameters struct {
 	Body *UpdateEventStreamingRequestSinkSinkDataHubParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The key-value pairs of the custom log. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
 	ContentSchema *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
-	// The data format. You can select the default format or specify key-value pairs. Valid values:
+	// The data format. You can select the default value or specify a key-value format. Valid values:
 	//
 	// - JSON
 	//
 	// - KeyValue
 	ContentType *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
-	// The name of the DataHub project.
+	// The DataHub project name.
 	Project *UpdateEventStreamingRequestSinkSinkDataHubParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
 	// The name of the task role.
 	RoleName *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The name of the DataHub topic.
+	// The DataHub topic name.
 	Topic *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 	// The topic content schema for the TUPLE type.
 	TopicSchema *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
@@ -3210,7 +3212,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersBody struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The record content template for the BLOB type.
 	//
@@ -3274,9 +3276,9 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -3334,9 +3336,9 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersContentType struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -3384,7 +3386,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkDataHubParametersProject struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -3394,9 +3396,9 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersProject struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the DataHub project.
+	// The DataHub project name.
 	//
 	// example:
 	//
@@ -3444,7 +3446,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersProject) Validate()
 }
 
 type UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -3454,7 +3456,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The name of the task role.
 	//
@@ -3504,7 +3506,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) Validate(
 }
 
 type UpdateEventStreamingRequestSinkSinkDataHubParametersTopic struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -3514,9 +3516,9 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersTopic struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the DataHub topic.
+	// The DataHub topic name.
 	//
 	// example:
 	//
@@ -3624,7 +3626,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -3634,7 +3636,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The topic type. Valid values:
 	//
@@ -3688,21 +3690,21 @@ func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParameters struct {
-	// The public HTTP endpoint for BE.
+	// The BE public HTTP endpoint.
 	BeHttpEndpoint *UpdateEventStreamingRequestSinkSinkDorisParametersBeHttpEndpoint `json:"BeHttpEndpoint,omitempty" xml:"BeHttpEndpoint,omitempty" type:"Struct"`
 	// The message content.
 	Body *UpdateEventStreamingRequestSinkSinkDorisParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The database.
 	Database *UpdateEventStreamingRequestSinkSinkDorisParametersDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
-	// The HTTP endpoint for FE.
+	// The FE HTTP protocol endpoint.
 	FeHttpEndpoint *UpdateEventStreamingRequestSinkSinkDorisParametersFeHttpEndpoint `json:"FeHttpEndpoint,omitempty" xml:"FeHttpEndpoint,omitempty" type:"Struct"`
-	// The network type.
+	// The network.
 	NetworkType *UpdateEventStreamingRequestSinkSinkDorisParametersNetworkType `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
 	// The password.
 	Password *UpdateEventStreamingRequestSinkSinkDorisParametersPassword `json:"Password,omitempty" xml:"Password,omitempty" type:"Struct"`
-	// The MySQL endpoint.
+	// The MySQL protocol endpoint.
 	QueryEndpoint *UpdateEventStreamingRequestSinkSinkDorisParametersQueryEndpoint `json:"QueryEndpoint,omitempty" xml:"QueryEndpoint,omitempty" type:"Struct"`
-	// The security group ID.
+	// The security group.
 	SecurityGroupId *UpdateEventStreamingRequestSinkSinkDorisParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The destination table.
 	Table *UpdateEventStreamingRequestSinkSinkDorisParametersTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Struct"`
@@ -3710,7 +3712,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParameters struct {
 	UserName *UpdateEventStreamingRequestSinkSinkDorisParametersUserName `json:"UserName,omitempty" xml:"UserName,omitempty" type:"Struct"`
 	// The vSwitch IDs.
 	VSwitchIds *UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *UpdateEventStreamingRequestSinkSinkDorisParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -3895,7 +3897,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParameters) Validate() error {
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersBeHttpEndpoint struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -3905,9 +3907,9 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersBeHttpEndpoint struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The public HTTP endpoint for BE.
+	// The BE public HTTP endpoint.
 	//
 	// example:
 	//
@@ -3955,7 +3957,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersBeHttpEndpoint) Valid
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersBody struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -3965,7 +3967,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersBody struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The message content.
 	//
@@ -4019,7 +4021,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersBody) Validate() erro
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersDatabase struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4029,7 +4031,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersDatabase struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The database.
 	//
@@ -4079,7 +4081,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersDatabase) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersFeHttpEndpoint struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4089,9 +4091,9 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersFeHttpEndpoint struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The HTTP endpoint for FE.
+	// The FE HTTP protocol endpoint.
 	//
 	// example:
 	//
@@ -4139,7 +4141,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersFeHttpEndpoint) Valid
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersNetworkType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4149,9 +4151,9 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersNetworkType struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The network type.
+	// The network.
 	//
 	// example:
 	//
@@ -4199,7 +4201,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersNetworkType) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersPassword struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4209,7 +4211,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersPassword struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The password.
 	//
@@ -4259,7 +4261,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersPassword) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersQueryEndpoint struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4269,9 +4271,9 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersQueryEndpoint struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The MySQL endpoint.
+	// The MySQL protocol endpoint.
 	//
 	// example:
 	//
@@ -4319,7 +4321,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersQueryEndpoint) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersSecurityGroupId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4329,9 +4331,9 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersSecurityGroupId struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The security group ID.
+	// The security group.
 	//
 	// example:
 	//
@@ -4379,7 +4381,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersSecurityGroupId) Vali
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersTable struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4389,7 +4391,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersTable struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The destination table.
 	//
@@ -4439,7 +4441,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersTable) Validate() err
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersUserName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4449,7 +4451,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersUserName struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The username.
 	//
@@ -4499,7 +4501,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersUserName) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4509,7 +4511,7 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The vSwitch IDs.
 	//
@@ -4559,7 +4561,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds) Validate(
 }
 
 type UpdateEventStreamingRequestSinkSinkDorisParametersVpcId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -4569,9 +4571,9 @@ type UpdateEventStreamingRequestSinkSinkDorisParametersVpcId struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -4619,7 +4621,7 @@ func (s *UpdateEventStreamingRequestSinkSinkDorisParametersVpcId) Validate() err
 }
 
 type UpdateEventStreamingRequestSinkSinkEventHouseParameters struct {
-	// The name of the catalog.
+	// The catalog name.
 	//
 	// example:
 	//
@@ -4699,13 +4701,13 @@ func (s *UpdateEventStreamingRequestSinkSinkEventHouseParameters) Validate() err
 }
 
 type UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRules struct {
-	// The name of the column.
+	// The column name.
 	//
 	// example:
 	//
 	// age
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The type of the column.
+	// The column type.
 	//
 	// example:
 	//
@@ -4820,9 +4822,9 @@ func (s *UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColu
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParameters struct {
-	// The body of the content sent to the function.
+	// The body sent to the function.
 	Body *UpdateEventStreamingRequestSinkSinkFcParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The delivery concurrency. The minimum value is 1.
+	// The delivery concurrency. Minimum value: 1.
 	Concurrency *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
 	// The format transformation rule for the event content.
 	DataFormat *UpdateEventStreamingRequestSinkSinkFcParametersDataFormat `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" type:"Struct"`
@@ -4830,9 +4832,9 @@ type UpdateEventStreamingRequestSinkSinkFcParameters struct {
 	FunctionName *UpdateEventStreamingRequestSinkSinkFcParametersFunctionName `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
 	// The invocation type. Valid values:
 	//
-	// - Sync: synchronous invocation
+	// - Sync: Synchronous.
 	//
-	// - Async: asynchronous invocation
+	// - Async: Asynchronous.
 	InvocationType *UpdateEventStreamingRequestSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	// The alias of the service to which the function belongs.
 	Qualifier *UpdateEventStreamingRequestSinkSinkFcParametersQualifier `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -4963,7 +4965,7 @@ type UpdateEventStreamingRequestSinkSinkFcParametersBody struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -5015,7 +5017,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersBody) Validate() error {
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParametersConcurrency struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5027,7 +5029,7 @@ type UpdateEventStreamingRequestSinkSinkFcParametersConcurrency struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The delivery concurrency. The minimum value is 1.
+	// The delivery concurrency. Minimum value: 1.
 	//
 	// example:
 	//
@@ -5077,13 +5079,13 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) Validate() 
 type UpdateEventStreamingRequestSinkSinkFcParametersDataFormat struct {
 	// The transformation format. Valid values:
 	//
-	// - ORIGINAL: complete event
+	// - ORIGINAL: Complete event.
 	//
-	// - JSONPATH: partial event
+	// - JSONPATH: Partial event.
 	//
-	// - CONSTANT: constant
+	// - CONSTANT: Constant.
 	//
-	// - TEMPLATE: template
+	// - TEMPLATE: Template.
 	//
 	// example:
 	//
@@ -5095,7 +5097,7 @@ type UpdateEventStreamingRequestSinkSinkFcParametersDataFormat struct {
 	//
 	// $.data.key
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -5147,7 +5149,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersDataFormat) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParametersFunctionName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5207,7 +5209,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersFunctionName) Validate()
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParametersInvocationType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5267,7 +5269,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersInvocationType) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParametersQualifier struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5327,7 +5329,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersQualifier) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParametersServiceName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5391,7 +5393,7 @@ type UpdateEventStreamingRequestSinkSinkFnfParameters struct {
 	ExecutionName *UpdateEventStreamingRequestSinkSinkFnfParametersExecutionName `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty" type:"Struct"`
 	// The name of the flow.
 	FlowName *UpdateEventStreamingRequestSinkSinkFnfParametersFlowName `json:"FlowName,omitempty" xml:"FlowName,omitempty" type:"Struct"`
-	// The input information for the execution.
+	// The input for the execution.
 	Input *UpdateEventStreamingRequestSinkSinkFnfParametersInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	// The role configuration.
 	RoleName *UpdateEventStreamingRequestSinkSinkFnfParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
@@ -5466,7 +5468,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFnfParameters) Validate() error {
 }
 
 type UpdateEventStreamingRequestSinkSinkFnfParametersExecutionName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5476,7 +5478,7 @@ type UpdateEventStreamingRequestSinkSinkFnfParametersExecutionName struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The name of the execution.
 	//
@@ -5526,7 +5528,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFnfParametersExecutionName) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkFnfParametersFlowName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5536,7 +5538,7 @@ type UpdateEventStreamingRequestSinkSinkFnfParametersFlowName struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The name of the flow.
 	//
@@ -5586,7 +5588,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFnfParametersFlowName) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkFnfParametersInput struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5596,9 +5598,9 @@ type UpdateEventStreamingRequestSinkSinkFnfParametersInput struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The input information for the execution.
+	// The input for the execution.
 	//
 	// example:
 	//
@@ -5646,7 +5648,7 @@ func (s *UpdateEventStreamingRequestSinkSinkFnfParametersInput) Validate() error
 }
 
 type UpdateEventStreamingRequestSinkSinkFnfParametersRoleName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5656,7 +5658,7 @@ type UpdateEventStreamingRequestSinkSinkFnfParametersRoleName struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The role configuration.
 	//
@@ -5706,13 +5708,13 @@ func (s *UpdateEventStreamingRequestSinkSinkFnfParametersRoleName) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParameters struct {
-	// The acknowledgment mode for writing data to Kafka. Valid values:
+	// The Kafka write acknowledgment mode. Valid values:
 	//
-	// - acks=0: No response from the server is required. This mode delivers high performance but carries a high risk of data loss.
+	// - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node successfully writes the data. This mode delivers medium performance and carries a medium risk of data loss. Data may be lost if the primary node fails.
+	// - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but ensures higher data security. Data is lost only if both the primary and secondary nodes fail.
+	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides lower performance but higher data security. Data is lost only if both the primary and secondary nodes go down.
 	Acks *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
 	// The compression type.
 	//
@@ -5720,21 +5722,21 @@ type UpdateEventStreamingRequestSinkSinkKafkaParameters struct {
 	//
 	// "CompressionType"
 	CompressionType *string `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
-	// The target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following configuration modes are supported:
+	// Specifies the target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
 	//
-	// 1. **Static constant mode**: Enter a fixed topic name string, such as "order_created". All messages are sent to this topic.
+	//     1. **Static constant mode**: Enter a fixed topic name string (for example, "order_created"). All messages are sent to this topic.
 	//
-	// 2. **Dynamic extraction mode**: Enter a standard JSONPath expression, such as "$.user.id" or "$.metadata.category". The system parses the upstream message body and extracts the value of the matched field as the target topic name.
+	//     2. **Dynamic extraction mode**: Enter a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matched field as the target topic name.
 	DynamicTopic *UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
-	// The additional metadata for Kafka messages.
+	// The additional metadata of the Kafka message.
 	Headers *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The target service type is Message Queue for Apache Kafka. Specify the instance ID of the message queue (MSMQ).
+	// The target service type is MSMQ for Apache Kafka.
 	InstanceId *UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
-	// The identifier of the message.
+	// The message identifier.
 	Key *UpdateEventStreamingRequestSinkSinkKafkaParametersKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
-	// The name of the topic.
+	// The topic name.
 	Topic *UpdateEventStreamingRequestSinkSinkKafkaParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The content of the message body.
+	// The message body.
 	Value *UpdateEventStreamingRequestSinkSinkKafkaParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
@@ -5858,7 +5860,7 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) Validate() error {
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersAcks struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5870,13 +5872,13 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersAcks struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The acknowledgment mode for writing data to Kafka. Valid values:
+	// The Kafka write acknowledgment mode. Valid values:
 	//
-	// - acks=0: No response from the server is required. This mode delivers high performance but carries a high risk of data loss.
+	// - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node successfully writes the data. This mode delivers medium performance and carries a medium risk of data loss. Data may be lost if the primary node fails.
+	// - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but ensures higher data security. Data is lost only if both the primary and secondary nodes fail.
+	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides lower performance but higher data security. Data is lost only if both the primary and secondary nodes go down.
 	//
 	// example:
 	//
@@ -5924,11 +5926,11 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks) Validate() erro
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic struct {
-	// The conversion type. Valid values:
+	// The transformation type. Valid values:
 	//
-	// - CONSTANT: A fixed value.
+	// - CONSTANT: a fixed value.
 	//
-	// - JSONPATH: Extracted from the upstream message based on the specified path.
+	// - JSONPATH: extracted from the upstream message based on the path.
 	//
 	// example:
 	//
@@ -5938,7 +5940,7 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The value.
 	//
@@ -5990,13 +5992,13 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) Validat
 type UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders struct {
 	// The transformation format. Valid values:
 	//
-	// - ORIGINAL: complete event
+	// - ORIGINAL: Complete event.
 	//
-	// - JSONPATH: partial event
+	// - JSONPATH: Partial event.
 	//
-	// - CONSTANT: constant
+	// - CONSTANT: Constant.
 	//
-	// - TEMPLATE: template
+	// - TEMPLATE: Template.
 	//
 	// example:
 	//
@@ -6008,7 +6010,7 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -6060,7 +6062,7 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -6120,7 +6122,7 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId) Validate(
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersKey struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -6132,7 +6134,7 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersKey struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The identifier of the message.
+	// The message identifier.
 	//
 	// example:
 	//
@@ -6180,7 +6182,7 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersKey) Validate() error
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersTopic struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -6192,7 +6194,7 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersTopic struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic.
+	// The topic name.
 	//
 	// example:
 	//
@@ -6252,7 +6254,7 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersValue struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -6308,7 +6310,7 @@ type UpdateEventStreamingRequestSinkSinkMNSParameters struct {
 	Body *UpdateEventStreamingRequestSinkSinkMNSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// Specifies whether to enable Base64 encoding.
 	IsBase64Encode *UpdateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode `json:"IsBase64Encode,omitempty" xml:"IsBase64Encode,omitempty" type:"Struct"`
-	// The target service type is Simple Message Queue (formerly MNS), an MSMQ service.
+	// The target service type is Simple Message Queue (formerly MNS).
 	QueueName *UpdateEventStreamingRequestSinkSinkMNSParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
 }
 
@@ -6379,7 +6381,7 @@ type UpdateEventStreamingRequestSinkSinkMNSParametersBody struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -6491,7 +6493,7 @@ func (s *UpdateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode) Validat
 }
 
 type UpdateEventStreamingRequestSinkSinkMNSParametersQueueName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -6503,7 +6505,7 @@ type UpdateEventStreamingRequestSinkSinkMNSParametersQueueName struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the queue in Simple Message Queue (formerly MNS), an MSMQ service.
+	// The name of the queue in Simple Message Queue (formerly MNS).
 	//
 	// example:
 	//
@@ -6561,7 +6563,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The content of the message body.
+	// The message body.
 	Body *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The endpoint.
 	//
@@ -6601,7 +6603,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	//
 	// my-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The routing key of the message.
+	// The message routing key.
 	RoutingKey *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
 	// The security group ID.
 	//
@@ -6631,7 +6633,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	//
 	// vsw-uf6of9452b2pba82c ****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The name of the virtual host in RabbitMQ.
+	// The name of the RabbitMQ virtual host.
 	//
 	// example:
 	//
@@ -6892,9 +6894,9 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId st
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The message ID value.
+	// The value of the message ID.
 	//
 	// example:
 	//
@@ -7014,7 +7016,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey s
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The routing key value.
+	// The value of the routing key.
 	//
 	// example:
 	//
@@ -7080,7 +7082,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParameters struct {
 	Username *UpdateEventStreamingRequestSinkSinkPrometheusParametersUsername `json:"Username,omitempty" xml:"Username,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	VSwitchId *UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Struct"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -7237,7 +7239,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParameters) Validate() err
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7247,7 +7249,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType st
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The authentication method.
 	//
@@ -7307,7 +7309,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersData struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The metric content.
 	//
@@ -7359,17 +7361,17 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersData) Validate()
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters struct {
 	// The transformation format. Valid values:
 	//
-	// - JSONPATH: JSONPATH.
+	// - JSONPATH: The JSONPath format.
 	//
-	// - CONSTANT: CONSTANT.
+	// - CONSTANT: The constant format.
 	//
-	// - TEMPLATE: TEMPLATE.
+	// - TEMPLATE: The template format.
 	//
 	// example:
 	//
 	// TEMPLATE
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The HTTP request header template. This parameter is required when Form is set to TEMPLATE. The transformed event content must be in JSON format.
+	// The HTTP request header template style. This parameter is required when Form is set to TEMPLATE. The transformed event content must be in JSON format.
 	//
 	// example:
 	//
@@ -7379,13 +7381,15 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters str
 	//
 	// }
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// - CONSTANT: A constant value.
+	// The value.
 	//
-	// - JSONPATH: The content extracted by using JSONPath.
+	// - If Form is CONSTANT: the constant value.
 	//
-	// - TEMPLATE: A template variable.
+	// - If Form is JSONPATH: the content extracted by JSONPath.
 	//
-	// Note: The Value field cannot exceed 10,240 characters in length.
+	// - If Form is TEMPLATE: the template variable.
+	//
+	// Note: The Value field cannot exceed 10,240 characters.
 	//
 	// example:
 	//
@@ -7433,7 +7437,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7443,7 +7447,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The network type. Valid values:
 	//
@@ -7497,7 +7501,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType) Val
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersPassword struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7507,7 +7511,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersPassword struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The password.
 	//
@@ -7557,7 +7561,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersPassword) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7567,7 +7571,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId stru
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The security group ID.
 	//
@@ -7617,7 +7621,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId)
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersURL struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7627,7 +7631,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersURL struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The Prometheus Remote Write URL.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -7673,7 +7677,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersURL) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersUsername struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7683,7 +7687,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersUsername struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The username.
 	//
@@ -7733,7 +7737,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersUsername) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7743,7 +7747,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The vSwitch ID.
 	//
@@ -7793,7 +7797,7 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId) Valid
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7803,9 +7807,9 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -7855,29 +7859,29 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId) Validate(
 type UpdateEventStreamingRequestSinkSinkRabbitMQParameters struct {
 	// The message content.
 	Body *UpdateEventStreamingRequestSinkSinkRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
+	// Exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
 	Exchange *UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
-	// The target service type is Message Queue for RabbitMQ.
+	// The target service type is ApsaraMQ for RabbitMQ.
 	InstanceId *UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message ID.
 	MessageId *UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
-	// The network type used to connect to the target ApsaraMQ for RabbitMQ instance. If you set this parameter to PrivateNetwork, you must also configure the VpcId, VSwitchIds, and SecurityGroupId parameters. When you update an event stream and want to retain the original private network configuration, you must include these network parameters.
+	// The network type configuration used to connect to the target ApsaraMQ for RabbitMQ instance. If you set this parameter to PrivateNetwork, you must also configure VpcId, VSwitchIds, and SecurityGroupId. When you update an event stream and want to retain the original private network configuration, you must specify these network parameters together.
 	NetworkType *UpdateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
 	// The filter properties.
 	Properties *UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The queue mode. This parameter is required only when the TargetType parameter is set to Queue.
+	// Queue mode. This parameter is required only when the TargetType parameter is set to Queue.
 	QueueName *UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
-	// The routing rule of the message. This parameter is required only when the TargetType parameter is set to Exchange.
+	// The routing rule for messages. This parameter is required only when the TargetType parameter is set to Exchange.
 	RoutingKey *UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
-	// The security group used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the NetworkType.Value parameter is set to PrivateNetwork.
+	// The security group configuration used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the value of NetworkType is set to PrivateNetwork.
 	SecurityGroupId *UpdateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The target type.
 	TargetType *UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType `json:"TargetType,omitempty" xml:"TargetType,omitempty" type:"Struct"`
-	// The vSwitches used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the NetworkType.Value parameter is set to PrivateNetwork.
+	// The vSwitch configuration used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the value of NetworkType is set to PrivateNetwork.
 	VSwitchIds *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The name of the vhost in the Message Queue for RabbitMQ instance.
+	// The name of the vhost in the ApsaraMQ for RabbitMQ instance.
 	VirtualHostName *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty" type:"Struct"`
-	// The VPC where the target ApsaraMQ for RabbitMQ instance resides. This parameter is required when the NetworkType.Value parameter is set to PrivateNetwork.
+	// The VPC configuration for the target ApsaraMQ for RabbitMQ instance. This parameter is required when the value of NetworkType is set to PrivateNetwork.
 	VpcId *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -8088,7 +8092,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersBody struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -8140,7 +8144,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersBody) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8152,7 +8156,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the exchange in the Message Queue for RabbitMQ instance.
+	// The name of the exchange in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -8200,7 +8204,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8212,7 +8216,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The instance ID of the Message Queue for RabbitMQ instance.
+	// The instance ID of the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -8272,7 +8276,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -8330,17 +8334,13 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType struct {
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+	// The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
 	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The network type used to connect to the target ApsaraMQ for RabbitMQ instance. Valid values:
-	//
-	// - PublicNetwork: the Internet.
-	//
-	// - PrivateNetwork: a VPC.
+	// The network type used to connect to the target ApsaraMQ for RabbitMQ instance. Valid values: PublicNetwork, which indicates the Internet, and PrivateNetwork, which indicates a VPC.
 	//
 	// example:
 	//
@@ -8400,7 +8400,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -8452,7 +8452,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8512,7 +8512,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName) Validat
 }
 
 type UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8524,7 +8524,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The routing rule of the message.
+	// The routing rule for messages.
 	//
 	// example:
 	//
@@ -8578,13 +8578,13 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId struct
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+	// The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
 	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The ID of the security group used to connect to the target ApsaraMQ for RabbitMQ instance.
+	// The security group ID used to connect to the target ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -8632,7 +8632,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId) V
 }
 
 type UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8646,9 +8646,9 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The target type. Valid values:
 	//
-	// - Exchange: the exchange mode.
+	// - Exchange: Exchange mode.
 	//
-	// - Queue: the queue mode.
+	// - Queue: Queue mode.
 	//
 	// example:
 	//
@@ -8702,13 +8702,13 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds struct {
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+	// The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
 	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The IDs of the vSwitches used to connect to the target ApsaraMQ for RabbitMQ instance. Separate multiple vSwitch IDs with commas (,).
+	// The vSwitch IDs used to connect to the target ApsaraMQ for RabbitMQ instance. Separate multiple vSwitch IDs with commas.
 	//
 	// example:
 	//
@@ -8756,7 +8756,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8766,9 +8766,9 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName struct
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the vhost in the Message Queue for RabbitMQ instance.
+	// The name of the vhost in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -8822,13 +8822,13 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersVpcId struct {
 	//
 	// CONSTANT
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+	// The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
 	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The ID of the VPC where the target ApsaraMQ for RabbitMQ instance resides.
+	// The VPC ID of the target ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -8888,15 +8888,15 @@ type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4: an ApsaraMQ for RocketMQ 4.0 instance.
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance.
 	//
-	// - Cloud_5: an ApsaraMQ for RocketMQ 5.0 instance.
+	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
 	// example:
 	//
 	// Cloud_4
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The topic of the Message Queue for RocketMQ instance.
+	// The topic of the ApsaraMQ for RocketMQ instance.
 	Topic *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 }
 
@@ -8973,7 +8973,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimestamp struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8983,7 +8983,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimes
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The timestamp.
 	//
@@ -9033,7 +9033,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeT
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9043,7 +9043,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup struct
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The consumer group.
 	//
@@ -9093,7 +9093,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup) V
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9103,9 +9103,9 @@ type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic struct
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic in the Message Queue for RocketMQ instance.
+	// The name of the topic in the ApsaraMQ for RocketMQ instance.
 	//
 	// example:
 	//
@@ -9155,11 +9155,11 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic) V
 type UpdateEventStreamingRequestSinkSinkRocketMQParameters struct {
 	// The message content.
 	Body *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The message delivery order type. Optional. Default value: Concurrently.
+	// The message delivery order type. This parameter is optional. Default value: Concurrent delivery.
 	DeliveryOrderType *UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType `json:"DeliveryOrderType,omitempty" xml:"DeliveryOrderType,omitempty" type:"Struct"`
 	// The endpoint of the instance.
 	InstanceEndpoint *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
-	// The instance ID. The destination service type is MSMQ RocketMQ message.
+	// The destination service type is Message Queue for RocketMQ.
 	InstanceId *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The password of the instance.
 	InstancePassword *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty" type:"Struct"`
@@ -9181,15 +9181,15 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParameters struct {
 	SecurityGroupId *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The sharding key of the message.
 	//
-	// > When DeliveryOrderType is set to Orderly, this specifies the event content transformation rule for the ShardingKey property when writing messages to the downstream service. If the source is RocketMQ, ShardingKey can be empty. In this case, the sharding key of the message is generated by concatenating the upstream BrokerName and QueueId.
+	// > When DeliveryOrderType is set to Orderly, this parameter specifies the event content transformation rule for the ShardingKey attribute when messages are written to the downstream service. When Source is set to RocketMQ, ShardingKey can be left empty. In this case, the message sharding key is generated by concatenating the upstream BrokerName and QueueId.
 	ShardingKey *UpdateEventStreamingRequestSinkSinkRocketMQParametersShardingKey `json:"ShardingKey,omitempty" xml:"ShardingKey,omitempty" type:"Struct"`
 	// The filter properties.
 	Tags *UpdateEventStreamingRequestSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The topic of the MSMQ RocketMQ message instance.
+	// The topic of the Message Queue for RocketMQ instance.
 	Topic *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	VSwitchIds *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -9442,7 +9442,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersBody struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -9494,7 +9494,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9504,13 +9504,13 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType stru
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The delivery order type. Valid values:
 	//
-	// - **Orderly**: Orderly delivery.
+	// - **Orderly:*	- Orderly delivery.
 	//
-	// - **Concurrently**: Concurrent delivery.
+	// - **Concurrently:*	- Concurrent delivery.
 	//
 	// example:
 	//
@@ -9558,7 +9558,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType)
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9568,7 +9568,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint struc
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The endpoint of the instance.
 	//
@@ -9618,7 +9618,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) 
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9630,7 +9630,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The instance ID of the MSMQ RocketMQ message.
+	// The instance ID of the Message Queue for RocketMQ.
 	//
 	// example:
 	//
@@ -9678,7 +9678,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9688,7 +9688,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword struc
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The password of the instance.
 	//
@@ -9738,7 +9738,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) 
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9748,11 +9748,11 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance. This is the default value.
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
 	//
 	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
@@ -9804,7 +9804,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) Vali
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9814,7 +9814,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername struc
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The username of the instance.
 	//
@@ -9876,7 +9876,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -9928,7 +9928,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9938,7 +9938,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The network type. Valid values:
 	//
@@ -10004,7 +10004,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -10056,7 +10056,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10066,7 +10066,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId struct
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The security group ID.
 	//
@@ -10116,7 +10116,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) V
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersShardingKey struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10126,9 +10126,9 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersShardingKey struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value of the sharding key.
+	// The sharding key value.
 	//
 	// example:
 	//
@@ -10188,7 +10188,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersTags struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -10240,7 +10240,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersTags) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10252,7 +10252,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic of the MSMQ RocketMQ message instance.
+	// The topic of the Message Queue for RocketMQ instance.
 	//
 	// example:
 	//
@@ -10300,7 +10300,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10310,7 +10310,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The vSwitch ID.
 	//
@@ -10370,9 +10370,9 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -10420,23 +10420,23 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkSLSParameters struct {
-	// The content sent to SLS.
+	// The content sent to Simple Log Service.
 	Body *UpdateEventStreamingRequestSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The custom key-value pairs for logs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
 	ContentSchema *UpdateEventStreamingRequestSinkSinkSLSParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
-	// The SLS data format. Valid values:
+	// The Simple Log Service data format. Valid values:
 	//
 	// - JSON
 	//
 	// - KeyValue
 	ContentType *UpdateEventStreamingRequestSinkSinkSLSParametersContentType `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
-	// The SLS Logstore.
+	// The Simple Log Service Logstore.
 	LogStore *UpdateEventStreamingRequestSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
-	// The SLS project.
+	// The Simple Log Service project.
 	Project *UpdateEventStreamingRequestSinkSinkSLSParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// When granting authorization to the event bus EventBridge to use this role to read SLS log content, you must meet the following conditions: when creating the role for the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and set the trusted service to the event bus.
+	// To authorize EventBridge to use this role to read Simple Log Service logs, the following condition must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and set the trusted service to the event bus.
 	RoleName *UpdateEventStreamingRequestSinkSinkSLSParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The topic of the log. This corresponds to the reserved field topic in SLS.
+	// The topic to which the logs belong, which corresponds to the reserved Simple Log Service field topic.
 	Topic *UpdateEventStreamingRequestSinkSinkSLSParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 }
 
@@ -10563,7 +10563,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersBody struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before conversion.
+	// The value before transformation.
 	//
 	// example:
 	//
@@ -10625,7 +10625,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersContentSchema struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The custom key-value pairs.
 	//
@@ -10685,9 +10685,9 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersContentType struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The SLS data format.
+	// The Simple Log Service data format.
 	//
 	// example:
 	//
@@ -10735,7 +10735,7 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersContentType) Validate()
 }
 
 type UpdateEventStreamingRequestSinkSinkSLSParametersLogStore struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10745,9 +10745,9 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersLogStore struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The SLS Logstore.
+	// The Simple Log Service Logstore.
 	//
 	// example:
 	//
@@ -10795,7 +10795,7 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersLogStore) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkSLSParametersProject struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10805,9 +10805,9 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersProject struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The SLS project.
+	// The Simple Log Service project.
 	//
 	// example:
 	//
@@ -10855,7 +10855,7 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersProject) Validate() err
 }
 
 type UpdateEventStreamingRequestSinkSinkSLSParametersRoleName struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10865,9 +10865,9 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersRoleName struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// When granting authorization to the event bus EventBridge to use this role to read SLS log content, you must meet the following conditions: when creating the role for the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and set the trusted service to the event bus.
+	// To authorize EventBridge to use this role to read Simple Log Service logs, the following condition must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and set the trusted service to the event bus.
 	//
 	// example:
 	//
@@ -10915,7 +10915,7 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersRoleName) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkSLSParametersTopic struct {
-	// The conversion format. Default value: CONSTANT.
+	// The transformation format. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -10925,9 +10925,9 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersTopic struct {
 	//
 	// example:
 	//
-	// The template string, if any
+	// Template string (if any)
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic of the log. This corresponds to the reserved field topic in SLS.
+	// The topic to which the logs belong, which corresponds to the reserved Simple Log Service field topic.
 	//
 	// example:
 	//
@@ -10975,15 +10975,15 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersTopic) Validate() error
 }
 
 type UpdateEventStreamingRequestSource struct {
-	// The parameter settings for open source Kafka.
+	// The open-source Kafka parameter settings.
 	SourceApacheKafkaParameters *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
-	// The RocketMQ checkpoint source.
+	// The RocketMQ Checkpoint source.
 	SourceApacheRocketMQCheckpointParameters *UpdateEventStreamingRequestSourceSourceApacheRocketMQCheckpointParameters `json:"SourceApacheRocketMQCheckpointParameters,omitempty" xml:"SourceApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
-	// The custom connector Apache Kafka event source.
+	// The custom Apache Kafka connector event source.
 	SourceCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	// The custom Kafka event source.
 	SourceCustomizedKafkaParameters *UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
-	// The DTS source.
+	// The DTS event source.
 	SourceDTSParameters *UpdateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The event bus source.
 	SourceEventBusParameters *UpdateEventStreamingRequestSourceSourceEventBusParameters `json:"SourceEventBusParameters,omitempty" xml:"SourceEventBusParameters,omitempty" type:"Struct"`
@@ -10991,33 +10991,33 @@ type UpdateEventStreamingRequestSource struct {
 	SourceFeiShuDocsParameters *SourceFeiShuDocsParameters `json:"SourceFeiShuDocsParameters,omitempty" xml:"SourceFeiShuDocsParameters,omitempty"`
 	// The JDBC data source parameters.
 	SourceJDBCParameters *SourceJDBCParameters `json:"SourceJDBCParameters,omitempty" xml:"SourceJDBCParameters,omitempty"`
-	// The source Kafka parameters.
+	// The Kafka source.
 	SourceKafkaParameters *UpdateEventStreamingRequestSourceSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The source Simple Message Queue (formerly MNS) parameters.
+	// The parameters for Simple Message Queue (formerly MNS) as the source.
 	SourceMNSParameters *UpdateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
-	// The source MQTT parameters.
+	// The MQTT event source.
 	SourceMQTTParameters *UpdateEventStreamingRequestSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
-	// The source MySQL parameters.
+	// The MySQL event source.
 	SourceMySQLParameters *SourceMySQLParameters `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
-	// The source OSS parameters.
+	// The OSS event source.
 	SourceOSSParameters *UpdateEventStreamingRequestSourceSourceOSSParameters `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
-	// The source open source RabbitMQ parameters.
+	// The open source RabbitMQ event source.
 	SourceOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The source PostgreSQL parameters.
+	// The PostgreSQL data source parameters.
 	SourcePostgreSQLParameters *SourcePostgreSQLParameters `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
-	// The source Prometheus event source parameters.
+	// The Prometheus event source.
 	SourcePrometheusParameters *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
-	// The source ApsaraMQ for RabbitMQ metadata parameters.
+	// The ApsaraMQ for RabbitMQ metadata source parameters.
 	SourceRabbitMQMetaParameters *SourceRabbitMQMetaParameters `json:"SourceRabbitMQMetaParameters,omitempty" xml:"SourceRabbitMQMetaParameters,omitempty"`
-	// The source ApsaraMQ for RabbitMQ message synchronization parameters.
+	// The ApsaraMQ for RabbitMQ message synchronization source parameters.
 	SourceRabbitMQMsgSyncParameters *SourceRabbitMQMsgSyncParameters `json:"SourceRabbitMQMsgSyncParameters,omitempty" xml:"SourceRabbitMQMsgSyncParameters,omitempty"`
-	// The source RabbitMQ parameters.
+	// The RabbitMQ source.
 	SourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The RocketMQ checkpoint source.
+	// The RocketMQ Checkpoint source.
 	SourceRocketMQCheckpointParameters *UpdateEventStreamingRequestSourceSourceRocketMQCheckpointParameters `json:"SourceRocketMQCheckpointParameters,omitempty" xml:"SourceRocketMQCheckpointParameters,omitempty" type:"Struct"`
-	// The RocketMQ source parameters.
+	// The RocketMQ source.
 	SourceRocketMQParameters *UpdateEventStreamingRequestSourceSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
-	// The Simple Log Service (SLS) source parameters.
+	// The SLS event source.
 	SourceSLSParameters *UpdateEventStreamingRequestSourceSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
 }
 
@@ -11342,59 +11342,59 @@ func (s *UpdateEventStreamingRequestSource) Validate() error {
 }
 
 type UpdateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
-	// The endpoint.
+	// The endpoints.
 	//
 	// example:
 	//
 	// "Bootstraps"
 	Bootstraps *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	// The name of the consumer group.
+	// The consumer group name.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	// Specifies the network type of the Kafka cluster.
+	// The Kafka network type.
 	//
 	// example:
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The consumption offset. Valid values:
+	// The consumption checkpoint. Valid values:
 	//
-	// - latest: The system reads data from the latest offset.
+	// - latest: The system reads data from the latest checkpoint.
 	//
-	// - earliest: The system reads data from the earliest offset. This value is supported only when an unused consumer group is initialized for the first time.
+	// - earliest: The system reads data from the earliest checkpoint. This value is only supported for the first initialization of an unused consumer group.
 	//
 	// example:
 	//
 	// latest
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	// The SASL authentication mechanism of Kafka.
+	// The Kafka SASL authentication mechanism.
 	//
 	// example:
 	//
 	// "SaslMechanism"
 	SaslMechanism *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	// The SASL authentication password of Kafka.
+	// The Kafka SASL authentication password.
 	//
 	// example:
 	//
 	// yourPassword
 	SaslPassword *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	// The SASL authentication username of Kafka.
+	// The Kafka SASL authentication username.
 	//
 	// example:
 	//
 	// "SaslUser"
 	SaslUser *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	// The ID of the security group for the Kafka source.
+	// The security group ID of the Kafka event source.
 	//
 	// example:
 	//
 	// sg-bp1iv19sp1msc7zot4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security protocol type of Kafka. Valid values:
+	// The Kafka security protocol type. Valid values:
 	//
 	// - SASL_SSL
 	//
@@ -11406,33 +11406,33 @@ type UpdateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
 	//
 	// SASL_SSL
 	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	// [Required for encrypted private keys] The password for the Kafka client private key. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag), you must provide the decryption password. If the private key is not encrypted, leave this parameter empty. Note: This password is used only to decrypt the private key and is unrelated to Kafka authentication.
+	// [Required for encrypted private keys] The Kafka client private key password. This parameter is required when the client private key is encrypted (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag). Leave this parameter empty if the private key is not encrypted. Note: This password is only used to decrypt the private key and is unrelated to Kafka authentication.
 	//
 	// example:
 	//
 	// yourPassword
 	SslKeyPassword *string `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
-	// [Required for mutual authentication] The Kafka client certificate chain. If mutual SSL authentication (ssl.client.auth=required) is enabled on the Kafka server, you must provide this parameter. Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (the client certificate first, followed by intermediate CA certificates, and the root CA certificate is optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenating and Base64-encoding them.
+	// [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when mutual SSL authentication is enabled on the Kafka server (ssl.client.auth=required). Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, and root CA certificate optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenation and Base64 encoding.
 	//
 	// example:
 	//
 	// "SslKeystoreCertificateChain"
 	SslKeystoreCertificateChain *string `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
-	// [Required for bidirectional authentication] The SSL private key configuration object. If bidirectional SSL authentication is enabled on the Kafka server, you must provide the client private key. Only the KMS pattern is supported for the key: specify the EPS resource of the Key Management Service (KMS) that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}.
+	// [Required for bidirectional authentication] The SSL private key configuration object. This parameter is required when bidirectional SSL authentication is enabled on the Kafka server. Only the KMS mode is supported for keys: specify the Key Management Service (KMS) resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory for higher security. Configuration example: {"KmsArn": "acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx", "KmsSecretValueKey": "keystore_private_key"}.
 	SslKeystoreKey *UpdateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
-	// [Required for SSL scenarios] The trusted certificate of the Kafka server. This parameter is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirements: PEM format with Base64 encoding, which typically includes the CA certificate of the Kafka server or the server certificate itself. Example: Perform Base64 encoding on the PEM file content of the CA certificate (ensure that it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, you must provide the CA certificate that issued the certificate.
+	// [Required for SSL] The Kafka server trusted certificate. This parameter is used to authenticate the validity of the Kafka broker SSL certificate and prevent man-in-the-middle attacks. Format requirements: PEM format with Base64 encoding, typically containing the Kafka server CA certificate or the server certificate itself. Example: Perform Base64 encoding on the PEM file content of the CA certificate (ensure it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued it.
 	//
 	// example:
 	//
 	// "SslTruststoreCertificates"
 	SslTruststoreCertificates *string `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
-	// The name of the topic.
+	// The topic name.
 	//
 	// example:
 	//
 	// LTC_CACHE_PRD
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The list of vSwitch IDs for the Kafka source.
+	// The vSwitch IDs of the Kafka event source.
 	//
 	// example:
 	//
@@ -11450,7 +11450,7 @@ type UpdateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
 	//
 	// JSON
 	ValueDataType *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
-	// The VPC ID of the Kafka source.
+	// The VPC ID of the Kafka event source.
 	//
 	// example:
 	//
@@ -11629,13 +11629,13 @@ func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) Validate(
 }
 
 type UpdateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey struct {
-	// [Required] The ARN of the KMS resource that stores the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
+	// [Required] The KMS resource ARN for storing the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
 	//
 	// example:
 	//
 	// "KmsArn"
 	KmsArn *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
-	// [KMS KV mode] The key name in the KMS secret. If the secret stored in KMS is in a key-value pair (KV) structure, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plain text mode (directly storing the PEM content of the private key), leave this parameter empty.
+	// [KMS KV mode] The key name in the KMS secret. When the KMS secret is a key-value (KV) pair, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plaintext mode (directly storing the PEM content of the private key), leave this parameter empty.
 	//
 	// example:
 	//
@@ -11714,7 +11714,7 @@ type UpdateEventStreamingRequestSourceSourceApacheRocketMQCheckpointParameters s
 	//
 	// sg-mw43*****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The topic of the Apache RocketMQ instance.
+	// The topics of the Apache RocketMQ instance.
 	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -11722,7 +11722,7 @@ type UpdateEventStreamingRequestSourceSourceApacheRocketMQCheckpointParameters s
 	//
 	// vsw-dwaafds****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -11988,19 +11988,19 @@ type UpdateEventStreamingRequestSourceSourceDTSParameters struct {
 	//
 	// "BrokerUrl"
 	BrokerUrl *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
-	// The consumption offset, which is the timestamp when the SDK client consumes the first piece of data. The value is a UNIX timestamp.
+	// The consumption checkpoint, which is the timestamp when the SDK client consumes the first piece of data. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1620962769
 	InitCheckPoint *int64 `json:"InitCheckPoint,omitempty" xml:"InitCheckPoint,omitempty"`
-	// The password of the consumer group account.
+	// The password of the consumer group.
 	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the consumer group.
+	// The consumer group ID.
 	//
 	// example:
 	//
@@ -12018,7 +12018,7 @@ type UpdateEventStreamingRequestSourceSourceDTSParameters struct {
 	//
 	// LTC_CACHE_PRD
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The account of the consumer group.
+	// The username of the consumer group.
 	//
 	// example:
 	//
@@ -12147,7 +12147,7 @@ func (s *UpdateEventStreamingRequestSourceSourceEventBusParameters) Validate() e
 }
 
 type UpdateEventStreamingRequestSourceSourceKafkaParameters struct {
-	// The group ID of the consumer that subscribes to the topic.
+	// The ID of the consumer group that subscribes to the topic.
 	//
 	// example:
 	//
@@ -12159,7 +12159,7 @@ type UpdateEventStreamingRequestSourceSourceKafkaParameters struct {
 	//
 	// i-8vbh4a5b9yfhgkkzm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network configuration. Default value: Default. For VPC networks, set this parameter to PublicNetwork.
+	// The network configuration. Default value: Default. The value for a VPC is PublicNetwork.
 	//
 	// example:
 	//
@@ -12183,7 +12183,7 @@ type UpdateEventStreamingRequestSourceSourceKafkaParameters struct {
 	//
 	// sg-uf6jcm3y5hcs7hkl****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The topic name.
+	// The name of the topic.
 	//
 	// example:
 	//
@@ -12197,17 +12197,17 @@ type UpdateEventStreamingRequestSourceSourceKafkaParameters struct {
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	// The encoding and decoding parameter. Valid values:
 	//
-	// - Json: uses the existing logic. Bytes are decoded into strings by using UTF-8 and parsed as JSON.
+	// - Json: The existing logic. Bytes are decoded into character strings by using UTF-8 and parsed as JSON.
 	//
-	// - Text: bytes are decoded into strings by using UTF-8 and directly placed in the payload.
+	// - Text: Bytes are decoded into character strings by using UTF-8 and directly placed in the payload.
 	//
-	// - Binary: bytes are encoded into strings by using Base64 encoding and placed in the payload.
+	// - Binary: Bytes are encoded into character strings by using Base64 encoding and placed in the payload.
 	//
 	// example:
 	//
 	// Text
 	ValueDataType *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -12324,7 +12324,7 @@ type UpdateEventStreamingRequestSourceSourceMNSParameters struct {
 	//
 	// true
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//
@@ -12414,19 +12414,19 @@ type UpdateEventStreamingRequestSourceSourceMQTTParameters struct {
 	//
 	// sg-bp1iv19sp1msc7zot4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The topic name.
+	// The name of the topic.
 	//
 	// example:
 	//
 	// topic_empower_1642400400779
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The vSwitch IDs.
+	// The IDs of the vSwitches.
 	//
 	// example:
 	//
 	// vsw-bp179l3llg3jjxwrq72****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -12525,9 +12525,9 @@ type UpdateEventStreamingRequestSourceSourceOSSParameters struct {
 	//
 	// bucket_abc
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The delimiter. In chunk loading mode, this delimiter is used as the chunk identifier for text. Default value:
+	// The delimiter used as the chunk identifier for text in chunk loading mode. Default value:
 	//
-	//  (line break).
+	// .
 	//
 	// example:
 	//
@@ -12547,9 +12547,9 @@ type UpdateEventStreamingRequestSourceSourceOSSParameters struct {
 	LoadFormat *string `json:"LoadFormat,omitempty" xml:"LoadFormat,omitempty"`
 	// The data loading mode. Valid values:
 	//
-	// - single: loads a single document.
+	// - single: Loads a single document.
 	//
-	// - element: loads data in chunks.
+	// - element: Loads data in chunks.
 	//
 	// Default value: single.
 	//
@@ -12563,7 +12563,7 @@ type UpdateEventStreamingRequestSourceSourceOSSParameters struct {
 	//
 	// fun/document/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The name of the RAM role that authorizes EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
+	// The name of the role that authorizes EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
 	//
 	// example:
 	//
@@ -12681,7 +12681,7 @@ type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct 
 	//
 	// yourPassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The queue name of the open source RabbitMQ instance.
+	// The name of the queue for the open source RabbitMQ instance.
 	//
 	// example:
 	//
@@ -12705,13 +12705,13 @@ type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct 
 	//
 	// vsw-m5ev8asdc6h12345****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The vhost name of the open source RabbitMQ instance.
+	// The name of the virtual host for the open source RabbitMQ instance.
 	//
 	// example:
 	//
 	// Vhost1
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -12936,7 +12936,7 @@ func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) Validate()
 }
 
 type UpdateEventStreamingRequestSourceSourceRabbitMQParameters struct {
-	// The instance ID of the ApsaraMQ for RabbitMQ instance.
+	// The instance ID of ApsaraMQ for RabbitMQ.
 	//
 	// example:
 	//
@@ -12944,17 +12944,17 @@ type UpdateEventStreamingRequestSourceSourceRabbitMQParameters struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The network type used to connect to the source RabbitMQ instance. Valid values:
 	//
-	// - PublicNetwork: the Internet.
+	// - PublicNetwork: Internet.
 	//
-	// - PrivateNetwork: a VPC.
+	// - PrivateNetwork: VPC.
 	//
-	// If you set this parameter to PrivateNetwork, you must also configure VpcId, VSwitchIds, and SecurityGroupId. When you update an event stream and want to retain the original VPC configuration, you must pass these network parameters at the same time.
+	// If you set this parameter to PrivateNetwork, you must also configure VpcId, VSwitchIds, and SecurityGroupId. When you update an event stream and want to retain the original VPC configurations, you must pass these network parameters at the same time.
 	//
 	// example:
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The queue name of the ApsaraMQ for RabbitMQ instance.
+	// The name of the queue in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -12972,19 +12972,19 @@ type UpdateEventStreamingRequestSourceSourceRabbitMQParameters struct {
 	//
 	// sg-bp1xxxxxxxxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The vSwitch IDs used to connect to the source RabbitMQ instance. Separate multiple vSwitch IDs with commas (,). This parameter is required when NetworkType is set to PrivateNetwork.
+	// The IDs of the vSwitches used to connect to the source RabbitMQ instance. Separate multiple vSwitch IDs with commas (,). This parameter is required when NetworkType is set to PrivateNetwork.
 	//
 	// example:
 	//
 	// vsw-bp1xxxxxxxxxxxx,vsw-bp1yyyyyyyyyyyy
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The vhost name of the ApsaraMQ for RabbitMQ instance.
+	// The name of the vhost in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
 	// eb-connect
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	// The VPC ID of the source RabbitMQ instance. This parameter is required when NetworkType is set to PrivateNetwork.
+	// The ID of the VPC where the source RabbitMQ instance resides. This parameter is required when NetworkType is set to PrivateNetwork.
 	//
 	// example:
 	//
@@ -13095,7 +13095,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQCheckpointParameters struct 
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The topics of the ApsaraMQ for RocketMQ instance.
+	// The topic of the ApsaraMQ for RocketMQ instance.
 	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
@@ -13172,13 +13172,13 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// index > 10
 	FilterSql *string `json:"FilterSql,omitempty" xml:"FilterSql,omitempty"`
-	// The message filtering type.
+	// The message filter type.
 	//
 	// example:
 	//
 	// Tag
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	// The group ID of the MSMQ message queue RocketMQ.
+	// The group ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
@@ -13190,13 +13190,13 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// reg****-vpc.cn-zhangjiakou.aliyuncs.com
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The instance ID of the MSMQ message queue RocketMQ.
+	// The instance ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
 	// i-f8z9a9mcgwri1c1id****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network type of the instance. Valid values:
+	// The network information of the instance. Valid values:
 	//
 	// - PublicNetwork
 	//
@@ -13212,7 +13212,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// admin
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
-	// The security group ID of the instance.
+	// The security group information of the instance.
 	//
 	// example:
 	//
@@ -13220,9 +13220,9 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4 (default): ApsaraMQ for RocketMQ 4.0 instance.
+	// - Cloud_4 (default): Alibaba Cloud RocketMQ 4.0 instance.
 	//
-	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
+	// - Cloud_5: Alibaba Cloud RocketMQ 5.0 instance.
 	//
 	// - SelfBuilt: Self-managed Apache RocketMQ instance.
 	//
@@ -13236,13 +13236,13 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// admin
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
-	// The vSwitch IDs of the instance.
+	// The vSwitch information of the instance.
 	//
 	// example:
 	//
 	// vsw-m5ev8asdc6h12****
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
-	// The VPC ID of the instance.
+	// The VPC information of the instance.
 	//
 	// example:
 	//
@@ -13258,13 +13258,13 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// PublicNetwork
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The consumption offset of messages. Valid values:
+	// The consumption offset of the message. Valid values:
 	//
-	// - CONSUMEFROMLASTOFFSET: Consumes messages from the latest offset.
+	// - CONSUMEFROMLASTOFFSET: Consumes from the latest offset.
 	//
-	// - CONSUMEFROMFIRSTOFFSET: Consumes messages from the earliest offset.
+	// - CONSUMEFROMFIRSTOFFSET: Consumes from the earliest offset.
 	//
-	// - CONSUMEFROMTIMESTAMP: Consumes messages from the offset at a specified point in time.
+	// - CONSUMEFROMTIMESTAMP: Consumes from the offset at a specified point in time.
 	//
 	// Default value: CONSUMEFROMLAST_OFFSET.
 	//
@@ -13272,7 +13272,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// CONSUMEFROMLASTOFFSET
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The region ID of the MSMQ message queue RocketMQ.
+	// The region ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
@@ -13296,7 +13296,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// 1670656652009
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The topic name.
+	// The name of the topic.
 	//
 	// example:
 	//
@@ -13536,7 +13536,7 @@ func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) Validate() e
 }
 
 type UpdateEventStreamingRequestSourceSourceSLSParameters struct {
-	// The name of the role. For the authorization of the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and the trusted service must be the event bus.
+	// When granting authorization to the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and set the trusted service to the event bus.
 	//
 	// example:
 	//

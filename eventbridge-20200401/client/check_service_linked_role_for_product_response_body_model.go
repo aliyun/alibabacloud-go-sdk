@@ -46,7 +46,7 @@ type CheckServiceLinkedRoleForProductResponseBody struct {
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values: true: The operation is successful. false: The operation fails.
+	// Indicates whether the operation is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//

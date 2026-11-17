@@ -18,7 +18,7 @@ type iDeleteApiDestinationResponseBody interface {
 }
 
 type DeleteApiDestinationResponseBody struct {
-	// The API operation status or POP error code. Valid values: Success: The operation is successful.
+	// The API status or POP error code. Valid values: Success: Successful.
 	//
 	// example:
 	//

@@ -22,17 +22,17 @@ type iUpdateAgentResponseBody interface {
 }
 
 type UpdateAgentResponseBody struct {
-	// The response code. Valid values:
+	// The response code returned by the API operation:
 	//
-	// - Success: The request was successful.
+	// - Success: The request is successful.
 	//
-	// - Other values: An error occurred. For more information, see Error codes.
+	// - Other values: An error code. For more information, see Error codes.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	Data *UpdateAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -46,7 +46,7 @@ type UpdateAgentResponseBody struct {
 	//
 	// 382E6272-XXXXX-A8AF0BFAC1A5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns true if the operation was successful.
+	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
 	//
 	// example:
 	//

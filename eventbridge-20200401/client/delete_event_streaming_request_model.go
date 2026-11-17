@@ -24,7 +24,7 @@ type DeleteEventStreamingRequest struct {
 	//
 	// rocketmq-sync
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// Specifies whether to force delete the event stream. If set to true, system label-based deletion protection is bypassed. Default value: false.
+	// Specifies whether to force delete the event stream. If Settings is true, deletion interception based on system label is ignored. Default value: false.
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 

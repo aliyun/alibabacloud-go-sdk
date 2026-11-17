@@ -20,11 +20,11 @@ type iDeleteEventStreamingResponseBody interface {
 }
 
 type DeleteEventStreamingResponseBody struct {
-	// The response code. Valid values:
+	// The return code of the API operation:
 	//
-	// Success: The request was successful.
+	// Success: indicates success.
 	//
-	// Other values: An error occurred. For more information about error codes, see error codes.
+	// Other values: indicate error codes. For more information about error codes, see Error codes.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteEventStreamingResponseBody struct {
 	//
 	// 499A9ACF-70CD-5D43-87F3-1B60529EE446
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns true if the operation was successful.
+	// Indicates whether the operation is successful. A value of true indicates success.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iListEventStreamingsRequest interface {
 }
 
 type ListEventStreamingsRequest struct {
-	// Specifies the maximum number of entries to return per request. You can use this parameter together with NextToken to paginate results.	Notice: The maximum number of entries returned per request cannot exceed 100.
+	// Specifies the maximum number of entries to return per request. You can use this parameter with NextToken to paginate results. <notice>The maximum number of entries returned per request cannot exceed 100.</notice>
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListEventStreamingsRequest struct {
 	//
 	// name
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	// The token that is returned when Limit is specified and additional results are available.
+	// The pagination token. If you specify Limit and more results are available, this token is returned.
 	//
 	// example:
 	//
