@@ -16,7 +16,7 @@ type iListLogContentsResponseBody interface {
 }
 
 type ListLogContentsResponseBody struct {
-	// Log content.
+	// The log content.
 	ListLogContent *ListLogContentsResponseBodyListLogContent `json:"listLogContent,omitempty" xml:"listLogContent,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *ListLogContentsResponseBody) Validate() error {
 }
 
 type ListLogContentsResponseBodyListLogContent struct {
-	// List of log line contents.
+	// The list of log lines.
 	Contents []*ListLogContentsResponseBodyListLogContentContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
-	// Total number of log lines.
+	// The total number of log lines.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ func (s *ListLogContentsResponseBodyListLogContent) Validate() error {
 }
 
 type ListLogContentsResponseBodyListLogContentContents struct {
-	// Log line content.
+	// The content of the log line.
 	//
 	// example:
 	//

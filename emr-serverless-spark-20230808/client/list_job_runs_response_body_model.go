@@ -25,10 +25,14 @@ type iListJobRunsResponseBody interface {
 
 type ListJobRunsResponseBody struct {
 	// The statistical results aggregated by job state.
+	//
+	// example:
+	//
+	// {"Success":"2"}
 	Aggregations map[string]*string `json:"aggregations,omitempty" xml:"aggregations,omitempty"`
 	// The list of Spark job runs.
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
-	// The maximum number of records returned for the request.
+	// The maximum number of records returned for the current request.
 	//
 	// example:
 	//
@@ -142,7 +146,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The advanced Spark configurations. This parameter is not returned by the List operation.
+	// The advanced Spark configurations. This parameter is not returned by the list operation.
 	ConfigurationOverrides *ListJobRunsResponseBodyJobRunsConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
 	// The UID of the user who created the job.
 	//
@@ -150,13 +154,13 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The number of compute units (CUs) consumed during the job run. This value is an estimate and the final value is subject to the bill.
+	// The number of compute units (CUs) consumed during the job run. This value is an estimate. The actual value is subject to the bill.
 	//
 	// example:
 	//
 	// 2.059
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The Spark DPI engine version of the running job.
+	// The Spark engine version used to run the node.
 	//
 	// example:
 	//
@@ -174,13 +178,19 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	// The timestamp in milliseconds when the resources are ready, which is the first report time. If the first report time is empty, the job report time is used. If both are empty, null is returned.
+	//
+	// example:
+	//
+	// 1684119314000
+	FirstReportTime *int64 `json:"firstReportTime,omitempty" xml:"firstReportTime,omitempty"`
 	// Specifies whether Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// true
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The information about the Spark driver. This parameter is not returned by the List operation.
+	// The information about the Spark driver. This parameter is not returned by the list operation.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The ID of the job run.
 	//
@@ -208,7 +218,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The Spark DPI engine version of the running job.
+	// The Spark engine version used to run the node.
 	//
 	// example:
 	//
@@ -220,6 +230,18 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	// The resource startup duration in milliseconds. It is calculated by subtracting the first submission time from the resource ready time. If the first submission time or the resource ready time is missing, or if the calculation result is negative, null is returned instead of 0.
+	//
+	// example:
+	//
+	// 60000
+	ResourceStartupDurationMs *int64 `json:"resourceStartupDurationMs,omitempty" xml:"resourceStartupDurationMs,omitempty"`
+	// The job run duration in milliseconds. It is calculated by subtracting the resource ready time from the job end time. If the job has not ended, the current time is used. If the resource ready time is missing, or if the calculation result is negative, null is returned instead of 0.
+	//
+	// example:
+	//
+	// 120000
+	RunDurationMs *int64 `json:"runDurationMs,omitempty" xml:"runDurationMs,omitempty"`
 	// The states of the job runs.
 	//
 	// example:
@@ -292,6 +314,10 @@ func (s *ListJobRunsResponseBodyJobRuns) GetExecutionTimeoutSeconds() *int32 {
 	return s.ExecutionTimeoutSeconds
 }
 
+func (s *ListJobRunsResponseBodyJobRuns) GetFirstReportTime() *int64 {
+	return s.FirstReportTime
+}
+
 func (s *ListJobRunsResponseBodyJobRuns) GetFusion() *bool {
 	return s.Fusion
 }
@@ -326,6 +352,14 @@ func (s *ListJobRunsResponseBodyJobRuns) GetReleaseVersion() *string {
 
 func (s *ListJobRunsResponseBodyJobRuns) GetResourceQueueId() *string {
 	return s.ResourceQueueId
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) GetResourceStartupDurationMs() *int64 {
+	return s.ResourceStartupDurationMs
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) GetRunDurationMs() *int64 {
+	return s.RunDurationMs
 }
 
 func (s *ListJobRunsResponseBodyJobRuns) GetState() *string {
@@ -391,6 +425,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetExecutionTimeoutSeconds(v int32) *Li
 	return s
 }
 
+func (s *ListJobRunsResponseBodyJobRuns) SetFirstReportTime(v int64) *ListJobRunsResponseBodyJobRuns {
+	s.FirstReportTime = &v
+	return s
+}
+
 func (s *ListJobRunsResponseBodyJobRuns) SetFusion(v bool) *ListJobRunsResponseBodyJobRuns {
 	s.Fusion = &v
 	return s
@@ -433,6 +472,16 @@ func (s *ListJobRunsResponseBodyJobRuns) SetReleaseVersion(v string) *ListJobRun
 
 func (s *ListJobRunsResponseBodyJobRuns) SetResourceQueueId(v string) *ListJobRunsResponseBodyJobRuns {
 	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetResourceStartupDurationMs(v int64) *ListJobRunsResponseBodyJobRuns {
+	s.ResourceStartupDurationMs = &v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetRunDurationMs(v int64) *ListJobRunsResponseBodyJobRuns {
+	s.RunDurationMs = &v
 	return s
 }
 

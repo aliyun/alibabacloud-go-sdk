@@ -68,6 +68,12 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// 2c8g
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
+	// Indicates whether the Kyuubi configuration needs to be updated.
+	//
+	// example:
+	//
+	// true
+	ConfigRefreshRequired *bool `json:"configRefreshRequired,omitempty" xml:"configRefreshRequired,omitempty"`
 	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
@@ -80,13 +86,13 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// 150978934701****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The internal network domain name.
+	// The internal domain name.
 	//
 	// example:
 	//
 	// kyuubi-cn-beijing-internal.spark.emr.aliyuncs.com
 	InnerEndpoint *string `json:"innerEndpoint,omitempty" xml:"innerEndpoint,omitempty"`
-	// The Kyuubi service configuration.
+	// The Kyuubi service configurations.
 	//
 	// example:
 	//
@@ -98,7 +104,7 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// 1.9.2-0.0.2
 	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
-	// Kyuubi Service ID。
+	// The Kyuubi service ID.
 	//
 	// example:
 	//
@@ -116,7 +122,7 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// emr-spark-kyuubi-gateway-cn-beijing.aliyuncs.com
 	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
-	// Specifies whether public network access is enabled.
+	// Indicates whether public network access is enabled.
 	//
 	// example:
 	//
@@ -128,19 +134,25 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
+	// The ready Kyuubi instances.
+	//
+	// example:
+	//
+	// 1
+	ReadyReplicas *int32 `json:"readyReplicas,omitempty" xml:"readyReplicas,omitempty"`
 	// The Spark DPI engine version.
 	//
 	// example:
 	//
 	// esr-4.6.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The number of replicas enabled for high availability.
+	// The number of high availability replicas.
 	//
 	// example:
 	//
 	// 0
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// The Spark configuration.
+	// The Spark configurations.
 	//
 	// example:
 	//
@@ -152,7 +164,7 @@ type GetKyuubiServiceResponseBodyData struct {
 	//
 	// 1749456094000
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The Kyuubi service status.
+	// The Kyuubi service state.
 	//
 	// example:
 	//
@@ -170,6 +182,10 @@ func (s GetKyuubiServiceResponseBodyData) GoString() string {
 
 func (s *GetKyuubiServiceResponseBodyData) GetComputeInstance() *string {
 	return s.ComputeInstance
+}
+
+func (s *GetKyuubiServiceResponseBodyData) GetConfigRefreshRequired() *bool {
+	return s.ConfigRefreshRequired
 }
 
 func (s *GetKyuubiServiceResponseBodyData) GetCreateTime() *string {
@@ -212,6 +228,10 @@ func (s *GetKyuubiServiceResponseBodyData) GetQueue() *string {
 	return s.Queue
 }
 
+func (s *GetKyuubiServiceResponseBodyData) GetReadyReplicas() *int32 {
+	return s.ReadyReplicas
+}
+
 func (s *GetKyuubiServiceResponseBodyData) GetReleaseVersion() *string {
 	return s.ReleaseVersion
 }
@@ -234,6 +254,11 @@ func (s *GetKyuubiServiceResponseBodyData) GetState() *string {
 
 func (s *GetKyuubiServiceResponseBodyData) SetComputeInstance(v string) *GetKyuubiServiceResponseBodyData {
 	s.ComputeInstance = &v
+	return s
+}
+
+func (s *GetKyuubiServiceResponseBodyData) SetConfigRefreshRequired(v bool) *GetKyuubiServiceResponseBodyData {
+	s.ConfigRefreshRequired = &v
 	return s
 }
 
@@ -284,6 +309,11 @@ func (s *GetKyuubiServiceResponseBodyData) SetPublicEndpointEnabled(v bool) *Get
 
 func (s *GetKyuubiServiceResponseBodyData) SetQueue(v string) *GetKyuubiServiceResponseBodyData {
 	s.Queue = &v
+	return s
+}
+
+func (s *GetKyuubiServiceResponseBodyData) SetReadyReplicas(v int32) *GetKyuubiServiceResponseBodyData {
+	s.ReadyReplicas = &v
 	return s
 }
 

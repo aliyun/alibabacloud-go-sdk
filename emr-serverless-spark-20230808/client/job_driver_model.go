@@ -14,7 +14,7 @@ type iJobDriver interface {
 }
 
 type JobDriver struct {
-	// The configurations of SparkSubmit.
+	// The SparkSubmit configuration information.
 	SparkSubmit *JobDriverSparkSubmit `json:"sparkSubmit,omitempty" xml:"sparkSubmit,omitempty" type:"Struct"`
 }
 
@@ -45,15 +45,15 @@ func (s *JobDriver) Validate() error {
 }
 
 type JobDriverSparkSubmit struct {
-	// The main program of Spark.
+	// The Spark main program.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/entrypoint.jar
 	EntryPoint *string `json:"entryPoint,omitempty" xml:"entryPoint,omitempty"`
-	// The parameters related to the main program of Spark.
+	// The list of arguments for the Spark main program.
 	EntryPointArguments []*string `json:"entryPointArguments,omitempty" xml:"entryPointArguments,omitempty" type:"Repeated"`
-	// The command-line parameter of SparkSubmit.
+	// The SparkSubmit command-line parameters.
 	//
 	// example:
 	//

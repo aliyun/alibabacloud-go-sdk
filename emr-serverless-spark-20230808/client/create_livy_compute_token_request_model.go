@@ -28,7 +28,7 @@ type CreateLivyComputeTokenRequest struct {
 	//
 	// mytoken
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The token content. The length must be 16 or more characters.
+	// The token content. The length must be greater than or equal to 16.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateLivyComputeTokenRequest) Validate() error {
 }
 
 type CreateLivyComputeTokenRequestAutoExpireConfiguration struct {
-	// Specifies whether the token automatically expires.
+	// Specifies whether the token automatically expires. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -106,7 +106,7 @@ type CreateLivyComputeTokenRequestAutoExpireConfiguration struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The expiration period in days.
+	// The expiration time in days.
 	//
 	// example:
 	//

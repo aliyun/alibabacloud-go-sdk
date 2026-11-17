@@ -40,15 +40,15 @@ type iCreateSessionClusterRequest interface {
 type CreateSessionClusterRequest struct {
 	// The Spark application configurations.
 	ApplicationConfigs []*CreateSessionClusterRequestApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
-	// Specifies whether to enable automatic startup. Valid values:
+	// Specifies whether to enable auto-start. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Yes.
 	//
-	// - false: Disabled.
+	// - false: No.
 	AutoStartConfiguration *CreateSessionClusterRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	// The automatic stop configuration.
+	// The auto-stop configuration.
 	AutoStopConfiguration *CreateSessionClusterRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure request idempotence.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateSessionClusterRequest struct {
 	//
 	// esr-3.3.1
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The Python environment ID. This parameter takes effect only for Notebook sessions.
+	// The ID of the Python environment. This parameter takes effect only for Notebook sessions.
 	//
 	// example:
 	//
@@ -76,31 +76,31 @@ type CreateSessionClusterRequest struct {
 	//
 	// - SQL: SQL session.
 	//
-	// - NOTEBOOK: NOTEBOOK session.
+	// - NOTEBOOK: Notebook session.
 	//
 	// example:
 	//
 	// SQL
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The node name.
+	// The name of the task.
 	//
 	// example:
 	//
 	// spark_job_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether to enable the public network access endpoint.
+	// Specifies whether public network access is enabled for the endpoint.
 	//
 	// example:
 	//
 	// false
 	PublicEndpointEnabled *bool `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The Spark DPI engine version number.
+	// The version number of the Spark DPI engine.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ func (s *CreateSessionClusterRequest) Validate() error {
 }
 
 type CreateSessionClusterRequestApplicationConfigs struct {
-	// The configuration file name.
+	// The name of the configuration file.
 	//
 	// example:
 	//
@@ -323,11 +323,11 @@ func (s *CreateSessionClusterRequestApplicationConfigs) Validate() error {
 }
 
 type CreateSessionClusterRequestAutoStartConfiguration struct {
-	// Specifies whether to enable automatic startup. Valid values:
+	// Specifies whether to enable auto-start. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Yes.
 	//
-	// - false: Disabled.
+	// - false: No.
 	//
 	// example:
 	//
@@ -359,15 +359,15 @@ func (s *CreateSessionClusterRequestAutoStartConfiguration) Validate() error {
 type CreateSessionClusterRequestAutoStopConfiguration struct {
 	// Specifies whether to allow automatic stop. Valid values:
 	//
-	// - true: Allowed.
+	// - true: Yes.
 	//
-	// - false: Not allowed.
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The number of idle minutes after which the session is automatically stopped.
+	// The number of idle minutes before the session is automatically stopped.
 	//
 	// example:
 	//

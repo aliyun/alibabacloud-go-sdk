@@ -16,13 +16,13 @@ type iPrincipalAction interface {
 }
 
 type PrincipalAction struct {
-	// The ARN of the behavior.
+	// The action ARN.
 	//
 	// example:
 	//
 	// acs:emr::workspaceId:action/create_queue
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// The ARN of the principal.
+	// The principal ARN.
 	//
 	// example:
 	//

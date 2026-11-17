@@ -30,7 +30,7 @@ type ListReleaseVersionsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The version type.
+	// The release type.
 	//
 	// example:
 	//
@@ -48,7 +48,12 @@ type ListReleaseVersionsRequest struct {
 	//
 	// ONLINE
 	ReleaseVersionStatus *string `json:"releaseVersionStatus,omitempty" xml:"releaseVersionStatus,omitempty"`
-	ServiceFilter        *string `json:"serviceFilter,omitempty" xml:"serviceFilter,omitempty"`
+	// Filters available versions by service type. Valid values: kyuubi and ray.
+	//
+	// example:
+	//
+	// kyuubi
+	ServiceFilter *string `json:"serviceFilter,omitempty" xml:"serviceFilter,omitempty"`
 	// The workspace ID.
 	//
 	// example:

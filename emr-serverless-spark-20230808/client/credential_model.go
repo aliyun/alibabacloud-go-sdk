@@ -26,18 +26,32 @@ type iCredential interface {
 }
 
 type Credential struct {
+	// sts ak
+	//
 	// This parameter is required.
 	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	// The OSS path.
+	//
 	// This parameter is required.
 	Dir *string `json:"dir,omitempty" xml:"dir,omitempty"`
+	// The timeout period.
+	//
 	// This parameter is required.
 	Expire *string `json:"expire,omitempty" xml:"expire,omitempty"`
+	// The OSS domain name.
+	//
 	// This parameter is required.
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The OSS access policy.
+	//
 	// This parameter is required.
 	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// sts token
+	//
 	// This parameter is required.
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
+	// The OSS access signature.
+	//
 	// This parameter is required.
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 }

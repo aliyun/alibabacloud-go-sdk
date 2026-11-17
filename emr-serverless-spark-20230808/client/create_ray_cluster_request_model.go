@@ -13,6 +13,8 @@ type iCreateRayClusterRequest interface {
 	GetDescription() *string
 	SetDisplayReleaseVersion(v string) *CreateRayClusterRequest
 	GetDisplayReleaseVersion() *string
+	SetEnableMetricsUpload(v bool) *CreateRayClusterRequest
+	GetEnableMetricsUpload() *bool
 	SetExtraParam(v string) *CreateRayClusterRequest
 	GetExtraParam() *string
 	SetHeadSpec(v *CreateRayClusterRequestHeadSpec) *CreateRayClusterRequest
@@ -21,6 +23,10 @@ type iCreateRayClusterRequest interface {
 	GetName() *string
 	SetNetworkServiceName(v string) *CreateRayClusterRequest
 	GetNetworkServiceName() *string
+	SetSlsLogStore(v string) *CreateRayClusterRequest
+	GetSlsLogStore() *string
+	SetSlsProject(v string) *CreateRayClusterRequest
+	GetSlsProject() *string
 	SetVolumeIds(v []*string) *CreateRayClusterRequest
 	GetVolumeIds() []*string
 	SetWorkerSpec(v []*CreateRayClusterRequestWorkerSpec) *CreateRayClusterRequest
@@ -34,19 +40,21 @@ type CreateRayClusterRequest struct {
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Ray DPI engine version.
+	// The Ray database engine version.
 	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Specifies whether to upload metrics.
+	EnableMetricsUpload *bool `json:"enableMetricsUpload,omitempty" xml:"enableMetricsUpload,omitempty"`
 	// The extra parameters. The value must be in JSON format.
 	//
 	// example:
 	//
 	// {}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The parameters of the Ray cluster head node.
+	// The head node parameters of the Ray cluster.
 	HeadSpec *CreateRayClusterRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
 	// The name of the Ray cluster. The name must be 1 to 64 characters in length.
 	//
@@ -54,15 +62,27 @@ type CreateRayClusterRequest struct {
 	//
 	// testRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connectivity name.
+	// The name of the network connectivity.
 	//
 	// example:
 	//
 	// vpc
 	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
-	// The list of managed directory IDs to mount.
+	// The SLS Logstore for uploading metrics.
+	//
+	// example:
+	//
+	// myLogStore
+	SlsLogStore *string `json:"slsLogStore,omitempty" xml:"slsLogStore,omitempty"`
+	// The SLS project for uploading metrics.
+	//
+	// example:
+	//
+	// mySLSProject
+	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// The IDs of the managed directories to mount.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The parameters of the Ray cluster worker nodes. A maximum of 50 groups are supported.
+	// The worker node parameters of the Ray cluster. You can configure up to 50 groups.
 	WorkerSpec []*CreateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -82,6 +102,10 @@ func (s *CreateRayClusterRequest) GetDisplayReleaseVersion() *string {
 	return s.DisplayReleaseVersion
 }
 
+func (s *CreateRayClusterRequest) GetEnableMetricsUpload() *bool {
+	return s.EnableMetricsUpload
+}
+
 func (s *CreateRayClusterRequest) GetExtraParam() *string {
 	return s.ExtraParam
 }
@@ -96,6 +120,14 @@ func (s *CreateRayClusterRequest) GetName() *string {
 
 func (s *CreateRayClusterRequest) GetNetworkServiceName() *string {
 	return s.NetworkServiceName
+}
+
+func (s *CreateRayClusterRequest) GetSlsLogStore() *string {
+	return s.SlsLogStore
+}
+
+func (s *CreateRayClusterRequest) GetSlsProject() *string {
+	return s.SlsProject
 }
 
 func (s *CreateRayClusterRequest) GetVolumeIds() []*string {
@@ -116,6 +148,11 @@ func (s *CreateRayClusterRequest) SetDisplayReleaseVersion(v string) *CreateRayC
 	return s
 }
 
+func (s *CreateRayClusterRequest) SetEnableMetricsUpload(v bool) *CreateRayClusterRequest {
+	s.EnableMetricsUpload = &v
+	return s
+}
+
 func (s *CreateRayClusterRequest) SetExtraParam(v string) *CreateRayClusterRequest {
 	s.ExtraParam = &v
 	return s
@@ -133,6 +170,16 @@ func (s *CreateRayClusterRequest) SetName(v string) *CreateRayClusterRequest {
 
 func (s *CreateRayClusterRequest) SetNetworkServiceName(v string) *CreateRayClusterRequest {
 	s.NetworkServiceName = &v
+	return s
+}
+
+func (s *CreateRayClusterRequest) SetSlsLogStore(v string) *CreateRayClusterRequest {
+	s.SlsLogStore = &v
+	return s
+}
+
+func (s *CreateRayClusterRequest) SetSlsProject(v string) *CreateRayClusterRequest {
+	s.SlsProject = &v
 	return s
 }
 
@@ -171,13 +218,13 @@ type CreateRayClusterRequestHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The Ray DPI engine version.
+	// The Ray database engine version.
 	//
 	// example:
 	//
 	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Specifies whether to enable automatic scaling for workers.
+	// Specifies whether to enable auto-scaling for worker nodes.
 	//
 	// example:
 	//
@@ -189,38 +236,44 @@ type CreateRayClusterRequestHeadSpec struct {
 	//
 	// MY_ENV=hello\\nMY_ENV2=hello2
 	Env *string `json:"env,omitempty" xml:"env,omitempty"`
-	// The GCS Fault Tolerance configuration.
+	// The GCS fault tolerance configuration.
 	GftConfig *CreateRayClusterRequestHeadSpecGftConfig `json:"gftConfig,omitempty" xml:"gftConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable GCS Fault Tolerance.
+	// Specifies whether to enable Global Control Store (GCS) fault tolerance.
 	//
 	// if can be null:
 	// true
 	GftEnabled *bool `json:"gftEnabled,omitempty" xml:"gftEnabled,omitempty"`
-	// The GPU model.
+	// The GPU driver version.
+	//
+	// example:
+	//
+	// 550
+	GpuDriverVersion *string `json:"gpuDriverVersion,omitempty" xml:"gpuDriverVersion,omitempty"`
+	// The GPU instance type.
 	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout period of workers after automatic scaling is enabled.
+	// The idle timeout for worker nodes after auto-scaling is enabled.
 	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size. Unit: Gi.
+	// The memory size. Unit: GiB.
 	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The Ray node startup parameters.
+	// The startup parameters for the Ray node.
 	//
 	// example:
 	//
@@ -258,6 +311,10 @@ func (s *CreateRayClusterRequestHeadSpec) GetGftConfig() *CreateRayClusterReques
 
 func (s *CreateRayClusterRequestHeadSpec) GetGftEnabled() *bool {
 	return s.GftEnabled
+}
+
+func (s *CreateRayClusterRequestHeadSpec) GetGpuDriverVersion() *string {
+	return s.GpuDriverVersion
 }
 
 func (s *CreateRayClusterRequestHeadSpec) GetGpuSpec() *string {
@@ -307,6 +364,11 @@ func (s *CreateRayClusterRequestHeadSpec) SetGftConfig(v *CreateRayClusterReques
 
 func (s *CreateRayClusterRequestHeadSpec) SetGftEnabled(v bool) *CreateRayClusterRequestHeadSpec {
 	s.GftEnabled = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpec) SetGpuDriverVersion(v string) *CreateRayClusterRequestHeadSpec {
+	s.GpuDriverVersion = &v
 	return s
 }
 
@@ -411,7 +473,7 @@ type CreateRayClusterRequestWorkerSpec struct {
 	//
 	// 4
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The engine version. If this parameter is not specified, the value is the same as that of the head node.
+	// The engine name. If you do not specify this parameter, it is the same as that of the head node.
 	//
 	// example:
 	//
@@ -423,43 +485,49 @@ type CreateRayClusterRequestWorkerSpec struct {
 	//
 	// MY_ENV=hello\\nMY_ENV2=hello2
 	Env *string `json:"env,omitempty" xml:"env,omitempty"`
-	// The GPU model.
+	// The GPU driver version.
+	//
+	// example:
+	//
+	// 550
+	GpuDriverVersion *string `json:"gpuDriverVersion,omitempty" xml:"gpuDriverVersion,omitempty"`
+	// The GPU instance type.
 	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The worker group name.
+	// The name of the worker group.
 	//
 	// example:
 	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The maximum number of workers after automatic scaling is enabled. Minimum value: 1.
+	// The maximum number of workers after auto-scaling is enabled. Minimum value: 1.
 	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size. Unit: Gi.
+	// The memory size. Unit: GiB.
 	//
 	// example:
 	//
 	// 16Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of workers after automatic scaling is enabled. Minimum value: 1. The value must be less than or equal to maxReplica.
+	// The minimum number of workers after auto-scaling is enabled. Minimum value: 1. The value must be less than or equal to maxReplica.
 	//
 	// example:
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The Ray node startup parameters.
+	// The startup parameters for the Ray node.
 	//
 	// example:
 	//
@@ -497,6 +565,10 @@ func (s *CreateRayClusterRequestWorkerSpec) GetDisplayReleaseVersion() *string {
 
 func (s *CreateRayClusterRequestWorkerSpec) GetEnv() *string {
 	return s.Env
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) GetGpuDriverVersion() *string {
+	return s.GpuDriverVersion
 }
 
 func (s *CreateRayClusterRequestWorkerSpec) GetGpuSpec() *string {
@@ -547,6 +619,11 @@ func (s *CreateRayClusterRequestWorkerSpec) SetDisplayReleaseVersion(v string) *
 
 func (s *CreateRayClusterRequestWorkerSpec) SetEnv(v string) *CreateRayClusterRequestWorkerSpec {
 	s.Env = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) SetGpuDriverVersion(v string) *CreateRayClusterRequestWorkerSpec {
+	s.GpuDriverVersion = &v
 	return s
 }
 

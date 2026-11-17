@@ -14,7 +14,7 @@ type iChangeResourceGroupResponseBody interface {
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// The unique ID generated for the request.
+	// Id of the request
 	//
 	// example:
 	//

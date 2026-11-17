@@ -22,7 +22,7 @@ type ListSqlStatementContentsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The content of the SQL execution result.
+	// The content of the SQL execution results.
 	SqlStatementContents *ListSqlStatementContentsResponseBodySqlStatementContents `json:"sqlStatementContents,omitempty" xml:"sqlStatementContents,omitempty" type:"Struct"`
 }
 
@@ -62,25 +62,25 @@ func (s *ListSqlStatementContentsResponseBody) Validate() error {
 }
 
 type ListSqlStatementContentsResponseBodySqlStatementContents struct {
-	// A list of the SQL execution results.
+	// The list of SQL execution result contents.
 	//
 	// example:
 	//
 	// [{\\"values\\":[\\"wj*****\\",\\"test\\",\\"2025-04-15\\"]}]
 	Contents *string `json:"contents,omitempty" xml:"contents,omitempty"`
-	// The maximum number of records returned for a single request.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 2000
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that specifies the position from which to start reading the results.
+	// The token that indicates the starting position for reading.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The total number of rows in the result.
+	// The total number of rows in the results.
 	//
 	// example:
 	//

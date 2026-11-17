@@ -83,7 +83,7 @@ func (s *ListLivyComputeSessionsResponseBody) Validate() error {
 }
 
 type ListLivyComputeSessionsResponseBodySessions struct {
-	// The ID of the Livy Gateway.
+	// The ID of the Livy gateway.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// null
 	Info *string `json:"info,omitempty" xml:"info,omitempty"`
-	// The total amount of memory allocated to the job multiplied by the number of seconds the job has run.
+	// The total amount of memory allocated to the job multiplied by the running time of the job in seconds.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// root_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
-	// The ID of the Livy Gateway session.
+	// The ID of the Livy gateway session.
 	//
 	// example:
 	//
@@ -163,19 +163,19 @@ type ListLivyComputeSessionsResponseBodySessions struct {
 	//
 	// - terminated: Terminated.
 	//
-	// - error: Error.
+	// - error: Failed.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The total number of vcores allocated to the job multiplied by the number of seconds the job has run.
+	// The total number of vcores allocated to the job multiplied by the running time of the job in seconds.
 	//
 	// example:
 	//
 	// 343
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
-	// The web UI address of the session.
+	// The web UI URL of the session.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iRunLog interface {
 }
 
 type RunLog struct {
-	// The path of the startup file.
+	// The path to the startup file.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/startup
 	DriverStartup *string `json:"driverStartup,omitempty" xml:"driverStartup,omitempty"`
-	// The path of the stderr file.
+	// The path to the stderr file.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/stderr
 	DriverStdError *string `json:"driverStdError,omitempty" xml:"driverStdError,omitempty"`
-	// The path of the stdout file.
+	// The path to the stdout file.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/stdout
 	DriverStdOut *string `json:"driverStdOut,omitempty" xml:"driverStdOut,omitempty"`
-	// The path of the syslog file.
+	// The path to the syslog file.
 	//
 	// example:
 	//

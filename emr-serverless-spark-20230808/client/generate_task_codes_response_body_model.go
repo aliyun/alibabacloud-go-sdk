@@ -26,7 +26,7 @@ type iGenerateTaskCodesResponseBody interface {
 }
 
 type GenerateTaskCodesResponseBody struct {
-	// The error code.
+	// The error code of the request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GenerateTaskCodesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// The detailed description corresponding to the request error code.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GenerateTaskCodesResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

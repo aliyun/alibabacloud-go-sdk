@@ -20,7 +20,7 @@ type iListLivyComputeResponseBody interface {
 }
 
 type ListLivyComputeResponseBody struct {
-	// The return code of the request. A value of 1000000 indicates that the request is successful. Other values indicate that the request failed. For specific error details, see the message.
+	// The response code. A value of 1000000 indicates a successful request, whereas other values indicate a failed request. For detailed error causes, refer to the message.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type ListLivyComputeResponseBodyDataLivyComputes struct {
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The public network connection endpoint.
+	// The public endpoint.
 	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The internal network connection endpoint.
+	// The internal network endpoint.
 	//
 	// example:
 	//

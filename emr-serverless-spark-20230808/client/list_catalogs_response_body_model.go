@@ -24,13 +24,13 @@ type iListCatalogsResponseBody interface {
 type ListCatalogsResponseBody struct {
 	// The data catalogs.
 	Catalogs []*ListCatalogsResponseBodyCatalogs `json:"catalogs,omitempty" xml:"catalogs,omitempty" type:"Repeated"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of records to return per request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The next page token.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCatalogsResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,45 +117,51 @@ func (s *ListCatalogsResponseBody) Validate() error {
 }
 
 type ListCatalogsResponseBodyCatalogs struct {
+	// alias
+	//
 	// example:
 	//
 	// alias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The ID of the data catalog.
+	// The data catalog ID.
 	//
 	// example:
 	//
 	// 15097**********
 	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	// The provider of the data catalog.
+	// The data catalog type.
 	//
 	// example:
 	//
 	// HMS
 	CatalogProvider *string `json:"catalogProvider,omitempty" xml:"catalogProvider,omitempty"`
-	// Indicates whether this is the default data catalog.
+	// Indicates whether the data catalog is the default data catalog.
 	//
 	// example:
 	//
 	// default_catalog
 	CatalogType *string `json:"catalogType,omitempty" xml:"catalogType,omitempty"`
-	// The environment types.
+	// The environment type.
 	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// Extra information.
+	// The extra information.
+	//
+	// example:
+	//
+	// {"networkName":"hms","metastoreUrl":"thrift://metastore.example.com:9083"}
 	Extras map[string]*string `json:"extras,omitempty" xml:"extras,omitempty"`
-	// The time when the resource was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1760604889
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the resource was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 1760604889
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the resource owner.
+	// The resource owner ID.
 	//
 	// example:
 	//

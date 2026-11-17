@@ -38,13 +38,13 @@ type iStartJobRunRequest interface {
 }
 
 type StartJobRunRequest struct {
-	// The idempotence token.
+	// The client token for idempotency.
 	//
 	// example:
 	//
 	// 8e6aae2810c8f67229ca70bb31cd****
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The job type. Valid values:
+	// The type of the job. Valid values:
 	//
 	// - SQL
 	//
@@ -56,9 +56,9 @@ type StartJobRunRequest struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The advanced Spark configurations.
+	// The advanced configurations for Spark.
 	ConfigurationOverrides *StartJobRunRequestConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// The version that is displayed in the console.
+	// The version displayed in the console.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type StartJobRunRequest struct {
 	//
 	// 100
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Specifies whether to enable the Fusion engine for acceleration.
+	// Specifies whether to enable Fusion engine acceleration.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type StartJobRunRequest struct {
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The information about the Spark driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// The job ID.
+	// The ID of the job.
 	//
 	// example:
 	//
 	// jr-12345
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	// The job name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// spark_job_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the Spark engine.
+	// The version number of the Spark engine.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The resource queue on which the Spark job runs.
+	// The resource queue in which the Spark job runs.
 	//
 	// example:
 	//

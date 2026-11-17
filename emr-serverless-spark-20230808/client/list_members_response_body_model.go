@@ -22,7 +22,7 @@ type iListMembersResponseBody interface {
 }
 
 type ListMembersResponseBody struct {
-	// The maximum number of records to return per request.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListMembersResponseBody struct {
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListMembersResponseBodyMembers struct {
 	//
 	// jia***test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ARN of the member.
+	// The ARN of the user.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ListMembersResponseBodyMembers struct {
 	//
 	// jia***test@195*****7311.onaliyun.com
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	// The type of the user. Valid values:
+	// The user type.
 	//
 	// - ROLE
 	//
@@ -272,7 +272,7 @@ type ListMembersResponseBodyMembersActions struct {
 	//
 	// acs:emr::w-1234****abcd:action/add_MEMBER
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// The name of the action.
+	// The name of the permission.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ type ListMembersResponseBodyMembersRolesActions struct {
 	//
 	// acs:emr::w-1234****abcd:action/add_MEMBER
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// The name of the action.
+	// The name of the permission.
 	//
 	// example:
 	//

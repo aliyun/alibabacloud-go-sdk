@@ -28,13 +28,13 @@ type ListReleaseVersionsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page.
+	// The next token.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of versions.
+	// The list of release versions.
 	ReleaseVersions []*ListReleaseVersionsResponseBodyReleaseVersions `json:"releaseVersions,omitempty" xml:"releaseVersions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -131,6 +131,12 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Indicates whether the release version supports flame graphs. This is determined by checking if the fenix version metadata contains flame-graph.
+	//
+	// example:
+	//
+	// true
+	FlameGraphEnabled *bool `json:"flameGraphEnabled,omitempty" xml:"flameGraphEnabled,omitempty"`
 	// Indicates whether Fusion engine acceleration is enabled.
 	//
 	// example:
@@ -149,7 +155,7 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// ASI
 	IaasType *string `json:"iaasType,omitempty" xml:"iaasType,omitempty"`
-	// Indicates whether the version is a custom image.
+	// Indicates whether the image is a custom image.
 	IsCustom *bool `json:"isCustom,omitempty" xml:"isCustom,omitempty"`
 	// The version number.
 	//
@@ -169,7 +175,7 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// ONLINE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The version type.
+	// The release type.
 	//
 	// example:
 	//
@@ -195,6 +201,10 @@ func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetCpuArchitectures() [
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetDisplayReleaseVersion() *string {
 	return s.DisplayReleaseVersion
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetFlameGraphEnabled() *bool {
+	return s.FlameGraphEnabled
 }
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetFusion() *bool {
@@ -241,6 +251,11 @@ func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetCpuArchitectures(v [
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetDisplayReleaseVersion(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
 	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetFlameGraphEnabled(v bool) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.FlameGraphEnabled = &v
 	return s
 }
 

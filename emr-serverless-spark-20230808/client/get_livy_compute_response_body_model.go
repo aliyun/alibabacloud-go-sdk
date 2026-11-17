@@ -20,13 +20,13 @@ type iGetLivyComputeResponseBody interface {
 }
 
 type GetLivyComputeResponseBody struct {
-	// The return code of the request. The value 1000000 indicates that the request succeeded. Other values indicate that the request failed. For details about the error, see the message field.
+	// The response code. A value of 1000000 indicates that the request is successful. Any other value indicates that the request failed. For more information about the cause of the failure, see the message field.
 	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The returned data.
 	Data *GetLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -104,13 +104,13 @@ type GetLivyComputeResponseBodyData struct {
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
 	// The auto-stop configuration.
 	AutoStopConfiguration *GetLivyComputeResponseBodyDataAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
-	// The ID of the Livy Gateway.
+	// The ID of the Livy gateway.
 	//
 	// example:
 	//
 	// lc-xxxxxxxxxxxxx
 	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
-	// The number of CPU cores for the Livy Server. Valid values:
+	// The number of CPU cores for the Livy server. Valid values:
 	//
 	// - 1
 	//
@@ -128,25 +128,25 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// alice
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The Spark DPI engine version number.
+	// The Spark engine version.
 	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The status of the public network address switch.
+	// The enabling status of the public endpoint.
 	//
 	// example:
 	//
 	// true
 	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
-	// The public network connection address.
+	// The public endpoint.
 	//
 	// example:
 	//
 	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The internal network connection address.
+	// The internal endpoint.
 	//
 	// example:
 	//
@@ -170,7 +170,13 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// 1749456094000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The Livy Gateway configuration in JSON format. The following files are supported:
+	// The Livy engine version. This is a new parameter that replaces livyVersion.
+	//
+	// example:
+	//
+	// 0.9.0
+	LivyReleaseVersion *string `json:"livyReleaseVersion,omitempty" xml:"livyReleaseVersion,omitempty"`
+	// The Livy gateway configuration in JSON format. The following files are supported:
 	//
 	// - sparkDefaultsConf
 	//
@@ -200,7 +206,7 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// 0.8.0
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
-	// The memory size of the Livy Server. Valid values:
+	// The memory size of the Livy server. Valid values:
 	//
 	// - 4Gi
 	//
@@ -212,13 +218,19 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// 4Gi
 	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// The Livy engine version information.
+	//
+	// example:
+	//
+	// v2
+	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// The name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connectivity name.
+	// The network connection name.
 	//
 	// example:
 	//
@@ -236,7 +248,7 @@ type GetLivyComputeResponseBodyData struct {
 	//
 	// 10000001
 	RamUserId *string `json:"ramUserId,omitempty" xml:"ramUserId,omitempty"`
-	// The Spark DPI engine version number. This field is deprecated. Use displayReleaseVersion instead.
+	// **[Deprecated]*	- The Spark engine version. Use displayReleaseVersion instead.
 	//
 	// example:
 	//
@@ -312,6 +324,10 @@ func (s *GetLivyComputeResponseBodyData) GetGmtCreate() *int64 {
 	return s.GmtCreate
 }
 
+func (s *GetLivyComputeResponseBodyData) GetLivyReleaseVersion() *string {
+	return s.LivyReleaseVersion
+}
+
 func (s *GetLivyComputeResponseBodyData) GetLivyServerConf() *string {
 	return s.LivyServerConf
 }
@@ -322,6 +338,10 @@ func (s *GetLivyComputeResponseBodyData) GetLivyVersion() *string {
 
 func (s *GetLivyComputeResponseBodyData) GetMemoryLimit() *string {
 	return s.MemoryLimit
+}
+
+func (s *GetLivyComputeResponseBodyData) GetMeta() *string {
+	return s.Meta
 }
 
 func (s *GetLivyComputeResponseBodyData) GetName() *string {
@@ -412,6 +432,11 @@ func (s *GetLivyComputeResponseBodyData) SetGmtCreate(v int64) *GetLivyComputeRe
 	return s
 }
 
+func (s *GetLivyComputeResponseBodyData) SetLivyReleaseVersion(v string) *GetLivyComputeResponseBodyData {
+	s.LivyReleaseVersion = &v
+	return s
+}
+
 func (s *GetLivyComputeResponseBodyData) SetLivyServerConf(v string) *GetLivyComputeResponseBodyData {
 	s.LivyServerConf = &v
 	return s
@@ -424,6 +449,11 @@ func (s *GetLivyComputeResponseBodyData) SetLivyVersion(v string) *GetLivyComput
 
 func (s *GetLivyComputeResponseBodyData) SetMemoryLimit(v string) *GetLivyComputeResponseBodyData {
 	s.MemoryLimit = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetMeta(v string) *GetLivyComputeResponseBodyData {
+	s.Meta = &v
 	return s
 }
 
@@ -472,7 +502,7 @@ func (s *GetLivyComputeResponseBodyData) Validate() error {
 }
 
 type GetLivyComputeResponseBodyDataAutoStopConfiguration struct {
-	// Specifies whether to automatically start after creation. Valid values:
+	// Specifies whether to automatically start the gateway after it is created.
 	//
 	// - true: Yes.
 	//
@@ -482,7 +512,7 @@ type GetLivyComputeResponseBodyDataAutoStopConfiguration struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The number of idle minutes after which the Livy Gateway automatically stops.
+	// The idle timeout in minutes after which the Livy gateway is automatically stopped.
 	//
 	// example:
 	//

@@ -133,19 +133,19 @@ func (s *GetRunConfigurationResponseBodyRunConfiguration) Validate() error {
 }
 
 type GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs struct {
-	// The name of the application configuration file.
+	// The application configuration file name.
 	//
 	// example:
 	//
 	// spark-defaults.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	// The key of the configuration item.
+	// The configuration item key.
 	//
 	// example:
 	//
 	// spark.driver.cores
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
-	// The value of the configuration item.
+	// The configuration item value.
 	//
 	// example:
 	//

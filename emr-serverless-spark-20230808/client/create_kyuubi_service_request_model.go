@@ -36,19 +36,19 @@ type CreateKyuubiServiceRequest struct {
 	//
 	// 2c8g
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
-	// The Kyuubi service configuration.
+	// The Kyuubi service configurations.
 	//
 	// example:
 	//
 	// [{\\"key\\":\\"kyuubi.engine.share.level\\",\\"value\\":\\"USER\\"}]
 	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
-	// The Kyuubi service database engine version.
+	// The Kyuubi service DPI engine version.
 	//
 	// example:
 	//
 	// 1.9.2-0.0.2
 	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
-	// The Kyuubi service name.
+	// The name of the Kyuubi service.
 	//
 	// example:
 	//
@@ -60,25 +60,25 @@ type CreateKyuubiServiceRequest struct {
 	//
 	// true
 	PublicEndpointEnabled *bool `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
-	// The queue where the Kyuubi service runs.
+	// The execution queue of the Kyuubi service.
 	//
 	// example:
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
-	// The Spark database engine version.
+	// The Spark DPI engine version.
 	//
 	// example:
 	//
 	// esr-4.6.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The number of replicas for high availability (HA).
+	// The number of replicas for high availability.
 	//
 	// example:
 	//
 	// 3
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// The Spark configuration.
+	// The Spark configurations.
 	//
 	// example:
 	//

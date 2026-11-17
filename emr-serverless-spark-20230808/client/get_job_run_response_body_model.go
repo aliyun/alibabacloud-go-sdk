@@ -62,7 +62,7 @@ func (s *GetJobRunResponseBody) Validate() error {
 }
 
 type GetJobRunResponseBodyJobRun struct {
-	// The job code type. Valid values:
+	// The code type of the job run. Valid values:
 	//
 	// - SQL
 	//
@@ -74,7 +74,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The Spark job configuration.
+	// The configuration overrides for the Spark job run.
 	ConfigurationOverrides *GetJobRunResponseBodyJobRunConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
 	// The version displayed in the console.
 	//
@@ -82,7 +82,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The job end time. The value is a Unix timestamp in milliseconds.
+	// The end time of the job run. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -100,13 +100,19 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	// The timestamp in milliseconds when the resources become ready, indicating the first report time. The first report time takes precedence. If it is empty, the job report time is used as a fallback. If neither has a value, null is returned.
+	//
+	// example:
+	//
+	// 1684119314000
+	FirstReportTime *int64 `json:"firstReportTime,omitempty" xml:"firstReportTime,omitempty"`
 	// Specifies whether the Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The Spark Driver information.
+	// The information about the Spark driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job run ID.
 	//
@@ -114,61 +120,73 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// jr-93d98d2f7061****
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The path of the run log.
+	// The execution log path.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The job name.
+	// The job run name.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The download URL of the NOTEBOOK file. This parameter is returned only if the job type is NOTEBOOK.
+	// The download URL of the notebook file. This parameter is returned only when the job type is NOTEBOOK.
 	//
 	// example:
 	//
 	// http://workflow-ide-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/spark-notebook-output/w-xxxxxxxxx/xxxxxxx
 	NotebookAccessUrl *string `json:"notebookAccessUrl,omitempty" xml:"notebookAccessUrl,omitempty"`
-	// The job priority.
+	// The priority of the job run.
 	//
 	// example:
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The Spark DPI engine version used to run the node.
+	// The database engine version of the Spark DPI engine for the node.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The UID of the user who created the job.
+	// The UID of the user who created the job run.
 	//
 	// example:
 	//
 	// 150978934701****
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
-	// The name of the queue used to run the job.
+	// The name of the resource queue for the job run.
 	//
 	// example:
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The job status.
+	// The resource startup duration in milliseconds, which is calculated by subtracting the first submission time from the resource ready time. If the first submission time or the resource ready time is missing, or if the calculation result is negative, null is returned instead of 0.
+	//
+	// example:
+	//
+	// 60000
+	ResourceStartupDurationMs *int64 `json:"resourceStartupDurationMs,omitempty" xml:"resourceStartupDurationMs,omitempty"`
+	// The job run duration in milliseconds, which is calculated by subtracting the resource ready time from the job end time. If the job has not ended, the current time is used. If the resource ready time is missing or the calculation result is negative, null is returned instead of 0.
+	//
+	// example:
+	//
+	// 120000
+	RunDurationMs *int64 `json:"runDurationMs,omitempty" xml:"runDurationMs,omitempty"`
+	// The state of the job run.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The reason for the status change.
+	// The reason for the state change.
 	StateChangeReason *GetJobRunResponseBodyJobRunStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// The job submission time. The value is a Unix timestamp in milliseconds.
+	// The submission time of the job run. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The details of token consumption.
+	// The details of the tokens consumed.
 	TokenDetails []*GetJobRunResponseBodyJobRunTokenDetails `json:"tokenDetails,omitempty" xml:"tokenDetails,omitempty" type:"Repeated"`
 	// The total number of tokens consumed.
 	//
@@ -176,7 +194,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 10000
 	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
-	// The web UI of the job.
+	// The Web UI of the job run.
 	//
 	// example:
 	//
@@ -222,6 +240,10 @@ func (s *GetJobRunResponseBodyJobRun) GetExecutionTimeoutSeconds() *int32 {
 	return s.ExecutionTimeoutSeconds
 }
 
+func (s *GetJobRunResponseBodyJobRun) GetFirstReportTime() *int64 {
+	return s.FirstReportTime
+}
+
 func (s *GetJobRunResponseBodyJobRun) GetFusion() *bool {
 	return s.Fusion
 }
@@ -260,6 +282,14 @@ func (s *GetJobRunResponseBodyJobRun) GetResourceOwnerId() *string {
 
 func (s *GetJobRunResponseBodyJobRun) GetResourceQueueId() *string {
 	return s.ResourceQueueId
+}
+
+func (s *GetJobRunResponseBodyJobRun) GetResourceStartupDurationMs() *int64 {
+	return s.ResourceStartupDurationMs
+}
+
+func (s *GetJobRunResponseBodyJobRun) GetRunDurationMs() *int64 {
+	return s.RunDurationMs
 }
 
 func (s *GetJobRunResponseBodyJobRun) GetState() *string {
@@ -324,6 +354,11 @@ func (s *GetJobRunResponseBodyJobRun) SetExecutionTimeoutSeconds(v int32) *GetJo
 	return s
 }
 
+func (s *GetJobRunResponseBodyJobRun) SetFirstReportTime(v int64) *GetJobRunResponseBodyJobRun {
+	s.FirstReportTime = &v
+	return s
+}
+
 func (s *GetJobRunResponseBodyJobRun) SetFusion(v bool) *GetJobRunResponseBodyJobRun {
 	s.Fusion = &v
 	return s
@@ -371,6 +406,16 @@ func (s *GetJobRunResponseBodyJobRun) SetResourceOwnerId(v string) *GetJobRunRes
 
 func (s *GetJobRunResponseBodyJobRun) SetResourceQueueId(v string) *GetJobRunResponseBodyJobRun {
 	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRun) SetResourceStartupDurationMs(v int64) *GetJobRunResponseBodyJobRun {
+	s.ResourceStartupDurationMs = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRun) SetRunDurationMs(v int64) *GetJobRunResponseBodyJobRun {
+	s.RunDurationMs = &v
 	return s
 }
 
@@ -457,7 +502,7 @@ func (s *GetJobRunResponseBodyJobRun) Validate() error {
 }
 
 type GetJobRunResponseBodyJobRunConfigurationOverrides struct {
-	// The configuration list.
+	// The list of configurations.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -561,7 +606,7 @@ type GetJobRunResponseBodyJobRunTokenDetails struct {
 	//
 	// 0<Token≤256K
 	TokenRange *string `json:"tokenRange,omitempty" xml:"tokenRange,omitempty"`
-	// The token source. Valid values: input and output.
+	// The source of the tokens, such as input or output.
 	//
 	// example:
 	//

@@ -24,18 +24,19 @@ type iCreateKyuubiTokenRequest interface {
 }
 
 type CreateKyuubiTokenRequest struct {
-	// The automatic expiration settings.
+	// The auto-expiration configuration struct.
 	AutoExpireConfiguration *CreateKyuubiTokenRequestAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
-	// The list of ARNs of authorized users.
+	// The list of ARNs for authorized users.
 	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
 	// The token name.
 	//
 	// example:
 	//
 	// dev_serverless_spark
-	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of Spark roles associated with the token.
 	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
-	// The token content. The token must be 32 characters long and contain only lowercase letters and digits.
+	// The token content, which must be 32 characters in length and contain only lowercase letters and digits.
 	//
 	// example:
 	//
@@ -121,13 +122,13 @@ func (s *CreateKyuubiTokenRequest) Validate() error {
 }
 
 type CreateKyuubiTokenRequestAutoExpireConfiguration struct {
-	// Specifies whether the token automatically expires.
+	// Specifies whether automatic expiration is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The expiration period in days.
+	// The expiration time in days.
 	//
 	// example:
 	//

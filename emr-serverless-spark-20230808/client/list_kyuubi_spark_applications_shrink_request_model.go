@@ -33,6 +33,8 @@ type iListKyuubiSparkApplicationsShrinkRequest interface {
 	GetStartTimeShrink() *string
 	SetStates(v string) *ListKyuubiSparkApplicationsShrinkRequest
 	GetStates() *string
+	SetUserName(v string) *ListKyuubiSparkApplicationsShrinkRequest
+	GetUserName() *string
 }
 
 type ListKyuubiSparkApplicationsShrinkRequest struct {
@@ -50,13 +52,13 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
 	// The end time range of the task.
 	EndTimeShrink *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The list of statuses of the latest SQL statement used for filtering.
+	// The list of statuses of the most recent SQL statement used for filtering.
 	//
 	// example:
 	//
 	// ["SUCCESS"]
 	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
-	// The maximum number of records to retrieve at a time.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
@@ -82,7 +84,7 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The sort order. A value of asc indicates ascending order, and desc indicates descending order.
+	// The sort order. asc indicates ascending order, and desc indicates descending order.
 	//
 	// example:
 	//
@@ -90,12 +92,18 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
 	// The start time range of the task.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The list of Spark application states used for filtering.
+	// The list of Spark application statuses used for filtering.
 	//
 	// example:
 	//
 	// ["ERROR"]
 	States *string `json:"states,omitempty" xml:"states,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// user-a
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListKyuubiSparkApplicationsShrinkRequest) String() string {
@@ -152,6 +160,10 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) GetStartTimeShrink() *string 
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) GetStates() *string {
 	return s.States
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) GetUserName() *string {
+	return s.UserName
 }
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) SetApplicationId(v string) *ListKyuubiSparkApplicationsShrinkRequest {
@@ -211,6 +223,11 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) SetStartTimeShrink(v string) 
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) SetStates(v string) *ListKyuubiSparkApplicationsShrinkRequest {
 	s.States = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetUserName(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.UserName = &v
 	return s
 }
 

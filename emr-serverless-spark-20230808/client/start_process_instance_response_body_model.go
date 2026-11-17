@@ -26,7 +26,7 @@ type iStartProcessInstanceResponseBody interface {
 }
 
 type StartProcessInstanceResponseBody struct {
-	// The return code of the API request backend.
+	// The backend return code for the API request.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type StartProcessInstanceResponseBody struct {
 	//
 	// null
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Indicates whether the manual workflow run failed.
+	// Specifies whether the manual workflow run failed.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type StartProcessInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The detailed description corresponding to the request code.
+	// The detailed description corresponding to the return code.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type StartProcessInstanceResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

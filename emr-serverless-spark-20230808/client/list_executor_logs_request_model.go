@@ -26,7 +26,7 @@ type ListExecutorLogsRequest struct {
 	//
 	// log4j
 	LogType *string `json:"logType,omitempty" xml:"logType,omitempty"`
-	// The maximum number of records to return in a single request.
+	// The maximum number of records to retrieve at a time.
 	//
 	// example:
 	//

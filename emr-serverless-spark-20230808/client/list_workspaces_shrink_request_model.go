@@ -26,19 +26,19 @@ type iListWorkspacesShrinkRequest interface {
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// The maximum number of records to return in a single request.
+	// The maximum number of results to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The name of the workspace. Fuzzy search by workspace name is supported.
+	// The name of the workspace. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// test_workspace
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The token that indicates the position from which to start reading.
+	// The pagination token that specifies the starting position for the query.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ListWorkspacesShrinkRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The state of the workspace. Valid values:
 	//
-	// - Starting: The workspace is starting.
+	// - Starting: Starting.
 	//
-	// - Running: The workspace is running.
+	// - Running: Running.
 	//
-	// - Stopping: The workspace is stopping.
+	// - Stopping: Stopping.
 	//
-	// - Stopped: The workspace is stopped.
+	// - Stopped: Stopped.
 	//
-	// - Error: The workspace failed.
+	// - Error: Failed.
 	//
 	// example:
 	//

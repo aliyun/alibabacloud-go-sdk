@@ -16,7 +16,7 @@ type iGetCacheClusterResponseBody interface {
 }
 
 type GetCacheClusterResponseBody struct {
-	// The list of Cache clusters.
+	// The list of cache clusters.
 	CacheClusters *CacheCluster `json:"cacheClusters,omitempty" xml:"cacheClusters,omitempty"`
 	// Id of the request
 	//

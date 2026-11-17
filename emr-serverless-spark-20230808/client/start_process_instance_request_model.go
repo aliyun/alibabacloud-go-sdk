@@ -94,7 +94,7 @@ type StartProcessInstanceRequest struct {
 	//
 	// dh*********
 	VersionHashCode *string `json:"versionHashCode,omitempty" xml:"versionHashCode,omitempty"`
-	// The workflow definition version number.
+	// The version number of the workflow definition.
 	//
 	// example:
 	//

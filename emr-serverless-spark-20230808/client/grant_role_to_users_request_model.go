@@ -18,13 +18,13 @@ type iGrantRoleToUsersRequest interface {
 }
 
 type GrantRoleToUsersRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// The ARN of the role.
 	//
 	// example:
 	//
 	// acs:emr::w-975bcfda9625****:role/Owner
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The user ARNs.
+	// The list of user ARNs.
 	UserArns []*string `json:"userArns,omitempty" xml:"userArns,omitempty" type:"Repeated"`
 	// The region ID.
 	//

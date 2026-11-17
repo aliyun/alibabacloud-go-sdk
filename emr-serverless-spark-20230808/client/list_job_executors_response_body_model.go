@@ -24,19 +24,19 @@ type iListJobExecutorsResponseBody interface {
 type ListJobExecutorsResponseBody struct {
 	// The list of executors.
 	Exexutors []*ListJobExecutorsResponseBodyExexutors `json:"exexutors,omitempty" xml:"exexutors,omitempty" type:"Repeated"`
-	// The maximum number of records returned.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The next token.
 	//
 	// example:
 	//
 	// 2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListJobExecutorsResponseBody) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExexutors struct {
-	// The total number of active tasks that the executor is running.
+	// The total number of active tasks running on the executor.
 	//
 	// example:
 	//
 	// 10
 	ActiveTasks *int64 `json:"activeTasks,omitempty" xml:"activeTasks,omitempty"`
-	// The time when the executor was created.
+	// The creation time of the executor.
 	//
 	// example:
 	//
 	// 1760601***
 	AddTime *int64 `json:"addTime,omitempty" xml:"addTime,omitempty"`
-	// The total number of completed tasks that the executor has run.
+	// The total number of tasks completed by the executor.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type ListJobExecutorsResponseBodyExexutors struct {
 	//
 	// driver
 	ExecutorType *string `json:"executorType,omitempty" xml:"executorType,omitempty"`
-	// The total number of failed tasks that the executor has run.
+	// The total number of failed tasks executed by the executor.
 	//
 	// example:
 	//
 	// 2
 	FailedTasks *int64 `json:"failedTasks,omitempty" xml:"failedTasks,omitempty"`
-	// The address of the executor.
+	// The address information of the executor.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type ListJobExecutorsResponseBodyExexutors struct {
 	//
 	// 30
 	MemoryUsed *int64 `json:"memoryUsed,omitempty" xml:"memoryUsed,omitempty"`
-	// The number of Resilient Distributed Dataset (RDD) blocks managed by the executor.
+	// The number of RDD blocks managed by the executor.
 	//
 	// example:
 	//
@@ -195,43 +195,43 @@ type ListJobExecutorsResponseBodyExexutors struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The total number of cores for the executor.
+	// The total number of cores of the executor.
 	//
 	// example:
 	//
 	// 4
 	TotalCores *int64 `json:"totalCores,omitempty" xml:"totalCores,omitempty"`
-	// The total runtime of the executor.
+	// The total running duration of the executor.
 	//
 	// example:
 	//
 	// 123
 	TotalDuration *int64 `json:"totalDuration,omitempty" xml:"totalDuration,omitempty"`
-	// The total garbage collection (GC) time of the executor.
+	// The total GC time of the executor.
 	//
 	// example:
 	//
 	// 3
 	TotalGCTime *int64 `json:"totalGCTime,omitempty" xml:"totalGCTime,omitempty"`
-	// The number of bytes of input data for the executor.
+	// The total number of input bytes for the executor.
 	//
 	// example:
 	//
 	// 1024
 	TotalInputBytes *int64 `json:"totalInputBytes,omitempty" xml:"totalInputBytes,omitempty"`
-	// The number of bytes read during the shuffle phase by the executor.
+	// The total number of shuffle read bytes for the executor.
 	//
 	// example:
 	//
 	// 2048
 	TotalShuffleRead *int64 `json:"totalShuffleRead,omitempty" xml:"totalShuffleRead,omitempty"`
-	// The number of bytes written during the shuffle phase by the executor.
+	// The total number of shuffle write bytes for the executor.
 	//
 	// example:
 	//
 	// 2048
 	TotalShuffleWrite *int64 `json:"totalShuffleWrite,omitempty" xml:"totalShuffleWrite,omitempty"`
-	// The total number of tasks that the executor has run.
+	// The total number of tasks executed by the executor.
 	//
 	// example:
 	//

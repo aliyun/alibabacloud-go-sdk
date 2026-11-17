@@ -68,11 +68,11 @@ type CancelKyuubiSparkApplicationResponseBodyBody struct {
 	//
 	// spark-339f844005b6404c95f9f7c7a13b****
 	ApplicationId *string `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

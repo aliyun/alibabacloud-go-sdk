@@ -62,13 +62,13 @@ type ListJobRunsRequest struct {
 	EndTime *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
 	// Specifies whether to aggregate and return statistical results by job run state.
 	GroupByState *bool `json:"groupByState,omitempty" xml:"groupByState,omitempty"`
-	// Specifies whether the job run is a workflow job.
+	// Specifies whether the job is a workflow job.
 	//
 	// example:
 	//
 	// false
 	IsWorkflow *string `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
-	// The ID of the streaming job deployment.
+	// The ID of the job for the streaming job deployment.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListJobRunsRequest struct {
 	//
 	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// The maximum number of entries to return in a single call. The maximum value is 100.
+	// The maximum number of records to retrieve per request. The maximum value is 100.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListJobRunsRequest struct {
 	//
 	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token that specifies the starting position for the query.
+	// The token that marks the position to start reading.
 	//
 	// example:
 	//
@@ -319,13 +319,13 @@ func (s *ListJobRunsRequest) Validate() error {
 }
 
 type ListJobRunsRequestEndTime struct {
-	// The end time of the time range. The value is a UNIX timestamp in milliseconds.
+	// The end of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time of the time range. The value is a UNIX timestamp in milliseconds.
+	// The start of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -364,13 +364,13 @@ func (s *ListJobRunsRequestEndTime) Validate() error {
 }
 
 type ListJobRunsRequestStartTime struct {
-	// The end time of the time range. The value is a UNIX timestamp in milliseconds.
+	// The end of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time of the time range. The value is a UNIX timestamp in milliseconds.
+	// The start of the time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

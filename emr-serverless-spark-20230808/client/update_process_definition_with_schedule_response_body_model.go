@@ -26,13 +26,13 @@ type iUpdateProcessDefinitionWithScheduleResponseBody interface {
 }
 
 type UpdateProcessDefinitionWithScheduleResponseBody struct {
-	// The return code from the API backend.
+	// The return code of the API backend.
 	//
 	// example:
 	//
 	// 1400009
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *UpdateProcessDefinitionWithScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The number of failures.
 	//
@@ -46,7 +46,7 @@ type UpdateProcessDefinitionWithScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The detailed description corresponding to the request code.
+	// The detailed description for the request code.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *UpdateProcessDefinitionWithScheduleResponseBody) Validate() error {
 }
 
 type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
-	// The email address for alert notifications.
+	// The alert email address.
 	//
 	// example:
 	//
@@ -159,37 +159,37 @@ type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
 	//
 	// alicloud_ack_one_cluster
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The workflow definition ID.
+	// The ID of the workflow definition.
 	//
 	// example:
 	//
 	// 12***********
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The creation time of the workflow definition. The time is in UTC and follows the ISO 8601 standard.
+	// The creation time of the workflow definition. The time is in UTC and follows the ISO 8601 format.
 	//
 	// example:
 	//
 	// 2024-09-05T02:03:19Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The cron expression for scheduling.
+	// The cron expression for the schedule.
 	//
 	// example:
 	//
 	// 0 0 0 	- 	- ?
 	Crontab *string `json:"crontab,omitempty" xml:"crontab,omitempty"`
-	// The node definition description.
+	// The task definition description.
 	//
 	// example:
 	//
 	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The end time of the task time range. The value is a UNIX timestamp in milliseconds.
+	// The end time of the task time range. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The execution policy.
+	// The execution strategy.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
 	//
 	// ONLINE
 	ReleaseState *string `json:"releaseState,omitempty" xml:"releaseState,omitempty"`
-	// The start time of the scheduling.
+	// The start time of the schedule.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
 	//
 	// Asia/Shanghai
 	TimezoneId *string `json:"timezoneId,omitempty" xml:"timezoneId,omitempty"`
-	// The update time of the workflow definition. The time is in UTC and follows the ISO 8601 standard.
+	// The update time of the workflow definition. The time is in UTC and follows the ISO 8601 format.
 	//
 	// example:
 	//

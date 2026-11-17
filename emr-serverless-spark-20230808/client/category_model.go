@@ -28,7 +28,7 @@ type iCategory interface {
 }
 
 type Category struct {
-	// The folder ID.
+	// The ID of the folder.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type Category struct {
 	//
 	// w-d8********
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The ID of the user who creates the folder.
+	// The UID of the creator.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type Category struct {
 	//
 	// 150978934701****
 	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The time when the folder was created.
+	// The creation time.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type Category struct {
 	//
 	// 2025-03-10T02:02:41.000+00:00
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	// The time when the folder was last updated.
+	// The last updated time.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type Category struct {
 	//
 	// 2025-03-10T02:02:41.000+00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the user who last modifies the folder.
+	// The UID of the last updater.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type Category struct {
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The parent folder ID.
+	// The ID of the parent folder.
 	//
 	// example:
 	//

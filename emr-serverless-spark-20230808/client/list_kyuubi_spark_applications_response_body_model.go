@@ -24,7 +24,7 @@ type iListKyuubiSparkApplicationsResponseBody interface {
 type ListKyuubiSparkApplicationsResponseBody struct {
 	// The list of application details.
 	Applications []*ListKyuubiSparkApplicationsResponseBodyApplications `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
-	// The maximum number of records to retrieve at a time.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
-	// The number of compute units (CUs) consumed during the task execution. This value is an estimate. The actual value is subject to the bill.
+	// The number of compute units (CUs) consumed during the task runtime. This value is an estimate. The final value is subject to the bill.
 	//
 	// example:
 	//
 	// 0.238302
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The end time of the task. The format is YYYY-MM-DD HH:mm:ss.
+	// The end time of the task. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// kb-2b93ec*******c9440c
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
-	// The execution status of the latest SQL statement in the application.
+	// The execution status of the most recent SQL statement in the application.
 	//
 	// example:
 	//
 	// SUCCESS
 	LatestSqlStatementStatus *string `json:"latestSqlStatementStatus,omitempty" xml:"latestSqlStatementStatus,omitempty"`
-	// The total memory allocated to the task multiplied by the task execution duration in seconds.
+	// The total memory allocated to the task multiplied by the number of seconds the task has run.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The name of the resource queue in which the Spark task runs.
+	// The name of the resource queue where the Spark task runs.
 	//
 	// example:
 	//
@@ -183,19 +183,19 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// {"driverStdOut":"oss://bucket/path/to/stdout","driverStdError":"oss://bucket/path/to/stderr","driverSyslog":"oss://bucket/path/to/syslog","driverStartup":"oss://bucket/path/to/startup"}
 	RunLog *RunLog `json:"runLog,omitempty" xml:"runLog,omitempty"`
-	// The start time of the task. The format is YYYY-MM-DD HH:mm:ss.
+	// The start time of the task. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-02-12 19:59:16
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The state of the Spark application. Valid values:
+	// The status of the Spark application. Valid values:
 	//
-	// - STARTING: The application is starting.
+	// - STARTING: Starting.
 	//
-	// - RUNNING: The application is running.
+	// - RUNNING: Running.
 	//
-	// - TERMINATED: The application is terminated.
+	// - TERMINATED: Terminated.
 	//
 	// example:
 	//
@@ -203,7 +203,13 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The list of tags for the Spark application.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The total number of vcores allocated to the task multiplied by the task execution duration in seconds.
+	// The username.
+	//
+	// example:
+	//
+	// user-a
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The total vcores allocated to the task multiplied by the number of seconds the task has run.
 	//
 	// example:
 	//
@@ -275,6 +281,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetState() *string
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetTags() []*Tag {
 	return s.Tags
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetUserName() *string {
+	return s.UserName
 }
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetVcoreSeconds() *int64 {
@@ -352,6 +362,11 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetState(v string)
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetTags(v []*Tag) *ListKyuubiSparkApplicationsResponseBodyApplications {
 	s.Tags = v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetUserName(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
+	s.UserName = &v
 	return s
 }
 

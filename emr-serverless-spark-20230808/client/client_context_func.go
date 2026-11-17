@@ -50,7 +50,7 @@ func (client *Client) ActivateAICenterWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Adds a Resource Access Management (RAM) user or a RAM role to a workspace as a member.
+// Invokes AddMembers to add Resource Access Management (RAM) users or RAM roles to a workspace as new members.
 //
 // @param request - AddMembersRequest
 //
@@ -107,7 +107,7 @@ func (client *Client) AddMembersWithContext(ctx context.Context, request *AddMem
 
 // Summary:
 //
-// Terminates a Spark job.
+// Terminates a running Spark job.
 //
 // @param request - CancelJobRunRequest
 //
@@ -154,7 +154,7 @@ func (client *Client) CancelJobRunWithContext(ctx context.Context, workspaceId *
 
 // Summary:
 //
-// Cancels a Kyuubi Spark application.
+// Cancels a Spark application submitted by Kyuubi.
 //
 // @param request - CancelKyuubiSparkApplicationRequest
 //
@@ -201,7 +201,7 @@ func (client *Client) CancelKyuubiSparkApplicationWithContext(ctx context.Contex
 
 // Summary:
 //
-// Stops a RayJob.
+// Stops a Ray job.
 //
 // @param request - CancelRayJobRequest
 //
@@ -242,7 +242,7 @@ func (client *Client) CancelRayJobWithContext(ctx context.Context, workspaceId *
 
 // Summary:
 //
-// Moves an instance to a different resource group.
+// Updates the resource group of an instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -301,7 +301,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a Kyuubi gateway.
+// Creates a Kyuubi Gateway.
 //
 // @param request - CreateKyuubiServiceRequest
 //
@@ -503,6 +503,10 @@ func (client *Client) CreateLivyComputeWithContext(ctx context.Context, workspac
 		body["fusion"] = request.Fusion
 	}
 
+	if !dara.IsNil(request.LivyReleaseVersion) {
+		body["livyReleaseVersion"] = request.LivyReleaseVersion
+	}
+
 	if !dara.IsNil(request.LivyServerConf) {
 		body["livyServerConf"] = request.LivyServerConf
 	}
@@ -558,7 +562,7 @@ func (client *Client) CreateLivyComputeWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Creates a token for a Livy Gateway.
+// Creates a token for Livy Gateway.
 //
 // @param request - CreateLivyComputeTokenRequest
 //
@@ -619,7 +623,7 @@ func (client *Client) CreateLivyComputeTokenWithContext(ctx context.Context, wor
 
 // Summary:
 //
-// Creates a network service.
+// Creates network connectivity.
 //
 // @param request - CreateNetworkServiceRequest
 //
@@ -850,6 +854,10 @@ func (client *Client) CreateRayClusterWithContext(ctx context.Context, workspace
 		body["displayReleaseVersion"] = request.DisplayReleaseVersion
 	}
 
+	if !dara.IsNil(request.EnableMetricsUpload) {
+		body["enableMetricsUpload"] = request.EnableMetricsUpload
+	}
+
 	if !dara.IsNil(request.ExtraParam) {
 		body["extraParam"] = request.ExtraParam
 	}
@@ -864,6 +872,14 @@ func (client *Client) CreateRayClusterWithContext(ctx context.Context, workspace
 
 	if !dara.IsNil(request.NetworkServiceName) {
 		body["networkServiceName"] = request.NetworkServiceName
+	}
+
+	if !dara.IsNil(request.SlsLogStore) {
+		body["slsLogStore"] = request.SlsLogStore
+	}
+
+	if !dara.IsNil(request.SlsProject) {
+		body["slsProject"] = request.SlsProject
 	}
 
 	if !dara.IsNil(request.VolumeIds) {
@@ -997,7 +1013,7 @@ func (client *Client) CreateSessionClusterWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Creates an SQL query.
+// Creates a SQL query.
 //
 // @param request - CreateSqlStatementRequest
 //
@@ -1138,6 +1154,10 @@ func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *C
 
 	if !dara.IsNil(request.PaymentType) {
 		body["paymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		body["promotionOptionNo"] = request.PromotionOptionNo
 	}
 
 	if !dara.IsNil(request.RamRoleName) {
@@ -1309,7 +1329,7 @@ func (client *Client) DeleteKyuubiServiceWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Deletes a Kyuubi Gateway authentication token.
+// Deletes the Kyuubi Gateway authentication token.
 //
 // @param request - DeleteKyuubiTokenRequest
 //
@@ -1403,7 +1423,7 @@ func (client *Client) DeleteLivyComputeWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Deletes a token for a Livy Gateway.
+// Deletes a Livy Gateway token.
 //
 // @param request - DeleteLivyComputeTokenRequest
 //
@@ -1530,7 +1550,7 @@ func (client *Client) DeleteWorkspaceQueueWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Edits a workspace queue.
+// Modifies a workspace queue.
 //
 // @param request - EditWorkspaceQueueRequest
 //
@@ -1607,7 +1627,7 @@ func (client *Client) EditWorkspaceQueueWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Publishes a workflow and its scheduling configuration.
+// Publishes a workflow and its schedule.
 //
 // @param request - GenerateTaskCodesRequest
 //
@@ -1703,7 +1723,7 @@ func (client *Client) GetAICenterStateWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Retrieves the details of a Cache cluster.
+// Retrieves the details of a cache cluster.
 //
 // @param request - GetCacheClusterRequest
 //
@@ -1750,7 +1770,7 @@ func (client *Client) GetCacheClusterWithContext(ctx context.Context, cacheClust
 
 // Summary:
 //
-// Queries the number of CU-hours consumed by a queue during a specified cycle.
+// Retrieves the CU hours of a workspace queue.
 //
 // @param request - GetCuHoursRequest
 //
@@ -1856,7 +1876,7 @@ func (client *Client) GetDoctorApplicationWithContext(ctx context.Context, works
 
 // Summary:
 //
-// Retrieves the details of a Spark job run by calling GetJobRun.
+// Retrieves the details of a job run.
 //
 // @param request - GetJobRunRequest
 //
@@ -1903,7 +1923,7 @@ func (client *Client) GetJobRunWithContext(ctx context.Context, workspaceId *str
 
 // Summary:
 //
-// Retrieves a Kyuubi Gateway.
+// Retrieves the Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -1983,7 +2003,7 @@ func (client *Client) GetKyuubiTokenWithContext(ctx context.Context, workspaceId
 
 // Summary:
 //
-// Retrieves the Livy Gateway information.
+// Retrieves the details of a Livy gateway.
 //
 // @param request - GetLivyComputeRequest
 //
@@ -2030,7 +2050,7 @@ func (client *Client) GetLivyComputeWithContext(ctx context.Context, workspaceBi
 
 // Summary:
 //
-// Retrieves the token for a Livy Gateway.
+// Retrieves the token for the Livy Gateway.
 //
 // @param request - GetLivyComputeTokenRequest
 //
@@ -2202,7 +2222,7 @@ func (client *Client) GetRayLogWithContext(ctx context.Context, workspaceId *str
 
 // Summary:
 //
-// Retrieves the configuration of a Spark job.
+// Retrieves the configuration of a Spark task.
 //
 // @param request - GetRunConfigurationRequest
 //
@@ -2445,7 +2465,7 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, workspaceId *
 
 // Summary:
 //
-// Assigns a specified role to users.
+// Grants the specified role permissions to users.
 //
 // @param request - GrantRoleToUsersRequest
 //
@@ -2502,7 +2522,7 @@ func (client *Client) GrantRoleToUsersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # View the list of data catalogs
+// Queries the list of data catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2675,7 +2695,7 @@ func (client *Client) ListJobExecutorsWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Lists Spark job runs.
+// Retrieves a list of Spark job runs.
 //
 // @param tmpReq - ListJobRunsRequest
 //
@@ -2851,7 +2871,7 @@ func (client *Client) ListKyuubiServicesWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Queries the Spark applications submitted by Kyuubi.
+// Retrieves a list of Spark applications submitted by Kyuubi.
 //
 // @param tmpReq - ListKyuubiSparkApplicationsRequest
 //
@@ -2930,6 +2950,10 @@ func (client *Client) ListKyuubiSparkApplicationsWithContext(ctx context.Context
 		query["states"] = request.States
 	}
 
+	if !dara.IsNil(request.UserName) {
+		query["userName"] = request.UserName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2956,7 +2980,7 @@ func (client *Client) ListKyuubiSparkApplicationsWithContext(ctx context.Context
 
 // Summary:
 //
-// Lists the Kyuubi Server authentication tokens.
+// Lists the authentication tokens for Kyuubi Server.
 //
 // @param request - ListKyuubiTokenRequest
 //
@@ -3054,7 +3078,7 @@ func (client *Client) ListLivyComputeWithContext(ctx context.Context, workspaceB
 
 // Summary:
 //
-// Retrieves the historical sessions of a Livy Gateway.
+// Retrieves the historical sessions of a Livy gateway.
 //
 // @param request - ListLivyComputeSessionsRequest
 //
@@ -3109,7 +3133,7 @@ func (client *Client) ListLivyComputeSessionsWithContext(ctx context.Context, wo
 
 // Summary:
 //
-// Lists the tokens of a Livy gateway.
+// Lists the tokens of Livy Gateway.
 //
 // @param request - ListLivyComputeTokenRequest
 //
@@ -3156,7 +3180,7 @@ func (client *Client) ListLivyComputeTokenWithContext(ctx context.Context, works
 
 // Summary:
 //
-// # Get Log Content
+// Retrieves the log content.
 //
 // @param request - ListLogContentsRequest
 //
@@ -3215,7 +3239,7 @@ func (client *Client) ListLogContentsWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
-// Queries the list of members in a workspace.
+// Queries the members of a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -3270,7 +3294,7 @@ func (client *Client) ListMembersWithContext(ctx context.Context, workspaceId *s
 
 // Summary:
 //
-// Lists network connections.
+// Retrieves a list of network connectivity.
 //
 // @param request - ListNetworkServicesRequest
 //
@@ -3555,6 +3579,53 @@ func (client *Client) ListRayLogsWithContext(ctx context.Context, workspaceId *s
 
 // Summary:
 //
+// Retrieves the list of available regions.
+//
+// @param request - ListRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegionsResponse
+func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListRegionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRegions"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/action/listRegions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of release versions.
 //
 // @param request - ListReleaseVersionsRequest
@@ -3689,7 +3760,7 @@ func (client *Client) ListSessionClustersWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Retrieves the execution results of an SQL statement.
+// Retrieves the content of SQL statements.
 //
 // @param request - ListSqlStatementContentsRequest
 //
@@ -3744,7 +3815,7 @@ func (client *Client) ListSqlStatementContentsWithContext(ctx context.Context, w
 
 // Summary:
 //
-// Lists job templates.
+// Retrieves a list of task templates.
 //
 // @param request - ListTemplateRequest
 //
@@ -4020,7 +4091,7 @@ func (client *Client) QueryApmGrafanaDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Refreshes the token for a Livy Gateway.
+// Updates the token of a Livy gateway.
 //
 // @param request - RefreshLivyComputeTokenRequest
 //
@@ -4081,7 +4152,7 @@ func (client *Client) RefreshLivyComputeTokenWithContext(ctx context.Context, wo
 
 // Summary:
 //
-// # Start CacheCluster
+// Starts a cache cluster.
 //
 // @param request - StartCacheClusterRequest
 //
@@ -4128,7 +4199,7 @@ func (client *Client) StartCacheClusterWithContext(ctx context.Context, cacheClu
 
 // Summary:
 //
-// Starts a Spark Job.
+// Starts a Spark job.
 //
 // @param request - StartJobRunRequest
 //
@@ -4225,7 +4296,7 @@ func (client *Client) StartJobRunWithContext(ctx context.Context, workspaceId *s
 
 // Summary:
 //
-// Starts the Kyuubi Gateway.
+// Starts Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -4258,7 +4329,7 @@ func (client *Client) StartKyuubiServiceWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Starts a Livy gateway.
+// Starts Livy Gateway.
 //
 // @param request - StartLivyComputeRequest
 //
@@ -4504,7 +4575,7 @@ func (client *Client) StartSessionClusterWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Stops a CacheCluster.
+// Stops a cache cluster.
 //
 // @param request - StopCacheClusterRequest
 //
@@ -4551,7 +4622,7 @@ func (client *Client) StopCacheClusterWithContext(ctx context.Context, cacheClus
 
 // Summary:
 //
-// Stops a Kyuubi Gateway.
+// Stops Kyuubi Gateway.
 //
 // @param headers - map
 //
@@ -4584,7 +4655,7 @@ func (client *Client) StopKyuubiServiceWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Stops a Livy Gateway.
+// Stops the Livy Gateway.
 //
 // @param request - StopLivyComputeRequest
 //
@@ -4678,7 +4749,7 @@ func (client *Client) StopRayClusterWithContext(ctx context.Context, workspaceId
 
 // Summary:
 //
-// Stops a session.
+// Stops a session cluster.
 //
 // @param request - StopSessionClusterRequest
 //
@@ -4909,7 +4980,7 @@ func (client *Client) TerminateSqlStatementWithContext(ctx context.Context, work
 
 // Summary:
 //
-// Updates a Kyuubi Gateway.
+// Updates Kyuubi Gateway.
 //
 // @param request - UpdateKyuubiServiceRequest
 //
@@ -4928,6 +4999,10 @@ func (client *Client) UpdateKyuubiServiceWithContext(ctx context.Context, worksp
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ComputeInstance) {
 		body["computeInstance"] = request.ComputeInstance
+	}
+
+	if !dara.IsNil(request.ExpectedReplica) {
+		body["expectedReplica"] = request.ExpectedReplica
 	}
 
 	if !dara.IsNil(request.KyuubiConfigs) {
@@ -4950,6 +5025,10 @@ func (client *Client) UpdateKyuubiServiceWithContext(ctx context.Context, worksp
 		body["queue"] = request.Queue
 	}
 
+	if !dara.IsNil(request.Refresh) {
+		body["refresh"] = request.Refresh
+	}
+
 	if !dara.IsNil(request.ReleaseVersion) {
 		body["releaseVersion"] = request.ReleaseVersion
 	}
@@ -4960,6 +5039,10 @@ func (client *Client) UpdateKyuubiServiceWithContext(ctx context.Context, worksp
 
 	if !dara.IsNil(request.Restart) {
 		body["restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.Scale) {
+		body["scale"] = request.Scale
 	}
 
 	if !dara.IsNil(request.SparkConfigs) {
@@ -4992,7 +5075,7 @@ func (client *Client) UpdateKyuubiServiceWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Updates a Kyuubi Gateway authentication token.
+// Updates the authentication token for Kyuubi Gateway.
 //
 // @param request - UpdateKyuubiTokenRequest
 //
@@ -5061,7 +5144,7 @@ func (client *Client) UpdateKyuubiTokenWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Updates a Livy Gateway.
+// Updates a Livy gateway.
 //
 // @param request - UpdateLivyComputeRequest
 //
@@ -5113,6 +5196,10 @@ func (client *Client) UpdateLivyComputeWithContext(ctx context.Context, workspac
 
 	if !dara.IsNil(request.Fusion) {
 		body["fusion"] = request.Fusion
+	}
+
+	if !dara.IsNil(request.LivyReleaseVersion) {
+		body["livyReleaseVersion"] = request.LivyReleaseVersion
 	}
 
 	if !dara.IsNil(request.LivyServerConf) {
@@ -5170,7 +5257,7 @@ func (client *Client) UpdateLivyComputeWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Updates the workflow definition and timed scheduling.
+// Updates a workflow definition and scheduling.
 //
 // @param tmpReq - UpdateProcessDefinitionWithScheduleRequest
 //
@@ -5332,6 +5419,10 @@ func (client *Client) UpdateRayClusterWithContext(ctx context.Context, workspace
 		body["displayReleaseVersion"] = request.DisplayReleaseVersion
 	}
 
+	if !dara.IsNil(request.EnableMetricsUpload) {
+		body["enableMetricsUpload"] = request.EnableMetricsUpload
+	}
+
 	if !dara.IsNil(request.ExtraParam) {
 		body["extraParam"] = request.ExtraParam
 	}
@@ -5346,6 +5437,14 @@ func (client *Client) UpdateRayClusterWithContext(ctx context.Context, workspace
 
 	if !dara.IsNil(request.NetworkServiceName) {
 		body["networkServiceName"] = request.NetworkServiceName
+	}
+
+	if !dara.IsNil(request.SlsLogStore) {
+		body["slsLogStore"] = request.SlsLogStore
+	}
+
+	if !dara.IsNil(request.SlsProject) {
+		body["slsProject"] = request.SlsProject
 	}
 
 	if !dara.IsNil(request.VolumeIds) {

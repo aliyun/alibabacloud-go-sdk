@@ -62,7 +62,7 @@ func (s *ListQueueTopJobsResponseBody) Validate() error {
 }
 
 type ListQueueTopJobsResponseBodyQueueTopJobs struct {
-	// The list of jobs.
+	// The job list.
 	Jobs []*ListQueueTopJobsResponseBodyQueueTopJobsJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
 	// The maximum number of records returned in a single request.
 	//
@@ -70,13 +70,13 @@ type ListQueueTopJobsResponseBodyQueueTopJobs struct {
 	//
 	// 10
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//
 	// dev_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The total number of CUs consumed by the queue.
+	// The total CUs consumed by the queue.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListQueueTopJobsResponseBodyQueueTopJobsJobs struct {
 	//
 	// 8
 	CpuCores *string `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// The number of CUs consumed by the job.
+	// The CUs consumed by the job.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type ListQueueTopJobsResponseBodyQueueTopJobsJobs struct {
 	//
 	// spark-batch
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// The amount of memory requested by the job.
+	// The memory requested by the job.
 	//
 	// example:
 	//

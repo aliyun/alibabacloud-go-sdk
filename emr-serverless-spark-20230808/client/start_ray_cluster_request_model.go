@@ -14,7 +14,7 @@ type iStartRayClusterRequest interface {
 }
 
 type StartRayClusterRequest struct {
-	// The token used to ensure idempotence.
+	// The client token.
 	//
 	// example:
 	//

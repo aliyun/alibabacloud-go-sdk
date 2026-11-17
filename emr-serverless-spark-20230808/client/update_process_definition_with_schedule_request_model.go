@@ -48,7 +48,7 @@ type iUpdateProcessDefinitionWithScheduleRequest interface {
 }
 
 type UpdateProcessDefinitionWithScheduleRequest struct {
-	// The alert email address.
+	// The email address for alert notifications.
 	//
 	// example:
 	//
@@ -60,15 +60,16 @@ type UpdateProcessDefinitionWithScheduleRequest struct {
 	//
 	// ods batch workflow
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The execution policy.
+	// The execution strategy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PARALLEL
-	ExecutionType *string                                                   `json:"executionType,omitempty" xml:"executionType,omitempty"`
-	GlobalParams  []*UpdateProcessDefinitionWithScheduleRequestGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// The list of global parameters for the workflow.
+	GlobalParams []*UpdateProcessDefinitionWithScheduleRequestGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
 	// The workflow name.
 	//
 	// This parameter is required.
@@ -121,25 +122,29 @@ type UpdateProcessDefinitionWithScheduleRequest struct {
 	//
 	// 113***************
 	RunAs *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
-	// The scheduling structure.
+	// The schedule structure.
 	Schedule *UpdateProcessDefinitionWithScheduleRequestSchedule `json:"schedule,omitempty" xml:"schedule,omitempty" type:"Struct"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"tagkey":"tagvalue"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The JSON array of node definitions, which contains the description information of all nodes in the workflow.
+	// The JSON array of task definitions, which contains the description of all tasks in the workflow.
 	//
 	// This parameter is required.
 	TaskDefinitionJson []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty" type:"Repeated"`
-	// The concurrency of workflow node execution.
+	// The concurrency level for workflow node execution.
 	//
 	// example:
 	//
 	// 1
 	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
-	// The JSON array of node dependencies, which contains the dependencies among all nodes in the workflow. preTaskCode is the upstream node ID, and postTaskCode is the downstream node ID. Each node must have a unique ID. If a node does not have an upstream node, you must add a dependency with preTaskCode set to 0.
+	// The JSON array of task dependencies, which contains the dependencies among all tasks in the workflow. preTaskCode specifies the upstream task ID, and postTaskCode specifies the downstream task ID. Each task must have a unique ID. If a task node does not have an upstream task, you must add a dependency with preTaskCode set to 0.
 	//
 	// This parameter is required.
 	TaskRelationJson []*UpdateProcessDefinitionWithScheduleRequestTaskRelationJson `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty" type:"Repeated"`
-	// The default timeout for workflow execution.
+	// The default timeout period for workflow execution.
 	//
 	// example:
 	//
@@ -354,10 +359,30 @@ func (s *UpdateProcessDefinitionWithScheduleRequest) Validate() error {
 }
 
 type UpdateProcessDefinitionWithScheduleRequestGlobalParams struct {
+	// The parameter direction. Valid values: IN (input) and OUT (output).
+	//
+	// example:
+	//
+	// IN
 	Direct *string `json:"direct,omitempty" xml:"direct,omitempty"`
-	Prop   *string `json:"prop,omitempty" xml:"prop,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Prop *string `json:"prop,omitempty" xml:"prop,omitempty"`
+	// The data type of the parameter.
+	//
+	// example:
+	//
+	// VARCHAR
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UpdateProcessDefinitionWithScheduleRequestGlobalParams) String() string {
@@ -409,7 +434,7 @@ func (s *UpdateProcessDefinitionWithScheduleRequestGlobalParams) Validate() erro
 }
 
 type UpdateProcessDefinitionWithScheduleRequestSchedule struct {
-	// The cron expression for scheduling.
+	// The cron expression for the schedule.
 	//
 	// example:
 	//
@@ -484,13 +509,13 @@ func (s *UpdateProcessDefinitionWithScheduleRequestSchedule) Validate() error {
 }
 
 type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
-	// The alert email address.
+	// The email address for alert notifications.
 	//
 	// example:
 	//
 	// foo_bar@spark.alert.invalid.com
 	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
-	// The node definition ID.
+	// The task definition ID.
 	//
 	// This parameter is required.
 	//
@@ -498,25 +523,25 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
 	//
 	// 23************
 	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
-	// The node definition description.
+	// The task definition description.
 	//
 	// example:
 	//
 	// ods transform task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable alerts for node failures.
+	// Specifies whether to enable alerts for task failures.
 	//
 	// example:
 	//
 	// true
 	FailAlertEnable *bool `json:"failAlertEnable,omitempty" xml:"failAlertEnable,omitempty"`
-	// The number of retries after a node fails.
+	// The number of retries allowed after a task failure.
 	//
 	// example:
 	//
 	// 1
 	FailRetryTimes *int32 `json:"failRetryTimes,omitempty" xml:"failRetryTimes,omitempty"`
-	// The node name.
+	// The task name.
 	//
 	// This parameter is required.
 	//
@@ -524,15 +549,19 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
 	//
 	// ods_transform_task
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether to enable alerts for node startup.
+	// Specifies whether to enable alerts for task startup.
 	//
 	// example:
 	//
 	// true
 	StartAlertEnable *bool `json:"startAlertEnable,omitempty" xml:"startAlertEnable,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"tagkey":"tagvalue"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The node definition parameters.
+	// The task definition parameters.
 	//
 	// This parameter is required.
 	TaskParams *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams `json:"taskParams,omitempty" xml:"taskParams,omitempty" type:"Struct"`
@@ -544,7 +573,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
 	//
 	// EMR-SERVERLESS-SPARK
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// The default timeout for node execution.
+	// The default timeout period for task execution.
 	//
 	// example:
 	//
@@ -686,9 +715,10 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	// example:
 	//
 	// false
-	Fusion      *bool                                                                                `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The list of local parameters for the task.
 	LocalParams []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams `json:"localParams,omitempty" xml:"localParams,omitempty" type:"Repeated"`
-	// The name of the queue for running the node.
+	// The name of the queue used to run the task.
 	//
 	// This parameter is required.
 	//
@@ -696,7 +726,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The Spark node configuration.
+	// The Spark task configurations.
 	SparkConf []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
 	// The number of cores for the Spark driver.
 	//
@@ -704,7 +734,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	//
 	// 1
 	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
-	// The memory for the Spark driver.
+	// The memory size for the Spark driver.
 	//
 	// example:
 	//
@@ -716,7 +746,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	//
 	// 1
 	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
-	// The memory for the Spark executor.
+	// The memory size for the Spark executor.
 	//
 	// example:
 	//
@@ -728,7 +758,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	//
 	// INFO
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
-	// The log path of the Spark node.
+	// The log path for the Spark node.
 	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
 	// The Spark engine version.
 	//
@@ -736,7 +766,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	//
 	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
 	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	// The data development node ID.
+	// The data development task ID.
 	//
 	// This parameter is required.
 	//
@@ -935,10 +965,30 @@ func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams)
 }
 
 type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams struct {
+	// The parameter direction. Valid values: IN (input) and OUT (output).
+	//
+	// example:
+	//
+	// IN
 	Direct *string `json:"direct,omitempty" xml:"direct,omitempty"`
-	Prop   *string `json:"prop,omitempty" xml:"prop,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Prop *string `json:"prop,omitempty" xml:"prop,omitempty"`
+	// The data type of the parameter.
+	//
+	// example:
+	//
+	// VARCHAR
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams) String() string {
@@ -1035,7 +1085,7 @@ func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsS
 }
 
 type UpdateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
-	// The name of the node topology relationship. Set this parameter to the workflow name.
+	// The name of the task topology relationship. Set this parameter to the workflow name.
 	//
 	// This parameter is required.
 	//
@@ -1043,7 +1093,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
 	//
 	// ods batch workflow
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The downstream node ID.
+	// The downstream task ID.
 	//
 	// This parameter is required.
 	//
@@ -1051,7 +1101,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
 	//
 	// 19************
 	PostTaskCode *int64 `json:"postTaskCode,omitempty" xml:"postTaskCode,omitempty"`
-	// The downstream node version.
+	// The downstream task version.
 	//
 	// This parameter is required.
 	//
@@ -1059,7 +1109,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
 	//
 	// 1
 	PostTaskVersion *int32 `json:"postTaskVersion,omitempty" xml:"postTaskVersion,omitempty"`
-	// The upstream node ID.
+	// The upstream task ID.
 	//
 	// This parameter is required.
 	//
@@ -1067,7 +1117,7 @@ type UpdateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
 	//
 	// 16************
 	PreTaskCode *int64 `json:"preTaskCode,omitempty" xml:"preTaskCode,omitempty"`
-	// The upstream node version.
+	// The upstream task version.
 	//
 	// This parameter is required.
 	//

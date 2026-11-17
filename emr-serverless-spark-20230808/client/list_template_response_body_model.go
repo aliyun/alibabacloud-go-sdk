@@ -26,17 +26,19 @@ type iListTemplateResponseBody interface {
 type ListTemplateResponseBody struct {
 	// The data list.
 	Data []*Template `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// - If the value of success is false, an error code is returned.
+	// - If success is false, the business error code is returned.
 	//
-	// - If the value of success is true, this parameter is empty.
+	//
+	//
+	// - If success is true, null is returned.
 	//
 	// example:
 	//
 	// ERR-00000000
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// - If the value of success is false, an error message is returned.
+	// - If success is false, the business error message is returned.
 	//
-	// - If the value of success is true, this parameter is empty.
+	// - If success is true, null is returned.
 	//
 	// example:
 	//
@@ -54,11 +56,11 @@ type ListTemplateResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//

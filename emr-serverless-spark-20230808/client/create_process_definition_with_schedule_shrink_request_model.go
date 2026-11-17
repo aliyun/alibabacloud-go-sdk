@@ -67,7 +67,8 @@ type CreateProcessDefinitionWithScheduleShrinkRequest struct {
 	// example:
 	//
 	// PARALLEL
-	ExecutionType      *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// The list of global parameters for the workflow.
 	GlobalParamsShrink *string `json:"globalParams,omitempty" xml:"globalParams,omitempty"`
 	// The workflow name.
 	//
@@ -115,9 +116,13 @@ type CreateProcessDefinitionWithScheduleShrinkRequest struct {
 	//
 	// 113***************
 	RunAs *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
-	// The scheduling structure.
+	// The schedule structure.
 	ScheduleShrink *string `json:"schedule,omitempty" xml:"schedule,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"tagkey":"tagvalue"}
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The JSON array of task definitions. It contains the description information of all tasks in the workflow.
 	//

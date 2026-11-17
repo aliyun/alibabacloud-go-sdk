@@ -24,21 +24,21 @@ type iListNetworkServicesResponseBody interface {
 }
 
 type ListNetworkServicesResponseBody struct {
-	// The maximum number of entries to return on each page.
+	// The maximum number of records returned per request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A list of network connections.
+	// The list of network connectivity.
 	NetworkServices []*ListNetworkServicesResponseBodyNetworkServices `json:"networkServices,omitempty" xml:"networkServices,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+	// The next page token.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	Queues []*ListNetworkServicesResponseBodyQueues `json:"queues,omitempty" xml:"queues,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -46,7 +46,7 @@ type ListNetworkServicesResponseBody struct {
 	//
 	// 18C7775A-7995-128A-A10C-9116EA87****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -139,19 +139,19 @@ func (s *ListNetworkServicesResponseBody) Validate() error {
 }
 
 type ListNetworkServicesResponseBodyNetworkServices struct {
-	// The name of the network connection.
+	// The name of the network connectivity.
 	//
 	// example:
 	//
 	// vpc_test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the network connection.
+	// The network connectivity ID.
 	//
 	// example:
 	//
 	// ns-d7a1d02045fb****
 	NetworkServiceId *string `json:"networkServiceId,omitempty" xml:"networkServiceId,omitempty"`
-	// The state of the network connection.
+	// The state.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type ListNetworkServicesResponseBodyNetworkServices struct {
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The reason for the state change.
 	StateChangeReason *ListNetworkServicesResponseBodyNetworkServicesStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// The type of the network connection.
+	// The type.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListNetworkServicesResponseBodyNetworkServices struct {
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 	// The list of vSwitch IDs.
 	VswitchIds []*string `json:"vswitchIds,omitempty" xml:"vswitchIds,omitempty" type:"Repeated"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type ListNetworkServicesResponseBodyNetworkServicesStateChangeReason struct {
 	//
 	// code
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The message that provides details about the state change.
+	// The response message.
 	//
 	// example:
 	//
@@ -316,41 +316,41 @@ func (s *ListNetworkServicesResponseBodyNetworkServicesStateChangeReason) Valida
 }
 
 type ListNetworkServicesResponseBodyQueues struct {
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
 	// ns-d7a1d02045fb****
 	NetworkServiceId *string `json:"networkServiceId,omitempty" xml:"networkServiceId,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	StateChangeReason *ListNetworkServicesResponseBodyQueuesStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
 	// NetworkService
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
 	// vpc-uf6k2anfa9nzbm4cj****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	VswitchIds []*string `json:"vswitchIds,omitempty" xml:"vswitchIds,omitempty" type:"Repeated"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
@@ -448,13 +448,13 @@ func (s *ListNetworkServicesResponseBodyQueues) Validate() error {
 }
 
 type ListNetworkServicesResponseBodyQueuesStateChangeReason struct {
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// This parameter is deprecated.
+	// The deprecated parameter.
 	//
 	// example:
 	//

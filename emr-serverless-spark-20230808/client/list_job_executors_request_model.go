@@ -34,7 +34,7 @@ type ListJobExecutorsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The next token.
 	//
 	// example:
 	//

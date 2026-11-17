@@ -16,7 +16,7 @@ type iDeleteKyuubiServiceResponseBody interface {
 }
 
 type DeleteKyuubiServiceResponseBody struct {
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//

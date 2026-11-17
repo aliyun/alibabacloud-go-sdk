@@ -24,7 +24,7 @@ type StartSessionClusterRequest struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The session cluster ID.
+	// The session ID.
 	//
 	// example:
 	//

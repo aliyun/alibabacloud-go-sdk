@@ -69,6 +69,10 @@ type GetSessionClusterResponseBodySessionCluster struct {
 	// The auto-stop configuration.
 	AutoStopConfiguration *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
 	// The token used to connect to the session cluster.
+	//
+	// example:
+	//
+	// session-connection-****
 	ConnectionToken *string `json:"connectionToken,omitempty" xml:"connectionToken,omitempty"`
 	// The version actually displayed in the console.
 	//

@@ -22,7 +22,7 @@ type ListQueueTopJobsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The maximum number of jobs to return. The maximum value is 10.
+	// The maximum number of jobs to return. Maximum value: 10.
 	//
 	// example:
 	//

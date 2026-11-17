@@ -62,29 +62,29 @@ func (s *GetSqlStatementResponseBody) Validate() error {
 }
 
 type GetSqlStatementResponseBodyData struct {
-	// A list of execution times for the SQL query.
+	// The list of SQL query execution durations.
 	ExecutionTime []*int64 `json:"executionTime,omitempty" xml:"executionTime,omitempty" type:"Repeated"`
-	// The error code for the SQL query.
+	// The SQL query error code.
 	//
 	// example:
 	//
 	// ERROR-102
 	SqlErrorCode *string `json:"sqlErrorCode,omitempty" xml:"sqlErrorCode,omitempty"`
-	// The error message for the SQL query.
+	// The SQL query error message.
 	//
 	// example:
 	//
 	// error message
 	SqlErrorMessage *string `json:"sqlErrorMessage,omitempty" xml:"sqlErrorMessage,omitempty"`
-	// A list of SQL query results.
+	// The list of SQL query results.
 	SqlOutputs []*GetSqlStatementResponseBodyDataSqlOutputs `json:"sqlOutputs,omitempty" xml:"sqlOutputs,omitempty" type:"Repeated"`
-	// The state of the query.
+	// The query status.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The statement ID.
+	// The query ID.
 	//
 	// example:
 	//
@@ -168,14 +168,14 @@ func (s *GetSqlStatementResponseBodyData) Validate() error {
 }
 
 type GetSqlStatementResponseBodyDataSqlOutputs struct {
-	// The query data. The data is a JSON-serialized string.
+	// The query data, formatted as a string serialized in JSON.
 	//
 	// example:
 	//
 	// [{\\"values\\":[\\"test_db\\",\\"test_table\\",false]}
 	Rows         *string `json:"rows,omitempty" xml:"rows,omitempty"`
 	RowsFilePath *string `json:"rowsFilePath,omitempty" xml:"rowsFilePath,omitempty"`
-	// The details of the schema. The details are a JSON-serialized string.
+	// The detailed schema information, formatted as a string serialized in JSON.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iActivateAICenterResponseBody interface {
 }
 
 type ActivateAICenterResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

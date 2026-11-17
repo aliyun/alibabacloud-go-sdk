@@ -97,7 +97,7 @@ func (s *ListKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type ListKyuubiTokenResponseBodyDataTokens struct {
-	// The list of RAM user names of authorized users.
+	// The list of names of Resource Access Management (RAM) users of authorized users.
 	AccountNames []*string `json:"accountNames,omitempty" xml:"accountNames,omitempty" type:"Repeated"`
 	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
@@ -117,7 +117,7 @@ type ListKyuubiTokenResponseBodyDataTokens struct {
 	//
 	// 1787033891000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The last usage time. The value is a UNIX timestamp in milliseconds.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -130,7 +130,8 @@ type ListKyuubiTokenResponseBodyDataTokens struct {
 	// example:
 	//
 	// dev_serverless_spark
-	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of Spark roles associated with the token.
 	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
 	// The masked token.
 	//

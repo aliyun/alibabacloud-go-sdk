@@ -58,29 +58,109 @@ type iCacheCluster interface {
 }
 
 type CacheCluster struct {
-	BindedWorkspaces []*string                     `json:"bindedWorkspaces,omitempty" xml:"bindedWorkspaces,omitempty" type:"Repeated"`
-	CacheClusterId   *string                       `json:"cacheClusterId,omitempty" xml:"cacheClusterId,omitempty"`
-	CacheClusterName *string                       `json:"cacheClusterName,omitempty" xml:"cacheClusterName,omitempty"`
-	Cachesets        []*CacheClusterCachesets      `json:"cachesets,omitempty" xml:"cachesets,omitempty" type:"Repeated"`
-	ClusterId        *string                       `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	Configuration    *string                       `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Configurations   []*CacheClusterConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
-	CreateTime       *string                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Creator          *string                       `json:"creator,omitempty" xml:"creator,omitempty"`
-	Extra            *string                       `json:"extra,omitempty" xml:"extra,omitempty"`
-	GmtCreated       *int64                        `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	GmtModified      *int64                        `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Modifier         *string                       `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Name             *string                       `json:"name,omitempty" xml:"name,omitempty"`
-	PaymentType      *string                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId         *string                       `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ResourceGroupId  *string                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	ResourceSpec     *CacheClusterResourceSpec     `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
-	State            *string                       `json:"state,omitempty" xml:"state,omitempty"`
-	Tables           []*CacheClusterTables         `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
-	Tags             []*CacheClusterTags           `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The associated workspaces.
+	BindedWorkspaces []*string `json:"bindedWorkspaces,omitempty" xml:"bindedWorkspaces,omitempty" type:"Repeated"`
+	// The cache cluster ID.
+	//
+	// example:
+	//
+	// spc-xxxxxxx
+	CacheClusterId *string `json:"cacheClusterId,omitempty" xml:"cacheClusterId,omitempty"`
+	// The cache cluster name.
+	//
+	// example:
+	//
+	// test-cache-cluster
+	CacheClusterName *string `json:"cacheClusterName,omitempty" xml:"cacheClusterName,omitempty"`
+	// The list of cache sets associated with the cache cluster.
+	Cachesets []*CacheClusterCachesets `json:"cachesets,omitempty" xml:"cachesets,omitempty" type:"Repeated"`
+	// The cache cluster ID.
+	//
+	// example:
+	//
+	// spc-xxxxxxx
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// example:
+	//
+	// [{"name":"cache1","path":"/path1"}]
+	Configuration *string `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The list of configuration files for the cache cluster.
+	Configurations []*CacheClusterConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
+	// The creation time.
+	//
+	// example:
+	//
+	// Fri May 31 12:18:51 CST 2024
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The creator UID.
+	//
+	// example:
+	//
+	// 123456
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Extra   *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The creation time. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1717138731701
+	GmtCreated *int64 `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// The modification time. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1717138731701
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The modifier UID.
+	//
+	// example:
+	//
+	// 123456
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The cache cluster name.
+	//
+	// example:
+	//
+	// test-cache-cluster
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The billing method.
+	//
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek4f7uj74wdthi
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The cache cluster specifications.
+	ResourceSpec *CacheClusterResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
+	// The cache cluster status.
+	//
+	// example:
+	//
+	// RUNNING
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The list of data tables associated with the cache cluster.
+	Tables []*CacheClusterTables `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	// The list of tags for the cache cluster.
+	Tags []*CacheClusterTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The resource specifications used by the cache cluster.
 	UsedResourceSpec *CacheClusterUsedResourceSpec `json:"usedResourceSpec,omitempty" xml:"usedResourceSpec,omitempty" type:"Struct"`
-	Version          *string                       `json:"version,omitempty" xml:"version,omitempty"`
+	// The cache cluster version.
+	//
+	// example:
+	//
+	// v2.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s CacheCluster) String() string {
@@ -349,7 +429,17 @@ func (s *CacheCluster) Validate() error {
 }
 
 type CacheClusterCachesets struct {
+	// The name of the cache set.
+	//
+	// example:
+	//
+	// cache1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The path of the cache set.
+	//
+	// example:
+	//
+	// /path1
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
@@ -384,7 +474,14 @@ func (s *CacheClusterCachesets) Validate() error {
 }
 
 type CacheClusterConfigurations struct {
+	// The content of the configuration file.
+	//
+	// example:
+	//
+	// <cachesets><cacheset><name>cache1</name><path>/path1</path><cacheStrategy>DISTRIBUTED</cacheStrategy><metaPolicy><type>ALWAYS</type></metaPolicy><readPolicy>CACHE_ASIDE</readPolicy><preadPolicy>ALL_DYNAMIC</preadPolicy><writePolicy>WRITE_THROUGH</writePolicy></cacheset></cachesets>
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the configuration file.
+	//
 	// example:
 	//
 	// cacheset.xml
@@ -422,9 +519,20 @@ func (s *CacheClusterConfigurations) Validate() error {
 }
 
 type CacheClusterResourceSpec struct {
+	// The bandwidth.
+	//
+	// example:
+	//
+	// 100
 	BandWidth *int64 `json:"bandWidth,omitempty" xml:"bandWidth,omitempty"`
-	Ha        *bool  `json:"ha,omitempty" xml:"ha,omitempty"`
-	Storage   *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
+	// Specifies whether high availability is enabled.
+	Ha *bool `json:"ha,omitempty" xml:"ha,omitempty"`
+	// The physical storage.
+	//
+	// example:
+	//
+	// 100
+	Storage *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
 }
 
 func (s CacheClusterResourceSpec) String() string {
@@ -467,11 +575,36 @@ func (s *CacheClusterResourceSpec) Validate() error {
 }
 
 type CacheClusterTables struct {
-	CatalogId       *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The data catalog ID.
+	//
+	// example:
+	//
+	// 15097**********
+	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The data catalog provider.
+	//
+	// example:
+	//
+	// HMS
 	CatalogProvider *string `json:"catalogProvider,omitempty" xml:"catalogProvider,omitempty"`
-	Database        *string `json:"database,omitempty" xml:"database,omitempty"`
-	Table           *string `json:"table,omitempty" xml:"table,omitempty"`
-	WorkspaceId     *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// test_db
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
+	// The data table name.
+	//
+	// example:
+	//
+	// test_table
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// w-d2d82aa09155****
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CacheClusterTables) String() string {
@@ -532,7 +665,17 @@ func (s *CacheClusterTables) Validate() error {
 }
 
 type CacheClusterTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag_key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -567,8 +710,10 @@ func (s *CacheClusterTags) Validate() error {
 }
 
 type CacheClusterUsedResourceSpec struct {
+	// The used bandwidth.
 	BandWidth *int64 `json:"bandWidth,omitempty" xml:"bandWidth,omitempty"`
-	Storage   *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The used storage capacity.
+	Storage *int64 `json:"storage,omitempty" xml:"storage,omitempty"`
 }
 
 func (s CacheClusterUsedResourceSpec) String() string {

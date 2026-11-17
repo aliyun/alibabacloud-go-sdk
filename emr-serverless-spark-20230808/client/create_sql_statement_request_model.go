@@ -26,7 +26,7 @@ type iCreateSqlStatementRequest interface {
 }
 
 type CreateSqlStatementRequest struct {
-	// The SQL code. You can specify one or more SQL statements to execute.
+	// The SQL code. You can pass one or more SQL statements for execution.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type CreateSqlStatementRequest struct {
 	//
 	// default
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	// The limit value. Valid values: 1 to 10000.
+	// The LIMIT value. Valid values: 1 to 10000.
 	//
 	// example:
 	//
 	// 1000
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The SQL session ID. Create the session in the session management module of the EMR Serverless Spark workspace.
+	// The SQL session ID. You must create the session in the session management module of the EMR Serverless Spark workspace.
 	//
 	// example:
 	//
 	// sc-dfahdfjafhajd****
 	SqlComputeId *string `json:"sqlComputeId,omitempty" xml:"sqlComputeId,omitempty"`
-	// The data development node ID.
+	// The data development task ID.
 	//
 	// example:
 	//

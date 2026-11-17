@@ -13,6 +13,8 @@ type iUpdateRayClusterRequest interface {
 	GetDescription() *string
 	SetDisplayReleaseVersion(v string) *UpdateRayClusterRequest
 	GetDisplayReleaseVersion() *string
+	SetEnableMetricsUpload(v bool) *UpdateRayClusterRequest
+	GetEnableMetricsUpload() *bool
 	SetExtraParam(v string) *UpdateRayClusterRequest
 	GetExtraParam() *string
 	SetHeadSpec(v *UpdateRayClusterRequestHeadSpec) *UpdateRayClusterRequest
@@ -21,6 +23,10 @@ type iUpdateRayClusterRequest interface {
 	GetName() *string
 	SetNetworkServiceName(v string) *UpdateRayClusterRequest
 	GetNetworkServiceName() *string
+	SetSlsLogStore(v string) *UpdateRayClusterRequest
+	GetSlsLogStore() *string
+	SetSlsProject(v string) *UpdateRayClusterRequest
+	GetSlsProject() *string
 	SetVolumeIds(v []*string) *UpdateRayClusterRequest
 	GetVolumeIds() []*string
 	SetWorkerSpec(v []*UpdateRayClusterRequestWorkerSpec) *UpdateRayClusterRequest
@@ -40,6 +46,7 @@ type UpdateRayClusterRequest struct {
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	EnableMetricsUpload   *bool   `json:"enableMetricsUpload,omitempty" xml:"enableMetricsUpload,omitempty"`
 	// The extra parameters. The value must be in JSON format.
 	//
 	// example:
@@ -60,6 +67,14 @@ type UpdateRayClusterRequest struct {
 	//
 	// vpc
 	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	// example:
+	//
+	// myLogStore
+	SlsLogStore *string `json:"slsLogStore,omitempty" xml:"slsLogStore,omitempty"`
+	// example:
+	//
+	// myproject
+	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
 	// The list of managed directory IDs to mount.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
 	// The worker node information for the Ray cluster. A maximum of 50 worker groups are supported.
@@ -82,6 +97,10 @@ func (s *UpdateRayClusterRequest) GetDisplayReleaseVersion() *string {
 	return s.DisplayReleaseVersion
 }
 
+func (s *UpdateRayClusterRequest) GetEnableMetricsUpload() *bool {
+	return s.EnableMetricsUpload
+}
+
 func (s *UpdateRayClusterRequest) GetExtraParam() *string {
 	return s.ExtraParam
 }
@@ -96,6 +115,14 @@ func (s *UpdateRayClusterRequest) GetName() *string {
 
 func (s *UpdateRayClusterRequest) GetNetworkServiceName() *string {
 	return s.NetworkServiceName
+}
+
+func (s *UpdateRayClusterRequest) GetSlsLogStore() *string {
+	return s.SlsLogStore
+}
+
+func (s *UpdateRayClusterRequest) GetSlsProject() *string {
+	return s.SlsProject
 }
 
 func (s *UpdateRayClusterRequest) GetVolumeIds() []*string {
@@ -116,6 +143,11 @@ func (s *UpdateRayClusterRequest) SetDisplayReleaseVersion(v string) *UpdateRayC
 	return s
 }
 
+func (s *UpdateRayClusterRequest) SetEnableMetricsUpload(v bool) *UpdateRayClusterRequest {
+	s.EnableMetricsUpload = &v
+	return s
+}
+
 func (s *UpdateRayClusterRequest) SetExtraParam(v string) *UpdateRayClusterRequest {
 	s.ExtraParam = &v
 	return s
@@ -133,6 +165,16 @@ func (s *UpdateRayClusterRequest) SetName(v string) *UpdateRayClusterRequest {
 
 func (s *UpdateRayClusterRequest) SetNetworkServiceName(v string) *UpdateRayClusterRequest {
 	s.NetworkServiceName = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequest) SetSlsLogStore(v string) *UpdateRayClusterRequest {
+	s.SlsLogStore = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequest) SetSlsProject(v string) *UpdateRayClusterRequest {
+	s.SlsProject = &v
 	return s
 }
 
@@ -196,6 +238,10 @@ type UpdateRayClusterRequestHeadSpec struct {
 	// if can be null:
 	// true
 	GftEnabled *bool `json:"gftEnabled,omitempty" xml:"gftEnabled,omitempty"`
+	// example:
+	//
+	// 550
+	GpuDriverVersion *string `json:"gpuDriverVersion,omitempty" xml:"gpuDriverVersion,omitempty"`
 	// The GPU instance type.
 	//
 	// example:
@@ -260,6 +306,10 @@ func (s *UpdateRayClusterRequestHeadSpec) GetGftEnabled() *bool {
 	return s.GftEnabled
 }
 
+func (s *UpdateRayClusterRequestHeadSpec) GetGpuDriverVersion() *string {
+	return s.GpuDriverVersion
+}
+
 func (s *UpdateRayClusterRequestHeadSpec) GetGpuSpec() *string {
 	return s.GpuSpec
 }
@@ -307,6 +357,11 @@ func (s *UpdateRayClusterRequestHeadSpec) SetGftConfig(v *UpdateRayClusterReques
 
 func (s *UpdateRayClusterRequestHeadSpec) SetGftEnabled(v bool) *UpdateRayClusterRequestHeadSpec {
 	s.GftEnabled = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequestHeadSpec) SetGpuDriverVersion(v string) *UpdateRayClusterRequestHeadSpec {
+	s.GpuDriverVersion = &v
 	return s
 }
 
@@ -423,6 +478,10 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// MY_ENV=123456
 	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// example:
+	//
+	// 550
+	GpuDriverVersion *string `json:"gpuDriverVersion,omitempty" xml:"gpuDriverVersion,omitempty"`
 	// The GPU instance type.
 	//
 	// example:
@@ -499,6 +558,10 @@ func (s *UpdateRayClusterRequestWorkerSpec) GetEnv() *string {
 	return s.Env
 }
 
+func (s *UpdateRayClusterRequestWorkerSpec) GetGpuDriverVersion() *string {
+	return s.GpuDriverVersion
+}
+
 func (s *UpdateRayClusterRequestWorkerSpec) GetGpuSpec() *string {
 	return s.GpuSpec
 }
@@ -547,6 +610,11 @@ func (s *UpdateRayClusterRequestWorkerSpec) SetDisplayReleaseVersion(v string) *
 
 func (s *UpdateRayClusterRequestWorkerSpec) SetEnv(v string) *UpdateRayClusterRequestWorkerSpec {
 	s.Env = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequestWorkerSpec) SetGpuDriverVersion(v string) *UpdateRayClusterRequestWorkerSpec {
+	s.GpuDriverVersion = &v
 	return s
 }
 

@@ -33,6 +33,8 @@ type iListKyuubiSparkApplicationsRequest interface {
 	GetStartTime() *ListKyuubiSparkApplicationsRequestStartTime
 	SetStates(v string) *ListKyuubiSparkApplicationsRequest
 	GetStates() *string
+	SetUserName(v string) *ListKyuubiSparkApplicationsRequest
+	GetUserName() *string
 }
 
 type ListKyuubiSparkApplicationsRequest struct {
@@ -50,13 +52,13 @@ type ListKyuubiSparkApplicationsRequest struct {
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
 	// The end time range of the task.
 	EndTime *ListKyuubiSparkApplicationsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
-	// The list of statuses of the latest SQL statement used for filtering.
+	// The list of statuses of the most recent SQL statement used for filtering.
 	//
 	// example:
 	//
 	// ["SUCCESS"]
 	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
-	// The maximum number of records to retrieve at a time.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
@@ -82,7 +84,7 @@ type ListKyuubiSparkApplicationsRequest struct {
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The sort order. A value of asc indicates ascending order, and desc indicates descending order.
+	// The sort order. asc indicates ascending order, and desc indicates descending order.
 	//
 	// example:
 	//
@@ -90,12 +92,18 @@ type ListKyuubiSparkApplicationsRequest struct {
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
 	// The start time range of the task.
 	StartTime *ListKyuubiSparkApplicationsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
-	// The list of Spark application states used for filtering.
+	// The list of Spark application statuses used for filtering.
 	//
 	// example:
 	//
 	// ["ERROR"]
 	States *string `json:"states,omitempty" xml:"states,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// user-a
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListKyuubiSparkApplicationsRequest) String() string {
@@ -152,6 +160,10 @@ func (s *ListKyuubiSparkApplicationsRequest) GetStartTime() *ListKyuubiSparkAppl
 
 func (s *ListKyuubiSparkApplicationsRequest) GetStates() *string {
 	return s.States
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) GetUserName() *string {
+	return s.UserName
 }
 
 func (s *ListKyuubiSparkApplicationsRequest) SetApplicationId(v string) *ListKyuubiSparkApplicationsRequest {
@@ -211,6 +223,11 @@ func (s *ListKyuubiSparkApplicationsRequest) SetStartTime(v *ListKyuubiSparkAppl
 
 func (s *ListKyuubiSparkApplicationsRequest) SetStates(v string) *ListKyuubiSparkApplicationsRequest {
 	s.States = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) SetUserName(v string) *ListKyuubiSparkApplicationsRequest {
+	s.UserName = &v
 	return s
 }
 

@@ -88,14 +88,15 @@ type GetKyuubiTokenResponseBodyData struct {
 	//
 	// 1749456098000
 	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	// The list of authorized user ARNs.
+	// The list of ARNs of authorized users.
 	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
 	// The token name.
 	//
 	// example:
 	//
 	// dev_serverless_spark
-	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of Spark roles associated with the token.
 	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
 	// The masked token.
 	//
@@ -103,7 +104,7 @@ type GetKyuubiTokenResponseBodyData struct {
 	//
 	// dxj**********wfg
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//
@@ -219,7 +220,7 @@ func (s *GetKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type GetKyuubiTokenResponseBodyDataAutoExpireConfiguration struct {
-	// Specifies whether auto-expiration is enabled.
+	// Indicates whether automatic expiration is enabled.
 	//
 	// example:
 	//

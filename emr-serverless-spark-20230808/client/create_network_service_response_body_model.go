@@ -16,7 +16,7 @@ type iCreateNetworkServiceResponseBody interface {
 }
 
 type CreateNetworkServiceResponseBody struct {
-	// The operation ID.
+	// The workspace ID.
 	//
 	// example:
 	//

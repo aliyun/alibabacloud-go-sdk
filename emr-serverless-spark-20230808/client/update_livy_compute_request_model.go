@@ -25,6 +25,8 @@ type iUpdateLivyComputeRequest interface {
 	GetEnvironmentId() *string
 	SetFusion(v bool) *UpdateLivyComputeRequest
 	GetFusion() *bool
+	SetLivyReleaseVersion(v string) *UpdateLivyComputeRequest
+	GetLivyReleaseVersion() *string
 	SetLivyServerConf(v string) *UpdateLivyComputeRequest
 	GetLivyServerConf() *string
 	SetLivyVersion(v string) *UpdateLivyComputeRequest
@@ -54,7 +56,7 @@ type UpdateLivyComputeRequest struct {
 	AutoStartConfiguration *UpdateLivyComputeRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The auto-stop configuration.
 	AutoStopConfiguration *UpdateLivyComputeRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
-	// The number of vCPUs for the Livy server.
+	// The number of CPU cores for the Livy server.
 	//
 	// - 1
 	//
@@ -66,27 +68,31 @@ type UpdateLivyComputeRequest struct {
 	//
 	// 1
 	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
-	// The version number of the Spark engine.
+	// The Spark DPI engine database engine version number.
 	//
 	// example:
 	//
 	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The status of the switch for the Internet endpoint.
+	// The status of the public endpoint switch.
 	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
-	// The environment ID.
+	// The runtime environment ID.
 	//
 	// example:
 	//
 	// ev-cq146allhtgkulp5smk0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Specifies whether to enable the Fusion engine for acceleration.
+	// Specifies whether to enable Fusion engine acceleration.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The configurations of the Livy Gateway. This parameter is in JSON format and supports the following files:
+	// example:
+	//
+	// 0.9.0
+	LivyReleaseVersion *string `json:"livyReleaseVersion,omitempty" xml:"livyReleaseVersion,omitempty"`
+	// The Livy gateway configuration in JSON format. The following files are supported:
 	//
 	// - sparkDefaultsConf
 	//
@@ -118,6 +124,12 @@ type UpdateLivyComputeRequest struct {
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
 	// The memory size of the Livy server.
 	//
+	// - 4Gi
+	//
+	// - 8Gi
+	//
+	// - 16Gi
+	//
 	// example:
 	//
 	// 4Gi
@@ -128,7 +140,7 @@ type UpdateLivyComputeRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the network connection.
+	// The network connectivity name.
 	//
 	// example:
 	//
@@ -140,7 +152,7 @@ type UpdateLivyComputeRequest struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+	// **[Deprecated]*	- The Spark DPI engine database engine version number. Use displayReleaseVersion instead.
 	//
 	// example:
 	//
@@ -192,6 +204,10 @@ func (s *UpdateLivyComputeRequest) GetEnvironmentId() *string {
 
 func (s *UpdateLivyComputeRequest) GetFusion() *bool {
 	return s.Fusion
+}
+
+func (s *UpdateLivyComputeRequest) GetLivyReleaseVersion() *string {
+	return s.LivyReleaseVersion
 }
 
 func (s *UpdateLivyComputeRequest) GetLivyServerConf() *string {
@@ -266,6 +282,11 @@ func (s *UpdateLivyComputeRequest) SetFusion(v bool) *UpdateLivyComputeRequest {
 	return s
 }
 
+func (s *UpdateLivyComputeRequest) SetLivyReleaseVersion(v string) *UpdateLivyComputeRequest {
+	s.LivyReleaseVersion = &v
+	return s
+}
+
 func (s *UpdateLivyComputeRequest) SetLivyServerConf(v string) *UpdateLivyComputeRequest {
 	s.LivyServerConf = &v
 	return s
@@ -321,7 +342,7 @@ func (s *UpdateLivyComputeRequest) Validate() error {
 }
 
 type UpdateLivyComputeRequestAutoStartConfiguration struct {
-	// Specifies whether to automatically start the Livy Gateway after it is created.
+	// Specifies whether to automatically start the gateway after creation.
 	//
 	// - true: Yes.
 	//
@@ -355,7 +376,7 @@ func (s *UpdateLivyComputeRequestAutoStartConfiguration) Validate() error {
 }
 
 type UpdateLivyComputeRequestAutoStopConfiguration struct {
-	// Specifies whether to enable auto-stop for the Livy Gateway.
+	// Specifies whether to allow automatic stopping.
 	//
 	// - true: Yes.
 	//
@@ -365,7 +386,7 @@ type UpdateLivyComputeRequestAutoStopConfiguration struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+	// The number of idle minutes after which the Livy gateway is automatically stopped.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListRayClusterResponseBody interface {
 }
 
 type ListRayClusterResponseBody struct {
-	// The list of Ray clusters.
+	// The Ray clusters.
 	RayClusters []*ListRayClusterResponseBodyRayClusters `json:"rayClusters,omitempty" xml:"rayClusters,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -102,13 +102,13 @@ type ListRayClusterResponseBodyRayClusters struct {
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Ray DPI engine version.
+	// The Ray engine version.
 	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The internal gRPC endpoint. You can also use the domain name to submit Ray jobs.
+	// The gRPC endpoint on the internal network. The domain name can also be used to submit Ray jobs.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListRayClusterResponseBodyRayClusters struct {
 	//
 	// testRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connectivity name.
+	// The network connection name.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type ListRayClusterResponseBodyRayClusters struct {
 	//
 	// 1234567890
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The worker information of the Ray cluster.
+	// The worker node information of the Ray cluster.
 	WorkerSpec []*ListRayClusterResponseBodyRayClustersWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -418,7 +418,7 @@ type ListRayClusterResponseBodyRayClustersHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Specifies whether auto scaling is enabled for worker nodes.
+	// Specifies whether auto-scaling is enabled for worker nodes.
 	//
 	// example:
 	//
@@ -430,19 +430,19 @@ type ListRayClusterResponseBodyRayClustersHeadSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout for worker nodes, in seconds.
+	// The idle timeout for worker nodes.
 	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size, in GiB.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//
@@ -550,25 +550,25 @@ type ListRayClusterResponseBodyRayClustersWorkerSpec struct {
 	//
 	// Group1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The maximum number of workers when auto scaling is enabled.
+	// The maximum number of worker nodes when auto-scaling is enabled.
 	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size, in GiB.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of workers when auto scaling is enabled.
+	// The minimum number of worker nodes when auto-scaling is enabled.
 	//
 	// example:
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//
@@ -580,7 +580,7 @@ type ListRayClusterResponseBodyRayClustersWorkerSpec struct {
 	//
 	// 2
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// The type of the worker.
+	// The worker type.
 	//
 	// example:
 	//

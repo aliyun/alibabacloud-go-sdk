@@ -33,6 +33,8 @@ type iCreateWorkspaceRequest interface {
 	GetPaymentDurationUnit() *string
 	SetPaymentType(v string) *CreateWorkspaceRequest
 	GetPaymentType() *string
+	SetPromotionOptionNo(v string) *CreateWorkspaceRequest
+	GetPromotionOptionNo() *string
 	SetRamRoleName(v string) *CreateWorkspaceRequest
 	GetRamRoleName() *string
 	SetReleaseType(v string) *CreateWorkspaceRequest
@@ -50,79 +52,85 @@ type iCreateWorkspaceRequest interface {
 }
 
 type CreateWorkspaceRequest struct {
-	// Specifies whether to enable auto-renewal. This parameter is required if you set `paymentType` to `Pre`.
+	// Specifies whether to enable auto-renewal. This parameter is required when the paymentType parameter is set to Pre.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
+	// The auto-renewal duration. This parameter is required when the paymentType parameter is set to Pre.
 	//
 	// example:
 	//
 	// 100
 	AutoRenewPeriod *string `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The unit of the auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
+	// The auto-renewal cycle. This parameter is required when the paymentType parameter is set to Pre.
 	//
 	// example:
 	//
 	// month
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
-	// Specifies whether to automatically start a session cluster when the workspace is created.
+	// Specifies whether to automatically start a session.
 	//
 	// example:
 	//
 	// false
 	AutoStartSessionCluster *bool `json:"autoStartSessionCluster,omitempty" xml:"autoStartSessionCluster,omitempty"`
-	// A token that ensures the idempotency of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// 8e6aae2810c8f67229ca70bb31cd****
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The DLF Catalog ID.
+	// The DLF catalog information.
 	//
 	// example:
 	//
 	// 123xxxxx
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
-	// The DLF type.
+	// The DLF binding type.
 	//
 	// example:
 	//
 	// dlf1.0
 	DlfType *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
-	// The subscription duration. This parameter is required if you set `paymentType` to `Pre`.
+	// The number of subscription periods. This parameter is required when the paymentType parameter is set to Pre.
 	//
 	// example:
 	//
 	// 12452
 	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The specifications for the GPU resources.
+	// The list of GPU instance types.
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	// The OSS bucket for the workspace. The path must be in the `oss://<bucket-name>/` format.
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// oss://test-bucket/
 	OssBucket *string `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
-	// The unit of the subscription duration. This parameter is required if you set `paymentType` to `Pre`.
+	// The unit of the subscription period.
 	//
 	// example:
 	//
 	// 1000
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
-	// The billing method. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - `PayAsYouGo`: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go
 	//
-	// - `Pre`: subscription
+	// - Pre: subscription
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The name of the RAM role used to run Spark jobs.
+	// Supported only for subscription instances. Use the voucher option ID returned by the price inquiry API. To not use a voucher, pass youhuiquan_promotion_option_id_for_blank. If this parameter is omitted, the previous calling behavior is maintained.
+	//
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionOptionNo *string `json:"promotionOptionNo,omitempty" xml:"promotionOptionNo,omitempty"`
+	// The name of the RAM role used to execute Spark jobs.
 	//
 	// example:
 	//
@@ -134,7 +142,7 @@ type CreateWorkspaceRequest struct {
 	//
 	// pro
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -142,12 +150,12 @@ type CreateWorkspaceRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The resource specifications.
 	ResourceSpec *CreateWorkspaceRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
-	// The tags to add to the workspace.
+	// The list of tags.
 	//
 	// if can be null:
 	// false
 	Tag []*CreateWorkspaceRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -215,6 +223,10 @@ func (s *CreateWorkspaceRequest) GetPaymentDurationUnit() *string {
 
 func (s *CreateWorkspaceRequest) GetPaymentType() *string {
 	return s.PaymentType
+}
+
+func (s *CreateWorkspaceRequest) GetPromotionOptionNo() *string {
+	return s.PromotionOptionNo
 }
 
 func (s *CreateWorkspaceRequest) GetRamRoleName() *string {
@@ -305,6 +317,11 @@ func (s *CreateWorkspaceRequest) SetPaymentType(v string) *CreateWorkspaceReques
 	return s
 }
 
+func (s *CreateWorkspaceRequest) SetPromotionOptionNo(v string) *CreateWorkspaceRequest {
+	s.PromotionOptionNo = &v
+	return s
+}
+
 func (s *CreateWorkspaceRequest) SetRamRoleName(v string) *CreateWorkspaceRequest {
 	s.RamRoleName = &v
 	return s
@@ -359,13 +376,13 @@ func (s *CreateWorkspaceRequest) Validate() error {
 }
 
 type CreateWorkspaceRequestResourceSpec struct {
-	// The resource quota for the workspace.
+	// The maximum resource limit for the workspace.
 	//
 	// example:
 	//
 	// 1000
 	Cu *string `json:"cu,omitempty" xml:"cu,omitempty"`
-	// The GPU resource quota for the workspace.
+	// The number of GPUs.
 	//
 	// example:
 	//

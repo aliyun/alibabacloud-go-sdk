@@ -16,7 +16,7 @@ type iListKyuubiServicesResponseBody interface {
 }
 
 type ListKyuubiServicesResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *ListKyuubiServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListKyuubiServicesResponseBody) Validate() error {
 }
 
 type ListKyuubiServicesResponseBodyData struct {
-	// The list of Kyuubi servers.
+	// The list of KyuubiServers.
 	KyuubiServices []*ListKyuubiServicesResponseBodyDataKyuubiServices `json:"kyuubiServices,omitempty" xml:"kyuubiServices,omitempty" type:"Repeated"`
 }
 
@@ -97,13 +97,19 @@ func (s *ListKyuubiServicesResponseBodyData) Validate() error {
 }
 
 type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
-	// The instance specifications of the Kyuubi server.
+	// The instance type of the KyuubiServer.
 	//
 	// example:
 	//
 	// 4C16G
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
-	// The creation time. The time is in UTC and follows the ISO 8601 standard.
+	// Indicates whether the Kyuubi configuration needs to be updated.
+	//
+	// example:
+	//
+	// true
+	ConfigRefreshRequired *bool `json:"configRefreshRequired,omitempty" xml:"configRefreshRequired,omitempty"`
+	// The creation time. The time is in UTC and follows the ISO 8601 format.
 	//
 	// example:
 	//
@@ -121,7 +127,7 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// kyuubi-cn-hangzhou-internal.spark.emr.aliyuncs.com
 	InnerEndpoint *string `json:"innerEndpoint,omitempty" xml:"innerEndpoint,omitempty"`
-	// The Kyuubi server configurations.
+	// The KyuubiServer configurations.
 	//
 	// example:
 	//
@@ -129,7 +135,7 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// kyuubi.conf.key1=value2
 	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
-	// The version of the Kyuubi server.
+	// The version of the KyuubiServer.
 	//
 	// example:
 	//
@@ -141,7 +147,7 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// kb-070104e7631242448d12a1377c309f30
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
-	// The name of the Kyuubi server.
+	// The name of the KyuubiServer.
 	//
 	// example:
 	//
@@ -159,19 +165,19 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
-	// The Spark DPI engine version.
+	// The database engine version number of the Spark DPI engine.
 	//
 	// example:
 	//
 	// esr-4.2.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The number of replicas of the Kyuubi server.
+	// The number of replicas for the KyuubiServer.
 	//
 	// example:
 	//
 	// 3
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// The default configurations for the Kyuubi server to start a Spark application.
+	// The default configurations for KyuubiServer to start Spark applications.
 	//
 	// example:
 	//
@@ -179,13 +185,13 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// spark.conf.key1=value2
 	SparkConfigs *string `json:"sparkConfigs,omitempty" xml:"sparkConfigs,omitempty"`
-	// The most recent start time of the Kyuubi server. The format is YYYY-MM-DD HH:mm:ss.
+	// The most recent start time of the KyuubiServer. The time is formatted as YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-11-23 09:22:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The state of the Kyuubi server.
+	// The state of the KyuubiServer.
 	//
 	// example:
 	//
@@ -209,6 +215,10 @@ func (s ListKyuubiServicesResponseBodyDataKyuubiServices) GoString() string {
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetComputeInstance() *string {
 	return s.ComputeInstance
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetConfigRefreshRequired() *bool {
+	return s.ConfigRefreshRequired
 }
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetCreateTime() *string {
@@ -273,6 +283,11 @@ func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetWebUi() *string {
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetComputeInstance(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
 	s.ComputeInstance = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetConfigRefreshRequired(v bool) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.ConfigRefreshRequired = &v
 	return s
 }
 

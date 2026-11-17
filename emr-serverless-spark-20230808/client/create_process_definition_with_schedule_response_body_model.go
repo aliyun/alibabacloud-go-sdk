@@ -46,7 +46,7 @@ type CreateProcessDefinitionWithScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The detailed description corresponding to the request code.
+	// The detailed description corresponding to the return code.
 	//
 	// example:
 	//

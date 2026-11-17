@@ -32,7 +32,7 @@ type iUpdateWorkspaceRequest interface {
 }
 
 type UpdateWorkspaceRequest struct {
-	// The resource limit of the workspace.
+	// The resource limit for the workspace.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateWorkspaceRequest struct {
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
 	// The GPU subscription information.
 	GpuSubscription *UpdateWorkspaceRequestGpuSubscription `json:"gpuSubscription,omitempty" xml:"gpuSubscription,omitempty" type:"Struct"`
-	// The workspace IP address whitelist.
+	// The IP address whitelist of the workspace.
 	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
@@ -194,6 +194,10 @@ type UpdateWorkspaceRequestGpuSubscription struct {
 	// Specifies whether to enable auto-renewal.
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
 	// The number of subscription periods.
+	//
+	// example:
+	//
+	// 1
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
 	// The number of GPU machines.
 	//
@@ -202,6 +206,10 @@ type UpdateWorkspaceRequestGpuSubscription struct {
 	// 8
 	GpuMachineNum *int32 `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
 	// The ID of the GPU quota instance to be upgraded. This parameter is required when the operation parameter is set to UPGRADE.
+	//
+	// example:
+	//
+	// w-xxxxxx-quota-gpu-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The GPU instance type.
 	//
@@ -209,7 +217,7 @@ type UpdateWorkspaceRequestGpuSubscription struct {
 	//
 	// ecs.gn7i-c8g1.2xlarge
 	InstanceTypeId *string `json:"instanceTypeId,omitempty" xml:"instanceTypeId,omitempty"`
-	// The operation type. Valid values: BUY and UPGRADE. BUY indicates a new purchase, and UPGRADE indicates an upgrade. If you set this parameter to UPGRADE, you must specify the orderId parameter. Default value: BUY.
+	// The operation type. Valid values: BUY and UPGRADE. BUY indicates a new purchase. UPGRADE indicates an upgrade. If you set this parameter to UPGRADE, you must specify the orderId parameter. Default value: BUY.
 	//
 	// example:
 	//
@@ -221,6 +229,12 @@ type UpdateWorkspaceRequestGpuSubscription struct {
 	//
 	// MONTH
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
+	// Supported only for new GPU subscription purchases (BUY). Not supported for upgrades (UPGRADE). Use the voucher option ID returned by the price inquiry API. To not use a voucher, set this parameter to youhuiquan_promotion_option_id_for_blank. If you omit this parameter, the previous call behavior is retained.
+	//
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionOptionNo *string `json:"promotionOptionNo,omitempty" xml:"promotionOptionNo,omitempty"`
 }
 
 func (s UpdateWorkspaceRequestGpuSubscription) String() string {
@@ -259,6 +273,10 @@ func (s *UpdateWorkspaceRequestGpuSubscription) GetPaymentDurationUnit() *string
 	return s.PaymentDurationUnit
 }
 
+func (s *UpdateWorkspaceRequestGpuSubscription) GetPromotionOptionNo() *string {
+	return s.PromotionOptionNo
+}
+
 func (s *UpdateWorkspaceRequestGpuSubscription) SetAutoRenew(v bool) *UpdateWorkspaceRequestGpuSubscription {
 	s.AutoRenew = &v
 	return s
@@ -294,6 +312,11 @@ func (s *UpdateWorkspaceRequestGpuSubscription) SetPaymentDurationUnit(v string)
 	return s
 }
 
+func (s *UpdateWorkspaceRequestGpuSubscription) SetPromotionOptionNo(v string) *UpdateWorkspaceRequestGpuSubscription {
+	s.PromotionOptionNo = &v
+	return s
+}
+
 func (s *UpdateWorkspaceRequestGpuSubscription) Validate() error {
 	return dara.Validate(s)
 }
@@ -311,13 +334,13 @@ type UpdateWorkspaceRequestSubscription struct {
 	//
 	// 1
 	AutoRenewPeriod *string `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The auto-renewal cycle. This parameter is required for the subscription billing method.
+	// The auto-renewal epoch. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
 	// MONTH
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
-	// The client token for idempotency verification.
+	// The client token for idempotence verification.
 	//
 	// example:
 	//
@@ -335,7 +358,13 @@ type UpdateWorkspaceRequestSubscription struct {
 	//
 	// MONTH
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
-	// The list of running queues to be switched.
+	// Supported only when you switch the billing method of CUs from pay-as-you-go to subscription. Use the voucher option ID returned by the price inquiry API. To not use a voucher, set this parameter to youhuiquan_promotion_option_id_for_blank. If you omit this parameter, the previous call behavior is retained.
+	//
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionOptionNo *string `json:"promotionOptionNo,omitempty" xml:"promotionOptionNo,omitempty"`
+	// The list of running queues to be converted.
 	Queue []*string `json:"queue,omitempty" xml:"queue,omitempty" type:"Repeated"`
 }
 
@@ -371,6 +400,10 @@ func (s *UpdateWorkspaceRequestSubscription) GetPaymentDurationUnit() *string {
 	return s.PaymentDurationUnit
 }
 
+func (s *UpdateWorkspaceRequestSubscription) GetPromotionOptionNo() *string {
+	return s.PromotionOptionNo
+}
+
 func (s *UpdateWorkspaceRequestSubscription) GetQueue() []*string {
 	return s.Queue
 }
@@ -402,6 +435,11 @@ func (s *UpdateWorkspaceRequestSubscription) SetDuration(v string) *UpdateWorksp
 
 func (s *UpdateWorkspaceRequestSubscription) SetPaymentDurationUnit(v string) *UpdateWorkspaceRequestSubscription {
 	s.PaymentDurationUnit = &v
+	return s
+}
+
+func (s *UpdateWorkspaceRequestSubscription) SetPromotionOptionNo(v string) *UpdateWorkspaceRequestSubscription {
+	s.PromotionOptionNo = &v
 	return s
 }
 

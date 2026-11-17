@@ -20,21 +20,21 @@ type iListLogContentsRequest interface {
 }
 
 type ListLogContentsRequest struct {
-	// Full path of the file.
+	// The full path of the file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// Length of the log.
+	// The length of the log.
 	//
 	// example:
 	//
 	// 9999
 	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
-	// Start line for query.
+	// The starting line of the query.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

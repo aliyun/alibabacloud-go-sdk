@@ -18,7 +18,7 @@ type iStopSessionClusterRequest interface {
 }
 
 type StopSessionClusterRequest struct {
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//

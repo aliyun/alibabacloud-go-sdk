@@ -16,7 +16,7 @@ type iGetWorkspaceResponseBody interface {
 }
 
 type GetWorkspaceResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetWorkspaceResponseBody) Validate() error {
 }
 
 type GetWorkspaceResponseBodyWorkspace struct {
-	// Specifies whether auto-renewal is enabled. This parameter is required for subscription workspaces.
+	// Specifies whether to enable auto-renewal. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal period. This parameter is required for subscription workspaces.
+	// The auto-renewal duration. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The auto-renewal cycle. This parameter is required for subscription workspaces.
+	// The auto-renewal cycle. This parameter is required for subscription resources.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type GetWorkspaceResponseBodyWorkspace struct {
 	//
 	// default
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
-	// The bound DLF type.
+	// The type of the associated DLF.
 	//
 	// example:
 	//
 	// DLF-NEXT
 	DlfType *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
-	// The subscription duration. This parameter is required for subscription workspaces.
+	// The duration of the subscription period. This parameter is required for subscription resources.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The time when the workspace is released.
+	// The time when the workspace was released.
 	//
 	// example:
 	//
@@ -116,11 +116,13 @@ type GetWorkspaceResponseBodyWorkspace struct {
 	//
 	// out of stock
 	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
+	// The features of the workspace.
+	Features *GetWorkspaceResponseBodyWorkspaceFeatures `json:"features,omitempty" xml:"features,omitempty" type:"Struct"`
 	// The list of GPU instance types.
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
 	// The IP whitelist of the workspace.
 	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
-	// The unit of the subscription period. This parameter is required for subscription workspaces.
+	// The unit of the subscription period. This parameter is required for subscription resources.
 	//
 	// example:
 	//
@@ -140,7 +142,7 @@ type GetWorkspaceResponseBodyWorkspace struct {
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	// The information about the subscription resource quota.
 	PrePaidQuota *GetWorkspaceResponseBodyWorkspacePrePaidQuota `json:"prePaidQuota,omitempty" xml:"prePaidQuota,omitempty" type:"Struct"`
-	// The list of GPU subscription quotas.
+	// The list of GPU subscriptions.
 	PrePaidQuotaGpu []*GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu `json:"prePaidQuotaGpu,omitempty" xml:"prePaidQuotaGpu,omitempty" type:"Repeated"`
 	// The name of the RAM role used to execute Spark jobs.
 	//
@@ -154,25 +156,25 @@ type GetWorkspaceResponseBodyWorkspace struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The reason why the workspace is released.
+	// The reason for the workspace release.
 	//
 	// example:
 	//
 	// stable
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aek4f7uj74wdthi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The UID of the user who created the workspace.
+	// The UID of the creator.
 	//
 	// example:
 	//
 	// 13*************
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
-	// The resource specifications.
+	// The resource specification.
 	//
 	// example:
 	//
@@ -186,7 +188,7 @@ type GetWorkspaceResponseBodyWorkspace struct {
 	//
 	// spark-result
 	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
-	// The tag keys.
+	// The tag key.
 	Tags []*GetWorkspaceResponseBodyWorkspaceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The workspace ID.
 	//
@@ -194,13 +196,13 @@ type GetWorkspaceResponseBodyWorkspace struct {
 	//
 	// w-******
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// Spark batch job workspace-1
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// The workspace status.
+	// The status of the workspace.
 	//
 	// example:
 	//
@@ -250,6 +252,10 @@ func (s *GetWorkspaceResponseBodyWorkspace) GetEndTime() *int64 {
 
 func (s *GetWorkspaceResponseBodyWorkspace) GetFailReason() *string {
 	return s.FailReason
+}
+
+func (s *GetWorkspaceResponseBodyWorkspace) GetFeatures() *GetWorkspaceResponseBodyWorkspaceFeatures {
+	return s.Features
 }
 
 func (s *GetWorkspaceResponseBodyWorkspace) GetGpuSpec() []*string {
@@ -373,6 +379,11 @@ func (s *GetWorkspaceResponseBodyWorkspace) SetFailReason(v string) *GetWorkspac
 	return s
 }
 
+func (s *GetWorkspaceResponseBodyWorkspace) SetFeatures(v *GetWorkspaceResponseBodyWorkspaceFeatures) *GetWorkspaceResponseBodyWorkspace {
+	s.Features = v
+	return s
+}
+
 func (s *GetWorkspaceResponseBodyWorkspace) SetGpuSpec(v []*string) *GetWorkspaceResponseBodyWorkspace {
 	s.GpuSpec = v
 	return s
@@ -469,6 +480,11 @@ func (s *GetWorkspaceResponseBodyWorkspace) SetWorkspaceStatus(v string) *GetWor
 }
 
 func (s *GetWorkspaceResponseBodyWorkspace) Validate() error {
+	if s.Features != nil {
+		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.PrePaidQuota != nil {
 		if err := s.PrePaidQuota.Validate(); err != nil {
 			return err
@@ -500,6 +516,32 @@ func (s *GetWorkspaceResponseBodyWorkspace) Validate() error {
 	return nil
 }
 
+type GetWorkspaceResponseBodyWorkspaceFeatures struct {
+	// Specifies whether fine-grained permissions are enabled for the workspace.
+	FineGrainedAuthz *bool `json:"fineGrainedAuthz,omitempty" xml:"fineGrainedAuthz,omitempty"`
+}
+
+func (s GetWorkspaceResponseBodyWorkspaceFeatures) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWorkspaceResponseBodyWorkspaceFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceResponseBodyWorkspaceFeatures) GetFineGrainedAuthz() *bool {
+	return s.FineGrainedAuthz
+}
+
+func (s *GetWorkspaceResponseBodyWorkspaceFeatures) SetFineGrainedAuthz(v bool) *GetWorkspaceResponseBodyWorkspaceFeatures {
+	s.FineGrainedAuthz = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyWorkspaceFeatures) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetWorkspaceResponseBodyWorkspacePrePaidQuota struct {
 	// The amount of resources currently allocated.
 	//
@@ -507,7 +549,7 @@ type GetWorkspaceResponseBodyWorkspacePrePaidQuota struct {
 	//
 	// {"cu": 100}
 	AllocatedResource *string `json:"allocatedResource,omitempty" xml:"allocatedResource,omitempty"`
-	// Specifies whether auto-renewal is enabled for the resource.
+	// Specifies whether auto-renewal is enabled for the resource. Valid values:
 	//
 	// - true: Auto-renewal is enabled. The resource is automatically renewed upon expiration.
 	//
@@ -703,7 +745,7 @@ type GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu struct {
 	//
 	// 8
 	GpuNum *int32 `json:"gpuNum,omitempty" xml:"gpuNum,omitempty"`
-	// The GPU instance type.
+	// The GPU model.
 	//
 	// example:
 	//
@@ -940,7 +982,7 @@ func (s *GetWorkspaceResponseBodyWorkspaceStateChangeReason) Validate() error {
 }
 
 type GetWorkspaceResponseBodyWorkspaceTags struct {
-	// The tag keys.
+	// The tag key.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iGetLivyComputeTokenResponseBody interface {
 }
 
 type GetLivyComputeTokenResponseBody struct {
-	// The return code of the request. A value of 1000000 indicates that the request succeeded. Other values indicate that the request failed. For details about the error, see the message field.
+	// The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For details about the error, see the message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *GetLivyComputeTokenResponseBody) Validate() error {
 }
 
 type GetLivyComputeTokenResponseBodyData struct {
-	// The token expiration configuration struct.
+	// The token expiration information struct.
 	AutoExpireConfiguration *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
 	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
@@ -116,7 +116,7 @@ type GetLivyComputeTokenResponseBodyData struct {
 	//
 	// 1749457994000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The last used time. The value is a UNIX timestamp in milliseconds.
+	// The time when the token was last used. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GetLivyComputeTokenResponseBodyData struct {
 	//
 	// d25561157a635bb
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
-	// Token ID。
+	// The token ID.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *GetLivyComputeTokenResponseBodyData) Validate() error {
 }
 
 type GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration struct {
-	// Specifies whether the token expires automatically. Valid values:
+	// Indicates whether the token automatically expires. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -242,7 +242,7 @@ type GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The expiration period in days.
+	// The expiration time in days.
 	//
 	// example:
 	//

@@ -38,9 +38,9 @@ type CreateWorkspaceQueueRequest struct {
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of GPU models.
+	// The list of GPU instance types.
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	// The Ray cluster instance ID.
+	// The instance ID of the Ray cluster.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type CreateWorkspaceQueueRequest struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
-	// - Pre: subscription
+	// - Pre: subscription.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// Indicates whether resource prefetch is enabled.
+	// Specifies whether resource prefetch is enabled.
 	Preheat *bool `json:"preheat,omitempty" xml:"preheat,omitempty"`
-	// The queue type. Valid values: CPU and GPU.
+	// The queue type, such as CPU or GPU.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type CreateWorkspaceQueueRequest struct {
 	QueueCategory *string `json:"queueCategory,omitempty" xml:"queueCategory,omitempty"`
 	// The resource specifications.
 	ResourceSpec *CreateWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// w-975bcfda9625****
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The workspace queue name.
+	// The name of the workspace queue.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ func (s *CreateWorkspaceQueueRequest) Validate() error {
 }
 
 type CreateWorkspaceQueueRequestResourceSpec struct {
-	// The maximum workspace resource capacity.
+	// The resource limit of the workspace.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type CreateWorkspaceQueueRequestResourceSpec struct {
 	//
 	// 100
 	Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
-	// The number of GPU machines. This parameter is valid only for subscription instances.
+	// The number of GPU machines. This parameter is valid only when the billing method is set to subscription.
 	//
 	// example:
 	//

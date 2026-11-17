@@ -16,7 +16,7 @@ type iStartJobRunResponseBody interface {
 }
 
 type StartJobRunResponseBody struct {
-	// The job run ID.
+	// The ID of the job run.
 	//
 	// example:
 	//

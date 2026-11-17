@@ -22,13 +22,13 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The maximum number of records to return in a single request.
+	// The maximum number of results to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The next token.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// Specifies whether to enable auto-renewal. This parameter is required for subscription resources.
+	// Specifies whether to enable auto-renewal. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The auto-renewal duration. This parameter is required for subscription resources.
+	// The auto-renewal duration. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// The auto-renewal epoch. This parameter is required for subscription resources.
+	// The auto-renewal epoch. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 1.0
 	DlfType *string `json:"dlfType,omitempty" xml:"dlfType,omitempty"`
-	// The duration of the subscription. This parameter is required for subscription resources.
+	// The duration of the subscription period. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
@@ -171,11 +171,13 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// out of stock
 	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
-	// The list of GPU models.
+	// The workspace features.
+	Features *ListWorkspacesResponseBodyWorkspacesFeatures `json:"features,omitempty" xml:"features,omitempty" type:"Struct"`
+	// The list of GPU instance types.
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	// The IP whitelist of the workspace.
+	// The workspace IP whitelist.
 	IpWhiteList []*string `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Repeated"`
-	// The unit of the subscription period. This parameter is required for subscription resources.
+	// The unit of the subscription period. This parameter is required for the subscription billing method.
 	//
 	// example:
 	//
@@ -241,7 +243,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// example:
 	//
-	// spark-batch-job-workspace-1
+	// Spark batch job workspace-1
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
 	// The status of the workspace.
 	//
@@ -293,6 +295,10 @@ func (s *ListWorkspacesResponseBodyWorkspaces) GetEndTime() *int64 {
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetFailReason() *string {
 	return s.FailReason
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) GetFeatures() *ListWorkspacesResponseBodyWorkspacesFeatures {
+	return s.Features
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) GetGpuSpec() []*string {
@@ -408,6 +414,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetFailReason(v string) *ListWork
 	return s
 }
 
+func (s *ListWorkspacesResponseBodyWorkspaces) SetFeatures(v *ListWorkspacesResponseBodyWorkspacesFeatures) *ListWorkspacesResponseBodyWorkspaces {
+	s.Features = v
+	return s
+}
+
 func (s *ListWorkspacesResponseBodyWorkspaces) SetGpuSpec(v []*string) *ListWorkspacesResponseBodyWorkspaces {
 	s.GpuSpec = v
 	return s
@@ -494,6 +505,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceStatus(v string) *Lis
 }
 
 func (s *ListWorkspacesResponseBodyWorkspaces) Validate() error {
+	if s.Features != nil {
+		if err := s.Features.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.PrePaidQuota != nil {
 		if err := s.PrePaidQuota.Validate(); err != nil {
 			return err
@@ -523,6 +539,32 @@ func (s *ListWorkspacesResponseBodyWorkspaces) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ListWorkspacesResponseBodyWorkspacesFeatures struct {
+	// Indicates whether fine-grained access control is enabled for the workspace.
+	FineGrainedAuthz *bool `json:"fineGrainedAuthz,omitempty" xml:"fineGrainedAuthz,omitempty"`
+}
+
+func (s ListWorkspacesResponseBodyWorkspacesFeatures) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBodyWorkspacesFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesFeatures) GetFineGrainedAuthz() *bool {
+	return s.FineGrainedAuthz
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesFeatures) SetFineGrainedAuthz(v bool) *ListWorkspacesResponseBodyWorkspacesFeatures {
+	s.FineGrainedAuthz = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesFeatures) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListWorkspacesResponseBodyWorkspacesPrePaidQuota struct {
@@ -693,6 +735,10 @@ type ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu struct {
 	// true
 	AutoRenewal *bool `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
 	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 1
 	CpuCoreCount *string `json:"cpuCoreCount,omitempty" xml:"cpuCoreCount,omitempty"`
 	// The time when the GPU subscription quota was created. The value is a UNIX timestamp in milliseconds.
 	//
@@ -743,10 +789,22 @@ type ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu struct {
 	// w-xxxxxxxxx-gpu-quota-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The instance family.
+	//
+	// example:
+	//
+	// ecs.g5
 	InstanceTypeFamily *string `json:"instanceTypeFamily,omitempty" xml:"instanceTypeFamily,omitempty"`
 	// The instance type ID.
+	//
+	// example:
+	//
+	// ecs.g5.small
 	InstanceTypeId *string `json:"instanceTypeId,omitempty" xml:"instanceTypeId,omitempty"`
 	// The memory size.
+	//
+	// example:
+	//
+	// 4096
 	MemorySize *string `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The order ID.
 	//
@@ -956,8 +1014,16 @@ func (s *ListWorkspacesResponseBodyWorkspacesStateChangeReason) Validate() error
 
 type ListWorkspacesResponseBodyWorkspacesTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// [\\"COST\\"]
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// 3d775731-9ec1-4fe2-a00d-061d51fce677
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

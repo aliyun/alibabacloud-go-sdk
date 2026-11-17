@@ -34,12 +34,12 @@ type EditWorkspaceQueueRequest struct {
   // 
   // test queue
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
-  // The environment type of the queue.
+  // The queue environment type.
   Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-  // The list of GPU models.
+  // The list of GPU instance types.
   GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
   InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-  // The resource quota.
+  // The resource specifications.
   ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
   // The workspace ID.
   // 
@@ -151,13 +151,13 @@ func (s *EditWorkspaceQueueRequest) Validate() error {
 }
 
 type EditWorkspaceQueueRequestResourceSpec struct {
-  // The resource upper limit of the workspace queue.
+  // The resource limit for the workspace queue.
   // 
   // example:
   // 
   // 1000
   Cu *int64 `json:"cu,omitempty" xml:"cu,omitempty"`
-  // The number of GPU cards.
+  // The number of GPUs.
   // 
   // example:
   // 

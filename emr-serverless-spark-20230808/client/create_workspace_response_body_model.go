@@ -18,7 +18,7 @@ type iCreateWorkspaceResponseBody interface {
 }
 
 type CreateWorkspaceResponseBody struct {
-	// The operation ID.
+	// The ID of the operation flow.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateWorkspaceResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

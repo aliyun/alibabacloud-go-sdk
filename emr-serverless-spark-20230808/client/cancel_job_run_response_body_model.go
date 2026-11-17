@@ -16,7 +16,7 @@ type iCancelJobRunResponseBody interface {
 }
 
 type CancelJobRunResponseBody struct {
-	// The job ID.
+	// The job run ID.
 	//
 	// example:
 	//

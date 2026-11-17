@@ -67,8 +67,9 @@ type CreateProcessDefinitionWithScheduleRequest struct {
 	// example:
 	//
 	// PARALLEL
-	ExecutionType *string                                                   `json:"executionType,omitempty" xml:"executionType,omitempty"`
-	GlobalParams  []*CreateProcessDefinitionWithScheduleRequestGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// The list of global parameters for the workflow.
+	GlobalParams []*CreateProcessDefinitionWithScheduleRequestGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
 	// The workflow name.
 	//
 	// This parameter is required.
@@ -115,9 +116,13 @@ type CreateProcessDefinitionWithScheduleRequest struct {
 	//
 	// 113***************
 	RunAs *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
-	// The scheduling structure.
+	// The schedule structure.
 	Schedule *CreateProcessDefinitionWithScheduleRequestSchedule `json:"schedule,omitempty" xml:"schedule,omitempty" type:"Struct"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"tagkey":"tagvalue"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The JSON array of task definitions. It contains the description information of all tasks in the workflow.
 	//
@@ -339,10 +344,30 @@ func (s *CreateProcessDefinitionWithScheduleRequest) Validate() error {
 }
 
 type CreateProcessDefinitionWithScheduleRequestGlobalParams struct {
+	// The parameter direction. Valid values: IN (input) and OUT (output).
+	//
+	// example:
+	//
+	// IN
 	Direct *string `json:"direct,omitempty" xml:"direct,omitempty"`
-	Prop   *string `json:"prop,omitempty" xml:"prop,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Prop *string `json:"prop,omitempty" xml:"prop,omitempty"`
+	// The data type of the parameter.
+	//
+	// example:
+	//
+	// VARCHAR
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateProcessDefinitionWithScheduleRequestGlobalParams) String() string {
@@ -516,6 +541,10 @@ type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
 	// false
 	StartAlertEnable *bool `json:"startAlertEnable,omitempty" xml:"startAlertEnable,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"tagkey":"tagvalue"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The task definition parameters.
 	//
@@ -671,7 +700,8 @@ type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	// example:
 	//
 	// false
-	Fusion      *bool                                                                                `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The list of local parameters for the task.
 	LocalParams []*CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams `json:"localParams,omitempty" xml:"localParams,omitempty" type:"Repeated"`
 	// The resource queue for running the Spark task.
 	//
@@ -713,9 +743,9 @@ type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams stru
 	//
 	// INFO
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
-	// The path to the task logs of the Spark node.
+	// The task logs path for the Spark node.
 	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	// The database engine version of the Spark DPI engine.
+	// The Spark DPI engine database engine version.
 	//
 	// example:
 	//
@@ -920,10 +950,30 @@ func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams)
 }
 
 type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams struct {
+	// The parameter direction. Valid values: IN (input) and OUT (output).
+	//
+	// example:
+	//
+	// IN
 	Direct *string `json:"direct,omitempty" xml:"direct,omitempty"`
-	Prop   *string `json:"prop,omitempty" xml:"prop,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Prop *string `json:"prop,omitempty" xml:"prop,omitempty"`
+	// The data type of the parameter.
+	//
+	// example:
+	//
+	// VARCHAR
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value.
+	//
+	// example:
+	//
+	// testGlobalParam
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams) String() string {

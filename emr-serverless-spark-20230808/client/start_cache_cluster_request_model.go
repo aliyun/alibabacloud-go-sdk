@@ -14,7 +14,7 @@ type iStartCacheClusterRequest interface {
 }
 
 type StartCacheClusterRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

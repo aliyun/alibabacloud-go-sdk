@@ -148,6 +148,10 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	// The list of GPU instance types.
 	GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
 	// The ID of the resource instance associated with the queue.
+	//
+	// example:
+	//
+	// i-resource-****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The maximum resource capacity of the queue.
 	//
