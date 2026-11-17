@@ -22,13 +22,13 @@ type iCredentialVerifyIntlRequest interface {
 }
 
 type CredentialVerifyIntlRequest struct {
-	// The credential name (specified as a numeric code). Valid values:
+	// The credential name. Use the numeric code. Valid values:
 	//
-	// - Codes starting with 03: enterprise qualification
+	// - Values starting with 03: enterprise qualification
 	//
-	//   - 0301: business license issued in the Chinese mainland
+	//   - 0301: business license in the Chinese mainland
 	//
-	// - Codes starting with 04: transaction voucher
+	// - Values starting with 04: transaction credential
 	//
 	//   - 0401: bank statement
 	//
@@ -38,7 +38,7 @@ type CredentialVerifyIntlRequest struct {
 	//
 	//   - 0405: credit card statement
 	//
-	//   - 0499: other.
+	//   - 0499: other
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CredentialVerifyIntlRequest struct {
 	//
 	// - 03: enterprise qualification
 	//
-	// - 04: transaction voucher.
+	// - 04: transaction credential
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type CredentialVerifyIntlRequest struct {
 	//
 	// 03
 	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
-	// The image input stream.
+	// The input stream of the image.
 	//
 	// > Specify either ImageUrl or ImageFile.
 	//
 	// example:
 	//
-	// 无
+	// None
 	ImageFile *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
 	// The URL of the image.
 	//
@@ -76,13 +76,13 @@ type CredentialVerifyIntlRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The call mode. Valid values:
 	//
-	// - ANTI_FAKE_CHECK: image quality and tampering detection.
+	// - ANTI_FAKE_CHECK: image quality and tampering detection
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 取值：ANTI_FAKE_CHECK
+	// Value: ANTI_FAKE_CHECK
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 

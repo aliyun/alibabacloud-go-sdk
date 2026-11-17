@@ -26,7 +26,7 @@ type DeleteFaceRecordV2ResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeleteFaceRecordV2ResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response result.
+	// The returned result.
 	Result *DeleteFaceRecordV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,17 +96,13 @@ func (s *DeleteFaceRecordV2ResponseBody) Validate() error {
 }
 
 type DeleteFaceRecordV2ResponseBodyResult struct {
-	// The deletion result. Valid values:
-	//
-	// - Y: Succeeded.
-	//
-	// - N: Failed.
+	// The deletion result. Valid values: Y: The deletion succeeded. N: The deletion failed.
 	//
 	// example:
 	//
 	// Y
 	Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The list of face group codes from which the face data was actually deleted (comma-separated). This parameter is returned with all deleted group codes when FaceGroupCode is not specified.
+	// The list of codes of the face groups from which the face data was actually deleted, separated by commas. If FaceGroupCode is not specified, the codes of all face groups from which the data was deleted are returned.
 	//
 	// example:
 	//

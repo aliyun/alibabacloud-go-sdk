@@ -26,7 +26,7 @@ type Mobile2MetaVerifyIntlResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ func (s *Mobile2MetaVerifyIntlResponseBody) Validate() error {
 type Mobile2MetaVerifyIntlResponseBodyResult struct {
 	// The verification result code. Valid values:
 	//
-	// - 1: Consistent.
+	// - 1: consistent
 	//
-	// - 2: Inconsistent.
+	// - 2: inconsistent
 	//
-	// - 3: No record found.
+	// - 3: not found
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type Mobile2MetaVerifyIntlResponseBodyResult struct {
 	//
 	// - CUCC: China Unicom
 	//
-	// - CTCC: China Telecom.
+	// - CTCC: China Telecom
 	//
 	// example:
 	//

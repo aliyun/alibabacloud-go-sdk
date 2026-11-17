@@ -28,26 +28,31 @@ type iFaceLivenessV2Request interface {
 }
 
 type FaceLivenessV2Request struct {
+	// Specifies whether to detect face attributes.
+	//
+	// example:
+	//
+	// Y
 	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
 	// The Base64-encoded face image.
 	//
-	// > **Note**
+	// Note
 	//
-	// - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	// - If you choose this method to pass the face image, check the image size and do not pass oversized images.
 	//
-	// - Specify one of the following parameters: FacePictureBase64, FacePictureUrl, or FacePictureFile.
+	// - Specify only one of the following parameters: FacePictureBase64, FacePictureUrl, and FacePictureFile.
 	//
 	// example:
 	//
 	// Base64
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
-	// The file stream of the face image.
+	// The file stream of the face photo.
 	//
 	// example:
 	//
 	// InputStream
 	FacePictureFile *string `json:"FacePictureFile,omitempty" xml:"FacePictureFile,omitempty"`
-	// The URL of the face image. The URL must be a publicly accessible HTTPS URL.
+	// The URL of the face photo. The URL must be a publicly accessible HTTPS link.
 	//
 	// example:
 	//
@@ -55,27 +60,27 @@ type FaceLivenessV2Request struct {
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
 	// Specifies whether to check the quality of the face image. Valid values:
 	//
-	// - Y: enabled.
+	// - Y: enabled
 	//
-	// - N: disabled. This is the default value.
+	// - N: disabled (default)
 	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// The merchant-defined unique business ID for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Make sure the value is unique.
+	// The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. The value can contain letters and digits and must be up to 32 characters in length. Make sure that the value is unique.
 	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The custom user ID or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+	// The custom user ID or another identifier that can identify a specific user, such as a mobile phone number or an email address. Desensitize the value of this field in advance, such as by hashing the value.
 	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	// The product plan to use. Valid values: FACE_LIVENESS_MIN_PRO and FACE_LIVENESS_MIN.
+	// The product solution to be integrated. Valid values: FACE_LIVENESS_MIN_PRO and FACE_LIVENESS_MIN.
 	//
 	// This parameter is required.
 	//

@@ -20,13 +20,13 @@ type iDocOcrV2ResponseBody interface {
 }
 
 type DocOcrV2ResponseBody struct {
-	// The return code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DocOcrV2ResponseBody struct {
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *DocOcrV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,25 +96,25 @@ func (s *DocOcrV2ResponseBody) Validate() error {
 }
 
 type DocOcrV2ResponseBodyResult struct {
-	// The card and certificate recognition result. This parameter is returned only when the API response is successful.
+	// The ID card recognition result. This parameter is returned only when the API response is successful.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "idFaceQualityScore": 98.0
+	//   "idFaceQualityScore": 98.0,
 	//
 	//   "ocrIdInfo": {
 	//
 	//     "expiryDate": "",
 	//
-	//     "originOfIssue": "公安部出入境管理局",
+	//     "originOfIssue": "Exit-Entry Administration of the Ministry of Public Security",
 	//
 	//     "englishName": "LI SI",
 	//
-	//     "sex": "男",
+	//     "sex": "Male",
 	//
-	//     "name": "李四",
+	//     "name": "Li Si",
 	//
 	//     "idNumber": "H11111112",
 	//
@@ -140,9 +140,9 @@ type DocOcrV2ResponseBodyResult struct {
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
 	// Indicates whether the authentication is passed. Valid values:
 	//
-	// - Y: Passed.
+	// - Y: passed.
 	//
-	// - N: Not passed.
+	// - N: not passed.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DocOcrV2ResponseBodyResult struct {
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique ID of the authentication request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

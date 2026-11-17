@@ -38,7 +38,7 @@ type CardOcrResponseBody struct {
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *CardOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CardOcrResponseBody) Validate() error {
 }
 
 type CardOcrResponseBodyResult struct {
-	// The ID card and certificate recognition result.
+	// The recognition result of the ID card or certificate.
 	//
 	// example:
 	//
@@ -108,15 +108,15 @@ type CardOcrResponseBodyResult struct {
 	//
 	//     "expiryDate": "2024-04-20",
 	//
-	//     "placeOfIssue": "广东",
+	//     "placeOfIssue": "Guangdong",
 	//
 	//     "englishName": "ZHENGJIAN,YANGBEN",
 	//
-	//     "originOfIssue": "公安部出入境管理局",
+	//     "originOfIssue": "Exit-Entry Administration of the Ministry of Public Security",
 	//
-	//     "sex": "女",
+	//     "sex": "Female",
 	//
-	//     "name": "证件样本",
+	//     "name": "ID Sample",
 	//
 	//     "idNumber": "C00000000",
 	//
@@ -162,7 +162,7 @@ type CardOcrResponseBodyResult struct {
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique ID of the authentication request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

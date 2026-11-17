@@ -26,13 +26,13 @@ type DeleteFaceGroupResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response result.
+	// The returned result.
 	//
 	// example:
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//

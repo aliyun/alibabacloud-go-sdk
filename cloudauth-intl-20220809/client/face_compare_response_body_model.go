@@ -20,17 +20,19 @@ type iFaceCompareResponseBody interface {
 }
 
 type FaceCompareResponseBody struct {
-	// Response code.
+	// The return code.
 	//
-	// 200: Success.
+	// Valid values:
 	//
-	// Other: Error code. For error code details, see Error Codes.
+	// - 200: Success.
+	//
+	// - Other values: Error codes. For more information, see Error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -42,7 +44,7 @@ type FaceCompareResponseBody struct {
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Response result.
+	// The returned result.
 	Result *FaceCompareResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -100,15 +102,17 @@ func (s *FaceCompareResponseBody) Validate() error {
 }
 
 type FaceCompareResponseBodyResult struct {
-	// Related result information
+	// The related result information.
 	ExtFaceInfo *FaceCompareResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The comparison score between the submitted face photo and the reference face image during the authentication process. Value range: **0*	- to **100**.
+	// The comparison score between the submitted face photo and the reference face photo during the authentication process. Valid values: **0*	- to **100**.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// Whether the authentication passed.
+	// Specifies whether the authentication is passed.
+	//
+	// Valid values:
 	//
 	// - Y: Passed.
 	//
@@ -180,41 +184,66 @@ func (s *FaceCompareResponseBodyResult) Validate() error {
 }
 
 type FaceCompareResponseBodyResultExtFaceInfo struct {
-	// Overall quality score
+	// The overall quality score.
 	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
-	// Illumination score
+	// The illumination score.
 	//
 	// example:
 	//
 	// 0.02
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
-	// Key area occlusion score
+	// The key area occlusion score.
 	//
 	// example:
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// Occlusion score
+	// The occlusion score.
 	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
-	// Sharpness score
+	// The sharpness score.
 	//
 	// example:
 	//
 	// 86.47
-	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
-	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	// The overall quality score of the reference face photo.
+	//
+	// example:
+	//
+	// 39.04
+	TargetFaceQualityScore *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	// The illumination score of the reference face photo.
+	//
+	// example:
+	//
+	// 0.02
 	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
-	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
-	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
-	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
+	// The key area occlusion score of the reference face photo.
+	//
+	// example:
+	//
+	// 20
+	TargetKaOcclusionScore *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	// The occlusion score of the reference face photo.
+	//
+	// example:
+	//
+	// 50.26
+	TargetOcclusionScore *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	// The sharpness score of the reference face photo.
+	//
+	// example:
+	//
+	// 86.47
+	TargetSharpnessScore *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceCompareResponseBodyResultExtFaceInfo) String() string {

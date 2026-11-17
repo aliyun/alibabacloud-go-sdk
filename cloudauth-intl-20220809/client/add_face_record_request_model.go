@@ -26,7 +26,7 @@ type iAddFaceRecordRequest interface {
 }
 
 type AddFaceRecordRequest struct {
-	// The face library code.
+	// The code of the face group.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type AddFaceRecordRequest struct {
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
 	// Specifies whether to check the quality of the face image. Valid values:
 	//
-	// - Y: enabled.
+	// - Y: Enabled.
 	//
-	// - N: disabled (default).
+	// - N: Disabled (default).
 	//
 	// example:
 	//
 	// N
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// The custom unique user ID. The value cannot exceed 32 characters.
+	// The custom unique user ID, which cannot exceed 32 characters.
 	//
-	// - If this parameter is specified, the system registers the user with the specified MerchantUserId.
+	// - If specified, the system preferentially uses this MerchantUserId for registration.
 	//
-	// - If this parameter is not specified, the image name is used by default.
+	// - If not specified, the image name is used by default.
 	//
 	// example:
 	//

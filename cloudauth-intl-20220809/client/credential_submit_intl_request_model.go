@@ -38,27 +38,27 @@ type iCredentialSubmitIntlRequest interface {
 }
 
 type CredentialSubmitIntlRequest struct {
-	// The field validation rule configuration in JSON string format.
+	// The field validation rule configuration, which is a JSON string.
 	//
 	// example:
 	//
 	// {
 	//
-	// 	"address_rule": "Includes Address Hangzhou***",
+	// 	"address_rule": "Includes Adrress Hangzhou***",
 	//
-	// 	"name_rule": "Includes Name Zhang*",
+	// 	"name_rule": "Includes Name  Zhang*",
 	//
 	// 	"date_of_issue_rule": "Whthin 2026.05.20"
 	//
 	// }
 	CheckRuleConfig *string `json:"CheckRuleConfig,omitempty" xml:"CheckRuleConfig,omitempty"`
-	// The Base64-encoded image. If you use this method to submit a photo, check the photo size and do not submit an excessively large photo.
+	// The Base64-encoded image. If you choose this method to upload the image, check the image size and do not upload an excessively large image.
 	//
 	// example:
 	//
 	// base64
 	CredentialOcrPictureBase64 *string `json:"CredentialOcrPictureBase64,omitempty" xml:"CredentialOcrPictureBase64,omitempty"`
-	// The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The image URL, which must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CredentialSubmitIntlRequest struct {
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 02: vehicle registration certificate.
+	// - 02: Vehicle registration certificate.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// 02
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// The input file type. Valid values:
+	// The material input type. Valid values:
 	//
-	// - IMAGE (default): image.
+	// - IMAGE: Image. This is the default value.
 	//
 	// - PDF: PDF format.
 	//
@@ -96,17 +96,13 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// false
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// Specifies whether to enable quality detection. Valid values:
-	//
-	// - Y: Enabled.
-	//
-	// - N: Disabled.
+	// Specifies whether to enable quality detection. Valid values: Y: Enabled. N: Disabled.
 	//
 	// example:
 	//
 	// Y
 	IdQuality *string `json:"IdQuality,omitempty" xml:"IdQuality,omitempty"`
-	// The custom business unique identifier on the merchant side, used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+	// The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure that the identifier is unique.
 	//
 	// This parameter is required.
 	//
@@ -124,27 +120,19 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// 0201
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
-	// Specifies whether to enable translation. Valid values:
-	//
-	// - 0: Disabled.
-	//
-	// - 1: Enabled.
+	// Specifies whether to enable translation. Valid values: 0: Disabled. 1: Enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrTranslation *string `json:"OcrTranslation,omitempty" xml:"OcrTranslation,omitempty"`
-	// Specifies whether to enable OCR result standardization. Valid values:
-	//
-	// - 0: Disabled.
-	//
-	// - 1: Enabled.
+	// Specifies whether to enable OCR result standardization. Valid values: 0: Disabled. 1: Enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to use. Set this parameter to CREDENTIAL_RECOGNITION.
+	// The product solution to be integrated. Valid value: CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +140,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// CREDENTIAL_RECOGNITION
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The custom authentication scenario ID. You can use this scenario ID to query related records in the console. The value can be a combination of letters, digits, or underscores with a maximum length of 10 characters.
+	// The custom authentication scene ID, which is used to query related records in the console. The ID can be up to 10 characters in length and can contain letters, digits, and underscores (_).
 	//
 	// This parameter is required.
 	//

@@ -20,13 +20,13 @@ type iCredentialVerifyIntlResponseBody interface {
 }
 
 type CredentialVerifyIntlResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CredentialVerifyIntlResponseBody struct {
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *CredentialVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -104,11 +104,11 @@ type CredentialVerifyIntlResponseBodyResultObject struct {
 	//
 	//  "sameBackgroundDetail": {
 	//
-	//  // 相似背景对于的原始图请求RequestId
+	//  // The request ID of the original image request corresponding to the similar background
 	//
 	//  "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****";
 	//
-	//  // 相似背景对于的原始图请求商户ID
+	//  // The merchant ID of the original image request corresponding to the similar background
 	//
 	//  "originalMerchantId": "xxxxxxxx"
 	//
@@ -118,27 +118,27 @@ type CredentialVerifyIntlResponseBodyResultObject struct {
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	// The risk result. Valid values:
 	//
-	// - **0**: Low risk.
+	// - **0**: low risk
 	//
-	// - **1**: High risk.
+	// - **1**: high risk
 	//
-	// - **2**: Suspicious.
+	// - **2**: suspicious
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The risk score map.
+	// The map of risk scores.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk tags, separated by commas (,). Valid values:
+	// The risk tags. Multiple tags are separated by commas (,). Valid values:
 	//
-	// - PS: Image has been edited with photo editing software.
+	// - PS: The image is edited by using Photoshop.
 	//
-	// - SCREEN_PHOTO: Photo taken from a screen.
+	// - SCREEN_PHOTO: The image is a photo of a screen.
 	//
-	// - SCREENSHOT: Screenshot.
+	// - SCREENSHOT: The image is a screenshot.
 	//
-	// - ORIGINAL_PHOTO: Non-original image.
+	// - ORIGINAL_PHOTO: The image is not an original image.
 	//
 	// example:
 	//

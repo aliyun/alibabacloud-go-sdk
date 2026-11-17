@@ -27,27 +27,25 @@ type iDeepfakeDetectIntlStreamAdvanceRequest interface {
 }
 
 type DeepfakeDetectIntlStreamAdvanceRequest struct {
-	// The Base64-encoded face image. For videos, we recommend that you use the stream method for transmission.
+	// The Base64-encoded string of the face image. For videos, pass the data as a stream.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceBase64 *string `json:"FaceBase64,omitempty" xml:"FaceBase64,omitempty"`
-	// The image input stream.
+	// The input stream of the image.
 	//
 	// example:
 	//
 	// -
 	FaceFileObject io.Reader `json:"FaceFile,omitempty" xml:"FaceFile,omitempty"`
-	// The type of facial material input:
+	// The input type of the face material. Valid values:
 	//
-	// - IMAGE (default): Face image
+	// - IMAGE: face image. This is the default value.
 	//
-	// - VIDEO: Face video
+	// - VIDEO: face video.
 	//
-	// Note
-	//
-	// Video processing takes a long time. We recommend that you set the timeout period to more than 3 seconds.
+	// Note: Video processing takes a long time. Set the timeout period to a value greater than 3 seconds.
 	//
 	// example:
 	//
@@ -59,25 +57,19 @@ type DeepfakeDetectIntlStreamAdvanceRequest struct {
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
-	// The unique identifier of the merchant request. The value is an alphanumeric string with a length of 32 characters.
-	//
-	// The first few characters consist of a custom abbreviation defined by the merchant, the middle part can contain a timestamp, and the last part can use a random or incremental sequence.
+	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom merchant abbreviation, the middle part can contain a time period, and the latter part can be a random or incremental sequence.
 	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The product solution to integrate.
-	//
-	// Valid value: FACE_DEEPFAKE
+	// The product solution to be integrated. Valid values: FACE_DEEPFAKE.
 	//
 	// example:
 	//
 	// FACE_DEEPFAKE
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// A custom verification scenario ID that you define. This ID is used to query related records in the console.
-	//
-	// The value is a combination of letters, digits, or underscores (_) with a maximum length of 10 characters.
+	// The custom authentication scenario ID, which is used to query related records by entering this scenario ID in the console. The value must be 10 characters in length and can contain letters, digits, and underscores.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iCredentialSubmitIntlV2ResponseBody interface {
 }
 
 type CredentialSubmitIntlV2ResponseBody struct {
-	// The return code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CredentialSubmitIntlV2ResponseBody struct {
 	//
 	// 7F971622-38C0-5F56-B2EC-315367979B4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *CredentialSubmitIntlV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialSubmitIntlV2ResponseBody) Validate() error {
 }
 
 type CredentialSubmitIntlV2ResponseBodyResult struct {
-	// The unique identifier of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

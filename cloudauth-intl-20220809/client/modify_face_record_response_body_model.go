@@ -32,7 +32,7 @@ type ModifyFaceRecordResponseBody struct {
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//

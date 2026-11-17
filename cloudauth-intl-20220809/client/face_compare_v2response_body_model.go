@@ -20,15 +20,15 @@ type iFaceCompareV2ResponseBody interface {
 }
 
 type FaceCompareV2ResponseBody struct {
-	// The response code.
+	// The return code.
 	//
-	// 200: success. Other values: error codes. For more information, see error codes.
+	// 200: Success. Other values: Error codes. For more information, see Error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type FaceCompareV2ResponseBody struct {
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *FaceCompareV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -100,13 +100,15 @@ func (s *FaceCompareV2ResponseBody) Validate() error {
 type FaceCompareV2ResponseBodyResult struct {
 	// The related result information.
 	ExtFaceInfo *FaceCompareV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The comparison score between the submitted face photo and the target reference face image during verification. Value range: 0 to 100.
+	// The comparison score between the submitted face photo and the reference face photo during the authentication process. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// Indicates whether the verification passed.
+	// Indicates whether the authentication is passed.
+	//
+	// Valid values:
 	//
 	// - Y: Passed.
 	//
@@ -116,7 +118,7 @@ type FaceCompareV2ResponseBodyResult struct {
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The unique identifier of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//
@@ -208,31 +210,31 @@ type FaceCompareV2ResponseBodyResultExtFaceInfo struct {
 	//
 	// 86.47
 	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
-	// The overall quality score of the target reference face image.
+	// The overall quality score of the reference face image.
 	//
 	// example:
 	//
 	// 39.04
 	TargetFaceQualityScore *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
-	// The illumination score of the target reference face image.
+	// The illumination score of the reference face image.
 	//
 	// example:
 	//
 	// 0.02
 	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
-	// The key area occlusion score of the target reference face image.
+	// The key area occlusion score of the reference face image.
 	//
 	// example:
 	//
 	// 20
 	TargetKaOcclusionScore *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
-	// The occlusion score of the target reference face image.
+	// The occlusion score of the reference face image.
 	//
 	// example:
 	//
 	// 50.26
 	TargetOcclusionScore *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
-	// The sharpness score of the target reference face image.
+	// The sharpness score of the reference face image.
 	//
 	// example:
 	//

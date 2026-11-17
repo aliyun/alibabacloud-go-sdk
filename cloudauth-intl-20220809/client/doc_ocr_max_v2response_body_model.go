@@ -20,13 +20,13 @@ type iDocOcrMaxV2ResponseBody interface {
 }
 
 type DocOcrMaxV2ResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DocOcrMaxV2ResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *DocOcrMaxV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *DocOcrMaxV2ResponseBody) Validate() error {
 }
 
 type DocOcrMaxV2ResponseBodyResult struct {
-	// The card and certificate recognition result. This parameter is returned only when the API response is successful.
+	// The ID document recognition result. This parameter is returned only when the API response is successful.
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type DocOcrMaxV2ResponseBodyResult struct {
 	//
 	//     "id_number": "*****719******",
 	//
-	//     "address": "xxxxxx,
+	//     "address": "xxxxxx",
 	//
-	//     "ethnicity": "汉",
+	//     "ethnicity": "Han",
 	//
-	//     "date_of_birth": "1990年06月02日",
+	//     "date_of_birth": "June 02, 1990",
 	//
-	//     "sex": "女",
+	//     "sex": "Female",
 	//
-	//     "name": "何**"
+	//     "name": "He**"
 	//
 	//   },
 	//
@@ -132,7 +132,7 @@ type DocOcrMaxV2ResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Indicates whether the verification passed. Valid values:
+	// Indicates whether the authentication is passed. Valid values:
 	//
 	// - Y: passed.
 	//
@@ -148,7 +148,7 @@ type DocOcrMaxV2ResponseBodyResult struct {
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique identifier of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

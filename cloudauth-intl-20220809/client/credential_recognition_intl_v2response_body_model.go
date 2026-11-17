@@ -20,13 +20,13 @@ type iCredentialRecognitionIntlV2ResponseBody interface {
 }
 
 type CredentialRecognitionIntlV2ResponseBody struct {
-	// The return code. A value of 200 indicates a successful request. Other values indicate failures.
+	// The return code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CredentialRecognitionIntlV2ResponseBody struct {
 	//
 	// 7F971622-38C0-5F56-B2EC-315367979B4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response result.
+	// The returned result.
 	Result *CredentialRecognitionIntlV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialRecognitionIntlV2ResponseBody) Validate() error {
 }
 
 type CredentialRecognitionIntlV2ResponseBodyResult struct {
-	// The recognized key information, in JSON format.
+	// The recognized key information in JSON format.
 	//
 	// example:
 	//
@@ -110,15 +110,15 @@ type CredentialRecognitionIntlV2ResponseBodyResult struct {
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
 	// The result code. Valid values:
 	//
-	// - 200: OCR extraction succeeded and all rule checks passed.
+	// - 200: OCR extraction is successful and all rule checks are passed
 	//
-	// - 204: Validation result is inconsistent. OCR extraction succeeded, but some fields in CheckRuleConfig did not pass (N).
+	// - 204: verification results are inconsistent. OCR extraction is successful, but some fields in CheckRuleConfig fail the check (N)
 	//
-	// - 211: Quality does not meet requirements. Quality detection did not pass when idQuality is set to Y (not yet supported in the current version).
+	// - 211: quality does not meet the requirements. Quality detection fails when idQuality is set to Y. This feature is not available in the current version
 	//
-	// - 212: Anti-forgery check did not pass. fraudCheck was triggered and anti-forgery verification failed.
+	// - 212: anti-counterfeiting check fails. fraudCheck is triggered and anti-counterfeiting verification fails
 	//
-	// - 213: No text was extracted, or the credential type check did not pass.
+	// - 213: no text is extracted or the credential type check fails
 	//
 	// example:
 	//
@@ -126,9 +126,9 @@ type CredentialRecognitionIntlV2ResponseBodyResult struct {
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	// The extraction result. Valid values:
 	//
-	// - S: Succeeded.
+	// - S: success.
 	//
-	// - F: Failed.
+	// - F: failure.
 	//
 	// example:
 	//

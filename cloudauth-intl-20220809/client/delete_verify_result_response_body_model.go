@@ -26,13 +26,13 @@ type DeleteVerifyResultResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,11 +96,7 @@ func (s *DeleteVerifyResultResponseBody) Validate() error {
 }
 
 type DeleteVerifyResultResponseBodyResult struct {
-	// The deletion result. Valid values:
-	//
-	// - Y: The deletion was successful.
-	//
-	// - N: The deletion failed.
+	// The deletion result. Valid values: Y: The deletion succeeded. N: The deletion failed.
 	//
 	// example:
 	//

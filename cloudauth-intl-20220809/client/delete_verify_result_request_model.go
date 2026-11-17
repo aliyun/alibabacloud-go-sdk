@@ -18,7 +18,7 @@ type iDeleteVerifyResultRequest interface {
 }
 
 type DeleteVerifyResultRequest struct {
-	// Specifies whether the deletion depends on the query operation.
+	// Specifies whether to rely on the query API when deleting data.
 	//
 	// example:
 	//

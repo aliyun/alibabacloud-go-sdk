@@ -16,13 +16,13 @@ type iDeleteFaceRecordV2Request interface {
 }
 
 type DeleteFaceRecordV2Request struct {
-	// The face group code. If this parameter is not specified, the face data of the user is deleted from all face groups.
+	// The code of the face group. If you do not specify this parameter, the face data of the user in all face groups is deleted.
 	//
 	// example:
 	//
 	// sgl****7uc
 	FaceGroupCode *string `json:"FaceGroupCode,omitempty" xml:"FaceGroupCode,omitempty"`
-	// The unique user identifier, which must be consistent with the one used when calling AddFaceRecord. If this parameter was not specified during registration, you can use the default image name.
+	// The unique identifier of the user. This value must be the same as the one specified when the face record was added by using AddFaceRecord. If no user identifier was specified when the record was added, you can use the default image name.
 	//
 	// This parameter is required.
 	//

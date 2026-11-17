@@ -26,9 +26,9 @@ type TempAccessTokenIntlResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *TempAccessTokenIntlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ func (s *TempAccessTokenIntlResponseBody) Validate() error {
 }
 
 type TempAccessTokenIntlResponseBodyData struct {
-	// The AccessKeyId of the temporary credential for file upload.
+	// The AccessKey ID of the temporary credential for file upload.
 	//
 	// example:
 	//
 	// ***
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The temporary authorization secret.
+	// The AccessKey Secret of the temporary credential.
 	//
 	// example:
 	//
 	// 3hxuRpEJ3Jv2Rtzyg4HooFCYqps762XcNtzhn19wQymk
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// The bucket name.
+	// The name of the bucket.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type TempAccessTokenIntlResponseBodyData struct {
 	//
 	// test001
 	FileNamePrefix *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
-	// OssEndPoint。
+	// The OSS endpoint.
 	//
 	// example:
 	//

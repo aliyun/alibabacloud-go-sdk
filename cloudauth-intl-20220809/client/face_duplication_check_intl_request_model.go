@@ -50,18 +50,27 @@ type iFaceDuplicationCheckIntlRequest interface {
 }
 
 type FaceDuplicationCheckIntlRequest struct {
-	// Specifies whether to automatically register the face to the specified face library when no duplicate face is found during the search. Valid values:
+	// Specifies whether to automatically register the face to the specified face library if no duplicate face is found during the search. Valid values:
 	//
-	// - 0: automatic registration
+	// - 0: Register.
 	//
-	// - 1: no registration (default)
+	// - 1: Do not register. This is the default value.
 	//
 	// example:
 	//
 	// 1
-	AutoRegistration   *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
+	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
+	// Specifies whether to return additional face attribute information. Valid values:
+	//
+	// - N: Do not return. This is the default value.
+	//
+	// - Y: Return. The result is located in Result.ExtFaceInfo.FaceAttributeInfo.
+	//
+	// example:
+	//
+	// N
 	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
-	// The face library codes created by the customer through the console. A maximum of 10 face libraries can be queried simultaneously. Separate multiple face library codes with commas.
+	// The codes of the face libraries created by the customer in the console. A maximum of 10 face libraries can be queried at the same time. Separate multiple face library codes with commas.
 	//
 	// example:
 	//
@@ -73,13 +82,13 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// The face library for registration.
+	// The code of the face library for face registration.
 	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
-	// The face matching threshold.	Warning: This is a reserved field and is not currently enabled.</warning>
+	// The face matching threshold. <warning>Reserved field. Not enabled yet.</warning>
 	//
 	// example:
 	//
@@ -87,15 +96,15 @@ type FaceDuplicationCheckIntlRequest struct {
 	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
 	// Specifies whether to enable passive liveness detection. Valid values:
 	//
-	// - 0: disabled
+	// - 0: Disable.
 	//
-	// - 1: enabled
+	// - 1: Enable.
 	//
 	// example:
 	//
 	// 0
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// The custom unique business identifier used for subsequent troubleshooting. The value supports a combination of letters and numbers with a length of 32 characters. Ensure that the value is unique.
+	// The custom unique business identifier used for subsequent troubleshooting. The value supports a combination of up to 32 letters and digits. Make sure that the value is unique.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +112,7 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35****
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, such as by hashing the value.
+	// The custom user ID or other identifier that can identify a specific user, such as a mobile phone number or email address. Desensitize the value of this field in advance, such as by hashing the value.
 	//
 	// This parameter is required.
 	//
@@ -119,11 +128,7 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// FACE_IDU_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Specifies the number of faces to return when multiple faces above the matching threshold exist. You can customize the return quantity through this parameter.
-	//
-	// - Default value: 1
-	//
-	// - Maximum value: 5
+	// Specifies the number of faces to return when multiple faces exceed the matching threshold. Default value: 1. Maximum value: 5.
 	//
 	// example:
 	//
@@ -131,67 +136,75 @@ type FaceDuplicationCheckIntlRequest struct {
 	ReturnFaces *string `json:"ReturnFaces,omitempty" xml:"ReturnFaces,omitempty"`
 	// Specifies the type of face data to save. Valid values:
 	//
-	// - 0: face image (default)
+	// - 0: Face image. This is the default value.
 	//
-	// - 1: feature
+	// - 1: Face feature.
 	//
-	// 	Warning: This is a reserved field and is not currently enabled.</warning>
+	// <warning>Reserved field. Not enabled yet.</warning>
 	//
 	// example:
 	//
 	// 0
 	SaveFacePicture *string `json:"SaveFacePicture,omitempty" xml:"SaveFacePicture,omitempty"`
-	// The custom verification scenario ID.
+	// The custom authentication scene ID.
 	//
 	// example:
 	//
 	// 1234567890
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// The Base64-encoded face photo.
+	// The Base64-encoded portrait photo.
 	//
 	// example:
 	//
 	// base64
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
-	// The URL of the face image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the portrait image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	// The Base64-encoded face photo.
+	// The Base64-encoded portrait photo.
 	//
 	// example:
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The URL of the face image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the portrait image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***face2.jpeg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
-	// Specifies whether to overwrite the existing face with the current face when MerchantUserId already exists during automatic registration. Valid values: Y: overwrite. N: do not overwrite and return that the UserId already exists.
+	// Specifies whether to overwrite the original face with the current face if the MerchantUserId already exists during automatic registration. Valid values:
+	//
+	// - Y: Overwrite.
+	//
+	// - N: Do not overwrite and return that the UserId already exists.
+	//
+	// example:
+	//
+	// N
 	UpdateFaceIfUserExists *string `json:"UpdateFaceIfUserExists,omitempty" xml:"UpdateFaceIfUserExists,omitempty"`
-	// The verification type. Valid values:
+	// The authentication type. Valid values:
 	//
-	// - 0: retrieve pattern
+	// - 0: Retrieve pattern
 	//
-	// > - Feature: Submits a face library and a user face image (sourceFacePicture). The system automatically retrieves the face library to determine whether the specified face image (sourceFacePicture) already exists. Passive liveness detection can be enabled for the face image (sourceFacePicture).
+	//   - Feature: The system receives a face library and a user face image (sourceFacePicture), and automatically retrieves from the face library to check whether the specified face image (sourceFacePicture) already exists. Passive liveness detection can be enabled for the face image (sourceFacePicture).
 	//
-	// > - Recommended scenario: Real-person create an account where duplicate registration is not allowed.
+	//   - Recommended scenario: Scenarios where a real person needs to create an account and duplicate registration is not allowed.
 	//
-	// - 1 (default): authenticate pattern
+	// - 1 (default): Authenticate pattern
 	//
-	// > - Feature: Submits a specified face image (sourceFacePicture) and a retained face image (TargetFacePicture). The system automatically authenticates whether the faces match. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
+	//   - Feature: The system receives a specified face image (sourceFacePicture) and a retained face image (TargetFacePicture), and automatically authenticates whether the faces match. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
 	//
-	// > - Recommended scenario: Authenticating whether the operation is performed by the account owner when modifying logon credentials or account information.
+	//   - Recommended scenario: Scenarios where it is required to authenticate whether the operation is performed by the user when modifying logon or account information.
 	//
-	// - 2: comprehensive pattern
+	// - 2: Comprehensive pattern
 	//
-	// > - Feature: Submits a face library, a specified face image (sourceFacePicture), and a retained face image (TargetFacePicture). The system automatically retrieves the face library to determine whether the specified face image (sourceFacePicture) exists, authenticates whether it matches the retained face, and supports enabling passive liveness detection for the specified face image (sourceFacePicture).
+	//   - Feature: The system receives a face library, a specified face image (sourceFacePicture), and a retained face image (TargetFacePicture) at the same time, and automatically retrieves from the face library to check whether the specified face image (sourceFacePicture) exists and authenticates whether it matches the retained face. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
 	//
-	// > - Recommended scenario: Authenticating that the user is new and the operation is performed by the user.
+	//   - Recommended scenario: Scenarios where it is required to authenticate that the user is a new user and the operation is performed by the user.
 	//
 	// This parameter is required.
 	//

@@ -20,13 +20,13 @@ type iAddressVerifyV2IntlResponseBody interface {
 }
 
 type AddressVerifyV2IntlResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type AddressVerifyV2IntlResponseBody struct {
 	//
 	// 7F971622-38C0-5F56-B2EC-315367979B4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The verification result.
+	// The returned result.
 	Result *AddressVerifyV2IntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -100,21 +100,21 @@ type AddressVerifyV2IntlResponseBodyResult struct {
 	//
 	// - 1: Passed.
 	//
-	// - 2: Failed (the device is in a prohibited region).
+	// - 2: Failed. The device is located in a prohibited area.
 	//
-	// - 3: Unable to determine.
+	// - 3: Undetermined.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The verification details, which include:
+	// The verification details, including:
 	//
 	// - distanceRange: the location range.
 	//
 	// - ispName: the ISP name.
 	//
-	// - phoneStatus: the phone status. A value of 0 indicates abnormal. A value of 1 indicates Normal. Otherwise, the status is unknown.
+	// - phoneStatus: the mobile phone status. 0 indicates abnormal, 1 indicates normal, and other values indicate unknown.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type DocOcrResponseBody struct {
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *DocOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,25 +96,25 @@ func (s *DocOcrResponseBody) Validate() error {
 }
 
 type DocOcrResponseBodyResult struct {
-	// The card and certificate recognition result. This parameter is returned only when the API response is successful.
+	// The recognition result of the ID card or certificate. This parameter is returned only when the API response is successful.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "idFaceQualityScore": 98.0
+	//   "idFaceQualityScore": 98.0,
 	//
 	//   "ocrIdInfo": {
 	//
 	//     "expiryDate": "",
 	//
-	//     "originOfIssue": "公安部出入境管理局",
+	//     "originOfIssue": "Exit-Entry Administration of the Ministry of Public Security",
 	//
 	//     "englishName": "LI SI",
 	//
-	//     "sex": "男",
+	//     "sex": "Male",
 	//
-	//     "name": "李四",
+	//     "name": "Li Si",
 	//
 	//     "idNumber": "H11111112",
 	//

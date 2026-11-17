@@ -20,13 +20,13 @@ type iBankMetaVerifyIntlResponseBody interface {
 }
 
 type BankMetaVerifyIntlResponseBody struct {
-	// The response code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type BankMetaVerifyIntlResponseBody struct {
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *BankMetaVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -98,11 +98,11 @@ func (s *BankMetaVerifyIntlResponseBody) Validate() error {
 type BankMetaVerifyIntlResponseBodyResultObject struct {
 	// The verification result code. Valid values:
 	//
-	// - 1: Verification consistent (billable).
+	// - 1: The verification is consistent. You are billed for this call.
 	//
-	// - 2: Verification inconsistent (billable).
+	// - 2: The verification is inconsistent. You are billed for this call.
 	//
-	// - 3: No record found (not billable).
+	// - 3: No record is found. You are not billed for this call.
 	//
 	// example:
 	//
@@ -110,51 +110,51 @@ type BankMetaVerifyIntlResponseBodyResultObject struct {
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	// The verification details. Valid values:
 	//
-	// - **101**: Verification passed.
+	// - **101**: The verification is successful.
 	//
-	// - **201**: Authentication information inconsistent. The cardholder information is incorrect.
+	// - **201**: The authentication information is inconsistent. The cardholder information is incorrect.
 	//
-	// - **202**: Authentication information inconsistent. The bank card has not enabled authenticated payment.
+	// - **202**: The authentication information is inconsistent. The bank card is not enabled for authenticated payment.
 	//
-	// - **203**: Authentication information inconsistent. The bank card has expired.
+	// - **203**: The authentication information is inconsistent. The bank card has expired.
 	//
-	// - **204**: Authentication information inconsistent. The bank card is restricted.
+	// - **204**: The authentication information is inconsistent. The bank card is restricted.
 	//
-	// - **205**: Authentication information inconsistent. The card has been confiscated.
+	// - **205**: The authentication information is inconsistent. The bank card has been confiscated.
 	//
-	// - **206**: Authentication information inconsistent. The bank card is invalid.
+	// - **206**: The authentication information is inconsistent. The bank card is invalid.
 	//
-	// - **207**: Authentication information inconsistent. No issuing bank found for this card.
+	// - **207**: The authentication information is inconsistent. The bank card has no corresponding issuing bank.
 	//
-	// - **208**: Authentication information inconsistent. The card is not initialized or is a dormant card.
+	// - **208**: The authentication information is inconsistent. The bank card is not initialized or is a dormant card.
 	//
-	// - **209**: Authentication information inconsistent. The card is a fraudulent or retained card.
+	// - **209**: The authentication information is inconsistent. The bank card is a fraudulent or captured card.
 	//
-	// - **210**: Authentication information inconsistent. The card has been reported lost.
+	// - **210**: The authentication information is inconsistent. The bank card has been reported as lost.
 	//
-	// - **211**: Authentication information inconsistent. The number of incorrect password attempts has exceeded the limit.
+	// - **211**: The authentication information is inconsistent. The number of incorrect password attempts has exceeded the limit.
 	//
-	// - **212**: Authentication information inconsistent. The issuing bank does not support this transaction.
+	// - **212**: The authentication information is inconsistent. The issuing bank does not support this transaction.
 	//
-	// - **213**: Authentication information inconsistent. The card status is abnormal or the card is invalid.
+	// - **213**: The authentication information is inconsistent. The card status is abnormal or the card is invalid.
 	//
-	// - **214**: Authentication information inconsistent. No phone number is registered with the card.
+	// - **214**: The authentication information is inconsistent. No mobile phone number is reserved.
 	//
-	// - **215**: Authentication information inconsistent. The password, expiration date, or CVN2 is incorrect.
+	// - **215**: The authentication information is inconsistent. The entered password, expiration date, or CVN2 is incorrect.
 	//
-	// - **216**: Authentication information inconsistent. Other card exceptions.
+	// - **216**: The authentication information is inconsistent. Other card exceptions occurred.
 	//
-	// - **301**: Verification unavailable. The bank card does not support this service.
+	// - **301**: The verification cannot be performed. The bank card does not support this service.
 	//
-	// - **302**: Verification unavailable. Verification failed or the bank rejected the verification. Contact the issuing bank.
+	// - **302**: The verification cannot be performed. The verification failed or the bank rejected the verification. Contact the issuing bank.
 	//
-	// - **303**: Verification unavailable. The bank card does not currently support phone number verification.
+	// - **303**: The verification cannot be performed. The bank card does not support mobile phone number verification.
 	//
-	// - **304**: Verification unavailable. The bank card number is incorrect.
+	// - **304**: The verification cannot be performed. The bank card number is incorrect.
 	//
-	// - **305**: Verification unavailable. Other reasons.
+	// - **305**: The verification cannot be performed. Other reasons.
 	//
-	// - **306**: Verification unavailable. The number of verification attempts has exceeded the limit.
+	// - **306**: The verification cannot be performed. The number of verification attempts has exceeded the limit.
 	//
 	// example:
 	//

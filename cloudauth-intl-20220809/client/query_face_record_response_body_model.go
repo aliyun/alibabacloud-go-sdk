@@ -32,7 +32,7 @@ type iQueryFaceRecordResponseBody interface {
 }
 
 type QueryFaceRecordResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryFaceRecordResponseBody struct {
 	//
 	// 2
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of returned records.
+	// The list of returned items.
 	Items []*QueryFaceRecordResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The maximum number of entries per page.
 	//
@@ -52,13 +52,13 @@ type QueryFaceRecordResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//

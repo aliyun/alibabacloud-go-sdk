@@ -36,7 +36,7 @@ type QueryFaceRecordRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The face library code.
+	// The face group code.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type QueryFaceRecordRequest struct {
 	//
 	// 5006538
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
-	// The maximum number of entries per page for a paginated query.
+	// The maximum number of entries per page for paging.
 	//
 	// example:
 	//

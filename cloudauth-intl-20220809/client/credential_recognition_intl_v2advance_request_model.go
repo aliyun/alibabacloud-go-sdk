@@ -37,7 +37,7 @@ type iCredentialRecognitionIntlV2AdvanceRequest interface {
 }
 
 type CredentialRecognitionIntlV2AdvanceRequest struct {
-	// The field validation rule configuration, in JSON string format.
+	// The field validation rule configuration. The value is a JSON string.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	//
 	// }
 	CheckRuleConfig *string `json:"CheckRuleConfig,omitempty" xml:"CheckRuleConfig,omitempty"`
-	// The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
+	// The Base64-encoded image. If you choose to pass the photo by using IdOcrPictureBase64, check the photo size and do not pass excessively large photos.
 	//
 	// example:
 	//
@@ -63,7 +63,7 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	//
 	// InputStream
 	CredentialOcrPictureFileObject io.Reader `json:"CredentialOcrPictureFile,omitempty" xml:"CredentialOcrPictureFile,omitempty"`
-	// The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The image URL. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
@@ -71,13 +71,13 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 01: transaction credential (including electronic bill images for water, electricity, gas, credit cards, and other types)
+	// - 01: transaction receipt, including electronic bills for utilities and credit cards
 	//
 	// - 02: vehicle registration certificate
 	//
 	// - 03: transfer transaction record
 	//
-	// - 04: POA address proof
+	// - 04: proof of address (POA)
 	//
 	// This parameter is required.
 	//
@@ -85,11 +85,13 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	//
 	// 01
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// The input material type. Valid values:
+	// The material input type. Valid values:
 	//
-	// - IMAGE (default): image
+	// - IMAGE: image
 	//
 	// - PDF: PDF format
+	//
+	// Default value: IMAGE.
 	//
 	// example:
 	//
@@ -97,9 +99,9 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	FileInputType *string `json:"FileInputType,omitempty" xml:"FileInputType,omitempty"`
 	// Specifies whether to enable tampering detection. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enables tampering detection.
 	//
-	// - false: Disabled.
+	// - false: disables tampering detection.
 	//
 	// This parameter is required.
 	//
@@ -107,7 +109,11 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	//
 	// false
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
+	// Specifies whether to enable quality detection. Valid values:
+	//
+	// - Y: enables quality detection.
+	//
+	// - N: disables quality detection.
 	//
 	// example:
 	//
@@ -115,11 +121,11 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	IdQuality *string `json:"IdQuality,omitempty" xml:"IdQuality,omitempty"`
 	// The extraction type. Valid values:
 	//
-	// - 0101: electronic bill address and name module (extracts address and name modules through intelligent analysis)
+	// - 0101: electronic bill address and name module, which extracts the address and name module through intelligent analysis
 	//
 	// - 0201: Thailand vehicle registration certificate
 	//
-	// - 0301: transfer transaction amount information
+	// - 0301: transfer transaction record amount information
 	//
 	// - 0401: POA credential extraction information
 	//
@@ -129,19 +135,27 @@ type CredentialRecognitionIntlV2AdvanceRequest struct {
 	//
 	// 0101
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
-	// Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
+	// Specifies whether to enable translation. Valid values:
+	//
+	// - 0: disables translation.
+	//
+	// - 1: enables translation.
 	//
 	// example:
 	//
 	// 1
 	OcrTranslation *string `json:"OcrTranslation,omitempty" xml:"OcrTranslation,omitempty"`
-	// Specifies whether to enable OCR result normalization. Valid values: 0 (disabled) and 1 (enabled).
+	// Specifies whether to enable OCR result standardization. Valid values:
+	//
+	// - 0: disables OCR result standardization.
+	//
+	// - 1: enables OCR result standardization.
 	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
+	// The product solution to be integrated. Valid value: CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//

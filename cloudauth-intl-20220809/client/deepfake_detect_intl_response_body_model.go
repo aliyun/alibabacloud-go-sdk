@@ -20,13 +20,13 @@ type iDeepfakeDetectIntlResponseBody interface {
 }
 
 type DeepfakeDetectIntlResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeepfakeDetectIntlResponseBody struct {
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *DeepfakeDetectIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -108,21 +108,21 @@ type DeepfakeDetectIntlResponseBodyResultObject struct {
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The risk score map.
+	// The map of risk scores.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk labels. Multiple labels are separated by commas (,). Valid values:
+	// The risk tags. Multiple tags are separated by commas (,). Valid values:
 	//
-	// - **SuspectDeepForgery**: suspected depth forgery
+	// - **SuspectDeepForgery**: Suspected deepfake.
 	//
-	// - **SuspectPSFace**: suspected synthetic attack
+	// - **SuspectPSFace**: Suspected synthetic attack.
 	//
-	// - **SuspectWarterMark**: suspected watermark
+	// - **SuspectWarterMark**: Suspected watermark.
 	//
-	// - **SuspectTemple**: suspected template attack
+	// - **SuspectTemple**: Suspected template attack.
 	//
-	// - **SuspectAIGCFace**: suspected AIGC-generated face
+	// - **SuspectAIGCFace**: Suspected AIGC-generated face.
 	//
-	// - **SuspectRemake**: suspected recaptured face.
+	// - **SuspectRemake**: Suspected recaptured face.
 	//
 	// example:
 	//

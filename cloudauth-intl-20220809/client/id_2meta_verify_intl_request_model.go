@@ -20,7 +20,7 @@ type iId2MetaVerifyIntlRequest interface {
 }
 
 type Id2MetaVerifyIntlRequest struct {
-	// The ID card number (in plaintext).
+	// The ID card number in plaintext.
 	//
 	// example:
 	//
@@ -28,25 +28,25 @@ type Id2MetaVerifyIntlRequest struct {
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: original value (plaintext).
+	// - normal: The original value in plaintext.
 	//
-	// - Note: Due to authoritative data source restrictions, two-factor identity verification does not support MD5 encryption.
+	// - Note: Due to the limitations of the authoritative data source, two-element identity verification does not support the MD5 encryption method.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The product solution code. Set this parameter to ID_2META.
+	// The product solution. Fixed value: ID_2META.
 	//
 	// example:
 	//
 	// ID_2META
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name (in plaintext).
+	// The name in plaintext.
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

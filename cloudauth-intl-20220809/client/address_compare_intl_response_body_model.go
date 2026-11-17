@@ -38,7 +38,7 @@ type AddressCompareIntlResponseBody struct {
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *AddressCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,25 +96,25 @@ func (s *AddressCompareIntlResponseBody) Validate() error {
 }
 
 type AddressCompareIntlResponseBodyResult struct {
-	// The sameLevel parameter has the following valid values:
+	// Valid values:
 	//
-	// - all: completely identical
+	// - all: Exactly the same.
 	//
-	// - prov: province level
+	// - prov: Province.
 	//
-	// - city: city level
+	// - city: City.
 	//
-	// - district: district level
+	// - district: District.
 	//
-	// - town: street level
+	// - town: Town.
 	//
-	// - road: road level
+	// - road: Road.
 	//
-	// - roadno: road number level
+	// - roadno: Road number.
 	//
-	// - poi: community/neighborhood level
+	// - poi: Residential community.
 	//
-	// - roomno: room number level.
+	// - roomno: Room number.
 	//
 	// example:
 	//
@@ -122,15 +122,15 @@ type AddressCompareIntlResponseBodyResult struct {
 	//
 	//      sameLevel: "city",
 	//
-	//      distance:  5997.34m, -- 地址相差距离
+	//      distance:  5997.34m, -- Distance between addresses
 	//
-	//      same_info: {    -- 相同信息
+	//      same_info: {    -- Identical information
 	//
-	//               prov: "浙江省",
+	//               prov: "Zhejiang Province",
 	//
-	//               city: "杭州市",
+	//               city: "Hangzhou",
 	//
-	//               district: "西湖区"
+	//               district: "Xihu District"
 	//
 	//       }
 	//

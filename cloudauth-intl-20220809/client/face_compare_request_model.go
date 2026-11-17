@@ -26,31 +26,31 @@ type iFaceCompareRequest interface {
 }
 
 type FaceCompareRequest struct {
-	// Whether to enable quality detection for the input face image	Danger: Deprecated
+	// **[Deprecated]*	- Specifies whether to enable the quality check for the input face image.
 	//
 	// example:
 	//
 	// N
 	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
-	// Face quality check
+	// The face quality check.
 	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// A unique business identifier customized by the merchant, used for subsequent troubleshooting. Supports a combination of letters and numbers with a maximum length of 32 characters. Ensure it is unique.
+	// The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the identifier is unique.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Base64-encoded face photo.
+	// The Base64-encoded portrait photo.
 	//
 	// Note
 	//
-	// - If you choose this method to pass in the photo, check the photo size and do not pass in an oversized photo.
+	// - If you choose this method to pass the ID photo, check the photo size and do not pass oversized photos.
 	//
-	// - Either SourceFacePicture or SourceFacePictureUrl must be specified.
+	// - Specify either SourceFacePicture or SourceFacePictureUrl.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type FaceCompareRequest struct {
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	// Base64-encoded reference photo.
+	// The Base64-encoded reference photo.
 	//
 	// Note
 	//
-	// - If you choose this method to pass in the photo, check the photo size and do not pass in an oversized photo.
+	// - If you choose this method to pass the ID photo, check the photo size and do not pass oversized photos.
 	//
-	// - Either TargetFacePicture or TargetFacePictureUrl must be specified.
+	// - Specify either TargetFacePicture or TargetFacePictureUrl.
 	//
 	// example:
 	//

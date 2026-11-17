@@ -20,13 +20,13 @@ type iFaceVerifyIntlResponseBody interface {
 }
 
 type FaceVerifyIntlResponseBody struct {
-	// The return code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type FaceVerifyIntlResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *FaceVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *FaceVerifyIntlResponseBody) Validate() error {
 }
 
 type FaceVerifyIntlResponseBodyResult struct {
-	// The face ID, user ID, and comparison score of the corresponding face in the face library when a duplicate face is found during retrieval.
+	// The face ID, user ID, and comparison score of the duplicate face in the face library when a duplicate face is retrieved.
 	//
 	// example:
 	//
@@ -116,37 +116,39 @@ type FaceVerifyIntlResponseBodyResult struct {
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
 	// The additional face result information.
 	ExtFaceInfo *FaceVerifyIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The predicted reference age of the face. Prediction may fail and the value may not be returned in some cases.
+	// The predicted reference age of the face. This parameter may not be returned if the prediction fails.
 	//
 	// example:
 	//
 	// 30
 	FaceAge *int64 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether the captured face involves a liveness attack. Valid values:
+	// Indicates whether the collected face involves a liveness attack. Valid values:
 	//
 	// - Y: attack detected.
 	//
 	// - N: no attack detected.
 	//
-	// Returned when passive liveness detection is enabled.
+	// This parameter is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a passive liveness detection attack on the face. Value range: 0 to 100. Returned when passive liveness detection is enabled.
+	// The probability of a liveness attack detected by passive liveness detection. Valid values: 0 to 100.
+	//
+	// This parameter is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *float64 `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// The comparison score between the submitted face image and the reference face image during verification. Value range: 0 to 100.
+	// The comparison score between the submitted face photo and the reference face image during authentication. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 95.0
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face image. Prediction may fail and the value may not be returned in some cases. Valid values:
+	// The predicted gender of the face image. This parameter may not be returned if the prediction fails. Valid values:
 	//
 	// - M: male.
 	//
@@ -156,17 +158,17 @@ type FaceVerifyIntlResponseBodyResult struct {
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
-	// The final verification result. Valid values:
+	// The final authentication result. Valid values:
 	//
 	// - Y: passed.
 	//
-	// - N: not passed.
+	// - N: failed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The corresponding FACEID returned only when the customer has enabled automatic registration and the face is registered successfully.
+	// The FACEID returned when face registration succeeds. This parameter is returned only when automatic registration is enabled by the customer.
 	//
 	// example:
 	//
@@ -188,7 +190,7 @@ type FaceVerifyIntlResponseBodyResult struct {
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique identifier of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//
@@ -322,42 +324,72 @@ func (s *FaceVerifyIntlResponseBodyResult) Validate() error {
 }
 
 type FaceVerifyIntlResponseBodyResultExtFaceInfo struct {
+	// The attribute detection result of the main face, returned as a string. The result includes information such as gender, glasses, hat, mask, tattoo, smoking, other people, environment, expression, and age.
+	//
+	// example:
+	//
+	// {"gender":1,"glasses":0,"hat":1,"mask":1,"tattoo":0,"smoking":0,"others":1,"env":"office","expression":1,"age":16}
 	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
-	// The liveness face quality score. Value range: 0 to 100. A higher value indicates better quality.
+	// The quality score of the live face. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
-	// The algorithm score for illumination as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for illumination, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 97.43
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
-	// The algorithm score for key area occlusion as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for key area occlusion, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 100
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// The algorithm score for occlusion as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for occlusion, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
-	// The image sharpness score as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	// The image sharpness score, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 86.47
-	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
-	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	// The comprehensive quality score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
+	//
+	// example:
+	//
+	// 39.04
+	TargetFaceQualityScore *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	// The illumination score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
+	//
+	// example:
+	//
+	// 0.02
 	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
-	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
-	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
-	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
+	// The key area occlusion score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
+	//
+	// example:
+	//
+	// 20
+	TargetKaOcclusionScore *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	// The occlusion score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
+	//
+	// example:
+	//
+	// 50.26
+	TargetOcclusionScore *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	// The sharpness score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
+	//
+	// example:
+	//
+	// 86.47
+	TargetSharpnessScore *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceVerifyIntlResponseBodyResultExtFaceInfo) String() string {

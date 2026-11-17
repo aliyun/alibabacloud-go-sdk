@@ -38,7 +38,7 @@ type DocOcrMaxResponseBody struct {
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *DocOcrMaxResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *DocOcrMaxResponseBody) Validate() error {
 }
 
 type DocOcrMaxResponseBodyResult struct {
-	// The card and certificate recognition result. This parameter is returned only when the API response is successful.
+	// The identity document recognition result. This parameter is returned only when the API responds successfully.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type DocOcrMaxResponseBodyResult struct {
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
 	// Indicates whether the authentication is passed. Valid values:
 	//
-	// - Y: passed.
+	// - Y: Passed.
 	//
-	// - N: not passed.
+	// - N: Not passed.
 	//
 	// example:
 	//

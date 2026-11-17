@@ -20,11 +20,11 @@ type iMobile2MetaVerifyIntlRequest interface {
 }
 
 type Mobile2MetaVerifyIntlRequest struct {
-	// The phone number.
+	// The mobile phone number.
 	//
-	// - If ParamType is set to normal, pass in the phone number in plaintext.
+	// - If paramType is set to normal, enter the plaintext mobile phone number.
 	//
-	// - If ParamType is set to md5, pass in the phone number in ciphertext as a 32-character lowercase MD5 string.
+	// - If paramType is set to md5, enter the ciphertext mobile phone number, which is a 32-character lowercase MD5 string.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type Mobile2MetaVerifyIntlRequest struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: not encrypted
+	// - normal: no encryption
 	//
-	// - md5: MD5-encrypted.
+	// - md5: MD5 encryption
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type Mobile2MetaVerifyIntlRequest struct {
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The product code. Set this parameter to MOBILE_2META.
+	// The product code. Set the value to MOBILE_2META.
 	//
 	// This parameter is required.
 	//
@@ -52,17 +52,17 @@ type Mobile2MetaVerifyIntlRequest struct {
 	//
 	// MOBILE_2META
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The name. Valid values:
+	// The name.
 	//
-	// - If ParamType is set to normal, pass in the name in plaintext.
+	// - If paramType is set to normal, enter the plaintext name.
 	//
-	// - If ParamType is set to md5, pass in the name in ciphertext as a 32-character lowercase MD5 string.
+	// - If paramType is set to md5, enter the ciphertext name, which is a 32-character lowercase MD5 string.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

@@ -38,7 +38,7 @@ type CredentialGetResultIntlResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *CredentialGetResultIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialGetResultIntlResponseBody) Validate() error {
 }
 
 type CredentialGetResultIntlResponseBodyResult struct {
-	// The key information identified, in JSON format.
+	// The recognized key information in JSON format.
 	//
 	// example:
 	//
@@ -110,17 +110,17 @@ type CredentialGetResultIntlResponseBodyResult struct {
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
 	// The task status. Valid values:
 	//
-	// - PROCESSING: Processing. Continue polling.
+	// - PROCESSING: The task is in progress. Continue polling.
 	//
-	// - SUCCESS: Succeeded.
+	// - SUCCESS: The task succeeded.
 	//
-	// - FAILED: Failed.
+	// - FAILED: The task failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the authentication result. For more information, refer to the ResultObject.SubCode error code description.
+	// The description of the authentication result. For more information, see the error code description for ResultObject.SubCode.
 	//
 	// example:
 	//

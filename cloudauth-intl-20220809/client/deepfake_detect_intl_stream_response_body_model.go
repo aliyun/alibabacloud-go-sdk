@@ -20,13 +20,13 @@ type iDeepfakeDetectIntlStreamResponseBody interface {
 }
 
 type DeepfakeDetectIntlStreamResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeepfakeDetectIntlStreamResponseBody struct {
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result information.
+	// The result information.
 	ResultObject *DeepfakeDetectIntlStreamResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,13 +96,13 @@ func (s *DeepfakeDetectIntlStreamResponseBody) Validate() error {
 }
 
 type DeepfakeDetectIntlStreamResponseBodyResultObject struct {
-	// The risk result:
+	// The risk result. Valid values:
 	//
-	// - **0**: Low risk
+	// - **0**: low risk.
 	//
-	// - **1**: High risk
+	// - **1**: high risk.
 	//
-	// - **2**: Suspicious
+	// - **2**: suspicious.
 	//
 	// example:
 	//
@@ -110,20 +110,25 @@ type DeepfakeDetectIntlStreamResponseBodyResultObject struct {
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk labels. Multiple labels are separated by commas (,), including:
+	// The risk tags. Multiple tags are separated by commas (,). Valid values:
 	//
-	// - SuspectDeepForgery: Suspected deep forgery
+	// - SuspectDeepForgery: suspected deepfake.
 	//
-	// - SuspectPSFace: Suspected face synthesis attack
+	// - SuspectPSFace: suspected synthetic attack.
 	//
-	// - SuspectTemple: Suspected template attack
+	// - SuspectTemple: suspected template attack.
 	//
-	// - SuspectRemake: Suspected presentation attack
+	// - SuspectRemake: suspected presentation attack.
 	//
 	// example:
 	//
 	// SuspectDeepForgery
-	RiskTag       *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	// The unique identifier of the authentication request.
+	//
+	// example:
+	//
+	// hksb7ba1b28130d24e015d69********
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
 }
 

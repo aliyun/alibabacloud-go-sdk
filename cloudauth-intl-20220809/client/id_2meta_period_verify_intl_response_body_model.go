@@ -20,7 +20,7 @@ type iId2MetaPeriodVerifyIntlResponseBody interface {
 }
 
 type Id2MetaPeriodVerifyIntlResponseBody struct {
-	// The response code. For more information about response codes, see the description of response codes and messages.
+	// The return code. For more information about return codes, see Return codes and messages.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type Id2MetaPeriodVerifyIntlResponseBodyResult struct {
 	//
 	// 	- Y: Passed.
 	//
-	// 	- N: Not passed.
+	// 	- N: Failed.
 	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The description of the authentication result. For more information, see the ResultObject.SubCode error code description.
+	// The description of the authentication result. For more information, see ResultObject.SubCode error codes.
 	//
 	// example:
 	//

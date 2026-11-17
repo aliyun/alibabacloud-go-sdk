@@ -46,22 +46,31 @@ type iFaceVerifyIntlRequest interface {
 }
 
 type FaceVerifyIntlRequest struct {
-	// Required when ProductCode=FACE_IDU_MIN.
+	// Required when ProductCode is set to FACE_IDU_MIN.
 	//
-	// Specifies whether to automatically register the face to the specified face library when no duplicate face is found during retrieval. Valid values:
+	// Specifies whether to automatically register the face to the specified face library when no duplicate face is retrieved. Valid values:
 	//
-	// - 0: automatic registration.
+	// - 0: automatically register.
 	//
-	// - 1: no registration (default).
+	// - 1: do not register. This is the default value.
 	//
 	// example:
 	//
 	// 1
-	AutoRegistration   *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
-	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
-	// Required when ProductCode=FACE_IDU_MIN.
+	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
+	// Specifies whether to return additional face attribute information. Valid values:
 	//
-	// The face library codes created by the customer through the console. A maximum of 10 face libraries can be queried simultaneously. Separate multiple face library codes with commas.
+	// - N: do not return. This is the default value.
+	//
+	// - Y: return. The result is included in Result.ExtFaceInfo.FaceAttributeInfo.
+	//
+	// example:
+	//
+	// N
+	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
+	// Required when ProductCode is set to FACE_IDU_MIN.
+	//
+	// The codes of the face libraries created by the customer in the console. You can query up to 10 face libraries at the same time. Separate multiple face library codes with commas.
 	//
 	// example:
 	//
@@ -71,27 +80,27 @@ type FaceVerifyIntlRequest struct {
 	//
 	// - Y: enabled.
 	//
-	// - N: disabled (default).
+	// - N: disabled. This is the default value.
 	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// Required when ProductCode=FACE_IDU_MIN.
+	// Required when ProductCode is set to FACE_IDU_MIN.
 	//
-	// The face library for registration.
+	// The code of the face library for face registration.
 	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
-	// A custom unique business identifier used for subsequent troubleshooting. The value supports a combination of letters and numbers up to 32 characters in length. Ensure that the value is unique.
+	// The custom unique business identifier used for subsequent troubleshooting. The value must be a unique combination of up to 32 letters and digits.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35****
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+	// The custom user ID or another identifier that can identify a specific user, such as a mobile phone number or email address. Desensitize the value of this field in advance, such as by hashing the value.
 	//
 	// example:
 	//
@@ -105,25 +114,21 @@ type FaceVerifyIntlRequest struct {
 	//
 	// FACE_VERIFY_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Required when ProductCode=FACE_IDU_MIN.
+	// Required when ProductCode is set to FACE_IDU_MIN.
 	//
-	// Specifies the number of faces to return when multiple faces exist above the matching threshold. You can customize the return quantity through this parameter.
-	//
-	// - Default value: 1.
-	//
-	// - Maximum value: 5.
+	// The custom number of faces to return when multiple faces exceed the matching threshold. Default value: 1. Maximum value: 5.
 	//
 	// example:
 	//
 	// 1
 	ReturnFaces *string `json:"ReturnFaces,omitempty" xml:"ReturnFaces,omitempty"`
-	// The Base64-encoded portrait image.
+	// The Base64-encoded portrait photo.
 	//
 	// Note
 	//
-	// - If you choose this method to pass in the image, check the image size and do not pass in an excessively large image.
+	// - If you use this method to pass the portrait photo, check the photo size and do not pass oversized photos.
 	//
-	// - Specify one of the following parameters: SourceFacePicture, SourceFacePictureUrl, or SourceFacePictureFile.
+	// - Specify only one of the following parameters: SourceFacePicture, SourceFacePictureUrl, and SourceFacePictureFile.
 	//
 	// example:
 	//
@@ -135,19 +140,19 @@ type FaceVerifyIntlRequest struct {
 	//
 	// InputStream
 	SourceFacePictureFile *string `json:"SourceFacePictureFile,omitempty" xml:"SourceFacePictureFile,omitempty"`
-	// The publicly accessible HTTPS URL of the portrait image.
+	// The URL of the portrait image. The URL must be a publicly accessible HTTPS link.
 	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	// The Base64-encoded reference face image.
+	// The Base64-encoded reference photo.
 	//
 	// Note
 	//
-	// - If you choose this method to pass in the image, check the image size and do not pass in an excessively large image.
+	// - If you use this method to pass the reference photo, check the photo size and do not pass oversized photos.
 	//
-	// - Specify one of the following parameters: TargetFacePicture, TargetFacePictureUrl, or TargetFacePictureFile.
+	// - Specify only one of the following parameters: TargetFacePicture, TargetFacePictureUrl, and TargetFacePictureFile.
 	//
 	// example:
 	//
@@ -165,33 +170,37 @@ type FaceVerifyIntlRequest struct {
 	//
 	// https://***face2.jpeg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
-	// Specifies whether to overwrite the existing face with the current face during automatic registration if MerchantUserId already exists. Valid values:
+	// Specifies whether to overwrite the existing face with the current face when the MerchantUserId already exists during automatic registration. Valid values:
 	//
 	// - Y: overwrite.
 	//
 	// - N: do not overwrite and return that the UserId already exists.
+	//
+	// example:
+	//
+	// N
 	UpdateFaceIfUserExists *string `json:"UpdateFaceIfUserExists,omitempty" xml:"UpdateFaceIfUserExists,omitempty"`
-	// Required when ProductCode=FACE_IDU_MIN.
+	// Required when ProductCode is set to FACE_IDU_MIN.
 	//
 	// The verification type. Valid values:
 	//
-	// - 0: retrieval pattern.
+	// - 0: retrieval mode.
 	//
-	// > - Feature: Pass in a face library and a user face image (sourceFacePicture). The system automatically retrieves whether the specified face image (sourceFacePicture) already exists in the face library. Passive liveness detection can be enabled for the face image (sourceFacePicture).
+	// > - Feature: Passes the face library and the user face image (SourceFacePicture). The system automatically retrieves whether the specified face image (SourceFacePicture) already exists in the face library. Passive liveness detection can be enabled for the face image (SourceFacePicture).
 	//
-	// > - Recommended scenario: Real-person create an account where duplicate registration is not allowed.
+	// > - Recommended scenario: Scenarios where real persons create an account and duplicate registrations are not allowed.
 	//
-	// - 1 (default): authentication pattern.
+	// - 1: verification mode. This is the default value.
 	//
-	// > - Feature: Pass in a specified face image (sourceFacePicture) and a reference face image (TargetFacePicture). The system automatically authenticates whether the faces match. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
+	// > - Feature: Passes the specified face image (SourceFacePicture) and the reference face image (TargetFacePicture). The system automatically verifies whether the faces match. Passive liveness detection can be enabled for the specified face image (SourceFacePicture).
 	//
-	// > - Recommended scenario: Authenticating the identity of the user when modifying logon credentials or account information.
+	// > - Recommended scenario: Scenarios where you need to verify whether the operation is performed by the user in person when modifying logon or account information.
 	//
-	// - 2: comprehensive pattern.
+	// - 2: comprehensive mode.
 	//
-	// > - Feature: Pass in a face library, a specified face image (sourceFacePicture), and a reference face image (TargetFacePicture). The system automatically retrieves whether the specified face image (sourceFacePicture) exists in the face library, authenticates whether it matches the reference face, and supports enabling passive liveness detection for the specified face image (sourceFacePicture).
+	// > - Feature: Passes the face library, the specified face image (SourceFacePicture), and the reference face image (TargetFacePicture) at the same time. The system automatically retrieves whether the specified face image (SourceFacePicture) exists in the face library and whether it matches the reference face. Passive liveness detection can be enabled for the specified face image (SourceFacePicture).
 	//
-	// > - Recommended scenario: Authenticating that the user is new and is performing the operation in person.
+	// > - Recommended scenario: Scenarios where you need to verify that the user is a new user and the operation is performed in person.
 	//
 	// example:
 	//

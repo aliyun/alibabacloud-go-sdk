@@ -46,7 +46,7 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// {
 	//
-	// 	"address_rule": "Includes Adrress Hangzhou ***",
+	// 	"address_rule": "Includes Adrress Hangzhou***",
 	//
 	// 	"name_rule": "Includes Name  Zhang*",
 	//
@@ -54,7 +54,7 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// }
 	CheckRuleConfig *string `json:"CheckRuleConfig,omitempty" xml:"CheckRuleConfig,omitempty"`
-	// The Base64-encoded image. If you choose this method to submit a photo, check the photo size and do not submit an excessively large photo.
+	// The Base64-encoded image. If you choose this method to upload the photo, check the photo size and do not upload excessively large photos.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// InputStream
 	CredentialOcrPictureFile *string `json:"CredentialOcrPictureFile,omitempty" xml:"CredentialOcrPictureFile,omitempty"`
-	// The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The image URL. The URL must be an HTTP or HTTPS link accessible over the Internet.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type CredentialSubmitIntlV2Request struct {
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 01: Transaction voucher, which includes electronic bill images for utilities such as water, electricity, gas, and credit cards.
+	// - 01: transaction credential, including electronic bill images for water, electricity, gas, and credit cards
 	//
-	// - 02: Vehicle registration certificate.
+	// - 02: vehicle registration certificate
 	//
-	// - 03: Transfer transaction record.
+	// - 03: transfer transaction record
 	//
-	// - 04: Proof of address (POA).
+	// - 04: proof of address (POA)
 	//
 	// This parameter is required.
 	//
@@ -88,11 +88,11 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// 02
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// The type of the input material. Valid values:
+	// The material input type. Valid values:
 	//
-	// - IMAGE (default): image.
+	// - IMAGE: image (default)
 	//
-	// - PDF: PDF format.
+	// - PDF: PDF format
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type CredentialSubmitIntlV2Request struct {
 	FileInputType *string `json:"FileInputType,omitempty" xml:"FileInputType,omitempty"`
 	// Specifies whether to enable tampering detection. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled
 	//
-	// - false: Disabled.
+	// - false: disabled
 	//
 	// This parameter is required.
 	//
@@ -110,15 +110,13 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// true
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
+	// Specifies whether to enable quality detection. Valid values: Y: enabled, N: disabled.
 	//
 	// example:
 	//
 	// Y
 	IdQuality *string `json:"IdQuality,omitempty" xml:"IdQuality,omitempty"`
-	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string.
-	//
-	// The first few characters consist of a custom abbreviation defined by the merchant, the middle part can contain a time segment, and the last part can use a random or incremental sequence.
+	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom merchant abbreviation, the middle part can include a time period, and the latter part can be a random or incremental sequence.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +126,13 @@ type CredentialSubmitIntlV2Request struct {
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	// The extraction type. Valid values:
 	//
-	// 0101: electronic bill address and name module (extracts address and name modules through intelligent analysis).
+	// - 0101: electronic bill address and name module, which extracts the address and name module through intelligent analysis
 	//
-	// 0201:
+	// - 0201:
 	//
-	// 0301: transfer transaction amount information.
+	// - 0301: transfer transaction record amount information
 	//
-	// 0401: POA credential extraction information.
+	// - 0401: POA credential extraction information
 	//
 	// This parameter is required.
 	//
@@ -142,23 +140,23 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// 0201
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
-	// Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
+	// Specifies whether to enable translation. Valid values: 0: disabled, 1: enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrTranslation *string `json:"OcrTranslation,omitempty" xml:"OcrTranslation,omitempty"`
-	// Specifies whether to enable standardization of key fields recognized by OCR. Valid values:
+	// Specifies whether to enable standardization of key fields in OCR recognition. Valid values:
 	//
-	// - 0: Disabled (default).
+	// - 0: no (default)
 	//
-	// - 1: Enabled.
+	// - 1: yes
 	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
+	// The product solution to be integrated. Valid values: CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +164,7 @@ type CredentialSubmitIntlV2Request struct {
 	//
 	// CREDENTIAL_RECOGNITION
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The custom verification scenario ID. You can use this scenario ID to query related records in the console. The value is a combination of up to 10 letters, digits, or underscores.
+	// The custom authentication scenario ID. This ID is used to query related records in the console. The value can be up to 10 characters in length and can contain letters, digits, and underscores.
 	//
 	// This parameter is required.
 	//

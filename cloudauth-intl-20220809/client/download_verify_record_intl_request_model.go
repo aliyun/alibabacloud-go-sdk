@@ -26,7 +26,7 @@ type DownloadVerifyRecordIntlRequest struct {
 	//
 	// - INVOKE_STATISTICS
 	//
-	// - INVOKE_RECORD.
+	// - INVOKE_RECORD
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DownloadVerifyRecordIntlRequest struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The download mode. Valid values:
 	//
-	// - **async**: asynchronous
+	// - **async**: Asynchronous.
 	//
-	// - **sync**: synchronous.
+	// - **sync**: Synchronous.
 	//
 	// example:
 	//

@@ -1,3 +1,6 @@
+2026-11-17 Version: v3.22.2
+- Generated golang 2022-08-09 for Cloudauth-intl.
+
 2026-10-15 Version: v3.22.1
 - Update API Initialize: add request parameters NeedMultiFaceCheck.
 - Update API InitializeV2: add request parameters NeedMultiFaceCheck.

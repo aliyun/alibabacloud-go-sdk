@@ -24,19 +24,19 @@ type iMobile3MetaVerifyIntlRequest interface {
 type Mobile3MetaVerifyIntlRequest struct {
 	// The ID card number.
 	//
-	// - If ParamType is set to normal, enter the plaintext value.
+	// - If paramType is set to normal, enter the plaintext.
 	//
-	// - If ParamType is set to md5, enter a 32-character lowercase MD5 string.
+	// - If paramType is set to md5, enter a 32-character lowercase MD5 string.
 	//
 	// example:
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The phone number.
+	// The mobile phone number.
 	//
-	// - If ParamType is set to normal, enter the plaintext value.
+	// - If paramType is set to normal, enter the plaintext.
 	//
-	// - If ParamType is set to md5, enter a 32-character lowercase MD5 string.
+	// - If paramType is set to md5, enter a 32-character lowercase MD5 string.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type Mobile3MetaVerifyIntlRequest struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: not encrypted
+	// - normal: Unencrypted.
 	//
 	// - md5: MD5-encrypted.
 	//
@@ -52,7 +52,7 @@ type Mobile3MetaVerifyIntlRequest struct {
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The product solution code. Fixed value: MOBILE_3META.
+	// The product solution to be accessed. Set the value to MOBILE_3META.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type Mobile3MetaVerifyIntlRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The name.
 	//
-	// - If ParamType is set to normal, enter the plaintext value.
+	// - If paramType is set to normal, enter the plaintext.
 	//
-	// - If ParamType is set to md5, enter a 32-character lowercase MD5 string.
+	// - If paramType is set to md5, enter a 32-character lowercase MD5 string.
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

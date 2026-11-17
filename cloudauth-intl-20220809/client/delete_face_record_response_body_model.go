@@ -26,13 +26,13 @@ type DeleteFaceRecordResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned result.
 	//
 	// example:
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//

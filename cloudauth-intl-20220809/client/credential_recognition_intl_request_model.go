@@ -34,21 +34,21 @@ type iCredentialRecognitionIntlRequest interface {
 }
 
 type CredentialRecognitionIntlRequest struct {
-	// The field check rule configuration, in JSON string format.
+	// The field validation rule configuration. The value is a JSON string.
 	//
 	// example:
 	//
 	// {
 	//
-	// 	"address_rule": "Includes Address Hangzhou ***",
+	// 	"address_rule": "Includes Adrress Hangzhou***",
 	//
 	// 	"name_rule": "Includes Name Zhang*",
 	//
-	// 	"date_of_issue_rule": "Within 2026.05.20"
+	// 	"date_of_issue_rule": "Whthin 2026.05.20"
 	//
 	// }
 	CheckRuleConfig *string `json:"CheckRuleConfig,omitempty" xml:"CheckRuleConfig,omitempty"`
-	// The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
+	// The Base64-encoded image. If you use the IdOcrPictureBase64 parameter to pass the Base64-encoded photo, check the photo size and do not pass oversized photos.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CredentialRecognitionIntlRequest struct {
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 01: transaction credential (including electronic bill images for water, electricity, gas, credit card, and other types)
+	// - 01: transaction credentials, including electronic bills for utilities such as water, electricity, and gas, as well as credit card statements.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// 01
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// The input file type. Valid values:
+	// The material input type. Valid values:
 	//
-	// - IMAGE (default): image.
+	// - IMAGE: image. This is the default value.
 	//
 	// - PDF: PDF format.
 	//
@@ -82,9 +82,9 @@ type CredentialRecognitionIntlRequest struct {
 	FileInputType *string `json:"FileInputType,omitempty" xml:"FileInputType,omitempty"`
 	// Specifies whether to enable tampering detection. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled.
 	//
-	// - false: Disabled.
+	// - false: disabled.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +92,11 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// true
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// Specifies whether to enable quality detection. Valid values:
+	// Specifies whether to enable the quality check. Valid values:
 	//
-	// - Y: Enabled.
+	// - Y: enabled.
 	//
-	// - N: Disabled.
+	// - N: disabled.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type CredentialRecognitionIntlRequest struct {
 	IdQuality *string `json:"IdQuality,omitempty" xml:"IdQuality,omitempty"`
 	// The extraction type. Valid values:
 	//
-	// - 0101: electronic bill address and name module (extracts the address and name module through intelligent analysis)
+	// - 0101: electronic bill address and name module. The address and name are extracted through intelligent analysis.
 	//
 	// This parameter is required.
 	//
@@ -114,25 +114,25 @@ type CredentialRecognitionIntlRequest struct {
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
 	// Specifies whether to enable translation. Valid values:
 	//
-	// - 0: Disabled.
+	// - 0: disabled.
 	//
-	// - 1: Enabled.
+	// - 1: enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrTranslation *string `json:"OcrTranslation,omitempty" xml:"OcrTranslation,omitempty"`
-	// Specifies whether to enable OCR result normalization. Valid values:
+	// Specifies whether to enable OCR result standardization. Valid values:
 	//
-	// - 0: Disabled.
+	// - 0: disabled.
 	//
-	// - 1: Enabled.
+	// - 1: enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
+	// The product solution to be integrated. Valid value: CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//

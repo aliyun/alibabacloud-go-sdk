@@ -38,7 +38,7 @@ type Id2MetaVerifyIntlResponseBody struct {
 	//
 	// EFA11401-C961-5E89-A2D3-BF9883E5CC3D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The verification result.
+	// The return result.
 	Result *Id2MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -102,7 +102,7 @@ type Id2MetaVerifyIntlResponseBodyResult struct {
 	//
 	// - 2: Inconsistent.
 	//
-	// - 3: No record found.
+	// - 3: Not found.
 	//
 	// example:
 	//

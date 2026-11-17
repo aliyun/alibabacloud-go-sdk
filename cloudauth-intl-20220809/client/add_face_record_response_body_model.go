@@ -38,7 +38,7 @@ type AddFaceRecordResponseBody struct {
 	//
 	// 7A0D192A-CC0C-5DE5-A3B6-A14CF45508F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *AddFaceRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -106,7 +106,7 @@ type AddFaceRecordResponseBodyResult struct {
 	//
 	// }
 	ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-	// Indicates whether the verification is passed. Valid values:
+	// Indicates whether the authentication passed. Valid values:
 	//
 	// - Y: Passed.
 	//

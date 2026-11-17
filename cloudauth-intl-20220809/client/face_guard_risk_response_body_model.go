@@ -26,7 +26,7 @@ type FaceGuardRiskResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type FaceGuardRiskResponseBody struct {
 	//
 	// 595E387B-3F0E-5C52-BD02-8EFE63D41FD5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return result.
+	// The returned result.
 	Result *FaceGuardRiskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,9 +96,7 @@ func (s *FaceGuardRiskResponseBody) Validate() error {
 }
 
 type FaceGuardRiskResponseBodyResult struct {
-	// The device risk probability predicted by the Face Guard algorithm. A higher score indicates a higher device risk.
-	//
-	// Valid values: 0 to 100.
+	// The device risk probability predicted by the Face Guard algorithm. A higher score indicates a higher device risk. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -108,13 +106,9 @@ type FaceGuardRiskResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Empty
+	// Empty by default
 	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
-	// The device risk tags.
-	//
-	// - Multiple device risk tags are separated by commas (,), such as ROOT,VPN,HOOK.
-	//
-	// - For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
+	// The device risk tags. Multiple tags are separated by commas (,), such as ROOT,VPN,HOOK. For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
 	//
 	// example:
 	//

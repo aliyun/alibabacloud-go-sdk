@@ -38,7 +38,7 @@ type FaceLivenessV2ResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *FaceLivenessV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -100,9 +100,9 @@ type FaceLivenessV2ResponseBodyResult struct {
 	ExtFaceInfo *FaceLivenessV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
 	// Indicates whether the authentication is passed. Valid values:
 	//
-	// - Y: Passed.
+	// - Y: passed
 	//
-	// - N: Not passed.
+	// - N: failed
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type FaceLivenessV2ResponseBodyResult struct {
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique ID of the authentication request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//
@@ -176,60 +176,109 @@ func (s *FaceLivenessV2ResponseBodyResult) Validate() error {
 }
 
 type FaceLivenessV2ResponseBodyResultExtFaceInfo struct {
-	// The predicted reference age of the face. The prediction may fail and return no value.
+	// The predicted reference age of the face. If the prediction fails, no value is returned.
 	//
 	// example:
 	//
 	// 18
 	FaceAge *int64 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// The liveness detection result. Valid values: Y (attack detected) and N (Normal).
+	// The liveness detection result. Valid values: Y (attack) and N (normal).
 	//
 	// example:
 	//
 	// Y
-	FaceAttack        *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	// Detects the facial attributes of the primary face in the input image. The primary face is the one closest to the camera, with the largest facial area, and in focus. The detection result is returned as a string for downstream processing.
+	//
+	// The returned fields are defined as follows:
+	//
+	// **gender**: the gender of the primary person. A value of 1 indicates male, and 0 indicates female.
+	//
+	// **glasses**: whether the primary person is wearing glasses. A value of 1 indicates that glasses are detected, and 0 indicates that glasses are not detected.
+	//
+	// **hat**: whether the primary person is wearing a hat (including headscarves and veils). A value of 1 indicates that a hat is detected, and 0 indicates that a hat is not detected.
+	//
+	// **mask**: whether the primary person is wearing a mask. A value of 1 indicates that a mask is detected, and 0 indicates that a mask is not detected.
+	//
+	// **tattoo**: whether the primary person has visible tattoos. A value of 1 indicates that a tattoo is detected, and 0 indicates that a tattoo is not detected.
+	//
+	// **smoking**: whether the primary person is smoking. A value of 1 indicates that smoking is detected, and 0 indicates that smoking is not detected.
+	//
+	// **others**: whether other people are present besides the primary person. A value of 1 indicates that other people are detected, and 0 indicates that other people are not detected.
+	//
+	// **env**: the environment where the primary person is located, such as an office, factory, hospital, or vehicle. Valid values: office, hospital, factory, vehical, and other.
+	//
+	// **expression**: whether the primary person has an exaggerated expression (facial expressions that significantly deviate from a natural or calm state). A value of 1 indicates that an exaggerated expression is detected, and 0 indicates that an exaggerated expression is not detected.
+	//
+	// **age**: the actual age of the primary person in years.
+	//
+	// example:
+	//
+	// {
+	//
+	//         gender: 1
+	//
+	//         glasses: 0
+	//
+	//         hat: 1
+	//
+	//         mask: 1
+	//
+	//         tattoo: 0
+	//
+	//         smoking: 0
+	//
+	//         others: 1
+	//
+	//         env：office
+	//
+	//         expression：1
+	//
+	//         age：16
+	//
+	// }
 	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
-	// The predicted gender of the face image. The prediction may fail and return no value. Valid values:
+	// The predicted gender of the face in the image. If the prediction fails, no value is returned. Valid values:
 	//
-	// - M: male.
+	// - M: male
 	//
-	// - F: female.
+	// - F: female
 	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
-	// The quality score of the liveness face. Valid values: 0 to 100. A higher value indicates better quality.
+	// The liveness face quality score. Valid values: 0 to 100. A larger value indicates better quality.
 	//
 	// example:
 	//
 	// 79.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
-	// The algorithm score for illumination, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for illumination in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
 	//
 	// example:
 	//
 	// 97.43
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
-	// The algorithm score for key area occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for key area occlusion in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
 	//
 	// example:
 	//
 	// 100
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// Indicates whether facial occlusion is detected. A value of Y indicates occlusion is detected. A value of N indicates no occlusion is detected.
+	// Indicates whether the face is occluded. A value of Y indicates that the face is occluded. A value of N indicates that the face is not occluded.
 	//
 	// example:
 	//
 	// Y
 	OcclusionResult *string `json:"OcclusionResult,omitempty" xml:"OcclusionResult,omitempty"`
-	// The algorithm score for occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for occlusion in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
 	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
-	// The image sharpness score, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+	// The image sharpness score in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
 	//
 	// example:
 	//

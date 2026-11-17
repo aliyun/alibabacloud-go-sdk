@@ -38,7 +38,7 @@ type AddressVerifyIntlResponseBody struct {
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *AddressVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,19 +96,19 @@ func (s *AddressVerifyIntlResponseBody) Validate() error {
 }
 
 type AddressVerifyIntlResponseBodyResultObject struct {
-	// The address verification details.
+	// The details of the address verification.
 	//
 	// example:
 	//
 	// 0-3000
 	AddressInfo *string `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty"`
-	// The telecommunications service provider name. Valid values:
+	// The name of the carrier. Valid values:
 	//
 	// - CMCC: China Mobile
 	//
 	// - CTCC: China Telecom
 	//
-	// - CUCC: China Unicom.
+	// - CUCC: China Unicom
 	//
 	// example:
 	//
@@ -116,21 +116,21 @@ type AddressVerifyIntlResponseBodyResultObject struct {
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 	// The verification result. Valid values:
 	//
-	// - Y: The verified address is within 10 km of the residential address.
+	// - Y: Yes. The distance to the verified address is less than or equal to 10 km.
 	//
-	// - N: The verified address is more than 10 km from the residential address.
+	// - N: No. The distance to the verified address is greater than 10 km.
 	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The description of the verification result.
+	// The description of the authentication result.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique identifier of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

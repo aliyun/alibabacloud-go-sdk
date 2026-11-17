@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds a face image to a specified face library.
+// Adds a face image to a specified face group.
 //
 // @param request - AddFaceRecordRequest
 //
@@ -77,11 +77,11 @@ func (client *Client) AddFaceRecordWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Compares the similarity of two addresses.
+// Compares the similarity of addresses.
 //
 // Description:
 //
-// Compares two addresses for consistency by using address standardization.
+// Standardizes and compares two addresses to check for consistency.
 //
 // @param request - AddressCompareIntlRequest
 //
@@ -139,11 +139,11 @@ func (client *Client) AddressCompareIntlWithContext(ctx context.Context, request
 //
 // Summary:
 //
-// Verifies whether a specified address belongs to a user\\"s residential address based on telecommunications service provider capabilities, using a phone number and an address (or coordinates).
+// Verifies whether a provided address belongs to the regular residence of a user based on carrier capabilities by using a mobile phone number and an address or coordinates.
 //
 // Description:
 //
-// Verifies whether a specified address belongs to a user\\"s residential address based on telecommunications service provider capabilities, using a phone number and an address (or coordinates).
+// Verifies whether a provided address belongs to the regular residence of a user based on carrier capabilities by using a mobile phone number and an address or coordinates.
 //
 // @param request - AddressVerifyIntlRequest
 //
@@ -291,11 +291,11 @@ func (client *Client) AddressVerifyV2IntlWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Provides bank card element verification (two-element, three-element, and four-element) API operations.
+// Provides the API operation for bank card elements, including two-element, three-element, and four-element bank card information.
 //
 // Description:
 //
-// Verifies bank card elements, including two-element verification (name + bank card number), three-element verification (name + ID card number + bank card number), and four-element verification (name + ID card number + phone number + bank card number) for consistency.
+// Verifies bank card information, including two-element verification (name and bank card number), three-element verification (name, ID card number, and bank card number), and four-element verification (name, ID card number, mobile phone number, and bank card number).
 //
 // @param request - BankMetaVerifyIntlRequest
 //
@@ -373,7 +373,7 @@ func (client *Client) BankMetaVerifyIntlWithContext(ctx context.Context, request
 //
 // Summary:
 //
-// Provides server-side ID card and certificate OCR capabilities.
+// Performs OCR on ID cards and certificates through a server-side API.
 //
 // @param request - CardOcrRequest
 //
@@ -451,7 +451,7 @@ func (client *Client) CardOcrWithContext(ctx context.Context, request *CardOcrRe
 
 // Summary:
 //
-// Queries the verification result.
+// Queries the detailed results of an authentication transaction. This API operation is part of the SDK integration solution and must be used in conjunction with the client SDK. Calling this operation alone cannot complete identity verification. (Product solutions: eKYC_PRO, eKYC, eKYC_NDI, FACE_IDU, FACE_VERIFY, FACE_LIVENESS_PRO, and ID_OCR_PRO). After the client completes authentication, your server calls this operation by using the TransactionId to query Alibaba Cloud for the detailed results of the authentication. This operation only queries the results and does not trigger or perform verification.
 //
 // @param request - CheckResultRequest
 //
@@ -511,7 +511,7 @@ func (client *Client) CheckResultWithContext(ctx context.Context, request *Check
 
 // Summary:
 //
-// Authentication log query.
+// Queries the authentication log query.
 //
 // @param request - CheckVerifyLogRequest
 //
@@ -559,11 +559,11 @@ func (client *Client) CheckVerifyLogWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// Queries the credential recognition result.
+// Queries the credential recognition results.
 //
 // Description:
 //
-// After you obtain the TransactionId, you can call this operation on the server side to retrieve the corresponding authentication result.
+// After you obtain the TransactionId, you can call this operation on the server to retrieve the corresponding authentication results.
 //
 // @param request - CredentialGetResultIntlRequest
 //
@@ -607,11 +607,11 @@ func (client *Client) CredentialGetResultIntlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
+// Uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names through this API operation.
 //
 // Description:
 //
-// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
+// Uses AI technology to detect whether credential documents, such as electronic utility bills and credit card statements, are forged, and extracts key information from the documents.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -697,11 +697,11 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 
 // Summary:
 //
-// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
+// Provides an API operation to upload credential images, such as utility bills and credit card statements, and uses Qwen-VL to intelligently fetch the billing address and name.
 //
 // Description:
 //
-// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) is forged, and extracts key information from the credential.
+// Uses AI technology to detect whether credentials, such as electronic utility bills and credit card statements, are forged, and extracts key information from the credentials.
 //
 // @param request - CredentialRecognitionIntlV2Request
 //
@@ -795,7 +795,7 @@ func (client *Client) CredentialRecognitionIntlV2WithContext(ctx context.Context
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and retrieves a transactionId through this operation.
+// Initializes the credential recognition OCR process and retrieves a transaction ID.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -889,11 +889,11 @@ func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Submits a credential recognition request.
+// Submits credential recognition information.
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation. Call this operation to obtain a transactionId.
+// Initializes the credential recognition OCR operation to obtain a transactionId.
 //
 // @param request - CredentialSubmitIntlV2Request
 //
@@ -991,11 +991,11 @@ func (client *Client) CredentialSubmitIntlV2WithContext(ctx context.Context, req
 
 // Summary:
 //
-// Provides the API operation for the credential verification service. This operation uses a large language model to detect image tampering, forgery, and image quality issues in submitted credential images.
+// Detects image tampering, forgery, and quality issues in credential images by using large models for the credential verification API operation.
 //
 // Description:
 //
-// Submits credential image information, performs image quality, tampering, and forgery detection, and returns the detection results.
+// Submits credential image information to detect image quality, tampering, and forgery, and returns the detection results.
 //
 // @param request - CredentialVerifyIntlRequest
 //
@@ -1057,11 +1057,11 @@ func (client *Client) CredentialVerifyIntlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Detects deepfake risks in facial images.
+// Provides the API for the face deepfake detection service.
 //
 // Description:
 //
-// Submits a facial image and uses algorithms to detect potential deepfake risks. This operation covers risk scenarios such as AIGC-generated faces, deep forgery face swaps, template faces, and recaptured faces. It returns risk labels and confidence scores.
+// Accepts face images and uses algorithms to detect deepfake risks. Covers risk scenarios such as AIGC-generated faces, deepfake face swaps, template faces, and recaptured faces, and outputs risk tags and confidence scores.
 //
 // @param request - DeepfakeDetectIntlRequest
 //
@@ -1127,11 +1127,11 @@ func (client *Client) DeepfakeDetectIntlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// ID Verification provides face deepfake detection capabilities, which can be integrated independently through API calls.
+// Provides face deepfake detection capabilities for ID Verification, which can be integrated independently through API operations.
 //
 // Description:
 //
-// Submit a face image to detect deepfake risks through algorithms. This covers risk scenarios such as AIGC-generated faces, deep forgery face swaps, template faces, and re-captured faces, and outputs risk labels and confidence scores.
+// Detects deepfake risks in face images by using algorithms. Covers risk scenarios such as AI-generated content (AIGC) faces, deepfake face swaps, template faces, and recaptured faces, and outputs risk tags and confidence levels.
 //
 // @param request - DeepfakeDetectIntlStreamRequest
 //
@@ -1243,7 +1243,7 @@ func (client *Client) DeleteFaceGroupWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a face record.
+// Deletes face records.
 //
 // @param request - DeleteFaceRecordRequest
 //
@@ -1335,7 +1335,7 @@ func (client *Client) DeleteFaceRecordV2WithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes data related to a user authentication record.
+// Deletes data related to user authentication records.
 //
 // @param request - DeleteVerifyResultRequest
 //
@@ -1387,7 +1387,7 @@ func (client *Client) DeleteVerifyResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Provides server-side card and certificate OCR capabilities.
+// Performs server-side OCR for ID cards and certificates.
 //
 // @param request - DocOcrRequest
 //
@@ -1473,7 +1473,7 @@ func (client *Client) DocOcrWithContext(ctx context.Context, request *DocOcrRequ
 
 // Summary:
 //
-// Recognizes global identity documents through OCR.
+// Recognizes global identity documents by using OCR.
 //
 // @param request - DocOcrMaxRequest
 //
@@ -1575,7 +1575,7 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 
 // Summary:
 //
-// Recognizes identity documents worldwide through OCR.
+// Recognizes global ID documents by using OCR.
 //
 // @param request - DocOcrMaxV2Request
 //
@@ -1673,7 +1673,7 @@ func (client *Client) DocOcrMaxV2WithContext(ctx context.Context, request *DocOc
 
 // Summary:
 //
-// Provides server-side card and certificate OCR capabilities.
+// Performs server-side optical character recognition (OCR) on ID cards.
 //
 // @param request - DocOcrV2Request
 //
@@ -1763,7 +1763,7 @@ func (client *Client) DocOcrV2WithContext(ctx context.Context, request *DocOcrV2
 
 // Summary:
 //
-// Downloads verification task records.
+// Downloads a verification task.
 //
 // @param request - DownloadVerifyRecordIntlRequest
 //
@@ -1925,7 +1925,7 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 
 // Summary:
 //
-// Provides a server-side-only API for the eKYC solution.
+// Provides a server-side API for the eKYC solution.
 //
 // @param request - EkycVerifyV2Request
 //
@@ -2035,7 +2035,7 @@ func (client *Client) EkycVerifyV2WithContext(ctx context.Context, request *Ekyc
 
 // Summary:
 //
-// Uses facial recognition technology to compare and verify two input face images, returning the face comparison result and similarity score.
+// Compares and verifies two input face images by using face recognition technology, and returns the face comparison result and similarity score.
 //
 // @param request - FaceCompareRequest
 //
@@ -2105,7 +2105,7 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 
 // Summary:
 //
-// Compares two face images using face recognition technology and returns the comparison result and similarity score.
+// Compares and verifies two input face images by using face recognition technology, and returns the face comparison result and similarity score.
 //
 // @param request - FaceCompareV2Request
 //
@@ -2269,7 +2269,7 @@ func (client *Client) FaceCrossCompareIntlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Performs server-side liveness detection and face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether the user is a real person, compare the face against a retained face image for identity verification, search face libraries to determine whether the face already exists, and automatically register the face to a specified face library after successful verification.
+// Detects duplicate faces in scenarios where SDK integration is unavailable. This operation uses the API to pass face images and provides the following capabilities: verifying whether the user is a real person, comparing the face with a retained face for identity verification, searching a face library to check for existence, and automatically registering the face to a specified face library after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -2387,7 +2387,7 @@ func (client *Client) FaceDuplicationCheckIntlWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Provides the server-side API for international Face Guard.
+// Calls the server-side API of Face Guard International.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -2447,7 +2447,7 @@ func (client *Client) FaceGuardRiskWithContext(ctx context.Context, request *Fac
 
 // Summary:
 //
-// Provides the server-side API for passive liveness detection.
+// Performs server-side passive liveness detection.
 //
 // @param request - FaceLivenessRequest
 //
@@ -2529,7 +2529,7 @@ func (client *Client) FaceLivenessWithContext(ctx context.Context, request *Face
 
 // Summary:
 //
-// Detects whether a face in an image is from a real person by using the API operation. This service combines the Qwen-VL large model for in-depth forgery risk detection to determine face liveness.
+// Performs liveness detection on a pre-captured face image passed through an API operation, and uses the Qwen-VL large model to detect forgery risks and determine whether the face belongs to a real person.
 //
 // Description:
 //
@@ -2607,11 +2607,11 @@ func (client *Client) FaceLivenessV2WithContext(ctx context.Context, request *Fa
 
 // Summary:
 //
-// Performs real face detection by receiving pre-captured face images through the API operation. The algorithm primarily identifies whether a face is a screen replay or printed photo type of basic render liveness attack, and supports comparison with another face image to authenticate whether they belong to the same person.
+// Detects real faces by using pre-obtained face images passed through the API operation. The algorithm primarily identifies basic render liveness attacks such as screen recaptures and printed photos, and supports face comparison to authenticate whether two images belong to the same person.
 //
 // Description:
 //
-// Calls the FaceVerifyIntl operation to perform liveness detection on face images.
+// Calls the FaceVerifyIntl API operation to perform liveness detection on face images.
 //
 // @param request - FaceVerifyIntlRequest
 //
@@ -2779,7 +2779,7 @@ func (client *Client) FraudResultCallBackWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Verifies the validity period of an identity document as a two-factor authentication element.
+// Verifies the validity period of the two identity elements.
 //
 // @param request - Id2MetaPeriodVerifyIntlRequest
 //
@@ -2855,7 +2855,7 @@ func (client *Client) Id2MetaPeriodVerifyIntlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Verifies the authenticity and consistency of a name and ID card number against an authoritative data source.
+// Verifies the authenticity and consistency of a name and an ID card number through an authoritative data source.
 //
 // @param request - Id2MetaVerifyIntlRequest
 //
@@ -2911,7 +2911,7 @@ func (client *Client) Id2MetaVerifyIntlWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Verifies the identity of an Indonesian user by calling the authoritative source API in a standalone business scenario.
+// Verifies the identity of Indonesian users by directly calling the authoritative source API in independent business scenarios.
 //
 // @param request - IdnAuthorityVerifyIntlRequest
 //
@@ -3005,7 +3005,7 @@ func (client *Client) IdnAuthorityVerifyIntlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Initializes an authentication process.
+// Initializes the authentication process.
 //
 // @param tmpReq - InitializeRequest
 //
@@ -3136,6 +3136,10 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 
 	if !dara.IsNil(request.IdThreshold) {
 		query["IdThreshold"] = request.IdThreshold
+	}
+
+	if !dara.IsNil(request.IsForceFaceCentered) {
+		query["IsForceFaceCentered"] = request.IsForceFaceCentered
 	}
 
 	if !dara.IsNil(request.LanguageConfig) {
@@ -3293,7 +3297,7 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 
 // Summary:
 //
-// Initializes an authentication session.
+// Creates an authentication session for SDK integration. This operation must be used in conjunction with a client SDK and cannot complete identity verification if called independently. Supported product editions include eKYC_PRO, eKYC, eKYC_NDI, FACE_IDU, FACE_VERIFY, FACE_LIVENESS_PRO, and ID_OCR_PRO. Before the client initiates authentication, your server calls this operation to create an authentication session and returns a TransactionId. You must deliver this TransactionId to the client to launch the SDK and complete the authentication. This operation only creates the session and does not perform verification.
 //
 // @param tmpReq - InitializeV2Request
 //
@@ -3428,6 +3432,10 @@ func (client *Client) InitializeV2WithContext(ctx context.Context, tmpReq *Initi
 
 	if !dara.IsNil(request.IdThreshold) {
 		query["IdThreshold"] = request.IdThreshold
+	}
+
+	if !dara.IsNil(request.IsForceFaceCentered) {
+		query["IsForceFaceCentered"] = request.IsForceFaceCentered
 	}
 
 	if !dara.IsNil(request.LanguageConfig) {
@@ -3589,11 +3597,11 @@ func (client *Client) InitializeV2WithContext(ctx context.Context, tmpReq *Initi
 
 // Summary:
 //
-// Verifies the identity of a phone number owner by using two-factor authentication.
+// Verifies the mobile phone number and name.
 //
 // Description:
 //
-// Pass in a phone number and name to verify their authenticity and consistency through an authoritative data source. Before using this operation, make sure that you fully understand the billing method and pricing of the two-factor phone number verification service.
+// Verifies the authenticity and consistency of a mobile phone number and name against authoritative data sources. Before using this API operation, make sure that you fully understand the billing method and pricing of the mobile phone number and name verification service.
 //
 // @param request - Mobile2MetaVerifyIntlRequest
 //
@@ -3649,7 +3657,7 @@ func (client *Client) Mobile2MetaVerifyIntlWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Verifies the authenticity and consistency of a phone number, name, and ID card number against an authoritative data source. If the information is inconsistent, returns the reason for the inconsistency.
+// Verifies the authenticity and consistency of a mobile phone number, name, and ID card number through authoritative data sources, and returns the cause of inconsistency if they do not match.
 //
 // @param request - Mobile3MetaVerifyIntlRequest
 //
@@ -3709,7 +3717,7 @@ func (client *Client) Mobile3MetaVerifyIntlWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies a face library.
+// Updates a face library.
 //
 // @param request - ModifyFaceGroupRequest
 //
@@ -3761,7 +3769,7 @@ func (client *Client) ModifyFaceGroupWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Edits a face record.
+// Modifies a face record.
 //
 // @param request - ModifyFaceRecordRequest
 //
@@ -3989,7 +3997,7 @@ func (client *Client) TempAccessTokenIntlWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a temporary URL for a file.
+// Retrieves the temporary URL of a file.
 //
 // @param request - TempOssUrlIntlRequest
 //

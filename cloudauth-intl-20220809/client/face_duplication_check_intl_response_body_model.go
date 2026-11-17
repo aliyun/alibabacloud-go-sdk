@@ -20,13 +20,13 @@ type iFaceDuplicationCheckIntlResponseBody interface {
 }
 
 type FaceDuplicationCheckIntlResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type FaceDuplicationCheckIntlResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response result.
+	// The return result.
 	Result *FaceDuplicationCheckIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *FaceDuplicationCheckIntlResponseBody) Validate() error {
 }
 
 type FaceDuplicationCheckIntlResponseBodyResult struct {
-	// The face ID and UserID retrieved from the face library when a duplicate face is detected.
+	// The face ID and user ID retrieved from the face library when a duplicate face is detected.
 	//
 	// example:
 	//
@@ -114,53 +114,53 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// ]
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
-	// The related result information.
+	// The extended face information.
 	ExtFaceInfo *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The predicted reference age of the face. The prediction may fail and the value may not be returned.
+	// The predicted reference age of the face. This parameter may not be returned if the prediction fails.
 	//
 	// example:
 	//
 	// 30
 	FaceAge *string `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether the captured face involves a liveness attack. Valid values: Y (attack detected) and N (no attack detected). This field is returned only when passive liveness detection is enabled.
+	// Specifies whether the collected face involves a liveness attack. Valid values: Y (attack) and N (no attack). This parameter is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a liveness attack on the face. The value ranges from 0 to 100. This field is returned only when passive liveness detection is enabled.
+	// The probability of a liveness attack detected by passive liveness detection. Valid values: 0 to 100. This parameter is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *string `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// The 1:1 comparison score returned when the verification mode is 1 or 2. The score ranges from 0 to 100.
+	// The 1:1 verification comparison score returned when the verification mode is 1 or 2. The score ranges from 0 to 100.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *string `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face image. The prediction may fail and the value may not be returned. Valid values:
+	// The predicted gender of the face image. This parameter may not be returned if the prediction fails. Valid values:
 	//
-	// - M: male.
+	// - M: Male.
 	//
-	// - F: female.
+	// - F: Female.
 	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
-	// The final verification result. Valid values:
+	// The final authentication result. Valid values:
 	//
-	// - Y: passed.
+	// - Y: Passed.
 	//
-	// - N: not passed.
+	// - N: Failed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The corresponding FACEID returned only when the customer has enabled automatic registration and the face is successfully registered.
+	// The face ID returned only when automatic registration is configured by the customer and the face is successfully registered.
 	//
 	// example:
 	//
@@ -168,21 +168,21 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	FaceRegistrationId *string `json:"FaceRegistrationId,omitempty" xml:"FaceRegistrationId,omitempty"`
 	// The face registration result. Valid values:
 	//
-	// - 0: failed.
+	// - 0: Failed.
 	//
-	// - 1: succeeded.
+	// - 1: Succeeded.
 	//
 	// example:
 	//
 	// 0
 	FaceRegistrationResult *int32 `json:"FaceRegistrationResult,omitempty" xml:"FaceRegistrationResult,omitempty"`
-	// The verification result description. For more information, refer to the ResultObject.SubCode error code description.
+	// The description of the authentication result. For more information, see the ResultObject.SubCode error code description.
 	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// The unique identifier of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//
@@ -316,6 +316,11 @@ func (s *FaceDuplicationCheckIntlResponseBodyResult) Validate() error {
 }
 
 type FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo struct {
+	// The attribute detection result of the main face, returned as a string. The result includes information such as gender, glasses, hat, mask, tattoo, smoking, other people, environment, expression, and age.
+	//
+	// example:
+	//
+	// {"gender":1,"glasses":0,"hat":1,"mask":1,"tattoo":0,"smoking":0,"others":1,"env":"office","expression":1,"age":16}
 	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
 	// The overall quality score.
 	//
@@ -346,12 +351,37 @@ type FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo struct {
 	// example:
 	//
 	// 86.47
-	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
-	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	// The overall quality score of the retained face image. Valid values: 0 to 100. A higher score indicates better quality.
+	//
+	// example:
+	//
+	// 39.04
+	TargetFaceQualityScore *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	// The illumination score of the retained face image. Valid values: 0 to 100. A higher score indicates better quality.
+	//
+	// example:
+	//
+	// 0.02
 	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
-	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
-	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
-	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
+	// The key area occlusion score of the retained face image. Valid values: 0 to 100. A higher score indicates better quality.
+	//
+	// example:
+	//
+	// 20
+	TargetKaOcclusionScore *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	// The occlusion score of the retained face image. Valid values: 0 to 100. A higher score indicates better quality.
+	//
+	// example:
+	//
+	// 50.26
+	TargetOcclusionScore *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	// The sharpness score of the retained face image. Valid values: 0 to 100. A higher score indicates better quality.
+	//
+	// example:
+	//
+	// 86.47
+	TargetSharpnessScore *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) String() string {

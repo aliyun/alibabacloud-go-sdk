@@ -44,15 +44,15 @@ type QueryFaceGroupResponseBody struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of returned entries.
+	// The list of returned items.
 	Items []*QueryFaceGroupResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries per page in a paged query.
+	// The number of entries per page during paging.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//

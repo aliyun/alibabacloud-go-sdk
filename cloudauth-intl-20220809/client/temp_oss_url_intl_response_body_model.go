@@ -28,7 +28,7 @@ type TempOssUrlIntlResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result.
 	Data *TempOssUrlIntlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//

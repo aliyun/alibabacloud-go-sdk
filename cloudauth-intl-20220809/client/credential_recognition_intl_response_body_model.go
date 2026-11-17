@@ -96,7 +96,7 @@ func (s *CredentialRecognitionIntlResponseBody) Validate() error {
 }
 
 type CredentialRecognitionIntlResponseBodyResult struct {
-	// The recognized key information, in JSON format.
+	// The recognized key information in JSON format.
 	//
 	// example:
 	//
@@ -116,9 +116,9 @@ type CredentialRecognitionIntlResponseBodyResult struct {
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	// The extraction result. Valid values:
 	//
-	// - S: Succeeded.
+	// - S: success.
 	//
-	// - F: Failed.
+	// - F: failure.
 	//
 	// example:
 	//

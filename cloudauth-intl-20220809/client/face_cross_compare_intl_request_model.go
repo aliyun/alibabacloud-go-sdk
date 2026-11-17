@@ -36,21 +36,21 @@ type iFaceCrossCompareIntlRequest interface {
 type FaceCrossCompareIntlRequest struct {
 	// The comparison mode. Valid values:
 	//
-	// - 0: chain comparison (default). A:B and B:C.
+	// - 0: chained comparison (default). A to B and B to C.
 	//
-	// - 1: circular comparison. A:B, B:C, and C:A.
+	// - 1: circular comparison. A to B, B to C, and C to A.
 	//
 	// example:
 	//
 	// 0
 	CompareModel *string `json:"CompareModel,omitempty" xml:"CompareModel,omitempty"`
-	// The face matching threshold. This parameter is reserved by the system and does not support custom values.
+	// The face matching threshold. This parameter is reserved for the system and does not support custom values.
 	//
 	// example:
 	//
 	// -
 	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
-	// The custom unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits with a length of 32 characters. Ensure that the value is unique.
+	// The custom unique business identifier used for subsequent troubleshooting. It supports a combination of up to 32 letters and digits. Make sure that the value is unique.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type FaceCrossCompareIntlRequest struct {
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35****
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The product solution to use. Valid values:
+	// The product solution to integrate. Valid values:
 	//
 	// FACE_CROSS_COMPARE.
 	//
@@ -74,37 +74,37 @@ type FaceCrossCompareIntlRequest struct {
 	//
 	// 1234567890
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// The Base64-encoded face photo.
+	// The Base64-encoded facial photo.
 	//
 	// example:
 	//
 	// base64
 	SourceAFacePicture *string `json:"SourceAFacePicture,omitempty" xml:"SourceAFacePicture,omitempty"`
-	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://www.xxx.com/1.jpg
 	SourceAFacePictureUrl *string `json:"SourceAFacePictureUrl,omitempty" xml:"SourceAFacePictureUrl,omitempty"`
-	// The Base64-encoded face photo.
+	// The Base64-encoded facial photo.
 	//
 	// example:
 	//
 	// base64
 	SourceBFacePicture *string `json:"SourceBFacePicture,omitempty" xml:"SourceBFacePicture,omitempty"`
-	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://www.xxx.com/1.jpg
 	SourceBFacePictureUrl *string `json:"SourceBFacePictureUrl,omitempty" xml:"SourceBFacePictureUrl,omitempty"`
-	// The Base64-encoded face photo.
+	// The Base64-encoded facial photo.
 	//
 	// example:
 	//
 	// base64
 	SourceCFacePicture *string `json:"SourceCFacePicture,omitempty" xml:"SourceCFacePicture,omitempty"`
-	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//

@@ -30,27 +30,27 @@ type CheckResultRequest struct {
 	ExtraImageControlList *string `json:"ExtraImageControlList,omitempty" xml:"ExtraImageControlList,omitempty"`
 	// Specifies whether to return images. Valid values:
 	//
-	// - Y: Return images.
+	// - Y: Returns images.
 	//
-	// - N: Do not return images.
+	// - N: Does not return images.
 	//
 	// example:
 	//
 	// N
 	IsReturnImage *string `json:"IsReturnImage,omitempty" xml:"IsReturnImage,omitempty"`
-	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+	// The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the identifier is unique.
 	//
 	// example:
 	//
 	// djs20d***9-dsskc
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Specifies whether to return the anti-spoofing detection result.
+	// Specifies whether to return the anti-spoofing detection results.
 	//
 	// example:
 	//
 	// Y
 	ReturnFiveCategorySpoofResult *string `json:"ReturnFiveCategorySpoofResult,omitempty" xml:"ReturnFiveCategorySpoofResult,omitempty"`
-	// The verification ID.
+	// The authentication ID.
 	//
 	// example:
 	//

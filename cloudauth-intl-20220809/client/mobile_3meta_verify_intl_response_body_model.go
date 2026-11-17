@@ -38,7 +38,7 @@ type Mobile3MetaVerifyIntlResponseBody struct {
 	//
 	// D241532C-4EE9-5A2A-A5A5-C1FD98CE2EDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The verification result.
+	// The return result.
 	Result *Mobile3MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -108,11 +108,11 @@ type Mobile3MetaVerifyIntlResponseBodyResult struct {
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The carrier name. Valid values:
+	// The name of the Internet service provider (ISP). Valid values:
 	//
-	// - CMCC: China Mobile
+	// - CMCC: China Mobile.
 	//
-	// - CUCC: China Unicom
+	// - CUCC: China Unicom.
 	//
 	// - CTCC: China Telecom.
 	//
@@ -124,13 +124,13 @@ type Mobile3MetaVerifyIntlResponseBodyResult struct {
 	//
 	// - 101: Verification passed.
 	//
-	// - 201: The phone number is inconsistent with the name, and the phone number is inconsistent with the ID card number.
+	// - 201: The mobile phone number does not match the name or the ID card number.
 	//
-	// - 202: The phone number is consistent with the name, but the phone number is inconsistent with the ID card number.
+	// - 202: The mobile phone number matches the name but does not match the ID card number.
 	//
-	// - 203: The phone number is consistent with the ID card number, but the phone number is inconsistent with the name.
+	// - 203: The mobile phone number matches the ID card number but does not match the name.
 	//
-	// - 204: Other inconsistency.
+	// - 204: Other inconsistencies.
 	//
 	// - 301: No record found.
 	//

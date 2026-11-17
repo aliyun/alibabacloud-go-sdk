@@ -38,7 +38,7 @@ type FaceCrossCompareIntlResponseBody struct {
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The return result.
 	Result *FaceCrossCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,19 +96,19 @@ func (s *FaceCrossCompareIntlResponseBody) Validate() error {
 }
 
 type FaceCrossCompareIntlResponseBodyResult struct {
-	// The comparison score between A and B. Value range: 0 to 1.
+	// The comparison score between A and B. Valid values: 0 to 1.
 	//
 	// example:
 	//
 	// 0.9999999999999999
 	FaceComparisonScoreA2B *float64 `json:"FaceComparisonScoreA2B,omitempty" xml:"FaceComparisonScoreA2B,omitempty"`
-	// The comparison score between B and C. Value range: 0 to 1.
+	// The comparison score between B and C. Valid values: 0 to 1.
 	//
 	// example:
 	//
 	// 0.9999999999999999
 	FaceComparisonScoreB2C *float64 `json:"FaceComparisonScoreB2C,omitempty" xml:"FaceComparisonScoreB2C,omitempty"`
-	// The comparison score between C and A. Value range: 0 to 1.
+	// The comparison score between C and A. Valid values: 0 to 1.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type FaceCrossCompareIntlResponseBodyResult struct {
 	//
 	// - Y: Passed.
 	//
-	// - N: Not passed.
+	// - N: Failed.
 	//
 	// example:
 	//

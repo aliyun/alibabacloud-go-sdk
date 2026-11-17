@@ -26,7 +26,7 @@ type ModifyFaceGroupResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The return result.
 	//
 	// example:
 	//

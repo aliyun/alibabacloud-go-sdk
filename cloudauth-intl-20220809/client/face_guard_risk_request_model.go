@@ -34,19 +34,24 @@ type FaceGuardRiskRequest struct {
 	//
 	// Tk9SSUQuMS*****************ZDNmNWY5NzQxOW1o
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Ensure that the value is unique.
+	// The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits and can be up to 32 characters in length. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// 0c83ce0101d34eff886b1f7d1cdef67f
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The product code. Set the value to FACE_GUARD.
+	// The product code. Valid values: FACE_GUARD and FACE_GUARD_PRO.
 	//
 	// example:
 	//
-	// FACE_GUARD
+	// FACE_GUARD_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the risk scenario detected by Device Assistant.
+	//
+	// example:
+	//
+	// Face
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s FaceGuardRiskRequest) String() string {

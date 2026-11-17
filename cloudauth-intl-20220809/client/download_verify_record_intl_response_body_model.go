@@ -96,7 +96,7 @@ func (s *DownloadVerifyRecordIntlResponseBody) Validate() error {
 }
 
 type DownloadVerifyRecordIntlResponseBodyData struct {
-	// The task ID. This parameter is returned in asynchronous mode. Use QueryDownloadTaskIntl to download the exported file.
+	// The task ID. This parameter is returned in asynchronous mode. You can subsequently call QueryDownloadTaskIntl to download the exported file.
 	//
 	// example:
 	//
