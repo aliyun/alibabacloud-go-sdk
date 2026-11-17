@@ -20,11 +20,11 @@ type iDescribeRouteEntryListResponseBody interface {
 }
 
 type DescribeRouteEntryListResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent request exists.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -37,7 +37,12 @@ type DescribeRouteEntryListResponseBody struct {
 	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntrys *DescribeRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Struct"`
-	TotalCount  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRouteEntryListResponseBody) String() string {

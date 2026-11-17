@@ -23,13 +23,13 @@ type iDescribeBgpNetworksResponseBody interface {
 
 type DescribeBgpNetworksResponseBody struct {
 	BgpNetworks *DescribeBgpNetworksResponseBodyBgpNetworks `json:"BgpNetworks,omitempty" xml:"BgpNetworks,omitempty" type:"Struct"`
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries to return on each page during paging.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeBgpNetworksResponseBody struct {
 	//
 	// 6F513A15-669F-419D-B511-08A85292059B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of advertised Border Gateway Protocol (BGP) networks.
+	// The total number of announced Border Gateway Protocol (BGP) networks.
 	//
 	// example:
 	//

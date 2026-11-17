@@ -50,93 +50,93 @@ type iModifyVpnGatewayAttributeResponseBody interface {
 }
 
 type ModifyVpnGatewayAttributeResponseBody struct {
-	// Indicates whether routing automatic propagation is enabled for BGP routes to the VPC. Valid values:
+	// Specifies whether BGP routes are automatically propagated to the VPC. Valid values:
 	//
-	// - **true**: automatic propagation is enabled.
+	// - **true**: automatically propagated
 	//
-	// - **false**: automatic propagation is not enabled.
+	// - **false**: not automatically propagated
 	//
 	// example:
 	//
 	// true
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
-	// The payment status of the VPN gateway instance. Valid values:
+	// The billing status of the VPN gateway instance. Valid values:
 	//
-	// - **Normal**: Normal.
+	// - **Normal**: normal
 	//
-	// - **FinancialLocked**: locked due to overdue payment.
+	// - **FinancialLocked**: locked due to overdue payments
 	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The timestamp when the VPN gateway instance was created. Unit: milliseconds.
+	// The timestamp when the VPN gateway was created. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format. It indicates the total number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1492753580000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the VPN gateway instance.
+	// The description of the VPN gateway.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The second IP address assigned by the system to the VPN gateway instance for creating IPsec-VPN connections.
+	// The second IP address assigned by the system to the VPN gateway for creating an IPsec-VPN connection.
 	//
-	// This parameter is returned only for VPN gateway instances that support creating dual-tunnel IPsec-VPN connections.
+	// This parameter is returned only for VPN gateways that support dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
 	// 116.11.XX.XX
 	DisasterRecoveryInternetIp *string `json:"DisasterRecoveryInternetIp,omitempty" xml:"DisasterRecoveryInternetIp,omitempty"`
-	// The ID of the second vSwitch associated with the VPN gateway instance.
+	// The ID of the second vSwitch associated with the VPN gateway.
 	//
-	// This parameter is returned only for VPN gateway instances that support creating dual-tunnel IPsec-VPN connections.
+	// This parameter is returned only for VPN gateways that support dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
 	// vsw-p0w95ql6tmr2ludkt****
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
-	// The enabling status of the BGP feature for the VPN gateway. Valid values:
+	// Specifies whether the BGP feature is enabled for the VPN gateway. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: enabled
 	//
-	// - **false**: not enabled.
+	// - **false**: disabled
 	//
 	// example:
 	//
 	// true
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
-	// The timestamp when the VPN gateway instance expires. Unit: milliseconds.
+	// The UNIX timestamp of when the VPN gateway instance expires. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp follows the UNIX time format. It indicates the total number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC until the VPN gateway instance expires.
 	//
 	// example:
 	//
 	// 1495382400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// - If the VPN gateway instance supports creating single-tunnel IPsec-VPN connections, this address is the IP address of the VPN gateway instance and can be used to create IPsec-VPN connections or SSL-VPN connections.
+	// - If the VPN gateway supports single-tunnel IPsec-VPN connections, this parameter indicates the IP address of the VPN gateway, which can be used to create an IPsec-VPN connection or an SSL-VPN connection.
 	//
-	// - If the VPN gateway instance supports creating dual-tunnel IPsec-VPN connections, this address is the first IP address used to create IPsec-VPN connections and cannot be used to create SSL-VPN connections.
+	// - If the VPN gateway supports dual-tunnel IPsec-VPN connections, this parameter indicates the first IP address used to create an IPsec-VPN connection. It cannot be used to create an SSL-VPN connection.
 	//
-	//     If the VPN gateway instance supports creating dual-tunnel IPsec-VPN connections, the system assigns two IPsec IP addresses to the VPN gateway instance for creating dual-tunnel IPsec-VPN connections.
+	//     If the VPN gateway supports dual-tunnel IPsec-VPN connections, the system assigns two IPsec addresses to the VPN gateway for creating dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
 	// 116.62.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the vSwitch occupied by the system when deploying the VPN gateway instance.
+	// The private IP address of the vSwitch that is occupied when the system deploys the VPN gateway.
 	//
-	// This parameter is returned only for VPN gateway instances that support single-tunnel IPsec-VPN connections and have the IPsec-VPN feature enabled.
+	// This parameter is returned only for VPN gateways that support only single-tunnel IPsec-VPN connections and have the IPsec-VPN feature enabled.
 	//
 	// example:
 	//
 	// 172.16.10.46
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The name of the VPN gateway instance.
+	// The name of the VPN gateway.
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B457
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the VPN gateway instance belongs.
+	// The ID of the resource group to which the VPN gateway belongs.
 	//
-	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The bandwidth specification of the VPN gateway instance. Unit: Mbit/s.
+	// The bandwidth specification of the VPN gateway. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The IP address of the SSL-VPN connection.
 	//
-	// This parameter is returned only when the SSL-VPN feature is enabled for a VPN gateway instance that supports creating dual-tunnel IPsec-VPN connections and uses the public network type.
+	// This parameter is returned only after the SSL-VPN feature is enabled for a VPN gateway instance of the public network type that supports dual-tunnel IPsec-VPN connections.
 	//
 	// example:
 	//
@@ -172,33 +172,33 @@ type ModifyVpnGatewayAttributeResponseBody struct {
 	SslVpnInternetIp *string `json:"SslVpnInternetIp,omitempty" xml:"SslVpnInternetIp,omitempty"`
 	// The status of the VPN gateway. Valid values:
 	//
-	// - **init**: initializing.
+	// - **init**: initializing
 	//
-	// - **provisioning**: preparing.
+	// - **provisioning**: preparing
 	//
-	// - **active**: Normal.
+	// - **active**: active
 	//
-	// - **updating**: updating.
+	// - **updating**: updating
 	//
-	// - **deleting**: deleting.
+	// - **deleting**: deleting
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch associated with the VPN gateway instance.
+	// The ID of the vSwitch associated with the VPN gateway.
 	//
 	// example:
 	//
 	// vsw-bp1y9ovl1cu9ou4tv****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the VPN gateway instance belongs.
+	// The ID of the VPC to which the VPN gateway belongs.
 	//
 	// example:
 	//
 	// vpc-bp1ub1yt9cvakoel****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the VPN gateway instance.
+	// The ID of the VPN gateway.
 	//
 	// example:
 	//

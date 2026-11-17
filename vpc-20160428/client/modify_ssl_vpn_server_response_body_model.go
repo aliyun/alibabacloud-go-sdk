@@ -76,7 +76,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 0
 	Connections *int32 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The time when the SSL-VPN server was created.
+	// The creation time of the SSL server.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type ModifySslVpnServerResponseBody struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether two-factor authentication is enabled.
 	//
-	// - **true**: enabled.
+	// - **true**: Enabled.
 	//
-	// - **false*	- (default): not enabled.
+	// - **false*	- (default): Disabled.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// app_my6g4qmvnwxzj2f****
 	IDaaSApplicationId *string `json:"IDaaSApplicationId,omitempty" xml:"IDaaSApplicationId,omitempty"`
-	// The instance ID of the IDaaS EIAM instance.
+	// The instance ID of the IDaaS EIAM.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type ModifySslVpnServerResponseBody struct {
 	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
 	// The version of the IDaaS EIAM instance.
 	//
-	// - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The value is **EIAM 2.0**.
+	// - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. Valid value: **EIAM 2.0**.
 	//
-	// - If the SSL server is bound to an IDaaS EIAM 1.0 instance, this parameter is not returned.
+	// - This parameter is not returned if the SSL server is bound to an IDaaS EIAM 1.0 instance.
 	//
 	// example:
 	//
@@ -132,25 +132,25 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 5
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The name of the SSL-VPN server.
+	// The name of the SSL server.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port of the SSL-VPN server.
+	// The port of the SSL server.
 	//
 	// example:
 	//
 	// 1194
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol used by the SSL-VPN server.
+	// The protocol used by the SSL server.
 	//
 	// example:
 	//
 	// UDP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The region ID of the SSL-VPN server.
+	// The region ID of the SSL server.
 	//
 	// example:
 	//
@@ -162,15 +162,15 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// DF11D6F6-E35A-41C3-9B20-6FC8A901FE65
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the SSL-VPN server belongs.
+	// The ID of the resource group to which the SSL server belongs.
 	//
-	// The SSL-VPN server belongs to the same resource group as the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+	// The SSL server belongs to the same resource group as its associated VPN gateway. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the SSL-VPN server.
+	// The ID of the SSL server.
 	//
 	// example:
 	//

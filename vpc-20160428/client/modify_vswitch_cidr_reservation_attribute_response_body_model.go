@@ -14,7 +14,7 @@ type iModifyVSwitchCidrReservationAttributeResponseBody interface {
 }
 
 type ModifyVSwitchCidrReservationAttributeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

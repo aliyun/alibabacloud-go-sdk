@@ -30,17 +30,17 @@ type DescribeExpressConnectTrafficQosResponseBody struct {
 	//
 	// 1
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The number of entries per page for paginated queries. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - Leave this parameter empty for the first query or if no subsequent query is required.
+	// - Leave empty for the first query or when no next query is required.
 	//
-	// - If a next query is to be sent, set the value to the **NextToken*	- value returned in the previous API call.
+	// - If a next query is required, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type DescribeExpressConnectTrafficQosResponseBodyQosList struct {
 	Progressing *int32 `json:"Progressing,omitempty" xml:"Progressing,omitempty"`
 	// The description of the QoS policy.
 	//
-	// The description is **0*	- to **256*	- characters in length and cannot start with `http://` or `https://`.
+	// The description must be **0*	- to **256*	- characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-test
 	QosDescription *string `json:"QosDescription,omitempty" xml:"QosDescription,omitempty"`
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type DescribeExpressConnectTrafficQosResponseBodyQosList struct {
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The name of the QoS policy.
 	//
-	// The name is **0*	- to **128*	- characters in length and cannot start with `http://` or `https://`.
+	// The name must be **0*	- to **128*	- characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeExpressConnectTrafficQosResponseBodyQosList struct {
 	QosName *string `json:"QosName,omitempty" xml:"QosName,omitempty"`
 	// The list of QoS queues.
 	QueueList []*DescribeExpressConnectTrafficQosResponseBodyQosListQueueList `json:"QueueList,omitempty" xml:"QueueList,omitempty" type:"Repeated"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -178,11 +178,11 @@ type DescribeExpressConnectTrafficQosResponseBodyQosList struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the QoS policy. Valid values:
 	//
-	// - **Normal**: available.
+	// - **Normal**: The QoS policy is available.
 	//
-	// - **Configuring**: being configured.
+	// - **Configuring**: The QoS policy is being configured.
 	//
-	// > A QoS policy in the Configuring state restricts most create, update, and delete operations on QoS policies, QoS queues, and QoS rules.
+	// > When a QoS policy is in the Configuring state, most creation, update, and deletion operations for QoS policies, QoS queues, and QoS rules are restricted.
 	//
 	// example:
 	//
@@ -327,17 +327,17 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList s
 	InstanceProgressing *int32 `json:"InstanceProgressing,omitempty" xml:"InstanceProgressing,omitempty"`
 	// The status of the associated instance. Valid values:
 	//
-	// - **Normal**: available.
+	// - **Normal**: The instance is available.
 	//
-	// - **Configuring**: being configured.
+	// - **Configuring**: The instance is being configured.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The instance is being deleted.
 	//
 	// example:
 	//
 	// Normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The type of the associated instance. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
+	// The type of the associated instance. Valid value: **PHYSICALCONNECTION*	- (Express Connect circuit).
 	//
 	// example:
 	//
@@ -398,13 +398,13 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListQueueList struct {
 	//
 	// 	- When the QoS queue type is **Medium**, this parameter is required. Valid values: **1*	- to **100**.
 	//
-	// 	- When the QoS queue type is **Default**, this parameter is set to "-".
+	// 	- When the QoS queue type is **Default**, the value of this parameter is "-".
 	//
 	// example:
 	//
 	// 100
 	BandwidthPercent *string `json:"BandwidthPercent,omitempty" xml:"BandwidthPercent,omitempty"`
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	//
 	// example:
 	//
@@ -412,13 +412,13 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListQueueList struct {
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
 	// The description of the QoS queue.
 	//
-	// The description is **0*	- to **256*	- characters in length and cannot start with `http://` or `https://`.
+	// The description must be **0*	- to **256*	- characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-queue-test
 	QueueDescription *string `json:"QueueDescription,omitempty" xml:"QueueDescription,omitempty"`
-	// The QoS queue ID.
+	// The ID of the QoS queue.
 	//
 	// example:
 	//
@@ -426,21 +426,21 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListQueueList struct {
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The name of the QoS queue.
 	//
-	// The name is **0*	- to **128*	- characters in length and cannot start with `http://` or `https://`.
+	// The name must be **0*	- to **128*	- characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-queue-test
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The QoS queue type. Valid values:
+	// The type of the QoS queue. Valid values:
 	//
-	// - **High**: high-priority queue.
+	// - **High**: High-priority queue.
 	//
-	// - **Medium**: medium-priority queue.
+	// - **Medium**: Medium-priority queue.
 	//
-	// - **Default**: default-priority queue.
+	// - **Default**: Default-priority queue.
 	//
-	// > The default-priority queue cannot be created.
+	// > You cannot create a default-priority queue.
 	//
 	// example:
 	//
@@ -448,11 +448,11 @@ type DescribeExpressConnectTrafficQosResponseBodyQosListQueueList struct {
 	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The status of the QoS queue. Valid values:
 	//
-	// - **Normal**: available.
+	// - **Normal**: The queue is available.
 	//
-	// - **Configuring**: being configured.
+	// - **Configuring**: The queue is being configured.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The queue is being deleted.
 	//
 	// example:
 	//

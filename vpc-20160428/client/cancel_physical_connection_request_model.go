@@ -28,7 +28,7 @@ type iCancelPhysicalConnectionRequest interface {
 type CancelPhysicalConnectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// You can generate the value of this parameter on the client. Make sure that the value is unique across different requests and contains a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type CancelPhysicalConnectionRequest struct {
 	//
 	// pc-119mfjzm7****
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The region ID of the Express Connect circuit.
+	// The ID of the region where the Express Connect circuit is located.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iCreateExpressConnectTrafficQosResponseBody interface {
 }
 
 type CreateExpressConnectTrafficQosResponseBody struct {
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	//
 	// example:
 	//

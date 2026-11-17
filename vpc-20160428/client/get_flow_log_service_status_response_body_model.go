@@ -16,11 +16,11 @@ type iGetFlowLogServiceStatusResponseBody interface {
 }
 
 type GetFlowLogServiceStatusResponseBody struct {
-	// Indicates whether the flow log service is activated. Valid values:
+	// Indicates whether the flow log feature is activated. Valid values:
 	//
-	// - **true**: The flow log service is activated.
+	// - **true**: Activated.
 	//
-	// - **false**: The flow log service is not activated. You can call the [OpenFlowLogService](https://help.aliyun.com/document_detail/449637.html) operation to activate the flow log service.
+	// - **false**: Not activated. You can call the [OpenFlowLogService](https://help.aliyun.com/document_detail/449637.html) operation to activate the flow log feature.
 	//
 	// example:
 	//

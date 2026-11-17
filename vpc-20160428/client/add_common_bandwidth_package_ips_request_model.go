@@ -30,7 +30,7 @@ type iAddCommonBandwidthPackageIpsRequest interface {
 }
 
 type AddCommonBandwidthPackageIpsRequest struct {
-	// The instance ID of the Internet Shared Bandwidth instance.
+	// The Internet Shared Bandwidth instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type AddCommonBandwidthPackageIpsRequest struct {
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AddCommonBandwidthPackageIpsRequest struct {
 	//
 	// This parameter is required.
 	IpInstanceIds []*string `json:"IpInstanceIds,omitempty" xml:"IpInstanceIds,omitempty" type:"Repeated"`
-	// The IP type. Set the value to **EIP**, which specifies that EIPs are added to the Internet Shared Bandwidth instance.
+	// The IP address type. Valid value: **EIP**, which indicates that EIPs are added to the Internet Shared Bandwidth instance.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type AddCommonBandwidthPackageIpsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Internet Shared Bandwidth instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

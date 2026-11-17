@@ -50,21 +50,21 @@ type DescribeVpcsRequest struct {
 	//
 	// dopt-o6w0df4epg9zo8isy****
 	DhcpOptionsSetId *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run for the request. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request and does not query the resource status. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user has authorization, and whether required parameters are specified. If the check fails, the system returns an error. If the check succeeds, the system returns the `DryRunOperation` error code.
 	//
-	// - **false*	- (default): sends a Normal request, and the resource status is directly queried after the request passes the authorization check. An HTTP 2xx status code is returned.
+	// - **false*	- (default): Sends a normal request and queries the resource status after the check succeeds and an HTTP 2xx status code is returned.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to query VPCs that have IPv6 CIDR blocks enabled in the specified region. The default value is empty, which means no filtering is performed based on IPv6 enablement. Valid values:
+	// Specifies whether to query VPCs for which IPv6 CIDR blocks are enabled in the specified region. By default, this parameter is empty, which means VPCs are not filtered based on whether IPv6 CIDR blocks are enabled. Valid values:
 	//
-	// - **false**: IPv6 is not enabled.
+	// - **false**: IPv6 CIDR blocks are not enabled.
 	//
-	// - **true**: IPv6 is enabled.
+	// - **true**: IPv6 CIDR blocks are enabled.
 	//
 	// if can be null:
 	// true
@@ -85,13 +85,13 @@ type DescribeVpcsRequest struct {
 	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type DescribeVpcsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -131,7 +131,7 @@ type DescribeVpcsRequest struct {
 	//
 	// Vpc-1
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The Alibaba Cloud account ID that owns the VPC.
+	// The Alibaba Cloud account ID of the VPC.
 	//
 	// example:
 	//
@@ -305,17 +305,17 @@ func (s *DescribeVpcsRequest) Validate() error {
 }
 
 type DescribeVpcsRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

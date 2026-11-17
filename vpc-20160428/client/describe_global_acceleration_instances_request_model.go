@@ -42,43 +42,43 @@ type iDescribeGlobalAccelerationInstancesRequest interface {
 }
 
 type DescribeGlobalAccelerationInstancesRequest struct {
-	// The bandwidth type of the Alibaba Cloud Global Accelerator (GA) instance. Valid values:
+	// The bandwidth type of the Global Accelerator (GA) instance. Valid values:
 	//
 	//
 	//
-	// - **Sharing**: Queries shared-bandwidth instances.
+	// - **Sharing**: Shared bandwidth instance.
 	//
 	//
 	//
-	// - **Exclusive*	- (default): Queries dedicated-bandwidth instances.
+	// - **Exclusive*	- (default): Exclusive bandwidth instance.
 	//
 	// example:
 	//
 	// Exclusive
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The ID of the Alibaba Cloud Global Accelerator (GA) instance.
+	// The ID of the Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ga-234sljmxaz****
 	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
-	// Specifies whether to include reservation data that has not taken effect. Valid values:
+	// Specifies whether to include subscription data that has not taken effect. Valid values:
 	//
-	// - **false*	- (default): Does not include reservation data that has not taken effect.
+	// - **false*	- (default): Does not include subscription data that has not taken effect.
 	//
-	// - **true**: Includes reservation data that has not taken effect.
+	// - **true**: Includes subscription data that has not taken effect.
 	//
 	// example:
 	//
 	// false
 	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
-	// The public IP address of the Alibaba Cloud Global Accelerator (GA) instance.
+	// The public IP address of the Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// 12.xx.xx.78
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The name of the Alibaba Cloud Global Accelerator (GA) instance.
+	// The name of the Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -86,19 +86,19 @@ type DescribeGlobalAccelerationInstancesRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the Alibaba Cloud Global Accelerator (GA) instance resides. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region where the Global Accelerator (GA) instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -114,15 +114,15 @@ type DescribeGlobalAccelerationInstancesRequest struct {
 	//
 	// i-sxjblddejj9x****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The backend service region. Valid values:
+	// The region of the backend service. Valid values:
 	//
-	// - **china-mainland**: the Chinese mainland.
+	// - **china-mainland**: The Chinese mainland.
 	//
 	// - **north-america**: North America.
 	//
 	//
 	//
-	// - **asia-pacific**: Asia Pacific.
+	// - **asia-pacific**: Asia-Pacific.
 	//
 	//
 	//
@@ -132,19 +132,19 @@ type DescribeGlobalAccelerationInstancesRequest struct {
 	//
 	// china-mainland
 	ServiceLocation *string `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
-	// The instance status of the Alibaba Cloud Global Accelerator (GA) instance. Valid values:
+	// The status of the Global Accelerator (GA) instance. Valid values:
 	//
-	// - **Available**: active.
+	// - **Available**: Available.
 	//
 	// - **Inuse**: Allocated.
 	//
 	//
 	//
-	// - **Associating**: Being attached.
+	// - **Associating**: Associating.
 	//
 	//
 	//
-	// - **Unassociating**: Being disassociated.
+	// - **Unassociating**: Unassociating.
 	//
 	// example:
 	//

@@ -38,9 +38,9 @@ type iModifyVpnRouteEntryWeightRequest interface {
 type ModifyVpnRouteEntryWeightRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value is different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ModifyVpnRouteEntryWeightRequest struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
+	// The tunnel protocol. Set the value to **Ipsec*	- (IPsec tunnel protocol).
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ModifyVpnRouteEntryWeightRequest struct {
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPN gateway instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the VPN gateway instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type ModifyVpnRouteEntryWeightRequest struct {
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The original weight of the destination route. Valid values:
+	// The weight of the destination route before the modification. Valid values:
 	//
 	// - **0**: low priority.
 	//

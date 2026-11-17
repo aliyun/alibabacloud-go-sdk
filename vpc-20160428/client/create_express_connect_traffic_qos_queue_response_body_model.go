@@ -30,7 +30,7 @@ type CreateExpressConnectTrafficQosQueueResponseBody struct {
 	//
 	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

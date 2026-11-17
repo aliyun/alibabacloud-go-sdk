@@ -63,19 +63,37 @@ type iDescribeEipAddressesRequest interface {
 
 type DescribeEipAddressesRequest struct {
 	Filter []*DescribeEipAddressesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The ID of the EIP instance to query.
+	// The ID of the EIP to query.
+	//
+	// You can enter up to 50 EIP instance IDs. Separate multiple instance IDs with commas (,).
+	//
+	// > If you specify both **EipAddress*	- and **AllocationId**, you can enter up to 50 EIP instance IDs for **AllocationId*	- and up to 50 EIP addresses for **EipAddress**.
 	//
 	// example:
 	//
 	// eip-2zeerraiwb7ujxscd****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The instance ID of the cloud resource.
+	// The instance ID of the cloud service.
 	//
 	// example:
 	//
 	// i-2zebb08phyccdvf****
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of the cloud resource instance to be associated. Valid values:
+	// The type of the cloud service instance to associate with. Valid values:
+	//
+	// - **EcsInstance*	- (default): an ECS instance in a VPC.
+	//
+	// - **SlbInstance**: a CLB instance in a VPC.
+	//
+	// - **Nat**: a NAT gateway.
+	//
+	// - **HaVip**: a high-availability virtual IP address.
+	//
+	// - **NetworkInterface**: a secondary elastic network interface (ENI).
+	//
+	// - **IpAddress**: an IP address.
+	//
+	// > You can associate only one EIP with each ECS instance, CLB instance, high-availability virtual IP address, or IP address at a time. You can associate multiple EIPs with a NAT gateway. The number of EIPs that can be associated with a secondary ENI depends on the EIP association mode. For more information, see [Overview of EIPs](https://help.aliyun.com/document_detail/72125.html).
 	//
 	// example:
 	//
@@ -83,11 +101,19 @@ type DescribeEipAddressesRequest struct {
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
 	// The billing method of the EIP. Valid values:
 	//
+	// - **PostPaid**: pay-as-you-go.
+	//
+	// - **PrePaid**: subscription.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// - **true**: sends a check request and does not query resources. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// - **false*	- (default): sends a regular request. If the request passes the check, the HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -95,11 +121,17 @@ type DescribeEipAddressesRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The IP address of the EIP to query.
 	//
+	// You can enter up to 50 EIP addresses. Separate multiple IP addresses with commas (,).
+	//
+	// > If you specify both **EipAddress*	- and **AllocationId**, you can enter up to 50 EIP addresses for **EipAddress*	- and up to 50 EIP instance IDs for **AllocationId**.
+	//
 	// example:
 	//
 	// 47.75.XX.XX
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
 	// The name of the EIP.
+	//
+	// The name must be 1 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -107,11 +139,37 @@ type DescribeEipAddressesRequest struct {
 	EipName *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
 	// The line type. Valid values:
 	//
+	// - **BGP*	- (default): BGP (multi-ISP) line. BGP (multi-ISP) EIPs are supported in all regions.
+	//
+	// - **BGP_PRO**: BGP (multi-ISP) Pro line. BGP (multi-ISP) Pro EIPs are supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+	//
+	// For more information about BGP (multi-ISP) and BGP (multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
+	//
+	// If you are a whitelisted user of single-ISP bandwidth, you can also select the following types:
+	//
+	// - **ChinaTelecom**: China Telecom
+	//
+	// - **ChinaUnicom**: China Unicom
+	//
+	// - **ChinaMobile**: China Mobile
+	//
+	// - **ChinaTelecom_L2**: China Telecom L2
+	//
+	// - **ChinaUnicom_L2**: China Unicom L2
+	//
+	// - **ChinaMobile_L2**: China Mobile L2
+	//
+	// If you are an Alibaba Finance Cloud user in the China (Hangzhou) region, this parameter is required. Set the value to **BGP_FinanceCloud**.
+	//
 	// example:
 	//
 	// BGP
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// Specifies whether to include subscription data that has not taken effect. Valid values:
+	// Specifies whether to include inactive subscription data. Valid values:
+	//
+	// - **false*	- (default): does not include inactive subscription data.
+	//
+	// - **true**: includes inactive subscription data.
 	//
 	// example:
 	//
@@ -119,19 +177,23 @@ type DescribeEipAddressesRequest struct {
 	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
 	// The lock type. Valid values:
 	//
+	// - **financial**: locked due to overdue payments.
+	//
+	// - **security**: locked due to security reasons.
+	//
 	// example:
 	//
 	// financial
 	LockReason   *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
@@ -144,6 +206,8 @@ type DescribeEipAddressesRequest struct {
 	// pippool-2vc0kxcedhquybdsz****
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	// The region ID of the EIP.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -161,11 +225,15 @@ type DescribeEipAddressesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether Anti-DDoS (Enhanced) is enabled. Valid values:
 	//
+	// - **false**: disabled.
+	//
+	// - **true**: enabled.
+	//
 	// example:
 	//
 	// false
 	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The instance ID of the contiguous EIP group.
+	// The instance ID of the contiguous EIP.
 	//
 	// example:
 	//
@@ -173,11 +241,27 @@ type DescribeEipAddressesRequest struct {
 	SegmentInstanceId *string `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
 	// Specifies whether the instance is a managed instance. Valid values:
 	//
+	// - **true**: The instance is a managed instance.
+	//
+	// - **false**: The instance is not a managed instance.
+	//
+	// If you do not specify this parameter, all instances are queried by default.
+	//
 	// example:
 	//
 	// false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The status of the EIP. Valid values:
+	//
+	// - **Associating**: being associated.
+	//
+	// - **Unassociating**: being disassociated.
+	//
+	// - **InUse**: allocated.
+	//
+	// - **Available**: available.
+	//
+	// - **Releasing**: being released.
 	//
 	// example:
 	//
@@ -443,13 +527,13 @@ func (s *DescribeEipAddressesRequest) Validate() error {
 }
 
 type DescribeEipAddressesRequestFilter struct {
-	// The filter key for querying resources. The value must be **CreationStartTime**, which specifies the start time when the resource was created.
+	// The filter key used when querying resources. Set the value to **CreationStartTime**, which specifies the start time of resource creation.
 	//
 	// example:
 	//
 	// CreationStartTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value for querying resources. Specify the value in UTC in the `YYYY-MM-DDThh:mmZ` format.
+	// The filter value used when querying resources. Specify the time in UTC in the `YYYY-MM-DDThh:mmZ` format.
 	//
 	// example:
 	//
@@ -488,13 +572,17 @@ func (s *DescribeEipAddressesRequestFilter) Validate() error {
 }
 
 type DescribeEipAddressesRequestTag struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. You can enter up to 20 tag keys. If you specify this parameter, it cannot be an empty string.
+	//
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value. You can enter up to 20 tag values. If you specify this parameter, it can be an empty string.
+	//
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

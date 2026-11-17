@@ -18,13 +18,13 @@ type iCreateTrafficMirrorSessionResponseBody interface {
 }
 
 type CreateTrafficMirrorSessionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the traffic mirroring instance belongs.
+	// The ID of the resource group to which the traffic mirroring belongs.
 	//
 	// example:
 	//

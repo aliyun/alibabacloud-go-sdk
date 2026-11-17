@@ -24,13 +24,13 @@ type iDescribeVcoRouteEntriesResponseBody interface {
 }
 
 type DescribeVcoRouteEntriesResponseBody struct {
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeVcoRouteEntriesResponseBody struct {
 	//
 	// E18980E8-C8C2-31BD-8156-AE2BBDEC87E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
 	// The timestamp when the destination route was created.
 	//
-	// The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format. It represents the total number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// example:
 	//
@@ -167,12 +167,18 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The list of next-hop tunnels.
+	// The list of next hop tunnels.
 	//
 	// > - This information is returned only for IPsec-VPN connections in dual-tunnel mode.
 	//
-	// > - Tunnel information is returned only when the tunnel status is **Phase 2 negotiations succeeded**.
+	// > - Tunnel information is returned only when the tunnel status is **Phase 2 negotiation succeeded**.
 	NextHopTunnelIdList []*string `json:"NextHopTunnelIdList,omitempty" xml:"NextHopTunnelIdList,omitempty" type:"Repeated"`
+	// The instance ID of the prefix list.
+	//
+	// example:
+	//
+	// pl-m5estsqsdqwg88hjf****
+	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	// The destination CIDR block of the route.
 	//
 	// example:
@@ -191,9 +197,9 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	// The source of the BGP route.
 	//
-	// - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
+	// - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from a transit router.
 	//
-	// - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
+	// - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from an on-premises data center.
 	//
 	// example:
 	//
@@ -201,7 +207,7 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the route.
 	//
-	// - **published**: The destination route has been published to the transit router instance.
+	// - **published**: The destination route is published to the transit router.
 	//
 	// - **Active**: The BGP route is available.
 	//
@@ -217,7 +223,7 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
 	// The weight of the destination route.
 	//
-	// > This parameter is not in use.
+	// > This parameter does not take effect.
 	//
 	// example:
 	//
@@ -251,6 +257,10 @@ func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) GetNextHop() *strin
 
 func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) GetNextHopTunnelIdList() []*string {
 	return s.NextHopTunnelIdList
+}
+
+func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) GetPrefixListId() *string {
+	return s.PrefixListId
 }
 
 func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) GetRouteDest() *string {
@@ -299,6 +309,11 @@ func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) SetNextHop(v string
 
 func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) SetNextHopTunnelIdList(v []*string) *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries {
 	s.NextHopTunnelIdList = v
+	return s
+}
+
+func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) SetPrefixListId(v string) *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries {
+	s.PrefixListId = &v
 	return s
 }
 
@@ -355,9 +370,9 @@ type DescribeVcoRouteEntriesResponseBodyVpnRouteCounts struct {
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	// The source of the BGP route.
 	//
-	// - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
+	// - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from a transit router.
 	//
-	// - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
+	// - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from an on-premises data center.
 	//
 	// example:
 	//

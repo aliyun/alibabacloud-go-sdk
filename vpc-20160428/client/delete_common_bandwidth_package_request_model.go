@@ -34,13 +34,13 @@ type DeleteCommonBandwidthPackageRequest struct {
 	//
 	// cbwp-2ze2ic1xd2qeqk145pn4u
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// Specifies whether to forcibly delete the Internet Shared Bandwidth instance. Valid values:
+	// The force delete option is enabled or disabled for the Internet Shared Bandwidth instance. Valid values:
 	//
 	//
 	//
-	// - **false*	- (default): The Internet Shared Bandwidth instance is deleted only if it does not contain elastic IP addresses (EIPs).
+	// - **false*	- (default): Deletes only the Internet Shared Bandwidth instance that does not contain EIPs.
 	//
-	// - **true**: All EIPs are removed from the Internet Shared Bandwidth instance, and then the instance is deleted.
+	// - **true**: Removes all EIPs from the Internet Shared Bandwidth instance and then deletes the instance.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteCommonBandwidthPackageRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region where the Internet Shared Bandwidth instance resides.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

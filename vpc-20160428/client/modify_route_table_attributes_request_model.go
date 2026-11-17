@@ -36,13 +36,13 @@ type ModifyRouteTableAttributesRequest struct {
 	//
 	// example:
 	//
-	// 描述信息
+	// Description
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type ModifyRouteTableAttributesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to receive dynamic routes by enabling or disabling route propagation. Valid values:
+	// Specifies whether to accept dynamic routes by enabling or disabling route propagation. Valid values:
 	//
-	// - **true*	- (default): enabled.
+	// - **true*	- (default): enables route propagation.
 	//
-	// - **false**: disabled.
+	// - **false**: disables route propagation.
 	//
 	// if can be null:
 	// true

@@ -38,19 +38,19 @@ type iGetRouteTargetGroupResponseBody interface {
 type GetRouteTargetGroupResponseBody struct {
 	// The configuration mode of the route target group. Valid values:
 	//
-	// - **Active-Standby**: active/standby mode.
+	// - **Active-Standby**: Active/standby mode.
 	//
 	// example:
 	//
 	// Active-Standby
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The time when the route target group was created.
+	// The time when the route target group was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2025-12-30T06:40:50Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The region ID of the VPC to which the route target group belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the region ID.
+	// The ID of the region where the VPC to which the route target group belongs is deployed. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetRouteTargetGroupResponseBody struct {
 	//
 	// myRouteTargetGroupDescription
 	RouteTargetGroupDescription *string `json:"RouteTargetGroupDescription,omitempty" xml:"RouteTargetGroupDescription,omitempty"`
-	// The instance ID of the routing target group.
+	// The routing target group instance ID.
 	//
 	// example:
 	//
@@ -86,25 +86,25 @@ type GetRouteTargetGroupResponseBody struct {
 	//
 	// myRouteTargetGroupName
 	RouteTargetGroupName *string `json:"RouteTargetGroupName,omitempty" xml:"RouteTargetGroupName,omitempty"`
-	// The member list of the route target group.
+	// The members of the route target group.
 	RouteTargetMemberList []*GetRouteTargetGroupResponseBodyRouteTargetMemberList `json:"RouteTargetMemberList,omitempty" xml:"RouteTargetMemberList,omitempty" type:"Repeated"`
 	// The status of the routing target group. Valid values:
 	//
-	// - **Recovering**: The active/standby switchback is in progress.
+	// - **Recovering**: The system is switching back to the primary instance.
 	//
-	// - **Switched**: The active/standby switchover is complete.
+	// - **Switched**: The active/standby switchover is completed.
 	//
 	// - **Available**: The routing target group is available.
 	//
-	// - **Abnormal**: The standby instance has instance failures.
+	// - **Abnormal**: Secondary instance failures.
 	//
 	// - **Pending**: The routing target group is being created.
 	//
-	// - **Switching**: The active/standby switchover is in progress.
+	// - **Switching**: An active/standby switchover is in progress.
 	//
 	// - **Deleting**: The routing target group is being deleted.
 	//
-	// - **Unavailable**: Both the primary and secondary instances have instance failures.
+	// - **Unavailable**: Both primary and secondary instances have instance failures.
 	//
 	// example:
 	//
@@ -259,13 +259,13 @@ func (s *GetRouteTargetGroupResponseBody) Validate() error {
 }
 
 type GetRouteTargetGroupResponseBodyRouteTargetMemberList struct {
-	// The enable status of the route target group member. Valid values:
+	// The enabled status of the route target group member. Valid values:
 	//
 	// - **Enable**: Enabled.
 	//
 	// - **Disable**: Disabled.
 	//
-	// Only route target group members in the disabled state can be replaced with other instances. Route target group members in the enabled state cannot be modified.
+	// You can replace only a disabled route target group member with another instance. You cannot modify an enabled route target group member.
 	//
 	// example:
 	//
@@ -281,17 +281,15 @@ type GetRouteTargetGroupResponseBodyRouteTargetMemberList struct {
 	//
 	// Normal
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitempty" xml:"HealthCheckStatus,omitempty"`
-	// The instance ID of the routing target group member.
+	// The routing target group member instance ID.
 	//
 	// example:
 	//
 	// ep-xxxx
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The member type of the route target group.
+	// The type of the route target group member. Valid values:
 	//
-	// Currently supported types:
-	//
-	// - **GatewayLoadBalancerEndpoint**
+	// - **GatewayLoadBalancerEndpoint**: Gateway load balancer endpoint.
 	//
 	// example:
 	//
@@ -299,11 +297,11 @@ type GetRouteTargetGroupResponseBodyRouteTargetMemberList struct {
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 	// The weight of the route target group member. Valid values:
 	//
-	// - **100**: The member is the active instance.
+	// - **100**: The member is the primary instance.
 	//
-	// - **0**: The member is the standby instance.
+	// - **0**: The member is the secondary instance.
 	//
-	// The weight can only be set during creation and cannot be modified.
+	// You can set the weight only when you create the member. The weight cannot be modified.
 	//
 	// example:
 	//

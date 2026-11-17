@@ -24,7 +24,7 @@ type OpenTrafficMirrorServiceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned after the traffic mirroring feature is activated.
+	// The message returned when the traffic mirroring feature is enabled.
 	//
 	// example:
 	//

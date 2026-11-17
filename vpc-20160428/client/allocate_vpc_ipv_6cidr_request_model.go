@@ -32,49 +32,49 @@ type iAllocateVpcIpv6CidrRequest interface {
 type AllocateVpcIpv6CidrRequest struct {
 	// The type of the IPv6 address pool. Valid values:
 	//
-	// - **aliyun*	- (default): The system assigns an IPv6 CIDR block.
+	// - **aliyun*	- (default): The IPv6 CIDR block is allocated by the system.
 	//
-	// - **custom**: A user-defined IPv6 CIDR block.
+	// - **custom**: The IPv6 CIDR block is customized by the user.
 	//
 	// example:
 	//
 	// custom
 	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IPv6 CIDR block to reserve.
+	// The IPv6 CIDR block to be reserved.
 	//
 	// example:
 	//
 	// 2408:XXXX:0:a600::/56
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The type of the IPv6 CIDR block of the VPC. Valid values:
+	// The ISP type of the IPv6 CIDR block for the VPC. Valid values:
 	//
-	// - **BGP*	- (default): BGP (multi-ISP).
+	// - **BGP*	- (default): BGP (Multi-ISP).
 	//
-	// - **BGP_International**: BGP (multi-ISP)_International.
+	// - **BGP_International**: BGP (Multi-ISP) International.
 	//
-	// - **ChinaMobile**: China Mobile (single-ISP).
+	// - **ChinaMobile**: China Mobile (single ISP).
 	//
-	// - **ChinaUnicom**: China Unicom (single-ISP).
+	// - **ChinaUnicom**: China Unicom (single ISP).
 	//
-	// - **ChinaTelecom**: China Telecom (single-ISP).
+	// - **ChinaTelecom**: China Telecom (single ISP).
 	//
-	// - **ChinaMobile_L2**: China Mobile (single-ISP)_L2.
+	// - **ChinaMobile_L2**: China Mobile (single ISP) L2.
 	//
-	// - **ChinaUnicom_L2**: China Unicom (single-ISP)_L2.
+	// - **ChinaUnicom_L2**: China Unicom (single ISP) L2.
 	//
-	// - **ChinaTelecom_L2**: China Telecom (single-ISP)_L2.
+	// - **ChinaTelecom_L2**: China Telecom (single ISP) L2.
 	//
-	// > - If you are a user whose whitelist is activated, you can set this parameter to **ChinaTelecom*	- (China Telecom), **ChinaUnicom*	- (China Unicom), **ChinaMobile*	- (China Mobile), **ChinaTelecom_L2*	- (China L2 Telecom), **ChinaUnicom_L2*	- (China L2 Unicom), **ChinaMobile_L2*	- (China L2 Mobile), or **BGP_International*	- (BGP multi-ISP International).
+	// > - If your account is added to the corresponding whitelist, you can set this parameter to **ChinaTelecom*	- (China Telecom), **ChinaUnicom*	- (China Unicom), **ChinaMobile*	- (China Mobile), **ChinaTelecom_L2*	- (China Telecom L2), **ChinaUnicom_L2*	- (China Unicom L2), **ChinaMobile_L2*	- (China Mobile L2), or **BGP_International*	- (BGP Multi-ISP International).
 	//
-	// > - You can reserve only one IPv6 CIDR block of each type. You can reserve the next one only after the current one is assigned to a VPC.
+	// > - You can reserve only one IPv6 CIDR block of each ISP type. You can reserve the next IPv6 CIDR block only after the current one is allocated to a VPC.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type AllocateVpcIpv6CidrRequest struct {
 	Ipv6Isp      *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPC.
+	// The ID of the region where the VPC is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

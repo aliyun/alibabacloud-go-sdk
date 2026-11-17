@@ -20,13 +20,13 @@ type iListGatewayRouteTableEntriesResponseBody interface {
 }
 
 type ListGatewayRouteTableEntriesResponseBody struct {
-	// The details of the route entries in the gateway route table.
+	// The details of the routes in the gateway route table.
 	GatewayRouteEntryModels []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels `json:"GatewayRouteEntryModels,omitempty" xml:"GatewayRouteEntryModels,omitempty" type:"Repeated"`
-	// The pagination token. Valid values:
+	// The pagination token that is used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no more results are available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListGatewayRouteTableEntriesResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -104,37 +104,37 @@ func (s *ListGatewayRouteTableEntriesResponseBody) Validate() error {
 }
 
 type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
-	// The description of the route entry.
+	// The description of the route.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the route entry.
+	// The destination CIDR block of the route.
 	//
 	// example:
 	//
 	// 192.168.0.5
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The name of the route entry.
+	// The name of the route.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The instance ID of the next hop.
+	// The next hop instance ID.
 	//
 	// example:
 	//
 	// i-bp11gcl0sm85t9bi****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The next hop type. Valid values:
+	// The type of the next hop. Valid values:
 	//
 	// - **EcsInstance**: ECS instance.
 	//
-	// - **NetworkInterface**: elastic network interfaces (ENIs).
+	// - **NetworkInterface**: elastic network interface (ENI).
 	//
 	// - **Local**: local.
 	//
@@ -144,13 +144,13 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	// The next hop information.
 	NextHops []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
-	// The status of the route entry. Valid values:
+	// The status of the route. Valid values:
 	//
-	// - **Pending**: being configured.
+	// - **Pending**: The route is being configured.
 	//
-	// - **Available**: available.
+	// - **Available**: The route is available.
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: The route is being modified.
 	//
 	// example:
 	//
@@ -253,7 +253,7 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops str
 	//
 	// 1
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The instance ID of the next hop.
+	// The next hop instance ID.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops str
 	//
 	// - **NatGateway**: NAT gateway.
 	//
-	// - **NetworkInterface**: secondary elastic network interfaces (ENIs).
+	// - **NetworkInterface**: secondary elastic network interface (ENI).
 	//
 	// - **RouterInterface**: vRouter interface.
 	//
@@ -281,7 +281,7 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops str
 	//
 	// Instance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The weight of the route entry.
+	// The weight of the route.
 	//
 	// example:
 	//

@@ -30,9 +30,9 @@ type iDeleteIpv6InternetBandwidthRequest interface {
 }
 
 type DeleteIpv6InternetBandwidthRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among multiple requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
 	//
 	// > -
 	//
@@ -40,11 +40,11 @@ type DeleteIpv6InternetBandwidthRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run on this request. Valid values:
 	//
-	// - **true**: performs a dry run without actually deleting the Internet bandwidth. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error message is returned. If the check succeeds, `DryRunOperation` is returned.
+	// - **true**: performs a dry run on this request without deleting the IPsec server. The system checks whether all required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, the corresponding error message is returned. If the request passes the check, `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, the Internet bandwidth is deleted.
+	// - **false*	- (default): sends a regular request and deletes the IPsec server after the request passes the check.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DeleteIpv6InternetBandwidthRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the IPv6 address.
 	//
-	// > You must specify either **Ipv6AddressId*	- or **Ipv6InternetBandwidthId**.
+	// > You must specify either the **Ipv6AddressId*	- parameter or the **Ipv6InternetBandwidthId*	- parameter.
 	//
 	// example:
 	//
 	// ipv6-2zen5j4axcp5l5qyy****
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
-	// The Internet bandwidth instance ID of the IPv6 address.
+	// The instance ID of the Internet bandwidth for the IPv6 address.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DeleteIpv6InternetBandwidthRequest struct {
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the IPv6 gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

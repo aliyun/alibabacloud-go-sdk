@@ -36,9 +36,9 @@ type iCreateNetworkAclRequest interface {
 type CreateNetworkAclRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
@@ -46,17 +46,17 @@ type CreateNetworkAclRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the network ACL.
 	//
-	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is my NetworkAcl.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to precheck the request. Valid values:
 	//
-	// 	- **true**: performs a dry run.
+	// 	- **true**: prechecks the request.
 	//
-	// 	- **false*	- (default): sends the request.
+	// 	- **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateNetworkAclRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The name of the network ACL.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateNetworkAclRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the network ACL.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -217,17 +217,17 @@ func (s *CreateNetworkAclRequest) Validate() error {
 }
 
 type CreateNetworkAclRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

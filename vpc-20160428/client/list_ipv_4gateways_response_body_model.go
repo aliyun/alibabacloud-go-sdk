@@ -20,13 +20,13 @@ type iListIpv4GatewaysResponseBody interface {
 }
 
 type ListIpv4GatewaysResponseBody struct {
-	// The list of IPv4 gateway instances.
+	// The list of IPv4 gateways.
 	Ipv4GatewayModels []*ListIpv4GatewaysResponseBodyIpv4GatewayModels `json:"Ipv4GatewayModels,omitempty" xml:"Ipv4GatewayModels,omitempty" type:"Repeated"`
-	// The pagination token. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no next query is to be sent.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token used for the next query.
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ func (s *ListIpv4GatewaysResponseBody) Validate() error {
 }
 
 type ListIpv4GatewaysResponseBodyIpv4GatewayModels struct {
-	// Indicates whether the IPv4 gateway instance is activated. Valid values:
+	// Indicates whether the IPv4 gateway is activated. Valid values:
 	//
-	// - **true**: activated.
+	// - **true**: The IPv4 gateway is activated.
 	//
-	// - **false**: not activated.
+	// - **false**: The IPv4 gateway is not activated.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListIpv4GatewaysResponseBodyIpv4GatewayModels struct {
 	//
 	// 2021-12-02T07:07:35Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The description of the IPv4 gateway instance.
+	// The description of the IPv4 gateway.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type ListIpv4GatewaysResponseBodyIpv4GatewayModels struct {
 	//
 	// ipv4gw-5tsnc6s4ogsedtp3k****
 	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	// The name of the IPv4 gateway instance.
+	// The name of the IPv4 gateway.
 	//
 	// example:
 	//
 	// name
 	Ipv4GatewayName *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	// The ID of the route table associated with the IPv4 gateway instance.
+	// The ID of the route table associated with the IPv4 gateway.
 	//
 	// example:
 	//
@@ -150,25 +150,25 @@ type ListIpv4GatewaysResponseBodyIpv4GatewayModels struct {
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the IPv4 gateway instance. Valid values:
+	// The status of the IPv4 gateway. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: The IPv4 gateway is being created.
 	//
-	// - **Created**: created and available.
+	// - **Created**: The IPv4 gateway is created and available.
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: The IPv4 gateway is being modified.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The IPv4 gateway is being deleted.
 	//
-	// - **Deleted**: deleted.
+	// - **Deleted**: The IPv4 gateway is deleted.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The tags.
 	Tags []*ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC associated with the IPv4 gateway instance.
+	// The ID of the VPC associated with the IPv4 gateway.
 	//
 	// example:
 	//

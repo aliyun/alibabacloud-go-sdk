@@ -46,15 +46,15 @@ type iDescribeRouteEntryListRequest interface {
 }
 
 type DescribeRouteEntryListRequest struct {
-	// The list of destination CIDR blocks of routes.
+	// The list of destination CIDR blocks of the route entry.
 	DestCidrBlockList []*string `json:"DestCidrBlockList,omitempty" xml:"DestCidrBlockList,omitempty" type:"Repeated"`
-	// The destination CIDR block of the route. Both IPv4 and IPv6 CIDR blocks are supported.
+	// The destination CIDR block of the route entry. Both IPv4 and IPv6 CIDR blocks are supported.
 	//
 	// example:
 	//
 	// 192.168.2.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The version of the IP protocol. Valid values:
+	// The IP version. Valid values:
 	//
 	// - **ipv4**: IPv4.
 	//
@@ -64,7 +64,7 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// - **NatGateway**: NAT gateway.
 	//
-	// - **NetworkInterface**: secondary elastic network interface controller (NIC).
+	// - **NetworkInterface**: secondary ENI.
 	//
-	// - **RouterInterface**: vRouter interface.
+	// - **RouterInterface**: router interface.
 	//
 	// - **IPv6Gateway**: IPv6 gateway.
 	//
@@ -104,11 +104,11 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// Instance
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - You do not need to specify this parameter for the first request or if no subsequent request exists.
+	// - If this is the first query or no subsequent query is required, leave this parameter empty.
 	//
-	// - If a subsequent request exists, set the value to the NextToken value that is returned from the last call.
+	// - If a subsequent query is required, set this parameter to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -116,9 +116,9 @@ type DescribeRouteEntryListRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the route table to which the route belongs.
+	// The region ID of the route table to which the route entry belongs.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +128,13 @@ type DescribeRouteEntryListRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the route that you want to query.
+	// The ID of the route entry to query.
 	//
 	// example:
 	//
 	// rte-bp1mnnr2al0naomnp****
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The name of the route.
+	// The name of the route entry.
 	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -158,7 +158,7 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// System
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// The ID of the route table that you want to query.
+	// The ID of the route table to query.
 	//
 	// This parameter is required.
 	//
@@ -166,9 +166,9 @@ type DescribeRouteEntryListRequest struct {
 	//
 	// vtb-bp1r9pvl4xen8s9ju****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The type of route hosting. If this field is empty, the route is not hosted.
+	// The type of the managed route. If this parameter is empty, the route is not managed.
 	//
-	// Valid values: **TR**, which indicates that the hosting type is transit router.
+	// Valid value: **TR**, which indicates that the route is managed by a transit router.
 	//
 	// example:
 	//

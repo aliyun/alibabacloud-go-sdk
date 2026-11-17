@@ -31,13 +31,13 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionRequest struct {
 	// The list of filter conditions.
 	Filter  []*DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	OwnerId *int64                                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page during paging in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionRequest struct {
 	//
 	// pc-119mfj****
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The region where the Express Connect circuit resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// The region where the Express Connect circuit is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -157,27 +157,27 @@ func (s *DescribeVirtualBorderRoutersForPhysicalConnectionRequest) Validate() er
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionRequestFilter struct {
-	// The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
+	// The filter condition. You can specify up to five filter conditions. Supported filter conditions:
 	//
-	// 	- **PhysicalConnectionId**: instance ID of the Express Connect circuit instance.
+	// 	- **PhysicalConnectionId**: instance ID of the Express Connect circuit.
 	//
-	// 	- **VbrId**: instance ID of the Virtual Border Router instance.
+	// 	- **VbrId**: instance ID of the VBR.
 	//
-	// 	- **Status**: the status of the Virtual Border Router.
+	// 	- **Status**: the status of the VBR.
 	//
-	// 	- **Name**: the name of the Virtual Border Router.
+	// 	- **Name**: the name of the VBR.
 	//
 	// 	- **AccessPointId**: instance ID of the access point.
 	//
 	// 	- **eccId**: instance ID of the Express Cloud Connect instance.
 	//
-	// 	- **type**: the type of the Virtual Border Router.
+	// 	- **type**: the type of the VBR.
 	//
 	// example:
 	//
 	// Status
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter values based on the specified Key. You can specify multiple filter values for a single Key. The relationship between multiple filter values is OR, which means that a match with any one of the filter values is considered a match for the filter condition.
+	// The filter value corresponding to the filter condition. You can specify multiple filter values for a single filter condition. The filter values are evaluated by using the OR logical operator. If a resource matches one of the filter values, it matches the filter condition.
 	//
 	// example:
 	//

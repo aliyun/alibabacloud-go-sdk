@@ -76,19 +76,19 @@ type iDescribeVpnConnectionResponseBody interface {
 }
 
 type DescribeVpnConnectionResponseBody struct {
-	// The instance ID of the Cloud Enterprise Network (CEN) instance to which the transit router instance belongs.
+	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router instance belongs.
 	//
 	// example:
 	//
 	// cen-lxxpbpalc776qz****
 	AttachInstanceId *string `json:"AttachInstanceId,omitempty" xml:"AttachInstanceId,omitempty"`
-	// The type of resource attached to the IPsec-VPN connection.
+	// The type of resource associated with the IPsec-VPN connection. Valid values:
 	//
-	// - **CEN**: The IPsec-VPN connection is attached to a transit router of a Cloud Enterprise Network (CEN) instance.
+	// - **CEN**: The IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
 	//
-	// - **NO_ASSOCIATED**: The IPsec-VPN connection is not attached to any resource.
+	// - **NO_ASSOCIATED**: The IPsec-VPN connection is not associated with any resource.
 	//
-	// - **VPNGW**: The IPsec-VPN connection is attached to a VPN gateway instance.
+	// - **VPNGW**: The IPsec-VPN connection is associated with a VPN gateway.
 	//
 	// example:
 	//
@@ -96,13 +96,17 @@ type DescribeVpnConnectionResponseBody struct {
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
 	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the IPsec-VPN connection was created.
+	// The timestamp is in UNIX timestamp format, which indicates the total number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// example:
 	//
 	// 1492753817000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the IPsec-VPN connection is bound to a transit router instance under a different account.
+	// Indicates whether the IPsec-VPN connection is associated with a cross-account transit router. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -114,35 +118,51 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// cgw-bp1mvj4g9kogwwcxk****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Indicates whether the IPsec-VPN connection configurations take effect immediately.
+	// Indicates whether the configuration of the IPsec-VPN connection takes effect immediately. Valid values:
 	//
-	// - **true**: The configurations take effect immediately. A reconnection is triggered after the configuration change is complete.
+	// - **true**: Yes. A reconnection is triggered after the configuration is changed.
 	//
-	// - **false**: The configurations do not take effect immediately. A reconnection is triggered when traffic is detected.
+	// - **false**: No. A reconnection is triggered when traffic is detected.
 	//
 	// example:
 	//
 	// true
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether Dead Peer Detection (DPD) is enabled for the IPsec-VPN connection.
+	// Indicates whether dead peer detection (DPD) is enabled for the IPsec-VPN connection. Valid values:
+	//
+	// - **false**: DPD is disabled.
+	//
+	// - **true**: DPD is enabled.
+	//
+	// After DPD is enabled, the initiator of the IPsec-VPN connection sends DPD packets to check whether the peer device is alive. If no valid response is received within the specified time, the peer device is considered disconnected. The IPsec-VPN connection deletes the ISAKMP SA and the corresponding IPsec SA, and the secure tunnel is also deleted.
 	//
 	// example:
 	//
 	// true
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection.
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
+	//
+	// - **true**: NAT traversal is enabled.
+	//
+	// - **false**: NAT traversal is disabled.
+	//
+	// After NAT traversal is enabled, the verification of the UDP port number is skipped during the IKE negotiation process, and NAT gateway devices in the VPN tunnel can be discovered.
 	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The enabling status of tunnel BGP.
+	// The enabling status of BGP for the tunnel.
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configuration of Phase 1 negotiation.
+	// The configuration of Phase 1 negotiations.
 	IkeConfig *DescribeVpnConnectionResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	// The gateway IP address of the IPsec-VPN connection.
 	//
@@ -150,9 +170,11 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// 47.XX.XX.162
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The configuration of Phase 2 negotiation.
+	// The configuration of Phase 2 negotiations.
 	IpsecConfig *DescribeVpnConnectionResponseBodyIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	// The CIDR block on the Alibaba Cloud side of the IPsec-VPN connection.
+	//
+	// If multiple CIDR blocks are specified, they are separated by commas (,).
 	//
 	// example:
 	//
@@ -164,11 +186,11 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// ipsec1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the IPsec-VPN connection.
+	// The network type of the IPsec-VPN connection. Valid values:
 	//
-	// - **public**: public network. The IPsec-VPN connection establishes an encrypted communication channel over the Internet.
+	// - **public**: Internet. The IPsec-VPN connection establishes an encrypted communication channel over the Internet.
 	//
-	// - **private**: private network. The IPsec-VPN connection establishes an encrypted communication channel over a private network.
+	// - **private**: Private network. The IPsec-VPN connection establishes an encrypted communication channel over a private network.
 	//
 	// example:
 	//
@@ -180,7 +202,9 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// -----BEGIN CERTIFICATE----- MIIB7zCCAZW****
 	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitempty" xml:"RemoteCaCertificate,omitempty"`
-	// The CIDR block on the on-premises data center side.
+	// The CIDR block on the data center side of the IPsec-VPN connection.
+	//
+	// If multiple CIDR blocks are specified, they are separated by commas (,).
 	//
 	// example:
 	//
@@ -200,19 +224,39 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbps**.
+	// The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
 	//
 	// example:
 	//
 	// 1000M
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The binding status between the IPsec-VPN connection and the transit router instance.
+	// The association status between the IPsec-VPN connection and the transit router instance. Valid values:
+	//
+	// - **active**: The IPsec-VPN connection is associated with a VPN gateway instance and is in a normal state.
+	//
+	// - **init**: The IPsec-VPN connection is not associated with any resource, and the IPsec-VPN connection is being initialized.
+	//
+	// - **attaching**: The IPsec-VPN connection is being associated with the transit router instance.
+	//
+	// - **attached**: The IPsec-VPN connection is associated with the transit router instance.
+	//
+	// - **detaching**: The IPsec-VPN connection is being disassociated from the transit router instance.
+	//
+	// - **financialLocked**: The instance is locked due to overdue payments.
+	//
+	// - **provisioning**: The resource is being prepared.
+	//
+	// - **updating**: The IPsec-VPN connection is being updated.
+	//
+	// - **upgrading**: The IPsec-VPN connection is being upgraded.
+	//
+	// - **deleted**: The IPsec-VPN connection is deleted.
 	//
 	// example:
 	//
 	// attached
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the IPsec-VPN connection.
+	// The status of the IPsec-VPN connection. Valid values:
 	//
 	// - **ike_sa_not_established**: Phase 1 negotiation failed.
 	//
@@ -227,19 +271,23 @@ type DescribeVpnConnectionResponseBody struct {
 	// ike_sa_not_established
 	Status *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeVpnConnectionResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The instance ID of the transit router instance attached to the IPsec-VPN connection.
+	// The ID of the transit router instance associated with the IPsec-VPN connection.
 	//
 	// example:
 	//
 	// tr-p0we2edef9qr44a85****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the transit router instance.
+	// The name of the transit router.
 	//
 	// example:
 	//
 	// nametest
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 	// The bandwidth specification of a single VPN tunnel. Valid values:
+	//
+	// - Standard (default): The standard type. The default bandwidth is 1 Gbps.
+	//
+	// - Large: The large type. The default bandwidth is 3 Gbps.
 	//
 	// example:
 	//
@@ -256,13 +304,13 @@ type DescribeVpnConnectionResponseBody struct {
 	//
 	// vco-bp1bbi27hojx80nck****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The instance ID of the VPN gateway.
+	// The ID of the VPN gateway instance.
 	//
 	// example:
 	//
 	// vpn-bp1q8bgx4xnkm2ogj****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The zone ID where the IPsec-VPN connection is deployed.
+	// The ID of the zone where the IPsec-VPN connection is deployed.
 	//
 	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the mapping between zone IDs and zones.
 	//
@@ -603,43 +651,47 @@ func (s *DescribeVpnConnectionResponseBody) Validate() error {
 }
 
 type DescribeVpnConnectionResponseBodyIkeConfig struct {
-	// The authentication algorithm in the IKE phase.
+	// The authentication algorithm at the IKE stage.
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm in the IKE phase.
+	// The encryption algorithm at the IKE stage.
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The IKE phase lifetime. Unit: seconds.
+	// The lifetime of the IKE SA. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode.
+	// The IKE negotiation mode. Valid values:
+	//
+	// - **main**: Main mode. The negotiation process is highly secure.
+	//
+	// - **aggressive**: Aggressive mode. The negotiation process is fast and has a high success rate.
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group in the IKE phase.
+	// The Diffie-Hellman (DH) group at the IKE stage.
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE protocol version.
+	// The IKE version. Valid values:
 	//
 	// - **ikev1**
 	//
 	// - **ikev2**
 	//
-	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios where multiple CIDR blocks are used.
 	//
 	// example:
 	//
@@ -657,7 +709,7 @@ type DescribeVpnConnectionResponseBodyIkeConfig struct {
 	//
 	// pgw6dy****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier on the on-premises data center side of the IPsec-VPN connection.
+	// The identifier of the peer on the data center side of the IPsec-VPN connection.
 	//
 	// example:
 	//
@@ -759,25 +811,25 @@ func (s *DescribeVpnConnectionResponseBodyIkeConfig) Validate() error {
 }
 
 type DescribeVpnConnectionResponseBodyIpsecConfig struct {
-	// The authentication algorithm in the IPsec phase.
+	// The authentication algorithm at the IPsec stage.
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm in the IPsec phase.
+	// The encryption algorithm at the IPsec stage.
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The IPsec phase lifetime. Unit: seconds.
+	// The lifetime of the IPsec SA. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group in the IPsec phase.
+	// The DH group at the IPsec stage.
 	//
 	// example:
 	//
@@ -1348,29 +1400,33 @@ type DescribeVpnConnectionResponseBodyVcoHealthCheck struct {
 	//
 	// 10.0.0.1
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether health check is enabled for the IPsec-VPN connection.
+	// Indicates whether health checks are enabled for the IPsec-VPN connection. Valid values:
 	//
-	// - **false**: Not enabled.
+	// - **false**: Health checks are disabled.
 	//
-	// - **true**: Enabled.
+	// - **true**: Health checks are enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The retry interval of the health check. Unit: seconds.
+	// The retry interval for health checks. Unit: seconds.
 	//
 	// example:
 	//
 	// 3
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether published routes are withdrawn when the health check fails.
+	// Indicates whether to revoke published routes when a health check fails. Valid values:
+	//
+	// - **revoke_route**: Revoke routes.
+	//
+	// - **reserve_route**: Do not revoke routes.
 	//
 	// example:
 	//
 	// revoke_route
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The number of health check retries.
+	// The maximum number of health check retries.
 	//
 	// example:
 	//
@@ -1382,7 +1438,11 @@ type DescribeVpnConnectionResponseBodyVcoHealthCheck struct {
 	//
 	// 192.168.1.1
 	Sip *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
-	// The health check status.
+	// The health check status. Valid values:
+	//
+	// - **failed**: Abnormal.
+	//
+	// - **success**: Normal.
 	//
 	// example:
 	//
@@ -1472,7 +1532,11 @@ type DescribeVpnConnectionResponseBodyVpnBgpConfig struct {
 	//
 	// AuthKey****
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The enabling status of the BGP routing protocol.
+	// The enabling status of the BGP routing protocol. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -1490,7 +1554,7 @@ type DescribeVpnConnectionResponseBodyVpnBgpConfig struct {
 	//
 	// 169.254.11.2
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The autonomous system number of the peer.
+	// The autonomous system number (ASN) of the peer.
 	//
 	// example:
 	//
@@ -1502,13 +1566,17 @@ type DescribeVpnConnectionResponseBodyVpnBgpConfig struct {
 	//
 	// 169.254.11.1
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation status of the BGP routing protocol.
+	// The negotiation status of the BGP routing protocol. Valid values:
+	//
+	// - **success**: Normal.
+	//
+	// - **failed**: Abnormal.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The BGP CIDR block of the IPsec-VPN connection. The CIDR block is a subnet with a subnet mask of 30 bits in mask length within 169.254.0.0/16.
+	// The BGP CIDR block of the IPsec-VPN connection. The CIDR block must be a subnet of 169.254.0.0/16 with a subnet mask length of 30 bits.
 	//
 	// example:
 	//

@@ -77,11 +77,11 @@ type CreateFlowLogRequest struct {
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	LogFormat *string `json:"LogFormat,omitempty" xml:"LogFormat,omitempty"`
-	// The name of the Logstore that stores the captured traffic.
+	// The name of the Log Service Logstore that is used to store the captured traffic.
 	//
-	// - The Logstore name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// - The name must start and end with a lowercase letter or digit.
+	// - The name must start and end with a lowercase letter or a digit.
 	//
 	// - The name must be 3 to 63 characters in length.
 	//
@@ -91,11 +91,11 @@ type CreateFlowLogRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the project that manages the captured traffic.
+	// The name of the Log Service project that is used to manage the captured traffic.
 	//
-	// - The project name can contain only lowercase letters, digits, and hyphens (-).
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
 	//
-	// - The name must start and end with a lowercase letter or digit.
+	// - The name must start and end with a lowercase letter or a digit.
 	//
 	// - The name must be 3 to 63 characters in length.
 	//
@@ -103,7 +103,7 @@ type CreateFlowLogRequest struct {
 	//
 	// FlowLogProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to query the most recent region list.
+	// The region ID of the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -127,17 +127,17 @@ type CreateFlowLogRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource whose traffic you want to capture. Valid values:
+	// The type of the resource whose traffic you want to catch. Valid values:
 	//
-	// - **NetworkInterface**: network interface controllers (NICs).
-	//
-	//
-	//
-	// - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+	// - **NetworkInterface**: elastic network interfaces (ENIs), which act as a network interface controller (NIC).
 	//
 	//
 	//
-	// - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
+	// - **VSwitch**: all elastic network interfaces (ENIs) in the vSwitch.
+	//
+	//
+	//
+	// - **VPC**: all elastic network interfaces (ENIs) in the virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -147,29 +147,29 @@ type CreateFlowLogRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of the resource.
 	Tag []*CreateFlowLogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The traffic path to collect. Valid values:
+	// The traffic path to catch. Valid values:
 	//
-	// - **all*	- (default): all scenarios.
+	// - **all*	- (default): catches all traffic.
 	//
-	// - **internetGateway**: traffic to access the Internet.
+	// -   **internetGateway**: catches traffic to access the Internet.
 	//
-	// - **natGateway**: traffic through NAT gateway.
+	// -   **natGateway**: catches traffic through NAT gateways.
 	//
-	// - **vpnGateway**: traffic through VPN gateway.
+	// -   **vpnGateway**: catches traffic through VPN gateways.
 	//
-	// - **transitRouter**: traffic through TR.
+	// -   **transitRouter**: catches traffic through TR.
 	//
-	// - **gatewayEndpoint**: traffic through gateway endpoint to access Alibaba Cloud services.
+	// -   **gatewayEndpoint**: catches traffic through gateway endpoints to access cloud services.
 	//
-	// - **vbr**: traffic through Virtual Border Router (VBR) to access Express Connect circuits.
+	// -   **vbr**: catches traffic through the border router (VBR) to access Express Connect circuits.
 	//
-	// - **ecr**: traffic through Express Connect Router (ECR).
+	// -   **ecr**: catches traffic through the Express Connect Router (ECR).
 	//
-	// - **ipv4Gateway**: traffic through IPv4 gateway to access the Internet.
+	// -   **ipv4Gateway**: catches traffic to access the Internet through IPv4 gateways.
 	//
-	// - **gatewayLoadBalancerEndpoint**: traffic through Gateway Load Balancer endpoint (GWLBe).
+	// -   **gatewayLoadBalancerEndpoint**: catches traffic through the Gateway Load Balancer endpoint (GWLBe).
 	TrafficPath []*string `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Repeated"`
-	// The traffic type to collect. Valid values:
+	// The traffic type to catch. Valid values:
 	//
 	// - **All**: all traffic.
 	//
@@ -179,7 +179,7 @@ type CreateFlowLogRequest struct {
 	//
 	//
 	//
-	// - **Drop**: traffic denied by access control.
+	// - **Drop**: traffic that access control rules deny.
 	//
 	// This parameter is required.
 	//
@@ -373,17 +373,17 @@ func (s *CreateFlowLogRequest) Validate() error {
 }
 
 type CreateFlowLogRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string for this parameter.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, do not enter an empty string.
 	//
-	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

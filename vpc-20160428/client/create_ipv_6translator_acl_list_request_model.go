@@ -34,13 +34,15 @@ type CreateIPv6TranslatorAclListRequest struct {
 	//
 	// test
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, and you must ensure that the token is unique among different requests.
+	//
 	// example:
 	//
 	// sha123456
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query region IDs.
+	// The region ID of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//

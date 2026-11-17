@@ -28,7 +28,7 @@ type DescribeRouteTableListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRouteTableListResponseBody struct {
 	// DC668356-BCB4-42FD-9BC3-FA2B2E04B634
 	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouterTableList *DescribeRouteTableListResponseBodyRouterTableList `json:"RouterTableList,omitempty" xml:"RouterTableList,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

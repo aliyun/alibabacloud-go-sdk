@@ -56,9 +56,9 @@ type DescribeIPv6TranslatorsRequest struct {
 	AllocateIpv6Addr *string `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
 	// The business status of the IPv6 Translation Service instance. Valid values:
 	//
-	// - **Normal**: normal.
+	// - **Normal**: Normal.
 	//
-	// - **FinancialLocked**: locked.
+	// - **FinancialLocked**: Locked.
 	//
 	// example:
 	//
@@ -78,29 +78,29 @@ type DescribeIPv6TranslatorsRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing transform type of the IPv6 Translation Service instance. Valid values:
+	// The billing method of the IPv6 Translation Service instance. Valid values:
 	//
-	// - **Prepay**: subscription.
+	// - **Prepay**: Subscription.
 	//
-	// - **Postpay**: pay-as-you-go.
+	// - **Postpay**: Pay-as-you-go.
 	//
 	// example:
 	//
 	// Prepay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+	// The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type DescribeIPv6TranslatorsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The specification of the IPv6 Translation Service instance. Valid values: **small**.
+	// The specifications of the IPv6 Translation Service instance. Valid value: **small*	- (Small).
 	//
 	// example:
 	//
@@ -118,19 +118,19 @@ type DescribeIPv6TranslatorsRequest struct {
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The status of the IPv6 Translation Service instance. Valid values:
 	//
-	// - **init**: initializing.
+	// - **init**: The instance is being initialized.
 	//
-	// - **provisioning**: being provisioned.
+	// - **provisioning**: The instance is being provisioned.
 	//
-	// - **active**: available.
+	// - **active**: The instance is active.
 	//
-	// - **updating**: being updated.
+	// - **updating**: The instance is being updated.
 	//
-	// - **upgrading**: being upgraded.
+	// - **upgrading**: The instance is being upgraded.
 	//
-	// - **deleting**: being deleted.
+	// - **deleting**: The instance is being deleted.
 	//
-	// - **deleted**: deleted.
+	// - **deleted**: The instance is deleted.
 	//
 	// example:
 	//

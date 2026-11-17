@@ -21,6 +21,8 @@ type iDescribeVSwitchAttributesResponseBody interface {
 	GetEnabledIpv6() *bool
 	SetIpv6CidrBlock(v string) *DescribeVSwitchAttributesResponseBody
 	GetIpv6CidrBlock() *string
+	SetIpv6Only(v bool) *DescribeVSwitchAttributesResponseBody
+	GetIpv6Only() *bool
 	SetIsDefault(v bool) *DescribeVSwitchAttributesResponseBody
 	GetIsDefault() *bool
 	SetNetworkAclId(v string) *DescribeVSwitchAttributesResponseBody
@@ -56,7 +58,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// 12
 	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	// The private network address range of the vSwitch.
+	// The private endpoint range of the vSwitch.
 	//
 	// example:
 	//
@@ -74,11 +76,11 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the IPv6 CIDR block is enabled for the vSwitch. Valid values:
+	// Specifies whether the IPv6 CIDR block is enabled and configured for the vSwitch. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: not enabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -90,7 +92,17 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// 2408:XXXX:3c5:44e::/64
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	// Indicates whether the vSwitch is an IPv6 single-stack vSwitch. Valid values:
+	//
+	// - true: The vSwitch is an IPv6 single-stack vSwitch.
+	//
+	// - false: The vSwitch is not an IPv6 single-stack vSwitch.
+	//
+	// example:
+	//
+	// false
+	Ipv6Only *bool `json:"Ipv6Only,omitempty" xml:"Ipv6Only,omitempty"`
+	// Specifies whether the vSwitch is the default vSwitch. Valid values:
 	//
 	// - **true**: The vSwitch is the default vSwitch.
 	//
@@ -106,21 +118,21 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// 1
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The Alibaba Cloud account ID of the resource ownership.
+	// The Alibaba Cloud account ID of the resource owner.
 	//
-	// 	Notice: This value is of the Long type. Precision loss may occur in certain programming languages. Use this value with caution.
+	// 	Notice: This value is of the Long type and may cause precision loss in some programming languages. Use it with caution.
 	//
 	// example:
 	//
 	// 28768383240243****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7B48B4B9-1EAD-469F-B488-594DAB4B6A1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -128,13 +140,13 @@ type DescribeVSwitchAttributesResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The route table information of the vSwitch.
 	RouteTable *DescribeVSwitchAttributesResponseBodyRouteTable `json:"RouteTable,omitempty" xml:"RouteTable,omitempty" type:"Struct"`
-	// The sharing type of the vSwitch.
+	// The share type of the vSwitch.
 	//
-	// - If the value is empty, the vSwitch is a private vSwitch.
+	// - If the value is empty, the vSwitch is a standard vSwitch.
 	//
 	// - If the value is **Shared**, the vSwitch is a shared vSwitch.
 	//
-	// - If the value is **Sharing**, the vSwitch is being shared with other accounts.
+	// - If the value is **Sharing**, the vSwitch is being shared.
 	//
 	// example:
 	//
@@ -142,9 +154,9 @@ type DescribeVSwitchAttributesResponseBody struct {
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The status of the vSwitch. Valid values:
 	//
-	// - **Pending**: being configured.
+	// - **Pending**: Configuring.
 	//
-	// - **Available**: active.
+	// - **Available**: Available.
 	//
 	// example:
 	//
@@ -207,6 +219,10 @@ func (s *DescribeVSwitchAttributesResponseBody) GetEnabledIpv6() *bool {
 
 func (s *DescribeVSwitchAttributesResponseBody) GetIpv6CidrBlock() *string {
 	return s.Ipv6CidrBlock
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) GetIpv6Only() *bool {
+	return s.Ipv6Only
 }
 
 func (s *DescribeVSwitchAttributesResponseBody) GetIsDefault() *bool {
@@ -288,6 +304,11 @@ func (s *DescribeVSwitchAttributesResponseBody) SetEnabledIpv6(v bool) *Describe
 
 func (s *DescribeVSwitchAttributesResponseBody) SetIpv6CidrBlock(v string) *DescribeVSwitchAttributesResponseBody {
 	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetIpv6Only(v bool) *DescribeVSwitchAttributesResponseBody {
+	s.Ipv6Only = &v
 	return s
 }
 
@@ -379,9 +400,9 @@ type DescribeVSwitchAttributesResponseBodyRouteTable struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The type of the route table. Valid values:
 	//
-	// - **System**: system route table.
+	// - **System**: System route table.
 	//
-	// - **Custom**: custom route table.
+	// - **Custom**: Custom route table.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iEnableVpcClassicLinkRequest interface {
 type EnableVpcClassicLinkRequest struct {
   // The client token that is used to ensure the idempotence of the request.
   // 
-  // You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+  // You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
   // 
   // > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
   // 
@@ -40,7 +40,8 @@ type EnableVpcClassicLinkRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The region ID of the VPC for which you want to enable ClassicLink.
   // 
-  // You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+  // 
+  // You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
   // 
   // This parameter is required.
   // 

@@ -32,13 +32,13 @@ type iDescribeVpnRouteEntriesRequest interface {
 type DescribeVpnRouteEntriesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return per page for paging in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeVpnRouteEntriesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPN gateway instance.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

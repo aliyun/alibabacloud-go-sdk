@@ -22,7 +22,7 @@ type ListEnhanhcedNatGatewayAvailableZonesResponseBody struct {
 	//
 	// 8AE6F367-52EA-535D-9A3D-EF23D70527C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of zones.
+	// The zones.
 	Zones []*ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -70,7 +70,7 @@ type ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones struct {
 	//
 	// example:
 	//
-	// 中东1 可用区A
+	// Middle East 1 Zone A
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The zone ID.
 	//

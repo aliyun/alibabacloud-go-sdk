@@ -24,7 +24,7 @@ type iUpdateRouteTargetGroupRequest interface {
 }
 
 type UpdateRouteTargetGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters. If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must ensure that the value is unique among different requests. The client token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateRouteTargetGroupRequest struct {
 	//
 	// myRouteTargetGroupDescription
 	RouteTargetGroupDescription *string `json:"RouteTargetGroupDescription,omitempty" xml:"RouteTargetGroupDescription,omitempty"`
-	// The routing target group instance ID.
+	// The instance ID of the routing target group.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +62,13 @@ type UpdateRouteTargetGroupRequest struct {
 	//
 	// myRouteTargetGroupName
 	RouteTargetGroupName *string `json:"RouteTargetGroupName,omitempty" xml:"RouteTargetGroupName,omitempty"`
-	// The member list of the route target group.
+	// The list of members in the route target group.
 	//
-	// In active/standby mode, the following limits apply to route target group members:
+	// In active/standby mode, the following limits apply to the members of the route target group:
 	//
-	// 1. The number of route target group members must be 2.
+	// 1. The route target group must contain exactly two members.
 	//
-	// 2. The route target group members must belong to different zones.
+	// 2. The members of the route target group must belong to different zones.
 	RouteTargetMemberList []*UpdateRouteTargetGroupRequestRouteTargetMemberList `json:"RouteTargetMemberList,omitempty" xml:"RouteTargetMemberList,omitempty" type:"Repeated"`
 }
 
@@ -148,29 +148,29 @@ func (s *UpdateRouteTargetGroupRequest) Validate() error {
 }
 
 type UpdateRouteTargetGroupRequestRouteTargetMemberList struct {
-	// The instance ID of the route target group member.
+	// The instance ID of the member in the routing target group.
 	//
 	// example:
 	//
 	// ep-xxxx
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The member type of the route target group.
+	// The type of the member in the route target group.
 	//
-	// Currently supported type:
+	// Valid values:
 	//
 	// - **GatewayLoadBalancerEndpoint**
 	//
-	// In active/standby mode, all members of the route target group must be of the same type.
+	// In active/standby mode, all members in the route target group must be of the same type.
 	//
 	// example:
 	//
 	// GatewayLoadBalancerEndpoint
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
-	// The weight of the route target group member. Valid values:
+	// The weight of the member in the route target group. Valid values:
 	//
-	// - 100: The member is the active instance.
+	// - 100: The member is the primary instance.
 	//
-	// - 0: The member is the standby instance.
+	// - 0: The member is the secondary instance.
 	//
 	// The weight can only be set during creation and cannot be modified.
 	//

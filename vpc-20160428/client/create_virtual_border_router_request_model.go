@@ -56,11 +56,11 @@ type iCreateVirtualBorderRouterRequest interface {
 }
 
 type CreateVirtualBorderRouterRequest struct {
-	// The bandwidth of the VBR instance. Unit: Mbit/s.
+	// The bandwidth value of the VBR instance. Unit: Mbit/s.
 	//
 	// - When you create a VBR instance for a dedicated Express Connect circuit, valid values are **50**, **100**, **200**, **300**, **400**, **500**, **1000**, **2048**, **5120**, **8192**, **10240**, **20480**, **40960**, **50120**, **61440**, and **102400**.
 	//
-	// - When you create a VBR instance for shared Express Connect circuits, you do not need to configure this parameter. The bandwidth of the VBR is the bandwidth of the shared Express Connect circuits that is specified in Settings when the shared Express Connect circuits are created.
+	// - When you create a VBR instance for shared Express Connect circuits, you do not need to configure this parameter. The bandwidth of the VBR is the bandwidth of the shared Express Connect circuits that was specified in Settings when the shared Express Connect circuits were created.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type CreateVirtualBorderRouterRequest struct {
 	Tags []*CreateVirtualBorderRouterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The account ID of the VBR instance owner.
 	//
-	// The default value is the Alibaba Cloud account ID used for logon.
+	// The default value is the Alibaba Cloud account ID used to logon.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ func (s *CreateVirtualBorderRouterRequest) Validate() error {
 type CreateVirtualBorderRouterRequestTags struct {
 	// The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -444,7 +444,7 @@ type CreateVirtualBorderRouterRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

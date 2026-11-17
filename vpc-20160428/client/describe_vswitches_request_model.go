@@ -13,6 +13,8 @@ type iDescribeVSwitchesRequest interface {
 	GetDryRun() *bool
 	SetEnableIpv6(v bool) *DescribeVSwitchesRequest
 	GetEnableIpv6() *bool
+	SetIpv6Only(v bool) *DescribeVSwitchesRequest
+	GetIpv6Only() *bool
 	SetIsDefault(v bool) *DescribeVSwitchesRequest
 	GetIsDefault() *bool
 	SetOwnerAccount(v string) *DescribeVSwitchesRequest
@@ -48,23 +50,23 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - **true**: The system prechecks the request without creating resources. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): The system sends a normal request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to query vSwitches that have IPv6 CIDR blocks enabled in the specified region. Valid values:
+	// Specifies whether to query the vSwitches that have IPv6 CIDR blocks enabled in the specified region. Valid values:
 	//
-	// - **true**: queries vSwitches that have IPv6 CIDR blocks enabled in the specified region.
+	// - **true**: Queries the vSwitches that have IPv6 CIDR blocks enabled in the specified region.
 	//
-	// - **false**: does not query vSwitches that have IPv6 CIDR blocks enabled in the specified region.
+	// - **false**: Does not query the vSwitches that have IPv6 CIDR blocks enabled in the specified region.
 	//
-	// If you do not specify this parameter, the system queries all vSwitches in the specified region.
+	// If you do not specify this parameter, the system queries all vSwitches in the specified region by default.
 	//
 	// if can be null:
 	// true
@@ -73,13 +75,28 @@ type DescribeVSwitchesRequest struct {
 	//
 	// false
 	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// Specifies whether to query the IPv6 single-stack vSwitches in the specified region. Valid values:
+	//
+	// - true: Queries the IPv6 single-stack vSwitches in the specified region.
+	//
+	// - false: Does not query the IPv6 single-stack vSwitches in the specified region.
+	//
+	// If you do not specify this parameter, the system queries all vSwitches in the specified region by default.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	Ipv6Only *bool `json:"Ipv6Only,omitempty" xml:"Ipv6Only,omitempty"`
 	// Specifies whether to query the default vSwitch in the specified region. Valid values:
 	//
-	// - **true**: queries the default vSwitch in the specified region.
+	// - **true**: Queries the default vSwitch in the specified region.
 	//
-	// - **false**: does not query the default vSwitch in the specified region.
+	// - **false**: Does not query the default vSwitch in the specified region.
 	//
-	// If you do not specify this parameter, the system queries all vSwitches in the specified region.
+	// If you do not specify this parameter, the system queries all vSwitches in the specified region by default.
 	//
 	// example:
 	//
@@ -87,21 +104,21 @@ type DescribeVSwitchesRequest struct {
 	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
-	// > Specify at least one of the **RegionId*	- and **VpcId*	- parameters.
+	// > You must specify at least one of the **RegionId*	- and **VpcId*	- parameters.
 	//
 	// example:
 	//
@@ -123,7 +140,7 @@ type DescribeVSwitchesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The tags of the resource.
 	Tag []*DescribeVSwitchesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch that you want to query.
+	// The ID of the vSwitch to be queried.
 	//
 	// example:
 	//
@@ -143,15 +160,15 @@ type DescribeVSwitchesRequest struct {
 	//
 	// 2546073170691****
 	VSwitchOwnerId *int64 `json:"VSwitchOwnerId,omitempty" xml:"VSwitchOwnerId,omitempty"`
-	// The ID of the VPC to which the vSwitches that you want to query belong.
+	// The ID of the VPC to which the vSwitch to be queried belongs.
 	//
-	// > Specify at least one of the **RegionId*	- and **VpcId*	- parameters.
+	// > You must specify at least one of the **RegionId*	- and **VpcId*	- parameters.
 	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the zone ID.
+	// The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
 	//
 	// example:
 	//
@@ -173,6 +190,10 @@ func (s *DescribeVSwitchesRequest) GetDryRun() *bool {
 
 func (s *DescribeVSwitchesRequest) GetEnableIpv6() *bool {
 	return s.EnableIpv6
+}
+
+func (s *DescribeVSwitchesRequest) GetIpv6Only() *bool {
+	return s.Ipv6Only
 }
 
 func (s *DescribeVSwitchesRequest) GetIsDefault() *bool {
@@ -246,6 +267,11 @@ func (s *DescribeVSwitchesRequest) SetDryRun(v bool) *DescribeVSwitchesRequest {
 
 func (s *DescribeVSwitchesRequest) SetEnableIpv6(v bool) *DescribeVSwitchesRequest {
 	s.EnableIpv6 = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetIpv6Only(v bool) *DescribeVSwitchesRequest {
+	s.Ipv6Only = &v
 	return s
 }
 
@@ -343,17 +369,17 @@ func (s *DescribeVSwitchesRequest) Validate() error {
 }
 
 type DescribeVSwitchesRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

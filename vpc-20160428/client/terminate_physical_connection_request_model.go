@@ -38,7 +38,7 @@ type TerminatePhysicalConnectionRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance ID of the Express Connect circuit.
+	// The instance ID of the Express Connect circuit instance.
 	//
 	// This parameter is required.
 	//

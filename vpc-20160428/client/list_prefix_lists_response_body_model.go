@@ -22,15 +22,15 @@ type iListPrefixListsResponseBody interface {
 }
 
 type ListPrefixListsResponseBody struct {
-	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
 	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
@@ -38,15 +38,15 @@ type ListPrefixListsResponseBody struct {
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about the prefix lists.
+	// The details of the prefix lists.
 	PrefixLists []*ListPrefixListsResponseBodyPrefixLists `json:"PrefixLists,omitempty" xml:"PrefixLists,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// DF72F7BB-5DFA-529C-887E-B0BB70D89C4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of prefix lists returned.
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *ListPrefixListsResponseBody) Validate() error {
 }
 
 type ListPrefixListsResponseBodyPrefixLists struct {
-	// The Classless Inter-Domain Routing (CIDR) block information of the prefix list.
+	// The Classless Inter-Domain Routing information of the prefix list.
 	CidrBlocks []*string `json:"CidrBlocks,omitempty" xml:"CidrBlocks,omitempty" type:"Repeated"`
-	// The time when the prefix list was created.
+	// The time when the prefix list was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	//
 	// IPV4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The maximum number of entries for Classless Inter-Domain Routing (CIDR) blocks in the prefix list.
+	// The maximum number of entries of Classless Inter-Domain Routing in the prefix list.
 	//
 	// example:
 	//
@@ -171,11 +171,11 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	PrefixListName *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
 	// The status of the prefix list. Valid values:
 	//
-	// - **Created**: Created.
+	// - **Created**: The prefix list is created.
 	//
-	// - **Deleted**: Deleted.
+	// - **Deleted**: The prefix list is deleted.
 	//
-	// - **Modifying**: Being modified.
+	// - **Modifying**: The prefix list is being modified.
 	//
 	// > This parameter has the same meaning and valid values as **Status**.
 	//
@@ -203,9 +203,9 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sharing type of the prefix list. Valid values:
 	//
-	// - **Shared**: The prefix list is a shared prefix list.
+	// - **Shared**: The prefix list is shared.
 	//
-	// - Empty: The prefix list is not a shared prefix list.
+	// - Empty: The prefix list is not shared.
 	//
 	// example:
 	//
@@ -213,17 +213,17 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The status of the prefix list. Valid values:
 	//
-	// - **Created**: Created.
+	// - **Created**: The prefix list is created.
 	//
-	// - **Deleted**: Deleted.
+	// - **Deleted**: The prefix list is deleted.
 	//
-	// - **Modifying**: Being modified.
+	// - **Modifying**: The prefix list is being modified.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListPrefixListsResponseBodyPrefixListsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

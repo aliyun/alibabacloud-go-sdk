@@ -32,7 +32,7 @@ type iSetHighDefinitionMonitorLogStatusRequest interface {
 }
 
 type SetHighDefinitionMonitorLogStatusRequest struct {
-	// The instance ID of the instance for which you want to configure high-definition second-level monitoring.
+	// The instance ID for which you want to configure high-precision second-level monitoring.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	//
 	// EIP
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the LogProject in Simple Log Service.
+	// The name of the LogProject.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	//
 	// hdmonitor-cn-shenzhen
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the LogStore in Simple Log Service.
+	// The name of the Logstore.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,7 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	LogStore     *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -76,11 +74,11 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The high-definition second-level monitoring status of the instance. Valid values:
+	// The status of high-precision second-level monitoring for the instance. Valid values:
 	//
-	// - **ON**: Enables high-definition second-level monitoring.
+	// - **ON**: enables high-precision second-level monitoring.
 	//
-	// - **OFF**: Disables high-definition second-level monitoring.
+	// - **OFF**: disables high-precision second-level monitoring.
 	//
 	// This parameter is required.
 	//

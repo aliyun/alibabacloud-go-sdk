@@ -36,7 +36,7 @@ type iCreateVpnPbrRouteEntryResponseBody interface {
 type CreateVpnPbrRouteEntryResponseBody struct {
 	// The timestamp when the policy-based route was created. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format. It is the total number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970 (UTC).
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type CreateVpnPbrRouteEntryResponseBody struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunnel protocol).
+	// The tunnel protocol. Set the value to **Ipsec*	- (IPsec tunnel protocol).
 	//
 	// example:
 	//
 	// Ipsec
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
-	// The policy priority of the policy-based routing entry.
+	// The policy priority of the policy-based route.
 	//
 	// example:
 	//
@@ -86,15 +86,15 @@ type CreateVpnPbrRouteEntryResponseBody struct {
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
 	// The publish status of the policy-based route.
 	//
-	// - **published**: The policy-based route is published to the VPC route table.
+	// - **published**: The policy-based route is published to the route tables of the VPC.
 	//
-	// - **normal**: The policy-based route is not published to the VPC route table.
+	// - **normal**: The policy-based route is not published to the route tables of the VPC.
 	//
 	// example:
 	//
 	// normal
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The instance ID of the VPN gateway.
+	// The ID of the VPN gateway.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type CreateVpnPbrRouteEntryResponseBody struct {
 	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
 	// The weight of the policy-based route.
 	//
-	// - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
+	// - **100**: The IPsec-VPN connection associated with the policy-based route is the active link.
 	//
-	// - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
+	// - **0**: The IPsec-VPN connection associated with the policy-based route is the standby link.
 	//
 	// example:
 	//

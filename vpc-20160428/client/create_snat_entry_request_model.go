@@ -42,19 +42,19 @@ type iCreateSnatEntryRequest interface {
 type CreateSnatEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `ClientToken` value can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The `ClientToken` parameter can contain only ASCII characters.
 	//
-	// >If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run without creating the SNAT entry. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run on the request without creating the SNAT entry. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a Normal request, and the SNAT entry is created after the check succeeds. A 2xx HTTP status code is returned.
+	// - **false*	- (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the SNAT entry is created.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type CreateSnatEntryRequest struct {
 	//
 	// - **1**: enables EIP affinity.
 	//
-	// > After EIP affinity is enabled, if the SNAT entry is bindded with multiple EIPs or NAT IP addresses, the same client uses the same EIP or NAT IP address to access the same destination IP address. Otherwise, the client randomly selects an EIP or NAT IP address from the bindded ones.
+	// > After you enable EIP affinity, if the SNAT entry is associated with multiple EIPs or NAT IP addresses, the same EIP or NAT IP address is used when the same client accesses the same destination IP address. Otherwise, the client randomly selects an EIP or NAT IP address from the associated EIPs or NAT IP addresses.
 	//
 	// example:
 	//
 	// 1
 	EipAffinity *int32 `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
-	// The ID of the elastic network interface (ENI).
+	// The ID of the network interface controller (NIC).
 	//
-	// > The IPv4 address set of the ENI is used as the SNAT address.
+	// > The IPv4 addresses of the network interface controller (NIC) are used as the SNAT addresses.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type CreateSnatEntryRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the NAT gateway.
+	// The ID of the region where the NAT gateway is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +96,13 @@ type CreateSnatEntryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the SNAT entry.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// SnatEntry-1
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	// When you add an SNAT entry for an Internet NAT gateway:
+	// When you add an SNAT entry to an Internet NAT gateway:
 	//
 	// 	- The SnatIp parameter is required.
 	//
@@ -112,13 +112,13 @@ type CreateSnatEntryRequest struct {
 	//
 	// 	- If SnatIp specifies multiple public IP addresses, the ECS instance randomly uses one of the public IP addresses in SnatIp to access the Internet.
 	//
-	// >If you specify multiple EIPs to configure an SNAT IP IPAM pool, connections are allocated to multiple EIPs by using a hash algorithm. Because the traffic of each connection varies, service traffic may be unevenly distributed among the EIPs. Add each EIP to the same Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth exhaustion on a single EIP.
+	// > When you specify multiple EIPs to configure an SNAT IP address pool, service connections are allocated to the multiple EIPs through a hash algorithm. Because service traffic of each connection is different, service traffic of the multiple EIPs may be uneven. Add all EIPs to the same Internet Shared Bandwidth to prevent service interruptions caused by the bandwidth limit of a single EIP.
 	//
-	// When you add an SNAT entry for a VPC NAT gateway:
+	// When you add an SNAT entry to a VPC NAT gateway:
 	//
 	// 	- This parameter specifies the NAT IP addresses in the SNAT entry. Separate multiple NAT IP addresses with commas (,).
 	//
-	// 	- You must specify one of the SnatIp and NetworkInterfaceId parameters, but you cannot specify both.
+	// 	- You must specify either SnatIp or NetworkInterfaceId.
 	//
 	// example:
 	//
@@ -132,19 +132,19 @@ type CreateSnatEntryRequest struct {
 	//
 	// stb-bp190wu8io1vgev****
 	SnatTableId *string `json:"SnatTableId,omitempty" xml:"SnatTableId,omitempty"`
-	// The CIDR block of a VPC, vSwitch, or ECS instance. You can also specify a custom CIDR block.
+	// The CIDR block of the VPC, vSwitch, or ECS instance. You can also specify a custom CIDR block.
 	//
 	// SNAT entries support the following granularities:
 	//
-	// - VPC granularity: the CIDR block of the VPC to which the NAT gateway belongs. All ECS instances in the VPC can access the Internet or external networks by using the SNAT rule.
+	// - VPC granularity: the CIDR block of the VPC where the NAT gateway is deployed. All ECS instances in the VPC can access the Internet or external networks through SNAT rules.
 	//
-	// - vSwitch granularity: the CIDR block of a specified vSwitch (such as 192.168.1.0/24). ECS instances in the vSwitch can access the Internet or external networks by using the SNAT rule.
+	// - vSwitch granularity: the CIDR block of a specified vSwitch, such as 192.168.1.0/24. All ECS instances in the vSwitch can access the Internet or external networks through SNAT rules.
 	//
-	// - ECS granularity: the IP address of a specified ECS instance (such as 192.168.1.1/32). The ECS instance can access the Internet or external networks by using the SNAT rule.
+	// - ECS instance granularity: the IP address of a specified ECS instance, such as 192.168.1.1/32. The ECS instance can access the Internet or external networks through SNAT rules.
 	//
-	// - Custom CIDR block: all ECS instances in the specified CIDR block can access the Internet or external networks by using the SNAT service.
+	// - Custom CIDR block: all ECS instances within the specified CIDR block can access the Internet or external networks through SNAT rules.
 	//
-	// > You must specify one of the **SourceCIDR*	- and **SourceVSwitchId*	- parameters, but you cannot specify both.
+	// > You must specify either the **SourceCIDR*	- parameter or the **SourceVSwtichId*	- parameter.
 	//
 	// example:
 	//
@@ -152,11 +152,11 @@ type CreateSnatEntryRequest struct {
 	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
 	// The ID of the vSwitch.
 	//
-	// 	- When you add an SNAT entry for an Internet NAT gateway, this parameter specifies that ECS instances in the vSwitch can access the Internet by using the SNAT rule. If you specify multiple EIPs to configure an SNAT IP IPAM pool, connections are allocated to multiple EIPs by using a hash algorithm. Because the traffic of each connection varies, service traffic may be unevenly distributed among the EIPs. Add each EIP to the same Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth exhaustion on a single EIP.
+	// 	- When you add an SNAT entry to an Internet NAT gateway, this parameter specifies that all ECS instances in the vSwitch can access the Internet through SNAT rules. When you specify multiple EIPs to configure an SNAT IP address pool, service connections are allocated to the multiple EIPs through a hash algorithm. Because service traffic of each connection is different, service traffic of the multiple EIPs may be uneven. Add all EIPs to the same Internet Shared Bandwidth to prevent service interruptions caused by the bandwidth limit of a single EIP.
 	//
-	// 	- When you add an SNAT entry for a VPC NAT gateway, this parameter specifies that ECS instances in the vSwitch can access external networks by using the SNAT rule.
+	// 	- When you add an SNAT entry to a VPC NAT gateway, this parameter specifies that all ECS instances in the vSwitch can access external networks through SNAT rules.
 	//
-	// > You must specify one of the **SourceCIDR*	- and **SourceVSwitchId*	- parameters, but you cannot specify both.
+	// > You must specify either the **SourceCIDR*	- parameter or the **SourceVSwtichId*	- parameter.
 	//
 	// example:
 	//

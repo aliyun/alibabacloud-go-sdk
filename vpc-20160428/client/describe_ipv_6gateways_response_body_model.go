@@ -23,7 +23,7 @@ type iDescribeIpv6GatewaysResponseBody interface {
 
 type DescribeIpv6GatewaysResponseBody struct {
 	Ipv6Gateways *DescribeIpv6GatewaysResponseBodyIpv6Gateways `json:"Ipv6Gateways,omitempty" xml:"Ipv6Gateways,omitempty" type:"Struct"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//

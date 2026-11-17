@@ -18,11 +18,11 @@ type iListVpcPublishedRouteEntriesResponseBody interface {
 }
 
 type ListVpcPublishedRouteEntriesResponseBody struct {
-	// The token for the next query. Valid values:
+	// The token used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no more results are available.
 	//
-	// - If **NextToken*	- has a value, the value indicates the token for the next query.
+	// - If **NextToken*	- is returned, the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListVpcPublishedRouteEntriesResponseBody struct {
 	//
 	// 1D0971B2-A35A-42C1-A44C-E91360C36C0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of route entry publish status information.
+	// The list of route publication status information.
 	RouteEntries []*ListVpcPublishedRouteEntriesResponseBodyRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
 }
 
@@ -87,19 +87,19 @@ func (s *ListVpcPublishedRouteEntriesResponseBody) Validate() error {
 }
 
 type ListVpcPublishedRouteEntriesResponseBodyRouteEntries struct {
-	// The destination CIDR block of the route entry.
+	// The destination CIDR block of the route.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the route entry.
+	// The ID of the route.
 	//
 	// example:
 	//
 	// rte-bp1mnnr2al0naomnpv****
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The list of publish status information for the route entry in publish targets.
+	// The list of publication status information of the route at the publication targets.
 	RoutePublishTargets []*ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets `json:"RoutePublishTargets,omitempty" xml:"RoutePublishTargets,omitempty" type:"Repeated"`
 	// The route table ID.
 	//
@@ -167,19 +167,19 @@ func (s *ListVpcPublishedRouteEntriesResponseBodyRouteEntries) Validate() error 
 }
 
 type ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets struct {
-	// The publish status of the route entry in the publish target.
+	// The publication status of the route at the publication target.
 	//
 	// example:
 	//
 	// Published
 	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// The instance ID of the route publish target.
+	// The instance ID of the route publication target.
 	//
 	// example:
 	//
 	// ecr-xvuqdfma6x57ei****
 	PublishTargetInstanceId *string `json:"PublishTargetInstanceId,omitempty" xml:"PublishTargetInstanceId,omitempty"`
-	// The route publish target.
+	// The route publication target.
 	//
 	// example:
 	//

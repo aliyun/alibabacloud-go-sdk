@@ -31,7 +31,7 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging query.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -43,9 +43,9 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The call is successful.
+	// - **true**: The call was successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -53,7 +53,7 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of flow logs returned.
 	//
 	// example:
 	//

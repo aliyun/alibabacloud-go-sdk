@@ -29,7 +29,7 @@ type DescribeIpv6AddressesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -146,25 +146,26 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6Addresses) Validate() error {
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address struct {
-	AddressType            *string                                                                         `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	AllocationTime         *string                                                                         `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	AssociatedInstanceId   *string                                                                         `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	AssociatedInstanceType *string                                                                         `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	Ipv6Address            *string                                                                         `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	Ipv6AddressDescription *string                                                                         `json:"Ipv6AddressDescription,omitempty" xml:"Ipv6AddressDescription,omitempty"`
-	Ipv6AddressId          *string                                                                         `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
-	Ipv6AddressName        *string                                                                         `json:"Ipv6AddressName,omitempty" xml:"Ipv6AddressName,omitempty"`
-	Ipv6GatewayId          *string                                                                         `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
-	Ipv6InternetBandwidth  *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth `json:"Ipv6InternetBandwidth,omitempty" xml:"Ipv6InternetBandwidth,omitempty" type:"Struct"`
-	Ipv6Isp                *string                                                                         `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
-	NetworkType            *string                                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	RealBandwidth          *int32                                                                          `json:"RealBandwidth,omitempty" xml:"RealBandwidth,omitempty"`
-	ResourceGroupId        *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceManaged         *int32                                                                          `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	Status                 *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                   *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags                  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VSwitchId              *string                                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                  *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AddressType                *string                                                                              `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AllocationTime             *string                                                                              `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	AssociatedInstanceId       *string                                                                              `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
+	AssociatedInstanceType     *string                                                                              `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
+	CommonBandwidthPackageInfo *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo `json:"CommonBandwidthPackageInfo,omitempty" xml:"CommonBandwidthPackageInfo,omitempty" type:"Struct"`
+	Ipv6Address                *string                                                                              `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	Ipv6AddressDescription     *string                                                                              `json:"Ipv6AddressDescription,omitempty" xml:"Ipv6AddressDescription,omitempty"`
+	Ipv6AddressId              *string                                                                              `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
+	Ipv6AddressName            *string                                                                              `json:"Ipv6AddressName,omitempty" xml:"Ipv6AddressName,omitempty"`
+	Ipv6GatewayId              *string                                                                              `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
+	Ipv6InternetBandwidth      *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth      `json:"Ipv6InternetBandwidth,omitempty" xml:"Ipv6InternetBandwidth,omitempty" type:"Struct"`
+	Ipv6Isp                    *string                                                                              `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	NetworkType                *string                                                                              `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	RealBandwidth              *int32                                                                               `json:"RealBandwidth,omitempty" xml:"RealBandwidth,omitempty"`
+	ResourceGroupId            *string                                                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceManaged             *int32                                                                               `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	Status                     *string                                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                       *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId                  *string                                                                              `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                      *string                                                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) String() string {
@@ -189,6 +190,10 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) GetAssociate
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) GetAssociatedInstanceType() *string {
 	return s.AssociatedInstanceType
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) GetCommonBandwidthPackageInfo() *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo {
+	return s.CommonBandwidthPackageInfo
 }
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) GetIpv6Address() *string {
@@ -271,6 +276,11 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) SetAssociate
 	return s
 }
 
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) SetCommonBandwidthPackageInfo(v *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address {
+	s.CommonBandwidthPackageInfo = v
+	return s
+}
+
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) SetIpv6Address(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address {
 	s.Ipv6Address = &v
 	return s
@@ -347,6 +357,11 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) SetVpcId(v s
 }
 
 func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) Validate() error {
+	if s.CommonBandwidthPackageInfo != nil {
+		if err := s.CommonBandwidthPackageInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Ipv6InternetBandwidth != nil {
 		if err := s.Ipv6InternetBandwidth.Validate(); err != nil {
 			return err
@@ -358,6 +373,51 @@ func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address) Validate() e
 		}
 	}
 	return nil
+}
+
+type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo struct {
+	BandwidthPackageBandwidth         *int64  `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
+	BandwidthPackageId                *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CommonBandwidthPackageIpBandwidth *int64  `json:"CommonBandwidthPackageIpBandwidth,omitempty" xml:"CommonBandwidthPackageIpBandwidth,omitempty"`
+}
+
+func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) GetBandwidthPackageBandwidth() *int64 {
+	return s.BandwidthPackageBandwidth
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) GetBandwidthPackageId() *string {
+	return s.BandwidthPackageId
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) GetCommonBandwidthPackageIpBandwidth() *int64 {
+	return s.CommonBandwidthPackageIpBandwidth
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) SetBandwidthPackageBandwidth(v int64) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo {
+	s.BandwidthPackageBandwidth = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) SetBandwidthPackageId(v string) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo {
+	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) SetCommonBandwidthPackageIpBandwidth(v int64) *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo {
+	s.CommonBandwidthPackageIpBandwidth = &v
+	return s
+}
+
+func (s *DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandwidth struct {

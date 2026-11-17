@@ -30,7 +30,7 @@ type iDeleteNetworkAclRequest interface {
 type DeleteNetworkAclRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the value, and you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
@@ -38,11 +38,11 @@ type DeleteNetworkAclRequest struct {
 	//
 	// 223e4867-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to precheck the request. Valid values:
 	//
-	// 	- **true**: performs a dry run.
+	// 	- **true**: sends a precheck request.
 	//
-	// 	- **false*	- (default): sends the request.
+	// 	- **false*	- (default): sends a normal request.
 	//
 	// example:
 	//

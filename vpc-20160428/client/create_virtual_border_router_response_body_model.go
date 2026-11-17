@@ -22,7 +22,7 @@ type CreateVirtualBorderRouterResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance ID of the VBR.
+	// The VBR instance ID.
 	//
 	// example:
 	//

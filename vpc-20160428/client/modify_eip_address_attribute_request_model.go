@@ -40,15 +40,15 @@ type ModifyEipAddressAttributeRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The peak bandwidth of the EIP. Valid values:
 	//
-	// - **1*	- to **200**: If the EIP is billed on a pay-by-data-transfer basis. Unit: Mbit/s.
+	// - **1*	- to **200*	- if the EIP is billed by data transfer. Unit: Mbit/s.
 	//
-	// - **1*	- to **500**: If the EIP is billed on a pay-by-bandwidth basis. Unit: Mbit/s.
+	// - **1*	- to **500*	- if the EIP is billed by bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 100
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The description of the EIP that you want to modify.
+	// The description of the EIP.
 	//
 	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -56,7 +56,7 @@ type ModifyEipAddressAttributeRequest struct {
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the EIP that you want to modify.
+	// The name of the EIP.
 	//
 	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -68,7 +68,7 @@ type ModifyEipAddressAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the EIP.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//

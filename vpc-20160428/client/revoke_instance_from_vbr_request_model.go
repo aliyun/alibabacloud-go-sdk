@@ -24,11 +24,11 @@ type iRevokeInstanceFromVbrRequest interface {
 }
 
 type RevokeInstanceFromVbrRequest struct {
-	// The scope of VBR instances for which the VPC-connected instance authorization is being revoked. Valid values:
+	// The scope of VBR instances from which the authorization of the VPC-connected instance is revoked. Valid values:
 	//
-	// - **ALL**: Revokes the VPC-connected instance authorization for all VBR instances in the specified region. In this case, the **VbrInstanceIds*	- parameter can be left empty.
+	// - **ALL**: revokes the authorization between the VPC-connected instance and all VBR instances in the specified region. In this case, the **VbrInstanceIds*	- parameter can be left empty.
 	//
-	// - **Specify**: Revokes the VPC-connected instance authorization for the specified VBR instances. In this case, the **VbrInstanceIds*	- parameter is required.
+	// - **Specify**: revokes the authorization between the VPC-connected instance and the specified VBR instances. In this case, the **VbrInstanceIds*	- parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RevokeInstanceFromVbrRequest struct {
 	//
 	// ALL
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// The instance ID of the VPC-connected instance for which you want to revoke the authorization.
+	// The VPC-connected instance ID for which you want to revoke the authorization.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,7 @@ type RevokeInstanceFromVbrRequest struct {
 	//
 	// vpc-bp1brjuegjc88v3u9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the VPC-connected instance for which you want to revoke the authorization.
-	//
-	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the VPC-connected instance for which you want to revoke the authorization. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +52,9 @@ type RevokeInstanceFromVbrRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of VBR instance IDs for which the VPC-connected instance authorization is being revoked.
+	// The list of VBR instance IDs from which the authorization of the VPC-connected instance is revoked.
 	VbrInstanceIds []*string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty" type:"Repeated"`
-	// The Alibaba Cloud account ID of the VBR instance for which the authorization is being revoked.
+	// The ID of the Alibaba Cloud account that owns the VBR instance from which the authorization is revoked.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +62,7 @@ type RevokeInstanceFromVbrRequest struct {
 	//
 	// 1210123456123456
 	VbrOwnerUid *string `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
-	// The region ID of the VBR instance for which the VPC-connected instance authorization is being revoked.
+	// The region ID of the VBR instance from which the authorization of the VPC-connected instance is revoked.
 	//
 	// This parameter is required.
 	//

@@ -26,7 +26,7 @@ type iCreateVpnAttachmentResponseBody interface {
 }
 
 type CreateVpnAttachmentResponseBody struct {
-	// The status code returned by the current task. A value of **200*	- indicates that the task is successful.
+	// The status code returned for the current task. **200*	- indicates that the task is successful.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type CreateVpnAttachmentResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the IPsec-VPN connection was created.
+	// The timestamp follows the UNIX time format. It is the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
 	//
 	// example:
 	//
 	// 1658201810000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The message returned by the current task.
+	// The message returned for the current task.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type CreateVpnAttachmentResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the current task is successfully executed.
 	//
-	// - **true**: Successfully executed.
+	// - **true**: The task is successfully executed.
 	//
-	// - **false**: Not successfully executed.
+	// - **false**: The task fails to be executed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The IPsec-VPN connection ID.
+	// The ID of the IPsec-VPN connection.
 	//
 	// example:
 	//

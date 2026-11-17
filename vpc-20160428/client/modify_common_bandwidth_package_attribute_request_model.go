@@ -36,13 +36,17 @@ type ModifyCommonBandwidthPackageAttributeRequest struct {
 	//
 	// cbwp-2ze2ic1xd2qeqk145****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The description of the Internet Shared Bandwidth instance. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the Internet Shared Bandwidth instance.
+	//
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the Internet Shared Bandwidth instance. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the Internet Shared Bandwidth instance.
+	//
+	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -50,9 +54,9 @@ type ModifyCommonBandwidthPackageAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region where the Internet Shared Bandwidth instance is located.
+	// The region where the Internet Shared Bandwidth instance resides.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -56,11 +56,11 @@ type ModifyBgpGroupAttributeRequest struct {
 	//
 	// bgpg-wz9f62v4fbg2g****
 	BgpGroupId *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
-	// Specifies whether to clear the authentication key. Valid values:
+	// Specifies whether to clear the key. Valid values:
 	//
-	// - **true**: Yes.
+	// - **true**: yes.
 	//
-	// - **false*	- (default): No.
+	// - **false*	- (default): no.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ModifyBgpGroupAttributeRequest struct {
 	ClearAuthKey *bool `json:"ClearAuthKey,omitempty" xml:"ClearAuthKey,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ type ModifyBgpGroupAttributeRequest struct {
 	//
 	// BGP
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to use a fake ASN. Valid values:
+	// Specifies whether to use a fake AS number. Valid values:
 	//
-	// - **false*	- (default): No.
+	// - **false**: no.
 	//
-	// - **true**: Yes.
+	// - **true*	- (default): yes.
 	//
-	// > A router that runs BGP can belong to only one AS. When you need to replace an existing AS with a new one (for example, during AS migration or merger with another AS) and cannot immediately modify the BGP configuration due to business constraints, you can specify a fake ASN to establish a connection with the local end to ensure service continuity.
+	// > A router that runs BGP typically belongs to only one AS. If you need to replace the original AS with a new AS (for example, when the AS needs to be migrated or merged with another AS) and cannot immediately modify the BGP configurations due to business or other objective factors, you can specify a fake AS number to establish a connection with the local end to ensure service continuity.
 	//
 	// example:
 	//
 	// false
 	IsFakeAsn *bool `json:"IsFakeAsn,omitempty" xml:"IsFakeAsn,omitempty"`
-	// The custom Alibaba Cloud-side BGP autonomous system number (ASN). Valid values:
+	// The custom autonomous system (AS) number on the Alibaba Cloud side. Valid values:
 	//
 	// - **45104**
 	//
@@ -104,7 +104,7 @@ type ModifyBgpGroupAttributeRequest struct {
 	//
 	// - **4200000000 to 4294967294**
 	//
-	// > **65025*	- is reserved by Alibaba Cloud. The Alibaba Cloud side uses **45104*	- as the default **LocalAsn*	- value. Using a custom **LocalAsn*	- value in multi-ISP access scenarios may cause BGP routing loops. Evaluate the risks before you use this feature.
+	// > **65025*	- is reserved by Alibaba Cloud. By default, Alibaba Cloud uses **45104*	- as the **LocalAsn**. If you use a custom **LocalAsn*	- in multi-line access scenarios, BGP routing loops may occur. Evaluate the risks before you use this feature.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ModifyBgpGroupAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ASN of the on-premises device.
+	// The AS number of the on-premises device.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ModifyBgpGroupAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The maximum number of routes for a BGP peer. Unit: entries. Default value: **110**.
+	// The maximum number of route entries that can be received by the BGP peer. Unit: entries. Default value: **110**.
 	//
 	// example:
 	//

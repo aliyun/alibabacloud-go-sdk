@@ -30,19 +30,15 @@ type iModifyHaVipAttributeRequest interface {
 }
 
 type ModifyHaVipAttributeRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
-	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e0****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the HaVip.
-	//
-	// The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
+	// The description of the HaVip. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -56,9 +52,7 @@ type ModifyHaVipAttributeRequest struct {
 	//
 	// havip-2zeo05qre24nhrqp****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The name of the HaVip.
-	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the HaVip. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -66,9 +60,7 @@ type ModifyHaVipAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the HaVip.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the HaVip. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

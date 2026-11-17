@@ -14,7 +14,7 @@ type iModifyBgpGroupAttributeResponseBody interface {
 }
 
 type ModifyBgpGroupAttributeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

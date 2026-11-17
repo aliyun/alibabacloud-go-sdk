@@ -28,11 +28,11 @@ type iCheckCanAllocateVpcPrivateIpAddressRequest interface {
 }
 
 type CheckCanAllocateVpcPrivateIpAddressRequest struct {
-	// The type of the private IP address to check. Valid values:
+	// The IP version of the private IP address to be queried. Valid values:
 	//
-	// - **ipv4**: IPv4. This parameter is optional when the private IP address is of the IPv4 type.
+	// - **ipv4**: IPv4. This parameter is optional when the private IP address to be queried is an IPv4 address.
 	//
-	// - **ipv6**: IPv6. This parameter is required when the private IP address is of the IPv6 type.
+	// - **ipv6**: IPv6. This parameter is required when the private IP address to be queried is an IPv6 address.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CheckCanAllocateVpcPrivateIpAddressRequest struct {
 	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address to check. The private IP address must belong to the vSwitch specified by the **VSwitchId*	- parameter.
+	// The private IP address whose availability you want to check. The private IP address must belong to the vSwitch specified by the **VSwitchId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,7 @@ type CheckCanAllocateVpcPrivateIpAddressRequest struct {
 	//
 	// 10.0.0.7
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The region ID of the vSwitch to which the private IP address belongs.
-	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+	// The region ID of the vSwitch to which the private IP address belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

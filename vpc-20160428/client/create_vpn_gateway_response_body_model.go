@@ -28,9 +28,9 @@ type CreateVpnGatewayResponseBody struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order ID.
 	//
-	// <props="china">If you did not enable automatic payment for the VPN gateway, go to [Expenses and Costs](https://usercenter2.aliyun.com/home) to complete the payment.
+	// <props="china">If you do not enable automatic payment for the VPN gateway, go to the [Alibaba Cloud Expenses and Costs](https://usercenter2.aliyun.com/home) console to complete the payment.
 	//
-	// <props="intl">If you did not enable automatic payment for the VPN gateway, go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/billing/#/account/overview) to complete the payment.
+	// <props="intl">If you do not enable automatic payment for the VPN gateway, go to the [Alibaba Cloud Expenses and Costs](https://usercenter2-intl.aliyun.com/billing/#/account/overview) console to complete the payment.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateVpnGatewayResponseBody struct {
 	//
 	// EB2C156A-41F8-49CC-A756-D55AFC8BFD69
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance ID of the VPN gateway.
+	// The instance ID of the VPN gateway instance.
 	//
 	// example:
 	//

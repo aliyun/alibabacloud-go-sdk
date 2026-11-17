@@ -14,7 +14,7 @@ type iAssociateVpnGatewayWithCertificateResponseBody interface {
 }
 
 type AssociateVpnGatewayWithCertificateResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

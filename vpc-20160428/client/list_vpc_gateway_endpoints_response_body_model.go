@@ -22,17 +22,17 @@ type iListVpcGatewayEndpointsResponseBody interface {
 }
 
 type ListVpcGatewayEndpointsResponseBody struct {
-	// The list of gateway endpoints.
+	// The list of VPC gateway endpoints.
 	Endpoints []*ListVpcGatewayEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The number of entries per page for a paged query.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Indicates whether a next query token is available. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no more results are available.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
 	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
@@ -40,13 +40,13 @@ type ListVpcGatewayEndpointsResponseBody struct {
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0AB1129F-32C1-5E4D-9E22-E4A859CA46EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,45 +121,45 @@ func (s *ListVpcGatewayEndpointsResponseBody) Validate() error {
 }
 
 type ListVpcGatewayEndpointsResponseBodyEndpoints struct {
-	// The IDs of the route tables associated with the gateway endpoint.
+	// The IDs of the route tables associated with the VPC gateway endpoint.
 	AssociatedRouteTables []*string `json:"AssociatedRouteTables,omitempty" xml:"AssociatedRouteTables,omitempty" type:"Repeated"`
-	// The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time when the VPC gateway endpoint was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-09-08T08:43:04Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the gateway endpoint.
+	// The description of the VPC gateway endpoint.
 	//
 	// example:
 	//
 	// test_description
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The endpoint instance ID of the gateway endpoint.
+	// The gateway endpoint instance ID.
 	//
 	// example:
 	//
 	// vpce-bp1i1212ss2whuwyw****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	//
 	// example:
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The status of the gateway endpoint. Valid values:
+	// The status of the VPC gateway endpoint. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: The endpoint is being created.
 	//
-	// - **Created**: created and in a normal state.
+	// - **Created**: The endpoint is created and in a normal state.
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: The endpoint is being modified.
 	//
-	// - **Associating**: being associated.
+	// - **Associating**: The endpoint is being associated.
 	//
-	// - **Dissociating**: being disassociated.
+	// - **Dissociating**: The endpoint is being disassociated.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The endpoint is being deleted.
 	//
 	// example:
 	//
@@ -167,19 +167,19 @@ type ListVpcGatewayEndpointsResponseBodyEndpoints struct {
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The access policy for the cloud service.
 	//
-	// For more information about the syntax and structure of access policies, see [Policy structure and syntax](https://help.aliyun.com/document_detail/93739.html).
+	// For more information about the syntax and structure of access policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
 	//
 	// example:
 	//
 	// {\\n  \\"Version\\": \\"1\\",\\n  \\"Statement\\": [\\n    {\\n      \\"Effect\\": \\"Allow\\",\\n      \\"Action\\": \\"*\\",\\n      \\"Principal\\": \\"*\\",\\n      \\"Resource\\": \\"*\\"\\n    }\\n  ]\\n}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the resource group to which the gateway endpoint belongs.
+	// The ID of the resource group to which the VPC gateway endpoint belongs.
 	//
 	// example:
 	//
 	// rg-acfmxvfvazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The service name of the endpoint service.
+	// The endpoint service name.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListVpcGatewayEndpointsResponseBodyEndpoints struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The list of tags.
 	Tags []*ListVpcGatewayEndpointsResponseBodyEndpointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the gateway endpoint belongs.
+	// The ID of the VPC to which the VPC gateway endpoint belongs.
 	//
 	// example:
 	//

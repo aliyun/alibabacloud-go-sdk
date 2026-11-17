@@ -23,13 +23,13 @@ type iDescribeNetworkAclsResponseBody interface {
 
 type DescribeNetworkAclsResponseBody struct {
 	NetworkAcls *DescribeNetworkAclsResponseBodyNetworkAcls `json:"NetworkAcls,omitempty" xml:"NetworkAcls,omitempty" type:"Struct"`
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Paging is used to return results.
+	// The number of entries per page for a paging query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeNetworkAclsResponseBody struct {
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of ACLs in the list.
+	// The total number of network ACLs.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type CreateVpcPrefixListResponseBody struct {
 	//
 	// pl-0b700s2ee3***
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

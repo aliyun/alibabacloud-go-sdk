@@ -52,7 +52,7 @@ type iDescribeFlowLogsRequest interface {
 type DescribeFlowLogsRequest struct {
 	// The description of the flow log.
 	//
-	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type DescribeFlowLogsRequest struct {
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The name of the flow log.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The name of the Logstore that stores the captured traffic.
+	// The Logstore that stores the captured traffic.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type DescribeFlowLogsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging query. Maximum value: **50**. Default value: **20**.
+	// The number of entries per page for paging in a paged query. Maximum value: **50**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the project that manages the captured traffic.
+	// The Log Service project that manages the captured traffic.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeFlowLogsRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The region ID of the flow log.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -126,15 +126,15 @@ type DescribeFlowLogsRequest struct {
 	//
 	//
 	//
-	// - **NetworkInterface**: network interface controller (NIC).
+	// - **NetworkInterface**: elastic network interface controller (NIC).
 	//
 	//
 	//
-	// - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+	// - **VSwitch**: all elastic network interface controller (NIC) in a vSwitch.
 	//
 	//
 	//
-	// - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
+	// - **VPC**: all elastic network interface controller (NIC) in a virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -142,11 +142,11 @@ type DescribeFlowLogsRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the flow log. Valid values:
 	//
-	// - **Active**: the flow log is active.
+	// - **Active**: The flow log is active.
 	//
-	// - **Activating**: the flow log is being created.
+	// - **Activating**: The flow log is being created.
 	//
-	// - **Inactive**: the flow log is inactive.
+	// - **Inactive**: The flow log is inactive.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeFlowLogsRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tags []*DescribeFlowLogsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The traffic type to collect. Valid values:
+	// The traffic type to catch. Valid values:
 	//
 	//
 	//
@@ -162,17 +162,17 @@ type DescribeFlowLogsRequest struct {
 	//
 	//
 	//
-	// - **Allow**: traffic allowed by access control.
+	// - **Allow**: traffic that access control allows.
 	//
 	//
 	//
-	// - **Drop**: traffic deny by access control.
+	// - **Drop**: traffic that access control policies deny.
 	//
 	// example:
 	//
 	// All
 	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
-	// The ID of the VPC whose flow logs you want to query.
+	// The ID of the VPC for which you want to query flow logs.
 	//
 	// example:
 	//
@@ -373,7 +373,7 @@ func (s *DescribeFlowLogsRequest) Validate() error {
 }
 
 type DescribeFlowLogsRequestTags struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
 	//
 	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
@@ -381,9 +381,9 @@ type DescribeFlowLogsRequestTags struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

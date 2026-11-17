@@ -26,13 +26,13 @@ type iDiagnoseVpnConnectionsRequest interface {
 }
 
 type DiagnoseVpnConnectionsRequest struct {
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**.
+	// The number of entries per page in a paging query. Default value: **10**.
 	//
 	// example:
 	//
@@ -49,11 +49,11 @@ type DiagnoseVpnConnectionsRequest struct {
 	// cn-qingdao
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tunnel IDs.
+	// The IDs of the tunnels.
 	TunnelIds []*string `json:"TunnelIds,omitempty" xml:"TunnelIds,omitempty" type:"Repeated"`
-	// The list of IPsec-VPN connection IDs.
+	// The IDs of the IPsec-VPN connections.
 	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" xml:"VpnConnectionIds,omitempty" type:"Repeated"`
-	// The instance ID of the VPN gateway.
+	// The VPN gateway instance ID.
 	//
 	// example:
 	//

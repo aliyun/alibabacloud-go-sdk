@@ -30,11 +30,11 @@ type iUntagResourcesForExpressConnectRequest interface {
 }
 
 type UntagResourcesForExpressConnectRequest struct {
-	// Specifies whether to unbind all tags from the resource. Valid values:
+	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// - **true**: Unbinds all tags from the resource.
+	// - **true**: Removes all tags from the resource.
 	//
-	// - **false*	- (default): Does not unbind all tags from the resource.
+	// - **false*	- (default): Does not remove all tags from the resource.
 	//
 	// example:
 	//
@@ -42,9 +42,7 @@ type UntagResourcesForExpressConnectRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +62,9 @@ type UntagResourcesForExpressConnectRequest struct {
 	//
 	// - **VIRTUALBORDERROUTER**: Virtual Border Router.
 	//
-	// - **ROUTERINTERFACE**: VBR uplink.
+	// - **ROUTERINTERFACE**: VBR connection.
 	//
-	// - **TRAFFICQOS**: QoS policy.
+	// - **TRAFFICQOS**: Quality of Service (QoS) policy.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +72,7 @@ type UntagResourcesForExpressConnectRequest struct {
 	//
 	// PHYSICALCONNECTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tag keys for the resource.
+	// The list of tags for the resource.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

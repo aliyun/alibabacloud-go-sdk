@@ -32,9 +32,9 @@ type iPublishVpcRouteEntriesRequest interface {
 type PublishVpcRouteEntriesRequest struct {
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without publishing route entries. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run without publishing routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): sends a normal request. If the check succeeds, a 2xx HTTP status code is returned and the resource status is queried.
+	// - **false*	- (default): sends a Normal request. After the check succeeds, a 2xx HTTP status code is returned and the route publishing operation is performed.
 	//
 	// example:
 	//
@@ -51,8 +51,10 @@ type PublishVpcRouteEntriesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The list of route entries to publish. You can specify up to 50 routes.
+	//
+	// This parameter is required.
 	RouteEntries []*PublishVpcRouteEntriesRequestRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
-	// The publish route entry target instance ID.
+	// The target instance ID for route publishing.
 	//
 	// This parameter is required.
 	//

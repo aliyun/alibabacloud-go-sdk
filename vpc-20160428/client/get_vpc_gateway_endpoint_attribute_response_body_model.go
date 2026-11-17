@@ -36,7 +36,7 @@ type iGetVpcGatewayEndpointAttributeResponseBody interface {
 }
 
 type GetVpcGatewayEndpointAttributeResponseBody struct {
-	// The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time when the gateway endpoint was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	//
 	// test
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The endpoint instance ID of the gateway endpoint.
+	// The gateway endpoint instance ID.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The status of the gateway endpoint. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: The gateway endpoint is being created.
 	//
-	// - **Created**: created and in a normal state.
+	// - **Created**: The gateway endpoint is created and in a normal state.
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: The gateway endpoint is being modified.
 	//
-	// - **Associating**: being associated.
+	// - **Associating**: The gateway endpoint is being associated.
 	//
-	// - **Dissociating**: being disassociated.
+	// - **Dissociating**: The gateway endpoint is being disassociated.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The gateway endpoint is being deleted.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IDs of the route tables associated with the gateway endpoint.
 	RouteTables []*string `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Repeated"`
-	// The service name of the endpoint service.
+	// The endpoint service name.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The list of tags.
 	Tags []*GetVpcGatewayEndpointAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the gateway endpoint belongs.
+	// The ID of the VPC where the gateway endpoint resides.
 	//
 	// example:
 	//

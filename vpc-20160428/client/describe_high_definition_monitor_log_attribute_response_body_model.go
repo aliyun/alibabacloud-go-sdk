@@ -30,25 +30,25 @@ type DescribeHighDefinitionMonitorLogAttributeResponseBody struct {
 	//
 	// eip-wz9fi6qboho9fwgx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance for which high-precision second-level monitoring is queried. The value is **EIP**.
+	// The type of the instance for which high-precision second-level monitoring is queried. Valid value: **EIP**.
 	//
 	// example:
 	//
 	// EIP
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the LogProject.
+	// The name of the Simple Log Service LogProject.
 	//
 	// example:
 	//
 	// hdmonitor-cn-shenzhen-1658206966225390
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the LogStore.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// hdmonitor
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

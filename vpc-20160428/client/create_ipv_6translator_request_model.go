@@ -38,13 +38,13 @@ type iCreateIPv6TranslatorRequest interface {
 }
 
 type CreateIPv6TranslatorRequest struct {
-	// Specifies whether automatic payment is enabled for the subscription bill. Valid values: **true|false**.
+	// Specifies whether automatic payment is enabled for subscription bills. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The billing bandwidth of the IPv6 Translation Service instance, in Mbit/s. Valid values: **1*	- to **200**. If you do not set the bandwidth for translation mapping entries, the mapping entries in the instance share this bandwidth.
+	// The bandwidth of the IPv6 Translation Service instance. Unit: Mbit/s. Valid values: **1*	- to **200**. If you do not specify the bandwidth for an IPv6 translation mapping entry, all IPv6 translation mapping entries in the instance share this bandwidth.
 	//
 	// > If you do not specify the bandwidth, the default value is 10 Mbit/s.
 	//
@@ -52,7 +52,7 @@ type CreateIPv6TranslatorRequest struct {
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. The client token must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. The client token must be unique across different requests and can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type CreateIPv6TranslatorRequest struct {
 	//
 	// - If the billing cycle is **Month**, valid values are **1*	- to **9**.
 	//
-	// - If the billing cycle is **Year**, the value is **3**.
+	// - If the billing cycle is **Year**, the valid value is **3**.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the IPv6 Translation Service instance. The name defaults to the instance ID. The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
+	// The name of the IPv6 Translation Service instance. Default value: the instance ID. The name must be 2 to 100 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateIPv6TranslatorRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The payment method of the IPv6 Translation Service instance. Valid values:
+	// The billing method of the IPv6 Translation Service instance. Valid values:
 	//
 	// - **PREPAY**: subscription.
 	//
@@ -86,11 +86,11 @@ type CreateIPv6TranslatorRequest struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle for subscription. Valid values:
+	// The billing cycle of the subscription instance. Valid values:
 	//
-	// - **Month*	- (default): monthly subscription.
+	// - **Month*	- (default): billed on a monthly basis.
 	//
-	// - **Year**: yearly subscription.
+	// - **Year**: billed on a yearly basis.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type CreateIPv6TranslatorRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The specification of the IPv6 Translation Service instance. Valid values: **small**.
+	// The specification of the IPv6 Translation Service instance. Valid value: **small**.
 	//
 	// example:
 	//

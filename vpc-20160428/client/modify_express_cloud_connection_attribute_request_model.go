@@ -34,25 +34,25 @@ type iModifyExpressCloudConnectionAttributeRequest interface {
 }
 
 type ModifyExpressCloudConnectionAttributeRequest struct {
-	// The local BGP autonomous system (AS) number to be configured on the Smart Access Gateway device.
+	// The local BGP Autonomous System (AS) number to be configured on the Smart Access Gateway (SAG) device.
 	//
 	// example:
 	//
 	// sag-ejfge***
 	BgpAs *string `json:"BgpAs,omitempty" xml:"BgpAs,omitempty"`
-	// The cloud-side IP address used for peering with the Smart Access Gateway device.
+	// The cloud-side IP address used to connect the Smart Access Gateway (SAG) device to Alibaba Cloud.
 	//
 	// example:
 	//
 	// ``172.16.**.**``
 	CeIp *string `json:"CeIp,omitempty" xml:"CeIp,omitempty"`
-	// The description of the Express Cloud Connection instance.
+	// The description of the Express Cloud Connection.
 	//
 	// example:
 	//
 	// ECC
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID of the Express Cloud Connection instance.
+	// The Express Cloud Connection instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ModifyExpressCloudConnectionAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The local IP address of the Smart Access Gateway device used for peering with the cloud.
+	// The local IP address of the Smart Access Gateway (SAG) device used to connect to Alibaba Cloud.
 	//
 	// example:
 	//

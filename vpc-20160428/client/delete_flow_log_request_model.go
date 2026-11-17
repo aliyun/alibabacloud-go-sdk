@@ -24,7 +24,7 @@ type iDeleteFlowLogRequest interface {
 }
 
 type DeleteFlowLogRequest struct {
-	// The flow log ID.
+	// The ID of the flow log.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteFlowLogRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the flow log.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

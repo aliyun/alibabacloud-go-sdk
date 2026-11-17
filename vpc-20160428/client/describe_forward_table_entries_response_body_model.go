@@ -41,7 +41,7 @@ type DescribeForwardTableEntriesResponseBody struct {
 	//
 	// A6C4A8B1-7561-4509-949C-20DEB40D71E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

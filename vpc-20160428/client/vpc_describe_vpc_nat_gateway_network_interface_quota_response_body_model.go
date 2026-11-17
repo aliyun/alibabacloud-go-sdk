@@ -16,7 +16,7 @@ type iVpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody interface {
 }
 
 type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody struct {
-	// The number of EPs that can be created.
+	// The number of endpoints that can be created.
 	//
 	// example:
 	//

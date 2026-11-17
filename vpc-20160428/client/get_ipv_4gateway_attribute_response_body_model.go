@@ -34,7 +34,7 @@ type iGetIpv4GatewayAttributeResponseBody interface {
 }
 
 type GetIpv4GatewayAttributeResponseBody struct {
-	// The time when the IPv4 gateway was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The description of the IPv4 gateway instance.
+	// The description of the IPv4 gateway.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	//
 	// ipv4gw-5tsnc6s4ogsedtp3k****
 	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	// The name of the IPv4 gateway instance.
+	// The name of the IPv4 gateway.
 	//
 	// example:
 	//
 	// name
 	Ipv4GatewayName *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	// The ID of the route table associated with the IPv4 gateway instance.
+	// The ID of the route table associated with the IPv4 gateway.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the IPv4 gateway instance. Valid values:
+	// The status of the IPv4 gateway. Valid values:
 	//
 	// - **Creating**: The IPv4 gateway is being created.
 	//
@@ -104,9 +104,9 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The tags.
 	Tags []*GetIpv4GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC associated with the IPv4 gateway instance.
+	// The ID of the VPC associated with the IPv4 gateway.
 	//
 	// example:
 	//

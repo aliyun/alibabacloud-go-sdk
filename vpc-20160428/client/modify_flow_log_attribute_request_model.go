@@ -34,15 +34,15 @@ type iModifyFlowLogAttributeRequest interface {
 }
 
 type ModifyFlowLogAttributeRequest struct {
-	// The new sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
+	// The sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
 	//
 	// example:
 	//
 	// 1
 	AggregationInterval *int32 `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
-	// The new description of the flow log.
+	// The description of the flow log.
 	//
-	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// fl-m5e8vhz2t21sel1nq****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	// The new name of the flow log.
+	// The name of the flow log.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ type ModifyFlowLogAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the flow log.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

@@ -50,7 +50,7 @@ type DescribeRouteTableListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return per page during paging in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeRouteTableListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -114,9 +114,9 @@ type DescribeRouteTableListRequest struct {
 	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
 	// The tags of the resource.
 	Tag []*DescribeRouteTableListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the route table belongs.
+	// The ID of the virtual private cloud (VPC) to which the route table belongs.
 	//
-	// If you specify this parameter, the value of **RouterType*	- is automatically set to **VRouter**.
+	// If you specify this parameter, the value of the **RouterType*	- parameter is automatically set to **VRouter**.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ type DescribeRouteTableListRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

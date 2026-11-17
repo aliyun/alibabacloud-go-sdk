@@ -34,19 +34,19 @@ type iUpdateTrafficMirrorFilterAttributeRequest interface {
 type UpdateTrafficMirrorFilterAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value of each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run without modifying the configuration of the traffic mirror filter. The system checks the required parameters, request format, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run and does not modify the configuration of the traffic mirror filter. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the configuration of the traffic mirror filter is modified.
+	// - **false*	- (default): sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the configuration of the traffic mirror filter is modified.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateTrafficMirrorFilterAttributeRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the traffic mirror filter.
+	// The region ID of the traffic mirror.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
 	//
@@ -66,7 +66,7 @@ type UpdateTrafficMirrorFilterAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new description of the traffic mirror filter.
+	// The description of the traffic mirror filter to be modified.
 	//
 	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -74,7 +74,7 @@ type UpdateTrafficMirrorFilterAttributeRequest struct {
 	//
 	// This is a new filter.
 	TrafficMirrorFilterDescription *string `json:"TrafficMirrorFilterDescription,omitempty" xml:"TrafficMirrorFilterDescription,omitempty"`
-	// The instance ID of the traffic mirror filter.
+	// The ID of the traffic mirror filter.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type UpdateTrafficMirrorFilterAttributeRequest struct {
 	//
 	// tmf-j6cmls82xnc86vtpe****
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
-	// The new name of the traffic mirror filter.
+	// The name of the traffic mirror filter to be modified.
 	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//

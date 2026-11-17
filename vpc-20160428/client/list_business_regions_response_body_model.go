@@ -24,7 +24,7 @@ type ListBusinessRegionsResponseBody struct {
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of regions where Express Connect circuits are available for purchase.
+	// The list of regions where Express Connect circuits can be purchased.
 	GeographicSubRegions []*ListBusinessRegionsResponseBodyGeographicSubRegions `json:"GeographicSubRegions,omitempty" xml:"GeographicSubRegions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,13 +83,13 @@ func (s *ListBusinessRegionsResponseBody) Validate() error {
 }
 
 type ListBusinessRegionsResponseBodyGeographicSubRegions struct {
-	// The name of the region where Express Connect circuits are available for purchase.
+	// The name of the region where Express Connect circuits can be purchased.
 	//
 	// example:
 	//
-	// 华东1(杭州)
+	// China (Hangzhou)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID where Express Connect circuits are available for purchase.
+	// The ID of the region where Express Connect circuits can be purchased.
 	//
 	// example:
 	//

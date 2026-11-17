@@ -40,19 +40,21 @@ type RemoveCommonBandwidthPackageIpRequest struct {
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run without performing the actual operation.
+	// Specifies whether to perform a dry run without executing the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the EIP.
+	// The ID of the public IP address instance to be removed from the Internet Shared Bandwidth instance.
 	//
-	// You can call the [DescribeEipAddresses](https://www.alibabacloud.com/help/en/eip/developer-reference/api-vpc-2016-04-28-describeeipaddresses-eips) operation to query the EIP ID.
+	// - If IpType is set to **EIP**, specify the EIP ID. You can call the [DescribeEipAddresses](https://www.alibabacloud.com/help/en/eip/developer-reference/api-vpc-2016-04-28-describeeipaddresses-eips) operation to query the EIP ID.
+	//
+	// - If IpType is set to **VpcIpv6**, specify the IPv6 address ID of the VPC. You can call the DescribeIpv6Addresses operation to query the IPv6 address ID.
 	//
 	// This parameter is required.
 	//

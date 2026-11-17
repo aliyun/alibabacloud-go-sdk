@@ -58,9 +58,9 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Specifies whether to enable access control. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -68,21 +68,21 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The type of the access control policy. Valid values:
 	//
-	// - **white**: allows the IPv6 addresses in the access control policy group to access backend services.
+	// - **white**: Allows IPv6 addresses in the access control policy group to access the backend service.
 	//
-	// - **black**: denies the IPv6 addresses in the access control policy group from accessing backend services.
+	// - **black**: Denies IPv6 addresses in the access control policy group from accessing the backend service.
 	//
 	// example:
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The IPv6 address allocated by the IPv6 Translation Service instance.
+	// The IPv6 address assigned to the IPv6 Translation Service instance.
 	//
 	// example:
 	//
 	// 2400:3200:1600::XX
 	AllocateIpv6Addr *string `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
-	// The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
+	// The port used by the IPv6 address assigned to the IPv6 Translation Service instance.
 	//
 	// example:
 	//
@@ -102,21 +102,21 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	BackendIpv4Port *int32 `json:"BackendIpv4Port,omitempty" xml:"BackendIpv4Port,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can generate the parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the IPv6 Translation mapping entry.
+	// The name of the IPv6 translation mapping entry.
 	//
 	// example:
 	//
 	// entryname
 	EntryName *string `json:"EntryName,omitempty" xml:"EntryName,omitempty"`
-	// The ID of the IPv6 Translation mapping entry to query.
+	// The ID of the IPv6 translation mapping entry to query.
 	//
-	// > If both **Ipv6TranslatorId*	- and **Ipv6TranslatorEntryId*	- are empty, all IPv6 Translation mapping entries are returned. If only **Ipv6TranslatorEntryId*	- is empty, all IPv6 Translation mapping entries under the current IPv6 Translation Service instance are returned.
+	// > If both the **Ipv6TranslatorId*	- and **Ipv6TranslatorEntryId*	- parameters are left empty, all IPv6 translation mapping entries are returned. If only the **Ipv6TranslatorEntryId*	- parameter is left empty, all IPv6 translation mapping entries under the current IPv6 Translation Service instance are returned.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	Ipv6TranslatorId *string `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the list. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the **DescribeRegions*	- operation to query region IDs.
+	// The region ID of the IPv6 Translation Service instance. You can call the **DescribeRegions*	- operation to query the region ID.
 	//
 	// This parameter is required.
 	//

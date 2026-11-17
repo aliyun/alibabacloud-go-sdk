@@ -28,15 +28,15 @@ type iModifyEipForwardModeRequest interface {
 type ModifyEipForwardModeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the EIP instance to modify.
+	// The ID of the EIP that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ModifyEipForwardModeRequest struct {
 	//
 	// eip-j5ebhbw3br92fy****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The binding mode. Valid values:
+	// The association mode. Valid values:
 	//
 	// - **NAT*	- (default): NAT mode (standard mode).
 	//
@@ -62,7 +62,7 @@ type ModifyEipForwardModeRequest struct {
 	// BINDED
 	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query region IDs.
+	// The region ID of the EIP. You can call the DescribeRegions operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

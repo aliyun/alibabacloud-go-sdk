@@ -56,59 +56,61 @@ type iDescribeIpv6AddressesRequest interface {
 type DescribeIpv6AddressesRequest struct {
 	// The type of the IPv6 address. Valid values:
 	//
-	// 	- IPv6Address (default): queries IPv6 instances with a single IPv6 IP address.
+	// 	- IPv6Address (default): queries an IPv6 instance that has a single IPv6 address.
 	//
-	// 	- IPv6Prefix: queries IPv6 instances with a prefix CIDR block.
+	// 	- IPv6Prefix: queries an IPv6 instance that has an IPv6 prefix.
 	//
 	// example:
 	//
 	// IPv6Address
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The instance ID associated with the IPv6 address that you want to query.
+	// The instance ID associated with the IPv6 address to query.
 	//
 	// example:
 	//
-	// i-2ze72wuqj4y3jl4f****
+	// eni-2ze72wuqj4y3jl4f****
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of the instance associated with the IPv6 address that you want to query. Valid values:
+	// The type of the instance associated with the IPv6 address to query. Valid values:
 	//
-	//  - **EcsInstance**: an ECS instance in a VPC.
+	// - **EcsInstance**: an ECS instance in a VPC.
 	//
-	// - **NetworkInterface**: a secondary elastic network interface (ENI) that serves as a network interface controller (NIC).
+	// - **NetworkInterface**: elastic network interface controller (NIC).
+	//
+	// This parameter must be used together with AssociatedInstanceId.
 	//
 	// example:
 	//
-	// EcsInstance
+	// NetworkInterface
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// Specifies whether to include renewal data that has not taken effect. Valid values:
+	// Specifies whether to include inactive order data. Valid values:
 	//
-	// - **false*	- (default): does not include renewal data that has not taken effect.
+	// - **false*	- (default): does not include inactive order data.
 	//
-	// - **true**: includes renewal data that has not taken effect.
+	// - **true**: includes inactive order data.
 	//
 	// example:
 	//
 	// false
 	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
-	// The IPv6 address that you want to query.
+	// The IPv6 address to query.
 	//
 	// example:
 	//
 	// 2408:XXXX:153:3921:851c:c435:7b12:1c5f
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The ID of the IPv6 address that you want to query. You can specify up to 20 IPv6 address IDs in each call. Separate multiple IDs with commas (,).
+	// The ID of the IPv6 address to query. You can enter up to 20 IPv6 address IDs in each call. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// ipv6-2zen5j4axcp5l5qyy****
 	Ipv6AddressId *string `json:"Ipv6AddressId,omitempty" xml:"Ipv6AddressId,omitempty"`
-	// The instance ID of the Internet bandwidth associated with the IPv6 address that you want to query. This parameter is available after public network bandwidth is enabled.
+	// The Internet bandwidth instance ID corresponding to the IPv6 address to query after Internet bandwidth is enabled.
 	//
 	// example:
 	//
 	// ipv6bw-uf6hcyzu65v98v3du****
 	Ipv6InternetBandwidthId *string `json:"Ipv6InternetBandwidthId,omitempty" xml:"Ipv6InternetBandwidthId,omitempty"`
-	// The name of the IPv6 address that you want to query.
+	// The name of the IPv6 address to query.
 	//
 	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -116,11 +118,11 @@ type DescribeIpv6AddressesRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The communication type of the IPv6 address that you want to query. Valid values:
+	// The network type of the IPv6 address to query. Valid values:
 	//
-	// - **Private**: private communication.
+	// - **Private**: internal network.
 	//
-	// - **Public**: public communication.
+	// - **Public**: Internet.
 	//
 	// example:
 	//
@@ -134,13 +136,13 @@ type DescribeIpv6AddressesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the IPv6 addresses that you want to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the IPv6 addresses to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -162,21 +164,21 @@ type DescribeIpv6AddressesRequest struct {
 	//
 	// - **false**: The instance is not a managed instance.
 	//
-	// If you do not set this parameter, all instances are queried.
+	// If you do not specify this parameter, all instances are queried by default.
 	//
 	// example:
 	//
 	// false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The list of tags. You can specify up to 20 tags.
+	// The list of tags. Maximum number of elements: 20.
 	Tag []*DescribeIpv6AddressesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch to which the IPv6 address that you want to query belongs.
+	// The ID of the vSwitch to which the IPv6 address to query belongs.
 	//
 	// example:
 	//
 	// vsw-25navfgbue4g****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the IPv6 address that you want to query belongs.
+	// The ID of the VPC to which the IPv6 address to query belongs.
 	//
 	// example:
 	//
@@ -395,17 +397,17 @@ func (s *DescribeIpv6AddressesRequest) Validate() error {
 }
 
 type DescribeIpv6AddressesRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string.
 	//
-	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string.
 	//
-	// A tag value can be up to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It must start with a letter or a Chinese character, and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

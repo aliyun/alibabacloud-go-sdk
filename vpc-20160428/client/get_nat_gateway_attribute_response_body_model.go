@@ -67,21 +67,30 @@ type iGetNatGatewayAttributeResponseBody interface {
 
 type GetNatGatewayAttributeResponseBody struct {
 	// The access mode for reverse access to the VPC NAT gateway.
-	AccessMode       *GetNatGatewayAttributeResponseBodyAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
-	AvailabilityMode *string                                       `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
-	// The billing configuration information.
+	AccessMode *GetNatGatewayAttributeResponseBodyAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
+	// The disaster recovery type of the NAT gateway. Valid values:
+	//
+	// - **CrossAZ**: cross-zone disaster recovery.
+	//
+	// - **SingleAZ**: single-zone disaster recovery.
+	//
+	// example:
+	//
+	// CrossAZ
+	AvailabilityMode *string `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
+	// The billing configuration.
 	BillingConfig *GetNatGatewayAttributeResponseBodyBillingConfig `json:"BillingConfig,omitempty" xml:"BillingConfig,omitempty" type:"Struct"`
-	// The business status of the NAT gateway. Valid values:
+	// The service status of the NAT gateway. Valid values:
 	//
-	// - **Normal**: Normal.
+	// - **Normal**: The NAT gateway is running normally.
 	//
-	// - **FinancialLocked**: Locked due to overdue payment.
+	// - **FinancialLocked**: The NAT gateway is locked due to an overdue payment.
 	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the NAT gateway was created. The time is displayed in the format of YYYY-MM-DDThh:mm:ssZ.
+	// The time when the NAT gateway was created. The time is displayed in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -89,53 +98,53 @@ type GetNatGatewayAttributeResponseBody struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The deletion protection information.
 	DeletionProtectionInfo *GetNatGatewayAttributeResponseBodyDeletionProtectionInfo `json:"DeletionProtectionInfo,omitempty" xml:"DeletionProtectionInfo,omitempty" type:"Struct"`
-	// The description of the NAT gateway instance.
+	// The description of the NAT gateway.
 	//
 	// example:
 	//
 	// NAT
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the gateway traffic monitoring feature is enabled. Valid values:
+	// Indicates whether the traffic monitoring feature is enabled. Valid values:
 	//
-	// - **true**: The gateway traffic monitoring feature is enabled.
+	// - **true**: The traffic monitoring feature is enabled.
 	//
-	// - **false**: The gateway traffic monitoring feature is disabled.
+	// - **false**: The traffic monitoring feature is disabled.
 	//
 	// example:
 	//
 	// true
 	EcsMetricEnabled *bool `json:"EcsMetricEnabled,omitempty" xml:"EcsMetricEnabled,omitempty"`
-	// Indicates whether session logging is enabled. Valid values:
+	// Indicates whether the session log feature is enabled. Valid values:
 	//
-	// - **true**: Session logging is enabled.
+	// - **true**: The session log feature is enabled.
 	//
-	// - **false**: Session logging is disabled.
+	// - **false**: The session log feature is disabled.
 	//
 	// example:
 	//
 	// true
 	EnableSessionLog *bool `json:"EnableSessionLog,omitempty" xml:"EnableSessionLog,omitempty"`
-	// The expiration time of the NAT gateway instance.
+	// The expiration time of the NAT gateway. The time is displayed in the YYYY-MM-DDThh:mm:ssZ format in UTC.
 	//
 	// example:
 	//
 	// 2021-12-26T12:20:20Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The DNAT table information.
+	// The information about the DNAT table.
 	ForwardTable *GetNatGatewayAttributeResponseBodyForwardTable `json:"ForwardTable,omitempty" xml:"ForwardTable,omitempty" type:"Struct"`
-	// The FULLNAT table information.
+	// The information about the FULLNAT table.
 	FullNatTable *GetNatGatewayAttributeResponseBodyFullNatTable `json:"FullNatTable,omitempty" xml:"FullNatTable,omitempty" type:"Struct"`
-	// The list of elastic IP addresses (EIPs) associated with the Internet NAT gateway.
+	// The elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
 	IpList []*GetNatGatewayAttributeResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	// The session log configuration information.
+	// The session log configuration.
 	LogDelivery *GetNatGatewayAttributeResponseBodyLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`
-	// The name of the NAT gateway instance.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the NAT gateway instance.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -157,19 +166,19 @@ type GetNatGatewayAttributeResponseBody struct {
 	//
 	// internet
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The private network information of the NAT gateway instance.
+	// The private network information about the NAT gateway.
 	PrivateInfo *GetNatGatewayAttributeResponseBodyPrivateInfo `json:"PrivateInfo,omitempty" xml:"PrivateInfo,omitempty" type:"Struct"`
-	// Indicates whether private connectivity is supported. Valid values:
+	// Indicates whether PrivateLink is supported. Valid values:
 	//
-	// - **true**: Private connectivity is supported.
+	// - **true**: PrivateLink is supported.
 	//
-	// - **false**: Private connectivity is not supported.
+	// - **false**: PrivateLink is not supported.
 	//
 	// example:
 	//
 	// true
 	PrivateLinkEnabled *bool `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
-	// The conversion mode of the private connectivity service. Valid values:
+	// The PrivateLink service translation mode. Valid values:
 	//
 	// - **FullNat**: FULLNAT mode.
 	//
@@ -179,7 +188,7 @@ type GetNatGatewayAttributeResponseBody struct {
 	//
 	// FullNat
 	PrivateLinkMode *string `json:"PrivateLinkMode,omitempty" xml:"PrivateLinkMode,omitempty"`
-	// The region ID of the NAT gateway instance.
+	// The region ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -191,31 +200,31 @@ type GetNatGatewayAttributeResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The SNAT table information.
+	// The information about the SNAT table.
 	SnatTable *GetNatGatewayAttributeResponseBodySnatTable `json:"SnatTable,omitempty" xml:"SnatTable,omitempty" type:"Struct"`
 	// The status of the NAT gateway. Valid values:
 	//
 	// - **Creating**: The NAT gateway is being created. Creating a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating*	- state until the operation is complete.
 	//
-	// - **Available**: The NAT gateway is available. This is a stable state after the NAT gateway is created.
+	// - **Available**: The NAT gateway is available. This is the stable state of a NAT gateway after it is created.
 	//
-	// - **Modifying**: The NAT gateway is being modified. Modifying a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying*	- state until the operation is complete.
+	// - **Modifying**: The NAT gateway is being modified. Modifying the specifications of a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying*	- state until the operation is complete.
 	//
 	// - **Deleting**: The NAT gateway is being deleted. Deleting a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting*	- state until the operation is complete.
 	//
-	// - **Converting**: The NAT gateway is being converted. Converting a standard NAT gateway to an enhanced NAT gateway is an asynchronous operation. The NAT gateway remains in the **Converting*	- state until the operation is complete.
+	// - **Converting**: The NAT gateway is being upgraded. Upgrading a standard NAT gateway to an enhanced NAT gateway is an asynchronous operation. The NAT gateway remains in the **Converting*	- state until the operation is complete.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC to which the NAT gateway instance belongs.
+	// The ID of the VPC to which the NAT gateway belongs.
 	//
 	// example:
 	//
@@ -528,19 +537,19 @@ func (s *GetNatGatewayAttributeResponseBody) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyAccessMode struct {
-	// The access mode value. Valid values:
+	// The access mode. Valid values:
 	//
-	// - **route**: Route mode.
+	// - **route**: route mode.
 	//
-	// - **tunnel**: Tunnel mode.
+	// - **tunnel**: tunnel mode.
 	//
 	// example:
 	//
 	// route
 	ModeValue *string `json:"ModeValue,omitempty" xml:"ModeValue,omitempty"`
-	// The tunnel mode type. Valid values:
+	// The tunnel type. Valid value:
 	//
-	// - **geneve**: Geneve type.
+	// - **geneve**: Geneve.
 	//
 	// example:
 	//
@@ -579,25 +588,25 @@ func (s *GetNatGatewayAttributeResponseBodyAccessMode) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyBillingConfig struct {
-	// Indicates whether automatic payment is enabled. When the value of **InstanceChargeType*	- is **PrePaid**, the following values are returned:
+	// Indicates whether automatic payment is enabled. This parameter is returned when the **InstanceChargeType*	- parameter is set to **PrePaid**. Valid values:
 	//
-	// - **false**: Automatic payment is disabled. After an order is generated, go to the Order Center to complete the payment.
+	// - **false**: Automatic payment is disabled. You must complete the payment in the User Center after the order is generated.
 	//
 	// - **true**: Automatic payment is enabled. The order is automatically paid.
 	//
-	// When the value of **InstanceChargeType*	- is **PostPaid**, an empty value is returned.
+	// If the **InstanceChargeType*	- parameter is set to **PostPaid**, this parameter is empty.
 	//
 	// example:
 	//
 	// false
 	AutoPay *string `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// <props="china">The billing method of the NAT gateway instance. Valid values:
+	// <props="china">The billing method of the NAT gateway. Valid values:
 	//
 	// <props="china">- **PostPaid**: pay-as-you-go.
 	//
 	// <props="china">- **PrePaid**: subscription.
 	//
-	// <props="intl">The billing method of the NAT gateway instance. Valid values: **PostPaid*	- (pay-as-you-go).
+	// <props="intl">The billing method of the NAT gateway. Valid value: **PostPaid*	- (pay-as-you-go).
 	//
 	// example:
 	//
@@ -605,15 +614,15 @@ type GetNatGatewayAttributeResponseBodyBillingConfig struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The billing type of the NAT gateway instance. Valid values:
 	//
-	// - **PayBySpec**: Billed by defined specifications.
+	// - **PayBySpec**: billing by defined specifications.
 	//
-	// - **PayByLcu**: Billed by usage.
+	// - **PayByLcu**: billing by usage.
 	//
 	// example:
 	//
 	// PayBySpec
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The specification of the Internet NAT gateway instance. When **InternetChargeType*	- is **PayBySpec**, the following values are returned:
+	// The specification of the Internet NAT gateway. This parameter is returned when the **InternetChargeType*	- parameter is set to **PayBySpec**. Valid values:
 	//
 	// - **Small**: small.
 	//
@@ -621,7 +630,7 @@ type GetNatGatewayAttributeResponseBodyBillingConfig struct {
 	//
 	// - **Large**: large.
 	//
-	// When **InternetChargeType*	- is **PayByLcu**, an empty value is returned.
+	// If the **InternetChargeType*	- parameter is set to **PayByLcu**, this parameter is empty.
 	//
 	// example:
 	//
@@ -678,7 +687,7 @@ func (s *GetNatGatewayAttributeResponseBodyBillingConfig) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyDeletionProtectionInfo struct {
-	// Indicates whether deletion protection is enabled.
+	// Indicates whether deletion protection is enabled. Valid values:
 	//
 	// - **true**: Deletion protection is enabled.
 	//
@@ -814,11 +823,11 @@ type GetNatGatewayAttributeResponseBodyIpList struct {
 	//
 	// 116.33.XX.XX
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The association status of the EIP bound to the Internet NAT gateway instance.
+	// The association status of the EIP that is associated with the Internet NAT gateway. Valid values:
 	//
-	// - **idle**: The EIP is not associated with a SNAT entry or DNAT entry.
+	// - **idle**: The EIP is not associated with an SNAT entry or a DNAT entry.
 	//
-	// - **UsedBySnatTable**: The EIP is associated with a SNAT entry.
+	// - **UsedBySnatTable**: The EIP is associated with an SNAT entry.
 	//
 	// - **UsedByForwardTable**: The EIP is associated with a DNAT entry.
 	//
@@ -868,31 +877,31 @@ func (s *GetNatGatewayAttributeResponseBodyIpList) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyLogDelivery struct {
-	// The error message for session log writing failure.
+	// The error message returned when session log delivery fails.
 	//
 	// example:
 	//
 	// LogStoreNotExist: logstore session_log_test does not exist
 	DeliverLogsErrorMessage *string `json:"DeliverLogsErrorMessage,omitempty" xml:"DeliverLogsErrorMessage,omitempty"`
-	// The status of session log writing. Valid values:
+	// The delivery status of session logs. Valid values:
 	//
-	// - **Succsess**: Succeeded.
+	// - **Succsess**: The delivery is successful.
 	//
-	// - **Failure**: Failed.
+	// - **Failure**: The delivery failed.
 	//
 	// example:
 	//
 	// Failure
 	DeliveryStatus *string `json:"DeliveryStatus,omitempty" xml:"DeliveryStatus,omitempty"`
-	// The destination type for session log delivery. Valid values:
+	// The destination type for session log delivery. Valid value:
 	//
-	// **sls**: Alibaba Cloud Simple Log Service (SLS).
+	// - **sls**: Simple Log Service.
 	//
 	// example:
 	//
 	// sls
 	LogDeliveryType *string `json:"LogDeliveryType,omitempty" xml:"LogDeliveryType,omitempty"`
-	// The destination address to which session logs are written.
+	// The destination address for session log delivery.
 	//
 	// example:
 	//
@@ -949,19 +958,19 @@ func (s *GetNatGatewayAttributeResponseBodyLogDelivery) Validate() error {
 }
 
 type GetNatGatewayAttributeResponseBodyPrivateInfo struct {
-	// The instance ID of the elastic network interfaces (ENIs) network interface controller (NIC).
+	// The instance ID of the elastic network interface controller (NIC).
 	//
 	// example:
 	//
 	// eni-bp1cmgtoaka8vfyg****
 	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	// The zone to which the NAT gateway instance belongs.
+	// The zone to which the NAT gateway belongs.
 	//
 	// example:
 	//
 	// cn-qingdao-b
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The maximum bandwidth value. Unit: Mbit/s.
+	// The maximum bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -973,7 +982,7 @@ type GetNatGatewayAttributeResponseBodyPrivateInfo struct {
 	//
 	// 192.168.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the vSwitch to which the NAT gateway instance belongs.
+	// The ID of the vSwitch to which the NAT gateway belongs.
 	//
 	// example:
 	//

@@ -34,37 +34,37 @@ type iDeleteNatIpRequest interface {
 type DeleteNatIpRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run without deleting the NAT IP address. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - **true**: The system performs a dry run on the request without deleting the NAT IP address. The system checks whether your AccessKey pair is valid, whether the authorization of the Resource Access Management (RAM) user is valid, and whether the required parameters are specified. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
 	//
-	// - **false*	- (default): sends a Normal request. After the check succeeds, a 2xx HTTP status code is returned and the NAT IP address is deleted.
+	// - **false*	- (default): The system sends a normal request. If the request passes the dry run, the system returns a 2xx HTTP status code and deletes the NAT IP address.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP prefix address to delete.
+	// The IP prefix to be deleted.
 	//
 	// example:
 	//
 	// 192.168.0.0/28
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
-	// The instance ID of the NAT gateway to which the IP prefix belongs. This parameter is required when you delete an IP prefix.
+	// The instance ID of the NAT gateway to which the IP prefix to be deleted belongs. This parameter is required when you delete an IP prefix.
 	//
 	// example:
 	//
 	// ngw-gw8v16wgvtq26vh59****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The instance ID of the NAT IP address to delete.
+	// The instance ID of the NAT IP address to be deleted.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DeleteNatIpRequest struct {
 	NatIpId      *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the NAT gateway instance to which the NAT IP address belongs.
+	// The region ID of the NAT gateway to which the NAT IP address to be deleted belongs.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

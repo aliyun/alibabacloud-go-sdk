@@ -28,7 +28,7 @@ type AllocateEipAddressProResponseBody struct {
 	//
 	// eip-25877c70gddh****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The IP address assigned to the specified EIP. This parameter is returned only when **InstanceChargeType*	- is set to **PostPaid**.
+	// The IP address allocated to the specified EIP. This parameter is returned only if **InstanceChargeType*	- is set to **PostPaid**.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type AllocateEipAddressProResponseBody struct {
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
 	// The order ID.
 	//
-	// <props="china">This parameter is returned when InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is not enabled, go to the [Order Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
+	// <props="china">This parameter is returned if InstanceChargeType (the billing method of the EIP to be allocated) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is disabled, go to the [User Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
 	//
-	// <props="intl">This parameter is returned when InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is not enabled, go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
+	// <props="intl">This parameter is returned if InstanceChargeType (the billing method of the EIP to be allocated) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is disabled, go to the [User Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type AllocateEipAddressProResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID. This parameter is returned only when **InstanceChargeType*	- is set to **PostPaid**.
+	// The resource group ID. This parameter is returned only if **InstanceChargeType*	- is set to **PostPaid**.
 	//
 	// example:
 	//

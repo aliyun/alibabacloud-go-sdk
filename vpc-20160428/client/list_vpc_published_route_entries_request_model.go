@@ -34,23 +34,23 @@ type iListVpcPublishedRouteEntriesRequest interface {
 }
 
 type ListVpcPublishedRouteEntriesRequest struct {
-	// The destination CIDR block of the route entry. IPv4 and IPv6 CIDR blocks are supported.
+	// The destination CIDR block of the route. Both IPv4 and IPv6 CIDR blocks are supported.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The number of entries per page in a paged query. Valid values: **1*	- to **500**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **500**. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no more results are available.
 	//
-	// - If **NextToken*	- has a value, the value indicates the token for the next query.
+	// - If **NextToken*	- is returned, the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListVpcPublishedRouteEntriesRequest struct {
 	//
 	// vtb-bp145q7glnuzd****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The instance ID of the route publish target.
+	// The instance ID of the route publication target.
 	//
 	// example:
 	//
 	// ecr-dhw2xsds5****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The type of the route publish target.
+	// The type of the route publication target.
 	//
 	// This parameter is required.
 	//

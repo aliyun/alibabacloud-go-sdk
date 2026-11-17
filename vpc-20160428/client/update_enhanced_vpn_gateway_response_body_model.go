@@ -48,19 +48,19 @@ type iUpdateEnhancedVpnGatewayResponseBody interface {
 }
 
 type UpdateEnhancedVpnGatewayResponseBody struct {
-	// Indicates whether BGP route automatic propagation to the VPC is enabled. Valid values:
+	// Indicates whether BGP routes are automatically propagated to the VPC. Valid values:
 	//
-	// - **true**: Automatic propagation is enabled.
+	// - **true**: automatic propagation
 	//
-	// - **false**: Automatic propagation is not enabled.
+	// - **false**: no automatic propagation
 	//
 	// example:
 	//
 	// true
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
-	// The timestamp when the enhanced VPN gateway instance was created. Unit: milliseconds.<br>
+	// The timestamp of when the enhanced VPN gateway instance was created. Unit: milliseconds. <br>
 	//
-	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format. It is the total number of milliseconds that have elapsed since the UNIX epoch (January 1, 1970, 00:00:00 UTC) to the time when the enhanced VPN gateway instance was created.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type UpdateEnhancedVpnGatewayResponseBody struct {
 	//
 	// vsw-p0w95ql6tmr2ludkt****
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
-	// The enabling status of the BGP feature for the enhanced VPN gateway. Valid values:<br>
+	// The enabling status of the BGP feature for the enhanced VPN gateway. Valid values: <br>
 	//
-	// - **true**: enabled.
+	// - **true**: enabled
 	//
-	// - **false**: disabled.
+	// - **false**: disabled
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ type UpdateEnhancedVpnGatewayResponseBody struct {
 	EniInstanceIds *UpdateEnhancedVpnGatewayResponseBodyEniInstanceIds `json:"EniInstanceIds,omitempty" xml:"EniInstanceIds,omitempty" type:"Struct"`
 	// The type of the enhanced VPN gateway. Valid values:
 	//
-	// - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN that supports only IPsec functionality.
+	// - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN, which supports only the IPsec feature
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type UpdateEnhancedVpnGatewayResponseBody struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the enhanced VPN gateway. Valid values:
 	//
-	// - **public*	- (default): public VPN gateway.
+	// - **public*	- (default): Internet VPN gateway
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ type UpdateEnhancedVpnGatewayResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B457
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the enhanced VPN gateway instance belongs.<br>
+	// The ID of the resource group to which the enhanced VPN gateway instance belongs. <br>
 	//
-	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the enhanced VPN gateway.
+	// The status of the enhanced VPN gateway. Valid values:
 	//
-	// - **init**: initializing.
+	// - **init**: initializing
 	//
-	// - **provisioning**: preparing.
+	// - **provisioning**: preparing
 	//
-	// - **active**: normal.
+	// - **active**: active
 	//
-	// - **updating**: updating.
+	// - **updating**: updating
 	//
-	// - **deleting**: deleting.
+	// - **deleting**: deleting
 	//
 	// example:
 	//
@@ -166,9 +166,9 @@ type UpdateEnhancedVpnGatewayResponseBody struct {
 	//
 	// vpn-bp1q8bgx4xnkm2ogj****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The type of the enhanced VPN gateway.
+	// The type of the enhanced VPN gateway. Valid values:
 	//
-	// - **Normal*	- (default): standard.
+	// - **Normal*	- (default): standard
 	//
 	// example:
 	//

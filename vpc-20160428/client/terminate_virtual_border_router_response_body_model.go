@@ -14,7 +14,7 @@ type iTerminateVirtualBorderRouterResponseBody interface {
 }
 
 type TerminateVirtualBorderRouterResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

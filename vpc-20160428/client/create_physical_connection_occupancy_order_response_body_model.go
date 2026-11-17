@@ -16,7 +16,7 @@ type iCreatePhysicalConnectionOccupancyOrderResponseBody interface {
 }
 
 type CreatePhysicalConnectionOccupancyOrderResponseBody struct {
-	// The detailed information about the data.
+	// The data details.
 	Data *CreatePhysicalConnectionOccupancyOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *CreatePhysicalConnectionOccupancyOrderResponseBody) Validate() error {
 }
 
 type CreatePhysicalConnectionOccupancyOrderResponseBodyData struct {
-	// The ID of the order.
+	// The ID of the created order.
 	//
 	// example:
 	//

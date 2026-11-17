@@ -38,27 +38,27 @@ type ListPublicIpAddressPoolCidrBlocksRequest struct {
 	//
 	// 47.0.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - **true**: performs a dry run without querying the CIDR block information in the IP address pool. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: prechecks the request without querying the CIDR blocks in the IP address pool. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): sends the request. If the request passes the precheck, the HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The maximum number of entries to return. Valid values: **10*	- to **100**. Default value: **10**.
+	// The maximum number of entries to return for a single request. Valid values: **10*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Valid values:
+	// The token used to retrieve the next page of results. Valid values:
 	//
-	// - You do not need to specify this parameter for the first request or if no subsequent query exists.
+	// - If this is your first request or no subsequent requests are to be sent, leave this parameter empty.
 	//
-	// - If a subsequent query exists, set the value to the NextToken value returned in the previous API call.
+	// - If a subsequent request is to be sent, set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListPublicIpAddressPoolCidrBlocksRequest struct {
 	//
 	// pippool-6wetvn6fumkgycssx****
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	// The region ID of the CIDR block that you want to query.
+	// The region ID of the CIDR blocks to query.
 	//
 	// This parameter is required.
 	//

@@ -32,19 +32,19 @@ type iUnassociateHaVipRequest interface {
 }
 
 type UnassociateHaVipRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must make sure that the value is unique among different requests. The `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to forcefully disassociate HaVip from the ECS instance or network interface controller (NIC). Valid values:
+	// Specifies whether to forcibly disassociate HaVip from the associated ECS instance or elastic network interface controller (NIC). Valid values:
 	//
-	// - **True**: forcefully disassociates the instance.
+	// - **True**: forcibly disassociates the instance or elastic network interface controller (NIC).
 	//
-	// - **False*	- (default): does not forcefully disassociate the instance.
+	// - **False*	- (default): does not forcibly disassociate the instance or elastic network interface controller (NIC).
 	//
-	// > If this parameter is set to **False**, the primary instance attached to the HaVip cannot be disassociated.
+	// > If this parameter is set to **False**, you cannot disassociate the primary instance attached to the HaVip.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type UnassociateHaVipRequest struct {
 	//
 	// havip-2zeo05qre24nhrqpy****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The ID of the ECS instance or network interface controller (NIC) to disassociate HaVip from.
+	// The ID of the ECS instance or the elastic network interface controller (NIC) from which the HaVip is disassociated.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type UnassociateHaVipRequest struct {
 	//
 	// i-faf344422ffsfad****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to disassociate HaVip from. Valid values:
+	// The type of the instance from which you want to disassociate HaVip. Valid values:
 	//
 	// - **EcsInstance**: ECS instance.
 	//
-	// - **NetworkInterface**: network interface controller (NIC) instance.
+	// - **NetworkInterface**: elastic network interface controller (NIC).
 	//
-	// > This parameter is required when the instance to be disassociated is a network interface controller (NIC) instance.
+	// > This parameter is required when the instance to be disassociated is an elastic network interface controller (NIC).
 	//
 	// example:
 	//

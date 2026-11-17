@@ -52,11 +52,15 @@ type iModifyVpnConnectionAttributeResponseBody interface {
 type ModifyVpnConnectionAttributeResponseBody struct {
 	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
 	//
+	// The timestamp is in UNIX format, which indicates the total number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1492753817000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the customer gateway associated with the IPsec-VPN connection.
+	//
+	// This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
 	//
 	// example:
 	//
@@ -68,21 +72,23 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the IPsec-VPN connection configuration takes effect immediately.
+	// Indicates whether the configuration of the IPsec-VPN connection takes effect immediately. Valid values:
 	//
-	// - **true**: The system immediately initiates IPsec protocol negotiation after the configuration is complete.
+	// - **true**: Yes. The system immediately initiates IPsec negotiations after the configuration is completed.
 	//
-	// - **false**: The system initiates IPsec protocol negotiation only when traffic enters.
+	//
+	//
+	// - **false**: No. The system initiates IPsec negotiations only when traffic enters the connection.
 	//
 	// example:
 	//
 	// false
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether Dead Peer Detection (DPD) is enabled for the IPsec-VPN connection.
+	// Indicates whether dead peer detection (DPD) is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// - **false**: Not enabled.
+	// - **false**: DPD is disabled.
 	//
-	// - **true**: Enabled.
+	// - **true**: DPD is enabled.
 	//
 	// This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
 	//
@@ -92,25 +98,35 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
 	//
+	// - **false**: NAT traversal is disabled.
+	//
+	// - **true**: NAT traversal is enabled.
+	//
+	// This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
+	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The BGP status of the tunnel.
+	// The enabling status of BGP for the tunnel. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: BGP is enabled.
 	//
-	// - **false**: disabled.
+	// - **false**: BGP is disabled.
 	//
-	// This parameter is returned only for IPsec-VPN connections in dual-tunnel mode.
+	// This parameter is returned only for IPsec-VPN connections in the dual-tunnel pattern.
 	//
 	// example:
 	//
 	// true
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configuration of Phase 1 negotiation.
+	// The Phase 1 negotiation configuration.
+	//
+	// The parameters in the **IkeConfig*	- array are returned only for IPsec-VPN connections in single-tunnel mode.
 	IkeConfig *ModifyVpnConnectionAttributeResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configuration of Phase 2 negotiation.
+	// The Phase 2 negotiation configuration.
+	//
+	// The parameters in the **IpsecConfig*	- array are returned only for IPsec-VPN connections in single-tunnel mode.
 	IpsecConfig *ModifyVpnConnectionAttributeResponseBodyIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	// The CIDR block on the VPC side.
 	//
@@ -124,7 +140,7 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The CIDR block on the on-premises data center side.
+	// The CIDR block of the on-premises data center.
 	//
 	// example:
 	//
@@ -138,6 +154,8 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the IPsec-VPN connection belongs.
 	//
+	// The IPsec-VPN connection belongs to the same resource group as its associated VPN gateway. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+	//
 	// example:
 	//
 	// rg-acfmzs372yg****
@@ -145,9 +163,11 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	TunnelOptionsSpecification *ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Struct"`
 	// The health check configuration.
 	//
-	// Parameters in the **VcoHealthCheck*	- array are returned only for IPsec-VPN connections in single-tunnel mode.
+	// The parameters in the **VcoHealthCheck*	- array are returned only for IPsec-VPN connections in single-tunnel mode.
 	VcoHealthCheck *ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
 	// The BGP configuration.
+	//
+	// The parameters in the **VpnBgpConfig*	- array are returned only for IPsec-VPN connections in single-tunnel mode.
 	VpnBgpConfig *ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
 	// The ID of the IPsec-VPN connection.
 	//
@@ -155,7 +175,7 @@ type ModifyVpnConnectionAttributeResponseBody struct {
 	//
 	// vco-bp1bbi27hojx80nck****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The ID of the VPN gateway instance.
+	// The ID of the VPN gateway.
 	//
 	// example:
 	//
@@ -372,53 +392,53 @@ func (s *ModifyVpnConnectionAttributeResponseBody) Validate() error {
 }
 
 type ModifyVpnConnectionAttributeResponseBodyIkeConfig struct {
-	// The authentication algorithm of the IKE phase.
+	// The authentication algorithm for Phase 1 negotiations.
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm of the IKE phase.
+	// The encryption algorithm for Phase 1 negotiations.
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The lifetime of the IKE phase. Unit: seconds.
+	// The lifetime of the IKE SA. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode.
+	// The IKE negotiation mode. Valid values:
 	//
-	// - **main**: Main mode. The negotiation process is highly secure.
+	// - **main**: Main mode. This mode provides high security during negotiations.
 	//
-	// - **aggressive**: Aggressive mode. Negotiation is fast and has a high success rate.
+	// - **aggressive**: Aggressive mode. This mode features faster negotiations and a higher success rate.
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group of the IKE phase.
+	// The Diffie-Hellman (DH) group for Phase 1 negotiations.
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE protocol version.
+	// The IKE version. Valid values:
 	//
 	// - **ikev1**
 	//
 	// - **ikev2**
 	//
-	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR block scenarios.
 	//
 	// example:
 	//
 	// ikev1
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier on the VPC side. FQDN and IP formats are supported. The default value is the IP address of the selected VPN gateway.
+	// The identifier of the VPC. Both FQDNs and IP addresses are supported. By default, this parameter is set to the IP address of the selected VPN gateway.
 	//
 	// example:
 	//
@@ -430,7 +450,7 @@ type ModifyVpnConnectionAttributeResponseBodyIkeConfig struct {
 	//
 	// pgw6dy7d1i8i****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier on the on-premises data center side. FQDN and IP formats are supported. The default value is the IP address of the selected customer gateway.
+	// The identifier of the on-premises data center. Both fully qualified domain names (FQDNs) and IP addresses are supported. By default, this parameter is set to the IP address of the selected customer gateway.
 	//
 	// example:
 	//
@@ -532,25 +552,25 @@ func (s *ModifyVpnConnectionAttributeResponseBodyIkeConfig) Validate() error {
 }
 
 type ModifyVpnConnectionAttributeResponseBodyIpsecConfig struct {
-	// The authentication algorithm of the IPsec phase.
+	// The authentication algorithm for Phase 2 negotiations.
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm of the IPsec phase.
+	// The encryption algorithm for Phase 2 negotiations.
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The lifetime of the IPsec phase. Unit: seconds.
+	// The lifetime of the IPsec SA. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group of the IPsec phase.
+	// The DH group for Phase 2 negotiations.
 	//
 	// example:
 	//
@@ -1022,23 +1042,23 @@ type ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck struct {
 	//
 	// 192.168.1.1
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether the health check feature is enabled for the IPsec-VPN connection.
+	// Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: The health check feature is enabled.
 	//
-	// - **false**: Not enabled.
+	// - **false**: The health check feature is disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The retry interval of the health check. Unit: seconds.
+	// The retry interval for health checks. Unit: seconds.
 	//
 	// example:
 	//
 	// 3
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of retry packets sent for the health check.
+	// The number of health check retries.
 	//
 	// example:
 	//
@@ -1110,7 +1130,11 @@ func (s *ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck) Validate() erro
 }
 
 type ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig struct {
-	// The enabling status of BGP.
+	// The enabling status of BGP. Valid values:
+	//
+	// - **true**: BGP is enabled.
+	//
+	// - **false**: BGP is disabled.
 	//
 	// example:
 	//
@@ -1122,25 +1146,29 @@ type ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig struct {
 	//
 	// 65530
 	LocalAsn *int32 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP address on the Alibaba Cloud side.
+	// The BGP IP address on the Alibaba Cloud side.
 	//
 	// example:
 	//
 	// 169.254.11.1
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The autonomous system number on the on-premises data center side.
+	// The autonomous system number (ASN) of the on-premises data center.
 	//
 	// example:
 	//
 	// 65531
 	PeerAsn *int32 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP address on the on-premises data center side.
+	// The BGP IP address on the on-premises data center side.
 	//
 	// example:
 	//
 	// 169.254.11.2
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The BGP negotiation status.
+	// The BGP negotiation status. Valid values:
+	//
+	// - **success**: Normal.
+	//
+	// - **false**: Abnormal.
 	//
 	// example:
 	//

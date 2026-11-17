@@ -28,17 +28,17 @@ type GetVpcPrefixListEntriesResponseBody struct {
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The pagination token. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query is required.
+	// - If **NextToken*	- is empty, it indicates that no next query is available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a return value, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about the prefix list.
+	// The information about the queried prefix list.
 	PrefixListEntry []*GetVpcPrefixListEntriesResponseBodyPrefixListEntry `json:"PrefixListEntry,omitempty" xml:"PrefixListEntry,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -46,7 +46,7 @@ type GetVpcPrefixListEntriesResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *GetVpcPrefixListEntriesResponseBody) Validate() error {
 }
 
 type GetVpcPrefixListEntriesResponseBodyPrefixListEntry struct {
-	// The Classless Inter-Domain Routing (CIDR) block of the prefix list.
+	// The Classless Inter-Domain Routing block of the prefix list.
 	//
 	// example:
 	//

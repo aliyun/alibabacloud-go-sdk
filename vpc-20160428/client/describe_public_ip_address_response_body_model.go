@@ -54,7 +54,7 @@ type DescribePublicIpAddressResponseBody struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The range of public IP addresses in a virtual private cloud (VPC) in the specified region.
+	// The range of public IP addresses in a virtual private cloud (VPC) within the specified region.
 	//
 	// example:
 	//

@@ -52,42 +52,50 @@ type iDescribeNatGatewaysRequest interface {
 }
 
 type DescribeNatGatewaysRequest struct {
+	// The disaster recovery type of the NAT gateway. Valid values:
+	//
+	// - **CrossAZ**: cross-zone disaster recovery.
+	//
+	// - **SingleAZ**: single-zone disaster recovery.
+	//
+	// example:
+	//
+	// CrossAZ
 	AvailabilityMode *string `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to only perform a dry run for this request. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM user authorization, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run on the request without querying the resource status. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. After the request passes the dry run, a 2xx HTTP status code is returned and the resource status is queried. This is the Normal request behavior.
+	// - **false*	- (default): sends a Normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the resource status is queried.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// <props="china">The billing method of the NAT gateway instance that you want to query. Valid values:
+	// <props="china">The billing method of the NAT gateway. Valid values:
 	//
 	// <props="china">
 	//
 	// - **PostPaid**: pay-as-you-go.
 	//
-	// - **PrePaid**: the legacy subscription billing method. New purchases under the subscription billing method are no longer supported.
+	// - **PrePaid**: subscription. This billing method is no longer available for new purchases.
 	//
 	//
-	//
-	// <props="intl">The billing method of the NAT gateway instance that you want to query. Valid value: **PostPaid*	- (pay-as-you-go).
+	// <props="intl">The billing method of the NAT gateway. Valid value: **PostPaid*	- (pay-as-you-go).
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The name of the NAT gateway that you want to query.
+	// The name of the NAT gateway.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the NAT gateway that you want to query.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -99,7 +107,7 @@ type DescribeNatGatewaysRequest struct {
 	//
 	// Enhanced
 	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The type of the NAT gateway that you want to query. Valid values:
+	// The type of the NAT gateway. Valid values:
 	//
 	// - **internet**: Internet NAT gateway.
 	//
@@ -117,15 +125,15 @@ type DescribeNatGatewaysRequest struct {
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the NAT gateway that you want to query.
+	// The region ID of the NAT gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -133,7 +141,7 @@ type DescribeNatGatewaysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the NAT gateway that you want to query belongs.
+	// The ID of the resource group to which the NAT gateway belongs.
 	//
 	// example:
 	//
@@ -141,7 +149,7 @@ type DescribeNatGatewaysRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// <props="china">The specification of the Internet NAT gateway. This parameter is supported only when **InstanceChargeType*	- is set to **PrePaid*	- (legacy subscription Internet NAT gateway) to create a NAT gateway with defined specifications. Valid values:
+	// <props="china">The specification of the Internet NAT gateway. You can create NAT gateways with defined specifications only when **InstanceChargeType*	- is set to **PrePaid*	- (existing subscription Internet NAT gateways). Valid values:
 	//
 	// <props="china">
 	//
@@ -156,19 +164,19 @@ type DescribeNatGatewaysRequest struct {
 	//
 	// example:
 	//
-	// 中国站示例值：Small，国际站示例值：无需填写
+	// Example value for the China site: Small. Example value for the international site: leave empty
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the NAT gateway that you want to query. Valid values:
+	// The status of the NAT gateway. Valid values:
 	//
-	// - **Creating**: The NAT gateway is being created. Creating a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating*	- state until the operation is complete.
+	// - **Creating**: Creating a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating*	- state until the creation is complete.
 	//
-	// - **Available**: The NAT gateway is available. This is a stable state after the NAT gateway is created.
+	// - **Available**: The NAT gateway is created and running. This is a stable state.
 	//
-	// - **Modifying**: The NAT gateway is being modified. Modifying a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying*	- state until the operation is complete.
+	// - **Modifying**: Upgrading or downgrading a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying*	- state until the modification is complete.
 	//
-	// - **Deleting**: The NAT gateway is being deleted. Deleting a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting*	- state until the operation is complete.
+	// - **Deleting**: Deleting a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting*	- state until the deletion is complete.
 	//
-	// - **Converting**: The NAT gateway is being upgraded from a standard NAT gateway to an enhanced NAT gateway. This is an asynchronous operation. The NAT gateway remains in the **Converting*	- state until the operation is complete.
+	// - **Converting**: Upgrading a standard NAT gateway to an enhanced NAT gateway is an asynchronous operation. The NAT gateway remains in the **Converting*	- state until the upgrade is complete.
 	//
 	// example:
 	//
@@ -176,7 +184,7 @@ type DescribeNatGatewaysRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tag []*DescribeNatGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the NAT gateway that you want to query belongs.
+	// The ID of the virtual private cloud (VPC) to which the NAT gateway belongs.
 	//
 	// example:
 	//
@@ -392,17 +400,17 @@ func (s *DescribeNatGatewaysRequest) Validate() error {
 }
 
 type DescribeNatGatewaysRequestTag struct {
-	// The tag key of the NAT gateway instance. You can specify up to 20 tag keys.
+	// The tag key of the NAT gateway. You can specify up to 20 tag keys.
 	//
-	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the NAT gateway instance. You can specify up to 20 tag values.
+	// The tag value of the NAT gateway. You can specify up to 20 tag values.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

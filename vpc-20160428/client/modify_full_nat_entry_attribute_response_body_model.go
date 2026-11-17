@@ -14,7 +14,7 @@ type iModifyFullNatEntryAttributeResponseBody interface {
 }
 
 type ModifyFullNatEntryAttributeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

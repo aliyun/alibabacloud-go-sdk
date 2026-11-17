@@ -22,19 +22,19 @@ type iGetVSwitchCidrReservationUsageResponseBody interface {
 }
 
 type GetVSwitchCidrReservationUsageResponseBody struct {
-	// The list of allocated reserved CIDR blocks for a vSwitch.
+	// The list of the reserved CIDR block for a vSwitch that is allocated and used.
 	CidrReservationUsages []*GetVSwitchCidrReservationUsageResponseBodyCidrReservationUsages `json:"CidrReservationUsages,omitempty" xml:"CidrReservationUsages,omitempty" type:"Repeated"`
-	// The number of entries per page in a paged query.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Valid values:
+	// The pagination token that is used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent query is available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetVSwitchCidrReservationUsageResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *GetVSwitchCidrReservationUsageResponseBody) Validate() error {
 }
 
 type GetVSwitchCidrReservationUsageResponseBodyCidrReservationUsages struct {
-	// The prefix CIDR block allocated from the current reserved CIDR block for a vSwitch to an elastic network interface (ENI).
+	// The IP prefix that is allocated from the current reserved CIDR block to elastic network interfaces (ENIs) (network interface controller (NIC)).
 	//
 	// example:
 	//
@@ -133,13 +133,13 @@ type GetVSwitchCidrReservationUsageResponseBodyCidrReservationUsages struct {
 	//
 	// vcr-bp1m12saqteraw3rp****
 	IpPrefixId *string `json:"IpPrefixId,omitempty" xml:"IpPrefixId,omitempty"`
-	// The instance ID of the elastic network interface (ENI) allocated from the reserved CIDR block for a vSwitch.
+	// The instance ID of the elastic network interfaces (ENIs) (network interface controller (NIC)) allocated from the reserved CIDR block.
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The instance type allocated from the reserved CIDR block for a vSwitch. Valid values: **NetworkInterface**, which indicates an elastic network interface (ENI).
+	// The instance type of the resource allocated from the reserved CIDR block. Valid value: **NetworkInterface**, which indicates elastic network interfaces (ENIs) (network interface controller (NIC)).
 	//
 	// example:
 	//

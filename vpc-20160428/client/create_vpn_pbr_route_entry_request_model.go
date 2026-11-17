@@ -46,9 +46,9 @@ type iCreateVpnPbrRouteEntryRequest interface {
 type CreateVpnPbrRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type CreateVpnPbrRouteEntryRequest struct {
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
+	// - **true**: Prechecks the request without creating the route. The system checks whether the required parameters are specified, the request format, and the service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): Sends the request. If the request passes the precheck, the HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateVpnPbrRouteEntryRequest struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunnel protocol).
+	// The tunnel protocol. Set the value to **Ipsec*	- (IPsec tunnel protocol).
 	//
 	// example:
 	//
@@ -88,23 +88,23 @@ type CreateVpnPbrRouteEntryRequest struct {
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The policy priority of the policy-based routing entry. Valid values: **1*	- to **100**. Default value: **10**.
+	// The policy priority of the policy-based route. Valid values: **1*	- to **100**. Default value: **10**.
 	//
-	// A smaller value indicates a higher policy priority for the routing entry.
+	// A smaller value indicates a higher policy priority.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Specifies whether to publish the policy-based route to the VPC route table. Valid values:
+	// Specifies whether to publish the policy-based route to the VPC. Valid values:
 	//
-	// - **true**: Publishes the policy-based route to the VPC route table. The system publishes the route only to the VPC system route table, not to VPC custom route tables.
+	// - **true**: Publishes the policy-based route to the VPC. The system publishes the route only to the system route table of the VPC, but not to custom route tables.
 	//
-	//   If you want the VPC custom route table to contain this route, manually add the route. For more information, see [CreateRouteEntry](https://help.aliyun.com/document_detail/448722.html).
+	//   If you want the custom route tables of the VPC to include this route, you must manually add it. For more information, see [CreateRouteEntry](https://help.aliyun.com/document_detail/448722.html).
 	//
-	// - **false**: Does not publish the policy-based route to the VPC route table.
+	// - **false**: Does not publish the policy-based route to the route tables of the VPC.
 	//
-	//   You must manually add a policy-based route whose next hop points to the VPN gateway instance in both the VPC system route table and custom route tables. Otherwise, the VPC cannot access resources in the CIDR block through the IPsec-VPN connection.
+	//   You must manually add a policy-based route whose next hop points to the VPN gateway in both the system route table and custom route tables of the VPC. Otherwise, the VPC cannot access resources in the CIDR block through the IPsec-VPN connection.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type CreateVpnPbrRouteEntryRequest struct {
 	//
 	// true
 	PublishVpc *bool `json:"PublishVpc,omitempty" xml:"PublishVpc,omitempty"`
-	// The region ID of the VPN gateway instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -138,7 +138,7 @@ type CreateVpnPbrRouteEntryRequest struct {
 	//
 	// 192.168.1.0/24
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The ID of the VPN gateway instance.
+	// The ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//
@@ -146,19 +146,21 @@ type CreateVpnPbrRouteEntryRequest struct {
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The weight of the policy-based routing entry.
+	// The weight of the policy-based route.
 	//
-	// When you use the same VPN gateway instance to establish active/standby IPsec-VPN connections, you can specify the active and standby links by configuring the weight of the policy-based routing entry. A policy-based routing entry with a weight of 100 is the active link by default, and a policy-based routing entry with a weight of 0 is the standby link by default.
+	// When you use the same VPN gateway instance to establish active/standby IPsec-VPN connections, you can specify the active/standby links by configuring the weight of the policy-based route. A policy-based route with a weight of 100 is the active link by default, and a policy-based route with a weight of 0 is the standby link by default.
 	//
-	// You can configure health checks for the IPsec-VPN connection to automatically detect link connectivity. If the active link is down, the system automatically switches traffic to the standby link, ensuring high availability of the cloud connection. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
+	// You can configure health checks for the IPsec-VPN connections to automatically detect the connectivity of the links. If the active link fails, the system automatically switches traffic to the standby link to ensure high availability of the cloud access link. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
 	//
-	// - **100**: The IPsec-VPN connection associated with the policy-based routing entry serves as the active link.
+	// Valid values:
 	//
-	// - **0**: The IPsec-VPN connection associated with the policy-based routing entry serves as the standby link.
+	// - **100**: The IPsec-VPN connection associated with the policy-based route is the active link.
 	//
-	// > - When you specify active and standby links, the source and destination CIDR blocks of the active and standby policy-based routing entries must be the same.
+	// - **0**: The IPsec-VPN connection associated with the policy-based route is the standby link.
 	//
-	// > - For VPN gateway instances that support dual-tunnel pattern IPsec-VPN connections, you do not need to configure this parameter settings. A dual-tunnel pattern IPsec-VPN connection contains two tunnels that automatically form active/standby links. You do not need to specify active/standby links by configuring this parameter. If you configure this parameter, the configuration does not take effect.
+	// > - When you specify the active/standby links, the source and destination CIDR blocks of the active/standby policy-based routes must be the same.
+	//
+	// > - For VPN gateway instances that support dual-tunnel IPsec-VPN connections, you do not need to configure this parameter. A dual-tunnel IPsec-VPN connection contains two tunnels that automatically form active/standby links. You do not need to specify the active/standby links by configuring this parameter. If you configure this parameter, the parameter settings do not take effect.
 	//
 	// This parameter is required.
 	//

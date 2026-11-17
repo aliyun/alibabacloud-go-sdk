@@ -22,11 +22,11 @@ type iListNatIpCidrsResponseBody interface {
 type ListNatIpCidrsResponseBody struct {
 	// The list of NAT CIDR blocks.
 	NatIpCidrs []*ListNatIpCidrsResponseBodyNatIpCidrs `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent requests exist.
+	// - If **NextToken*	- is empty, no next query is available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListNatIpCidrsResponseBody struct {
 	//
 	// 7479A224-4A28-4895-9604-11F48BCE6A88
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of NAT CIDR block entries returned.
+	// The total number of NAT CIDR blocks returned.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListNatIpCidrsResponseBodyNatIpCidrs struct {
 	//
 	// Name
 	NatIpCidrName *string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty"`
-	// The status of the NAT CIDR block. The value is **Available**, which indicates that the NAT CIDR block is available.
+	// The status of the NAT CIDR block. Valid values: **Available**, which indicates that the NAT CIDR block is active.
 	//
 	// example:
 	//

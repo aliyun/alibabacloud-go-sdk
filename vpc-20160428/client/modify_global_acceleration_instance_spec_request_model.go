@@ -26,7 +26,7 @@ type iModifyGlobalAccelerationInstanceSpecRequest interface {
 }
 
 type ModifyGlobalAccelerationInstanceSpecRequest struct {
-	// The peak bandwidth of the Alibaba Cloud Global Accelerator (GA) instance. Unit: Mbit/s. Valid value: **10**.
+	// The peak bandwidth of the Global Accelerator instance. Unit: Mbit/s. Valid values: **10**.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyGlobalAccelerationInstanceSpecRequest struct {
 	//
 	// 10
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the Alibaba Cloud Global Accelerator (GA) instance.
+	// The ID of the Global Accelerator instance.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,9 @@ type ModifyGlobalAccelerationInstanceSpecRequest struct {
 	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
 	OwnerAccount                 *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region where the Alibaba Cloud Global Accelerator (GA) instance is deployed.
+	// The region where the Global Accelerator instance resides.
 	//
-	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

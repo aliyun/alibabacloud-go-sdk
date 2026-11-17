@@ -22,11 +22,11 @@ type iListNatIpsResponseBody interface {
 type ListNatIpsResponseBody struct {
 	// The list of NAT IP addresses.
 	NatIps []*ListNatIpsResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used to start the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no next query is available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a return value, the value indicates the token used to start the next query.
 	//
 	// example:
 	//
@@ -110,11 +110,11 @@ type ListNatIpsResponseBodyNatIps struct {
 	//
 	// 192.168.0.0/28
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
-	// Indicates whether the NAT IP address is the default one. Valid values:
+	// Specifies whether the NAT IP address is the default NAT IP address. Valid values:
 	//
-	// - **true**: The NAT IP address is the default one.
+	// - **true**: The NAT IP address is the default NAT IP address.
 	//
-	// - **false**: The NAT IP address is not the default one.
+	// - **false**: The NAT IP address is not the default NAT IP address.
 	//
 	// example:
 	//
@@ -158,17 +158,17 @@ type ListNatIpsResponseBodyNatIps struct {
 	NatIpName *string `json:"NatIpName,omitempty" xml:"NatIpName,omitempty"`
 	// The status of the NAT IP address. Valid values:
 	//
-	// - **Available**: available.
+	// - **Available**: Available.
 	//
-	// - **Deleted**: deleted.
+	// - **Deleted**: Deleted.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: Deleting.
 	//
-	// - **Creating**: being created.
+	// - **Creating**: Creating.
 	//
-	// - **Associated**: associated with an SNAT or DNAT entry.
+	// - **Associated**: Associated with an SNAT or DNAT entry.
 	//
-	// - **Associating**: being associated with an SNAT or DNAT entry.
+	// - **Associating**: Being associated with an SNAT or DNAT entry.
 	//
 	// example:
 	//

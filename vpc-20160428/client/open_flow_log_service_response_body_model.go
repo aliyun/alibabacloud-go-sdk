@@ -24,7 +24,7 @@ type OpenFlowLogServiceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned when the flow log service is activated.
+	// The message returned when the flow log feature is activated.
 	//
 	// example:
 	//

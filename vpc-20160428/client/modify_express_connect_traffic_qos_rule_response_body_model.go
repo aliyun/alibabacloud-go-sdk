@@ -14,7 +14,7 @@ type iModifyExpressConnectTrafficQosRuleResponseBody interface {
 }
 
 type ModifyExpressConnectTrafficQosRuleResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

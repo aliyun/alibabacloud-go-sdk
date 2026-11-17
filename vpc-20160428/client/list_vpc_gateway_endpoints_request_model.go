@@ -38,13 +38,13 @@ type iListVpcGatewayEndpointsRequest interface {
 }
 
 type ListVpcGatewayEndpointsRequest struct {
-	// The endpoint instance ID of the gateway endpoint.
+	// The gateway endpoint instance ID.
 	//
 	// example:
 	//
 	// vpce-bp1i1212ss2whuwyw****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	//
 	// The name must be 1 to 128 characters in length.
 	//
@@ -52,17 +52,17 @@ type ListVpcGatewayEndpointsRequest struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether a next query token is available. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - Leave this parameter empty for the first query or when no more results are available.
+	// - If this is the first query or no subsequent query is required, leave this parameter empty.
 	//
-	// - If more results are available, set this parameter to the NextToken value returned by the previous API call.
+	// - If a subsequent query is required, set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type ListVpcGatewayEndpointsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the gateway endpoint that you want to query.
+	// The region ID of the VPC gateway endpoint.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type ListVpcGatewayEndpointsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the gateway endpoint belongs.
+	// The ID of the resource group to which the VPC gateway endpoint belongs.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ListVpcGatewayEndpointsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The service name of the endpoint service.
+	// The endpoint service name.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListVpcGatewayEndpointsRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The list of tags.
 	Tags []*ListVpcGatewayEndpointsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the gateway endpoint belongs.
+	// The ID of the VPC to which the VPC gateway endpoint belongs.
 	//
 	// example:
 	//
@@ -243,17 +243,17 @@ func (s *ListVpcGatewayEndpointsRequest) Validate() error {
 }
 
 type ListVpcGatewayEndpointsRequestTags struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

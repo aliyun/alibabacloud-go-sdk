@@ -40,9 +40,9 @@ type AddPublicIpAddressPoolCidrBlockRequest struct {
 	//
 	// 47.0.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The subnet mask of the CIDR block.
+	// The mask of the CIDR block.
 	//
-	// After you enter the subnet mask, the system automatically allocates a CIDR block.
+	// After you specify the mask, the system automatically allocates a CIDR block.
 	//
 	// Valid values: **24*	- to **28**.
 	//
@@ -54,19 +54,19 @@ type AddPublicIpAddressPoolCidrBlockRequest struct {
 	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to only perform a dry run on the request. Valid values:
 	//
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without adding the CIDR block. The system checks whether required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): sends the request. If the request passes the dry run, the HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type AddPublicIpAddressPoolCidrBlockRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance ID of the IPAM pool.
+	// The instance ID of the IP address pool.
 	//
 	// This parameter is required.
 	//

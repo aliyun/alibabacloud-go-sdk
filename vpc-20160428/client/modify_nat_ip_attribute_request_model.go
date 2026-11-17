@@ -34,33 +34,33 @@ type iModifyNatIpAttributeRequest interface {
 type ModifyNatIpAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- of each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run for this request. Valid values:
 	//
-	// - **true**: sends a check request without modifying the NAT IP address information. The system checks the request for potential issues, including invalid AccessKey pairs, the authorization status of the RAM user, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run on the request without modifying the NAT IP address. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the NAT IP address information is modified.
+	// - **false*	- (default): sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the NAT IP address is modified.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The description of the NAT IP address that you want to modify.
+	// The description of the NAT IP address.
 	//
-	// The description must be 2 to 256 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
 	NatIpDescription *string `json:"NatIpDescription,omitempty" xml:"NatIpDescription,omitempty"`
-	// The instance ID of the NAT IP address that you want to modify.
+	// The instance ID of the NAT IP address.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type ModifyNatIpAttributeRequest struct {
 	//
 	// vpcnatip-gw8e1n11f44wpg****
 	NatIpId *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
-	// The name of the NAT IP address that you want to modify.
+	// The name of the NAT IP address.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ModifyNatIpAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the NAT gateway instance to which the NAT IP address belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

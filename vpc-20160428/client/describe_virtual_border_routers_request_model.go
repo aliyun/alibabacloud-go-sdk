@@ -32,32 +32,32 @@ type iDescribeVirtualBorderRoutersRequest interface {
 }
 
 type DescribeVirtualBorderRoutersRequest struct {
-	// The filter information.
+	// The filter conditions.
 	Filter []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Specifies whether to include cross-account Virtual Border Routers.
+	// Specifies whether to include VBRs that belong to other Alibaba Cloud accounts. Valid values:
 	//
-	// - **true**: Included.
+	// - **true**: includes VBRs that belong to other accounts.
 	//
-	// - **false*	- (default): Not included.
+	// - **false*	- (default): does not include VBRs that belong to other accounts.
 	//
 	// example:
 	//
 	// false
 	IncludeCrossAccountVbr *bool  `json:"IncludeCrossAccountVbr,omitempty" xml:"IncludeCrossAccountVbr,omitempty"`
 	OwnerId                *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries to return on each page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type DescribeVirtualBorderRoutersRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group. For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html).
 	//
 	// example:
 	//
@@ -198,13 +198,27 @@ func (s *DescribeVirtualBorderRoutersRequest) Validate() error {
 }
 
 type DescribeVirtualBorderRoutersRequestFilter struct {
-	// The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
+	// The filter key. You can specify up to five filter keys. Valid values:
+	//
+	// 	- **PhysicalConnectionId**: instance ID of the Express Connect circuit.
+	//
+	// 	- **VbrId**: instance ID of the VBR.
+	//
+	// 	- **Status**: the status of the VBR.
+	//
+	// 	- **Name**: the name of the VBR.
+	//
+	// 	- **AccessPointId**: instance ID of the access point.
+	//
+	// 	- **eccId**: instance ID of the Express Cloud Connect instance.
+	//
+	// 	- **type**: the type of the Express Connect circuit.
 	//
 	// example:
 	//
 	// Status
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value based on the specified Key. You can specify multiple filter values for a Key. The relationship between multiple filter values is OR, which means that a match with any one of the filter values is considered a match with the filter condition.
+	// The filter value corresponding to the filter key. You can specify multiple filter values for a single filter key. The filter values have an OR relationship. If a resource matches one of the filter values, it matches the filter condition.
 	//
 	// example:
 	//
@@ -243,13 +257,13 @@ func (s *DescribeVirtualBorderRoutersRequestFilter) Validate() error {
 }
 
 type DescribeVirtualBorderRoutersRequestTags struct {
-	// The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You must specify at least one tag key and can specify up to 20 tag keys. The tag key cannot be an empty string. A tag key can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string. A tag value can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

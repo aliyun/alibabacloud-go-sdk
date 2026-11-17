@@ -58,8 +58,6 @@ type DescribeVpnConnectionsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the IPsec-VPN connection.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -67,8 +65,6 @@ type DescribeVpnConnectionsRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the IPsec-VPN connection belongs.
-	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
 	//
 	// example:
 	//
@@ -233,10 +229,6 @@ type DescribeVpnConnectionsRequestTag struct {
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
-	//
-	// The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
-	//
-	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateSnatEntryResponseBody interface {
 }
 
 type CreateSnatEntryResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

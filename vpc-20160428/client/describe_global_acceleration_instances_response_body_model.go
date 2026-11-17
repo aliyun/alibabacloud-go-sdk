@@ -41,7 +41,7 @@ type DescribeGlobalAccelerationInstancesResponseBody struct {
 	//
 	// 6B4EE38D-C75B-4E1F-844E-863A94430676
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

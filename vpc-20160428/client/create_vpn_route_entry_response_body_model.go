@@ -32,7 +32,7 @@ type iCreateVpnRouteEntryResponseBody interface {
 type CreateVpnRouteEntryResponseBody struct {
 	// The timestamp when the destination route was created. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC, to the time when the destination route was created.
+	// The timestamp is in the UNIX format, which represents the total duration from 00:00:00 on January 1, 1970 (UTC) to the time when the destination route was created.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type CreateVpnRouteEntryResponseBody struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
+	// The tunnel protocol. Set the value to **Ipsec*	- (IPsec tunnel protocol).
 	//
 	// example:
 	//
 	// Ipsec
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type CreateVpnRouteEntryResponseBody struct {
 	//
 	// 10.0.0.0/24
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The publish status of the destination route.
+	// The publish status of the destination route. Valid values:
 	//
-	// - **published**: The destination route is published to the VPC route table.
+	// - **published**: The destination route is published to the route table of the VPC.
 	//
-	// - **normal**: The destination route is not published to the VPC route table.
+	// - **normal**: The destination route is not published to the route table of the VPC.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type CreateVpnRouteEntryResponseBody struct {
 	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
 	// The weight of the destination route. Valid values:
 	//
-	// - **100**: The destination route has a high priority.
+	// - **100**: The destination route has a higher priority.
 	//
-	// - **0**: The destination route has a low priority.
+	// - **0**: The destination route has a lower priority.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iGetIpv4GatewayAttributeRequest interface {
 }
 
 type GetIpv4GatewayAttributeRequest struct {
-	// The instance ID of the IPv4 gateway to query.
+	// The instance ID of the IPv4 gateway.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,7 @@ type GetIpv4GatewayAttributeRequest struct {
 	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the IPv4 gateway to query.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the IPv4 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

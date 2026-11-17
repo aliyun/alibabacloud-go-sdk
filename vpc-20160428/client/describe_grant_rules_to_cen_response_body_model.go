@@ -41,7 +41,7 @@ type DescribeGrantRulesToCenResponseBody struct {
 	//
 	// F5BB78C8-5F41-464F-B9FF-5E0A7198BA26
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iListTagResourcesForExpressConnectResponseBody interface {
 }
 
 type ListTagResourcesForExpressConnectResponseBody struct {
-	// The token for the next query. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token for the next query.
 	//
 	// example:
 	//

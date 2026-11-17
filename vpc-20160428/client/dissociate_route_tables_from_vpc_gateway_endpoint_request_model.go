@@ -30,9 +30,7 @@ type iDissociateRouteTablesFromVpcGatewayEndpointRequest interface {
 }
 
 type DissociateRouteTablesFromVpcGatewayEndpointRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can generate a value for this parameter on the client to ensure that the value is unique across different requests. The client token can contain only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
@@ -40,17 +38,17 @@ type DissociateRouteTablesFromVpcGatewayEndpointRequest struct {
 	//
 	// TF-DissociateRouteTablesFromVpcGatewayEndpoint-1634369235-8f****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run.
+	// - **true**: sends a dry run request.
 	//
-	// - **false*	- (default): sends the request.
+	// - **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The endpoint instance ID of the gateway endpoint.
+	// The instance ID of the gateway endpoint instance.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +58,7 @@ type DissociateRouteTablesFromVpcGatewayEndpointRequest struct {
 	EndpointId   *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the endpoint. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The ID of the region to which the gateway endpoint belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +68,7 @@ type DissociateRouteTablesFromVpcGatewayEndpointRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of route tables.
+	// The IDs of the route tables.
 	//
 	// This parameter is required.
 	RouteTableIds []*string `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Repeated"`

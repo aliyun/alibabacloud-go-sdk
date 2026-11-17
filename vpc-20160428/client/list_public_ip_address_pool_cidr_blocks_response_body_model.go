@@ -20,11 +20,11 @@ type iListPublicIpAddressPoolCidrBlocksResponseBody interface {
 }
 
 type ListPublicIpAddressPoolCidrBlocksResponseBody struct {
-	// The pagination token. Valid values:
+	// The token used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent requests are to be sent.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a return value, the value indicates the token used to start the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListPublicIpAddressPoolCidrBlocksResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned for the current request.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ListPublicIpAddressPoolCidrBlocksResponseBodyPublicIpPoolCidrBlockList stru
 	//
 	// 47.0.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the CIDR block was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The creation time. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//

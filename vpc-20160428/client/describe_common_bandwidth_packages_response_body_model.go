@@ -23,13 +23,13 @@ type iDescribeCommonBandwidthPackagesResponseBody interface {
 
 type DescribeCommonBandwidthPackagesResponseBody struct {
 	CommonBandwidthPackages *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages `json:"CommonBandwidthPackages,omitempty" xml:"CommonBandwidthPackages,omitempty" type:"Struct"`
-	// The page number of the list.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -470,9 +470,12 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 }
 
 type DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse struct {
-	AllocationId                     *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	BandwidthPackageIpRelationStatus *string `json:"BandwidthPackageIpRelationStatus,omitempty" xml:"BandwidthPackageIpRelationStatus,omitempty"`
-	IpAddress                        *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	AllocationId                      *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	BandwidthPackageIpRelationStatus  *string `json:"BandwidthPackageIpRelationStatus,omitempty" xml:"BandwidthPackageIpRelationStatus,omitempty"`
+	CommonBandwidthPackageIpBandwidth *string `json:"CommonBandwidthPackageIpBandwidth,omitempty" xml:"CommonBandwidthPackageIpBandwidth,omitempty"`
+	IpAddress                         *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpInstanceId                      *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
+	IpType                            *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 }
 
 func (s DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) String() string {
@@ -491,8 +494,20 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 	return s.BandwidthPackageIpRelationStatus
 }
 
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) GetCommonBandwidthPackageIpBandwidth() *string {
+	return s.CommonBandwidthPackageIpBandwidth
+}
+
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) GetIpAddress() *string {
 	return s.IpAddress
+}
+
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) GetIpInstanceId() *string {
+	return s.IpInstanceId
+}
+
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) GetIpType() *string {
+	return s.IpType
 }
 
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) SetAllocationId(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse {
@@ -505,8 +520,23 @@ func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommo
 	return s
 }
 
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) SetCommonBandwidthPackageIpBandwidth(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse {
+	s.CommonBandwidthPackageIpBandwidth = &v
+	return s
+}
+
 func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) SetIpAddress(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse {
 	s.IpAddress = &v
+	return s
+}
+
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) SetIpInstanceId(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse {
+	s.IpInstanceId = &v
+	return s
+}
+
+func (s *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse) SetIpType(v string) *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackagePublicIpAddressesPublicIpAddresse {
+	s.IpType = &v
 	return s
 }
 

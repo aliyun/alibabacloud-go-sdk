@@ -14,7 +14,7 @@ type iGrantInstanceToCenResponseBody interface {
 }
 
 type GrantInstanceToCenResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

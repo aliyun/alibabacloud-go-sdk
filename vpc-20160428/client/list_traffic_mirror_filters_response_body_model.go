@@ -24,23 +24,23 @@ type iListTrafficMirrorFiltersResponseBody interface {
 }
 
 type ListTrafficMirrorFiltersResponseBody struct {
-	// The number of entries returned in the current request.
+	// The number of entries returned for the current query.
 	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The maximum number of entries queried in the current request.
+	// The maximum number of entries to return for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token that indicates whether a next query is available. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no subsequent query is available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListTrafficMirrorFiltersResponseBody struct {
 	//
 	// 739CA01C-92EB-4C69-BCC0-280149C6F41E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of traffic mirror filters.
+	// The details of the traffic mirror filters.
 	TrafficMirrorFilters []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters `json:"TrafficMirrorFilters,omitempty" xml:"TrafficMirrorFilters,omitempty" type:"Repeated"`
 }
 
@@ -138,23 +138,23 @@ func (s *ListTrafficMirrorFiltersResponseBody) Validate() error {
 }
 
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters struct {
-	// The time when the traffic mirror filter was created.
+	// The creation time of the traffic mirror filter. The time is displayed in UTC and follows the ISO 8601 standard. The time is accurate to minutes and in the YYYY-MM-DDThh:mmZ format.
 	//
 	// example:
 	//
 	// 2023-09-05T15:26Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The details of outbound rules.
+	// The details of the outbound rules.
 	EgressRules []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules `json:"EgressRules,omitempty" xml:"EgressRules,omitempty" type:"Repeated"`
-	// The details of inbound rules.
+	// The details of the inbound rules.
 	IngressRules []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules `json:"IngressRules,omitempty" xml:"IngressRules,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the traffic mirroring filter belongs.
+	// The ID of the resource group to which the traffic mirroring belongs.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the traffic mirror filter.
 	//
@@ -176,13 +176,13 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters struct {
 	TrafficMirrorFilterName *string `json:"TrafficMirrorFilterName,omitempty" xml:"TrafficMirrorFilterName,omitempty"`
 	// The status of the traffic mirror filter. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: creating
 	//
-	// - **Created**: created.
+	// - **Created**: created
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: modifying
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: deleting
 	//
 	// example:
 	//
@@ -313,21 +313,21 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters) Validate() er
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct {
 	// The collection policy of the outbound rule. Valid values:
 	//
-	// - **accept**: collects network traffic.
+	// - **accept**: Captures network traffic.
 	//
-	// - **drop**: does not collect network traffic.
+	// - **drop**: Does not capture network traffic.
 	//
 	// example:
 	//
 	// accept
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The destination CIDR block of network traffic for the outbound rule.
+	// The destination CIDR block of the network traffic for the outbound rule.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The destination port range of network traffic for the outbound rule.
+	// The destination port range of the network traffic for the outbound rule.
 	//
 	// example:
 	//
@@ -345,37 +345,37 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct 
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The protocol type used by the outbound network traffic to be mirrored. Valid values:
+	// The protocol type of the network traffic to be mirrored for the outbound rule. Valid values:
 	//
-	// - **ALL**: all protocols.
+	// - **ALL**: all protocols
 	//
-	// - **ICMP**: Internet Control Message Protocol.
+	// - **ICMP**: Internet Control Message Protocol
 	//
-	// - **TCP**: Transmission Control Protocol.
+	// - **TCP**: Transmission Control Protocol
 	//
-	// - **UDP**: User Datagram Protocol.
+	// - **UDP**: User Datagram Protocol
 	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block of network traffic for the outbound rule.
+	// The source CIDR block of the network traffic for the outbound rule.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
-	// The source port range of network traffic for the outbound rule.
+	// The source port range of the network traffic for the outbound rule.
 	//
 	// example:
 	//
 	// 22/40
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The direction of network traffic. Valid values:
+	// The direction of the network traffic. Valid values:
 	//
-	// - **egress**: outbound.
+	// - **egress**: outbound
 	//
-	// - **ingress**: inbound.
+	// - **ingress**: inbound
 	//
 	// example:
 	//
@@ -395,13 +395,13 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules struct 
 	TrafficMirrorFilterRuleId *string `json:"TrafficMirrorFilterRuleId,omitempty" xml:"TrafficMirrorFilterRuleId,omitempty"`
 	// The status of the outbound rule. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: creating
 	//
-	// - **Created**: created.
+	// - **Created**: created
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: modifying
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: deleting
 	//
 	// example:
 	//
@@ -532,21 +532,21 @@ func (s *ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules) Va
 type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct {
 	// The collection policy of the inbound rule. Valid values:
 	//
-	// - **accept**: collects network traffic.
+	// - **accept**: Captures network traffic.
 	//
-	// - **drop**: does not collect network traffic.
+	// - **drop**: Does not capture network traffic.
 	//
 	// example:
 	//
 	// accept
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The destination CIDR block of network traffic for the inbound rule.
+	// The destination CIDR block of the network traffic for the inbound rule.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The destination port range of network traffic for the inbound rule.
+	// The destination port range of the network traffic for the inbound rule.
 	//
 	// example:
 	//
@@ -564,37 +564,37 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The protocol type used by the inbound network traffic to be mirrored. Valid values:
+	// The protocol type of the network traffic to be mirrored for the inbound rule. Valid values:
 	//
-	// - **ALL**: all protocols.
+	// - **ALL**: all protocols
 	//
-	// - **ICMP**: Internet Control Message Protocol.
+	// - **ICMP**: Internet Control Message Protocol
 	//
-	// - **TCP**: Transmission Control Protocol.
+	// - **TCP**: Transmission Control Protocol
 	//
-	// - **UDP**: User Datagram Protocol.
+	// - **UDP**: User Datagram Protocol
 	//
 	// example:
 	//
 	// ALL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block of network traffic for the inbound rule.
+	// The source CIDR block of the network traffic for the inbound rule.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
-	// The destination port range of network traffic for the inbound rule.
+	// The destination port range of the network traffic for the inbound rule.
 	//
 	// example:
 	//
 	// -1/-1
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The direction of network traffic. Valid values:
+	// The direction of the network traffic. Valid values:
 	//
-	// - **egress**: outbound.
+	// - **egress**: outbound
 	//
-	// - **ingress**: inbound.
+	// - **ingress**: inbound
 	//
 	// example:
 	//
@@ -614,13 +614,13 @@ type ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules struct
 	TrafficMirrorFilterRuleId *string `json:"TrafficMirrorFilterRuleId,omitempty" xml:"TrafficMirrorFilterRuleId,omitempty"`
 	// The status of the inbound rule. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: creating
 	//
-	// - **Created**: created.
+	// - **Created**: created
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: modifying
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: deleting
 	//
 	// example:
 	//

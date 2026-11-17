@@ -32,27 +32,25 @@ type iDissociateRouteTableFromGatewayRequest interface {
 }
 
 type DissociateRouteTableFromGatewayRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
-	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without disassociating the gateway route table from the IPv4 gateway instance. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - **true**: sends a dry run request. The gateway route table is not dissociated from the IPv4 gateway instance. The system checks the required parameters, request format, and service limits. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the gateway route table is disassociated from the IPv4 gateway instance.
+	// - **false*	- (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the gateway route table is directly dissociated from the IPv4 gateway instance.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The instance ID of the IPv4 gateway to disassociate.
+	// The instance ID of the IPv4 gateway to be dissociated.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +58,7 @@ type DissociateRouteTableFromGatewayRequest struct {
 	//
 	// ipv4gw-5tsnc6s4ogsedtp3k****
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The type of the gateway instance to disassociate.
+	// The type of the gateway instance to be dissociated.
 	//
 	// example:
 	//
@@ -68,9 +66,9 @@ type DissociateRouteTableFromGatewayRequest struct {
 	GatewayType  *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the gateway route table and IPv4 gateway instance to disassociate.
+	// The region ID of the gateway route table and the IPv4 gateway instance to be dissociated.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +78,7 @@ type DissociateRouteTableFromGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the gateway route table to disassociate.
+	// The ID of the gateway route table to be dissociated.
 	//
 	// This parameter is required.
 	//

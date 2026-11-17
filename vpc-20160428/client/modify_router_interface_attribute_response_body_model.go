@@ -14,7 +14,7 @@ type iModifyRouterInterfaceAttributeResponseBody interface {
 }
 
 type ModifyRouterInterfaceAttributeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

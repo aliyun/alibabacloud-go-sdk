@@ -28,7 +28,7 @@ type iDescribePublicIpAddressRequest interface {
 }
 
 type DescribePublicIpAddressRequest struct {
-	// The version of the IP protocol. Valid values:
+	// The IP protocol version. Valid values:
 	//
 	// - **ipv4*	- (default): IPv4.
 	//
@@ -56,7 +56,7 @@ type DescribePublicIpAddressRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

@@ -146,48 +146,49 @@ func (s *DescribeEipAddressesResponseBodyEipAddresses) Validate() error {
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
-	AllocationId                  *string                                                                        `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	AllocationTime                *string                                                                        `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	Bandwidth                     *string                                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BandwidthPackageBandwidth     *string                                                                        `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
-	BandwidthPackageId            *string                                                                        `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BandwidthPackageType          *string                                                                        `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	BizType                       *string                                                                        `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BusinessStatus                *string                                                                        `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ChargeType                    *string                                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DeletionProtection            *bool                                                                          `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	Description                   *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipBandwidth                  *string                                                                        `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	ExpiredTime                   *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HDMonitorStatus               *string                                                                        `json:"HDMonitorStatus,omitempty" xml:"HDMonitorStatus,omitempty"`
-	HasReservationData            *string                                                                        `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	ISP                           *string                                                                        `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	InstanceId                    *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceRegionId              *string                                                                        `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	InstanceType                  *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType            *string                                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpAddress                     *string                                                                        `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	Mode                          *string                                                                        `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name                          *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Netmode                       *string                                                                        `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
-	OperationLocks                *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
-	PrivateIpAddress              *string                                                                        `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpAddressPoolId         *string                                                                        `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	RegionId                      *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReservationActiveTime         *string                                                                        `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	ReservationBandwidth          *string                                                                        `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	ReservationInternetChargeType *string                                                                        `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	ReservationOrderType          *string                                                                        `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	ResourceGroupId               *string                                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecondLimited                 *bool                                                                          `json:"SecondLimited,omitempty" xml:"SecondLimited,omitempty"`
-	SecurityProtectionTypes       *DescribeEipAddressesResponseBodyEipAddressesEipAddressSecurityProtectionTypes `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Struct"`
-	SegmentInstanceId             *string                                                                        `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
-	ServiceID                     *int64                                                                         `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	ServiceManaged                *int32                                                                         `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	Status                        *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                          *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VpcId                         *string                                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	Zone                          *string                                                                        `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	AllocationId                      *string                                                                        `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	AllocationTime                    *string                                                                        `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	Bandwidth                         *string                                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackageBandwidth         *string                                                                        `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
+	BandwidthPackageId                *string                                                                        `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageType              *string                                                                        `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BizType                           *string                                                                        `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BusinessStatus                    *string                                                                        `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ChargeType                        *string                                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CommonBandwidthPackageIpBandwidth *string                                                                        `json:"CommonBandwidthPackageIpBandwidth,omitempty" xml:"CommonBandwidthPackageIpBandwidth,omitempty"`
+	DeletionProtection                *bool                                                                          `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Description                       *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipBandwidth                      *string                                                                        `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	ExpiredTime                       *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HDMonitorStatus                   *string                                                                        `json:"HDMonitorStatus,omitempty" xml:"HDMonitorStatus,omitempty"`
+	HasReservationData                *string                                                                        `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	ISP                               *string                                                                        `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	InstanceId                        *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceRegionId                  *string                                                                        `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	InstanceType                      *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType                *string                                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress                         *string                                                                        `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Mode                              *string                                                                        `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Name                              *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Netmode                           *string                                                                        `json:"Netmode,omitempty" xml:"Netmode,omitempty"`
+	OperationLocks                    *DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocks          `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
+	PrivateIpAddress                  *string                                                                        `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpAddressPoolId             *string                                                                        `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
+	RegionId                          *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservationActiveTime             *string                                                                        `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationBandwidth              *string                                                                        `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	ReservationInternetChargeType     *string                                                                        `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType              *string                                                                        `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId                   *string                                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondLimited                     *bool                                                                          `json:"SecondLimited,omitempty" xml:"SecondLimited,omitempty"`
+	SecurityProtectionTypes           *DescribeEipAddressesResponseBodyEipAddressesEipAddressSecurityProtectionTypes `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Struct"`
+	SegmentInstanceId                 *string                                                                        `json:"SegmentInstanceId,omitempty" xml:"SegmentInstanceId,omitempty"`
+	ServiceID                         *int64                                                                         `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
+	ServiceManaged                    *int32                                                                         `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	Status                            *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                              *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                             *string                                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Zone                              *string                                                                        `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -232,6 +233,10 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) GetBusinessStat
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) GetChargeType() *string {
 	return s.ChargeType
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) GetCommonBandwidthPackageIpBandwidth() *string {
+	return s.CommonBandwidthPackageIpBandwidth
 }
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) GetDeletionProtection() *bool {
@@ -408,6 +413,11 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetBusinessStat
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetChargeType(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetCommonBandwidthPackageIpBandwidth(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
+	s.CommonBandwidthPackageIpBandwidth = &v
 	return s
 }
 

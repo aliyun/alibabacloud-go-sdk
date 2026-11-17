@@ -58,7 +58,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterRequest struct {
 	//
 	// The client generates the value of this parameter. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterRequest struct {
 	//
 	// false
 	EnableIpv6 *string `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	// The Alibaba Cloud-side IP address of the VBR instance. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask*	- together when you call this operation. The request fails if any of these parameters is missing.
+	// The Alibaba Cloud-side IP address of the VBR instance. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask*	- at the same time when you call this operation. The request fails if any of these parameters is missing.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The client-side IP address of the VBR instance.
 	//
-	// Only the VBR owner can specify or modify this property. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask*	- together when you call this operation. The request fails if any of these parameters is missing.
+	// Only the VBR owner can specify or modify this property. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask*	- at the same time when you call this operation. The request fails if any of these parameters is missing.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterRequest struct {
 	PeeringIpv6SubnetMask *string `json:"PeeringIpv6SubnetMask,omitempty" xml:"PeeringIpv6SubnetMask,omitempty"`
 	// The subnet mask for the Alibaba Cloud-side and client-side IP addresses of the VBR instance.
 	//
-	// The two IP addresses must be in the same subnet. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask*	- together when you call this operation. The request fails if any of these parameters is missing.
+	// The two IP addresses must be in the same subnet. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask*	- at the same time when you call this operation. The request fails if any of these parameters is missing.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterRequest struct {
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +152,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterRequest struct {
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
 	// The VLAN ID of the VBR. Valid values: **0 to 2999**.
 	//
-	// > Only the owner of the Express Connect circuit can specify this parameter. Two VBRs on the same Express Connect circuit cannot have the same VLAN ID.
+	// > Only the owner of the Express Connect circuit can specify this parameter. Two VBRs under the same Express Connect circuit cannot have the same VLAN ID.
 	//
 	// This parameter is required.
 	//

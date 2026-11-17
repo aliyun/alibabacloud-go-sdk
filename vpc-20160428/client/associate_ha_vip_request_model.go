@@ -32,9 +32,9 @@ type iAssociateHaVipRequest interface {
 type AssociateHaVipRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type AssociateHaVipRequest struct {
 	//
 	// havip-2zeo05qre24nhrqpy****
 	HaVipId *string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty"`
-	// The ID of the ECS instance to attach to the HaVip.
+	// The ID of the ECS instance to which you want to attach the HaVip.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type AssociateHaVipRequest struct {
 	//
 	// i-faf344422ffsfad****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to attach to the HaVip. Valid values:
+	// The type of the instance to which you want to attach the HaVip. Valid values:
 	//
-	// - **EcsInstance**: ECS instance.
+	// - **EcsInstance**: a cloud server ECS instance.
 	//
-	// - **NetworkInterface**: elastic network interface (ENI). If the instance to attach to the HaVip is an ENI, this parameter is required.
+	// - **NetworkInterface**: an elastic network interface controller (NIC) instance. When the instance to which you want to attach the HaVip is an elastic network interface controller (NIC), this parameter is required.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type AssociateHaVipRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the HaVip.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -44,13 +44,13 @@ type iDescribeSnatTableEntriesRequest interface {
 type DescribeSnatTableEntriesRequest struct {
 	// The ID of the NAT gateway to query.
 	//
-	// > You must specify at least one of **SnatTableId*	- and **NatGatewayId**.
+	// > You must specify at least one of the **SnatTableId*	- and **NatGatewayId*	- parameters.
 	//
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The IDs of the elastic network interfaces (ENIs) to query.
+	// The IDs of the elastic network interfaces (ENIs) (network interface controller (NIC)) to query.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -60,15 +60,15 @@ type DescribeSnatTableEntriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the NAT gateway.
+	// The ID of the region where the NAT gateway is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,13 @@ type DescribeSnatTableEntriesRequest struct {
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 	// The name of the SNAT entry.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length, and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// SnatEntry-1
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	// - When you query SNAT entries of an Internet NAT gateway, this parameter specifies the elastic IP address (EIP) in the SNAT entry.
+	// - When you query SNAT entries of an Internet NAT gateway, this parameter specifies the EIP in the SNAT entry.
 	//
 	//
 	//
@@ -104,7 +104,7 @@ type DescribeSnatTableEntriesRequest struct {
 	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 	// The ID of the SNAT table.
 	//
-	// > You must specify at least one of **SnatTableId*	- and **NatGatewayId**.
+	// > You must specify at least one of the **SnatTableId*	- and **NatGatewayId*	- parameters.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type DescribeSnatTableEntriesRequest struct {
 	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
 	// The ID of the vSwitch.
 	//
-	// - When you query SNAT entries of an Internet NAT gateway, this parameter specifies the vSwitch whose ECS instances can access the Internet by using the SNAT rule.
+	// - When you query SNAT entries of an Internet NAT gateway, this parameter specifies that all ECS instances in the vSwitch can access the Internet through SNAT rules.
 	//
-	// - When you query SNAT entries of a VPC NAT gateway, this parameter specifies the vSwitch whose ECS instances can access external networks by using the SNAT rule.
+	// - When you query SNAT entries of a VPC NAT gateway, this parameter specifies that all ECS instances in the vSwitch can access external networks through SNAT rules.
 	//
 	// example:
 	//

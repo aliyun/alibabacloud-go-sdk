@@ -22,13 +22,13 @@ type iDescribeVpcsResponseBody interface {
 }
 
 type DescribeVpcsResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeVpcsResponseBody struct {
 	//
 	// C6532AA8-D0F7-497F-A8EE-094126D441F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

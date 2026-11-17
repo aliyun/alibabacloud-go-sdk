@@ -30,11 +30,11 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
-	// Specifies whether to unbind all tags from the resources. Valid values:
+	// Specifies whether to remove all tags from the resources. Valid values:
 	//
-	// - **true**: Unbinds all tags from the resources.
+	// - **true**: Removes all tags from the resources.
 	//
-	// - **false*	- (default): Does not unbind all tags from the resources.
+	// - **false*	- (default): Does not remove all tags from the resources.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UnTagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the resources.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type UnTagResourcesRequest struct {
 	//
 	// - **PREFIXLIST**: prefix list instance.
 	//
-	// - **PUBLICIPADDRESSPOOL**: IP address pool instance.
+	// - **PUBLICIPADDRESSPOOL**: IPAM pool instance.
 	//
 	// - **IPV4GATEWAY**: IPv4 gateway instance.
 	//
@@ -94,7 +94,7 @@ type UnTagResourcesRequest struct {
 	//
 	// - **FLOWLOG**: flow log instance.
 	//
-	// - **HAVIP**: high-availability virtual IP address (HaVip) instance.
+	// - **HAVIP**: high-availability virtual IP address instance.
 	//
 	// - **DHCPOPTIONSSET**: DHCP options set instance.
 	//
@@ -102,7 +102,7 @@ type UnTagResourcesRequest struct {
 	//
 	// - **IPV6ADDRESS**: IPv6 address instance.
 	//
-	// > The resource type value is case-insensitive.
+	// > The resource type values are case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -110,9 +110,9 @@ type UnTagResourcesRequest struct {
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys to unbind. You can specify up to 20 tag keys.
+	// The tag keys to be removed. You can specify up to 20 tag keys.
 	//
-	// Each tag key can be up to 128 characters in length, can be an empty string, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

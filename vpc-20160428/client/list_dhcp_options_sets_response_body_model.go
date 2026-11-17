@@ -20,13 +20,13 @@ type iListDhcpOptionsSetsResponseBody interface {
 }
 
 type ListDhcpOptionsSetsResponseBody struct {
-	// The list of DHCP options sets.
+	// The information about the DHCP options sets.
 	DhcpOptionsSets []*ListDhcpOptionsSetsResponseBodyDhcpOptionsSets `json:"DhcpOptionsSets,omitempty" xml:"DhcpOptionsSets,omitempty" type:"Repeated"`
-	// The pagination token. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value is the token for the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListDhcpOptionsSetsResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
 	//
 	// 2025-08-21 ***
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The DHCP options configuration.
+	// The configuration information of the DHCP options.
 	DhcpOptions *ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions `json:"DhcpOptions,omitempty" xml:"DhcpOptions,omitempty" type:"Struct"`
 	// The description of the DHCP options set.
 	//
@@ -150,13 +150,13 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the DHCP options set. Valid values:
 	//
-	// - **Available**: available.
+	// - **Available**: Available.
 	//
-	// - **InUse**: in use.
+	// - **InUse**: In use.
 	//
-	// - **Pending**: being configured.
+	// - **Pending**: Being configured.
 	//
-	// - **Deleted**: deleted.
+	// - **Deleted**: Deleted.
 	//
 	// example:
 	//
@@ -289,7 +289,7 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The IP address of the DNS server.
+	// The IP addresses of the DNS servers.
 	//
 	// example:
 	//
@@ -297,9 +297,9 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
 	// The lease time of the IPv6 DHCP options set.
 	//
-	// - If the lease time is in hours, the unit is h. Valid values: **24h*	- to **1176h*	- and **87600h*	- to **175200h**. Default value: **24h**.
+	// - If the lease time is set in hours, the unit is h. Valid values: **24h*	- to **1176h*	- and **87600h*	- to **175200h**. Default value: **24h**.
 	//
-	// - If the lease time is in days, the unit is d. Valid values: **1d*	- to **49d*	- and **3650d*	- to **7300d**. Default value: **1d**.
+	// - If the lease time is set in days, the unit is d. Valid values: **1d*	- to **49d*	- and **3650d*	- to **7300d**. Default value: **1d**.
 	//
 	// example:
 	//
@@ -307,9 +307,9 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
 	Ipv6LeaseTime *string `json:"Ipv6LeaseTime,omitempty" xml:"Ipv6LeaseTime,omitempty"`
 	// The lease time of the IPv4 DHCP options set.
 	//
-	// - If the lease time is in hours, the unit is h. Valid values: **24h*	- to **1176h*	- and **87600h*	- to **175200h**. Default value: **87600h**.
+	// - If the lease time is set in hours, the unit is h. Valid values: **24h*	- to **1176h*	- and **87600h*	- to **175200h**. Default value: **87600h**.
 	//
-	// - If the lease time is in days, the unit is d. Valid values: **1d*	- to **49d*	- and **3650d*	- to **7300d**. Default value: **3650d**.
+	// - If the lease time is set in days, the unit is d. Valid values: **1d*	- to **49d*	- and **3650d*	- to **7300d**. Default value: **3650d**.
 	//
 	// example:
 	//

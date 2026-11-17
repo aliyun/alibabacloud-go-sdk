@@ -18,9 +18,9 @@ type iGetPublicIpAddressPoolServiceStatusResponseBody interface {
 type GetPublicIpAddressPoolServiceStatusResponseBody struct {
 	// Indicates whether the IP address pool feature is activated. Valid values:
 	//
-	// - **true**: activated.
+	// - **true**: Activated.
 	//
-	// - **false**: not activated. You can call the OpenPublicIpAddressPoolService operation to activate the IP address pool feature.
+	// - **false**: Not activated. You can call the OpenPublicIpAddressPoolService operation to activate the IP address pool feature.
 	//
 	// example:
 	//

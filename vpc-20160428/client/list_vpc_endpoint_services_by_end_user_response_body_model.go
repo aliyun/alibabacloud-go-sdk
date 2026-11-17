@@ -22,17 +22,17 @@ type iListVpcEndpointServicesByEndUserResponseBody interface {
 }
 
 type ListVpcEndpointServicesByEndUserResponseBody struct {
-	// The number of entries per page in a paged query.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token for the next query.
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no subsequent query is available.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a value, the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListVpcEndpointServicesByEndUserResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of available endpoint services.
 	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	//
 	// {   \\"Version\\" : \\"1\\",   \\"Statement\\" : [ {     \\"Effect\\" : \\"Allow\\",     \\"Action\\" : \\"*\\",     \\"Principal\\" : \\"*\\",     \\"Resource\\" : \\"*\\"   } ] }
 	DefaultPolicyDocument *string `json:"DefaultPolicyDocument,omitempty" xml:"DefaultPolicyDocument,omitempty"`
-	// The domain name of the cloud service associated with the endpoint service in the queried region.
+	// The domain name of the Alibaba Cloud service to which the endpoint service belongs in the queried region.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	//
 	// com.aliyun.cn-hangzhou.oss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Indicates whether the endpoint service supports access policies. Valid values:
+	// Specifies whether the endpoint service supports access policies. Valid values:
 	//
 	// - **false**: Access policies are not supported.
 	//

@@ -22,7 +22,7 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 9A572171-4E27-40D1-BD36-D26C9E71E29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

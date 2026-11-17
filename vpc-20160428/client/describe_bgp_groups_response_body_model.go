@@ -23,13 +23,13 @@ type iDescribeBgpGroupsResponseBody interface {
 
 type DescribeBgpGroupsResponseBody struct {
 	BgpGroups *DescribeBgpGroupsResponseBodyBgpGroups `json:"BgpGroups,omitempty" xml:"BgpGroups,omitempty" type:"Struct"`
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//

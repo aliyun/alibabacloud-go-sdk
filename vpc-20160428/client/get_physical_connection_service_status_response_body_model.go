@@ -16,11 +16,11 @@ type iGetPhysicalConnectionServiceStatusResponseBody interface {
 }
 
 type GetPhysicalConnectionServiceStatusResponseBody struct {
-	// Indicates whether outbound traffic billing is enabled.
+	// Indicates whether the outbound data transfer service is enabled.
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Not enabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//

@@ -36,9 +36,9 @@ type iDescribeGrantRulesToCenRequest interface {
 type DescribeGrantRulesToCenRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type DescribeGrantRulesToCenRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the network instance to query. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC).
+	// - **VPC**: virtual private cloud (VPC)
 	//
-	// - **VBR**: Virtual Border Router.
+	// - **VBR**: Virtual Border Router (VBR)
 	//
-	// - **CCN**: Cloud Connect Network.
+	// - **CCN**: Cloud Connect Network (CCN)
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,13 @@ type DescribeGrantRulesToCenRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the network instance to query.
+	// The region ID of the network instance to query.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type DescribeGrantRulesToCenRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the network instance belongs.
+	// The ID of the resource group that contains the network instance to query.
 	//
 	// example:
 	//

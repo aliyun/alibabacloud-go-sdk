@@ -23,7 +23,7 @@ type iDescribeBgpPeersResponseBody interface {
 
 type DescribeBgpPeersResponseBody struct {
 	BgpPeers *DescribeBgpPeersResponseBodyBgpPeers `json:"BgpPeers,omitempty" xml:"BgpPeers,omitempty" type:"Struct"`
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//

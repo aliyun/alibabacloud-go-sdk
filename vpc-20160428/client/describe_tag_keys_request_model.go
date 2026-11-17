@@ -44,11 +44,11 @@ type DescribeTagKeysRequest struct {
 	//
 	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// The pagination token. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - If this is the first query or no subsequent query exists, leave this parameter empty.
+	// - Leave this parameter empty for the first query or when no subsequent query is required.
 	//
-	// - If a subsequent query exists, set the value to the NextToken value returned by the previous API call.
+	// - If a subsequent query is required, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -56,9 +56,7 @@ type DescribeTagKeysRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +64,7 @@ type DescribeTagKeysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID. You can specify up to 50 resource IDs.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -78,7 +76,7 @@ type DescribeTagKeysRequest struct {
 	//
 	// - **ROUTETABLE**: route table instance.
 	//
-	// - **EIP**: Elastic IP Address (EIP) instance.
+	// - **EIP**: EIP instance.
 	//
 	// - **VpnGateWay**: VPN gateway instance.
 	//

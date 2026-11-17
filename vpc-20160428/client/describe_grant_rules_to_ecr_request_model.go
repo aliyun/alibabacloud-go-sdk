@@ -24,7 +24,7 @@ type iDescribeGrantRulesToEcrRequest interface {
 }
 
 type DescribeGrantRulesToEcrRequest struct {
-	// VBR ID。
+	// The VBR ID.
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,19 @@ type DescribeGrantRulesToEcrRequest struct {
 	//
 	// vbr-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the list. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries returned per page during paging in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -140,9 +138,7 @@ func (s *DescribeGrantRulesToEcrRequest) Validate() error {
 }
 
 type DescribeGrantRulesToEcrRequestTags struct {
-	// The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
-	//
-	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key of the resource. You must specify at least one tag key and can specify up to 20 tag keys. The tag key cannot be an empty string. A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

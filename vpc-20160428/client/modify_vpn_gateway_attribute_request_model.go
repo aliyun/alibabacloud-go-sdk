@@ -32,17 +32,17 @@ type iModifyVpnGatewayAttributeRequest interface {
 }
 
 type ModifyVpnGatewayAttributeRequest struct {
-	// Specifies whether to enable the routing automatic propagation feature for the VPN gateway. Valid values:
+	// Specifies whether to enable the automatic route propagation feature for the VPN gateway. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: enables the feature.
 	//
-	//     After routing automatic propagation is enabled, the VPN gateway instance uses automatic learning to obtain system routes from the system route table of the VPC-connected instance and automatically propagates routes of the on-premises data center to the system route table of the VPC-connected instance.
+	//     After automatic route propagation is enabled, the VPN gateway instance automatically learns system routes in the system route table of the VPC and automatically propagates routes of the on-premises data center to the system route table of the VPC.
 	//
-	// - **false**: disabled.
+	// - **false**: disables the feature.
 	//
 	//
 	//
-	//     Before you disable routing automatic propagation, make sure that the BGP dynamic route feature is disabled for all IPsec-VPN connections under the VPN gateway.
+	//     Before you disable automatic route propagation, make sure that the BGP dynamic route feature is disabled for all IPsec-VPN connections under the VPN gateway.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ModifyVpnGatewayAttributeRequest struct {
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can generate the parameter value on your client to ensure that the value is unique among different requests. The client token only supports ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the ClientToken. The RequestId may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request is different.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModifyVpnGatewayAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new name of the VPN gateway.
 	//
-	// The name must be 2 to 100 characters in length. It cannot start with `http://` or `https://`. It must start with an uppercase or lowercase letter and can contain uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
+	// The name must be 2 to 100 characters in length. It cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ModifyVpnGatewayAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+	// The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type ModifyVpnGatewayAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPN gateway instance.
+	// The ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//

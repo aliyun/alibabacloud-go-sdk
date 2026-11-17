@@ -44,7 +44,7 @@ type ModifyCustomerGatewayAttributeResponseBody struct {
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The public IP address of the on-premises data center gateway device.
+	// The public IP address of the gateway device in the on-premises data center.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyCustomerGatewayAttributeResponseBody struct {
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

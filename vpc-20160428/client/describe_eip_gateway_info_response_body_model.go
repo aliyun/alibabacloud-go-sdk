@@ -20,14 +20,14 @@ type iDescribeEipGatewayInfoResponseBody interface {
 }
 
 type DescribeEipGatewayInfoResponseBody struct {
-	// The operation status code.
+	// The status code of the operation.
 	//
 	// example:
 	//
 	// 200
 	Code     *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	EipInfos *DescribeEipGatewayInfoResponseBodyEipInfos `json:"EipInfos,omitempty" xml:"EipInfos,omitempty" type:"Struct"`
-	// The operation message.
+	// The message returned by the operation.
 	//
 	// example:
 	//

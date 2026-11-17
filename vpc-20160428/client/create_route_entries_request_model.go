@@ -26,15 +26,15 @@ type iCreateRouteEntriesRequest interface {
 }
 
 type CreateRouteEntriesRequest struct {
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run for this request. Valid values:
 	//
-	// **true**: performs a dry run without creating routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
+	// **true**: The system performs a dry run without creating the custom route entry (routing). The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
 	//
-	// **false*	- (default): performs a normal request and sends the request. If the check passes, a 2xx HTTP status code is returned and the routes are created.
+	// **false*	- (default): The system sends a normal request. If the request passes the dry run, the system returns a 2xx HTTP status code and creates the custom route entry (routing).
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the route table resides.
+	// The ID of the region to which the route table belongs.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
@@ -46,7 +46,7 @@ type CreateRouteEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of route entry information.
+	// The list of route entries.
 	//
 	// This parameter is required.
 	RouteEntries []*CreateRouteEntriesRequestRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
@@ -137,7 +137,7 @@ func (s *CreateRouteEntriesRequest) Validate() error {
 }
 
 type CreateRouteEntriesRequestRouteEntries struct {
-	// The description of the custom route entry. You can specify up to 50 descriptions.
+	// The description of the custom route entry. You can specify at most 50 descriptions.
 	//
 	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -145,7 +145,7 @@ type CreateRouteEntriesRequestRouteEntries struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the custom route entry. Both IPv4 and IPv6 destination CIDR blocks are supported. You can specify up to 50 destination CIDR blocks. The following requirements must be met:
+	// The destination CIDR block of the custom route entry. Both IPv4 and IPv6 CIDR blocks are supported. You can specify at most 50 destination CIDR blocks. The destination CIDR block must meet the following requirements:
 	//
 	//
 	//
@@ -161,7 +161,7 @@ type CreateRouteEntriesRequestRouteEntries struct {
 	//
 	// 192.168.0.0/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The version of the IP protocol. You can specify up to 50 IP protocol versions. Valid values:
+	// The IP version. You can specify at most 50 IP versions. Valid values:
 	//
 	// - **4**: IPv4.
 	//
@@ -171,7 +171,7 @@ type CreateRouteEntriesRequestRouteEntries struct {
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The name of the custom route entry to add. You can specify up to 50 names.
+	// The name of the custom route entry to be added. You can specify at most 50 names.
 	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -179,9 +179,9 @@ type CreateRouteEntriesRequestRouteEntries struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the next hop instance of the custom route entry. You can specify up to 50 instance IDs.
+	// The ID of the next hop instance for the custom route entry. You can specify at most 50 instance IDs.
 	//
-	// > If NextHopType is set to ECR, you can call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to obtain the AssociationId as the next hop ID.
+	// > If you set NextHopType to ECR, you can call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to obtain the AssociationId as the next hop ID.
 	//
 	// This parameter is required.
 	//
@@ -189,37 +189,37 @@ type CreateRouteEntriesRequestRouteEntries struct {
 	//
 	// i-j6c2fp57q8rr4jlu****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The type of the next hop of the custom route entry. You can specify up to 50 next hop types. Valid values:
+	// The type of the next hop for the custom route entry. You can specify at most 50 next hop types. Valid values:
 	//
-	// - **Instance*	- (default): ECS instance.
+	// - **Instance*	- (default): an ECS instance.
 	//
-	// - **HaVip**: high-availability virtual IP address.
+	// - **HaVip**: a high-availability (active) virtual IP address.
 	//
-	// - **RouterInterface**: vRouter interface.
+	// - **RouterInterface**: a vRouter interface.
 	//
-	// - **NetworkInterface**: elastic network interfaces (ENIs).
+	// - **NetworkInterface**: elastic network interface controller (NIC).
 	//
-	// - **VpnGateway**: VPN gateway.
+	// - **VpnGateway**: a VPN gateway.
 	//
-	// - **IPv6Gateway**: IPv6 gateway.
+	// - **IPv6Gateway**: an IPv6 gateway.
 	//
-	// - **NatGateway**: NAT gateway.
+	// - **NatGateway**: a NAT gateway.
 	//
-	// - **Attachment**: forward router.
+	// - **Attachment**: a forward transit router (TR).
 	//
-	// - **VpcPeer**: VPC peering connection.
+	// - **VpcPeer**: a VPC peering connection.
 	//
-	// - **Ipv4Gateway**: IPv4 gateway.
+	// - **Ipv4Gateway**: an IPv4 gateway.
 	//
-	// - **GatewayEndpoint**: gateway endpoint.
+	// - **GatewayEndpoint**: a gateway endpoint.
 	//
-	// - **CenBasic**: CEN that does not support forward routers.
+	// - **CenBasic**: a CEN instance that does not support forward transit routers.
 	//
-	// - **Ecr**: Express Connect Router (ECR).
+	// - **Ecr**: an Express Connect Router (ECR).
 	//
-	// - **GatewayLoadBalancerEndpoint**: Gateway Load Balancer endpoint (GWLBe).
+	// - **GatewayLoadBalancerEndpoint**: a Gateway Load Balancer (load balancing) endpoint (GWLBe).
 	//
-	// - **RouteTargetGroup**: route target group.
+	// - **RouteTargetGroup**: a routing target group.
 	//
 	// This parameter is required.
 	//
@@ -227,7 +227,7 @@ type CreateRouteEntriesRequestRouteEntries struct {
 	//
 	// RouterInterface
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The ID of the route table to which you want to add custom route entries. You can specify up to 50 route table IDs.
+	// The ID of the route table to which you want to add the custom route entry. You can specify at most 50 route table IDs.
 	//
 	// This parameter is required.
 	//

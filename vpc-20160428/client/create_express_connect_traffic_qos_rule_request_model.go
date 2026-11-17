@@ -52,31 +52,31 @@ type iCreateExpressConnectTrafficQosRuleRequest interface {
 type CreateExpressConnectTrafficQosRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The destination IP address IPv4 CIDR block for traffic matching in the QoS rule.
+	// The IPv4 CIDR block of the destination IP address for the traffic to be matched by the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > You cannot specify this parameter together with the **SrcIPv6Cidr*	- or **DstIPv6Cidr*	- parameter.
 	//
 	// example:
 	//
 	// ``1.1.**.**``/24
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination IP address IPv6 CIDR block for traffic matching in the QoS rule.
+	// The IPv6 CIDR block of the destination IP address for the traffic to be matched by the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
+	// > You cannot specify this parameter together with the **SrcCidr*	- or **DstCidr*	- parameter.
 	//
 	// example:
 	//
 	// 2001:0db8:1234:****::/64
 	DstIPv6Cidr *string `json:"DstIPv6Cidr,omitempty" xml:"DstIPv6Cidr,omitempty"`
-	// The destination port range for traffic matching in the QoS rule. Valid values: **0*	- to **65535**. Set the value to -1 if no matching is required. Currently, only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for each protocol type. Valid values:
+	// The destination port range to be matched by the QoS rule. Valid values: **0*	- to **65535**. Set the value to -1 if you do not want to match the destination port. Currently, you can specify only a single port number, which means the start port and end port must be the same. The destination port range varies based on the protocol type. Valid values:
 	//
 	// - **ALL**: -1/-1. Not editable.
 	//
@@ -114,7 +114,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// -1/-1
 	DstPortRange *string `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty"`
-	// The DSCP value for traffic matching in the QoS rule. Valid values: **0*	- to **63**. Set the value to -1 if no matching is required.
+	// The DSCP value of the traffic to be matched by the QoS rule. Valid values: **0*	- to **63**. Set the value to -1 if you do not want to match the DSCP value.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	MatchDscp    *int32  `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority must be unique within the same QoS policy.
+	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority of a QoS rule must be unique within the same QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +170,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// ALL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The QoS policy ID.
+	// The ID of the QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +178,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The QoS queue ID.
+	// The ID of the QoS queue.
 	//
 	// This parameter is required.
 	//
@@ -188,7 +188,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The region ID of the QoS policy.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -196,7 +196,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The new DSCP value to remark on the traffic. Valid values: **0*	- to **63**. Set the value to -1 if no remarking is required.
+	// The new DSCP value to be marked in the traffic. Valid values: **0*	- to **63**. Set the value to -1 if you do not want to modify the DSCP value.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The description of the QoS rule.
 	//
-	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description must be 0 to 256 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -213,29 +213,29 @@ type CreateExpressConnectTrafficQosRuleRequest struct {
 	RuleDescription *string `json:"RuleDescription,omitempty" xml:"RuleDescription,omitempty"`
 	// The name of the QoS rule.
 	//
-	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 0 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-rule-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The source IPv4 CIDR block for traffic matching in the QoS rule.
+	// The source IPv4 CIDR block to be matched by the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > You cannot specify this parameter together with the **SrcIPv6Cidr*	- or **DstIPv6Cidr*	- parameter.
 	//
 	// example:
 	//
 	// ``1.1.**.**``/24
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source IPv6 CIDR block for traffic matching in the QoS rule.
+	// The source IPv6 CIDR block to be matched by the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
+	// > You cannot specify this parameter together with the **SrcCidr*	- or **DstCidr*	- parameter.
 	//
 	// example:
 	//
 	// 2001:0db8:1234:****::/64
 	SrcIPv6Cidr *string `json:"SrcIPv6Cidr,omitempty" xml:"SrcIPv6Cidr,omitempty"`
-	// The source port range for traffic matching in the QoS rule. Valid values: **0*	- to **65535**. Set the value to -1 if no matching is required. Currently, only a single port number can be specified. The start and end port numbers must be the same.
+	// The source port range to be matched by the QoS rule. Valid values: **0*	- to **65535**. Set the value to -1 if you do not want to match the source port. Currently, you can specify only a single port number, which means the start port and end port must be the same.
 	//
 	// example:
 	//

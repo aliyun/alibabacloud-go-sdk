@@ -26,7 +26,7 @@ type ModifyFlowLogAttributeResponseBody struct {
 	//
 	// - **true**: The operation is successful.
 	//
-	// - **false**: The operation failed.
+	// - **false**: The operation fails.
 	//
 	// example:
 	//

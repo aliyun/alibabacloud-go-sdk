@@ -32,25 +32,25 @@ type iUnassociateNetworkAclRequest interface {
 type UnassociateNetworkAclRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to precheck the request. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the request for potential issues without performing the actual operation.
+	// 	- **true**: prechecks the request.
 	//
-	// 	- **false*	- (default): performs the actual request.
+	// 	- **false*	- (default): sends the request.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the network ACL to disassociate from the associated resources.
+	// The ID of the network ACL from which you want to disassociate the resources.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UnassociateNetworkAclRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the network ACL.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -179,15 +179,15 @@ func (s *UnassociateNetworkAclRequest) Validate() error {
 }
 
 type UnassociateNetworkAclRequestResource struct {
-	// The ID of the associated resource to disassociate.
+	// The ID of the associated resource to be disassociated.
 	//
 	// example:
 	//
 	// vsw-bp1de348lntdw****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the associated resource to disassociate. Set the value to **VSwitch**.
+	// The type of the associated resource to be disassociated. Valid value: **VSwitch*	- (vSwitch).
 	//
-	// Valid values of **N**: 0 to 29. You can disassociate up to 30 resources at a time.
+	// The value of **N*	- ranges from 0 to 29, indicating that you can disassociate a maximum of 30 resources.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDissociateRouteTablesFromVpcGatewayEndpointResponseBody interface {
 }
 
 type DissociateRouteTablesFromVpcGatewayEndpointResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -15,6 +15,10 @@ type iModifyCommonBandwidthPackageIpBandwidthRequest interface {
 	GetBandwidthPackageId() *string
 	SetEipId(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest
 	GetEipId() *string
+	SetIpInstanceId(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest
+	GetIpInstanceId() *string
+	SetIpType(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest
+	GetIpType() *string
 	SetOwnerAccount(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -28,7 +32,7 @@ type iModifyCommonBandwidthPackageIpBandwidthRequest interface {
 }
 
 type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
-	// The maximum bandwidth that can be allocated within the Internet Shared Bandwidth instance. Unit: Mbps.
+	// The maximum bandwidth that can be allocated in the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +40,7 @@ type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
 	//
 	// 500
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The instance ID of the Internet Shared Bandwidth instance.
+	// The instance ID of the Internet Shared Bandwidth.
 	//
 	// This parameter is required.
 	//
@@ -44,14 +48,30 @@ type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
 	//
 	// cbwp-2zep6hw5d6y8exscd****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The instance ID of the EIP that has been added to the Internet Shared Bandwidth instance.
-	//
-	// This parameter is required.
+	// The ID of the EIP that is added to the Internet Shared Bandwidth instance. This parameter applies only to EIPs. For IPv6 addresses, use IpInstanceId.
 	//
 	// example:
 	//
 	// eip-2zewysoansu0svfbg****
-	EipId        *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
+	EipId *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
+	// The ID of the public IP address instance for which you want to set the maximum available bandwidth in the Internet Shared Bandwidth instance. This parameter and EipId are mutually exclusive. We recommend that you use this parameter for new workloads. If IpType is set to **VpcIpv6**, specify the ID of the IPv6 address.
+	//
+	// example:
+	//
+	// eip-2zewysoansu0svfbg****
+	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
+	// The resource type of the public IP address for which you want to set the maximum available bandwidth in the Internet Shared Bandwidth instance. Valid values:
+	//
+	// - **EIP**: the public IP address of an EIP.
+	//
+	// - **VpcIpv6**: the IPv6 address of a VPC.
+	//
+	// If this parameter is not specified, the default value is **EIP**.
+	//
+	// example:
+	//
+	// EIP
+	IpType       *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
@@ -86,6 +106,14 @@ func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) GetEipId() *string {
 	return s.EipId
 }
 
+func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) GetIpInstanceId() *string {
+	return s.IpInstanceId
+}
+
+func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) GetIpType() *string {
+	return s.IpType
+}
+
 func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -118,6 +146,16 @@ func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) SetBandwidthPackageId(v
 
 func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) SetEipId(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest {
 	s.EipId = &v
+	return s
+}
+
+func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) SetIpInstanceId(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest {
+	s.IpInstanceId = &v
+	return s
+}
+
+func (s *ModifyCommonBandwidthPackageIpBandwidthRequest) SetIpType(v string) *ModifyCommonBandwidthPackageIpBandwidthRequest {
+	s.IpType = &v
 	return s
 }
 

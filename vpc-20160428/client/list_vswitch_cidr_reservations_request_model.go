@@ -46,17 +46,17 @@ type ListVSwitchCidrReservationsRequest struct {
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If this is the first request or no subsequent query exists, leave this parameter empty.
+	// - Leave this parameter empty for the first query and when no next query is required.
 	//
-	// - If a subsequent query exists, set this parameter to the NextToken value returned in the previous API call.
+	// - If a next query is required, set this parameter to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListVSwitchCidrReservationsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the vSwitch.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -78,17 +78,17 @@ type ListVSwitchCidrReservationsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tag information.
 	Tags []*ListVSwitchCidrReservationsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The instance IDs of the reserved CIDR block for a vSwitch. You can specify up to 10 reserved CIDR blocks.
+	// The instance IDs of the reserved CIDR blocks for a vSwitch. You can specify up to 10 reserved CIDR blocks.
 	VSwitchCidrReservationIds []*string `json:"VSwitchCidrReservationIds,omitempty" xml:"VSwitchCidrReservationIds,omitempty" type:"Repeated"`
 	// The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that addresses are allocated by CIDR block.
 	//
-	// > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block. If all addresses in the reserved CIDR block are allocated, the system returns an error.
+	// > When users and cloud services automatically allocate CIDR blocks for elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR blocks. If all addresses in the reserved CIDR blocks are allocated, the system returns an error.
 	//
 	// example:
 	//
 	// prefix
 	VSwitchCidrReservationType *string `json:"VSwitchCidrReservationType,omitempty" xml:"VSwitchCidrReservationType,omitempty"`
-	// The ID of the vSwitch to which the reserved CIDR block for a vSwitch belongs.
+	// The ID of the vSwitch to which the reserved CIDR block that you want to query belongs.
 	//
 	// example:
 	//
@@ -226,17 +226,13 @@ func (s *ListVSwitchCidrReservationsRequest) Validate() error {
 }
 
 type ListVSwitchCidrReservationsRequestTags struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, the value cannot be an empty string.
-	//
-	// A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string. A tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, the value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//

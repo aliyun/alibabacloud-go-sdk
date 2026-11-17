@@ -30,11 +30,11 @@ type iModifyNatGatewaySpecRequest interface {
 }
 
 type ModifyNatGatewaySpecRequest struct {
-	// Specifies whether to enable automatic payment.
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: enables automatic payment. The order is automatically paid.
+	// - **true**: Enables automatic payment and automatically pays the order.
 	//
-	// - **false*	- (default): disables automatic payment. After the order is generated, complete the payment in the Order Center.
+	// - **false*	- (default): Disables automatic payment. After an order is generated, you must complete the payment in the User Center.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ModifyNatGatewaySpecRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can use the client to generate the value, and you must ensure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the Internet NAT gateway whose specification you want to modify.
+	// The ID of the Internet NAT gateway whose specifications you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -72,11 +72,11 @@ type ModifyNatGatewaySpecRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The specification of the Internet NAT gateway. Valid values:
 	//
-	// - **Small**
+	// - **Small**: Small.
 	//
-	// - **Middle**: medium.
+	// - **Middle**: Medium.
 	//
-	// - **Large**
+	// - **Large**: Large.
 	//
 	// This parameter is required.
 	//

@@ -28,7 +28,7 @@ type iUpdateVirtualBorderBandwidthRequest interface {
 }
 
 type UpdateVirtualBorderBandwidthRequest struct {
-	// The new bandwidth limit of the VBR. Unit: Mbit/s.
+	// The updated bandwidth limit of the VBR. Unit: Mbit/s.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type UpdateVirtualBorderBandwidthRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can generate the value from your client. Make sure that the value is unique across different requests. The client token only supports ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//

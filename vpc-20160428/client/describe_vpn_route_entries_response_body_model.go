@@ -24,13 +24,13 @@ type iDescribeVpnRouteEntriesResponseBody interface {
 }
 
 type DescribeVpnRouteEntriesResponseBody struct {
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries.
+	// The number of entries returned per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeVpnRouteEntriesResponseBody struct {
 	//
 	// BF3995A6-FA4F-4C74-B90F-89ECF4BFF4D5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -247,6 +247,7 @@ type DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry struct {
 	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	NextHop         *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	NextHopTunnelId *string `json:"NextHopTunnelId,omitempty" xml:"NextHopTunnelId,omitempty"`
+	PrefixListId    *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	RouteDest       *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
 	RouteEntryType  *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -281,6 +282,10 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) GetNex
 
 func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) GetNextHopTunnelId() *string {
 	return s.NextHopTunnelId
+}
+
+func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) GetPrefixListId() *string {
+	return s.PrefixListId
 }
 
 func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) GetRouteDest() *string {
@@ -329,6 +334,11 @@ func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) SetNex
 
 func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) SetNextHopTunnelId(v string) *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry {
 	s.NextHopTunnelId = &v
+	return s
+}
+
+func (s *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry) SetPrefixListId(v string) *DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry {
+	s.PrefixListId = &v
 	return s
 }
 

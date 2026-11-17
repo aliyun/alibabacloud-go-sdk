@@ -22,13 +22,13 @@ type iListRouteTargetGroupsResponseBody interface {
 }
 
 type ListRouteTargetGroupsResponseBody struct {
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. If a value is returned for NextToken, the value indicates the token for the next query.
+	// The token used to retrieve the next page of results. If NextToken is empty, no subsequent query is required. If NextToken is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListRouteTargetGroupsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of route target groups.
 	RouteTargetGroups []*ListRouteTargetGroupsResponseBodyRouteTargetGroups `json:"RouteTargetGroups,omitempty" xml:"RouteTargetGroups,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -119,13 +119,13 @@ func (s *ListRouteTargetGroupsResponseBody) Validate() error {
 type ListRouteTargetGroupsResponseBodyRouteTargetGroups struct {
 	// The configuration mode of the route target group. Valid values:
 	//
-	// - **Active-Standby**: active/standby mode.
+	// - **Active-Standby**: Active/standby mode.
 	//
 	// example:
 	//
 	// Active-Standby
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The time when the route target group was created.
+	// The time when the route target group was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroups struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The region ID of the VPC to which the route target group belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroups struct {
 	//
 	// myRouteTargetGroupDescription
 	RouteTargetGroupDescription *string `json:"RouteTargetGroupDescription,omitempty" xml:"RouteTargetGroupDescription,omitempty"`
-	// The routing target group instance ID.
+	// The instance ID of the routing target group.
 	//
 	// example:
 	//
@@ -167,19 +167,19 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroups struct {
 	RouteTargetMemberList []*ListRouteTargetGroupsResponseBodyRouteTargetGroupsRouteTargetMemberList `json:"RouteTargetMemberList,omitempty" xml:"RouteTargetMemberList,omitempty" type:"Repeated"`
 	// The status of the routing target group. Valid values:
 	//
-	// - **Recovering**: The active/standby switchback is in progress.
+	// - **Recovering**: Switching back to the primary instance.
 	//
-	// - **Switched**: The active/standby switchover is complete.
+	// - **Switched**: Primary/secondary switchover completed.
 	//
-	// - **Available**: Available.
+	// - **Available**: active.
 	//
-	// - **Abnormal**: The standby instance has instance failures.
+	// - **Abnormal**: Secondary instance failures.
 	//
-	// - **Pending**: Being created.
+	// - **Pending**: Creating.
 	//
-	// - **Switching**: The active/standby switchover is in progress.
+	// - **Switching**: Performing primary/secondary switchover.
 	//
-	// - **Deleting**: Being deleted.
+	// - **Deleting**: delete.
 	//
 	// - **Unavailable**: Both primary and secondary instances have instance failures.
 	//
@@ -187,9 +187,7 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroups struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	Tags []*ListRouteTargetGroupsResponseBodyRouteTargetGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the route target group belongs.
 	//
@@ -329,19 +327,19 @@ func (s *ListRouteTargetGroupsResponseBodyRouteTargetGroups) Validate() error {
 }
 
 type ListRouteTargetGroupsResponseBodyRouteTargetGroupsRouteTargetMemberList struct {
-	// The enable status of the route target group member. Valid values:
+	// The enablement status of the member in the route target group. Valid values:
 	//
 	// - **Enable**: Enabled.
 	//
 	// - **Disable**: Disabled.
 	//
-	// Only members in the Disable state can be modified to other instances. Members in the Enable state cannot be modified.
+	// Only members in the Disabled state can be changed to other instances. Members in the Enabled state cannot be modified.
 	//
 	// example:
 	//
 	// Enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The health check status of the route target group member. Valid values:
+	// The health check status of the member in the route target group. Valid values:
 	//
 	// - **Normal**: Normal.
 	//
@@ -351,7 +349,7 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroupsRouteTargetMemberList str
 	//
 	// Normal
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitempty" xml:"HealthCheckStatus,omitempty"`
-	// The routing target group member instance ID.
+	// The member instance ID of the routing target group.
 	//
 	// example:
 	//
@@ -367,11 +365,11 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroupsRouteTargetMemberList str
 	//
 	// GatewayLoadBalancerEndpoint
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
-	// The weight of the route target group member. Valid values:
+	// The weight of the member in the route target group. Valid values:
 	//
-	// - **100**: The member is the active instance.
+	// - **100**: The member is the primary instance.
 	//
-	// - **0**: The member is the standby instance.
+	// - **0**: The member is the secondary instance.
 	//
 	// The weight can only be set during creation and cannot be modified.
 	//
@@ -445,9 +443,7 @@ type ListRouteTargetGroupsResponseBodyRouteTargetGroupsTags struct {
 	//
 	// image/upload/cbbec42e0be33abb27babefcbe0397f0
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

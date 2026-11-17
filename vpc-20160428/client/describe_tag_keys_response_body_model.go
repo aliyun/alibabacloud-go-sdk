@@ -18,11 +18,11 @@ type iDescribeTagKeysResponseBody interface {
 }
 
 type DescribeTagKeysResponseBody struct {
-	// The pagination token. Valid values:
+	// The pagination token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value is the pagination token for the next query.
 	//
 	// example:
 	//

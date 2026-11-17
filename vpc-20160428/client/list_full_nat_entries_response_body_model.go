@@ -26,7 +26,7 @@ type iListFullNatEntriesResponseBody interface {
 }
 
 type ListFullNatEntriesResponseBody struct {
-	// The list of FULLNAT entries.
+	// The list of queried FULLNAT entries.
 	FullNatEntries []*ListFullNatEntriesResponseBodyFullNatEntries `json:"FullNatEntries,omitempty" xml:"FullNatEntries,omitempty" type:"Repeated"`
 	// The ID of the FULLNAT table to which the queried FULLNAT entries belong.
 	//
@@ -46,11 +46,11 @@ type ListFullNatEntriesResponseBody struct {
 	//
 	// ngw-gw8054kn57y3hq3bv****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no next query is to be sent.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token used to start the next query.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListFullNatEntriesResponseBody struct {
 	//
 	// F03E41F6-1A74-311F-8D98-124EEE9F37B8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of FULLNAT entries returned.
+	// The total number of queried FULLNAT entries.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ func (s *ListFullNatEntriesResponseBody) Validate() error {
 }
 
 type ListFullNatEntriesResponseBodyFullNatEntries struct {
-	// The backend domain name for FULLNAT address translation in the FULLNAT entry.
+	// The backend domain name used for FULLNAT address translation in the FULLNAT entry.
 	//
 	// example:
 	//
 	// xxx.com
 	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
-	// The backend IP address for FULLNAT address translation in the FULLNAT entry.
+	// The backend IP address used for FULLNAT address translation in the FULLNAT entry.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The backend port for port mapping in the FULLNAT entry. Valid values: **1*	- to **65535**.
+	// The backend port used for port mapping in the FULLNAT entry. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	//
 	// 2021-10-27T02:44:40Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The IP address resolved from the backend domain name for address translation in the FULLNAT entry.
+	// The IP address resolved from the backend domain name used for address translation in the FULLNAT entry.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	DomainResolve *string `json:"DomainResolve,omitempty" xml:"DomainResolve,omitempty"`
 	// The description of the FULLNAT entry.
 	//
-	// The description must be 2 to 128 characters in length, and must start with a letter or Chinese character. The description cannot start with `http://` or `https://`.
+	// The description must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	FullNatEntryId *string `json:"FullNatEntryId,omitempty" xml:"FullNatEntryId,omitempty"`
 	// The name of the FULLNAT entry.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). The name must start with a letter or Chinese character.
+	// The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -209,13 +209,13 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	FullNatEntryName *string `json:"FullNatEntryName,omitempty" xml:"FullNatEntryName,omitempty"`
 	// The status of the FULLNAT entry. Valid values:
 	//
-	// - **Pending**: being configured.
+	// - **Pending**: The entry is being configured.
 	//
-	// - **Available**: available.
+	// - **Available**: The entry is available.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The entry is being deleted.
 	//
-	// - **Deleted**: deleted.
+	// - **Deleted**: The entry is deleted.
 	//
 	// example:
 	//
@@ -237,25 +237,25 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The NAT IP address that provides address translation in the FULLNAT entry.
+	// The NAT IP address used for address translation in the FULLNAT entry.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The frontend port for port mapping in the FULLNAT entry. Valid values: **1*	- to **65535**.
+	// The frontend port used for port mapping in the FULLNAT entry. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 80
 	NatIpPort *string `json:"NatIpPort,omitempty" xml:"NatIpPort,omitempty"`
-	// The elastic network interface (ENI) ID.
+	// The ID of the elastic network interfaces (ENIs), which is a network interface controller (NIC).
 	//
 	// example:
 	//
 	// eni-gw80wedm8pq0tpr2****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The type of the elastic network interface (ENI). The value is **Endpoint*	- (reverse endpoint).
+	// The type of the elastic network interfaces (ENIs), which is a network interface controller (NIC). Currently, only **Endpoint*	- (reverse endpoint) is supported.
 	//
 	// example:
 	//

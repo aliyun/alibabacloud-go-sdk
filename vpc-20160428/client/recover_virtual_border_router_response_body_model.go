@@ -14,7 +14,7 @@ type iRecoverVirtualBorderRouterResponseBody interface {
 }
 
 type RecoverVirtualBorderRouterResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
