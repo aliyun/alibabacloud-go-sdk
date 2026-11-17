@@ -26,7 +26,7 @@ type GetSecretResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The key information.
+	// The secret information.
 	Data *GetSecretResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -104,9 +104,9 @@ type GetSecretResponseBodyData struct {
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// The gateway type. Valid values:
 	//
-	// - API: API gateway.
+	// - API: API gateway
 	//
-	// - AI: AI gateway.
+	// - AI: AI gateway
 	//
 	// example:
 	//
@@ -120,29 +120,29 @@ type GetSecretResponseBodyData struct {
 	//
 	// mysecret
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of resources that reference the current key.
+	// The number of resources that reference the current secret.
 	//
 	// example:
 	//
 	// 1
 	ReferenceCount *int32 `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
-	// The key ID.
+	// The ID of the secret.
 	//
 	// example:
 	//
 	// sec-d5e6shmm1hkoxxxxxxxx
 	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
-	// The key source.
+	// The source of the secret.
 	//
 	// example:
 	//
 	// KMS
 	SecretSource *string `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
-	// The key status. Valid values:
+	// The secret status. Valid values:
 	//
 	// - ENALBE: Enabled.
 	//
-	// - DISABLE: Disabled.
+	// - DISABLE: Unavailable.
 	//
 	// - DELETED: Deleted.
 	//

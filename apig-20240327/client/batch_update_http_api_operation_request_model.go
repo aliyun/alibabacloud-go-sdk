@@ -20,13 +20,13 @@ type iBatchUpdateHttpApiOperationRequest interface {
 type BatchUpdateHttpApiOperationRequest struct {
 	// The authentication configuration. This parameter is required when enableAuth is set to true.
 	AuthConfig *BatchUpdateHttpApiOperationRequestAuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable consumer authentication. If set to true, a valid authConfig must be provided. If set to false, authConfig is not validated and the existing configuration remains unchanged.
+	// Specifies whether to enable consumer authentication. If this parameter is set to true, a valid authConfig must be provided. If this parameter is set to false, authConfig is not verified and the original configuration remains unchanged.
 	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The list of operation IDs to update in batches. This parameter cannot be empty.
+	// The list of operation IDs to be updated in batches. This parameter cannot be empty.
 	OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
 }
 

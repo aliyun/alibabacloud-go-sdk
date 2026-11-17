@@ -22,7 +22,7 @@ type iCreatePolicyAttachmentRequest interface {
 }
 
 type CreatePolicyAttachmentRequest struct {
-	// The ID of the attached resource.
+	// The attached resource ID.
 	//
 	// This parameter is required.
 	//

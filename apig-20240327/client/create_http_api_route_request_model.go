@@ -21,6 +21,8 @@ type iCreateHttpApiRouteRequest interface {
 	GetDomainIds() []*string
 	SetEnvironmentId(v string) *CreateHttpApiRouteRequest
 	GetEnvironmentId() *string
+	SetGatewayId(v string) *CreateHttpApiRouteRequest
+	GetGatewayId() *string
 	SetMatch(v *HttpRouteMatch) *CreateHttpApiRouteRequest
 	GetMatch() *HttpRouteMatch
 	SetMcpRouteConfig(v *CreateHttpApiRouteRequestMcpRouteConfig) *CreateHttpApiRouteRequest
@@ -32,33 +34,41 @@ type iCreateHttpApiRouteRequest interface {
 }
 
 type CreateHttpApiRouteRequest struct {
-	// The backend service configuration for the route.
+	// The backend service configuration of the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// Deprecated
 	//
 	// The API deployment configuration.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The route description.
+	// The description of the route.
 	//
 	// example:
 	//
 	// User login route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The fixed dynamic forwarding and ExtProc combination configuration. When you use this configuration, specify only serviceId, and do not specify environmentId or backendConfig.
+	// The combination configuration of fixed dynamic forwarding and ExtProc. When you use this parameter, specify only serviceId, and do not specify environmentId or backendConfig.
 	DfpConfig *CreateHttpApiRouteRequestDfpConfig `json:"dfpConfig,omitempty" xml:"dfpConfig,omitempty" type:"Struct"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// The environment ID.
+	// Deprecated
+	//
+	// The ID of the environment.
 	//
 	// example:
 	//
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The route match rules.
+	// The ID of the gateway. This parameter replaces the deprecated environment ID to specify the gateway to which the route belongs. If only this parameter is passed, the server uses the unique valid default environment of the gateway. If this parameter and environmentId are passed at the same time, the environment must belong to this gateway.
+	//
+	// example:
+	//
+	// gw-xxx
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The match rules of the route.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The MCP route configuration.
 	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
-	// The route name.
+	// The name of the route.
 	//
 	// example:
 	//
@@ -98,6 +108,10 @@ func (s *CreateHttpApiRouteRequest) GetDomainIds() []*string {
 
 func (s *CreateHttpApiRouteRequest) GetEnvironmentId() *string {
 	return s.EnvironmentId
+}
+
+func (s *CreateHttpApiRouteRequest) GetGatewayId() *string {
+	return s.GatewayId
 }
 
 func (s *CreateHttpApiRouteRequest) GetMatch() *HttpRouteMatch {
@@ -143,6 +157,11 @@ func (s *CreateHttpApiRouteRequest) SetDomainIds(v []*string) *CreateHttpApiRout
 
 func (s *CreateHttpApiRouteRequest) SetEnvironmentId(v string) *CreateHttpApiRouteRequest {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetGatewayId(v string) *CreateHttpApiRouteRequest {
+	s.GatewayId = &v
 	return s
 }
 
@@ -211,13 +230,13 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 type CreateHttpApiRouteRequestBackendConfig struct {
 	// The backend service scenario. Valid values:
 	//
-	// - SingleService: Single service.
+	// - SingleService: single service.
 	//
-	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
+	// - MultiServiceByRatio: canary release for multiple services by ratio.
 	//
-	// - Mock: Mock service.
+	// - Mock: mock service.
 	//
-	// - Redirect: Redirect service.
+	// - Redirect: redirect service.
 	//
 	// example:
 	//
@@ -267,31 +286,31 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The service group. Used for HTTP-to-Dubbo conversion scenarios.
+	// The group of the service. This parameter is used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The HTTP-to-Dubbo protocol conversion configuration. This configuration only supports SingleService MSE_NACOS DUBBO backends for HTTP APIs.
+	// The HTTP-to-Dubbo protocol conversion configuration. This parameter is supported only for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
 	//
 	// example:
 	//
 	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
 	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
-	// The target model name. This field is shared by multiple existing model backend scenarios, and the specific routing or model rewriting semantics are determined by backendConfig.scene. It is required for the SemanticRouter scenario. If not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+	// The name of the target model. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
+	// The namespace of the service. This parameter is used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// public
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The service port. Do not specify this parameter for dynamic ports.
+	// The service port. Do not pass this parameter for dynamic ports.
 	//
 	// example:
 	//
@@ -307,13 +326,13 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service source type. Used for HTTP-to-Dubbo conversion scenarios.
+	// The source type of the service. This parameter is used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//

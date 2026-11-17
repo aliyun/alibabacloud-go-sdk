@@ -30,7 +30,7 @@ type UpdateSecretResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

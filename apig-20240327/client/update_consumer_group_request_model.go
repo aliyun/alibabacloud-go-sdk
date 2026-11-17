@@ -16,13 +16,13 @@ type iUpdateConsumerGroupRequest interface {
 }
 
 type UpdateConsumerGroupRequest struct {
-	// The consumer group description.
+	// The description of the consumer group.
 	//
 	// example:
 	//
-	// Group for online API callers
+	// Used to group production API consumers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The consumer group name.
+	// The name of the consumer group.
 	//
 	// example:
 	//

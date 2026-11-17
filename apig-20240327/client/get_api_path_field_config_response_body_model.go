@@ -108,7 +108,7 @@ type GetApiPathFieldConfigResponseBodyData struct {
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The list of field configurations grouped by API request path.
+	// The list of field configurations grouped by API URI of the request.
 	PathConfigs []*GetApiPathFieldConfigResponseBodyDataPathConfigs `json:"pathConfigs,omitempty" xml:"pathConfigs,omitempty" type:"Repeated"`
 }
 
@@ -161,13 +161,13 @@ func (s *GetApiPathFieldConfigResponseBodyData) Validate() error {
 }
 
 type GetApiPathFieldConfigResponseBodyDataPathConfigs struct {
-	// The collection of field configurations under the path, grouped by mapping key, where each group represents a set of field configuration items.
+	// The collection of field configurations under the path, grouped by mapping key. Each group represents a set of field configuration items.
 	//
 	// example:
 	//
 	// {"model":["$.model"],"messages":["$.messages[*].content"]}
 	FieldPaths map[string][]*DataPathConfigsFieldPathsValue `json:"fieldPaths,omitempty" xml:"fieldPaths,omitempty"`
-	// The request path of the API.
+	// The URI of the request of the API.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListPublishableProductsRequest interface {
 }
 
 type ListPublishableProductsRequest struct {
-	// The name of the API product. This corresponds to the name field in the response list items.
+	// The name of the API product. This is the same field as the name property in the response list items.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListPublishableProductsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

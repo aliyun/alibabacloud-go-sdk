@@ -52,9 +52,9 @@ type iCreateHttpApiRequest interface {
 }
 
 type CreateHttpApiRequest struct {
-	// The list of protocols supported by the agent. This parameter is required when type is set to Agent. It is not required for other types.
+	// The list of protocols supported by the agent. This parameter is required when type is set to Agent. For other types, you do not need to specify this parameter.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The list of AI API protocols. This parameter is required and only one protocol can be passed when type is set to LLM. It is required and multiple protocols can be passed when type is set to Ai. It is not required for other types. Example: OpenAI/v1.
+	// The list of AI API protocols. This parameter is required and only one protocol can be specified when type is set to LLM. This parameter is required and multiple protocols can be specified when type is set to Ai. For other types, this parameter is not required. Example: OpenAI/v1.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The permission authentication configuration. This parameter is required when enableAuth is set to true.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
@@ -64,13 +64,13 @@ type CreateHttpApiRequest struct {
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The ID of the gateway to which the API belongs.
+	// The ID of the associated gateway.
 	//
 	// example:
 	//
 	// gw-abc123xyz789
 	BelongGatewayId *string `json:"belongGatewayId,omitempty" xml:"belongGatewayId,omitempty"`
-	// The list of deployment configurations for the HTTP API. This parameter is required and only one deployment configuration can be passed when type is set to LLM or Ai. Request-layer validation is not performed for other types.
+	// The list of deployment configurations for the HTTP API. This parameter is required and only one deployment configuration can be specified when type is set to LLM or Ai. For other types, this parameter is not validated at the request layer.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The description of the API.
 	//
@@ -80,13 +80,13 @@ type CreateHttpApiRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to perform a dry run without executing the operation.
+	// Specifies whether to only preview the operation without executing it.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Specifies whether to enable permission authentication. This parameter is validated when type is set to LLM, Ai, or Agent. It is not validated at the request layer when type is set to Rest.
+	// Specifies whether to enable permission authentication. This parameter is validated when type is set to LLM, Ai, or Agent. When type is set to Rest, this parameter is not validated at the request layer.
 	//
 	// example:
 	//
@@ -98,15 +98,15 @@ type CreateHttpApiRequest struct {
 	//
 	// 30
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The configuration information of the HTTP Ingress API. This parameter is required and cannot be nil when type is set to HttpIngress. It is not required for other types.
+	// The configuration information of the HTTP Ingress API. This parameter is required and cannot be null when type is set to HttpIngress. For other types, you do not need to specify this parameter.
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// The AI model category. This parameter is optional when type is set to LLM or Ai, and is not required for other types. Valid values: Text (text generation), Image (image generation), Audio (audio processing), Video (video generation), MultiModal (multimodal), Embedding (vector embedding), Rerank (reranking), and Others (others).
+	// The AI model category. This parameter is optional when type is set to LLM or Ai. For other types, you do not need to specify this parameter. Valid values: Text (text generation), Image (image generation), Audio (audio processing), Video (video generation), MultiModal (multimodal), Embedding (vector embedding), Rerank (reranking), and Others (others).
 	//
 	// example:
 	//
 	// Text
 	ModelCategory *string `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
-	// The name of the HTTP API, which is used to identify the API resource, such as test-api.
+	// The name of the HTTP API, which is used to identify the current API resource, such as test-api.
 	//
 	// This parameter is required.
 	//
@@ -142,9 +142,9 @@ type CreateHttpApiRequest struct {
 	//
 	// Http
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The versioning configuration of the API.
+	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
-	// The idempotency token. It is a globally unique value generated by the caller. Use a UUID. The token can be up to 64 characters in length. Within about 24 hours after the first request succeeds, a repeated request with the same ClientToken and identical request parameters directly returns the httpApiId created by the first request without creating the HTTP API again. If the request parameters are different, the IdempotentParameterMismatch error is returned. If the first request is still being processed, the IdempotentProcessing error is returned. If this parameter is not specified, idempotency control is disabled, and the behavior is consistent with the existing version.
+	// The idempotency token. A globally unique value generated by the caller (a UUID is recommended). The value can be up to 64 characters in length. If you make a repeated request with the same ClientToken and identical request parameters within approximately 24 hours after the initial request succeeds, the system directly returns the httpApiId created by the initial request and does not create a duplicate HTTP API. If a repeated request has the same ClientToken but different request parameters, the system returns the IdempotentParameterMismatch error. If the initial request is still being processed, the system returns the IdempotentProcessing error. If this parameter is not specified, idempotency control is disabled, and the behavior remains the same as in previous versions.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type ListHiMarketConsumersResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. An empty value indicates that the last page has been reached.
+	// The pagination token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListHiMarketConsumersResponseBody) Validate() error {
 }
 
 type ListHiMarketConsumersResponseBodyData struct {
-	// The list of consumers. Each element represents a HiMarket consumer.
+	// The list of consumers. Each element in the list is named consumer and represents a HiMarket consumer.
 	Content []*ListHiMarketConsumersResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,7 +138,7 @@ type ListHiMarketConsumersResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

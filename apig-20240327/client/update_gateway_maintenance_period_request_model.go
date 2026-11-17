@@ -45,13 +45,13 @@ func (s *UpdateGatewayMaintenancePeriodRequest) Validate() error {
 }
 
 type UpdateGatewayMaintenancePeriodRequestMaintenancePeriod struct {
-	// The end time of the O&M window (HH:mm).
+	// The O&M end time (HH:mm).
 	//
 	// example:
 	//
 	// 02:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time of the O&M window (HH:mm).
+	// The O&M start time (HH:mm).
 	//
 	// example:
 	//

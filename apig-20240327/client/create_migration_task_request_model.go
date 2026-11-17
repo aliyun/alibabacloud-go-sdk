@@ -28,13 +28,13 @@ type iCreateMigrationTaskRequest interface {
 }
 
 type CreateMigrationTaskRequest struct {
-	// The ID of the source ACK cluster. It must match the cluster in the IngressInfo of the API. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
+	// The ID of the source ACK cluster. The value must be the same as the cluster in the IngressInfo of the API. Note: This parameter is actually required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
 	//
 	// example:
 	//
 	// c-xxxxxx
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The task description. It is stored in the database only when the task is created.
+	// The description of the task. The description is stored in the database only when the task is created.
 	//
 	// example:
 	//
@@ -42,25 +42,25 @@ type CreateMigrationTaskRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
 	//
-	// The ID of the destination environment. It must match the Ingress import environment of the API. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error. You can call ListEnvironments to query existing environment IDs. CreateEnvironment is deprecated.
+	// The ID of the destination environment. The value must be the same as the Ingress import environment of the API. Note: This parameter is actually required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error. You can call the ListEnvironments operation to query existing environment IDs. The CreateEnvironment operation is deprecated.
 	//
 	// example:
 	//
 	// env-xxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The ID of the destination gateway to which migration traffic is switched.
+	// The ID of the destination gateway to which the migration traffic is switched.
 	//
 	// example:
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The ID of the HTTP API. The API must be imported as an Ingress type (HttpIngress) API. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
+	// The ID of the HTTP API. The API must be imported as an Ingress type (HttpIngress). Note: This parameter is actually required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
 	//
 	// example:
 	//
 	// api-xxxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	// The Ingress class. It must match the API import configuration. Otherwise, an ingress class conflict error is reported.
+	// The Ingress class. The value must be the same as the API import configuration. Otherwise, an ingress class conflict error is reported.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type CreateMigrationTaskRequest struct {
 	//
 	// Nginx Ingress
 	MigrationType *string `json:"migrationType,omitempty" xml:"migrationType,omitempty"`
-	// The watched namespace. It must match the API import configuration. Otherwise, a watchNamespace conflict error is reported.
+	// The watched namespace. The value must be the same as the API import configuration. Otherwise, a watchNamespace conflict error is reported.
 	//
 	// example:
 	//

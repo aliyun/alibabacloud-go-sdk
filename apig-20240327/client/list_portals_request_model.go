@@ -34,7 +34,7 @@ type ListPortalsRequest struct {
 	//
 	// developer-portal
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The cursor token for querying the next page.
+	// The pagination token for the next page.
 	//
 	// example:
 	//

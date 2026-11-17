@@ -100,7 +100,7 @@ func (s *GetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyData struct {
-	// The base timestamp of the period.
+	// The base timestamp of the period, in UNIX seconds.
 	//
 	// example:
 	//

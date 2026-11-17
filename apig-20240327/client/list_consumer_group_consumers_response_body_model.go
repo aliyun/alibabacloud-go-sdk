@@ -20,7 +20,7 @@ type iListConsumerGroupConsumersResponseBody interface {
 }
 
 type ListConsumerGroupConsumersResponseBody struct {
-	// The response status code. Ok is returned if the request is successful.
+	// The response status code. Ok is returned if the request succeeds.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListConsumerGroupConsumersResponseBody) Validate() error {
 }
 
 type ListConsumerGroupConsumersResponseBodyData struct {
-	// The consumer group member list.
+	// The list of consumer group members.
 	Items []*ListConsumerGroupConsumersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -104,13 +104,13 @@ type ListConsumerGroupConsumersResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of consumers that match the filter conditions.
+	// The total number of consumers that meet the conditions.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListConsumerGroupConsumersResponseBodyDataItems struct {
 	//
 	// cs-8c13d2b4f8a1
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer deployment status. Valid values: Processing, Failed, and Success.
+	// The deployment status of the consumer. Valid values: Processing, Failed, and Success.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type ListConsumerGroupConsumersResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Online API caller
+	// Production API caller
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the consumer is enabled.
 	//

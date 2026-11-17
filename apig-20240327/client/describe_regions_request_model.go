@@ -14,7 +14,7 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language of the response. Valid values: zh, en.
+	// The language of the response. Valid values: zh and en.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListAiModelProvidersRequest interface {
 }
 
 type ListAiModelProvidersRequest struct {
-	// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+	// The ID of the AI target instance. The specified instance must exist, belong to the current account, and be an AI target instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListAiModelProvidersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The fuzzy match condition for the model provider identifier. If this parameter is left empty, all model providers under the current gateway are queried.
+	// The fuzzy match condition for the model provider identifier. If left empty, all model providers under the current gateway are queried.
 	//
 	// example:
 	//

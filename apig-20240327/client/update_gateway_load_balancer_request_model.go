@@ -20,13 +20,13 @@ type iUpdateGatewayLoadBalancerRequest interface {
 type UpdateGatewayLoadBalancerRequest struct {
 	// The load balancer operation DTO.
 	LoadBalancerDTO *UpdateGatewayLoadBalancerRequestLoadBalancerDTO `json:"loadBalancerDTO,omitempty" xml:"loadBalancerDTO,omitempty" type:"Struct"`
-	// The operation type. If this parameter is left empty or not specified, only the listening ports are updated (only the ports field is used).
+	// The operation type. If this parameter is empty or not specified, only the ports are updated based on the ports parameter.
 	//
 	// example:
 	//
 	// Add
 	Option *string `json:"option,omitempty" xml:"option,omitempty"`
-	// The port list.
+	// The list of ports.
 	Ports []*UpdateGatewayLoadBalancerRequestPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
 }
 
@@ -108,7 +108,7 @@ type UpdateGatewayLoadBalancerRequestLoadBalancerDTO struct {
 	//
 	// 0
 	ServiceWeight *int64 `json:"serviceWeight,omitempty" xml:"serviceWeight,omitempty"`
-	// The backend server group bindings.
+	// The list of backend server group bindings.
 	VirtualServiceList []*UpdateGatewayLoadBalancerRequestLoadBalancerDTOVirtualServiceList `json:"virtualServiceList,omitempty" xml:"virtualServiceList,omitempty" type:"Repeated"`
 }
 
@@ -179,25 +179,25 @@ func (s *UpdateGatewayLoadBalancerRequestLoadBalancerDTO) Validate() error {
 }
 
 type UpdateGatewayLoadBalancerRequestLoadBalancerDTOVirtualServiceList struct {
-	// The port number. Valid values: 1 to 65535. An error is returned if an invalid value is specified.
+	// The port number. Valid values: 1 to 65535. If the value is invalid, an error is reported.
 	//
 	// example:
 	//
 	// 80
 	Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. This parameter is required for CLB. If this parameter is not specified for CLB, the error message "protocol is missing for CLB" is returned. No backend enumeration validation is performed. Valid values: tcp, udp, http, https, and tls.
+	// The protocol. This parameter is required for CLB. If this parameter is missing for CLB, a "protocol is missing for CLB" error is reported. No backend enum validation is performed. Valid values: tcp, udp, http, https, and tls.
 	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The CLB VServerGroupId or NLB ServerGroupId. This parameter is required. If a duplicate group ID is specified, an error is returned.
+	// The CLB VServerGroupId or NLB ServerGroupId. This parameter is required. If the same group ID is duplicated, a group conflict error is reported.
 	//
 	// example:
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
-	// The group name. This parameter is required. If this parameter is not specified, the error message "virtual service parameter is missing" is returned.
+	// The group name. This parameter is required. If this parameter is missing, a "virtual service parameter is missing" error is reported.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ func (s *UpdateGatewayLoadBalancerRequestLoadBalancerDTOVirtualServiceList) Vali
 }
 
 type UpdateGatewayLoadBalancerRequestPorts struct {
-	// The listening ports.
+	// The listener ports.
 	GatewayLoadBalancerPorts []*UpdateGatewayLoadBalancerRequestPortsGatewayLoadBalancerPorts `json:"gatewayLoadBalancerPorts,omitempty" xml:"gatewayLoadBalancerPorts,omitempty" type:"Repeated"`
 	// The load balancer type.
 	//
@@ -304,7 +304,7 @@ func (s *UpdateGatewayLoadBalancerRequestPorts) Validate() error {
 }
 
 type UpdateGatewayLoadBalancerRequestPortsGatewayLoadBalancerPorts struct {
-	// The listening port. Valid values: 0 to 65535. A maximum of 50 custom ports can be configured in the console.
+	// The listener port. Valid values: 0 to 65535. A maximum of 50 custom ports can be configured on the frontend.
 	//
 	// example:
 	//

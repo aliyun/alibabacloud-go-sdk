@@ -40,7 +40,7 @@ type TransportCertificateInfo struct {
 	//
 	// RSA_2048
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// The certificate identifier (the certificate ID under the APIG Alibaba Cloud account).
+	// The certificate identifier, which is the certificate ID under the APIG cloud account.
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type TransportCertificateInfo struct {
 	//
 	// cert-name
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
-	// The match status between the certificate and the gateway instance domain names.
+	// The matching status between the certificate and the instance domain names.
 	//
 	// example:
 	//
 	// Matched
 	CertificateMatchStatus *string `json:"certificateMatchStatus,omitempty" xml:"certificateMatchStatus,omitempty"`
-	// The certificate Common Name (CN).
+	// The common name (CN) of the certificate.
 	//
 	// example:
 	//
 	// api.example.com
 	CommonName *string `json:"commonName,omitempty" xml:"commonName,omitempty"`
-	// The set of covered domain names parsed from CN and SAN (lowercase, deduplicated, may contain *. wildcards).
+	// The set of covered domain names parsed from the CN and SAN. The domain names are in lowercase, deduplicated, and may include wildcards such as *.
 	CoveredDomains []*string `json:"coveredDomains,omitempty" xml:"coveredDomains,omitempty" type:"Repeated"`
 	// The certificate issuer.
 	//
@@ -72,21 +72,21 @@ type TransportCertificateInfo struct {
 	//
 	// DigiCert Secure Site CN CA G3
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// The gateway instance domain names matched by the covered domain names (ordered by instance domain name, deduplicated).
+	// The gateway instance domain names matched by the covered domain names. The order follows the instance domain names, and the results are deduplicated.
 	MatchedDomains []*string `json:"matchedDomains,omitempty" xml:"matchedDomains,omitempty" type:"Repeated"`
-	// The expiration timestamp (Unix milliseconds, from the certificate afterDate).
+	// The expiration timestamp in UNIX milliseconds, which is obtained from the afterDate of the certificate.
 	//
 	// example:
 	//
 	// 1747958400000
 	NotAfterTimestamp *int64 `json:"notAfterTimestamp,omitempty" xml:"notAfterTimestamp,omitempty"`
-	// The effective period UNIX timestamp (milliseconds, from the certificate beforeDate).
+	// The UNIX timestamp for the effective period in milliseconds, which is obtained from the beforeDate of the certificate.
 	//
 	// example:
 	//
 	// 1716336000000
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The raw Subject Alternative Name (SAN) string (separated by commas, semicolons, or whitespace. Elements may have a DNS: prefix).
+	// The raw Subject Alternative Name (SAN) string separated by commas, semicolons, or spaces. Elements may include the DNS: prefix.
 	//
 	// example:
 	//

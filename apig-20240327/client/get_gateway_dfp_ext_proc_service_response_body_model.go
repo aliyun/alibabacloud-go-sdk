@@ -20,19 +20,19 @@ type iGetGatewayDfpExtProcServiceResponseBody interface {
 }
 
 type GetGatewayDfpExtProcServiceResponseBody struct {
-	// The result code of the request. The value is Ok if the request is successful.
+	// The request result code. The value is Ok if the request is successful.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The binding information of the dynamic forwarding ExtProc service for the gateway.
+	// The binding information of the gateway dynamic forwarding ExtProc service.
 	//
 	// example:
 	//
 	// {"bound":true,"serviceId":"svc-cr8k0udlhtgt80sh7png","servicePort":9002}
 	Data *GetGatewayDfpExtProcServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The result message of the request. If the request failed, the message contains the error message of the fault.
+	// The request result message. If the request fails, this parameter contains the error message.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iUpdateConsumerGroupResponseBody interface {
 }
 
 type UpdateConsumerGroupResponseBody struct {
-	// The response status code. Ok is returned if the request is successful.
+	// The response status code. Returns Ok if the request is successful.
 	//
 	// example:
 	//

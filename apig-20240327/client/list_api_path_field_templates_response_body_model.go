@@ -104,13 +104,13 @@ type ListApiPathFieldTemplatesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//

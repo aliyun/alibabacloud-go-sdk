@@ -22,13 +22,13 @@ type iListHiMarketConsumerSubscriptionsRequest interface {
 }
 
 type ListHiMarketConsumerSubscriptionsRequest struct {
-	// The maximum number of entries per page. The default value and valid values are not declared in the API definition.
+	// The maximum number of entries per page. The default value and valid values are not specified in the API definition.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Pass the token returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
+	// The pagination token. Pass the nextToken value returned in the previous response to retrieve the next page. Do not pass this parameter for the first query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListHiMarketConsumerSubscriptionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The subscription status. Filters subscriptions by status. Valid values: PENDING and APPROVED.
+	// The subscription status used to filter subscriptions. Valid values: PENDING and APPROVED.
 	//
 	// example:
 	//

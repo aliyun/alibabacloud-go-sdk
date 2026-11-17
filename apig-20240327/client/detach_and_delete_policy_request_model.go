@@ -14,7 +14,7 @@ type iDetachAndDeletePolicyRequest interface {
 }
 
 type DetachAndDeletePolicyRequest struct {
-	// The policy attachment ID.
+	// The policy mount ID.
 	//
 	// example:
 	//

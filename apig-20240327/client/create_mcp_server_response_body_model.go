@@ -102,7 +102,7 @@ type CreateMcpServerResponseBodyData struct {
 	//
 	// mcp-afegaijoijaoji24a
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP server name.
+	// The name of the MCP server.
 	//
 	// example:
 	//

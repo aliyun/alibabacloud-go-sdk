@@ -38,7 +38,7 @@ type CreateAiModelCardRequest struct {
 	//
 	// {"type":"fixed","inputCost":1.5,"outputCost":3,"cacheCost":0.5}
 	Credit *CreateAiModelCardRequestCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
-	// The model capability switches. The key must be the name of a model capability supported by the API gateway, and the value must be a Boolean value.
+	// The model capability switches. The key must be the name of a model capability supported by API Gateway, and the value must be a Boolean value.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateAiModelCardRequest struct {
 	//
 	// {"maxInputTokens":131072,"maxOutputTokens":8192,"maxTokens":131072,"supportedInputModalities":["text","image"],"supportedOutputModalities":["text"]}
 	Meta *CreateAiModelCardRequestMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The name of the model. The model name must be unique within the same AI gateway instance and model provider, and can be up to 256 characters in length.
+	// The name of the model. The model name must be unique within the same AI gateway instance and the same model provider, and be up to 256 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateAiModelCardRequest struct {
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The identifier of the model provider. It must reference an existing model provider in the target AI gateway instance and can be up to 128 characters in length.
+	// The identifier of the model provider. It must reference an existing model provider in the target AI gateway instance and be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -171,13 +171,13 @@ func (s *CreateAiModelCardRequest) Validate() error {
 }
 
 type CreateAiModelCardRequestAvailablePaths struct {
-	// The path. The model call path, which can be up to 2,048 characters in length.
+	// The path. The model call path, which is up to 2,048 characters in length.
 	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The protocol type corresponding to the path, which can be up to 64 characters in length.
+	// The protocol type corresponding to the path, which is up to 64 characters in length.
 	//
 	// example:
 	//

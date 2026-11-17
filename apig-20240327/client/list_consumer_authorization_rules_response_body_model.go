@@ -184,7 +184,7 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// The consumer ID.
+	// The ID of the consumer.
 	//
 	// example:
 	//
@@ -224,13 +224,13 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//

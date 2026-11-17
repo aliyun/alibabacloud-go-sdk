@@ -108,15 +108,15 @@ type GetMcpServerResponseBodyData struct {
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
 	// The creation source type.
 	//
-	// ApiGatewayHttpToMCP: Gateway-hosted HTTP-to-MCP conversion
+	// ApiGatewayHttpToMCP: HTTP-to-MCP conversion hosted by the gateway.
 	//
-	// ApiGatewayMcpHosting: Gateway-hosted direct MCP proxy
+	// ApiGatewayMcpHosting: Direct MCP proxy hosted by the gateway.
 	//
-	// ApiGatewayAssembly: Gateway MCP assembly
+	// ApiGatewayAssembly: MCP assembly by the gateway.
 	//
-	// NacosHttpToMCP: Gateway-hosted Nacos-synchronized HTTP-to-MCP conversion
+	// NacosHttpToMCP: HTTP-to-MCP conversion synced from Nacos and hosted by the gateway.
 	//
-	// NacosMcpHosting: Gateway-hosted Nacos-synchronized direct MCP proxy
+	// NacosMcpHosting: Direct MCP proxy synced from Nacos and hosted by the gateway.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// MCP server dedicated for testing
+	// Dedicated MCP server for testing
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
@@ -156,9 +156,15 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The canary route configurations.
+	// The canary route configuration.
 	GrayMcpServerConfigs []*GetMcpServerResponseBodyDataGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rules.
+	// The MCP service instructions.
+	//
+	// example:
+	//
+	// Used to query order status. An order number is required for the query
+	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	// The match rule of the route.
 	//
 	// example:
 	//
@@ -170,7 +176,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// Base64-encoded MCP server configuration
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
-	// The attachment ID of the MCP server plug-in configuration.
+	// The mount ID of the MCP server plugin configuration.
 	//
 	// example:
 	//
@@ -188,13 +194,13 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// /mcp-servers/test-mcp
 	McpServerPath *string `json:"mcpServerPath,omitempty" xml:"mcpServerPath,omitempty"`
-	// Specifies whether to enable MCP observability. Default value: false.
+	// Specifies whether MCP observability is enabled. Default value: false.
 	//
 	// example:
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	// The information about the Nacos-synchronized managed MCP.
+	// The information about the MCP server synced and hosted by Nacos.
 	NacosMcpSyncInfo *GetMcpServerResponseBodyDataNacosMcpSyncInfo `json:"nacosMcpSyncInfo,omitempty" xml:"nacosMcpSyncInfo,omitempty" type:"Struct"`
 	// The name of the MCP server.
 	//
@@ -202,7 +208,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// test-mcp
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The service protocol.
+	// The protocol.
 	//
 	// example:
 	//
@@ -276,6 +282,10 @@ func (s *GetMcpServerResponseBodyData) GetGatewayId() *string {
 
 func (s *GetMcpServerResponseBodyData) GetGrayMcpServerConfigs() []*GetMcpServerResponseBodyDataGrayMcpServerConfigs {
 	return s.GrayMcpServerConfigs
+}
+
+func (s *GetMcpServerResponseBodyData) GetInstructions() *string {
+	return s.Instructions
 }
 
 func (s *GetMcpServerResponseBodyData) GetMatch() *HttpRouteMatch {
@@ -379,6 +389,11 @@ func (s *GetMcpServerResponseBodyData) SetGatewayId(v string) *GetMcpServerRespo
 
 func (s *GetMcpServerResponseBodyData) SetGrayMcpServerConfigs(v []*GetMcpServerResponseBodyDataGrayMcpServerConfigs) *GetMcpServerResponseBodyData {
 	s.GrayMcpServerConfigs = v
+	return s
+}
+
+func (s *GetMcpServerResponseBodyData) SetInstructions(v string) *GetMcpServerResponseBodyData {
+	s.Instructions = &v
 	return s
 }
 
@@ -602,7 +617,11 @@ func (s *GetMcpServerResponseBodyDataDomainInfos) Validate() error {
 type GetMcpServerResponseBodyDataGrayMcpServerConfigs struct {
 	// The backend configuration of the canary route.
 	BackendConfig *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The match rules of the canary route.
+	// The match rule of the canary route.
+	//
+	// example:
+	//
+	// {\\"change_order_revision\\":\\"3.686.0_fc-sz-futian.1662568293908382_faas-eerouter\\"}
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The ID of the canary route.
 	//
@@ -718,7 +737,7 @@ type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices struc
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol.
+	// The protocol.
 	//
 	// example:
 	//
@@ -808,7 +827,7 @@ type GetMcpServerResponseBodyDataNacosMcpSyncInfo struct {
 	//
 	// mse-xxxxx
 	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
-	// The ID of the synchronized MCP server.
+	// The ID of the synced MCP server.
 	//
 	// example:
 	//

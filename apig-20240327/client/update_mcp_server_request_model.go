@@ -23,6 +23,8 @@ type iUpdateMcpServerRequest interface {
 	GetExposedUriPath() *string
 	SetGrayMcpServerConfigs(v []*UpdateMcpServerRequestGrayMcpServerConfigs) *UpdateMcpServerRequest
 	GetGrayMcpServerConfigs() []*UpdateMcpServerRequestGrayMcpServerConfigs
+	SetInstructions(v string) *UpdateMcpServerRequest
+	GetInstructions() *string
 	SetMatch(v *HttpRouteMatch) *UpdateMcpServerRequest
 	GetMatch() *HttpRouteMatch
 	SetMcpServerConfig(v *UpdateMcpServerRequestMcpServerConfig) *UpdateMcpServerRequest
@@ -42,15 +44,15 @@ type UpdateMcpServerRequest struct {
 	BackendConfig *UpdateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
-	// - ApiGatewayHttpToMCP: API gateway-hosted HTTP-to-MCP.
+	// - ApiGatewayHttpToMCP: API Gateway-managed HTTP-to-MCP
 	//
-	// - ApiGatewayProxyMcpHosting: API gateway-hosted MCP direct proxy.
+	// - ApiGatewayProxyMcpHosting: API Gateway-managed direct MCP proxy
 	//
-	// - ApiGatewayAssembly: API gateway MCP assembly.
+	// - ApiGatewayAssembly: API Gateway MCP assembly
 	//
-	// - NacosHttpToMCP: API gateway-hosted Nacos-synchronized HTTP-to-MCP.
+	// - NacosHttpToMCP: API Gateway-managed Nacos-synchronized HTTP-to-MCP
 	//
-	// - NacosMcpHosting: API gateway-hosted Nacos-synchronized MCP direct proxy.
+	// - NacosMcpHosting: API Gateway-managed Nacos-synchronized direct MCP proxy
 	//
 	// example:
 	//
@@ -70,8 +72,14 @@ type UpdateMcpServerRequest struct {
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// The list of canary MCP server route configurations.
+	// The list of canary release MCP server route configurations.
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
+	// The MCP service description.
+	//
+	// example:
+	//
+	// Used to query order status. An order number is required for the query
+	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
 	// The route match rules. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.IsEmpty(400).
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configurations.
@@ -84,13 +92,13 @@ type UpdateMcpServerRequest struct {
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - HTTP: HTTP.
+	// - HTTP: HTTP
 	//
-	// - HTTPS: HTTPS.
+	// - HTTPS: HTTPS
 	//
-	// - SSE: Server-Sent Events.
+	// - SSE: Server-Sent Events
 	//
-	// - StreamableHTTP: Streaming HTTP.
+	// - StreamableHTTP: Streamable HTTP
 	//
 	// This parameter is required.
 	//
@@ -142,6 +150,10 @@ func (s *UpdateMcpServerRequest) GetExposedUriPath() *string {
 
 func (s *UpdateMcpServerRequest) GetGrayMcpServerConfigs() []*UpdateMcpServerRequestGrayMcpServerConfigs {
 	return s.GrayMcpServerConfigs
+}
+
+func (s *UpdateMcpServerRequest) GetInstructions() *string {
+	return s.Instructions
 }
 
 func (s *UpdateMcpServerRequest) GetMatch() *HttpRouteMatch {
@@ -196,6 +208,11 @@ func (s *UpdateMcpServerRequest) SetExposedUriPath(v string) *UpdateMcpServerReq
 
 func (s *UpdateMcpServerRequest) SetGrayMcpServerConfigs(v []*UpdateMcpServerRequestGrayMcpServerConfigs) *UpdateMcpServerRequest {
 	s.GrayMcpServerConfigs = v
+	return s
+}
+
+func (s *UpdateMcpServerRequest) SetInstructions(v string) *UpdateMcpServerRequest {
+	s.Instructions = &v
 	return s
 }
 
@@ -374,7 +391,7 @@ type UpdateMcpServerRequestBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol. Valid values:
+	// The protocol. Valid values:
 	//
 	// - TCP.
 	//
@@ -582,7 +599,7 @@ type UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol.
+	// The protocol.
 	//
 	// example:
 	//
@@ -666,7 +683,7 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Valida
 }
 
 type UpdateMcpServerRequestMcpServerConfig struct {
-	// The MCP server configurations. This parameter is mutually exclusive with the swaggerConfig parameter.
+	// The MCP server configurations. This parameter is mutually exclusive with swaggerConfig.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type ListPortalsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor token for querying the next page.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListPortalsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type ListPortalsResponseBodyDataContent struct {
 	//
 	// developer-portal
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The portal domain configuration list. The list element is named domainConfig.
+	// The portal domain name configuration list. The list element is named domainConfig.
 	PortalDomainConfig []*HiMarketPortalDomainConfig `json:"portalDomainConfig,omitempty" xml:"portalDomainConfig,omitempty" type:"Repeated"`
 	// The portal ID, which is the primary ID of the portal resource. It can be used in GetPortal, UpdatePortal, and DeletePortal to locate the portal at /himarket/v1/portals/{portalId}.
 	//

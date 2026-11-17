@@ -34,7 +34,7 @@ type CreateConsumerResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

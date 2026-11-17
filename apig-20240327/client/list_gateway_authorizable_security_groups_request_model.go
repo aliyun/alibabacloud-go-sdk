@@ -14,7 +14,7 @@ type iListGatewayAuthorizableSecurityGroupsRequest interface {
 }
 
 type ListGatewayAuthorizableSecurityGroupsRequest struct {
-	// Queries only the security groups associated with a Container Service cluster.
+	// The ID of the Container Service cluster. Only security groups associated with the cluster are queried.
 	//
 	// example:
 	//

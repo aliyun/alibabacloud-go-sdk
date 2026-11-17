@@ -40,13 +40,13 @@ type ListSourcesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource group ID used to filter results. This parameter is also used for RAM authentication.
+	// The ID of the resource group used to filter resources. This parameter is also used for Resource Access Management (RAM) authentication.
 	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The source type used to filter the query results.
+	// The source type.
 	//
 	// example:
 	//

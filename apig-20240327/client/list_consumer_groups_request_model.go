@@ -20,7 +20,7 @@ type iListConsumerGroupsRequest interface {
 }
 
 type ListConsumerGroupsRequest struct {
-	// The gateway type. Valid values: API or AI.
+	// The gateway type. Valid values: API and AI. Note: This parameter is actually required. If it is not provided, the API returns InvalidParameter.IsEmpty(400) "Parameter gatewayType should not be empty."
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListConsumerGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

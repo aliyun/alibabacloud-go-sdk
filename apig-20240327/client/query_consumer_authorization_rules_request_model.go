@@ -46,19 +46,19 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
-	// The consumer group ID. If specified, the authorization rules of the consumer group are queried. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+	// The consumer group ID. If you specify this parameter, the authorization rules of the consumer group are queried. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
 	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The consumer group name for fuzzy match.
+	// The keyword for fuzzy match of the consumer group name.
 	//
 	// example:
 	//
 	// team
 	ConsumerGroupNameLike *string `json:"consumerGroupNameLike,omitempty" xml:"consumerGroupNameLike,omitempty"`
-	// The consumer ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+	// The consumer ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The parent resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+	// The parent resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
 	//
 	// example:
 	//
 	// ha-cn-li942gy8p01
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
-	// The principal type. Valid values: Consumer and ConsumerGroup.
+	// The type of the authorized principal. Valid values: Consumer and ConsumerGroup.
 	//
 	// example:
 	//
 	// ConsumerGroup
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
-	// The resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+	// The resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The service source type.
+	// The service source types.
 	//
 	// example:
 	//

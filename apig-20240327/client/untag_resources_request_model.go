@@ -20,23 +20,13 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to delete all tags. This parameter is valid only when tags are empty. Valid values:
-	//
-	// - true
-	//
-	// - false
-	//
-	// - True
-	//
-	// - False
-	//
-	// Default value: false.
+	// Specifies whether to delete all tags. This parameter is valid only when the tags parameter is empty. Valid values: true, false, True, and False. Default value: false.
 	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The resource IDs. You can specify up to 50 subkeys.
+	// The resource IDs. You can specify up to 50 items.
 	//
 	// example:
 	//
@@ -48,7 +38,7 @@ type UntagResourcesRequest struct {
 	//
 	// gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tag keys. You can specify up to 20 subkeys.
+	// The tag keys. You can specify up to 20 items.
 	//
 	// example:
 	//

@@ -19,16 +19,20 @@ type iListGatewayQuotaRulesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListGatewayQuotaRulesRequest
 	GetPageSize() *int32
+	SetRuleStatus(v string) *ListGatewayQuotaRulesRequest
+	GetRuleStatus() *string
+	SetSubjectNameLike(v string) *ListGatewayQuotaRulesRequest
+	GetSubjectNameLike() *string
 }
 
 type ListGatewayQuotaRulesRequest struct {
-	// The keyword in the rule name for fuzzy match.
+	// The keyword in the rule name used for fuzzy matching.
 	//
 	// example:
 	//
 	// daily
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of records to return in a single request. This parameter is not supported.
+	// The maximum number of entries to return in a single call. This parameter is not supported.
 	//
 	// example:
 	//
@@ -46,12 +50,24 @@ type ListGatewayQuotaRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The status of the rule. Valid values: enabled and disabled. If you do not specify this parameter, all rules are queried.
+	//
+	// example:
+	//
+	// enabled
+	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The keyword in the name of the associated subject for fuzzy matching based on the consumer or consumer group name.
+	//
+	// example:
+	//
+	// alpha
+	SubjectNameLike *string `json:"subjectNameLike,omitempty" xml:"subjectNameLike,omitempty"`
 }
 
 func (s ListGatewayQuotaRulesRequest) String() string {
@@ -82,6 +98,14 @@ func (s *ListGatewayQuotaRulesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListGatewayQuotaRulesRequest) GetRuleStatus() *string {
+	return s.RuleStatus
+}
+
+func (s *ListGatewayQuotaRulesRequest) GetSubjectNameLike() *string {
+	return s.SubjectNameLike
+}
+
 func (s *ListGatewayQuotaRulesRequest) SetKeyword(v string) *ListGatewayQuotaRulesRequest {
 	s.Keyword = &v
 	return s
@@ -104,6 +128,16 @@ func (s *ListGatewayQuotaRulesRequest) SetPageNumber(v int32) *ListGatewayQuotaR
 
 func (s *ListGatewayQuotaRulesRequest) SetPageSize(v int32) *ListGatewayQuotaRulesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayQuotaRulesRequest) SetRuleStatus(v string) *ListGatewayQuotaRulesRequest {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *ListGatewayQuotaRulesRequest) SetSubjectNameLike(v string) *ListGatewayQuotaRulesRequest {
+	s.SubjectNameLike = &v
 	return s
 }
 

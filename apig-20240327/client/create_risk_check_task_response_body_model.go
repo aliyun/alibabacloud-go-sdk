@@ -96,7 +96,7 @@ func (s *CreateRiskCheckTaskResponseBody) Validate() error {
 }
 
 type CreateRiskCheckTaskResponseBodyData struct {
-	// The risk detection task ID.
+	// The ID of the risk detection task.
 	//
 	// example:
 	//

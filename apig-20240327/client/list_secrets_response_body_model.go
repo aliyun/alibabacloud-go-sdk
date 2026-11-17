@@ -26,7 +26,7 @@ type ListSecretsResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The list of key information.
+	// The list of secrets.
 	Data *ListSecretsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,7 +96,7 @@ func (s *ListSecretsResponseBody) Validate() error {
 }
 
 type ListSecretsResponseBodyData struct {
-	// The list of key details.
+	// The list of secret details.
 	Items []*ListSecretsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -188,33 +188,33 @@ type ListSecretsResponseBodyDataItems struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The KMS configuration information.
+	// The KMS configuration.
 	KmsConfig *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
-	// The key name.
+	// The secret name.
 	//
 	// example:
 	//
 	// my_secret
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The resource count of resources that reference the current key.
+	// The resource count of the resources that reference the current secret.
 	//
 	// example:
 	//
 	// 3
 	ReferenceCount *int32 `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
-	// The key ID.
+	// The secret ID.
 	//
 	// example:
 	//
 	// sec-d5e6shmm1hkoxxxxxxxx
 	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
-	// The key source.
+	// The secret source.
 	//
 	// example:
 	//
 	// KMS
 	SecretSource *string `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
-	// The key status. Valid values:
+	// The secret status. Valid values:
 	//
 	// - ENABLE: Enabled.
 	//

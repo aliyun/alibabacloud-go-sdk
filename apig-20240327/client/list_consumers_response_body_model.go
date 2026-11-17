@@ -96,7 +96,9 @@ func (s *ListConsumersResponseBody) Validate() error {
 }
 
 type ListConsumersResponseBodyData struct {
-	// The list of API consumer information.
+	// The expiration reminder count for all consumers under the same account and gateway type. This count is not affected by name filters, status filters, or pagination. This field is returned only when includeExpirationSummary is set to true.
+	ExpirationSummary *ListConsumersResponseBodyDataExpirationSummary `json:"expirationSummary,omitempty" xml:"expirationSummary,omitempty" type:"Struct"`
+	// The list of consumer information.
 	Items []*ListConsumersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -104,7 +106,7 @@ type ListConsumersResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -126,6 +128,10 @@ func (s ListConsumersResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListConsumersResponseBodyData) GetExpirationSummary() *ListConsumersResponseBodyDataExpirationSummary {
+	return s.ExpirationSummary
+}
+
 func (s *ListConsumersResponseBodyData) GetItems() []*ListConsumersResponseBodyDataItems {
 	return s.Items
 }
@@ -140,6 +146,11 @@ func (s *ListConsumersResponseBodyData) GetPageSize() *int32 {
 
 func (s *ListConsumersResponseBodyData) GetTotalSize() *int32 {
 	return s.TotalSize
+}
+
+func (s *ListConsumersResponseBodyData) SetExpirationSummary(v *ListConsumersResponseBodyDataExpirationSummary) *ListConsumersResponseBodyData {
+	s.ExpirationSummary = v
+	return s
 }
 
 func (s *ListConsumersResponseBodyData) SetItems(v []*ListConsumersResponseBodyDataItems) *ListConsumersResponseBodyData {
@@ -163,6 +174,11 @@ func (s *ListConsumersResponseBodyData) SetTotalSize(v int32) *ListConsumersResp
 }
 
 func (s *ListConsumersResponseBodyData) Validate() error {
+	if s.ExpirationSummary != nil {
+		if err := s.ExpirationSummary.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Items != nil {
 		for _, item := range s.Items {
 			if item != nil {
@@ -175,8 +191,53 @@ func (s *ListConsumersResponseBodyData) Validate() error {
 	return nil
 }
 
+type ListConsumersResponseBodyDataExpirationSummary struct {
+	// The number of unexpired consumers with a remaining validity period of no more than seven days, including those that are manually disabled.
+	//
+	// example:
+	//
+	// 1
+	AboutToExpire *int64 `json:"aboutToExpire,omitempty" xml:"aboutToExpire,omitempty"`
+	// The number of expired consumers, including those that are manually disabled.
+	//
+	// example:
+	//
+	// 2
+	Expired *int64 `json:"expired,omitempty" xml:"expired,omitempty"`
+}
+
+func (s ListConsumersResponseBodyDataExpirationSummary) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListConsumersResponseBodyDataExpirationSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumersResponseBodyDataExpirationSummary) GetAboutToExpire() *int64 {
+	return s.AboutToExpire
+}
+
+func (s *ListConsumersResponseBodyDataExpirationSummary) GetExpired() *int64 {
+	return s.Expired
+}
+
+func (s *ListConsumersResponseBodyDataExpirationSummary) SetAboutToExpire(v int64) *ListConsumersResponseBodyDataExpirationSummary {
+	s.AboutToExpire = &v
+	return s
+}
+
+func (s *ListConsumersResponseBodyDataExpirationSummary) SetExpired(v int64) *ListConsumersResponseBodyDataExpirationSummary {
+	s.Expired = &v
+	return s
+}
+
+func (s *ListConsumersResponseBodyDataExpirationSummary) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListConsumersResponseBodyDataItems struct {
-	// The API consumer ID.
+	// The consumer ID.
 	//
 	// example:
 	//
@@ -200,13 +261,25 @@ type ListConsumersResponseBodyDataItems struct {
 	//
 	// Test consumer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the API consumer is enabled.
+	// Specifies whether the consumer is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The API consumer name.
+	// The expiration time of the consumer, in UTC UNIX seconds. A null value indicates that the consumer is permanently valid.
+	//
+	// example:
+	//
+	// 1893456000
+	ExpireAt *int64 `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
+	// The validity status. Valid values: Permanent, InEffect, AboutToExpire, and Expired. The status is accurate to the second. A remaining time of exactly seven days is classified as AboutToExpire, and an exact expiration time is classified as Expired.
+	//
+	// example:
+	//
+	// InEffect
+	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
+	// The consumer name.
 	//
 	// example:
 	//
@@ -248,6 +321,14 @@ func (s *ListConsumersResponseBodyDataItems) GetEnable() *bool {
 	return s.Enable
 }
 
+func (s *ListConsumersResponseBodyDataItems) GetExpireAt() *int64 {
+	return s.ExpireAt
+}
+
+func (s *ListConsumersResponseBodyDataItems) GetExpireStatus() *string {
+	return s.ExpireStatus
+}
+
 func (s *ListConsumersResponseBodyDataItems) GetName() *string {
 	return s.Name
 }
@@ -278,6 +359,16 @@ func (s *ListConsumersResponseBodyDataItems) SetDescription(v string) *ListConsu
 
 func (s *ListConsumersResponseBodyDataItems) SetEnable(v bool) *ListConsumersResponseBodyDataItems {
 	s.Enable = &v
+	return s
+}
+
+func (s *ListConsumersResponseBodyDataItems) SetExpireAt(v int64) *ListConsumersResponseBodyDataItems {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *ListConsumersResponseBodyDataItems) SetExpireStatus(v string) *ListConsumersResponseBodyDataItems {
+	s.ExpireStatus = &v
 	return s
 }
 

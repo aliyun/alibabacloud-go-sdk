@@ -20,7 +20,7 @@ type iListConsumerGroupsResponseBody interface {
 }
 
 type ListConsumerGroupsResponseBody struct {
-	// The response status code. Ok is returned if the request is successful.
+	// The response status code. Ok is returned when the request is successful.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListConsumerGroupsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ListConsumerGroupsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of consumer groups that match the specified conditions.
+	// The total number of consumer groups that meet the conditions.
 	//
 	// example:
 	//
@@ -182,31 +182,31 @@ type ListConsumerGroupsResponseBodyDataItems struct {
 	//
 	// 3
 	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
-	// The consumer group ID.
+	// The ID of the consumer group.
 	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The creation time of the consumer group, in Unix millisecond timestamp.
+	// The time when the consumer group was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1715769600000
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The consumer group description.
+	// The description of the consumer group.
 	//
 	// example:
 	//
 	// Used for grouping online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The gateway type. Valid values: API or AI.
+	// The gateway type. Valid values: API and AI.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The consumer group name.
+	// The name of the consumer group.
 	//
 	// example:
 	//

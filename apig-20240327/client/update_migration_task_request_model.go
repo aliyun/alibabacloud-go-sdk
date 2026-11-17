@@ -28,45 +28,45 @@ type iUpdateMigrationTaskRequest interface {
 }
 
 type UpdateMigrationTaskRequest struct {
-	// The namespace of the source cluster (for SLB traffic switching).
+	// The namespace of the source cluster for SLB traffic switching.
 	//
 	// example:
 	//
 	// default
 	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
-	// The task description. For DNS-based Engine updates, only this field is modified.
+	// The description of the task. When the target is Engine and the switch type is DNS, only this field can be updated.
 	//
 	// example:
 	//
 	// Migration test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The SLB service name.
+	// The name of the SLB service.
 	//
 	// example:
 	//
 	// nginx-ingress-lb
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The SLB instance ID. Required when the task is in the Initial state with SLB traffic switching. The type is determined by the prefix (lb- or nlb-).
+	// The ID of the SLB instance. This parameter is required when the status is advanced to Initial and the switch type is SLB. The instance type is determined by the prefix lb- or nlb-.
 	//
 	// example:
 	//
 	// lb-bp1xxxx
 	SlbId *string `json:"slbId,omitempty" xml:"slbId,omitempty"`
-	// The traffic switching method. Required when advancing from the Initial state.
+	// The traffic switching method. This parameter is required when the status is advanced to Initial.
 	//
 	// example:
 	//
 	// SLB
 	SwitchType *string `json:"switchType,omitempty" xml:"switchType,omitempty"`
-	// Required. The update target. Determines whether to advance the task status or perform an engine operation.
+	// Required. The update target, which determines whether to advance the status or perform an engine operation.
 	//
 	// example:
 	//
 	// Task
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The list of backend server group bindings.
+	// The list of backend group bindings.
 	VirtualServices []*UpdateMigrationTaskRequestVirtualServices `json:"virtualServices,omitempty" xml:"virtualServices,omitempty" type:"Repeated"`
-	// The traffic switching weight for the legacy flow. Valid values: 0 to 100. Takes effect when the target is set to Engine.
+	// The traffic switching weight for the legacy process. Valid values: 0 to 100. This parameter takes effect when the target is Engine.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ func (s *UpdateMigrationTaskRequest) Validate() error {
 }
 
 type UpdateMigrationTaskRequestVirtualServices struct {
-	// The port. Valid values: 1 to 65535.
+	// The port number. Valid values: 1 to 65535.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Required for CLB.
+	// The protocol. This parameter is required for CLB.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type UpdateMigrationTaskRequestVirtualServices struct {
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
-	// The group name.
+	// The name of the group.
 	//
 	// example:
 	//

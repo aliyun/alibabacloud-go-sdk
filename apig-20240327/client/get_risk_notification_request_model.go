@@ -14,7 +14,7 @@ type iGetRiskNotificationRequest interface {
 }
 
 type GetRiskNotificationRequest struct {
-	// The code of the risk item, such as the code for version risk or capacity risk.
+	// The code of the risk item, such as the code for version risks or capacity risks.
 	//
 	// This parameter is required.
 	//

@@ -198,13 +198,13 @@ type ListSourcesResponseBodyDataItems struct {
 	K8sSourceInfo *ListSourcesResponseBodyDataItemsK8sSourceInfo `json:"k8sSourceInfo,omitempty" xml:"k8sSourceInfo,omitempty" type:"Struct"`
 	// The MSE Nacos source information.
 	NacosSourceInfo *ListSourcesResponseBodyDataItemsNacosSourceInfo `json:"nacosSourceInfo,omitempty" xml:"nacosSourceInfo,omitempty" type:"Struct"`
-	// The source name. If the source type is container service, the name is the container service cluster name. If the source type is MSE Nacos, the name is the Nacos instance name.
+	// The source name. If the source type is container service, the name is the name of the container service cluster. If the source is MSE Nacos, the name is the name of the Nacos instance.
 	//
 	// example:
 	//
 	// itemcenter-dev-cluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -328,7 +328,7 @@ func (s *ListSourcesResponseBodyDataItems) Validate() error {
 }
 
 type ListSourcesResponseBodyDataItemsK8sSourceInfo struct {
-	// The container service cluster ID.
+	// The ID of the container service cluster.
 	//
 	// example:
 	//
@@ -364,7 +364,7 @@ type ListSourcesResponseBodyDataItemsNacosSourceInfo struct {
 	//
 	// mse-3353***-nacos-ans.mse.aliyuncs.com:8848
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The NACOS registry cluster ID.
+	// The ID of the Nacos registry cluster.
 	//
 	// example:
 	//

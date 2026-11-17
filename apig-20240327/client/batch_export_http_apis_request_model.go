@@ -34,7 +34,7 @@ type BatchExportHttpApisRequest struct {
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// The export extension configuration. When this configuration is specified for a REST API, gatewayId is required. This configuration is required for batch export of HTTP APIs.
+	// The export extension configuration. The gatewayId parameter is required when this configuration is specified for REST APIs. This configuration is required for batch export of HTTP APIs.
 	ExtensionConfig *BatchExportHttpApisRequestExtensionConfig `json:"extensionConfig,omitempty" xml:"extensionConfig,omitempty" type:"Struct"`
 	// The export format. Valid values: json and yaml. Default value: yaml.
 	//
@@ -42,7 +42,7 @@ type BatchExportHttpApisRequest struct {
 	//
 	// yaml
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// The gateway instance ID. This parameter is required when extensionConfig is specified for a REST API. This parameter is required for batch export of HTTP APIs.
+	// The gateway instance ID. This parameter is required when extensionConfig is specified for REST APIs. This parameter is also required for batch export of HTTP APIs.
 	//
 	// example:
 	//

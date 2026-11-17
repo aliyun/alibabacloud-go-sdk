@@ -102,13 +102,13 @@ type GetRiskNotificationResponseBodyData struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Indicates whether the notification for the risk item is muted.
+	// Indicates whether notifications for the risk item are muted.
 	//
 	// example:
 	//
 	// false
 	IsMute *bool `json:"isMute,omitempty" xml:"isMute,omitempty"`
-	// The code of the risk item.
+	// The risk item code.
 	//
 	// example:
 	//

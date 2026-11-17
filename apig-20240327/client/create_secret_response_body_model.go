@@ -34,7 +34,7 @@ type CreateSecretResponseBody struct {
 	//
 	// Failed to upload data. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateSecretResponseBody) Validate() error {
 }
 
 type CreateSecretResponseBodyData struct {
-	// The key ID.
+	// The secret ID.
 	//
 	// example:
 	//

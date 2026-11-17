@@ -26,7 +26,7 @@ type GetBatchExportTaskResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *GetBatchExportTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,7 +96,7 @@ func (s *GetBatchExportTaskResponseBody) Validate() error {
 }
 
 type GetBatchExportTaskResponseBodyData struct {
-	// The time when the task was created. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The task creation time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetBatchExportTaskResponseBodyData struct {
 	//
 	// some apis export failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The number of processed items.
+	// The processed count.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GetBatchExportTaskResponseBodyData struct {
 	//
 	// BatchExport
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// The total number of items.
+	// The total count.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type GetBatchExportTaskResponseBodyDataResult struct {
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// The list of APIs that failed to be processed.
+	// The list of failed APIs.
 	FailureItems []*GetBatchExportTaskResponseBodyDataResultFailureItems `json:"failureItems,omitempty" xml:"failureItems,omitempty" type:"Repeated"`
 	// The gateway instance ID.
 	//
@@ -246,13 +246,13 @@ type GetBatchExportTaskResponseBodyDataResult struct {
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The Base64-encoded ZIP file content. After the frontend decodes the content, it can directly trigger a browser download.
+	// The Base64-encoded content of the ZIP file. The frontend can decode the content to directly trigger a download in the browser.
 	//
 	// example:
 	//
 	// UEsDBBQAAAA...
 	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
-	// The list of APIs that were processed successfully.
+	// The list of successfully processed APIs.
 	SuccessItems []*GetBatchExportTaskResponseBodyDataResultSuccessItems `json:"successItems,omitempty" xml:"successItems,omitempty" type:"Repeated"`
 }
 
@@ -332,7 +332,7 @@ func (s *GetBatchExportTaskResponseBodyDataResult) Validate() error {
 }
 
 type GetBatchExportTaskResponseBodyDataResultFailureItems struct {
-	// API ID。
+	// The API ID.
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ func (s *GetBatchExportTaskResponseBodyDataResultFailureItems) Validate() error 
 }
 
 type GetBatchExportTaskResponseBodyDataResultSuccessItems struct {
-	// API ID。
+	// The API ID.
 	//
 	// example:
 	//

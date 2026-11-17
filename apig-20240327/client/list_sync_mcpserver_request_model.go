@@ -24,13 +24,13 @@ type ListSyncMCPServerRequest struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The Nacos namespace ID. Note: This parameter is required. If it is not provided, the API returns InvalidParameter.IsEmpty(400).
+	// The ID of the Nacos namespace. Note: This parameter is required. If it is not provided, the API returns InvalidParameter.IsEmpty(400).
 	//
 	// example:
 	//
 	// public
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The Nacos service source ID. This parameter can be omitted in single Nacos source scenarios because the server automatically populates the unique source. It is required in multiple Nacos source scenarios. Otherwise, a parameter error indicating that sourceId is empty is returned. If the gateway has no Nacos source, ErrServiceSourceNotFound is returned.
+	// The ID of the Nacos service source. This parameter can be omitted in single-Nacos-source scenarios because the server automatically populates the unique source. It is required in multi-Nacos-source scenarios. Otherwise, a parameter error indicating that sourceId is empty is reported. If the gateway has no Nacos source, ErrServiceSourceNotFound is reported.
 	//
 	// example:
 	//

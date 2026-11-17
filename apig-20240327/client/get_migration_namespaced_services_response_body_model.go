@@ -20,7 +20,7 @@ type iGetMigrationNamespacedServicesResponseBody interface {
 }
 
 type GetMigrationNamespacedServicesResponseBody struct {
-	// The status code of the response.
+	// The response status code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetMigrationNamespacedServicesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

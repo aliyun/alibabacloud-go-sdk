@@ -18,7 +18,7 @@ type iListInstallableGatewaysRequest interface {
 }
 
 type ListInstallableGatewaysRequest struct {
-	// The gateway type used for filtering.
+	// The gateway type filter.
 	//
 	// example:
 	//

@@ -96,21 +96,21 @@ func (s *GetProductCategoryResponseBody) Validate() error {
 }
 
 type GetProductCategoryResponseBodyData struct {
-	// The product category ID. This ID can be used as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory, or as an element in the categories array for SetProductCategories and CreateProduct.
+	// The product category ID. You can use this ID as the categoryId path parameter in the GetProductCategory, UpdateProductCategory, and DeleteProductCategory operations, or as an element in the categories array (array of category IDs) for the SetProductCategories and CreateProduct operations.
 	//
 	// example:
 	//
 	// category-xxxxxxxx
 	CategoryId *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	// The product category description.
+	// The description of the product category.
 	//
 	// example:
 	//
-	// Product category containing AI-related capabilities
+	// Product category that includes AI-related capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The product category icon, which consists of two fields: icon type (type) and icon information (value).
+	// The icon of the product category, which consists of the icon type (type) and icon information (value) fields.
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
-	// The product category name.
+	// The name of the product category.
 	//
 	// example:
 	//

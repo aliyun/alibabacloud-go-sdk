@@ -131,13 +131,13 @@ func (s *ListK8sClusterSourcesResponseBodyData) Validate() error {
 }
 
 type ListK8sClusterSourcesResponseBodyDataItems struct {
-	// The container service cluster ID.
+	// The ID of the Container Service cluster.
 	//
 	// example:
 	//
 	// c4a21b3560fad4ec***
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The container service cluster name.
+	// The name of the Container Service cluster.
 	//
 	// example:
 	//

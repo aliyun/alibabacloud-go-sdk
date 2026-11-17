@@ -40,13 +40,13 @@ type HttpApiInfoByName struct {
 	//
 	// Http
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Indicates whether version management is enabled.
+	// Specifies whether version management is enabled.
 	//
 	// example:
 	//
 	// true
 	VersionEnabled *bool `json:"versionEnabled,omitempty" xml:"versionEnabled,omitempty"`
-	// The version information of the versioned APIs.
+	// The versioned API version information.
 	VersionedHttpApis []*HttpApiApiInfo `json:"versionedHttpApis,omitempty" xml:"versionedHttpApis,omitempty" type:"Repeated"`
 }
 

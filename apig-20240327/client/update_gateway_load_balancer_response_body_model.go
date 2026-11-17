@@ -96,7 +96,7 @@ func (s *UpdateGatewayLoadBalancerResponseBody) Validate() error {
 }
 
 type UpdateGatewayLoadBalancerResponseBodyData struct {
-	// Indicates whether the load balancer can be edited. This serves as the edit toggle for a load balancer that is being migrated.
+	// Specifies whether the load balancer being migrated can be edited.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type UpdateGatewayLoadBalancerResponseBodyData struct {
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
 	// The port information.
 	Ports []*int32 `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The gateway service weight for traffic shifting during migration. Valid values: 0 to 100.
+	// The gateway service weight in traffic switching scenarios during migration. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type UpdateGatewayLoadBalancerResponseBodyData struct {
 	//
 	// Status description
 	StatusDescription *string `json:"statusDescription,omitempty" xml:"statusDescription,omitempty"`
-	// The backend server group bindings.
+	// The list of backend server group bindings.
 	VirtualServiceList []*UpdateGatewayLoadBalancerResponseBodyDataVirtualServiceList `json:"virtualServiceList,omitempty" xml:"virtualServiceList,omitempty" type:"Repeated"`
 }
 
@@ -262,25 +262,25 @@ func (s *UpdateGatewayLoadBalancerResponseBodyData) Validate() error {
 }
 
 type UpdateGatewayLoadBalancerResponseBodyDataVirtualServiceList struct {
-	// The port. When an NLB instance is associated, two placeholder entries with ports 80 and 443 are returned.
+	// The port. When an NLB is bound, ports 80 and 443 are fixed and returned as placeholders.
 	//
 	// example:
 	//
 	// 80
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. When an NLB instance is associated, HTTP and HTTPS are returned as placeholders. For CLB, the value is deserialized from the stored vServerGroupMetaInfo.
+	// The protocol. When an NLB is bound, HTTP and HTTPS are fixed and returned as placeholders. For CLB, the value is deserialized from the persisted vServerGroupMetaInfo.
 	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The VServerGroup or ServerGroup ID. When an NLB instance is associated, this field is an empty string placeholder.
+	// The VServerGroup or ServerGroup ID. When an NLB is bound, an empty string is returned as a placeholder.
 	//
 	// example:
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
-	// The group name. When an NLB instance is associated, this field is an empty string placeholder.
+	// The group name. When an NLB is bound, an empty string is returned as a placeholder.
 	//
 	// example:
 	//

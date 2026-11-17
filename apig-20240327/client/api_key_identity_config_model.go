@@ -202,6 +202,15 @@ type ApiKeyIdentityConfigCredentials struct {
 	//
 	// apikey-xxxxxxxx
 	Apikey *string `json:"apikey,omitempty" xml:"apikey,omitempty"`
+	// The creation time of this logical key saved by the server, in Unix milliseconds, for read-only purposes. When updated, the original key retains the saved time, and client input is not used as the time basis. A missing or null history indicates an unknown time, and the consumer creation time must not be used as a substitute.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 1792627200000
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// The generation mode.
 	//
 	// example:
@@ -222,12 +231,21 @@ func (s *ApiKeyIdentityConfigCredentials) GetApikey() *string {
 	return s.Apikey
 }
 
+func (s *ApiKeyIdentityConfigCredentials) GetCreateTimestamp() *int64 {
+	return s.CreateTimestamp
+}
+
 func (s *ApiKeyIdentityConfigCredentials) GetGenerateMode() *string {
 	return s.GenerateMode
 }
 
 func (s *ApiKeyIdentityConfigCredentials) SetApikey(v string) *ApiKeyIdentityConfigCredentials {
 	s.Apikey = &v
+	return s
+}
+
+func (s *ApiKeyIdentityConfigCredentials) SetCreateTimestamp(v int64) *ApiKeyIdentityConfigCredentials {
+	s.CreateTimestamp = &v
 	return s
 }
 

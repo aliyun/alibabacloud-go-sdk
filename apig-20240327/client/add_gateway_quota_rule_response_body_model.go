@@ -100,7 +100,7 @@ func (s *AddGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the semantics of the write request can be accepted by the system. A value of false typically occurs in retryable scenarios, such as when conflicts are not confirmed for overwriting.
+	// Indicates whether the semantics of the write request are accepted by the system. When dryRun is set to true, a value of true indicates only that the dry run is accepted, not that the data is saved. If a formal write request returns false, it indicates that the data is not saved due to conflicts. In this case, check conflictPreview. A value of false typically occurs in retryable scenarios such as unconfirmed conflict overwrites.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *AddGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The hash of the conflicts.
+	// The hash of the conflict.
 	//
 	// example:
 	//
@@ -243,13 +243,13 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	// Deprecated
 	//
-	// The period type of the existing conflicting rule on the subject. This is a legacy field. Use periodType in the actual response instead. This field is not guaranteed to be returned. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month.
+	// The period type of the existing conflicting rule on the consumption subject. This is a legacy field. Use periodType in the actual response instead. This field is not guaranteed to be returned. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+	// The type of the existing conflicting rule on the consumption subject. A value of calendar indicates that the existing conflicting rule uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	//
 	// consumer-a
 	SubjectName *string `json:"subjectName,omitempty" xml:"subjectName,omitempty"`
-	// The type of the conflicting subject. Valid values: consumer and consumer_group.
+	// The type of the conflicting subject. Valid values: consumer, consumer_group.
 	//
 	// example:
 	//

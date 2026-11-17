@@ -58,7 +58,7 @@ type ListHttpApisRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The search keyword. Supports fuzzy match by API name or exact search by API ID.
+	// The search keyword. Supports fuzzy search by API name or exact search by API ID.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ListHttpApisRequest struct {
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The types of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
+	// The types of the HTTP APIs. You can specify multiple types separated by commas (,). Valid values:
 	//
 	// - Http
 	//
@@ -108,31 +108,31 @@ type ListHttpApisRequest struct {
 	//
 	// true
 	WithAPIsPublishedToEnvironment *bool `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
-	// The ID of the environment. If specified, the response includes the consumer authentication policy information for each API in the specified environment.
+	// The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	// Specifies whether the permission authentication policy is enabled.
+	// Specifies whether the authentication policy is enabled.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
-	// The ID of the consumer. If specified, the response includes the list of authorization rules for the specified consumer in each API information.
+	// The consumer ID. If specified, the response includes the authorization rule list for the specified consumer in the information of each API.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// The environment context.
+	// Specifies whether to include the environment context.
 	//
 	// example:
 	//
 	// true
 	WithEnvironmentInfo *bool `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
-	// The ID of the environment.
+	// The environment ID.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListHttpApisRequest struct {
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The ID of the plug-in. If specified, the plug-in release information is retrieved based on this plug-in ID.
+	// The plugin ID. If specified, the plugin release information is retrieved based on this ID.
 	//
 	// example:
 	//

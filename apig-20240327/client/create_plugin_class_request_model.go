@@ -32,7 +32,7 @@ type iCreatePluginClassRequest interface {
 }
 
 type CreatePluginClassRequest struct {
-	// The alias of the plug-in. This parameter is required. If it is not provided, the service returns InvalidParameter.WithValue.
+	// The alias of the plug-in. This parameter is actually required. If it is not provided, the service returns InvalidParameter.WithValue.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreatePluginClassRequest struct {
 	//
 	// my-wasm-plugin
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The minimum supported gateway version.
+	// The minimum compatible gateway version.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreatePluginClassRequest struct {
 	//
 	// Rust
 	WasmLanguage *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
-	// The download URL of the WASM plug-in binary file.
+	// The download URL of the binary file for the WASM plug-in.
 	//
 	// This parameter is required.
 	//

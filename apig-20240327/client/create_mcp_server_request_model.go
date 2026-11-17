@@ -25,6 +25,8 @@ type iCreateMcpServerRequest interface {
 	GetGatewayId() *string
 	SetGrayMcpServerConfigs(v []*CreateMcpServerRequestGrayMcpServerConfigs) *CreateMcpServerRequest
 	GetGrayMcpServerConfigs() []*CreateMcpServerRequestGrayMcpServerConfigs
+	SetInstructions(v string) *CreateMcpServerRequest
+	GetInstructions() *string
 	SetMatch(v *HttpRouteMatch) *CreateMcpServerRequest
 	GetMatch() *HttpRouteMatch
 	SetMcpServerConfig(v *CreateMcpServerRequestMcpServerConfig) *CreateMcpServerRequest
@@ -40,21 +42,21 @@ type iCreateMcpServerRequest interface {
 }
 
 type CreateMcpServerRequest struct {
-	// The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
+	// The list of assembly sources. This parameter is required when the type is AssemblyMCP.
 	AssembledSources []*CreateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	// The backend service configuration for the route. This parameter is required. You must specify the backend service configuration, including scene and services. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
+	// The backend service configuration for the route. This parameter is required. You must provide the backend service configuration, including scene and services. If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
 	BackendConfig *CreateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The creation source type. Valid values:
+	// The creation source type.
 	//
-	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+	// ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP conversion.
 	//
-	// - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
+	// ApiGatewayProxyMcpHosting: Gateway-managed MCP direct proxy.
 	//
-	// - ApiGatewayAssembly: gateway MCP assembly.
+	// ApiGatewayAssembly: Gateway MCP assembly.
 	//
-	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// NacosHttpToMCP: Gateway-managed Nacos-synchronized HTTP-to-MCP conversion.
 	//
-	// - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
+	// NacosMcpHosting: Gateway-managed Nacos-synchronized MCP direct proxy.
 	//
 	// example:
 	//
@@ -68,7 +70,7 @@ type CreateMcpServerRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
+	// The exposed URI path. This parameter is required when the protocol is SSE or StreamableHTTP and the type is RealMCP.
 	//
 	// example:
 	//
@@ -84,7 +86,13 @@ type CreateMcpServerRequest struct {
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// The canary release route configurations.
 	GrayMcpServerConfigs []*CreateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rule. When type is set to RealMCP, the match parameter is required and you must specify a route match rule.
+	// The instructions for the MCP service.
+	//
+	// example:
+	//
+	// Used to query the order status. The order number is required for queries
+	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	// The route match rule. When the type is RealMCP, the match parameter is required and you must provide a route matching rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configuration.
 	McpServerConfig *CreateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
@@ -94,7 +102,7 @@ type CreateMcpServerRequest struct {
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	// The MCP server name. The name must match the regular expression ^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$ and cannot exceed 64 characters in length.
+	// The name of the MCP server. The name must match the regular expression ^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$ and cannot exceed 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -102,15 +110,15 @@ type CreateMcpServerRequest struct {
 	//
 	// fetch-time
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type. This parameter is required. You must explicitly specify the protocol type (HTTP/HTTPS/SSE/StreamableHTTP). If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
+	// The protocol type. This parameter is required. You must explicitly specify the protocol type, such as HTTP, HTTPS, SSE, or StreamableHTTP. If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The type. Valid values:
+	// The type.
 	//
-	// - RealMCP: a standard MCP service.
+	// RealMCP: Standard MCP service.
 	//
 	// This parameter is required.
 	//
@@ -158,6 +166,10 @@ func (s *CreateMcpServerRequest) GetGatewayId() *string {
 
 func (s *CreateMcpServerRequest) GetGrayMcpServerConfigs() []*CreateMcpServerRequestGrayMcpServerConfigs {
 	return s.GrayMcpServerConfigs
+}
+
+func (s *CreateMcpServerRequest) GetInstructions() *string {
+	return s.Instructions
 }
 
 func (s *CreateMcpServerRequest) GetMatch() *HttpRouteMatch {
@@ -221,6 +233,11 @@ func (s *CreateMcpServerRequest) SetGatewayId(v string) *CreateMcpServerRequest 
 
 func (s *CreateMcpServerRequest) SetGrayMcpServerConfigs(v []*CreateMcpServerRequestGrayMcpServerConfigs) *CreateMcpServerRequest {
 	s.GrayMcpServerConfigs = v
+	return s
+}
+
+func (s *CreateMcpServerRequest) SetInstructions(v string) *CreateMcpServerRequest {
+	s.Instructions = &v
 	return s
 }
 
@@ -298,7 +315,7 @@ type CreateMcpServerRequestAssembledSources struct {
 	//
 	// mcp-sdfa3qgavz
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP server name.
+	// The name of the MCP server.
 	//
 	// example:
 	//
@@ -348,7 +365,7 @@ func (s *CreateMcpServerRequestAssembledSources) Validate() error {
 }
 
 type CreateMcpServerRequestBackendConfig struct {
-	// The backend service scenario.
+	// The backend service scene.
 	//
 	// example:
 	//
@@ -404,17 +421,17 @@ type CreateMcpServerRequestBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol. Valid values:
+	// The service protocol:
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - HTTPS
+	// - HTTPS.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The service ID. The serviceId must be a backend service ID that is registered under the gateway. You can call the ListServices operation (with the gatewayId parameter) to query available service IDs.
+	// The service ID. The serviceId is the ID of a registered backend service under the gateway. You can query it by calling the ListServices API and passing the gatewayId.
 	//
 	// example:
 	//
@@ -494,7 +511,7 @@ func (s *CreateMcpServerRequestBackendConfigServices) Validate() error {
 type CreateMcpServerRequestGrayMcpServerConfigs struct {
 	// The backend configuration.
 	BackendConfig *CreateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The route match rule.
+	// The route matching rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The route ID.
 	//
@@ -554,7 +571,7 @@ func (s *CreateMcpServerRequestGrayMcpServerConfigs) Validate() error {
 }
 
 type CreateMcpServerRequestGrayMcpServerConfigsBackendConfig struct {
-	// The backend scenario.
+	// The backend scene.
 	//
 	// example:
 	//
@@ -694,7 +711,7 @@ func (s *CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Valida
 }
 
 type CreateMcpServerRequestMcpServerConfig struct {
-	// The MCP server spec configuration. This parameter is mutually exclusive with swaggerConfig.
+	// The MCP server configuration. This parameter is mutually exclusive with the swaggerConfig parameter.
 	//
 	// example:
 	//

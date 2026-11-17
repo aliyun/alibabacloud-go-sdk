@@ -96,9 +96,9 @@ func (s *GetGatewayElasticPolicyResponseBody) Validate() error {
 }
 
 type GetGatewayElasticPolicyResponseBodyData struct {
-	// The elastic policy configuration, deserialized from the elastic_config JSON field in the database.
+	// The elastic policy configuration, deserialized from the elastic_config JSON in the database.
 	ElasticPolicy *GetGatewayElasticPolicyResponseBodyDataElasticPolicy `json:"elasticPolicy,omitempty" xml:"elasticPolicy,omitempty" type:"Struct"`
-	// The KubeOne AutoScaleStrategy instance ID.
+	// The ID of the KubeOne AutoScaleStrategy instance.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetGatewayElasticPolicyResponseBodyData struct {
 	//
 	// CronHPA
 	ElasticType *string `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
-	// The gateway ID.
+	// The ID of the gateway.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *GetGatewayElasticPolicyResponseBodyData) Validate() error {
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicy struct {
-	// The time periods during which AutoHPA scale-out is prohibited.
+	// The time periods during which AutoHPA is prohibited from scaling out.
 	DisableScaleTimePolicyList []*GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicyList `json:"disableScaleTimePolicyList,omitempty" xml:"disableScaleTimePolicyList,omitempty" type:"Repeated"`
 	// Indicates whether elastic scaling is enabled.
 	//
@@ -186,9 +186,9 @@ type GetGatewayElasticPolicyResponseBodyDataElasticPolicy struct {
 	//
 	// AutoHPA
 	ElasticType *string `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
-	// The time periods during which AutoHPA scale-out is allowed.
+	// The time periods during which AutoHPA is allowed to scale out.
 	EnableScaleTimePolicyList []*GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyList `json:"enableScaleTimePolicyList,omitempty" xml:"enableScaleTimePolicyList,omitempty" type:"Repeated"`
-	// The load alert threshold switch for AutoHPA.
+	// The AutoHPA load alert threshold switch.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type GetGatewayElasticPolicyResponseBodyDataElasticPolicy struct {
 	//
 	// 10
 	MaxUnits *int32 `json:"maxUnits,omitempty" xml:"maxUnits,omitempty"`
-	// The list of CronHPA scheduled policies. Each entry includes units (number of replicas), startTime, and endTime.
+	// The list of scheduled policies for CronHPA, including units (number of replicas), startTime, and endTime.
 	TimePolicyList []*GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList `json:"timePolicyList,omitempty" xml:"timePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -307,13 +307,13 @@ func (s *GetGatewayElasticPolicyResponseBodyDataElasticPolicy) Validate() error 
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicyList struct {
-	// The O&M end time in the HH:mm format.
+	// The end time of the O&M window (HH:mm).
 	//
 	// example:
 	//
 	// 00:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The O&M start time in the HH:mm format.
+	// The start time of the O&M window (HH:mm).
 	//
 	// example:
 	//
@@ -352,13 +352,13 @@ func (s *GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePol
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyList struct {
-	// The O&M end time in the HH:mm format.
+	// The end time of the O&M window (HH:mm).
 	//
 	// example:
 	//
 	// 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The O&M start time in the HH:mm format.
+	// The start time of the O&M window (HH:mm).
 	//
 	// example:
 	//
@@ -397,13 +397,13 @@ func (s *GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePoli
 }
 
 type GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList struct {
-	// The O&M end time in the HH:mm format.
+	// The end time of the O&M window (HH:mm).
 	//
 	// example:
 	//
 	// 06:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The O&M start time in the HH:mm format.
+	// The start time of the O&M window (HH:mm).
 	//
 	// example:
 	//

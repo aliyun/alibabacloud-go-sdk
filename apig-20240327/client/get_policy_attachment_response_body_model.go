@@ -96,19 +96,19 @@ func (s *GetPolicyAttachmentResponseBody) Validate() error {
 }
 
 type GetPolicyAttachmentResponseBodyData struct {
-	// The ID of the attached resource.
+	// The attached resource ID.
 	//
 	// example:
 	//
 	// op-csbkd9llhtgqhqua***
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of the attached resource. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
+	// The attached resource type, such as HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, or Domain.
 	//
 	// example:
 	//
 	// Operation
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The configuration of the attached policy.
+	// The policy attachment configuration.
 	//
 	// example:
 	//

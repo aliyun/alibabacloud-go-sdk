@@ -21,6 +21,8 @@ type iUpdateServiceRequest interface {
 	GetApiKeysToAdd() []*string
 	SetDnsServers(v []*string) *UpdateServiceRequest
 	GetDnsServers() []*string
+	SetExpectedConfigRevision(v string) *UpdateServiceRequest
+	GetExpectedConfigRevision() *string
 	SetHealthCheckConfig(v *UpdateServiceRequestHealthCheckConfig) *UpdateServiceRequest
 	GetHealthCheckConfig() *UpdateServiceRequestHealthCheckConfig
 	SetHealthyPanicThreshold(v float32) *UpdateServiceRequest
@@ -42,13 +44,13 @@ type UpdateServiceRequest struct {
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	// The list of KMS reference names to append. This parameter is available only in Reference mode and does not read KMS content.
+	// The list of KMS reference names to append. This parameter is only available in Reference mode. KMS content is not read.
 	//
 	// example:
 	//
 	// ["my-kms-ref"]
 	ApiKeyReferencesToAdd []*string `json:"apiKeyReferencesToAdd,omitempty" xml:"apiKeyReferencesToAdd,omitempty" type:"Repeated"`
-	// The list of API keys to append. This parameter is available only in the Custom API Key mode for AI services. It must be used with fully masked apiKeys or omitted apiKeys, and does not read or return existing keys.
+	// The list of API keys to append. This parameter is only available in Custom API Key mode for AI services. It must be used with fully masked apiKeys or omitted apiKeys. Existing keys are not read or returned.
 	//
 	// example:
 	//
@@ -56,6 +58,12 @@ type UpdateServiceRequest struct {
 	ApiKeysToAdd []*string `json:"apiKeysToAdd,omitempty" xml:"apiKeysToAdd,omitempty" type:"Repeated"`
 	// The DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	// The expected configuration revision for conditional updates of the AI service. If this parameter is not provided, backward compatibility with legacy calls is maintained. If the version changes, the Conflict.ServiceConfigurationChanged error is returned.
+	//
+	// example:
+	//
+	// 7e4f52a9b0c34d16a268e913f5c2087b
+	ExpectedConfigRevision *string `json:"expectedConfigRevision,omitempty" xml:"expectedConfigRevision,omitempty"`
 	// The health check configuration of the service.
 	HealthCheckConfig *UpdateServiceRequestHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty" type:"Struct"`
 	// The health check threshold.
@@ -114,6 +122,10 @@ func (s *UpdateServiceRequest) GetDnsServers() []*string {
 	return s.DnsServers
 }
 
+func (s *UpdateServiceRequest) GetExpectedConfigRevision() *string {
+	return s.ExpectedConfigRevision
+}
+
 func (s *UpdateServiceRequest) GetHealthCheckConfig() *UpdateServiceRequestHealthCheckConfig {
 	return s.HealthCheckConfig
 }
@@ -165,6 +177,11 @@ func (s *UpdateServiceRequest) SetApiKeysToAdd(v []*string) *UpdateServiceReques
 
 func (s *UpdateServiceRequest) SetDnsServers(v []*string) *UpdateServiceRequest {
 	s.DnsServers = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetExpectedConfigRevision(v string) *UpdateServiceRequest {
+	s.ExpectedConfigRevision = &v
 	return s
 }
 
@@ -232,27 +249,27 @@ func (s *UpdateServiceRequest) Validate() error {
 }
 
 type UpdateServiceRequestHealthCheckConfig struct {
-	// Specifies whether to enable the health check for the service.
+	// Specifies whether to enable health checks for the service.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The list of normal HTTP status codes returned by requests. This parameter is required when the protocol is HTTP.
+	// The list of normal HTTP status codes returned in responses. This parameter is required when the protocol is HTTP.
 	ExpectedStatuses []*string `json:"expectedStatuses,omitempty" xml:"expectedStatuses,omitempty" type:"Repeated"`
-	// The healthy threshold for the health check.
+	// The healthy threshold for health checks.
 	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
-	// The domain name for the health check. This parameter is optional and can be configured when the protocol is HTTP.
+	// The domain name for health checks. This parameter is optional and can be configured when the protocol is HTTP.
 	//
 	// example:
 	//
 	// dev.itemcener.com
 	HttpHost *string `json:"httpHost,omitempty" xml:"httpHost,omitempty"`
-	// The request path for the health check. This parameter is required when the protocol is HTTP.
+	// The request path for health checks. This parameter is required when the protocol is HTTP.
 	//
 	// example:
 	//
@@ -264,19 +281,19 @@ type UpdateServiceRequestHealthCheckConfig struct {
 	//
 	// 2
 	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
-	// The protocol for the health check.
+	// The protocol used for health checks.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The response timeout period for the health check. Unit: seconds.
+	// The response timeout period for health checks. Unit: seconds.
 	//
 	// example:
 	//
 	// 2
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The unhealthy threshold for the health check.
+	// The unhealthy threshold for health checks.
 	//
 	// example:
 	//
@@ -378,19 +395,19 @@ func (s *UpdateServiceRequestHealthCheckConfig) Validate() error {
 }
 
 type UpdateServiceRequestOutlierDetectionConfig struct {
-	// The initial isolation duration. This is the initial isolation duration after a node is ejected, such as 30 seconds. The isolation time is calculated by using the following formula: k × base_ejection_time, where the initial value of k is 1. The isolation time is extended each time the node is ejected by incrementing k by 1. If consecutive health checks are normal, the isolation time is gradually reduced by decrementing k by 1.
+	// The initial isolation duration after a node is ejected, such as 30 seconds. The isolation time is calculated as k × base_ejection_time, where the initial value of k is 1. The isolation time increases with each ejection by incrementing k by 1, and gradually decreases when consecutive health checks succeed by decrementing k by 1.
 	//
 	// example:
 	//
 	// 30
 	BaseEjectionTime *int32 `json:"baseEjectionTime,omitempty" xml:"baseEjectionTime,omitempty"`
-	// enable
+	// Specifies whether to enable outlier detection.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The panic threshold. If the proportion of healthy nodes in the service is greater than the panic threshold, the health check takes effect normally, and requests are sent only to healthy nodes rather than ejected nodes. If the proportion of healthy nodes in the service is less than or equal to the panic threshold, the health check is equivalent to being disabled, and requests are sent to all nodes, including ejected nodes.
+	// The panic threshold. When the proportion of healthy nodes in the service is greater than the panic threshold, health checks take effect normally, and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes is less than or equal to the panic threshold, health checks are effectively disabled, and requests are sent to all nodes, including ejected ones.
 	//
 	// example:
 	//
@@ -474,7 +491,7 @@ type UpdateServiceRequestPorts struct {
 	//
 	// catalog
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//

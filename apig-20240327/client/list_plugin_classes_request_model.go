@@ -34,25 +34,25 @@ type iListPluginClassesRequest interface {
 }
 
 type ListPluginClassesRequest struct {
-	// The plug-in alias. Fuzzy match is supported.
+	// The plugin alias for fuzzy search.
 	//
 	// example:
 	//
-	// OAuth2 Authentication
+	// OAuth2 authentication
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
-	// The inbound or outbound direction. Valid values:
+	// The traffic direction. Valid values:
 	//
-	// - OutBound: outbound.
+	// - OutBound: Outbound.
 	//
-	// - InBound: inbound.
+	// - InBound: Inbound.
 	//
-	// - Both: both directions.
+	// - Both: Both.
 	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// Specifies whether to exclude built-in plug-ins.
+	// Specifies whether to exclude built-in plugins.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type ListPluginClassesRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Specifies whether the plug-in is installed.
+	// Specifies whether the plugin is installed.
 	//
 	// example:
 	//
 	// false
 	Installed *bool `json:"installed,omitempty" xml:"installed,omitempty"`
-	// The plug-in name. Fuzzy match is supported.
+	// The plugin name for fuzzy search.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListPluginClassesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The plug-in source. Valid values:
+	// The plugin source. Valid values:
 	//
-	// - HigressOfficial: Higress official.
+	// - Higress official: HigressOfficial.
 	//
-	// - HigressCommunity: Higress community.
+	// - Higress community: HigressCommunity.
 	//
-	// - Custom: custom.
+	// - Custom: Custom.
 	//
 	// example:
 	//
 	// HigressOfficial
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The plug-in type.
+	// The plugin type.
 	//
 	// example:
 	//

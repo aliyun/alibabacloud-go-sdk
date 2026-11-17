@@ -122,7 +122,7 @@ type GetPortalResponseBodyData struct {
 	//
 	// portal-xxxxxxxx
 	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	// The portal settings, which specify whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
+	// The portal configuration information, which includes whether account and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
 	PortalSettingConfig *HiMarketPortalSettingConfig `json:"portalSettingConfig,omitempty" xml:"portalSettingConfig,omitempty"`
 	// The region ID, which is the RegionId property of the portal resource.
 	//

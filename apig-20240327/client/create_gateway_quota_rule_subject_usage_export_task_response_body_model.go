@@ -20,10 +20,14 @@ type iCreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody interface {
 }
 
 type CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {
@@ -34,10 +38,14 @@ type CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody struct {
 	//
 	// }
 	Data *CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID of this OpenAPI call, which is used to troubleshoot call issues. This is different from the request_id of each consumption record in the exported file.
+	//
 	// example:
 	//
 	// 1234567890
@@ -98,10 +106,24 @@ func (s *CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody) Validate() er
 }
 
 type CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData struct {
+	// The current status of create task.
+	//
+	// - Pending: Create task is submitted and waiting to be processed.
+	//
+	// - Running: The system is querying details, generating the file, or uploading the file.
+	//
+	// - Success: The export is successful. Call the query operation to obtain the file information.
+	//
+	// - Failed: The export fails. Call the query operation to view the errorMessage.
+	//
+	// A newly created task returns Pending. When an existing task is reused through clientToken, the status of create task at that time is returned, which is not guaranteed to be Pending.
+	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the export task. When you call GetGatewayQuotaRuleSubjectUsageExportTask, pass this value along with the gatewayId, ruleId, and subjectId from this request.
+	//
 	// example:
 	//
 	// finops-export-abcdef1234567890

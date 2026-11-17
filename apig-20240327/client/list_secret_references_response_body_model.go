@@ -176,11 +176,11 @@ func (s *ListSecretReferencesResponseBodyData) Validate() error {
 }
 
 type ListSecretReferencesResponseBodyDataItems struct {
-	// The plug-in information that references the current secret.
+	// The information about the plugin that references the current secret.
 	PluginConfig *ListSecretReferencesResponseBodyDataItemsPluginConfig `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty" type:"Struct"`
-	// The service information that references the current secret.
+	// The information about the service that references the current secret.
 	ServiceConfig *ListSecretReferencesResponseBodyDataItemsServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
-	// The consumer information that references the current secret.
+	// The information about the consumer that references the current secret.
 	ConsumerConfig *ListSecretReferencesResponseBodyDataItemsConsumerConfig `json:"consumerConfig,omitempty" xml:"consumerConfig,omitempty" type:"Struct"`
 	// The gateway instance ID.
 	//
@@ -188,7 +188,7 @@ type ListSecretReferencesResponseBodyDataItems struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The MCP server information that references the current secret.
+	// The information about the MCP service that references the current secret.
 	McpServerConfig *ListSecretReferencesResponseBodyDataItemsMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
 	// The resource type.
 	//
@@ -285,19 +285,19 @@ func (s *ListSecretReferencesResponseBodyDataItems) Validate() error {
 }
 
 type ListSecretReferencesResponseBodyDataItemsPluginConfig struct {
-	// The plug-in name.
+	// The name of the plugin.
 	//
 	// example:
 	//
 	// oauth
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plug-in type ID.
+	// The ID of the plugin class.
 	//
 	// example:
 	//
 	// pls-xxxxxxxx
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The plug-in ID.
+	// The ID of the plugin.
 	//
 	// example:
 	//
@@ -351,7 +351,7 @@ type ListSecretReferencesResponseBodyDataItemsServiceConfig struct {
 	//
 	// myService
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
@@ -390,13 +390,13 @@ func (s *ListSecretReferencesResponseBodyDataItemsServiceConfig) Validate() erro
 }
 
 type ListSecretReferencesResponseBodyDataItemsConsumerConfig struct {
-	// The consumer ID.
+	// The ID of the consumer.
 	//
 	// example:
 	//
 	// cs-d0iltnem1hkhxxxxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer name.
+	// The name of the consumer.
 	//
 	// example:
 	//
@@ -435,19 +435,19 @@ func (s *ListSecretReferencesResponseBodyDataItemsConsumerConfig) Validate() err
 }
 
 type ListSecretReferencesResponseBodyDataItemsMcpServerConfig struct {
-	// HTTP API ID。
+	// The HTTP API ID.
 	//
 	// example:
 	//
 	// api-d2vv43em201hxxxxxxxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	// The route name.
+	// The name of the route.
 	//
 	// example:
 	//
 	// mcp
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The route ID.
+	// The ID of the route.
 	//
 	// example:
 	//

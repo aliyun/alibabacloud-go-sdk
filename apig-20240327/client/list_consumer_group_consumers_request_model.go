@@ -18,7 +18,7 @@ type iListConsumerGroupConsumersRequest interface {
 }
 
 type ListConsumerGroupConsumersRequest struct {
-	// Fuzzy match by consumer name.
+	// The fuzzy filter for consumer names.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListConsumerGroupConsumersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

@@ -26,15 +26,15 @@ type iHiMarketOidcConfig interface {
 }
 
 type HiMarketOidcConfig struct {
-	// The OAuth2 Authorization Code configuration.
+	// The OAuth2 authorization code configuration.
 	AuthCodeConfig *HiMarketOidcConfigAuthCodeConfig `json:"authCodeConfig,omitempty" xml:"authCodeConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable the OIDC configuration.
+	// Specifies whether the OIDC configuration is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The authorization type.
+	// The grant type.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type HiMarketOidcConfig struct {
 	GrantType *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
 	// The identity field mapping configuration.
 	IdentityMapping *HiMarketOidcConfigIdentityMapping `json:"identityMapping,omitempty" xml:"identityMapping,omitempty" type:"Struct"`
-	// The provider logo URL.
+	// The URL of the provider logo.
 	//
 	// example:
 	//
 	// https://example.com/logo.png
 	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
-	// The OIDC configuration name.
+	// The name of the OIDC configuration.
 	//
 	// example:
 	//
 	// my-oidc-config
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The OIDC provider name.
+	// The name of the OIDC provider.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type HiMarketOidcConfigAuthCodeConfig struct {
 	//
 	// https://gateway.example.com/callback
 	RedirectUri *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
-	// The OAuth2 authorization scopes.
+	// The OAuth2 scopes.
 	//
 	// example:
 	//
@@ -298,21 +298,25 @@ func (s *HiMarketOidcConfigAuthCodeConfig) Validate() error {
 }
 
 type HiMarketOidcConfigIdentityMapping struct {
-	// The custom field mapping.
+	// The custom field mappings.
+	//
+	// example:
+	//
+	// {"department":"dept","role":"role"}
 	CustomFields map[string]*string `json:"customFields,omitempty" xml:"customFields,omitempty"`
-	// The identity field name that corresponds to the email address.
+	// The name of the identity field that corresponds to the email address.
 	//
 	// example:
 	//
 	// email
 	EmailField *string `json:"emailField,omitempty" xml:"emailField,omitempty"`
-	// The identity field name that corresponds to the user ID.
+	// The name of the identity field that corresponds to the user ID.
 	//
 	// example:
 	//
 	// sub
 	UserIdField *string `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
-	// The identity field name that corresponds to the username.
+	// The name of the identity field that corresponds to the username.
 	//
 	// example:
 	//

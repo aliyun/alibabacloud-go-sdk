@@ -26,19 +26,19 @@ type CreateConsumerGroupRequest struct {
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The consumer group description.
+	// The description of the consumer group.
 	//
 	// example:
 	//
-	// Group for online API callers
+	// Used to group online API callers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The gateway type. Valid values: API or AI.
+	// The gateway type. Valid values: API and AI.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The consumer group name.
+	// The name of the consumer group.
 	//
 	// example:
 	//

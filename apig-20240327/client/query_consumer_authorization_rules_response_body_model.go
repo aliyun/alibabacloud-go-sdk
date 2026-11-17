@@ -234,7 +234,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The principal type. Valid values: Consumer and ConsumerGroup.
+	// The type of the authorized principal. Valid values: Consumer and ConsumerGroup.
 	//
 	// example:
 	//

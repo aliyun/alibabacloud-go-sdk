@@ -38,7 +38,7 @@ type iHttpApiOperationInfo interface {
 }
 
 type HttpApiOperationInfo struct {
-	// The permission authentication configuration.
+	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// The creation timestamp.
 	//
@@ -46,7 +46,7 @@ type HttpApiOperationInfo struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The API operation backend service deployment information.
+	// The backend service deployment information for the operation.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -60,37 +60,37 @@ type HttpApiOperationInfo struct {
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The API operation method.
+	// The operation method.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The API operation mock parameter settings.
+	// The operation mock parameter settings.
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
-	// The API operation name.
+	// The operation name.
 	//
 	// example:
 	//
 	// GetUserInfo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The API operation ID.
+	// The operation ID.
 	//
 	// example:
 	//
 	// op-xxx
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
-	// The API operation path.
+	// The operation path.
 	//
 	// example:
 	//
 	// /user/123
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The API operation request parameter definition.
+	// The operation request parameter definition.
 	Request *HttpApiRequestContract `json:"request,omitempty" xml:"request,omitempty"`
-	// The API operation response parameter definition.
+	// The operation response parameter definition.
 	Response *HttpApiResponseContract `json:"response,omitempty" xml:"response,omitempty"`
-	// The publication status of the API operation on the gateway.
+	// The publish status of the operation on the gateway.
 	//
 	// example:
 	//

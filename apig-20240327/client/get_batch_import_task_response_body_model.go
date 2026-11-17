@@ -96,7 +96,7 @@ func (s *GetBatchImportTaskResponseBody) Validate() error {
 }
 
 type GetBatchImportTaskResponseBodyData struct {
-	// The time when the task was created. The time is in UTC and follows the RFC 3339 format.
+	// The time when the task was created. The time is in UTC and follows the RFC 3339 standard.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetBatchImportTaskResponseBodyData struct {
 	//
 	// some apis import failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The number of processed items.
+	// The processed count.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type GetBatchImportTaskResponseBodyDataResult struct {
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// Indicates whether the task is in dry run mode.
+	// Indicates whether the dry run mode is enabled.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type GetBatchImportTaskResponseBodyDataResult struct {
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The formal import request body. This field is returned only for dry run tasks and can be resubmitted as the request body of BatchImportHttpApis. The dryRun parameter is fixed to false. Temporary specFileUrl values are still subject to URL expiration constraints.
+	// The formal import request body. Returned only for dry run tasks. Can be resubmitted as the BatchImportHttpApis request body with dryRun set to false. The temporary specFileUrl is still subject to the URL expiration period.
 	ImportRequest *GetBatchImportTaskResponseBodyDataResultImportRequest `json:"importRequest,omitempty" xml:"importRequest,omitempty" type:"Struct"`
 	// The list of successfully processed APIs.
 	SuccessItems []*GetBatchImportTaskResponseBodyDataResultSuccessItems `json:"successItems,omitempty" xml:"successItems,omitempty" type:"Repeated"`
@@ -368,13 +368,13 @@ func (s *GetBatchImportTaskResponseBodyDataResult) Validate() error {
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResults struct {
-	// The API name. The value unknown is returned if the name cannot be identified.
+	// The name of the API. If the name cannot be identified, unknown is returned.
 	//
 	// example:
 	//
 	// petstore
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
-	// The dry run details, including the operations, routes, components, and error or warning messages planned for creation or update in this file.
+	// The dry run details, including the operations, routes, components, and error and warning messages to be created or updated by this file.
 	DryRunInfo *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo `json:"dryRunInfo,omitempty" xml:"dryRunInfo,omitempty" type:"Struct"`
 	// The dry run error message.
 	//
@@ -446,7 +446,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResults) Validate() error
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo struct {
 	// The list of dry run error messages.
 	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
-	// The basic information about the existing HTTP API matched during import.
+	// The basic information of the existing HTTP API matched during import.
 	ExistHttpApiInfo *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty" type:"Struct"`
 	// The list of data structures that failed the dry run.
 	FailureComponents []*GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
@@ -647,7 +647,7 @@ type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApi
 	//
 	// Rest
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The API versioning information.
+	// The versioning information of the API.
 	VersionInfo *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo `json:"versionInfo,omitempty" xml:"versionInfo,omitempty" type:"Struct"`
 }
 
@@ -723,7 +723,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHtt
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo struct {
-	// Indicates whether versioning is enabled.
+	// Specifies whether versioning is enabled.
 	//
 	// example:
 	//
@@ -813,7 +813,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHtt
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComponents struct {
-	// The reason why the dry run failed.
+	// The reason for the dry run failure.
 	//
 	// example:
 	//
@@ -858,7 +858,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureC
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOperations struct {
-	// The reason why the dry run failed.
+	// The reason for the dry run failure.
 	//
 	// example:
 	//
@@ -918,7 +918,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureO
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRoutes struct {
-	// The reason why the dry run failed.
+	// The reason for the dry run failure.
 	//
 	// example:
 	//
@@ -963,7 +963,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureR
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComponents struct {
-	// The action type to be performed after the dry run.
+	// The type of action to be performed after the dry run.
 	//
 	// example:
 	//
@@ -1008,7 +1008,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessC
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOperations struct {
-	// The action type to be performed after the dry run.
+	// The type of action to be performed after the dry run.
 	//
 	// example:
 	//
@@ -1083,7 +1083,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessO
 }
 
 type GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes struct {
-	// The action type to be performed after the dry run.
+	// The type of action to be performed after the dry run.
 	//
 	// example:
 	//
@@ -1134,7 +1134,7 @@ type GetBatchImportTaskResponseBodyDataResultFailureItems struct {
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// The API name. The value unknown is returned if the name cannot be identified.
+	// The name of the API. If the name cannot be identified, unknown is returned.
 	//
 	// example:
 	//
@@ -1203,7 +1203,7 @@ func (s *GetBatchImportTaskResponseBodyDataResultFailureItems) Validate() error 
 }
 
 type GetBatchImportTaskResponseBodyDataResultImportRequest struct {
-	// Specifies whether to allow overwriting existing APIs.
+	// Specifies whether to allow overwriting and updating existing APIs.
 	AllowUpdate *bool `json:"allowUpdate,omitempty" xml:"allowUpdate,omitempty"`
 	// The API type.
 	//
@@ -1211,7 +1211,7 @@ type GetBatchImportTaskResponseBodyDataResultImportRequest struct {
 	//
 	// Http
 	ApiType *string `json:"apiType,omitempty" xml:"apiType,omitempty"`
-	// Specifies whether the request is in dry run mode. This parameter is fixed to false in the formal import request body.
+	// Indicates whether the dry run mode is enabled. This parameter is fixed to false in the formal import request body.
 	//
 	// example:
 	//
@@ -1223,19 +1223,19 @@ type GetBatchImportTaskResponseBodyDataResultImportRequest struct {
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The download URL of the OAS ZIP file, which is consistent with the dry run request.
+	// The download URL of the OAS ZIP file, which is the same as that in the dry run request.
 	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/my-bucket/imports/batch.zip
 	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
-	// The OSS configuration of the OAS file, which is consistent with the dry run request.
+	// The OSS configuration of the OAS file, which is the same as that in the dry run request.
 	SpecOssConfig *GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
 	// The conflict merge strategy used during import.
 	//
@@ -1243,7 +1243,7 @@ type GetBatchImportTaskResponseBodyDataResultImportRequest struct {
 	//
 	// ExistFirst
 	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
-	// Specifies whether to import with gateway extension configurations.
+	// Specifies whether to import with the gateway extension configuration.
 	WithGatewayExtension *bool `json:"withGatewayExtension,omitempty" xml:"withGatewayExtension,omitempty"`
 }
 
@@ -1412,7 +1412,7 @@ type GetBatchImportTaskResponseBodyDataResultSuccessItems struct {
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// The API name. The value unknown is returned if the name cannot be identified.
+	// The name of the API. If the name cannot be identified, unknown is returned.
 	//
 	// example:
 	//

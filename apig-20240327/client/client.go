@@ -76,17 +76,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // >  Recommended call logic:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - 1. First, perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview that contains conflictHash.
+// > - - The response returns a conflict preview containing a conflictHash.
 //
-// > - 2. Submit the request after confirmation.
+// > - 2. After confirmation, formally submit the request.
 //
-// > - - If no conflicts exist: Set dryRun to false and overwrite to false.
+// > - - No conflicts: Set dryRun=false and overwrite=false.
 //
-// > - - If conflicts exist and you confirm to overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -191,17 +191,17 @@ func (client *Client) AddGatewayQuotaRuleWithOptions(gatewayId *string, request 
 //
 // >  Recommended call logic:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - 1. First, perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview that contains conflictHash.
+// > - - The response returns a conflict preview containing a conflictHash.
 //
-// > - 2. Submit the request after confirmation.
+// > - 2. After confirmation, formally submit the request.
 //
-// > - - If no conflicts exist: Set dryRun to false and overwrite to false.
+// > - - No conflicts: Set dryRun=false and overwrite=false.
 //
-// > - - If conflicts exist and you confirm to overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -294,7 +294,85 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
-// Adds consumer group members in batches.
+// Grants model card licenses to a consumer.
+//
+// @param request - AuthorizeConsumerModelCardGrantsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeConsumerModelCardGrantsResponse
+func (client *Client) AuthorizeConsumerModelCardGrantsWithOptions(httpApiId *string, request *AuthorizeConsumerModelCardGrantsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AuthorizeConsumerModelCardGrantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelCardIds) {
+		body["modelCardIds"] = request.ModelCardIds
+	}
+
+	if !dara.IsNil(request.ModelGroupIds) {
+		body["modelGroupIds"] = request.ModelGroupIds
+	}
+
+	if !dara.IsNil(request.PrincipalId) {
+		body["principalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["principalType"] = request.PrincipalType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeConsumerModelCardGrants"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/model-card-grants"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeConsumerModelCardGrantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Grants model card licenses to a consumer.
+//
+// @param request - AuthorizeConsumerModelCardGrantsRequest
+//
+// @return AuthorizeConsumerModelCardGrantsResponse
+func (client *Client) AuthorizeConsumerModelCardGrants(httpApiId *string, request *AuthorizeConsumerModelCardGrantsRequest) (_result *AuthorizeConsumerModelCardGrantsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AuthorizeConsumerModelCardGrantsResponse{}
+	_body, _err := client.AuthorizeConsumerModelCardGrantsWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds members to a consumer group in batches.
 //
 // @param request - BatchAddConsumerGroupConsumersRequest
 //
@@ -341,7 +419,7 @@ func (client *Client) BatchAddConsumerGroupConsumersWithOptions(consumerGroupId 
 
 // Summary:
 //
-// Adds consumer group members in batches.
+// Adds members to a consumer group in batches.
 //
 // @param request - BatchAddConsumerGroupConsumersRequest
 //
@@ -360,7 +438,7 @@ func (client *Client) BatchAddConsumerGroupConsumers(consumerGroupId *string, re
 
 // Summary:
 //
-// Revokes API consumer authorization rules in batches.
+// Revokes consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -407,7 +485,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithOptions(request *B
 
 // Summary:
 //
-// Revokes API consumer authorization rules in batches.
+// Revokes consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -426,7 +504,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 
 // Summary:
 //
-// Batch exports HTTP APIs.
+// Performs a batch export of HTTP APIs.
 //
 // @param request - BatchExportHttpApisRequest
 //
@@ -489,7 +567,7 @@ func (client *Client) BatchExportHttpApisWithOptions(request *BatchExportHttpApi
 
 // Summary:
 //
-// Batch exports HTTP APIs.
+// Performs a batch export of HTTP APIs.
 //
 // @param request - BatchExportHttpApisRequest
 //
@@ -610,7 +688,7 @@ func (client *Client) BatchImportHttpApis(request *BatchImportHttpApisRequest) (
 
 // Summary:
 //
-// Removes multiple members from a consumer group.
+// Removes members from a consumer group in batches.
 //
 // @param request - BatchRemoveConsumerGroupConsumersRequest
 //
@@ -657,7 +735,7 @@ func (client *Client) BatchRemoveConsumerGroupConsumersWithOptions(consumerGroup
 
 // Summary:
 //
-// Removes multiple members from a consumer group.
+// Removes members from a consumer group in batches.
 //
 // @param request - BatchRemoveConsumerGroupConsumersRequest
 //
@@ -676,7 +754,7 @@ func (client *Client) BatchRemoveConsumerGroupConsumers(consumerGroupId *string,
 
 // Summary:
 //
-// Updates HTTP API operations in batches.
+// Batch updates HTTP API operations.
 //
 // @param request - BatchUpdateHttpApiOperationRequest
 //
@@ -731,7 +809,7 @@ func (client *Client) BatchUpdateHttpApiOperationWithOptions(httpApiId *string, 
 
 // Summary:
 //
-// Updates HTTP API operations in batches.
+// Batch updates HTTP API operations.
 //
 // @param request - BatchUpdateHttpApiOperationRequest
 //
@@ -828,7 +906,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Retrieves the activation status of the API Management service.
+// Retrieves the activation status of the API management service.
 //
 // @param request - CheckCommodityStatusRequest
 //
@@ -869,7 +947,7 @@ func (client *Client) CheckCommodityStatusWithOptions(request *CheckCommoditySta
 
 // Summary:
 //
-// Retrieves the activation status of the API Management service.
+// Retrieves the activation status of the API management service.
 //
 // @param request - CheckCommodityStatusRequest
 //
@@ -892,7 +970,7 @@ func (client *Client) CheckCommodityStatus(request *CheckCommodityStatusRequest)
 //
 // Description:
 //
-// Creates a model card for model creation under an existing model provider of a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider parameter must reference an existing model provider in the gateway. The modelName must be unique within the same AI gateway instance and model provider. You can create up to 1,000 model cards per gateway instance. The credit parameter currently supports only the fixed type, and the billing unit is Credits per million tokens. If this parameter is not specified, the type defaults to fixed and all costs default to 0. Each item in availablePaths must include both path and type.
+// Performs model creation for a model card under an existing model provider of a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider parameter must reference an existing model provider in the gateway. The modelName must be unique within the same AI gateway instance and the same model provider. You can create up to 1,000 model cards for a single gateway instance. The credit parameter currently supports only the fixed type, and the billing unit is Credits per million tokens. If this parameter is not specified, the type defaults to fixed and all costs default to 0. Each item in availablePaths must include both path and type.
 //
 // @param request - CreateAiModelCardRequest
 //
@@ -967,7 +1045,7 @@ func (client *Client) CreateAiModelCardWithOptions(request *CreateAiModelCardReq
 //
 // Description:
 //
-// Creates a model card for model creation under an existing model provider of a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider parameter must reference an existing model provider in the gateway. The modelName must be unique within the same AI gateway instance and model provider. You can create up to 1,000 model cards per gateway instance. The credit parameter currently supports only the fixed type, and the billing unit is Credits per million tokens. If this parameter is not specified, the type defaults to fixed and all costs default to 0. Each item in availablePaths must include both path and type.
+// Performs model creation for a model card under an existing model provider of a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider parameter must reference an existing model provider in the gateway. The modelName must be unique within the same AI gateway instance and the same model provider. You can create up to 1,000 model cards for a single gateway instance. The credit parameter currently supports only the fixed type, and the billing unit is Credits per million tokens. If this parameter is not specified, the type defaults to fixed and all costs default to 0. Each item in availablePaths must include both path and type.
 //
 // @param request - CreateAiModelCardRequest
 //
@@ -1008,6 +1086,10 @@ func (client *Client) CreateAiModelProviderWithOptions(request *CreateAiModelPro
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultServiceId) {
+		body["defaultServiceId"] = request.DefaultServiceId
+	}
+
 	if !dara.IsNil(request.DisplayName) {
 		body["displayName"] = request.DisplayName
 	}
@@ -1061,6 +1143,182 @@ func (client *Client) CreateAiModelProvider(request *CreateAiModelProviderReques
 	headers := make(map[string]*string)
 	_result = &CreateAiModelProviderResponse{}
 	_body, _err := client.CreateAiModelProviderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a standalone AI model source.
+//
+// @param request - CreateAiModelSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAiModelSourceResponse
+func (client *Client) CreateAiModelSourceWithOptions(request *CreateAiModelSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAiModelSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Provider) {
+		body["provider"] = request.Provider
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAiModelSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-sources"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAiModelSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a standalone AI model source.
+//
+// @param request - CreateAiModelSourceRequest
+//
+// @return CreateAiModelSourceResponse
+func (client *Client) CreateAiModelSource(request *CreateAiModelSourceRequest) (_result *CreateAiModelSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAiModelSourceResponse{}
+	_body, _err := client.CreateAiModelSourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an in-source AI model.
+//
+// @param request - CreateAiModelSourceModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAiModelSourceModelResponse
+func (client *Client) CreateAiModelSourceModelWithOptions(request *CreateAiModelSourceModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAiModelSourceModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AvailablePaths) {
+		body["availablePaths"] = request.AvailablePaths
+	}
+
+	if !dara.IsNil(request.Credit) {
+		body["credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.Features) {
+		body["features"] = request.Features
+	}
+
+	if !dara.IsNil(request.Meta) {
+		body["meta"] = request.Meta
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["modelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelSourceId) {
+		body["modelSourceId"] = request.ModelSourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAiModelSourceModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-source-models"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAiModelSourceModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an in-source AI model.
+//
+// @param request - CreateAiModelSourceModelRequest
+//
+// @return CreateAiModelSourceModelResponse
+func (client *Client) CreateAiModelSourceModel(request *CreateAiModelSourceModelRequest) (_result *CreateAiModelSourceModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAiModelSourceModelResponse{}
+	_body, _err := client.CreateAiModelSourceModelWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1280,6 +1538,10 @@ func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, 
 		body["enable"] = request.Enable
 	}
 
+	if !dara.IsNil(request.ExpireAt) {
+		body["expireAt"] = request.ExpireAt
+	}
+
 	if !dara.IsNil(request.GatewayType) {
 		body["gatewayType"] = request.GatewayType
 	}
@@ -1429,17 +1691,17 @@ func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, reques
 //
 // Description:
 //
-// Prerequisites: Before creating a consumer authorization rule, prepare resources according to the following dependency chain (the corresponding creation APIs and ID passing relationships are in parentheses):
+// Prerequisites: Before you create a consumer authorization rule, prepare resources based on the following dependency chain (the parentheses indicate the corresponding creation API and ID passing relationship):
 //
-// Gateway instance (CreateGateway → gatewayId, with the gw- prefix)
+// Gateway instance (CreateGateway → gatewayId, gw- prefix)
 //
-// Environment (A default environment is automatically created after the gateway is created. You can also call CreateEnvironment → environmentId, with the env- prefix. The gatewayId from Step 1 is required.)
+// Environment (A default environment is created with the gateway. You can also call CreateEnvironment → environmentId, env- prefix, and associate it with the gatewayId from Step 1.)
 //
-// HTTP API (CreateHttpApi → httpApiId, with the api- prefix)
+// HTTP API (CreateHttpApi → httpApiId, api- prefix)
 //
-// Route and publish (CreateHttpApiRoute → routeId, with the hr- prefix, which belongs to the API in Step 3. Then, call DeployHttpApi to publish it to the environment in Step 2. Unpublished routes cannot be authorized.)
+// Route and publish (CreateHttpApiRoute → routeId, hr- prefix, belonging to the API in Step 3; then call DeployHttpApi to publish it to the environment in Step 2. Unpublished routes cannot be authorized.)
 //
-// Consumer (CreateConsumer → consumerId, with the cs- prefix, or consumerGroupId, with the csg- prefix. Choose either consumerId or consumerGroupId.)
+// Consumer (CreateConsumer → consumerId, cs- prefix; or consumer group consumerGroupId, csg- prefix. Choose one of consumerId and consumerGroupId.)
 //
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
@@ -1490,17 +1752,17 @@ func (client *Client) CreateConsumerAuthorizationRulesWithOptions(request *Creat
 //
 // Description:
 //
-// Prerequisites: Before creating a consumer authorization rule, prepare resources according to the following dependency chain (the corresponding creation APIs and ID passing relationships are in parentheses):
+// Prerequisites: Before you create a consumer authorization rule, prepare resources based on the following dependency chain (the parentheses indicate the corresponding creation API and ID passing relationship):
 //
-// Gateway instance (CreateGateway → gatewayId, with the gw- prefix)
+// Gateway instance (CreateGateway → gatewayId, gw- prefix)
 //
-// Environment (A default environment is automatically created after the gateway is created. You can also call CreateEnvironment → environmentId, with the env- prefix. The gatewayId from Step 1 is required.)
+// Environment (A default environment is created with the gateway. You can also call CreateEnvironment → environmentId, env- prefix, and associate it with the gatewayId from Step 1.)
 //
-// HTTP API (CreateHttpApi → httpApiId, with the api- prefix)
+// HTTP API (CreateHttpApi → httpApiId, api- prefix)
 //
-// Route and publish (CreateHttpApiRoute → routeId, with the hr- prefix, which belongs to the API in Step 3. Then, call DeployHttpApi to publish it to the environment in Step 2. Unpublished routes cannot be authorized.)
+// Route and publish (CreateHttpApiRoute → routeId, hr- prefix, belonging to the API in Step 3; then call DeployHttpApi to publish it to the environment in Step 2. Unpublished routes cannot be authorized.)
 //
-// Consumer (CreateConsumer → consumerId, with the cs- prefix, or consumerGroupId, with the csg- prefix. Choose either consumerId or consumerGroupId.)
+// Consumer (CreateConsumer → consumerId, cs- prefix; or consumer group consumerGroupId, csg- prefix. Choose one of consumerId and consumerGroupId.)
 //
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
@@ -1597,7 +1859,7 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 
 // Summary:
 //
-// Registers a HiMarket developer account and returns the ID of the newly created developer upon successful creation.
+// Registers a HiMarket developer account and returns the ID of the new developer.
 //
 // @param request - CreateDeveloperRequest
 //
@@ -1648,7 +1910,7 @@ func (client *Client) CreateDeveloperWithOptions(request *CreateDeveloperRequest
 
 // Summary:
 //
-// Registers a HiMarket developer account and returns the ID of the newly created developer upon successful creation.
+// Registers a HiMarket developer account and returns the ID of the new developer.
 //
 // @param request - CreateDeveloperRequest
 //
@@ -1992,33 +2254,33 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 
 // Summary:
 //
-// 创建网关配额限流规则主体用量明细导出任务
+// Creates an asynchronous export task for the consumption details of a single consumer or consumer group under a gateway quota rule.
 //
 // Description:
 //
-// ## 调用流程
+// ## Call procedure
 //
-// 本接口为指定网关配额规则下的一个消费者或消费者组创建消费明细导出任务，导出内容来自网关访问日志。
+// This operation creates an export task for the consumption details of a consumer or consumer group under a specified gateway quota rule. The exported content is derived from gateway access logs.
 //
-// 1. 调用本接口获取 taskId。新任务返回 Pending，表示已提交，文件尚未生成。
+// 1. Call this operation to obtain the taskId. A new task returns Pending, indicating that the task is submitted and the file is not yet generated.
 //
-// 2. 使用相同的 gatewayId、ruleId、subjectId 和返回的 taskId 调用 GetGatewayQuotaRuleSubjectUsageExportTask，轮询任务状态。
+// 2. Use the same gatewayId, ruleId, subjectId, and the returned taskId to call GetGatewayQuotaRuleSubjectUsageExportTask and poll the task status.
 //
-// 3. 当轮询状态为 Success 且文件未过期时，通过GetGatewayQuotaRuleSubjectUsageExportTask下载 csv.gz 文件；状态为 Failed 时，根据 errorMessage 排查后重新创建任务。
+// 3. When the polled status is Success and the file has not expired, download the csv.gz file by using GetGatewayQuotaRuleSubjectUsageExportTask. If the status is Failed, troubleshoot the issue based on the errorMessage and recreate the task.
 //
-// ## 使用条件与限制
+// ## Prerequisites and limits
 //
-// - 创建任务时，配额规则必须存在，且目标主体已绑定到该规则。消费者规则使用消费者 ID，消费者组规则使用消费者组 ID。
+// - When you create a task, the quota rule must exist, and the target subject must be bound to the rule. Use the consumer ID for consumer rules and the consumer group ID for consumer group rules.
 //
-// - 有效导出时间范围内的明细依赖网关访问日志投递，请先启用日志投递并确认所需时段的日志可查询。
+// - The details within the valid export time range depend on the delivery of gateway access logs. Enable log delivery first and ensure that the logs for the required time period are queryable.
 //
-// - 单次导出时间跨度不得超过一个规则周期。单次最多导出 100000 条明细；后台统计结果超过上限时任务失败，请缩小时间范围后重试。
+// - The time span for a single export cannot exceed one rule period. A single export can contain up to 100,000 details. If the background statistics exceed the limit, the task fails. Narrow the time range and try again.
 //
-// - 同一用户在当前地域对同一网关、规则和主体在最近 10 分钟内已有 Pending 或 Running 任务时，重复创建会被拒绝；最近 10 分钟内创建且仍为 Pending 或 Running 的导出任务总数达到 3 个时也会被拒绝。请等待已有任务结束。相同 clientToken、相同参数的幂等重试可复用已有任务。
+// - If the same user already has a Pending or Running task for the same gateway, rule, and subject in the current region within the last 10 minutes, repeated creation is rejected. Creation is also rejected if the total number of export tasks created within the last 10 minutes that are still Pending or Running reaches 3. Wait for the existing tasks to complete. Idempotent retries with the same clientToken and identical parameters can reuse existing tasks.
 //
-// - 任务自创建起的处理超时为 10 分钟。超时后任务按 Failed 处理；这不是任务必定成功完成的时限承诺。
+// - The processing timeout for a task is 10 minutes from the time of creation. After the timeout, the task is processed as Failed. This is not a guarantee that the task will definitely complete successfully within this time limit.
 //
-// - 创建时确定导出时间范围、计量维度和主体名称，后续查询不会重新计算这些条件。文件成功生成后可在 24 小时内获取下载链接；每次查询生成的签名链接有效期为 10 分钟，具体时间以查询结果为准。
+// - The export time range, metering dimension, and subject name are determined at creation time, and subsequent queries do not recalculate these conditions. After the file is successfully generated, the download link can be obtained within 24 hours. The signed link generated for each query is valid for 10 minutes, subject to the actual query result.
 //
 // @param request - CreateGatewayQuotaRuleSubjectUsageExportTaskRequest
 //
@@ -2081,33 +2343,33 @@ func (client *Client) CreateGatewayQuotaRuleSubjectUsageExportTaskWithOptions(ga
 
 // Summary:
 //
-// 创建网关配额限流规则主体用量明细导出任务
+// Creates an asynchronous export task for the consumption details of a single consumer or consumer group under a gateway quota rule.
 //
 // Description:
 //
-// ## 调用流程
+// ## Call procedure
 //
-// 本接口为指定网关配额规则下的一个消费者或消费者组创建消费明细导出任务，导出内容来自网关访问日志。
+// This operation creates an export task for the consumption details of a consumer or consumer group under a specified gateway quota rule. The exported content is derived from gateway access logs.
 //
-// 1. 调用本接口获取 taskId。新任务返回 Pending，表示已提交，文件尚未生成。
+// 1. Call this operation to obtain the taskId. A new task returns Pending, indicating that the task is submitted and the file is not yet generated.
 //
-// 2. 使用相同的 gatewayId、ruleId、subjectId 和返回的 taskId 调用 GetGatewayQuotaRuleSubjectUsageExportTask，轮询任务状态。
+// 2. Use the same gatewayId, ruleId, subjectId, and the returned taskId to call GetGatewayQuotaRuleSubjectUsageExportTask and poll the task status.
 //
-// 3. 当轮询状态为 Success 且文件未过期时，通过GetGatewayQuotaRuleSubjectUsageExportTask下载 csv.gz 文件；状态为 Failed 时，根据 errorMessage 排查后重新创建任务。
+// 3. When the polled status is Success and the file has not expired, download the csv.gz file by using GetGatewayQuotaRuleSubjectUsageExportTask. If the status is Failed, troubleshoot the issue based on the errorMessage and recreate the task.
 //
-// ## 使用条件与限制
+// ## Prerequisites and limits
 //
-// - 创建任务时，配额规则必须存在，且目标主体已绑定到该规则。消费者规则使用消费者 ID，消费者组规则使用消费者组 ID。
+// - When you create a task, the quota rule must exist, and the target subject must be bound to the rule. Use the consumer ID for consumer rules and the consumer group ID for consumer group rules.
 //
-// - 有效导出时间范围内的明细依赖网关访问日志投递，请先启用日志投递并确认所需时段的日志可查询。
+// - The details within the valid export time range depend on the delivery of gateway access logs. Enable log delivery first and ensure that the logs for the required time period are queryable.
 //
-// - 单次导出时间跨度不得超过一个规则周期。单次最多导出 100000 条明细；后台统计结果超过上限时任务失败，请缩小时间范围后重试。
+// - The time span for a single export cannot exceed one rule period. A single export can contain up to 100,000 details. If the background statistics exceed the limit, the task fails. Narrow the time range and try again.
 //
-// - 同一用户在当前地域对同一网关、规则和主体在最近 10 分钟内已有 Pending 或 Running 任务时，重复创建会被拒绝；最近 10 分钟内创建且仍为 Pending 或 Running 的导出任务总数达到 3 个时也会被拒绝。请等待已有任务结束。相同 clientToken、相同参数的幂等重试可复用已有任务。
+// - If the same user already has a Pending or Running task for the same gateway, rule, and subject in the current region within the last 10 minutes, repeated creation is rejected. Creation is also rejected if the total number of export tasks created within the last 10 minutes that are still Pending or Running reaches 3. Wait for the existing tasks to complete. Idempotent retries with the same clientToken and identical parameters can reuse existing tasks.
 //
-// - 任务自创建起的处理超时为 10 分钟。超时后任务按 Failed 处理；这不是任务必定成功完成的时限承诺。
+// - The processing timeout for a task is 10 minutes from the time of creation. After the timeout, the task is processed as Failed. This is not a guarantee that the task will definitely complete successfully within this time limit.
 //
-// - 创建时确定导出时间范围、计量维度和主体名称，后续查询不会重新计算这些条件。文件成功生成后可在 24 小时内获取下载链接；每次查询生成的签名链接有效期为 10 分钟，具体时间以查询结果为准。
+// - The export time range, metering dimension, and subject name are determined at creation time, and subsequent queries do not recalculate these conditions. After the file is successfully generated, the download link can be obtained within 24 hours. The signed link generated for each query is valid for 10 minutes, subject to the actual query result.
 //
 // @param request - CreateGatewayQuotaRuleSubjectUsageExportTaskRequest
 //
@@ -2377,6 +2639,10 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 		body["environmentId"] = request.EnvironmentId
 	}
 
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
 	if !dara.IsNil(request.Match) {
 		body["match"] = request.Match
 	}
@@ -2442,7 +2708,7 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - CreateHttpApiVersionRequest
 //
@@ -2493,7 +2759,7 @@ func (client *Client) CreateHttpApiVersionWithOptions(httpApiId *string, request
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - CreateHttpApiVersionRequest
 //
@@ -2512,7 +2778,111 @@ func (client *Client) CreateHttpApiVersion(httpApiId *string, request *CreateHtt
 
 // Summary:
 //
+// Creates a logical model.
+//
+// @param request - CreateLogicalModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLogicalModelResponse
+func (client *Client) CreateLogicalModelWithOptions(request *CreateLogicalModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLogicalModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallStrategy) {
+		body["callStrategy"] = request.CallStrategy
+	}
+
+	if !dara.IsNil(request.FallbackTargets) {
+		body["fallbackTargets"] = request.FallbackTargets
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ResponseModel) {
+		body["responseModel"] = request.ResponseModel
+	}
+
+	if !dara.IsNil(request.RoutingPolicy) {
+		body["routingPolicy"] = request.RoutingPolicy
+	}
+
+	if !dara.IsNil(request.Slots) {
+		body["slots"] = request.Slots
+	}
+
+	if !dara.IsNil(request.Targets) {
+		body["targets"] = request.Targets
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLogicalModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-models"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLogicalModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a logical model.
+//
+// @param request - CreateLogicalModelRequest
+//
+// @return CreateLogicalModelResponse
+func (client *Client) CreateLogicalModel(request *CreateLogicalModelRequest) (_result *CreateLogicalModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateLogicalModelResponse{}
+	_body, _err := client.CreateLogicalModelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Model Context Protocol (MCP) server.
+//
+// Description:
+//
+// Only sources of the **Container Service*	- type are allowed to update Ingress listener configurations.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -2559,6 +2929,10 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 
 	if !dara.IsNil(request.GrayMcpServerConfigs) {
 		body["grayMcpServerConfigs"] = request.GrayMcpServerConfigs
+	}
+
+	if !dara.IsNil(request.Instructions) {
+		body["instructions"] = request.Instructions
 	}
 
 	if !dara.IsNil(request.Match) {
@@ -2612,6 +2986,10 @@ func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest
 // Summary:
 //
 // Creates a Model Context Protocol (MCP) server.
+//
+// Description:
+//
+// Only sources of the **Container Service*	- type are allowed to update Ingress listener configurations.
 //
 // @param request - CreateMcpServerRequest
 //
@@ -2715,6 +3093,200 @@ func (client *Client) CreateMigrationTask(request *CreateMigrationTaskRequest) (
 	headers := make(map[string]*string)
 	_result = &CreateMigrationTaskResponse{}
 	_body, _err := client.CreateMigrationTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a model creation API.
+//
+// @param request - CreateModelApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelApiResponse
+func (client *Client) CreateModelApiWithOptions(request *CreateModelApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BasePath) {
+		body["basePath"] = request.BasePath
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectSupplyFallbackEnabled) {
+		body["directSupplyFallbackEnabled"] = request.DirectSupplyFallbackEnabled
+	}
+
+	if !dara.IsNil(request.DomainIds) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !dara.IsNil(request.EnableAuth) {
+		body["enableAuth"] = request.EnableAuth
+	}
+
+	if !dara.IsNil(request.FirstByteTimeout) {
+		body["firstByteTimeout"] = request.FirstByteTimeout
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.InitialConfiguration) {
+		body["initialConfiguration"] = request.InitialConfiguration
+	}
+
+	if !dara.IsNil(request.ModelSelection) {
+		body["modelSelection"] = request.ModelSelection
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PolicyConfigs) {
+		body["policyConfigs"] = request.PolicyConfigs
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelApi"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a model creation API.
+//
+// @param request - CreateModelApiRequest
+//
+// @return CreateModelApiResponse
+func (client *Client) CreateModelApi(request *CreateModelApiRequest) (_result *CreateModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelApiResponse{}
+	_body, _err := client.CreateModelApiWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a model group.
+//
+// @param request - CreateModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelGroupResponse
+func (client *Client) CreateModelGroupWithOptions(request *CreateModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.ModelCardIds) {
+		body["modelCardIds"] = request.ModelCardIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-groups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a model group.
+//
+// @param request - CreateModelGroupRequest
+//
+// @return CreateModelGroupResponse
+func (client *Client) CreateModelGroup(request *CreateModelGroupRequest) (_result *CreateModelGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelGroupResponse{}
+	_body, _err := client.CreateModelGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3154,7 +3726,7 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 
 // Summary:
 //
-// Creates a HiMarket developer portal and returns the ID of the newly created portal.
+// Creates a HiMarket developer portal and returns the ID of the newly created portal upon success.
 //
 // @param request - CreatePortalRequest
 //
@@ -3211,7 +3783,7 @@ func (client *Client) CreatePortalWithOptions(request *CreatePortalRequest, head
 
 // Summary:
 //
-// Creates a HiMarket developer portal and returns the ID of the newly created portal.
+// Creates a HiMarket developer portal and returns the ID of the newly created portal upon success.
 //
 // @param request - CreatePortalRequest
 //
@@ -3231,6 +3803,10 @@ func (client *Client) CreatePortal(request *CreatePortalRequest) (_result *Creat
 // Summary:
 //
 // Creates an API product in the product catalog of the HiMarket portal and returns the ID of the new product upon successful creation.
+//
+// Description:
+//
+// Creates an API product with a specified name and type.
 //
 // @param request - CreateProductRequest
 //
@@ -3313,6 +3889,10 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, he
 //
 // Creates an API product in the product catalog of the HiMarket portal and returns the ID of the new product upon successful creation.
 //
+// Description:
+//
+// Creates an API product with a specified name and type.
+//
 // @param request - CreateProductRequest
 //
 // @return CreateProductResponse
@@ -3330,7 +3910,7 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a product category for an API product and returns the ID and name of the new category upon success.
+// Creates a product category for an API product and returns the ID and name of the new category.
 //
 // @param request - CreateProductCategoryRequest
 //
@@ -3385,7 +3965,7 @@ func (client *Client) CreateProductCategoryWithOptions(request *CreateProductCat
 
 // Summary:
 //
-// Creates a product category for an API product and returns the ID and name of the new category upon success.
+// Creates a product category for an API product and returns the ID and name of the new category.
 //
 // @param request - CreateProductCategoryRequest
 //
@@ -3404,7 +3984,7 @@ func (client *Client) CreateProductCategory(request *CreateProductCategoryReques
 
 // Summary:
 //
-// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. You can query the association result by calling GetProductRef on the same path or remove the association by calling DeleteProductRef.
+// Associates an API configuration with a specified API product by submitting the gateway ID and API gateway reference configuration to the /himarket/v1/products/{productId}/ref endpoint. The association can be queried by GetProductRef and removed by DeleteProductRef on the same path.
 //
 // @param request - CreateProductRefRequest
 //
@@ -3455,7 +4035,7 @@ func (client *Client) CreateProductRefWithOptions(productId *string, request *Cr
 
 // Summary:
 //
-// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. You can query the association result by calling GetProductRef on the same path or remove the association by calling DeleteProductRef.
+// Associates an API configuration with a specified API product by submitting the gateway ID and API gateway reference configuration to the /himarket/v1/products/{productId}/ref endpoint. The association can be queried by GetProductRef and removed by DeleteProductRef on the same path.
 //
 // @param request - CreateProductRefRequest
 //
@@ -3534,7 +4114,19 @@ func (client *Client) CreateRiskCheckTask(gatewayId *string, request *CreateRisk
 
 // Summary:
 //
-// Generates a key.
+// Generates a secret.
+//
+// Description:
+//
+// ## Before you begin
+//
+// Before calling this operation, you must prepare the following resources in Key Management Service (KMS):
+//
+// - KMS instance: Create an instance in KMS and obtain the instance ID. Pass the instance ID as the kmsConfig.kmsInstanceId parameter.
+//
+// - KMS key: Create a key in the instance and obtain the key ID. Pass the key ID as the kmsConfig.kmsKeyId parameter.
+//
+// When calling this operation, you must set secretSource to KMS and pass the preceding two identifiers in kmsConfig. After the secret is created, you can call ListSecrets to query the list of secrets under your account.
 //
 // @param request - CreateSecretRequest
 //
@@ -3601,7 +4193,19 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, head
 
 // Summary:
 //
-// Generates a key.
+// Generates a secret.
+//
+// Description:
+//
+// ## Before you begin
+//
+// Before calling this operation, you must prepare the following resources in Key Management Service (KMS):
+//
+// - KMS instance: Create an instance in KMS and obtain the instance ID. Pass the instance ID as the kmsConfig.kmsInstanceId parameter.
+//
+// - KMS key: Create a key in the instance and obtain the key ID. Pass the key ID as the kmsConfig.kmsKeyId parameter.
+//
+// When calling this operation, you must set secretSource to KMS and pass the preceding two identifiers in kmsConfig. After the secret is created, you can call ListSecrets to query the list of secrets under your account.
 //
 // @param request - CreateSecretRequest
 //
@@ -3992,6 +4596,138 @@ func (client *Client) DeleteAiModelProvider(modelProviderId *string, request *De
 
 // Summary:
 //
+// Deletes a standalone AI model source.
+//
+// @param request - DeleteAiModelSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAiModelSourceResponse
+func (client *Client) DeleteAiModelSourceWithOptions(modelSourceId *string, request *DeleteAiModelSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAiModelSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpectedVersion) {
+		query["expectedVersion"] = request.ExpectedVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAiModelSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-sources/" + dara.PercentEncode(dara.StringValue(modelSourceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAiModelSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a standalone AI model source.
+//
+// @param request - DeleteAiModelSourceRequest
+//
+// @return DeleteAiModelSourceResponse
+func (client *Client) DeleteAiModelSource(modelSourceId *string, request *DeleteAiModelSourceRequest) (_result *DeleteAiModelSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAiModelSourceResponse{}
+	_body, _err := client.DeleteAiModelSourceWithOptions(modelSourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AI model in the source.
+//
+// @param request - DeleteAiModelSourceModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAiModelSourceModelResponse
+func (client *Client) DeleteAiModelSourceModelWithOptions(modelCardId *string, request *DeleteAiModelSourceModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAiModelSourceModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpectedVersion) {
+		query["expectedVersion"] = request.ExpectedVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAiModelSourceModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-source-models/" + dara.PercentEncode(dara.StringValue(modelCardId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAiModelSourceModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AI model in the source.
+//
+// @param request - DeleteAiModelSourceModelRequest
+//
+// @return DeleteAiModelSourceModelResponse
+func (client *Client) DeleteAiModelSourceModel(modelCardId *string, request *DeleteAiModelSourceModelRequest) (_result *DeleteAiModelSourceModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAiModelSourceModelResponse{}
+	_body, _err := client.DeleteAiModelSourceModelWithOptions(modelCardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a consumer.
 //
 // @param headers - map
@@ -4316,7 +5052,7 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 //
 // Description:
 //
-// Deletes a quota rule based on a consumer or consumer group for an AI gateway. Note that this operation takes effect only for AI gateways whose version is later than 2.1.19.
+// Deletes a quota rule based on an API consumer or API consumer group for an AI gateway. Note that this operation applies only to AI gateways of a version later than 2.1.19.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -4361,7 +5097,7 @@ func (client *Client) DeleteGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 //
 // Description:
 //
-// Deletes a quota rule based on a consumer or consumer group for an AI gateway. Note that this operation takes effect only for AI gateways whose version is later than 2.1.19.
+// Deletes a quota rule based on an API consumer or API consumer group for an AI gateway. Note that this operation applies only to AI gateways of a version later than 2.1.19.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -4616,6 +5352,72 @@ func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_r
 
 // Summary:
 //
+// Deletes the specified logical model.
+//
+// @param request - DeleteLogicalModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLogicalModelResponse
+func (client *Client) DeleteLogicalModelWithOptions(logicalModelId *string, request *DeleteLogicalModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLogicalModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpectedRevision) {
+		query["expectedRevision"] = request.ExpectedRevision
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLogicalModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-models/" + dara.PercentEncode(dara.StringValue(logicalModelId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLogicalModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the specified logical model.
+//
+// @param request - DeleteLogicalModelRequest
+//
+// @return DeleteLogicalModelResponse
+func (client *Client) DeleteLogicalModel(logicalModelId *string, request *DeleteLogicalModelRequest) (_result *DeleteLogicalModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLogicalModelResponse{}
+	_body, _err := client.DeleteLogicalModelWithOptions(logicalModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an MCP server.
 //
 // @param headers - map
@@ -4666,7 +5468,7 @@ func (client *Client) DeleteMcpServer(mcpServerId *string) (_result *DeleteMcpSe
 
 // Summary:
 //
-// Deletes a data migration task.
+// Deletes a migration task.
 //
 // @param request - DeleteMigrationTaskRequest
 //
@@ -4707,7 +5509,7 @@ func (client *Client) DeleteMigrationTaskWithOptions(taskId *string, request *De
 
 // Summary:
 //
-// Deletes a data migration task.
+// Deletes a migration task.
 //
 // @param request - DeleteMigrationTaskRequest
 //
@@ -4717,6 +5519,150 @@ func (client *Client) DeleteMigrationTask(taskId *string, request *DeleteMigrati
 	headers := make(map[string]*string)
 	_result = &DeleteMigrationTaskResponse{}
 	_body, _err := client.DeleteMigrationTaskWithOptions(taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a model API.
+//
+// Description:
+//
+// Automatically stops the service and cleans up the resources owned by the API when a published new-version model API is deleted. A successful response indicates that the request is accepted or is an idempotent replay of a completed deletion, but does not indicate that all background steps are complete. Monitor the progress by checking the deleteStatus parameter of GetModelApi. Only a NotFound.ModelApi error explicitly indicates that the deletion is fully complete. The object is retained during deletion or upon failure. Shared model sources, model groups, models, services, consumers, and keys are not deleted.
+//
+// @param request - DeleteModelApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelApiResponse
+func (client *Client) DeleteModelApiWithOptions(httpApiId *string, request *DeleteModelApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelApi"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis/" + dara.PercentEncode(dara.StringValue(httpApiId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a model API.
+//
+// Description:
+//
+// Automatically stops the service and cleans up the resources owned by the API when a published new-version model API is deleted. A successful response indicates that the request is accepted or is an idempotent replay of a completed deletion, but does not indicate that all background steps are complete. Monitor the progress by checking the deleteStatus parameter of GetModelApi. Only a NotFound.ModelApi error explicitly indicates that the deletion is fully complete. The object is retained during deletion or upon failure. Shared model sources, model groups, models, services, consumers, and keys are not deleted.
+//
+// @param request - DeleteModelApiRequest
+//
+// @return DeleteModelApiResponse
+func (client *Client) DeleteModelApi(httpApiId *string, request *DeleteModelApiRequest) (_result *DeleteModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelApiResponse{}
+	_body, _err := client.DeleteModelApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a model group.
+//
+// @param request - DeleteModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelGroupResponse
+func (client *Client) DeleteModelGroupWithOptions(modelGroupId *string, request *DeleteModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpectedVersion) {
+		query["expectedVersion"] = request.ExpectedVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-groups/" + dara.PercentEncode(dara.StringValue(modelGroupId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a model group.
+//
+// @param request - DeleteModelGroupRequest
+//
+// @return DeleteModelGroupResponse
+func (client *Client) DeleteModelGroup(modelGroupId *string, request *DeleteModelGroupRequest) (_result *DeleteModelGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelGroupResponse{}
+	_body, _err := client.DeleteModelGroupWithOptions(modelGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4998,6 +5944,10 @@ func (client *Client) DeletePortal(portalId *string, request *DeletePortalReques
 //
 // Deletes a specified API product by API product ID.
 //
+// Description:
+//
+// Deletes an API product by product ID.
+//
 // @param request - DeleteProductRequest
 //
 // @param headers - map
@@ -5039,6 +5989,10 @@ func (client *Client) DeleteProductWithOptions(productId *string, request *Delet
 //
 // Deletes a specified API product by API product ID.
 //
+// Description:
+//
+// Deletes an API product by product ID.
+//
 // @param request - DeleteProductRequest
 //
 // @return DeleteProductResponse
@@ -5056,7 +6010,7 @@ func (client *Client) DeleteProduct(productId *string, request *DeleteProductReq
 
 // Summary:
 //
-// Deletes a specified product category by product category ID.
+// Deletes a specified product category by its ID.
 //
 // @param request - DeleteProductCategoryRequest
 //
@@ -5097,7 +6051,7 @@ func (client *Client) DeleteProductCategoryWithOptions(categoryId *string, reque
 
 // Summary:
 //
-// Deletes a specified product category by product category ID.
+// Deletes a specified product category by its ID.
 //
 // @param request - DeleteProductCategoryRequest
 //
@@ -5116,7 +6070,7 @@ func (client *Client) DeleteProductCategory(categoryId *string, request *DeleteP
 
 // Summary:
 //
-// Dissociates an API from an API product by API product ID. The association is established by CreateProductRef on the same resource path and can be queried by using GetProductRef.
+// Dissociates an API product from an API by API product ID. The association is created by CreateProductRef on the same resource path and can be queried by GetProductRef.
 //
 // @param request - DeleteProductRefRequest
 //
@@ -5157,7 +6111,7 @@ func (client *Client) DeleteProductRefWithOptions(productId *string, request *De
 
 // Summary:
 //
-// Dissociates an API from an API product by API product ID. The association is established by CreateProductRef on the same resource path and can be queried by using GetProductRef.
+// Dissociates an API product from an API by API product ID. The association is created by CreateProductRef on the same resource path and can be queried by GetProductRef.
 //
 // @param request - DeleteProductRefRequest
 //
@@ -5176,11 +6130,11 @@ func (client *Client) DeleteProductRef(productId *string, request *DeleteProduct
 
 // Summary:
 //
-// Deletes a key value.
+// Deletes a secret value.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -5213,11 +6167,11 @@ func (client *Client) DeleteSecretWithOptions(secretId *string, headers map[stri
 
 // Summary:
 //
-// Deletes a key value.
+// Deletes a secret value.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @return DeleteSecretResponse
 func (client *Client) DeleteSecret(secretId *string) (_result *DeleteSecretResponse, _err error) {
@@ -5470,7 +6424,7 @@ func (client *Client) DeployHttpApi(httpApiId *string, request *DeployHttpApiReq
 //
 // Description:
 //
-// Before deployment, ensure that domainIds have been configured for the MCP server by calling CreateMcpServer or UpdateMcpServer. Call GetMcpServer to confirm the domain name bindng status.
+// Before deployment, the MCP server must have domainIds configured through CreateMcpServer or UpdateMcpServer. Call GetMcpServer to verify the domain binding status.
 //
 // @param headers - map
 //
@@ -5507,7 +6461,7 @@ func (client *Client) DeployMcpServerWithOptions(mcpServerId *string, headers ma
 //
 // Description:
 //
-// Before deployment, ensure that domainIds have been configured for the MCP server by calling CreateMcpServer or UpdateMcpServer. Call GetMcpServer to confirm the domain name bindng status.
+// Before deployment, the MCP server must have domainIds configured through CreateMcpServer or UpdateMcpServer. Call GetMcpServer to verify the domain binding status.
 //
 // @return DeployMcpServerResponse
 func (client *Client) DeployMcpServer(mcpServerId *string) (_result *DeployMcpServerResponse, _err error) {
@@ -5524,7 +6478,7 @@ func (client *Client) DeployMcpServer(mcpServerId *string) (_result *DeployMcpSe
 
 // Summary:
 //
-// Queries the regions where the cloud-native API gateway is available for the current account.
+// Queries the regions where Cloud-native API Gateway is available for the current account.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -5571,7 +6525,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the regions where the cloud-native API gateway is available for the current account.
+// Queries the regions where Cloud-native API Gateway is available for the current account.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -5590,7 +6544,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Detaches and deletes a policy.
+// Unmounts and deletes a policy.
 //
 // @param request - DetachAndDeletePolicyRequest
 //
@@ -5637,7 +6591,7 @@ func (client *Client) DetachAndDeletePolicyWithOptions(policyId *string, request
 
 // Summary:
 //
-// Detaches and deletes a policy.
+// Unmounts and deletes a policy.
 //
 // @param request - DetachAndDeletePolicyRequest
 //
@@ -5850,7 +6804,187 @@ func (client *Client) GetAiModelProvider(modelProviderId *string, request *GetAi
 
 // Summary:
 //
-// Queries the effective field collection configurations for each request path of an HTTP API in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
+// Queries a standalone AI model source.
+//
+// @param request - GetAiModelSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiModelSourceResponse
+func (client *Client) GetAiModelSourceWithOptions(modelSourceId *string, request *GetAiModelSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAiModelSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiModelSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-sources/" + dara.PercentEncode(dara.StringValue(modelSourceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiModelSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a standalone AI model source.
+//
+// @param request - GetAiModelSourceRequest
+//
+// @return GetAiModelSourceResponse
+func (client *Client) GetAiModelSource(modelSourceId *string, request *GetAiModelSourceRequest) (_result *GetAiModelSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAiModelSourceResponse{}
+	_body, _err := client.GetAiModelSourceWithOptions(modelSourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the impact of editing an AI model source.
+//
+// @param request - GetAiModelSourceEditImpactRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiModelSourceEditImpactResponse
+func (client *Client) GetAiModelSourceEditImpactWithOptions(modelSourceId *string, request *GetAiModelSourceEditImpactRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAiModelSourceEditImpactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiModelSourceEditImpact"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-sources/" + dara.PercentEncode(dara.StringValue(modelSourceId)) + "/edit-impact"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiModelSourceEditImpactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the impact of editing an AI model source.
+//
+// @param request - GetAiModelSourceEditImpactRequest
+//
+// @return GetAiModelSourceEditImpactResponse
+func (client *Client) GetAiModelSourceEditImpact(modelSourceId *string, request *GetAiModelSourceEditImpactRequest) (_result *GetAiModelSourceEditImpactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAiModelSourceEditImpactResponse{}
+	_body, _err := client.GetAiModelSourceEditImpactWithOptions(modelSourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries AI models in a model source.
+//
+// @param request - GetAiModelSourceModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiModelSourceModelResponse
+func (client *Client) GetAiModelSourceModelWithOptions(modelCardId *string, request *GetAiModelSourceModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAiModelSourceModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiModelSourceModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-source-models/" + dara.PercentEncode(dara.StringValue(modelCardId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiModelSourceModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries AI models in a model source.
+//
+// @param request - GetAiModelSourceModelRequest
+//
+// @return GetAiModelSourceModelResponse
+func (client *Client) GetAiModelSourceModel(modelCardId *string, request *GetAiModelSourceModelRequest) (_result *GetAiModelSourceModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAiModelSourceModelResponse{}
+	_body, _err := client.GetAiModelSourceModelWithOptions(modelCardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the effective field collection configurations for each URI of the request of an HTTP API under a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
 //
 // @param request - GetApiPathFieldConfigRequest
 //
@@ -5901,7 +7035,7 @@ func (client *Client) GetApiPathFieldConfigWithOptions(request *GetApiPathFieldC
 
 // Summary:
 //
-// Queries the effective field collection configurations for each request path of an HTTP API in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
+// Queries the effective field collection configurations for each URI of the request of an HTTP API under a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
 //
 // @param request - GetApiPathFieldConfigRequest
 //
@@ -5986,7 +7120,7 @@ func (client *Client) GetApiPathFieldTemplate(request *GetApiPathFieldTemplateRe
 
 // Summary:
 //
-// Queries a batch export task.
+// Queries batch export tasks.
 //
 // @param request - GetBatchExportTaskRequest
 //
@@ -6027,7 +7161,7 @@ func (client *Client) GetBatchExportTaskWithOptions(taskId *string, request *Get
 
 // Summary:
 //
-// Queries a batch export task.
+// Queries batch export tasks.
 //
 // @param request - GetBatchExportTaskRequest
 //
@@ -6046,7 +7180,7 @@ func (client *Client) GetBatchExportTask(taskId *string, request *GetBatchExport
 
 // Summary:
 //
-// Queries a batch import task. The task ID is returned after a batch import task is created by calling BatchImportHttpApis. Pass an empty string to list all existing batch import tasks.
+// Queries batch import tasks. The task ID is returned after a batch import task is created by calling BatchImportHttpApis. Pass an empty string to list all existing batch import tasks.
 //
 // @param request - GetBatchImportTaskRequest
 //
@@ -6087,7 +7221,7 @@ func (client *Client) GetBatchImportTaskWithOptions(taskId *string, request *Get
 
 // Summary:
 //
-// Queries a batch import task. The task ID is returned after a batch import task is created by calling BatchImportHttpApis. Pass an empty string to list all existing batch import tasks.
+// Queries batch import tasks. The task ID is returned after a batch import task is created by calling BatchImportHttpApis. Pass an empty string to list all existing batch import tasks.
 //
 // @param request - GetBatchImportTaskRequest
 //
@@ -6106,7 +7240,7 @@ func (client *Client) GetBatchImportTask(taskId *string, request *GetBatchImport
 
 // Summary:
 //
-// Retrieves an API consumer.
+// Retrieves a consumer.
 //
 // @param headers - map
 //
@@ -6139,7 +7273,7 @@ func (client *Client) GetConsumerWithOptions(consumerId *string, headers map[str
 
 // Summary:
 //
-// Retrieves an API consumer.
+// Retrieves a consumer.
 //
 // @return GetConsumerResponse
 func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerResponse, _err error) {
@@ -6147,6 +7281,72 @@ func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerRespo
 	headers := make(map[string]*string)
 	_result = &GetConsumerResponse{}
 	_body, _err := client.GetConsumerWithOptions(consumerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access overview of a consumer.
+//
+// @param request - GetConsumerAccessOverviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerAccessOverviewResponse
+func (client *Client) GetConsumerAccessOverviewWithOptions(consumerId *string, request *GetConsumerAccessOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerAccessOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConsumerAccessOverview"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-access/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/overview"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConsumerAccessOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access overview of a consumer.
+//
+// @param request - GetConsumerAccessOverviewRequest
+//
+// @return GetConsumerAccessOverviewResponse
+func (client *Client) GetConsumerAccessOverview(consumerId *string, request *GetConsumerAccessOverviewRequest) (_result *GetConsumerAccessOverviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerAccessOverviewResponse{}
+	_body, _err := client.GetConsumerAccessOverviewWithOptions(consumerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6377,6 +7577,22 @@ func (client *Client) GetDashboard(gatewayId *string, request *GetDashboardReque
 //
 // Queries the account information of the currently logged-on developer and returns the developer ID, portal ID, username, and status.
 //
+// Description:
+//
+// ## Before you begin and call sequence
+//
+// This operation queries the account information of the currently logged-on developer. You must complete the following steps in order:
+//
+// 1. Call CreatePortal to create a developer portal and obtain the portalId.
+//
+// 2. Call CreateDeveloper to register a developer account under the portal.
+//
+// 3. Call LoginDeveloper to log on to the developer account and obtain the accessToken.
+//
+// 4. Call this operation with the accessToken obtained in the previous step.
+//
+// Related operations: CreatePortal, CreateDeveloper, and LoginDeveloper.
+//
 // @param request - GetDeveloperRequest
 //
 // @param headers - map
@@ -6418,6 +7634,22 @@ func (client *Client) GetDeveloperWithOptions(request *GetDeveloperRequest, head
 //
 // Queries the account information of the currently logged-on developer and returns the developer ID, portal ID, username, and status.
 //
+// Description:
+//
+// ## Before you begin and call sequence
+//
+// This operation queries the account information of the currently logged-on developer. You must complete the following steps in order:
+//
+// 1. Call CreatePortal to create a developer portal and obtain the portalId.
+//
+// 2. Call CreateDeveloper to register a developer account under the portal.
+//
+// 3. Call LoginDeveloper to log on to the developer account and obtain the accessToken.
+//
+// 4. Call this operation with the accessToken obtained in the previous step.
+//
+// Related operations: CreatePortal, CreateDeveloper, and LoginDeveloper.
+//
 // @param request - GetDeveloperRequest
 //
 // @return GetDeveloperResponse
@@ -6426,6 +7658,72 @@ func (client *Client) GetDeveloper(request *GetDeveloperRequest) (_result *GetDe
 	headers := make(map[string]*string)
 	_result = &GetDeveloperResponse{}
 	_body, _err := client.GetDeveloperWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the direct-supply models and candidate models for a specified gateway, including billing, capabilities, and available invocation paths.
+//
+// @param request - GetDirectSupplyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDirectSupplyResponse
+func (client *Client) GetDirectSupplyWithOptions(request *GetDirectSupplyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDirectSupplyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDirectSupply"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/direct-supply"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDirectSupplyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the direct-supply models and candidate models for a specified gateway, including billing, capabilities, and available invocation paths.
+//
+// @param request - GetDirectSupplyRequest
+//
+// @return GetDirectSupplyResponse
+func (client *Client) GetDirectSupply(request *GetDirectSupplyRequest) (_result *GetDirectSupplyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDirectSupplyResponse{}
+	_body, _err := client.GetDirectSupplyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6630,7 +7928,7 @@ func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse
 //
 // Description:
 //
-// Queries the dynamic forwarding ExtProc gRPC service and port currently bound to the specified gateway. If no service is bound, bound=false is returned.
+// Queries the dynamic forwarding ExtProc gRPC service and port currently bound to a specified gateway. If no service is bound, bound=false is returned.
 //
 // @param request - GetGatewayDfpExtProcServiceRequest
 //
@@ -6675,7 +7973,7 @@ func (client *Client) GetGatewayDfpExtProcServiceWithOptions(gatewayId *string, 
 //
 // Description:
 //
-// Queries the dynamic forwarding ExtProc gRPC service and port currently bound to the specified gateway. If no service is bound, bound=false is returned.
+// Queries the dynamic forwarding ExtProc gRPC service and port currently bound to a specified gateway. If no service is bound, bound=false is returned.
 //
 // @param request - GetGatewayDfpExtProcServiceRequest
 //
@@ -6694,7 +7992,7 @@ func (client *Client) GetGatewayDfpExtProcService(gatewayId *string, request *Ge
 
 // Summary:
 //
-// Retrieves the elastic scaling rule of a gateway.
+// Retrieves the elastic rules of a gateway.
 //
 // @param request - GetGatewayElasticPolicyRequest
 //
@@ -6735,7 +8033,7 @@ func (client *Client) GetGatewayElasticPolicyWithOptions(gatewayId *string, requ
 
 // Summary:
 //
-// Retrieves the elastic scaling rule of a gateway.
+// Retrieves the elastic rules of a gateway.
 //
 // @param request - GetGatewayElasticPolicyRequest
 //
@@ -6758,7 +8056,7 @@ func (client *Client) GetGatewayElasticPolicy(gatewayId *string, request *GetGat
 //
 // Description:
 //
-// This operation queries a specific consumer quota rule on an AI gateway.
+// Queries a specific consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -6821,7 +8119,7 @@ func (client *Client) GetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId *
 //
 // Description:
 //
-// This operation queries a specific consumer quota rule on an AI gateway.
+// Queries a specific consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -6844,7 +8142,9 @@ func (client *Client) GetGatewayQuotaRule(gatewayId *string, ruleId *string, req
 //
 // Description:
 //
-// This operation retrieves the usage details of a specific consumption subject under a quota rule. Note that this operation takes effect only for AI gateways of a version later than 2.1.19. Prerequisites: Before calling this operation, make sure that Simple Log Service (SLS) log delivery is enabled for the target gateway by calling UpdateGatewayFeature(name=log-config, value={"enable":true}). Otherwise, the CloudProductInactive.LogDeliveryNotEnabled error is returned.
+// This operation retrieves the usage details of a specific consumption subject under a quota rule. Note that this operation takes effect only for AI gateways of a version later than 2.1.19.
+//
+// Before you begin: Make sure that the target gateway has enabled the Simple Log Service (SLS) log delivery feature by calling UpdateGatewayFeature(name=log-config, value={"enable":true}). Otherwise, the CloudProductInactive.LogDeliveryNotEnabled error is returned.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -6911,7 +8211,9 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 //
 // Description:
 //
-// This operation retrieves the usage details of a specific consumption subject under a quota rule. Note that this operation takes effect only for AI gateways of a version later than 2.1.19. Prerequisites: Before calling this operation, make sure that Simple Log Service (SLS) log delivery is enabled for the target gateway by calling UpdateGatewayFeature(name=log-config, value={"enable":true}). Otherwise, the CloudProductInactive.LogDeliveryNotEnabled error is returned.
+// This operation retrieves the usage details of a specific consumption subject under a quota rule. Note that this operation takes effect only for AI gateways of a version later than 2.1.19.
+//
+// Before you begin: Make sure that the target gateway has enabled the Simple Log Service (SLS) log delivery feature by calling UpdateGatewayFeature(name=log-config, value={"enable":true}). Otherwise, the CloudProductInactive.LogDeliveryNotEnabled error is returned.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -6938,23 +8240,23 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsage(gatewayId *string, ruleId 
 //
 // First, call CreateGatewayQuotaRuleSubjectUsageExportTask to create a task. Then, use the returned taskId along with the same gatewayId, ruleId, and subjectId to call this operation in the same region.
 //
-// - Pending or Running: The task is not completed. You can query again after a period of time.
+// - Pending or Running: The task is not completed. You can query the task again after a period of time.
 //
 // - Success: Check result.fileExpired and result.downloadUrl. If the file is not expired and a link is returned, you can download the file.
 //
-// - Failed: Troubleshoot the issue based on errorMessage. To re-export, call the create operation and use a new clientToken.
+// - Failed: Troubleshoot the issue based on errorMessage. To export the data again, call the create operation with a new clientToken.
 //
 // ## Download link and file validity period
 //
-// For each successful query where the file is not expired, a signed link with a validity period of 10 minutes is generated. Download the file promptly based on downloadUrlExpiredAt. If the link expires but the file has not reached fileExpiredAt, you can query again to obtain a new link. Querying again does not regenerate the file or extend the 24-hour validity period of the file.
+// For each successful query where the file is not expired, a signed link with a validity period of 10 minutes is generated. Download the file promptly based on downloadUrlExpiredAt. If the link expires but the file has not reached fileExpiredAt, you can query the task again to obtain a new link. Querying the task again does not regenerate the file or extend the 24-hour validity period of the file.
 //
-// After the file reaches fileExpiredAt, this operation no longer issues new links, returns fileExpired=true, and omits downloadUrl and downloadUrlExpiredAt. The task status remains Success. To export again, create a new task.
+// After the file reaches fileExpiredAt, this operation no longer issues new links. It returns fileExpired=true and omits downloadUrl and downloadUrlExpiredAt. The task status remains Success. To export the data again, create a new task.
 //
 // ## Query scope and task progress
 //
 // This operation returns only the export tasks of the current user in the current region that match the gateway, rule, and subject paths. If the paths do not match or the task does not exist, a not found error is returned. Existing tasks are queried based on the information recorded at creation. The export conditions are not recalculated due to subsequent rule resets or subject name changes.
 //
-// If a task remains in the Pending or Running state for more than 10 minutes after creation, the query treats it as a timeout failure. Determine whether the task is completed based on the status, not just totalCount or processedCount.
+// If a task remains in the Pending or Running state for more than 10 minutes after creation, the query treats it as a timeout failure. Determine whether the task is completed based on the status, not only on totalCount or processedCount.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageExportTaskRequest
 //
@@ -7003,23 +8305,23 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatew
 //
 // First, call CreateGatewayQuotaRuleSubjectUsageExportTask to create a task. Then, use the returned taskId along with the same gatewayId, ruleId, and subjectId to call this operation in the same region.
 //
-// - Pending or Running: The task is not completed. You can query again after a period of time.
+// - Pending or Running: The task is not completed. You can query the task again after a period of time.
 //
 // - Success: Check result.fileExpired and result.downloadUrl. If the file is not expired and a link is returned, you can download the file.
 //
-// - Failed: Troubleshoot the issue based on errorMessage. To re-export, call the create operation and use a new clientToken.
+// - Failed: Troubleshoot the issue based on errorMessage. To export the data again, call the create operation with a new clientToken.
 //
 // ## Download link and file validity period
 //
-// For each successful query where the file is not expired, a signed link with a validity period of 10 minutes is generated. Download the file promptly based on downloadUrlExpiredAt. If the link expires but the file has not reached fileExpiredAt, you can query again to obtain a new link. Querying again does not regenerate the file or extend the 24-hour validity period of the file.
+// For each successful query where the file is not expired, a signed link with a validity period of 10 minutes is generated. Download the file promptly based on downloadUrlExpiredAt. If the link expires but the file has not reached fileExpiredAt, you can query the task again to obtain a new link. Querying the task again does not regenerate the file or extend the 24-hour validity period of the file.
 //
-// After the file reaches fileExpiredAt, this operation no longer issues new links, returns fileExpired=true, and omits downloadUrl and downloadUrlExpiredAt. The task status remains Success. To export again, create a new task.
+// After the file reaches fileExpiredAt, this operation no longer issues new links. It returns fileExpired=true and omits downloadUrl and downloadUrlExpiredAt. The task status remains Success. To export the data again, create a new task.
 //
 // ## Query scope and task progress
 //
 // This operation returns only the export tasks of the current user in the current region that match the gateway, rule, and subject paths. If the paths do not match or the task does not exist, a not found error is returned. Existing tasks are queried based on the information recorded at creation. The export conditions are not recalculated due to subsequent rule resets or subject name changes.
 //
-// If a task remains in the Pending or Running state for more than 10 minutes after creation, the query treats it as a timeout failure. Determine whether the task is completed based on the status, not just totalCount or processedCount.
+// If a task remains in the Pending or Running state for more than 10 minutes after creation, the query treats it as a timeout failure. Determine whether the task is completed based on the status, not only on totalCount or processedCount.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageExportTaskRequest
 //
@@ -7042,7 +8344,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageExportTask(gatewayId *strin
 //
 // Description:
 //
-// Queries the usage, effective limits, and statistical scopes of nine resource quotas for a specified API gateway or AI gateway. This operation is read-only. A successful response includes all nine items. Quota values for custom plug-ins are not displayed. The result is a current observation read independently from various sources and does not guarantee the success of subsequent resource creation.
+// Queries the usage, effective limits, and statistical scopes of nine resource quotas for a specified API gateway or AI gateway. This operation is read-only, and a successful response includes all nine items. Quota values for custom plug-ins are not displayed. The result is a current observation read independently from various sources and does not guarantee the success of adding new resources.
 //
 // @param request - GetGatewayResourceQuotaUsageRequest
 //
@@ -7087,7 +8389,7 @@ func (client *Client) GetGatewayResourceQuotaUsageWithOptions(gatewayId *string,
 //
 // Description:
 //
-// Queries the usage, effective limits, and statistical scopes of nine resource quotas for a specified API gateway or AI gateway. This operation is read-only. A successful response includes all nine items. Quota values for custom plug-ins are not displayed. The result is a current observation read independently from various sources and does not guarantee the success of subsequent resource creation.
+// Queries the usage, effective limits, and statistical scopes of nine resource quotas for a specified API gateway or AI gateway. This operation is read-only, and a successful response includes all nine items. Quota values for custom plug-ins are not displayed. The result is a current observation read independently from various sources and does not guarantee the success of adding new resources.
 //
 // @param request - GetGatewayResourceQuotaUsageRequest
 //
@@ -7106,7 +8408,7 @@ func (client *Client) GetGatewayResourceQuotaUsage(gatewayId *string, request *G
 
 // Summary:
 //
-// Queries the details of a single HiMarket consumer by consumer ID, including the consumer ID, name, description, and whether the consumer is a primary consumer.
+// Queries the details of a single HiMarket consumer by consumer ID and returns the consumer ID, name, description, and whether the consumer is a primary consumer.
 //
 // @param request - GetHiMarketConsumerRequest
 //
@@ -7147,7 +8449,7 @@ func (client *Client) GetHiMarketConsumerWithOptions(consumerId *string, request
 
 // Summary:
 //
-// Queries the details of a single HiMarket consumer by consumer ID, including the consumer ID, name, description, and whether the consumer is a primary consumer.
+// Queries the details of a single HiMarket consumer by consumer ID and returns the consumer ID, name, description, and whether the consumer is a primary consumer.
 //
 // @param request - GetHiMarketConsumerRequest
 //
@@ -7392,6 +8694,126 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 
 // Summary:
 //
+// Queries the details of a logical model.
+//
+// @param request - GetLogicalModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogicalModelResponse
+func (client *Client) GetLogicalModelWithOptions(logicalModelId *string, request *GetLogicalModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLogicalModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLogicalModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-models/" + dara.PercentEncode(dara.StringValue(logicalModelId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLogicalModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a logical model.
+//
+// @param request - GetLogicalModelRequest
+//
+// @return GetLogicalModelResponse
+func (client *Client) GetLogicalModel(logicalModelId *string, request *GetLogicalModelRequest) (_result *GetLogicalModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLogicalModelResponse{}
+	_body, _err := client.GetLogicalModelWithOptions(logicalModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration delivery of a logical model.
+//
+// @param request - GetLogicalModelDeploymentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogicalModelDeploymentResponse
+func (client *Client) GetLogicalModelDeploymentWithOptions(operationId *string, request *GetLogicalModelDeploymentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLogicalModelDeploymentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLogicalModelDeployment"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-model-deployments/" + dara.PercentEncode(dara.StringValue(operationId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLogicalModelDeploymentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration delivery of a logical model.
+//
+// @param request - GetLogicalModelDeploymentRequest
+//
+// @return GetLogicalModelDeploymentResponse
+func (client *Client) GetLogicalModelDeployment(operationId *string, request *GetLogicalModelDeploymentRequest) (_result *GetLogicalModelDeploymentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLogicalModelDeploymentResponse{}
+	_body, _err := client.GetLogicalModelDeploymentWithOptions(operationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves an MCP server.
 //
 // Description:
@@ -7570,6 +8992,134 @@ func (client *Client) GetMigrationTask(taskId *string, request *GetMigrationTask
 
 // Summary:
 //
+// Queries the details of a model API.
+//
+// Description:
+//
+// During deletion, check deleteStatus for Deleting or DeleteFailed, and review deployErrorMessage. The NotFound.ModelApi error is returned only after the target model API is completely deleted. Missing dependencies, permission issues, or storage errors do not indicate that the deletion is complete.
+//
+// @param request - GetModelApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelApiResponse
+func (client *Client) GetModelApiWithOptions(httpApiId *string, request *GetModelApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetModelApi"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis/" + dara.PercentEncode(dara.StringValue(httpApiId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a model API.
+//
+// Description:
+//
+// During deletion, check deleteStatus for Deleting or DeleteFailed, and review deployErrorMessage. The NotFound.ModelApi error is returned only after the target model API is completely deleted. Missing dependencies, permission issues, or storage errors do not indicate that the deletion is complete.
+//
+// @param request - GetModelApiRequest
+//
+// @return GetModelApiResponse
+func (client *Client) GetModelApi(httpApiId *string, request *GetModelApiRequest) (_result *GetModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelApiResponse{}
+	_body, _err := client.GetModelApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration, entitlement status, and the summary of the latest configuration deployment for a specified model group.
+//
+// @param request - GetModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelGroupResponse
+func (client *Client) GetModelGroupWithOptions(modelGroupId *string, request *GetModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetModelGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-groups/" + dara.PercentEncode(dara.StringValue(modelGroupId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetModelGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configuration, entitlement status, and the summary of the latest configuration deployment for a specified model group.
+//
+// @param request - GetModelGroupRequest
+//
+// @return GetModelGroupResponse
+func (client *Client) GetModelGroup(modelGroupId *string, request *GetModelGroupRequest) (_result *GetModelGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelGroupResponse{}
+	_body, _err := client.GetModelGroupWithOptions(modelGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a plugin attachment.
 //
 // @param headers - map
@@ -7620,7 +9170,7 @@ func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *
 
 // Summary:
 //
-// Retrieves a custom plug-in class.
+// Retrieves a custom plugin class.
 //
 // @param request - GetPluginClassRequest
 //
@@ -7661,7 +9211,7 @@ func (client *Client) GetPluginClassWithOptions(pluginClassId *string, request *
 
 // Summary:
 //
-// Retrieves a custom plug-in class.
+// Retrieves a custom plugin class.
 //
 // @param request - GetPluginClassRequest
 //
@@ -7680,7 +9230,7 @@ func (client *Client) GetPluginClass(pluginClassId *string, request *GetPluginCl
 
 // Summary:
 //
-// Queries the WebIDE workspace of a plugin.
+// Queries the plug-in WebIDE workspace.
 //
 // @param request - GetPluginWorkspaceRequest
 //
@@ -7721,7 +9271,7 @@ func (client *Client) GetPluginWorkspaceWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// Queries the WebIDE workspace of a plugin.
+// Queries the plug-in WebIDE workspace.
 //
 // @param request - GetPluginWorkspaceRequest
 //
@@ -7790,7 +9340,7 @@ func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _
 
 // Summary:
 //
-// Queries the resource attachment of a policy.
+// Queries policy resource attachments.
 //
 // @param headers - map
 //
@@ -7823,7 +9373,7 @@ func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string,
 
 // Summary:
 //
-// Queries the resource attachment of a policy.
+// Queries policy resource attachments.
 //
 // @return GetPolicyAttachmentResponse
 func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *GetPolicyAttachmentResponse, _err error) {
@@ -7840,7 +9390,7 @@ func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *
 
 // Summary:
 //
-// Queries the details of a single HiMarket developer portal by portal ID, including the portal name, description, region ID, portal settings, and portal domain name configurations.
+// Queries the details of a single HiMarket developer portal by portal ID and returns the portal name, description, region ID, portal configurations, and portal domain name configurations.
 //
 // @param request - GetPortalRequest
 //
@@ -7881,7 +9431,7 @@ func (client *Client) GetPortalWithOptions(portalId *string, request *GetPortalR
 
 // Summary:
 //
-// Queries the details of a single HiMarket developer portal by portal ID, including the portal name, description, region ID, portal settings, and portal domain name configurations.
+// Queries the details of a single HiMarket developer portal by portal ID and returns the portal name, description, region ID, portal configurations, and portal domain name configurations.
 //
 // @param request - GetPortalRequest
 //
@@ -7900,7 +9450,7 @@ func (client *Client) GetPortal(portalId *string, request *GetPortalRequest) (_r
 
 // Summary:
 //
-// Queries the details of a single API product by API product ID, and returns information such as the name, description, status, type, documentation, icon, whether subscription requests are automatically approved, MCP, agent, and model configurations, product capability configurations, and the region to which the product belongs.
+// Queries the details of a single API product by API product ID and returns information such as the name, description, status, type, documentation, icon, automatic subscription approval setting, MCP, agent, and model configurations, product capability configurations, and region.
 //
 // @param request - GetProductRequest
 //
@@ -7941,7 +9491,7 @@ func (client *Client) GetProductWithOptions(productId *string, request *GetProdu
 
 // Summary:
 //
-// Queries the details of a single API product by API product ID, and returns information such as the name, description, status, type, documentation, icon, whether subscription requests are automatically approved, MCP, agent, and model configurations, product capability configurations, and the region to which the product belongs.
+// Queries the details of a single API product by API product ID and returns information such as the name, description, status, type, documentation, icon, automatic subscription approval setting, MCP, agent, and model configurations, product capability configurations, and region.
 //
 // @param request - GetProductRequest
 //
@@ -7960,7 +9510,7 @@ func (client *Client) GetProduct(productId *string, request *GetProductRequest) 
 
 // Summary:
 //
-// Queries the details of a product category by category ID and returns the ID, name, description, and icon of the category.
+// Queries the details of a single product category by category ID and returns the ID, name, description, and icon of the category.
 //
 // @param request - GetProductCategoryRequest
 //
@@ -8001,7 +9551,7 @@ func (client *Client) GetProductCategoryWithOptions(categoryId *string, request 
 
 // Summary:
 //
-// Queries the details of a product category by category ID and returns the ID, name, description, and icon of the category.
+// Queries the details of a single product category by category ID and returns the ID, name, description, and icon of the category.
 //
 // @param request - GetProductCategoryRequest
 //
@@ -8020,7 +9570,7 @@ func (client *Client) GetProductCategory(categoryId *string, request *GetProduct
 
 // Summary:
 //
-// Queries the API configurations associated with an API product by API product ID, and returns the ID of the gateway where the association resides and the APIG association configuration.
+// Queries the API configurations associated with an API product by product ID, and returns the gateway ID and APIG association configurations.
 //
 // @param request - GetProductRefRequest
 //
@@ -8061,7 +9611,7 @@ func (client *Client) GetProductRefWithOptions(productId *string, request *GetPr
 
 // Summary:
 //
-// Queries the API configurations associated with an API product by API product ID, and returns the ID of the gateway where the association resides and the APIG association configuration.
+// Queries the API configurations associated with an API product by product ID, and returns the gateway ID and APIG association configurations.
 //
 // @param request - GetProductRefRequest
 //
@@ -8146,7 +9696,7 @@ func (client *Client) GetResourceOverview(request *GetResourceOverviewRequest) (
 
 // Summary:
 //
-// Retrieves the notification configuration for a risk item.
+// Retrieves the risk item notification configuration.
 //
 // @param request - GetRiskNotificationRequest
 //
@@ -8193,7 +9743,7 @@ func (client *Client) GetRiskNotificationWithOptions(gatewayId *string, request 
 
 // Summary:
 //
-// Retrieves the notification configuration for a risk item.
+// Retrieves the risk item notification configuration.
 //
 // @param request - GetRiskNotificationRequest
 //
@@ -8212,11 +9762,11 @@ func (client *Client) GetRiskNotification(gatewayId *string, request *GetRiskNot
 
 // Summary:
 //
-// Retrieves a key.
+// Retrieves a secret.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -8249,11 +9799,11 @@ func (client *Client) GetSecretWithOptions(secretId *string, headers map[string]
 
 // Summary:
 //
-// Retrieves a key.
+// Retrieves a secret.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @return GetSecretResponse
 func (client *Client) GetSecret(secretId *string) (_result *GetSecretResponse, _err error) {
@@ -8270,11 +9820,11 @@ func (client *Client) GetSecret(secretId *string) (_result *GetSecretResponse, _
 
 // Summary:
 //
-// Retrieves the value of a secret.
+// Retrieves the secret value.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @param headers - map
 //
@@ -8307,11 +9857,11 @@ func (client *Client) GetSecretValueWithOptions(name *string, headers map[string
 
 // Summary:
 //
-// Retrieves the value of a secret.
+// Retrieves the secret value.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @return GetSecretValueResponse
 func (client *Client) GetSecretValue(name *string) (_result *GetSecretValueResponse, _err error) {
@@ -8494,7 +10044,7 @@ func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigR
 
 // Summary:
 //
-// Submits the code and state query parameters via a GET request during the callback step of the OIDC logon process. The response data includes the accessToken, tokenType, and expiresIn fields.
+// Executes the callback step in the OIDC logon flow by submitting the code and state query parameters via the GET method. The response data includes the accessToken, tokenType, and expiresIn fields.
 //
 // @param request - HandleOidcCallbackRequest
 //
@@ -8545,7 +10095,7 @@ func (client *Client) HandleOidcCallbackWithOptions(request *HandleOidcCallbackR
 
 // Summary:
 //
-// Submits the code and state query parameters via a GET request during the callback step of the OIDC logon process. The response data includes the accessToken, tokenType, and expiresIn fields.
+// Executes the callback step in the OIDC logon flow by submitting the code and state query parameters via the GET method. The response data includes the accessToken, tokenType, and expiresIn fields.
 //
 // @param request - HandleOidcCallbackRequest
 //
@@ -8682,7 +10232,7 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 
 // Summary:
 //
-// Initiates the Authorize step in the OIDC logon process based on the OIDC provider identifier. The response body defined by the API operation contains only the requestId, code, and message fields, and does not declare the data business output parameter.
+// Initiates the Authorize step in the OIDC logon process based on the OIDC provider identifier. The response body contains only the requestId, code, and message fields, and does not include the business output parameter data.
 //
 // @param request - InitiateOidcAuthRequest
 //
@@ -8729,7 +10279,7 @@ func (client *Client) InitiateOidcAuthWithOptions(request *InitiateOidcAuthReque
 
 // Summary:
 //
-// Initiates the Authorize step in the OIDC logon process based on the OIDC provider identifier. The response body defined by the API operation contains only the requestId, code, and message fields, and does not declare the data business output parameter.
+// Initiates the Authorize step in the OIDC logon process based on the OIDC provider identifier. The response body contains only the requestId, code, and message fields, and does not include the business output parameter data.
 //
 // @param request - InitiateOidcAuthRequest
 //
@@ -8917,7 +10467,7 @@ func (client *Client) InvokeAIAgent(request *InvokeAIAgentRequest) (_result *Inv
 
 // Summary:
 //
-// Queries a list of AI model cards.
+// Queries the list of AI model cards.
 //
 // @param request - ListAiModelCardsRequest
 //
@@ -8976,7 +10526,7 @@ func (client *Client) ListAiModelCardsWithOptions(request *ListAiModelCardsReque
 
 // Summary:
 //
-// Queries a list of AI model cards.
+// Queries the list of AI model cards.
 //
 // @param request - ListAiModelCardsRequest
 //
@@ -9073,7 +10623,171 @@ func (client *Client) ListAiModelProviders(request *ListAiModelProvidersRequest)
 
 // Summary:
 //
-// Performs a paging query on the list of field templates and returns the template ID, API request path, and applicable protocol for each template record.
+// Queries the AI models in a model source.
+//
+// @param request - ListAiModelSourceModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiModelSourceModelsResponse
+func (client *Client) ListAiModelSourceModelsWithOptions(request *ListAiModelSourceModelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAiModelSourceModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelSourceId) {
+		query["modelSourceId"] = request.ModelSourceId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiModelSourceModels"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-source-models"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiModelSourceModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AI models in a model source.
+//
+// @param request - ListAiModelSourceModelsRequest
+//
+// @return ListAiModelSourceModelsResponse
+func (client *Client) ListAiModelSourceModels(request *ListAiModelSourceModelsRequest) (_result *ListAiModelSourceModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAiModelSourceModelsResponse{}
+	_body, _err := client.ListAiModelSourceModelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of standalone AI model sources.
+//
+// @param request - ListAiModelSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiModelSourcesResponse
+func (client *Client) ListAiModelSourcesWithOptions(request *ListAiModelSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAiModelSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiModelSources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-sources"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiModelSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of standalone AI model sources.
+//
+// @param request - ListAiModelSourcesRequest
+//
+// @return ListAiModelSourcesResponse
+func (client *Client) ListAiModelSources(request *ListAiModelSourcesRequest) (_result *ListAiModelSourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAiModelSourcesResponse{}
+	_body, _err := client.ListAiModelSourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on the field template list and returns the template ID, API request path, and applicable protocol for each template record.
 //
 // @param request - ListApiPathFieldTemplatesRequest
 //
@@ -9124,7 +10838,7 @@ func (client *Client) ListApiPathFieldTemplatesWithOptions(request *ListApiPathF
 
 // Summary:
 //
-// Performs a paging query on the list of field templates and returns the template ID, API request path, and applicable protocol for each template record.
+// Performs a paging query on the field template list and returns the template ID, API request path, and applicable protocol for each template record.
 //
 // @param request - ListApiPathFieldTemplatesRequest
 //
@@ -9143,7 +10857,7 @@ func (client *Client) ListApiPathFieldTemplates(request *ListApiPathFieldTemplat
 
 // Summary:
 //
-// Queries a list of batch export tasks.
+// Queries the list of batch export tasks.
 //
 // @param request - ListBatchExportTasksRequest
 //
@@ -9218,7 +10932,7 @@ func (client *Client) ListBatchExportTasksWithOptions(request *ListBatchExportTa
 
 // Summary:
 //
-// Queries a list of batch export tasks.
+// Queries the list of batch export tasks.
 //
 // @param request - ListBatchExportTasksRequest
 //
@@ -9237,7 +10951,7 @@ func (client *Client) ListBatchExportTasks(request *ListBatchExportTasksRequest)
 
 // Summary:
 //
-// Performs a paged query on the list of HiMarket chat sessions. For each session, the response returns the session ID, name, conversation type, and associated API products. The response also returns the paging page number, paging size, and total count.
+// Performs a paged query on the HiMarket chat session list, returning the session ID, name, conversation type, and associated API products for each session. The response also returns the paging page number, paging size, and total count.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -9296,7 +11010,7 @@ func (client *Client) ListChatSessionsWithOptions(request *ListChatSessionsReque
 
 // Summary:
 //
-// Performs a paged query on the list of HiMarket chat sessions. For each session, the response returns the session ID, name, conversation type, and associated API products. The response also returns the paging page number, paging size, and total count.
+// Performs a paged query on the HiMarket chat session list, returning the session ID, name, conversation type, and associated API products for each session. The response also returns the paging page number, paging size, and total count.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -9394,7 +11108,89 @@ func (client *Client) ListConsumerAuthorizationRules(consumerId *string, request
 
 // Summary:
 //
-// Queries the member list of a consumer group.
+// Queries the summary list of consumers in the console.
+//
+// @param request - ListConsumerConsoleSummariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerConsoleSummariesResponse
+func (client *Client) ListConsumerConsoleSummariesWithOptions(request *ListConsumerConsoleSummariesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerConsoleSummariesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerConsoleSummaries"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-access/console-summaries"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerConsoleSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the summary list of consumers in the console.
+//
+// @param request - ListConsumerConsoleSummariesRequest
+//
+// @return ListConsumerConsoleSummariesResponse
+func (client *Client) ListConsumerConsoleSummaries(request *ListConsumerConsoleSummariesRequest) (_result *ListConsumerConsoleSummariesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerConsoleSummariesResponse{}
+	_body, _err := client.ListConsumerConsoleSummariesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the members of a consumer group.
 //
 // @param request - ListConsumerGroupConsumersRequest
 //
@@ -9449,7 +11245,7 @@ func (client *Client) ListConsumerGroupConsumersWithOptions(consumerGroupId *str
 
 // Summary:
 //
-// Queries the member list of a consumer group.
+// Queries the members of a consumer group.
 //
 // @param request - ListConsumerGroupConsumersRequest
 //
@@ -9472,7 +11268,7 @@ func (client *Client) ListConsumerGroupConsumers(consumerGroupId *string, reques
 //
 // Description:
 //
-// Queries the quota rules directly bound to the specified consumer group without expanding the rules bound to individual consumers within the group. Returns an empty list if no direct binding exists.
+// Queries the quota rules directly bound to a specified consumer group without expanding the rules bound to individual consumers within the group. Returns an empty list if no direct binding exists.
 //
 // @param request - ListConsumerGroupQuotaRulesRequest
 //
@@ -9505,6 +11301,10 @@ func (client *Client) ListConsumerGroupQuotaRulesWithOptions(consumerGroupId *st
 		query["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.RuleStatus) {
+		query["ruleStatus"] = request.RuleStatus
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9535,7 +11335,7 @@ func (client *Client) ListConsumerGroupQuotaRulesWithOptions(consumerGroupId *st
 //
 // Description:
 //
-// Queries the quota rules directly bound to the specified consumer group without expanding the rules bound to individual consumers within the group. Returns an empty list if no direct binding exists.
+// Queries the quota rules directly bound to a specified consumer group without expanding the rules bound to individual consumers within the group. Returns an empty list if no direct binding exists.
 //
 // @param request - ListConsumerGroupQuotaRulesRequest
 //
@@ -9554,7 +11354,7 @@ func (client *Client) ListConsumerGroupQuotaRules(consumerGroupId *string, reque
 
 // Summary:
 //
-// Queries the list of consumer groups.
+// Queries consumer groups.
 //
 // @param request - ListConsumerGroupsRequest
 //
@@ -9613,7 +11413,7 @@ func (client *Client) ListConsumerGroupsWithOptions(request *ListConsumerGroupsR
 
 // Summary:
 //
-// Queries the list of consumer groups.
+// Queries consumer groups.
 //
 // @param request - ListConsumerGroupsRequest
 //
@@ -9632,7 +11432,89 @@ func (client *Client) ListConsumerGroups(request *ListConsumerGroupsRequest) (_r
 
 // Summary:
 //
-// Queries the list of configured quota rules for a consumer.
+// Queries the list of model card entitlements for consumers.
+//
+// @param request - ListConsumerModelCardGrantsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerModelCardGrantsResponse
+func (client *Client) ListConsumerModelCardGrantsWithOptions(httpApiId *string, request *ListConsumerModelCardGrantsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerModelCardGrantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelCardId) {
+		query["modelCardId"] = request.ModelCardId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrincipalId) {
+		query["principalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		query["principalType"] = request.PrincipalType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerModelCardGrants"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/model-card-grants"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerModelCardGrantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of model card entitlements for consumers.
+//
+// @param request - ListConsumerModelCardGrantsRequest
+//
+// @return ListConsumerModelCardGrantsResponse
+func (client *Client) ListConsumerModelCardGrants(httpApiId *string, request *ListConsumerModelCardGrantsRequest) (_result *ListConsumerModelCardGrantsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerModelCardGrantsResponse{}
+	_body, _err := client.ListConsumerModelCardGrantsWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the configured quota rules for a consumer.
 //
 // @param request - ListConsumerQuotaRulesRequest
 //
@@ -9665,6 +11547,10 @@ func (client *Client) ListConsumerQuotaRulesWithOptions(consumerId *string, requ
 		query["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.RuleStatus) {
+		query["ruleStatus"] = request.RuleStatus
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9691,7 +11577,7 @@ func (client *Client) ListConsumerQuotaRulesWithOptions(consumerId *string, requ
 
 // Summary:
 //
-// Queries the list of configured quota rules for a consumer.
+// Queries the configured quota rules for a consumer.
 //
 // @param request - ListConsumerQuotaRulesRequest
 //
@@ -9710,7 +11596,7 @@ func (client *Client) ListConsumerQuotaRules(consumerId *string, request *ListCo
 
 // Summary:
 //
-// Retrieves a list of API consumers.
+// Retrieves a list of consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -9727,8 +11613,16 @@ func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, he
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireStatus) {
+		query["expireStatus"] = request.ExpireStatus
+	}
+
 	if !dara.IsNil(request.GatewayType) {
 		query["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.IncludeExpirationSummary) {
+		query["includeExpirationSummary"] = request.IncludeExpirationSummary
 	}
 
 	if !dara.IsNil(request.NameLike) {
@@ -9741,6 +11635,10 @@ func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, he
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9769,7 +11667,7 @@ func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, he
 
 // Summary:
 //
-// Retrieves a list of API consumers.
+// Retrieves a list of consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -9788,7 +11686,7 @@ func (client *Client) ListConsumers(request *ListConsumersRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the HiMarket developer list by using paging. You can filter developers by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
+// Queries the HiMarket developer list with paging. You can filter developers by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
 //
 // @param request - ListDevelopersRequest
 //
@@ -9859,7 +11757,7 @@ func (client *Client) ListDevelopersWithOptions(request *ListDevelopersRequest, 
 
 // Summary:
 //
-// Queries the HiMarket developer list by using paging. You can filter developers by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
+// Queries the HiMarket developer list with paging. You can filter developers by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
 //
 // @param request - ListDevelopersRequest
 //
@@ -10067,7 +11965,7 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 
 // Summary:
 //
-// Retrieves external service information for a gateway.
+// Retrieves the external service information of a gateway.
 //
 // Description:
 //
@@ -10134,7 +12032,7 @@ func (client *Client) ListExternalServicesWithOptions(gatewayId *string, request
 
 // Summary:
 //
-// Retrieves external service information for a gateway.
+// Retrieves the external service information of a gateway.
 //
 // Description:
 //
@@ -10223,7 +12121,7 @@ func (client *Client) ListGatewayAuthorizableSecurityGroups(gatewayId *string, r
 
 // Summary:
 //
-// Queries the list of security group rules authorized for a gateway.
+// Queries the authorized security group rules for a gateway.
 //
 // @param request - ListGatewayAuthorizedSecurityGroupRulesRequest
 //
@@ -10264,7 +12162,7 @@ func (client *Client) ListGatewayAuthorizedSecurityGroupRulesWithOptions(gateway
 
 // Summary:
 //
-// Queries the list of security group rules authorized for a gateway.
+// Queries the authorized security group rules for a gateway.
 //
 // @param request - ListGatewayAuthorizedSecurityGroupRulesRequest
 //
@@ -10423,7 +12321,7 @@ func (client *Client) ListGatewayFeatures(gatewayId *string) (_result *ListGatew
 
 // Summary:
 //
-// Retrieves the list of gateway load balancers.
+// Queries the list of gateway load balancers.
 //
 // @param request - ListGatewayLoadBalancersRequest
 //
@@ -10490,7 +12388,7 @@ func (client *Client) ListGatewayLoadBalancersWithOptions(gatewayId *string, req
 
 // Summary:
 //
-// Retrieves the list of gateway load balancers.
+// Queries the list of gateway load balancers.
 //
 // @param request - ListGatewayLoadBalancersRequest
 //
@@ -10513,7 +12411,7 @@ func (client *Client) ListGatewayLoadBalancers(gatewayId *string, request *ListG
 //
 // Description:
 //
-// This operation queries the FinOps quota rules associated with a gateway.
+// Queries the FinOps quota rules associated with a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -10550,6 +12448,14 @@ func (client *Client) ListGatewayQuotaRulesWithOptions(gatewayId *string, reques
 		query["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.RuleStatus) {
+		query["ruleStatus"] = request.RuleStatus
+	}
+
+	if !dara.IsNil(request.SubjectNameLike) {
+		query["subjectNameLike"] = request.SubjectNameLike
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -10580,7 +12486,7 @@ func (client *Client) ListGatewayQuotaRulesWithOptions(gatewayId *string, reques
 //
 // Description:
 //
-// This operation queries the FinOps quota rules associated with a gateway.
+// Queries the FinOps quota rules associated with a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -10817,7 +12723,7 @@ func (client *Client) ListGlobalPolicies(request *ListGlobalPoliciesRequest) (_r
 
 // Summary:
 //
-// Performs a paging query for the API product subscriptions of a specified HiMarket consumer. You can filter the subscriptions by status. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
+// Performs a paged query to retrieve the API product subscriptions of a specified HiMarket consumer. You can filter the subscriptions by status and use paging to navigate through the results. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
 //
 // @param request - ListHiMarketConsumerSubscriptionsRequest
 //
@@ -10880,7 +12786,7 @@ func (client *Client) ListHiMarketConsumerSubscriptionsWithOptions(consumerId *s
 
 // Summary:
 //
-// Performs a paging query for the API product subscriptions of a specified HiMarket consumer. You can filter the subscriptions by status. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
+// Performs a paged query to retrieve the API product subscriptions of a specified HiMarket consumer. You can filter the subscriptions by status and use paging to navigate through the results. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
 //
 // @param request - ListHiMarketConsumerSubscriptionsRequest
 //
@@ -10899,7 +12805,7 @@ func (client *Client) ListHiMarketConsumerSubscriptions(consumerId *string, requ
 
 // Summary:
 //
-// Performs a paging query on the HiMarket consumer list. You can filter the results by consumer name keyword, portal ID, or developer ID. The response includes the consumer ID, name, description, and primary consumer status for each consumer.
+// Performs a paging query on the HiMarket consumer list. You can filter the results by consumer name keyword, portal ID, or developer ID. For each consumer, the response returns the consumer ID, name, description, and whether the consumer is a primary consumer.
 //
 // @param request - ListHiMarketConsumersRequest
 //
@@ -10970,7 +12876,7 @@ func (client *Client) ListHiMarketConsumersWithOptions(request *ListHiMarketCons
 
 // Summary:
 //
-// Performs a paging query on the HiMarket consumer list. You can filter the results by consumer name keyword, portal ID, or developer ID. The response includes the consumer ID, name, description, and primary consumer status for each consumer.
+// Performs a paging query on the HiMarket consumer list. You can filter the results by consumer name keyword, portal ID, or developer ID. For each consumer, the response returns the consumer ID, name, description, and whether the consumer is a primary consumer.
 //
 // @param request - ListHiMarketConsumersRequest
 //
@@ -11103,7 +13009,7 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 
 // Summary:
 //
-// Queries the route list of an HTTP API.
+// Queries the routes of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -11206,7 +13112,7 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 
 // Summary:
 //
-// Queries the route list of an HTTP API.
+// Queries the routes of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -11225,7 +13131,7 @@ func (client *Client) ListHttpApiRoutes(httpApiId *string, request *ListHttpApiR
 
 // Summary:
 //
-// Retrieves a list of HTTP APIs.
+// Retrieves the list of HTTP APIs.
 //
 // @param request - ListHttpApisRequest
 //
@@ -11336,7 +13242,7 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 
 // Summary:
 //
-// Retrieves a list of HTTP APIs.
+// Retrieves the list of HTTP APIs.
 //
 // @param request - ListHttpApisRequest
 //
@@ -11355,7 +13261,7 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 
 // Summary:
 //
-// Retrieves gateways on which a plugin can be installed.
+// Retrieves installable gateways.
 //
 // @param request - ListInstallableGatewaysRequest
 //
@@ -11410,7 +13316,7 @@ func (client *Client) ListInstallableGatewaysWithOptions(pluginClassId *string, 
 
 // Summary:
 //
-// Retrieves gateways on which a plugin can be installed.
+// Retrieves installable gateways.
 //
 // @param request - ListInstallableGatewaysRequest
 //
@@ -11495,7 +13401,85 @@ func (client *Client) ListK8sClusterSources(gatewayId *string, request *ListK8sC
 
 // Summary:
 //
-// Queries the details of Model Context Protocol (MCP) tools in an MCP Server-type API product and returns a list of tools. Each tool contains three text fields: name, title, and description, and four map fields: inputSchema, outputSchema, annotations, and meta.
+// Queries the logical models under a specified gateway. Supports keyword filtering and token-based pagination with maxResults and nextToken.
+//
+// @param request - ListLogicalModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLogicalModelsResponse
+func (client *Client) ListLogicalModelsWithOptions(request *ListLogicalModelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLogicalModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLogicalModels"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-models"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLogicalModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the logical models under a specified gateway. Supports keyword filtering and token-based pagination with maxResults and nextToken.
+//
+// @param request - ListLogicalModelsRequest
+//
+// @return ListLogicalModelsResponse
+func (client *Client) ListLogicalModels(request *ListLogicalModelsRequest) (_result *ListLogicalModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLogicalModelsResponse{}
+	_body, _err := client.ListLogicalModelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of Model Context Protocol (MCP) tools in an MCP Server-type API product and returns a list of tools. Each tool contains three text fields (name, title, and description) and four map fields (inputSchema, outputSchema, annotations, and meta).
 //
 // @param request - ListMcpProductToolsRequest
 //
@@ -11536,7 +13520,7 @@ func (client *Client) ListMcpProductToolsWithOptions(productId *string, request 
 
 // Summary:
 //
-// Queries the details of Model Context Protocol (MCP) tools in an MCP Server-type API product and returns a list of tools. Each tool contains three text fields: name, title, and description, and four map fields: inputSchema, outputSchema, annotations, and meta.
+// Queries the details of Model Context Protocol (MCP) tools in an MCP Server-type API product and returns a list of tools. Each tool contains three text fields (name, title, and description) and four map fields (inputSchema, outputSchema, annotations, and meta).
 //
 // @param request - ListMcpProductToolsRequest
 //
@@ -11559,7 +13543,7 @@ func (client *Client) ListMcpProductTools(productId *string, request *ListMcpPro
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - ListMcpServersRequest
 //
@@ -11634,7 +13618,7 @@ func (client *Client) ListMcpServersWithOptions(request *ListMcpServersRequest, 
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - ListMcpServersRequest
 //
@@ -11723,7 +13707,97 @@ func (client *Client) ListMigrationTasks(request *ListMigrationTasksRequest) (_r
 
 // Summary:
 //
-// Queries a list of model cards and returns the model name, provider, and source identifier of each card, along with its features, pricing, meta, availablePaths, and snapshots structures. The only business request parameter is the provider identifier.
+// Queries the list of model APIs.
+//
+// @param request - ListModelApisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelApisResponse
+func (client *Client) ListModelApisWithOptions(request *ListModelApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.IncludeLegacy) {
+		query["includeLegacy"] = request.IncludeLegacy
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelApis"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelApisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of model APIs.
+//
+// @param request - ListModelApisRequest
+//
+// @return ListModelApisResponse
+func (client *Client) ListModelApis(request *ListModelApisRequest) (_result *ListModelApisResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelApisResponse{}
+	_body, _err := client.ListModelApisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with its features, pricing, metadata, available paths, and snapshots. The only request parameter is the provider identifier.
 //
 // @param request - ListModelCardsRequest
 //
@@ -11770,7 +13844,7 @@ func (client *Client) ListModelCardsWithOptions(request *ListModelCardsRequest, 
 
 // Summary:
 //
-// Queries a list of model cards and returns the model name, provider, and source identifier of each card, along with its features, pricing, meta, availablePaths, and snapshots structures. The only business request parameter is the provider identifier.
+// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with its features, pricing, metadata, available paths, and snapshots. The only request parameter is the provider identifier.
 //
 // @param request - ListModelCardsRequest
 //
@@ -11780,6 +13854,84 @@ func (client *Client) ListModelCards(request *ListModelCardsRequest) (_result *L
 	headers := make(map[string]*string)
 	_result = &ListModelCardsResponse{}
 	_body, _err := client.ListModelCardsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of model groups.
+//
+// @param request - ListModelGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelGroupsResponse
+func (client *Client) ListModelGroupsWithOptions(request *ListModelGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModelGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelGroups"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of model groups.
+//
+// @param request - ListModelGroupsRequest
+//
+// @return ListModelGroupsResponse
+func (client *Client) ListModelGroups(request *ListModelGroupsRequest) (_result *ListModelGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelGroupsResponse{}
+	_body, _err := client.ListModelGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11947,11 +14099,11 @@ func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsReques
 
 // Summary:
 //
-// Retrieves plug-ins.
+// Retrieves plugins.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - ListPluginClassesRequest
 //
@@ -12038,11 +14190,11 @@ func (client *Client) ListPluginClassesWithOptions(request *ListPluginClassesReq
 
 // Summary:
 //
-// Retrieves plug-ins.
+// Retrieves plugins.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - ListPluginClassesRequest
 //
@@ -12061,7 +14213,7 @@ func (client *Client) ListPluginClasses(request *ListPluginClassesRequest) (_res
 
 // Summary:
 //
-// Queries the repositories and organization information for custom plug-ins hosted on Codeup. Before calling this operation, enable code hosting on Codeup, create an organization and repositories, and authorize APIG to access your Codeup account.
+// Queries the list of repositories and organization information for custom plug-ins hosted on Codeup. Before calling this operation, enable code hosting, create an organization and a repository in Codeup, and authorize APIG to access your Codeup account.
 //
 // @param request - ListPluginRepositoriesRequest
 //
@@ -12102,7 +14254,7 @@ func (client *Client) ListPluginRepositoriesWithOptions(request *ListPluginRepos
 
 // Summary:
 //
-// Queries the repositories and organization information for custom plug-ins hosted on Codeup. Before calling this operation, enable code hosting on Codeup, create an organization and repositories, and authorize APIG to access your Codeup account.
+// Queries the list of repositories and organization information for custom plug-ins hosted on Codeup. Before calling this operation, enable code hosting, create an organization and a repository in Codeup, and authorize APIG to access your Codeup account.
 //
 // @param request - ListPluginRepositoriesRequest
 //
@@ -12121,7 +14273,7 @@ func (client *Client) ListPluginRepositories(request *ListPluginRepositoriesRequ
 
 // Summary:
 //
-// Retrieves the list of plugin WebIDE workspaces for the current user.
+// Retrieves the list of WebIDE workspaces for user plugins.
 //
 // @param request - ListPluginWorkspaceRequest
 //
@@ -12168,7 +14320,7 @@ func (client *Client) ListPluginWorkspaceWithOptions(request *ListPluginWorkspac
 
 // Summary:
 //
-// Retrieves the list of plugin WebIDE workspaces for the current user.
+// Retrieves the list of WebIDE workspaces for user plugins.
 //
 // @param request - ListPluginWorkspaceRequest
 //
@@ -12289,7 +14441,7 @@ func (client *Client) ListPlugins(request *ListPluginsRequest) (_result *ListPlu
 
 // Summary:
 //
-// Queries a list of policies.
+// Queries the list of policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -12320,6 +14472,14 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, head
 
 	if !dara.IsNil(request.GatewayId) {
 		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.WithAttachments) {
@@ -12356,7 +14516,7 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, head
 
 // Summary:
 //
-// Queries a list of policies.
+// Queries the list of policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -12465,7 +14625,7 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 
 // Summary:
 //
-// Queries the list of published API products on a specified HiMarket developer portal with paging. Each list item returns the publication record ID, API product ID, API product name, and API product type.
+// Performs a paging query for the list of published API products on a specified HiMarket developer portal. Each list item returns the publication record ID, API product ID, API product name, and API product type.
 //
 // @param request - ListPortalPublicationsRequest
 //
@@ -12520,7 +14680,7 @@ func (client *Client) ListPortalPublicationsWithOptions(portalId *string, reques
 
 // Summary:
 //
-// Queries the list of published API products on a specified HiMarket developer portal with paging. Each list item returns the publication record ID, API product ID, API product name, and API product type.
+// Performs a paging query for the list of published API products on a specified HiMarket developer portal. Each list item returns the publication record ID, API product ID, API product name, and API product type.
 //
 // @param request - ListPortalPublicationsRequest
 //
@@ -12539,7 +14699,7 @@ func (client *Client) ListPortalPublications(portalId *string, request *ListPort
 
 // Summary:
 //
-// Performs a paged query to retrieve the list of HiMarket developer portals under the current tenant. Each list item in the paging result returns the portal ID, portal name, portal description, region ID, portal settings, and portal domain configurations.
+// Performs a paging query on the list of HiMarket developer portals under the current tenant. Each list item returns the portal ID, portal name, portal description, region ID, portal settings, and portal domain name configurations.
 //
 // @param request - ListPortalsRequest
 //
@@ -12602,7 +14762,7 @@ func (client *Client) ListPortalsWithOptions(request *ListPortalsRequest, header
 
 // Summary:
 //
-// Performs a paged query to retrieve the list of HiMarket developer portals under the current tenant. Each list item in the paging result returns the portal ID, portal name, portal description, region ID, portal settings, and portal domain configurations.
+// Performs a paging query on the list of HiMarket developer portals under the current tenant. Each list item returns the portal ID, portal name, portal description, region ID, portal settings, and portal domain name configurations.
 //
 // @param request - ListPortalsRequest
 //
@@ -12621,11 +14781,11 @@ func (client *Client) ListPortals(request *ListPortalsRequest) (_result *ListPor
 
 // Summary:
 //
-// Queries the list of unmanaged security groups available for a private endpoint.
+// Queries the unmanaged security groups available for private endpoints.
 //
 // Description:
 //
-// This operation supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @param request - ListPrivateLinkSecurityGroupsRequest
 //
@@ -12680,11 +14840,11 @@ func (client *Client) ListPrivateLinkSecurityGroupsWithOptions(request *ListPriv
 
 // Summary:
 //
-// Queries the list of unmanaged security groups available for a private endpoint.
+// Queries the unmanaged security groups available for private endpoints.
 //
 // Description:
 //
-// This operation supports creating multiple services.
+// The API supports creating multiple services.
 //
 // @param request - ListPrivateLinkSecurityGroupsRequest
 //
@@ -12703,7 +14863,7 @@ func (client *Client) ListPrivateLinkSecurityGroups(request *ListPrivateLinkSecu
 
 // Summary:
 //
-// Queries the list of product categories under the current tenant by using paging. You can search by category name keywords. Each item in the list returns the category ID, category name, category description, and category icon.
+// Performs a paged query on the list of product categories under the current tenant. The paging request supports searching by category name keywords. Each list item returns the category ID, name, description, and icon.
 //
 // @param request - ListProductCategoriesRequest
 //
@@ -12758,7 +14918,7 @@ func (client *Client) ListProductCategoriesWithOptions(request *ListProductCateg
 
 // Summary:
 //
-// Queries the list of product categories under the current tenant by using paging. You can search by category name keywords. Each item in the list returns the category ID, category name, category description, and category icon.
+// Performs a paged query on the list of product categories under the current tenant. The paging request supports searching by category name keywords. Each list item returns the category ID, name, description, and icon.
 //
 // @param request - ListProductCategoriesRequest
 //
@@ -12777,7 +14937,7 @@ func (client *Client) ListProductCategories(request *ListProductCategoriesReques
 
 // Summary:
 //
-// Performs a paged query to retrieve the publication information of a specified API product, which is a list of portal records to which the product is published. Each list item includes the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can perform a parameter query by portal name and paging parameters.
+// Performs a paged query on the publication information of a specified API product, which is the list of portal records to which the product has been published. The list items include the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can also perform a parameter query by portal name and paging parameters.
 //
 // @param request - ListProductPublicationsRequest
 //
@@ -12832,7 +14992,7 @@ func (client *Client) ListProductPublicationsWithOptions(productId *string, requ
 
 // Summary:
 //
-// Performs a paged query to retrieve the publication information of a specified API product, which is a list of portal records to which the product is published. Each list item includes the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can perform a parameter query by portal name and paging parameters.
+// Performs a paged query on the publication information of a specified API product, which is the list of portal records to which the product has been published. The list items include the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can also perform a parameter query by portal name and paging parameters.
 //
 // @param request - ListProductPublicationsRequest
 //
@@ -12851,7 +15011,7 @@ func (client *Client) ListProductPublications(productId *string, request *ListPr
 
 // Summary:
 //
-// Performs a paged query to retrieve the subscribe records for a specified API product. You can use paging to filter the records by subscribe status or search for them by using consumer name keywords. Each record returns the subscribe ID, API product ID and name, API product type, consumer ID and name, and subscribe status.
+// Queries the list of subscription records for a specified API product with paging. You can filter the records by subscription status or search by consumer name keywords. Each record includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status.
 //
 // @param request - ListProductSubscriptionsRequest
 //
@@ -12910,7 +15070,7 @@ func (client *Client) ListProductSubscriptionsWithOptions(productId *string, req
 
 // Summary:
 //
-// Performs a paged query to retrieve the subscribe records for a specified API product. You can use paging to filter the records by subscribe status or search for them by using consumer name keywords. Each record returns the subscribe ID, API product ID and name, API product type, consumer ID and name, and subscribe status.
+// Queries the list of subscription records for a specified API product with paging. You can filter the records by subscription status or search by consumer name keywords. Each record includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status.
 //
 // @param request - ListProductSubscriptionsRequest
 //
@@ -12929,7 +15089,7 @@ func (client *Client) ListProductSubscriptions(productId *string, request *ListP
 
 // Summary:
 //
-// Queries the API product list under the current tenant by using paging. Request parameters can specify the product name, product type, product status, product category, and the portal where the product is published. List items return the product ID, name, product description, status, type, documentation, icon, product categorization, whether automatic approval is enabled for subscription requests, and MCP, agent, model, and product capability configurations.
+// Queries the API products under the current tenant by using paging. You can specify the product name, type, status, category, and the portal where the product is published. The response includes the product ID, name, description, status, type, documentation, icon, product category, whether automatic approval of subscriptions is enabled, and the MCP, agent, model, and product capability configurations.
 //
 // @param request - ListProductsRequest
 //
@@ -13008,7 +15168,7 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 
 // Summary:
 //
-// Queries the API product list under the current tenant by using paging. Request parameters can specify the product name, product type, product status, product category, and the portal where the product is published. List items return the product ID, name, product description, status, type, documentation, icon, product categorization, whether automatic approval is enabled for subscription requests, and MCP, agent, model, and product capability configurations.
+// Queries the API products under the current tenant by using paging. You can specify the product name, type, status, category, and the portal where the product is published. The response includes the product ID, name, description, status, type, documentation, icon, product category, whether automatic approval of subscriptions is enabled, and the MCP, agent, model, and product capability configurations.
 //
 // @param request - ListProductsRequest
 //
@@ -13027,7 +15187,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 
 // Summary:
 //
-// Queries the list of API products that can be published to a specified HiMarket developer portal. This paged query accepts the portal ID, API product name, and paging parameters. Each item in the response includes the API product ID, name, and description.
+// Performs a paged query on the list of API products that can be published to a specified HiMarket developer portal. You can specify the portal ID, API product name, and paging parameters in the request. The list items return the API product ID, API product name, and API product description.
 //
 // @param request - ListPublishableProductsRequest
 //
@@ -13082,7 +15242,7 @@ func (client *Client) ListPublishableProductsWithOptions(portalId *string, reque
 
 // Summary:
 //
-// Queries the list of API products that can be published to a specified HiMarket developer portal. This paged query accepts the portal ID, API product name, and paging parameters. Each item in the response includes the API product ID, name, and description.
+// Performs a paged query on the list of API products that can be published to a specified HiMarket developer portal. You can specify the portal ID, API product name, and paging parameters in the request. The list items return the API product ID, API product name, and API product description.
 //
 // @param request - ListPublishableProductsRequest
 //
@@ -13101,7 +15261,7 @@ func (client *Client) ListPublishableProducts(portalId *string, request *ListPub
 
 // Summary:
 //
-// Queries risk detection results.
+// Queries the risk detection results.
 //
 // @param request - ListRiskCheckResultsRequest
 //
@@ -13160,7 +15320,7 @@ func (client *Client) ListRiskCheckResultsWithOptions(gatewayId *string, request
 
 // Summary:
 //
-// Queries risk detection results.
+// Queries the risk detection results.
 //
 // @param request - ListRiskCheckResultsRequest
 //
@@ -13257,11 +15417,11 @@ func (client *Client) ListSecretReferences(secretId *string, request *ListSecret
 
 // Summary:
 //
-// Lists keys.
+// Lists secrets.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// The API operation supports creating multiple services.
 //
 // @param request - ListSecretsRequest
 //
@@ -13320,11 +15480,11 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, header
 
 // Summary:
 //
-// Lists keys.
+// Lists secrets.
 //
 // Description:
 //
-// The operation supports creating multiple services.
+// The API operation supports creating multiple services.
 //
 // @param request - ListSecretsRequest
 //
@@ -13821,7 +15981,7 @@ func (client *Client) ListZones(request *ListZonesRequest) (_result *ListZonesRe
 
 // Summary:
 //
-// Logs in to a HiMarket developer account with a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
+// Logs in to a HiMarket developer account by using a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
 //
 // @param request - LoginDeveloperRequest
 //
@@ -13872,7 +16032,7 @@ func (client *Client) LoginDeveloperWithOptions(request *LoginDeveloperRequest, 
 
 // Summary:
 //
-// Logs in to a HiMarket developer account with a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
+// Logs in to a HiMarket developer account by using a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
 //
 // @param request - LoginDeveloperRequest
 //
@@ -13891,7 +16051,7 @@ func (client *Client) LoginDeveloper(request *LoginDeveloperRequest) (_result *L
 
 // Summary:
 //
-// Logs a developer out of a HiMarket developer account. This operation has no business request parameters, and a successful response returns only the requestId, code, and message fields.
+// Logs out a developer from a HiMarket developer account. This operation does not require business request parameters. A successful response returns only the requestId, code, and message fields.
 //
 // @param request - LogoutDeveloperRequest
 //
@@ -13932,7 +16092,7 @@ func (client *Client) LogoutDeveloperWithOptions(request *LogoutDeveloperRequest
 
 // Summary:
 //
-// Logs a developer out of a HiMarket developer account. This operation has no business request parameters, and a successful response returns only the requestId, code, and message fields.
+// Logs out a developer from a HiMarket developer account. This operation does not require business request parameters. A successful response returns only the requestId, code, and message fields.
 //
 // @param request - LogoutDeveloperRequest
 //
@@ -13951,7 +16111,97 @@ func (client *Client) LogoutDeveloper(request *LogoutDeveloperRequest) (_result 
 
 // Summary:
 //
-// Publishes a specified API product to a specified HiMarket portal. The path parameter specifies the API product ID, and the request body specifies the target portal ID. This operation returns the publication record ID for the current publication. You can query the publication record by calling ListProductPublications and unpublish the API product by calling UnpublishProduct at /himarket/v1/products/{productId}/publications/{publicationId}.
+// Simulates the impact of logical model modifications.
+//
+// @param request - PreviewLogicalModelUpdateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewLogicalModelUpdateResponse
+func (client *Client) PreviewLogicalModelUpdateWithOptions(logicalModelId *string, request *PreviewLogicalModelUpdateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewLogicalModelUpdateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallStrategy) {
+		body["callStrategy"] = request.CallStrategy
+	}
+
+	if !dara.IsNil(request.FallbackTargets) {
+		body["fallbackTargets"] = request.FallbackTargets
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ResponseModel) {
+		body["responseModel"] = request.ResponseModel
+	}
+
+	if !dara.IsNil(request.RoutingPolicy) {
+		body["routingPolicy"] = request.RoutingPolicy
+	}
+
+	if !dara.IsNil(request.Slots) {
+		body["slots"] = request.Slots
+	}
+
+	if !dara.IsNil(request.Targets) {
+		body["targets"] = request.Targets
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewLogicalModelUpdate"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-models/" + dara.PercentEncode(dara.StringValue(logicalModelId)) + "/preview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewLogicalModelUpdateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Simulates the impact of logical model modifications.
+//
+// @param request - PreviewLogicalModelUpdateRequest
+//
+// @return PreviewLogicalModelUpdateResponse
+func (client *Client) PreviewLogicalModelUpdate(logicalModelId *string, request *PreviewLogicalModelUpdateRequest) (_result *PreviewLogicalModelUpdateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PreviewLogicalModelUpdateResponse{}
+	_body, _err := client.PreviewLogicalModelUpdateWithOptions(logicalModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Publishes a specified API product to a specified HiMarket portal. The path parameter specifies the API product ID, and the request body specifies the target portal ID. This operation returns the publication record ID for the publication. You can query the publication record by calling ListProductPublications and unpublish the product by calling UnpublishProduct at /himarket/v1/products/{productId}/publications/{publicationId}.
 //
 // @param request - PublishProductRequest
 //
@@ -13998,7 +16248,7 @@ func (client *Client) PublishProductWithOptions(productId *string, request *Publ
 
 // Summary:
 //
-// Publishes a specified API product to a specified HiMarket portal. The path parameter specifies the API product ID, and the request body specifies the target portal ID. This operation returns the publication record ID for the current publication. You can query the publication record by calling ListProductPublications and unpublish the API product by calling UnpublishProduct at /himarket/v1/products/{productId}/publications/{publicationId}.
+// Publishes a specified API product to a specified HiMarket portal. The path parameter specifies the API product ID, and the request body specifies the target portal ID. This operation returns the publication record ID for the publication. You can query the publication record by calling ListProductPublications and unpublish the product by calling UnpublishProduct at /himarket/v1/products/{productId}/publications/{publicationId}.
 //
 // @param request - PublishProductRequest
 //
@@ -14017,7 +16267,7 @@ func (client *Client) PublishProduct(productId *string, request *PublishProductR
 
 // Summary:
 //
-// Queries the list of consumer authorization rules.
+// Queries consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -14116,7 +16366,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 
 // Summary:
 //
-// Queries the list of consumer authorization rules.
+// Queries consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -14135,7 +16385,7 @@ func (client *Client) QueryConsumerAuthorizationRules(request *QueryConsumerAuth
 
 // Summary:
 //
-// Refreshes the OAuth code for the plugin-managed repository.
+// Refreshes the OAuth code for the plugin hosted repository.
 //
 // @param request - RefreshPluginOAuthCodeRequest
 //
@@ -14182,7 +16432,7 @@ func (client *Client) RefreshPluginOAuthCodeWithOptions(request *RefreshPluginOA
 
 // Summary:
 //
-// Refreshes the OAuth code for the plugin-managed repository.
+// Refreshes the OAuth code for the plugin hosted repository.
 //
 // @param request - RefreshPluginOAuthCodeRequest
 //
@@ -14201,7 +16451,7 @@ func (client *Client) RefreshPluginOAuthCode(request *RefreshPluginOAuthCodeRequ
 
 // Summary:
 //
-// Deletes an API consumer authorization rule.
+// Deletes a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -14234,7 +16484,7 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithOptions(consumerAuthori
 
 // Summary:
 //
-// Deletes an API consumer authorization rule.
+// Deletes a consumer authorization rule.
 //
 // @return RemoveConsumerAuthorizationRuleResponse
 func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleId *string) (_result *RemoveConsumerAuthorizationRuleResponse, _err error) {
@@ -14255,7 +16505,7 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 //
 // Description:
 //
-// This operation resets a quota throttling rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The reset clears the historical usage of the consumption subjects on the rule.
+// This operation resets a quota throttling rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The reset clears the historical usage of the consumption subjects associated with the rule.
 //
 // >
 //
@@ -14265,13 +16515,13 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 //
 // > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview containing a conflictHash.
+// > - - The response returns a conflict preview that contains a conflictHash.
 //
 // > - 2. Formally submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun=false and overwrite=false.
+// > - - If no conflicts exist: Set dryRun=false and overwrite=false.
 //
-// > - - Conflicts exist and overwrite is confirmed: Set dryRun=false, overwrite=true, and conflictHash=<value returned in the previous step>.
+// > - - If conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -14350,7 +16600,7 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 //
 // Description:
 //
-// This operation resets a quota throttling rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The reset clears the historical usage of the consumption subjects on the rule.
+// This operation resets a quota throttling rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The reset clears the historical usage of the consumption subjects associated with the rule.
 //
 // >
 //
@@ -14360,13 +16610,13 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 //
 // > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview containing a conflictHash.
+// > - - The response returns a conflict preview that contains a conflictHash.
 //
 // > - 2. Formally submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun=false and overwrite=false.
+// > - - If no conflicts exist: Set dryRun=false and overwrite=false.
 //
-// > - - Conflicts exist and overwrite is confirmed: Set dryRun=false, overwrite=true, and conflictHash=<value returned in the previous step>.
+// > - - If conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -14435,11 +16685,81 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
-// Queries the currently active credentials for the AI service.
+// Retries the delivery of logical model configurations.
+//
+// @param request - RetryLogicalModelDeploymentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryLogicalModelDeploymentResponse
+func (client *Client) RetryLogicalModelDeploymentWithOptions(operationId *string, request *RetryLogicalModelDeploymentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetryLogicalModelDeploymentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ExpectedRevision) {
+		query["expectedRevision"] = request.ExpectedRevision
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryLogicalModelDeployment"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-model-deployments/" + dara.PercentEncode(dara.StringValue(operationId)) + "/retry"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryLogicalModelDeploymentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retries the delivery of logical model configurations.
+//
+// @param request - RetryLogicalModelDeploymentRequest
+//
+// @return RetryLogicalModelDeploymentResponse
+func (client *Client) RetryLogicalModelDeployment(operationId *string, request *RetryLogicalModelDeploymentRequest) (_result *RetryLogicalModelDeploymentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RetryLogicalModelDeploymentResponse{}
+	_body, _err := client.RetryLogicalModelDeploymentWithOptions(operationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the currently active credentials for an AI service.
 //
 // Description:
 //
-// Queries the currently active credentials for the AI service.
+// Queries the currently active credentials for an AI service.
 //
 // @param request - RevealServiceCredentialRequest
 //
@@ -14480,11 +16800,11 @@ func (client *Client) RevealServiceCredentialWithOptions(serviceId *string, requ
 
 // Summary:
 //
-// Queries the currently active credentials for the AI service.
+// Queries the currently active credentials for an AI service.
 //
 // Description:
 //
-// Queries the currently active credentials for the AI service.
+// Queries the currently active credentials for an AI service.
 //
 // @param request - RevealServiceCredentialRequest
 //
@@ -14494,6 +16814,84 @@ func (client *Client) RevealServiceCredential(serviceId *string, request *Reveal
 	headers := make(map[string]*string)
 	_result = &RevealServiceCredentialResponse{}
 	_body, _err := client.RevealServiceCredentialWithOptions(serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes the model card entitlements for a consumer.
+//
+// @param request - RevokeConsumerModelCardGrantsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeConsumerModelCardGrantsResponse
+func (client *Client) RevokeConsumerModelCardGrantsWithOptions(httpApiId *string, request *RevokeConsumerModelCardGrantsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeConsumerModelCardGrantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelCardIds) {
+		body["modelCardIds"] = request.ModelCardIds
+	}
+
+	if !dara.IsNil(request.ModelGroupIds) {
+		body["modelGroupIds"] = request.ModelGroupIds
+	}
+
+	if !dara.IsNil(request.PrincipalId) {
+		body["principalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["principalType"] = request.PrincipalType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeConsumerModelCardGrants"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/model-card-grants/revoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeConsumerModelCardGrantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes the model card entitlements for a consumer.
+//
+// @param request - RevokeConsumerModelCardGrantsRequest
+//
+// @return RevokeConsumerModelCardGrantsResponse
+func (client *Client) RevokeConsumerModelCardGrants(httpApiId *string, request *RevokeConsumerModelCardGrantsRequest) (_result *RevokeConsumerModelCardGrantsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RevokeConsumerModelCardGrantsResponse{}
+	_body, _err := client.RevokeConsumerModelCardGrantsWithOptions(httpApiId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14563,7 +16961,7 @@ func (client *Client) RunPluginPipeline(workspaceId *string, request *RunPluginP
 
 // Summary:
 //
-// Subscribes to an API product for a specified HiMarket Consumer. The path parameter specifies the consumer ID, the request body specifies the ID of the API product to subscribe to, and the response returns the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status.
+// Subscribes to an API product for a specified HiMarket consumer. The path parameter specifies the consumer ID, and the request body specifies the ID of the API product to subscribe to. The response includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status of the subscription record.
 //
 // @param request - SubscribeProductRequest
 //
@@ -14610,7 +17008,7 @@ func (client *Client) SubscribeProductWithOptions(consumerId *string, request *S
 
 // Summary:
 //
-// Subscribes to an API product for a specified HiMarket Consumer. The path parameter specifies the consumer ID, the request body specifies the ID of the API product to subscribe to, and the response returns the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status.
+// Subscribes to an API product for a specified HiMarket consumer. The path parameter specifies the consumer ID, and the request body specifies the ID of the API product to subscribe to. The response includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status of the subscription record.
 //
 // @param request - SubscribeProductRequest
 //
@@ -14629,7 +17027,21 @@ func (client *Client) SubscribeProduct(consumerId *string, request *SubscribePro
 
 // Summary:
 //
-// Syncs an external MCP server.
+// Syncs MCP servers from an external Nacos registry to a gateway.
+//
+// Description:
+//
+// ## Before you begin
+//
+// Before you call this operation, complete the following preparations:
+//
+// 1. Create a Nacos instance in Microservices Engine (MSE) and register an MCP server in the instance.
+//
+// 2. Call CreateSource to register a service source for the target gateway. Set the type parameter to MSE_NACOS and point it to the Nacos instance.
+//
+// 3. Call ListGateways to obtain the system default domain name ID (subDomainInfos[].domainId) of the gateway for the domainIds parameter.
+//
+// After you complete the preceding steps, pass the gatewayId, domainIds, and namespace parameters to call this operation. This syncs the MCP servers in the specified namespace to the gateway.
 //
 // @param request - SyncMCPServersRequest
 //
@@ -14692,7 +17104,21 @@ func (client *Client) SyncMCPServersWithOptions(request *SyncMCPServersRequest, 
 
 // Summary:
 //
-// Syncs an external MCP server.
+// Syncs MCP servers from an external Nacos registry to a gateway.
+//
+// Description:
+//
+// ## Before you begin
+//
+// Before you call this operation, complete the following preparations:
+//
+// 1. Create a Nacos instance in Microservices Engine (MSE) and register an MCP server in the instance.
+//
+// 2. Call CreateSource to register a service source for the target gateway. Set the type parameter to MSE_NACOS and point it to the Nacos instance.
+//
+// 3. Call ListGateways to obtain the system default domain name ID (subDomainInfos[].domainId) of the gateway for the domainIds parameter.
+//
+// After you complete the preceding steps, pass the gatewayId, domainIds, and namespace parameters to call this operation. This syncs the MCP servers in the specified namespace to the gateway.
 //
 // @param request - SyncMCPServersRequest
 //
@@ -14785,7 +17211,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Cancels the publishing of an MCP server.
+// Cancels the publication of an MCP server.
 //
 // @param headers - map
 //
@@ -14818,7 +17244,7 @@ func (client *Client) UnDeployMcpServerWithOptions(mcpServerId *string, headers 
 
 // Summary:
 //
-// Cancels the publishing of an MCP server.
+// Cancels the publication of an MCP server.
 //
 // @return UnDeployMcpServerResponse
 func (client *Client) UnDeployMcpServer(mcpServerId *string) (_result *UnDeployMcpServerResponse, _err error) {
@@ -14963,7 +17389,7 @@ func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPlugi
 
 // Summary:
 //
-// Takes a publication record of an API product offline based on the API product ID and publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is created by the PublishProduct operation and can be queried by using the ListProductPublications operation. This operation only affects the publication record and does not delete the API product itself. To delete a product, use the DeleteProduct operation. The response returns only the requestId, code, and message.
+// Unpublishes a publication record of an API product based on the API product ID and publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is generated by PublishProduct and can be queried by ListProductPublications. This operation only affects the publication record and does not delete the API product itself. To delete a product, use DeleteProduct. The response returns only the requestId, code, and message.
 //
 // @param request - UnpublishProductRequest
 //
@@ -15004,7 +17430,7 @@ func (client *Client) UnpublishProductWithOptions(productId *string, publication
 
 // Summary:
 //
-// Takes a publication record of an API product offline based on the API product ID and publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is created by the PublishProduct operation and can be queried by using the ListProductPublications operation. This operation only affects the publication record and does not delete the API product itself. To delete a product, use the DeleteProduct operation. The response returns only the requestId, code, and message.
+// Unpublishes a publication record of an API product based on the API product ID and publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is generated by PublishProduct and can be queried by ListProductPublications. This operation only affects the publication record and does not delete the API product itself. To delete a product, use DeleteProduct. The response returns only the requestId, code, and message.
 //
 // @param request - UnpublishProductRequest
 //
@@ -15023,7 +17449,7 @@ func (client *Client) UnpublishProduct(productId *string, publicationId *string,
 
 // Summary:
 //
-// Removes tags from resources.
+// Removes resource tags.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -15092,7 +17518,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 
 // Summary:
 //
-// Removes tags from resources.
+// Removes resource tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -15214,6 +17640,10 @@ func (client *Client) UpdateAiModelProviderWithOptions(modelProviderId *string, 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DefaultServiceId) {
+		body["defaultServiceId"] = request.DefaultServiceId
+	}
+
 	if !dara.IsNil(request.DisplayName) {
 		body["displayName"] = request.DisplayName
 	}
@@ -15258,6 +17688,166 @@ func (client *Client) UpdateAiModelProvider(modelProviderId *string, request *Up
 	headers := make(map[string]*string)
 	_result = &UpdateAiModelProviderResponse{}
 	_body, _err := client.UpdateAiModelProviderWithOptions(modelProviderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a standalone AI model source.
+//
+// @param request - UpdateAiModelSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAiModelSourceResponse
+func (client *Client) UpdateAiModelSourceWithOptions(modelSourceId *string, request *UpdateAiModelSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAiModelSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAiModelSource"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-sources/" + dara.PercentEncode(dara.StringValue(modelSourceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAiModelSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a standalone AI model source.
+//
+// @param request - UpdateAiModelSourceRequest
+//
+// @return UpdateAiModelSourceResponse
+func (client *Client) UpdateAiModelSource(modelSourceId *string, request *UpdateAiModelSourceRequest) (_result *UpdateAiModelSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAiModelSourceResponse{}
+	_body, _err := client.UpdateAiModelSourceWithOptions(modelSourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an AI model in a source.
+//
+// @param request - UpdateAiModelSourceModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAiModelSourceModelResponse
+func (client *Client) UpdateAiModelSourceModelWithOptions(modelCardId *string, request *UpdateAiModelSourceModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAiModelSourceModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AvailablePaths) {
+		body["availablePaths"] = request.AvailablePaths
+	}
+
+	if !dara.IsNil(request.Credit) {
+		body["credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.Features) {
+		body["features"] = request.Features
+	}
+
+	if !dara.IsNil(request.Meta) {
+		body["meta"] = request.Meta
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["modelName"] = request.ModelName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAiModelSourceModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-source-models/" + dara.PercentEncode(dara.StringValue(modelCardId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAiModelSourceModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an AI model in a source.
+//
+// @param request - UpdateAiModelSourceModelRequest
+//
+// @return UpdateAiModelSourceModelResponse
+func (client *Client) UpdateAiModelSourceModel(modelCardId *string, request *UpdateAiModelSourceModelRequest) (_result *UpdateAiModelSourceModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAiModelSourceModelResponse{}
+	_body, _err := client.UpdateAiModelSourceModelWithOptions(modelCardId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15423,7 +18013,7 @@ func (client *Client) UpdateAuthorizationRule(consumerAuthorizationRuleId *strin
 
 // Summary:
 //
-// Adds or removes API products from a specified product category in bulk. The path parameter specifies the category ID. The action field in the request body specifies the operation type, and the productIds field specifies the list of API product IDs to be processed. The response returns only the request ID, status code, and message, and does not return the processing result for each item.
+// Adds or removes API products in batches under a specified product category. The path parameter specifies the category ID, the action in the request body specifies the operation direction, and productIds specifies the list of API product IDs to process. The response returns only the requestId, code, and message, without item-level processing results.
 //
 // @param request - UpdateCategoryProductsRequest
 //
@@ -15474,7 +18064,7 @@ func (client *Client) UpdateCategoryProductsWithOptions(categoryId *string, requ
 
 // Summary:
 //
-// Adds or removes API products from a specified product category in bulk. The path parameter specifies the category ID. The action field in the request body specifies the operation type, and the productIds field specifies the list of API product IDs to be processed. The response returns only the request ID, status code, and message, and does not return the processing result for each item.
+// Adds or removes API products in batches under a specified product category. The path parameter specifies the category ID, the action in the request body specifies the operation direction, and productIds specifies the list of API product IDs to process. The response returns only the requestId, code, and message, without item-level processing results.
 //
 // @param request - UpdateCategoryProductsRequest
 //
@@ -15518,6 +18108,10 @@ func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *Upd
 		body["apikeyIdentityConfig"] = request.ApikeyIdentityConfig
 	}
 
+	if !dara.IsNil(request.ClearExpireAt) {
+		body["clearExpireAt"] = request.ClearExpireAt
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -15526,8 +18120,20 @@ func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *Upd
 		body["enable"] = request.Enable
 	}
 
+	if !dara.IsNil(request.EnableAfterRenewal) {
+		body["enableAfterRenewal"] = request.EnableAfterRenewal
+	}
+
+	if !dara.IsNil(request.ExpireAt) {
+		body["expireAt"] = request.ExpireAt
+	}
+
 	if !dara.IsNil(request.JwtIdentityConfig) {
 		body["jwtIdentityConfig"] = request.JwtIdentityConfig
+	}
+
+	if !dara.IsNil(request.Renew) {
+		body["renew"] = request.Renew
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -15577,7 +18183,7 @@ func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumer
 //
 // Summary:
 //
-// Updates the consumer authorization rule.
+// Updates a consumer authorization rule.
 //
 // Description:
 //
@@ -15638,7 +18244,7 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *str
 //
 // Summary:
 //
-// Updates the consumer authorization rule.
+// Updates a consumer authorization rule.
 //
 // Description:
 //
@@ -16123,7 +18729,7 @@ func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, requ
 
 // Summary:
 //
-// Updates a Gateway Load Balancer (GWLB).
+// Updates a gateway load balancer.
 //
 // @param request - UpdateGatewayLoadBalancerRequest
 //
@@ -16178,7 +18784,7 @@ func (client *Client) UpdateGatewayLoadBalancerWithOptions(gatewayId *string, re
 
 // Summary:
 //
-// Updates a Gateway Load Balancer (GWLB).
+// Updates a gateway load balancer.
 //
 // @param request - UpdateGatewayLoadBalancerRequest
 //
@@ -16197,11 +18803,11 @@ func (client *Client) UpdateGatewayLoadBalancer(gatewayId *string, request *Upda
 
 // Summary:
 //
-// Modifies the O&M window of a gateway.
+// Updates the O&M window of a gateway.
 //
 // Description:
 //
-// Modifies the O&M time window of a gateway. This feature is supported only by specific gateway types. If the current gateway does not support modifying the O&M time window, the API returns 409 Conflict.GatewayNotSupportAutoMaintenance.
+// Updates the O&M time window of a gateway. This feature is supported only by specific gateway types. If the current gateway does not support modifying the O&M time window, the API returns 409 Conflict.GatewayNotSupportAutoMaintenance.
 //
 // @param request - UpdateGatewayMaintenancePeriodRequest
 //
@@ -16248,11 +18854,11 @@ func (client *Client) UpdateGatewayMaintenancePeriodWithOptions(gatewayId *strin
 
 // Summary:
 //
-// Modifies the O&M window of a gateway.
+// Updates the O&M window of a gateway.
 //
 // Description:
 //
-// Modifies the O&M time window of a gateway. This feature is supported only by specific gateway types. If the current gateway does not support modifying the O&M time window, the API returns 409 Conflict.GatewayNotSupportAutoMaintenance.
+// Updates the O&M time window of a gateway. This feature is supported only by specific gateway types. If the current gateway does not support modifying the O&M time window, the API returns 409 Conflict.GatewayNotSupportAutoMaintenance.
 //
 // @param request - UpdateGatewayMaintenancePeriodRequest
 //
@@ -16342,11 +18948,11 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 
 // Summary:
 //
-// Modifies a quota throttling rule on a gateway.
+// Updates a quota throttling rule on a gateway.
 //
 // Description:
 //
-// This operation modifies a quota rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The modification retains the historical usage of the consumers associated with the rule.
+// This operation updates a quota rule on a gateway. Note that this operation takes effect only on AI gateways of versions later than 2.1.21. The update retains the historical usage of the consumers associated with the rule.
 //
 // > Recommended call logic:
 //
@@ -16354,13 +18960,13 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 //
 // > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview that contains a conflictHash.
+// > - - The response returns a conflict preview containing a conflictHash.
 //
-// > - 2. Submit the request after confirmation.
+// > - 2. Formally submit the request after confirmation.
 //
-// > - - If no conflicts exist: Set dryRun=false and overwrite=false.
+// > - - No conflicts: Set dryRun=false and overwrite=false.
 //
-// > - - If conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
+// > - - Conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -16435,11 +19041,11 @@ func (client *Client) UpdateGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 
 // Summary:
 //
-// Modifies a quota throttling rule on a gateway.
+// Updates a quota throttling rule on a gateway.
 //
 // Description:
 //
-// This operation modifies a quota rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The modification retains the historical usage of the consumers associated with the rule.
+// This operation updates a quota rule on a gateway. Note that this operation takes effect only on AI gateways of versions later than 2.1.21. The update retains the historical usage of the consumers associated with the rule.
 //
 // > Recommended call logic:
 //
@@ -16447,13 +19053,13 @@ func (client *Client) UpdateGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 //
 // > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview that contains a conflictHash.
+// > - - The response returns a conflict preview containing a conflictHash.
 //
-// > - 2. Submit the request after confirmation.
+// > - 2. Formally submit the request after confirmation.
 //
-// > - - If no conflicts exist: Set dryRun=false and overwrite=false.
+// > - - No conflicts: Set dryRun=false and overwrite=false.
 //
-// > - - If conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
+// > - - Conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -16476,7 +19082,7 @@ func (client *Client) UpdateGatewayQuotaRule(gatewayId *string, ruleId *string, 
 //
 // Description:
 //
-// This operation enables or disables a quota rule on a gateway. Note that this operation applies only to AI gateways of a version later than 2.1.21.
+// This operation enables or disables a quota rule on a gateway. Note that this operation takes effect only for AI gateways of a version later than 2.1.21.
 //
 // @param request - UpdateGatewayQuotaRuleStatusRequest
 //
@@ -16531,7 +19137,7 @@ func (client *Client) UpdateGatewayQuotaRuleStatusWithOptions(gatewayId *string,
 //
 // Description:
 //
-// This operation enables or disables a quota rule on a gateway. Note that this operation applies only to AI gateways of a version later than 2.1.21.
+// This operation enables or disables a quota rule on a gateway. Note that this operation takes effect only for AI gateways of a version later than 2.1.21.
 //
 // @param request - UpdateGatewayQuotaRuleStatusRequest
 //
@@ -16740,7 +19346,7 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 
 // Summary:
 //
-// Updates the route of an HTTP API.
+// Updates a route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -16775,6 +19381,10 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 	if !dara.IsNil(request.EnvironmentId) {
 		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
 	}
 
 	if !dara.IsNil(request.Match) {
@@ -16815,7 +19425,7 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 // Summary:
 //
-// Updates the route of an HTTP API.
+// Updates a route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -16834,11 +19444,111 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 
 // Summary:
 //
+// Modifies a logical model.
+//
+// @param request - UpdateLogicalModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLogicalModelResponse
+func (client *Client) UpdateLogicalModelWithOptions(logicalModelId *string, request *UpdateLogicalModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLogicalModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfirmationToken) {
+		query["confirmationToken"] = request.ConfirmationToken
+	}
+
+	if !dara.IsNil(request.ExpectedRevision) {
+		query["expectedRevision"] = request.ExpectedRevision
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallStrategy) {
+		body["callStrategy"] = request.CallStrategy
+	}
+
+	if !dara.IsNil(request.FallbackTargets) {
+		body["fallbackTargets"] = request.FallbackTargets
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ResponseModel) {
+		body["responseModel"] = request.ResponseModel
+	}
+
+	if !dara.IsNil(request.RoutingPolicy) {
+		body["routingPolicy"] = request.RoutingPolicy
+	}
+
+	if !dara.IsNil(request.Slots) {
+		body["slots"] = request.Slots
+	}
+
+	if !dara.IsNil(request.Targets) {
+		body["targets"] = request.Targets
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLogicalModel"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/logical-models/" + dara.PercentEncode(dara.StringValue(logicalModelId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLogicalModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a logical model.
+//
+// @param request - UpdateLogicalModelRequest
+//
+// @return UpdateLogicalModelResponse
+func (client *Client) UpdateLogicalModel(logicalModelId *string, request *UpdateLogicalModelRequest) (_result *UpdateLogicalModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLogicalModelResponse{}
+	_body, _err := client.UpdateLogicalModelWithOptions(logicalModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an MCP server.
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the Ingress listener configurations.
+// Only sources of the **Container Service*	- type are allowed to update the configurations of listening Ingresses.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -16881,6 +19591,10 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 
 	if !dara.IsNil(request.GrayMcpServerConfigs) {
 		body["grayMcpServerConfigs"] = request.GrayMcpServerConfigs
+	}
+
+	if !dara.IsNil(request.Instructions) {
+		body["instructions"] = request.Instructions
 	}
 
 	if !dara.IsNil(request.Match) {
@@ -16933,7 +19647,7 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the Ingress listener configurations.
+// Only sources of the **Container Service*	- type are allowed to update the configurations of listening Ingresses.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -17046,7 +19760,187 @@ func (client *Client) UpdateMigrationTask(taskId *string, request *UpdateMigrati
 
 // Summary:
 //
-// Changes the network access type of a gateway.
+// Updates a model API.
+//
+// @param request - UpdateModelApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelApiResponse
+func (client *Client) UpdateModelApiWithOptions(httpApiId *string, request *UpdateModelApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BasePath) {
+		body["basePath"] = request.BasePath
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectSupplyFallbackEnabled) {
+		body["directSupplyFallbackEnabled"] = request.DirectSupplyFallbackEnabled
+	}
+
+	if !dara.IsNil(request.DomainIds) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !dara.IsNil(request.EnableAuth) {
+		body["enableAuth"] = request.EnableAuth
+	}
+
+	if !dara.IsNil(request.FirstByteTimeout) {
+		body["firstByteTimeout"] = request.FirstByteTimeout
+	}
+
+	if !dara.IsNil(request.ModelSelection) {
+		body["modelSelection"] = request.ModelSelection
+	}
+
+	if !dara.IsNil(request.ModelSelectionDelta) {
+		body["modelSelectionDelta"] = request.ModelSelectionDelta
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PolicyConfigs) {
+		body["policyConfigs"] = request.PolicyConfigs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelApi"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-apis/" + dara.PercentEncode(dara.StringValue(httpApiId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a model API.
+//
+// @param request - UpdateModelApiRequest
+//
+// @return UpdateModelApiResponse
+func (client *Client) UpdateModelApi(httpApiId *string, request *UpdateModelApiRequest) (_result *UpdateModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelApiResponse{}
+	_body, _err := client.UpdateModelApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a model group.
+//
+// @param request - UpdateModelGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelGroupResponse
+func (client *Client) UpdateModelGroupWithOptions(modelGroupId *string, request *UpdateModelGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.ModelCardIds) {
+		body["modelCardIds"] = request.ModelCardIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/model-groups/" + dara.PercentEncode(dara.StringValue(modelGroupId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a model group.
+//
+// @param request - UpdateModelGroupRequest
+//
+// @return UpdateModelGroupResponse
+func (client *Client) UpdateModelGroup(modelGroupId *string, request *UpdateModelGroupRequest) (_result *UpdateModelGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelGroupResponse{}
+	_body, _err := client.UpdateModelGroupWithOptions(modelGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the network access type of a gateway.
 //
 // @param request - UpdateNetworkAccessRequest
 //
@@ -17093,7 +19987,7 @@ func (client *Client) UpdateNetworkAccessWithOptions(gatewayId *string, request 
 
 // Summary:
 //
-// Changes the network access type of a gateway.
+// Modifies the network access type of a gateway.
 //
 // @param request - UpdateNetworkAccessRequest
 //
@@ -17260,7 +20154,7 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 
 // Summary:
 //
-// Updates the name, description, and portal configuration of a HiMarket developer portal by portal ID. The request body is in JSON format, and a successful response returns the ID of the updated portal.
+// Updates the name, description, and portal configurations of a HiMarket developer portal by portal ID. The request body is in JSON format. A successful response returns the ID of the updated portal.
 //
 // @param request - UpdatePortalRequest
 //
@@ -17321,7 +20215,7 @@ func (client *Client) UpdatePortalWithOptions(portalId *string, request *UpdateP
 
 // Summary:
 //
-// Updates the name, description, and portal configuration of a HiMarket developer portal by portal ID. The request body is in JSON format, and a successful response returns the ID of the updated portal.
+// Updates the name, description, and portal configurations of a HiMarket developer portal by portal ID. The request body is in JSON format. A successful response returns the ID of the updated portal.
 //
 // @param request - UpdatePortalRequest
 //
@@ -17440,7 +20334,7 @@ func (client *Client) UpdateProduct(productId *string, request *UpdateProductReq
 
 // Summary:
 //
-// Updates the name, description, and icon of a product category by category ID. The request body is in JSON format, and the response returns only the request ID, response status code, and response message.
+// Updates the name, description, and icon of a product category by its ID. The request body is in JSON format, and the response returns only the request ID, response status code, and response message.
 //
 // @param request - UpdateProductCategoryRequest
 //
@@ -17495,7 +20389,7 @@ func (client *Client) UpdateProductCategoryWithOptions(categoryId *string, reque
 
 // Summary:
 //
-// Updates the name, description, and icon of a product category by category ID. The request body is in JSON format, and the response returns only the request ID, response status code, and response message.
+// Updates the name, description, and icon of a product category by its ID. The request body is in JSON format, and the response returns only the request ID, response status code, and response message.
 //
 // @param request - UpdateProductCategoryRequest
 //
@@ -17588,7 +20482,7 @@ func (client *Client) UpdateRiskNotification(gatewayId *string, request *UpdateR
 //
 // Description:
 //
-// Only sources of the **container service*	- type allow you to update the listener Ingress configuration.
+// Updates a secret. Only sources of the **Container Service*	- type are allowed to update Ingress listener configurations.
 //
 // @param request - UpdateSecretRequest
 //
@@ -17639,7 +20533,7 @@ func (client *Client) UpdateSecretWithOptions(secretId *string, request *UpdateS
 //
 // Description:
 //
-// Only sources of the **container service*	- type allow you to update the listener Ingress configuration.
+// Updates a secret. Only sources of the **Container Service*	- type are allowed to update Ingress listener configurations.
 //
 // @param request - UpdateSecretRequest
 //
@@ -17697,6 +20591,10 @@ func (client *Client) UpdateServiceWithOptions(serviceId *string, request *Updat
 
 	if !dara.IsNil(request.DnsServers) {
 		body["dnsServers"] = request.DnsServers
+	}
+
+	if !dara.IsNil(request.ExpectedConfigRevision) {
+		body["expectedConfigRevision"] = request.ExpectedConfigRevision
 	}
 
 	if !dara.IsNil(request.HealthCheckConfig) {

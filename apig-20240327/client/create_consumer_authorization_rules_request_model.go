@@ -14,7 +14,7 @@ type iCreateConsumerAuthorizationRulesRequest interface {
 }
 
 type CreateConsumerAuthorizationRulesRequest struct {
-	// The consumer authentication rules.
+	// The consumer authorization rules.
 	AuthorizationRules []*CreateConsumerAuthorizationRulesRequestAuthorizationRules `json:"authorizationRules,omitempty" xml:"authorizationRules,omitempty" type:"Repeated"`
 }
 
@@ -73,15 +73,15 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// 1741162221
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The type of the principal.
+	// The type of the authorized principal.
 	//
 	// example:
 	//
 	// ConsumerGroup
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
-	// The resource identifier, which is provided to non-standard code sources as a unique identifier for space reuse.
+	// The resource identifier, which is provided to non-standard code sources as a unique identifier for namespace reuse.
 	ResourceIdentifier *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty" type:"Struct"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 	//
 	// api-******
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
-	// The ID of the target resource for authorization. The required ID type is determined by resourceType, and the prefix must match.
+	// The ID of the target resource to be authorized. The required ID type is determined by resourceType, and the prefix must match.
 	//
 	// example:
 	//

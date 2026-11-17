@@ -30,23 +30,21 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// This parameter is required.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// The type of mount point supported by the policy.
+	// The mount point types supported by the policy. Valid values:
 	//
-	// Valid values:
+	// - HttpApi: HTTP API
 	//
-	// - HttpApi: HttpApi.
+	// - Operation: operation of the HTTP API
 	//
-	// - Operation: Operation of HttpApi.
+	// - GatewayRoute: gateway route
 	//
-	// - GatewayRoute: gateway rule.
+	// - GatewayService: gateway service
 	//
-	// - GatewayService: gateway service.
+	// - GatewayServicePort: gateway service port
 	//
-	// - GatewayServicePort: gateway service port.
+	// - Domain: gateway domain name
 	//
-	// - Domain: gateway domain name.
-	//
-	// - Gateway: gateway.
+	// - Gateway: gateway
 	//
 	// This parameter is required.
 	//
@@ -54,7 +52,9 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The configuration information. The value is a JSON string.
+	// The configuration information.
+	//
+	// JSON string.
 	//
 	// This parameter is required.
 	//

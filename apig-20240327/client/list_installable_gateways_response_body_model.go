@@ -96,7 +96,7 @@ func (s *ListInstallableGatewaysResponseBody) Validate() error {
 }
 
 type ListInstallableGatewaysResponseBodyData struct {
-	// The list of gateways.
+	// The list.
 	Items []*ListInstallableGatewaysResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,7 +176,7 @@ func (s *ListInstallableGatewaysResponseBodyData) Validate() error {
 }
 
 type ListInstallableGatewaysResponseBodyDataItems struct {
-	// The database engine version of the gateway DPI engine.
+	// The gateway DPI engine version.
 	//
 	// example:
 	//
@@ -188,25 +188,25 @@ type ListInstallableGatewaysResponseBodyDataItems struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The gateway status. The value is passed through from the GatewayPhase enumeration, such as Running or Creating.
+	// The gateway status. This is a pass-through of the GatewayPhase enum, such as Running or Creating.
 	//
 	// example:
 	//
 	// Running
 	GatewayPhase *string `json:"gatewayPhase,omitempty" xml:"gatewayPhase,omitempty"`
-	// Indicates whether the plugin can be installed on the gateway.
+	// Indicates whether the gateway is installable.
 	//
 	// example:
 	//
 	// true
 	Installable *bool `json:"installable,omitempty" xml:"installable,omitempty"`
-	// The reason why the plugin cannot be installed.
+	// The reason why the gateway is not installable.
 	//
 	// example:
 	//
 	// VERSION_NOT_MATCH
 	InstallableFalseReasonType *string `json:"installableFalseReasonType,omitempty" xml:"installableFalseReasonType,omitempty"`
-	// The version number of another version of the same plugin class that is already installed on the gateway.
+	// The version number of another plug-in of the same class that is already installed on the gateway.
 	//
 	// example:
 	//

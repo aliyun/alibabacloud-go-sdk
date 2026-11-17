@@ -98,13 +98,13 @@ func (s *ListPrivateLinkSecurityGroupsResponseBody) Validate() error {
 type ListPrivateLinkSecurityGroupsResponseBodyData struct {
 	// The source information.
 	Items []*ListPrivateLinkSecurityGroupsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this query.
+	// The maximum number of results returned in this query.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The next token.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -167,11 +167,11 @@ type ListPrivateLinkSecurityGroupsResponseBodyDataItems struct {
 	//
 	// sg-bp1ftp5sm9os***
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
-	// Product Center Cluster Security Group
+	// Product Center cluster security group
 	SecurityGroupName *string `json:"securityGroupName,omitempty" xml:"securityGroupName,omitempty"`
 	// Specifies whether the resource is created by a service account. Valid values:
 	//

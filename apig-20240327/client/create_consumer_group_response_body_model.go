@@ -102,7 +102,7 @@ type CreateConsumerGroupResponseBodyData struct {
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The gateway type. Valid values: API or AI.
+	// The gateway type. Valid values: API and AI.
 	//
 	// example:
 	//

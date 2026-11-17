@@ -131,15 +131,15 @@ func (s *ListGatewayAuthorizedSecurityGroupRulesResponseBodyData) Validate() err
 }
 
 type ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems struct {
-	// The list of authorized CIDR block addresses.
+	// The list of authorized CIDR blocks.
 	AuthCidrs []*string `json:"authCidrs,omitempty" xml:"authCidrs,omitempty" type:"Repeated"`
 	// The rule description.
 	//
 	// example:
 	//
-	// Security group authorized by the staging gateway of the product center
+	// Product Center staging gateway authorized security group
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The protocol:
+	// The protocol. Valid values:
 	//
 	// - TCP
 	//
@@ -163,9 +163,9 @@ type ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Product center cluster security group
+	// Product Center cluster security group
 	SecurityGroupName *string `json:"securityGroupName,omitempty" xml:"securityGroupName,omitempty"`
-	// The security rule ID of the cloud-native API gateway.
+	// The ID of the security rule for the cloud-native API gateway.
 	//
 	// example:
 	//

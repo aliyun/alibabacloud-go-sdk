@@ -14,7 +14,7 @@ type iBatchDeleteConsumerAuthorizationRuleRequest interface {
 }
 
 type BatchDeleteConsumerAuthorizationRuleRequest struct {
-	// The list of API consumer authorization rule IDs.
+	// The list of consumer authorization rule IDs.
 	//
 	// example:
 	//

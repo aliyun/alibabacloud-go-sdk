@@ -34,7 +34,7 @@ type CreateHttpApiRouteResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateHttpApiRouteResponseBody) Validate() error {
 }
 
 type CreateHttpApiRouteResponseBodyData struct {
-	// The route ID.
+	// The ID of the route.
 	//
 	// example:
 	//

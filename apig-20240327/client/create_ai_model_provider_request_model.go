@@ -9,6 +9,8 @@ type iCreateAiModelProviderRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDefaultServiceId(v string) *CreateAiModelProviderRequest
+	GetDefaultServiceId() *string
 	SetDisplayName(v string) *CreateAiModelProviderRequest
 	GetDisplayName() *string
 	SetGatewayId(v string) *CreateAiModelProviderRequest
@@ -22,6 +24,12 @@ type iCreateAiModelProviderRequest interface {
 }
 
 type CreateAiModelProviderRequest struct {
+	// The optional default AI service ID. If not empty, it must be a service in the current association set. Omitting this parameter indicates that no default is set. An explicit empty string clears the default. A non-empty value sets the default. The length cannot exceed 64 characters.
+	//
+	// example:
+	//
+	// svc-d00000000000000000000
+	DefaultServiceId *string `json:"defaultServiceId,omitempty" xml:"defaultServiceId,omitempty"`
 	// The display name of the model provider.
 	//
 	// This parameter is required.
@@ -46,9 +54,9 @@ type CreateAiModelProviderRequest struct {
 	//
 	// openai
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The list of service IDs to bind to the provider.
+	// The list of service IDs to associate with the provider.
 	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
-	// The client token that ensures the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
@@ -62,6 +70,10 @@ func (s CreateAiModelProviderRequest) String() string {
 
 func (s CreateAiModelProviderRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAiModelProviderRequest) GetDefaultServiceId() *string {
+	return s.DefaultServiceId
 }
 
 func (s *CreateAiModelProviderRequest) GetDisplayName() *string {
@@ -82,6 +94,11 @@ func (s *CreateAiModelProviderRequest) GetServiceIds() []*string {
 
 func (s *CreateAiModelProviderRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateAiModelProviderRequest) SetDefaultServiceId(v string) *CreateAiModelProviderRequest {
+	s.DefaultServiceId = &v
+	return s
 }
 
 func (s *CreateAiModelProviderRequest) SetDisplayName(v string) *CreateAiModelProviderRequest {

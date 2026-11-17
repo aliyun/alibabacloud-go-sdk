@@ -32,7 +32,7 @@ type ListServicesRequest struct {
 	//
 	// gw-cpv4sqdl*****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The exact name of the service to query.
+	// The name of the service for an exact match.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ListServicesRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The source type of the service. Valid values:
 	//
-	// - MSE_NACOS: Services from MSE Nacos.
+	// - MSE_NACOS: services from Microservices Engine (MSE) Nacos.
 	//
-	// - K8S: Services from Kubernetes clusters in Container Service.
+	// - K8S: services from Kubernetes clusters in Container Service for Kubernetes.
 	//
-	// - FC3: Services from Function Compute.
+	// - FC3: services from Function Compute.
 	//
-	// - VIP: Services from fixed addresses.
+	// - VIP: services from fixed addresses.
 	//
-	// - DNS: Services from domain names.
+	// - DNS: services from domain names.
 	//
 	// example:
 	//

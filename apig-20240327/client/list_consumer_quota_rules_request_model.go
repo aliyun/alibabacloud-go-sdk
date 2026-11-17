@@ -17,6 +17,8 @@ type iListConsumerQuotaRulesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListConsumerQuotaRulesRequest
 	GetPageSize() *int32
+	SetRuleStatus(v string) *ListConsumerQuotaRulesRequest
+	GetRuleStatus() *string
 }
 
 type ListConsumerQuotaRulesRequest struct {
@@ -26,7 +28,7 @@ type ListConsumerQuotaRulesRequest struct {
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The keyword in the rule name for fuzzy match.
+	// The keyword used to perform a fuzzy match on the rule name.
 	//
 	// example:
 	//
@@ -38,12 +40,18 @@ type ListConsumerQuotaRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of items per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The rule status. This parameter is optional. Valid values: enabled and disabled. If this parameter is not specified, all rules are queried.
+	//
+	// example:
+	//
+	// enabled
+	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
 }
 
 func (s ListConsumerQuotaRulesRequest) String() string {
@@ -70,6 +78,10 @@ func (s *ListConsumerQuotaRulesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListConsumerQuotaRulesRequest) GetRuleStatus() *string {
+	return s.RuleStatus
+}
+
 func (s *ListConsumerQuotaRulesRequest) SetGatewayId(v string) *ListConsumerQuotaRulesRequest {
 	s.GatewayId = &v
 	return s
@@ -87,6 +99,11 @@ func (s *ListConsumerQuotaRulesRequest) SetPageNumber(v int32) *ListConsumerQuot
 
 func (s *ListConsumerQuotaRulesRequest) SetPageSize(v int32) *ListConsumerQuotaRulesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListConsumerQuotaRulesRequest) SetRuleStatus(v string) *ListConsumerQuotaRulesRequest {
+	s.RuleStatus = &v
 	return s
 }
 

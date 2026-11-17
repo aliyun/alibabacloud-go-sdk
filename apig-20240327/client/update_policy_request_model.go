@@ -26,7 +26,7 @@ type UpdatePolicyRequest struct {
 	//
 	// {"unitNum":1,"timeUnit":"s","enable":true}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The description of the policy.
+	// The description.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iListBatchExportTasksRequest interface {
 }
 
 type ListBatchExportTasksRequest struct {
-	// The end of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The end time of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
 	//
 	// example:
 	//
 	// 2026-05-26T11:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The gateway instance ID. If specified, only tasks under this gateway are returned.
+	// The instance ID of the gateway. If specified, only tasks under this gateway are returned.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListBatchExportTasksRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The paging token that indicates the start position of the next query.
+	// The starting token for paging queries.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type ListBatchExportTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The start time of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
 	//
 	// example:
 	//

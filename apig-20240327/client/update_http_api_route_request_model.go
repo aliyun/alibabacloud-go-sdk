@@ -19,6 +19,8 @@ type iUpdateHttpApiRouteRequest interface {
 	GetDomainIds() []*string
 	SetEnvironmentId(v string) *UpdateHttpApiRouteRequest
 	GetEnvironmentId() *string
+	SetGatewayId(v string) *UpdateHttpApiRouteRequest
+	GetGatewayId() *string
 	SetMatch(v *HttpRouteMatch) *UpdateHttpApiRouteRequest
 	GetMatch() *HttpRouteMatch
 	SetMcpRouteConfig(v *UpdateHttpApiRouteRequestMcpRouteConfig) *UpdateHttpApiRouteRequest
@@ -36,16 +38,24 @@ type UpdateHttpApiRouteRequest struct {
 	//
 	// Product center service route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The current ExtProc service selection for fixed DFP routes. You can only edit mounted routes. This parameter cannot be submitted together with backendConfig, mcpRouteConfig, or policyConfigs.
+	// The ExtProc service selection for fixed DFP routes. You can only edit mounted routes. This parameter cannot be submitted together with backendConfig, mcpRouteConfig, or policyConfigs.
 	DfpConfig *UpdateHttpApiRouteRequestDfpConfig `json:"dfpConfig,omitempty" xml:"dfpConfig,omitempty" type:"Struct"`
 	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// The environment ID.
 	//
 	// example:
 	//
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The gateway ID. This parameter is used to replace the deprecated environment ID for verifying the gateway to which the route belongs. If the gateway ID does not match the gateway to which the route record belongs, the request is rejected. If the environment ID is omitted, the route ownership remains unchanged.
+	//
+	// example:
+	//
+	// gw-xxx
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The MCP route configuration.
@@ -82,6 +92,10 @@ func (s *UpdateHttpApiRouteRequest) GetEnvironmentId() *string {
 	return s.EnvironmentId
 }
 
+func (s *UpdateHttpApiRouteRequest) GetGatewayId() *string {
+	return s.GatewayId
+}
+
 func (s *UpdateHttpApiRouteRequest) GetMatch() *HttpRouteMatch {
 	return s.Match
 }
@@ -116,6 +130,11 @@ func (s *UpdateHttpApiRouteRequest) SetDomainIds(v []*string) *UpdateHttpApiRout
 
 func (s *UpdateHttpApiRouteRequest) SetEnvironmentId(v string) *UpdateHttpApiRouteRequest {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetGatewayId(v string) *UpdateHttpApiRouteRequest {
+	s.GatewayId = &v
 	return s
 }
 
@@ -218,25 +237,25 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
-	// The service group. Used in HTTP-to-Dubbo conversion scenarios.
+	// The service group. Used for HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The HTTP-to-Dubbo protocol conversion configuration. This configuration is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	// The HTTP-to-Dubbo protocol conversion configuration. Only SingleService MSE_NACOS DUBBO backends of HTTP APIs are supported.
 	//
 	// example:
 	//
 	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
 	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
-	// The name of the target model. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
+	// The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
@@ -250,9 +269,9 @@ type UpdateHttpApiRouteRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - HTTPS.
+	// - HTTPS
 	//
 	// example:
 	//

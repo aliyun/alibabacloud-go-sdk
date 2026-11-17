@@ -38,47 +38,47 @@ type iAddGatewayQuotaRuleRequest interface {
 }
 
 type AddGatewayQuotaRuleRequest struct {
-	// The hash of the conflict snapshot, which is used to prevent concurrent dirty overwrites when you confirm to overwrite. You can obtain this value by performing a dry run with dryRun set to true and extracting it from the response.
+	// The conflict snapshot hash, which is used to prevent concurrent dirty overwrites when you confirm to overwrite. You can obtain this value by first setting dryRun to true and extracting it from the response.
 	//
-	// You do not need to specify this parameter in the following scenarios: no conflicts exist, you perform only a dry run with dryRun set to true, or you do not confirm to overwrite with overwrite set to false.
+	// You do not need to specify this parameter in the following scenarios: no conflicts exist; you only perform a dry run by setting dryRun to true; or you do not confirm overwriting by setting overwrite to false.
 	//
-	// If you set dryRun to false and overwrite to true but do not specify this parameter or the parameter expires and does not match, the backend returns accepted=false and a new conflict preview. In this case, you must perform a dry run again to confirm the new conflicts.
+	// If you set dryRun to false and overwrite to true but do not specify this parameter or the parameter expires and does not match, the backend returns accepted=false along with a new conflict preview. In this case, you must perform a dry run again to confirm the new conflicts.
 	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	// The IDs of the consumer groups to which the rule is bound.
+	// The IDs of the consumer groups to which the rule is bound. This parameter is used when subjectType is set to consumer_group and cannot be specified together with consumerIds.
 	//
 	// example:
 	//
 	// group1,group2
 	ConsumerGroupIds []*string `json:"consumerGroupIds,omitempty" xml:"consumerGroupIds,omitempty" type:"Repeated"`
-	// The IDs of the consumers to which the rule is bound. You can specify up to 1,000 consumers at a time.
+	// The IDs of the consumers to which the rule is bound. You can specify up to 1,000 consumers in a single request.
 	//
 	// example:
 	//
 	// 1001,1002,1003
 	ConsumerIds []*string `json:"consumerIds,omitempty" xml:"consumerIds,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run without saving the configuration or delivering it to the gateway. A dry run checks whether conflicting rules exist on the bound subjects. A subject cannot have two natural period quotas with the same period. For example, if a subject already has a natural day quota, you cannot add another natural day quota rule to it.
+	// Specifies whether to perform only a dry run without saving or delivering the actual configuration. This is used to check whether conflicting rules exist on the bound consumption subjects. A single consumption subject cannot be configured with two natural period quotas of the same period. For example, a consumption subject that already has a natural day quota cannot be added with another natural day quota rule.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Specifies whether to allow overwriting when conflicts occur. If you allow overwriting, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
+	// Specifies whether to allow overwriting when a conflict occurs. If overwriting is allowed, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
 	//
 	// example:
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// The period multiplier in days. This parameter is required when windowAlignment is set to epoch. Valid values: 1 to 106751. Do not set this parameter for a natural period.
+	// The period multiplier in days. This parameter is required for custom period rules and applies when windowAlignment is set to epoch. Valid values: 1 to 106751. Do not set this parameter for natural periods.
 	//
 	// example:
 	//
 	// 10
 	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
-	// The period type. For a natural period, valid values are day, week, and month. For a custom period, only day is supported.
+	// The period type. For natural periods, valid values are day, week, and month. For custom periods, only day is supported.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// week
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The quota dimension or limit type. Valid values: token and credit.
+	// The quota dimension or limit type. Valid values: token, credit.
 	//
 	// This parameter is required.
 	//
@@ -110,19 +110,19 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// team-rule
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// The subject type of the rule. A value of consumer indicates a consumer, and a value of consumer_group indicates a consumer group. Default value: consumer.
+	// The subject type of the rule. Valid values: consumer, consumer_group. Default value: consumer.
 	//
 	// example:
 	//
 	// consumer_group
 	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
-	// The time zone for the natural period, in UTC+x format.
+	// The time zone for the natural period in UTC+x format.
 	//
 	// example:
 	//
 	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset period type. A value of calendar indicates a natural period, and a value of epoch indicates a custom period.
+	// The reset period type. A natural period starts from the beginning of a natural day, week, or month. A custom period starts when the rule is delivered. Valid values: calendar, epoch.
 	//
 	// example:
 	//

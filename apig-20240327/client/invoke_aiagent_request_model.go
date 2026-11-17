@@ -30,7 +30,7 @@ type InvokeAIAgentRequest struct {
 	//
 	// slsLogDiagnose
 	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
-	// The business parameters. Each agent performs custom validation. For example, pass the Simple Log Service context for log diagnostics.
+	// The business parameters. Each agent performs custom validation. For example, pass the SLS context for log diagnosis.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type InvokeAIAgentRequest struct {
 	BizParams map[string]*string `json:"bizParams,omitempty" xml:"bizParams,omitempty"`
 	// The conversation history, which includes the role (user or assistant) and content. The role and content in each element cannot be empty.
 	History []*InvokeAIAgentRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
-	// The output language. If this parameter is set to en, the default error message is displayed in English.
+	// The output language. If set to en, the default error message is in English.
 	//
 	// example:
 	//
 	// zh / en
 	OutputLanguage *string `json:"outputLanguage,omitempty" xml:"outputLanguage,omitempty"`
-	// The current user input. If this parameter is empty, a default value is used based on the scenario, such as Start.
+	// The user input for the current session. If empty, a default value is used based on the scenario, such as Start.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *InvokeAIAgentRequest) Validate() error {
 }
 
 type InvokeAIAgentRequestHistory struct {
-	// The content. The returned data is in rich text format.
+	// The content of the message. The returned data is in rich text format.
 	//
 	// example:
 	//

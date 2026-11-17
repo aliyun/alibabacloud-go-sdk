@@ -42,7 +42,7 @@ type iHttpRoute interface {
 type HttpRoute struct {
 	// The backend service.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// Indicates whether the route is a built-in system route.
+	// Specifies whether the route is a built-in system route.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type HttpRoute struct {
 	//
 	// example:
 	//
-	// 商品中心预发路由
+	// Product center staging route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ExtProc service selected for the fixed dynamic forwarding route. This field is not returned when no matching binding exists.
+	// The ExtProc service selection mounted for fixed dynamic forwarding routes. This field is not returned when no matching binding exists.
 	DfpConfig *HttpRouteDfpConfig `json:"dfpConfig,omitempty" xml:"dfpConfig,omitempty" type:"Struct"`
-	// The list of domain information.
+	// The domain name information list.
 	DomainInfos []*HttpRouteDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
 	// The environment context of the routing.
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
@@ -301,7 +301,7 @@ func (s *HttpRouteDfpConfig) Validate() error {
 }
 
 type HttpRouteDomainInfos struct {
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
@@ -365,7 +365,7 @@ type HttpRouteEnvironmentInfo struct {
 	//
 	// example:
 	//
-	// 商品中心预发环境
+	// Product center staging environment
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment ID.
 	//
@@ -381,7 +381,7 @@ type HttpRouteEnvironmentInfo struct {
 	//
 	// itemcenter-pre
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of default subdomains for the environment.
+	// The list of default second-level domain names of the environment.
 	SubDomains []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -517,7 +517,7 @@ func (s *HttpRouteEnvironmentInfoGatewayInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoSubDomains struct {
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
@@ -698,7 +698,7 @@ func (s *HttpRouteMcpServerInfo) Validate() error {
 }
 
 type HttpRouteMcpServerInfoMcpRouteConfig struct {
-	// mcp route path
+	// The URI path exposed by the MCP route.
 	//
 	// example:
 	//

@@ -137,7 +137,7 @@ type ListGatewayLoadBalancersResponseBodyDataItems struct {
 	//
 	// true
 	DefaultGatewayIngress *bool `json:"defaultGatewayIngress,omitempty" xml:"defaultGatewayIngress,omitempty"`
-	// Indicates whether the load balancer can be edited. This serves as an edit switch for load balancers during migration.
+	// Indicates whether the load balancer can be edited. This parameter serves as an edit switch for load balancers during migration.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListGatewayLoadBalancersResponseBodyDataItems struct {
 	//
 	// lb-bp1xxxx / nlb-xxxx
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// The association mode.
+	// The binding mode.
 	//
 	// example:
 	//
@@ -511,7 +511,7 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappings) 
 }
 
 type ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLoadBalancerAddresses struct {
-	// The allocation ID of the elastic IP address (EIP) corresponding to the public IP address.
+	// The EIP allocation ID corresponding to the public IP address.
 	//
 	// example:
 	//
@@ -700,7 +700,7 @@ func (s *ListGatewayLoadBalancersResponseBodyDataItemsPorts) Validate() error {
 type ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList struct {
 	// The list of associated listeners.
 	Listeners []*ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListeners `json:"listeners,omitempty" xml:"listeners,omitempty" type:"Repeated"`
-	// The ID of the virtual server group. This is VServerGroupId for Classic Load Balancer (CLB) and ServerGroupId for Network Load Balancer (NLB).
+	// The ID of the virtual server group. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId.
 	//
 	// example:
 	//
@@ -769,7 +769,7 @@ type ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListener
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The listener protocol. No backend enumeration validation is performed. The actual value is obtained from the SLB or NLB API. Common values include tcp, udp, http, https, and tls.
+	// The listener protocol. No backend enum verification is performed. The actual value is retrieved from the SLB or NLB POP API. Common values include tcp, udp, http, https, and tls.
 	//
 	// example:
 	//

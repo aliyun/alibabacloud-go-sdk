@@ -20,13 +20,13 @@ type iAiPluginStatus interface {
 type AiPluginStatus struct {
 	// The list of plug-in runtime error logs. Each item is a map[string]any key-value pair.
 	ErrorLogs []map[string]interface{} `json:"errorLogs,omitempty" xml:"errorLogs,omitempty" type:"Repeated"`
-	// The plug-in instance ID.
+	// The ID of the plug-in instance.
 	//
 	// example:
 	//
 	// pi-xxx
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// Indicates whether the backend service that the plugin depends on is healthy.
+	// Indicates whether the backend service on which the plug-in depends is healthy.
 	//
 	// example:
 	//

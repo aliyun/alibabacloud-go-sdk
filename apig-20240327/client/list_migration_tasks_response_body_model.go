@@ -96,7 +96,7 @@ func (s *ListMigrationTasksResponseBody) Validate() error {
 }
 
 type ListMigrationTasksResponseBodyData struct {
-	// The list of migration tasks.
+	// The items.
 	Items []*ListMigrationTasksResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -188,7 +188,7 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	//
 	// api-name
 	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
-	// The source ACK cluster. A hyphen (-) is displayed if the cluster name fails to be queried.
+	// The source ACK cluster ID. A hyphen (-) is returned if the name query fails.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	//
 	// vpc_hz_domain_1
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The namespace for SLB traffic switching.
+	// The namespace for SLB traffic shifting.
 	//
 	// example:
 	//
 	// default
 	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
-	// The creation time, in Unix seconds.
+	// The creation time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	//
 	// prod-gateway
 	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
-	// The monitored Ingress Class configuration.
+	// The Ingress class of the listener.
 	IngressConfig *ListMigrationTasksResponseBodyDataItemsIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
 	// The migration type. Currently, only Nginx Ingress is supported.
 	//
@@ -250,7 +250,7 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	//
 	// nginx-ingress-lb
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The ID of the SLB instance used for traffic switching.
+	// The ID of the SLB instance for traffic shifting.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	//
 	// FlowSwitch
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The traffic switching method. Valid values: DNS and SLB.
+	// The traffic shifting method. Valid values: DNS and SLB.
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	//
 	// mt-xxxxxxxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The ID of the user to whom the task belongs.
+	// The ID of the owner user.
 	//
 	// example:
 	//
@@ -282,7 +282,7 @@ type ListMigrationTasksResponseBodyDataItems struct {
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 	// The list of virtual server groups.
 	VirtualServices []*ListMigrationTasksResponseBodyDataItemsVirtualServices `json:"virtualServices,omitempty" xml:"virtualServices,omitempty" type:"Repeated"`
-	// The weight of the service on the API gateway side in the legacy workflow. Valid values: 0 to 100.
+	// The service weight on the APIG side in the legacy process. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -497,13 +497,13 @@ func (s *ListMigrationTasksResponseBodyDataItems) Validate() error {
 }
 
 type ListMigrationTasksResponseBodyDataItemsIngressConfig struct {
-	// The monitored Ingress Class.
+	// The Ingress class of the listener.
 	//
 	// example:
 	//
 	// nginx
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// The monitored namespace.
+	// The namespace watched by the listener.
 	//
 	// example:
 	//
@@ -542,25 +542,25 @@ func (s *ListMigrationTasksResponseBodyDataItemsIngressConfig) Validate() error 
 }
 
 type ListMigrationTasksResponseBodyDataItemsVirtualServices struct {
-	// The listener port. Valid values: 1 to 65535. This parameter is required in Step 3 of the frontend form.
+	// The listening port. Valid values: 1 to 65535. This field is required in Step 3 on the frontend.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The listener protocol. This parameter is required for CLB migration. During MSE migration validation, CLB requests without a protocol are directly rejected. See migrationtask.go#L95-L97. This parameter can be left empty for NLB scenarios.
+	// The listening protocol. This field is required for CLB migration. If the protocol is missing during MSE migration validation for CLB, the request is directly rejected. This field can be left empty for NLB scenarios.
 	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The virtual server group ID. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId. This parameter is required in Step 3 of the frontend form.
+	// The virtual server group ID. For CLB, this is VServerGroupId. For NLB, this is ServerGroupId. This field is required in the Step 3 form on the frontend and is validated to be non-empty.
 	//
 	// example:
 	//
 	// rsp-xxxx
 	VirtualServiceGroupId *string `json:"virtualServiceGroupId,omitempty" xml:"virtualServiceGroupId,omitempty"`
-	// The name of the virtual server group.
+	// The name of the group.
 	//
 	// example:
 	//

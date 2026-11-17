@@ -44,7 +44,7 @@ type ListBatchExportTasksResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next query. This value is empty when no more results are available.
+	// The starting token for the next query. This parameter is empty when no more results are available.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListBatchExportTasksResponseBody) Validate() error {
 }
 
 type ListBatchExportTasksResponseBodyData struct {
-	// The list of tasks, returned in reverse chronological order with the most recent tasks first.
+	// The list of tasks. Tasks are returned in descending order of creation time, with the latest tasks first.
 	Items []*ListBatchExportTasksResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,7 +138,7 @@ type ListBatchExportTasksResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ListBatchExportTasksResponseBodyData) Validate() error {
 }
 
 type ListBatchExportTasksResponseBodyDataItems struct {
-	// The task creation time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The creation time of the task. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type ListBatchExportTasksResponseBodyDataItems struct {
 	//
 	// some apis failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The gateway instance ID associated with the task.
+	// The instance ID of the gateway associated with the task.
 	//
 	// example:
 	//
@@ -234,29 +234,19 @@ type ListBatchExportTasksResponseBodyDataItems struct {
 	//
 	// 5
 	ProcessedCount *int32 `json:"processedCount,omitempty" xml:"processedCount,omitempty"`
-	// The task status. Valid values:
-	//
-	// - Pending: The task is pending.
-	//
-	// - Running: The task is running.
-	//
-	// - Success: All items succeeded.
-	//
-	// - PartialSuccess: Some items succeeded.
-	//
-	// - Failed: All items failed.
+	// The status of the task. Valid values: Pending, Running, Success, PartialSuccess, and Failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// task-xxx
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The task type.
+	// The type of the task.
 	//
 	// example:
 	//

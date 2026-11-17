@@ -38,7 +38,7 @@ type iDataPathConfigsFieldPathsValue interface {
 }
 
 type DataPathConfigsFieldPathsValue struct {
-	// The identity key of the field, which is unique within the same request path, such as input_token.
+	// The identity key of the field, which is unique within the same URI of the request, such as input_token.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// usage.prompt_tokens
 	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
-	// The value rule for the field.
+	// The value extraction rule for the field.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// usage
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The message direction of the field, which indicates whether the field is extracted from the request or the response.
+	// The message direction of the field, which indicates whether it is extracted from the request or the response.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// true
 	RecordEnabled *bool `json:"recordEnabled,omitempty" xml:"recordEnabled,omitempty"`
-	// Indicates whether the collection status of the field can be toggled.
+	// Indicates whether the collection switch for the field can be toggled.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// true
 	JsonPathRewriteAllowed *bool `json:"jsonPathRewriteAllowed,omitempty" xml:"jsonPathRewriteAllowed,omitempty"`
-	// Indicates whether the field configuration is from a field template.
+	// Indicates whether the field configuration is derived from a field template.
 	//
 	// example:
 	//

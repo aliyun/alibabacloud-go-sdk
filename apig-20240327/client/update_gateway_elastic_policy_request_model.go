@@ -45,7 +45,7 @@ func (s *UpdateGatewayElasticPolicyRequest) Validate() error {
 }
 
 type UpdateGatewayElasticPolicyRequestElasticPolicy struct {
-	// Specifies whether to enable the elastic policy. A value of false indicates that the elastic policy is disabled. When the elastic policy is disabled, other fields are not validated and the system directly proceeds with the disabling process.
+	// Specifies whether to enable elastic scaling. A value of false indicates that elastic scaling is disabled. When disabled, other fields are not validated and the disabling process is executed directly.
 	//
 	// example:
 	//
@@ -57,9 +57,9 @@ type UpdateGatewayElasticPolicyRequestElasticPolicy struct {
 	//
 	// CronHPA
 	ElasticType *string `json:"elasticType,omitempty" xml:"elasticType,omitempty"`
-	// The time periods during which AutoHPA is allowed to scale out, specified by startTime and endTime.
+	// The time periods during which AutoHPA is allowed to scale out (startTime/endTime).
 	EnableScaleTimePolicyList []*UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList `json:"enableScaleTimePolicyList,omitempty" xml:"enableScaleTimePolicyList,omitempty" type:"Repeated"`
-	// Specifies whether to enable the AutoHPA load alert threshold.
+	// Specifies whether to enable the load alert threshold for AutoHPA.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ func (s *UpdateGatewayElasticPolicyRequestElasticPolicy) Validate() error {
 }
 
 type UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList struct {
-	// The O&M end time in the HH:mm format.
+	// The O&M end time (HH:mm).
 	//
 	// example:
 	//
 	// 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The O&M start time in the HH:mm format.
+	// The O&M start time (HH:mm).
 	//
 	// example:
 	//
@@ -205,13 +205,13 @@ func (s *UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList
 }
 
 type UpdateGatewayElasticPolicyRequestElasticPolicyTimePolicyList struct {
-	// The O&M end time in the HH:mm format.
+	// The O&M end time (HH:mm).
 	//
 	// example:
 	//
 	// 06:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The O&M start time in the HH:mm format.
+	// The O&M start time (HH:mm).
 	//
 	// example:
 	//

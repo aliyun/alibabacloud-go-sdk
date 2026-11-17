@@ -96,13 +96,13 @@ func (s *GetPluginClassResponseBody) Validate() error {
 }
 
 type GetPluginClassResponseBodyData struct {
-	// The plug-in alias.
+	// The alias of the plugin.
 	//
 	// example:
 	//
 	// Key Auth
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The plug-in description.
+	// The description of the plugin.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type GetPluginClassResponseBodyData struct {
 	//
 	// doc-key-auth
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// The plug-in name.
+	// The name of the plugin.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type GetPluginClassResponseBodyData struct {
 	//
 	// Success
 	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
-	// The plug-in type.
+	// The type of the plugin.
 	//
 	// example:
 	//
 	// Auth
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The programming language of the Wasm plug-in.
+	// The programming language of the Wasm plugin.
 	//
 	// example:
 	//

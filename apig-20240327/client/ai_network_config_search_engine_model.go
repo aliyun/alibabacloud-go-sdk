@@ -38,7 +38,7 @@ type AiNetworkConfigSearchEngine struct {
 	//
 	// sk-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The content mode. This parameter is specific to Quark.
+	// Quark-specific: the content mode.
 	//
 	// example:
 	//
@@ -56,13 +56,17 @@ type AiNetworkConfigSearchEngine struct {
 	//
 	// https://cloud-iqs.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The industry filter. This parameter is specific to Quark.
+	// Quark-specific: the industry filter.
 	//
 	// example:
 	//
 	// Internet
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
 	// The search engine-specific parameters in key-value pair format.
+	//
+	// example:
+	//
+	// {"market":"zh-CN"}
 	OptionArgs map[string]*string `json:"optionArgs,omitempty" xml:"optionArgs,omitempty"`
 	// The offset of the search results.
 	//
@@ -70,13 +74,13 @@ type AiNetworkConfigSearchEngine struct {
 	//
 	// 0
 	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`
-	// The time range filter. This parameter is specific to Quark.
+	// Quark-specific: the time range filter.
 	//
 	// example:
 	//
 	// 7d
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
-	// The timeout period for the API call, in milliseconds.
+	// The API call timeout in milliseconds.
 	//
 	// example:
 	//

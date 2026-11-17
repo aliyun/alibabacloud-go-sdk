@@ -26,7 +26,7 @@ type BatchImportHttpApisResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *BatchImportHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//

@@ -46,7 +46,7 @@ type UpdateProductRequest struct {
 	//
 	// The invocation methods, parameters, and billing instructions for this product
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// The capability configuration of the API product. Currently, this parameter only includes the modelFeature member, which contains the model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal fields.
+	// The capability configuration of the API product. Currently, this configuration only includes the modelFeature member, which contains the model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal fields.
 	Feature *HiMarketProductFeature `json:"feature,omitempty" xml:"feature,omitempty"`
 	// The icon configuration of the API product, which consists of the icon type (type) and icon information (value) fields.
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`

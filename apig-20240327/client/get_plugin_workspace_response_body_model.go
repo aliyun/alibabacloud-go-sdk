@@ -102,7 +102,7 @@ type GetPluginWorkspaceResponseBodyData struct {
 	//
 	// 664f1e2xxxx
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	// The ID of the most recent pipeline run. This parameter is not returned if the plugin has never been built.
+	// The ID of the most recent pipeline run. This parameter is not returned if no build has been executed.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type GetPluginWorkspaceResponseBodyData struct {
 	//
 	// 12345678
 	RepoId *string `json:"repoId,omitempty" xml:"repoId,omitempty"`
-	// The repository name (the English ID of the plugin).
+	// The repository name, which is the English ID of the plug-in.
 	//
 	// example:
 	//
 	// my-custom-plugin
 	RepoName *string `json:"repoName,omitempty" xml:"repoName,omitempty"`
-	// The OSS download URL of the compiled WASM build output. This parameter is returned only when the pipeline status is SUCCESS.
+	// The OSS download URL for the Wasm build output. This parameter is returned only when the pipeline status is SUCCESS.
 	//
 	// example:
 	//

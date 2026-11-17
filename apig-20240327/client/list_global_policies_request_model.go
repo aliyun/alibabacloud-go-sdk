@@ -38,31 +38,31 @@ type iListGlobalPoliciesRequest interface {
 }
 
 type ListGlobalPoliciesRequest struct {
-	// The attached resource type to filter by. This parameter takes effect only when globalPolicyType is set to BlackOrWhite. If this parameter is not specified, Gateway, Domain, and Route resources are queried.
+	// Filters by mounted resource type. This parameter takes effect only for the BlackOrWhite policy type. By default, the Gateway, Domain, and Route types are queried.
 	//
 	// example:
 	//
 	// Gateway
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The policy class name. Separate multiple values with commas (server-side strings.Split).
+	// The policy class name. You can specify multiple values separated by commas.
 	//
 	// example:
 	//
 	// JWTAuth,OIDCAuth,ExternalZAuth
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// The enabling status to filter by.
+	// Filters by enabling status.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The environment ID to filter by.
+	// Filters by environment ID.
 	//
 	// example:
 	//
 	// env-xxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The gateway ID to filter by (attachment dimension).
+	// Filters by gateway ID at the attachment level.
 	//
 	// example:
 	//
@@ -74,31 +74,31 @@ type ListGlobalPoliciesRequest struct {
 	//
 	// GlobalAuth
 	GlobalPolicyType *string `json:"globalPolicyType,omitempty" xml:"globalPolicyType,omitempty"`
-	// The IP content to filter by. A LIKE match is performed on the config field.
+	// Filters by IP content by performing a LIKE query on the configuration.
 	//
 	// example:
 	//
 	// 1.2.3.4
 	IpAccessControlContent *string `json:"ipAccessControlContent,omitempty" xml:"ipAccessControlContent,omitempty"`
-	// The protocol layer to filter by. L4 queries config entries that contain L4. L7 queries config entries that do not contain L4.
+	// Filters by protocol layer. If you specify L4, configurations containing L4 are queried. If you specify L7, configurations that do not contain L4 are queried.
 	//
 	// example:
 	//
 	// L7
 	IpAccessControlProtocolLayer *string `json:"ipAccessControlProtocolLayer,omitempty" xml:"ipAccessControlProtocolLayer,omitempty"`
-	// The resource name to filter by. A LIKE match is performed on the config field.
+	// Filters by resource name by performing a LIKE query on the configuration.
 	//
 	// example:
 	//
 	// my-route
 	IpAccessControlResourceName *string `json:"ipAccessControlResourceName,omitempty" xml:"ipAccessControlResourceName,omitempty"`
-	// The IP access control type to filter by. A LIKE match is performed on the config field.
+	// Filters by IP access control type by performing a LIKE query on the configuration.
 	//
 	// example:
 	//
 	// White / Black
 	IpAccessControlType *string `json:"ipAccessControlType,omitempty" xml:"ipAccessControlType,omitempty"`
-	// The exact policy name to filter by.
+	// Filters by exact policy name.
 	//
 	// example:
 	//

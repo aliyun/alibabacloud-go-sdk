@@ -17,6 +17,10 @@ type iListPoliciesRequest interface {
 	GetEnvironmentId() *string
 	SetGatewayId(v string) *ListPoliciesRequest
 	GetGatewayId() *string
+	SetPageNumber(v int32) *ListPoliciesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListPoliciesRequest
+	GetPageSize() *int32
 	SetWithAttachments(v bool) *ListPoliciesRequest
 	GetWithAttachments() *bool
 	SetWithSystemPolicy(v bool) *ListPoliciesRequest
@@ -24,17 +28,17 @@ type iListPoliciesRequest interface {
 }
 
 type ListPoliciesRequest struct {
-	// The attachment point ID.
+	// The ID of the mount point.
 	//
 	// example:
 	//
 	// api-cq7l5s5lhtgi6qasrdc0
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of attachment point supported by the policy.
+	// The type of mount points supported by the policy. Valid values:
 	//
 	// - HttpApi: HTTP API.
 	//
-	// - Operation: Operation of an HTTP API.
+	// - Operation: The operation of the HTTP API.
 	//
 	// - GatewayRoute: Gateway route.
 	//
@@ -50,19 +54,31 @@ type ListPoliciesRequest struct {
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The environment ID.
+	// The ID of the environment.
 	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The gateway ID.
+	// The ID of the gateway.
 	//
 	// example:
 	//
 	// gw-cq2fm65lhtgm9nrrl7ag
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Specifies whether to return attachment information.
+	// The page number. Pages start from 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Specifies whether to return mount information.
 	//
 	// example:
 	//
@@ -100,6 +116,14 @@ func (s *ListPoliciesRequest) GetGatewayId() *string {
 	return s.GatewayId
 }
 
+func (s *ListPoliciesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListPoliciesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *ListPoliciesRequest) GetWithAttachments() *bool {
 	return s.WithAttachments
 }
@@ -125,6 +149,16 @@ func (s *ListPoliciesRequest) SetEnvironmentId(v string) *ListPoliciesRequest {
 
 func (s *ListPoliciesRequest) SetGatewayId(v string) *ListPoliciesRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetPageNumber(v int32) *ListPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetPageSize(v int32) *ListPoliciesRequest {
+	s.PageSize = &v
 	return s
 }
 

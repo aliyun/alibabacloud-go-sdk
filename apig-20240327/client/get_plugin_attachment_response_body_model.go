@@ -108,13 +108,13 @@ type GetPluginAttachmentResponseBodyData struct {
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
 	// The parent mounted resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
-	// The plugin attachment ID.
+	// The ID of the plugin attachment.
 	//
 	// example:
 	//
 	// pa-d05f1tmm1hku195dd8j0
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plugin class information.
+	// The plugin type information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
 	// The Base64-encoded content of the original plugin configuration.
 	//

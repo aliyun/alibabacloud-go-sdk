@@ -22,23 +22,23 @@ type iSyncMCPServersRequest interface {
 }
 
 type SyncMCPServersRequest struct {
-	// The domain name IDs.
+	// The list of domain name IDs. You can obtain the system default domain name ID from the subDomainInfos[].domainId field in the ListGateways response. Note: This parameter is required. If you do not specify this parameter, the API returns the InvalidParameter.IsEmpty (400) error.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// The gateway ID.
+	// The ID of the gateway. Note: This parameter is required. If you do not specify this parameter, the API returns the InvalidParameter.IsEmpty (400) error.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The list of Nacos MCP servers to sync. If the list contains MCP servers that have already been synced, include the mcpServerId.
+	// The list of Nacos MCP servers to sync. If the list includes an already synced MCP server, you must specify the mcpServerId parameter.
 	NacosMcpServers []*SyncMCPServersRequestNacosMcpServers `json:"nacosMcpServers,omitempty" xml:"nacosMcpServers,omitempty" type:"Repeated"`
-	// The Nacos namespace.
+	// The Nacos namespace. Note: This parameter is required. If you do not specify this parameter, the API returns the InvalidParameter.IsEmpty (400) error.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The source ID.
+	// The ID of the source.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *SyncMCPServersRequest) Validate() error {
 }
 
 type SyncMCPServersRequestNacosMcpServers struct {
-	// The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
+	// The exposed URI path. This parameter is required when the protocol is SSE or StreamableHTTP and the type is RealMCP.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ type SyncMCPServersRequestNacosMcpServers struct {
 	//
 	// mse-24afmoioxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// MCP Server ID
+	// The unique ID of the MCP server.
 	//
 	// example:
 	//
 	// mcp-d3s8qo6m1hknegofa3bg
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP server name.
+	// The name of the MCP server.
 	//
 	// example:
 	//

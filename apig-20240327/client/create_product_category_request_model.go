@@ -18,7 +18,7 @@ type iCreateProductCategoryRequest interface {
 }
 
 type CreateProductCategoryRequest struct {
-	// The description of the product category. Maximum length: 500 characters.
+	// The description of the product category. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type CreateProductCategoryRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The icon of the product category, which consists of the icon type and icon information fields.
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
-	// The name of the product category. Maximum length: 100 characters.
+	// The name of the product category. The name can be up to 100 characters in length.
 	//
 	// example:
 	//

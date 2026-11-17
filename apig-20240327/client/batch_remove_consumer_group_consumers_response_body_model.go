@@ -20,7 +20,7 @@ type iBatchRemoveConsumerGroupConsumersResponseBody interface {
 }
 
 type BatchRemoveConsumerGroupConsumersResponseBody struct {
-	// The response status code. Returns Ok if the request succeeds.
+	// The response status code. Ok is returned if the request is successful.
 	//
 	// example:
 	//

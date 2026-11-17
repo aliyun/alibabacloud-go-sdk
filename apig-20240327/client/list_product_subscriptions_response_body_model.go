@@ -188,13 +188,13 @@ type ListProductSubscriptionsResponseBodyDataContent struct {
 	//
 	// consumer-1
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
-	// The ID of the subscribed API product, which is the primary ID of the API product resource. This ID is the same as the productId path parameter of this operation.
+	// The ID of the subscribed API product. This is the primary ID of the API product resource and is the same as the productId path parameter of this operation.
 	//
 	// example:
 	//
 	// product-xxxxxxxx
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// The name of the subscribed API product, which is the Name property of the API product resource.
+	// The name of the subscribed API product. This is the Name property of the API product resource.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type ListProductSubscriptionsResponseBodyDataContent struct {
 	//
 	// MCP_SERVER
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	// The subscription status. Valid values: PENDING and APPROVED. The valid values are defined in the enum of the status request parameter, and this response parameter is not annotated with @enums.
+	// The subscription status. Valid values: PENDING and APPROVED. The valid values are defined in the status request parameter.
 	//
 	// example:
 	//

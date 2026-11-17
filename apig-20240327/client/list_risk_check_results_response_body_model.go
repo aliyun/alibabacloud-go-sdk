@@ -32,7 +32,7 @@ type ListRiskCheckResultsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The risk detection results.
 	Data *ListRiskCheckResultsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of records to return in the current request.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListRiskCheckResultsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token. This parameter is empty if no more pages are available.
+	// The pagination token. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ type ListRiskCheckResultsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//

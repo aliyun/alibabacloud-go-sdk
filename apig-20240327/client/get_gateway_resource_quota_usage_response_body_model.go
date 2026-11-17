@@ -112,7 +112,7 @@ type GetGatewayResourceQuotaUsageResponseBodyData struct {
 	//
 	// [{"quotaKey":"Route","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":12,"limit":800},{"quotaKey":"ConsumerAuthorizationRule","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":20,"limit":1000},{"quotaKey":"McpServer","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":false},{"quotaKey":"Domain","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":2,"limit":100},{"quotaKey":"Service","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":5,"limit":800},{"quotaKey":"ConsumerQuotaRule","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":0,"limit":1000},{"quotaKey":"K8sServiceSource","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":1,"limit":3},{"quotaKey":"InstalledPlugin","usedScope":"GATEWAY","limitScope":"GATEWAY","applicable":true,"used":2,"limit":5},{"quotaKey":"CustomPlugin","usedScope":"ACCOUNT_REGION","limitScope":"ACCOUNT_GATEWAY_TYPE","applicable":false}]
 	Items []*GetGatewayResourceQuotaUsageResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The time when the statistics collection was completed.
+	// The statistics completion time.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ func (s *GetGatewayResourceQuotaUsageResponseBodyData) Validate() error {
 }
 
 type GetGatewayResourceQuotaUsageResponseBodyDataItems struct {
-	// Specifies whether the quota value is provided.
+	// Indicates whether the quota value is provided.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type GetGatewayResourceQuotaUsageResponseBodyDataItems struct {
 	//
 	// 12
 	Used *int64 `json:"used,omitempty" xml:"used,omitempty"`
-	// The scope of usage statistics.
+	// The usage statistics scope.
 	//
 	// example:
 	//

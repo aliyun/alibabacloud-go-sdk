@@ -26,7 +26,7 @@ type ListExternalServicesResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The list of APIs.
+	// The list of operations.
 	Data *ListExternalServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//

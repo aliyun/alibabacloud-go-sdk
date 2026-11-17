@@ -20,13 +20,13 @@ type iListSecretsRequest interface {
 }
 
 type ListSecretsRequest struct {
-	// The gateway type used for filtering. Valid values: **AI*	- and **API**.
+	// The gateway type for filtering. Supported gateway types: **AI*	- and **API**.
 	//
 	// example:
 	//
 	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The key name. Fuzzy match is supported.
+	// The name of the secret for fuzzy match.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListModelCardsRequest interface {
 }
 
 type ListModelCardsRequest struct {
-	// The identifier of the model provider used to filter model cards by provider.
+	// The model provider identifier used to filter model cards by provider.
 	//
 	// example:
 	//

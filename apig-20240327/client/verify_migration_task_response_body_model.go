@@ -102,13 +102,13 @@ type VerifyMigrationTaskResponseBodyData struct {
 	//
 	// true
 	IsSupported *bool `json:"isSupported,omitempty" xml:"isSupported,omitempty"`
-	// The description of the check result, such as the failure cause or incompatibility summary, which is derived from the Istio validation reason.
+	// The description of the check result, such as the cause of failure or incompatibility summary, which is derived from the Istio validation reason.
 	//
 	// example:
 	//
 	// all routes supported
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Indicates whether the check is successfully executed, which reflects whether the Istiod query link is functioning properly.
+	// Indicates whether the check is executed successfully, which indicates whether the Istiod query path is normal.
 	//
 	// example:
 	//

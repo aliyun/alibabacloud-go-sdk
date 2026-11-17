@@ -100,7 +100,7 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
-	// The total cached token consumption.
+	// The total number of cached tokens consumed.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 20.5
 	CachedAmountDecimal *float64 `json:"cachedAmountDecimal,omitempty" xml:"cachedAmountDecimal,omitempty"`
-	// The pagination of consumption details.
+	// The paginated consumption details.
 	//
 	// example:
 	//
 	// {"totalSize":100}
 	Details *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails `json:"details,omitempty" xml:"details,omitempty" type:"Struct"`
-	// The total input token consumption.
+	// The total number of input tokens consumed.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 300.5
 	InputAmountDecimal *float64 `json:"inputAmountDecimal,omitempty" xml:"inputAmountDecimal,omitempty"`
-	// The total output token consumption.
+	// The total number of output tokens consumed.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
-	// The quota dimension. Valid values: token and credit.
+	// The quota dimension. Valid values: token or credit.
 	//
 	// example:
 	//
 	// token
 	QuotaDimension *string `json:"quotaDimension,omitempty" xml:"quotaDimension,omitempty"`
-	// The subject type. Valid values: consumer and consumer_group.
+	// The subject type. Valid values: consumer or consumer_group.
 	//
 	// example:
 	//
@@ -399,7 +399,7 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails) Validate() erro
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
-	// The cached token consumption.
+	// The number of cached tokens consumed.
 	//
 	// example:
 	//
@@ -417,7 +417,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// consumer-a
 	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
-	// The input token consumption.
+	// The number of input tokens consumed.
 	//
 	// example:
 	//
@@ -435,7 +435,25 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// The output token consumption.
+	// The ID of the executed model card.
+	//
+	// example:
+	//
+	// msc-d00000000000000000000
+	ModelCardId *string `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
+	// The ID of the model source at execution. This field is empty for legacy records.
+	//
+	// example:
+	//
+	// ms-d00000000000000000000
+	ModelSourceId *string `json:"modelSourceId,omitempty" xml:"modelSourceId,omitempty"`
+	// The snapshot of the model source name at execution.
+	//
+	// example:
+	//
+	// Model Studio model source
+	ModelSourceName *string `json:"modelSourceName,omitempty" xml:"modelSourceName,omitempty"`
+	// The number of output tokens consumed.
 	//
 	// example:
 	//
@@ -453,6 +471,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// req-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the executed service.
+	//
+	// example:
+	//
+	// svc-d00000000000000000000
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	// The consumption or request time in the YYYY-MM-DD format.
 	//
 	// example:
@@ -505,6 +529,18 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetModel()
 	return s.Model
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetModelCardId() *string {
+	return s.ModelCardId
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetModelSourceId() *string {
+	return s.ModelSourceId
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetModelSourceName() *string {
+	return s.ModelSourceName
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetOutputAmount() *int64 {
 	return s.OutputAmount
 }
@@ -515,6 +551,10 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetOutputA
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetServiceId() *string {
+	return s.ServiceId
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetStartTime() *string {
@@ -559,6 +599,21 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModel(v
 	return s
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModelCardId(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.ModelCardId = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModelSourceId(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.ModelSourceId = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModelSourceName(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.ModelSourceName = &v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetOutputAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.OutputAmount = &v
 	return s
@@ -571,6 +626,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetOutputA
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetRequestId(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetServiceId(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.ServiceId = &v
 	return s
 }
 

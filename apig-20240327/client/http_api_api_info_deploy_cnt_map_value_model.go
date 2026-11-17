@@ -22,7 +22,7 @@ type HttpApiApiInfoDeployCntMapValue struct {
 	//
 	// 3
 	DeployedCnt *int64 `json:"deployedCnt,omitempty" xml:"deployedCnt,omitempty"`
-	// The total number of operations.
+	// The total number of API operations.
 	//
 	// example:
 	//

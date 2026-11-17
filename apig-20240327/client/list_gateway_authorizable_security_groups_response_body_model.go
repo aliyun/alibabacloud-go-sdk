@@ -135,7 +135,7 @@ type ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// Product Center Cluster Security Group
+	// Product center cluster security group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The security group ID.
 	//
@@ -145,9 +145,9 @@ type ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems struct {
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// The security group type. Valid values:
 	//
-	// - Normal: Custom security group.
+	// - Normal: basic security group.
 	//
-	// - Enterprise: Advanced security group.
+	// - Enterprise: advanced security group.
 	//
 	// example:
 	//

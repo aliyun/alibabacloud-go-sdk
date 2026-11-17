@@ -44,7 +44,7 @@ type ListDevelopersResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. An empty value indicates that the last page has been reached.
+	// The pagination token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ func (s *ListDevelopersResponseBodyData) Validate() error {
 }
 
 type ListDevelopersResponseBodyDataContent struct {
-	// The ID of the developer. You can use this ID to identify the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+	// The ID of the developer. You can use this ID to locate the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
 	//
 	// example:
 	//
 	// dev-xxxxxxxx
 	DeveloperId *string `json:"developerId,omitempty" xml:"developerId,omitempty"`
-	// The ID of the portal to which the developer belongs. You can use this ID to identify the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+	// The ID of the portal to which the developer belongs. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
 	//
 	// example:
 	//

@@ -44,13 +44,13 @@ type ListChatSessionsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. An empty value indicates that the last page has been reached.
+	// The cursor for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
 	// token-xxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListChatSessionsResponseBody) Validate() error {
 }
 
 type ListChatSessionsResponseBodyData struct {
-	// The list of chat sessions. Each element in the list is named session and represents a chat session.
+	// The list of chat sessions. The list element is named session, and each element represents a chat session.
 	Content []*ListChatSessionsResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,7 +138,7 @@ type ListChatSessionsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -216,15 +216,15 @@ type ListChatSessionsResponseBodyDataContent struct {
 	//
 	// Product consultation session
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of API products associated with the session. Each element in the list is named product.
+	// The list of API products associated with the session. The list element is named product.
 	Products []*string `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	// The ID of the chat session. You can use this ID to locate the session in API operations such as UpdateChatSession, DeleteChatSession, and ListConversations.
+	// The chat session ID. You can use this ID to locate the session in operations such as UpdateChatSession, DeleteChatSession, and ListConversations.
 	//
 	// example:
 	//
 	// ses-xxxxxxxx
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The conversation type of the session. Valid values: MODEL and AGENT. These values are defined in the talkType request parameter of the CreateChatSession operation. This response parameter does not include the @enums annotation.
+	// The conversation type of the session. Valid values: MODEL and AGENT. This set of valid values is declared in the talkType enum of the CreateChatSession request parameter, and no @enums annotation is attached to this response parameter.
 	//
 	// example:
 	//

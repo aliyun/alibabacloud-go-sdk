@@ -137,11 +137,11 @@ type ListMseNacosSourcesResponseBodyDataItems struct {
 	//
 	// mse-cn-84a***
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The Nacos instance name.
+	// The name of the Nacos instance.
 	//
 	// example:
 	//
-	// Product Center Nacos Registry
+	// Product Center Nacos registry
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

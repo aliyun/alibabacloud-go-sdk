@@ -26,7 +26,7 @@ type ListPluginClassesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The response result.
 	Data *ListPluginClassesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -176,37 +176,37 @@ func (s *ListPluginClassesResponseBodyData) Validate() error {
 }
 
 type ListPluginClassesResponseBodyDataItems struct {
-	// The plug-in alias.
+	// The plugin alias.
 	//
 	// example:
 	//
-	// OAuth2 Authentication
+	// OAuth2 authentication
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The plug-in description.
+	// The plugin description.
 	//
 	// example:
 	//
-	// Implements identity authentication and authorization based on OAuth2
+	// Implements authentication and authorization based on OAuth2
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the plug-in is installed.
+	// Indicates whether the plugin is installed.
 	//
 	// example:
 	//
 	// true
 	Installed *bool `json:"installed,omitempty" xml:"installed,omitempty"`
-	// The plug-in name.
+	// The plugin name.
 	//
 	// example:
 	//
 	// oauth
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plug-in type ID.
+	// The plugin type ID.
 	//
 	// example:
 	//
 	// pls-d4ghv6em1hkixxxxxxxx
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//
@@ -218,25 +218,25 @@ type ListPluginClassesResponseBodyDataItems struct {
 	//
 	// Success
 	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
-	// The plug-in source.
+	// The plugin source.
 	//
 	// example:
 	//
 	// HigressOfficial
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The minimum gateway version supported by the plug-in.
+	// The minimum gateway version supported by the plugin.
 	//
 	// example:
 	//
 	// 2.0.0
 	SupportedMinGatewayVersion *string `json:"supportedMinGatewayVersion,omitempty" xml:"supportedMinGatewayVersion,omitempty"`
-	// The plug-in type.
+	// The plugin type.
 	//
 	// example:
 	//
 	// Auth
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The plug-in version.
+	// The plugin version.
 	//
 	// example:
 	//
