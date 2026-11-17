@@ -60,7 +60,7 @@ type GetUserResponseBody struct {
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// Indicates whether the account is activated. Valid values:
 	//
-	//  - **true**: Activated.
+	// - **true**: Activated.
 	//
 	// - **false**: Not activated.
 	//
@@ -86,19 +86,19 @@ type GetUserResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of system role codes. The list performs a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
+	// The list of new system role codes. This list fully replaces the existing roles and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
 	//
 	// example:
 	//
-	// string_value
+	// ["SYSTEM_ADMIN"]
 	RoleCodes []*string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty" type:"Repeated"`
-	// The list of user group IDs to which the user belongs.
+	// The list of IDs of the user groups to which the user belongs.
 	//
 	// example:
 	//
-	// string_value
+	// ["1023"]
 	UserGroupIds []*string `json:"userGroupIds,omitempty" xml:"userGroupIds,omitempty" type:"Repeated"`
-	// The WINNEXO platform user ID.
+	// The user ID on the WINNEXO platform.
 	//
 	// example:
 	//

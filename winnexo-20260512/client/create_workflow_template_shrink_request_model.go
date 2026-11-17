@@ -24,7 +24,7 @@ type CreateWorkflowTemplateShrinkRequest struct {
 	//
 	// - SAVE: Saves the template as a draft. The draft does not take effect. Node names and assignees can be left empty.
 	//
-	// - SUBMIT: Requires complete nodes. The template is saved and submitted as the only effective version.
+	// - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
 	//
 	// Default value: SUBMIT.
 	//
@@ -48,7 +48,7 @@ type CreateWorkflowTemplateShrinkRequest struct {
 	//
 	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
 	DefinitionShrink *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

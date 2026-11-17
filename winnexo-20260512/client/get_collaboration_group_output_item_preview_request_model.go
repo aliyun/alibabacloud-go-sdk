@@ -18,7 +18,7 @@ type iGetCollaborationGroupOutputItemPreviewRequest interface {
 }
 
 type GetCollaborationGroupOutputItemPreviewRequest struct {
-	// 协作空间ID，必填，长度1至64。调用者必须是该租户下该空间的有效成员。可从ListCollaborationGroups返回的items中获取。
+	// The collaboration space ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetCollaborationGroupOutputItemPreviewRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 对话生成文件的产出明细ID。取GetNodeDetail返回的artifacts中ref.kind为USER_OUTPUT_ITEM的ref.id；不是artifactId。
+	// The output detail ID. This ID is obtained from the ref.id of a USER_OUTPUT_ITEM node or the space output list.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetCollaborationGroupOutputItemPreviewRequest struct {
 	//
 	// 51469466
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// 业务租户ID，可选。必须属于当前调用身份的可访问租户；无权访问时拒绝请求。未传时按现有鉴权规则解析租户，多租户用户无法唯一确定时需显式指定。
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type GetUserRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The WINNEXO logon account. This parameter is a unique identifier and cannot be empty.
+	// The WINNEXO logon account. This parameter is a unique identifier and cannot be left empty.
 	//
 	// example:
 	//
 	// exampleAccountId
 	WnAccountId *string `json:"wnAccountId,omitempty" xml:"wnAccountId,omitempty"`
-	// The WINNEXO platform user ID. Specify either this parameter or accountId.
+	// The user ID on the WINNEXO platform. Specify either this parameter or accountId.
 	//
 	// example:
 	//

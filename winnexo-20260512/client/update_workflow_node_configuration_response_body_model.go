@@ -46,103 +46,103 @@ type iUpdateWorkflowNodeConfigurationResponseBody interface {
 }
 
 type UpdateWorkflowNodeConfigurationResponseBody struct {
-	// 当前用户是否可编辑此节点
+	// Indicates whether the current user can edit this node.
 	//
 	// example:
 	//
 	// true
 	CanEdit *bool `json:"canEdit,omitempty" xml:"canEdit,omitempty"`
-	// 公共业务状态码
+	// The common business status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 配置版本；更新或恢复时作为expectedVersion
+	// The configuration version. Use this value as the expectedVersion when updating or restoring.
 	//
 	// example:
 	//
 	// 3
 	ConfigVersion *int64 `json:"configVersion,omitempty" xml:"configVersion,omitempty"`
-	// 模板默认执行主体
+	// The default executor defined in the template.
 	//
 	// example:
 	//
 	// {"type":"AGENT","id":"agent_1001"}
 	DefaultExecutor *UpdateWorkflowNodeConfigurationResponseBodyDefaultExecutor `json:"defaultExecutor,omitempty" xml:"defaultExecutor,omitempty" type:"Struct"`
-	// 模板默认模型运行档
+	// The default model profile defined in the template.
 	//
 	// example:
 	//
 	// qwen-max
 	DefaultModel *string `json:"defaultModel,omitempty" xml:"defaultModel,omitempty"`
-	// 模板默认负责人用户ID列表
+	// The list of user IDs for the default owners defined in the template.
 	//
 	// example:
 	//
 	// [10001]
 	DefaultResponsibleUserIds []*string `json:"defaultResponsibleUserIds,omitempty" xml:"defaultResponsibleUserIds,omitempty" type:"Repeated"`
-	// 当前生效的执行主体
+	// The currently effective executor.
 	//
 	// example:
 	//
 	// {"type":"AGENT","id":"agent_1001"}
 	EffectiveExecutor *UpdateWorkflowNodeConfigurationResponseBodyEffectiveExecutor `json:"effectiveExecutor,omitempty" xml:"effectiveExecutor,omitempty" type:"Struct"`
-	// 当前生效的模型运行档
+	// The currently effective model profile.
 	//
 	// example:
 	//
 	// qwen-max-plus
 	EffectiveModel *string `json:"effectiveModel,omitempty" xml:"effectiveModel,omitempty"`
-	// 当前生效的负责人用户ID列表
+	// The list of user IDs for the currently effective owners.
 	//
 	// example:
 	//
 	// [10001]
 	EffectiveResponsibleUserIds []*string `json:"effectiveResponsibleUserIds,omitempty" xml:"effectiveResponsibleUserIds,omitempty" type:"Repeated"`
-	// 当前物理计划ID
+	// The ID of the current physical plan.
 	//
 	// example:
 	//
 	// inst_2081
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 公共错误描述
+	// The common error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 业务节点key
+	// The key of the business node.
 	//
 	// example:
 	//
 	// node_7f3a2c
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 实例覆盖值；字段为null时使用模板默认值
+	// The instance override values. If a field is null, the default value defined in the template is used.
 	//
 	// example:
 	//
 	// {"model":"qwen-max-plus"}
 	Overrides *UpdateWorkflowNodeConfigurationResponseBodyOverrides `json:"overrides,omitempty" xml:"overrides,omitempty" type:"Struct"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 状态刷新游标，不能作为配置版本
+	// The state refresh cursor. This value cannot be used as the configuration version.
 	//
 	// example:
 	//
 	// 8
 	StateVersion *int64 `json:"stateVersion,omitempty" xml:"stateVersion,omitempty"`
-	// 最后配置更新时间ISO8601；从未更新时为空
+	// The time when the configuration was last updated, in ISO 8601 format. This field is empty if the configuration has never been updated.
 	//
 	// example:
 	//
 	// 2026-11-05T08:00:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// 最后更新配置的平台用户ID；从未更新时为空
+	// The platform user ID of the user who last updated the configuration. This field is empty if the configuration has never been updated.
 	//
 	// example:
 	//
@@ -331,13 +331,13 @@ func (s *UpdateWorkflowNodeConfigurationResponseBody) Validate() error {
 }
 
 type UpdateWorkflowNodeConfigurationResponseBodyDefaultExecutor struct {
-	// USER 为正整数平台用户ID字符串；AGENT 为空间数字员工技术名称
+	// The executor ID. If the type is USER, the value is a string representing a positive integer platform user ID. If the type is AGENT, the value is the technical name of the digital worker in the workspace.
 	//
 	// example:
 	//
 	// agent_1001
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// USER 真人、AGENT 数字员工或历史 SYSTEM 系统执行人；SYSTEM仅用于响应
+	// The executor type. Valid values: USER (a human user), AGENT (a digital worker), and SYSTEM (a legacy system executor). The SYSTEM value is used only in responses.
 	//
 	// example:
 	//
@@ -376,13 +376,13 @@ func (s *UpdateWorkflowNodeConfigurationResponseBodyDefaultExecutor) Validate() 
 }
 
 type UpdateWorkflowNodeConfigurationResponseBodyEffectiveExecutor struct {
-	// USER 为正整数平台用户ID字符串；AGENT 为空间数字员工技术名称
+	// The executor ID. If the type is USER, the value is a string representing a positive integer platform user ID. If the type is AGENT, the value is the technical name of the digital worker in the workspace.
 	//
 	// example:
 	//
 	// agent_1001
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// USER 真人、AGENT 数字员工或历史 SYSTEM 系统执行人；SYSTEM仅用于响应
+	// The executor type. Valid values: USER (a human user), AGENT (a digital worker), and SYSTEM (a legacy system executor). The SYSTEM value is used only in responses.
 	//
 	// example:
 	//
@@ -421,19 +421,19 @@ func (s *UpdateWorkflowNodeConfigurationResponseBodyEffectiveExecutor) Validate(
 }
 
 type UpdateWorkflowNodeConfigurationResponseBodyOverrides struct {
-	// 覆盖执行主体；null为默认
+	// The overridden executor. A value of null indicates that the default value is used.
 	//
 	// example:
 	//
 	// {"type":"AGENT","id":"agent_1001"}
 	Executor *UpdateWorkflowNodeConfigurationResponseBodyOverridesExecutor `json:"executor,omitempty" xml:"executor,omitempty" type:"Struct"`
-	// 覆盖模型运行档；null为默认
+	// The overridden model profile. A value of null indicates that the default value is used.
 	//
 	// example:
 	//
 	// qwen-max
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// 覆盖负责人ID列表；null为默认
+	// The list of overridden owner IDs. A value of null indicates that the default value is used.
 	//
 	// example:
 	//
@@ -486,13 +486,13 @@ func (s *UpdateWorkflowNodeConfigurationResponseBodyOverrides) Validate() error 
 }
 
 type UpdateWorkflowNodeConfigurationResponseBodyOverridesExecutor struct {
-	// USER 为正整数平台用户ID字符串；AGENT 为空间数字员工技术名称
+	// The executor ID. If the type is USER, the value is a string representing a positive integer platform user ID. If the type is AGENT, the value is the technical name of the digital worker in the workspace.
 	//
 	// example:
 	//
 	// agent_1001
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// USER 真人、AGENT 数字员工或历史 SYSTEM 系统执行人；SYSTEM仅用于响应
+	// The executor type. Valid values: USER (a human user), AGENT (a digital worker), and SYSTEM (a legacy system executor). The SYSTEM value is used only in responses.
 	//
 	// example:
 	//

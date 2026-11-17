@@ -20,7 +20,7 @@ type iGetWorkflowNodeConfigurationRequest interface {
 }
 
 type GetWorkflowNodeConfigurationRequest struct {
-	// 协作空间ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetWorkflowNodeConfigurationRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 当前物理计划ID（planId）
+	// The ID of the current physical plan (planId).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetWorkflowNodeConfigurationRequest struct {
 	//
 	// inst_2081
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 业务节点key（nodeKey）
+	// The key of the business node (nodeKey).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GetWorkflowNodeConfigurationRequest struct {
 	//
 	// node_7f3a2c
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 租户ID；缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

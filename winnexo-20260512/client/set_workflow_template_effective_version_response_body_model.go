@@ -64,7 +64,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 节点依赖边；每项包含from/to，引用稳定stepId
+	// The node dependency edges. Each item contains a from and to field, referencing a stable stepId.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	// The optional canvas layout, indexed by stepId. This only affects the display and does not determine dependencies.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The step name. This field can be empty for drafts but is required upon submission.
+	// The step name. This can be empty for drafts but is required upon submission.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 模板结构版本，当前为2，与业务版本vN独立
+	// The template structure version. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// example:
 	//
-	// [{"stepId":"collect","sortOrder":1,"name":"收集客户信息"}]
+	// [{"stepId":"collect","sortOrder":1,"name":"Collect customer information"}]
 	Steps []*SetWorkflowTemplateEffectiveVersionResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 	// The template ID.
 	//
@@ -130,7 +130,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// The version number of the returned content.
+	// The version number to which the returned content belongs.
 	//
 	// example:
 	//
@@ -142,11 +142,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBody struct {
 	//
 	// Added a review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
-	// The version status. Valid values:
-	//
-	// - DRAFT: Draft.
-	//
-	// - SUBMITTED: Submitted.
+	// The version status. Valid values: DRAFT (draft) and SUBMITTED (submitted).
 	//
 	// example:
 	//
@@ -335,7 +331,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBodySteps struct {
 	//
 	// standard
 	ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-	// The step name. This field can be empty for drafts but is required upon submission.
+	// The step name. This can be empty for drafts but is required upon submission.
 	//
 	// example:
 	//
@@ -347,11 +343,7 @@ type SetWorkflowTemplateEffectiveVersionResponseBodySteps struct {
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The owner type. Valid values:
-	//
-	// - MEMBER: Human.
-	//
-	// - AGENT: Agent.
+	// The owner type. Valid values: MEMBER (human) and AGENT (agent).
 	//
 	// example:
 	//
@@ -363,13 +355,13 @@ type SetWorkflowTemplateEffectiveVersionResponseBodySteps struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	// Specifies whether to manually review deliverables. This is disabled by default and can only be enabled for digital employees. Review tasks are automatically sent to the owner.
 	//
 	// example:
 	//
 	// false
 	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
-	// The list of user IDs of the reviewers.
+	// The list of reviewer user IDs.
 	//
 	// example:
 	//
@@ -381,17 +373,17 @@ type SetWorkflowTemplateEffectiveVersionResponseBodySteps struct {
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The display text derived from ordered segments. Fixed titles are not added, and the text is not stored independently.
+	// The display text derived from ordered segments. Fixed titles are not added, and it is not stored independently.
 	//
 	// example:
 	//
-	// Collect customer information and submit it to the person in charge for review
+	// Collect customer information and submit it to the owner for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The array of ordered segments. Supports text, mention, skill, app, files, and web_search. Retains reference identities and order.
+	// The array of ordered segments. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
 	//
 	// example:
 	//
-	// [{"type":"text","text":"收集客户信息"}]
+	// [{"type":"text","text":"Collect customer information"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The step ID.
 	//

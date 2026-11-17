@@ -22,7 +22,7 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
-	// Specifies whether to return the complete file tree. Default value: False. This avoids large responses.
+	// Specifies whether to return the complete file tree. Default value: false. This prevents large response payloads.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetSkillRequest struct {
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// The skill name.
+	// The name of the skill.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetSkillRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The view mode. Valid values: draft (draft/editing view) and published (published view, default).
+	// The view mode. Valid values: draft (draft or edit view) and published (published view, default).
 	//
 	// example:
 	//

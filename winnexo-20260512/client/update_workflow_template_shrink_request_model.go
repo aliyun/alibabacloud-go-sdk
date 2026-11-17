@@ -30,9 +30,9 @@ type iUpdateWorkflowTemplateShrinkRequest interface {
 type UpdateWorkflowTemplateShrinkRequest struct {
 	// The write action. Valid values:
 	//
-	// - SAVE: Saves the template as a draft. The changes do not take effect. Node names and assignees can be left empty.
+	// - SAVE: Saves the template as a draft without taking effect, allowing node names and executors to be left empty.
 	//
-	// - SUBMIT: Requires complete nodes. Saves and submits the template as the only effective version.
+	// - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
 	//
 	// Default value: SUBMIT.
 	//
@@ -40,7 +40,7 @@ type UpdateWorkflowTemplateShrinkRequest struct {
 	//
 	// SUBMIT
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The ID of the collaboration workspace.
+	// The collaboration workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type UpdateWorkflowTemplateShrinkRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The complete JSON definition of the template. This overwrites the existing definition.
+	// The complete JSON definition of the template for full overwriting.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type UpdateWorkflowTemplateShrinkRequest struct {
 	//
 	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
 	DefinitionShrink *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If you do not specify this parameter, the current effective version is used.
+	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If not specified, the system falls back to the current effective version.
 	//
 	// example:
 	//
 	// v1
 	SourceVersion *string `json:"sourceVersion,omitempty" xml:"sourceVersion,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type UpdateWorkflowTemplateShrinkRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The version number to which the content belongs.
+	// The version number to which the returned content belongs.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type UpdateWorkflowTemplateShrinkRequest struct {
 	//
 	// example:
 	//
-	// Added a review step
+	// Added review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

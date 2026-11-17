@@ -12,6 +12,8 @@ type iTranscribeChatVoiceAdvanceRequest interface {
 	GoString() string
 	SetContentType(v string) *TranscribeChatVoiceAdvanceRequest
 	GetContentType() *string
+	SetFileContentBase64(v string) *TranscribeChatVoiceAdvanceRequest
+	GetFileContentBase64() *string
 	SetFileName(v string) *TranscribeChatVoiceAdvanceRequest
 	GetFileName() *string
 	SetFileUrlObject(v io.Reader) *TranscribeChatVoiceAdvanceRequest
@@ -47,6 +49,12 @@ type TranscribeChatVoiceAdvanceRequest struct {
 	//
 	// audio/mpeg
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// 标准 Base64 音频内容，不含 data URI 前缀，与 FileUrl 二选一
+	//
+	// example:
+	//
+	// UklGRg==
+	FileContentBase64 *string `json:"fileContentBase64,omitempty" xml:"fileContentBase64,omitempty"`
 	// The full path name of the file.
 	//
 	// This parameter is required.
@@ -56,8 +64,6 @@ type TranscribeChatVoiceAdvanceRequest struct {
 	// meeting.mp3
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// The publicly accessible URL of the attachment.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -83,6 +89,10 @@ func (s *TranscribeChatVoiceAdvanceRequest) GetContentType() *string {
 	return s.ContentType
 }
 
+func (s *TranscribeChatVoiceAdvanceRequest) GetFileContentBase64() *string {
+	return s.FileContentBase64
+}
+
 func (s *TranscribeChatVoiceAdvanceRequest) GetFileName() *string {
 	return s.FileName
 }
@@ -97,6 +107,11 @@ func (s *TranscribeChatVoiceAdvanceRequest) GetTenantId() *string {
 
 func (s *TranscribeChatVoiceAdvanceRequest) SetContentType(v string) *TranscribeChatVoiceAdvanceRequest {
 	s.ContentType = &v
+	return s
+}
+
+func (s *TranscribeChatVoiceAdvanceRequest) SetFileContentBase64(v string) *TranscribeChatVoiceAdvanceRequest {
+	s.FileContentBase64 = &v
 	return s
 }
 

@@ -24,7 +24,7 @@ type GetMemoryAutoExtractionSwitchRequest struct {
 	//
 	// cg_12345
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The owner type. A value of user indicates the personal memory of the authenticated user, and a value of group indicates the memory of the specified collaboration workspace.
+	// The owner type. A value of user indicates the personal memory of the authenticated user. A value of group indicates the memory of the specified collaboration workspace.
 	//
 	// example:
 	//

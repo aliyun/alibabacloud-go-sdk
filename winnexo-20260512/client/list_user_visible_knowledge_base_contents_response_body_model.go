@@ -40,13 +40,13 @@ type ListUserVisibleKnowledgeBaseContentsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The page number. Default value: 1. Pages start from page 1.
+	// The page number. Default value: 1. The pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -155,13 +155,13 @@ type ListUserVisibleKnowledgeBaseContentsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
 	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// Product materials and user guide
+	// Product materials and user instructions
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The directory type.
 	//
@@ -181,7 +181,7 @@ type ListUserVisibleKnowledgeBaseContentsResponseBodyItems struct {
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListUserVisibleKnowledgeBaseContentsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Jane
+	// Li Si
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
 	// The name.
 	//
@@ -219,7 +219,7 @@ type ListUserVisibleKnowledgeBaseContentsResponseBodyItems struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The object bindings.
 	ObjectBindings []map[string]interface{} `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// The visibility mode of the knowledge base to digital employees.
+	// The visibility mode of the knowledge base for digital employees.
 	//
 	// example:
 	//
@@ -239,31 +239,31 @@ type ListUserVisibleKnowledgeBaseContentsResponseBodyItems struct {
 	//
 	// false
 	Shared *bool `json:"shared,omitempty" xml:"shared,omitempty"`
-	// The number of resources in FAILED status. Returned only when listing top-level KB directories.
+	// The number of resources in the FAILED state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 0
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// The knowledge base affiliation type. Valid values: aliding_kb_doc (DingTalk knowledge base document), normal (common knowledge).
+	// The ownership type of the knowledge base. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
 	//
 	// example:
 	//
 	// normal
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// The number of resources in READY status. Returned only when listing top-level KB directories.
+	// The number of resources in the READY state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// The resource status. This field has a value only when itemType is resource.
+	// The resource status. This parameter has a value only when itemType is set to resource.
 	//
 	// example:
 	//
 	// READY
 	SourceStatus *string `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty"`
-	// The total number of resources under the directory and its subdirectories. Returned only when listing top-level KB directories.
+	// The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
@@ -497,37 +497,37 @@ func (s *ListUserVisibleKnowledgeBaseContentsResponseBodyItems) Validate() error
 }
 
 type ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos struct {
-	// The Ray Job ID.
+	// The ID of the Ray job.
 	//
 	// example:
 	//
 	// submission_example
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
-	// The user ID of the submitter.
+	// The user ID of the timesheet submitter.
 	//
 	// example:
 	//
 	// 1
 	SubmitterId *int64 `json:"submitterId,omitempty" xml:"submitterId,omitempty"`
-	// The submitter name.
+	// The name of the submitter.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	SubmitterName *string `json:"submitterName,omitempty" xml:"submitterName,omitempty"`
-	// The target directory ID.
+	// The ID of the target directory.
 	//
 	// example:
 	//
 	// dir_target
 	TargetDirectoryId *string `json:"targetDirectoryId,omitempty" xml:"targetDirectoryId,omitempty"`
-	// The target directory name.
+	// The name of the target directory.
 	//
 	// example:
 	//
 	// Shared directory
 	TargetDirectoryName *string `json:"targetDirectoryName,omitempty" xml:"targetDirectoryName,omitempty"`
-	// The root directory ID of the target enterprise knowledge base.
+	// The ID of the root directory of the target enterprise knowledge base.
 	//
 	// example:
 	//

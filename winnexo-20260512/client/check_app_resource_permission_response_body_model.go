@@ -26,7 +26,7 @@ type iCheckAppResourcePermissionResponseBody interface {
 }
 
 type CheckAppResourcePermissionResponseBody struct {
-	// Indicates whether the target user has the permission on the resource.
+	// Indicates whether the target user has the specified permission on the resource.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CheckAppResourcePermissionResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error description. This field is empty if the request is successful.
+	// The error description. This field is empty when the request is successful.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type CheckAppResourcePermissionResponseBody struct {
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The request trace ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The dot-separated resource key. The first segment is the APP application key.
+	// The dot-separated resource key. The first segment is the application key.
 	//
 	// example:
 	//

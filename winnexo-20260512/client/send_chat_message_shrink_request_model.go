@@ -13,18 +13,26 @@ type iSendChatMessageShrinkRequest interface {
 	GetContent() *string
 	SetContentType(v string) *SendChatMessageShrinkRequest
 	GetContentType() *string
+	SetContextItemsShrink(v string) *SendChatMessageShrinkRequest
+	GetContextItemsShrink() *string
 	SetDigitalEmployeeNameShrink(v string) *SendChatMessageShrinkRequest
 	GetDigitalEmployeeNameShrink() *string
 	SetDirectChat(v bool) *SendChatMessageShrinkRequest
 	GetDirectChat() *bool
+	SetDirectMaxHistoryRounds(v interface{}) *SendChatMessageShrinkRequest
+	GetDirectMaxHistoryRounds() interface{}
 	SetEnableWebSearch(v bool) *SendChatMessageShrinkRequest
 	GetEnableWebSearch() *bool
 	SetFilesShrink(v string) *SendChatMessageShrinkRequest
 	GetFilesShrink() *string
+	SetLocale(v string) *SendChatMessageShrinkRequest
+	GetLocale() *string
 	SetModel(v string) *SendChatMessageShrinkRequest
 	GetModel() *string
 	SetReuseLastSession(v bool) *SendChatMessageShrinkRequest
 	GetReuseLastSession() *bool
+	SetSegmentsShrink(v string) *SendChatMessageShrinkRequest
+	GetSegmentsShrink() *string
 	SetSessionId(v string) *SendChatMessageShrinkRequest
 	GetSessionId() *string
 	SetStream(v bool) *SendChatMessageShrinkRequest
@@ -52,6 +60,12 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// Text
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// 作为本轮上下文引用的消息或文件条目
+	//
+	// example:
+	//
+	// []
+	ContextItemsShrink *string `json:"contextItems,omitempty" xml:"contextItems,omitempty"`
 	// The list of digital employee names. For compatibility with the legacy format, a single string can be passed.
 	//
 	// example:
@@ -64,6 +78,12 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
+	// 本轮携带的最近完整 direct 问答轮数，不含本轮输入。仅 workMode=direct 或 directChat=true 时生效。有效值为 0–100 的 JSON 整数，省略时由后端按 0 处理，不携带历史但仍保存当前轮。null、布尔值、字符串、小数及越界值按原 direct 路径处理，网关保留原始值供后端判定。work/ask 忽略此字段。该参数不限制转换为 work 时的历史范围
+	//
+	// example:
+	//
+	// 1
+	DirectMaxHistoryRounds interface{} `json:"directMaxHistoryRounds,omitempty" xml:"directMaxHistoryRounds,omitempty"`
 	// Specifies whether to enable web search. Default value: false. In the task execution scenario where taskExecution is passed, the task configuration prevails.
 	//
 	// example:
@@ -72,6 +92,12 @@ type SendChatMessageShrinkRequest struct {
 	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
 	// The list of file references. Each item is an object, and the fileId parameter is required, which is returned by uploadChatFile.
 	FilesShrink *string `json:"files,omitempty" xml:"files,omitempty"`
+	// 本轮语言，可选 zh-CN、en-US，用于接口错误文案并透传给 CodeAgent；省略时沿用当前语言行为，不修改用户设置
+	//
+	// example:
+	//
+	// en-US
+	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If this parameter is not specified, standard is used for new sessions, and the current tier is used for existing sessions.
 	//
 	// example:
@@ -84,6 +110,12 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// false
 	ReuseLastSession *bool `json:"reuseLastSession,omitempty" xml:"reuseLastSession,omitempty"`
+	// 消息中的结构化片段，例如会话或对象提及
+	//
+	// example:
+	//
+	// []
+	SegmentsShrink *string `json:"segments,omitempty" xml:"segments,omitempty"`
 	// The session ID.
 	//
 	// example:
@@ -128,12 +160,20 @@ func (s *SendChatMessageShrinkRequest) GetContentType() *string {
 	return s.ContentType
 }
 
+func (s *SendChatMessageShrinkRequest) GetContextItemsShrink() *string {
+	return s.ContextItemsShrink
+}
+
 func (s *SendChatMessageShrinkRequest) GetDigitalEmployeeNameShrink() *string {
 	return s.DigitalEmployeeNameShrink
 }
 
 func (s *SendChatMessageShrinkRequest) GetDirectChat() *bool {
 	return s.DirectChat
+}
+
+func (s *SendChatMessageShrinkRequest) GetDirectMaxHistoryRounds() interface{} {
+	return s.DirectMaxHistoryRounds
 }
 
 func (s *SendChatMessageShrinkRequest) GetEnableWebSearch() *bool {
@@ -144,12 +184,20 @@ func (s *SendChatMessageShrinkRequest) GetFilesShrink() *string {
 	return s.FilesShrink
 }
 
+func (s *SendChatMessageShrinkRequest) GetLocale() *string {
+	return s.Locale
+}
+
 func (s *SendChatMessageShrinkRequest) GetModel() *string {
 	return s.Model
 }
 
 func (s *SendChatMessageShrinkRequest) GetReuseLastSession() *bool {
 	return s.ReuseLastSession
+}
+
+func (s *SendChatMessageShrinkRequest) GetSegmentsShrink() *string {
+	return s.SegmentsShrink
 }
 
 func (s *SendChatMessageShrinkRequest) GetSessionId() *string {
@@ -182,6 +230,11 @@ func (s *SendChatMessageShrinkRequest) SetContentType(v string) *SendChatMessage
 	return s
 }
 
+func (s *SendChatMessageShrinkRequest) SetContextItemsShrink(v string) *SendChatMessageShrinkRequest {
+	s.ContextItemsShrink = &v
+	return s
+}
+
 func (s *SendChatMessageShrinkRequest) SetDigitalEmployeeNameShrink(v string) *SendChatMessageShrinkRequest {
 	s.DigitalEmployeeNameShrink = &v
 	return s
@@ -189,6 +242,11 @@ func (s *SendChatMessageShrinkRequest) SetDigitalEmployeeNameShrink(v string) *S
 
 func (s *SendChatMessageShrinkRequest) SetDirectChat(v bool) *SendChatMessageShrinkRequest {
 	s.DirectChat = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetDirectMaxHistoryRounds(v interface{}) *SendChatMessageShrinkRequest {
+	s.DirectMaxHistoryRounds = v
 	return s
 }
 
@@ -202,6 +260,11 @@ func (s *SendChatMessageShrinkRequest) SetFilesShrink(v string) *SendChatMessage
 	return s
 }
 
+func (s *SendChatMessageShrinkRequest) SetLocale(v string) *SendChatMessageShrinkRequest {
+	s.Locale = &v
+	return s
+}
+
 func (s *SendChatMessageShrinkRequest) SetModel(v string) *SendChatMessageShrinkRequest {
 	s.Model = &v
 	return s
@@ -209,6 +272,11 @@ func (s *SendChatMessageShrinkRequest) SetModel(v string) *SendChatMessageShrink
 
 func (s *SendChatMessageShrinkRequest) SetReuseLastSession(v bool) *SendChatMessageShrinkRequest {
 	s.ReuseLastSession = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetSegmentsShrink(v string) *SendChatMessageShrinkRequest {
+	s.SegmentsShrink = &v
 	return s
 }
 

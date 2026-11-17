@@ -32,7 +32,7 @@ type ImportWorkflowTemplateShrinkRequest struct {
 	//
 	// example:
 	//
-	// {"name":"Customer Complaint Handling Process","schemaVersion":2}
+	// {\\"name\\":\\"Customer Complaint Handling Process\\",\\"schemaVersion\\":2}
 	TemplateShrink *string `json:"template,omitempty" xml:"template,omitempty"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//

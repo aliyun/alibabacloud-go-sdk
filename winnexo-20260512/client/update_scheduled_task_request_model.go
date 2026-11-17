@@ -19,6 +19,8 @@ type iUpdateScheduledTaskRequest interface {
 	GetModel() *string
 	SetName(v string) *UpdateScheduledTaskRequest
 	GetName() *string
+	SetOutputMode(v string) *UpdateScheduledTaskRequest
+	GetOutputMode() *string
 	SetSegments(v []*UpdateScheduledTaskRequestSegments) *UpdateScheduledTaskRequest
 	GetSegments() []*UpdateScheduledTaskRequestSegments
 	SetTaskDetail(v *UpdateScheduledTaskRequestTaskDetail) *UpdateScheduledTaskRequest
@@ -62,6 +64,12 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 输出会话模式，省略时保留当前配置
+	//
+	// example:
+	//
+	// SAME_CONVERSATION
+	OutputMode *string `json:"outputMode,omitempty" xml:"outputMode,omitempty"`
 	// The segments.
 	Segments []*UpdateScheduledTaskRequestSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
 	// The task details.
@@ -124,6 +132,10 @@ func (s *UpdateScheduledTaskRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateScheduledTaskRequest) GetOutputMode() *string {
+	return s.OutputMode
+}
+
 func (s *UpdateScheduledTaskRequest) GetSegments() []*UpdateScheduledTaskRequestSegments {
 	return s.Segments
 }
@@ -174,6 +186,11 @@ func (s *UpdateScheduledTaskRequest) SetModel(v string) *UpdateScheduledTaskRequ
 
 func (s *UpdateScheduledTaskRequest) SetName(v string) *UpdateScheduledTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskRequest) SetOutputMode(v string) *UpdateScheduledTaskRequest {
+	s.OutputMode = &v
 	return s
 }
 

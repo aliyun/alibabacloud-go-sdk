@@ -28,7 +28,7 @@ type BatchCancelTodosShrinkRequest struct {
 	//
 	// example:
 	//
-	// todo_abc123
+	// ["todo_abc123"]
 	TodoIdsShrink *string `json:"todoIds,omitempty" xml:"todoIds,omitempty"`
 }
 

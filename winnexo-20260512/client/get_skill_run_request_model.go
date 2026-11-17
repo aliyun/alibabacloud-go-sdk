@@ -18,7 +18,7 @@ type iGetSkillRunRequest interface {
 }
 
 type GetSkillRunRequest struct {
-	// Specifies whether to include execution logs. Default value: false. Enable this parameter only for troubleshooting.
+	// Specifies whether to include execution logs. Default value: false. Enable this only when troubleshooting issues.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GetSkillRunRequest struct {
 	//
 	// exampleRunId
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The tenant ID to which the task belongs.
+	// The ID of the tenant to which the task belongs.
 	//
 	// example:
 	//

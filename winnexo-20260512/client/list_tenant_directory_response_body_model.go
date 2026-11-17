@@ -34,7 +34,7 @@ type ListTenantDirectoryResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The file information.
 	Items []*ListTenantDirectoryResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -169,19 +169,19 @@ type ListTenantDirectoryResponseBodyItems struct {
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The signing record ID.
+	// The ID of the signing record.
 	//
 	// example:
 	//
 	// exampleItemId
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// The data type (group, user, or role).
+	// The data type, such as group, user, or role.
 	//
 	// example:
 	//
@@ -195,25 +195,25 @@ type ListTenantDirectoryResponseBodyItems struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The object bindings.
 	ObjectBindings []map[string]interface{} `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// The number of resources with the FAILED status. This field is returned only when the top-level directory list of the knowledge base is queried.
+	// The number of resources in the FAILED state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// The number of resources with the READY status. This field is returned only when the top-level directory list of the knowledge base is queried.
+	// The number of resources in the READY state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// The resource status. This field has a value only when itemType is set to resource.
+	// The resource status. This parameter has a value only when itemType is set to resource.
 	//
 	// example:
 	//
 	// string_value
 	SourceStatus *string `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty"`
-	// The total number of resources in the directory and its subdirectories. This field is returned only when the top-level directory list of the knowledge base is queried.
+	// The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//

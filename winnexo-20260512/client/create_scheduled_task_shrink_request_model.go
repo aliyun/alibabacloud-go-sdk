@@ -21,6 +21,8 @@ type iCreateScheduledTaskShrinkRequest interface {
 	GetModel() *string
 	SetName(v string) *CreateScheduledTaskShrinkRequest
 	GetName() *string
+	SetOutputMode(v string) *CreateScheduledTaskShrinkRequest
+	GetOutputMode() *string
 	SetSegmentsShrink(v string) *CreateScheduledTaskShrinkRequest
 	GetSegmentsShrink() *string
 	SetTaskDetailShrink(v string) *CreateScheduledTaskShrinkRequest
@@ -36,7 +38,7 @@ type iCreateScheduledTaskShrinkRequest interface {
 }
 
 type CreateScheduledTaskShrinkRequest struct {
-	// The ID of the collaboration group (such as cg_101). If specified, a group space task is created (the caller must be a valid group member). If empty, a personal task is created.
+	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
 	//
 	// example:
 	//
@@ -44,19 +46,19 @@ type CreateScheduledTaskShrinkRequest struct {
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
 	// The description of the to-do card type.
 	DescriptionShrink *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the current effective digital employee. This parameter is empty if not configured.
+	// The name of the current effective digital employee. This parameter is empty if it is not configured.
 	//
 	// example:
 	//
-	// string_value
+	// ["pcitc-magent"]
 	DigitalEmployeeNameShrink *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// Specifies whether public access is enabled.
+	// Specifies whether public access is allowed.
 	//
 	// example:
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The large model used by the assistant. An empty value indicates that DingTalk automatically selects the model.
+	// The large language model used by the assistant. The default value is empty, which indicates that DingTalk automatically selects the model.
 	//
 	// example:
 	//
@@ -70,45 +72,35 @@ type CreateScheduledTaskShrinkRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 输出会话模式，默认 NEW_CONVERSATION
+	//
+	// example:
+	//
+	// NEW_CONVERSATION
+	OutputMode *string `json:"outputMode,omitempty" xml:"outputMode,omitempty"`
 	// The site ID.
 	SegmentsShrink *string `json:"segments,omitempty" xml:"segments,omitempty"`
 	// The task details.
 	TaskDetailShrink *string `json:"taskDetail,omitempty" xml:"taskDetail,omitempty"`
-	// The ID of the effective tenant.
+	// The effective tenant ID.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The trigger configuration. The configuration varies depending on the trigger type. For the specific format, refer to the following data structures:
-	//
-	//   - OSS trigger: See [OSSTriggerConfig](https://help.aliyun.com/document_detail/415697.html).
-	//
-	//   - Simple Log Service trigger: See [LogTriggerConfig](https://help.aliyun.com/document_detail/415694.html).
-	//
-	//   - Time trigger: See [TimeTriggerConfig](https://help.aliyun.com/document_detail/415712.html).
-	//
-	//   - HTTP trigger: See [HTTPTriggerConfig](https://help.aliyun.com/document_detail/415685.html).
-	//
-	//   - Tablestore trigger: You only need to specify the complete **SourceArn*	- parameter. No additional configuration is required. Set the value to an empty object {}.
-	//
-	//   - CDN event trigger: See [CDNEventsTriggerConfig](https://help.aliyun.com/document_detail/415674.html).
-	//
-	//   - MNS topic trigger: See [MnsTopicTriggerConfig](https://help.aliyun.com/document_detail/415695.html).
-	//
-	//   - EventBridge trigger: See [EventBridgeTriggerConfig](https://help.aliyun.com/document_detail/2508622.html).
+	// The trigger configuration of the scheduled task. The triggerMode parameter supports manual (manual trigger) and scheduled (scheduled trigger). If scheduled is used, the cron parameter must be specified. The timezone and language parameters are injected by the server, and the client does not need to pass them. The pushConfig parameter is the list of task push channels. If the list is empty or no channel is enabled, no push is performed.
 	TriggerConfigShrink *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	// The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). Default value for group tasks: PRIVATE. This parameter is ignored for personal tasks.
+	// The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaboration members), and PUBLIC (visible to all group members). If this parameter is not passed for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
 	//
 	// example:
 	//
 	// PRIVATE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The list of collaborator user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. It is ignored for other visibility levels. A maximum of 1000 IDs are supported. The task creator and group creator do not need to be included (covered by the authentication layer). This parameter is ignored for personal tasks.
+	// The list of user IDs of collaboration members. This parameter takes effect only when visibility is set to COLLABORATIVE and is ignored for other values. A maximum of 1,000 user IDs can be specified. You do not need to pass the IDs of the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
 	//
 	// example:
 	//
-	// string_value
+	// ["1002"]
 	VisibleMemberUserIdsShrink *string `json:"visibleMemberUserIds,omitempty" xml:"visibleMemberUserIds,omitempty"`
 }
 
@@ -142,6 +134,10 @@ func (s *CreateScheduledTaskShrinkRequest) GetModel() *string {
 
 func (s *CreateScheduledTaskShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateScheduledTaskShrinkRequest) GetOutputMode() *string {
+	return s.OutputMode
 }
 
 func (s *CreateScheduledTaskShrinkRequest) GetSegmentsShrink() *string {
@@ -195,6 +191,11 @@ func (s *CreateScheduledTaskShrinkRequest) SetModel(v string) *CreateScheduledTa
 
 func (s *CreateScheduledTaskShrinkRequest) SetName(v string) *CreateScheduledTaskShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduledTaskShrinkRequest) SetOutputMode(v string) *CreateScheduledTaskShrinkRequest {
+	s.OutputMode = &v
 	return s
 }
 

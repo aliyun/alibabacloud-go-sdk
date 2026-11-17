@@ -20,17 +20,13 @@ type iClearAutoMemoryRequest interface {
 }
 
 type ClearAutoMemoryRequest struct {
-	// The workspace ID. This parameter is required when ownerType is set to group.
+	// The collaboration workspace ID. This parameter is required when ownerType is set to group.
 	//
 	// example:
 	//
 	// cg_12345
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The owner type. Valid values:
-	//
-	// - user: the personal memory of the authenticated user.
-	//
-	// - group: the memory of a specified workspace.
+	// The owner type. Valid values: user: the personal memory of the authenticated user; group: the memory of the specified collaboration workspace.
 	//
 	// example:
 	//
@@ -42,7 +38,7 @@ type ClearAutoMemoryRequest struct {
 	//
 	// 10001
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The memory type. Valid values: user, feedback, reference, project, and all. A value of all does not clear manual memory.
+	// The memory type. Valid values: user, feedback, reference, project, or all. The value all does not clear manual memory.
 	//
 	// This parameter is required.
 	//

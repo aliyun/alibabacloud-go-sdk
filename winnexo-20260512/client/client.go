@@ -619,11 +619,11 @@ func (client *Client) CancelTodo(request *CancelTodoRequest) (_result *CancelTod
 
 // Summary:
 //
-// Checks resource permissions within an application.
+// Checks the resource permissions within an application.
 //
 // Description:
 //
-// Requires the APP/VIEW permission to check your own permissions and the APP/MANAGE permission to check permissions on behalf of others.
+// Requires the APP/VIEW permission for checking your own permissions and the APP/MANAGE permission for checking permissions on behalf of others.
 //
 // @param request - CheckAppResourcePermissionRequest
 //
@@ -696,11 +696,11 @@ func (client *Client) CheckAppResourcePermissionWithOptions(request *CheckAppRes
 
 // Summary:
 //
-// Checks resource permissions within an application.
+// Checks the resource permissions within an application.
 //
 // Description:
 //
-// Requires the APP/VIEW permission to check your own permissions and the APP/MANAGE permission to check permissions on behalf of others.
+// Requires the APP/VIEW permission for checking your own permissions and the APP/MANAGE permission for checking permissions on behalf of others.
 //
 // @param request - CheckAppResourcePermissionRequest
 //
@@ -887,7 +887,7 @@ func (client *Client) CheckHealth(request *CheckHealthRequest) (_result *CheckHe
 //
 // Description:
 //
-// Manages personal or specified writing workspace memory based on the authenticated user. The workspace mode inherits the permissions of active members.
+// Manages personal or specified writing collaboration workspace memory based on the authenticated user. The workspace mode inherits active member permissions.
 //
 // @param request - ClearAutoMemoryRequest
 //
@@ -952,7 +952,7 @@ func (client *Client) ClearAutoMemoryWithOptions(request *ClearAutoMemoryRequest
 //
 // Description:
 //
-// Manages personal or specified writing workspace memory based on the authenticated user. The workspace mode inherits the permissions of active members.
+// Manages personal or specified writing collaboration workspace memory based on the authenticated user. The workspace mode inherits active member permissions.
 //
 // @param request - ClearAutoMemoryRequest
 //
@@ -1134,6 +1134,86 @@ func (client *Client) CloseWorkflowTodos(request *CloseWorkflowTodosRequest) (_r
 	headers := make(map[string]*string)
 	_result = &CloseWorkflowTodosResponse{}
 	_body, _err := client.CloseWorkflowTodosWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将 direct 会话转换为 work 会话
+//
+// Description:
+//
+// 将源会话当前有效、已完成的 direct 模型历史冻结并复制为新的 work 会话，源会话保留。混合会话仅转换 direct 历史，不补入普通 work 历史或只有展示记录的旧历史；转换范围不受 directMaxHistoryRounds 限制。转换本身不发起聊天或运行 Skill。对同一源会话重复调用用于查询或继续同一转换，最多产生一个成功目标，成功后始终返回原目标，源后续消息不自动同步。仅 status=succeeded 表示目标已可使用；processing 时继续使用同一源 sessionId 查询，不能向尚未就绪的目标发送消息、Fork 或分享。源正在生成时返回 SourceBusy，无有效模型历史时返回 NoConvertibleHistory，已成功的目标被删除或历史不可恢复时返回 ConvertedTargetUnavailable，不重建目标。仅允许本人可操作且具备 work 权限的普通会话，拒绝 group_shared、task_follow_up、skill_follow_up、skill_output_backfill 等受限来源；后台查看权不授予转换权。
+//
+// @param request - ConvertDirectConversationToWorkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertDirectConversationToWorkResponse
+func (client *Client) ConvertDirectConversationToWorkWithOptions(request *ConvertDirectConversationToWorkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConvertDirectConversationToWorkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConvertDirectConversationToWork"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/convertDirectConversationToWork"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConvertDirectConversationToWorkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将 direct 会话转换为 work 会话
+//
+// Description:
+//
+// 将源会话当前有效、已完成的 direct 模型历史冻结并复制为新的 work 会话，源会话保留。混合会话仅转换 direct 历史，不补入普通 work 历史或只有展示记录的旧历史；转换范围不受 directMaxHistoryRounds 限制。转换本身不发起聊天或运行 Skill。对同一源会话重复调用用于查询或继续同一转换，最多产生一个成功目标，成功后始终返回原目标，源后续消息不自动同步。仅 status=succeeded 表示目标已可使用；processing 时继续使用同一源 sessionId 查询，不能向尚未就绪的目标发送消息、Fork 或分享。源正在生成时返回 SourceBusy，无有效模型历史时返回 NoConvertibleHistory，已成功的目标被删除或历史不可恢复时返回 ConvertedTargetUnavailable，不重建目标。仅允许本人可操作且具备 work 权限的普通会话，拒绝 group_shared、task_follow_up、skill_follow_up、skill_output_backfill 等受限来源；后台查看权不授予转换权。
+//
+// @param request - ConvertDirectConversationToWorkRequest
+//
+// @return ConvertDirectConversationToWorkResponse
+func (client *Client) ConvertDirectConversationToWork(request *ConvertDirectConversationToWorkRequest) (_result *ConvertDirectConversationToWorkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ConvertDirectConversationToWorkResponse{}
+	_body, _err := client.ConvertDirectConversationToWorkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1567,11 +1647,11 @@ func (client *Client) CreateCustomOrg(request *CreateCustomOrgRequest) (_result 
 
 // Summary:
 //
-// # CreateFreeExplorationWorkItem
+// Creates a free exploration work item and a group topic that match the page settings, and configures digital workers and the visibility scope.
 //
 // Description:
 //
-// 创建与页面一致的自由探索工作项及群话题，配置数字员工和可见范围；不发送消息，不自动执行；非幂等，超时先查询 queryWorkItemFeed
+// Creates a free exploration work item and a group topic that match the page settings, and configures digital workers and the visibility scope. This operation does not send messages or execute automatically. It is not idempotent. If a timeout occurs, call queryWorkItemFeed first.
 //
 // @param tmpReq - CreateFreeExplorationWorkItemRequest
 //
@@ -1650,11 +1730,11 @@ func (client *Client) CreateFreeExplorationWorkItemWithOptions(tmpReq *CreateFre
 
 // Summary:
 //
-// # CreateFreeExplorationWorkItem
+// Creates a free exploration work item and a group topic that match the page settings, and configures digital workers and the visibility scope.
 //
 // Description:
 //
-// 创建与页面一致的自由探索工作项及群话题，配置数字员工和可见范围；不发送消息，不自动执行；非幂等，超时先查询 queryWorkItemFeed
+// Creates a free exploration work item and a group topic that match the page settings, and configures digital workers and the visibility scope. This operation does not send messages or execute automatically. It is not idempotent. If a timeout occurs, call queryWorkItemFeed first.
 //
 // @param request - CreateFreeExplorationWorkItemRequest
 //
@@ -5535,21 +5615,21 @@ func (client *Client) CreatePersonalVoiceMeeting(request *CreatePersonalVoiceMee
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation is used to upload files to an enterprise knowledge base.
+// - This API operation is used to upload files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+// - You must have the DEVELOPMENT_KB_MANAGE feature permission to call this API operation.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - You must provide the persistent OSS URL (filePath) of the file when uploading the file.
 //
-// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and the original file name to enhance the completeness of the file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+// - If directoryId is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
-// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
+// - You can use sourceTags to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
+// - This operation starts a billing bill (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param tmpReq - CreateScheduledTaskRequest
 //
@@ -5621,6 +5701,10 @@ func (client *Client) CreateScheduledTaskWithOptions(tmpReq *CreateScheduledTask
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.OutputMode) {
+		body["outputMode"] = request.OutputMode
+	}
+
 	if !dara.IsNil(request.SegmentsShrink) {
 		body["segments"] = request.SegmentsShrink
 	}
@@ -5672,21 +5756,21 @@ func (client *Client) CreateScheduledTaskWithOptions(tmpReq *CreateScheduledTask
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation is used to upload files to an enterprise knowledge base.
+// - This API operation is used to upload files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+// - You must have the DEVELOPMENT_KB_MANAGE feature permission to call this API operation.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - You must provide the persistent OSS URL (filePath) of the file when uploading the file.
 //
-// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and the original file name to enhance the completeness of the file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+// - If directoryId is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
-// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
+// - You can use sourceTags to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
+// - This operation starts a billing bill (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - CreateScheduledTaskRequest
 //
@@ -5939,25 +6023,25 @@ func (client *Client) CreateTodo(request *CreateTodoRequest) (_result *CreateTod
 //
 // Description:
 //
-// Creates a user by using OpenAPI.
+// Creates a user by calling the API.
 //
 //	Business orchestration:
 //
-//	1. Parses roleCodes into role_ids (validates against system role enumerations).
+//	1. Parses roleCodes into role_ids (validates against system role enums).
 //
 //	2. Checks whether the user already exists (used to return the isNewUser flag).
 //
-//	3. Calls UserManagementService.add_tenant_member to create or add the user (the password must be passed by the caller as an RSA ciphertext).
+//	3. Calls UserManagementService.add_tenant_member to complete the creation or addition process (the password must be passed as an RSA ciphertext by the caller).
 //
 //	4. Returns the creation result (including the isNewUser flag).
 //
 //	Error codes:
 //
-//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to restore the user.
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume the user.
 //
 //	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
 //
-//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
+//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicated within the tenant.
 //
 // @param tmpReq - CreateUserRequest
 //
@@ -6036,25 +6120,25 @@ func (client *Client) CreateUserWithOptions(tmpReq *CreateUserRequest, headers m
 //
 // Description:
 //
-// Creates a user by using OpenAPI.
+// Creates a user by calling the API.
 //
 //	Business orchestration:
 //
-//	1. Parses roleCodes into role_ids (validates against system role enumerations).
+//	1. Parses roleCodes into role_ids (validates against system role enums).
 //
 //	2. Checks whether the user already exists (used to return the isNewUser flag).
 //
-//	3. Calls UserManagementService.add_tenant_member to create or add the user (the password must be passed by the caller as an RSA ciphertext).
+//	3. Calls UserManagementService.add_tenant_member to complete the creation or addition process (the password must be passed as an RSA ciphertext by the caller).
 //
 //	4. Returns the creation result (including the isNewUser flag).
 //
 //	Error codes:
 //
-//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to restore the user.
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume the user.
 //
 //	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
 //
-//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
+//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicated within the tenant.
 //
 // @param request - CreateUserRequest
 //
@@ -6073,11 +6157,19 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 
 // Summary:
 //
-// Creates a user group under the tenant to which the authenticated identity belongs.
+// Creates a new user group under the tenant to which the authenticated identity belongs.
 //
 // Description:
 //
-// WinNexo user management OpenAPI: Creates a user group. The tenant identity is derived from the authentication context.
+// ## Request description
+//
+// You can use this API operation to create a new user group within a specified tenant. The user group name must be unique under the same parent node. If the `parentId` parameter is not provided, the user group is created under the root node by default. You can also add a description for the new user group.
+//
+// ### Important notes
+//
+// - As a common parameter, `tenantId` can be explicitly passed by using the `--tenant-id` option in winnexo-cli.
+//
+// - After the user group is created, the returned details include but are not limited to the user group ID, name, and level.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -6138,11 +6230,19 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 
 // Summary:
 //
-// Creates a user group under the tenant to which the authenticated identity belongs.
+// Creates a new user group under the tenant to which the authenticated identity belongs.
 //
 // Description:
 //
-// WinNexo user management OpenAPI: Creates a user group. The tenant identity is derived from the authentication context.
+// ## Request description
+//
+// You can use this API operation to create a new user group within a specified tenant. The user group name must be unique under the same parent node. If the `parentId` parameter is not provided, the user group is created under the root node by default. You can also add a description for the new user group.
+//
+// ### Important notes
+//
+// - As a common parameter, `tenantId` can be explicitly passed by using the `--tenant-id` option in winnexo-cli.
+//
+// - After the user group is created, the returned details include but are not limited to the user group ID, name, and level.
 //
 // @param request - CreateUserGroupRequest
 //
@@ -6645,7 +6745,7 @@ func (client *Client) CreateWorkflowTemplate(request *CreateWorkflowTemplateRequ
 //
 // Description:
 //
-// Generates a draft version for editing a workflow template as a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content generation is performed to produce a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently call UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
+// Generates a draft version of a workflow template for storage management administrators. If the selected version is a draft, the original version is returned without creating a new version, ensuring idempotency. If the selected version is committed, content generation creates a v(maximum version number + 1) draft through replication of the original content. The effective version remains unchanged. You can subsequently use UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
 //
 // @param request - CreateWorkflowTemplateDraftVersionRequest
 //
@@ -6710,7 +6810,7 @@ func (client *Client) CreateWorkflowTemplateDraftVersionWithOptions(request *Cre
 //
 // Description:
 //
-// Generates a draft version for editing a workflow template as a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content generation is performed to produce a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently call UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
+// Generates a draft version of a workflow template for storage management administrators. If the selected version is a draft, the original version is returned without creating a new version, ensuring idempotency. If the selected version is committed, content generation creates a v(maximum version number + 1) draft through replication of the original content. The effective version remains unchanged. You can subsequently use UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
 //
 // @param request - CreateWorkflowTemplateDraftVersionRequest
 //
@@ -7585,11 +7685,11 @@ func (client *Client) EnableToken(request *EnableTokenRequest) (_result *EnableT
 
 // Summary:
 //
-// Exports a simplified template definition that can be re-imported.
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // Description:
 //
-// Exports a simplified template definition that can be re-imported.
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // @param request - ExportWorkflowTemplateRequest
 //
@@ -7650,11 +7750,11 @@ func (client *Client) ExportWorkflowTemplateWithOptions(request *ExportWorkflowT
 
 // Summary:
 //
-// Exports a simplified template definition that can be re-imported.
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // Description:
 //
-// Exports a simplified template definition that can be re-imported.
+// Exports a simplified template definition that can be re-imported by valid members.
 //
 // @param request - ExportWorkflowTemplateRequest
 //
@@ -7673,11 +7773,11 @@ func (client *Client) ExportWorkflowTemplate(request *ExportWorkflowTemplateRequ
 
 // Summary:
 //
-// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
+// Generates a non-persistent template draft by calling a large language model (LLM). This operation consumes the LLM quota of the tenant and requires the caller to be a valid member.
 //
 // Description:
 //
-// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
+// Generates a non-persistent template draft by calling a large language model (LLM). This operation consumes the LLM quota of the tenant and requires the caller to be a valid member.
 //
 // @param tmpReq - GenerateWorkflowTemplateDraftRequest
 //
@@ -7744,11 +7844,11 @@ func (client *Client) GenerateWorkflowTemplateDraftWithOptions(tmpReq *GenerateW
 
 // Summary:
 //
-// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
+// Generates a non-persistent template draft by calling a large language model (LLM). This operation consumes the LLM quota of the tenant and requires the caller to be a valid member.
 //
 // Description:
 //
-// Generates a non-persistent template draft by calling a large language model (LLM) and consumes the LLM quota of the tenant.
+// Generates a non-persistent template draft by calling a large language model (LLM). This operation consumes the LLM quota of the tenant and requires the caller to be a valid member.
 //
 // @param request - GenerateWorkflowTemplateDraftRequest
 //
@@ -8057,11 +8157,11 @@ func (client *Client) GetChatSession(request *GetChatSessionRequest) (_result *G
 
 // Summary:
 //
-// 预览和下载协作空间对话文件
+// Retrieves the content, preview URL, or short-term download URL of a file generated during a digital employee conversation.
 //
 // Description:
 //
-// 获取数字员工对话生成文件的正文、预览地址或短期下载地址，支持工作流节点中的USER_OUTPUT_ITEM文件引用。调用者需通过租户、空间成员和文件来源权限校验。无需将文件登记为工作项产物；本接口不接受artifactId。
+// Retrieves the content, preview URL, or short-term download URL of a file generated during a digital employee conversation. This operation supports USER_OUTPUT_ITEM file references in workflow nodes. The caller must pass permission checks for the tenant, space member, and file source. You do not need to register the file as a work item artifact. This operation does not accept artifactId.
 //
 // @param request - GetCollaborationGroupOutputItemPreviewRequest
 //
@@ -8118,11 +8218,11 @@ func (client *Client) GetCollaborationGroupOutputItemPreviewWithOptions(request 
 
 // Summary:
 //
-// 预览和下载协作空间对话文件
+// Retrieves the content, preview URL, or short-term download URL of a file generated during a digital employee conversation.
 //
 // Description:
 //
-// 获取数字员工对话生成文件的正文、预览地址或短期下载地址，支持工作流节点中的USER_OUTPUT_ITEM文件引用。调用者需通过租户、空间成员和文件来源权限校验。无需将文件登记为工作项产物；本接口不接受artifactId。
+// Retrieves the content, preview URL, or short-term download URL of a file generated during a digital employee conversation. This operation supports USER_OUTPUT_ITEM file references in workflow nodes. The caller must pass permission checks for the tenant, space member, and file source. You do not need to register the file as a work item artifact. This operation does not accept artifactId.
 //
 // @param request - GetCollaborationGroupOutputItemPreviewRequest
 //
@@ -8715,7 +8815,7 @@ func (client *Client) GetKnowledgeBaseSource(request *GetKnowledgeBaseSourceRequ
 //
 // Description:
 //
-// Manages personal or specified collaborative writing workspace memories based on the authenticated user. The workspace mode follows the permissions of active members.
+// Manages the memory of a personal or specified writing collaboration workspace based on the authenticated user. The workspace mode inherits active member permissions.
 //
 // @param request - GetMemoryAutoExtractionSwitchRequest
 //
@@ -8776,7 +8876,7 @@ func (client *Client) GetMemoryAutoExtractionSwitchWithOptions(request *GetMemor
 //
 // Description:
 //
-// Manages personal or specified collaborative writing workspace memories based on the authenticated user. The workspace mode follows the permissions of active members.
+// Manages the memory of a personal or specified writing collaboration workspace based on the authenticated user. The workspace mode inherits active member permissions.
 //
 // @param request - GetMemoryAutoExtractionSwitchRequest
 //
@@ -8967,25 +9067,147 @@ func (client *Client) GetNodeDetail(request *GetNodeDetailRequest) (_result *Get
 
 // Summary:
 //
+// Queries the sessions of personal scheduled tasks.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - You must have the DEVELOPMENT_KB_MANAGE feature permission to call this API.
+//
+// - You must provide the OSS persistence URL (filePath) of the file when uploading a file.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If you specify directoryId, the file is placed in the specified enterprise knowledge base directory. Otherwise, the file is placed in the default root directory of the current digital employee.
+//
+// - You can use sourceTags to add tags to resources for subsequent management and retrieval.
+//
+// - This operation generates a bill for UNSTRUCTURED_PARSE. Make sure that your account balance is sufficient.
+//
+// @param request - GetScheduledTaskConversationRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScheduledTaskConversationRecordsResponse
+func (client *Client) GetScheduledTaskConversationRecordsWithOptions(request *GetScheduledTaskConversationRecordsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetScheduledTaskConversationRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InitiatorUserId) {
+		query["initiatorUserId"] = request.InitiatorUserId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScheduledTaskConversationRecords"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getScheduledTaskConversationRecords"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScheduledTaskConversationRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the sessions of personal scheduled tasks.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - You must have the DEVELOPMENT_KB_MANAGE feature permission to call this API.
+//
+// - You must provide the OSS persistence URL (filePath) of the file when uploading a file.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If you specify directoryId, the file is placed in the specified enterprise knowledge base directory. Otherwise, the file is placed in the default root directory of the current digital employee.
+//
+// - You can use sourceTags to add tags to resources for subsequent management and retrieval.
+//
+// - This operation generates a bill for UNSTRUCTURED_PARSE. Make sure that your account balance is sufficient.
+//
+// @param request - GetScheduledTaskConversationRecordsRequest
+//
+// @return GetScheduledTaskConversationRecordsResponse
+func (client *Client) GetScheduledTaskConversationRecords(request *GetScheduledTaskConversationRecordsRequest) (_result *GetScheduledTaskConversationRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetScheduledTaskConversationRecordsResponse{}
+	_body, _err := client.GetScheduledTaskConversationRecordsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the execution details of a scheduled task.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation uploads a file to an enterprise knowledge base.
+// - This API is used to upload files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
+// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this API.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - When uploading a file, you must provide the OSS persistent address (`filePath`) of the file.
 //
-// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of the file information.
 //
 // - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
 // - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
+// - This operation triggers billing (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionDetailRequest
 //
@@ -9040,21 +9262,21 @@ func (client *Client) GetScheduledTaskExecutionDetailWithOptions(request *GetSch
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation uploads a file to an enterprise knowledge base.
+// - This API is used to upload files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
+// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this API.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - When uploading a file, you must provide the OSS persistent address (`filePath`) of the file.
 //
-// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of the file information.
 //
 // - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
 // - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
+// - This operation triggers billing (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionDetailRequest
 //
@@ -9420,19 +9642,19 @@ func (client *Client) GetScheduledTaskUnderstandDetail(request *GetScheduledTask
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // Queries skill details by SkillCode or SkillName, including metadata, input parameter schema, and SKILL.md summary.
 //
-// - **TenantId**: Optional common parameter passed through by the gateway to the backend header. If not specified, the default tenant of the current caller is used.
+// - **TenantId**: Optional common parameter passed through to the backend header by the gateway. If not specified, the default tenant of the current caller is used.
 //
-// - **SkillCode**: Mutually exclusive with SkillName. If both are specified, SkillCode takes precedence.
+// - **SkillCode**: Mutually exclusive with SkillName. If both are provided, SkillCode takes precedence.
 //
 // - **SkillName**: Mutually exclusive with SkillCode. If the name is not unique within the tenant, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **ViewMode**: Optional. Set to `draft` (draft/editing view) or `published` (published view, default).
+// - **ViewMode**: Optional. Valid values: `draft` (draft or edit view) and `published` (published view, default).
 //
-// - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md / scripts / templates). Default value: `false`.
+// - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md, scripts, and templates). Default value: `false`.
 //
 // @param request - GetSkillRequest
 //
@@ -9501,19 +9723,19 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, headers map[
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // Queries skill details by SkillCode or SkillName, including metadata, input parameter schema, and SKILL.md summary.
 //
-// - **TenantId**: Optional common parameter passed through by the gateway to the backend header. If not specified, the default tenant of the current caller is used.
+// - **TenantId**: Optional common parameter passed through to the backend header by the gateway. If not specified, the default tenant of the current caller is used.
 //
-// - **SkillCode**: Mutually exclusive with SkillName. If both are specified, SkillCode takes precedence.
+// - **SkillCode**: Mutually exclusive with SkillName. If both are provided, SkillCode takes precedence.
 //
 // - **SkillName**: Mutually exclusive with SkillCode. If the name is not unique within the tenant, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **ViewMode**: Optional. Set to `draft` (draft/editing view) or `published` (published view, default).
+// - **ViewMode**: Optional. Valid values: `draft` (draft or edit view) and `published` (published view, default).
 //
-// - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md / scripts / templates). Default value: `false`.
+// - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md, scripts, and templates). Default value: `false`.
 //
 // @param request - GetSkillRequest
 //
@@ -9538,15 +9760,15 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 //
 // ## Request description
 //
-// Queries the current status and result of an asynchronous task by `RunId`.
+// Queries the current status and result of an asynchronous task by using RunId.
 //
 // - **State machine**: Running (PENDING/RUNNING) → Succeeded / Failed / Cancelled
 //
-// - **TenantId**: An optional common parameter passed through by the gateway. The backend verifies that the RunId belongs to the current tenant. Otherwise, `ERR.SkillHub.RunNotFound` is returned to avoid exposing existence information.
+// - **TenantId**: Optional common parameter passed through by the gateway. The backend verifies that RunId belongs to the current tenant. Otherwise, it uniformly returns ERR.SkillHub.RunNotFound to avoid leaking resource existence.
 //
-// - **IncludeLogs**: Optional. Specifies whether to return execution logs. Default value: `false`.
+// - **IncludeLogs**: Optional. Specifies whether to return execution logs. Default value: false.
 //
-// When execution succeeds, `Result.Content[]` is an MCP-style Content block array (Text / File / Image).
+// If the execution is successful, Result.Content[] is an array of MCP-style content blocks (Text / File / Image).
 //
 // @param request - GetSkillRunRequest
 //
@@ -9609,15 +9831,15 @@ func (client *Client) GetSkillRunWithOptions(request *GetSkillRunRequest, header
 //
 // ## Request description
 //
-// Queries the current status and result of an asynchronous task by `RunId`.
+// Queries the current status and result of an asynchronous task by using RunId.
 //
 // - **State machine**: Running (PENDING/RUNNING) → Succeeded / Failed / Cancelled
 //
-// - **TenantId**: An optional common parameter passed through by the gateway. The backend verifies that the RunId belongs to the current tenant. Otherwise, `ERR.SkillHub.RunNotFound` is returned to avoid exposing existence information.
+// - **TenantId**: Optional common parameter passed through by the gateway. The backend verifies that RunId belongs to the current tenant. Otherwise, it uniformly returns ERR.SkillHub.RunNotFound to avoid leaking resource existence.
 //
-// - **IncludeLogs**: Optional. Specifies whether to return execution logs. Default value: `false`.
+// - **IncludeLogs**: Optional. Specifies whether to return execution logs. Default value: false.
 //
-// When execution succeeds, `Result.Content[]` is an MCP-style Content block array (Text / File / Image).
+// If the execution is successful, Result.Content[] is an array of MCP-style content blocks (Text / File / Image).
 //
 // @param request - GetSkillRunRequest
 //
@@ -9636,17 +9858,17 @@ func (client *Client) GetSkillRun(request *GetSkillRunRequest) (_result *GetSkil
 
 // Summary:
 //
-// Queries the details of a specified resource (knowledge), with support for returning large detail fields on demand.
+// Queries the details of a specified resource (knowledge) and supports returning large detail fields on demand.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - `tenant_id` is derived from the authenticated identity only. Any value passed in the request body is ignored.
+// - `tenant_id` is derived only from the authenticated identity. If the caller passes it in the request body, it is ignored.
 //
-// - Response elements do not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large responses.
+// - The response does not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large response payloads.
 //
-// - Set the `includeDetails` parameter to `True` to retrieve additional details, including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`.
+// - You can obtain more detailed information, including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`, by setting the `includeDetails` parameter to `true`.
 //
 // @param request - GetSourceRequest
 //
@@ -9703,17 +9925,17 @@ func (client *Client) GetSourceWithOptions(request *GetSourceRequest, headers ma
 
 // Summary:
 //
-// Queries the details of a specified resource (knowledge), with support for returning large detail fields on demand.
+// Queries the details of a specified resource (knowledge) and supports returning large detail fields on demand.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - `tenant_id` is derived from the authenticated identity only. Any value passed in the request body is ignored.
+// - `tenant_id` is derived only from the authenticated identity. If the caller passes it in the request body, it is ignored.
 //
-// - Response elements do not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large responses.
+// - The response does not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large response payloads.
 //
-// - Set the `includeDetails` parameter to `True` to retrieve additional details, including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`.
+// - You can obtain more detailed information, including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`, by setting the `includeDetails` parameter to `true`.
 //
 // @param request - GetSourceRequest
 //
@@ -10236,21 +10458,21 @@ func (client *Client) GetTokenInfo(request *GetTokenInfoRequest) (_result *GetTo
 
 // Summary:
 //
-// Queries user details.
+// Queries the details of a user.
 //
 // Description:
 //
-// Queries user details through OpenAPI.
+// Queries the details of a user.
 //
 //	Business orchestration:
 //
 //	1. Locate the user by wnUserId or accountId.
 //
-//	2. Query the mapping information of the user in the current tenant, including status, join time, and last logon time.
+//	2. Query the mapping information of the user in the current tenant, including the status, join time, and last logon time.
 //
-//	3. Query the role list of the user in the current tenant.
+//	3. Query the roles of the user in the current tenant.
 //
-//	4. Query the user group list of the user in the current tenant.
+//	4. Query the user groups to which the user belongs in the current tenant.
 //
 //	5. Assemble the response.
 //
@@ -10313,21 +10535,21 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 
 // Summary:
 //
-// Queries user details.
+// Queries the details of a user.
 //
 // Description:
 //
-// Queries user details through OpenAPI.
+// Queries the details of a user.
 //
 //	Business orchestration:
 //
 //	1. Locate the user by wnUserId or accountId.
 //
-//	2. Query the mapping information of the user in the current tenant, including status, join time, and last logon time.
+//	2. Query the mapping information of the user in the current tenant, including the status, join time, and last logon time.
 //
-//	3. Query the role list of the user in the current tenant.
+//	3. Query the roles of the user in the current tenant.
 //
-//	4. Query the user group list of the user in the current tenant.
+//	4. Query the user groups to which the user belongs in the current tenant.
 //
 //	5. Assemble the response.
 //
@@ -10548,23 +10770,19 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 
 // Summary:
 //
-// Retrieves the complete information of the authenticated user through OpenAPI, including basic information and tenant list.
+// Retrieves the complete information of an authenticated user, including basic information and the tenant list.
 //
 // Description:
-//
-// ## Request description
 //
 // - This operation returns the detailed information of the current authenticated user.
 //
 // - If the tenant information is invalid, the corresponding error message is returned.
 //
-// - tenantId is an optional parameter. If not provided, the default tenant ID of the caller is used.
+// - tenantId is an optional parameter. If it is not provided, the default tenant ID of the caller is used.
 //
-// - Multiple authentication methods are supported: AccessKey, BearerToken, and APP authentication.
+// - The returned data includes the user profile (such as the username and avatar URL), role preference settings, and details of all affiliated tenants.
 //
-// - The returned data includes the user profile (such as username and profile picture URL), role preference settings, and details of all tenants to which the user belongs.
-//
-// - Note that if the current logon tenant is a system tenant (tenantId=10000), this is explicitly indicated in the response.
+// - Note that if the currently logged-on tenant is the system tenant (that is, tenantId=10000), it is explicitly identified in the response.
 //
 // @param request - GetUserInfoRequest
 //
@@ -10611,23 +10829,19 @@ func (client *Client) GetUserInfoWithOptions(request *GetUserInfoRequest, header
 
 // Summary:
 //
-// Retrieves the complete information of the authenticated user through OpenAPI, including basic information and tenant list.
+// Retrieves the complete information of an authenticated user, including basic information and the tenant list.
 //
 // Description:
-//
-// ## Request description
 //
 // - This operation returns the detailed information of the current authenticated user.
 //
 // - If the tenant information is invalid, the corresponding error message is returned.
 //
-// - tenantId is an optional parameter. If not provided, the default tenant ID of the caller is used.
+// - tenantId is an optional parameter. If it is not provided, the default tenant ID of the caller is used.
 //
-// - Multiple authentication methods are supported: AccessKey, BearerToken, and APP authentication.
+// - The returned data includes the user profile (such as the username and avatar URL), role preference settings, and details of all affiliated tenants.
 //
-// - The returned data includes the user profile (such as username and profile picture URL), role preference settings, and details of all tenants to which the user belongs.
-//
-// - Note that if the current logon tenant is a system tenant (tenantId=10000), this is explicitly indicated in the response.
+// - Note that if the currently logged-on tenant is the system tenant (that is, tenantId=10000), it is explicitly identified in the response.
 //
 // @param request - GetUserInfoRequest
 //
@@ -10902,7 +11116,7 @@ func (client *Client) GetWorkItemAttachmentAccess(request *GetWorkItemAttachment
 
 // Summary:
 //
-// 查询工作项审计记录
+// Queries the complete audit event records of a work item.
 //
 // @param request - GetWorkItemAuditRequest
 //
@@ -10959,7 +11173,7 @@ func (client *Client) GetWorkItemAuditWithOptions(request *GetWorkItemAuditReque
 
 // Summary:
 //
-// 查询工作项审计记录
+// Queries the complete audit event records of a work item.
 //
 // @param request - GetWorkItemAuditRequest
 //
@@ -10978,7 +11192,11 @@ func (client *Client) GetWorkItemAudit(request *GetWorkItemAuditRequest) (_resul
 
 // Summary:
 //
-// 查询工作项运行总结
+// Queries the execution summaries of all nodes in a work item.
+//
+// Description:
+//
+// Queries the execution summaries of all nodes in a work item.
 //
 // @param request - GetWorkItemRunSummariesRequest
 //
@@ -11039,7 +11257,11 @@ func (client *Client) GetWorkItemRunSummariesWithOptions(request *GetWorkItemRun
 
 // Summary:
 //
-// 查询工作项运行总结
+// Queries the execution summaries of all nodes in a work item.
+//
+// Description:
+//
+// Queries the execution summaries of all nodes in a work item.
 //
 // @param request - GetWorkItemRunSummariesRequest
 //
@@ -11138,7 +11360,7 @@ func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (
 
 // Summary:
 //
-// 读取工作流节点配置
+// Queries the current and effective configurations of a workflow node.
 //
 // @param request - GetWorkflowNodeConfigurationRequest
 //
@@ -11199,7 +11421,7 @@ func (client *Client) GetWorkflowNodeConfigurationWithOptions(request *GetWorkfl
 
 // Summary:
 //
-// 读取工作流节点配置
+// Queries the current and effective configurations of a workflow node.
 //
 // @param request - GetWorkflowNodeConfigurationRequest
 //
@@ -11440,11 +11662,11 @@ func (client *Client) GrantAgentUsers(request *GrantAgentUsersRequest) (_result 
 
 // Summary:
 //
-// Imports a portable template in JSON format and creates a new template regardless of the template name.
+// Imports a portable template in JSON format and creates a new template, regardless of whether a template with the same name exists.
 //
 // Description:
 //
-// Imports a portable template in JSON format and creates a new template regardless of the template name.
+// Imports a portable template in JSON format and creates a new template, regardless of whether a template with the same name exists.
 //
 // @param tmpReq - ImportWorkflowTemplateRequest
 //
@@ -11507,11 +11729,11 @@ func (client *Client) ImportWorkflowTemplateWithOptions(tmpReq *ImportWorkflowTe
 
 // Summary:
 //
-// Imports a portable template in JSON format and creates a new template regardless of the template name.
+// Imports a portable template in JSON format and creates a new template, regardless of whether a template with the same name exists.
 //
 // Description:
 //
-// Imports a portable template in JSON format and creates a new template regardless of the template name.
+// Imports a portable template in JSON format and creates a new template, regardless of whether a template with the same name exists.
 //
 // @param request - ImportWorkflowTemplateRequest
 //
@@ -12846,11 +13068,11 @@ func (client *Client) ListChatSessions(request *ListChatSessionsRequest) (_resul
 
 // Summary:
 //
-// 查询协作空间成员
+// Performs a paged query with paging support on the list of members in a collaboration workspace.
 //
 // Description:
 //
-// 分页查询指定空间的有效成员，支持按成员显示名称搜索。调用者必须是当前租户内该空间的有效成员。isActive表示租户账号启用状态，不表示人事在职状态。
+// Performs a paged query with paging support on the active members of a specified workspace, and supports searching by member display name. To invoke this API, you must be an active member of the workspace in the current tenant. The isActive field indicates the enabling status of the tenant account, not the employment status.
 //
 // @param request - ListCollaborationGroupMembersRequest
 //
@@ -12915,11 +13137,11 @@ func (client *Client) ListCollaborationGroupMembersWithOptions(request *ListColl
 
 // Summary:
 //
-// 查询协作空间成员
+// Performs a paged query with paging support on the list of members in a collaboration workspace.
 //
 // Description:
 //
-// 分页查询指定空间的有效成员，支持按成员显示名称搜索。调用者必须是当前租户内该空间的有效成员。isActive表示租户账号启用状态，不表示人事在职状态。
+// Performs a paged query with paging support on the active members of a specified workspace, and supports searching by member display name. To invoke this API, you must be an active member of the workspace in the current tenant. The isActive field indicates the enabling status of the tenant account, not the employment status.
 //
 // @param request - ListCollaborationGroupMembersRequest
 //
@@ -12938,11 +13160,11 @@ func (client *Client) ListCollaborationGroupMembers(request *ListCollaborationGr
 
 // Summary:
 //
-// 查询当前用户可见的协作空间
+// Performs a paging query for the list of collaboration spaces visible to the current user.
 //
 // Description:
 //
-// 分页查询当前调用用户在当前租户中有效加入的协作空间，支持按空间名称搜索。仅返回ACTIVE空间；需要关联平台用户的调用身份，不支持无用户身份的部署凭证。
+// Performs a paging query for the collaboration spaces that the invoking user has validly joined in the current tenant. You can search for spaces by name. Only ACTIVE spaces are returned. The identity used to invoke the operation must be associated with a platform user, and deployment credentials without a user identity are not supported.
 //
 // @param request - ListCollaborationGroupsRequest
 //
@@ -13003,11 +13225,11 @@ func (client *Client) ListCollaborationGroupsWithOptions(request *ListCollaborat
 
 // Summary:
 //
-// 查询当前用户可见的协作空间
+// Performs a paging query for the list of collaboration spaces visible to the current user.
 //
 // Description:
 //
-// 分页查询当前调用用户在当前租户中有效加入的协作空间，支持按空间名称搜索。仅返回ACTIVE空间；需要关联平台用户的调用身份，不支持无用户身份的部署凭证。
+// Performs a paging query for the collaboration spaces that the invoking user has validly joined in the current tenant. You can search for spaces by name. Only ACTIVE spaces are returned. The identity used to invoke the operation must be associated with a platform user, and deployment credentials without a user identity are not supported.
 //
 // @param request - ListCollaborationGroupsRequest
 //
@@ -13820,19 +14042,19 @@ func (client *Client) ListOperatingObjectFavorites(request *ListOperatingObjectF
 
 // Summary:
 //
-// Performs a paged query of the visible outputs and the latest published file versions for the current user or a specified collaboration workspace. Supports filtering by session, label, and business ID. The paging and total count are calculated based on the primary output records.
+// Performs a paged query for the visible outputs and the latest published file versions of the current user or a specified collaboration workspace. Supports filtering by session, label, and business ID. Calculates paging and total counts based on primary output records.
 //
 // Description:
 //
 // If collaborationGroupId is not provided, queries the personal outputs of the current caller. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The caller identity and tenant permissions are determined by the authentication context.
 //
-// The sessionId parameter performs an exact match on a regular session, skill session, or node execution session. The tags parameter requires all specified labels to match simultaneously. The bizId parameter performs an exact match on the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using the AND operator, and are executed before counting and paging.
+// The sessionId parameter requires an exact match for regular sessions, skill sessions, or node execution sessions. The tags parameter requires all labels to match simultaneously. The bizId parameter requires an exact match for the business ID of file registration or associated workflow instances. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using the AND operator, and are executed before counting and paging.
 //
-// Tags and business IDs are derived from file registrations or workflow instance associations. Unregistered tags or business IDs are not inferred from titles. Pagination defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
+// Tags and business IDs are derived from file registration or workflow instance associations. Unregistered tags or business IDs are not inferred from titles. Pagination defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API operation.
 //
-// For versioned files, the latest published version is returned by default without expanding historical versions. This API does not currently support querying specific versions. Pagination and the total count are still based on the primary output records, deduplicated by outputId, and are not counted by the number of files or historical versions.
+// For versioned files, the latest published version is returned by default without expanding historical versions. This API operation does not currently support querying specific versions. Pagination and the total count are still based on primary output records, deduplicated by outputId, and are not counted by the number of files or historical versions.
 //
-// For versioned files, fileInfo.path is a time-sensitive download link attached to the published version and content revisions selected during the query. Downloads do not perform an automatic switchover to other versions published later. Invoke this API again to obtain a new link after the current one expires. Historical files that have not yet formed a published version may not return download information.
+// For versioned files, fileInfo.path is a time-sensitive download link attached to the published version and content revisions selected during the query. Downloads do not perform automatic switchover to other versions published later. Invoke this API operation again to obtain a new link after the current link expires. Historical files that have not yet formed a published version may not return download information.
 //
 // @param tmpReq - ListOutputFilesRequest
 //
@@ -13900,6 +14122,10 @@ func (client *Client) ListOutputFilesWithOptions(tmpReq *ListOutputFilesRequest,
 		body["tags"] = request.TagsShrink
 	}
 
+	if !dara.IsNil(request.TaskExecutionId) {
+		body["taskExecutionId"] = request.TaskExecutionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -13927,19 +14153,19 @@ func (client *Client) ListOutputFilesWithOptions(tmpReq *ListOutputFilesRequest,
 
 // Summary:
 //
-// Performs a paged query of the visible outputs and the latest published file versions for the current user or a specified collaboration workspace. Supports filtering by session, label, and business ID. The paging and total count are calculated based on the primary output records.
+// Performs a paged query for the visible outputs and the latest published file versions of the current user or a specified collaboration workspace. Supports filtering by session, label, and business ID. Calculates paging and total counts based on primary output records.
 //
 // Description:
 //
 // If collaborationGroupId is not provided, queries the personal outputs of the current caller. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The caller identity and tenant permissions are determined by the authentication context.
 //
-// The sessionId parameter performs an exact match on a regular session, skill session, or node execution session. The tags parameter requires all specified labels to match simultaneously. The bizId parameter performs an exact match on the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using the AND operator, and are executed before counting and paging.
+// The sessionId parameter requires an exact match for regular sessions, skill sessions, or node execution sessions. The tags parameter requires all labels to match simultaneously. The bizId parameter requires an exact match for the business ID of file registration or associated workflow instances. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using the AND operator, and are executed before counting and paging.
 //
-// Tags and business IDs are derived from file registrations or workflow instance associations. Unregistered tags or business IDs are not inferred from titles. Pagination defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
+// Tags and business IDs are derived from file registration or workflow instance associations. Unregistered tags or business IDs are not inferred from titles. Pagination defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API operation.
 //
-// For versioned files, the latest published version is returned by default without expanding historical versions. This API does not currently support querying specific versions. Pagination and the total count are still based on the primary output records, deduplicated by outputId, and are not counted by the number of files or historical versions.
+// For versioned files, the latest published version is returned by default without expanding historical versions. This API operation does not currently support querying specific versions. Pagination and the total count are still based on primary output records, deduplicated by outputId, and are not counted by the number of files or historical versions.
 //
-// For versioned files, fileInfo.path is a time-sensitive download link attached to the published version and content revisions selected during the query. Downloads do not perform an automatic switchover to other versions published later. Invoke this API again to obtain a new link after the current one expires. Historical files that have not yet formed a published version may not return download information.
+// For versioned files, fileInfo.path is a time-sensitive download link attached to the published version and content revisions selected during the query. Downloads do not perform automatic switchover to other versions published later. Invoke this API operation again to obtain a new link after the current link expires. Historical files that have not yet formed a published version may not return download information.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -14194,21 +14420,21 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation is used to upload files to an enterprise knowledge base.
+// - This API is used to upload files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
+// - The DEVELOPMENT_KB_MANAGE feature permission is required to call this API.
 //
-// - Provide the OSS persistent address (`filePath`) of the file when uploading.
+// - The OSS persistence URL (filePath) of the file must be provided during file upload.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If directoryId is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, it is bound to the default root directory of the current digital employee by default.
 //
-// - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
+// - Tags can be added to resources through sourceTags to facilitate subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
+// - This operation generates a bill (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param tmpReq - ListScheduledTasksRequest
 //
@@ -14297,21 +14523,21 @@ func (client *Client) ListScheduledTasksWithOptions(tmpReq *ListScheduledTasksRe
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation is used to upload files to an enterprise knowledge base.
+// - This API is used to upload files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
+// - The DEVELOPMENT_KB_MANAGE feature permission is required to call this API.
 //
-// - Provide the OSS persistent address (`filePath`) of the file when uploading.
+// - The OSS persistence URL (filePath) of the file must be provided during file upload.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If directoryId is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, it is bound to the default root directory of the current digital employee by default.
 //
-// - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
+// - Tags can be added to resources through sourceTags to facilitate subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
+// - This operation generates a bill (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -14488,21 +14714,155 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 
 // Summary:
 //
-// Retrieves the list of knowledge bases.
+// Retrieves source retrieve and usage statistics through paged query and paging.
 //
 // Description:
 //
-// ## Operation description
+// Retrieves source retrieve and usage statistics through paged query and paging. Returns only the data for the current query purpose, without other report sections. For enterprises, only the knowledge base super administrator is allowed. For a single workspace, the storage management administrator or the SUPER_ADMIN of the current tenant platform is allowed. For all workspaces, only the platform SUPER_ADMIN is allowed. This feature is not available for individual users, and group credentials cannot be used across workspaces. The time refers to the reporting and ingestion time, which is left-closed and right-open, with a maximum span of 366 days. Knowledge bases are filtered based on the current attach settings. The three APIs do not guarantee the same snapshot across requests.
 //
-// - This API is used for paging query of folder content and resources in an enterprise knowledge base.
+// @param tmpReq - ListSourceUsageStatisticsRequest
 //
-// - Multiple parameters are supported for filtering and sorting, such as `directoryId`, `page`, `pageSize`, `sortField`, `sortOrder`, and more.
+// @param headers - map
 //
-// - The `sourceTypes` parameter allows you to filter by resource type. Separate multiple types with commas.
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// - If `directoryId` is not specified or is set to `root`, the root folder list of the knowledge base is queried by default.
+// @return ListSourceUsageStatisticsResponse
+func (client *Client) ListSourceUsageStatisticsWithOptions(tmpReq *ListSourceUsageStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSourceUsageStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSourceUsageStatisticsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KnowledgeBaseIds) {
+		request.KnowledgeBaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeBaseIds, dara.String("knowledgeBaseIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceIds) {
+		request.SourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceIds, dara.String("sourceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventType) {
+		body["eventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseIdsShrink) {
+		body["knowledgeBaseIds"] = request.KnowledgeBaseIdsShrink
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		body["scopeType"] = request.ScopeType
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["sortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["sortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.SourceIdsShrink) {
+		body["sourceIds"] = request.SourceIdsShrink
+	}
+
+	if !dara.IsNil(request.SourceName) {
+		body["sourceName"] = request.SourceName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSourceUsageStatistics"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listSourceUsageStatistics"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSourceUsageStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
 //
-// - The default sort field is `name`, and the default sort order is ascending (`asc`).
+// Retrieves source retrieve and usage statistics through paged query and paging.
+//
+// Description:
+//
+// Retrieves source retrieve and usage statistics through paged query and paging. Returns only the data for the current query purpose, without other report sections. For enterprises, only the knowledge base super administrator is allowed. For a single workspace, the storage management administrator or the SUPER_ADMIN of the current tenant platform is allowed. For all workspaces, only the platform SUPER_ADMIN is allowed. This feature is not available for individual users, and group credentials cannot be used across workspaces. The time refers to the reporting and ingestion time, which is left-closed and right-open, with a maximum span of 366 days. Knowledge bases are filtered based on the current attach settings. The three APIs do not guarantee the same snapshot across requests.
+//
+// @param request - ListSourceUsageStatisticsRequest
+//
+// @return ListSourceUsageStatisticsResponse
+func (client *Client) ListSourceUsageStatistics(request *ListSourceUsageStatisticsRequest) (_result *ListSourceUsageStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSourceUsageStatisticsResponse{}
+	_body, _err := client.ListSourceUsageStatisticsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of knowledge bases.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API performs a paging query of folder contents and resources in an enterprise knowledge base.
+//
+// - It supports filtering and sorting by various parameters, such as directoryId, page, pageSize, sortField, and sortOrder.
+//
+// - The sourceTypes parameter allows you to filter by resource type. Separate multiple types with commas.
+//
+// - If directoryId is not specified or is set to root, the root folder list of the knowledge base is queried by default.
+//
+// - The default sort field is name, and the default sort order is ascending (asc).
 //
 // @param request - ListTenantDirectoryRequest
 //
@@ -14575,21 +14935,21 @@ func (client *Client) ListTenantDirectoryWithOptions(request *ListTenantDirector
 
 // Summary:
 //
-// Retrieves the list of knowledge bases.
+// Retrieves a list of knowledge bases.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API is used for paging query of folder content and resources in an enterprise knowledge base.
+// - This API performs a paging query of folder contents and resources in an enterprise knowledge base.
 //
-// - Multiple parameters are supported for filtering and sorting, such as `directoryId`, `page`, `pageSize`, `sortField`, `sortOrder`, and more.
+// - It supports filtering and sorting by various parameters, such as directoryId, page, pageSize, sortField, and sortOrder.
 //
-// - The `sourceTypes` parameter allows you to filter by resource type. Separate multiple types with commas.
+// - The sourceTypes parameter allows you to filter by resource type. Separate multiple types with commas.
 //
-// - If `directoryId` is not specified or is set to `root`, the root folder list of the knowledge base is queried by default.
+// - If directoryId is not specified or is set to root, the root folder list of the knowledge base is queried by default.
 //
-// - The default sort field is `name`, and the default sort order is ascending (`asc`).
+// - The default sort field is name, and the default sort order is ascending (asc).
 //
 // @param request - ListTenantDirectoryRequest
 //
@@ -14836,17 +15196,17 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 
 // Summary:
 //
-// Queries the knowledge base directory content visible to the current OpenAPI user.
+// Queries the content of the knowledge base directory visible to the current OpenAPI user.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation returns subdirectories and READY resources under the specified directory based on the enterprise knowledge base frontend scope.
+// - This operation returns the subdirectories and READY resources of a specified directory based on the frontend specifications of the enterprise knowledge base.
 //
 // - The user identity and directory visibility scope are derived from the OpenAPI authentication context.
 //
-// - When `sourceTypes` has a value, only resources are returned. `keyword` searches only the current directory level.
+// - If `sourceTypes` is specified, only resources are returned. The `keyword` parameter only searches the current directory level.
 //
 // @param request - ListUserVisibleKnowledgeBaseContentsRequest
 //
@@ -14923,17 +15283,17 @@ func (client *Client) ListUserVisibleKnowledgeBaseContentsWithOptions(request *L
 
 // Summary:
 //
-// Queries the knowledge base directory content visible to the current OpenAPI user.
+// Queries the content of the knowledge base directory visible to the current OpenAPI user.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation returns subdirectories and READY resources under the specified directory based on the enterprise knowledge base frontend scope.
+// - This operation returns the subdirectories and READY resources of a specified directory based on the frontend specifications of the enterprise knowledge base.
 //
 // - The user identity and directory visibility scope are derived from the OpenAPI authentication context.
 //
-// - When `sourceTypes` has a value, only resources are returned. `keyword` searches only the current directory level.
+// - If `sourceTypes` is specified, only resources are returned. The `keyword` parameter only searches the current directory level.
 //
 // @param request - ListUserVisibleKnowledgeBaseContentsRequest
 //
@@ -15044,23 +15404,23 @@ func (client *Client) ListUserVisibleKnowledgeBases(request *ListUserVisibleKnow
 
 // Summary:
 //
-// Queries tenant members by paging.
+// Performs a paging query for the tenant member list.
 //
 // Description:
 //
-// Queries a paged list of tenant members by using OpenAPI.
+// Performs a paging query for the tenant member list by using OpenAPI.
 //
-//	Business orchestration:
+//	Workflow:
 //
-//	1. Parse filter conditions (roleCodes → role_ids).
+//	1. Parse filter conditions (roleCodes to role_ids).
 //
-//	2. Call UserTenantMappingRepository.query_paged_tenant_members to perform a paged query.
+//	2. Invoke UserTenantMappingRepository.query_paged_tenant_members to perform a paging query.
 //
-//	3. Convert role_id in the results to roleCode and assemble the response.
+//	3. Convert role_id in the result to roleCode and assemble the response.
 //
 //	Error codes:
 //
-//	- An error is thrown when an invalid roleCode parameter is specified.
+//	- Throws an error when the roleCode parameter is invalid.
 //
 // @param tmpReq - ListUsersRequest
 //
@@ -15143,23 +15503,23 @@ func (client *Client) ListUsersWithOptions(tmpReq *ListUsersRequest, headers map
 
 // Summary:
 //
-// Queries tenant members by paging.
+// Performs a paging query for the tenant member list.
 //
 // Description:
 //
-// Queries a paged list of tenant members by using OpenAPI.
+// Performs a paging query for the tenant member list by using OpenAPI.
 //
-//	Business orchestration:
+//	Workflow:
 //
-//	1. Parse filter conditions (roleCodes → role_ids).
+//	1. Parse filter conditions (roleCodes to role_ids).
 //
-//	2. Call UserTenantMappingRepository.query_paged_tenant_members to perform a paged query.
+//	2. Invoke UserTenantMappingRepository.query_paged_tenant_members to perform a paging query.
 //
-//	3. Convert role_id in the results to roleCode and assemble the response.
+//	3. Convert role_id in the result to roleCode and assemble the response.
 //
 //	Error codes:
 //
-//	- An error is thrown when an invalid roleCode parameter is specified.
+//	- Throws an error when the roleCode parameter is invalid.
 //
 // @param request - ListUsersRequest
 //
@@ -15815,11 +16175,11 @@ func (client *Client) ListWorkflowTemplateVersions(request *ListWorkflowTemplate
 
 // Summary:
 //
-// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
+// Queries the valid templates in the current collaboration space by using pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // Description:
 //
-// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
+// Searches for valid templates in the current collaboration space by using pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // @param request - ListWorkflowTemplatesRequest
 //
@@ -15892,11 +16252,11 @@ func (client *Client) ListWorkflowTemplatesWithOptions(request *ListWorkflowTemp
 
 // Summary:
 //
-// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
+// Queries the valid templates in the current collaboration space by using pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // Description:
 //
-// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
+// Searches for valid templates in the current collaboration space by using pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // @param request - ListWorkflowTemplatesRequest
 //
@@ -17025,6 +17385,250 @@ func (client *Client) QuerySemanticKnowledge(request *QuerySemanticKnowledgeRequ
 	headers := make(map[string]*string)
 	_result = &QuerySemanticKnowledgeResponse{}
 	_body, _err := client.QuerySemanticKnowledgeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the overview of source retrieval and usage.
+//
+// Description:
+//
+// Queries the overview of source retrieve and usage. Returns only the data for the current query purpose, without other report sections. For enterprises, only the knowledge base super administrator is allowed. For a single workspace, the storage management administrator or the SUPER_ADMIN of the current tenant platform is allowed. For all workspaces, only the platform SUPER_ADMIN is allowed. This feature is not available for individual users, and group credentials cannot be used across workspaces. The time refers to the reporting and ingestion time, which is left-closed and right-open, with a maximum span of 366 days. Knowledge bases are filtered based on the attach configuration. The three APIs do not guarantee the same snapshot across requests.
+//
+// @param tmpReq - QuerySourceUsageSummaryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySourceUsageSummaryResponse
+func (client *Client) QuerySourceUsageSummaryWithOptions(tmpReq *QuerySourceUsageSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QuerySourceUsageSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QuerySourceUsageSummaryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KnowledgeBaseIds) {
+		request.KnowledgeBaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeBaseIds, dara.String("knowledgeBaseIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceIds) {
+		request.SourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceIds, dara.String("sourceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventType) {
+		body["eventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseIdsShrink) {
+		body["knowledgeBaseIds"] = request.KnowledgeBaseIdsShrink
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		body["scopeType"] = request.ScopeType
+	}
+
+	if !dara.IsNil(request.SourceIdsShrink) {
+		body["sourceIds"] = request.SourceIdsShrink
+	}
+
+	if !dara.IsNil(request.SourceName) {
+		body["sourceName"] = request.SourceName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySourceUsageSummary"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/querySourceUsageSummary"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySourceUsageSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the overview of source retrieval and usage.
+//
+// Description:
+//
+// Queries the overview of source retrieve and usage. Returns only the data for the current query purpose, without other report sections. For enterprises, only the knowledge base super administrator is allowed. For a single workspace, the storage management administrator or the SUPER_ADMIN of the current tenant platform is allowed. For all workspaces, only the platform SUPER_ADMIN is allowed. This feature is not available for individual users, and group credentials cannot be used across workspaces. The time refers to the reporting and ingestion time, which is left-closed and right-open, with a maximum span of 366 days. Knowledge bases are filtered based on the attach configuration. The three APIs do not guarantee the same snapshot across requests.
+//
+// @param request - QuerySourceUsageSummaryRequest
+//
+// @return QuerySourceUsageSummaryResponse
+func (client *Client) QuerySourceUsageSummary(request *QuerySourceUsageSummaryRequest) (_result *QuerySourceUsageSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QuerySourceUsageSummaryResponse{}
+	_body, _err := client.QuerySourceUsageSummaryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the retrieval and usage time trends of sources.
+//
+// Description:
+//
+// Queries the trends of source retrieval and usage over time. Returns only the data relevant to the current query and does not include other report sections. For enterprises, only knowledge base super administrators are authorized. For a single workspace, workspace administrators or the SUPER_ADMIN of the current tenant are authorized. For all workspaces, only the platform SUPER_ADMIN is authorized. This feature is unavailable for individual users, and group credentials cannot be used across workspaces. The time parameter refers to the time when data is reported and ingested. The time range is inclusive of the start time and exclusive of the end time, and can span up to 366 days. Knowledge bases are filtered based on current bindings. The three APIs do not guarantee data snapshot consistency across requests.
+//
+// @param tmpReq - QuerySourceUsageTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySourceUsageTrendResponse
+func (client *Client) QuerySourceUsageTrendWithOptions(tmpReq *QuerySourceUsageTrendRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QuerySourceUsageTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QuerySourceUsageTrendShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KnowledgeBaseIds) {
+		request.KnowledgeBaseIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeBaseIds, dara.String("knowledgeBaseIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceIds) {
+		request.SourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceIds, dara.String("sourceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventType) {
+		body["eventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		body["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseIdsShrink) {
+		body["knowledgeBaseIds"] = request.KnowledgeBaseIdsShrink
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		body["scopeType"] = request.ScopeType
+	}
+
+	if !dara.IsNil(request.SourceIdsShrink) {
+		body["sourceIds"] = request.SourceIdsShrink
+	}
+
+	if !dara.IsNil(request.SourceName) {
+		body["sourceName"] = request.SourceName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeZone) {
+		body["timeZone"] = request.TimeZone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySourceUsageTrend"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/querySourceUsageTrend"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySourceUsageTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the retrieval and usage time trends of sources.
+//
+// Description:
+//
+// Queries the trends of source retrieval and usage over time. Returns only the data relevant to the current query and does not include other report sections. For enterprises, only knowledge base super administrators are authorized. For a single workspace, workspace administrators or the SUPER_ADMIN of the current tenant are authorized. For all workspaces, only the platform SUPER_ADMIN is authorized. This feature is unavailable for individual users, and group credentials cannot be used across workspaces. The time parameter refers to the time when data is reported and ingested. The time range is inclusive of the start time and exclusive of the end time, and can span up to 366 days. Knowledge bases are filtered based on current bindings. The three APIs do not guarantee data snapshot consistency across requests.
+//
+// @param request - QuerySourceUsageTrendRequest
+//
+// @return QuerySourceUsageTrendResponse
+func (client *Client) QuerySourceUsageTrend(request *QuerySourceUsageTrendRequest) (_result *QuerySourceUsageTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QuerySourceUsageTrendResponse{}
+	_body, _err := client.QuerySourceUsageTrendWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18306,7 +18910,7 @@ func (client *Client) ReplaceKnowledgeBaseSourceFile(request *ReplaceKnowledgeBa
 //
 // Description:
 //
-// Manages personal memory or the memory of a specified writing workspace based on the authenticated user. Workspace mode inherits the permissions of active members.
+// Manages personal or specified writing workspace memory based on the authenticated user. In workspace mode, the permissions of active members are inherited.
 //
 // @param request - ReplaceManualMemoryRequest
 //
@@ -18371,7 +18975,7 @@ func (client *Client) ReplaceManualMemoryWithOptions(request *ReplaceManualMemor
 //
 // Description:
 //
-// Manages personal memory or the memory of a specified writing workspace based on the authenticated user. Workspace mode inherits the permissions of active members.
+// Manages personal or specified writing workspace memory based on the authenticated user. In workspace mode, the permissions of active members are inherited.
 //
 // @param request - ReplaceManualMemoryRequest
 //
@@ -18700,11 +19304,11 @@ func (client *Client) RerunNodeAI(request *RerunNodeAIRequest) (_result *RerunNo
 
 // Summary:
 //
-// # RerunWorkflowNode
+// Reruns a workflow starting from a specified node of a work item.
 //
 // Description:
 //
-// 从工作项指定节点重跑；沿用业务权限和状态校验，命令接受不代表异步执行完成
+// Reruns a workflow starting from a specified node of a work item. This operation retains business permissions and status checks. Acceptance of the command does not indicate that the asynchronous execution is complete.
 //
 // @param request - RerunWorkflowNodeRequest
 //
@@ -18765,11 +19369,11 @@ func (client *Client) RerunWorkflowNodeWithOptions(request *RerunWorkflowNodeReq
 
 // Summary:
 //
-// # RerunWorkflowNode
+// Reruns a workflow starting from a specified node of a work item.
 //
 // Description:
 //
-// 从工作项指定节点重跑；沿用业务权限和状态校验，命令接受不代表异步执行完成
+// Reruns a workflow starting from a specified node of a work item. This operation retains business permissions and status checks. Acceptance of the command does not indicate that the asynchronous execution is complete.
 //
 // @param request - RerunWorkflowNodeRequest
 //
@@ -19016,7 +19620,11 @@ func (client *Client) ResetToken(request *ResetTokenRequest) (_result *ResetToke
 
 // Summary:
 //
-// 恢复工作流节点默认配置
+// Resets the workflow node configuration to the default values.
+//
+// Description:
+//
+// Resets the workflow node configuration to the default values.
 //
 // @param request - ResetWorkflowNodeConfigurationRequest
 //
@@ -19081,7 +19689,11 @@ func (client *Client) ResetWorkflowNodeConfigurationWithOptions(request *ResetWo
 
 // Summary:
 //
-// 恢复工作流节点默认配置
+// Resets the workflow node configuration to the default values.
+//
+// Description:
+//
+// Resets the workflow node configuration to the default values.
 //
 // @param request - ResetWorkflowNodeConfigurationRequest
 //
@@ -20818,12 +21430,20 @@ func (client *Client) SendAsyncChatMessageWithOptions(tmpReq *SendAsyncChatMessa
 	}
 	request := &SendAsyncChatMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContextItems) {
+		request.ContextItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContextItems, dara.String("contextItems"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.DigitalEmployeeName) {
 		request.DigitalEmployeeNameShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DigitalEmployeeName, dara.String("digitalEmployeeName"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.Files) {
 		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("files"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Segments) {
+		request.SegmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Segments, dara.String("segments"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.TaskExecution) {
@@ -20844,12 +21464,20 @@ func (client *Client) SendAsyncChatMessageWithOptions(tmpReq *SendAsyncChatMessa
 		body["contentType"] = request.ContentType
 	}
 
+	if !dara.IsNil(request.ContextItemsShrink) {
+		body["contextItems"] = request.ContextItemsShrink
+	}
+
 	if !dara.IsNil(request.DigitalEmployeeNameShrink) {
 		body["digitalEmployeeName"] = request.DigitalEmployeeNameShrink
 	}
 
 	if !dara.IsNil(request.DirectChat) {
 		body["directChat"] = request.DirectChat
+	}
+
+	if !dara.IsNil(request.DirectMaxHistoryRounds) {
+		body["directMaxHistoryRounds"] = request.DirectMaxHistoryRounds
 	}
 
 	if !dara.IsNil(request.EnableWebSearch) {
@@ -20860,12 +21488,20 @@ func (client *Client) SendAsyncChatMessageWithOptions(tmpReq *SendAsyncChatMessa
 		body["files"] = request.FilesShrink
 	}
 
+	if !dara.IsNil(request.Locale) {
+		body["locale"] = request.Locale
+	}
+
 	if !dara.IsNil(request.Model) {
 		body["model"] = request.Model
 	}
 
 	if !dara.IsNil(request.ReuseLastSession) {
 		body["reuseLastSession"] = request.ReuseLastSession
+	}
+
+	if !dara.IsNil(request.SegmentsShrink) {
+		body["segments"] = request.SegmentsShrink
 	}
 
 	if !dara.IsNil(request.SessionId) {
@@ -21001,12 +21637,20 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 	}
 	request := &SendChatMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContextItems) {
+		request.ContextItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContextItems, dara.String("contextItems"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.DigitalEmployeeName) {
 		request.DigitalEmployeeNameShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DigitalEmployeeName, dara.String("digitalEmployeeName"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.Files) {
 		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("files"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Segments) {
+		request.SegmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Segments, dara.String("segments"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.TaskExecution) {
@@ -21027,12 +21671,20 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 		body["contentType"] = request.ContentType
 	}
 
+	if !dara.IsNil(request.ContextItemsShrink) {
+		body["contextItems"] = request.ContextItemsShrink
+	}
+
 	if !dara.IsNil(request.DigitalEmployeeNameShrink) {
 		body["digitalEmployeeName"] = request.DigitalEmployeeNameShrink
 	}
 
 	if !dara.IsNil(request.DirectChat) {
 		body["directChat"] = request.DirectChat
+	}
+
+	if !dara.IsNil(request.DirectMaxHistoryRounds) {
+		body["directMaxHistoryRounds"] = request.DirectMaxHistoryRounds
 	}
 
 	if !dara.IsNil(request.EnableWebSearch) {
@@ -21043,12 +21695,20 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 		body["files"] = request.FilesShrink
 	}
 
+	if !dara.IsNil(request.Locale) {
+		body["locale"] = request.Locale
+	}
+
 	if !dara.IsNil(request.Model) {
 		body["model"] = request.Model
 	}
 
 	if !dara.IsNil(request.ReuseLastSession) {
 		body["reuseLastSession"] = request.ReuseLastSession
+	}
+
+	if !dara.IsNil(request.SegmentsShrink) {
+		body["segments"] = request.SegmentsShrink
 	}
 
 	if !dara.IsNil(request.SessionId) {
@@ -21129,11 +21789,11 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 
 // Summary:
 //
-// 向自由探索工作项发送消息
+// Sends a user message to a work item topic.
 //
 // Description:
 //
-// 向当前租户、指定协作空间内的已有自由探索会话发送文本消息，立即返回消息提交回执，AI回复在后台异步生成。调用者需关联平台用户并具有话题发送权限。workItemId与conversationId至少传一个，同时传入时必须指向同一会话。不创建新会话，不支持工作流节点话题或Master话题。
+// Sends a text message to an existing free exploration session within the current tenant and specified collaboration space. Returns a message submission receipt immediately, and the AI reply is generated asynchronously in the background. The caller must be associated with a platform user and have the permission to send messages to topics. You must specify at least one of workItemId and conversationId. If both are specified, they must point to the same session. This operation does not create a new session and does not support workflow node topics or Master topics.
 //
 // @param request - SendWorkItemMessageRequest
 //
@@ -21198,11 +21858,11 @@ func (client *Client) SendWorkItemMessageWithOptions(request *SendWorkItemMessag
 
 // Summary:
 //
-// 向自由探索工作项发送消息
+// Sends a user message to a work item topic.
 //
 // Description:
 //
-// 向当前租户、指定协作空间内的已有自由探索会话发送文本消息，立即返回消息提交回执，AI回复在后台异步生成。调用者需关联平台用户并具有话题发送权限。workItemId与conversationId至少传一个，同时传入时必须指向同一会话。不创建新会话，不支持工作流节点话题或Master话题。
+// Sends a text message to an existing free exploration session within the current tenant and specified collaboration space. Returns a message submission receipt immediately, and the AI reply is generated asynchronously in the background. The caller must be associated with a platform user and have the permission to send messages to topics. You must specify at least one of workItemId and conversationId. If both are specified, they must point to the same session. This operation does not create a new session and does not support workflow node topics or Master topics.
 //
 // @param request - SendWorkItemMessageRequest
 //
@@ -21309,11 +21969,11 @@ func (client *Client) SetWorkItemPinned(request *SetWorkItemPinnedRequest) (_res
 
 // Summary:
 //
-// Sets the Settings of the effective version of a workflow template for the storage management administrator. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
+// The storage management administrator updates the Settings for the effective version of a workflow template. Only versions that you commit are allowed, and each template can have only one effective version. Before taking effect, the version is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own snapshots to execute and remain unaffected.
 //
 // Description:
 //
-// The storage management administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
+// The storage management administrator updates the Settings for the effective version of a workflow template. Only versions that you commit are allowed, and each template can have only one effective version. Before taking effect, the version is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own snapshots to execute and remain unaffected.
 //
 // @param request - SetWorkflowTemplateEffectiveVersionRequest
 //
@@ -21374,11 +22034,11 @@ func (client *Client) SetWorkflowTemplateEffectiveVersionWithOptions(request *Se
 
 // Summary:
 //
-// Sets the Settings of the effective version of a workflow template for the storage management administrator. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
+// The storage management administrator updates the Settings for the effective version of a workflow template. Only versions that you commit are allowed, and each template can have only one effective version. Before taking effect, the version is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own snapshots to execute and remain unaffected.
 //
 // Description:
 //
-// The storage management administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
+// The storage management administrator updates the Settings for the effective version of a workflow template. Only versions that you commit are allowed, and each template can have only one effective version. Before taking effect, the version is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own snapshots to execute and remain unaffected.
 //
 // @param request - SetWorkflowTemplateEffectiveVersionRequest
 //
@@ -22074,6 +22734,10 @@ func (client *Client) TranscribeChatVoiceWithOptions(request *TranscribeChatVoic
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContentType) {
 		body["contentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.FileContentBase64) {
+		body["fileContentBase64"] = request.FileContentBase64
 	}
 
 	if !dara.IsNil(request.FileName) {
@@ -23313,11 +23977,11 @@ func (client *Client) UpdateKnowledgeBaseSourceTags(request *UpdateKnowledgeBase
 
 // Summary:
 //
-// Updates the automatic memory collection toggle.
+// Updates the automatic memory collection switch.
 //
 // Description:
 //
-// Manages personal memories or memories of a specified collaborative writing workspace based on the authenticated user. In workspace mode, the permissions of active members are applied.
+// Manages personal or specified writing collaboration workspace memory based on the authenticated user. The workspace mode inherits the permissions of active members.
 //
 // @param request - UpdateMemoryAutoExtractionSwitchRequest
 //
@@ -23382,11 +24046,11 @@ func (client *Client) UpdateMemoryAutoExtractionSwitchWithOptions(request *Updat
 
 // Summary:
 //
-// Updates the automatic memory collection toggle.
+// Updates the automatic memory collection switch.
 //
 // Description:
 //
-// Manages personal memories or memories of a specified collaborative writing workspace based on the authenticated user. In workspace mode, the permissions of active members are applied.
+// Manages personal or specified writing collaboration workspace memory based on the authenticated user. The workspace mode inherits the permissions of active members.
 //
 // @param request - UpdateMemoryAutoExtractionSwitchRequest
 //
@@ -23475,6 +24139,10 @@ func (client *Client) UpdateScheduledTaskWithOptions(tmpReq *UpdateScheduledTask
 
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OutputMode) {
+		body["outputMode"] = request.OutputMode
 	}
 
 	if !dara.IsNil(request.SegmentsShrink) {
@@ -23901,7 +24569,9 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 //
 // Description:
 //
-// WinNexo user management OpenAPI: updates a user group. The tenant identity is obtained from the authentication context.
+// ## Request description
+//
+// This operation supports atomic updates to user group information, including but not limited to the user group name, description, and its position in the organizational structure (by setting a new parent user group ID or moving to the root node). Note that when attempting to move a user group to the root node, you must not provide a non-null `parentId` value at the same time. Additionally, if you do not want to modify certain fields such as `userGroupName` or `description`, you can omit these parameters.
 //
 // @param request - UpdateUserGroupRequest
 //
@@ -23974,7 +24644,9 @@ func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest
 //
 // Description:
 //
-// WinNexo user management OpenAPI: updates a user group. The tenant identity is obtained from the authentication context.
+// ## Request description
+//
+// This operation supports atomic updates to user group information, including but not limited to the user group name, description, and its position in the organizational structure (by setting a new parent user group ID or moving to the root node). Note that when attempting to move a user group to the root node, you must not provide a non-null `parentId` value at the same time. Additionally, if you do not want to modify certain fields such as `userGroupName` or `description`, you can omit these parameters.
 //
 // @param request - UpdateUserGroupRequest
 //
@@ -24255,7 +24927,7 @@ func (client *Client) UpdateWorkItem(request *UpdateWorkItemRequest) (_result *U
 
 // Summary:
 //
-// 编辑工作流节点配置
+// Updates the executor and model configurations of a workflow node.
 //
 // @param tmpReq - UpdateWorkflowNodeConfigurationRequest
 //
@@ -24342,7 +25014,7 @@ func (client *Client) UpdateWorkflowNodeConfigurationWithOptions(tmpReq *UpdateW
 
 // Summary:
 //
-// 编辑工作流节点配置
+// Updates the executor and model configurations of a workflow node.
 //
 // @param request - UpdateWorkflowNodeConfigurationRequest
 //
@@ -24361,11 +25033,11 @@ func (client *Client) UpdateWorkflowNodeConfiguration(request *UpdateWorkflowNod
 
 // Summary:
 //
-// Updates a workflow template by overwriting it with valid members. The last save takes effect.
+// Overwrites and updates a workflow template with valid members. The last save takes effect.
 //
 // Description:
 //
-// Updates a workflow template by overwriting it with valid members. The last save takes effect.
+// Overwrites and updates a workflow template with valid members. The last save takes effect.
 //
 // @param tmpReq - UpdateWorkflowTemplateRequest
 //
@@ -24448,11 +25120,11 @@ func (client *Client) UpdateWorkflowTemplateWithOptions(tmpReq *UpdateWorkflowTe
 
 // Summary:
 //
-// Updates a workflow template by overwriting it with valid members. The last save takes effect.
+// Overwrites and updates a workflow template with valid members. The last save takes effect.
 //
 // Description:
 //
-// Updates a workflow template by overwriting it with valid members. The last save takes effect.
+// Overwrites and updates a workflow template with valid members. The last save takes effect.
 //
 // @param request - UpdateWorkflowTemplateRequest
 //
@@ -24469,6 +25141,8 @@ func (client *Client) UpdateWorkflowTemplate(request *UpdateWorkflowTemplateRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UploadChatFile is deprecated
+//
 // Summary:
 //
 // Uploads a local file for a session.
@@ -24560,6 +25234,8 @@ func (client *Client) UploadChatFileWithOptions(request *UploadChatFileRequest, 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UploadChatFile is deprecated
+//
 // Summary:
 //
 // Uploads a local file for a session.
@@ -24593,6 +25269,7 @@ func (client *Client) UploadChatFileWithOptions(request *UploadChatFileRequest, 
 // @param request - UploadChatFileRequest
 //
 // @return UploadChatFileResponse
+// Deprecated
 func (client *Client) UploadChatFile(request *UploadChatFileRequest) (_result *UploadChatFileResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24712,6 +25389,94 @@ func (client *Client) UploadChatFileAdvance(request *UploadChatFileAdvanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// # Base64 上传会话文件
+//
+// Description:
+//
+// 使用标准 Base64 提交本地附件（应用侧解码上限 50 MiB），返回会话文件记录 ID。
+//
+// @param request - UploadChatFileByBase64Request
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadChatFileByBase64Response
+func (client *Client) UploadChatFileByBase64WithOptions(request *UploadChatFileByBase64Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadChatFileByBase64Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		body["contentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.FileContentBase64) {
+		body["fileContentBase64"] = request.FileContentBase64
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadChatFileByBase64"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/uploadChatFileByBase64"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadChatFileByBase64Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Base64 上传会话文件
+//
+// Description:
+//
+// 使用标准 Base64 提交本地附件（应用侧解码上限 50 MiB），返回会话文件记录 ID。
+//
+// @param request - UploadChatFileByBase64Request
+//
+// @return UploadChatFileByBase64Response
+func (client *Client) UploadChatFileByBase64(request *UploadChatFileByBase64Request) (_result *UploadChatFileByBase64Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UploadChatFileByBase64Response{}
+	_body, _err := client.UploadChatFileByBase64WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]interface{}, _err error) {
 	var respMap map[string]interface{}
 	bodyStr, _err := dara.ReadAsString(response_.Body)
@@ -24751,12 +25516,20 @@ func (client *Client) sendChatMessageWithSSE_opYieldFunc(_yield chan *SendChatMe
 	}
 	request := &SendChatMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContextItems) {
+		request.ContextItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContextItems, dara.String("contextItems"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.DigitalEmployeeName) {
 		request.DigitalEmployeeNameShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DigitalEmployeeName, dara.String("digitalEmployeeName"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.Files) {
 		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("files"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Segments) {
+		request.SegmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Segments, dara.String("segments"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.TaskExecution) {
@@ -24777,12 +25550,20 @@ func (client *Client) sendChatMessageWithSSE_opYieldFunc(_yield chan *SendChatMe
 		body["contentType"] = request.ContentType
 	}
 
+	if !dara.IsNil(request.ContextItemsShrink) {
+		body["contextItems"] = request.ContextItemsShrink
+	}
+
 	if !dara.IsNil(request.DigitalEmployeeNameShrink) {
 		body["digitalEmployeeName"] = request.DigitalEmployeeNameShrink
 	}
 
 	if !dara.IsNil(request.DirectChat) {
 		body["directChat"] = request.DirectChat
+	}
+
+	if !dara.IsNil(request.DirectMaxHistoryRounds) {
+		body["directMaxHistoryRounds"] = request.DirectMaxHistoryRounds
 	}
 
 	if !dara.IsNil(request.EnableWebSearch) {
@@ -24793,12 +25574,20 @@ func (client *Client) sendChatMessageWithSSE_opYieldFunc(_yield chan *SendChatMe
 		body["files"] = request.FilesShrink
 	}
 
+	if !dara.IsNil(request.Locale) {
+		body["locale"] = request.Locale
+	}
+
 	if !dara.IsNil(request.Model) {
 		body["model"] = request.Model
 	}
 
 	if !dara.IsNil(request.ReuseLastSession) {
 		body["reuseLastSession"] = request.ReuseLastSession
+	}
+
+	if !dara.IsNil(request.SegmentsShrink) {
+		body["segments"] = request.SegmentsShrink
 	}
 
 	if !dara.IsNil(request.SessionId) {

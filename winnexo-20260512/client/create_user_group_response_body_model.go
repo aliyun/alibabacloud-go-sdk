@@ -20,29 +20,29 @@ type iCreateUserGroupResponseBody interface {
 }
 
 type CreateUserGroupResponseBody struct {
-	// The business status code. A value of 200 indicates success.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error description. This value is empty if the request is successful.
+	// The error details.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request trace ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the newly created user group.
+	// The newly created user group.
 	//
 	// example:
 	//
-	// {"userGroupId":"7ea8973f-7a5c-4e8a-956b-4fe0e7e2eb11","userGroupName":"华南销售","parentId":null,"level":1,"description":"华南销售组织","childGroupCount":0,"directMemberCount":0,"sourceType":"internal","externalSyncStatus":null,"gmtCreate":"2026-08-27T09:00:00Z","gmtModified":"2026-08-27T09:00:00Z"}
+	// {"userGroupId":"7ea8973f-7a5c-4e8a-956b-4fe0e7e2eb11","userGroupName":"South China Sales","parentId":null,"level":1,"description":"South China sales organization","childGroupCount":0,"directMemberCount":0,"sourceType":"internal","externalSyncStatus":null,"gmtCreate":"2026-08-27T09:00:00Z","gmtModified":"2026-08-27T09:00:00Z"}
 	UserGroup interface{} `json:"userGroup,omitempty" xml:"userGroup,omitempty"`
 }
 

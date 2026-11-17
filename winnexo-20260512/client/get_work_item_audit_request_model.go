@@ -18,7 +18,7 @@ type iGetWorkItemAuditRequest interface {
 }
 
 type GetWorkItemAuditRequest struct {
-	// 协作空间ID
+	// The collaboration workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type GetWorkItemAuditRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 租户ID；缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 工作项ID
+	// The work item ID.
 	//
 	// This parameter is required.
 	//

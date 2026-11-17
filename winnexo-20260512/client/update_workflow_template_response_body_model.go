@@ -58,19 +58,19 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// 1
 	CreatedByUserId *int64 `json:"createdByUserId,omitempty" xml:"createdByUserId,omitempty"`
-	// The description of the template.
+	// The template description.
 	//
 	// example:
 	//
 	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 节点依赖边；每项包含from/to，引用稳定stepId；显式空数组表示没有依赖
+	// The node dependency edges. Each item contains from and to, referencing stable stepIds. An explicit empty array indicates no dependencies.
 	//
 	// example:
 	//
 	// [{"from":"collect","to":"deliver"}]
 	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
-	// The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items.
+	// The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
 	//
 	// example:
 	//
@@ -88,19 +88,19 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	// The optional canvas layout, indexed by stepId. This only affects the display and does not determine dependencies.
 	//
 	// example:
 	//
 	// {"collect":{"x":0,"y":0},"review":{"x":240,"y":0}}
 	Layout map[string]interface{} `json:"layout,omitempty" xml:"layout,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 模板结构版本，当前为2，与业务版本vN独立
+	// The template structure version. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -122,15 +122,15 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
+	// [{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]
 	Steps []*UpdateWorkflowTemplateResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// example:
 	//
 	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// The version number to which the content belongs.
+	// The version number to which the returned content belongs.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// Added a review step
+	// Added review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 	// The version status. Valid values:
 	//
@@ -335,21 +335,21 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// standard
 	ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-	// The name of the step.
+	// The step name.
 	//
 	// example:
 	//
 	// Customer Complaint Handling Process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the agent assignee.
+	// The name of the agent owner.
 	//
 	// example:
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The type of the assignee. Valid values:
+	// The owner type. Valid values:
 	//
-	// - MEMBER: Human user.
+	// - MEMBER: Human.
 	//
 	// - AGENT: Agent.
 	//
@@ -357,43 +357,43 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// MEMBER
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// The user ID of the human assignee.
+	// The user ID of the human owner.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	// Specifies whether to manually review the output. Default value: false. This feature can only be enabled for digital workers, and review to-do items are automatically sent to the owner.
 	//
 	// example:
 	//
 	// false
 	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
-	// The list of user IDs of the reviewers.
+	// The list of reviewer user IDs.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// The order of the step.
+	// The step order.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The processing instructions for the step.
+	// The step processing instructions.
 	//
 	// example:
 	//
-	// Collect customer information and forward it to the person in charge for review
+	// Collect customer information and submit it to the owner for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. Referenced identities and order are preserved.
+	// The ordered fragment array. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
 	//
 	// example:
 	//
-	// [{\\"type\\":\\"text\\",\\"text\\":\\"收集客户信息\\"}]
+	// [{"type":"text","text":"Collect customer information"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
-	// The ID of the step.
+	// The step ID.
 	//
 	// example:
 	//

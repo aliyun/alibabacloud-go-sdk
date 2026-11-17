@@ -16,7 +16,7 @@ type iGetScheduledTaskExecutionDetailRequest interface {
 }
 
 type GetScheduledTaskExecutionDetailRequest struct {
-	// The execution record ID.
+	// The ID of the execution record.
 	//
 	// This parameter is required.
 	//

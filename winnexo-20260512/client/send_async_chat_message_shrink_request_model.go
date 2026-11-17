@@ -13,18 +13,26 @@ type iSendAsyncChatMessageShrinkRequest interface {
 	GetContent() *string
 	SetContentType(v string) *SendAsyncChatMessageShrinkRequest
 	GetContentType() *string
+	SetContextItemsShrink(v string) *SendAsyncChatMessageShrinkRequest
+	GetContextItemsShrink() *string
 	SetDigitalEmployeeNameShrink(v string) *SendAsyncChatMessageShrinkRequest
 	GetDigitalEmployeeNameShrink() *string
 	SetDirectChat(v bool) *SendAsyncChatMessageShrinkRequest
 	GetDirectChat() *bool
+	SetDirectMaxHistoryRounds(v interface{}) *SendAsyncChatMessageShrinkRequest
+	GetDirectMaxHistoryRounds() interface{}
 	SetEnableWebSearch(v bool) *SendAsyncChatMessageShrinkRequest
 	GetEnableWebSearch() *bool
 	SetFilesShrink(v string) *SendAsyncChatMessageShrinkRequest
 	GetFilesShrink() *string
+	SetLocale(v string) *SendAsyncChatMessageShrinkRequest
+	GetLocale() *string
 	SetModel(v string) *SendAsyncChatMessageShrinkRequest
 	GetModel() *string
 	SetReuseLastSession(v bool) *SendAsyncChatMessageShrinkRequest
 	GetReuseLastSession() *bool
+	SetSegmentsShrink(v string) *SendAsyncChatMessageShrinkRequest
+	GetSegmentsShrink() *string
 	SetSessionId(v string) *SendAsyncChatMessageShrinkRequest
 	GetSessionId() *string
 	SetStream(v bool) *SendAsyncChatMessageShrinkRequest
@@ -52,6 +60,12 @@ type SendAsyncChatMessageShrinkRequest struct {
 	//
 	// Text
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// 作为本轮上下文引用的消息或文件条目
+	//
+	// example:
+	//
+	// []
+	ContextItemsShrink *string `json:"contextItems,omitempty" xml:"contextItems,omitempty"`
 	// The list of digital employee names. For compatibility with the legacy format, a single string can also be passed.
 	//
 	// example:
@@ -64,6 +78,12 @@ type SendAsyncChatMessageShrinkRequest struct {
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
+	// 本轮携带的最近完整 direct 问答轮数，不含本轮输入。仅 workMode=direct 或 directChat=true 时生效。有效值为 0–100 的 JSON 整数，省略时由后端按 0 处理，不携带历史但仍保存当前轮。null、布尔值、字符串、小数及越界值按原 direct 路径处理，网关保留原始值供后端判定。work/ask 忽略此字段。该参数不限制转换为 work 时的历史范围
+	//
+	// example:
+	//
+	// 1
+	DirectMaxHistoryRounds interface{} `json:"directMaxHistoryRounds,omitempty" xml:"directMaxHistoryRounds,omitempty"`
 	// Specifies whether to enable web search. Default value: false. In the task execution scenario where taskExecution is passed, the task configuration prevails.
 	//
 	// example:
@@ -72,6 +92,12 @@ type SendAsyncChatMessageShrinkRequest struct {
 	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
 	// The list of file references. Each item is an object, and the fileId parameter is required. The fileId is returned by the uploadChatFile operation.
 	FilesShrink *string `json:"files,omitempty" xml:"files,omitempty"`
+	// 本轮语言，可选 zh-CN、en-US，用于接口错误文案并透传给 CodeAgent；省略时沿用当前语言行为，不修改用户设置
+	//
+	// example:
+	//
+	// en-US
+	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
 	//
 	// example:
@@ -84,6 +110,12 @@ type SendAsyncChatMessageShrinkRequest struct {
 	//
 	// false
 	ReuseLastSession *bool `json:"reuseLastSession,omitempty" xml:"reuseLastSession,omitempty"`
+	// 消息中的结构化片段，例如会话或对象提及
+	//
+	// example:
+	//
+	// []
+	SegmentsShrink *string `json:"segments,omitempty" xml:"segments,omitempty"`
 	// The session ID. If not specified, a new session is created.
 	//
 	// example:
@@ -128,12 +160,20 @@ func (s *SendAsyncChatMessageShrinkRequest) GetContentType() *string {
 	return s.ContentType
 }
 
+func (s *SendAsyncChatMessageShrinkRequest) GetContextItemsShrink() *string {
+	return s.ContextItemsShrink
+}
+
 func (s *SendAsyncChatMessageShrinkRequest) GetDigitalEmployeeNameShrink() *string {
 	return s.DigitalEmployeeNameShrink
 }
 
 func (s *SendAsyncChatMessageShrinkRequest) GetDirectChat() *bool {
 	return s.DirectChat
+}
+
+func (s *SendAsyncChatMessageShrinkRequest) GetDirectMaxHistoryRounds() interface{} {
+	return s.DirectMaxHistoryRounds
 }
 
 func (s *SendAsyncChatMessageShrinkRequest) GetEnableWebSearch() *bool {
@@ -144,12 +184,20 @@ func (s *SendAsyncChatMessageShrinkRequest) GetFilesShrink() *string {
 	return s.FilesShrink
 }
 
+func (s *SendAsyncChatMessageShrinkRequest) GetLocale() *string {
+	return s.Locale
+}
+
 func (s *SendAsyncChatMessageShrinkRequest) GetModel() *string {
 	return s.Model
 }
 
 func (s *SendAsyncChatMessageShrinkRequest) GetReuseLastSession() *bool {
 	return s.ReuseLastSession
+}
+
+func (s *SendAsyncChatMessageShrinkRequest) GetSegmentsShrink() *string {
+	return s.SegmentsShrink
 }
 
 func (s *SendAsyncChatMessageShrinkRequest) GetSessionId() *string {
@@ -182,6 +230,11 @@ func (s *SendAsyncChatMessageShrinkRequest) SetContentType(v string) *SendAsyncC
 	return s
 }
 
+func (s *SendAsyncChatMessageShrinkRequest) SetContextItemsShrink(v string) *SendAsyncChatMessageShrinkRequest {
+	s.ContextItemsShrink = &v
+	return s
+}
+
 func (s *SendAsyncChatMessageShrinkRequest) SetDigitalEmployeeNameShrink(v string) *SendAsyncChatMessageShrinkRequest {
 	s.DigitalEmployeeNameShrink = &v
 	return s
@@ -189,6 +242,11 @@ func (s *SendAsyncChatMessageShrinkRequest) SetDigitalEmployeeNameShrink(v strin
 
 func (s *SendAsyncChatMessageShrinkRequest) SetDirectChat(v bool) *SendAsyncChatMessageShrinkRequest {
 	s.DirectChat = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageShrinkRequest) SetDirectMaxHistoryRounds(v interface{}) *SendAsyncChatMessageShrinkRequest {
+	s.DirectMaxHistoryRounds = v
 	return s
 }
 
@@ -202,6 +260,11 @@ func (s *SendAsyncChatMessageShrinkRequest) SetFilesShrink(v string) *SendAsyncC
 	return s
 }
 
+func (s *SendAsyncChatMessageShrinkRequest) SetLocale(v string) *SendAsyncChatMessageShrinkRequest {
+	s.Locale = &v
+	return s
+}
+
 func (s *SendAsyncChatMessageShrinkRequest) SetModel(v string) *SendAsyncChatMessageShrinkRequest {
 	s.Model = &v
 	return s
@@ -209,6 +272,11 @@ func (s *SendAsyncChatMessageShrinkRequest) SetModel(v string) *SendAsyncChatMes
 
 func (s *SendAsyncChatMessageShrinkRequest) SetReuseLastSession(v bool) *SendAsyncChatMessageShrinkRequest {
 	s.ReuseLastSession = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageShrinkRequest) SetSegmentsShrink(v string) *SendAsyncChatMessageShrinkRequest {
+	s.SegmentsShrink = &v
 	return s
 }
 

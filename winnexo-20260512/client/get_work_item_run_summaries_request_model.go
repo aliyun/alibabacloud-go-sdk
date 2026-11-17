@@ -20,7 +20,7 @@ type iGetWorkItemRunSummariesRequest interface {
 }
 
 type GetWorkItemRunSummariesRequest struct {
-	// 协作空间ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type GetWorkItemRunSummariesRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 可选节点key；传入后只返回该节点当前轮次的总结
+	// The node key.
 	//
 	// example:
 	//
 	// query.amount
 	NodeKey *string `json:"nodeKey,omitempty" xml:"nodeKey,omitempty"`
-	// 租户ID；缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 工作项ID
+	// The ID of the work item.
 	//
 	// This parameter is required.
 	//

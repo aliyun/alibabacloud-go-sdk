@@ -32,7 +32,7 @@ type ListOutputFilesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The list of output main records on the current page. By default, the latest published version is returned for file details.
+	// The list of output master records on the current page. File details return the latest published version by default.
 	Items []*ListOutputFilesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The message.
 	//
@@ -40,13 +40,13 @@ type ListOutputFilesResponseBody struct {
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The current page number, starting from 1. Pagination is based on primary output records.
+	// The current page number. The value starts from 1, and pagination is based on output master records.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of primary output records per page. Default value: 20. Valid values: 1 to 100.
+	// The number of output master records per page. Default value: 20. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListOutputFilesResponseBody struct {
 	//
 	// 123e4567-e89b-42d3-a456-426614174007
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of primary output records that meet the filter conditions. The count is deduplicated by outputId and does not include the number of files or historical versions.
+	// The total number of output master records that match the filter conditions. The count is deduplicated by outputId and does not include the number of files or historical versions.
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type ListOutputFilesResponseBodyItems struct {
 	//
 	// session_123e4567-e89b-42d3-a456-426614174008
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
+	// The creation time of the output or detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
 	//
 	// example:
 	//
 	// 2026-10-12T03:10:00+00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
+	// The update time of the output or detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListOutputFilesResponseBodyItems struct {
 	//
 	// Quarterly Business Analysis Report.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital employee (operating object).
+	// The name of the digital worker (operating object).
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListOutputFilesResponseBodyItems struct {
 	//
 	// output_123e4567-e89b-42d3-a456-426614174009
 	OutputId *string `json:"outputId,omitempty" xml:"outputId,omitempty"`
-	// The list of details under the current output main record. For versioned files, only the latest published version is returned, and historical versions are not expanded.
+	// The list of details under the current output master record. For versioned files, only the latest published version is returned, and historical versions are not expanded.
 	OutputItems []*ListOutputFilesResponseBodyItemsOutputItems `json:"outputItems,omitempty" xml:"outputItems,omitempty" type:"Repeated"`
 	// The output type: `conversation/skill/task`.
 	//
@@ -336,23 +336,23 @@ func (s *ListOutputFilesResponseBodyItems) Validate() error {
 }
 
 type ListOutputFilesResponseBodyItemsOutputItems struct {
-	// The creation time of the output detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
+	// The creation time of the output detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
 	//
 	// example:
 	//
 	// 2026-10-12T03:10:00+00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The email information. This field is present when the type is email.
+	// The email information. This field is available only when the item type is email.
 	EmailInfo *ListOutputFilesResponseBodyItemsOutputItemsEmailInfo `json:"emailInfo,omitempty" xml:"emailInfo,omitempty" type:"Struct"`
-	// The file information. This field is present when the type is file.
+	// The file information. This field is available only when the item type is file.
 	FileInfo *ListOutputFilesResponseBodyItemsOutputItemsFileInfo `json:"fileInfo,omitempty" xml:"fileInfo,omitempty" type:"Struct"`
-	// The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
+	// The creation time of the output or detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
 	//
 	// example:
 	//
 	// 2026-10-12T03:10:00+00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string. The time zone information is returned with the original value.
+	// The update time of the output or detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
 	//
 	// example:
 	//
@@ -370,7 +370,7 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// document
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// The internationalized display name of the output detail type.
+	// The localized display name of the output detail type.
 	//
 	// example:
 	//
@@ -388,13 +388,13 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// item_123e4567-e89b-42d3-a456-426614174010
 	OutputItemId *string `json:"outputItemId,omitempty" xml:"outputItemId,omitempty"`
-	// Specifies whether sharing is enabled.
+	// Indicates whether sharing is enabled.
 	//
 	// example:
 	//
 	// true
 	ShareEnabled *bool `json:"shareEnabled,omitempty" xml:"shareEnabled,omitempty"`
-	// The share token. This field is present when sharing is enabled. You can use this token to access the public share preview API.
+	// The share token. This field is present when sharing is enabled and can be used to access the public share preview API.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// skillout_123e4567-e89b-42d3-a456-426614174011
 	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	// The slide deck information. This field is present when the type is slide deck.
+	// The slide deck information. This field is present when the output type is a slide deck.
 	SlidesInfo *ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo `json:"slidesInfo,omitempty" xml:"slidesInfo,omitempty" type:"Struct"`
 	// The task execution ID.
 	//
@@ -583,7 +583,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsEmailInfo struct {
 	//
 	// example:
 	//
-	// The quarterly business report has been generated. Please check your inbox
+	// The quarterly business report has been generated. Please check it
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The content type, such as MARKDOWN, JSONML, or HTML.
 	//
@@ -658,7 +658,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsFileInfo struct {
 	//
 	// example:
 	//
-	// Quarterly revenue, cost, and trend analysis report
+	// Analysis report on quarterly revenue, costs, and trends
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The file name.
 	//
@@ -666,7 +666,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsFileInfo struct {
 	//
 	// Quarterly Business Analysis Report.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The file download link. For versioned files, it is bound to the published version and content revision at the time of query. The link has a time-to-live. If it expires, query the list again to obtain a new link.
+	// The file download link. For versioned files, it is bound to the published version and content revision at the time of query. The link has a validity period. If it expires, query the list again to obtain a new link.
 	//
 	// example:
 	//
@@ -735,17 +735,17 @@ type ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo struct {
 	//
 	// 8
 	CompletedSlides *int64 `json:"completedSlides,omitempty" xml:"completedSlides,omitempty"`
-	// The PPT file ID.
+	// The ID of the PPT file.
 	//
 	// example:
 	//
 	// ppt_123e4567-e89b-42d3-a456-426614174015
 	PptId *string `json:"pptId,omitempty" xml:"pptId,omitempty"`
-	// The PPT name.
+	// The name of the PPT file.
 	//
 	// example:
 	//
-	// Quarterly Business Analysis Presentation
+	// Quarterly Business Analysis Report
 	PptName *string `json:"pptName,omitempty" xml:"pptName,omitempty"`
 	// The total number of slides.
 	//

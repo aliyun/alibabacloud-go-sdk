@@ -350,6 +350,12 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline struct {
 	//
 	// 2023-10-01T12:00:00Z
 	ActualTime *string `json:"actualTime,omitempty" xml:"actualTime,omitempty"`
+	// 本次任务执行使用的真实会话 ID
+	//
+	// example:
+	//
+	// exampleConversationId
+	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
 	// The name of the schedule location.
 	//
 	// example:
@@ -374,6 +380,12 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline struct {
 	//
 	// false
 	IsExpired *bool `json:"isExpired,omitempty" xml:"isExpired,omitempty"`
+	// 本次任务执行生成的结果消息 ID
+	//
+	// example:
+	//
+	// exampleMessageId
+	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
 	// The execution output content (history records only).
 	//
 	// example:
@@ -406,6 +418,10 @@ func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetActualTim
 	return s.ActualTime
 }
 
+func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetConversationId() *string {
+	return s.ConversationId
+}
+
 func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetDisplayName() *string {
 	return s.DisplayName
 }
@@ -422,6 +438,10 @@ func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetIsExpired
 	return s.IsExpired
 }
 
+func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetMessageId() *string {
+	return s.MessageId
+}
+
 func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetOutputContent() *string {
 	return s.OutputContent
 }
@@ -436,6 +456,11 @@ func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) GetStatus() 
 
 func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) SetActualTime(v string) *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline {
 	s.ActualTime = &v
+	return s
+}
+
+func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) SetConversationId(v string) *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline {
+	s.ConversationId = &v
 	return s
 }
 
@@ -456,6 +481,11 @@ func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) SetExecution
 
 func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) SetIsExpired(v bool) *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline {
 	s.IsExpired = &v
+	return s
+}
+
+func (s *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline) SetMessageId(v string) *GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline {
+	s.MessageId = &v
 	return s
 }
 

@@ -13,18 +13,26 @@ type iSendAsyncChatMessageRequest interface {
 	GetContent() *string
 	SetContentType(v string) *SendAsyncChatMessageRequest
 	GetContentType() *string
+	SetContextItems(v []*SendAsyncChatMessageRequestContextItems) *SendAsyncChatMessageRequest
+	GetContextItems() []*SendAsyncChatMessageRequestContextItems
 	SetDigitalEmployeeName(v []*string) *SendAsyncChatMessageRequest
 	GetDigitalEmployeeName() []*string
 	SetDirectChat(v bool) *SendAsyncChatMessageRequest
 	GetDirectChat() *bool
+	SetDirectMaxHistoryRounds(v interface{}) *SendAsyncChatMessageRequest
+	GetDirectMaxHistoryRounds() interface{}
 	SetEnableWebSearch(v bool) *SendAsyncChatMessageRequest
 	GetEnableWebSearch() *bool
 	SetFiles(v []*SendAsyncChatMessageRequestFiles) *SendAsyncChatMessageRequest
 	GetFiles() []*SendAsyncChatMessageRequestFiles
+	SetLocale(v string) *SendAsyncChatMessageRequest
+	GetLocale() *string
 	SetModel(v string) *SendAsyncChatMessageRequest
 	GetModel() *string
 	SetReuseLastSession(v bool) *SendAsyncChatMessageRequest
 	GetReuseLastSession() *bool
+	SetSegments(v []*SendAsyncChatMessageRequestSegments) *SendAsyncChatMessageRequest
+	GetSegments() []*SendAsyncChatMessageRequestSegments
 	SetSessionId(v string) *SendAsyncChatMessageRequest
 	GetSessionId() *string
 	SetStream(v bool) *SendAsyncChatMessageRequest
@@ -52,6 +60,12 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// Text
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// 作为本轮上下文引用的消息或文件条目
+	//
+	// example:
+	//
+	// []
+	ContextItems []*SendAsyncChatMessageRequestContextItems `json:"contextItems,omitempty" xml:"contextItems,omitempty" type:"Repeated"`
 	// The list of digital employee names. For compatibility with the legacy format, a single string can also be passed.
 	//
 	// example:
@@ -64,6 +78,12 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
+	// 本轮携带的最近完整 direct 问答轮数，不含本轮输入。仅 workMode=direct 或 directChat=true 时生效。有效值为 0–100 的 JSON 整数，省略时由后端按 0 处理，不携带历史但仍保存当前轮。null、布尔值、字符串、小数及越界值按原 direct 路径处理，网关保留原始值供后端判定。work/ask 忽略此字段。该参数不限制转换为 work 时的历史范围
+	//
+	// example:
+	//
+	// 1
+	DirectMaxHistoryRounds interface{} `json:"directMaxHistoryRounds,omitempty" xml:"directMaxHistoryRounds,omitempty"`
 	// Specifies whether to enable web search. Default value: false. In the task execution scenario where taskExecution is passed, the task configuration prevails.
 	//
 	// example:
@@ -72,6 +92,12 @@ type SendAsyncChatMessageRequest struct {
 	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
 	// The list of file references. Each item is an object, and the fileId parameter is required. The fileId is returned by the uploadChatFile operation.
 	Files []*SendAsyncChatMessageRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// 本轮语言，可选 zh-CN、en-US，用于接口错误文案并透传给 CodeAgent；省略时沿用当前语言行为，不修改用户设置
+	//
+	// example:
+	//
+	// en-US
+	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
 	//
 	// example:
@@ -84,6 +110,12 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// false
 	ReuseLastSession *bool `json:"reuseLastSession,omitempty" xml:"reuseLastSession,omitempty"`
+	// 消息中的结构化片段，例如会话或对象提及
+	//
+	// example:
+	//
+	// []
+	Segments []*SendAsyncChatMessageRequestSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
 	// The session ID. If not specified, a new session is created.
 	//
 	// example:
@@ -128,12 +160,20 @@ func (s *SendAsyncChatMessageRequest) GetContentType() *string {
 	return s.ContentType
 }
 
+func (s *SendAsyncChatMessageRequest) GetContextItems() []*SendAsyncChatMessageRequestContextItems {
+	return s.ContextItems
+}
+
 func (s *SendAsyncChatMessageRequest) GetDigitalEmployeeName() []*string {
 	return s.DigitalEmployeeName
 }
 
 func (s *SendAsyncChatMessageRequest) GetDirectChat() *bool {
 	return s.DirectChat
+}
+
+func (s *SendAsyncChatMessageRequest) GetDirectMaxHistoryRounds() interface{} {
+	return s.DirectMaxHistoryRounds
 }
 
 func (s *SendAsyncChatMessageRequest) GetEnableWebSearch() *bool {
@@ -144,12 +184,20 @@ func (s *SendAsyncChatMessageRequest) GetFiles() []*SendAsyncChatMessageRequestF
 	return s.Files
 }
 
+func (s *SendAsyncChatMessageRequest) GetLocale() *string {
+	return s.Locale
+}
+
 func (s *SendAsyncChatMessageRequest) GetModel() *string {
 	return s.Model
 }
 
 func (s *SendAsyncChatMessageRequest) GetReuseLastSession() *bool {
 	return s.ReuseLastSession
+}
+
+func (s *SendAsyncChatMessageRequest) GetSegments() []*SendAsyncChatMessageRequestSegments {
+	return s.Segments
 }
 
 func (s *SendAsyncChatMessageRequest) GetSessionId() *string {
@@ -182,6 +230,11 @@ func (s *SendAsyncChatMessageRequest) SetContentType(v string) *SendAsyncChatMes
 	return s
 }
 
+func (s *SendAsyncChatMessageRequest) SetContextItems(v []*SendAsyncChatMessageRequestContextItems) *SendAsyncChatMessageRequest {
+	s.ContextItems = v
+	return s
+}
+
 func (s *SendAsyncChatMessageRequest) SetDigitalEmployeeName(v []*string) *SendAsyncChatMessageRequest {
 	s.DigitalEmployeeName = v
 	return s
@@ -189,6 +242,11 @@ func (s *SendAsyncChatMessageRequest) SetDigitalEmployeeName(v []*string) *SendA
 
 func (s *SendAsyncChatMessageRequest) SetDirectChat(v bool) *SendAsyncChatMessageRequest {
 	s.DirectChat = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetDirectMaxHistoryRounds(v interface{}) *SendAsyncChatMessageRequest {
+	s.DirectMaxHistoryRounds = v
 	return s
 }
 
@@ -202,6 +260,11 @@ func (s *SendAsyncChatMessageRequest) SetFiles(v []*SendAsyncChatMessageRequestF
 	return s
 }
 
+func (s *SendAsyncChatMessageRequest) SetLocale(v string) *SendAsyncChatMessageRequest {
+	s.Locale = &v
+	return s
+}
+
 func (s *SendAsyncChatMessageRequest) SetModel(v string) *SendAsyncChatMessageRequest {
 	s.Model = &v
 	return s
@@ -209,6 +272,11 @@ func (s *SendAsyncChatMessageRequest) SetModel(v string) *SendAsyncChatMessageRe
 
 func (s *SendAsyncChatMessageRequest) SetReuseLastSession(v bool) *SendAsyncChatMessageRequest {
 	s.ReuseLastSession = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetSegments(v []*SendAsyncChatMessageRequestSegments) *SendAsyncChatMessageRequest {
+	s.Segments = v
 	return s
 }
 
@@ -238,8 +306,26 @@ func (s *SendAsyncChatMessageRequest) SetWorkMode(v string) *SendAsyncChatMessag
 }
 
 func (s *SendAsyncChatMessageRequest) Validate() error {
+	if s.ContextItems != nil {
+		for _, item := range s.ContextItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Files != nil {
 		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Segments != nil {
+		for _, item := range s.Segments {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -253,6 +339,240 @@ func (s *SendAsyncChatMessageRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type SendAsyncChatMessageRequestContextItems struct {
+	// 用户对引用内容的批注
+	//
+	// example:
+	//
+	// 请核对华东区数据
+	Annotation *string `json:"annotation,omitempty" xml:"annotation,omitempty"`
+	// 批注关联的文件列表
+	//
+	// example:
+	//
+	// []
+	AnnotationFiles []*SendAsyncChatMessageRequestContextItemsAnnotationFiles `json:"annotationFiles,omitempty" xml:"annotationFiles,omitempty" type:"Repeated"`
+	// 被引用内容正文
+	//
+	// example:
+	//
+	// 本月销售收入
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// 被引用文件 ID
+	//
+	// example:
+	//
+	// exampleFileId
+	FileId *string `json:"fileId,omitempty" xml:"fileId,omitempty"`
+	// 被引用文件名称
+	//
+	// example:
+	//
+	// 销售数据.xlsx
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// 被引用文件类型
+	//
+	// example:
+	//
+	// xlsx
+	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// 被引用消息 ID
+	//
+	// example:
+	//
+	// exampleMessageId
+	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	// 消息发送者名称
+	//
+	// example:
+	//
+	// 销售助手
+	SenderName *string `json:"senderName,omitempty" xml:"senderName,omitempty"`
+	// 上下文条目类型
+	//
+	// example:
+	//
+	// message_annotation
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s SendAsyncChatMessageRequestContextItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendAsyncChatMessageRequestContextItems) GoString() string {
+	return s.String()
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetAnnotation() *string {
+	return s.Annotation
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetAnnotationFiles() []*SendAsyncChatMessageRequestContextItemsAnnotationFiles {
+	return s.AnnotationFiles
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetContent() *string {
+	return s.Content
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetFileId() *string {
+	return s.FileId
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetFileName() *string {
+	return s.FileName
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetFileType() *string {
+	return s.FileType
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetMessageId() *string {
+	return s.MessageId
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetSenderName() *string {
+	return s.SenderName
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) GetType() *string {
+	return s.Type
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetAnnotation(v string) *SendAsyncChatMessageRequestContextItems {
+	s.Annotation = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetAnnotationFiles(v []*SendAsyncChatMessageRequestContextItemsAnnotationFiles) *SendAsyncChatMessageRequestContextItems {
+	s.AnnotationFiles = v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetContent(v string) *SendAsyncChatMessageRequestContextItems {
+	s.Content = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetFileId(v string) *SendAsyncChatMessageRequestContextItems {
+	s.FileId = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetFileName(v string) *SendAsyncChatMessageRequestContextItems {
+	s.FileName = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetFileType(v string) *SendAsyncChatMessageRequestContextItems {
+	s.FileType = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetMessageId(v string) *SendAsyncChatMessageRequestContextItems {
+	s.MessageId = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetSenderName(v string) *SendAsyncChatMessageRequestContextItems {
+	s.SenderName = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) SetType(v string) *SendAsyncChatMessageRequestContextItems {
+	s.Type = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItems) Validate() error {
+	if s.AnnotationFiles != nil {
+		for _, item := range s.AnnotationFiles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type SendAsyncChatMessageRequestContextItemsAnnotationFiles struct {
+	// 文件名称
+	//
+	// example:
+	//
+	// 补充说明.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// 文件公开访问地址
+	//
+	// example:
+	//
+	// https://example.com/public/file
+	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
+	// 文件记录 ID
+	//
+	// example:
+	//
+	// exampleFileRecordId
+	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
+	// 文件内部访问地址
+	//
+	// example:
+	//
+	// https://example.com/file
+	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+}
+
+func (s SendAsyncChatMessageRequestContextItemsAnnotationFiles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendAsyncChatMessageRequestContextItemsAnnotationFiles) GoString() string {
+	return s.String()
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) GetFileName() *string {
+	return s.FileName
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) GetFilePublicUrl() *string {
+	return s.FilePublicUrl
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) GetFileRecordId() *string {
+	return s.FileRecordId
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) GetFileUrl() *string {
+	return s.FileUrl
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) SetFileName(v string) *SendAsyncChatMessageRequestContextItemsAnnotationFiles {
+	s.FileName = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) SetFilePublicUrl(v string) *SendAsyncChatMessageRequestContextItemsAnnotationFiles {
+	s.FilePublicUrl = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) SetFileRecordId(v string) *SendAsyncChatMessageRequestContextItemsAnnotationFiles {
+	s.FileRecordId = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) SetFileUrl(v string) *SendAsyncChatMessageRequestContextItemsAnnotationFiles {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) Validate() error {
+	return dara.Validate(s)
 }
 
 type SendAsyncChatMessageRequestFiles struct {
@@ -299,6 +619,126 @@ func (s *SendAsyncChatMessageRequestFiles) SetType(v string) *SendAsyncChatMessa
 }
 
 func (s *SendAsyncChatMessageRequestFiles) Validate() error {
+	return dara.Validate(s)
+}
+
+type SendAsyncChatMessageRequestSegments struct {
+	// 片段展示内容
+	//
+	// example:
+	//
+	// 旧会话
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// 提及对象类别
+	//
+	// example:
+	//
+	// conversations
+	MentionType *string `json:"mentionType,omitempty" xml:"mentionType,omitempty"`
+	// 被引用对象名称
+	//
+	// example:
+	//
+	// 旧会话
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 被引用对象 ID
+	//
+	// example:
+	//
+	// exampleObjectId
+	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
+	// 被引用对象类型
+	//
+	// example:
+	//
+	// conversation
+	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
+	// 会话类型
+	//
+	// example:
+	//
+	// personal
+	SessionType *string `json:"sessionType,omitempty" xml:"sessionType,omitempty"`
+	// 片段类型
+	//
+	// example:
+	//
+	// mention
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s SendAsyncChatMessageRequestSegments) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendAsyncChatMessageRequestSegments) GoString() string {
+	return s.String()
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetContent() *string {
+	return s.Content
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetMentionType() *string {
+	return s.MentionType
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetName() *string {
+	return s.Name
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetObjectId() *string {
+	return s.ObjectId
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetObjectType() *string {
+	return s.ObjectType
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetSessionType() *string {
+	return s.SessionType
+}
+
+func (s *SendAsyncChatMessageRequestSegments) GetType() *string {
+	return s.Type
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetContent(v string) *SendAsyncChatMessageRequestSegments {
+	s.Content = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetMentionType(v string) *SendAsyncChatMessageRequestSegments {
+	s.MentionType = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetName(v string) *SendAsyncChatMessageRequestSegments {
+	s.Name = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetObjectId(v string) *SendAsyncChatMessageRequestSegments {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetObjectType(v string) *SendAsyncChatMessageRequestSegments {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetSessionType(v string) *SendAsyncChatMessageRequestSegments {
+	s.SessionType = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) SetType(v string) *SendAsyncChatMessageRequestSegments {
+	s.Type = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequestSegments) Validate() error {
 	return dara.Validate(s)
 }
 

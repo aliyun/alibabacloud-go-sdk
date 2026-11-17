@@ -24,29 +24,29 @@ type iUpdateUserGroupRequest interface {
 }
 
 type UpdateUserGroupRequest struct {
-	// The new description of the user group. If not specified, the description is not modified.
+	// The new description of the user group. If this parameter is not specified, the description is not modified.
 	//
 	// example:
 	//
-	// South China Sales Organization
+	// string_value
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to move the user group to the root node. This parameter cannot be set together with parentId.
+	// Specifies whether to move the user group to the root node. This parameter cannot be set at the same time as a non-null parentId.
 	//
 	// example:
 	//
 	// false
 	MoveToRoot *bool `json:"moveToRoot,omitempty" xml:"moveToRoot,omitempty"`
-	// The ID of the new parent user group. If not specified, the user group is not moved.
+	// The ID of the new parent user group. If this parameter is not specified, the user group is not moved. If it is explicitly set to null, the user group is moved to the root node.
 	//
 	// example:
 	//
-	// 7ea8973f-7a5c-4e8a-956b-4fe0e7e2eb11
+	// string_value
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. In winnexo-cli, it is explicitly passed by using --tenant-id.
 	//
 	// example:
 	//
-	// 10000
+	// string_value
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The ID of the target user group.
 	//
@@ -54,13 +54,13 @@ type UpdateUserGroupRequest struct {
 	//
 	// example:
 	//
-	// 7ea8973f-7a5c-4e8a-956b-4fe0e7e2eb11
+	// string_value
 	UserGroupId *string `json:"userGroupId,omitempty" xml:"userGroupId,omitempty"`
-	// The new name of the user group. If not specified, the name is not modified.
+	// The new name of the user group. If this parameter is not specified, the name is not modified.
 	//
 	// example:
 	//
-	// South China Sales
+	// string_value
 	UserGroupName *string `json:"userGroupName,omitempty" xml:"userGroupName,omitempty"`
 }
 

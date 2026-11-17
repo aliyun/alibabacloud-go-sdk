@@ -58,19 +58,19 @@ type CreateWorkflowTemplateDraftVersionResponseBody struct {
 	//
 	// 1
 	CreatedByUserId *int64 `json:"createdByUserId,omitempty" xml:"createdByUserId,omitempty"`
-	// The description of the template.
+	// The template description.
 	//
 	// example:
 	//
 	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 节点依赖边；每项包含from/to，引用稳定stepId
+	// The node dependency edges. Each item contains a from and to field, referencing stable step IDs.
 	//
 	// example:
 	//
 	// []
 	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
-	// The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items.
+	// The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateWorkflowTemplateDraftVersionResponseBody struct {
 	//
 	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	// The optional canvas layout, indexed by step ID. This field only affects the display and does not determine dependencies.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreateWorkflowTemplateDraftVersionResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the step. This parameter can be left empty for a draft, but is required when the template is submitted.
+	// The step name. This field can be left empty for a draft and is required upon submission.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type CreateWorkflowTemplateDraftVersionResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 模板结构版本，当前为2，与业务版本vN独立
+	// The schema version of the template. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -122,9 +122,9 @@ type CreateWorkflowTemplateDraftVersionResponseBody struct {
 	//
 	// example:
 	//
-	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
+	// [{"stepId":"collect","sortOrder":1,"name":"Collect customer information"}]
 	Steps []*CreateWorkflowTemplateDraftVersionResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// example:
 	//
@@ -136,13 +136,17 @@ type CreateWorkflowTemplateDraftVersionResponseBody struct {
 	//
 	// v2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The change description of the version. An empty value indicates that no description is provided.
+	// The change description for this version. An empty value indicates that no description is provided.
 	//
 	// example:
 	//
-	// Added a review step
+	// Add a review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
-	// The version status. Valid values: DRAFT (draft) and SUBMITTED (submitted).
+	// The version status. Valid values:
+	//
+	// - DRAFT: Draft.
+	//
+	// - SUBMITTED: Submitted.
 	//
 	// example:
 	//
@@ -331,7 +335,7 @@ type CreateWorkflowTemplateDraftVersionResponseBodySteps struct {
 	//
 	// standard
 	ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-	// The name of the step. This parameter can be left empty for a draft, but is required when the template is submitted.
+	// The step name. This field can be left empty for a draft and is required upon submission.
 	//
 	// example:
 	//
@@ -343,31 +347,35 @@ type CreateWorkflowTemplateDraftVersionResponseBodySteps struct {
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The type of the owner. Valid values: MEMBER (manual) and AGENT (agent).
+	// The owner type. Valid values:
+	//
+	// - MEMBER: Human.
+	//
+	// - AGENT: Agent.
 	//
 	// example:
 	//
 	// MEMBER
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// The user ID of the manual owner.
+	// The user ID of the human owner.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	// Specifies whether to manually review deliverables. By default, this feature is disabled. It can only be enabled for digital workers, and review tasks are automatically sent to the owner.
 	//
 	// example:
 	//
 	// false
 	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
-	// The list of user IDs of the reviewers.
+	// The list of reviewer user IDs.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// The order of the step.
+	// The step order.
 	//
 	// example:
 	//
@@ -377,15 +385,15 @@ type CreateWorkflowTemplateDraftVersionResponseBodySteps struct {
 	//
 	// example:
 	//
-	// Collect customer information and forward it to the owner for review
+	// Collect customer information and submit it to the owner for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The array of ordered segments. This parameter supports text, mention, skill, app, files, and web_search, and retains reference identities and order.
+	// The array of ordered segments. Supported types include text, mention, skill, app, files, and web_search. Reference identities and order are preserved.
 	//
 	// example:
 	//
-	// [{\\"type\\":\\"text\\",\\"text\\":\\"收集客户信息\\"}]
+	// [{"type":"text","text":"Collect customer information"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
-	// The ID of the step.
+	// The step ID.
 	//
 	// example:
 	//

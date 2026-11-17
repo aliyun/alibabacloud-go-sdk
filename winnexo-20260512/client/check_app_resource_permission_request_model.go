@@ -34,7 +34,7 @@ type CheckAppResourcePermissionRequest struct {
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The dot-separated resource key. The first segment is the APP application key.
+	// The dot-separated resource key. The first segment is the application key.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CheckAppResourcePermissionRequest struct {
 	//
 	// 10086
 	TargetUserId *int64 `json:"targetUserId,omitempty" xml:"targetUserId,omitempty"`
-	// The ID of the tenant to which the target user belongs. This parameter is required for cross-tenant targets.
+	// The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
 	//
 	// example:
 	//

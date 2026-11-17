@@ -26,7 +26,7 @@ type iListTenantDirectoryRequest interface {
 }
 
 type ListTenantDirectoryRequest struct {
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -44,25 +44,25 @@ type ListTenantDirectoryRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The field by which the results are sorted. Valid values:
+	// The field by which to sort the returned results. Valid values:
 	//
-	// - event_time: the event creation time.
+	// - event_time: the time when the event was created.
 	//
-	// - event_execute_start_time: the event execution time.
+	// - event_execute_start_time: the time when the event execution started.
 	//
-	// - event_execute_finish_time: the event completion time.
+	// - event_execute_finish_time: the time when the event execution finished.
 	//
 	// example:
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC (case-insensitive).
+	// The sort order. This parameter takes effect only when the sort field is specified. Valid values: ASC and DESC (case-insensitive).
 	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The list of source types.
+	// The list of service source types.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type SetWorkflowTemplateEffectiveVersionRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The version number of the returned content.
+	// The version number to which the returned content belongs.
 	//
 	// This parameter is required.
 	//

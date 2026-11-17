@@ -72,7 +72,7 @@ type GetSourceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The completion time, in milliseconds.
+	// The completion time in milliseconds.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type GetSourceResponseBody struct {
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetSourceResponseBody struct {
 	//
 	// true
 	HasUnstructuredDocs *bool `json:"hasUnstructuredDocs,omitempty" xml:"hasUnstructuredDocs,omitempty"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetSourceResponseBody struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The meeting notes content (optional). The notes are used for auxiliary analysis.
+	// The content of the meeting notes. This field is optional and is used for auxiliary analysis.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type GetSourceResponseBody struct {
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// The object type, such as customer. This field has a value when type is set to mention.
+	// The object type, such as customer. This field has a value only when the type is mention.
 	//
 	// example:
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// The name of the digital employee (operating object name, optional).
+	// The name of the digital employee. This field is optional and represents the name of the operations object.
 	//
 	// example:
 	//
@@ -164,37 +164,37 @@ type GetSourceResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The task scope.
+	// The scope of the task.
 	//
 	// example:
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The user card information settings.
+	// The datasource config. This field is returned only when includeDetails is set to true. The specific fields vary based on the data source type.
+	//
+	// example:
+	//
+	// {"file_name":"report.pdf","file_type":"pdf"}
 	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
-	// The skill output ID. This ID is included when the output is saved as a resource.
+	// The ID of the skill output. This field is included when the output is saved as a resource.
 	//
 	// example:
 	//
 	// exampleSkillOutputId
 	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The knowledge base (KB) ownership type. Valid values:
-	//
-	// - aliding_kb_doc: DingTalk knowledge base document.
-	//
-	// - normal: standard knowledge.
+	// The ownership type of the knowledge base. Valid values: aliding_kb_doc (Alibaba DingTalk knowledge base document) and normal (common knowledge).
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
+	// The resource tags. This field is optional and is a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type GetSourceResponseBody struct {
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The final message status.
+	// The final status of the message.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type GetSourceResponseBody struct {
 	//
 	// example:
 	//
-	// string_value
+	// ["table01"]
 	StructuredTables []*string `json:"structuredTables,omitempty" xml:"structuredTables,omitempty" type:"Repeated"`
 	// The unstructured documents.
 	UnstructuredDocs []*GetSourceResponseBodyUnstructuredDocs `json:"unstructuredDocs,omitempty" xml:"unstructuredDocs,omitempty" type:"Repeated"`
@@ -508,7 +508,7 @@ type GetSourceResponseBodyObjectBindings struct {
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// The object type, such as customer. This field has a value when type is set to mention.
+	// The object type, such as customer. This field has a value only when the type is mention.
 	//
 	// example:
 	//
@@ -556,7 +556,7 @@ func (s *GetSourceResponseBodyObjectBindings) Validate() error {
 }
 
 type GetSourceResponseBodyUnstructuredDocs struct {
-	// The completion time, in milliseconds.
+	// The completion time in milliseconds.
 	//
 	// example:
 	//
@@ -568,29 +568,29 @@ type GetSourceResponseBodyUnstructuredDocs struct {
 	//
 	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The file record ID (optional). This value corresponds to settings.file_record_id.
+	// The ID of the file record. This field is optional and corresponds to settings.file_record_id.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// The file type. Valid values:
+	// The file type.
 	//
-	// - **file**: file.
+	// - **file**: File.
 	//
-	// - **folder**: folder.
+	// - **folder**: Folder.
 	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// The session analysis result in OSS URL format. The URL expires after one hour.
+	// The result of the session analysis in the form of an OSS URL. The URL expires in one hour.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	OssUrl *string `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
-	// The DocumentAgent semantic ID.
+	// The semantic ID of DocumentAgent.
 	//
 	// example:
 	//

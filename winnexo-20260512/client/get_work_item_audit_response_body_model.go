@@ -20,25 +20,25 @@ type iGetWorkItemAuditResponseBody interface {
 }
 
 type GetWorkItemAuditResponseBody struct {
-	// 公共业务状态码
+	// The common business status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 按事件时间倒序排列的完整工作项审计记录
+	// The complete work item audit records sorted in descending order of event time.
 	//
 	// example:
 	//
 	// [{"eventId":"evt_example","eventType":"WORK_ITEM_UPDATED","occurredAt":"2026-11-05T08:00:00Z","status":"SUCCESS"}]
 	Items []*GetWorkItemAuditResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 公共错误描述
+	// The common error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -104,73 +104,73 @@ func (s *GetWorkItemAuditResponseBody) Validate() error {
 }
 
 type GetWorkItemAuditResponseBodyItems struct {
-	// 字段变更明细列表，每项包含变更字段与前后值
+	// The list of field change details. Each item includes the changed field and its values before and after the change.
 	//
 	// example:
 	//
-	// [{"field":"title","before":"旧标题","after":"新标题"}]
+	// [{"field":"title","before":"Old title","after":"New title"}]
 	Changes interface{} `json:"changes,omitempty" xml:"changes,omitempty"`
-	// 事件描述
+	// The event description.
 	//
 	// example:
 	//
-	// 工作项标题调整为季度销售机会复盘
+	// The work item title is changed to Quarterly Sales Opportunity Review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 审计事件唯一标识
+	// The unique identifier of the audit event.
 	//
 	// example:
 	//
 	// evt_20261105_0001
 	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	// 审计事件类型，如 WORK_ITEM_UPDATED、TODO_COMPLETED
+	// The audit event type, such as WORK_ITEM_UPDATED or TODO_COMPLETED.
 	//
 	// example:
 	//
 	// WORK_ITEM_UPDATED
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// 事件发生时间，ISO8601 格式
+	// The time when the event occurred, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-11-05T08:00:00Z
 	OccurredAt *string `json:"occurredAt,omitempty" xml:"occurredAt,omitempty"`
-	// 操作人显示名
+	// The display name of the operator.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	// 操作人用户 ID
+	// The user ID of the operator.
 	//
 	// example:
 	//
 	// 10001
 	OperatorUserId *string `json:"operatorUserId,omitempty" xml:"operatorUserId,omitempty"`
-	// 事件涉及的待确认问题列表
+	// The list of questions to be confirmed related to the event.
 	//
 	// example:
 	//
-	// [{"question":"是否继续执行"}]
+	// [{"question":"Whether to continue execution"}]
 	Questions []interface{} `json:"questions,omitempty" xml:"questions,omitempty" type:"Repeated"`
-	// 事件结果负载，JSON 对象；无结果时为空
+	// The event result payload as a JSON object. If no result is available, this field is empty.
 	//
 	// example:
 	//
 	// {"result":"ok"}
 	ResultPayload interface{} `json:"resultPayload,omitempty" xml:"resultPayload,omitempty"`
-	// 事件状态
+	// The event status.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 事件标题
+	// The event title.
 	//
 	// example:
 	//
-	// 调查销售机会
+	// Investigate sales opportunities
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 关联待办 ID；无关联时为空字符串
+	// The ID of the associated to-do item. If no to-do item is associated, an empty string is returned.
 	//
 	// example:
 	//

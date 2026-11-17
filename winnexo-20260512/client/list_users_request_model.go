@@ -26,15 +26,15 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The list of Alibaba Cloud account IDs.
+	// The list of cloud account IDs.
 	//
 	// example:
 	//
-	// string_value
+	// ["1182725234319446"]
 	AccountIds []*string `json:"accountIds,omitempty" xml:"accountIds,omitempty" type:"Repeated"`
-	// Specifies whether the account is activated.
+	// Specifies whether the account is activated. Valid values:
 	//
-	//  - **true**: Activated.
+	// - **true**: Activated.
 	//
 	// - **false**: Not activated.
 	//
@@ -42,11 +42,11 @@ type ListUsersRequest struct {
 	//
 	// true
 	IsActive *bool `json:"isActive,omitempty" xml:"isActive,omitempty"`
-	// The keyword for searching products. Fuzzy match is supported.
+	// The keyword for product search. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// SampleKeyword
+	// Sample keyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// The page number.
 	//
@@ -54,7 +54,7 @@ type ListUsersRequest struct {
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return per page.
 	//
 	// > The maximum number of entries per page is 30.
 	//
@@ -62,13 +62,13 @@ type ListUsersRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The list of new system role codes (full replacement, at least one role must be included). Valid values: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER.
+	// The list of new system role codes. This is a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
 	//
 	// example:
 	//
-	// string_value
+	// ["string_value"]
 	RoleCodes []*string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty" type:"Repeated"`
-	// The tenant ID. This is a common parameter. The winnexo-cli passes this parameter explicitly by using --tenant-id.
+	// The tenant ID. This is a common parameter. winnexo-cli explicitly passes this parameter by using --tenant-id.
 	//
 	// example:
 	//

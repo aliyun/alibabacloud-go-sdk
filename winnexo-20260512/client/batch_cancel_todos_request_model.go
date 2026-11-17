@@ -28,7 +28,7 @@ type BatchCancelTodosRequest struct {
 	//
 	// example:
 	//
-	// todo_abc123
+	// ["todo_abc123"]
 	TodoIds []*string `json:"todoIds,omitempty" xml:"todoIds,omitempty" type:"Repeated"`
 }
 

@@ -106,13 +106,13 @@ type GenerateWorkflowTemplateDraftResponseBodyDraft struct {
 	//
 	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 节点依赖边；每项包含from/to，引用稳定stepId
+	// The node dependency edges. Each item contains a from field and a to field, which reference stable step IDs.
 	//
 	// example:
 	//
 	// []
 	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
-	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	// The optional canvas layout, indexed by step ID. This field only affects the display and does not determine dependencies.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type GenerateWorkflowTemplateDraftResponseBodyDraft struct {
 	//
 	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 模板结构版本，当前为2，与业务版本vN独立
+	// The schema version of the template. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GenerateWorkflowTemplateDraftResponseBodyDraft struct {
 	//
 	// example:
 	//
-	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
+	// [{"stepId":"collect","sortOrder":1,"name":"Collect customer information"}]
 	Steps []*GenerateWorkflowTemplateDraftResponseBodyDraftSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
@@ -234,9 +234,9 @@ type GenerateWorkflowTemplateDraftResponseBodyDraftSteps struct {
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
 	// The type of the owner. Valid values:
 	//
-	// - MEMBER: human
+	// - MEMBER: Human user.
 	//
-	// - AGENT: agent
+	// - AGENT: Agent.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type GenerateWorkflowTemplateDraftResponseBodyDraftSteps struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	// Specifies whether to manually review the output. Default value: false. This feature can only be enabled for digital workers. When enabled, review tasks are automatically sent to the owner.
 	//
 	// example:
 	//
@@ -266,19 +266,19 @@ type GenerateWorkflowTemplateDraftResponseBodyDraftSteps struct {
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The processing instructions of the step.
+	// The processing instructions for the step.
 	//
 	// example:
 	//
 	// Collect customer information and submit it to the owner for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
+	// The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. This field preserves the referenced identities and the order.
 	//
 	// example:
 	//
-	// [{\\"type\\":\\"text\\",\\"text\\":\\"收集客户信息\\"}]
+	// [{"type":"text","text":"Collect customer information"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
-	// The ID of the step.
+	// The step ID.
 	//
 	// example:
 	//

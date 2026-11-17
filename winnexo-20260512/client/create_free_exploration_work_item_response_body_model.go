@@ -34,67 +34,67 @@ type iCreateFreeExplorationWorkItemResponseBody interface {
 }
 
 type CreateFreeExplorationWorkItemResponseBody struct {
-	// 已选择的数字员工技术名称
+	// The technical names of the selected digital workers.
 	//
 	// example:
 	//
 	// ["sales-agent"]
 	AgentNames []*string `json:"agentNames,omitempty" xml:"agentNames,omitempty" type:"Repeated"`
-	// 业务状态码，成功为200
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 所属协作空间 ID
+	// The ID of the collaboration workspace to which the work item belongs.
 	//
 	// example:
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 真实群话题 ID，可在 queryWorkItemFeed 中关联；不可作为 Workflow workItemId
+	// The actual group topic ID, which can be associated in queryWorkItemFeed. It cannot be used as a workItemId in Workflow.
 	//
 	// example:
 	//
 	// conv_20261105_9f2c
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 平台创建人用户 ID
+	// The user ID of the creator on the platform.
 	//
 	// example:
 	//
 	// 10001
 	CreatedByUserId *int64 `json:"createdByUserId,omitempty" xml:"createdByUserId,omitempty"`
-	// 工作项模式，固定 FREE_EXPLORATION
+	// The work item mode. The value is fixed to FREE_EXPLORATION.
 	//
 	// example:
 	//
 	// FREE_EXPLORATION
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 实际话题成员，含创建人；公开档不枚举全空间成员
+	// The actual members of the topic, including the creator. For public topics, members of the entire workspace are not enumerated.
 	//
 	// example:
 	//
 	// [43]
 	MemberUserIds []*int64 `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty" type:"Repeated"`
-	// 错误描述
+	// The error description.
 	//
 	// example:
 	//
-	// 请求的资源不存在
+	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 工作项标题
+	// The title of the work item.
 	//
 	// example:
 	//
-	// 调查销售机会
+	// Investigate sales opportunities
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 实际可见范围 PRIVATE/COLLABORATIVE/PUBLIC
+	// The actual visibility scope. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC.
 	//
 	// example:
 	//

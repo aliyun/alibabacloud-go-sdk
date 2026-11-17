@@ -26,7 +26,7 @@ type ReplaceManualMemoryResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The complete content of the manual memory after it is saved. If the memory is successfully cleared, an empty string is returned.
+	// The complete content of the manual memory after it is saved. If the memory is cleared, this value is an empty string.
 	//
 	// example:
 	//

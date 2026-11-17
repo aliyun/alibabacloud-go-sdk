@@ -28,7 +28,7 @@ type iUpdateWorkflowNodeConfigurationShrinkRequest interface {
 }
 
 type UpdateWorkflowNodeConfigurationShrinkRequest struct {
-	// 协作空间ID
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type UpdateWorkflowNodeConfigurationShrinkRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 节点执行人；省略保持，null恢复默认；与负责人、模型至少修改一项
+	// The executor of the node. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored. You must modify at least one of the owner, model, or executor.
 	//
 	// example:
 	//
 	// {"type":"AGENT","id":"agent_1001"}
 	ExecutorShrink *string `json:"executor,omitempty" xml:"executor,omitempty"`
-	// 读取接口返回的configVersion；非负整数；版本冲突须刷新
+	// The configuration version returned by the read operation. The value must be a non-negative integer. If a version conflict occurs, you must refresh the version.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateWorkflowNodeConfigurationShrinkRequest struct {
 	//
 	// 3
 	ExpectedVersion *int64 `json:"expectedVersion,omitempty" xml:"expectedVersion,omitempty"`
-	// 当前物理计划ID（planId）
+	// The ID of the current physical plan.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type UpdateWorkflowNodeConfigurationShrinkRequest struct {
 	//
 	// inst_2081
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 模型模式；quick归一化standard；省略保持，null恢复默认
+	// The model mode. The quick value is normalized to standard. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored.
 	//
 	// example:
 	//
 	// standard
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// 业务节点key（nodeKey）
+	// The key of the business node.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type UpdateWorkflowNodeConfigurationShrinkRequest struct {
 	//
 	// node_7f3a2c
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// 节点负责人用户ID列表，非空正整数数组；省略保持，null恢复默认
+	// The list of user IDs for the node owners. The value must be a non-empty array of positive integers. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored.
 	//
 	// example:
 	//
 	// [10001]
 	ResponsibleUserIdsShrink *string `json:"responsibleUserIds,omitempty" xml:"responsibleUserIds,omitempty"`
-	// 租户ID；缺省使用调用方默认租户
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

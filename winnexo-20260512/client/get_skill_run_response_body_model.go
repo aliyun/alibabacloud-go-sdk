@@ -70,15 +70,15 @@ type GetSkillRunResponseBody struct {
 	//
 	// string_value
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The task end time in ISO 8601 format. This parameter has a value only when the task is in a desired state (Succeeded, Failed, or Cancelled).
+	// The task end time in ISO 8601 format. This parameter has a value only when the task reaches a terminal state (Succeeded, Failed, or Cancelled).
 	//
 	// example:
 	//
 	// string_value
 	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
-	// The execution log list. This parameter is returned only when IncludeLogs is set to true.
+	// The list of execution logs. This parameter is returned only when IncludeLogs is set to true.
 	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -102,9 +102,13 @@ type GetSkillRunResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The execution result. This parameter is returned only when the status is Succeeded. It contains a content list.
+	// The execution result. This parameter is returned only when the status is Succeeded and includes a list of content blocks.
+	//
+	// example:
+	//
+	// {"content":[{"type":"Text","text":"Execution completed"}]}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
-	// The asynchronous task ID.
+	// The ID of the asynchronous task.
 	//
 	// example:
 	//
@@ -122,7 +126,7 @@ type GetSkillRunResponseBody struct {
 	//
 	// string_value
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The task execution start time in ISO 8601 format.
+	// The task start time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -135,6 +139,10 @@ type GetSkillRunResponseBody struct {
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The LLM token usage statistics. This parameter is returned only when the status is Succeeded.
+	//
+	// example:
+	//
+	// {"inputTokens":100,"outputTokens":20,"totalTokens":120}
 	Usage map[string]interface{} `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 

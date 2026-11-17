@@ -19,6 +19,8 @@ type iUpdateScheduledTaskShrinkRequest interface {
 	GetModel() *string
 	SetName(v string) *UpdateScheduledTaskShrinkRequest
 	GetName() *string
+	SetOutputMode(v string) *UpdateScheduledTaskShrinkRequest
+	GetOutputMode() *string
 	SetSegmentsShrink(v string) *UpdateScheduledTaskShrinkRequest
 	GetSegmentsShrink() *string
 	SetTaskDetailShrink(v string) *UpdateScheduledTaskShrinkRequest
@@ -62,6 +64,12 @@ type UpdateScheduledTaskShrinkRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 输出会话模式，省略时保留当前配置
+	//
+	// example:
+	//
+	// SAME_CONVERSATION
+	OutputMode *string `json:"outputMode,omitempty" xml:"outputMode,omitempty"`
 	// The segments.
 	SegmentsShrink *string `json:"segments,omitempty" xml:"segments,omitempty"`
 	// The task details.
@@ -124,6 +132,10 @@ func (s *UpdateScheduledTaskShrinkRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateScheduledTaskShrinkRequest) GetOutputMode() *string {
+	return s.OutputMode
+}
+
 func (s *UpdateScheduledTaskShrinkRequest) GetSegmentsShrink() *string {
 	return s.SegmentsShrink
 }
@@ -174,6 +186,11 @@ func (s *UpdateScheduledTaskShrinkRequest) SetModel(v string) *UpdateScheduledTa
 
 func (s *UpdateScheduledTaskShrinkRequest) SetName(v string) *UpdateScheduledTaskShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) SetOutputMode(v string) *UpdateScheduledTaskShrinkRequest {
+	s.OutputMode = &v
 	return s
 }
 

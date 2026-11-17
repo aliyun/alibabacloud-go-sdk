@@ -26,43 +26,43 @@ type iListCollaborationGroupsResponseBody interface {
 }
 
 type ListCollaborationGroupsResponseBody struct {
-	// 公共业务状态码，由后端Code字段映射；错误时用于识别失败原因。
+	// The common business status code.
 	//
 	// example:
 	//
 	// ERR.Robject.Auth.TenantAccessDenied
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 当前页记录列表；没有匹配记录时返回空数组。
+	// The list of items on the current page.
 	//
 	// example:
 	//
-	// [{"collaborationGroupId":"cg_9401","name":"产品协作空间","status":"ACTIVE","currentUserRole":"OWNER"}]
+	// [{"collaborationGroupId":"cg_9401","name":"Product Collaboration Space","status":"ACTIVE","currentUserRole":"OWNER"}]
 	Items []*ListCollaborationGroupsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 公共错误说明，由后端Message字段映射；错误时描述失败原因。
+	// The common error message.
 	//
 	// example:
 	//
-	// 无权访问租户 2147483647，用户不属于该租户
+	// You do not have permissions to access tenant 2147483647 because the user does not belong to the tenant
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前返回页的页码，从1开始。
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 当前分页设置的每页记录数。
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪ID，由后端RequestId字段映射，用于排查调用失败。
+	// The request ID.
 	//
 	// example:
 	//
 	// c9cf6cb3-3f5c-4994-a8a1-c93379a6f5cf
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 满足查询条件的有效空间总数，不是当前页记录数。
+	// The total number of filtered records.
 	//
 	// example:
 	//
@@ -155,25 +155,25 @@ func (s *ListCollaborationGroupsResponseBody) Validate() error {
 }
 
 type ListCollaborationGroupsResponseBodyItems struct {
-	// 协作空间ID，可用于查询空间成员、查询节点详情及预览对话文件。
+	// The ID of the collaboration space.
 	//
 	// example:
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 当前调用用户在空间内的角色：ADMIN为管理员，MEMBER为普通成员。
+	// The role of the current user in the space.
 	//
 	// example:
 	//
 	// ADMIN
 	CurrentUserRole *string `json:"currentUserRole,omitempty" xml:"currentUserRole,omitempty"`
-	// 协作空间显示名称。
+	// The name of the space.
 	//
 	// example:
 	//
-	// 工作流待办测试
+	// Workflow To-Do Test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 协作空间状态，当前接口只返回ACTIVE。
+	// The status of the space. Currently, only ACTIVE is returned.
 	//
 	// example:
 	//

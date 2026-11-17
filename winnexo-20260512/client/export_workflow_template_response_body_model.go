@@ -26,13 +26,13 @@ type ExportWorkflowTemplateResponseBody struct {
   // 
   // 200
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // The error message.
+  // The error description.
   // 
   // example:
   // 
   // The requested resource does not exist
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // The request ID.
+  // The request tracking ID.
   // 
   // example:
   // 
@@ -42,7 +42,7 @@ type ExportWorkflowTemplateResponseBody struct {
   // 
   // example:
   // 
-  // {\\"name\\":\\"客户投诉处理流程\\",\\"schemaVersion\\":2}
+  // {"name":"Customer Complaint Handling Process","schemaVersion":2}
   Template *ExportWorkflowTemplateResponseBodyTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
@@ -106,13 +106,13 @@ type ExportWorkflowTemplateResponseBodyTemplate struct {
   // 
   // Standard process for handling customer complaints
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
-  // 节点依赖边；每项包含from/to，引用稳定stepId
+  // The node dependency edges. Each item contains from and to fields that reference stable step IDs.
   // 
   // example:
   // 
   // []
   Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
-  // 可选画布布局，按stepId索引；只影响展示，不决定依赖
+  // The optional canvas layout, indexed by step ID. This only affects the display and does not determine dependencies.
   // 
   // example:
   // 
@@ -122,19 +122,19 @@ type ExportWorkflowTemplateResponseBodyTemplate struct {
   // 
   // example:
   // 
-  // Customer complaint handling process
+  // Customer Complaint Handling Process
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
-  // 模板结构版本，当前为2，与业务版本vN独立
+  // The schema version of the template. The current value is 2, which is independent of the business version vN.
   // 
   // example:
   // 
   // 2
   SchemaVersion *int64 `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-  // The standardized steps.
+  // The normalized steps.
   // 
   // example:
   // 
-  // [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
+  // [{"stepId":"collect","sortOrder":1,"name":"Collect customer information"}]
   Steps []*ExportWorkflowTemplateResponseBodyTemplateSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
@@ -224,7 +224,7 @@ type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
   // 
   // example:
   // 
-  // Customer complaint handling process
+  // Customer Complaint Handling Process
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
   // The name of the agent owner.
   // 
@@ -248,13 +248,13 @@ type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
   // 
   // 1
   OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-  // 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+  // Specifies whether to manually review the output. Default value: false. This can only be enabled for digital workers, and review tasks are automatically sent to the owner.
   // 
   // example:
   // 
   // false
   ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
-  // The user IDs of the reviewers.
+  // The list of user IDs of the reviewers.
   // 
   // example:
   // 
@@ -266,17 +266,17 @@ type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
   // 
   // 1
   SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-  // The step handling instructions.
+  // The step processing instructions.
   // 
   // example:
   // 
   // Collect customer information and submit it to the owner for review
   Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-  // The ordered array of fragments. Supports text, mention, skill, app, files, and web_search. Preserves referenced identities and order.
+  // An ordered array of segments. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
   // 
   // example:
   // 
-  // [{"type":"text","content":"整理输入资料"}]
+  // [{"type":"text","content":"Organize input materials"}]
   SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
   // The step ID.
   // 

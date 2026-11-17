@@ -51,6 +51,10 @@ type CreateConversationResponseBody struct {
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// A reserved field for extension purposes.
+	//
+	// example:
+	//
+	// {"source":"openapi"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The request ID.
 	//

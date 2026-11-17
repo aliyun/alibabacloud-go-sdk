@@ -34,7 +34,7 @@ type ListUsersResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The user information.
 	Items []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListUsersResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of data entries in the project.
+	// The total number of data processing tasks in the project.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListUsersResponseBodyItems struct {
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Indicates whether the account is activated:
+	// Specifies whether the account is activated. Valid values:
 	//
 	// - 1: Activated.
 	//
@@ -185,11 +185,11 @@ type ListUsersResponseBodyItems struct {
 	//
 	// 2023-10-01T12:00:00Z
 	LastLoginTime *string `json:"lastLoginTime,omitempty" xml:"lastLoginTime,omitempty"`
-	// The list of new system role codes (full replacement, at least one role must be included). Valid values: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER.
+	// The list of new system role codes. This is a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
 	//
 	// example:
 	//
-	// string_value
+	// ["APPLICATION_USER"]
 	RoleCodes []*string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty" type:"Repeated"`
 	// The user ID.
 	//

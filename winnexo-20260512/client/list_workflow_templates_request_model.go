@@ -46,7 +46,7 @@ type ListWorkflowTemplatesRequest struct {
 	//
 	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Obtain the token from the nextToken parameter in the previous response. This parameter takes precedence over page if both are specified.
+	// The pagination token. Obtain the token from the nextToken value in the previous response. This parameter takes precedence over page if both are specified.
 	//
 	// example:
 	//

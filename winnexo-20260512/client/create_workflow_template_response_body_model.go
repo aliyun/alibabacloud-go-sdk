@@ -64,7 +64,7 @@ type CreateWorkflowTemplateResponseBody struct {
 	//
 	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 节点依赖边；每项包含from/to，引用稳定stepId；显式空数组表示没有依赖
+	// The node dependency edges. Each item contains from and to fields that reference stable step IDs. An explicit empty array indicates no dependencies.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateWorkflowTemplateResponseBody struct {
 	//
 	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	// The optional canvas layout, indexed by step ID. This parameter only affects the display and does not determine dependencies.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type CreateWorkflowTemplateResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 模板结构版本，当前为2，与业务版本vN独立
+	// The schema version of the template. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type CreateWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// [{"stepId":"collect","sortOrder":1,"name":"收集客户信息"}]
+	// [{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]
 	Steps []*CreateWorkflowTemplateResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 	// The template ID.
 	//
@@ -136,7 +136,7 @@ type CreateWorkflowTemplateResponseBody struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The change description of the version. If this field is empty for v1, the template description can be displayed.
+	// The change description of the version. If the description for v1 is empty, the template description can be displayed.
 	//
 	// example:
 	//
@@ -341,13 +341,13 @@ type CreateWorkflowTemplateResponseBodySteps struct {
 	//
 	// Customer Complaint Handling Process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the agent in charge.
+	// The name of the agent assignee.
 	//
 	// example:
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The type of the person in charge. Valid values:
+	// The type of the assignee. Valid values:
 	//
 	// - MEMBER: Human.
 	//
@@ -357,13 +357,13 @@ type CreateWorkflowTemplateResponseBodySteps struct {
 	//
 	// MEMBER
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// The user ID of the human person in charge.
+	// The user ID of the human assignee.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	// Specifies whether to manually review the output. By default, this feature is disabled. It can only be enabled for digital workers, and review tasks are automatically sent to the assignee.
 	//
 	// example:
 	//
@@ -381,17 +381,17 @@ type CreateWorkflowTemplateResponseBodySteps struct {
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The step processing instructions.
+	// The processing instructions for the step.
 	//
 	// example:
 	//
-	// Collect customer information and submit it to the person in charge for review
+	// Collect customer information and submit it to the assignee for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
 	// The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
 	//
 	// example:
 	//
-	// [{\\"type\\":\\"text\\",\\"text\\":\\"收集客户信息\\"}]
+	// [{\\"type\\":\\"text\\",\\"text\\":\\"Collect customer information\\"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The step ID.
 	//

@@ -26,7 +26,7 @@ type CreateScheduledTaskResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
