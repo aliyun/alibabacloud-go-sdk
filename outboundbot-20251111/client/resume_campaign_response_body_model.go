@@ -32,7 +32,7 @@ type ResumeCampaignResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ResumeCampaignResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of error message parameters.
+	// The list of parameters in the error message.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -58,7 +58,7 @@ type ResumeCampaignResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -157,7 +157,7 @@ type ListScriptsByFlowResponseBodyData struct {
 	//
 	// example:
 	//
-	// Satisfaction Survey
+	// Satisfaction survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The scenario ID.
 	//

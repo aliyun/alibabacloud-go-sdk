@@ -90,13 +90,13 @@ type ListCasesShrinkRequest struct {
 	//
 	// true
 	CaseCompleted *bool `json:"CaseCompleted,omitempty" xml:"CaseCompleted,omitempty"`
-	// The list of case IDs.
+	// The case IDs.
 	CaseIdsShrink *string `json:"CaseIds,omitempty" xml:"CaseIds,omitempty"`
-	// The list of disposition codes.
+	// The disposition codes.
 	DispositionCodesShrink *string `json:"DispositionCodes,omitempty" xml:"DispositionCodes,omitempty"`
-	// The list of disposition reasons.
+	// The disposition reasons.
 	DispositionReasonsShrink *string `json:"DispositionReasons,omitempty" xml:"DispositionReasons,omitempty"`
-	// Specifies whether it is a draft version.
+	// Specifies whether the version is a draft.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListCasesShrinkRequest struct {
 	//
 	// 1578965079000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of case statuses.
+	// The case states.
 	StatesShrink *string `json:"States,omitempty" xml:"States,omitempty"`
 }
 

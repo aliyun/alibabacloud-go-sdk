@@ -89,13 +89,13 @@ func (s *AppendCasesRequest) Validate() error {
 }
 
 type AppendCasesRequestCases struct {
-	// Custom variables defined by the customer. The value is a JSON object that contains up to 10 properties. The name and value of each property are defined by the customer.
+	// The custom variables defined by the customer. The format is a JSON object. The object can contain up to 10 properties, and the name and value of each property are defined by the customer.
 	//
 	// example:
 	//
 	// ["key1":"value1"]
 	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	// The phone number of the contact.
+	// The contact number.
 	//
 	// example:
 	//

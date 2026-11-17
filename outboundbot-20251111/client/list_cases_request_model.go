@@ -90,13 +90,13 @@ type ListCasesRequest struct {
 	//
 	// true
 	CaseCompleted *bool `json:"CaseCompleted,omitempty" xml:"CaseCompleted,omitempty"`
-	// The list of case IDs.
+	// The case IDs.
 	CaseIds []*string `json:"CaseIds,omitempty" xml:"CaseIds,omitempty" type:"Repeated"`
-	// The list of disposition codes.
+	// The disposition codes.
 	DispositionCodes []*string `json:"DispositionCodes,omitempty" xml:"DispositionCodes,omitempty" type:"Repeated"`
-	// The list of disposition reasons.
+	// The disposition reasons.
 	DispositionReasons []*string `json:"DispositionReasons,omitempty" xml:"DispositionReasons,omitempty" type:"Repeated"`
-	// Specifies whether it is a draft version.
+	// Specifies whether the version is a draft.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListCasesRequest struct {
 	//
 	// 1578965079000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of case statuses.
+	// The case states.
 	States []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
 }
 

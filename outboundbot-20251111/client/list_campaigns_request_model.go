@@ -42,7 +42,7 @@ type ListCampaignsRequest struct {
 	//
 	// 1634054400000
 	ActualStartTimeTo *string `json:"ActualStartTimeTo,omitempty" xml:"ActualStartTimeTo,omitempty"`
-	// The instance ID of the outbound robot.
+	// The outbound instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type ListCampaignsRequest struct {
 	//
 	// a4274627-265f-4e14-b2d6-4ee7d4f8593e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the campaign.
+	// The name of the task.
 	//
 	// example:
 	//
-	// SatisfactionSurvey
+	// Satisfaction follow-up
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number.
 	//
@@ -64,7 +64,7 @@ type ListCampaignsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type ListCampaignsRequest struct {
 	//
 	// 1634054400000
 	PlannedStartTimeTo *string `json:"PlannedStartTimeTo,omitempty" xml:"PlannedStartTimeTo,omitempty"`
-	// The status of the campaign.
+	// The status of the task.
 	//
 	// example:
 	//

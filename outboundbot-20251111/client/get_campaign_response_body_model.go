@@ -54,7 +54,7 @@ type GetCampaignResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// 0
 	CasesUncompleted *int32 `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
-	// The number of cases that were attempted but not completed.
+	// The number of attempted but uncompleted cases.
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ type GetCampaignResponseBodyData struct {
 	//
 	// 0.5
 	CompletedRate *float64 `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
-	// The time when the campaign was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1735660800000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The fixed number of concurrent calls.
+	// The fixed concurrency.
 	//
 	// example:
 	//
@@ -219,9 +219,9 @@ type GetCampaignResponseBodyData struct {
 	//
 	// example:
 	//
-	// Satisfaction Survey
+	// Satisfaction survey
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of caller numbers.
+	// The list of calling numbers.
 	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
 	// The planned end time.
 	//
@@ -235,7 +235,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// 1634054400000
 	PlannedStartTime *int64 `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	// Indicates whether the campaign continues to run until the planned end time after all contacts have been called.
+	// Specifies whether to continue running the campaign until the end time after all contacts have been called.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// d13ad2d3-3fe6-4352-b38b-bd6559047de8
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The state of the campaign.
+	// The status of the campaign.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// 100
 	TotalCases *int32 `json:"TotalCases,omitempty" xml:"TotalCases,omitempty"`
-	// The time when the campaign was last updated.
+	// The update time.
 	//
 	// example:
 	//

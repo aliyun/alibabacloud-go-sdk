@@ -36,7 +36,7 @@ type AbortCasesResponseBody struct {
 	//
 	// example:
 	//
-	// Flash message configuration ID
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code.
 	//
@@ -44,7 +44,7 @@ type AbortCasesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned by the operation.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type AbortCasesResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

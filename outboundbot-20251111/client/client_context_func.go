@@ -3,13 +3,14 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
 
 // Summary:
 //
-// Terminates an outbound call campaign.
+// Stops an outbound campaign.
 //
 // Description:
 //
@@ -61,7 +62,7 @@ func (client *Client) AbortCampaignWithContext(ctx context.Context, request *Abo
 
 // Summary:
 //
-// Stops an outbound call case.
+// Terminates outbound call cases.
 //
 // Description:
 //
@@ -123,7 +124,7 @@ func (client *Client) AbortCasesWithContext(ctx context.Context, tmpReq *AbortCa
 
 // Summary:
 //
-// Appends contacts to an outbound call campaign.
+// Appends outbound call cases.
 //
 // Description:
 //
@@ -187,7 +188,325 @@ func (client *Client) AppendCasesWithContext(ctx context.Context, tmpReq *Append
 
 // Summary:
 //
-// Creates an outbound call campaign.
+// Creates a text conversation session for a specified instance and scenario, and streams the initial reply from the robot.
+//
+// Description:
+//
+// Creates a text conversation session for a specified instance and scenario, and streams the initial reply from the robot. An available scenario version must exist before you call this operation. Use DraftVersion to select the draft or published version, and use VendorParams to pass the accompanying variables required by the scenario. The response uses Server-Sent Events (SSE), and each data event carries a business response object. Save the returned SessionId for subsequent Dialogue and EndSession calls. A StreamEnd value of true indicates that the current response stream has ended, but the session remains active. The resource identifiers, phone numbers, and authentication credentials in the examples are masked or placeholder values. Use actual resources and service return values in production calls.
+//
+// @param request - BeginSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginSessionResponse
+func (client *Client) BeginSessionWithSSECtx(ctx context.Context, request *BeginSessionRequest, runtime *dara.RuntimeOptions, _yield chan *BeginSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.beginSessionWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Creates a text conversation session for a specified instance and scenario, and streams the initial reply from the robot.
+//
+// Description:
+//
+// Creates a text conversation session for a specified instance and scenario, and streams the initial reply from the robot. An available scenario version must exist before you call this operation. Use DraftVersion to select the draft or published version, and use VendorParams to pass the accompanying variables required by the scenario. The response uses Server-Sent Events (SSE), and each data event carries a business response object. Save the returned SessionId for subsequent Dialogue and EndSession calls. A StreamEnd value of true indicates that the current response stream has ended, but the session remains active. The resource identifiers, phone numbers, and authentication credentials in the examples are masked or placeholder values. Use actual resources and service return values in production calls.
+//
+// @param request - BeginSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginSessionResponse
+func (client *Client) BeginSessionWithContext(ctx context.Context, request *BeginSessionRequest, runtime *dara.RuntimeOptions) (_result *BeginSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.VendorParams) {
+		query["VendorParams"] = request.VendorParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BeginSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BeginSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates a trial session.
+//
+// Description:
+//
+// Creates a trial text session in a specified instance and scenario by using the VisitorToken from a trial link, and returns the first-round reply in Server-Sent Events (SSE) format. The service verifies the channel and expiration time corresponding to the token, and then starts the session based on the tenant to which the channel belongs. The token does not replace the business parameters of the scenario and instance. Save the returned SessionId for subsequent calls to TrialDialogue to send user input, and call EndTrialSession to end the session. StreamEnd=true only indicates that the streaming response for the current round has ended. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - BeginTrialSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginTrialSessionResponse
+func (client *Client) BeginTrialSessionWithSSECtx(ctx context.Context, request *BeginTrialSessionRequest, runtime *dara.RuntimeOptions, _yield chan *BeginTrialSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.beginTrialSessionWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Initiates a trial session.
+//
+// Description:
+//
+// Creates a trial text session in a specified instance and scenario by using the VisitorToken from a trial link, and returns the first-round reply in Server-Sent Events (SSE) format. The service verifies the channel and expiration time corresponding to the token, and then starts the session based on the tenant to which the channel belongs. The token does not replace the business parameters of the scenario and instance. Save the returned SessionId for subsequent calls to TrialDialogue to send user input, and call EndTrialSession to end the session. StreamEnd=true only indicates that the streaming response for the current round has ended. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - BeginTrialSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginTrialSessionResponse
+func (client *Client) BeginTrialSessionWithContext(ctx context.Context, request *BeginTrialSessionRequest, runtime *dara.RuntimeOptions) (_result *BeginTrialSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.VendorParams) {
+		query["VendorParams"] = request.VendorParams
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BeginTrialSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BeginTrialSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates a trial call.
+//
+// Description:
+//
+// Initiates a trial web voice call for a specified scenario by using the VisitorToken of a trial link. The service verifies the token, the associated channel, and the validity period, and then delegates the web call service to bridge the web voice channel and the robot channel. The DeviceId must be consistent with the data channel device identifier of the trial client. After the call is initiated, use the returned ChannelId, ServerUrl, and Token to connect to the voice channel. If the data event channel of the trial client is required, you can call GetTrialDataChannelCredential with the same DeviceId. The web voice connection token and the data channel username and password are not the same set of credentials. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - BridgeTrialWebCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BridgeTrialWebCallResponse
+func (client *Client) BridgeTrialWebCallWithContext(ctx context.Context, request *BridgeTrialWebCallRequest, runtime *dara.RuntimeOptions) (_result *BridgeTrialWebCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Caller) {
+		query["Caller"] = request.Caller
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SampleRate) {
+		query["SampleRate"] = request.SampleRate
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TimeoutSeconds) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BridgeTrialWebCall"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BridgeTrialWebCallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates a call.
+//
+// Description:
+//
+// Initiates a web voice call for a specified instance and scenario by bridging the web voice channel and the robot SIP channel through an RTC gateway. Pass information such as DeviceId, audio sampling rate, and scenario version in the request. TimeoutSeconds specifies the timeout for unanswered calls, defaults to 60 seconds, and does not indicate the maximum duration of an answered call. Upon success, returns the connection context such as SessionId, ChannelId, ServerUrl, and Token. The client must use the returned address and valid credentials to establish the web voice connection. This operation initiates a web interactive voice response instead of dialing a real phone number specified by Number. Resource identity, numbers, and authentication credentials in the examples are masked or placeholder values. Use actual resources and service return values when you invoke the operation.
+//
+// @param request - BridgeWebCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BridgeWebCallResponse
+func (client *Client) BridgeWebCallWithContext(ctx context.Context, request *BridgeWebCallRequest, runtime *dara.RuntimeOptions) (_result *BridgeWebCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Caller) {
+		query["Caller"] = request.Caller
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SampleRate) {
+		query["SampleRate"] = request.SampleRate
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TimeoutSeconds) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BridgeWebCall"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BridgeWebCallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an outbound campaign.
 //
 // Description:
 //
@@ -657,7 +976,7 @@ func (client *Client) CreateScriptWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a scenario configuration.
+// Creates a script configuration.
 //
 // @param tmpReq - CreateScriptVersionRequest
 //
@@ -1271,6 +1590,89 @@ func (client *Client) DeleteVoiceAccessProfileWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Initiates a session.
+//
+// Description:
+//
+// Sends a round of user input to a text session created by BeginSession and returns the robot reply and control instructions in Server-Sent Events (SSE) format. The InstanceId, ScriptId, and SessionId must be consistent with those used when the session was initiated. The SessionId must use the value returned by the session initiation operation. The conversation cannot continue if the session context does not exist. Utterance is used for plain text input, and Extras is used to pass structured events such as key presses and silence. You can call this operation multiple times in succession. StreamId identifies the reply round, and StreamEnd=true indicates that the output of the current round has ended. Call EndSession after the entire interaction is completed. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - DialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DialogueResponse
+func (client *Client) DialogueWithSSECtx(ctx context.Context, request *DialogueRequest, runtime *dara.RuntimeOptions, _yield chan *DialogueResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.dialogueWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Initiates a session.
+//
+// Description:
+//
+// Sends a round of user input to a text session created by BeginSession and returns the robot reply and control instructions in Server-Sent Events (SSE) format. The InstanceId, ScriptId, and SessionId must be consistent with those used when the session was initiated. The SessionId must use the value returned by the session initiation operation. The conversation cannot continue if the session context does not exist. Utterance is used for plain text input, and Extras is used to pass structured events such as key presses and silence. You can call this operation multiple times in succession. StreamId identifies the reply round, and StreamEnd=true indicates that the output of the current round has ended. Call EndSession after the entire interaction is completed. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - DialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DialogueResponse
+func (client *Client) DialogueWithContext(ctx context.Context, request *DialogueRequest, runtime *dara.RuntimeOptions) (_result *DialogueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Extras) {
+		query["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Utterance) {
+		query["Utterance"] = request.Utterance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Dialogue"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DialogueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables message subscription.
 //
 // @param request - DisableSubscriptionRequest
@@ -1305,6 +1707,122 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Ends a session.
+//
+// Description:
+//
+// Ends a text session created by BeginSession, notifies the dialog engine to end the interaction, and clears the text session state. The InstanceId, ScriptId, and SessionId must match those used when the session was started. The Data field in the response returns the SessionId of the ended session. If the text session no longer exists due to prolonged inactivity or cache expiration, the current implementation still returns the SessionId without reporting a session not found error. This operation is used to conclude a text session and is not intended for hanging up web voice or actual phone calls. The resource identifiers, phone numbers, and authentication credentials in the examples are masked or placeholder values. Use actual resources and service return values for real calls.
+//
+// @param request - EndSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndSessionResponse
+func (client *Client) EndSessionWithContext(ctx context.Context, request *EndSessionRequest, runtime *dara.RuntimeOptions) (_result *EndSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EndSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EndSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Ends a trial session.
+//
+// Description:
+//
+// Ends a trial text session created by BeginTrialSession by using a valid VisitorToken from a trial link. The service first validates the token and then delegates the request to the text session termination service. The InstanceId, ScriptId, and SessionId must maintain session persistence consistent with those of the trial session. The returned Data is the SessionId of the ended session. If the text session context has expired, the termination service can still return the SessionId, but the validation will be marked as failed if the trial token itself is invalid or expired. This operation is not used to hang up web voice calls. The resource identity, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values when you invoke the operation.
+//
+// @param request - EndTrialSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndTrialSessionResponse
+func (client *Client) EndTrialSessionWithContext(ctx context.Context, request *EndTrialSessionRequest, runtime *dara.RuntimeOptions) (_result *EndTrialSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EndTrialSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EndTrialSessionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1465,6 +1983,58 @@ func (client *Client) GetCaseDetailWithContext(ctx context.Context, request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCaseDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves voice conversation parameters.
+//
+// Description:
+//
+// Retrieves temporary connection credentials for the client data channel of a specified InstanceId and DeviceId. Requests are verified based on the current POP authentication and instance permission configurations. DeviceId cannot be empty. Unlike GetTrialDataChannelCredential, this operation does not use the VisitorToken for trial links. The client must use the actual Topic, ClientId, Endpoint, UserName, and Password returned to connect to and subscribe to the data channel, and must not infer the address, topic, or authentication information. The same client must keep the DeviceId consistent when initiating BridgeWebCall or MakePilotCall. This operation only retrieves data channel credentials and does not create text sessions, initiate phone calls, or establish web voice channels. The username and password for the data channel are not the same set of credentials as the token returned for web calls. The protocol, the unit of ExpirationTime, and field mappings are subject to the actual RTC gateway deployment version and return conventions. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - GetDataChannelCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataChannelCredentialResponse
+func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, request *GetDataChannelCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetDataChannelCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataChannelCredential"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataChannelCredentialResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1659,6 +2229,114 @@ func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
+// Retrieves the trial channel.
+//
+// Description:
+//
+// Retrieves the corresponding trial access channel and the list of available trial scenarios based on the VisitorToken in a trial link. The service verifies whether the token exists, whether it can locate the channel, and whether it has expired. Upon success, it returns information such as the instance to which the channel belongs, the channel type, display configurations, validity period, and scenario configurations. This operation can be used as an initialization step for the trial page: first read the returned instance and scenarios, and then call the corresponding trial text or web voice operation. This operation does not create a text session or initiate a voice call. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - GetTrialAccessChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrialAccessChannelResponse
+func (client *Client) GetTrialAccessChannelWithContext(ctx context.Context, request *GetTrialAccessChannelRequest, runtime *dara.RuntimeOptions) (_result *GetTrialAccessChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTrialAccessChannel"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTrialAccessChannelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the parameters for a trial voice conversation.
+//
+// Description:
+//
+// Retrieves temporary connection credentials for the client data channel for a specified InstanceId and DeviceId by using a valid VisitorToken from a trial link. The response includes information such as Topic, ClientId, Endpoint, UserName, Password, and expiration time. The client must use the actual values returned by the service to connect to and subscribe to the data channel, and must not concatenate addresses, topics, or authentication information. The DeviceId must be consistent with the BridgeTrialWebCall request from the same client. This operation only retrieves data channel credentials and does not initiate text sessions or establish web voice calls. The credential protocol and expiration time unit are subject to the conventions returned by the actual RTC gateway. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - GetTrialDataChannelCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrialDataChannelCredentialResponse
+func (client *Client) GetTrialDataChannelCredentialWithContext(ctx context.Context, request *GetTrialDataChannelCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetTrialDataChannelCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTrialDataChannelCredential"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTrialDataChannelCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of ASR models.
 //
 // @param request - ListAsrModelsRequest
@@ -1703,7 +2381,7 @@ func (client *Client) ListAsrModelsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Retrieves the list of outbound call campaigns.
+// Queries a list of outbound campaigns.
 //
 // Description:
 //
@@ -2727,7 +3405,7 @@ func (client *Client) ListScriptsWithContext(ctx context.Context, tmpReq *ListSc
 
 // Summary:
 //
-// Retrieves the list of scenarios associated with a flow by flow ID.
+// Retrieves a list of scenarios based on the flow ID.
 //
 // @param request - ListScriptsByFlowRequest
 //
@@ -2879,7 +3557,83 @@ func (client *Client) ListVoiceAccessProfilesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Pauses an outbound call campaign.
+// Initiates an outbound call.
+//
+// Description:
+//
+// Initiates an outbound call test to the real phone number corresponding to Number by using the specified instance and scenario. Before calling this operation, you must obtain an SMS verification code for the OutboundCallTest scenario for the called number and pass it in VerificationCode. The service verifies the code and initiates the call by using the outbound caller ID configured on the platform. DeviceId is used to bind the client data stream to the current call. CallVariables passes call variables in JSON object format, and Tags passes attached data. Upon success, a SessionId with the test- prefix is returned to associate with the current call. A successful API response does not indicate that the called party has answered or that the conversation has ended. Test only authorized numbers. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use real resources and service return values for actual calls.
+//
+// @param request - MakePilotCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MakePilotCallResponse
+func (client *Client) MakePilotCallWithContext(ctx context.Context, request *MakePilotCallRequest, runtime *dara.RuntimeOptions) (_result *MakePilotCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallVariables) {
+		query["CallVariables"] = request.CallVariables
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Number) {
+		query["Number"] = request.Number
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.VerificationCode) {
+		query["VerificationCode"] = request.VerificationCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MakePilotCall"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MakePilotCallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Pauses an outbound campaign.
 //
 // @param request - PauseCampaignRequest
 //
@@ -3031,7 +3785,7 @@ func (client *Client) ResumeCampaignWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// Submits an outbound call campaign.
+// Submits an outbound campaign.
 //
 // Description:
 //
@@ -3073,6 +3827,93 @@ func (client *Client) SubmitCampaignWithContext(ctx context.Context, request *Su
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitCampaignResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a user input to a trial text conversation.
+//
+// Description:
+//
+// Sends a round of user input to a trial text conversation created by BeginTrialSession and returns the robot reply in Server-Sent Events (SSE) format. Use the same InstanceId, ScriptId, SessionId, and experience link VisitorToken as those used to start the trial conversation. The service validates the token and its expiration time on each call. Utterance is plain text input, and Extras is a JSON array string of structured events such as key presses and silence. StreamEnd=true only ends the response stream for the current turn. Call EndTrialSession when the entire experience ends. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - TrialDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrialDialogueResponse
+func (client *Client) TrialDialogueWithSSECtx(ctx context.Context, request *TrialDialogueRequest, runtime *dara.RuntimeOptions, _yield chan *TrialDialogueResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.trialDialogueWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Sends a user input to a trial text conversation.
+//
+// Description:
+//
+// Sends a round of user input to a trial text conversation created by BeginTrialSession and returns the robot reply in Server-Sent Events (SSE) format. Use the same InstanceId, ScriptId, SessionId, and experience link VisitorToken as those used to start the trial conversation. The service validates the token and its expiration time on each call. Utterance is plain text input, and Extras is a JSON array string of structured events such as key presses and silence. StreamEnd=true only ends the response stream for the current turn. Call EndTrialSession when the entire experience ends. The resource identifiers, numbers, and authentication credentials in the examples are desensitized or placeholder values. Use actual resources and service return values for actual calls.
+//
+// @param request - TrialDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrialDialogueResponse
+func (client *Client) TrialDialogueWithContext(ctx context.Context, request *TrialDialogueRequest, runtime *dara.RuntimeOptions) (_result *TrialDialogueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Extras) {
+		query["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Utterance) {
+		query["Utterance"] = request.Utterance
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TrialDialogue"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TrialDialogueResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3791,4 +4632,260 @@ func (client *Client) UpdateVoiceAccessProfileWithContext(ctx context.Context, t
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) beginSessionWithSSECtx_opYieldFunc(_yield chan *BeginSessionResponse, _yieldErr chan error, ctx context.Context, request *BeginSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.VendorParams) {
+		query["VendorParams"] = request.VendorParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BeginSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) beginTrialSessionWithSSECtx_opYieldFunc(_yield chan *BeginTrialSessionResponse, _yieldErr chan error, ctx context.Context, request *BeginTrialSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.VendorParams) {
+		query["VendorParams"] = request.VendorParams
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BeginTrialSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) dialogueWithSSECtx_opYieldFunc(_yield chan *DialogueResponse, _yieldErr chan error, ctx context.Context, request *DialogueRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Extras) {
+		query["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Utterance) {
+		query["Utterance"] = request.Utterance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Dialogue"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) trialDialogueWithSSECtx_opYieldFunc(_yield chan *TrialDialogueResponse, _yieldErr chan error, ctx context.Context, request *TrialDialogueRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Extras) {
+		query["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Utterance) {
+		query["Utterance"] = request.Utterance
+	}
+
+	if !dara.IsNil(request.VisitorToken) {
+		query["VisitorToken"] = request.VisitorToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TrialDialogue"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

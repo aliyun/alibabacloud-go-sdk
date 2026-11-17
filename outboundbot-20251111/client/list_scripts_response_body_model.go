@@ -54,7 +54,7 @@ type ListScriptsResponseBody struct {
 	//
 	// 019FDAC7-13C5-1B64-A853-999DF105B9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListScriptsResponseBodyData struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of scripts.
+	// The data list.
 	Scripts []*ListScriptsResponseBodyDataScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
 	// The total number of entries that meet the conditions.
 	//
@@ -223,7 +223,7 @@ func (s *ListScriptsResponseBodyData) Validate() error {
 }
 
 type ListScriptsResponseBodyDataScripts struct {
-	// The chatbot builder type.
+	// The bot builder type.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type ListScriptsResponseBodyDataScripts struct {
 	//
 	// BEEBOT
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	// The phone number bound to the script.
+	// The phone number bound to the scenario.
 	//
 	// example:
 	//
@@ -289,13 +289,13 @@ type ListScriptsResponseBodyDataScripts struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b41
 	PublishedVersionId *string `json:"PublishedVersionId,omitempty" xml:"PublishedVersionId,omitempty"`
-	// The script ID.
+	// The scenario ID.
 	//
 	// example:
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The script status.
+	// The scenario status.
 	//
 	// example:
 	//

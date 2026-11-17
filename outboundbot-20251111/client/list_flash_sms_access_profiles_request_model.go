@@ -24,13 +24,13 @@ type ListFlashSmsAccessProfilesRequest struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number, starting from 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

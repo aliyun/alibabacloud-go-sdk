@@ -28,7 +28,7 @@ type iListScriptsShrinkRequest interface {
 }
 
 type ListScriptsShrinkRequest struct {
-	// The chatbot builder type.
+	// The bot builder type.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListScriptsShrinkRequest struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The script name.
+	// The scenario name.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ListScriptsShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to return only published scripts.
+	// Specifies whether to return only published scenarios.
 	//
 	// example:
 	//
 	// true
 	PublishOnly *bool `json:"PublishOnly,omitempty" xml:"PublishOnly,omitempty"`
-	// The list of script IDs.
+	// The list of scenario IDs.
 	ScriptIdsShrink *string `json:"ScriptIds,omitempty" xml:"ScriptIds,omitempty"`
 }
 

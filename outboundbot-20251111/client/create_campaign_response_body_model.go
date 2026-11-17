@@ -26,7 +26,7 @@ type iCreateCampaignResponseBody interface {
 }
 
 type CreateCampaignResponseBody struct {
-	// The status code of the operation.
+	// The API status code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateCampaignResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned by the operation.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateCampaignResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

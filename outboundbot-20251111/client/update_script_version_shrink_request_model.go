@@ -36,7 +36,7 @@ type UpdateScriptVersionShrinkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The interaction configuration.
 	InteractionConfigShrink *string `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty"`
-	// The label configurations.
+	// The label configuration.
 	LabelConfigsShrink *string `json:"LabelConfigs,omitempty" xml:"LabelConfigs,omitempty"`
 	// The scenario ID.
 	//
@@ -46,9 +46,9 @@ type UpdateScriptVersionShrinkRequest struct {
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
 	// The dialogue capability configuration.
 	ScriptProfileShrink *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
-	// The Text-to-Speech (TTS) configuration.
+	// The TTS configuration.
 	SynthesizerConfigShrink *string `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty"`
-	// The Automatic Speech Recognition (ASR) configuration.
+	// The ASR configuration.
 	TranscriberConfigShrink *string `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty"`
 	// The version ID.
 	//

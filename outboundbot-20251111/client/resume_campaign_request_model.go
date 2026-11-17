@@ -16,7 +16,7 @@ type iResumeCampaignRequest interface {
 }
 
 type ResumeCampaignRequest struct {
-	// The ID of the campaign.
+	// The ID of the task.
 	//
 	// This parameter is required.
 	//

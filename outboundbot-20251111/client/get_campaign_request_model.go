@@ -16,7 +16,7 @@ type iGetCampaignRequest interface {
 }
 
 type GetCampaignRequest struct {
-	// The ID of the outbound task.
+	// The ID of the outbound campaign.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCampaignRequest struct {
 	//
 	// 6ac878ab-115b-4170-a5d8-547481273364
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// The instance ID of the outbound robot.
+	// The outbound instance ID.
 	//
 	// This parameter is required.
 	//

@@ -32,7 +32,7 @@ type ListCampaignsResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The paged query result.
+	// The paged query results.
 	Data *ListCampaignsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ListCampaignsResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type ListCampaignsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total count.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type ListCampaignsResponseBodyDataList struct {
 	//
 	// 0
 	CasesUncompleted *int32 `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
-	// The number of cases that were attempted but not completed.
+	// The number of attempted but uncompleted cases.
 	//
 	// example:
 	//
@@ -271,13 +271,13 @@ type ListCampaignsResponseBodyDataList struct {
 	//
 	// 100
 	CompletedRate *float64 `json:"CompletedRate,omitempty" xml:"CompletedRate,omitempty"`
-	// The time when the campaign was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-07-27T11:25:15+08:00
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The fixed number of concurrent calls.
+	// The fixed concurrency.
 	//
 	// example:
 	//
@@ -299,7 +299,7 @@ type ListCampaignsResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Kiaconnect本月到期续费外呼话术-OPIO_20260727_102718
+	// Kiaconnect renewal outbound script for this month-OPIO_20260727_102718
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The planned end time.
 	//
@@ -313,7 +313,7 @@ type ListCampaignsResponseBodyDataList struct {
 	//
 	// 1634008800000
 	PlannedStartTime *int64 `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	// Indicates whether the campaign continues to run until the planned end time after all contacts have been called.
+	// Specifies whether to continue running the campaign until the end time when all contacts have been called.
 	//
 	// example:
 	//
@@ -337,13 +337,13 @@ type ListCampaignsResponseBodyDataList struct {
 	//
 	// 100
 	TotalCases *int32 `json:"TotalCases,omitempty" xml:"TotalCases,omitempty"`
-	// The time when the campaign was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 1760272478
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The weight of the campaign.
+	// The campaign weight.
 	//
 	// example:
 	//

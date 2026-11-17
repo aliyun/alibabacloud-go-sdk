@@ -16,7 +16,7 @@ type iPauseCampaignRequest interface {
 }
 
 type PauseCampaignRequest struct {
-	// The ID of the campaign.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type PauseCampaignRequest struct {
 	//
 	// 6ac878ab-115b-4170-a5d8-547481273364
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// The outbound robot instance ID.
+	// The outbound instance ID.
 	//
 	// This parameter is required.
 	//

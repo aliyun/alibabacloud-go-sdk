@@ -46,7 +46,7 @@ type ListCasesResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pass-through parameter.
+	// The pass-through parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -143,7 +143,7 @@ func (s *ListCasesResponseBody) Validate() error {
 }
 
 type ListCasesResponseBodyData struct {
-	// The case list.
+	// The list of cases.
 	List []*ListCasesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -223,7 +223,7 @@ func (s *ListCasesResponseBodyData) Validate() error {
 }
 
 type ListCasesResponseBodyDataList struct {
-	// The number of call attempts.
+	// The number of attempts.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ type ListCasesResponseBodyDataList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of labels.
 	Labels []*ListCasesResponseBodyDataListLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The time of the last call attempt.
+	// The time of the last attempt.
 	//
 	// example:
 	//
@@ -333,11 +333,11 @@ type ListCasesResponseBodyDataList struct {
 	//
 	// 8a988bd4-6c6e-45c6-b3a5-3def5ca3bc6f
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The name of the script.
+	// The script name.
 	//
 	// example:
 	//
-	// Sample scenario name
+	// Scenario name
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
 	// The session ID of the last call.
 	//
@@ -345,19 +345,19 @@ type ListCasesResponseBodyDataList struct {
 	//
 	// SESSION_ID_312986372_7295954260941888
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The case status.
+	// The case state.
 	//
 	// example:
 	//
 	// Executing
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The call duration.
+	// The talk time.
 	//
 	// example:
 	//
 	// 10
 	TalkTime *int64 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
-	// The number of dialogue turns.
+	// The number of conversation turns.
 	//
 	// example:
 	//
@@ -603,19 +603,19 @@ func (s *ListCasesResponseBodyDataList) Validate() error {
 }
 
 type ListCasesResponseBodyDataListLabels struct {
-	// The candidate values of the label.
+	// The candidate values for the label.
 	CandidateValues []*string `json:"CandidateValues,omitempty" xml:"CandidateValues,omitempty" type:"Repeated"`
-	// Indicates whether the label is collected.
+	// Indicates whether it is collected.
 	//
 	// example:
 	//
 	// true
 	Collected *bool `json:"Collected,omitempty" xml:"Collected,omitempty"`
-	// The description of the label.
+	// The label description.
 	//
 	// example:
 	//
-	// Sample description
+	// Description content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched value of the label.
 	//
@@ -623,13 +623,13 @@ type ListCasesResponseBodyDataListLabels struct {
 	//
 	// 1
 	MatchedValue *string `json:"MatchedValue,omitempty" xml:"MatchedValue,omitempty"`
-	// The name of the label.
+	// The label name.
 	//
 	// example:
 	//
 	// Flexible packaging enterprise call_20251022_165548
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the label is a system label.
+	// The system label.
 	//
 	// example:
 	//

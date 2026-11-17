@@ -16,7 +16,7 @@ type iAbortCampaignRequest interface {
 }
 
 type AbortCampaignRequest struct {
-	// The outbound call task ID.
+	// The outbound campaign ID.
 	//
 	// This parameter is required.
 	//

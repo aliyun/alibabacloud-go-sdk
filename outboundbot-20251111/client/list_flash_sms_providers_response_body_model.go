@@ -54,7 +54,7 @@ type ListFlashSmsProvidersResponseBody struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListFlashSmsProvidersResponseBodyData struct {
 	//
 	// example:
 	//
-	// {\\"Pwd\\":{\\"displayName\\":\\"密码\\",\\"dataType\\":\\"TEXT\\",\\"displayOrder\\":2,\\"required\\":true,\\"maxLength\\":64},\\"User\\":{\\"displayName\\":\\"用户\\",\\"dataType\\":\\"TEXT\\",\\"displayOrder\\":1,\\"required\\":true,\\"maxLength\\":64},\\"Account\\":{\\"displayName\\":\\"账号\\",\\"dataType\\":\\"TEXT\\",\\"displayOrder\\":3,\\"required\\":true,\\"maxLength\\":64}}
+	// {"Pwd":{"displayName":"Password","dataType":"TEXT","displayOrder":2,"required":true,"maxLength":64},"User":{"displayName":"User","dataType":"TEXT","displayOrder":1,"required":true,"maxLength":64},"Account":{"displayName":"Account","dataType":"TEXT","displayOrder":3,"required":true,"maxLength":64}}
 	ProfileSchema *string `json:"ProfileSchema,omitempty" xml:"ProfileSchema,omitempty"`
 	// The provider ID.
 	//
@@ -163,7 +163,7 @@ type ListFlashSmsProvidersResponseBodyData struct {
 	//
 	// example:
 	//
-	// 北京优音通信有限公司
+	// Beijing Youyin Communication Co., Ltd
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
 }
 

@@ -143,21 +143,21 @@ func (s *ListFlashSmsAccessProfilesResponseBody) Validate() error {
 }
 
 type ListFlashSmsAccessProfilesResponseBodyData struct {
-	// The data list.
+	// The list of flash SMS access profiles.
 	FlashSmsAccessProfiles []*ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles `json:"FlashSmsAccessProfiles,omitempty" xml:"FlashSmsAccessProfiles,omitempty" type:"Repeated"`
-	// The page number, starting from 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records that match the conditions.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -235,25 +235,25 @@ type ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles struct {
 	//
 	// 4f9a8e2b-6c1d-4a7e-9b3f-2d5c8a1e7b04
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	// The creation time, in millisecond-level timestamp.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1735660800000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The provider ID. Valid values:\\
+	// The provider ID. Valid values:
 	//
-	// Uincall: Beijing Youyin Communication Co., Ltd.\\
+	// - Uincall: Beijing Uincall Communication Co., Ltd.
 	//
-	// ChuangLan: Beijing ChuangLan Cloud Intelligence Information Co., Ltd.\\
+	// - ChuangLan: Beijing Chuanglan Cloud Intelligence Information Technology Co., Ltd.
 	//
-	// ChinaMobile: China Mobile.\\
+	// - ChinaMobile: China Mobile
 	//
-	// ShangHaiTianNan: Shanghai Tiannan.\\
+	// - ShangHaiTianNan: Shanghai Tiannan
 	//
-	// HeDao: Galexis.\\
+	// - HeDao: Hedaokesi
 	//
-	// DySms: Alibaba Communication.
+	// - DySms: Alibaba Cloud Communications
 	//
 	// example:
 	//
@@ -263,9 +263,9 @@ type ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles struct {
 	//
 	// example:
 	//
-	// 北京优音通信有限公司
+	// Beijing Uincall Communication Co., Ltd
 	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	// The update time, in millisecond-level timestamp.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

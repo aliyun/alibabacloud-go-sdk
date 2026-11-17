@@ -18,7 +18,7 @@ type iAbortCasesRequest interface {
 }
 
 type AbortCasesRequest struct {
-	// The ID of the predictive outbound call campaign.
+	// The predictive outbound call campaign ID.
 	//
 	// This parameter is required.
 	//
