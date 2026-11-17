@@ -5468,6 +5468,128 @@ func (client *Client) DeleteWorkflowTemplateVersionWithContext(ctx context.Conte
 
 // Summary:
 //
+// Disables session sharing.
+//
+// Description:
+//
+// Idempotently disables session sharing owned by the current calling user. Existing share links become invalid immediately.
+//
+// @param request - DisableConversationShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableConversationShareResponse
+func (client *Client) DisableConversationShareWithContext(ctx context.Context, request *DisableConversationShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableConversationShareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableConversationShare"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/disableConversationShare"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableConversationShareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables sharing for output item details.
+//
+// Description:
+//
+// Idempotently disables sharing for output item details owned by the current calling user, and immediately invalidates previous sharing links. You can locate the target by outputItemId, or precisely by sessionId and outputItemName.
+//
+// @param request - DisableOutputItemShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableOutputItemShareResponse
+func (client *Client) DisableOutputItemShareWithContext(ctx context.Context, request *DisableOutputItemShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableOutputItemShareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OutputItemId) {
+		body["outputItemId"] = request.OutputItemId
+	}
+
+	if !dara.IsNil(request.OutputItemName) {
+		body["outputItemName"] = request.OutputItemName
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableOutputItemShare"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/disableOutputItemShare"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableOutputItemShareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables an API token.
 //
 // Description:
@@ -5527,6 +5649,172 @@ func (client *Client) DisableTokenWithContext(ctx context.Context, request *Disa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables session sharing and retrieves the sharing link.
+//
+// Description:
+//
+// Enables sharing for a session owned by the current calling user and returns the sharing link. The first time sharing is enabled, a snapshot of the currently shareable messages is taken. Subsequent enabling retains the original link.
+//
+// @param tmpReq - EnableConversationShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableConversationShareResponse
+func (client *Client) EnableConversationShareWithContext(ctx context.Context, tmpReq *EnableConversationShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableConversationShareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnableConversationShareShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ShareUserGroupIds) {
+		request.ShareUserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShareUserGroupIds, dara.String("shareUserGroupIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ShareUserIds) {
+		request.ShareUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShareUserIds, dara.String("shareUserIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.ShareAccessType) {
+		body["shareAccessType"] = request.ShareAccessType
+	}
+
+	if !dara.IsNil(request.ShareUserGroupIdsShrink) {
+		body["shareUserGroupIds"] = request.ShareUserGroupIdsShrink
+	}
+
+	if !dara.IsNil(request.ShareUserIdsShrink) {
+		body["shareUserIds"] = request.ShareUserIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableConversationShare"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/enableConversationShare"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableConversationShareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables sharing for an output item and retrieves the share link.
+//
+// Description:
+//
+// Enables sharing for an output item owned by the current caller and returns the share link. You can locate the output item by outputItemId, or precisely locate it by sessionId and outputItemName. If both methods are provided, outputItemId takes precedence.
+//
+// @param tmpReq - EnableOutputItemShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableOutputItemShareResponse
+func (client *Client) EnableOutputItemShareWithContext(ctx context.Context, tmpReq *EnableOutputItemShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableOutputItemShareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnableOutputItemShareShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ShareUserGroupIds) {
+		request.ShareUserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShareUserGroupIds, dara.String("shareUserGroupIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ShareUserIds) {
+		request.ShareUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShareUserIds, dara.String("shareUserIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OutputItemId) {
+		body["outputItemId"] = request.OutputItemId
+	}
+
+	if !dara.IsNil(request.OutputItemName) {
+		body["outputItemName"] = request.OutputItemName
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.ShareAccessType) {
+		body["shareAccessType"] = request.ShareAccessType
+	}
+
+	if !dara.IsNil(request.ShareUserGroupIdsShrink) {
+		body["shareUserGroupIds"] = request.ShareUserGroupIdsShrink
+	}
+
+	if !dara.IsNil(request.ShareUserIdsShrink) {
+		body["shareUserIds"] = request.ShareUserIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableOutputItemShare"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/enableOutputItemShare"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableOutputItemShareResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9351,6 +9639,75 @@ func (client *Client) ListBillingWithContext(ctx context.Context, request *ListB
 
 // Summary:
 //
+// Reads group chat text and multimedia content in message order.
+//
+// Description:
+//
+// Reads the connected DingTalk, AliDing, or WeCom group chat sources, and paginates the results in ascending order by send time and message record ID. Each message includes the original text, as well as document content, image descriptions, or audio and video transcriptions arranged in the order they appear in the message. The caller must have read permissions for the source. Reading does not trigger attachment parsing. Pagination provides a real-time view, and historical backfilling may change pagination positions. Attachment content is retrieved from the Document Agent. For unparsed items, the API returns found=false and the local processing status. Upstream failures return errors.
+//
+// @param request - ListChatMessageContentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatMessageContentsResponse
+func (client *Client) ListChatMessageContentsWithContext(ctx context.Context, request *ListChatMessageContentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListChatMessageContentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaxCharsPerAttachment) {
+		body["maxCharsPerAttachment"] = request.MaxCharsPerAttachment
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListChatMessageContents"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listChatMessageContents"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListChatMessageContentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists chat sessions of the current user in reverse chronological order by creation time.
 //
 // Description:
@@ -12346,6 +12703,67 @@ func (client *Client) PreviewKnowledgeBaseSourceWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &PreviewKnowledgeBaseSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews an output file or a non-file output.
+//
+// Description:
+//
+// Previews the output that the current calling user has permission to access based on the output item ID. This operation supports managed versions, archived history, unversioned history, and non-file outputs such as emails and slide decks. If a short-term preview or download URL is returned, you must call the operation again after the URL expires.
+//
+// @param request - PreviewOutputFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewOutputFileResponse
+func (client *Client) PreviewOutputFileWithContext(ctx context.Context, request *PreviewOutputFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewOutputFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OutputItemId) {
+		body["outputItemId"] = request.OutputItemId
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["versionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewOutputFile"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/previewOutputFile"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewOutputFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17459,6 +17877,105 @@ func (client *Client) UpdateScheduledTaskWithContext(ctx context.Context, tmpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateScheduledTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the sharing status, scope, or output link.
+//
+// Description:
+//
+// Updates the sharing status and scope of a session or output item. Only output items support refreshing the sharing link. For session targets, use sessionId. For output targets, use outputItemId or a combination of sessionId and outputItemName.
+//
+// @param tmpReq - UpdateShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateShareResponse
+func (client *Client) UpdateShareWithContext(ctx context.Context, tmpReq *UpdateShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateShareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateShareShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ShareUserGroupIds) {
+		request.ShareUserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShareUserGroupIds, dara.String("shareUserGroupIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ShareUserIds) {
+		request.ShareUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShareUserIds, dara.String("shareUserIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OutputItemId) {
+		body["outputItemId"] = request.OutputItemId
+	}
+
+	if !dara.IsNil(request.OutputItemName) {
+		body["outputItemName"] = request.OutputItemName
+	}
+
+	if !dara.IsNil(request.RefreshShareLink) {
+		body["refreshShareLink"] = request.RefreshShareLink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.ShareAccessType) {
+		body["shareAccessType"] = request.ShareAccessType
+	}
+
+	if !dara.IsNil(request.ShareEnabled) {
+		body["shareEnabled"] = request.ShareEnabled
+	}
+
+	if !dara.IsNil(request.ShareUserGroupIdsShrink) {
+		body["shareUserGroupIds"] = request.ShareUserGroupIdsShrink
+	}
+
+	if !dara.IsNil(request.ShareUserIdsShrink) {
+		body["shareUserIds"] = request.ShareUserIdsShrink
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateShare"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateShare"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateShareResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
