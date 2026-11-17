@@ -38,7 +38,7 @@ type iCreateScheduledTaskRequest interface {
 }
 
 type CreateScheduledTaskRequest struct {
-	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
+	// The ID of the associated collaboration group (such as cg_101). If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateScheduledTaskRequest struct {
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
 	// The description of the to-do card type.
 	Description []*CreateScheduledTaskRequestDescription `json:"description,omitempty" xml:"description,omitempty" type:"Repeated"`
-	// The name of the current effective digital employee. This parameter is empty if it is not configured.
+	// The name of the currently effective digital employee. This parameter is empty if it is not configured.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateScheduledTaskRequest struct {
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The large language model used by the assistant. The default value is empty, which indicates that DingTalk automatically selects the model.
+	// The large model used by the assistant. The default value is empty, which indicates that DingTalk automatically selects the model.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type CreateScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 输出会话模式，默认 NEW_CONVERSATION
+	// The output conversation mode. Default value: NEW_CONVERSATION.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type CreateScheduledTaskRequest struct {
 	Segments []*CreateScheduledTaskRequestSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
 	// The task details.
 	TaskDetail *CreateScheduledTaskRequestTaskDetail `json:"taskDetail,omitempty" xml:"taskDetail,omitempty" type:"Struct"`
-	// The effective tenant ID.
+	// The ID of the effective tenant.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The trigger configuration of the scheduled task. The triggerMode parameter supports manual (manual trigger) and scheduled (scheduled trigger). If scheduled is used, the cron parameter must be specified. The timezone and language parameters are injected by the server, and the client does not need to pass them. The pushConfig parameter is the list of task push channels. If the list is empty or no channel is enabled, no push is performed.
+	// The trigger configuration of the scheduled task. triggerMode supports manual (manual trigger) and scheduled (scheduled trigger). If scheduled is used, cron must be specified. timezone and language are injected by the server, and the client does not need to pass them. pushConfig is the list of task push channels. If it is empty or no channel is enabled, no push is performed.
 	TriggerConfig *CreateScheduledTaskRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
 	// The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaboration members), and PUBLIC (visible to all group members). If this parameter is not passed for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
 	//
@@ -278,13 +278,13 @@ type CreateScheduledTaskRequestDescription struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The object ID. Pass the project task ID.
 	//
-	// - For internal enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) API operation to obtain the taskId.
+	// - For internal enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) API to obtain the taskId.
 	//
-	// - For third-party enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) API operation to obtain the taskId.
+	// - For third-party enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) API to obtain the taskId.
 	//
 	// example:
 	//
@@ -302,7 +302,7 @@ type CreateScheduledTaskRequestDescription struct {
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// The HTTP API type. Valid values: Http (standard HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), and Agent (agent API).
+	// The HTTP API type. Valid values: Http (common HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), and Agent (agent API).
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ type CreateScheduledTaskRequestSegments struct {
 	//
 	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Specifies whether the feature is enabled.
+	// Specifies whether to enable the feature.
 	//
 	// example:
 	//
@@ -402,9 +402,9 @@ type CreateScheduledTaskRequestSegments struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the recommended item, which can be a **feedId*	- or a mini-app ID.
+	// The ID of the recommended item. The value can be a **feedId*	- or a mini-app ID.
 	//
 	// example:
 	//
@@ -606,13 +606,13 @@ type CreateScheduledTaskRequestTaskDetailRelatedObjects struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The object ID. Pass the project task ID.
 	//
-	// - For internal enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) API operation to obtain the taskId.
+	// - For internal enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) API to obtain the taskId.
 	//
-	// - For third-party enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) API operation to obtain the taskId.
+	// - For third-party enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) API to obtain the taskId.
 	//
 	// example:
 	//
@@ -734,7 +734,7 @@ type CreateScheduledTaskRequestTaskDetailRelatedSkills struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The skill code.
 	//
@@ -815,7 +815,7 @@ type CreateScheduledTaskRequestTriggerConfig struct {
 	//
 	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The list of task push channels. If the list is empty or no channel is enabled, no push is performed.
+	// The list of task push channels. If this parameter is empty or no channel is enabled, no push is performed.
 	PushConfig []*CreateScheduledTaskRequestTriggerConfigPushConfig `json:"pushConfig,omitempty" xml:"pushConfig,omitempty" type:"Repeated"`
 	// The time zone.
 	//
@@ -823,23 +823,17 @@ type CreateScheduledTaskRequestTriggerConfig struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// - Trigger mode
+	// The trigger mode. Valid values:
 	//
+	// - 1: Manual trigger.
 	//
+	// - 2: Scheduled trigger.
 	//
-	//   1: Manual trigger
+	// - 3: Code commit trigger.
 	//
+	// - 5: Pipeline trigger.
 	//
-	//
-	//   2: Scheduled trigger
-	//
-	//   3: Code commit trigger
-	//
-	//
-	//
-	//   5: Pipeline trigger
-	//
-	//   6: Webhook trigger
+	// - 6: WEBHOOK trigger.
 	//
 	// example:
 	//
@@ -916,13 +910,13 @@ func (s *CreateScheduledTaskRequestTriggerConfig) Validate() error {
 type CreateScheduledTaskRequestTriggerConfigPushConfig struct {
 	// The notification method. Valid values:
 	//
-	// - **hdm_alarm_sms**: SMS.
+	// - **hdm_alarm_sms**: Text message.
 	//
 	// - **dingtalk**: DingTalk chatbot.
 	//
-	// - **hdm_alarm_sms_and_email**: SMS and email.
+	// - **hdm_alarm_sms_and_email**: Text message and email.
 	//
-	// - **hdm_alarm_sms,dingtalk**: SMS and DingTalk chatbot.
+	// - **hdm_alarm_sms,dingtalk**: Text message and DingTalk chatbot.
 	//
 	// example:
 	//
@@ -962,7 +956,7 @@ type CreateScheduledTaskRequestTriggerConfigPushConfig struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The type of the file recipient. Valid values:
+	// The type of the file receiver. Valid values:
 	//
 	// - 0: Private chat.
 	//

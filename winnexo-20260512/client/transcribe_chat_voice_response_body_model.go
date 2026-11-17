@@ -32,13 +32,13 @@ type TranscribeChatVoiceResponseBody struct {
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The recognized text content.
+	// The batch text to be translated.
 	//
 	// example:
 	//

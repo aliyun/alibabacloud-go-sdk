@@ -38,21 +38,21 @@ type iUpdateScheduledTaskRequest interface {
 }
 
 type UpdateScheduledTaskRequest struct {
-	// The description information.
+	// The description.
 	Description []*UpdateScheduledTaskRequestDescription `json:"description,omitempty" xml:"description,omitempty" type:"Repeated"`
-	// The list of digital human names.
+	// The list of digital employee names.
 	//
 	// example:
 	//
-	// string_value
+	// ["test"]
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// Specifies whether the task is publicly accessible.
+	// Specifies whether public access is enabled.
 	//
 	// example:
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The execution model tier. If not specified, the model tier is not updated.
+	// The execution model tier. If this parameter is not specified, the model tier is not updated.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 输出会话模式，省略时保留当前配置
+	// The output conversation mode. If this parameter is omitted, the current configuration is retained.
 	//
 	// example:
 	//
@@ -82,25 +82,25 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The trigger configuration. The configuration varies depending on the trigger type.
+	// The trigger configuration. The configuration varies based on the trigger type.
 	TriggerConfig *UpdateScheduledTaskRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
-	// The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility is not updated. This parameter is ignored for personal tasks.
+	// The visibility scope adjustment for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If this parameter is not specified, the visibility scope is not updated. This field is ignored for personal tasks.
 	//
 	// example:
 	//
 	// COLLABORATIVE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The full replacement list of collaborator member user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. The list is cleared when switching away from the COLLABORATIVE tier. A maximum of 1000 members are supported. If not specified, the member list is not updated. The task creator and group creator do not need to be included because they are covered by the authentication layer. This parameter is ignored for personal tasks.
+	// The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. When the visibility is changed from COLLABORATIVE to another value, the list is cleared. A maximum of 1,000 members are supported. If this parameter is not specified, the members are not updated. You do not need to specify the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
 	//
 	// example:
 	//
-	// string_value
+	// ["10001"]
 	VisibleMemberUserIds []*string `json:"visibleMemberUserIds,omitempty" xml:"visibleMemberUserIds,omitempty" type:"Repeated"`
 }
 
@@ -262,13 +262,13 @@ func (s *UpdateScheduledTaskRequest) Validate() error {
 }
 
 type UpdateScheduledTaskRequestDescription struct {
-	// The text content. Required when type is set to text.
+	// The text content. This parameter is required when type is set to text.
 	//
 	// example:
 	//
 	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The feature switch. Optional when type is set to web_search.
+	// Specifies whether the feature is enabled. This parameter is optional when type is set to web_search.
 	//
 	// example:
 	//
@@ -384,13 +384,13 @@ func (s *UpdateScheduledTaskRequestDescription) Validate() error {
 }
 
 type UpdateScheduledTaskRequestSegments struct {
-	// The text content. Required when type is set to text.
+	// The text content. This parameter is required when type is set to text.
 	//
 	// example:
 	//
 	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The feature switch. Optional when type is set to web_search.
+	// Specifies whether the feature is enabled. This parameter is optional when type is set to web_search.
 	//
 	// example:
 	//
@@ -512,7 +512,7 @@ type UpdateScheduledTaskRequestTaskDetail struct {
 	RelatedSemantics []*UpdateScheduledTaskRequestTaskDetailRelatedSemantics `json:"relatedSemantics,omitempty" xml:"relatedSemantics,omitempty" type:"Repeated"`
 	// The related skills.
 	RelatedSkills []*UpdateScheduledTaskRequestTaskDetailRelatedSkills `json:"relatedSkills,omitempty" xml:"relatedSkills,omitempty" type:"Repeated"`
-	// The task understanding description polished by the LLM.
+	// The task understanding description refined by the large language model (LLM).
 	//
 	// example:
 	//
@@ -608,7 +608,7 @@ type UpdateScheduledTaskRequestTaskDetailRelatedObjects struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The object ID. This parameter has a value when an object is mentioned using @.
+	// The object ID. This parameter has a value when the object is specified by using the @ symbol.
 	//
 	// example:
 	//
@@ -671,7 +671,7 @@ func (s *UpdateScheduledTaskRequestTaskDetailRelatedObjects) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTaskDetailRelatedSemantics struct {
-	// The semantic attributes (JSON string) used for filtering during semantic retrieval.
+	// The semantic attributes in JSON string format. This parameter is used for filtering during semantic retrieval.
 	//
 	// example:
 	//
@@ -738,7 +738,7 @@ type UpdateScheduledTaskRequestTaskDetailRelatedSkills struct {
 	//
 	// example:
 	//
-	// string_value
+	// ["sourceIds"]
 	SourceIds []*string `json:"sourceIds,omitempty" xml:"sourceIds,omitempty" type:"Repeated"`
 }
 
@@ -791,21 +791,21 @@ func (s *UpdateScheduledTaskRequestTaskDetailRelatedSkills) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTriggerConfig struct {
-	// The cron expression. Required when trigger_mode is set to scheduled. Example: \\"00 09 	- 	- *\\".
+	// The cron expression. This parameter is required when trigger_mode is set to scheduled. Example: 00 09 	- 	- *.
 	//
 	// example:
 	//
 	// string_value
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// The language, such as zh-CN or en-US. Automatically injected by the server.
+	// The language, such as zh-CN or en-US. This parameter is automatically injected by the server.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The list of push channels for the task. No push notifications are sent if the list is empty or no channel is enabled.
+	// The list of task push channels. If the list is empty or no channel is enabled, no push notification is sent.
 	PushConfig []*UpdateScheduledTaskRequestTriggerConfigPushConfig `json:"pushConfig,omitempty" xml:"pushConfig,omitempty" type:"Repeated"`
-	// The time zone, such as Asia/Shanghai. Automatically injected by the server.
+	// The time zone, such as Asia/Shanghai. This parameter is automatically injected by the server.
 	//
 	// example:
 	//
@@ -888,43 +888,43 @@ func (s *UpdateScheduledTaskRequestTriggerConfig) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTriggerConfigPushConfig struct {
-	// The push channel type.
+	// The push channel.
 	//
 	// example:
 	//
 	// DINGTALK
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The scope of push content. Default value: all_replies.
+	// The scope of the push content. Default value: all_replies.
 	//
 	// example:
 	//
 	// all_replies
 	ContentScope *string `json:"contentScope,omitempty" xml:"contentScope,omitempty"`
-	// The push method. Default value: channel_bot.
+	// The delivery method. Default value: channel_bot.
 	//
 	// example:
 	//
 	// channel_bot
 	DeliveryMethod *string `json:"deliveryMethod,omitempty" xml:"deliveryMethod,omitempty"`
-	// Specifies whether to push to this channel. Default value: false.
+	// Specifies whether to push notifications to the channel. Default value: false.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The format for pushing output files. Default value: file.
+	// The push format for output files. Default value: file.
 	//
 	// example:
 	//
 	// file
 	FileFormat *string `json:"fileFormat,omitempty" xml:"fileFormat,omitempty"`
-	// The digital human to which the sending bot belongs. This parameter is required and cannot be empty.
+	// The digital employee to which the sending bot belongs. This parameter is required and cannot be empty.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The receiver type. Currently only self is supported.
+	// The recipient. Only self is supported.
 	//
 	// example:
 	//

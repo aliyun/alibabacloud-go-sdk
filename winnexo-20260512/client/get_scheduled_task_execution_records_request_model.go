@@ -26,13 +26,13 @@ type iGetScheduledTaskExecutionRecordsRequest interface {
 }
 
 type GetScheduledTaskExecutionRecordsRequest struct {
-	// The ID of the collaboration group to which the task belongs, such as cg_101. If you specify this parameter, a group space task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
+	// The ID of the collaboration group to which the task belongs, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
 	//
 	// example:
 	//
 	// 1112
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The business status code. A value of 200 indicates success. A failure is indicated by a backend error code, such as ERR.	- or InvalidParameter.*.
+	// The business status code. A value of 200 indicates success. A failure returns a backend error code, such as ERR.	- or InvalidParameter.*.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type GetScheduledTaskExecutionRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The initiator filter based on the platform user ID. The scope is the executor of the record. For manual execution, it is the user who triggers the task. For automatic execution, it is the task creator. To view only the tasks that you initiated, specify the current user ID.
+	// The initiator filter based on the platform user ID. The caliber is the executor of the record. For manual execution, it is the trigger user. For automatic execution, it is the task creator. To view only the tasks initiated by yourself, pass the current user ID.
 	//
 	// example:
 	//
 	// failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The execution status filter in lowercase. Valid values: pending (queued), running (running), success (successful), failed (failed), timeout (timed out), and cancelled (cancelled). If you do not specify this parameter, no filtering is applied. If you specify this parameter, no future plan items are generated.
+	// The execution status filter in lowercase. Valid values: pending (queued), running (running), success (successful), failed (failed), timeout (timed out), and cancelled (cancelled). If you do not specify this parameter, no filtering is applied. If you specify this parameter, future planned items are no longer generated.
 	//
 	// example:
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The ID of the active tenant.
+	// The effective tenant ID.
 	//
 	// example:
 	//

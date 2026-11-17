@@ -20,13 +20,13 @@ type iUploadChatFileByBase64Request interface {
 }
 
 type UploadChatFileByBase64Request struct {
-	// 文件 MIME 类型（可选，不传时按 application/octet-stream 处理）
+	// The MIME type of the file.
 	//
 	// example:
 	//
 	// application/pdf
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 标准 Base64 文件内容，不含 data URI 前缀
+	// The Base64-encoded string of the file content.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UploadChatFileByBase64Request struct {
 	//
 	// YWJj
 	FileContentBase64 *string `json:"fileContentBase64,omitempty" xml:"fileContentBase64,omitempty"`
-	// 原始文件名（含后缀）
+	// The file name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UploadChatFileByBase64Request struct {
 	//
 	// report.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//

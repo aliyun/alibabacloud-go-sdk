@@ -38,21 +38,21 @@ type iUpdateScheduledTaskShrinkRequest interface {
 }
 
 type UpdateScheduledTaskShrinkRequest struct {
-	// The description information.
+	// The description.
 	DescriptionShrink *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of digital human names.
+	// The list of digital employee names.
 	//
 	// example:
 	//
-	// string_value
+	// ["test"]
 	DigitalEmployeeNameShrink *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// Specifies whether the task is publicly accessible.
+	// Specifies whether public access is enabled.
 	//
 	// example:
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The execution model tier. If not specified, the model tier is not updated.
+	// The execution model tier. If this parameter is not specified, the model tier is not updated.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type UpdateScheduledTaskShrinkRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 输出会话模式，省略时保留当前配置
+	// The output conversation mode. If this parameter is omitted, the current configuration is retained.
 	//
 	// example:
 	//
@@ -82,25 +82,25 @@ type UpdateScheduledTaskShrinkRequest struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The trigger configuration. The configuration varies depending on the trigger type.
+	// The trigger configuration. The configuration varies based on the trigger type.
 	TriggerConfigShrink *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	// The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility is not updated. This parameter is ignored for personal tasks.
+	// The visibility scope adjustment for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If this parameter is not specified, the visibility scope is not updated. This field is ignored for personal tasks.
 	//
 	// example:
 	//
 	// COLLABORATIVE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The full replacement list of collaborator member user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. The list is cleared when switching away from the COLLABORATIVE tier. A maximum of 1000 members are supported. If not specified, the member list is not updated. The task creator and group creator do not need to be included because they are covered by the authentication layer. This parameter is ignored for personal tasks.
+	// The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. When the visibility is changed from COLLABORATIVE to another value, the list is cleared. A maximum of 1,000 members are supported. If this parameter is not specified, the members are not updated. You do not need to specify the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
 	//
 	// example:
 	//
-	// string_value
+	// ["10001"]
 	VisibleMemberUserIdsShrink *string `json:"visibleMemberUserIds,omitempty" xml:"visibleMemberUserIds,omitempty"`
 }
 

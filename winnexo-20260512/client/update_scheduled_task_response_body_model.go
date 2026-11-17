@@ -22,31 +22,31 @@ type iUpdateScheduledTaskResponseBody interface {
 }
 
 type UpdateScheduledTaskResponseBody struct {
-	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- or InvalidParameter.*).
+	// The business status code. A value of 200 indicates success. A value of a backend error code such as ERR.	- or InvalidParameter.	- indicates failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error description. Empty when the request is successful.
+	// The error message. This parameter is empty when the request is successful.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request trace ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The task ID (echoed back).
+	// The task ID.
 	//
 	// example:
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Indicates whether an actual update was made.
+	// Specifies whether an actual update is performed.
 	//
 	// example:
 	//

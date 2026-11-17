@@ -175,7 +175,7 @@ type ListOutputFilesResponseBodyItems struct {
 	//
 	// Quarterly Business Analysis Report.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital worker (operating object).
+	// The name of the digital employee (operating object).
 	//
 	// example:
 	//
@@ -342,9 +342,9 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// 2026-10-12T03:10:00+00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The email information. This field is available only when the item type is email.
+	// The email information. This field is present when the item type is email.
 	EmailInfo *ListOutputFilesResponseBodyItemsOutputItemsEmailInfo `json:"emailInfo,omitempty" xml:"emailInfo,omitempty" type:"Struct"`
-	// The file information. This field is available only when the item type is file.
+	// The file information. This field is present when the item type is file.
 	FileInfo *ListOutputFilesResponseBodyItemsOutputItemsFileInfo `json:"fileInfo,omitempty" xml:"fileInfo,omitempty" type:"Struct"`
 	// The creation time of the output or detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
 	//
@@ -388,13 +388,13 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// item_123e4567-e89b-42d3-a456-426614174010
 	OutputItemId *string `json:"outputItemId,omitempty" xml:"outputItemId,omitempty"`
-	// Indicates whether sharing is enabled.
+	// Specifies whether sharing is enabled.
 	//
 	// example:
 	//
 	// true
 	ShareEnabled *bool `json:"shareEnabled,omitempty" xml:"shareEnabled,omitempty"`
-	// The share token. This field is present when sharing is enabled and can be used to access the public share preview API.
+	// The share token, which is present when sharing is enabled and can be used to access the public share preview API.
 	//
 	// example:
 	//
@@ -658,7 +658,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsFileInfo struct {
 	//
 	// example:
 	//
-	// Analysis report on quarterly revenue, costs, and trends
+	// Quarterly revenue, cost, and trend analysis report
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The file name.
 	//
@@ -666,7 +666,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsFileInfo struct {
 	//
 	// Quarterly Business Analysis Report.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The file download link. For versioned files, it is bound to the published version and content revision at the time of query. The link has a validity period. If it expires, query the list again to obtain a new link.
+	// The file download URL. For versioned files, it is bound to the published version and content revision at the time of query. The URL has a time-to-live (TTL). If it expires, query the list again to obtain a new URL.
 	//
 	// example:
 	//

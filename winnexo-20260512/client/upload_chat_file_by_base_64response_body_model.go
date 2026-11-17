@@ -20,25 +20,25 @@ type iUploadChatFileByBase64ResponseBody interface {
 }
 
 type UploadChatFileByBase64ResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 文件记录 ID
+	// The file record ID.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 错误描述，成功时为空
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//

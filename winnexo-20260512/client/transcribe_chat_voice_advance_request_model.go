@@ -29,7 +29,7 @@ type TranscribeChatVoiceAdvanceRequest struct {
 	//
 	// - **document**: General document.
 	//
-	// - **alidoc**: Alibaba Cloud document.
+	// - **alidoc**: AliDoc.
 	//
 	// - **text**: Text.
 	//
@@ -49,13 +49,13 @@ type TranscribeChatVoiceAdvanceRequest struct {
 	//
 	// audio/mpeg
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 标准 Base64 音频内容，不含 data URI 前缀，与 FileUrl 二选一
+	// The standard Base64-encoded audio content, excluding the data URI prefix. This parameter and FileUrl are mutually exclusive.
 	//
 	// example:
 	//
 	// UklGRg==
 	FileContentBase64 *string `json:"fileContentBase64,omitempty" xml:"fileContentBase64,omitempty"`
-	// The full path name of the file.
+	// The full path and name of the file.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +69,7 @@ type TranscribeChatVoiceAdvanceRequest struct {
 	//
 	// http://winnexo-file-transfer.oss-cn-hangzhou.aliyuncs.com/openapi/2026-09-08/9f8c2a1b
 	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// The ID of the tenant for which the operation takes effect.
+	// The ID of the tenant.
 	//
 	// example:
 	//

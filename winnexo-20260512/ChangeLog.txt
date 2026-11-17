@@ -1,3 +1,6 @@
+2026-11-17 Version: v1.8.1
+- Generated golang 2026-05-12 for WinNexo.
+
 2026-11-17 Version: v1.8.0
 - Support API ConvertDirectConversationToWork.
 - Support API GetScheduledTaskConversationRecords.
