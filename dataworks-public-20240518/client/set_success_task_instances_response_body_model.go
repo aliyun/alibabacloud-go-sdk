@@ -22,7 +22,7 @@ type SetSuccessTaskInstancesResponseBody struct {
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The results of the batch operation. The data structure is a map where the key is the task instance ID and the value is the result information.
+	// The results of the batch operation. Each map entry uses a node instance ID as the key and the corresponding operation result as the value.
 	//
 	// example:
 	//

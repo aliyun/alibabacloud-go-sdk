@@ -24,7 +24,7 @@ type iPartition interface {
 }
 
 type Partition struct {
-	// The creation time, in millisecond-level timestamp.
+	// The creation time (millisecond timestamp).
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type Partition struct {
 	//
 	// 4096
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The modification time, in millisecond-level timestamp.
+	// The modification time (millisecond timestamp).
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type Partition struct {
 	//
 	// 1000000
 	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The resource ID of the data table to which the partition belongs.
+	// The ID of the parent data table. Refer to the `Table` object.
 	//
 	// example:
 	//
-	// maxcompute-table:accountId::project::table
+	// maxcompute-table:::project_name:[schema_name]:table_name
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 

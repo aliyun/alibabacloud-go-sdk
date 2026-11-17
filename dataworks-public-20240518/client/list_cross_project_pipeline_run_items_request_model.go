@@ -32,7 +32,7 @@ type ListCrossProjectPipelineRunItemsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cross-workspace deployment pipeline ID.
+	// The ID of the cross-workspace deployment pipeline.
 	//
 	// This parameter is required.
 	//

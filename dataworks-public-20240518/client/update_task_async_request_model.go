@@ -50,7 +50,7 @@ type iUpdateTaskAsyncRequest interface {
 }
 
 type UpdateTaskAsyncRequest struct {
-	// The client unique code of the node, used to uniquely identify a node. This code is used for asynchronous processing and idempotence. If you do not specify this parameter when creating a node, the system automatically generates a value and binds it to the resource ID. If you specify this parameter when updating or deleting a resource, the value must match the client unique code used when the resource was created.
+	// The client unique code of the node, which is used to uniquely identify a node. This parameter is used to implement asynchronous processing and idempotence. If you do not specify this parameter when you create a node, the system automatically generates one. This code is uniquely bound to the resource ID. If you specify this parameter when you update or delete a resource, it must be the same as the client unique code used when the resource was created.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type UpdateTaskAsyncRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment. Valid values:
 	//
-	// - Prod: production
+	// - Prod: production.
 	//
-	// - Dev: development
+	// - Dev: development.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type UpdateTaskAsyncRequest struct {
 	Inputs *UpdateTaskAsyncRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The instance generation mode. Valid values:
 	//
-	// - T+1: generates instances the next day.
+	// - T+1: generates instances on the next day.
 	//
-	// - Immediately: generates instances immediately. Note: only periodic instances whose scheduled time is more than 10 minutes after the node publish time are generated normally. During the full-to-instance conversion period (22:00–24:00), real-time instance conversion is not supported. You can submit and publish nodes, but new nodes are not automatically converted to instances.
+	// - Immediately: generates instances immediately. Note: Periodic instances are generated normally only if the scheduled time of the node is at least 10 minutes after the node is published. Real-time instance generation is not supported during the full instance generation period (22:00 to 24:00). You can submit and publish nodes, but new nodes are not automatically converted into instances.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type UpdateTaskAsyncRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output information.
 	Outputs *UpdateTaskAsyncRequestOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The account ID of the node owner. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and hover over the profile picture in the upper-right corner of the top navigation bar to view the account ID. If this parameter is left empty, the Alibaba Cloud account ID of the caller is used by default.
+	// The Alibaba Cloud account ID of the node owner. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and move the mouse over the profile picture in the upper-right corner of the top menu bar to view the account ID. If this parameter is left empty, the Alibaba Cloud account ID of the invoker is used by default.
 	//
 	// example:
 	//
@@ -116,22 +116,19 @@ type UpdateTaskAsyncRequest struct {
 	//
 	// 60000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The configuration that specifies whether the node can be rerun. Valid values:
+	// Specifies whether the node can be rerun. Valid values:
 	//
+	// - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
 	//
+	// - FailureAllowed: The node can be rerun only if it fails.
 	//
-	//
-	// - AllDenied: the node cannot be rerun regardless of whether it succeeds or fails.
-	//
-	// - FailureAllowed: the node can be rerun only if it fails.
-	//
-	// - AllAllowed: the node can be rerun regardless of whether it succeeds or fails.
+	// - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
+	// The number of retries. This parameter takes effect when the node is configured to be rerunnable.
 	//
 	// example:
 	//
@@ -139,9 +136,9 @@ type UpdateTaskAsyncRequest struct {
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The runtime environment configuration, such as the resource group information.
 	RuntimeResource *UpdateTaskAsyncRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The runtime script information.
+	// The information about the script to be run.
 	Script *UpdateTaskAsyncRequestScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The list of data asset tags to attach.
+	// The list of data asset tags to be bound.
 	Tags []*UpdateTaskAsyncRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The timeout period defined in the scheduling configuration.
 	//
@@ -149,7 +146,7 @@ type UpdateTaskAsyncRequest struct {
 	//
 	// 1
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method of the node.
+	// The trigger mode of the node.
 	Trigger *UpdateTaskAsyncRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -385,7 +382,7 @@ func (s *UpdateTaskAsyncRequest) Validate() error {
 }
 
 type UpdateTaskAsyncRequestDataSource struct {
-	// The data source name.
+	// The name of the data source.
 	//
 	// example:
 	//
@@ -431,13 +428,13 @@ type UpdateTaskAsyncRequestDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream node. This field is returned for same-cycle dependencies when the input content is configured.
+	// The output identifier of the upstream node. This field is returned when the dependency is a same-cycle dependency and the input content is set.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ID of the upstream node. This field is returned for cross-cycle dependencies on other nodes and for same-cycle dependencies when no input content is configured. It is not returned in other cases.
+	// The ID of the upstream node. This field is returned when the dependency is `CrossCycleDependsOnOtherNode` or `Normal` and the input content is not set. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -520,19 +517,19 @@ func (s *UpdateTaskAsyncRequestInputs) Validate() error {
 }
 
 type UpdateTaskAsyncRequestInputsVariables struct {
-	// The variable name.
+	// The name of the variable.
 	//
 	// example:
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The variable type. Valid values:
+	// The type. Valid values:
 	//
 	// - Constant: constant.
 	//
-	// - PassThrough: output of a pass-through parameter node.
+	// - PassThrough: output of a parameter node.
 	//
-	// - System: system variable.
+	// - System: variable.
 	//
 	// - NodeOutput: script output.
 	//
@@ -542,7 +539,7 @@ type UpdateTaskAsyncRequestInputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The variable value.
+	// The value of the variable.
 	//
 	// example:
 	//
@@ -675,19 +672,19 @@ func (s *UpdateTaskAsyncRequestOutputsTaskOutputs) Validate() error {
 }
 
 type UpdateTaskAsyncRequestOutputsVariables struct {
-	// The variable name.
+	// The name of the variable.
 	//
 	// example:
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The variable type. Valid values:
+	// The type. Valid values:
 	//
 	// - Constant: constant.
 	//
-	// - PassThrough: output of a pass-through parameter node.
+	// - PassThrough: output of a parameter node.
 	//
-	// - System: system variable.
+	// - System: variable.
 	//
 	// - NodeOutput: script output.
 	//
@@ -697,7 +694,7 @@ type UpdateTaskAsyncRequestOutputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The variable value.
+	// The value of the variable.
 	//
 	// example:
 	//
@@ -745,19 +742,19 @@ func (s *UpdateTaskAsyncRequestOutputsVariables) Validate() error {
 }
 
 type UpdateTaskAsyncRequestRuntimeResource struct {
-	// The CU consumption for the node runtime configuration.
+	// The number of compute units (CUs) consumed by the node runtime configuration.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The image ID for the node runtime configuration.
+	// The image ID of the node runtime configuration.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the schedule resource group for the node runtime configuration.
+	// The identifier of the scheduling resource group for the node runtime configuration.
 	//
 	// example:
 	//
@@ -807,7 +804,7 @@ func (s *UpdateTaskAsyncRequestRuntimeResource) Validate() error {
 type UpdateTaskAsyncRequestScript struct {
 	// Deprecated
 	//
-	// The script content.
+	// The content of the script.
 	//
 	// example:
 	//
@@ -899,44 +896,43 @@ func (s *UpdateTaskAsyncRequestTags) Validate() error {
 }
 
 type UpdateTaskAsyncRequestTrigger struct {
-	// The cron expression. This parameter takes effect when Type is set to Scheduler.
+	// The cron expression. This parameter takes effect when the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The scheduling cycle type. This parameter takes effect when Type is set to Scheduler and the cron expression specifies a timed scheduling at a specific hour. Default value: Daily. Valid values:
+	// The cycle type. This parameter takes effect when Type is set to Scheduler and the cron expression specifies scheduling at a specific hour. Valid values:
 	//
+	// - Daily: Specifies daily scheduling.
 	//
+	// - NotDaily: Specifies hourly scheduling.
 	//
-	//
-	// - Daily: daily scheduling.
-	//
-	// - NotDaily: hourly scheduling.
+	// Default value: Daily.
 	//
 	// example:
 	//
 	// Daily
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The time when the periodic trigger expires. This parameter takes effect when Type is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
+	// The expiration time of the periodic trigger. This parameter takes effect when the type parameter is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The run mode when the trigger fires. This parameter takes effect when Type is set to Scheduler. Valid values:
+	// The running mode when the node is triggered. This parameter takes effect when the type parameter is set to Scheduler. Valid values:
 	//
 	// - Pause: paused.
 	//
 	// - Skip: dry run.
 	//
-	// - Normal: normal run.
+	// - Normal: normal running.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The time at which the scheduled trigger takes effect. This parameter takes effect when Type is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
+	// The start time of the recurring trigger. This parameter takes effect when the type parameter is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
@@ -944,13 +940,13 @@ type UpdateTaskAsyncRequestTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: scheduled periodic trigger.
+	// - Scheduler: triggered by a scheduling cycle.
 	//
-	// - Manual: manual trigger.
+	// - Manual: manually triggered.
 	//
 	// example:
 	//
-	// BySchedule
+	// Scheduler
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

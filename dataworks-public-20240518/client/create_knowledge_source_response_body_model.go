@@ -1,0 +1,827 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateKnowledgeSourceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCode(v string) *CreateKnowledgeSourceResponseBody
+	GetCode() *string
+	SetData(v *CreateKnowledgeSourceResponseBodyData) *CreateKnowledgeSourceResponseBody
+	GetData() *CreateKnowledgeSourceResponseBodyData
+	SetMessage(v string) *CreateKnowledgeSourceResponseBody
+	GetMessage() *string
+	SetRequestId(v string) *CreateKnowledgeSourceResponseBody
+	GetRequestId() *string
+	SetSuccess(v bool) *CreateKnowledgeSourceResponseBody
+	GetSuccess() *bool
+}
+
+type CreateKnowledgeSourceResponseBody struct {
+	// The business error code. It is used to determine the error type when the request fails.
+	//
+	// example:
+	//
+	// InvalidParameter
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data returned upon success.
+	Data *CreateKnowledgeSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned when the request fails.
+	//
+	// example:
+	//
+	// The request parameters are invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier of the request, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateKnowledgeSourceResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBody) GetCode() *string {
+	return s.Code
+}
+
+func (s *CreateKnowledgeSourceResponseBody) GetData() *CreateKnowledgeSourceResponseBodyData {
+	return s.Data
+}
+
+func (s *CreateKnowledgeSourceResponseBody) GetMessage() *string {
+	return s.Message
+}
+
+func (s *CreateKnowledgeSourceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CreateKnowledgeSourceResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
+func (s *CreateKnowledgeSourceResponseBody) SetCode(v string) *CreateKnowledgeSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBody) SetData(v *CreateKnowledgeSourceResponseBodyData) *CreateKnowledgeSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBody) SetMessage(v string) *CreateKnowledgeSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBody) SetRequestId(v string) *CreateKnowledgeSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBody) SetSuccess(v bool) *CreateKnowledgeSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateKnowledgeSourceResponseBodyData struct {
+	// The creation time. The value is a timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1790200000000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator. This field is written by the server.
+	//
+	// example:
+	//
+	// 1000000000000000
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// This field is present only when Type is DATA_SOURCE.
+	DataSource *CreateKnowledgeSourceResponseBodyDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description of the source’s purpose. This field is optional.
+	//
+	// example:
+	//
+	// Sales metrics and policy documents
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This field is present only when Type is DOCUMENT.
+	Document *CreateKnowledgeSourceResponseBodyDataDocument `json:"Document,omitempty" xml:"Document,omitempty" type:"Struct"`
+	// The ID of the knowledge base to which the source belongs. The source cannot be migrated to another knowledge base after creation.
+	//
+	// example:
+	//
+	// 12345678-1234-4234-8234-123456789abc
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The last modification time. The value is a timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1790200300000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name used to identify the source.
+	//
+	// example:
+	//
+	// Sales topic project
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This field is present only when Type is PROJECT.
+	Project *CreateKnowledgeSourceResponseBodyDataProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	// The stable source ID generated by the service.
+	//
+	// example:
+	//
+	// src-001
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the source. Valid values: PROJECT (workspace), DATA_SOURCE (DataWorks data source), and DOCUMENT (external document source).
+	//
+	// example:
+	//
+	// PROJECT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetCreateTime() *int64 {
+	return s.CreateTime
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetCreateUser() *string {
+	return s.CreateUser
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetDataSource() *CreateKnowledgeSourceResponseBodyDataDataSource {
+	return s.DataSource
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetDescription() *string {
+	return s.Description
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetDocument() *CreateKnowledgeSourceResponseBodyDataDocument {
+	return s.Document
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetKnowledgeBaseId() *string {
+	return s.KnowledgeBaseId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetModifyTime() *int64 {
+	return s.ModifyTime
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetProject() *CreateKnowledgeSourceResponseBodyDataProject {
+	return s.Project
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetSourceId() *string {
+	return s.SourceId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetCreateTime(v int64) *CreateKnowledgeSourceResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetCreateUser(v string) *CreateKnowledgeSourceResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetDataSource(v *CreateKnowledgeSourceResponseBodyDataDataSource) *CreateKnowledgeSourceResponseBodyData {
+	s.DataSource = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetDescription(v string) *CreateKnowledgeSourceResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetDocument(v *CreateKnowledgeSourceResponseBodyDataDocument) *CreateKnowledgeSourceResponseBodyData {
+	s.Document = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetKnowledgeBaseId(v string) *CreateKnowledgeSourceResponseBodyData {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetModifyTime(v int64) *CreateKnowledgeSourceResponseBodyData {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetName(v string) *CreateKnowledgeSourceResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetProject(v *CreateKnowledgeSourceResponseBodyDataProject) *CreateKnowledgeSourceResponseBodyData {
+	s.Project = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetSourceId(v string) *CreateKnowledgeSourceResponseBodyData {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) SetType(v string) *CreateKnowledgeSourceResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyData) Validate() error {
+	if s.DataSource != nil {
+		if err := s.DataSource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Document != nil {
+		if err := s.Document.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Project != nil {
+		if err := s.Project.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateKnowledgeSourceResponseBodyDataDataSource struct {
+	// The ID of the DataWorks data source. The server uses this ID to resolve the associated workspace, environment, and data source type.
+	//
+	// example:
+	//
+	// 12345
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDataSource) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDataSource) GetDataSourceId() *int64 {
+	return s.DataSourceId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDataSource) SetDataSourceId(v int64) *CreateKnowledgeSourceResponseBodyDataDataSource {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDataSource) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocument struct {
+	// The type of the connector. Valid values: DINGTALK, FEISHU, LARK, WECOM, and YUQUE. The connector type cannot be changed after creation.
+	//
+	// example:
+	//
+	// WECOM
+	ConnectorType *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
+	// Indicates whether the credentials required for the connector are configured. This field is read-only and does not return the credential content or ciphertext.
+	CredentialConfigured *bool `json:"CredentialConfigured,omitempty" xml:"CredentialConfigured,omitempty"`
+	// The DingTalk configuration. This parameter is available only when ConnectorType is set to DINGTALK.
+	DingTalk *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk `json:"DingTalk,omitempty" xml:"DingTalk,omitempty" type:"Struct"`
+	// The Feishu configuration. This parameter is available only when ConnectorType is set to FEISHU.
+	Feishu *CreateKnowledgeSourceResponseBodyDataDocumentFeishu `json:"Feishu,omitempty" xml:"Feishu,omitempty" type:"Struct"`
+	// The Lark configuration. This parameter is available only when ConnectorType is set to LARK.
+	Lark *CreateKnowledgeSourceResponseBodyDataDocumentLark `json:"Lark,omitempty" xml:"Lark,omitempty" type:"Struct"`
+	// The WeCom configuration. This parameter is available only when ConnectorType is set to WECOM.
+	WeCom *CreateKnowledgeSourceResponseBodyDataDocumentWeCom `json:"WeCom,omitempty" xml:"WeCom,omitempty" type:"Struct"`
+	// The Yuque configuration. This parameter is available only when ConnectorType is set to YUQUE.
+	Yuque *CreateKnowledgeSourceResponseBodyDataDocumentYuque `json:"Yuque,omitempty" xml:"Yuque,omitempty" type:"Struct"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocument) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocument) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetConnectorType() *string {
+	return s.ConnectorType
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetCredentialConfigured() *bool {
+	return s.CredentialConfigured
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetDingTalk() *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk {
+	return s.DingTalk
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetFeishu() *CreateKnowledgeSourceResponseBodyDataDocumentFeishu {
+	return s.Feishu
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetLark() *CreateKnowledgeSourceResponseBodyDataDocumentLark {
+	return s.Lark
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetWeCom() *CreateKnowledgeSourceResponseBodyDataDocumentWeCom {
+	return s.WeCom
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) GetYuque() *CreateKnowledgeSourceResponseBodyDataDocumentYuque {
+	return s.Yuque
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetConnectorType(v string) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.ConnectorType = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetCredentialConfigured(v bool) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.CredentialConfigured = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetDingTalk(v *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.DingTalk = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetFeishu(v *CreateKnowledgeSourceResponseBodyDataDocumentFeishu) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.Feishu = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetLark(v *CreateKnowledgeSourceResponseBodyDataDocumentLark) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.Lark = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetWeCom(v *CreateKnowledgeSourceResponseBodyDataDocumentWeCom) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.WeCom = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) SetYuque(v *CreateKnowledgeSourceResponseBodyDataDocumentYuque) *CreateKnowledgeSourceResponseBodyDataDocument {
+	s.Yuque = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocument) Validate() error {
+	if s.DingTalk != nil {
+		if err := s.DingTalk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Feishu != nil {
+		if err := s.Feishu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Lark != nil {
+		if err := s.Lark.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WeCom != nil {
+		if err := s.WeCom.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Yuque != nil {
+		if err := s.Yuque.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentDingTalk struct {
+	// The ID of the Feishu or Lark application. This is not the AppSecret.
+	//
+	// example:
+	//
+	// app-001
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The URLs of the knowledge bases, spaces, or documents selected for this connector. The actual allowed scope is determined by the connector and authorization settings.
+	SourceUrls []*string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty" type:"Repeated"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) GetSourceUrls() []*string {
+	return s.SourceUrls
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) SetAppId(v string) *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) SetSourceUrls(v []*string) *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk {
+	s.SourceUrls = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentDingTalk) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentFeishu struct {
+	// The ID of the Feishu or Lark application. This is not the AppSecret.
+	//
+	// example:
+	//
+	// app-001
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The URLs of the knowledge bases, spaces, or documents selected for this connector. The actual allowed scope is determined by the connector and authorization settings.
+	SourceUrls []*string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty" type:"Repeated"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentFeishu) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentFeishu) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentFeishu) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentFeishu) GetSourceUrls() []*string {
+	return s.SourceUrls
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentFeishu) SetAppId(v string) *CreateKnowledgeSourceResponseBodyDataDocumentFeishu {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentFeishu) SetSourceUrls(v []*string) *CreateKnowledgeSourceResponseBodyDataDocumentFeishu {
+	s.SourceUrls = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentFeishu) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentLark struct {
+	// The ID of the Feishu or Lark application. This is not the AppSecret.
+	//
+	// example:
+	//
+	// app-001
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The URLs of the knowledge bases, spaces, or documents selected for this connector. The actual allowed scope is determined by the connector and authorization settings.
+	SourceUrls []*string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty" type:"Repeated"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentLark) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentLark) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentLark) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentLark) GetSourceUrls() []*string {
+	return s.SourceUrls
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentLark) SetAppId(v string) *CreateKnowledgeSourceResponseBodyDataDocumentLark {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentLark) SetSourceUrls(v []*string) *CreateKnowledgeSourceResponseBodyDataDocumentLark {
+	s.SourceUrls = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentLark) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentWeCom struct {
+	// The ID of the WeCom bot.
+	//
+	// example:
+	//
+	// bot-001
+	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// The selected shared spaces, including their identities and display names.
+	Spaces []*CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces `json:"Spaces,omitempty" xml:"Spaces,omitempty" type:"Repeated"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentWeCom) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentWeCom) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeCom) GetBotId() *string {
+	return s.BotId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeCom) GetSpaces() []*CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces {
+	return s.Spaces
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeCom) SetBotId(v string) *CreateKnowledgeSourceResponseBodyDataDocumentWeCom {
+	s.BotId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeCom) SetSpaces(v []*CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) *CreateKnowledgeSourceResponseBodyDataDocumentWeCom {
+	s.Spaces = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeCom) Validate() error {
+	if s.Spaces != nil {
+		for _, item := range s.Spaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces struct {
+	// The identity of the shared space.
+	//
+	// example:
+	//
+	// space-001
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	// The display name verified by the server. This field is not used for identity verification.
+	//
+	// example:
+	//
+	// R&D Knowledge
+	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) GetSpaceId() *string {
+	return s.SpaceId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) GetSpaceName() *string {
+	return s.SpaceName
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) SetSpaceId(v string) *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) SetSpaceName(v string) *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentWeComSpaces) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentYuque struct {
+	// The Yuque team configurations. Each team independently selects the synchronization scope.
+	Teams []*CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams `json:"Teams,omitempty" xml:"Teams,omitempty" type:"Repeated"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentYuque) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentYuque) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuque) GetTeams() []*CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams {
+	return s.Teams
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuque) SetTeams(v []*CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) *CreateKnowledgeSourceResponseBodyDataDocumentYuque {
+	s.Teams = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuque) Validate() error {
+	if s.Teams != nil {
+		for _, item := range s.Teams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams struct {
+	// The URL of the team site.
+	//
+	// example:
+	//
+	// https://www.yuque.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The URLs of the knowledge bases, spaces, or documents selected for this connector. The actual allowed scope is determined by the connector and authorization settings.
+	SourceUrls []*string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty" type:"Repeated"`
+	// The team ID verified by the server.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"TeamId,omitempty" xml:"TeamId,omitempty"`
+	// The team logon name. This is read-only display information.
+	//
+	// example:
+	//
+	// example-team
+	TeamLogin *string `json:"TeamLogin,omitempty" xml:"TeamLogin,omitempty"`
+	// The team name. This is read-only display information.
+	//
+	// example:
+	//
+	// Sample Team
+	TeamName *string `json:"TeamName,omitempty" xml:"TeamName,omitempty"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) GetHost() *string {
+	return s.Host
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) GetSourceUrls() []*string {
+	return s.SourceUrls
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) GetTeamId() *string {
+	return s.TeamId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) GetTeamLogin() *string {
+	return s.TeamLogin
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) GetTeamName() *string {
+	return s.TeamName
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) SetHost(v string) *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) SetSourceUrls(v []*string) *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams {
+	s.SourceUrls = v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) SetTeamId(v string) *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams {
+	s.TeamId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) SetTeamLogin(v string) *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams {
+	s.TeamLogin = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) SetTeamName(v string) *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams {
+	s.TeamName = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataDocumentYuqueTeams) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateKnowledgeSourceResponseBodyDataProject struct {
+	// The environment type. This parameter is optional and restricts the read environment to Dev or Prod. If this parameter is not specified, it does not mean that you have the permissions to read data from both environments.
+	//
+	// example:
+	//
+	// Prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The ID of the DataWorks workspace. This field is used to locate the source.
+	//
+	// example:
+	//
+	// 12345
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataProject) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateKnowledgeSourceResponseBodyDataProject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataProject) GetEnvType() *string {
+	return s.EnvType
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataProject) GetProjectId() *int64 {
+	return s.ProjectId
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataProject) SetEnvType(v string) *CreateKnowledgeSourceResponseBodyDataProject {
+	s.EnvType = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataProject) SetProjectId(v int64) *CreateKnowledgeSourceResponseBodyDataProject {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateKnowledgeSourceResponseBodyDataProject) Validate() error {
+	return dara.Validate(s)
+}

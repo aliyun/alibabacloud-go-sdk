@@ -24,7 +24,7 @@ type ListCrossProjectDeploymentCandidatesResponseBody struct {
 	//
 	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23","PageNumber":1,"PageSize":10,"TotalCount":1,"DeploymentCandidates":[{"ObjectId":"1","ObjectType":"ODPS_SQL","ObjectName":"object-1","ObjectVersion":"7","ChangeType":"ADD","CommitUser":"operator","CommitTime":1788739200000}]}
 	Data *ListCrossProjectDeploymentCandidatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to locate and troubleshoot the API call.
+	// The request ID, which is used to locate and troubleshoot the API call.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListCrossProjectDeploymentCandidatesResponseBody) Validate() error {
 }
 
 type ListCrossProjectDeploymentCandidatesResponseBodyData struct {
-	// The list of candidate objects in the source workspace that are available for cross-workspace deployment.
+	// The list of candidate objects in the source workspace that can be used for cross-workspace deployment.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListCrossProjectDeploymentCandidatesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *ListCrossProjectDeploymentCandidatesResponseBodyData) Validate() error 
 }
 
 type ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates struct {
-	// The change type.
+	// The type of the change.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates st
 	//
 	// 1788739200000
 	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
-	// The submitter.
+	// The committer.
 	//
 	// example:
 	//
 	// operator
 	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
-	// The candidate object ID.
+	// The ID of the candidate object.
 	//
 	// example:
 	//

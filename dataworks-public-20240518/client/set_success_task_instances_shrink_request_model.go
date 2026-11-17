@@ -22,7 +22,7 @@ type SetSuccessTaskInstancesShrinkRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of task instance IDs.
+	// The list of node instance IDs.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 }
 

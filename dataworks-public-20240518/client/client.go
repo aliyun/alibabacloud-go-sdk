@@ -210,7 +210,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Terminates a cross-workspace deployment pipeline run.
+// Stops the cross-workspace deployment pipeline.
 //
 // @param request - AbolishCrossProjectPipelineRunRequest
 //
@@ -262,7 +262,7 @@ func (client *Client) AbolishCrossProjectPipelineRunWithOptions(request *Abolish
 
 // Summary:
 //
-// Terminates a cross-workspace deployment pipeline run.
+// Stops the cross-workspace deployment pipeline.
 //
 // @param request - AbolishCrossProjectPipelineRunRequest
 //
@@ -423,6 +423,80 @@ func (client *Client) AddEntityIntoMetaCollection(request *AddEntityIntoMetaColl
 	runtime := &dara.RuntimeOptions{}
 	_result = &AddEntityIntoMetaCollectionResponse{}
 	_body, _err := client.AddEntityIntoMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds an administrator to a specified knowledge base.
+//
+// Description:
+//
+// Adds an administrator. Only the owner or an administrator of the knowledge base can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - AddKnowledgeBaseAdministratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddKnowledgeBaseAdministratorResponse
+func (client *Client) AddKnowledgeBaseAdministratorWithOptions(request *AddKnowledgeBaseAdministratorRequest, runtime *dara.RuntimeOptions) (_result *AddKnowledgeBaseAdministratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdministratorUserId) {
+		body["AdministratorUserId"] = request.AdministratorUserId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddKnowledgeBaseAdministrator"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddKnowledgeBaseAdministratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds an administrator to a specified knowledge base.
+//
+// Description:
+//
+// Adds an administrator. Only the owner or an administrator of the knowledge base can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - AddKnowledgeBaseAdministratorRequest
+//
+// @return AddKnowledgeBaseAdministratorResponse
+func (client *Client) AddKnowledgeBaseAdministrator(request *AddKnowledgeBaseAdministratorRequest) (_result *AddKnowledgeBaseAdministratorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddKnowledgeBaseAdministratorResponse{}
+	_body, _err := client.AddKnowledgeBaseAdministratorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2541,7 +2615,7 @@ func (client *Client) CreateCrawler(request *CreateCrawlerRequest) (_result *Cre
 //
 // Description:
 //
-// Creates and solidifies a cross-project deployment pipeline. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Sub-objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call the ListCrossProjectDeploymentCandidates operation to query candidate objects. After the pipeline is created, call the ExecCrossProjectPipelineRun operation to execute the deployment, and call the GetCrossProjectPipelineRun operation to query the status.
+// Creates and finalizes a cross-workspace deployment pipeline. The ObjectIds parameter must contain one and only one top-level object ID from the source workspace. Sub-objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call ListCrossProjectDeploymentCandidates to query candidate objects. After creation, call ExecCrossProjectPipelineRun to execute the deployment, and call GetCrossProjectPipelineRun to query the status.
 //
 // @param tmpReq - CreateCrossProjectPipelineRunRequest
 //
@@ -2611,7 +2685,7 @@ func (client *Client) CreateCrossProjectPipelineRunWithOptions(tmpReq *CreateCro
 //
 // Description:
 //
-// Creates and solidifies a cross-project deployment pipeline. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Sub-objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call the ListCrossProjectDeploymentCandidates operation to query candidate objects. After the pipeline is created, call the ExecCrossProjectPipelineRun operation to execute the deployment, and call the GetCrossProjectPipelineRun operation to query the status.
+// Creates and finalizes a cross-workspace deployment pipeline. The ObjectIds parameter must contain one and only one top-level object ID from the source workspace. Sub-objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call ListCrossProjectDeploymentCandidates to query candidate objects. After creation, call ExecCrossProjectPipelineRun to execute the deployment, and call GetCrossProjectPipelineRun to query the status.
 //
 // @param request - CreateCrossProjectPipelineRunRequest
 //
@@ -4826,6 +4900,596 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateImageResponse{}
 	_body, _err := client.CreateImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a knowledge base and returns the knowledge base ID, name, ownership, and the access role of the current caller. This operation does not automatically add sources, build knowledge, or generate retrieval results. You can continue to configure knowledge sources and build tasks. The tenant and owner of the knowledge base are determined by the current caller identity. You do not need to specify a workspace or resource group.
+//
+// Description:
+//
+// Creates a knowledge base. The tenant and caller identity are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBaseWithOptions(request *CreateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBase"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a knowledge base and returns the knowledge base ID, name, ownership, and the access role of the current caller. This operation does not automatically add sources, build knowledge, or generate retrieval results. You can continue to configure knowledge sources and build tasks. The tenant and owner of the knowledge base are determined by the current caller identity. You do not need to specify a workspace or resource group.
+//
+// Description:
+//
+// Creates a knowledge base. The tenant and caller identity are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (_result *CreateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CreateKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a repeatable knowledge build task and configures the input scope, trigger mode, and runtime resources.
+//
+// Description:
+//
+// Creates a knowledge base build task. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param tmpReq - CreateKnowledgeBaseBuildTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseBuildTaskResponse
+func (client *Client) CreateKnowledgeBaseBuildTaskWithOptions(tmpReq *CreateKnowledgeBaseBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseBuildTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKnowledgeBaseBuildTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Input) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, dara.String("Input"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RuntimeResource) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, dara.String("RuntimeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Trigger) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, dara.String("Trigger"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ContentLocale) {
+		body["ContentLocale"] = request.ContentLocale
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InputShrink) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LlmModel) {
+		body["LlmModel"] = request.LlmModel
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuntimeResourceShrink) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	if !dara.IsNil(request.TriggerShrink) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBaseBuildTask"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a repeatable knowledge build task and configures the input scope, trigger mode, and runtime resources.
+//
+// Description:
+//
+// Creates a knowledge base build task. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeBaseBuildTaskRequest
+//
+// @return CreateKnowledgeBaseBuildTaskResponse
+func (client *Client) CreateKnowledgeBaseBuildTask(request *CreateKnowledgeBaseBuildTaskRequest) (_result *CreateKnowledgeBaseBuildTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.CreateKnowledgeBaseBuildTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a build instance based on the current configuration of a specified task, and freezes the input and runtime configurations for this execution.
+//
+// Description:
+//
+// Creates a knowledge base build task instance. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeBaseBuildTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) CreateKnowledgeBaseBuildTaskInstanceWithOptions(request *CreateKnowledgeBaseBuildTaskInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBaseBuildTaskInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a build instance based on the current configuration of a specified task, and freezes the input and runtime configurations for this execution.
+//
+// Description:
+//
+// Creates a knowledge base build task instance. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeBaseBuildTaskInstanceRequest
+//
+// @return CreateKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) CreateKnowledgeBaseBuildTaskInstance(request *CreateKnowledgeBaseBuildTaskInstanceRequest) (_result *CreateKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.CreateKnowledgeBaseBuildTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a document object in a knowledge base by using the document body or an uploaded file.
+//
+// Description:
+//
+// Creates a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param tmpReq - CreateKnowledgeObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeObjectResponse
+func (client *Client) CreateKnowledgeObjectWithOptions(tmpReq *CreateKnowledgeObjectRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKnowledgeObjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Content) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, dara.String("Content"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ContentShrink) {
+		body["Content"] = request.ContentShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UploadId) {
+		body["UploadId"] = request.UploadId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeObject"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a document object in a knowledge base by using the document body or an uploaded file.
+//
+// Description:
+//
+// Creates a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeObjectRequest
+//
+// @return CreateKnowledgeObjectResponse
+func (client *Client) CreateKnowledgeObject(request *CreateKnowledgeObjectRequest) (_result *CreateKnowledgeObjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeObjectResponse{}
+	_body, _err := client.CreateKnowledgeObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Requests a file upload session and a temporary direct upload URL without creating a knowledge object or starting a build.
+//
+// Description:
+//
+// Creates an upload session for a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeObjectUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeObjectUploadResponse
+func (client *Client) CreateKnowledgeObjectUploadWithOptions(request *CreateKnowledgeObjectUploadRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeObjectUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ContentMd5) {
+		body["ContentMd5"] = request.ContentMd5
+	}
+
+	if !dara.IsNil(request.ContentSha256) {
+		body["ContentSha256"] = request.ContentSha256
+	}
+
+	if !dara.IsNil(request.ContentType) {
+		body["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.SizeBytes) {
+		body["SizeBytes"] = request.SizeBytes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeObjectUpload"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeObjectUploadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Requests a file upload session and a temporary direct upload URL without creating a knowledge object or starting a build.
+//
+// Description:
+//
+// Creates an upload session for a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - CreateKnowledgeObjectUploadRequest
+//
+// @return CreateKnowledgeObjectUploadResponse
+func (client *Client) CreateKnowledgeObjectUpload(request *CreateKnowledgeObjectUploadRequest) (_result *CreateKnowledgeObjectUploadResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeObjectUploadResponse{}
+	_body, _err := client.CreateKnowledgeObjectUploadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers projects, data sources, or external document sources that can be referenced by a knowledge base.
+//
+// Description:
+//
+// Manages knowledge sources for a knowledge base. The identity is determined by the POP context, and credentials are not returned in query responses.
+//
+// @param tmpReq - CreateKnowledgeSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeSourceResponse
+func (client *Client) CreateKnowledgeSourceWithOptions(tmpReq *CreateKnowledgeSourceRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKnowledgeSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataSource) {
+		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, dara.String("DataSource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Document) {
+		request.DocumentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Document, dara.String("Document"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Project) {
+		request.ProjectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Project, dara.String("Project"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DataSourceShrink) {
+		body["DataSource"] = request.DataSourceShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DocumentShrink) {
+		body["Document"] = request.DocumentShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectShrink) {
+		body["Project"] = request.ProjectShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeSource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers projects, data sources, or external document sources that can be referenced by a knowledge base.
+//
+// Description:
+//
+// Manages knowledge sources for a knowledge base. The identity is determined by the POP context, and credentials are not returned in query responses.
+//
+// @param request - CreateKnowledgeSourceRequest
+//
+// @return CreateKnowledgeSourceResponse
+func (client *Client) CreateKnowledgeSource(request *CreateKnowledgeSourceRequest) (_result *CreateKnowledgeSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeSourceResponse{}
+	_body, _err := client.CreateKnowledgeSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8560,6 +9224,10 @@ func (client *Client) DeleteDataQualityEvaluationTask(request *DeleteDataQuality
 //
 // Deletes a data quality monitoring rule.
 //
+// Description:
+//
+// 需要购买DataWorks基础版及以上版本才能使用
+//
 // @param request - DeleteDataQualityRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8607,6 +9275,10 @@ func (client *Client) DeleteDataQualityRuleWithOptions(request *DeleteDataQualit
 // Summary:
 //
 // Deletes a data quality monitoring rule.
+//
+// Description:
+//
+// 需要购买DataWorks基础版及以上版本才能使用
 //
 // @param request - DeleteDataQualityRuleRequest
 //
@@ -9418,6 +10090,298 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteImageResponse{}
 	_body, _err := client.DeleteImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified knowledge base and returns the deleted status upon success.
+//
+// Description:
+//
+// Deletes a knowledge base. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - DeleteKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBaseWithOptions(request *DeleteKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBase"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified knowledge base and returns the deleted status upon success.
+//
+// Description:
+//
+// Deletes a knowledge base. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - DeleteKnowledgeBaseRequest
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.DeleteKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified knowledge base build task.
+//
+// Description:
+//
+// Deletes a knowledge base build task. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - DeleteKnowledgeBaseBuildTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseBuildTaskResponse
+func (client *Client) DeleteKnowledgeBaseBuildTaskWithOptions(request *DeleteKnowledgeBaseBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseBuildTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBaseBuildTask"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified knowledge base build task.
+//
+// Description:
+//
+// Deletes a knowledge base build task. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - DeleteKnowledgeBaseBuildTaskRequest
+//
+// @return DeleteKnowledgeBaseBuildTaskResponse
+func (client *Client) DeleteKnowledgeBaseBuildTask(request *DeleteKnowledgeBaseBuildTaskRequest) (_result *DeleteKnowledgeBaseBuildTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.DeleteKnowledgeBaseBuildTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a document object from a knowledge base or archives a semantic model object.
+//
+// Description:
+//
+// Deletes a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - DeleteKnowledgeObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeObjectResponse
+func (client *Client) DeleteKnowledgeObjectWithOptions(request *DeleteKnowledgeObjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.KnowledgeObjectId) {
+		body["KnowledgeObjectId"] = request.KnowledgeObjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeObject"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a document object from a knowledge base or archives a semantic model object.
+//
+// Description:
+//
+// Deletes a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - DeleteKnowledgeObjectRequest
+//
+// @return DeleteKnowledgeObjectResponse
+func (client *Client) DeleteKnowledgeObject(request *DeleteKnowledgeObjectRequest) (_result *DeleteKnowledgeObjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteKnowledgeObjectResponse{}
+	_body, _err := client.DeleteKnowledgeObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a knowledge source from a specified knowledge base.
+//
+// Description:
+//
+// Manages knowledge sources in a knowledge base. The identity is determined by the POP context, and credentials are not returned in the response.
+//
+// @param request - DeleteKnowledgeSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeSourceResponse
+func (client *Client) DeleteKnowledgeSourceWithOptions(request *DeleteKnowledgeSourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["SourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeSource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a knowledge source from a specified knowledge base.
+//
+// Description:
+//
+// Manages knowledge sources in a knowledge base. The identity is determined by the POP context, and credentials are not returned in the response.
+//
+// @param request - DeleteKnowledgeSourceRequest
+//
+// @return DeleteKnowledgeSourceResponse
+func (client *Client) DeleteKnowledgeSource(request *DeleteKnowledgeSourceRequest) (_result *DeleteKnowledgeSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteKnowledgeSourceResponse{}
+	_body, _err := client.DeleteKnowledgeSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15536,6 +16500,306 @@ func (client *Client) GetKnowledgeBase(request *GetKnowledgeBaseRequest) (_resul
 
 // Summary:
 //
+// Retrieves the current configuration of a specified knowledge base build task.
+//
+// Description:
+//
+// Reads a knowledge base build task or instance. The tenant and caller identity are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeBaseBuildTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseBuildTaskResponse
+func (client *Client) GetKnowledgeBaseBuildTaskWithOptions(request *GetKnowledgeBaseBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseBuildTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBaseBuildTask"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current configuration of a specified knowledge base build task.
+//
+// Description:
+//
+// Reads a knowledge base build task or instance. The tenant and caller identity are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeBaseBuildTaskRequest
+//
+// @return GetKnowledgeBaseBuildTaskResponse
+func (client *Client) GetKnowledgeBaseBuildTask(request *GetKnowledgeBaseBuildTaskRequest) (_result *GetKnowledgeBaseBuildTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.GetKnowledgeBaseBuildTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution status, input and configuration snapshots, and failure details for a build.
+//
+// Description:
+//
+// Retrieves a knowledge base build task or instance. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeBaseBuildTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) GetKnowledgeBaseBuildTaskInstanceWithOptions(request *GetKnowledgeBaseBuildTaskInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskInstanceId) {
+		body["TaskInstanceId"] = request.TaskInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBaseBuildTaskInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution status, input and configuration snapshots, and failure details for a build.
+//
+// Description:
+//
+// Retrieves a knowledge base build task or instance. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeBaseBuildTaskInstanceRequest
+//
+// @return GetKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) GetKnowledgeBaseBuildTaskInstance(request *GetKnowledgeBaseBuildTaskInstanceRequest) (_result *GetKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.GetKnowledgeBaseBuildTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the original artifact information and temporary download URL of a successful build.
+//
+// Description:
+//
+// Retrieves the temporary download link for the original artifact package of a successful build instance. The model YAML is obtained through the knowledge object API and is not included in the TGZ result of this API.
+//
+// @param request - GetKnowledgeBaseBuildTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseBuildTaskResultResponse
+func (client *Client) GetKnowledgeBaseBuildTaskResultWithOptions(request *GetKnowledgeBaseBuildTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseBuildTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskInstanceId) {
+		body["TaskInstanceId"] = request.TaskInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBaseBuildTaskResult"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseBuildTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the original artifact information and temporary download URL of a successful build.
+//
+// Description:
+//
+// Retrieves the temporary download link for the original artifact package of a successful build instance. The model YAML is obtained through the knowledge object API and is not included in the TGZ result of this API.
+//
+// @param request - GetKnowledgeBaseBuildTaskResultRequest
+//
+// @return GetKnowledgeBaseBuildTaskResultResponse
+func (client *Client) GetKnowledgeBaseBuildTaskResult(request *GetKnowledgeBaseBuildTaskResultRequest) (_result *GetKnowledgeBaseBuildTaskResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKnowledgeBaseBuildTaskResultResponse{}
+	_body, _err := client.GetKnowledgeBaseBuildTaskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current content and available download URLs of a document or semantic model.
+//
+// Description:
+//
+// Retrieves a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeObjectResponse
+func (client *Client) GetKnowledgeObjectWithOptions(request *GetKnowledgeObjectRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.KnowledgeObjectId) {
+		body["KnowledgeObjectId"] = request.KnowledgeObjectId
+	}
+
+	if !dara.IsNil(request.VersionNo) {
+		body["VersionNo"] = request.VersionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeObject"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current content and available download URLs of a document or semantic model.
+//
+// Description:
+//
+// Retrieves a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - GetKnowledgeObjectRequest
+//
+// @return GetKnowledgeObjectResponse
+func (client *Client) GetKnowledgeObject(request *GetKnowledgeObjectRequest) (_result *GetKnowledgeObjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKnowledgeObjectResponse{}
+	_body, _err := client.GetKnowledgeObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the current details of a single knowledge point, supporting local graphs, topic pages, and knowledge content.
 //
 // Description:
@@ -15613,6 +16877,80 @@ func (client *Client) GetKnowledgePoint(request *GetKnowledgePointRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetKnowledgePointResponse{}
 	_body, _err := client.GetKnowledgePointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current configuration of a knowledge source without returning connector credentials.
+//
+// Description:
+//
+// Manages knowledge sources for a knowledge base. The identity is determined by the POP context, and credentials are not returned in the query response.
+//
+// @param request - GetKnowledgeSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeSourceResponse
+func (client *Client) GetKnowledgeSourceWithOptions(request *GetKnowledgeSourceRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["SourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeSource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current configuration of a knowledge source without returning connector credentials.
+//
+// Description:
+//
+// Manages knowledge sources for a knowledge base. The identity is determined by the POP context, and credentials are not returned in the query response.
+//
+// @param request - GetKnowledgeSourceRequest
+//
+// @return GetKnowledgeSourceResponse
+func (client *Client) GetKnowledgeSource(request *GetKnowledgeSourceRequest) (_result *GetKnowledgeSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKnowledgeSourceResponse{}
+	_body, _err := client.GetKnowledgeSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18018,6 +19356,84 @@ func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (
 
 // Summary:
 //
+// Grants a specified user retrieval access to a knowledge base.
+//
+// Description:
+//
+// Grants retrieval permissions to a user. Only the knowledge base owner or administrator can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - GrantKnowledgeBaseRetrievalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantKnowledgeBaseRetrievalResponse
+func (client *Client) GrantKnowledgeBaseRetrievalWithOptions(request *GrantKnowledgeBaseRetrievalRequest, runtime *dara.RuntimeOptions) (_result *GrantKnowledgeBaseRetrievalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.PrincipalId) {
+		body["PrincipalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GrantKnowledgeBaseRetrieval"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GrantKnowledgeBaseRetrievalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Grants a specified user retrieval access to a knowledge base.
+//
+// Description:
+//
+// Grants retrieval permissions to a user. Only the knowledge base owner or administrator can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - GrantKnowledgeBaseRetrievalRequest
+//
+// @return GrantKnowledgeBaseRetrievalResponse
+func (client *Client) GrantKnowledgeBaseRetrieval(request *GrantKnowledgeBaseRetrievalRequest) (_result *GrantKnowledgeBaseRetrievalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GrantKnowledgeBaseRetrievalResponse{}
+	_body, _err := client.GrantKnowledgeBaseRetrievalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Assigns roles to members in a workspace.
 //
 // Description:
@@ -19912,7 +21328,7 @@ func (client *Client) ListCrawlers(request *ListCrawlersRequest) (_result *ListC
 
 // Summary:
 //
-// Queries cross-workspace deployment candidates.
+// Queries candidate objects for cross-workspace deployment.
 //
 // @param request - ListCrossProjectDeploymentCandidatesRequest
 //
@@ -19996,7 +21412,7 @@ func (client *Client) ListCrossProjectDeploymentCandidatesWithOptions(request *L
 
 // Summary:
 //
-// Queries cross-workspace deployment candidates.
+// Queries candidate objects for cross-workspace deployment.
 //
 // @param request - ListCrossProjectDeploymentCandidatesRequest
 //
@@ -23195,7 +24611,327 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Queries the knowledge bases that the current caller has permission to view in a specified region by using paging.
+// Lists administrators of a specified knowledge base with pagination.
+//
+// Description:
+//
+// Lists the administrators. Only the owner or administrators of the knowledge base can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseAdministratorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBaseAdministratorsResponse
+func (client *Client) ListKnowledgeBaseAdministratorsWithOptions(request *ListKnowledgeBaseAdministratorsRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBaseAdministratorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBaseAdministrators"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBaseAdministratorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists administrators of a specified knowledge base with pagination.
+//
+// Description:
+//
+// Lists the administrators. Only the owner or administrators of the knowledge base can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseAdministratorsRequest
+//
+// @return ListKnowledgeBaseAdministratorsResponse
+func (client *Client) ListKnowledgeBaseAdministrators(request *ListKnowledgeBaseAdministratorsRequest) (_result *ListKnowledgeBaseAdministratorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeBaseAdministratorsResponse{}
+	_body, _err := client.ListKnowledgeBaseAdministratorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists knowledge base build task instances and their run statuses with pagination.
+//
+// Description:
+//
+// Reads knowledge base build tasks or instances. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseBuildTaskInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBaseBuildTaskInstancesResponse
+func (client *Client) ListKnowledgeBaseBuildTaskInstancesWithOptions(request *ListKnowledgeBaseBuildTaskInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBaseBuildTaskInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBaseBuildTaskInstances"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBaseBuildTaskInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists knowledge base build task instances and their run statuses with pagination.
+//
+// Description:
+//
+// Reads knowledge base build tasks or instances. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseBuildTaskInstancesRequest
+//
+// @return ListKnowledgeBaseBuildTaskInstancesResponse
+func (client *Client) ListKnowledgeBaseBuildTaskInstances(request *ListKnowledgeBaseBuildTaskInstancesRequest) (_result *ListKnowledgeBaseBuildTaskInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeBaseBuildTaskInstancesResponse{}
+	_body, _err := client.ListKnowledgeBaseBuildTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the build tasks for a specified knowledge base with pagination.
+//
+// Description:
+//
+// Reads knowledge base build tasks or instances. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseBuildTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBaseBuildTasksResponse
+func (client *Client) ListKnowledgeBaseBuildTasksWithOptions(request *ListKnowledgeBaseBuildTasksRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBaseBuildTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBaseBuildTasks"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBaseBuildTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the build tasks for a specified knowledge base with pagination.
+//
+// Description:
+//
+// Reads knowledge base build tasks or instances. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseBuildTasksRequest
+//
+// @return ListKnowledgeBaseBuildTasksResponse
+func (client *Client) ListKnowledgeBaseBuildTasks(request *ListKnowledgeBaseBuildTasksRequest) (_result *ListKnowledgeBaseBuildTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeBaseBuildTasksResponse{}
+	_body, _err := client.ListKnowledgeBaseBuildTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists retrieval grants for a specified knowledge base with pagination.
+//
+// Description:
+//
+// Lists user retrieval authorizations. Only the knowledge base owner or administrator can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseRetrievalGrantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBaseRetrievalGrantsResponse
+func (client *Client) ListKnowledgeBaseRetrievalGrantsWithOptions(request *ListKnowledgeBaseRetrievalGrantsRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBaseRetrievalGrantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBaseRetrievalGrants"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBaseRetrievalGrantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists retrieval grants for a specified knowledge base with pagination.
+//
+// Description:
+//
+// Lists user retrieval authorizations. Only the knowledge base owner or administrator can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeBaseRetrievalGrantsRequest
+//
+// @return ListKnowledgeBaseRetrievalGrantsResponse
+func (client *Client) ListKnowledgeBaseRetrievalGrants(request *ListKnowledgeBaseRetrievalGrantsRequest) (_result *ListKnowledgeBaseRetrievalGrantsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeBaseRetrievalGrantsResponse{}
+	_body, _err := client.ListKnowledgeBaseRetrievalGrantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the knowledge bases that the current caller can view in the specified region, with pagination.
 //
 // Description:
 //
@@ -23247,7 +24983,7 @@ func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesR
 
 // Summary:
 //
-// Queries the knowledge bases that the current caller has permission to view in a specified region by using paging.
+// Lists the knowledge bases that the current caller can view in the specified region, with pagination.
 //
 // Description:
 //
@@ -23260,6 +24996,88 @@ func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListKnowledgeBasesResponse{}
 	_body, _err := client.ListKnowledgeBasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists knowledge objects in a knowledge base with pagination.
+//
+// Description:
+//
+// Lists knowledge objects. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeObjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeObjectsResponse
+func (client *Client) ListKnowledgeObjectsWithOptions(request *ListKnowledgeObjectsRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeObjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeObjects"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists knowledge objects in a knowledge base with pagination.
+//
+// Description:
+//
+// Lists knowledge objects. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - ListKnowledgeObjectsRequest
+//
+// @return ListKnowledgeObjectsResponse
+func (client *Client) ListKnowledgeObjects(request *ListKnowledgeObjectsRequest) (_result *ListKnowledgeObjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeObjectsResponse{}
+	_body, _err := client.ListKnowledgeObjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23342,6 +25160,88 @@ func (client *Client) ListKnowledgePoints(request *ListKnowledgePointsRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListKnowledgePointsResponse{}
 	_body, _err := client.ListKnowledgePointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the registered knowledge sources for a specified knowledge base with pagination.
+//
+// Description:
+//
+// Manages knowledge sources in a knowledge base. The identity is determined by the POP context, and credentials are not returned in the query response.
+//
+// @param request - ListKnowledgeSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeSourcesResponse
+func (client *Client) ListKnowledgeSourcesWithOptions(request *ListKnowledgeSourcesRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeSources"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the registered knowledge sources for a specified knowledge base with pagination.
+//
+// Description:
+//
+// Manages knowledge sources in a knowledge base. The identity is determined by the POP context, and credentials are not returned in the query response.
+//
+// @param request - ListKnowledgeSourcesRequest
+//
+// @return ListKnowledgeSourcesResponse
+func (client *Client) ListKnowledgeSources(request *ListKnowledgeSourcesRequest) (_result *ListKnowledgeSourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeSourcesResponse{}
+	_body, _err := client.ListKnowledgeSourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28389,7 +30289,81 @@ func (client *Client) RemoveEntityFromMetaCollection(request *RemoveEntityFromMe
 
 // Summary:
 //
-// Removes multiple upstream dependencies of a node instance in batches.
+// Removes an administrator from a specified knowledge base.
+//
+// Description:
+//
+// Removes an administrator. Only the owner or an administrator of the knowledge base can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - RemoveKnowledgeBaseAdministratorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveKnowledgeBaseAdministratorResponse
+func (client *Client) RemoveKnowledgeBaseAdministratorWithOptions(request *RemoveKnowledgeBaseAdministratorRequest, runtime *dara.RuntimeOptions) (_result *RemoveKnowledgeBaseAdministratorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdministratorUserId) {
+		body["AdministratorUserId"] = request.AdministratorUserId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveKnowledgeBaseAdministrator"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveKnowledgeBaseAdministratorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes an administrator from a specified knowledge base.
+//
+// Description:
+//
+// Removes an administrator. Only the owner or an administrator of the knowledge base can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - RemoveKnowledgeBaseAdministratorRequest
+//
+// @return RemoveKnowledgeBaseAdministratorResponse
+func (client *Client) RemoveKnowledgeBaseAdministrator(request *RemoveKnowledgeBaseAdministratorRequest) (_result *RemoveKnowledgeBaseAdministratorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveKnowledgeBaseAdministratorResponse{}
+	_body, _err := client.RemoveKnowledgeBaseAdministratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes multiple upstream dependencies from a node instance in a single call.
 //
 // Description:
 //
@@ -28453,7 +30427,7 @@ func (client *Client) RemoveTaskInstanceDependenciesWithOptions(tmpReq *RemoveTa
 
 // Summary:
 //
-// Removes multiple upstream dependencies of a node instance in batches.
+// Removes multiple upstream dependencies from a node instance in a single call.
 //
 // Description:
 //
@@ -29207,6 +31181,162 @@ func (client *Client) RetrieveKnowledgePoints(request *RetrieveKnowledgePointsRe
 
 // Summary:
 //
+// Retries a specified build instance using the original frozen input and configuration.
+//
+// Description:
+//
+// Retries a knowledge base build task instance. The tenant and caller identity are determined by the POP authentication context.
+//
+// @param request - RetryKnowledgeBaseBuildTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) RetryKnowledgeBaseBuildTaskInstanceWithOptions(request *RetryKnowledgeBaseBuildTaskInstanceRequest, runtime *dara.RuntimeOptions) (_result *RetryKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskInstanceId) {
+		body["TaskInstanceId"] = request.TaskInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryKnowledgeBaseBuildTaskInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retries a specified build instance using the original frozen input and configuration.
+//
+// Description:
+//
+// Retries a knowledge base build task instance. The tenant and caller identity are determined by the POP authentication context.
+//
+// @param request - RetryKnowledgeBaseBuildTaskInstanceRequest
+//
+// @return RetryKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) RetryKnowledgeBaseBuildTaskInstance(request *RetryKnowledgeBaseBuildTaskInstanceRequest) (_result *RetryKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RetryKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.RetryKnowledgeBaseBuildTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a specified user’s retrieval access to a knowledge base.
+//
+// Description:
+//
+// Revokes user retrieval permissions. Only the knowledge base owner or administrator can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - RevokeKnowledgeBaseRetrievalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeKnowledgeBaseRetrievalResponse
+func (client *Client) RevokeKnowledgeBaseRetrievalWithOptions(request *RevokeKnowledgeBaseRetrievalRequest, runtime *dara.RuntimeOptions) (_result *RevokeKnowledgeBaseRetrievalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.PrincipalId) {
+		body["PrincipalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		body["PrincipalType"] = request.PrincipalType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeKnowledgeBaseRetrieval"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeKnowledgeBaseRetrievalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a specified user’s retrieval access to a knowledge base.
+//
+// Description:
+//
+// Revokes user retrieval permissions. Only the knowledge base owner or administrator can perform this operation. The caller and tenant are determined by the POP authentication context.
+//
+// @param request - RevokeKnowledgeBaseRetrievalRequest
+//
+// @return RevokeKnowledgeBaseRetrievalResponse
+func (client *Client) RevokeKnowledgeBaseRetrieval(request *RevokeKnowledgeBaseRetrievalRequest) (_result *RevokeKnowledgeBaseRetrievalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeKnowledgeBaseRetrievalResponse{}
+	_body, _err := client.RevokeKnowledgeBaseRetrievalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes roles from a workspace member.
 //
 // Description:
@@ -29745,11 +31875,11 @@ func (client *Client) RunSemanticJob(request *RunSemanticJobRequest) (_result *R
 
 // Summary:
 //
-// Marks multiple task instances as successful.
+// Marks multiple node instances as successful.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param tmpReq - SetSuccessTaskInstancesRequest
 //
@@ -29803,11 +31933,11 @@ func (client *Client) SetSuccessTaskInstancesWithOptions(tmpReq *SetSuccessTaskI
 
 // Summary:
 //
-// Marks multiple task instances as successful.
+// Marks multiple node instances as successful.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param request - SetSuccessTaskInstancesRequest
 //
@@ -30210,6 +32340,80 @@ func (client *Client) StopDIJob(request *StopDIJobRequest) (_result *StopDIJobRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopDIJobResponse{}
 	_body, _err := client.StopDIJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Requests that a specified build task instance stop and returns its current status.
+//
+// Description:
+//
+// Stops a knowledge base build task instance. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - StopKnowledgeBaseBuildTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) StopKnowledgeBaseBuildTaskInstanceWithOptions(request *StopKnowledgeBaseBuildTaskInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.TaskInstanceId) {
+		body["TaskInstanceId"] = request.TaskInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopKnowledgeBaseBuildTaskInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Requests that a specified build task instance stop and returns its current status.
+//
+// Description:
+//
+// Stops a knowledge base build task instance. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - StopKnowledgeBaseBuildTaskInstanceRequest
+//
+// @return StopKnowledgeBaseBuildTaskInstanceResponse
+func (client *Client) StopKnowledgeBaseBuildTaskInstance(request *StopKnowledgeBaseBuildTaskInstanceRequest) (_result *StopKnowledgeBaseBuildTaskInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StopKnowledgeBaseBuildTaskInstanceResponse{}
+	_body, _err := client.StopKnowledgeBaseBuildTaskInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34114,6 +36318,420 @@ func (client *Client) UpdateImage(request *UpdateImageRequest) (_result *UpdateI
 
 // Summary:
 //
+// Updates the editable information of a knowledge base.
+//
+// Description:
+//
+// Updates a knowledge base. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBaseWithOptions(request *UpdateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBase"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the editable information of a knowledge base.
+//
+// Description:
+//
+// Updates a knowledge base. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.UpdateKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the configuration of a knowledge base build task without changing the input and configuration snapshots of created instances.
+//
+// Description:
+//
+// Updates a knowledge base build task. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param tmpReq - UpdateKnowledgeBaseBuildTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseBuildTaskResponse
+func (client *Client) UpdateKnowledgeBaseBuildTaskWithOptions(tmpReq *UpdateKnowledgeBaseBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseBuildTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKnowledgeBaseBuildTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Input) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, dara.String("Input"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RuntimeResource) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, dara.String("RuntimeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Trigger) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, dara.String("Trigger"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentLocale) {
+		body["ContentLocale"] = request.ContentLocale
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InputShrink) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LlmModel) {
+		body["LlmModel"] = request.LlmModel
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuntimeResourceShrink) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TriggerShrink) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBaseBuildTask"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the configuration of a knowledge base build task without changing the input and configuration snapshots of created instances.
+//
+// Description:
+//
+// Updates a knowledge base build task. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - UpdateKnowledgeBaseBuildTaskRequest
+//
+// @return UpdateKnowledgeBaseBuildTaskResponse
+func (client *Client) UpdateKnowledgeBaseBuildTask(request *UpdateKnowledgeBaseBuildTaskRequest) (_result *UpdateKnowledgeBaseBuildTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateKnowledgeBaseBuildTaskResponse{}
+	_body, _err := client.UpdateKnowledgeBaseBuildTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name, description, or content of a document or semantic model.
+//
+// Description:
+//
+// Updates a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param tmpReq - UpdateKnowledgeObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeObjectResponse
+func (client *Client) UpdateKnowledgeObjectWithOptions(tmpReq *UpdateKnowledgeObjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKnowledgeObjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Content) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, dara.String("Content"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ContentShrink) {
+		body["Content"] = request.ContentShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedModifyTime) {
+		body["ExpectedModifyTime"] = request.ExpectedModifyTime
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.KnowledgeObjectId) {
+		body["KnowledgeObjectId"] = request.KnowledgeObjectId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.UploadId) {
+		body["UploadId"] = request.UploadId
+	}
+
+	if !dara.IsNil(request.VersionNo) {
+		body["VersionNo"] = request.VersionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeObject"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name, description, or content of a document or semantic model.
+//
+// Description:
+//
+// Updates a knowledge object. The tenant and caller identities are determined by the POP authentication context.
+//
+// @param request - UpdateKnowledgeObjectRequest
+//
+// @return UpdateKnowledgeObjectResponse
+func (client *Client) UpdateKnowledgeObject(request *UpdateKnowledgeObjectRequest) (_result *UpdateKnowledgeObjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateKnowledgeObjectResponse{}
+	_body, _err := client.UpdateKnowledgeObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name, description, or supported connector configuration of a knowledge source.
+//
+// Description:
+//
+// Manages knowledge sources in a knowledge base. The identity is determined by the POP context, and credentials are not returned in the response.
+//
+// @param tmpReq - UpdateKnowledgeSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeSourceResponse
+func (client *Client) UpdateKnowledgeSourceWithOptions(tmpReq *UpdateKnowledgeSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKnowledgeSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataSource) {
+		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, dara.String("DataSource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Document) {
+		request.DocumentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Document, dara.String("Document"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Project) {
+		request.ProjectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Project, dara.String("Project"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceShrink) {
+		body["DataSource"] = request.DataSourceShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DocumentShrink) {
+		body["Document"] = request.DocumentShrink
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		body["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectShrink) {
+		body["Project"] = request.ProjectShrink
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["SourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeSource"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the name, description, or supported connector configuration of a knowledge source.
+//
+// Description:
+//
+// Manages knowledge sources in a knowledge base. The identity is determined by the POP context, and credentials are not returned in the response.
+//
+// @param request - UpdateKnowledgeSourceRequest
+//
+// @return UpdateKnowledgeSourceResponse
+func (client *Client) UpdateKnowledgeSource(request *UpdateKnowledgeSourceRequest) (_result *UpdateKnowledgeSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateKnowledgeSourceResponse{}
+	_body, _err := client.UpdateKnowledgeSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an MCP server.
 //
 // Description:
@@ -35899,19 +38517,19 @@ func (client *Client) UpdateTask(request *UpdateTaskRequest) (_result *UpdateTas
 
 // Summary:
 //
-// Asynchronously updates a specified node and syncs the changes to Data Studio as a new saved version.
+// Asynchronously updates a specified node and syncs the updates to Data Studio to generate a new saved version.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API is asynchronous. Use the `GetUpdateTaskResult` operation to poll for the update result.
+// - This API operation is asynchronous. You must call the `GetUpdateTaskResult` operation to poll the update result.
 //
-// - This API updates the information of a specified node, including but not limited to the node name, description, and owner.
+// - This API operation is used to update the information of a specified node, including but not limited to the node name, description, and owner.
 //
-// - Changes are synchronized to Data Studio, and Data Studio creates a new saved version.
+// - The modifications are synced to Data Studio, and a new saved version is generated in Data Studio.
 //
-// - Supports settings for the node trigger method, runtime environment configuration, dependencies, and other detailed parameters.
+// - You can set detailed parameters such as the trigger mode, runtime environment configuration, and dependencies of the node.
 //
 // @param tmpReq - UpdateTaskAsyncRequest
 //
@@ -36061,19 +38679,19 @@ func (client *Client) UpdateTaskAsyncWithOptions(tmpReq *UpdateTaskAsyncRequest,
 
 // Summary:
 //
-// Asynchronously updates a specified node and syncs the changes to Data Studio as a new saved version.
+// Asynchronously updates a specified node and syncs the updates to Data Studio to generate a new saved version.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API is asynchronous. Use the `GetUpdateTaskResult` operation to poll for the update result.
+// - This API operation is asynchronous. You must call the `GetUpdateTaskResult` operation to poll the update result.
 //
-// - This API updates the information of a specified node, including but not limited to the node name, description, and owner.
+// - This API operation is used to update the information of a specified node, including but not limited to the node name, description, and owner.
 //
-// - Changes are synchronized to Data Studio, and Data Studio creates a new saved version.
+// - The modifications are synced to Data Studio, and a new saved version is generated in Data Studio.
 //
-// - Supports settings for the node trigger method, runtime environment configuration, dependencies, and other detailed parameters.
+// - You can set detailed parameters such as the trigger mode, runtime environment configuration, and dependencies of the node.
 //
 // @param request - UpdateTaskAsyncRequest
 //
@@ -36499,11 +39117,31 @@ func (client *Client) UpdateWorkflowDefinition(request *UpdateWorkflowDefinition
 
 // Summary:
 //
-// 上传 Agent 会话附件
+// Issues a file upload URL for an agent session and confirms that the file has been written to the session instance for use in later messages. This operation is available during a canary release. Before calling it, make sure the canary release is enabled for your account and the target region.
 //
 // Description:
 //
-// 将文件通过 OSS 上传到当前账号有权访问的 Agent 会话。先用 prepare 获取 5 分钟公网 PUT 签名，上传原始字节后用 complete 确认，由会话 runtime 下载、校验并写入工作目录。UploadMode 必填，不接受 ContentBase64。须同时检查 POP/BFF 外层错误与 JsonRpcResponse.Error。
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
+//
+// Uploads a local file to an agent session that the current caller has access to, and references the file in the conversation. The size of a single file ranges from 1 byte to 10,485,760 bytes (10 MiB). The caller must have access permissions to the target session and the dataworks:UploadAgentSessionFile permission.
+//
+// Call sequence.
+//
+// 1. Use the SessionId of an existing session, set UploadMode to prepare, and pass the original file name, the byte count Size, and the 32-character lowercase hexadecimal ContentMd5 of the original bytes. The prepare step returns UploadId and Signature, issuing only the upload URL without starting a cold session instance.
+//
+// 2. Within the validity period of the signature, send an HTTP PUT request to Signature.Url with the original file bytes as the request body, using all the request headers returned in Signature.Headers. The URL and request headers must be used exactly as provided. The ContentMd5 parameter is in hexadecimal format, while the Content-MD5 signature header is Base64-encoded. The two are not interchangeable. The signature is valid for 5 minutes. For the exact expiration time, see ExpiresAt.
+//
+// 3. After the PUT request succeeds, set UploadMode to complete, pass the UploadId returned by prepare, and keep SessionId, Name, Size, and ContentMd5 consistent. The server resumes the session, and the runtime within the instance downloads the staged object, verifies the size and MD5, writes it to the working directory, and returns Id, Name, RelativePath, and Size. Repeated complete calls use the same UploadId. The same attachment receipt is returned only when the existing file content is identical.
+//
+// 4. Call PromptAgentSession, add a content block with Type set to resource_link, Name set to the original file name, and Uri set to dataagent-attachment: followed by RelativePath in Params.Prompt, and send it along with the text content block. The backend resolves the reference to the working directory of the session based on the current authenticated session.
+//
+// For the sample file sample.csv, the original bytes are hello followed by a line feed, Size is 6, and ContentMd5 is b1946ac92492d2347c6235b4d2611184. The SessionId example session and the upload identifier examples are used only to illustrate the parameter structure. Actual calls must use a created session and the values returned by prepare. The Signature.Url example is used only to illustrate the format. The actual PUT request must use the complete signed URL returned by the current prepare call.
+//
+// Error handling.
+//
+// You must check the outer POP/BFF failures, JsonRpcResponse.Error, and the expected result fields simultaneously. Missing upload stages or size limit exceedances may result in an HTTP 400 response from the gateway, such as MissingUploadMode or InvalidSize. Business rejections such as object not found or metadata mismatch return an HTTP 400 response with a general Code 400 in the public POP, and the Message retains the actual business code, such as SESSION_ATTACHMENT_OBJECT_MISMATCH. Dependency failures, HTTP 5xx errors, timeouts, and unknown execution results must not be treated as parameter rejections or successful uploads, and automatic write retries must not be performed. When the result is unknown, retain the original upload metadata and UploadId, and verify the result first.
+//
+// This API operation does not accept ContentBase64. Signature expiration only invalidates the upload authorization and does not indicate that the staged object has been deleted. This description does not guarantee an automatic cleanup cycle for the object.
 //
 // @param tmpReq - UploadAgentSessionFileRequest
 //
@@ -36561,11 +39199,31 @@ func (client *Client) UploadAgentSessionFileWithOptions(tmpReq *UploadAgentSessi
 
 // Summary:
 //
-// 上传 Agent 会话附件
+// Issues a file upload URL for an agent session and confirms that the file has been written to the session instance for use in later messages. This operation is available during a canary release. Before calling it, make sure the canary release is enabled for your account and the target region.
 //
 // Description:
 //
-// 将文件通过 OSS 上传到当前账号有权访问的 Agent 会话。先用 prepare 获取 5 分钟公网 PUT 签名，上传原始字节后用 complete 确认，由会话 runtime 下载、校验并写入工作目录。UploadMode 必填，不接受 ContentBase64。须同时检查 POP/BFF 外层错误与 JsonRpcResponse.Error。
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
+//
+// Uploads a local file to an agent session that the current caller has access to, and references the file in the conversation. The size of a single file ranges from 1 byte to 10,485,760 bytes (10 MiB). The caller must have access permissions to the target session and the dataworks:UploadAgentSessionFile permission.
+//
+// Call sequence.
+//
+// 1. Use the SessionId of an existing session, set UploadMode to prepare, and pass the original file name, the byte count Size, and the 32-character lowercase hexadecimal ContentMd5 of the original bytes. The prepare step returns UploadId and Signature, issuing only the upload URL without starting a cold session instance.
+//
+// 2. Within the validity period of the signature, send an HTTP PUT request to Signature.Url with the original file bytes as the request body, using all the request headers returned in Signature.Headers. The URL and request headers must be used exactly as provided. The ContentMd5 parameter is in hexadecimal format, while the Content-MD5 signature header is Base64-encoded. The two are not interchangeable. The signature is valid for 5 minutes. For the exact expiration time, see ExpiresAt.
+//
+// 3. After the PUT request succeeds, set UploadMode to complete, pass the UploadId returned by prepare, and keep SessionId, Name, Size, and ContentMd5 consistent. The server resumes the session, and the runtime within the instance downloads the staged object, verifies the size and MD5, writes it to the working directory, and returns Id, Name, RelativePath, and Size. Repeated complete calls use the same UploadId. The same attachment receipt is returned only when the existing file content is identical.
+//
+// 4. Call PromptAgentSession, add a content block with Type set to resource_link, Name set to the original file name, and Uri set to dataagent-attachment: followed by RelativePath in Params.Prompt, and send it along with the text content block. The backend resolves the reference to the working directory of the session based on the current authenticated session.
+//
+// For the sample file sample.csv, the original bytes are hello followed by a line feed, Size is 6, and ContentMd5 is b1946ac92492d2347c6235b4d2611184. The SessionId example session and the upload identifier examples are used only to illustrate the parameter structure. Actual calls must use a created session and the values returned by prepare. The Signature.Url example is used only to illustrate the format. The actual PUT request must use the complete signed URL returned by the current prepare call.
+//
+// Error handling.
+//
+// You must check the outer POP/BFF failures, JsonRpcResponse.Error, and the expected result fields simultaneously. Missing upload stages or size limit exceedances may result in an HTTP 400 response from the gateway, such as MissingUploadMode or InvalidSize. Business rejections such as object not found or metadata mismatch return an HTTP 400 response with a general Code 400 in the public POP, and the Message retains the actual business code, such as SESSION_ATTACHMENT_OBJECT_MISMATCH. Dependency failures, HTTP 5xx errors, timeouts, and unknown execution results must not be treated as parameter rejections or successful uploads, and automatic write retries must not be performed. When the result is unknown, retain the original upload metadata and UploadId, and verify the result first.
+//
+// This API operation does not accept ContentBase64. Signature expiration only invalidates the upload authorization and does not indicate that the staged object has been deleted. This description does not guarantee an automatic cleanup cycle for the object.
 //
 // @param request - UploadAgentSessionFileRequest
 //

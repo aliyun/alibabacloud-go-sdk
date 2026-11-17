@@ -18,7 +18,7 @@ type iAbolishCrossProjectPipelineRunRequest interface {
 }
 
 type AbolishCrossProjectPipelineRunRequest struct {
-	// The ID of the cross-workspace deployment pipeline run.
+	// The ID of the cross-workspace deployment pipeline.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type AbolishCrossProjectPipelineRunRequest struct {
 	//
 	// 10
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The reason for terminating the pipeline run.
+	// The reason for stopping the pipeline.
 	//
 	// example:
 	//
-	// The target deployment plan has changed. Terminate the pipeline run that has not yet executed
+	// The target deployment plan has changed. Stop the pipeline that has not run yet.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 

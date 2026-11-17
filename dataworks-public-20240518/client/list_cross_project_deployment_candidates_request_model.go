@@ -34,31 +34,31 @@ type iListCrossProjectDeploymentCandidatesRequest interface {
 }
 
 type ListCrossProjectDeploymentCandidatesRequest struct {
-	// The change type.
+	// The type of the change.
 	//
 	// example:
 	//
 	// ADD
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The start of the commit time range. The value is a UNIX timestamp in milliseconds.
+	// The start time of the commit. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1788739200000
 	CommitTimeFrom *int64 `json:"CommitTimeFrom,omitempty" xml:"CommitTimeFrom,omitempty"`
-	// The end of the commit time range. The value is a UNIX timestamp in milliseconds.
+	// The end time of the commit. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1788825599999
 	CommitTimeTo *int64 `json:"CommitTimeTo,omitempty" xml:"CommitTimeTo,omitempty"`
-	// The submitter.
+	// The committer.
 	//
 	// example:
 	//
 	// operator
 	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
-	// The cross-workspace deployment environment ID.
+	// The ID of the cross-workspace deployment environment.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type ListCrossProjectDeploymentCandidatesRequest struct {
 	//
 	// object
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The candidate object ID.
+	// The ID of the candidate object.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ListCrossProjectDeploymentCandidatesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

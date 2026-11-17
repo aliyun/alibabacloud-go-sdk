@@ -28,17 +28,17 @@ type LineageRelationship struct {
 	//
 	// 1743040581000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The destination entity.
+	// The target entity.
 	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
 	// ID
 	//
 	// example:
 	//
-	// maxcompute-table.p.table:custom-table.xxx:custom-sql.123
+	// as78d756asd
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The source entity.
 	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
-	// The node.
+	// The task.
 	Task *LineageTask `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 

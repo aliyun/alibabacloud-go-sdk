@@ -18,14 +18,20 @@ type iUploadAgentSessionFileRequest interface {
 }
 
 type UploadAgentSessionFileRequest struct {
+	// The JSON-RPC correlation identifier for the current request. The Id in the response returns this value as is to correlate the request and response.
+	//
 	// example:
 	//
 	// attachment-rpc-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC protocol version. The example uses 2.0.
+	//
 	// example:
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The parameter object for the upload stage. The prepare step issues the upload URL, and the complete step confirms that the file has been written to the target session instance.
+	//
 	// This parameter is required.
 	Params *UploadAgentSessionFileRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
@@ -75,34 +81,46 @@ func (s *UploadAgentSessionFileRequest) Validate() error {
 }
 
 type UploadAgentSessionFileRequestParams struct {
+	// The MD5 hash of the original bytes in 32-character lowercase hexadecimal format. This parameter is required for both prepare and complete, and the values must be consistent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b1946ac92492d2347c6235b4d2611184
 	ContentMd5 *string `json:"ContentMd5,omitempty" xml:"ContentMd5,omitempty"`
+	// The original file name. The maximum length is 255 bytes in UTF-8 encoding.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sample.csv
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the target agent session.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// session
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The number of original bytes. Valid values: 1 to 10485760 (10 MiB). This parameter is required for both prepare and complete, and the values must be consistent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The upload identifier returned by prepare. This parameter is required when UploadMode is set to complete.
+	//
 	// example:
 	//
 	// bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// The required upload stage. The prepare step issues a public OSS PUT URL without starting a cold session instance. The complete step resumes the session and allows the runtime to download the file.
+	//
 	// This parameter is required.
 	//
 	// example:

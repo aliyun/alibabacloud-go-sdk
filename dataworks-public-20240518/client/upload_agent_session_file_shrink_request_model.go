@@ -18,14 +18,20 @@ type iUploadAgentSessionFileShrinkRequest interface {
 }
 
 type UploadAgentSessionFileShrinkRequest struct {
+	// The JSON-RPC correlation identifier for the current request. The Id in the response returns this value as is to correlate the request and response.
+	//
 	// example:
 	//
 	// attachment-rpc-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC protocol version. The example uses 2.0.
+	//
 	// example:
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The parameter object for the upload stage. The prepare step issues the upload URL, and the complete step confirms that the file has been written to the target session instance.
+	//
 	// This parameter is required.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }

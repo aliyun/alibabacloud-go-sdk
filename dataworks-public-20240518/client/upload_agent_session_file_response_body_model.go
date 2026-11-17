@@ -16,7 +16,10 @@ type iUploadAgentSessionFileResponseBody interface {
 }
 
 type UploadAgentSessionFileResponseBody struct {
+	// The JSON-RPC response. Returns Result on success and Error on protocol errors.
 	JsonRpcResponse *UploadAgentSessionFileResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
+	// The server correlation ID for the current request. You can provide this value for troubleshooting.
+	//
 	// example:
 	//
 	// 01A0B6E0-E005-1465-B5DE-5CD17677426F
@@ -59,16 +62,24 @@ func (s *UploadAgentSessionFileResponseBody) Validate() error {
 }
 
 type UploadAgentSessionFileResponseBodyJsonRpcResponse struct {
+	// The JSON-RPC fault message. This field is not returned on success.
 	Error *UploadAgentSessionFileResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The JSON-RPC correlation identifier for the current request, which is passed by the caller and returned as is.
+	//
 	// example:
 	//
 	// attachment-rpc-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC protocol version.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                                  `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *UploadAgentSessionFileResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// Issues the staged upload URL or returns the attachment information after writing to the instance.
+	Result *UploadAgentSessionFileResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The response time as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1789549200000
@@ -143,21 +154,29 @@ func (s *UploadAgentSessionFileResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type UploadAgentSessionFileResponseBodyJsonRpcResponseError struct {
+	// The JSON-RPC error code.
+	//
 	// example:
 	//
-	// 500
+	// 400
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The optional additional error information. The content depends on the error type.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The business error code.
+	//
 	// example:
 	//
-	// 0x4883300000000019
+	// SESSION_ATTACHMENT_OBJECT_MISMATCH
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 会话不存在或当前账号无权访问，请返回会话列表重新选择
+	// SESSION_ATTACHMENT_OBJECT_MISMATCH
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -210,23 +229,34 @@ func (s *UploadAgentSessionFileResponseBodyJsonRpcResponseError) Validate() erro
 }
 
 type UploadAgentSessionFileResponseBodyJsonRpcResponseResult struct {
+	// The attachment identifier.
+	//
 	// example:
 	//
 	// bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The original file name.
+	//
 	// example:
 	//
 	// sample.csv
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The relative path in the session working directory.
+	//
 	// example:
 	//
 	// upload/session_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.csv
-	RelativePath *string                                                           `json:"RelativePath,omitempty" xml:"RelativePath,omitempty"`
-	Signature    *UploadAgentSessionFileResponseBodyJsonRpcResponseResultSignature `json:"Signature,omitempty" xml:"Signature,omitempty" type:"Struct"`
+	RelativePath *string `json:"RelativePath,omitempty" xml:"RelativePath,omitempty"`
+	// The time-limited object storage signature returned by prepare.
+	Signature *UploadAgentSessionFileResponseBodyJsonRpcResponseResultSignature `json:"Signature,omitempty" xml:"Signature,omitempty" type:"Struct"`
+	// The number of file bytes saved in the instance.
+	//
 	// example:
 	//
 	// 6
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The staged upload identifier issued by prepare.
+	//
 	// example:
 	//
 	// bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -305,14 +335,20 @@ func (s *UploadAgentSessionFileResponseBodyJsonRpcResponseResult) Validate() err
 }
 
 type UploadAgentSessionFileResponseBodyJsonRpcResponseResultSignature struct {
+	// The expiration time of the current upload signature in ISO 8601 UTC string format. The trailing Z indicates UTC, and fractional seconds may be included. The signature is valid for 5 minutes. Signature expiration does not indicate that the staged object has been deleted.
+	//
 	// example:
 	//
 	// 2026-11-12T09:46:33.477365753Z
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	// All signed request headers that must be included in the PUT request. The names and values must be used exactly as provided. This includes Content-Type, Content-MD5, Content-Length, x-oss-object-acl, and x-oss-forbid-overwrite.
+	//
 	// example:
 	//
 	// {"Content-Type":"application/octet-stream","Content-MD5":"sZRqySSS0jR8YjW00mERhA==","Content-Length":"6","x-oss-object-acl":"private","x-oss-forbid-overwrite":"true"}
 	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// The complete signed HTTPS PUT URL returned by prepare, which must be used exactly as provided for the upload. The example displayed for this field does not contain a valid signature. The actual request must use the complete signed URL returned by the current prepare call.
+	//
 	// example:
 	//
 	// https://attachments.example.test/signed

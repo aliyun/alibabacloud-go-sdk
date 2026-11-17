@@ -22,7 +22,7 @@ type SetSuccessTaskInstancesRequest struct {
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of task instance IDs.
+	// The list of node instance IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 }
 

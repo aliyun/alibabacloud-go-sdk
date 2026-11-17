@@ -18,13 +18,13 @@ type iListCrossProjectPipelineRunItemsResponseBody interface {
 }
 
 type ListCrossProjectPipelineRunItemsResponseBody struct {
-	// The response data.
+	// The business response.
 	//
 	// example:
 	//
 	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23","PageNumber":1,"PageSize":10,"TotalCount":1,"PipelineRunItems":[{"ObjectId":"1","ObjectType":"ODPS_SQL","ObjectName":"object-1","ObjectVersion":"7","ChangeType":"ADD","IsRoot":true,"Status":"Ready"}]}
 	Data *ListCrossProjectPipelineRunItemsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID used to locate and troubleshoot the API call.
+	// The request ID, which is used to locate and troubleshoot the API call.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListCrossProjectPipelineRunItemsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of publish items for the root object and its child objects in the cross-workspace publish pipeline.
+	// The list of deployment items for the root object and its child objects snapshotted in the cross-workspace deployment pipeline.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *ListCrossProjectPipelineRunItemsResponseBodyData) Validate() error {
 }
 
 type ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems struct {
-	// The change type.
+	// The type of the change.
 	//
 	// example:
 	//
@@ -206,25 +206,25 @@ type ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems struct {
 	//
 	// true
 	IsRoot *bool `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
-	// The ID of the deployment object.
+	// The ID of the object to deploy.
 	//
 	// example:
 	//
 	// 1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The name of the deployment object.
+	// The name of the object to deploy.
 	//
 	// example:
 	//
 	// object-1
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The deployment object type.
+	// The type of the object to deploy.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The version of the deployment object.
+	// The version of the object to deploy.
 	//
 	// example:
 	//

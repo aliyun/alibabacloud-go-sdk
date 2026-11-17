@@ -24,7 +24,7 @@ type iListKnowledgePointsResponseBody interface {
 }
 
 type ListKnowledgePointsResponseBody struct {
-	// The business error code. This parameter is omitted when the request is successful. If the request fails, the common error response protocol is followed.
+	// The business error code. This field may be omitted if the request succeeds. If the request fails, the common error response protocol applies.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListKnowledgePointsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The readable description of the business error. This parameter is omitted when the request is successful. When troubleshooting a failure, provide the RequestId at the same time.
+	// A human-readable description of the business error. This field may be omitted if the request succeeds. Provide the RequestId when troubleshooting failures.
 	//
 	// example:
 	//

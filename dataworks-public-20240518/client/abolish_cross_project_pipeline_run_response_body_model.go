@@ -24,7 +24,7 @@ type AbolishCrossProjectPipelineRunResponseBody struct {
 	//
 	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23"}
 	Data *AbolishCrossProjectPipelineRunResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot the API call.
+	// The request ID that is used to locate and troubleshoot the API call.
 	//
 	// example:
 	//

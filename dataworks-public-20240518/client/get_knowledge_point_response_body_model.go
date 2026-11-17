@@ -22,7 +22,7 @@ type iGetKnowledgePointResponseBody interface {
 }
 
 type GetKnowledgePointResponseBody struct {
-	// The business error code. This parameter is omitted when the request is successful. For failures, the common error response protocol is followed.
+	// The business error code. This field may be omitted if the request succeeds. If the request fails, the common error response protocol applies.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetKnowledgePointResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The typed details of a single knowledge point. Only the item corresponding to the Type value is returned among Graph, Wiki, and KnowledgeContent.
 	Data *GetKnowledgePointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The readable description of the business error. This parameter is omitted when the request is successful. Provide the RequestId when troubleshooting failures.
+	// A human-readable description of the business error. This field may be omitted if the request succeeds. Provide the RequestId when troubleshooting failures.
 	//
 	// example:
 	//
