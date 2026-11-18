@@ -62,22 +62,23 @@ func (s *GetJobResponseBody) Validate() error {
 }
 
 type GetJobResponseBodyJobInfo struct {
-	// The application additional information.
+	// The additional application information.
 	//
 	// example:
 	//
 	// {\\"xxx\\": \\"xxxxx\\"}
 	AppExtraInfo *string `json:"AppExtraInfo,omitempty" xml:"AppExtraInfo,omitempty"`
-	// The job submission time.
+	// The time when the job was submitted. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-03-05 20:00:46
-	CreateTime       *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The dependency policy.
 	DependencyPolicy *GetJobResponseBodyJobInfoDependencyPolicy `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty" type:"Struct"`
 	// The resource deployment policy.
 	DeploymentPolicy *GetJobResponseBodyJobInfoDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
-	// The job end time.
+	// The time when the job ended. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -100,10 +101,11 @@ type GetJobResponseBodyJobInfo struct {
 	// example:
 	//
 	// testJob
-	JobName        *string                                  `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobScheduler   *string                                  `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	// The security policy.
 	SecurityPolicy *GetJobResponseBodyJobInfoSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The job start time.
+	// The time when the job started. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -117,7 +119,7 @@ type GetJobResponseBodyJobInfo struct {
 	//
 	// - Succeed: The job ran successfully.
 	//
-	// - Failed: The job failed.
+	// - Failed: The job failed to run.
 	//
 	// - Running: The job is running.
 	//
@@ -127,9 +129,9 @@ type GetJobResponseBodyJobInfo struct {
 	//
 	// - Expired: The job timed out.
 	//
-	// - Deleted: The job has been deleted.
+	// - Deleted: The job is deleted.
 	//
-	// - Suspended: The job is in hibernation.
+	// - Suspended: The job is hibernated.
 	//
 	// - Restarting: The job is being restarted.
 	//
@@ -295,6 +297,7 @@ func (s *GetJobResponseBodyJobInfo) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoDependencyPolicy struct {
+	// The job dependencies. A maximum of 10 dependencies are supported.
 	JobDependency []*GetJobResponseBodyJobInfoDependencyPolicyJobDependency `json:"JobDependency,omitempty" xml:"JobDependency,omitempty" type:"Repeated"`
 }
 
@@ -329,8 +332,28 @@ func (s *GetJobResponseBodyJobInfoDependencyPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoDependencyPolicyJobDependency struct {
+	// The job ID.
+	//
+	// example:
+	//
+	// job-bjxxxxxxxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The dependency type. Valid values:
+	//
+	// - AfterSucceeded: All subtasks of the dependent job or array job run successfully (the exit code is 0).
+	//
+	// - AfterFailed: Any subtask of the dependent job or array job fails (the exit code is not 0).
+	//
+	// - AfterAny: The dependent job finishes running, regardless of success or failure.
+	//
+	// - AfterCorresponding: The corresponding subtask of the dependent array job runs successfully (the exit code is 0).
+	//
+	// Default value: AfterSucceeded.
+	//
+	// example:
+	//
+	// AfterSucceeded
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoDependencyPolicyJobDependency) String() string {
@@ -372,9 +395,9 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	// The computing power level. Valid values:
 	//
-	// - General: general-purpose.
+	// - General: General-purpose.
 	//
-	// - Performance: performance-optimized.
+	// - Performance: Performance-optimized.
 	//
 	// Default value: General.
 	//
@@ -382,7 +405,7 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The network configuration.
+	// The network configuration information.
 	Network *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The resource pool.
 	//
@@ -391,8 +414,12 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	// testpool
 	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
 	// The priority.
+	//
+	// example:
+	//
+	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The job tag list.
+	// The list of job tags.
 	Tags []*GetJobResponseBodyJobInfoDeploymentPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -477,17 +504,17 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyNetwork struct {
-	// Indicates whether resources are created in the zone that corresponds to the specified vSwitch.
+	// Specifies whether the resource is created in the zone corresponding to the specified vSwitch parameter. Valid values:
 	//
-	// - true: Resources are created in the zone that corresponds to the specified vSwitch.
+	// - true: The resource is created in the zone corresponding to the specified vSwitch parameter.
 	//
-	// - false: Resources are created in any zone that has available resources.
+	// - false: The resource is created in any zone with available resources.
 	//
 	// example:
 	//
 	// false
 	EnableENIMapping *bool `json:"EnableENIMapping,omitempty" xml:"EnableENIMapping,omitempty"`
-	// Indicates whether a public IP address is created.
+	// Specifies whether to create a public IP address.
 	//
 	// example:
 	//
@@ -582,6 +609,7 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyTags) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoSecurityPolicy struct {
+	// The security group.
 	SecurityGroup *GetJobResponseBodyJobInfoSecurityPolicySecurityGroup `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty" type:"Struct"`
 }
 
@@ -612,6 +640,7 @@ func (s *GetJobResponseBodyJobInfoSecurityPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoSecurityPolicySecurityGroup struct {
+	// The security group ID array.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -649,7 +678,7 @@ type GetJobResponseBodyJobInfoTasks struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task specification details.
 	TaskSpec *GetJobResponseBodyJobInfoTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
-	// Indicates whether the job is a long-running job.
+	// Specifies whether the job is a long-running job.
 	//
 	// example:
 	//
@@ -736,7 +765,7 @@ func (s *GetJobResponseBodyJobInfoTasks) Validate() error {
 type GetJobResponseBodyJobInfoTasksExecutorPolicy struct {
 	// The array job details.
 	ArraySpec *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec `json:"ArraySpec,omitempty" xml:"ArraySpec,omitempty" type:"Struct"`
-	// The maximum number of nodes for running the job.
+	// The maximum number of nodes for job execution.
 	//
 	// example:
 	//
@@ -780,7 +809,7 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec struct {
-	// The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to IndexStart.
+	// The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
 	//
 	// example:
 	//
@@ -792,9 +821,9 @@ type GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec struct {
 	//
 	// 0
 	IndexStart *int32 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
-	// The interval of the array job index.
+	// The step size of the array job index.
 	//
-	// > If the array job properties are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three subtasks with indexes 1, 3, and 5.
+	// > If the array job attributes are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three subtasks with indexes 1, 3, and 5.
 	//
 	// example:
 	//
@@ -842,25 +871,25 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec) Validate() error
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorStatus struct {
-	// The subtask ID.
+	// The sub-job ID.
 	//
 	// example:
 	//
 	// 0
 	ArrayId *int32 `json:"ArrayId,omitempty" xml:"ArrayId,omitempty"`
-	// The job creation time.
+	// The time when the job was created. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The job end time.
+	// The time when the job ended. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-02-04 13:54:10
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The job start time.
+	// The time when the job started. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -872,7 +901,7 @@ type GetJobResponseBodyJobInfoTasksExecutorStatus struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status reason description.
+	// The description of the status reason.
 	//
 	// example:
 	//
@@ -948,11 +977,13 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorStatus) Validate() error {
 
 type GetJobResponseBodyJobInfoTasksTaskSpec struct {
 	// The resource information.
-	Resource    *GetJobResponseBodyJobInfoTasksTaskSpecResource    `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	Resource *GetJobResponseBodyJobInfoTasksTaskSpecResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The task retry policy.
 	RetryPolicy *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
 	// The task execution configuration.
 	TaskExecutor []*GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
-	VolumeMount  []*GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount  `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
+	// The list of data volumes mounted to the task. A maximum of 10 data volumes are supported.
+	VolumeMount []*GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpec) String() string {
@@ -1039,10 +1070,27 @@ type GetJobResponseBodyJobInfoTasksTaskSpecResource struct {
 	// 1
 	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The cloud disk array.
-	Disks          []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	EnableHT       *bool                                                  `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
-	HostNamePrefix *string                                                `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
-	InstanceTypes  []*string                                              `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Disks []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// Specifies whether to enable hyper-threading for the runtime environment. Default value: true.
+	//
+	// example:
+	//
+	// true
+	EnableHT *bool `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
+	// The hostname prefix of the runtime environment. The limits are as follows:
+	//
+	// - A period (.) and a hyphen (-) cannot be used as the first or last character, and cannot be used consecutively.
+	//
+	// - Windows environment: The length cannot exceed 10 characters. Periods (.) are not supported, and the name cannot contain only digits. Uppercase and lowercase letters, digits, and hyphens (-) are allowed.
+	//
+	// - Linux environment: The length cannot exceed 32 characters. Multiple periods (.) are supported. The string between periods is considered a segment, and each segment can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// compute
+	HostNamePrefix *string `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	// The instance types of the runtime environment. A maximum of 5 instance types are supported.
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// The total amount of memory resources. Unit: GiB.
 	//
 	// example:
@@ -1135,9 +1183,9 @@ type GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks struct {
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The cloud disk type. Valid values:
 	//
-	// - System: system cloud disk.
+	// - System: System cloud disk.
 	//
-	// - Data: data cloud disk.
+	// - Data: Data cloud disk.
 	//
 	// example:
 	//
@@ -1176,8 +1224,14 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy struct {
+	// The retry rules. A maximum of 10 rules are supported.
 	ExitCodeActions []*GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions `json:"ExitCodeActions,omitempty" xml:"ExitCodeActions,omitempty" type:"Repeated"`
-	RetryCount      *int32                                                              `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// The number of retries. Valid values: 1 to 10. Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy) String() string {
@@ -1220,8 +1274,22 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy) Validate() error {
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions struct {
-	Action   *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ExitCode *int64  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The next action for the task. Valid values:
+	//
+	// - Retry: The job starts a new retry when a specific exit code is matched.
+	//
+	// - Exit: The job exits when a specific exit code is matched.
+	//
+	// example:
+	//
+	// Exit
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The task exit code, which is used together with Action to form a job retry rule. Valid values: 0 to 255.
+	//
+	// example:
+	//
+	// 1
+	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions) String() string {
@@ -1255,7 +1323,7 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions) Valid
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor struct {
-	// The ECS instance configuration.
+	// The ECS instance used.
 	VM *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM `json:"VM,omitempty" xml:"VM,omitempty" type:"Struct"`
 }
 
@@ -1292,13 +1360,13 @@ type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
 	//
 	// m-xxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The pre-processing script. The script must be Base64-encoded.
+	// The pre-processing script. Base64 encoding is required.
 	//
 	// example:
 	//
 	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	// The job execution script. The script must be Base64-encoded.
+	// The script used to run the job. Base64 encoding is required.
 	//
 	// example:
 	//
@@ -1346,8 +1414,37 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) Validate() error 
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount struct {
+	// The list of mount parameters for the data volume. The parameters are key-value pairs in JSON format.
+	//
+	// - Format for mounting a NAS file system: {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
+	//
+	// > server specifies the mount target address of the NAS file system. path specifies the subdirectory under the NAS path, which must start with / and must already exist. vers specifies the NFS protocol version used to mount the NAS file system. Use v3. options specifies the custom parameters used when mounting the NAS file system, in the format of "xxx,xxx,xxx".
+	//
+	// - Format for mounting an OSS bucket: {"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
+	//
+	// > bucket specifies the name of the OSS bucket. url specifies the endpoint of the OSS bucket. You can log on to the OSS console and obtain the endpoint on the Overview page of the bucket. path specifies the directory structure relative to the root directory of the bucket when mounting. The default value is /, and the directory must already exist. akId specifies the AccessKey ID used for direct authorization with an AccessKey pair. akSecret specifies the AccessKey secret used for direct authorization with an AccessKey pair.
+	//
+	// example:
+	//
+	// {"bucket":"demo-bucket","otherOpts":"-o allow_other","url":"oss-cn-hangzhou.aliyuncs.com"}
 	MountOptions *string `json:"MountOptions,omitempty" xml:"MountOptions,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory where the data volume is mounted to the task.
+	//
+	// > The content in the mount directory will be directly overwritten by the content of the volume. Use this parameter with caution.
+	//
+	// example:
+	//
+	// /cromwell_inputs/1234abcd
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The supported data volume types. Valid values:
+	//
+	// - alicloud/nas: Mount a NAS file system.
+	//
+	// - alicloud/oss: Mount an OSS bucket.
+	//
+	// example:
+	//
+	// alicloud/nas
 	VolumeDriver *string `json:"VolumeDriver,omitempty" xml:"VolumeDriver,omitempty"`
 }
 

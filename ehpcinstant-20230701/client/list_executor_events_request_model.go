@@ -18,19 +18,15 @@ type iListExecutorEventsRequest interface {
 }
 
 type ListExecutorEventsRequest struct {
-	// The filter conditions for querying Executors.
+	// The filter conditions for querying executors.
 	Filter *ListExecutorEventsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The page number.
-	//
-	// Minimum value: 1.
-	//
-	// Default value: 1.
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Default value: 50. Maximum value: 100.
+	// The paging Settings for the number of entries per page in a paged query. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//
@@ -83,7 +79,7 @@ func (s *ListExecutorEventsRequest) Validate() error {
 }
 
 type ListExecutorEventsRequestFilter struct {
-	// The list of Executor IDs. A maximum of 100 entries are supported.
+	// The list of executor IDs. You can specify up to 100 IDs.
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
 	// The job ID.
 	//
@@ -91,7 +87,7 @@ type ListExecutorEventsRequestFilter struct {
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The runtime event level. Valid values:
+	// The level of the runtime event. Valid values:
 	//
 	// - Normal
 	//
@@ -103,13 +99,13 @@ type ListExecutorEventsRequestFilter struct {
 	//
 	// Normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Events that occurred after this time. The value is a UNIX timestamp converted from the local time of the region (UTC+8 for Chinese mainland regions).
+	// The start time of the events. Events that occur after this time are returned. The time must be a UNIX timestamp based on the time zone of the region (UTC+8 for the Chinese site).
 	//
 	// example:
 	//
 	// 1703820113
 	TimeAfter *int64 `json:"TimeAfter,omitempty" xml:"TimeAfter,omitempty"`
-	// Events that occurred before this time. The value is a UNIX timestamp converted from the local time of the region (UTC+8 for Chinese mainland regions).
+	// The end time of the events. Events that occur before this time are returned. The time must be a UNIX timestamp based on the time zone of the region (UTC+8 for the Chinese site).
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iGetImageResponseBody interface {
 }
 
 type GetImageResponseBody struct {
-	// Image details.
+	// The image details.
 	Image *GetImageResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded. Valid values:
+	// Indicates whether the process of executing the command and obtaining the result is successful. Valid values:
 	//
-	// - true: succeeded.
+	// - true: Successful.
 	//
-	// - false: failed.
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of items returned for this request.
+	// The total number of items that meet the request conditions.
 	//
 	// example:
 	//
@@ -100,24 +100,31 @@ func (s *GetImageResponseBody) Validate() error {
 }
 
 type GetImageResponseBodyImage struct {
+	// The list of status information of the image in additional regions.
 	AdditionalRegionsInfo []*GetImageResponseBodyImageAdditionalRegionsInfo `json:"AdditionalRegionsInfo,omitempty" xml:"AdditionalRegionsInfo,omitempty" type:"Repeated"`
-	AppId                 *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Container image configuration details.
+	// The application ID.
+	//
+	// example:
+	//
+	// ci-vm-0123456789abcdef
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The configuration details of the container image.
 	ContainerImageSpec *GetImageResponseBodyImageContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
-	// Image creation time.
+	// The time when the image was created. The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format, where Z represents UTC.
 	//
 	// example:
 	//
 	// 2022-12-23T09:51:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Image description.
+	// The image description.
 	//
 	// example:
 	//
-	// 应用测试镜像。
-	Description  *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Application test image
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The application document information associated with the image.
 	DocumentInfo *GetImageResponseBodyImageDocumentInfo `json:"DocumentInfo,omitempty" xml:"DocumentInfo,omitempty" type:"Struct"`
-	// Image type.
+	// The image type.
 	//
 	// This parameter is required.
 	//
@@ -125,22 +132,27 @@ type GetImageResponseBodyImage struct {
 	//
 	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// Image name.
+	// The image name.
 	//
 	// example:
 	//
 	// app-image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Image size, in GiB.
+	// The image size. Unit: GiB.
 	//
 	// example:
 	//
 	// 40 GiB
-	Size   *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The image status.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Virtual machine image configuration details.
+	// The configuration details of the virtual machine image.
 	VMImageSpec *GetImageResponseBodyImageVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
-	// Version.
+	// The version.
 	//
 	// example:
 	//
@@ -293,9 +305,24 @@ func (s *GetImageResponseBodyImage) Validate() error {
 }
 
 type GetImageResponseBodyImageAdditionalRegionsInfo struct {
-	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image ID in the additional region.
+	//
+	// example:
+	//
+	// m-f8abcdef0123456789ab
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The additional region ID.
+	//
+	// example:
+	//
+	// cn-heyuan
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the image in the additional region.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetImageResponseBodyImageAdditionalRegionsInfo) String() string {
@@ -338,38 +365,53 @@ func (s *GetImageResponseBodyImageAdditionalRegionsInfo) Validate() error {
 }
 
 type GetImageResponseBodyImageContainerImageSpec struct {
+	// The architecture type.
+	//
+	// example:
+	//
+	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Indicates whether the image is stored in an ACR Enterprise Edition instance. Valid values:
+	// Indicates whether the image is stored in Container Registry Enterprise Edition. Valid values:
 	//
-	// - True: yes.
+	// - True: Yes.
 	//
-	// - False: no.
+	// - False: No.
 	//
 	// example:
 	//
 	// True
 	IsACREnterprise *bool `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
-	// Indicates whether the image is stored in an Alibaba Cloud Container Registry (ACR) instance. Valid values:
+	// Indicates whether the image is stored in Container Registry. Valid values:
 	//
-	// - True: yes.
+	// - True: Yes.
 	//
-	// - False: no.
+	// - False: No.
 	//
 	// example:
 	//
 	// True
-	IsACRRegistry *bool   `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
-	OsTag         *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
-	Platform      *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// Authentication for a private image registry.
+	IsACRRegistry *bool `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
+	// The specific version identifier of the operating system.
+	//
+	// example:
+	//
+	// CentOS  7.6 64 bit
+	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	// The platform type.
+	//
+	// example:
+	//
+	// CentOS
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The authentication information for the private image registry.
 	RegistryCredential *GetImageResponseBodyImageContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
-	// ACR Enterprise Edition instance ID.
+	// The ID of the Container Registry Enterprise Edition instance.
 	//
 	// example:
 	//
 	// cri-xyz795ygf8k9****
 	RegistryCriId *string `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
-	// Container image registry URL.
+	// The access URL of the container image.
 	//
 	// example:
 	//
@@ -467,19 +509,19 @@ func (s *GetImageResponseBodyImageContainerImageSpec) Validate() error {
 }
 
 type GetImageResponseBodyImageContainerImageSpecRegistryCredential struct {
-	// Password for the username.
+	// The logon password.
 	//
 	// example:
 	//
 	// userpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Registry server address.
+	// The server address of the image registry.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// Username to log on to the registry.
+	// The logon username.
 	//
 	// example:
 	//
@@ -527,8 +569,23 @@ func (s *GetImageResponseBodyImageContainerImageSpecRegistryCredential) Validate
 }
 
 type GetImageResponseBodyImageDocumentInfo struct {
-	Document     *string `json:"Document,omitempty" xml:"Document,omitempty"`
-	DocumentId   *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// The content of the application document.
+	//
+	// example:
+	//
+	// VGhpcyBpcyBhbiBleGFtcGxlIGFwcGxpY2F0aW9uIGRvY3VtZW50Lg==
+	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// The application document ID.
+	//
+	// example:
+	//
+	// 1001
+	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// The encoding method of the application document. Base64 and PlainText are supported.
+	//
+	// example:
+	//
+	// Base64
 	EncodingMode *string `json:"EncodingMode,omitempty" xml:"EncodingMode,omitempty"`
 }
 
@@ -572,25 +629,25 @@ func (s *GetImageResponseBodyImageDocumentInfo) Validate() error {
 }
 
 type GetImageResponseBodyImageVMImageSpec struct {
-	// Architecture type.
+	// The architecture type.
 	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Image ID.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-uf60twafjtaart******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// OS version identifier.
+	// The specific version identifier of the operating system.
 	//
 	// example:
 	//
 	// CentOS  7.6 64 bit
 	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
-	// Platform type.
+	// The platform type.
 	//
 	// example:
 	//

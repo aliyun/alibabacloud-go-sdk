@@ -28,13 +28,13 @@ type DescribeJobResultsRequest struct {
 	//
 	// example:
 	//
-	// 0_1
+	// 0
 	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	// The encoding method for the CommandContent and Output fields in the response. Valid values:
+	// Specifies the encoding method for the CommandContent and Output fields in the response. Valid values:
 	//
-	// - PlainText: returns the original script content and output.
+	// - PlainText: Returns the original script content and output.
 	//
-	// - Base64: returns Base64-encoded script content and output.
+	// - Base64: Returns the Base64-encoded script content and output.
 	//
 	// Default value: Base64.
 	//
@@ -48,7 +48,7 @@ type DescribeJobResultsRequest struct {
 	//
 	// job-xxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum size of the log. Unit: bytes. Valid values: 1 to 1048576 (1 MB).
+	// The limit on the total size of the logs. Unit: bytes. Valid values: 1 to 1048576 (1 MB).
 	//
 	// example:
 	//

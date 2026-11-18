@@ -16,13 +16,13 @@ type iGetJobRecordDurationResponseBody interface {
 }
 
 type GetJobRecordDurationResponseBody struct {
-	// The job record retention period, in days. Valid values: 1 to 30. Default value: 30.
+	// The retention period of job records, in days. Valid values: 1 to 30. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	JobRecordDuration *int64 `json:"JobRecordDuration,omitempty" xml:"JobRecordDuration,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

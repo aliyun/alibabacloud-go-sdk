@@ -24,31 +24,31 @@ type iAddImageRequest interface {
 }
 
 type AddImageRequest struct {
-	// The configurations of the container image.
+	// The container image configuration.
 	ContainerImageSpec *AddImageRequestContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
-	// The description of the image.
+	// The image description.
 	//
 	// example:
 	//
 	// Test image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the images. Valid values:
+	// The image type. Valid values:
 	//
-	// 	- VM: virtual machine image.
+	// - VM: virtual machine image
 	//
-	// 	- Container: the container image.
+	// - Container: container image
 	//
 	// example:
 	//
 	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The version of the image.
+	// The image version.
 	//
 	// example:
 	//
 	// V1.0
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The name of the custom image.
+	// The image name.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type AddImageRequest struct {
 	//
 	// app-image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The image configuration of the virtual machine.
+	// The virtual machine image configuration.
 	VMImageSpec *AddImageRequestVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
 }
 
@@ -137,35 +137,35 @@ func (s *AddImageRequest) Validate() error {
 }
 
 type AddImageRequestContainerImageSpec struct {
-	// Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+	// Specifies whether the image is stored in Alibaba Cloud Container Registry Enterprise Edition. Valid values:
 	//
-	// 	- True
+	// - True: yes
 	//
-	// 	- False
+	// - False: no
 	//
 	// example:
 	//
 	// True
 	IsACREnterprise *bool `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
-	// Whether it is an Alibaba Cloud image repository.
+	// Specifies whether the image is stored in Alibaba Cloud Container Registry. Valid values:
 	//
-	// 	- True
+	// - True: yes
 	//
-	// 	- False
+	// - False: no
 	//
 	// example:
 	//
 	// True
 	IsACRRegistry *bool `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
-	// The authentication of the private image repository.
+	// The authentication credentials for the private image repository.
 	RegistryCredential *AddImageRequestContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
-	// The ID of the Container Registry Enterprise Edition image repository.
+	// The ID of the Container Registry Enterprise Edition instance.
 	//
 	// example:
 	//
 	// cri-xyz795ygf8k9****
 	RegistryCriId *string `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
-	// The endpoint of the container image.
+	// The access URL of the container image.
 	//
 	// example:
 	//
@@ -236,19 +236,19 @@ func (s *AddImageRequestContainerImageSpec) Validate() error {
 }
 
 type AddImageRequestContainerImageSpecRegistryCredential struct {
-	// The password of the logon user.
+	// The logon password.
 	//
 	// example:
 	//
 	// userpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The registered address of the image repository.
+	// The registry address of the image repository.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The username of the logon user.
+	// The logon username.
 	//
 	// example:
 	//

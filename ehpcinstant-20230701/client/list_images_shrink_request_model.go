@@ -26,11 +26,11 @@ type iListImagesShrinkRequest interface {
 }
 
 type ListImagesShrinkRequest struct {
-	// The source of the image. Valid values:
+	// The image source. Valid values:
 	//
-	// 	- Public: public images provided by Alibaba Cloud.
+	// - Public: public images provided by Alibaba Cloud
 	//
-	// 	- Custom: the custom image that you added.
+	// - Custom: custom images added by you
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListImagesShrinkRequest struct {
 	ImageIdsShrink *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
 	// The array of image names.
 	ImageNamesShrink *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
-	// The type of the images. Valid values:
+	// The image type. Valid values:
 	//
-	// 	- VM: virtual machine image.
+	// - VM: virtual machine image
 	//
-	// 	- Container: the container image.
+	// - Container: container image
 	//
-	// Default value: VM
+	// Default value: VM.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type ListImagesShrinkRequest struct {
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	// The query mode. Valid values:
 	//
-	// 	- List: queries the list of all corresponding image versions.
+	// - List: Queries the list of all image versions.
 	//
-	// 	- Merge: merges images to query the latest version list.
+	// - Merge: Queries the list of the latest versions for each image.
 	//
 	// example:
 	//
 	// Merge
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of the page to return.\\
+	// The current page number.
 	//
 	// Default value: 1.
 	//
@@ -70,7 +70,7 @@ type ListImagesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of pieces per page.\\
+	// The number of entries per page.
 	//
 	// Default value: 20.
 	//

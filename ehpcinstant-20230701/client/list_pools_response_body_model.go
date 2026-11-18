@@ -22,21 +22,21 @@ type iListPoolsResponseBody interface {
 }
 
 type ListPoolsResponseBody struct {
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Maximum value: 50. Default value: 10.
+	// The number of entries per page in a paging query. Maximum value: 50. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// An array of resource pools.
+	// The list of resource pools.
 	PoolList []*ListPoolsResponseBodyPoolList `json:"PoolList,omitempty" xml:"PoolList,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,33 +117,33 @@ func (s *ListPoolsResponseBody) Validate() error {
 }
 
 type ListPoolsResponseBodyPoolList struct {
-	// The time when the resource pool was created.
+	// The time when the resource pool was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-04-20 11:09:59
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the resource pool is the default pool. Valid values:
+	// Specifies whether the resource pool is the default resource pool. Valid values:
 	//
-	// - **true**: The resource pool is the default pool.
+	// - **true**: Yes.
 	//
-	// - **false**: The resource pool is not the default pool.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The number of running executor nodes in the resource pool.
+	// The number of running executor nodes in a resource pool.
 	//
 	// example:
 	//
 	// 100
 	MaxExecutorNum *int32 `json:"MaxExecutorNum,omitempty" xml:"MaxExecutorNum,omitempty"`
-	// The name of the resource pool.
+	// The resource pool name.
 	//
-	// - Maximum length: 15 characters.
+	// - The name can be up to 15 characters in length.
 	//
-	// - Allowed characters: digits, letters, underscores (_), and periods (.).
+	// - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ type ListPoolsResponseBodyPoolList struct {
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
 	// The priority of the resource pool.
 	//
-	// - Valid values: 1 to 99. Default value: 1 (lowest priority).
+	// - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
 	//
-	// - Jobs in a resource pool with a higher priority are scheduled before those in a pool with a lower priority. The pool\\"s priority overrides the priority of an individual job.
+	// - Jobs submitted to a resource pool with a higher priority level are scheduled before pending jobs in a resource pool with a lower priority level. The priority level of a resource pool takes precedence over the priority of a job.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListPoolsResponseBodyPoolList struct {
 	//
 	// policy-xxx
 	SchedulingPolicyId *string `json:"SchedulingPolicyId,omitempty" xml:"SchedulingPolicyId,omitempty"`
-	// The status of the resource pool. Valid values:
+	// The resource pool status. Valid values:
 	//
 	// - Creating: The resource pool is being created.
 	//
@@ -173,16 +173,17 @@ type ListPoolsResponseBodyPoolList struct {
 	//
 	// - Deleting: The resource pool is being deleted.
 	//
-	// - Working: The resource pool is operational.
+	// - Working: The resource pool is working.
 	//
-	// - Deleted: The resource pool has been deleted.
+	// - Deleted: The resource pool is deleted.
 	//
 	// example:
 	//
 	// Working
-	Status *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListPoolsResponseBodyPoolListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the resource pool was last updated.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag information.
+	Tags []*ListPoolsResponseBodyPoolListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The time when the resource pool was updated. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -293,10 +294,14 @@ func (s *ListPoolsResponseBodyPoolList) Validate() error {
 }
 
 type ListPoolsResponseBodyPoolListTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// TestValue

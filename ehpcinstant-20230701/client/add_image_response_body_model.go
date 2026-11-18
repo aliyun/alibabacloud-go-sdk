@@ -30,11 +30,11 @@ type AddImageResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the command execution and result retrieval were successful. Valid values:
 	//
-	// 	- true
+	// - true: successful
 	//
-	// 	- false
+	// - false: failed
 	//
 	// example:
 	//

@@ -22,17 +22,13 @@ type iListJobsShrinkRequest interface {
 type ListJobsShrinkRequest struct {
 	// The filter conditions for querying jobs.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The current page number.
-	//
-	// Start value: 1
-	//
-	// Default value: 1
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is 50. The maximum value is 100.
+	// The paging Settings for the number of entries per page in a paged query. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//

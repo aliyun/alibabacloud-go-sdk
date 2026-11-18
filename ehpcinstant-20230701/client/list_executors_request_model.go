@@ -20,13 +20,13 @@ type iListExecutorsRequest interface {
 type ListExecutorsRequest struct {
 	// The filter conditions for querying executors.
 	Filter *ListExecutorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The current page number.<br>Start value: 1<br>Default value: 1<br><br>
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. Default value: 50. Maximum value: 100.
+	// The number of entries per page in the paging Settings for a paged query. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *ListExecutorsRequest) Validate() error {
 }
 
 type ListExecutorsRequestFilter struct {
-	// A list of executor IDs. You can specify up to 100 IDs.
+	// The list of executor IDs. A maximum of 100 IDs are supported.
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
 	// The executor image.
 	//
@@ -87,37 +87,41 @@ type ListExecutorsRequestFilter struct {
 	//
 	// m-f8z0dfa96luxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// A list of private IP addresses. You can specify up to 100 IP addresses.
+	// The list of internal IP addresses. A maximum of 100 IP addresses are supported.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The job name. Fuzzy queries are supported.
+	// The job name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The job template ID.
+	//
 	// example:
 	//
 	// jt-xxxx
 	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
+	// The resource pool name.
+	//
 	// example:
 	//
 	// MyPool
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
-	// A list of executor statuses.
+	// The list of executor statuses.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The jobs submitted after this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
+	// The time after which the job was submitted. The time is converted to a UNIX timestamp based on the time zone of the region. For regions in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	// The jobs submitted before this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
+	// The time before which the job was submitted. The time is converted to a UNIX timestamp based on the time zone of the region. For regions in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
 	// 1703820113
 	TimeCreatedBefore *int32 `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iListExecutorsShrinkRequest interface {
 type ListExecutorsShrinkRequest struct {
 	// The filter conditions for querying executors.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The current page number.<br>Start value: 1<br>Default value: 1<br><br>
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. Default value: 50. Maximum value: 100.
+	// The number of entries per page in the paging Settings for a paged query. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//

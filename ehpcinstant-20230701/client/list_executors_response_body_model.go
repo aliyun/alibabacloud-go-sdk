@@ -24,13 +24,13 @@ type iListExecutorsResponseBody interface {
 type ListExecutorsResponseBody struct {
 	// The list of executors.
 	Executors []*ListExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in the paging Settings for a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListExecutorsResponseBody struct {
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListExecutorsResponseBody) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutors struct {
-	// The resource type.
+	// The resource type. Valid values:
 	//
 	// - Standard: Standard.
 	//
-	// - Dedicated: Dedicated. This type requires whitelisting.
+	// - Dedicated: Dedicated. A whitelist is required.
 	//
-	// - Economic: Economy. This type requires whitelisting.
+	// - Economic: Economic. A whitelist is required.
 	//
 	// example:
 	//
@@ -135,25 +135,25 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// Alphafold3
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The executor number.
+	// The executor index.
 	//
 	// example:
 	//
 	// 0
 	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	// The duration for which the compute resources are reserved.
+	// The retention period of compute resources.
 	//
 	// example:
 	//
 	// 24
 	BlockDuration *int32 `json:"BlockDuration,omitempty" xml:"BlockDuration,omitempty"`
-	// The creation time.
+	// The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-02-20 10:04:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time.
+	// The end time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -165,11 +165,15 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// job-xxxx-Task0-1
 	ExecutorId *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	// The expiration time.
+	// The expiration time. The time is returned in the YYYY-MM-DD HH:mm:ss format based on the UTC+8 time zone.
+	//
+	// example:
+	//
+	// 202******:00
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// A list of public IP addresses of the node.
+	// The list of public IP addresses of the node.
 	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
-	// A list of hostnames.
+	// The list of hostnames.
 	HostName []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
 	// The executor image.
 	//
@@ -177,7 +181,7 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// m-f8z0dfa96luxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// A list of private IP addresses.
+	// The list of internal IP addresses.
 	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
 	// The job ID.
 	//
@@ -190,8 +194,9 @@ type ListExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// testJob
-	JobName     *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Preemptible *bool   `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// Indicates whether the execution instance is preemptible.
+	Preemptible *bool `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
 	// The resource information.
 	Resource *ListExecutorsResponseBodyExecutorsResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// The resource type.
@@ -200,35 +205,35 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// ECI
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start time.
+	// The start time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-02-20 10:04:13
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the executor. Possible values:
+	// The executor status. Valid values:
 	//
-	// - Pending: The executor is waiting in a queue.
+	// - Pending: Queued.
 	//
-	// - Initing: The executor is being initialized.
+	// - Initing: Initializing.
 	//
-	// - Succeeded: The executor ran successfully.
+	// - Succeeded: Succeeded.
 	//
-	// - Failed: The executor failed to run.
+	// - Failed: Failed.
 	//
-	// - Running: The executor is running.
+	// - Running: Running.
 	//
-	// - Exception: A scheduling error occurred.
+	// - Exception: Scheduling exception.
 	//
-	// - Retrying: The system is retrying the executor.
+	// - Retrying: Retrying.
 	//
-	// - Expired: The executor timed out.
+	// - Expired: Timed out.
 	//
-	// - Suspended: The job is in hibernation.
+	// - Suspended: Job suspended.
 	//
-	// - Restarting: The job is restarting.
+	// - Restarting: Job restarting.
 	//
-	// - Deleted: The executor is deleted.
+	// - Deleted: Deleted.
 	//
 	// example:
 	//
@@ -240,7 +245,7 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// ExecutorReady
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// A list of executor tags.
+	// The list of executor tags.
 	Tags []*ListExecutorsResponseBodyExecutorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The task name.
 	//
@@ -254,7 +259,7 @@ type ListExecutorsResponseBodyExecutors struct {
 	//
 	// true
 	TaskSustainable *bool `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -520,13 +525,13 @@ func (s *ListExecutorsResponseBodyExecutors) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutorsResource struct {
-	// The number of CPU cores.
+	// The number of CPUs.
 	//
 	// example:
 	//
 	// 1
 	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// An array of cloud disks.
+	// The array of cloud disks.
 	Disks []*ListExecutorsResponseBodyExecutorsResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	// The instance type of the runtime environment.
 	//
@@ -534,7 +539,7 @@ type ListExecutorsResponseBodyExecutorsResource struct {
 	//
 	// ecs.c7a.8xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The total amount of memory resources. Unit: GiB.
+	// The total memory resources. Unit: GiB.
 	//
 	// example:
 	//
@@ -600,17 +605,17 @@ func (s *ListExecutorsResponseBodyExecutorsResource) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutorsResourceDisks struct {
-	// The size of the cloud disk.
+	// The cloud disk size.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The type of the cloud disk. The following types are supported:
+	// The cloud disk type. Valid values:
 	//
-	// - System: The system disk.
+	// - System: System cloud disk.
 	//
-	// - Data: The data disk.
+	// - Data: Data cloud disk.
 	//
 	// example:
 	//
@@ -649,13 +654,13 @@ func (s *ListExecutorsResponseBodyExecutorsResourceDisks) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutorsTags struct {
-	// The tag key of the executor.
+	// The executor tag key.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the executor.
+	// The executor tag value.
 	//
 	// example:
 	//

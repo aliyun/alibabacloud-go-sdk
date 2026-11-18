@@ -14,7 +14,7 @@ type iUpdateActionPlanResponseBody interface {
 }
 
 type UpdateActionPlanResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetAppVersionsRequest interface {
 }
 
 type GetAppVersionsRequest struct {
-	// The application name.
+	// The name of the application.
 	//
 	// This parameter is required.
 	//
@@ -30,33 +30,33 @@ type GetAppVersionsRequest struct {
 	//
 	// V-Ray
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The source of the image. Valid values:
+	// The image source. Valid values:
 	//
-	// Public: public images provided by Alibaba Cloud.
+	// - Public: public images provided by Alibaba Cloud.
 	//
-	// Custom: the custom image that you added.
+	// - Custom: custom images added by you.
 	//
 	// example:
 	//
 	// Public
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	// The type of the images. Valid values:
+	// The image type. Valid values:
 	//
-	// VM: Virtual Machine Image
+	// - VM: virtual machine images.
 	//
-	// Container: container image
+	// - Container: container images.
 	//
 	// example:
 	//
 	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//

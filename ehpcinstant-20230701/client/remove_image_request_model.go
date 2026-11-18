@@ -24,11 +24,11 @@ type RemoveImageRequest struct {
 	//
 	// m-bp14wakr1rkxtb******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the images. Valid values:
+	// The image type. Valid values:
 	//
-	// 	- VM: Virtual Machine Image
+	// - VM: virtual machine image
 	//
-	// 	- Container: container image
+	// - Container: container image
 	//
 	// example:
 	//

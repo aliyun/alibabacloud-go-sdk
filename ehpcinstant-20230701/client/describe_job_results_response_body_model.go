@@ -22,13 +22,13 @@ type DescribeJobResultsResponseBody struct {
 	//
 	// - For Linux instances, this is the exit code of the shell command.
 	//
-	// - For Windows instances, this is the exit code of the Bat or PowerShell command.
+	// - For Windows instances, this is the exit code of the batch or PowerShell command.
 	//
 	// example:
 	//
 	// 0
 	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// The output of the command execution. If ContentEncoding is set to PlainText, the original output is returned. If ContentEncoding is set to Base64, the Base64-encoded output is returned.
+	// The output generated after the command is executed. If ContentEncoding is set to PlainText, the original output is returned. If ContentEncoding is set to Base64, the Base64-encoded output is returned.
 	//
 	// example:
 	//

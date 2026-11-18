@@ -40,13 +40,13 @@ type CreateActionPlanShrinkRequest struct {
 	//
 	// TestActionPlan
 	ActionPlanName *string `json:"ActionPlanName,omitempty" xml:"ActionPlanName,omitempty"`
-	// The resource type.
+	// The resource allocation specification. Valid values:
 	//
-	// - Standard: Standard.
+	// - Standard: standard
 	//
-	// - Dedicated: Dedicated. This type is available only to users in the whitelist.
+	// - Dedicated: dedicated. To use this value, you must be added to the whitelist.
 	//
-	// - Economic: Economy. This type is available only to users in the whitelist.
+	// - Economic: economy. To use this value, you must be added to the whitelist.
 	//
 	// example:
 	//
@@ -58,53 +58,51 @@ type CreateActionPlanShrinkRequest struct {
 	//
 	// ci-vm-rYfypJKwlN9Y
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The desired size of the resource for the execution plan. For example, if you set ResourceType to VcpuCapacity, this parameter specifies the number of vCPUs that you want to maintain for the execution plan.
+	// The desired resource capacity for the execution plan. If ResourceType is set to VCpuCapacity, this parameter specifies the expected number of vCPUs to maintain, such as 10000.
 	//
 	// example:
 	//
 	// 1000
 	DesiredCapacity *float64 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// The scheduling interval of the execution plan. Unit: minutes. Valid values: 10 to 10080. Default value: 60.
+	//
 	// example:
 	//
 	// 60
 	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
-	// The computing power level. This parameter is valid only when you set AllocationSpec to Economic. The following types are supported:
+	// The computing power level. This parameter takes effect only when the resource type is set to Economic. Valid values:
 	//
-	// - General: General-purpose.
+	// - General: general-purpose
 	//
-	// - Performance: Compute-optimized.
+	// - Performance: performance-optimized
 	//
-	// Default value: General
+	// Default value: General.
 	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The pre-execution script. The script must be Base64-encoded.
+	// The prolog script. The script must be Base64-encoded.
 	//
 	// example:
 	//
 	// bHMgLWFsCmxzIC1hbGggfCB3YyAtbA==
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	// A list of regional resource configurations for the runtime environment of the execution plan.
+	// The list of region-specific resource configurations for the runtime environment of the execution plan.
 	RegionsShrink *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	// The type of resource for the execution target. The value can be the vCPU capacity or the number of executor nodes. Valid values:
+	// The type of the target resource for the execution plan. Valid values:
 	//
 	// - VCpuCapacity: vCPU capacity
 	//
-	// - ExecutorCapacity: number of executor nodes
+	// - ExecutorCapacity: number of execution nodes
 	//
 	// example:
 	//
 	// VCpuCapacity
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// A list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
-	//
-	// example:
-	//
-	// 1000
+	// The list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The script to run the job. The script must be Base64-encoded.
+	// The script used to run the job. The script must be Base64-encoded.
 	//
 	// example:
 	//

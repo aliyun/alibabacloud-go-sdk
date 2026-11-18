@@ -44,7 +44,7 @@ type ListJobExecutorsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListJobExecutorsResponseBody struct {
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The job name.
+	// The task name.
 	//
 	// example:
 	//
 	// Task0
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type ListJobExecutorsResponseBodyExecutorStatus struct {
 	//
 	// 1
 	Initing *int32 `json:"Initing,omitempty" xml:"Initing,omitempty"`
-	// The number of executors in the queued state.
+	// The number of executors in the pending state.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type ListJobExecutorsResponseBodyExecutorStatus struct {
 	//
 	// 1
 	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-	// The number of executors in the hibernation state.
+	// The number of executors in the hibernated state.
 	//
 	// example:
 	//
@@ -321,35 +321,35 @@ func (s *ListJobExecutorsResponseBodyExecutorStatus) Validate() error {
 type ListJobExecutorsResponseBodyExecutors struct {
 	// The resource type. Valid values:
 	//
-	// - Standard: standard.
+	// - Standard: Standard.
 	//
-	// - Dedicated: dedicated. You must be added to the whitelist to use this type.
+	// - Dedicated: Dedicated. Requires whitelist authorization.
 	//
-	// - Economic: economy. You must be added to the whitelist to use this type.
+	// - Economic: Economic. Requires whitelist authorization.
 	//
 	// example:
 	//
 	// Standard
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
-	// The array index of the executor.
+	// The executor index.
 	//
 	// example:
 	//
 	// 0
 	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	// The retention duration of compute resources.
+	// The retention period of the compute resource.
 	//
 	// example:
 	//
 	// 24
 	BlockDuration *int32 `json:"BlockDuration,omitempty" xml:"BlockDuration,omitempty"`
-	// The creation time.
+	// The creation time. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-02-20 10:04:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time.
+	// The end time. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -360,16 +360,22 @@ type ListJobExecutorsResponseBodyExecutors struct {
 	// example:
 	//
 	// job-xxxx-Task0-1
-	ExecutorId     *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	ExecutorId *string `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	// The expiration time of the execution instance, returned in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+	//
+	// example:
+	//
+	// 2026-10-21 00:00:00
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The list of node public IP addresses.
+	// The list of public IP addresses of the node.
 	ExternalIpAddress []*string `json:"ExternalIpAddress,omitempty" xml:"ExternalIpAddress,omitempty" type:"Repeated"`
 	// The array of node hostnames.
 	HostName []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
 	// The list of node IP addresses.
-	IpAddress   []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
-	Preemptible *bool     `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
-	// The start time.
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	// Indicates whether the execution instance is preemptible.
+	Preemptible *bool `json:"Preemptible,omitempty" xml:"Preemptible,omitempty"`
+	// The start time. The example uses the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -377,27 +383,27 @@ type ListJobExecutorsResponseBodyExecutors struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The executor status. Valid values:
 	//
-	// - Pending: queued.
+	// - Pending: Queued.
 	//
-	// - Initing: initializing.
+	// - Initing: Initializing.
 	//
-	// - Succeed: succeeded.
+	// - Succeed: Succeeded.
 	//
-	// - Failed: failed.
+	// - Failed: Failed.
 	//
-	// - Running: running.
+	// - Running: Running.
 	//
-	// - Exception: scheduling exception.
+	// - Exception: Scheduling exception.
 	//
-	// - Retrying: retrying.
+	// - Retrying: Retrying.
 	//
-	// - Expired: timed out.
+	// - Expired: Timed out.
 	//
-	// - Suspended: in hibernation.
+	// - Suspended: Hibernated.
 	//
-	// - Restarting: restarting.
+	// - Restarting: Restarting.
 	//
-	// - Deleted: deleted.
+	// - Deleted: Deleted.
 	//
 	// example:
 	//

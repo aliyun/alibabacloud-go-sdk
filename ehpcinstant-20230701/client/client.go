@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,24 +25,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("ehpcinstant.cn-shenzhen.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("ehpcinstant.cn-wulanchabu.aliyuncs.com"),
-		"cn-beijing":     dara.String("ehpcinstant.cn-beijing.aliyuncs.com"),
-		"ap-northeast-2": dara.String("ehpcinstant.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1": dara.String("ehpcinstant.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":     dara.String("ehpcinstant.cn-chengdu.aliyuncs.com"),
-		"cn-shanghai":    dara.String("ehpcinstant.cn-shanghai.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("ehpcinstant.cn-guangzhou.aliyuncs.com"),
-		"cn-hongkong":    dara.String("ehpcinstant.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan":      dara.String("ehpcinstant.cn-heyuan.aliyuncs.com"),
-		"ap-southeast-1": dara.String("ehpcinstant.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3": dara.String("ehpcinstant.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5": dara.String("ehpcinstant.ap-southeast-5.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("ehpcinstant.cn-hangzhou.aliyuncs.com"),
-		"eu-central-1":   dara.String("ehpcinstant.eu-central-1.aliyuncs.com"),
+	client.ProductId = dara.String("EhpcInstant")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
 	}
+
+	client.Spi = gatewayClient
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -75,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Add a custom image.
+// Adds a custom image.
 //
 // @param tmpReq - AddImageRequest
 //
@@ -149,7 +140,7 @@ func (client *Client) AddImageWithOptions(tmpReq *AddImageRequest, runtime *dara
 
 // Summary:
 //
-// Add a custom image.
+// Adds a custom image.
 //
 // @param request - AddImageRequest
 //
@@ -167,11 +158,11 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 
 // Summary:
 //
-// Creates an E-HPC execution plan.
+// Creates an execution plan for Elastic High Performance Computing (E-HPC).
 //
 // Description:
 //
-// *Before you call this operation, ensure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO)**&#x20;of E-HPC Instant.**
+// *Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/e-hpc/e-hpc-instant/product-overview/billing-overview) of E-HPC Instant before you call this operation.**
 //
 // @param tmpReq - CreateActionPlanRequest
 //
@@ -265,11 +256,11 @@ func (client *Client) CreateActionPlanWithOptions(tmpReq *CreateActionPlanReques
 
 // Summary:
 //
-// Creates an E-HPC execution plan.
+// Creates an execution plan for Elastic High Performance Computing (E-HPC).
 //
 // Description:
 //
-// *Before you call this operation, ensure that you understand the billing methods and&#x20;**[**pricing**](https://help.aliyun.com/zh/e-hpc/e-hpc-instant/product-overview/billing-overview?spm=a2c4g.11186623.help-menu-57664.d_0_2_0.5fdd28422y6UvO)**&#x20;of E-HPC Instant.**
+// *Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/e-hpc/e-hpc-instant/product-overview/billing-overview) of E-HPC Instant before you call this operation.**
 //
 // @param request - CreateActionPlanRequest
 //
@@ -386,6 +377,82 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateJobResponse{}
 	_body, _err := client.CreateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a job template.
+//
+// @param tmpReq - CreateJobTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateJobTemplateResponse
+func (client *Client) CreateJobTemplateWithOptions(tmpReq *CreateJobTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateJobTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.JobTemplateConfig) {
+		request.JobTemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobTemplateConfig, dara.String("JobTemplateConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobTemplateConfigShrink) {
+		query["JobTemplateConfig"] = request.JobTemplateConfigShrink
+	}
+
+	if !dara.IsNil(request.JobTemplateDescription) {
+		query["JobTemplateDescription"] = request.JobTemplateDescription
+	}
+
+	if !dara.IsNil(request.JobTemplateName) {
+		query["JobTemplateName"] = request.JobTemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateJobTemplate"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a job template.
+//
+// @param request - CreateJobTemplateRequest
+//
+// @return CreateJobTemplateResponse
+func (client *Client) CreateJobTemplate(request *CreateJobTemplateRequest) (_result *CreateJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateJobTemplateResponse{}
+	_body, _err := client.CreateJobTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -625,6 +692,68 @@ func (client *Client) DeleteJobRecords(request *DeleteJobRecordsRequest) (_resul
 
 // Summary:
 //
+// Deletes a job template.
+//
+// @param request - DeleteJobTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJobTemplateResponse
+func (client *Client) DeleteJobTemplateWithOptions(request *DeleteJobTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobTemplateId) {
+		query["JobTemplateId"] = request.JobTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteJobTemplate"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a job template.
+//
+// @param request - DeleteJobTemplateRequest
+//
+// @return DeleteJobTemplateResponse
+func (client *Client) DeleteJobTemplate(request *DeleteJobTemplateRequest) (_result *DeleteJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteJobTemplateResponse{}
+	_body, _err := client.DeleteJobTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes one or more jobs from a specified cluster.
 //
 // @param tmpReq - DeleteJobsRequest
@@ -767,7 +896,7 @@ func (client *Client) DeletePool(request *DeletePoolRequest) (_result *DeletePoo
 
 // Summary:
 //
-// You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
+// Queries the monitoring time series dataset of a job by specifying the job array index and monitoring metric parameters.
 //
 // @param tmpReq - DescribeJobMetricDataRequest
 //
@@ -829,7 +958,7 @@ func (client *Client) DescribeJobMetricDataWithOptions(tmpReq *DescribeJobMetric
 
 // Summary:
 //
-// You can query the monitoring time series dataset of a job by specifying the job array index and query metric parameters.
+// Queries the monitoring time series dataset of a job by specifying the job array index and monitoring metric parameters.
 //
 // @param request - DescribeJobMetricDataRequest
 //
@@ -847,7 +976,7 @@ func (client *Client) DescribeJobMetricData(request *DescribeJobMetricDataReques
 
 // Summary:
 //
-// Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
+// Queries all real-time monitoring metrics for a job array by specifying a list of job array indexes.
 //
 // @param tmpReq - DescribeJobMetricLastRequest
 //
@@ -905,7 +1034,7 @@ func (client *Client) DescribeJobMetricLastWithOptions(tmpReq *DescribeJobMetric
 
 // Summary:
 //
-// Queries all instant monitoring metrics in the job array list by specifying a specific job array index list.
+// Queries all real-time monitoring metrics for a job array by specifying a list of job array indexes.
 //
 // @param request - DescribeJobMetricLastRequest
 //
@@ -1067,7 +1196,7 @@ func (client *Client) GetActionPlan(request *GetActionPlanRequest) (_result *Get
 
 // Summary:
 //
-// Obtains the application version list.
+// Retrieves a list of application versions.
 //
 // @param request - GetAppVersionsRequest
 //
@@ -1127,7 +1256,7 @@ func (client *Client) GetAppVersionsWithOptions(request *GetAppVersionsRequest, 
 
 // Summary:
 //
-// Obtains the application version list.
+// Retrieves a list of application versions.
 //
 // @param request - GetAppVersionsRequest
 //
@@ -1145,7 +1274,7 @@ func (client *Client) GetAppVersions(request *GetAppVersionsRequest) (_result *G
 
 // Summary:
 //
-// Get image details.
+// Retrieves the details of an image.
 //
 // @param tmpReq - GetImageRequest
 //
@@ -1207,7 +1336,7 @@ func (client *Client) GetImageWithOptions(tmpReq *GetImageRequest, runtime *dara
 
 // Summary:
 //
-// Get image details.
+// Retrieves the details of an image.
 //
 // @param request - GetImageRequest
 //
@@ -1225,7 +1354,7 @@ func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageRespo
 
 // Summary:
 //
-// Retrieves the details of a job.
+// Retrieves the details of a job execution.
 //
 // @param request - GetJobRequest
 //
@@ -1269,7 +1398,7 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *dara.Ru
 
 // Summary:
 //
-// Retrieves the details of a job.
+// Retrieves the details of a job execution.
 //
 // @param request - GetJobRequest
 //
@@ -1287,7 +1416,7 @@ func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _
 
 // Summary:
 //
-// Retrieves the job record retention period.
+// Retrieves the retention period of job records.
 //
 // @param request - GetJobRecordDurationRequest
 //
@@ -1324,7 +1453,7 @@ func (client *Client) GetJobRecordDurationWithOptions(request *GetJobRecordDurat
 
 // Summary:
 //
-// Retrieves the job record retention period.
+// Retrieves the retention period of job records.
 //
 // @param request - GetJobRecordDurationRequest
 //
@@ -1333,6 +1462,68 @@ func (client *Client) GetJobRecordDuration(request *GetJobRecordDurationRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetJobRecordDurationResponse{}
 	_body, _err := client.GetJobRecordDurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a job template.
+//
+// @param request - GetJobTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobTemplateResponse
+func (client *Client) GetJobTemplateWithOptions(request *GetJobTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobTemplateId) {
+		query["JobTemplateId"] = request.JobTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetJobTemplate"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a job template.
+//
+// @param request - GetJobTemplateRequest
+//
+// @return GetJobTemplateResponse
+func (client *Client) GetJobTemplate(request *GetJobTemplateRequest) (_result *GetJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetJobTemplateResponse{}
+	_body, _err := client.GetJobTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1550,11 +1741,11 @@ func (client *Client) ListActionPlans(request *ListActionPlansRequest) (_result 
 
 // Summary:
 //
-// Queries the runtime event list of one or more Executors.
+// Queries the runtime events of one or more executors.
 //
 // Description:
 //
-// Queries the Executor information of a job.
+// Queries the executor information of a job.
 //
 // @param tmpReq - ListExecutorEventsRequest
 //
@@ -1612,11 +1803,11 @@ func (client *Client) ListExecutorEventsWithOptions(tmpReq *ListExecutorEventsRe
 
 // Summary:
 //
-// Queries the runtime event list of one or more Executors.
+// Queries the runtime events of one or more executors.
 //
 // Description:
 //
-// Queries the Executor information of a job.
+// Queries the executor information of a job.
 //
 // @param request - ListExecutorEventsRequest
 //
@@ -1634,7 +1825,7 @@ func (client *Client) ListExecutorEvents(request *ListExecutorEventsRequest) (_r
 
 // Summary:
 //
-// Queries information about global executors.
+// Queries global executor information.
 //
 // @param tmpReq - ListExecutorsRequest
 //
@@ -1692,7 +1883,7 @@ func (client *Client) ListExecutorsWithOptions(tmpReq *ListExecutorsRequest, run
 
 // Summary:
 //
-// Queries information about global executors.
+// Queries global executor information.
 //
 // @param request - ListExecutorsRequest
 //
@@ -1888,7 +2079,73 @@ func (client *Client) ListJobExecutors(request *ListJobExecutorsRequest) (_resul
 
 // Summary:
 //
-// Returns a list of jobs.
+// Queries job templates.
+//
+// @param request - ListJobTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobTemplatesResponse
+func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListJobTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListJobTemplates"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListJobTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries job templates.
+//
+// @param request - ListJobTemplatesRequest
+//
+// @return ListJobTemplatesResponse
+func (client *Client) ListJobTemplates(request *ListJobTemplatesRequest) (_result *ListJobTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListJobTemplatesResponse{}
+	_body, _err := client.ListJobTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of jobs.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -1954,7 +2211,7 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *dara
 
 // Summary:
 //
-// Returns a list of jobs.
+// Queries a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -1972,7 +2229,7 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
-// Lists resource pools.
+// Queries the list of resource pools.
 //
 // @param tmpReq - ListPoolsRequest
 //
@@ -2030,7 +2287,7 @@ func (client *Client) ListPoolsWithOptions(tmpReq *ListPoolsRequest, runtime *da
 
 // Summary:
 //
-// Lists resource pools.
+// Queries the list of resource pools.
 //
 // @param request - ListPoolsRequest
 //
@@ -2126,7 +2383,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// # Remove a custom image
+// Removes a custom image.
 //
 // @param request - RemoveImageRequest
 //
@@ -2174,7 +2431,7 @@ func (client *Client) RemoveImageWithOptions(request *RemoveImageRequest, runtim
 
 // Summary:
 //
-// # Remove a custom image
+// Removes a custom image.
 //
 // @param request - RemoveImageRequest
 //
@@ -2192,7 +2449,7 @@ func (client *Client) RemoveImage(request *RemoveImageRequest) (_result *RemoveI
 
 // Summary:
 //
-// # Application cross-region synchronization
+// Synchronizes an application across regions.
 //
 // @param tmpReq - SynchronizeAppRequest
 //
@@ -2246,7 +2503,7 @@ func (client *Client) SynchronizeAppWithOptions(tmpReq *SynchronizeAppRequest, r
 
 // Summary:
 //
-// # Application cross-region synchronization
+// Synchronizes an application across regions.
 //
 // @param request - SynchronizeAppRequest
 //
@@ -2408,7 +2665,7 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 
 // Summary:
 //
-// # Adjust the resource scale of the execution plan or modify the execution status
+// Modifies the resource scale or status of an execution plan.
 //
 // @param request - UpdateActionPlanRequest
 //
@@ -2464,7 +2721,7 @@ func (client *Client) UpdateActionPlanWithOptions(request *UpdateActionPlanReque
 
 // Summary:
 //
-// # Adjust the resource scale of the execution plan or modify the execution status
+// Modifies the resource scale or status of an execution plan.
 //
 // @param request - UpdateActionPlanRequest
 //
@@ -2482,7 +2739,7 @@ func (client *Client) UpdateActionPlan(request *UpdateActionPlanRequest) (_resul
 
 // Summary:
 //
-// Updates the job record duration.
+// Updates the job retention period.
 //
 // @param request - UpdateJobRecordDurationRequest
 //
@@ -2526,7 +2783,7 @@ func (client *Client) UpdateJobRecordDurationWithOptions(request *UpdateJobRecor
 
 // Summary:
 //
-// Updates the job record duration.
+// Updates the job retention period.
 //
 // @param request - UpdateJobRecordDurationRequest
 //
@@ -2535,6 +2792,86 @@ func (client *Client) UpdateJobRecordDuration(request *UpdateJobRecordDurationRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateJobRecordDurationResponse{}
 	_body, _err := client.UpdateJobRecordDurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a job template.
+//
+// @param tmpReq - UpdateJobTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobTemplateResponse
+func (client *Client) UpdateJobTemplateWithOptions(tmpReq *UpdateJobTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateJobTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.JobTemplateConfig) {
+		request.JobTemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobTemplateConfig, dara.String("JobTemplateConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobTemplateConfigShrink) {
+		query["JobTemplateConfig"] = request.JobTemplateConfigShrink
+	}
+
+	if !dara.IsNil(request.JobTemplateDescription) {
+		query["JobTemplateDescription"] = request.JobTemplateDescription
+	}
+
+	if !dara.IsNil(request.JobTemplateId) {
+		query["JobTemplateId"] = request.JobTemplateId
+	}
+
+	if !dara.IsNil(request.JobTemplateName) {
+		query["JobTemplateName"] = request.JobTemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateJobTemplate"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a job template.
+//
+// @param request - UpdateJobTemplateRequest
+//
+// @return UpdateJobTemplateResponse
+func (client *Client) UpdateJobTemplate(request *UpdateJobTemplateRequest) (_result *UpdateJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateJobTemplateResponse{}
+	_body, _err := client.UpdateJobTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -28,13 +28,13 @@ type DescribeJobMetricDataShrinkRequest struct {
 	//
 	// job-xxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The metrics of the job.
+	// The job monitoring metric.
 	//
 	// example:
 	//
 	// cpu_utilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//

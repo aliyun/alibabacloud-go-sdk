@@ -38,7 +38,7 @@ type CreateJobRequest struct {
 	//
 	// Demo
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The job name. The name must be 2 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The job name. The name must be 2 to 64 characters in length and can contain Chinese characters, English letters, and digits. It can also contain hyphens (-) and underscores (_).
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type CreateJobRequest struct {
 	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
 	// The security policy.
 	SecurityPolicy *CreateJobRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The task list. Currently, only one task is supported.
+	// The list of tasks. Only one task is supported.
 	//
 	// This parameter is required.
 	Tasks []*CreateJobRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -170,7 +170,7 @@ func (s *CreateJobRequest) Validate() error {
 }
 
 type CreateJobRequestDependencyPolicy struct {
-	// The job dependencies. A maximum of 10 groups are supported.
+	// The job dependencies. A maximum of 10 dependencies are supported.
 	JobDependency []*CreateJobRequestDependencyPolicyJobDependency `json:"JobDependency,omitempty" xml:"JobDependency,omitempty" type:"Repeated"`
 }
 
@@ -215,6 +215,16 @@ type CreateJobRequestDependencyPolicyJobDependency struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The dependency type. Valid values:
 	//
+	// - AfterSucceeded: All child jobs of the dependent job or array job run successfully (the exit code is 0).
+	//
+	// - AfterFailed: Any child job of the dependent job or array job fails (the exit code is not 0).
+	//
+	// - AfterAny: The dependent job finishes running, regardless of success or failure.
+	//
+	// - AfterCorresponding: The corresponding child job of the dependent array job runs successfully (the exit code is 0).
+	//
+	// Default value: AfterSucceeded.
+	//
 	// example:
 	//
 	// AfterSucceeded
@@ -252,39 +262,45 @@ func (s *CreateJobRequestDependencyPolicyJobDependency) Validate() error {
 }
 
 type CreateJobRequestDeploymentPolicy struct {
-	// The resource type.
+	// The resource type. Valid values:
+	//
+	// - Standard: standard.
+	//
+	// - Dedicated: dedicated. You must be added to the whitelist to use this type.
+	//
+	// - Economic: economic. You must be added to the whitelist to use this type.
 	//
 	// example:
 	//
 	// Dedicated
 	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
-	// The computing power level. This parameter takes effect only when the resource type is economy. Valid values:
+	// The computing power level. This parameter is valid only when the resource type is economy. Valid values:
 	//
 	// - General: general-purpose.
 	//
-	// - Performance: compute-optimized instance.
+	// - Performance: compute-optimized.
 	//
-	// Default value: General
+	// Default value: General.
 	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The network configuration.
+	// The network configuration information.
 	Network *CreateJobRequestDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The job resource pool.
+	// The resource pool of the job.
 	//
 	// example:
 	//
 	// compute
 	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
-	// The job priority. A larger value indicates a higher scheduling priority. Valid values: 1 to 100.
+	// The priority of the job. A larger value indicates a higher scheduling priority. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The job tag information. A maximum of 20 tags are supported.
+	// The tag information of the job. A maximum of 20 tags are supported.
 	Tag []*CreateJobRequestDeploymentPolicyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -369,7 +385,19 @@ func (s *CreateJobRequestDeploymentPolicy) Validate() error {
 }
 
 type CreateJobRequestDeploymentPolicyNetwork struct {
-	// Specifies whether to create a public IP address for the job.
+	// Specifies whether resource scheduling is restricted to the specified vSwitch. Default value: false.
+	//
+	// example:
+	//
+	// true
+	EnableENIMapping *bool `json:"EnableENIMapping,omitempty" xml:"EnableENIMapping,omitempty"`
+	// Specifies whether to create a public IP address for the job. Valid values:
+	//
+	// - true: A public IP address is created.
+	//
+	// - false: No public IP address is created.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -387,12 +415,21 @@ func (s CreateJobRequestDeploymentPolicyNetwork) GoString() string {
 	return s.String()
 }
 
+func (s *CreateJobRequestDeploymentPolicyNetwork) GetEnableENIMapping() *bool {
+	return s.EnableENIMapping
+}
+
 func (s *CreateJobRequestDeploymentPolicyNetwork) GetEnableExternalIpAddress() *bool {
 	return s.EnableExternalIpAddress
 }
 
 func (s *CreateJobRequestDeploymentPolicyNetwork) GetVswitch() []*string {
 	return s.Vswitch
+}
+
+func (s *CreateJobRequestDeploymentPolicyNetwork) SetEnableENIMapping(v bool) *CreateJobRequestDeploymentPolicyNetwork {
+	s.EnableENIMapping = &v
+	return s
 }
 
 func (s *CreateJobRequestDeploymentPolicyNetwork) SetEnableExternalIpAddress(v bool) *CreateJobRequestDeploymentPolicyNetwork {
@@ -410,7 +447,7 @@ func (s *CreateJobRequestDeploymentPolicyNetwork) Validate() error {
 }
 
 type CreateJobRequestDeploymentPolicyTag struct {
-	// The tag key of the job. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	// The tag key. If this parameter is specified, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// This parameter is required.
 	//
@@ -418,7 +455,7 @@ type CreateJobRequestDeploymentPolicyTag struct {
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the job. If you specify this parameter, the value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// The tag value. If this parameter is specified, it can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -488,7 +525,7 @@ func (s *CreateJobRequestSecurityPolicy) Validate() error {
 }
 
 type CreateJobRequestSecurityPolicySecurityGroup struct {
-	// The security group ID array.
+	// The array of security group IDs.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -516,7 +553,7 @@ func (s *CreateJobRequestSecurityPolicySecurityGroup) Validate() error {
 type CreateJobRequestTasks struct {
 	// The task execution policy.
 	ExecutorPolicy *CreateJobRequestTasksExecutorPolicy `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
-	// The task name. The name must be 2 to 32 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The task name. The name must be 2 to 32 characters in length and can contain Chinese characters, English letters, and digits. It can also contain hyphens (-) and underscores (_).
 	//
 	// example:
 	//
@@ -524,9 +561,9 @@ type CreateJobRequestTasks struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task specification details.
 	TaskSpec *CreateJobRequestTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
-	// Specifies whether the job is long-running. Valid values:
+	// Specifies whether the job runs for a long time. Valid values:
 	//
-	// - true: The job is a backend service job.
+	// - true: The job is a background service job.
 	//
 	// - false: The job is a batch job.
 	//
@@ -597,27 +634,29 @@ func (s *CreateJobRequestTasks) Validate() error {
 }
 
 type CreateJobRequestTasksExecutorPolicy struct {
-	// The details of the array job. The sub-job index values are passed to the runtime environment through environment variables, which can be referenced by user applications. The environment variables include:
+	// The array job details. The index values of sub-jobs are passed to the runtime environment through environment variables and can be referenced by user business programs. The environment variables include:
 	//
-	// - EHPC_JOB_NAME: The job name, corresponding to the JobName parameter.
+	// - EHPC_JOB_NAME: the job name, which corresponds to the JobName parameter.
 	//
-	// - EHPC_JOB_ID: The job ID.
+	// - EHPC_JOB_ID: the job ID.
 	//
-	// - EHPC_TASK_NAME: The task name, corresponding to the TaskName parameter.
+	// - EHPC_TASK_NAME: the task name, which corresponds to the TaskName parameter.
 	//
-	// - EHPC_EXECUTOR_ID: The executor ID.
+	// - EHPC_EXECUTOR_ID: the executor ID.
 	//
-	// - EHPC_ARRAY_TASK_ID: The sub-job index value.
+	// - EHPC_ARRAY_TASK_ID: the index value of the sub-job.
 	//
-	// - EHPC_ARRAY_TASK_COUNT: The total number of sub-jobs.
+	// - EHPC_ARRAY_TASK_COUNT: the total number of sub-jobs.
 	//
-	// - EHPC_ARRAY_TASK_MAX: The maximum sub-job index value, corresponding to the IndexStart parameter.
+	// - EHPC_ARRAY_TASK_MAX: the maximum index value of the sub-job, which corresponds to the IndexStart parameter.
 	//
-	// - EHPC_ARRAY_TASK_MIN: The minimum sub-job index value, corresponding to the IndexEnd parameter.
+	// - EHPC_ARRAY_TASK_MIN: the minimum index value of the sub-job, which corresponds to the IndexEnd parameter.
 	//
-	// - EHPC_ARRAY_TASK_STEP: The sub-job index step, corresponding to the IndexStep parameter.
+	// - EHPC_ARRAY_TASK_STEP: the index step of the sub-job, which corresponds to the IndexStep parameter.
 	ArraySpec *CreateJobRequestTasksExecutorPolicyArraySpec `json:"ArraySpec,omitempty" xml:"ArraySpec,omitempty" type:"Struct"`
-	// The maximum number of nodes for the job.
+	// The maximum number of nodes for the job execution.
+	//
+	// > The value must follow the formula: `MaxCount = (IndexEnd - IndexStart) / IndexStep + 1`.
 	//
 	// example:
 	//
@@ -673,9 +712,9 @@ type CreateJobRequestTasksExecutorPolicyArraySpec struct {
 	//
 	// 0
 	IndexStart *int32 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
-	// The step size of the array job index.
+	// The step of the array job index.
 	//
-	// > If the array job properties are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three child jobs with index values of 1, 3, and 5. Your application can access these values through environment variables.
+	// > If the array job attributes are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three sub-jobs with index values of 1, 3, and 5. User business programs can access these values through environment variables.
 	//
 	// example:
 	//
@@ -723,7 +762,7 @@ func (s *CreateJobRequestTasksExecutorPolicyArraySpec) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpec struct {
-	// The runtime environment resource information.
+	// The resource information of the runtime environment.
 	Resource *CreateJobRequestTasksTaskSpecResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// The task retry policy.
 	RetryPolicy *CreateJobRequestTasksTaskSpecRetryPolicy `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
@@ -731,7 +770,7 @@ type CreateJobRequestTasksTaskSpec struct {
 	//
 	// This parameter is required.
 	TaskExecutor []*CreateJobRequestTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
-	// The list of data volumes mounted to the task. A maximum of 10 volumes are supported.
+	// The list of data volumes mounted to the task. A maximum of 10 data volumes are supported.
 	VolumeMount []*CreateJobRequestTasksTaskSpecVolumeMount `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 }
 
@@ -820,13 +859,19 @@ type CreateJobRequestTasksTaskSpecResource struct {
 	Cores *float32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The cloud disk array.
 	Disks []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	// Specifies whether hyper-threading is enabled in the runtime environment. Default value: true.
+	// Specifies whether to enable hyper-threading in the runtime environment. Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableHT *bool `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
-	// The hostname prefix of the runtime environment. The following limits apply:
+	// The hostname prefix of the runtime environment. Limits:
+	//
+	// - The prefix cannot start or end with a period (.) or a hyphen (-), and cannot contain consecutive periods (.) or hyphens (-).
+	//
+	// - Windows environment: The prefix can be up to 10 characters in length and cannot contain periods (.). It cannot contain only digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//
+	// - Linux environment: The prefix can be up to 32 characters in length and can contain multiple periods (.). The string between two periods is a segment, and each segment can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
@@ -918,13 +963,13 @@ func (s *CreateJobRequestTasksTaskSpecResource) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpecResourceDisks struct {
-	// The cloud disk size. Unit: GiB.
+	// The size of the cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 40
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The cloud disk type. Currently, only System is supported, which indicates a system cloud disk.
+	// The cloud disk type. Only System is supported, which indicates a system cloud disk.
 	//
 	// example:
 	//
@@ -963,7 +1008,7 @@ func (s *CreateJobRequestTasksTaskSpecResourceDisks) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpecRetryPolicy struct {
-	// The retry rules. A maximum of 10 rules are supported.
+	// The retry rules. A maximum of 10 retry rules are supported.
 	ExitCodeActions []*CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions `json:"ExitCodeActions,omitempty" xml:"ExitCodeActions,omitempty" type:"Repeated"`
 	// The number of retries. Valid values: 1 to 10. Default value: 3.
 	//
@@ -1013,7 +1058,11 @@ func (s *CreateJobRequestTasksTaskSpecRetryPolicy) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions struct {
-	// The next action for the task.
+	// The next action of the task. Valid values:
+	//
+	// - Retry: The job starts a new retry when the specified exit code is matched.
+	//
+	// - Exit: The job exits when the specified exit code is matched.
 	//
 	// This parameter is required.
 	//
@@ -1021,7 +1070,7 @@ type CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions struct {
 	//
 	// Retry
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The task exit code, which is used together with Action to form a job retry rule. Valid values: 0 to 255.
+	// The task exit code, which is used together with Action to form the job retry rule. Valid values: 0 to 255.
 	//
 	// This parameter is required.
 	//
@@ -1062,9 +1111,9 @@ func (s *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) Validate() err
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutor struct {
-	// The container environment settings.
+	// The container environment.
 	Container *CreateJobRequestTasksTaskSpecTaskExecutorContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// The virtual machine environment settings.
+	// The virtual machine environment.
 	VM *CreateJobRequestTasksTaskSpecTaskExecutorVM `json:"VM,omitempty" xml:"VM,omitempty" type:"Struct"`
 }
 
@@ -1109,7 +1158,7 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutor) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
-	// The container application ID.
+	// The ID of the container application.
 	//
 	// example:
 	//
@@ -1118,9 +1167,19 @@ type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
 	// The arguments for the container startup command. A maximum of 10 arguments are supported.
 	Arg []*string `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
 	// The list of container startup commands. A maximum of 20 commands are supported, and each command can be up to 256 characters in length.
+	//
+	// > 1. If a startup command contains spaces (for example, `sleep 60s`), pass the parameter in JSON format as `["sleep", "60s"]`.
+	//
+	// > 2. If the startup command is complex, you can combine `Command: ["/bin/bash"]` and `Arg:["-c", "<customized command>"]`. `<customized command>` is a custom command combination defined by the user and can contain spaces and other characters.
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 	// The environment variables of the container. A maximum of 20 environment variables are supported.
 	EnvironmentVars []*CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	// Specifies the GPU driver version.
+	//
+	// example:
+	//
+	// tesla=535
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The container image.
 	//
 	// This parameter is required.
@@ -1129,15 +1188,21 @@ type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/ehpc/hpl:latest
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The list of mount parameters for a self-managed image registry. The parameters are in key-value format and passed as JSON.
+	// The list of mount parameters for the self-managed image registry. The parameters are passed in JSON format as key-value pairs.
 	//
-	// - Reference format: {"ImageRegistryType":"https","ImageRegistryServer":"xxx","ImageRegistryUserName":"xxx","ImageRegistryPassword":"xxx"}
+	// - Sample format: {"ImageRegistryType":"https","ImageRegistryServer":"xxx","ImageRegistryUserName":"xxx","ImageRegistryPassword":"xxx"}
 	//
 	// example:
 	//
 	// {"ImageRegistryType":"https","ImageRegistryServer":"xxx","ImageRegistryUserName":"xxx","ImageRegistryPassword":"xxx"}
 	ImageRegistryOptions *string `json:"ImageRegistryOptions,omitempty" xml:"ImageRegistryOptions,omitempty"`
-	// The container working directory.
+	// Specifies whether to run the container in privileged mode. Default value: false.
+	//
+	// example:
+	//
+	// true
+	Privileged *bool `json:"Privileged,omitempty" xml:"Privileged,omitempty"`
+	// The working directory of the container.
 	//
 	// example:
 	//
@@ -1169,12 +1234,20 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetEnvironmentVars(
 	return s.EnvironmentVars
 }
 
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetGpuDriverVersion() *string {
+	return s.GpuDriverVersion
+}
+
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetImage() *string {
 	return s.Image
 }
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetImageRegistryOptions() *string {
 	return s.ImageRegistryOptions
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetPrivileged() *bool {
+	return s.Privileged
 }
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) GetWorkingDir() *string {
@@ -1201,6 +1274,11 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetEnvironmentVars(
 	return s
 }
 
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetGpuDriverVersion(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.GpuDriverVersion = &v
+	return s
+}
+
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetImage(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
 	s.Image = &v
 	return s
@@ -1208,6 +1286,11 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetImage(v string) 
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetImageRegistryOptions(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
 	s.ImageRegistryOptions = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetPrivileged(v bool) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.Privileged = &v
 	return s
 }
 
@@ -1230,13 +1313,13 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars struct {
-	// The environment variable name. The name must be 1 to 128 characters in length. The format is [0-9a-zA-Z] and underscores. The name cannot start with a digit.
+	// The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	//
 	// example:
 	//
 	// PATH
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The environment variable value. The value can be 0 to 256 characters in length.
+	// The value of the environment variable. The value can be 0 to 256 characters in length.
 	//
 	// example:
 	//
@@ -1275,12 +1358,13 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) Vali
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorVM struct {
-	// The virtual machine application ID.
+	// The ID of the virtual machine application.
 	//
 	// example:
 	//
 	// ci-vm-9jc58Pm5Leky
-	AppId           *string                                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The environment variables of the virtual machine.
 	EnvironmentVars []*CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -1290,13 +1374,13 @@ type CreateJobRequestTasksTaskSpecTaskExecutorVM struct {
 	//
 	// m-xxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The logon password for the virtual machine environment. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// The logon password for the virtual machine environment. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
 	//
 	// ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
 	//
-	// For Windows environments, the password cannot start with a forward slash (/).
+	// The password for a Windows environment cannot start with a forward slash (/).
 	//
-	// > If you specify the Password parameter, use HTTPS to send the request to avoid password leaks.
+	// > If you specify the Password parameter, use HTTPS to send the request to prevent password leaks.
 	//
 	// example:
 	//
@@ -1392,7 +1476,17 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the environment variable.
+	//
+	// example:
+	//
+	// PATH
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the environment variable.
+	//
+	// example:
+	//
+	// /usr/local/bin
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1427,21 +1521,23 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars) Validate() 
 }
 
 type CreateJobRequestTasksTaskSpecVolumeMount struct {
-	// The list of volume mount parameters. Specified in key-value format and passed as JSON.
+	// The list of mount parameters for the data volume. The parameters are passed in JSON format as key-value pairs.
 	//
-	// - Reference format for mounting NAS: {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
+	// - Sample format for mounting a NAS file system: {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
 	//
-	// > server specifies the mount point address of the NAS file system. path specifies a subdirectory under the NAS path, which must start with / and the directory must already exist. vers specifies the NFS protocol version for mounting NAS. Version 3 is recommended. options specifies custom parameters for mounting NAS, in the format "xxx,xxx,xxx".
+	// > server indicates the mount target address of the NAS file system. path indicates the subdirectory under the NAS path, which must start with a forward slash (/) and already exist. vers indicates the NFS protocol version used to mount the NAS file system. We recommend that you use v3. options indicates the custom parameters for mounting the NAS file system, in the format of "xxx,xxx,xxx".
 	//
-	// - Reference format for mounting OSS: {"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
+	// - Sample format for mounting an OSS bucket: {"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
 	//
-	// > bucket specifies the name of the OSS bucket. url specifies the endpoint of the OSS bucket. You can obtain this value from the overview page of the target bucket in the OSS console. path specifies the directory structure relative to the bucket root for mounting. The default value is /. The directory must already exist. akId specifies the AccessKey ID used for direct AccessKey authorization. akSecret specifies the AccessKey Secret used for direct AccessKey authorization.
+	// > bucket indicates the name of the OSS bucket. url indicates the endpoint of the OSS bucket. You can log on to the OSS console and obtain the endpoint on the Overview page of the bucket. path indicates the directory structure relative to the root directory of the bucket when the volume is mounted. The default value is /, and the directory must already exist. akId indicates the AccessKey ID used for direct authorization. akSecret indicates the AccessKey secret used for direct authorization.
 	//
 	// example:
 	//
 	// {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
 	MountOptions *string `json:"MountOptions,omitempty" xml:"MountOptions,omitempty"`
-	// The directory where the data volume is mounted to the task.
+	// The directory to which the data volume is mounted.
+	//
+	// > The content in the mount directory is directly overwritten by the content of the volume. Proceed with caution.
 	//
 	// example:
 	//
@@ -1453,7 +1549,7 @@ type CreateJobRequestTasksTaskSpecVolumeMount struct {
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The supported volume type. Valid values:
+	// The type of the data volume. Valid values:
 	//
 	// - alicloud/nas: mounts a NAS file system.
 	//

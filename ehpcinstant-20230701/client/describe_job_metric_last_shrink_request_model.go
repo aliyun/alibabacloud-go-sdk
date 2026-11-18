@@ -18,7 +18,7 @@ type iDescribeJobMetricLastShrinkRequest interface {
 }
 
 type DescribeJobMetricLastShrinkRequest struct {
-	// The list of array job indexes.
+	// The list of job array indexes.
 	ArrayIndexShrink *string `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
 	// The job ID.
 	//
@@ -26,7 +26,7 @@ type DescribeJobMetricLastShrinkRequest struct {
 	//
 	// job-xxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//

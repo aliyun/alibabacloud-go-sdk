@@ -24,7 +24,7 @@ type SynchronizeAppRequest struct {
 	//
 	// ci-vm-rYfypJKwlN9Y
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The list of arrays that are synchronized to the specified region. If \\"all\\" is included, it is synchronized to all other unsynchronized regions by default.
+	// The list of target region IDs. If the list includes \\"all\\", the application is synchronized to all other unsynchronized regions by default.
 	TargetRegionIds []*string `json:"TargetRegionIds,omitempty" xml:"TargetRegionIds,omitempty" type:"Repeated"`
 }
 

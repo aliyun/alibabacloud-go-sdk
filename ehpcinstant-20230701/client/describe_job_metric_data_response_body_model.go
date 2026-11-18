@@ -18,7 +18,7 @@ type iDescribeJobMetricDataResponseBody interface {
 }
 
 type DescribeJobMetricDataResponseBody struct {
-	// Monitoring statistics points.
+	// The monitoring statistics data points.
 	//
 	// example:
 	//

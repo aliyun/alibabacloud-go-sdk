@@ -22,17 +22,13 @@ type iListJobsRequest interface {
 type ListJobsRequest struct {
 	// The filter conditions for querying jobs.
 	Filter *ListJobsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The current page number.
-	//
-	// Start value: 1
-	//
-	// Default value: 1
+	// The page number. Starting value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is 50. The maximum value is 100.
+	// The paging Settings for the number of entries per page in a paged query. Default value: 50. Maximum value: 100.
 	//
 	// example:
 	//
@@ -101,36 +97,41 @@ func (s *ListJobsRequest) Validate() error {
 }
 
 type ListJobsRequestFilter struct {
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
 	// job-xxxx
-	JobId  *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Filters jobs by a list of job IDs. A maximum of 100 job IDs are supported.
 	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-	// The name of the job. Fuzzy search is supported.
+	// The job name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The ID of the job template.
+	//
 	// example:
 	//
 	// jt-xxxx
 	JobTemplateId *string `json:"JobTemplateId,omitempty" xml:"JobTemplateId,omitempty"`
+	// The name of the resource pool.
+	//
 	// example:
 	//
 	// MyPool
 	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
-	// The status of the job. Valid values:
+	// The job status. Valid values:
 	//
-	// - Pending: The job is in the queue.
+	// - Pending: The job is queued.
 	//
-	// - Initing: The job is initializing.
+	// - Initing: The job is being initialized.
 	//
-	// - Succeeded: The job was successful.
+	// - Succeeded: The job ran successfully.
 	//
-	// - Failed: The job failed.
+	// - Failed: The job failed to run.
 	//
 	// - Running: The job is running.
 	//
@@ -140,24 +141,25 @@ type ListJobsRequestFilter struct {
 	//
 	// - Expired: The job timed out.
 	//
-	// - Suspended: The job is in hibernation.
+	// - Suspended: The job is hibernated.
 	//
-	// - Restarting: The job is restarting.
+	// - Restarting: The job is being restarted.
 	//
 	// - Deleted: The job is deleted.
 	//
 	// example:
 	//
 	// Running
-	Status *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*ListJobsRequestFilterTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The time after which the jobs were submitted. This is a UNIX timestamp based on the local time of the region. For sites in the Chinese mainland, the time zone is UTC+8.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of job tags.
+	Tag []*ListJobsRequestFilterTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The time after which jobs were submitted. The time is converted to a UNIX timestamp based on the time zone of the region. For regions in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	// The time before which the jobs were submitted. This is a UNIX timestamp based on the local time of the region. For sites in the Chinese mainland, the time zone is UTC+8.
+	// The time before which jobs were submitted. The time is converted to a UNIX timestamp based on the time zone of the region. For regions in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
@@ -268,10 +270,14 @@ func (s *ListJobsRequestFilter) Validate() error {
 }
 
 type ListJobsRequestFilterTag struct {
+	// The key of the job tag.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the job tag.
+	//
 	// example:
 	//
 	// TestValue
@@ -309,7 +315,7 @@ func (s *ListJobsRequestFilterTag) Validate() error {
 }
 
 type ListJobsRequestSortBy struct {
-	// The field to sort by. Valid values:
+	// The sorting label. Valid values:
 	//
 	// - time_start
 	//
@@ -319,11 +325,11 @@ type ListJobsRequestSortBy struct {
 	//
 	// time_start
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The sort order. Valid values:
+	// The sorting order. Valid values:
 	//
-	// - ASC (default): Ascending
+	// - ASC: ascending order. This is the default value.
 	//
-	// - DESC: Descending
+	// - DESC: descending order.
 	//
 	// example:
 	//

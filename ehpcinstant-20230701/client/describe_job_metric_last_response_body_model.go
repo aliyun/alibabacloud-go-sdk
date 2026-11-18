@@ -16,7 +16,7 @@ type iDescribeJobMetricLastResponseBody interface {
 }
 
 type DescribeJobMetricLastResponseBody struct {
-	// The list of the JobMetric details.
+	// The list of JobMetric details.
 	Metrics []*DescribeJobMetricLastResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *DescribeJobMetricLastResponseBody) Validate() error {
 }
 
 type DescribeJobMetricLastResponseBodyMetrics struct {
-	// The index of the array job.
+	// The job array index.
 	//
 	// example:
 	//
 	// 1
 	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	// The monitoring item information corresponding to the array job index.
+	// The monitoring metric information for the job array index.
 	//
 	// example:
 	//

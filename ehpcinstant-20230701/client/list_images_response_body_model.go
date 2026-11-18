@@ -26,13 +26,13 @@ type iListImagesResponseBody interface {
 type ListImagesResponseBody struct {
 	// The list of image information.
 	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type ListImagesResponseBody struct {
 	//
 	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the process of executing the command and obtaining the result was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of items that meet the request conditions.
 	//
 	// example:
 	//
@@ -146,17 +146,17 @@ type ListImagesResponseBodyImages struct {
 	//
 	// ci-vm-kHLPzEWun6zz****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the storage resource was created.
+	// The creation time. The time is in the YYYY-MM-DDTHH:mm:ssZ format, where Z represents UTC.
 	//
 	// example:
 	//
 	// 2022-12-09T07:06:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the image.
+	// The image description.
 	//
 	// example:
 	//
-	// 应用测试镜像。
+	// Application test image
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The document ID.
 	//
@@ -172,7 +172,7 @@ type ListImagesResponseBodyImages struct {
 	//
 	// m-bp181x855551ww5yq****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the image.
+	// The image type.
 	//
 	// This parameter is required.
 	//
@@ -180,25 +180,25 @@ type ListImagesResponseBodyImages struct {
 	//
 	// VM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
 	// app-image
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the specific OS version.
+	// The specific OS version identifier.
 	//
 	// example:
 	//
 	// Ubuntu  22.04 64 bit
 	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
-	// The time when the image was updated.
+	// The image update time. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-09-25 14:15:28
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The version of the image.
+	// The image version.
 	//
 	// example:
 	//

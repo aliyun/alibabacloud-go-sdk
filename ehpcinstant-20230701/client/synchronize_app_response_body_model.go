@@ -14,7 +14,7 @@ type iSynchronizeAppResponseBody interface {
 }
 
 type SynchronizeAppResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

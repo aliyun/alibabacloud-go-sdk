@@ -26,35 +26,35 @@ type iGetAppVersionsResponseBody interface {
 type GetAppVersionsResponseBody struct {
 	// The list of application versions.
 	AppVersions []*GetAppVersionsResponseBodyAppVersions `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the process of executing the command and retrieving the result was successful. Valid values:
 	//
-	// true
+	// - true: Successful.
 	//
-	// false
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the request conditions.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *GetAppVersionsResponseBody) Validate() error {
 }
 
 type GetAppVersionsResponseBodyAppVersions struct {
-	// The image ID of the application.
+	// The ID of the application image.
 	//
 	// This parameter is required.
 	//
@@ -146,7 +146,7 @@ type GetAppVersionsResponseBodyAppVersions struct {
 	//
 	// m-f8z0dfa96luomqly****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//

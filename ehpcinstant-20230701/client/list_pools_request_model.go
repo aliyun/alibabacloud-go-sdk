@@ -20,13 +20,13 @@ type iListPoolsRequest interface {
 type ListPoolsRequest struct {
 	// The filter conditions for querying resource pools.
 	Filter *ListPoolsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50. Default value: 10.
+	// The number of entries per page in a paging query. Maximum value: 50. Default value: 10.
 	//
 	// example:
 	//
@@ -91,13 +91,13 @@ type ListPoolsRequestFilter struct {
 	//
 	// ["Working"]
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// Returns only resource pools created after the specified time. The time must be a Unix timestamp in UTC+8.
+	// The UNIX timestamp. Only resource pools created after the specified time are queried. The time is converted to a UNIX timestamp based on the time zone of the region where the resource pool resides. For regions in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//
 	// 1703819914
 	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	// Returns only resource pools created before the specified time. The time must be a Unix timestamp in UTC+8.
+	// The UNIX timestamp. Only resource pools created before the specified time are queried. The time is converted to a UNIX timestamp based on the time zone of the region where the resource pool resides. For regions in the Chinese mainland, the time zone is UTC+8.
 	//
 	// example:
 	//

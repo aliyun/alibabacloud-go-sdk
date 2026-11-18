@@ -40,13 +40,13 @@ type CreateActionPlanRequest struct {
 	//
 	// TestActionPlan
 	ActionPlanName *string `json:"ActionPlanName,omitempty" xml:"ActionPlanName,omitempty"`
-	// The resource type.
+	// The resource allocation specification. Valid values:
 	//
-	// - Standard: Standard.
+	// - Standard: standard
 	//
-	// - Dedicated: Dedicated. This type is available only to users in the whitelist.
+	// - Dedicated: dedicated. To use this value, you must be added to the whitelist.
 	//
-	// - Economic: Economy. This type is available only to users in the whitelist.
+	// - Economic: economy. To use this value, you must be added to the whitelist.
 	//
 	// example:
 	//
@@ -58,53 +58,51 @@ type CreateActionPlanRequest struct {
 	//
 	// ci-vm-rYfypJKwlN9Y
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The desired size of the resource for the execution plan. For example, if you set ResourceType to VcpuCapacity, this parameter specifies the number of vCPUs that you want to maintain for the execution plan.
+	// The desired resource capacity for the execution plan. If ResourceType is set to VCpuCapacity, this parameter specifies the expected number of vCPUs to maintain, such as 10000.
 	//
 	// example:
 	//
 	// 1000
 	DesiredCapacity *float64 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
+	// The scheduling interval of the execution plan. Unit: minutes. Valid values: 10 to 10080. Default value: 60.
+	//
 	// example:
 	//
 	// 60
 	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
-	// The computing power level. This parameter is valid only when you set AllocationSpec to Economic. The following types are supported:
+	// The computing power level. This parameter takes effect only when the resource type is set to Economic. Valid values:
 	//
-	// - General: General-purpose.
+	// - General: general-purpose
 	//
-	// - Performance: Compute-optimized.
+	// - Performance: performance-optimized
 	//
-	// Default value: General
+	// Default value: General.
 	//
 	// example:
 	//
 	// General
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The pre-execution script. The script must be Base64-encoded.
+	// The prolog script. The script must be Base64-encoded.
 	//
 	// example:
 	//
 	// bHMgLWFsCmxzIC1hbGggfCB3YyAtbA==
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	// A list of regional resource configurations for the runtime environment of the execution plan.
+	// The list of region-specific resource configurations for the runtime environment of the execution plan.
 	Regions []*CreateActionPlanRequestRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The type of resource for the execution target. The value can be the vCPU capacity or the number of executor nodes. Valid values:
+	// The type of the target resource for the execution plan. Valid values:
 	//
 	// - VCpuCapacity: vCPU capacity
 	//
-	// - ExecutorCapacity: number of executor nodes
+	// - ExecutorCapacity: number of execution nodes
 	//
 	// example:
 	//
 	// VCpuCapacity
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// A list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
-	//
-	// example:
-	//
-	// 1000
+	// The list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
 	Resources []*CreateActionPlanRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The script to run the job. The script must be Base64-encoded.
+	// The script used to run the job. The script must be Base64-encoded.
 	//
 	// example:
 	//
@@ -248,11 +246,11 @@ type CreateActionPlanRequestRegions struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of security groups that are available for the execution plan in the region. You can specify 0 to 5 security groups.
+	// The list of security groups available for the execution plan in the region. You can specify 0 to 5 security groups.
 	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
-	// A list of security group IDs. You can call the [DescribeSecurityGroups](https://api.aliyun.com/document/Ecs/2014-05-26/DescribeSecurityGroups) operation to query information about available security groups.
+	// The list of security group IDs. You can call the [DescribeSecurityGroups](https://api.aliyun.com/document/Ecs/2014-05-26/DescribeSecurityGroups) operation to query available security groups.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// A list of vSwitches that are available for the execution plan in the region. You can specify 0 to 5 vSwitches.
+	// The list of vSwitches available for the execution plan in the region. You can specify 0 to 5 vSwitches.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -305,7 +303,7 @@ func (s *CreateActionPlanRequestRegions) Validate() error {
 }
 
 type CreateActionPlanRequestResources struct {
-	// The number of vCPUs for the runtime environment.
+	// The number of CPU cores in the runtime environment.
 	//
 	// example:
 	//

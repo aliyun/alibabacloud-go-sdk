@@ -30,7 +30,7 @@ type ListExecutorEventsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging.
+	// The paging Settings for the number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListExecutorEventsResponseBodyExecutorEventList struct {
 	//
 	// Executor created successfully
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The Executor ID. Format: JobId-TaskName-ArrayIndex.
+	// The executor ID. Format: JobId-TaskName-ArrayIndex.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListExecutorEventsResponseBodyExecutorEventList struct {
 	//
 	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The runtime event level. Valid values:
+	// The level of the runtime event. Valid values:
 	//
 	// - Normal
 	//
