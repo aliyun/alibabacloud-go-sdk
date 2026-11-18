@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("STAROps")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -243,7 +251,7 @@ func (client *Client) CreateChat(request *CreateChatRequest) (_result *CreateCha
 
 // Summary:
 //
-// Creates a DigitalEmployee.
+// Creates a digital employee.
 //
 // Description:
 //
@@ -338,7 +346,7 @@ func (client *Client) CreateDigitalEmployeeWithOptions(request *CreateDigitalEmp
 
 // Summary:
 //
-// Creates a DigitalEmployee.
+// Creates a digital employee.
 //
 // Description:
 //
@@ -1029,7 +1037,11 @@ func (client *Client) DeleteThread(name *string, threadId *string, request *Dele
 
 // Summary:
 //
-// Retrieves the tool list from a remote MCP server.
+// Retrieves the tool list from a remote MCP service.
+//
+// Description:
+//
+// Retrieves the tool list from a remote MCP service.
 //
 // @param request - FetchRemoteMcpToolsRequest
 //
@@ -1080,7 +1092,11 @@ func (client *Client) FetchRemoteMcpToolsWithOptions(request *FetchRemoteMcpTool
 
 // Summary:
 //
-// Retrieves the tool list from a remote MCP server.
+// Retrieves the tool list from a remote MCP service.
+//
+// Description:
+//
+// Retrieves the tool list from a remote MCP service.
 //
 // @param request - FetchRemoteMcpToolsRequest
 //
@@ -1332,7 +1348,11 @@ func (client *Client) GetDigitalEmployee(name *string, request *GetDigitalEmploy
 
 // Summary:
 //
-// Queries the entity data of a digital employee.
+// Queries the entity data of a digital human.
+//
+// Description:
+//
+// Queries the entity data of a digital human.
 //
 // @param request - GetDigitalEmployeeEntityDataRequest
 //
@@ -1387,7 +1407,11 @@ func (client *Client) GetDigitalEmployeeEntityDataWithOptions(name *string, requ
 
 // Summary:
 //
-// Queries the entity data of a digital employee.
+// Queries the entity data of a digital human.
+//
+// Description:
+//
+// Queries the entity data of a digital human.
 //
 // @param request - GetDigitalEmployeeEntityDataRequest
 //
@@ -1406,11 +1430,11 @@ func (client *Client) GetDigitalEmployeeEntityData(name *string, request *GetDig
 
 // Summary:
 //
-// Retrieves the details of a specific skill.
+// Retrieves the details of a skill.
 //
 // Description:
 //
-// Retrieves the details of a specified skill for a digital employee.
+// Retrieves the details of a skill.
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -1457,11 +1481,11 @@ func (client *Client) GetDigitalEmployeeSkillWithOptions(name *string, skillName
 
 // Summary:
 //
-// Retrieves the details of a specific skill.
+// Retrieves the details of a skill.
 //
 // Description:
 //
-// Retrieves the details of a specified skill for a digital employee.
+// Retrieves the details of a skill.
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -1542,6 +1566,10 @@ func (client *Client) GetDigitalEmployeeUmodel(name *string, request *GetDigital
 //
 // Queries an MCP service.
 //
+// Description:
+//
+// Queries the configuration of an MCP service.
+//
 // @param request - GetMcpServiceRequest
 //
 // @param headers - map
@@ -1583,6 +1611,10 @@ func (client *Client) GetMcpServiceWithOptions(name *string, mcpServiceName *str
 //
 // Queries an MCP service.
 //
+// Description:
+//
+// Queries the configuration of an MCP service.
+//
 // @param request - GetMcpServiceRequest
 //
 // @return GetMcpServiceResponse
@@ -1600,11 +1632,11 @@ func (client *Client) GetMcpService(name *string, mcpServiceName *string, reques
 
 // Summary:
 //
-// Retrieves a thread.
+// Retrieves a session.
 //
 // Description:
 //
-// Retrieves the details of a thread.
+// Retrieves a session.
 //
 // @param request - GetThreadRequest
 //
@@ -1645,11 +1677,11 @@ func (client *Client) GetThreadWithOptions(name *string, threadId *string, reque
 
 // Summary:
 //
-// Retrieves a thread.
+// Retrieves a session.
 //
 // Description:
 //
-// Retrieves the details of a thread.
+// Retrieves a session.
 //
 // @param request - GetThreadRequest
 //
@@ -1828,11 +1860,11 @@ func (client *Client) ListArtifacts(name *string, request *ListArtifactsRequest)
 
 // Summary:
 //
-// Lists the versions of a skill.
+// Lists skill versions.
 //
 // Description:
 //
-// Lists the previous versions of a skill.
+// Lists historical versions of a skill.
 //
 // @param request - ListDigitalEmployeeSkillVersionsRequest
 //
@@ -1873,11 +1905,11 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithOptions(name *string, 
 
 // Summary:
 //
-// Lists the versions of a skill.
+// Lists skill versions.
 //
 // Description:
 //
-// Lists the previous versions of a skill.
+// Lists historical versions of a skill.
 //
 // @param request - ListDigitalEmployeeSkillVersionsRequest
 //
@@ -1896,11 +1928,11 @@ func (client *Client) ListDigitalEmployeeSkillVersions(name *string, skillName *
 
 // Summary:
 //
-// Lists the skills of a digital employee.
+// Lists skills.
 //
 // Description:
 //
-// Lists the skills of a specified digital employee.
+// Lists skills.
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -1955,11 +1987,11 @@ func (client *Client) ListDigitalEmployeeSkillsWithOptions(name *string, request
 
 // Summary:
 //
-// Lists the skills of a digital employee.
+// Lists skills.
 //
 // Description:
 //
-// Lists the skills of a specified digital employee.
+// Lists skills.
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -2088,6 +2120,10 @@ func (client *Client) ListDigitalEmployees(request *ListDigitalEmployeesRequest)
 //
 // Queries the list of MCP services.
 //
+// Description:
+//
+// Queries the list of MCP services.
+//
 // @param request - ListMcpServicesRequest
 //
 // @param headers - map
@@ -2139,6 +2175,10 @@ func (client *Client) ListMcpServicesWithOptions(name *string, request *ListMcpS
 //
 // Queries the list of MCP services.
 //
+// Description:
+//
+// Queries the list of MCP services.
+//
 // @param request - ListMcpServicesRequest
 //
 // @return ListMcpServicesResponse
@@ -2156,11 +2196,11 @@ func (client *Client) ListMcpServices(name *string, request *ListMcpServicesRequ
 
 // Summary:
 //
-// # List sessions
+// Lists sessions.
 //
 // Description:
 //
-// # List sessions
+// Lists sessions.
 //
 // @param tmpReq - ListThreadsRequest
 //
@@ -2233,11 +2273,11 @@ func (client *Client) ListThreadsWithOptions(name *string, tmpReq *ListThreadsRe
 
 // Summary:
 //
-// # List sessions
+// Lists sessions.
 //
 // Description:
 //
-// # List sessions
+// Lists sessions.
 //
 // @param request - ListThreadsRequest
 //
@@ -2516,6 +2556,10 @@ func (client *Client) UpdateDigitalEmployeeUmodel(name *string, request *UpdateD
 //
 // Updates an MCP service.
 //
+// Description:
+//
+// Updates the configuration of an MCP service.
+//
 // @param request - UpdateMcpServiceRequest
 //
 // @param headers - map
@@ -2583,6 +2627,10 @@ func (client *Client) UpdateMcpServiceWithOptions(name *string, mcpServiceName *
 //
 // Updates an MCP service.
 //
+// Description:
+//
+// Updates the configuration of an MCP service.
+//
 // @param request - UpdateMcpServiceRequest
 //
 // @return UpdateMcpServiceResponse
@@ -2600,11 +2648,11 @@ func (client *Client) UpdateMcpService(name *string, mcpServiceName *string, req
 
 // Summary:
 //
-// Updates a thread.
+// Updates a session.
 //
 // Description:
 //
-// Updates a thread.
+// Updates a session.
 //
 // @param request - UpdateThreadRequest
 //
@@ -2659,11 +2707,11 @@ func (client *Client) UpdateThreadWithOptions(name *string, threadId *string, re
 
 // Summary:
 //
-// Updates a thread.
+// Updates a session.
 //
 // Description:
 //
-// Updates a thread.
+// Updates a session.
 //
 // @param request - UpdateThreadRequest
 //

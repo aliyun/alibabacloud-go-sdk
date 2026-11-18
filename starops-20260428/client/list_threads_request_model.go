@@ -24,9 +24,9 @@ type iListThreadsRequest interface {
 }
 
 type ListThreadsRequest struct {
-	// Filters the results. If this parameter is omitted, the operation returns all threads in the instance.
+	// The filter conditions for the query. If this parameter is not specified, all topics under the instance are queried.
 	Filter []*ListThreadsRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Repeated"`
-	// Specifies whether to include threads created by missions.
+	// Specifies whether to include threads created by mission.
 	IncludeMission *bool `json:"includeMission,omitempty" xml:"includeMission,omitempty"`
 	// The maximum number of results to return. Maximum value: 200.
 	//
@@ -40,13 +40,13 @@ type ListThreadsRequest struct {
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The status of the thread.
+	// The session status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The thread ID.
+	// The session ID.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListThreadsRequest) Validate() error {
 }
 
 type ListThreadsRequestFilter struct {
-	// The filter key. Supported values are title, workspace, and project.
+	// The filter key. Valid values: title, workspace, and project.
 	//
 	// This parameter is required.
 	//
@@ -138,7 +138,7 @@ type ListThreadsRequestFilter struct {
 	//
 	// title
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value for the filter key.
+	// The value to set.
 	//
 	// This parameter is required.
 	//

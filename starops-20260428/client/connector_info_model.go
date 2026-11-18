@@ -50,7 +50,7 @@ type ConnectorInfo struct {
 	//
 	// This parameter is required.
 	Authentication *ConnectorAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	// The list of capabilities granted to the Connector.
+	// The list of capabilities granted to the connector.
 	//
 	// This parameter is required.
 	CapabilityGrants []map[string]interface{} `json:"capabilityGrants,omitempty" xml:"capabilityGrants,omitempty" type:"Repeated"`
@@ -91,7 +91,7 @@ type ConnectorInfo struct {
 	//
 	// CMS 2.0 production workspace
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Specifies whether the Connector is enabled.
+	// Specifies whether the connector is enabled.
 	//
 	// This parameter is required.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
@@ -111,7 +111,7 @@ type ConnectorInfo struct {
 	//
 	// production-ops
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The execution policy of the Connector.
+	// The execution policy of the connector.
 	//
 	// This parameter is required.
 	Policy map[string]interface{} `json:"policy,omitempty" xml:"policy,omitempty"`
@@ -131,7 +131,7 @@ type ConnectorInfo struct {
 	//
 	// 1
 	Revision *int64 `json:"revision,omitempty" xml:"revision,omitempty"`
-	// The runtime configuration of the Connector.
+	// The runtime configuration of the connector.
 	//
 	// This parameter is required.
 	Runtime *ConnectorRuntime `json:"runtime,omitempty" xml:"runtime,omitempty"`

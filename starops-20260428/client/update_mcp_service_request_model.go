@@ -32,13 +32,13 @@ type UpdateMcpServiceRequest struct {
 	//
 	// example:
 	//
-	// 通过 MCP 调用日志查询工具。
+	// Call the log query tool through MCP
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP service.
 	//
 	// example:
 	//
-	// 日志查询
+	// Log Query
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Specifies whether to enable the MCP service.
 	//
@@ -157,9 +157,14 @@ type UpdateMcpServiceRequestConnection struct {
 	// example:
 	//
 	// https://example.com/mcp
-	Endpoint *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The platform type of the MCP service. Valid values: AIGateway and Custom.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The custom HTTP request headers appended when calling the MCP service.
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The MCP service platform type. Valid values:
+	//
+	// - AIGateway
+	//
+	// - Custom
 	//
 	// This parameter is required.
 	//
@@ -173,7 +178,11 @@ type UpdateMcpServiceRequestConnection struct {
 	//
 	// 5000
 	Timeout *int64 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The transport protocol of the MCP service. Valid values: http and sse.
+	// The transport protocol of the MCP service. Valid values:
+	//
+	// - http
+	//
+	// - sse
 	//
 	// This parameter is required.
 	//
@@ -261,7 +270,7 @@ type UpdateMcpServiceRequestConnectionAuth struct {
 	//
 	// {"token":"example-token"}
 	KeyInfo map[string]*string `json:"keyInfo,omitempty" xml:"keyInfo,omitempty"`
-	// The authentication type. Currently, only bearer is supported.
+	// The authentication type. Currently, bearer is supported.
 	//
 	// example:
 	//
@@ -300,13 +309,13 @@ func (s *UpdateMcpServiceRequestConnectionAuth) Validate() error {
 }
 
 type UpdateMcpServiceRequestNetwork struct {
-	// The IP address used to access the MCP service over the VPC network.
+	// The IP address used to access the MCP service within the VPC network.
 	//
 	// example:
 	//
 	// 10.0.0.12
 	AccessIp *string `json:"accessIp,omitempty" xml:"accessIp,omitempty"`
-	// The port used to access the MCP service over the VPC network. Valid values: 1 to 65535.
+	// The port used to access the MCP service within the VPC network. Valid values: 1 to 65535.
 	//
 	// example:
 	//
@@ -324,7 +333,11 @@ type UpdateMcpServiceRequestNetwork struct {
 	//
 	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The network access mode of the MCP service. Valid values: public and vpc.
+	// The network access mode of the MCP service. Valid values:
+	//
+	// - public
+	//
+	// - vpc
 	//
 	// This parameter is required.
 	//
@@ -468,13 +481,13 @@ type UpdateMcpServiceRequestTools struct {
 	//
 	// example:
 	//
-	// 查询指定日志库中的日志。
+	// Queries logs in a specified Logstore
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP tool.
 	//
 	// example:
 	//
-	// 日志查询工具
+	// Log Query Tool
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Specifies whether to enable the MCP tool.
 	//
@@ -520,7 +533,7 @@ type UpdateMcpServiceRequestTools struct {
 	//
 	// example:
 	//
-	// 查询日志
+	// Query Logs
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

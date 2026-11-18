@@ -22,19 +22,19 @@ type iListDigitalEmployeeSkillsResponseBody interface {
 }
 
 type ListDigitalEmployeeSkillsResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of results returned.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token to retrieve the next page of results. If this parameter is not returned, it indicates that no more results are available.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// sjC5rekx93Ew7K7VcmI3wkBZBYQ-GphB2ilQu3zJCGxoZuicwyJznfo2riTjr-lq
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDigitalEmployeeSkillsResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The list of skills.
 	Skills []*ListDigitalEmployeeSkillsResponseBodySkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
-	// The total number of entries that match the query.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListDigitalEmployeeSkillsResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeeSkillsResponseBodySkills struct {
-	// The time at which the skill was created.
+	// The creation time in RFC 3339 format with the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -125,7 +125,7 @@ type ListDigitalEmployeeSkillsResponseBodySkills struct {
 	//
 	// 2026-02-06T14:09:11Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the skill.
+	// The description.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type ListDigitalEmployeeSkillsResponseBodySkills struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The name of the skill.
+	// The skill name.
 	//
 	// example:
 	//
 	// test
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The time at which the skill was last updated.
+	// The update time in RFC 3339 format with the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//

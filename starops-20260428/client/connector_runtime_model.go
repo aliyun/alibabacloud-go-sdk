@@ -9,6 +9,10 @@ type iConnectorRuntime interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCapabilityId(v string) *ConnectorRuntime
+	GetCapabilityId() *string
+	SetExtensionName(v string) *ConnectorRuntime
+	GetExtensionName() *string
 	SetMode(v string) *ConnectorRuntime
 	GetMode() *string
 	SetPluginId(v string) *ConnectorRuntime
@@ -18,6 +22,18 @@ type iConnectorRuntime interface {
 }
 
 type ConnectorRuntime struct {
+	// The native client capability referenced by the SATELLITE runtime. This parameter is mutually exclusive with extensionName.
+	//
+	// example:
+	//
+	// bash
+	CapabilityId *string `json:"capabilityId,omitempty" xml:"capabilityId,omitempty"`
+	// The environment agent extension name referenced by the SATELLITE runtime. This parameter is mutually exclusive with capabilityId.
+	//
+	// example:
+	//
+	// gitlab-corp
+	ExtensionName *string `json:"extensionName,omitempty" xml:"extensionName,omitempty"`
 	// Runtime mode
 	//
 	// This parameter is required.
@@ -48,6 +64,14 @@ func (s ConnectorRuntime) GoString() string {
 	return s.String()
 }
 
+func (s *ConnectorRuntime) GetCapabilityId() *string {
+	return s.CapabilityId
+}
+
+func (s *ConnectorRuntime) GetExtensionName() *string {
+	return s.ExtensionName
+}
+
 func (s *ConnectorRuntime) GetMode() *string {
 	return s.Mode
 }
@@ -58,6 +82,16 @@ func (s *ConnectorRuntime) GetPluginId() *string {
 
 func (s *ConnectorRuntime) GetSatelliteId() *string {
 	return s.SatelliteId
+}
+
+func (s *ConnectorRuntime) SetCapabilityId(v string) *ConnectorRuntime {
+	s.CapabilityId = &v
+	return s
+}
+
+func (s *ConnectorRuntime) SetExtensionName(v string) *ConnectorRuntime {
+	s.ExtensionName = &v
+	return s
 }
 
 func (s *ConnectorRuntime) SetMode(v string) *ConnectorRuntime {

@@ -42,7 +42,7 @@ type GetThreadDataResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxxxxx
+	// aKUAyTHGXpEZRpRTd3OQd4HvmpjgPV****uAYTHgXPeZR5RTD32qDQhVMP-GpvJZ
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The unique ID for this GetThreadData API request.
 	//

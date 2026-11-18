@@ -26,7 +26,7 @@ type GetThreadDataRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// XStO-ooc0Y-_8IoNRmC-3YFgg8ITG5****tOSoocIYrcmio15m653yfgGCITgz7T
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 

@@ -177,9 +177,9 @@ type CreateMcpServiceRequestConnection struct {
 	//
 	// https://example.com/mcp
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The custom headers.
+	// The custom HTTP request headers appended when calling the MCP service.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The platform type of the MCP service. Valid values: AIGateway and Custom.
+	// The MCP service platform type. Valid values: AIGateway and Custom.
 	//
 	// This parameter is required.
 	//
@@ -281,7 +281,7 @@ type CreateMcpServiceRequestConnectionAuth struct {
 	//
 	// {"token":"example-token"}
 	KeyInfo map[string]*string `json:"keyInfo,omitempty" xml:"keyInfo,omitempty"`
-	// The authentication type. Currently, only bearer is supported.
+	// The authentication type. Currently, bearer is supported.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type CreateMcpServiceRequestTools struct {
 	//
 	// example:
 	//
-	// Query logs in a specified Logstore
+	// Queries logs in a specified Logstore
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP tool.
 	//

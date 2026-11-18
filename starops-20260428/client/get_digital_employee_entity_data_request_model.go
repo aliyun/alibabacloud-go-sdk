@@ -26,7 +26,7 @@ type GetDigitalEmployeeEntityDataRequest struct {
 	//
 	// 1770000000
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// Only the .entity or .topo semantic sources of the current digital employee can be queried. Explicit access to internal storage or external data sources is prohibited.
+	// Only the .entity or .topo semantic sources of the current digital human can be queried. Explicit access to internal storage or external data sources is prohibited.
 	//
 	// This parameter is required.
 	//

@@ -30,7 +30,7 @@ type iUpdateDigitalEmployeeRequest interface {
 type UpdateDigitalEmployeeRequest struct {
 	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The default rule of the digital employee.
+	// The default rules for the digital employee.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateDigitalEmployeeRequest struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The knowledge base list.
+	// The list of knowledge bases.
 	Knowledges *UpdateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// The ARN of the RAM role.
 	//
@@ -56,17 +56,17 @@ type UpdateDigitalEmployeeRequest struct {
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The list of CIDRs or IP addresses that are allowed to be accessed.
+	// The list of allowed CIDR blocks or IP addresses.
 	//
 	// example:
 	//
 	// {"allowFqdns":["api.example.com"],"allowCidrs":["1.2.3.0/24","8.8.8.8"],"enableAcl":false}
 	SandboxNetworkPolicy *UpdateDigitalEmployeeRequestSandboxNetworkPolicy `json:"sandboxNetworkPolicy,omitempty" xml:"sandboxNetworkPolicy,omitempty" type:"Struct"`
-	// The tool calling security policy configuration of the digital employee.
+	// The security policy configuration for tool calling by the digital employee.
 	//
 	// example:
 	//
-	// {"aliyun":{"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
+	// {"aliyun":{"enable":true,"denyPolicy":["ecs:RunCommand","ecs:Delete*"],"autoPassPolicy":["log:Get*","log:List*"],"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
 	ToolPolicy *UpdateDigitalEmployeeRequestToolPolicy `json:"toolPolicy,omitempty" xml:"toolPolicy,omitempty" type:"Struct"`
 }
 
@@ -170,9 +170,9 @@ func (s *UpdateDigitalEmployeeRequest) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledges struct {
-	// The Bailian knowledge base list.
+	// The list of Model Studio knowledge bases.
 	Bailian []*UpdateDigitalEmployeeRequestKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	// The SOP knowledge base list.
+	// The list of SOP knowledge bases.
 	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
@@ -216,13 +216,13 @@ func (s *UpdateDigitalEmployeeRequestKnowledges) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledgesBailian struct {
-	// The knowledge base attributes.
+	// The attributes of the knowledge base.
 	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The Bailian index ID.
+	// The ID of the Model Studio index.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ type UpdateDigitalEmployeeRequestKnowledgesBailian struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The Bailian workspace ID.
+	// The ID of the Model Studio workspace.
 	//
 	// example:
 	//
@@ -291,9 +291,9 @@ func (s *UpdateDigitalEmployeeRequestKnowledgesBailian) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestSandboxNetworkPolicy struct {
-	// The list of CIDRs or IP addresses that are allowed to be accessed.
+	// The list of allowed CIDR blocks or IP addresses.
 	AllowCidrs []*string `json:"allowCidrs,omitempty" xml:"allowCidrs,omitempty" type:"Repeated"`
-	// The list of FQDNs that are allowed to be accessed.
+	// The list of allowed FQDNs.
 	AllowFqdns []*string `json:"allowFqdns,omitempty" xml:"allowFqdns,omitempty" type:"Repeated"`
 	// Specifies whether to enable the sandbox network ACL.
 	//
@@ -343,12 +343,16 @@ func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestToolPolicy struct {
-	// The Aliyun CLI tool calling security policy configuration.
+	// The security policy configuration for Aliyun CLI tool calling.
 	//
 	// example:
 	//
-	// {"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}
+	// {"enable":true,"denyPolicy":["ecs:RunCommand","ecs:Delete*"],"autoPassPolicy":["log:Get*","log:List*"],"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}
 	Aliyun *UpdateDigitalEmployeeRequestToolPolicyAliyun `json:"aliyun,omitempty" xml:"aliyun,omitempty" type:"Struct"`
+	// The global auto-approval rules for tool calling.
+	Global *UpdateDigitalEmployeeRequestToolPolicyGlobal `json:"global,omitempty" xml:"global,omitempty" type:"Struct"`
+	// The hook configuration.
+	Hooks []*Hook `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDigitalEmployeeRequestToolPolicy) String() string {
@@ -363,8 +367,26 @@ func (s *UpdateDigitalEmployeeRequestToolPolicy) GetAliyun() *UpdateDigitalEmplo
 	return s.Aliyun
 }
 
+func (s *UpdateDigitalEmployeeRequestToolPolicy) GetGlobal() *UpdateDigitalEmployeeRequestToolPolicyGlobal {
+	return s.Global
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicy) GetHooks() []*Hook {
+	return s.Hooks
+}
+
 func (s *UpdateDigitalEmployeeRequestToolPolicy) SetAliyun(v *UpdateDigitalEmployeeRequestToolPolicyAliyun) *UpdateDigitalEmployeeRequestToolPolicy {
 	s.Aliyun = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicy) SetGlobal(v *UpdateDigitalEmployeeRequestToolPolicyGlobal) *UpdateDigitalEmployeeRequestToolPolicy {
+	s.Global = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicy) SetHooks(v []*Hook) *UpdateDigitalEmployeeRequestToolPolicy {
+	s.Hooks = v
 	return s
 }
 
@@ -374,17 +396,31 @@ func (s *UpdateDigitalEmployeeRequestToolPolicy) Validate() error {
 			return err
 		}
 	}
+	if s.Global != nil {
+		if err := s.Global.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type UpdateDigitalEmployeeRequestToolPolicyAliyun struct {
-	// The automatic pass-through policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically allowed without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically allowed. Unmatched actions require human-in-the-loop (HIL) confirmation.
+	// The list of auto-approved RAM actions. The format is *, product:ApiName, or product:Prefix*.
 	//
 	// example:
 	//
 	// ["log:Get*","log:List*"]
 	AutoPassPolicy []*string `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
-	// The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are actively denied. STAROps directly denies matched actions. Pop performs secondary enforcement.
+	// The list of denied RAM actions. The format is *, product:ApiName, or product:Prefix*.
 	//
 	// example:
 	//
@@ -484,7 +520,7 @@ type UpdateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
 	//
 	// user_ack
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
-	// The cloud product code.
+	// The code of the cloud service.
 	//
 	// example:
 	//
@@ -538,4 +574,43 @@ func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) SetProduct(v st
 
 func (s *UpdateDigitalEmployeeRequestToolPolicyAliyunStatements) Validate() error {
 	return dara.Validate(s)
+}
+
+type UpdateDigitalEmployeeRequestToolPolicyGlobal struct {
+	// The array of auto-approval policies.
+	//
+	// example:
+	//
+	// [{"version":"v1.0.0","fullCommand":"starops tool list"},{"version":"v1.0.0","commandPrefix":["starops sls"]}]
+	AutoPassPolicy []*AutoPassPolicy `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicyGlobal) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateDigitalEmployeeRequestToolPolicyGlobal) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyGlobal) GetAutoPassPolicy() []*AutoPassPolicy {
+	return s.AutoPassPolicy
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyGlobal) SetAutoPassPolicy(v []*AutoPassPolicy) *UpdateDigitalEmployeeRequestToolPolicyGlobal {
+	s.AutoPassPolicy = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyGlobal) Validate() error {
+	if s.AutoPassPolicy != nil {
+		for _, item := range s.AutoPassPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

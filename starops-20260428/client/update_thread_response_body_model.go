@@ -18,13 +18,13 @@ type iUpdateThreadResponseBody interface {
 }
 
 type UpdateThreadResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the thread.
+	// The session ID.
 	//
 	// example:
 	//

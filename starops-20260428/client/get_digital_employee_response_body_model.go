@@ -37,6 +37,8 @@ type iGetDigitalEmployeeResponseBody interface {
 	GetRoleArn() *string
 	SetSandboxNetworkPolicy(v *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) *GetDigitalEmployeeResponseBody
 	GetSandboxNetworkPolicy() *GetDigitalEmployeeResponseBodySandboxNetworkPolicy
+	SetStatus(v int32) *GetDigitalEmployeeResponseBody
+	GetStatus() *int32
 	SetTags(v []*Tag) *GetDigitalEmployeeResponseBody
 	GetTags() []*Tag
 	SetToolPolicy(v *GetDigitalEmployeeResponseBodyToolPolicy) *GetDigitalEmployeeResponseBody
@@ -54,7 +56,7 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The creation time.
+	// The creation time in RFC 3339 format. The time zone is UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -62,7 +64,7 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The default rule of the digital employee.
+	// The default rules of the digital employee.
 	//
 	// example:
 	//
@@ -86,7 +88,7 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// custom
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	// The knowledge base list.
+	// The list of knowledge bases.
 	Knowledges *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// The name of the digital employee.
 	//
@@ -94,7 +96,7 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The region ID.
+	// The region ID of the resource.
 	//
 	// example:
 	//
@@ -112,18 +114,24 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// The ARN of the RAM role.
 	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The sandbox network ACL policy configuration of the digital employee.
+	// The sandbox network ACL policy configuration for the digital employee.
 	//
 	// example:
 	//
 	// {"allowFqdns":["api.example.com"],"allowCidrs":["1.2.3.0/24","8.8.8.8"],"enableAcl":false}
 	SandboxNetworkPolicy *GetDigitalEmployeeResponseBodySandboxNetworkPolicy `json:"sandboxNetworkPolicy,omitempty" xml:"sandboxNetworkPolicy,omitempty" type:"Struct"`
+	// The status of the digital employee. Valid values: 0 (normal) and 1 (disabled).
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The tool policy.
@@ -132,7 +140,7 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// {"aliyun":{"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
 	ToolPolicy *GetDigitalEmployeeResponseBodyToolPolicy `json:"toolPolicy,omitempty" xml:"toolPolicy,omitempty" type:"Struct"`
-	// The modification time.
+	// The update time in RFC 3339 format. The time zone is UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -204,6 +212,10 @@ func (s *GetDigitalEmployeeResponseBody) GetRoleArn() *string {
 
 func (s *GetDigitalEmployeeResponseBody) GetSandboxNetworkPolicy() *GetDigitalEmployeeResponseBodySandboxNetworkPolicy {
 	return s.SandboxNetworkPolicy
+}
+
+func (s *GetDigitalEmployeeResponseBody) GetStatus() *int32 {
+	return s.Status
 }
 
 func (s *GetDigitalEmployeeResponseBody) GetTags() []*Tag {
@@ -288,6 +300,11 @@ func (s *GetDigitalEmployeeResponseBody) SetSandboxNetworkPolicy(v *GetDigitalEm
 	return s
 }
 
+func (s *GetDigitalEmployeeResponseBody) SetStatus(v int32) *GetDigitalEmployeeResponseBody {
+	s.Status = &v
+	return s
+}
+
 func (s *GetDigitalEmployeeResponseBody) SetTags(v []*Tag) *GetDigitalEmployeeResponseBody {
 	s.Tags = v
 	return s
@@ -332,9 +349,9 @@ func (s *GetDigitalEmployeeResponseBody) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyKnowledges struct {
-	// The Bailian knowledge base list.
+	// The list of Model Studio knowledge bases.
 	Bailian []*GetDigitalEmployeeResponseBodyKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	// The SOP knowledge base list.
+	// The list of SOP knowledge bases.
 	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
@@ -378,13 +395,13 @@ func (s *GetDigitalEmployeeResponseBodyKnowledges) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyKnowledgesBailian struct {
-	// The knowledge base attributes.
+	// The attributes of the knowledge base.
 	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The Bailian index ID.
+	// The index ID of Model Studio.
 	//
 	// example:
 	//
@@ -396,7 +413,7 @@ type GetDigitalEmployeeResponseBodyKnowledgesBailian struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The Bailian workspace ID.
+	// The workspace ID of Model Studio.
 	//
 	// example:
 	//
@@ -453,11 +470,11 @@ func (s *GetDigitalEmployeeResponseBodyKnowledgesBailian) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodySandboxNetworkPolicy struct {
-	// The list of allowed CIDRs or IP addresses.
+	// The list of allowed CIDR blocks or IP addresses.
 	AllowCidrs []*string `json:"allowCidrs,omitempty" xml:"allowCidrs,omitempty" type:"Repeated"`
 	// The list of allowed FQDNs.
 	AllowFqdns []*string `json:"allowFqdns,omitempty" xml:"allowFqdns,omitempty" type:"Repeated"`
-	// Indicates whether the sandbox network ACL is enabled.
+	// Specifies whether to enable the sandbox network ACL.
 	//
 	// example:
 	//
@@ -505,12 +522,16 @@ func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyToolPolicy struct {
-	// The security policy configuration for Alibaba Cloud CLI tool calling invokes.
+	// The security policy configuration for Alibaba Cloud CLI tool invocation.
 	//
 	// example:
 	//
 	// {"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}
 	Aliyun *GetDigitalEmployeeResponseBodyToolPolicyAliyun `json:"aliyun,omitempty" xml:"aliyun,omitempty" type:"Struct"`
+	// The global auto-pass configuration for the digital employee.
+	Global *GetDigitalEmployeeResponseBodyToolPolicyGlobal `json:"global,omitempty" xml:"global,omitempty" type:"Struct"`
+	// The hook configuration.
+	Hooks []*Hook `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
 func (s GetDigitalEmployeeResponseBodyToolPolicy) String() string {
@@ -525,8 +546,26 @@ func (s *GetDigitalEmployeeResponseBodyToolPolicy) GetAliyun() *GetDigitalEmploy
 	return s.Aliyun
 }
 
+func (s *GetDigitalEmployeeResponseBodyToolPolicy) GetGlobal() *GetDigitalEmployeeResponseBodyToolPolicyGlobal {
+	return s.Global
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicy) GetHooks() []*Hook {
+	return s.Hooks
+}
+
 func (s *GetDigitalEmployeeResponseBodyToolPolicy) SetAliyun(v *GetDigitalEmployeeResponseBodyToolPolicyAliyun) *GetDigitalEmployeeResponseBodyToolPolicy {
 	s.Aliyun = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicy) SetGlobal(v *GetDigitalEmployeeResponseBodyToolPolicyGlobal) *GetDigitalEmployeeResponseBodyToolPolicy {
+	s.Global = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicy) SetHooks(v []*Hook) *GetDigitalEmployeeResponseBodyToolPolicy {
+	s.Hooks = v
 	return s
 }
 
@@ -536,23 +575,37 @@ func (s *GetDigitalEmployeeResponseBodyToolPolicy) Validate() error {
 			return err
 		}
 	}
+	if s.Global != nil {
+		if err := s.Global.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hooks != nil {
+		for _, item := range s.Hooks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type GetDigitalEmployeeResponseBodyToolPolicyAliyun struct {
-	// The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+	// The auto-pass policy. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If an operation matches the policy, it is automatically allowed without manual confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, and Describe*) are automatically allowed. Unmatched operations require manual confirmation (HIL).
 	//
 	// example:
 	//
 	// ["log:Get*","log:List*"]
 	AutoPassPolicy []*string `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
-	// The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+	// The explicit deny policy, which has the highest priority. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are explicitly denied. If a STAROps operation matches the policy, it is directly denied. The POP side provides a secondary fallback.
 	//
 	// example:
 	//
 	// ["ecs:RunCommand","ecs:Delete*"]
 	DenyPolicy []*string `json:"denyPolicy,omitempty" xml:"denyPolicy,omitempty" type:"Repeated"`
-	// Indicates whether the policy is enabled.
+	// Specifies whether the policy is enabled.
 	//
 	// example:
 	//
@@ -560,7 +613,7 @@ type GetDigitalEmployeeResponseBodyToolPolicyAliyun struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// Deprecated
 	//
-	// The list of Alibaba Cloud CLI tool policy statements.
+	// The list of policy statements for Alibaba Cloud CLI tools.
 	//
 	// example:
 	//
@@ -646,9 +699,7 @@ type GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements struct {
 	//
 	// user_ack
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
-	// The cloud product code.
-	//
-	// This parameter is required.
+	// The code of the cloud service.
 	//
 	// example:
 	//
@@ -702,4 +753,43 @@ func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements) SetProduct(v 
 
 func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements) Validate() error {
 	return dara.Validate(s)
+}
+
+type GetDigitalEmployeeResponseBodyToolPolicyGlobal struct {
+	// The auto-pass policy for CLI commands.
+	//
+	// example:
+	//
+	// [{"version":"v1.0.0","fullCommand":"starops tool list"},{"version":"v1.0.0","commandPrefix":["starops sls"]}]
+	AutoPassPolicy []*AutoPassPolicy `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
+}
+
+func (s GetDigitalEmployeeResponseBodyToolPolicyGlobal) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDigitalEmployeeResponseBodyToolPolicyGlobal) GoString() string {
+	return s.String()
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicyGlobal) GetAutoPassPolicy() []*AutoPassPolicy {
+	return s.AutoPassPolicy
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicyGlobal) SetAutoPassPolicy(v []*AutoPassPolicy) *GetDigitalEmployeeResponseBodyToolPolicyGlobal {
+	s.AutoPassPolicy = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicyGlobal) Validate() error {
+	if s.AutoPassPolicy != nil {
+		for _, item := range s.AutoPassPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -32,9 +32,9 @@ type iGetThreadResponseBody interface {
 }
 
 type GetThreadResponseBody struct {
-	// The thread\\"s attributes.
+	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The thread\\"s creation time, in ISO 8601 format.
+	// The creation time in RFC 3339 format, including the time zone offset.
 	//
 	// example:
 	//
@@ -46,39 +46,39 @@ type GetThreadResponseBody struct {
 	//
 	// test
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The thread\\"s status.
+	// The session status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The thread ID.
+	// The session ID.
 	//
 	// example:
 	//
 	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	// The thread\\"s title.
+	// The session title.
 	//
 	// example:
 	//
 	// testLive
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The thread\\"s last update time, in ISO 8601 format.
+	// The update time in RFC 3339 format, including the time zone offset.
 	//
 	// example:
 	//
 	// 2025-12-19T15:19:55.040403272+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The thread\\"s variables.
+	// The session properties.
 	Variables *GetThreadResponseBodyVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
-	// The thread\\"s version.
+	// The version.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ func (s *GetThreadResponseBody) Validate() error {
 }
 
 type GetThreadResponseBodyVariables struct {
-	// The name of the SLS project.
+	// The Simple Log Service (SLS) project name.
 	//
 	// example:
 	//
 	// test
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

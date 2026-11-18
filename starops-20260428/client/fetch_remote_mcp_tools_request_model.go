@@ -74,9 +74,14 @@ type FetchRemoteMcpToolsRequestConnection struct {
 	// example:
 	//
 	// https://example.com/mcp
-	Endpoint *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The MCP service platform type. Valid values: AIGateway and Custom.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The custom HTTP request headers appended when calling the MCP service.
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The MCP service platform type. Valid values:
+	//
+	// - AIGateway: AI gateway.
+	//
+	// - Custom: custom MCP service.
 	//
 	// example:
 	//
@@ -88,7 +93,11 @@ type FetchRemoteMcpToolsRequestConnection struct {
 	//
 	// 5000
 	Timeout *int64 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The transport protocol of the MCP service. Valid values: http and sse.
+	// The transport protocol of the MCP service. Valid values:
+	//
+	// - sse: Server-Sent Events (SSE) transport protocol.
+	//
+	// - http: HTTP transport protocol.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +185,9 @@ type FetchRemoteMcpToolsRequestConnectionAuth struct {
 	//
 	// {"token":"example-token"}
 	KeyInfo map[string]*string `json:"keyInfo,omitempty" xml:"keyInfo,omitempty"`
-	// The authentication type. Currently, only bearer is supported.
+	// The authentication type. Currently, only bearer is supported. Valid values:
+	//
+	// - bearer: Bearer token authentication.
 	//
 	// example:
 	//
@@ -239,7 +250,11 @@ type FetchRemoteMcpToolsRequestNetwork struct {
 	//
 	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The network access mode of the MCP service. Valid values: public and vpc.
+	// The network access mode of the MCP service. Valid values:
+	//
+	// - public: Direct Internet Access mode.
+	//
+	// - vpc: VPC mode.
 	//
 	// example:
 	//

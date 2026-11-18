@@ -28,7 +28,7 @@ type iListDigitalEmployeesShrinkRequest interface {
 }
 
 type ListDigitalEmployeesShrinkRequest struct {
-	// Filters digital employees by channel type. If this parameter is not specified, the default channel is used.
+	// The channel type.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListDigitalEmployeesShrinkRequest struct {
 	//
 	// custom
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	// The page size. Default value: 20. Maximum value: 100.
+	// The number of entries to return per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//

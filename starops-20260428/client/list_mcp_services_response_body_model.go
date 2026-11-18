@@ -154,13 +154,13 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceList struct {
 	//
 	// example:
 	//
-	// 通过 MCP 调用日志查询工具。
+	// Call the log query tool through MCP
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP service.
 	//
 	// example:
 	//
-	// 日志查询
+	// Log Query
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Indicates whether the MCP service is enabled.
 	//
@@ -286,21 +286,34 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection struct {
 	// example:
 	//
 	// https://example.com/mcp
-	Endpoint *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The platform type of the MCP service. Valid values: AIGateway and Custom.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The custom HTTP request headers appended when calling the MCP service.
+	//
+	// example:
+	//
+	// {"X-Custom-Header":"example-value"}
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The platform type of the MCP service. Valid values:
+	//
+	// - AIGateway: AI gateway.
+	//
+	// - Custom: custom MCP service.
 	//
 	// example:
 	//
 	// Custom
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// The timeout period for requests to the MCP service. Unit: milliseconds.
+	// The timeout period for requests to the MCP service, in milliseconds.
 	//
 	// example:
 	//
 	// 5000
 	Timeout *int64 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The transport protocol of the MCP service. Valid values: http and sse.
+	// The transport protocol of the MCP service. Valid values:
+	//
+	// - sse: Server-Sent Events (SSE) transport protocol.
+	//
+	// - http: HTTP transport protocol.
 	//
 	// example:
 	//
@@ -386,7 +399,9 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceListConnectionAuth struct {
 	//
 	// {"token":"example-token"}
 	KeyInfo map[string]*string `json:"keyInfo,omitempty" xml:"keyInfo,omitempty"`
-	// The authentication type. Currently, bearer is supported.
+	// The authentication type. Currently, only bearer is supported. Valid values:
+	//
+	// - bearer: Bearer token authentication.
 	//
 	// example:
 	//
@@ -449,7 +464,11 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceListNetwork struct {
 	//
 	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The network access mode of the MCP service. Valid values: public and vpc.
+	// The network access mode of the MCP service. Valid values:
+	//
+	// - public: direct public network access mode.
+	//
+	// - vpc: Virtual Private Cloud (VPC) mode.
 	//
 	// example:
 	//
@@ -581,7 +600,7 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceListTools struct {
 	//
 	// {}
 	Annotations map[string]interface{} `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	// Indicates whether user confirmation is required before calling the MCP tool.
+	// Specifies whether user confirmation is required before calling the MCP tool.
 	//
 	// example:
 	//
@@ -591,13 +610,13 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceListTools struct {
 	//
 	// example:
 	//
-	// 查询指定日志库中的日志。
+	// Query logs in a specified Logstore
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP tool.
 	//
 	// example:
 	//
-	// 日志查询工具
+	// Log Query Tool
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Indicates whether the MCP tool is enabled.
 	//
@@ -639,7 +658,7 @@ type ListMcpServicesResponseBodyMcpServicesMcpServiceListTools struct {
 	//
 	// example:
 	//
-	// 查询日志
+	// Query Logs
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

@@ -32,7 +32,7 @@ type iGetDigitalEmployeeSkillResponseBody interface {
 }
 
 type GetDigitalEmployeeSkillResponseBody struct {
-	// The time when the skill was created.
+	// The creation time in RFC 3339 format with the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -58,27 +58,27 @@ type GetDigitalEmployeeSkillResponseBody struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The file list of the skill.
+	// The list of skill files.
 	Files []*GetDigitalEmployeeSkillResponseBodyFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// A user-provided remark about the skill.
+	// The remarks.
 	//
 	// example:
 	//
 	// remark
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The name of the skill.
+	// The skill name.
 	//
 	// example:
 	//
 	// test
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The time when the skill was last updated.
+	// The update time in RFC 3339 format with the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -86,7 +86,7 @@ type GetDigitalEmployeeSkillResponseBody struct {
 	//
 	// 2026-02-06T14:09:11Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The version of the skill.
+	// The version number.
 	//
 	// example:
 	//

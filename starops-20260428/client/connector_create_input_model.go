@@ -36,11 +36,11 @@ type iConnectorCreateInput interface {
 }
 
 type ConnectorCreateInput struct {
-	// The authentication configuration used to access the target service.
+	// The authentication configuration for accessing the target service.
 	//
 	// This parameter is required.
 	Authentication *ConnectorAuthenticationInput `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	// The list of capabilities granted to the connector.
+	// The list of capabilities granted to the Connector.
 	//
 	// This parameter is required.
 	CapabilityGrants []map[string]interface{} `json:"capabilityGrants,omitempty" xml:"capabilityGrants,omitempty" type:"Repeated"`
@@ -81,9 +81,9 @@ type ConnectorCreateInput struct {
 	//
 	// CMS 2.0 production workspace
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Specifies whether the connector is enabled after creation.
+	// Specifies whether to enable the Connector after creation.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The execution policy of the connector.
+	// The execution policy of the Connector.
 	//
 	// This parameter is required.
 	Policy map[string]interface{} `json:"policy,omitempty" xml:"policy,omitempty"`
@@ -95,7 +95,7 @@ type ConnectorCreateInput struct {
 	//
 	// AlibabaCloudCms
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The runtime configuration of the connector.
+	// The runtime configuration of the Connector.
 	//
 	// This parameter is required.
 	Runtime *ConnectorRuntime `json:"runtime,omitempty" xml:"runtime,omitempty"`

@@ -16,7 +16,7 @@ type iListDigitalEmployeeSkillVersionsResponseBody interface {
 }
 
 type ListDigitalEmployeeSkillVersionsResponseBody struct {
-	// A list of previous skill versions.
+	// The historical versions.
 	Data []*ListDigitalEmployeeSkillVersionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *ListDigitalEmployeeSkillVersionsResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeeSkillVersionsResponseBodyData struct {
-	// The time when the skill version was created.
+	// The creation time in RFC 3339 format with the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -86,13 +86,13 @@ type ListDigitalEmployeeSkillVersionsResponseBodyData struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Indicates whether the skill version is enabled.
+	// Indicates whether the version is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The remark for the skill version.
+	// The remarks.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListDigitalEmployeeSkillVersionsResponseBodyData struct {
 	//
 	// test
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The time when the skill version was last updated.
+	// The update time in RFC 3339 format with the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -112,7 +112,7 @@ type ListDigitalEmployeeSkillVersionsResponseBodyData struct {
 	//
 	// 2026-02-06T14:09:11Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The version number.
+	// The version.
 	//
 	// example:
 	//

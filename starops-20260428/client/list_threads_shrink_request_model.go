@@ -24,9 +24,9 @@ type iListThreadsShrinkRequest interface {
 }
 
 type ListThreadsShrinkRequest struct {
-	// Filters the results. If this parameter is omitted, the operation returns all threads in the instance.
+	// The filter conditions for the query. If this parameter is not specified, all topics under the instance are queried.
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// Specifies whether to include threads created by missions.
+	// Specifies whether to include threads created by mission.
 	IncludeMission *bool `json:"includeMission,omitempty" xml:"includeMission,omitempty"`
 	// The maximum number of results to return. Maximum value: 200.
 	//
@@ -40,13 +40,13 @@ type ListThreadsShrinkRequest struct {
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The status of the thread.
+	// The session status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The thread ID.
+	// The session ID.
 	//
 	// example:
 	//

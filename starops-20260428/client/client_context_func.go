@@ -149,7 +149,7 @@ func (client *Client) CreateChatWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Creates a DigitalEmployee.
+// Creates a digital employee.
 //
 // Description:
 //
@@ -717,7 +717,11 @@ func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string,
 
 // Summary:
 //
-// Retrieves the tool list from a remote MCP server.
+// Retrieves the tool list from a remote MCP service.
+//
+// Description:
+//
+// Retrieves the tool list from a remote MCP service.
 //
 // @param request - FetchRemoteMcpToolsRequest
 //
@@ -932,7 +936,11 @@ func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *s
 
 // Summary:
 //
-// Queries the entity data of a digital employee.
+// Queries the entity data of a digital human.
+//
+// Description:
+//
+// Queries the entity data of a digital human.
 //
 // @param request - GetDigitalEmployeeEntityDataRequest
 //
@@ -987,11 +995,11 @@ func (client *Client) GetDigitalEmployeeEntityDataWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the details of a specific skill.
+// Retrieves the details of a skill.
 //
 // Description:
 //
-// Retrieves the details of a specified skill for a digital employee.
+// Retrieves the details of a skill.
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -1081,6 +1089,10 @@ func (client *Client) GetDigitalEmployeeUmodelWithContext(ctx context.Context, n
 //
 // Queries an MCP service.
 //
+// Description:
+//
+// Queries the configuration of an MCP service.
+//
 // @param request - GetMcpServiceRequest
 //
 // @param headers - map
@@ -1120,11 +1132,11 @@ func (client *Client) GetMcpServiceWithContext(ctx context.Context, name *string
 
 // Summary:
 //
-// Retrieves a thread.
+// Retrieves a session.
 //
 // Description:
 //
-// Retrieves the details of a thread.
+// Retrieves a session.
 //
 // @param request - GetThreadRequest
 //
@@ -1279,11 +1291,11 @@ func (client *Client) ListArtifactsWithContext(ctx context.Context, name *string
 
 // Summary:
 //
-// Lists the versions of a skill.
+// Lists skill versions.
 //
 // Description:
 //
-// Lists the previous versions of a skill.
+// Lists historical versions of a skill.
 //
 // @param request - ListDigitalEmployeeSkillVersionsRequest
 //
@@ -1324,11 +1336,11 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithContext(ctx context.Co
 
 // Summary:
 //
-// Lists the skills of a digital employee.
+// Lists skills.
 //
 // Description:
 //
-// Lists the skills of a specified digital employee.
+// Lists skills.
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -1470,6 +1482,10 @@ func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, tmpRe
 //
 // Queries the list of MCP services.
 //
+// Description:
+//
+// Queries the list of MCP services.
+//
 // @param request - ListMcpServicesRequest
 //
 // @param headers - map
@@ -1519,11 +1535,11 @@ func (client *Client) ListMcpServicesWithContext(ctx context.Context, name *stri
 
 // Summary:
 //
-// # List sessions
+// Lists sessions.
 //
 // Description:
 //
-// # List sessions
+// Lists sessions.
 //
 // @param tmpReq - ListThreadsRequest
 //
@@ -1791,6 +1807,10 @@ func (client *Client) UpdateDigitalEmployeeUmodelWithContext(ctx context.Context
 //
 // Updates an MCP service.
 //
+// Description:
+//
+// Updates the configuration of an MCP service.
+//
 // @param request - UpdateMcpServiceRequest
 //
 // @param headers - map
@@ -1856,11 +1876,11 @@ func (client *Client) UpdateMcpServiceWithContext(ctx context.Context, name *str
 
 // Summary:
 //
-// Updates a thread.
+// Updates a session.
 //
 // Description:
 //
-// Updates a thread.
+// Updates a session.
 //
 // @param request - UpdateThreadRequest
 //

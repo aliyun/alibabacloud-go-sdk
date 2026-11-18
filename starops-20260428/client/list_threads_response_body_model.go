@@ -24,33 +24,33 @@ type iListThreadsResponseBody interface {
 }
 
 type ListThreadsResponseBody struct {
-	// The maximum number of results to return. The maximum value is 200.
+	// The maximum number of results to return. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A token to retrieve the next page of results. If this parameter is absent, no more results are available.
+	// The pagination token.
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// CD8BA7D6-995D-578D-9941-xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The thread ID.
+	// The session ID.
 	//
 	// example:
 	//
 	// thread-123123
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	// A list of threads.
+	// The sessions.
 	Threads []*ListThreadsResponseBodyThreads `json:"threads,omitempty" xml:"threads,omitempty" type:"Repeated"`
-	// The total number of threads.
+	// The total number of sessions.
 	//
 	// example:
 	//
@@ -134,47 +134,47 @@ func (s *ListThreadsResponseBody) Validate() error {
 }
 
 type ListThreadsResponseBodyThreads struct {
-	// A map of key-value pairs that you can attach to the thread.
+	// The properties.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The creation time of the thread, in ISO 8601 format.
+	// The creation time in RFC 3339 format, including the time zone offset.
 	//
 	// example:
 	//
 	// 2025-12-19T15:19:55.040403272+08:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The digital employee name.
+	// The name of the digital employee.
 	//
 	// example:
 	//
 	// test
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The thread status.
+	// The session status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The thread ID.
+	// The session ID.
 	//
 	// example:
 	//
 	// thread-123123
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	// The thread title.
+	// The session title.
 	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The last update time of the thread, in ISO 8601 format.
+	// The update time in RFC 3339 format, including the time zone offset.
 	//
 	// example:
 	//
 	// 2025-12-19T15:19:55.040403272+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The thread variables.
+	// The session properties.
 	Variables *ListThreadsResponseBodyThreadsVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
-	// The thread version.
+	// The version number.
 	//
 	// example:
 	//
@@ -281,7 +281,7 @@ func (s *ListThreadsResponseBodyThreads) Validate() error {
 }
 
 type ListThreadsResponseBodyThreadsVariables struct {
-	// The project in SLS.
+	// SLS project。
 	//
 	// example:
 	//

@@ -117,15 +117,19 @@ func (s *ListDigitalEmployeesResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
-	// The attributes.
+	// The attributes of the digital employee.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The channel type of the digital employee.
+	// The channel type.
 	//
 	// example:
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The creation time.
+	// The creation time in RFC 3339 format. The time zone is UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -177,9 +181,15 @@ type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The status of the digital employee. Valid values: 0: Normal. 1: Disabled.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The update time.
+	// The update time in RFC 3339 format. The time zone is UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -239,6 +249,10 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetResourceGroupId() 
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetRoleArn() *string {
 	return s.RoleArn
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetStatus() *int32 {
+	return s.Status
 }
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetTags() []*Tag {
@@ -304,6 +318,11 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetRoleArn(v string) 
 	return s
 }
 
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetStatus(v int32) *ListDigitalEmployeesResponseBodyDigitalEmployees {
+	s.Status = &v
+	return s
+}
+
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetTags(v []*Tag) *ListDigitalEmployeesResponseBodyDigitalEmployees {
 	s.Tags = v
 	return s
@@ -333,7 +352,7 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges struct {
-	// The list of Bailian knowledge bases.
+	// The list of Model Studio knowledge bases.
 	Bailian []*ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
 	// The list of SOP knowledge bases.
 	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
@@ -379,13 +398,13 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) Validate() 
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian struct {
-	// The knowledge base attributes.
+	// The attributes of the knowledge base.
 	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The Bailian index ID.
+	// The Model Studio index ID.
 	//
 	// example:
 	//
@@ -397,7 +416,7 @@ type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The Bailian workspace ID.
+	// The Model Studio workspace ID.
 	//
 	// example:
 	//
