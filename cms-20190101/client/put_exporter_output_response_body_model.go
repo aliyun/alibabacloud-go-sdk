@@ -20,32 +20,10 @@ type iPutExporterOutputResponseBody interface {
 }
 
 type PutExporterOutputResponseBody struct {
-	// The status code.
-	//
-	// > 200 indicates success.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// The Request is not authorization.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6A5F022D-AC7C-460E-94AE-B9E75083D027
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutExporterOutputResponseBody) String() string {

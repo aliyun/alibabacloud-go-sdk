@@ -15,6 +15,8 @@ type iPutContactGroupRequest interface {
 	GetContactNames() []*string
 	SetDescribe(v string) *PutContactGroupRequest
 	GetDescribe() *string
+	SetDryRun(v bool) *PutContactGroupRequest
+	GetDryRun() *bool
 	SetEnableSubscribed(v bool) *PutContactGroupRequest
 	GetEnableSubscribed() *bool
 }
@@ -26,9 +28,9 @@ type PutContactGroupRequest struct {
 	//
 	// example:
 	//
-	// Attendance system group
+	// Attendance System Group
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// The name of the alert contact.
+	// The names of the alert contacts.
 	ContactNames []*string `json:"ContactNames,omitempty" xml:"ContactNames,omitempty" type:"Repeated"`
 	// The description of the alert contact group.
 	//
@@ -36,11 +38,17 @@ type PutContactGroupRequest struct {
 	//
 	// Alert test
 	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// Specifies whether to perform a dry run on the request.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the subscription feature. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Yes.
 	//
-	// - false: Disabled.
+	// - false: No.
 	//
 	// example:
 	//
@@ -68,6 +76,10 @@ func (s *PutContactGroupRequest) GetDescribe() *string {
 	return s.Describe
 }
 
+func (s *PutContactGroupRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *PutContactGroupRequest) GetEnableSubscribed() *bool {
 	return s.EnableSubscribed
 }
@@ -84,6 +96,11 @@ func (s *PutContactGroupRequest) SetContactNames(v []*string) *PutContactGroupRe
 
 func (s *PutContactGroupRequest) SetDescribe(v string) *PutContactGroupRequest {
 	s.Describe = &v
+	return s
+}
+
+func (s *PutContactGroupRequest) SetDryRun(v bool) *PutContactGroupRequest {
+	s.DryRun = &v
 	return s
 }
 

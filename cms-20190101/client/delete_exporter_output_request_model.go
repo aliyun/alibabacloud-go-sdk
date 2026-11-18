@@ -16,13 +16,7 @@ type iDeleteExporterOutputRequest interface {
 }
 
 type DeleteExporterOutputRequest struct {
-	// The destination name of the configuration.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// testName
 	DestName *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

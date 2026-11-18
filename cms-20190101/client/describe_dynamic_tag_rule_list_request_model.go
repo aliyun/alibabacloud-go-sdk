@@ -66,7 +66,7 @@ type DescribeDynamicTagRuleListRequest struct {
 	//
 	// example:
 	//
-	// *
+	// production
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

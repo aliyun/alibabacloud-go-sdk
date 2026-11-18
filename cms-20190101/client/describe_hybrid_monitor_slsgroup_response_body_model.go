@@ -70,7 +70,7 @@ type DescribeHybridMonitorSLSGroupResponseBody struct {
 	//
 	// example:
 	//
-	// true
+	// 无。
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of entries.
 	//
@@ -188,7 +188,7 @@ type DescribeHybridMonitorSLSGroupResponseBodyList struct {
 	//
 	// example:
 	//
-	// Logstore group of Alibaba Cloud products.
+	// 阿里云产品归属的Logstore组。
 	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
 	// The name of the Logstore group.
 	//

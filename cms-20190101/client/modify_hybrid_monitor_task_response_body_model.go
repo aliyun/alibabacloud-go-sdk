@@ -42,9 +42,9 @@ type ModifyHybridMonitorTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: successful
 	//
-	// - false: The operation failed.
+	// - false: failed
 	//
 	// example:
 	//

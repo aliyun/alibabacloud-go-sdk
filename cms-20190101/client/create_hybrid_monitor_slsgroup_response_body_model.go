@@ -40,11 +40,11 @@ type CreateHybridMonitorSLSGroupResponseBody struct {
 	//
 	// 66683237-7126-50F8-BBF8-D67ACC919A17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

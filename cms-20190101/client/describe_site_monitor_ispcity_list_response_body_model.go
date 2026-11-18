@@ -22,32 +22,32 @@ type iDescribeSiteMonitorISPCityListResponseBody interface {
 }
 
 type DescribeSiteMonitorISPCityListResponseBody struct {
-	// 状态码。
+	// The status code.
 	//
-	// > 200表示成功。
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code        *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	IspCityList *DescribeSiteMonitorISPCityListResponseBodyIspCityList `json:"IspCityList,omitempty" xml:"IspCityList,omitempty" type:"Struct"`
-	// 返回信息。
+	// The message returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// B35D7D84-547B-4E61-B909-48A1F8A0C756
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 操作是否成功。取值：
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true：成功。
+	// - true: successful.
 	//
-	// - false：失败。
+	// - false: failed.
 	//
 	// example:
 	//

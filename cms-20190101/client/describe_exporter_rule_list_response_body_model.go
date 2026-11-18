@@ -26,49 +26,13 @@ type iDescribeExporterRuleListResponseBody interface {
 }
 
 type DescribeExporterRuleListResponseBody struct {
-	// The status code.
-	//
-	// > A status code of 200 indicates success. Other values indicate failure.
-	//
-	// example:
-	//
-	// 200
 	Code       *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *DescribeExporterRuleListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
-	// The returned message.
-	//
-	// example:
-	//
-	// The specified resource is not found.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. Default value: 1.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6BA047CA-8BC6-40BC-BC8F-FBECF35F1993
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// - `true`: The request is successful.
-	//
-	// - `false`: The request fails.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries.
-	//
-	// example:
-	//
-	// 1000
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total      *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeExporterRuleListResponseBody) String() string {

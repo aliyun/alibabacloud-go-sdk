@@ -33,13 +33,18 @@ type DeleteMonitorGroupInstancesRequest struct {
 	// example:
 	//
 	// ecs
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 6868E9A1-56E6-5FD7-9684-E2963BBAFB5F
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run on the request. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run and does not delete the VPN connection. The system checks whether required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run and does not delete the resource instances. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request. If the request passes the dry run, the VPN connection is deleted.
+	// - **false*	- (default): sends a regular request and deletes the resource instances if the request passes the dry run.
 	//
 	// example:
 	//
@@ -53,7 +58,7 @@ type DeleteMonitorGroupInstancesRequest struct {
 	//
 	// 123456
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The instances to delete. Separate multiple instance IDs with commas (,). You can delete up to 20 instances at a time.
+	// The IDs of the instances to delete. Separate multiple IDs with commas. You can delete up to 20 instances at a time.
 	//
 	// This parameter is required.
 	//

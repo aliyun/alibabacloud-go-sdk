@@ -20,12 +20,17 @@ type iDeleteMetricRulesRequest interface {
 }
 
 type DeleteMetricRulesRequest struct {
+	// Ensures the idempotence of the request. Generate a parameter value on your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and can be up to 64 characters in length. For more information, see How to ensure idempotence.
+	//
+	// example:
+	//
+	// 6868E9A1-56E6-5FD7-9684-E2963BBAFB5F
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run on the request. Valid values:
+	// Specifies whether to perform a dry run only. Valid values:
 	//
-	// - **true**: A check request is sent, and no security group is bound to the instance. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request and does not bind the security group to the instance. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): A normal request is sent. If the check succeeds, an HTTP 2xx status code is returned and the operation is directly performed.
+	// - **false*	- (default): Sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//

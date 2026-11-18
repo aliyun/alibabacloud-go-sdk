@@ -20,9 +20,9 @@ type iDeleteEventRuleTargetsResponseBody interface {
 }
 
 type DeleteEventRuleTargetsResponseBody struct {
-	// The response code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -34,17 +34,17 @@ type DeleteEventRuleTargetsResponseBody struct {
 	//
 	// successfull
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. You can use the request ID to query logs and troubleshoot issues.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 142989D9-CC52-54D0-928D-2C9B1D9F051C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - `true`
+	// - `true`: successful
 	//
-	// - `false`
+	// - `false`: failed
 	//
 	// example:
 	//

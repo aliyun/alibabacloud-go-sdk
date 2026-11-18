@@ -30,7 +30,7 @@ type iBatchExportResponseBody interface {
 }
 
 type BatchExportResponseBody struct {
-	// The timestamp when the backend requested the data. A larger timestamp indicates that the exported data is closer to the current time.
+	// The timestamp when the backend requests data. A larger timestamp indicates that the exported data is closer to the current time.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type BatchExportResponseBody struct {
 	Anchor *int64 `json:"Anchor,omitempty" xml:"Anchor,omitempty"`
 	// The HTTP status code.
 	//
-	// > A status code of 200 indicates success.
+	// > A status code of 200 indicates that the call was successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type BatchExportResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The cursor used for the next call to this operation.
 	//
-	// > If the return value is `null`, the monitoring data export is complete.
+	// > If the value is null, the monitoring data export is complete.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type BatchExportResponseBody struct {
 	DataResults []*MetricStat `json:"DataResults,omitempty" xml:"DataResults,omitempty" type:"Repeated"`
 	// Indicates whether the data export is complete. Valid values:
 	//
-	// - true: The data export is incomplete.
+	// - true: The data export is not complete.
 	//
 	// - false: The data export is complete.
 	//
@@ -82,11 +82,11 @@ type BatchExportResponseBody struct {
 	//
 	// 251402CD-305C-1617-808E-D8C11FC8138D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The call was successful.
 	//
-	// - false: The operation failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

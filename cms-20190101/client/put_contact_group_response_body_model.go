@@ -22,7 +22,7 @@ type iPutContactGroupResponseBody interface {
 type PutContactGroupResponseBody struct {
 	// The status code.
 	//
-	// > 200 indicates success.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//

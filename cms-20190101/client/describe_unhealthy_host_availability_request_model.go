@@ -19,10 +19,6 @@ type DescribeUnhealthyHostAvailabilityRequest struct {
 	// The task ID.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	Id       []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
 	RegionId *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

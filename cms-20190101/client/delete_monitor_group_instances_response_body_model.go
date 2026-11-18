@@ -40,7 +40,7 @@ type DeleteMonitorGroupInstancesResponseBody struct {
 	//
 	// 5351B0F2-26A9-4BC9-87FF-1B74034D12C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the operation is successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
 	// - true: The operation is successful.
 	//

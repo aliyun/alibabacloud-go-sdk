@@ -24,7 +24,7 @@ type iModifyMetricRuleTemplateRequest interface {
 }
 
 type ModifyMetricRuleTemplateRequest struct {
-	// The details of the alert template.
+	// The list of alert templates.
 	AlertTemplates []*ModifyMetricRuleTemplateRequestAlertTemplates `json:"AlertTemplates,omitempty" xml:"AlertTemplates,omitempty" type:"Repeated"`
 	// The description of the alert template.
 	//
@@ -34,26 +34,22 @@ type ModifyMetricRuleTemplateRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the alert template.
 	//
-	// For information about how to obtain the name of an alert template, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
-	//
 	// example:
 	//
-	// Template_123
+	// test123
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The version of the alert template. The version changes with the number of times that the alert template is modified.
+	// The version of the alert template to be modified.
 	//
-	// For information about how to obtain the version of an alert template, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
+	// >This parameter is automatically updated based on the number of modifications.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 0
 	RestVersion *int64 `json:"RestVersion,omitempty" xml:"RestVersion,omitempty"`
 	// The ID of the alert template.
-	//
-	// For information about how to obtain the ID of an alert template, see [DescribeMetricRuleTemplateList](https://help.aliyun.com/document_detail/114982.html).
 	//
 	// This parameter is required.
 	//
@@ -140,75 +136,127 @@ func (s *ModifyMetricRuleTemplateRequest) Validate() error {
 
 type ModifyMetricRuleTemplateRequestAlertTemplates struct {
 	Escalations *ModifyMetricRuleTemplateRequestAlertTemplatesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the Alibaba Cloud service name. Valid values of N: 1 to 200. Valid values:
 	//
-	// Valid values of N: 1 to 200.
+	// - ecs: Alibaba Cloud and non-Alibaba Cloud hosts.
 	//
-	// For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+	// - rds: ApsaraDB RDS database.
+	//
+	// - ads: AnalyticDB database.
+	//
+	// - slb: load balancing.
+	//
+	// - vpc: Elastic IP Address (EIP).
+	//
+	// - apigateway: API Gateway.
+	//
+	// - cdn: Content Delivery Network (CDN).
+	//
+	// - cs: Container Service for Swarm.
+	//
+	// - dcdn: Dynamic Route for CDN (DCDN).
+	//
+	// - ddos: Anti-DDoS.
+	//
+	// - eip: Elastic IP Address (EIP).
+	//
+	// - elasticsearch: Elasticsearch.
+	//
+	// - emr: E-MapReduce (EMR).
+	//
+	// - ess: elastic scaling.
+	//
+	// - hbase: ApsaraDB for HBase database.
+	//
+	// - iot_edge: IoT Edge.
+	//
+	// - kvstore_sharding: ApsaraDB for Redis Cluster Edition.
+	//
+	// - kvstore_splitrw: ApsaraDB for Redis Read/Write Splitting Edition.
+	//
+	// - kvstore_standard: ApsaraDB for Redis Standard Edition.
+	//
+	// - memcache: ApsaraDB for Memcache database.
+	//
+	// - mns: Message Service (MNS).
+	//
+	// - mongodb: MongoDB replica set instance.
+	//
+	// - mongodb_cluster: MongoDB cluster edition.
+	//
+	// - mongodb_sharding: MongoDB sharded cluster.
+	//
+	// - mq_topic: Message Service Topic.
+	//
+	// - ocs: legacy cloud database Memcache.
+	//
+	// - opensearch: OpenSearch.
+	//
+	// - oss: Object Storage Service (OSS).
+	//
+	// - polardb: PolarDB database.
+	//
+	// - petadata: HybridDB for MySQL.
+	//
+	// - scdn: secure acceleration.
+	//
+	// - sharebandwidthpackages: Internet Shared Bandwidth.
+	//
+	// - sls: Simple Log Service (SLS).
+	//
+	// - vpn: VPN Gateway.
 	//
 	// example:
 	//
 	// ecs
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The metric name.
+	// The name of the metric. Valid values of N: 1 to 200.
 	//
-	// Valid values of N: 1 to 200.
-	//
-	// For information about how to obtain metrics, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// >For more information about the valid values of the metric name, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the cloud service.
+	// The namespace of the Alibaba Cloud service, which is used to distinguish different services. Valid values of N: 1 to 200.
 	//
-	// Valid values of N: 1 to 200.
+	// Format: acs_<service name>.
 	//
-	// For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// >To obtain the namespace of each Alibaba Cloud service, call the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The statistical period of the monitoring data.
+	// The statistical period of the monitoring data. Valid values of N: 1 to 200.
 	//
-	// Valid values of N: 1 to 200.
-	//
-	// > If the value is set to 300 seconds, the monitoring data is collected every 300 seconds. If the monitoring data is reported every 1 minute, the alert system calculates the average, maximum, and minimum values of the monitoring data of 5 minutes and checks whether the aggregated values exceed the threshold. To prevent unexpected alerts, we recommend that you set this parameter together with other parameters.
+	// >If you set this parameter to 300, the system collects and aggregates monitoring data every 300 seconds. If monitoring data is reported every minute, the system aggregates the data of 5 minutes, such as the average, maximum, and minimum values. Do not specify this parameter separately because the statistical period may cause unexpected alerts.
 	//
 	// example:
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The name of the alert rule.
-	//
-	// Valid values of N: 1 to 200.
+	// The name of the alert rule. Valid values of N: 1 to 200.
 	//
 	// example:
 	//
-	// Rule_123
+	// rule1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The dimension of the alert. It is an extended field.
+	// The options for the extended dimension fields. Valid values of N: 1 to 200.
 	//
-	// Valid values of N: 1 to 200.
+	// For example, if the alert template is applied to an application group, this parameter is set to `{"disk":"/"}`, and the MetricName parameter is set to `DiskUtilization`, the root partition (`"/"`) of the disks for all instances in the application group is associated with the corresponding alert rule.
 	//
-	// For example, an alert template is applied to an application group, this parameter is set to `{"disk":"/"}`, and the MetricName parameter is set to `DiskUtilization`. In this case, the generated alert rule is applied to the root disk partition (`"/"`) of all instances in the application group to which the alert template is applied.
-	//
-	// > For more information about the values of extended fields, see [DescribeMetricRuleTemplateAttribute](https://help.aliyun.com/document_detail/114979.html).
+	// >For more information about the valid values of the extended dimension fields, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
 	//
 	// example:
 	//
 	// {"disk":"/"}
 	Selector *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The callback URL.
-	//
-	// Valid values of N: 1 to 200.
-	//
-	// The callback URL must be accessible over the Internet. CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
+	// The webhook URL to which a POST request is sent when an alert is triggered.
 	//
 	// example:
 	//
-	// http://www.aliyun.com
+	// https://apiwebhook.hipac.cn/api/v1/alarm/aly/eregfeeferrtbnmkdszp
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -362,66 +410,66 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalations) Validate() er
 }
 
 type ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsCritical struct {
-	// The operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
+	// The comparison operator for the critical-level alert threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the previous period.
 	//
-	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the previous period.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
-	// The statistical method for Critical-level alerts.
+	// The statistical method for critical-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of this parameter are determined by the `Statistics` column that corresponds to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Critical-level alerts.
+	// The threshold that triggers a critical-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// 30
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
+	// The number of times that the monitoring metrics must reach the alert threshold to send a critical-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
@@ -487,66 +535,66 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsCritical) Valid
 }
 
 type ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsInfo struct {
-	// The operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
+	// The comparison operator for the info-level alert threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the previous period.
 	//
-	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the previous period.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
-	// The statistical method for Info-level alerts.
+	// The statistical method for info-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of this parameter are determined by the `Statistics` column that corresponds to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Info-level alerts.
+	// The threshold for info-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// 20
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
+	// The number of times that the monitoring metrics must reach the alert threshold to send an info-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
@@ -612,66 +660,66 @@ func (s *ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsInfo) Validate(
 }
 
 type ModifyMetricRuleTemplateRequestAlertTemplatesEscalationsWarn struct {
-	// The operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
+	// The comparison operator for the warning-level alert threshold. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold: greater than the threshold
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to the threshold
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold: less than the threshold
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold: not equal to the threshold
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the metric value at the same time yesterday
+	// - LessThanYesterday: less than the metric value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the metric value at the same time last week
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the metric value at the same time last week
+	// - LessThanLastWeek: less than the metric value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	// - GreaterThanLastPeriod: greater than the metric value in the previous period.
 	//
-	// - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+	// - LessThanLastPeriod: less than the metric value in the previous period.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
-	// The statistical method for Warn-level alerts.
+	// The statistical method for warning-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of this parameter are determined by the `Statistics` column that corresponds to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the valid values of this parameter, see [cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Warn-level alerts.
+	// The threshold for warning-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//
 	// 30
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
+	// The number of times that the monitoring metrics must reach the alert threshold to send a warning-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > You must select at least one of the Critical, Warn, and Info alert levels and specify the Statistics, ComparisonOperator, Threshold, and Times parameters for the selected alert level.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. The Statistics, ComparisonOperator, Threshold, and Times parameters must be specified at the same time for the specified alert level.
 	//
 	// example:
 	//

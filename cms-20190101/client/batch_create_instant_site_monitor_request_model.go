@@ -75,7 +75,7 @@ type BatchCreateInstantSiteMonitorRequestTaskList struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The detection point information. If this parameter is left empty, the system randomly selects three detection points.
 	//
-	// The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values correspond to Beijing, Hangzhou, and Qingdao.
+	// The format is `JSONArray`. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`, which correspond to Beijing, Hangzhou, and Qingdao.
 	//
 	// For more information about how to obtain detection point information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
 	//
@@ -83,7 +83,7 @@ type BatchCreateInstantSiteMonitorRequestTaskList struct {
 	//
 	// [{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]
 	IspCities *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
-	// The advanced extension options for the protocol type of the site monitoring task. Different protocol types correspond to different extension options.
+	// The advanced extension options for the protocol type of the site monitoring task. Different protocol types for detection tasks correspond to different extension options.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type BatchCreateInstantSiteMonitorRequestTaskList struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The monitoring type of the site monitoring task.
 	//
-	// Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	// The supported monitoring types include HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	//
 	// > You must create at least one site monitoring task, and you must specify `Address`, `TaskName`, and `TaskType`.
 	//

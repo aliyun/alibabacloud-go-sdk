@@ -22,17 +22,15 @@ type iDeleteMetricRuleTargetsResponseBody interface {
 }
 
 type DeleteMetricRuleTargetsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// \\*\\*
-	//
-	// **Description*	- The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The IDs of the resources that failed to be deleted.
+	// The list of target IDs that failed to be deleted.
 	FailIds *DeleteMetricRuleTargetsResponseBodyFailIds `json:"FailIds,omitempty" xml:"FailIds,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -46,11 +44,11 @@ type DeleteMetricRuleTargetsResponseBody struct {
 	//
 	// 786E92D2-AC66-4250-B76F-F1E2FCDDBA1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

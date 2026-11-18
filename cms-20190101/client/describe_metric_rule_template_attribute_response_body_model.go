@@ -124,7 +124,7 @@ type DescribeMetricRuleTemplateAttributeResponseBodyResource struct {
 	//
 	// example:
 	//
-	// ECS template
+	// ECS模板
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the alert template.
 	//

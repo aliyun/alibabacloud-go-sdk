@@ -22,7 +22,7 @@ type iInstallMonitoringAgentResponseBody interface {
 type InstallMonitoringAgentResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates success.
+	// > A status code of 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type InstallMonitoringAgentResponseBody struct {
 	//
 	// 0BDAF8A8-04DC-5F0C-90E4-724D42C41945
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
-	// - false: The operation failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//

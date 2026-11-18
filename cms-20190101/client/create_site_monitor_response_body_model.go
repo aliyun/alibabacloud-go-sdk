@@ -24,9 +24,7 @@ type iCreateSiteMonitorResponseBody interface {
 }
 
 type CreateSiteMonitorResponseBody struct {
-	// The status code.
-	//
-	// > 200 indicates success.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//

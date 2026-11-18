@@ -22,15 +22,15 @@ type iBatchCreateInstantSiteMonitorResponseBody interface {
 }
 
 type BatchCreateInstantSiteMonitorResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > A value of 200 indicates that the operation is successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the site monitoring tasks.
+	// The site monitoring task information.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type BatchCreateInstantSiteMonitorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- true: The operation is successful.
+	// 	- true: Successful.
 	//
-	// 	- false: The operation fails.
+	// 	- false: Failed.
 	//
 	// example:
 	//

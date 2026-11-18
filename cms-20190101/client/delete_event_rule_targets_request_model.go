@@ -18,18 +18,14 @@ type iDeleteEventRuleTargetsRequest interface {
 }
 
 type DeleteEventRuleTargetsRequest struct {
-	// The IDs of event-triggered alert rules.
+	// The list of event-triggered alert rule IDs.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	Ids      []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the event-triggered alert rule.
 	//
-	// For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](https://help.aliyun.com/document_detail/114996.html).
+	// For more information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](https://help.aliyun.com/document_detail/114996.html).
 	//
 	// This parameter is required.
 	//

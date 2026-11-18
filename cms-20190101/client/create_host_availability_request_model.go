@@ -38,7 +38,7 @@ type CreateHostAvailabilityRequest struct {
 	//
 	// This parameter is required.
 	AlertConfigEscalationList []*CreateHostAvailabilityRequestAlertConfigEscalationList `json:"AlertConfigEscalationList,omitempty" xml:"AlertConfigEscalationList,omitempty" type:"Repeated"`
-	// The alert targets.
+	// The alert trigger targets.
 	AlertConfigTargetList []*CreateHostAvailabilityRequestAlertConfigTargetList `json:"AlertConfigTargetList,omitempty" xml:"AlertConfigTargetList,omitempty" type:"Repeated"`
 	// The ID of the application group.
 	//
@@ -50,7 +50,7 @@ type CreateHostAvailabilityRequest struct {
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The list of ECS instances that initiate the probes. Valid values of N: 1 to 21.
 	//
-	// > You must set this parameter when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
+	// > You must set this parameter when TaskScope is set to GROUP_SPEC_INSTANCE.
 	//
 	// example:
 	//
@@ -67,9 +67,9 @@ type CreateHostAvailabilityRequest struct {
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The probe scope of the availability monitoring task. Valid values:
 	//
-	// - GROUP: All ECS instances in the current application group are used as probes for the task.
+	// - GROUP: All ECS instances in the current application group are used as probes for the monitoring task.
 	//
-	// - GROUP_SPEC_INSTANCE: Specified ECS instances in the current application group are used as probes for the task. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set the InstanceList parameter, which specifies the list of ECS instances that initiate the probes.
+	// - GROUP_SPEC_INSTANCE: Specified ECS instances in the current application group are used as probes for the monitoring task. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set the InstanceList parameter, which specifies the list of ECS instances that initiate the probes.
 	//
 	// example:
 	//
@@ -222,9 +222,9 @@ func (s *CreateHostAvailabilityRequest) Validate() error {
 }
 
 type CreateHostAvailabilityRequestAlertConfig struct {
-	// The end time of the effective period for alerting.
+	// The end time of the effective period for alerts.
 	//
-	// The value is an integer ranging from 0 to 23. Unit: hours. The value indicates the hour when the effective period ends. The actual end time is 00:00:00 of the specified hour. For example, if you set this parameter to 22, the effective period ends at 22:00:00. The time zone is UTC+8.
+	// The value must be an integer ranging from 0 to 23. Unit: hours. The value specifies the hour when the effective period ends. The actual end time is 00:00:00 of the specified hour. For example, if you set this parameter to 22, the effective period ends at 22:00:00. The time zone is UTC+8 (Beijing time).
 	//
 	// > Note: If the current time is not within the effective time window, the system does not send alert notifications even if the threshold is exceeded.
 	//
@@ -232,18 +232,18 @@ type CreateHostAvailabilityRequestAlertConfig struct {
 	//
 	// 22
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The alert notification method. Valid values:
+	// The alert notification type. Valid values:
 	//
-	// <props="china">- 2: phone call, text message, email, and DingTalk chatbot.
+	// <props="china">- 2: Phone call, text message, email, and DingTalk chatbot.
 	//
-	// <props="china">- 1: text message, email, and DingTalk chatbot.
+	// <props="china">- 1: Text message, email, and DingTalk chatbot.
 	//
-	// <props="china">- 0: email and DingTalk chatbot.
+	// <props="china">- 0: Email and DingTalk chatbot.
 	//
 	//
-	// <props="intl">0: email and DingTalk chatbot.
+	// <props="intl">0: Email and DingTalk chatbot.
 	//
-	// <props="partner">0: email and DingTalk chatbot.
+	// <props="partner">0: Email and DingTalk chatbot.
 	//
 	// This parameter is required.
 	//
@@ -257,9 +257,9 @@ type CreateHostAvailabilityRequestAlertConfig struct {
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The start time of the effective period for alerting.
+	// The start time of the effective period for alerts.
 	//
-	// The value is an integer ranging from 0 to 23. Unit: hours. The value indicates the hour when the effective period starts. The actual start time is 00:00:00 of the specified hour. For example, if you set this parameter to 0, the effective period starts at 00:00:00. The time zone is UTC+8.
+	// The value must be an integer ranging from 0 to 23. Unit: hours. The value specifies the hour when the effective period starts. The actual start time is 00:00:00 of the specified hour. For example, if you set this parameter to 0, the effective period starts at 00:00:00. The time zone is UTC+8 (Beijing time).
 	//
 	// > Note: If the current time is not within the effective time window, the system does not send alert notifications even if the threshold is exceeded.
 	//
@@ -513,7 +513,7 @@ func (s *CreateHostAvailabilityRequestTaskOption) Validate() error {
 }
 
 type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
-	// The statistical method for the alert. Valid values of N: 1 to 21. Valid values vary based on the metric:
+	// The aggregation method for the alert. Valid values of N: 1 to 21. Valid values vary based on the metric:
 	//
 	// - HttpStatus: Value.
 	//
@@ -525,7 +525,7 @@ type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
 	//
 	// - PingLostRate: Average.
 	//
-	// > The statistical method for status codes is the original value (Value), and the statistical method for response time or packet loss rate is the average value (Average).
+	// > The aggregation method for status codes is the original value (Value). The aggregation method for response time or packet loss rate is the average value (Average).
 	//
 	// example:
 	//
@@ -637,7 +637,7 @@ func (s *CreateHostAvailabilityRequestAlertConfigEscalationList) Validate() erro
 }
 
 type CreateHostAvailabilityRequestAlertConfigTargetList struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{service abbreviation}:{regionId}:{userId}:/{resource type}/{resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Parameter description:
+	// The ARN of the resource. Format: `acs:{service abbreviation}:{regionId}:{userId}:/{resource type}/{resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Parameter descriptions:
 	//
 	// - {service abbreviation}: The abbreviation of the cloud service. Only Simple Message Queue (formerly MNS) is supported.
 	//
@@ -645,7 +645,7 @@ type CreateHostAvailabilityRequestAlertConfigTargetList struct {
 	//
 	// - {regionId}: The region where the Simple Message Queue (formerly MNS) queue or topic resides.
 	//
-	// - {resource type}: The type of the resource that receives alerts. Valid values:
+	// - {resource type}: The type of the resource that accepts alert notifications. Valid values:
 	//
 	//   - **queues**: queue.
 	//
@@ -661,7 +661,7 @@ type CreateHostAvailabilityRequestAlertConfigTargetList struct {
 	//
 	// acs:mns:cn-hangzhou:120886317861****:/queues/test/message
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the alert target.
+	// The ID of the alert trigger target.
 	//
 	// example:
 	//
@@ -675,11 +675,11 @@ type CreateHostAvailabilityRequestAlertConfigTargetList struct {
 	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
 	// The alert level. Valid values:
 	//
-	// - INFO: information.
+	// - INFO: Information.
 	//
-	// - WARN: warning.
+	// - WARN: Warning.
 	//
-	// - CRITICAL: critical.
+	// - CRITICAL: Critical.
 	//
 	// example:
 	//

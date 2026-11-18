@@ -20,9 +20,9 @@ type iPutContactResponseBody interface {
 }
 
 type PutContactResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//

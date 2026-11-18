@@ -26,47 +26,14 @@ type iPutExporterRuleRequest interface {
 }
 
 type PutExporterRuleRequest struct {
-	// The description of the export rules.
-	//
-	// example:
-	//
-	// desc_******
 	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// The destinations for data export.
-	//
 	// This parameter is required.
-	DstNames []*string `json:"DstNames,omitempty" xml:"DstNames,omitempty" type:"Repeated"`
-	// The name of the metric. >For more information, see [Alibaba Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// CPUUtilization
-	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The data namespace of the Alibaba Cloud service. For more information, see [Alibaba Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
-	//
-	// example:
-	//
-	// acs_ecs_dashboard
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the rule.
-	//
-	// > If the specified rule name is the same as an existing rule name, the existing rule is modified. Otherwise, a new rule is created.
-	//
-	// example:
-	//
-	// rule1_****
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The time window for exporting data. Unit: seconds.
-	//
-	// > - To export data for multiple time windows, separate the values with commas (,).
-	//
-	// - Exporting data for a time window of less than 60 seconds is not supported.
-	//
-	// example:
-	//
-	// 60,300
-	TargetWindows *string `json:"TargetWindows,omitempty" xml:"TargetWindows,omitempty"`
+	DstNames      []*string `json:"DstNames,omitempty" xml:"DstNames,omitempty" type:"Repeated"`
+	MetricName    *string   `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace     *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleName      *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	TargetWindows *string   `json:"TargetWindows,omitempty" xml:"TargetWindows,omitempty"`
 }
 
 func (s PutExporterRuleRequest) String() string {

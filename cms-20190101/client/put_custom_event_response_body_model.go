@@ -18,9 +18,9 @@ type iPutCustomEventResponseBody interface {
 }
 
 type PutCustomEventResponseBody struct {
-	// The responses code.
+	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// A value of 200 indicates success.
 	//
 	// example:
 	//

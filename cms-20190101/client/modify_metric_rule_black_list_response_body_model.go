@@ -22,7 +22,7 @@ type iModifyMetricRuleBlackListResponseBody interface {
 }
 
 type ModifyMetricRuleBlackListResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
 	// > 200 indicates success.
 	//

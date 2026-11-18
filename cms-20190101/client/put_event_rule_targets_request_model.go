@@ -194,7 +194,7 @@ type PutEventRuleTargetsRequestContactParameters struct {
 	//
 	// example:
 	//
-	// Default alert contact group
+	// 默认报警联系组
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 	// The unique identifier of the rule target. Valid values of N: 1 to 5.
 	//

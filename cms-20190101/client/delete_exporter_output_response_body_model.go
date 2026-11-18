@@ -20,36 +20,10 @@ type iDeleteExporterOutputResponseBody interface {
 }
 
 type DeleteExporterOutputResponseBody struct {
-	// The status code.
-	//
-	// > A status code of 200 indicates success. Other values indicate failure.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// Success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2DECF751-7AFA-43BB-8C63-2B6B07E51AE1
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - `true`: The request was successful.
-	//
-	// - `false`: The request failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteExporterOutputResponseBody) String() string {

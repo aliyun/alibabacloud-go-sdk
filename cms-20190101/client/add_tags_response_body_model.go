@@ -20,9 +20,9 @@ type iAddTagsResponseBody interface {
 }
 
 type AddTagsResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > A status code of 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type AddTagsResponseBody struct {
 	//
 	// DAE4B115-3847-5438-8709-423627F0A3A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The call was successful.
 	//
-	// - false: The operation failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

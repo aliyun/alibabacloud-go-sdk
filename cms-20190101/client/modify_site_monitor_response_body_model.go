@@ -24,13 +24,13 @@ type iModifySiteMonitorResponseBody interface {
 type ModifySiteMonitorResponseBody struct {
 	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the node task result.
+	// The details of the node modification task result.
 	Data *ModifySiteMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -46,9 +46,9 @@ type ModifySiteMonitorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

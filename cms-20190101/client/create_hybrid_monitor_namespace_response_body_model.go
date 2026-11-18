@@ -38,11 +38,11 @@ type CreateHybridMonitorNamespaceResponseBody struct {
 	//
 	// 3843D23A-FB9E-5DC8-BCCC-458768B79296
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
-	// - false: The operation failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//

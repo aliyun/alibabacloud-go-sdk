@@ -22,43 +22,11 @@ type iPutExporterOutputRequest interface {
 }
 
 type PutExporterOutputRequest struct {
-	// The data export configuration. It is a JSON object string that must contain the following fields:
-	//
-	// - endpoint: the domain name for Simple Log Service (SLS) data.
-	//
-	// - project: the project.
-	//
-	// - logstore: the Logstore.
-	//
-	// - ak: the AccessKey ID.
-	//
-	// - as: the AccessKey Secret.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// { "endpoint": "http://cn-qingdao-share.log.aliyuncs.com", "project": "exporter", "logstore": "exporter","ak": "LTAIp*******", "userId": "17754********", "as": "TxHwuJ8yAb3AU******"}
 	ConfigJson *string `json:"ConfigJson,omitempty" xml:"ConfigJson,omitempty"`
-	// The description of the configuration.
-	//
-	// example:
-	//
-	// CPU metric export
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The name of the configuration.
-	//
+	Desc       *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// exporterConfig
 	DestName *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
-	// The destination service for the export.
-	//
-	// example:
-	//
-	// sls
 	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

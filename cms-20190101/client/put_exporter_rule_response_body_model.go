@@ -20,36 +20,10 @@ type iPutExporterRuleResponseBody interface {
 }
 
 type PutExporterRuleResponseBody struct {
-	// The status code.
-	//
-	// > 200 indicates success.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// The specified resource is not found.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
-	//
-	// - true: Successful.
-	//
-	// - false: Failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PutExporterRuleResponseBody) String() string {

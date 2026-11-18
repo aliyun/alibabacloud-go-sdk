@@ -24,7 +24,7 @@ type iApplyMetricRuleTemplateResponseBody interface {
 type ApplyMetricRuleTemplateResponseBody struct {
 	// The HTTP status code.
 	//
-	// > A status code of 200 indicates that the request was successful.
+	// >200 indicates success.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ApplyMetricRuleTemplateResponseBody struct {
 	//
 	// 3F897F3C-020A-4993-95B4-63ABB84F83E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources affected by the alert rule.
+	// The resources affected by the alert rules.
 	Resource *ApplyMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the operation was successful. Valid values:
 	//
@@ -171,7 +171,7 @@ func (s *ApplyMetricRuleTemplateResponseBodyResource) Validate() error {
 type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {
 	// The HTTP status code.
 	//
-	// > A status code of 200 indicates that the request was successful.
+	// >200 indicates success.
 	//
 	// example:
 	//

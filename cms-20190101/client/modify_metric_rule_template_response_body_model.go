@@ -22,7 +22,7 @@ type iModifyMetricRuleTemplateResponseBody interface {
 type ModifyMetricRuleTemplateResponseBody struct {
 	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// >A status code of 200 indicates that the call is successful.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ModifyMetricRuleTemplateResponseBody struct {
 	//
 	// 9E07117F-F6AE-4F1C-81E8-36FBB4892235
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true
+	// - true: The operation is successful.
 	//
-	// - false
+	// - false: The operation fails.
 	//
 	// example:
 	//

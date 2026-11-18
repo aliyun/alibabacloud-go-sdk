@@ -26,49 +26,13 @@ type iDescribeExporterOutputListResponseBody interface {
 }
 
 type DescribeExporterOutputListResponseBody struct {
-	// The HTTP status code.
-	//
-	// > A status code of 200 indicates success, and other values indicate failure.
-	//
-	// example:
-	//
-	// 200
 	Code       *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Datapoints *DescribeExporterOutputListResponseBodyDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Struct"`
-	// The error message.
-	//
-	// example:
-	//
-	// sucess
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The current page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0E657631-CD6C-4C24-9637-98D000B9272C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// - `true`: The call was successful.
-	//
-	// - `false`: The call failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries.
-	//
-	// example:
-	//
-	// 25
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Message    *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total      *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeExporterOutputListResponseBody) String() string {

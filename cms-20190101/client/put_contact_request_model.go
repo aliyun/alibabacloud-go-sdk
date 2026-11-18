@@ -15,6 +15,8 @@ type iPutContactRequest interface {
 	GetContactName() *string
 	SetDescribe(v string) *PutContactRequest
 	GetDescribe() *string
+	SetDryRun(v bool) *PutContactRequest
+	GetDryRun() *bool
 	SetLang(v string) *PutContactRequest
 	GetLang() *string
 }
@@ -37,13 +39,19 @@ type PutContactRequest struct {
 	//
 	// ECS_Instance
 	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
-	// The language in which alert notifications are sent. Valid values:
+	// Specifies whether to perform only a dry run.
 	//
-	// - zh-cn: simplified Chinese.
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The language of the alert notification. Valid values:
+	//
+	// - zh-cn: Simplified Chinese.
 	//
 	// - en: English.
 	//
-	// > If you do not set this parameter, the language is automatically determined based on the region of the account.
+	// > If you do not specify this parameter, the system automatically determines the language based on the region of the account.
 	//
 	// example:
 	//
@@ -71,6 +79,10 @@ func (s *PutContactRequest) GetDescribe() *string {
 	return s.Describe
 }
 
+func (s *PutContactRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *PutContactRequest) GetLang() *string {
 	return s.Lang
 }
@@ -90,6 +102,11 @@ func (s *PutContactRequest) SetDescribe(v string) *PutContactRequest {
 	return s
 }
 
+func (s *PutContactRequest) SetDryRun(v bool) *PutContactRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *PutContactRequest) SetLang(v string) *PutContactRequest {
 	s.Lang = &v
 	return s
@@ -105,49 +122,49 @@ func (s *PutContactRequest) Validate() error {
 }
 
 type PutContactRequestChannels struct {
-	// The TradeManager ID of the alert contact.
+	// The TradeManager contact.
 	//
-	// <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+	// <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
 	//
-	// <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+	// <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
-	// <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+	// <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
 	// example:
 	//
 	// Jim
 	AliIM *string `json:"AliIM,omitempty" xml:"AliIM,omitempty"`
-	// The webhook URL of the DingTalk chatbot.
+	// The DingTalk chatbot.
 	//
-	// <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+	// <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
 	//
-	// <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+	// <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
-	// <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+	// <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=7d49515e8ebf21106a80a9cc4bb3d247771305d52fb15d6201234565****
 	DingWebHook *string `json:"DingWebHook,omitempty" xml:"DingWebHook,omitempty"`
-	// The email address of the alert contact. An activation link is sent to the email address. The alert contact is added only after the link is activated.
+	// The email address. The email address receives an activation link. The contact is added only after the link is activated.
 	//
-	// <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+	// <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
 	//
-	// <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+	// <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
-	// <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+	// <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
 	// example:
 	//
 	// test@aliyun.com
 	Mail *string `json:"Mail,omitempty" xml:"Mail,omitempty"`
-	// The phone number of the alert contact. An activation link is sent to the phone number. The alert contact is added only after the link is activated.
+	// The mobile phone number. The mobile phone number receives an activation link. The contact is added only after the link is activated.
 	//
-	// <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
+	// <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
 	//
-	// <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
+	// <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
-	// <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+	// <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
 	//
 	// example:
 	//

@@ -27,7 +27,7 @@ type DeleteMetricRuleTargetsRequest struct {
 	//
 	// ruleId-xxxxxx
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The resource IDs.
+	// The target IDs.
 	//
 	// This parameter is required.
 	//

@@ -22,9 +22,9 @@ type iPutGroupMetricRuleResponseBody interface {
 }
 
 type PutGroupMetricRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > A status code of 200 indicates success.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type PutGroupMetricRuleResponseBody struct {
 	Result *PutGroupMetricRuleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: successful.
 	//
-	// - false: The operation fails.
+	// - false: failed.
 	//
 	// example:
 	//

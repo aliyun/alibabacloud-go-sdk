@@ -309,7 +309,7 @@ type DescribeAlertLogListResponseBodyAlertLogList struct {
 	//
 	// example:
 	//
-	// CPU utilization
+	// CPU使用率
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The details of the alert pushing result.
 	SendDetail *DescribeAlertLogListResponseBodyAlertLogListSendDetail `json:"SendDetail,omitempty" xml:"SendDetail,omitempty" type:"Struct"`

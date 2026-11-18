@@ -48,9 +48,7 @@ type CreateSiteMonitorRequest struct {
 	//
 	// PC
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
-	// The ID of the alert rule.
-	//
-	// For more information about how to obtain the ID of an existing alert rule in CloudMonitor, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// The ID of the alert rule. For more information about how to obtain the ID of an existing alert rule in CloudMonitor, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// example:
 	//
@@ -62,21 +60,13 @@ type CreateSiteMonitorRequest struct {
 	//
 	// {"start_hour":0,"end_hour":24, "days":[0], "time_zone":"Local"}
 	CustomSchedule *string `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty"`
-	// The monitoring frequency.
-	//
-	// Valid values: 1 minute, 5 minutes, 15 minutes, 30 minutes, and 60 minutes.
-	//
-	// Default value: 1 minute.
+	// The monitoring frequency. Valid values: 1 minute, 5 minutes, 15 minutes, 30 minutes, and 60 minutes. Default value: 1 minute.
 	//
 	// example:
 	//
 	// 1
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The probe information. If this parameter is left empty, the system randomly selects three detection points.
-	//
-	// The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`, which correspond to Beijing, Hangzhou, and Qingdao.
-	//
-	// For more information about how to obtain detection point information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+	// The probe information. If this parameter is left empty, the system randomly selects three detection points. The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`, which correspond to Beijing, Hangzhou, and Qingdao. For more information about how to obtain detection point information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
 	//
 	// example:
 	//
@@ -89,9 +79,7 @@ type CreateSiteMonitorRequest struct {
 	// {"time_out":5000}
 	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the monitoring task.
-	//
-	// The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
+	// The name of the monitoring task. The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
 	//
 	// This parameter is required.
 	//
@@ -99,9 +87,7 @@ type CreateSiteMonitorRequest struct {
 	//
 	// HanZhou_ECS1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Site monitoring type of site monitoring task.
-	//
-	// Valid values: HTTP(S), PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
+	// The monitoring type of the site monitoring node. Currently, site monitoring nodes support the following types: HTTP(S), PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iCursorResponseBody interface {
 type CursorResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type CursorResponseBody struct {
 	//
 	// 915C2D7A-E6A4-17C3-8E13-4DBDD61E7919
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

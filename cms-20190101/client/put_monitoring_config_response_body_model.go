@@ -22,7 +22,7 @@ type iPutMonitoringConfigResponseBody interface {
 type PutMonitoringConfigResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type PutMonitoringConfigResponseBody struct {
 	//
 	// 109C8095-6FAD-4DBB-B013-6ED18CE4C0B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation succeeded.
 	//
 	// - false: The operation failed.
 	//

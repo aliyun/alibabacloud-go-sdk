@@ -20,7 +20,7 @@ type iPutCustomMetricResponseBody interface {
 type PutCustomMetricResponseBody struct {
 	// The status code.
 	//
-	// > 200 indicates success.
+	// > A status code of 200 indicates success.
 	//
 	// example:
 	//

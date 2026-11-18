@@ -18,9 +18,9 @@ type iPutHybridMonitorMetricDataResponseBody interface {
 }
 
 type PutHybridMonitorMetricDataResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The value 200 indicates that the request was successful.
+	// > A status code of 200 indicates a successful call.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type PutHybridMonitorMetricDataResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the invalid parameters.
 	//
-	// If the request parameters that you specify do not meet the requirements, the details of the invalid parameters are displayed.
+	// If the request parameters that you specify do not meet the requirements, the details of the invalid parameters are returned.
 	ErrorDetail []*PutHybridMonitorMetricDataResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -87,13 +87,13 @@ func (s *PutHybridMonitorMetricDataResponseBody) Validate() error {
 }
 
 type PutHybridMonitorMetricDataResponseBodyErrorDetail struct {
-	// The error message that is returned for the invalid parameter.
+	// The error message of the invalid parameter.
 	//
 	// example:
 	//
 	// label name :123 not match [a-zA-Z_][a-zA-Z0-9_]*
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The position of the error information in the array.
+	// The position of the error message in the array.
 	//
 	// example:
 	//

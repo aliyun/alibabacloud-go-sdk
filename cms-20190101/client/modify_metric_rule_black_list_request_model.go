@@ -44,11 +44,11 @@ type ModifyMetricRuleBlackListRequest struct {
 	//
 	// ecs
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The effective period of the alert blacklist policy. The implications of the settings for this parameter are as follows:
+	// The effective time range of the alert blacklist policy. The behavior varies based on whether you specify this parameter:
 	//
-	// - If you do not configure the settings for this parameter, the alert blacklist policy is permanently valid.
+	// - If you do not specify this parameter, the alert blacklist policy is permanently valid.
 	//
-	// - If you configure the settings for this parameter, the blacklist policy is valid only within the specified time range. The following examples show two formats for this parameter:
+	// - If you specify this parameter, the alert blacklist policy is valid only within the specified time range. This parameter supports the following formats:
 	//
 	//     - `03:00-04:59`: The alert blacklist policy is valid from 03:00 to 05:00 (excluding 05:00) local time.
 	//
@@ -58,7 +58,7 @@ type ModifyMetricRuleBlackListRequest struct {
 	//
 	// 03:00-04:59
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The end timestamp of the effective period for the alert blacklist policy.
+	// The end timestamp when the alert blacklist policy takes effect.
 	//
 	// Unit: milliseconds.
 	//
@@ -66,7 +66,7 @@ type ModifyMetricRuleBlackListRequest struct {
 	//
 	// 1640608200000
 	EnableEndTime *string `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
-	// The start timestamp of the effective period for the alert blacklist policy.
+	// The start timestamp when the alert blacklist policy takes effect.
 	//
 	// Unit: milliseconds.
 	//
@@ -76,7 +76,7 @@ type ModifyMetricRuleBlackListRequest struct {
 	EnableStartTime *string `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
 	// The ID of the alert blacklist policy.
 	//
-	// For more information about how to obtain the ID of an alert blacklist policy, see [DescribeMetricRuleBlackList](https://help.aliyun.com/document_detail/457257.html).
+	// For information about how to obtain the ID of an alert blacklist policy, see [DescribeMetricRuleBlackList](https://help.aliyun.com/document_detail/457257.html).
 	//
 	// This parameter is required.
 	//
@@ -90,9 +90,9 @@ type ModifyMetricRuleBlackListRequest struct {
 	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The monitoring metrics of the instances.
 	//
-	// - If you do not configure the settings for this parameter, the alert blacklist policy applies to all monitoring metrics of the specified Alibaba Cloud service.
+	// - If you do not specify this parameter, the alert blacklist policy applies to all monitoring metrics of the specified Alibaba Cloud service.
 	//
-	// - If you configure the settings for this parameter, the blacklist policy applies only to the current monitoring metrics.
+	// - If you specify this parameter, the alert blacklist policy applies only to the specified monitoring metrics.
 	Metrics []*ModifyMetricRuleBlackListRequestMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// The name of the alert blacklist policy.
 	//
@@ -102,9 +102,9 @@ type ModifyMetricRuleBlackListRequest struct {
 	//
 	// Blacklist-02
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The data namespace of the cloud service.
+	// The data namespace of the Alibaba Cloud service.
 	//
-	// For more information about the namespaces of cloud services, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For information about the namespaces of Alibaba Cloud services, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -115,11 +115,11 @@ type ModifyMetricRuleBlackListRequest struct {
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The effective scope of the alert blacklist policy. Valid values:
 	//
-	// - USER: The alert blacklist policy takes effect only within the current Alibaba Cloud account.
+	// - USER: The alert blacklist policy takes effect only in the current Alibaba Cloud account.
 	//
-	// - GROUP (default): The alert blacklist policy takes effect within the specified application group. You must specify an application group.
+	// - GROUP (default): The alert blacklist policy takes effect in the specified application group. You must specify an application group.
 	//
-	//   For more information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+	//   For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
 	// example:
 	//
@@ -265,7 +265,7 @@ func (s *ModifyMetricRuleBlackListRequest) Validate() error {
 }
 
 type ModifyMetricRuleBlackListRequestMetrics struct {
-	// The name of the monitoring metrics.
+	// The name of the metric.
 	//
 	// Valid values of N: 1 to 10.
 	//
@@ -275,7 +275,7 @@ type ModifyMetricRuleBlackListRequestMetrics struct {
 	//
 	// disk_utilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The extended dimension information of the instance. For example, `{"device":"C:"}` indicates that the blacklist policy applies to all C drives of the ECS instance of the Alibaba Cloud service.
+	// The extended dimension information of the instance. For example, {"device":"C:"} indicates that the blacklist policy applies to all C drives of the ECS instance.
 	//
 	// Valid values of N: 1 to 10.
 	//

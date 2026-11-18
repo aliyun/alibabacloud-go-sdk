@@ -42,13 +42,13 @@ type DescribeSyntheticProbeListRequest struct {
 	//
 	// false
 	IdcProbe *bool `json:"IdcProbe,omitempty" xml:"IdcProbe,omitempty"`
-	// Specifies whether to show only IPv4 nodes.
+	// Specifies whether to display only IPv4 nodes.
 	//
 	// example:
 	//
 	// false
 	Ipv4 *bool `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
-	// Specifies whether to show only IPv6 nodes.
+	// Specifies whether to display only IPv6 nodes.
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ type DescribeSyntheticProbeListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to return all detection points. Valid values:
 	//
-	// - false: Returns only the detection points available to the user. This is the default value.
+	// - false: Returns the detection points available to you. This is the default value.
 	//
 	// - true: Returns all detection points.
 	//

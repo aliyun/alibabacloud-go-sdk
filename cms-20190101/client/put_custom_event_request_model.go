@@ -16,7 +16,7 @@ type iPutCustomEventRequest interface {
 }
 
 type PutCustomEventRequest struct {
-	// The event details.
+	// The list of event information.
 	//
 	// This parameter is required.
 	EventInfo []*PutCustomEventRequestEventInfo `json:"EventInfo,omitempty" xml:"EventInfo,omitempty" type:"Repeated"`
@@ -79,21 +79,15 @@ type PutCustomEventRequestEventInfo struct {
 	//
 	// myEvent
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The ID of the application group. Valid values of N: 1 to 50.
+	// The ID of the application group. Valid values of N: 0 to 50.
 	//
-	// Default value: 0. This value indicates that the event to be reported does not belong to any application group.
+	// Default value: 0. A value of 0 indicates that the reported event does not belong to any application group.
 	//
 	// example:
 	//
 	// 123456
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The time when the event occurred.
-	//
-	// Format: `yyyyMMddTHHmmss.SSSZ`.
-	//
-	// Valid values of N: 1 to 50.
-	//
-	// > You can also specify a UNIX timestamp. Example: 1552199984000. Unit: milliseconds.
+	// The time when the event occurred. Valid values of N: 1 to 50.
 	//
 	// example:
 	//

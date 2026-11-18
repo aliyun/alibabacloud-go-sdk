@@ -44,9 +44,9 @@ type DescribeSyntheticProbeListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: Successful.
 	//
-	// - false: The operation fails.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -169,19 +169,19 @@ type DescribeSyntheticProbeListResponseBodyIspCityList struct {
 	//
 	// China
 	CountryEn *string `json:"CountryEn,omitempty" xml:"CountryEn,omitempty"`
-	// The number of IPv4 nodes in the IDC.
+	// The number of IDC IPv4 nodes.
 	//
 	// example:
 	//
 	// 1
 	IdcV4ProbeCount *int32 `json:"IdcV4ProbeCount,omitempty" xml:"IdcV4ProbeCount,omitempty"`
-	// The number of IPv6 nodes in the IDC.
+	// The number of IDC IPv6 nodes.
 	//
 	// example:
 	//
 	// 1
 	IdcV6ProbeCount *int32 `json:"IdcV6ProbeCount,omitempty" xml:"IdcV6ProbeCount,omitempty"`
-	// The list of node IP addresses.
+	// The list of IP addresses of the node.
 	IpPool []*string `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Repeated"`
 	// The carrier ID.
 	//
@@ -223,7 +223,7 @@ type DescribeSyntheticProbeListResponseBodyIspCityList struct {
 	//
 	// example:
 	//
-	// Jiangxi
+	// Jiangxi Province
 	RegionCn *string `json:"RegionCn,omitempty" xml:"RegionCn,omitempty"`
 	// The English name of the province.
 	//

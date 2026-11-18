@@ -31,7 +31,7 @@ type ModifyHybridMonitorSLSGroupRequest struct {
 	//
 	// example:
 	//
-	// Logstore group of Alibaba Cloud products.
+	// 阿里云产品归属的Logstore组。
 	SLSGroupDescription *string `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
 	// The name of the Logstore group.
 	//

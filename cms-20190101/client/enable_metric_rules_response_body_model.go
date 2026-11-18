@@ -22,7 +22,7 @@ type iEnableMetricRulesResponseBody interface {
 type EnableMetricRulesResponseBody struct {
   // The status code.
   // 
-  // > A value of 200 indicates success.
+  // > A status code of 200 indicates success.
   // 
   // example:
   // 

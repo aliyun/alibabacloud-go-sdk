@@ -24,7 +24,7 @@ type ModifyHybridMonitorNamespaceRequest struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud product metric repository.
+	// 阿里云产品指标仓库。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the metric store.
 	//

@@ -42,47 +42,47 @@ type iDescribeMonitorGroupsRequest interface {
 }
 
 type DescribeMonitorGroupsRequest struct {
-	// The ID of the dynamic rule matching.
+	// The ID of the intelligent tag rule.
 	//
 	// example:
 	//
 	// 6b882d9a-5117-42e2-9d0c-4749a0c6****
 	DynamicTagRuleId *string `json:"DynamicTagRuleId,omitempty" xml:"DynamicTagRuleId,omitempty"`
-	// The tag key used to create the application group by using dynamic rule matching.
+	// The tag key used to create the application group by using intelligent tags.
 	//
 	// example:
 	//
 	// GroupKey1
 	GroupFounderTagKey *string `json:"GroupFounderTagKey,omitempty" xml:"GroupFounderTagKey,omitempty"`
-	// The tag value used to create the application group by using dynamic rule matching.
+	// The tag value used to create the application group by using intelligent tags.
 	//
 	// example:
 	//
 	// GroupValue1
 	GroupFounderTagValue *string `json:"GroupFounderTagValue,omitempty" xml:"GroupFounderTagValue,omitempty"`
-	// The application group ID. Separate multiple application group IDs with commas (,).
+	// The ID of the application group. Separate multiple application group IDs with commas (,).
 	//
 	// example:
 	//
 	// 92****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The application group name.
+	// The name of the application group.
 	//
 	// example:
 	//
 	// testGroup124
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Specifies whether to include the history of alert templates that have been applied to the application group in the response. Valid values:
+	// Specifies whether to include the history of alert templates applied to the application group in the response. Valid values:
 	//
-	// - true: Include the history.
+	// - true: Yes.
 	//
-	// - false: Do not include the history.
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	IncludeTemplateHistory *bool `json:"IncludeTemplateHistory,omitempty" xml:"IncludeTemplateHistory,omitempty"`
-	// The resource instance ID. This parameter is used to query the application group to which the specified instance belongs.
+	// The instance ID. This parameter is used to query the application group to which the specified instance belongs.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type DescribeMonitorGroupsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to include alert contact groups in the response. Valid values:
 	//
-	// - true: Include alert contact groups.
+	// - true: Yes.
 	//
-	// - false: Do not include alert contact groups.
+	// - false: No.
 	//
 	// example:
 	//
@@ -125,39 +125,39 @@ type DescribeMonitorGroupsRequest struct {
 	Tag []*DescribeMonitorGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the application group. Valid values:
 	//
-	// - custom: a custom application group.
+	// - custom: custom application group
 	//
-	// - ehpc_cluster: an application group synchronized from an EHPC cluster.
+	// - ehpc_cluster: application group from EHPC cluster synchronization
 	//
-	// - kubernetes: an application group synchronized from Container Service for Kubernetes.
+	// - kubernetes: application group from Container Service for Kubernetes synchronization
 	//
-	// - tag: an application group automatically created by using tags.
+	// - tag: application group from automatic creation by using labels
 	//
-	// - resMgr: an application group created from a resource group.
+	// - resMgr: application group created by using resource groups
 	//
-	// - ess: an application group synchronized from Auto Scaling (ESS).
+	// - ess: application group from elastic scaling synchronization
 	//
-	// - aone_group: an application group synchronized from or associated with an Aone application.
+	// - aone_group: application group synchronized from or associated with an Aone application
 	//
 	// example:
 	//
 	// custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The type of the application group. Valid values:
+	// The types of the application groups. Valid values:
 	//
-	// - custom: a custom application group.
+	// - custom: custom application group
 	//
-	// - ehpc_cluster: an application group synchronized from an EHPC cluster.
+	// - ehpc_cluster: application group from EHPC cluster synchronization
 	//
-	// - kubernetes: an application group synchronized from Container Service for Kubernetes.
+	// - kubernetes: application group from Container Service for Kubernetes synchronization
 	//
-	// - tag: an application group automatically created by using tags.
+	// - tag: application group from automatic creation by using labels
 	//
-	// - resMgr: an application group created from a resource group.
+	// - resMgr: application group created by using resource groups
 	//
-	// - ess: an application group synchronized from Auto Scaling (ESS).
+	// - ess: application group from elastic scaling synchronization
 	//
-	// - aone_group: an application group synchronized from or associated with an Aone application.
+	// - aone_group: application group synchronized from or associated with an Aone application
 	//
 	// example:
 	//

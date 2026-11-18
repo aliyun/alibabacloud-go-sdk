@@ -22,15 +22,15 @@ type iPutMetricRuleTargetsResponseBody interface {
 }
 
 type PutMetricRuleTargetsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of failures.
+	// The list of failed items.
 	FailData *PutMetricRuleTargetsResponseBodyFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -46,9 +46,9 @@ type PutMetricRuleTargetsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: successful.
+	// - true: successful
 	//
-	// - false: failed.
+	// - false: failed
 	//
 	// example:
 	//
