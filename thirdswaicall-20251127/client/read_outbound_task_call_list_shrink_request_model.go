@@ -21,6 +21,8 @@ type iReadOutboundTaskCallListShrinkRequest interface {
 	GetCallerUacAccountId() *string
 	SetCurrent(v int32) *ReadOutboundTaskCallListShrinkRequest
 	GetCurrent() *int32
+	SetCurrentWorkspaceCode(v string) *ReadOutboundTaskCallListShrinkRequest
+	GetCurrentWorkspaceCode() *string
 	SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListShrinkRequest
 	GetCurrentWorkspaceId() *string
 	SetCustomerNameOrPhone(v string) *ReadOutboundTaskCallListShrinkRequest
@@ -37,6 +39,8 @@ type iReadOutboundTaskCallListShrinkRequest interface {
 	GetNextToken() *string
 	SetSize(v int32) *ReadOutboundTaskCallListShrinkRequest
 	GetSize() *int32
+	SetStructuredLabelTagsShrink(v string) *ReadOutboundTaskCallListShrinkRequest
+	GetStructuredLabelTagsShrink() *string
 	SetTaskId(v string) *ReadOutboundTaskCallListShrinkRequest
 	GetTaskId() *string
 	SetUserId(v string) *ReadOutboundTaskCallListShrinkRequest
@@ -70,6 +74,10 @@ type ReadOutboundTaskCallListShrinkRequest struct {
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
 	// example:
 	//
+	// 1ab92c
+	CurrentWorkspaceCode *string `json:"CurrentWorkspaceCode,omitempty" xml:"CurrentWorkspaceCode,omitempty"`
+	// example:
+	//
 	// abc123***
 	CurrentWorkspaceId *string `json:"CurrentWorkspaceId,omitempty" xml:"CurrentWorkspaceId,omitempty"`
 	// example:
@@ -99,7 +107,8 @@ type ReadOutboundTaskCallListShrinkRequest struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size                      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StructuredLabelTagsShrink *string `json:"StructuredLabelTags,omitempty" xml:"StructuredLabelTags,omitempty"`
 	// example:
 	//
 	// 1
@@ -142,6 +151,10 @@ func (s *ReadOutboundTaskCallListShrinkRequest) GetCurrent() *int32 {
 	return s.Current
 }
 
+func (s *ReadOutboundTaskCallListShrinkRequest) GetCurrentWorkspaceCode() *string {
+	return s.CurrentWorkspaceCode
+}
+
 func (s *ReadOutboundTaskCallListShrinkRequest) GetCurrentWorkspaceId() *string {
 	return s.CurrentWorkspaceId
 }
@@ -172,6 +185,10 @@ func (s *ReadOutboundTaskCallListShrinkRequest) GetNextToken() *string {
 
 func (s *ReadOutboundTaskCallListShrinkRequest) GetSize() *int32 {
 	return s.Size
+}
+
+func (s *ReadOutboundTaskCallListShrinkRequest) GetStructuredLabelTagsShrink() *string {
+	return s.StructuredLabelTagsShrink
 }
 
 func (s *ReadOutboundTaskCallListShrinkRequest) GetTaskId() *string {
@@ -212,6 +229,11 @@ func (s *ReadOutboundTaskCallListShrinkRequest) SetCurrent(v int32) *ReadOutboun
 	return s
 }
 
+func (s *ReadOutboundTaskCallListShrinkRequest) SetCurrentWorkspaceCode(v string) *ReadOutboundTaskCallListShrinkRequest {
+	s.CurrentWorkspaceCode = &v
+	return s
+}
+
 func (s *ReadOutboundTaskCallListShrinkRequest) SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListShrinkRequest {
 	s.CurrentWorkspaceId = &v
 	return s
@@ -249,6 +271,11 @@ func (s *ReadOutboundTaskCallListShrinkRequest) SetNextToken(v string) *ReadOutb
 
 func (s *ReadOutboundTaskCallListShrinkRequest) SetSize(v int32) *ReadOutboundTaskCallListShrinkRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListShrinkRequest) SetStructuredLabelTagsShrink(v string) *ReadOutboundTaskCallListShrinkRequest {
+	s.StructuredLabelTagsShrink = &v
 	return s
 }
 

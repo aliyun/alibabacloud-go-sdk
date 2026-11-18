@@ -36,6 +36,10 @@ func (client *Client) CreateCallOutboundInstantWithContext(ctx context.Context, 
 		body["CallerUacAccountId"] = request.CallerUacAccountId
 	}
 
+	if !dara.IsNil(request.CurrentWorkspaceCode) {
+		body["CurrentWorkspaceCode"] = request.CurrentWorkspaceCode
+	}
+
 	if !dara.IsNil(request.CurrentWorkspaceId) {
 		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
 	}
@@ -108,6 +112,10 @@ func (client *Client) QueryTaskConcurrencyWithContext(ctx context.Context, reque
 		body["CallerUacAccountId"] = request.CallerUacAccountId
 	}
 
+	if !dara.IsNil(request.CurrentWorkspaceCode) {
+		body["CurrentWorkspaceCode"] = request.CurrentWorkspaceCode
+	}
+
 	if !dara.IsNil(request.CurrentWorkspaceId) {
 		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
 	}
@@ -169,6 +177,10 @@ func (client *Client) ReadOutboundTaskCallListWithContext(ctx context.Context, t
 		request.LabelTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelTags, dara.String("LabelTags"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.StructuredLabelTags) {
+		request.StructuredLabelTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StructuredLabelTags, dara.String("StructuredLabelTags"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CallEndTimeBegin) {
 		body["CallEndTimeBegin"] = request.CallEndTimeBegin
@@ -192,6 +204,10 @@ func (client *Client) ReadOutboundTaskCallListWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.Current) {
 		body["Current"] = request.Current
+	}
+
+	if !dara.IsNil(request.CurrentWorkspaceCode) {
+		body["CurrentWorkspaceCode"] = request.CurrentWorkspaceCode
 	}
 
 	if !dara.IsNil(request.CurrentWorkspaceId) {
@@ -224,6 +240,10 @@ func (client *Client) ReadOutboundTaskCallListWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.Size) {
 		body["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.StructuredLabelTagsShrink) {
+		body["StructuredLabelTags"] = request.StructuredLabelTagsShrink
 	}
 
 	if !dara.IsNil(request.TaskId) {

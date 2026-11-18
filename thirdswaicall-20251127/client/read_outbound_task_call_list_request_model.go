@@ -21,6 +21,8 @@ type iReadOutboundTaskCallListRequest interface {
 	GetCallerUacAccountId() *string
 	SetCurrent(v int32) *ReadOutboundTaskCallListRequest
 	GetCurrent() *int32
+	SetCurrentWorkspaceCode(v string) *ReadOutboundTaskCallListRequest
+	GetCurrentWorkspaceCode() *string
 	SetCurrentWorkspaceId(v string) *ReadOutboundTaskCallListRequest
 	GetCurrentWorkspaceId() *string
 	SetCustomerNameOrPhone(v string) *ReadOutboundTaskCallListRequest
@@ -37,6 +39,8 @@ type iReadOutboundTaskCallListRequest interface {
 	GetNextToken() *string
 	SetSize(v int32) *ReadOutboundTaskCallListRequest
 	GetSize() *int32
+	SetStructuredLabelTags(v []*ReadOutboundTaskCallListRequestStructuredLabelTags) *ReadOutboundTaskCallListRequest
+	GetStructuredLabelTags() []*ReadOutboundTaskCallListRequestStructuredLabelTags
 	SetTaskId(v string) *ReadOutboundTaskCallListRequest
 	GetTaskId() *string
 	SetUserId(v string) *ReadOutboundTaskCallListRequest
@@ -70,6 +74,10 @@ type ReadOutboundTaskCallListRequest struct {
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
 	// example:
 	//
+	// 1ab92c
+	CurrentWorkspaceCode *string `json:"CurrentWorkspaceCode,omitempty" xml:"CurrentWorkspaceCode,omitempty"`
+	// example:
+	//
 	// abc123***
 	CurrentWorkspaceId *string `json:"CurrentWorkspaceId,omitempty" xml:"CurrentWorkspaceId,omitempty"`
 	// example:
@@ -99,7 +107,8 @@ type ReadOutboundTaskCallListRequest struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size                *int32                                                `json:"Size,omitempty" xml:"Size,omitempty"`
+	StructuredLabelTags []*ReadOutboundTaskCallListRequestStructuredLabelTags `json:"StructuredLabelTags,omitempty" xml:"StructuredLabelTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -142,6 +151,10 @@ func (s *ReadOutboundTaskCallListRequest) GetCurrent() *int32 {
 	return s.Current
 }
 
+func (s *ReadOutboundTaskCallListRequest) GetCurrentWorkspaceCode() *string {
+	return s.CurrentWorkspaceCode
+}
+
 func (s *ReadOutboundTaskCallListRequest) GetCurrentWorkspaceId() *string {
 	return s.CurrentWorkspaceId
 }
@@ -172,6 +185,10 @@ func (s *ReadOutboundTaskCallListRequest) GetNextToken() *string {
 
 func (s *ReadOutboundTaskCallListRequest) GetSize() *int32 {
 	return s.Size
+}
+
+func (s *ReadOutboundTaskCallListRequest) GetStructuredLabelTags() []*ReadOutboundTaskCallListRequestStructuredLabelTags {
+	return s.StructuredLabelTags
 }
 
 func (s *ReadOutboundTaskCallListRequest) GetTaskId() *string {
@@ -209,6 +226,11 @@ func (s *ReadOutboundTaskCallListRequest) SetCallerUacAccountId(v string) *ReadO
 
 func (s *ReadOutboundTaskCallListRequest) SetCurrent(v int32) *ReadOutboundTaskCallListRequest {
 	s.Current = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetCurrentWorkspaceCode(v string) *ReadOutboundTaskCallListRequest {
+	s.CurrentWorkspaceCode = &v
 	return s
 }
 
@@ -252,6 +274,11 @@ func (s *ReadOutboundTaskCallListRequest) SetSize(v int32) *ReadOutboundTaskCall
 	return s
 }
 
+func (s *ReadOutboundTaskCallListRequest) SetStructuredLabelTags(v []*ReadOutboundTaskCallListRequestStructuredLabelTags) *ReadOutboundTaskCallListRequest {
+	s.StructuredLabelTags = v
+	return s
+}
+
 func (s *ReadOutboundTaskCallListRequest) SetTaskId(v string) *ReadOutboundTaskCallListRequest {
 	s.TaskId = &v
 	return s
@@ -263,5 +290,52 @@ func (s *ReadOutboundTaskCallListRequest) SetUserId(v string) *ReadOutboundTaskC
 }
 
 func (s *ReadOutboundTaskCallListRequest) Validate() error {
+	if s.StructuredLabelTags != nil {
+		for _, item := range s.StructuredLabelTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ReadOutboundTaskCallListRequestStructuredLabelTags struct {
+	// example:
+	//
+	// 是否有意向
+	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ReadOutboundTaskCallListRequestStructuredLabelTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ReadOutboundTaskCallListRequestStructuredLabelTags) GoString() string {
+	return s.String()
+}
+
+func (s *ReadOutboundTaskCallListRequestStructuredLabelTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ReadOutboundTaskCallListRequestStructuredLabelTags) GetValue() []*string {
+	return s.Value
+}
+
+func (s *ReadOutboundTaskCallListRequestStructuredLabelTags) SetKey(v string) *ReadOutboundTaskCallListRequestStructuredLabelTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequestStructuredLabelTags) SetValue(v []*string) *ReadOutboundTaskCallListRequestStructuredLabelTags {
+	s.Value = v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequestStructuredLabelTags) Validate() error {
 	return dara.Validate(s)
 }

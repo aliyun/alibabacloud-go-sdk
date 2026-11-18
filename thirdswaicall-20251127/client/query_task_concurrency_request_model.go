@@ -13,6 +13,8 @@ type iQueryTaskConcurrencyRequest interface {
 	GetApplicationCode() *string
 	SetCallerUacAccountId(v string) *QueryTaskConcurrencyRequest
 	GetCallerUacAccountId() *string
+	SetCurrentWorkspaceCode(v string) *QueryTaskConcurrencyRequest
+	GetCurrentWorkspaceCode() *string
 	SetCurrentWorkspaceId(v string) *QueryTaskConcurrencyRequest
 	GetCurrentWorkspaceId() *string
 	SetTaskId(v int64) *QueryTaskConcurrencyRequest
@@ -28,6 +30,10 @@ type QueryTaskConcurrencyRequest struct {
 	//
 	// abc123***
 	CallerUacAccountId *string `json:"CallerUacAccountId,omitempty" xml:"CallerUacAccountId,omitempty"`
+	// example:
+	//
+	// 1ab92c
+	CurrentWorkspaceCode *string `json:"CurrentWorkspaceCode,omitempty" xml:"CurrentWorkspaceCode,omitempty"`
 	// example:
 	//
 	// abc123***
@@ -54,6 +60,10 @@ func (s *QueryTaskConcurrencyRequest) GetCallerUacAccountId() *string {
 	return s.CallerUacAccountId
 }
 
+func (s *QueryTaskConcurrencyRequest) GetCurrentWorkspaceCode() *string {
+	return s.CurrentWorkspaceCode
+}
+
 func (s *QueryTaskConcurrencyRequest) GetCurrentWorkspaceId() *string {
 	return s.CurrentWorkspaceId
 }
@@ -69,6 +79,11 @@ func (s *QueryTaskConcurrencyRequest) SetApplicationCode(v string) *QueryTaskCon
 
 func (s *QueryTaskConcurrencyRequest) SetCallerUacAccountId(v string) *QueryTaskConcurrencyRequest {
 	s.CallerUacAccountId = &v
+	return s
+}
+
+func (s *QueryTaskConcurrencyRequest) SetCurrentWorkspaceCode(v string) *QueryTaskConcurrencyRequest {
+	s.CurrentWorkspaceCode = &v
 	return s
 }
 

@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("ThirdswAicall")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -83,6 +91,10 @@ func (client *Client) CreateCallOutboundInstantWithOptions(request *CreateCallOu
 
 	if !dara.IsNil(request.CallerUacAccountId) {
 		body["CallerUacAccountId"] = request.CallerUacAccountId
+	}
+
+	if !dara.IsNil(request.CurrentWorkspaceCode) {
+		body["CurrentWorkspaceCode"] = request.CurrentWorkspaceCode
 	}
 
 	if !dara.IsNil(request.CurrentWorkspaceId) {
@@ -175,6 +187,10 @@ func (client *Client) QueryTaskConcurrencyWithOptions(request *QueryTaskConcurre
 		body["CallerUacAccountId"] = request.CallerUacAccountId
 	}
 
+	if !dara.IsNil(request.CurrentWorkspaceCode) {
+		body["CurrentWorkspaceCode"] = request.CurrentWorkspaceCode
+	}
+
 	if !dara.IsNil(request.CurrentWorkspaceId) {
 		body["CurrentWorkspaceId"] = request.CurrentWorkspaceId
 	}
@@ -254,6 +270,10 @@ func (client *Client) ReadOutboundTaskCallListWithOptions(tmpReq *ReadOutboundTa
 		request.LabelTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelTags, dara.String("LabelTags"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.StructuredLabelTags) {
+		request.StructuredLabelTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StructuredLabelTags, dara.String("StructuredLabelTags"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CallEndTimeBegin) {
 		body["CallEndTimeBegin"] = request.CallEndTimeBegin
@@ -277,6 +297,10 @@ func (client *Client) ReadOutboundTaskCallListWithOptions(tmpReq *ReadOutboundTa
 
 	if !dara.IsNil(request.Current) {
 		body["Current"] = request.Current
+	}
+
+	if !dara.IsNil(request.CurrentWorkspaceCode) {
+		body["CurrentWorkspaceCode"] = request.CurrentWorkspaceCode
 	}
 
 	if !dara.IsNil(request.CurrentWorkspaceId) {
@@ -309,6 +333,10 @@ func (client *Client) ReadOutboundTaskCallListWithOptions(tmpReq *ReadOutboundTa
 
 	if !dara.IsNil(request.Size) {
 		body["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.StructuredLabelTagsShrink) {
+		body["StructuredLabelTags"] = request.StructuredLabelTagsShrink
 	}
 
 	if !dara.IsNil(request.TaskId) {

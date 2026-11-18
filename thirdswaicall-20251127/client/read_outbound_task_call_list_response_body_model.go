@@ -212,7 +212,8 @@ type ReadOutboundTaskCallListResponseBodyRecords struct {
 	// example:
 	//
 	// 2025-09-23 19:34:12
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HangupDirection *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
 	// example:
 	//
 	// 1
@@ -248,7 +249,8 @@ type ReadOutboundTaskCallListResponseBodyRecords struct {
 	// example:
 	//
 	// 3
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status              *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructuredLabelTags []*ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags `json:"StructuredLabelTags,omitempty" xml:"StructuredLabelTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 123
@@ -339,6 +341,10 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) GetGmtModified() *string {
 	return s.GmtModified
 }
 
+func (s *ReadOutboundTaskCallListResponseBodyRecords) GetHangupDirection() *string {
+	return s.HangupDirection
+}
+
 func (s *ReadOutboundTaskCallListResponseBodyRecords) GetId() *int64 {
 	return s.Id
 }
@@ -373,6 +379,10 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) GetSceneId() *string {
 
 func (s *ReadOutboundTaskCallListResponseBodyRecords) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecords) GetStructuredLabelTags() []*ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags {
+	return s.StructuredLabelTags
 }
 
 func (s *ReadOutboundTaskCallListResponseBodyRecords) GetTaskId() *string {
@@ -470,6 +480,11 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) SetGmtModified(v string) *
 	return s
 }
 
+func (s *ReadOutboundTaskCallListResponseBodyRecords) SetHangupDirection(v string) *ReadOutboundTaskCallListResponseBodyRecords {
+	s.HangupDirection = &v
+	return s
+}
+
 func (s *ReadOutboundTaskCallListResponseBodyRecords) SetId(v int64) *ReadOutboundTaskCallListResponseBodyRecords {
 	s.Id = &v
 	return s
@@ -515,6 +530,11 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) SetStatus(v string) *ReadO
 	return s
 }
 
+func (s *ReadOutboundTaskCallListResponseBodyRecords) SetStructuredLabelTags(v []*ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) *ReadOutboundTaskCallListResponseBodyRecords {
+	s.StructuredLabelTags = v
+	return s
+}
+
 func (s *ReadOutboundTaskCallListResponseBodyRecords) SetTaskId(v string) *ReadOutboundTaskCallListResponseBodyRecords {
 	s.TaskId = &v
 	return s
@@ -543,6 +563,15 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) SetUserId(v string) *ReadO
 func (s *ReadOutboundTaskCallListResponseBodyRecords) Validate() error {
 	if s.DialogueList != nil {
 		for _, item := range s.DialogueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StructuredLabelTags != nil {
+		for _, item := range s.StructuredLabelTags {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -617,5 +646,43 @@ func (s *ReadOutboundTaskCallListResponseBodyRecordsDialogueList) SetText(v stri
 }
 
 func (s *ReadOutboundTaskCallListResponseBodyRecordsDialogueList) Validate() error {
+	return dara.Validate(s)
+}
+
+type ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags struct {
+	// example:
+	//
+	// 是否有意向
+	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) GoString() string {
+	return s.String()
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) GetValue() []*string {
+	return s.Value
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) SetKey(v string) *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) SetValue(v []*string) *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags {
+	s.Value = v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags) Validate() error {
 	return dara.Validate(s)
 }
