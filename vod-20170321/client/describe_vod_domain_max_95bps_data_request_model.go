@@ -26,24 +26,24 @@ type iDescribeVodDomainMax95BpsDataRequest interface {
 type DescribeVodDomainMax95BpsDataRequest struct {
 	// The cycle for the 95th percentile bandwidth. Default value: day. Valid values:
 	//
-	// - day: queries the 95th percentile bandwidth by day.
+	// - day: Queries the 95th percentile bandwidth by day.
 	//
-	// - month: queries the 95th percentile bandwidth by month.
+	// - month: Queries the 95th percentile bandwidth by month.
 	//
 	// example:
 	//
 	// month
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The accelerated domain name to query. If this parameter is left empty, the merged data of all accelerated domain names is returned by default.
+	// The accelerated domain name to query. If this parameter is left empty, the aggregated data of all accelerated domain names is returned by default.
 	//
 	//
-	// > Batch domain name queries are not supported.
+	// > Batch query for domain names is not supported.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	//
 	// > The end time must be later than the start time.
@@ -53,13 +53,13 @@ type DescribeVodDomainMax95BpsDataRequest struct {
 	// 2017-01-12T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The start time point for data retrieval. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the data. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

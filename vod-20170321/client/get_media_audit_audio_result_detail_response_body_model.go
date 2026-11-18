@@ -62,7 +62,7 @@ func (s *GetMediaAuditAudioResultDetailResponseBody) Validate() error {
 }
 
 type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail struct {
-	// The result list.
+	// The list of results.
 	List []*GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -127,7 +127,7 @@ func (s *GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail) 
 }
 
 type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList struct {
-	// The end time of the problematic audio segment. Unit: seconds.
+	// The end time of the flagged audio segment, in seconds.
 	//
 	// example:
 	//
@@ -137,29 +137,29 @@ type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList s
 	//
 	// - **normal**: Normal.
 	//
-	// - **spam**: Contains spam.
+	// - **spam**: Spam.
 	//
-	// - **ad**: Advertisement.
+	// - **ad**: Ad.
 	//
 	// - **politics**: Political content.
 	//
-	// - **terrorism**: Terrorist content.
+	// - **terrorism**: Terrorism.
 	//
-	// - **abuse**: Abusive content.
+	// - **abuse**: Abuse.
 	//
-	// - **porn**: Pornographic content.
+	// - **porn**: Pornography.
 	//
-	// - **flood**: Junk content.
+	// - **flood**: Flooding.
 	//
-	// - **contraband**: Prohibited content.
+	// - **contraband**: Contraband.
 	//
-	// - **meaningless**: Meaningless content.
+	// - **meaningless**: Meaningless.
 	//
 	// example:
 	//
 	// abuse
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The start time of the problematic audio segment. Unit: seconds.
+	// The start time of the flagged audio segment, in seconds.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList s
 	//
 	// example:
 	//
-	// Tiananmen
+	// Tian\\"anmen
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

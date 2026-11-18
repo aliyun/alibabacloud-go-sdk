@@ -44,7 +44,7 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end time of the query. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	// The end time of the query. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -52,49 +52,49 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// 2025-06-05T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The metric dimension filters. A dimension consists of a dimension type (Field), an operator (Op), and a dimension value.
+	// The metric dimension filter. A dimension consists of a dimension type (Field), an operator (Op), and a dimension value.
 	//
-	// > - A maximum of three dimensions can be specified.
+	// > - You can specify up to three dimensions.
 	//
-	// > - When the Metrics parameter includes the following four metrics, Filters do not take effect: Uv (playback users), AvgPerVv (average plays per user), AvgPerPlayDuration (average play duration per user), and AvgPerCompletionVv (average completion plays per user).
+	// > - If the Metrics parameter includes any of the following four metrics, the Filters parameter does not take effect: Uv (number of playback users), AvgPerVv (average number of playbacks per user), AvgPerPlayDuration (average playback duration per user), and AvgPerCompletionVv (average number of completions per user).
 	//
-	// > - For provinces and countries, pass the regionCode.
+	// > - Use regionCode to specify provinces and countries.
 	//
 	// > - Separate multiple values with #_#.
 	//
-	// Valid values for dimension type (Field):
+	// Valid values for the dimension type (Field):
 	//
-	// - SdkVersion: SDK version.
+	// - SdkVersion: the SDK version.
 	//
-	// - AppVersion: app version.
+	// - AppVersion: the app version.
 	//
-	// - Codec: codec.
+	// - Codec: the codec.
 	//
-	// - VideoType: video format.
+	// - VideoType: the video format.
 	//
-	// - Network: network type.
+	// - Network: the network type.
 	//
-	// - Country: country.
+	// - Country: the country.
 	//
-	// - Isp: ISP.
+	// - Isp: the ISP.
 	//
-	// - VideoDefinition: resolution.
+	// - VideoDefinition: the resolution.
 	//
-	// - Domain: domain name.
+	// - Domain: the domain name.
 	//
-	// - Province: province.
+	// - Province: the province.
 	//
 	// - IsHw: whether hardware decoding is used.
 	//
-	// - ErrorCode: error code.
+	// - ErrorCode: the error code.
 	//
-	// Valid values for operator (Op): = (equal to), > (greater than), < (less than), and != (not equal to).
+	// Valid values for the operator (Op): = (equal to), > (greater than), < (less than), and != (not equal to).
 	//
 	// >
 	//
-	// > - SdkVersion and VideoDefinition support all four operators. Other metrics support only = (equal to) and != (not equal to).
+	// > - Operator availability: The SdkVersion and VideoDefinition metrics support all four operators. Other metrics support only = (equal to) and != (not equal to).
 	//
-	// Retrieve dimension values by calling DescribeVodPlayerDimensionData.
+	// To obtain dimension values, call the DescribeVodPlayerDimensionData operation.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// ]
 	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	// The time granularity for querying data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity depends on the time span between `StartTime` and `EndTime`:
+	// The time granularity of the queried data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
 	//
 	// - Within 3 days: **5m**, **1h**, and **1d**.
 	//
@@ -146,61 +146,61 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The metric types. You can select multiple metrics (up to 3).
+	// The metric types. You can select multiple metrics, up to a maximum of three.
 	//
 	// >
 	//
-	// > - Percentage data is returned in decimal form.
+	// > - Percentage data is returned in decimal format.
 	//
-	// Quality of Service (QoS) metrics:
+	// Quality of Service (QoS) metrics for playback:
 	//
-	// - Vv: play count.
+	// - Vv: the number of playbacks.
 	//
-	// - RealVv: actual play count.
+	// - RealVv: the actual playback volume.
 	//
-	// - FirstFrame: first frame time.
+	// - FirstFrame: the first frame loading time.
 	//
-	// - SecondPlayRate: instant play rate.
+	// - SecondPlayRate: the 1-second startup rate.
 	//
-	// - SlowPlayRate: slow play rate.
+	// - SlowPlayRate: the slow startup rate.
 	//
-	// - StuckCountRate: stuttering rate by count.
+	// - StuckCountRate: the stuttering rate by count.
 	//
-	// - SeekDuration: seek duration.
+	// - SeekDuration: the seek duration.
 	//
-	// - StuckDuration100s: stuttering duration per 100 seconds.
+	// - StuckDuration100s: the stuttering duration per 100 seconds.
 	//
-	// - StuckCount100s: stuttering count per 100 seconds.
+	// - StuckCount100s: the number of stuttering events per 100 seconds.
 	//
-	// - PlayFailRate: play failure rate.
+	// - PlayFailRate: the playback failure rate.
 	//
-	// - SeedFailRate: non-play rate.
+	// - SeedFailRate: the non-startup rate.
 	//
-	// - AvgPlayBitrate: average playback bitrate.
+	// - AvgPlayBitrate: the average playback bitrate.
 	//
-	// - AvgStartBitrate: average start bitrate.
+	// - AvgStartBitrate: the average startup bitrate.
 	//
-	// - ErrorCount100s: error count per 100 seconds.
+	// - ErrorCount100s: the number of errors per 100 seconds.
 	//
-	// Quality of Experience (QoE) metrics:
+	// Quality of Experience (QoE) metrics for playback:
 	//
-	// - Uv: playback users.
+	// - Uv: the number of playback users.
 	//
-	// - AvgPerVv: average plays per user.
+	// - AvgPerVv: the average number of playbacks per user.
 	//
-	// - AvgVideoDuration: average video duration.
+	// - AvgVideoDuration: the average video duration.
 	//
-	// - AvgPerPlayDuration: average play duration per user.
+	// - AvgPerPlayDuration: the average playback duration per user.
 	//
-	// - AvgPerCompletionVv: average completion plays per user.
+	// - AvgPerCompletionVv: the average number of completions per user.
 	//
-	// - CompletionVv: completion count.
+	// - CompletionVv: the completion volume.
 	//
-	// - CompletionRate: completion rate.
+	// - CompletionRate: the completion rate.
 	//
-	// - AvgPlayDuration: average play duration.
+	// - AvgPlayDuration: the average playback duration.
 	//
-	// - JumpRate5s: 5-second bounce rate.
+	// - JumpRate5s: the 5-second bounce rate.
 	//
 	// This parameter is required.
 	//
@@ -208,15 +208,15 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// Vv,Uv,AvgPerVv
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The operating system of the player. Specify this parameter to perform a filtered query for playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **MacOS**, and **Linux**.
+	// The operating system of the playback client. You can specify this parameter to perform a filtered query for playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **macOS**, and **Linux**.
 	//
-	// The available values vary by terminal type:
+	// The available values vary based on the terminal type:
 	//
-	// - **native**: Android, iOS, Harmony.
+	// - **native**: Android, iOS, and Harmony.
 	//
-	// - **web**: Android, iOS, Harmony, Windows, MacOs, Linux.
+	// - **web**: Android, iOS, Harmony, Windows, macOS, and Linux.
 	//
-	// Separate multiple values with #_#.
+	// Separate multiple operating systems with #_#.
 	//
 	// example:
 	//
@@ -234,11 +234,11 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// 5000
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+	// The start time of the query. Format: <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z (UTC).
 	//
 	// >
 	//
-	// > - Supports querying playback data history for the past year.
+	// > - You can query playback data history for up to one year.
 	//
 	// > - The time range for a single query cannot exceed 31 days.
 	//
@@ -252,9 +252,9 @@ type DescribeVodPlayerMetricDataRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The terminal type. Valid values:
 	//
-	// - **web**: web.
+	// - **web**: the web client.
 	//
-	// - **mobile**: native.
+	// - **mobile**: the native client.
 	//
 	// This parameter is required.
 	//
@@ -262,7 +262,7 @@ type DescribeVodPlayerMetricDataRequest struct {
 	//
 	// web
 	TerminalType *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-	// Returns data for the top N items ranked by play count. If this parameter is not specified, data for all dimensions is returned.
+	// The number of top data entries by playback volume to return. If you do not specify this parameter, all dimension data is returned.
 	//
 	// example:
 	//

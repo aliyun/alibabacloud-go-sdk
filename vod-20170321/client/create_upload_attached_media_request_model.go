@@ -34,7 +34,7 @@ type iCreateUploadAttachedMediaRequest interface {
 }
 
 type CreateUploadAttachedMediaRequest struct {
-	// The application ID. Default value: **app-1000000**. If you have activated the multi-application service, specify the application ID to upload the auxiliary media asset to the specified application. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. Default value: **app-1000000**. If the multi-application system is enabled, you can specify an application ID to upload the auxiliary media asset to the specified application. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateUploadAttachedMediaRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The type of the auxiliary media asset. Valid values:
 	//
-	// - **watermark**: watermark.
+	// - **watermark**: watermark
 	//
-	// - **subtitle**: subtitle.
+	// - **subtitle**: subtitle
 	//
-	// - **material**: material.
+	// - **material**: material
 	//
 	// This parameter is required.
 	//
@@ -54,21 +54,21 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// watermark
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The category IDs. Separate multiple IDs with commas (,). A maximum of 5 IDs are supported. You can obtain category IDs by using the following methods:
+	// The category IDs. Separate multiple IDs with commas (,). A maximum of five IDs are supported. You can obtain the IDs by using the following methods:
 	//
-	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Management Configuration*	- > **Category Management*	- to view category IDs.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Category Management*	- to view the category IDs.
 	//
-	// - The category ID is returned when you call the [AddCategory](~~AddCategory~~) operation to create a category.
+	// - Call the [AddCategory](~~AddCategory~~) operation to create a category. The category ID is returned in the response.
 	//
-	// - The category ID is returned when you call the [GetCategories](~~GetCategories~~) operation to query categories.
+	// - Call the [GetCategories](~~GetCategories~~) operation to query categories. The category IDs are returned in the response.
 	//
 	// example:
 	//
 	// 1298****,0813****
 	CateIds *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
-	// The description of the media asset. Rules:
+	// The media asset description. Rules:
 	//
-	// - The description can be up to 1024 bytes in length.
+	// - The length cannot exceed 1,024 bytes.
 	//
 	// - The description must be encoded in UTF-8.
 	//
@@ -76,9 +76,9 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// uploadTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The source file address of the auxiliary media asset to be uploaded.
+	// The source file URL of the auxiliary media asset to be uploaded.
 	//
-	// >The file name extension is optional. If a file name extension is specified here and is different from the extension specified in MediaExt, the value of MediaExt takes precedence.
+	// > The file name extension is optional. If a file name extension is included and it is different from the file name extension specified in MediaExt, the value of MediaExt prevails.
 	//
 	// example:
 	//
@@ -90,21 +90,21 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// 123
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The file name extension of the auxiliary media asset source file to be uploaded. Valid values:
+	// The file name extension of the resource file of the auxiliary media asset to be uploaded. Valid values:
 	//
-	// - Watermark: **png, gif, apng, mov**.
+	// - Watermark: **png, gif, apng, and mov**
 	//
-	// - Subtitle: **srt, ass, stl, ttml, vtt**.
+	// - Subtitle: **srt, ass, stl, ttml, and vtt**
 	//
-	// - Material: **jpg, gif, png, mp4, mat, zip, apk**.
+	// - Material: **jpg, gif, png, mp4, mat, zip, and apk**
 	//
 	// example:
 	//
 	// png
 	MediaExt *string `json:"MediaExt,omitempty" xml:"MediaExt,omitempty"`
-	// The storage address. You can obtain the storage address by using the following method:
+	// The storage address. You can obtain it by using the following method:
 	//
-	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Management Configuration*	- > **Storage Management*	- to view the storage address.
+	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Storage Management*	- to view the storage address.
 	//
 	// > If you do not specify this parameter, the auxiliary media asset is uploaded to the default storage address. If you specify this parameter, the auxiliary media asset is uploaded to the specified storage address.
 	//
@@ -114,11 +114,11 @@ type CreateUploadAttachedMediaRequest struct {
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags. Rules:
 	//
-	// - A maximum of 16 tags are supported.
+	// - A maximum of 16 tags can be set.
 	//
 	// - Separate multiple tags with commas (,).
 	//
-	// - Each tag can be up to 32 characters or Chinese characters in length.
+	// - A single tag cannot exceed 32 characters.
 	//
 	// - The tags must be encoded in UTF-8.
 	//
@@ -128,7 +128,7 @@ type CreateUploadAttachedMediaRequest struct {
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the auxiliary media asset. Rules:
 	//
-	// - The title can be up to 128 bytes in length.
+	// - The length cannot exceed 128 bytes.
 	//
 	// - The title must be encoded in UTF-8.
 	//
@@ -136,11 +136,11 @@ type CreateUploadAttachedMediaRequest struct {
 	//
 	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom settings, which is a JSON string. The settings support message callbacks, upload acceleration, and other configurations. For more information, see [UserData](~~86952#section-6fg-qll-v3w~~).
+	// The custom settings. The value is a JSON string that supports settings such as message callback and upload acceleration. For more information, see [UserData](~~86952#section-6fg-qll-v3w~~).
 	//
-	// > - To use message callbacks in this parameter, you must configure an HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect. For information about how to configure HTTP callbacks in the console, see [Callback settings](https://help.aliyun.com/document_detail/86071.html).
+	// > - To use the message callback feature in this parameter, you must configure an HTTP callback URL in the console and select the corresponding callback event type. Otherwise, the callback settings do not take effect. For more information about how to configure HTTP callbacks in the console, see [Callback settings](https://help.aliyun.com/document_detail/86071.html).
 	//
-	// > - To use the upload acceleration feature, submit a ticket to activate it. For more information, see [Upload instructions](https://help.aliyun.com/document_detail/55396.html). For information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
+	// > - To use the upload acceleration feature, submit a ticket to apply for activation. For more information, see [Upload instructions](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeVodUserVipsByDomainResponseBody interface {
 }
 
 type DescribeVodUserVipsByDomainResponseBody struct {
-	// The accelerated domain name for ApsaraVideo VOD.
+	// The ApsaraVideo VOD accelerated domain name.
 	//
 	// example:
 	//

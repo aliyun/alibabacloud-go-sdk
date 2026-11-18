@@ -14,7 +14,7 @@ type iGetTranscodeTemplateGroupRequest interface {
 }
 
 type GetTranscodeTemplateGroupRequest struct {
-	// The transcoding template group ID.
+	// The ID of the transcoding template group.
 	//
 	// This parameter is required.
 	//

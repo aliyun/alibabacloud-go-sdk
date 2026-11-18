@@ -24,7 +24,7 @@ type iDescribeVodPlayerMetricDataResponseBody interface {
 }
 
 type DescribeVodPlayerMetricDataResponseBody struct {
-	// The list of returned data.
+	// The returned data list.
 	DataList []*DescribeVodPlayerMetricDataResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The extended information.
 	Extend *DescribeVodPlayerMetricDataResponseBodyExtend `json:"Extend,omitempty" xml:"Extend,omitempty" type:"Struct"`
@@ -34,7 +34,7 @@ type DescribeVodPlayerMetricDataResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ func (s *DescribeVodPlayerMetricDataResponseBody) Validate() error {
 }
 
 type DescribeVodPlayerMetricDataResponseBodyDataList struct {
-	// The average completion plays per user.
+	// The average number of completions per user.
 	//
 	// example:
 	//
 	// 2
 	AvgPerCompletionVv *float64 `json:"AvgPerCompletionVv,omitempty" xml:"AvgPerCompletionVv,omitempty"`
-	// The average play duration per user, in milliseconds (ms).
+	// The average playback duration per user, in milliseconds.
 	//
 	// example:
 	//
 	// 100000
 	AvgPerPlayDuration *float64 `json:"AvgPerPlayDuration,omitempty" xml:"AvgPerPlayDuration,omitempty"`
-	// The average plays per user.
+	// The average number of playbacks per user.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ type DescribeVodPlayerMetricDataResponseBodyDataList struct {
 	//
 	// 100
 	AvgPlayBitrate *float64 `json:"AvgPlayBitrate,omitempty" xml:"AvgPlayBitrate,omitempty"`
-	// The average play duration, in milliseconds (ms).
+	// The average playback duration, in milliseconds.
 	//
 	// example:
 	//
 	// 100000
 	AvgPlayDuration *float64 `json:"AvgPlayDuration,omitempty" xml:"AvgPlayDuration,omitempty"`
-	// The average start bitrate, in bps.
+	// The average startup bitrate, in bps.
 	//
 	// example:
 	//
 	// 100
 	AvgStartBitrate *float64 `json:"AvgStartBitrate,omitempty" xml:"AvgStartBitrate,omitempty"`
-	// The average video duration, in milliseconds (ms).
+	// The average video duration, in milliseconds.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type DescribeVodPlayerMetricDataResponseBodyDataList struct {
 	//
 	// 0.8
 	CompletionRate *float64 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
-	// The completion count.
+	// The completion volume.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type DescribeVodPlayerMetricDataResponseBodyDataList struct {
 	//
 	// H265_MP4_WIFI
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The error count per 100 seconds.
+	// The number of errors per 100 seconds.
 	//
 	// example:
 	//
 	// 1
 	ErrorCount100s *float64 `json:"ErrorCount100s,omitempty" xml:"ErrorCount100s,omitempty"`
-	// The first frame time, in milliseconds (ms).
+	// The first frame loading time, in milliseconds.
 	//
 	// example:
 	//
@@ -213,43 +213,43 @@ type DescribeVodPlayerMetricDataResponseBodyDataList struct {
 	//
 	// 0.1
 	JumpRate5s *float64 `json:"JumpRate5s,omitempty" xml:"JumpRate5s,omitempty"`
-	// The play failure rate.
+	// The playback failure rate.
 	//
 	// example:
 	//
 	// 0.2
 	PlayFailRate *float64 `json:"PlayFailRate,omitempty" xml:"PlayFailRate,omitempty"`
-	// The actual play count.
+	// The actual playback volume.
 	//
 	// example:
 	//
 	// 1000
 	RealVv *float64 `json:"RealVv,omitempty" xml:"RealVv,omitempty"`
-	// The instant play rate.
+	// The 1-second startup rate.
 	//
 	// example:
 	//
 	// 0.8
 	SecondPlayRate *float64 `json:"SecondPlayRate,omitempty" xml:"SecondPlayRate,omitempty"`
-	// The non-play rate.
+	// The non-startup rate.
 	//
 	// example:
 	//
 	// 0.01
 	SeedFailRate *float64 `json:"SeedFailRate,omitempty" xml:"SeedFailRate,omitempty"`
-	// The seek duration, in milliseconds (ms).
+	// The seek duration, in milliseconds.
 	//
 	// example:
 	//
 	// 100
 	SeekDuration *float64 `json:"SeekDuration,omitempty" xml:"SeekDuration,omitempty"`
-	// The slow play rate.
+	// The slow startup rate.
 	//
 	// example:
 	//
 	// 0.2
 	SlowPlayRate *float64 `json:"SlowPlayRate,omitempty" xml:"SlowPlayRate,omitempty"`
-	// The stuttering count per 100 seconds.
+	// The number of stuttering events per 100 seconds.
 	//
 	// example:
 	//
@@ -261,19 +261,19 @@ type DescribeVodPlayerMetricDataResponseBodyDataList struct {
 	//
 	// 0.1
 	StuckCountRate *float64 `json:"StuckCountRate,omitempty" xml:"StuckCountRate,omitempty"`
-	// The stuttering duration per 100 seconds, in milliseconds (ms).
+	// The stuttering duration per 100 seconds, in milliseconds.
 	//
 	// example:
 	//
 	// 200
 	StuckDuration100s *float64 `json:"StuckDuration100s,omitempty" xml:"StuckDuration100s,omitempty"`
-	// The timestamp of the data. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	// The timestamp of the returned data. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2025-06-24T00:55:06Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total play duration, in milliseconds (ms).
+	// The total playback duration, in milliseconds.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type DescribeVodPlayerMetricDataResponseBodyDataList struct {
 	//
 	// 500
 	Uv *float64 `json:"Uv,omitempty" xml:"Uv,omitempty"`
-	// The play count.
+	// The number of playbacks.
 	//
 	// example:
 	//
@@ -540,19 +540,19 @@ func (s *DescribeVodPlayerMetricDataResponseBodyDataList) Validate() error {
 }
 
 type DescribeVodPlayerMetricDataResponseBodyExtend struct {
-	// The latest time with data points within the specified time range. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	// The latest time with data points within the specified time range. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2025-06-05T15:59:59Z
 	ActualEndTime *string `json:"ActualEndTime,omitempty" xml:"ActualEndTime,omitempty"`
-	// The earliest time with data points within the specified time range. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	// The earliest time with data points within the specified time range. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2025-06-24T00:55:06Z
 	ActualStartTime *string `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
-	// The time granularity of the queried data, in seconds (s).
+	// The time granularity of the queried data, in seconds.
 	//
 	// example:
 	//

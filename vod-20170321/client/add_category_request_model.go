@@ -20,9 +20,9 @@ type iAddCategoryRequest interface {
 type AddCategoryRequest struct {
 	// The category name.
 	//
-	// - Maximum length: 64 bytes.
+	// - It can be up to 64 bytes in length.
 	//
-	// - UTF-8 encoded.
+	// - It is encoded in UTF-8.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type AddCategoryRequest struct {
 	//
 	// Comedy
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The parent category ID.
+	// The ID of the parent category.
 	//
-	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Management Configuration*	- > **Category Management*	- > **Audio/Video/Image Categories*	- or **Short Video Material Categories*	- to view category IDs.
+	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Category Management*	- > **Audio/Video/Image Categories*	- or **Short Video Material Categories*	- to view the category ID.
 	//
-	// > - If you specify this parameter, a subcategory is created under the specified parent category. If you do not specify this parameter, a level-0 category is created.
+	// > - If you specify this parameter, a subcategory is created under the specified parent category. If you do not specify this parameter, a level-1 category is created.
 	//
-	// > - Because all level-0 categories for short video materials are built-in and cannot be modified, added, or deleted, only subcategories can be created under level-0 categories. Therefore, this parameter is required when `Type` is set to `material`.
+	// > - All level-1 categories for short video materials are built-in and cannot be modified, added, or deleted. You can only create subcategories under level-1 categories. Therefore, this parameter is required when `Type` is set to `material`.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type AddCategoryRequest struct {
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The category type. Valid values:
 	//
-	// - **default*	- (default): audio/video/image category.
+	// - **default**: audio, video, and image categories. This is the default value.
 	//
-	// - **material**: short video material category.
+	// - **material**: short video material categories.
 	//
 	// example:
 	//

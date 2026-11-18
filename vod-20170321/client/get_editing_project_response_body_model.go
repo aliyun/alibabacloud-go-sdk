@@ -68,7 +68,7 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// https://****.com/6AB4D0E1E1C74468883516C2349****.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the online editing project was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the online editing project was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// testdescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the online editing project was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the online editing project was last modified. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2017-10-23T14:27:26Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The online editing project ID.
+	// The ID of the online editing project.
 	//
 	// example:
 	//
@@ -98,15 +98,15 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the online editing project. Multiple statuses are separated by commas (,). By default, all online editing projects are returned. Valid values:
+	// The status of the online editing project. Multiple statuses are separated by commas (,). By default, all online editing projects are retrieved. Valid values:
 	//
-	// - **Normal**: draft.
+	// - **Normal**: Draft.
 	//
-	// - **Producing**: being produced.
+	// - **Producing**: Being produced.
 	//
-	// - **Produced**: produced.
+	// - **Produced**: Produced successfully.
 	//
-	// - **ProduceFailed**: failed to be produced.
+	// - **ProduceFailed**: Production failed.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetEditingProjectResponseBodyProject struct {
 	//
 	// location_s
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The timeline of the online editing project.
+	// The timeline of the online editing project. TimelineIn and TimelineOut indicate the in-point and out-point of a media clip on the timeline, in seconds, accurate to four decimal places.
 	//
 	// example:
 	//

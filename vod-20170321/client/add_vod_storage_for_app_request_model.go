@@ -18,7 +18,7 @@ type iAddVodStorageForAppRequest interface {
 }
 
 type AddVodStorageForAppRequest struct {
-	// The application ID. The application ID is the value of the `AppId` parameter returned by the [CreateAppInfo](~~CreateAppInfo~~) or [ListAppInfo](~~ListAppInfo~~) operation.
+	// The list of application IDs. You can obtain the application ID from the AppId response parameter of the [CreateAppInfo](~~CreateAppInfo~~) or [ListAppInfo](~~ListAppInfo~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -26,19 +26,13 @@ type AddVodStorageForAppRequest struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The OSS bucket address. This parameter is required when StorageType is set to user_oss_bucket.
+	// The address of the OSS bucket. This parameter is required when StorageType is set to user_oss_bucket.
 	//
 	// example:
 	//
 	// example-bucket.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The storage type. Valid values:
-	//
-	// - vod_oss_bucket
-	//
-	// - user_oss_bucket
-	//
-	// Default value: **vod_oss_bucket**.
+	// The storage type. Valid values: vod_oss_bucket and user_oss_bucket. Default value: **vod_oss_bucket**.
 	//
 	// example:
 	//

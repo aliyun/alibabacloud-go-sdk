@@ -22,9 +22,9 @@ type iBatchGetMediaInfosResponseBody interface {
 }
 
 type BatchGetMediaInfosResponseBody struct {
-	// The list of media asset IDs that are forbidden. This is typically because you do not have permissions for multi-application operations. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
+	// The list of media asset IDs for which operations are forbidden. This is typically caused by a lack of multi-application permissions. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
 	ForbiddenMediaIds []*string `json:"ForbiddenMediaIds,omitempty" xml:"ForbiddenMediaIds,omitempty" type:"Repeated"`
-	// The media asset list.
+	// The list of media assets.
 	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	// The list of media asset IDs that do not exist.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
@@ -111,11 +111,11 @@ type BatchGetMediaInfosResponseBodyMediaInfos struct {
 	//
 	// 10a5fa364a5b71ef89246733a78e****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The basic information of the media asset.
+	// The basic information about the media asset.
 	MediaInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	// The source file information.
+	// The information about the source file.
 	MezzanineInfo *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo `json:"MezzanineInfo,omitempty" xml:"MezzanineInfo,omitempty" type:"Struct"`
-	// The playback information (stream information) of the audio/video file.
+	// The playback information of the audio and video streams.
 	PlayInfoList []*BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
 }
 
@@ -205,29 +205,29 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
 	//
 	// cate1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the audio/video file.
+	// The URL of the thumbnail for the audio or video file.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com/****.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the audio/video file was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The time when the audio or video file was created. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the audio/video file.
+	// The description of the audio or video file.
 	//
 	// example:
 	//
 	// Alibaba Cloud VOD video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The status of the offline download switch. After the offline download feature is enabled, mobile users can cache videos to their local devices for viewing by using ApsaraVideo Player. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
+	// The status of the offline download switch. After you enable the offline download feature, mobile users can use ApsaraVideo Player to cache videos to their local devices for offline viewing. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
 	//
-	// - **on**: Offline download is enabled.
+	// - **on**: The offline download feature is enabled.
 	//
-	// - **off**: Offline download is disabled.
+	// - **off**: The offline download feature is disabled.
 	//
 	// example:
 	//
@@ -239,19 +239,19 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
 	//
 	// 7753d144efd74d6c45fe0570****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The last time when the audio/video file was updated. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The time when the audio or video file was last updated. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
 	// 2017-06-26T06:38:48Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The ID must be 6 to 64 characters in length and is unique at the user level.
+	// The custom ID. The ID must be 6 to 64 characters in length and can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_). The ID must be unique within the user dimension.
 	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The expiration time of the media asset restoration.
+	// The expiration time of the restored media asset.
 	//
 	// example:
 	//
@@ -263,29 +263,29 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
 	//
 	// - **Success**: The media asset is restored.
 	//
-	// - **Failed**: The media asset failed to be restored.
+	// - **Failed**: The restoration failed.
 	//
 	// example:
 	//
 	// Success
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The video snapshot URL array.
+	// The array of video snapshot URLs.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 	// The video status. Valid values:
 	//
 	// - **Uploading**: The video is being uploaded.
 	//
-	// - **UploadFail**: The video failed to be uploaded.
+	// - **UploadFail**: The upload failed.
 	//
-	// - **UploadSucc**: The video has been uploaded.
+	// - **UploadSucc**: The upload is complete.
 	//
 	// - **Transcoding**: The video is being transcoded.
 	//
-	// - **TranscodeFail**: The video failed to be transcoded.
+	// - **TranscodeFail**: The transcoding failed.
 	//
 	// - **Blocked**: The video is blocked.
 	//
-	// - **Normal**: The video is in a normal state.
+	// - **Normal**: The video is normal.
 	//
 	// example:
 	//
@@ -293,19 +293,19 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage class of the media asset. Valid values:
 	//
-	// - **Standard**: standard.
+	// - **Standard**: Standard storage.
 	//
-	// - **IA**: Infrequent Access for media assets.
+	// - **IA**: Infrequent access storage for media assets.
 	//
-	// - **Archive**: Archive for media assets.
+	// - **Archive**: Archive storage for media assets.
 	//
-	// - **ColdArchive**: Cold Archive for media assets.
+	// - **ColdArchive**: Cold archive storage for media assets.
 	//
-	// - **SourceIA**: Infrequent Access for source files.
+	// - **SourceIA**: Infrequent access storage for source files.
 	//
-	// - **SourceArchive**: Archive for source files.
+	// - **SourceArchive**: Archive storage for source files.
 	//
-	// - **SourceColdArchive**: Cold Archive for source files.
+	// - **SourceColdArchive**: Cold archive storage for source files.
 	//
 	// - **Changing**: The storage class of the media asset is being changed.
 	//
@@ -315,31 +315,31 @@ type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
 	//
 	// Standard
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The storage address of the audio/video file.
+	// The storage address of the audio or video file.
 	//
 	// example:
 	//
 	// outin-***.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the audio/video file. Multiple tags are separated by commas (,).
+	// The tags of the audio or video file. Separate multiple tags with commas (,).
 	//
 	// example:
 	//
 	// tag1, tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The transcoding template group ID.
+	// The ID of the transcoding template group.
 	//
 	// example:
 	//
 	// b4039216985f4312a5382a4ed****
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The title of the audio/video file.
+	// The title of the audio or video file.
 	//
 	// example:
 	//
 	// Alibaba Cloud VOD Video Title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom parameter.
+	// The custom parameters.
 	//
 	// example:
 	//
@@ -540,7 +540,7 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) Validate() error {
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
-	// The audio stream information.
+	// The information about the audio streams.
 	AudioStreamList []*BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Repeated"`
 	// The bitrate of the file. Unit: Kbps.
 	//
@@ -548,7 +548,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// 771.2280
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the file was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The time when the file was created. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -560,7 +560,8 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// 42.4930
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileMD5  *string `json:"FileMD5,omitempty" xml:"FileMD5,omitempty"`
+	// The MD5 hash value of the source file.
+	FileMD5 *string `json:"FileMD5,omitempty" xml:"FileMD5,omitempty"`
 	// The file name.
 	//
 	// example:
@@ -573,13 +574,13 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// http://example-bucket-****.oss-cn-shanghai.aliyuncs.com/27ffc438-164h67f57ef-0005-6884-51a-1****.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The frame rate of the file, in frames per second.
+	// The frame rate of the file. Unit: frames per second.
 	//
 	// example:
 	//
 	// 25.0000
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the file. Unit: px.
+	// The height of the file. Unit: pixels.
 	//
 	// example:
 	//
@@ -591,7 +592,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// 1f1a6fc03ca04814031b8a6559e****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The size of the file. Unit: bytes.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
@@ -603,7 +604,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// - **Normal**: The file is uploaded.
 	//
-	// - **UploadFail**: The file failed to be uploaded.
+	// - **UploadFail**: The upload failed.
 	//
 	// - **Deleted**: The file is deleted.
 	//
@@ -611,9 +612,9 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The video stream information.
+	// The information about the video streams.
 	VideoStreamList []*BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Repeated"`
-	// The width of the file. Unit: px.
+	// The width of the file. Unit: pixels.
 	//
 	// example:
 	//
@@ -786,9 +787,9 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// The channel layout. Valid values:
 	//
-	// - **mono**: mono.
+	// - **mono**: Mono.
 	//
-	// - **stereo**: stereo.
+	// - **stereo**: Stereo.
 	//
 	// example:
 	//
@@ -800,7 +801,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct
 	//
 	// 1
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The full name of the codec.
+	// The long name of the codec.
 	//
 	// example:
 	//
@@ -836,7 +837,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct
 	//
 	// 3.227574
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the audio stream, which identifies the position of the audio stream in the overall media stream.
+	// The index of the audio stream, which indicates the position of the audio stream in all media streams.
 	//
 	// example:
 	//
@@ -854,7 +855,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct
 	//
 	// 1
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The sample format.
+	// The sampling format.
 	//
 	// example:
 	//
@@ -866,7 +867,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// The start time. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The start time. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -1049,7 +1050,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList struct
 	//
 	// 500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The full name of the codec.
+	// The long name of the codec.
 	//
 	// example:
 	//
@@ -1103,19 +1104,19 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList struct
 	//
 	// HDR
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// Indicates whether the video stream contains B-frames.
+	// Indicates whether the video contains B-frames.
 	//
 	// example:
 	//
 	// 0
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height of the video resolution.
+	// The height of the video.
 	//
 	// example:
 	//
 	// 320
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video stream, which identifies the position of the video stream in the overall media stream.
+	// The index of the video stream, which indicates the position of the video stream in all media streams.
 	//
 	// example:
 	//
@@ -1151,7 +1152,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList struct
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The video rotation angle. Valid values: [0, 360).
+	// The rotation angle of the video. Value range: [0, 360).
 	//
 	// example:
 	//
@@ -1163,7 +1164,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList struct
 	//
 	// 0:1
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The start time. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The start time. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -1175,7 +1176,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList struct
 	//
 	// 0.000000
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width of the video resolution.
+	// The width of the video.
 	//
 	// example:
 	//
@@ -1412,7 +1413,7 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList) V
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
-	// The color bit depth. The value is an integer.
+	// The color depth. The value is an integer.
 	//
 	// example:
 	//
@@ -1430,7 +1431,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	//
 	// h264
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The time when the stream was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The creation time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -1438,25 +1439,25 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The definition of the video stream. Valid values:
 	//
-	// - **FD**: low definition.
+	// - **FD**: smooth
 	//
-	// - **LD**: standard definition.
+	// - **LD**: standard definition
 	//
-	// - **SD**: high definition.
+	// - **SD**: high definition
 	//
-	// - **HD**: ultra high definition.
+	// - **HD**: ultra-high definition
 	//
-	// - **OD**: original quality.
+	// - **OD**: original quality
 	//
-	// - **2K**: 2K.
+	// - **2K**: 2K
 	//
-	// - **4K**: 4K.
+	// - **4K**: 4K
 	//
-	// - **SQ**: standard sound quality.
+	// - **SQ**: standard audio quality
 	//
-	// - **HQ**: high sound quality.
+	// - **HQ**: high audio quality
 	//
-	// - **AUTO**: adaptive bitrate streaming.
+	// - **AUTO**: adaptive bitrate
 	//
 	// example:
 	//
@@ -1468,11 +1469,11 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	//
 	// 9.0464
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether the media stream is encrypted. Valid values:
+	// Specifies whether the media stream is encrypted. Valid values:
 	//
-	// - **0**: The stream is not encrypted.
+	// - **0**: no
 	//
-	// - **1**: The stream is encrypted.
+	// - **1**: yes
 	//
 	// example:
 	//
@@ -1480,9 +1481,9 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
 	// The encryption mode of the media stream. Valid values:
 	//
-	// - **License**: local decryption mode.
+	// - **License**: local decryption mode
 	//
-	// > If the encryption mode is **License**, only ApsaraVideo Player SDK can be used for playback.
+	// > If the encryption mode is **License**, the stream can only be played by using the ApsaraVideo Player SDK.
 	//
 	// example:
 	//
@@ -1490,11 +1491,11 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	EncryptMode *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
 	// The encryption type of the media stream. Valid values:
 	//
-	// - **AliyunVoDEncryption**: Alibaba Cloud video encryption.
+	// - **AliyunVoDEncryption**: Alibaba Cloud video encryption
 	//
-	// - **HLSEncryption**: HLS encryption.
+	// - **HLSEncryption**: HLS encryption
 	//
-	// > If the encryption type is **AliyunVoDEncryption**, only ApsaraVideo Player SDK can be used for playback.
+	// > If the encryption type is **AliyunVoDEncryption**, the stream can only be played by using the ApsaraVideo Player SDK.
 	//
 	// example:
 	//
@@ -1504,7 +1505,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	//
 	// - If the media file is a video, valid values are **mp4*	- and **m3u8**.
 	//
-	// - If the media file is audio-only, the value is **mp3**.
+	// - If the media file is audio-only, the valid value is **mp3**.
 	//
 	// example:
 	//
@@ -1534,19 +1535,19 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	//
 	// HLG
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// The height of the media stream. Unit: px.
+	// The height of the media stream. Unit: pixels.
 	//
 	// example:
 	//
 	// 640
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The custom watermark information of the copyright watermark. This field is returned only when `JobType` is `2`.
+	// The custom watermark information for the copyright watermark. This field is returned only when `JobType` is set to `2`.
 	//
 	// example:
 	//
 	// CopyrightMarkTest
 	JobExt *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
-	// The job ID of the media stream transcoding. This value serves as the unique identifier of the media stream.
+	// The ID of the transcoding job for the media stream. This ID uniquely identifies the media stream.
 	//
 	// example:
 	//
@@ -1554,15 +1555,15 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The digital watermarking type. Valid values:
 	//
-	// - **1**: tracing watermark.
+	// - **1**: tracing watermark
 	//
-	// - **2**: copyright watermark.
+	// - **2**: copyright watermark
 	//
 	// example:
 	//
 	// 2
 	JobType *int32 `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The time when the stream was last updated. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The update time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -1570,11 +1571,11 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The transcoding type. Valid values:
 	//
-	// - **0**: standard transcoding.
+	// - **0**: standard transcoding
 	//
-	// - **1.0**: Narrowband HD 1.0 transcoding.
+	// - **1.0**: Narrowband HD 1.0 transcoding
 	//
-	// - **2.0**: Narrowband HD 2.0 transcoding.
+	// - **2.0**: Narrowband HD 2.0 transcoding
 	//
 	// example:
 	//
@@ -1588,7 +1589,7 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	//
 	// 418112
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The output specification of the audio/video transcoding. For more information about valid values and descriptions, see [Output specifications: Specification](~~124671#section-6bv-l0g-opq~~).
+	// The output specification of video transcoding. For more information about the valid values and descriptions, see [Output specifications: Specification](~~124671#section-6bv-l0g-opq~~).
 	//
 	// example:
 	//
@@ -1596,9 +1597,9 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// The status of the media stream. Valid values:
 	//
-	// - **Normal**: The stream is in a normal state. This value indicates the status of the latest transcoded stream for each definition and format.
+	// - **Normal**: The stream is in the normal state. This state marks the latest transcoded stream for each definition and format.
 	//
-	// - **Invisible**: The stream is invisible. When multiple duplicate transcoded streams exist for each definition and format, only the latest stream is marked as Normal, and the other streams are marked as Invisible.
+	// - **Invisible**: The stream is in the invisible state. If multiple transcoded streams exist for the same definition and format, only the latest stream is marked as Normal, and the other streams are marked as Invisible.
 	//
 	// example:
 	//
@@ -1612,25 +1613,25 @@ type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
 	//
 	// video
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	// The transcoding template group ID.
+	// The ID of the transcoding template group.
 	//
 	// example:
 	//
 	// fb0716154b21a4ecb5b70a26ccc8****
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The transcoding template ID.
+	// The ID of the transcoding template.
 	//
 	// example:
 	//
 	// a86a4338dd2e83da45154004a541****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The watermark template ID associated with the current media stream.
+	// The ID of the watermark template associated with the current media stream.
 	//
 	// example:
 	//
 	// dgfn26457856****
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
-	// The width of the media stream. Unit: px.
+	// The width of the media stream. Unit: pixels.
 	//
 	// example:
 	//

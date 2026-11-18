@@ -62,19 +62,19 @@ func (s *GetAIMediaAuditJobResponseBody) Validate() error {
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJob struct {
-	// The error code of the job. This field is relevant when Status is fail.
+	// The job error code. Check this field when the job status is fail.
 	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the job ended. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The end time of the job. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2017-01-11T13:00:00Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the job started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The start time of the job. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJob struct {
 	//
 	// fe028d09441d*****d1afffb138cd7e
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The error message of the job. This field is relevant when Status is fail.
+	// The job error message. Check this field when the job status is fail.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJob struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The job status. Valid values:
 	//
-	// - **success**: The job is successful.
+	// - **success**: Succeeded.
 	//
-	// - **fail**: The job failed.
+	// - **fail**: Failed.
 	//
-	// - **init**: The job is being initialized.
+	// - **init**: Initialized.
 	//
-	// - **processing**: The job is in progress.
+	// - **processing**: Processing.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The job type. Only "automated review" is supported.
+	// The job type. Currently, only automated review is supported.
 	//
 	// example:
 	//
@@ -221,43 +221,43 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJob) Validate() error {
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobData struct {
-	// The content that violates the moderation rules. Multiple values are separated by commas (,). Valid values:
+	// The reviewed content that contains violations. Multiple values are separated by commas (,). Valid values:
 	//
-	// - **video**: video.
+	// - **video**: Video.
 	//
-	// - **image-cover**: thumbnail.
+	// - **image-cover**: Thumbnail.
 	//
-	// - **text-title**: title.
+	// - **text-title**: Title.
 	//
 	// example:
 	//
 	// video
 	AbnormalModules *string `json:"AbnormalModules,omitempty" xml:"AbnormalModules,omitempty"`
-	// The audio review results.
+	// The audio review result.
 	AudioResult []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
-	// The image review results.
+	// The image review result.
 	ImageResult []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	// The category of the review result. Multiple values are separated by commas (,). Valid values:
+	// The review result category. Multiple values are separated by commas (,). Valid values:
 	//
-	// - **porn**: pornography.
+	// - **porn**: Pornographic content.
 	//
-	// - **terrorism**: terrorist content and political sensitivity.
+	// - **terrorism**: Terrorist and political content.
 	//
-	// - **ad**: image and text violations.
+	// - **ad**: Image and text violation.
 	//
-	// - **live**: undesirable scenes.
+	// - **live**: Undesirable scene.
 	//
-	// - **logo**: logo in images.
+	// - **logo**: Image logo.
 	//
-	// - **audio**: audio anti-spam.
+	// - **audio**: Audio anti-spam.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The review result suggestion. Valid values:
+	// The review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -269,9 +269,9 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobData struct {
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The text review results.
+	// The text review result.
 	TextResult []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
-	// The video review results.
+	// The video review result.
 	VideoResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Struct"`
 }
 
@@ -383,27 +383,27 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobData) Validate() error {
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult struct {
-	// The category of the review result:
+	// The review result category. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **spam**: spam.
+	// - **spam**: Spam content.
 	//
-	// - **ad**: advertisement.
+	// - **ad**: Ad.
 	//
-	// - **politics**: politically sensitive content.
+	// - **politics**: Political content.
 	//
-	// - **terrorism**: terrorist content.
+	// - **terrorism**: Terrorist content.
 	//
-	// - **abuse**: abuse.
+	// - **abuse**: Abuse.
 	//
-	// - **porn**: pornographic content.
+	// - **porn**: Pornographic content.
 	//
-	// - **flood**: flooding.
+	// - **flood**: Flooding.
 	//
-	// - **contraband**: prohibited content.
+	// - **contraband**: Contraband.
 	//
-	// - **meaningless**: meaningless content.
+	// - **meaningless**: Meaningless.
 	//
 	// example:
 	//
@@ -421,7 +421,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult struct {
 	//
 	// 99.91
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The review result suggestion. Valid values:
+	// The review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -484,27 +484,27 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult) Validate() 
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult struct {
-	// The category of the image review result. Multiple values are separated by commas (,). Valid values:
+	// The image review result category. Multiple values are separated by commas (,). Valid values:
 	//
-	// - **porn**: pornography.
+	// - **porn**: Pornographic content.
 	//
-	// - **terrorism**: terrorist content and political sensitivity.
+	// - **terrorism**: Terrorist and political content.
 	//
-	// - **ad**: image and text violations.
+	// - **ad**: Image and text violation.
 	//
-	// - **live**: undesirable scenes.
+	// - **live**: Undesirable scene.
 	//
-	// - **logo**: logo in images.
+	// - **logo**: Image logo.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The details of the image review result.
+	// The image review result details.
 	Result []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The review result suggestion. Valid values:
+	// The review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -516,7 +516,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult struct {
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The image category. Valid values: **cover*	- (thumbnail).
+	// The image category. Valid value: **cover*	- (thumbnail).
 	//
 	// example:
 	//
@@ -597,89 +597,89 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult) Validate() 
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult struct {
-	// The category of the review result.
+	// The review result category.
 	//
-	// When scene is **porn**, valid values:
+	// When the scene is **porn**, valid values:
 	//
-	// - **porn**: pornographic content.
+	// - **porn**: Pornographic.
 	//
-	// - **sexy**: sexy content.
+	// - **sexy**: Sexy.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// When scene is **terrorism**, valid values:
+	// When the scene is **terrorism**, valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **bloody**: bloody content.
+	// - **bloody**: Bloody.
 	//
-	// - **explosion**: explosions and smoke.
+	// - **explosion**: Explosion and smoke.
 	//
-	// - **outfit**: special outfits.
+	// - **outfit**: Special outfit.
 	//
-	// - **logo**: special logos.
+	// - **logo**: Special logo.
 	//
-	// - **weapon**: weapons.
+	// - **weapon**: Weapon.
 	//
-	// - **politics**: politically sensitive content.
+	// - **politics**: Political content.
 	//
-	// - **violence**: fighting.
+	// - **violence**: Violence.
 	//
-	// - **crowd**: crowds.
+	// - **crowd**: Crowd.
 	//
-	// - **parade**: parades.
+	// - **parade**: Parade.
 	//
-	// - **carcrash**: car accident scenes.
+	// - **carcrash**: Car crash.
 	//
-	// - **flag**: flags.
+	// - **flag**: Flag.
 	//
-	// - **location**: landmarks.
+	// - **location**: Landmark.
 	//
-	// - **others**: others.
+	// - **others**: Others.
 	//
-	// When scene is **ad**, valid values:
+	// When the scene is **ad**, valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **ad**: other advertisements.
+	// - **ad**: Other ads.
 	//
-	// - **politics**: text containing politically sensitive content.
+	// - **politics**: Text containing political content.
 	//
-	// - **porn**: text containing pornographic content.
+	// - **porn**: Text containing pornographic content.
 	//
-	// - **abuse**: text containing abusive content.
+	// - **abuse**: Text containing abusive content.
 	//
-	// - **terrorism**: text containing terrorist content.
+	// - **terrorism**: Text containing terrorist content.
 	//
-	// - **contraband**: text containing prohibited content.
+	// - **contraband**: Text containing contraband content.
 	//
-	// - **spam**: text containing other spam content.
+	// - **spam**: Text containing other spam content.
 	//
-	// - **npx**: psoriasis advertisements.
+	// - **npx**: Nuisance ad.
 	//
-	// - **qrcode**: contains QR codes.
+	// - **qrcode**: QR code included.
 	//
-	// - **programCode**: contains mini program codes.
+	// - **programCode**: Mini program code included.
 	//
-	// When scene is **live**, valid values:
+	// When the scene is **live**, valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **meaningless**: no content in the image (such as a black or white screen).
+	// - **meaningless**: No content in the image, such as a black or white screen.
 	//
 	// - **PIP**: Picture-in-Picture (PiP).
 	//
-	// - **smoking**: smoking.
+	// - **smoking**: Smoking.
 	//
-	// - **drivelive**: in-car live streaming.
+	// - **drivelive**: In-car live streaming.
 	//
-	// When scene is **logo**, valid values:
+	// When the scene is **logo**, valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **TV**: contains regulated logos.
+	// - **TV**: Regulated logo included.
 	//
-	// - **trademark**: contains trademarks.
+	// - **trademark**: Trademark included.
 	//
 	// example:
 	//
@@ -687,27 +687,27 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult struct {
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The review scene. Valid values:
 	//
-	// - **porn**: pornography detection.
+	// - **porn**: Pornography detection.
 	//
-	// - **terrorism**: terrorist content and political sensitivity.
+	// - **terrorism**: Terrorist and political content detection.
 	//
-	// - **ad**: image and text violations.
+	// - **ad**: Image and text violation detection.
 	//
-	// - **live**: undesirable scenes.
+	// - **live**: Undesirable scene detection.
 	//
-	// - **logo**: logo in images.
+	// - **logo**: Image logo detection.
 	//
 	// example:
 	//
 	// porn
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The score of the image that hits the label. Value range: `[0, 100]`. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The score of the image that hits the label. Valid values: `[0, 100]`. The score indicates the probability that the image belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
 	// 0
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The review result suggestion. Valid values:
+	// The review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -776,21 +776,21 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult struct {
 	//
 	// Test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The category of the review result. Valid values:
+	// The review result category. Valid values:
 	//
-	// - **spam**: spam.
+	// - **spam**: Spam content.
 	//
-	// - **ad**: advertisement.
+	// - **ad**: Ad.
 	//
-	// - **abuse**: abuse.
+	// - **abuse**: Abuse.
 	//
-	// - **flood**: flooding.
+	// - **flood**: Flooding.
 	//
-	// - **contraband**: prohibited content.
+	// - **contraband**: Contraband.
 	//
-	// - **meaningless**: meaningless content.
+	// - **meaningless**: Meaningless.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
@@ -802,13 +802,13 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult struct {
 	//
 	// antispam
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The score of the image that hits the label. Value range: `[0, 100]`. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The score of the image that hits the label. Valid values: `[0, 100]`. The score indicates the probability that the image belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The review result suggestion. Valid values:
+	// The review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -820,7 +820,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult struct {
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The text categorization. Valid values: **title*	- (title).
+	// The text categorization. Valid value: **title*	- (title).
 	//
 	// example:
 	//
@@ -895,35 +895,35 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult) Validate() e
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult struct {
-	// The advertisement review result.
+	// The ad review result.
 	AdResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult `json:"AdResult,omitempty" xml:"AdResult,omitempty" type:"Struct"`
-	// The GreenEnhanced review result.
+	// The GreenEnhanced moderation result.
 	GreenEnhancedResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhancedResult `json:"GreenEnhancedResult,omitempty" xml:"GreenEnhancedResult,omitempty" type:"Struct"`
-	// The category of the review result. Valid values:
+	// The review result category. Valid values:
 	//
-	// - **porn**: pornography.
+	// - **porn**: Pornographic content.
 	//
-	// - **terrorism**: terrorist content and political sensitivity.
+	// - **terrorism**: Terrorist and political content.
 	//
-	// - **ad**: image and text violations.
+	// - **ad**: Image and text violation.
 	//
-	// - **live**: undesirable scenes.
+	// - **live**: Undesirable scene.
 	//
-	// - **logo**: logo in images.
+	// - **logo**: Image logo.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The review results for inappropriate content.
+	// The harmful content moderation result.
 	LiveResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult `json:"LiveResult,omitempty" xml:"LiveResult,omitempty" type:"Struct"`
-	// The logo review result.
+	// The logo moderation result.
 	LogoResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult `json:"LogoResult,omitempty" xml:"LogoResult,omitempty" type:"Struct"`
 	// The pornography detection result.
 	PornResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult `json:"PornResult,omitempty" xml:"PornResult,omitempty" type:"Struct"`
-	// The video review result suggestion. Valid values:
+	// The video review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -935,7 +935,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult struct {
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The terrorism and political sensitivity review result.
+	// The terrorist and political content review result.
 	TerrorismResult *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult `json:"TerrorismResult,omitempty" xml:"TerrorismResult,omitempty" type:"Struct"`
 }
 
@@ -1054,37 +1054,37 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult) Validate() 
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult struct {
-	// The average score of the advertisement review result.
+	// The average score of the ad review result.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The review result categories and the number of video snapshots for each category.
+	// The categories of the review results and the number of video snapshots for each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
-	// The category of the advertisement review result. Valid values:
+	// The ad review result category. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **ad**: other advertisements.
+	// - **ad**: Other ads.
 	//
-	// - **politics**: text containing politically sensitive content.
+	// - **politics**: Text containing political content.
 	//
-	// - **porn**: text containing pornographic content.
+	// - **porn**: Text containing pornographic content.
 	//
-	// - **abuse**: text containing abusive content.
+	// - **abuse**: Text containing abusive content.
 	//
-	// - **terrorism**: text containing terrorist content.
+	// - **terrorism**: Text containing terrorist content.
 	//
-	// - **contraband**: text containing prohibited content.
+	// - **contraband**: Text containing contraband content.
 	//
-	// - **spam**: text containing other spam content.
+	// - **spam**: Text containing other spam content.
 	//
-	// - **npx**: psoriasis advertisements.
+	// - **npx**: Nuisance ad.
 	//
-	// - **qrcode**: contains QR codes.
+	// - **qrcode**: QR code included.
 	//
-	// - **programCode**: contains mini program codes.
+	// - **programCode**: Mini program code included.
 	//
 	// example:
 	//
@@ -1096,7 +1096,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult struct {
 	//
 	// 100
 	MaxScore *string `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	// The review result suggestion. Valid values:
+	// The review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -1108,7 +1108,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult struct {
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the video snapshots with the highest scores that hit the label.
+	// The information about the video snapshots with the highest scores for the hit label.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -1203,29 +1203,29 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterLi
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The category of the advertisement review result. Valid values:
+	// The ad review result category. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **ad**: other advertisements.
+	// - **ad**: Other ads.
 	//
-	// - **politics**: text containing politically sensitive content.
+	// - **politics**: Text containing political content.
 	//
-	// - **porn**: text containing pornographic content.
+	// - **porn**: Text containing pornographic content.
 	//
-	// - **abuse**: text containing abusive content.
+	// - **abuse**: Text containing abusive content.
 	//
-	// - **terrorism**: text containing terrorist content.
+	// - **terrorism**: Text containing terrorist content.
 	//
-	// - **contraband**: text containing prohibited content.
+	// - **contraband**: Text containing contraband content.
 	//
-	// - **spam**: text containing other spam content.
+	// - **spam**: Text containing other spam content.
 	//
-	// - **npx**: psoriasis advertisements.
+	// - **npx**: Nuisance ad.
 	//
-	// - **qrcode**: contains QR codes.
+	// - **qrcode**: QR code included.
 	//
-	// - **programCode**: contains mini program codes.
+	// - **programCode**: Mini program code included.
 	//
 	// example:
 	//
@@ -1264,29 +1264,29 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCount
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList struct {
-	// The category of the advertisement review result. Valid values:
+	// The ad review result category. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **ad**: other advertisements.
+	// - **ad**: Other ads.
 	//
-	// - **politics**: text containing politically sensitive content.
+	// - **politics**: Text containing political content.
 	//
-	// - **porn**: text containing pornographic content.
+	// - **porn**: Text containing pornographic content.
 	//
-	// - **abuse**: text containing abusive content.
+	// - **abuse**: Text containing abusive content.
 	//
-	// - **terrorism**: text containing terrorist content.
+	// - **terrorism**: Text containing terrorist content.
 	//
-	// - **contraband**: text containing prohibited content.
+	// - **contraband**: Text containing contraband content.
 	//
-	// - **spam**: text containing other spam content.
+	// - **spam**: Text containing other spam content.
 	//
-	// - **npx**: psoriasis advertisements.
+	// - **npx**: Nuisance ad.
 	//
-	// - **qrcode**: contains QR codes.
+	// - **qrcode**: QR code included.
 	//
-	// - **programCode**: contains mini program codes.
+	// - **programCode**: Mini program code included.
 	//
 	// example:
 	//
@@ -1361,17 +1361,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopLi
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhancedResult struct {
-	// The average confidence score of hit frames. This field is not returned if no frame is hit.
+	// The average confidence score of the hit frames. This parameter is not returned if no frames are hit.
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The violation label count aggregation: Label (Green label) / Count (number of hit frames for the label).
+	// The aggregated count of violation labels, including Label (the Green label) and Count (the number of frames that hit the label).
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhancedResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
-	// The union of hit Green native labels (comma-separated, such as pornographic_adultContent_tii). The value is normal if no label is hit.
+	// The union of hit Green native labels, separated by commas, such as pornographic_adultContent_tii. If no labels are hit, the value is normal.
+	//
+	// example:
+	//
+	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest confidence score of hit frames. This field is not returned if no frame is hit.
+	// The highest confidence score of the hit frames. This parameter is not returned if no frames are hit.
 	MaxScore *string `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	// The frame review conclusion mapped from frameResult.riskLevel: high→block, medium/low→review, none→pass.
+	// The image moderation conclusion, which is mapped from frameResult.riskLevel: high to block, medium or low to review, and none to pass.
+	//
+	// example:
+	//
+	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The hit frame details (sorted by confidence in descending order).
+	// The details of the hit frames, sorted in descending order of confidence score.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhancedResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -1460,9 +1468,9 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhanced
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhancedResultCounterList struct {
-	// The number of captured video frames for the corresponding label.
+	// The number of video frames that correspond to the label.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The review result category.
+	// The moderation result label.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
@@ -1497,9 +1505,9 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhanced
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhancedResultTopList struct {
-	// The review result category.
+	// The moderation category.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The confidence score of the video snapshot that hit the label.
+	// The confidence score of the video snapshot that hits the label.
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The position of the video snapshot in the video.
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
@@ -1556,25 +1564,25 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultGreenEnhanced
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult struct {
-	// The average score of the review result.
+	// The average score of the moderation result.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The categories of the review results and the number of video snapshots in each category.
+	// The moderation categories and the number of video snapshots for each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
-	// The category of the review result. Valid values:
+	// The moderation category. Valid values:
 	//
-	// - **normal**: Normal.
+	// - **normal**: normal
 	//
-	// - **meaningless**: No content in the image (for example, black screen or white screen).
+	// - **meaningless**: the image contains no content, such as a black or white screen
 	//
-	// - **PIP**: Picture-in-Picture (PiP).
+	// - **PIP**: Picture-in-Picture (PiP)
 	//
-	// - **smoking**: Smoking.
+	// - **smoking**: smoking
 	//
-	// - **drivelive**: In-car live streaming.
+	// - **drivelive**: live streaming inside a vehicle
 	//
 	// example:
 	//
@@ -1586,19 +1594,19 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult struct
 	//
 	// 100
 	MaxScore *string `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	// The review result suggestion. Valid values:
+	// The moderation suggestion. Valid values:
 	//
-	// - **block**: Violation.
+	// - **block**: The content violates regulations.
 	//
-	// - **review**: Suspected violation.
+	// - **review**: The content is suspected of violating regulations.
 	//
-	// - **pass**: Passed.
+	// - **pass**: The content passes the moderation.
 	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the video snapshots with the highest scores that hit the label.
+	// The information about the video snapshots with the highest scores for the hit label.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -1693,17 +1701,17 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounter
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The category of the review result. Valid values:
+	// The moderation category. Valid values:
 	//
-	// - **normal**: Normal.
+	// - **normal**: normal
 	//
-	// - **meaningless**: No content in the image (for example, black screen or white screen).
+	// - **meaningless**: the image contains no content, such as a black or white screen
 	//
-	// - **PIP**: Picture-in-Picture (PiP).
+	// - **PIP**: Picture-in-Picture (PiP)
 	//
-	// - **smoking**: Smoking.
+	// - **smoking**: smoking
 	//
-	// - **drivelive**: In-car live streaming.
+	// - **drivelive**: live streaming inside a vehicle
 	//
 	// example:
 	//
@@ -1742,17 +1750,17 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCou
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopList struct {
-	// The category of the review result. Valid values:
+	// The moderation category. Valid values:
 	//
-	// - **normal**: Normal.
+	// - **normal**: normal
 	//
-	// - **meaningless**: No content in the image (for example, black screen or white screen).
+	// - **meaningless**: the image contains no content, such as a black or white screen
 	//
-	// - **PIP**: Picture-in-Picture (PiP).
+	// - **PIP**: Picture-in-Picture (PiP)
 	//
-	// - **smoking**: Smoking.
+	// - **smoking**: smoking
 	//
-	// - **drivelive**: In-car live streaming.
+	// - **drivelive**: live streaming inside a vehicle
 	//
 	// example:
 	//
@@ -1827,45 +1835,45 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTop
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult struct {
-	// The average score of video snapshots that hit the label.
+	// The average score of the video snapshots that hit the label.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The categories of the review results and the number of video snapshots in each category.
+	// The moderation categories and the number of video snapshots for each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
-	// The category of the logo review result. Valid values:
+	// The logo moderation category. Valid values:
 	//
-	// - **normal**: Normal.
+	// - **normal**: normal
 	//
-	// - **TV**: Contains a regulated logo.
+	// - **TV**: the image contains a regulated logo
 	//
-	// - **trademark**: Contains a trademark.
+	// - **trademark**: the image contains a trademark
 	//
 	// example:
 	//
 	// TV
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest score of video snapshots that hit the label.
+	// The highest score of the video snapshots that hit the label.
 	//
 	// example:
 	//
 	// 100
 	MaxScore *string `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	// The logo review suggestion. Valid values:
+	// The logo moderation suggestion. Valid values:
 	//
-	// - **block**: Violation.
+	// - **block**: The content violates regulations.
 	//
-	// - **review**: Suspected violation.
+	// - **review**: The content is suspected of violating regulations.
 	//
-	// - **pass**: Passed.
+	// - **pass**: The content passes the moderation.
 	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the video snapshots with the highest scores that hit the label.
+	// The information about the video snapshots with the highest scores for the hit label.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -1960,13 +1968,13 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounter
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The category of the logo review result. Valid values:
+	// The logo moderation category. Valid values:
 	//
-	// - **normal**: Normal.
+	// - **normal**: normal
 	//
-	// - **TV**: Contains a regulated logo.
+	// - **TV**: the image contains a regulated logo
 	//
-	// - **trademark**: Contains a trademark.
+	// - **trademark**: the image contains a trademark
 	//
 	// example:
 	//
@@ -2005,13 +2013,13 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCou
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopList struct {
-	// The category of the logo review result. Valid values:
+	// The logo moderation category. Valid values:
 	//
-	// - **normal**: Normal.
+	// - **normal**: normal
 	//
-	// - **TV**: Contains a regulated logo.
+	// - **TV**: the image contains a regulated logo
 	//
-	// - **trademark**: Contains a trademark.
+	// - **trademark**: the image contains a trademark
 	//
 	// example:
 	//
@@ -2086,27 +2094,27 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTop
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult struct {
-	// The average score of video snapshots that hit the label. Value range: `[0, 100]`, with a precision of 10 decimal places. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The average score of the video snapshots that hit the label. Valid values: `[0, 100]`. The precision is 10 decimal places. The score indicates the probability that the snapshot belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The review result categories and the number of video snapshots for each category.
+	// The categories of the review results and the number of video snapshots for each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
 	// The pornography detection result. Valid values:
 	//
-	// - **porn**: pornographic content.
+	// - **porn**: Pornographic.
 	//
-	// - **sexy**: sexy content.
+	// - **sexy**: Sexy.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest score of video snapshots that hit the label. Value range: `[0, 100]`, with a precision of 10 decimal places. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The highest score of the video snapshots that hit the label. Valid values: `[0, 100]`. The precision is 10 decimal places. The score indicates the probability that the snapshot belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
@@ -2124,7 +2132,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult struct
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the video snapshots with the highest scores that hit the label.
+	// The information about the video snapshots with the highest scores for the hit label.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -2221,11 +2229,11 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounter
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The pornography detection result. Valid values:
 	//
-	// - **porn**: pornographic content.
+	// - **porn**: Pornographic.
 	//
-	// - **sexy**: sexy content.
+	// - **sexy**: Sexy.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
@@ -2266,17 +2274,17 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCou
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList struct {
 	// The pornography detection result. Valid values:
 	//
-	// - **porn**: pornographic content.
+	// - **porn**: Pornographic.
 	//
-	// - **sexy**: sexy content.
+	// - **sexy**: Sexy.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot that hits the label. Value range: `[0, 100]`, with a precision of 10 decimal places. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The score of the video snapshot that hits the label. Valid values: `[0, 100]`. The precision is 10 decimal places. The score indicates the probability that the snapshot belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
@@ -2345,55 +2353,55 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTop
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult struct {
-	// The average score of video snapshots that hit the label. Value range: `[0, 100]`, with a precision of 10 decimal places. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The average score of the video snapshots that hit the label. Valid values: `[0, 100]`. The precision is 10 decimal places. The score indicates the probability that the snapshot belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	AverageScore *string `json:"AverageScore,omitempty" xml:"AverageScore,omitempty"`
-	// The terrorism and political sensitivity result categories and the number of video snapshots for each category.
+	// The categories of the terrorist and political content review results and the number of video snapshots for each category.
 	CounterList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultCounterList `json:"CounterList,omitempty" xml:"CounterList,omitempty" type:"Repeated"`
-	// The terrorism and political sensitivity review result. Valid values:
+	// The terrorist and political content review result. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **bloody**: bloody content.
+	// - **bloody**: Bloody.
 	//
-	// - **explosion**: explosions and smoke.
+	// - **explosion**: Explosion and smoke.
 	//
-	// - **outfit**: special outfits.
+	// - **outfit**: Special outfit.
 	//
-	// - **logo**: special logos.
+	// - **logo**: Special logo.
 	//
-	// - **weapon**: weapons.
+	// - **weapon**: Weapon.
 	//
-	// - **politics**: politically sensitive content.
+	// - **politics**: Political content.
 	//
-	// - **violence**: fighting.
+	// - **violence**: Violence.
 	//
-	// - **crowd**: crowds.
+	// - **crowd**: Crowd.
 	//
-	// - **parade**: parades.
+	// - **parade**: Parade.
 	//
-	// - **carcrash**: car accident scenes.
+	// - **carcrash**: Car crash.
 	//
-	// - **flag**: flags.
+	// - **flag**: Flag.
 	//
-	// - **location**: landmarks.
+	// - **location**: Landmark.
 	//
-	// - **others**: others.
+	// - **others**: Others.
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The highest score of video snapshots that hit the label. Value range: `[0, 100]`, with a precision of 10 decimal places. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The highest score of the video snapshots that hit the label. Valid values: `[0, 100]`. The precision is 10 decimal places. The score indicates the probability that the snapshot belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//
 	// 100
 	MaxScore *string `json:"MaxScore,omitempty" xml:"MaxScore,omitempty"`
-	// The terrorism and political sensitivity review suggestion. Valid values:
+	// The terrorist and political content review suggestion. Valid values:
 	//
 	// - **block**: Violation.
 	//
@@ -2405,7 +2413,7 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult s
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The information about the video snapshots with the highest scores that hit the label.
+	// The information about the video snapshots with the highest scores for the hit label.
 	TopList []*GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTopList `json:"TopList,omitempty" xml:"TopList,omitempty" type:"Repeated"`
 }
 
@@ -2500,35 +2508,35 @@ type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultCo
 	//
 	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The terrorism and political sensitivity review result. Valid values:
+	// The terrorist and political content review result. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **bloody**: bloody content.
+	// - **bloody**: Bloody.
 	//
-	// - **explosion**: explosions and smoke.
+	// - **explosion**: Explosion and smoke.
 	//
-	// - **outfit**: special outfits.
+	// - **outfit**: Special outfit.
 	//
-	// - **logo**: special logos.
+	// - **logo**: Special logo.
 	//
-	// - **weapon**: weapons.
+	// - **weapon**: Weapon.
 	//
-	// - **politics**: politically sensitive content.
+	// - **politics**: Political content.
 	//
-	// - **violence**: fighting.
+	// - **violence**: Violence.
 	//
-	// - **crowd**: crowds.
+	// - **crowd**: Crowd.
 	//
-	// - **parade**: parades.
+	// - **parade**: Parade.
 	//
-	// - **carcrash**: car accident scenes.
+	// - **carcrash**: Car crash.
 	//
-	// - **flag**: flags.
+	// - **flag**: Flag.
 	//
-	// - **location**: landmarks.
+	// - **location**: Landmark.
 	//
-	// - **others**: others.
+	// - **others**: Others.
 	//
 	// example:
 	//
@@ -2567,41 +2575,41 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResu
 }
 
 type GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTopList struct {
-	// The terrorism and political sensitivity review result. Valid values:
+	// The terrorist and political content review result. Valid values:
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **bloody**: bloody content.
+	// - **bloody**: Bloody.
 	//
-	// - **explosion**: explosions and smoke.
+	// - **explosion**: Explosion and smoke.
 	//
-	// - **outfit**: special outfits.
+	// - **outfit**: Special outfit.
 	//
-	// - **logo**: special logos.
+	// - **logo**: Special logo.
 	//
-	// - **weapon**: weapons.
+	// - **weapon**: Weapon.
 	//
-	// - **politics**: politically sensitive content.
+	// - **politics**: Political content.
 	//
-	// - **violence**: fighting.
+	// - **violence**: Violence.
 	//
-	// - **crowd**: crowds.
+	// - **crowd**: Crowd.
 	//
-	// - **parade**: parades.
+	// - **parade**: Parade.
 	//
-	// - **carcrash**: car accident scenes.
+	// - **carcrash**: Car crash.
 	//
-	// - **flag**: flags.
+	// - **flag**: Flag.
 	//
-	// - **location**: landmarks.
+	// - **location**: Landmark.
 	//
-	// - **others**: others.
+	// - **others**: Others.
 	//
 	// example:
 	//
 	// normal
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The score of the video snapshot that hits the label. Value range: `[0, 100]`, with a precision of 10 decimal places. The score indicates the probability of the corresponding label. A higher value indicates higher accuracy.
+	// The score of the video snapshot that hits the label. Valid values: `[0, 100]`. The precision is 10 decimal places. The score indicates the probability that the snapshot belongs to the corresponding label category. A higher score indicates higher accuracy.
 	//
 	// example:
 	//

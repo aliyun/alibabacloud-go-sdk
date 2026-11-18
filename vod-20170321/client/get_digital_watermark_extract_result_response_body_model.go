@@ -18,7 +18,7 @@ type iGetDigitalWatermarkExtractResultResponseBody interface {
 type GetDigitalWatermarkExtractResultResponseBody struct {
 	// The details of the watermark extraction jobs.
 	AiExtractResultList []*GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList `json:"AiExtractResultList,omitempty" xml:"AiExtractResultList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *GetDigitalWatermarkExtractResultResponseBody) Validate() error {
 }
 
 type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
-	// The time when the watermark extraction job was created.
+	// The time when the watermark extraction job was created. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-09-16T02:49:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message. This parameter is returned only when the watermark extraction job fails (the value of `Status` is `Failed`).
+	// The error message. This parameter is returned only when the watermark extraction job fails (the Status parameter is Failed).
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
 	//
 	// 3af004763bcf459698860f4ede20****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The time when the watermark extraction job was last updated.
+	// The time when the watermark extraction job was last updated. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
 	//
 	// - **Failed**: The job failed.
 	//
-	// - **Processing**: The job is being processed.
+	// - **Processing**: The job is in progress.
 	//
 	// example:
 	//

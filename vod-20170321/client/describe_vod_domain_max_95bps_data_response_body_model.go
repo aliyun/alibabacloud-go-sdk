@@ -41,7 +41,7 @@ type DescribeVodDomainMax95BpsDataResponseBody struct {
 	//
 	// 16777590.28
 	DomesticMax95Bps *string `json:"DomesticMax95Bps,omitempty" xml:"DomesticMax95Bps,omitempty"`
-	// The end time of the data.
+	// The end time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//
@@ -65,7 +65,7 @@ type DescribeVodDomainMax95BpsDataResponseBody struct {
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the data.
+	// The start time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//

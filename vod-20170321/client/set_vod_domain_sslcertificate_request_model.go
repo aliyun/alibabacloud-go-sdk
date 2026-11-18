@@ -34,23 +34,23 @@ type iSetVodDomainSSLCertificateRequest interface {
 }
 
 type SetVodDomainSSLCertificateRequest struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
 	// 12342707
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// cert_name
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The certificate region. Valid values:
+	// The region of the certificate. Valid values:
 	//
 	// - **ap-southeast-1*	- (Singapore)
 	//
-	// - **cn-hangzhou*	- (Hangzhou)
+	// - **cn-hangzhou*	- (China (Hangzhou))
 	//
 	// Default value: **cn-hangzhou**.
 	//
@@ -58,11 +58,11 @@ type SetVodDomainSSLCertificateRequest struct {
 	//
 	// cn-hangzhou
 	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	// The certificate type. Valid values:
+	// The type of the certificate. Valid values:
 	//
-	// - **upload**: an uploaded certificate.
+	// - **upload**: Uploaded certificate.
 	//
-	// - **cas**: a certificate from SSL Certificates Service.
+	// - **cas**: Certificate from SSL Certificates Service.
 	//
 	// example:
 	//
@@ -76,18 +76,14 @@ type SetVodDomainSSLCertificateRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether to distribute the certificate in a canary release environment. Valid values:
-	//
-	// - **staging**: distributes the certificate in a canary release environment.
-	//
-	// If this parameter is not specified or set to any other value, the certificate is formally distributed.
+	// Specifies whether to deliver the certificate in a canary release. Valid values: **staging**: Delivers the certificate in a canary release. If this parameter is not specified or is set to any other value, the certificate is delivered in the production environment.
 	//
 	// example:
 	//
 	// staging
 	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The content of the private key. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the private key content.
+	// The content of the private key. This parameter is not required if the certificate is disabled. If you configure a certificate, enter the private key content.
 	//
 	// example:
 	//
@@ -105,7 +101,7 @@ type SetVodDomainSSLCertificateRequest struct {
 	//
 	// off
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The content of the security certificate. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the certificate content.
+	// The content of the security certificate. This parameter is not required if the certificate is disabled. If you configure a certificate, enter the certificate content.
 	//
 	// example:
 	//

@@ -30,18 +30,32 @@ type iAppInfoDTO interface {
 }
 
 type AppInfoDTO struct {
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application type. Valid values:
+	//
+	// - 1: Common application.
+	//
+	// - 2: Embedded SDK.
+	//
 	// example:
 	//
-	// 1-普通应用，2-内嵌SDK.
-	AppType          *int32                 `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	CreationTime     *string                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	GmtCreate        *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	ItemId           *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ModificationTime *string                `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Platforms        []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	UserId           *int64                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 1
+	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The creation time.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The application ID.
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The update time.
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The list of platform information for the application.
+	Platforms []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// The user ID.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AppInfoDTO) String() string {
@@ -147,12 +161,18 @@ func (s *AppInfoDTO) Validate() error {
 }
 
 type AppInfoDTOPlatforms struct {
-	ItemId         *string   `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The platform ID.
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The list of licenses.
 	LicenseItemIds []*string `json:"LicenseItemIds,omitempty" xml:"LicenseItemIds,omitempty" type:"Repeated"`
-	PkgName        *string   `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
-	PkgSignature   *string   `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
-	PlatformType   *int64    `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
-	Type           *int64    `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The package name.
+	PkgName *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
+	// The package signature.
+	PkgSignature *string `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
+	// The platform type.
+	PlatformType *int64 `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	// The platform type.
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AppInfoDTOPlatforms) String() string {

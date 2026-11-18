@@ -24,7 +24,7 @@ type GetMediaAuditResultDetailRequest struct {
 	//
 	// 93ab850b4f6f*****54b6e91d24d81d4
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The page number of the video content review results. Default value: **1**. A maximum of **20*	- records are returned per page.
+	// The page number of the video content review results. Default value: **1**. Maximum number of entries per page: **20**.
 	//
 	// This parameter is required.
 	//

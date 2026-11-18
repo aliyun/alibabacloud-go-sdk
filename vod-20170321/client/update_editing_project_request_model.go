@@ -54,7 +54,7 @@ type UpdateEditingProjectRequest struct {
 	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeline of the online editing project. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
+	// The timeline of the online editing project. TimelineIn and TimelineOut indicate the in point and out point of a media clip on the timeline in seconds, accurate to four decimal places. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//

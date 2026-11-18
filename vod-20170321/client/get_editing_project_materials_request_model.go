@@ -40,11 +40,11 @@ type GetEditingProjectMaterialsRequest struct {
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The online editing project ID. You can obtain the ID by using one of the following methods:
+	// The ID of the online editing project. You can obtain the ID by using one of the following methods:
 	//
-	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Production Center*	- > **Video Editing*	- to view the ID.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), choose **Production center*	- > **Video editing**, and view the ID.
 	//
-	// - Obtain the value of the ProjectId response parameter when you create a project by calling the **CreateEditingProject*	- operation.
+	// - The value of the ProjectId response parameter returned when you create a project by calling the **Create an online editing project*	- operation.
 	//
 	// This parameter is required.
 	//

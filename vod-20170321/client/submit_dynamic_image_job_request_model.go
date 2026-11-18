@@ -26,7 +26,7 @@ type SubmitDynamicImageJobRequest struct {
 	//
 	// 1a443dc52ef10abc4794d700*****
 	DynamicImageTemplateId *string `json:"DynamicImageTemplateId,omitempty" xml:"DynamicImageTemplateId,omitempty"`
-	// The override parameters in the JSON format. For more information, see [OverrideParams](https://help.aliyun.com/document_detail/98618.html). You can use this parameter to override the parameters in the animated image template. For more information, see [DynamicImageTemplateConfig](https://help.aliyun.com/document_detail/52839.html).
+	// The override parameters in JSON string format. For more information, see [OverrideParams](https://help.aliyun.com/document_detail/98618.html). You can override the parameters in the animated image template configuration. For more information, see [DynamicImageTemplateConfig](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//
@@ -34,11 +34,11 @@ type SubmitDynamicImageJobRequest struct {
 	OverrideParams *string `json:"OverrideParams,omitempty" xml:"OverrideParams,omitempty"`
 	// The video ID. You can obtain the video ID by using one of the following methods:
 	//
-	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets*	- > **Audio/Video*	- to view the video ID.
+	// - For videos uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets*	- > **Audio/Video*	- to view the video ID.
 	//
-	// - Obtain the video ID from the value of the VideoId parameter returned by the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation when you obtain the upload URL and credential.
+	// - When you call the [Obtain the upload URL and credential for a video](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the video ID is the value of the VideoId response parameter.
 	//
-	// - After the video is uploaded, obtain the video ID from the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation.
+	// - After a video is uploaded, you can call the [Search for media information](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID. The video ID is the value of the VideoId response parameter.
 	//
 	// This parameter is required.
 	//

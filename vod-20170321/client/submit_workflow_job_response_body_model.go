@@ -22,7 +22,12 @@ type SubmitWorkflowJobResponseBody struct {
 	//
 	// A01C8FF4-C106-4431-418F973DADB7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The workflow job ID. After the job is submitted, it is executed asynchronously. You can pass this ID to GetWorkflowTask to query the job status and result.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitWorkflowJobResponseBody) String() string {

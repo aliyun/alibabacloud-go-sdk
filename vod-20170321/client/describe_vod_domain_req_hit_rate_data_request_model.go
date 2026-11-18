@@ -24,15 +24,15 @@ type DescribeVodDomainReqHitRateDataRequest struct {
 	//
 	// - If you do not specify this parameter, the pooled data of all accelerated domain names is returned by default.
 	//
-	// - Batch query is supported. Separate multiple domain names with commas (,). You can specify up to 500 domain names at a time.
+	// - Batch queries are supported. Separate multiple domain names with commas (,). You can query up to 500 domain names at a time.
 	//
-	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Configuration Management > CDN Configuration > Domain Names*	- in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management > CDN Configuration > Domain Names*	- to view the accelerated domain names added to ApsaraVideo VOD, or call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) API operation to query the list of accelerated domain names.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the data to retrieve. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -40,19 +40,19 @@ type DescribeVodDomainReqHitRateDataRequest struct {
 	//
 	// 2023-12-22T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data to query. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you do not specify this parameter or specify an unsupported value, the default value is used. Based on the time span specified by `StartTime` and `EndTime`, the supported time granularity is as follows:
+	// The time granularity of the data to query. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you do not specify this parameter or specify an unsupported value, the default value is used. Based on the time span specified by StartTime and EndTime, the supported time granularities are as follows:
 	//
-	// - Less than 3 days (exclusive): **300*	- (default), **3600**, and **86400**.
+	// - Less than 3 days: **300*	- (default), **3600**, and **86400**.
 	//
-	// - 3 to 31 days (exclusive): **3600*	- (default) and **86400**.
+	// - 3 to 31 days (excluding 31 days): **3600*	- (default) and **86400**.
 	//
-	// - 31 days or more: **86400*	- (default).
+	// - More than 31 days: **86400*	- (default).
 	//
 	// example:
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the data to retrieve. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

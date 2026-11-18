@@ -68,7 +68,7 @@ func (s *GetAIImageJobsResponseBody) Validate() error {
 type GetAIImageJobsResponseBodyAIImageJobList struct {
 	// The OSS URL of the AI image.
 	//
-	// >This is the task result. The URL does not contain complete authentication information. To obtain authentication information, generate it yourself or call the [ListAIImage](https://help.aliyun.com/document_detail/186924.html) operation to retrieve the media asset result.
+	// > This URL is returned as the task result and does not provide complete authentication information. To obtain authentication information, generate it or call the [ListAIImage](https://help.aliyun.com/document_detail/186924.html) operation to retrieve the media asset result.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetAIImageJobsResponseBodyAIImageJobList struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the AI image processing task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The creation time of the AI image processing task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type GetAIImageJobsResponseBodyAIImageJobList struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **success**: The task is successful.
+	// - **success**: The task succeeded.
 	//
 	// - **fail**: The task failed.
 	//
@@ -108,13 +108,13 @@ type GetAIImageJobsResponseBodyAIImageJobList struct {
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The snapshot of the configuration information of the specified template when the task was submitted.
+	// The snapshot of the configuration of the specified template when the task was submitted.
 	//
 	// example:
 	//
 	// {"Format":"gif","SetDefaultCover":"true"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The AI template ID.
+	// The ID of the AI template.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetAIImageJobsResponseBodyAIImageJobList struct {
 	//
 	// - The maximum length is 512 bytes.
 	//
-	// For more information about the parameter structure, see [UserData](https://help.aliyun.com/document_detail/86952.html).
+	// For more information about how to construct the parameter, see [UserData](https://help.aliyun.com/document_detail/86952.html).
 	//
 	// example:
 	//

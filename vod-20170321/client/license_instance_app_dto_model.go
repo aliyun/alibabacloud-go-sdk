@@ -34,17 +34,28 @@ type iLicenseInstanceAppDTO interface {
 }
 
 type LicenseInstanceAppDTO struct {
-	AppId            *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BeginOn          *string                                `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
-	ContractNo       *string                                `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
-	CreationTime     *string                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ExpiredOn        *string                                `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
-	InstanceId       *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemId           *string                                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	LicenseConfigs   []*LicenseInstanceAppDTOLicenseConfigs `json:"LicenseConfigs,omitempty" xml:"LicenseConfigs,omitempty" type:"Repeated"`
-	ModificationTime *string                                `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Status           *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId           *int64                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// appId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// beginOn
+	BeginOn *string `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
+	// contractNo
+	ContractNo *string `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
+	// creationTime
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// expiredOn
+	ExpiredOn *string `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
+	// instanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// itemId
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// LicenseConfigDTOS
+	LicenseConfigs []*LicenseInstanceAppDTOLicenseConfigs `json:"LicenseConfigs,omitempty" xml:"LicenseConfigs,omitempty" type:"Repeated"`
+	// modificationTime
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// status
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// userId
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s LicenseInstanceAppDTO) String() string {
@@ -168,13 +179,21 @@ func (s *LicenseInstanceAppDTO) Validate() error {
 }
 
 type LicenseInstanceAppDTOLicenseConfigs struct {
-	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	FeatureIds      *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
-	IsTrial         *bool   `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
-	SdkId           *int32  `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
-	SdkName         *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
-	Subscription    *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
+	// businessType
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// featureIds
+	FeatureIds *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
+	// isTrial
+	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// sdkId
+	SdkId *int32 `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
+	// sdkName
+	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// subscription
+	Subscription *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
+	// subscriptionImp
 	SubscriptionImp *string `json:"SubscriptionImp,omitempty" xml:"SubscriptionImp,omitempty"`
+	// subscriptionPkg
 	SubscriptionPkg *string `json:"SubscriptionPkg,omitempty" xml:"SubscriptionPkg,omitempty"`
 }
 

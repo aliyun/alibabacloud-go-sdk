@@ -62,15 +62,15 @@ func (s *GetAIVideoTagResultResponseBody) Validate() error {
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResult struct {
-	// The collection of video categories.
+	// The video categories.
 	Category []*GetAIVideoTagResultResponseBodyVideoTagResultCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
-	// The collection of keyword tags.
+	// The keyword tags.
 	Keyword []*GetAIVideoTagResultResponseBodyVideoTagResultKeyword `json:"Keyword,omitempty" xml:"Keyword,omitempty" type:"Repeated"`
-	// The collection of location tags.
+	// The location tags.
 	Location []*GetAIVideoTagResultResponseBodyVideoTagResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
-	// The collection of person tags.
+	// The person tags.
 	Person []*GetAIVideoTagResultResponseBodyVideoTagResultPerson `json:"Person,omitempty" xml:"Person,omitempty" type:"Repeated"`
-	// The collection of time tags.
+	// The time tags.
 	Time []*GetAIVideoTagResultResponseBodyVideoTagResultTime `json:"Time,omitempty" xml:"Time,omitempty" type:"Repeated"`
 }
 
@@ -177,7 +177,7 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResult) Validate() error {
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultCategory struct {
-	// The label.
+	// The tag.
 	//
 	// example:
 	//
@@ -207,13 +207,13 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultCategory) Validate() error
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultKeyword struct {
-	// The label.
+	// The tag.
 	//
 	// example:
 	//
 	// Cushion
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The collection of time points. Unit: milliseconds.
+	// The time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -248,13 +248,13 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultKeyword) Validate() error 
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultLocation struct {
-	// The label.
+	// The tag.
 	//
 	// example:
 	//
 	// Asia
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The collection of time points. Unit: milliseconds.
+	// The time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -289,21 +289,21 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultLocation) Validate() error
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultPerson struct {
-	// The face URL.
+	// The URL of the face.
 	//
-	// > This field is returned only for person tag results.
+	// > This field is returned only for person tags.
 	//
 	// example:
 	//
 	// http://example.com/aivideotag/8829B4DB-AFD9-4F*****F6-12965DBFFA14/Index_****.jpg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
-	// The label.
+	// The tag.
 	//
 	// example:
 	//
 	// Xiao Wang
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The collection of time points. Unit: milliseconds.
+	// The time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -347,13 +347,13 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultPerson) Validate() error {
 }
 
 type GetAIVideoTagResultResponseBodyVideoTagResultTime struct {
-	// The label.
+	// The tag.
 	//
 	// example:
 	//
-	// Millisecond
+	// Milliseconds
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The collection of time points. Unit: milliseconds.
+	// The time points. Unit: milliseconds.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 

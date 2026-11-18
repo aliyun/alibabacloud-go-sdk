@@ -62,7 +62,7 @@ func (s *AddCategoryResponseBody) Validate() error {
 }
 
 type AddCategoryResponseBodyCategory struct {
-	// The category ID. This ID can be used as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
+	// The category ID. You can use it as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
 	//
 	// example:
 	//
@@ -76,17 +76,17 @@ type AddCategoryResponseBodyCategory struct {
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The category level. Valid values:
 	//
-	// - **0**: level-0 category.
+	// - **0**: level-1 category.
 	//
-	// - **1**: level-1 category.
+	// - **1**: level-2 category.
 	//
-	// - **2**: level-2 category.
+	// - **2**: level-3 category.
 	//
 	// example:
 	//
 	// 1
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The parent category ID.
+	// The ID of the parent category.
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type AddCategoryResponseBodyCategory struct {
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The category type. Valid values:
 	//
-	// - **default**: audio/video/image category.
+	// - **default**: audio, video, and image categories.
 	//
-	// - **material**: short video material category.
+	// - **material**: short video material categories.
 	//
 	// example:
 	//

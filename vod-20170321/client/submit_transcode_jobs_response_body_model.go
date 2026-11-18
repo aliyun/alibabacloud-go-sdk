@@ -25,7 +25,7 @@ type SubmitTranscodeJobsResponseBody struct {
 	// E4EBD2BF-5EB0-4476-8829-9D94E1B1****
 	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeJobs *SubmitTranscodeJobsResponseBodyTranscodeJobs `json:"TranscodeJobs,omitempty" xml:"TranscodeJobs,omitempty" type:"Struct"`
-	// The ID of the submitted transcoding task.
+	// The ID of the submitted transcoding job.
 	//
 	// example:
 	//

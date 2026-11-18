@@ -18,37 +18,37 @@ type iGetAttachedMediaInfoRequest interface {
 }
 
 type GetAttachedMediaInfoRequest struct {
-	// The validity period of the auxiliary media asset URL. Unit: seconds.
+	// The expiration time of the auxiliary media asset URLs. Unit: seconds.
 	//
 	//  - If OutputType is set to **cdn**:
 	//
-	//     - The URL expires only if URL authentication is enabled. Otherwise, the URL is permanently valid.
+	//     - The URLs expire only if URL authentication is enabled. Otherwise, the URLs are permanently valid.
 	//
 	//     - Minimum value: **1**.
 	//
 	//     - Maximum value: unlimited.
 	//
-	//     - Default value: If you do not specify this parameter, the default validity period specified in URL authentication is used.
+	//     - Default value: If this parameter is not specified, the default validity period configured for URL authentication is used.
 	//
 	// - If OutputType is set to **oss**:
 	//
-	//     - The URL expires only if the storage permission is set to private. Otherwise, the URL is permanently valid.
+	//     - The URLs expire only if the storage permission is set to private. Otherwise, the URLs are permanently valid.
 	//
 	//     - Minimum value: **1**.
 	//
-	//     - Maximum value: To reduce security risks to the origin server, the maximum value is **2592000*	- (30 days) if the auxiliary media asset is stored in a bucket managed by ApsaraVideo VOD, and **129600*	- (36 hours) if the auxiliary media asset is stored in your own OSS bucket.
+	//     - Maximum value: To reduce security risks to the origin server, the maximum value is **2592000*	- (30 days) if the auxiliary media assets are stored in an ApsaraVideo VOD bucket, and **129600*	- (36 hours) if the auxiliary media assets are stored in a user-owned OSS bucket.
 	//
-	//     - Default value: If you do not specify this parameter, the value is **3600**.
+	//     - Default value: If this parameter is not specified, the value is **3600**.
 	//
 	// example:
 	//
 	// 3600
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The auxiliary media asset IDs.
+	// The IDs of the auxiliary media assets.
 	//
 	// - Separate multiple IDs with commas (,). You can specify up to 20 IDs.
 	//
-	// - The IDs are returned after you call the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation to obtain the upload URL and credential for the auxiliary media asset.
+	// - The IDs are returned after you call the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation to obtain the upload URLs and credentials for the auxiliary media assets.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type GetAttachedMediaInfoRequest struct {
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
 	// The type of the output URL. Valid values:
 	//
-	// - **oss**: the back-to-origin URL.
+	// - **oss**: back-to-origin URL.
 	//
-	// - **cdn*	- (default): the CDN-accelerated URL.
+	// - **cdn*	- (default): accelerated URL.
 	//
 	// example:
 	//

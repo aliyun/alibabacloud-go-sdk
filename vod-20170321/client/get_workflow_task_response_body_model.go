@@ -46,13 +46,13 @@ type GetWorkflowTaskResponseBody struct {
 	//
 	// ErrorMessage
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The time when the task was completed. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the task was completed. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2025-08-19T02:28:22Z
 	FinishTimeUtc *string `json:"FinishTimeUtc,omitempty" xml:"FinishTimeUtc,omitempty"`
-	// The time when the task was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the task was created. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetWorkflowTaskResponseBody struct {
 	//
 	// 63E8B7C7-4812-46*****AD-0FA56029AC86
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of this review. This indicates the current manual review result. Valid values:
+	// The review result. Indicates the current manual review result. Valid values:
 	//
 	// - **running**: Running.
 	//
@@ -104,7 +104,7 @@ type GetWorkflowTaskResponseBody struct {
 	//
 	// {}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The workflow ID. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Processing*	- > **Workflow Management*	- to view the ID.
+	// The workflow ID. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration management*	- > **Media processing configuration*	- > **Workflow management*	- to view the ID.
 	//
 	// example:
 	//

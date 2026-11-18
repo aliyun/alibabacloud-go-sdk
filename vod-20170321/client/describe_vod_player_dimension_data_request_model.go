@@ -32,31 +32,31 @@ type DescribeVodPlayerDimensionDataRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The dimension type. Valid values:
 	//
-	// - Os: operating system.
+	// - Os: Operating system.
 	//
-	// - AppVersion: application version.
+	// - AppVersion: App version.
 	//
 	// - SdkVersion: SDK version.
 	//
-	// - Codec: codec.
+	// - Codec: Codec.
 	//
-	// - VideoType: video format.
+	// - VideoType: Video format.
 	//
-	// - Network: network type.
+	// - Network: Network type.
 	//
-	// - Isp: Internet service provider.
+	// - Isp: ISP.
 	//
-	// - VideoDefinition: resolution.
+	// - VideoDefinition: Resolution.
 	//
-	// - Domain: domain name.
+	// - Domain: Domain name.
 	//
-	// - Country: country.
+	// - Country: Country.
 	//
-	// - Province: province.
+	// - Province: Province.
 	//
-	// - ErrorCode: error code.
+	// - ErrorCode: Error code.
 	//
-	// - IsHw: whether hardware decoding is used.
+	// - IsHw: Hardware decoding.
 	//
 	// This parameter is required.
 	//
@@ -64,29 +64,29 @@ type DescribeVodPlayerDimensionDataRequest struct {
 	//
 	// Os
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The end time of the query. Specify the time in the yyyy-mm-ddthh:mm:ssz format (UTC).
+	// The end time of the query. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2025-06-05T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The region filter used when querying the Province or Isp dimension metadata. Valid values:
+	// The region used to limit the query scope when querying the metadata for the Province and ISP dimensions. Valid values:
 	//
-	// - ALL (default): all regions.
+	// - ALL (default): All regions.
 	//
 	// - CN: China.
 	//
-	// - OVERSEAS: outside China.
+	// - OVERSEAS: Outside China.
 	//
 	// example:
 	//
 	// ALL
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The start time of the query. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z format (UTC).
+	// The start time of the query. Format: <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z (UTC).
 	//
 	// >
 	//
-	// > - Playback data from the last year is supported.
+	// > - You can query playback data history for the past year.
 	//
 	// > - The time range for a single query cannot exceed 31 days.
 	//

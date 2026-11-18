@@ -16,7 +16,7 @@ type iSubmitDynamicImageJobResponseBody interface {
 }
 
 type SubmitDynamicImageJobResponseBody struct {
-	// The information about the animated image job.
+	// The animated image job information.
 	DynamicImageJob *SubmitDynamicImageJobResponseBodyDynamicImageJob `json:"DynamicImageJob,omitempty" xml:"DynamicImageJob,omitempty" type:"Struct"`
 	// The request ID.
 	//

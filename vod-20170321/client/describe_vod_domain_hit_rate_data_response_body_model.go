@@ -24,7 +24,7 @@ type iDescribeVodDomainHitRateDataResponseBody interface {
 }
 
 type DescribeVodDomainHitRateDataResponseBody struct {
-	// The time interval between data entries, which is the time granularity of the data. Unit: seconds.
+	// The time interval between each data entry, which indicates the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeVodDomainHitRateDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for the returned data.
+	// The end time of the data. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeVodDomainHitRateDataResponseBody struct {
 	//
 	// D94E471F-1A27-442E-552D-D4D2000C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for the returned data.
+	// The start time of the data. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//

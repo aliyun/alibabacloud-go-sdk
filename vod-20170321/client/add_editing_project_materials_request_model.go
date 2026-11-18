@@ -26,9 +26,9 @@ type iAddEditingProjectMaterialsRequest interface {
 }
 
 type AddEditingProjectMaterialsRequest struct {
-	// The material IDs. Separate multiple IDs with commas (,). A maximum of 10 material IDs are supported.
+	// The IDs of the media assets. Separate multiple IDs with commas (,). You can specify up to 10 media asset IDs.
 	//
-	// >  When you associate multiple materials, ensure that all materials are of the same type and correspond to the MaterialType value.
+	// > When you associate multiple media assets, make sure that they are of the same type and the type matches the value of MaterialType.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type AddEditingProjectMaterialsRequest struct {
 	//
 	// d3251979f9fd41f2acb29ccda5a6f772
 	MaterialIds *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
-	// The material type. Valid values:
+	// The type of the media asset. Valid values:
 	//
 	// - **video**: video.
 	//
@@ -52,7 +52,7 @@ type AddEditingProjectMaterialsRequest struct {
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The online editing project ID.
+	// The ID of the online editing project.
 	//
 	// This parameter is required.
 	//

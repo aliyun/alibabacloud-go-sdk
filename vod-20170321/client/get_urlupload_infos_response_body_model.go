@@ -18,7 +18,7 @@ type iGetURLUploadInfosResponseBody interface {
 }
 
 type GetURLUploadInfosResponseBody struct {
-	// The list of upload task IDs or URLs that do not exist.
+	// The list of URL upload task IDs or URLs that do not exist.
 	NonExists []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type GetURLUploadInfosResponseBody struct {
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of URL upload information. For more information about the fields and descriptions, see [URLUploadInfo](https://help.aliyun.com/document_detail/52839.html).
+	// The list of URL upload information. For more information about the specific upload names and descriptions, see [URLUploadInfo: URL upload information](https://help.aliyun.com/document_detail/52839.html).
 	URLUploadInfoList []*GetURLUploadInfosResponseBodyURLUploadInfoList `json:"URLUploadInfoList,omitempty" xml:"URLUploadInfoList,omitempty" type:"Repeated"`
 }
 
@@ -79,13 +79,13 @@ func (s *GetURLUploadInfosResponseBody) Validate() error {
 }
 
 type GetURLUploadInfosResponseBodyURLUploadInfoList struct {
-	// The completion time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The completion time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-01-01T01:11:01Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The creation time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -121,17 +121,19 @@ type GetURLUploadInfosResponseBodyURLUploadInfoList struct {
 	//
 	// 93ab850b4f6f54b6e91d24d81d4****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The registered media asset ID.
+	//
 	// example:
 	//
 	// 93ab850b4f654b6e91d24d81d44****
 	RegisteredMediaId *string `json:"RegisteredMediaId,omitempty" xml:"RegisteredMediaId,omitempty"`
-	// The status of the URL-based upload task. For more information about the status values and descriptions, see [Status](https://help.aliyun.com/document_detail/52839.html).
+	// The status of the URL pull task. For more information about the specific values and descriptions of the pull status, see [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The URL of the source video file.
+	// The URL of the video source file to upload.
 	//
 	// > A maximum of 100 records can be returned.
 	//

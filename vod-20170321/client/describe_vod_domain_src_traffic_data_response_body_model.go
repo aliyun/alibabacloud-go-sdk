@@ -26,7 +26,7 @@ type iDescribeVodDomainSrcTrafficDataResponseBody interface {
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBody struct {
-	// The time interval between consecutive data entries, which is the time granularity of the data. Unit: seconds.
+	// The time interval between each record, which is the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeVodDomainSrcTrafficDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for the returned data.
+	// The end time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeVodDomainSrcTrafficDataResponseBody struct {
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcTrafficDataPerInterval *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	// The beginning of the time range for the returned data.
+	// The start time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//

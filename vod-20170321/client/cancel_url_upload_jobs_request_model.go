@@ -28,7 +28,7 @@ type CancelUrlUploadJobsRequest struct {
 	//
 	// 341c92e6c18dc435ee31253685****,0193d395194a83ad6ee2ef27a5b5****
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	// The list of source video upload URLs. Separate multiple URLs with commas (,). A maximum of 10 URLs are supported.
+	// The list of source video URLs to upload. Separate multiple URLs with commas (,). A maximum of 10 URLs are supported.
 	//
 	// > - URL-encode the URLs before use.
 	//

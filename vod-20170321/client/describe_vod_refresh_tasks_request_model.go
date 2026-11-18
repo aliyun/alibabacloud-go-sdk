@@ -40,13 +40,13 @@ type DescribeVodRefreshTasksRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-01-01T12:30:20Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The path used to query. Exact match is used.
+	// The object path. Exact match is supported.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type DescribeVodRefreshTasksRequest struct {
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **file**: file purge.
+	// - **file**: file refresh
 	//
-	// - **directory**: directory purge.
+	// - **directory**: directory refresh
 	//
-	// - **preload**: file prefetch.
+	// - **preload**: file prefetch
 	//
-	// > When DomainName or Status is specified, ObjectType is required.
+	// > If you specify DomainName or Status, ObjectType is required.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribeVodRefreshTasksRequest struct {
 	// 20
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > Only data within the last 3 days can be queried.
+	// > You can query only the data generated within the last three days.
 	//
 	// example:
 	//
@@ -90,17 +90,17 @@ type DescribeVodRefreshTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **Complete**: completed.
+	// - **Complete**: The task is complete.
 	//
-	// - **Refreshing**: in progress.
+	// - **Refreshing**: The task is in progress.
 	//
-	// - **Failed**: failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID used to query the purge status.
+	// The task ID used to query the refresh status.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iDescribeVodDomainRealTimeHttpCodeDataResponseBody interface {
 }
 
 type DescribeVodDomainRealTimeHttpCodeDataResponseBody struct {
-	// The time interval between data entries. Unit: seconds.
+	// The time interval between two consecutive data points. Unit: seconds.
 	//
-	// Based on the time range per query, this parameter returns a fixed value of 60 (1 minute), 300 (5 minutes), or 3600 (1 hour). For more information, see **Time granularity of returned data*	- in the **operation description**.
+	// Based on the time range for a single query, this parameter returns a fixed value of 60 (1 minute), 300 (5 minutes), or 3600 (1 hour). For more information, see the **Time granularity of returned data*	- section in the **Operation description**.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeVodDomainRealTimeHttpCodeDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for the returned data.
+	// The end time of the data. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeVodDomainRealTimeHttpCodeDataResponseBody struct {
 	//
 	// BC858082-736F-4A25-867B-E5B67C85ACF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for the returned data.
+	// The start time of the data. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

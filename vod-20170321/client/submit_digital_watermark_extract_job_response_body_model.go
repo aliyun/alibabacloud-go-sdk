@@ -16,13 +16,13 @@ type iSubmitDigitalWatermarkExtractJobResponseBody interface {
 }
 
 type SubmitDigitalWatermarkExtractJobResponseBody struct {
-	// The ID of the watermark extraction job. This ID can be used as a request parameter of the [GetDigitalWatermarkExtractResult](https://help.aliyun.com/document_detail/2587769.html) operation.
+	// The ID of the watermark extraction job. You can use this ID as a request parameter when you call the [GetDigitalWatermarkExtractResult](https://help.aliyun.com/document_detail/2587769.html) operation.
 	//
 	// example:
 	//
 	// ad90a501b1b9472374ad005046****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

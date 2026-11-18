@@ -62,23 +62,23 @@ func (s *GetDefaultAITemplateResponseBody) Validate() error {
 }
 
 type GetDefaultAITemplateResponseBodyTemplateInfo struct {
-	// The time when the AI template was created. The time is displayed in ISO 8601 format in UTC. The format is <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z.
+	// The creation time of the AI template. The time is displayed in UTC and follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
 	//
 	// example:
 	//
 	// 2020-07-08T06:50:45Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the template is the default AI template. Valid values:
+	// Indicates whether the AI template is the default template. Valid values:
 	//
-	// - **Default**: The template is the default AI template.
+	// - **Default**: Yes.
 	//
-	// - **NotDefault**: The template is not the default AI template.
+	// - **NotDefault**: No.
 	//
 	// example:
 	//
 	// Default
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The time when the AI template was last modified. The time is displayed in ISO 8601 format in UTC. The format is <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z.
+	// The modification time of the AI template. The time is displayed in UTC and follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
 	//
 	// example:
 	//
@@ -86,15 +86,15 @@ type GetDefaultAITemplateResponseBodyTemplateInfo struct {
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The source of the AI template. Valid values:
 	//
-	// - **System**: system.
+	// - **System**: System.
 	//
-	// - **Custom**: custom.
+	// - **Custom**: Custom.
 	//
 	// example:
 	//
 	// Custom
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The detailed configuration of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
+	// The detailed configuration of the AI template, which is a JSON string. For more information about the configuration, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetDefaultAITemplateResponseBodyTemplateInfo struct {
 	//
 	// DemoAITemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The AI templatetype. Set the value to **AIMediaAudit*	- (automated review).
+	// The AI templatetype. Fixed value: **AIMediaAudit*	- (automated review).
 	//
 	// example:
 	//

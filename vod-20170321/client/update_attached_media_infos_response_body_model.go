@@ -16,7 +16,7 @@ type iUpdateAttachedMediaInfosResponseBody interface {
 }
 
 type UpdateAttachedMediaInfosResponseBody struct {
-	// The IDs of the auxiliary media assets that do not exist.
+	// The list of IDs of non-existent auxiliary media assets.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//

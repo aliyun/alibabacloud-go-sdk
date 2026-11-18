@@ -30,9 +30,9 @@ type UpdateMediaStorageClassResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **Processing**: Processing.
+	// - **Processing**: The task is being processed.
 	//
-	// - **Failed**: Failed.
+	// - **Failed**: The task failed.
 	//
 	// example:
 	//

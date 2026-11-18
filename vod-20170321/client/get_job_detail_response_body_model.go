@@ -32,15 +32,15 @@ type GetJobDetailResponseBody struct {
 	//
 	// transcode
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 6708D849-F109-1A6C-AC91-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the snapshot task. This field has a value only when jobType is Snapshot.
+	// The details of the snapshot task. This field has a value only when JobType is Snapshot.
 	SnapshotJobDetail *GetJobDetailResponseBodySnapshotJobDetail `json:"SnapshotJobDetail,omitempty" xml:"SnapshotJobDetail,omitempty" type:"Struct"`
-	// The details of the transcoding task. This field has a value only when jobType is Transcode.
+	// The details of the transcoding task. This field has a value only when JobType is Transcode.
 	TranscodeJobDetail *GetJobDetailResponseBodyTranscodeJobDetail `json:"TranscodeJobDetail,omitempty" xml:"TranscodeJobDetail,omitempty" type:"Struct"`
 	// The details of the workflow task. This field has a value only when TaskType is Workflow.
 	WorkflowTaskDetail *GetJobDetailResponseBodyWorkflowTaskDetail `json:"WorkflowTaskDetail,omitempty" xml:"WorkflowTaskDetail,omitempty" type:"Struct"`
@@ -133,19 +133,19 @@ func (s *GetJobDetailResponseBody) Validate() error {
 }
 
 type GetJobDetailResponseBodyAIJobDetail struct {
-	// The time when the task was completed.
+	// The time when the task ended. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:46Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
+	// The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -165,17 +165,17 @@ type GetJobDetailResponseBodyAIJobDetail struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The task status. Valid values:
 	//
-	// - reserved: submitted.
+	// - reserved: The task is submitted.
 	//
-	// - init: started.
+	// - init: The task is started.
 	//
-	// - success: execution succeeded.
+	// - success: The task succeeded.
 	//
-	// - fail: execution failed.
+	// - fail: The task failed.
 	//
-	// - processing: processing in progress.
+	// - processing: The task is being processed.
 	//
-	// - analysing: analysis in progress.
+	// - analysing: The task is being analyzed.
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type GetJobDetailResponseBodyAIJobDetail struct {
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The trigger method. Valid values:
 	//
-	// - Auto: automatically triggered by a workflow.
+	// - Auto: Automatically triggered by a workflow.
 	//
-	// - Manual: manually submitted.
+	// - Manual: Manually submitted.
 	//
 	// example:
 	//
@@ -299,19 +299,19 @@ func (s *GetJobDetailResponseBodyAIJobDetail) Validate() error {
 }
 
 type GetJobDetailResponseBodySnapshotJobDetail struct {
-	// The time when the task was completed.
+	// The time when the task was completed. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:45Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
+	// The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -331,11 +331,11 @@ type GetJobDetailResponseBodySnapshotJobDetail struct {
 	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
 	// The task status. Valid values:
 	//
-	// - Processing: processing in progress.
+	// - Processing: The task is being processed.
 	//
-	// - Fail: task failed.
+	// - Fail: The task failed.
 	//
-	// - Success: task succeeded.
+	// - Success: The task succeeded.
 	//
 	// example:
 	//
@@ -343,9 +343,9 @@ type GetJobDetailResponseBodySnapshotJobDetail struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The trigger method. Valid values:
 	//
-	// - Auto: automatically triggered by a workflow.
+	// - Auto: Automatically triggered by a workflow.
 	//
-	// - Manual: manually submitted.
+	// - Manual: Manually submitted.
 	//
 	// example:
 	//
@@ -459,13 +459,13 @@ func (s *GetJobDetailResponseBodySnapshotJobDetail) Validate() error {
 }
 
 type GetJobDetailResponseBodyTranscodeJobDetail struct {
-	// The time when the task was completed.
+	// The time when the task was completed. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:34Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
+	// The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
@@ -477,7 +477,7 @@ type GetJobDetailResponseBodyTranscodeJobDetail struct {
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -485,15 +485,15 @@ type GetJobDetailResponseBodyTranscodeJobDetail struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The task status. Valid values:
 	//
-	// - Submitted: submitted.
+	// - Submitted: The task is submitted.
 	//
-	// - Transcoding: transcoding in progress.
+	// - Transcoding: The task is being transcoded.
 	//
-	// - TranscodeSuccess: transcoding succeeded.
+	// - TranscodeSuccess: Transcoding succeeded.
 	//
-	// - TranscodeFail: transcoding failed.
+	// - TranscodeFail: Transcoding failed.
 	//
-	// - TranscodeCancelled: transcoding canceled.
+	// - TranscodeCancelled: Transcoding is canceled.
 	//
 	// example:
 	//
@@ -604,19 +604,19 @@ func (s *GetJobDetailResponseBodyTranscodeJobDetail) Validate() error {
 }
 
 type GetJobDetailResponseBodyWorkflowTaskDetail struct {
-	// The processing results of each workflow node, in JSON format.
+	// The processing results of each node in the workflow, in JSON format.
 	//
 	// example:
 	//
 	// {\\"VodSnapshot_123\\":{\\"ActivityId\\":\\"VodSnapshot\\",\\"ActivityInstanceId\\":\\"c8cf62d53bef4e04bf703976bae6d0b9\\",\\"EndTime\\":\\"2025-03-27T08:15:51Z\\",\\"Result\\":\\"{\\\\\\"RequestId\\\\\\":\\\\\\"8B3649AF-5A6B-1099-BEB6-164D81067398\\\\\\",\\\\\\"EventType\\\\\\":\\\\\\"SnapshotComplete\\\\\\",\\\\\\"UserId\\\\\\":1797131669910763,\\\\\\"MessageBody\\\\\\":{\\\\\\"Status\\\\\\":\\\\\\"success\\\\\\",\\\\\\"VideoId\\\\\\":\\\\\\"00f985a50ae371f0ad1c4106e0ea0102\\\\\\",\\\\\\"EventType\\\\\\":\\\\\\"SnapshotComplete\\\\\\",\\\\\\"EventTime\\\\\\":\\\\\\"2025-03-27T08:15:50Z\\\\\\",\\\\\\"TriggerSource\\\\\\":\\\\\\"{\\\\\\\\\\\\\\"ActivityInstanceId\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"c8cf62d53bef4e04bf703976bae6d0b9\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"BizType\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"ice-workflow\\\\\\\\\\\\\\"}\\\\\\"}}\\",\\"StartTime\\":\\"2025-03-27T08:15:47Z\\",\\"Status\\":\\"Succeed\\"},\\"Translate_zh_en\\":{\\"ActivityId\\":\\"VodTranslation\\",\\"ActivityInstanceId\\":\\"c043a872bb044763a3d293a5c2458b50\\",\\"EndTime\\":\\"2025-03-27T08:20:19Z\\",\\"Result\\":\\"{\\\\\\"Type\\\\\\":\\\\\\"VideoTranslationAll\\\\\\",\\\\\\"Success\\\\\\":false}\\",\\"StartTime\\":\\"2025-03-27T08:15:46Z\\",\\"Status\\":\\"Failed\\"},\\"Act_Start\\":{\\"ActivityId\\":\\"start\\",\\"ActivityInstanceId\\":\\"8a9402f4ff064084bf496707fb2d664a\\",\\"Result\\":\\"{\\\\\\"Type\\\\\\":\\\\\\"Media\\\\\\",\\\\\\"bizType\\\\\\":6,\\\\\\"Media\\\\\\":\\\\\\"00f985a50ae371f0ad1c4106e0ea0102\\\\\\",\\\\\\"Title\\\\\\":\\\\\\"2.mp4\\\\\\",\\\\\\"taskInput\\\\\\":\\\\\\"{\\\\\\\\\\\\\\"Type\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Media\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Media\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"00f985a50ae371f0ad1c4106e0ea0102\\\\\\\\\\\\\\"}\\\\\\",\\\\\\"userTaskInput\\\\\\":\\\\\\"{\\\\\\\\\\\\\\"Type\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Media\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Media\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"00f985a50ae371f0ad1c4106e0ea0102\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Title\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2.mp4\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"StorageLocation\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"yiming-pre.oss-cn-shanghai.aliyuncs.com\\\\\\\\\\\\\\"}\\\\\\",\\\\\\"StorageLocation\\\\\\":\\\\\\"yiming-pre.oss-cn-shanghai.aliyuncs.com\\\\\\",\\\\\\"callerUid\\\\\\":1797131669910763,\\\\\\"CUR_NODE_NAME\\\\\\":\\\\\\"Act_Start\\\\\\"}\\",\\"StartTime\\":\\"2025-03-27T08:15:45Z\\",\\"Status\\":\\"Succeed\\"},\\"VodDynamicImage_123\\":{\\"ActivityId\\":\\"VodDynamicImage\\",\\"ActivityInstanceId\\":\\"26e8dab82ab84110b1150f146caf633c\\",\\"EndTime\\":\\"2025-03-27T08:15:55Z\\",\\"Result\\":\\"{\\\\\\"RequestId\\\\\\":\\\\\\"7120B5D5-430F-14AD-8922-577F072DDD64\\\\\\",\\\\\\"EventType\\\\\\":\\\\\\"DynamicImageComplete\\\\\\",\\\\\\"UserId\\\\\\":1797131669910763,\\\\\\"MessageBody\\\\\\":{\\\\\\"Status\\\\\\":\\\\\\"success\\\\\\",\\\\\\"VideoId\\\\\\":\\\\\\"00f985a50ae371f0ad1c4106e0ea0102\\\\\\",\\\\\\"EventType\\\\\\":\\\\\\"DynamicImageComplete\\\\\\",\\\\\\"EventTime\\\\\\":\\\\\\"2025-03-27T08:15:52Z\\\\\\",\\\\\\"TriggerSource\\\\\\":\\\\\\"{\\\\\\\\\\\\\\"ActivityInstanceId\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"26e8dab82ab84110b1150f146caf633c\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"BizType\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"ice-workflow\\\\\\\\\\\\\\"}\\\\\\"}}\\",\\"StartTime\\":\\"2025-03-27T08:15:47Z\\",\\"Status\\":\\"Succeed\\"}}
 	ActivityResults *string `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty"`
-	// The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
+	// The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2025-03-27T08:15:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the task was completed.
+	// The time when the task was completed. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
@@ -624,23 +624,23 @@ type GetJobDetailResponseBodyWorkflowTaskDetail struct {
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// - Init: started.
+	// - Init: The task is started.
 	//
-	// - Processing: processing in progress.
+	// - Processing: The task is being processed.
 	//
-	// - Succeed: succeeded.
+	// - Succeed: The task succeeded.
 	//
-	// - Failed: failed.
+	// - Failed: The task failed.
 	//
-	// - Canceled: canceled.
+	// - Canceled: The task is canceled.
 	//
-	// - Skip: skipped.
+	// - Skip: The task is skipped.
 	//
 	// example:
 	//
 	// Succeed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -652,7 +652,7 @@ type GetJobDetailResponseBodyWorkflowTaskDetail struct {
 	//
 	// {\\"Type\\":\\"Media\\",\\"Media\\":\\"00f985a50ae371f0ad1c4106e0ea0102\\",\\"Title\\":\\"2.mp4\\",\\"StorageLocation\\":\\"yiming-pre.oss-cn-shanghai.aliyuncs.com\\"}
 	TaskInput *string `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
-	// The custom settings. The value is a JSON string that supports message callback, upload acceleration, and other settings.
+	// The custom settings. The value is a JSON string that supports settings such as message callbacks and upload acceleration.
 	//
 	// example:
 	//
@@ -758,13 +758,13 @@ type GetJobDetailResponseBodyWorkflowTaskDetailWorkflow struct {
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the workflow was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
+	// The time when the workflow was created. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2025-03-26T05:50:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the workflow was last modified.
+	// The time when the workflow was modified. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
@@ -778,17 +778,17 @@ type GetJobDetailResponseBodyWorkflowTaskDetailWorkflow struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The workflow status. Valid values:
 	//
-	// - Active: activated.
+	// - Active: The workflow is activated.
 	//
-	// - Inactive: not activated.
+	// - Inactive: The workflow is not activated.
 	//
-	// - Deleted: deleted.
+	// - Deleted: The workflow is deleted.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The workflow type. Not populated by default.
+	// The workflow type. By default, this field is not populated.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The workflow ID.
 	//

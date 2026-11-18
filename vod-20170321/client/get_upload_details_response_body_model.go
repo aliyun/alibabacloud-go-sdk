@@ -20,9 +20,9 @@ type iGetUploadDetailsResponseBody interface {
 }
 
 type GetUploadDetailsResponseBody struct {
-	// The IDs of media files that cannot be accessed.
+	// The IDs of the media assets that you are not authorized to access.
 	ForbiddenMediaIds []*string `json:"ForbiddenMediaIds,omitempty" xml:"ForbiddenMediaIds,omitempty" type:"Repeated"`
-	// The IDs of media files that do not exist.
+	// The IDs of the media assets that do not exist.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -30,7 +30,7 @@ type GetUploadDetailsResponseBody struct {
 	//
 	// 9E290613-04F4-47F4-795D30732077****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The upload details.
+	// The list of upload details.
 	UploadDetails []*GetUploadDetailsResponseBodyUploadDetails `json:"UploadDetails,omitempty" xml:"UploadDetails,omitempty" type:"Repeated"`
 }
 
@@ -92,13 +92,13 @@ func (s *GetUploadDetailsResponseBody) Validate() error {
 }
 
 type GetUploadDetailsResponseBodyUploadDetails struct {
-	// The completion time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The completion time. The time is displayed in UTC and follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
 	//
 	// example:
 	//
 	// 2019-04-28T09:45:07Z
 	CompletionTime *string `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	// The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The creation time. The time is displayed in UTC and follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type GetUploadDetailsResponseBodyUploadDetails struct {
 	//
 	// 61ccbdb06fa83012be4d8083f6****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The modification time. The time is in the _yyyy-MM-ddTHH:mm:ssZ_ format (UTC).
+	// The update time. The time is displayed in UTC and follows the _yyyy-MM-ddTHH:mm:ssZ_ format.
 	//
 	// example:
 	//
 	// 2019-04-28T09:43:12Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The video status. For the valid values and descriptions of video statuses, see the value list in [Status: video status](https://help.aliyun.com/document_detail/52839.html).
+	// The video status. For more information about the valid values and descriptions of the video status, see the valid values of [Status: Video status](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type GetUploadDetailsResponseBodyUploadDetails struct {
 	//
 	// WebSDK
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
-	// The upload task status. For the valid values and descriptions of upload statuses, see the value list in [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
+	// The status of the upload task. For more information about the valid values and descriptions of the upload status, see the valid values of [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//

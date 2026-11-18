@@ -20,7 +20,7 @@ type iListJobInfoResponseBody interface {
 }
 
 type ListJobInfoResponseBody struct {
-	// The historical task list within the last 6 months.
+	// The list of historical tasks within the last 6 months.
 	JobInfoList []*ListJobInfoResponseBodyJobInfoList `json:"JobInfoList,omitempty" xml:"JobInfoList,omitempty" type:"Repeated"`
 	// The task type. Valid values:
 	//
@@ -40,7 +40,7 @@ type ListJobInfoResponseBody struct {
 	//
 	// 30e5d7**********bd900764de7c0102
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ func (s *ListJobInfoResponseBody) Validate() error {
 }
 
 type ListJobInfoResponseBodyJobInfoList struct {
-	// The time when the task was completed.
+	// The time when the task was completed. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//
 	// 2024-10-14T07:39:34Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
+	// The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:MM:SSZ format.
 	//
 	// example:
 	//

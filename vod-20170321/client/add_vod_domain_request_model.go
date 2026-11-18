@@ -28,13 +28,13 @@ type iAddVodDomainRequest interface {
 }
 
 type AddVodDomainRequest struct {
-	// The health check URL.
+	// The URL for health checks.
 	//
 	// example:
 	//
 	// www.example.com/test.html
 	CheckUrl *string `json:"CheckUrl,omitempty" xml:"CheckUrl,omitempty"`
-	// The accelerated domain name to be added to ApsaraVideo VOD. Wildcard domain names are supported, starting with a period (.), such as .example.com.
+	// The accelerated domain name that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. A wildcard domain name must start with a period (.), such as .example.com.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AddVodDomainRequest struct {
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// This parameter is valid for international users and Chinese mainland users of L3 or higher. Valid values:
+	// The acceleration region. This parameter is valid for users outside the Chinese mainland and users in the Chinese mainland at level 3 or above. Valid values:
 	//
 	// - **domestic*	- (default): the Chinese mainland.
 	//

@@ -72,7 +72,7 @@ type UploadMediaByURLResponseBodyUploadJobs struct {
 	//
 	// ad90a501b1b94fb72374ad005046****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The source file URL of the upload job.
+	// The source file URL corresponding to the upload job.
 	//
 	// example:
 	//

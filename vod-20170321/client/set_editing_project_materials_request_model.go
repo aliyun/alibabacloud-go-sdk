@@ -24,7 +24,7 @@ type iSetEditingProjectMaterialsRequest interface {
 }
 
 type SetEditingProjectMaterialsRequest struct {
-	// The material IDs, which are media asset IDs such as video VideoId, image ImageId, and auxiliary media asset MediaId. Separate multiple material IDs with commas (,).
+	// The material IDs, which are media asset IDs such as video IDs, image IDs, and auxiliary media asset IDs. Separate multiple material IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SetEditingProjectMaterialsRequest struct {
 	MaterialIds  *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The online editing project ID.
+	// The ID of the online editing project.
 	//
 	// This parameter is required.
 	//

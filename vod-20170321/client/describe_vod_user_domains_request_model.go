@@ -28,13 +28,13 @@ type iDescribeVodUserDomainsRequest interface {
 }
 
 type DescribeVodUserDomainsRequest struct {
-	// The accelerated domain name for ApsaraVideo VOD. Fuzzy match filtering is supported.
+	// The ApsaraVideo VOD accelerated domain name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain name query type. Valid values:
+	// The domain name search type. Valid values:
 	//
 	// - **fuzzy_match*	- (default): fuzzy match.
 	//
@@ -48,26 +48,26 @@ type DescribeVodUserDomainsRequest struct {
 	//
 	// fuzzy_match
 	DomainSearchType *string `json:"DomainSearchType,omitempty" xml:"DomainSearchType,omitempty"`
-	// The domain name status filter. Valid values:
+	// The domain name status used for filtering. Valid values:
 	//
-	// - **online**: Enabled.
+	// - **online**: The domain name is enabled.
 	//
-	// - **offline**: Disabled.
+	// - **offline**: The domain name is disabled.
 	//
-	// - **configuring**: Being configured.
+	// - **configuring**: The domain name is being configured.
 	//
-	// - **configure_failed**: Configuration failed.
+	// - **configure_failed**: The domain name failed to be configured.
 	//
-	// - **checking**: Being reviewed.
+	// - **checking**: The domain name is being reviewed.
 	//
-	// - **check_failed**: Review failed.
+	// - **check_failed**: The domain name failed the review.
 	//
 	// example:
 	//
 	// online
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number of the returned page.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type GetWatermarkResponseBody struct {
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The watermark template information.
+	// The image or text watermark template information.
 	WatermarkInfo *GetWatermarkResponseBodyWatermarkInfo `json:"WatermarkInfo,omitempty" xml:"WatermarkInfo,omitempty" type:"Struct"`
 }
 
@@ -68,13 +68,13 @@ type GetWatermarkResponseBodyWatermarkInfo struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the watermark template was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The creation time of the watermark template. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format and is in UTC.
 	//
 	// example:
 	//
 	// 2018-11-06T08:03:17Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The URL of the watermark file (OSS URL or CDN URL).
+	// The URL of the watermark file, which is an OSS URL or a CDN URL.
 	//
 	// > This parameter is returned only for image watermark templates.
 	//
@@ -82,11 +82,11 @@ type GetWatermarkResponseBodyWatermarkInfo struct {
 	//
 	// https://outin-32*****f4b3e7.oss-cn-shanghai.aliyuncs.com/image/cover/F85529C8B715E6F8A72EC6B-6-2.png?Expires=1541600583&OSSAccessKeyId=****&Signature=gmf1eYMoDVg%2BHQCb4UGozBW****
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Indicates whether the watermark template is the default template. Valid values:
+	// Specifies whether the watermark template is the default image or text watermark template. Valid values:
 	//
-	// - **Default**: the default watermark template.
+	// - **Default**: default image or text watermark template.
 	//
-	// - **NotDefault**: not the default watermark template.
+	// - **NotDefault**: non-default image or text watermark template.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type GetWatermarkResponseBodyWatermarkInfo struct {
 	//
 	// Image
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The configuration information of the watermark (JSON string), including the display position and effect of the watermark. The configuration parameters differ between image watermarks and text watermarks. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
+	// The configuration information of the image or text watermark in JSON string format, including the display position and effect of the watermark. The configuration parameters for image watermarks and text watermarks are different. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
 	//
 	// example:
 	//
 	// {"ReferPos": "BottomRight","Height": "55","Width": "55","Dx": "8","Dy": "8" }
 	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
-	// The watermark template ID.
+	// The ID of the watermark template.
 	//
 	// example:
 	//

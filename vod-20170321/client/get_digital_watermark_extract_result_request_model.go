@@ -26,11 +26,11 @@ type iGetDigitalWatermarkExtractResultRequest interface {
 }
 
 type GetDigitalWatermarkExtractResultRequest struct {
-	// The type of watermark extraction. Valid values:
+	// The type of the watermark to extract. Valid values:
 	//
-	// - **TraceMark**: tracing watermark.
+	// - **TraceMark**: tracing watermark
 	//
-	// - **CopyrightMark**: copyright watermark.
+	// - **CopyrightMark**: copyright watermark
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,11 @@ type GetDigitalWatermarkExtractResultRequest struct {
 	//
 	// 2bf4390af9e5491c09cc720ad****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the video to query. Only a single video ID is supported. You can obtain the video ID by using the following methods:
+	// The ID of the video to query. You can specify only one video ID. You can obtain the video ID by using one of the following methods:
 	//
-	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files*	- > **Audio/Video*	- to view the video ID.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets*	- > **Audio/Video*	- to view the video ID.
 	//
-	// - Call the [SearchMedia](~~SearchMedia~~) operation. The video ID (VideoId) is returned in the response.
+	// - Call the [SearchMedia](~~SearchMedia~~) operation. The video ID is returned in the VideoId parameter.
 	//
 	// This parameter is required.
 	//

@@ -36,7 +36,7 @@ type DescribeVodPlayerCollectDataRequest struct {
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end time of the query. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+	// The end time of the query. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeVodPlayerCollectDataRequest struct {
 	//
 	// 2025-06-05T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity for the query data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
+	// The time granularity of the queried data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
 	//
 	// - Within 3 days: **5m**, **1h**, and **1d**.
 	//
@@ -58,59 +58,59 @@ type DescribeVodPlayerCollectDataRequest struct {
 	//
 	// 1d
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The metric type. You can specify up to 3 metrics.
+	// The metric type. You can specify multiple metrics, up to three.
 	//
 	// >
 	//
 	// > - Percentage data is returned in decimal format.
 	//
-	// Playback quality (QoS) metrics:
+	// Quality of Service (QoS) metrics for playback quality:
 	//
-	// - Vv: play count.
+	// - Vv: Number of plays.
 	//
-	// - RealVv: actual play count.
+	// - RealVv: Actual play volume.
 	//
-	// - FirstFrame: first frame time.
+	// - FirstFrame: First frame time.
 	//
-	// - SecondPlayRate: instant play rate.
+	// - SecondPlayRate: 1-second startup rate.
 	//
-	// - SlowPlayRate: slow play rate.
+	// - SlowPlayRate: Slow startup rate.
 	//
-	// - StuckCountRate: stuttering rate by count.
+	// - StuckCountRate: Stuttering count rate.
 	//
-	// - SeekDuration: seek duration.
+	// - SeekDuration: Seek duration.
 	//
-	// - StuckDuration100s: stuttering duration per 100 seconds.
+	// - StuckDuration100s: Stuttering duration per 100 seconds.
 	//
-	// - StuckCount100s: stuttering count per 100 seconds.
+	// - StuckCount100s: Stuttering count per 100 seconds.
 	//
-	// - PlayFailRate: playback failure rate.
+	// - PlayFailRate: Playback failure rate.
 	//
-	// - SeedFailRate: non-play rate.
+	// - SeedFailRate: Unstarted playback rate.
 	//
-	// - AvgPlayBitrate: average playback bitrate.
+	// - AvgPlayBitrate: Average playback bitrate.
 	//
-	// - AvgStartBitrate: average initial bitrate.
+	// - AvgStartBitrate: Average startup bitrate.
 	//
-	// - ErrorCount100s: error count per 100 seconds.
+	// - ErrorCount100s: Error count per 100 seconds.
 	//
-	// Playback experience (QoE) metrics:
+	// Quality of Experience (QoE) metrics for playback experience:
 	//
-	// - Uv: unique viewers.
+	// - Uv: Number of playback users.
 	//
-	// - AvgPerVv: average plays per user.
+	// - AvgPerVv: Average number of plays per user.
 	//
-	// - AvgVideoDuration: average video duration.
+	// - AvgVideoDuration: Average video duration.
 	//
-	// - AvgPerPlayDuration: average playback duration per user.
+	// - AvgPerPlayDuration: Average playback duration per user.
 	//
-	// - AvgPerCompletionVv: average completion count per user.
+	// - AvgPerCompletionVv: Average number of completed plays per user.
 	//
-	// - CompletionVv: completion count.
+	// - CompletionVv: Completed play volume.
 	//
-	// - CompletionRate: completion rate.
+	// - CompletionRate: Completion rate.
 	//
-	// - AvgPlayDuration: average playback duration.
+	// - AvgPlayDuration: Average playback duration.
 	//
 	// - JumpRate5s: 5-second bounce rate.
 	//
@@ -120,37 +120,37 @@ type DescribeVodPlayerCollectDataRequest struct {
 	//
 	// Vv,Uv,AvgPerVv
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The operating system of the playback device. Specify this parameter to perform a filtered query for playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **MacOS**, and **Linux**.
+	// The operating system of the playback terminal. You can specify this parameter to perform a filtered query for the playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **macOS**, and **Linux**.
 	//
-	// The available values vary by terminal type:
+	// The valid values vary based on the terminal type:
 	//
-	// - **native**: Android, iOS, Harmony.
+	// - **native**: Android, iOS, and Harmony.
 	//
-	// - **web**: Android, iOS, Harmony, Windows, MacOs, Linux.
+	// - **web**: Android, iOS, Harmony, Windows, macOS, and Linux.
 	//
-	// Separate multiple values with #_#.
+	// Separate multiple operating systems with #_#.
 	//
 	// example:
 	//
 	// Android、iOS、Windows
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The time range for period-over-period analysis, in days (d).
+	// The time range used to confirm the period-over-period analysis, in days (d).
 	//
-	// For example, if you set this parameter to 1d (1 day), the period-over-period data is retrieved from the time range of StartTime-1d to EndTime-1d.
+	// For example, if you set the value to 1d (1 day), the period-over-period time range is from StartTime-1d to EndTime-1d.
 	//
 	// example:
 	//
 	// 1d
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The start time of the query. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+	// The start time of the query. Format: <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z (UTC).
 	//
 	// >
 	//
-	// > - Playback data from the last year can be queried.
+	// > - You can query historical playback data for the last year.
 	//
 	// > - The time range for a single query cannot exceed 31 days.
 	//
-	// > - The time interval is left-closed and right-open [StartTime, EndTime).
+	// > - The time range is a left-closed and right-open interval [StartTime, EndTime).
 	//
 	// This parameter is required.
 	//
@@ -160,9 +160,9 @@ type DescribeVodPlayerCollectDataRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The terminal type. Valid values:
 	//
-	// - **web**: web.
+	// - **web**: Web client.
 	//
-	// - **mobile**: native.
+	// - **mobile**: Native client.
 	//
 	// This parameter is required.
 	//

@@ -20,7 +20,7 @@ type iAttachAppPolicyToIdentityRequest interface {
 }
 
 type AttachAppPolicyToIdentityRequest struct {
-	// The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
+	// The application ID. Default value: **app-1000000**. For more information, see [Multiple applications](https://help.aliyun.com/document_detail/113600.html).
 	//
 	// > If the policy name is VODAppAdministratorAccess, this parameter is optional. For other policies, this parameter is required.
 	//
@@ -52,13 +52,13 @@ type AttachAppPolicyToIdentityRequest struct {
 	//
 	// RamRole
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
-	// The policy names. Separate multiple names with commas (,). Only system policies are supported. Valid values:
+	// The policy names. Separate multiple names with commas (,). Currently, only system policies are supported. Valid values:
 	//
-	// - **VODAppFullAccess**: permissions to manage and operate all resources in the application.
+	// - **VODAppFullAccess**: the permissions to manage and operate all resources under the application.
 	//
-	// - **VODAppReadOnlyAccess**: read-only permissions on all resources in the application.
+	// - **VODAppReadOnlyAccess**: the read-only permissions on all resources under the application.
 	//
-	// - **VODAppAdministratorAccess**: application administrator permissions.
+	// - **VODAppAdministratorAccess**: the application administrator permissions.
 	//
 	// This parameter is required.
 	//

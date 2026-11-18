@@ -378,21 +378,21 @@ func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) Validate() error {
 }
 
 type GetPlayInfoResponseBodyVideoBase struct {
-	// The thumbnail URL of the audio or video file.
+	// The URL of the audio or video thumbnail.
 	//
-	// > To obtain the thumbnail URL in real time after uploading a video, configure ApsaraVideo VOD callbacks. For more information, refer to [HTTP callback](https://help.aliyun.com/document_detail/67214.html) and [SnapshotComplete event](https://help.aliyun.com/document_detail/57337.html).
+	// > If you need to obtain the thumbnail URL in real time after a video is uploaded, you can configure VOD callbacks. For more information, refer to [HTTP callbacks](https://help.aliyun.com/document_detail/67214.html) and [Snapshot completion event](https://help.aliyun.com/document_detail/57337.html).
 	//
 	// example:
 	//
 	// http://example.aliyundoc.com/sample.jpg?auth_key=2333232-atb****
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+	// The time when the audio or video file was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2017-06-26T06:38:48Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The URL of the China-accessible bullet screen mask data.
+	// The URL of the live comment mask data.
 	//
 	// example:
 	//
@@ -414,7 +414,7 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The status of the audio or video file. For valid values and descriptions, refer to [Status: audio and video status](~~52839#title-vqg-8cz-7p8~~).
+	// The status of the audio or video file. For more information about the valid values and descriptions, refer to [Status: Audio and video status](~~52839#title-vqg-8cz-7p8~~).
 	//
 	// example:
 	//
@@ -422,23 +422,23 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage class of the media asset. Valid values:
 	//
-	// - **Standard**: standard.
+	// - **Standard**: Standard.
 	//
-	// - **IA**: media asset infrequent access.
+	// - **IA**: Infrequent Access.
 	//
-	// - **Archive**: media asset archive.
+	// - **Archive**: Archive.
 	//
-	// - **ColdArchive**: media asset cold archive.
+	// - **ColdArchive**: Cold Archive.
 	//
-	// - **SourceIA**: source file infrequent access.
+	// - **SourceIA**: Infrequent Access for mezzanine files.
 	//
-	// - **SourceArchive**: source file archive.
+	// - **SourceArchive**: Archive for mezzanine files.
 	//
-	// - **SourceColdArchive**: source file cold archive.
+	// - **SourceColdArchive**: Cold Archive for mezzanine files.
 	//
-	// - **Changing**: media asset storage class is being changed.
+	// - **Changing**: The storage class of the media asset is being changed.
 	//
-	// - **SourceChanging**: source file storage class is being changed.
+	// - **SourceChanging**: The storage class of the mezzanine file is being changed.
 	//
 	// example:
 	//
@@ -450,7 +450,7 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	//
 	// Alibaba Cloud VOD
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The audio or video ID.
+	// The ID of the audio or video file.
 	//
 	// example:
 	//

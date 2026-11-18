@@ -16,9 +16,9 @@ type iAddEditingProjectResponseBody interface {
 }
 
 type AddEditingProjectResponseBody struct {
-	// The online editing project. For the specific structure definition, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
+	// The online editing project. For more information about the structure, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
 	Project *AddEditingProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *AddEditingProjectResponseBody) Validate() error {
 }
 
 type AddEditingProjectResponseBodyProject struct {
-	// The time when the online editing project was created. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the online editing project was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type AddEditingProjectResponseBodyProject struct {
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the online editing project was modified. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The time when the online editing project was last modified. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type AddEditingProjectResponseBodyProject struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the online editing project. Valid values:
 	//
-	// - **Normal**: draft.
+	// - **Normal**: draft
 	//
-	// - **Producing**: being produced.
+	// - **Producing**: producing
 	//
-	// - **Produced**: produced.
+	// - **Produced**: produced
 	//
-	// - **ProduceFailed**: failed to be produced.
+	// - **ProduceFailed**: production failed
 	//
 	// example:
 	//

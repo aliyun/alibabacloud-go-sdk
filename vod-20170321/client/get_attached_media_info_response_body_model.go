@@ -18,7 +18,7 @@ type iGetAttachedMediaInfoResponseBody interface {
 }
 
 type GetAttachedMediaInfoResponseBody struct {
-	// The information about the auxiliary media assets.
+	// The list of auxiliary media assets.
 	AttachedMediaList []*GetAttachedMediaInfoResponseBodyAttachedMediaList `json:"AttachedMediaList,omitempty" xml:"AttachedMediaList,omitempty" type:"Repeated"`
 	// The IDs of the auxiliary media assets that do not exist.
 	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
@@ -87,7 +87,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The list of categories.
 	Categories []*GetAttachedMediaInfoResponseBodyAttachedMediaListCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The time when the auxiliary media asset was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the auxiliary media asset was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -95,19 +95,19 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description.
 	//
-	// >This parameter is returned only if the auxiliary media asset has a description.
+	// > This parameter is returned only if the auxiliary media asset has a description.
 	//
 	// example:
 	//
-	// Description test
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The auxiliary media asset ID.
+	// The ID of the auxiliary media asset.
 	//
 	// example:
 	//
 	// 0222e203cf80f9c22870a4d2c****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The time when the auxiliary media asset was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the auxiliary media asset was last updated. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -115,11 +115,11 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The status of the auxiliary media asset. Valid values:
 	//
-	// - **Uploading**: uploading.
+	// - **Uploading**: The auxiliary media asset is being uploaded.
 	//
 	// - **Normal**: Normal.
 	//
-	// - **UploadFail**: upload failed.
+	// - **UploadFail**: The auxiliary media asset failed to be uploaded.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags.
 	//
-	// >This parameter is returned only if the auxiliary media asset has tag information.
+	// > This parameter is returned only if the auxiliary media asset has tags.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	//
 	// example:
 	//
-	// Subtitle test
+	// Test subtitle
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The type of the auxiliary media asset. Valid values:
 	//
@@ -159,7 +159,7 @@ type GetAttachedMediaInfoResponseBodyAttachedMediaList struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The access URL of the auxiliary media asset.
 	//
-	// > If a CDN domain name is configured in ApsaraVideo VOD, the CDN URL is returned. Otherwise, the OSS URL is returned.
+	// > If a CDN domain name is configured for ApsaraVideo VOD, the CDN URL is returned. Otherwise, the OSS URL is returned.
 	//
 	// example:
 	//
@@ -297,19 +297,19 @@ func (s *GetAttachedMediaInfoResponseBodyAttachedMediaList) Validate() error {
 }
 
 type GetAttachedMediaInfoResponseBodyAttachedMediaListCategories struct {
-	// The category ID.
+	// The ID of the category.
 	//
 	// example:
 	//
 	// 1000224338
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category name.
+	// The name of the category.
 	//
 	// example:
 	//
 	// Test
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The category level.
+	// The level of the category.
 	//
 	// example:
 	//

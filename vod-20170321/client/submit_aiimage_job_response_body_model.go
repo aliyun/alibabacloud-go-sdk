@@ -16,7 +16,7 @@ type iSubmitAIImageJobResponseBody interface {
 }
 
 type SubmitAIImageJobResponseBody struct {
-	// The AI image processing task ID.
+	// The ID of the AI image processing task.
 	//
 	// example:
 	//

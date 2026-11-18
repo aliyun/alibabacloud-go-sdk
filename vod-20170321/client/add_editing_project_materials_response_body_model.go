@@ -16,7 +16,7 @@ type iAddEditingProjectMaterialsResponseBody interface {
 }
 
 type AddEditingProjectMaterialsResponseBody struct {
-	// The list of materials.
+	// The list of media assets.
 	MaterialList []*AddEditingProjectMaterialsResponseBodyMaterialList `json:"MaterialList,omitempty" xml:"MaterialList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,15 +72,15 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	//
 	// 1000487543
 	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The material category name.
+	// The name of the media asset category.
 	//
 	// example:
 	//
 	// Category 1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the material.
+	// The URL of the media asset thumbnail.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the material was created. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+	// The time when the media asset was created. The time follows the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -92,37 +92,37 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	//
 	// 1234751840694470
 	CustomerId *int64 `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	// The material description.
+	// The description of the media asset.
 	//
 	// example:
 	//
-	// Material description
+	// Media asset description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The material duration. Unit: seconds. The value is accurate to four decimal places.
+	// The duration of the media asset. Unit: seconds. The value is accurate to four decimal places.
 	//
 	// example:
 	//
 	// 3690.2332
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The material ID.
+	// The ID of the media asset.
 	//
 	// example:
 	//
 	// 85befc4118b84c6723e53b80b1****
 	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
-	// The material type. Valid values:
+	// The type of the media asset. Valid values:
 	//
-	// - **video**: video.
+	// - **video**: video
 	//
-	// - **audio**: audio-only.
+	// - **audio**: audio-only
 	//
-	// - **image**: image.
+	// - **image**: image
 	//
 	// example:
 	//
 	// video
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
-	// The time when the material was last modified. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+	// The time when the media asset was updated. The time follows the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	//
 	// 1682694
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The array of snapshot URLs for the material.
+	// The array of snapshot URLs for the media asset.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 	// The sprite configuration.
 	//
@@ -142,9 +142,9 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	//
 	// xxx
 	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
-	// The array of sprite URLs for the material.
+	// The array of sprite URLs for the media asset.
 	Sprites []*string `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
-	// The material status. Valid values:
+	// The status of the media asset. Valid values:
 	//
 	// - **Normal**: Normal.
 	//
@@ -156,13 +156,13 @@ type AddEditingProjectMaterialsResponseBodyMaterialList struct {
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The material tags. Multiple tags are separated by commas (,).
+	// The tags of the media asset. Separate multiple tags with commas (,).
 	//
 	// example:
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The material title.
+	// The title of the media asset.
 	//
 	// example:
 	//

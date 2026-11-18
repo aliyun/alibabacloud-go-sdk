@@ -29,7 +29,7 @@ type iDescribeVodDomainBpsDataResponseBody interface {
 
 type DescribeVodDomainBpsDataResponseBody struct {
 	BpsDataPerInterval *DescribeVodDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
-	// The time interval between consecutive data entries, which is the time granularity of the data. Unit: seconds.
+	// The time interval between each record, which is the time granularity of the data. Unit: seconds.
 	//
 	// example:
 	//
@@ -41,19 +41,19 @@ type DescribeVodDomainBpsDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for the returned data.
+	// The end time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//
 	// 2015-12-10T14:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the ISP in English.
+	// The English name of the ISP.
 	//
 	// example:
 	//
 	// unicom
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region in English.
+	// The English name of the region.
 	//
 	// example:
 	//
@@ -65,7 +65,7 @@ type DescribeVodDomainBpsDataResponseBody struct {
 	//
 	// 3C6CCEC4-6B88-4D4A-****-D47B3D92CF8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for the returned data.
+	// The start time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//

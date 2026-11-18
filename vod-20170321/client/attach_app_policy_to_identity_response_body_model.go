@@ -18,9 +18,9 @@ type iAttachAppPolicyToIdentityResponseBody interface {
 }
 
 type AttachAppPolicyToIdentityResponseBody struct {
-	// The policy names that failed to be attached.
+	// The Policy Name of the failed policy.
 	FailedPolicyNames []*string `json:"FailedPolicyNames,omitempty" xml:"FailedPolicyNames,omitempty" type:"Repeated"`
-	// The list of policy names that do not exist.
+	// The list of non-existent policy names.
 	NonExistPolicyNames []*string `json:"NonExistPolicyNames,omitempty" xml:"NonExistPolicyNames,omitempty" type:"Repeated"`
 	// The request ID.
 	//

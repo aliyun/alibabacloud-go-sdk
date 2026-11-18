@@ -18,7 +18,7 @@ type iGetImageInfosResponseBody interface {
 }
 
 type GetImageInfosResponseBody struct {
-	// The image information list.
+	// The list of image information.
 	ImageInfo []*GetImageInfosResponseBodyImageInfo `json:"ImageInfo,omitempty" xml:"ImageInfo,omitempty" type:"Repeated"`
 	// The list of image IDs that do not exist.
 	NonExistImageIds []*string `json:"NonExistImageIds,omitempty" xml:"NonExistImageIds,omitempty" type:"Repeated"`
@@ -97,7 +97,7 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// Test
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The time when the image was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the image was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -125,11 +125,11 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// default
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The mezzanine information of the image.
+	// The source information of the image.
 	Mezzanine *GetImageInfosResponseBodyImageInfoMezzanine `json:"Mezzanine,omitempty" xml:"Mezzanine,omitempty" type:"Struct"`
 	// The image status. Valid values:
 	//
-	// - **Uploading**: The image is being uploaded. This is the initial status.
+	// - **Uploading**: The initial status, which indicates that the image is being uploaded.
 	//
 	// - **Normal**: The image is uploaded.
 	//
@@ -145,7 +145,7 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// outin-****..oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The image tags. Multiple tags are separated by commas (,).
+	// The image tags. Separate multiple tags with commas (,).
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type GetImageInfosResponseBodyImageInfo struct {
 	//
 	// this is a sample
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The image access URL. If a CDN domain name is configured, the CDN URL is returned. Otherwise, the OSS URL is returned.
+	// The image access URL. If a CDN domain name is configured, the value is a CDN URL. Otherwise, the value is an OSS URL.
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ func (s *GetImageInfosResponseBodyImageInfo) Validate() error {
 }
 
 type GetImageInfosResponseBodyImageInfoMezzanine struct {
-	// The file size. Unit: byte.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
@@ -312,19 +312,19 @@ type GetImageInfosResponseBodyImageInfoMezzanine struct {
 	//
 	// https://outin-bfefbb*****163e1c7426.oss-cn-XXXXXXXX.aliyuncs.com/image/default/5E84CD536*****D4DAD.png?Expires=1590982353&OSSAccessKeyId=*****&Signature=ALPET74o*****c%3D
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The image height. Unit: pixel.
+	// The height of the image. Unit: pixels.
 	//
 	// example:
 	//
 	// 200
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The address of the uploaded source image file.
+	// The name of the uploaded source image file.
 	//
 	// example:
 	//
 	// ****.gif
 	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	// The image width. Unit: pixel.
+	// The width of the image. Unit: pixels.
 	//
 	// example:
 	//

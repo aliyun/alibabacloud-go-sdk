@@ -68,13 +68,13 @@ type GetAppPlayKeyResponseBodyAppPlayKey struct {
 	//
 	// app-1000000
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the playback key was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The creation time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2025-03-18T03:59:01Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The time when the playback key was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The update time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type GetAppPlayKeyResponseBodyAppPlayKey struct {
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The playback key.
 	//
-	// - Only uppercase letters, lowercase letters, and digits are supported. The length must be 8 to 20 characters.
+	// - Only uppercase and lowercase letters and digits are supported. The length must be 8 to 20 characters.
 	//
-	// - UTF-8 encoding.
+	// - Encoded in UTF-8.
 	//
 	// example:
 	//

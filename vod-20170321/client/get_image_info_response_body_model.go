@@ -16,7 +16,7 @@ type iGetImageInfoResponseBody interface {
 }
 
 type GetImageInfoResponseBody struct {
-	// The image information.
+	// The image information list.
 	ImageInfo *GetImageInfoResponseBodyImageInfo `json:"ImageInfo,omitempty" xml:"ImageInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,7 +80,7 @@ type GetImageInfoResponseBodyImageInfo struct {
 	//
 	// Test
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The time when the image was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+	// The time when the image was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ type GetImageInfoResponseBodyImageInfo struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The image type. Valid values:
 	//
-	// - **default**: regular image.
+	// - **default**: regular image
 	//
-	// - **cover**: video thumbnail.
+	// - **cover**: video thumbnail
 	//
 	// example:
 	//
 	// default
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The mezzanine information of the image.
+	// The image source information.
 	Mezzanine *GetImageInfoResponseBodyImageInfoMezzanine `json:"Mezzanine,omitempty" xml:"Mezzanine,omitempty" type:"Struct"`
 	// The image status. Valid values:
 	//
-	// - **Uploading**: The image is being uploaded. This is the initial status.
+	// - **Uploading**: The initial status, which indicates that the image is being uploaded.
 	//
 	// - **Normal**: The image is uploaded.
 	//
@@ -140,7 +140,7 @@ type GetImageInfoResponseBodyImageInfo struct {
 	//
 	// this is a sample
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The image access URL. If a CDN domain name is configured, the CDN URL is returned. Otherwise, the OSS URL is returned.
+	// The image access URL. If a CDN domain name is configured, the value is a CDN URL. Otherwise, the value is an OSS URL.
 	//
 	// example:
 	//
@@ -295,19 +295,19 @@ type GetImageInfoResponseBodyImageInfoMezzanine struct {
 	//
 	// https://outin-bfefbb*****163e1c7426.oss-cn-XXXXXXXX.aliyuncs.com/image/default/5E84CD536*****D4DAD.png?Expires=1590982353&OSSAccessKeyId=*****&Signature=ALPET74o*****c%3D
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The image height. Unit: pixel.
+	// The image height. Unit: pixels.
 	//
 	// example:
 	//
 	// 200
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The address of the uploaded source image file.
+	// The URL of the uploaded source image file.
 	//
 	// example:
 	//
 	// ****.gif
 	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	// The image width. Unit: pixel.
+	// The image width. Unit: pixels.
 	//
 	// example:
 	//
