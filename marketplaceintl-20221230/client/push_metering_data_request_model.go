@@ -11,15 +11,15 @@ type iPushMeteringDataRequest interface {
 	GoString() string
 	SetGmtCreate(v string) *PushMeteringDataRequest
 	GetGmtCreate() *string
+	SetMetering(v string) *PushMeteringDataRequest
+	GetMetering() *string
 	SetMeteringData(v []*PushMeteringDataRequestMeteringData) *PushMeteringDataRequest
 	GetMeteringData() []*PushMeteringDataRequestMeteringData
 }
 
 type PushMeteringDataRequest struct {
-	// example:
-	//
-	// 2023-01-11 10:31:00
 	GmtCreate    *string                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Metering     *string                                `json:"Metering,omitempty" xml:"Metering,omitempty"`
 	MeteringData []*PushMeteringDataRequestMeteringData `json:"MeteringData,omitempty" xml:"MeteringData,omitempty" type:"Repeated"`
 }
 
@@ -35,6 +35,10 @@ func (s *PushMeteringDataRequest) GetGmtCreate() *string {
 	return s.GmtCreate
 }
 
+func (s *PushMeteringDataRequest) GetMetering() *string {
+	return s.Metering
+}
+
 func (s *PushMeteringDataRequest) GetMeteringData() []*PushMeteringDataRequestMeteringData {
 	return s.MeteringData
 }
@@ -44,40 +48,39 @@ func (s *PushMeteringDataRequest) SetGmtCreate(v string) *PushMeteringDataReques
 	return s
 }
 
+func (s *PushMeteringDataRequest) SetMetering(v string) *PushMeteringDataRequest {
+	s.Metering = &v
+	return s
+}
+
 func (s *PushMeteringDataRequest) SetMeteringData(v []*PushMeteringDataRequestMeteringData) *PushMeteringDataRequest {
 	s.MeteringData = v
 	return s
 }
 
 func (s *PushMeteringDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MeteringData != nil {
+		for _, item := range s.MeteringData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PushMeteringDataRequestMeteringData struct {
-	// example:
-	//
-	// 1666854480406
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// gtm-cn-20p314k5h05
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// test001
+	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MeteringAssist *string `json:"MeteringAssist,omitempty" xml:"MeteringAssist,omitempty"`
-	// example:
-	//
-	// {"VirtualCpu":10}
 	MeteringEntity *string `json:"MeteringEntity,omitempty" xml:"MeteringEntity,omitempty"`
 	// example:
 	//
 	// ORDER20231001
 	PushOrderBizId *string `json:"PushOrderBizId,omitempty" xml:"PushOrderBizId,omitempty"`
-	// example:
-	//
-	// 1662284820000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s PushMeteringDataRequestMeteringData) String() string {

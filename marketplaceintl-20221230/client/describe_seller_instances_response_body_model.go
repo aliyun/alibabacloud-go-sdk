@@ -32,45 +32,16 @@ type iDescribeSellerInstancesResponseBody interface {
 }
 
 type DescribeSellerInstancesResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 10
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// fatal
-	//
-	// example:
-	//
-	// False
-	Fatal *bool `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
-	// example:
-	//
-	// Instance 5723f7ee-952d-411f-94f4-b942a550d9b8 does not exist.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// A6A33748-D573-593C-A3BC-593E33D68311
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeSellerInstancesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// example:
-	//
-	// 103
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *int64                                       `json:"Count,omitempty" xml:"Count,omitempty"`
+	Fatal      *bool                                        `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
+	Message    *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*DescribeSellerInstancesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success    *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Version    *string                                      `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeSellerInstancesResponseBody) String() string {
@@ -172,46 +143,28 @@ func (s *DescribeSellerInstancesResponseBody) SetVersion(v string) *DescribeSell
 }
 
 func (s *DescribeSellerInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSellerInstancesResponseBodyResult struct {
-	// example:
-	//
-	// {\\"authUrl\\":\\"https://marketplace.alibabacloud.com/\\"}
-	AppInfo *string `json:"AppInfo,omitempty" xml:"AppInfo,omitempty"`
-	// example:
-	//
-	// 1
-	ChargeType *int32 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// example:
-	//
-	// sgcmgj000356
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// example:
-	//
-	// 1741752000000
-	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
-	// example:
-	//
-	// {\\"userName\\":\\"marketplace\\"}
-	HostInfo *string `json:"HostInfo,omitempty" xml:"HostInfo,omitempty"`
-	// example:
-	//
-	// {\\"userName\\":\\"marketplace\\"}
-	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
-	// example:
-	//
-	// 5000002763123
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// OPENED
+	AppInfo        *string `json:"AppInfo,omitempty" xml:"AppInfo,omitempty"`
+	ChargeType     *int32  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CreatedOn      *int64  `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	HostInfo       *string `json:"HostInfo,omitempty" xml:"HostInfo,omitempty"`
+	Info           *string `json:"Info,omitempty" xml:"Info,omitempty"`
+	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// example:
-	//
-	// 5322460655123456
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId         *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeSellerInstancesResponseBodyResult) String() string {

@@ -17,9 +17,11 @@ import (
 //
 // @return DescribePushMeteringDataResponse
 func (client *Client) DescribePushMeteringDataWithContext(ctx context.Context, request *DescribePushMeteringDataRequest, runtime *dara.RuntimeOptions) (_result *DescribePushMeteringDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PushOrderBizId) {
@@ -59,9 +61,11 @@ func (client *Client) DescribePushMeteringDataWithContext(ctx context.Context, r
 //
 // @return DescribeSellerInstancesResponse
 func (client *Client) DescribeSellerInstancesWithContext(ctx context.Context, request *DescribeSellerInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSellerInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -117,9 +121,11 @@ func (client *Client) DescribeSellerInstancesWithContext(ctx context.Context, re
 //
 // @return NoticeInstanceUserResponse
 func (client *Client) NoticeInstanceUserWithContext(ctx context.Context, request *NoticeInstanceUserRequest, runtime *dara.RuntimeOptions) (_result *NoticeInstanceUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -167,10 +173,17 @@ func (client *Client) NoticeInstanceUserWithContext(ctx context.Context, request
 //
 // @return PushMeteringDataResponse
 func (client *Client) PushMeteringDataWithContext(ctx context.Context, request *PushMeteringDataRequest, runtime *dara.RuntimeOptions) (_result *PushMeteringDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Metering) {
+		query["Metering"] = request.Metering
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GmtCreate) {
 		body["GmtCreate"] = request.GmtCreate
@@ -181,7 +194,8 @@ func (client *Client) PushMeteringDataWithContext(ctx context.Context, request *
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("PushMeteringData"),

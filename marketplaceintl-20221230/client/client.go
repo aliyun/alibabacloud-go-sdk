@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -10,6 +11,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -23,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("marketplaceIntl")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -65,9 +74,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return DescribePushMeteringDataResponse
 func (client *Client) DescribePushMeteringDataWithOptions(request *DescribePushMeteringDataRequest, runtime *dara.RuntimeOptions) (_result *DescribePushMeteringDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PushOrderBizId) {
@@ -125,9 +136,11 @@ func (client *Client) DescribePushMeteringData(request *DescribePushMeteringData
 //
 // @return DescribeSellerInstancesResponse
 func (client *Client) DescribeSellerInstancesWithOptions(request *DescribeSellerInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSellerInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -201,9 +214,11 @@ func (client *Client) DescribeSellerInstances(request *DescribeSellerInstancesRe
 //
 // @return NoticeInstanceUserResponse
 func (client *Client) NoticeInstanceUserWithOptions(request *NoticeInstanceUserRequest, runtime *dara.RuntimeOptions) (_result *NoticeInstanceUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -269,10 +284,17 @@ func (client *Client) NoticeInstanceUser(request *NoticeInstanceUserRequest) (_r
 //
 // @return PushMeteringDataResponse
 func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataRequest, runtime *dara.RuntimeOptions) (_result *PushMeteringDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Metering) {
+		query["Metering"] = request.Metering
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GmtCreate) {
 		body["GmtCreate"] = request.GmtCreate
@@ -283,7 +305,8 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("PushMeteringData"),

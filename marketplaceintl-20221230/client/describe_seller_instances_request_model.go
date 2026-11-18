@@ -22,26 +22,14 @@ type iDescribeSellerInstancesRequest interface {
 }
 
 type DescribeSellerInstancesRequest struct {
-	// example:
-	//
-	// 5000002763123
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// OPENED
+	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// example:
-	//
-	// 1
-	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageIndex      *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 5322460655123456
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId   *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeSellerInstancesRequest) String() string {

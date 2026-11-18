@@ -26,31 +26,13 @@ type iDescribePushMeteringDataResponseBody interface {
 }
 
 type DescribePushMeteringDataResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// parameter \\"service\\" can not be blank.
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// example:
-	//
-	// false
-	ForceFatal *bool `json:"ForceFatal,omitempty" xml:"ForceFatal,omitempty"`
-	// example:
-	//
-	// Instance 5723f7ee-952d-411f-94f4-b942a550d9b8 does not exist.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// A6A33748-D573-593C-A3BC-593E33D68311
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribePushMeteringDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	DynamicMessage *string                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ForceFatal     *bool                                       `json:"ForceFatal,omitempty" xml:"ForceFatal,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result         *DescribePushMeteringDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribePushMeteringDataResponseBody) String() string {
@@ -125,35 +107,22 @@ func (s *DescribePushMeteringDataResponseBody) SetSuccess(v bool) *DescribePushM
 }
 
 func (s *DescribePushMeteringDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePushMeteringDataResponseBodyResult struct {
-	// example:
-	//
-	// 2024-09-18T03:15:00Z
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 5000002763123
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsPushBilling *bool   `json:"IsPushBilling,omitempty" xml:"IsPushBilling,omitempty"`
-	// example:
-	//
-	// sgcmgj0003XXXX-Period-1
+	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsPushBilling  *bool   `json:"IsPushBilling,omitempty" xml:"IsPushBilling,omitempty"`
 	MeteringAssist *string `json:"MeteringAssist,omitempty" xml:"MeteringAssist,omitempty"`
-	// example:
-	//
-	// {"Frequency":1}
 	MeteringEntity *string `json:"MeteringEntity,omitempty" xml:"MeteringEntity,omitempty"`
-	// example:
-	//
-	// pushData123456
 	PushOrderBizId *string `json:"PushOrderBizId,omitempty" xml:"PushOrderBizId,omitempty"`
-	// example:
-	//
-	// 2025-01-09T02:04:58Z
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePushMeteringDataResponseBodyResult) String() string {

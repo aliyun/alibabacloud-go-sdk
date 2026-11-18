@@ -18,15 +18,9 @@ type iNoticeInstanceUserRequest interface {
 }
 
 type NoticeInstanceUserRequest struct {
-	// example:
-	//
-	// 5000000264872
 	InstanceId  *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NoticeParam *string `json:"NoticeParam,omitempty" xml:"NoticeParam,omitempty"`
-	// example:
-	//
-	// 1
-	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	NoticeType  *int64  `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
 }
 
 func (s NoticeInstanceUserRequest) String() string {

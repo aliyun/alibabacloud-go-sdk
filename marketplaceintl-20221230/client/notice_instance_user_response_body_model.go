@@ -25,26 +25,11 @@ type iNoticeInstanceUserResponseBody interface {
 
 type NoticeInstanceUserResponseBody struct {
 	AccessDeniedDetail *NoticeInstanceUserResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// Instance 5723f7ee-952d-411f-94f4-b942a550d9b8 does not exist.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// A6A33748-D573-593C-A3BC-593E33D68311
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code               *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result             *bool                                             `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success            *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s NoticeInstanceUserResponseBody) String() string {
@@ -110,7 +95,12 @@ func (s *NoticeInstanceUserResponseBody) SetSuccess(v bool) *NoticeInstanceUserR
 }
 
 func (s *NoticeInstanceUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessDeniedDetail != nil {
+		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type NoticeInstanceUserResponseBodyAccessDeniedDetail struct {

@@ -15,10 +15,6 @@ type iDescribePushMeteringDataRequest interface {
 
 type DescribePushMeteringDataRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// pushData123456
 	PushOrderBizId *string `json:"PushOrderBizId,omitempty" xml:"PushOrderBizId,omitempty"`
 }
 
