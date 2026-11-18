@@ -26,25 +26,25 @@ type iListSkillsResponseBody interface {
 }
 
 type ListSkillsResponseBody struct {
-	// The number of entries per page for the current cursor-based pagination.
+	// The current number of entries per page for cursor-based pagination.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page. An empty string is returned if there is no next page.
+	// The next token. An empty string is returned if there are no more pages.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number for compatible page-number-based pagination.
+	// The current compatible page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for compatible page-number-based pagination.
+	// The current compatible number of entries per page.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListSkillsResponseBody struct {
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of Skill summaries. The current public contract does not define a fixed structure for list items. For common fields, see "Supplementary description of response elements".
+	// The list of skill summaries. The structure of list items is not fixed in the current public contract. For common fields, refer to the supplementary description of response parameters.
 	//
 	// example:
 	//
-	// [{"skillId":"skill_example123","name":"code-review","official":false,"description":"A Skill for performing code reviews","iconUrl":"https://example.com/icons/code-review.png","visibility":"user","status":"PUBLISHED","publishedVersion":2,"creatorId":"example-user","createdAt":1760000000000,"canModify":true,"canDelete":true}]
+	// [{"skillId":"skill_example123","name":"code-review","official":false,"description":"Skill for code review","iconUrl":"https://example.com/icons/code-review.png","visibility":"user","status":"PUBLISHED","publishedVersion":2,"creatorId":"example-user","createdAt":1760000000000,"canModify":true,"canDelete":true}]
 	Skills []interface{} `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
-	// The total number of Skills that match the current visibility and filter conditions.
+	// The total number of skills that meet the current visibility and filter conditions.
 	//
 	// example:
 	//

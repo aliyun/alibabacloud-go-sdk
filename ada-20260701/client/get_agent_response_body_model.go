@@ -50,7 +50,7 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
-	// Agent ID。
+	// The agent ID.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type GetAgentResponseBody struct {
 	//
 	// 2
 	AgentVersion *int64 `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// Indicates whether the current identity can delete the agent.
+	// Specifies whether the current identity can delete the agent.
 	//
 	// example:
 	//
 	// true
 	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	// Indicates whether the current identity can modify the agent.
+	// Specifies whether the current identity can modify the agent.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type GetAgentResponseBody struct {
 	//
 	// example:
 	//
-	// CR Code Review Agent
+	// CR code review agent
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The list of knowledge base references. The list contains at most one element.
 	//
@@ -98,13 +98,13 @@ type GetAgentResponseBody struct {
 	//
 	// [{"name":"code-review-guidelines"}]
 	KnowledgeBases interface{} `json:"KnowledgeBases,omitempty" xml:"KnowledgeBases,omitempty"`
-	// The display metadata of the agent. For specific fields, see "Supplementary description of response elements".
+	// The display metadata of the agent. For specific fields, see the supplementary description of response parameters.
 	//
 	// example:
 	//
 	// {"iconUrl":"https://example.com/icons/code-review-agent.png"}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The saved model configuration. This field is returned only for official agents. The value supports an object array and is compatible with legacy single objects and strings. An empty array returns [ \\]. Object arrays preserve the original order, duplicate names, and object fields.
+	// The saved model configuration. This information is returned only for official agents. Object arrays are supported, and historical single objects and strings are compatible. An empty array returns [ \\]. Object arrays retain the original order, duplicate names, and object fields.
 	//
 	// example:
 	//
@@ -116,19 +116,19 @@ type GetAgentResponseBody struct {
 	//
 	// code-review-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the agent is an official agent provided by the platform.
+	// Specifies whether the agent is an official agent provided by the platform.
 	//
 	// example:
 	//
 	// false
 	Official *bool `json:"Official,omitempty" xml:"Official,omitempty"`
-	// The request ID, which is used for Tracing Analysis and troubleshooting.
+	// The request ID. It is used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of skill references. For specific fields, see "Supplementary description of response elements".
+	// The list of skill references. For specific fields, see the supplementary description of response parameters.
 	//
 	// example:
 	//
@@ -144,15 +144,15 @@ type GetAgentResponseBody struct {
 	//
 	// example:
 	//
-	// Check the correctness, security, and maintainability of code changes in the CR, and provide review comments by severity
+	// Please check the correctness, security, and maintainability of the code changes in the CR, and provide review comments based on severity
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The list of MCP Server and Connector name references. For element fields, see the following section.
+	// The list of MCP server and connector name references. For element fields, see the following sections.
 	//
 	// example:
 	//
 	// [{"mcpServerName":"code-repository-mcp"},{"connectorName":"code-review-data"}]
 	Tools interface{} `json:"Tools,omitempty" xml:"Tools,omitempty"`
-	// The most recent update time. The value is a UNIX timestamp in milliseconds.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

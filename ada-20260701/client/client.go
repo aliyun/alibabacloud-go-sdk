@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Ada")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,13 +66,97 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates an Agent.
+// Stops a session execution or cancels a specified turn.
 //
 // Description:
 //
-// - `Name` is the unique identifier of the Agent within the current tenant. It can contain only letters, digits, underscores, and hyphens, and must be 1 to 128 characters in length. The name cannot be modified after creation.
+// If `Params._meta.promptId` is provided, only that turn is canceled. If omitted, the current execution of the session is canceled. To avoid affecting other turns, use the actual `promptId` obtained from the response stream instead of the request `Id`. A cancellation receipt does not mean the turn has ended, nor does it revoke external operations that have already occurred. After calling this operation, continue reading the original response stream or resume reading through `LoadAgentSession` to confirm the desired state of the target turn. Disconnecting the stream connection cannot replace a cancellation request.
 //
-// - Each Agent can be associated with only one knowledge base.
+// @param tmpReq - CancelAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAgentSessionResponse
+func (client *Client) CancelAgentSessionWithOptions(tmpReq *CancelAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *CancelAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CancelAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a session execution or cancels a specified turn.
+//
+// Description:
+//
+// If `Params._meta.promptId` is provided, only that turn is canceled. If omitted, the current execution of the session is canceled. To avoid affecting other turns, use the actual `promptId` obtained from the response stream instead of the request `Id`. A cancellation receipt does not mean the turn has ended, nor does it revoke external operations that have already occurred. After calling this operation, continue reading the original response stream or resume reading through `LoadAgentSession` to confirm the desired state of the target turn. Disconnecting the stream connection cannot replace a cancellation request.
+//
+// @param request - CancelAgentSessionRequest
+//
+// @return CancelAgentSessionResponse
+func (client *Client) CancelAgentSession(request *CancelAgentSessionRequest) (_result *CancelAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelAgentSessionResponse{}
+	_body, _err := client.CancelAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an agent.
+//
+// Description:
+//
+// - Name is the unique identifier of the agent within the current tenant. It can contain only letters, digits, underscores, and hyphens, and must be 1 to 128 characters in length. It cannot be modified after creation.
+//
+// - Each agent can be bound to only one knowledge base.
 //
 // @param request - CreateAgentRequest
 //
@@ -136,13 +228,13 @@ func (client *Client) CreateAgentWithOptions(request *CreateAgentRequest, runtim
 
 // Summary:
 //
-// Creates an Agent.
+// Creates an agent.
 //
 // Description:
 //
-// - `Name` is the unique identifier of the Agent within the current tenant. It can contain only letters, digits, underscores, and hyphens, and must be 1 to 128 characters in length. The name cannot be modified after creation.
+// - Name is the unique identifier of the agent within the current tenant. It can contain only letters, digits, underscores, and hyphens, and must be 1 to 128 characters in length. It cannot be modified after creation.
 //
-// - Each Agent can be associated with only one knowledge base.
+// - Each agent can be bound to only one knowledge base.
 //
 // @param request - CreateAgentRequest
 //
@@ -160,33 +252,121 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates a Skill.
+// Creates a text session for a specified agent and obtains the session ID required for subsequent calls.
+//
+// Description:
+//
+// Before calling this operation, obtain the name of an agent accessible to the current identity. After the session is created, save `JsonRpcResponse.result.sessionId` and use it as `Params.sessionId` for subsequent operations such as `PromptAgentSession` and `LoadAgentSession`.
+//
+// You can set the approval mode during creation. If omitted, the mode defaults to `default`. The availability of `yolo` depends on the target agent. If it is not supported, an error is returned. This mode does not change the caller\\"s permissions or replace business Q&A. To retry the same creation request, reuse the same `clientToken` and the same business parameters.
+//
+// @param tmpReq - CreateAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentSessionResponse
+func (client *Client) CreateAgentSessionWithOptions(tmpReq *CreateAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a text session for a specified agent and obtains the session ID required for subsequent calls.
+//
+// Description:
+//
+// Before calling this operation, obtain the name of an agent accessible to the current identity. After the session is created, save `JsonRpcResponse.result.sessionId` and use it as `Params.sessionId` for subsequent operations such as `PromptAgentSession` and `LoadAgentSession`.
+//
+// You can set the approval mode during creation. If omitted, the mode defaults to `default`. The availability of `yolo` depends on the target agent. If it is not supported, an error is returned. This mode does not change the caller\\"s permissions or replace business Q&A. To retry the same creation request, reuse the same `clientToken` and the same business parameters.
+//
+// @param request - CreateAgentSessionRequest
+//
+// @return CreateAgentSessionResponse
+func (client *Client) CreateAgentSession(request *CreateAgentSessionRequest) (_result *CreateAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgentSessionResponse{}
+	_body, _err := client.CreateAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a skill.
 //
 // Description:
 //
 // - Creation rules:
 //
-//   - `Name` must be unique within the current tenant and cannot share a name with an official Skill.
+//   - `Name` must be unique within the current tenant and cannot be the same as an official skill.
 //
-//   - `Description` and `Metadata` are required. `Metadata` must contain exactly one valid content source. Different sources cannot be mixed.
+//   - `Description` and `Metadata` are required. `Metadata` must contain one and only one valid content source. Different sources cannot be mixed.
 //
-//   - After the Skill is created, you can modify it by calling `UpdateSkill`.
+//   - After the skill is created, you can modify it by calling `UpdateSkill`.
 //
 // - Content sources:
 //
-//   - `skillMd`: Directly provide the Markdown body without a YAML header. Specify the name and description by using `Name` and `Description`.
+//   - `skillMd`: Directly enter the Markdown body. No YAML front matter is required. Use `Name` and `Description` for the name and description.
 //
-//   - `transitId`: Upload and confirm a ZIP file through Transit. Call the operations in the following order:
+//   - `transitId`: Upload and confirm a ZIP file through Transit. The call sequence is as follows:
 //
-//     1. Call `CreateTransitUploadPolicy` with `FileShowName` to obtain `TransitId`, `FilePath`, and `PolicyInfo`.
+//     1. Call `CreateTransitUploadPolicy` and pass in `FileShowName` to obtain `TransitId`, `FilePath`, and `PolicyInfo`.
 //
-//     2. Upload the ZIP file to object storage by using `PolicyInfo` and `FilePath`.
+//     2. Use `PolicyInfo` and `FilePath` to upload the ZIP file to Object Storage Service (OSS).
 //
-//     3. Call `ConfirmTransitUpload` with `TransitId`. Proceed with creation only when the response returns `Confirmed=true`.
+//     3. Call `ConfirmTransitUpload` and pass in `TransitId`. Proceed with creation only if `Confirmed=true` is returned.
 //
 //     4. Call `CreateSkill` and pass the confirmed `TransitId` in `Metadata.transitId`.
 //
-//   - `bundleUrl`: Provide a public HTTPS direct link to a ZIP file. The platform downloads the file and saves it as an Artifact. The original URL is not persisted or returned in responses.
+//   - `bundleUrl`: Pass in a public HTTPS ZIP direct link. The platform downloads the file and saves it as an artifact. The original URL is not saved or echoed.
 //
 // @param request - CreateSkillRequest
 //
@@ -242,33 +422,33 @@ func (client *Client) CreateSkillWithOptions(request *CreateSkillRequest, runtim
 
 // Summary:
 //
-// Creates a Skill.
+// Creates a skill.
 //
 // Description:
 //
 // - Creation rules:
 //
-//   - `Name` must be unique within the current tenant and cannot share a name with an official Skill.
+//   - `Name` must be unique within the current tenant and cannot be the same as an official skill.
 //
-//   - `Description` and `Metadata` are required. `Metadata` must contain exactly one valid content source. Different sources cannot be mixed.
+//   - `Description` and `Metadata` are required. `Metadata` must contain one and only one valid content source. Different sources cannot be mixed.
 //
-//   - After the Skill is created, you can modify it by calling `UpdateSkill`.
+//   - After the skill is created, you can modify it by calling `UpdateSkill`.
 //
 // - Content sources:
 //
-//   - `skillMd`: Directly provide the Markdown body without a YAML header. Specify the name and description by using `Name` and `Description`.
+//   - `skillMd`: Directly enter the Markdown body. No YAML front matter is required. Use `Name` and `Description` for the name and description.
 //
-//   - `transitId`: Upload and confirm a ZIP file through Transit. Call the operations in the following order:
+//   - `transitId`: Upload and confirm a ZIP file through Transit. The call sequence is as follows:
 //
-//     1. Call `CreateTransitUploadPolicy` with `FileShowName` to obtain `TransitId`, `FilePath`, and `PolicyInfo`.
+//     1. Call `CreateTransitUploadPolicy` and pass in `FileShowName` to obtain `TransitId`, `FilePath`, and `PolicyInfo`.
 //
-//     2. Upload the ZIP file to object storage by using `PolicyInfo` and `FilePath`.
+//     2. Use `PolicyInfo` and `FilePath` to upload the ZIP file to Object Storage Service (OSS).
 //
-//     3. Call `ConfirmTransitUpload` with `TransitId`. Proceed with creation only when the response returns `Confirmed=true`.
+//     3. Call `ConfirmTransitUpload` and pass in `TransitId`. Proceed with creation only if `Confirmed=true` is returned.
 //
 //     4. Call `CreateSkill` and pass the confirmed `TransitId` in `Metadata.transitId`.
 //
-//   - `bundleUrl`: Provide a public HTTPS direct link to a ZIP file. The platform downloads the file and saves it as an Artifact. The original URL is not persisted or returned in responses.
+//   - `bundleUrl`: Pass in a public HTTPS ZIP direct link. The platform downloads the file and saves it as an artifact. The original URL is not saved or echoed.
 //
 // @param request - CreateSkillRequest
 //
@@ -286,19 +466,19 @@ func (client *Client) CreateSkill(request *CreateSkillRequest) (_result *CreateS
 
 // Summary:
 //
-// Generates a credential for direct file upload. The caller can use the returned upload policy to upload a file directly to object storage.
+// Generates credentials for direct file upload. Callers can use the returned upload policy to upload files directly to object storage.
 //
 // Description:
 //
-// - `Network` can be set to `public` or `internal` to generate a public or same-region internal upload address. Default value: `public`.
+// - The Network parameter can be set to public or internal to generate a public network or same-region internal network upload address, respectively. The default value is public.
 //
 // - The maximum size of a single file is 50 MiB.
 //
-// - `PolicyInfo` contains short-term upload authorization information intended only for the current file upload. Do not log it, persist it long-term, or forward it to other users.
+// - PolicyInfo contains short-term upload authorization information and is only used for the current file upload. Do not log, permanently store, or forward it to other users.
 //
-// - `ExpireMs` controls the validity period of the upload policy and the Transit record, in milliseconds. It is not an absolute timestamp. The default and maximum value is `604800000` (7 days), and the minimum value is `1000` (1 second). The validity period is rounded down to the nearest whole second. For example, 1500 milliseconds takes effect as 1 second.
+// - ExpireMs specifies the validity period of the upload policy and the transit record in milliseconds, not an absolute timestamp. The default and maximum values are both 604800000 (7 days), and the minimum value is 1000 (1 second). The validity period is rounded down to the nearest whole second. For example, 1500 milliseconds takes effect as 1 second.
 //
-// - Call `GetTransitMeta` and read `ExpireAt` to obtain the expiration time of the Transit record. Confirming the upload or querying the record does not extend the validity period.
+// - You can call GetTransitMeta to read ExpireAt and obtain the expiration time of the transit record. Confirming the upload and querying the record do not extend its validity period.
 //
 // @param request - CreateTransitUploadPolicyRequest
 //
@@ -354,19 +534,19 @@ func (client *Client) CreateTransitUploadPolicyWithOptions(request *CreateTransi
 
 // Summary:
 //
-// Generates a credential for direct file upload. The caller can use the returned upload policy to upload a file directly to object storage.
+// Generates credentials for direct file upload. Callers can use the returned upload policy to upload files directly to object storage.
 //
 // Description:
 //
-// - `Network` can be set to `public` or `internal` to generate a public or same-region internal upload address. Default value: `public`.
+// - The Network parameter can be set to public or internal to generate a public network or same-region internal network upload address, respectively. The default value is public.
 //
 // - The maximum size of a single file is 50 MiB.
 //
-// - `PolicyInfo` contains short-term upload authorization information intended only for the current file upload. Do not log it, persist it long-term, or forward it to other users.
+// - PolicyInfo contains short-term upload authorization information and is only used for the current file upload. Do not log, permanently store, or forward it to other users.
 //
-// - `ExpireMs` controls the validity period of the upload policy and the Transit record, in milliseconds. It is not an absolute timestamp. The default and maximum value is `604800000` (7 days), and the minimum value is `1000` (1 second). The validity period is rounded down to the nearest whole second. For example, 1500 milliseconds takes effect as 1 second.
+// - ExpireMs specifies the validity period of the upload policy and the transit record in milliseconds, not an absolute timestamp. The default and maximum values are both 604800000 (7 days), and the minimum value is 1000 (1 second). The validity period is rounded down to the nearest whole second. For example, 1500 milliseconds takes effect as 1 second.
 //
-// - Call `GetTransitMeta` and read `ExpireAt` to obtain the expiration time of the Transit record. Confirming the upload or querying the record does not extend the validity period.
+// - You can call GetTransitMeta to read ExpireAt and obtain the expiration time of the transit record. Confirming the upload and querying the record do not extend its validity period.
 //
 // @param request - CreateTransitUploadPolicyRequest
 //
@@ -384,13 +564,13 @@ func (client *Client) CreateTransitUploadPolicy(request *CreateTransitUploadPoli
 
 // Summary:
 //
-// Deletes a specified Agent.
+// Deletes a specified agent.
 //
 // Description:
 //
-// - Creators can delete Agents that they created.
+// - Creators can delete the agents they created.
 //
-// - After deletion, the Agent can no longer be queried, updated, or run.
+// - After deletion, the agent can no longer be queried, updated, or run.
 //
 // @param request - DeleteAgentRequest
 //
@@ -434,13 +614,13 @@ func (client *Client) DeleteAgentWithOptions(request *DeleteAgentRequest, runtim
 
 // Summary:
 //
-// Deletes a specified Agent.
+// Deletes a specified agent.
 //
 // Description:
 //
-// - Creators can delete Agents that they created.
+// - Creators can delete the agents they created.
 //
-// - After deletion, the Agent can no longer be queried, updated, or run.
+// - After deletion, the agent can no longer be queried, updated, or run.
 //
 // @param request - DeleteAgentRequest
 //
@@ -458,21 +638,109 @@ func (client *Client) DeleteAgent(request *DeleteAgentRequest) (_result *DeleteA
 
 // Summary:
 //
-// Soft-deletes a Skill that the current caller has permission to modify.
+// Deletes an idle session that is no longer needed.
+//
+// Description:
+//
+// A session cannot be directly deleted while it is being executed or waiting for interaction. You must first call `CancelAgentSession` and continue reading the original response stream, or resume reading through `LoadAgentSession`. Delete the session only after confirming that the target turn has ended.
+//
+// A successful deletion indicates that the session deletion operation is complete, but it does not mean that external operations that have already occurred are rolled back. Deleting a session does not delete the associated agent or assistant.
+//
+// @param tmpReq - DeleteAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentSessionResponse
+func (client *Client) DeleteAgentSessionWithOptions(tmpReq *DeleteAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an idle session that is no longer needed.
+//
+// Description:
+//
+// A session cannot be directly deleted while it is being executed or waiting for interaction. You must first call `CancelAgentSession` and continue reading the original response stream, or resume reading through `LoadAgentSession`. Delete the session only after confirming that the target turn has ended.
+//
+// A successful deletion indicates that the session deletion operation is complete, but it does not mean that external operations that have already occurred are rolled back. Deleting a session does not delete the associated agent or assistant.
+//
+// @param request - DeleteAgentSessionRequest
+//
+// @return DeleteAgentSessionResponse
+func (client *Client) DeleteAgentSession(request *DeleteAgentSessionRequest) (_result *DeleteAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgentSessionResponse{}
+	_body, _err := client.DeleteAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Soft-deletes a skill that the current caller has permission to modify.
 //
 // Description:
 //
 // - Deletion permissions:
 //
-//   - You can only delete custom Skills that the current caller has permission to modify.
+//   - You can delete only custom skills that you have permission to modify.
 //
-//   - The caller must be the Skill creator or the tenant root account that has permission to manage the tenant-level Skill. Official Skills cannot be deleted.
+//   - You must be the creator of the skill or the root account of the tenant that has permission to manage the tenant-level skill. Official skills cannot be deleted.
 //
 // - Deletion results:
 //
-//   - Deletion uses soft delete. After successful deletion, `GetSkill` and `ListSkills` no longer return the Skill, and you can create a new Skill with the same name.
+//   - This operation performs a soft delete. After the skill is deleted, the `GetSkill` and `ListSkills` operations no longer return the skill, and you can create a new skill with the same name.
 //
-//   - Recovery is not supported. You cannot delete a Skill that has already been deleted or does not exist.
+//   - Recovery is not supported. You cannot delete a skill multiple times or delete a non-existent skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -516,21 +784,21 @@ func (client *Client) DeleteSkillWithOptions(request *DeleteSkillRequest, runtim
 
 // Summary:
 //
-// Soft-deletes a Skill that the current caller has permission to modify.
+// Soft-deletes a skill that the current caller has permission to modify.
 //
 // Description:
 //
 // - Deletion permissions:
 //
-//   - You can only delete custom Skills that the current caller has permission to modify.
+//   - You can delete only custom skills that you have permission to modify.
 //
-//   - The caller must be the Skill creator or the tenant root account that has permission to manage the tenant-level Skill. Official Skills cannot be deleted.
+//   - You must be the creator of the skill or the root account of the tenant that has permission to manage the tenant-level skill. Official skills cannot be deleted.
 //
 // - Deletion results:
 //
-//   - Deletion uses soft delete. After successful deletion, `GetSkill` and `ListSkills` no longer return the Skill, and you can create a new Skill with the same name.
+//   - This operation performs a soft delete. After the skill is deleted, the `GetSkill` and `ListSkills` operations no longer return the skill, and you can create a new skill with the same name.
 //
-//   - Recovery is not supported. You cannot delete a Skill that has already been deleted or does not exist.
+//   - Recovery is not supported. You cannot delete a skill multiple times or delete a non-existent skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -548,11 +816,11 @@ func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteS
 
 // Summary:
 //
-// Queries an agent visible to the current identity by name.
+// Queries agents visible to the current identity by name.
 //
 // Description:
 //
-// - You can retrieve agents that you created, agents visible within the current tenant, and official agents provided by the platform.
+// - You can retrieve agents created by yourself, agents visible within the current tenant, and official agents provided by the platform.
 //
 // @param request - GetAgentRequest
 //
@@ -596,11 +864,11 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dar
 
 // Summary:
 //
-// Queries an agent visible to the current identity by name.
+// Queries agents visible to the current identity by name.
 //
 // Description:
 //
-// - You can retrieve agents that you created, agents visible within the current tenant, and official agents provided by the platform.
+// - You can retrieve agents created by yourself, agents visible within the current tenant, and official agents provided by the platform.
 //
 // @param request - GetAgentRequest
 //
@@ -618,7 +886,187 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 
 // Summary:
 //
-// Queries a Skill by name that is visible to the current caller.
+// Queries session details such as the title, associated agent, and core timestamps based on the session ID.
+//
+// Description:
+//
+// For `Params.sessionId`, use the session ID returned by `CreateAgentSession` or `ListAgentSessions`. The business result is located in `JsonRpcResponse.result`, which is of type `any`. The fields within the object retain their actual casing.
+//
+// This operation provides a session summary and does not return the complete message history, pending interactions, or the final state of real-time turns. For history and disconnection recovery, use `LoadAgentSession`. For approvals and Q&A, read from the streaming notifications of `PromptAgentSession` or `LoadAgentSession`.
+//
+// @param tmpReq - GetAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentSessionResponse
+func (client *Client) GetAgentSessionWithOptions(tmpReq *GetAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *GetAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		query["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		query["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries session details such as the title, associated agent, and core timestamps based on the session ID.
+//
+// Description:
+//
+// For `Params.sessionId`, use the session ID returned by `CreateAgentSession` or `ListAgentSessions`. The business result is located in `JsonRpcResponse.result`, which is of type `any`. The fields within the object retain their actual casing.
+//
+// This operation provides a session summary and does not return the complete message history, pending interactions, or the final state of real-time turns. For history and disconnection recovery, use `LoadAgentSession`. For approvals and Q&A, read from the streaming notifications of `PromptAgentSession` or `LoadAgentSession`.
+//
+// @param request - GetAgentSessionRequest
+//
+// @return GetAgentSessionResponse
+func (client *Client) GetAgentSession(request *GetAgentSessionRequest) (_result *GetAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentSessionResponse{}
+	_body, _err := client.GetAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the model and thinking level configurations currently used by the session.
+//
+// Description:
+//
+// - Use the `sessionId` returned by CreateAgentSession to query the configurations. This operation does not send messages or replay session history.
+//
+// - Read the current model from `JsonRpcResponse.result.modelId`. To modify it, call SetAgentSessionModel.
+//
+// - The thinking level is an optional advanced configuration. The supported levels and current values are subject to the actual response of this operation, which may vary across different agents, models, and sessions.
+//
+// @param tmpReq - GetAgentSessionModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentSessionModelResponse
+func (client *Client) GetAgentSessionModelWithOptions(tmpReq *GetAgentSessionModelRequest, runtime *dara.RuntimeOptions) (_result *GetAgentSessionModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAgentSessionModelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		query["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		query["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentSessionModel"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentSessionModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the model and thinking level configurations currently used by the session.
+//
+// Description:
+//
+// - Use the `sessionId` returned by CreateAgentSession to query the configurations. This operation does not send messages or replay session history.
+//
+// - Read the current model from `JsonRpcResponse.result.modelId`. To modify it, call SetAgentSessionModel.
+//
+// - The thinking level is an optional advanced configuration. The supported levels and current values are subject to the actual response of this operation, which may vary across different agents, models, and sessions.
+//
+// @param request - GetAgentSessionModelRequest
+//
+// @return GetAgentSessionModelResponse
+func (client *Client) GetAgentSessionModel(request *GetAgentSessionModelRequest) (_result *GetAgentSessionModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentSessionModelResponse{}
+	_body, _err := client.GetAgentSessionModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the skills visible to the current caller by name.
 //
 // Description:
 //
@@ -626,19 +1074,19 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 //
 //   - Queries by `Name`. Querying by `SkillId` is not supported.
 //
-//   - Returns the Skill with the matching name that is visible to the current caller under the current tenant first. If no visible record exists, queries the official Skill with the same name.
+//   - Prioritizes returning skills with the same name that are visible to the caller under the current tenant. If no visible records are found, it queries official skills with the same name.
 //
-//   - If `SkillVersion` is omitted, the current Skill is returned. This parameter is omitted by default.
+//   - If `SkillVersion` is omitted, the current skill is returned. This parameter is omitted by default.
 //
 // - Download URL:
 //
 //   - `Network` supports `public` and `internal`. If omitted, no download URL is generated.
 //
-//   - If the Skill has an accessible Artifact, a temporary `DownloadUrl` and the corresponding `DownloadUrlNetwork` are returned.
+//   - If the skill has an accessible artifact, a temporary `DownloadUrl` and the corresponding `DownloadUrlNetwork` are returned.
 //
-//   - If the Artifact does not exist, is inaccessible, or the URL generation fails, the Skill query still succeeds, but download URL-related fields may not be returned.
+//   - If the artifact does not exist, access is denied, or URL generation fails, the skill query still succeeds, but the download URL-related fields may not be returned.
 //
-//   - The original `bundleUrl` used during creation is not stored and is not returned by this operation.
+//   - The original `bundleUrl` used during creation is not saved and will not be echoed back through this API.
 //
 // @param request - GetSkillRequest
 //
@@ -690,7 +1138,7 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 
 // Summary:
 //
-// Queries a Skill by name that is visible to the current caller.
+// Queries the skills visible to the current caller by name.
 //
 // Description:
 //
@@ -698,19 +1146,19 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 //
 //   - Queries by `Name`. Querying by `SkillId` is not supported.
 //
-//   - Returns the Skill with the matching name that is visible to the current caller under the current tenant first. If no visible record exists, queries the official Skill with the same name.
+//   - Prioritizes returning skills with the same name that are visible to the caller under the current tenant. If no visible records are found, it queries official skills with the same name.
 //
-//   - If `SkillVersion` is omitted, the current Skill is returned. This parameter is omitted by default.
+//   - If `SkillVersion` is omitted, the current skill is returned. This parameter is omitted by default.
 //
 // - Download URL:
 //
 //   - `Network` supports `public` and `internal`. If omitted, no download URL is generated.
 //
-//   - If the Skill has an accessible Artifact, a temporary `DownloadUrl` and the corresponding `DownloadUrlNetwork` are returned.
+//   - If the skill has an accessible artifact, a temporary `DownloadUrl` and the corresponding `DownloadUrlNetwork` are returned.
 //
-//   - If the Artifact does not exist, is inaccessible, or the URL generation fails, the Skill query still succeeds, but download URL-related fields may not be returned.
+//   - If the artifact does not exist, access is denied, or URL generation fails, the skill query still succeeds, but the download URL-related fields may not be returned.
 //
-//   - The original `bundleUrl` used during creation is not stored and is not returned by this operation.
+//   - The original `bundleUrl` used during creation is not saved and will not be echoed back through this API.
 //
 // @param request - GetSkillRequest
 //
@@ -728,21 +1176,21 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 
 // Summary:
 //
-// Queries the metadata of a Transit file, including the upload status, file size, and expiration time, and optionally generates a temporary download URL.
+// Queries the metadata of a transit file, such as the upload status, file size, and expiration time, and retrieves a temporary download URL on demand.
 //
 // Description:
 //
-// - Specify at least one of `TransitId` and `FilePath`. If both are specified, `TransitId` takes precedence.
+// - Specify at least one of TransitId and FilePath. If both are provided, TransitId takes precedence.
 //
-// - Use the `TransitId` returned by `CreateTransitUploadPolicy` to query the file. `TransitId` is a temporary capability identifier used during the file upload process. Do not share it with unauthorized users.
+// - Use the TransitId returned by CreateTransitUploadPolicy. TransitId is a temporary capability identifier in the file upload process. Do not forward it to unrelated users.
 //
-// - `FilePath` is an opaque object path returned by `CreateTransitUploadPolicy`. Use it as-is. Do not parse, modify, or construct it manually.
+// - FilePath is the opaque object path returned by CreateTransitUploadPolicy. Callers must use it as is. Do not parse, modify, or concatenate it.
 //
-// - When you query by `FilePath`, an error is returned if the record does not exist or is not accessible to the caller.
+// - When you query by FilePath, an error is returned if the record does not exist or is inaccessible to the current caller.
 //
-// - `ExpireMs` specifies the validity period of the download URL in milliseconds. Default value: `900000` (15 minutes). The validity period is rounded down to the nearest whole second. For example, 1500 milliseconds is rounded down to 1 second.
+// - ExpireMs specifies the validity period of the download URL in milliseconds. The default value is 900000, which indicates 15 minutes. The validity period is rounded down to the nearest second. For example, 1500 milliseconds takes effect as 1 second.
 //
-// - `ExpireAt` is the expiration time of the Transit record, not the expiration time of the download URL. Querying, generating a download URL, and confirming the upload do not extend the record validity period.
+// - ExpireAt is the expiration time of the transit record, not the expiration time of the download URL. Querying, generating a download URL, and confirming the upload do not extend the validity period of the record.
 //
 // @param request - GetTransitMetaRequest
 //
@@ -798,21 +1246,21 @@ func (client *Client) GetTransitMetaWithOptions(request *GetTransitMetaRequest, 
 
 // Summary:
 //
-// Queries the metadata of a Transit file, including the upload status, file size, and expiration time, and optionally generates a temporary download URL.
+// Queries the metadata of a transit file, such as the upload status, file size, and expiration time, and retrieves a temporary download URL on demand.
 //
 // Description:
 //
-// - Specify at least one of `TransitId` and `FilePath`. If both are specified, `TransitId` takes precedence.
+// - Specify at least one of TransitId and FilePath. If both are provided, TransitId takes precedence.
 //
-// - Use the `TransitId` returned by `CreateTransitUploadPolicy` to query the file. `TransitId` is a temporary capability identifier used during the file upload process. Do not share it with unauthorized users.
+// - Use the TransitId returned by CreateTransitUploadPolicy. TransitId is a temporary capability identifier in the file upload process. Do not forward it to unrelated users.
 //
-// - `FilePath` is an opaque object path returned by `CreateTransitUploadPolicy`. Use it as-is. Do not parse, modify, or construct it manually.
+// - FilePath is the opaque object path returned by CreateTransitUploadPolicy. Callers must use it as is. Do not parse, modify, or concatenate it.
 //
-// - When you query by `FilePath`, an error is returned if the record does not exist or is not accessible to the caller.
+// - When you query by FilePath, an error is returned if the record does not exist or is inaccessible to the current caller.
 //
-// - `ExpireMs` specifies the validity period of the download URL in milliseconds. Default value: `900000` (15 minutes). The validity period is rounded down to the nearest whole second. For example, 1500 milliseconds is rounded down to 1 second.
+// - ExpireMs specifies the validity period of the download URL in milliseconds. The default value is 900000, which indicates 15 minutes. The validity period is rounded down to the nearest second. For example, 1500 milliseconds takes effect as 1 second.
 //
-// - `ExpireAt` is the expiration time of the Transit record, not the expiration time of the download URL. Querying, generating a download URL, and confirming the upload do not extend the record validity period.
+// - ExpireAt is the expiration time of the transit record, not the expiration time of the download URL. Querying, generating a download URL, and confirming the upload do not extend the validity period of the record.
 //
 // @param request - GetTransitMetaRequest
 //
@@ -830,15 +1278,170 @@ func (client *Client) GetTransitMeta(request *GetTransitMetaRequest) (_result *G
 
 // Summary:
 //
-// Queries agents visible to the current identity by paging.
+// Queries the global workflow configurations.
 //
 // Description:
 //
-// - By default, returns official platform agents and tenant agents visible to the current identity.
+// Queries the global workflow configurations for a tenant and a region. The content is sensitive information. In addition to the permissions required for this operation, the ada:DownloadFile permission is also required.
 //
-// - Set `Scope=SYSTEM` to query only official agents, or `Scope=CUSTOM` to query only custom agents.
+// @param request - GetWorkflowGlobalEnvRequest
 //
-// - Both cursor-based pagination and page number-based pagination are supported. When using cursor-based pagination, pass the `NextToken` value from the previous response to the next request, and keep the caller identity, filter conditions, and `MaxResults` unchanged.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowGlobalEnvResponse
+func (client *Client) GetWorkflowGlobalEnvWithOptions(request *GetWorkflowGlobalEnvRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowGlobalEnvResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowGlobalEnv"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowGlobalEnvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the global workflow configurations.
+//
+// Description:
+//
+// Queries the global workflow configurations for a tenant and a region. The content is sensitive information. In addition to the permissions required for this operation, the ada:DownloadFile permission is also required.
+//
+// @param request - GetWorkflowGlobalEnvRequest
+//
+// @return GetWorkflowGlobalEnvResponse
+func (client *Client) GetWorkflowGlobalEnv(request *GetWorkflowGlobalEnvRequest) (_result *GetWorkflowGlobalEnvResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetWorkflowGlobalEnvResponse{}
+	_body, _err := client.GetWorkflowGlobalEnvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the session summary by paging for the caller to select or resume existing sessions.
+//
+// Description:
+//
+// You can filter sessions by agent name. Omit Params.NextToken on the first page. When querying subsequent pages, keep the filter conditions and page size unchanged, and pass the JsonRpcResponse.Result.NextToken returned from the previous page as is to Params.NextToken. Pagination ends when the token is not returned or is empty.
+//
+// The list returns session summaries such as session ID, title, and time, but does not provide the final state of turn execution. After selecting a session, you can use GetAgentSession to query details or LoadAgentSession to load history.
+//
+// Params in the request, and JsonRpcResponse and Result in the response are explicit objects. The pagination field MaxResults is of type integer<int32>, and NextToken is of type string. SessionList retains the any type. For session summary fields, see the supplementary description.
+//
+// @param tmpReq - ListAgentSessionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentSessionsResponse
+func (client *Client) ListAgentSessionsWithOptions(tmpReq *ListAgentSessionsRequest, runtime *dara.RuntimeOptions) (_result *ListAgentSessionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAgentSessionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentSessions"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentSessionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the session summary by paging for the caller to select or resume existing sessions.
+//
+// Description:
+//
+// You can filter sessions by agent name. Omit Params.NextToken on the first page. When querying subsequent pages, keep the filter conditions and page size unchanged, and pass the JsonRpcResponse.Result.NextToken returned from the previous page as is to Params.NextToken. Pagination ends when the token is not returned or is empty.
+//
+// The list returns session summaries such as session ID, title, and time, but does not provide the final state of turn execution. After selecting a session, you can use GetAgentSession to query details or LoadAgentSession to load history.
+//
+// Params in the request, and JsonRpcResponse and Result in the response are explicit objects. The pagination field MaxResults is of type integer<int32>, and NextToken is of type string. SessionList retains the any type. For session summary fields, see the supplementary description.
+//
+// @param request - ListAgentSessionsRequest
+//
+// @return ListAgentSessionsResponse
+func (client *Client) ListAgentSessions(request *ListAgentSessionsRequest) (_result *ListAgentSessionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgentSessionsResponse{}
+	_body, _err := client.ListAgentSessionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the agents visible to the current identity by using paging.
+//
+// Description:
+//
+// - By default, the API returns the official agents provided by the platform and the tenant agents visible to the current identity.
+//
+// - If Scope is set to SYSTEM, only official agents are queried. If Scope is set to CUSTOM, only custom agents are queried.
+//
+// - Supports both cursor-based pagination and page number-based pagination. When using cursor-based pagination, pass the NextToken value exactly as returned in the next request, and keep the calling identity, filter conditions, and MaxResults unchanged.
 //
 // @param request - ListAgentsRequest
 //
@@ -914,15 +1517,15 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, runtime 
 
 // Summary:
 //
-// Queries agents visible to the current identity by paging.
+// Queries the agents visible to the current identity by using paging.
 //
 // Description:
 //
-// - By default, returns official platform agents and tenant agents visible to the current identity.
+// - By default, the API returns the official agents provided by the platform and the tenant agents visible to the current identity.
 //
-// - Set `Scope=SYSTEM` to query only official agents, or `Scope=CUSTOM` to query only custom agents.
+// - If Scope is set to SYSTEM, only official agents are queried. If Scope is set to CUSTOM, only custom agents are queried.
 //
-// - Both cursor-based pagination and page number-based pagination are supported. When using cursor-based pagination, pass the `NextToken` value from the previous response to the next request, and keep the caller identity, filter conditions, and `MaxResults` unchanged.
+// - Supports both cursor-based pagination and page number-based pagination. When using cursor-based pagination, pass the NextToken value exactly as returned in the next request, and keep the calling identity, filter conditions, and MaxResults unchanged.
 //
 // @param request - ListAgentsRequest
 //
@@ -940,29 +1543,123 @@ func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgent
 
 // Summary:
 //
-// Queries Skills visible to the current caller by paging.
+// Queries the text models visible to the current caller for selection when setting a session model.
 //
 // Description:
 //
-// - Query and filtering:
+// - For text sessions, pass `ModelType=text` and use `MaxResults` and `NextToken` for paging. Obtain the model identifier from `Models[].Id` and pass it as `Params.modelId` to SetAgentSessionModel.
 //
-//   - Set `Scope=SYSTEM` to query only official Skills, or `Scope=CUSTOM` to query only custom Skills. If omitted, both official and custom Skills are queried.
+// - Visibility in the model catalog does not mean the target session supports the model. After setting the model, refer to the return value of SetAgentSessionModel or the query result of GetAgentSessionModel.
 //
-//   - Custom Skills with `user` visibility are visible only to the creator. Skills with `tenant` visibility are visible to the current tenant.
+// - `ThinkingLevels` and `ThinkingLevel` are used for optional thinking level configurations and do not affect the integration flow for selecting a model only.
 //
-//   - Filtering by `CreatorId`, `Q`, and `Visibility` is supported. `Q` performs a fuzzy match on the Skill name or description.
+// @param request - ListModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelsResponse
+func (client *Client) ListModelsWithOptions(request *ListModelsRequest, runtime *dara.RuntimeOptions) (_result *ListModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		query["ModelType"] = request.ModelType
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModels"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the text models visible to the current caller for selection when setting a session model.
+//
+// Description:
+//
+// - For text sessions, pass `ModelType=text` and use `MaxResults` and `NextToken` for paging. Obtain the model identifier from `Models[].Id` and pass it as `Params.modelId` to SetAgentSessionModel.
+//
+// - Visibility in the model catalog does not mean the target session supports the model. After setting the model, refer to the return value of SetAgentSessionModel or the query result of GetAgentSessionModel.
+//
+// - `ThinkingLevels` and `ThinkingLevel` are used for optional thinking level configurations and do not affect the integration flow for selecting a model only.
+//
+// @param request - ListModelsRequest
+//
+// @return ListModelsResponse
+func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListModelsResponse{}
+	_body, _err := client.ListModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query for skills visible to the current invoker.
+//
+// Description:
+//
+// - Query and filter:
+//
+//   - `Scope=SYSTEM` queries only official skills, and `Scope=CUSTOM` queries only custom skills. If omitted, both are queried.
+//
+//   - Custom skills with `user` visibility are visible only to the creator, while skills with `tenant` visibility are visible to the current tenant.
+//
+//   - Supports filtering by `CreatorId`, `Q`, and `Visibility`. `Q` performs a fuzzy match on the skill name or description.
 //
 //   - Results are sorted by update time in descending order by default.
 //
 // - Pagination:
 //
-//   - For cursor-based pagination, use `MaxResults` and `NextToken`. Do not pass `NextToken` for the first query. For subsequent pages, use the token returned in the previous response. When using `NextToken` for subsequent pages, `CreatorId`, `Q`, `Visibility`, `Scope`, and `MaxResults` must remain the same as the previous page. If you change the query conditions, start over from the first page.
+//   - Cursor-based pagination uses `MaxResults` and `NextToken`. Do not pass `NextToken` for the first query. For subsequent pages, use the token from the previous response. When using `NextToken` for subsequent pages, `CreatorId`, `Q`, `Visibility`, `Scope`, and `MaxResults` must remain the same as the previous page. If you modify the query conditions, you must restart the query from the first page.
 //
-//   - For page-number-based pagination, use `PageNumber` and `PageSize`. If `MaxResults` is explicitly specified, cursor-based pagination takes precedence. If `NextToken` is specified, `PageNumber` is ignored.
+//   - Page number-based pagination uses `PageNumber` and `PageSize`. If `MaxResults` is explicitly passed, cursor-based pagination takes precedence. If `NextToken` is passed, `PageNumber` is ignored.
 //
-// - Response content:
+// - Returned content:
 //
-//   - This operation returns only Skill summaries and does not generate Bundle download URLs. To obtain download URLs, call `GetSkill` and specify `Network`.
+//   - This operation returns only skill summaries and does not generate bundle download URLs. To obtain a download URL, call `GetSkill` and specify `Network`.
 //
 // @param request - ListSkillsRequest
 //
@@ -1034,29 +1731,29 @@ func (client *Client) ListSkillsWithOptions(request *ListSkillsRequest, runtime 
 
 // Summary:
 //
-// Queries Skills visible to the current caller by paging.
+// Performs a paging query for skills visible to the current invoker.
 //
 // Description:
 //
-// - Query and filtering:
+// - Query and filter:
 //
-//   - Set `Scope=SYSTEM` to query only official Skills, or `Scope=CUSTOM` to query only custom Skills. If omitted, both official and custom Skills are queried.
+//   - `Scope=SYSTEM` queries only official skills, and `Scope=CUSTOM` queries only custom skills. If omitted, both are queried.
 //
-//   - Custom Skills with `user` visibility are visible only to the creator. Skills with `tenant` visibility are visible to the current tenant.
+//   - Custom skills with `user` visibility are visible only to the creator, while skills with `tenant` visibility are visible to the current tenant.
 //
-//   - Filtering by `CreatorId`, `Q`, and `Visibility` is supported. `Q` performs a fuzzy match on the Skill name or description.
+//   - Supports filtering by `CreatorId`, `Q`, and `Visibility`. `Q` performs a fuzzy match on the skill name or description.
 //
 //   - Results are sorted by update time in descending order by default.
 //
 // - Pagination:
 //
-//   - For cursor-based pagination, use `MaxResults` and `NextToken`. Do not pass `NextToken` for the first query. For subsequent pages, use the token returned in the previous response. When using `NextToken` for subsequent pages, `CreatorId`, `Q`, `Visibility`, `Scope`, and `MaxResults` must remain the same as the previous page. If you change the query conditions, start over from the first page.
+//   - Cursor-based pagination uses `MaxResults` and `NextToken`. Do not pass `NextToken` for the first query. For subsequent pages, use the token from the previous response. When using `NextToken` for subsequent pages, `CreatorId`, `Q`, `Visibility`, `Scope`, and `MaxResults` must remain the same as the previous page. If you modify the query conditions, you must restart the query from the first page.
 //
-//   - For page-number-based pagination, use `PageNumber` and `PageSize`. If `MaxResults` is explicitly specified, cursor-based pagination takes precedence. If `NextToken` is specified, `PageNumber` is ignored.
+//   - Page number-based pagination uses `PageNumber` and `PageSize`. If `MaxResults` is explicitly passed, cursor-based pagination takes precedence. If `NextToken` is passed, `PageNumber` is ignored.
 //
-// - Response content:
+// - Returned content:
 //
-//   - This operation returns only Skill summaries and does not generate Bundle download URLs. To obtain download URLs, call `GetSkill` and specify `Network`.
+//   - This operation returns only skill summaries and does not generate bundle download URLs. To obtain a download URL, call `GetSkill` and specify `Network`.
 //
 // @param request - ListSkillsRequest
 //
@@ -1074,15 +1771,509 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 
 // Summary:
 //
-// Updates the configuration of an Agent.
+// Loads session history, receives subsequent output, or resumes Server-Sent Events (SSE) from a saved read position.
 //
 // Description:
 //
-// - `Name` is used only to locate the Agent and cannot be modified after creation.
+// - A standard load requires only the session ID. It returns the configuration, history, and output to be continuously received. The response is SSE, not a standard JSON message list.
 //
-// - Each Agent can be bindded to only one knowledge base.
+// - When resuming from a stream interruption, pass back the actually received cursor, event epoch, and turn ID. History and incremental data may be returned simultaneously. Existing pages should be rebuilt or deduplicated based on the confirmed cursor. Do not directly append all returned data.
 //
-// - `Tools` is updated according to the rules below. If `Skills` or `KnowledgeBases` is not specified, the existing value is retained. A non-empty array replaces the entire value. An empty array removes the corresponding binddings. Other optional fields retain their existing values if not specified.
+// - During the load process, you may receive pending approvals or questions again. Use the interaction notification that is still valid for this session to call ReplyAgentSession.
+//
+// - For an idle session, `stopReason=end_turn` may only indicate the end of the current load. It cannot be used to determine the success of a previously interrupted turn. You must associate it with the actual desired state of the target turn. If it cannot be determined, keep the result for verification.
+//
+// @param tmpReq - LoadAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoadAgentSessionResponse
+func (client *Client) LoadAgentSessionWithSSE(tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions, _yield chan *LoadAgentSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.loadAgentSessionWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// Loads session history, receives subsequent output, or resumes Server-Sent Events (SSE) from a saved read position.
+//
+// Description:
+//
+// - A standard load requires only the session ID. It returns the configuration, history, and output to be continuously received. The response is SSE, not a standard JSON message list.
+//
+// - When resuming from a stream interruption, pass back the actually received cursor, event epoch, and turn ID. History and incremental data may be returned simultaneously. Existing pages should be rebuilt or deduplicated based on the confirmed cursor. Do not directly append all returned data.
+//
+// - During the load process, you may receive pending approvals or questions again. Use the interaction notification that is still valid for this session to call ReplyAgentSession.
+//
+// - For an idle session, `stopReason=end_turn` may only indicate the end of the current load. It cannot be used to determine the success of a previously interrupted turn. You must associate it with the actual desired state of the target turn. If it cannot be determined, keep the result for verification.
+//
+// @param tmpReq - LoadAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoadAgentSessionResponse
+func (client *Client) LoadAgentSessionWithOptions(tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *LoadAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &LoadAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LoadAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LoadAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Loads session history, receives subsequent output, or resumes Server-Sent Events (SSE) from a saved read position.
+//
+// Description:
+//
+// - A standard load requires only the session ID. It returns the configuration, history, and output to be continuously received. The response is SSE, not a standard JSON message list.
+//
+// - When resuming from a stream interruption, pass back the actually received cursor, event epoch, and turn ID. History and incremental data may be returned simultaneously. Existing pages should be rebuilt or deduplicated based on the confirmed cursor. Do not directly append all returned data.
+//
+// - During the load process, you may receive pending approvals or questions again. Use the interaction notification that is still valid for this session to call ReplyAgentSession.
+//
+// - For an idle session, `stopReason=end_turn` may only indicate the end of the current load. It cannot be used to determine the success of a previously interrupted turn. You must associate it with the actual desired state of the target turn. If it cannot be determined, keep the result for verification.
+//
+// @param request - LoadAgentSessionRequest
+//
+// @return LoadAgentSessionResponse
+func (client *Client) LoadAgentSession(request *LoadAgentSessionRequest) (_result *LoadAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &LoadAgentSessionResponse{}
+	_body, _err := client.LoadAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends text to an existing session and continuously receives agent output over Server-Sent Events (SSE).
+//
+// Description:
+//
+// - Pass the session ID returned by CreateAgentSession to Params.sessionId and place the user text in Params.prompt.
+//
+// - When an execution or pending interaction is already in progress, the default call path rejects new prompts. After receiving an approval or Q&A notification, submit your choice or answer through ReplyAgentSession before continuing to read the original stream.
+//
+// - A connection interruption does not cancel the execution. If the result is unknown, call LoadAgentSession to resume reading. Submitting duplicate prompts may generate new messages, and duplicate Id values are not deduplicated.
+//
+// @param tmpReq - PromptAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PromptAgentSessionResponse
+func (client *Client) PromptAgentSessionWithSSE(tmpReq *PromptAgentSessionRequest, runtime *dara.RuntimeOptions, _yield chan *PromptAgentSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.promptAgentSessionWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// Sends text to an existing session and continuously receives agent output over Server-Sent Events (SSE).
+//
+// Description:
+//
+// - Pass the session ID returned by CreateAgentSession to Params.sessionId and place the user text in Params.prompt.
+//
+// - When an execution or pending interaction is already in progress, the default call path rejects new prompts. After receiving an approval or Q&A notification, submit your choice or answer through ReplyAgentSession before continuing to read the original stream.
+//
+// - A connection interruption does not cancel the execution. If the result is unknown, call LoadAgentSession to resume reading. Submitting duplicate prompts may generate new messages, and duplicate Id values are not deduplicated.
+//
+// @param tmpReq - PromptAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PromptAgentSessionResponse
+func (client *Client) PromptAgentSessionWithOptions(tmpReq *PromptAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *PromptAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PromptAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PromptAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PromptAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends text to an existing session and continuously receives agent output over Server-Sent Events (SSE).
+//
+// Description:
+//
+// - Pass the session ID returned by CreateAgentSession to Params.sessionId and place the user text in Params.prompt.
+//
+// - When an execution or pending interaction is already in progress, the default call path rejects new prompts. After receiving an approval or Q&A notification, submit your choice or answer through ReplyAgentSession before continuing to read the original stream.
+//
+// - A connection interruption does not cancel the execution. If the result is unknown, call LoadAgentSession to resume reading. Submitting duplicate prompts may generate new messages, and duplicate Id values are not deduplicated.
+//
+// @param request - PromptAgentSessionRequest
+//
+// @return PromptAgentSessionResponse
+func (client *Client) PromptAgentSession(request *PromptAgentSessionRequest) (_result *PromptAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PromptAgentSessionResponse{}
+	_body, _err := client.PromptAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits the approval choice or question answer for the current pending interaction.
+//
+// Description:
+//
+// - Read `data.sessionId`, `data.requestId`, and `data.options` from the `permission_request` notification of PromptAgentSession or LoadAgentSession. This operation uses the interaction ID, not the tool invocation ID or the server-side RequestId.
+//
+// - When selecting an action, use the `optionId` actually provided in the notification. For Q&A scenarios, you must also write the question key and answer text into `answers`. Do not pass this field for regular tool approvals.
+//
+// - `accepted=true` only indicates that the reply has been accepted. Subsequent output is still read through Prompt/Load. `false` indicates that the reply is not adopted this time. You should reload the current interaction and not automatically change to approve other requests.
+//
+// @param tmpReq - ReplyAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplyAgentSessionResponse
+func (client *Client) ReplyAgentSessionWithOptions(tmpReq *ReplyAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *ReplyAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ReplyAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReplyAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReplyAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits the approval choice or question answer for the current pending interaction.
+//
+// Description:
+//
+// - Read `data.sessionId`, `data.requestId`, and `data.options` from the `permission_request` notification of PromptAgentSession or LoadAgentSession. This operation uses the interaction ID, not the tool invocation ID or the server-side RequestId.
+//
+// - When selecting an action, use the `optionId` actually provided in the notification. For Q&A scenarios, you must also write the question key and answer text into `answers`. Do not pass this field for regular tool approvals.
+//
+// - `accepted=true` only indicates that the reply has been accepted. Subsequent output is still read through Prompt/Load. `false` indicates that the reply is not adopted this time. You should reload the current interaction and not automatically change to approve other requests.
+//
+// @param request - ReplyAgentSessionRequest
+//
+// @return ReplyAgentSessionResponse
+func (client *Client) ReplyAgentSession(request *ReplyAgentSessionRequest) (_result *ReplyAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReplyAgentSessionResponse{}
+	_body, _err := client.ReplyAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves the global workflow configuration.
+//
+// Description:
+//
+// Saves or queries the global workflow configuration by tenant and region. The content is sensitive information.
+//
+// @param request - SaveWorkflowGlobalEnvRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveWorkflowGlobalEnvResponse
+func (client *Client) SaveWorkflowGlobalEnvWithOptions(request *SaveWorkflowGlobalEnvRequest, runtime *dara.RuntimeOptions) (_result *SaveWorkflowGlobalEnvResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveWorkflowGlobalEnv"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveWorkflowGlobalEnvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves the global workflow configuration.
+//
+// Description:
+//
+// Saves or queries the global workflow configuration by tenant and region. The content is sensitive information.
+//
+// @param request - SaveWorkflowGlobalEnvRequest
+//
+// @return SaveWorkflowGlobalEnvResponse
+func (client *Client) SaveWorkflowGlobalEnv(request *SaveWorkflowGlobalEnvRequest) (_result *SaveWorkflowGlobalEnvResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveWorkflowGlobalEnvResponse{}
+	_body, _err := client.SaveWorkflowGlobalEnvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the model used by a session and optionally configures the thinking level.
+//
+// Description:
+//
+// - Pass the `sessionId` returned by CreateAgentSession and the `Models[].Id` returned by ListModels as `Params.sessionId` and `Params.modelId`, respectively. The visibility of a model in the model catalog does not mean that the target session supports the model. The final validation is performed by the target session.
+//
+// - `modelId` is required. When you only modify the model, you can omit `thinkingLevel`. For more information about how to configure the thinking level, see the supplementary description of request parameters.
+//
+// - This operation only modifies the target session and does not modify the global default model of the agent or account. The session may deny configuration modifications during execution, and switching during runtime is not guaranteed to be supported.
+//
+// - The model and thinking level settings are applied step by step. If the call fails, the model may have already been changed, and an overall rollback is not guaranteed. You should call GetAgentSessionModel to query the current configuration before deciding on subsequent operations. After a successful call, you can read the actual effective values from the returned result.
+//
+// @param tmpReq - SetAgentSessionModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAgentSessionModelResponse
+func (client *Client) SetAgentSessionModelWithOptions(tmpReq *SetAgentSessionModelRequest, runtime *dara.RuntimeOptions) (_result *SetAgentSessionModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SetAgentSessionModelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAgentSessionModel"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAgentSessionModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the model used by a session and optionally configures the thinking level.
+//
+// Description:
+//
+// - Pass the `sessionId` returned by CreateAgentSession and the `Models[].Id` returned by ListModels as `Params.sessionId` and `Params.modelId`, respectively. The visibility of a model in the model catalog does not mean that the target session supports the model. The final validation is performed by the target session.
+//
+// - `modelId` is required. When you only modify the model, you can omit `thinkingLevel`. For more information about how to configure the thinking level, see the supplementary description of request parameters.
+//
+// - This operation only modifies the target session and does not modify the global default model of the agent or account. The session may deny configuration modifications during execution, and switching during runtime is not guaranteed to be supported.
+//
+// - The model and thinking level settings are applied step by step. If the call fails, the model may have already been changed, and an overall rollback is not guaranteed. You should call GetAgentSessionModel to query the current configuration before deciding on subsequent operations. After a successful call, you can read the actual effective values from the returned result.
+//
+// @param request - SetAgentSessionModelRequest
+//
+// @return SetAgentSessionModelResponse
+func (client *Client) SetAgentSessionModel(request *SetAgentSessionModelRequest) (_result *SetAgentSessionModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetAgentSessionModelResponse{}
+	_body, _err := client.SetAgentSessionModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the configuration of an agent.
+//
+// Description:
+//
+// - `Name` is used only to locate the agent and cannot be modified after creation.
+//
+// - Each agent can be bound to only one knowledge base.
+//
+// - `Tools` is updated according to the rules below. If `Skills` or `KnowledgeBases` is not passed, the original value is retained. If a non-empty array is passed, it replaces the original value entirely. If an empty array is passed, the corresponding binding is removed. Other optional fields retain their original values if not passed.
 //
 // @param request - UpdateAgentRequest
 //
@@ -1160,15 +2351,15 @@ func (client *Client) UpdateAgentWithOptions(request *UpdateAgentRequest, runtim
 
 // Summary:
 //
-// Updates the configuration of an Agent.
+// Updates the configuration of an agent.
 //
 // Description:
 //
-// - `Name` is used only to locate the Agent and cannot be modified after creation.
+// - `Name` is used only to locate the agent and cannot be modified after creation.
 //
-// - Each Agent can be bindded to only one knowledge base.
+// - Each agent can be bound to only one knowledge base.
 //
-// - `Tools` is updated according to the rules below. If `Skills` or `KnowledgeBases` is not specified, the existing value is retained. A non-empty array replaces the entire value. An empty array removes the corresponding binddings. Other optional fields retain their existing values if not specified.
+// - `Tools` is updated according to the rules below. If `Skills` or `KnowledgeBases` is not passed, the original value is retained. If a non-empty array is passed, it replaces the original value entirely. If an empty array is passed, the corresponding binding is removed. Other optional fields retain their original values if not passed.
 //
 // @param request - UpdateAgentRequest
 //
@@ -1186,29 +2377,29 @@ func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateA
 
 // Summary:
 //
-// Updates a Skill.
+// Updates a skill.
 //
 // Description:
 //
 // - Update rules:
 //
-//   - `Name` is used only to locate the Skill and cannot be modified.
+//   - `Name` is used only to locate the skill and cannot be modified.
 //
-//   - The caller must be the Skill creator or the tenant root account that has permissions to manage the tenant-level Skill.
+//   - The caller must be the creator of the skill or the root account of the tenant that has permissions to manage the tenant-level skill.
 //
 // - Replacement rules:
 //
-//   - `Description` and `Visibility` retain their original values when omitted. Passing `null` is treated the same as omitting the field and cannot be used to clear the original value.
+//   - If `Description` and `Visibility` are omitted, their original values are retained. Passing `null` is treated as omission and cannot be used to clear the original values.
 //
-//   - `Metadata` is replaced as a whole, not merged incrementally. Omitting `Metadata` preserves the original content. When provided, any old fields not included in the new object are deleted.
+//   - `Metadata` is replaced as a whole, not merged incrementally. If `Metadata` is omitted, the original content is retained. If it is passed, old fields not included in the new object are deleted.
 //
-//   - When modifying only `Description` or `Visibility`, do not pass `Metadata` or an empty object `{}`. An empty object replaces the entire original Metadata with an empty value.
+//   - When modifying only `Description` or `Visibility`, do not pass `Metadata` or an empty object `{}`. An empty object replaces the original metadata with an empty object.
 //
-// - Content source:
+// - Content sources:
 //
-//   - When replacing the body or bundle, specify exactly one of `skillMd`, `transitId`, or `bundleUrl`.
+//   - When replacing the body or bundle, you must choose one and only one of `skillMd`, `transitId`, or `bundleUrl`.
 //
-//   - For field formats, the Transit upload confirmation process, and `bundleUrl` restrictions of the three sources, refer to CreateSkill. Pass the selected source in `UpdateSkill.Metadata`.
+//   - For the field formats of the three sources, the Transit upload confirmation process, and the `bundleUrl` restrictions, refer to CreateSkill. Pass the selected source in `UpdateSkill.Metadata`.
 //
 // @param request - UpdateSkillRequest
 //
@@ -1270,29 +2461,29 @@ func (client *Client) UpdateSkillWithOptions(request *UpdateSkillRequest, runtim
 
 // Summary:
 //
-// Updates a Skill.
+// Updates a skill.
 //
 // Description:
 //
 // - Update rules:
 //
-//   - `Name` is used only to locate the Skill and cannot be modified.
+//   - `Name` is used only to locate the skill and cannot be modified.
 //
-//   - The caller must be the Skill creator or the tenant root account that has permissions to manage the tenant-level Skill.
+//   - The caller must be the creator of the skill or the root account of the tenant that has permissions to manage the tenant-level skill.
 //
 // - Replacement rules:
 //
-//   - `Description` and `Visibility` retain their original values when omitted. Passing `null` is treated the same as omitting the field and cannot be used to clear the original value.
+//   - If `Description` and `Visibility` are omitted, their original values are retained. Passing `null` is treated as omission and cannot be used to clear the original values.
 //
-//   - `Metadata` is replaced as a whole, not merged incrementally. Omitting `Metadata` preserves the original content. When provided, any old fields not included in the new object are deleted.
+//   - `Metadata` is replaced as a whole, not merged incrementally. If `Metadata` is omitted, the original content is retained. If it is passed, old fields not included in the new object are deleted.
 //
-//   - When modifying only `Description` or `Visibility`, do not pass `Metadata` or an empty object `{}`. An empty object replaces the entire original Metadata with an empty value.
+//   - When modifying only `Description` or `Visibility`, do not pass `Metadata` or an empty object `{}`. An empty object replaces the original metadata with an empty object.
 //
-// - Content source:
+// - Content sources:
 //
-//   - When replacing the body or bundle, specify exactly one of `skillMd`, `transitId`, or `bundleUrl`.
+//   - When replacing the body or bundle, you must choose one and only one of `skillMd`, `transitId`, or `bundleUrl`.
 //
-//   - For field formats, the Transit upload confirmation process, and `bundleUrl` restrictions of the three sources, refer to CreateSkill. Pass the selected source in `UpdateSkill.Metadata`.
+//   - For the field formats of the three sources, the Transit upload confirmation process, and the `bundleUrl` restrictions, refer to CreateSkill. Pass the selected source in `UpdateSkill.Metadata`.
 //
 // @param request - UpdateSkillRequest
 //
@@ -1306,4 +2497,128 @@ func (client *Client) UpdateSkill(request *UpdateSkillRequest) (_result *UpdateS
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) loadAgentSessionWithSSE_opYieldFunc(_yield chan *LoadAgentSessionResponse, _yieldErr chan error, tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &LoadAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LoadAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) promptAgentSessionWithSSE_opYieldFunc(_yield chan *PromptAgentSessionResponse, _yieldErr chan error, tmpReq *PromptAgentSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &PromptAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PromptAgentSession"),
+		Version:     dara.String("2026-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

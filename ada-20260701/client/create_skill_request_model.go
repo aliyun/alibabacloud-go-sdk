@@ -20,7 +20,7 @@ type iCreateSkillRequest interface {
 }
 
 type CreateSkillRequest struct {
-	// The description of the Skill.
+	// The description of the skill.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateSkillRequest struct {
 	//
 	// A Skill for reviewing code quality, security risks, and coding standards.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Skill metadata in JSON object format. Exactly one content source must be provided. For more information about the fields, see "Request parameter description".
+	// The metadata of the skill, in JSON object format. One and only one content source must be provided. For specific fields, refer to the supplementary description of request parameters.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateSkillRequest struct {
 	//
 	// {"skillMd":"# Code Review\\nCheck code quality, security risks, and coding standards."}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The unique identifier of the Skill. Only letters, digits, underscores, and hyphens are supported. The value can be up to 64 characters in length.
+	// The unique identifier of the skill. Only letters, digits, underscores, and hyphens are supported. The length cannot exceed 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,7 @@ type CreateSkillRequest struct {
 	//
 	// code-review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The visibility of the Skill. Valid values:
-	//
-	// - user
-	//
-	// - tenant
-	//
-	// Default value: user.
+	// The visibility of the skill. Valid values: `user` and `tenant`. Default value: `user`.
 	//
 	// example:
 	//

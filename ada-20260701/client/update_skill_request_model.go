@@ -22,11 +22,11 @@ type iUpdateSkillRequest interface {
 }
 
 type UpdateSkillRequest struct {
-	// The updated description of the Skill.
+	// The updated description of the skill.
 	//
 	// example:
 	//
-	// A Skill for performing code reviews, security checks, and risk alerts
+	// A skill used to perform code review, security checks, and risk alerts
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The expected version number.
 	//
@@ -34,13 +34,13 @@ type UpdateSkillRequest struct {
 	//
 	// 2
 	ExpectedVersion *int64 `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
-	// The updated Skill metadata. The JSON object is replaced as a whole. The content supports exactly one of Transit ID, bundleUrl, or skillMd.
+	// The updated metadata of the skill. The JSON object is replaced as a whole. The content supports one of the following: Transit ID, bundleUrl, or skillMd.
 	//
 	// example:
 	//
 	// {"transitId":"transit_example456"}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The name of the Skill to update. This parameter is used only to locate the Skill and cannot be used to modify the name.
+	// The name of the skill to be updated. This parameter is used only to locate the skill and cannot be used to modify the name.
 	//
 	// This parameter is required.
 	//

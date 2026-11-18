@@ -16,13 +16,13 @@ type iDeleteAgentResponseBody interface {
 }
 
 type DeleteAgentResponseBody struct {
-	// The request ID, which is used for Tracing Analysis and troubleshooting.
+	// The request ID used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Agent is deleted. The value `true` is returned for a successful response. An error response is returned for a failed request.
+	// Indicates whether the agent was successfully deleted. A successful response always returns `true`. If the operation fails, an error response is returned.
 	//
 	// example:
 	//

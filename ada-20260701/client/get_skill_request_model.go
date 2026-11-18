@@ -18,7 +18,7 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
-	// The Skill name.
+	// The name of the skill.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetSkillRequest struct {
 	//
 	// public
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The release history version number to query. If omitted, the current Skill main record is returned.
+	// Specifies the published historical version number to query. If omitted, the current primary record of the skill is returned.
 	//
 	// example:
 	//

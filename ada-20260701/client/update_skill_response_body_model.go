@@ -22,7 +22,7 @@ type iUpdateSkillResponseBody interface {
 }
 
 type UpdateSkillResponseBody struct {
-	// The Skill name.
+	// The name of the skill.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type UpdateSkillResponseBody struct {
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Skill ID。
+	// The skill ID.
 	//
 	// example:
 	//
 	// skill_example123
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// Returns `true` when the Skill update and optional bundle replacement have been fully committed and confirmed by read-back.
+	// Indicates whether the operation is successful. A value of `true` is returned when the skill update and optional bundle replacement are fully submitted and confirmed by read-back.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time when the Skill was updated, in UNIX millisecond timestamp.
+	// The time when the skill was updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

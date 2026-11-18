@@ -26,15 +26,15 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
-	// The list of agent summaries. For field details, see "Supplementary description of response parameters".
+	// The list of agent summaries. For field details of each element, see the supplementary description of response parameters.
 	Agents []interface{} `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
-	// The actual cursor-based pagination size used.
+	// The actual page size used for cursor-based pagination.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The next page token. An empty string is returned if there is no next page.
+	// The next token. An empty string is returned if there are no more pages.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListAgentsResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, used for Tracing Analysis and troubleshooting.
+	// The request ID, which is used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//

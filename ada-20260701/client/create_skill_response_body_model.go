@@ -22,7 +22,7 @@ type iCreateSkillResponseBody interface {
 }
 
 type CreateSkillResponseBody struct {
-	// The unique identifier of the Skill.
+	// The unique identifier of the skill.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type CreateSkillResponseBody struct {
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Skill ID。
+	// The skill ID.
 	//
 	// example:
 	//
 	// skill_example123
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// Indicates whether the Skill and its body or bundle are fully created and readable. A value of true is returned upon success. Business failures are returned as error responses.
+	// Indicates whether the operation is successful. true is returned when the skill and its body or bundle are fully created and readable. Business failures are returned in error responses.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time when the Skill was last updated after creation. The value is a UNIX timestamp in milliseconds.
+	// The update time after the skill is created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

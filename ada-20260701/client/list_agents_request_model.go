@@ -42,7 +42,7 @@ type ListAgentsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The next page token returned in the previous response.
+	// The next token returned in the previous response.
 	//
 	// example:
 	//
@@ -60,25 +60,25 @@ type ListAgentsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search keyword. Matches the name, display name, or description.
+	// The search keyword used to match the name, display name, or description.
 	//
 	// example:
 	//
-	// code review
+	// Code review
 	Q *string `json:"Q,omitempty" xml:"Q,omitempty"`
-	// Filters agents by runtime label.
+	// Filters agents by the runtime tag.
 	//
 	// example:
 	//
 	// qwen
 	RequiredRuntime *string `json:"RequiredRuntime,omitempty" xml:"RequiredRuntime,omitempty"`
-	// The query scope. Valid values: `SYSTEM` and `CUSTOM`.
+	// The query scope. Valid values: SYSTEM and CUSTOM.
 	//
 	// example:
 	//
 	// CUSTOM
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Filters agents by visibility scope. Valid values: `user` and `tenant`.
+	// Filters agents by visibility scope. Valid values: user and tenant.
 	//
 	// example:
 	//

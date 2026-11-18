@@ -22,31 +22,31 @@ type iUpdateAgentResponseBody interface {
 }
 
 type UpdateAgentResponseBody struct {
-	// Agent ID。
+	// The agent ID.
 	//
 	// example:
 	//
 	// agent_00000000000000000000000000000001
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The Agent name.
+	// The name of the agent.
 	//
 	// example:
 	//
 	// code-review-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID, used for Tracing Analysis and troubleshooting.
+	// The request ID, which is used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Agent was successfully updated. A successful response always returns `true`. A failure returns an error response.
+	// Indicates whether the agent was successfully updated. A success response always returns `true`. An error response is returned upon failure.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The most recent update time, as a UNIX timestamp in milliseconds.
+	// The time of the most recent update. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DeleteSkillResponseBody struct {
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns `true` when both the logical deletion of the Skill and the optional logical archiving of the Artifact are complete.
+	// Indicates whether the operation is successful. Returns `true` when the logical deletion of the skill and the optional logical archiving of artifacts are complete.
 	//
 	// example:
 	//

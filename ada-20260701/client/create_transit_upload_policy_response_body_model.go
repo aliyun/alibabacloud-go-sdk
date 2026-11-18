@@ -22,27 +22,27 @@ type iCreateTransitUploadPolicyResponseBody interface {
 }
 
 type CreateTransitUploadPolicyResponseBody struct {
-	// The object storage key, which is also the `key` field in the PostObject form.
+	// The object storage key, which is also the key in the PostObject form.
 	//
 	// example:
 	//
 	// skill-bundle/tenant-demo/user-demo/20260904120000_0123456789abcdef0123456789abcdef.zip
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The upload policy object. For the complete list of subfields, see the following table.
+	// The upload policy object. For more information about the complete sub-fields, see the following table.
 	PolicyInfo *CreateTransitUploadPolicyResponseBodyPolicyInfo `json:"PolicyInfo,omitempty" xml:"PolicyInfo,omitempty" type:"Struct"`
-	// The request ID, used for Tracing Analysis and troubleshooting.
+	// The request ID, which is used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-EF0123456789
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the upload policy is generated. A successful response always returns `true`. An error response is returned upon failure.
+	// Indicates whether the upload policy is successfully generated. A success response always returns true. An error response is returned upon failure.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the newly created Transit record, used for subsequent queries and storage operations.
+	// The ID of the newly created transit record, which can be used for subsequent queries and storage.
 	//
 	// example:
 	//
@@ -113,37 +113,37 @@ func (s *CreateTransitUploadPolicyResponseBody) Validate() error {
 }
 
 type CreateTransitUploadPolicyResponseBodyPolicyInfo struct {
-	// The `OSSAccessKeyId` field in the PostObject form. Protect this value together with the entire `PolicyInfo`.
+	// The OSSAccessKeyId in the PostObject form. This field must be properly protected along with the entire PolicyInfo.
 	//
 	// example:
 	//
 	// <REDACTED>
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The object storage key. The value is the same as the top-level `FilePath`.
+	// The object storage key. The value is the same as the top-level FilePath.
 	//
 	// example:
 	//
 	// skill-bundle/tenant-demo/user-demo/20260904120000_0123456789abcdef0123456789abcdef.zip
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The target URL to which the client sends the PostObject request.
+	// The destination URL for the client to execute the PostObject request.
 	//
 	// example:
 	//
 	// https://upload.example.invalid
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The Base64-encoded PostObject upload policy. Protect this value together with the entire `PolicyInfo`.
+	// The Base64-encoded PostObject upload policy. This field must be properly protected along with the entire PolicyInfo.
 	//
 	// example:
 	//
 	// <REDACTED>
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The `x-oss-security-token` field in the PostObject form when STS credentials are used. This field may be empty when STS is not used. This field contains sensitive authorization information.
+	// The x-oss-security-token in the PostObject form when Security Token Service (STS) credentials are used. This field may be empty if STS is not used. This field contains sensitive authorization information.
 	//
 	// example:
 	//
 	// <REDACTED>
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The signature field in the PostObject form. This field contains sensitive authorization information.
+	// The signature of the PostObject form. This field contains sensitive authorization information.
 	//
 	// example:
 	//
