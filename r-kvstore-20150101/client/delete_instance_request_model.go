@@ -26,13 +26,13 @@ type iDeleteInstanceRequest interface {
 }
 
 type DeleteInstanceRequest struct {
-	// The instance ID of the distributed instance to which the instance that you want to release belongs. This parameter is applicable only to Chinese site (aliyun.com).
+	// The distributed instance ID to which the instance ID to be released belongs. This parameter is applicable only to the China site.
 	//
 	// example:
 	//
 	// gr-bp14rkqrhac****
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// The instance ID of the instance that you want to release.
+	// The instance ID of the instance to be released.
 	//
 	// This parameter is required.
 	//

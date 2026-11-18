@@ -24,7 +24,7 @@ type iCreateInstanceMultiVIPRequest interface {
 }
 
 type CreateInstanceMultiVIPRequest struct {
-	// The number of LBs to add.
+	// The number of load balancers to add.
 	//
 	// This parameter is required.
 	//

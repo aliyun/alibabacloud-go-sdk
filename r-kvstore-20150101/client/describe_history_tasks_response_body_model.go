@@ -117,7 +117,7 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
-	// The allowed operation information. When used, the operation Action is matched based on currentStepName and status in this information. If no Action is matched, the task does not support operations in its current state. Example:
+	// The information about allowed operations. When you use this parameter, the system matches the operation action based on the CurrentStepName and Status in this information. If no action is matched, the current task status does not support the operation. Example:
 	//
 	// ```
 	//
@@ -125,13 +125,13 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	//     {
 	//
-	//       "step_name": "exec_task", // Step name, matched with currentStepName
+	//       "step_name": "exec_task", // The step name, which matches CurrentStepName.
 	//
-	//       "action_info": {    // Operations supported by the step
+	//       "action_info": {    // The operations supported by the step.
 	//
-	//         "Waiting": [      // Status, matched with status
+	//         "Waiting": [      // The status, which matches Status.
 	//
-	//           "modifySwitchTime" // Operation Action, may have multiple values, indicating multiple supported operations
+	//           "modifySwitchTime" // The operation action. Multiple actions indicate that multiple operations are supported.
 	//
 	//         ]
 	//
@@ -141,13 +141,13 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	//     {
 	//
-	//       "step_name": "init_task", // Step name
+	//       "step_name": "init_task", // The step name.
 	//
-	//       "action_info": {    // Operations supported by the step
+	//       "action_info": {    // The operations supported by the step.
 	//
-	//         "Running": [      // Status
+	//         "Running": [      // The status.
 	//
-	//           "cancel",       // Operation
+	//           "cancel",       // The operation.
 	//
 	//           "pause"
 	//
@@ -163,7 +163,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// ```
 	//
-	// Operations that the system may support:
+	// Operations that may be supported by the system:
 	//
 	// 	- **retry**: Retry.
 	//
@@ -175,7 +175,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// {"steps":[{"action_info":{"Waiting":["modifySwitchTime"]},"step_name":"exec_task"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	// The request user ID. When callerSource is User, this value represents the user UID.
+	// The ID of the requesting user. If CallerSource is set to User, this parameter represents the user ID.
 	//
 	// example:
 	//
@@ -183,15 +183,15 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
 	// The request source. Valid values:
 	//
-	// 	- **System**: Automatically initiated by the system.
+	// 	- **System**: Automatic system operation.
 	//
-	// 	- **User**: Initiated by a user.
+	// 	- **User**: User.
 	//
 	// example:
 	//
 	// User
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The name of the current step being executed. An empty value indicates that the task has not started.
+	// The name of the current step being executed. If this parameter is empty, the task has not started.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The end time of the task in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The end time of the task. The time is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 小版本升级
+	// Minor version upgrade
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// The region ID.
 	//
@@ -257,7 +257,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// 1000
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// The start time of the task in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	// The start time of the task. The time is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
@@ -265,7 +265,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **Scheduled**: Waiting for execution.
+	// - **Scheduled**: Pending execution.
 	//
 	// - **Running**: Running.
 	//
@@ -273,9 +273,9 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// - **Failed**: Failed.
 	//
-	// - **Cancelling**: Being stopped.
+	// - **Cancelling**: Cancelling.
 	//
-	// - **Canceled**: Stopped.
+	// - **Canceled**: Canceled.
 	//
 	// - **Waiting**: Waiting for the scheduled time.
 	//
@@ -283,7 +283,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task details. Different task types correspond to different outputs.
+	// The task details. The output varies based on the task type.
 	//
 	// example:
 	//
@@ -297,7 +297,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **ModifyInsSpec**: Specification change or migration.
+	// - **ModifyInsSpec**: Instance specification change or migration.
 	//
 	// - **DeleteInsNode**: Shard deletion.
 	//
@@ -315,7 +315,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// ModifyInsSpec
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The user ID of the resource owner.
+	// The ID of the user to whom the resource belongs.
 	//
 	// example:
 	//

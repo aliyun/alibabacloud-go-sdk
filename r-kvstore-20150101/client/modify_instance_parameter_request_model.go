@@ -40,9 +40,9 @@ type ModifyInstanceParameterRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The parameter template ID.
+	// The ID of the parameter template.
 	//
-	// > You can call the DescribeParameterGroups operation to query the list of parameter templates in the target region, including parameter template IDs.
+	// > You can call the DescribeParameterGroups operation to query the parameter templates in the target region, including the parameter template IDs.
 	//
 	// example:
 	//

@@ -68,11 +68,11 @@ type iDescribeInstancesRequest interface {
 type DescribeInstancesRequest struct {
 	// The architecture type. Valid values:
 	//
-	// 	- **cluster**: cluster edition
+	// 	- **cluster**: Cluster Edition
 	//
-	// 	- **standard**: standard edition
+	// 	- **standard**: Standard Edition
 	//
-	// 	- **rwsplit**: read/write splitting edition
+	// 	- **rwsplit**: Read/Write Splitting Edition
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeInstancesRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The edition type of the instance. Valid values:
 	//
-	// 	- **Community**: open-source Redis
+	// 	- **Community**: Redis Community Edition
 	//
 	// 	- **Enterprise**: Tair Enterprise Edition
 	//
@@ -106,31 +106,31 @@ type DescribeInstancesRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration status of the instance. Valid values:
 	//
-	// 	- **true**: The instance has expired.
+	// 	- **true**: The instance is expired.
 	//
-	// 	- **false**: The instance has not expired.
+	// 	- **false**: The instance is not expired.
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Specifies whether to filter child instances of distributed instances in the returned instance list. Valid values:
+	// Specifies whether to filter out child instances of distributed instances in the returned instance list. Valid values:
 	//
-	// 	- **true**: Only child instance information is returned.
+	// 	- **true**: Only child instances are returned.
 	//
-	// 	- **false**: Child instance information is not returned.
+	// 	- **false**: Child instances are not returned.
 	//
 	// example:
 	//
 	// true
 	GlobalInstance *bool `json:"GlobalInstance,omitempty" xml:"GlobalInstance,omitempty"`
-	// The instance specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/107984.html).
+	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
 	// redis.master.small.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The IDs of the instances to be queried.
+	// The IDs of the instances to query.
 	//
 	// > To specify multiple instance IDs, separate the IDs with commas (,). You can specify up to 30 instance IDs in a single request.
 	//
@@ -156,15 +156,15 @@ type DescribeInstancesRequest struct {
 	//
 	// 	- **Migrating**: migrating
 	//
-	// 	- **BackupRecovering**: recovering from backup
+	// 	- **BackupRecovering**: recovering from a backup
 	//
 	// 	- **MinorVersionUpgrading**: minor version upgrade in progress
 	//
 	// 	- **NetworkModifying**: changing the network type
 	//
-	// 	- **SSLModifying**: changing SSL configurations
+	// 	- **SSLModifying**: changing SSL settings
 	//
-	// 	- **MajorVersionUpgrading**: major engine version upgrade in progress, during which the instance remains accessible
+	// 	- **MajorVersionUpgrading**: major engine version upgrade in progress. The instance remains accessible.
 	//
 	// > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
@@ -204,7 +204,7 @@ type DescribeInstancesRequest struct {
 	//
 	// 	- **single**: single-replica
 	//
-	// > For cloud-native instances, select **MASTER_SLAVE*	- or **STAND_ALONE**. For classic instances, select **double*	- or **single**.
+	// > Select **MASTER_SLAVE*	- or **STAND_ALONE*	- for Cloud-native Edition instances, and select **double*	- or **single*	- for Classic Edition instances.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribeInstancesRequest struct {
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
 	// The region ID of the instance.
 	//
-	// > When you call this operation, if the **Tag*	- parameter is specified, this parameter is required.
+	// > If you specify the **Tag*	- parameter when you call this operation, you must also specify this parameter.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type DescribeInstancesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	//
-	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the list of resource group IDs. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID list. Related operations: [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type DescribeInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The search keyword. Fuzzy match is supported for instance names and instance IDs.
+	// The keyword used for fuzzy search by instance name or instance ID.
 	//
 	// example:
 	//
@@ -542,15 +542,15 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestTag struct {
-	// The tag key. It forms a key-value pair with the tag value.
+	// The tag key. The tag key and value form a key-value pair.
 	//
 	// > You can specify up to 5 tag key-value pairs in a single request.
 	//
 	// example:
 	//
-	// Storage type
+	// StorageType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. It forms a key-value pair with the tag key.
+	// The value of the tag key. The tag key and value form a key-value pair.
 	//
 	// example:
 	//

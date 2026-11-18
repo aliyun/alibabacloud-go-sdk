@@ -64,11 +64,11 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The expiration status of the instance. Valid values:
+	// Specifies whether the instance has expired. Valid values:
 	//
-	// 	- **true**: Expired.
+	// 	- **true**: The instance has expired.
 	//
-	// 	- **false**: Not expired.
+	// 	- **false**: The instance has not expired.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The IDs of the instances to query.
 	//
-	// > If you specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
+	// > Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs in a single request.
 	//
 	// example:
 	//
 	// tk-2zefe7728c2c****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The instance status. Valid values:
+	// The status of the instance. Valid values:
 	//
 	// 	- **Normal**: Normal.
 	//
@@ -102,7 +102,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC). This is the default value.
+	// 	- **VPC**: VPC. This is the default value.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// **[Deprecated]*	- The private IP address of the VPC.
+	// The private IP address in the VPC. **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The search keyword. You can use this parameter to perform a fuzzy search by instance name or instance ID.
+	// The keyword for fuzzy search by instance name or instance ID.
 	//
 	// example:
 	//

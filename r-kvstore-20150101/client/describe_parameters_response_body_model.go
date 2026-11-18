@@ -23,7 +23,7 @@ type iDescribeParametersResponseBody interface {
 
 type DescribeParametersResponseBody struct {
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
-	// The database type.
+	// The database engine.
 	//
 	// example:
 	//

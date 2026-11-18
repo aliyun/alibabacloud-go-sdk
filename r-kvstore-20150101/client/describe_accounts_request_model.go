@@ -62,7 +62,7 @@ type DescribeAccountsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The fuzzy match string for the account name.
+	// The keyword for fuzzy search of the account name.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDescribeParameterGroupSupportParamRequest interface {
 type DescribeParameterGroupSupportParamRequest struct {
 	// The product category. Valid values:
 	//
-	// 	- **standard**: ApsaraDB for Redis Community Edition.
+	// 	- **standard**: Open-source Redis.
 	//
 	// 	- **enterprise**: Tair (Redis Enterprise Edition).
 	//
@@ -40,25 +40,25 @@ type DescribeParameterGroupSupportParamRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The engine type. Valid values:
 	//
-	// 	- **redis**: ApsaraDB for Redis Community Edition or Tair memory-optimized instances.
+	// 	- **redis**: Open-source Redis or memory-optimized Tair.
 	//
-	// 	- **tair_pena**: Tair persistent memory-optimized instances.
+	// 	- **tair_pena**: Persistent memory-optimized Tair.
 	//
-	// 	- **tair_pdb**: Tair cloud-native (ESSD/SSD) instances.
+	// 	- **tair_pdb**: Disk-optimized Tair (ESSD/SSD).
 	//
 	// example:
 	//
 	// redis
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The compatible version. Valid values:
+	// The compatible engine version. Valid values:
 	//
-	// 	- ApsaraDB for Redis Community Edition supports **5.0**, **6.0**, and **7.0**.
+	// 	- Open-source Redis supports **5.0**, **6.0**, and **7.0**.
 	//
-	// 	- Tair memory-optimized instances are compatible with Redis 5.0 and Redis 6.0 protocols. Set this parameter to **5.0*	- or **6.0**.
+	// 	- Memory-optimized Tair is compatible with the Redis 5.0 and Redis 6.0 protocols. Set the value to **5.0*	- or **6.0**.
 	//
-	// 	- Tair persistent memory-optimized instances are compatible with the Redis 6.0 protocol. Set this parameter to **1.0**.
+	// 	- Persistent memory-optimized Tair is compatible with the Redis 6.0 protocol. Set the value to **1.0**.
 	//
-	// 	- Tair cloud-native (ESSD/SSD) instances are compatible with the Redis 6.0 protocol. To create a parameter template for ESSD-based instances, set this parameter to **1.0**. To create a parameter template for SSD-based instances, set this parameter to **2.0**.
+	// 	- Disk-optimized Tair (ESSD/SSD) is compatible with the Redis 6.0 protocol. Set the value to **1.0*	- for ESSD-based parameter templates or **2.0*	- for SSD-based parameter templates.
 	//
 	// This parameter is required.
 	//

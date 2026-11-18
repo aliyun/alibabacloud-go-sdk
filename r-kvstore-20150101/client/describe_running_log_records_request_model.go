@@ -48,11 +48,11 @@ type iDescribeRunningLogRecordsRequest interface {
 type DescribeRunningLogRecordsRequest struct {
 	// The shard type of the cluster instance. Valid values:
 	//
-	// 	- **proxy**: proxy node
+	// 	- **proxy**: proxy node.
 	//
-	// 	- **db**: data node
+	// 	- **db**: data node.
 	//
-	// 	- **cs**: config server node
+	// 	- **cs**: config server node.
 	//
 	// > If you specify this parameter, you must also specify the **NodeId*	- parameter.
 	//
@@ -66,7 +66,7 @@ type DescribeRunningLogRecordsRequest struct {
 	//
 	// 0
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end time of the query. The end time must be later than the start time, and the time span between the start time and end time cannot exceed one day. We recommend that you set the time span to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. The time range between the start time and the end time cannot exceed one day. We recommend that you set the time range to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -94,9 +94,9 @@ type DescribeRunningLogRecordsRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The sort order of the query results. Valid values:
 	//
-	// 	- **asc**: ascending order
+	// 	- **asc**: ascending order.
 	//
-	// 	- **desc**: descending order
+	// 	- **desc**: descending order.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeRunningLogRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type DescribeRunningLogRecordsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role type of the data shard. Valid values:
 	//
-	// 	- **master*	- (default): primary node
+	// 	- **master*	- (default): primary node.
 	//
-	// 	- **slave**: secondary node
+	// 	- **slave**: secondary node.
 	//
 	// example:
 	//

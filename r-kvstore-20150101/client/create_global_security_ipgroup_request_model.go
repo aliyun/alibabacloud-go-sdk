@@ -32,7 +32,7 @@ type iCreateGlobalSecurityIPGroupRequest interface {
 type CreateGlobalSecurityIPGroupRequest struct {
 	// The IP addresses in the whitelist template.
 	//
-	// > Separate multiple IP addresses with commas (,). IP addresses cannot be duplicated. You can add up to 1,000 IP addresses.
+	// > Separate multiple IP addresses with commas (,). The IP addresses must be unique. You can specify up to 1,000 IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	//
 	// 192.168.0.1,10.10.10.10,172.16.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the IP address whitelist template. The name must meet the following requirements:
+	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// - The name can contain lowercase letters, digits, and underscores (_).
+	// - It must consist of lowercase letters, digits, and underscores (_).
 	//
-	// - The name must start with a letter and end with a letter or digit.
+	// - It must start with a letter and end with a letter or a digit.
 	//
-	// - The name must be 2 to 120 characters in length.
+	// - It must be 2 to 120 characters in length.
 	//
 	// This parameter is required.
 	//

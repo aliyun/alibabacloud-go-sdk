@@ -50,33 +50,33 @@ type CreateTairSkvDdbTableResponseBody struct {
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - PrePaid: subscription.
+	// - `PrePaid`: subscription.
 	//
-	// - PostPaid: pay-as-you-go.
+	// - `PostPaid`: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The detailed configuration of the instance in JSON format. For more information about the parameters, see [Parameter settings](https://help.aliyun.com/document_detail/43885.html).
+	// The detailed configurations of the instance. The value is a JSON string. For more information about the parameters, see [Parameter settings](https://help.aliyun.com/document_detail/43885.html).
 	//
 	// example:
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal endpoint of the Redis instance.
+	// The internal network connection endpoint of the ApsaraDB for Redis instance.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx**.redis.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections supported by the instance.
+	// The maximum number of connections to the instance.
 	//
 	// example:
 	//
 	// 10000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The globally unique instance ID.
+	// The instance ID. The ID is globally unique.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type CreateTairSkvDdbTableResponseBody struct {
 	//
 	// 20741011111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The Redis service port.
+	// The ApsaraDB for Redis service port.
 	//
 	// example:
 	//
 	// 6379
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The queries per second (QPS). This value is the theoretical value for the current instance specification.
+	// The queries per second (QPS). This value is the theoretical QPS of the current instance specifications.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type CreateTairSkvDdbTableResponseBody struct {
 	//
 	// apitest
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the task flow that is executed for the creation.
+	// The ID of the task flow created and executed.
 	//
 	// example:
 	//

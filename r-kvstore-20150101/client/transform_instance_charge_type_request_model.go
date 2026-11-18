@@ -40,7 +40,7 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// 	- **true**: enables automatic payment. This is the default value.
 	//
-	// 	- **false**: disables automatic payment. You must manually pay for the order. To pay for the order, choose **Billing*	- > **Renewals*	- in the top navigation bar of the console, and then choose **Order Management*	- > **My Orders*	- in the left-side navigation pane to find and pay for the order.
+	// 	- **false**: disables automatic payment. You must manually pay for the order. To pay for the order, choose **Billing*	- > **Renewal Management*	- in the top navigation bar of the console. In the left-side navigation pane, choose **Order Management*	- > **My Orders**, find the order, and then complete the payment.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+	// The auto-renewal cycle. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
 	//
 	// > This parameter is required only when the **AutoRenew*	- parameter is set to **true**.
 	//
@@ -64,7 +64,7 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The billing method to which you want to switch. Valid values:
+	// The new billing method. Valid values:
 	//
 	// 	- **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period*	- parameter.
 	//
@@ -76,8 +76,11 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CouponNo   *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//

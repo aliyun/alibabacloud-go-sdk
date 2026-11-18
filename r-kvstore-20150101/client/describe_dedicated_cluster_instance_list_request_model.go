@@ -44,7 +44,7 @@ type iDescribeDedicatedClusterInstanceListRequest interface {
 }
 
 type DescribeDedicatedClusterInstanceListRequest struct {
-	// The dedicated cluster ID. You can obtain the ID on the dedicated cluster information page in the ApsaraDB for MyBase console.
+	// The dedicated cluster ID. You can obtain the ID on the Dedicated Cluster Information page in the ApsaraDB MyBase console.
 	//
 	// > To specify multiple IDs, separate them with commas (,).
 	//
@@ -60,7 +60,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	//
 	// ch-t4n664a9mal4c****
 	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	// The database engine. Set the value to **Redis**.
+	// The database engine type. Set the value to **Redis**.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The instance ID.
 	//
-	// > The instance must be created in a dedicated cluster. For more information, see [ApsaraDB for MyBase](https://help.aliyun.com/document_detail/141455.html).
+	// > The instance must be created in a dedicated cluster. For more information, see [ApsaraDB MyBase](https://help.aliyun.com/document_detail/141455.html).
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	//
 	// 	- **1**: Classic network.
 	//
-	// 	- **2**: Virtual Private Cloud (VPC).
+	// 	- **2**: VPC.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	InstanceStatus *int32  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than **0*	- and less than or equal to the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query region IDs.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +139,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query zone IDs.
+	// The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
 	//
 	// example:
 	//

@@ -64,9 +64,9 @@ func (s *DescribeParameterGroupResponseBody) Validate() error {
 type DescribeParameterGroupResponseBodyParameterGroup struct {
 	// The product category. Valid values:
 	//
-	// - **0**: Redis Community Edition.
+	// - **0**: open-source Redis
 	//
-	// - **1**: Tair (Enterprise Edition).
+	// - **1**: Tair (Enterprise Edition)
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeParameterGroupResponseBodyParameterGroup struct {
 	//
 	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine-compatible version.
+	// The compatible engine version.
 	//
 	// example:
 	//
@@ -221,13 +221,13 @@ func (s *DescribeParameterGroupResponseBodyParameterGroup) Validate() error {
 }
 
 type DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails struct {
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
 	// timeout
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The parameter value.
+	// The value of the parameter.
 	//
 	// example:
 	//

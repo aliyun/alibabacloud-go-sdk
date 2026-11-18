@@ -28,21 +28,21 @@ type iDescribeIntranetAttributeResponseBody interface {
 }
 
 type DescribeIntranetAttributeResponseBody struct {
-	// Indicates whether auto-renewal is enabled for the purchased bandwidth. Valid values:
+	// Specifies whether auto-renewal is enabled for the purchased bandwidth. Valid values:
 	//
 	// 	- **true**: Enabled.
 	//
 	// 	- **false**: Disabled.
 	//
-	// > This parameter is not returned if no bandwidth has been purchased.
+	// > This parameter is not returned if no bandwidth is purchased.
 	//
 	// example:
 	//
 	// true
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The expiration time of the purchased bandwidth, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
+	// The expiration time of the purchased bandwidth. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
 	//
-	// > This parameter is not returned if no additional bandwidth has been purchased for the instance.
+	// > This parameter is not returned if no additional bandwidth is purchased for the instance.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type DescribeIntranetAttributeResponseBody struct {
 	BandwidthExpireTime *string `json:"BandwidthExpireTime,omitempty" xml:"BandwidthExpireTime,omitempty"`
 	// The billing method of the bandwidth plan. Valid values:
 	//
-	// - **0**: pay-as-you-go.
+	// - **0**: Pay-as-you-go.
 	//
-	// - **1**: subscription.
+	// - **1**: Subscription.
 	//
 	// example:
 	//
 	// 0
 	BandwidthPrePaid *string `json:"BandwidthPrePaid,omitempty" xml:"BandwidthPrePaid,omitempty"`
-	// The expiration time of the temporary bandwidth, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
+	// The expiration time of the temporary bandwidth. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
 	//
 	// > If no temporary bandwidth adjustment has been performed on the instance or the temporary bandwidth has expired, this parameter returns **0**.
 	//
@@ -66,20 +66,25 @@ type DescribeIntranetAttributeResponseBody struct {
 	//
 	// 0
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the instance has an unexpired bandwidth plan. Valid values:
+	// Specifies whether the instance has unexpired bandwidth plans. Valid values:
 	//
-	// 	- **true**: An unexpired bandwidth plan exists.
+	// 	- **true**: The instance has unexpired bandwidth plans.
 	//
-	// 	- **false**: No unexpired bandwidth plan exists.
+	// 	- **false**: The instance does not have unexpired bandwidth plans.
 	//
-	// > This parameter is not returned if no additional bandwidth has been purchased for the instance.
+	// > This parameter is not returned if no additional bandwidth is purchased for the instance.
 	//
 	// example:
 	//
 	// true
-	HasPrePaidBandWidthOrderRunning *bool  `json:"HasPrePaidBandWidthOrderRunning,omitempty" xml:"HasPrePaidBandWidthOrderRunning,omitempty"`
-	IntranetBandWidthBurst          *int32 `json:"IntranetBandWidthBurst,omitempty" xml:"IntranetBandWidthBurst,omitempty"`
-	// The current internal network bandwidth of the instance. This parameter indicates the total bandwidth of all shards in the instance. Unit: MB/s.
+	HasPrePaidBandWidthOrderRunning *bool `json:"HasPrePaidBandWidthOrderRunning,omitempty" xml:"HasPrePaidBandWidthOrderRunning,omitempty"`
+	// The burst quota for the internal network bandwidth.
+	//
+	// example:
+	//
+	// 0
+	IntranetBandWidthBurst *int32 `json:"IntranetBandWidthBurst,omitempty" xml:"IntranetBandWidthBurst,omitempty"`
+	// The current internal network bandwidth of the instance. This value is the sum of the bandwidth of all shards in the instance. Unit: MB/s.
 	//
 	// example:
 	//

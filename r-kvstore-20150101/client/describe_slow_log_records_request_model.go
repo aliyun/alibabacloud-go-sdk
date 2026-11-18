@@ -50,7 +50,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// 0
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end time of the query. The end time must be later than the start time, and the time range cannot exceed 1 day. The recommended time range is 1 hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time, and the time range cannot exceed one day. Set the time range to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The node ID in the instance. Specify this parameter to query the slow query logs of a specific node.
+	// The node ID in the instance. Specify this parameter to query the slow logs of a specific node.
 	//
 	// > This parameter is available only when the instance uses the read/write splitting or cluster architecture.
 	//
@@ -74,11 +74,11 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// r-bp1zxszhcgatnx****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The field based on which the returned results are sorted. Valid values:
+	// The sort criterion of the returned results. Valid values:
 	//
-	// 	- **execution_time**: sorts the results based on the start time of request execution. This is the default value.
+	// 	- **execution_time**: execution start time of the request (default)
 	//
-	// 	- **latency**: sorts the results based on the execution duration of requests.
+	// 	- **latency**: execution duration of the request
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type DescribeSlowLogRecordsRequest struct {
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The sort order of the returned results. Valid values:
 	//
-	// 	- **ASC**: ascending order.
+	// 	- **ASC**: ascending order
 	//
-	// 	- **DESC**: descending order. This is the default value.
+	// 	- **DESC**: descending order (default)
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeSlowLogRecordsRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used to search the returned results.
+	// The keyword used to search the returned results. Specify a string value.
 	//
 	// example:
 	//
@@ -119,9 +119,9 @@ type DescribeSlowLogRecordsRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The slow log type. Valid values:
 	//
-	// 	- **proxy**: Slow query logs on proxy nodes.
+	// 	- **proxy**: slow logs of proxy nodes
 	//
-	// 	- **db**: Slow query logs on data nodes. This is the default value.
+	// 	- **db**: slow logs of data nodes (default)
 	//
 	// example:
 	//

@@ -56,9 +56,9 @@ type DescribeAvailableResourceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The engine type. Valid values:
 	//
-	// 	- **Redis**: Redis engine
+	// 	- **Redis**.
 	//
-	// 	- **Memcache**: Memcache engine
+	// 	- **Memcache**.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type DescribeAvailableResourceRequest struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PrePaid*	- (default): subscription
+	// 	- **PrePaid*	- (default): subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// 	- **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -84,17 +84,17 @@ type DescribeAvailableResourceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The product series. Valid values:
 	//
-	// - **professional**: Professional Edition. This edition supports the standalone, primary/secondary, read/write splitting, and cluster architectures, and provides high scalability.
+	// - **professional**: Standard Edition. This edition supports the single-replica, primary/secondary, read/write splitting, and cluster architectures, and provides high scalability.
 	//
 	//  <props="china">
 	//
-	// -  **economical**: Economical Edition. This edition supports only the primary/secondary architecture and is cost-effective. For more information, see [YiTian RDS instances](https://help.aliyun.com/document_detail/2489678.html).
+	// - **economical**: This edition supports only the primary/secondary architecture and is cost-effective. For more information, see [YiTian RDS instance](https://help.aliyun.com/document_detail/2489678.html).
 	//
 	// example:
 	//
 	// professional
 	InstanceScene *string `json:"InstanceScene,omitempty" xml:"InstanceScene,omitempty"`
-	// The data node ID. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to obtain the data node ID. For the obtained data node ID, you must remove the number sign (`#`) and the content that follows it. For example, retain only r-bp10noxlhcoim2****-db-0.
+	// The data node ID. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to obtain the data node ID. For the obtained data node ID, you must remove the number sign (`#`) and the content after it. For example, retain only r-bp10noxlhcoim2****-db-0.
 	//
 	// > Before you specify this parameter, you must also specify the **InstanceId*	- parameter, and the instance must use the cluster or read/write splitting architecture.
 	//
@@ -104,11 +104,11 @@ type DescribeAvailableResourceRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The order type. Valid values:
 	//
-	// 	- **BUY*	- (default): new purchase
+	// 	- **BUY*	- (default): new purchase.
 	//
-	// 	- **UPGRADE**: upgrade instance type
+	// 	- **UPGRADE**: upgrade the instance type.
 	//
-	// 	- **DOWNGRADE**: downgrade instance type
+	// 	- **DOWNGRADE**: downgrade the instance type.
 	//
 	// example:
 	//
@@ -116,19 +116,19 @@ type DescribeAvailableResourceRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The product type. Valid values:
+	// The product type. Default value: Local. Valid values:
 	//
-	// - **Local*	- (default): Redis Community Edition instance (classic architecture) or memory-optimized instance (classic architecture).
+	// - **Local**: Redis Community Edition instance (Classic Edition) or memory-optimized instance (Classic Edition).
 	//
-	// - **Tair_rdb**: memory-optimized instance (cloud-native architecture).
+	// - **Tair_rdb**: memory-optimized instance (Cloud-native Edition).
 	//
 	// - **Tair_scm**: persistent memory-optimized instance.
 	//
 	// - **Tair_essd**: disk-optimized instance.
 	//
-	// - **OnECS**: Redis Community Edition instance (cloud-native architecture).
+	// - **OnECS**: Redis Community Edition instance (Cloud-native Edition).
 	//
-	// > The default value is Local. If you want to query cloud disk resources, you must specify the product type that corresponds to the required cloud disk resources.
+	// > The default value of this parameter is Local. If you want to query cloud disk resources, you must specify the product type corresponding to the required cloud disk resources.
 	//
 	// example:
 	//

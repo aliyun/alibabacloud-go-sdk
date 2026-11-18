@@ -67,7 +67,9 @@ type DescribeRunningLogRecordsResponseBody struct {
 	//
 	// 093B8579-9264-43A0-ABA9-AA86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time is in the YYYY-MM-DDTHH:mmZ format and is in UTC.
+	// The start time of the query.
+	//
+	// The time is in the YYYY-MM-DDTHH:mmZ format and is in UTC.
 	//
 	// example:
 	//

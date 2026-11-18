@@ -23,13 +23,13 @@ type iDescribeInstanceAutoRenewalAttributeResponseBody interface {
 
 type DescribeInstanceAutoRenewalAttributeResponseBody struct {
 	Items *DescribeInstanceAutoRenewalAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//

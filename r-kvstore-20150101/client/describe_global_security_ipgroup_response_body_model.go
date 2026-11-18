@@ -16,7 +16,7 @@ type iDescribeGlobalSecurityIPGroupResponseBody interface {
 }
 
 type DescribeGlobalSecurityIPGroupResponseBody struct {
-	// The IP whitelist template information.
+	// The information about the IP whitelist templates.
 	GlobalSecurityIPGroup []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

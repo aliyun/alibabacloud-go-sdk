@@ -22,7 +22,7 @@ type iDescribeGlobalDistributeCacheResponseBody interface {
 }
 
 type DescribeGlobalDistributeCacheResponseBody struct {
-	// The details of the distributed instance.
+	// The list of distributed instances.
 	GlobalDistributeCaches []*DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches `json:"GlobalDistributeCaches,omitempty" xml:"GlobalDistributeCaches,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeGlobalDistributeCacheResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries that can be displayed per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeGlobalDistributeCacheResponseBody struct {
 	//
 	// F3F44BE3-5419-4B61-9BAC-E66E295A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeGlobalDistributeCacheResponseBody) Validate() error {
 }
 
 type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches struct {
-	// The distributed instance ID.
+	// The instance ID of the distributed instance.
 	//
 	// example:
 	//
@@ -125,17 +125,17 @@ type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches struct {
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	// The instance status of the distributed instance. Valid values:
 	//
-	// 	- **Normal**: Running.
+	// 	- **Normal**: The instance is running.
 	//
-	// 	- **Changing**: Being modified.
+	// 	- **Changing**: The instance is being modified.
 	//
-	// 	- **Creating**: Being created.
+	// 	- **Creating**: The instance is being created.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The details of the child instances.
+	// The list of child instances.
 	SubInstances []*DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances `json:"SubInstances,omitempty" xml:"SubInstances,omitempty" type:"Repeated"`
 }
 
@@ -188,7 +188,7 @@ func (s *DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches) Valida
 }
 
 type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances struct {
-	// The distributed instance ID.
+	// The instance ID of the distributed instance.
 	//
 	// example:
 	//
@@ -196,17 +196,17 @@ type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	// The instance type of the child instance. For more information, see:
 	//
-	// 	- [Memory-optimized Standard Edition instance types](https://help.aliyun.com/document_detail/145228.html).
+	// 	- [Standard memory-optimized instance types](https://help.aliyun.com/document_detail/145228.html).
 	//
-	// 	- [Memory-optimized Cluster Edition instance types](https://help.aliyun.com/document_detail/150458.html).
+	// 	- [Cluster memory-optimized instance types](https://help.aliyun.com/document_detail/150458.html).
 	//
-	// 	- [Memory-optimized read/write splitting instance types](https://help.aliyun.com/document_detail/150459.html).
+	// 	- [Read/write splitting memory-optimized instance types](https://help.aliyun.com/document_detail/150459.html).
 	//
 	// example:
 	//
 	// redis.amber.logic.sharding.2g.2db.0rodb.6proxy.multithread
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The child instance ID.
+	// The instance ID of the child instance.
 	//
 	// example:
 	//
@@ -214,37 +214,37 @@ type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The instance status of the child instance. Valid values:
 	//
-	// 	- **Normal**: Normal.
+	// 	- **Normal**: The instance is in a normal state.
 	//
-	// 	- **Creating**: Being created.
+	// 	- **Creating**: The instance is being created.
 	//
-	// 	- **Changing**: Being modified.
+	// 	- **Changing**: The instance is being modified.
 	//
-	// 	- **Inactive**: Disabled.
+	// 	- **Inactive**: The instance is disabled.
 	//
-	// 	- **Flushing**: Being purged.
+	// 	- **Flushing**: The instance is being purged.
 	//
-	// 	- **Released**: Released.
+	// 	- **Released**: The instance is released.
 	//
-	// 	- **Transforming**: Being transformed.
+	// 	- **Transforming**: The instance is being transformed.
 	//
-	// 	- **Unavailable**: Service stopped.
+	// 	- **Unavailable**: The service is stopped.
 	//
-	// 	- **Error**: Failed to create.
+	// 	- **Error**: The instance failed to be created.
 	//
-	// 	- **Migrating**: Being migrated.
+	// 	- **Migrating**: The instance is being migrated.
 	//
-	// 	- **BackupRecovering**: Being restored from a backup.
+	// 	- **BackupRecovering**: The instance is recovering from a backup.
 	//
-	// 	- **MinorVersionUpgrading**: Minor version being upgraded.
+	// 	- **MinorVersionUpgrading**: The minor version of the instance is being upgraded.
 	//
-	// 	- **NetworkModifying**: Network being modified.
+	// 	- **NetworkModifying**: The network of the instance is being modified.
 	//
-	// 	- **SSLModifying**: SSL being modified.
+	// 	- **SSLModifying**: The SSL certificate of the instance is being modified.
 	//
-	// 	- **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance can be accessed normally.
+	// 	- **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance remains accessible.
 	//
-	// > For more information about instance status and details, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+	// > For more information about instance statuses and their impacts, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//

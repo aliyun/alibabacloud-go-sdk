@@ -16,7 +16,7 @@ type iDeleteParameterGroupResponseBody interface {
 }
 
 type DeleteParameterGroupResponseBody struct {
-	// The parameter template ID.
+	// The ID of the parameter template.
 	//
 	// example:
 	//

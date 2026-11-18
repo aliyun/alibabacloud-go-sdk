@@ -22,29 +22,29 @@ type iModifyEventInfoRequest interface {
 }
 
 type ModifyEventInfoRequest struct {
-	// The parameters related to the action in JSON format.
+	// The parameters related to the action, in JSON format.
 	//
 	// When **TaskAction*	- is set to **modifySwitchTime**, set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
 	//
 	// 	- **recoverMode**: the task recovery mode. Valid values:
 	//
-	//   	- **imePoint**: executes the task at a specified point in time.
+	//   	- **imePoint**: Executes the task at the specified point in time.
 	//
-	//   	- **immediate**: executes the task immediately.
+	//   	- **immediate**: Executes the task immediately.
 	//
-	//   	- **maintainTime**: executes the task during the O&M window.
+	//   	- **maintainTime**: Executes the task during the O&M window.
 	//
-	// 	- **recoverTime**: the specified point in time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. This parameter is required when **recoverMode*	- is set to **timePoint**.
+	// 	- **recoverTime**: the specified point in time. The time must be in UTC and in the yyyy-MM-ddTHH:mm:ssZ format. This parameter is required when **recoverMode*	- is set to **timePoint**.
 	//
 	// example:
 	//
 	// {"recoverTime":"2023-04-17T14:02:35Z","recoverMode":"timePoint"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// The action to process the event. Valid values:
+	// The action to be performed on the event. Valid values:
 	//
 	// - **archive**: Archives the event.
 	//
-	// - **undo**: Does not process the event.
+	// - **undo**: Takes no action.
 	//
 	// example:
 	//

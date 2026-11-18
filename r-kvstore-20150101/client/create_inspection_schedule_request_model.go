@@ -30,13 +30,13 @@ type iCreateInspectionScheduleRequest interface {
 }
 
 type CreateInspectionScheduleRequest struct {
-	// The cron expression for the periodic scheduling.
+	// The cron expression for the periodic schedule.
 	//
 	// example:
 	//
 	// 0 0 2 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The specified inspection items. The following inspection items are supported:
+	// The specified inspection items. Valid values:
 	//
 	// - RESOURCE_USAGE
 	//
@@ -58,7 +58,7 @@ type CreateInspectionScheduleRequest struct {
 	//
 	// 1h
 	InspectionWindow *string `json:"InspectionWindow,omitempty" xml:"InspectionWindow,omitempty"`
-	// The O&M Assistant instance ID.
+	// The ID of the assistant instance.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type CreateInspectionScheduleRequest struct {
 	//
 	// >
 	//
-	// > - Separate multiple instances with commas (,).
+	// > - Separate multiple instance IDs with commas (,).
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The report language.
+	// The language of the report.
 	//
 	// example:
 	//

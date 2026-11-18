@@ -24,7 +24,7 @@ type iRemoveSubInstanceRequest interface {
 }
 
 type RemoveSubInstanceRequest struct {
-	// Instance ID of the child instance in the distributed instance. You can call the [DescribeGlobalDistributeCache](https://help.aliyun.com/document_detail/473780.html) operation to query instance ID.
+	// Instance ID of the child instance in the distributed instance. You can call the [DescribeGlobalDistributeCache](https://help.aliyun.com/document_detail/473780.html) operation to obtain instance ID.
 	//
 	// This parameter is required.
 	//

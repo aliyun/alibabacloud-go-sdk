@@ -50,7 +50,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// 	- **Private**: virtual private cloud (VPC).
+	// 	- **Private**: VPC.
 	//
 	// 	- **Public**: Internet.
 	//
@@ -58,9 +58,9 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// Public
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The prefix of the new endpoint. The endpoint of the instance is in the format of `<prefix>.redis.rds.aliyuncs.com`. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix must be 8 to 40 characters in length.
+	// The prefix of the new endpoint. The endpoint format is `<prefix>.redis.rds.aliyuncs.com`. The prefix must be 8 to 40 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter.
 	//
-	// > You must specify at least one of the request parameters **NewConnectionString*	- and **Port**.
+	// > You must specify at least one of the **NewConnectionString*	- and **Port*	- request parameters.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The service port number of the instance. Valid values: **1*	- to **65535**.
 	//
-	// > You must specify at least one of the request parameters **NewConnectionString*	- and **Port**.
+	// > You must specify at least one of the **NewConnectionString*	- and **Port*	- request parameters.
 	//
 	// example:
 	//

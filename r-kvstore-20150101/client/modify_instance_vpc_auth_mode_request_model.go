@@ -39,7 +39,7 @@ type ModifyInstanceVpcAuthModeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The authentication mode in a VPC. Valid values:
+	// The authentication mode in the VPC. Valid values:
 	//
 	// 	- **Open**: Uses password authentication.
 	//

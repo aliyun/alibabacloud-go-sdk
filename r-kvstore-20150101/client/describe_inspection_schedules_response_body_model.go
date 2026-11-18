@@ -87,7 +87,7 @@ type DescribeInspectionSchedulesResponseBodyData struct {
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -159,9 +159,7 @@ func (s *DescribeInspectionSchedulesResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionSchedulesResponseBodyDataItems struct {
-	// The time when the scheduled task configuration was created.
-	//
-	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The time when the scheduled task configuration was created. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//
@@ -183,7 +181,7 @@ type DescribeInspectionSchedulesResponseBodyDataItems struct {
 	//
 	// >
 	//
-	// > - Supported inspection items include RESOURCE_USAGE, BIGKEY, HOTKEY, PERFORMANCE_METRICS, and SLOWLOG.
+	// > - Currently, the supported inspection items are RESOURCE_USAGE, BIGKEY, HOTKEY, PERFORMANCE_METRICS, and SLOWLOG.
 	//
 	// example:
 	//
@@ -201,9 +199,7 @@ type DescribeInspectionSchedulesResponseBodyDataItems struct {
 	//
 	// r-2zed6typz5j6djmb2x
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The next time the task is scheduled to run.
-	//
-	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The next time the task is scheduled to run. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//
@@ -239,9 +235,7 @@ type DescribeInspectionSchedulesResponseBodyDataItems struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The update time.
-	//
-	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The update time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
 	//
 	// example:
 	//

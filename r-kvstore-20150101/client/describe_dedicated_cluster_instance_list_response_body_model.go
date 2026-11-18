@@ -169,7 +169,7 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// 4652****
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	// The database engine. The value is fixed as **redis**.
+	// The database engine type. The value is fixed as **redis**.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// 	- **Creating**: Creating.
 	//
-	// 	- **Changing**: Changing.
+	// 	- **Changing**: Modifying.
 	//
 	// 	- **Inactive**: Disabled.
 	//
@@ -225,11 +225,11 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// 	- **BackupRecovering**: Restoring from backup.
 	//
-	// 	- **MinorVersionUpgrading**: Minor version upgrade in progress.
+	// 	- **MinorVersionUpgrading**: Upgrading the minor engine version.
 	//
-	// 	- **NetworkModifying**: Changing the network.
+	// 	- **NetworkModifying**: Modifying the network.
 	//
-	// 	- **SSLModifying**: Changing SSL configurations.
+	// 	- **SSLModifying**: Modifying SSL settings.
 	//
 	// 	- **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
 	//
@@ -273,7 +273,7 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// 3
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The storage type. The value is fixed as LOCAL_SSD ([ESSD cloud disk (standard SSD)](https://help.aliyun.com/document_detail/122389.html)).
+	// The storage type. The value is fixed as LOCAL_SSD ([ESSD standard SSD](https://help.aliyun.com/document_detail/122389.html)).
 	//
 	// example:
 	//
@@ -567,7 +567,7 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList s
 	//
 	// 	- **proxy**: Proxy node.
 	//
-	// 	- **normal**: Regular node. This value is returned for instances that use the standard architecture.
+	// 	- **normal**: Regular node. This value is returned for instances of the standard architecture.
 	//
 	// example:
 	//

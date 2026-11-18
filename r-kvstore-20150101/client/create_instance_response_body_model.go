@@ -84,25 +84,25 @@ type CreateInstanceResponseBody struct {
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal network connection endpoint of the ApsaraDB for Redis instance.
+	// The internal network endpoint of the Redis instance.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections supported by the instance.
+	// The maximum number of connections to the instance.
 	//
 	// example:
 	//
 	// 10000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The time when the subscription instance expires. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+	// The time when the subscription instance expires. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2019-01-18T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The globally unique instance ID.
+	// Instance ID of the instance. Instance ID is globally unique.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// apitest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The current status of the instance. The return value is fixed to Creating.
+	// The current status of the instance. The value is fixed to Creating.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// 2084452111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The service port of ApsaraDB for Redis.
+	// The Redis service port.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// 100000
 	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
-	// The region where the instance resides.
+	// The region where the instance is deployed.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// 5DEA3CC9-F81D-4387-8E97-CEA40F09****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The username used to connect to ApsaraDB for Redis. By default, an account named after the instance ID is included.
+	// The username used to connect to the Redis instance. By default, an account named after the instance ID is included.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//

@@ -40,23 +40,23 @@ type iCreateAccountRequest interface {
 type CreateAccountRequest struct {
 	// The description of the account.
 	//
-	// 	- The description must start with a Chinese character or an English letter. It cannot start with `http: //` or `https: //`.
+	// 	- It must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain Chinese characters, English letters, digits, underscores (_), and hyphens (-).
+	// 	- It can contain Chinese characters, letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- The description must be 2 to 256 characters in length.
+	// 	- It must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// testaccount
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The account name. The name must meet the following requirements:
+	// The account name. The account name must meet the following requirements:
 	//
-	// 	- The name starts with a lowercase letter and can contain lowercase letters, digits, or underscores (_).
+	// 	- It must start with a letter and consist of lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name is up to 100 characters in length.
+	// 	- It can be up to 100 characters in length.
 	//
-	// 	- The name cannot be a <props="china">[reserved word for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3)<props="intl">[reserved word for Redis account names](https://www.alibabacloud.com/help/zh/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3).
+	// 	- It cannot be a <props="china">[reserved word for Redis usernames](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3)<props="intl">[reserved word for Redis usernames](https://www.alibabacloud.com/help/zh/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3).
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateAccountRequest struct {
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Allowed special characters include `!@#$%^&*()_+-=`.
+	// The password of the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. The allowed special characters include `!@#$%^&*()_+-=`.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type CreateAccountRequest struct {
 	//
 	// RoleReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The account type. Set the value to **Normal*	- (standard account).
+	// The account type. Set the value to **Normal**, which indicates a standard account.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type CreateAccountRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The account parameters to modify in JSON format. The new values overwrite the original values.
+	// The account parameters to modify. The parameters must be in JSON format. The modified values overwrite the original values.
 	//
-	// 	Notice: This parameter is supported only for Tair Serverless KV instances.
+	// 	Notice: This parameter is supported only by Tair Serverless KV instances.
 	//
 	// example:
 	//

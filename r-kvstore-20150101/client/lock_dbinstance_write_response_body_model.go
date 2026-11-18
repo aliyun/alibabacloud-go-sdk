@@ -26,11 +26,11 @@ type LockDBInstanceWriteResponseBody struct {
 	//
 	// r-2ev03avw0r0552***
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The reason for locking the instance.
+	// The reason for the lock.
 	//
 	// example:
 	//
-	// Lock write operation test
+	// Write operation lock test
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The request ID.
 	//

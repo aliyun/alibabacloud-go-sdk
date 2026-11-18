@@ -28,7 +28,7 @@ type DescribeInstanceMultiVIPResponseBody struct {
 	//
 	// r-8vb30e8n0m4nvu7tff.redis.zhangbei.rds.aliyuncs.com
 	MasterDns *string `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
-	// The list of IP addresses corresponding to all LBs of the current instance.
+	// The list of IP addresses for all load balancers of the instance.
 	MasterDnsRecord []*string `json:"MasterDnsRecord,omitempty" xml:"MasterDnsRecord,omitempty" type:"Repeated"`
 	// The maximum number of VIPs that can be created.
 	//
@@ -36,7 +36,7 @@ type DescribeInstanceMultiVIPResponseBody struct {
 	//
 	// 2
 	MaxQuota *int64 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
-	// The list of multiple LB VIPs.
+	// The list of virtual IP addresses (VIPs) for multiple load balancers.
 	MultiVIPList []*DescribeInstanceMultiVIPResponseBodyMultiVIPList `json:"MultiVIPList,omitempty" xml:"MultiVIPList,omitempty" type:"Repeated"`
 	// The request ID.
 	//

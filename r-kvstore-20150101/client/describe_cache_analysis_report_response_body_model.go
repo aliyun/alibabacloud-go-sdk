@@ -27,6 +27,10 @@ type iDescribeCacheAnalysisReportResponseBody interface {
 
 type DescribeCacheAnalysisReportResponseBody struct {
 	// The list of big keys.
+	//
+	// example:
+	//
+	// [{"db":"0","qps":0,"keyType":"list","isExpired":"no","analysisType":"BIGKEY","key":"mylist","memory":1005377,"size":200000}]
 	BigKeys []map[string]interface{} `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Repeated"`
 	// The list of hot keys.
 	//

@@ -30,10 +30,15 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// This parameter is deprecated. Ignore this parameter.
+	// **[Deprecated]*	- This group of parameters is deprecated. Ignore it.
 	AccessDeniedDetail *DescribeBackupPolicyResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	BackupLogStartTime *string                                             `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
-	// The number of days for which backup data is retained.
+	// The earliest point in time for data flashback, in the yyyy-MM-ddTHH:mm:ssZ format (UTC). This parameter is returned only when the data flashback feature is enabled for the instance.
+	//
+	// example:
+	//
+	// 2021-07-06T05:49:55Z
+	BackupLogStartTime *string `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
+	// The backup retention period in days.
 	//
 	// example:
 	//
@@ -61,31 +66,31 @@ type DescribeBackupPolicyResponseBody struct {
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// 	- **Monday**: Monday.
 	//
-	// 	- **Tuesday**
+	// 	- **Tuesday**: Tuesday.
 	//
-	// 	- **Wednesday**
+	// 	- **Wednesday**: Wednesday.
 	//
-	// 	- **Thursday**
+	// 	- **Thursday**: Thursday.
 	//
-	// 	- **Friday**
+	// 	- **Friday**: Friday.
 	//
-	// 	- **Saturday**
+	// 	- **Saturday**: Saturday.
 	//
-	// 	- **Sunday**
+	// 	- **Sunday**: Sunday.
 	//
 	// example:
 	//
 	// Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup time. The time is in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
+	// The backup time, in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 05:00Z-06:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The next backup time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
+	// The time of the next backup, in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -198,43 +203,43 @@ func (s *DescribeBackupPolicyResponseBody) Validate() error {
 }
 
 type DescribeBackupPolicyResponseBodyAccessDeniedDetail struct {
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// -
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// -
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// -
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// -
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//

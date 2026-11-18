@@ -24,7 +24,7 @@ type iDescribePriceResponseBody interface {
 type DescribePriceResponseBody struct {
 	// The order information.
 	Order *DescribePriceResponseBodyOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The order parameters. This parameter is returned when OrderParamOut is set to `true`.
+	// The order parameters. Returned when OrderParamOut is set to `true`.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribePriceResponseBodyOrder struct {
 	// ""
 	Code    *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Coupons *DescribePriceResponseBodyOrderCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	// The currency. The value is CNY (Chinese Yuan) for the China site and USD (US Dollar) for the international site.
+	// The currency. CNY for the China site and USD for the international site.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// 0.1
 	HandlingFeeAmount *string `json:"HandlingFeeAmount,omitempty" xml:"HandlingFeeAmount,omitempty"`
-	// Indicates whether a contract-based discount is applied.
+	// Indicates whether a contract discount is applied.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type DescribePriceResponseBodyOrder struct {
 	// 0.21
 	OriginalAmount *string                                `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	RuleIds        *DescribePriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// Indicates whether discount information is displayed.
+	// Indicates whether to display the discount information.
 	ShowDiscountInfo *bool `json:"ShowDiscountInfo,omitempty" xml:"ShowDiscountInfo,omitempty"`
 	// The discount price.
 	//
@@ -369,10 +369,12 @@ func (s *DescribePriceResponseBodyOrderCoupons) Validate() error {
 }
 
 type DescribePriceResponseBodyOrderCouponsCoupon struct {
-	CouponNo    *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsSelected  *string `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ActivityExtInfo map[string]interface{} `json:"ActivityExtInfo,omitempty" xml:"ActivityExtInfo,omitempty"`
+	CouponNo        *string                `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Effective       *bool                  `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	IsSelected      *string                `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribePriceResponseBodyOrderCouponsCoupon) String() string {
@@ -383,12 +385,20 @@ func (s DescribePriceResponseBodyOrderCouponsCoupon) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePriceResponseBodyOrderCouponsCoupon) GetActivityExtInfo() map[string]interface{} {
+	return s.ActivityExtInfo
+}
+
 func (s *DescribePriceResponseBodyOrderCouponsCoupon) GetCouponNo() *string {
 	return s.CouponNo
 }
 
 func (s *DescribePriceResponseBodyOrderCouponsCoupon) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribePriceResponseBodyOrderCouponsCoupon) GetEffective() *bool {
+	return s.Effective
 }
 
 func (s *DescribePriceResponseBodyOrderCouponsCoupon) GetIsSelected() *string {
@@ -399,6 +409,11 @@ func (s *DescribePriceResponseBodyOrderCouponsCoupon) GetName() *string {
 	return s.Name
 }
 
+func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetActivityExtInfo(v map[string]interface{}) *DescribePriceResponseBodyOrderCouponsCoupon {
+	s.ActivityExtInfo = v
+	return s
+}
+
 func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetCouponNo(v string) *DescribePriceResponseBodyOrderCouponsCoupon {
 	s.CouponNo = &v
 	return s
@@ -406,6 +421,11 @@ func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetCouponNo(v string) *Des
 
 func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetDescription(v string) *DescribePriceResponseBodyOrderCouponsCoupon {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetEffective(v bool) *DescribePriceResponseBodyOrderCouponsCoupon {
+	s.Effective = &v
 	return s
 }
 
@@ -424,7 +444,7 @@ func (s *DescribePriceResponseBodyOrderCouponsCoupon) Validate() error {
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfo struct {
-	// The price reduction ratio.
+	// The price reduction rate.
 	//
 	// example:
 	//
@@ -438,7 +458,7 @@ type DescribePriceResponseBodyOrderDepreciateInfo struct {
 	CheapStandAmount *int64 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
 	// The promotion information.
 	ContractActivity *DescribePriceResponseBodyOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
-	// The price difference discount, displayed in the order total.
+	// The price difference discount (displayed in the total order price).
 	//
 	// example:
 	//
@@ -450,13 +470,13 @@ type DescribePriceResponseBodyOrderDepreciateInfo struct {
 	//
 	// XXXXX
 	DifferentialName *string `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
-	// Indicates whether a contract-based discount is applied.
+	// Indicates whether a contract discount is applied.
 	//
 	// example:
 	//
 	// false
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// Indicates whether the price reduction is displayed.
+	// Indicates whether to display the price reduction extent.
 	//
 	// example:
 	//
@@ -600,9 +620,9 @@ type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
 	//
 	// example:
 	//
-	// Contract_Discount_Order_xxxOff
+	// Contract discount_Entire order_xxx% off
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The price after the discount.
+	// The final price after the discount.
 	FinalFee *float64 `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
 	// The total discount amount.
 	FinalPromFee *float64 `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
@@ -1691,6 +1711,7 @@ type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromoti
 	CanPromFee        *string                `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
 	CouponNo          *string                `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Effective         *bool                  `json:"Effective,omitempty" xml:"Effective,omitempty"`
 	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	OptionCode        *string                `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	PromotionName     *string                `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
@@ -1721,6 +1742,10 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPro
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) GetEffective() *bool {
+	return s.Effective
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) GetName() *string {
@@ -1764,6 +1789,11 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPro
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetDescription(v string) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion) SetEffective(v bool) *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotion {
+	s.Effective = &v
 	return s
 }
 

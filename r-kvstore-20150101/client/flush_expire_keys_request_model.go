@@ -28,7 +28,7 @@ type iFlushExpireKeysRequest interface {
 type FlushExpireKeysRequest struct {
 	// The execution time. Valid values:
 	//
-	// 	- **Immediately**: Executes the operation immediately. This is the default value.
+	// 	- **Immediately**: Executes the operation immediately. Default value.
 	//
 	// 	- **MaintainTime**: Executes the operation during the maintenance window.
 	//

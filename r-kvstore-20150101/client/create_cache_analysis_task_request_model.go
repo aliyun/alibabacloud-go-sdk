@@ -24,7 +24,7 @@ type iCreateCacheAnalysisTaskRequest interface {
 }
 
 type CreateCacheAnalysisTaskRequest struct {
-	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to obtain the instance ID.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//

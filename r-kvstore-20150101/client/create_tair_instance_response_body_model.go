@@ -58,7 +58,7 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The detailed configurations of the instance, in the format of a JSON character string. For more information about the parameters, see Parameter settings description.
+	// The detailed configuration of the instance, in the format of a JSON character string. For more information about the parameters, see [Description of parameter settings](https://help.aliyun.com/document_detail/43885.html).
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// r-bp13ac3d047b****.tairpena.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections supported by the instance.
+	// The maximum number of connections to the instance.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// redistest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The current status of the instance. The value is fixed as **Creating**.
+	// The current status of the instance. The return value is fixed to **Creating**.
 	//
 	// example:
 	//

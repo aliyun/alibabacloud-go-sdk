@@ -14,7 +14,7 @@ type iGrantAccountPrivilegeResponseBody interface {
 }
 
 type GrantAccountPrivilegeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

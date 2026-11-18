@@ -18,11 +18,11 @@ type iDescribeActiveOperationTaskCountResponseBody interface {
 }
 
 type DescribeActiveOperationTaskCountResponseBody struct {
-	// Indicates whether there are O&M tasks that require a pop-up notification for user action. Valid values:
+	// Indicates whether there are O&M tasks that require a pop-up notification for user operations. Valid values:
 	//
-	// - **0**: No pop-up notification.
+	// - **0**: No pop-up window.
 	//
-	// - **1**: A pop-up notification exists.
+	// - **1**: Pop-up window.
 	//
 	// example:
 	//

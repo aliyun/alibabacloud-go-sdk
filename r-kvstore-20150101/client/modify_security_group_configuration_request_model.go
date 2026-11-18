@@ -38,9 +38,9 @@ type ModifySecurityGroupConfigurationRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the security groups that you want to set. You can specify up to 10 security group IDs, separated by commas (,).
+	// The IDs of the security groups to be configured. You can specify up to 10 security group IDs. Separate multiple IDs with commas (,).
 	//
-	// > This operation overwrites the existing settings. For valid values, query the basic information about the security groups that you created by calling [DescribeSecurityGroups](https://next.api.aliyun.com/api/Ecs/2014-05-26/DescribeSecurityGroups).
+	// > This overwrites the existing settings. For valid values, call [DescribeSecurityGroups](https://next.api.aliyun.com/api/Ecs/2014-05-26/DescribeSecurityGroups) to query the basic information of the security groups you created.
 	//
 	// This parameter is required.
 	//

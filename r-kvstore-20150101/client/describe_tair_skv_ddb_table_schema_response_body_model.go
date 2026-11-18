@@ -18,7 +18,7 @@ type iDescribeTairSkvDdbTableSchemaResponseBody interface {
 }
 
 type DescribeTairSkvDdbTableSchemaResponseBody struct {
-	// The request ID. For more information, see common parameters.
+	// See common parameters.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeTairSkvDdbTableSchemaResponseBody struct {
 	//
 	// {"attributeDefinitions":[{"attributeType":"S","attributeName":"pk"},{"attributeType":"S","attributeName":"sk"}],"keySchema":[{"attributeName":"pk","keyType":"HASH"},{"attributeName":"sk","keyType":"RANGE"}]}
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The TTL property. The parameter settings toggle in JSON format.
+	// The TTL property and parameter setting switches in JSON format.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDeleteBackupRequest interface {
 }
 
 type DeleteBackupRequest struct {
-	// The ID of the backup file for the instance. You can call [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) to query the ID.
+	// The ID of the backup file for the instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DeleteBackupRequest struct {
 	//
 	// 521****66
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The ID of the instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to obtain the ID.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//

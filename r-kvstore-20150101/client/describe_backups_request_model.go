@@ -44,7 +44,7 @@ type DescribeBackupsRequest struct {
 	//
 	// 11611111
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The ID of the backup job. This ID is returned by the CreateBackup operation. If CreateBackup returns multiple BackupJobIds, you must call this operation to query each of them separately.
+	// The ID of the backup task. This ID is returned by the CreateBackup operation. If the CreateBackup operation returns multiple BackupJobIds, you must call this operation to query each of them separately.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type DescribeBackupsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to enable AOF persistence. Valid values:
 	//
-	// 	- **0**: Disabled.
+	// 	- **0**: disabled.
 	//
-	// 	- **1**: Enabled.
+	// 	- **1**: enabled.
 	//
 	// > Default value: **0**.
 	//

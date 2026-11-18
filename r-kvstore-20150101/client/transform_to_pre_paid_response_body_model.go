@@ -18,21 +18,21 @@ type iTransformToPrePaidResponseBody interface {
 }
 
 type TransformToPrePaidResponseBody struct {
-	// The time when the instance expires after the billing method of the instance is changed to subscription.
+	// The instance expires time after the payer billing method is transformed to subscription.
 	//
-	// The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2019-01-18T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 111111111111111
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

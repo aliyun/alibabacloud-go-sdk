@@ -16,7 +16,7 @@ type iCancelActiveOperationTasksResponseBody interface {
 }
 
 type CancelActiveOperationTasksResponseBody struct {
-	// The IDs of the canceled O&M events. Multiple IDs are separated by commas (,).
+	// The IDs of the O&M events canceled in batches. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

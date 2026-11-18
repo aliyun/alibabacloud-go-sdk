@@ -11,6 +11,8 @@ type iDescribeInspectionScheduleReportsRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DescribeInspectionScheduleReportsRequest
 	GetInstanceId() *string
+	SetLevelSummary(v string) *DescribeInspectionScheduleReportsRequest
+	GetLevelSummary() *string
 	SetPageNum(v int64) *DescribeInspectionScheduleReportsRequest
 	GetPageNum() *int64
 	SetPageSize(v int64) *DescribeInspectionScheduleReportsRequest
@@ -22,7 +24,7 @@ type iDescribeInspectionScheduleReportsRequest interface {
 }
 
 type DescribeInspectionScheduleReportsRequest struct {
-	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +32,20 @@ type DescribeInspectionScheduleReportsRequest struct {
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The summary of risk levels in the inspection results. You can specify multiple values. Valid values:
+	//
+	// - Normal: Normal.
+	//
+	// - Warning: Alert.
+	//
+	// - Error: High-risk.
+	//
+	// - Failed: Failed.
+	//
+	// example:
+	//
+	// Error
+	LevelSummary *string `json:"LevelSummary,omitempty" xml:"LevelSummary,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -63,6 +79,10 @@ func (s *DescribeInspectionScheduleReportsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeInspectionScheduleReportsRequest) GetLevelSummary() *string {
+	return s.LevelSummary
+}
+
 func (s *DescribeInspectionScheduleReportsRequest) GetPageNum() *int64 {
 	return s.PageNum
 }
@@ -81,6 +101,11 @@ func (s *DescribeInspectionScheduleReportsRequest) GetSecurityToken() *string {
 
 func (s *DescribeInspectionScheduleReportsRequest) SetInstanceId(v string) *DescribeInspectionScheduleReportsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInspectionScheduleReportsRequest) SetLevelSummary(v string) *DescribeInspectionScheduleReportsRequest {
+	s.LevelSummary = &v
 	return s
 }
 

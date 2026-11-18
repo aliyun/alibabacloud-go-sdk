@@ -34,37 +34,37 @@ type iDescribeEncryptionKeyResponseBody interface {
 }
 
 type DescribeEncryptionKeyResponseBody struct {
-	// The Alibaba Cloud account ID of the key creator.
+	// The ID of the Alibaba Cloud account that created the key.
 	//
 	// example:
 	//
 	// 17649847********
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The estimated time when the key is to be deleted. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The scheduled deletion time of the key for the instance. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
-	// > If this parameter is empty, the key will not be automatically deleted.
+	// > If this parameter is empty, the key is not automatically deleted.
 	//
 	// example:
 	//
 	// 2021-09-24T18:22:03Z
 	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The description of the key. By default, this parameter is empty.
+	// The description of the key. Default value: empty.
 	//
 	// example:
 	//
 	// testkey
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The key ID of the instance.
+	// The ID of the key for the instance.
 	//
 	// example:
 	//
 	// ad463061-992d-4195-8a94-ed63********
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The status of the key. Valid values:
+	// The status of the key for the instance. Valid values:
 	//
-	// 	- **Enabled**: The key is available.
+	// 	- **Enabled**: Available.
 	//
-	// 	- **Disabled**: The key is unavailable.
+	// 	- **Disabled**: Unavailable.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type DescribeEncryptionKeyResponseBody struct {
 	//
 	// AES-CTR-256
 	EncryptionName *string `json:"EncryptionName,omitempty" xml:"EncryptionName,omitempty"`
-	// The purpose of the key. The return value `ENCRYPT/DECRYPT` indicates that the key is used for encryption and decryption.
+	// The purpose of the key for the instance. A value of `ENCRYPT/DECRYPT` indicates encryption and decryption.
 	//
 	// example:
 	//
 	// ENCRYPT/DECRYPT
 	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The expiration time of the key. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The expiration time of the key. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// > If this parameter is empty, the key does not expire.
 	//
@@ -90,19 +90,19 @@ type DescribeEncryptionKeyResponseBody struct {
 	//
 	// 2021-09-24T18:22:03Z
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The source of the key material. The return value is **Aliyun_KMS**, which indicates Alibaba Cloud [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html).
+	// The source of the key material. A value of **Aliyun_KMS*	- indicates Alibaba Cloud [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html).
 	//
 	// example:
 	//
 	// Aliyun_KMS
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9A931CE5-C926-5E09-B0EC-6299C4A6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The global resource descriptor ARN (Alibaba Cloud Resource Name) of the role to be granted authorization.
+	// The global resource descriptor ARN (Alibaba Cloud Resource Name) of the role pending authorization.
 	//
 	// example:
 	//

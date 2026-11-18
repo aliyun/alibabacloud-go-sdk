@@ -30,9 +30,9 @@ type iRestartInstanceRequest interface {
 type RestartInstanceRequest struct {
 	// The time when the instance is restarted. Valid values:
 	//
-	// 	- **Immediately**: The instance is restarted immediately. This is the default value.
+	// 	- **Immediately**: Restarts the instance immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: The instance is restarted during the maintenance window.
+	// 	- **MaintainTime**: Restarts the instance during the maintenance window.
 	//
 	// example:
 	//

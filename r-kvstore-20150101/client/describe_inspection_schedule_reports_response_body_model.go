@@ -91,7 +91,7 @@ type DescribeInspectionScheduleReportsResponseBodyData struct {
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The page size. Default value: 25.
+	// The number of entries per page. Default value: 25.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ func (s *DescribeInspectionScheduleReportsResponseBodyData) Validate() error {
 type DescribeInspectionScheduleReportsResponseBodyDataItems struct {
 	// The creation time of the task.
 	//
-	// The value is a UNIX timestamp in milliseconds.
+	// The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type DescribeInspectionScheduleReportsResponseBodyDataItems struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The end time of the task.
 	//
-	// The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type DescribeInspectionScheduleReportsResponseBodyDataItems struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The completion time of the task.
 	//
-	// The time is displayed in the ISO 8601 format with an explicit time zone offset.
+	// The time is in the ISO 8601 format and includes a specific time zone offset.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeInspectionScheduleReportsResponseBodyDataItems struct {
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	// The start time of the task.
 	//
-	// The time is displayed in the YYYY-MM-DDTHH:mmZ format in UTC.
+	// The time is in the YYYY-MM-DDTHH:mmZ format and displayed in UTC.
 	//
 	// example:
 	//

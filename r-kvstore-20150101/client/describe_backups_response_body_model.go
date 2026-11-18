@@ -30,14 +30,14 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// This group of parameters is deprecated. Ignore it.
+	// These parameters are deprecated. Ignore them.
 	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	Backups            *DescribeBackupsResponseBodyBackups            `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	// <props="china">The free backup quota for the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see [Notice on backup commercialization](https://help.aliyun.com/document_detail/2664017.html).
+	// <props="china">The free backup quota for the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see [Announcement on the commercialization of backups](https://help.aliyun.com/document_detail/2664017.html).
 	//
 	// Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
 	//
-	// <props="intl">This parameter is not in effect. Ignore this parameter.
+	// <props="intl">This parameter is invalid. Ignore this parameter.
 	//
 	// example:
 	//
@@ -51,9 +51,9 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 1000
 	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	// The size of instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
+	// The size of the instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
 	//
-	// > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid instance log backups for the instance.
+	// > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid log backups for the instance.
 	//
 	// example:
 	//
@@ -77,7 +77,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 963C20F0-7CE1-4591-AAF3-6F3CD1CE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of backups.
+	// The total number of backup sets.
 	//
 	// example:
 	//

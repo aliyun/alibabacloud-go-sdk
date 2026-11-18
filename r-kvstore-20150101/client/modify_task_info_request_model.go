@@ -30,17 +30,17 @@ type iModifyTaskInfoRequest interface {
 type ModifyTaskInfoRequest struct {
 	// The parameters related to the action, in JSON format.
 	//
-	// If **TaskAction*	- is set to **modifySwitchTime**, the ActionParams value is `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+	// If **TaskAction*	- is set to **modifySwitchTime**, set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
 	//
-	// 	- **recoverMode*	- specifies the task recovery mode. Valid values:
+	// 	- **recoverMode**: the recovery mode of the task. Valid values:
 	//
-	//   	- **imePoint**: Execute at a specified point in time.
+	//   	- **imePoint**: executes the task at a specified point in time.
 	//
-	//   	- **immediate**: Execute immediately.
+	//   	- **immediate**: executes the task immediately.
 	//
-	//   	- **maintainTime**: Execute during the O&M window.
+	//   	- **maintainTime**: executes the task during the O&M window.
 	//
-	// 	- **recoverTime*	- specifies the point in time, in UTC+0, in the yyyy-MM-ddTHH:mm:ssZ format. This parameter is required when **recoverMode*	- is set to **timePoint**.
+	// 	- **recoverTime**: the specified point in time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter is required when **recoverMode*	- is set to **timePoint**.
 	//
 	// example:
 	//
@@ -57,19 +57,19 @@ type ModifyTaskInfoRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the current execution step. You can call [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) to query the current execution step of a specified node ID. A common value is **do_pause**, which indicates waiting for the preset time to execute.
+	// The name of the current execution step. You can call the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) operation to query the current execution step of a specified task. A common value is **do_pause**, which indicates that the task is waiting to be executed at a preset time.
 	//
 	// example:
 	//
 	// do_pause
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The operation name. Currently, the valid value is **modifySwitchTime**, which indicates modifying the switchover time or recovery time.
+	// The operation name. Valid value: **modifySwitchTime**, which indicates modifying the switchover time or recovery time.
 	//
 	// example:
 	//
 	// modifySwitchTime
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The node ID. To specify multiple IDs, separate them with commas (,). You can specify up to 30 IDs.
+	// The task ID. Separate multiple task IDs with commas (,). A maximum of 30 task IDs are supported.
 	//
 	// This parameter is required.
 	//

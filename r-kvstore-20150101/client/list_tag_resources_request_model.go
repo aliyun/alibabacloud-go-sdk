@@ -32,7 +32,7 @@ type iListTagResourcesRequest interface {
 type ListTagResourcesRequest struct {
 	// The token used to start the next query to return more results.
 	//
-	// > You do not need to provide this parameter for the first query. If a query does not return all results, you can pass the **NextToken*	- value returned from the previous query in subsequent queries to continue the query.
+	// > You do not need to specify this parameter for the first query. If a query does not return all results, you can pass the **NextToken*	- value returned from the previous query in subsequent queries to continue the query.
 	//
 	// example:
 	//
@@ -50,11 +50,7 @@ type ListTagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of instance IDs.
 	//
-	// > 	- You must specify at least one of this parameter and the **Tag*	- parameter.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
+	// > 	- You must specify either this parameter or the **Tag*	- parameter.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -66,7 +62,7 @@ type ListTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag information of the instance. You must specify at least one of this parameter and the **ResourceId*	- parameter.
+	// The tag information of the instance. You must specify either this parameter or the **ResourceId*	- parameter.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -173,13 +169,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// demokey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iSwitchInstanceHARequest interface {
 }
 
 type SwitchInstanceHARequest struct {
-	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+	// Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type SwitchInstanceHARequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the original primary node of the shard.
+	// The ID of the original primary node in the shard.
 	//
 	// example:
 	//
@@ -65,9 +65,9 @@ type SwitchInstanceHARequest struct {
 	SourceNodeId *string `json:"SourceNodeId,omitempty" xml:"SourceNodeId,omitempty"`
 	// The execution time. Valid values:
 	//
-	// 	- **0**: executes the operation immediately. This is the default value.
+	// 	- **0**: Executes the switchover immediately. This is the default value.
 	//
-	// 	- **1**: executes the operation within the maintenance window.
+	// 	- **1**: Executes the switchover during the maintenance window.
 	//
 	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
 	//
@@ -77,11 +77,11 @@ type SwitchInstanceHARequest struct {
 	SwitchMode *int32 `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 	// The switchover mode. Valid values:
 	//
-	// 	- **ReliabilityPriority*	- (default): prioritizes reliability. The primary/secondary switchover is performed only when there is no synchronization latency between the primary and secondary nodes, ensuring no data loss. In scenarios with a large write volume and continuous synchronization latency, this mode may cause the switchover to fail.
+	// 	- **ReliabilityPriority (default value)**: Prioritizes reliability. The switchover is performed only when there is no synchronization latency between the primary and secondary nodes, ensuring no data loss. In scenarios with a large write volume and continuous synchronization latency, this mode may cause the switchover to fail.
 	//
-	// 	- **AvailablePriority**: prioritizes availability. The primary/secondary switchover is performed immediately regardless of the synchronization latency between the primary and secondary nodes, which may result in a small amount of data loss.
+	// 	- **AvailablePriority**: Prioritizes availability. The switchover is performed immediately regardless of the synchronization latency between the primary and secondary nodes, which may result in a small amount of data loss.
 	//
-	// > Select a switchover mode based on your business requirements for data and services.
+	// > You must evaluate your business requirements for data and services before selecting a switchover mode.
 	//
 	// example:
 	//

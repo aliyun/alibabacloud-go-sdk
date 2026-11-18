@@ -38,9 +38,9 @@ type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	//
 	// r-t4n885e834f6****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The IP whitelist template ID.
+	// The ID of the IP whitelist template.
 	//
-	// > To dissociate a template, delete the corresponding IP whitelist template ID. This parameter overwrites the original value. To dissociate all templates, pass in an empty string.
+	// > To disassociate a template, remove the corresponding IP whitelist template ID. This parameter overwrites the original value. To disassociate all associated templates, pass an empty string.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

@@ -85,11 +85,11 @@ func (s *DescribeInstancesOverviewResponseBody) Validate() error {
 type DescribeInstancesOverviewResponseBodyInstances struct {
 	// The architecture type. Valid values:
 	//
-	// 	- **cluster**: Cluster Edition.
+	// 	- **cluster**: Cluster.
 	//
-	// 	- **standard**: Standard Edition.
+	// 	- **standard**: Standard.
 	//
-	// 	- **rwsplit**: read/write splitting Edition.
+	// 	- **rwsplit**: Read/write splitting.
 	//
 	// example:
 	//
@@ -103,15 +103,15 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription.
+	// 	- **PrePaid**: Subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go.
+	// 	- **PostPaid**: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The internal endpoint of the instance.
+	// The internal network endpoint of the instance.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// gr-bp14rkqrhac****
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// The instance type.
+	// The instance specifications.
 	//
 	// example:
 	//
@@ -163,35 +163,35 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance status. Valid values:
 	//
-	// 	- **Normal**: The instance is running.
+	// 	- **Normal**: Running.
 	//
-	// 	- **Creating**: The instance is being created.
+	// 	- **Creating**: Being created.
 	//
-	// 	- **Changing**: The instance is being modified.
+	// 	- **Changing**: Being modified.
 	//
-	// 	- **Inactive**: The instance is disabled.
+	// 	- **Inactive**: Disabled.
 	//
-	// 	- **Flushing**: The instance is being purged.
+	// 	- **Flushing**: Being purged.
 	//
-	// 	- **Released**: The instance is released.
+	// 	- **Released**: Released.
 	//
-	// 	- **Transforming**: The instance is being transformed.
+	// 	- **Transforming**: Being transformed.
 	//
-	// 	- **Unavailable**: The instance is unavailable.
+	// 	- **Unavailable**: Service stopped.
 	//
-	// 	- **Error**: The instance failed to be created.
+	// 	- **Error**: Creation failed.
 	//
-	// 	- **Migrating**: The instance is being migrated.
+	// 	- **Migrating**: Being migrated.
 	//
-	// 	- **BackupRecovering**: The instance is being restored from a backup.
+	// 	- **BackupRecovering**: Recovering from a backup.
 	//
-	// 	- **MinorVersionUpgrading**: A minor version upgrade is in progress.
+	// 	- **MinorVersionUpgrading**: Minor version upgrade in progress.
 	//
-	// 	- **NetworkModifying**: The network configuration is being modified.
+	// 	- **NetworkModifying**: Modifying the network.
 	//
-	// 	- **SSLModifying**: The SSL configuration is being modified.
+	// 	- **SSLModifying**: Modifying SSL configurations.
 	//
-	// 	- **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
+	// 	- **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
 	//
 	// example:
 	//
@@ -199,11 +199,11 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The instance type. Valid values:
 	//
-	// 	- **Tair**: Tair (Enterprise Edition).
+	// 	- **Tair**: Tair (Enterprise Edition)
 	//
-	// 	- **Redis**: Redis Community Edition.
+	// 	- **Redis**: Open-source Redis
 	//
-	// 	- **Memcache**
+	// 	- **Memcache**: Memcache
 	//
 	// example:
 	//
@@ -211,16 +211,16 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network.
+	// 	- **CLASSIC**: Classic network.
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: VPC.
 	//
 	// example:
 	//
 	// CLASSIC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	NodeType    *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (the internal endpoint) to connect to the instance.
+	// The VPC IP address. The IP address may change. Connect to the instance by using the internal network endpoint specified by ConnectionDomain.
 	//
 	// > - This parameter is not returned if the network type of the instance is classic network.
 	//
@@ -236,7 +236,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID to which the instance belongs.
+	// The resource group ID of the instance.
 	//
 	// example:
 	//

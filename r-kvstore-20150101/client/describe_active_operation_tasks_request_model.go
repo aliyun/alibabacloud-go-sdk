@@ -46,23 +46,23 @@ type iDescribeActiveOperationTasksRequest interface {
 type DescribeActiveOperationTasksRequest struct {
 	// Specifies whether the event can be canceled. Default value: -1. Valid values:
 	//
-	// - **-1**: all events.
+	// - **-1**: All events.
 	//
-	// - **0**: returns only O&M events that cannot be canceled.
+	// - **0**: Only O&M events that cannot be canceled are returned.
 	//
-	// - **1**: returns only O&M events that can be canceled.
+	// - **1**: Only O&M events that can be canceled are returned.
 	//
 	// example:
 	//
 	// 1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the event time can be modified. Default value: -1. Valid values:
+	// Specifies whether the execution time can be modified. Default value: -1. Valid values:
 	//
-	// - **-1**: all events.
+	// - **-1**: All events.
 	//
-	// - **0**: returns only O&M events whose time cannot be modified.
+	// - **0**: Only O&M events whose execution time cannot be modified are returned.
 	//
-	// - **1**: returns only O&M events whose time can be modified.
+	// - **1**: Only O&M events whose execution time can be modified are returned.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The change level. Default value: all. Valid values:
 	//
-	// - **all**: all levels including exception recovery and system O&M.
+	// - **all**: All exception repair and system O&M levels.
 	//
-	// - **S0**: exception recovery.
+	// - **S0**: Exception repair.
 	//
-	// - **S1**: system O&M.
+	// - **S1**: System O&M.
 	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The database type. Set this parameter to **redis**.
+	// The database engine. Set the value to **redis**.
 	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The instance name. This parameter is optional. If specified, only one instance name is allowed.
+	// The name of the instance. This parameter is optional. If you specify this parameter, you can specify only one instance name.
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product name. Valid values: RDS, POLARDB, MongoDB, and Redis. For Redis instances, set this parameter to Redis.
+	// The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For Redis instances, set the value to Redis.
 	//
 	// example:
 	//
 	// Redis
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the pending event. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query available region IDs.
+	// The region ID of the pending events. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
-	// > Set this parameter to **all*	- to query events in all regions.
+	// > A value of **all*	- specifies all region IDs.
 	//
 	// example:
 	//
@@ -123,25 +123,25 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The status of the O&M event. This parameter is used to filter the returned events. Valid values:
+	// The status of the O&M event, which is used to filter the returned tasks. Valid values:
 	//
-	// 	- **-1**: all events.
+	// 	- **-1**: All events.
 	//
-	// 	- **3**: pending events.
+	// 	- **3**: Pending events.
 	//
-	// 	- **4**: events being processed.
+	// 	- **4**: Processing events.
 	//
-	// 	- **5**: events that ended successfully.
+	// 	- **5**: Successfully completed events.
 	//
-	// 	- **6**: events that ended with failures.
+	// 	- **6**: Failed events.
 	//
-	// 	- **7**: canceled events.
+	// 	- **7**: Canceled events.
 	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The event type of the O&M event. If this parameter is left empty, all types are queried.
+	// The event type. If this parameter is left empty, all event types are queried.
 	//
 	// example:
 	//

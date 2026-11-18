@@ -85,7 +85,7 @@ type DescribeInspectionTaskReportResponseBodyData struct {
 	//
 	// example:
 	//
-	// # Tair Intelligent Inspection Report\\n\\n## Overview..
+	// # Tair intelligent inspection report\\n\\n## Overview..
 	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
 	// The report language.
 	//
@@ -181,25 +181,25 @@ func (s *DescribeInspectionTaskReportResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionTaskReportResponseBodyDataSummary struct {
-	// The number of high-risk items.
+	// The high-risk count.
 	//
 	// example:
 	//
 	// 0
 	Error *int64 `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The number of failed items.
+	// The failed count.
 	//
 	// example:
 	//
 	// 0
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The number of normal items.
+	// The normal count.
 	//
 	// example:
 	//
 	// 1
 	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
-	// The number of warning items.
+	// The warning count.
 	//
 	// example:
 	//

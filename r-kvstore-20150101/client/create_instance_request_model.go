@@ -114,11 +114,11 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
-	// The AOF parameter settings of the new instance. Valid values:
+	// The AOF parameter settings for the new instance. Valid values:
 	//
 	// - **yes*	- (default): enables AOF persistence.
 	//
-	// - **no**: shutdown AOF persistence.
+	// - **no**: disables AOF persistence.
 	//
 	// > This parameter applies to classic instances. Cloud-native instances do not support specifying the AOF parameter.
 	//
@@ -136,9 +136,9 @@ type CreateInstanceRequest struct {
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+	// The auto-renewal period. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
 	//
-	// > This parameter is required when the AutoRenew parameter is set to **true**.
+	// > This parameter is required when the **AutoRenew*	- parameter is set to **true**.
 	//
 	// example:
 	//
@@ -154,9 +154,9 @@ type CreateInstanceRequest struct {
 	//
 	// false
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// You can specify the backup set ID of the source instance in this parameter. The system uses the data saved in the backup set to create the new instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the BackupId. If the source instance is a cluster instance, you must enter the backup set IDs of all shards in the source instance and separate them with commas, such as "10**,11**,15**".
+	// The ID of the backup set of the source instance. The system uses the data in the specified backup set to create the instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the backup set ID. If the source instance is a cluster instance, you must enter the backup set IDs of all shards in the source instance and separate them with commas, such as "10**,11**,15**".
 	//
-	// > If your instance is a cloud-native architecture instance and a cluster instance, we recommend that you call the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to query the cluster backup set ID, such as "cb-xx", and then enter it in the ClusterBackupId request parameter to clone the cluster instance. This saves you the trouble of entering the backup set ID of each shard.
+	// > If your instance is a cloud-native architecture instance and a cluster instance, we recommend that you call the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to query the cluster backup set ID, such as "cb-xx", and then specify the ClusterBackupId request parameter to clone the cluster instance. This saves you the trouble of entering the backup set ID of each shard.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type CreateInstanceRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The storage capacity of the instance. Unit: MB.
 	//
-	// > When you call this operation, you must specify at least one of the Capacity and InstanceClass parameters.
+	// > You must specify at least one of the **Capacity*	- and **InstanceClass*	- parameters when you call this operation.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type CreateInstanceRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The ID of the cluster backup set. Some new cluster architectures support cluster backup set IDs. You can call the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to obtain the ID.
 	//
-	// 	- If the architecture supports cluster backup sets, you can enter the specified cluster backup set ID without specifying the BackupId parameter.
+	// 	- If the architecture supports cluster backup sets, you can specify the cluster backup set ID and do not need to specify the **BackupId*	- parameter.
 	//
 	// 	- If the architecture does not support cluster backup sets, specify the backup set IDs of all shards in the source instance in the BackupId parameter and separate them with commas, such as "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
 	//
@@ -212,35 +212,37 @@ type CreateInstanceRequest struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+	// The ID of the dedicated cluster. This parameter is required when you create an instance in a dedicated cluster.
 	//
 	// example:
 	//
 	// dhg-uv4fnk6r7zff****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// Specifies whether to perform a dry run on the instance creation request. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// 	- **true**: performs a dry run without creating the instance. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the DryRunOperation error code.
+	// 	- **true**: performs a dry run without creating the instance. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
 	//
-	// 	- **false*	- (default): sends the normal request and creates the instance after the request passes the check.
+	// 	- **false*	- (default): sends the request. If the request passes the check, the instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The engine version of the Redis **classic instance**. Valid values:
+	// The engine version.
 	//
-	// 	- **2.8*	- (Not recommended. [End-of-life is planned](https://help.aliyun.com/document_detail/2674657.html).)
+	// For Redis **classic architecture**, valid values are:
 	//
-	// 	- **4.0*	- (Not recommended)
+	// 	- **2.8*	- (Not recommended. [End-of-life planned](https://help.aliyun.com/document_detail/2674657.html).)
 	//
-	// 	- **5.0**
-	//
-	// The engine version of the Redis **cloud-native instance**. Valid values:
+	// 	- **4.0*	- (Not recommended.)
 	//
 	// 	- **5.0**
 	//
-	// 	- **6.0*	- (Recommended)
+	// For Redis **cloud-native architecture**, valid values are:
+	//
+	// 	- **5.0**
+	//
+	// 	- **6.0*	- (Recommended.)
 	//
 	// 	- **7.0**
 	//
@@ -250,13 +252,13 @@ type CreateInstanceRequest struct {
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Specifies whether to use the new instance as the first child instance of a distributed instance. You can create a distributed instance in this way. Valid values:
+	// Specifies whether to use the new instance as the first child instance of a distributed instance. You can create a distributed instance by setting this parameter. Valid values:
 	//
-	// 	- **true**: uses the new instance as the first child instance.
+	// 	- **true**: uses the instance as the first child instance.
 	//
-	// 	- **false*	- (default): does not use the new instance as the first child instance.
+	// 	- **false*	- (default): does not use the instance as the first child instance.
 	//
-	// > 	- If you set this parameter to **true**, the new instance must be a Tair memory-optimized instance and the DPI engine version must be 5.0.
+	// > 	- If you set this parameter to **true**, the new instance must be a Tair memory-optimized instance and the database engine version must be 5.0.
 	//
 	// > 	- This parameter applies only to the China site.
 	//
@@ -266,13 +268,13 @@ type CreateInstanceRequest struct {
 	GlobalInstance *bool `json:"GlobalInstance,omitempty" xml:"GlobalInstance,omitempty"`
 	// The distributed instance ID. This parameter applies only to the China site.
 	//
-	// <props="china"> If you want to append the new ApsaraDB for Redis instance as a new child instance to a distributed instance, this parameter is active and required. For more information and console operations, see [Add a child instance to a distributed instance](https://help.aliyun.com/document_detail/106885.html).
+	// <props="china"> This parameter is required and is active only when you want to append the new instance as a child instance to a distributed instance. For more information and console operations, see [Add a child instance to a distributed instance](https://help.aliyun.com/document_detail/106885.html).
 	//
 	// example:
 	//
 	// gr-bp14rkqrhac****
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
-	// The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Duplicate templates are not allowed.
+	// The global IP address whitelist templates for the instance. Separate multiple templates with commas (,). Duplicates are not allowed.
 	//
 	// 	Notice: This parameter applies only to cloud-native instances. Classic instances do not support the whitelist template feature.</notice>
 	//
@@ -280,29 +282,29 @@ type CreateInstanceRequest struct {
 	//
 	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
-	// The instance type. For example, redis.master.small.default indicates a 1 GB Community Edition (classic architecture) instance with the standard architecture and two replicas. For more information, see [Overview of instance types](https://help.aliyun.com/document_detail/26350.html).
+	// The instance type. For example, redis.master.small.default specifies a 1 GB Community Edition (classic architecture) instance with the standard architecture and two replicas. For more information, see [Overview of instance types](https://help.aliyun.com/document_detail/26350.html).
 	//
-	// > When you call this operation, you must specify at least one of the Capacity and InstanceClass parameters.
+	// > You must specify at least one of the **Capacity*	- and **InstanceClass*	- parameters when you call this operation.
 	//
 	// example:
 	//
 	// redis.master.small.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The type of the endpoint used when you create a cloud-native dual-zone deployment read/write splitting instance. If you do not explicitly specify this parameter, the default value is AzIndependentEndpoint.
+	// The endpoint type used when you create a cloud-native dual-zone read/write splitting instance. If this parameter is not explicitly specified, the default value is AzIndependentEndpoint.
 	//
-	// - **AzIndependentEndpoint**: **Default value**. Active zone-independent endpoints. The primary and secondary active zones provide independent endpoints. You can use different endpoints to implement nearest access for active zones.
+	// - **AzIndependentEndpoint**: **Default value**. Zone-independent endpoints. The primary and secondary zones provide independent endpoints. You can use different endpoints to access the nearest zone.
 	//
-	// - **UnifiedEndpoint**: Unified endpoint. A unified endpoint is provided to access nodes in both the primary and secondary active zones, but cross-zone access may occur.
+	// - **UnifiedEndpoint**: Unified endpoint. A unified endpoint is provided to access nodes in both the primary and secondary zones, but cross-zone access may occur.
 	//
-	// 	Notice: This parameter applies only to cloud-native dual-zone deployment read/write splitting instances. For other types of instances, only active zone-independent endpoints are supported. Even if you specify UnifiedEndpoint, it does not take effect.</notice>
+	// 	Notice: This parameter applies only to cloud-native dual-zone read/write splitting instances. For other instance types, only zone-independent endpoints are supported. Even if you specify UnifiedEndpoint, it does not take effect.</notice>
 	//
-	// 	Notice: The UnifiedEndpoint parameter is currently available only to whitelisted users. If a non-whitelisted user specifies this parameter, an invocation error is returned. To apply for the permissions, submit a ticket.</notice>
+	// 	Notice: The UnifiedEndpoint parameter is currently available only to whitelisted users. If a non-whitelisted user specifies this parameter, an error is returned. To apply for the permissions, submit a ticket.</notice>
 	//
 	// example:
 	//
 	// AzIndependentEndpoint
 	InstanceEndpointType *string `json:"InstanceEndpointType,omitempty" xml:"InstanceEndpointType,omitempty"`
-	// The name of the instance. The name must be 2 to 80 characters in length, and must start with a letter or a Chinese character. It cannot contain the following special characters: `@/:=”<>{[]}` and spaces.
+	// The name of the instance. The name must be 2 to 80 characters in length, and must start with a letter or a Chinese character. It cannot contain spaces or the following special characters: `@/:=”<>{[]}`.
 	//
 	// example:
 	//
@@ -318,19 +320,19 @@ type CreateInstanceRequest struct {
 	//
 	// Redis
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The end time of the maintenance window for the instance. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, if you want the maintenance window to end at 02:00 (UTC+8), set the value to `18:00Z`.
+	// The end time of the maintenance window for the instance. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, to set the end time to 02:00 (UTC+8), set the value to `18:00Z`.
 	//
 	// > The interval between the start time and the end time must be at least 1 hour.
 	//
-	// > If you do not specify this parameter, the default value is 22:00 (UTC), which is 06:00 (UTC+8).
+	// > If you do not specify this parameter, the default value is 06:00 (UTC+8), which is 22:00 (UTC).
 	//
 	// example:
 	//
 	// 07:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window for the instance. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, if you want the maintenance window to start at 01:00 (UTC+8), set the value to `17:00Z`.
+	// The start time of the maintenance window for the instance. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, to set the start time to 01:00 (UTC+8), set the value to `17:00Z`.
 	//
-	// > If you do not specify this parameter, the default value is 18:00 (UTC), which is 02:00 (UTC+8).
+	// > If you do not specify this parameter, the default value is 02:00 (UTC+8), which is 18:00 (UTC).
 	//
 	// example:
 	//
@@ -338,7 +340,7 @@ type CreateInstanceRequest struct {
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC). This is the default value.
+	// 	- **VPC*	- (default): Virtual Private Cloud (VPC).
 	//
 	// example:
 	//
@@ -346,13 +348,13 @@ type CreateInstanceRequest struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **MASTER_SLAVE**: high-availability (two replicas)
+	// 	- **MASTER_SLAVE**: high-availability (two replicas).
 	//
-	// 	- **STAND_ALONE**: single replica
+	// 	- **STAND_ALONE**: standalone (single replica).
 	//
-	// 	- **double**: two replicas
+	// 	- **double**: two replicas.
 	//
-	// 	- **single**: single replica
+	// 	- **single**: single replica.
 	//
 	// > For cloud-native instances, select **MASTER_SLAVE*	- or **STAND_ALONE**. For classic instances, select **double*	- or **single**.
 	//
@@ -362,21 +364,21 @@ type CreateInstanceRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The globally unique ID of the parameter template.	Notice: This parameter applies only to cloud-native instances.</notice>
+	// The ID of the parameter template. The ID must be globally unique.	Notice: This parameter applies only to cloud-native instances.</notice>
 	//
 	// example:
 	//
 	// rpg-test**
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
-	// The password of the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. The allowed special characters include `!@#$%^&*()_+-=`.
+	// The password of the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Allowed special characters include `!@#$%^&*()_+-=`.
 	//
 	// example:
 	//
 	// Pass!123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The subscription duration. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, **36**, and **60**.
+	// The subscription period. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, **36**, and **60**.
 	//
-	// > This parameter is required and takes effect only when the ChargeType parameter is set to **PrePaid**.
+	// > This parameter is required and takes effect only when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
@@ -390,7 +392,7 @@ type CreateInstanceRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The internal network IP address of the new instance.
 	//
-	// > The internal network IP address must be within the vSwitch CIDR block to which the instance belongs.
+	// > The internal network IP address must fall within the vSwitch CIDR block to which the instance belongs.
 	//
 	// example:
 	//
@@ -404,9 +406,9 @@ type CreateInstanceRequest struct {
 	//
 	// > If you create a multi-zone instance, you can use this parameter and the SlaveReadOnlyCount parameter to specify the number of read-only nodes in the primary and secondary zones.
 	//
-	// > - If the instance uses the standard architecture, the sum of this parameter and the SlaveReadOnlyCount parameter cannot exceed 9.
+	// > - For standard architecture instances, the sum of this parameter and the SlaveReadOnlyCount parameter cannot exceed 9.
 	//
-	// > - If the instance uses the cluster architecture, the sum of this parameter and the SlaveReadOnlyCount parameter cannot exceed 4.
+	// > - For cluster architecture instances, the sum of this parameter and the SlaveReadOnlyCount parameter cannot exceed 4.
 	//
 	// example:
 	//
@@ -414,15 +416,15 @@ type CreateInstanceRequest struct {
 	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	// Specifies whether to restore the account, kernel parameters, and whitelist information from the original backup set when you create an instance by using a specified backup set. For example, to restore the account information, set the value to `account`.
 	//
-	// Default value: empty, which indicates that the account, kernel parameters, and whitelist information are not restored from the original backup set.
+	// Default value: empty. An empty value indicates that the account, kernel parameters, and whitelist information are not restored from the original backup set.
 	//
-	// > This parameter applies only to cloud-native instances, and the original backup set must contain the account, kernel parameters, and whitelist information. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query whether the RecoverConfigMode parameter of the specified backup set contains the preceding information.
+	// > This parameter applies only to cloud-native instances, and the original backup set must contain the account, kernel parameters, and whitelist information. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query whether the RecoverConfigMode parameter of a specified backup set contains the preceding information.
 	//
 	// example:
 	//
 	// whitelist,config,account
 	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query available regions. Set this parameter to the region where you want to create the instance.
 	//
 	// This parameter is required.
 	//
@@ -446,15 +448,15 @@ type CreateInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to which you want to restore the source instance. If the data flashback feature is enabled for the source instance, you can specify any point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the specified point in time to create the new instance. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+	// The point in time to which you want to restore the source instance. If the data flashback feature is enabled for the source instance, you can specify a point in time within the backup retention period. The system uses the backup data of the source instance at the specified point in time to create the new instance. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2019-06-19T16:00:00Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The secondary zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the most recent zone list.
+	// The ID of the secondary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the most recent zone list.
 	//
-	// > The value of this parameter cannot be the same as the value of the ZoneId parameter, and cannot be the ID of a multi-zone deployment.
+	// > The value of this parameter cannot be the same as the value of the ZoneId parameter. You cannot specify the ID of a multi-zone deployment.
 	//
 	// example:
 	//
@@ -463,9 +465,9 @@ type CreateInstanceRequest struct {
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of shards. This parameter applies only to cloud-native instances. You can use this parameter to specify a custom number of shards.
 	//
-	// - 1: creates a non-cluster architecture.
+	// - A value of 1 indicates the non-cluster architecture.
 	//
-	// - A value greater than 1: creates a cluster architecture.
+	// - A value greater than 1 indicates the cluster architecture.
 	//
 	// example:
 	//
@@ -483,15 +485,15 @@ type CreateInstanceRequest struct {
 	//
 	// 2
 	SlaveReplicaCount *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
-	// If you want to create a new instance based on the backup set of an instance, specify the source instance ID in this parameter first.
+	// The source instance ID. Specify this parameter if you want to create an instance based on the backup set of an existing instance.
 	//
-	// > Then, specify the backup set or point in time by using the BackupId, ClusterBackupId (recommended for cloud-native cluster architecture), or RestoreTime parameter. This parameter must be used in combination with one of the preceding three parameters.
+	// > Then, specify the backup set or point in time by using the **BackupId**, **ClusterBackupId*	- (recommended for cloud-native cluster architecture), or **RestoreTime*	- parameter. This parameter must be used together with one of the preceding three parameters.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	SrcDBInstanceId *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
-	// The tag information of the instance.
+	// The tags of the instance.
 	Tag []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
 	//
@@ -511,9 +513,9 @@ type CreateInstanceRequest struct {
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The primary active zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent active zone list, and use this parameter to specify the active zone where you want to create the instance.
+	// The ID of the primary zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent zone list, and use this parameter to specify the zone where you want to create the instance.
 	//
-	// > You can also specify the SecondaryZoneId parameter to set the secondary active zone. The deployment of the primary and secondary nodes is in the specified primary and secondary active zones to implement a primary/secondary architecture. For example, you can set the ZoneId parameter to "cn-hangzhou-h" and the SecondaryZoneId parameter to "cn-hangzhou-g".
+	// > You can also specify the SecondaryZoneId parameter to configure a secondary zone. The deployment of the primary and secondary nodes in the specified primary and secondary zones implements a dual-zone primary/secondary architecture. For example, you can set the ZoneId parameter to cn-hangzhou-h and the SecondaryZoneId parameter to cn-hangzhou-g.
 	//
 	// example:
 	//
@@ -1004,9 +1006,9 @@ func (s *CreateInstanceRequest) Validate() error {
 type CreateInstanceRequestTag struct {
 	// The key of the tag.
 	//
-	// > 	- **N*	- indicates the sequence number of the tag key. You can attach up to 20 tags to a single instance. For example, Tag.1.Key indicates the key of the first tag, and Tag.2.Key indicates the key of the second tag.
+	// > 	- **N*	- specifies the sequence number of the tag key. You can attach up to 20 tags to a single instance. For example, Tag.1.Key specifies the key of the first tag, and Tag.2.Key specifies the key of the second tag.
 	//
-	// > 	- If the key of the tag does not exist, the system performs automatic creation.
+	// > 	- If the tag key does not exist, it is automatically created.
 	//
 	// example:
 	//
@@ -1014,7 +1016,7 @@ type CreateInstanceRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
 	//
-	// > **N*	- indicates the sequence number of the tag value. For example, **Tag.1.Value*	- indicates the value of the first tag, and **Tag.2.Value*	- indicates the value of the second tag.
+	// > **N*	- specifies the sequence number of the tag value. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// example:
 	//

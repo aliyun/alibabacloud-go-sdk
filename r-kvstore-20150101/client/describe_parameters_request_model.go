@@ -46,7 +46,7 @@ type DescribeParametersRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions. Use this parameter to specify the region of the instance.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query available regions. Use this parameter to specify the region where you want to create the instance.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 type DescribeDBInstanceNetInfoResponseBody struct {
 	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network.
+	// 	- **CLASSIC**: Classic network.
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: VPC.
 	//
 	// example:
 	//

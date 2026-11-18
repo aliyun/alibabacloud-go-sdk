@@ -38,13 +38,13 @@ type ModifyInspectionScheduleRequest struct {
 	//
 	// 0 0 2 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to start the scheduled task. Default value: true.
+	// Specifies whether to enable the scheduled task. Default value: true.
 	//
 	// example:
 	//
 	// false
 	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The specified inspection items. The following inspection items are supported:
+	// The specified inspection items. Supported inspection items:
 	//
 	// - RESOURCE_USAGE
 	//
@@ -80,7 +80,7 @@ type ModifyInspectionScheduleRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The report language.
+	// The language of the report.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDescribeRoleZoneInfoRequest interface {
 }
 
 type DescribeRoleZoneInfoRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeRoleZoneInfoRequest struct {
 	//
 	// 	- **0**: proxy node.
 	//
-	//   > This parameter is supported only by instances that use the cluster or read/write splitting architecture.
+	//   > This value is supported only for instances of the cluster or read/write splitting architecture.
 	//
 	//
 	// 	- **1**: data node. This is the default value.

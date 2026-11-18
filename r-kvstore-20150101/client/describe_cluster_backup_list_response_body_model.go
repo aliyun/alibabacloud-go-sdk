@@ -28,9 +28,9 @@ type iDescribeClusterBackupListResponseBody interface {
 }
 
 type DescribeClusterBackupListResponseBody struct {
-	// The list of cluster backup sets. A cluster backup set contains the backup sets of all nodes in the cluster.
+	// The list of cluster backup sets. A cluster backup contains the backup sets of all nodes in the cluster.
 	ClusterBackups []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
-	// <props="china">The free backup quota of the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see the notice on backup commercialization. Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
+	// <props="china">The free backup quota of the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see the notice on the commercialization of backups. Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
 	//
 	// <props="intl">This parameter is not in effect. Ignore this parameter.
 	//
@@ -46,15 +46,15 @@ type DescribeClusterBackupListResponseBody struct {
 	//
 	// 1000
 	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	// The size of the instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
+	// The size of instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
 	//
-	// > This value is independent of the number and size of backup sets in the current response. It represents the total size of all valid instance log backups for the current instance.
+	// > This value is independent of the number and size of backup sets in the response to the current request. It represents the total size of all valid instance log backups for the instance.
 	//
 	// example:
 	//
 	// 5000
 	LogStorageSize *int64 `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
-	// The maximum number of records returned by the current request.
+	// The maximum number of entries returned for the current request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeClusterBackupListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of records per page, which is the same as the request parameter.
+	// The maximum number of entries per page, which is the same as the request parameter.
 	//
 	// example:
 	//
@@ -208,11 +208,11 @@ type DescribeClusterBackupListResponseBodyClusterBackups struct {
 	ClusterBackupStartTime *string `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
 	// The status of the cluster backup set. Valid values:
 	//
-	// - OK: The backup is successful.
+	// - OK: Successful.
 	//
-	// - RUNNING: The backup is in progress.
+	// - RUNNING: Running.
 	//
-	// - Other values: The backup failed.
+	// - Other values: Failed.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type DescribeClusterBackupListResponseBodyClusterBackups struct {
 	//
 	// 100%
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The memory size of a single DB node when the full backup is created. Unit: MB.
+	// The memory size of a single database node when the full backup was created. Unit: MB.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The internal download URL of the backup file.
 	//
-	// > You can use this URL to download the backup file from an ECS instance that is connected to the current instance. Both instances must reside in the same VPC.
+	// > You can use this URL to download the backup file from an ECS instance that is connected to the current instance. Both instances must belong to the same VPC.
 	//
 	// example:
 	//
@@ -411,9 +411,9 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The backup status. Valid values:
 	//
-	// 	- **OK**: The backup is successful.
+	// 	- **OK**: Successful.
 	//
-	// 	- **ERROR**: The backup failed.
+	// 	- **ERROR**: Failed.
 	//
 	// example:
 	//
@@ -435,9 +435,9 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Indicates whether the backup set is available. Valid values:
 	//
-	// 	- **0**: unavailable.
+	// 	- **0**: Unavailable.
 	//
-	// 	- **1**: available.
+	// 	- **1**: Available.
 	//
 	// example:
 	//
@@ -586,7 +586,7 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) Validate() 
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo struct {
-	// The database engine version.
+	// The database version.
 	//
 	// example:
 	//

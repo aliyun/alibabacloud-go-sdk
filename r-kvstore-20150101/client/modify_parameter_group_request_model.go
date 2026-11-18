@@ -34,11 +34,11 @@ type iModifyParameterGroupRequest interface {
 }
 
 type ModifyParameterGroupRequest struct {
-	// The product category. Valid values:
+	// The product edition. Valid values:
 	//
-	// - **standard**: Redis Community Edition.
+	// - **standard**: open-source Redis
 	//
-	// - **enterprise**: Tair (Enhanced Edition).
+	// - **enterprise**: Tair (Enterprise Edition)
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyParameterGroupRequest struct {
 	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The description of the parameter template. The description can be up to 200 characters in length.
+	// The description of the parameter template. The description must be 0 to 200 characters in length.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyParameterGroupRequest struct {
 	//
 	// sys-001****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The name of the parameter template. The name must meet the following requirements:
+	// The new name of the parameter template. The name must meet the following requirements:
 	//
 	// 	- The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
 	//
@@ -76,9 +76,9 @@ type ModifyParameterGroupRequest struct {
 	//
 	// testGroupName
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// The parameters and their values in JSON format: {"Parameter1":"Value1","Parameter2":"Value2",...}. The specified values overwrite the existing values.
+	// The parameters and their values in JSON format. Format: {"Parameter1":"Value1","Parameter2":"Value2",...}. The specified values overwrite the original values.
 	//
-	// > The parameters that can be added vary by version. Refer to the console for details.
+	// > The parameters that can be configured vary by edition. For more information, see the console.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyParameterGroupRequest struct {
 	//
 	// {"hz":"12"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the region where the instance resides. You can call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation to query the region ID.
+	// The region ID of the instance. You can call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation to query the region ID.
 	//
 	// example:
 	//

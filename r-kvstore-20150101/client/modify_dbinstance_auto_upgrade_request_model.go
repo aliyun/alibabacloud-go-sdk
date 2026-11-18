@@ -26,7 +26,7 @@ type iModifyDBInstanceAutoUpgradeRequest interface {
 }
 
 type ModifyDBInstanceAutoUpgradeRequest struct {
-	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	// The ID of the instance. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type ModifyDBInstanceAutoUpgradeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The automatic minor engine version update switch. Valid values:
+	// The automatic minor version upgrade switch. Valid values:
 	//
 	// 	- **1**: Enabled.
 	//

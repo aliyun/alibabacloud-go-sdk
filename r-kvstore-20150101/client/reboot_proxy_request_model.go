@@ -40,13 +40,13 @@ type RebootProxyRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IDs of the proxy nodes to operate. Separate multiple IDs with commas.
+	// The IDs of the proxy nodes to be operated on. Separate multiple IDs with commas.
 	//
 	// example:
 	//
 	// 90310144,90310144
 	ProxyList *string `json:"ProxyList,omitempty" xml:"ProxyList,omitempty"`
-	// The IDs of the hosts on which the proxy nodes to operate reside. Separate multiple IDs with commas.
+	// The IDs of the hosts where the proxy nodes to be operated on reside. Separate multiple IDs with commas.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateGlobalSecurityIPGroupResponseBody interface {
 }
 
 type CreateGlobalSecurityIPGroupResponseBody struct {
-	// The information about the global IP address whitelist template.
+	// The global IP whitelist template information.
 	GlobalSecurityIPGroup []*CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,13 +72,13 @@ type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	//
 	// 192.168.0.1,10.10.10.10,172.16.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the IP address whitelist template.
+	// The name of the IP whitelist template.
 	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the IP address whitelist template.
+	// The ID of the IP whitelist template.
 	//
 	// example:
 	//

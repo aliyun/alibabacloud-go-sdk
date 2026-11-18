@@ -26,13 +26,13 @@ type iModifyBackupExpireTimeRequest interface {
 }
 
 type ModifyBackupExpireTimeRequest struct {
-	// The backup file ID of the instance. You can call [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) to query the ID.
+	// The ID of the backup file for the instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the ID.
 	//
 	// example:
 	//
 	// 521****66
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The point in time to which you want to extend the expiration. Specify the time in the yyyy-MM-ddTHH:mmZ format in UTC. The specified point in time cannot be earlier than the current expiration time.
+	// Specifies the new expiration time. The time must be in the yyyy-MM-ddTHH:mmZ format (UTC time) and cannot be earlier than the current expiration time.
 	//
 	// This parameter is required.
 	//

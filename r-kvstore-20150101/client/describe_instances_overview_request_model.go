@@ -58,11 +58,11 @@ type iDescribeInstancesOverviewRequest interface {
 type DescribeInstancesOverviewRequest struct {
 	// The architecture type. Valid values:
 	//
-	// 	- **cluster**: Cluster Edition.
+	// 	- **cluster**: Cluster.
 	//
-	// 	- **standard**: Standard Edition.
+	// 	- **standard**: Standard.
 	//
-	// 	- **rwsplit**: read/write splitting Edition.
+	// 	- **rwsplit**: Read/write splitting.
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type DescribeInstancesOverviewRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription.
+	// 	- **PrePaid**: Subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go.
+	// 	- **PostPaid**: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The edition type. Valid values:
+	// The edition. Valid values:
 	//
 	// 	- **Community**: Community Edition.
 	//
@@ -94,7 +94,7 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
+	// The instance specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeInstancesOverviewRequest struct {
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The IDs of the instances that you want to query.
 	//
-	// > By default, all instances under the current account are queried. To specify multiple instance IDs, separate them with commas (,).
+	// > By default, all instances under the account are queried. To specify multiple instance IDs, separate the IDs with commas (,).
 	//
 	// example:
 	//
@@ -110,33 +110,33 @@ type DescribeInstancesOverviewRequest struct {
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The instance status. Valid values:
 	//
-	// 	- **Normal**: The instance is running.
+	// 	- **Normal**: Running.
 	//
-	// 	- **Creating**: The instance is being created.
+	// 	- **Creating**: Being created.
 	//
-	// 	- **Changing**: The instance is being modified.
+	// 	- **Changing**: Being modified.
 	//
-	// 	- **Inactive**: The instance is disabled.
+	// 	- **Inactive**: Disabled.
 	//
-	// 	- **Flushing**: The instance is being purged.
+	// 	- **Flushing**: Being purged.
 	//
-	// 	- **Released**: The instance is released.
+	// 	- **Released**: Released.
 	//
-	// 	- **Transforming**: The instance is being transformed.
+	// 	- **Transforming**: Being transformed.
 	//
-	// 	- **Migrating**: The instance is being migrated.
+	// 	- **Migrating**: Being migrated.
 	//
-	// 	- **BackupRecovering**: The instance is being restored from a backup.
+	// 	- **BackupRecovering**: Recovering from a backup.
 	//
-	// 	- **MinorVersionUpgrading**: A minor version upgrade is in progress.
+	// 	- **MinorVersionUpgrading**: Minor version upgrade in progress.
 	//
-	// 	- **NetworkModifying**: The network configuration is being modified.
+	// 	- **NetworkModifying**: Modifying the network.
 	//
-	// 	- **SSLModifying**: The SSL configuration is being modified.
+	// 	- **SSLModifying**: Modifying SSL configurations.
 	//
-	// 	- **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
+	// 	- **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
 	//
-	// > For more information about instance statuses, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+	// > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type DescribeInstancesOverviewRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network.
+	// 	- **CLASSIC**: Classic network.
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: VPC.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeInstancesOverviewRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address.
+	// The VPC IP address.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type DescribeInstancesOverviewRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	//
-	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations: see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or go to the console to obtain the resource group ID. Related operations: [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type DescribeInstancesOverviewRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The keyword used for fuzzy search by instance ID or instance description.
+	// The keyword used for fuzzy search based on the instance ID or description.
 	//
 	// example:
 	//

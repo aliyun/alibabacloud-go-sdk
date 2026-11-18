@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds data shard nodes to a cluster instance. This operation supports only cloud-native Cluster Edition instances.
+// Adds data shard nodes to a cluster instance. This operation is supported only for cloud-native cluster instances.
 //
 // @param request - AddShardingNodeRequest
 //
@@ -101,21 +101,21 @@ func (client *Client) AddShardingNodeWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Applies for a direct connection endpoint for an ApsaraDB Tair (Redis® OSS-Compatible) database cluster instance.
+// Applies for a direct connection endpoint for a Tair (Redis® OSS-Compatible) database cluster instance.
 //
 // Description:
 //
-// Clients can use the direct connection endpoint to bypass the proxy and connect to the cluster instance in the same way as they connect to a native Redis cluster. This reduces link overhead and further improves the response speed of the ApsaraDB Tair (Redis® OSS-Compatible) database service.
+// Clients can use the direct connection endpoint to bypass the proxy and connect to the cluster instance in the same way as they connect to a native Redis cluster. This reduces link overhead and further improves the response speed of the Tair (Redis® OSS-Compatible) database service.
 //
-// The instance for which you invoke this operation must meet the following conditions:
+// To call this operation, the instance must meet the following conditions:
 //
 //   - The instance uses the cluster architecture.
 //
-//   - The deployment pattern is classic.
+//   - The deployment mode is classic.
 //
-//   - The network type of the instance is VPC. If the instance is connected to the classic network, you can invoke the [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html) operation to switch the network type to VPC.
+//   - The network type of the instance is VPC. If the instance is connected to the classic network, you can call the [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html) operation to switch the network type to VPC.
 //
-//   - The Secure Sockets Layer (SSL) encryption feature is disabled for the instance. If the Secure Sockets Layer (SSL) encryption feature is enabled, you can invoke the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation for shutdown.
+//   - The Secure Sockets Layer (SSL) encryption feature is disabled for the instance. If the Secure Sockets Layer (SSL) encryption feature is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/473838.html) operation to shut down the feature.
 //
 // @param request - AllocateDirectConnectionRequest
 //
@@ -187,7 +187,7 @@ func (client *Client) AllocateDirectConnectionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Applies for a public endpoint for a Tair (Redis® OSS-Compatible) instance.
+// Applies for a public endpoint for a Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
@@ -263,17 +263,17 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 
 // Summary:
 //
-// Cancels O&M events in batches.
+// Cancels multiple O&M events.
 //
 // Description:
 //
-// Scenarios in which O&M events cannot be canceled
+// Scenarios where O&M events cannot be canceled:
 //
 // - allowCancel is 0.
 //
 // - The current time is later than the start time of the O&M event.
 //
-// - The status of the O&M event is not 3 (waiting for execution).
+// - The status of the O&M event is not 3 (Pending execution).
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -389,13 +389,13 @@ func (client *Client) CancelInspectionTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries whether an ApsaraDB for Redis (Tair) instance has been granted authorization to use the Key Management Service (KMS).
+// Queries whether an ApsaraDB Tair (Redis-compatible) database instance is granted authorization to use Key Management Service (KMS).
 //
 // Description:
 //
-// For more information about Transparent Data Encryption (TDE) and related precautions, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+// For more information about Transparent Data Encryption (TDE) and precautions, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
-//   - After you call this operation to confirm that the authorization is complete, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable TDE.
+//   - After you call this operation to confirm the authorization, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) operation to enable TDE.
 //
 // @param request - CheckCloudResourceAuthorizedRequest
 //
@@ -463,17 +463,17 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates an account for an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Creates an account for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// This operation supports only instances that are compatible with Redis 4.0 or later.
+// This API operation is supported only by instances that are compatible with Redis 4.0 or later.
 //
-//   - The instance status must be Running when you call this operation.
+//   - This API operation requires the instance to be in the Running state.
 //
 //   - You can create up to 18 accounts for each instance.
 //
-// > For the console operation that corresponds to this API operation, see [Account management](https://help.aliyun.com/document_detail/92665.html).
+// > For the corresponding console operation, see [Account management](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -565,11 +565,11 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a data backup for an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Creates a data backup for an ApsaraDB for Tair (Redis OSS-Compatible) instance.
 //
 // Description:
 //
-// For the console operation that corresponds to this API operation, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+// For the corresponding console operation, refer to [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
 //
 // @param request - CreateBackupRequest
 //
@@ -637,11 +637,11 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Manually initiates a cache analysis task for an instance.
+// Initiates a manual cache analysis task for an instance.
 //
 // Description:
 //
-// This operation is no longer recommended. Use the new operation [Real-time Top Key Statistics and Offline Full Key Analysis](https://help.aliyun.com/document_detail/184226.html) instead.
+// This operation is deprecated. Use the [Real-time top key statistics and offline full key analysis](https://help.aliyun.com/document_detail/184226.html) operation instead.
 //
 // @param request - CreateCacheAnalysisTaskRequest
 //
@@ -713,11 +713,11 @@ func (client *Client) CreateCacheAnalysisTaskWithContext(ctx context.Context, re
 //
 // The instance to be converted must meet the following requirements:
 //
-//   - The instance is a Tair [memory-optimized](https://help.aliyun.com/document_detail/126164.html) (Classic Edition) instance.
+//   - The instance to be converted is a Tair [memory-optimized](https://help.aliyun.com/document_detail/126164.html) (Classic Edition) instance.
 //
-//   - If the instance uses a cluster architecture, you must disable the direct connection mode. For more information, see [Release a direct connection endpoint](https://help.aliyun.com/document_detail/150047.html).
+//   - If the instance to be converted uses the cluster architecture, the direct connection mode must be disabled. For more information, see [Release a direct connection endpoint](https://help.aliyun.com/document_detail/150047.html).
 //
-// > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which it belongs is created.
+// > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to purchase a new instance as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
 //
 // @param request - CreateGlobalDistributeCacheRequest
 //
@@ -789,7 +789,7 @@ func (client *Client) CreateGlobalDistributeCacheWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a global IP address whitelist template.
+// Creates a global IP whitelist template.
 //
 // @param request - CreateGlobalSecurityIPGroupRequest
 //
@@ -865,7 +865,7 @@ func (client *Client) CreateGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a scheduled inspection task configuration.
+// Creates a configuration for a scheduled inspection task.
 //
 // @param request - CreateInspectionScheduleRequest
 //
@@ -941,7 +941,7 @@ func (client *Client) CreateInspectionScheduleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a manual inspection task.
+// Manually creates an inspection task.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -1005,15 +1005,15 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an ApsaraDB for Redis Community Edition instance with the classic or cloud-native architecture, or a Tair in-memory instance with the classic architecture. To create a Tair instance with the cloud-native architecture, call the CreateTairInstance operation.
+// Creates a Redis Community Edition instance with the classic or cloud-native architecture, or a Tair in-memory instance with the classic architecture. To create a Tair instance with the cloud-native architecture, call the CreateTairInstance operation.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis (Tair) before you call this operation.
 //
-// This operation can be used to create an ApsaraDB for Redis Community Edition instance or a Tair in-memory instance with the classic architecture. To create a Tair instance with the cloud-native architecture, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+// This operation allows you to create a Redis Community Edition instance or a Tair memory-optimized instance with the classic architecture. To create a Tair instance with the cloud-native architecture, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
 //
-// > For information about how to create an ApsaraDB for Redis instance in the console and how to select an instance type, see [Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
+// > For information about how to create a Redis instance and select instance types in the console, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -1257,7 +1257,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates multiple VIPs for an instance.
+// Creates multiple virtual IP addresses for an instance.
 //
 // @param request - CreateInstanceMultiVIPRequest
 //
@@ -1321,19 +1321,19 @@ func (client *Client) CreateInstanceMultiVIPWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates multiple ApsaraDB for Tair (Redis OSS-compatible) database Classic Edition instances.
+// Creates multiple ApsaraDB for Tair (Redis-compatible) database Classic Edition instances.
 //
 // Description:
 //
-// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the ApsaraDB for Tair (Redis OSS-compatible) database before you call this API operation.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the ApsaraDB for Tair (Redis-compatible) database.
 //
-// > This API operation only supports creating Classic Edition instances.
+// > This operation only supports creating Classic Edition instances.
 //
-// Use the following operations to create a single instance:
+// Use the following API operations to create a single instance:
 //
-// > - [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an open-source Redis instance or a Tair memory-optimized Classic Edition instance.
+// > - [CreateInstance](https://help.aliyun.com/document_detail/473757.html): Creates an open-source Redis instance or a Tair memory-optimized Classic Edition instance.
 //
-// > - [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance (including memory-optimized, persistent memory-optimized, and disk-optimized instances).
+// > - [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): Creates a Tair cloud-native instance (including memory-optimized, persistent memory-optimized, and disk-optimized instances).
 //
 // @param request - CreateInstancesRequest
 //
@@ -1433,7 +1433,7 @@ func (client *Client) CreateInstancesWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// Parameter templates are applicable only to instances deployed in cloud-native deployment mode (formerly cloud disk instances).
+// Parameter templates apply only to instances in cloud-native deployment mode (formerly cloud disk instances).
 //
 // @param request - CreateParameterGroupRequest
 //
@@ -1669,17 +1669,141 @@ func (client *Client) CreateTCInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Creates a Tair AI Gateway instance.
+//
+// @param request - CreateTairAIGatewayInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTairAIGatewayInstanceResponse
+func (client *Client) CreateTairAIGatewayInstanceWithContext(ctx context.Context, request *CreateTairAIGatewayInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateTairAIGatewayInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoRenewPeriod) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !dara.IsNil(request.BusinessInfo) {
+		query["BusinessInfo"] = request.BusinessInfo
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CouponNo) {
+		query["CouponNo"] = request.CouponNo
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.GatewayName) {
+		query["GatewayName"] = request.GatewayName
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		query["GatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PluginParams) {
+		query["PluginParams"] = request.PluginParams
+	}
+
+	if !dara.IsNil(request.PluginType) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTairAIGatewayInstance"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTairAIGatewayInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a cloud-native Tair (Enterprise Edition) instance.
 //
 // Description:
 //
-// For selection reference, see [Must-read for selecting Tair database (Redis OSS-Compatible)](https://help.aliyun.com/document_detail/223808.html).
+// For selection reference, see [Must-read for selecting the ApsaraDB Tair database (Redis OSS-compatible)](https://help.aliyun.com/document_detail/223808.html).
 //
-// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair database (Redis OSS-Compatible) before you invoke this operation.
+// Make sure you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the ApsaraDB Tair database (Redis OSS-compatible) before you invoke this operation.
 //
-// > 	- For instructions on how to perform this operation in the console, see [Create a Tair instance](https://help.aliyun.com/document_detail/26351.html).
+// > 	- For console operations, see [Create a Tair instance](https://help.aliyun.com/document_detail/26351.html).
 //
-// > 	- To create other types of instances, such as open-source instances or [Tair memory-optimized](https://help.aliyun.com/document_detail/126164.html) classic instances, you can invoke the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
+// > 	- To create other types of instances, such as open-source or [Tair memory-optimized](https://help.aliyun.com/document_detail/126164.html) classic edition instances, you can invoke the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
 //
 // @param request - CreateTairInstanceRequest
 //
@@ -2063,9 +2187,9 @@ func (client *Client) CreateTairKVCacheVNodeWithContext(ctx context.Context, req
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+// - Before calling this operation, make sure that you understand the billing methods and [pricing details](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // @param request - CreateTairSkvDdbTableRequest
 //
@@ -2173,7 +2297,7 @@ func (client *Client) CreateTairSkvDdbTableWithContext(ctx context.Context, requ
 //
 // - Before you call this operation, make sure that you understand the billing methods and [pricing details](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
-// - To create a Tair Serverless KV table instance, call the `CreateTairSkvDdbTable` operation.
+// - To create a Tair Serverless KV table instance, use the `CreateTairSkvDdbTable` operation.
 //
 // @param request - CreateTairSkvDdbWorkspaceRequest
 //
@@ -2273,13 +2397,13 @@ func (client *Client) CreateTairSkvDdbWorkspaceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes an account of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Deletes an account from an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// This API operation supports only instances that are compatible with Redis 4.0 or later.
+// This operation is supported only for instances that are compatible with Redis 4.0 or later.
 //
-//   - You can call this API operation only when the instance is in the Running state.
+//   - You can call this operation only when the instance is in the Running state.
 //
 // @param request - DeleteAccountRequest
 //
@@ -2355,7 +2479,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 //
 // Description:
 //
-// This operation supports only cloud-native edition instances.
+// This operation is supported only for cloud-native instances.
 //
 // @param request - DeleteBackupRequest
 //
@@ -2423,7 +2547,7 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 //
 // Description:
 //
-// Before you delete an IP whitelist template, dissociate all instances that are associated with the template.
+// Before deleting an IP address whitelist template, disassociate the instances that are associated with the template.
 //
 // @param request - DeleteGlobalSecurityIPGroupRequest
 //
@@ -2499,19 +2623,19 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Deletes a scheduled inspection task.
+// Deletes a specified scheduled inspection task configuration. ScheduleId specifies the ID of the scheduling configuration to delete, and InstanceId specifies the ID of the AI assistant instance. This operation does not release the database instance.
 //
 // Description:
 //
-// For the console operation that corresponds to this API, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
+// For the corresponding console operation, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
 //
 // When you invoke this operation, the instance must meet the following conditions:
 //
 //   - The instance status is Running.
 //
-//   - The payer of the instance is pay-as-you-go.
+//   - The payer of the instance uses the pay-as-you-go billing method.
 //
-// > Upfront (subscription) instances cannot be deleted by invoking this operation. They will undergo automatic release when they expire. To release a subscription instance in advance, perform the operation in the console.
+// > You cannot invoke this operation to delete an upfront (subscription) instance. An upfront instance is subject to automatic release upon expiration. To delete an upfront instance in advance, use the console.
 //
 // @param request - DeleteInspectionScheduleRequest
 //
@@ -2567,15 +2691,15 @@ func (client *Client) DeleteInspectionScheduleWithContext(ctx context.Context, r
 //
 // Description:
 //
-// For the console operation that corresponds to this API operation, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
+// For the corresponding console operation, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
 //
 // When you invoke this operation, the instance must meet the following conditions:
 //
 //   - The instance status is Running.
 //
-//   - The payer uses the pay-as-you-go billing method.
+//   - The payer of the instance uses the pay-as-you-go billing method.
 //
-// > Upfront (subscription) instances cannot be deleted by invoking this operation. They will undergo automatic release after they expire. To release a subscription instance in advance, perform the operation in the console.
+// > You cannot invoke this operation to manually delete an upfront (subscription) instance. Such instances undergo automatic release upon expiration. To release an upfront instance in advance, use the console.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2927,11 +3051,11 @@ func (client *Client) DescribeActiveOperationMaintenanceConfigWithContext(ctx co
 
 // Summary:
 //
-// Queries the details of O&M tasks for an ApsaraDB for Redis (Tair) instance.
+// Queries the details of O&M tasks for ApsaraDB Tair (Redis® OSS-Compatible) instances.
 //
 // Description:
 //
-// After you call this operation to check whether O&M tasks exist, you can call [ModifyActiveOperationTask](https://help.aliyun.com/document_detail/473864.html) to modify the scheduled switchover time of an O&M task.
+// After you call this operation to query existing O&M tasks, you can call [ModifyActiveOperationTask](https://help.aliyun.com/document_detail/473864.html) to modify the scheduled switchover time of an O&M task.
 //
 // @param request - DescribeActiveOperationTaskRequest
 //
@@ -3179,11 +3303,11 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the audit log configuration of a Tair (Redis® OSS-Compatible) instance, such as whether audit logging is enabled and the log retention period.
+// Queries the audit log configurations of a Tair (Redis® OSS-Compatible) database instance, such as whether audit logging is enabled and the log retention period.
 //
 // Description:
 //
-// Before calling this operation, audit logging must be enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) or [Audit logs](https://help.aliyun.com/document_detail/102015.html).
+// When you call this operation, the audit log feature must be enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) or [Audit logs](https://help.aliyun.com/document_detail/102015.html).
 //
 // @param request - DescribeAuditLogConfigRequest
 //
@@ -3251,7 +3375,7 @@ func (client *Client) DescribeAuditLogConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the audit logs of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the audit logs of an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
@@ -3459,7 +3583,7 @@ func (client *Client) DescribeAvailableResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the backup policy of a Tair (Redis® OSS-Compatible) instance, including the backup cycle and backup time.
+// Queries the backup policy of an ApsaraDB Tair (Redis® OSS-Compatible) database instance, including the backup cycle and backup time.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3595,11 +3719,11 @@ func (client *Client) DescribeBackupTasksWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the backup file information of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the backup file information of an ApsaraDB for Tair (compatible with Redis) database instance.
 //
 // Description:
 //
-// This operation is not applicable to cloud-native cluster architecture instances. If needed, use the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation.
+// This operation is not applicable to cloud-native cluster architecture instances. To query the backup sets of such instances, use the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -3779,11 +3903,11 @@ func (client *Client) DescribeCacheAnalysisReportWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the list of cache analysis reports of an instance.
+// Queries the cache analysis reports of an instance.
 //
 // Description:
 //
-// This operation is no longer recommended. Use the new operation [Real-time top key statistics and offline full key analysis](https://help.aliyun.com/document_detail/184226.html).
+// This API operation is deprecated. Use the new API operation [Real-time top key statistics and offline full key analysis](https://help.aliyun.com/document_detail/184226.html).
 //
 // @param request - DescribeCacheAnalysisReportListRequest
 //
@@ -3863,7 +3987,7 @@ func (client *Client) DescribeCacheAnalysisReportListWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the backup list of an ApsaraDB for Tair (Redis-compatible) database cluster instance.
+// Queries the backup list of an ApsaraDB Tair (Redis® OSS-Compatible) database cluster instance.
 //
 // Description:
 //
@@ -3907,7 +4031,7 @@ func (client *Client) DescribeClusterBackupListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the node configuration information of a Tair (Redis® OSS-Compatible) cluster instance, such as specifications and maximum connections.
+// Queries the node configuration information of an ApsaraDB for Tair (Redis OSS-compatible) database cluster instance, such as the instance specifications and maximum number of connections.
 //
 // Description:
 //
@@ -3983,7 +4107,7 @@ func (client *Client) DescribeClusterMemberInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the monitoring collection granularity of a Tair instance.
+// Queries the monitoring data collection granularity of a Tair instance.
 //
 // @param request - DescribeDBInstanceMonitorRequest
 //
@@ -4047,7 +4171,7 @@ func (client *Client) DescribeDBInstanceMonitorWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the network information of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the network information of a Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -4115,7 +4239,7 @@ func (client *Client) DescribeDBInstanceNetInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the virtual IP address (VIP) information of the child instances of a cluster instance in direct connection mode.
+// Queries the virtual IP address (VIP) information of child instances for a Cluster Edition direct-connected instance.
 //
 // Description:
 //
@@ -4179,7 +4303,7 @@ func (client *Client) DescribeDBNodeDirectVipInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Checks the connectivity from a source client IP address to an instance.
+// Checks the connectivity from the source client IP address to the instance.
 //
 // @param request - DescribeDbInstanceConnectivityRequest
 //
@@ -4247,7 +4371,7 @@ func (client *Client) DescribeDbInstanceConnectivityWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the information about ApsaraDB for Tair (Redis-compatible) database instances in a dedicated cluster.
+// Queries the information about ApsaraDB Tair (Redis® OSS-Compatible) database instances in a dedicated cluster.
 //
 // Description:
 //
@@ -4355,11 +4479,11 @@ func (client *Client) DescribeDedicatedClusterInstanceListWithContext(ctx contex
 
 // Summary:
 //
-// Queries the details of a custom Transparent Data Encryption (TDE) key for an ApsaraDB for Redis (Tair) instance.
+// Queries the details of the custom key for Transparent Data Encryption (TDE) of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that TDE (Transparent Data Encryption) has been enabled for the instance by using a custom key. For more information about the related operation, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html).
+// When you call this operation, the instance must have Transparent Data Encryption (TDE) enabled by using a custom key. For more information about the related operation, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html).
 //
 // > For more information about TDE and precautions, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
@@ -4429,13 +4553,13 @@ func (client *Client) DescribeEncryptionKeyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the list of custom keys used by an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the list of custom keys used by an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// When you invoke [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable transparent data encryption (TDE), you can use a custom key. This operation helps you query the custom keys used by an instance. To create a custom key, invoke the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
+// When you invoke [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable transparent data encryption (TDE), you can use custom keys. This operation helps you query the custom keys used by the instance. To create a custom key, invoke the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
 //
-//   - For more information about transparent data encryption (TDE) and precautions, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+//   - For more information and precautions about transparent data encryption (TDE), see [Enable transparent data encryption (TDE)](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - DescribeEncryptionKeyListRequest
 //
@@ -4563,7 +4687,7 @@ func (client *Client) DescribeEngineVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of a distributed instance.
+// Queries the details of distributed instances.
 //
 // @param request - DescribeGlobalDistributeCacheRequest
 //
@@ -4715,7 +4839,7 @@ func (client *Client) DescribeGlobalSecurityIPGroupWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about global IP whitelist templates associated with an instance.
+// Queries the global IP whitelist templates associated with an instance.
 //
 // @param request - DescribeGlobalSecurityIPGroupRelationRequest
 //
@@ -4907,7 +5031,7 @@ func (client *Client) DescribeHistoryEventsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries historical event statistics.
+// Queries the statistics of historical events.
 //
 // @param request - DescribeHistoryEventsStatRequest
 //
@@ -5179,7 +5303,7 @@ func (client *Client) DescribeHistoryTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries task statistics in the task center.
+// Queries task statistics in Task Center.
 //
 // @param request - DescribeHistoryTasksStatRequest
 //
@@ -5280,6 +5404,10 @@ func (client *Client) DescribeInspectionScheduleReportsWithContext(ctx context.C
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LevelSummary) {
+		query["LevelSummary"] = request.LevelSummary
 	}
 
 	if !dara.IsNil(request.PageNum) {
@@ -5387,7 +5515,7 @@ func (client *Client) DescribeInspectionSchedulesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the report of a specific inspection task.
+// Queries the report for a specific inspection task.
 //
 // @param request - DescribeInspectionTaskReportRequest
 //
@@ -5408,6 +5536,10 @@ func (client *Client) DescribeInspectionTaskReportWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LevelSummary) {
+		query["LevelSummary"] = request.LevelSummary
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -5443,7 +5575,7 @@ func (client *Client) DescribeInspectionTaskReportWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query the list of smart inspection tasks
+// Queries the list of intelligent inspection tasks.
 //
 // @param request - DescribeInspectionTasksRequest
 //
@@ -5460,6 +5592,10 @@ func (client *Client) DescribeInspectionTasksWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LevelSummary) {
+		query["LevelSummary"] = request.LevelSummary
 	}
 
 	if !dara.IsNil(request.PageNum) {
@@ -5503,7 +5639,7 @@ func (client *Client) DescribeInspectionTasksWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the detailed information of a Tair (Redis® OSS-Compatible) instance.
+// Queries the details of an ApsaraDB Tair (Redis OSS-Compatible) database instance.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -5567,7 +5703,7 @@ func (client *Client) DescribeInstanceAttributeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries whether auto-renewal is enabled for a Tair (Redis® OSS-Compatible) instance.
+// Queries whether enable auto-renewal is enabled for ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
 //
 // @param request - DescribeInstanceAutoRenewalAttributeRequest
 //
@@ -5643,7 +5779,7 @@ func (client *Client) DescribeInstanceAutoRenewalAttributeWithContext(ctx contex
 
 // Summary:
 //
-// Queries some default configuration parameters of a Tair (Redis® OSS-Compatible) instance.
+// Queries some default configuration parameters of an ApsaraDB Tair (Redis® OSS-Compatible) instance.
 //
 // @param request - DescribeInstanceConfigRequest
 //
@@ -5707,11 +5843,11 @@ func (client *Client) DescribeInstanceConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the load balancer (LB) information of an instance.
+// Queries the load balancer information of an instance.
 //
 // Description:
 //
-// For more information about multiple LBs, see.
+// For more information about multiple load balancers, see.
 //
 // @param request - DescribeInstanceMultiVIPRequest
 //
@@ -5771,7 +5907,7 @@ func (client *Client) DescribeInstanceMultiVIPWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries whether TLS (SSL) encryption authentication is enabled for a Tair (Redis® OSS-Compatible) database instance.
+// Queries whether TLS (SSL) encryption authentication is enabled for an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - DescribeInstanceSSLRequest
 //
@@ -5835,13 +5971,13 @@ func (client *Client) DescribeInstanceSSLWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries whether the TDE data encryption feature is enabled for an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries whether the Transparent Data Encryption (TDE) feature is enabled for an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// For more information about the transparent data encryption (TDE) feature and precautions, see [Enable transparent data encryption TDE](https://help.aliyun.com/document_detail/265913.html).
+// For detailed information and precautions about Transparent Data Encryption (TDE), see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
-// > You can invoke [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable or shutdown the TDE encrypt feature.
+// > You can call [ModifyInstanceTDE](https://help.aliyun.com/document_detail/473859.html) to enable or disable TDE.
 //
 // @param request - DescribeInstanceTDEStatusRequest
 //
@@ -5905,7 +6041,7 @@ func (client *Client) DescribeInstanceTDEStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information of one or more Tair (Redis® OSS-Compatible) instances.
+// Queries the information of one or more Tair (Redis OSS-compatible) instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -6053,13 +6189,13 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the overview information of one or more ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
+// Queries the overview information of one or more Tair (Redis® OSS-Compatible) instances.
 //
 // Description:
 //
-// If you do not specify any request parameters, the overview information of all instances is returned.
+// If you do not specify request parameters, the overview information of all instances is returned.
 //
-// > This operation does not support pagination for the returned results.
+// > The response of this operation is not paginated.
 //
 // @param request - DescribeInstancesOverviewRequest
 //
@@ -6187,7 +6323,7 @@ func (client *Client) DescribeInstancesOverviewWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the current bandwidth of a Tair (Redis® OSS-Compatible) instance.
+// Queries the current bandwidth of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
@@ -6259,11 +6395,11 @@ func (client *Client) DescribeIntranetAttributeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the logical topology structure of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the logical topology structure of an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// This operation is supported only for cluster and read/write splitting instances.
+// This operation is supported only by instances that use the cluster or read/write splitting architecture.
 //
 // @param request - DescribeLogicInstanceTopologyRequest
 //
@@ -6327,13 +6463,13 @@ func (client *Client) DescribeLogicInstanceTopologyWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the list of monitoring items supported by a Tair (Redis® OSS-Compatible) instance.
+// Queries the list of monitoring metrics supported by ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
 //
 // Description:
 //
-// > To improve user experience, Tair (Redis® OSS-Compatible) has upgraded its performance monitoring. This operation will be taken offline. For more information, see [Notice: Tair (Redis® OSS-Compatible) DescribeMonitorItems operation offline](https://help.aliyun.com/document_detail/189893.html).
+// > To improve user experience, the ApsaraDB for Tair (Redis® OSS-Compatible) database has upgraded its performance monitoring feature, and this API operation will be taken offline. For more information, see [Notice: The DescribeMonitorItems API operation for ApsaraDB for Tair (Redis® OSS-Compatible) is taken offline](https://help.aliyun.com/document_detail/189893.html).
 //
-// After you call this operation to obtain the list of monitoring items, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the historical monitoring information of an instance.
+// After you invoke this API operation to obtain the list of monitoring metrics, you can invoke the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) API operation to query the historical monitoring information of the instance.
 //
 // @param request - DescribeMonitorItemsRequest
 //
@@ -6393,7 +6529,7 @@ func (client *Client) DescribeMonitorItemsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the basic information about a query parameter template.
+// Queries the basic information of a query parameter template.
 //
 // @param request - DescribeParameterGroupRequest
 //
@@ -6461,7 +6597,7 @@ func (client *Client) DescribeParameterGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the list of parameters that can be configured in parameter templates of different versions.
+// Queries the parameters that can be configured in parameter templates of different versions.
 //
 // @param request - DescribeParameterGroupSupportParamRequest
 //
@@ -6533,7 +6669,7 @@ func (client *Client) DescribeParameterGroupSupportParamWithContext(ctx context.
 
 // Summary:
 //
-// Queries the details of configurable query parameters in a parameter template, such as default values, value ranges, and descriptions.
+// Queries the details of a configurable query parameter in a parameter template, such as the default value, valid values, and description.
 //
 // @param request - DescribeParameterGroupTemplateListRequest
 //
@@ -6761,11 +6897,11 @@ func (client *Client) DescribeParameterModificationHistoryWithContext(ctx contex
 
 // Summary:
 //
-// Queries the parameters and default values of ApsaraDB Tair (Redis® OSS-Compatible) database instances across different architectures and major engine versions.
+// Queries the parameter list and default values for ApsaraDB Tair (Redis® OSS-Compatible) database instances across different architectures and major versions.
 //
 // Description:
 //
-// After you call this operation to retrieve the parameter list and default values, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the parameters of a Redis instance as needed.
+// After you call this operation to query the parameter list and default values, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the parameters of the instance based on your business requirements.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -6849,7 +6985,7 @@ func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the configuration parameters and running parameters of a Tair (Redis® OSS-Compatible) instance.
+// Queries the configuration and runtime parameters of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - DescribeParametersRequest
 //
@@ -6921,7 +7057,7 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the fees generated by operations such as creating a Tair (Redis® OSS-Compatible) database instance, upgrading the instance configuration, or renewing the instance.
+// Queries the fees incurred by operations such as creation, upgrade, or renewal of ApsaraDB Tair (Redis OSS-Compatible) database instances.
 //
 // @param request - DescribePriceRequest
 //
@@ -6970,6 +7106,10 @@ func (client *Client) DescribePriceWithContext(ctx context.Context, request *Des
 
 	if !dara.IsNil(request.Instances) {
 		query["Instances"] = request.Instances
+	}
+
+	if !dara.IsNil(request.NeedUnavailableCoupon) {
+		query["NeedUnavailableCoupon"] = request.NeedUnavailableCoupon
 	}
 
 	if !dara.IsNil(request.NodeType) {
@@ -7117,7 +7257,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the roles, types, minor versions, and zones of nodes in a Tair (Redis® OSS-Compatible) instance.
+// Queries the roles, types, minor engine versions, and active zones of nodes in a Tair (Redis® OSS-Compatible) instance.
 //
 // @param request - DescribeRoleZoneInfoRequest
 //
@@ -7193,11 +7333,13 @@ func (client *Client) DescribeRoleZoneInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the running logs of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the running logs of an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// For the corresponding console operation of this API, see [Query running logs](https://help.aliyun.com/document_detail/101713.html). The maximum call frequency of DescribeRunningLogRecords is 100 calls per minute.
+// For the corresponding console operation, see [Query running logs](https://help.aliyun.com/document_detail/101713.html).
+//
+// The maximum number of calls to the DescribeRunningLogRecords operation is 100 per minute.
 //
 // @param request - DescribeRunningLogRecordsRequest
 //
@@ -7305,7 +7447,7 @@ func (client *Client) DescribeRunningLogRecordsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the security groups in the Settings of the whitelist for an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Queries the security groups configured in the whitelist Settings of an ApsaraDB Tair (Redis® OSS-Compatible) database.
 //
 // @param request - DescribeSecurityGroupConfigurationRequest
 //
@@ -7369,7 +7511,7 @@ func (client *Client) DescribeSecurityGroupConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Queries the IP address whitelist of a Tair (Redis® OSS-Compatible) instance.
+// Queries the IP whitelists of an ApsaraDB Tair (Redis OSS-compatible) database instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -7433,11 +7575,11 @@ func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries whether the service-linked role has been authorized for Tair (Redis® OSS-Compatible).
+// Queries the authorization of the service-linked role associated with the ApsaraDB Tair (Redis® OSS-Compatible) database.
 //
 // Description:
 //
-// Call this operation to query whether the associated role named AliyunServiceRoleForKvstore has been authorized for use by Tair (Redis® OSS-Compatible) database under the current account. For more information, see [Service-linked role for Tair (Redis® OSS-Compatible) database](https://help.aliyun.com/document_detail/184337.html).
+// You can invoke this operation to query whether the authorization of the service-linked role named AliyunServiceRoleForKvstore is associated with the ApsaraDB Tair (Redis® OSS-Compatible) database within the current account. For more information, see [Service-linked role associated with ApsaraDB Tair (Redis® OSS-Compatible)](https://help.aliyun.com/document_detail/184337.html).
 //
 // @param request - DescribeServiceLinkedRoleExistsRequest
 //
@@ -7505,13 +7647,13 @@ func (client *Client) DescribeServiceLinkedRoleExistsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the slow query logs generated by a Tair (Redis® OSS-Compatible) database instance within a specified time period.
+// Queries the slow logs generated by a Tair (Redis® OSS-Compatible) instance within a specified time period.
 //
 // Description:
 //
-// For the corresponding console operation, see [Query slow query logs](https://help.aliyun.com/document_detail/95874.html).
+// For the corresponding console operation, see [Query slow logs](https://help.aliyun.com/document_detail/95874.html).
 //
-// The maximum number of calls to DescribeSlowLogRecords is 100 per minute.
+// The rate limit for the DescribeSlowLogRecords operation is 100 calls per minute.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -7673,6 +7815,202 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTagsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries AI gateway instances.
+//
+// @param request - DescribeTairAIGatewayInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairAIGatewayInstancesResponse
+func (client *Client) DescribeTairAIGatewayInstancesWithContext(ctx context.Context, request *DescribeTairAIGatewayInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairAIGatewayInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.Expired) {
+		query["Expired"] = request.Expired
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.InstanceStatus) {
+		query["InstanceStatus"] = request.InstanceStatus
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTairAIGatewayInstances"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTairAIGatewayInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameters of an AI gateway.
+//
+// @param request - DescribeTairAIGatewayParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairAIGatewayParametersResponse
+func (client *Client) DescribeTairAIGatewayParametersWithContext(ctx context.Context, request *DescribeTairAIGatewayParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairAIGatewayParametersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PluginType) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTairAIGatewayParameters"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTairAIGatewayParametersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AI gateway plug-in switch.
+//
+// @param request - DescribeTairAIGatewayPluginSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairAIGatewayPluginSwitchResponse
+func (client *Client) DescribeTairAIGatewayPluginSwitchWithContext(ctx context.Context, request *DescribeTairAIGatewayPluginSwitchRequest, runtime *dara.RuntimeOptions) (_result *DescribeTairAIGatewayPluginSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTairAIGatewayPluginSwitch"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTairAIGatewayPluginSwitchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7893,9 +8231,9 @@ func (client *Client) DescribeTairKVCacheInferInstancesWithContext(ctx context.C
 //
 // ## Operation description
 //
-// - You must specify the `InstanceId` parameter when you call this operation.
+// - When you call this operation, you must specify the `InstanceId` parameter.
 //
-// - The response includes basic information about each table, such as the table ID, name, bandwidth, and maximum number of connections.
+// - The response includes the basic information of each table, such as the table ID, name, bandwidth, and maximum number of connections.
 //
 // @param request - DescribeTairSkvDdbTableRequest
 //
@@ -7947,15 +8285,15 @@ func (client *Client) DescribeTairSkvDdbTableWithContext(ctx context.Context, re
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation queries the table schema configuration of a Tair Serverless KV table instance.
+// - This operation queries the table schema and configuration information of a Tair Serverless KV table instance.
 //
-// - When you invoke this operation, you must specify the InstanceId parameter. The value of this parameter is the instance ID of the instance that you want to query.
+// - You must specify the `InstanceId` parameter when you call this operation, and set it to the ID of the instance that you want to query.
 //
-// - The BackupId parameter specifies the backup set of the table to query.
+// - The `BackupId` parameter specifies the backup set of the table to query.
 //
-// - The response packet includes the time-to-live (TTL) specifications and detailed table structure definition.
+// - The returned data includes the time-to-live (TTL) specifications and detailed table schema definitions.
 //
 // @param request - DescribeTairSkvDdbTableSchemaRequest
 //
@@ -8023,7 +8361,7 @@ func (client *Client) DescribeTairSkvDdbTableSchemaWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the details of a node.
+// Queries the details of a task.
 //
 // @param request - DescribeTaskDetailRequest
 //
@@ -8071,7 +8409,7 @@ func (client *Client) DescribeTaskDetailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the zones supported by Tair (Redis® OSS-Compatible) in a specified region. To query the zones that are active for purchase, call the DescribeAvailableResource operation.
+// Queries the zones supported by the ApsaraDB Tair (Redis® OSS-Compatible) database in a specified region. To query the active zones for purchase, call the DescribeAvailableResource operation.
 //
 // @param request - DescribeZonesRequest
 //
@@ -8139,15 +8477,15 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Permanently destroys an instance and its data backups from the recycle bin.
+// Permanently destroys instances and their data backups in the recycle bin.
 //
 // Description:
 //
-// When you call this operation, the instance must exist in the recycle bin. For more information, see [Cluster recycle bin](https://help.aliyun.com/document_detail/86114.html).
+// When you call this operation, the instances must exist in the recycle bin. For more information, see [Instance recycle bin](https://help.aliyun.com/document_detail/86114.html).
 //
-// > After you call this operation, the instance and its data backups in the recycle bin are permanently deleted.
+// > After you call this operation, the instances and their data backups in the recycle bin are permanently deleted.
 //
-// <danger>After this operation is performed, the data of the instance is permanently deleted and cannot be recovered. Proceed with caution.
+// <danger>After this operation is performed, the data of the instances is permanently deleted and cannot be recovered. Proceed with caution.</danger>
 //
 // @param request - DestroyInstanceRequest
 //
@@ -8211,13 +8549,13 @@ func (client *Client) DestroyInstanceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Adjusts the bandwidth of an ApsaraDB Tair (Redis® OSS-Compatible) instance. Currently, only the pay-as-you-go billing method is supported. You only need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
+// Adjusts the bandwidth of an ApsaraDB Tair (Redis OSS-compatible) instance. Currently, only the pay-as-you-go billing method is supported. You need to specify only the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
 //
 // Description:
 //
-// If you enable the elastic elastic scaling feature for the instance while calling this operation, the instance preferentially uses the elastic elastic scaling feature. When the bandwidth is elastically scaled down, it is scaled down to the default bandwidth of the instance specifications. For more information about the limits, billing, and FAQ of this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+// If you enable the elastic bandwidth scaling feature for the instance when calling this operation, the elastic bandwidth scaling feature takes precedence. During an elastic bandwidth scale-down, the bandwidth reverts to the default bandwidth of the instance type. For more information about the limits, billing, and FAQs of this feature, see [Adjust instance bandwidth](https://help.aliyun.com/document_detail/102588.html).
 //
-// > Before you call this operation, you can call [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) to query the current bandwidth of each data node in the instance.
+// > Before calling this operation, you can call [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) to query the current bandwidth of each data node in the instance.
 //
 // @param request - EnableAdditionalBandwidthRequest
 //
@@ -8321,7 +8659,7 @@ func (client *Client) EnableAdditionalBandwidthWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Purges expired keys from a Tair (Redis® OSS-Compatible) instance.
+// Purges expired keys from an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
@@ -8395,13 +8733,13 @@ func (client *Client) FlushExpireKeysWithContext(ctx context.Context, request *F
 
 // Summary:
 //
-// Flushes all data from an ApsaraDB for Tair (Redis® OSS-Compatible) database instance. The data cannot be recovered.
+// Clears the data in an ApsaraDB for Tair (Redis® OSS-Compatible) database instance. The data cannot be recovered.
 //
 // Description:
 //
-// For the corresponding console operation, refer to [Purge data](https://help.aliyun.com/document_detail/43881.html).
+// For the corresponding operation in the console, refer to [Clear data](https://help.aliyun.com/document_detail/43881.html).
 //
-// > Before calling this API to delete data, back up your data or confirm that a backup is not required.
+// > Before calling this API to delete data, back up your data or confirm that no backup is required.
 //
 // @param request - FlushInstanceRequest
 //
@@ -8465,13 +8803,13 @@ func (client *Client) FlushInstanceWithContext(ctx context.Context, request *Flu
 
 // Summary:
 //
-// Clears data from a specified database in an ApsaraDB for Tair (Redis® OSS-Compatible) instance.
+// Clears the data in a specified database of an ApsaraDB Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// ApsaraDB for Tair (Redis® OSS-Compatible) instances support 256 databases, from DB0 to DB255. Each database does not have a separate memory usage limit. The memory capacity available to a database is subject to the total memory limit of the instance. You can run the `SELECT` command to switch between databases. For more information, see [Tair DB](https://help.aliyun.com/document_detail/38688.html).
+// An ApsaraDB Tair (Redis® OSS-Compatible) instance supports 256 databases, from DB0 to DB255. Each database does not have a separate memory usage limit. The memory capacity available for a database is constrained by the total memory of the instance. You can use the `SELECT` command to switch databases. For more information, see [Tair DB](https://help.aliyun.com/document_detail/38688.html).
 //
-// > This operation supports only cloud-native instances (formerly cloud disk-based instances) in cluster architecture.
+// > This operation is supported only by cloud-native instances (formerly cloud disk instances) in a cluster architecture.
 //
 // @param request - FlushInstanceForDBRequest
 //
@@ -8535,7 +8873,7 @@ func (client *Client) FlushInstanceForDBWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the permissions of an ApsaraDB for Tair (Redis® OSS-Compatible) database account.
+// Modifies the permissions of an account for the ApsaraDB Tair (Redis® OSS-Compatible) database.
 //
 // @param request - GrantAccountPrivilegeRequest
 //
@@ -8611,11 +8949,11 @@ func (client *Client) GrantAccountPrivilegeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Associates the service-linked role named AliyunServiceRoleForKvstore with Tair (Redis® OSS-Compatible) database.
+// Grants authorization to associate the service-linked role with the ApsaraDB for Tair (Redis® OSS-Compatible) database.
 //
 // Description:
 //
-// The Log Management feature of Tair (Redis® OSS-Compatible) database requires resources from [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). Before using the Log Management feature, call this operation to associate the service-linked role named AliyunServiceRoleForKvstore with Tair (Redis® OSS-Compatible) database. For more information, see [Service-linked role for Tair (Redis® OSS-Compatible) database](https://help.aliyun.com/document_detail/184337.html).
+// The log management feature of the ApsaraDB for Tair (Redis® OSS-Compatible) database requires resources from [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). Before using the log management feature, invoke this operation to associate the service-linked role named AliyunServiceRoleForKvstore with the ApsaraDB for Tair (Redis® OSS-Compatible) database and grant the required authorization. For more information, see [Service-linked role for ApsaraDB for Tair (Redis® OSS-Compatible)](https://help.aliyun.com/document_detail/184337.html).
 //
 // @param request - InitializeKvstorePermissionRequest
 //
@@ -8679,7 +9017,7 @@ func (client *Client) InitializeKvstorePermissionWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the labels you attach to ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
+// Queries the attach relationships between ApsaraDB for Tair (Redis® OSS-Compatible) database instances and labels.
 //
 // Description:
 //
@@ -8759,7 +9097,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Locks an instance so that it supports only data reads and does not support writes.
+// Locks an instance to read-only mode, disabling write operations.
 //
 // @param request - LockDBInstanceWriteRequest
 //
@@ -8827,7 +9165,7 @@ func (client *Client) LockDBInstanceWriteWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Simulates a failure of a specified data node or proxy node in Tair (Redis® OSS-Compatible). The instance automatically performs a primary/secondary switchover to ensure high availability.
+// Performs impersonation of a specified data node or proxy node failure in the ApsaraDB for Tair (Redis® OSS-Compatible) database. The instance automatically performs a primary/secondary switchover to ensure high availability and keep the system active.
 //
 // Description:
 //
@@ -8903,13 +9241,13 @@ func (client *Client) MasterNodeShutDownFailOverWithContext(ctx context.Context,
 
 // Summary:
 //
-// Migrates an ApsaraDB Tair (Redis OSS-Compatible) instance to another zone in the same region.
+// Migrates an ApsaraDB for Tair (Redis-compatible) instance to another zone within the same region.
 //
 // Description:
 //
 // Before you call this operation, you must release the public endpoint. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
 //
-// > 	- If the instance was switched from the classic network to a VPC and retains the classic network endpoint, you must wait until the classic network endpoint expires and is released before you can migrate the instance across zones.
+// > 	- If the instance was switched from the classic network to a VPC and the classic network endpoint is retained, you must wait until the classic network endpoint expires and is released before you can migrate the instance across zones.
 //
 // > 	- After the migration, the endpoint of the instance remains unchanged, but the virtual IP address (VIP) changes. Use the endpoint instead of the VIP to connect to the instance in your business applications.
 //
@@ -9007,7 +9345,7 @@ func (client *Client) MigrateToOtherZoneWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the account description of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Modifies the description of an account for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
@@ -9087,11 +9425,11 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies account parameters.
+// Modifies the account parameters.
 //
 // Description:
 //
-// Currently, only Tair Serverless KV instances are supported.
+// This operation is supported only for Tair Serverless KV instances.
 //
 // @param request - ModifyAccountParameterRequest
 //
@@ -9147,7 +9485,7 @@ func (client *Client) ModifyAccountParameterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the password of a specified account in a Tair (Redis® OSS-Compatible) instance.
+// Updates the password of a specified account in an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - ModifyAccountPasswordRequest
 //
@@ -9311,7 +9649,7 @@ func (client *Client) ModifyActiveOperationMaintainConfigWithContext(ctx context
 //
 // Description:
 //
-// O&M events of Tair (Redis® OSS-Compatible) instances, such as instance migration and version upgrades, are notified through text messages, phone calls, emails, or internal messages, and are also displayed in the console. In addition to invoking this operation to modify the scheduled switchover time, you can also modify it in the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
+// O&M events for ApsaraDB for Tair (Redis® OSS-Compatible) database instances, such as instance migration and version upgrades, are notified through SMS, voice calls, emails, or internal messages, as well as in the console. You can invoke this operation to modify the scheduled switchover time. Alternatively, you can modify it in the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
 //
 // @param request - ModifyActiveOperationTaskRequest
 //
@@ -9379,7 +9717,7 @@ func (client *Client) ModifyActiveOperationTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the switchover time of scheduled O&M events for an instance.
+// Modifies the switchover time of scheduled O&M events for instances.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -9451,11 +9789,11 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// Enables or modifies the audit log settings of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Enables or modifies the audit log settings for a Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing and [pricing](https://help.aliyun.com/document_detail/54532.html) of audit logs.
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of audit logs.
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -9675,7 +10013,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the automatic minor engine version update switch for an instance.
+// Modifies the automatic minor version upgrade switch for an instance.
 //
 // @param request - ModifyDBInstanceAutoUpgradeRequest
 //
@@ -9743,11 +10081,11 @@ func (client *Client) ModifyDBInstanceAutoUpgradeWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the endpoint and port of a Tair (Redis® OSS-Compatible) instance.
+// Modifies the endpoint and port of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// For the console operation that corresponds to this API operation, see [Modify an endpoint](https://help.aliyun.com/document_detail/85683.html).
+// For the corresponding console operation, see [Modify endpoints](https://help.aliyun.com/document_detail/85683.html).
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -9955,7 +10293,7 @@ func (client *Client) ModifyEventInfoWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies a global IP address whitelist template.
+// Modifies a global IP whitelist template.
 //
 // @param request - ModifyGlobalSecurityIPGroupRequest
 //
@@ -10035,7 +10373,7 @@ func (client *Client) ModifyGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the name of a global IP address whitelist template.
+// Updates the name of a global IP whitelist template.
 //
 // @param request - ModifyGlobalSecurityIPGroupNameRequest
 //
@@ -10267,7 +10605,7 @@ func (client *Client) ModifyInspectionScheduleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies partial information of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance, including the instance password and name.
+// Modifies specific information of a Tair (Redis® OSS-Compatible) database instance, such as the instance password and name.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -10343,7 +10681,7 @@ func (client *Client) ModifyInstanceAttributeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables or disables the auto-renewal feature for a Tair (Redis® OSS-Compatible) instance before it expires.
+// Enables or disables the auto-renewal feature for ApsaraDB for Tair (Redis® OSS-Compatible) instances before expiration.
 //
 // Description:
 //
@@ -10423,13 +10761,13 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithContext(ctx context.
 
 // Summary:
 //
-// Sets the target bandwidth value for a Tair (Redis® OSS-Compatible) database instance.
+// Configures the target bandwidth settings for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// - Before calling this operation, make sure that you fully understand the bandwidth billing method and pricing of the instance. Tair (Redis® OSS-Compatible) charges fees on an hourly basis based on the increased bandwidth and usage duration. The pricing varies by region. For more information, see [Billable items](https://help.aliyun.com/document_detail/54532.html).
+// - Before calling this operation, make sure that you fully understand the bandwidth billing method and pricing of the instance. Tair (Redis® OSS-Compatible) charges hourly fees based on the increased bandwidth and usage duration. Billing standards vary by region. For more information, see [Billable items](https://help.aliyun.com/document_detail/54532.html).
 //
-// - The bandwidth of an instance (or a single shard) can be increased by up to 6 times the default bandwidth of the instance, with a maximum increase of 192 MB/s. For example, the default bandwidth of a Tair memory-optimized 2 GB standard architecture instance is 96 MB/s. The bandwidth of this instance type can be increased by up to 192 MB/s, resulting in a maximum bandwidth of 288 MB/s. The default bandwidth of a Redis Community Edition 256 MB standard architecture instance is 10 MB/s. The bandwidth of this instance type can be increased by up to 60 MB/s, resulting in a maximum bandwidth of 70 MB/s.
+// - An instance or a single shard supports an additional bandwidth increase of up to 6 times the default bandwidth of the original instance, with a maximum increase limit of 192 MB/s. For example, the default bandwidth of a 2 GB standard-architecture Tair memory-optimized instance is 96 MB/s. The bandwidth for this specification can be increased by up to 192 MB/s, resulting in a maximum instance bandwidth of 288 MB/s. The default bandwidth of a 256 MB standard-architecture open-source Redis instance is 10 MB/s. The bandwidth for this specification can be increased by up to 60 MB/s, resulting in a maximum instance bandwidth of 70 MB/s.
 //
 // @param request - ModifyInstanceBandwidthRequest
 //
@@ -10497,7 +10835,7 @@ func (client *Client) ModifyInstanceBandwidthWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the parameter settings of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
+// Modifies the parameter settings of an ApsaraDB for Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -10589,11 +10927,11 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the maintenance window of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance. Alibaba Cloud performs routine maintenance on the instance within the specified maintenance window.
+// Modifies the maintenance window of a Tair (Redis® OSS-Compatible) database instance. Alibaba Cloud performs routine maintenance on the instance during the specified maintenance window.
 //
 // Description:
 //
-// For the console operation that corresponds to this API operation, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+// For the corresponding console operation, see [Set the maintenance window](https://help.aliyun.com/document_detail/55252.html).
 //
 // @param request - ModifyInstanceMaintainTimeRequest
 //
@@ -10665,11 +11003,11 @@ func (client *Client) ModifyInstanceMaintainTimeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Upgrades the major engine version of a Tair (Redis® OSS-Compatible) database instance.
+// Upgrades the major version of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// For the precautions and impacts of this API operation, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
+// For precautions and impacts of this API operation, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
 //
 // @param request - ModifyInstanceMajorVersionRequest
 //
@@ -10741,15 +11079,15 @@ func (client *Client) ModifyInstanceMajorVersionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Upgrades the minor version of an ApsaraDB Tair (Redis® OSS-Compatible) database instance.
+// Upgrades the minor engine version of a Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// The upgrade process varies by architecture. For more information, see [How minor version upgrades work](https://help.aliyun.com/document_detail/56450.html).
+// The upgrade process varies based on the architecture. For more information, see [Minor engine version upgrade principles](https://help.aliyun.com/document_detail/56450.html).
 //
-// > 	- Before you call this operation, you can call [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) to query the current minor version of the instance.
+// > 	- Before calling this operation, you can call [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) to query the current minor engine version of the instance.
 //
-// > 	- During an instance switchover or primary/secondary switchover, the instance enters a read-only state for up to 60 seconds to wait for full data synchronization. Transient disconnections that last for a few seconds may also occur. Perform the upgrade during off-peak hours and ensure that your application has a reconnection mechanism.
+// > 	- During an instance switchover or primary/secondary switchover, the instance remains in a read-only state for up to 60 seconds while waiting for data to be fully synchronized. Transient disconnections that last for a few seconds may also occur. Perform the upgrade during off-peak hours and ensure that your application is configured with a reconnection mechanism.
 //
 // @param request - ModifyInstanceMinorVersionRequest
 //
@@ -10821,11 +11159,11 @@ func (client *Client) ModifyInstanceMinorVersionWithContext(ctx context.Context,
 
 // Summary:
 //
-// Extends the retention period of the classic network endpoint for a Tair (Redis® OSS-Compatible) database instance that retains the classic network endpoint after a switch from the classic network to a VPC.
+// Extends the retention period of the classic network endpoint for a Tair (Redis® OSS-Compatible) database instance. You can call this API operation if the instance previously executed a switch from the classic network to a VPC and the classic network endpoint was retained.
 //
 // Description:
 //
-// For the corresponding console operation of this API, refer to [Modify the retention period of the original classic network endpoint](https://help.aliyun.com/document_detail/60062.html).
+// For the corresponding console operation of this API operation, refer to [Modify the validity period of the original classic network endpoint](https://help.aliyun.com/document_detail/60062.html).
 //
 // > For information about how to switch an instance from the classic network to a VPC, refer to [SwitchNetwork](https://help.aliyun.com/document_detail/473797.html).
 //
@@ -10899,7 +11237,7 @@ func (client *Client) ModifyInstanceNetExpireTimeWithContext(ctx context.Context
 
 // Summary:
 //
-// Applies a parameter template to a specified instance. This assigns the parameter values from the template to the specified instance. After you modify a parameter template, you must reapply it to the specified instance for the modified parameter values to take effect.
+// Applies a parameter template to a specified instance to assign the values in the parameter template to the instance. If you modify a parameter template, you must reapply it to the specified instance for the modified parameter values to take effect.
 //
 // @param request - ModifyInstanceParameterRequest
 //
@@ -10979,9 +11317,9 @@ func (client *Client) ModifyInstanceParameterWithContext(ctx context.Context, re
 //
 // Description:
 //
-// For the corresponding console operation, see [Secure Sockets Layer (SSL) encryption settings](https://help.aliyun.com/document_detail/84898.html).
+// For the corresponding console operation, see [Settings for Secure Sockets Layer (SSL) encryption](https://help.aliyun.com/document_detail/84898.html).
 //
-// > To specify the minimum SSL version, you can invoke the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the relevant parameter.
+// > To specify the minimum SSL version, you can invoke the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the parameter.
 //
 // @param request - ModifyInstanceSSLRequest
 //
@@ -11049,11 +11387,11 @@ func (client *Client) ModifyInstanceSSLWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the specifications of an ApsaraDB Tair (Redis OSS-Compatible) instance.
+// Changes the specifications of an ApsaraDB Tair (Redis OSS-Compatible) database instance.
 //
 // Description:
 //
-// > For information about the execution process, impacts, feature limits, and billing of modifying instance specifications, refer to [Change instance configurations](https://help.aliyun.com/document_detail/26353.html).
+// > For information about the execution process, impacts, feature limits, and billing of changing instance specifications, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -11201,11 +11539,11 @@ func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Enables the transparent data encryption (TDE) feature for an ApsaraDB for Tair (Redis® OSS-Compatible) database instance, with support for custom keys.
+// Enables the Transparent Data Encryption (TDE) feature for an ApsaraDB Tair (Redis® OSS-Compatible) database instance and supports custom keys.
 //
 // Description:
 //
-// > For more information about Transparent Data Encryption (TDE) and the impacts of enabling TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+// > For detailed information about Transparent Data Encryption (TDE) and the impacts of enabling it, see [Enable Transparent Data Encryption (TDE)](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - ModifyInstanceTDERequest
 //
@@ -11285,7 +11623,7 @@ func (client *Client) ModifyInstanceTDEWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Enables or initiates a shutdown of password-free access over a VPC. After this feature is enabled, cloud servers in the same VPC can connect to the ApsaraDB for Tair (Redis® OSS-Compatible) database instance without a password. Connections using a username and password are still supported.
+// Enables or performs shutdown of password-free access over a virtual private cloud (VPC). After this feature is enabled, cloud servers in the same VPC can connect to a Tair (Redis® OSS-Compatible) instance without a password, while connections using a username and password remain supported.
 //
 // Description:
 //
@@ -11357,11 +11695,11 @@ func (client *Client) ModifyInstanceVpcAuthModeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Temporarily adjusts the internal network bandwidth of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance in a dedicated cluster.
+// Temporarily adjusts the internal network bandwidth of an ApsaraDB Tair (Redis® OSS-Compatible) database instance in a dedicated cluster.
 //
 // Description:
 //
-// > 	- This operation applies only to instances created in dedicated clusters<props="china">. For information about the related console operations and limits, see [Modify bandwidth policy](https://help.aliyun.com/document_detail/206257.html). To adjust the bandwidth of a regular instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
+// > 	- This operation applies only to instances created in dedicated clusters<props="china">. For information about the related console operations and limits, see [Modify bandwidth policies](https://help.aliyun.com/document_detail/206257.html). To adjust the bandwidth of a regular instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
 //
 // @param request - ModifyIntranetAttributeRequest
 //
@@ -11517,13 +11855,13 @@ func (client *Client) ModifyParameterGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the resource group to which a Tair (Redis® OSS-Compatible) instance belongs.
+// Modifies the resource group to which an ApsaraDB Tair (Redis® OSS-Compatible) database instance belongs.
 //
 // Description:
 //
-// You can also perform this operation in the [Resource Management](https://resourcemanager.console.aliyun.com/resource-center) console. For more information, see [Move resources across resource groups](https://help.aliyun.com/document_detail/94487.html).
+// You can also perform this operation in the [Resource Management](https://resourcemanager.console.aliyun.com/resource-center) console. For more information, see [Transfer resources across resource groups](https://help.aliyun.com/document_detail/94487.html).
 //
-// > A resource group is a mechanism for managing resources in groups within an Alibaba Cloud account. Resource groups help you address the complexity of resource grouping and authorization management within a single Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+// > A resource group is a mechanism for grouping and managing resources within an Alibaba Cloud account. Resource groups help you simplify resource grouping and authorization management within a single Alibaba Cloud account. For more information, see [What is Resource Management](https://help.aliyun.com/document_detail/94475.html).
 //
 // @param request - ModifyResourceGroupRequest
 //
@@ -11595,11 +11933,11 @@ func (client *Client) ModifyResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Settings the security groups in the whitelist of a Tair (Redis® OSS-Compatible) instance.
+// Configures the security group settings in the whitelist of an ApsaraDB Tair (Redis OSS-Compatible) database instance.
 //
 // Description:
 //
-// This operation overwrites the existing security groups in the instance whitelist and adds the security groups specified by the **SecurityGroupId*	- parameter to the whitelist. For the corresponding console operation, see [Add a security group](https://help.aliyun.com/document_detail/148267.html).
+// Calling this operation overwrites the existing security groups in the instance whitelist and adds the security groups specified in the **SecurityGroupId*	- parameter to the whitelist. For the corresponding console operation, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
 //
 // @param request - ModifySecurityGroupConfigurationRequest
 //
@@ -11667,11 +12005,11 @@ func (client *Client) ModifySecurityGroupConfigurationWithContext(ctx context.Co
 
 // Summary:
 //
-// Configures the IP whitelist of a Tair (Redis® OSS-Compatible) instance.
+// Configures the IP whitelist Settings for an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// For the console operation that corresponds to this API operation, see [Configure an IP whitelist](https://help.aliyun.com/document_detail/56464.html).
+// For the corresponding console operation, see [Configure the IP whitelist](https://help.aliyun.com/document_detail/56464.html).
 //
 // @param request - ModifySecurityIpsRequest
 //
@@ -11741,6 +12079,118 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the parameters of an AI gateway instance.
+//
+// @param request - ModifyTairAIGatewayParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTairAIGatewayParameterResponse
+func (client *Client) ModifyTairAIGatewayParameterWithContext(ctx context.Context, request *ModifyTairAIGatewayParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyTairAIGatewayParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyTairAIGatewayParameter"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyTairAIGatewayParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the plug-in switches of the AI gateway.
+//
+// @param request - ModifyTairAIGatewayPluginSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTairAIGatewayPluginSwitchResponse
+func (client *Client) ModifyTairAIGatewayPluginSwitchWithContext(ctx context.Context, request *ModifyTairAIGatewayPluginSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyTairAIGatewayPluginSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyTairAIGatewayPluginSwitch"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyTairAIGatewayPluginSwitchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11823,7 +12273,7 @@ func (client *Client) ModifyTairKVCacheCustomInstanceAttributeWithContext(ctx co
 
 // Summary:
 //
-// Performs a node operation. Currently, this operation supports modifying the execution time of a node.
+// Performs an operation on a task. Currently, modifying the task execution time is supported.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -11895,7 +12345,7 @@ func (client *Client) ModifyTaskInfoWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Restarts the proxy nodes of a running Tair (Redis® OSS-Compatible) database instance.
+// Restarts the proxy nodes of a running ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
@@ -11975,11 +12425,11 @@ func (client *Client) RebootProxyWithContext(ctx context.Context, request *Reboo
 
 // Summary:
 //
-// Releases the direct connection address of a Tair (Redis® OSS-Compatible) cluster instance.
+// Releases the direct connection endpoint of an ApsaraDB for Tair (Redis® OSS-Compatible) database cluster instance.
 //
 // Description:
 //
-// A client can use the direct connection address to bypass the proxy and connect to a Tair (Redis® OSS-Compatible) database cluster in the same way as connecting to a native Redis cluster. This reduces link overhead and further improves the response speed of the instance. For more information, see [Enable direct connection access](https://help.aliyun.com/document_detail/146901.html).
+// Clients can use the direct connection endpoint to bypass proxies and connect to an ApsaraDB for Tair (Redis® OSS-Compatible) database cluster in the same way as connecting to a native Redis cluster. This reduces link overhead and further improves the response speed of the instance. For more information, see [Enable direct connection access](https://help.aliyun.com/document_detail/146901.html).
 //
 // @param request - ReleaseDirectConnectionRequest
 //
@@ -12043,11 +12493,11 @@ func (client *Client) ReleaseDirectConnectionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Releases the public endpoint of a Tair (Redis® OSS-Compatible) instance.
+// Releases the public endpoint of a Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// For the corresponding console operation, refer to [Release a public endpoint](https://help.aliyun.com/document_detail/125424.html).
+// For the corresponding console operation, see [Release a public endpoint](https://help.aliyun.com/document_detail/125424.html).
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -12115,11 +12565,11 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// Removes a child instance from a distributed instance and converts it to a standard instance. Data is retained.
+// Removes a child instance from a distributed instance and converts it into a regular instance. The data is retained.
 //
 // Description:
 //
-// > After the conversion is complete, the child instance becomes a standard instance. You can find and manage the instance in the instance list of the corresponding region.
+// > After the conversion is complete, the child instance becomes a regular instance. You can find and manage the instance in the instance list of the corresponding region.
 //
 // @param request - RemoveSubInstanceRequest
 //
@@ -12183,11 +12633,11 @@ func (client *Client) RemoveSubInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// The bandwidth of ApsaraDB for Tair (Redis® OSS-Compatible) database instances has been upgraded to the pay-as-you-go pattern. This operation is no longer recommended.
+// Renews the bandwidth of a Tair (Redis® OSS-Compatible) instance. This operation is deprecated because the bandwidth has been upgraded to the pay-as-you-go billing method.
 //
 // Description:
 //
-// This operation is no longer recommended. You can adjust instance bandwidth through the console ([Modify instance bandwidth](https://help.aliyun.com/document_detail/102588.html)) or by calling [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html).
+// This operation is deprecated. You can purchase bandwidth for an instance by using the console ([Adjust instance bandwidth](https://help.aliyun.com/document_detail/102588.html)) or by calling the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation.
 //
 // @param request - RenewAdditionalBandwidthRequest
 //
@@ -12367,11 +12817,11 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 
 // Summary:
 //
-// Resets the password of an ApsaraDB for Tair (Redis® OSS-Compatible) database account.
+// Resets the password of an account for a Tair (Redis® OSS-Compatible) instance.
 //
 // Description:
 //
-// > This operation is supported only for Redis instances that run version 4.0 or later.
+// > This operation is supported only by Redis instances of version 4.0 or later.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -12595,7 +13045,7 @@ func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithContext(ctx context
 
 // Summary:
 //
-// Restarts a running Tair (Redis® OSS-Compatible) database instance.
+// Restarts a running ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - RestartInstanceRequest
 //
@@ -12731,13 +13181,13 @@ func (client *Client) RestartTairKVCacheCustomInstanceWithContext(ctx context.Co
 
 // Summary:
 //
-// Restores data from a specified backup file to a Tair (Redis OSS-Compatible) database instance.
+// Recovers data from a specified backup file to a Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// If your instance is a Tair (Enterprise Edition) memory-optimized instance of the classic architecture, you can call this operation to restore specified keys in the current instance to a specific point in time accurate to seconds. This enables more fine-grained data restoration.
+// If your instance is a Tair (Enterprise Edition) memory-optimized instance with the classic architecture, you can call this operation to restore specified keys in the current instance to a specific point in time accurate to seconds. This enables more fine-grained data restoration.
 //
-//   - For instances other than the preceding type, call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore backup data to a new instance.
+//   - For other types of instances, call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore backup data to a new instance.
 //
 // @param request - RestoreInstanceRequest
 //
@@ -13001,11 +13451,11 @@ func (client *Client) StopTairKVCacheCustomInstanceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Performs a primary/secondary switchover to switch node roles. This operation is applicable to scenarios such as disaster recovery drills and nearest access for applications in multi-zone deployments.
+// Performs a primary/secondary switchover to switch node roles. This operation applies to scenarios such as disaster recovery drills and nearest access for applications in multi-zone deployments.
 //
 // Description:
 //
-// > For more information about nearest access for applications in multi-zone deployment scenarios, see [Scenario examples](https://help.aliyun.com/document_detail/164222.html).
+// > For more information about nearest access for applications in multi-zone scenarios, see [Scenario examples](https://help.aliyun.com/document_detail/164222.html).
 //
 // When you call this operation, the instance must be of the high-availability or dual-replica type.
 //
@@ -13013,7 +13463,7 @@ func (client *Client) StopTairKVCacheCustomInstanceWithContext(ctx context.Conte
 //
 //   - After the node role switchover is triggered, the data node on which the switchover is performed will enter a read-only state for a few seconds and experience transient disconnections. Make sure that your application has a reconnection mechanism.
 //
-//   - While the instance is in the switching state, you cannot perform instance-level operations, such as changing configurations or migrating zones.
+//   - While the instance is in the switching state, you cannot perform instance-level operations, such as modifying configurations or migrating zones.
 //
 // @param request - SwitchInstanceHARequest
 //
@@ -13101,19 +13551,19 @@ func (client *Client) SwitchInstanceHAWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Enables or shuts down the proxy mode for a Tair (Redis® OSS-Compatible) database cluster instance in a dedicated cluster.
+// Enables or shutdown the proxy mode for a Tair (Redis® OSS-Compatible) cluster instance in a dedicated cluster.
 //
 // Description:
 //
 // For more information about the proxy mode, see [Proxy features](https://help.aliyun.com/document_detail/142959.html).
 //
-// Before calling this operation, ensure that the following conditions are met:
+// To call this operation, the following conditions must be met:
 //
-//   - The instance is created in a dedicated cluster. For more information, see [ApsaraDB MyBase dedicated cluster](https://help.aliyun.com/document_detail/141455.html).
+//   - The instance is created in a dedicated cluster. For more information, see [ApsaraDB MyBase](https://help.aliyun.com/document_detail/141455.html).
 //
 //   - The instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
 //
-// > Before calling this operation, call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/473867.html) operation and check the value of the **ProxyCount*	- response parameter to determine whether the proxy mode is enabled for the instance. For example, a value of 0 indicates that the proxy mode is disabled. A value greater than 0 indicates that the proxy mode is enabled.
+// > Before calling this operation, call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/473867.html) operation and check the value of the **ProxyCount*	- response parameter to determine whether the proxy mode is enabled for the instance. For example, a value of 0 indicates that the proxy mode is disabled, and a value greater than 0 indicates that the proxy mode is enabled.
 //
 // @param request - SwitchInstanceProxyRequest
 //
@@ -13177,11 +13627,11 @@ func (client *Client) SwitchInstanceProxyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Switches an instance to a specified zone.
+// Switches an instance to a specified target zone.
 //
 // Description:
 //
-// This operation is supported only for cloud-native architecture instances.
+// This operation supports only cloud-native architecture instances.
 //
 // @param request - SwitchInstanceToTargetZoneRequest
 //
@@ -13237,13 +13687,13 @@ func (client *Client) SwitchInstanceToTargetZoneWithContext(ctx context.Context,
 
 // Summary:
 //
-// Performs an impersonation of a zone-level failure of an active ApsaraDB for Tair (Redis® OSS-Compatible) cluster architecture database instance, triggering an automatic switchover to the secondary zone.
+// Simulates a zone-level failure for a Tair (Redis® OSS-Compatible) cluster architecture instance, triggering an automatic switchover to the secondary zone.
 //
 // Description:
 //
-// - This operation applies only to active multi-zone (dual-zone) cluster architecture instances.
+// - This operation is applicable only to multi-zone (dual-zone) cluster architecture instances.
 //
-// - The node subjected to failure impersonation automatically recovers later. However, the primary node is located in the secondary zone and the secondary node is located in the primary zone. This may cause cross-data-center access between the instance and other services. To resolve this issue, you can perform a manual switchover of zones on the Service Availability page in the console.
+// - The node where the failure is simulated automatically recovers later. However, the primary node is located in the secondary zone and the secondary node is located in the primary zone, which may result in cross-data center access between the instance and other workloads. To resolve this issue, you can manually switch zones on the Service Availability page in the console.
 //
 // @param request - SwitchInstanceZoneFailOverRequest
 //
@@ -13295,7 +13745,7 @@ func (client *Client) SwitchInstanceZoneFailOverWithContext(ctx context.Context,
 
 // Summary:
 //
-// Switches the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance. If the instance uses the classic network, the instance is switched to a VPC.
+// Switches the VPC or vSwitch of a Tair (Redis® OSS-Compatible) instance. If the instance is in the classic network, it is switched to a VPC.
 //
 // @param request - SwitchNetworkRequest
 //
@@ -13379,7 +13829,7 @@ func (client *Client) SwitchNetworkWithContext(ctx context.Context, request *Swi
 
 // Summary:
 //
-// Before you use Data Transmission Service (DTS) to migrate or synchronize data of an ApsaraDB for Tair (Redis OSS-Compatible) database instance, you can invoke this operation to restrict the instance so that it does not execute Upgrade/Downgrade operations. This prevents data migration or synchronization nodes from becoming failed due to Upgrade/Downgrade.
+// Before you use Data Transmission Service (DTS) to migrate or synchronize data of an ApsaraDB Tair (Redis® OSS-Compatible) instance, you can call this operation to restrict the instance so that it cannot execute Upgrade/Downgrade operations, preventing data migration or synchronization tasks from failing due to Upgrade/Downgrade.
 //
 // Description:
 //
@@ -13461,17 +13911,17 @@ func (client *Client) SyncDtsStatusWithContext(ctx context.Context, request *Syn
 
 // Summary:
 //
-// Attaches labels to one or more ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
+// Attaches labels to one or more ApsaraDB for Tair (Redis-compatible) database instances.
 //
 // Description:
 //
-// If you have a large number of instances, you can create multiple labels and attach different labels to the instances for categorization. You can then filter instances by label.
+// If you manage a large number of instances, you can create multiple labels and attach different labels to instances for categorization. You can then filter instances by label.
 //
-//   - A label consists of a key-value pair. The key must be unique within the same account and region, while the value has no such restriction.
+//   - A label consists of a key-value pair. Keys must be unique within the same account and region, whereas values have no such restriction.
 //
-//   - If the label in Settings does not exist, automatic creation of the label is performed and it is attached to the target instance.
+//   - If the label in Settings does not exist, automatic creation of the label is performed and it is attached to the target instances.
 //
-//   - If the instance is already attached to a label with the same key, the new label overwrites the existing one.
+//   - If an instance already has a label with the same key attached, the new label overwrites the existing one.
 //
 //   - You can attach up to 20 labels to each instance.
 //
@@ -13549,15 +13999,15 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Changes the billing method of a Tair (Redis® OSS-Compatible) database instance. You can switch between the pay-as-you-go and subscription billing methods.
+// Changes the billing method of an ApsaraDB for Tair (Redis OSS-Compatible) instance. You can switch the billing method between pay-as-you-go and subscription.
 //
 // Description:
 //
 // Before you call this operation, make sure that you understand the precautions and billing instructions. For more information, see:
 //
-//   - [Switch from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/54542.html).
+//   - [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
-//   - [Switch from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
+//   - [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
 //
 // @param request - TransformInstanceChargeTypeRequest
 //
@@ -13645,7 +14095,7 @@ func (client *Client) TransformInstanceChargeTypeWithContext(ctx context.Context
 
 // Summary:
 //
-// Converts a classic architecture instance to cloud-native.
+// Converts a local disk instance to a cloud-native instance.
 //
 // @param request - TransformToEcsRequest
 //
@@ -13757,11 +14207,11 @@ func (client *Client) TransformToEcsWithContext(ctx context.Context, request *Tr
 
 // Summary:
 //
-// Transforms a pay-as-you-go Tair (Redis® OSS-Compatible) database instance into a subscription instance.
+// Transforms a pay-as-you-go ApsaraDB for Tair (Redis® OSS-Compatible) database instance to a subscription (upfront) instance.
 //
 // Description:
 //
-// For the corresponding console operation, see [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+// For the corresponding console operation, refer to [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
 // @param request - TransformToPrePaidRequest
 //
@@ -13845,7 +14295,7 @@ func (client *Client) TransformToPrePaidWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Unlocks a write-locked instance. After the instance is unlocked, the instance supports both reading and writing data.
+// Unlocks a write-locked instance. After the instance is unlocked, it supports data read and write operations.
 //
 // @param request - UnlockDBInstanceWriteRequest
 //
@@ -13909,11 +14359,11 @@ func (client *Client) UnlockDBInstanceWriteWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Removes labels from an ApsaraDB for Tair (Redis OSS-compatible) database instance.
+// Removes tags from Tair (Redis® OSS-Compatible) database instances.
 //
 // Description:
 //
-// You can remove up to 20 tags at a time.
+// You can remove a maximum of 20 tags at a time.
 //
 //   - If a tag is removed from an instance and is not attached to any other instances, the tag is automatically deleted.
 //
@@ -13993,15 +14443,15 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Upgrades the proxy nodes of a cluster instance to the latest version.
+// Upgrades the proxy node of a cluster instance to the latest version.
 //
 // Description:
 //
-// The upgrade process and impact vary depending on the architecture. For more information, see [Minor engine version update](https://help.aliyun.com/document_detail/56450.html).
+// The upgrade process and impact vary based on the architecture. For more information, see [Principles of minor version updates](https://help.aliyun.com/document_detail/56450.html).
 //
-// > 	- Before you call this operation, you can call [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) to query the current minor version of the proxy nodes.
+// > 	- Before you call this operation, you can call [DescribeEngineVersion](https://help.aliyun.com/document_detail/473781.html) to query the current minor version of the proxy node.
 //
-// > 	- The upgrade causes connection interruptions. Perform the upgrade during off-peak hours and make sure that your application has a reconnection mechanism. For more information about the impact, see [Minor engine version update](https://help.aliyun.com/document_detail/56450.html).
+// > 	- Upgrades cause connection interruptions. Perform upgrades during off-peak hours and ensure that your applications have a reconnection mechanism. For more information about the impact, see [Principles of minor version updates](https://help.aliyun.com/document_detail/56450.html).
 //
 // @param request - UpgradeProxyRequest
 //

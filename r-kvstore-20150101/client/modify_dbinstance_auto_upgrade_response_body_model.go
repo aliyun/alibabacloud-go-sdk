@@ -14,7 +14,7 @@ type iModifyDBInstanceAutoUpgradeResponseBody interface {
 }
 
 type ModifyDBInstanceAutoUpgradeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

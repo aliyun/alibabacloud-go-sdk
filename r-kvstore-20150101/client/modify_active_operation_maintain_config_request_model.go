@@ -34,9 +34,9 @@ type iModifyActiveOperationMaintainConfigRequest interface {
 type ModifyActiveOperationMaintainConfigRequest struct {
 	// The cycle time.
 	//
-	// - If CycleType is set to Month, the value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,). If the configuration does not take effect, the value is 0.
+	// - If CycleType is set to Month, the value is a number from 1 to 28 that indicates the day of the month. Multiple values are separated by commas (,). The value is 0 when the configuration does not take effect.
 	//
-	// - If CycleType is set to Week, the value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,). If the configuration does not take effect, the value is 0.
+	// - If CycleType is set to Week, the value is a number from 1 to 7 that indicates the day of the week. Multiple values are separated by commas (,). The value is 0 when the configuration does not take effect.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ModifyActiveOperationMaintainConfigRequest struct {
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
 	// The cycle type. Valid values:
 	//
-	// - Month: Monthly.
+	// - Month: monthly
 	//
-	// - Week: Weekly.
+	// - Week: weekly
 	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the O&M time window. The time is in the HH:mm:ssZ format (UTC time).
+	// The end time of the O&M time window. The time is in the HH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
 	// 20:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the O&M time window. The time is in the <i>HH:mm:ss</i>Z format (UTC time).
+	// The start time of the O&M time window. The time is in the <i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -71,9 +71,9 @@ type ModifyActiveOperationMaintainConfigRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// Specifies whether the configuration takes effect. Valid values:
 	//
-	// - 1: Effective.
+	// - 1: The configuration takes effect.
 	//
-	// - 2: Ineffective.
+	// - 2: The configuration does not take effect.
 	//
 	// example:
 	//

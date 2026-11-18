@@ -30,7 +30,7 @@ type DescribeActiveOperationTaskResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeActiveOperationTaskResponseBody struct {
 	//
 	// 2E1FF0CC-F42A-4B6F-A1F4-A17B1451****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeActiveOperationTaskResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTaskResponseBodyItems struct {
-	// The time when the O&M task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the O&M task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-02-24T06:00:11Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The database type. Return value: **redis**.
+	// The database type. Valid value: **redis**.
 	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The latest time within the adjustable range for the O&M task execution time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The latest time to which the execution time of the O&M task can be adjusted. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// r-bp1lgal1sdvxrz****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the O&M task was modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the O&M task was modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-02-24T08:18:53Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The preparation time required between the O&M task start time and the switchover time. The time is in the <i>HH:mm:ss</i> format.
+	// The preparation time required between the start time and the switchover time of the O&M task. The time is in the <i>HH:mm:ss</i> format.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// cn-hanghzou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The execution time of the O&M task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The execution time of the O&M task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -173,23 +173,23 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **2**: Waiting for the user to specify a time.
+	// 	- **2**: waiting for the user to specify a time.
 	//
-	// 	- **3**: Waiting to be processed.
+	// 	- **3**: waiting to be processed.
 	//
-	// 	- **4**: Being processed. After the task enters this state, you cannot call **ModifyActiveOperationTask*	- to modify the scheduled switchover time.
+	// 	- **4**: processing. After the task enters this state, you cannot call **ModifyActiveOperationTask*	- to modify the scheduled switchover time.
 	//
-	// 	- **5**: Succeeded.
+	// 	- **5**: successful.
 	//
-	// 	- **6**: Failed.
+	// 	- **6**: failed.
 	//
-	// 	- **7**: Canceled.
+	// 	- **7**: canceled.
 	//
 	// example:
 	//
 	// 5
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the system-initiated switchover operation is performed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the system initiates the switchover. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -197,11 +197,11 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **rds_apsaradb_ha**: node failover.
+	// - **rds_apsaradb_ha**: switch of primary and secondary nodes.
 	//
 	// - **rds_apsaradb_transfer**: instance migration.
 	//
-	// - **rds_apsaradb_upgrade**: minor engine version update.
+	// - **rds_apsaradb_upgrade**: minor version update.
 	//
 	// - **all**: all task types.
 	//

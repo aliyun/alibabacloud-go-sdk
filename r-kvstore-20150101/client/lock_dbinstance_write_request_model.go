@@ -34,13 +34,13 @@ type LockDBInstanceWriteRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The reason for locking the instance.
+	// The reason for the lock.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Lock write operation verification
+	// Write operation lock verification
 	LockReason           *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

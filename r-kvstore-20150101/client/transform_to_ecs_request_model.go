@@ -50,23 +50,23 @@ type iTransformToEcsRequest interface {
 type TransformToEcsRequest struct {
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**: enabled.
+	// 	- **true**: enables auto-renewal.
 	//
-	// 	- **false**: disabled.
+	// 	- **false**: disables auto-renewal.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+	// The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
 	//
-	// > This parameter is required when **AutoRenew*	- is set to **true**.
+	// > This parameter is required when the **AutoRenew*	- parameter is set to **true**.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The billing method to convert to. Valid values:
+	// The billing method of the destination instance. Valid values:
 	//
 	// 	- **PostPaid**: pay-as-you-go.
 	//
@@ -76,11 +76,11 @@ type TransformToEcsRequest struct {
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether to perform a dry run for this operation. Valid values:
+	// Specifies whether to perform a dry run before creating the instance. Valid values:
 	//
-	// 	- **true**: performs a dry run without creating the cloud-native instance. The system checks items such as the request parameters, request format, service limits, and available inventory. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// 	- **true**: performs a dry run without creating the cloud-native instance. The system checks the request parameters, request format, service limits, and inventory. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the check succeeds, the instance is created.
+	// 	- **false*	- (default): sends a normal request. If the request passes the dry run, the instance is created.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type TransformToEcsRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The time when the database switchover is performed after data migration. Valid values:
 	//
-	// 	- **Immediately**: The switchover is performed immediately after the migration is complete.
+	// 	- **Immediately**: The switchover is performed immediately after the migration is completed.
 	//
-	// 	- **MaintainTime**: The switchover is performed during the maintenance window.
+	// 	- **MaintainTime**: The switchover is performed within the maintenance window.
 	//
 	// > Default value: **Immediately**.
 	//
@@ -106,11 +106,11 @@ type TransformToEcsRequest struct {
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type of the target cloud-native instance. For more information, see [Overview of instance specifications](https://help.aliyun.com/document_detail/26350.html).
+	// The instance type of the destination cloud-native instance. For more information, see [Instance type query navigation](https://help.aliyun.com/document_detail/26350.html).
 	//
-	// > This is the description content.
+	// > Note:
 	//
-	// > - For cluster instances, specify the corresponding cloud-native cluster instance type with .proxy, and specify the ShardCount parameter for the number of shards.
+	// > - For a cluster instance, you must specify a cloud-native cluster instance type that includes with.proxy and specify the ShardCount parameter.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type TransformToEcsRequest struct {
 	//
 	// tair.rdb.with.proxy.1g
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the classic architecture instance to convert.
+	// The ID of the classic instance to be converted.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +134,7 @@ type TransformToEcsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
 	//
-	// > This parameter is available and required only when **ChargeType*	- is set to **PrePaid**.
+	// > This parameter is available and required only when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type TransformToEcsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecondaryIzNo        *string `json:"SecondaryIzNo,omitempty" xml:"SecondaryIzNo,omitempty"`
-	// The number of data shard nodes in the cloud-native cluster instance.
+	// The number of data shards in the cloud-native cluster instance.
 	//
 	// example:
 	//

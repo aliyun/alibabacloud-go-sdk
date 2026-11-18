@@ -16,7 +16,7 @@ type iDescribeTairSkvDdbTableResponseBody interface {
 }
 
 type DescribeTairSkvDdbTableResponseBody struct {
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The ID of the request. You can use the request ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

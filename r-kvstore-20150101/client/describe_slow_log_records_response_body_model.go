@@ -30,7 +30,7 @@ type iDescribeSlowLogRecordsResponseBody interface {
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
-	// The database engine.
+	// The database type.
 	//
 	// example:
 	//
@@ -67,9 +67,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// 686BB8A6-BBA5-47E5-8A75-D2ADE433****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query.
-	//
-	// The time is in the YYYY-MM-DDTHH:mmZ format and displayed in UTC.
+	// The start time of the query. The time is in the YYYY-MM-DDTHH:mmZ format and displayed in UTC.
 	//
 	// example:
 	//

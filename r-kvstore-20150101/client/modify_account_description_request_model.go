@@ -30,13 +30,13 @@ type iModifyAccountDescriptionRequest interface {
 }
 
 type ModifyAccountDescriptionRequest struct {
-	// The account description to set.
+	// The description of the account.
 	//
-	// 	- The description must start with a Chinese character or an English letter and cannot start with `http://` or `https://`.
+	// 	- It must start with a Chinese character or a letter, and cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain Chinese characters, English letters, digits, underscores (_), and hyphens (-).
+	// 	- It can contain Chinese characters, letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- The description must be 2 to 256 characters in length.
+	// 	- It must be 2 to 256 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// testescription
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The account name. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) to obtain the account name.
+	// The account name. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) operation to query the account name.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type ModifyAccountDescriptionRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// This parameter is used only for internal maintenance. You do not need to specify this parameter.
+	// This parameter is used only for internal maintenance and does not need to be specified.
 	//
 	// example:
 	//

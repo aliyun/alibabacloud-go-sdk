@@ -28,7 +28,7 @@ type CheckCloudResourceAuthorizedResponseBody struct {
 	//
 	// 1
 	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

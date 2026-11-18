@@ -42,13 +42,13 @@ type iDescribeHistoryTasksRequest interface {
 }
 
 type DescribeHistoryTasksRequest struct {
-	// The minimum execution duration. This parameter is used to filter tasks whose execution duration is greater than the specified value. Unit: seconds. Default value: 0, which indicates no restriction.
+	// The minimum execution duration of the tasks. This parameter is used to filter tasks whose execution duration is greater than the specified value. Unit: seconds. Default value: 0, which means no limit is applied.
 	//
 	// example:
 	//
 	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The earliest start time for querying tasks. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC). You can query data from up to 30 days ago.
+	// The earliest start time of the tasks to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. You can query data from up to 30 days ago.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +56,19 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// 2022-01-02T11:31:03Z
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	// The instance ID. This parameter is used to query tasks for the specified instance. The default value is empty, which indicates no restriction. To specify multiple instances, separate them with commas (,). A maximum of 30 instances are supported.
+	// The ID of the instance, which is used to query tasks of the specified instance. By default, this parameter is empty, which means no limit is applied. To query multiple instances, separate the instance IDs with commas (,). You can specify up to 30 instance IDs.
 	//
 	// example:
 	//
 	// r-uf62br2491p5l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Currently fixed as Instance.
+	// The instance type. Set the value to Instance.
 	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The page number of the query results. Valid values: positive integers. Default value: 1.
+	// The page number of the query result. Valid values: positive integers. Default value: 1.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the pending event. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
+	// The ID of the region to which the pending events belong. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -89,9 +89,9 @@ type DescribeHistoryTasksRequest struct {
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task status. This parameter is used to filter tasks by status. Valid values:
+	// The task status, which is used to filter tasks by status. Valid values:
 	//
-	// - **Scheduled**: Waiting for execution.
+	// - **Scheduled**: Pending execution.
 	//
 	// - **Running**: Running.
 	//
@@ -99,27 +99,27 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// - **Failed**: Failed.
 	//
-	// - **Cancelling**: Being stopped.
+	// - **Cancelling**: Cancelling.
 	//
-	// - **Canceled**: Stopped.
+	// - **Canceled**: Canceled.
 	//
 	// - **Waiting**: Waiting for the scheduled time.
 	//
-	// > The default value is empty, which indicates all statuses. To specify multiple statuses, separate them with commas (,).
+	// By default, this parameter is empty, which means all statuses are selected. To specify multiple statuses, separate them with commas (,).
 	//
 	// example:
 	//
 	// Scheduled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID. This parameter is used to query tasks with known IDs. The default value is empty, which indicates no restriction. To specify multiple task IDs, separate them with commas (,). A maximum of 30 task IDs are supported.
+	// The ID of the task, which is used to query tasks with known IDs. By default, this parameter is empty, which means no limit is applied. To query multiple tasks, separate the task IDs with commas (,). You can specify up to 30 task IDs.
 	//
 	// example:
 	//
 	// t-83br18hloy3faf****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. This parameter is used to query tasks of a specific type. The default value is empty, which indicates no restriction. Valid values:
+	// The task type, which is used to query tasks of a specific type. By default, this parameter is empty, which means no limit is applied. Valid values:
 	//
-	// - **ModifyInsSpec**: Specification change or migration.
+	// - **ModifyInsSpec**: Instance specification change or migration.
 	//
 	// - **DeleteInsNode**: Shard deletion.
 	//
@@ -133,19 +133,19 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// - **ModifyInsConfig**: Configuration change.
 	//
-	// > To specify multiple task types, separate them with commas (,).
+	// To query multiple task types, separate them with commas (,).
 	//
 	// example:
 	//
 	// ModifyInsSpec
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The maximum execution duration. This parameter is used to filter tasks whose execution duration is not less than the specified value. Unit: seconds. Default value: 0, which indicates no restriction.
+	// The maximum execution duration of the tasks. This parameter is used to filter tasks whose execution duration is not less than the specified value. Unit: seconds. Default value: 0, which means no limit is applied.
 	//
 	// example:
 	//
 	// 0
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The latest start time for querying tasks. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC). The value must be later than the earliest start time of the task.
+	// The latest start time of the tasks to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The time must be later than the earliest start time of the tasks.
 	//
 	// This parameter is required.
 	//

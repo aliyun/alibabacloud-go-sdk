@@ -42,13 +42,13 @@ type iDescribeAuditRecordsRequest interface {
 }
 
 type DescribeAuditRecordsRequest struct {
-	// The name of the account. If you do not specify this parameter, the audit logs of all accounts are queried.
+	// The name of the account. If you leave this parameter empty, the audit logs of all accounts are queried.
 	//
 	// example:
 	//
 	// demo
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The database in the instance. If you do not specify this parameter, the audit logs of all databases are queried. Valid values: 0 to 255. For example, 0 indicates database 0.
+	// The database in the instance. If you leave this parameter empty, the audit logs of all databases are queried. Valid values: 0 to 255. For example, 0 indicates database 0.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeAuditRecordsRequest struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > Because audit logs contain a large number of entries, specify a time range of up to 10 minutes and a maximum of 1 day.
+	// > Because audit logs contain a large number of entries, specify a time range of up to 10 minutes and a maximum of 1 day for a query.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// 2019-03-25T12:10:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IP address of the client. If you do not specify this parameter, the audit logs of all IP addresses are queried.
+	// The IP address of the client. If you leave this parameter empty, the audit logs from all IP addresses are queried.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword used to query audit logs based on a specific command. By default, the audit logs of all executed commands are queried.
+	// The keyword used to query audit logs based on a specific command. By default, all executed commands are queried.
 	//
-	// > You can specify only one keyword.
+	// > Only a single keyword can be specified.
 	//
 	// example:
 	//

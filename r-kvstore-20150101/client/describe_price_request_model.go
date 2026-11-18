@@ -27,6 +27,8 @@ type iDescribePriceRequest interface {
 	GetInstanceId() *string
 	SetInstances(v string) *DescribePriceRequest
 	GetInstances() *string
+	SetNeedUnavailableCoupon(v bool) *DescribePriceRequest
+	GetNeedUnavailableCoupon() *bool
 	SetNodeType(v string) *DescribePriceRequest
 	GetNodeType() *string
 	SetOrderParamOut(v string) *DescribePriceRequest
@@ -58,15 +60,15 @@ type iDescribePriceRequest interface {
 }
 
 type DescribePriceRequest struct {
-	// The extended information such as the promotional event ID and business information.
+	// The extended information, such as the promotion ID and business information.
 	//
 	// example:
 	//
 	// 000000000000
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The storage capacity used to specify the instance type, in MB. This parameter is used only to query Redis Community Edition instances in classic deployment mode. We recommend that you use the **InstanceClass*	- parameter to specify an exact instance type.
+	// Specifies the instance type by using the storage capacity of the instance. Unit: MB. This parameter applies only to instances of ApsaraDB for Redis Community Edition in the classic deployment mode. We recommend that you use the **InstanceClass*	- parameter to specify an exact instance type.
 	//
-	// > After you specify the **InstanceClass*	- parameter, you do not need to specify this parameter.
+	// > If you specify the **InstanceClass*	- parameter, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -98,33 +100,33 @@ type DescribePriceRequest struct {
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Specifies whether to forcibly change the configuration. Valid values:
+	// Specifies whether to forcibly upgrade or downgrade the instance. Valid values:
 	//
-	// 	- **false**: yes.
+	// 	- **false**: Yes.
 	//
-	// 	- **true*	- (default): no.
+	// 	- **true*	- (default): No.
 	//
 	// example:
 	//
 	// true
 	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// The instance type specified by using the **InstanceClass*	- code. To find the **InstanceClass*	- code:
+	// Specifies the instance type by using the **InstanceClass*	- code. To query the **InstanceClass*	- code, perform the following steps:
 	//
-	// 1. In the [instance type navigation](https://help.aliyun.com/document_detail/26350.html), select the desired instance type and click the value in the **Architecture*	- column to open the specification document.
+	// 1. On the [Instance type query](https://help.aliyun.com/document_detail/26350.html) page, select the instance type as needed and click the value in the **Architecture Type*	- column to open the instance type documentation.
 	//
-	// 2. In the instance type table of the specification document, find the desired instance type and locate the code in the **InstanceClass*	- column.
+	// 2. In the instance type table of the documentation, select the required instance type and find the code in the **InstanceClass*	- column.
 	//
-	// > The following example describes the parameters required for querying the price of a new instance. In addition to other key parameters, specify at least the following parameters:
+	// > For example, to query pricing for a new purchase, you must specify at least the following parameters in addition to other key parameters:
 	//
-	// > 	- Classic Edition instance: specify this parameter.
+	// > 	- To query a classic instance: specify this parameter.
 	//
-	// > 	- Cloud-native Edition standard architecture instance: specify this parameter.
+	// > 	- To query a cloud-native standard architecture instance: specify this parameter.
 	//
-	// > 	- Cloud-native Edition cluster architecture instance: specify this parameter and the **ShardCount*	- parameter.
+	// > 	- To query a cloud-native cluster architecture instance: specify this parameter and the **ShardCount*	- parameter.
 	//
-	// > 	- Cloud-native Edition read/write splitting architecture instance: specify this parameter and the **Instances*	- parameter.
+	// > 	- To query a cloud-native read/write splitting architecture instance: specify this parameter and the **Instances*	- parameter.
 	//
-	// > 	- Multiple instances of different types, or Tair ESSD-based instances (custom storage type and storage capacity): specify the Instances parameter (this parameter is not required).
+	// > 	- To query multiple instances of different types, or to query Tair ESSD instances (with custom storage types and storage space): specify the Instances parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -138,27 +140,29 @@ type DescribePriceRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// If you want to query the price of cloud-native read/write splitting architecture instances, Tair ESSD-based instances, or multiple instances of different types, specify this parameter. The value is a JSON-formatted string. For more information, see **Additional description of the Instances parameter*	- below.
+	// The instances to query. This parameter is required when you query cloud-native read/write splitting architecture instances, Tair ESSD instances, or multiple instances of different types. The value is a JSON string. For more information, see **Supplementary description of the Instances parameter*	- below.
 	//
 	// example:
 	//
 	// [{"RegionId": "cn-hangzhou","ZoneId": "cn-hangzhou-b","ShardClass": "tair.scm.with.proxy.standard.2m.8d","ShardCount": "3","Period": "1","Quantity": "1"}]
 	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// Specifies whether to return unavailable coupons.
+	NeedUnavailableCoupon *bool `json:"NeedUnavailableCoupon,omitempty" xml:"NeedUnavailableCoupon,omitempty"`
 	// The node type. Valid values:
 	//
-	// - **STAND_ALONE**: standalone (single replica).
+	// - **STAND_ALONE**: Single-replica.
 	//
-	// - **MASTER_SLAVE*	- (default): high availability (dual replicas).
+	// - **MASTER_SLAVE*	- (default): High-availability (dual-replica).
 	//
 	// example:
 	//
 	// MASTER_SLAVE
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Specifies whether to return order parameters. Valid values:
+	// Specifies whether to return the order parameters. Valid values:
 	//
-	// 	- **false*	- (default): does not return order parameters.
+	// 	- **false*	- (default): Not returned.
 	//
-	// 	- **true**: returns order parameters.
+	// 	- **true**: Returned.
 	//
 	// example:
 	//
@@ -166,13 +170,13 @@ type DescribePriceRequest struct {
 	OrderParamOut *string `json:"OrderParamOut,omitempty" xml:"OrderParamOut,omitempty"`
 	// The order type. Valid values:
 	//
-	// 	- **BUY**: new purchase.
+	// 	- **BUY**: New purchase.
 	//
-	// 	- **UPGRADE**: configuration change.
+	// 	- **UPGRADE**: Upgrade or downgrade.
 	//
-	// 	- **RENEW**: renewal.
+	// 	- **RENEW**: Renewal.
 	//
-	// 	- **CONVERT**: billing method conversion.
+	// 	- **CONVERT**: Billing method conversion.
 	//
 	// This parameter is required.
 	//
@@ -182,7 +186,7 @@ type DescribePriceRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration, in months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
+	// The subscription duration. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
 	//
 	// example:
 	//
@@ -194,7 +198,7 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query available regions.
 	//
 	// example:
 	//
@@ -202,22 +206,22 @@ type DescribePriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The secondary zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
+	// The secondary zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query available zones.
 	//
-	// > The value of this parameter must be different from the value of the ZoneId parameter.
+	// > The value of this parameter cannot be the same as the value of the ZoneId parameter.
 	//
 	// example:
 	//
 	// cn-hangzhou-g
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of data shard nodes in a cloud-native cluster instance.
+	// The number of data shard nodes in the cloud-native cluster instance.
 	//
 	// example:
 	//
 	// 2
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
+	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query available zones.
 	//
 	// example:
 	//
@@ -267,6 +271,10 @@ func (s *DescribePriceRequest) GetInstanceId() *string {
 
 func (s *DescribePriceRequest) GetInstances() *string {
 	return s.Instances
+}
+
+func (s *DescribePriceRequest) GetNeedUnavailableCoupon() *bool {
+	return s.NeedUnavailableCoupon
 }
 
 func (s *DescribePriceRequest) GetNodeType() *string {
@@ -367,6 +375,11 @@ func (s *DescribePriceRequest) SetInstanceId(v string) *DescribePriceRequest {
 
 func (s *DescribePriceRequest) SetInstances(v string) *DescribePriceRequest {
 	s.Instances = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetNeedUnavailableCoupon(v bool) *DescribePriceRequest {
+	s.NeedUnavailableCoupon = &v
 	return s
 }
 

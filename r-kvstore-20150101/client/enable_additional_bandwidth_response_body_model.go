@@ -16,13 +16,13 @@ type iEnableAdditionalBandwidthResponseBody interface {
 }
 
 type EnableAdditionalBandwidthResponseBody struct {
-  // The ID of the order.
+  // The order ID.
   // 
   // example:
   // 
   // 2084452111111
   OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

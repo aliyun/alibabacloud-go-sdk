@@ -32,7 +32,7 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days for which data backups are retained. Default value: 7. Valid values: 7 to 730.
+	// The retention period of data backups in days. Valid values: 7 to 730. Default value: 7.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ModifyBackupPolicyRequest struct {
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Specifies whether to enable the data flashback feature. Valid values:
 	//
-	// 	- **1**: Enabled. Make sure that append-only file (AOF) persistence is enabled in the parameter settings of the instance (`appendonly` is set to `yes`). The data flashback feature is available only after AOF persistence is enabled.
+	// 	- **1**: enables the feature. You must also enable AOF persistence by setting the `appendonly` parameter to `yes` in the parameter settings of the instance before you can use the data flashback feature.
 	//
-	// 	- **0**: Disabled. This is the default value.
+	// 	- **0**: disables the feature. This is the default value.
 	//
 	// > This parameter is supported only by Tair (Enterprise Edition) memory-optimized and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
 	//
@@ -62,21 +62,21 @@ type ModifyBackupPolicyRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// 	- **Monday**: Monday.
 	//
-	// 	- **Tuesday**
+	// 	- **Tuesday**: Tuesday.
 	//
-	// 	- **Wednesday**
+	// 	- **Wednesday**: Wednesday.
 	//
-	// 	- **Thursday**
+	// 	- **Thursday**: Thursday.
 	//
-	// 	- **Friday**
+	// 	- **Friday**: Friday.
 	//
-	// 	- **Saturday**
+	// 	- **Saturday**: Saturday.
 	//
-	// 	- **Sunday**
+	// 	- **Sunday**: Sunday.
 	//
-	// > You can specify multiple values. Separate them with commas (,).
+	// > You can specify multiple values. Separate multiple values with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -84,9 +84,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Tuesday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup time. Specify the time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
-	//
-	// > The time must be on the hour, and the interval must be 1 hour.
+	// The backup time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC). The time must be on the hour, and the interval must be 1 hour.
 	//
 	// This parameter is required.
 	//

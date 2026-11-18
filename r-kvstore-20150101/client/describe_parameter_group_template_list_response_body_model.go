@@ -89,7 +89,7 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	//
 	// [0|1]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the parameter has taken effect. Valid values:
+	// Specifies whether the parameter takes effect. Valid values:
 	//
 	// 	- **0**: No.
 	//
@@ -99,19 +99,19 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	//
 	// 1
 	Effective *int64 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The divisor factor. For integer and byte type parameters, the parameter value must not only fall within the valid range but also be a multiple of Factor (when Factor is not 0).
+	// The divisibility factor. For integer and byte parameters, the parameter value must not only fall within the valid value range but also be a multiple of the factor (which cannot be 0).
 	//
 	// example:
 	//
 	// 1
 	Factor *int64 `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// The parameter description.
+	// The description of the parameter.
 	//
 	// example:
 	//
-	// Enable AOF persistence mode
+	// Enable the AOF persistence mode
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	//
 	// 10
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	// Indicates whether the parameter can be modified. Valid values:
+	// Specifies whether the parameter can be modified. Valid values:
 	//
 	// - **0**: The parameter cannot be modified.
 	//
@@ -133,7 +133,7 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	//
 	// 0
 	Revisable *int64 `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
-	// Indicates whether modification for minor versions is supported. Valid values:
+	// Specifies whether the minor version can be modified. Valid values:
 	//
 	// 	- **true**: Supported.
 	//
@@ -145,11 +145,11 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	SupportModifyForMinorVersion *bool `json:"SupportModifyForMinorVersion,omitempty" xml:"SupportModifyForMinorVersion,omitempty"`
 	// The unit of the parameter value. Valid values:
 	//
-	// 	- **INT**: a common integer.
+	// 	- **INT**: Standard integer.
 	//
-	// 	- **STRING**: a fixed string.
+	// 	- **STRING**: Fixed string.
 	//
-	// 	- **B**: bytes.
+	// 	- **B**: Byte.
 	//
 	// example:
 	//

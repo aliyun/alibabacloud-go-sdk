@@ -28,7 +28,7 @@ type iCreateTairKVCacheVNodeResponseBody interface {
 }
 
 type CreateTairKVCacheVNodeResponseBody struct {
-	// The instance ID of the virtual node.
+	// The virtual node instance ID.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateTairKVCacheVNodeResponseBody struct {
 	//
 	// vc-16965a9267*****-*****
 	VClusterId *string `json:"VClusterId,omitempty" xml:"VClusterId,omitempty"`
-	// The instance ID of the virtual cluster.
+	// The virtual cluster instance ID.
 	//
 	// example:
 	//

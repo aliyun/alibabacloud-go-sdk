@@ -30,17 +30,21 @@ type iDescribeParameterGroupsRequest interface {
 type DescribeParameterGroupsRequest struct {
 	// The engine type. Valid values:
 	//
-	// - **redis**: open-source Redis or Tair (Memory-optimized).
+	// - **redis**: open-source Redis or Tair (memory-optimized).
 	//
-	// - **tair_pena**: Tair (Persistent Memory-optimized).
+	// - **tair_pena**: Tair (persistent memory-optimized).
 	//
-	// - **tair_pdb**: Tair (Disk-optimized, ESSD/SSD).
+	// - **tair_pdb**: Tair (disk-optimized, ESSD/SSD).
 	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The compatible engine version.
+	//
+	// example:
+	//
+	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

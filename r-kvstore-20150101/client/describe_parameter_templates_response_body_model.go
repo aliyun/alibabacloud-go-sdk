@@ -22,13 +22,13 @@ type iDescribeParameterTemplatesResponseBody interface {
 }
 
 type DescribeParameterTemplatesResponseBody struct {
-	// The database engine. The value is always **Redis**.
+	// The database engine type. The value is **Redis**.
 	//
 	// example:
 	//
 	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The major engine version of the instance.
+	// The major version of the instance.
 	//
 	// example:
 	//

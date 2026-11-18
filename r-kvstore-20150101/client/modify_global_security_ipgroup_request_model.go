@@ -44,11 +44,11 @@ type ModifyGlobalSecurityIPGroupRequest struct {
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// - The name can contain lowercase letters, digits, and underscores (_).
+	// - Consist of lowercase letters, digits, and underscores (_).
 	//
-	// - The name must start with a letter and end with a letter or digit.
+	// - Start with a letter and end with a letter or a digit.
 	//
-	// - The name must be 2 to 120 characters in length.
+	// - Be 2 to 120 characters in length.
 	//
 	// > This parameter overwrites the original value.
 	//

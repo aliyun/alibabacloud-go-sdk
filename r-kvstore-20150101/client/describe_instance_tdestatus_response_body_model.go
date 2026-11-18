@@ -16,7 +16,7 @@ type iDescribeInstanceTDEStatusResponseBody interface {
 }
 
 type DescribeInstanceTDEStatusResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type DescribeInstanceTDEStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether TDE is enabled. Valid values:
 	//
-	// 	- **Enabled**: TDE is enabled.
+	// 	- **Enabled**: Enabled.
 	//
-	// 	- **Disabled**: TDE is disabled.
+	// 	- **Disabled**: Disabled.
 	//
 	// example:
 	//

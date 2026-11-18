@@ -60,11 +60,11 @@ type DescribeClusterBackupListRequest struct {
 	//
 	// r-t4nj72oug5r5646qog
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to display the details of the backup sets for cluster nodes. Valid values:
+	// Specifies whether to display the backup set details of cluster nodes. Valid values:
 	//
-	// 	- **false*	- (default): displays the backup set information of cluster nodes.
+	// 	- **false*	- (default): Displays the backup set information of cluster nodes.
 	//
-	// 	- **true**: does not display the backup set information of cluster nodes.
+	// 	- **true**: Does not display the backup set information of cluster nodes.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeClusterBackupListRequest struct {
 	NoShardBackup *string `json:"NoShardBackup,omitempty" xml:"NoShardBackup,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//

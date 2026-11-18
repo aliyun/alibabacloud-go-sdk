@@ -26,9 +26,7 @@ type SwitchInstanceZoneFailOverRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The duration of the simulated failure. Unit: minutes.
-	//
-	// Valid values:
+	// The duration of the failure. Unit: minutes. Valid values:
 	//
 	// - 5
 	//
@@ -40,7 +38,7 @@ type SwitchInstanceZoneFailOverRequest struct {
 	//
 	// 5
 	SiteFaultTime *string `json:"SiteFaultTime,omitempty" xml:"SiteFaultTime,omitempty"`
-	// The target zone ID.
+	// The ID of the target zone.
 	//
 	// example:
 	//

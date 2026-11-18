@@ -38,9 +38,9 @@ type iModifyInstanceConfigRequest interface {
 }
 
 type ModifyInstanceConfigRequest struct {
-	// The instance parameters to modify, in JSON format. The new values overwrite the existing values. For example, if you want to set only the **maxmemory-policy*	- parameter to **noeviction**, pass in `{"maxmemory-policy":"noeviction"}`.
+	// The instance parameters to be modified in JSON format. The modified values overwrite the original values. For example, to modify only the **maxmemory-policy*	- parameter to **noeviction**, you can pass `{"maxmemory-policy":"noeviction"}`.
 	//
-	// > For more information about each parameter, see [Metric description](https://help.aliyun.com/document_detail/259681.html).
+	// > For more information about each parameter, see [Parameter description](https://help.aliyun.com/document_detail/259681.html).
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyInstanceConfigRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Sentinel compatibility mode, which applies to non-cluster instances. Valid values:
+	// Specifies whether to enable Sentinel compatibility mode for non-cluster instances. Valid values:
 	//
 	// 	- **no*	- (default): disabled.
 	//
@@ -72,15 +72,15 @@ type ModifyInstanceConfigRequest struct {
 	//
 	// 	- **no*	- (default): disabled.
 	//
-	// 	- **yes**: enabled. After this parameter is enabled, you can run Sentinel commands without a password on any connection and use the SENTINEL command to listen on the +switch-master channel.
+	// 	- **yes**: enabled. After this feature is enabled, you can execute Sentinel commands without a password on any connection and use the SENTINEL command to monitor the +switch-master channel.
 	//
 	// example:
 	//
-	// ****
+	// no
 	ParamNoLooseSentinelPasswordFreeAccess *string `json:"ParamNoLooseSentinelPasswordFreeAccess,omitempty" xml:"ParamNoLooseSentinelPasswordFreeAccess,omitempty"`
-	// After Sentinel mode and the ParamNoLooseSentinelPasswordFreeAccess parameter are enabled, you can use this parameter to add additional password-free commands (empty by default).
+	// The list of additional password-free commands. This parameter takes effect only after Sentinel mode and the ParamNoLooseSentinelPasswordFreeAccess parameter are enabled. Default value: empty.
 	//
-	// > 	- After this parameter is set, the specified commands can be run without a password on any connection. Proceed with caution.
+	// > 	- After this parameter is set, the specified commands can be executed without a password on any connection. Proceed with caution.
 	//
 	// > 	- Commands must be in lowercase letters. Separate multiple commands with commas (,).
 	//
@@ -90,25 +90,25 @@ type ModifyInstanceConfigRequest struct {
 	ParamNoLooseSentinelPasswordFreeCommands *string `json:"ParamNoLooseSentinelPasswordFreeCommands,omitempty" xml:"ParamNoLooseSentinelPasswordFreeCommands,omitempty"`
 	// The synchronization mode. Valid values:
 	//
-	// 	- **async*	- (default): asynchronous
+	// 	- **async*	- (default): asynchronous.
 	//
-	// 	- **semisync**: semi-synchronous
+	// 	- **semisync**: semi-synchronous.
 	//
 	// example:
 	//
 	// async
 	ParamReplMode *string `json:"ParamReplMode,omitempty" xml:"ParamReplMode,omitempty"`
-	// The degradation threshold for semi-synchronous mode. This parameter can be configured only for semi-synchronous mode. Unit: ms. Valid values: 10 to 60000. Default value: 500.
+	// The degradation threshold for the semi-synchronous mode. This parameter is supported only in the semi-synchronous mode. Unit: milliseconds. Valid values: 10 to 60000. Default value: 500.
 	//
 	// > 	- When the synchronization latency exceeds this threshold, the synchronization mode automatically switches to asynchronous. When the synchronization latency is eliminated, the synchronization mode automatically switches back to semi-synchronous.
 	//
-	// > 	- Only Tair Enterprise instances are supported. This feature is in public preview.
+	// > 	- This feature is supported only by Tair Enterprise instances and is in public preview.
 	//
 	// example:
 	//
 	// 500
 	ParamSemisyncReplTimeout *string `json:"ParamSemisyncReplTimeout,omitempty" xml:"ParamSemisyncReplTimeout,omitempty"`
-	// The Sentinel compatibility mode, which applies to instances in cluster architecture with proxy connection mode or read/write splitting architecture. Valid values:
+	// Specifies whether to enable Sentinel compatibility mode for instances in cluster architecture proxy connection mode or read/write splitting architecture. Valid values:
 	//
 	// 	- **0*	- (default): disabled.
 	//

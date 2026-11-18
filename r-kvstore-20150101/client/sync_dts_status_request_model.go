@@ -49,11 +49,11 @@ type SyncDtsStatusRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to restrict specification changes on the instance. Valid values:
+	// Specifies whether to restrict specification changes for the instance. Valid values:
 	//
-	// 	- **0**: Unrestricted.
+	// 	- **0**: No restriction.
 	//
-	// 	- **1**: Restricted. Users are prompted when they perform a specification change.
+	// 	- **1**: Restricted. Users receive a prompt when performing a specification change.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type SyncDtsStatusRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Instance ID of the DTS instance. You can log on to the [DTS console](https://dts.console.aliyun.com/) to view instance ID.
 	//
-	// > An instance may be involved in multiple DTS migration or synchronization tasks simultaneously. To remove the specification change restrictions on the instance, pass this parameter to avoid calling this operation multiple times.
+	// > An instance may be involved in multiple DTS migration or synchronization tasks. When you need to remove the specification change restriction for the instance, you can pass this parameter to avoid calling this operation multiple times.
 	//
 	// example:
 	//

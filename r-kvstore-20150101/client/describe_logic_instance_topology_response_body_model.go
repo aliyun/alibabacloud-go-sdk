@@ -20,7 +20,7 @@ type iDescribeLogicInstanceTopologyResponseBody interface {
 }
 
 type DescribeLogicInstanceTopologyResponseBody struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//

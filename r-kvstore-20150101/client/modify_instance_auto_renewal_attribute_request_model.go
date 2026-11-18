@@ -52,9 +52,9 @@ type ModifyInstanceAutoRenewalAttributeRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The auto-renewal cycle. Valid values: **1*	- to **12**. Unit: months. When the instance is about to expire, the system automatically renews the instance for the specified duration.
+	// The auto-renewal period. Valid values: **1*	- to **12**. Unit: months. When the instance is about to expire, the system automatically renews the instance for the specified duration.
 	//
-	// > This parameter is available and required only when **AutoRenew*	- is set to **true**.
+	// > This parameter is valid and required only when the **AutoRenew*	- parameter is set to **true**.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyInstanceAutoRenewalAttributeRequest struct {
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The product. Set the value to kvstore.
+	// The product type. Set the value to kvstore.
 	//
 	// example:
 	//

@@ -74,7 +74,7 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	//
 	// 96
 	BandWidth *int64 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
-	// The number of days for which binary logs are retained.
+	// The binary log retention period in days.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	CurrentBandWidth *int64 `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
 	// The storage space of the [ESSD cloud disk](https://help.aliyun.com/document_detail/122389.html) for the data node. Unit: MB.
 	//
-	// > The ESSD cloud disk is used only for system operations, such as data persistence, and is not used as a medium for data access.
+	// > The ESSD cloud disk is used only for system operations, such as data persistence, and is not used as a medium for data storage and access.
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **redis**: data node.
+	// 	- **redis**: data node
 	//
-	// 	- **redis_cs**: configuration server node.
+	// 	- **redis_cs**: configuration server node
 	//
 	// example:
 	//
 	// redis
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The major version of the node.
+	// The major engine version of the node.
 	//
 	// example:
 	//

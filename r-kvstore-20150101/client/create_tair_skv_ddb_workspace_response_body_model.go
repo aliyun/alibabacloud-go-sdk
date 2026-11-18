@@ -64,7 +64,7 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal network connection endpoint of the Redis instance.
+	// The internal endpoint of the Redis instance.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// 100000
 	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
-	// The region where the instance is deployed.
+	// The region ID of the instance.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type CreateTairSkvDdbWorkspaceResponseBody struct {
 	//
 	// 5DEA3CC9-F81D-4387-8E97-CEA40F09****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task flow executed for creation.
+	// The ID of the creation task flow.
 	//
 	// example:
 	//
 	// 1111
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the zone where the instance is deployed.
+	// The zone ID of the instance.
 	//
 	// example:
 	//

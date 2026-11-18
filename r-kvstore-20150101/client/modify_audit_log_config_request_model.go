@@ -28,19 +28,19 @@ type iModifyAuditLogConfigRequest interface {
 }
 
 type ModifyAuditLogConfigRequest struct {
-	// Specifies whether to enable audit logging. Valid values:
+	// Specifies whether to enable the audit log feature. Valid values:
 	//
-	// 	- **true*	- (default): Enabled.
+	// 	- **true**: enables the feature. This is the default value.
 	//
-	// 	- **false**: Disabled.
+	// 	- **false**: disables the feature.
 	//
-	// > If the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html), audit logs for data nodes and proxy nodes are enabled or disabled at the same time. You cannot enable them separately.
+	// > If the instance uses the [cluster](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting](https://help.aliyun.com/document_detail/62870.html) architecture, the audit logs of data nodes and proxy nodes are enabled or disabled at the same time. You cannot enable the audit logs for data nodes or proxy nodes separately.
 	//
 	// example:
 	//
 	// true
 	DbAudit *bool `json:"DbAudit,omitempty" xml:"DbAudit,omitempty"`
-	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyAuditLogConfigRequest struct {
 	//
 	// > 	- This parameter is required when **DbAudit*	- is set to **true**.
 	//
-	// > 	- This parameter takes effect on all instances in the current region.
+	// > 	- The setting of this parameter takes effect on all instances in the current region.
 	//
 	// example:
 	//

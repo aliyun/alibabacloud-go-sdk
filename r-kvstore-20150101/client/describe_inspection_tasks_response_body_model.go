@@ -26,7 +26,7 @@ type DescribeInspectionTasksResponseBody struct {
 	//
 	// 2D9F3768-EDA9-4811-943E-42C8006E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *DescribeInspectionTasksResponseBody) Validate() error {
 }
 
 type DescribeInspectionTasksResponseBodyData struct {
-	// The list of tasks.
+	// The list of task data.
 	Items []*DescribeInspectionTasksResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -159,31 +159,25 @@ func (s *DescribeInspectionTasksResponseBodyData) Validate() error {
 }
 
 type DescribeInspectionTasksResponseBodyDataItems struct {
-	// The time when the task was created.
-	//
-	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The creation time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-07-01T02:06:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the task.
-	//
-	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The end time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2025-09-23T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The completion time of the task.
-	//
-	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The completion time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-01-09T02:13:01Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The specified inspection items. The following inspection items are supported:
+	// The specified inspection items. Supported inspection items:
 	//
 	// - RESOURCE_USAGE
 	//
@@ -211,7 +205,7 @@ type DescribeInspectionTasksResponseBodyDataItems struct {
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	// The ID of the scheduled task.
+	// The ID of the timed scheduling.
 	//
 	// example:
 	//
@@ -223,15 +217,13 @@ type DescribeInspectionTasksResponseBodyDataItems struct {
 	//
 	// scheduler|
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The start time of the task.
-	//
-	// The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The start time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-05-30T02:11:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task.
+	// The status.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iDescribeServiceLinkedRoleExistsResponseBody interface {
 }
 
 type DescribeServiceLinkedRoleExistsResponseBody struct {
-	// Indicates whether the service-linked role has been authorized for the current account. Valid values:
+	// Indicates whether the service-linked role is activated for the current account. Valid values:
 	//
-	// - **true**: Authorized.
+	// - **true**: The role is activated.
 	//
-	// - **false**: Not authorized.
+	// - **false**: The role is not activated.
 	//
 	// example:
 	//

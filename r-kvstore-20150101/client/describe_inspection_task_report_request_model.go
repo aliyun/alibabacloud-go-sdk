@@ -13,6 +13,8 @@ type iDescribeInspectionTaskReportRequest interface {
 	GetInspectionInsId() *string
 	SetInstanceId(v string) *DescribeInspectionTaskReportRequest
 	GetInstanceId() *string
+	SetLevelSummary(v string) *DescribeInspectionTaskReportRequest
+	GetLevelSummary() *string
 	SetSecurityToken(v string) *DescribeInspectionTaskReportRequest
 	GetSecurityToken() *string
 	SetTaskId(v string) *DescribeInspectionTaskReportRequest
@@ -20,7 +22,7 @@ type iDescribeInspectionTaskReportRequest interface {
 }
 
 type DescribeInspectionTaskReportRequest struct {
-	// The ID of the inspection instance.
+	// The inspection instance ID.
 	//
 	// example:
 	//
@@ -33,7 +35,21 @@ type DescribeInspectionTaskReportRequest struct {
 	// example:
 	//
 	// ta-bp19f4f6994813xxx
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The summary of risk levels for inspection results. You can specify multiple values. Valid values:
+	//
+	// - Normal: normal
+	//
+	// - Warning: warning
+	//
+	// - Error: high-risk
+	//
+	// - Failed: failed
+	//
+	// example:
+	//
+	// Error,Warning
+	LevelSummary  *string `json:"LevelSummary,omitempty" xml:"LevelSummary,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The task ID.
 	//
@@ -61,6 +77,10 @@ func (s *DescribeInspectionTaskReportRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeInspectionTaskReportRequest) GetLevelSummary() *string {
+	return s.LevelSummary
+}
+
 func (s *DescribeInspectionTaskReportRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
@@ -76,6 +96,11 @@ func (s *DescribeInspectionTaskReportRequest) SetInspectionInsId(v string) *Desc
 
 func (s *DescribeInspectionTaskReportRequest) SetInstanceId(v string) *DescribeInspectionTaskReportRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInspectionTaskReportRequest) SetLevelSummary(v string) *DescribeInspectionTaskReportRequest {
+	s.LevelSummary = &v
 	return s
 }
 

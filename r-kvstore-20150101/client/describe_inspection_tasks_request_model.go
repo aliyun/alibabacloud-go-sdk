@@ -11,6 +11,8 @@ type iDescribeInspectionTasksRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DescribeInspectionTasksRequest
 	GetInstanceId() *string
+	SetLevelSummary(v string) *DescribeInspectionTasksRequest
+	GetLevelSummary() *string
 	SetPageNum(v string) *DescribeInspectionTasksRequest
 	GetPageNum() *string
 	SetPageSize(v string) *DescribeInspectionTasksRequest
@@ -22,7 +24,7 @@ type iDescribeInspectionTasksRequest interface {
 }
 
 type DescribeInspectionTasksRequest struct {
-	// The instance ID.
+	// The ID of the assistant instance.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +32,20 @@ type DescribeInspectionTasksRequest struct {
 	//
 	// ta-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The summary of risk levels for inspection results. You can specify multiple values. Valid values:
+	//
+	// - Normal: Normal.
+	//
+	// - Warning: Warning.
+	//
+	// - Error: High-risk.
+	//
+	// - Failed: Failed.
+	//
+	// example:
+	//
+	// Error
+	LevelSummary *string `json:"LevelSummary,omitempty" xml:"LevelSummary,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -43,11 +59,11 @@ type DescribeInspectionTasksRequest struct {
 	// 10
 	PageSize      *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task type.
+	// The task type. Valid values:
 	//
-	// - 1: manual task
+	// - 1: Manual task.
 	//
-	// - 2: scheduled task
+	// - 2: Scheduled task.
 	//
 	// example:
 	//
@@ -65,6 +81,10 @@ func (s DescribeInspectionTasksRequest) GoString() string {
 
 func (s *DescribeInspectionTasksRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DescribeInspectionTasksRequest) GetLevelSummary() *string {
+	return s.LevelSummary
 }
 
 func (s *DescribeInspectionTasksRequest) GetPageNum() *string {
@@ -85,6 +105,11 @@ func (s *DescribeInspectionTasksRequest) GetType() *string {
 
 func (s *DescribeInspectionTasksRequest) SetInstanceId(v string) *DescribeInspectionTasksRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInspectionTasksRequest) SetLevelSummary(v string) *DescribeInspectionTasksRequest {
+	s.LevelSummary = &v
 	return s
 }
 

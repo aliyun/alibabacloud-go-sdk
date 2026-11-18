@@ -30,7 +30,7 @@ type iDescribeAuditRecordsResponseBody interface {
 type DescribeAuditRecordsResponseBody struct {
 	// The end time of the query.
 	//
-	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -63,7 +63,7 @@ type DescribeAuditRecordsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
 	//
-	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//

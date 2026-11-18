@@ -26,7 +26,7 @@ type iDescribeServiceLinkedRoleExistsRequest interface {
 }
 
 type DescribeServiceLinkedRoleExistsRequest struct {
-	// The database type. You can only set this parameter to "Redis" or leave it empty.
+	// The database engine. Only Redis is supported, or you can leave this parameter empty.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeServiceLinkedRoleExistsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > This parameter does not affect the query result. You can specify any region.
+	// > This parameter does not affect the query results. You can specify any region.
 	//
 	// This parameter is required.
 	//

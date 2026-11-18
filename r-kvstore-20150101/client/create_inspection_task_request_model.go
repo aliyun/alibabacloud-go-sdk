@@ -26,7 +26,7 @@ type iCreateInspectionTaskRequest interface {
 type CreateInspectionTaskRequest struct {
 	// The end time of the inspection time range.
 	//
-	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and in UTC.
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and must be in UTC.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateInspectionTaskRequest struct {
 	//
 	// RESOURCE_USAGE
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The ID of the assistant instance.
+	// The assistant instance ID.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateInspectionTaskRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The language of the report.
+	// The report language.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateInspectionTaskRequest struct {
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	// The start time of the inspection time range.
 	//
-	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and in UTC.
+	// The time is in the YYYY-MM-DDTHH:mm:ssZ format and must be in UTC.
 	//
 	// example:
 	//
