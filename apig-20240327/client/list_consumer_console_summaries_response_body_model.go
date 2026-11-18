@@ -20,7 +20,7 @@ type iListConsumerConsoleSummariesResponseBody interface {
 }
 
 type ListConsumerConsoleSummariesResponseBody struct {
-	// The response status code. A value of Ok indicates a successful request. A specific business error code is returned for a failed request.
+	// The response status code. A value of Ok indicates success, and a specific business error code indicates failure.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type ListConsumerConsoleSummariesResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The business data returned for the consumer operation.
 	Data *ListConsumerConsoleSummariesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message that describes the result of the request.
+	// The response message that describes the request processing result.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListConsumerConsoleSummariesResponseBody) Validate() error {
 }
 
 type ListConsumerConsoleSummariesResponseBodyData struct {
-	// Indicates whether the query result is complete. A successful response returns a complete projection.
+	// Specifies whether the query result is complete. A successful response returns a complete projection.
 	Complete *bool `json:"complete,omitempty" xml:"complete,omitempty"`
 	// The statistics of the complete consumer set in the local region, which are not affected by the current pagination.
 	Counts *ListConsumerConsoleSummariesResponseBodyDataCounts `json:"counts,omitempty" xml:"counts,omitempty" type:"Struct"`
@@ -108,13 +108,13 @@ type ListConsumerConsoleSummariesResponseBodyData struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token returned from the previous page. Omit this parameter when querying the first page.
+	// The pagination token returned from the previous page. Do not specify this parameter when you query the first page.
 	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The total number of records that match the current query conditions.
+	// The total number of entries that match the current query conditions.
 	//
 	// example:
 	//
@@ -278,11 +278,11 @@ func (s *ListConsumerConsoleSummariesResponseBodyDataCounts) Validate() error {
 }
 
 type ListConsumerConsoleSummariesResponseBodyDataItems struct {
-	// Indicates whether the authorization scope of the resource includes all models.
+	// Specifies whether the authorization scope of the resource includes all models.
 	AllModels *bool `json:"allModels,omitempty" xml:"allModels,omitempty"`
 	// The list of consumer groups that the consumer has joined.
 	ConsumerGroups []*ListConsumerConsoleSummariesResponseBodyDataItemsConsumerGroups `json:"consumerGroups,omitempty" xml:"consumerGroups,omitempty" type:"Repeated"`
-	// The consumer ID returned by the create or query consumer API operation.
+	// The consumer ID, which is the identifier returned by the consumer creation or query API operation.
 	//
 	// example:
 	//
@@ -294,21 +294,21 @@ type ListConsumerConsoleSummariesResponseBodyDataItems struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The summary of credential types and quantities for the consumer. The credential content is not returned.
+	// The summary of credential types and counts for the consumer. The credential content is not returned.
 	Credentials []*ListConsumerConsoleSummariesResponseBodyDataItemsCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
-	// The deployment status of the consumer configuration. An empty string is returned if no deployment status is available.
+	// The deployment status of the consumer configuration. If no deployment status is available, an empty string is returned.
 	//
 	// example:
 	//
 	// ""
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// The description of the consumer.
+	// The purpose description of the consumer.
 	//
 	// example:
 	//
 	// Consumer for service integration
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the consumer is enabled.
+	// Specifies whether the consumer is enabled.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The number of authorization configurations in the current gateway, aggregated by resource type.
 	LocalAccess *ListConsumerConsoleSummariesResponseBodyDataItemsLocalAccess `json:"localAccess,omitempty" xml:"localAccess,omitempty" type:"Struct"`
@@ -502,7 +502,7 @@ type ListConsumerConsoleSummariesResponseBodyDataItemsConsumerGroups struct {
 	//
 	// cg-d00000000000000000000
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The description of the consumer.
+	// The purpose description of the consumer.
 	//
 	// example:
 	//
