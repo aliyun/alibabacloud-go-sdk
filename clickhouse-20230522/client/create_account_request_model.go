@@ -28,7 +28,7 @@ type iCreateAccountRequest interface {
 }
 
 type CreateAccountRequest struct {
-	// The database account. The account name must meet the following requirements:
+	// The database account. The name must meet the following requirements:
 	//
 	// - The name must be unique.
 	//
@@ -46,9 +46,9 @@ type CreateAccountRequest struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// - **NormalAccount**: Standard account.
+	// - **NormalAccount**: standard account.
 	//
-	// - **SuperAccount**: Privileged account.
+	// - **SuperAccount**: privileged account.
 	//
 	// This parameter is required.
 	//
@@ -196,7 +196,7 @@ type CreateAccountRequestDmlAuthSetting struct {
 	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
 	// The list of dictionaries to be authorized. Separate multiple dictionaries with commas (,).
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
-	// Specifies whether to grant DDL permissions to the database account. Valid values:
+	// Specifies whether to grant Data Definition Language (DDL) permissions to the database account. Valid values:
 	//
 	// - **true**: Allows DDL operations.
 	//
@@ -206,7 +206,7 @@ type CreateAccountRequestDmlAuthSetting struct {
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// Specifies whether to grant DML permissions to the database account. Valid values:
+	// Specifies whether to grant Data Manipulation Language (DML) permissions to the database account. Valid values:
 	//
 	// - **0**: Allows queries for reading, writing, and changing settings.
 	//

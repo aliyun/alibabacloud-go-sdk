@@ -1,3 +1,7 @@
+2026-11-18 Version: v3.2.0
+- Support API ModifyLangfuseUserAllowOrgCreation.
+
+
 2026-11-06 Version: v3.1.2
 - Generated golang 2023-05-22 for clickhouse.
 

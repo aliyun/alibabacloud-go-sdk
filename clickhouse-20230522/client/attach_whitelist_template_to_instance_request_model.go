@@ -18,7 +18,7 @@ type iAttachWhitelistTemplateToInstanceRequest interface {
 }
 
 type AttachWhitelistTemplateToInstanceRequest struct {
-	// The database instance IDs. Separate multiple IDs with commas. You can associate or disassociate up to 20 instances at a time.
+	// The IDs of the database instances. Separate multiple IDs with commas. You can associate up to 20 instances at a time.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AttachWhitelistTemplateToInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The whitelist template ID.
+	// The ID of the whitelist template.
 	//
 	// This parameter is required.
 	//

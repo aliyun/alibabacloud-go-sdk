@@ -16,7 +16,7 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The response data.
+	// The response result.
 	Data *DescribeDBInstanceAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -76,17 +76,21 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	// The category. Valid values:
 	//
+	// - enterprise: Enterprise Edition.
+	//
 	// example:
 	//
 	// enterprise
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The billing method.
 	//
+	// Enterprise Edition clusters only support the pay-as-you-go billing method.
+	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ClickObserve service status.
+	// The status of the ClickObserve service.
 	//
 	// example:
 	//
@@ -104,13 +108,19 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Indicates whether deletion protection is enabled.
+	// Indicates whether release protection is enabled.
 	//
 	// example:
 	//
 	// 0/1
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The zone deployment status of the cluster. Valid values: single_az and multi_az.
+	// The zone deployment status of the cluster. Valid values:
+	//
+	// - single_az: Servers are deployed in the primary zone specified by ZoneId.
+	//
+	// - multi_az: Servers are deployed in multiple zones specified by MultiZones.
+	//
+	// Keeper nodes are always deployed in multiple zones specified by MultiZones.
 	//
 	// example:
 	//
@@ -122,7 +132,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// cluster test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The disabled database ports. Multiple ports are separated by commas (,).
+	// The disabled database ports. Separate multiple ports with commas (,).
 	//
 	// example:
 	//
@@ -134,13 +144,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// clickhouse
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The minor version of the cluster engine.
+	// The minor engine version of the cluster.
 	//
 	// example:
 	//
 	// 23.8.1.41495_6
 	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
-	// The DPI engine version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -148,11 +158,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
+	// > Pay-as-you-go clusters do not have an expiration time. An empty value is returned.
+	//
 	// example:
 	//
 	// 2024-04-17T08:14:48Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The list of Langfuse instance IDs.
+	// The Langfuse instance IDs.
 	LangfuseInstanceIds []*string `json:"LangfuseInstanceIds,omitempty" xml:"LangfuseInstanceIds,omitempty" type:"Repeated"`
 	// The latest minor engine version.
 	//
@@ -192,13 +204,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 2
 	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The maximum elastic scaling value for serverless nodes.
+	// The maximum scaling limit for serverless nodes.
 	//
 	// example:
 	//
 	// 32
 	NodeScaleMax *string `json:"NodeScaleMax,omitempty" xml:"NodeScaleMax,omitempty"`
-	// The minimum elastic scaling value for serverless nodes.
+	// The minimum scaling limit for serverless nodes.
 	//
 	// example:
 	//
@@ -224,13 +236,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// rg-acfmzygvt54****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The maximum scaling value for serverless elastic scaling.
+	// The maximum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int32 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum scaling value for serverless elastic scaling.
+	// The minimum value for serverless elastic scaling.
 	//
 	// example:
 	//
@@ -242,13 +254,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The pre-purchased storage quota, in GB.
+	// The purchased storage quota, in GB.
 	//
 	// example:
 	//
 	// 100
 	StorageQuota *string `json:"StorageQuota,omitempty" xml:"StorageQuota,omitempty"`
-	// The storage size. Unit: GB.
+	// The storage space size. Unit: GB.
 	//
 	// example:
 	//
@@ -268,7 +280,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// vsw-uf67ij56zm9x4uc6hmilg
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//

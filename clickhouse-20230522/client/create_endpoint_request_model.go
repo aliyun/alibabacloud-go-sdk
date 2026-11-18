@@ -28,7 +28,7 @@ type CreateEndpointRequest struct {
 	//
 	// cc-bp100p4q1g9z3****-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
-	// The prefix of the destination endpoint. This is the prefix of the ConnectionString parameter.
+	// The prefix of the destination endpoint, which is the prefix of the ConnectionString parameter.
 	//
 	// example:
 	//

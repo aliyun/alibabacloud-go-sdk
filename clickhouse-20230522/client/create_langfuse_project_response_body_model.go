@@ -62,7 +62,7 @@ func (s *CreateLangfuseProjectResponseBody) Validate() error {
 }
 
 type CreateLangfuseProjectResponseBodyData struct {
-	// The creation time of the Langfuse project. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The time when the Langfuse project was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

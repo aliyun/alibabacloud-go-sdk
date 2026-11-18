@@ -66,7 +66,7 @@ type DescribeLangfuseSecurityIPListResponseBodyData struct {
 	//
 	// example:
 	//
-	// lfs-****
+	// 100001
 	DBInstanceID *int32 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	// The instance name.
 	//

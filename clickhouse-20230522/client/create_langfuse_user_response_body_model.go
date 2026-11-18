@@ -76,9 +76,9 @@ type CreateLangfuseUserResponseBodyData struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The user role.
+	// The role of the user.
 	Membership *CreateLangfuseUserResponseBodyDataMembership `json:"Membership,omitempty" xml:"Membership,omitempty" type:"Struct"`
-	// The username.
+	// The name of the user.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ func (s *CreateLangfuseUserResponseBodyData) Validate() error {
 }
 
 type CreateLangfuseUserResponseBodyDataMembership struct {
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// example:
 	//

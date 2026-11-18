@@ -46,7 +46,7 @@ type CreateLangfuseUserRequest struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username.
+	// The name of the user.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateLangfuseUserRequest struct {
 	//
 	// VIEWER
 	OrgRole *string `json:"OrgRole,omitempty" xml:"OrgRole,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type CreateLangfuseUserRequest struct {
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	// The password of the user account. The password must meet the following requirements:
 	//
-	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - Special characters include !@#$%^&*()_+-=.
 	//
-	// - It must be 8 to 32 characters in length.
+	// - The password must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//

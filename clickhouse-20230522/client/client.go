@@ -114,7 +114,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Associates a whitelist template with instances.
+// Associates instances with a whitelist template.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -166,7 +166,7 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *Atta
 
 // Summary:
 //
-// Associates a whitelist template with instances.
+// Associates instances with a whitelist template.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -662,7 +662,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Allocates a public endpoint.
+// Creates a public endpoint.
 //
 // @param request - CreateEndpointRequest
 //
@@ -722,7 +722,7 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 
 // Summary:
 //
-// Allocates a public endpoint.
+// Creates a public endpoint.
 //
 // @param request - CreateEndpointRequest
 //
@@ -2210,7 +2210,7 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 
 // Summary:
 //
-// Queries the details of an ApsaraDB for ClickHouse cluster.
+// Queries the details of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -2258,7 +2258,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the details of an ApsaraDB for ClickHouse cluster.
+// Queries the details of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -4854,6 +4854,80 @@ func (client *Client) ModifyLangfuseSecurityIPList(request *ModifyLangfuseSecuri
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyLangfuseSecurityIPListResponse{}
 	_body, _err := client.ModifyLangfuseSecurityIPListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the organization creation permissions for a Langfuse user.
+//
+// @param request - ModifyLangfuseUserAllowOrgCreationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLangfuseUserAllowOrgCreationResponse
+func (client *Client) ModifyLangfuseUserAllowOrgCreationWithOptions(request *ModifyLangfuseUserAllowOrgCreationRequest, runtime *dara.RuntimeOptions) (_result *ModifyLangfuseUserAllowOrgCreationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowOrgCreation) {
+		query["AllowOrgCreation"] = request.AllowOrgCreation
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLangfuseUserAllowOrgCreation"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLangfuseUserAllowOrgCreationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the organization creation permissions for a Langfuse user.
+//
+// @param request - ModifyLangfuseUserAllowOrgCreationRequest
+//
+// @return ModifyLangfuseUserAllowOrgCreationResponse
+func (client *Client) ModifyLangfuseUserAllowOrgCreation(request *ModifyLangfuseUserAllowOrgCreationRequest) (_result *ModifyLangfuseUserAllowOrgCreationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyLangfuseUserAllowOrgCreationResponse{}
+	_body, _err := client.ModifyLangfuseUserAllowOrgCreationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

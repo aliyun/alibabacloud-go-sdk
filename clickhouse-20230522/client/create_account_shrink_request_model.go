@@ -28,7 +28,7 @@ type iCreateAccountShrinkRequest interface {
 }
 
 type CreateAccountShrinkRequest struct {
-	// The database account. The account name must meet the following requirements:
+	// The database account. The name must meet the following requirements:
 	//
 	// - The name must be unique.
 	//
@@ -46,9 +46,9 @@ type CreateAccountShrinkRequest struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// - **NormalAccount**: Standard account.
+	// - **NormalAccount**: standard account.
 	//
-	// - **SuperAccount**: Privileged account.
+	// - **SuperAccount**: privileged account.
 	//
 	// This parameter is required.
 	//

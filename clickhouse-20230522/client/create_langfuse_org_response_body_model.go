@@ -62,7 +62,7 @@ func (s *CreateLangfuseOrgResponseBody) Validate() error {
 }
 
 type CreateLangfuseOrgResponseBodyData struct {
-	// The creation time of the Langfuse organization. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.SSSZ format.
+	// The time when the Langfuse organization was created. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.SSSZ format.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateLangfuseOrgResponseBodyData struct {
 	//
 	// org_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Langfuse organization.
+	// The Langfuse organization ID.
 	//
 	// example:
 	//

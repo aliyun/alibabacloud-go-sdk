@@ -40,7 +40,7 @@ type ModifyLangfuseProjectMembershipRequest struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyLangfuseProjectMembershipRequest struct {
 	//
 	// cmrbhzx930005jw2q****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// The Langfuse project ID.
+	// The ID of the Langfuse project.
 	//
 	// This parameter is required.
 	//
