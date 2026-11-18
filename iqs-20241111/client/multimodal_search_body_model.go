@@ -18,7 +18,7 @@ type iMultimodalSearchBody interface {
 }
 
 type MultimodalSearchBody struct {
-	// Additional query parameters, such as blocked sites
+	// The additional query items, such as blocked sites.
 	//
 	// example:
 	//
@@ -28,12 +28,17 @@ type MultimodalSearchBody struct {
 	//
 	//   }
 	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
-	EngineType     *string                `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	// Query content
+	// The search engine type.
 	//
 	// example:
 	//
-	// 阿里巴巴
+	// Generic
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	// The query content.
+	//
+	// example:
+	//
+	// Alibaba
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 

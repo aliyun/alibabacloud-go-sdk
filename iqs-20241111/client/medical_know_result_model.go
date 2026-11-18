@@ -20,9 +20,17 @@ type iMedicalKnowResult interface {
 }
 
 type MedicalKnowResult struct {
-	Messages          []*MedicalKnowledgeInfo   `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	QueryContext      *MultimodalQueryContext   `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
-	RequestId         *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of recognized entity property results. An empty array is returned if no entities are recognized.
+	Messages []*MedicalKnowledgeInfo `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The query context information, such as the original query content.
+	QueryContext *MultimodalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// The ID of the request, which can be provided for troubleshooting.
+	//
+	// example:
+	//
+	// 35E5608A-A737-2038-AFB6-D9D34C6BFD9E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The search information for the query, such as the search duration.
 	SearchInformation *UnifiedSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 

@@ -14,6 +14,11 @@ type iMultimodalOriginalQuery interface {
 }
 
 type MultimodalOriginalQuery struct {
+	// The query conditions.
+	//
+	// example:
+	//
+	// Alibaba
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 

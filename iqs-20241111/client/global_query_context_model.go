@@ -45,19 +45,19 @@ func (s *GlobalQueryContext) Validate() error {
 }
 
 type GlobalQueryContextOriginalQuery struct {
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *string `json:"page,omitempty" xml:"page,omitempty"`
-	// 查询关键字
+	// The query keyword.
 	//
 	// example:
 	//
-	// 特朗普关税最新消息
+	// Latest news on Trump tariffs
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// 时间范围
+	// The time range.
 	//
 	// example:
 	//

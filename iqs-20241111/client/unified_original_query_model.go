@@ -20,7 +20,7 @@ type UnifiedOriginalQuery struct {
 	//
 	// example:
 	//
-	// 杭州美食
+	// Hangzhou cuisine
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The publish time range.
 	//

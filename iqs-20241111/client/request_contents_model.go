@@ -24,12 +24,13 @@ type iRequestContents interface {
 type RequestContents struct {
 	// Specifies whether to return the main text. Default value: false.
 	MainText *bool `json:"mainText,omitempty" xml:"mainText,omitempty"`
-	// Specifies whether to return markdown. Default value: false.
+	// Specifies whether to return Markdown. Default value: false.
 	MarkdownText *bool `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
-	// Specifies whether to enable Rerank and return the RerankScore. Default value: true.
-	RerankScore  *bool `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	// Specifies whether to enable reranking and return the rerank score. Default value: true.
+	RerankScore *bool `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	// Specifies whether to return the full rich text content.
 	RichMainBody *bool `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
-	// Specifies whether to return an enhanced summary. Default value: false. The summary feature is billed separately.
+	// Specifies whether to return the enhanced summary. Default value: false. The summary feature is billed separately.
 	Summary *bool `json:"summary,omitempty" xml:"summary,omitempty"`
 }
 

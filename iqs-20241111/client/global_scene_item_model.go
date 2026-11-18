@@ -22,15 +22,15 @@ type GlobalSceneItem struct {
 	//
 	// {
 	//
-	// "snippet": "截至2025年3月7日，SpaceX星舰已经发射了8次，并取得4次成功及4次失败。",
+	// "snippet": "As of March 7, 2025, SpaceX Starship has been launched 8 times, with 4 successes and 4 failures.",
 	//
-	// "snippetHighlighted": ["8次"],
+	// "snippetHighlighted": ["8 times"],
 	//
-	// "title": "星舰发射任务列表"
+	// "title": "List of Starship launch missions"
 	//
 	// }
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// The type of the vertical data.
+	// The type of vertical data.
 	//
 	// example:
 	//

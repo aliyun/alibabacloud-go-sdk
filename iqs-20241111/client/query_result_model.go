@@ -16,8 +16,14 @@ type iQueryResult interface {
 }
 
 type QueryResult struct {
-	Data      []*QueryResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of returned locations.
+	Data []*QueryResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The unique request ID for troubleshooting.
+	//
+	// example:
+	//
+	// 15A85F99-408F-5BFA-B617-0C7D3E732ABD
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s QueryResult) String() string {
@@ -60,22 +66,94 @@ func (s *QueryResult) Validate() error {
 }
 
 type QueryResultData struct {
-	Address       *string                  `json:"address,omitempty" xml:"address,omitempty"`
-	CityCode      *string                  `json:"cityCode,omitempty" xml:"cityCode,omitempty"`
-	CityName      *string                  `json:"cityName,omitempty" xml:"cityName,omitempty"`
-	DistanceMeter *string                  `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
-	DistrictCode  *string                  `json:"districtCode,omitempty" xml:"districtCode,omitempty"`
-	DistrictName  *string                  `json:"districtName,omitempty" xml:"districtName,omitempty"`
-	Id            *string                  `json:"id,omitempty" xml:"id,omitempty"`
-	Images        []*QueryResultDataImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	Latitude      *string                  `json:"latitude,omitempty" xml:"latitude,omitempty"`
-	Longitude     *string                  `json:"longitude,omitempty" xml:"longitude,omitempty"`
-	Metadata      *QueryResultDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	Name          *string                  `json:"name,omitempty" xml:"name,omitempty"`
-	ProvinceCode  *string                  `json:"provinceCode,omitempty" xml:"provinceCode,omitempty"`
-	ProvinceName  *string                  `json:"provinceName,omitempty" xml:"provinceName,omitempty"`
-	TypeCode      *string                  `json:"typeCode,omitempty" xml:"typeCode,omitempty"`
-	Types         *string                  `json:"types,omitempty" xml:"types,omitempty"`
+	// The detailed address.
+	//
+	// example:
+	//
+	// No. 22 Fayun Lane, West Lake Scenic Area
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The city code.
+	//
+	// example:
+	//
+	// 0571
+	CityCode *string `json:"cityCode,omitempty" xml:"cityCode,omitempty"`
+	// The city name.
+	//
+	// example:
+	//
+	// Hangzhou
+	CityName *string `json:"cityName,omitempty" xml:"cityName,omitempty"`
+	// The distance from the center point in meters.
+	//
+	// example:
+	//
+	// 815
+	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	// The district code.
+	//
+	// example:
+	//
+	// 330106
+	DistrictCode *string `json:"districtCode,omitempty" xml:"districtCode,omitempty"`
+	// The district name.
+	//
+	// example:
+	//
+	// Xihu District
+	DistrictName *string `json:"districtName,omitempty" xml:"districtName,omitempty"`
+	// The internal identifier of the location.
+	//
+	// example:
+	//
+	// B023B0BI3J
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The list of images.
+	Images []*QueryResultDataImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// The latitude of the location.
+	//
+	// example:
+	//
+	// 30.234403
+	Latitude *string `json:"latitude,omitempty" xml:"latitude,omitempty"`
+	// The longitude of the location.
+	//
+	// example:
+	//
+	// 120.097327
+	Longitude *string `json:"longitude,omitempty" xml:"longitude,omitempty"`
+	// The related business information.
+	Metadata *QueryResultDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
+	// The location name.
+	//
+	// example:
+	//
+	// Amanfayun Hangzhou
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The province code.
+	//
+	// example:
+	//
+	// 330000
+	ProvinceCode *string `json:"provinceCode,omitempty" xml:"provinceCode,omitempty"`
+	// The province name.
+	//
+	// example:
+	//
+	// Zhejiang Province
+	ProvinceName *string `json:"provinceName,omitempty" xml:"provinceName,omitempty"`
+	// The location type code.
+	//
+	// example:
+	//
+	// 100102
+	TypeCode *string `json:"typeCode,omitempty" xml:"typeCode,omitempty"`
+	// The location types. Multiple types are separated by vertical bars.
+	//
+	// example:
+	//
+	// Accommodation|Hotel|Five-star hotel
+	Types *string `json:"types,omitempty" xml:"types,omitempty"`
 }
 
 func (s QueryResultData) String() string {
@@ -249,8 +327,18 @@ func (s *QueryResultData) Validate() error {
 }
 
 type QueryResultDataImages struct {
+	// The image name.
+	//
+	// example:
+	//
+	// Lobby
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	Url   *string `json:"url,omitempty" xml:"url,omitempty"`
+	// The image URL.
+	//
+	// example:
+	//
+	// http://store.example.com/showpic/e76beb3bedca3fe0375cef12742ea23e
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s QueryResultDataImages) String() string {
@@ -284,12 +372,47 @@ func (s *QueryResultDataImages) Validate() error {
 }
 
 type QueryResultDataMetadata struct {
-	AverageSpend      *string `json:"averageSpend,omitempty" xml:"averageSpend,omitempty"`
-	BusinessArea      *string `json:"businessArea,omitempty" xml:"businessArea,omitempty"`
+	// The average spend in CNY.
+	//
+	// example:
+	//
+	// 500
+	AverageSpend *string `json:"averageSpend,omitempty" xml:"averageSpend,omitempty"`
+	// The business area.
+	//
+	// example:
+	//
+	// Central Area of West Lake Tourist Zone
+	BusinessArea *string `json:"businessArea,omitempty" xml:"businessArea,omitempty"`
+	// The business hours for today.
+	//
+	// example:
+	//
+	// 09:00-18:00
 	DailyOpeningHours *string `json:"dailyOpeningHours,omitempty" xml:"dailyOpeningHours,omitempty"`
-	MainTag           *string `json:"mainTag,omitempty" xml:"mainTag,omitempty"`
-	Phone             *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	Score             *string `json:"score,omitempty" xml:"score,omitempty"`
+	// The main tag.
+	//
+	// example:
+	//
+	// Luxury
+	MainTag *string `json:"mainTag,omitempty" xml:"mainTag,omitempty"`
+	// The contact phone numbers. Multiple numbers are separated by vertical bars.
+	//
+	// example:
+	//
+	// 0571-8732****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// The rating.
+	//
+	// example:
+	//
+	// 4.7
+	Score *string `json:"score,omitempty" xml:"score,omitempty"`
+	// The weekly opening days.
+	//
+	// example:
+	//
+	// Monday to Sunday
 	WeeklyOpeningDays *string `json:"weeklyOpeningDays,omitempty" xml:"weeklyOpeningDays,omitempty"`
 }
 

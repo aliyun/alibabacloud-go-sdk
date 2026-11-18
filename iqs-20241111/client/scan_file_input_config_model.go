@@ -16,7 +16,17 @@ type iScanFileInputConfig interface {
 }
 
 type ScanFileInputConfig struct {
-	AutoCrop   *string `json:"autoCrop,omitempty" xml:"autoCrop,omitempty"`
+	// The automatic trim.
+	//
+	// example:
+	//
+	// true
+	AutoCrop *string `json:"autoCrop,omitempty" xml:"autoCrop,omitempty"`
+	// The automatic rotation.
+	//
+	// example:
+	//
+	// true
 	AutoRotate *string `json:"autoRotate,omitempty" xml:"autoRotate,omitempty"`
 }
 

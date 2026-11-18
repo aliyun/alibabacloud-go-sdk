@@ -28,14 +28,46 @@ type iUnifiedSearchInput interface {
 }
 
 type UnifiedSearchInput struct {
+	// The advanced search parameters.
+	//
+	// example:
+	//
+	// {"numResults":"10"}
 	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
-	Category       *string                `json:"category,omitempty" xml:"category,omitempty"`
-	Contents       *RequestContents       `json:"contents,omitempty" xml:"contents,omitempty"`
-	EngineType     *string                `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	Location       *string                `json:"location,omitempty" xml:"location,omitempty"`
-	LocationInfo   *LocationInfo          `json:"locationInfo,omitempty" xml:"locationInfo,omitempty"`
-	Query          *string                `json:"query,omitempty" xml:"query,omitempty"`
-	TimeRange      *string                `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+	// The query category. If specified, only search results from sites of the corresponding category are returned. Separate multiple categories with commas.
+	//
+	// example:
+	//
+	// medical
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The options for controlling the returned content.
+	Contents *RequestContents `json:"contents,omitempty" xml:"contents,omitempty"`
+	// The engine type. Default value: Generic. Valid values: Generic, GenericAdvanced. GenericAdvanced is billed separately and returns more records.
+	//
+	// example:
+	//
+	// Generic
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	// **[Deprecated]*	- The location parameter. Use locationInfo to specify a city or IP address.
+	//
+	// example:
+	//
+	// 60.194.214.228
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The location information, used for scenario-based searches such as weather.
+	LocationInfo *LocationInfo `json:"locationInfo,omitempty" xml:"locationInfo,omitempty"`
+	// The query content. The length limit is 1 to 100 characters.
+	//
+	// example:
+	//
+	// Apsara Conference
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The publication time range for the content.
+	//
+	// example:
+	//
+	// NoLimit
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
 func (s UnifiedSearchInput) String() string {

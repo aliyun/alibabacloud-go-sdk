@@ -20,27 +20,27 @@ type iGlobalSearchRequest interface {
 }
 
 type GlobalSearchRequest struct {
-	// Page number, starting from 1
+	// The page number. The value starts from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// Number of items per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Search query content
+	// The search query.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 特朗普最新关税消息
+	// Latest Trump tariff news
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Web page publish time range
+	// The relative time range of the webpage publication time. Specify a value based on the relative time options.
 	//
 	// example:
 	//

@@ -20,9 +20,17 @@ type iMedicalAnswerResult interface {
 }
 
 type MedicalAnswerResult struct {
-	Messages          []*MedicalAnswerMessage   `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	QueryContext      *MultimodalQueryContext   `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
-	RequestId         *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of medical Q&A answers. An empty array is returned if the question is empty or no content is matched.
+	Messages []*MedicalAnswerMessage `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The query context information, such as the original query content.
+	QueryContext *MultimodalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// The ID of the request. You can provide this ID for troubleshooting.
+	//
+	// example:
+	//
+	// 35E5608A-A737-2038-AFB6-D9D34C6BFD9E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The search information, such as the execution duration.
 	SearchInformation *UnifiedSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 

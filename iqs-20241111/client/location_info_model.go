@@ -16,8 +16,18 @@ type iLocationInfo interface {
 }
 
 type LocationInfo struct {
+	// The city associated with the search. It is used to return information about the corresponding region in scenarios such as weather.
+	//
+	// example:
+	//
+	// Beijing
 	City *string `json:"city,omitempty" xml:"city,omitempty"`
-	Ip   *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// The IP address associated with the search. It is used to identify the region in supported scenarios and has a lower priority than city.
+	//
+	// example:
+	//
+	// 117.136.110.23
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 }
 
 func (s LocationInfo) String() string {

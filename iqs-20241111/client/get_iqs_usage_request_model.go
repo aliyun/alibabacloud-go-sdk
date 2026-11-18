@@ -18,14 +18,19 @@ type iGetIqsUsageRequest interface {
 }
 
 type GetIqsUsageRequest struct {
+	// The ID of the Alibaba Cloud RAM user or the API key caller identifier to query.
+	//
+	// example:
+	//
+	// 138608930460****
 	CallerId *string `json:"callerId,omitempty" xml:"callerId,omitempty"`
-	// End Date.
+	// The end date for the usage query, inclusive. The format is YYYYMMDD. The date must be within the last 60 days.
 	//
 	// example:
 	//
 	// 20241017
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// Start Date.
+	// The start date for the usage query, inclusive. The format is YYYYMMDD. The date must be within the last 60 days.
 	//
 	// example:
 	//

@@ -18,14 +18,20 @@ type iIncludeImage interface {
 }
 
 type IncludeImage struct {
+	// The image height in pixels.
+	//
 	// example:
 	//
 	// 324
 	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// The image link.
+	//
 	// example:
 	//
 	// http://k.sinaimg.cn/n/sinakd20121/594/w2048h946/20240328/74cf-32c0d62e843df76567d760b4459d57c1.jpg/w700d1q75cms.jpg
 	ImageLink *string `json:"imageLink,omitempty" xml:"imageLink,omitempty"`
+	// The image width in pixels.
+	//
 	// example:
 	//
 	// 700

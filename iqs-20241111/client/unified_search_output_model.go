@@ -24,11 +24,21 @@ type iUnifiedSearchOutput interface {
 }
 
 type UnifiedSearchOutput struct {
-	CostCredits       *UnifiedCostCredits       `json:"costCredits,omitempty" xml:"costCredits,omitempty"`
-	PageItems         []*UnifiedPageItem        `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
-	QueryContext      *UnifiedQueryContext      `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
-	RequestId         *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SceneItems        []*UnifiedSceneItem       `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
+	// The consumed credits information.
+	CostCredits *UnifiedCostCredits `json:"costCredits,omitempty" xml:"costCredits,omitempty"`
+	// The web page search results.
+	PageItems []*UnifiedPageItem `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
+	// The search context information.
+	QueryContext *UnifiedQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// The web page results.
+	//
+	// example:
+	//
+	// 35E5608A-A737-2038-****-D9D34C6BFD9E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The vertical API scenario-based results.
+	SceneItems []*UnifiedSceneItem `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
+	// The basic search information.
 	SearchInformation *UnifiedSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 

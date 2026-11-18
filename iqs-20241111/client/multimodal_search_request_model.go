@@ -14,7 +14,7 @@ type iMultimodalSearchRequest interface {
 }
 
 type MultimodalSearchRequest struct {
-	// Query parameters and site blocking parameters
+	// The query parameters and blocked site parameters.
 	Body *MultimodalSearchBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 

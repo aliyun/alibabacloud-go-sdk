@@ -44,7 +44,17 @@ type iUnifiedPageItem interface {
 }
 
 type UnifiedPageItem struct {
-	CorrelationTag     *int32   `json:"correlationTag,omitempty" xml:"correlationTag,omitempty"`
+	// The relevance tag. A value of 0 indicates low relevance, and 1 indicates non-low relevance.
+	//
+	// example:
+	//
+	// 1
+	CorrelationTag *int32 `json:"correlationTag,omitempty" xml:"correlationTag,omitempty"`
+	// The dynamic authority score, which ranges from 0 to 2 and is calculated based on the relevance to the query content.
+	//
+	// example:
+	//
+	// 1.923339
 	HostAuthorityScore *float64 `json:"hostAuthorityScore,omitempty" xml:"hostAuthorityScore,omitempty"`
 	// The site logo.
 	//
@@ -56,11 +66,11 @@ type UnifiedPageItem struct {
 	//
 	// example:
 	//
-	// 中华网
+	// China.com
 	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	// The images in the search result URL. A maximum of three images are returned.
+	// The images from the search result web page, up to three.
 	Images []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// The full URL that the search result points to.
+	// The full URL pointed to by the search result.
 	//
 	// example:
 	//
@@ -70,27 +80,27 @@ type UnifiedPageItem struct {
 	//
 	// example:
 	//
-	// 2025上海车展期间，最火爆的无疑是问界品牌，成为众多大佬的话题中心。赛力斯集团董事长（创始人）张兴海、华为常务董事、终端BG董事长余承东、著名演员陈道明、宁德时代董事长曾毓群都分享了对问界的使用体验。\\n“问界M9、M8正重构 中国 豪华汽车市场格局。”张兴海说， (此处省略....)。\\n责任编辑：kj005\\n 文章投诉热线:157 3889 8464 投诉邮箱:7983347 16@qq.com\\n关键词：
+	// During the 2025 Shanghai Auto Show, the AITO brand was undoubtedly the most popular, becoming the center of attention for many industry leaders. Zhang Xinghai, Chairman and Founder of SERES Group, Yu Chengdong, Managing Director of Huawei and Chairman of Terminal BG, Chen Daoming, a famous actor, and Zeng Yuqun, Chairman of CATL, all shared their experiences using AITO.\\n"AITO M9 and M8 are reshaping the landscape of China\\"s luxury car market," Zhang Xinghai said, (omitted here....).\\nEditor: kj005\\n Article complaint hotline: 157 3889 8464 Complaint email: 7983347 16@qq.com\\nKeywords:
 	MainText *string `json:"mainText,omitempty" xml:"mainText,omitempty"`
 	// The Markdown content.
 	//
 	// example:
 	//
-	// # 上海车展大佬齐聚 问界成为话题中心**来源**：财讯网
+	// # Industry leaders gather at the Shanghai Auto Show as AITO becomes the center of attention**Source**: Caixun.com
 	//
-	// **时间**：2025-04-27 20:36:04
+	// **Time**: 2025-04-27 20:36:04
 	//
-	// 2025上海车展期间，最火爆的无疑是问界品牌，成为众多大佬的话题中心。赛力斯集团董事长（创始人）张兴海、华为常务董事、终端BG董事长余承东、著名演员陈道明、宁德时代董事长曾毓群都分享了对问界的使用体验。
+	// During the 2025 Shanghai Auto Show, the AITO brand was undoubtedly the most popular, becoming the center of attention for many industry leaders. Zhang Xinghai, Chairman and Founder of SERES Group, Yu Chengdong, Managing Director of Huawei and Chairman of Terminal BG, Chen Daoming, a famous actor, and Zeng Yuqun, Chairman of CATL, all shared their experiences using AITO.
 	//
-	// ![图片](http://objectnsg.oss-cn-beijing.aliyuncs.com/yhdoc/202504/27/202504272025531927023138.png)余承东表示，问界M9、M8、M7和M5，都深受消费者喜爱！问界M9连续3个月中国纯电车型保值率第一！纯电、增程车型包揽新能源大型SUV保值率前两名！
+	// ![Image](http://objectnsg.oss-cn-beijing.aliyuncs.com/yhdoc/202504/27/202504272025531927023138.png)Yu Chengdong stated that AITO M9, M8, M7, and M5 are all deeply loved by consumers! AITO M9 has ranked first in the residual value rate of pure electric models in China for three consecutive months! Pure electric and extended-range models took the top two spots in the residual value rate of new energy large SUVs!
 	//
-	// ![图片](http://objectnsg.oss-cn-beijing.aliyuncs.com/yhdoc/202504/27/202504272025531312025791.jpeg)“自己是问界M9的用户
+	// ![Image](http://objectnsg.oss-cn-beijing.aliyuncs.com/yhdoc/202504/27/202504272025531312025791.jpeg)"I am an AITO M9 user
 	//
-	// *责任编辑：kj005*文章投诉热线: 157 3889 8464
+	// *Editor: kj005*Article complaint hotline: 157 3889 8464
 	//
-	// 投诉邮箱: 798334716@qq.com
+	// Complaint email: 798334716@qq.com
 	MarkdownText *string `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
-	// The time when the web page was published, in ISO time format.
+	// The publish time of the web page in ISO format.
 	//
 	// example:
 	//
@@ -101,28 +111,43 @@ type UnifiedPageItem struct {
 	// example:
 	//
 	// 0.7786493301391602
-	RerankScore  *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
-	RichMainBody *string  `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
-	// The text summary.
+	RerankScore *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	// The full rich text body, which preserves the order of text, images, audio, video, tables, and code on the web page.
 	//
 	// example:
 	//
-	// 2025上海车展期间，最火爆的无疑是问界品牌，成为众多大佬的话题中心。赛力斯集团董事长（创始人）张兴海、华为常务董事、终端BG董事长余承东、著名演员陈道明、宁德时代董事长曾毓群都分享了对问界的使用体验。 ...
+	// Salute	to	the	workers	!	\\n	[	Building	dreams	for	modernization	 	and	drawing	a	new	picture	together	·	Song	of	the	workers	]	Make	new	contributions	to	promoting	Chinese	modernization	\\n	<quark-image available_status="3" caption="CCTV news studio" fetch_status="0" is_broken="0" is_high_quality_chart="0" is_high_quality_text="0" is_watermark="0" ori_height="1080" ori_width="1920" phash="13061254655082448525" relevant_score="0.5" render_height="137.046875" render_width="243.65625" tag="CCTV logo, studio, architecture, scenery" url="http://s2.zimgs.cn/ims?kt=url&amp;key=aHR0cHM6Ly92Mi5jcmkuY24vTTAwLzg2LzAyL3JCQUJDbVkzRzhDQVhFR0pBQUFBQUFBQUFBQTQ0LjE5MjB4MTA4MC5qcGVn&amp;sign=yx:G3TGlZZMQhnxU2bJSDcb_g8xPQ0=&amp;tv=0_0&amp;p=" value_score="0.5"><quark-ocr>	CCTV	 	13	 	News	 	CTVR	 	Morning	World	</quark-ocr></quark-image>	\\n	More	>	>	>	 	Most	beautiful	workers	\\n
+	RichMainBody *string `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
+	// The summary.
+	//
+	// example:
+	//
+	// During the 2025 Shanghai Auto Show, the AITO brand was undoubtedly the most popular, becoming the center of attention for many industry leaders. Zhang Xinghai, Chairman and Founder of SERES Group, Yu Chengdong, Managing Director of Huawei and Chairman of Terminal BG, Chen Daoming, a famous actor, and Zeng Yuqun, Chairman of CATL, all shared their experiences using AITO. ..
 	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
-	// The enhanced summary, which contains 400 or more characters.
+	// The enhanced summary, 400 words or more.
 	//
 	// example:
 	//
-	// 2025上海车展期间，最火爆的无疑是问界品牌，成为众多大佬的话题中心。赛力斯集团董事长（创始人）张兴海、华为常务董事、终端BG董事长余承东、著名演员陈道明、宁德时代董事长曾毓群都分享了对问界的使用体验。“自己是问界M9的用户，用车感受非常好。”陈道明表示，体验后才敢现场给大家推荐。未来，希望能实现问界M9的特别定制，让外观、内饰、座椅布局等，更符合自己的使用需求。据悉，2025款问界M9上市25天就交付超1万，已连续11个月蝉联50万元级豪车车销冠；问界M8上市4天，大定就突破了五万 台 ，深受市场任何和用户喜爱...“问界M9、M8正重构 中国 豪华汽车市场格局。”张兴海说， 近 期曾极限试驾问界M8，从重庆出发，历时55小时、行驶超3500公里抵达冈仁波齐。整个行程中，车辆的安全 性 和体验感都表现出色。
-	Summary *string                `json:"summary,omitempty" xml:"summary,omitempty"`
-	Tags    map[string]interface{} `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The full URL that the search result points to.
+	// During the 2025 Shanghai Auto Show, the AITO brand was undoubtedly the most popular, becoming the center of attention for many industry leaders. Zhang Xinghai, Chairman and Founder of SERES Group, Yu Chengdong, Managing Director of Huawei and Chairman of Terminal BG, Chen Daoming, a famous actor, and Zeng Yuqun, Chairman of CATL, all shared their experiences using AITO. "I am an AITO M9 user, and the driving experience is excellent," Chen Daoming said, adding that he only dared to recommend it on the spot after experiencing it himself. In the future, he hopes to achieve special customization of the AITO M9, making the exterior, interior, and seat layout more in line with his own needs. It is reported that the 2025 AITO M9 delivered over 10,000 units within 25 days of its launch, and has been the sales champion of 500,000 RMB luxury cars for 11 consecutive months; the AITO M8 received over 50,000 firm orders within 4 days of its launch, and is deeply loved by the market and users... "AITO M9 and M8 are reshaping the landscape of China\\"s luxury car market," Zhang Xinghai said. He recently test-drove the AITO M8 to the limit, departing from Chongqing and arriving at Mount Kailash after 55 hours and over 3,500 kilometers. Throughout the journey, the safety and experience of the vehicle performed excellently
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// The web page tags.
 	//
 	// example:
 	//
-	// 上海车展大佬齐聚 问界成为话题中心
-	Title                 *string `json:"title,omitempty" xml:"title,omitempty"`
-	WebsiteAuthorityScore *int32  `json:"websiteAuthorityScore,omitempty" xml:"websiteAuthorityScore,omitempty"`
+	// {"genre":"NewsPortal"}
+	Tags map[string]interface{} `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The full URL pointed to by the search result.
+	//
+	// example:
+	//
+	// Industry leaders gather at the Shanghai Auto Show as AITO becomes the center of attention
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The static authority score, which is determined solely by the authority of the website itself and is independent of the query content.
+	//
+	// example:
+	//
+	// 3
+	WebsiteAuthorityScore *int32 `json:"websiteAuthorityScore,omitempty" xml:"websiteAuthorityScore,omitempty"`
 }
 
 func (s UnifiedPageItem) String() string {

@@ -16,8 +16,18 @@ type iSceneItem interface {
 }
 
 type SceneItem struct {
+	// The result details for vertical scenarios. Different scenarios return different JSON string structures.
+	//
+	// example:
+	//
+	// {"title":"London time","targetTimeZone":"Europe/London"}
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The result type for vertical scenarios, such as weather or time.
+	//
+	// example:
+	//
+	// time
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s SceneItem) String() string {

@@ -20,13 +20,13 @@ type iReadPageBasicResponseBody interface {
 }
 
 type ReadPageBasicResponseBody struct {
-	// Parsing result of the target URL
+	// The parsing result of the destination URL.
 	Data *ReadPageItem `json:"data,omitempty" xml:"data,omitempty"`
-	// Error code
+	// The error code.
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// Error message
+	// The error message.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Request ID. Provide this information when troubleshooting issues.
+	// The request ID. Provide this ID for troubleshooting.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

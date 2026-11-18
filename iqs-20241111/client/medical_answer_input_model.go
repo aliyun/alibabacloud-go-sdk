@@ -14,6 +14,11 @@ type iMedicalAnswerInput interface {
 }
 
 type MedicalAnswerInput struct {
+	// The medical question to be answered.
+	//
+	// example:
+	//
+	// What should I do for a stomachache?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 

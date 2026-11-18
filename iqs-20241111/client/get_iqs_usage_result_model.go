@@ -14,6 +14,7 @@ type iGetIqsUsageResult interface {
 }
 
 type GetIqsUsageResult struct {
+	// The daily call volume records.
 	Records []*GetIqsUsageResultRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 }
 
@@ -48,19 +49,84 @@ func (s *GetIqsUsageResult) Validate() error {
 }
 
 type GetIqsUsageResultRecords struct {
-	Api                *string `json:"api,omitempty" xml:"api,omitempty"`
-	BillingQps         *int32  `json:"billingQps,omitempty" xml:"billingQps,omitempty"`
-	Date               *string `json:"date,omitempty" xml:"date,omitempty"`
-	EngineType         *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	FailedCalls        *int32  `json:"failedCalls,omitempty" xml:"failedCalls,omitempty"`
-	LadderType         *string `json:"ladderType,omitempty" xml:"ladderType,omitempty"`
-	MainAccountId      *string `json:"mainAccountId,omitempty" xml:"mainAccountId,omitempty"`
-	SubAccountId       *string `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
-	SuccessCalls       *int32  `json:"successCalls,omitempty" xml:"successCalls,omitempty"`
-	TotalBillStatCalls *int32  `json:"totalBillStatCalls,omitempty" xml:"totalBillStatCalls,omitempty"`
-	TotalCalls         *int32  `json:"totalCalls,omitempty" xml:"totalCalls,omitempty"`
-	ValueAddedAdvanced *int32  `json:"valueAddedAdvanced,omitempty" xml:"valueAddedAdvanced,omitempty"`
-	ValueAddedSummary  *int32  `json:"valueAddedSummary,omitempty" xml:"valueAddedSummary,omitempty"`
+	// The API name.
+	//
+	// example:
+	//
+	// UnifiedSearch
+	Api *string `json:"api,omitempty" xml:"api,omitempty"`
+	// The queries per second (QPS) for tiered billing.
+	//
+	// example:
+	//
+	// 30
+	BillingQps *int32 `json:"billingQps,omitempty" xml:"billingQps,omitempty"`
+	// The metering date in the YYYYMMDD format.
+	//
+	// example:
+	//
+	// 20250716
+	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The search engine type.
+	//
+	// example:
+	//
+	// Generic
+	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	// The number of failed calls.
+	//
+	// example:
+	//
+	// 0
+	FailedCalls *int32 `json:"failedCalls,omitempty" xml:"failedCalls,omitempty"`
+	// The matched metering tier. Valid values: 1001, 1002, 1003, and 1004.
+	//
+	// example:
+	//
+	// 1001
+	LadderType *string `json:"ladderType,omitempty" xml:"ladderType,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 138608930******0
+	MainAccountId *string `json:"mainAccountId,omitempty" xml:"mainAccountId,omitempty"`
+	// The sub-account that initiates the call (RAM user or API key identifier).
+	//
+	// example:
+	//
+	// 2193843763***9272
+	SubAccountId *string `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
+	// The number of successful calls.
+	//
+	// example:
+	//
+	// 5
+	SuccessCalls *int32 `json:"successCalls,omitempty" xml:"successCalls,omitempty"`
+	// The total number of calls.
+	//
+	// example:
+	//
+	// 5
+	TotalBillStatCalls *int32 `json:"totalBillStatCalls,omitempty" xml:"totalBillStatCalls,omitempty"`
+	// The total number of calls.
+	//
+	// example:
+	//
+	// 5
+	TotalCalls *int32 `json:"totalCalls,omitempty" xml:"totalCalls,omitempty"`
+	// The value-added package usage for calling enhanced APIs.
+	//
+	// example:
+	//
+	// 5
+	ValueAddedAdvanced *int32 `json:"valueAddedAdvanced,omitempty" xml:"valueAddedAdvanced,omitempty"`
+	// The number of value-added package calls used for the summarization feature.
+	//
+	// example:
+	//
+	// 5
+	ValueAddedSummary *int32 `json:"valueAddedSummary,omitempty" xml:"valueAddedSummary,omitempty"`
 }
 
 func (s GetIqsUsageResultRecords) String() string {

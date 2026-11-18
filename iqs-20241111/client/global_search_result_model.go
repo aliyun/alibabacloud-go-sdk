@@ -22,17 +22,17 @@ type iGlobalSearchResult interface {
 }
 
 type GlobalSearchResult struct {
-	// The list of web page content.
+	// The web page content list.
 	PageItems []*GlobalPageItem `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
 	// The query context.
 	QueryContext *GlobalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
-	// The request ID.
+	// requestId
 	//
 	// example:
 	//
 	// 123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The scenario-specific vertical API recall results.
+	// The scenario-specific vertical API recall.
 	SceneItems []*GlobalSceneItem `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
 	// The search information.
 	SearchInformation *GlobalSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`

@@ -34,41 +34,49 @@ type iGenericSearchRequest interface {
 }
 
 type GenericSearchRequest struct {
+	// The advanced search parameters. Filters search results by the start and end dates of the webpage publication time. The date format is YYYY-MM-DD. This parameter takes precedence over timeRange.
+	//
+	// example:
+	//
+	// {"startPublishedDate":"2025-07-01","endPublishedDate":"2025-07-31"}
 	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
-	EnableRerank   *bool                  `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
-	// The industry. After you specify an industry, only site content related to the specified industry is recalled. Separate multiple industries with commas.
+	// Specifies whether to rerank the search results. Default value: true.
+	EnableRerank *bool `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
+	// The industry. If specified, only site content restricted to the specified industries is recalled. Separate multiple industries with commas.
+	//
+	// example:
+	//
+	// finance,law
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number. The value starts from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The search keyword.
+	// The search keywords.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 苹果手机
-	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
-	ReturnMainText     *bool   `json:"returnMainText,omitempty" xml:"returnMainText,omitempty"`
-	ReturnMarkdownText *bool   `json:"returnMarkdownText,omitempty" xml:"returnMarkdownText,omitempty"`
-	ReturnRichMainBody *bool   `json:"returnRichMainBody,omitempty" xml:"returnRichMainBody,omitempty"`
-	ReturnSummary      *bool   `json:"returnSummary,omitempty" xml:"returnSummary,omitempty"`
-	// The session ID for multi-turn interaction.
+	// iPhone
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to return the main text of the webpage. Default value: true.
+	ReturnMainText *bool `json:"returnMainText,omitempty" xml:"returnMainText,omitempty"`
+	// Specifies whether to return the webpage content in Markdown format. Default value: true.
+	ReturnMarkdownText *bool `json:"returnMarkdownText,omitempty" xml:"returnMarkdownText,omitempty"`
+	// Specifies whether to return the full rich text body. Default value: false.
+	ReturnRichMainBody *bool `json:"returnRichMainBody,omitempty" xml:"returnRichMainBody,omitempty"`
+	// Specifies whether to return the enhanced summary. Default value: true.
+	ReturnSummary *bool `json:"returnSummary,omitempty" xml:"returnSummary,omitempty"`
+	// The session ID for multi-turn interactions.
+	//
+	// example:
+	//
+	// 282j3h3434j23hdw9sd72j3
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The time range for filtering results. Valid values:
-	//
-	// - OneDay: last day
-	//
-	// - OneWeek: last week
-	//
-	// - OneMonth: last month
-	//
-	// - OneYear: last year
-	//
-	// - NoLimit: no limit.
+	// The time range.
 	//
 	// example:
 	//

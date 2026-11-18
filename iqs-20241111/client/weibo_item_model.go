@@ -26,38 +26,55 @@ type iWeiboItem interface {
 }
 
 type WeiboItem struct {
+	// The search result template. Fixed as weibo_strong for Weibo scenarios.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// weibo_strong
 	CardType *string `json:"cardType,omitempty" xml:"cardType,omitempty"`
+	// The Weibo homepage of the user.
+	//
 	// example:
 	//
 	// https://m.weibo.cn/u/7761793874?luicode=20000061&lfid=5024099350350075
 	HomepageLink *string `json:"homepageLink,omitempty" xml:"homepageLink,omitempty"`
+	// The content of the Weibo post.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 【小调查：你会买<em>小米SU7</em>吗？】#小米SU7路测覆盖300多城市#4月17日，@小米汽车 发文称SU7道路测试覆盖全国300多个城市，涵盖极寒，极热天气，总里程数高达540万公里，目前仍在进行中。  网页链接
-	HtmlSnippet *string   `json:"htmlSnippet,omitempty" xml:"htmlSnippet,omitempty"`
-	Images      []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// [Quick poll: Would you buy the Xiaomi SU7?]
+	//
+	// #Xiaomi SU7 road tests now cover more than 300 cities#
+	//
+	// On April 17, @Xiaomi Auto posted that SU7 road testing now covers over 300 cities nationwide, including tests in extremely cold and extremely hot weather. The total test mileage has reached 5.4 million kilometers and is still ongoing. Web link
+	HtmlSnippet *string `json:"htmlSnippet,omitempty" xml:"htmlSnippet,omitempty"`
+	// The image information.
+	Images []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// The Weibo URL of the search result.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://m.weibo.cn/detail/5024099350350075?wm=90194_90009
 	Link *string `json:"link,omitempty" xml:"link,omitempty"`
+	// The publish time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1小时前
+	// An hour ago
 	PublishDisplayTime *string `json:"publishDisplayTime,omitempty" xml:"publishDisplayTime,omitempty"`
+	// The Weibo username.
+	//
 	// example:
 	//
-	// 白鹿科技
+	// Bailu Tech
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 

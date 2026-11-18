@@ -14,6 +14,7 @@ type iCommonQueryBySceneRequest interface {
 }
 
 type CommonQueryBySceneRequest struct {
+	// The request body.
 	Body *CommonAgentQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 

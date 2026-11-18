@@ -16,8 +16,22 @@ type iMedicalKnowledgeInfo interface {
 }
 
 type MedicalKnowledgeInfo struct {
+	// The structured text composed of the entity name and its properties.
+	//
+	// example:
+	//
+	// Entity: Amoxicillin capsules
+	//
+	// - Property[Exact active ingredient]: Amoxicillin
+	//
+	// - Property[Manufactured dosage form]: Oral capsule
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Url     *string `json:"url,omitempty" xml:"url,omitempty"`
+	// The source link of the entity property content.
+	//
+	// example:
+	//
+	// https://p.example.cn/0387f345/index?struct_id=VdB%2BLV7w7lHHEp
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s MedicalKnowledgeInfo) String() string {

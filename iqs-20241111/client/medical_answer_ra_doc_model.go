@@ -20,10 +20,30 @@ type iMedicalAnswerRaDoc interface {
 }
 
 type MedicalAnswerRaDoc struct {
+	// The content summary of the reference source. Summaries can be returned for medical web pages and drug instructions.
+	//
+	// example:
+	//
+	// Stomach pain can be caused by various factors, including gastrointestinal spasms, inflammation, urinary tract stones, and menstrual pain. It can be relieved by applying a warm compress to the abdomen or treated by taking pain-relieving medication
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	RawUrl  *string `json:"rawUrl,omitempty" xml:"rawUrl,omitempty"`
-	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The URL of the reference source. This can be an empty string for sources such as papers, clinical guidelines, and books.
+	//
+	// example:
+	//
+	// https://www.example.com/article/4CD364Mm8hh.html
+	RawUrl *string `json:"rawUrl,omitempty" xml:"rawUrl,omitempty"`
+	// The title of the reference source.
+	//
+	// example:
+	//
+	// How to quickly and easily relieve stomach pain
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the reference source, such as medical web pages, medical books, papers, or clinical guidelines.
+	//
+	// example:
+	//
+	// med_web_source
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s MedicalAnswerRaDoc) String() string {

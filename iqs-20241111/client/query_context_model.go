@@ -16,8 +16,10 @@ type iQueryContext interface {
 }
 
 type QueryContext struct {
+	// The initial query condition.
 	OriginalQuery *QueryContextOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty" type:"Struct"`
-	Rewrite       *QueryContextRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty" type:"Struct"`
+	// The query rewrite information.
+	Rewrite *QueryContextRewrite `json:"rewrite,omitempty" xml:"rewrite,omitempty" type:"Struct"`
 }
 
 func (s QueryContext) String() string {
@@ -61,9 +63,29 @@ func (s *QueryContext) Validate() error {
 }
 
 type QueryContextOriginalQuery struct {
-	Industry  *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	Page      *string `json:"page,omitempty" xml:"page,omitempty"`
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The industry classification of the original request.
+	//
+	// example:
+	//
+	// medical
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// The page number of the original request.
+	//
+	// example:
+	//
+	// 1
+	Page *string `json:"page,omitempty" xml:"page,omitempty"`
+	// The query content of the original request.
+	//
+	// example:
+	//
+	// Apsara Conference
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The time range of the original request. Valid values: OneDay, OneWeek, OneMonth, OneYear, and NoLimit.
+	//
+	// example:
+	//
+	// NoLimit
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
@@ -116,7 +138,13 @@ func (s *QueryContextOriginalQuery) Validate() error {
 }
 
 type QueryContextRewrite struct {
-	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Specifies whether query rewrite is enabled.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The rewritten time range. An empty value indicates that no rewrite is performed or the rewrite result is the same as the original result.
+	//
+	// example:
+	//
+	// OneYear
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 

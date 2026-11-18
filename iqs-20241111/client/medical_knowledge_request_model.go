@@ -14,7 +14,7 @@ type iMedicalKnowledgeRequest interface {
 }
 
 type MedicalKnowledgeRequest struct {
-	// Health Graph query conditions
+	// The query conditions for the health graph.
 	Body *MedicalKnowInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

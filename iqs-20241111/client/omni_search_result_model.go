@@ -16,10 +16,14 @@ type iOmniSearchResult interface {
 }
 
 type OmniSearchResult struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 35E5608A-A737-2038-AFB6-D9D34C6BFD9E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

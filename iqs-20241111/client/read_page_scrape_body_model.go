@@ -26,35 +26,37 @@ type iReadPageScrapeBody interface {
 }
 
 type ReadPageScrapeBody struct {
-	// The format of the parsing result.
+	// The formats of the parsed result. Valid values:
 	//
-	// - rawHtml: the HTML of the target site.
+	// - rawHtml: The HTML of the target site.
 	//
-	// - html: the page content processed based on readabilityMode.
+	// - html: The page content processed based on the readabilityMode.
 	//
-	// - markdown: the Markdown content converted from the HTML.
+	// - markdown: The Markdown content converted from the HTML.
 	//
-	// - text: the text content extracted from the HTML.
+	// - text: The text content in the HTML.
 	//
-	// - screenshot: a screenshot of the target site.
+	// - screenshot: The screenshot of the target site.
 	Formats []*string `json:"formats,omitempty" xml:"formats,omitempty" type:"Repeated"`
-	// This parameter does not need to be specified.
+	// This parameter is not required.
 	//
 	// example:
 	//
 	// null
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// The maximum cache validity period. Unit: seconds. Default value: 1296000.
+	// The maximum cache duration, in seconds.
 	//
-	// 1. If the cache duration is less than the value of maxAge, cached content is returned.
+	// - If the cache duration is less than the maxAge value, the cached content is returned.
 	//
-	// 2. If maxAge is set to 0, caching is not used.
+	// - If the maxAge value is set to 0, the cache is not used.
+	//
+	// Default value: 1296000.
 	//
 	// example:
 	//
 	// 1296000
 	MaxAge *int32 `json:"maxAge,omitempty" xml:"maxAge,omitempty"`
-	// The timeout period for waiting for the target site resources to fully load. The value of pageTimeout must be less than the value of timeout.
+	// The timeout period for waiting for the resources of the target site to fully load. The pageTimeout value must be less than the timeout value.
 	//
 	// Default value: 15000.
 	//
@@ -62,11 +64,11 @@ type ReadPageScrapeBody struct {
 	//
 	// 15000
 	PageTimeout *int32 `json:"pageTimeout,omitempty" xml:"pageTimeout,omitempty"`
-	// The readability configuration for the parsing result.
+	// The readability configuration of the parsed result.
 	Readability *ReadPageScrapeBodyReadability `json:"readability,omitempty" xml:"readability,omitempty" type:"Struct"`
-	// The end-to-end processing timeout period. Unit: ms.
+	// The end-to-end processing timeout period, in milliseconds.
 	//
-	// Valid values: [0, 180000].
+	// Valid values: 0 to 180000.
 	//
 	// Default value: 60000.
 	//
@@ -74,7 +76,7 @@ type ReadPageScrapeBody struct {
 	//
 	// 60000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The target URL to parse. The URL must start with http:// or https://.
+	// The target URL to parse. It must start with http:// or https://.
 	//
 	// This parameter is required.
 	//
@@ -165,29 +167,31 @@ func (s *ReadPageScrapeBody) Validate() error {
 }
 
 type ReadPageScrapeBodyReadability struct {
-	// 是否剔除所有图片
+	// Specifies whether to remove all images.
 	//
-	// 默认值：false
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	ExcludeAllImages *bool `json:"excludeAllImages,omitempty" xml:"excludeAllImages,omitempty"`
-	// 是否剔除所有链接
+	// Specifies whether to remove all links.
 	//
-	// 默认值：false
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	ExcludeAllLinks *bool `json:"excludeAllLinks,omitempty" xml:"excludeAllLinks,omitempty"`
-	// 指定排除的标签
+	// The tags to exclude.
 	ExcludedTags []*string `json:"excludedTags,omitempty" xml:"excludedTags,omitempty" type:"Repeated"`
-	// none：不删除信息，默认为 none
+	// The readability mode. Valid values:
 	//
-	// normal: 基于自研算法，剔除目标页面无关信息（页头/页脚，导航等）
+	// - none: Does not remove any information. This is the default value.
 	//
-	// article: 基于自研算法，获取站点主要正文内容(适用于博客、新闻站点，不适用于目录页、导航页)
+	// - normal: Removes irrelevant information from the target page, such as headers, footers, and navigation elements, based on a proprietary algorithm.
+	//
+	// - article: Extracts the main body content of the site based on a proprietary algorithm. This mode is suitable for blogs and news sites, but not for directory or navigation pages.
 	//
 	// example:
 	//

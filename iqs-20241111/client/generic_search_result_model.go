@@ -24,15 +24,22 @@ type iGenericSearchResult interface {
 }
 
 type GenericSearchResult struct {
-	PageItems    []*ScorePageItem `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
-	QueryContext *QueryContext    `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// The web content list.
+	PageItems []*ScorePageItem `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
+	// The query context information.
+	QueryContext *QueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// requestId
+	//
 	// example:
 	//
 	// 123456
-	RequestId         *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SceneItems        []*SceneItem       `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of scenario-specific query results, such as structured results for time and weather.
+	SceneItems []*SceneItem `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
+	// The search information.
 	SearchInformation *SearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
-	WeiboItems        []*WeiboItem       `json:"weiboItems,omitempty" xml:"weiboItems,omitempty" type:"Repeated"`
+	// The Weibo list.
+	WeiboItems []*WeiboItem `json:"weiboItems,omitempty" xml:"weiboItems,omitempty" type:"Repeated"`
 }
 
 func (s GenericSearchResult) String() string {

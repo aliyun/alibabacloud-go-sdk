@@ -20,15 +20,32 @@ type iOmniSearchQuery interface {
 }
 
 type OmniSearchQuery struct {
+	// The request parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 今天杭州天气
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	// What is the weather in Hangzhou today?
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The session ID. This is a reserved field and is not currently supported.
+	//
+	// example:
+	//
+	// session_id_123
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	UseCot    *bool   `json:"useCot,omitempty" xml:"useCot,omitempty"`
-	UseModel  *string `json:"useModel,omitempty" xml:"useModel,omitempty"`
+	// Specifies whether to use CoT. This is a reserved field and is not currently supported.
+	//
+	// example:
+	//
+	// false
+	UseCot *bool `json:"useCot,omitempty" xml:"useCot,omitempty"`
+	// The model version to use. Valid values: pro for the deep version, and lite for the fast version.
+	//
+	// example:
+	//
+	// pro
+	UseModel *string `json:"useModel,omitempty" xml:"useModel,omitempty"`
 }
 
 func (s OmniSearchQuery) String() string {

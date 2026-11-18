@@ -18,9 +18,9 @@ type iAiSearchResponseBody interface {
 }
 
 type AiSearchResponseBody struct {
-	// The header of the response.
+	// The header of the returned result.
 	Header *AiSearchResponseBodyHeader `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
-	// The payload of the response. The value is a JSON structure that varies by event type.
+	// The payload of the returned result in JSON format. The structure varies based on the event.
 	//
 	// example:
 	//
@@ -93,7 +93,7 @@ type AiSearchResponseBodyHeader struct {
 	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
 	// The query context.
 	QueryContext *AiSearchResponseBodyHeaderQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty" type:"Struct"`
-	// The response time, in milliseconds.
+	// The time taken (ms).
 	//
 	// example:
 	//
@@ -203,12 +203,28 @@ func (s *AiSearchResponseBodyHeaderQueryContext) Validate() error {
 
 type AiSearchResponseBodyHeaderQueryContextOriginalQuery struct {
 	// The industry.
+	//
+	// example:
+	//
+	// medical
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The query condition.
+	// The query conditions.
+	//
+	// example:
+	//
+	// Hangzhou cuisine
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The time range.
+	//
+	// example:
+	//
+	// NoLimit
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
@@ -261,9 +277,13 @@ func (s *AiSearchResponseBodyHeaderQueryContextOriginalQuery) Validate() error {
 }
 
 type AiSearchResponseBodyHeaderQueryContextRewrite struct {
-	// Indicates whether query rewriting is enabled.
+	// Specifies whether query rewrite is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The rewritten time range.
+	//
+	// example:
+	//
+	// OneMonth
 	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 

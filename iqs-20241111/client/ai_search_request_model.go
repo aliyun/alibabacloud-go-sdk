@@ -22,33 +22,33 @@ type iAiSearchRequest interface {
 }
 
 type AiSearchRequest struct {
-	// The industry. After you specify an industry, only content from websites within the specified industry is recalled. Separate multiple industries with commas.
+	// The industry. If specified, only site content restricted to the specified industry is recalled. Separate multiple industries with commas.
 	//
 	// example:
 	//
 	// finance
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number. Starts from 1.
 	//
 	// example:
 	//
-	// {\\"total_count\\": 6851, \\"page_number\\": 54, \\"page_size\\": 100}
+	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The query to search for.
+	// The search query.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 苹果手机
+	// iPhone
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The time range for filtering web page publication dates.
+	// The query range for the web page publish time.
 	//
 	// example:
 	//
 	// 17dc8bcd-f34a-46d1-a7a3-0fa3d1ce3824
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session ID for multi-turn interactions.
+	// The session ID for multi-turn interaction.
 	//
 	// example:
 	//

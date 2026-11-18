@@ -16,8 +16,26 @@ type iMedicalKnowInput interface {
 }
 
 type MedicalKnowInput struct {
+	// The medical, drug, disease, or food entity whose properties are to be queried.
+	//
+	// example:
+	//
+	// Amoxicillin Capsules
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The entity query type. Valid values:
+	//
+	// - finding: disease
+	//
+	// - food: food
+	//
+	// - medicine: medicine
+	//
+	// If this parameter is not specified, the type is automatically identified.
+	//
+	// example:
+	//
+	// medicine
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s MedicalKnowInput) String() string {

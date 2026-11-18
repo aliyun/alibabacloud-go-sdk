@@ -20,10 +20,30 @@ type iCommonAgentQuery interface {
 }
 
 type CommonAgentQuery struct {
-	Limit              *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The maximum number of place results to return. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The natural language question used to retrieve nearby places.
+	//
+	// example:
+	//
+	// High-end hotels within 5 km of Lingyin Temple in Hangzhou
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The search scenario code. Valid values: hotels (hotel), attractions (attraction), restaurants (restaurant), and entertainment (leisure and entertainment). If you do not specify this parameter, the model identifies the scenario.
+	//
+	// example:
+	//
+	// hotels
 	QuerySceneEnumCode *string `json:"querySceneEnumCode,omitempty" xml:"querySceneEnumCode,omitempty"`
-	SearchModel        *string `json:"searchModel,omitempty" xml:"searchModel,omitempty"`
+	// The search result mode. Valid values: single (returns simplified fields) and normal (returns all fields). Default value: normal.
+	//
+	// example:
+	//
+	// normal
+	SearchModel *string `json:"searchModel,omitempty" xml:"searchModel,omitempty"`
 }
 
 func (s CommonAgentQuery) String() string {

@@ -20,15 +20,19 @@ type iGenericAdvancedSearchRequest interface {
 }
 
 type GenericAdvancedSearchRequest struct {
-	// The industry. After you specify this parameter, only content from websites within the specified industries is recalled. Separate multiple industries with commas.
+	// The industry. If you specify this parameter, only website content specific to the specified industry is recalled. Separate multiple industries with commas.
+	//
+	// example:
+	//
+	// medical
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
-	// The query text to search for.
+	// The search query.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 苹果手机
+	// iPhone
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The session ID for multi-turn interactions.
 	//
@@ -36,7 +40,7 @@ type GenericAdvancedSearchRequest struct {
 	//
 	// job-4065bee3-e7aa-49fc-aad2-a8e3a7fd6acd
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The time range for filtering web pages by publish time.
+	// The relative query range for the web page publication time. Valid values: OneDay, OneWeek, OneMonth, OneYear, and NoLimit. A value of NoLimit indicates that no time limit is applied.
 	//
 	// example:
 	//

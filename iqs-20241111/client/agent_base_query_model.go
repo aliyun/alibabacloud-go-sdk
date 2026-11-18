@@ -14,6 +14,11 @@ type iAgentBaseQuery interface {
 }
 
 type AgentBaseQuery struct {
+	// The natural language question used to retrieve nearby locations.
+	//
+	// example:
+	//
+	// Luxury hotels within 5 km of Lingyin Temple in Hangzhou
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
