@@ -333,6 +333,76 @@ func (client *Client) CreateInfiniteCanvasWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Generates OSS upload credentials for client-side direct upload without registering media assets or creating media asset records.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API operation generates temporary OSS upload credentials so that clients can directly upload files to a specified OSS bucket.
+//
+// - The `FileExt` parameter is required and specifies the file name extension of the file to be uploaded, such as mp4 or wav. Do not include the dot.
+//
+// - The `FileType` parameter is optional and defaults to `Media`. It affects the path segment in the returned `ObjectKey`.
+//
+// @param request - CreateOssUploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOssUploadResponse
+func (client *Client) CreateOssUploadWithContext(ctx context.Context, request *CreateOssUploadRequest, runtime *dara.RuntimeOptions) (_result *CreateOssUploadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
+	}
+
+	if !dara.IsNil(request.CredentialType) {
+		query["CredentialType"] = request.CredentialType
+	}
+
+	if !dara.IsNil(request.FileExt) {
+		query["FileExt"] = request.FileExt
+	}
+
+	if !dara.IsNil(request.FileType) {
+		query["FileType"] = request.FileType
+	}
+
+	if !dara.IsNil(request.TargetBucket) {
+		query["TargetBucket"] = request.TargetBucket
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOssUpload"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOssUploadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a project.
 //
 // Description:
@@ -375,6 +445,94 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or overwrites a media asset for upload and obtains upload credentials.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation supports two modes: creating a new media asset and overwriting an existing media asset.
+//
+// - When creating a new media asset, the `FileInfo` and `MediaMetaData` parameters are required.
+//
+// - When overwriting an existing media asset, you must set `Overwrite` to true and provide `MediaId`.
+//
+// - You can specify the credential type by using `CredentialType`. The default value is STS_TOKEN.
+//
+// @param request - CreateUploadMediaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUploadMediaResponse
+func (client *Client) CreateUploadMediaWithContext(ctx context.Context, request *CreateUploadMediaRequest, runtime *dara.RuntimeOptions) (_result *CreateUploadMediaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialType) {
+		query["CredentialType"] = request.CredentialType
+	}
+
+	if !dara.IsNil(request.EntityId) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.FileInfo) {
+		query["FileInfo"] = request.FileInfo
+	}
+
+	if !dara.IsNil(request.MediaId) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !dara.IsNil(request.MediaMetaData) {
+		query["MediaMetaData"] = request.MediaMetaData
+	}
+
+	if !dara.IsNil(request.Overwrite) {
+		query["Overwrite"] = request.Overwrite
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.StorageLocation) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUploadMedia"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUploadMediaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1736,6 +1894,66 @@ func (client *Client) ListInfiniteCanvasesWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInfiniteCanvasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a paginated list of media folders in a specified project.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation retrieves a list of all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
+//
+// - If `ProductionId` is not provided, the default project of the current account is used.
+//
+// @param request - ListMediaFoldersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMediaFoldersResponse
+func (client *Client) ListMediaFoldersWithContext(ctx context.Context, request *ListMediaFoldersRequest, runtime *dara.RuntimeOptions) (_result *ListMediaFoldersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductionId) {
+		query["ProductionId"] = request.ProductionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMediaFolders"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMediaFoldersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
