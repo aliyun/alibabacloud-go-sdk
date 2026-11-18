@@ -16,7 +16,7 @@ type iRemoveTaskInstanceDependenciesResponseBody interface {
 }
 
 type RemoveTaskInstanceDependenciesResponseBody struct {
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	// The ID of the request. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

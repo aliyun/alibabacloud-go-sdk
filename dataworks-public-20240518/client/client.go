@@ -30363,11 +30363,11 @@ func (client *Client) RemoveKnowledgeBaseAdministrator(request *RemoveKnowledgeB
 
 // Summary:
 //
-// Removes multiple upstream dependencies from a node instance in a single call.
+// Removes multiple upstream dependencies of a node instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a later edition to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param tmpReq - RemoveTaskInstanceDependenciesRequest
 //
@@ -30427,11 +30427,11 @@ func (client *Client) RemoveTaskInstanceDependenciesWithOptions(tmpReq *RemoveTa
 
 // Summary:
 //
-// Removes multiple upstream dependencies from a node instance in a single call.
+// Removes multiple upstream dependencies of a node instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a later edition to use this operation.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param request - RemoveTaskInstanceDependenciesRequest
 //
@@ -31009,11 +31009,11 @@ func (client *Client) RerunWorkflowInstances(request *RerunWorkflowInstancesRequ
 
 // Summary:
 //
-// Resumes multiple paused task instances.
+// Resumes multiple paused node instances.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// DataWorks Basic Edition or later is required.
 //
 // @param tmpReq - ResumeTaskInstancesRequest
 //
@@ -31067,11 +31067,11 @@ func (client *Client) ResumeTaskInstancesWithOptions(tmpReq *ResumeTaskInstances
 
 // Summary:
 //
-// Resumes multiple paused task instances.
+// Resumes multiple paused node instances.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// DataWorks Basic Edition or later is required.
 //
 // @param request - ResumeTaskInstancesRequest
 //
@@ -38709,11 +38709,11 @@ func (client *Client) UpdateTaskAsync(request *UpdateTaskAsyncRequest) (_result 
 
 // Summary:
 //
-// Modifies the properties of multiple node instances, including the priority, scheduling resource group, and data source.
+// Updates the properties of multiple task instances in batches, including the priority, scheduling resource group, and data source.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this feature.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param tmpReq - UpdateTaskInstancesRequest
 //
@@ -38767,11 +38767,11 @@ func (client *Client) UpdateTaskInstancesWithOptions(tmpReq *UpdateTaskInstances
 
 // Summary:
 //
-// Modifies the properties of multiple node instances, including the priority, scheduling resource group, and data source.
+// Updates the properties of multiple task instances in batches, including the priority, scheduling resource group, and data source.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or higher to use this feature.
+// You must purchase DataWorks Basic Edition or later to use this operation.
 //
 // @param request - UpdateTaskInstancesRequest
 //

@@ -16,13 +16,13 @@ type iResumeTaskInstancesResponseBody interface {
 }
 
 type ResumeTaskInstancesResponseBody struct {
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The results of the batch operation. The results are returned as a map where the keys are task instance IDs and the values are the result details.
+	// The results of the batch operation. The results are returned as a map where the keys are node instance IDs and the values are the result details.
 	//
 	// example:
 	//

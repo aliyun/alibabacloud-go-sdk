@@ -16,13 +16,13 @@ type iUpdateTaskInstancesRequest interface {
 }
 
 type UpdateTaskInstancesRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of node instances.
+	// The list of task instances.
 	TaskInstances []*UpdateTaskInstancesRequestTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *UpdateTaskInstancesRequest) Validate() error {
 }
 
 type UpdateTaskInstancesRequestTaskInstances struct {
-	// The information about the associated data source.
+	// The associated data source information.
 	DataSource *UpdateTaskInstancesRequestTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The node instance ID.
 	//

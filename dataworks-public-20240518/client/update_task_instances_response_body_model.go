@@ -16,13 +16,13 @@ type iUpdateTaskInstancesResponseBody interface {
 }
 
 type UpdateTaskInstancesResponseBody struct {
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	// The ID of the request, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information of the batch operation. The data structure is a map, where the key is the node instance ID and the value is the result information.
+	// The result information of the batch operation. The structure is a map where the key is the task instance ID and the value is the result information.
 	//
 	// example:
 	//

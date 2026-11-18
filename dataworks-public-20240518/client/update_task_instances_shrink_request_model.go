@@ -16,13 +16,13 @@ type iUpdateTaskInstancesShrinkRequest interface {
 }
 
 type UpdateTaskInstancesShrinkRequest struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The list of node instances.
+	// The list of task instances.
 	TaskInstancesShrink *string `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty"`
 }
 

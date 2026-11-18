@@ -32,7 +32,7 @@ type RemoveTaskInstanceDependenciesShrinkRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list of upstream node instance IDs.
+	// The upstream node instance IDs.
 	UpstreamTaskInstanceIdsShrink *string `json:"UpstreamTaskInstanceIds,omitempty" xml:"UpstreamTaskInstanceIds,omitempty"`
 }
 
