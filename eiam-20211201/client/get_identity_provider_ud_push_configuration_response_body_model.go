@@ -16,13 +16,13 @@ type iGetIdentityProviderUdPushConfigurationResponseBody interface {
 }
 
 type GetIdentityProviderUdPushConfigurationResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Outbound synchronization configuration
+	// The outbound synchronization configuration.
 	UdPushConfiguration *GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfiguration `json:"UdPushConfiguration,omitempty" xml:"UdPushConfiguration,omitempty" type:"Struct"`
 }
 
@@ -62,35 +62,35 @@ func (s *GetIdentityProviderUdPushConfigurationResponseBody) Validate() error {
 }
 
 type GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfiguration struct {
-	// Identity provider ID
+	// The identity provider ID.
 	//
 	// example:
 	//
 	// idp_na2rzpyc67zr7ixdfy35zgrxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Incremental callback status. Indicates whether incremental callback data from the IdP is processed.
+	// Indicates whether to process incremental callback data from the IdP.
 	//
 	// example:
 	//
 	// enabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_7vdv3olzk36gymwtlaq6fixxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// LDAP synchronization-side configuration
+	// The LDAP synchronization configuration information.
 	LdapUdPushConfig *GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationLdapUdPushConfig `json:"LdapUdPushConfig,omitempty" xml:"LdapUdPushConfig,omitempty" type:"Struct"`
-	// Periodic verification configuration
+	// The periodic verification configuration.
 	PeriodicSyncConfig *GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
-	// Periodic verification status
+	// The periodic verification status.
 	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// Outbound synchronization configuration details
+	// The outbound synchronization configuration information.
 	UdSyncScopeConfigs []*GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -189,31 +189,31 @@ func (s *GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfiguration) 
 }
 
 type GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationLdapUdPushConfig struct {
-	// Organization ObjectClass
+	// The organization object class.
 	//
 	// example:
 	//
 	// ou,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
-	// Organization RDN
+	// The organization RDN.
 	//
 	// example:
 	//
 	// ou
 	OrganizationalUnitRdn *string `json:"OrganizationalUnitRdn,omitempty" xml:"OrganizationalUnitRdn,omitempty"`
-	// Password synchronization status
+	// Specifies whether to synchronize passwords.
 	//
 	// example:
 	//
 	// enabled
 	PasswordSyncStatus *string `json:"PasswordSyncStatus,omitempty" xml:"PasswordSyncStatus,omitempty"`
-	// User ObjectClass
+	// The user object class.
 	//
 	// example:
 	//
 	// user,top
 	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
-	// User RDN
+	// The user RDN.
 	//
 	// example:
 	//
@@ -279,15 +279,15 @@ func (s *GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationLd
 }
 
 type GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationPeriodicSyncConfig struct {
-	// Cron expression
+	// The cron expression.
 	//
 	// example:
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// Collection of time points
+	// The collection of time points.
 	PeriodicSyncTimes []*string `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
-	// Type
+	// The type.
 	//
 	// example:
 	//
@@ -335,9 +335,9 @@ func (s *GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationPe
 }
 
 type GetIdentityProviderUdPushConfigurationResponseBodyUdPushConfigurationUdSyncScopeConfigs struct {
-	// Source nodes for synchronization
+	// The source synchronization node.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// Target node for synchronization
+	// The target synchronization node.
 	//
 	// example:
 	//

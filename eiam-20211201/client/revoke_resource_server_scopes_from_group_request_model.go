@@ -20,7 +20,7 @@ type iRevokeResourceServerScopesFromGroupRequest interface {
 }
 
 type RevokeResourceServerScopesFromGroupRequest struct {
-	// The application ID of the ResourceServer.
+	// The application ID of the resource server.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RevokeResourceServerScopesFromGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of Scope permission IDs under the ResourceServer.
+	// The list of scope permission IDs under the resource server.
 	//
 	// This parameter is required.
 	//

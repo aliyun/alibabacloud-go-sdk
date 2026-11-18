@@ -24,11 +24,11 @@ type iListApplicationsForUserRequest interface {
 }
 
 type ListApplicationsForUserRequest struct {
-	// The list of application IDs. You can specify up to 100 application IDs in a single request.
+	// The list of application IDs. A single request supports up to 100 application IDs.
 	//
 	// example:
 	//
-	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
+	// ["app_mkv7rgt4d7i4u7zqtzev2mxxxx"]
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -44,7 +44,7 @@ type ListApplicationsForUserRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListApplicationsForUserRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query mode. Default value: **OnlyDirect**. Valid values:
 	//
-	// - OnlyDirect: Queries only the direct permissions of the account. Direct permissions are granted for applications that are directly assigned to the account.
+	// - OnlyDirect: Queries only the direct permissions of the account, which are the applications directly assigned to the account.
 	//
-	// - IncludeInherit: Queries both the direct and inherited permissions of the account. Inherited permissions are granted from the parent organizations or groups to which the account belongs.
+	// - IncludeInherit: Queries both the direct permissions and inherited permissions of the account. Inherited permissions refer to the permissions that the account inherits from its parent organizations or the groups to which it belongs.
 	//
 	// example:
 	//

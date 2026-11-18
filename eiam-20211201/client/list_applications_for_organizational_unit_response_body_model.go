@@ -18,7 +18,7 @@ type iListApplicationsForOrganizationalUnitResponseBody interface {
 }
 
 type ListApplicationsForOrganizationalUnitResponseBody struct {
-	// The list of applications that the organization is authorized to access.
+	// The list of authorized applications.
 	Applications []*ListApplicationsForOrganizationalUnitResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -133,7 +133,7 @@ func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) Validate
 }
 
 type ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles struct {
-	// The application role identifier.
+	// The application role ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDisableCustomPrivacyPolicyRequest interface {
 }
 
 type DisableCustomPrivacyPolicyRequest struct {
-	// The ID of the custom term.
+	// The ID of the custom terms.
 	//
 	// This parameter is required.
 	//

@@ -62,7 +62,7 @@ func (s *GetCredentialResponseBody) Validate() error {
 }
 
 type GetCredentialResponseBodyCredential struct {
-	// The creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type GetCredentialResponseBodyCredential struct {
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
-	// The credential sharing scope.
+	// The sharing scope of the credential.
 	//
 	// example:
 	//
 	// common
 	CredentialSharingScope *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// The subject ID to which the credential belongs.
+	// The ID of the subject to which the credential belongs.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetCredentialResponseBodyCredential struct {
 	//
 	// credential_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The exclusive account ID of the credential.
+	// The ID of the exclusive user for the credential.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type GetCredentialResponseBodyCredential struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time, in UNIX timestamp format. Unit: milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -351,7 +351,7 @@ func (s *GetCredentialResponseBodyCredential) Validate() error {
 }
 
 type GetCredentialResponseBodyCredentialCredentialContent struct {
-	// The credential content of the OAuth client authentication credential type.
+	// The credential content for the OAuth client authentication credential type.
 	OAuthClientContent *GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 

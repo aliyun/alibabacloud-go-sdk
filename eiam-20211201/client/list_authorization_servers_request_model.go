@@ -26,7 +26,7 @@ type ListAuthorizationServersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return per page in a paging query.
+	// The maximum number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//

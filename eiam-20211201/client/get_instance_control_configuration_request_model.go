@@ -16,7 +16,7 @@ type iGetInstanceControlConfigurationRequest interface {
 }
 
 type GetInstanceControlConfigurationRequest struct {
-	// The name of the instance control item.
+	// The name of the instance control element.
 	//
 	// example:
 	//

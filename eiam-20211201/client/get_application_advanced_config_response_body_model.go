@@ -16,7 +16,7 @@ type iGetApplicationAdvancedConfigResponseBody interface {
 }
 
 type GetApplicationAdvancedConfigResponseBody struct {
-	// The advanced configuration of the application.
+	// The advanced application configurations.
 	ApplicationAdvancedConfig *GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig `json:"ApplicationAdvancedConfig,omitempty" xml:"ApplicationAdvancedConfig,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,13 +68,13 @@ type GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The IDaaS EIAM instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The advanced configuration of the SCIM server.
+	// The SCIM server advanced configurations.
 	ScimServerAdvancedConfig *GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfigScimServerAdvancedConfig `json:"ScimServerAdvancedConfig,omitempty" xml:"ScimServerAdvancedConfig,omitempty" type:"Struct"`
 }
 
@@ -123,9 +123,9 @@ func (s *GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig) Vali
 }
 
 type GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfigScimServerAdvancedConfig struct {
-	// A list of IDs of the supported custom user fields.
+	// The list of supported user-defined field IDs.
 	SupportedUserCustomFieldIds []*string `json:"SupportedUserCustomFieldIds,omitempty" xml:"SupportedUserCustomFieldIds,omitempty" type:"Repeated"`
-	// The namespace of the user extension fields.
+	// The namespace for user extension fields.
 	//
 	// example:
 	//

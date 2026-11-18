@@ -24,13 +24,13 @@ type iListAuthorizationRulesForGroupResponseBody interface {
 type ListAuthorizationRulesForGroupResponseBody struct {
 	// The list of authorization rules.
 	AuthorizationRules []*ListAuthorizationRulesForGroupResponseBodyAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
-	// The number of entries per page for paging.
+	// The maximum number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call for the next query.
+	// The token returned in the current response, which is used to query the next page.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ func (s *ListAuthorizationRulesForGroupResponseBodyAuthorizationRules) Validate(
 }
 
 type ListAuthorizationRulesForGroupResponseBodyAuthorizationRulesValidityPeriod struct {
-	// The end time when the authorization expires. The value is a UNIX timestamp in milliseconds.
+	// The end time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time when the authorization takes effect. The value is a UNIX timestamp in milliseconds.
+	// The start time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

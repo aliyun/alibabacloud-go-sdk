@@ -24,7 +24,7 @@ type iListGroupsForResourceServerRequest interface {
 }
 
 type ListGroupsForResourceServerRequest struct {
-	// The ID of the resource server application.
+	// The application ID of the resource server.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type ListGroupsForResourceServerRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The filter conditions.
+	// The list of filter conditions.
 	Filter []*ListGroupsForResourceServerRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type ListGroupsForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The number of entries to return on each page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. You do not need to provide this parameter for the first request. For subsequent requests, set this to the `NextToken` value from the previous response.
+	// The next token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the scope.
+	// The scope ID.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *ListGroupsForResourceServerRequest) Validate() error {
 }
 
 type ListGroupsForResourceServerRequestFilter struct {
-	// The name of the filter condition. The only valid value is GroupIds.
+	// The name of the filter condition.
 	//
 	// example:
 	//
 	// GroupIds
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values for the filter condition.
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -62,15 +62,15 @@ func (s *GetAuthorizationResourceResponseBody) Validate() error {
 }
 
 type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
-	// The resource entity ID associated with the authorization resource.
+	// The ID of the resource entity associated with the authorization resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// The resource entity type associated with the authorization resource. Valid values:
+	// The type of the resource entity associated with the authorization resource. Valid values:
 	//
-	// - cloud_account_role: cloud role.
+	// - cloud_account_role: Cloud role.
 	//
 	// example:
 	//
@@ -88,15 +88,15 @@ type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The cloud account ID to which the resource entity associated with the authorization resource belongs.
+	// The ID of the cloud account to which the resource entity associated with the authorization resource belongs.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The condition restriction.
+	// The condition restrictions.
 	Condition *GetAuthorizationResourceResponseBodyAuthorizationResourceCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
-	// The creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The update time, in UNIX timestamp format. Unit: milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateCloudPermissionTemplateResponseBody interface {
 }
 
 type CreateCloudPermissionTemplateResponseBody struct {
-	// The ID of the permission template.
+	// The permission template ID.
 	//
 	// example:
 	//

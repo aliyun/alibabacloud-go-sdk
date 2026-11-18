@@ -28,7 +28,7 @@ type iListCloudPermissionTemplatesRequest interface {
 }
 
 type ListCloudPermissionTemplatesRequest struct {
-	// The cloud account ID.
+	// The ID of the cloud account.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListCloudPermissionTemplatesRequest struct {
 	//
 	// AdminAccess
 	CloudPermissionTemplateNamePrefix *string `json:"CloudPermissionTemplateNamePrefix,omitempty" xml:"CloudPermissionTemplateNamePrefix,omitempty"`
-	// Filters the results by permission template sharing mode. Valid values: shared and exclusive. If this parameter is not specified, no filtering is applied.
+	// Filters the results by permission template sharing mode. Valid values: shared and exclusive. If you do not specify this parameter, no filtering is applied.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListCloudPermissionTemplatesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for paging. Default value: 20. Maximum value: 100.
+	// The maximum number of entries to return per page in a paged query. This parameter is used for paging. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned from the previous API call.
+	// The query token, which is the value of the NextToken parameter returned by the previous API call.
 	//
 	// example:
 	//

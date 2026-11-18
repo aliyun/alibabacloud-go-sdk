@@ -24,13 +24,13 @@ type iListCloudAccountsResponseBody interface {
 type ListCloudAccountsResponseBody struct {
 	// The list of cloud accounts.
 	CloudAccounts []*ListCloudAccountsResponseBodyCloudAccounts `json:"CloudAccounts,omitempty" xml:"CloudAccounts,omitempty" type:"Repeated"`
-	// The number of rows per page for paging.
+	// The number of entries per page in paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned for this request.
+	// The token returned for the next query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAccountsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -125,11 +125,11 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	CloudAccountExternalId *string `json:"CloudAccountExternalId,omitempty" xml:"CloudAccountExternalId,omitempty"`
 	// The health status of the cloud account. Valid values:
 	//
-	// - healthy: Healthy.
+	// - healthy: healthy
 	//
-	// - unhealthy: Unhealthy.
+	// - unhealthy: unhealthy
 	//
-	// - unknown: Unknown.
+	// - unknown: unknown
 	//
 	// example:
 	//
@@ -137,35 +137,35 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	CloudAccountHealth *string `json:"CloudAccountHealth,omitempty" xml:"CloudAccountHealth,omitempty"`
 	// The health check result of the cloud account.
 	CloudAccountHealthCheckResult *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult `json:"CloudAccountHealthCheckResult,omitempty" xml:"CloudAccountHealthCheckResult,omitempty" type:"Struct"`
-	// The cloud account ID.
+	// The ID of the cloud account.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The cloud account name.
+	// The name of the cloud account.
 	//
 	// example:
 	//
 	// cloud_accout_xxxx
 	CloudAccountName *string `json:"CloudAccountName,omitempty" xml:"CloudAccountName,omitempty"`
-	// The identity provider name.
+	// The name of the identity provider.
 	//
 	// example:
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	// The cloud account site. Valid values:
+	// The site of the cloud account. Valid values:
 	//
-	// - china_mainland: The Chinese mainland.
+	// - china_mainland: the Chinese mainland
 	//
-	// - global: Global.
+	// - global: global
 	//
 	// example:
 	//
 	// china_mainland
 	CloudAccountSite *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
-	// The cloud account type. Valid values:
+	// The type of the cloud account. Valid values:
 	//
 	// - alibaba_cloud: Alibaba Cloud.
 	//
@@ -173,13 +173,13 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	//
 	// alibaba_cloud
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
-	// The creation time, in UNIX timestamp format, measured in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cloud account description.
+	// The description of the cloud account.
 	//
 	// example:
 	//
@@ -191,39 +191,39 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of associated privilege application IDs.
+	// The list of IDs of the associated privilege applications.
 	PrivilegeApplicationIds []*string `json:"PrivilegeApplicationIds,omitempty" xml:"PrivilegeApplicationIds,omitempty" type:"Repeated"`
-	// The reason for the privilege hosting or removal failure.
+	// The cause of the privilege hosting or removal failure.
 	PrivilegeHostingError *ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError `json:"PrivilegeHostingError,omitempty" xml:"PrivilegeHostingError,omitempty" type:"Struct"`
-	// The hosting state of the cloud account. The default value is unmanaged. Valid values:
+	// The hosting status of the cloud account. Default value: hosting_unmanaged. Valid values:
 	//
 	// - hosting_unmanaged: Unmanaged. The cloud account has not initiated hosting and is in the initial state.
 	//
-	// - hosting_pending: Hosting in progress. The hosting task has been submitted and is being executed asynchronously. Wait for the hosting process to complete before the final state is reached.
+	// - hosting_pending: Hosting. The hosting task has been submitted and is being executed asynchronously. Wait for the hosting process to complete before it enters the final state.
 	//
-	// - hosting_completed: Hosting completed. The cloud account hosting process was executed successfully, and the related permission templates and hosting bindings have taken effect.
+	// - hosting_completed: Hosting completed. The hosting process of the cloud account is executed successfully, and the relevant permission templates and hosting bindings have taken effect.
 	//
-	// - hosting_failed: Hosting failed. The hosting process encountered an exception. View the failure reason and re-initiate hosting.
+	// - hosting_failed: Hosting failed. The hosting process encounters an exception. You can view the cause of the failure and initiate hosting again.
 	//
-	// - hosting_removing: Removal in progress. The removal task has been submitted and is being executed asynchronously. Wait for the removal process to complete before the final state is reached.
+	// - hosting_removing: Removing. The task to remove hosting has been submitted and is being executed asynchronously. Wait for the removal process to complete before it enters the final state.
 	//
-	// - hosting_remove_failed: Removal failed. The removal process encountered an exception. View the failure reason and re-initiate removal.
+	// - hosting_remove_failed: Removal failed. The removal process encounters an exception. You can view the cause of the failure and initiate removal again.
 	//
 	// example:
 	//
 	// hosting_unmanaged
 	PrivilegeHostingState *string `json:"PrivilegeHostingState,omitempty" xml:"PrivilegeHostingState,omitempty"`
-	// The privilege switch status. Valid values:
+	// The status of the privilege switch. Valid values:
 	//
-	// - enabled: Enabled. The resource is active and can be used normally.
+	// - enabled: Enabled. The resource is in effect and can be used normally.
 	//
-	// - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore functionality.
+	// - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore the resource.
 	//
 	// example:
 	//
 	// enabled
 	PrivilegeStatus *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
-	// The last update time, in UNIX timestamp format, measured in milliseconds.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -398,9 +398,9 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) Validate() error {
 }
 
 type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult struct {
-	// The error reason. This field is returned when the health check status is unhealthy.
+	// The error cause. This field is returned only when the health check status is unhealthy.
 	ErrorReason *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The last check time, in UNIX timestamp format, measured in milliseconds.
+	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -408,9 +408,9 @@ type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult str
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
 	// The health check result of the cloud account. Valid values:
 	//
-	// - success: Succeeded.
+	// - success: success
 	//
-	// - failed: Failed.
+	// - failed: failed
 	//
 	// example:
 	//
@@ -469,7 +469,7 @@ type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErro
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//
@@ -508,13 +508,13 @@ func (s *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult
 }
 
 type ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError struct {
-	// The error code.
+	// The error code of the failure.
 	//
 	// example:
 	//
 	// Error
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message of the failure.
 	//
 	// example:
 	//

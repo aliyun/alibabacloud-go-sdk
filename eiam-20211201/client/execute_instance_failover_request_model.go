@@ -16,11 +16,7 @@ type iExecuteInstanceFailoverRequest interface {
 }
 
 type ExecuteInstanceFailoverRequest struct {
-  // The failover status. Valid values:
-  // 
-  // - inactive: The primary instance is active.
-  // 
-  // - active: The replica instance is active.
+  // The failover status.
   // 
   // This parameter is required.
   // 

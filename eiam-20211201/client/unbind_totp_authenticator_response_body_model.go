@@ -14,7 +14,7 @@ type iUnbindTotpAuthenticatorResponseBody interface {
 }
 
 type UnbindTotpAuthenticatorResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

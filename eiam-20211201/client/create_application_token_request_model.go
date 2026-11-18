@@ -36,7 +36,7 @@ type CreateApplicationTokenRequest struct {
 	//
 	// bearer_token
 	ApplicationTokenType *string `json:"ApplicationTokenType,omitempty" xml:"ApplicationTokenType,omitempty"`
-	// The expiration time. Specify a UNIX timestamp in milliseconds.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

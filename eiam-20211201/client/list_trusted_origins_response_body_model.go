@@ -22,13 +22,13 @@ type iListTrustedOriginsResponseBody interface {
 }
 
 type ListTrustedOriginsResponseBody struct {
-	// The maximum number of results per page that takes effect for this request.
+	// The actual maximum number of results per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page.
+	// The next token.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListTrustedOriginsResponseBody struct {
 	//
 	// 0441BD79-example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListTrustedOriginsResponseBody) Validate() error {
 }
 
 type ListTrustedOriginsResponseBodyTrustedOrigins struct {
-	// The creation time. The time is in RFC 3339 format and in the UTC time zone.
+	// The creation time. The time follows the RFC 3339 standard and is in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -147,7 +147,7 @@ type ListTrustedOriginsResponseBodyTrustedOrigins struct {
 	//
 	// example:
 	//
-	// Qoder Production Console
+	// Qoder production console
 	TrustOriginName *string `json:"TrustOriginName,omitempty" xml:"TrustOriginName,omitempty"`
 	// The trusted origin ID.
 	//
@@ -157,7 +157,7 @@ type ListTrustedOriginsResponseBodyTrustedOrigins struct {
 	TrustedOriginId *string `json:"TrustedOriginId,omitempty" xml:"TrustedOriginId,omitempty"`
 	// The trusted origin scene.
 	TrustedOriginScene []*string `json:"TrustedOriginScene,omitempty" xml:"TrustedOriginScene,omitempty" type:"Repeated"`
-	// The update time. The time is in RFC 3339 format and in the UTC time zone.
+	// The update time. The time follows the RFC 3339 standard and is in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

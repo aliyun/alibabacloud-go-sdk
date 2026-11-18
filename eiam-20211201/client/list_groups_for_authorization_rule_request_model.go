@@ -40,19 +40,19 @@ type ListGroupsForAuthorizationRuleRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records to return per page.
+	// The maximum number of entries to return per page.
 	//
-	// - If this parameter is not specified, the default value is 20.
+	// - Default value: 20.
 	//
-	// - The maximum value is 100.
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to identify the starting position of the next page.
+	// The token that indicates the starting position for the next page.
 	//
-	// - If this parameter is not specified, the query starts from the first page by default.
+	// - If this parameter is not specified, the query starts from the first page.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ func (s *ListGroupsForAuthorizationRuleRequest) Validate() error {
 type ListGroupsForAuthorizationRuleRequestFilter struct {
 	// The name of the filter field. Valid values:
 	//
-	// - GroupId: the group ID
+	// - GroupId: the group ID.
 	//
 	// example:
 	//

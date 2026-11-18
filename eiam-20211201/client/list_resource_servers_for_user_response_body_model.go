@@ -22,13 +22,13 @@ type iListResourceServersForUserResponseBody interface {
 }
 
 type ListResourceServersForUserResponseBody struct {
-	// The number of rows per page in a paged query.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page.
+	// The query token for the next page.
 	//
 	// example:
 	//
@@ -197,17 +197,13 @@ func (s *ListResourceServersForUserResponseBodyResourceServers) Validate() error
 }
 
 type ListResourceServersForUserResponseBodyResourceServersResourceServerScopes struct {
-	// Indicates whether direct authorization exists. Valid values:
-	//
-	// - true: Yes.
-	//
-	// - false: No.
+	// Indicates whether direct authorization exists.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// Indicates whether inherited authorization exists.
+	// Indicates whether inherited permissions exist.
 	//
 	// example:
 	//

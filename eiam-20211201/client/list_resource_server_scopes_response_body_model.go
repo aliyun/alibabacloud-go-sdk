@@ -24,7 +24,7 @@ type iListResourceServerScopesResponseBody interface {
 }
 
 type ListResourceServerScopesResponseBody struct {
-	// The number of entries per page in a paged query.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListResourceServerScopesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of scope permissions under the ResourceServer.
+	// The list of scope permissions under the resource server.
 	ResourceServerScopes []*ListResourceServerScopesResponseBodyResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -158,19 +158,19 @@ type ListResourceServerScopesResponseBodyResourceServerScopes struct {
 	//
 	// rss_xxxxxxxxxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The scope permission name.
+	// The name of the scope permission.
 	//
 	// example:
 	//
-	// 读取全部用户
+	// Read all users
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// The scope permission type.
+	// The type of the scope permission.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// The scope permission value.
+	// The value of the scope permission.
 	//
 	// example:
 	//

@@ -68,9 +68,9 @@ type GetCredentialProviderResponseBodyCredentialProvider struct {
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The configuration of the credential provider.
+	// The credential provider configuration.
 	CredentialProviderConfig *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
-	// The creation type of the credential provider. Valid values:
+	// The credential provider creation type. Valid values:
 	//
 	// - system_init: Created by the system.
 	//
@@ -86,23 +86,23 @@ type GetCredentialProviderResponseBodyCredentialProvider struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// The business identifier of the credential provider.
+	// The credential provider identifier.
 	//
 	// example:
 	//
 	// test_example_identifier
 	CredentialProviderIdentifier *string `json:"CredentialProviderIdentifier,omitempty" xml:"CredentialProviderIdentifier,omitempty"`
-	// The name of the credential provider.
+	// The credential provider name.
 	//
 	// example:
 	//
 	// test_example_name
 	CredentialProviderName *string `json:"CredentialProviderName,omitempty" xml:"CredentialProviderName,omitempty"`
-	// The type of the credential provider. Valid values:
+	// The credential provider type. Valid values:
 	//
-	// - oauth: OAuth credential provider.
+	// - oauth: OAuth credential provider
 	//
-	// - jwt: JWT credential provider.
+	// - jwt: JWT credential provider
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetCredentialProviderResponseBodyCredentialProvider struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the credential provider. Valid values:
+	// The credential provider status. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -259,9 +259,9 @@ type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig
 	JwtProviderConfig *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigJwtProviderConfig `json:"JwtProviderConfig,omitempty" xml:"JwtProviderConfig,omitempty" type:"Struct"`
 	// The configuration of the OAuth credential provider.
 	OAuthProviderConfig *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigOAuthProviderConfig `json:"OAuthProviderConfig,omitempty" xml:"OAuthProviderConfig,omitempty" type:"Struct"`
-	// The list of credential IDs that correspond to the sensitive configurations of the credential provider.
+	// The list of credential IDs for the sensitive configurations of the credential provider.
 	//
-	// > The system securely stores the sensitive configuration information of the credential provider in the form of credentials.
+	// > The system securely stores the sensitive configuration information of the credential provider as credentials.
 	ProviderCredentialIds []*string `json:"ProviderCredentialIds,omitempty" xml:"ProviderCredentialIds,omitempty" type:"Repeated"`
 }
 
@@ -317,31 +317,31 @@ func (s *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderCo
 type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigJwtProviderConfig struct {
 	// The list of allowed JWT issuers.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Indicates whether the JWT derived short token feature is enabled.
+	// Specifies whether the JWT derived short token capability is enabled.
 	//
 	// example:
 	//
 	// false
 	DerivedShortTokenEnabled *bool `json:"DerivedShortTokenEnabled,omitempty" xml:"DerivedShortTokenEnabled,omitempty"`
-	// The validity period of the JWT. Unit: seconds.
+	// The validity period of the JWT, in seconds.
 	//
 	// example:
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// Indicates whether JWT expiration cleanup is enabled.
+	// Specifies whether JWT expiration cleanup is enabled.
 	//
 	// example:
 	//
 	// true
 	ExpirationCleanupEnabled *bool `json:"ExpirationCleanupEnabled,omitempty" xml:"ExpirationCleanupEnabled,omitempty"`
-	// JWT issuer。
+	// The JWT issuer.
 	//
 	// example:
 	//
 	// https://test.issuer.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The JWKs endpoint URL.
+	// The JWKS endpoint address.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ func (s *GetCredentialProviderResponseBodyCredentialProviderCredentialProviderCo
 }
 
 type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfigOAuthProviderConfig struct {
-	// The authorization endpoint of the OAuth protocol.
+	// The authorization endpoint in the OAuth protocol.
 	//
 	// example:
 	//
@@ -432,7 +432,7 @@ type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig
 	//
 	// m2m
 	AuthorizationFlow *string `json:"AuthorizationFlow,omitempty" xml:"AuthorizationFlow,omitempty"`
-	// The client_id in the OAuth protocol, which is the client ID.
+	// The client ID in the OAuth protocol.
 	//
 	// example:
 	//
@@ -444,7 +444,7 @@ type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig
 	//
 	// https://example.com/.well-known/openid-configuration
 	DiscoveryUrl *string `json:"DiscoveryUrl,omitempty" xml:"DiscoveryUrl,omitempty"`
-	// The issuer endpoint of the OAuth protocol.
+	// The issuer endpoint in the OAuth protocol.
 	//
 	// example:
 	//
@@ -452,15 +452,15 @@ type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The algorithm used to calculate the code challenge in PKCE. Valid values:
 	//
-	// - S256.
+	// - S256: S256.
 	//
-	// - plain.
+	// - plain: plain.
 	//
 	// example:
 	//
 	// S256
 	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Indicates whether Proof Key for Code Exchange (PKCE) is enabled.
+	// Specifies whether PKCE is enabled.
 	//
 	// example:
 	//
@@ -484,9 +484,9 @@ type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig
 	//
 	// custom
 	ProviderVendor *string `json:"ProviderVendor,omitempty" xml:"ProviderVendor,omitempty"`
-	// The scope in the OAuth protocol, which specifies the permission scope.
+	// The scope in the OAuth protocol.
 	//
-	// > The scope configuration of the OAuth credential provider serves as the default value. If the scope parameter is not specified when you call the DeveloperAPI to obtain an OAuth access token, the scope configuration of the credential provider is used for token issuance.
+	// > The scope configuration of the OAuth credential provider serves as a fallback value. If the scope parameter is not specified when calling the Developer API to obtain an OAuth access token, the token is issued based on the scope configuration of the credential provider.
 	//
 	// 	Notice: Multiple scope values are separated by spaces.
 	//
@@ -500,7 +500,7 @@ type GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfig
 	//
 	// https://example.com/callback
 	SystemRedirectUri *string `json:"SystemRedirectUri,omitempty" xml:"SystemRedirectUri,omitempty"`
-	// The token endpoint of the OAuth protocol.
+	// The token endpoint in the OAuth protocol.
 	//
 	// example:
 	//

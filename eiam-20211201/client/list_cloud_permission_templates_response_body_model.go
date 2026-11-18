@@ -22,15 +22,15 @@ type iListCloudPermissionTemplatesResponseBody interface {
 }
 
 type ListCloudPermissionTemplatesResponseBody struct {
-	// The list of cloud permission templates.
+	// The list of permission templates.
 	CloudPermissionTemplates []*ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates `json:"CloudPermissionTemplates,omitempty" xml:"CloudPermissionTemplates,omitempty" type:"Repeated"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries per page during paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call for subsequent queries.
+	// The pagination token returned by the current request for subsequent queries.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudPermissionTemplatesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ func (s *ListCloudPermissionTemplatesResponseBody) Validate() error {
 }
 
 type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates struct {
-	// Specifies whether users are allowed to apply for the permission template.
+	// Specifies whether users are allowed to apply.
 	AllowRequest *bool `json:"AllowRequest,omitempty" xml:"AllowRequest,omitempty"`
-	// The applicable scope of the permission template.
+	// The application scope of the permission template.
 	ApplicableScope *ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesApplicableScope `json:"ApplicableScope,omitempty" xml:"ApplicableScope,omitempty" type:"Struct"`
-	// The ID of the cloud account to which the resource belongs.
+	// The ID of the associated cloud account.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates struct {
 	//
 	// shared
 	CloudPermissionTemplateSharingMode *string `json:"CloudPermissionTemplateSharingMode,omitempty" xml:"CloudPermissionTemplateSharingMode,omitempty"`
-	// The usage type of the permission template. Valid values: user (privilege escalation for human users) and application (privilege escalation for M2M applications).
+	// The usage type of the permission template. Valid values: user (privilege elevation for human users) and application (privilege elevation for M2M applications).
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates struct {
 	//
 	// carole_01kmek49aq4r8gxxxx
 	PermissionEntityId *string `json:"PermissionEntityId,omitempty" xml:"PermissionEntityId,omitempty"`
-	// The type of the permission entity. Fixed value: cloud_account_role.
+	// The type of the permission entity. Valid value: cloud_account_role.
 	//
 	// example:
 	//
@@ -416,17 +416,17 @@ func (s *ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates) Valid
 }
 
 type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesApplicableScope struct {
-	// The list of specified group IDs. This parameter has a value only when ScopeType is set to custom.
+	// The list of specified group IDs. This parameter is returned only when ScopeType is set to custom.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The list of specified organizational unit IDs. This parameter has a value only when ScopeType is set to custom.
+	// The list of specified organizational unit IDs. This parameter is returned only when ScopeType is set to custom.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The type of the applicable scope. Valid values: global and custom.
+	// The type of the application scope. Valid values: global and custom.
 	//
 	// example:
 	//
 	// custom
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The list of specified user IDs. This parameter has a value only when ScopeType is set to custom.
+	// The list of specified user IDs. This parameter is returned only when ScopeType is set to custom.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -489,7 +489,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermis
 	//
 	// example:
 	//
-	// John Doe
+	// Zhang San
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	// The type of the creator. Valid values: idaas_admin and idaas_user.
 	//
@@ -549,7 +549,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermis
 	//
 	// example:
 	//
-	// Failed to initialize the permission template. Try again later
+	// Permission template initialization failed. Try again later
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The initialization result. Valid values: success and failed.
 	//

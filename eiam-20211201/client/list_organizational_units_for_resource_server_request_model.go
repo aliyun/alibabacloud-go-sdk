@@ -24,7 +24,7 @@ type iListOrganizationalUnitsForResourceServerRequest interface {
 }
 
 type ListOrganizationalUnitsForResourceServerRequest struct {
-	// The ResourceServer application ID.
+	// The ID of the resource server application.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type ListOrganizationalUnitsForResourceServerRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of rows per page in a paged query.
+	// The number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token for the next page. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The permission ID.
+	// The scope ID.
 	//
 	// example:
 	//

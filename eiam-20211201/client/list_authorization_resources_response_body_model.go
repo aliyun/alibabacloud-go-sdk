@@ -24,13 +24,13 @@ type iListAuthorizationResourcesResponseBody interface {
 type ListAuthorizationResourcesResponseBody struct {
 	// The list of authorization resources.
 	AuthorizationResources []*ListAuthorizationResourcesResponseBodyAuthorizationResources `json:"AuthorizationResources,omitempty" xml:"AuthorizationResources,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page for paging in a paged query.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in the current response for the next paged query.
+	// The next token returned in the current response for the next paged query.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
 	// The type of the resource entity associated with the authorization resource. Valid values:
 	//
-	// - cloud_account_role: cloud role.
+	// - cloud_account_role: cloud role
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The ID of the cloud account to which the resource entity associated with the authorization resource belongs.
+	// The ID of the Alibaba Cloud account to which the resource entity associated with the authorization resource belongs.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ func (s *ListAuthorizationResourcesResponseBodyAuthorizationResources) Validate(
 }
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition struct {
-	// The effective condition when used as a credential.
+	// The effective conditions when the authorization resource is used as a credential.
 	CredentialCondition *ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition `json:"CredentialCondition,omitempty" xml:"CredentialCondition,omitempty" type:"Struct"`
 }
 
@@ -301,7 +301,7 @@ func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) 
 }
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition struct {
-	// Specifies whether same-name identity accounts are supported.
+	// Specifies whether identity accounts with the same name are supported.
 	//
 	// example:
 	//

@@ -76,7 +76,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider struc
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The federated trust source ID.
+	// The ID of the federated trust source.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider) 
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderCloudIdPProviderConfig struct {
-	// The identity provider ID.
+	// The ID of the identity provider.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderCl
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcProviderConfig struct {
-	// The audience list of the OIDC credential.
+	// The list of audiences for the OIDC credential.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
 	// The dynamically obtained JWKS.
 	//
@@ -314,7 +314,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcPr
 	//
 	// https://example.com
 	DynamicJwks *string `json:"DynamicJwks,omitempty" xml:"DynamicJwks,omitempty"`
-	// The token issuer identifier (Issuer).
+	// The issuer identifier of the token.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOi
 }
 
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfig struct {
-	// The PKCS7 certificate list.
+	// The list of PKCS7 certificates.
 	Certificates []*GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The CMS verification mode.
 	//
@@ -465,7 +465,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7P
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// The signature effective time. The value indicates the duration for which the signature is valid. Unit: seconds.
+	// The signature validity period. The value indicates the validity duration of the signature in seconds.
 	//
 	// example:
 	//
@@ -477,7 +477,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7P
 	//
 	// pkcs7.payload.jsonData.audience.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// The certificate trust anchor source.
+	// The source of the certificate trust anchor.
 	//
 	// example:
 	//
@@ -569,7 +569,7 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPk
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificates struct {
 	// The certificate metadata.
 	CertificateMetadata *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7ProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// The root certificate content.
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -579,7 +579,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7P
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The root certificate fingerprint.
+	// The fingerprint of the root certificate.
 	//
 	// example:
 	//
@@ -679,13 +679,13 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPk
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfig struct {
 	// The root certificate.
 	Certificates []*GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The method used to retrieve the root certificate.
+	// The method to obtain the root certificate.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition of the root certificate.
+	// The trust conditions for the root certificate.
 	//
 	// example:
 	//
@@ -744,7 +744,7 @@ func (s *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPr
 type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificates struct {
 	// The certificate metadata.
 	CertificateMetadata *GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivateCaProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// The root certificate content.
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -754,7 +754,7 @@ type GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPrivat
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The root certificate fingerprint.
+	// The fingerprint of the root certificate.
 	//
 	// example:
 	//

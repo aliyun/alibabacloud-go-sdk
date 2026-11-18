@@ -26,7 +26,7 @@ type ListApplicationsForOrganizationalUnitRequest struct {
 	//
 	// example:
 	//
-	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
+	// ["app_mkv7rgt4d7i4u7zqtzev2mxxxx"]
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The instance ID.
 	//

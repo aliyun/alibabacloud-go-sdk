@@ -26,19 +26,19 @@ type iListActionTrackEventTypesResponseBody interface {
 type ListActionTrackEventTypesResponseBody struct {
 	// The list of event types.
 	EventTypes []*ListActionTrackEventTypesResponseBodyEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The maximum number of entries per page for paging.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The next token.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token to retrieve the previous page of results.
+	// The previous token.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListActionTrackEventTypesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of items.
 	//
 	// example:
 	//

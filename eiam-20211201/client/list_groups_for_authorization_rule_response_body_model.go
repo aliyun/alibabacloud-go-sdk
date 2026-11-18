@@ -24,13 +24,13 @@ type iListGroupsForAuthorizationRuleResponseBody interface {
 type ListGroupsForAuthorizationRuleResponseBody struct {
 	// The list of groups.
 	Groups []*ListGroupsForAuthorizationRuleResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The maximum number of entries per page in a paging query.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The next token returned in the current response, which is used to query the next page.
+	// The token returned in the current response, which is used to query the next page.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListGroupsForAuthorizationRuleResponseBodyGroups struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// The validity period type of the relationship. Valid values:
+	// The validity type of the relationship. Valid values:
 	//
 	// - permanent: permanent
 	//
@@ -197,13 +197,13 @@ func (s *ListGroupsForAuthorizationRuleResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod struct {
-	// The effective end time. The value is a UNIX timestamp in milliseconds.
+	// The end time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The effective start time. The value is a UNIX timestamp in milliseconds.
+	// The start time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

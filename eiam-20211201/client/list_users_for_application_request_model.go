@@ -58,11 +58,11 @@ type ListUsersForApplicationRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of account IDs. You can specify up to 100 account IDs in a single operation.
+	// The list of user IDs. You can specify up to 100 user IDs in a single request.
 	//
 	// example:
 	//
-	// user_d6sbsuumeta4h66ec3il7yxxxx
+	// ["user_d6sbsuumeta4h66ec3il7yxxxx"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

@@ -42,13 +42,13 @@ type AuthorizeApplicationToUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of account IDs. A single operation supports a maximum of 100 account IDs.
+	// The list of account IDs. You can specify up to 100 account IDs in a single operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_d6sbsuumeta4h66ec3il7yxxxx
+	// ["user_d6sbsuumeta4h66ec3il7yxxxx"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

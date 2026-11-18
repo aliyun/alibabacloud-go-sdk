@@ -24,13 +24,13 @@ type iListCloudAccountResourcesForCloudPermissionTemplateResponseBody interface 
 type ListCloudAccountResourcesForCloudPermissionTemplateResponseBody struct {
 	// The list of cloud account resources.
 	CloudAccountResources []*ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccountResources `json:"CloudAccountResources,omitempty" xml:"CloudAccountResources,omitempty" type:"Repeated"`
-	// The number of entries per page in a paging query.
+	// The number of entries returned per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned by the current call. Use this token for the next paginated query.
+	// The pagination token returned in the current response. You can use this token to query the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAccountResourcesForCloudPermissionTemplateResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,25 +123,25 @@ type ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccount
 	//
 	// 123456789012xxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The resource entity identifier, which is a unique remote identifier.
+	// The unique remote identifier of the resource entity.
 	//
 	// example:
 	//
 	// System:AliyunIntelligentcockpitReadOnlyAccessexample
 	CloudAccountResourceEntityId *string `json:"CloudAccountResourceEntityId,omitempty" xml:"CloudAccountResourceEntityId,omitempty"`
-	// The resource entity type. Valid values: ram_role.
+	// The type of the resource entity. Valid values: ram_role.
 	//
 	// example:
 	//
 	// ram_role
 	CloudAccountResourceEntityType *string `json:"CloudAccountResourceEntityType,omitempty" xml:"CloudAccountResourceEntityType,omitempty"`
-	// The identifier of the cloud account resource.
+	// The ID of the cloud account resource.
 	//
 	// example:
 	//
 	// car_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	CloudAccountResourceId *string `json:"CloudAccountResourceId,omitempty" xml:"CloudAccountResourceId,omitempty"`
-	// The resource metadata.
+	// The metadata of the resource.
 	CloudAccountResourceMeta *ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccountResourcesCloudAccountResourceMeta `json:"CloudAccountResourceMeta,omitempty" xml:"CloudAccountResourceMeta,omitempty" type:"Struct"`
 	// The name of the resource.
 	//
@@ -149,7 +149,7 @@ type ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccount
 	//
 	// eiam-sso-role
 	CloudAccountResourceName *string `json:"CloudAccountResourceName,omitempty" xml:"CloudAccountResourceName,omitempty"`
-	// The creation time. The value is a UNIX timestamp in milliseconds.
+	// The time when the resource was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccount
 	//
 	// Cloud account resource used for SSO
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last update time. The value is a UNIX timestamp in milliseconds.
+	// The time when the resource was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccount
 	//
 	// {"Version":"1","Statement":[]}
 	CamPolicyDocument *string `json:"CamPolicyDocument,omitempty" xml:"CamPolicyDocument,omitempty"`
-	// The Tencent Cloud CAM policy type. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
+	// The type of the Tencent Cloud Access Management (CAM) policy. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
 	//
 	// example:
 	//
@@ -286,19 +286,19 @@ type ListCloudAccountResourcesForCloudPermissionTemplateResponseBodyCloudAccount
 	//
 	// {"Version":"2012-10-17","Statement":[]}
 	IamPolicyDocument *string `json:"IamPolicyDocument,omitempty" xml:"IamPolicyDocument,omitempty"`
-	// The AWS IAM policy type. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
+	// The type of the AWS Identity and Access Management (IAM) policy. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
 	//
 	// example:
 	//
 	// aws
 	IamPolicyType *string `json:"IamPolicyType,omitempty" xml:"IamPolicyType,omitempty"`
-	// The JSON string of the RAM policy document. This parameter is returned only by the get operation.
+	// The JSON string of the RAM policy document. This parameter is returned only by the Get operation.
 	//
 	// example:
 	//
 	// {"Version":"1","Statement":[]}
 	RamPolicyDocument *string `json:"RamPolicyDocument,omitempty" xml:"RamPolicyDocument,omitempty"`
-	// The RAM policy type. Valid values: system and custom.
+	// The type of the Resource Access Management (RAM) policy. Valid values: system and custom.
 	//
 	// example:
 	//

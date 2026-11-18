@@ -30,7 +30,7 @@ type ListApplicationRolesRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The filter conditions.
+	// The list of filter conditions.
 	Filter []*ListApplicationRolesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -40,13 +40,13 @@ type ListApplicationRolesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. Set this parameter to the value of NextToken that is returned in the last API call. Leave this parameter empty for the first query.
+	// The pagination token for the next page. Set this parameter to the NextToken value returned from the previous API call. Leave this parameter empty for the first call.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type ListApplicationRolesRequestFilter struct {
 	//
 	// ApplicationRoleNameStartsWith
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the filter condition.
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

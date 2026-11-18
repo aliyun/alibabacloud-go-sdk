@@ -26,7 +26,7 @@ type ListApplicationsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of items in the list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListApplicationsResponseBody) Validate() error {
 }
 
 type ListApplicationsResponseBodyApplications struct {
-	// The application creation type.
+	// The creation type of the application.
 	//
 	// example:
 	//
@@ -95,29 +95,29 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The application identity type.
+	// The identity type of the application.
 	//
 	// example:
 	//
 	// application
 	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// SAML Application
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The application creation source. Valid values:
+	// The source from which the application is created. Valid values:
 	//
-	// - urn:alibaba:idaas:app:source:template: Application template.
+	// - urn:alibaba:idaas:app:source:template: application template
 	//
-	// - urn:alibaba:idaas:app:source:standard: Standard protocol.
+	// - urn:alibaba:idaas:app:source:standard: standard protocol
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:app:source:standard
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
-	// The application template ID.
+	// The ID of the application template.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The application creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the application was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The application description.
+	// The description of the application.
 	//
 	// example:
 	//
@@ -143,19 +143,19 @@ type ListApplicationsResponseBodyApplications struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The features supported by the application, returned as a JSON array string. Valid values:
 	//
-	// - sso: Single sign-on.
+	// - sso: single sign-on
 	//
-	// - slo: Single logout.
+	// - slo: single logout
 	//
-	// - provision: Account synchronization.
+	// - provision: account synchronization
 	//
-	// - api_invoke: API access.
+	// - api_invoke: API publication
 	//
-	// - m2m_client: M2M Client capability.
+	// - m2m_client: M2M client
 	//
-	// - resource_server: API service capability.
+	// - resource_server: resource server
 	//
-	// - other: Fallback.
+	// - other: other
 	//
 	// example:
 	//
@@ -173,25 +173,25 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The ServiceCode of the cloud service that manages the application template.
+	// The service code of the cloud service that manages the application template.
 	//
 	// example:
 	//
 	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	// The unique identifier of the ResourceServer.
+	// The unique identifier of the resource server.
 	//
 	// example:
 	//
 	// https://example.com
 	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
-	// The resource server source type.
+	// The source type of the resource server.
 	//
 	// example:
 	//
 	// urn:cloud:idaas:resourceserver:source:custom
 	ResourceServerSourceType *string `json:"ResourceServerSourceType,omitempty" xml:"ResourceServerSourceType,omitempty"`
-	// The resource server status.
+	// The status of the resource server.
 	//
 	// example:
 	//
@@ -203,33 +203,33 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The single sign-on protocol. Valid values:
+	// The single sign-on (SSO) protocol. Valid values:
 	//
-	// - saml2: SAML 2.0 protocol.
+	// - saml2: SAML 2.0 protocol
 	//
-	// - oidc: OpenID Connect protocol.
+	// - oidc: OpenID Connect protocol
 	//
-	// - oauth2/m2m: OAuth 2.0 protocol.
+	// - oauth2/m2m: OAuth 2.0 protocol
 	//
-	// - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0 protocols.
+	// - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0 protocols
 	//
 	// example:
 	//
 	// saml2
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
-	// The application status. Valid values:
+	// The status of the application. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: enabled
 	//
-	// - disabled: Disabled.
+	// - disabled: disabled
 	//
-	// - deleted: Soft deleted.
+	// - deleted: soft deleted
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the application was last updated, in UNIX timestamp format. Unit: milliseconds.
+	// The time when the application was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

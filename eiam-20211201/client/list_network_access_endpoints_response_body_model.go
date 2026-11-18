@@ -28,7 +28,7 @@ type ListNetworkAccessEndpointsResponseBody struct {
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ func (s *ListNetworkAccessEndpointsResponseBody) Validate() error {
 type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {
 	// The VPC configurations of the backup network access endpoint.
 	BackupVpcEndpoint *ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpointsBackupVpcEndpoint `json:"BackupVpcEndpoint,omitempty" xml:"BackupVpcEndpoint,omitempty" type:"Struct"`
-	// The time when the network access endpoint was created. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// The time when the network access endpoint was created. The time is displayed as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {
 	//
 	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The name of the network access endpoint, such as the xx business VPC access endpoint.
+	// The name of the network access endpoint, such as xx business VPC access endpoint.
 	//
 	// example:
 	//
@@ -128,9 +128,9 @@ type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// The type of the network access endpoint. Valid values:
 	//
-	// - shared: shared network access endpoint.
+	// - shared: shared network access endpoint
 	//
-	// - private: private network access endpoint.
+	// - private: private network access endpoint
 	//
 	// example:
 	//
@@ -146,29 +146,29 @@ type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {
 	//
 	//
 	//
-	// - pending: pending initialization.
+	// - pending: pending initialization
 	//
-	// - creating: being created.
+	// - creating: being created
 	//
-	// - running: running.
+	// - running: running
 	//
-	// - deleting: being deleted.
+	// - deleting: being deleted
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the network access endpoint was last updated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// The time when the network access endpoint was last updated. The time is displayed as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The IDs of the vSwitches to which the private network access endpoint is connected.
+	// The vSwitches to which the private network access endpoint is connected.
 	//
 	// example:
 	//
-	// vsw-examplexxx
+	// ["vsw-examplexxx"]
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the private network access endpoint is connected.
 	//
@@ -320,7 +320,7 @@ type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpointsBackupVpcEndpoi
 	//
 	// sg-examplexxx
 	BackupSecurityGroupId *string `json:"BackupSecurityGroupId,omitempty" xml:"BackupSecurityGroupId,omitempty"`
-	// The IDs of the vSwitches for the backup network access endpoint.
+	// The vSwitches for the backup network access endpoint.
 	BackupVSwitchIds []*string `json:"BackupVSwitchIds,omitempty" xml:"BackupVSwitchIds,omitempty" type:"Repeated"`
 	// The ID of the VPC for the backup network access endpoint.
 	//

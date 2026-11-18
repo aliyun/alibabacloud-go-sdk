@@ -30,13 +30,13 @@ type ListNetworkZonesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return per page for paging.
+	// The maximum number of entries to return per page when paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The network zone IDs.
+	// The IDs of the network zones.
 	NetworkZoneIds []*string `json:"NetworkZoneIds,omitempty" xml:"NetworkZoneIds,omitempty" type:"Repeated"`
 	// The pagination token.
 	//

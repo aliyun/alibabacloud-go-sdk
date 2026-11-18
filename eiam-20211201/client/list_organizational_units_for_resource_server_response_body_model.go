@@ -22,19 +22,19 @@ type iListOrganizationalUnitsForResourceServerResponseBody interface {
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBody struct {
-	// The number of rows per page in a paged query.
+	// The number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page.
+	// The query token for the next page.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of organizational units.
+	// The list of organizations.
 	OrganizationalUnits []*ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -129,7 +129,7 @@ type ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits str
 	//
 	// ou_nbsomva32b6utec3hgi7scxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The list of scope permissions.
+	// The list of scopes.
 	ResourceServerScopes []*ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 }
 
@@ -182,13 +182,13 @@ func (s *ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits
 }
 
 type ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsResourceServerScopes struct {
-	// The scope permission ID.
+	// The scope ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The scope permission name.
+	// The scope name.
 	//
 	// example:
 	//

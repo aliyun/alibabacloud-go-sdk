@@ -38,7 +38,7 @@ type iCreateCredentialRequest interface {
 }
 
 type CreateCredentialRequest struct {
-	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateCredentialRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The content of the credential.
+	// The credential content.
 	//
 	// This parameter is required.
 	CredentialContent *CreateCredentialRequestCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
@@ -72,7 +72,7 @@ type CreateCredentialRequest struct {
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// The Scenarios label of the credential. Valid values:
+	// The scenarios label of the credential. Valid values:
 	//
 	// - llm: large language model.
 	//
@@ -82,19 +82,19 @@ type CreateCredentialRequest struct {
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
-	// The sharing scope of the credential.
+	// The credential sharing scope.
 	//
 	// example:
 	//
 	// user_exclusive
 	CredentialSharingScope *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// The subject ID to which the credential belongs.
+	// The subject ID of the credential.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The subject type to which the credential belongs. Valid values:
+	// The subject type of the credential. Valid values:
 	//
 	// - authentication_token_provider: authentication token provider.
 	//
@@ -114,13 +114,13 @@ type CreateCredentialRequest struct {
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The description of the credential.
+	// The credential description.
 	//
 	// example:
 	//
 	// credential_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The exclusive user ID of the credential.
+	// The exclusive account ID of the credential.
 	//
 	// example:
 	//
@@ -271,9 +271,9 @@ func (s *CreateCredentialRequest) Validate() error {
 }
 
 type CreateCredentialRequestCredentialContent struct {
-	// The credential content of the API key credential type.
+	// The credential content for the API key credential type.
 	ApiKeyContent *CreateCredentialRequestCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// The credential content of the OAuth client authentication credential type.
+	// The credential content for the OAuth client authentication credential type.
 	OAuthClientContent *CreateCredentialRequestCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -318,7 +318,7 @@ func (s *CreateCredentialRequestCredentialContent) Validate() error {
 }
 
 type CreateCredentialRequestCredentialContentApiKeyContent struct {
-	// The content of the API key.
+	// The API key content.
 	//
 	// example:
 	//
@@ -348,13 +348,13 @@ func (s *CreateCredentialRequestCredentialContentApiKeyContent) Validate() error
 }
 
 type CreateCredentialRequestCredentialContentOAuthClientContent struct {
-	// The client_id of the OAuth protocol.
+	// The client_id in the OAuth protocol.
 	//
 	// example:
 	//
 	// dmvncmxersdxxxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client_secret of the OAuth protocol.
+	// The client_secret in the OAuth protocol.
 	//
 	// example:
 	//

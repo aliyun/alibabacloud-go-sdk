@@ -16,7 +16,7 @@ type iDeleteCredentialRequest interface {
 }
 
 type DeleteCredentialRequest struct {
-	// Credential ID.
+	// The credential ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCredentialRequest struct {
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -64,7 +64,7 @@ type GenerateOauthTokenRequest struct {
 	//
 	// urn:ietf:params:oauth:token-type:access_token
 	RequestedTokenType *string `json:"RequestedTokenType,omitempty" xml:"RequestedTokenType,omitempty"`
-	// The permission scope.
+	// The permission scopes.
 	//
 	// This parameter is required.
 	ScopeValues []*string `json:"ScopeValues,omitempty" xml:"ScopeValues,omitempty" type:"Repeated"`

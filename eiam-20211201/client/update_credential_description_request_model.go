@@ -20,7 +20,7 @@ type iUpdateCredentialDescriptionRequest interface {
 }
 
 type UpdateCredentialDescriptionRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the parameter value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateCredentialDescriptionRequest struct {
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The description of the credential.
+	// The credential description.
 	//
 	// example:
 	//

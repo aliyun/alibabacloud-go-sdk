@@ -204,7 +204,7 @@ type UpdateCloudPermissionTemplateRequestApplicableScope struct {
 	//
 	// ["ou_d6sbsuudfgf4h66ec3il7yxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The application scope type. Valid values: global, custom.
+	// The type of the application scope. Valid values: global and custom.
 	//
 	// example:
 	//

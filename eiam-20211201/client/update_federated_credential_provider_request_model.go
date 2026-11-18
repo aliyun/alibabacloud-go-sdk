@@ -26,7 +26,7 @@ type iUpdateFederatedCredentialProviderRequest interface {
 }
 
 type UpdateFederatedCredentialProviderRequest struct {
-	// The federated trust source ID.
+	// The ID of the federated trust source.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// fcp_mkv7rgt4d7i4u7zqtzev2mxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// The federated trust source name.
+	// The name of the federated trust source.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network access endpoint ID.
+	// The ID of the network access endpoint.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ func (s *UpdateFederatedCredentialProviderRequest) Validate() error {
 type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	// The list of audiences.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// The JWKS source.
+	// The source of the JWKS.
 	//
 	// This parameter is required.
 	//
@@ -171,7 +171,7 @@ type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// https://example.com/jwks
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// The statically retrieved JWKS.
+	// The statically obtained JWKS.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// The trust condition.
+	// The trust conditions.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
 	//
 	// 1200
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// The expression used to retrieve the signing time.
+	// The expression used to obtain the signing time.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition.
+	// The trust conditions.
 	//
 	// example:
 	//
@@ -411,7 +411,7 @@ func (s *UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates
 type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	// The list of root certificates.
 	Certificates []*UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The method used to retrieve the root certificate.
+	// The method used to obtain the root certificate.
 	//
 	// This parameter is required.
 	//
@@ -419,7 +419,7 @@ type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition of the root certificate.
+	// The trust conditions for the root certificate.
 	//
 	// example:
 	//

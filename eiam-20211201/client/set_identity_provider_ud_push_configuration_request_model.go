@@ -26,7 +26,7 @@ type iSetIdentityProviderUdPushConfigurationRequest interface {
 }
 
 type SetIdentityProviderUdPushConfigurationRequest struct {
-	// The ID of the identity provider.
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,17 @@ type SetIdentityProviderUdPushConfigurationRequest struct {
 	//
 	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configurations for LDAP push synchronization.
+	// The configuration for LDAP synchronization.
 	LdapUdPushConfig *SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig `json:"LdapUdPushConfig,omitempty" xml:"LdapUdPushConfig,omitempty" type:"Struct"`
-	// The configuration for periodic synchronization.
+	// The periodic check configuration.
 	PeriodicSyncConfig *SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
-	// The status of periodic synchronization.
+	// The periodic check status.
 	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// The push synchronization configurations.
+	// The outbound synchronization configuration.
 	UdSyncScopeConfigs []*SetIdentityProviderUdPushConfigurationRequestUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -159,13 +159,13 @@ func (s *SetIdentityProviderUdPushConfigurationRequest) Validate() error {
 }
 
 type SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig struct {
-	// The object class for organizations.
+	// The organization object class.
 	//
 	// example:
 	//
 	// ou,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
-	// The RDN for organizations.
+	// The organization RDN.
 	//
 	// example:
 	//
@@ -177,13 +177,13 @@ type SetIdentityProviderUdPushConfigurationRequestLdapUdPushConfig struct {
 	//
 	// enabled
 	PasswordSyncStatus *string `json:"PasswordSyncStatus,omitempty" xml:"PasswordSyncStatus,omitempty"`
-	// The object class for users.
+	// The user object class.
 	//
 	// example:
 	//
 	// user,top
 	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
-	// The Relative Distinguished Name (RDN) for users.
+	// The user RDN.
 	//
 	// example:
 	//
@@ -255,9 +255,9 @@ type SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig struct {
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// A collection of time points.
+	// The collection of time points.
 	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
-	// The type of periodic synchronization.
+	// The type.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ func (s *SetIdentityProviderUdPushConfigurationRequestPeriodicSyncConfig) Valida
 }
 
 type SetIdentityProviderUdPushConfigurationRequestUdSyncScopeConfigs struct {
-	// The source nodes for synchronization.
+	// The source node for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
 	// The target node for synchronization.
 	//

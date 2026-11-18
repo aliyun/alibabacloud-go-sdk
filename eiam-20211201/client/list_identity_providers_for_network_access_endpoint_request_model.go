@@ -28,7 +28,7 @@ type ListIdentityProvidersForNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListIdentityProvidersForNetworkAccessEndpointRequest struct {
 	//
 	// nae_ms5ewjcjzed3ysaau5t5kxxxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//

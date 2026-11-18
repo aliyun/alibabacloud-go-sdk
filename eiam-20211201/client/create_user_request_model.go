@@ -44,17 +44,17 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must ensure that the parameter value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the References: How to ensure idempotence.
+	// Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the parameter value is unique among different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: How to ensure idempotence.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The list of extended fields.
+	// The list of custom fields.
 	//
 	// example:
 	//
-	// description
+	// [{"FieldName":"age","FieldValue":"10"}]
 	CustomFields []*CreateUserRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The description. The maximum length is 256 characters.
 	//
@@ -68,7 +68,7 @@ type CreateUserRequest struct {
 	//
 	// name_001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address. The email prefix can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-). The maximum length is 128 characters.
+	// The email address. The prefix can contain uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). The maximum length is 128 characters.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateUserRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the organizational units to which the account belongs. An account can belong to multiple organizational units.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The password. For specific format requirements, refer to the password policy.
+	// The password. For specific format requirements, see the password policy.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreateUserRequest struct {
 	//
 	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
-	// The country code for the mobile phone number. It must be 1 to 6 digits in length and cannot contain a plus sign (+).
+	// The region code of the mobile phone number. It must be 1 to 6 digits in length and cannot contain a plus sign (+). For example, the region code for the Chinese mainland is 86, without 00 or +. This parameter is required if the mobile phone number is specified.
 	//
 	// example:
 	//
@@ -311,13 +311,13 @@ func (s *CreateUserRequest) Validate() error {
 }
 
 type CreateUserRequestCustomFields struct {
-	// The identifier of the extended field. You must create the extended field in advance. For more information, refer to the Extended Fields module in the console.
+	// The identifier of the custom field. You must create the custom field in advance. For more information, see the Custom Fields module in the console.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The value of the extended field. The value must comply with the attribute limits of the corresponding extended field.
+	// The value of the custom field. The value must comply with the attribute limits of the corresponding custom field.
 	//
 	// example:
 	//
@@ -356,11 +356,11 @@ func (s *CreateUserRequestCustomFields) Validate() error {
 }
 
 type CreateUserRequestPasswordInitializationConfig struct {
-	// Specifies whether to force the user to change the password. By default, this feature is disabled. Valid values:
+	// Specifies whether to force the user to update the password. By default, this feature is disabled. Valid values:
 	//
-	// - enabled: Enables the feature.
+	// - enabled: enables the feature.
 	//
-	// - disabled: Disables the feature.
+	// - disabled: disables the feature.
 	//
 	// example:
 	//
@@ -368,9 +368,9 @@ type CreateUserRequestPasswordInitializationConfig struct {
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
 	// The password initialization policy priority. By default, this parameter does not take effect. Valid values:
 	//
-	// - global: Global priority. The instance-level password initialization policy is used. The password initialization policy specified in the Settings is invalid. For more information, refer to the password initialization policy in the password-related policies.
+	// - global: global priority. The instance-level password initialization policy is used, and the password initialization Settings in this request are all invalid. For more information, see the password initialization Settings in the password policies.
 	//
-	// - custom: Custom priority. The password initialization policy defined in the Settings is used, including whether to force password changes, the password initialization method, and the notification channels.
+	// - custom: custom priority. The currently defined password initialization Settings prevail, including whether to force password updates, the password initialization method, and the notification channels.
 	//
 	// example:
 	//
@@ -378,7 +378,7 @@ type CreateUserRequestPasswordInitializationConfig struct {
 	PasswordInitializationPolicyPriority *string `json:"PasswordInitializationPolicyPriority,omitempty" xml:"PasswordInitializationPolicyPriority,omitempty"`
 	// The password initialization method. Valid values:
 	//
-	// - random: Generates a random password.
+	// - random: generates a random password.
 	//
 	// example:
 	//
@@ -388,7 +388,7 @@ type CreateUserRequestPasswordInitializationConfig struct {
 	//
 	// example:
 	//
-	// sms
+	// ["sms"]
 	UserNotificationChannels []*string `json:"UserNotificationChannels,omitempty" xml:"UserNotificationChannels,omitempty" type:"Repeated"`
 }
 

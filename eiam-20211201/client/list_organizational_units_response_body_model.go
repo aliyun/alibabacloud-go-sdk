@@ -26,7 +26,7 @@ type ListOrganizationalUnitsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that are returned. This value is the total number of matched entries. The maximum number of entries that can be returned in a single request is specified by PageSize.
+	// The total number of entries. This value indicates the total number of matched entries. The maximum number of entries returned per page is specified by the PageSize parameter.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListOrganizationalUnitsResponseBody) Validate() error {
 }
 
 type ListOrganizationalUnitsResponseBodyOrganizationalUnits struct {
-	// The time when the organizational unit was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the organizational unit was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -93,7 +93,7 @@ type ListOrganizationalUnitsResponseBodyOrganizationalUnits struct {
 	//
 	// example:
 	//
-	// Test organization
+	// Test organizational unit
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
 	//
@@ -107,15 +107,13 @@ type ListOrganizationalUnitsResponseBodyOrganizationalUnits struct {
 	//
 	// false
 	Leaf *bool `json:"Leaf,omitempty" xml:"Leaf,omitempty"`
-	// The external ID of the organizational unit. This ID is used to map the data of the organizational unit to the data of an external system. By default, the value of this parameter is the organizational unit ID.
-	//
-	// Note: The external ID must be unique within the same source type and source ID.
+	// The external ID of the organizational unit, which is used to map external data to IDaaS organizational units. Default value: the IDaaS organizational unit ID. Note: The external ID must be unique under the same source type and source ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"OrganizationalUnitExternalId,omitempty" xml:"OrganizationalUnitExternalId,omitempty"`
-	// The organizational unit ID.
+	// The ID of the organizational unit.
 	//
 	// example:
 	//
@@ -135,15 +133,15 @@ type ListOrganizationalUnitsResponseBodyOrganizationalUnits struct {
 	OrganizationalUnitSourceId *string `json:"OrganizationalUnitSourceId,omitempty" xml:"OrganizationalUnitSourceId,omitempty"`
 	// The source type of the organizational unit. Valid values:
 	//
-	// - build_in: The organizational unit is created in IDaaS.
+	// - build_in: built-in.
 	//
-	// - ding_talk: The organizational unit is imported from DingTalk.
+	// - ding_talk: imported from DingTalk.
 	//
-	// - ad: The organizational unit is imported from Active Directory (AD).
+	// - ad: imported from AD.
 	//
-	// - ldap: The organizational unit is imported from a Lightweight Directory Access Protocol (LDAP) directory.
+	// - ldap: imported from LDAP.
 	//
-	// - we_com: The organizational unit is imported from WeCom.
+	// - we_com: imported from WeCom.
 	//
 	// example:
 	//
@@ -155,7 +153,7 @@ type ListOrganizationalUnitsResponseBodyOrganizationalUnits struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the organizational unit was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

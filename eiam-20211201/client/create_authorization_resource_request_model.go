@@ -50,7 +50,7 @@ type CreateAuthorizationResourceRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// The client token that is used to ensure the idempotence of the request. You can generate a parameter value on your client and ensure that the parameter value is unique across different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -173,7 +173,7 @@ func (s *CreateAuthorizationResourceRequestCondition) Validate() error {
 }
 
 type CreateAuthorizationResourceRequestConditionCredentialCondition struct {
-	// Specifies whether same-name identity accounts are supported.
+	// Specifies whether to allow identity accounts with the same name.
 	AllowSameNameIdentity *bool `json:"AllowSameNameIdentity,omitempty" xml:"AllowSameNameIdentity,omitempty"`
 }
 

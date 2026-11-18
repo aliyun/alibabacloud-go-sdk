@@ -14,7 +14,7 @@ type iUpdateAuthorizationServerDescriptionResponseBody interface {
 }
 
 type UpdateAuthorizationServerDescriptionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

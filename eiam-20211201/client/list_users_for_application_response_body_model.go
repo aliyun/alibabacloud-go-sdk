@@ -30,7 +30,7 @@ type ListUsersForApplicationResponseBody struct {
 	//
 	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of account IDs.
+	// The list of users.
 	Users []*ListUsersForApplicationResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -85,7 +85,7 @@ func (s *ListUsersForApplicationResponseBody) Validate() error {
 type ListUsersForApplicationResponseBodyUsers struct {
 	// The list of application roles. No roles are returned for SAML applications.
 	ApplicationRoles []*ListUsersForApplicationResponseBodyUsersApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// The account ID.
+	// The user ID.
 	//
 	// example:
 	//

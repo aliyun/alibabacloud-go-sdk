@@ -18,7 +18,7 @@ type iUpdateCredentialProviderDescriptionRequest interface {
 }
 
 type UpdateCredentialProviderDescriptionRequest struct {
-	// The ID of the credential provider.
+	// The credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -26,15 +26,15 @@ type UpdateCredentialProviderDescriptionRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// A description of the credential provider.
+	// The description.
 	//
-	// > The description can be up to 128 characters long.
+	// > The length cannot exceed 128 characters.
 	//
 	// example:
 	//
 	// This is an example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

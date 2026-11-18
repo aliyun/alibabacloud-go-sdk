@@ -24,19 +24,19 @@ type iListUserAuthnSourceMappingsResponseBody interface {
 }
 
 type ListUserAuthnSourceMappingsResponseBody struct {
-	// The maximum number of entries to return per page in a paging query.
+	// The maximum number of entries to return per page when paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call.
+	// The next token returned in the response.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by the current call.
+	// The next token returned in the response.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListUserAuthnSourceMappingsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListUserAuthnSourceMappingsResponseBody) Validate() error {
 }
 
 type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
-	// The source IdP authentication source type.
+	// The authentication source type of the source IdP.
 	//
 	// example:
 	//

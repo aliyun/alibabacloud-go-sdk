@@ -62,11 +62,11 @@ func (s *ListApplicationSupportedProvisionProtocolTypesResponseBody) Validate() 
 }
 
 type ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType struct {
-	// The account synchronization type supported by the application. Valid values:
+	// The account synchronization protocol type supported by the application. Valid values:
 	//
-	// - idaas_callback: Event callback type.
+	// - idaas_callback: Event callback.
 	//
-	// - scim2: System for Cross-domain Identity Management protocol type.
+	// - scim2: System for Cross-domain Identity Management protocol.
 	ProvisionProtocolType []*string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty" type:"Repeated"`
 }
 

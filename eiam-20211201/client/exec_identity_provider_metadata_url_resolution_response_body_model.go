@@ -199,7 +199,7 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration struct {
-  // The IdP certificate list.
+  // The list of IdP certificates.
   Certificates []*ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
   // The IdP entity ID.
   // 
@@ -207,7 +207,7 @@ type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetada
   // 
   // http://dc.test.com/adfs/services/trust
   IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
-  // The IdP logon URL.
+  // The IdP SSO URL.
   // 
   // example:
   // 

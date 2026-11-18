@@ -44,9 +44,9 @@ type SetPasswordExpirationConfigurationRequest struct {
 	//
 	// - forbid_login: Forbid logon.
 	//
-	// - force_update_password: Force password update.
+	// - force_update_password: Force password change.
 	//
-	// - remind_update_password: Remind to update password.
+	// - remind_update_password: Remind to change password.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type SetPasswordExpirationConfigurationRequest struct {
 	//
 	// example:
 	//
-	// login
+	// ["login"]
 	PasswordExpirationNotificationChannels []*string `json:"PasswordExpirationNotificationChannels,omitempty" xml:"PasswordExpirationNotificationChannels,omitempty" type:"Repeated"`
-	// The password expiration notification duration, in days. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
+	// The password expiration notification duration in days. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type SetPasswordExpirationConfigurationRequest struct {
 	//
 	// enabled
 	PasswordExpirationNotificationStatus *string `json:"PasswordExpirationNotificationStatus,omitempty" xml:"PasswordExpirationNotificationStatus,omitempty"`
-	// The password expiration status. Valid values:
+	// The password expiration configuration status. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -86,13 +86,13 @@ type SetPasswordExpirationConfigurationRequest struct {
 	//
 	// enabled
 	PasswordExpirationStatus *string `json:"PasswordExpirationStatus,omitempty" xml:"PasswordExpirationStatus,omitempty"`
-	// The password forced update duration, in days. The value of this parameter must be greater than the value of PasswordExpirationNotificationDuration.
+	// The password forced update duration in days. The value of this parameter must be greater than the value of PasswordExpirationNotificationDuration.
 	//
 	// example:
 	//
 	// 7
 	PasswordForcedUpdateDuration *int32 `json:"PasswordForcedUpdateDuration,omitempty" xml:"PasswordForcedUpdateDuration,omitempty"`
-	// The maximum validity period of the password, in days. This parameter is required when PasswordExpirationStatus is set to enabled.
+	// The password validity period in days. This parameter is required when PasswordExpirationStatus is set to enabled.
 	//
 	// example:
 	//

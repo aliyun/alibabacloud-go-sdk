@@ -22,7 +22,7 @@ type iListInventorySynchronizationJobsResponseBody interface {
 }
 
 type ListInventorySynchronizationJobsResponseBody struct {
-	// The inventory synchronization jobs.
+	// The synchronization jobs.
 	InventorySynchronizationJobs []*ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobs `json:"InventorySynchronizationJobs,omitempty" xml:"InventorySynchronizationJobs,omitempty" type:"Repeated"`
 	// The maximum number of returned results.
 	//
@@ -30,7 +30,7 @@ type ListInventorySynchronizationJobsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call for subsequent paged queries.
+	// The pagination token returned by the current call for the next query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListInventorySynchronizationJobsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobs st
 	//
 	// No Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the synchronization job.
+	// The end time of the synchronization. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobs st
 	InventorySynchronizationJobId *string `json:"InventorySynchronizationJobId,omitempty" xml:"InventorySynchronizationJobId,omitempty"`
 	// The task result of the synchronization node.
 	Result *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The start time of the synchronization job.
+	// The start time of the synchronization. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobs st
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The trigger type of the synchronization job.
+	// The trigger type of the synchronization.
 	//
 	// example:
 	//
@@ -253,9 +253,9 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResult struct {
-	// The statistics of the agent synchronization result.
+	// The statistics on the agent synchronization results.
 	AgentStatistics *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatistics `json:"AgentStatistics,omitempty" xml:"AgentStatistics,omitempty" type:"Struct"`
-	// The statistics of the asset synchronization result.
+	// The statistics on the asset synchronization results.
 	AssetStatistics *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatistics `json:"AssetStatistics,omitempty" xml:"AssetStatistics,omitempty" type:"Struct"`
 	// The error code of the synchronization result.
 	//
@@ -330,13 +330,13 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatistics struct {
-	// The statistics of the creation result.
+	// The statistics on the creation results.
 	Created *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// The statistics of the deletion result.
+	// The statistics on the deletion results.
 	Deleted *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// The statistics of unchanged items.
+	// The statistics on the unchanged results.
 	Same *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// The statistics of the update result.
+	// The statistics on the update results.
 	Updated *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -709,13 +709,13 @@ func (s *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJob
 }
 
 type ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatistics struct {
-	// The statistics of the creation result.
+	// The statistics on the creation results.
 	Created *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// The statistics of the deletion result.
+	// The statistics on the deletion results.
 	Deleted *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// The statistics of unchanged items.
+	// The statistics on the unchanged results.
 	Same *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// The statistics of the update result.
+	// The statistics on the update results.
 	Updated *ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 

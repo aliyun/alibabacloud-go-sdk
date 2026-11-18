@@ -70,7 +70,7 @@ type GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy struct {
 	//
 	// pp_xxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// The custom privacy policy name.
+	// The name of the custom privacy policy.
 	//
 	// example:
 	//

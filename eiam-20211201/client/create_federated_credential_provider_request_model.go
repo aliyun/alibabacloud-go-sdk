@@ -222,13 +222,13 @@ func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) Validat
 type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	// The list of audiences.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// The token issuer identifier (Issuer).
+	// The identifier of the token issuer.
 	//
 	// example:
 	//
 	// https://example.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The source of the JWKS.
+	// The JWKS source.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// The trust condition.
+	// The trust conditions.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ type CreateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition.
+	// The trust conditions.
 	//
 	// example:
 	//
@@ -487,13 +487,13 @@ func (s *CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates
 type CreateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	// The list of root certificates.
 	Certificates []*CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The method used to retrieve the root certificate.
+	// The method to retrieve the root certificate.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition of the root certificate.
+	// The trust conditions for the root certificate.
 	//
 	// example:
 	//

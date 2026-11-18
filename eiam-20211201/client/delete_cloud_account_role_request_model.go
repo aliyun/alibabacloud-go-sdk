@@ -18,7 +18,7 @@ type iDeleteCloudAccountRoleRequest interface {
 }
 
 type DeleteCloudAccountRoleRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteCloudAccountRoleRequest struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The ID of the cloud role.
+	// The cloud role ID.
 	//
 	// This parameter is required.
 	//

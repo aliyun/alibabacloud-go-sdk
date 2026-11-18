@@ -68,7 +68,7 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	//
 	// free
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The end date of the license validity period, in timestamp format.
+	// The end date of the license validity period. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -76,19 +76,19 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The detailed license information of the instance.
 	InstanceLicenseDetail *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail `json:"InstanceLicenseDetail,omitempty" xml:"InstanceLicenseDetail,omitempty" type:"Struct"`
-	// The billing type of the license.
+	// The billing method of the license.
 	//
 	// example:
 	//
 	// prepay
 	LicenseChargeType *string `json:"LicenseChargeType,omitempty" xml:"LicenseChargeType,omitempty"`
-	// The detailed license configuration as a JSON string.
+	// The JSON string of the detailed license configuration.
 	//
 	// example:
 	//
 	// {"modules":[{"features":[{"name":"urn:alibaba:idaas:license:module:ud:customField","status":"enabled"}]……{"name":"urn:alibaba:idaas:license:tag:enterprise","status":"enabled"}],"version":"1.0"}
 	LicenseConfigJson *string `json:"LicenseConfigJson,omitempty" xml:"LicenseConfigJson,omitempty"`
-	// The creation time of the license, in timestamp format.
+	// The creation time of the license. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	//
 	// license_1234xxxx
 	LicenseId *string `json:"LicenseId,omitempty" xml:"LicenseId,omitempty"`
-	// The status of the license.
+	// The license status.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	//
 	// alibaba_cloud
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
-	// The unique identifier of the external commodity associated with the license.
+	// The unique identifier of the external product corresponding to the license.
 	//
 	// example:
 	//
 	// eiam-cn-xxxxx
 	PurchaseInstanceId *string `json:"PurchaseInstanceId,omitempty" xml:"PurchaseInstanceId,omitempty"`
-	// The start date of the license validity period, in timestamp format.
+	// The start date of the license validity period. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail struct {
 	//
 	// 2
 	M2mApplicationQuota *int64 `json:"M2mApplicationQuota,omitempty" xml:"M2mApplicationQuota,omitempty"`
-	// The machine identity license status.
+	// The machine identity status.
 	//
 	// example:
 	//
@@ -288,13 +288,31 @@ type GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail struct {
 	//
 	// 1
 	NetworkAccessEndpointQuota *int64 `json:"NetworkAccessEndpointQuota,omitempty" xml:"NetworkAccessEndpointQuota,omitempty"`
-	// The PAM privileged access management license status.
+	// The base quota of monthly active PAM users included in the plan, excluding additional purchases. The value is 0 if PAM is not activated.
+	//
+	// example:
+	//
+	// 50
+	PamActiveUserBaseQuota *int64 `json:"PamActiveUserBaseQuota,omitempty" xml:"PamActiveUserBaseQuota,omitempty"`
+	// The number of additionally purchased monthly active PAM users. The value is 0 if no additional users are purchased or PAM is not activated.
+	//
+	// example:
+	//
+	// 10
+	PamActiveUserPurchasedQuota *int64 `json:"PamActiveUserPurchasedQuota,omitempty" xml:"PamActiveUserPurchasedQuota,omitempty"`
+	// Specifies whether pay-as-you-go billing for monthly PAM overages is enabled. Returns false if PAM is not activated or elastic billing is disabled.
+	//
+	// example:
+	//
+	// true
+	PamElasticBillingEnabled *bool `json:"PamElasticBillingEnabled,omitempty" xml:"PamElasticBillingEnabled,omitempty"`
+	// The Privileged Access Management (PAM) license status.
 	//
 	// example:
 	//
 	// enabled
 	PamLicenseStatus *string `json:"PamLicenseStatus,omitempty" xml:"PamLicenseStatus,omitempty"`
-	// The number of prepaid active users.
+	// The number of active subscription users.
 	//
 	// example:
 	//
@@ -336,6 +354,18 @@ func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetNetworkA
 	return s.NetworkAccessEndpointQuota
 }
 
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPamActiveUserBaseQuota() *int64 {
+	return s.PamActiveUserBaseQuota
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPamActiveUserPurchasedQuota() *int64 {
+	return s.PamActiveUserPurchasedQuota
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPamElasticBillingEnabled() *bool {
+	return s.PamElasticBillingEnabled
+}
+
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetPamLicenseStatus() *string {
 	return s.PamLicenseStatus
 }
@@ -370,6 +400,21 @@ func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetMimAppli
 
 func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetNetworkAccessEndpointQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
 	s.NetworkAccessEndpointQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetPamActiveUserBaseQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.PamActiveUserBaseQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetPamActiveUserPurchasedQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.PamActiveUserPurchasedQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetPamElasticBillingEnabled(v bool) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.PamElasticBillingEnabled = &v
 	return s
 }
 

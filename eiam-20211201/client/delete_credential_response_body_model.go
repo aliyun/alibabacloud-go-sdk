@@ -14,7 +14,7 @@ type iDeleteCredentialResponseBody interface {
 }
 
 type DeleteCredentialResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

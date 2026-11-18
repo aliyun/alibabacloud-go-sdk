@@ -24,7 +24,7 @@ type iListCredentialsResponseBody interface {
 type ListCredentialsResponseBody struct {
 	// The list of credentials.
 	Credentials []*ListCredentialsResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Repeated"`
-	// The number of entries per page for paging in a paged query.
+	// The maximum number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListCredentialsResponseBodyCredentials struct {
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
 	// The Scenarios label of the credential. Valid values:
 	//
-	// - llm: Large model.
+	// - llm: Large language model.
 	//
 	// - saas: Third-party SaaS service.
 	//
@@ -171,9 +171,9 @@ type ListCredentialsResponseBodyCredentials struct {
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
 	// The credential sharing scope. Valid values:
 	//
-	// - common: General.
+	// - common: Common.
 	//
-	// - user_exclusive: Account-specific.
+	// - user_exclusive: Account-exclusive.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type ListCredentialsResponseBodyCredentials struct {
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The subject type to which the credential belongs. Valid values:
+	// The subject type of the credential. Valid values:
 	//
 	// - authentication_token_provider: Authentication token provider.
 	//
@@ -195,9 +195,9 @@ type ListCredentialsResponseBodyCredentials struct {
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - api_key: API key credential.
+	// - api_key: API key authentication credential.
 	//
-	// - oauth_client: OAuth client credential.
+	// - oauth_client: OAuth client authentication credential.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListCredentialsResponseBodyCredentials struct {
 	//
 	// credential_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the exclusive user for the credential.
+	// The ID of the exclusive account for the credential.
 	//
 	// example:
 	//
@@ -410,7 +410,7 @@ func (s *ListCredentialsResponseBodyCredentials) Validate() error {
 }
 
 type ListCredentialsResponseBodyCredentialsCredentialContent struct {
-	// The content of an OAuth client credential.
+	// The content of an OAuth client authentication credential.
 	OAuthClientContent *ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -441,7 +441,7 @@ func (s *ListCredentialsResponseBodyCredentialsCredentialContent) Validate() err
 }
 
 type ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent struct {
-	// The client ID of the OAuth protocol.
+	// The client ID in the OAuth protocol.
 	//
 	// example:
 	//

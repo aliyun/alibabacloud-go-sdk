@@ -24,13 +24,13 @@ type iListApplicationsForAuthorizationRuleResponseBody interface {
 type ListApplicationsForAuthorizationRuleResponseBody struct {
 	// The list of applications.
 	Applications []*ListApplicationsForAuthorizationRuleResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The number of entries per page in a paging query.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in the response, which is used to query the next page.
+	// The token returned in the current response for querying the next page.
 	//
 	// example:
 	//

@@ -30,13 +30,11 @@ type iCreateAuthorizationRuleRequest interface {
 type CreateAuthorizationRuleRequest struct {
 	// The scope of authorized resources. Valid values:
 	//
-	// - global: global resources under the project
-	//
-	// - custom: resources under a specified project scope
+	// - custom: resources within the specified project scope
 	//
 	// example:
 	//
-	// global
+	// custom
 	AuthorizationResourceScope *string `json:"AuthorizationResourceScope,omitempty" xml:"AuthorizationResourceScope,omitempty"`
 	// The name of the authorization rule. The name can be up to 64 characters in length.
 	//
@@ -48,11 +46,15 @@ type CreateAuthorizationRuleRequest struct {
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	// The scenario label of the authorization rule. The label can be up to 64 characters in length.
 	//
+	// > When a label value is specified, the business layer restricts the types of authorized resources based on the label.
+	//
+	// For historical reasons, an empty value is also treated as an enum value. If this parameter is left empty, the authorized resource types supported by other enum values are not supported.
+	//
 	// example:
 	//
 	// privileged_cloud_account
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can generate the value from your client and make sure that the value is unique across different requests. The ClientToken parameter only supports ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter only supports ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -74,7 +76,7 @@ type CreateAuthorizationRuleRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the project associated with the authorization rule. If you are unsure about the project to associate, you can use the default project. The ID of the default project is iprj_system_default.
+	// The ID of the project associated with the authorization rule. If you are unsure about the associated project, you can associate the default project. The ID of the default project is iprj_system_default.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +84,13 @@ type CreateAuthorizationRuleRequest struct {
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of subject to which the authorization rule applies, such as user (for human users) or application (for machine users). When explicitly specified, only privileged cloud account rules with a custom resource scope are supported. If this field is omitted for custom scope rules in this scenario, the default value is user.
+	// The type of subject to which the authorization rule applies. Valid values:
+	//
+	// - user
+	//
+	// - application
+	//
+	// > user (for human users) or application (for machines). When explicitly specified, only privileged cloud account rules with a custom resource scope are supported. If this field is omitted for custom scope rules in this scenario, the default value is user.
 	//
 	// example:
 	//

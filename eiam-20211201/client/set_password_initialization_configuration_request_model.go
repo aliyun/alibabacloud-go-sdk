@@ -44,7 +44,7 @@ type SetPasswordInitializationConfigurationRequest struct {
 	//
 	// example:
 	//
-	// email
+	// ["email"]
 	PasswordInitializationNotificationChannels []*string `json:"PasswordInitializationNotificationChannels,omitempty" xml:"PasswordInitializationNotificationChannels,omitempty" type:"Repeated"`
 	// The password initialization configuration status. Valid values:
 	//

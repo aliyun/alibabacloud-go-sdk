@@ -32,11 +32,11 @@ type iListCredentialsRequest interface {
 type ListCredentialsRequest struct {
 	// The external unique identifiers of the credentials.
 	CredentialExternalIds []*string `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
-	// The credential IDs.
+	// The list of credential IDs.
 	CredentialIds []*string `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
-	// The credential sharing scopes.
+	// The list of credential sharing scopes.
 	CredentialSharingScopes []*string `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
-	// The credential types.
+	// The list of credential types.
 	CredentialTypes []*string `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
 	// The filter conditions.
 	Filter []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -48,19 +48,23 @@ type ListCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records per page. Default value: 20. Maximum value: 100.
+	// The maximum number of records per page.
+	//
+	// - Default value: 20.
+	//
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The query token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The credential statuses.
+	// The list of credential statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -175,7 +179,7 @@ type ListCredentialsRequestFilter struct {
 	//
 	// CredentialIdentifier
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values for the filter field.
+	// The list of filter field values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

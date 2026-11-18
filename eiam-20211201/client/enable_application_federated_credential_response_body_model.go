@@ -14,7 +14,7 @@ type iEnableApplicationFederatedCredentialResponseBody interface {
 }
 
 type EnableApplicationFederatedCredentialResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

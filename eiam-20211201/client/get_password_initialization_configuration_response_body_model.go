@@ -62,7 +62,7 @@ func (s *GetPasswordInitializationConfigurationResponseBody) Validate() error {
 }
 
 type GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration struct {
-	// The status of forced password update. Valid values:
+	// The password forced update status. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -76,9 +76,9 @@ type GetPasswordInitializationConfigurationResponseBodyPasswordInitializationCon
 	//
 	// example:
 	//
-	// email
+	// ["email"]
 	PasswordInitializationNotificationChannels []*string `json:"PasswordInitializationNotificationChannels,omitempty" xml:"PasswordInitializationNotificationChannels,omitempty" type:"Repeated"`
-	// The status of the password initialization configuration. Valid values:
+	// The password initialization configuration status. Valid values:
 	//
 	// - enabled: Enabled.
 	//

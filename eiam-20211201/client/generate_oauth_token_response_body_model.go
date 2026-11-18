@@ -68,13 +68,13 @@ type GenerateOauthTokenResponseBodyTokenResponse struct {
 	//
 	// eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJlaWFtIn0.signature
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The expiration time, in UNIX timestamp format, in seconds.
+	// The expiration time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1770186372
 	ExpiresAt *int64 `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
-	// The validity period, in seconds.
+	// The validity period in seconds.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GenerateOauthTokenResponseBodyTokenResponse struct {
 	//
 	// standard
 	IssuedTokenType *string `json:"IssuedTokenType,omitempty" xml:"IssuedTokenType,omitempty"`
-	// The token type. Currently, only Bearer is supported.
+	// The token type. Only Bearer is supported.
 	//
 	// example:
 	//

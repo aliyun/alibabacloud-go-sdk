@@ -22,7 +22,7 @@ type GetApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody struct 
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user primary organizational unit for application synchronization.
+	// The primary organizational unit of the user for application synchronization.
 	//
 	// example:
 	//

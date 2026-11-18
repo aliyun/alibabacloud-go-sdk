@@ -18,7 +18,7 @@ type iDeleteTrustedOriginRequest interface {
 }
 
 type DeleteTrustedOriginRequest struct {
-	// The idempotence token.
+	// The client token.
 	//
 	// example:
 	//

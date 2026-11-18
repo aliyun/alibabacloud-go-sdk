@@ -34,31 +34,31 @@ type ListOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organizational unit IDs. The number of IDs in the list cannot exceed 100.
+	// The IDs of the organizational units. You can specify up to 100 IDs.
 	//
 	// example:
 	//
-	// [ou_wovwffm62xifdziem7an7xxxxx]
+	// ["ou_wovwffm62xifdziem7an7xxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The name of the organizational unit. An exact match is used for the query.
+	// The name of the organizational unit. The query uses exact match.
 	//
 	// example:
 	//
 	// name_001
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
-	// The prefix of the name of the organizational unit. A left-side match is used for the query.
+	// The prefix of the organizational unit name. The query uses prefix match.
 	//
 	// example:
 	//
 	// name
 	OrganizationalUnitNameStartsWith *string `json:"OrganizationalUnitNameStartsWith,omitempty" xml:"OrganizationalUnitNameStartsWith,omitempty"`
-	// The page number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 20. Maximum value: 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//

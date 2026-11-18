@@ -42,9 +42,9 @@ type UpdateApplicationInfoRequest struct {
 	//
 	// Ram Account SSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The application owner.
+	// The owner of the application.
 	ApplicationOwner *UpdateApplicationInfoRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
-	// The application visibility settings.
+	// The application visibility collection.
 	ApplicationVisibility []*string `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
 	// The idempotency token.
 	//
@@ -52,7 +52,7 @@ type UpdateApplicationInfoRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The list of application extension fields.
+	// The list of extended fields for the application.
 	CustomFields []*UpdateApplicationInfoRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -169,7 +169,7 @@ func (s *UpdateApplicationInfoRequest) Validate() error {
 }
 
 type UpdateApplicationInfoRequestApplicationOwner struct {
-	// The list of group IDs.
+	// The list of user group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The list of user IDs.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
@@ -206,19 +206,19 @@ func (s *UpdateApplicationInfoRequestApplicationOwner) Validate() error {
 }
 
 type UpdateApplicationInfoRequestCustomFields struct {
-	// The name of the application extension field.
+	// The name of the extended field for the application.
 	//
 	// example:
 	//
 	// agent_type
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The value of the application extension field. If FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. If FieldName is set to agentExternalId, enter the relevant value.
+	// The value of the extended field for the application. If FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. If FieldName is set to agentExternalId, enter the relevant value.
 	//
 	// example:
 	//
 	// bailian
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The operation type for the application extension field.
+	// The operation type for the extended field of the application.
 	//
 	// example:
 	//

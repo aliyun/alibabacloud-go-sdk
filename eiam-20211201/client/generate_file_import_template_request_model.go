@@ -20,7 +20,7 @@ type iGenerateFileImportTemplateRequest interface {
 }
 
 type GenerateFileImportTemplateRequest struct {
-	// Specifies whether field selection mode is enabled.
+	// Specifies whether the field selection mode is enabled.
 	FieldSelectionEnabled *bool `json:"FieldSelectionEnabled,omitempty" xml:"FieldSelectionEnabled,omitempty"`
 	// The instance ID.
 	//

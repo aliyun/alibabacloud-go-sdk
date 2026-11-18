@@ -16,7 +16,7 @@ type iDeleteCloudAccountRequest interface {
 }
 
 type DeleteCloudAccountRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// This parameter is required.
 	//

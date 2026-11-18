@@ -22,7 +22,7 @@ type iListCustomPrivacyPoliciesRequest interface {
 }
 
 type ListCustomPrivacyPoliciesRequest struct {
-	// The prefix of the custom privacy policy name for fuzzy matching.
+	// The custom privacy policy name. Left fuzzy match is supported.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type ListCustomPrivacyPoliciesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return per page in a paging query.
+	// The maximum number of entries per page for a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token for the previous page.
+	// The previous token.
 	//
 	// example:
 	//

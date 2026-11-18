@@ -24,7 +24,7 @@ type iListAuthorizationServersResponseBody interface {
 type ListAuthorizationServersResponseBody struct {
 	// The list of authorization servers.
 	AuthorizationServers []*ListAuthorizationServersResponseBodyAuthorizationServers `json:"AuthorizationServers,omitempty" xml:"AuthorizationServers,omitempty" type:"Repeated"`
-	// The number of entries to return per page in a paging query.
+	// The maximum number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ListAuthorizationServersResponseBodyAuthorizationServers struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The currently active issuer address.
+	// The currently effective issuer address.
 	//
 	// example:
 	//

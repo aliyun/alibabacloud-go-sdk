@@ -62,13 +62,13 @@ type ListSynchronizationJobsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100.
+	// The maximum number of entries per page during paging in a paged query. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to query the next page. If no more pages exist, this parameter is not returned.
+	// The token used to query the next page. If no next page exists, this parameter is not returned.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListSynchronizationJobsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The page size. Maximum value: 100.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type ListSynchronizationJobsRequest struct {
 	//
 	// example:
 	//
-	// target_001
+	// ["target_001"]
 	TargetIds []*string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty" type:"Repeated"`
-	// The type of the synchronization target. Valid values:
+	// The synchronization target type. Valid values:
 	//
 	// - identity_provider: identity provider
 	//
@@ -262,7 +262,7 @@ type ListSynchronizationJobsRequestFilters struct {
 	//
 	// qps
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the dynamic parameter.
+	// The values of the dynamic parameter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

@@ -120,7 +120,7 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// alibaba_cloud
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
-	// The creation time. The value is a UNIX timestamp in milliseconds.
+	// The creation time in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -142,35 +142,35 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	PrivilegeApplicationIds []*string `json:"PrivilegeApplicationIds,omitempty" xml:"PrivilegeApplicationIds,omitempty" type:"Repeated"`
 	// The cause of the privilege hosting or removal failure.
 	PrivilegeHostingError *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError `json:"PrivilegeHostingError,omitempty" xml:"PrivilegeHostingError,omitempty" type:"Struct"`
-	// The cloud account hosting status. Default value: hosting_unmanaged. Valid values:
+	// The cloud account hosting state. Default value: hosting_unmanaged. Valid values:
 	//
 	// - hosting_unmanaged: Unmanaged. The cloud account has not initiated hosting and is in the initial state.
 	//
-	// - hosting_pending: Hosting. The hosting task is submitted and executed asynchronously. You must wait for the hosting process to complete to enter the final state.
+	// - hosting_pending: Hosting. The hosting task is submitted and being executed asynchronously. Wait for the hosting process to complete before entering the final state.
 	//
-	// - hosting_completed: Hosting completed. The hosting process is executed successfully, and the relevant permission templates and hosting bindings take effect.
+	// - hosting_completed: Hosting completed. The cloud account hosting process is executed successfully, and the related permission templates and hosting bindings are in effect.
 	//
-	// - hosting_failed: Hosting failed. An exception occurs during the hosting process. You can view the failure cause and initiate hosting again.
+	// - hosting_failed: Hosting failed. The hosting process encounters an exception. You can view the cause of the failure and initiate hosting again.
 	//
-	// - hosting_removing: Removing. The removal task is submitted and executed asynchronously. You must wait for the removal process to complete to enter the final state.
+	// - hosting_removing: Removing. The remove hosting task is submitted and being executed asynchronously. Wait for the removal process to complete before entering the final state.
 	//
-	// - hosting_remove_failed: Removal failed. An exception occurs during the removal process. You can view the failure cause and initiate removal again.
+	// - hosting_remove_failed: Removal failed. The removal process encounters an exception. You can view the cause of the failure and initiate removal again.
 	//
 	// example:
 	//
 	// hosting_unmanaged
 	PrivilegeHostingState *string `json:"PrivilegeHostingState,omitempty" xml:"PrivilegeHostingState,omitempty"`
-	// The privilege switch status. Valid values:
+	// The privilege status. Valid values:
 	//
-	// - enabled: Enabled. The resource is active and can be used normally.
+	// - enabled: Enabled. The resource is in effect and can be used normally.
 	//
-	// - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore the resource.
+	// - disabled: Disabled. The resource is deactivated and no longer in effect. You can re-enable it to restore it.
 	//
 	// example:
 	//
 	// enabled
 	PrivilegeStatus *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
-	// The last update time. The value is a UNIX timestamp in milliseconds.
+	// The last update time in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -361,7 +361,7 @@ func (s *GetCloudAccountResponseBodyCloudAccount) Validate() error {
 type GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult struct {
 	// The error reason. This field returns a value when the health check status is unhealthy.
 	ErrorReason *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The last check time. The value is a UNIX timestamp in milliseconds.
+	// The last check time in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -544,7 +544,7 @@ func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig) Vali
 }
 
 type GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError struct {
-	// The failure error code.
+	// The error code of the failure.
 	//
 	// example:
 	//

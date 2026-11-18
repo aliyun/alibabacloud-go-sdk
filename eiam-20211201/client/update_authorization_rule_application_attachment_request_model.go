@@ -40,7 +40,7 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the parameter value is unique among different requests. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the parameter is unique among different requests. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
+	// The time range of the validity period. This parameter takes effect when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
 	// The validity type of the relationship. Valid values:
 	//
-	// - permanent: permanent
+	// - permanent: Permanent.
 	//
-	// - time_bound: custom time range
+	// - time_bound: Custom time range.
 	//
 	// This parameter is required.
 	//

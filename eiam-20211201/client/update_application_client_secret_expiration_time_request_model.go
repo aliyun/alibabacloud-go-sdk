@@ -44,7 +44,7 @@ type UpdateApplicationClientSecretExpirationTimeRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The client secret ID.
+	// The client secret.
 	//
 	// This parameter is required.
 	//

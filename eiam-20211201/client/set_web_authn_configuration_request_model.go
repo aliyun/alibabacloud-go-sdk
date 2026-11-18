@@ -22,21 +22,21 @@ type iSetWebAuthnConfigurationRequest interface {
 }
 
 type SetWebAuthnConfigurationRequest struct {
-	// List of AAGUIDs and their names.
+	// The list of AAGUIDs and their names.
 	Aaguids []*SetWebAuthnConfigurationRequestAaguids `json:"Aaguids,omitempty" xml:"Aaguids,omitempty" type:"Repeated"`
-	// Enable AAGUID verification.
+	// Specifies whether AAGUID verification is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAaguidVerification *bool `json:"EnableAaguidVerification,omitempty" xml:"EnableAaguidVerification,omitempty"`
-	// Enable WebAuthn authenticator MDS verification.
+	// Specifies whether MDS verification is enabled for WebAuthn authenticators.
 	//
 	// example:
 	//
 	// true
 	EnableMetadataServiceVerification *bool `json:"EnableMetadataServiceVerification,omitempty" xml:"EnableMetadataServiceVerification,omitempty"`
-	// Allow user self-registration of WebAuthn authenticators.
+	// Specifies whether users are allowed to self-register WebAuthn authenticators.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SetWebAuthnConfigurationRequest struct {
 	//
 	// true
 	EnableUserSelfRegistration *bool `json:"EnableUserSelfRegistration,omitempty" xml:"EnableUserSelfRegistration,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -121,13 +121,13 @@ func (s *SetWebAuthnConfigurationRequest) Validate() error {
 }
 
 type SetWebAuthnConfigurationRequestAaguids struct {
-	// AAGUID.
+	// AAGUID
 	//
 	// example:
 	//
 	// adce0002-35bc-c60a-648b-0b25f1f05503
 	Aaguid *string `json:"Aaguid,omitempty" xml:"Aaguid,omitempty"`
-	// AAGUID name.
+	// The AAGUID name.
 	//
 	// example:
 	//

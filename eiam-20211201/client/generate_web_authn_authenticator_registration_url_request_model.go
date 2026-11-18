@@ -32,7 +32,7 @@ type GenerateWebAuthnAuthenticatorRegistrationUrlRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// UserID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

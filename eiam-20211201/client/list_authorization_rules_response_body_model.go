@@ -24,13 +24,13 @@ type iListAuthorizationRulesResponseBody interface {
 type ListAuthorizationRulesResponseBody struct {
 	// The list of authorization rules.
 	AuthorizationRules []*ListAuthorizationRulesResponseBodyAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
-	// The number of entries per page in a paging query.
+	// The maximum number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned for the next page query.
+	// The token returned in the current response for querying the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizationRulesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,33 +117,31 @@ func (s *ListAuthorizationRulesResponseBody) Validate() error {
 }
 
 type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
-	// The authorization resource scope. Valid values:
+	// The scope of authorized resources. Valid values:
 	//
-	// - global: all resources under the project.
-	//
-	// - custom: specified resources under the project.
+	// - custom: Resources within the specified project scope.
 	//
 	// example:
 	//
-	// global
+	// custom
 	AuthorizationResourceScope *string `json:"AuthorizationResourceScope,omitempty" xml:"AuthorizationResourceScope,omitempty"`
 	// The creation type of the authorization rule. Valid values:
 	//
-	// - system_init: created by the system.
+	// - system_init: Created by the system.
 	//
-	// - user_custom: created by the user.
+	// - user_custom: Created by a user.
 	//
 	// example:
 	//
 	// user_custom
 	AuthorizationRuleCreationType *string `json:"AuthorizationRuleCreationType,omitempty" xml:"AuthorizationRuleCreationType,omitempty"`
-	// The authorization rule ID.
+	// The ID of the authorization rule.
 	//
 	// example:
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The authorization rule name.
+	// The name of the authorization rule.
 	//
 	// example:
 	//
@@ -151,15 +149,15 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	// The scenario label of the authorization rule. Valid values:
 	//
-	// - privileged_cloud_account: privileged cloud account scenario.
+	// - privileged_cloud_account: Privileged cloud account scenario.
 	//
-	// - asset: asset scenario.
+	// - asset: Asset scenario.
 	//
 	// example:
 	//
-	// Asset
+	// privileged_cloud_account
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
-	// The subject ID associated with the authorization rule.
+	// The ID of the subject associated with the authorization rule.
 	//
 	// example:
 	//
@@ -167,25 +165,27 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	AuthorizationRuleSubjectId *string `json:"AuthorizationRuleSubjectId,omitempty" xml:"AuthorizationRuleSubjectId,omitempty"`
 	// The subject scope of the authorization rule. Valid values:
 	//
-	// - shared: supports all subjects, including accounts and applications.
+	// - shared: Shared. A single rule can be used by multiple subjects that meet the rule constraints.
 	//
-	// - exclusive: exclusive type.
+	// - exclusive: Exclusive. A single rule can only be used by the specified subject.
 	//
 	// example:
 	//
 	// shared
 	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
-	// The subject type associated with the authorization rule. This parameter takes effect only when the subject scope is exclusive. Valid values:
+	// The subject type applicable to the authorization rule. For an exclusive rule, this field indicates the type of the specified subject. For a shared rule with a specified subject type, this field indicates the subject types that the rule can be associated with. Valid values:
 	//
-	// - application: application.
+	// - application: Application.
 	//
-	// - user: account.
+	// - user: Account. For a shared privileged cloud account rule, this value indicates the human user type and can be associated with accounts, user groups, and organizational units.
+	//
+	// > If the subject type is not specified for the rule, this field may be empty. The actual subjects associated with a shared rule are subject to the query results of subject associations.
 	//
 	// example:
 	//
 	// user
 	AuthorizationRuleSubjectType *string `json:"AuthorizationRuleSubjectType,omitempty" xml:"AuthorizationRuleSubjectType,omitempty"`
-	// The creation time, in UNIX timestamp format, measured in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -203,23 +203,23 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The project ID associated with the authorization rule.
+	// The ID of the project associated with the authorization rule.
 	//
 	// example:
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The authorization rule status. Valid values:
+	// The status of the authorization rule. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: The rule is enabled.
 	//
-	// - disabled: Disabled.
+	// - disabled: The rule is disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time, in UNIX timestamp format, measured in milliseconds.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

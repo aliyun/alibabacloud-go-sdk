@@ -26,7 +26,7 @@ type iListBrandsResponseBody interface {
 type ListBrandsResponseBody struct {
 	// The list of brands.
 	Brands []*ListBrandsResponseBodyBrands `json:"Brands,omitempty" xml:"Brands,omitempty" type:"Repeated"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of results per page during paging in a paged query.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type ListBrandsResponseBodyBrands struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The enabling status of system notifications.
+	// The system notification status.
 	//
 	// example:
 	//

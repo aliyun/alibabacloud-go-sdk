@@ -46,11 +46,11 @@ type ListOrganizationalUnitsForApplicationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The organizational unit IDs. A maximum of 100 organizational unit IDs can be specified in a single operation.
+	// The organizational unit IDs. You can specify up to 100 organizational unit IDs in a single request.
 	//
 	// example:
 	//
-	// ou_wovwffm62xifdziem7an7xxxxx
+	// ["ou_wovwffm62xifdziem7an7xxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The page number.
 	//

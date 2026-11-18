@@ -30,7 +30,7 @@ type ListCredentialProvidersRequest struct {
 	CredentialProviderIds []*string `json:"CredentialProviderIds,omitempty" xml:"CredentialProviderIds,omitempty" type:"Repeated"`
 	// The list of credential provider types.
 	CredentialProviderTypes []*string `json:"CredentialProviderTypes,omitempty" xml:"CredentialProviderTypes,omitempty" type:"Repeated"`
-	// The list of filter conditions.
+	// The list of filters.
 	Filter []*ListCredentialProvidersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -40,13 +40,13 @@ type ListCredentialProvidersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page in a paged query.
+	// The maximum number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
@@ -141,17 +141,17 @@ func (s *ListCredentialProvidersRequest) Validate() error {
 }
 
 type ListCredentialProvidersRequestFilter struct {
-	// The filter condition name. Valid values:
+	// The filter name. Valid values:
 	//
-	// - CredentialProviderName: the credential provider name.
+	// - CredentialProviderName: the credential provider name
 	//
-	// - CredentialProviderIdentifier: the credential provider identifier.
+	// - CredentialProviderIdentifier: the credential provider identifier
 	//
 	// example:
 	//
 	// CredentialProviderName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of filter condition values.
+	// The list of filter values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

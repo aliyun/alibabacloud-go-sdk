@@ -24,7 +24,7 @@ type GetInstanceModuleInfoRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The level-1 module identifier.
+	// The identifier of the level-1 module.
 	//
 	// This parameter is required.
 	//

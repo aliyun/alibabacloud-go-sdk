@@ -34,7 +34,7 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return per page in a paging query. Maximum value: 100.
+	// The number of entries per page for paging in a paged query. The maximum value is 100.
 	//
 	// example:
 	//
@@ -44,15 +44,15 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	//
 	//
-	// - pending: pending initialization.
+	// - pending: pending initialization
 	//
-	// - creating: being created.
+	// - creating: being created
 	//
-	// - running: running.
+	// - running: running
 	//
-	// - deleting: being deleted.
+	// - deleting: being deleted
 	//
-	// This filter parameter does not take effect when NetworkAccessEndpointType is set to shared.
+	// This filter does not take effect when NetworkAccessEndpointType is set to shared.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListNetworkAccessEndpointsRequest struct {
 	NetworkAccessEndpointStatus *string `json:"NetworkAccessEndpointStatus,omitempty" xml:"NetworkAccessEndpointStatus,omitempty"`
 	// The type of the network access endpoint. Valid values:
 	//
-	// - shared: shared network access endpoint.
+	// - shared: shared network access endpoint
 	//
-	// - private: private network access endpoint.
+	// - private: private network access endpoint
 	//
 	// Default value: private.
 	//
@@ -70,7 +70,7 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
-	// The pagination token. Set the value to the NextToken value returned from the previous API call. Leave this parameter empty for the first call.
+	// The pagination token. Set this parameter to the value of NextToken returned from the previous API call. Leave this parameter empty for the first call.
 	//
 	// example:
 	//

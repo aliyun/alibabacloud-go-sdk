@@ -30,7 +30,7 @@ type UpdateUserPasswordRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The new password of the account. For more information about the password format, see the "Password Policies" topic.
+	// The new password for the account. The password format must comply with the password policy.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type UpdateUserPasswordRequest struct {
 	//
 	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether to enable forcible password change upon first logon. Default value: disabled. Valid values:
+	// The forced password update status. This feature is disabled by default. Valid values:
 	//
-	// 	- enabled
+	// - enabled: Enabled.
 	//
-	// 	- disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
@@ -56,11 +56,15 @@ type UpdateUserPasswordRequest struct {
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The methods for receiving password notifications.
+	// The list of password notification channels. Valid values:
+	//
+	// - email: Email.
+	//
+	// - sms: SMS.
 	//
 	// example:
 	//
-	// sms
+	// ["sms"]
 	UserNotificationChannels []*string `json:"UserNotificationChannels,omitempty" xml:"UserNotificationChannels,omitempty" type:"Repeated"`
 }
 

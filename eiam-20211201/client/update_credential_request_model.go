@@ -22,7 +22,7 @@ type iUpdateCredentialRequest interface {
 }
 
 type UpdateCredentialRequest struct {
-	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. Generate a parameter value on your client and ensure that the value is unique across different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -121,7 +121,7 @@ func (s *UpdateCredentialRequest) Validate() error {
 type UpdateCredentialRequestCredentialContent struct {
 	// The credential content for the API key credential type.
 	ApiKeyContent *UpdateCredentialRequestCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// The credential content for the OAuth client credential type.
+	// The credential content for the OAuth client authentication credential type.
 	OAuthClientContent *UpdateCredentialRequestCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -166,7 +166,7 @@ func (s *UpdateCredentialRequestCredentialContent) Validate() error {
 }
 
 type UpdateCredentialRequestCredentialContentApiKeyContent struct {
-	// The API key content.
+	// The content of the API key.
 	//
 	// example:
 	//

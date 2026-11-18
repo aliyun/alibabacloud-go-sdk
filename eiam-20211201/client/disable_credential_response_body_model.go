@@ -14,7 +14,7 @@ type iDisableCredentialResponseBody interface {
 }
 
 type DisableCredentialResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

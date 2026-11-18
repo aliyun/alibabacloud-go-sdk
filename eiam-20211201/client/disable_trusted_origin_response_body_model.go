@@ -14,7 +14,7 @@ type iDisableTrustedOriginResponseBody interface {
 }
 
 type DisableTrustedOriginResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

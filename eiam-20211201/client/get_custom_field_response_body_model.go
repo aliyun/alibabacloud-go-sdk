@@ -154,7 +154,7 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// 17642960730
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The permissions on the user portal side.
+	// The user portal permissions.
 	//
 	// example:
 	//

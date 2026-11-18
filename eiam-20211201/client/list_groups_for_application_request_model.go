@@ -38,11 +38,11 @@ type ListGroupsForApplicationRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The list of group IDs. You can specify up to 100 group IDs in a single operation.
+	// The list of group IDs. A single operation supports up to 100 group IDs.
 	//
 	// example:
 	//
-	// group_miu8e4t4d7i4u7uwezgr54xxxx
+	// ["group_miu8e4t4d7i4u7uwezgr54xxxx"]
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The instance ID.
 	//

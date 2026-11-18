@@ -312,7 +312,7 @@ type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmCon
 	//
 	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The Azure resource group name.
+	// The name of the Azure resource group.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfi
 	//
 	// turnkey-axiom-475109-xx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sub claim corresponding to the service account.
+	// The sub corresponding to the service account.
 	//
 	// example:
 	//
@@ -463,7 +463,7 @@ func (s *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGeneri
 }
 
 type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetesConfig struct {
-	// The K8s namespace.
+	// The Kubernetes namespace.
 	//
 	// example:
 	//
@@ -475,7 +475,7 @@ type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetes
 	//
 	// my-pod-
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The K8s service account name.
+	// The Kubernetes service account name.
 	//
 	// example:
 	//

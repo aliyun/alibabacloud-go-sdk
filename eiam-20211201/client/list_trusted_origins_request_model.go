@@ -40,7 +40,7 @@ type ListTrustedOriginsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
@@ -52,11 +52,7 @@ type ListTrustedOriginsRequest struct {
 	//
 	// https://console.qoder.com
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The status filter. Valid values:
-	//
-	// - Enabled: Enabled.
-	//
-	// - Disabled: Disabled.
+	// The status filter.
 	//
 	// example:
 	//
@@ -66,13 +62,13 @@ type ListTrustedOriginsRequest struct {
 	//
 	// example:
 	//
-	// Qoder Production Console
+	// Qoder production console
 	TrustOriginName *string `json:"TrustOriginName,omitempty" xml:"TrustOriginName,omitempty"`
 	// The trusted origin scene filter.
 	//
 	// example:
 	//
-	// iframe_embed
+	// ["iframe_embed"]
 	TrustedOriginScene []*string `json:"TrustedOriginScene,omitempty" xml:"TrustedOriginScene,omitempty" type:"Repeated"`
 }
 

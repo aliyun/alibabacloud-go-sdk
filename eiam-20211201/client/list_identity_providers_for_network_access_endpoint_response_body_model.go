@@ -20,9 +20,9 @@ type iListIdentityProvidersForNetworkAccessEndpointResponseBody interface {
 }
 
 type ListIdentityProvidersForNetworkAccessEndpointResponseBody struct {
-	// The IdPs under the network access endpoint.
+	// The collection of identity providers (IdPs) for the network access endpoint.
 	IdentityProvidersForNetworkAccessEndpoint []*ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProvidersForNetworkAccessEndpoint `json:"IdentityProvidersForNetworkAccessEndpoint,omitempty" xml:"IdentityProvidersForNetworkAccessEndpoint,omitempty" type:"Repeated"`
-	// The pagination token returned by this call.
+	// The next token returned in the response.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListIdentityProvidersForNetworkAccessEndpointResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of results.
 	//
 	// example:
 	//

@@ -38,25 +38,19 @@ type iCreateCustomFieldRequest interface {
 }
 
 type CreateCustomFieldRequest struct {
-	// The default value of the field.
-	//
-	// If configuration items exist for the type, the default value must be one of the configuration items and must be in the enabled state. Maximum length: 1024 characters.
+	// The default value of the field. If the data type has configuration items, the default value must be one of the enabled configuration items. The maximum length is 1,024 characters.
 	//
 	// example:
 	//
 	// string
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The field description.
-	//
-	// Maximum length: 512 characters.
+	// The description of the field. The maximum length is 512 characters.
 	//
 	// example:
 	//
-	// 字段测试
+	// Test field
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to encrypt the field.
-	//
-	// If this parameter is set to true, the data value is encrypted at the storage layer.
+	// Specifies whether the field is encrypted. If you set this parameter to true, the underlying system encrypts and stores the data value.
 	//
 	// example:
 	//
@@ -72,15 +66,15 @@ type CreateCustomFieldRequest struct {
 	//
 	// user
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The field value configuration items.
+	// The configuration items for the field value.
 	FieldDataConfig *CreateCustomFieldRequestFieldDataConfig `json:"FieldDataConfig,omitempty" xml:"FieldDataConfig,omitempty" type:"Struct"`
 	// The data type of the field. Valid values:
 	//
 	// - string: string.
 	//
-	// - number: number. Maximum length: 32 characters. Positive integers and decimals are supported.
+	// - number: number. The maximum length is 32 characters. Positive integers and decimals are supported.
 	//
-	// - boolean: Boolean.
+	// - boolean: Boolean value.
 	//
 	// This parameter is required.
 	//
@@ -88,9 +82,7 @@ type CreateCustomFieldRequest struct {
 	//
 	// string
 	FieldDataType *string `json:"FieldDataType,omitempty" xml:"FieldDataType,omitempty"`
-	// The field display name.
-	//
-	// Maximum length: 64 characters.
+	// The field display name. The maximum length is 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -100,11 +92,11 @@ type CreateCustomFieldRequest struct {
 	FieldDisplayName *string `json:"FieldDisplayName,omitempty" xml:"FieldDisplayName,omitempty"`
 	// The field display type. Valid values:
 	//
-	// - input: text input box. Supported data types: string and number.
+	// - input: text box. The supported data types are string and number.
 	//
-	// - select: drop-down list. Supported data types: string and boolean.
+	// - select: drop-down list. The supported data types are string and boolean.
 	//
-	// - checkbox: multi-select box. Supported data types: string.
+	// - checkbox: check box. The supported data type is string.
 	//
 	// This parameter is required.
 	//
@@ -112,9 +104,7 @@ type CreateCustomFieldRequest struct {
 	//
 	// input
 	FieldDisplayType *string `json:"FieldDisplayType,omitempty" xml:"FieldDisplayType,omitempty"`
-	// The field identifier.
-	//
-	// Maximum length: 40 characters. The value can contain lowercase letters and underscores, and cannot start with an underscore.
+	// The field identifier. The maximum length is 40 characters. The value can contain lowercase English letters and underscores, and cannot start with an underscore.
 	//
 	// This parameter is required.
 	//
@@ -136,21 +126,19 @@ type CreateCustomFieldRequest struct {
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// Specifies whether the field value is unique.
-	//
-	// If this parameter is set to true, the field value must be unique within the corresponding entity type and cannot be duplicated.
+	// Specifies whether the field value is unique. If you set this parameter to true, the value of this field must be unique within the corresponding entity type and cannot be duplicated.
 	//
 	// example:
 	//
 	// false
 	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
-	// The field permission on the portal side. Valid values:
+	// The field permissions on the user portal. Valid values:
 	//
-	// - hide: Not visible on the portal side.
+	// - hide: invisible on the user portal
 	//
-	// - read_only: Visible on the portal side but cannot be edited or updated.
+	// - read_only: visible but not editable on the user portal
 	//
-	// - read_write: Visible and editable on the portal side.
+	// - read_write: visible and editable on the user portal
 	//
 	// example:
 	//
@@ -293,11 +281,11 @@ func (s *CreateCustomFieldRequest) Validate() error {
 }
 
 type CreateCustomFieldRequestFieldDataConfig struct {
-	// The list of field configuration items. Maximum number of items: 100.
+	// The list of field configuration items. The maximum number of items is 100.
 	//
 	// example:
 	//
-	// string
+	// [{"DisplayName":"Option 1","Value":"option1","Status":"enabled"}]
 	Items []*CreateCustomFieldRequestFieldDataConfigItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -332,9 +320,7 @@ func (s *CreateCustomFieldRequestFieldDataConfig) Validate() error {
 }
 
 type CreateCustomFieldRequestFieldDataConfigItems struct {
-	// The display name of the configuration item.
-	//
-	// Maximum length: 128 characters.
+	// The display name of the configuration item. The maximum length is 128 characters.
 	//
 	// example:
 	//
@@ -342,19 +328,17 @@ type CreateCustomFieldRequestFieldDataConfigItems struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The status of the configuration item. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: enabled.
 	//
-	// - disabled: Disabled.
+	// - disabled: disabled.
 	//
-	// If a configuration item is disabled, it cannot be used when creating or updating entity field values.
+	// If a configuration item is disabled, it is unavailable when you create or update the field value of the entity.
 	//
 	// example:
 	//
 	// string
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The display value of the configuration item.
-	//
-	// Maximum length: 64 characters.
+	// The value of the configuration item. The maximum length is 64 characters.
 	//
 	// example:
 	//

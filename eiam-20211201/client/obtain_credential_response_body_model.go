@@ -62,19 +62,19 @@ func (s *ObtainCredentialResponseBody) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredential struct {
-	// The creation time, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The content of the credential.
+	// The credential content.
 	CredentialContent *ObtainCredentialResponseBodyCredentialCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
 	// The creation type of the credential. Valid values:
 	//
 	// - system_init: Created by the system.
 	//
-	// - user_custom: Created by the user.
+	// - user_custom: Created by a user.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The type of the subject to which the credential belongs. Valid values:
+	// The subject type to which the credential belongs. Valid values:
 	//
 	// - authentication_token_provider: Authentication token provider.
 	//
@@ -136,9 +136,9 @@ type ObtainCredentialResponseBodyCredential struct {
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - api_key: API key credential.
+	// - api_key: API key authentication credential.
 	//
-	// - oauth_client: OAuth client credential.
+	// - oauth_client: OAuth client authentication credential.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// credential_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the account to which the credential is exclusively assigned.
+	// The ID of the exclusive user for the credential.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time, in UNIX timestamp format. Unit: milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -351,9 +351,9 @@ func (s *ObtainCredentialResponseBodyCredential) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContent struct {
-	// The content of the API key credential.
+	// The credential content for the API key credential type.
 	ApiKeyContent *ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// The content of the OAuth client credential.
+	// The credential content for the OAuth client authentication credential type.
 	OAuthClientContent *ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -398,7 +398,7 @@ func (s *ObtainCredentialResponseBodyCredentialCredentialContent) Validate() err
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent struct {
-	// The API key value.
+	// The content of the API key.
 	//
 	// example:
 	//

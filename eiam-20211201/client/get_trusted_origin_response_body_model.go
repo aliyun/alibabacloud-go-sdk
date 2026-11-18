@@ -16,7 +16,7 @@ type iGetTrustedOriginResponseBody interface {
 }
 
 type GetTrustedOriginResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetTrustedOriginResponseBody) Validate() error {
 }
 
 type GetTrustedOriginResponseBodyTrustedOrigin struct {
-	// The creation time. The time is in RFC 3339 format and in the UTC time zone.
+	// The creation time. The time is in the RFC 3339 format and the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -100,9 +100,9 @@ type GetTrustedOriginResponseBodyTrustedOrigin struct {
 	//
 	// to_example
 	TrustedOriginId *string `json:"TrustedOriginId,omitempty" xml:"TrustedOriginId,omitempty"`
-	// The trusted origin scenes.
+	// The trusted origin scenario.
 	TrustedOriginScene []*string `json:"TrustedOriginScene,omitempty" xml:"TrustedOriginScene,omitempty" type:"Repeated"`
-	// The update time. The time is in RFC 3339 format and in the UTC time zone.
+	// The update time. The time is in the RFC 3339 format and the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

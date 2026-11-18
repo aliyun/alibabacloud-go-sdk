@@ -52,7 +52,7 @@ type CheckInstanceModuleStatusRequest struct {
 	//
 	// urn:alibaba:idaas:license:label:template:app
 	ResourceLabelKey *string `json:"ResourceLabelKey,omitempty" xml:"ResourceLabelKey,omitempty"`
-	// The name of the resource label.
+	// The resource label name.
 	//
 	// example:
 	//

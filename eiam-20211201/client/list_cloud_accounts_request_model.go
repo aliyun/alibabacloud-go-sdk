@@ -30,7 +30,7 @@ type ListCloudAccountsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records per page.
+	// The maximum number of entries per page.
 	//
 	// - If this parameter is not specified, the default value is 20.
 	//
@@ -40,9 +40,9 @@ type ListCloudAccountsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that identifies the start position of the next page.
+	// The token that specifies the starting position of the next page.
 	//
-	// - If this parameter is not specified, the query starts from the first page.
+	// - If this parameter is not specified, the query starts from the first page by default.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ func (s *ListCloudAccountsRequest) Validate() error {
 }
 
 type ListCloudAccountsRequestFilter struct {
-	// The filter field name. Valid values:
+	// The name of the filter field. Valid values:
 	//
-	// - CloudAccountId: the cloud account ID.
+	// - CloudAccountId: the ID of the cloud account.
 	//
 	// - CloudAccountExternalId: the external unique identifier of the cloud account.
 	//
-	// - CloudAccountVendorType: the cloud account type.
+	// - CloudAccountVendorType: the type of the cloud account.
 	//
 	// example:
 	//
 	// CloudAccountId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of filter field values.
+	// The list of values for the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

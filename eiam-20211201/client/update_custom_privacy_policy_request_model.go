@@ -24,9 +24,9 @@ type iUpdateCustomPrivacyPolicyRequest interface {
 }
 
 type UpdateCustomPrivacyPolicyRequest struct {
-	// The details of the custom privacy policy content.
+	// The details of the custom terms.
 	CustomPrivacyPolicyContents []*UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents `json:"CustomPrivacyPolicyContents,omitempty" xml:"CustomPrivacyPolicyContents,omitempty" type:"Repeated"`
-	// The ID of the custom privacy policy.
+	// The ID of the custom terms.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UpdateCustomPrivacyPolicyRequest struct {
 	//
 	// pp_neagxpoznsjdtxxxxx
 	CustomPrivacyPolicyId *string `json:"CustomPrivacyPolicyId,omitempty" xml:"CustomPrivacyPolicyId,omitempty"`
-	// The name of the custom privacy policy.
+	// The name of the custom terms.
 	//
 	// example:
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyName *string `json:"CustomPrivacyPolicyName,omitempty" xml:"CustomPrivacyPolicyName,omitempty"`
-	// The default language code for the privacy policy items. The value is the LanguageCode returned by the ListLanguages API operation.
+	// The default language code for the terms. The value is returned by the LanguageCode parameter in the response of the ListLanguages operation.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateCustomPrivacyPolicyRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The consent type for the custom privacy policy.
+	// The consent type for the custom terms.
 	//
 	// example:
 	//
@@ -138,15 +138,15 @@ func (s *UpdateCustomPrivacyPolicyRequest) Validate() error {
 }
 
 type UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents struct {
-	// The items of the custom privacy policy.
+	// The items of the custom terms.
 	CustomPrivacyPolicyItems []*UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems `json:"CustomPrivacyPolicyItems,omitempty" xml:"CustomPrivacyPolicyItems,omitempty" type:"Repeated"`
-	// The tip for the custom privacy policy content.
+	// The prompt for the custom terms.
 	//
 	// example:
 	//
 	// Please read and agree：
 	CustomPrivacyPolicyTip *string `json:"CustomPrivacyPolicyTip,omitempty" xml:"CustomPrivacyPolicyTip,omitempty"`
-	// The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages API operation.
+	// The language of the custom terms. The value is returned by the LanguageCode parameter in the response of the ListLanguages operation.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ func (s *UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents) Validate()
 }
 
 type UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems struct {
-	// The name of the custom privacy policy item.
+	// The name of the custom terms item.
 	//
 	// example:
 	//
 	// Item Name
 	CustomPrivacyPolicyItemName *string `json:"CustomPrivacyPolicyItemName,omitempty" xml:"CustomPrivacyPolicyItemName,omitempty"`
-	// The access URL of the custom privacy policy item. The URL must start with https://.
+	// The URL of the custom terms item. The URL must start with https://.
 	//
 	// example:
 	//

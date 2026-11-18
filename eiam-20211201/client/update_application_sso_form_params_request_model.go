@@ -18,7 +18,7 @@ type iUpdateApplicationSsoFormParamsRequest interface {
 }
 
 type UpdateApplicationSsoFormParamsRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type UpdateApplicationSsoFormParamsRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The parameters for creating the application template.
+	// The application template creation parameters.
 	//
 	// This parameter is required.
 	ApplicationTemplateParams []*UpdateApplicationSsoFormParamsRequestApplicationTemplateParams `json:"ApplicationTemplateParams,omitempty" xml:"ApplicationTemplateParams,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -89,13 +89,13 @@ func (s *UpdateApplicationSsoFormParamsRequest) Validate() error {
 }
 
 type UpdateApplicationSsoFormParamsRequestApplicationTemplateParams struct {
-	// The name of a parameter for creating the application template.
+	// The name of the application template creation parameter.
 	//
 	// example:
 	//
 	// aliyunUid
 	TemplateParamName *string `json:"TemplateParamName,omitempty" xml:"TemplateParamName,omitempty"`
-	// The value of the parameter for creating the application template.
+	// The value of the application template creation parameter.
 	//
 	// example:
 	//

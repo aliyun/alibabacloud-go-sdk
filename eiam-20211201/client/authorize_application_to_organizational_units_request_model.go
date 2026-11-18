@@ -42,13 +42,13 @@ type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
+	// The list of organizational unit IDs. A maximum of 100 organizational unit IDs are supported in a single operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ou_wovwffm62xifdziem7an7xxxxx
+	// ["ou_wovwffm62xifdziem7an7xxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 

@@ -54,19 +54,19 @@ type ListResourceServerScopesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page in a paged query.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token (NextToken) used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
+	// The pagination token for the next page. Set this parameter to the value of the NextToken parameter returned from the previous API call. Leave this parameter empty for the first query.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token for the previous page. Set this parameter to the PreviousToken value returned in the previous API call.
+	// The pagination token for the previous page. Set this parameter to the value of the PreviousToken parameter returned from the previous API call.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type ListResourceServerScopesRequest struct {
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
 	// The list of scope permission IDs.
 	ResourceServerScopeIds []*string `json:"ResourceServerScopeIds,omitempty" xml:"ResourceServerScopeIds,omitempty" type:"Repeated"`
-	// The scope permission name.
+	// The name of the scope permission.
 	//
 	// example:
 	//
-	// 读取全部用户
+	// Read all users
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// The scope permission type.
+	// The type of the scope permission.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// The scope permission value.
+	// The value of the scope permission.
 	//
 	// example:
 	//

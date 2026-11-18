@@ -18,7 +18,7 @@ type iEnableApplicationFederatedCredentialRequest interface {
 }
 
 type EnableApplicationFederatedCredentialRequest struct {
-  // The ID of the application federated credential.
+  // The application federated credential ID.
   // 
   // This parameter is required.
   // 
@@ -26,7 +26,7 @@ type EnableApplicationFederatedCredentialRequest struct {
   // 
   // afc_aaaaa1111
   ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-  // The ID of the application.
+  // The application ID.
   // 
   // This parameter is required.
   // 
@@ -34,7 +34,7 @@ type EnableApplicationFederatedCredentialRequest struct {
   // 
   // app_mkv7rgt4d7i4u7zqtzev2mxxxx
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-  // The ID of the instance.
+  // The instance ID.
   // 
   // This parameter is required.
   // 

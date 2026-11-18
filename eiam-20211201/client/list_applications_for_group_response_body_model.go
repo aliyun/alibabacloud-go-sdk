@@ -18,15 +18,15 @@ type iListApplicationsForGroupResponseBody interface {
 }
 
 type ListApplicationsForGroupResponseBody struct {
-	// List of applications authorized for access.
+	// The list of applications that the group is authorized to access.
 	Applications []*ListApplicationsForGroupResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListApplicationsForGroupResponseBody) Validate() error {
 }
 
 type ListApplicationsForGroupResponseBodyApplications struct {
-	// Application ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Application role list.
+	// The list of application roles. No roles are returned for SAML applications.
 	ApplicationRoles []*ListApplicationsForGroupResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// Whether direct authorization exists. Valid values:
+	// Indicates whether direct authorization exists. Valid values:
 	//
-	// - true: A direct authorization relationship record exists between the application and the group.
+	// - true: A direct authorization record exists between the application and the group.
 	//
-	// - false: No direct authorization relationship record exists between the application and the group.
+	// - false: No direct authorization record exists between the application and the group.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// Whether inherited authorization exists.
+	// Indicates whether inherited authorization exists.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ func (s *ListApplicationsForGroupResponseBodyApplications) Validate() error {
 }
 
 type ListApplicationsForGroupResponseBodyApplicationsApplicationRoles struct {
-	// Application role ID.
+	// The application role ID.
 	//
 	// example:
 	//

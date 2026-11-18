@@ -86,13 +86,13 @@ type GetApplicationTemplateResponseBodyApplicationTemplate struct {
 	//
 	// Alibaba Cloud SSO
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The help document URL of the application template.
+	// The URL of the help document for the application template.
 	//
 	// example:
 	//
 	// https://example.com/document_detail/409xxx.html
 	HelpDocumentUrl *string `json:"HelpDocumentUrl,omitempty" xml:"HelpDocumentUrl,omitempty"`
-	// The logo URL of the application template.
+	// The URL of the application template logo.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type GetApplicationTemplateResponseBodyApplicationTemplate struct {
 	//
 	// bastionhost
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	// The sale information of the application template.
+	// The sales information of the application template.
 	SaleInfo *GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo `json:"SaleInfo,omitempty" xml:"SaleInfo,omitempty" type:"Struct"`
-	// The console URL of the cloud service that manages the application template.
+	// The URL of the console for the cloud service that manages the application template.
 	//
 	// example:
 	//

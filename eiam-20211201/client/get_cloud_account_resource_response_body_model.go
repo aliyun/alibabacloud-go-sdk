@@ -106,7 +106,7 @@ type GetCloudAccountResourceResponseBodyCloudAccountResource struct {
 	//
 	// Cloud account resource used for SSO
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

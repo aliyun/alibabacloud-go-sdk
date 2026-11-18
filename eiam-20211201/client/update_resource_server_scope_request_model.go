@@ -20,7 +20,7 @@ type iUpdateResourceServerScopeRequest interface {
 }
 
 type UpdateResourceServerScopeRequest struct {
-	// The ID of the ResourceServer application.
+	// The application ID of the resource server.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateResourceServerScopeRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the scope permission for the resource server.
+	// The scope permission ID of the resource server.
 	//
 	// This parameter is required.
 	//

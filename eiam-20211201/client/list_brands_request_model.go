@@ -28,7 +28,7 @@ type ListBrandsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of results per page during paging in a paged query.
 	//
 	// example:
 	//

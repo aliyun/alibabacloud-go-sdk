@@ -42,13 +42,13 @@ type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organizational unit IDs. You can specify up to 100 organizational unit IDs in a single request.
+	// The list of organizational unit IDs. You can specify up to 100 organizational unit IDs in a single operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ou_wovwffm62xifdziem7an7xxxxx
+	// ["ou_wovwffm62xifdziem7an7xxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 

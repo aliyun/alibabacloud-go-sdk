@@ -40,7 +40,7 @@ type RemoveUsersFromGroupRequest struct {
 	//
 	// example:
 	//
-	// [ou_001]
+	// ["ou_001"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

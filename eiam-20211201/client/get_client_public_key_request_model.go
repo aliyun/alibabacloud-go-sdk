@@ -26,7 +26,7 @@ type GetClientPublicKeyRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the application ClientPublicKey.
+	// The ID of the client public key for the application.
 	//
 	// This parameter is required.
 	//

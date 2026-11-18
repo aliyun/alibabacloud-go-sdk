@@ -24,13 +24,13 @@ type ListUsersForGroupResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the query.
+	// The total number of matched entries. The maximum number of entries returned on a single page is specified by the PageSize parameter.
 	//
 	// example:
 	//
 	// 1000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of account objects.
+	// The list of account object information.
 	Users []*ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,9 +83,7 @@ func (s *ListUsersForGroupResponseBody) Validate() error {
 }
 
 type ListUsersForGroupResponseBodyUsers struct {
-	// The source ID of the group member relationship.
-	//
-	// If the group is created in EIAM, the value of this parameter is the instance ID. For other types of groups, the value is the enterprise ID from the source. For example, if the group is imported from DingTalk, the value is the corpId of the DingTalk enterprise.
+	// The source ID of the group member relationship. For the self-managed type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, if the source is DingTalk, the value is the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
@@ -93,15 +91,15 @@ type ListUsersForGroupResponseBodyUsers struct {
 	GroupMemberRelationSourceId *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
 	// The source type of the group member relationship. Valid values:
 	//
-	// build_in: The group is created in EIAM.
+	// - build_in: self-managed
 	//
-	// ding_talk: The group is imported from DingTalk.
+	// - ding_talk: imported from DingTalk
 	//
-	// ad: The group is imported from Active Directory (AD).
+	// - ad: imported from AD
 	//
-	// ldap: The group is imported from LDAP.
+	// - ldap: imported from LDAP
 	//
-	// we_com: The group is imported from WeCom.
+	// - we_com: imported from WeCom
 	//
 	// example:
 	//

@@ -40,19 +40,19 @@ type ListUsersForAuthorizationRuleRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of records to return per page.
 	//
-	// - Default value: 20.
+	// - If this parameter is not specified, the default value is 20.
 	//
-	// - Maximum value: 100.
+	// - The maximum value cannot exceed 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the starting position for the next page of results.
+	// The token that identifies the starting position of the next page.
 	//
-	// - If not specified, the query starts from the first page.
+	// - If this parameter is not specified, the query starts from the first page by default.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListUsersForAuthorizationRuleRequestFilter struct {
 	//
 	// UserId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the filter field.
+	// The list of values for the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

@@ -24,13 +24,13 @@ type iListCloudAccountResourcesResponseBody interface {
 type ListCloudAccountResourcesResponseBody struct {
 	// The list of cloud account resources.
 	CloudAccountResources []*ListCloudAccountResourcesResponseBodyCloudAccountResources `json:"CloudAccountResources,omitempty" xml:"CloudAccountResources,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page during paging in a paged query.
+	// The maximum number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned by the current call for the next pagination query.
+	// The pagination token returned in the current call. You can use this token for the next paginated query.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListCloudAccountResourcesResponseBodyCloudAccountResources struct {
 	//
 	// 123456789012xxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The unique remote identifier of the resource entity.
+	// The identifier of the resource entity, which is a unique remote identifier.
 	//
 	// example:
 	//
 	// System:AliyunIntelligentcockpitReadOnlyAccessexample
 	CloudAccountResourceEntityId *string `json:"CloudAccountResourceEntityId,omitempty" xml:"CloudAccountResourceEntityId,omitempty"`
-	// The type of the resource entity. Valid values: ram_role.
+	// The resource entity type. Valid values: ram_role.
 	//
 	// example:
 	//
@@ -268,31 +268,31 @@ func (s *ListCloudAccountResourcesResponseBodyCloudAccountResources) Validate() 
 }
 
 type ListCloudAccountResourcesResponseBodyCloudAccountResourcesCloudAccountResourceMeta struct {
-	// The JSON string of the Tencent Cloud CAM policy document. This parameter is returned only for Tencent Cloud accounts.
+	// The JSON document of the Tencent Cloud CAM policy. This is returned only for Tencent Cloud accounts.
 	//
 	// example:
 	//
 	// {"Version":"1","Statement":[]}
 	CamPolicyDocument *string `json:"CamPolicyDocument,omitempty" xml:"CamPolicyDocument,omitempty"`
-	// The type of the Tencent Cloud CAM policy. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
+	// The type of the Tencent Cloud CAM policy. Valid values: qcs and local. This is returned only for Tencent Cloud accounts.
 	//
 	// example:
 	//
 	// qcs
 	CamPolicyType *string `json:"CamPolicyType,omitempty" xml:"CamPolicyType,omitempty"`
-	// The JSON string of the AWS IAM policy document. This parameter is returned only for AWS cloud accounts.
+	// The JSON document of the AWS IAM policy. This is returned only for AWS cloud accounts.
 	//
 	// example:
 	//
 	// {"Version":"2012-10-17","Statement":[]}
 	IamPolicyDocument *string `json:"IamPolicyDocument,omitempty" xml:"IamPolicyDocument,omitempty"`
-	// The type of the AWS IAM policy. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
+	// The type of the AWS IAM policy. Valid values: aws and local. This is returned only for AWS cloud accounts.
 	//
 	// example:
 	//
 	// aws
 	IamPolicyType *string `json:"IamPolicyType,omitempty" xml:"IamPolicyType,omitempty"`
-	// The JSON string of the RAM policy document. This parameter is returned only by the Get operation.
+	// The JSON document of the RAM policy. This is returned only by the Get API operation.
 	//
 	// example:
 	//

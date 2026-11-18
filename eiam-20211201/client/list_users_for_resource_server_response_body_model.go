@@ -22,13 +22,13 @@ type iListUsersForResourceServerResponseBody interface {
 }
 
 type ListUsersForResourceServerResponseBody struct {
-	// The number of entries per page in a paged query.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListUsersForResourceServerResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListUsersForResourceServerResponseBodyUsers struct {
 	//
 	// idaas_qsw77zl5vrllwzyrrfwbmpxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of granted scope permissions.
+	// The list of authorized scopes.
 	ResourceServerScopes []*ListUsersForResourceServerResponseBodyUsersResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 	// The account ID.
 	//
@@ -182,13 +182,13 @@ func (s *ListUsersForResourceServerResponseBodyUsers) Validate() error {
 }
 
 type ListUsersForResourceServerResponseBodyUsersResourceServerScopes struct {
-	// The scope permission ID.
+	// The scope ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The scope permission name.
+	// The scope name.
 	//
 	// example:
 	//

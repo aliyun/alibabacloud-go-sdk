@@ -89,9 +89,9 @@ type ListApplicationsForUserResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The list of application roles.
+	// The list of application roles. No roles are returned for SAML applications.
 	ApplicationRoles []*ListApplicationsForUserResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// Indicates whether a direct authorization exists. Valid values:
+	// Indicates whether direct authorization exists. Valid values:
 	//
 	// - true: A direct authorization record exists between the application and the account.
 	//
@@ -101,11 +101,11 @@ type ListApplicationsForUserResponseBodyApplications struct {
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// Indicates whether an inherited authorization exists. Valid values:
+	// Indicates whether inherited authorization exists. Valid values:
 	//
-	// - true: A direct authorization record exists between the application and a parent organization or a group to which the account belongs.
+	// - true: A direct authorization record exists between the application and at least one parent organization of the account or a group to which the account belongs.
 	//
-	// - false: No direct authorization record exists between the application and any of the parent organizations or groups to which the account belongs.
+	// - false: No direct authorization record exists between the application and any parent organization of the account or any group to which the account belongs.
 	//
 	// example:
 	//
@@ -171,19 +171,19 @@ func (s *ListApplicationsForUserResponseBodyApplications) Validate() error {
 }
 
 type ListApplicationsForUserResponseBodyApplicationsApplicationRoles struct {
-	// The ID of the application role.
+	// The application role ID.
 	//
 	// example:
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// Indicates whether the role is directly assigned to the user.
+	// Indicates whether direct authorization exists.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// Indicates whether the role is inherited from an organization or a group to which the user belongs.
+	// Indicates whether inherited authorization exists.
 	//
 	// example:
 	//

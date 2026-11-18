@@ -40,9 +40,9 @@ type ListCloudAccountRolesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records per page.
+	// The maximum number of entries to return per page.
 	//
-	// - If this parameter is not specified, the default value is 20.
+	// - If you do not specify this parameter, the default value is 20.
 	//
 	// - The maximum value is 100.
 	//
@@ -50,9 +50,9 @@ type ListCloudAccountRolesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the start position of the next page.
+	// The token that specifies the starting position of the next page.
 	//
-	// - If this parameter is not specified, the query starts from the first page.
+	// - If you do not specify this parameter, the query starts from the first page by default.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *ListCloudAccountRolesRequest) Validate() error {
 }
 
 type ListCloudAccountRolesRequestFilter struct {
-	// The filter field name. Valid values:
+	// The name of the filter field. Valid values:
 	//
 	// - CloudAccountRoleId: the cloud role ID.
 	//
 	// - CloudAccountRoleName: the cloud role name.
 	//
-	// - CloudAccountRoleExternalId: the cloud role external identifier.
+	// - CloudAccountRoleExternalId: the business identifier of the cloud role.
 	//
-	// - CloudAccountRoleUsageType: the cloud role usage type.
+	// - CloudAccountRoleUsageType: the usage type of the cloud role.
 	//
 	// example:
 	//

@@ -56,13 +56,13 @@ type ListApplicationsRequest struct {
 	//
 	// application
 	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
-	// The list of application IDs.
+	// The application IDs.
 	//
 	// example:
 	//
-	// Ram Account SSO
+	// ["Ram Account SSO"]
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The application name. Only left fuzzy match is supported.
+	// The application name. Only left-fuzzy matching is supported.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListApplicationsRequest struct {
 	//
 	// apt_ramuser_xxxx
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
-	// The application access authorization type. Valid values:
+	// The access authorization type of the application. Valid values:
 	//
 	// - authorize_required: Explicit authorization is required for access.
 	//
@@ -84,7 +84,7 @@ type ListApplicationsRequest struct {
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// The list of custom fields.
+	// The extended fields.
 	CustomFields []*ListApplicationsRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -94,13 +94,13 @@ type ListApplicationsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the M2M Client identity is enabled.
+	// Specifies whether the M2M client identity is enabled.
 	//
 	// example:
 	//
 	// enabled
 	M2MClientStatus *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
-	// The ServiceCode of the cloud service that manages the application template.
+	// The service code of the cloud service that manages the application template.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type ListApplicationsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether the ResourceServer capability is enabled.
+	// Specifies whether the resource server capability is enabled.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type ListApplicationsRequest struct {
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The SSO type filter condition. Multiple types can be separated by commas. Example: oauth2/m2m,oidc+oauth2/m2m.
+	// The SSO type search condition. You can specify multiple types separated by commas (,). Example: oauth2/m2m,oidc+oauth2/m2m.
 	//
 	// example:
 	//
@@ -314,7 +314,7 @@ func (s *ListApplicationsRequest) Validate() error {
 }
 
 type ListApplicationsRequestCustomFields struct {
-	// The custom field identifier. Valid values:
+	// The extended field identifier. Valid values:
 	//
 	// - agent_type: The agent type.
 	//
@@ -322,7 +322,7 @@ type ListApplicationsRequestCustomFields struct {
 	//
 	// agent_type
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The custom field value.
+	// The extended field value.
 	//
 	// example:
 	//

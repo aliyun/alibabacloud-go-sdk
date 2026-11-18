@@ -36,9 +36,9 @@ type CreateCloudPermissionTemplateRequest struct {
 	//
 	// true
 	AllowRequest *bool `json:"AllowRequest,omitempty" xml:"AllowRequest,omitempty"`
-	// The applicable scope of the permission template, including the scope type and the specified users, groups, or organizational units.
+	// The applicable scope of the permission template, including the scope type and specified users, groups, or organizational units.
 	ApplicableScope *CreateCloudPermissionTemplateRequestApplicableScope `json:"ApplicableScope,omitempty" xml:"ApplicableScope,omitempty" type:"Struct"`
-	// Ensures the idempotence of the request. You can generate the value from your client to ensure that the value is unique across different requests. The client token supports only ASCII characters and can be up to 64 characters in length.
+	// Ensures the idempotence of the request. You can generate a client token on your client to ensure that the value is unique across different requests. The client token can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ type CreateCloudPermissionTemplateRequestApplicableScope struct {
 	//
 	// example:
 	//
-	// group_d6sbsusdfa4h66ec3il7yxxxx
+	// ["group_d6sbsusdfa4h66ec3il7yxxxx"]
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The list of organizational unit IDs.
 	//
 	// example:
 	//
-	// ou_d6sbsuudfgf4h66ec3il7yxxxx
+	// ["ou_d6sbsuudfgf4h66ec3il7yxxxx"]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The type of the applicable scope. Valid values: global and custom.
 	//
@@ -214,7 +214,7 @@ type CreateCloudPermissionTemplateRequestApplicableScope struct {
 	//
 	// example:
 	//
-	// user_d6sbsuumeta4h66ec3il7yxxxx
+	// ["user_d6sbsuumeta4h66ec3il7yxxxx"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

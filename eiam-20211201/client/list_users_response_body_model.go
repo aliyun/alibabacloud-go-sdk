@@ -22,7 +22,7 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// xxxx
+	// Test account
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name.
 	//
@@ -189,7 +189,7 @@ type ListUsersResponseBodyUsers struct {
 	//
 	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
-	// The phone region code. Example: 86 for the Chinese mainland, without 00 or +.
+	// The region code of the mobile phone number. Example: 86 for the Chinese mainland, without 00 or +.
 	//
 	// example:
 	//
@@ -203,9 +203,9 @@ type ListUsersResponseBodyUsers struct {
 	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// - enabled: enabled
+	// - enabled: The account is enabled.
 	//
-	// - disabled: disabled
+	// - disabled: The account is disabled.
 	//
 	// example:
 	//
@@ -217,7 +217,9 @@ type ListUsersResponseBodyUsers struct {
 	//
 	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The external ID of the account. This ID is used to map external data to IDaaS accounts. The default value is the IDaaS account ID. Note: The external ID must be unique within the same source type and source ID.
+	// The external ID of the account. This ID is used to map external data to IDaaS accounts. The default value is the IDaaS account ID.
+	//
+	// Note: The external ID must be unique within the same source type and source ID.
 	//
 	// example:
 	//
@@ -231,7 +233,7 @@ type ListUsersResponseBodyUsers struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The source ID of the account.
 	//
-	// For the build-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, for the DingTalk source, the value is the corpId of the DingTalk enterprise.
+	// For the built-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
@@ -239,13 +241,13 @@ type ListUsersResponseBodyUsers struct {
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// - build_in: self-managed
+	// - build_in: The account is self-managed.
 	//
-	// - ding_talk: imported from DingTalk
+	// - ding_talk: The account is imported from DingTalk.
 	//
-	// - ad: imported from AD
+	// - ad: The account is imported from AD.
 	//
-	// - ldap: imported from LDAP
+	// - ldap: The account is imported from LDAP.
 	//
 	// example:
 	//

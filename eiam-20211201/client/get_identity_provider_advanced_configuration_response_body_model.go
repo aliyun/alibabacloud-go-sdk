@@ -129,7 +129,7 @@ type GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationDi
 	//
 	// ding5xo9rg0csw3f6xxx
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The AppSecret of the DingTalk first-party application.
+	// The app_secret of the DingTalk first-party application.
 	//
 	// example:
 	//

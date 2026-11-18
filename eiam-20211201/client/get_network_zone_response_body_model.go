@@ -74,9 +74,9 @@ type GetNetworkZoneResponseBodyNetworkZone struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IPv4 CIDR blocks of the network zone.
+	// The IPv4 network zone.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks of the network zone.
+	// The IPv6 network zone.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The network zone ID.
 	//

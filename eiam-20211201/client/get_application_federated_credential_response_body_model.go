@@ -475,13 +475,13 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigAzureVmConfig struct {
-	// The identity identifier.
+	// The principal ID.
 	//
 	// example:
 	//
 	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The Azure resource group name.
+	// The name of the Azure resource group.
 	//
 	// example:
 	//
@@ -548,13 +548,13 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGcpVmConfig struct {
 	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The GCP project ID to which the resource belongs.
+	// The GCP project ID.
 	//
 	// example:
 	//
 	// turnkey-axiom-475109-xx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sub claim that corresponds to the service account.
+	// The sub claim corresponding to the service account.
 	//
 	// example:
 	//
@@ -632,7 +632,7 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigKubernetesConfig struct {
-	// The K8s namespace.
+	// The Kubernetes namespace.
 	//
 	// example:
 	//
@@ -644,7 +644,7 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	//
 	// test-pod
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The K8s service account name.
+	// The Kubernetes service account name.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListOrganizationalUnitsForApplicationResponseBody interface {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBody struct {
-	// The list of organizational unit IDs.
+	// The organizational units.
 	OrganizationalUnits []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *ListOrganizationalUnitsForApplicationResponseBody) Validate() error {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits struct {
-	// The application roles.
+	// The application roles. No roles are returned for SAML applications.
 	ApplicationRoles []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 	// The organizational unit ID.
 	//

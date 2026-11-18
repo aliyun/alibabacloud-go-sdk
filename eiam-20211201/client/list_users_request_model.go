@@ -44,7 +44,7 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The prefix of the display name. A left-match query is performed.
+	// The display name prefix for a left-match query.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for a paging query.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type ListUsersRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The phone number of the account.
+	// The mobile phone number of the account.
 	//
 	// example:
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The phone region code. Example: 86 for the Chinese mainland, without 00 or +.
+	// The region code of the mobile phone number. Example: 86 for the Chinese mainland, without 00 or +.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type ListUsersRequest struct {
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: enabled.
 	//
-	// - disabled: Disabled.
+	// - disabled: disabled.
 	//
 	// example:
 	//
@@ -128,11 +128,11 @@ type ListUsersRequest struct {
 	//
 	// example:
 	//
-	// 20
+	// ["user_d6sbsuumeta4h66ec3il7yxxxx"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 	// The source ID of the account.
 	//
-	// For the build-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, for the DingTalk source, the value is the corpId of the DingTalk enterprise.
+	// For the built-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
@@ -140,21 +140,21 @@ type ListUsersRequest struct {
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// - build_in: Built-in.
+	// - build_in: built-in.
 	//
-	// - ding_talk: Imported from DingTalk.
+	// - ding_talk: imported from DingTalk.
 	//
-	// - ad: Imported from AD.
+	// - ad: imported from AD.
 	//
-	// - ldap: Imported from LDAP.
+	// - ldap: imported from LDAP.
 	//
-	// - we_com: Imported from WeCom.
+	// - we_com: imported from WeCom.
 	//
 	// example:
 	//
 	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
-	// The prefix of the username. A left-match query is performed.
+	// The username prefix for a left-match query.
 	//
 	// example:
 	//

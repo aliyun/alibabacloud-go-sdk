@@ -24,7 +24,7 @@ type UpdateFederatedCredentialProviderDescriptionRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The federated trust source ID.
+	// The ID of the federated trust source.
 	//
 	// This parameter is required.
 	//

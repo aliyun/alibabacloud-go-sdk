@@ -16,7 +16,7 @@ type iGenerateDownloadUrlForSynchronizationJobResponseBody interface {
 }
 
 type GenerateDownloadUrlForSynchronizationJobResponseBody struct {
-	// The download URL of the template.
+	// The template download URL.
 	//
 	// example:
 	//

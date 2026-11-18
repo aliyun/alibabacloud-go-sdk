@@ -40,7 +40,7 @@ type UpdateTrustedOriginRequest struct {
 	//
 	// example:
 	//
-	// Qoder Production Console
+	// Qoder production console
 	TrustOriginName *string `json:"TrustOriginName,omitempty" xml:"TrustOriginName,omitempty"`
 	// The trusted origin ID.
 	//
@@ -54,7 +54,7 @@ type UpdateTrustedOriginRequest struct {
 	//
 	// example:
 	//
-	// iframe_embed
+	// ["iframe_embed"]
 	TrustedOriginScene []*string `json:"TrustedOriginScene,omitempty" xml:"TrustedOriginScene,omitempty" type:"Repeated"`
 }
 

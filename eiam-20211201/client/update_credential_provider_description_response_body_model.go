@@ -14,7 +14,7 @@ type iUpdateCredentialProviderDescriptionResponseBody interface {
 }
 
 type UpdateCredentialProviderDescriptionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

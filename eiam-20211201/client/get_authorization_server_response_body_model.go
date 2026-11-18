@@ -74,7 +74,7 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// System_Default
 	AuthorizationServerName *string `json:"AuthorizationServerName,omitempty" xml:"AuthorizationServerName,omitempty"`
-	// The time when the authorization server was created. The value is a UNIX timestamp in milliseconds.
+	// The creation time of the authorization server. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// system_init
 	CreationType *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
-	// The authorization server description.
+	// The description of the authorization server.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// idaas_qzljgbhtwnnsywtdbz7yzy2any
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The authorization token issuer.
+	// The issuer of the authorization token.
 	//
 	// example:
 	//
@@ -116,15 +116,15 @@ type GetAuthorizationServerResponseBodyAuthorizationServer struct {
 	//
 	// static
 	IssuerMode *string `json:"IssuerMode,omitempty" xml:"IssuerMode,omitempty"`
-	// The time when the authorization server was last updated. The value is a UNIX timestamp in milliseconds.
+	// The last update time of the authorization server. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1781608572164
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The authorization server endpoint configuration.
+	// The protocol endpoint configuration of the authorization server.
 	ProtocolEndpoint *GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint `json:"ProtocolEndpoint,omitempty" xml:"ProtocolEndpoint,omitempty" type:"Struct"`
-	// The authorization server status.
+	// The status of the authorization server.
 	//
 	// example:
 	//
@@ -258,13 +258,13 @@ func (s *GetAuthorizationServerResponseBodyAuthorizationServer) Validate() error
 }
 
 type GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint struct {
-	// The token endpoint of the authorization server.
+	// The OAuth2 token endpoint of the authorization server.
 	//
 	// example:
 	//
 	// https://xxxx.aliyunidaas.com/api/v2/iauths_system/oauth2/token
 	Oauth2TokenEndpoint *string `json:"Oauth2TokenEndpoint,omitempty" xml:"Oauth2TokenEndpoint,omitempty"`
-	// The JWKS endpoint of the authorization server.
+	// The OIDC JWKS endpoint of the authorization server.
 	//
 	// example:
 	//

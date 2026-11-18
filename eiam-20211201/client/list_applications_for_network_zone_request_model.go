@@ -30,7 +30,7 @@ type ListApplicationsForNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return per page for paging in a paged query.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//

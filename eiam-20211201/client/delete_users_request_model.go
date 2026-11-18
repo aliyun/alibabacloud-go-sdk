@@ -30,7 +30,7 @@ type DeleteUsersRequest struct {
 	//
 	// example:
 	//
-	// u_001
+	// ["u_001"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

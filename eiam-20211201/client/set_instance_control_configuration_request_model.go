@@ -74,7 +74,7 @@ type SetInstanceControlConfigurationRequestControlElements struct {
 	//
 	// human_verification
 	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
-	// The CAPTCHA authenticate configuration.
+	// The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) configuration.
 	HumanVerificationConfig *SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig `json:"HumanVerificationConfig,omitempty" xml:"HumanVerificationConfig,omitempty" type:"Struct"`
 	// The status of the instance control element.
 	//
@@ -129,7 +129,7 @@ func (s *SetInstanceControlConfigurationRequestControlElements) Validate() error
 }
 
 type SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig struct {
-	// The CAPTCHA type.
+	// The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) check type.
 	//
 	// example:
 	//

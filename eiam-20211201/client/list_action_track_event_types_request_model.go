@@ -28,19 +28,19 @@ type ListActionTrackEventTypesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page for paging.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// You can use this parameter to specify the query token.
+	// The next token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token that is used to retrieve the previous page of results.
+	// The previous token.
 	//
 	// example:
 	//

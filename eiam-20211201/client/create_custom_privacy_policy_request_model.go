@@ -26,7 +26,7 @@ type iCreateCustomPrivacyPolicyRequest interface {
 }
 
 type CreateCustomPrivacyPolicyRequest struct {
-	// A client token used to ensure the idempotence of the request. The client generates this value to make sure that it is unique among different requests. The value can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateCustomPrivacyPolicyRequest struct {
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyName *string `json:"CustomPrivacyPolicyName,omitempty" xml:"CustomPrivacyPolicyName,omitempty"`
-	// The default language of the privacy policy.
+	// The default language code of the custom privacy policy.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateCustomPrivacyPolicyRequest struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The consent type for the privacy policy.
+	// The user consent type.
 	//
 	// example:
 	//
@@ -155,15 +155,15 @@ func (s *CreateCustomPrivacyPolicyRequest) Validate() error {
 }
 
 type CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents struct {
-	// The items of the custom privacy policy.
+	// The custom privacy policy items.
 	CustomPrivacyPolicyItems []*CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems `json:"CustomPrivacyPolicyItems,omitempty" xml:"CustomPrivacyPolicyItems,omitempty" type:"Repeated"`
-	// The prompt for the custom privacy policy.
+	// The custom privacy policy tip.
 	//
 	// example:
 	//
 	// Please read and agree：
 	CustomPrivacyPolicyTip *string `json:"CustomPrivacyPolicyTip,omitempty" xml:"CustomPrivacyPolicyTip,omitempty"`
-	// The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+	// The language code of the custom privacy policy. The value is obtained from the LanguageCode parameter returned by the ListLanguages operation.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPol
 	//
 	// Custom Privacy Policy Name
 	CustomPrivacyPolicyItemName *string `json:"CustomPrivacyPolicyItemName,omitempty" xml:"CustomPrivacyPolicyItemName,omitempty"`
-	// The endpoint of the custom privacy policy item.
+	// The URL of the custom privacy policy item.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type ListCustomPrivacyPoliciesForBrandRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return per page for paging in a paged query.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListCustomPrivacyPoliciesForBrandRequest struct {
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The previous token.
+	// The pagination token for the previous page.
 	//
 	// example:
 	//

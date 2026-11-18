@@ -24,13 +24,13 @@ type iListApplicationRolesResponseBody interface {
 type ListApplicationRolesResponseBody struct {
 	// The list of application roles.
 	ApplicationRoles []*ListApplicationRolesResponseBodyApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListApplicationRolesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListApplicationRolesResponseBodyApplicationRoles struct {
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The name of the application role.
+	// The application role name.
 	//
 	// example:
 	//
 	// Admin Role
 	ApplicationRoleName *string `json:"ApplicationRoleName,omitempty" xml:"ApplicationRoleName,omitempty"`
-	// The value of the application role.
+	// The application role value.
 	//
 	// example:
 	//

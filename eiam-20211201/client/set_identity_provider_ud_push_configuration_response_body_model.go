@@ -14,7 +14,7 @@ type iSetIdentityProviderUdPushConfigurationResponseBody interface {
 }
 
 type SetIdentityProviderUdPushConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

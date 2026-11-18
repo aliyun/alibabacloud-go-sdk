@@ -18,7 +18,7 @@ type iDeleteAuthorizationResourceRequest interface {
 }
 
 type DeleteAuthorizationResourceRequest struct {
-	// The authorized resource ID.
+	// The authorization resource ID.
 	//
 	// This parameter is required.
 	//

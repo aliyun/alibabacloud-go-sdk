@@ -34,7 +34,7 @@ type iGenerateUploadAuthResponseBody interface {
 }
 
 type GenerateUploadAuthResponseBody struct {
-	// The Access ID for authentication.
+	// The access ID for authentication.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GenerateUploadAuthResponseBody struct {
 	//
 	// https://temp.oss.aliyuncs.com/idaas_ly77wa2oexrciw5v672vizxxxx/file_import/68866d21-0ab7-450d-b9e6-5b1eafe06xxxx
 	DownLoadUrl *string `json:"DownLoadUrl,omitempty" xml:"DownLoadUrl,omitempty"`
-	// The encrypted file encryption configuration key for the instance.
+	// The encrypted key for the file encryption configuration of the instance.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GenerateUploadAuthResponseBody struct {
 	//
 	// https://temp.oss.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The key for authentication.
+	// The authentication key.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GenerateUploadAuthResponseBody struct {
 	//
 	// fBLqWEvq3SbCj1cX/rtZoSPDVduOWdloOO2VN2+5Sxxxx
 	PlaintextKey *string `json:"PlaintextKey,omitempty" xml:"PlaintextKey,omitempty"`
-	// The policy for authentication.
+	// The authentication policy.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type GenerateUploadAuthResponseBody struct {
 	//
 	// CAISzgJ1q6Ft5B2yfSjIr5rSCtfx3rxY562mRl7Fs2che8gfpbLg1zz2IHhMfXVpA+Afv/sxlG5Q7/wdlrp6SJtIXleCZtF94oxN9h2gb4fb4wgFPgjY08/LI3OaLjKm9u2wCryLYbGwU/OpbE++5U0X6LDmdDKkckW4OJmS8/BOZcgWWQ/KBlgvRq0hRG1YpdQdKGHaONu0LxfumRCwNkdzvRdmgm4NgsbWgO/ks0aO0wehm7BO+N6gfcD9NvMBZskvD42Hu8VtbbfE3SJq7BxHybx7lqQs+02c5onEXwALs0zXbLSErIU2dlBjH68hAOtFquPgnPtzt6nJkID62421pmiSr561rumAtyikcIvBXr5RHT3LoP1LA5UhHC1UotFVgGOaCXLbtuArXptaY/JiNL/0hFEpVt7knInNpUbntINy5f5fqzNMlShqKOXTK93xGoABgfahfEFC23BhLp3NnBxnaG/psewhUfRg/wYS9oE268EST0qPq0ZvzmZjsmtbtnFL8takNDOIdutBZeb9nngkEi7tYyVcwoYBnbJ3sopnFEVozB2VO5XuRHLBkOfB+2z1zD91KtoDajJxpT295Qm0ndFALS1tCGI452yRIrCHynggxxxxx
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The signature for authentication.
+	// The authentication signature.
 	//
 	// example:
 	//

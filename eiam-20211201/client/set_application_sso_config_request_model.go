@@ -34,27 +34,27 @@ type SetApplicationSsoConfigRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the parameter value is unique across different requests. The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
 	//
 	// example:
 	//
 	// client-examplexxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The initial single sign-on (SSO) logon method. Valid values:
+	// The initial single sign-on (SSO) method. Valid values:
 	//
-	// - only_app_init_sso: Only application-initiated SSO is supported. This is the default value for OIDC protocol applications. When a SAML application uses this method, InitLoginUrl must be specified.
+	// - only_app_init_sso: SSO is initiated only by the application. This is the default value for OIDC applications. If this method is specified for a SAML application, InitLoginUrl must be specified.
 	//
-	// - idaas_or_app_init_sso: Both IDaaS portal-initiated and application-initiated SSO are supported. This is the default value for SAML protocol applications. When an OIDC protocol application uses this method, InitLoginUrl must be specified.
+	// - idaas_or_app_init_sso: SSO can be initiated by the IDaaS portal or the application. This is the default value for SAML applications. If this method is specified for an OIDC application, InitLoginUrl must be specified.
 	//
 	// example:
 	//
 	// only_app_init_sso
 	InitLoginType *string `json:"InitLoginType,omitempty" xml:"InitLoginType,omitempty"`
-	// The initial single sign-on (SSO) logon trigger URL.
+	// The trigger URL for the initialization of single sign-on (SSO) logon.
 	//
-	// This parameter is required when an OIDC protocol application sets InitLoginType to idaas_or_app_init_sso.
+	// This parameter is required when the InitLoginType Settings for an OIDC protocol (Protocol Type) application are set to idaas_or_app_init_sso.
 	//
-	// This parameter is required when a SAML protocol application sets InitLoginType to only_app_init_sso.
+	// This parameter is required when the InitLoginType Settings for a SAML protocol (Protocol Type) application are set to only_app_init_sso.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type SetApplicationSsoConfigRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The SSO configuration parameters for an OIDC-based application.
+	// The SSO attribute configuration parameters for the OIDC protocol.
 	OidcSsoConfig *SetApplicationSsoConfigRequestOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
-	// The SSO configuration parameters for a SAML-based application.
+	// The SSO attribute configuration parameters for the SAML protocol.
 	SamlSsoConfig *SetApplicationSsoConfigRequestSamlSsoConfig `json:"SamlSsoConfig,omitempty" xml:"SamlSsoConfig,omitempty" type:"Struct"`
 }
 
@@ -160,19 +160,19 @@ func (s *SetApplicationSsoConfigRequest) Validate() error {
 }
 
 type SetApplicationSsoConfigRequestOidcSsoConfig struct {
-	// The validity period of the issued access token. Unit: seconds. Default value: 1200 (20 minutes).
+	// The validity period of the issued access token, in seconds. Default value: 1200 (20 minutes).
 	//
 	// example:
 	//
 	// 1200
 	AccessTokenEffectiveTime *int64 `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
-	// Specifies whether the application is allowed to act as a public client to request the IDaaS EIAM authorization server. This parameter can be enabled only in authorization code mode and device mode. Default value: false.
+	// Specifies whether the application is allowed to request the IDaaS EIAM authorization server as a public client. This feature can be enabled only for the authorization code mode and device mode. Default value: false.
 	//
 	// example:
 	//
 	// true
 	AllowedPublicClient *bool `json:"AllowedPublicClient,omitempty" xml:"AllowedPublicClient,omitempty"`
-	// The validity period of the issued code. Unit: seconds. Default value: 60 (1 minute).
+	// The validity period of the issued code, in seconds. Default value: 60 (1 minute).
 	//
 	// example:
 	//
@@ -180,65 +180,65 @@ type SetApplicationSsoConfigRequestOidcSsoConfig struct {
 	CodeEffectiveTime *int64 `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
 	// The custom user information included in the returned ID token.
 	CustomClaims []*SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims `json:"CustomClaims,omitempty" xml:"CustomClaims,omitempty" type:"Repeated"`
-	// The OIDC standard parameter scope, which specifies the range of user attributes that can be returned by the userinfo endpoint or the id_token.
+	// The standard OIDC scope parameter, which specifies the range of user attributes that can be returned by the userinfo endpoint or the ID token.
 	//
 	// example:
 	//
-	// profile，email
+	// ["profile","email"]
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
 	// The list of supported OIDC grant types.
 	//
 	// example:
 	//
-	// authorization_code
+	// ["authorization_code"]
 	GrantTypes []*string `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
-	// The validity period of the issued ID token. Unit: seconds. Default value: 300 (5 minutes).
+	// The validity period of the issued ID token, in seconds. Default value: 300 seconds (5 minutes).
 	//
 	// example:
 	//
 	// 300
 	IdTokenEffectiveTime *int64 `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
-	// The ID of the authentication source used in password mode. This parameter takes effect only when the GrantTypes specified for the OIDC application include the password mode.
+	// The ID of the authentication source used for the password mode. This parameter takes effect only when the GrantTypes specified for the OIDC application includes the password mode.
 	//
 	// example:
 	//
 	// ia_password
 	PasswordAuthenticationSourceId *string `json:"PasswordAuthenticationSourceId,omitempty" xml:"PasswordAuthenticationSourceId,omitempty"`
-	// Specifies whether TOTP-based secondary authentication is required for password mode. This parameter takes effect only when the GrantTypes specified for the OIDC application include the password mode.
+	// Specifies whether time-based one-time password (TOTP) multi-factor authentication (MFA) is mandatory for the password mode. This parameter takes effect only when the GrantTypes specified for the OIDC application includes the password mode.
 	//
 	// example:
 	//
 	// true
 	PasswordTotpMfaRequired *bool `json:"PasswordTotpMfaRequired,omitempty" xml:"PasswordTotpMfaRequired,omitempty"`
-	// The algorithm used to calculate the Code Challenge in PKCE.
+	// The algorithm used to calculate the code challenge in PKCE.
 	//
 	// example:
 	//
-	// S256
+	// ["S256"]
 	PkceChallengeMethods []*string `json:"PkceChallengeMethods,omitempty" xml:"PkceChallengeMethods,omitempty" type:"Repeated"`
-	// Specifies whether Proof Key for Code Exchange (PKCE) (RFC 7636) is required for application SSO.
+	// Specifies whether Proof Key for Code Exchange (PKCE) (RFC 7636) is mandatory for application SSO.
 	//
 	// example:
 	//
 	// true
 	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
-	// The list of logout callback URIs supported by the application.
+	// The list of logout callback URLs supported by the application.
 	PostLogoutRedirectUris []*string `json:"PostLogoutRedirectUris,omitempty" xml:"PostLogoutRedirectUris,omitempty" type:"Repeated"`
 	// The list of redirect URIs supported by the application.
 	RedirectUris []*string `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
-	// The validity period of the issued refresh token. Unit: seconds. Default value: 86400 (1 day).
+	// The validity period of the issued refresh token, in seconds. Default value: 86400 seconds (1 day).
 	//
 	// example:
 	//
 	// 86400
 	RefreshTokenEffective *int64 `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
-	// The response types supported by the application when OidcSsoConfig.GrantTypes includes the implicit grant type.
+	// The response types supported by the application when OidcSsoConfig.GrantTypes includes the implicit mode.
 	//
 	// example:
 	//
-	// token id_token
+	// ["token id_token"]
 	ResponseTypes []*string `json:"ResponseTypes,omitempty" xml:"ResponseTypes,omitempty" type:"Repeated"`
-	// The custom expression for the sub claim value returned in the ID token.
+	// The custom value expression for the sub claim returned in the ID token.
 	//
 	// example:
 	//
@@ -457,31 +457,31 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims) Validate() err
 }
 
 type SetApplicationSsoConfigRequestSamlSsoConfig struct {
-	// Specifies whether the assertion needs to be signed. ResponseSigned and AssertionSigned cannot both be set to false.
+	// Specifies whether the assertion must be signed. ResponseSigned and AssertionSigned cannot both be set to false. Valid values:
 	//
-	// - true: The assertion is signed.
+	// - true: The assertion must be signed.
 	//
-	// - false: The assertion is not signed.
+	// - false: The assertion does not need to be signed.
 	//
 	// example:
 	//
 	// true
 	AssertionSigned *bool `json:"AssertionSigned,omitempty" xml:"AssertionSigned,omitempty"`
-	// The additional user attribute configurations included in the SAML assertion.
+	// The configuration of additional user attributes included in the SAML assertion.
 	AttributeStatements []*SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements `json:"AttributeStatements,omitempty" xml:"AttributeStatements,omitempty" type:"Repeated"`
-	// The default RelayState value. When a single sign-on (SSO) logon request is initiated by EIAM, the SAML Response provided by EIAM specifies the RelayState as this value.
+	// The default RelayState value. When a user\\"s single sign-on (SSO) logon request is initiated by EIAM, the SAML response provided by EIAM specifies the RelayState as this value.
 	//
 	// example:
 	//
 	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
-	// The Entity ID that represents the IdP identity in the SAML protocol. URL format and URN format are supported.
+	// The entity ID that represents the identity provider (IdP) in the SAML protocol. Both URL and URN formats are supported.
 	//
 	// example:
 	//
 	// https://example.com/
 	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
-	// The NameID format defined by the SAML protocol standard. Valid values:
+	// The standard NameID format for the SAML protocol. Valid values:
 	//
 	// - urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: Unspecified. The application determines how to parse the NameID.
 	//
@@ -495,7 +495,7 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	//
 	// urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
 	NameIdFormat *string `json:"NameIdFormat,omitempty" xml:"NameIdFormat,omitempty"`
-	// The expression used to generate the actual NameID value in the SAML protocol.
+	// The expression used to generate the actual value of the NameID for the SAML protocol.
 	//
 	// example:
 	//
@@ -503,17 +503,17 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
 	// The optional RelayState configurations.
 	OptionalRelayStates []*SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates `json:"OptionalRelayStates,omitempty" xml:"OptionalRelayStates,omitempty" type:"Repeated"`
-	// Specifies whether SSO AuthnRequest signature verification is enabled. Default value: false. If set to true, spSigningCertificates must be configured (the array must not be empty).
+	// Specifies whether to enable signature verification for SSO AuthnRequest. Default value: false. If this parameter is set to true, spSigningCertificates must be configured and the array cannot be empty.
 	//
 	// example:
 	//
 	// false
 	RequireAuthnRequestSigned *bool `json:"RequireAuthnRequestSigned,omitempty" xml:"RequireAuthnRequestSigned,omitempty"`
-	// Specifies whether the response needs to be signed. ResponseSigned and AssertionSigned cannot both be set to false.
+	// Specifies whether the response must be signed. ResponseSigned and AssertionSigned cannot both be set to false. Valid values:
 	//
-	// - true: The response is signed.
+	// - true: The response must be signed.
 	//
-	// - false: The response is not signed.
+	// - false: The response does not need to be signed.
 	//
 	// example:
 	//
@@ -525,25 +525,25 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	//
 	// RSA-SHA256
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The SAML EntityId of the application (SP).
+	// The SAML entity ID of the application (SP).
 	//
 	// example:
 	//
 	// urn:alibaba:cloudcomputing
 	SpEntityId *string `json:"SpEntityId,omitempty" xml:"SpEntityId,omitempty"`
-	// The array of SP signature verification certificates in PEM format. A maximum of two certificates are allowed and are shared by SSO and SLO. Each certificate is validated for format and validity upon write. Requests with more than two certificates are rejected.
+	// The array of SP signature verification certificates in PEM format. A maximum of two certificates are allowed, and they are shared by SSO and single logout (SLO). The format and validity of each certificate are verified during writing. If more than two certificates are provided, the request is rejected.
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE----- MIIC0jCCAbqgAwIBAgIQXXXXX -----END CERTIFICATE-----
+	// ["-----BEGIN CERTIFICATE----- MIIC0jCCAbqgAwIBAgIQXXXXX -----END CERTIFICATE-----"]
 	SpSigningCertificates []*string `json:"SpSigningCertificates,omitempty" xml:"SpSigningCertificates,omitempty" type:"Repeated"`
-	// The URL on the SP side that receives the LogoutResponse. This parameter is optional.
+	// The callback URL used by the SP to receive the LogoutResponse. This parameter is optional.
 	//
 	// example:
 	//
 	// https://example.com/api/slo/response
 	SpSloResponseUrl *string `json:"SpSloResponseUrl,omitempty" xml:"SpSloResponseUrl,omitempty"`
-	// The SAML assertion consumer service URL of the application (SP).
+	// The SAML assertion consumer URL of the application (SP).
 	//
 	// example:
 	//

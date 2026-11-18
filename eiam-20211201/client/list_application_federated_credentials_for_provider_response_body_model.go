@@ -26,19 +26,19 @@ type iListApplicationFederatedCredentialsForProviderResponseBody interface {
 type ListApplicationFederatedCredentialsForProviderResponseBody struct {
 	// The list of application federated credentials.
 	ApplicationFederatedCredentials []*ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentials `json:"ApplicationFederatedCredentials,omitempty" xml:"ApplicationFederatedCredentials,omitempty" type:"Repeated"`
-	// The maximum number of rows per page in a paging query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call.
+	// The query token returned by the current call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by the current call.
+	// The query token returned by the current call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of items.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -639,7 +639,7 @@ func (s *ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFe
 }
 
 type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentialsOidcVerificationConfigKubernetesConfig struct {
-	// The K8s namespace.
+	// The Kubernetes namespace.
 	//
 	// example:
 	//
@@ -651,7 +651,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	//
 	// test-pod
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The name of the K8s service account.
+	// The name of the Kubernetes service account.
 	//
 	// example:
 	//

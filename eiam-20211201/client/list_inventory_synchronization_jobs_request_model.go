@@ -26,7 +26,7 @@ type iListInventorySynchronizationJobsRequest interface {
 }
 
 type ListInventorySynchronizationJobsRequest struct {
-	// The end time.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type ListInventorySynchronizationJobsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the synchronization targets.
 	InventorySourceIds []*string `json:"InventorySourceIds,omitempty" xml:"InventorySourceIds,omitempty" type:"Repeated"`
-	// The number of entries to return per page in paging. Default value: 20. Maximum value: 100.
+	// The number of entries to return per page during paging in a paged query. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken value returned in the previous API call.
+	// The query token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The start time.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

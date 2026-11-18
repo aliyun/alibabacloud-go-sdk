@@ -16,7 +16,7 @@ type iDeleteFederatedCredentialProviderRequest interface {
 }
 
 type DeleteFederatedCredentialProviderRequest struct {
-	// The ID of the federated credential provider.
+	// The ID of the federated trust source.
 	//
 	// This parameter is required.
 	//

@@ -26,7 +26,7 @@ type SetForgetPasswordConfigurationRequest struct {
 	//
 	// example:
 	//
-	// email
+	// ["email"]
 	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
 	// The forgot password configuration status. Valid values:
 	//

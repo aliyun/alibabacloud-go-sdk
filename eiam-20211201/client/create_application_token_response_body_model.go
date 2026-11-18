@@ -16,7 +16,7 @@ type iCreateApplicationTokenResponseBody interface {
 }
 
 type CreateApplicationTokenResponseBody struct {
-	// The application token.
+	// The application tokens.
 	ApplicationTokens *CreateApplicationTokenResponseBodyApplicationTokens `json:"ApplicationTokens,omitempty" xml:"ApplicationTokens,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *CreateApplicationTokenResponseBody) Validate() error {
 }
 
 type CreateApplicationTokenResponseBodyApplicationTokens struct {
-	// The application token.
+	// The application tokens.
 	//
 	// example:
 	//

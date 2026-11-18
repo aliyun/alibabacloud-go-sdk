@@ -16,7 +16,7 @@ type iGetIdentityProviderStatusCheckJobResponseBody interface {
 }
 
 type GetIdentityProviderStatusCheckJobResponseBody struct {
-	// The IdP status check job information.
+	// The IdP status check information.
 	IdentityProviderStatusCheckJob *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob `json:"IdentityProviderStatusCheckJob,omitempty" xml:"IdentityProviderStatusCheckJob,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetIdentityProviderStatusCheckJobResponseBody) Validate() error {
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob struct {
-	// The job check result.
+	// The check result of the job.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqsfxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status check sub-item task result information.
+	// The status check subkey node task result information.
 	JobCheckItems []*GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItems `json:"JobCheckItems,omitempty" xml:"JobCheckItems,omitempty" type:"Repeated"`
 	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
@@ -100,7 +100,7 @@ type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob
 	//
 	// 1763776265757
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The job check status.
+	// The check status of the job.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusChec
 }
 
 type GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItems struct {
-	// The error reason.
+	// The error cause.
 	ErrorReason *GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJobJobCheckItemsErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
 	// The major check item.
 	//

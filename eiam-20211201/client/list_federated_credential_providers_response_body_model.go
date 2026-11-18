@@ -26,19 +26,19 @@ type iListFederatedCredentialProvidersResponseBody interface {
 type ListFederatedCredentialProvidersResponseBody struct {
 	// The list of federated credential providers.
 	FederatedCredentialProviders []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders `json:"FederatedCredentialProviders,omitempty" xml:"FederatedCredentialProviders,omitempty" type:"Repeated"`
-	// The maximum number of entries per page for a paged query.
+	// The number of rows per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token (Token) value returned by this call.
+	// The pagination token returned by the current request.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The query token (Token) value returned by this call.
+	// The pagination token returned by the current request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListFederatedCredentialProvidersResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOid
 	//
 	// }
 	DynamicJwks *string `json:"DynamicJwks,omitempty" xml:"DynamicJwks,omitempty"`
-	// The token issuer identifier (Issuer).
+	// The token issuer identifier.
 	//
 	// example:
 	//
@@ -557,7 +557,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkc
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// The signature effective time. The value indicates the duration for which the signature is valid, in seconds.
+	// The signature validity period. The value indicates the duration for which the signature is valid, in seconds.
 	//
 	// example:
 	//
@@ -769,9 +769,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig struct {
-	// The root certificates.
+	// The root certificate.
 	Certificates []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The method used to retrieve the root certificate.
+	// The method used to obtain the root certificate.
 	//
 	// example:
 	//

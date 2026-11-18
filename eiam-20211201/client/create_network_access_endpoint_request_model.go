@@ -24,13 +24,13 @@ type iCreateNetworkAccessEndpointRequest interface {
 }
 
 type CreateNetworkAccessEndpointRequest struct {
-	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,21 +38,21 @@ type CreateNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Network access endpoint name.
+	// The name of the dedicated network endpoint.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx业务VPC访问端点
+	// XX business VPC access endpoint
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
-	// List of specified vSwitches connected to the network access endpoint.
+	// The list of specified vSwitches to which the dedicated network endpoint is connected.
 	//
 	// example:
 	//
-	// vsw-examplexxx
+	// ["vsw-examplexxx"]
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// VPC ID connected to the network access endpoint.
+	// The ID of the VPC to which the dedicated network endpoint is connected.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateNetworkAccessEndpointRequest struct {
 	//
 	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Region of the VPC ID connected to the network access endpoint.
+	// The region of the VPC to which the dedicated network endpoint is connected.
 	//
 	// This parameter is required.
 	//

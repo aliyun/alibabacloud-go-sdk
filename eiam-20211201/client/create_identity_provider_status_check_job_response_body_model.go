@@ -16,13 +16,13 @@ type iCreateIdentityProviderStatusCheckJobResponseBody interface {
 }
 
 type CreateIdentityProviderStatusCheckJobResponseBody struct {
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
 	// async_000xxxx
 	IdentityProviderStatusCheckJobId *string `json:"IdentityProviderStatusCheckJobId,omitempty" xml:"IdentityProviderStatusCheckJobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

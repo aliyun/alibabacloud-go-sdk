@@ -20,7 +20,7 @@ type iUpdateCloudAccountRequest interface {
 }
 
 type UpdateCloudAccountRequest struct {
-	// A client token used to ensure the idempotence of the request. Generate a value from your client that is unique across different requests. The token can contain only ASCII characters and must be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. Generate a parameter value on your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type UpdateCloudAccountRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateCloudAccountRequest struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The name of the Alibaba Cloud account.
+	// The cloud account name.
 	//
 	// This parameter is required.
 	//

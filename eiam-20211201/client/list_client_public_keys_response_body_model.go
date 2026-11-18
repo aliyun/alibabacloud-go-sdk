@@ -24,13 +24,13 @@ type iListClientPublicKeysResponseBody interface {
 type ListClientPublicKeysResponseBody struct {
 	// The list of ClientPublicKeys for the application.
 	ClientPublicKeys []*ListClientPublicKeysResponseBodyClientPublicKeys `json:"ClientPublicKeys,omitempty" xml:"ClientPublicKeys,omitempty" type:"Repeated"`
-	// The number of entries per page in a paged query.
+	// The number of entries to return per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListClientPublicKeysResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListClientPublicKeysResponseBodyClientPublicKeys struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the application ClientPublicKey.
+	// The ID of the ClientPublicKey.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ListClientPublicKeysResponseBodyClientPublicKeys struct {
 	//
 	// 1762006052000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// Indicates whether this key is used with priority.
+	// Specifies whether the ClientPublicKey is prioritized.
 	//
 	// example:
 	//

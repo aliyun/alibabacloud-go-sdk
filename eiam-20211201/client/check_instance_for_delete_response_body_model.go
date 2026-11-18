@@ -16,7 +16,7 @@ type iCheckInstanceForDeleteResponseBody interface {
 }
 
 type CheckInstanceForDeleteResponseBody struct {
-	// The check result.
+	// The returned result.
 	CheckInstanceResult *CheckInstanceForDeleteResponseBodyCheckInstanceResult `json:"CheckInstanceResult,omitempty" xml:"CheckInstanceResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type CheckInstanceForDeleteResponseBodyCheckInstanceResult struct {
 	//
 	// True
 	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
-	// The restriction information for instances that cannot be deleted.
+	// The restriction information that prevents deletion.
 	RestrictScenarios []*CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios `json:"RestrictScenarios,omitempty" xml:"RestrictScenarios,omitempty" type:"Repeated"`
 }
 
@@ -112,7 +112,7 @@ func (s *CheckInstanceForDeleteResponseBodyCheckInstanceResult) Validate() error
 }
 
 type CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios struct {
-	// The console URL that provides helpful information.
+	// The helpful console URL.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios stru
 	//
 	// eas-r-nguosqgr75ndg784k8
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The restriction reason.
+	// The reason for the restriction.
 	//
 	// example:
 	//

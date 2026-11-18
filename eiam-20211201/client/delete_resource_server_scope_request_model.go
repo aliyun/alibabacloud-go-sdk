@@ -34,7 +34,7 @@ type DeleteResourceServerScopeRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The scope permission ID under the ResourceServer.
+	// The ID of the scope permission.
 	//
 	// This parameter is required.
 	//

@@ -20,7 +20,7 @@ type iUpdateApplicationFederatedCredentialDescriptionRequest interface {
 }
 
 type UpdateApplicationFederatedCredentialDescriptionRequest struct {
-	// The ID of the application\\"s federated credential.
+	// The application federated credential ID.
 	//
 	// This parameter is required.
 	//

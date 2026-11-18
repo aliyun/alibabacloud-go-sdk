@@ -24,25 +24,25 @@ type iListGroupsForResourceServerResponseBody interface {
 type ListGroupsForResourceServerResponseBody struct {
 	// The list of groups.
 	Groups []*ListGroupsForResourceServerResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The number of entries returned on the current page.
+	// The number of entries returned per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. A null or empty value indicates that all results have been returned.
+	// The next token.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the filter criteria.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListGroupsForResourceServerResponseBody) Validate() error {
 }
 
 type ListGroupsForResourceServerResponseBodyGroups struct {
-	// The ID of the group.
+	// The group ID.
 	//
 	// example:
 	//
 	// group_nbsomva32b6utec3hgi7scxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -182,13 +182,13 @@ func (s *ListGroupsForResourceServerResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes struct {
-	// The ID of the scope.
+	// The scope ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The name of the scope.
+	// The scope name.
 	//
 	// example:
 	//

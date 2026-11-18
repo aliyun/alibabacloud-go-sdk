@@ -42,13 +42,13 @@ type RevokeApplicationFromUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of account IDs. You can specify up to 100 account IDs in a single request.
+	// The list of account IDs. You can specify up to 100 account IDs in a single operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// user_d6sbsuumeta4h66ec3il7yxxxx
+	// ["user_d6sbsuumeta4h66ec3il7yxxxx"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

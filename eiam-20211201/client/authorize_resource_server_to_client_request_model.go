@@ -18,7 +18,7 @@ type iAuthorizeResourceServerToClientRequest interface {
 }
 
 type AuthorizeResourceServerToClientRequest struct {
-	// The unique identifier of the Client application.
+	// The unique identifier of the client application.
 	//
 	// This parameter is required.
 	//

@@ -28,19 +28,19 @@ type iCreateNetworkZoneRequest interface {
 }
 
 type CreateNetworkZoneRequest struct {
-	// Idempotency token.
+	// The idempotency token.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Network zone description.
+	// The network zone description.
 	//
 	// example:
 	//
 	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type CreateNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Network zone IPv4 CIDR blocks.
+	// The IPv4 CIDR blocks of the network zone.
 	//
 	// example:
 	//
-	// 0.0.0.0/0
+	// ["0.0.0.0/0"]
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// Network zone IPv6 CIDR blocks.
+	// The IPv6 CIDR blocks of the network zone.
 	//
 	// example:
 	//
-	// ::/0
+	// ["::/0"]
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
-	// Network zone name.
+	// The network zone name.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CreateNetworkZoneRequest struct {
 	//
 	// IPV4Test
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// Network zone type.
+	// The network zone type.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateNetworkZoneRequest struct {
 	//
 	// arn:alibaba:idaas:network:zone:classic
 	NetworkZoneType *string `json:"NetworkZoneType,omitempty" xml:"NetworkZoneType,omitempty"`
-	// VPC ID.
+	// The VPC ID.
 	//
 	// example:
 	//

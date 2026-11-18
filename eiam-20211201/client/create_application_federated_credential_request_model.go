@@ -455,13 +455,13 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigAzureV
 type CreateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig struct {
 	// The list of GCP virtual machine instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The GCP project ID to which the resource belongs.
+	// The GCP project ID.
 	//
 	// example:
 	//
 	// turnkey-axiom-475109-xx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sub claim corresponding to the service account.
+	// The sub corresponding to the service account.
 	//
 	// example:
 	//
@@ -539,7 +539,7 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigGeneri
 }
 
 type CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetesConfig struct {
-	// The K8s namespace.
+	// The Kubernetes namespace.
 	//
 	// example:
 	//
@@ -551,7 +551,7 @@ type CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetes
 	//
 	// my-pod-
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The K8s service account name.
+	// The Kubernetes service account name.
 	//
 	// example:
 	//
@@ -599,7 +599,7 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubern
 }
 
 type CreateApplicationFederatedCredentialRequestPkcs7VerificationConfig struct {
-	// The list of instance IDs.
+	// The list of instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

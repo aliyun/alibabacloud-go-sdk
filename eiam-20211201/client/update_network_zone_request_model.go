@@ -26,7 +26,7 @@ type iUpdateNetworkZoneRequest interface {
 }
 
 type UpdateNetworkZoneRequest struct {
-	// The idempotence token.
+	// The client token used to ensure idempotence.
 	//
 	// example:
 	//

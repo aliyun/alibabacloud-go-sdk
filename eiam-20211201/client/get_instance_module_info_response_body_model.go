@@ -64,13 +64,13 @@ func (s *GetInstanceModuleInfoResponseBody) Validate() error {
 type GetInstanceModuleInfoResponseBodyModule struct {
 	// The level-2 module information.
 	Features []*GetInstanceModuleInfoResponseBodyModuleFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The level-1 module identifier.
+	// The identifier of the level-1 module.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:application
 	ModuleKey *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
-	// The level-1 module status.
+	// The status of the level-1 module.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ func (s *GetInstanceModuleInfoResponseBodyModule) Validate() error {
 }
 
 type GetInstanceModuleInfoResponseBodyModuleFeatures struct {
-	// The level-2 module identifier.
+	// The identifier of the level-2 module.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:application:standard:oidc
 	FeatureKey *string `json:"FeatureKey,omitempty" xml:"FeatureKey,omitempty"`
-	// The level-2 module status.
+	// The status of the level-2 module.
 	//
 	// example:
 	//

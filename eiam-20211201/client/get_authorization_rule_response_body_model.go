@@ -64,19 +64,17 @@ func (s *GetAuthorizationRuleResponseBody) Validate() error {
 type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	// The authorization resource scope. Valid values:
 	//
-	// - global: Global resources under the project.
-	//
-	// - custom: Resources under a specified project scope.
+	// - custom: Resources within the specified project scope.
 	//
 	// example:
 	//
-	// global
+	// custom
 	AuthorizationResourceScope *string `json:"AuthorizationResourceScope,omitempty" xml:"AuthorizationResourceScope,omitempty"`
 	// The creation type of the authorization rule. Valid values:
 	//
 	// - system_init: Created by the system.
 	//
-	// - user_custom: Created by a user.
+	// - user_custom: Created by the user.
 	//
 	// example:
 	//
@@ -96,13 +94,13 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	// The scenario label of the authorization rule. Valid values:
 	//
-	// - privileged_cloud_account: Privileged cloud account scenario.
+	// - privileged_cloud_account (Privileged cloud account scenario)
 	//
-	// - asset: Asset scenario.
+	// - asset (Asset scenario)
 	//
 	// example:
 	//
-	// Asset
+	// privileged_cloud_account
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
 	// The ID of the subject associated with the authorization rule.
 	//
@@ -112,19 +110,21 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	AuthorizationRuleSubjectId *string `json:"AuthorizationRuleSubjectId,omitempty" xml:"AuthorizationRuleSubjectId,omitempty"`
 	// The subject scope of the authorization rule. Valid values:
 	//
-	// - shared: Shared type, which supports all subjects, including accounts and applications.
+	// - shared: Shared. A single rule can be used by multiple subjects that meet the rule constraints.
 	//
-	// - exclusive: Exclusive type.
+	// - exclusive: Exclusive. A single rule can only be used by the specified subject.
 	//
 	// example:
 	//
 	// shared
 	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
-	// The subject type associated with the authorization rule. This parameter is valid only when the subject scope of the authorization rule is exclusive. Valid values:
+	// The subject category to which the authorization rule applies. For an exclusive rule, this field indicates the type of the specified subject. For a shared rule with a configured subject category, this field indicates the subject category that the rule allows to be associated with. Valid values:
 	//
 	// - application: Application.
 	//
-	// - user: Account.
+	// - user: Account. For a shared privileged cloud account rule, this value indicates the human user category, which can be associated with accounts, user groups, and organizations.
+	//
+	// If no subject category is configured for the rule, this field may be empty. The actual subjects associated with a shared rule are determined by the subject association query results.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// iprj_system_default
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the authorization rule. Valid values:
+	// The authorization rule status. Valid values:
 	//
 	// - enabled: Enabled.
 	//

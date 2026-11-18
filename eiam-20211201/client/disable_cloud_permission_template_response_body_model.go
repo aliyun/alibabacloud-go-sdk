@@ -14,7 +14,7 @@ type iDisableCloudPermissionTemplateResponseBody interface {
 }
 
 type DisableCloudPermissionTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

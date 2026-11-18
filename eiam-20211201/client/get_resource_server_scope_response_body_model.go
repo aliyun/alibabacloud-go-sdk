@@ -22,7 +22,7 @@ type GetResourceServerScopeResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scope permission information under the ResourceServer.
+	// The scope permission information of the resource server.
 	ResourceServerScope *GetResourceServerScopeResponseBodyResourceServerScope `json:"ResourceServerScope,omitempty" xml:"ResourceServerScope,omitempty" type:"Struct"`
 }
 
@@ -80,25 +80,25 @@ type GetResourceServerScopeResponseBodyResourceServerScope struct {
 	//
 	// idaas_xxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The scope permission ID.
+	// The ID of the scope permission.
 	//
 	// example:
 	//
 	// rss_xxxxxxxxxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The scope permission name.
+	// The name of the scope permission.
 	//
 	// example:
 	//
 	// Read User Info
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// The scope permission type.
+	// The type of the scope permission.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// The scope permission value.
+	// The value of the scope permission.
 	//
 	// example:
 	//

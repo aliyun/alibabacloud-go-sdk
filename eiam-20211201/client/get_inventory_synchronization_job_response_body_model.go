@@ -62,13 +62,13 @@ func (s *GetInventorySynchronizationJobResponseBody) Validate() error {
 }
 
 type GetInventorySynchronizationJobResponseBodyInventorySynchronizationJob struct {
-	// The description.
+	// The synchronization job description.
 	//
 	// example:
 	//
 	// No Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time.
+	// The synchronization end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -88,19 +88,19 @@ type GetInventorySynchronizationJobResponseBodyInventorySynchronizationJob struc
 	InventorySynchronizationJobId *string `json:"InventorySynchronizationJobId,omitempty" xml:"InventorySynchronizationJobId,omitempty"`
 	// The synchronization node task result.
 	Result *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The start time.
+	// The synchronization start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1761531256
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status.
+	// The synchronization job status.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The trigger type.
+	// The synchronization trigger type.
 	//
 	// example:
 	//
@@ -198,9 +198,9 @@ func (s *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJob) 
 }
 
 type GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResult struct {
-	// The agent synchronization statistics.
+	// The agent synchronization result statistics.
 	AgentStatistics *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatistics `json:"AgentStatistics,omitempty" xml:"AgentStatistics,omitempty" type:"Struct"`
-	// The asset synchronization statistics.
+	// The asset synchronization result statistics.
 	AssetStatistics *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatistics `json:"AssetStatistics,omitempty" xml:"AssetStatistics,omitempty" type:"Struct"`
 	// The error code of the synchronization result.
 	//
@@ -275,13 +275,13 @@ func (s *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobRe
 }
 
 type GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatistics struct {
-	// The creation statistics.
+	// The creation result statistics.
 	Created *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// The deletion statistics.
+	// The deletion result statistics.
 	Deleted *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// The statistics of unchanged assets.
+	// The unchanged result statistics.
 	Same *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// The update statistics.
+	// The update result statistics.
 	Updated *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAgentStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 
@@ -654,13 +654,13 @@ func (s *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobRe
 }
 
 type GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatistics struct {
-	// The creation statistics.
+	// The creation result statistics.
 	Created *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
-	// The deletion statistics.
+	// The deletion result statistics.
 	Deleted *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
-	// The statistics of unchanged assets.
+	// The unchanged result statistics.
 	Same *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
-	// The update statistics.
+	// The update result statistics.
 	Updated *GetInventorySynchronizationJobResponseBodyInventorySynchronizationJobResultAssetStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
 }
 

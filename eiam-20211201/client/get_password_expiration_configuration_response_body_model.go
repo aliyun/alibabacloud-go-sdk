@@ -64,7 +64,7 @@ func (s *GetPasswordExpirationConfigurationResponseBody) Validate() error {
 type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration struct {
 	// The list of effective authentication source IDs. Default value: ["ia_all"].
 	//
-	// - ia_all: All authentication sources. If this value is specified, no other values can be specified.
+	// - ia_all: All. If you specify this value, you cannot specify other values.
 	//
 	// - ia_password: Account password logon.
 	//
@@ -72,15 +72,15 @@ type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurati
 	//
 	// - ia_webauthn: WebAuthn authenticator logon.
 	//
-	// - idp_xxx: Authentication method of a specific identity provider.
+	// - idp_xxx: A specific identity provider (IdP) authentication method.
 	EffectiveAuthenticationSourceIds []*string `json:"EffectiveAuthenticationSourceIds,omitempty" xml:"EffectiveAuthenticationSourceIds,omitempty" type:"Repeated"`
-	// The action to take when a password expires. Valid values:
+	// The password expiration action. Valid values:
 	//
-	// - forbid_login: Forbid logon.
+	// - forbid_login: Prohibits logon.
 	//
-	// - force_update_password: Force password change.
+	// - force_update_password: Forces a password change.
 	//
-	// - remind_update_password: Remind password change.
+	// - remind_update_password: Reminds the user to change the password.
 	//
 	// example:
 	//
@@ -90,15 +90,15 @@ type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurati
 	//
 	// example:
 	//
-	// login
+	// ["login"]
 	PasswordExpirationNotificationChannels []*string `json:"PasswordExpirationNotificationChannels,omitempty" xml:"PasswordExpirationNotificationChannels,omitempty" type:"Repeated"`
-	// The advance notice period before password expiration. Unit: days.
+	// The password expiration notification period, in days.
 	//
 	// example:
 	//
 	// 7
 	PasswordExpirationNotificationDuration *int32 `json:"PasswordExpirationNotificationDuration,omitempty" xml:"PasswordExpirationNotificationDuration,omitempty"`
-	// The status of password expiration notification. Valid values:
+	// The password expiration notification status. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -108,7 +108,7 @@ type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurati
 	//
 	// enabled
 	PasswordExpirationNotificationStatus *string `json:"PasswordExpirationNotificationStatus,omitempty" xml:"PasswordExpirationNotificationStatus,omitempty"`
-	// The status of the password expiration configuration. Valid values:
+	// The password expiration status. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -118,13 +118,13 @@ type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurati
 	//
 	// enabled
 	PasswordExpirationStatus *string `json:"PasswordExpirationStatus,omitempty" xml:"PasswordExpirationStatus,omitempty"`
-	// The grace period for forced password change after expiration. Unit: days.
+	// The forced password change period, in days.
 	//
 	// example:
 	//
 	// 3
 	PasswordForcedUpdateDuration *int32 `json:"PasswordForcedUpdateDuration,omitempty" xml:"PasswordForcedUpdateDuration,omitempty"`
-	// The maximum validity period of a password. Unit: days.
+	// The password validity period, in days.
 	//
 	// example:
 	//

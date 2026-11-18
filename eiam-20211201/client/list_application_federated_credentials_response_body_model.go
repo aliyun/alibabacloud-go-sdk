@@ -26,19 +26,19 @@ type iListApplicationFederatedCredentialsResponseBody interface {
 type ListApplicationFederatedCredentialsResponseBody struct {
 	// The list of application federated credentials.
 	ApplicationFederatedCredentials []*ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials `json:"ApplicationFederatedCredentials,omitempty" xml:"ApplicationFederatedCredentials,omitempty" type:"Repeated"`
-	// The maximum number of rows per page in a paged query.
+	// The maximum number of items per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListApplicationFederatedCredentialsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *ListApplicationFederatedCredentialsResponseBody) Validate() error {
 }
 
 type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentials struct {
-	// The application federated credential ID.
+	// The ID of the application federated credential.
 	//
 	// example:
 	//
 	// afc_adsa1sdaxxxxx
 	ApplicationFederatedCredentialId *string `json:"ApplicationFederatedCredentialId,omitempty" xml:"ApplicationFederatedCredentialId,omitempty"`
-	// The application federated credential name.
+	// The name of the application federated credential.
 	//
 	// example:
 	//
 	// test
 	ApplicationFederatedCredentialName *string `json:"ApplicationFederatedCredentialName,omitempty" xml:"ApplicationFederatedCredentialName,omitempty"`
-	// The application federated credential type.
+	// The type of the application federated credential.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	//
 	// 1758785994982
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The application federated credential description.
+	// The description of the application federated credential.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The federated trust source ID.
+	// The ID of the federated trust source.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	OidcVerificationConfig *ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentialsOidcVerificationConfig `json:"OidcVerificationConfig,omitempty" xml:"OidcVerificationConfig,omitempty" type:"Struct"`
 	// The PKCS#7 structured configuration.
 	Pkcs7VerificationConfig *ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentialsPkcs7VerificationConfig `json:"Pkcs7VerificationConfig,omitempty" xml:"Pkcs7VerificationConfig,omitempty" type:"Struct"`
-	// The application federated credential status.
+	// The status of the application federated credential.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	//
 	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The Azure resource group name.
+	// The name of the Azure resource group.
 	//
 	// example:
 	//
@@ -555,13 +555,13 @@ func (s *ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCred
 type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentialsOidcVerificationConfigGcpVmConfig struct {
 	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The GCP project ID to which the resource belongs.
+	// The ID of the GCP project to which the resource belongs.
 	//
 	// example:
 	//
 	// 6193072600270353961
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The subject (sub) that corresponds to the service account.
+	// The sub claim corresponding to the service account.
 	//
 	// example:
 	//
@@ -639,7 +639,7 @@ func (s *ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCred
 }
 
 type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredentialsOidcVerificationConfigKubernetesConfig struct {
-	// The K8s namespace.
+	// The Kubernetes namespace.
 	//
 	// example:
 	//
@@ -651,7 +651,7 @@ type ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredenti
 	//
 	// test-pod
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The K8s service account name.
+	// The name of the Kubernetes service account.
 	//
 	// example:
 	//
