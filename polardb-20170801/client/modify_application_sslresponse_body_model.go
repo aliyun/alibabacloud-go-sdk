@@ -14,7 +14,7 @@ type iModifyApplicationSSLResponseBody interface {
 }
 
 type ModifyApplicationSSLResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

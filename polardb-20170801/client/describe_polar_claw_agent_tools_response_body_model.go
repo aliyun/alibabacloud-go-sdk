@@ -247,9 +247,9 @@ type DescribePolarClawAgentToolsResponseBodyGroups struct {
 	//
 	// example:
 	//
-	// 文件操作
+	// File operations
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The source, which is core or a plugin ID.
+	// The source: core or plug-in ID.
 	//
 	// example:
 	//
@@ -323,7 +323,7 @@ type DescribePolarClawAgentToolsResponseBodyGroupsTools struct {
 	//
 	// example:
 	//
-	// 读取指定文件内容
+	// Read the content of the specified file
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tool identifier.
 	//
@@ -335,7 +335,7 @@ type DescribePolarClawAgentToolsResponseBodyGroupsTools struct {
 	//
 	// example:
 	//
-	// 读取文件
+	// Read file
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The source.
 	//
@@ -413,7 +413,7 @@ type DescribePolarClawAgentToolsResponseBodyProfiles struct {
 	//
 	// example:
 	//
-	// 全部工具
+	// All tools
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 

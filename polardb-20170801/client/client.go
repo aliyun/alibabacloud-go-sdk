@@ -16992,6 +16992,100 @@ func (client *Client) DescribeAgenticDBComputeClusters(request *DescribeAgenticD
 
 // Summary:
 //
+// Queries the performance of an AgenticDB instance.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL.
+//
+// @param request - DescribeAgenticDBPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBPerformanceResponse
+func (client *Client) DescribeAgenticDBPerformanceWithOptions(request *DescribeAgenticDBPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBPerformanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Aggregate) {
+		query["Aggregate"] = request.Aggregate
+	}
+
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBPerformance"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the performance of an AgenticDB instance.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL.
+//
+// @param request - DescribeAgenticDBPerformanceRequest
+//
+// @return DescribeAgenticDBPerformanceResponse
+func (client *Client) DescribeAgenticDBPerformance(request *DescribeAgenticDBPerformanceRequest) (_result *DescribeAgenticDBPerformanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBPerformanceResponse{}
+	_body, _err := client.DescribeAgenticDBPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of an AgenticDB project.
 //
 // @param request - DescribeAgenticDBProjectRequest
@@ -22958,7 +23052,7 @@ func (client *Client) DescribeDBClustersZonal(request *DescribeDBClustersZonalRe
 
 // Summary:
 //
-// Queries the supported character sets, collations, and other properties of a PolarDB database.
+// Queries the attributes supported by PolarDB databases, such as character sets and collations.
 //
 // @param request - DescribeDBInitializeVariableRequest
 //
@@ -23018,7 +23112,7 @@ func (client *Client) DescribeDBInitializeVariableWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the supported character sets, collations, and other properties of a PolarDB database.
+// Queries the attributes supported by PolarDB databases, such as character sets and collations.
 //
 // @param request - DescribeDBInitializeVariableRequest
 //
@@ -23652,7 +23746,7 @@ func (client *Client) DescribeDBNodePerformance(request *DescribeDBNodePerforman
 
 // Summary:
 //
-// Queries the parameters for specified nodes in a cluster.
+// Queries the parameters of a specified node in a cluster.
 //
 // @param request - DescribeDBNodesParametersRequest
 //
@@ -23716,7 +23810,7 @@ func (client *Client) DescribeDBNodesParametersWithOptions(request *DescribeDBNo
 
 // Summary:
 //
-// Queries the parameters for specified nodes in a cluster.
+// Queries the parameters of a specified node in a cluster.
 //
 // @param request - DescribeDBNodesParametersRequest
 //
@@ -34694,7 +34788,7 @@ func (client *Client) ExecuteCrossCloudOpenAPI(request *ExecuteCrossCloudOpenAPI
 
 // Summary:
 //
-// Performs a manual primary/secondary switchover for a PolarDB cluster. You can specify a read-only node as the new primary node.
+// Performs a manual primary/secondary switchover for a PolarDB cluster, allowing you to specify a read-only node as the new primary node.
 //
 // @param request - FailoverDBClusterRequest
 //
@@ -34770,7 +34864,7 @@ func (client *Client) FailoverDBClusterWithOptions(request *FailoverDBClusterReq
 
 // Summary:
 //
-// Performs a manual primary/secondary switchover for a PolarDB cluster. You can specify a read-only node as the new primary node.
+// Performs a manual primary/secondary switchover for a PolarDB cluster, allowing you to specify a read-only node as the new primary node.
 //
 // @param request - FailoverDBClusterRequest
 //
@@ -34788,15 +34882,15 @@ func (client *Client) FailoverDBCluster(request *FailoverDBClusterRequest) (_res
 
 // Summary:
 //
-// Performs a manual primary/secondary switchover for an edge cluster.
+// Performs a primary/secondary switchover.
 //
 // Description:
 //
-// Switches the primary node of an edge cloud cluster. This operation applies only to edge clusters deployed through MyBase or ENS infrastructure. You can call DescribeEdgeCloudRegion to query edge regions and call DescribeDBClustersZonal to obtain the edge cluster ID. For standard PolarDB clusters, use FailoverDBCluster.
+// Switches the primary node of an edge cloud cluster. This operation applies only to edge clusters deployed by using MyBase or ENS infrastructure. You can call DescribeEdgeCloudRegion to query edge regions and call DescribeDBClustersZonal to obtain the edge cluster ID. For standard PolarDB clusters, use FailoverDBCluster.
 //
 // ## Before you begin
 //
-// Complete the prerequisites, specify that this API applies only to edge clusters deployed through MyBase or ENS, indicate the path to obtain edge clusters, and specify that FailoverDBCluster should be used for standard clusters.
+// Complete the prerequisites. Note that this API applies only to edge clusters deployed by using MyBase or ENS. Specify the method to obtain the edge cluster ID, and note that you must use FailoverDBCluster for standard clusters.
 //
 // @param request - FailoverDBClusterZonalRequest
 //
@@ -34872,15 +34966,15 @@ func (client *Client) FailoverDBClusterZonalWithOptions(request *FailoverDBClust
 
 // Summary:
 //
-// Performs a manual primary/secondary switchover for an edge cluster.
+// Performs a primary/secondary switchover.
 //
 // Description:
 //
-// Switches the primary node of an edge cloud cluster. This operation applies only to edge clusters deployed through MyBase or ENS infrastructure. You can call DescribeEdgeCloudRegion to query edge regions and call DescribeDBClustersZonal to obtain the edge cluster ID. For standard PolarDB clusters, use FailoverDBCluster.
+// Switches the primary node of an edge cloud cluster. This operation applies only to edge clusters deployed by using MyBase or ENS infrastructure. You can call DescribeEdgeCloudRegion to query edge regions and call DescribeDBClustersZonal to obtain the edge cluster ID. For standard PolarDB clusters, use FailoverDBCluster.
 //
 // ## Before you begin
 //
-// Complete the prerequisites, specify that this API applies only to edge clusters deployed through MyBase or ENS, indicate the path to obtain edge clusters, and specify that FailoverDBCluster should be used for standard clusters.
+// Complete the prerequisites. Note that this API applies only to edge clusters deployed by using MyBase or ENS. Specify the method to obtain the edge cluster ID, and note that you must use FailoverDBCluster for standard clusters.
 //
 // @param request - FailoverDBClusterZonalRequest
 //
@@ -41991,7 +42085,7 @@ func (client *Client) ModifyDBNodeRouterWeight(request *ModifyDBNodeRouterWeight
 
 // Summary:
 //
-// Modifies the Snapshot Consistency Cluster (SCC) mode for a specified node in a PolarDB cluster.
+// Modifies the SCC settings of a node.
 //
 // @param request - ModifyDBNodeSccModeRequest
 //
@@ -42059,7 +42153,7 @@ func (client *Client) ModifyDBNodeSccModeWithOptions(request *ModifyDBNodeSccMod
 
 // Summary:
 //
-// Modifies the Snapshot Consistency Cluster (SCC) mode for a specified node in a PolarDB cluster.
+// Modifies the SCC settings of a node.
 //
 // @param request - ModifyDBNodeSccModeRequest
 //
@@ -47933,7 +48027,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Temporarily changes the specifications of a cluster.
+// Temporarily modifies the configuration.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -48021,7 +48115,7 @@ func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeReque
 
 // Summary:
 //
-// Temporarily changes the specifications of a cluster.
+// Temporarily modifies the configuration.
 //
 // @param request - TempModifyDBNodeRequest
 //

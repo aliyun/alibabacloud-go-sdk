@@ -34,7 +34,7 @@ type DescribePolarClawAgentToolsRequest struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Specifies whether to include plugin tools.
+	// Specifies whether to include plug-in tools.
 	//
 	// example:
 	//

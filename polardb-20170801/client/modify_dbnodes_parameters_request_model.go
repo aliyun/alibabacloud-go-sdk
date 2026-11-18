@@ -50,11 +50,11 @@ type ModifyDBNodesParametersRequest struct {
 	//
 	// pi-****************， pi-****************
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	// Specifies whether to execute the parameter modification and restart immediately or at a scheduled time. Valid values:
+	// Specifies whether to immediately execute or schedule the parameter modification and restart. Valid values:
 	//
-	// - false: executes the task at a scheduled time. This is the default value.
+	// - false: schedules the task. This is the default value.
 	//
-	// - true: executes the task immediately.
+	// - true: immediately executes the task.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ModifyDBNodesParametersRequest struct {
 	//
 	// {"loose_imci_optimize_const_join_memory":"ON"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The latest time to start the scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The latest time to start the scheduled task. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-04-28T14:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to execute the scheduled kernel version upgrade task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The earliest time to start the scheduled kernel version upgrade task within the specified time window. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

@@ -36,13 +36,13 @@ type iTempModifyDBNodeRequest interface {
 }
 
 type TempModifyDBNodeRequest struct {
-	// Specifies whether to automatically use coupons. Valid values:
+	// Specifies whether to automatically use a coupon. Valid values:
 	//
-	// 	- true (default): Uses coupons.
+	// - **true**: uses a coupon. This is the default value.
 	//
-	// 	- false: Does not use coupons.
+	// - **false**: does not use a coupon.
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can contain only ASCII characters. The token can be up to 64 characters in length.
+	// The client token that ensures the idempotence of the request. The client generates the token to ensure uniqueness across different requests. The token is case-sensitive and can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type TempModifyDBNodeRequest struct {
 	//
 	// This parameter is required.
 	DBNode []*TempModifyDBNodeRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
-	// The change type. The value is fixed as **TempUpgrade**.
+	// The modification type. Set the value to **TempUpgrade**.
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type TempModifyDBNodeRequest struct {
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - **Modify**: temporarily upgrades specifications.
+	// - **Modify**: temporarily upgrades the configuration.
 	//
-	// - **Add**: temporarily adds nodes.
+	// - **Add**: temporarily adds a node.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type TempModifyDBNodeRequest struct {
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The coupon code. If this parameter is not specified, the default coupon is used.
+	// The coupon ID. If you do not specify this parameter, the default coupon is used.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type TempModifyDBNodeRequest struct {
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The restore time for the temporary upgrade. Specify the time in the YYYY-MM-DD hh:mm:ss format.
+	// The time when the temporary upgrade is restored. Specify the time in the YYYY-MM-DD hh:mm:ss format.
 	//
-	// > The restore time cannot be earlier than 1 hour after the current time or later than 1 day before the cluster expiration time.
+	// > The restore time must be at least 1 hour later than the current time and at least 1 day earlier than the cluster expiration time.
 	//
 	// This parameter is required.
 	//
@@ -236,7 +236,7 @@ type TempModifyDBNodeRequestDBNode struct {
 	//
 	// > - When you add a node, the node specifications must be the same as those of the existing nodes.
 	//
-	// > - For the specifications of existing cluster nodes, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
+	// > - For more information about the specifications of existing nodes in the cluster, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
 	//
 	// example:
 	//
