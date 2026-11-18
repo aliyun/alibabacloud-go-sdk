@@ -8,6 +8,15 @@
 
 
 2026-11-18 Version: v1.0.4
+- Update API CreateDataMaskingRule: add request parameters UserList.$.AuthDb.
+- Update API ListColumns: add request parameters OnlyColumnName.
+- Update API ListDataAssetAccounts: add request parameters AuthDb.
+- Update API ListDataAssetAccounts: add response parameters Body.Items.$.AuthDb.
+- Update API ListDataAssetAccounts: add response parameters Body.Items.$.Description.
+- Update API ListDataMaskingInstances: add response parameters Body.Items.$.Description.
+
+
+2026-11-18 Version: v1.0.4
 - Generated golang 2026-01-20 for Sddp.
 
 2026-11-11 Version: v1.0.4
