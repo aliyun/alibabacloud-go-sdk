@@ -59,19 +59,23 @@ type DescribeSnapshotsRequest struct {
 	// testName
 	DesktopName     *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
-	// The end time of the snapshot creation. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
+	// The end time of snapshot creation. Specify the time in the `yyyy-mm-ddthh:mm:ssz` format based on the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2020-11-31T06:32:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries to return per page in a paging query.
+	// The number of entries per page for a paging query.
+	//
+	// - Maximum value: 100.
+	//
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken parameter value returned by the previous API call.
+	// The query token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -83,7 +87,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +101,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// s-2ze81owrnv9pity4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The display name of the snapshot. The name must be 2 to 127 characters in length. It must start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with `auto`.
+	// The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character. To prevent name conflicts with automatic snapshots, the name cannot start with `auto`.
 	//
 	// example:
 	//
@@ -109,15 +113,15 @@ type DescribeSnapshotsRequest struct {
 	//
 	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The type of the disk for which you want to create a snapshot.
+	// The disk for which the snapshot is created.
 	//
-	// > The values are not case-sensitive.
+	// > The values are case-insensitive.
 	//
 	// example:
 	//
 	// system
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The start time of the snapshot creation. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
+	// The start time of snapshot creation. Specify the time in the `yyyy-mm-ddthh:mm:ssz` format based on the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard. The time must be in UTC.
 	//
 	// example:
 	//

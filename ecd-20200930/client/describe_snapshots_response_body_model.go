@@ -18,7 +18,7 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
-	// The pagination token for the next query. If the value is empty, no more results are available.
+	// The token for the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeSnapshotsResponseBody struct {
 	//
 	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The snapshots.
+	// The list of snapshots.
 	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *DescribeSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeSnapshotsResponseBodySnapshots struct {
-	// The time when the snapshot was created. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
+	// The time when the snapshot was created. The time is displayed in the `yyyy-mm-ddthh:mm:ssz` format based on the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC.
 	//
 	// example:
 	//
@@ -95,13 +95,13 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Administrator
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The time when the snapshot was created. The time is displayed in UTC+0 in the `yyyy-mm-ddthh:mm:ssz` format in accordance with the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
+	// The time when the snapshot was created. The time is displayed in the `yyyy-mm-ddthh:mm:ssz` format based on the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC.
 	//
 	// example:
 	//
 	// 2020-12-20T14:52:28Z
 	DeletionTime *string `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
-	// The description of the snapshot.
+	// The snapshot description.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// test
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the cloud desktop.
+	// The cloud desktop status.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The creation progress of the snapshot. Unit: percentage.
+	// The progress of snapshot creation. Unit: %.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The remaining time required to create the snapshot. Unit: seconds.
 	//
-	// > If `Status` is `PROGRESSING`, the value of `RemainTime` is `-1`, which indicates that the remaining time is being calculated.
+	// > If `Status` is `PROGRESSING`, a `RemainTime` value of `-1` indicates that the remaining time is being calculated.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// s-2zeipxmnhej803x7****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The name of the snapshot.
+	// The snapshot name.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// USER
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The capacity of the source disk. Unit: GiB.
+	// The size of the source disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 150
 	SourceDiskSize *string `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
-	// The type of the source disk.
+	// The source disk type.
 	//
 	// example:
 	//

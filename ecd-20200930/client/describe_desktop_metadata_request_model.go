@@ -42,7 +42,7 @@ type iDescribeDesktopMetadataRequest interface {
 }
 
 type DescribeDesktopMetadataRequest struct {
-	// The time when the cloud computer was created. The time is in UTC and follows the format:
+	// The time when the cloud desktop was created. Specify the time in the UTC format:
 	//
 	// `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
 	//
@@ -50,7 +50,7 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// 2025-01-01T12:00:00Z
 	CreationTimeStart *string `json:"CreationTimeStart,omitempty" xml:"CreationTimeStart,omitempty"`
-	// The list of cloud computer IDs.
+	// The list of cloud desktop IDs.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
 	// The end user ID.
 	//
@@ -58,7 +58,7 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// test-user
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The shared cloud computer ID.
+	// The ID of the shared cloud desktop group.
 	//
 	// example:
 	//
@@ -76,19 +76,19 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Specifies whether the response includes cloud computers in shared cloud computer groups.
+	// Specifies whether the response includes cloud desktops in shared cloud desktop groups.
 	//
 	// example:
 	//
 	// false
 	IncludeDesktopGroup *bool `json:"IncludeDesktopGroup,omitempty" xml:"IncludeDesktopGroup,omitempty"`
-	// >This parameter is not yet available for use.
+	// >This parameter is not available.
 	//
 	// example:
 	//
 	// ecd
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+	// The number of entries to return per page in a paged query. This parameter is used for paging. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// 192.168.1.1
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	// The token for the next query. An empty value indicates that there are no more results.
+	// The pagination token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// cn-hangzhou+dir-778418****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The start time of operations performed on the cloud computer. The time is in UTC and follows the format:
+	// The start time of the operation on the cloud desktop. Time format:
 	//
 	// `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
 	//

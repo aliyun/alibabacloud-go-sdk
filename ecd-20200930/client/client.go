@@ -1454,7 +1454,7 @@ func (client *Client) BatchModifyEntitlement(request *BatchModifyEntitlementRequ
 
 // Summary:
 //
-// Associates a configuration group with a cloud computer or resource group.
+// Associates a configuration group with a cloud desktop or a resource group.
 //
 // @param request - BindConfigGroupRequest
 //
@@ -1506,7 +1506,7 @@ func (client *Client) BindConfigGroupWithOptions(request *BindConfigGroupRequest
 
 // Summary:
 //
-// Associates a configuration group with a cloud computer or resource group.
+// Associates a configuration group with a cloud desktop or a resource group.
 //
 // @param request - BindConfigGroupRequest
 //
@@ -2658,7 +2658,7 @@ func (client *Client) CreateADConnectorOfficeSite(request *CreateADConnectorOffi
 
 // Summary:
 //
-// Creates a NAS file system and binds it to the office network of a shared cloud computer.
+// Creates a NAS file system and associates it with the office network of a shared cloud desktop.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -2701,6 +2701,10 @@ func (client *Client) CreateAndBindNasFileSystemWithOptions(request *CreateAndBi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.SizeQuota) {
+		query["SizeQuota"] = request.SizeQuota
+	}
+
 	if !dara.IsNil(request.StorageType) {
 		query["StorageType"] = request.StorageType
 	}
@@ -2730,7 +2734,7 @@ func (client *Client) CreateAndBindNasFileSystemWithOptions(request *CreateAndBi
 
 // Summary:
 //
-// Creates a NAS file system and binds it to the office network of a shared cloud computer.
+// Creates a NAS file system and associates it with the office network of a shared cloud desktop.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -4260,11 +4264,13 @@ func (client *Client) CreateConfigGroup(request *CreateConfigGroupRequest) (_res
 
 // Summary:
 //
-// Creates a shared cloud computer.
+// Creates a shared cloud desktop.
 //
 // Description:
 //
-// - For information about the features, common scenarios, limits, and scaling policies of shared cloud computers, see [Shared cloud computers (formerly cloud computer pools) overview](https://help.aliyun.com/document_detail/290959.html).
+// - For information about the features, common scenarios, limits, and scaling policy of shared cloud desktops, see [Overview of shared cloud desktops (formerly cloud desktop pools)](https://help.aliyun.com/document_detail/290959.html).
+//
+// - Before you invoke this operation, make sure that required prerequisite resources such as office networks, cloud desktop templates, and policies are created.
 //
 // @param request - CreateDesktopGroupRequest
 //
@@ -4548,11 +4554,13 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 
 // Summary:
 //
-// Creates a shared cloud computer.
+// Creates a shared cloud desktop.
 //
 // Description:
 //
-// - For information about the features, common scenarios, limits, and scaling policies of shared cloud computers, see [Shared cloud computers (formerly cloud computer pools) overview](https://help.aliyun.com/document_detail/290959.html).
+// - For information about the features, common scenarios, limits, and scaling policy of shared cloud desktops, see [Overview of shared cloud desktops (formerly cloud desktop pools)](https://help.aliyun.com/document_detail/290959.html).
+//
+// - Before you invoke this operation, make sure that required prerequisite resources such as office networks, cloud desktop templates, and policies are created.
 //
 // @param request - CreateDesktopGroupRequest
 //
@@ -5393,6 +5401,10 @@ func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, runtim
 		query["ExternalDomainId"] = request.ExternalDomainId
 	}
 
+	if !dara.IsNil(request.Platforms) {
+		query["Platforms"] = request.Platforms
+	}
+
 	if !dara.IsNil(request.ProfileRoaming) {
 		query["ProfileRoaming"] = request.ProfileRoaming
 	}
@@ -6024,7 +6036,7 @@ func (client *Client) CreateNetworkPackage(request *CreateNetworkPackageRequest)
 //
 // Description:
 //
-// Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
 //
 // @param request - CreateOfficeSiteAcceleratorRequest
 //
@@ -6088,7 +6100,7 @@ func (client *Client) CreateOfficeSiteAcceleratorWithOptions(request *CreateOffi
 //
 // Description:
 //
-// Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
 //
 // @param request - CreateOfficeSiteAcceleratorRequest
 //
@@ -6106,11 +6118,11 @@ func (client *Client) CreateOfficeSiteAccelerator(request *CreateOfficeSiteAccel
 
 // Summary:
 //
-// Creates a cloud computer policy.
+// Creates a cloud desktop policy.
 //
 // Description:
 //
-// A cloud computer policy is a collection of rules that primarily includes configurations for cloud computer performance and security, such as basic policies like disk mapping, USB redirection, and watermarks, as well as rules like DNS management. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
+// A cloud desktop policy is a collection of rules that mainly includes performance and security configurations for cloud desktops, such as basic policies for disk mapping, USB redirection, and watermarks, as well as rules for DNS control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
 //
 // @param request - CreatePolicyGroupRequest
 //
@@ -6378,11 +6390,11 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 
 // Summary:
 //
-// Creates a cloud computer policy.
+// Creates a cloud desktop policy.
 //
 // Description:
 //
-// A cloud computer policy is a collection of rules that primarily includes configurations for cloud computer performance and security, such as basic policies like disk mapping, USB redirection, and watermarks, as well as rules like DNS management. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
+// A cloud desktop policy is a collection of rules that mainly includes performance and security configurations for cloud desktops, such as basic policies for disk mapping, USB redirection, and watermarks, as well as rules for DNS control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
 //
 // @param request - CreatePolicyGroupRequest
 //
@@ -6400,11 +6412,11 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 
 // Summary:
 //
-// Creates a rate limiting rule.
+// Creates a bandwidth throttling rule.
 //
 // Description:
 //
-// Cloud computer templates include system templates and custom templates. System templates are default templates provided by Alibaba Cloud. Call this operation to create a custom template.
+// Cloud computer templates are divided into system templates and custom templates. System templates are default templates provided by Alibaba Cloud. You can call this operation to create a custom template.
 //
 // @param request - CreateQosRuleRequest
 //
@@ -6472,11 +6484,11 @@ func (client *Client) CreateQosRuleWithOptions(request *CreateQosRuleRequest, ru
 
 // Summary:
 //
-// Creates a rate limiting rule.
+// Creates a bandwidth throttling rule.
 //
 // Description:
 //
-// Cloud computer templates include system templates and custom templates. System templates are default templates provided by Alibaba Cloud. Call this operation to create a custom template.
+// Cloud computer templates are divided into system templates and custom templates. System templates are default templates provided by Alibaba Cloud. You can call this operation to create a custom template.
 //
 // @param request - CreateQosRuleRequest
 //
@@ -7148,15 +7160,15 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a custom cloud computer template. A cloud computer template is a collection of cloud computer configurations that reduces the configuration steps and accelerates the creation of cloud computers.
+// Creates a custom cloud desktop template. A cloud desktop template (template for short) is a collection of cloud desktop configurations used to reduce configuration steps and accelerate the creation of cloud desktops.
 //
 // Description:
 //
 // When you call this operation, take note of the following items:
 //
-// - Most parameters in the instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence or validity of parameter values. Parameter values are validated only when you create an instance by using the template.
+// - Most parameters in an instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence and validity of the parameter values in the template. The validity of the parameter values is verified only when an instance is actually created.
 //
-// - For region-specific parameters in the template, if the region does not match when you create a cloud computer by using the template, these parameters do not take effect.
+// - For parameters with region attributes in the template, if the region does not match when you use the template to create a cloud desktop, these parameters do not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -7291,15 +7303,15 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// Creates a custom cloud computer template. A cloud computer template is a collection of cloud computer configurations that reduces the configuration steps and accelerates the creation of cloud computers.
+// Creates a custom cloud desktop template. A cloud desktop template (template for short) is a collection of cloud desktop configurations used to reduce configuration steps and accelerate the creation of cloud desktops.
 //
 // Description:
 //
 // When you call this operation, take note of the following items:
 //
-// - Most parameters in the instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence or validity of parameter values. Parameter values are validated only when you create an instance by using the template.
+// - Most parameters in an instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence and validity of the parameter values in the template. The validity of the parameter values is verified only when an instance is actually created.
 //
-// - For region-specific parameters in the template, if the region does not match when you create a cloud computer by using the template, these parameters do not take effect.
+// - For parameters with region attributes in the template, if the region does not match when you use the template to create a cloud desktop, these parameters do not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -7321,7 +7333,7 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a cloud desktop.
+// Deleting an MFA device dissociates the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - CreateVirtualBridgeRequest
 //
@@ -7401,7 +7413,7 @@ func (client *Client) CreateVirtualBridgeWithOptions(request *CreateVirtualBridg
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a cloud desktop.
+// Deleting an MFA device dissociates the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - CreateVirtualBridgeRequest
 //
@@ -7629,7 +7641,7 @@ func (client *Client) DeleteCdsFile(request *DeleteCdsFileRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a non-region-specific policy.
+// Deletes a regionless policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -7685,7 +7697,7 @@ func (client *Client) DeleteCenterPolicyWithOptions(request *DeleteCenterPolicyR
 
 // Summary:
 //
-// Deletes a non-region-specific policy.
+// Deletes a regionless policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -7773,6 +7785,72 @@ func (client *Client) DeleteCloudDriveGroups(request *DeleteCloudDriveGroupsRequ
 
 // Summary:
 //
+// Deletes one or more Wuying cloud disks.
+//
+// @param request - DeleteCloudDriveServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudDriveServicesResponse
+func (client *Client) DeleteCloudDriveServicesWithOptions(request *DeleteCloudDriveServicesRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudDriveServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CdsId) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudDriveServices"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudDriveServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more Wuying cloud disks.
+//
+// @param request - DeleteCloudDriveServicesRequest
+//
+// @return DeleteCloudDriveServicesResponse
+func (client *Client) DeleteCloudDriveServices(request *DeleteCloudDriveServicesRequest) (_result *DeleteCloudDriveServicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCloudDriveServicesResponse{}
+	_body, _err := client.DeleteCloudDriveServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Delete the personal drive of a user in WUYING Workspace.
 //
 // @param request - DeleteCloudDriveUsersRequest
@@ -7843,7 +7921,7 @@ func (client *Client) DeleteCloudDriveUsers(request *DeleteCloudDriveUsersReques
 
 // Summary:
 //
-// Deletes a configuration group.
+// Deletes configuration groups.
 //
 // @param request - DeleteConfigGroupRequest
 //
@@ -7891,7 +7969,7 @@ func (client *Client) DeleteConfigGroupWithOptions(request *DeleteConfigGroupReq
 
 // Summary:
 //
-// Deletes a configuration group.
+// Deletes configuration groups.
 //
 // @param request - DeleteConfigGroupRequest
 //
@@ -8236,8 +8314,20 @@ func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainId) {
+		query["DomainId"] = request.DomainId
+	}
+
 	if !dara.IsNil(request.DriveId) {
 		query["DriveId"] = request.DriveId
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -8715,7 +8805,7 @@ func (client *Client) DeleteNetworkPackages(request *DeleteNetworkPackagesReques
 
 // Summary:
 //
-// Deletes a Global Accelerator (GA) configuration.
+// Deletes the Global Accelerator configuration.
 //
 // @param request - DeleteOfficeSiteAcceleratorRequest
 //
@@ -8763,7 +8853,7 @@ func (client *Client) DeleteOfficeSiteAcceleratorWithOptions(request *DeleteOffi
 
 // Summary:
 //
-// Deletes a Global Accelerator (GA) configuration.
+// Deletes the Global Accelerator configuration.
 //
 // @param request - DeleteOfficeSiteAcceleratorRequest
 //
@@ -8945,7 +9035,7 @@ func (client *Client) DeletePolicyGroups(request *DeletePolicyGroupsRequest) (_r
 
 // Summary:
 //
-// Deletes QoS rules.
+// Deletes a QoS rule.
 //
 // @param request - DeleteQosRulesRequest
 //
@@ -8989,7 +9079,7 @@ func (client *Client) DeleteQosRulesWithOptions(request *DeleteQosRulesRequest, 
 
 // Summary:
 //
-// Deletes QoS rules.
+// Deletes a QoS rule.
 //
 // @param request - DeleteQosRulesRequest
 //
@@ -9361,11 +9451,11 @@ func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a custom cloud computer template.
+// Deletes a custom cloud desktop template.
 //
 // Description:
 //
-// After a template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
+// After a template is deleted, cloud desktops created based on the template and resources associated with the template are not affected.
 //
 // @param request - DeleteTemplatesRequest
 //
@@ -9413,11 +9503,11 @@ func (client *Client) DeleteTemplatesWithOptions(request *DeleteTemplatesRequest
 
 // Summary:
 //
-// Deletes a custom cloud computer template.
+// Deletes a custom cloud desktop template.
 //
 // Description:
 //
-// After a template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
+// After a template is deleted, cloud desktops created based on the template and resources associated with the template are not affected.
 //
 // @param request - DeleteTemplatesRequest
 //
@@ -9439,7 +9529,7 @@ func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result 
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting and disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a Cloud Desktop.
+// Deleting an MFA device unbinds the device, which is equivalent to resetting and disabling it. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - DeleteVirtualBridgeRequest
 //
@@ -9491,7 +9581,7 @@ func (client *Client) DeleteVirtualBridgeWithOptions(request *DeleteVirtualBridg
 //
 // Description:
 //
-// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting and disabling the MFA device. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a Cloud Desktop.
+// Deleting an MFA device unbinds the device, which is equivalent to resetting and disabling it. The corresponding Active Directory (AD) user must bind a new MFA device when logging on to a Cloud Desktop.
 //
 // @param request - DeleteVirtualBridgeRequest
 //
@@ -9743,7 +9833,7 @@ func (client *Client) DescribeAutoSnapshotPolicy(request *DescribeAutoSnapshotPo
 
 // Summary:
 //
-// Queries the details of cloud computer templates.
+// Queries the details of cloud desktop templates.
 //
 // @param request - DescribeBundlesRequest
 //
@@ -9867,7 +9957,7 @@ func (client *Client) DescribeBundlesWithOptions(request *DescribeBundlesRequest
 
 // Summary:
 //
-// Queries the details of cloud computer templates.
+// Queries the details of cloud desktop templates.
 //
 // @param request - DescribeBundlesRequest
 //
@@ -10041,7 +10131,7 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 
 // Summary:
 //
-// 查詢無地域策略的詳細資訊。
+// Queries the details of regionless policies.
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -10117,7 +10207,7 @@ func (client *Client) DescribeCenterPolicyListWithOptions(request *DescribeCente
 
 // Summary:
 //
-// 查詢無地域策略的詳細資訊。
+// Queries the details of regionless policies.
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -11295,11 +11385,11 @@ func (client *Client) DescribeDesktopInfo(request *DescribeDesktopInfoRequest) (
 
 // Summary:
 //
-// Queries the list and metadata of cloud desktops across all regions.
+// Queries a list of cloud desktops and their metadata across all regions.
 //
 // Description:
 //
-// This is a centralized API that only supports queries from the Shanghai and Singapore sites.
+// This operation is centralized and supports queries only in the Shanghai and Singapore sites.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -11399,11 +11489,11 @@ func (client *Client) DescribeDesktopMetadataWithOptions(request *DescribeDeskto
 
 // Summary:
 //
-// Queries the list and metadata of cloud desktops across all regions.
+// Queries a list of cloud desktops and their metadata across all regions.
 //
 // Description:
 //
-// This is a centralized API that only supports queries from the Shanghai and Singapore sites.
+// This operation is centralized and supports queries only in the Shanghai and Singapore sites.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -12153,7 +12243,7 @@ func (client *Client) DescribeDesktops(request *DescribeDesktopsRequest) (_resul
 
 // Summary:
 //
-// Queries the list of cloud desktops in a shared cloud desktop by billing method.
+// Queries the cloud desktops in a shared cloud desktop by billing method.
 //
 // @param request - DescribeDesktopsInGroupRequest
 //
@@ -12225,7 +12315,7 @@ func (client *Client) DescribeDesktopsInGroupWithOptions(request *DescribeDeskto
 
 // Summary:
 //
-// Queries the list of cloud desktops in a shared cloud desktop by billing method.
+// Queries the cloud desktops in a shared cloud desktop by billing method.
 //
 // @param request - DescribeDesktopsInGroupRequest
 //
@@ -13183,7 +13273,7 @@ func (client *Client) DescribeGlobalTimerBatches(request *DescribeGlobalTimerBat
 
 // Summary:
 //
-// Queries the execution records of scheduled tasks for cloud computers across regions.
+// Queries the execution records of scheduled tasks for cloud desktops across regions.
 //
 // @param request - DescribeGlobalTimerRecordsRequest
 //
@@ -13279,7 +13369,7 @@ func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlo
 
 // Summary:
 //
-// Queries the execution records of scheduled tasks for cloud computers across regions.
+// Queries the execution records of scheduled tasks for cloud desktops across regions.
 //
 // @param request - DescribeGlobalTimerRecordsRequest
 //
@@ -14333,7 +14423,7 @@ func (client *Client) DescribeOfficeSiteBridgeInfo(request *DescribeOfficeSiteBr
 
 // Summary:
 //
-// Queries all attributes of an office network, including the ID, name, status, and creation time.
+// Queries all properties of an office network, including the ID, name, status, and creation time.
 //
 // @param request - DescribeOfficeSitesRequest
 //
@@ -14409,7 +14499,7 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 
 // Summary:
 //
-// Queries all attributes of an office network, including the ID, name, status, and creation time.
+// Queries all properties of an office network, including the ID, name, status, and creation time.
 //
 // @param request - DescribeOfficeSitesRequest
 //
@@ -16349,7 +16439,7 @@ func (client *Client) DescribeSessionStatistic(request *DescribeSessionStatistic
 
 // Summary:
 //
-// Queries the list and details of snapshots for a cloud desktop.
+// Queries the snapshots and their details for a cloud desktop.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -16445,7 +16535,7 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 // Summary:
 //
-// Queries the list and details of snapshots for a cloud desktop.
+// Queries the snapshots and their details for a cloud desktop.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -18505,7 +18595,7 @@ func (client *Client) ExportDesktopListInfo(request *ExportDesktopListInfoReques
 
 // Summary:
 //
-// Generates an access key for a scenario.
+// Generates a scenario access key.
 //
 // @param request - GenerateSceneKeyRequest
 //
@@ -18561,7 +18651,7 @@ func (client *Client) GenerateSceneKeyWithOptions(request *GenerateSceneKeyReque
 
 // Summary:
 //
-// Generates an access key for a scenario.
+// Generates a scenario access key.
 //
 // @param request - GenerateSceneKeyRequest
 //
@@ -19162,6 +19252,88 @@ func (client *Client) HibernateDesktops(request *HibernateDesktopsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &HibernateDesktopsResponse{}
 	_body, _err := client.HibernateDesktopsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Imports a UPM user VHD.
+//
+// @param request - ImportDriveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportDriveResponse
+func (client *Client) ImportDriveWithOptions(request *ImportDriveRequest, runtime *dara.RuntimeOptions) (_result *ImportDriveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainId) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.ForceUpdate) {
+		query["ForceUpdate"] = request.ForceUpdate
+	}
+
+	if !dara.IsNil(request.MountUrl) {
+		query["MountUrl"] = request.MountUrl
+	}
+
+	if !dara.IsNil(request.Platform) {
+		query["Platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportDrive"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportDriveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Imports a UPM user VHD.
+//
+// @param request - ImportDriveRequest
+//
+// @return ImportDriveResponse
+func (client *Client) ImportDrive(request *ImportDriveRequest) (_result *ImportDriveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ImportDriveResponse{}
+	_body, _err := client.ImportDriveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22047,17 +22219,17 @@ func (client *Client) ModifyCustomizedListHeaders(request *ModifyCustomizedListH
 
 // Summary:
 //
-// Converts the billing method of cloud desktops to subscription or pay-as-you-go.
+// Changes the billing method of a cloud desktop to subscription or pay-as-you-go.
 //
 // Description:
 //
-// - Before you invoke this operation, make sure that you fully understand the billing methods of cloud desktops. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+// - Before you call this operation, make sure that you fully understand the billing methods of cloud desktops. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
 //
-// - When you invoke this operation, make sure that the cloud desktops are in the Running or Stopped state and that no overdue payments exist.
+// - When you call this operation, make sure that the target cloud desktop is in the Running or Stopped state and has no overdue payments.
 //
-// - After the order is paid, the system starts to convert the billing method of the cloud desktops. During the conversion, the cloud desktops are in the Upgrade/Downgrade state and do not support other operations such as starting, stopping, or changing specifications.
+// - After the order is paid, the system starts to change the billing method of the cloud desktop. During the change, the cloud desktop is in the Upgrade/Downgrade state and does not support other operations, such as starting, stopping, or changing configurations.
 //
-// <props="china">When you convert the billing method from subscription to pay-as-you-go, refund quota limits apply. For more information, see [Switch from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/439964.html).
+// <props="china">When you change the billing method from subscription to pay-as-you-go, a refund quota limit applies. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/439964.html).
 //
 // @param request - ModifyDesktopChargeTypeRequest
 //
@@ -22133,17 +22305,17 @@ func (client *Client) ModifyDesktopChargeTypeWithOptions(request *ModifyDesktopC
 
 // Summary:
 //
-// Converts the billing method of cloud desktops to subscription or pay-as-you-go.
+// Changes the billing method of a cloud desktop to subscription or pay-as-you-go.
 //
 // Description:
 //
-// - Before you invoke this operation, make sure that you fully understand the billing methods of cloud desktops. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+// - Before you call this operation, make sure that you fully understand the billing methods of cloud desktops. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
 //
-// - When you invoke this operation, make sure that the cloud desktops are in the Running or Stopped state and that no overdue payments exist.
+// - When you call this operation, make sure that the target cloud desktop is in the Running or Stopped state and has no overdue payments.
 //
-// - After the order is paid, the system starts to convert the billing method of the cloud desktops. During the conversion, the cloud desktops are in the Upgrade/Downgrade state and do not support other operations such as starting, stopping, or changing specifications.
+// - After the order is paid, the system starts to change the billing method of the cloud desktop. During the change, the cloud desktop is in the Upgrade/Downgrade state and does not support other operations, such as starting, stopping, or changing configurations.
 //
-// <props="china">When you convert the billing method from subscription to pay-as-you-go, refund quota limits apply. For more information, see [Switch from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/439964.html).
+// <props="china">When you change the billing method from subscription to pay-as-you-go, a refund quota limit applies. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/439964.html).
 //
 // @param request - ModifyDesktopChargeTypeRequest
 //
@@ -23751,7 +23923,7 @@ func (client *Client) ModifyOfficeSiteAccelerator(request *ModifyOfficeSiteAccel
 
 // Summary:
 //
-// Modifies the basic attributes of an office network (formerly workspace), such as the office network name and whether to grant local administrator permissions to cloud computer users.
+// Modifies the basic properties of an office network (formerly workspace), such as the office network name and whether to grant local administrator permissions to users of cloud desktops.
 //
 // @param request - ModifyOfficeSiteAttributeRequest
 //
@@ -23788,6 +23960,10 @@ func (client *Client) ModifyOfficeSiteAttributeWithOptions(request *ModifyOffice
 
 	if !dara.IsNil(request.EnableAdminAccess) {
 		query["EnableAdminAccess"] = request.EnableAdminAccess
+	}
+
+	if !dara.IsNil(request.EnableUpm) {
+		query["EnableUpm"] = request.EnableUpm
 	}
 
 	if !dara.IsNil(request.NeedVerifyLoginRisk) {
@@ -23843,7 +24019,7 @@ func (client *Client) ModifyOfficeSiteAttributeWithOptions(request *ModifyOffice
 
 // Summary:
 //
-// Modifies the basic attributes of an office network (formerly workspace), such as the office network name and whether to grant local administrator permissions to cloud computer users.
+// Modifies the basic properties of an office network (formerly workspace), such as the office network name and whether to grant local administrator permissions to users of cloud desktops.
 //
 // @param request - ModifyOfficeSiteAttributeRequest
 //

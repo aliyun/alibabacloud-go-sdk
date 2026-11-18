@@ -22,11 +22,11 @@ type iCreateOfficeSiteAcceleratorRequest interface {
 }
 
 type CreateOfficeSiteAcceleratorRequest struct {
-	// The list of acceleration region information for the access points.
+	// The list of acceleration regions.
 	//
 	// This parameter is required.
 	AccelerateRegion []*CreateOfficeSiteAcceleratorRequestAccelerateRegion `json:"AccelerateRegion,omitempty" xml:"AccelerateRegion,omitempty" type:"Repeated"`
-	// The name of the GA instance.
+	// The name of the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -139,19 +139,19 @@ type CreateOfficeSiteAcceleratorRequestAccelerateRegion struct {
 	//
 	// 50
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The IP address protocol used to connect to the GA service.
+	// The IP address protocol used to access the Global Accelerator (GA) service.
 	//
-	// > The `DUAL_STACK` type is supported only by standard pay-as-you-go GA instances.
+	// > The `DUAL_STACK` type is supported only by standard Alibaba Cloud Global Accelerator (GA) instances that use the pay-as-you-go billing method.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The public network line type of the acceleration region.
+	// The Internet line type of the acceleration region.
 	//
-	// > - Configure this parameter for GA instances that use the **pay-by-data-transfer*	- billing method.
+	// > - This parameter is required for Alibaba Cloud Global Accelerator (GA) instances that use the **pay-by-traffic*	- Billable methods.
 	//
-	// > - The supported public network line types vary by acceleration region.
+	// > - The supported Internet line types vary based on the acceleration region.
 	//
 	// This parameter is required.
 	//

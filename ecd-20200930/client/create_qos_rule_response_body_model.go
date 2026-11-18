@@ -16,7 +16,7 @@ type iCreateQosRuleResponseBody interface {
 }
 
 type CreateQosRuleResponseBody struct {
-	// The rate limiting rule ID.
+	// The ID of the bandwidth throttling rule.
 	//
 	// example:
 	//

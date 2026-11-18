@@ -16,7 +16,7 @@ type iCreatePolicyGroupResponseBody interface {
 }
 
 type CreatePolicyGroupResponseBody struct {
-	// The cloud desktop policy ID.
+	// The ID of the cloud computer policy.
 	//
 	// example:
 	//

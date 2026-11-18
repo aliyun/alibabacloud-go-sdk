@@ -32,7 +32,7 @@ type DeleteCenterPolicyRequest struct {
 	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Cloud Computer.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

@@ -35,8 +35,16 @@ type Permission struct {
 	// The creation time.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// 示例安全组规则
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
+	//
+	// example:
+	//
+	// 198.51.100.0/24
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	// The protocol type.
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
@@ -49,6 +57,10 @@ type Permission struct {
 	// The priority.
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The source CIDR block.
+	//
+	// example:
+	//
+	// 192.0.2.0/24
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The source port range.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`

@@ -18,9 +18,9 @@ type iDescribeDesktopMetadataResponseBody interface {
 }
 
 type DescribeDesktopMetadataResponseBody struct {
-	// The cloud desktop details.
+	// The detailed information of the cloud desktops.
 	Desktops []*DescribeDesktopMetadataResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
-	// The token for the next query. An empty value indicates that there are no more results.
+	// The pagination token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *DescribeDesktopMetadataResponseBody) Validate() error {
 }
 
 type DescribeDesktopMetadataResponseBodyDesktops struct {
-	// The agents supported by the current cloud computer.
+	// The agents supported by the cloud desktop.
 	AgentProviderList []*string `json:"AgentProviderList,omitempty" xml:"AgentProviderList,omitempty" type:"Repeated"`
-	// The billing type of the cloud desktop. Valid values:
+	// The billing method of the cloud desktop. Valid values:
 	//
-	// - PostPaid: pay-as-you-go.
+	// - PostPaid: pay-as-you-go
 	//
-	// - PrePaid: subscription.
+	// - PrePaid: subscription
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
+	// The creation time of the cloud desktop. The time is displayed in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2020-11-06T08:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The shared cloud computer ID.
+	// The ID of the shared cloud desktop group.
 	//
 	// example:
 	//
@@ -113,29 +113,29 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud desktop name.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// testDesktopName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The cloud desktop status. Valid values:
+	// The status of the cloud desktop. Valid values:
 	//
-	// - Stopped: stopped.
+	// - Stopped: The cloud desktop is stopped.
 	//
-	// - Starting: starting.
+	// - Starting: The cloud desktop is starting.
 	//
-	// - Rebuilding: rebuilding.
+	// - Rebuilding: The cloud desktop is being rebuilt.
 	//
-	// - Running: running.
+	// - Running: The cloud desktop is running.
 	//
-	// - Stopping: stopping.
+	// - Stopping: The cloud desktop is stopping.
 	//
-	// - Expired: expired.
+	// - Expired: The cloud desktop has expired.
 	//
-	// - Deleted: deleted.
+	// - Deleted: The cloud desktop is deleted.
 	//
-	// - Pending: pending.
+	// - Pending: The cloud desktop is pending.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// eds.general.2c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable method. The time format follows the ISO 8601 standard (UTC).
+	// The time when the cloud desktop will expire. This parameter is returned only for cloud desktops whose Billable methods are subscription billing. The time format is ISO 8601 standard (UTC).
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// m-4zfb6zj728hhr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The local name of the region to which the cloud desktop belongs.
+	// The local name of the region where the cloud desktop resides.
 	//
 	// example:
 	//
-	// 华东2（上海）
+	// China (Shanghai)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The management status of the cloud computer.
+	// The management status of the cloud desktop.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
 	// The IP address of the member elastic network interface (ENI) of the instance.
 	//
@@ -203,7 +203,7 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// serverless_new
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The time when the cloud desktop was started. The time is in the ISO 8601 standard (UTC).
+	// The start time of the cloud desktop. The time is displayed in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//

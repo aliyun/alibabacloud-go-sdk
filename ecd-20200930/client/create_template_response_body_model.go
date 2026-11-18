@@ -24,13 +24,13 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
+	// The execution result. A value of `success` indicates that the operation is successful. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The template ID returned after the template is created.
+	// The ID of the created template.
 	//
 	// example:
 	//

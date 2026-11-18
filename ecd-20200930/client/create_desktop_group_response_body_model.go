@@ -20,13 +20,13 @@ type iCreateDesktopGroupResponseBody interface {
 }
 
 type CreateDesktopGroupResponseBody struct {
-	// The ID of the shared cloud computer.
+	// The ID of the shared cloud desktop.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The list of shared cloud computer IDs.
+	// The IDs of the shared cloud desktops.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The order IDs.
 	OrderIds []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`

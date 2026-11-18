@@ -18,7 +18,7 @@ type iListOfficeSiteUsersResponseBody interface {
 }
 
 type ListOfficeSiteUsersResponseBody struct {
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The token for the next query. An empty NextToken indicates that no subsequent query is required.
 	//
 	// example:
 	//
@@ -30,7 +30,9 @@ type ListOfficeSiteUsersResponseBody struct {
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of AD account usernames. If the enterprise AD contains only the Administrator and Guest users and no other users, an empty Users array is returned.
+	// The array of AD account usernames.
+	//
+	// If the enterprise AD domain contains only the Administrator and Guest users and no other users, an empty Users array is returned.
 	Users []*ListOfficeSiteUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +85,7 @@ func (s *ListOfficeSiteUsersResponseBody) Validate() error {
 }
 
 type ListOfficeSiteUsersResponseBodyUsers struct {
-	// The number of assigned cloud computers.
+	// The number of assigned cloud desktops.
 	//
 	// example:
 	//
@@ -99,7 +101,7 @@ type ListOfficeSiteUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	// The email address.
 	//

@@ -20,21 +20,21 @@ type iModifyDesktopChargeTypeResponseBody interface {
 }
 
 type ModifyDesktopChargeTypeResponseBody struct {
-	// The cloud desktop IDs. If multiple cloud desktops are created in a single call, multiple cloud desktop IDs are returned.
+	// The IDs of the cloud desktops. If multiple cloud desktops are created in a single call, multiple cloud desktop IDs are returned.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 123456789
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The file transfer task ID.
+	// The ID of the file transfer task.
 	//
 	// example:
 	//

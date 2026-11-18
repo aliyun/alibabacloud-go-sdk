@@ -22,7 +22,7 @@ type iDeleteDriveResponseBody interface {
 }
 
 type DeleteDriveResponseBody struct {
-	// The response code. 200 indicates success.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteDriveResponseBody struct {
 	//
 	// B7AA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

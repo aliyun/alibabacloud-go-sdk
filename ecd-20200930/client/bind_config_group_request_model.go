@@ -32,7 +32,7 @@ type BindConfigGroupRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource information to associate.
+	// The information about the resources to be associated.
 	//
 	// This parameter is required.
 	ResourceInfos []*BindConfigGroupRequestResourceInfos `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`

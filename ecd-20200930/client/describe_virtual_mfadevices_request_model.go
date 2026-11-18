@@ -24,13 +24,13 @@ type iDescribeVirtualMFADevicesRequest interface {
 }
 
 type DescribeVirtualMFADevicesRequest struct {
-	// The list of AD account usernames.
+	// The list of usernames of the AD accounts.
 	//
 	// example:
 	//
 	// testuser
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// The fuzzy match query string character.
+	// The fuzzy query character string.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type DescribeVirtualMFADevicesRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of NextToken that was returned from the last call to this operation.
+	// The pagination token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-269345****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to obtain a list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

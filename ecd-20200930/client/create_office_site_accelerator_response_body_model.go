@@ -16,7 +16,7 @@ type iCreateOfficeSiteAcceleratorResponseBody interface {
 }
 
 type CreateOfficeSiteAcceleratorResponseBody struct {
-	// The GA instance ID.
+	// The instance ID of the Alibaba Cloud Global Accelerator (GA).
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iCreateDriveRequest interface {
 	GetDriveName() *string
 	SetExternalDomainId(v string) *CreateDriveRequest
 	GetExternalDomainId() *string
+	SetPlatforms(v []*string) *CreateDriveRequest
+	GetPlatforms() []*string
 	SetProfileRoaming(v bool) *CreateDriveRequest
 	GetProfileRoaming() *bool
 	SetRegionId(v string) *CreateDriveRequest
@@ -46,7 +48,7 @@ type CreateDriveRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The storage resource ID.
 	//
-	// > You can call the DescribeDrives operation to obtain this value.
+	// > You can obtain this ID by calling the DescribeDrives operation.
 	//
 	// example:
 	//
@@ -60,13 +62,19 @@ type CreateDriveRequest struct {
 	DriveName *string `json:"DriveName,omitempty" xml:"DriveName,omitempty"`
 	// The external storage resource ID.
 	//
-	// > You can call the DescribeDrives operation to obtain this value.
+	// > You can obtain this ID by calling the DescribeDrives operation.
 	//
 	// example:
 	//
 	// 1234****
 	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
-	// > This parameter is deprecated.
+	// The list of image platforms for which to initialize VHDs, such as WINDOWS_SERVER_2025. This parameter applies to UPM binding scenarios such as workspaces, desktop pools, and cloud application delivery groups. If you specify this parameter, the VHDs are initialized based on the specified platforms. If you do not specify this parameter, the original platform derivation rules for each scenario are used.
+	//
+	// example:
+	//
+	// ["WINDOWS_11","WINDOWS_SERVER_2025"]
+	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// > **[Deprecated]**
 	//
 	// example:
 	//
@@ -126,6 +134,10 @@ func (s *CreateDriveRequest) GetExternalDomainId() *string {
 	return s.ExternalDomainId
 }
 
+func (s *CreateDriveRequest) GetPlatforms() []*string {
+	return s.Platforms
+}
+
 func (s *CreateDriveRequest) GetProfileRoaming() *bool {
 	return s.ProfileRoaming
 }
@@ -168,6 +180,11 @@ func (s *CreateDriveRequest) SetDriveName(v string) *CreateDriveRequest {
 
 func (s *CreateDriveRequest) SetExternalDomainId(v string) *CreateDriveRequest {
 	s.ExternalDomainId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetPlatforms(v []*string) *CreateDriveRequest {
+	s.Platforms = v
 	return s
 }
 

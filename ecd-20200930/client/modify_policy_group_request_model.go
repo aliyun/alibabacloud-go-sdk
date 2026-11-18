@@ -132,21 +132,23 @@ type iModifyPolicyGroupRequest interface {
 }
 
 type ModifyPolicyGroupRequest struct {
-	// Specifies whether the user has administrator permissions after logging on to the cloud desktop.
+	// Specifies whether the user has administrator permissions after logging on to the cloud computer.
+	//
+	// > This feature is in closed beta and is not publicly available.
 	//
 	// example:
 	//
 	// deny
 	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
-	// Specifies whether to enable the screenshot protection feature.
+	// Specifies whether to enable the screen capture prevention feature.
 	//
 	// example:
 	//
 	// on
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The list of client IP whitelist entries.
+	// The client IP address whitelist.
 	AuthorizeAccessPolicyRule []*ModifyPolicyGroupRequestAuthorizeAccessPolicyRule `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
-	// The list of security group rules.
+	// The list of security group control rules.
 	AuthorizeSecurityPolicyRule []*ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
 	// Specifies whether to enable local camera redirection.
 	//
@@ -156,7 +158,7 @@ type ModifyPolicyGroupRequest struct {
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
 	// The list of logon method control rules.
 	ClientType []*ModifyPolicyGroupRequestClientType `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
-	// The clipboard permission.
+	// The clipboard permissions.
 	//
 	// example:
 	//
@@ -169,7 +171,7 @@ type ModifyPolicyGroupRequest struct {
 	// if can be null:
 	// false
 	DeviceRules []*ModifyPolicyGroupRequestDeviceRules `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
-	// The domain names for access control. Domain names support the wildcard character (*). Separate multiple domain names with commas (,).
+	// The permissions to access domain names. Domain names support the asterisk (*) wildcard. Separate multiple domain names with commas (,).
 	//
 	// example:
 	//
@@ -183,7 +185,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// OFF
 	DomainResolveRuleType *string `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
-	// Specifies whether to enable the feature that allows users to request administrator assistance.
+	// Specifies whether users can apply for administrator assistance.
 	//
 	// example:
 	//
@@ -195,13 +197,15 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// on
 	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
-	// Specifies whether to enable the image quality policy for graphics-type cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
+	// Specifies whether to enable the image quality policy for cloud computers with graphics-optimized specifications. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
 	//
 	// example:
 	//
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
 	// The web client access policy.
+	//
+	// > Use the `ClientType` parameter to manage logon methods in a unified manner.
 	//
 	// example:
 	//
@@ -219,31 +223,33 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// BOTH
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
-	// The local disk mapping permission.
+	// The local disk mapping permissions.
 	//
 	// example:
 	//
 	// off
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	// The maximum reconnection retry time when the cloud desktop is disconnected due to objective reasons. Valid values: 30 to 7200. Unit: seconds.
+	// The maximum retry time for reconnecting to the cloud computer after a disconnection caused by objective reasons. Valid values: 30 to 7200. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	MaxReconnectTime *int32 `json:"MaxReconnectTime,omitempty" xml:"MaxReconnectTime,omitempty"`
-	// The Policy Name of the cloud computer policy.
+	// The cloud computer policy name.
 	//
 	// example:
 	//
 	// testPolicyGroupName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Network redirection.
+	// The network redirection.
+	//
+	// > This feature is in closed beta and is not publicly available.
 	//
 	// example:
 	//
 	// on
 	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	// The cloud computer policy ID.
+	// The ID of the cloud computer policy.
 	//
 	// This parameter is required.
 	//
@@ -251,17 +257,19 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The preemption policy for the cloud computer.
+	// The cloud computer preemption policy.
 	//
-	// > To ensure the user experience and data security of end users who are currently using the cloud computer, preemption between multiple users is not allowed. This configuration is set to `off` by default and cannot be modified.
+	// > To ensure the user experience and data security of the end user who is using the cloud computer, preemption among multiple users is not allowed. This configuration defaults to `off` and cannot be modified.
 	//
 	// example:
 	//
 	// off
 	PreemptLogin *string `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
-	// The usernames of users who can preempt the cloud computer. You can specify up to five usernames.
+	// The usernames of the users who can preempt the cloud computer. You can specify up to five usernames.
+	//
+	// > To ensure the user experience and data security of the end user who is using the cloud computer, preemption among multiple users is not allowed.
 	PreemptLoginUser []*string `json:"PreemptLoginUser,omitempty" xml:"PreemptLoginUser,omitempty" type:"Repeated"`
-	// The printer redirection policy.
+	// The printer redirection settings.
 	//
 	// example:
 	//
@@ -273,7 +281,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// OFF
 	RecordContent *string `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
-	// The expiration time of custom screen recording files. Default value: 30 days.
+	// The expiration time for custom screen recording files. Default value: 30 days.
 	//
 	// example:
 	//
@@ -285,55 +293,55 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// OFF
 	Recording *string `json:"Recording,omitempty" xml:"Recording,omitempty"`
-	// The audio recording option for cloud desktops.
+	// The audio recording options for the cloud computer.
 	//
 	// example:
 	//
 	// on
 	RecordingAudio *string `json:"RecordingAudio,omitempty" xml:"RecordingAudio,omitempty"`
-	// The duration of screen recording files, in minutes. Recording files are automatically split and uploaded to the storage space based on the duration you specify. When a file reaches 300 MB, it is rolled over first.
+	// The viewing duration of screen recording files, in minutes. Recorded files are automatically split and uploaded to the storage space based on the specified duration. When a file reaches 300 MB, it is rotated.
 	//
 	// example:
 	//
 	// 10
 	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
-	// The end time of screen recording. Format: HH:MM:SS. This parameter takes effect only when `Recording` is set to `PERIOD`.
+	// The end time of the screen recording. Format: HH:MM:SS. This parameter is valid only when Recording is set to PERIOD.
 	//
 	// example:
 	//
 	// 08:59:00
 	RecordingEndTime *string `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
-	// The retention period of screen recording files. Valid values: 1 to 180. Unit: days.
+	// The retention period of the screen recording files. Valid values: 1 to 180. Unit: days.
 	//
 	// example:
 	//
 	// 15
 	RecordingExpires *int64 `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
-	// The frame rate of screen recording. Unit: FPS (frames per second).
+	// The frame rate of the screen recording. Unit: FPS.
 	//
 	// example:
 	//
 	// 5
 	RecordingFps *int64 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
-	// The start time of screen recording. Format: HH:MM:SS. This parameter takes effect only when `Recording` is set to `PERIOD`.
+	// The start time of the screen recording. Format: HH:MM:SS. This parameter is valid only when Recording is set to PERIOD.
 	//
 	// example:
 	//
 	// 08:00:00
 	RecordingStartTime *string `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
-	// The client notification feature for screen recording.
+	// The screen recording client message notification feature.
 	//
 	// example:
 	//
 	// off
 	RecordingUserNotify *string `json:"RecordingUserNotify,omitempty" xml:"RecordingUserNotify,omitempty"`
-	// The notification content for the screen recording client. Leave this parameter empty by default.
+	// The notification content displayed on the screen recording client. You do not need to specify this parameter by default.
 	//
 	// example:
 	//
-	// Your cloud desktop is being recorded
+	// Your cloud computer is being recorded
 	RecordingUserNotifyMessage *string `json:"RecordingUserNotifyMessage,omitempty" xml:"RecordingUserNotifyMessage,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -347,9 +355,9 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// fullControl
 	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
-	// The list of client IP whitelist entries to delete.
+	// The list of client IP address whitelist entries to delete.
 	RevokeAccessPolicyRule []*ModifyPolicyGroupRequestRevokeAccessPolicyRule `json:"RevokeAccessPolicyRule,omitempty" xml:"RevokeAccessPolicyRule,omitempty" type:"Repeated"`
-	// The list of security group rules to delete.
+	// The list of security group control rules to delete.
 	RevokeSecurityPolicyRule []*ModifyPolicyGroupRequestRevokeSecurityPolicyRule `json:"RevokeSecurityPolicyRule,omitempty" xml:"RevokeSecurityPolicyRule,omitempty" type:"Repeated"`
 	// The effective scope of the policy.
 	//
@@ -357,17 +365,17 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// This parameter is required when `Scope` is set to `IP`. This parameter takes effect only when `Scope` is set to `IP`.
+	// Specify this parameter when `Scope` is set to `IP`. This parameter takes effect only when `Scope` is set to `IP`.
 	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
-	// The USB redirection policy.
+	// The USB redirection settings.
 	//
 	// example:
 	//
 	// off
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
-	// The USB redirection rules.
+	// The USB redirection rule.
 	UsbSupplyRedirectRule []*ModifyPolicyGroupRequestUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
-	// Multimedia redirection.
+	// The multimedia redirection.
 	//
 	// example:
 	//
@@ -379,13 +387,13 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// low
 	VisualQuality *string `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
-	// The watermark policy.
+	// The watermark settings.
 	//
 	// example:
 	//
 	// off
 	Watermark *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
-	// The anti-photography feature for invisible watermarks.
+	// The blind watermark anti-camera feature.
 	//
 	// example:
 	//
@@ -415,7 +423,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// plain
 	WatermarkFontStyle *string `json:"WatermarkFontStyle,omitempty" xml:"WatermarkFontStyle,omitempty"`
-	// The enhancement feature for invisible watermarks.
+	// The blind watermark enhancement feature.
 	//
 	// example:
 	//
@@ -423,11 +431,13 @@ type ModifyPolicyGroupRequest struct {
 	WatermarkPower *string `json:"WatermarkPower,omitempty" xml:"WatermarkPower,omitempty"`
 	// The number of watermark rows.
 	//
+	// > This parameter is not available.
+	//
 	// example:
 	//
 	// 3
 	WatermarkRowAmount *int32 `json:"WatermarkRowAmount,omitempty" xml:"WatermarkRowAmount,omitempty"`
-	// The security priority rule for invisible watermarks.
+	// The security priority rule for blind watermarks.
 	//
 	// example:
 	//
@@ -445,15 +455,17 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// 10
 	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
-	// The watermark type. You can select up to three types, separated by commas (,).
+	// The watermark type. You can select up to three types and separate them with commas (,).
+	//
+	// > If you specify `custom`, you must also specify the custom text by using the `WatermarkCustomText` parameter.
 	//
 	// example:
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
-	// Specifies whether to provide the WUYING AI Assistant entry in the floating ball when connecting to a cloud computer through a desktop client (including Windows client and macOS client).
+	// Specifies whether to provide the entry for the WUYING AI Assistant in the floating ball of the cloud desktop when you connect to the cloud desktop by using a desktop client, such as a Windows or macOS client.
 	//
-	// > Applicable only to desktop clients of V7.7 or later.
+	// > This applies only to desktop clients of V7.7 or later.
 	//
 	// example:
 	//
@@ -1095,7 +1107,7 @@ func (s *ModifyPolicyGroupRequest) Validate() error {
 }
 
 type ModifyPolicyGroupRequestAuthorizeAccessPolicyRule struct {
-	// The client IP address range. The value is an IPv4 CIDR block.
+	// The client IP address range. The value must be an IPv4 CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -1103,11 +1115,11 @@ type ModifyPolicyGroupRequestAuthorizeAccessPolicyRule struct {
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the client IP whitelist entry.
+	// The description of the client IP address whitelist entry.
 	//
 	// example:
 	//
-	// Office network segment
+	// Corporate office network segment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -1142,53 +1154,53 @@ func (s *ModifyPolicyGroupRequestAuthorizeAccessPolicyRule) Validate() error {
 }
 
 type ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule struct {
-	// The target of the security group rule. The value is an IPv4 CIDR block.
+	// The target of the security group control rule, which is an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 10.0.XX.XX/8
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the security group rule.
+	// The description of the security group control rule.
 	//
 	// example:
 	//
-	// Allow access to the internal R&D environment
+	// Allow access to the internal network R&D environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The protocol type of the security group rule.
+	// The protocol type of the security group control rule.
 	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The authorization policy of the security group rule.
+	// The authorization policy of the security group control rule.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The port range of the security group rule. The valid values of this parameter are determined by the value of IpProtocol:
+	// The port range of the security group control rule. The valid port range depends on the value of the IpProtocol parameter:
 	//
-	// - TCP or UDP: Valid values are 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+	// - TCP or UDP: 1 to 65535. Use a forward slash (/) to separate the start port and the end port. Example: 1/200.
 	//
 	// - ICMP: -1/-1.
 	//
 	// - GRE: -1/-1.
 	//
-	// - If IpProtocol is set to all: -1/-1.
+	// - all: -1/-1.
 	//
-	// For common ports of typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
+	// For more information about common ports used by typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
 	//
 	// example:
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group rule. A smaller number indicates a higher priority. Valid values: 1 to 60. Default value: 1.
+	// The priority of the security group control rule. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The direction of the security group rule.
+	// The direction of the security group control rule.
 	//
 	// example:
 	//
@@ -1272,15 +1284,17 @@ func (s *ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule) Validate() error {
 }
 
 type ModifyPolicyGroupRequestClientType struct {
-	// Specifies the client type for logon method control.
+	// The client type for logon method control.
 	//
-	// > If you do not set `ClientType` parameters, all types of clients are allowed to log on to cloud desktops by default.
+	// > If you do not configure the ClientType parameter, all types of clients are allowed to log on to the cloud computer by default.
 	//
 	// example:
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// Specifies whether to allow logon to cloud desktops from a specific client type.
+	// Specifies whether to allow a specific type of client to log on to the cloud computer.
+	//
+	// > If you do not configure the ClientType parameter, all types of clients are allowed to log on to the cloud computer by default.
 	//
 	// example:
 	//
@@ -1319,7 +1333,7 @@ func (s *ModifyPolicyGroupRequestClientType) Validate() error {
 }
 
 type ModifyPolicyGroupRequestDeviceRedirects struct {
-	// The peripheral device type.
+	// The peripheral type.
 	//
 	// example:
 	//
@@ -1376,19 +1390,19 @@ type ModifyPolicyGroupRequestDeviceRules struct {
 	//
 	// 0x0781
 	DevicePid *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
-	// The peripheral device type.
+	// The peripheral type.
 	//
 	// example:
 	//
 	// storage
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+	// The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
 	//
 	// example:
 	//
 	// 0x55b1
 	DeviceVid *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
-	// The link optimization instruction.
+	// The link optimization command.
 	//
 	// example:
 	//
@@ -1544,17 +1558,17 @@ func (s *ModifyPolicyGroupRequestDomainResolveRule) Validate() error {
 }
 
 type ModifyPolicyGroupRequestRevokeAccessPolicyRule struct {
-	// The client IP address range to delete. The value is an IPv4 CIDR block.
+	// The client IP address range to delete. The value must be an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the client IP whitelist entry to delete.
+	// The description of the client IP address whitelist entry to delete.
 	//
 	// example:
 	//
-	// Office network segment
+	// Corporate office network segment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -1589,53 +1603,53 @@ func (s *ModifyPolicyGroupRequestRevokeAccessPolicyRule) Validate() error {
 }
 
 type ModifyPolicyGroupRequestRevokeSecurityPolicyRule struct {
-	// The target of the security group rule to delete. The value is an IPv4 CIDR block.
+	// The destination of the security group control rule to delete. The value must be an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the security group rule to delete.
+	// The description of the security group control rule to delete.
 	//
 	// example:
 	//
-	// Allow access to the internal R&D environment
+	// Allow access to the internal network R&D environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The protocol type of the security group rule to delete.
+	// The protocol type of the security group control rule to delete.
 	//
 	// example:
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The authorization policy of the security group rule to delete.
+	// The authorization policy of the security group control rule to delete.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The port range of the security group rule to be deleted. The valid values of this parameter are determined by the value of IpProtocol:
+	// The port range of the security group control rule to delete. The valid port range is determined by the IpProtocol parameter:
 	//
-	// - TCP or UDP: Valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+	// - TCP or UDP: 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
 	//
 	// - ICMP: -1/-1.
 	//
 	// - GRE: -1/-1.
 	//
-	// - If IpProtocol is set to all: -1/-1.
+	// - all: -1/-1.
 	//
-	// For the common ports of typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
+	// For common ports of typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
 	//
 	// example:
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group rule to delete. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
+	// The priority of the security group control rule to delete. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The direction of the security group rule to delete.
+	// The direction of the security group control rule to delete.
 	//
 	// example:
 	//
@@ -1725,13 +1739,13 @@ type ModifyPolicyGroupRequestUsbSupplyRedirectRule struct {
 	//
 	// Test rule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The device class. This parameter is required when `usbRuleType` is set to 1. See [Defined Class Codes](https://www.usb.org/defined-class-codes).
+	// The device class. This parameter is required when usbRuleType is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
 	//
 	// example:
 	//
 	// 0Eh
 	DeviceClass *string `json:"DeviceClass,omitempty" xml:"DeviceClass,omitempty"`
-	// The device subclass. This parameter is required when `usbRuleType` is set to 1. See [Defined Class Codes](https://www.usb.org/defined-class-codes).
+	// The device subclass. This parameter is required when usbRuleType is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
 	//
 	// example:
 	//
@@ -1755,7 +1769,7 @@ type ModifyPolicyGroupRequestUsbSupplyRedirectRule struct {
 	//
 	// 1
 	UsbRuleType *int64 `json:"UsbRuleType,omitempty" xml:"UsbRuleType,omitempty"`
-	// The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+	// The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
 	//
 	// example:
 	//

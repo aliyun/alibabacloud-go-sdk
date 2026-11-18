@@ -42,7 +42,7 @@ type CreateDriveResponseBody struct {
 	//
 	// B7AA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// 1202****
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The storage resource description.
+	// The description of the storage resource.
 	//
 	// example:
 	//
@@ -131,15 +131,15 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// dom-aaaa****
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The user-level storage resource ID.
+	// The ID of the user-level storage resource.
 	//
 	// example:
 	//
 	// dri-aaaa****
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
-	// The external user-level storage resource ID.
+	// The ID of the external user-level storage resource.
 	//
-	// > This parameter is returned only when the storage resource type is PDS.
+	// > This parameter is returned only when the storage resource is PDS.
 	//
 	// example:
 	//
@@ -163,19 +163,19 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// 2025-07-07T02:46:04.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// ID。
+	// The ID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The storage resource name.
+	// The name of the storage resource.
 	//
 	// example:
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// > This parameter is deprecated.
+	// > **[Deprecated]**
 	//
 	// example:
 	//

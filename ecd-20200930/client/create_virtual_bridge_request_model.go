@@ -62,41 +62,41 @@ type CreateVirtualBridgeRequest struct {
 	//
 	// https://wya.wuying.aliyun.com/mobileClaw
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription duration of the purchased resource. The unit is specified by `PeriodUnit`. This parameter is required and takes effect only when `ChargeType` is set to `PrePaid`.
+	// The subscription duration of the purchased resource. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when the `ChargeType` parameter is set to `PrePaid`.
 	//
 	// - If `PeriodUnit` is set to `Month`, valid values:
 	//
 	//      - 1
 	//
-	//      - 2
+	//     -  2
 	//
-	//      - 3
+	//     - 3
 	//
-	//      - 6
+	//     - 6
 	//
 	// - If `PeriodUnit` is set to `Year`, valid values:
 	//
-	//      - 1
+	//     - 1
 	//
-	//      - 2
+	//     - 2
 	//
-	//      - 3
+	//     - 3
 	//
-	//      - 4
+	//     - 4
 	//
-	//      - 5
+	//     - 5
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The billing time unit of the subscription Billable methods.
+	// The unit of the subscription billing duration for the subscription Billable methods.
 	//
 	// example:
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion.
 	//
 	// example:
 	//

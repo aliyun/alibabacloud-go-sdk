@@ -18,7 +18,7 @@ type iDescribeVirtualMFADevicesResponseBody interface {
 }
 
 type DescribeVirtualMFADevicesResponseBody struct {
-	// The token for the next query. If NextToken is empty, no more results exist.
+	// The pagination token for the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeVirtualMFADevicesResponseBody struct {
 	//
 	// FB550AAB-FB36-4A91-93F6-F4374AF65403
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about virtual MFA devices.
+	// The virtual MFA device information.
 	VirtualMFADevices []*DescribeVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Repeated"`
 }
 
@@ -91,7 +91,7 @@ type DescribeVirtualMFADevicesResponseBodyVirtualMFADevices struct {
 	//
 	// 1
 	ConsecutiveFails *int32 `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not yet available.
 	//
 	// example:
 	//
@@ -103,19 +103,19 @@ type DescribeVirtualMFADevicesResponseBodyVirtualMFADevices struct {
 	//
 	// usertest
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the virtual MFA device was enabled. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the virtual MFA device is enabled. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format and is in UTC.
 	//
 	// example:
 	//
 	// 2020-12-20T14:52:28Z
 	GmtEnabled *string `json:"GmtEnabled,omitempty" xml:"GmtEnabled,omitempty"`
-	// The automatic unlock time after the virtual MFA device is locked. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the virtual MFA device is automatically unlocked after being locked. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format and is in UTC.
 	//
 	// example:
 	//
 	// 2020-12-21T15:21:28Z
 	GmtUnlock *string `json:"GmtUnlock,omitempty" xml:"GmtUnlock,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	// The username of the AD account.
 	//

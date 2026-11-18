@@ -20,7 +20,7 @@ type iGenerateSceneKeyRequest interface {
 }
 
 type GenerateSceneKeyRequest struct {
-	// The cloud desktop ID.
+	// The Cloud Desktop ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GenerateSceneKeyRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The validity period of the key, in hours. A value of 0 indicates that the key never expires. If this parameter is not specified, the default server value is used.
+	// The validity period of the key, in hours. A value of 0 indicates that the key never expires. If this parameter is not specified, the default value on the server is used.
 	//
 	// example:
 	//

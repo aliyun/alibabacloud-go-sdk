@@ -26,7 +26,7 @@ type DescribeGlobalTimerRecordsResponseBody struct {
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token for the next query. If NextToken is empty, no more results exist.
+	// The token used to start the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeGlobalTimerRecordsResponseBody struct {
 	//
 	// 63740E03-1B4B-5A18-AC27-2745A4F2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned results.
 	Results []*DescribeGlobalTimerRecordsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -100,7 +100,7 @@ func (s *DescribeGlobalTimerRecordsResponseBody) Validate() error {
 }
 
 type DescribeGlobalTimerRecordsResponseBodyResults struct {
-	// The type of action that was performed.
+	// The type of action performed.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// ccg-0cvfvf6u1enx1****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The record information during the execution of the scheduled task.
+	// The record information generated during the execution of the scheduled task.
 	//
 	// example:
 	//
@@ -120,25 +120,25 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	// The time when the record was created.
 	//
-	// The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	// The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-08-03T08:27:29Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cloud computer ID.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-0c951fy9arnk9****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// DesktopName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The display result name.
+	// The display name of the result.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
 	// The time when the task ended.
 	//
-	// The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	// The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource parent.
+	// The ID of the parent resource.
 	//
 	// example:
 	//

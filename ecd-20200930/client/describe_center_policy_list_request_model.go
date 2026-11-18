@@ -30,17 +30,17 @@ type iDescribeCenterPolicyListRequest interface {
 }
 
 type DescribeCenterPolicyListRequest struct {
-	// 學術代理功能開關。取值範圍：
+	// Specifies whether the academic proxy feature is enabled. Valid values:
 	//
-	// - on：開啟。
+	// - on: Enabled.
 	//
-	// - off：關閉。
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// off
 	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
-	// 業務類型。
+	// The business type.
 	//
 	// This parameter is required.
 	//
@@ -48,43 +48,43 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// 1
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 模型庫功能開關。取值範圍：
+	// Specifies whether the model library feature is enabled. Valid values:
 	//
-	// - on：開啟。
+	// - on: Enabled.
 	//
-	// - off：關閉。
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// off
 	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	// 分頁查詢時，當前頁的頁碼。
+	// The page number of the current page for paging.
 	//
-	// 預設值：1。
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分頁查詢時，每頁最大行數。
+	// The maximum number of entries per page for paging.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 雲端電腦策略ID清單。
+	// The list of cloud desktop policy IDs.
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
-	// 連接埠代理功能開關。取值範圍：
+	// Specifies whether the port proxy feature is enabled. Valid values:
 	//
-	// - on：開啟。
+	// - on: Enabled.
 	//
-	// - off：關閉。
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// off
 	PortProxy *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
-	// 資源類型。
+	// The resource type.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 雲端電腦策略的生效範圍。
+	// The effective scope of the cloud desktop policy.
 	//
 	// example:
 	//

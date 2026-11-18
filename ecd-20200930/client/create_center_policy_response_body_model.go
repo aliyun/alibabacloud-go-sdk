@@ -22,7 +22,7 @@ type CreateCenterPolicyResponseBody struct {
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

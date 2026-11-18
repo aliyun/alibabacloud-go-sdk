@@ -23,6 +23,8 @@ type iCreateAndBindNasFileSystemRequest interface {
 	GetOfficeSiteId() *string
 	SetRegionId(v string) *CreateAndBindNasFileSystemRequest
 	GetRegionId() *string
+	SetSizeQuota(v int64) *CreateAndBindNasFileSystemRequest
+	GetSizeQuota() *int64
 	SetStorageType(v string) *CreateAndBindNasFileSystemRequest
 	GetStorageType() *string
 }
@@ -34,17 +36,15 @@ type CreateAndBindNasFileSystemRequest struct {
 	//
 	// newDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the shared cloud computer.
-	//
-	// This parameter is required.
+	// The ID of the shared cloud desktop.
 	//
 	// example:
 	//
 	// dg-fh0vdzyh6rdc*****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// Specifies whether the file system uses a KMS-managed key to encrypt data at rest. Encrypted data does not need to be decrypted during read and write operations.
+	// Specifies whether the file system uses Key Management Service (KMS) managed keys to encrypt data at rest. No decryption is required when reading or writing encrypted data.
 	//
-	// > NAS-managed keys are supported when `FileSystemType` is set to `standard` or `extreme`. User-managed keys are supported when `FileSystemType` is set to `extreme`.
+	// > When `FileSystemType` is set to `standard` or `extreme`, NAS-managed keys are supported. When `FileSystemType` is set to `extreme`, user-managed keys are supported.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateAndBindNasFileSystemRequest struct {
 	//
 	// cn-beijing+dir-15657*****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,13 @@ type CreateAndBindNasFileSystemRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The storage specification type of the NAS file system.
+	// The user VHD capacity tier in GiB. Valid values: 5, 20, 50, 100, and 500. Default value: 500.
+	//
+	// example:
+	//
+	// 500
+	SizeQuota *int64 `json:"SizeQuota,omitempty" xml:"SizeQuota,omitempty"`
+	// The storage type of the NAS file system.
 	//
 	// This parameter is required.
 	//
@@ -122,6 +128,10 @@ func (s *CreateAndBindNasFileSystemRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateAndBindNasFileSystemRequest) GetSizeQuota() *int64 {
+	return s.SizeQuota
+}
+
 func (s *CreateAndBindNasFileSystemRequest) GetStorageType() *string {
 	return s.StorageType
 }
@@ -158,6 +168,11 @@ func (s *CreateAndBindNasFileSystemRequest) SetOfficeSiteId(v string) *CreateAnd
 
 func (s *CreateAndBindNasFileSystemRequest) SetRegionId(v string) *CreateAndBindNasFileSystemRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAndBindNasFileSystemRequest) SetSizeQuota(v int64) *CreateAndBindNasFileSystemRequest {
+	s.SizeQuota = &v
 	return s
 }
 

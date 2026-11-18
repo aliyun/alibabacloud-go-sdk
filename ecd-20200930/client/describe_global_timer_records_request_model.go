@@ -46,13 +46,13 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// ccg-****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The list of cloud computer IDs.
+	// The list of cloud desktop IDs.
 	//
 	// example:
 	//
 	// SUCCEED
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	// The display result name.
+	// The display name of the result.
 	//
 	// example:
 	//
@@ -64,31 +64,35 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// ccg-0cvfvf6u1enx1****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of entries per page for a paged query.
+	// The maximum number of entries per page in a paging query.
+	//
+	// Maximum value: 100.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource types. If empty, all resource types are queried.
+	// The list of resource types. If this parameter is left empty, all resource types are queried.
 	//
 	// example:
 	//
 	// true
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// Filters results by execution result.
+	// Filters the results by execution result.
 	//
 	// example:
 	//
@@ -100,7 +104,7 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// true
 	Retryable *bool `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
-	// The region ID used to filter cloud computer information for a specified region.
+	// The search region ID. This parameter is used to filter cloud desktop information in a specified region.
 	//
 	// example:
 	//
@@ -112,7 +116,7 @@ type DescribeGlobalTimerRecordsRequest struct {
 	//
 	// RUNNING
 	TimerResult *string `json:"TimerResult,omitempty" xml:"TimerResult,omitempty"`
-	// The list of scheduled tasks.
+	// The list of scheduled task types.
 	//
 	// example:
 	//
