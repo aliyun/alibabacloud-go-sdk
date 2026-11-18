@@ -16,7 +16,7 @@ type iBatchGetVideoCharacterReplaceJobsResponseBody interface {
 }
 
 type BatchGetVideoCharacterReplaceJobsResponseBody struct {
-	// The list of job query results.
+	// The list of queried jobs.
 	JobList []*BatchGetVideoCharacterReplaceJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type BatchGetVideoCharacterReplaceJobsResponseBodyJobList struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application input parameters specified when the job was submitted. The value is a JSON serialized string. This corresponds to the AppParams parameter in the submit operation.
+	// The application input parameters specified when the job was submitted. The value is a JSON-serialized string. This corresponds to the AppParams parameter in the submit operation.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type BatchGetVideoCharacterReplaceJobsResponseBodyJobList struct {
 	//
 	// - Created: The job is created.
 	//
-	// - Queuing: The job is queuing.
+	// - Queuing: The job is in the queue.
 	//
 	// - Executing: The job is being executed.
 	//

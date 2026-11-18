@@ -18,19 +18,19 @@ type iSubmitVideoRemakeJobResponseBody interface {
 }
 
 type SubmitVideoRemakeJobResponseBody struct {
-	// The error code in the business response. This parameter is empty when the call is successful.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The unified remake job ID. Use GetVideoRemakeJob to query the progress and outputs.
+	// The job ID.
 	//
 	// example:
 	//
 	// 0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request tracking ID.
+	// The request ID.
 	//
 	// example:
 	//

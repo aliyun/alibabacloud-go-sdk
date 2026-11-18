@@ -16,13 +16,13 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
-	// The name of the project. The name can be up to 50 characters in length and cannot contain single quotation marks, semicolons, less-than signs, greater-than signs, equal signs, vertical lines, or parentheses.
+	// The name of the project. The name can be up to 50 characters in length and cannot contain single quotation marks, semicolons, less than signs, greater than signs, equal signs, vertical lines, or parentheses.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Product demonstration
+	// Product Demo
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The ID of the workspace to which the project belongs. If this parameter is not specified, the default workspace of the current account is used.
 	//

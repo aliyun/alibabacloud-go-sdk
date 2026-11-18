@@ -16,13 +16,13 @@ type iSubmitVideoCharacterReplaceJobResponseBody interface {
 }
 
 type SubmitVideoCharacterReplaceJobResponseBody struct {
-	// The task ID returned by SubmitVideoCharacterReplaceJob.
+	// The job ID returned by SubmitVideoCharacterReplaceJob.
 	//
 	// example:
 	//
 	// ag_83baeea38b534ee1937b8a4acd08****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID, which is used to locate and troubleshoot the request.
+	// The request ID used to locate and troubleshoot the request.
 	//
 	// example:
 	//

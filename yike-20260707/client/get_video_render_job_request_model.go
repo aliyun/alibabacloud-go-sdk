@@ -14,7 +14,7 @@ type iGetVideoRenderJobRequest interface {
 }
 
 type GetVideoRenderJobRequest struct {
-	// The job ID.
+	// The ID of the job returned by SubmitVideoRenderJob.
 	//
 	// example:
 	//

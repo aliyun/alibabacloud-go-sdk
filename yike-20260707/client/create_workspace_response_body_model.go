@@ -18,7 +18,7 @@ type iCreateWorkspaceResponseBody interface {
 }
 
 type CreateWorkspaceResponseBody struct {
-	// The ID of the default project generated through automatic creation when the studio is created.
+	// The ID of the default project created through automatic creation when the studio is created.
 	//
 	// example:
 	//

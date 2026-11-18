@@ -22,7 +22,7 @@ type PrecheckVideoCharacterReplaceJobRequest struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The input parameters of the application, which is a JSON-serialized string. The field names and material requirements are subject to the input definition of the corresponding AppId.
+	// The application input parameters, which are provided as a JSON-serialized string. The field names and material requirements are subject to the input definition of the corresponding AppId.
 	//
 	// example:
 	//

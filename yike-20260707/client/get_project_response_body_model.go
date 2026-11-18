@@ -18,7 +18,7 @@ type iGetProjectResponseBody interface {
 type GetProjectResponseBody struct {
 	// The project details.
 	Project *GetProjectResponseBodyProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The request ID, used to trace and troubleshoot the request.
+	// The request ID used to locate and troubleshoot the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetProjectResponseBody) Validate() error {
 }
 
 type GetProjectResponseBodyProject struct {
-	// The permissions of the current caller in the project. For example, Manage indicates management permissions.
+	// The permissions of the current caller on the project. For example, Manage indicates management permissions.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetProjectResponseBodyProject struct {
 	//
 	// https://example.com/cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The creation time, in ISO 8601 UTC format ending with Z.
+	// The time when the project was created, in UTC and ISO 8601 format, ending with Z.
 	//
 	// example:
 	//
@@ -86,25 +86,25 @@ type GetProjectResponseBodyProject struct {
 	//
 	// aliyun_183320****
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The project description.
+	// The description of the project.
 	//
 	// example:
 	//
-	// Product Demo Project
+	// Product demo project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// pd_061716****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// Product Demo
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

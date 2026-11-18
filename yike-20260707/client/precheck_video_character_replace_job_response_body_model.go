@@ -24,9 +24,9 @@ type PrecheckVideoCharacterReplaceJobResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of items that fail the validation. This is an empty array if the validation passes.
+	// The list of items that failed the validation. This is an empty array if the validation passes.
 	Result []*PrecheckVideoCharacterReplaceJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The pre-validation status. A value of Success indicates that the validation passes. A value of Failed indicates that one or more items fail the validation.
+	// The pre-validation status. A value of Success indicates that the validation passed. A value of Failed indicates that one or more items failed the validation.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *PrecheckVideoCharacterReplaceJobResponseBody) Validate() error {
 }
 
 type PrecheckVideoCharacterReplaceJobResponseBodyResult struct {
-	// The validation error code of the input item. For example, ImageCheckFailed indicates that the image validation fails, and AudioCheckFailed indicates that the audio validation fails.
+	// The validation error code for the input item. For example, ImageCheckFailed indicates that the image validation failed, and AudioCheckFailed indicates that the audio validation failed.
 	//
 	// example:
 	//
 	// ImageCheckFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The name of the input parameter that fails the validation. This name is consistent with the corresponding field name in AppParams.
+	// The name of the input parameter that failed the validation, which matches the corresponding field name in AppParams.
 	//
 	// example:
 	//

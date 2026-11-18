@@ -18,7 +18,7 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The request ID, which is used to locate and troubleshoot requests.
+	// The request ID.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ListWorkspacesResponseBodyWorkspaceList struct {
 	//
 	// c40***
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The creation time. The time is in UTC and follows the ISO 8601 standard, ending with Z.
+	// The creation time. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type ListWorkspacesResponseBodyWorkspaceList struct {
 	//
 	// pd_061716****
 	DefaultProjectId *string `json:"DefaultProjectId,omitempty" xml:"DefaultProjectId,omitempty"`
-	// The workspace status. Valid values: Online (enabled) and Offline (disabled).
+	// The workspace status. Valid values: Online: enabled. Offline: disabled.
 	//
 	// example:
 	//

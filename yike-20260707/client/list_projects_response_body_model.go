@@ -20,13 +20,13 @@ type iListProjectsResponseBody interface {
 }
 
 type ListProjectsResponseBody struct {
-	// A response field retained for compatibility. It is not used for current pagination and can be ignored.
+	// A response field retained for backward compatibility. This field is not used for pagination. Do not rely on this field.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A response field retained for compatibility. It is not used for current pagination and can be ignored.
+	// A response field retained for backward compatibility. This field is not used for pagination. Do not rely on this field.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListProjectsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The list of projects on the current page.
 	ProjectList []*ListProjectsResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
-	// The request ID, which is used to locate and troubleshoot the request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *ListProjectsResponseBody) Validate() error {
 }
 
 type ListProjectsResponseBodyProjectList struct {
-	// The permissions of the current caller in the project, such as Manage for management permissions.
+	// The permissions of the current caller in the project. For example, Manage indicates management permissions.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type ListProjectsResponseBodyProjectList struct {
 	//
 	// https://example.com/cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	// The creation time in UTC format following the ISO 8601 standard, ending with Z.
+	// The creation time. The time is in UTC and follows the ISO 8601 standard, ending with Z.
 	//
 	// example:
 	//
@@ -124,25 +124,25 @@ type ListProjectsResponseBodyProjectList struct {
 	//
 	// aliyun_183320****
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The project description.
+	// The description of the project.
 	//
 	// example:
 	//
 	// Product demo project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// pd_061716****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// Product Demo
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

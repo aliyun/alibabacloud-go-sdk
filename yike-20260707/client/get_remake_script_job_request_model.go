@@ -14,7 +14,7 @@ type iGetRemakeScriptJobRequest interface {
 }
 
 type GetRemakeScriptJobRequest struct {
-	// The task ID.
+	// The task ID returned by SubmitRemakeScriptJob.
 	//
 	// example:
 	//

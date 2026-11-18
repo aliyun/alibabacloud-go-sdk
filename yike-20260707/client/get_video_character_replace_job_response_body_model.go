@@ -80,7 +80,7 @@ type GetVideoCharacterReplaceJobResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task output results, which are categorized by image, video, and audio.
+	// The task output results, categorized by image, video, and audio.
 	Result *GetVideoCharacterReplaceJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The task status. Valid values:
 	//
@@ -88,7 +88,7 @@ type GetVideoCharacterReplaceJobResponseBody struct {
 	//
 	// - Queuing: The task is queuing.
 	//
-	// - Executing: The task is executing.
+	// - Executing: The task is being executed.
 	//
 	// - Finished: The task is finished.
 	//
@@ -208,7 +208,7 @@ func (s *GetVideoCharacterReplaceJobResponseBody) Validate() error {
 }
 
 type GetVideoCharacterReplaceJobResponseBodyResult struct {
-	// The list of output audio.
+	// The list of output audio files.
 	AudioResult []*GetVideoCharacterReplaceJobResponseBodyResultAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
 	// The list of output images.
 	ImageResult []*GetVideoCharacterReplaceJobResponseBodyResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
@@ -283,7 +283,7 @@ func (s *GetVideoCharacterReplaceJobResponseBodyResult) Validate() error {
 }
 
 type GetVideoCharacterReplaceJobResponseBodyResultAudioResult struct {
-	// The output media asset ID.
+	// The ID of the output media asset.
 	//
 	// example:
 	//
@@ -328,7 +328,7 @@ func (s *GetVideoCharacterReplaceJobResponseBodyResultAudioResult) Validate() er
 }
 
 type GetVideoCharacterReplaceJobResponseBodyResultImageResult struct {
-	// The output media asset ID.
+	// The ID of the output media asset.
 	//
 	// example:
 	//
@@ -373,7 +373,7 @@ func (s *GetVideoCharacterReplaceJobResponseBodyResultImageResult) Validate() er
 }
 
 type GetVideoCharacterReplaceJobResponseBodyResultVideoResult struct {
-	// The output media asset ID.
+	// The ID of the output media asset.
 	//
 	// example:
 	//

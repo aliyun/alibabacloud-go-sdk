@@ -16,7 +16,7 @@ type iGetVideoRenderJobResponseBody interface {
 }
 
 type GetVideoRenderJobResponseBody struct {
-	// The video rendering and compositing task object.
+	// The video rendering and compositing node object.
 	Job *GetVideoRenderJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,31 +62,31 @@ func (s *GetVideoRenderJobResponseBody) Validate() error {
 }
 
 type GetVideoRenderJobResponseBodyJob struct {
-	// The ID of the online editing project, which can be used for secondary editing of the final video.
+	// The ID of the online editing project, which can be used for secondary editing of the produced video.
 	//
 	// example:
 	//
 	// 8239345231244512***
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
-	// The error code, returned when the task status is Failed.
+	// The error code. This parameter is returned when the job status is Failed.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message of the String type, returned when the task status is Failed.
+	// The error message. This parameter is of the String type and is returned when the job status is Failed.
 	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The job ID.
+	// The ID of the job returned by SubmitVideoRenderJob.
 	//
 	// example:
 	//
 	// 68ca759e798b40b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The voiceover language of the final video.
+	// The voiceover language of the produced video.
 	//
 	// example:
 	//
@@ -98,23 +98,13 @@ type GetVideoRenderJobResponseBodyJob struct {
 	//
 	// https://xxxx.mp4
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The file status. Valid values:
-	//
-	// - Created: The file is created.
-	//
-	// - Executing: The file is executing.
-	//
-	// - Finished: The file is finished.
-	//
-	// - Failed: The file has failed.
-	//
-	// - Deleted: The file is deleted.
+	// The status of the job. Valid values: Created, Executing, Finished, and Failed. RecordNotFound is returned if the queried job is deleted, does not exist, or does not belong to the current account.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined parameters in JSON format.
+	// The custom user data in JSON format.
 	//
 	// example:
 	//

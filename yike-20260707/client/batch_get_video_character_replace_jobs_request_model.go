@@ -14,7 +14,7 @@ type iBatchGetVideoCharacterReplaceJobsRequest interface {
 }
 
 type BatchGetVideoCharacterReplaceJobsRequest struct {
-	// The job IDs. Separate multiple IDs with commas.
+	// The list of job IDs. Separate multiple IDs with commas.
 	//
 	// example:
 	//

@@ -226,11 +226,11 @@ func (client *Client) BatchGetMedias(request *BatchGetMediasRequest) (_result *B
 
 // Summary:
 //
-// Queries video character replacement jobs in batches.
+// Queries multiple video character replacement jobs.
 //
 // Description:
 //
-// Queries the status and results of video character replacement jobs in batches. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from Result.
+// Queries the status and results of multiple video character replacement jobs. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from the Result field.
 //
 // @param request - BatchGetVideoCharacterReplaceJobsRequest
 //
@@ -274,11 +274,11 @@ func (client *Client) BatchGetVideoCharacterReplaceJobsWithOptions(request *Batc
 
 // Summary:
 //
-// Queries video character replacement jobs in batches.
+// Queries multiple video character replacement jobs.
 //
 // Description:
 //
-// Queries the status and results of video character replacement jobs in batches. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from Result.
+// Queries the status and results of multiple video character replacement jobs. JobIds is a comma-separated string of job IDs. The response includes a JobList. The input parameters for each job are located in the AppInputConfig field. For the single query operation GetVideoCharacterReplaceJob, the corresponding field is AppParams. When the Status is Finished, you can retrieve the output media assets from the Result field.
 //
 // @param request - BatchGetVideoCharacterReplaceJobsRequest
 //
@@ -526,7 +526,7 @@ func (client *Client) CreateInfiniteCanvas(request *CreateInfiniteCanvasRequest)
 //
 // Description:
 //
-// Creates a project in a specified workspace and returns the ProjectId. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
+// Creates a project in a specified workspace and returns the project ID. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
 //
 // @param request - CreateProjectRequest
 //
@@ -578,7 +578,7 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 //
 // Description:
 //
-// Creates a project in a specified workspace and returns the ProjectId. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
+// Creates a project in a specified workspace and returns the project ID. If WorkspaceId is not specified, the default workspace of the current account is used. After the project is created, you can call GetProject to query the details or call ListProjects to list projects.
 //
 // @param request - CreateProjectRequest
 //
@@ -600,7 +600,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 //
 // Description:
 //
-// Creates a studio and triggers automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can directly use the ProjectId without creating the default project again.
+// Creates a studio and triggers the automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can use the ProjectId directly without creating the default project again.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -652,7 +652,7 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 //
 // Description:
 //
-// Creates a studio and triggers automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can directly use the ProjectId without creating the default project again.
+// Creates a studio and triggers the automatic creation of a default project for the studio. Returns the WorkspaceId and the ProjectId of the default project. You can use the ProjectId directly without creating the default project again.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -1406,13 +1406,13 @@ func (client *Client) GetMedia(request *GetMediaRequest) (_result *GetMediaRespo
 
 // Summary:
 //
-// Queries media content understanding jobs.
+// Queries media content comprehension jobs.
 //
 // Description:
 //
 // ## Request description
 //
-// This API operation queries media content understanding jobs.
+// This operation queries media content comprehension jobs.
 //
 // @param request - GetMediaComprehensionJobRequest
 //
@@ -1456,13 +1456,13 @@ func (client *Client) GetMediaComprehensionJobWithOptions(request *GetMediaCompr
 
 // Summary:
 //
-// Queries media content understanding jobs.
+// Queries media content comprehension jobs.
 //
 // Description:
 //
 // ## Request description
 //
-// This API operation queries media content understanding jobs.
+// This operation queries media content comprehension jobs.
 //
 // @param request - GetMediaComprehensionJobRequest
 //
@@ -1484,7 +1484,7 @@ func (client *Client) GetMediaComprehensionJob(request *GetMediaComprehensionJob
 //
 // Description:
 //
-// Queries the basic information of a project and the project permissions of the current caller by ProjectId. The project information is located in the Project object of the response and does not include the project asset list.
+// Queries the basic information of a project and the permissions of the current caller on the project based on the ProjectId. The project information is contained in the Project object of the response and does not include the list of project assets.
 //
 // @param request - GetProjectRequest
 //
@@ -1532,7 +1532,7 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 //
 // Description:
 //
-// Queries the basic information of a project and the project permissions of the current caller by ProjectId. The project information is located in the Project object of the response and does not include the project asset list.
+// Queries the basic information of a project and the permissions of the current caller on the project based on the ProjectId. The project information is contained in the Project object of the response and does not include the list of project assets.
 //
 // @param request - GetProjectRequest
 //
@@ -1616,9 +1616,9 @@ func (client *Client) GetRemakeScriptJob(request *GetRemakeScriptJobRequest) (_r
 //
 // Description:
 //
-// Queries the status and result of a single task by using the JobId returned by the submit operation. When Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
+// Queries the status and result of a single task by using the JobId returned by the submit operation. When the Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
 //
-// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each item contains MediaId and OutputUrl.
+// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each category contains MediaId and OutputUrl.
 //
 // @param request - GetVideoCharacterReplaceJobRequest
 //
@@ -1666,9 +1666,9 @@ func (client *Client) GetVideoCharacterReplaceJobWithOptions(request *GetVideoCh
 //
 // Description:
 //
-// Queries the status and result of a single task by using the JobId returned by the submit operation. When Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
+// Queries the status and result of a single task by using the JobId returned by the submit operation. When the Status is Finished, you can read the output media assets in Result. Executing indicates that the task is still running.
 //
-// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each item contains MediaId and OutputUrl.
+// This operation uses AppParams to return the task input parameters. The corresponding field name in the batch query operation is AppInputConfig. The output results are categorized into ImageResult, VideoResult, and AudioResult. Each category contains MediaId and OutputUrl.
 //
 // @param request - GetVideoCharacterReplaceJobRequest
 //
@@ -1954,7 +1954,7 @@ func (client *Client) GetVideoRemakeJob(request *GetVideoRemakeJobRequest) (_res
 
 // Summary:
 //
-// Submits a video rendering and compositing task.
+// Submits a video rendering and compositing job.
 //
 // @param request - GetVideoRenderJobRequest
 //
@@ -1998,7 +1998,7 @@ func (client *Client) GetVideoRenderJobWithOptions(request *GetVideoRenderJobReq
 
 // Summary:
 //
-// Submits a video rendering and compositing task.
+// Submits a video rendering and compositing job.
 //
 // @param request - GetVideoRenderJobRequest
 //
@@ -2505,9 +2505,7 @@ func (client *Client) ListInfiniteCanvases(request *ListInfiniteCanvasesRequest)
 //
 // Description:
 //
-// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace.
-//
-// For pagination, specify both PageNo and PageSize with valid positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response returns ProjectList but does not return TotalCount. MaxResults and NextToken are retained for compatibility and are not used for current pagination.
+// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace. For pagination, specify both PageNo and PageSize as positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response includes ProjectList but does not include TotalCount. MaxResults and NextToken are retained for backward compatibility and are not used for pagination.
 //
 // @param request - ListProjectsRequest
 //
@@ -2563,9 +2561,7 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 //
 // Description:
 //
-// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace.
-//
-// For pagination, specify both PageNo and PageSize with valid positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response returns ProjectList but does not return TotalCount. MaxResults and NextToken are retained for compatibility and are not used for current pagination.
+// Queries the list of projects accessible to the current caller. You can use WorkspaceId to filter projects by workspace. For pagination, specify both PageNo and PageSize as positive integers starting from 1. If valid values are not provided for both parameters, the query defaults to page 1 with 10 entries per page. The response includes ProjectList but does not include TotalCount. MaxResults and NextToken are retained for backward compatibility and are not used for pagination.
 //
 // @param request - ListProjectsRequest
 //
@@ -2587,7 +2583,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 //
 // Description:
 //
-// Queries a list of workspaces accessible to the current caller. Pagination is supported by using PageNo and PageSize. The default value of PageNo is 1, and the default value of PageSize is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
+// Queries the list of workspaces accessible to the current caller. You can use PageNo and PageSize to paginate the results. The default page number is 1, and the default page size is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -2639,7 +2635,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 //
 // Description:
 //
-// Queries a list of workspaces accessible to the current caller. Pagination is supported by using PageNo and PageSize. The default value of PageNo is 1, and the default value of PageSize is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
+// Queries the list of workspaces accessible to the current caller. You can use PageNo and PageSize to paginate the results. The default page number is 1, and the default page size is 10. The response includes WorkspaceList and TotalCount. The ID of the default project for a workspace is returned in the DefaultProjectId field.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -2661,9 +2657,9 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 //
 // Description:
 //
-// Validates the input materials of a specified application before submitting a task. AppParams is a JSON-serialized string. The field names must be consistent with the input definition of the application corresponding to AppId. Image, audio, and video materials must match the input types and be accessible.
+// Before submitting a task, validates the input materials for a specified application. AppParams is a JSON-serialized string. The field names must match the input definition of the application corresponding to the AppId. Image, audio, and video materials must match the input types and be accessible.
 //
-// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter Key and ErrorCode for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
+// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter keys and error codes for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
 //
 // @param request - PrecheckVideoCharacterReplaceJobRequest
 //
@@ -2715,9 +2711,9 @@ func (client *Client) PrecheckVideoCharacterReplaceJobWithOptions(request *Prech
 //
 // Description:
 //
-// Validates the input materials of a specified application before submitting a task. AppParams is a JSON-serialized string. The field names must be consistent with the input definition of the application corresponding to AppId. Image, audio, and video materials must match the input types and be accessible.
+// Before submitting a task, validates the input materials for a specified application. AppParams is a JSON-serialized string. The field names must match the input definition of the application corresponding to the AppId. Image, audio, and video materials must match the input types and be accessible.
 //
-// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter Key and ErrorCode for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
+// If Status is Success, the validation passes and Result is an empty array. If Status is Failed, Result returns the failed parameter keys and error codes for each item. This operation does not create a task. After the validation passes, call SubmitVideoCharacterReplaceJob to submit the task.
 //
 // @param request - PrecheckVideoCharacterReplaceJobRequest
 //
@@ -3005,13 +3001,13 @@ func (client *Client) SubmitImageGenerationJob(request *SubmitImageGenerationJob
 
 // Summary:
 //
-// Submits a media asset content understanding job.
+// Submits a media content understanding job.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation performs content understanding based on the provided media asset files, such as video URLs. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This API operation performs content understanding based on provided media files, such as video URLs. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitMediaComprehensionJobRequest
 //
@@ -3067,13 +3063,13 @@ func (client *Client) SubmitMediaComprehensionJobWithOptions(request *SubmitMedi
 
 // Summary:
 //
-// Submits a media asset content understanding job.
+// Submits a media content understanding job.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation performs content understanding based on the provided media asset files, such as video URLs. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This API operation performs content understanding based on provided media files, such as video URLs. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitMediaComprehensionJobRequest
 //
@@ -3169,13 +3165,13 @@ func (client *Client) SubmitRemakeScriptJob(request *SubmitRemakeScriptJobReques
 
 // Summary:
 //
-// Submits a video character replacement task.
+// Submits a video character replacement job.
 //
 // Description:
 //
-// Submits a video character replacement node via asynchronous commit. Invoke PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to validate the input assets first.
+// Performs an asynchronous commit for a video character replacement node. First, call PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to check the input materials.
 //
-// The returned JobId only indicates that the node is submitted, not completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId specifies the project, and FolderId specifies the file folder.
+// A returned JobId only indicates that the node has been submitted, not that it has been completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId is used to specify a project, and FolderId is used to specify a file folder.
 //
 // @param request - SubmitVideoCharacterReplaceJobRequest
 //
@@ -3231,13 +3227,13 @@ func (client *Client) SubmitVideoCharacterReplaceJobWithOptions(request *SubmitV
 
 // Summary:
 //
-// Submits a video character replacement task.
+// Submits a video character replacement job.
 //
 // Description:
 //
-// Submits a video character replacement node via asynchronous commit. Invoke PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to validate the input assets first.
+// Performs an asynchronous commit for a video character replacement node. First, call PrecheckVideoCharacterReplaceJob with the same AppId and AppParams to check the input materials.
 //
-// The returned JobId only indicates that the node is submitted, not completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId specifies the project, and FolderId specifies the file folder.
+// A returned JobId only indicates that the node has been submitted, not that it has been completed. Use GetVideoCharacterReplaceJob or BatchGetVideoCharacterReplaceJobs to query the status and output results. ProjectId is used to specify a project, and FolderId is used to specify a file folder.
 //
 // @param request - SubmitVideoCharacterReplaceJobRequest
 //
@@ -4061,7 +4057,7 @@ func (client *Client) UpdateMedia(request *UpdateMediaRequest) (_result *UpdateM
 //
 // Description:
 //
-// Updates the name of a project specified by ProjectId. Use Title to specify the new name. This operation only supports modifying the project name. You cannot modify the description or cover image. The caller must have edit permissions for the project.
+// Updates the name of a project based on the ProjectId and uses Title to specify the new name. This operation only supports modifying the name and does not support modifying the description or cover image. The caller must have edit permissions for the project.
 //
 // @param request - UpdateProjectRequest
 //
@@ -4113,7 +4109,7 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 //
 // Description:
 //
-// Updates the name of a project specified by ProjectId. Use Title to specify the new name. This operation only supports modifying the project name. You cannot modify the description or cover image. The caller must have edit permissions for the project.
+// Updates the name of a project based on the ProjectId and uses Title to specify the new name. This operation only supports modifying the name and does not support modifying the description or cover image. The caller must have edit permissions for the project.
 //
 // @param request - UpdateProjectRequest
 //

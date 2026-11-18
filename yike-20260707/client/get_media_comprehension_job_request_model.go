@@ -14,7 +14,7 @@ type iGetMediaComprehensionJobRequest interface {
 }
 
 type GetMediaComprehensionJobRequest struct {
-	// The job ID.
+	// The ID of the job returned by SubmitMediaComprehensionJob.
 	//
 	// example:
 	//

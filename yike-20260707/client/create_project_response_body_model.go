@@ -22,7 +22,7 @@ type CreateProjectResponseBody struct {
 	//
 	// pd_061716****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot the request.
+	// The ID of the request.
 	//
 	// example:
 	//
