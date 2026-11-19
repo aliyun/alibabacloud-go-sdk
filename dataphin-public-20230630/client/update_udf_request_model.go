@@ -26,6 +26,8 @@ type UpdateUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -83,25 +85,25 @@ func (s *UpdateUdfRequest) Validate() error {
 type UpdateUdfRequestUpdateCommand struct {
 	// The category. Valid values:
 	//
-	// - 1: window function
+	// - 1: Window function.
 	//
-	// - 2: aggregate function
+	// - 2: Aggregate function.
 	//
-	// - 3: numerical function
+	// - 3: Numerical function.
 	//
-	// - 4: string function
+	// - 4: String function.
 	//
-	// - 5: time function
+	// - 5: Time function.
 	//
-	// - 6: IP address utility function
+	// - 6: IP address helper function.
 	//
-	// - 7: URL-related function
+	// - 7: URL-related function.
 	//
-	// - 8: encoding and decoding function
+	// - 8: Encoding and decoding function.
 	//
-	// - 9: business-related function
+	// - 9: Business-related function.
 	//
-	// - 10: other.
+	// - 10: Other.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +111,7 @@ type UpdateUdfRequestUpdateCommand struct {
 	//
 	// 10
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The class name that implements the function in the resource.
+	// The name of the class that implements the function in the resource.
 	//
 	// This parameter is required.
 	//
@@ -117,7 +119,7 @@ type UpdateUdfRequestUpdateCommand struct {
 	//
 	// com.lydaas.SleepTest
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The command format for function calling to invoke.
+	// The command format for function invocation.
 	//
 	// This parameter is required.
 	//
@@ -125,13 +127,13 @@ type UpdateUdfRequestUpdateCommand struct {
 	//
 	// udf_sleep(100)
 	CommandHelp *string `json:"CommandHelp,omitempty" xml:"CommandHelp,omitempty"`
-	// The commit remarks.
+	// The submission comment.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The description.
 	//
@@ -139,9 +141,9 @@ type UpdateUdfRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the user-defined function.
+	// The ID of the custom function.
 	//
 	// This parameter is required.
 	//
@@ -149,7 +151,7 @@ type UpdateUdfRequestUpdateCommand struct {
 	//
 	// 1123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// This parameter is required.
 	//

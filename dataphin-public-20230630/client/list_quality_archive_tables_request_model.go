@@ -18,7 +18,7 @@ type iListQualityArchiveTablesRequest interface {
 }
 
 type ListQualityArchiveTablesRequest struct {
-	// The input parameters for querying the anomaly archived table list.
+	// The query parameters for the exception archived table list.
 	//
 	// This parameter is required.
 	ListQuery *ListQualityArchiveTablesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
@@ -30,7 +30,7 @@ type ListQualityArchiveTablesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//

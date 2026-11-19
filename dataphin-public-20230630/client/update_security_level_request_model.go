@@ -26,11 +26,13 @@ type UpdateSecurityLevelRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The update instruction.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateSecurityLevelRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -81,19 +83,19 @@ func (s *UpdateSecurityLevelRequest) Validate() error {
 }
 
 type UpdateSecurityLevelRequestUpdateCommand struct {
-	// The classification description.
+	// The description of the classification level.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The classification order. If this parameter is not specified, the classification name is used for matching.
+	// The order of the classification level. If this parameter is not specified, the classification level is matched by name.
 	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The classification name.
+	// The name of the classification level.
 	//
 	// example:
 	//

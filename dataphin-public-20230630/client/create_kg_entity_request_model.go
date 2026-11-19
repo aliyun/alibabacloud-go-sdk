@@ -20,7 +20,7 @@ type iCreateKgEntityRequest interface {
 }
 
 type CreateKgEntityRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateKgEntityRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -32,6 +32,8 @@ type CreateKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -108,7 +110,7 @@ type CreateKgEntityRequestCreateCommand struct {
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity record property list.
+	// The property list of the entity record.
 	//
 	// This parameter is required.
 	PropertyList []*CreateKgEntityRequestCreateCommandPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`

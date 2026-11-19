@@ -24,25 +24,25 @@ type iPausePhysicalNodeResponseBody interface {
 }
 
 type PausePhysicalNodeResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code of the request. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned by the backend.
+	// The HTTP status code of the backend response.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message of the request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The results of the pause scheduling operations on the nodes.
+	// The results of pausing node scheduling.
 	NodeOperateResultList []*PausePhysicalNodeResponseBodyNodeOperateResultList `json:"NodeOperateResultList,omitempty" xml:"NodeOperateResultList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type PausePhysicalNodeResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

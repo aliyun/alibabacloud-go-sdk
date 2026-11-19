@@ -18,9 +18,9 @@ type iCreateDataSourceShrinkRequest interface {
 }
 
 type CreateDataSourceShrinkRequest struct {
-	// Request object
+	// The request object.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -28,6 +28,8 @@ type CreateDataSourceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

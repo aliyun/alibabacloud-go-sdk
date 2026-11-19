@@ -28,6 +28,8 @@ type RevokeDataServiceApiRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -40,7 +42,7 @@ type RevokeDataServiceApiRequest struct {
 	//
 	// 102102
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The revoke instruction.
+	// The authorization command.
 	//
 	// This parameter is required.
 	RevokeCommand *RevokeDataServiceApiRequestRevokeCommand `json:"RevokeCommand,omitempty" xml:"RevokeCommand,omitempty" type:"Struct"`
@@ -108,7 +110,7 @@ type RevokeDataServiceApiRequestRevokeCommand struct {
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the application.
+	// The app ID.
 	//
 	// example:
 	//
@@ -118,7 +120,7 @@ type RevokeDataServiceApiRequestRevokeCommand struct {
 	//
 	// - USE: use permission
 	//
-	// - DELEGATION: delegation permission.
+	// - DELEGATION: delegation permission
 	//
 	// example:
 	//
@@ -128,7 +130,7 @@ type RevokeDataServiceApiRequestRevokeCommand struct {
 	//
 	// - DEV: development environment
 	//
-	// - PROD: production environment.
+	// - PROD: production environment
 	//
 	// example:
 	//
@@ -138,13 +140,13 @@ type RevokeDataServiceApiRequestRevokeCommand struct {
 	//
 	// - APP: application
 	//
-	// - USER: user.
+	// - USER: user
 	//
 	// example:
 	//
 	// APP
 	GranteeType *string `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
-	// The reason for the request.
+	// The reason for the application.
 	//
 	// This parameter is required.
 	//

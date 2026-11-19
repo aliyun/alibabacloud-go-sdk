@@ -24,7 +24,7 @@ type iGetDataAssetsGovernObjectResponseBody interface {
 }
 
 type GetDataAssetsGovernObjectResponseBody struct {
-	// The response code.
+	// The backend response code.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GetDataAssetsGovernObjectResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The governance object details.
 	GovernObjectInfo *GetDataAssetsGovernObjectResponseBodyGovernObjectInfo `json:"GovernObjectInfo,omitempty" xml:"GovernObjectInfo,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The HTTP response code.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataAssetsGovernObjectResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetDataAssetsGovernObjectResponseBody) Validate() error {
 }
 
 type GetDataAssetsGovernObjectResponseBodyGovernObjectInfo struct {
-	// The time when the governance object was reported.
+	// The submission time.
 	//
 	// example:
 	//
@@ -340,13 +340,13 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfo struct {
 	//
 	//             }
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The ID of the rectification.
+	// The rectification ID.
 	//
 	// example:
 	//
 	// 49169072991
 	RectifyId *int64 `json:"RectifyId,omitempty" xml:"RectifyId,omitempty"`
-	// The name of the rectification.
+	// The rectification name.
 	//
 	// example:
 	//
@@ -358,7 +358,7 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfo struct {
 	//
 	// NEW
 	RectifyStatus *string `json:"RectifyStatus,omitempty" xml:"RectifyStatus,omitempty"`
-	// The ID of the user who performs the rectification.
+	// The ID of the rectification user.
 	//
 	// example:
 	//
@@ -368,7 +368,7 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfo struct {
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	RectifyUserName *string `json:"RectifyUserName,omitempty" xml:"RectifyUserName,omitempty"`
 	// The related knowledge base.
 	RelatedKnowledge []*GetDataAssetsGovernObjectResponseBodyGovernObjectInfoRelatedKnowledge `json:"RelatedKnowledge,omitempty" xml:"RelatedKnowledge,omitempty" type:"Repeated"`
@@ -576,7 +576,7 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfoOwners struct {
 	//
 	// example:
 	//
-	// 龚恒菊2088822037866701
+	// Gong Hengju2088822037866701
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The user ID.
 	//
@@ -623,7 +623,7 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfoProblem struct {
 	//
 	// 36ea160807b14216b62a939327941e8b
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The ID of the parent object.
+	// The parent object ID.
 	//
 	// example:
 	//
@@ -635,11 +635,11 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfoProblem struct {
 	//
 	// 178986769@gmail.com
 	ProblemContactMail *string `json:"ProblemContactMail,omitempty" xml:"ProblemContactMail,omitempty"`
-	// The other contact information for the governance issue.
+	// Other contact information for the governance issue.
 	//
 	// example:
 	//
-	// Jane
+	// Li Si
 	ProblemContactOther *string `json:"ProblemContactOther,omitempty" xml:"ProblemContactOther,omitempty"`
 	// The contact phone number for the governance issue.
 	//
@@ -653,7 +653,7 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfoProblem struct {
 	//
 	// Test issue
 	ProblemDesc *string `json:"ProblemDesc,omitempty" xml:"ProblemDesc,omitempty"`
-	// The submission method of the issue.
+	// The submission method for the issue.
 	//
 	// example:
 	//
@@ -669,9 +669,9 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfoProblem struct {
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	ProblemSubmitterUserName *string `json:"ProblemSubmitterUserName,omitempty" xml:"ProblemSubmitterUserName,omitempty"`
-	// The types of the governance issue.
+	// The type of the governance issue.
 	ProblemTypes []*string `json:"ProblemTypes,omitempty" xml:"ProblemTypes,omitempty" type:"Repeated"`
 }
 
@@ -790,7 +790,7 @@ type GetDataAssetsGovernObjectResponseBodyGovernObjectInfoRelatedKnowledge struc
 	//
 	// Yangchun Maternal and Child Health Cloud Service Space
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The ID of the knowledge entry.
+	// The knowledge ID.
 	//
 	// example:
 	//

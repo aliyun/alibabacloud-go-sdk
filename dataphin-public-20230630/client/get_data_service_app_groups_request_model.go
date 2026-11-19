@@ -26,6 +26,8 @@ type GetDataServiceAppGroupsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operating user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -34,7 +36,7 @@ type GetDataServiceAppGroupsRequest struct {
 	//
 	// The data service project ID.
 	//
-	// 	Notice: This field is deprecated.</notice>.
+	// 	Notice: This field is deprecated.
 	//
 	// example:
 	//

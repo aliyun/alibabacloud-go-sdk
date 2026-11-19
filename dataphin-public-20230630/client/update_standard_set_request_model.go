@@ -18,7 +18,7 @@ type iUpdateStandardSetRequest interface {
 }
 
 type UpdateStandardSetRequest struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type UpdateStandardSetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Update command.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateStandardSetRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -81,9 +83,9 @@ func (s *UpdateStandardSetRequest) Validate() error {
 }
 
 type UpdateStandardSetRequestUpdateCommand struct {
-	// Publishing approval configuration.
+	// The online approval configuration.
 	ApprovalConfig *UpdateStandardSetRequestUpdateCommandApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
-	// Standard set code.
+	// The code of the standard set.
 	//
 	// This parameter is required.
 	//
@@ -91,27 +93,27 @@ type UpdateStandardSetRequestUpdateCommand struct {
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Default standard template ID.
+	// The ID of the default standard template.
 	//
 	// example:
 	//
 	// 1001
 	DefaultStandardTemplateId *int64 `json:"DefaultStandardTemplateId,omitempty" xml:"DefaultStandardTemplateId,omitempty"`
-	// Standard set description.
+	// The description of the standard set.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Parent directory.
+	// The parent folder.
 	DirectoryReference *UpdateStandardSetRequestUpdateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
-	// Maintainers.
+	// The maintainers.
 	MaintainerList []*string `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
-	// Member group list.
+	// The member group list.
 	MemberGroupList []*string `json:"MemberGroupList,omitempty" xml:"MemberGroupList,omitempty" type:"Repeated"`
-	// Member list.
+	// The member list.
 	MemberList []*string `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	// Standard set name.
+	// The name of the standard set.
 	//
 	// This parameter is required.
 	//
@@ -119,9 +121,9 @@ type UpdateStandardSetRequestUpdateCommand struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Unpublishing approval configuration.
+	// The offline approval configuration.
 	OfflineApprovalConfig *UpdateStandardSetRequestUpdateCommandOfflineApprovalConfig `json:"OfflineApprovalConfig,omitempty" xml:"OfflineApprovalConfig,omitempty" type:"Struct"`
-	// Standard set ID.
+	// The ID of the standard set.
 	//
 	// This parameter is required.
 	//
@@ -129,7 +131,7 @@ type UpdateStandardSetRequestUpdateCommand struct {
 	//
 	// 1234
 	StandardSetId *int64 `json:"StandardSetId,omitempty" xml:"StandardSetId,omitempty"`
-	// Visibility configuration.
+	// The visibility configuration.
 	VisibilityConfig *UpdateStandardSetRequestUpdateCommandVisibilityConfig `json:"VisibilityConfig,omitempty" xml:"VisibilityConfig,omitempty" type:"Struct"`
 }
 
@@ -274,7 +276,11 @@ func (s *UpdateStandardSetRequestUpdateCommand) Validate() error {
 }
 
 type UpdateStandardSetRequestUpdateCommandApprovalConfig struct {
-	// Approval process type. Valid values: BY_DEFAULT (default approval type) and BY_TEMPLATE (template-based approval).
+	// The approval process type. Valid values:
+	//
+	// - BY_DEFAULT: Default approval type.
+	//
+	// - BY_TEMPLATE: Based on an approval template.
 	//
 	// This parameter is required.
 	//
@@ -286,11 +292,11 @@ type UpdateStandardSetRequestUpdateCommandApprovalConfig struct {
 	//
 	// This parameter is required.
 	EnableApproval *bool `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
-	// Specifies whether to submit approvals in batch.
+	// Specifies whether to submit approvals in batches.
 	//
 	// This parameter is required.
 	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
-	// Approval template ID. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	// The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
 	//
 	// example:
 	//
@@ -347,7 +353,7 @@ func (s *UpdateStandardSetRequestUpdateCommandApprovalConfig) Validate() error {
 }
 
 type UpdateStandardSetRequestUpdateCommandDirectoryReference struct {
-	// Directory.
+	// The parent folder.
 	//
 	// This parameter is required.
 	//
@@ -379,7 +385,11 @@ func (s *UpdateStandardSetRequestUpdateCommandDirectoryReference) Validate() err
 }
 
 type UpdateStandardSetRequestUpdateCommandOfflineApprovalConfig struct {
-	// Approval process type. Valid values: BY_DEFAULT (default approval type) and BY_TEMPLATE (template-based approval).
+	// The approval process type. Valid values:
+	//
+	// - BY_DEFAULT: Default approval type.
+	//
+	// - BY_TEMPLATE: Based on an approval template.
 	//
 	// This parameter is required.
 	//
@@ -391,11 +401,11 @@ type UpdateStandardSetRequestUpdateCommandOfflineApprovalConfig struct {
 	//
 	// This parameter is required.
 	EnableApproval *bool `json:"EnableApproval,omitempty" xml:"EnableApproval,omitempty"`
-	// Specifies whether to submit approvals in batch.
+	// Specifies whether to submit approvals in batches.
 	//
 	// This parameter is required.
 	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
-	// Approval template ID. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	// The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
 	//
 	// example:
 	//
@@ -452,9 +462,15 @@ func (s *UpdateStandardSetRequestUpdateCommandOfflineApprovalConfig) Validate() 
 }
 
 type UpdateStandardSetRequestUpdateCommandVisibilityConfig struct {
-	// List of specified visible users. This parameter takes effect only when the visibility type is set to SPECIFIED.
+	// The list of specified users who have visibility. This parameter takes effect only when the visibility type is set to SPECIFIED.
 	SpecifiedUserList []*string `json:"SpecifiedUserList,omitempty" xml:"SpecifiedUserList,omitempty" type:"Repeated"`
-	// Visibility type. Valid values: PUBLIC (public access), PRIVATE (private access, visible only to standard set members and administrators), and SPECIFIED (visible to specified users).
+	// The visibility type. Valid values:
+	//
+	// - PUBLIC: Public.
+	//
+	// - PRIVATE: Private. Visible only to standard set members and administrators.
+	//
+	// - SPECIFIED: Visible to specified users.
 	//
 	// This parameter is required.
 	//

@@ -20,7 +20,7 @@ type iGetStandardLookupTableRequest interface {
 }
 
 type GetStandardLookupTableRequest struct {
-	// The ID of the lookup table.
+	// The lookup table ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetStandardLookupTableRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to allow a null value to be returned if the lookup table does not exist. If this parameter is set to false, an exception is thrown. Default value: true.
+	// Specifies whether to allow a null value to be returned when the lookup table does not exist. If this parameter is set to false, an exception is thrown. Default value: true.
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 	// The tenant ID.
 	//

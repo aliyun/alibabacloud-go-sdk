@@ -38,7 +38,7 @@ type GetCatalogAssetDetailsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend response exception details.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetCatalogAssetDetailsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,25 +126,25 @@ func (s *GetCatalogAssetDetailsResponseBody) Validate() error {
 }
 
 type GetCatalogAssetDetailsResponseBodyData struct {
-	// The API call mode. Returned when the asset type is API. Valid values: 1=Synchronous call, 2=Asynchronous call.
+	// The call mode of the API. This parameter is returned when the asset type is API. Valid values: 1 (synchronous call) and 2 (asynchronous call).
 	//
 	// example:
 	//
 	// 1
 	ApiCallMode *string `json:"ApiCallMode,omitempty" xml:"ApiCallMode,omitempty"`
-	// The API group name. Returned when the asset type is API.
+	// The name of the API group. This parameter is returned when the asset type is API.
 	//
 	// example:
 	//
 	// Default API group
 	ApiGroupName *string `json:"ApiGroupName,omitempty" xml:"ApiGroupName,omitempty"`
-	// The API ID. Returned when the asset type is API.
+	// The API ID. This parameter is returned when the asset type is API.
 	//
 	// example:
 	//
 	// 10441
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API operation type. Returned when the asset type is API. Valid values: 1=Get, 2=List, 3=Create, 4=Update, 5=Delete.
+	// The type of the API operation. This parameter is returned when the asset type is API. Valid values: 1 (Get), 2 (List), 3 (Create), 4 (Update), and 5 (Delete).
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	//
 	// abc
 	AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
-	// The URL of the asset catalog detail page.
+	// The URL to the asset catalog details.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	//
 	// example:
 	//
-	// abc表
+	// Table abc
 	AssetDisplayName *string `json:"AssetDisplayName,omitempty" xml:"AssetDisplayName,omitempty"`
-	// The source of the asset. TABLE (physical table) returns "Dataphin-workspace type-project Chinese name (project English name)". TABLE (logical table) returns "Dataphin-workspace type-data domain Chinese name (data domain English name)". TABLE (data source table) returns "source system name-data source name-database/schema name". INDEX (standard modeling metric) returns the asset source of the associated aggregate logical table. INDEX (custom metric) returns the asset source of the source table. API returns "data service project name". PAGE returns "application system name".
+	// The source of the asset. If the asset type is TABLE (physical table), the format is Dataphin-space type-project Chinese name (project English name). If the asset type is TABLE (logical table), the format is Dataphin-space type-data block Chinese name (data block English name). If the asset type is TABLE (data source table), the format is source system name-data source name-database or schema name. If the asset type is INDEX (standardized modeling metric), the value is the asset source of the associated aggregate logical table. If the asset type is INDEX (custom metric), the value is the asset source of the source table. If the asset type is API, the value is the data service project name. If the asset type is PAGE, the value is the application system name.
 	//
 	// example:
 	//
-	// Dataphin-中间层-服饰零售 (LD_Fashion)
+	// Dataphin-Middle layer-Apparel retail (LD_Fashion)
 	AssetFrom *string `json:"AssetFrom,omitempty" xml:"AssetFrom,omitempty"`
 	// The full name of the asset. This parameter is returned when the asset type is TABLE or INDEX.
 	//
@@ -188,53 +188,43 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The tags of the asset.
 	AssetTags []*string `json:"AssetTags,omitempty" xml:"AssetTags,omitempty" type:"Repeated"`
-	// The asset type. Valid values:
-	//
-	// - TABLE: table, including views and materialized views.
-	//
-	// - INDEX: technical metric.
-	//
-	// - BIZ_INDEX: business metric.
-	//
-	// - API: API.
-	//
-	// - PAGE: dashboard.
+	// The asset type. Valid values: TABLE (tables, including views and materialized views), INDEX (technical metrics), BIZ_INDEX (business metrics), API, and PAGE (dashboards).
 	//
 	// example:
 	//
 	// TABLE
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The BI workspace or folder to which the asset belongs. Returned when the asset type is PAGE (dashboard).
+	// The BI workspace or directory. This parameter is returned when the asset type is PAGE (dashboard).
 	//
 	// example:
 	//
-	// dataphin演示空间
+	// Dataphin demo workspace
 	BiCatalog *string `json:"BiCatalog,omitempty" xml:"BiCatalog,omitempty"`
-	// The ID of the data domain to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The ID of the data block to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
 	//
 	// example:
 	//
 	// 6865277495315392
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The name of the data domain to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The name of the data block to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
 	//
 	// example:
 	//
-	// 服饰零售（LD_Fashion）
+	// Apparel retail (LD_Fashion)
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The total number of charts. Returned when the asset type is PAGE (dashboard).
+	// The total number of charts. This parameter is returned when the asset type is PAGE (dashboard).
 	//
 	// example:
 	//
 	// 23
 	ChartCount *int64 `json:"ChartCount,omitempty" xml:"ChartCount,omitempty"`
-	// The collection count.
+	// The number of favorites.
 	//
 	// example:
 	//
 	// 0
 	CollectionCount *int64 `json:"CollectionCount,omitempty" xml:"CollectionCount,omitempty"`
-	// The list of columns. This parameter is returned when the asset type is TABLE.
+	// The list of columns. Returned when the asset type is TABLE.
 	Columns []*GetCatalogAssetDetailsResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -242,15 +232,15 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	//
 	// 2024-10-11 16:10:19
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The custom attributes. Returned when includeDetailedAttributes is set to true.
+	// The custom attributes. This parameter is returned when includeDetailedAttributes is set to true.
 	CustomAttributes []*GetCatalogAssetDetailsResponseBodyDataCustomAttributes `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty" type:"Repeated"`
-	// The ID of the data domain. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The ID of the data domain. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source tables are logical tables only).
 	//
 	// example:
 	//
 	// 49837403
 	DataCellId *string `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
-	// The name of the data domain. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The name of the data domain. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source tables are logical tables only).
 	//
 	// example:
 	//
@@ -268,17 +258,17 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	//
 	// 7305549302863001856
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The directories to which the asset belongs, including topic ID, topic name, directory ID, and directory name.
+	// The directories to which the asset belongs, including the topic ID, topic name, directory ID, and directory name.
 	Directories []*GetCatalogAssetDetailsResponseBodyDataDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// The time of the first listing.
+	// The first listing time.
 	//
 	// example:
 	//
 	// 2025-05-22 10:06:20
 	FirstOnShelveTime *string `json:"FirstOnShelveTime,omitempty" xml:"FirstOnShelveTime,omitempty"`
-	// The user who performed the first listing.
+	// The first listing user.
 	FirstOnShelveUser *GetCatalogAssetDetailsResponseBodyDataFirstOnShelveUser `json:"FirstOnShelveUser,omitempty" xml:"FirstOnShelveUser,omitempty" type:"Struct"`
-	// The statistical granularity name of the technical metric. Returned when the asset type is INDEX.
+	// The name of the statistical granularity for the technical metric. This parameter is returned when the asset type is INDEX.
 	//
 	// example:
 	//
@@ -298,35 +288,31 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Indicates whether the asset is deleted.
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// Indicates whether the table is a partitioned table. Returned when the asset type is TABLE. Valid values:
-	//
-	// - true: The table is a partitioned table.
-	//
-	// - false: The table is not a partitioned table.
+	// Specifies whether the table is a partitioned table. This parameter is returned when the asset type is TABLE. Valid values: true and false.
 	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
-	// The time of the last DDL change.
+	// The last DDL time.
 	//
 	// example:
 	//
 	// 2024-10-11 16:10:19
 	LastDdlTime *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	// The time of the last DML update.
+	// The last update time.
 	//
 	// example:
 	//
 	// 2024-10-11 16:10:19
 	LastDmlTime *string `json:"LastDmlTime,omitempty" xml:"LastDmlTime,omitempty"`
-	// The time of the last listing.
+	// The last listing time.
 	//
 	// example:
 	//
 	// 2025-05-22 10:06:20
 	LastOnShelveTime *string `json:"LastOnShelveTime,omitempty" xml:"LastOnShelveTime,omitempty"`
-	// The user who performed the last listing.
+	// The last listing user.
 	LastOnShelveUser *GetCatalogAssetDetailsResponseBodyDataLastOnShelveUser `json:"LastOnShelveUser,omitempty" xml:"LastOnShelveUser,omitempty" type:"Struct"`
-	// The listing maintenance user groups.
+	// The listing maintainer groups.
 	MaintainUserGroups []*string `json:"MaintainUserGroups,omitempty" xml:"MaintainUserGroups,omitempty" type:"Repeated"`
-	// The IDs of the listing maintenance users.
+	// The listing maintainers.
 	MaintainUserIds []*string `json:"MaintainUserIds,omitempty" xml:"MaintainUserIds,omitempty" type:"Repeated"`
 	// The maximum sensitivity level. This parameter is returned when the asset type is TABLE.
 	//
@@ -342,33 +328,33 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The owner.
 	Owner *GetCatalogAssetDetailsResponseBodyDataOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
-	// The partition key. Returned when the asset type is TABLE.
+	// The partition field. This parameter is returned when the asset type is TABLE.
 	//
 	// example:
 	//
 	// ds
 	PartitionKey *string `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	// The primary key. Returned when the asset type is TABLE.
+	// The primary key. This parameter is returned when the asset type is TABLE.
 	//
 	// example:
 	//
 	// employee_id
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The visibility scope type of the profiling report. This parameter is returned only when the asset type is TABLE or INDEX. Valid values:
+	// The visibility scope type of the profiling report. This parameter is returned when the asset type is TABLE or INDEX. Valid values:
 	//
 	// - ALL_USERS_CAN_VIEW: Visible to all users.
 	//
 	// - PART_USERS_CAN_VIEW: Visible to some users.
 	//
-	// - ALL_USERS_CAN_NOT_VIEW: Not visible to any users.
+	// - ALL_USERS_CAN_NOT_VIEW: Invisible to all users.
 	//
 	// example:
 	//
 	// ALL_USERS_CAN_VIEW
 	ProfilingReportViewScopeType *string `json:"ProfilingReportViewScopeType,omitempty" xml:"ProfilingReportViewScopeType,omitempty"`
-	// The user groups within the profiling report visibility scope.
+	// The user groups within the visibility scope of the profiling report.
 	ProfilingReportViewScopeUserGroups []*string `json:"ProfilingReportViewScopeUserGroups,omitempty" xml:"ProfilingReportViewScopeUserGroups,omitempty" type:"Repeated"`
-	// The users within the profiling report visibility scope.
+	// The users within the visibility scope of the profiling report.
 	ProfilingReportViewScopeUserIds []*string `json:"ProfilingReportViewScopeUserIds,omitempty" xml:"ProfilingReportViewScopeUserIds,omitempty" type:"Repeated"`
 	// The ID of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
 	//
@@ -382,9 +368,9 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	//
 	// train
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The quality score radar chart information. This parameter is returned only when includeDetailedAttributes is set to true. It contains the total score, the number of passed/validated rules, and the score details for each dimension.
+	// The quality score radar chart information. This parameter is returned when includeDetailedAttributes is set to true. It includes the total score, the number of passed and checked rules, and the score details for each dimension.
 	QualityScoreRadar *GetCatalogAssetDetailsResponseBodyDataQualityScoreRadar `json:"QualityScoreRadar,omitempty" xml:"QualityScoreRadar,omitempty" type:"Struct"`
-	// The view count.
+	// The number of views.
 	//
 	// example:
 	//
@@ -396,7 +382,7 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	//
 	// - PART_USERS_CAN_VIEW: Visible to some users.
 	//
-	// - PART_USERS_CAN_NOT_VIEW: Not visible to some users.
+	// - PART_USERS_CAN_NOT_VIEW: Invisible to some users.
 	//
 	// example:
 	//
@@ -406,61 +392,33 @@ type GetCatalogAssetDetailsResponseBodyData struct {
 	ShelveViewScopeUserGroups []*string `json:"ShelveViewScopeUserGroups,omitempty" xml:"ShelveViewScopeUserGroups,omitempty" type:"Repeated"`
 	// The users within the visibility scope.
 	ShelveViewScopeUserIds []*string `json:"ShelveViewScopeUserIds,omitempty" xml:"ShelveViewScopeUserIds,omitempty" type:"Repeated"`
-	// The output nodes. Returned when the asset type is TABLE.
+	// The output nodes. This parameter is returned when the asset type is TABLE.
 	SimpleNodeInfos []*GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos `json:"SimpleNodeInfos,omitempty" xml:"SimpleNodeInfos,omitempty" type:"Repeated"`
-	// The subtype. Valid values:
-	//
-	// - DIM_NORMAL: common logical dimension table.
-	//
-	// - DIM_ENUM: enumeration logical dimension table.
-	//
-	// - DIM_VIRTUAL: virtual logical dimension table.
-	//
-	// - SUM_BIZ_UNIT: aggregate logical table.
-	//
-	// - FACT_EVENT: event fact logical table.
-	//
-	// - FACT_SNAPSHOT: snapshot fact logical table.
-	//
-	// - DATASOURCE_TABLE: data source table.
-	//
-	// - PHYSICAL_TABLE: physical table.
-	//
-	// - DATASOURCE_VIEW: view (data source view).
-	//
-	// - PHYSICAL_VIEW: physical view.
-	//
-	// - MATERIALIZED_VIEW: materialized view.
-	//
-	// - BIZ_INDEX: business metric.
-	//
-	// - INDEX: technical metric (standard modeling metric).
-	//
-	// - CUSTOM_INDEX: technical metric (custom metric).
+	// The subtype. Valid values: DIM_NORMAL (common logical dimension table), DIM_ENUM (enumeration logical dimension table), DIM_VIRTUAL (virtual logical dimension table), SUM_BIZ_UNIT (aggregate logical table), FACT_EVENT (event fact logical table), FACT_SNAPSHOT (snapshot fact logical table), DATASOURCE_TABLE (data source table), PHYSICAL_TABLE (physical table), DATASOURCE_VIEW (data source view), PHYSICAL_VIEW (physical view), MATERIALIZED_VIEW (materialized view), BIZ_INDEX (business metric), INDEX (technical metric - standardized modeling metric), and CUSTOM_INDEX (technical metric - custom metric).
 	//
 	// example:
 	//
 	// DIM_NORMAL
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The GUID of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+	// The GUID of the summary table. This parameter is returned when the asset type is INDEX.
 	//
 	// example:
 	//
 	// odps.300023201.test.ads_gross
 	SumTableGuid *string `json:"SumTableGuid,omitempty" xml:"SumTableGuid,omitempty"`
-	// The name of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+	// The name of the summary table. This parameter is returned when the asset type is INDEX.
 	//
 	// example:
 	//
 	// ads_gross
 	SumTableName *string `json:"SumTableName,omitempty" xml:"SumTableName,omitempty"`
-	// The lifecycle. Returned when the asset type is TABLE.
+	// The lifecycle. This parameter is returned when the asset type is TABLE.
 	//
 	// example:
 	//
 	// 36000
 	TableLifeCycle *string `json:"TableLifeCycle,omitempty" xml:"TableLifeCycle,omitempty"`
-	// The storage size. This parameter is returned only when the asset type is TABLE.
+	// The storage size. This parameter is returned when the asset type is TABLE.
 	//
 	// example:
 	//
@@ -1068,15 +1026,9 @@ func (s *GetCatalogAssetDetailsResponseBodyData) Validate() error {
 }
 
 type GetCatalogAssetDetailsResponseBodyDataColumns struct {
-	// The associated entity. This parameter is returned when the business type is DIMENSION.
+	// The associated entity. Returned when the business type is DIMENSION.
 	AssociatedEntity *GetCatalogAssetDetailsResponseBodyDataColumnsAssociatedEntity `json:"AssociatedEntity,omitempty" xml:"AssociatedEntity,omitempty" type:"Struct"`
-	// The business type. Valid values:
-	//
-	// - INDEX: metric.
-	//
-	// - STAT_PERIOD: statistical period.
-	//
-	// - DIMENSION: dimension.
+	// The business type. Valid values: INDEX (metric), STAT_PERIOD (statistical period), and DIMENSION (dimension).
 	//
 	// example:
 	//
@@ -1086,7 +1038,7 @@ type GetCatalogAssetDetailsResponseBodyDataColumns struct {
 	//
 	// example:
 	//
-	// /交易信息/0000001
+	// /Transaction information/0000001
 	ClassifyName *string `json:"ClassifyName,omitempty" xml:"ClassifyName,omitempty"`
 	// The data type of the column.
 	//
@@ -1112,7 +1064,7 @@ type GetCatalogAssetDetailsResponseBodyDataColumns struct {
 	//
 	// dp_table.300023201.ld_fashion.dws_lulu_location.conversion_rate
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The data classification level.
+	// The data grade.
 	//
 	// example:
 	//
@@ -1276,7 +1228,7 @@ type GetCatalogAssetDetailsResponseBodyDataColumnsAssociatedEntity struct {
 	//
 	// example:
 	//
-	// 上药erp数据源
+	// SPH ERP data source
 	DimensionDisplayName *string `json:"DimensionDisplayName,omitempty" xml:"DimensionDisplayName,omitempty"`
 	// The ID of the dimension.
 	//
@@ -1410,25 +1362,25 @@ func (s *GetCatalogAssetDetailsResponseBodyDataColumnsStandards) Validate() erro
 }
 
 type GetCatalogAssetDetailsResponseBodyDataCustomAttributes struct {
-	// The attribute type. Valid values: BUSINESS (business attribute), MANAGEMENT (management attribute), TECHNOLOGY (technical attribute).
+	// The type of the attribute. Valid values: BUSINESS (business attribute), MANAGEMENT (management attribute), and TECHNOLOGY (technical attribute).
 	//
 	// example:
 	//
 	// MANAGEMENT
 	AttrType *string `json:"AttrType,omitempty" xml:"AttrType,omitempty"`
-	// The attribute code.
+	// The code of the attribute.
 	//
 	// example:
 	//
 	// gkglbm
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The attribute name.
+	// The name of the attribute.
 	//
 	// example:
 	//
-	// Supervising department
+	// Managing department
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The attribute value.
+	// The value of the attribute.
 	//
 	// example:
 	//
@@ -1485,43 +1437,43 @@ func (s *GetCatalogAssetDetailsResponseBodyDataCustomAttributes) Validate() erro
 }
 
 type GetCatalogAssetDetailsResponseBodyDataDirectories struct {
-	// The complete directory hierarchy chain from the top-level directory to the current directory, including the current directory.
+	// The complete hierarchy chain of the directory, from the top-level directory to the current directory, including the current directory.
 	DirectoryChain []*GetCatalogAssetDetailsResponseBodyDataDirectoriesDirectoryChain `json:"DirectoryChain,omitempty" xml:"DirectoryChain,omitempty" type:"Repeated"`
-	// The directory description.
+	// The description of the directory.
 	//
 	// example:
 	//
 	// Data tables related to order details
 	DirectoryDescription *string `json:"DirectoryDescription,omitempty" xml:"DirectoryDescription,omitempty"`
-	// The directory ID.
+	// The ID of the directory.
 	//
 	// example:
 	//
 	// 102260
 	DirectoryId *int64 `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The directory name.
+	// The name of the directory.
 	//
 	// example:
 	//
 	// Online e-commerce platform
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The topic description.
+	// The description of the topic.
 	//
 	// example:
 	//
 	// Core data asset catalog for the entire company, covering all online and offline channels
 	TopicDescription *string `json:"TopicDescription,omitempty" xml:"TopicDescription,omitempty"`
-	// The topic ID.
+	// The ID of the topic.
 	//
 	// example:
 	//
 	// 101676
 	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
-	// The topic name.
+	// The name of the topic.
 	//
 	// example:
 	//
-	// Omni-channel data topic
+	// Omnichannel data topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
@@ -1610,25 +1562,25 @@ func (s *GetCatalogAssetDetailsResponseBodyDataDirectories) Validate() error {
 }
 
 type GetCatalogAssetDetailsResponseBodyDataDirectoriesDirectoryChain struct {
-	// The directory description.
+	// The description of the directory.
 	//
 	// example:
 	//
-	// Data assets related to transactions
+	// Transaction-related data assets
 	DirectoryDescription *string `json:"DirectoryDescription,omitempty" xml:"DirectoryDescription,omitempty"`
-	// The directory ID.
+	// The ID of the directory.
 	//
 	// example:
 	//
 	// 2001
 	DirectoryId *int64 `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The directory name.
+	// The name of the directory.
 	//
 	// example:
 	//
 	// Transaction domain
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The folder level.
+	// The directory level.
 	//
 	// example:
 	//
@@ -1685,13 +1637,13 @@ func (s *GetCatalogAssetDetailsResponseBodyDataDirectoriesDirectoryChain) Valida
 }
 
 type GetCatalogAssetDetailsResponseBodyDataFirstOnShelveUser struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -1730,13 +1682,13 @@ func (s *GetCatalogAssetDetailsResponseBodyDataFirstOnShelveUser) Validate() err
 }
 
 type GetCatalogAssetDetailsResponseBodyDataLastOnShelveUser struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -1775,13 +1727,13 @@ func (s *GetCatalogAssetDetailsResponseBodyDataLastOnShelveUser) Validate() erro
 }
 
 type GetCatalogAssetDetailsResponseBodyDataOwner struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -1834,7 +1786,7 @@ type GetCatalogAssetDetailsResponseBodyDataQualityScoreRadar struct {
 	//
 	// 85.5
 	TotalScore *float64 `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
-	// The number of validated rules.
+	// The number of checked rules.
 	//
 	// example:
 	//
@@ -1936,7 +1888,7 @@ type GetCatalogAssetDetailsResponseBodyDataQualityScoreRadarCatalogScores struct
 	//
 	// 5
 	TableRuleCount *int32 `json:"TableRuleCount,omitempty" xml:"TableRuleCount,omitempty"`
-	// The number of validated rules.
+	// The number of checked rules.
 	//
 	// example:
 	//
@@ -2026,35 +1978,35 @@ type GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos struct {
 	//
 	// test
 	BizUnit *string `json:"BizUnit,omitempty" xml:"BizUnit,omitempty"`
-	// The environment to which the asset belongs.
+	// The environment.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// n_7443633109495119872
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//
 	// 2345
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The scheduling type. Valid values: NORMAL (timed scheduling), MANUAL (manual scheduling).
+	// The scheduling mode. Valid values: NORMAL (periodic scheduling) and MANUAL (manual scheduling).
 	//
 	// example:
 	//
 	// NORMAL
 	NodeScheduleType *string `json:"NodeScheduleType,omitempty" xml:"NodeScheduleType,omitempty"`
-	// The list of O&M owners.
+	// The O&M owners.
 	Owners []*GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosOwners `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
 	// The project to which the node belongs.
 	Project *GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The node type. Example valid values: DLINK (offline integration), PYTHON37 (Python compute node).
+	// The type of the node. Example valid values: DLINK (offline integration) and PYTHON37 (Python computing node).
 	//
 	// example:
 	//
@@ -2161,13 +2113,13 @@ func (s *GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos) Validate() error
 }
 
 type GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosOwners struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -2206,13 +2158,13 @@ func (s *GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosOwners) Validate()
 }
 
 type GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject struct {
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// 6865331517728384
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//

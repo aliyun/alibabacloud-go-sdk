@@ -42,7 +42,7 @@ type GetQualitySchedulesByWatchIdResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of scheduling objects.
+	// The scheduling object list.
 	QualityScheduleList []*GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList `json:"QualityScheduleList,omitempty" xml:"QualityScheduleList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -130,7 +130,7 @@ func (s *GetQualitySchedulesByWatchIdResponseBody) Validate() error {
 }
 
 type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The update time.
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -180,47 +180,21 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	//
 	// ds=${yyyyMMdd}
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
-	// The partition type. Valid values:
-	//
-	// - EVERY_DAY: every day
-	//
-	// - PRE_DAY: previous day
-	//
-	// - TODAY: current day
-	//
-	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday)
-	//
-	// - CUSTOM: custom
+	// The partition type. Valid values: EVERY_DAY: every day, PRE_DAY: previous day, TODAY: current day, FIRST_DAY_OF_WEEK: first day of the week (Sunday), and CUSTOM: custom.
 	//
 	// example:
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The schedule interval type for timed scheduling. Valid values:
-	//
-	// - DAILY: day
-	//
-	// - WEEKLY: week
-	//
-	// - MONTHLY: month
-	//
-	// - HOURLY: hour
-	//
-	// - MINUTELY: minute
+	// The interval type for timed scheduling. Valid values: DAILY: day, WEEKLY: week, MONTHLY: month, HOURLY: hour, and MINUTELY: minute.
 	//
 	// example:
 	//
 	// DAILY
 	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	// The schedule interval values for timed scheduling.
+	// The interval values for timed scheduling.
 	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
-	// The trigger method for static task triggers. Valid values:
-	//
-	// - ALL_TASKS_FINISHED: all tasks finished
-	//
-	// - ONE_TASKS_FINISHED: one task finished
-	//
-	// - PRE_ONE_TASKS_START: previous one task started
+	// The trigger method for static task triggers. Valid values: ALL_TASKS_FINISHED, ONE_TASKS_FINISHED, and PRE_ONE_TASKS_START.
 	//
 	// example:
 	//
@@ -228,37 +202,19 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
 	// The list of trigger tasks for trigger scheduling.
 	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
-	// The trigger type for trigger scheduling. Valid values:
-	//
-	// - STATIC_TASK_TRIGGER: static task trigger
-	//
-	// - CODE_CHECK_TRIGGER: code check trigger
+	// The trigger method for trigger scheduling. Valid values: STATIC_TASK_TRIGGER: static task trigger, and CODE_CHECK_TRIGGER: code check trigger.
 	//
 	// example:
 	//
 	// STATIC_TASK_TRIGGER
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The scheduling type. Valid values:
-	//
-	// - PERIOD_SCHEDULE: timed scheduling
-	//
-	// - MANUAL_SCHEDULE: manual trigger
-	//
-	// - CODE_CHECK_TRIGGER: code check trigger
-	//
-	// - STATIC_TASK_TRIGGER: static task trigger
-	//
-	// - DEPENDENCY_SCHEDULE: dependency scheduling
+	// The scheduling type. Valid values: PERIOD_SCHEDULE: timed scheduling, MANUAL_SCHEDULE: manual trigger, CODE_CHECK_TRIGGER: code check trigger, STATIC_TASK_TRIGGER: static task trigger, and DEPENDENCY_SCHEDULE: dependency scheduling.
 	//
 	// example:
 	//
 	// PERIOD_SCHEDULE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The validation scope. Valid values:
-	//
-	// - TASK_REFERRED_PARTITION: task updated partition
-	//
-	// - USER_DEFINED_PARTITION: user-defined partition
+	// The validation scope. Valid values: TASK_REFERRED_PARTITION: task updated partition, and USER_DEFINED_PARTITION: user-defined partition.
 	//
 	// example:
 	//

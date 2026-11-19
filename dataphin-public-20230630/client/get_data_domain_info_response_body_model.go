@@ -24,7 +24,7 @@ type iGetDataDomainInfoResponseBody interface {
 }
 
 type GetDataDomainInfoResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataDomainInfoResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -148,7 +148,7 @@ type GetDataDomainInfoResponseBodyDataDomainInfo struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The creation time.
 	//
@@ -178,7 +178,7 @@ type GetDataDomainInfoResponseBodyDataDomainInfo struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
 	// The name.
 	//
@@ -186,13 +186,13 @@ type GetDataDomainInfoResponseBodyDataDomainInfo struct {
 	//
 	// dm_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the business object owner.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The ID of the business object owner.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//

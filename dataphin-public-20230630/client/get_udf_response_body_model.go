@@ -48,9 +48,9 @@ type GetUdfResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the user-defined function.
+	// The details of the custom function.
 	UdfInfo *GetUdfResponseBodyUdfInfo `json:"UdfInfo,omitempty" xml:"UdfInfo,omitempty" type:"Struct"`
 }
 
@@ -126,33 +126,13 @@ func (s *GetUdfResponseBody) Validate() error {
 }
 
 type GetUdfResponseBodyUdfInfo struct {
-	// The category. Valid values:
-	//
-	// - 1: window function.
-	//
-	// - 2: statistical function.
-	//
-	// - 3: numerical function.
-	//
-	// - 4: string function.
-	//
-	// - 5: time function.
-	//
-	// - 6: IP address helper function.
-	//
-	// - 7: URL-related function.
-	//
-	// - 8: encoding and decoding function.
-	//
-	// - 9: business-related function.
-	//
-	// - 10: other.
+	// The category of the function. Valid values: 1 (Window function), 2 (Statistical function), 3 (Numerical function), 4 (String function), 5 (Time function), 6 (IP address helper function), 7 (URL-related function), 8 (Encoding and decoding function), 9 (Business-related function), and 10 (Other).
 	//
 	// example:
 	//
 	// 10
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The registered class name.
+	// The name of the registered class.
 	//
 	// example:
 	//
@@ -164,55 +144,55 @@ type GetUdfResponseBodyUdfInfo struct {
 	//
 	// udf_to_lower(char x)
 	CommandHelp *string `json:"CommandHelp,omitempty" xml:"CommandHelp,omitempty"`
-	// The compute engine type. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
+	// The compute engine. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
 	//
 	// example:
 	//
 	// HADOOP
 	ComputeEngineType *string `json:"ComputeEngineType,omitempty" xml:"ComputeEngineType,omitempty"`
-	// The creator.
+	// The creator of the function.
 	//
 	// example:
 	//
 	// 30012110
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description.
+	// The description of the function.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The storage folder.
+	// The storage directory.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The creation time. Format: yyyy-MM-d HH:mm:ss.
+	// The time when the function was created. Format: yyyy-MM-d HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time. Format: yyyy-MM-d HH:mm:ss.
+	// The time when the function was last updated. Format: yyyy-MM-d HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The user-defined function ID.
+	// The ID of the custom function.
 	//
 	// example:
 	//
 	// 1030111021
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The last modifier.
+	// The user who last modified the function.
 	//
 	// example:
 	//
 	// 30012110
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The function name.
+	// The name of the function.
 	//
 	// example:
 	//

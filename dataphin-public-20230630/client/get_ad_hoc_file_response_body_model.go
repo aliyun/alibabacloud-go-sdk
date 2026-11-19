@@ -24,13 +24,13 @@ type iGetAdHocFileResponseBody interface {
 }
 
 type GetAdHocFileResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the custom query file.
+	// The details of the ad hoc query file.
 	FileInfo *GetAdHocFileResponseBodyFileInfo `json:"FileInfo,omitempty" xml:"FileInfo,omitempty" type:"Struct"`
 	// The HTTP status code returned by the backend.
 	//
@@ -50,7 +50,7 @@ type GetAdHocFileResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -138,7 +138,7 @@ type GetAdHocFileResponseBodyFileInfo struct {
 	//
 	// 12121
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The directory where the file is located.
+	// The directory of the file.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type GetAdHocFileResponseBodyFileInfo struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The project ID.
 	//

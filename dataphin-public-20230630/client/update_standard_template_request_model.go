@@ -26,6 +26,8 @@ type UpdateStandardTemplateRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -85,7 +87,7 @@ type UpdateStandardTemplateRequestUpdateCommand struct {
 	//
 	// This parameter is required.
 	AttributesConfig *UpdateStandardTemplateRequestUpdateCommandAttributesConfig `json:"AttributesConfig,omitempty" xml:"AttributesConfig,omitempty" type:"Struct"`
-	// The code of the standard template. The code must be globally unique. The code cannot be modified if the template is referenced.
+	// The data standard template code. It must be globally unique and cannot be modified if it is referenced.
 	//
 	// This parameter is required.
 	//
@@ -93,15 +95,15 @@ type UpdateStandardTemplateRequestUpdateCommand struct {
 	//
 	// test01
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configuration for automatic generation of standard codes.
+	// The standard code auto-generation rule configuration.
 	CodeRuleConfig *UpdateStandardTemplateRequestUpdateCommandCodeRuleConfig `json:"CodeRuleConfig,omitempty" xml:"CodeRuleConfig,omitempty" type:"Struct"`
-	// The description of the standard template.
+	// The data standard template description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the standard template.
+	// The data standard template ID.
 	//
 	// This parameter is required.
 	//
@@ -109,19 +111,19 @@ type UpdateStandardTemplateRequestUpdateCommand struct {
 	//
 	// 22
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list of maintainers.
+	// The maintainers.
 	MaintainerList []*string `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
-	// The name of the standard template.
+	// The data standard template name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试模板
+	// Test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The publish information of the standard template.
 	PublishInfo *UpdateStandardTemplateRequestUpdateCommandPublishInfo `json:"PublishInfo,omitempty" xml:"PublishInfo,omitempty" type:"Struct"`
-	// The version number. If this parameter is left empty or set to -1, the latest version is used.
+	// The version number. An empty value or -1 indicates the latest version.
 	//
 	// example:
 	//
@@ -238,7 +240,7 @@ func (s *UpdateStandardTemplateRequestUpdateCommand) Validate() error {
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfig struct {
-	// The list of attributes.
+	// The attribute list.
 	//
 	// This parameter is required.
 	AttributeList []*UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
@@ -275,7 +277,7 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfig) Validate() 
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList struct {
-	// The attribute code. This parameter is optional when a common attribute is referenced.
+	// The attribute code. This parameter is not required when a common attribute is referenced.
 	//
 	// example:
 	//
@@ -287,7 +289,7 @@ type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList str
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The attribute name. This parameter is optional when a common attribute is referenced.
+	// The attribute name. This parameter is not required when a common attribute is referenced.
 	//
 	// example:
 	//
@@ -295,29 +297,29 @@ type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList str
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The referenced attribute information.
 	RefAttribute *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttribute `json:"RefAttribute,omitempty" xml:"RefAttribute,omitempty" type:"Struct"`
-	// Specifies whether the attribute is required. This parameter is optional when a common attribute is referenced.
+	// Specifies whether the attribute is required. This parameter is not required when a common attribute is referenced.
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// The attribute type. This parameter is optional when a common attribute is referenced. Valid values:
+	// The attribute type. This parameter is not required when a common attribute is referenced. Valid values:
 	//
-	// - BIZ_ATTRIBUTE: business attribute.
+	// - BIZ_ATTRIBUTE: Business attribute.
 	//
-	// - TECH_ATTRIBUTE: technical attribute.
+	// - TECH_ATTRIBUTE: Technical attribute.
 	//
-	// - MANAGEMENT_ATTRIBUTE: management attribute.
+	// - MANAGEMENT_ATTRIBUTE: Management attribute.
 	//
-	// - QUALITY_ATTRIBUTE: quality attribute.
+	// - QUALITY_ATTRIBUTE: Quality attribute.
 	//
-	// - MASTER_DATA_ATTRIBUTE: master data attribute.
+	// - MASTER_DATA_ATTRIBUTE: Master data attribute.
 	//
-	// - LIFECYCLE_ATTRIBUTE: lifecycle attribute.
+	// - LIFECYCLE_ATTRIBUTE: Lifecycle attribute.
 	//
-	// - SECURITY_ATTRIBUTE: security attribute.
+	// - SECURITY_ATTRIBUTE: Security attribute.
 	//
 	// example:
 	//
 	// BIZ_ATTRIBUTE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value configuration. This parameter is optional when a common attribute is referenced.
+	// The value configuration. This parameter is not required when a common attribute is referenced.
 	ValueConfig *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfig `json:"ValueConfig,omitempty" xml:"ValueConfig,omitempty" type:"Struct"`
 }
 
@@ -407,11 +409,11 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttribute struct {
-	// The attribute source.
+	// The source of the attribute.
 	//
 	// This parameter is required.
 	AttributeFromInfo *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfo `json:"AttributeFromInfo,omitempty" xml:"AttributeFromInfo,omitempty" type:"Struct"`
-	// The attribute ID.
+	// The ID of the attribute.
 	//
 	// This parameter is required.
 	//
@@ -457,13 +459,13 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfo struct {
-	// The attribute source. Valid values:
+	// The source of the attribute. Valid values:
 	//
-	// - SYSTEM: system attribute.
+	// - SYSTEM: System attribute.
 	//
-	// - CUSTOM: custom attribute.
+	// - CUSTOM: Custom attribute.
 	//
-	// - STANDARD: standard.
+	// - STANDARD: Standard.
 	//
 	// This parameter is required.
 	//
@@ -511,7 +513,7 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfoStandardReference struct {
-	// The standard ID.
+	// The ID of the standard.
 	//
 	// This parameter is required.
 	//
@@ -562,15 +564,15 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfig struct {
 	// The data type of the attribute value. Valid values:
 	//
-	// - STRING: string.
+	// - STRING: String.
 	//
-	// - BIGINT: numeric.
+	// - BIGINT: Numeric type.
 	//
-	// - DOUBLE: floating-point.
+	// - DOUBLE: Floating-point type.
 	//
-	// - DATE: date, accurate to the day.
+	// - DATE: Date, accurate to the day.
 	//
-	// - DATETIME: date, accurate to milliseconds.
+	// - DATETIME: Date and time, accurate to the millisecond.
 	//
 	// - BOOLEAN: Boolean.
 	//
@@ -586,7 +588,7 @@ type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValu
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The length of the attribute value. If this parameter is left empty or set to -1, the length is not limited. Typically, only string types have a length limit for attribute values.
+	// The length of the attribute value. An empty value or -1 indicates that the length is not limited. Typically, the length is limited only for string types.
 	//
 	// example:
 	//
@@ -594,13 +596,13 @@ type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValu
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
 	// The attribute value type. Valid values:
 	//
-	// - CUSTOMIZED: custom input.
+	// - CUSTOMIZED: Custom input.
 	//
-	// - SINGLE_ENUM: single enumeration value.
+	// - SINGLE_ENUM: Single enumeration value.
 	//
-	// - MULTIPLE_ENUMS: multiple enumeration values.
+	// - MULTIPLE_ENUMS: Multiple enumeration values.
 	//
-	// - RANGE: range value.
+	// - RANGE: Range value.
 	//
 	// This parameter is required.
 	//
@@ -679,13 +681,13 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfigValueRange struct {
 	// The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values:
 	//
-	// - BIZ_UNIT: data board.
+	// - BIZ_UNIT: Business unit.
 	//
-	// - PROJECT: project.
+	// - PROJECT: Project.
 	//
-	// - USER: user.
+	// - USER: User.
 	//
-	// - USER_GROUP: user group.
+	// - USER_GROUP: User group.
 	//
 	// example:
 	//
@@ -697,21 +699,21 @@ type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValu
 	MinMaxValueConfig *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfigValueRangeMinMaxValueConfig `json:"MinMaxValueConfig,omitempty" xml:"MinMaxValueConfig,omitempty" type:"Struct"`
 	// The value source. Valid values:
 	//
-	// - NONE: no constraint.
+	// - NONE: No constraint.
 	//
-	// - LIST: obtained from a list.
+	// - LIST: Obtained from a list.
 	//
-	// - LOOKUP_TABLE: lookup table.
+	// - LOOKUP_TABLE: Lookup table.
 	//
-	// - MIN_MAX: value between the minimum and maximum.
+	// - MIN_MAX: Value between the maximum and minimum values.
 	//
 	// - DATAPHIN_ATTRIBUTE: Dataphin system property.
 	//
-	// - BUILT_IN_DATA_TYPES: built-in data types.
+	// - BUILT_IN_DATA_TYPES: Built-in data type.
 	//
-	// - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization.
+	// - BUILT_IN_DATA_CLASSIFICATION: Built-in data categorization.
 	//
-	// - BUILT_IN_DATA_LEVEL: built-in data security classification.
+	// - BUILT_IN_DATA_LEVEL: Built-in data security classification.
 	//
 	// This parameter is required.
 	//
@@ -791,7 +793,7 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfigValueRangeLookupTableReference struct {
-	// The referenced lookup table field.
+	// The referenced field in the lookup table.
 	//
 	// example:
 	//
@@ -838,11 +840,11 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 }
 
 type UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfigValueRangeMinMaxValueConfig struct {
-	// Specifies whether the maximum value is included.
+	// Specifies whether to include the maximum value.
 	//
 	// This parameter is required.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
-	// Specifies whether the minimum value is included.
+	// Specifies whether to include the minimum value.
 	//
 	// This parameter is required.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
@@ -913,13 +915,9 @@ func (s *UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList
 }
 
 type UpdateStandardTemplateRequestUpdateCommandCodeRuleConfig struct {
-	// The automatic generation configuration for standard code rules. This parameter takes effect when the generation method is set to AUTO_GENERATE.
+	// The auto-generation configuration for standard code rules. This configuration takes effect when the generation method is set to AUTO_GENERATE.
 	AutoConfig *UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfig `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty" type:"Struct"`
-	// The standard code generation method. Valid values:
-	//
-	// - CUSTOMIZED: custom.
-	//
-	// - AUTO_GENERATE: automatically generated based on standard code rules.
+	// The standard code generation method. Valid values: CUSTOMIZED: Custom. AUTO_GENERATE: Automatically generated based on standard code rules.
 	//
 	// This parameter is required.
 	//
@@ -969,7 +967,7 @@ type UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfig struct {
 	//
 	// This parameter is required.
 	CodeRuleList []*UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfigCodeRuleList `json:"CodeRuleList,omitempty" xml:"CodeRuleList,omitempty" type:"Repeated"`
-	// Specifies whether strict validation is required.
+	// Specifies whether strong validation is enabled.
 	//
 	// This parameter is required.
 	NeedStrongValidate *bool `json:"NeedStrongValidate,omitempty" xml:"NeedStrongValidate,omitempty"`
@@ -1025,13 +1023,7 @@ type UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfigCodeRuleL
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The type of the code rule. Valid values:
-	//
-	// - FIXED_STRING: fixed string.
-	//
-	// - AUTO_INCREMENT: auto-increment sequence.
-	//
-	// - STANDARD_SET_CODE: standard set code.
+	// The code rule type. Valid values: FIXED_STRING: Fixed string. AUTO_INCREMENT: Auto-increment sequence. STANDARD_SET_CODE: Standard set code.
 	//
 	// This parameter is required.
 	//
@@ -1109,7 +1101,7 @@ type UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfigCodeRuleL
 	//
 	// 3
 	Digit *int32 `json:"Digit,omitempty" xml:"Digit,omitempty"`
-	// Specifies whether to pad with zeros.
+	// Specifies whether zero padding is enabled.
 	//
 	// This parameter is required.
 	NeedPaddingZero *bool `json:"NeedPaddingZero,omitempty" xml:"NeedPaddingZero,omitempty"`

@@ -24,7 +24,7 @@ type iGetDataServiceApiGroupsResponseBody interface {
 }
 
 type GetDataServiceApiGroupsResponseBody struct {
-	// The list of API groups.
+	// The API group list.
 	ApiGroupList []*GetDataServiceApiGroupsResponseBodyApiGroupList `json:"ApiGroupList,omitempty" xml:"ApiGroupList,omitempty" type:"Repeated"`
 	// The backend response code.
 	//
@@ -38,7 +38,7 @@ type GetDataServiceApiGroupsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataServiceApiGroupsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

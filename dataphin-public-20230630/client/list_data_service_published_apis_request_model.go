@@ -20,9 +20,9 @@ type iListDataServicePublishedApisRequest interface {
 }
 
 type ListDataServicePublishedApisRequest struct {
-	// Search conditions.
+	// The query conditions.
 	ListQuery *ListDataServicePublishedApisRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,13 @@ type ListDataServicePublishedApisRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data service project ID.
+	// The ID of the Data Service project.
 	//
 	// example:
 	//
@@ -96,25 +98,25 @@ func (s *ListDataServicePublishedApisRequest) Validate() error {
 }
 
 type ListDataServicePublishedApisRequestListQuery struct {
-	// API name.
+	// The API name.
 	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Group ID.
+	// The group ID.
 	//
 	// example:
 	//
 	// 102113
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//

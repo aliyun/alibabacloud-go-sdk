@@ -22,7 +22,7 @@ type iGetUdfByVersionRequest interface {
 }
 
 type GetUdfByVersionRequest struct {
-	// The custom function ID.
+	// The ID of the custom function.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetUdfByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator ID.
+	// The ID of the user who performs the operation.
 	//
 	// example:
 	//

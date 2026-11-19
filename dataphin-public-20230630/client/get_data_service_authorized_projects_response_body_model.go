@@ -36,7 +36,7 @@ type GetDataServiceAuthorizedProjectsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type GetStandardWordRootResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetStandardWordRootResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The word root details.
+	// The details of the word root.
 	WordRootInfo *GetStandardWordRootResponseBodyWordRootInfo `json:"WordRootInfo,omitempty" xml:"WordRootInfo,omitempty" type:"Struct"`
 }
 
@@ -138,7 +138,7 @@ type GetStandardWordRootResponseBodyWordRootInfo struct {
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID of the creator.
+	// The ID of the creator.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type GetStandardWordRootResponseBodyWordRootInfo struct {
 	//
 	// average
 	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
-	// The user ID of the last modifier.
+	// The ID of the last modifier.
 	//
 	// example:
 	//

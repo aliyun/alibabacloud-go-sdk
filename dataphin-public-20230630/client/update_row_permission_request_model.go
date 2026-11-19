@@ -26,6 +26,8 @@ type UpdateRowPermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,7 +91,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
 	//
 	// example:
 	//
-	// Control business data.
+	// Control business data
 	RowPermissionDesc *string `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
 	// The row-level permission ID.
 	//
@@ -105,7 +107,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
 	//
 	// example:
 	//
-	// BusinessControl.
+	// Business control
 	RowPermissionName *string `json:"RowPermissionName,omitempty" xml:"RowPermissionName,omitempty"`
 	// The rules.
 	Rules []*UpdateRowPermissionRequestUpdateRowPermissionCommandRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -211,7 +213,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns struct {
 	//
 	// example:
 	//
-	// Business ID.
+	// Business ID
 	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
 	// The mapping column name.
 	//
@@ -271,7 +273,7 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) Val
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandRules struct {
-	// The rule expressions.
+	// The rule expression.
 	//
 	// This parameter is required.
 	Expressions []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
@@ -420,7 +422,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions struct
 	//
 	// EXPRESSION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The expression operation values.
+	// The expression operand value.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -584,7 +586,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandTables struct {
 	//
 	// business_id
 	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
-	// The GUID of the table.
+	// The table GUID.
 	//
 	// This parameter is required.
 	//

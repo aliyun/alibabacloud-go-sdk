@@ -117,7 +117,7 @@ func (s *ListBatchTemplatesRequest) Validate() error {
 }
 
 type ListBatchTemplatesRequestListQuery struct {
-	// The keyword in the template name.
+	// The keyword for the template name.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListBatchTemplatesRequestListQuery struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//

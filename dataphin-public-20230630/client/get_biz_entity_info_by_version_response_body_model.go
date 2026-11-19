@@ -26,7 +26,7 @@ type iGetBizEntityInfoByVersionResponseBody interface {
 type GetBizEntityInfoByVersionResponseBody struct {
 	// The creation result.
 	BizEntityInfo *GetBizEntityInfoByVersionResponseBodyBizEntityInfo `json:"BizEntityInfo,omitempty" xml:"BizEntityInfo,omitempty" type:"Struct"`
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetBizEntityInfoByVersionResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -128,21 +128,21 @@ func (s *GetBizEntityInfoByVersionResponseBody) Validate() error {
 type GetBizEntityInfoByVersionResponseBodyBizEntityInfo struct {
 	// The business object.
 	BizObject *GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject `json:"BizObject,omitempty" xml:"BizObject,omitempty" type:"Struct"`
-	// The business process.
+	// The business activity.
 	BizProcess *GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizProcess `json:"BizProcess,omitempty" xml:"BizProcess,omitempty" type:"Struct"`
-	// The business unit ID of the business object.
+	// The ID of the business unit to which the business object belongs.
 	//
 	// example:
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The ID of the subject domain to which the entity belongs.
+	// The ID of the data domain to which the entity belongs.
 	//
 	// example:
 	//
 	// 20101011
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
-	// The type of the business entity. For more information, refer to the query business entity details operation.
+	// The business entity type. For more information, see the Query business entity details API operation.
 	//
 	// example:
 	//
@@ -218,19 +218,19 @@ func (s *GetBizEntityInfoByVersionResponseBodyBizEntityInfo) Validate() error {
 }
 
 type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject struct {
-	// The approval flow ID.
+	// The ID of the approval process.
 	//
 	// example:
 	//
 	// 221323121212
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The approval status. For more information, refer to the query business entity details operation.
+	// The approval status. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
 	// APPROVING
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The list of child business objects of the business object.
+	// The list of IDs of child business objects.
 	ChildBizEntityIdList []*int64 `json:"ChildBizEntityIdList,omitempty" xml:"ChildBizEntityIdList,omitempty" type:"Repeated"`
 	// The description of the business object.
 	//
@@ -244,19 +244,19 @@ type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject struct {
 	//
 	// create_object_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The creation time.
+	// The time when the business object was created.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The time when the business object was last updated.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The business object ID.
+	// The ID of the business object.
 	//
 	// example:
 	//
@@ -272,39 +272,39 @@ type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// The code name of the business object.
+	// The code of the business object.
 	//
 	// example:
 	//
 	// create_object_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The online status. For more information, refer to the query business entity details operation.
+	// The online status. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
 	// 1
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	// The owner of the business object.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The owner of the business object.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The parent entity that the business object inherits from. Only common business objects support inheritance, and the parent entity must be online.
+	// The ID of the parent entity inherited by the business object. Only common business objects can be configured to inherit entities, and they can only inherit online business objects.
 	//
 	// example:
 	//
 	// 116306
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The list of associated online business entity IDs.
+	// The list of IDs of associated online business entities.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
 	// The number of associated logical dimension tables.
 	//
@@ -312,19 +312,19 @@ type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject struct {
 	//
 	// 1
 	RefDimTableCount *int32 `json:"RefDimTableCount,omitempty" xml:"RefDimTableCount,omitempty"`
-	// The number of associated aggregate tables.
+	// The number of associated logical aggregate tables.
 	//
 	// example:
 	//
 	// 1
 	RefSummaryTableCount *int32 `json:"RefSummaryTableCount,omitempty" xml:"RefSummaryTableCount,omitempty"`
-	// The status. For more information, refer to the query business entity details operation.
+	// The status. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
 	// 100
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The object type of the business object. For more information, refer to the query business entity details operation.
+	// The object type of the business object. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
@@ -525,47 +525,47 @@ func (s *GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject) Validate()
 }
 
 type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizProcess struct {
-	// The approval flow ID.
+	// The ID of the approval process.
 	//
 	// example:
 	//
 	// 221323121212
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The approval status. For more information, refer to the query business entity details operation.
+	// The approval status. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
 	// APPROVING
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The list of business event activity IDs contained in the business flow activity. This parameter is valid only when the type is a business flow activity.
+	// The list of business event activity IDs included in the business process activity. This field is valid only when the entity is a business process activity.
 	BizEventEntityIdList []*int64 `json:"BizEventEntityIdList,omitempty" xml:"BizEventEntityIdList,omitempty" type:"Repeated"`
-	// The description of the business process.
+	// The description of the business activity.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the business process.
+	// The display name of the business activity.
 	//
 	// example:
 	//
-	// 业务活动测试
+	// Business activity test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The creation time.
+	// The time when the business object was created.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The time when the business object was last updated.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the business process is depended on by other entities.
+	// Indicates whether the business process activity has dependents.
 	HasDependent *bool `json:"HasDependent,omitempty" xml:"HasDependent,omitempty"`
-	// The business process ID.
+	// The ID of the business activity.
 	//
 	// example:
 	//
@@ -581,49 +581,49 @@ type GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizProcess struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// The name of the business process.
+	// The name of the business activity.
 	//
 	// example:
 	//
 	// create_process_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The online status. For more information, refer to the query business entity details operation.
+	// The online status. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
 	// 1
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	// The owner of the business object.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The owner of the business object.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The preceding business flow activities of the business flow activity.
+	// The preceding business process activities of the current business process activity.
 	PreBizProcessIdList []*int64 `json:"PreBizProcessIdList,omitempty" xml:"PreBizProcessIdList,omitempty" type:"Repeated"`
-	// The list of associated online business entity IDs.
+	// The list of IDs of associated online business entities.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
-	// The number of associated fact tables.
+	// The number of associated logical fact tables.
 	//
 	// example:
 	//
 	// 1
 	RefFactTableCount *int32 `json:"RefFactTableCount,omitempty" xml:"RefFactTableCount,omitempty"`
-	// The status. For more information, refer to the query business entity details operation.
+	// The status. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//
 	// 100
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the business process. For more information, refer to the query business entity details operation.
+	// The type of the business activity. For more information, see the operation for querying business entity details.
 	//
 	// example:
 	//

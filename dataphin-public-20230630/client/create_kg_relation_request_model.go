@@ -20,7 +20,7 @@ type iCreateKgRelationRequest interface {
 }
 
 type CreateKgRelationRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateKgRelationRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -32,6 +32,8 @@ type CreateKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -100,7 +102,7 @@ func (s *CreateKgRelationRequest) Validate() error {
 }
 
 type CreateKgRelationRequestCreateCommand struct {
-	// The relationship record property list.
+	// The property list of the relationship record.
 	PropertyList []*CreateKgRelationRequestCreateCommandPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
 	// The relationship type code.
 	//

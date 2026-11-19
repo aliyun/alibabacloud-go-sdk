@@ -30,11 +30,13 @@ type GetTableColumnLineagesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The GUID of the table, which is the unique identifier of the asset.
+	// The GUID of the table, which uniquely identifies the asset.
 	//
 	// This parameter is required.
 	//

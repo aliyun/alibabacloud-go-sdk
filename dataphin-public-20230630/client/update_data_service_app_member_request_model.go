@@ -26,11 +26,13 @@ type UpdateDataServiceAppMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The command to update regular members of a data service application.
+	// Updates the regular members of a data service application.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataServiceAppMemberRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -89,7 +91,7 @@ type UpdateDataServiceAppMemberRequestUpdateCommand struct {
 	//
 	// 200000000
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The list of members.
+	// The member list.
 	//
 	// This parameter is required.
 	MemberList []*UpdateDataServiceAppMemberRequestUpdateCommandMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`

@@ -26,6 +26,8 @@ type UpdateDataDomainRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,7 +91,7 @@ type UpdateDataDomainRequestUpdateCommand struct {
 	//
 	// dm_code_name
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
-	// The ID of the data board.
+	// The business unit ID.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +99,7 @@ type UpdateDataDomainRequestUpdateCommand struct {
 	//
 	// 545844456
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The ID of the data domain.
+	// The data domain ID.
 	//
 	// This parameter is required.
 	//
@@ -117,9 +119,9 @@ type UpdateDataDomainRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// 主题域测试
+	// Data domain test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The code of the data domain.
+	// The data domain code.
 	//
 	// This parameter is required.
 	//

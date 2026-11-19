@@ -18,7 +18,7 @@ type iListQualityRuleTasksRequest interface {
 }
 
 type ListQualityRuleTasksRequest struct {
-	// The paging query conditions.
+	// The paging conditions for the paged query.
 	ListQuery *ListQualityRuleTasksRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -28,7 +28,7 @@ type ListQualityRuleTasksRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator user ID.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -81,13 +81,13 @@ func (s *ListQualityRuleTasksRequest) Validate() error {
 }
 
 type ListQualityRuleTasksRequestListQuery struct {
-	// The business date.
+	// The business date. Format: YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The rule types. Valid values: CONSISTENT (consistency), EFFECTIVE (effectiveness), TIMELINESE (timeliness), ACCURATE (accuracy), UNIQUENESS (uniqueness), COMPLETENESS (completeness), STABILITY (stability), and CUSTOM (custom).
+	// The rule types. Valid values: CONSISTENT (Consistency), EFFECTIVE (Effectiveness), TIMELINESE (Timeliness), ACCURATE (Accuracy), UNIQUENESS (Uniqueness), COMPLETENESS (Completeness), STABILITY (Stability), and CUSTOM (Custom).
 	CatalogList []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
 	// The search keyword. You can search by field name or rule name.
 	//
@@ -107,15 +107,15 @@ type ListQualityRuleTasksRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule strengths. Valid values: STRONG (strong) and WEAK (weak).
+	// The rule strengths. Valid values: STRONG (Strong) and WEAK (Weak).
 	RuleStrengthList []*string `json:"RuleStrengthList,omitempty" xml:"RuleStrengthList,omitempty" type:"Repeated"`
-	// The rule labels. Valid values: DEFAULT (default label), DATA_STANDARD_MANUAL (manually created standard rules), DATA_STANDARD_AUTO (standard quality rules created by automatic creation), PIPELINE (rules created by pipelines), and DATA_MODELING (data modeling).
+	// The rule labels. Valid values: DEFAULT (Default label), DATA_STANDARD_MANUAL (Manually created standard rule), DATA_STANDARD_AUTO (Standard quality rule of automatic creation), PIPELINE (Rule created by pipeline), and DATA_MODELING (Data modeling).
 	RuleTagList []*string `json:"RuleTagList,omitempty" xml:"RuleTagList,omitempty" type:"Repeated"`
-	// The task statuses. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
+	// The task statuses. Valid values: NOT_RUN (Not run), WAITING (Waiting), RUNNING (Running), SUCCESS (Successful), FAILED (Failed), CANCEL (Canceled), TIMEOUT (Timed out), and OFFLINE (Offline).
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The validation results. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), PASS (passed), NOT_PASS (not passed), FAILED (failed), OFFLINE (offline and requires restart), CANCEL (canceled), and TIMEOUT (timed out).
+	// The validation results. Valid values: NOT_RUN (Not run), WAITING (Waiting), RUNNING (Running), PASS (Passed), NOT_PASS (Not passed), FAILED (Failed), OFFLINE (Offline, requires restart), CANCEL (Canceled), and TIMEOUT (Timed out).
 	ValidateResultList []*string `json:"ValidateResultList,omitempty" xml:"ValidateResultList,omitempty" type:"Repeated"`
-	// The quality watchtask ID.
+	// The watchtask ID.
 	//
 	// example:
 	//

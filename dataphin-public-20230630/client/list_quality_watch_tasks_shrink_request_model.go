@@ -18,7 +18,7 @@ type iListQualityWatchTasksShrinkRequest interface {
 }
 
 type ListQualityWatchTasksShrinkRequest struct {
-	// The paged query conditions.
+	// The paging conditions for the paged query.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
 	// The tenant ID.
 	//
@@ -28,7 +28,7 @@ type ListQualityWatchTasksShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The operator ID.
 	//
 	// example:
 	//

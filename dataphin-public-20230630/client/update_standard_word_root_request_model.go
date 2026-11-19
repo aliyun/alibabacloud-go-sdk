@@ -26,11 +26,13 @@ type UpdateStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The update instruction.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateStandardWordRootRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -81,7 +83,7 @@ func (s *UpdateStandardWordRootRequest) Validate() error {
 }
 
 type UpdateStandardWordRootRequestUpdateCommand struct {
-	// The abbreviation of the root word.
+	// The abbreviation of the word root.
 	//
 	// This parameter is required.
 	//
@@ -89,13 +91,13 @@ type UpdateStandardWordRootRequestUpdateCommand struct {
 	//
 	// avg
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
-	// The description of the root word.
+	// The description of the word root.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The full name of the root word.
+	// The full name of the word root.
 	//
 	// This parameter is required.
 	//
@@ -103,21 +105,21 @@ type UpdateStandardWordRootRequestUpdateCommand struct {
 	//
 	// average
 	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
-	// The name of the root word.
+	// The name of the word root.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the root word before the update.
+	// The original name of the word root.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	OldName *string `json:"OldName,omitempty" xml:"OldName,omitempty"`
 }
 

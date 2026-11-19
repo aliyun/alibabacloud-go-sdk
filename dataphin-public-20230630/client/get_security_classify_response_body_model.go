@@ -36,7 +36,7 @@ type GetSecurityClassifyResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetSecurityClassifyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The data classification details.
 	SecurityClassifyInfo *GetSecurityClassifyResponseBodySecurityClassifyInfo `json:"SecurityClassifyInfo,omitempty" xml:"SecurityClassifyInfo,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -138,19 +138,19 @@ type GetSecurityClassifyResponseBodySecurityClassifyInfo struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The security level abbreviation.
+	// The level abbreviation.
 	//
 	// example:
 	//
 	// lv_test
 	LevelAbbreviation *string `json:"LevelAbbreviation,omitempty" xml:"LevelAbbreviation,omitempty"`
-	// The security level index.
+	// The level index.
 	//
 	// example:
 	//
 	// 1
 	LevelIndex *int64 `json:"LevelIndex,omitempty" xml:"LevelIndex,omitempty"`
-	// The security level name.
+	// The level name.
 	//
 	// example:
 	//

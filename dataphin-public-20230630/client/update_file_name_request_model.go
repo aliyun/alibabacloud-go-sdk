@@ -30,7 +30,7 @@ type UpdateFileNameRequest struct {
 	//
 	// 12121111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The new file name.
+	// The updated file name.
 	//
 	// This parameter is required.
 	//
@@ -46,6 +46,8 @@ type UpdateFileNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

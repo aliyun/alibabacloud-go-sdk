@@ -30,7 +30,7 @@ type GetQualityArchiveTableProgressResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task progress details.
+	// The progress details of the asynchronous task.
 	Data *GetQualityArchiveTableProgressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type GetQualityArchiveTableProgressResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetQualityArchiveTableProgressResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,33 +126,33 @@ func (s *GetQualityArchiveTableProgressResponseBody) Validate() error {
 }
 
 type GetQualityArchiveTableProgressResponseBodyData struct {
-	// The archived table ID. This parameter is returned after the task succeeds and can be used to switch the active table.
+	// The ID of the archive table. This parameter is returned after the task succeeds and can be used to switch the active table later.
 	//
 	// example:
 	//
 	// 88012
 	ArchiveTableId *int64 `json:"ArchiveTableId,omitempty" xml:"ArchiveTableId,omitempty"`
-	// The full name of the archived table. This parameter is returned after the task succeeds. When creating a table, the name includes the automatically appended _exception_data suffix.
+	// The full name of the archive table. This parameter is returned after the task succeeds. When a table is created, the _exception_data suffix is automatically appended to the name.
 	//
 	// example:
 	//
 	// Train.a01_reanme3_exception_data
 	ArchiveTableName *string `json:"ArchiveTableName,omitempty" xml:"ArchiveTableName,omitempty"`
-	// The reason for the task failure. This parameter is returned only when Status is FAILED.
+	// The cause of the task failure. This parameter is returned only when Status is FAILED.
 	//
 	// example:
 	//
-	// The archived table name already exists!
+	// The archive table name already exists!
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The task status. Valid values:
 	//
-	// - PROGRESS: In progress.
+	// - PROGRESS: The task is in progress.
 	//
-	// - SUCCESS: Succeeded.
+	// - SUCCESS: The task is successful.
 	//
-	// - FAILED: Failed.
+	// - FAILED: The task failed.
 	//
-	// - CANCEL: Canceled.
+	// - CANCEL: The task is canceled.
 	//
 	// example:
 	//

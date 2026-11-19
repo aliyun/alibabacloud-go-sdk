@@ -32,11 +32,13 @@ type ListDataServiceApiImpactsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The ID of the data service project.
+	// The ID of the Data Service project.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +110,7 @@ type ListDataServiceApiImpactsRequestListQuery struct {
 	//
 	// 1021
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -122,13 +124,13 @@ type ListDataServiceApiImpactsRequestListQuery struct {
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The column used for sorting. Valid values: CALL_COUNT: the number of calls. ERROR_COUNT: the number of errors. ERROR_RATE: the error rate. Default value: CALL_COUNT.
+	// The column by which to sort the results. Valid values: CALL_COUNT (number of calls), ERROR_COUNT (number of exceptions), and ERROR_RATE (error rate). Default value: CALL_COUNT.
 	//
 	// example:
 	//
 	// CALL_COUNT
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: 1: ascending order. 2: descending order. Default value: 1.
+	// The sort order. Valid values: 1 (ascending order) and 2 (descending order). Default value: 1.
 	//
 	// example:
 	//
@@ -140,7 +142,7 @@ type ListDataServiceApiImpactsRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//

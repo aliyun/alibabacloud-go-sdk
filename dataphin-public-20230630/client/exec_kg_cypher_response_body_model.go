@@ -50,7 +50,7 @@ type ExecKgCypherResponseBody struct {
   // 
   // 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -128,7 +128,7 @@ func (s *ExecKgCypherResponseBody) Validate() error {
 type ExecKgCypherResponseBodyData struct {
   // The list of edges.
   EdgeList []*ExecKgCypherResponseBodyDataEdgeList `json:"EdgeList,omitempty" xml:"EdgeList,omitempty" type:"Repeated"`
-  // The transformed execution statement.
+  // The converted execution statement.
   // 
   // example:
   // 
@@ -222,7 +222,7 @@ type ExecKgCypherResponseBodyDataEdgeList struct {
   // 
   // bcd-456
   DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-  // The list of relationship record properties.
+  // The list of properties for the relationship record.
   Properties []*ExecKgCypherResponseBodyDataEdgeListProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
   // The relationship type.
   // 
@@ -398,7 +398,7 @@ type ExecKgCypherResponseBodyDataNodeList struct {
   // 
   // Product
   EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-  // The list of entity record properties.
+  // The list of properties for the entity record.
   Properties []*ExecKgCypherResponseBodyDataNodeListProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
 
@@ -496,7 +496,7 @@ func (s *ExecKgCypherResponseBodyDataNodeListProperties) Validate() error {
 }
 
 type ExecKgCypherResponseBodyDataRowList struct {
-  // The list of columns in the row.
+  // The list of columns.
   Columns []*ExecKgCypherResponseBodyDataRowListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 

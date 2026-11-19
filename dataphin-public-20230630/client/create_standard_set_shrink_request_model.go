@@ -18,7 +18,7 @@ type iCreateStandardSetShrinkRequest interface {
 }
 
 type CreateStandardSetShrinkRequest struct {
-	// The create instruction.
+	// The create command.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreateStandardSetShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

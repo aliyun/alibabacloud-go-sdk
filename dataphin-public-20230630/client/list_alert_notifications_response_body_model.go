@@ -24,7 +24,7 @@ type iListAlertNotificationsResponseBody interface {
 }
 
 type ListAlertNotificationsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListAlertNotificationsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ func (s *ListAlertNotificationsResponseBody) Validate() error {
 type ListAlertNotificationsResponseBodyListResult struct {
 	// The list of push records.
 	Data []*ListAlertNotificationsResponseBodyListResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total count.
 	//
 	// example:
 	//
@@ -190,9 +190,9 @@ type ListAlertNotificationsResponseBodyListResultData struct {
 	AlertObject *ListAlertNotificationsResponseBodyListResultDataAlertObject `json:"AlertObject,omitempty" xml:"AlertObject,omitempty" type:"Struct"`
 	// The alert reason.
 	AlertReason *ListAlertNotificationsResponseBodyListResultDataAlertReason `json:"AlertReason,omitempty" xml:"AlertReason,omitempty" type:"Struct"`
-	// The receiver information.
+	// The recipient information.
 	AlertReceiver *ListAlertNotificationsResponseBodyListResultDataAlertReceiver `json:"AlertReceiver,omitempty" xml:"AlertReceiver,omitempty" type:"Struct"`
-	// The alert sending information.
+	// The alert delivery information.
 	AlertSend *ListAlertNotificationsResponseBodyListResultDataAlertSend `json:"AlertSend,omitempty" xml:"AlertSend,omitempty" type:"Struct"`
 }
 
@@ -282,23 +282,23 @@ type ListAlertNotificationsResponseBodyListResultDataAlertObject struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The source system. Valid values:
 	//
-	// - ALL: all.
+	// - ALL: All.
 	//
-	// - DQE: data quality.
+	// - DQE: Data quality.
 	//
-	// - OS: data service.
+	// - OS: Data service.
 	//
-	// - STREAM: real-time computing.
+	// - STREAM: Real-time computing.
 	//
-	// - VDM_BATCH: offline computing.
+	// - VDM_BATCH: Offline computing.
 	//
 	// - SOP: O&M platform.
 	//
-	// - REAL_TIME_PIPELINE: real-time integration.
+	// - REAL_TIME_PIPELINE: Real-time integration.
 	//
-	// - KGB: baseline monitoring.
+	// - KGB: Baseline monitoring.
 	//
-	// And more.
+	// etc.
 	//
 	// example:
 	//
@@ -308,11 +308,11 @@ type ListAlertNotificationsResponseBodyListResultDataAlertObject struct {
 	//
 	// - OS_API: API operation.
 	//
-	// - OS_APPLICATION_SERVICE: service application.
+	// - OS_APPLICATION_SERVICE: Service application.
 	//
-	// - STREAM_TASK: real-time computing.
+	// - STREAM_TASK: Real-time computing.
 	//
-	// - REAL_TIME_PIPELINE_TASK: real-time integration.
+	// - REAL_TIME_PIPELINE_TASK: Real-time integration.
 	//
 	// - VDM_BATCH_SHELL: SHELL.
 	//
@@ -344,21 +344,19 @@ type ListAlertNotificationsResponseBodyListResultDataAlertObject struct {
 	//
 	// - VDM_BATCH_SPARK_SQL: VDM_BATCH_SPARK_SQL.
 	//
-	// - DQE_LOGICAL_TABLE: logical table.
+	// - DQE_LOGICAL_TABLE: Logical table.
 	//
-	// - DQE_PHYSICAL_TABLE: physical table.
+	// - DQE_PHYSICAL_TABLE: Physical table.
 	//
-	// - DQE_REALTIME_TABLE: real-time meta table.
+	// - DQE_REALTIME_TABLE: Real-time metadata table.
 	//
-	// - DQE_DATA_SOURCE: data source.
+	// - DQE_DATA_SOURCE: Data source.
 	//
-	// - DQE_INDEX: metric.
+	// - DQE_INDEX: Metric.
 	//
 	// - QD_DECISION_INVOKE: QD decision invocation.
 	//
-	// - BASELINE: baseline.
-	//
-	// And more.
+	// - BASELINE: Baseline.
 	//
 	// example:
 	//
@@ -416,75 +414,75 @@ type ListAlertNotificationsResponseBodyListResultDataAlertReason struct {
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	// The alert reason type. Valid values:
 	//
-	// - DQE_COLUMN: field rule exception.
+	// - DQE_COLUMN: Field rule exception.
 	//
-	// - DQE_DATA_SOURCE: data source rule exception.
+	// - DQE_DATA_SOURCE: Data source rule exception.
 	//
-	// - DQE_CUSTOMIZE: custom rule exception.
+	// - DQE_CUSTOMIZE: Custom rule exception.
 	//
-	// - DQE_TABLE: table rule exception.
+	// - DQE_TABLE: Table rule exception.
 	//
-	// - DQE_REALTIME_TABLE: real-time table rule exception.
+	// - DQE_REALTIME_TABLE: Real-time table rule exception.
 	//
-	// - DQE_INDEX: metric rule exception.
+	// - DQE_INDEX: Metric rule exception.
 	//
-	// - OS_AVG_RESPONSE: average response time exception.
+	// - OS_AVG_RESPONSE: Average response time exception.
 	//
-	// - OS_CALL_TIMES: call count exception.
+	// - OS_CALL_TIMES: Call count exception.
 	//
-	// - OS_ERROR_RATE: error rate exception.
+	// - OS_ERROR_RATE: Error rate exception.
 	//
 	// - OS_OFFLINE: Offline percentage exception.
 	//
-	// - STREAM_BIZ_DELAY: business delay too high.
+	// - STREAM_BIZ_DELAY: High business delay.
 	//
-	// - STREAM_DATA_RETENTION: data retention exceeds configuration.
+	// - STREAM_DATA_RETENTION: Data retention exceeds configuration.
 	//
-	// - STREAM_MORE_THAN_FAILURE: failure frequency exceeds configuration.
+	// - STREAM_MORE_THAN_FAILURE: Failure frequency exceeds configuration.
 	//
 	// - STREAM_TPS_OUT_RANGE: TPS out of range.
 	//
-	// - STREAM_CHECKPOINT_FAILURE: checkpoint failures exceed configuration.
+	// - STREAM_CHECKPOINT_FAILURE: Checkpoint failures exceed configuration.
 	//
-	// - STREAM_BACKPRESSURE: backpressure duration exceeds configuration.
+	// - STREAM_BACKPRESSURE: Backpressure duration exceeds configuration.
 	//
-	// - STREAM_JOB_FAILURE: job execution failed.
+	// - STREAM_JOB_FAILURE: Execution failed.
 	//
-	// - VDM_BATCH_ERROR: error.
+	// - VDM_BATCH_ERROR: Error occurred.
 	//
-	// - VDM_BATCH_FINISH: completed.
+	// - VDM_BATCH_FINISH: Completed.
 	//
-	// - VDM_BATCH_TIME_OUT: execution timed out.
+	// - VDM_BATCH_TIME_OUT: Execution timed out.
 	//
-	// - VDM_BATCH_UNDONE: not completed.
+	// - VDM_BATCH_UNDONE: Incomplete.
 	//
-	// - VDM_BATCH_LOGIC_DATA_DELAY: data delay.
+	// - VDM_BATCH_LOGIC_DATA_DELAY: Data delay.
 	//
-	// - QD_DECISION_CALL_TIMES: decision call count exception.
+	// - QD_DECISION_CALL_TIMES: Decision call count exception.
 	//
-	// - QD_DECISION_MAX_RESPONSE: maximum response time exception.
+	// - QD_DECISION_MAX_RESPONSE: Maximum response time exception.
 	//
-	// - QD_DECISION_ERROR_RATE: error rate exception.
+	// - QD_DECISION_ERROR_RATE: Error rate exception.
 	//
-	// - QD_DECISION_PARAM_COUNT: decision parameter count exception.
+	// - QD_DECISION_PARAM_COUNT: Decision parameter statistics count exception.
 	//
-	// - QD_DECISION_PARAM_PERCENTAGE: decision parameter percentage exception.
+	// - QD_DECISION_PARAM_PERCENTAGE: Decision parameter statistics percentage exception.
 	//
-	// - QD_DECISION_PARAM_SUM: decision parameter sum exception.
+	// - QD_DECISION_PARAM_SUM: Decision parameter sum exception.
 	//
-	// - QD_DECISION_PARAM_AVG: decision parameter average exception.
+	// - QD_DECISION_PARAM_AVG: Decision parameter average exception.
 	//
-	// - LOGICAL_INSTANCE_GENERATION: logical instance generation monitoring.
+	// - LOGICAL_INSTANCE_GENERATION: Logical instance generation monitoring.
 	//
-	// - KGB_TASK_ERROR: baseline task error.
+	// - KGB_TASK_ERROR: Baseline task error.
 	//
-	// - KGB_TASK_SLOW_DOWN: baseline task slowdown.
+	// - KGB_TASK_SLOW_DOWN: Baseline task slowed down.
 	//
-	// - KGB_EARLY_WARNING: baseline early warning.
+	// - KGB_EARLY_WARNING: Baseline early warning.
 	//
-	// - KGB_BROKEN_LINE: baseline broken line.
+	// - KGB_BROKEN_LINE: Baseline SLA breached.
 	//
-	// And more.
+	// etc.
 	//
 	// example:
 	//
@@ -603,23 +601,23 @@ func (s *ListAlertNotificationsResponseBodyListResultDataAlertReasonAlertReasonP
 type ListAlertNotificationsResponseBodyListResultDataAlertReceiver struct {
 	// The push channel type. Valid values:
 	//
-	// - VOICE: phone call.
+	// - VOICE: Voice calls.
 	//
-	// - SMS: text message.
+	// - SMS: Text messages.
 	//
-	// - MAIL: email.
+	// - MAIL: Email.
 	//
 	// - DINGTALK_ROBOT: DingTalk robot.
 	//
 	// - DINGDING: DingTalk work notification.
 	//
-	// - CUSTOM: custom message channel.
+	// - CUSTOM: Custom message channel.
 	//
 	// - WECHAT: WeCom.
 	//
 	// - FEISHU: Lark.
 	//
-	// - SILENCE: do not send.
+	// - SILENCE: No notification.
 	//
 	// example:
 	//
@@ -643,13 +641,13 @@ type ListAlertNotificationsResponseBodyListResultDataAlertReceiver struct {
 	//
 	// test
 	OnCallTableName *string `json:"OnCallTableName,omitempty" xml:"OnCallTableName,omitempty"`
-	// The alert receiver type. Valid values:
+	// The alert recipient type. Valid values:
 	//
-	// - ON_CALL_TABLE: on-call schedule.
+	// - ON_CALL_TABLE: On-call schedule.
 	//
-	// - USER_DEFINED: custom user.
+	// - USER_DEFINED: Custom user.
 	//
-	// - OWNER: owner.
+	// - OWNER: Owner.
 	//
 	// example:
 	//
@@ -731,7 +729,7 @@ func (s *ListAlertNotificationsResponseBodyListResultDataAlertReceiver) Validate
 }
 
 type ListAlertNotificationsResponseBodyListResultDataAlertReceiverUser struct {
-	// The name of the alert receiver.
+	// The alert recipient name.
 	//
 	// example:
 	//
@@ -765,27 +763,27 @@ type ListAlertNotificationsResponseBodyListResultDataAlertSend struct {
 	//
 	// example:
 	//
-	// 不合法
+	// Invalid
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	// The push content.
+	// The delivery content.
 	//
 	// example:
 	//
 	// test
 	SendContent *string `json:"SendContent,omitempty" xml:"SendContent,omitempty"`
-	// The push time.
+	// The delivery time.
 	//
 	// example:
 	//
 	// 2024-11-25 10:02:47
 	SendTime *string `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
-	// The push status. Valid values:
+	// The delivery status. Valid values:
 	//
-	// - SUCCESS: Sent successfully.
+	// - SUCCESS: Delivered successfully.
 	//
-	// - FAILE: Failed to send.
+	// - FAILE: Delivery failed.
 	//
-	// - SENDING: Sending in progress.
+	// - SENDING: Delivering.
 	//
 	// example:
 	//

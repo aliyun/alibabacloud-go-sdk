@@ -24,7 +24,7 @@ type iGetStreamJobsResponseBody interface {
 }
 
 type GetStreamJobsResponseBody struct {
-	// The backend response code.
+	// The backend status code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetStreamJobsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetStreamJobsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,29 +134,25 @@ func (s *GetStreamJobsResponseBody) Validate() error {
 }
 
 type GetStreamJobsResponseBodyData struct {
-	// The environment identifier. Valid values:
-	//
-	// - DEV: development.
-	//
-	// - PROD: production.
+	// The environment identifier. Valid values: DEV for development and PROD for production.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The mapping ID of the real-time node.
+	// The mapping ID of the real-time task.
 	//
 	// example:
 	//
 	// 716555
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the real-time node.
+	// The name of the real-time task.
 	//
 	// example:
 	//
 	// flink_order_detail
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The ID of the user who last modified the node.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
@@ -174,27 +170,13 @@ type GetStreamJobsResponseBodyData struct {
 	//
 	// 7162269257990111
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The node status. Valid values:
-	//
-	// - 0: draft.
-	//
-	// - 1: submitting.
-	//
-	// - 2: submitted.
-	//
-	// - 3: published.
-	//
-	// - 100: in development.
+	// The task status. Valid values: 0 (Draft), 1 (Submitting), 2 (Submitted), 3 (Published), and 100 (Developing).
 	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The node type. Valid values:
-	//
-	// - FLINK_SQL
-	//
-	// - FLINK_DATASTREAM.
+	// The task type. Valid values: FLINK_SQL and FLINK_DATASTREAM.
 	//
 	// example:
 	//

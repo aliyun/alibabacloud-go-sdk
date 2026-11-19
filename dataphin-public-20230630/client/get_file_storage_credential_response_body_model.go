@@ -138,7 +138,7 @@ type GetFileStorageCredentialResponseBodyStorageCredential struct {
 	//
 	// temp.akKey
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The file storage bucket.
+	// The bucket for file storage.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type GetFileStorageCredentialResponseBodyStorageCredential struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The security token.
+	// The temporary security token.
 	//
 	// example:
 	//
 	// temp.token
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The type of the storage cluster. Valid values: oss and ceph.
+	// The type of the storage cluster, such as oss or ceph.
 	//
 	// example:
 	//

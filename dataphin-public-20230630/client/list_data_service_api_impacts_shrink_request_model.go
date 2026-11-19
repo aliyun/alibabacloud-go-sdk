@@ -32,11 +32,13 @@ type ListDataServiceApiImpactsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The ID of the data service project.
+	// The ID of the Data Service project.
 	//
 	// This parameter is required.
 	//

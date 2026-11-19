@@ -28,6 +28,8 @@ type RevokeDataServiceApiShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -40,7 +42,7 @@ type RevokeDataServiceApiShrinkRequest struct {
 	//
 	// 102102
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The revoke instruction.
+	// The authorization command.
 	//
 	// This parameter is required.
 	RevokeCommandShrink *string `json:"RevokeCommand,omitempty" xml:"RevokeCommand,omitempty"`

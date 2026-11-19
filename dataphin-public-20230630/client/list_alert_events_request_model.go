@@ -30,6 +30,8 @@ type ListAlertEventsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *ListAlertEventsRequest) Validate() error {
 }
 
 type ListAlertEventsRequestListQuery struct {
-	// The end date of the alert.
+	// The alert end date.
 	//
 	// This parameter is required.
 	//
@@ -91,9 +93,9 @@ type ListAlertEventsRequestListQuery struct {
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
 	// The list of alert object types.
 	AlertObjectTypeList []*string `json:"AlertObjectTypeList,omitempty" xml:"AlertObjectTypeList,omitempty" type:"Repeated"`
-	// The list of alert reasons.
+	// The list of alert causes.
 	AlertReasonList []*string `json:"AlertReasonList,omitempty" xml:"AlertReasonList,omitempty" type:"Repeated"`
-	// The start date of the alert.
+	// The alert start date.
 	//
 	// This parameter is required.
 	//
@@ -101,9 +103,9 @@ type ListAlertEventsRequestListQuery struct {
 	//
 	// 2024-11-16 00:00:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
-	// The list of business units.
+	// The list of business unit names.
 	BizNameList []*string `json:"BizNameList,omitempty" xml:"BizNameList,omitempty" type:"Repeated"`
-	// The keyword for the query.
+	// The search keyword.
 	//
 	// example:
 	//
@@ -127,27 +129,25 @@ type ListAlertEventsRequestListQuery struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of projects.
+	// The list of project names.
 	ProjectNameList []*string `json:"ProjectNameList,omitempty" xml:"ProjectNameList,omitempty" type:"Repeated"`
 	// The source system. Valid values:
 	//
-	// - ALL: all
+	// - ALL: All.
 	//
-	// - DQE: data quality
+	// - DQE: Data quality.
 	//
-	// - OS: data service
+	// - OS: Data service.
 	//
-	// - STREAM: real-time computing
+	// - STREAM: Real-time computing.
 	//
-	// - VDM_BATCH: offline computing
+	// - VDM_BATCH: Offline computing.
 	//
-	// - SOP: O&M platform
+	// - SOP: O&M platform.
 	//
-	// - REAL_TIME_PIPELINE: real-time integration
+	// - REAL_TIME_PIPELINE: Real-time integration.
 	//
-	// - KGB: baseline monitoring
-	//
-	// and more.
+	// - KGB: Baseline monitoring.
 	//
 	// This parameter is required.
 	//

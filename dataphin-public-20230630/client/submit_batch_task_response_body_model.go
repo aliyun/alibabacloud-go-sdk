@@ -24,7 +24,7 @@ type iSubmitBatchTaskResponseBody interface {
 }
 
 type SubmitBatchTaskResponseBody struct {
-	// The error code returned for the request. A value of OK indicates that the request is normal.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type SubmitBatchTaskResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned for the request.
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The edit result.
+	// The submission result.
 	SubmitResult *SubmitBatchTaskResponseBodySubmitResult `json:"SubmitResult,omitempty" xml:"SubmitResult,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`

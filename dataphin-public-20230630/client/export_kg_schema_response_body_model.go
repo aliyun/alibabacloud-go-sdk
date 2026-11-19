@@ -36,7 +36,7 @@ type ExportKgSchemaResponseBody struct {
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-  // The backend exception details.
+  // The details of the backend exception.
   // 
   // example:
   // 
@@ -48,9 +48,9 @@ type ExportKgSchemaResponseBody struct {
   // 
   // 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The knowledge graph definition details.
+  // The details of the knowledge graph definition.
   SchemaInfo *ExportKgSchemaResponseBodySchemaInfo `json:"SchemaInfo,omitempty" xml:"SchemaInfo,omitempty" type:"Struct"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ExportKgSchemaResponseBody) Validate() error {
 }
 
 type ExportKgSchemaResponseBodySchemaInfo struct {
-  // The knowledge graph definition content converted based on the specified format.
+  // The content of the knowledge graph definition converted based on the specified format.
   // 
   // example:
   // 

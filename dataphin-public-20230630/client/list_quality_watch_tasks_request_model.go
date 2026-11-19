@@ -18,7 +18,7 @@ type iListQualityWatchTasksRequest interface {
 }
 
 type ListQualityWatchTasksRequest struct {
-	// The paged query conditions.
+	// The paging conditions for the paged query.
 	ListQuery *ListQualityWatchTasksRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -28,7 +28,7 @@ type ListQualityWatchTasksRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The operator ID.
 	//
 	// example:
 	//
@@ -81,37 +81,27 @@ func (s *ListQualityWatchTasksRequest) Validate() error {
 }
 
 type ListQualityWatchTasksRequestListQuery struct {
-	// The business date filter.
+	// The business date filter. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The name of the business unit to which the object belongs.
+	// The business unit names.
 	BizUnitNameList []*string `json:"BizUnitNameList,omitempty" xml:"BizUnitNameList,omitempty" type:"Repeated"`
-	// Specifies whether to query only the watchtask objects owned by the current user.
+	// The monitoring task objects (nodes) for which the current user is responsible.
 	CurrentUserOwned *bool `json:"CurrentUserOwned,omitempty" xml:"CurrentUserOwned,omitempty"`
-	// The data source ID.
+	// The data source IDs.
 	DataSourceIdList []*string `json:"DataSourceIdList,omitempty" xml:"DataSourceIdList,omitempty" type:"Repeated"`
-	// The data source owner.
+	// The data source owners.
 	DataSourceOwnerList []*string `json:"DataSourceOwnerList,omitempty" xml:"DataSourceOwnerList,omitempty" type:"Repeated"`
-	// The data source scope. Valid values:
-	//
-	// - STREAMING: real-time only.
-	//
-	// - OFFLINE: offline only.
-	//
-	// - ALL: real-time and offline.
+	// The data source scope. Valid values: STREAMING (real-time only), OFFLINE (offline only), and ALL (real-time and offline).
 	DataSourceScopeList []*string `json:"DataSourceScopeList,omitempty" xml:"DataSourceScopeList,omitempty" type:"Repeated"`
-	// The data source type, such as MAX_COMPUTE, HADOOP, or MYSQL.
+	// The data source types, such as MAX_COMPUTE, HADOOP, and MYSQL.
 	DataSourceTypeList []*string `json:"DataSourceTypeList,omitempty" xml:"DataSourceTypeList,omitempty" type:"Repeated"`
-	// The rule exception type. Valid values:
-	//
-	// - STRONG: strong.
-	//
-	// - WEAK: weak.
+	// The rule exception type. Valid values: STRONG (strong) and WEAK (weak).
 	ErrorRuleStrengthList []*string `json:"ErrorRuleStrengthList,omitempty" xml:"ErrorRuleStrengthList,omitempty" type:"Repeated"`
-	// The search keyword. This parameter specifies the name of the monitored table.
+	// The search keyword, such as the name of the monitored table.
 	//
 	// example:
 	//
@@ -129,55 +119,17 @@ type ListQualityWatchTasksRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the project to which the object belongs.
+	// The project names.
 	ProjectNameList []*string `json:"ProjectNameList,omitempty" xml:"ProjectNameList,omitempty" type:"Repeated"`
-	// The quality owner.
+	// The quality owners.
 	QualityOwnerList []*string `json:"QualityOwnerList,omitempty" xml:"QualityOwnerList,omitempty" type:"Repeated"`
-	// The task status. Valid values:
-	//
-	// - NOT_RUN: not executed.
-	//
-	// - WAITING: waiting.
-	//
-	// - RUNNING: running.
-	//
-	// - SUCCESS: succeeded.
-	//
-	// - FAILED: failed.
-	//
-	// - CANCEL: canceled.
-	//
-	// - TIMEOUT: timed out.
-	//
-	// - OFFLINE: offline.
+	// The task status. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The table owner.
+	// The table owners.
 	TableOwnerList []*string `json:"TableOwnerList,omitempty" xml:"TableOwnerList,omitempty" type:"Repeated"`
-	// The table type. Valid values:
-	//
-	// - LOGIC_DIM_TABLE: logical dimension table.
-	//
-	// - LOGIC_FACT_TABLE: logical fact table.
-	//
-	// - LOGIC_SUM_TABLE: logical aggregate table.
-	//
-	// - LOGIC_LABEL_TABLE: logical label table.
-	//
-	// - PHYSICAL_TABLE: physical table.
-	//
-	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	// The table type. Valid values: LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_LABEL_TABLE (logical label table), PHYSICAL_TABLE (physical table), and REALTIME_LOGICAL_TABLE (real-time metatable).
 	TableTypeList []*string `json:"TableTypeList,omitempty" xml:"TableTypeList,omitempty" type:"Repeated"`
-	// The monitored object type. Valid values:
-	//
-	// - TABLE: Dataphin table.
-	//
-	// - DATASOURCE_TABLE: global domain table.
-	//
-	// - DATASOURCE: data source.
-	//
-	// - INDEX: metric.
-	//
-	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	// The monitored object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time metatable).
 	WatchTypeList []*string `json:"WatchTypeList,omitempty" xml:"WatchTypeList,omitempty" type:"Repeated"`
 }
 

@@ -22,7 +22,7 @@ type ListComputeSourcesRequest struct {
 	//
 	// This parameter is required.
 	ListQuery *ListComputeSourcesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListComputeSourcesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -83,7 +85,7 @@ func (s *ListComputeSourcesRequest) Validate() error {
 type ListComputeSourcesRequestListQuery struct {
 	// Specifies whether the compute source is bound to a project.
 	BindProject *bool `json:"BindProject,omitempty" xml:"BindProject,omitempty"`
-	// The keyword used for filtering.
+	// The keyword.
 	//
 	// example:
 	//
@@ -95,13 +97,13 @@ type ListComputeSourcesRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the compute source.
+	// The compute source type.
 	//
 	// example:
 	//

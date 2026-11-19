@@ -26,11 +26,13 @@ type RemoveQualityRuleSchedulesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The unbinding instruction.
+	// The unbind command.
 	//
 	// This parameter is required.
 	RemoveCommand *RemoveQualityRuleSchedulesRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
@@ -93,13 +95,13 @@ type RemoveQualityRuleSchedulesRequestRemoveCommand struct {
 	//
 	// This parameter is required.
 	ScheduleIdList []*int64 `json:"ScheduleIdList,omitempty" xml:"ScheduleIdList,omitempty" type:"Repeated"`
-	// The ID of the monitored object.
+	// The monitored object ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 平均值
+	// Average value
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
 }
 

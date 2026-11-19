@@ -28,7 +28,7 @@ type ListKgEntityRequest struct {
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The paged query filter conditions.
+	// The paged search filter conditions.
 	ListQuery *ListKgEntityRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -38,6 +38,8 @@ type ListKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -117,7 +119,7 @@ func (s *ListKgEntityRequest) Validate() error {
 type ListKgEntityRequestListQuery struct {
 	// The property filter conditions.
 	FilterList []*ListKgEntityRequestListQueryFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
-	// The keyword for searching display properties.
+	// The keyword search for displayed properties.
 	//
 	// example:
 	//
@@ -195,23 +197,7 @@ func (s *ListKgEntityRequestListQuery) Validate() error {
 }
 
 type ListKgEntityRequestListQueryFilterList struct {
-	// The operator. Valid values:
-	//
-	// - eq: equal to.
-	//
-	// - neq: not equal to.
-	//
-	// - contains: contains.
-	//
-	// - gt: greater than.
-	//
-	// - gte: greater than or equal to.
-	//
-	// - lt: less than.
-	//
-	// - lte: less than or equal to.
-	//
-	// - like: fuzzy match.
+	// The operator. Valid values: eq (equal to), neq (not equal to), contains (contains), gt (greater than), gte (greater than or equal to), lt (less than), lte (less than or equal to), and like (fuzzy match).
 	//
 	// This parameter is required.
 	//
@@ -227,7 +213,7 @@ type ListKgEntityRequestListQueryFilterList struct {
 	//
 	// company_name
 	PropertyCode *string `json:"PropertyCode,omitempty" xml:"PropertyCode,omitempty"`
-	// The property match value.
+	// The property value.
 	//
 	// This parameter is required.
 	//

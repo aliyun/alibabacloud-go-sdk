@@ -50,7 +50,7 @@ type DeleteSecurityLevelResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -132,9 +132,9 @@ type DeleteSecurityLevelResponseBodyDeleteResult struct {
 	//
 	// E10012011
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The list of data classification IDs that are associated with the current classification level. This parameter is returned only when this error is triggered.
+	// The list of data classification IDs that are bound to the current data classification level. This parameter is returned only when this error is triggered.
 	RelatedClassifyIdList []*int64 `json:"RelatedClassifyIdList,omitempty" xml:"RelatedClassifyIdList,omitempty" type:"Repeated"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the deletion is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

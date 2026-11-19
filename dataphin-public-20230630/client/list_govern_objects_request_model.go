@@ -30,7 +30,7 @@ type ListGovernObjectsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -83,19 +83,7 @@ func (s *ListGovernObjectsRequest) Validate() error {
 }
 
 type ListGovernObjectsRequestListQuery struct {
-	// The governance item type. Valid values:
-	//
-	// - TABLE
-	//
-	// - DATASOURCE_TABLE
-	//
-	// - DATASOURCE
-	//
-	// - INDEX
-	//
-	// - REALTIME_LOGICAL_TABLE
-	//
-	// - QD_FEATURE
+	// The governance item type. Valid values: TABLE, DATASOURCE_TABLE, DATASOURCE, INDEX, REALTIME_LOGICAL_TABLE, and QD_FEATURE.
 	//
 	// This parameter is required.
 	//
@@ -127,25 +115,11 @@ type ListGovernObjectsRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of project names used to filter results.
+	// The list of project names used for filtering.
 	ProjectNames []*string `json:"ProjectNames,omitempty" xml:"ProjectNames,omitempty" type:"Repeated"`
-	// The list of governance object statuses. Valid values:
-	//
-	// - NEW
-	//
-	// - VERIFY
-	//
-	// - FINISHED
-	//
-	// - IGNORE
+	// The list of governance object statuses. Valid values: NEW, VERIFY, FINISHED, and IGNORE.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The view type. Valid values:
-	//
-	// - ALL
-	//
-	// - OWNER
-	//
-	// - PROJECT
+	// The view type. Valid values: ALL, OWNER, and PROJECT.
 	//
 	// example:
 	//

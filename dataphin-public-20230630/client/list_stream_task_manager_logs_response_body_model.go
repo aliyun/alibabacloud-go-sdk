@@ -30,7 +30,7 @@ type ListStreamTaskManagerLogsResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of log files for the specified TaskManager.
+	// The log file entries for the JobManager or TaskManager. You can use the LogName field to retrieve the log content.
 	Data []*ListStreamTaskManagerLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type ListStreamTaskManagerLogsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListStreamTaskManagerLogsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,19 +130,19 @@ func (s *ListStreamTaskManagerLogsResponseBody) Validate() error {
 }
 
 type ListStreamTaskManagerLogsResponseBodyData struct {
-	// The log file name. This name can be used as the logName input parameter for the logContent operation.
+	// The original name of the log file. This value corresponds to the LogName request parameter of the GetStreamLogContent operation. Pass this value as is.
 	//
 	// example:
 	//
 	// flink--standalonesession-0-dataphin-session-7db678957dc449aab0086b931c9f8218-jobmanager.log
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The last modified time in milliseconds.
+	// The last modified time of the log file. The value is a timestamp in milliseconds since the UNIX epoch.
 	//
 	// example:
 	//
 	// 1792033500000
 	Mtime *int64 `json:"Mtime,omitempty" xml:"Mtime,omitempty"`
-	// The file size in bytes.
+	// The size of the log file. Unit: bytes.
 	//
 	// example:
 	//

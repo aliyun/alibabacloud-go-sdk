@@ -18,7 +18,7 @@ type iAssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest interface {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest struct {
-	// The assignment binding command.
+	// The binding assignment command.
 	//
 	// This parameter is required.
 	AssignCommandShrink *string `json:"AssignCommand,omitempty" xml:"AssignCommand,omitempty"`
@@ -30,7 +30,7 @@ type AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The operator user ID.
 	//
 	// example:
 	//

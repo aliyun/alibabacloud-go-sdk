@@ -18,7 +18,7 @@ type iCreateSecurityIdentifyResultRequest interface {
 }
 
 type CreateSecurityIdentifyResultRequest struct {
-	// The create request.
+	// The creation request.
 	//
 	// This parameter is required.
 	CreateCommand *CreateSecurityIdentifyResultRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateSecurityIdentifyResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,11 +91,7 @@ type CreateSecurityIdentifyResultRequestCreateCommand struct {
 	//
 	// 1
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The deduplication strategy. Valid values:
-	//
-	// - COVER_ALL: overwrites all online tags.
-	//
-	// - COVER_UNLOCKED: overwrites only unlocked online tags.
+	// The conflict strategy. Valid values: COVER_ALL (overwrites all online tags) and COVER_UNLOCKED (overwrites only unlocked online tags).
 	//
 	// This parameter is required.
 	//
@@ -101,31 +99,25 @@ type CreateSecurityIdentifyResultRequestCreateCommand struct {
 	//
 	// COVER_ALL
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
-	// The datasource environment identifier. This parameter is required only for datasource tables.
+	// The environment identifier of the datasource. This parameter is required only for datasource tables.
 	//
 	// example:
 	//
 	// DEV
 	DatasourceEnv *string `json:"DatasourceEnv,omitempty" xml:"DatasourceEnv,omitempty"`
-	// The datasource name. This parameter is required only for datasource tables.
+	// The name of the datasource. This parameter is required only for datasource tables.
 	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// Specifies whether to enable the result. Valid values:
-	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
-	//
-	// Default value: true.
+	// The enabled status. Valid values: true (enabled) and false (disabled). Default value: true.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The field name.
+	// The name of the field.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +131,7 @@ type CreateSecurityIdentifyResultRequestCreateCommand struct {
 	//
 	// true
 	IsDatasourceTable *bool `json:"IsDatasourceTable,omitempty" xml:"IsDatasourceTable,omitempty"`
-	// The table catalog. For a datasource table, specify the database or schema name. For a Dataphin physical table, specify the project name in English. For a Dataphin logical table, specify the business unit name in English.
+	// The catalog of the table. For a datasource table, specify the name of the database or schema to which the table belongs. For a Dataphin physical table, specify the English name of the project. For a Dataphin logical table, specify the English name of the business unit.
 	//
 	// This parameter is required.
 	//
@@ -147,7 +139,7 @@ type CreateSecurityIdentifyResultRequestCreateCommand struct {
 	//
 	// test
 	TableCatalog *string `json:"TableCatalog,omitempty" xml:"TableCatalog,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// This parameter is required.
 	//

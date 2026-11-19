@@ -18,7 +18,7 @@ type iGetCatalogAssetDetailsRequest interface {
 }
 
 type GetCatalogAssetDetailsRequest struct {
-	// The paged query for the listed asset catalog.
+	// The paging query for the list of listed asset catalogs.
 	//
 	// This parameter is required.
 	GetCatalogAssetDetailsQuery *GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery `json:"GetCatalogAssetDetailsQuery,omitempty" xml:"GetCatalogAssetDetailsQuery,omitempty" type:"Struct"`
@@ -30,7 +30,7 @@ type GetCatalogAssetDetailsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -91,17 +91,21 @@ type GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery struct {
 	//
 	// dp_ds_table.300023201.7311626611751680256.load_test.abc
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// Specifies whether to include the field list. Default value: false. Valid values:
+	// Specifies whether to include the column list. Valid values:
+	//
+	// - true: Included.
 	//
 	// - false: Not included.
 	//
-	// - true: Included.
+	// Default value: false.
 	IncludeColumns *bool `json:"IncludeColumns,omitempty" xml:"IncludeColumns,omitempty"`
-	// Specifies whether to include detailed data. Default value: false. Valid values:
+	// Specifies whether to include detailed data. Valid values:
+	//
+	// - true: Included.
 	//
 	// - false: Not included.
 	//
-	// - true: Included.
+	// Default value: false.
 	IncludeDetailedAttributes *bool `json:"IncludeDetailedAttributes,omitempty" xml:"IncludeDetailedAttributes,omitempty"`
 }
 

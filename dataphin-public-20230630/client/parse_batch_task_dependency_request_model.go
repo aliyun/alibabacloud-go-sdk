@@ -26,11 +26,13 @@ type ParseBatchTaskDependencyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The parse request.
+	// The parsing request.
 	//
 	// This parameter is required.
 	ParseCommand *ParseBatchTaskDependencyRequestParseCommand `json:"ParseCommand,omitempty" xml:"ParseCommand,omitempty" type:"Struct"`
@@ -89,27 +91,27 @@ type ParseBatchTaskDependencyRequestParseCommand struct {
 	//
 	// select 	- from t_test limit 1;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The catalog for a database SQL node. This parameter takes effect only for data source types that require a catalog, such as Presto.
+	// The data source catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
 	//
 	// example:
 	//
 	// mysql_catalog
 	DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
-	// The data source ID for a database SQL node.
+	// The data source ID for database SQL nodes.
 	//
 	// example:
 	//
 	// 12131111
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The schema for a database SQL node. This parameter takes effect only for data source types that require a schema, such as Oracle.
+	// The data source schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
 	//
 	// example:
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
-	// Specifies whether to include dependency information for input tables that have no corresponding nodes. Default value: false.
+	// Specifies whether to include dependency information for input tables that do not have corresponding nodes. Default value: false.
 	IncludeAllInputTables *bool `json:"IncludeAllInputTables,omitempty" xml:"IncludeAllInputTables,omitempty"`
-	// Specifies whether to query data lineage when querying upstream dependencies. Default value: false.
+	// Specifies whether to query lineage data when querying upstream dependencies. Default value: false.
 	NeedQueryLineages *bool `json:"NeedQueryLineages,omitempty" xml:"NeedQueryLineages,omitempty"`
 	// The node type, such as MAX_COMPUTE_SQL.
 	//

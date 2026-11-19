@@ -48,9 +48,9 @@ type GetResourceResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource file details.
+	// The details of the resource file.
 	ResourceInfo *GetResourceResponseBodyResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *GetResourceResponseBody) Validate() error {
 }
 
 type GetResourceResponseBodyResourceInfo struct {
-	// The compute engine type.
+	// The compute engine source type.
 	//
 	// example:
 	//
@@ -142,21 +142,21 @@ type GetResourceResponseBodyResourceInfo struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory where the resource is stored.
+	// The storage directory.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The creation time, in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the resource was created. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time, in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the resource was updated. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//

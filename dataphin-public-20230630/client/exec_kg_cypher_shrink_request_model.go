@@ -20,7 +20,7 @@ type iExecKgCypherShrinkRequest interface {
 }
 
 type ExecKgCypherShrinkRequest struct {
-  // The custom Cypher query instruction.
+  // The custom Cypher query command.
   // 
   // This parameter is required.
   ExecCommandShrink *string `json:"ExecCommand,omitempty" xml:"ExecCommand,omitempty"`
@@ -32,6 +32,8 @@ type ExecKgCypherShrinkRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The ID of the operating user.
+  // 
   // example:
   // 
   // 30001011

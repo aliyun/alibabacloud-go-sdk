@@ -30,7 +30,7 @@ type GetDataServiceAppMembersResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The member list of the data service application.
+	// The members of the data service application.
 	Data *GetDataServiceAppMembersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type GetDataServiceAppMembersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned from the backend.
+	// The details of the backend response exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataServiceAppMembersResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -161,17 +161,17 @@ func (s *GetDataServiceAppMembersResponseBodyData) Validate() error {
 }
 
 type GetDataServiceAppMembersResponseBodyDataMemberList struct {
-	// The authorization expiration time.
+	// The expiration time of the authorization.
 	//
 	// example:
 	//
 	// 2026-12-12
 	EffectiveEnd *string `json:"EffectiveEnd,omitempty" xml:"EffectiveEnd,omitempty"`
-	// The role of the user. Valid values:
+	// The user role. Valid values:
 	//
-	// - general: regular member.
+	// - general: regular member
 	//
-	// - owner: application owner.
+	// - owner: application owner
 	//
 	// example:
 	//

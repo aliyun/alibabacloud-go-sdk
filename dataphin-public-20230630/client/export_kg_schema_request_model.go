@@ -30,6 +30,8 @@ type ExportKgSchemaRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The ID of the operator.
+  // 
   // example:
   // 
   // 30001011
@@ -40,7 +42,7 @@ type ExportKgSchemaRequest struct {
   // 
   // json
   OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-  // The version number. If this parameter is empty or set to -1, the model metadata in draft state is returned. If this parameter is set to 0, the model metadata of the latest version is returned.
+  // The version ID. An empty value or -1 indicates the draft model metadata. 0 indicates the latest model metadata.
   // 
   // example:
   // 

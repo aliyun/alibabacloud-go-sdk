@@ -18,11 +18,11 @@ type iListFilesRequest interface {
 }
 
 type ListFilesRequest struct {
-	// Query conditions
+	// The query conditions.
 	//
 	// This parameter is required.
 	ListQuery *ListFilesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListFilesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,29 +83,29 @@ func (s *ListFilesRequest) Validate() error {
 }
 
 type ListFilesRequestListQuery struct {
-	// Menu tree category
+	// The menu tree category. Valid values:
 	//
-	// - Ad hoc query: tempCode
+	// - tempCode: Ad hoc query.
 	//
-	// - Code task: codeManage
+	// - codeManage: Code task.
 	//
-	// - Offline pipeline: offlinePipeline
+	// - offlinePipeline: Offline pipeline.
 	//
-	// - Pipeline custom component: offlinePipelineCustomPlugin
+	// - offlinePipelineCustomPlugin: Custom pipeline component.
 	//
-	// - Sync task: dataX
+	// - dataX: Synchronization task.
 	//
-	// - Real-time meta table: streamMeta
+	// - streamMeta: Real-time metatable.
 	//
-	// - Real-time custom source: streamCustomDataSource
+	// - streamCustomDataSource: Real-time custom data source.
 	//
-	// - Real-time computing template: streamTemplate
+	// - streamTemplate: Real-time computing template.
 	//
-	// - Resource management: resourceManage
+	// - resourceManage: Resource management.
 	//
-	// - Offline function: udfResource
+	// - udfResource: Offline function.
 	//
-	// - Real-time function: streamFunction
+	// - streamFunction: Real-time function.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +113,7 @@ type ListFilesRequestListQuery struct {
 	//
 	// tempCode
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// File directory
+	// The file directory.
 	//
 	// This parameter is required.
 	//
@@ -119,7 +121,7 @@ type ListFilesRequestListQuery struct {
 	//
 	// /xx/x
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// Environment identifier
+	// The environment identifier. Valid values:
 	//
 	// - DEV
 	//
@@ -131,7 +133,7 @@ type ListFilesRequestListQuery struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -139,11 +141,11 @@ type ListFilesRequestListQuery struct {
 	//
 	// 11112311
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Whether to recursively traverse and query
+	// Specifies whether to recursively traverse and query the directory. Valid values:
 	//
-	// - true: Yes, returns all nodes under the directory
+	// - true: Yes. Returns all nodes under the directory.
 	//
-	// - false: No, returns only the first-level nodes under the directory
+	// - false: No. Returns only the first-level nodes under the directory.
 	//
 	// This parameter is required.
 	//

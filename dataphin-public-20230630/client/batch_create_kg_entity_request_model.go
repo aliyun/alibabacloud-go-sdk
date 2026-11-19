@@ -139,6 +139,12 @@ func (s *BatchCreateKgEntityRequestCreateCommand) Validate() error {
 }
 
 type BatchCreateKgEntityRequestCreateCommandEntityList struct {
+	// The business ID of the entity record.
+	//
+	// example:
+	//
+	// 12345
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The entity type code.
 	//
 	// This parameter is required.
@@ -161,12 +167,21 @@ func (s BatchCreateKgEntityRequestCreateCommandEntityList) GoString() string {
 	return s.String()
 }
 
+func (s *BatchCreateKgEntityRequestCreateCommandEntityList) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *BatchCreateKgEntityRequestCreateCommandEntityList) GetEntityType() *string {
 	return s.EntityType
 }
 
 func (s *BatchCreateKgEntityRequestCreateCommandEntityList) GetPropertyList() []*BatchCreateKgEntityRequestCreateCommandEntityListPropertyList {
 	return s.PropertyList
+}
+
+func (s *BatchCreateKgEntityRequestCreateCommandEntityList) SetBizId(v string) *BatchCreateKgEntityRequestCreateCommandEntityList {
+	s.BizId = &v
+	return s
 }
 
 func (s *BatchCreateKgEntityRequestCreateCommandEntityList) SetEntityType(v string) *BatchCreateKgEntityRequestCreateCommandEntityList {

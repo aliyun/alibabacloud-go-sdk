@@ -38,7 +38,7 @@ type BatchCreateKgEntityResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type BatchCreateKgEntityResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,19 +126,19 @@ func (s *BatchCreateKgEntityResponseBody) Validate() error {
 }
 
 type BatchCreateKgEntityResponseBodyCreateResult struct {
-	// The number of failed records.
+	// The number of failed creations.
 	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The number of successfully created records.
+	// The number of successful creations.
 	//
 	// example:
 	//
 	// 10
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The list of IDs of successfully created entity records.
+	// The list of IDs for successfully created entity records.
 	SuccessEntityList []*BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList `json:"SuccessEntityList,omitempty" xml:"SuccessEntityList,omitempty" type:"Repeated"`
 }
 
@@ -191,6 +191,12 @@ func (s *BatchCreateKgEntityResponseBodyCreateResult) Validate() error {
 }
 
 type BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList struct {
+	// The business ID of the entity record.
+	//
+	// example:
+	//
+	// 12345
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The ID of the entity record.
 	//
 	// example:
@@ -213,12 +219,21 @@ func (s BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList) GoString()
 	return s.String()
 }
 
+func (s *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList) GetEntityId() *string {
 	return s.EntityId
 }
 
 func (s *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList) GetEntityType() *string {
 	return s.EntityType
+}
+
+func (s *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList) SetBizId(v string) *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList {
+	s.BizId = &v
+	return s
 }
 
 func (s *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList) SetEntityId(v string) *BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList {

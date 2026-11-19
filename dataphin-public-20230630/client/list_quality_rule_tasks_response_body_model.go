@@ -42,7 +42,7 @@ type ListQualityRuleTasksResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paged query result.
+	// The paged query results.
 	PageResult *ListQualityRuleTasksResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -126,7 +126,7 @@ func (s *ListQualityRuleTasksResponseBody) Validate() error {
 }
 
 type ListQualityRuleTasksResponseBodyPageResult struct {
-	// The paged quality rule task list.
+	// The paged list of quality rule tasks.
 	QualityRuleTaskList []*ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList `json:"QualityRuleTaskList,omitempty" xml:"QualityRuleTaskList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -176,7 +176,7 @@ func (s *ListQualityRuleTasksResponseBodyPageResult) Validate() error {
 }
 
 type ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList struct {
-	// The business date.
+	// The business date. Format: YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList struct {
 	//
 	// yyyy-MM-dd
 	BizDateFormat *string `json:"BizDateFormat,omitempty" xml:"BizDateFormat,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -200,49 +200,49 @@ type ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The end time.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The rule task ID.
+	// The ID of the rule task.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the task.
+	// The ID of the user who last updated the task.
 	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The modification time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
 	// 11
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The start time.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status.
+	// The status of the task.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
@@ -268,13 +268,13 @@ type ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList struct {
 	ValidatePartition *string `json:"ValidatePartition,omitempty" xml:"ValidatePartition,omitempty"`
 	// Indicates whether the validation is successful.
 	ValidateSuccess *bool `json:"ValidateSuccess,omitempty" xml:"ValidateSuccess,omitempty"`
-	// The watch ID.
+	// The ID of the associated quality watchtask.
 	//
 	// example:
 	//
 	// 1
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
-	// The watch task ID. This ID is empty for trial run tasks.
+	// The ID of the watchtask. This ID is empty for trial rule tasks.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iListProjectRolesResponseBody interface {
 }
 
 type ListProjectRolesResponseBody struct {
-	// The error code. OK indicates that the request is successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListProjectRolesResponseBody) Validate() error {
 }
 
 type ListProjectRolesResponseBodyRoleList struct {
-	// The JSON string of the permission set.
+	// The JSON string of permission points.
 	//
 	// example:
 	//

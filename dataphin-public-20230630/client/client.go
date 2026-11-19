@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("dataphin-public")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -854,9 +862,7 @@ func (client *Client) ApplyResourcePermission(request *ApplyResourcePermissionRe
 
 // Summary:
 //
-// Binds specified quality rules to schedule settings.
-//
-// Release version: v5.4.2.
+// Binds quality rules to scheduling settings. Available since v5.4.2.
 //
 // @param tmpReq - AssignQualityRuleOfAllRuleScopeSchedulesRequest
 //
@@ -916,9 +922,7 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithOptions(tmpReq
 
 // Summary:
 //
-// Binds specified quality rules to schedule settings.
-//
-// Release version: v5.4.2.
+// Binds quality rules to scheduling settings. Available since v5.4.2.
 //
 // @param request - AssignQualityRuleOfAllRuleScopeSchedulesRequest
 //
@@ -936,7 +940,7 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedules(request *AssignQu
 
 // Summary:
 //
-// Creates knowledge graph entity records in batches. Released in version v6.1.1.
+// Creates knowledge graph entity records in batches. Available since version v6.1.1.
 //
 // @param tmpReq - BatchCreateKgEntityRequest
 //
@@ -1000,7 +1004,7 @@ func (client *Client) BatchCreateKgEntityWithOptions(tmpReq *BatchCreateKgEntity
 
 // Summary:
 //
-// Creates knowledge graph entity records in batches. Released in version v6.1.1.
+// Creates knowledge graph entity records in batches. Available since version v6.1.1.
 //
 // @param request - BatchCreateKgEntityRequest
 //
@@ -1018,7 +1022,7 @@ func (client *Client) BatchCreateKgEntity(request *BatchCreateKgEntityRequest) (
 
 // Summary:
 //
-// Creates knowledge graph relationship records in batches. Released in version v6.1.1.
+// Creates knowledge graph relation records in batches. Available since version v6.1.1.
 //
 // @param tmpReq - BatchCreateKgRelationRequest
 //
@@ -1082,7 +1086,7 @@ func (client *Client) BatchCreateKgRelationWithOptions(tmpReq *BatchCreateKgRela
 
 // Summary:
 //
-// Creates knowledge graph relationship records in batches. Released in version v6.1.1.
+// Creates knowledge graph relation records in batches. Available since version v6.1.1.
 //
 // @param request - BatchCreateKgRelationRequest
 //
@@ -2250,7 +2254,7 @@ func (client *Client) CreateBizMetric(request *CreateBizMetricRequest) (_result 
 
 // Summary:
 //
-// Creates a data domain.
+// Creates a business unit.
 //
 // @param tmpReq - CreateBizUnitRequest
 //
@@ -2310,7 +2314,7 @@ func (client *Client) CreateBizUnitWithOptions(tmpReq *CreateBizUnitRequest, run
 
 // Summary:
 //
-// Creates a data domain.
+// Creates a business unit.
 //
 // @param request - CreateBizUnitRequest
 //
@@ -2562,7 +2566,7 @@ func (client *Client) CreateDataDomain(request *CreateDataDomainRequest) (_resul
 
 // Summary:
 //
-// Creates a data service API and submits it.
+// Creates and submits a new data service API.
 //
 // @param tmpReq - CreateDataServiceApiRequest
 //
@@ -2622,7 +2626,7 @@ func (client *Client) CreateDataServiceApiWithOptions(tmpReq *CreateDataServiceA
 
 // Summary:
 //
-// Creates a data service API and submits it.
+// Creates and submits a new data service API.
 //
 // @param request - CreateDataServiceApiRequest
 //
@@ -2796,7 +2800,7 @@ func (client *Client) CreateDataServiceAppGroup(request *CreateDataServiceAppGro
 
 // Summary:
 //
-// Create Data Source: Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permission to perform this operation.
+// Creates a data source. Only tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators are authorized to perform this operation.
 //
 // @param tmpReq - CreateDataSourceRequest
 //
@@ -2856,7 +2860,7 @@ func (client *Client) CreateDataSourceWithOptions(tmpReq *CreateDataSourceReques
 
 // Summary:
 //
-// Create Data Source: Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permission to perform this operation.
+// Creates a data source. Only tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators are authorized to perform this operation.
 //
 // @param request - CreateDataSourceRequest
 //
@@ -3070,7 +3074,7 @@ func (client *Client) CreateDevProdProject(request *CreateDevProdProjectRequest)
 
 // Summary:
 //
-// Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
+// Creates a menu tree directory to support features such as compute tasks, data integration, and synchronization tasks.
 //
 // @param tmpReq - CreateDirectoryRequest
 //
@@ -3130,7 +3134,7 @@ func (client *Client) CreateDirectoryWithOptions(tmpReq *CreateDirectoryRequest,
 
 // Summary:
 //
-// Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
+// Creates a menu tree directory to support features such as compute tasks, data integration, and synchronization tasks.
 //
 // @param request - CreateDirectoryRequest
 //
@@ -3148,7 +3152,7 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 
 // Summary:
 //
-// Creates a knowledge graph entity record. Online version: v6.1.1.
+// Creates a knowledge graph entity record. Released in version v6.1.1.
 //
 // @param tmpReq - CreateKgEntityRequest
 //
@@ -3212,7 +3216,7 @@ func (client *Client) CreateKgEntityWithOptions(tmpReq *CreateKgEntityRequest, r
 
 // Summary:
 //
-// Creates a knowledge graph entity record. Online version: v6.1.1.
+// Creates a knowledge graph entity record. Released in version v6.1.1.
 //
 // @param request - CreateKgEntityRequest
 //
@@ -3230,7 +3234,7 @@ func (client *Client) CreateKgEntity(request *CreateKgEntityRequest) (_result *C
 
 // Summary:
 //
-// Creates a knowledge graph relationship record. Online version: v6.1.1.
+// Creates a knowledge graph relationship record. Available since v6.1.1.
 //
 // @param tmpReq - CreateKgRelationRequest
 //
@@ -3294,7 +3298,7 @@ func (client *Client) CreateKgRelationWithOptions(tmpReq *CreateKgRelationReques
 
 // Summary:
 //
-// Creates a knowledge graph relationship record. Online version: v6.1.1.
+// Creates a knowledge graph relationship record. Available since v6.1.1.
 //
 // @param request - CreateKgRelationRequest
 //
@@ -3480,7 +3484,7 @@ func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *C
 
 // Summary:
 //
-// Asynchronously create a pipeline/unstructured workflow.
+// Asynchronously creates a pipeline or unstructured workflow.
 //
 // @param tmpReq - CreatePipelineByAsyncRequest
 //
@@ -3548,7 +3552,7 @@ func (client *Client) CreatePipelineByAsyncWithOptions(tmpReq *CreatePipelineByA
 
 // Summary:
 //
-// Asynchronously create a pipeline/unstructured workflow.
+// Asynchronously creates a pipeline or unstructured workflow.
 //
 // @param request - CreatePipelineByAsyncRequest
 //
@@ -4120,9 +4124,7 @@ func (client *Client) CreateSecurityClassifyCatalog(request *CreateSecurityClass
 
 // Summary:
 //
-// Creates a security identification result.
-//
-// Release version: v5.4.2.
+// Creates a security identification result. Available since version 5.4.2.
 //
 // @param tmpReq - CreateSecurityIdentifyResultRequest
 //
@@ -4182,9 +4184,7 @@ func (client *Client) CreateSecurityIdentifyResultWithOptions(tmpReq *CreateSecu
 
 // Summary:
 //
-// Creates a security identification result.
-//
-// Release version: v5.4.2.
+// Creates a security identification result. Available since version 5.4.2.
 //
 // @param request - CreateSecurityIdentifyResultRequest
 //
@@ -4436,9 +4436,7 @@ func (client *Client) CreateStandardLookupTable(request *CreateStandardLookupTab
 
 // Summary:
 //
-// Creates standard mapping relationships, including valid mappings and invalid mappings.
-//
-// Release version: v5.4.2.
+// Creates standard mapping relationships, including valid and invalid mappings. Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardMappingRequest
 //
@@ -4498,9 +4496,7 @@ func (client *Client) CreateStandardMappingWithOptions(tmpReq *CreateStandardMap
 
 // Summary:
 //
-// Creates standard mapping relationships, including valid mappings and invalid mappings.
-//
-// Release version: v5.4.2.
+// Creates standard mapping relationships, including valid and invalid mappings. Release version: v5.4.2.
 //
 // @param request - CreateStandardMappingRequest
 //
@@ -4518,9 +4514,7 @@ func (client *Client) CreateStandardMapping(request *CreateStandardMappingReques
 
 // Summary:
 //
-// Creates a standard association relationship.
-//
-// Online version: v5.4.2.
+// Creates a standard association. Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRelationsRequest
 //
@@ -4580,9 +4574,7 @@ func (client *Client) CreateStandardRelationsWithOptions(tmpReq *CreateStandardR
 
 // Summary:
 //
-// Creates a standard association relationship.
-//
-// Online version: v5.4.2.
+// Creates a standard association. Release version: v5.4.2.
 //
 // @param request - CreateStandardRelationsRequest
 //
@@ -4600,9 +4592,7 @@ func (client *Client) CreateStandardRelations(request *CreateStandardRelationsRe
 
 // Summary:
 //
-// Creates a standard set.
-//
-// Available since: v5.4.2.
+// Creates a standard set. Released in version 5.4.2.
 //
 // @param tmpReq - CreateStandardSetRequest
 //
@@ -4662,9 +4652,7 @@ func (client *Client) CreateStandardSetWithOptions(tmpReq *CreateStandardSetRequ
 
 // Summary:
 //
-// Creates a standard set.
-//
-// Available since: v5.4.2.
+// Creates a standard set. Released in version 5.4.2.
 //
 // @param request - CreateStandardSetRequest
 //
@@ -4916,7 +4904,7 @@ func (client *Client) CreateStreamBatchJobMapping(request *CreateStreamBatchJobM
 
 // Summary:
 //
-// Creates a user-defined function.
+// Creates a custom function.
 //
 // @param tmpReq - CreateUdfRequest
 //
@@ -4976,7 +4964,7 @@ func (client *Client) CreateUdfWithOptions(tmpReq *CreateUdfRequest, runtime *da
 
 // Summary:
 //
-// Creates a user-defined function.
+// Creates a custom function.
 //
 // @param request - CreateUdfRequest
 //
@@ -5158,7 +5146,7 @@ func (client *Client) CreateWorkFlowByJson(request *CreateWorkFlowByJsonRequest)
 
 // Summary:
 //
-// Deletes an ad hoc query file from the menu tree.
+// Deletes the ad hoc query file in the menu tree.
 //
 // @param request - DeleteAdHocFileRequest
 //
@@ -5214,7 +5202,7 @@ func (client *Client) DeleteAdHocFileWithOptions(request *DeleteAdHocFileRequest
 
 // Summary:
 //
-// Deletes an ad hoc query file from the menu tree.
+// Deletes the ad hoc query file in the menu tree.
 //
 // @param request - DeleteAdHocFileRequest
 //
@@ -5388,9 +5376,7 @@ func (client *Client) DeleteBizEntity(request *DeleteBizEntityRequest) (_result 
 
 // Summary:
 //
-// Deletes a business metric.
-//
-// Release version: v5.5.0.
+// Deletes a business metric. Release version: v5.5.0.
 //
 // @param tmpReq - DeleteBizMetricRequest
 //
@@ -5450,9 +5436,7 @@ func (client *Client) DeleteBizMetricWithOptions(tmpReq *DeleteBizMetricRequest,
 
 // Summary:
 //
-// Deletes a business metric.
-//
-// Release version: v5.5.0.
+// Deletes a business metric. Release version: v5.5.0.
 //
 // @param request - DeleteBizMetricRequest
 //
@@ -5470,7 +5454,7 @@ func (client *Client) DeleteBizMetric(request *DeleteBizMetricRequest) (_result 
 
 // Summary:
 //
-// Deletes a data domain.
+// Deletes a data block.
 //
 // @param request - DeleteBizUnitRequest
 //
@@ -5522,7 +5506,7 @@ func (client *Client) DeleteBizUnitWithOptions(request *DeleteBizUnitRequest, ru
 
 // Summary:
 //
-// Deletes a data domain.
+// Deletes a data block.
 //
 // @param request - DeleteBizUnitRequest
 //
@@ -5680,7 +5664,7 @@ func (client *Client) DeleteComputeSource(request *DeleteComputeSourceRequest) (
 
 // Summary:
 //
-// Deletes a subject domain.
+// Deletes a subject area.
 //
 // @param request - DeleteDataDomainRequest
 //
@@ -5736,7 +5720,7 @@ func (client *Client) DeleteDataDomainWithOptions(request *DeleteDataDomainReque
 
 // Summary:
 //
-// Deletes a subject domain.
+// Deletes a subject area.
 //
 // @param request - DeleteDataDomainRequest
 //
@@ -5754,9 +5738,7 @@ func (client *Client) DeleteDataDomain(request *DeleteDataDomainRequest) (_resul
 
 // Summary:
 //
-// Deletes a data service application. Only superusers, system administrators, or application owners can perform this operation.
-//
-// Online version: v6.0.0.
+// Deletes a data service application. Only super administrators, system administrators, or application owners can perform this operation. Release version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppRequest
 //
@@ -5808,9 +5790,7 @@ func (client *Client) DeleteDataServiceAppWithOptions(request *DeleteDataService
 
 // Summary:
 //
-// Deletes a data service application. Only superusers, system administrators, or application owners can perform this operation.
-//
-// Online version: v6.0.0.
+// Deletes a data service application. Only super administrators, system administrators, or application owners can perform this operation. Release version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppRequest
 //
@@ -5828,9 +5808,7 @@ func (client *Client) DeleteDataServiceApp(request *DeleteDataServiceAppRequest)
 
 // Summary:
 //
-// Deletes a data service application group. Only superusers and system administrators can perform this operation.
-//
-// Online version: v6.0.0.
+// Deletes a data service application group. Only super administrators and system administrators can perform this operation. Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppGroupRequest
 //
@@ -5882,9 +5860,7 @@ func (client *Client) DeleteDataServiceAppGroupWithOptions(request *DeleteDataSe
 
 // Summary:
 //
-// Deletes a data service application group. Only superusers and system administrators can perform this operation.
-//
-// Online version: v6.0.0.
+// Deletes a data service application group. Only super administrators and system administrators can perform this operation. Online version: v6.0.0.
 //
 // @param request - DeleteDataServiceAppGroupRequest
 //
@@ -6054,7 +6030,7 @@ func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a file directory from the menu tree.
+// Deletes a folder in the menu tree.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -6110,7 +6086,7 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 
 // Summary:
 //
-// Deletes a file directory from the menu tree.
+// Deletes a folder in the menu tree.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -6128,7 +6104,7 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
-// Deletes an entity record. Online version: v6.1.1.
+// Deletes an entity record. Available since version 6.1.1.
 //
 // @param request - DeleteKgEntityRequest
 //
@@ -6188,7 +6164,7 @@ func (client *Client) DeleteKgEntityWithOptions(request *DeleteKgEntityRequest, 
 
 // Summary:
 //
-// Deletes an entity record. Online version: v6.1.1.
+// Deletes an entity record. Available since version 6.1.1.
 //
 // @param request - DeleteKgEntityRequest
 //
@@ -6666,7 +6642,7 @@ func (client *Client) DeleteQualityWatches(request *DeleteQualityWatchesRequest)
 
 // Summary:
 //
-// Deletes registered data lineage. Available since v5.4.0.
+// Deletes registered lineage. Available since version 5.4.0.
 //
 // @param tmpReq - DeleteRegisterLineageRequest
 //
@@ -6726,7 +6702,7 @@ func (client *Client) DeleteRegisterLineageWithOptions(tmpReq *DeleteRegisterLin
 
 // Summary:
 //
-// Deletes registered data lineage. Available since v5.4.0.
+// Deletes registered lineage. Available since version 5.4.0.
 //
 // @param request - DeleteRegisterLineageRequest
 //
@@ -7134,7 +7110,7 @@ func (client *Client) DeleteSecurityIdentifyResults(request *DeleteSecurityIdent
 
 // Summary:
 //
-// Deletes a data classification level. Available since v5.4.2.
+// Deletes a data classification level. Released in version 5.4.2.
 //
 // @param tmpReq - DeleteSecurityLevelRequest
 //
@@ -7194,7 +7170,7 @@ func (client *Client) DeleteSecurityLevelWithOptions(tmpReq *DeleteSecurityLevel
 
 // Summary:
 //
-// Deletes a data classification level. Available since v5.4.2.
+// Deletes a data classification level. Released in version 5.4.2.
 //
 // @param request - DeleteSecurityLevelRequest
 //
@@ -7516,9 +7492,7 @@ func (client *Client) DeleteStandardRelations(request *DeleteStandardRelationsRe
 
 // Summary:
 //
-// Deletes a standard set.
-//
-// Online version: v5.4.2.
+// Deletes a standard set. Release version: v5.4.2.
 //
 // @param request - DeleteStandardSetRequest
 //
@@ -7570,9 +7544,7 @@ func (client *Client) DeleteStandardSetWithOptions(request *DeleteStandardSetReq
 
 // Summary:
 //
-// Deletes a standard set.
-//
-// Online version: v5.4.2.
+// Deletes a standard set. Release version: v5.4.2.
 //
 // @param request - DeleteStandardSetRequest
 //
@@ -7668,9 +7640,7 @@ func (client *Client) DeleteStandardValidMapping(request *DeleteStandardValidMap
 
 // Summary:
 //
-// Deletes a data standard root word.
-//
-// Online version: v5.4.2.
+// Deletes a data standard word root. Release version: v5.4.2.
 //
 // @param request - DeleteStandardWordRootRequest
 //
@@ -7722,9 +7692,7 @@ func (client *Client) DeleteStandardWordRootWithOptions(request *DeleteStandardW
 
 // Summary:
 //
-// Deletes a data standard root word.
-//
-// Online version: v5.4.2.
+// Deletes a data standard word root. Release version: v5.4.2.
 //
 // @param request - DeleteStandardWordRootRequest
 //
@@ -7890,7 +7858,7 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 
 // Summary:
 //
-// Executes a custom Cypher query. Online version: v6.2.0.
+// Executes a custom Cypher query. Available since v6.2.0.
 //
 // @param tmpReq - ExecKgCypherRequest
 //
@@ -7954,7 +7922,7 @@ func (client *Client) ExecKgCypherWithOptions(tmpReq *ExecKgCypherRequest, runti
 
 // Summary:
 //
-// Executes a custom Cypher query. Online version: v6.2.0.
+// Executes a custom Cypher query. Available since v6.2.0.
 //
 // @param request - ExecKgCypherRequest
 //
@@ -8382,7 +8350,7 @@ func (client *Client) ExecuteTriggerNode(request *ExecuteTriggerNodeRequest) (_r
 
 // Summary:
 //
-// Exports knowledge graph metadata definitions. Online version: v6.1.1.
+// Exports the metadata definition of a knowledge graph. Release version: v6.1.1.
 //
 // @param request - ExportKgSchemaRequest
 //
@@ -8442,7 +8410,7 @@ func (client *Client) ExportKgSchemaWithOptions(request *ExportKgSchemaRequest, 
 
 // Summary:
 //
-// Exports knowledge graph metadata definitions. Online version: v6.1.1.
+// Exports the metadata definition of a knowledge graph. Release version: v6.1.1.
 //
 // @param request - ExportKgSchemaRequest
 //
@@ -8460,7 +8428,7 @@ func (client *Client) ExportKgSchema(request *ExportKgSchemaRequest) (_result *E
 
 // Summary:
 //
-// Reruns downstream nodes to fix data link issues. Supports forced rerun of downstream nodes. Impact: incurs compute costs and affects data output.
+// Reruns downstream nodes to repair pipeline data. Supports forced reruns. Impact: incurs computing costs and affects data output.
 //
 // @param tmpReq - FixDataRequest
 //
@@ -8524,7 +8492,7 @@ func (client *Client) FixDataWithOptions(tmpReq *FixDataRequest, runtime *dara.R
 
 // Summary:
 //
-// Reruns downstream nodes to fix data link issues. Supports forced rerun of downstream nodes. Impact: incurs compute costs and affects data output.
+// Reruns downstream nodes to repair pipeline data. Supports forced reruns. Impact: incurs computing costs and affects data output.
 //
 // @param request - FixDataRequest
 //
@@ -8620,7 +8588,7 @@ func (client *Client) GetAccountByRowPermissionId(request *GetAccountByRowPermis
 
 // Summary:
 //
-// Queries a custom query file in the directory tree.
+// Queries ad hoc query files in the directory tree.
 //
 // @param request - GetAdHocFileRequest
 //
@@ -8676,7 +8644,7 @@ func (client *Client) GetAdHocFileWithOptions(request *GetAdHocFileRequest, runt
 
 // Summary:
 //
-// Queries a custom query file in the directory tree.
+// Queries ad hoc query files in the directory tree.
 //
 // @param request - GetAdHocFileRequest
 //
@@ -9072,7 +9040,7 @@ func (client *Client) GetAssetAttributes(request *GetAssetAttributesRequest) (_r
 
 // Summary:
 //
-// Queries the mapping relationships based on the asset object GUID. Released in version 5.4.2.
+// Queries the mapping relationships based on the asset object GUID. Release version: v5.4.2.
 //
 // @param tmpReq - GetAssetMappingRelationsRequest
 //
@@ -9132,7 +9100,7 @@ func (client *Client) GetAssetMappingRelationsWithOptions(tmpReq *GetAssetMappin
 
 // Summary:
 //
-// Queries the mapping relationships based on the asset object GUID. Released in version 5.4.2.
+// Queries the mapping relationships based on the asset object GUID. Release version: v5.4.2.
 //
 // @param request - GetAssetMappingRelationsRequest
 //
@@ -9528,7 +9496,7 @@ func (client *Client) GetBatchTaskVersions(request *GetBatchTaskVersionsRequest)
 
 // Summary:
 //
-// Retrieves the versions of a specified offline template. Available since v6.2.0.
+// Retrieves the version list for a specified offline template ID. Available since version: v6.2.0.
 //
 // @param request - GetBatchTemplateVersionsRequest
 //
@@ -9588,7 +9556,7 @@ func (client *Client) GetBatchTemplateVersionsWithOptions(request *GetBatchTempl
 
 // Summary:
 //
-// Retrieves the versions of a specified offline template. Available since v6.2.0.
+// Retrieves the version list for a specified offline template ID. Available since version: v6.2.0.
 //
 // @param request - GetBatchTemplateVersionsRequest
 //
@@ -9606,7 +9574,7 @@ func (client *Client) GetBatchTemplateVersions(request *GetBatchTemplateVersions
 
 // Summary:
 //
-// Queries the mapping relationships based on the GUID of the owning asset. Released in v5.4.2.
+// Queries the mapping relationships based on the GUID of the parent asset. Released in version 5.4.2.
 //
 // @param tmpReq - GetBelongAssetMappingRequest
 //
@@ -9666,7 +9634,7 @@ func (client *Client) GetBelongAssetMappingWithOptions(tmpReq *GetBelongAssetMap
 
 // Summary:
 //
-// Queries the mapping relationships based on the GUID of the owning asset. Released in v5.4.2.
+// Queries the mapping relationships based on the GUID of the parent asset. Released in version 5.4.2.
 //
 // @param request - GetBelongAssetMappingRequest
 //
@@ -9758,7 +9726,7 @@ func (client *Client) GetBizEntityInfo(request *GetBizEntityInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the details of a business entity of a specified version.
+// Queries the details of a specific version of a business entity.
 //
 // @param request - GetBizEntityInfoByVersionRequest
 //
@@ -9818,7 +9786,7 @@ func (client *Client) GetBizEntityInfoByVersionWithOptions(request *GetBizEntity
 
 // Summary:
 //
-// Queries the details of a business entity of a specified version.
+// Queries the details of a specific version of a business entity.
 //
 // @param request - GetBizEntityInfoByVersionRequest
 //
@@ -9984,7 +9952,7 @@ func (client *Client) GetBizUnitInfo(request *GetBizUnitInfoRequest) (_result *G
 
 // Summary:
 //
-// Queries asset details. Online version: v6.1.0.
+// Queries asset details. Release version: v6.1.0.
 //
 // @param tmpReq - GetCatalogAssetDetailsRequest
 //
@@ -10044,7 +10012,7 @@ func (client *Client) GetCatalogAssetDetailsWithOptions(tmpReq *GetCatalogAssetD
 
 // Summary:
 //
-// Queries asset details. Online version: v6.1.0.
+// Queries asset details. Release version: v6.1.0.
 //
 // @param request - GetCatalogAssetDetailsRequest
 //
@@ -10062,11 +10030,11 @@ func (client *Client) GetCatalogAssetDetails(request *GetCatalogAssetDetailsRequ
 
 // Summary:
 //
-// Queries a data source connectivity check task by task ID. Available since version 6.3.2.
+// Queries a data source connectivity check task by task ID. Release version: v6.3.2.
 //
 // Description:
 //
-// Queries the latest status and error message of a data source connectivity check task by task ID. This operation is used to poll the asynchronous task returned by CheckDataSourceConnectivityOnResourceGroup. If the task does not exist, Data is empty.
+// Queries the latest status and fault message of a data source connectivity check node by node ID. This operation is used to poll the asynchronous task returned by CheckDataSourceConnectivityOnResourceGroup. If the node does not exist, Data is empty.
 //
 // @param request - GetCheckConnectivityJobByJobIdRequest
 //
@@ -10118,11 +10086,11 @@ func (client *Client) GetCheckConnectivityJobByJobIdWithOptions(request *GetChec
 
 // Summary:
 //
-// Queries a data source connectivity check task by task ID. Available since version 6.3.2.
+// Queries a data source connectivity check task by task ID. Release version: v6.3.2.
 //
 // Description:
 //
-// Queries the latest status and error message of a data source connectivity check task by task ID. This operation is used to poll the asynchronous task returned by CheckDataSourceConnectivityOnResourceGroup. If the task does not exist, Data is empty.
+// Queries the latest status and fault message of a data source connectivity check node by node ID. This operation is used to poll the asynchronous task returned by CheckDataSourceConnectivityOnResourceGroup. If the node does not exist, Data is empty.
 //
 // @param request - GetCheckConnectivityJobByJobIdRequest
 //
@@ -10140,11 +10108,11 @@ func (client *Client) GetCheckConnectivityJobByJobId(request *GetCheckConnectivi
 
 // Summary:
 //
-// Queries a list of connectivity check tasks based on the specified data source ID, including null value validation and tenant permission verification to prevent cross-tenant access. Release version: v5.5.0.
+// Queries the connectivity check tasks for a specified data source ID. Includes null value validation and tenant permission verification to prevent cross-tenant access. Release version: v5.5.0.
 //
 // Description:
 //
-// Queries the details of tested connectivity tasks based on the data source ID.
+// Queries the details of tested connectivity tasks for a data source ID.
 //
 // @param request - GetCheckConnectivityJobsRequest
 //
@@ -10196,11 +10164,11 @@ func (client *Client) GetCheckConnectivityJobsWithOptions(request *GetCheckConne
 
 // Summary:
 //
-// Queries a list of connectivity check tasks based on the specified data source ID, including null value validation and tenant permission verification to prevent cross-tenant access. Release version: v5.5.0.
+// Queries the connectivity check tasks for a specified data source ID. Includes null value validation and tenant permission verification to prevent cross-tenant access. Release version: v5.5.0.
 //
 // Description:
 //
-// Queries the details of tested connectivity tasks based on the data source ID.
+// Queries the details of tested connectivity tasks for a data source ID.
 //
 // @param request - GetCheckConnectivityJobsRequest
 //
@@ -10296,11 +10264,11 @@ func (client *Client) GetClusterQueueInfoByEnv(request *GetClusterQueueInfoByEnv
 
 // Summary:
 //
-// Queries cluster details. Available since v6.3.0.
+// Queries the details of a cluster. Available since version 6.3.0.
 //
 // Description:
 //
-// Queries the details of a tested connectivity task based on the datasource ID.
+// Queries the details of tested connectivity tasks based on the data source ID.
 //
 // @param request - GetComputeClusterRequest
 //
@@ -10352,11 +10320,11 @@ func (client *Client) GetComputeClusterWithOptions(request *GetComputeClusterReq
 
 // Summary:
 //
-// Queries cluster details. Available since v6.3.0.
+// Queries the details of a cluster. Available since version 6.3.0.
 //
 // Description:
 //
-// Queries the details of a tested connectivity task based on the datasource ID.
+// Queries the details of tested connectivity tasks based on the data source ID.
 //
 // @param request - GetComputeClusterRequest
 //
@@ -10444,11 +10412,11 @@ func (client *Client) GetComputeSource(request *GetComputeSourceRequest) (_resul
 
 // Summary:
 //
-// Retrieves the details of a specified quality watchtask by governance item ID. Online version: v6.3.0.
+// Retrieves the details of a specified issue checklist object based on the governance item ID. Available since v6.3.0.
 //
 // Description:
 //
-// Retrieves the details of a Query Governance object by governance item ID.
+// Queries the details of a governance object based on the Query Governance project ID.
 //
 // @param tmpReq - GetDataAssetsGovernObjectRequest
 //
@@ -10508,11 +10476,11 @@ func (client *Client) GetDataAssetsGovernObjectWithOptions(tmpReq *GetDataAssets
 
 // Summary:
 //
-// Retrieves the details of a specified quality watchtask by governance item ID. Online version: v6.3.0.
+// Retrieves the details of a specified issue checklist object based on the governance item ID. Available since v6.3.0.
 //
 // Description:
 //
-// Retrieves the details of a Query Governance object by governance item ID.
+// Queries the details of a governance object based on the Query Governance project ID.
 //
 // @param request - GetDataAssetsGovernObjectRequest
 //
@@ -10678,7 +10646,7 @@ func (client *Client) GetDataServiceApiCallSummary(request *GetDataServiceApiCal
 
 // Summary:
 //
-// Service Monitoring: Analyzes API access trends.
+// Queries the API access trend analysis for Service Monitoring.
 //
 // @param request - GetDataServiceApiCallTrendRequest
 //
@@ -10738,7 +10706,7 @@ func (client *Client) GetDataServiceApiCallTrendWithOptions(request *GetDataServ
 
 // Summary:
 //
-// Service Monitoring: Analyzes API access trends.
+// Queries the API access trend analysis for Service Monitoring.
 //
 // @param request - GetDataServiceApiCallTrendRequest
 //
@@ -10908,7 +10876,7 @@ func (client *Client) GetDataServiceApiErrorImpact(request *GetDataServiceApiErr
 
 // Summary:
 //
-// Queries the list of API groups in Data Service.
+// Queries the list of data service API groups.
 //
 // @param request - GetDataServiceApiGroupsRequest
 //
@@ -10960,7 +10928,7 @@ func (client *Client) GetDataServiceApiGroupsWithOptions(request *GetDataService
 
 // Summary:
 //
-// Queries the list of API groups in Data Service.
+// Queries the list of data service API groups.
 //
 // @param request - GetDataServiceApiGroupsRequest
 //
@@ -11122,7 +11090,7 @@ func (client *Client) GetDataServiceAppAuthorizedUsers(request *GetDataServiceAp
 
 // Summary:
 //
-// Queries the list of application groups for a data service project.
+// Queries the list of application groups in a data service project.
 //
 // @param request - GetDataServiceAppGroupsRequest
 //
@@ -11174,7 +11142,7 @@ func (client *Client) GetDataServiceAppGroupsWithOptions(request *GetDataService
 
 // Summary:
 //
-// Queries the list of application groups for a data service project.
+// Queries the list of application groups in a data service project.
 //
 // @param request - GetDataServiceAppGroupsRequest
 //
@@ -11192,9 +11160,7 @@ func (client *Client) GetDataServiceAppGroups(request *GetDataServiceAppGroupsRe
 
 // Summary:
 //
-// Queries the member list of a data service application, including regular members and owners. Only application owners can call this operation.
-//
-// Online version: v6.0.0.
+// Queries the members of a data service application, including regular members and owners. Only application owners can perform this query. Available since v6.0.0.
 //
 // @param request - GetDataServiceAppMembersRequest
 //
@@ -11246,9 +11212,7 @@ func (client *Client) GetDataServiceAppMembersWithOptions(request *GetDataServic
 
 // Summary:
 //
-// Queries the member list of a data service application, including regular members and owners. Only application owners can call this operation.
-//
-// Online version: v6.0.0.
+// Queries the members of a data service application, including regular members and owners. Only application owners can perform this query. Available since v6.0.0.
 //
 // @param request - GetDataServiceAppMembersRequest
 //
@@ -11340,7 +11304,7 @@ func (client *Client) GetDataServiceAppsByGroupId(request *GetDataServiceAppsByG
 
 // Summary:
 //
-// Queries the list of applications that the account has permissions to access based on the app group ID.
+// Queries the applications that the account has permissions to access based on the application group ID.
 //
 // @param request - GetDataServiceAuthorizedAppsByGroupIdRequest
 //
@@ -11396,7 +11360,7 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupIdWithOptions(request *
 
 // Summary:
 //
-// Queries the list of applications that the account has permissions to access based on the app group ID.
+// Queries the applications that the account has permissions to access based on the application group ID.
 //
 // @param request - GetDataServiceAuthorizedAppsByGroupIdRequest
 //
@@ -11414,7 +11378,7 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupId(request *GetDataServ
 
 // Summary:
 //
-// Queries the list of projects that the user has access to.
+// Queries the list of projects that the user is authorized to access.
 //
 // @param request - GetDataServiceAuthorizedProjectsRequest
 //
@@ -11462,7 +11426,7 @@ func (client *Client) GetDataServiceAuthorizedProjectsWithOptions(request *GetDa
 
 // Summary:
 //
-// Queries the list of projects that the user has access to.
+// Queries the list of projects that the user is authorized to access.
 //
 // @param request - GetDataServiceAuthorizedProjectsRequest
 //
@@ -11480,7 +11444,7 @@ func (client *Client) GetDataServiceAuthorizedProjects(request *GetDataServiceAu
 
 // Summary:
 //
-// Retrieves the list of projects for which the current user is the owner.
+// Retrieves the list of projects where the current user is the owner.
 //
 // @param request - GetDataServiceMyProjectsRequest
 //
@@ -11528,7 +11492,7 @@ func (client *Client) GetDataServiceMyProjectsWithOptions(request *GetDataServic
 
 // Summary:
 //
-// Retrieves the list of projects for which the current user is the owner.
+// Retrieves the list of projects where the current user is the owner.
 //
 // @param request - GetDataServiceMyProjectsRequest
 //
@@ -11690,7 +11654,7 @@ func (client *Client) GetDataSourceDependencies(request *GetDataSourceDependenci
 //
 // Description:
 //
-// Queries the details of a tested connectivity task based on the data source ID.
+// Queries the details of tested connectivity tasks based on the data source ID.
 //
 // @param request - GetDatasetRequest
 //
@@ -11750,7 +11714,7 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 //
 // Description:
 //
-// Queries the details of a tested connectivity task based on the data source ID.
+// Queries the details of tested connectivity tasks based on the data source ID.
 //
 // @param request - GetDatasetRequest
 //
@@ -11924,7 +11888,7 @@ func (client *Client) GetDirectoryTree(request *GetDirectoryTreeRequest) (_resul
 
 // Summary:
 //
-// Retrieves temporary read and write authorization for file storage.
+// Obtains temporary read and write authorization for file storage.
 //
 // @param request - GetFileStorageCredentialRequest
 //
@@ -11984,7 +11948,7 @@ func (client *Client) GetFileStorageCredentialWithOptions(request *GetFileStorag
 
 // Summary:
 //
-// Retrieves temporary read and write authorization for file storage.
+// Obtains temporary read and write authorization for file storage.
 //
 // @param request - GetFileStorageCredentialRequest
 //
@@ -12092,7 +12056,7 @@ func (client *Client) GetGranularityBySummaryId(request *GetGranularityBySummary
 
 // Summary:
 //
-// Queries the downstream instances of a specified instance.
+// Queries the downstream instances of a specified starting instance.
 //
 // @param tmpReq - GetInstanceDownStreamRequest
 //
@@ -12164,7 +12128,7 @@ func (client *Client) GetInstanceDownStreamWithOptions(tmpReq *GetInstanceDownSt
 
 // Summary:
 //
-// Queries the downstream instances of a specified instance.
+// Queries the downstream instances of a specified starting instance.
 //
 // @param request - GetInstanceDownStreamRequest
 //
@@ -12420,7 +12384,7 @@ func (client *Client) GetKgEntity(request *GetKgEntityRequest) (_result *GetKgEn
 
 // Summary:
 //
-// Retrieves neighbor nodes of a graph model entity. Online version: v6.2.0.
+// Retrieves the neighbor nodes of a graph model. Available since version v6.2.0.
 //
 // @param tmpReq - GetKgNeighborRequest
 //
@@ -12492,7 +12456,7 @@ func (client *Client) GetKgNeighborWithOptions(tmpReq *GetKgNeighborRequest, run
 
 // Summary:
 //
-// Retrieves neighbor nodes of a graph model entity. Online version: v6.2.0.
+// Retrieves the neighbor nodes of a graph model. Available since version v6.2.0.
 //
 // @param request - GetKgNeighborRequest
 //
@@ -12510,7 +12474,7 @@ func (client *Client) GetKgNeighbor(request *GetKgNeighborRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves the details of a knowledge graph relation record. Released in version v6.1.1.
+// Retrieves the details of a knowledge graph relation record. Available since version 6.1.1.
 //
 // @param request - GetKgRelationRequest
 //
@@ -12570,7 +12534,7 @@ func (client *Client) GetKgRelationWithOptions(request *GetKgRelationRequest, ru
 
 // Summary:
 //
-// Retrieves the details of a knowledge graph relation record. Released in version v6.1.1.
+// Retrieves the details of a knowledge graph relation record. Available since version 6.1.1.
 //
 // @param request - GetKgRelationRequest
 //
@@ -12740,7 +12704,7 @@ func (client *Client) GetLatestSubmitDetail(request *GetLatestSubmitDetailReques
 
 // Summary:
 //
-// Queries a specific large language model service provider and available models by name. Online version: v6.3.0.
+// Queries specific large model service providers and available models by name. Release version: v6.3.0.
 //
 // @param request - GetLlmModelProviderByNameRequest
 //
@@ -12792,7 +12756,7 @@ func (client *Client) GetLlmModelProviderByNameWithOptions(request *GetLlmModelP
 
 // Summary:
 //
-// Queries a specific large language model service provider and available models by name. Online version: v6.3.0.
+// Queries specific large model service providers and available models by name. Release version: v6.3.0.
 //
 // @param request - GetLlmModelProviderByNameRequest
 //
@@ -14326,7 +14290,7 @@ func (client *Client) GetProjectWhiteLists(request *GetProjectWhiteListsRequest)
 
 // Summary:
 //
-// Retrieves alert settings by monitored object ID. Release version: v5.4.2.
+// Retrieves the alert configuration by monitored object ID. Available in version 5.4.2.
 //
 // @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
 //
@@ -14378,7 +14342,7 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchIdWithOptions(request 
 
 // Summary:
 //
-// Retrieves alert settings by monitored object ID. Release version: v5.4.2.
+// Retrieves the alert configuration by monitored object ID. Available in version 5.4.2.
 //
 // @param request - GetQualityAlertOfAllRuleScopeByWatchIdRequest
 //
@@ -14396,7 +14360,7 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchId(request *GetQuality
 
 // Summary:
 //
-// Queries the execution progress and result of an asynchronous task for creating or updating an archived table by progress ID. Available since v6.3.0.
+// Queries the execution progress and results of an asynchronous task for creating or modifying an exception archive table based on the progress ID. Release version: v6.3.0.
 //
 // @param request - GetQualityArchiveTableProgressRequest
 //
@@ -14448,7 +14412,7 @@ func (client *Client) GetQualityArchiveTableProgressWithOptions(request *GetQual
 
 // Summary:
 //
-// Queries the execution progress and result of an asynchronous task for creating or updating an archived table by progress ID. Available since v6.3.0.
+// Queries the execution progress and results of an asynchronous task for creating or modifying an exception archive table based on the progress ID. Release version: v6.3.0.
 //
 // @param request - GetQualityArchiveTableProgressRequest
 //
@@ -14466,7 +14430,7 @@ func (client *Client) GetQualityArchiveTableProgress(request *GetQualityArchiveT
 
 // Summary:
 //
-// Retrieves the quality rule object. Release version: v5.4.2.
+// Retrieves a quality rule object. Released in version v5.4.2.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -14518,7 +14482,7 @@ func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, 
 
 // Summary:
 //
-// Retrieves the quality rule object. Release version: v5.4.2.
+// Retrieves a quality rule object. Released in version v5.4.2.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -14536,7 +14500,7 @@ func (client *Client) GetQualityRule(request *GetQualityRuleRequest) (_result *G
 
 // Summary:
 //
-// Retrieves the details of a quality task object. Released in version 5.4.2.
+// Retrieves the details of a quality task object. Released in v5.4.2.
 //
 // @param request - GetQualityRuleTaskRequest
 //
@@ -14588,7 +14552,7 @@ func (client *Client) GetQualityRuleTaskWithOptions(request *GetQualityRuleTaskR
 
 // Summary:
 //
-// Retrieves the details of a quality task object. Released in version 5.4.2.
+// Retrieves the details of a quality task object. Released in v5.4.2.
 //
 // @param request - GetQualityRuleTaskRequest
 //
@@ -14606,9 +14570,7 @@ func (client *Client) GetQualityRuleTask(request *GetQualityRuleTaskRequest) (_r
 
 // Summary:
 //
-// Retrieves the log content of a quality node task object.
-//
-// Online version: v5.4.2.
+// Retrieves the log content of a quality task object. Released in v5.4.2.
 //
 // @param request - GetQualityRuleTaskLogRequest
 //
@@ -14660,9 +14622,7 @@ func (client *Client) GetQualityRuleTaskLogWithOptions(request *GetQualityRuleTa
 
 // Summary:
 //
-// Retrieves the log content of a quality node task object.
-//
-// Online version: v5.4.2.
+// Retrieves the log content of a quality task object. Released in v5.4.2.
 //
 // @param request - GetQualityRuleTaskLogRequest
 //
@@ -14680,7 +14640,7 @@ func (client *Client) GetQualityRuleTaskLog(request *GetQualityRuleTaskLogReques
 
 // Summary:
 //
-// Retrieves the quality scheduling object. Available since v5.4.2.
+// Retrieves a quality schedule object. Released in version 5.4.2.
 //
 // @param request - GetQualityScheduleRequest
 //
@@ -14732,7 +14692,7 @@ func (client *Client) GetQualityScheduleWithOptions(request *GetQualityScheduleR
 
 // Summary:
 //
-// Retrieves the quality scheduling object. Available since v5.4.2.
+// Retrieves a quality schedule object. Released in version 5.4.2.
 //
 // @param request - GetQualityScheduleRequest
 //
@@ -14750,7 +14710,7 @@ func (client *Client) GetQualitySchedule(request *GetQualityScheduleRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of scheduling settings by monitored object ID. Available since v5.4.2.
+// Retrieves the list of scheduling settings by monitored object ID. Release version: v5.4.2.
 //
 // @param request - GetQualitySchedulesByWatchIdRequest
 //
@@ -14802,7 +14762,7 @@ func (client *Client) GetQualitySchedulesByWatchIdWithOptions(request *GetQualit
 
 // Summary:
 //
-// Retrieves a list of scheduling settings by monitored object ID. Available since v5.4.2.
+// Retrieves the list of scheduling settings by monitored object ID. Release version: v5.4.2.
 //
 // @param request - GetQualitySchedulesByWatchIdRequest
 //
@@ -14820,7 +14780,7 @@ func (client *Client) GetQualitySchedulesByWatchId(request *GetQualitySchedulesB
 
 // Summary:
 //
-// Retrieves a quality template object. Released in version 5.4.2.
+// Retrieves a quality template object. Released in version v5.4.2.
 //
 // @param request - GetQualityTemplateRequest
 //
@@ -14872,7 +14832,7 @@ func (client *Client) GetQualityTemplateWithOptions(request *GetQualityTemplateR
 
 // Summary:
 //
-// Retrieves a quality template object. Released in version 5.4.2.
+// Retrieves a quality template object. Released in version v5.4.2.
 //
 // @param request - GetQualityTemplateRequest
 //
@@ -14964,7 +14924,7 @@ func (client *Client) GetQualityWatch(request *GetQualityWatchRequest) (_result 
 
 // Summary:
 //
-// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a data source, table, or metric. Release version: v5.4.2.
+// Retrieves quality watchtask records by the original ID of the monitored object, such as a data source ID, table ID, or metric ID. Released in version v5.4.2.
 //
 // @param request - GetQualityWatchByObjectIdRequest
 //
@@ -15020,7 +14980,7 @@ func (client *Client) GetQualityWatchByObjectIdWithOptions(request *GetQualityWa
 
 // Summary:
 //
-// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a data source, table, or metric. Release version: v5.4.2.
+// Retrieves quality watchtask records by the original ID of the monitored object, such as a data source ID, table ID, or metric ID. Released in version v5.4.2.
 //
 // @param request - GetQualityWatchByObjectIdRequest
 //
@@ -15108,9 +15068,7 @@ func (client *Client) GetQualityWatchTask(request *GetQualityWatchTaskRequest) (
 
 // Summary:
 //
-// Retrieves the log content of a monitoring task object.
-//
-// Online version: v5.4.2.
+// Retrieves the log content of the monitoring task object. Released in v5.4.2.
 //
 // @param request - GetQualityWatchTaskLogRequest
 //
@@ -15162,9 +15120,7 @@ func (client *Client) GetQualityWatchTaskLogWithOptions(request *GetQualityWatch
 
 // Summary:
 //
-// Retrieves the log content of a monitoring task object.
-//
-// Online version: v5.4.2.
+// Retrieves the log content of the monitoring task object. Released in v5.4.2.
 //
 // @param request - GetQualityWatchTaskLogRequest
 //
@@ -15576,7 +15532,7 @@ func (client *Client) GetRowPermissionByTableGuids(request *GetRowPermissionByTa
 
 // Summary:
 //
-// Retrieves the details of a data classification. Release version: v5.4.2.
+// Queries the details of a data classification. Release version: v5.4.2.
 //
 // @param request - GetSecurityClassifyRequest
 //
@@ -15628,7 +15584,7 @@ func (client *Client) GetSecurityClassifyWithOptions(request *GetSecurityClassif
 
 // Summary:
 //
-// Retrieves the details of a data classification. Release version: v5.4.2.
+// Queries the details of a data classification. Release version: v5.4.2.
 //
 // @param request - GetSecurityClassifyRequest
 //
@@ -15646,7 +15602,7 @@ func (client *Client) GetSecurityClassify(request *GetSecurityClassifyRequest) (
 
 // Summary:
 //
-// Retrieves the details of a recognition result. Release version: v5.4.2.
+// Retrieves the details of the recognition result. Release version: v5.4.2.
 //
 // @param request - GetSecurityIdentifyResultRequest
 //
@@ -15698,7 +15654,7 @@ func (client *Client) GetSecurityIdentifyResultWithOptions(request *GetSecurityI
 
 // Summary:
 //
-// Retrieves the details of a recognition result. Release version: v5.4.2.
+// Retrieves the details of the recognition result. Release version: v5.4.2.
 //
 // @param request - GetSecurityIdentifyResultRequest
 //
@@ -15716,7 +15672,7 @@ func (client *Client) GetSecurityIdentifyResult(request *GetSecurityIdentifyResu
 
 // Summary:
 //
-// Retrieves the details of a data classification level. Available since v5.4.2.
+// Retrieves the details of a data classification level. Release version: v5.4.2.
 //
 // @param request - GetSecurityLevelRequest
 //
@@ -15768,7 +15724,7 @@ func (client *Client) GetSecurityLevelWithOptions(request *GetSecurityLevelReque
 
 // Summary:
 //
-// Retrieves the details of a data classification level. Available since v5.4.2.
+// Retrieves the details of a data classification level. Release version: v5.4.2.
 //
 // @param request - GetSecurityLevelRequest
 //
@@ -15786,7 +15742,7 @@ func (client *Client) GetSecurityLevel(request *GetSecurityLevelRequest) (_resul
 
 // Summary:
 //
-// Retrieves a key value by key name. Online version: v5.4.2.
+// Retrieves the value of a key by its name. Available since v5.4.2.
 //
 // @param request - GetSecuritySecretKeyRequest
 //
@@ -15838,7 +15794,7 @@ func (client *Client) GetSecuritySecretKeyWithOptions(request *GetSecuritySecret
 
 // Summary:
 //
-// Retrieves a key value by key name. Online version: v5.4.2.
+// Retrieves the value of a key by its name. Available since v5.4.2.
 //
 // @param request - GetSecuritySecretKeyRequest
 //
@@ -16172,7 +16128,7 @@ func (client *Client) GetStandard(request *GetStandardRequest) (_result *GetStan
 
 // Summary:
 //
-// Retrieves the details of a data standard lookup table. Released in version 5.4.2.
+// Retrieves the details of a data standard lookup table. Available in v5.4.2 and later.
 //
 // @param request - GetStandardLookupTableRequest
 //
@@ -16228,7 +16184,7 @@ func (client *Client) GetStandardLookupTableWithOptions(request *GetStandardLook
 
 // Summary:
 //
-// Retrieves the details of a data standard lookup table. Released in version 5.4.2.
+// Retrieves the details of a data standard lookup table. Available in v5.4.2 and later.
 //
 // @param request - GetStandardLookupTableRequest
 //
@@ -16488,7 +16444,7 @@ func (client *Client) GetStandardTemplate(request *GetStandardTemplateRequest) (
 
 // Summary:
 //
-// Queries the details of a data standard word root. Release version: v5.4.2.
+// Retrieves the details of a data standard word root. Released in v5.4.2.
 //
 // @param request - GetStandardWordRootRequest
 //
@@ -16544,7 +16500,7 @@ func (client *Client) GetStandardWordRootWithOptions(request *GetStandardWordRoo
 
 // Summary:
 //
-// Queries the details of a data standard word root. Release version: v5.4.2.
+// Retrieves the details of a data standard word root. Released in v5.4.2.
 //
 // @param request - GetStandardWordRootRequest
 //
@@ -16562,7 +16518,7 @@ func (client *Client) GetStandardWordRoot(request *GetStandardWordRootRequest) (
 
 // Summary:
 //
-// Retrieves the list of real-time development nodes.
+// Queries a list of real-time development tasks.
 //
 // @param request - GetStreamJobsRequest
 //
@@ -16618,7 +16574,7 @@ func (client *Client) GetStreamJobsWithOptions(request *GetStreamJobsRequest, ru
 
 // Summary:
 //
-// Retrieves the list of real-time development nodes.
+// Queries a list of real-time development tasks.
 //
 // @param request - GetStreamJobsRequest
 //
@@ -16894,7 +16850,7 @@ func (client *Client) GetStreamTask(request *GetStreamTaskRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves dagrun information for all business dates of a data backfill instance workflow.
+// Retrieves the dagrun information for all business dates of a data backfill workflow.
 //
 // @param request - GetSupplementDagrunRequest
 //
@@ -16950,7 +16906,7 @@ func (client *Client) GetSupplementDagrunWithOptions(request *GetSupplementDagru
 
 // Summary:
 //
-// Retrieves dagrun information for all business dates of a data backfill instance workflow.
+// Retrieves the dagrun information for all business dates of a data backfill workflow.
 //
 // @param request - GetSupplementDagrunRequest
 //
@@ -17042,7 +16998,7 @@ func (client *Client) GetSupplementDagrunInstance(request *GetSupplementDagrunIn
 
 // Summary:
 //
-// Queries the details of a table asset inventory. Release version: v6.3.2.
+// Queries the details of the table asset inventory. Released in version 6.3.2.
 //
 // @param request - GetTableRequest
 //
@@ -17094,7 +17050,7 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 
 // Summary:
 //
-// Queries the details of a table asset inventory. Release version: v6.3.2.
+// Queries the details of the table asset inventory. Released in version 6.3.2.
 //
 // @param request - GetTableRequest
 //
@@ -17112,7 +17068,7 @@ func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableRespo
 
 // Summary:
 //
-// Queries table column lineage information.
+// Queries the column lineage information of tables.
 //
 // @param tmpReq - GetTableColumnLineageByTaskIdRequest
 //
@@ -17172,7 +17128,7 @@ func (client *Client) GetTableColumnLineageByTaskIdWithOptions(tmpReq *GetTableC
 
 // Summary:
 //
-// Queries table column lineage information.
+// Queries the column lineage information of tables.
 //
 // @param request - GetTableColumnLineageByTaskIdRequest
 //
@@ -17190,9 +17146,7 @@ func (client *Client) GetTableColumnLineageByTaskId(request *GetTableColumnLinea
 
 // Summary:
 //
-// Queries the column-level data lineage of an asset table.
-//
-// Online version: v5.4.2.
+// Queries the lineage information of asset table fields. Release version: v5.4.2.
 //
 // @param tmpReq - GetTableColumnLineagesRequest
 //
@@ -17256,9 +17210,7 @@ func (client *Client) GetTableColumnLineagesWithOptions(tmpReq *GetTableColumnLi
 
 // Summary:
 //
-// Queries the column-level data lineage of an asset table.
-//
-// Online version: v5.4.2.
+// Queries the lineage information of asset table fields. Release version: v5.4.2.
 //
 // @param request - GetTableColumnLineagesRequest
 //
@@ -17432,9 +17384,7 @@ func (client *Client) GetTableLineageByTaskId(request *GetTableLineageByTaskIdRe
 
 // Summary:
 //
-// Queries lineage information of an asset table.
-//
-// Release version: v5.4.2.
+// Queries the lineage information of asset tables. Available since v5.4.2.
 //
 // @param tmpReq - GetTableLineagesRequest
 //
@@ -17498,9 +17448,7 @@ func (client *Client) GetTableLineagesWithOptions(tmpReq *GetTableLineagesReques
 
 // Summary:
 //
-// Queries lineage information of an asset table.
-//
-// Release version: v5.4.2.
+// Queries the lineage information of asset tables. Available since v5.4.2.
 //
 // @param request - GetTableLineagesRequest
 //
@@ -17518,7 +17466,7 @@ func (client *Client) GetTableLineages(request *GetTableLineagesRequest) (_resul
 
 // Summary:
 //
-// Queries the progress of a transfer task by transfer task ID.
+// Queries the progress of a transfer task based on the transfer task ID.
 //
 // @param request - GetTransferInfoRequest
 //
@@ -17570,7 +17518,7 @@ func (client *Client) GetTransferInfoWithOptions(request *GetTransferInfoRequest
 
 // Summary:
 //
-// Queries the progress of a transfer task by transfer task ID.
+// Queries the progress of a transfer task based on the transfer task ID.
 //
 // @param request - GetTransferInfoRequest
 //
@@ -17588,7 +17536,7 @@ func (client *Client) GetTransferInfo(request *GetTransferInfoRequest) (_result 
 
 // Summary:
 //
-// Retrieves the details of a user-defined function.
+// Retrieves the details of a custom function.
 //
 // @param request - GetUdfRequest
 //
@@ -17644,7 +17592,7 @@ func (client *Client) GetUdfWithOptions(request *GetUdfRequest, runtime *dara.Ru
 
 // Summary:
 //
-// Retrieves the details of a user-defined function.
+// Retrieves the details of a custom function.
 //
 // @param request - GetUdfRequest
 //
@@ -17740,7 +17688,7 @@ func (client *Client) GetUdfByVersion(request *GetUdfByVersionRequest) (_result 
 
 // Summary:
 //
-// Retrieves the current user information based on the AK/SK used for request signing. Available since version v6.3.0.
+// Retrieves the current user information based on the AccessKey ID and AccessKey secret used for request signing. Released in version 6.3.0.
 //
 // @param request - GetUserByAccessKeyRequest
 //
@@ -17788,7 +17736,7 @@ func (client *Client) GetUserByAccessKeyWithOptions(request *GetUserByAccessKeyR
 
 // Summary:
 //
-// Retrieves the current user information based on the AK/SK used for request signing. Available since version v6.3.0.
+// Retrieves the current user information based on the AccessKey ID and AccessKey secret used for request signing. Released in version 6.3.0.
 //
 // @param request - GetUserByAccessKeyRequest
 //
@@ -17950,7 +17898,7 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 
 // Summary:
 //
-// Retrieves user information in batches by user ID.
+// Retrieves user information in batches based on user IDs.
 //
 // @param tmpReq - GetUsersRequest
 //
@@ -18010,7 +17958,7 @@ func (client *Client) GetUsersWithOptions(tmpReq *GetUsersRequest, runtime *dara
 
 // Summary:
 //
-// Retrieves user information in batches by user ID.
+// Retrieves user information in batches based on user IDs.
 //
 // @param request - GetUsersRequest
 //
@@ -18414,7 +18362,7 @@ func (client *Client) ListAddableUsers(request *ListAddableUsersRequest) (_resul
 
 // Summary:
 //
-// Performs a conditional query to list multiple alerting events.
+// Queries multiple alerting events based on a conditional query.
 //
 // @param tmpReq - ListAlertEventsRequest
 //
@@ -18474,7 +18422,7 @@ func (client *Client) ListAlertEventsWithOptions(tmpReq *ListAlertEventsRequest,
 
 // Summary:
 //
-// Performs a conditional query to list multiple alerting events.
+// Queries multiple alerting events based on a conditional query.
 //
 // @param request - ListAlertEventsRequest
 //
@@ -18492,7 +18440,7 @@ func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result 
 
 // Summary:
 //
-// Performs a conditional query to list multiple push records.
+// Queries multiple push records based on conditions.
 //
 // @param tmpReq - ListAlertNotificationsRequest
 //
@@ -18552,7 +18500,7 @@ func (client *Client) ListAlertNotificationsWithOptions(tmpReq *ListAlertNotific
 
 // Summary:
 //
-// Performs a conditional query to list multiple push records.
+// Queries multiple push records based on conditions.
 //
 // @param request - ListAlertNotificationsRequest
 //
@@ -19058,7 +19006,7 @@ func (client *Client) ListBatchTasks(request *ListBatchTasksRequest) (_result *L
 
 // Summary:
 //
-// Performs a paging query on offline computing templates. Released in version v6.2.0.
+// Queries offline computing templates by paging. Online version: v6.2.0.
 //
 // @param tmpReq - ListBatchTemplatesRequest
 //
@@ -19126,7 +19074,7 @@ func (client *Client) ListBatchTemplatesWithOptions(tmpReq *ListBatchTemplatesRe
 
 // Summary:
 //
-// Performs a paging query on offline computing templates. Released in version v6.2.0.
+// Queries offline computing templates by paging. Online version: v6.2.0.
 //
 // @param request - ListBatchTemplatesRequest
 //
@@ -19460,7 +19408,7 @@ func (client *Client) ListComputeClusters(request *ListComputeClustersRequest) (
 
 // Summary:
 //
-// Query the list of compute sources.
+// Queries a list of compute sources.
 //
 // @param tmpReq - ListComputeSourcesRequest
 //
@@ -19520,7 +19468,7 @@ func (client *Client) ListComputeSourcesWithOptions(tmpReq *ListComputeSourcesRe
 
 // Summary:
 //
-// Query the list of compute sources.
+// Queries a list of compute sources.
 //
 // @param request - ListComputeSourcesRequest
 //
@@ -19538,7 +19486,7 @@ func (client *Client) ListComputeSources(request *ListComputeSourcesRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of data domains.
+// Queries the list of data domains.
 //
 // @param tmpReq - ListDataDomainsRequest
 //
@@ -19598,7 +19546,7 @@ func (client *Client) ListDataDomainsWithOptions(tmpReq *ListDataDomainsRequest,
 
 // Summary:
 //
-// Retrieves a list of data domains.
+// Queries the list of data domains.
 //
 // @param request - ListDataDomainsRequest
 //
@@ -19780,7 +19728,7 @@ func (client *Client) ListDataServiceApiCalls(request *ListDataServiceApiCallsRe
 
 // Summary:
 //
-// Operations analysis: analyzes the impact of abnormal API calls.
+// Analyzes the impact of API call exceptions for operations and maintenance.
 //
 // @param tmpReq - ListDataServiceApiImpactsRequest
 //
@@ -19844,7 +19792,7 @@ func (client *Client) ListDataServiceApiImpactsWithOptions(tmpReq *ListDataServi
 
 // Summary:
 //
-// Operations analysis: analyzes the impact of abnormal API calls.
+// Analyzes the impact of API call exceptions for operations and maintenance.
 //
 // @param request - ListDataServiceApiImpactsRequest
 //
@@ -19862,9 +19810,7 @@ func (client *Client) ListDataServiceApiImpacts(request *ListDataServiceApiImpac
 
 // Summary:
 //
-// Queries the list of all applications under a data service tenant. All tenant members can perform this operation.
-//
-// Release version: v6.0.0.
+// Queries all applications under a data service tenant. All tenant members can perform this operation. Available since v6.0.0.
 //
 // @param tmpReq - ListDataServiceAppsRequest
 //
@@ -19924,9 +19870,7 @@ func (client *Client) ListDataServiceAppsWithOptions(tmpReq *ListDataServiceApps
 
 // Summary:
 //
-// Queries the list of all applications under a data service tenant. All tenant members can perform this operation.
-//
-// Release version: v6.0.0.
+// Queries all applications under a data service tenant. All tenant members can perform this operation. Available since v6.0.0.
 //
 // @param request - ListDataServiceAppsRequest
 //
@@ -19944,7 +19888,7 @@ func (client *Client) ListDataServiceApps(request *ListDataServiceAppsRequest) (
 
 // Summary:
 //
-// Queries the list of applications that the current user has permissions to access.
+// Queries the applications that the current user is authorized to access.
 //
 // @param tmpReq - ListDataServiceAuthorizedAppsRequest
 //
@@ -20008,7 +19952,7 @@ func (client *Client) ListDataServiceAuthorizedAppsWithOptions(tmpReq *ListDataS
 
 // Summary:
 //
-// Queries the list of applications that the current user has permissions to access.
+// Queries the applications that the current user is authorized to access.
 //
 // @param request - ListDataServiceAuthorizedAppsRequest
 //
@@ -20026,7 +19970,7 @@ func (client *Client) ListDataServiceAuthorizedApps(request *ListDataServiceAuth
 
 // Summary:
 //
-// Obtain the list of API permissions managed by me.
+// Retrieves the list of API permissions managed by the current user.
 //
 // @param tmpReq - ListDataServiceMyApiPermissionsRequest
 //
@@ -20090,7 +20034,7 @@ func (client *Client) ListDataServiceMyApiPermissionsWithOptions(tmpReq *ListDat
 
 // Summary:
 //
-// Obtain the list of API permissions managed by me.
+// Retrieves the list of API permissions managed by the current user.
 //
 // @param request - ListDataServiceMyApiPermissionsRequest
 //
@@ -20190,7 +20134,7 @@ func (client *Client) ListDataServiceMyAppPermissions(request *ListDataServiceMy
 
 // Summary:
 //
-// Queries the list of published APIs by page.
+// Performs a paging query on the list of published APIs.
 //
 // @param tmpReq - ListDataServicePublishedApisRequest
 //
@@ -20254,7 +20198,7 @@ func (client *Client) ListDataServicePublishedApisWithOptions(tmpReq *ListDataSe
 
 // Summary:
 //
-// Queries the list of published APIs by page.
+// Performs a paging query on the list of published APIs.
 //
 // @param request - ListDataServicePublishedApisRequest
 //
@@ -20350,13 +20294,13 @@ func (client *Client) ListDataSourceWithConfig(request *ListDataSourceWithConfig
 
 // Summary:
 //
-// Performs a conditional query to retrieve a list of datasets in a project. Online version: v6.2.0.
+// Performs a conditional query to retrieve the list of datasets in a project. Online version: v6.2.0.
 //
 // Description:
 //
 // ## Request description
 //
-// This API allows you to retrieve dataset information for a specific project by providing the tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported for paged query, and the returned packet includes the basic information of the datasets and their version details. Note that ProjectId is required, while other parameters are options that you can configure in Settings as needed to filter the results.
+// This API allows you to retrieve dataset information in a specific project by providing the tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported for paged query. The returned data packets include the basic information of the datasets and their version details. Note that `ProjectId` is required, while other parameters are options, and you can configure the Settings as needed to filter the results.
 //
 // @param tmpReq - ListDatasetsRequest
 //
@@ -20416,13 +20360,13 @@ func (client *Client) ListDatasetsWithOptions(tmpReq *ListDatasetsRequest, runti
 
 // Summary:
 //
-// Performs a conditional query to retrieve a list of datasets in a project. Online version: v6.2.0.
+// Performs a conditional query to retrieve the list of datasets in a project. Online version: v6.2.0.
 //
 // Description:
 //
 // ## Request description
 //
-// This API allows you to retrieve dataset information for a specific project by providing the tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported for paged query, and the returned packet includes the basic information of the datasets and their version details. Note that ProjectId is required, while other parameters are options that you can configure in Settings as needed to filter the results.
+// This API allows you to retrieve dataset information in a specific project by providing the tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported for paged query. The returned data packets include the basic information of the datasets and their version details. Note that `ProjectId` is required, while other parameters are options, and you can configure the Settings as needed to filter the results.
 //
 // @param request - ListDatasetsRequest
 //
@@ -20440,7 +20384,7 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
-// Query the directory tree file list.
+// Queries the list of files in a directory tree.
 //
 // @param tmpReq - ListFilesRequest
 //
@@ -20500,7 +20444,7 @@ func (client *Client) ListFilesWithOptions(tmpReq *ListFilesRequest, runtime *da
 
 // Summary:
 //
-// Query the directory tree file list.
+// Queries the list of files in a directory tree.
 //
 // @param request - ListFilesRequest
 //
@@ -20518,13 +20462,13 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 
 // Summary:
 //
-// Queries the list of governance objects based on governance type and filter conditions. Released in v6.3.0.
+// Queries the issue list based on governance types and filter conditions. Available since v6.3.0.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation allows you to retrieve dataset information under a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. Note that `ProjectId` is required, while other parameters are options that can be configured as needed to filter results.
+// This API operation allows you to retrieve dataset information for a specific project by providing the tenant ID, project ID, and other options such as keywords and type lists. It supports paging and paged query. The returned data packet includes the basic information and version details of the datasets. Note that `ProjectId` is required. Other parameters are options and can be configured in Settings to filter the results as needed.
 //
 // @param tmpReq - ListGovernObjectsRequest
 //
@@ -20584,13 +20528,13 @@ func (client *Client) ListGovernObjectsWithOptions(tmpReq *ListGovernObjectsRequ
 
 // Summary:
 //
-// Queries the list of governance objects based on governance type and filter conditions. Released in v6.3.0.
+// Queries the issue list based on governance types and filter conditions. Available since v6.3.0.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation allows you to retrieve dataset information under a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. Note that `ProjectId` is required, while other parameters are options that can be configured as needed to filter results.
+// This API operation allows you to retrieve dataset information for a specific project by providing the tenant ID, project ID, and other options such as keywords and type lists. It supports paging and paged query. The returned data packet includes the basic information and version details of the datasets. Note that `ProjectId` is required. Other parameters are options and can be configured in Settings to filter the results as needed.
 //
 // @param request - ListGovernObjectsRequest
 //
@@ -20690,7 +20634,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves the list of custom Kubernetes resource groups under a tenant. Released in version 6.4.0.
+// Retrieves the list of custom K8s resource groups under a tenant. Available since v6.4.0.
 //
 // @param request - ListK8SResourceGroupIdsRequest
 //
@@ -20738,7 +20682,7 @@ func (client *Client) ListK8SResourceGroupIdsWithOptions(request *ListK8SResourc
 
 // Summary:
 //
-// Retrieves the list of custom Kubernetes resource groups under a tenant. Released in version 6.4.0.
+// Retrieves the list of custom K8s resource groups under a tenant. Available since v6.4.0.
 //
 // @param request - ListK8SResourceGroupIdsRequest
 //
@@ -20756,7 +20700,7 @@ func (client *Client) ListK8SResourceGroupIds(request *ListK8SResourceGroupIdsRe
 
 // Summary:
 //
-// Queries knowledge graph entity records with paging. Online version: v6.1.1.
+// Queries knowledge graph entity records by paging. Online version: v6.1.1.
 //
 // @param tmpReq - ListKgEntityRequest
 //
@@ -20824,7 +20768,7 @@ func (client *Client) ListKgEntityWithOptions(tmpReq *ListKgEntityRequest, runti
 
 // Summary:
 //
-// Queries knowledge graph entity records with paging. Online version: v6.1.1.
+// Queries knowledge graph entity records by paging. Online version: v6.1.1.
 //
 // @param request - ListKgEntityRequest
 //
@@ -20842,7 +20786,7 @@ func (client *Client) ListKgEntity(request *ListKgEntityRequest) (_result *ListK
 
 // Summary:
 //
-// Queries knowledge graph relationship records by paging. Online version: v6.1.1.
+// Performs a paged query on knowledge graph relation records. Paging is available online in version v6.1.1.
 //
 // @param tmpReq - ListKgRelationRequest
 //
@@ -20910,7 +20854,7 @@ func (client *Client) ListKgRelationWithOptions(tmpReq *ListKgRelationRequest, r
 
 // Summary:
 //
-// Queries knowledge graph relationship records by paging. Online version: v6.1.1.
+// Performs a paged query on knowledge graph relation records. Paging is available online in version v6.1.1.
 //
 // @param request - ListKgRelationRequest
 //
@@ -21342,21 +21286,13 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 //
 // Description:
 //
-// Retrieves the list of project roles for a specified project type under a tenant. The roleType field in the returned role list indicates the role type:
+// Retrieves a list of project roles under a specified project type for a tenant. The roleType field in the returned role list identifies the role type:
 //
-// - BUILD_IN: built-in role.
+// - BUILD_IN: built-in role
 //
-// - CUSTOM: custom role.
+// - CUSTOM: custom role
 //
-// The ProjectType request parameter is required. Valid values:
-//
-// - BASIC: basic mode project.
-//
-// - DEV: development environment project.
-//
-// - PROD: production environment project.
-//
-// - TAG: tag platform project.
+// The ProjectType request parameter is required. Valid values: BASIC (basic mode project), DEV (development environment project), PROD (production environment project), and TAG (tag platform project).
 //
 // @param request - ListProjectRolesRequest
 //
@@ -21412,21 +21348,13 @@ func (client *Client) ListProjectRolesWithOptions(request *ListProjectRolesReque
 //
 // Description:
 //
-// Retrieves the list of project roles for a specified project type under a tenant. The roleType field in the returned role list indicates the role type:
+// Retrieves a list of project roles under a specified project type for a tenant. The roleType field in the returned role list identifies the role type:
 //
-// - BUILD_IN: built-in role.
+// - BUILD_IN: built-in role
 //
-// - CUSTOM: custom role.
+// - CUSTOM: custom role
 //
-// The ProjectType request parameter is required. Valid values:
-//
-// - BASIC: basic mode project.
-//
-// - DEV: development environment project.
-//
-// - PROD: production environment project.
-//
-// - TAG: tag platform project.
+// The ProjectType request parameter is required. Valid values: BASIC (basic mode project), DEV (development environment project), PROD (production environment project), and TAG (tag platform project).
 //
 // @param request - ListProjectRolesRequest
 //
@@ -21678,7 +21606,7 @@ func (client *Client) ListPythonModules(request *ListPythonModulesRequest) (_res
 
 // Summary:
 //
-// Queries the list of anomaly archived tables under a specified monitored object. Online version: v6.3.0.
+// Queries the list of exception archived tables for a specified monitored object. Release version: v6.3.0.
 //
 // @param tmpReq - ListQualityArchiveTablesRequest
 //
@@ -21738,7 +21666,7 @@ func (client *Client) ListQualityArchiveTablesWithOptions(tmpReq *ListQualityArc
 
 // Summary:
 //
-// Queries the list of anomaly archived tables under a specified monitored object. Online version: v6.3.0.
+// Queries the list of exception archived tables for a specified monitored object. Release version: v6.3.0.
 //
 // @param request - ListQualityArchiveTablesRequest
 //
@@ -21756,7 +21684,7 @@ func (client *Client) ListQualityArchiveTables(request *ListQualityArchiveTables
 
 // Summary:
 //
-// Performs a paging query of quality rule nodes. Online version: v5.4.2.
+// Performs a paged query on quality rule nodes with paging. Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityRuleTasksRequest
 //
@@ -21816,7 +21744,7 @@ func (client *Client) ListQualityRuleTasksWithOptions(tmpReq *ListQualityRuleTas
 
 // Summary:
 //
-// Performs a paging query of quality rule nodes. Online version: v5.4.2.
+// Performs a paged query on quality rule nodes with paging. Online version: v5.4.2.
 //
 // @param request - ListQualityRuleTasksRequest
 //
@@ -21990,9 +21918,7 @@ func (client *Client) ListQualityTemplates(request *ListQualityTemplatesRequest)
 
 // Summary:
 //
-// Queries quality monitoring nodes by paging.
-//
-// Online version: v5.4.2.
+// Performs a paged query on quality monitoring nodes with paging. Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityWatchTasksRequest
 //
@@ -22052,9 +21978,7 @@ func (client *Client) ListQualityWatchTasksWithOptions(tmpReq *ListQualityWatchT
 
 // Summary:
 //
-// Queries quality monitoring nodes by paging.
-//
-// Online version: v5.4.2.
+// Performs a paged query on quality monitoring nodes with paging. Online version: v5.4.2.
 //
 // @param request - ListQualityWatchTasksRequest
 //
@@ -23164,11 +23088,11 @@ func (client *Client) ListStreamJobManagerLogs(request *ListStreamJobManagerLogs
 
 // Summary:
 //
-// Queries the start and stop operation records of real-time tasks. Available since v6.4.0.
+// Retrieves a list of start and stop operation records for real-time tasks. Available since version 6.4.0.
 //
 // Description:
 //
-// Retrieves the start and stop operation records of real-time tasks in the production environment.
+// Retrieves a list of start and stop operation records for real-time tasks in the production environment.
 //
 // @param request - ListStreamOpsRecordsRequest
 //
@@ -23224,11 +23148,11 @@ func (client *Client) ListStreamOpsRecordsWithOptions(request *ListStreamOpsReco
 
 // Summary:
 //
-// Queries the start and stop operation records of real-time tasks. Available since v6.4.0.
+// Retrieves a list of start and stop operation records for real-time tasks. Available since version 6.4.0.
 //
 // Description:
 //
-// Retrieves the start and stop operation records of real-time tasks in the production environment.
+// Retrieves a list of start and stop operation records for real-time tasks in the production environment.
 //
 // @param request - ListStreamOpsRecordsRequest
 //
@@ -23492,9 +23416,7 @@ func (client *Client) ListSubmitRecords(request *ListSubmitRecordsRequest) (_res
 
 // Summary:
 //
-// Queries the metadata of asset tables by page.
-//
-// Available in version v5.4.2.
+// Queries the metadata of asset tables through paging. Online version: v5.4.2.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -23554,9 +23476,7 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 
 // Summary:
 //
-// Queries the metadata of asset tables by page.
-//
-// Available in version v5.4.2.
+// Queries the metadata of asset tables through paging. Online version: v5.4.2.
 //
 // @param request - ListTablesRequest
 //
@@ -23652,15 +23572,15 @@ func (client *Client) ListTenantMembers(request *ListTenantMembersRequest) (_res
 
 // Summary:
 //
-// Retrieves the list of tenant roles. Release version: v6.3.2.
+// Retrieves the list of tenant roles. Available since version v6.3.2.
 //
 // Description:
 //
 // Retrieves the list of tenant roles. The roleType field in the returned role list indicates the role type:
 //
-// - BUILD_IN: built-in role
+// - BUILD_IN: built-in role.
 //
-// - CUSTOM: custom role (created by the tenant)
+// - CUSTOM: custom role (created by the tenant).
 //
 // This operation does not require additional business request parameters. The tenantId parameter is automatically injected by the POP gateway context.
 //
@@ -23710,15 +23630,15 @@ func (client *Client) ListTenantRolesWithOptions(request *ListTenantRolesRequest
 
 // Summary:
 //
-// Retrieves the list of tenant roles. Release version: v6.3.2.
+// Retrieves the list of tenant roles. Available since version v6.3.2.
 //
 // Description:
 //
 // Retrieves the list of tenant roles. The roleType field in the returned role list indicates the role type:
 //
-// - BUILD_IN: built-in role
+// - BUILD_IN: built-in role.
 //
-// - CUSTOM: custom role (created by the tenant)
+// - CUSTOM: custom role (created by the tenant).
 //
 // This operation does not require additional business request parameters. The tenantId parameter is automatically injected by the POP gateway context.
 //
@@ -24128,7 +24048,7 @@ func (client *Client) OfflineBatchTask(request *OfflineBatchTaskRequest) (_resul
 
 // Summary:
 //
-// Offline a business entity.
+// Takes a business entity offline.
 //
 // @param tmpReq - OfflineBizEntityRequest
 //
@@ -24188,7 +24108,7 @@ func (client *Client) OfflineBizEntityWithOptions(tmpReq *OfflineBizEntityReques
 
 // Summary:
 //
-// Offline a business entity.
+// Takes a business entity offline.
 //
 // @param request - OfflineBizEntityRequest
 //
@@ -24616,7 +24536,7 @@ func (client *Client) OperateInstance(request *OperateInstanceRequest) (_result 
 
 // Summary:
 //
-// Parses the logical table dependencies of an offline compute node. The parsing result may contain self-dependent nodes in the upstream dependency information, where the upstream node ID is the same as the node ID of the parsed code. You must handle such cases on your own.
+// Parses the logical table dependencies of a batch task. Note that the upstream dependency information in the parsing result may contain self-dependent nodes (where the upstream node ID is the same as the node ID of the parsed code), which you must handle manually.
 //
 // @param tmpReq - ParseBatchTaskDependencyRequest
 //
@@ -24676,7 +24596,7 @@ func (client *Client) ParseBatchTaskDependencyWithOptions(tmpReq *ParseBatchTask
 
 // Summary:
 //
-// Parses the logical table dependencies of an offline compute node. The parsing result may contain self-dependent nodes in the upstream dependency information, where the upstream node ID is the same as the node ID of the parsed code. You must handle such cases on your own.
+// Parses the logical table dependencies of a batch task. Note that the upstream dependency information in the parsing result may contain self-dependent nodes (where the upstream node ID is the same as the node ID of the parsed code), which you must handle manually.
 //
 // @param request - ParseBatchTaskDependencyRequest
 //
@@ -24694,7 +24614,7 @@ func (client *Client) ParseBatchTaskDependency(request *ParseBatchTaskDependency
 
 // Summary:
 //
-// Pauses the scheduling of physical nodes. This stops the scheduling of nodes, and downstream nodes cannot be triggered. Currently, only offline code nodes and integration nodes are supported.
+// Pauses the scheduling of physical nodes. This pauses node scheduling and prevents downstream nodes from being triggered. Currently, only offline code nodes and integration nodes are supported.
 //
 // @param tmpReq - PausePhysicalNodeRequest
 //
@@ -24758,7 +24678,7 @@ func (client *Client) PausePhysicalNodeWithOptions(tmpReq *PausePhysicalNodeRequ
 
 // Summary:
 //
-// Pauses the scheduling of physical nodes. This stops the scheduling of nodes, and downstream nodes cannot be triggered. Currently, only offline code nodes and integration nodes are supported.
+// Pauses the scheduling of physical nodes. This pauses node scheduling and prevents downstream nodes from being triggered. Currently, only offline code nodes and integration nodes are supported.
 //
 // @param request - PausePhysicalNodeRequest
 //
@@ -25014,9 +24934,7 @@ func (client *Client) PublishObjectList(request *PublishObjectListRequest) (_res
 
 // Summary:
 //
-// Publishes a standard.
-//
-// Release version: v5.4.2.
+// Publishes a standard. Release version: v5.4.2.
 //
 // @param tmpReq - PublishStandardRequest
 //
@@ -25076,9 +24994,7 @@ func (client *Client) PublishStandardWithOptions(tmpReq *PublishStandardRequest,
 
 // Summary:
 //
-// Publishes a standard.
-//
-// Release version: v5.4.2.
+// Publishes a standard. Release version: v5.4.2.
 //
 // @param request - PublishStandardRequest
 //
@@ -25178,9 +25094,7 @@ func (client *Client) QueryPipelineSubmitResult(request *QueryPipelineSubmitResu
 
 // Summary:
 //
-// Remove regular members from a data service application. Only the application owner can perform this operation.
-//
-// Released version: v6.0.0.
+// Deletes a regular member from a data service application. Only the application owner can perform this operation. Available since v6.0.0.
 //
 // @param tmpReq - RemoveDataServiceAppMemberRequest
 //
@@ -25240,9 +25154,7 @@ func (client *Client) RemoveDataServiceAppMemberWithOptions(tmpReq *RemoveDataSe
 
 // Summary:
 //
-// Remove regular members from a data service application. Only the application owner can perform this operation.
-//
-// Released version: v6.0.0.
+// Deletes a regular member from a data service application. Only the application owner can perform this operation. Available since v6.0.0.
 //
 // @param request - RemoveDataServiceAppMemberRequest
 //
@@ -25342,9 +25254,7 @@ func (client *Client) RemoveProjectMember(request *RemoveProjectMemberRequest) (
 
 // Summary:
 //
-// Deletes the bindings between quality rules and schedules in batches.
-//
-// Release version: v5.4.2.
+// Deletes the bindings between quality rules and schedules in batches. Released in v5.4.2.
 //
 // @param tmpReq - RemoveQualityRuleSchedulesRequest
 //
@@ -25404,9 +25314,7 @@ func (client *Client) RemoveQualityRuleSchedulesWithOptions(tmpReq *RemoveQualit
 
 // Summary:
 //
-// Deletes the bindings between quality rules and schedules in batches.
-//
-// Release version: v5.4.2.
+// Deletes the bindings between quality rules and schedules in batches. Released in v5.4.2.
 //
 // @param request - RemoveQualityRuleSchedulesRequest
 //
@@ -25658,7 +25566,7 @@ func (client *Client) RemoveUserGroupMember(request *RemoveUserGroupMemberReques
 
 // Summary:
 //
-// Updates the whitelist of a project.
+// Updates the project whitelist.
 //
 // @param tmpReq - ReplaceProjectWhiteListsRequest
 //
@@ -25722,7 +25630,7 @@ func (client *Client) ReplaceProjectWhiteListsWithOptions(tmpReq *ReplaceProject
 
 // Summary:
 //
-// Updates the whitelist of a project.
+// Updates the project whitelist.
 //
 // @param request - ReplaceProjectWhiteListsRequest
 //
@@ -26138,7 +26046,7 @@ func (client *Client) RevokeDataServiceApi(request *RevokeDataServiceApiRequest)
 
 // Summary:
 //
-// Revokes resource authorization from a user.
+// Revokes resource authorization for a user.
 //
 // @param tmpReq - RevokeResourcePermissionRequest
 //
@@ -26198,7 +26106,7 @@ func (client *Client) RevokeResourcePermissionWithOptions(tmpReq *RevokeResource
 
 // Summary:
 //
-// Revokes resource authorization from a user.
+// Revokes resource authorization for a user.
 //
 // @param request - RevokeResourcePermissionRequest
 //
@@ -27262,7 +27170,7 @@ func (client *Client) SubmitRectifyFlowForReview(request *SubmitRectifyFlowForRe
 //
 // Description:
 //
-// Queries the details of a published API operation by AppKey.
+// Queries the details of published APIs based on the appKey.
 //
 // @param tmpReq - SyncDepartmentRequest
 //
@@ -27326,7 +27234,7 @@ func (client *Client) SyncDepartmentWithOptions(tmpReq *SyncDepartmentRequest, r
 //
 // Description:
 //
-// Queries the details of a published API operation by AppKey.
+// Queries the details of published APIs based on the appKey.
 //
 // @param request - SyncDepartmentRequest
 //
@@ -27836,7 +27744,7 @@ func (client *Client) UpdateBatchTask(request *UpdateBatchTaskRequest) (_result 
 
 // Summary:
 //
-// Edits the custom data lineage of a batch task.
+// Updates the custom lineage of an offline computing task.
 //
 // @param tmpReq - UpdateBatchTaskUdfLineagesRequest
 //
@@ -27896,7 +27804,7 @@ func (client *Client) UpdateBatchTaskUdfLineagesWithOptions(tmpReq *UpdateBatchT
 
 // Summary:
 //
-// Edits the custom data lineage of a batch task.
+// Updates the custom lineage of an offline computing task.
 //
 // @param request - UpdateBatchTaskUdfLineagesRequest
 //
@@ -28230,7 +28138,7 @@ func (client *Client) UpdateBizUnit(request *UpdateBizUnitRequest) (_result *Upd
 
 // Summary:
 //
-// Modifies a cluster. Online version: v6.3.0.
+// Modifies a cluster. Available in v6.3.0 and later.
 //
 // @param tmpReq - UpdateComputeClusterRequest
 //
@@ -28294,7 +28202,7 @@ func (client *Client) UpdateComputeClusterWithOptions(tmpReq *UpdateComputeClust
 
 // Summary:
 //
-// Modifies a cluster. Online version: v6.3.0.
+// Modifies a cluster. Available in v6.3.0 and later.
 //
 // @param request - UpdateComputeClusterRequest
 //
@@ -28558,9 +28466,7 @@ func (client *Client) UpdateDataDomain(request *UpdateDataDomainRequest) (_resul
 
 // Summary:
 //
-// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation.
-//
-// Release version: v6.0.0.
+// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation. Released in version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppRequest
 //
@@ -28620,9 +28526,7 @@ func (client *Client) UpdateDataServiceAppWithOptions(tmpReq *UpdateDataServiceA
 
 // Summary:
 //
-// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation.
-//
-// Release version: v6.0.0.
+// Updates a data service application. Only super administrators, system administrators, and application owners can perform this operation. Released in version: v6.0.0.
 //
 // @param request - UpdateDataServiceAppRequest
 //
@@ -28718,9 +28622,7 @@ func (client *Client) UpdateDataServiceAppGroup(request *UpdateDataServiceAppGro
 
 // Summary:
 //
-// Updates the regular members of a data service application. Only the application owner can perform this operation.
-//
-// Online version: v6.0.0.
+// Updates the regular members of a data service application. Only the application owner can perform this operation. Release version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppMemberRequest
 //
@@ -28780,9 +28682,7 @@ func (client *Client) UpdateDataServiceAppMemberWithOptions(tmpReq *UpdateDataSe
 
 // Summary:
 //
-// Updates the regular members of a data service application. Only the application owner can perform this operation.
-//
-// Online version: v6.0.0.
+// Updates the regular members of a data service application. Only the application owner can perform this operation. Release version: v6.0.0.
 //
 // @param request - UpdateDataServiceAppMemberRequest
 //
@@ -28800,7 +28700,7 @@ func (client *Client) UpdateDataServiceAppMember(request *UpdateDataServiceAppMe
 
 // Summary:
 //
-// Edits the basic information of a data source. Tenant administrators, data administrators, business segment administrators, project administrators, and operations administrators have permissions to perform this operation.
+// Modifies the basic information of a data source. Only tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators can perform this operation.
 //
 // @param tmpReq - UpdateDataSourceBasicInfoRequest
 //
@@ -28860,7 +28760,7 @@ func (client *Client) UpdateDataSourceBasicInfoWithOptions(tmpReq *UpdateDataSou
 
 // Summary:
 //
-// Edits the basic information of a data source. Tenant administrators, data administrators, business segment administrators, project administrators, and operations administrators have permissions to perform this operation.
+// Modifies the basic information of a data source. Only tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators can perform this operation.
 //
 // @param request - UpdateDataSourceBasicInfoRequest
 //
@@ -29148,7 +29048,7 @@ func (client *Client) UpdateDevProdProject(request *UpdateDevProdProjectRequest)
 
 // Summary:
 //
-// Moves the file position in the menu tree.
+// Moves a menu tree file to a new location.
 //
 // @param request - UpdateFileDirectoryRequest
 //
@@ -29208,7 +29108,7 @@ func (client *Client) UpdateFileDirectoryWithOptions(request *UpdateFileDirector
 
 // Summary:
 //
-// Moves the file position in the menu tree.
+// Moves a menu tree file to a new location.
 //
 // @param request - UpdateFileDirectoryRequest
 //
@@ -29226,7 +29126,7 @@ func (client *Client) UpdateFileDirectory(request *UpdateFileDirectoryRequest) (
 
 // Summary:
 //
-// Updates a file name.
+// Updates the file name.
 //
 // @param request - UpdateFileNameRequest
 //
@@ -29286,7 +29186,7 @@ func (client *Client) UpdateFileNameWithOptions(request *UpdateFileNameRequest, 
 
 // Summary:
 //
-// Updates a file name.
+// Updates the file name.
 //
 // @param request - UpdateFileNameRequest
 //
@@ -29304,7 +29204,7 @@ func (client *Client) UpdateFileName(request *UpdateFileNameRequest) (_result *U
 
 // Summary:
 //
-// Edits a knowledge graph entity record. Online version: v6.1.1.
+// Edits a knowledge graph entity record. Available since v6.1.1.
 //
 // @param tmpReq - UpdateKgEntityRequest
 //
@@ -29368,7 +29268,7 @@ func (client *Client) UpdateKgEntityWithOptions(tmpReq *UpdateKgEntityRequest, r
 
 // Summary:
 //
-// Edits a knowledge graph entity record. Online version: v6.1.1.
+// Edits a knowledge graph entity record. Available since v6.1.1.
 //
 // @param request - UpdateKgEntityRequest
 //
@@ -29386,7 +29286,7 @@ func (client *Client) UpdateKgEntity(request *UpdateKgEntityRequest) (_result *U
 
 // Summary:
 //
-// Edits a knowledge graph relationship record. Online version: v6.1.1.
+// Updates a knowledge graph relationship record. Release version: v6.1.1.
 //
 // @param tmpReq - UpdateKgRelationRequest
 //
@@ -29450,7 +29350,7 @@ func (client *Client) UpdateKgRelationWithOptions(tmpReq *UpdateKgRelationReques
 
 // Summary:
 //
-// Edits a knowledge graph relationship record. Online version: v6.1.1.
+// Updates a knowledge graph relationship record. Release version: v6.1.1.
 //
 // @param request - UpdateKgRelationRequest
 //
@@ -30190,9 +30090,7 @@ func (client *Client) UpdateScheduleMonitor(request *UpdateScheduleMonitorReques
 
 // Summary:
 //
-// Updates a data classification.
-//
-// Release version: v5.4.2.
+// Updates a data classification. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateSecurityClassifyRequest
 //
@@ -30252,9 +30150,7 @@ func (client *Client) UpdateSecurityClassifyWithOptions(tmpReq *UpdateSecurityCl
 
 // Summary:
 //
-// Updates a data classification.
-//
-// Release version: v5.4.2.
+// Updates a data classification. Release version: v5.4.2.
 //
 // @param request - UpdateSecurityClassifyRequest
 //
@@ -30272,7 +30168,7 @@ func (client *Client) UpdateSecurityClassify(request *UpdateSecurityClassifyRequ
 
 // Summary:
 //
-// Updates a data classification folder. Release version: v5.4.2.
+// Updates the data classification catalog. Released in version 5.4.2.
 //
 // @param tmpReq - UpdateSecurityClassifyCatalogRequest
 //
@@ -30332,7 +30228,7 @@ func (client *Client) UpdateSecurityClassifyCatalogWithOptions(tmpReq *UpdateSec
 
 // Summary:
 //
-// Updates a data classification folder. Release version: v5.4.2.
+// Updates the data classification catalog. Released in version 5.4.2.
 //
 // @param request - UpdateSecurityClassifyCatalogRequest
 //
@@ -30428,9 +30324,7 @@ func (client *Client) UpdateSecurityIdentifyResultStatus(request *UpdateSecurity
 
 // Summary:
 //
-// Updates data classification.
-//
-// Online version: v5.4.2.
+// Updates the data classification level. Released in version 5.4.2.
 //
 // @param tmpReq - UpdateSecurityLevelRequest
 //
@@ -30490,9 +30384,7 @@ func (client *Client) UpdateSecurityLevelWithOptions(tmpReq *UpdateSecurityLevel
 
 // Summary:
 //
-// Updates data classification.
-//
-// Online version: v5.4.2.
+// Updates the data classification level. Released in version 5.4.2.
 //
 // @param request - UpdateSecurityLevelRequest
 //
@@ -30744,9 +30636,7 @@ func (client *Client) UpdateStandardMappingToInvalid(request *UpdateStandardMapp
 
 // Summary:
 //
-// Update standard set.
-//
-// Release version: v5.4.2.
+// Updates a standard set. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardSetRequest
 //
@@ -30806,9 +30696,7 @@ func (client *Client) UpdateStandardSetWithOptions(tmpReq *UpdateStandardSetRequ
 
 // Summary:
 //
-// Update standard set.
-//
-// Release version: v5.4.2.
+// Updates a standard set. Release version: v5.4.2.
 //
 // @param request - UpdateStandardSetRequest
 //
@@ -30826,9 +30714,7 @@ func (client *Client) UpdateStandardSet(request *UpdateStandardSetRequest) (_res
 
 // Summary:
 //
-// Updates a data standard template.
-//
-// Release version: v5.4.2.
+// Updates a data standard template. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardTemplateRequest
 //
@@ -30888,9 +30774,7 @@ func (client *Client) UpdateStandardTemplateWithOptions(tmpReq *UpdateStandardTe
 
 // Summary:
 //
-// Updates a data standard template.
-//
-// Release version: v5.4.2.
+// Updates a data standard template. Release version: v5.4.2.
 //
 // @param request - UpdateStandardTemplateRequest
 //
@@ -30908,9 +30792,7 @@ func (client *Client) UpdateStandardTemplate(request *UpdateStandardTemplateRequ
 
 // Summary:
 //
-// Updates a data standard root word.
-//
-// Online version: v5.4.2.
+// Updates a data standard word root. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardWordRootRequest
 //
@@ -30970,9 +30852,7 @@ func (client *Client) UpdateStandardWordRootWithOptions(tmpReq *UpdateStandardWo
 
 // Summary:
 //
-// Updates a data standard root word.
-//
-// Online version: v5.4.2.
+// Updates a data standard word root. Release version: v5.4.2.
 //
 // @param request - UpdateStandardWordRootRequest
 //
@@ -31146,7 +31026,7 @@ func (client *Client) UpdateTenantMember(request *UpdateTenantMemberRequest) (_r
 
 // Summary:
 //
-// Edits a user-defined function.
+// Modifies a custom function.
 //
 // @param tmpReq - UpdateUdfRequest
 //
@@ -31206,7 +31086,7 @@ func (client *Client) UpdateUdfWithOptions(tmpReq *UpdateUdfRequest, runtime *da
 
 // Summary:
 //
-// Edits a user-defined function.
+// Modifies a custom function.
 //
 // @param request - UpdateUdfRequest
 //
@@ -31224,7 +31104,7 @@ func (client *Client) UpdateUdf(request *UpdateUdfRequest) (_result *UpdateUdfRe
 
 // Summary:
 //
-// Edits a user group.
+// Updates a user group.
 //
 // @param tmpReq - UpdateUserGroupRequest
 //
@@ -31284,7 +31164,7 @@ func (client *Client) UpdateUserGroupWithOptions(tmpReq *UpdateUserGroupRequest,
 
 // Summary:
 //
-// Edits a user group.
+// Updates a user group.
 //
 // @param request - UpdateUserGroupRequest
 //
@@ -31848,9 +31728,7 @@ func (client *Client) UpsertQualityWatch(request *UpsertQualityWatchRequest) (_r
 
 // Summary:
 //
-// Creates or updates alert settings for a monitored object.
-//
-// Release version: v5.4.2.
+// Creates or modifies the alert settings for a monitored object. Released in version 5.4.2.
 //
 // @param tmpReq - UpsertQualityWatchAlertRequest
 //
@@ -31910,9 +31788,7 @@ func (client *Client) UpsertQualityWatchAlertWithOptions(tmpReq *UpsertQualityWa
 
 // Summary:
 //
-// Creates or updates alert settings for a monitored object.
-//
-// Release version: v5.4.2.
+// Creates or modifies the alert settings for a monitored object. Released in version 5.4.2.
 //
 // @param request - UpsertQualityWatchAlertRequest
 //

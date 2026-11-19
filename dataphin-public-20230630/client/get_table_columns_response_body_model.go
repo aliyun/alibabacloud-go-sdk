@@ -38,7 +38,7 @@ type GetTableColumnsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The details of the backend response exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetTableColumnsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Specifies whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,19 +130,19 @@ func (s *GetTableColumnsResponseBody) Validate() error {
 }
 
 type GetTableColumnsResponseBodyColumnList struct {
-	// The ID of the data classification.
+	// The data classification ID.
 	//
 	// example:
 	//
 	// 12345
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The name of the data classification.
+	// The data classification name.
 	//
 	// example:
 	//
 	// test
 	ClassifyName *string `json:"ClassifyName,omitempty" xml:"ClassifyName,omitempty"`
-	// The comment of the field.
+	// The field comment.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ type GetTableColumnsResponseBodyColumnList struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 3301
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type GetTableColumnsResponseBodyColumnList struct {
 	//
 	// Age
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The environment to which the field belongs. Valid values: dev and prod.
+	// The environment to which the table belongs. Valid values: dev and prod.
 	//
 	// example:
 	//
@@ -202,19 +202,19 @@ type GetTableColumnsResponseBodyColumnList struct {
 	//
 	// 1121.col1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// Indicates whether the field is a foreign key.
+	// Specifies whether the column is a foreign key.
 	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
-	// Indicates whether the field is a partition key.
+	// Specifies whether the column is a partition key.
 	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
-	// Indicates whether the field is a primary key.
+	// Specifies whether the column is a primary key.
 	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
-	// The user who last modified the field.
+	// The last modifier.
 	//
 	// example:
 	//
 	// 30012011
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The abbreviation of the data security level.
+	// The abbreviation of the data classification level.
 	//
 	// example:
 	//
@@ -226,15 +226,15 @@ type GetTableColumnsResponseBodyColumnList struct {
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the field can be null.
+	// Specifies whether the column can be null.
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	// The sequence number.
+	// The ordinal number.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type GetTableColumnsResponseBodyColumnList struct {
 	//
 	// 1121
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

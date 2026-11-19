@@ -22,13 +22,13 @@ type iUpdateFileDirectoryRequest interface {
 }
 
 type UpdateFileDirectoryRequest struct {
-	// The updated file folder after the move.
+	// The new directory of the file.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// /xx测试/目录new
+	// /xxTest/directoryNew
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The file ID.
 	//
@@ -46,6 +46,8 @@ type UpdateFileDirectoryRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

@@ -42,7 +42,7 @@ type GetDataServiceApiDocumentRequest struct {
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The version.
+	// The version ID.
 	//
 	// example:
 	//

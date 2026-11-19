@@ -26,6 +26,8 @@ type RevokeResourcePermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,15 +83,15 @@ func (s *RevokeResourcePermissionRequest) Validate() error {
 }
 
 type RevokeResourcePermissionRequestRevokeCommand struct {
-	// The list of operations.
+	// The operation list.
 	OperateList []*string `json:"OperateList,omitempty" xml:"OperateList,omitempty" type:"Repeated"`
-	// The reason for revoking the authorization.
+	// The revocation reason.
 	//
 	// example:
 	//
-	// xx
+	// The business authorization has expired
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The list of resources.
+	// The resources.
 	//
 	// This parameter is required.
 	ResourceList []*RevokeResourcePermissionRequestRevokeCommandResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`

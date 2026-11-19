@@ -30,7 +30,7 @@ type GetLlmModelProviderByNameResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The large language model service provider and available models.
+	// The large model service provider and available models.
 	Data *GetLlmModelProviderByNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type GetLlmModelProviderByNameResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The details of the backend response exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetLlmModelProviderByNameResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -132,7 +132,7 @@ type GetLlmModelProviderByNameResponseBodyData struct {
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	// The enabling status.
+	// The enabled status.
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ type GetLlmModelProviderByNameResponseBodyData struct {
 	LlmModels []*GetLlmModelProviderByNameResponseBodyDataLlmModels `json:"LlmModels,omitempty" xml:"LlmModels,omitempty" type:"Repeated"`
 	// The source of the model service provider. Valid values:
 	//
-	// - BUILTIN_MODEL: built-in
+	// - BUILTIN_MODEL: Built-in.
 	//
-	// - BYOM: user-provided
+	// - BYOM: Bring your own model.
 	//
 	// example:
 	//
 	// BUILTIN_MODEL
 	ProviderSource *string `json:"ProviderSource,omitempty" xml:"ProviderSource,omitempty"`
-	// The service provider type. Valid values:
+	// The provider type. Valid values:
 	//
 	// - BAILIAN
 	//
@@ -273,13 +273,13 @@ type GetLlmModelProviderByNameResponseBodyDataLlmModels struct {
 	//
 	// 通义千问-Max
 	CnName *string `json:"CnName,omitempty" xml:"CnName,omitempty"`
-	// The model description.
+	// The description of the model.
 	//
 	// example:
 	//
 	// General text generation model
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of available dimension values for the embedding model. Only embedding models have this value.
+	// The list of available dimension values for the embedding model. This value is available only for embedding models.
 	EmbeddingDimensions []*int32 `json:"EmbeddingDimensions,omitempty" xml:"EmbeddingDimensions,omitempty" type:"Repeated"`
 	// The enabling status.
 	//
@@ -287,7 +287,7 @@ type GetLlmModelProviderByNameResponseBodyDataLlmModels struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The model invocation method. Valid values:
+	// The model invocation type. Valid values:
 	//
 	// - OPEN_AI
 	//
@@ -297,7 +297,7 @@ type GetLlmModelProviderByNameResponseBodyDataLlmModels struct {
 	//
 	// DASH_SCOPE
 	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	// The model ID.
+	// The ID of the model.
 	//
 	// example:
 	//
@@ -305,17 +305,17 @@ type GetLlmModelProviderByNameResponseBodyDataLlmModels struct {
 	ModelId *int64 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// The list of model modality types. Valid values:
 	//
-	// - TEXT: text
+	// - TEXT: Text.
 	//
-	// - IMAGE: image
+	// - IMAGE: Image.
 	//
-	// - AUDIO: audio
+	// - AUDIO: Audio.
 	//
-	// - VIDEO: video
+	// - VIDEO: Video.
 	//
-	// - EMBEDDING: embedding
+	// - EMBEDDING: Embedding.
 	ModelTypes []*string `json:"ModelTypes,omitempty" xml:"ModelTypes,omitempty" type:"Repeated"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
@@ -329,11 +329,11 @@ type GetLlmModelProviderByNameResponseBodyDataLlmModels struct {
 	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
 	// The list of model task capabilities. Valid values:
 	//
-	// - ASR: speech recognition
+	// - ASR: Speech recognition.
 	//
-	// - TTS: speech synthesis
+	// - TTS: Speech synthesis.
 	//
-	// - TRANSLATION: speech translation
+	// - TRANSLATION: Speech translation.
 	Tasks []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 

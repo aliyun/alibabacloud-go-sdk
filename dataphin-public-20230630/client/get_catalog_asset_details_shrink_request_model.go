@@ -18,7 +18,7 @@ type iGetCatalogAssetDetailsShrinkRequest interface {
 }
 
 type GetCatalogAssetDetailsShrinkRequest struct {
-	// The paged query for the listed asset catalog.
+	// The paging query for the list of listed asset catalogs.
 	//
 	// This parameter is required.
 	GetCatalogAssetDetailsQueryShrink *string `json:"GetCatalogAssetDetailsQuery,omitempty" xml:"GetCatalogAssetDetailsQuery,omitempty"`
@@ -30,7 +30,7 @@ type GetCatalogAssetDetailsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//

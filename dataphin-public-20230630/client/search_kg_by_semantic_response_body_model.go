@@ -50,7 +50,7 @@ type SearchKgBySemanticResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -188,7 +188,7 @@ type SearchKgBySemanticResponseBodyDataSearchResults struct {
 	//
 	// EntityTypeCode1
 	ItemTypeCode *string `json:"ItemTypeCode,omitempty" xml:"ItemTypeCode,omitempty"`
-	// The property code that matched the semantic search.
+	// The code of the matched semantic search property.
 	//
 	// example:
 	//
@@ -198,9 +198,9 @@ type SearchKgBySemanticResponseBodyDataSearchResults struct {
 	//
 	// example:
 	//
-	// 张三
+	// John Doe
 	MatchedPropertyValue *string `json:"MatchedPropertyValue,omitempty" xml:"MatchedPropertyValue,omitempty"`
-	// The similarity score ranging from 0.0 to 1.0, based on cosine similarity.
+	// The similarity score based on cosine similarity. Valid values: 0.0 to 1.0.
 	//
 	// example:
 	//

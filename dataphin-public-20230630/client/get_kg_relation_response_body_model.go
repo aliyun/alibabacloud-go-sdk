@@ -227,7 +227,7 @@ type GetKgRelationResponseBodyRelationInfoPropertyList struct {
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
+	// The property data type. Valid values include STRING, INTEGER, FLOAT, BOOLEAN, DATE, and LIST.
 	//
 	// example:
 	//

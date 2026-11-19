@@ -30,7 +30,7 @@ type GetDataServiceApiErrorImpactResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The summary of call exception impacts.
+	// The summary of API exception impacts.
 	Data *GetDataServiceApiErrorImpactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type GetDataServiceApiErrorImpactResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *GetDataServiceApiErrorImpactResponseBody) Validate() error {
 }
 
 type GetDataServiceApiErrorImpactResponseBodyData struct {
-	// The list of APIs affected by exceptions.
+	// The APIs affected by the exceptions.
 	ErrorApiList []*GetDataServiceApiErrorImpactResponseBodyDataErrorApiList `json:"ErrorApiList,omitempty" xml:"ErrorApiList,omitempty" type:"Repeated"`
-	// The list of apps affected by exceptions.
+	// The applications affected by the exceptions.
 	ErrorAppList []*GetDataServiceApiErrorImpactResponseBodyDataErrorAppList `json:"ErrorAppList,omitempty" xml:"ErrorAppList,omitempty" type:"Repeated"`
 }
 
@@ -181,13 +181,13 @@ func (s *GetDataServiceApiErrorImpactResponseBodyData) Validate() error {
 }
 
 type GetDataServiceApiErrorImpactResponseBodyDataErrorApiList struct {
-	// The API name.
+	// The name of the API.
 	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The API ID.
+	// The ID of the API.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ type GetDataServiceApiErrorImpactResponseBodyDataErrorAppList struct {
 	//
 	// 100211
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The app name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// app1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The number of exceptions for the app.
+	// The number of exceptions for the application.
 	//
 	// example:
 	//

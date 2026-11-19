@@ -26,6 +26,8 @@ type PublishStandardRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,9 +83,9 @@ func (s *PublishStandardRequest) Validate() error {
 }
 
 type PublishStandardRequestPublishCommand struct {
-	// Specifies whether to automatically publish after approval. Default value: true.
+	// Specifies whether to automatically publish the standard after the approval succeeds. Default value: true.
 	AutoPublishAfterApproval *bool `json:"AutoPublishAfterApproval,omitempty" xml:"AutoPublishAfterApproval,omitempty"`
-	// The review comment. Maximum length: 128 characters.
+	// The review comment. The comment can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -107,7 +109,7 @@ type PublishStandardRequestPublishCommand struct {
 	//
 	// DEV
 	StandardStage *string `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
-	// The version number. Default value: -1 (latest version).
+	// The version number. Default value: -1, which indicates the latest version.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetDataAssetsGovernObjectRequest interface {
 }
 
 type GetDataAssetsGovernObjectRequest struct {
-	// The query instruction.
+	// The query command.
 	//
 	// This parameter is required.
 	Command *GetDataAssetsGovernObjectRequestCommand `json:"Command,omitempty" xml:"Command,omitempty" type:"Struct"`
@@ -30,7 +30,7 @@ type GetDataAssetsGovernObjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operation user.
+	// The operator user ID.
 	//
 	// example:
 	//

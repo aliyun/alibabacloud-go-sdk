@@ -26,13 +26,13 @@ type GetQualityArchiveTableProgressRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The operator ID.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The asynchronous task progress ID returned by the UpsertQualityArchiveTable operation.
+	// The progress ID of the asynchronous task, which is returned by the UpsertQualityArchiveTable operation.
 	//
 	// This parameter is required.
 	//

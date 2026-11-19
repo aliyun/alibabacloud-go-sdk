@@ -24,7 +24,7 @@ type iGetDataServiceAuthorizedAppsByGroupIdResponseBody interface {
 }
 
 type GetDataServiceAuthorizedAppsByGroupIdResponseBody struct {
-	// The list of API groups.
+	// The API group list.
 	AppInfoList []*GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
 	// The backend response code.
 	//
@@ -38,7 +38,7 @@ type GetDataServiceAuthorizedAppsByGroupIdResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataServiceAuthorizedAppsByGroupIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -134,7 +134,7 @@ type GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList struct {
 	//
 	// The application key.
 	//
-	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>.
+	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList struct {
 	//
 	// 1021
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The app name.
+	// The application name.
 	//
 	// example:
 	//

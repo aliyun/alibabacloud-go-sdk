@@ -20,11 +20,7 @@ type iGetStreamJobsRequest interface {
 }
 
 type GetStreamJobsRequest struct {
-	// The Dataphin environment. Valid values:
-	//
-	// - DEV
-	//
-	// - PROD.
+	// The Dataphin environment. Valid values: DEV and PROD.
 	//
 	// This parameter is required.
 	//
@@ -40,6 +36,8 @@ type GetStreamJobsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

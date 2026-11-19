@@ -18,7 +18,7 @@ type iDeleteBizMetricRequest interface {
 }
 
 type DeleteBizMetricRequest struct {
-	// The delete request.
+	// The deletion request.
 	//
 	// This parameter is required.
 	DeleteBizMetricCommand *DeleteBizMetricRequestDeleteBizMetricCommand `json:"DeleteBizMetricCommand,omitempty" xml:"DeleteBizMetricCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteBizMetricRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

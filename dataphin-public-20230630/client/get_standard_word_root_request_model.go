@@ -38,7 +38,7 @@ type GetStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator user ID.
+	// The ID of the operator.
 	//
 	// example:
 	//

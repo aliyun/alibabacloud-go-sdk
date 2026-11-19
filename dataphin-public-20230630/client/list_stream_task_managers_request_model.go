@@ -20,7 +20,7 @@ type iListStreamTaskManagersRequest interface {
 }
 
 type ListStreamTaskManagersRequest struct {
-	// The ID of the Flink deployment instance.
+	// The deployment instance ID. You can obtain the value from the deploymentInstanceId returned in the operation record or historical run instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListStreamTaskManagersRequest struct {
 	//
 	// 7db678957dc449aab0086b931c9f8218
 	DeploymentInstanceId *string `json:"DeploymentInstanceId,omitempty" xml:"DeploymentInstanceId,omitempty"`
-	// The ID of the operating tenant. After the gateway verifies that the current identity has access to the tenant, it injects the tenant ID into the backend.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListStreamTaskManagersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The optional ID of the operating user. This parameter follows the identity verification rules of the gateway and is not directly bound to the backend user ID.
+	// The ID of the operator.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The project ID.
+	// The ID of the Dataphin project to which the task belongs. This parameter is used for permission verification in the production environment.
 	//
 	// This parameter is required.
 	//

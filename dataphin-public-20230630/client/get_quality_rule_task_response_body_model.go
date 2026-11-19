@@ -126,19 +126,19 @@ func (s *GetQualityRuleTaskResponseBody) Validate() error {
 }
 
 type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
-	// The business date. The format is YYYY-MM-DD.
+	// The business date in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The format of the business date.
+	// The business date format.
 	//
 	// example:
 	//
 	// yyyy-MM-dd
 	BizDateFormat *string `json:"BizDateFormat,omitempty" xml:"BizDateFormat,omitempty"`
-	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The end time. The format is YYYY-MM-DD HH:mm:ss.
+	// The end time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last updated the task.
+	// The ID of the last updater.
 	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The update time. The format is YYYY-MM-DD HH:mm:ss.
+	// The update time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 11
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The start time. The format is YYYY-MM-DD HH:mm:ss.
+	// The start time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -198,33 +198,33 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 11
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the validated object.
+	// The name of the checked object.
 	//
 	// example:
 	//
 	// test
 	ValidateObjectName *string `json:"ValidateObjectName,omitempty" xml:"ValidateObjectName,omitempty"`
-	// The validated object type.
+	// The checked object type.
 	//
 	// example:
 	//
 	// column
 	ValidateObjectType *string `json:"ValidateObjectType,omitempty" xml:"ValidateObjectType,omitempty"`
-	// The validated partition.
+	// The checked partition.
 	//
 	// example:
 	//
 	// 20251011
 	ValidatePartition *string `json:"ValidatePartition,omitempty" xml:"ValidatePartition,omitempty"`
-	// Indicates whether the validation is successful.
+	// Indicates whether the check is successful.
 	ValidateSuccess *bool `json:"ValidateSuccess,omitempty" xml:"ValidateSuccess,omitempty"`
-	// The watch ID.
+	// The associated monitoring ID.
 	//
 	// example:
 	//
 	// 1
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
-	// The watch task ID. This ID is empty for rule tasks in a trial run.
+	// The monitoring task ID. This ID is empty for trial-run rule tasks.
 	//
 	// example:
 	//

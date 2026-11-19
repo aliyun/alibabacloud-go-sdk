@@ -24,7 +24,7 @@ type iGetUserByAccessKeyResponseBody interface {
 }
 
 type GetUserByAccessKeyResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetUserByAccessKeyResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned for the request.
+	// The error message.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetUserByAccessKeyResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetUserByAccessKeyResponseBodyUserInfo struct {
 	//
 	// 30011210
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The email address of the user.
+	// The email address.
 	//
 	// example:
 	//
@@ -154,33 +154,27 @@ type GetUserByAccessKeyResponseBodyUserInfo struct {
 	//
 	// zhangsan
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The account source type, such as ALIYUN_OAUTH2, PUBLICCLOUD_OAUTH2, BUC, or APSARA.
+	// The source type of the account, such as ALIYUN_OAUTH2, PUBLICCLOUD_OAUTH2, BUC, or APSARA.
 	//
 	// example:
 	//
 	// ALIYUN_OAUTH2
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The source account ID of the user during SSO integration.
+	// The source account ID of the user when SSO is integrated.
 	//
 	// example:
 	//
 	// 12345
 	SourceUserId *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
-	// The tenant member status. Valid values:
-	//
-	// - NORMAL: Normal.
-	//
-	// - DEACTIVATE: Deactivated.
-	//
-	// - DELETE: Deleted.
+	// The status of the tenant member. Valid values: NORMAL, DEACTIVATE, and DELETE.
 	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tenant-level roles assigned to the AK/SK owner in the current tenant.
+	// The list of tenant-level roles. These are the roles of the user to whom the AccessKey ID and AccessKey secret belong in the current tenant.
 	TenantRoles []*GetUserByAccessKeyResponseBodyUserInfoTenantRoles `json:"TenantRoles,omitempty" xml:"TenantRoles,omitempty" type:"Repeated"`
-	// The username of the account.
+	// The username.
 	//
 	// example:
 	//
@@ -291,7 +285,7 @@ func (s *GetUserByAccessKeyResponseBodyUserInfo) Validate() error {
 }
 
 type GetUserByAccessKeyResponseBodyUserInfoTenantRoles struct {
-	// The role identifier, such as SUPER_ADMIN or COMMON_USER.
+	// The role key, such as SUPER_ADMIN or COMMON_USER.
 	//
 	// example:
 	//
@@ -301,7 +295,7 @@ type GetUserByAccessKeyResponseBodyUserInfoTenantRoles struct {
 	//
 	// example:
 	//
-	// Tenant Administrator
+	// Tenant administrator
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

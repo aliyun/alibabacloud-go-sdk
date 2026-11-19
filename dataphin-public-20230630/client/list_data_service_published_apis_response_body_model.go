@@ -24,25 +24,25 @@ type iListDataServicePublishedApisResponseBody interface {
 }
 
 type ListDataServicePublishedApisResponseBody struct {
-	// Backend response code.
+	// The backend response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP response code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Backend exception details.
+	// The backend exception details.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Paginated query result.
+	// The paged query results.
 	PageResult *ListDataServicePublishedApisResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type ListDataServicePublishedApisResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *ListDataServicePublishedApisResponseBody) Validate() error {
 }
 
 type ListDataServicePublishedApisResponseBodyPageResult struct {
-	// Paginated API list.
+	// The paged API list.
 	ApiList []*ListDataServicePublishedApisResponseBodyPageResultApiList `json:"ApiList,omitempty" xml:"ApiList,omitempty" type:"Repeated"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -176,129 +176,157 @@ func (s *ListDataServicePublishedApisResponseBodyPageResult) Validate() error {
 }
 
 type ListDataServicePublishedApisResponseBodyPageResultApiList struct {
-	// API ID.
+	// The API code.
 	//
 	// example:
 	//
 	// 1022
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// API name.
+	// The API name.
 	//
 	// example:
 	//
 	// test
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Number of bound applications.
+	// The number of bound applications.
 	//
 	// example:
 	//
 	// 1
 	AppCount *int32 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
-	// List of referenced application information.
+	// The list of referenced applications.
 	AppInfoList []*ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
-	// Application status. Valid values: 0 (not all applied), 1 (applied), 2 (no app, need to apply for an app first).
+	// The application status. Valid values:
+	//
+	// - 0: Not fully applied.
+	//
+	// - 1: Applied.
+	//
+	// - 2: No application. You must apply for an application first.
 	//
 	// example:
 	//
 	// 1
 	ApplyStatus *int32 `json:"ApplyStatus,omitempty" xml:"ApplyStatus,omitempty"`
-	// Number of calls.
+	// The number of calls.
 	//
 	// example:
 	//
 	// 21
 	CallCount *int32 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
-	// Creation type. Valid values: 0 (custom mode), 1 (wizard mode), 2 (direct connection API).
+	// The creation type. Valid values:
+	//
+	// - 0: Custom mode.
+	//
+	// - 1: Wizard mode.
+	//
+	// - 2: Direct API connection.
 	//
 	// example:
 	//
 	// 1
 	CreateType *int32 `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
-	// Custom update frequency content.
+	// The custom content for the update frequency.
 	//
 	// example:
 	//
 	// 0 0 0/1 	- 	- *
 	CustomUpdateRate *string `json:"CustomUpdateRate,omitempty" xml:"CustomUpdateRate,omitempty"`
-	// Publish time. Time format: yyyy-MM-dd HH:mm:ss.
+	// The publish time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	// API description.
+	// The API description.
 	//
 	// example:
 	//
 	// test xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Call type. Valid values: 1 (synchronous), 2 (asynchronous).
+	// The execution mode. Valid values:
+	//
+	// - 1: Synchronous.
+	//
+	// - 2: Asynchronous.
 	//
 	// example:
 	//
 	// 1
 	ExecuteMode *int32 `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	// Group ID.
+	// The group ID.
 	//
 	// example:
 	//
 	// 102131
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// API group name.
+	// The API group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Service unit number.
+	// The service unit number.
 	//
 	// example:
 	//
 	// 1022
 	LogicUnitNo *int64 `json:"LogicUnitNo,omitempty" xml:"LogicUnitNo,omitempty"`
-	// Mode. Valid values: 0 (basic), 1 (dev_prod).
+	// The mode. Valid values:
+	//
+	// - 0: basic.
+	//
+	// - 1: dev_prod.
 	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Owner ID.
+	// The owner ID.
 	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// Owner name.
+	// The owner.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
-	// Data service project ID.
+	// The data service project ID.
 	//
 	// example:
 	//
 	// 102101
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Service project name.
+	// The service project name.
 	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Update frequency. Valid values: 0 (custom), 1 (daily), 2 (hourly), 3 (per minute).
+	// The update frequency. Valid values:
+	//
+	// - 0: Custom.
+	//
+	// - 1: Daily.
+	//
+	// - 2: Hourly.
+	//
+	// - 3: Every minute.
 	//
 	// example:
 	//
 	// 1
 	UpdateRate *int32 `json:"UpdateRate,omitempty" xml:"UpdateRate,omitempty"`
-	// Modification time. Time format: yyyy-MM-dd HH:mm:ss.
+	// The update time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// API version.
+	// The API version.
 	//
 	// example:
 	//
@@ -526,7 +554,7 @@ func (s *ListDataServicePublishedApisResponseBodyPageResultApiList) Validate() e
 }
 
 type ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList struct {
-	// Application ID.
+	// The application ID.
 	//
 	// example:
 	//
@@ -534,21 +562,21 @@ type ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList struct
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// Deprecated
 	//
-	// Application key.
+	// The application key. **[Deprecated]*	- Use AppKeyStr instead.
 	//
-	// 	Notice: Deprecated. Use AppKeyStr instead.
+	// 	Notice: **[Deprecated]*	- Use AppKeyStr instead.</notice>
 	//
 	// example:
 	//
 	// 200000000
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// Application key.
+	// The application key.
 	//
 	// example:
 	//
 	// APP_200000000
 	AppKeyStr *string `json:"AppKeyStr,omitempty" xml:"AppKeyStr,omitempty"`
-	// Application name.
+	// The application name.
 	//
 	// example:
 	//

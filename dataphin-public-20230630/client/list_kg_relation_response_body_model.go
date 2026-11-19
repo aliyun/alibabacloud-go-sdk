@@ -50,7 +50,7 @@ type ListKgRelationResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListKgRelationResponseBody) Validate() error {
 }
 
 type ListKgRelationResponseBodyPageResult struct {
-	// The list of paged relationship records.
+	// The paged list of relation records.
 	RelationList []*ListKgRelationResponseBodyPageResultRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -176,15 +176,15 @@ func (s *ListKgRelationResponseBodyPageResult) Validate() error {
 }
 
 type ListKgRelationResponseBodyPageResultRelationList struct {
-	// The list of properties for the relationship record.
+	// The list of properties for the relation record.
 	PropertyList []*ListKgRelationResponseBodyPageResultRelationListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
-	// The relationship record ID.
+	// The relation record ID.
 	//
 	// example:
 	//
 	// abc-xxx
 	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The relationship type code.
+	// The relation type code.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type ListKgRelationResponseBodyPageResultRelationListPropertyList struct {
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data type of the property. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
+	// The data type of the property, such as STRING, INTEGER, FLOAT, BOOLEAN, DATE, or LIST.
 	//
 	// example:
 	//

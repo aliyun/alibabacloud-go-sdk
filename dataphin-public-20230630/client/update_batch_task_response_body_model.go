@@ -24,7 +24,7 @@ type iUpdateBatchTaskResponseBody interface {
 }
 
 type UpdateBatchTaskResponseBody struct {
-	// The error code. A value of OK indicates that the request is successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *UpdateBatchTaskResponseBody) Validate() error {
 }
 
 type UpdateBatchTaskResponseBodyUpdateResult struct {
-	// The ID of the task directory tree node.
+	// The ID of the node in the task directory tree.
 	//
 	// example:
 	//

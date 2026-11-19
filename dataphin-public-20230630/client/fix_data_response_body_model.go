@@ -24,7 +24,7 @@ type iFixDataResponseBody interface {
 }
 
 type FixDataResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type FixDataResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The submit ID of this submission.
+	// The submit ID of the current submission. If downstreamRange is set to a shortcut mode, this field returns the submit ID. You can call the [QueryOperationSubmitJobStatus] operation to query the submit status of the current submission. You can ignore this field if you manually select downstream instances.
 	//
 	// example:
 	//
 	// 12324234
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

@@ -126,13 +126,13 @@ func (s *GetSecurityIdentifyResultResponseBody) Validate() error {
 }
 
 type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
-	// The business date. Format: YYYY-MM-DD.
+	// The business date in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The Chinese name of the business unit.
+	// The Chinese display name of the business unit.
 	//
 	// example:
 	//
@@ -150,25 +150,25 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// LD_test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The classification abbreviation.
+	// The abbreviation of the classification.
 	//
 	// example:
 	//
 	// test
 	ClassifyAbbreviation *string `json:"ClassifyAbbreviation,omitempty" xml:"ClassifyAbbreviation,omitempty"`
-	// The classification ID.
+	// The ID of the classification.
 	//
 	// example:
 	//
 	// 33
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The classification name.
+	// The name of the classification.
 	//
 	// example:
 	//
 	// test
 	ClassifyName *string `json:"ClassifyName,omitempty" xml:"ClassifyName,omitempty"`
-	// The creation time. Format: YYYY-MM-DD HH:mm:ss.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// ds1
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The field description.
+	// The description of the field.
 	//
 	// example:
 	//
@@ -210,9 +210,9 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// col1
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// Indicates whether a better match is available.
+	// Indicates whether a better matched result exists.
 	HasBetterRule *bool `json:"HasBetterRule,omitempty" xml:"HasBetterRule,omitempty"`
-	// The recognition result ID.
+	// The ID of the recognition result.
 	//
 	// example:
 	//
@@ -224,29 +224,29 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// 99
 	IdentifyRecordId *int64 `json:"IdentifyRecordId,omitempty" xml:"IdentifyRecordId,omitempty"`
-	// Indicates whether a custom identification rule is used.
+	// Indicates whether a custom tagging rule is used.
 	IsCustomIdentify *bool `json:"IsCustomIdentify,omitempty" xml:"IsCustomIdentify,omitempty"`
 	// Indicates whether the item is locked.
 	IsLocked *bool `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
-	// The abbreviation of the classification level.
+	// The abbreviation of the level.
 	//
 	// example:
 	//
 	// test
 	LevelAbbreviation *string `json:"LevelAbbreviation,omitempty" xml:"LevelAbbreviation,omitempty"`
-	// The color of the classification level.
+	// The color of the level.
 	//
 	// example:
 	//
 	// 1
 	LevelColor *int64 `json:"LevelColor,omitempty" xml:"LevelColor,omitempty"`
-	// The classification level.
+	// The grading level.
 	//
 	// example:
 	//
 	// 1
 	LevelIndex *int64 `json:"LevelIndex,omitempty" xml:"LevelIndex,omitempty"`
-	// The name of the classification level.
+	// The name of the level.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// 2025-06-30 10:30:30
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The Chinese name of the project.
+	// The Chinese display name of the project.
 	//
 	// example:
 	//
@@ -294,19 +294,19 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The table catalog.
+	// The catalog of the table.
 	//
 	// example:
 	//
 	// testdb
 	TableCatalog *string `json:"TableCatalog,omitempty" xml:"TableCatalog,omitempty"`
-	// The table description.
+	// The description of the table.
 	//
 	// example:
 	//
 	// test
 	TableDescription *string `json:"TableDescription,omitempty" xml:"TableDescription,omitempty"`
-	// The table environment.
+	// The environment of the table.
 	//
 	// example:
 	//
@@ -330,23 +330,7 @@ type GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo struct {
 	//
 	// 22
 	TableTaskId *int64 `json:"TableTaskId,omitempty" xml:"TableTaskId,omitempty"`
-	// The table type. Valid values:
-	//
-	// - LOGIC_TABLE: logical table
-	//
-	// - LOGIC_DIM_TABLE: logical dimension table
-	//
-	// - LOGIC_FACT_TABLE: logical fact table
-	//
-	// - LOGIC_SUM_TABLE: logical aggregate table
-	//
-	// - LOGIC_ODM_SOURCE: source table
-	//
-	// - LOGIC_LABEL_TABLE: logical label table
-	//
-	// - PHYSICAL_TABLE: physical table
-	//
-	// - REAL_TIME_LOGIC_TABLE: real-time configured logical table
+	// The type of the table. Valid values: LOGIC_TABLE (logical table), LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_ODM_SOURCE (source table), LOGIC_LABEL_TABLE (logical label table), PHYSICAL_TABLE (physical table), and REAL_TIME_LOGIC_TABLE (real-time configured logical table).
 	//
 	// example:
 	//

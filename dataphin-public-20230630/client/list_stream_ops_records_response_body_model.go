@@ -30,7 +30,7 @@ type ListStreamOpsRecordsResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The start and stop operation records of real-time tasks.
+	// The start and stop operation records for real-time tasks. You can use the log storage identifiers in the list to query the log content by calling the GetStreamOpsRecord operation.
 	Data []*ListStreamOpsRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -130,43 +130,43 @@ func (s *ListStreamOpsRecordsResponseBody) Validate() error {
 }
 
 type ListStreamOpsRecordsResponseBodyData struct {
-	// deploymentId
+	// The deployment ID of the task. This ID is used to identify the deployment and is different from the specific running instance ID deploymentInstanceId.
 	//
 	// example:
 	//
 	// ac6e5a34bbd44d7f8b7851ef28c90d12
 	DeploymentId *string `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
-	// deploymentInstanceId
+	// The deployment instance ID associated with this operation. This ID corresponds to the DeploymentInstanceId request parameter in the log and TaskManager query operations.
 	//
 	// example:
 	//
 	// 7db678957dc449aab0086b931c9f8218
 	DeploymentInstanceId *string `json:"DeploymentInstanceId,omitempty" xml:"DeploymentInstanceId,omitempty"`
-	// The end time.
+	// The end time of the operation. The time is in the yyyy-MM-dd HH:mm:ss format. If the operation has not ended, the value may be null.
 	//
 	// example:
 	//
 	// 2026-10-15 13:46:40
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The log content.
+	// The operation logs. In the ListStreamOpsRecords response, this field may contain a log storage identity. After you invoke the GetStreamOpsRecord operation, the log content or operation information is returned.
 	//
 	// example:
 	//
 	// 2026-10-15 13:46:26 INFO Starting Flink deployment
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	// The instance status. Valid values: START, PAUSE, RESUME, and STOP. Displayed as Start, Pause, Recover, or Stop.
+	// The type of the operation. Valid values: START, PAUSE, RESUME, and STOP. This field does not represent the running status of the task.
 	//
 	// example:
 	//
 	// START
 	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
-	// opsRecordId
+	// The ID of the operation record. This ID corresponds to the OpsRecordId request parameter of the GetStreamOpsRecord operation.
 	//
 	// example:
 	//
 	// 646
 	OpsRecordId *string `json:"OpsRecordId,omitempty" xml:"OpsRecordId,omitempty"`
-	// The start time.
+	// The start time of the operation. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iGetKgNeighborShrinkRequest interface {
 }
 
 type GetKgNeighborShrinkRequest struct {
-	// The entity record data ID.
+	// The data ID of the entity record.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetKgNeighborShrinkRequest struct {
 	//
 	// Student
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity record neighbor node query instruction.
+	// The neighbor node query instruction for entity records.
 	NeighborsQueryShrink *string `json:"NeighborsQuery,omitempty" xml:"NeighborsQuery,omitempty"`
 	// The tenant ID.
 	//
@@ -50,6 +50,8 @@ type GetKgNeighborShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

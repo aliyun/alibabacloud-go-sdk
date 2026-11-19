@@ -81,7 +81,7 @@ func (s *GetAssetMappingRelationsRequest) Validate() error {
 }
 
 type GetAssetMappingRelationsRequestAssetMappingQuery struct {
-	// The asset object type. Valid values: COLUMN (field) and INDEX (metric).
+	// The asset object type. Valid values: COLUMN: field. INDEX: metric.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type GetAssetMappingRelationsRequestAssetMappingQuery struct {
 	//
 	// 1121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
+	// The mapping relationship type. Valid values: VALID: mapped. INVALID: invalid mapping.
 	//
 	// This parameter is required.
 	//

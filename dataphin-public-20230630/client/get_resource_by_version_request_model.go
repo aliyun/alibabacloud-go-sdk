@@ -38,7 +38,7 @@ type GetResourceByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetResourceByVersionRequest struct {
 	//
 	// 1030111021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The version number.
+	// The version ID.
 	//
 	// This parameter is required.
 	//

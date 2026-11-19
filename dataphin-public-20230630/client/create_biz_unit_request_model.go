@@ -18,7 +18,7 @@ type iCreateBizUnitRequest interface {
 }
 
 type CreateBizUnitRequest struct {
-	// The create request.
+	// The creation request.
 	//
 	// This parameter is required.
 	CreateCommand *CreateBizUnitRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateBizUnitRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *CreateBizUnitRequest) Validate() error {
 }
 
 type CreateBizUnitRequestCreateCommand struct {
-	// The list of data domain architects.
+	// The business unit architects.
 	//
 	// This parameter is required.
 	BizUnitAccountList []*CreateBizUnitRequestCreateCommandBizUnitAccountList `json:"BizUnitAccountList,omitempty" xml:"BizUnitAccountList,omitempty" type:"Repeated"`
@@ -117,9 +119,9 @@ type CreateBizUnitRequestCreateCommand struct {
 	//
 	// - icon-health: Health.
 	//
-	// - icon-social-contact: Social and communication.
+	// - icon-social-contact: Social and communications.
 	//
-	// - con-dining: Dining.
+	// - con-dining: Catering.
 	//
 	// - icon-education: Education.
 	//
@@ -135,13 +137,13 @@ type CreateBizUnitRequestCreateCommand struct {
 	//
 	// - BASIC: single-environment mode.
 	//
-	// - DEV_PROD: development/production dual-environment mode.
+	// - DEV_PROD: development and production dual-environment mode.
 	//
 	// example:
 	//
 	// DEV_PROD
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
 	//
 	// This parameter is required.
 	//

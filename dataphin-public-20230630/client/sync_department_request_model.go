@@ -26,6 +26,8 @@ type SyncDepartmentRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -118,7 +120,7 @@ func (s *SyncDepartmentRequestSyncDepartmentCommand) Validate() error {
 }
 
 type SyncDepartmentRequestSyncDepartmentCommandDepartmentList struct {
-	// The department ID (unique identifier of the department).
+	// The unique identifier of the department.
 	//
 	// This parameter is required.
 	//
@@ -132,9 +134,9 @@ type SyncDepartmentRequestSyncDepartmentCommandDepartmentList struct {
 	//
 	// example:
 	//
-	// 研发中心
+	// R&D Center
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
-	// The parent department ID (unique identifier of the parent department). Set to null if no parent department exists.
+	// The unique identifier of the parent department. If the department has no parent, the value is null.
 	//
 	// example:
 	//

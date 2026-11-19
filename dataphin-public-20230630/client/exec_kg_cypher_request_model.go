@@ -20,7 +20,7 @@ type iExecKgCypherRequest interface {
 }
 
 type ExecKgCypherRequest struct {
-  // The custom Cypher query instruction.
+  // The custom Cypher query command.
   // 
   // This parameter is required.
   ExecCommand *ExecKgCypherRequestExecCommand `json:"ExecCommand,omitempty" xml:"ExecCommand,omitempty" type:"Struct"`
@@ -32,6 +32,8 @@ type ExecKgCypherRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The ID of the operating user.
+  // 
   // example:
   // 
   // 30001011
@@ -100,13 +102,13 @@ func (s *ExecKgCypherRequest) Validate() error {
 }
 
 type ExecKgCypherRequestExecCommand struct {
-  // The maximum number of records to return.
+  // The limit on the number of returned records.
   // 
   // example:
   // 
   // 100
   Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-  // The input parameters of the query statement.
+  // The input parameters for the query statement.
   Params []*ExecKgCypherRequestExecCommandParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
   // The custom Cypher query statement.
   // 

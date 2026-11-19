@@ -22,7 +22,7 @@ type iGetTableLineagesRequest interface {
 type GetTableLineagesRequest struct {
 	// The filter conditions.
 	FilterQuery *GetTableLineagesRequestFilterQuery `json:"FilterQuery,omitempty" xml:"FilterQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type GetTableLineagesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -100,17 +102,17 @@ func (s *GetTableLineagesRequest) Validate() error {
 type GetTableLineagesRequestFilterQuery struct {
 	// Specifies whether to query downstream lineage. Default value: false.
 	NeedDownstream *bool `json:"NeedDownstream,omitempty" xml:"NeedDownstream,omitempty"`
-	// Specifies whether to return tables that do not exist in the asset list. Default value: false.
+	// Specifies whether to return tables that do not exist in the asset inventory. Default value: false.
 	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
 	// Specifies whether to query upstream lineage. Default value: false.
 	NeedUpstream *bool `json:"NeedUpstream,omitempty" xml:"NeedUpstream,omitempty"`
-	// The environment to which the task belongs. This parameter is used for filtering. Valid values: dev and prod.
+	// The environment of the node to be queried. Valid values: dev and prod.
 	//
 	// example:
 	//
 	// dev
 	NodeEnv *string `json:"NodeEnv,omitempty" xml:"NodeEnv,omitempty"`
-	// The list of task IDs used for filtering.
+	// The list of node IDs to be queried.
 	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
 }
 

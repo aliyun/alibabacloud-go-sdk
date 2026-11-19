@@ -24,19 +24,19 @@ type iListTenantRolesResponseBody interface {
 }
 
 type ListTenantRolesResponseBody struct {
-	// The request error code. OK indicates that the request is successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code of the backend response.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message of the request.
+	// The error message.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListTenantRolesResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The role list.
+	// The list of roles.
 	RoleList []*ListTenantRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful.
 	//
@@ -140,65 +140,65 @@ type ListTenantRolesResponseBodyRoleList struct {
 	//
 	// {}
 	AuthJson *string `json:"AuthJson,omitempty" xml:"AuthJson,omitempty"`
-	// The user ID of the creator.
+	// The ID of the user who created the role.
 	//
 	// example:
 	//
 	// 30121201
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creation time.
+	// The time when the role was created.
 	//
 	// example:
 	//
 	// 2026-01-07 16:45:30
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the role was last modified.
 	//
 	// example:
 	//
 	// 2026-01-07 16:45:30
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The user ID of the modifier.
+	// The ID of the user who last modified the role.
 	//
 	// example:
 	//
 	// 30121201
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The role description.
+	// The description of the role.
 	//
 	// example:
 	//
 	// test
 	RoleDesc *string `json:"RoleDesc,omitempty" xml:"RoleDesc,omitempty"`
-	// The role key.
+	// The key of the role.
 	//
 	// example:
 	//
 	// test::1212
 	RoleKey *string `json:"RoleKey,omitempty" xml:"RoleKey,omitempty"`
-	// The role name.
+	// The name of the role.
 	//
 	// example:
 	//
 	// test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The role type. Valid values:
+	// The type of the role. Valid values:
 	//
-	// - BUILD_IN: built-in role
+	// - BUILD_IN: built-in role.
 	//
-	// - CUSTOM: custom role
+	// - CUSTOM: custom role.
 	//
 	// example:
 	//
 	// CUSTOM
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The role status. Valid values:
+	// The status of the role. Valid values:
 	//
-	// - ON: enabled
+	// - ON: enabled.
 	//
-	// - OFF: disabled
+	// - OFF: disabled.
 	//
-	// - DEL: deleted
+	// - DEL: deleted.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ListTenantRolesResponseBodyRoleList struct {
 	//
 	// 30121001
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The tenant type.
+	// The type of the tenant.
 	//
 	// example:
 	//

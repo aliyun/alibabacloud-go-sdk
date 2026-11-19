@@ -28,6 +28,8 @@ type CreateUserGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -85,19 +87,19 @@ type CreateUserGroupRequestCreateCommand struct {
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The user IDs of the user group administrators.
+	// The IDs of the administrator users in the user group.
 	AdminUserIdList []*string `json:"AdminUserIdList,omitempty" xml:"AdminUserIdList,omitempty" type:"Repeated"`
 	// The description of the user group.
 	//
 	// example:
 	//
-	// xx
+	// Sample user group description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the user group.
 	//
 	// example:
 	//
-	// xx用户组
+	// xx user group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type ListTablesResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTablesResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paged query result.
+	// The paging query result.
 	PageResult *ListTablesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -272,7 +272,7 @@ type ListTablesResponseBodyPageResultTableList struct {
 	//
 	// 2025-06-30 00:00:00
 	LastQueryTime *string `json:"LastQueryTime,omitempty" xml:"LastQueryTime,omitempty"`
-	// The lifecycle of the table, in days.
+	// The lifecycle of the table in days.
 	//
 	// example:
 	//
@@ -334,7 +334,7 @@ type ListTablesResponseBodyPageResultTableList struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The dynamic properties of the real-time metatable.
 	StreamTableConfig []*ListTablesResponseBodyPageResultTableListStreamTableConfig `json:"StreamTableConfig,omitempty" xml:"StreamTableConfig,omitempty" type:"Repeated"`
-	// The total storage size of the table, in bytes.
+	// The total storage size of the table in bytes.
 	//
 	// example:
 	//

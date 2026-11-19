@@ -30,13 +30,13 @@ type ListGovernObjectsResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code.
+	// The HTTP response code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The backend response exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListGovernObjectsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ func (s *ListGovernObjectsResponseBodyPageResult) Validate() error {
 }
 
 type ListGovernObjectsResponseBodyPageResultData struct {
-	// The time when the record was reported.
+	// The submission time.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type ListGovernObjectsResponseBodyPageResultData struct {
 	IsRectify *bool `json:"IsRectify,omitempty" xml:"IsRectify,omitempty"`
 	// The list of owners.
 	Owners []*ListGovernObjectsResponseBodyPageResultDataOwners `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
-	// The governance issue object.
+	// The governance problem object.
 	Problem *ListGovernObjectsResponseBodyPageResultDataProblem `json:"Problem,omitempty" xml:"Problem,omitempty" type:"Struct"`
 	// The property values.
 	//
@@ -396,7 +396,7 @@ type ListGovernObjectsResponseBodyPageResultData struct {
 	//
 	// -787032739353
 	RectifyId *int64 `json:"RectifyId,omitempty" xml:"RectifyId,omitempty"`
-	// The name of the rectification.
+	// The rectification name.
 	//
 	// example:
 	//
@@ -408,7 +408,7 @@ type ListGovernObjectsResponseBodyPageResultData struct {
 	//
 	// NEW
 	RectifyStatus *string `json:"RectifyStatus,omitempty" xml:"RectifyStatus,omitempty"`
-	// The related knowledge base entries.
+	// The related knowledge base.
 	RelatedKnowledge []*ListGovernObjectsResponseBodyPageResultDataRelatedKnowledge `json:"RelatedKnowledge,omitempty" xml:"RelatedKnowledge,omitempty" type:"Repeated"`
 	// The status of the governance object.
 	//
@@ -566,7 +566,7 @@ type ListGovernObjectsResponseBodyPageResultDataOwners struct {
 	//
 	// example:
 	//
-	// Yang Jing 2088252351182803
+	// Yang Jing2088252351182803
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The user ID.
 	//
@@ -619,49 +619,49 @@ type ListGovernObjectsResponseBodyPageResultDataProblem struct {
 	//
 	// 913836
 	ParentObjectId *string `json:"ParentObjectId,omitempty" xml:"ParentObjectId,omitempty"`
-	// The contact email for the governance issue.
+	// The contact email for governance issues.
 	//
 	// example:
 	//
 	// 126983612986391@gamail.com
 	ProblemContactMail *string `json:"ProblemContactMail,omitempty" xml:"ProblemContactMail,omitempty"`
-	// The other contact information for the governance issue.
+	// Other contact information for the governance problem.
 	//
 	// example:
 	//
-	// Jane
+	// Li Si
 	ProblemContactOther *string `json:"ProblemContactOther,omitempty" xml:"ProblemContactOther,omitempty"`
-	// The contact phone number for the governance issue.
+	// The contact phone number for the governance problem.
 	//
 	// example:
 	//
 	// 16278902467
 	ProblemContactPhone *string `json:"ProblemContactPhone,omitempty" xml:"ProblemContactPhone,omitempty"`
-	// The description of the governance issue.
+	// The description of the governance problem.
 	//
 	// example:
 	//
-	// Governance issue description
+	// Governance problem description
 	ProblemDesc *string `json:"ProblemDesc,omitempty" xml:"ProblemDesc,omitempty"`
-	// The submission type of the issue.
+	// The submission method of the problem.
 	//
 	// example:
 	//
 	// SYSTEM
 	ProblemSubmitType *string `json:"ProblemSubmitType,omitempty" xml:"ProblemSubmitType,omitempty"`
-	// The user who submitted the issue.
+	// The user who submitted the problem.
 	//
 	// example:
 	//
 	// 123456
 	ProblemSubmitter *string `json:"ProblemSubmitter,omitempty" xml:"ProblemSubmitter,omitempty"`
-	// The username of the issue submitter.
+	// The username of the user who submitted the problem.
 	//
 	// example:
 	//
-	// John
+	// Zhang San
 	ProblemSubmitterUserName *string `json:"ProblemSubmitterUserName,omitempty" xml:"ProblemSubmitterUserName,omitempty"`
-	// The types of the governance issue.
+	// The type of the governance problem.
 	ProblemTypes []*string `json:"ProblemTypes,omitempty" xml:"ProblemTypes,omitempty" type:"Repeated"`
 }
 
@@ -768,19 +768,19 @@ func (s *ListGovernObjectsResponseBodyPageResultDataProblem) Validate() error {
 }
 
 type ListGovernObjectsResponseBodyPageResultDataRelatedKnowledge struct {
-	// The cause of the issue.
+	// The cause of the problem.
 	//
 	// example:
 	//
-	// Host exception. The instance was migrated with data loss
+	// Host exception, lossy instance migration
 	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
 	// The description.
 	//
 	// example:
 	//
-	// Store scheduled power on/off business domain canary list\\n
+	// Canary release list for the scheduled startup and shutdown business domain of stores\\n
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The knowledge entry ID.
+	// The knowledge ID.
 	//
 	// example:
 	//
@@ -792,7 +792,7 @@ type ListGovernObjectsResponseBodyPageResultDataRelatedKnowledge struct {
 	//
 	// -mnneiiwtemj-wjuggee
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the owner.
+	// The owner name.
 	//
 	// example:
 	//
@@ -802,7 +802,7 @@ type ListGovernObjectsResponseBodyPageResultDataRelatedKnowledge struct {
 	//
 	// example:
 	//
-	// {\\"Type\\":\\"text\\",\\"Value\\":\\"OSS public network access\\"}
+	// {"Type":"text","Value":"OSS public network access"}
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	// The title.
 	//

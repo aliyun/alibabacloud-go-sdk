@@ -20,7 +20,7 @@ type iGetUdfRequest interface {
 }
 
 type GetUdfRequest struct {
-	// The user-defined function ID.
+	// The ID of the custom function.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//

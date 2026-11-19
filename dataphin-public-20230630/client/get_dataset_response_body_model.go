@@ -148,17 +148,17 @@ type GetDatasetResponseBodyDatasetDTO struct {
 	//
 	// Zhang San
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The subject domain ID.
+	// The subject area ID.
 	//
 	// example:
 	//
 	// 78201
 	DataCellId *string `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
-	// The name of the subject domain.
+	// The subject area name.
 	//
 	// example:
 	//
-	// Offline data subject domain
+	// Offline data subject area
 	DataCellName *string `json:"DataCellName,omitempty" xml:"DataCellName,omitempty"`
 	// The description.
 	//
@@ -190,7 +190,7 @@ type GetDatasetResponseBodyDatasetDTO struct {
 	//
 	// 2026-04-28 10:03:49
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The dataset ID, which serves as the business primary key.
+	// The dataset ID, which is the business primary key.
 	//
 	// example:
 	//
@@ -545,7 +545,7 @@ func (s *GetDatasetResponseBodyDatasetDTOOwnerList) Validate() error {
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionList struct {
-	// The API information for the online dataset.
+	// The API information of the online dataset.
 	ApiInfo *GetDatasetResponseBodyDatasetDTOVersionListApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
 	// The ID of the creator.
 	//
@@ -748,11 +748,11 @@ type GetDatasetResponseBodyDatasetDTOVersionListApiInfo struct {
 	//
 	// 1
 	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
-	// The request parameter list.
+	// The list of request parameters.
 	//
 	// This parameter is required.
 	RequestParamList []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
-	// The response parameter list.
+	// The list of response parameters.
 	ResponseParamList []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
 	// The timeout period in seconds.
 	//
@@ -1251,7 +1251,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig struct {
 	FileStorageConfig *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageConfig `json:"FileStorageConfig,omitempty" xml:"FileStorageConfig,omitempty" type:"Struct"`
 	// The metastore configuration.
 	MetadataStorageConfig *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfig `json:"MetadataStorageConfig,omitempty" xml:"MetadataStorageConfig,omitempty" type:"Struct"`
-	// The real-time meta table configuration. This configuration takes effect only when metadataStorageType is set to REALTIME_META_TABLE.
+	// The real-time metadata table configuration. Valid only when metadataStorageType is REALTIME_META_TABLE.
 	RealtimeMetaTableConfig *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfig `json:"RealtimeMetaTableConfig,omitempty" xml:"RealtimeMetaTableConfig,omitempty" type:"Struct"`
 	// The version description.
 	//
@@ -1333,7 +1333,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageConf
 	//
 	// 7445343860022804608
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
@@ -1429,7 +1429,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorage
 	//
 	// 7429133693081710272
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
@@ -1441,7 +1441,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorage
 	//
 	// HTML body extraction/test423/
 	DevSchema *string `json:"DevSchema,omitempty" xml:"DevSchema,omitempty"`
-	// The storage destination, which can be a new table or an existing table.
+	// The storage destination (new table or existing table).
 	//
 	// This parameter is required.
 	//
@@ -1565,7 +1565,7 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataSto
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchema struct {
-	// The column list.
+	// The list of columns.
 	Columns []*GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -1606,13 +1606,13 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorage
 	//
 	// Primary key
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The subtype of the array element. This parameter is valid only when the type is ARRAY.
+	// The subtype of the array element. Valid only when the type is ARRAY.
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// The maximum capacity of the array. This parameter is valid only when the type is ARRAY. Default value: 4096.
+	// The maximum capacity of the array. Valid only when the type is ARRAY. Default value: 4096.
 	//
 	// example:
 	//
@@ -1742,7 +1742,7 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataSto
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig struct {
-	// The embedding dimension.
+	// The vector dimension.
 	//
 	// This parameter is required.
 	//
@@ -1758,7 +1758,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorage
 	//
 	// MultiModal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index building parameters. Specify different parameters based on the index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+	// The index build parameters. Specify different parameters based on the index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
 	//
 	// example:
 	//
@@ -1840,7 +1840,7 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataSto
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfig struct {
-	// The data source type of the meta table. Only KAFKA is supported in the current phase.
+	// The data source type of the metadata table. Only KAFKA is available in the current phase.
 	//
 	// This parameter is required.
 	//
@@ -1848,15 +1848,15 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTab
 	//
 	// KAFKA
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// The meta table name.
+	// The metadata table name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test meta table
+	// Test metadata table
 	MetaTableName *string `json:"MetaTableName,omitempty" xml:"MetaTableName,omitempty"`
-	// The ID of the project to which the meta table belongs. Cross-project access is supported.
+	// The ID of the project to which the metadata table belongs. Cross-project access is supported.
 	//
 	// This parameter is required.
 	//
@@ -1864,7 +1864,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTab
 	//
 	// 7255013756724992
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The table schema configuration. This configuration reuses MetadataStorageConfigDTO.TableSchemaDTO.
+	// The table schema configuration. Reuses MetadataStorageConfigDTO.TableSchemaDTO.
 	TableSchema *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
 
@@ -1922,7 +1922,7 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMet
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema struct {
-	// The column list.
+	// The list of columns.
 	Columns []*GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -2099,7 +2099,7 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMet
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig struct {
-	// The embedding dimension.
+	// The vector dimension.
 	//
 	// This parameter is required.
 	//
@@ -2115,7 +2115,7 @@ type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTab
 	//
 	// multimodal-embedding-v1
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index building parameters.
+	// The index construction parameters.
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
 	// The index type.
 	//

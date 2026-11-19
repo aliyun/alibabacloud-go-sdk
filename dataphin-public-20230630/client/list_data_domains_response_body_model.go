@@ -24,7 +24,7 @@ type iListDataDomainsResponseBody interface {
 }
 
 type ListDataDomainsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListDataDomainsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListDataDomainsResponseBody) Validate() error {
 }
 
 type ListDataDomainsResponseBodyData struct {
-	// The details of the data domains.
+	// The data domain details.
 	DataDomainList []*ListDataDomainsResponseBodyDataDataDomainList `json:"DataDomainList,omitempty" xml:"DataDomainList,omitempty" type:"Repeated"`
 }
 
@@ -179,11 +179,11 @@ type ListDataDomainsResponseBodyDataDataDomainList struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the data domain.
+	// The display name.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The creation time.
 	//
@@ -197,37 +197,37 @@ type ListDataDomainsResponseBodyDataDataDomainList struct {
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the data domain.
+	// The data domain ID.
 	//
 	// example:
 	//
 	// 1241844456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the data domain.
+	// The user ID of the last modifier.
 	//
 	// example:
 	//
 	// 30010010
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The name of the user who last modified the data domain.
+	// The name of the last modifier.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// The name of the data domain.
+	// The name.
 	//
 	// example:
 	//
 	// dm_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the owner of the business object.
+	// The user ID of the business object owner.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The ID of the owner of the business object.
+	// The user ID of the business object owner.
 	//
 	// example:
 	//

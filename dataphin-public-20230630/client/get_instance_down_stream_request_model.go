@@ -24,7 +24,7 @@ type iGetInstanceDownStreamRequest interface {
 }
 
 type GetInstanceDownStreamRequest struct {
-	// Number of levels to expand downstream in the DAG query. Valid values: 1 to 6.
+	// The number of levels to expand the DAG downwards. Valid values: 1 to 6.
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,21 @@ type GetInstanceDownStreamRequest struct {
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
-	// Environment identifier.
+	// The environment identifier. Valid values:
 	//
-	// - DEV: Development environment.
+	// - DEV: development environment.
 	//
-	// - PROD (default): Production environment.
+	// - PROD: production environment. This is the default value.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The request body.
+	// The get request.
 	//
 	// This parameter is required.
 	InstanceGet *GetInstanceDownStreamRequestInstanceGet `json:"InstanceGet,omitempty" xml:"InstanceGet,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,13 @@ type GetInstanceDownStreamRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Run status of the instance.
+	// The run status of the instance. Valid values:
 	//
 	// - INIT
 	//
@@ -148,7 +150,7 @@ func (s *GetInstanceDownStreamRequest) Validate() error {
 }
 
 type GetInstanceDownStreamRequestInstanceGet struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -156,7 +158,7 @@ type GetInstanceDownStreamRequestInstanceGet struct {
 	//
 	// t_5929472_20210411_9577721
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Node type of the instance.
+	// The node type of the instance. Valid values:
 	//
 	// - BBOX_LOGIC_TABLE_NODE
 	//

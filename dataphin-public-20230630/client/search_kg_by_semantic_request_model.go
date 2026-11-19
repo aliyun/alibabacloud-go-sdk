@@ -85,9 +85,9 @@ func (s *SearchKgBySemanticRequest) Validate() error {
 }
 
 type SearchKgBySemanticRequestSearchCommand struct {
-	// The entity type codes used for filtering. If this parameter is not specified, all entity types are searched.
+	// The entity type code filter. If this parameter is not specified, all entity types are searched.
 	EntityTypeCodes []*string `json:"EntityTypeCodes,omitempty" xml:"EntityTypeCodes,omitempty" type:"Repeated"`
-	// The minimum similarity threshold. Valid values: 0.0 to 1.0. Default value: 0.0 (no filtering). This parameter takes effect only for the semantic search path.
+	// The minimum similarity threshold. Valid values: 0.0 to 1.0. Default value: 0.0, which indicates no filtering. This parameter takes effect only for semantic search paths.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type SearchKgBySemanticRequestSearchCommand struct {
 	//
 	// name
 	PropertyCode *string `json:"PropertyCode,omitempty" xml:"PropertyCode,omitempty"`
-	// The natural language query text. The value can be 0 to 500 characters in length.
+	// The natural language query text. The maximum length is 500 characters.
 	//
 	// This parameter is required.
 	//
@@ -107,7 +107,7 @@ type SearchKgBySemanticRequestSearchCommand struct {
 	//
 	// Query students in Beijing
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
-	// The maximum number of results to return. Default value: 20. Valid values: 1 to 100.
+	// The maximum number of returned results. Default value: 20. Valid values: 1 to 100.
 	//
 	// example:
 	//

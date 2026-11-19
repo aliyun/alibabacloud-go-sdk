@@ -30,7 +30,7 @@ type GetDataServiceApiCallTrendResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The access trend data.
+	// The access trends.
 	Data *GetDataServiceApiCallTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type GetDataServiceApiCallTrendResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataServiceApiCallTrendResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *GetDataServiceApiCallTrendResponseBody) Validate() error {
 }
 
 type GetDataServiceApiCallTrendResponseBodyData struct {
-	// The call error impact trends, sorted by minute in ascending order.
+	// The call exception impact trends in ascending order by minute.
 	CallErrorImpactTrendList []*GetDataServiceApiCallTrendResponseBodyDataCallErrorImpactTrendList `json:"CallErrorImpactTrendList,omitempty" xml:"CallErrorImpactTrendList,omitempty" type:"Repeated"`
-	// The call error trends, sorted by minute in ascending order.
+	// The call exception trends in ascending order by minute.
 	CallErrorTrendList []*GetDataServiceApiCallTrendResponseBodyDataCallErrorTrendList `json:"CallErrorTrendList,omitempty" xml:"CallErrorTrendList,omitempty" type:"Repeated"`
 }
 
@@ -183,7 +183,7 @@ func (s *GetDataServiceApiCallTrendResponseBodyData) Validate() error {
 type GetDataServiceApiCallTrendResponseBodyDataCallErrorImpactTrendList struct {
 	// The API IDs.
 	ApiIdList []*int64 `json:"ApiIdList,omitempty" xml:"ApiIdList,omitempty" type:"Repeated"`
-	// The number of APIs with call errors.
+	// The number of APIs with call exceptions.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type GetDataServiceApiCallTrendResponseBodyDataCallErrorImpactTrendList struct {
 	//
 	// 1
 	ErrorAppCount *int32 `json:"ErrorAppCount,omitempty" xml:"ErrorAppCount,omitempty"`
-	// The time scale in minutes, in the format of yyyy-MM-dd HH:mm.
+	// The time scale in minutes. Format: yyyy-MM-dd HH:mm.
 	//
 	// example:
 	//
@@ -258,13 +258,13 @@ type GetDataServiceApiCallTrendResponseBodyDataCallErrorTrendList struct {
 	//
 	// 1021
 	CallCount *int64 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
-	// The number of call errors.
+	// The number of call exceptions.
 	//
 	// example:
 	//
 	// 102
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	// The minute in the format of yyyy_MMdd_HHmm.
+	// The minute. Format: yyyy_MMdd_HHmm.
 	//
 	// example:
 	//

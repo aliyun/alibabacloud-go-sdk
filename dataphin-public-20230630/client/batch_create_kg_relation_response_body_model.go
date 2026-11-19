@@ -30,7 +30,7 @@ type BatchCreateKgRelationResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of creating relationship records in batches.
+	// The result of creating relation records in batches.
 	CreateResult *BatchCreateKgRelationResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -126,19 +126,19 @@ func (s *BatchCreateKgRelationResponseBody) Validate() error {
 }
 
 type BatchCreateKgRelationResponseBodyCreateResult struct {
-	// The number of failed records.
+	// The number of failed creations.
 	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The number of successfully created records.
+	// The number of successful creations.
 	//
 	// example:
 	//
 	// 10
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The list of successfully created entity records.
+	// The list of successfully created relation records.
 	SuccessRelationList []*BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList `json:"SuccessRelationList,omitempty" xml:"SuccessRelationList,omitempty" type:"Repeated"`
 }
 
@@ -191,18 +191,30 @@ func (s *BatchCreateKgRelationResponseBodyCreateResult) Validate() error {
 }
 
 type BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList struct {
-	// The relationship record ID.
+	// The relation record ID.
 	//
 	// example:
 	//
 	// abc-xxx
 	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The relationship type code.
+	// The relation type code.
 	//
 	// example:
 	//
 	// BELONG_TO
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The source entity ID.
+	//
+	// example:
+	//
+	// e1d4559a4db044158305e2d89bccf81f
+	SourceEntityId *string `json:"SourceEntityId,omitempty" xml:"SourceEntityId,omitempty"`
+	// The target entity ID.
+	//
+	// example:
+	//
+	// e1d4559a4db044158305e2d89bccf82f
+	TargetEntityId *string `json:"TargetEntityId,omitempty" xml:"TargetEntityId,omitempty"`
 }
 
 func (s BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) String() string {
@@ -221,6 +233,14 @@ func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) GetRe
 	return s.RelationType
 }
 
+func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) GetSourceEntityId() *string {
+	return s.SourceEntityId
+}
+
+func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) GetTargetEntityId() *string {
+	return s.TargetEntityId
+}
+
 func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) SetRelationId(v string) *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList {
 	s.RelationId = &v
 	return s
@@ -228,6 +248,16 @@ func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) SetRe
 
 func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) SetRelationType(v string) *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList {
 	s.RelationType = &v
+	return s
+}
+
+func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) SetSourceEntityId(v string) *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList {
+	s.SourceEntityId = &v
+	return s
+}
+
+func (s *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList) SetTargetEntityId(v string) *BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList {
+	s.TargetEntityId = &v
 	return s
 }
 

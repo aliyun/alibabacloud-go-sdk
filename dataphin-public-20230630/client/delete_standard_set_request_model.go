@@ -18,7 +18,7 @@ type iDeleteStandardSetRequest interface {
 }
 
 type DeleteStandardSetRequest struct {
-	// The standard set ID.
+	// The ID of the standard set.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +34,8 @@ type DeleteStandardSetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011

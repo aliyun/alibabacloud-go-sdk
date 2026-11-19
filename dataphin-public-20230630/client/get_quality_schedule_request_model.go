@@ -18,7 +18,7 @@ type iGetQualityScheduleRequest interface {
 }
 
 type GetQualityScheduleRequest struct {
-	// The ID of the scheduling object.
+	// The ID of the schedule object.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetQualityScheduleRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The user ID of the operator.
 	//
 	// example:
 	//

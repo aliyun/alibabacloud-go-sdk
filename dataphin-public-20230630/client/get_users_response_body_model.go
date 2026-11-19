@@ -24,7 +24,7 @@ type iGetUsersResponseBody interface {
 }
 
 type GetUsersResponseBody struct {
-	// The error code. OK indicates that the request is successful.
+	// The error code of the request. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetUsersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message of the request.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// xx test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The display name of the user without the status.
+	// The display name of the user, excluding the status.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// example:
 	//
-	// xx
+	// https://example.com/webhook/feishu
 	FeiShuRobot *string `json:"FeiShuRobot,omitempty" xml:"FeiShuRobot,omitempty"`
 	// The time when the user was created.
 	//
@@ -176,7 +176,7 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// 1717343597000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time.
+	// The time when the user was modified.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// xx test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the user belongs.
+	// The ID of the primary account to which the user belongs.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// xx test
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	// The ID of the user source.
+	// The source ID of the user.
 	//
 	// example:
 	//
@@ -240,13 +240,13 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// example:
 	//
-	// xx
+	// https://example.com/webhook/wecom
 	WeChatRobot *string `json:"WeChatRobot,omitempty" xml:"WeChatRobot,omitempty"`
-	// The whitelist.
+	// The IP address whitelist.
 	//
 	// example:
 	//
-	// *
+	// 192.168.0.1
 	WhiteIp *string `json:"WhiteIp,omitempty" xml:"WhiteIp,omitempty"`
 }
 

@@ -40,7 +40,7 @@ type UpdateComputeClusterRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type UpdateComputeClusterRequestClusterConfig struct {
 	//
 	// cluster_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 时区名称，例如 Asia/Shanghai。更新时不传则保留原值。
+	// The time zone name, such as Asia/Shanghai. If this parameter is not specified during an update, the original value is retained.
 	//
 	// example:
 	//
@@ -251,9 +251,9 @@ type UpdateComputeClusterRequestClusterConfigClusterSafetyControl struct {
 	//
 	// CREATE_COMPUTE_SOURCE
 	ClusterSafetyAuthType *string `json:"ClusterSafetyAuthType,omitempty" xml:"ClusterSafetyAuthType,omitempty"`
-	// The list of whitelist user group IDs.
+	// The list of whitelisted user group IDs.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The list of whitelist user IDs.
+	// The list of whitelisted user IDs.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

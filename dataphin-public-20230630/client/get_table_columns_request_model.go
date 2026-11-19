@@ -22,7 +22,7 @@ type iGetTableColumnsRequest interface {
 }
 
 type GetTableColumnsRequest struct {
-	// The catalog of the asset table, which is the name of the business unit or project workspace.
+	// The catalog of the asset table, which is the name of the business unit or project space.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type GetTableColumnsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The ID of the operating user.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The GUID of the table. If this parameter is specified, it takes precedence in the query, and the Catalog and TableName parameters are ignored even if they are provided.
+	// The GUID of the table. If this parameter is specified, it is used for priority query, and the Catalog and TableName parameters are not required and will be ignored even if specified.
 	//
 	// example:
 	//
 	// dp_ds_table_xxx
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iGetTransferInfoResponseBody interface {
 }
 
 type GetTransferInfoResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetTransferInfoResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -152,25 +152,21 @@ type GetTransferInfoResponseBodyData struct {
 	NewOwner *GetTransferInfoResponseBodyDataNewOwner `json:"NewOwner,omitempty" xml:"NewOwner,omitempty" type:"Struct"`
 	// The previous owner.
 	OldOwner *GetTransferInfoResponseBodyDataOldOwner `json:"OldOwner,omitempty" xml:"OldOwner,omitempty" type:"Struct"`
-	// The transfer mode. Valid values:
-	//
-	// - ONE_STOP: one-click transfer.
-	//
-	// - FUNCTION_MODULE_BASED: transfer by function module.
+	// The transfer mode. Valid values: ONE_STOP: one-click transfer. FUNCTION_MODULE_BASED: transfer by feature module.
 	//
 	// example:
 	//
 	// ONE_STOP
 	PrivilegeTransferMode *string `json:"PrivilegeTransferMode,omitempty" xml:"PrivilegeTransferMode,omitempty"`
-	// The transfer details of function modules.
+	// The transfer details of feature modules.
 	PrivilegeTransferResultEntries []*GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries `json:"PrivilegeTransferResultEntries,omitempty" xml:"PrivilegeTransferResultEntries,omitempty" type:"Repeated"`
-	// The approval ID.
+	// The approval ticket ID.
 	//
 	// example:
 	//
 	// 1
 	ProposalId *int64 `json:"ProposalId,omitempty" xml:"ProposalId,omitempty"`
-	// The approval title.
+	// The title of the approval ticket.
 	//
 	// example:
 	//
@@ -349,7 +345,7 @@ func (s *GetTransferInfoResponseBodyData) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataCreator struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
@@ -394,7 +390,7 @@ func (s *GetTransferInfoResponseBodyDataCreator) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataLastModifier struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
@@ -439,7 +435,7 @@ func (s *GetTransferInfoResponseBodyDataLastModifier) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataNewOwner struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
@@ -484,7 +480,7 @@ func (s *GetTransferInfoResponseBodyDataNewOwner) Validate() error {
 }
 
 type GetTransferInfoResponseBodyDataOldOwner struct {
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
@@ -535,13 +531,13 @@ type GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries struct {
 	//
 	// userId is error
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The name of the transfer module.
+	// The name of the transferred module.
 	//
 	// example:
 	//
 	// table owner
 	PrivilegeDisplayName *string `json:"PrivilegeDisplayName,omitempty" xml:"PrivilegeDisplayName,omitempty"`
-	// The status of the transfer module.
+	// The status of the transferred module.
 	//
 	// example:
 	//

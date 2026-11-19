@@ -28,7 +28,7 @@ type ListKgEntityShrinkRequest struct {
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The paged query filter conditions.
+	// The paged search filter conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
 	// The tenant ID.
 	//
@@ -38,6 +38,8 @@ type ListKgEntityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

@@ -130,7 +130,7 @@ func (s *GetCheckConnectivityJobByJobIdResponseBody) Validate() error {
 }
 
 type GetCheckConnectivityJobByJobIdResponseBodyData struct {
-	// The ID of the data source. This parameter is empty if the check is performed before creation.
+	// The ID of the data source. This field is empty when the check is performed before creation.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type GetCheckConnectivityJobByJobIdResponseBodyData struct {
 	//
 	// 123123
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job type.
+	// The type of the task.
 	//
 	// example:
 	//
 	// application/cluster
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The job status. Valid values: NEW, IN_PROCESS, SUCCESS, and FAILED.
+	// The status of the task. Valid values: NEW, IN_PROCESS, SUCCESS, and FAILED.
 	//
 	// example:
 	//

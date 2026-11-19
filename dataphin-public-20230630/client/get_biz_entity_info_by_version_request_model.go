@@ -38,6 +38,8 @@ type GetBizEntityInfoByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -50,7 +52,7 @@ type GetBizEntityInfoByVersionRequest struct {
 	//
 	// BIZ_OBJECT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version.
+	// The version ID.
 	//
 	// This parameter is required.
 	//

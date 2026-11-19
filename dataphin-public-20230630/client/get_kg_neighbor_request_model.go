@@ -24,7 +24,7 @@ type iGetKgNeighborRequest interface {
 }
 
 type GetKgNeighborRequest struct {
-	// The entity record data ID.
+	// The data ID of the entity record.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetKgNeighborRequest struct {
 	//
 	// Student
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity record neighbor node query instruction.
+	// The neighbor node query instruction for entity records.
 	NeighborsQuery *GetKgNeighborRequestNeighborsQuery `json:"NeighborsQuery,omitempty" xml:"NeighborsQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -50,6 +50,8 @@ type GetKgNeighborRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -144,11 +146,11 @@ type GetKgNeighborRequestNeighborsQuery struct {
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
 	// The direction type. Valid values:
 	//
-	// - in: the current entity is the target node.
+	// - in: Uses the current entity as the target node.
 	//
-	// - out: the current entity is the source node.
+	// - out: Uses the current entity as the source node.
 	//
-	// - both: the current entity is both the source node and the target node.
+	// - both: Uses the current entity as both the source and target nodes.
 	//
 	// Default value: both.
 	//

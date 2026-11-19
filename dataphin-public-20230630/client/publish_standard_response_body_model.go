@@ -22,7 +22,7 @@ type iPublishStandardResponseBody interface {
 }
 
 type PublishStandardResponseBody struct {
-	// The response code.
+	// The backend response code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type PublishStandardResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The backend exception details.
 	//
 	// example:
 	//

@@ -30,6 +30,8 @@ type ListDataDomainsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,9 +83,9 @@ func (s *ListDataDomainsRequest) Validate() error {
 }
 
 type ListDataDomainsRequestListQuery struct {
-	// The IDs of the business units to which the data domains belong.
+	// The IDs of the business units.
 	BizUnitIdList []*int64 `json:"BizUnitIdList,omitempty" xml:"BizUnitIdList,omitempty" type:"Repeated"`
-	// The search keyword. You can search by data domain name, code, or description.
+	// The search keyword, which can be the data domain name, code, or description.
 	//
 	// example:
 	//

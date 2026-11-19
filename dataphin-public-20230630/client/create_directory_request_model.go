@@ -30,6 +30,8 @@ type CreateDirectoryRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -83,27 +85,27 @@ func (s *CreateDirectoryRequest) Validate() error {
 type CreateDirectoryRequestCreateCommand struct {
 	// The menu tree category. Valid values:
 	//
-	// - tempCode: custom query
+	// - tempCode: Ad hoc query.
 	//
-	// - codeManage: code node
+	// - codeManage: Code task.
 	//
-	// - offlinePipeline: offline pipeline
+	// - offlinePipeline: Offline pipeline.
 	//
-	// - offlinePipelineCustomPlugin: pipeline custom component
+	// - offlinePipelineCustomPlugin: Custom pipeline component.
 	//
-	// - dataX: synchronization task
+	// - dataX: Synchronization task.
 	//
-	// - streamMeta: real-time meta table
+	// - streamMeta: Real-time meta table.
 	//
-	// - streamCustomDataSource: real-time custom source
+	// - streamCustomDataSource: Real-time custom data source.
 	//
-	// - streamTemplate: real-time compute template
+	// - streamTemplate: Real-time compute template.
 	//
-	// - resourceManage: resource management
+	// - resourceManage: Resource management.
 	//
-	// - udfResource: offline function
+	// - udfResource: Offline function.
 	//
-	// - streamFunction: real-time function.
+	// - streamFunction: Real-time function.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +113,7 @@ type CreateDirectoryRequestCreateCommand struct {
 	//
 	// tempCode
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The parent directory of the new file directory.
+	// The parent directory of the new directory.
 	//
 	// This parameter is required.
 	//
@@ -119,7 +121,7 @@ type CreateDirectoryRequestCreateCommand struct {
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The name of the new file directory.
+	// The name of the new directory.
 	//
 	// This parameter is required.
 	//

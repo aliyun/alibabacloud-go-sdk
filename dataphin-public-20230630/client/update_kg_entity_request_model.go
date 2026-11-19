@@ -28,6 +28,8 @@ type UpdateKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -100,7 +102,7 @@ func (s *UpdateKgEntityRequest) Validate() error {
 }
 
 type UpdateKgEntityRequestUpdateCommand struct {
-	// The entity record ID.
+	// The ID of the entity record.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +110,7 @@ type UpdateKgEntityRequestUpdateCommand struct {
 	//
 	// abc-xxx
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The entity type code.
+	// The code of the entity type.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +118,7 @@ type UpdateKgEntityRequestUpdateCommand struct {
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity record property list.
+	// The property list of the entity record.
 	//
 	// This parameter is required.
 	PropertyList []*UpdateKgEntityRequestUpdateCommandPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
@@ -171,7 +173,7 @@ func (s *UpdateKgEntityRequestUpdateCommand) Validate() error {
 }
 
 type UpdateKgEntityRequestUpdateCommandPropertyList struct {
-	// The property code.
+	// The code of the property.
 	//
 	// This parameter is required.
 	//
@@ -179,7 +181,7 @@ type UpdateKgEntityRequestUpdateCommandPropertyList struct {
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property value.
+	// The value of the property.
 	//
 	// This parameter is required.
 	//

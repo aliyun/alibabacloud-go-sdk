@@ -18,7 +18,7 @@ type iCreateBizUnitShrinkRequest interface {
 }
 
 type CreateBizUnitShrinkRequest struct {
-	// The create request.
+	// The creation request.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreateBizUnitShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

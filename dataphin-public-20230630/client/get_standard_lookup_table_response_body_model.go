@@ -38,7 +38,7 @@ type GetStandardLookupTableResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The lookup table details.
 	LookupTableInfo *GetStandardLookupTableResponseBodyLookupTableInfo `json:"LookupTableInfo,omitempty" xml:"LookupTableInfo,omitempty" type:"Struct"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ type GetStandardLookupTableResponseBodyLookupTableInfo struct {
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the lookup table.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 30012021
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The username of the user who created the lookup table.
+	// The username of the creator.
 	//
 	// example:
 	//
@@ -158,19 +158,19 @@ type GetStandardLookupTableResponseBodyLookupTableInfo struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parent folder.
 	DirectoryReference *GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
-	// The ID of the lookup table.
+	// The lookup table ID.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the lookup table.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 30012021
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The username of the user who last modified the lookup table.
+	// The username of the last modifier.
 	//
 	// example:
 	//

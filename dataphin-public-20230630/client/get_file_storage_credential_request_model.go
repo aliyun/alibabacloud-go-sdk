@@ -30,7 +30,7 @@ type GetFileStorageCredentialRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the user who performs the operation.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -42,13 +42,21 @@ type GetFileStorageCredentialRequest struct {
 	//
 	// 1030131021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The purpose of the authorization. Valid values: RESOURCE (creating resource files), COMPUTE_SOURCE_SETTING (configuring storage and compute sources), and NONE (no specific purpose). Default value: NONE.
+	// The purpose of the authorization. Valid values:
+	//
+	// - RESOURCE: Creates resource files.
+	//
+	// - COMPUTE_SOURCE_SETTING: Configures storage and compute sources.
+	//
+	// - NONE: Indicates no specific purpose.
+	//
+	// Default value: NONE.
 	//
 	// example:
 	//
 	// RESOURCE
 	Purpose *string `json:"Purpose,omitempty" xml:"Purpose,omitempty"`
-	// Specifies whether to use the internal endpoint. Default value: false.
+	// Specifies whether to use the internal network address. Default value: false.
 	UseVpcEndpoint *bool `json:"UseVpcEndpoint,omitempty" xml:"UseVpcEndpoint,omitempty"`
 }
 

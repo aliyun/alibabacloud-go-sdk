@@ -26,11 +26,13 @@ type UpdateDataSourceBasicInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The basic information to edit for the data source.
+	// The update of the basic information for a data source.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataSourceBasicInfoRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -87,7 +89,7 @@ type UpdateDataSourceBasicInfoRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// xx
+	// Sample data source description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The data source ID.
 	//
@@ -103,7 +105,7 @@ type UpdateDataSourceBasicInfoRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

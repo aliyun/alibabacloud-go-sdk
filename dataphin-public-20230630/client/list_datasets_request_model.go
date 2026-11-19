@@ -28,7 +28,7 @@ type ListDatasetsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator ID.
+	// The operator user ID.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ListDatasetsRequestDatasetQuery struct {
 	//
 	// 30001011
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The dataset types. If this parameter is left empty, all types are queried.
+	// The dataset type. If this parameter is left empty, all types are queried.
 	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 

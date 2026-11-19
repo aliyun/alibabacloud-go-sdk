@@ -126,7 +126,7 @@ func (s *GetQualityWatchByObjectIdResponseBody) Validate() error {
 }
 
 type GetQualityWatchByObjectIdResponseBodyQualityWatchInfo struct {
-	// The creation time.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfo struct {
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The update time.
+	// The update time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfo struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The monitored table object.
 	TableInfo *GetQualityWatchByObjectIdResponseBodyQualityWatchInfoTableInfo `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
-	// The monitored object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time metadata table).
+	// The monitored object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time metatable).
 	//
 	// example:
 	//
@@ -414,7 +414,7 @@ func (s *GetQualityWatchByObjectIdResponseBodyQualityWatchInfo) Validate() error
 }
 
 type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoDataSourceInfo struct {
-	// The creation time.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -444,7 +444,7 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoDataSourceInfo struct 
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The update time.
+	// The update time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -456,13 +456,13 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoDataSourceInfo struct 
 	//
 	// 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID of the owner.
+	// The owner ID.
 	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The username of the owner.
+	// The owner name.
 	//
 	// example:
 	//
@@ -597,19 +597,19 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// test
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The name of the cell summary logical table.
+	// The unit aggregate table name.
 	//
 	// example:
 	//
 	// dws_all
 	CellSumLogicTableName *string `json:"CellSumLogicTableName,omitempty" xml:"CellSumLogicTableName,omitempty"`
-	// The compute type of the metric. Valid values: AUTO, CUSTOM, MOUNT, and COMBINE.
+	// The metric computation type. Valid values: AUTO, CUSTOM, MOUNT, and COMBINE.
 	//
 	// example:
 	//
 	// AUTO
 	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
-	// The data type of the metric.
+	// The metric data type.
 	//
 	// example:
 	//
@@ -621,7 +621,7 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the metric.
+	// The metric display name.
 	//
 	// example:
 	//
@@ -631,7 +631,7 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// example:
 	//
-	// Site-wide summary table
+	// Global aggregate table
 	GranularityDisplayName *string `json:"GranularityDisplayName,omitempty" xml:"GranularityDisplayName,omitempty"`
 	// The statistical granularity ID.
 	//
@@ -657,13 +657,13 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// logic
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID of the owner.
+	// The owner ID.
 	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The username of the owner.
+	// The owner name.
 	//
 	// example:
 	//
@@ -920,13 +920,13 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoTableInfo struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID of the owner.
+	// The owner ID.
 	//
 	// example:
 	//
 	// 30012011
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The username of the owner.
+	// The owner name.
 	//
 	// example:
 	//
@@ -944,7 +944,7 @@ type GetQualityWatchByObjectIdResponseBodyQualityWatchInfoTableInfo struct {
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The type. Valid values: LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_LABEL_TABLE (logical tag table), PHYSICAL_TABLE (physical table), and REALTIME_LOGICAL_TABLE (real-time metadata table).
+	// The type. Valid values: LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_LABEL_TABLE (logical tag table), PHYSICAL_TABLE (physical table), and REALTIME_LOGICAL_TABLE (real-time metatable).
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateDataServiceApiShrinkRequest interface {
 }
 
 type CreateDataServiceApiShrinkRequest struct {
-	// The request for creating an API.
+	// The request to create an API.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreateDataServiceApiShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operation user.
+	//
 	// example:
 	//
 	// 30001011

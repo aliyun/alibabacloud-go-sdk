@@ -24,33 +24,33 @@ type iCreateDataSourceResponseBody interface {
 }
 
 type CreateDataSourceResponseBody struct {
-	// Error code. OK indicates that the request is successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data source creation result
+	// The result of creating the data source.
 	CreateResult *CreateDataSourceResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
-	// HTTP status code returned by the backend
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *CreateDataSourceResponseBody) Validate() error {
 }
 
 type CreateDataSourceResponseBodyCreateResult struct {
-	// Development environment data source ID
+	// The ID of the development environment data source.
 	//
 	// example:
 	//
 	// 123
 	DevDataSourceId *int64 `json:"DevDataSourceId,omitempty" xml:"DevDataSourceId,omitempty"`
-	// Production environment data source ID
+	// The ID of the production environment data source.
 	//
 	// example:
 	//

@@ -30,6 +30,8 @@ type CreateResourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,21 +83,15 @@ func (s *CreateResourceRequest) Validate() error {
 }
 
 type CreateResourceRequestCreateCommand struct {
-	// The commit remarks.
+	// The submission comment.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The compute engine type. Valid values:
-	//
-	// - MAX_COMPUTE
-	//
-	// - HADOOP
-	//
-	// - NONE.
+	// The compute engine type. Valid values: MAX_COMPUTE, HADOOP, and NONE.
 	//
 	// This parameter is required.
 	//
@@ -103,15 +99,15 @@ type CreateResourceRequestCreateCommand struct {
 	//
 	// MAX_COMPUTE
 	ComputeEngineType *string `json:"ComputeEngineType,omitempty" xml:"ComputeEngineType,omitempty"`
-	// The description of the resource file.
+	// The resource description.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The folder in which the resource file is stored.
+	// The storage folder.
 	//
 	// This parameter is required.
 	//
@@ -135,15 +131,7 @@ type CreateResourceRequestCreateCommand struct {
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the resource file. Valid values:
-	//
-	// - FILE: common file.
-	//
-	// - JAR: JAR file.
-	//
-	// - PYTHON: Python file.
-	//
-	// - OTHERS: other type of file.
+	// The resource type. Valid values: FILE: common file, JAR: JAR file, PYTHON: Python file, and OTHERS: other types of files.
 	//
 	// This parameter is required.
 	//
@@ -151,7 +139,7 @@ type CreateResourceRequestCreateCommand struct {
 	//
 	// JAR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The storage address of the resource file.
+	// The storage address of the resource.
 	//
 	// This parameter is required.
 	//

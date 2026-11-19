@@ -18,7 +18,7 @@ type iListTablesRequest interface {
 }
 
 type ListTablesRequest struct {
-	// The paged query conditions.
+	// The paging query conditions.
 	ListQuery *ListTablesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -81,7 +81,7 @@ func (s *ListTablesRequest) Validate() error {
 }
 
 type ListTablesRequestListQuery struct {
-	// The asset catalog: project name and business unit name.
+	// The asset catalog: project name, business unit name, or data source ID. If this parameter is not specified, all table assets are queried.
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type ListTablesRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The table types. If you do not specify this parameter or pass an empty list, all table types are queried. Valid values:
+	// The table types. If this parameter is not specified or an empty list is passed, all table types are queried. Valid values:
 	//
 	// - PHYSICAL_TABLE: Physical table of the compute source.
 	//

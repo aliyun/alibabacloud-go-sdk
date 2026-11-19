@@ -18,7 +18,7 @@ type iAssignQualityRuleOfAllRuleScopeSchedulesRequest interface {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesRequest struct {
-	// The assignment binding command.
+	// The binding assignment command.
 	//
 	// This parameter is required.
 	AssignCommand *AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand `json:"AssignCommand,omitempty" xml:"AssignCommand,omitempty" type:"Struct"`
@@ -30,7 +30,7 @@ type AssignQualityRuleOfAllRuleScopeSchedulesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The operator user ID.
 	//
 	// example:
 	//
@@ -83,11 +83,11 @@ func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) Validate() error {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand struct {
-	// The rule ID.
+	// The rule IDs.
 	//
 	// This parameter is required.
 	RuleIdList []*int64 `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
-	// The schedule ID.
+	// The schedule IDs.
 	//
 	// This parameter is required.
 	ScheduleIdList []*int64 `json:"ScheduleIdList,omitempty" xml:"ScheduleIdList,omitempty" type:"Repeated"`
@@ -97,7 +97,7 @@ type AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand struct {
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
 }
 

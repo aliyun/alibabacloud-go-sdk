@@ -18,7 +18,7 @@ type iCreateStandardMappingRequest interface {
 }
 
 type CreateStandardMappingRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateStandardMappingRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateStandardMappingRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -87,9 +89,9 @@ type CreateStandardMappingRequestCreateCommand struct {
 	AssetGuidList []*string `json:"AssetGuidList,omitempty" xml:"AssetGuidList,omitempty" type:"Repeated"`
 	// The processing policy for invalid mappings when importing mapping relationships. Valid values:
 	//
-	// - SET_INVALID_TO_VALID: sets invalid mappings to valid mappings.
+	// - SET_INVALID_TO_VALID: Changes invalid mappings to valid mappings.
 	//
-	// - KEEP_INVALID_AND_SKIP: retains invalid mappings and skips them.
+	// - KEEP_INVALID_AND_SKIP: Retains invalid mappings and skips them.
 	//
 	// Default value: SET_INVALID_TO_VALID.
 	//
@@ -99,9 +101,9 @@ type CreateStandardMappingRequestCreateCommand struct {
 	InvalidMappingRelationOperationType *string `json:"InvalidMappingRelationOperationType,omitempty" xml:"InvalidMappingRelationOperationType,omitempty"`
 	// The mapping relationship type. Valid values:
 	//
-	// - VALID: valid mapping.
+	// - VALID: Valid mapping.
 	//
-	// - INVALID: invalid mapping.
+	// - INVALID: Invalid mapping.
 	//
 	// Default value: VALID.
 	//

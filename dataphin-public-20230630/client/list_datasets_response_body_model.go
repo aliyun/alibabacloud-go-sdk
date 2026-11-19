@@ -234,7 +234,7 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// 2026-05-18 17:07:54.237771
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// 300001391
 	LockOwner *string `json:"LockOwner,omitempty" xml:"LockOwner,omitempty"`
-	// The name of the development owner (interface display field).
+	// The name of the development owner (Displayed Fields on the interface).
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// POSTGRESQL
 	MetadataStorageType *string `json:"MetadataStorageType,omitempty" xml:"MetadataStorageType,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// ds_tm
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The scenarios of the dataset. Valid values: OFFLINE (offline, default) and REALTIME (real-time).
+	// The Scenarios in which the dataset is used. Valid values: OFFLINE (offline, default) and REALTIME (real-time).
 	//
 	// example:
 	//
@@ -595,7 +595,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataOwnerList) Validate() error
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionList struct {
-	// The API information of the online dataset.
+	// The API information for the online dataset.
 	ApiInfo *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
 	// The ID of the creator.
 	//
@@ -617,7 +617,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionList struct {
 	//
 	// 2026-04-28 10:03:49
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
@@ -746,7 +746,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo struct {
 	//
 	// 60
 	ExecTimeout *int32 `json:"ExecTimeout,omitempty" xml:"ExecTimeout,omitempty"`
-	// The execution mode. Valid values: 1: Synchronous, 2: Asynchronous.
+	// The execution mode: 1-synchronous, 2-asynchronous.
 	//
 	// This parameter is required.
 	//
@@ -782,7 +782,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo struct {
 	//
 	// test
 	OsProjectName *string `json:"OsProjectName,omitempty" xml:"OsProjectName,omitempty"`
-	// The protocol type. Valid values: 1: HTTPS, 2: HTTP, 3: HTTP and HTTPS.
+	// The protocol type: 1. HTTPS, 2. HTTP, 3. HTTP and HTTPS.
 	//
 	// This parameter is required.
 	//
@@ -790,7 +790,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo struct {
 	//
 	// 1
 	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The request method. Valid values: 1: GET, 2: LIST.
+	// The request method: 1-GET, 2-LIST.
 	//
 	// This parameter is required.
 	//
@@ -798,11 +798,11 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo struct {
 	//
 	// 1
 	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
-	// The list of request parameters.
+	// The request parameter list.
 	//
 	// This parameter is required.
 	RequestParamList []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
-	// The list of response parameters.
+	// The response parameter list.
 	ResponseParamList []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
 	// The timeout period in seconds.
 	//
@@ -1007,7 +1007,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamL
 	//
 	// int
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The example value.
+	// The sample value.
 	//
 	// example:
 	//
@@ -1189,7 +1189,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParam
 	//
 	// int
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The example value.
+	// The sample value.
 	//
 	// example:
 	//
@@ -1301,7 +1301,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfig st
 	FileStorageConfig *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigFileStorageConfig `json:"FileStorageConfig,omitempty" xml:"FileStorageConfig,omitempty" type:"Struct"`
 	// The metastore configuration.
 	MetadataStorageConfig *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfig `json:"MetadataStorageConfig,omitempty" xml:"MetadataStorageConfig,omitempty" type:"Struct"`
-	// The real-time metatable configuration. This configuration is valid only when `metadataStorageType` is `REALTIME_META_TABLE`.
+	// The real-time metatable configuration. Effective only when `metadataStorageType=REALTIME_META_TABLE`.
 	RealtimeMetaTableConfig *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfig `json:"RealtimeMetaTableConfig,omitempty" xml:"RealtimeMetaTableConfig,omitempty" type:"Struct"`
 	// The version description.
 	//
@@ -1485,7 +1485,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// Test data source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The development database or schema.
+	// The development database/schema.
 	//
 	// example:
 	//
@@ -1505,7 +1505,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// MILVUS
 	MetadataStorageType *string `json:"MetadataStorageType,omitempty" xml:"MetadataStorageType,omitempty"`
-	// The production database or schema.
+	// The production database/schema.
 	//
 	// This parameter is required.
 	//
@@ -1615,7 +1615,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchema struct {
-	// The list of columns.
+	// The column list.
 	Columns []*ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -1656,13 +1656,13 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// Primary key
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The subtype of the array element. Valid only when type is ARRAY.
+	// The subtype of array elements. Valid only when type=ARRAY.
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// The maximum capacity of the array. Valid only when type is ARRAY. Default value: 4096.
+	// The maximum capacity of the array. Valid only when type=ARRAY. Default value: 4096.
 	//
 	// example:
 	//
@@ -1676,7 +1676,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the column is a primary key.
+	// Indicates whether the column is a primary key.
 	//
 	// This parameter is required.
 	//
@@ -1692,7 +1692,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// int8
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether the column is a URL.
+	// Indicates whether the column is a URL.
 	//
 	// example:
 	//
@@ -1792,7 +1792,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig struct {
-	// The embedding dimension.
+	// The vector dimension.
 	//
 	// This parameter is required.
 	//
@@ -1808,7 +1808,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// MultiModal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index building parameters.
+	// The index build parameters.
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
 	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
 	//
@@ -1818,7 +1818,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// AUTOINDEX
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+	// The similarity type. Valid values: COSINE, L2, and IP. Default value: COSINE.
 	//
 	// This parameter is required.
 	//
@@ -1886,7 +1886,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfig struct {
-	// The data source type of the metatable. Only KAFKA is supported in the current release.
+	// The data source type of the metatable. Only KAFKA is currently supported.
 	//
 	// This parameter is required.
 	//
@@ -1902,7 +1902,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// Test metatable
 	MetaTableName *string `json:"MetaTableName,omitempty" xml:"MetaTableName,omitempty"`
-	// The ID of the project to which the metatable belongs. Cross-project access is supported.
+	// The project ID of the metatable. Cross-project access is supported.
 	//
 	// This parameter is required.
 	//
@@ -1910,7 +1910,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// 7128268454335680
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The table schema configuration. This configuration reuses `MetadataStorageConfigDTO.TableSchemaDTO`.
+	// The table schema configuration. Reuses `MetadataStorageConfigDTO.TableSchemaDTO`.
 	TableSchema *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
 
@@ -1968,7 +1968,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema struct {
-	// The list of columns.
+	// The column list.
 	Columns []*ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -2003,19 +2003,19 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns struct {
-	// **The field description.**
+	// **Field description**
 	//
 	// example:
 	//
 	// Entry time
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// **The subtype of the array element. Valid only when type is ARRAY.**
+	// **The subtype of array elements. Valid only when type=ARRAY.**
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// **The maximum capacity of the array. Valid only when type is ARRAY. Default value: 4096.**
+	// **The maximum capacity of the array. Valid only when type=ARRAY. Default value: 4096.**
 	//
 	// example:
 	//
@@ -2029,7 +2029,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// happen_time
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the column is a primary key.
+	// Indicates whether the column is a primary key.
 	//
 	// This parameter is required.
 	//
@@ -2045,7 +2045,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// date
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether the column is a URL.
+	// Indicates whether the column is a URL.
 	//
 	// example:
 	//
@@ -2145,7 +2145,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig struct {
-	// The embedding dimension.
+	// The vector dimension.
 	//
 	// This parameter is required.
 	//
@@ -2161,7 +2161,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// multimodal-embedding-v1
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index building parameters.
+	// The index build parameters.
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
 	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
 	//
@@ -2171,7 +2171,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// AUTOINDEX
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+	// The similarity type. Valid values: COSINE, L2, and IP. Default value: COSINE.
 	//
 	// This parameter is required.
 	//

@@ -24,13 +24,13 @@ type iGetSupplementDagrunResponseBody interface {
 }
 
 type GetSupplementDagrunResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of dagruns.
+	// The dagrun list.
 	DagrunList []*GetSupplementDagrunResponseBodyDagrunList `json:"DagrunList,omitempty" xml:"DagrunList,omitempty" type:"Repeated"`
 	// The HTTP status code returned by the backend.
 	//
@@ -50,7 +50,7 @@ type GetSupplementDagrunResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *GetSupplementDagrunResponseBody) Validate() error {
 }
 
 type GetSupplementDagrunResponseBodyDagrunList struct {
-	// The business date. The time format must conform to the partition format specified by the business unit.
+	// The business date. The time format must comply with the partition format specified by the business unit.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type GetSupplementDagrunResponseBodyDagrunList struct {
 	//
 	// 60s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The execution end timestamp.
+	// The end execution timestamp.
 	//
 	// example:
 	//
@@ -158,35 +158,35 @@ type GetSupplementDagrunResponseBodyDagrunList struct {
 	//
 	// dr_2242792_14542
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution start timestamp.
+	// The start execution timestamp.
 	//
 	// example:
 	//
 	// 1717081729000
 	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
-	// The status of the data backfill instance workflow. Valid values:
+	// The status of the data backfill workflow. Valid values:
 	//
-	// - INIT: dagrun init.
+	// - INIT: The dagrun is initialized.
 	//
-	// - CREATE_FAILED: dagrun creation failed.
+	// - CREATE_FAILED: The dagrun fails to be created.
 	//
-	// - CREATED: dagrun created.
+	// - CREATED: The dagrun is created.
 	//
-	// - READY: dagrun ready for exec.
+	// - READY: The dagrun is ready for execution.
 	//
-	// - RUNNING: dagrun running.
+	// - RUNNING: The dagrun is running.
 	//
-	// - KILLED: dagrun stopped.
+	// - KILLED: The dagrun is stopped.
 	//
-	// - FAILED: dagrun failed.
+	// - FAILED: The dagrun fails.
 	//
-	// - SUCCESS: dagrun succeeded.
+	// - SUCCESS: The dagrun succeeds.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the data backfill instance workflow.
+	// The ID of the data backfill workflow.
 	//
 	// example:
 	//

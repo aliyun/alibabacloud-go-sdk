@@ -36,7 +36,7 @@ type GetDataServiceMyProjectsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend error details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataServiceMyProjectsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,29 +130,19 @@ func (s *GetDataServiceMyProjectsResponseBody) Validate() error {
 }
 
 type GetDataServiceMyProjectsResponseBodyProjectList struct {
-	// The data service project ID.
+	// The ID of the data service project.
 	//
 	// example:
 	//
 	// 102011
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The role. Valid values:
-	//
-	// - 1: super administrator
-	//
-	// - 2: developer
-	//
-	// - 3: application member
-	//
-	// - 4: service project administrator
-	//
-	// - 5: O&M engineer.
+	// The role. Valid values: 1: Super administrator, 2: Developer, 3: Application member, 4: Service project administrator, 5: O&M user.
 	//
 	// example:
 	//

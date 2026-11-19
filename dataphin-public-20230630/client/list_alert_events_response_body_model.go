@@ -24,7 +24,7 @@ type iListAlertEventsResponseBody interface {
 }
 
 type ListAlertEventsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListAlertEventsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *ListAlertEventsResponseBody) Validate() error {
 }
 
 type ListAlertEventsResponseBodyListResult struct {
-	// The alert event query results.
+	// The alert event query result.
 	Data []*ListAlertEventsResponseBodyListResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -182,9 +182,9 @@ func (s *ListAlertEventsResponseBodyListResult) Validate() error {
 type ListAlertEventsResponseBodyListResultData struct {
 	// The alert frequency. Valid values:
 	//
-	// - ONCE: instant alert
+	// - ONCE: Immediate alert.
 	//
-	// - PERIOD: periodic alert. Format: 1HOUR, 1MINUTE, 1SECOND.
+	// - PERIOD: Periodic alert. Format: 1HOUR, 1MINUTE, 1SECOND.
 	//
 	// example:
 	//
@@ -192,19 +192,19 @@ type ListAlertEventsResponseBodyListResultData struct {
 	AlertFrequency *string `json:"AlertFrequency,omitempty" xml:"AlertFrequency,omitempty"`
 	// The alert object.
 	AlertObject *ListAlertEventsResponseBodyListResultDataAlertObject `json:"AlertObject,omitempty" xml:"AlertObject,omitempty" type:"Struct"`
-	// The alert reason.
+	// The alert cause.
 	AlertReason *ListAlertEventsResponseBodyListResultDataAlertReason `json:"AlertReason,omitempty" xml:"AlertReason,omitempty" type:"Struct"`
-	// The list of alert receivers.
+	// The list of alert recipients.
 	AlertReceiverList []*ListAlertEventsResponseBodyListResultDataAlertReceiverList `json:"AlertReceiverList,omitempty" xml:"AlertReceiverList,omitempty" type:"Repeated"`
-	// The project to which the alert belongs.
+	// The project.
 	BelongProject *ListAlertEventsResponseBodyListResultDataBelongProject `json:"BelongProject,omitempty" xml:"BelongProject,omitempty" type:"Struct"`
-	// The expiration time of the do-not-disturb period.
+	// The expiration time of the do-not-disturb mode.
 	//
 	// example:
 	//
 	// 2024-11-25 00:00:00
 	DoNotDisturbEndTime *string `json:"DoNotDisturbEndTime,omitempty" xml:"DoNotDisturbEndTime,omitempty"`
-	// The time of the first alert.
+	// The first alert time.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type ListAlertEventsResponseBodyListResultData struct {
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time of the latest alert.
+	// The latest alert time.
 	//
 	// example:
 	//
@@ -224,19 +224,19 @@ type ListAlertEventsResponseBodyListResultData struct {
 	LatestAlertTime *string `json:"LatestAlertTime,omitempty" xml:"LatestAlertTime,omitempty"`
 	// The alert status. Valid values:
 	//
-	// - ALERTING: alerting
+	// - ALERTING: Alerting.
 	//
-	// - DO_NOT_DISTURB: do not disturb
+	// - DO_NOT_DISTURB: Do not disturb.
 	//
-	// - SILENCING: alerting (cool-down period)
+	// - SILENCING: Alerting (silenced).
 	//
-	// - FINISH: completed.
+	// - FINISH: Completed.
 	//
 	// example:
 	//
 	// FINISH
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of alert occurrences.
+	// The total number of alerts.
 	//
 	// example:
 	//
@@ -404,23 +404,21 @@ type ListAlertEventsResponseBodyListResultDataAlertObject struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The source system. Valid values:
 	//
-	// - ALL: all
+	// - ALL: All.
 	//
-	// - DQE: data quality
+	// - DQE: Data quality.
 	//
-	// - OS: data service
+	// - OS: Data service.
 	//
-	// - STREAM: real-time computing
+	// - STREAM: Real-time computing.
 	//
-	// - VDM_BATCH: offline computing
+	// - VDM_BATCH: Offline computing.
 	//
-	// - SOP: O&M platform
+	// - SOP: O&M platform.
 	//
-	// - REAL_TIME_PIPELINE: real-time integration
+	// - REAL_TIME_PIPELINE: Real-time integration.
 	//
-	// - KGB: baseline monitoring
-	//
-	// and more.
+	// - KGB: Baseline monitoring.
 	//
 	// example:
 	//
@@ -428,59 +426,57 @@ type ListAlertEventsResponseBodyListResultDataAlertObject struct {
 	SourceSystemType *string `json:"SourceSystemType,omitempty" xml:"SourceSystemType,omitempty"`
 	// The alert object type. Valid values:
 	//
-	// - OS_API: API operation
+	// - OS_API: API operation.
 	//
-	// - OS_APPLICATION_SERVICE: service application
+	// - OS_APPLICATION_SERVICE: Service application.
 	//
-	// - STREAM_TASK: real-time computing
+	// - STREAM_TASK: Real-time computing.
 	//
-	// - REAL_TIME_PIPELINE_TASK: real-time integration
+	// - REAL_TIME_PIPELINE_TASK: Real-time integration.
 	//
-	// - VDM_BATCH_SHELL: SHELL
+	// - VDM_BATCH_SHELL: SHELL.
 	//
-	// - VDM_BATCH_PYTHON: PYTHON
+	// - VDM_BATCH_PYTHON: PYTHON.
 	//
-	// - VDM_BATCH_DATAX: DATAX
+	// - VDM_BATCH_DATAX: DATAX.
 	//
-	// - VDM_BATCH_DLINK: DLINK
+	// - VDM_BATCH_DLINK: DLINK.
 	//
-	// - VDM_BATCH_VIRTUAL: VIRTUAL
+	// - VDM_BATCH_VIRTUAL: VIRTUAL.
 	//
-	// - VDM_BATCH_PYTHON37: PYTHON37
+	// - VDM_BATCH_PYTHON37: PYTHON37.
 	//
-	// - VDM_BATCH_PYTHON311: PYTHON311
+	// - VDM_BATCH_PYTHON311: PYTHON311.
 	//
-	// - VDM_BATCH_MAX_COMPUTE_SQL: MAXCOMPUTE_SQL
+	// - VDM_BATCH_MAX_COMPUTE_SQL: MAXCOMPUTE_SQL.
 	//
-	// - VDM_BATCH_MAX_COMPUTE_MR: MAXCOMPUTE_MR
+	// - VDM_BATCH_MAX_COMPUTE_MR: MAXCOMPUTE_MR.
 	//
-	// - VDM_BATCH_SPARK_JAR_ON_MAX_COMPUTE: SPARK_JAR_ON_MAX_COMPUTE
+	// - VDM_BATCH_SPARK_JAR_ON_MAX_COMPUTE: SPARK_JAR_ON_MAX_COMPUTE.
 	//
-	// - VDM_BATCH_HIVE_SQL: HIVE_SQL
+	// - VDM_BATCH_HIVE_SQL: HIVE_SQL.
 	//
-	// - VDM_BATCH_HADOOP_MR: HADOOP_MR
+	// - VDM_BATCH_HADOOP_MR: HADOOP_MR.
 	//
-	// - VDM_BATCH_SPARK_JAR_ON_HIVE: SPARK_JAR_ON_HIVE
+	// - VDM_BATCH_SPARK_JAR_ON_HIVE: SPARK_JAR_ON_HIVE.
 	//
-	// - VDM_BATCH_SPARK_SQL_ON_HIVE: SPARK_SQL_ON_HIVE
+	// - VDM_BATCH_SPARK_SQL_ON_HIVE: SPARK_SQL_ON_HIVE.
 	//
-	// - VDM_BATCH_SPARK_SQL: VDM_BATCH_SPARK_SQL
+	// - VDM_BATCH_SPARK_SQL: VDM_BATCH_SPARK_SQL.
 	//
-	// - DQE_LOGICAL_TABLE: logical table
+	// - DQE_LOGICAL_TABLE: Logical table.
 	//
-	// - DQE_PHYSICAL_TABLE: physical table
+	// - DQE_PHYSICAL_TABLE: Physical table.
 	//
-	// - DQE_REALTIME_TABLE: real-time metadata table
+	// - DQE_REALTIME_TABLE: Real-time metadata table.
 	//
-	// - DQE_DATA_SOURCE: data source
+	// - DQE_DATA_SOURCE: Data source.
 	//
-	// - DQE_INDEX: metric
+	// - DQE_INDEX: Metric.
 	//
-	// - QD_DECISION_INVOKE: QD decision invocation
+	// - QD_DECISION_INVOKE: QD decision invocation.
 	//
-	// - BASELINE: baseline
-	//
-	// and more.
+	// - BASELINE: Baseline.
 	//
 	// example:
 	//
@@ -528,7 +524,7 @@ func (s *ListAlertEventsResponseBodyListResultDataAlertObject) Validate() error 
 }
 
 type ListAlertEventsResponseBodyListResultDataAlertReason struct {
-	// The list of alert reason parameters.
+	// The list of alert cause parameters.
 	AlertReasonParamList []*ListAlertEventsResponseBodyListResultDataAlertReasonAlertReasonParamList `json:"AlertReasonParamList,omitempty" xml:"AlertReasonParamList,omitempty" type:"Repeated"`
 	// The business date.
 	//
@@ -536,77 +532,75 @@ type ListAlertEventsResponseBodyListResultDataAlertReason struct {
 	//
 	// 2024-11-25 10:02:47
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The alert reason type. Valid values:
+	// The alert cause. Valid values:
 	//
-	// - DQE_COLUMN: field rule exception
+	// - DQE_COLUMN: Field rule exception.
 	//
-	// - DQE_DATA_SOURCE: data source rule exception
+	// - DQE_DATA_SOURCE: Data source rule exception.
 	//
-	// - DQE_CUSTOMIZE: custom rule exception
+	// - DQE_CUSTOMIZE: Custom rule exception.
 	//
-	// - DQE_TABLE: table rule exception
+	// - DQE_TABLE: Table rule exception.
 	//
-	// - DQE_REALTIME_TABLE: real-time table rule exception
+	// - DQE_REALTIME_TABLE: Real-time table rule exception.
 	//
-	// - DQE_INDEX: metric rule exception
+	// - DQE_INDEX: Metric rule exception.
 	//
-	// - OS_AVG_RESPONSE: average response time exception
+	// - OS_AVG_RESPONSE: Average response time exception.
 	//
-	// - OS_CALL_TIMES: call count exception
+	// - OS_CALL_TIMES: Call count exception.
 	//
-	// - OS_ERROR_RATE: error rate exception
+	// - OS_ERROR_RATE: Error rate exception.
 	//
-	// - OS_OFFLINE: Offline percentage exception
+	// - OS_OFFLINE: Offline percentage exception.
 	//
-	// - STREAM_BIZ_DELAY: business delay too high
+	// - STREAM_BIZ_DELAY: High business delay.
 	//
-	// - STREAM_DATA_RETENTION: data retention exceeds configuration
+	// - STREAM_DATA_RETENTION: Data retention exceeds configuration.
 	//
-	// - STREAM_MORE_THAN_FAILURE: failure frequency exceeds configuration
+	// - STREAM_MORE_THAN_FAILURE: Failure frequency exceeds configuration.
 	//
-	// - STREAM_TPS_OUT_RANGE: TPS out of range
+	// - STREAM_TPS_OUT_RANGE: TPS out of range.
 	//
-	// - STREAM_CHECKPOINT_FAILURE: checkpoint failures exceed configuration
+	// - STREAM_CHECKPOINT_FAILURE: Checkpoint failures exceed configuration.
 	//
-	// - STREAM_BACKPRESSURE: backpressure duration exceeds configuration
+	// - STREAM_BACKPRESSURE: Backpressure duration exceeds configuration.
 	//
-	// - STREAM_JOB_FAILURE: job failure
+	// - STREAM_JOB_FAILURE: Run failure.
 	//
-	// - VDM_BATCH_ERROR: error
+	// - VDM_BATCH_ERROR: Error.
 	//
-	// - VDM_BATCH_FINISH: completed
+	// - VDM_BATCH_FINISH: Completed.
 	//
-	// - VDM_BATCH_TIME_OUT: execution timeout
+	// - VDM_BATCH_TIME_OUT: Run timeout.
 	//
-	// - VDM_BATCH_UNDONE: incomplete
+	// - VDM_BATCH_UNDONE: Uncompleted.
 	//
-	// - VDM_BATCH_LOGIC_DATA_DELAY: data delay
+	// - VDM_BATCH_LOGIC_DATA_DELAY: Data delay.
 	//
-	// - QD_DECISION_CALL_TIMES: decision call count exception
+	// - QD_DECISION_CALL_TIMES: Decision call count exception.
 	//
-	// - QD_DECISION_MAX_RESPONSE: maximum response time exception
+	// - QD_DECISION_MAX_RESPONSE: Maximum response time exception.
 	//
-	// - QD_DECISION_ERROR_RATE: error rate exception
+	// - QD_DECISION_ERROR_RATE: Error rate exception.
 	//
-	// - QD_DECISION_PARAM_COUNT: decision parameter count exception
+	// - QD_DECISION_PARAM_COUNT: Decision parameter count exception.
 	//
-	// - QD_DECISION_PARAM_PERCENTAGE: decision parameter percentage exception
+	// - QD_DECISION_PARAM_PERCENTAGE: Decision parameter percentage exception.
 	//
-	// - QD_DECISION_PARAM_SUM: decision parameter sum exception
+	// - QD_DECISION_PARAM_SUM: Decision parameter sum exception.
 	//
-	// - QD_DECISION_PARAM_AVG: decision parameter average exception
+	// - QD_DECISION_PARAM_AVG: Decision parameter average exception.
 	//
-	// - LOGICAL_INSTANCE_GENERATION: logical instance generation monitoring
+	// - LOGICAL_INSTANCE_GENERATION: Logical instance generation monitoring.
 	//
-	// - KGB_TASK_ERROR: baseline task error
+	// - KGB_TASK_ERROR: Baseline task error.
 	//
-	// - KGB_TASK_SLOW_DOWN: baseline task slowdown
+	// - KGB_TASK_SLOW_DOWN: Baseline task slowdown.
 	//
-	// - KGB_EARLY_WARNING: baseline early warning
+	// - KGB_EARLY_WARNING: Baseline early warning.
 	//
-	// - KGB_BROKEN_LINE: baseline breach
-	//
-	// and more.
+	// - KGB_BROKEN_LINE: Baseline breach.
 	//
 	// example:
 	//
@@ -678,13 +672,13 @@ func (s *ListAlertEventsResponseBodyListResultDataAlertReason) Validate() error 
 }
 
 type ListAlertEventsResponseBodyListResultDataAlertReasonAlertReasonParamList struct {
-	// The name of the alert reason parameter.
+	// The name of the alert cause parameter.
 	//
 	// example:
 	//
 	// biz_date
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the alert reason parameter.
+	// The value of the alert cause parameter.
 	//
 	// example:
 	//
@@ -733,13 +727,13 @@ type ListAlertEventsResponseBodyListResultDataAlertReceiverList struct {
 	//
 	// test
 	OnCallTableName *string `json:"OnCallTableName,omitempty" xml:"OnCallTableName,omitempty"`
-	// The type of the alert receiver. Valid values:
+	// The type of the alert recipient. Valid values:
 	//
-	// - ON_CALL_TABLE: on-call schedule
+	// - ON_CALL_TABLE: On-call schedule.
 	//
-	// - USER_DEFINED: custom user
+	// - USER_DEFINED: Custom user.
 	//
-	// - OWNER: owner.
+	// - OWNER: Owner.
 	//
 	// example:
 	//

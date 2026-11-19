@@ -24,33 +24,33 @@ type iListFilesResponseBody interface {
 }
 
 type ListFilesResponseBody struct {
-	// Request error code. OK indicates a normal request.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// File list
+	// The list of files.
 	FileList []*ListFilesResponseBodyFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	// Backend response HTTP code
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Request error message
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,67 +134,67 @@ func (s *ListFilesResponseBody) Validate() error {
 }
 
 type ListFilesResponseBodyFileList struct {
-	// File category
+	// The file category.
 	//
 	// example:
 	//
 	// tempCode
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// File content
+	// The file content.
 	//
 	// example:
 	//
 	// select 1;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Creator
+	// The creator.
 	//
 	// example:
 	//
 	// 1212111
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// File directory
+	// The file directory.
 	//
 	// example:
 	//
 	// /xx/x
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// File type, such as directory
+	// The file type, such as directory.
 	//
 	// example:
 	//
 	// directory
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1717483193830
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1717483193830
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// File ID
+	// The file ID.
 	//
 	// example:
 	//
 	// 111231112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Last modifier
+	// The last modifier.
 	//
 	// example:
 	//
 	// 1212111
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// File name
+	// The file name.
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// example:
 	//

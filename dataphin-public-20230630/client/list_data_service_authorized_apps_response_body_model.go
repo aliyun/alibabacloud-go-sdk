@@ -128,7 +128,7 @@ func (s *ListDataServiceAuthorizedAppsResponseBody) Validate() error {
 type ListDataServiceAuthorizedAppsResponseBodyPageResult struct {
 	// The paginated list of authorized applications.
 	AuthorizedAppList []*ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList `json:"AuthorizedAppList,omitempty" xml:"AuthorizedAppList,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the authorized account, which is the ID of the applicant.
+	// The ID of the privilege account, which is the ID of the applicant.
 	//
 	// example:
 	//
 	// 30012101
 	ApplyUserId *string `json:"ApplyUserId,omitempty" xml:"ApplyUserId,omitempty"`
-	// The name of the authorized account, which is the name of the applicant.
+	// The name of the privilege account, which is the name of the applicant.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The ID of the authorization request.
+	// The ID of the application request.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// test
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
-	// The authorized account type. Valid values:
+	// The privilege account type. Valid values:
 	//
 	// - 0: Individual account.
 	//
@@ -236,9 +236,9 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	PrivilegeAccount *int32 `json:"PrivilegeAccount,omitempty" xml:"PrivilegeAccount,omitempty"`
 	// The permission type. Valid values:
 	//
-	// - 0: Usage permissions.
+	// - 0: Usage permission.
 	//
-	// - 1: Development permissions.
+	// - 1: Development permission.
 	//
 	// example:
 	//
@@ -256,9 +256,9 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Indicates whether the user actually has the owner permissions for the application. The user may not have the permissions due to expiration or other reasons.
+	// Indicates whether the user actually has the owner permission for the application. The user may not have the permission due to expiration or other reasons.
 	RealHasOwnerPrivilege *bool `json:"RealHasOwnerPrivilege,omitempty" xml:"RealHasOwnerPrivilege,omitempty"`
-	// Indicates whether the user actually has the permissions.
+	// Indicates whether the user actually has the permission.
 	RealHasPrivilege *bool `json:"RealHasPrivilege,omitempty" xml:"RealHasPrivilege,omitempty"`
 	// The description used for troubleshooting.
 	RemarkForDebugList []*ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList `json:"RemarkForDebugList,omitempty" xml:"RemarkForDebugList,omitempty" type:"Repeated"`
@@ -266,17 +266,17 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	Revocable *bool `json:"Revocable,omitempty" xml:"Revocable,omitempty"`
 	// The detailed status of the revocation button. Valid values:
 	//
-	// - -1: Super administrators cannot relinquish the permission.
+	// - -1: The super administrator cannot return the permission.
 	//
-	// - -2: Owners cannot relinquish the permission.
+	// - -2: The owner cannot return the permission.
 	//
-	// - -3: Project managers without actual permissions (grayed out).
+	// - -3: The project manager does not have actual permissions, and the button is grayed out.
 	//
-	// - -4: Regular users without permissions cannot relinquish the permission.
+	// - -4: The regular user does not have permissions and cannot return the permission.
 	//
-	// - 1: Project managers with actual permissions can relinquish the permission.
+	// - 1: The project manager has actual permissions and can return the permission.
 	//
-	// - 2: Regular users with permissions can relinquish the permission.
+	// - 2: The regular user has permissions and can return the permission.
 	//
 	// example:
 	//
@@ -468,13 +468,13 @@ func (s *ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList) V
 }
 
 type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList struct {
-	// The configuration item.
+	// The configuration key.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the configuration item.
+	// The configuration value.
 	//
 	// example:
 	//

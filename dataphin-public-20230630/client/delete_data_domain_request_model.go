@@ -28,7 +28,7 @@ type DeleteDataDomainRequest struct {
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The subject domain ID.
+	// The subject area ID.
 	//
 	// This parameter is required.
 	//
@@ -44,6 +44,8 @@ type DeleteDataDomainRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

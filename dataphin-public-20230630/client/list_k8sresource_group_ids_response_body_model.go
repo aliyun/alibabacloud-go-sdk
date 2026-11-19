@@ -30,7 +30,7 @@ type ListK8SResourceGroupIdsResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of custom Kubernetes resource groups.
+	// The custom K8s resource groups used for Flink tasks under the tenant. The ListK8SResourceGroupIds operation returns only available resource groups.
 	Data []*ListK8SResourceGroupIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type ListK8SResourceGroupIdsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend response error.
+	// The details of the backend response exception.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *ListK8SResourceGroupIdsResponseBody) Validate() error {
 }
 
 type ListK8SResourceGroupIdsResponseBodyData struct {
-	// The ID of the custom Kubernetes resource group.
+	// The ID of the custom K8s resource group, which can be used to select the compute queue for real-time tasks.
 	//
 	// example:
 	//
 	// 1052061
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the custom Kubernetes resource group.
+	// The name of the custom K8s resource group.
 	//
 	// example:
 	//
-	// Dedicated to real-time R&D
+	// Dedicated for real-time development
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the resource group.
+	// The status of the resource group. NORMAL indicates that the resource group is available.
 	//
 	// example:
 	//

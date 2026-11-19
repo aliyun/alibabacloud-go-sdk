@@ -50,7 +50,7 @@ type CreateStandardRelationsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *CreateStandardRelationsResponseBody) Validate() error {
 }
 
 type CreateStandardRelationsResponseBodyData struct {
-	// The list of standard IDs that do not exist.
+	// The list of non-existent standard IDs.
 	NotExistStandardIdList []*int64 `json:"NotExistStandardIdList,omitempty" xml:"NotExistStandardIdList,omitempty" type:"Repeated"`
-	// The number of successfully added associations.
+	// The number of successful additions.
 	//
 	// example:
 	//

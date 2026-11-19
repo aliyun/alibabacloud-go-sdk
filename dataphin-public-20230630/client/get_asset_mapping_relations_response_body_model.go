@@ -130,7 +130,7 @@ func (s *GetAssetMappingRelationsResponseBody) Validate() error {
 }
 
 type GetAssetMappingRelationsResponseBodyMappingRelationList struct {
-	// The asset type. Valid values: COLUMN (field) and INDEX (metric).
+	// The asset type. Valid values: COLUMN: field. INDEX: metric.
 	//
 	// example:
 	//

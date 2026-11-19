@@ -48,9 +48,9 @@ type GetTableColumnLineagesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The list of table column lineage records.
+	// The list of table column lineage.
 	TableColumnLineageList []*GetTableColumnLineagesResponseBodyTableColumnLineageList `json:"TableColumnLineageList,omitempty" xml:"TableColumnLineageList,omitempty" type:"Repeated"`
 }
 
@@ -136,7 +136,7 @@ type GetTableColumnLineagesResponseBodyTableColumnLineageList struct {
 	//
 	// 1
 	InputBizUnitId *int64 `json:"InputBizUnitId,omitempty" xml:"InputBizUnitId,omitempty"`
-	// The GUID of the input column. Format: TableGuid.ColumnName.
+	// The GUID of the input column. Format: table GUID.column name.
 	//
 	// example:
 	//
@@ -166,15 +166,15 @@ type GetTableColumnLineagesResponseBodyTableColumnLineageList struct {
 	//
 	// 1233
 	InputProjectId *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
-	// Indicates whether the input table has been deleted.
+	// Indicates whether the input table is deleted.
 	InputTableDeleted *bool `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
-	// The environment of the input table. Valid values: dev and prod.
+	// The environment to which the input table belongs. Valid values: dev and prod.
 	//
 	// example:
 	//
 	// dev
 	InputTableEnv *string `json:"InputTableEnv,omitempty" xml:"InputTableEnv,omitempty"`
-	// The GUID of the input table. Each asset has a unique identifier.
+	// The GUID of the input table, which uniquely identifies the asset.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type GetTableColumnLineagesResponseBodyTableColumnLineageList struct {
 	//
 	// t_input
 	InputTableName *string `json:"InputTableName,omitempty" xml:"InputTableName,omitempty"`
-	// The environment of the node. Valid values: dev and prod.
+	// The environment to which the node belongs. Valid values: dev and prod.
 	//
 	// example:
 	//
 	// dev
 	NodeEnv *string `json:"NodeEnv,omitempty" xml:"NodeEnv,omitempty"`
-	// The node ID associated with the lineage.
+	// The ID of the node corresponding to the lineage.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type GetTableColumnLineagesResponseBodyTableColumnLineageList struct {
 	//
 	// 1
 	OutputBizUnitId *int64 `json:"OutputBizUnitId,omitempty" xml:"OutputBizUnitId,omitempty"`
-	// The GUID of the output column. Format: TableId.ColumnName.
+	// The GUID of the output column. Format: table ID.column name.
 	//
 	// example:
 	//
@@ -234,15 +234,15 @@ type GetTableColumnLineagesResponseBodyTableColumnLineageList struct {
 	//
 	// 1233
 	OutputProjectId *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
-	// Indicates whether the output table has been deleted.
+	// Indicates whether the output table is deleted.
 	OutputTableDeleted *bool `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
-	// The environment of the output table. Valid values: dev and prod.
+	// The environment to which the output table belongs. Valid values: dev and prod.
 	//
 	// example:
 	//
 	// dev
 	OutputTableEnv *string `json:"OutputTableEnv,omitempty" xml:"OutputTableEnv,omitempty"`
-	// The GUID of the output table. Each asset has a unique identifier.
+	// The GUID of the output table, which uniquely identifies the asset.
 	//
 	// example:
 	//

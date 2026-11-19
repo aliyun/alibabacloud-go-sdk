@@ -32,13 +32,13 @@ type ListKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The operator user ID.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The relationship type code.
+	// The relation type code.
 	//
 	// This parameter is required.
 	//

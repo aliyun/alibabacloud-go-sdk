@@ -20,9 +20,9 @@ type iListDataServiceMyApiPermissionsShrinkRequest interface {
 }
 
 type ListDataServiceMyApiPermissionsShrinkRequest struct {
-	// Search conditions.
+	// The search criteria.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,13 @@ type ListDataServiceMyApiPermissionsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data service project ID.
+	// The data service project ID.
 	//
 	// This parameter is required.
 	//

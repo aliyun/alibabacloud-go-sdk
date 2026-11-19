@@ -26,7 +26,7 @@ type UpdateBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The operator ID.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *UpdateBatchTaskRequest) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommand struct {
-	// The base schedule template ID. This parameter takes effect when the configuration method is set to schedule template. If this parameter and all other schedule fields are not specified, the original binding is retained.
+	// The base schedule template ID. This parameter applies when the configuration method is set to schedule template. If this parameter is not specified and no other scheduling fields are specified, the original binding is retained.
 	//
 	// example:
 	//
@@ -103,17 +103,17 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// true
 	ConditionScheduleEnable *bool `json:"ConditionScheduleEnable,omitempty" xml:"ConditionScheduleEnable,omitempty"`
-	// The conditional scheduling configuration details. This parameter overwrites the existing configurations. If this parameter is not specified, the original configurations are retained. This parameter is supported only for periodic tasks.
+	// The conditional scheduling configuration details. This parameter fully overwrites the existing configuration. If this parameter is not specified, the original configuration remains unchanged. This parameter is supported only for periodic tasks.
 	ConditionScheduleParamList []*UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList `json:"ConditionScheduleParamList,omitempty" xml:"ConditionScheduleParamList,omitempty" type:"Repeated"`
-	// The conditional schedule template ID.
+	// The conditional scheduling template ID.
 	//
 	// example:
 	//
 	// 7305621095333697
 	ConditionScheduleTemplateId *int64 `json:"ConditionScheduleTemplateId,omitempty" xml:"ConditionScheduleTemplateId,omitempty"`
-	// The cross-node parameters. These are output parameters declared by the current node for downstream nodes to reference. This parameter overwrites the existing parameters. If this parameter is not specified, the original parameters are retained.
+	// The cross-node parameters, which are the output parameters declared by the current node for downstream nodes to reference. This parameter fully overwrites the existing parameters. If this parameter is not specified, the original parameters remain unchanged.
 	ContextParamList []*UpdateBatchTaskRequestUpdateCommandContextParamList `json:"ContextParamList,omitempty" xml:"ContextParamList,omitempty" type:"Repeated"`
-	// 不传时保留任务当前配置。
+	// The amount of CPU resources.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 0 0 1 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The custom schedule interval configuration.
+	// The custom scheduling interval configuration.
 	CustomScheduleConfig *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig `json:"CustomScheduleConfig,omitempty" xml:"CustomScheduleConfig,omitempty" type:"Struct"`
 	// The data source catalog for database SQL tasks. This parameter takes effect only for data source types that require a catalog, such as Presto.
 	//
@@ -151,13 +151,13 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// /sql/protocolv1/o/xxx
 	DevHttpPath *string `json:"DevHttpPath,omitempty" xml:"DevHttpPath,omitempty"`
-	// The ID of the schedule resource group for development tasks.
+	// The schedule resource group ID for development tasks.
 	//
 	// example:
 	//
 	// rg-def456
 	DevResourceGroupId *string `json:"DevResourceGroupId,omitempty" xml:"DevResourceGroupId,omitempty"`
-	// The list of development owner IDs.
+	// The list of lead developer IDs.
 	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
 	// The task execution engine, such as Python tasks. Valid values:
 	//
@@ -171,11 +171,11 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	// The failure retry configuration. If not specified, the current configuration of the node is retained. If specified, the entire configuration object is replaced.
 	ExecuteRerunConfig *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig `json:"ExecuteRerunConfig,omitempty" xml:"ExecuteRerunConfig,omitempty" type:"Struct"`
-	// 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	// The execution timeout configuration. If not specified, the current configuration of the node is retained. If specified, the entire configuration object is replaced.
 	ExecuteTimeOutConfig *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig `json:"ExecuteTimeOutConfig,omitempty" xml:"ExecuteTimeOutConfig,omitempty" type:"Struct"`
-	// The ID of the task directory tree node.
+	// The ID of the node in the task directory tree.
 	//
 	// This parameter is required.
 	//
@@ -183,7 +183,7 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// 不传时保留任务当前配置。
+	// The amount of memory resources.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 1
 	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	// The list of O&M owner IDs. If you do not specify this parameter, the O&M owners are not modified.
+	// The list of O&M owner IDs. If not specified, the O&M owners are not modified.
 	OpsOwnerIdList []*string `json:"OpsOwnerIdList,omitempty" xml:"OpsOwnerIdList,omitempty" type:"Repeated"`
 	// The list of custom parameters.
 	ParamList []*UpdateBatchTaskRequestUpdateCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
@@ -241,16 +241,17 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 10121101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of third-party Python packages on which the node depends.
+	// The third-party Python packages that the node depends on.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
-	// The ID of the scheduling resource group for the production node.
+	// The ID of the scheduling resource group for production nodes.
 	//
 	// example:
 	//
 	// rg-abc123
-	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of referenced resources, specified by resource name.
 	ResourceReferenceList []*string `json:"ResourceReferenceList,omitempty" xml:"ResourceReferenceList,omitempty" type:"Repeated"`
-	// 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+	// Specifies whether to retry the node upon timeout.
 	//
 	// example:
 	//
@@ -258,17 +259,17 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	RetryOnTimeoutEnable *bool `json:"RetryOnTimeoutEnable,omitempty" xml:"RetryOnTimeoutEnable,omitempty"`
 	// The scheduling cycle. Valid values:
 	//
-	// - YEARLY: Yearly.
+	// - YEARLY
 	//
-	// - MONTHLY: Monthly.
+	// - MONTHLY
 	//
-	// - WEEKLY: Weekly.
+	// - WEEKLY
 	//
-	// - DAILY: Daily.
+	// - DAILY
 	//
-	// - HOURLY: Hourly.
+	// - HOURLY
 	//
-	// - MINUTELY: Minutely.
+	// - MINUTELY
 	//
 	// example:
 	//
@@ -276,31 +277,31 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
 	// The Spark client.
 	SparkClientInfo *UpdateBatchTaskRequestUpdateCommandSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
-	// 不传时保留任务当前配置。显式传入false时关闭。
+	// The switch for Spark dynamic resources.
 	//
 	// example:
 	//
 	// false
 	SparkDynamicResourceSwitch *bool `json:"SparkDynamicResourceSwitch,omitempty" xml:"SparkDynamicResourceSwitch,omitempty"`
-	// ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+	// The effective scope of the Spark resource configuration.
 	//
 	// example:
 	//
 	// ONLY_PROD
 	SparkResourceEffectScope *string `json:"SparkResourceEffectScope,omitempty" xml:"SparkResourceEffectScope,omitempty"`
-	// Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置；传入空JSON对象{}时清空配置。
+	// The resource configuration for the Spark node. The value is a JSON string, such as {"spark.executor.memory":"2g"}.
 	//
 	// example:
 	//
 	// {"spark.executor.memory":"2g"}
 	SparkSqlResourceConfigMap *string `json:"SparkSqlResourceConfigMap,omitempty" xml:"SparkSqlResourceConfigMap,omitempty"`
-	// The list of node tags. This parameter overwrites all existing tags. If you do not specify this parameter, the original tags remain unchanged.
+	// The list of node tag names. This parameter overwrites all existing tags. If not specified, the original tags remain unchanged.
 	TaskTagList []*string `json:"TaskTagList,omitempty" xml:"TaskTagList,omitempty" type:"Repeated"`
 	// The type of the node. Valid values:
 	//
-	// - 1: Hive SQL.
+	// - 1: Hive_SQL.
 	//
-	// - 5: MaxCompute SQL.
+	// - 5: MaxCompute_SQL.
 	//
 	// - 10: Shell.
 	//
@@ -312,15 +313,15 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 21
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The list of upstream dependencies.
+	// The upstream dependencies.
 	UpStreamList []*UpdateBatchTaskRequestUpdateCommandUpStreamList `json:"UpStreamList,omitempty" xml:"UpStreamList,omitempty" type:"Repeated"`
-	// The end date of the validity period. Format: yyyy-MM-dd. This parameter must be specified together with the ValidStartDate parameter.
+	// The end date of the validity period. Format: yyyy-MM-dd. This parameter must be specified together with ValidStartDate.
 	//
 	// example:
 	//
 	// 9999-12-31
 	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// The start date of the validity period. Format: yyyy-MM-dd. This parameter must be specified together with the ValidEndDate parameter.
+	// The start date of the validity period. Format: yyyy-MM-dd. This parameter must be specified together with ValidEndDate.
 	//
 	// example:
 	//
@@ -802,13 +803,13 @@ type UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Specifies whether to follow the primary schedule parameter.
+	// Specifies whether to follow the main scheduling parameters.
 	//
 	// example:
 	//
 	// true
 	FollowScheduleParam *bool `json:"FollowScheduleParam,omitempty" xml:"FollowScheduleParam,omitempty"`
-	// The node schedule status after the condition is met. Valid values:
+	// The node scheduling status after the condition is met. Valid values:
 	//
 	// - 1: Normal.
 	//
@@ -820,7 +821,7 @@ type UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList struct {
 	//
 	// 1
 	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	// The JSON string of the conditional expression tree. The keys are in lower camel case characters and must be parsed by the invoker.
+	// The JSON string of the conditional expression tree. The keys use lower camel case characters and must be parsed by the invoker.
 	//
 	// example:
 	//
@@ -988,9 +989,9 @@ type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The interval unit. Valid values:
 	//
-	// - MINUTE: Minutes.
+	// - MINUTE: Minute.
 	//
-	// - HOUR: Hours.
+	// - HOUR: Hour.
 	//
 	// This parameter is required.
 	//
@@ -998,7 +999,7 @@ type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
 	//
 	// HOUR
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
-	// The schedule period. Valid values:
+	// The scheduling cycle. Valid values:
 	//
 	// - YEARLY: Yearly.
 	//
@@ -1086,19 +1087,19 @@ func (s *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig) Validate() err
 }
 
 type UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig struct {
-	// 自定义失败重试间隔。
+	// The custom retry interval.
 	//
 	// example:
 	//
 	// 60
 	CustomRerunInterval *string `json:"CustomRerunInterval,omitempty" xml:"CustomRerunInterval,omitempty"`
-	// 自定义失败重试次数。
+	// The custom retry count.
 	//
 	// example:
 	//
 	// 3
 	CustomRerunTimes *string `json:"CustomRerunTimes,omitempty" xml:"CustomRerunTimes,omitempty"`
-	// 是否跟随系统配置。
+	// Specifies whether to follow the system retry configuration.
 	//
 	// example:
 	//
@@ -1146,13 +1147,13 @@ func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) Validate() error
 }
 
 type UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig struct {
-	// 自定义超时时间。
+	// The custom timeout period.
 	//
 	// example:
 	//
 	// 1800
 	CustomValues *string `json:"CustomValues,omitempty" xml:"CustomValues,omitempty"`
-	// 是否跟随系统配置。
+	// Specifies whether to follow the system timeout configuration.
 	//
 	// example:
 	//
@@ -1199,7 +1200,7 @@ type UpdateBatchTaskRequestUpdateCommandParamList struct {
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// This parameter is required.
 	//
@@ -1272,7 +1273,7 @@ func (s *UpdateBatchTaskRequestUpdateCommandSparkClientInfo) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommandUpStreamList struct {
-	// The dependency cycle.
+	// The dependency period.
 	DependPeriod *UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod `json:"DependPeriod,omitempty" xml:"DependPeriod,omitempty" type:"Struct"`
 	// The dependency strategy. Valid values:
 	//
@@ -1288,9 +1289,9 @@ type UpdateBatchTaskRequestUpdateCommandUpStreamList struct {
 	//
 	// LAST
 	DependStrategy *string `json:"DependStrategy,omitempty" xml:"DependStrategy,omitempty"`
-	// The list of dependent logical table fields.
+	// The dependent logical table fields.
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
-	// The type of the upstream dependency node. Valid values:
+	// The upstream dependency node type. Valid values:
 	//
 	// - PHYSICAL: Physical node.
 	//
@@ -1300,7 +1301,7 @@ type UpdateBatchTaskRequestUpdateCommandUpStreamList struct {
 	//
 	// PHYSICAL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The cycle difference. A value of 0 indicates a dependency on the same cycle. A positive integer indicates a dependency on the previous N cycles.
+	// The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
 	//
 	// This parameter is required.
 	//
@@ -1431,17 +1432,17 @@ func (s *UpdateBatchTaskRequestUpdateCommandUpStreamList) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod struct {
-	// The cycle offset. This parameter is required when the PeriodType parameter is set to LAST_N_PERIOD.
+	// The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
 	//
 	// example:
 	//
 	// 1
 	PeriodOffset *int32 `json:"PeriodOffset,omitempty" xml:"PeriodOffset,omitempty"`
-	// The type of the dependency cycle. Valid values:
+	// The dependency period type. Valid values:
 	//
-	// - CURRENT_PERIOD: Current cycle.
+	// - CURRENT_PERIOD: Current period.
 	//
-	// - LAST_PERIOD: Last cycle.
+	// - LAST_PERIOD: Last period.
 	//
 	// - LAST_N_PERIOD: Last N days.
 	//

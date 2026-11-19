@@ -22,15 +22,15 @@ type iFixDataRequest interface {
 type FixDataRequest struct {
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: development environment
 	//
-	// - PROD (default): production environment.
+	// - PROD: production environment (default)
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The command to rerun downstream nodes to fix data link issues. You can choose to force a rerun.
+	// Reruns downstream nodes to repair pipeline data and allows you to force the rerun.
 	//
 	// This parameter is required.
 	FixDataCommand *FixDataRequestFixDataCommand `json:"FixDataCommand,omitempty" xml:"FixDataCommand,omitempty" type:"Struct"`
@@ -42,6 +42,8 @@ type FixDataRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -102,29 +104,29 @@ func (s *FixDataRequest) Validate() error {
 }
 
 type FixDataRequestFixDataCommand struct {
-	// Specifies whether to rerun the root instance. If you do not specify this parameter, the default value is true.
+	// Specifies whether to rerun the root instance. Default value: true.
 	//
 	// example:
 	//
 	// false
 	ContainRootInstance *bool `json:"ContainRootInstance,omitempty" xml:"ContainRootInstance,omitempty"`
-	// The downstream instances. If you have specified a downstream range, you do not need to specify this parameter. Otherwise, you must specify the list of downstream instances.
+	// The downstream instances. If a downstream range is selected, you do not need to specify this parameter. Otherwise, you must provide a list of downstream instances.
 	DownStreamInstanceIdList []*FixDataRequestFixDataCommandDownStreamInstanceIdList `json:"DownStreamInstanceIdList,omitempty" xml:"DownStreamInstanceIdList,omitempty" type:"Repeated"`
 	// The downstream range. Valid values:
 	//
-	// - ALL_FAILED_INSTANCE: all failed instances.
+	// - ALL_FAILED_INSTANCE: all failed instances
 	//
-	// - ALL_INSTANCE: all instances.
+	// - ALL_INSTANCE: all instances
 	//
-	// - ALL_FINAL_INSTANCE: all desired state instances.
+	// - ALL_FINAL_INSTANCE: all instances in the desired state
 	//
-	// - If you do not specify this parameter, the rerun is performed based on the specified downstream instances.
+	// If you do not specify this parameter, the rerun is performed based on the specified downstream instances.
 	//
 	// example:
 	//
 	// ALL_INSTANCE
 	DownstreamRange *string `json:"DownstreamRange,omitempty" xml:"DownstreamRange,omitempty"`
-	// Specifies whether to force a rerun.
+	// Specifies whether to force the rerun.
 	//
 	// example:
 	//
@@ -266,7 +268,7 @@ func (s *FixDataRequestFixDataCommandDownStreamInstanceIdList) Validate() error 
 }
 
 type FixDataRequestFixDataCommandRootInstanceId struct {
-	// The field IDs. This parameter is available when the node is a logical table instance ID. If you do not specify this parameter, the full table is used by default.
+	// The field instance IDs. This parameter is applicable when the node is a logical table instance. If you do not specify this parameter, the entire table is used by default.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
 	// The instance ID.
 	//

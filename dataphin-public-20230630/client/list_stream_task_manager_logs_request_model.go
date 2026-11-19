@@ -22,7 +22,7 @@ type iListStreamTaskManagerLogsRequest interface {
 }
 
 type ListStreamTaskManagerLogsRequest struct {
-	// The ID of the Flink deployment instance.
+	// The deployment instance ID. Set this parameter to the deploymentInstanceId value returned in the operation record or historical running instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListStreamTaskManagerLogsRequest struct {
 	//
 	// 7db678957dc449aab0086b931c9f8218
 	DeploymentInstanceId *string `json:"DeploymentInstanceId,omitempty" xml:"DeploymentInstanceId,omitempty"`
-	// The ID of the operating tenant. The gateway verifies that the current identity has access to the tenant and then injects the TenantId into the backend.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ListStreamTaskManagerLogsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The optional ID of the operator. This parameter follows the gateway identity verification rules and is not directly bound to the backend UserId.
+	// The user ID of the operator.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The project ID.
+	// The ID of the Dataphin project to which the node belongs. This parameter is used for permission verification in the production environment.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ListStreamTaskManagerLogsRequest struct {
 	//
 	// 7299592831043008
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The TaskManager ID. This parameter can be omitted when retrieving log content. If omitted, the JobManager logs are returned.
+	// The identifier of the TaskManager. Set this parameter to the taskmanagerId value returned by the ListStreamTaskManagers operation.
 	//
 	// This parameter is required.
 	//

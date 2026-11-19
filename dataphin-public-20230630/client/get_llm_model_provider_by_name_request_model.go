@@ -18,7 +18,7 @@ type iGetLlmModelProviderByNameRequest interface {
 }
 
 type GetLlmModelProviderByNameRequest struct {
-	// The name of the large language model service provider.
+	// The name of the large model service provider.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetLlmModelProviderByNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//

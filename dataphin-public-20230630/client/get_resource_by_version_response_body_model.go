@@ -36,7 +36,7 @@ type GetResourceByVersionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type GetResourceByVersionResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the resource file.
+	// The resource file details.
 	ResourceInfo *GetResourceByVersionResponseBodyResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -150,13 +150,13 @@ type GetResourceByVersionResponseBodyResourceInfo struct {
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The creation time, in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the resource was created. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time, in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the resource was updated. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type GetResourceByVersionResponseBodyResourceInfo struct {
 	//
 	// JAR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The size of the resource, in bytes.
+	// The size of the resource. Unit: bytes.
 	//
 	// example:
 	//

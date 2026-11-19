@@ -38,7 +38,7 @@ type GetBatchTemplateVersionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ func (s *GetBatchTemplateVersionsResponseBodyData) Validate() error {
 }
 
 type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
-	// The template submission comment.
+	// The comment for the template submission.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
 	//
 	// echo \\"hello world\\"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The data source configuration of the database SQL template.
+	// The datasource config for the database SQL template.
 	DataSourceConfig *GetBatchTemplateVersionsResponseBodyDataTemplateVersionListDataSourceConfig `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty" type:"Struct"`
 	// The template description.
 	//
@@ -193,9 +193,9 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
 	//
 	// example:
 	//
-	// Default resource group for the project
+	// Project default resource group
 	DevResourceGroupName *string `json:"DevResourceGroupName,omitempty" xml:"DevResourceGroupName,omitempty"`
-	// The version of the compute engine. Valid values: Python 2.7 and Python 3.7.
+	// The version of the compute engine. Currently, Python 2.7 and Python 3.7 are supported.
 	//
 	// example:
 	//
@@ -213,25 +213,25 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
 	//
 	// 2026-05-28 15:30:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the template, which is the same as the menu tree node ID.
+	// The template ID, which is the same as the menu tree node ID.
 	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The last user who updated the template.
+	// The user who last updated the template.
 	//
 	// example:
 	//
 	// Li Si
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The ID of the last user who updated the template.
+	// The ID of the user who last updated the template.
 	//
 	// example:
 	//
 	// 100002
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
 	//
 	// 10
 	OperatorType *int32 `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// The owner of the template.
+	// The template owner.
 	//
 	// example:
 	//
@@ -257,13 +257,13 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The list of template parameters.
 	Params []*GetBatchTemplateVersionsResponseBodyDataTemplateVersionListParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// The ID of the project.
+	// The project ID.
 	//
 	// example:
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of dependent Python third-party packages.
+	// The list of dependent third-party Python packages.
 	PythonModuleList []*GetBatchTemplateVersionsResponseBodyDataTemplateVersionListPythonModuleList `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
 	// The ID of the resource group in the production environment.
 	//
@@ -275,11 +275,11 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
 	//
 	// example:
 	//
-	// Default resource group for the project
+	// Project default resource group
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// Indicates whether runtime resources are shared.
+	// Specifies whether runtime resources are shared.
 	ShareRuntimeResource *bool `json:"ShareRuntimeResource,omitempty" xml:"ShareRuntimeResource,omitempty"`
-	// The status of the template. Valid values: 0 (draft), 2 (submitted), and 100 (in development).
+	// The template status. Valid values: 0 (Draft), 2 (Submitted), and 100 (In development).
 	//
 	// example:
 	//
@@ -563,7 +563,7 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionListDataSourceConfig
 	//
 	// default
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The data source type of the database SQL template. Valid values: MYSQL, ORACLE, ADB_FOR_PG, OUSHUDB, PRESTO, POSTGRE_SQL, STARROCKS, CLICKHOUSE, ANALYTICDB, ADB_FOR_MYSQL_V3, GAUSSDB, SELECTDB, DORIS, SQL_SERVER, HOLOGRES, OPENGAUSS, DAMENG, OCEANBASE, TRINO, POLARDB_X2, LINDORM, EMR_SPARK_SERVERLESS, TDSQL_FOR_PG, TDSQL_FOR_MYSQL, GBASE_8A, and TDENGINE.
+	// The type of the data source for the database SQL template. Valid values: MYSQL, ORACLE, ADB_FOR_PG, OUSHUDB, PRESTO, POSTGRE_SQL, STARROCKS, CLICKHOUSE, ANALYTICDB, ADB_FOR_MYSQL_V3, GAUSSDB, SELECTDB, DORIS, SQL_SERVER, HOLOGRES, OPENGAUSS, DAMENG, OCEANBASE, TRINO, POLARDB_X2, LINDORM, EMR_SPARK_SERVERLESS, TDSQL_FOR_PG, TDSQL_FOR_MYSQL, GBASE_8A, and TDENGINE.
 	//
 	// example:
 	//
@@ -626,9 +626,9 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionListParams struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether encryption is enabled for the parameter.
+	// Specifies whether encryption is enabled for the parameter.
 	EncryptEnabled *bool `json:"EncryptEnabled,omitempty" xml:"EncryptEnabled,omitempty"`
-	// The key of the parameter.
+	// The parameter key.
 	//
 	// example:
 	//
@@ -691,7 +691,7 @@ func (s *GetBatchTemplateVersionsResponseBodyDataTemplateVersionListParams) Vali
 }
 
 type GetBatchTemplateVersionsResponseBodyDataTemplateVersionListPythonModuleList struct {
-	// The ID of the Python third-party package.
+	// The ID of the third-party Python package.
 	//
 	// example:
 	//
@@ -703,7 +703,7 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionListPythonModuleList
 	//
 	// 2026-01-01 10:00:00
 	InstallTime *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
-	// The name of the Python third-party package.
+	// The name of the third-party Python package.
 	//
 	// example:
 	//
@@ -715,7 +715,7 @@ type GetBatchTemplateVersionsResponseBodyDataTemplateVersionListPythonModuleList
 	//
 	// PYTHON_2_7
 	PythonVersion *string `json:"PythonVersion,omitempty" xml:"PythonVersion,omitempty"`
-	// The status of the third-party package. Valid values: INSTALL_SUCCESS (installed), INSTALL_FAILED (installation failed), INSTALLING (installing), UPGRADE_SUCCESS (upgraded), UPGRADE_FAILED (upgrade failed), and UPGRADING (upgrading).
+	// The status of the third-party package. Valid values: INSTALL_SUCCESS (installation succeeded), INSTALL_FAILED (installation failed), INSTALLING (installing), UPGRADE_SUCCESS (upgrade succeeded), UPGRADE_FAILED (upgrade failed), and UPGRADING (upgrading).
 	//
 	// example:
 	//

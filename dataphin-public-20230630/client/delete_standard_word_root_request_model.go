@@ -18,13 +18,13 @@ type iDeleteStandardWordRootRequest interface {
 }
 
 type DeleteStandardWordRootRequest struct {
-	// The name of the root word.
+	// The word root name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The tenant ID.
 	//
@@ -34,6 +34,8 @@ type DeleteStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

@@ -30,6 +30,8 @@ type CreateUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,27 @@ func (s *CreateUdfRequest) Validate() error {
 }
 
 type CreateUdfRequestCreateCommand struct {
-	// The UDF category identifier. Valid values: 1: window function. 2: statistical function. 3: numerical function. 4: string function. 5: time function. 6: IP address utility function. 7: URL-related function. 8: encoding and decoding function. 9: business-related function. 10: other.
+	// The category identifier of the user-defined function (UDF). Valid values:
+	//
+	// - 1: window function
+	//
+	// - 2: statistical function
+	//
+	// - 3: numerical function
+	//
+	// - 4: string function
+	//
+	// - 5: time function
+	//
+	// - 6: IP address helper function
+	//
+	// - 7: URL-related function
+	//
+	// - 8: encoding and decoding function
+	//
+	// - 9: business-related function
+	//
+	// - 10: other
 	//
 	// This parameter is required.
 	//
@@ -89,7 +111,7 @@ type CreateUdfRequestCreateCommand struct {
 	//
 	// 1
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The class name that implements the function in the resource.
+	// The name of the class that implements the function in the resource.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +119,7 @@ type CreateUdfRequestCreateCommand struct {
 	//
 	// com.lydaas.SleepTest
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The command format for function calling invoke.
+	// The command format for function invocation.
 	//
 	// This parameter is required.
 	//
@@ -105,15 +127,15 @@ type CreateUdfRequestCreateCommand struct {
 	//
 	// udf_sleep(100)
 	CommandHelp *string `json:"CommandHelp,omitempty" xml:"CommandHelp,omitempty"`
-	// The commit remarks.
+	// The submission comment.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The compute engine type. Valid values: MAX_COMPUTE, HADOOP.
+	// The compute engine type. Valid values: MAX_COMPUTE and HADOOP.
 	//
 	// This parameter is required.
 	//
@@ -127,9 +149,9 @@ type CreateUdfRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory in which the function is stored.
+	// The storage directory. Default value: /.
 	//
 	// example:
 	//
@@ -151,7 +173,7 @@ type CreateUdfRequestCreateCommand struct {
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The IDs of referenced resources.
+	// The IDs of the referenced resources.
 	//
 	// This parameter is required.
 	RefResourceIdList []*int64 `json:"RefResourceIdList,omitempty" xml:"RefResourceIdList,omitempty" type:"Repeated"`

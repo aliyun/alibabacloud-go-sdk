@@ -20,9 +20,9 @@ type iListDataServiceMyApiPermissionsRequest interface {
 }
 
 type ListDataServiceMyApiPermissionsRequest struct {
-	// Search conditions.
+	// The search criteria.
 	ListQuery *ListDataServiceMyApiPermissionsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,13 @@ type ListDataServiceMyApiPermissionsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data service project ID.
+	// The data service project ID.
 	//
 	// This parameter is required.
 	//
@@ -98,19 +100,19 @@ func (s *ListDataServiceMyApiPermissionsRequest) Validate() error {
 }
 
 type ListDataServiceMyApiPermissionsRequestListQuery struct {
-	// Search keyword.
+	// The search keyword.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of records per page. Default value: 20.
+	// The number of records per page. Default value: 20.
 	//
 	// example:
 	//

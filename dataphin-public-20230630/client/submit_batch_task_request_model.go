@@ -26,7 +26,7 @@ type SubmitBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator user ID.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *SubmitBatchTaskRequest) Validate() error {
 }
 
 type SubmitBatchTaskRequestSubmitCommand struct {
-	// The code of the task.
+	// The task code.
 	//
 	// This parameter is required.
 	//
@@ -91,7 +91,7 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The version number of the code template.
+	// The code template version number.
 	//
 	// example:
 	//
@@ -105,9 +105,9 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 条件调度；不传保留，Enable=false关闭并清除原条件，仅周期任务支持
+	// The conditional scheduling configuration. If this parameter is not specified, the current configuration is retained. If Enable is set to false, conditional scheduling is disabled and the original conditions are cleared. This parameter is supported only for periodic tasks.
 	ConditionScheduleConfig *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig `json:"ConditionScheduleConfig,omitempty" xml:"ConditionScheduleConfig,omitempty" type:"Struct"`
-	// 不传时保留任务当前配置。
+	// The amount of CPU resources. If this parameter is not specified, the current configuration of the task is retained.
 	//
 	// example:
 	//
@@ -119,9 +119,9 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// 0 0 1 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The custom schedule interval configuration.
+	// The custom scheduling interval configuration.
 	CustomScheduleConfig *SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig `json:"CustomScheduleConfig,omitempty" xml:"CustomScheduleConfig,omitempty" type:"Struct"`
-	// The execution engine of the task. Valid values for Python tasks:
+	// The task execution engine. For Python tasks, valid values:
 	//
 	// - PYTHON2_7
 	//
@@ -133,9 +133,9 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	// The failure retry configuration. If this parameter is not specified, the current configuration of the task is retained. If this parameter is specified, the entire configuration object is replaced.
 	ExecuteRerunConfig *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig `json:"ExecuteRerunConfig,omitempty" xml:"ExecuteRerunConfig,omitempty" type:"Struct"`
-	// 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	// The execution timeout configuration. If this parameter is not specified, the current configuration of the task is retained. If this parameter is specified, the entire configuration object is replaced.
 	ExecuteTimeOutConfig *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig `json:"ExecuteTimeOutConfig,omitempty" xml:"ExecuteTimeOutConfig,omitempty" type:"Struct"`
 	// The ID of the node in the task directory tree.
 	//
@@ -145,7 +145,7 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// 不传时保留任务当前配置。
+	// The amount of CPU resources. If this parameter is not specified, the current configuration of the task is retained.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// test111
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the task.
+	// The task description.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The list of node output names.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
-	// The status of the node. Valid values:
+	// The node status. Valid values:
 	//
 	// - 1: Normal.
 	//
@@ -185,17 +185,17 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// template_123456
 	OfflineCodeTemplateId *string `json:"OfflineCodeTemplateId,omitempty" xml:"OfflineCodeTemplateId,omitempty"`
-	// The list of parameters for the offline code template.
+	// The list of offline code template parameters.
 	OfflineCodeTemplateParams []*SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams `json:"OfflineCodeTemplateParams,omitempty" xml:"OfflineCodeTemplateParams,omitempty" type:"Repeated"`
 	// The list of custom parameters.
 	ParamList []*SubmitBatchTaskRequestSubmitCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
+	// The task scheduling priority. Valid values: 1 to 9. A larger value indicates a lower priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the project to which the task belongs.
+	// The ID of the project to which the node belongs.
 	//
 	// This parameter is required.
 	//
@@ -203,51 +203,51 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// 10121101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The Python third-party packages required by the task.
+	// The list of Python third-party packages on which the node depends.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
-	// 资源引用列表，元素为资源名称。不传时使用原有任务的资源引用；传入列表时整体替换，空列表表示清空引用。
+	// The list of referenced resources. Each element is a resource name. If this parameter is not specified, the resource references of the original node are used. If a list is specified, the existing references are completely replaced. An empty list clears all references.
 	ResourceReferenceList []*string `json:"ResourceReferenceList,omitempty" xml:"ResourceReferenceList,omitempty" type:"Repeated"`
-	// 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+	// Specifies whether to enable retry on timeout. If this parameter is not specified, the current configuration of the node is retained. If this parameter is explicitly set to false, the feature is disabled.
 	//
 	// example:
 	//
 	// false
 	RetryOnTimeoutEnable *bool `json:"RetryOnTimeoutEnable,omitempty" xml:"RetryOnTimeoutEnable,omitempty"`
-	// The schedule period. Valid values:
+	// The scheduling period. Valid values:
 	//
-	// - YEARLY: Yearly.
+	// - YEARLY: yearly
 	//
-	// - MONTHLY: Monthly.
+	// - MONTHLY: monthly
 	//
-	// - WEEKLY: Weekly.
+	// - WEEKLY: weekly
 	//
-	// - DAILY: Daily.
+	// - DAILY: daily
 	//
-	// - HOURLY: Hourly.
+	// - HOURLY: hourly
 	//
-	// - MINUTELY: Minutely.
+	// - MINUTELY: minutely
 	//
 	// example:
 	//
 	// DAILY
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
-	// 基础调度模板；不传保留，空对象解除绑定，仅周期任务支持
+	// The basic scheduling template. If this parameter is not specified, the current template is retained. An empty object unbinds the template. This parameter is supported only for periodic nodes.
 	ScheduleTemplate *SubmitBatchTaskRequestSubmitCommandScheduleTemplate `json:"ScheduleTemplate,omitempty" xml:"ScheduleTemplate,omitempty" type:"Struct"`
 	// The Spark client.
 	SparkClientInfo *SubmitBatchTaskRequestSubmitCommandSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
-	// 不传时保留任务当前配置。显式传入false时关闭。
+	// Specifies whether to enable dynamic resources for Spark. If this parameter is not specified, the current configuration of the node is retained. If this parameter is explicitly set to false, the feature is disabled.
 	//
 	// example:
 	//
 	// false
 	SparkDynamicResourceSwitch *bool `json:"SparkDynamicResourceSwitch,omitempty" xml:"SparkDynamicResourceSwitch,omitempty"`
-	// ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+	// The effective scope of the Spark resource configuration. ONLY_PROD indicates the production environment only. PROD_AND_DEV indicates both the production and development environments. If this parameter is not specified, the current configuration of the node is retained.
 	//
 	// example:
 	//
 	// ONLY_PROD
 	SparkResourceEffectScope *string `json:"SparkResourceEffectScope,omitempty" xml:"SparkResourceEffectScope,omitempty"`
-	// Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置。传入空Map时清空配置。
+	// The Spark SQL resource configurations. The key is the configuration item name, and the value is a string. If this parameter is not specified, the current configurations of the node are retained. An empty map clears all configurations.
 	SparkSqlResourceConfigMap map[string]*string `json:"SparkSqlResourceConfigMap,omitempty" xml:"SparkSqlResourceConfigMap,omitempty"`
 	// The upstream dependencies.
 	UpStreamList []*SubmitBatchTaskRequestSubmitCommandUpStreamList `json:"UpStreamList,omitempty" xml:"UpStreamList,omitempty" type:"Repeated"`
@@ -602,15 +602,15 @@ func (s *SubmitBatchTaskRequestSubmitCommand) Validate() error {
 }
 
 type SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig struct {
-	// 是否启用条件调度。传入ConditionScheduleConfig对象时必须提供，由后端校验；false关闭并清除旧配置。
+	// Specifies whether to enable conditional scheduling. This parameter is required when the ConditionScheduleConfig object is passed and is verified by the backend. If this parameter is set to false, conditional scheduling is disabled and the previous configuration is cleared.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// 自定义条件列表；与TemplateId互斥，空列表清除旧条件
+	// The list of custom conditions. This parameter is mutually exclusive with TemplateId. An empty list clears the previous conditions.
 	ParamList []*SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// 条件调度模板ID，与ParamList互斥
+	// The ID of the conditional scheduling template. This parameter is mutually exclusive with ParamList.
 	//
 	// example:
 	//
@@ -667,43 +667,49 @@ func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) Validate() 
 }
 
 type SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList struct {
-	// 条件名称
+	// The condition name.
 	//
 	// example:
 	//
 	// workday
 	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
-	// 命中后的cron表达式
+	// The cron expression used after a condition is matched.
 	//
 	// example:
 	//
 	// 0 0 5 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// 是否启用该条件
+	// Specifies whether to enable the condition.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// 是否跟随主调度参数
+	// Specifies whether to follow the primary scheduling parameters.
 	//
 	// example:
 	//
 	// true
 	FollowScheduleParam *bool `json:"FollowScheduleParam,omitempty" xml:"FollowScheduleParam,omitempty"`
-	// 命中后的调度状态：1正常，2暂停，3空跑
+	// The scheduling status used after a condition is matched. Valid values:
+	//
+	// - 1: Normal.
+	//
+	// - 2: Paused.
+	//
+	// - 3: Dry run.
 	//
 	// example:
 	//
 	// 1
 	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	// 条件表达式树JSON字符串，内部键名使用小驼峰
+	// The JSON character string of the conditional expression tree. Internal key names use lower camel case.
 	//
 	// example:
 	//
 	// {}
 	ScheduleConditionJson *string `json:"ScheduleConditionJson,omitempty" xml:"ScheduleConditionJson,omitempty"`
-	// 命中后的调度时间
+	// The scheduling time used after a condition is matched.
 	//
 	// example:
 	//
@@ -805,9 +811,9 @@ type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The interval unit. Valid values:
 	//
-	// - MINUTE: Minute.
+	// - MINUTE: Minutes.
 	//
-	// - HOUR: Hour.
+	// - HOUR: Hours.
 	//
 	// This parameter is required.
 	//
@@ -815,7 +821,7 @@ type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
 	//
 	// HOUR
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
-	// The schedule period. Valid values:
+	// The scheduling period. Valid values:
 	//
 	// - YEARLY: Yearly.
 	//
@@ -903,19 +909,19 @@ func (s *SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig) Validate() err
 }
 
 type SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig struct {
-	// 自定义失败重试间隔。
+	// The custom retry interval for failures.
 	//
 	// example:
 	//
 	// 60
 	CustomRerunInterval *string `json:"CustomRerunInterval,omitempty" xml:"CustomRerunInterval,omitempty"`
-	// 自定义失败重试次数。
+	// The custom number of retries for failures.
 	//
 	// example:
 	//
 	// 3
 	CustomRerunTimes *string `json:"CustomRerunTimes,omitempty" xml:"CustomRerunTimes,omitempty"`
-	// 是否跟随系统配置。
+	// Specifies whether to follow the system configuration.
 	//
 	// example:
 	//
@@ -963,13 +969,13 @@ func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) Validate() error
 }
 
 type SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig struct {
-	// 自定义超时时间。
+	// The custom timeout period.
 	//
 	// example:
 	//
 	// 1800
 	CustomValues *string `json:"CustomValues,omitempty" xml:"CustomValues,omitempty"`
-	// 是否跟随系统配置。
+	// Specifies whether to follow the system configuration.
 	//
 	// example:
 	//
@@ -1008,7 +1014,7 @@ func (s *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) Validate() err
 }
 
 type SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams struct {
-	// The description of the parameter.
+	// The parameter description.
 	//
 	// example:
 	//
@@ -1016,13 +1022,13 @@ type SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether encryption is enabled.
 	EncryptEnabled *bool `json:"EncryptEnabled,omitempty" xml:"EncryptEnabled,omitempty"`
-	// The key of the parameter.
+	// The parameter key.
 	//
 	// example:
 	//
 	// paramKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// example:
 	//
@@ -1079,7 +1085,7 @@ func (s *SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams) Validate(
 }
 
 type SubmitBatchTaskRequestSubmitCommandParamList struct {
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// This parameter is required.
 	//
@@ -1087,7 +1093,7 @@ type SubmitBatchTaskRequestSubmitCommandParamList struct {
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// This parameter is required.
 	//
@@ -1128,7 +1134,7 @@ func (s *SubmitBatchTaskRequestSubmitCommandParamList) Validate() error {
 }
 
 type SubmitBatchTaskRequestSubmitCommandScheduleTemplate struct {
-	// 基础调度模板ID，必须为正数
+	// The ID of the basic scheduling template. The value must be a positive number.
 	//
 	// example:
 	//
@@ -1194,13 +1200,13 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamList struct {
 	DependPeriod *SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod `json:"DependPeriod,omitempty" xml:"DependPeriod,omitempty" type:"Struct"`
 	// The dependency strategy. Valid values:
 	//
-	// - ALL: All.
+	// - ALL: all
 	//
-	// - FIRST: First.
+	// - FIRST: first
 	//
-	// - LAST: Last.
+	// - LAST: last
 	//
-	// - NEAR: Nearest.
+	// - NEAR: nearest
 	//
 	// example:
 	//
@@ -1210,15 +1216,15 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamList struct {
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
 	// The upstream dependency node type. Valid values:
 	//
-	// - PHYSICAL: Physical node.
+	// - PHYSICAL: physical node
 	//
-	// - LOGICAL: Logical table dependency.
+	// - LOGICAL: logical table dependency
 	//
 	// example:
 	//
 	// PHYSICAL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The period difference. A value of 0 indicates a dependency on the same period. A positive number indicates a dependency on the previous N periods.
+	// The period difference. A value of 0 indicates a dependency on the same period. A positive value indicates a dependency on the previous N periods.
 	//
 	// This parameter is required.
 	//
@@ -1355,13 +1361,13 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod struct {
 	PeriodOffset *int32 `json:"PeriodOffset,omitempty" xml:"PeriodOffset,omitempty"`
 	// The dependency period type. Valid values:
 	//
-	// - CURRENT_PERIOD: Current period.
+	// - CURRENT_PERIOD: current period
 	//
-	// - LAST_PERIOD: Last period.
+	// - LAST_PERIOD: last period
 	//
-	// - LAST_N_PERIOD: Last N days.
+	// - LAST_N_PERIOD: last N days
 	//
-	// - LAST_24_HOUR: Last 24 hours.
+	// - LAST_24_HOUR: last 24 hours
 	//
 	// This parameter is required.
 	//

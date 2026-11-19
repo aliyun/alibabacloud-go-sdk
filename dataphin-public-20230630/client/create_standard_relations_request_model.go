@@ -30,6 +30,8 @@ type CreateStandardRelationsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *CreateStandardRelationsRequest) Validate() error {
 }
 
 type CreateStandardRelationsRequestCreateCommand struct {
-	// The standard association relationship type: RELATIVE.
+	// The standard association type. Valid value: RELATIVE.
 	//
 	// This parameter is required.
 	//

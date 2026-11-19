@@ -18,7 +18,7 @@ type iUpdateDataServiceAppRequest interface {
 }
 
 type UpdateDataServiceAppRequest struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type UpdateDataServiceAppRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The command to update the data service application.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataServiceAppRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -81,13 +83,13 @@ func (s *UpdateDataServiceAppRequest) Validate() error {
 }
 
 type UpdateDataServiceAppRequestUpdateCommand struct {
-	// Application group ID.
+	// The application group ID.
 	//
 	// example:
 	//
 	// 200000000
 	AppGroupId *int32 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
-	// Application ID.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -95,19 +97,19 @@ type UpdateDataServiceAppRequestUpdateCommand struct {
 	//
 	// 12345
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Application name.
+	// The application name.
 	//
 	// example:
 	//
-	// 默认应用
+	// Default application
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// List of owner IDs.
+	// The owner IDs.
 	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	// Application scenarios.
+	// The common scenarios.
 	//
 	// example:
 	//
-	// 数据分析
+	// Data analytics
 	Scenarios *string `json:"Scenarios,omitempty" xml:"Scenarios,omitempty"`
 }
 

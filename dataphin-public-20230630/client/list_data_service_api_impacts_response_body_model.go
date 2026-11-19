@@ -50,7 +50,7 @@ type ListDataServiceApiImpactsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -188,7 +188,7 @@ type ListDataServiceApiImpactsResponseBodyPageResultImpactList struct {
 	//
 	// 1101
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -206,19 +206,19 @@ type ListDataServiceApiImpactsResponseBodyPageResultImpactList struct {
 	//
 	// 2
 	ClientFailCount *int64 `json:"ClientFailCount,omitempty" xml:"ClientFailCount,omitempty"`
-	// The source IP address of the access request.
+	// The IP address of the client.
 	//
 	// example:
 	//
 	// 192.168.1.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The number of abnormal API calls.
+	// The number of API call exceptions.
 	//
 	// example:
 	//
 	// 1
 	ErrorApiCount *int64 `json:"ErrorApiCount,omitempty" xml:"ErrorApiCount,omitempty"`
-	// The number of errors.
+	// The number of exceptions.
 	//
 	// example:
 	//
@@ -230,19 +230,19 @@ type ListDataServiceApiImpactsResponseBodyPageResultImpactList struct {
 	//
 	// 10.0
 	ErrorRate *string `json:"ErrorRate,omitempty" xml:"ErrorRate,omitempty"`
-	// The most recent call time. Format: yyyy-MM-dd HH:mm:ss.
+	// The time of the last call. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	LastCallTime *string `json:"LastCallTime,omitempty" xml:"LastCallTime,omitempty"`
-	// The gateway statistics time. Format: yyyy_MMdd_HHmm.
+	// The time when the gateway statistics are collected. Format: yyyy_MMdd_HHmm.
 	//
 	// example:
 	//
 	// 2025_0611_1011
 	Minute *string `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	// The number of offline instances.
+	// The offline count.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type GetDataServiceAppResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type GetDataServiceAppResponseBodyData struct {
 	//
 	// true
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// Indicates whether the IP address whitelist is enabled. Valid values:
+	// Specifies whether the IP address whitelist is enabled. Valid values:
 	//
 	// - true: Enabled.
 	//

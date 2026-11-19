@@ -24,33 +24,33 @@ type iGetInstanceDownStreamResponseBody interface {
 }
 
 type GetInstanceDownStreamResponseBody struct {
-	// Error code. OK indicates a successful request.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code returned by the backend.
+	// The HTTP status code of the backend response.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Downstream instances and dependency relationships.
+	// The downstream and dependency relationships.
 	InstanceRelationList []*GetInstanceDownStreamResponseBodyInstanceRelationList `json:"InstanceRelationList,omitempty" xml:"InstanceRelationList,omitempty" type:"Repeated"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *GetInstanceDownStreamResponseBody) Validate() error {
 }
 
 type GetInstanceDownStreamResponseBodyInstanceRelationList struct {
-	// Depth level.
+	// The level.
 	//
 	// example:
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
-	// Extended information of the node instance.
+	// The extended information of the node instance.
 	//
 	// example:
 	//
 	// {"a":"x"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// Field instance list.
+	// The list of field instances.
 	FieldInstanceList []*GetInstanceDownStreamResponseBodyInstanceRelationListFieldInstanceList `json:"FieldInstanceList,omitempty" xml:"FieldInstanceList,omitempty" type:"Repeated"`
-	// Instance information.
+	// The instance information.
 	InstanceInfo *GetInstanceDownStreamResponseBodyInstanceRelationListInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
-	// Run status of the instance.
+	// The run status of the instance.
 	//
 	// example:
 	//
 	// RUNNING
 	RunStatus *string `json:"RunStatus,omitempty" xml:"RunStatus,omitempty"`
-	// Selection status of the instance, primarily used for logical fields.
+	// The selection status of the instance. This is mainly used for logical fields. Valid values:
 	//
-	// - OPTIONAL: Optional.
+	// - OPTIONAL: optional.
 	//
-	// - SELECTED: Required.
+	// - SELECTED: required.
 	//
-	// - DISABLE: Not selectable.
+	// - DISABLE: unavailable.
 	//
-	// - GROUP_SELECTED: Select all or deselect all.
+	// - GROUP_SELECTED: all selected or all unselected.
 	//
 	// example:
 	//
 	// OPTIONAL
 	SelectStatus *string `json:"SelectStatus,omitempty" xml:"SelectStatus,omitempty"`
-	// Reason why the instance is selected.
+	// The reason why the instance is selected. Valid values:
 	//
 	// - PK_CHANGE
 	//
@@ -292,19 +292,19 @@ func (s *GetInstanceDownStreamResponseBodyInstanceRelationList) Validate() error
 }
 
 type GetInstanceDownStreamResponseBodyInstanceRelationListFieldInstanceList struct {
-	// Field instance ID.
+	// The field instance ID.
 	//
 	// example:
 	//
 	// t_23211
 	FieldInstanceId *string `json:"FieldInstanceId,omitempty" xml:"FieldInstanceId,omitempty"`
-	// Run status.
+	// The run status.
 	//
 	// example:
 	//
 	// SUCCESS
 	RunStatus *string `json:"RunStatus,omitempty" xml:"RunStatus,omitempty"`
-	// Selection status of the instance.
+	// The selection status of the instance.
 	//
 	// example:
 	//
@@ -352,19 +352,19 @@ func (s *GetInstanceDownStreamResponseBodyInstanceRelationListFieldInstanceList)
 }
 
 type GetInstanceDownStreamResponseBodyInstanceRelationListInstanceInfo struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// t_232411
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Instance name.
+	// The instance name.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Node type.
+	// The node type.
 	//
 	// example:
 	//

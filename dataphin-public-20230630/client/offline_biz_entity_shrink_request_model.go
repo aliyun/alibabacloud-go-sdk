@@ -18,11 +18,11 @@ type iOfflineBizEntityShrinkRequest interface {
 }
 
 type OfflineBizEntityShrinkRequest struct {
-	// Offline request
+	// The offline request.
 	//
 	// This parameter is required.
 	OfflineCommandShrink *string `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type OfflineBizEntityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

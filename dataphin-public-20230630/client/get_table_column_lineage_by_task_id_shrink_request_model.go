@@ -18,7 +18,7 @@ type iGetTableColumnLineageByTaskIdShrinkRequest interface {
 }
 
 type GetTableColumnLineageByTaskIdShrinkRequest struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type GetTableColumnLineageByTaskIdShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data structure for querying table column lineage.
+	// The data structure used to query table column lineage.
 	//
 	// This parameter is required.
 	TableColumnLineageByTaskIdQueryShrink *string `json:"TableColumnLineageByTaskIdQuery,omitempty" xml:"TableColumnLineageByTaskIdQuery,omitempty"`

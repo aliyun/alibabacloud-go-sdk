@@ -20,7 +20,7 @@ type iListStreamOpsRecordsRequest interface {
 }
 
 type ListStreamOpsRecordsRequest struct {
-	// The ID of the real-time task file. The value is a string representing a positive integer.
+	// The ID of the task file. Set this parameter to the fileId value returned by the GetStreamTask operation. The value must be a positive integer. Do not set this parameter to nodeId or taskId.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListStreamOpsRecordsRequest struct {
 	//
 	// 7333610201479808
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the operation tenant. The gateway verifies that the current identity has access to the tenant and then injects the tenant ID into the backend.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListStreamOpsRecordsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The optional ID of the operator user. This parameter follows the gateway identity verification rules and is not directly bound to the backend user ID.
+	// The ID of the operator user.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The project ID.
+	// The ID of the Dataphin project to which the task belongs. This parameter is used for permission verification in the production environment.
 	//
 	// This parameter is required.
 	//

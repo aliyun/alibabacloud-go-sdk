@@ -102,7 +102,7 @@ func (s *BatchCreateKgRelationRequest) Validate() error {
 }
 
 type BatchCreateKgRelationRequestCreateCommand struct {
-	// The relationship list.
+	// The relation list.
 	//
 	// This parameter is required.
 	RelationList []*BatchCreateKgRelationRequestCreateCommandRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
@@ -139,9 +139,9 @@ func (s *BatchCreateKgRelationRequestCreateCommand) Validate() error {
 }
 
 type BatchCreateKgRelationRequestCreateCommandRelationList struct {
-	// The relationship record property list.
+	// The property list of the relation record.
 	PropertyList []*BatchCreateKgRelationRequestCreateCommandRelationListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
-	// The relationship type code.
+	// The relation type code.
 	//
 	// This parameter is required.
 	//

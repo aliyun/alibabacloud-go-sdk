@@ -24,7 +24,7 @@ type iParseBatchTaskDependencyResponseBody interface {
 }
 
 type ParseBatchTaskDependencyResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ParseBatchTaskDependencyResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ParseBatchTaskDependencyResponseBody) Validate() error {
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResult struct {
-	// The list of dependent nodes.
+	// The dependent nodes.
 	DependNodeList []*ParseBatchTaskDependencyResponseBodyParseResultDependNodeList `json:"DependNodeList,omitempty" xml:"DependNodeList,omitempty" type:"Repeated"`
 }
 
@@ -161,13 +161,13 @@ func (s *ParseBatchTaskDependencyResponseBodyParseResult) Validate() error {
 }
 
 type ParseBatchTaskDependencyResponseBodyParseResultDependNodeList struct {
-	// The input/output type. Valid values: input (dependent node) and output (node output name).
+	// The input and output type. Valid values: input (dependent node) and output (node output name).
 	//
 	// example:
 	//
 	// input
 	NodeIoType *string `json:"NodeIoType,omitempty" xml:"NodeIoType,omitempty"`
-	// The list of schedule nodes.
+	// The list of scheduled nodes.
 	ScheduleNodeInfoList []*ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeInfoList `json:"ScheduleNodeInfoList,omitempty" xml:"ScheduleNodeInfoList,omitempty" type:"Repeated"`
 }
 
@@ -213,13 +213,13 @@ func (s *ParseBatchTaskDependencyResponseBodyParseResultDependNodeList) Validate
 type ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeInfoList struct {
 	// The list of fields. This parameter applies only to logical table dependencies.
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
-	// The node ID. A value of -1 is returned if no node is found for the corresponding input table.
+	// The node ID. The value is -1 when the node corresponding to the input table is not found.
 	//
 	// example:
 	//
 	// n_11013121
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node name. This parameter is empty if no node is found for the corresponding input table.
+	// The node name. This parameter is empty when the node corresponding to the input table is not found.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ type ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeIn
 	//
 	// t_test
 	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
-	// The owner of the node. This parameter is empty if no node is found for the corresponding input table.
+	// The owner of the node. This parameter is empty when the node corresponding to the input table is not found.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The owner of the node. This parameter is empty if no node is found for the corresponding input table.
+	// The owner of the node. This parameter is empty when the node corresponding to the input table is not found.
 	//
 	// example:
 	//

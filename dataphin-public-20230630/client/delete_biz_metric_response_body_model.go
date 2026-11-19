@@ -24,7 +24,7 @@ type iDeleteBizMetricResponseBody interface {
 }
 
 type DeleteBizMetricResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteBizMetricResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,17 +130,13 @@ func (s *DeleteBizMetricResponseBody) Validate() error {
 }
 
 type DeleteBizMetricResponseBodyData struct {
-	// The exception information.
+	// The exception message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the deletion was successful. Valid values:
-	//
-	// - true: Succeeded.
-	//
-	// - false: Failed.
+	// Indicates whether the deletion is successful. A value of true indicates that the deletion is successful. A value of false indicates that the deletion failed.
 	//
 	// example:
 	//

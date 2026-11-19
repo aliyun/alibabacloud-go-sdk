@@ -18,7 +18,7 @@ type iCreateStandardSetRequest interface {
 }
 
 type CreateStandardSetRequest struct {
-	// The create instruction.
+	// The create command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateStandardSetRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateStandardSetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *CreateStandardSetRequest) Validate() error {
 }
 
 type CreateStandardSetRequestCreateCommand struct {
-	// The approval configuration for going online.
+	// The online approval configuration.
 	ApprovalConfig *CreateStandardSetRequestCreateCommandApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
 	// The code of the standard set.
 	//
@@ -103,13 +105,13 @@ type CreateStandardSetRequestCreateCommand struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory to which the standard set belongs.
+	// The parent folder.
 	DirectoryReference *CreateStandardSetRequestCreateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
-	// The list of maintainers.
+	// The maintainers.
 	MaintainerList []*string `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
-	// The list of member groups.
+	// The member group list.
 	MemberGroupList []*string `json:"MemberGroupList,omitempty" xml:"MemberGroupList,omitempty" type:"Repeated"`
-	// The list of members.
+	// The member list.
 	MemberList []*string `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 	// The name of the standard set.
 	//
@@ -119,7 +121,7 @@ type CreateStandardSetRequestCreateCommand struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The approval configuration for going offline.
+	// The offline approval configuration.
 	OfflineApprovalConfig *CreateStandardSetRequestCreateCommandOfflineApprovalConfig `json:"OfflineApprovalConfig,omitempty" xml:"OfflineApprovalConfig,omitempty" type:"Struct"`
 	// The visibility configuration.
 	VisibilityConfig *CreateStandardSetRequestCreateCommandVisibilityConfig `json:"VisibilityConfig,omitempty" xml:"VisibilityConfig,omitempty" type:"Struct"`
@@ -257,11 +259,7 @@ func (s *CreateStandardSetRequestCreateCommand) Validate() error {
 }
 
 type CreateStandardSetRequestCreateCommandApprovalConfig struct {
-	// The approval process type. Valid values:
-	//
-	// - BY_DEFAULT: the default approval type.
-	//
-	// - BY_TEMPLATE: approval based on an approval template.
+	// The approval flow type. Valid values: BY_DEFAULT: Default approval type. BY_TEMPLATE: Based on an approval template.
 	//
 	// This parameter is required.
 	//
@@ -277,7 +275,7 @@ type CreateStandardSetRequestCreateCommandApprovalConfig struct {
 	//
 	// This parameter is required.
 	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
-	// The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	// The ID of the approval template. This parameter takes effect only when the approval flow type is set to BY_TEMPLATE.
 	//
 	// example:
 	//
@@ -334,7 +332,7 @@ func (s *CreateStandardSetRequestCreateCommandApprovalConfig) Validate() error {
 }
 
 type CreateStandardSetRequestCreateCommandDirectoryReference struct {
-	// The directory to which the standard set belongs.
+	// The folder.
 	//
 	// This parameter is required.
 	//
@@ -366,11 +364,7 @@ func (s *CreateStandardSetRequestCreateCommandDirectoryReference) Validate() err
 }
 
 type CreateStandardSetRequestCreateCommandOfflineApprovalConfig struct {
-	// The approval process type. Valid values:
-	//
-	// - BY_DEFAULT: the default approval type.
-	//
-	// - BY_TEMPLATE: approval based on an approval template.
+	// The approval flow type. Valid values: BY_DEFAULT: Default approval type. BY_TEMPLATE: Based on an approval template.
 	//
 	// This parameter is required.
 	//
@@ -386,7 +380,7 @@ type CreateStandardSetRequestCreateCommandOfflineApprovalConfig struct {
 	//
 	// This parameter is required.
 	IsSubmitInBatch *bool `json:"IsSubmitInBatch,omitempty" xml:"IsSubmitInBatch,omitempty"`
-	// The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+	// The ID of the approval template. This parameter takes effect only when the approval flow type is set to BY_TEMPLATE.
 	//
 	// example:
 	//
@@ -445,13 +439,7 @@ func (s *CreateStandardSetRequestCreateCommandOfflineApprovalConfig) Validate() 
 type CreateStandardSetRequestCreateCommandVisibilityConfig struct {
 	// The list of specified users who can view the standard set. This parameter takes effect only when the visibility type is set to SPECIFIED.
 	SpecifiedUserList []*string `json:"SpecifiedUserList,omitempty" xml:"SpecifiedUserList,omitempty" type:"Repeated"`
-	// The visibility type. Valid values:
-	//
-	// - PUBLIC: visible to all users.
-	//
-	// - PRIVATE: visible only to standard set members and administrators.
-	//
-	// - SPECIFIED: visible only to specified users.
+	// The visibility type. Valid values: PUBLIC: Public. PRIVATE: Private, visible only to standard set members and administrators. SPECIFIED: Visible to specified users.
 	//
 	// This parameter is required.
 	//

@@ -50,7 +50,7 @@ type ListKgEntityResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -188,7 +188,7 @@ type ListKgEntityResponseBodyPageResultEntityList struct {
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The entity record property list.
+	// The property list of the entity record.
 	PropertyList []*ListKgEntityResponseBodyPageResultEntityListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
 }
 
@@ -247,19 +247,7 @@ type ListKgEntityResponseBodyPageResultEntityListPropertyList struct {
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property data type. Valid values:
-	//
-	// - STRING: string.
-	//
-	// - INTEGER: integer.
-	//
-	// - FLOAT: floating-point number.
-	//
-	// - BOOLEAN: Boolean.
-	//
-	// - DATE: date.
-	//
-	// - LIST: list.
+	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean value), DATE (date), and LIST (list).
 	//
 	// example:
 	//

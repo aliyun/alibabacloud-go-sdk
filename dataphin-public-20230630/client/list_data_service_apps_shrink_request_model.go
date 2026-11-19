@@ -18,11 +18,11 @@ type iListDataServiceAppsShrinkRequest interface {
 }
 
 type ListDataServiceAppsShrinkRequest struct {
-	// Query the list of all applications under the tenant.
+	// The query parameters for listing all applications under the tenant.
 	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListDataServiceAppsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

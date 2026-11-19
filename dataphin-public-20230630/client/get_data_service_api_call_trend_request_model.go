@@ -22,7 +22,7 @@ type iGetDataServiceApiCallTrendRequest interface {
 }
 
 type GetDataServiceApiCallTrendRequest struct {
-	// The end time in the format of yyyy-MM-dd HH:mm:ss.
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -38,6 +38,8 @@ type GetDataServiceApiCallTrendRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -50,7 +52,7 @@ type GetDataServiceApiCallTrendRequest struct {
 	//
 	// 102102
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The start time in the format of yyyy-MM-dd HH:mm:ss.
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iGetTableColumnLineageByTaskIdRequest interface {
 }
 
 type GetTableColumnLineageByTaskIdRequest struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type GetTableColumnLineageByTaskIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data structure for querying table column lineage.
+	// The data structure used to query table column lineage.
 	//
 	// This parameter is required.
 	TableColumnLineageByTaskIdQuery *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery `json:"TableColumnLineageByTaskIdQuery,omitempty" xml:"TableColumnLineageByTaskIdQuery,omitempty" type:"Struct"`
@@ -83,13 +85,13 @@ func (s *GetTableColumnLineageByTaskIdRequest) Validate() error {
 type GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery struct {
 	// Specifies whether to return tables that do not exist in the asset inventory. If this parameter is not specified, non-existent tables are not returned.
 	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
-	// Environment of the task to query: DEV or PROD.
+	// The environment to which the node belongs, such as DEV or PROD.
 	//
 	// example:
 	//
 	// DEV
 	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
-	// Task (node) ID used to filter the query.
+	// The ID of the node used to filter the query.
 	//
 	// This parameter is required.
 	//

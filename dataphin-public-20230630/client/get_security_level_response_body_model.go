@@ -36,7 +36,7 @@ type GetSecurityLevelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend response exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type GetSecurityLevelResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data classification level details.
+	// The details of the data classification level.
 	SecurityLevelInfo *GetSecurityLevelResponseBodySecurityLevelInfo `json:"SecurityLevelInfo,omitempty" xml:"SecurityLevelInfo,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *GetSecurityLevelResponseBody) Validate() error {
 }
 
 type GetSecurityLevelResponseBodySecurityLevelInfo struct {
-	// The abbreviated name of the data classification level.
+	// The abbreviation of the data classification level.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type GetSecurityLevelResponseBodySecurityLevelInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The sensitivity level of the data classification.
+	// The sensitivity of the data classification level.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetSecurityLevelResponseBodySecurityLevelInfo struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of data categorization IDs associated with the current data classification level.
+	// The list of data category IDs associated with the current data classification level.
 	RelatedClassifyIdList []*int64 `json:"RelatedClassifyIdList,omitempty" xml:"RelatedClassifyIdList,omitempty" type:"Repeated"`
 }
 

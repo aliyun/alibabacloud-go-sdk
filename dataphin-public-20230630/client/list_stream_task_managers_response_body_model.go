@@ -30,7 +30,7 @@ type ListStreamTaskManagersResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of TaskManagers for the real-time task.
+	// The TaskManager information retrieved in real time. You can use the taskmanagerId to query the logs of the TaskManager.
 	Data []*ListStreamTaskManagersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type ListStreamTaskManagersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend response exception.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *ListStreamTaskManagersResponseBody) Validate() error {
 }
 
 type ListStreamTaskManagersResponseBodyData struct {
-	// The communication address or machine information.
+	// The communication address or host machine information of the TaskManager returned by the engine. This is not the log download URL.
 	//
 	// example:
 	//
 	// akka.tcp://flink@10.0.0.12:6122/user/rpc/taskmanager_0
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// taskmanagerId
+	// The identifier of the TaskManager. This corresponds to the TaskmanagerId input parameter of ListStreamTaskManagerLogs and GetStreamLogContent.
 	//
 	// example:
 	//

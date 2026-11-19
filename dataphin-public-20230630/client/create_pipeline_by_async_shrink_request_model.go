@@ -20,15 +20,15 @@ type iCreatePipelineByAsyncShrinkRequest interface {
 }
 
 type CreatePipelineByAsyncShrinkRequest struct {
-	// Request context information
+	// The request context information.
 	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// Create pipeline/workflow task configuration
+	// The configuration for creating a pipeline or workflow task.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +36,8 @@ type CreatePipelineByAsyncShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

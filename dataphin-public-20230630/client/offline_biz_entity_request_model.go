@@ -18,11 +18,11 @@ type iOfflineBizEntityRequest interface {
 }
 
 type OfflineBizEntityRequest struct {
-	// Offline request
+	// The offline request.
 	//
 	// This parameter is required.
 	OfflineCommand *OfflineBizEntityRequestOfflineCommand `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty" type:"Struct"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type OfflineBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *OfflineBizEntityRequest) Validate() error {
 }
 
 type OfflineBizEntityRequestOfflineCommand struct {
-	// Business unit ID
+	// The ID of the business unit.
 	//
 	// This parameter is required.
 	//
@@ -89,7 +91,7 @@ type OfflineBizEntityRequestOfflineCommand struct {
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// Offline comment
+	// The comment for the offline operation.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +99,7 @@ type OfflineBizEntityRequestOfflineCommand struct {
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Business entity ID
+	// The ID of the business entity.
 	//
 	// This parameter is required.
 	//
@@ -105,7 +107,7 @@ type OfflineBizEntityRequestOfflineCommand struct {
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Business entity type. For more information, see the "CreateBizEntity" operation.
+	// The type of the business entity. For more information, see the create business entity operation.
 	//
 	// This parameter is required.
 	//

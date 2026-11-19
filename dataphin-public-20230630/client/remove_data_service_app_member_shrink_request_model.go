@@ -18,7 +18,7 @@ type iRemoveDataServiceAppMemberShrinkRequest interface {
 }
 
 type RemoveDataServiceAppMemberShrinkRequest struct {
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type RemoveDataServiceAppMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Remove regular members from a data service application
+	// Deletes a regular member from a data service application.
 	//
 	// This parameter is required.
 	RemoveCommandShrink *string `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty"`

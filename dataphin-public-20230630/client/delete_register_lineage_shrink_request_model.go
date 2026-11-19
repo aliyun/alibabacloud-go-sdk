@@ -18,7 +18,7 @@ type iDeleteRegisterLineageShrinkRequest interface {
 }
 
 type DeleteRegisterLineageShrinkRequest struct {
-	// The command for deleting registered data lineage.
+	// The command to delete registered lineage.
 	//
 	// This parameter is required.
 	DeleteRegisterLineageCommandShrink *string `json:"DeleteRegisterLineageCommand,omitempty" xml:"DeleteRegisterLineageCommand,omitempty"`
@@ -30,6 +30,8 @@ type DeleteRegisterLineageShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

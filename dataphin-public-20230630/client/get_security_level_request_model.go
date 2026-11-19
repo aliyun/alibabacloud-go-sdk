@@ -18,7 +18,7 @@ type iGetSecurityLevelRequest interface {
 }
 
 type GetSecurityLevelRequest struct {
-	// The sensitivity level of the data classification.
+	// The sensitivity of the data classification level.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +34,8 @@ type GetSecurityLevelRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

@@ -18,7 +18,7 @@ type iListTablesShrinkRequest interface {
 }
 
 type ListTablesShrinkRequest struct {
-	// The paged query conditions.
+	// The paging query conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
 	// The tenant ID.
 	//
