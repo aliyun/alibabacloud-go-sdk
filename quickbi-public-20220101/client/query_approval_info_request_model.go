@@ -20,23 +20,23 @@ type iQueryApprovalInfoRequest interface {
 }
 
 type QueryApprovalInfoRequest struct {
-	// Page number, default is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Number of rows per page, default is 1000.
+	// The number of entries per page. Default value: 1000.
 	//
 	// example:
 	//
 	// 1000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Approval status:
+	// The approval status. Valid values:
 	//
-	// - 0: Pending
+	// - 0: Pending.
 	//
-	// - 1: Processed
+	// - 1: Processed.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type QueryApprovalInfoRequest struct {
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Current approver user ID, qbi user ID.
+	// The QBI user ID of the current approver.
 	//
 	// This parameter is required.
 	//

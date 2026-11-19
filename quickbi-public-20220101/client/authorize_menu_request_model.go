@@ -22,17 +22,17 @@ type iAuthorizeMenuRequest interface {
 }
 
 type AuthorizeMenuRequest struct {
-	// Authorizes the permissions of the menu. Valid values:
+	// The permissions to grant for the menus. Valid values:
 	//
-	// 	- 1: view
+	// - 1: View.
 	//
-	// 	- 3: View + Export (default)
+	// - 3: View and export. This is the default value.
 	//
 	// example:
 	//
 	// 3
 	AuthPointsValue *int32 `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
-	// The ID of the BI portal.
+	// The ID of the data portal.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,7 @@ type AuthorizeMenuRequest struct {
 	//
 	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
-	// The menu ID of the BI portal leaf node.
-	//
-	// 	- The directory menu cannot be authorized.
-	//
-	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
+	// The IDs of the leaf node menus in the data portal. You can specify multiple IDs. Separate multiple IDs with commas (,). You can specify up to 100 IDs at a time.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +48,13 @@ type AuthorizeMenuRequest struct {
 	//
 	// 54kqgoa****,pg1n135****
 	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
-	// The IDs of the user groups.
-	//
-	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
-	//
-	// 	- UserGroupIds and UserIds cannot be empty at the same time
+	// The IDs of the user groups. You can specify multiple IDs. Separate multiple IDs with commas (,). You can specify up to 200 IDs at a time. You must specify at least one of UserGroupIds and UserIds.
 	//
 	// example:
 	//
 	// 34fd141d-4598-4093-8c33-8e066dcb****,3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	// The IDs of the end users. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
-	//
-	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
+	// The IDs of the users. These are Quick BI user IDs, not Alibaba Cloud UIDs. You can specify multiple IDs. Separate multiple IDs with commas (,). You can specify up to 200 IDs at a time.
 	//
 	// example:
 	//

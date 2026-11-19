@@ -24,9 +24,9 @@ type ClearDynamicTagCacheResponseBody struct {
 	//
 	// 78C17888****C462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the cache is purged.
+	// Indicates whether the cache is cleared successfully. Valid values:
 	//
-	// - true: The cache is purged.
+	// - true: The cache is cleared successfully.
 	//
 	// - false: No cache exists.
 	//

@@ -18,19 +18,19 @@ type iCancelAuthorizationMenuResponseBody interface {
 }
 
 type CancelAuthorizationMenuResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Number of menus successfully unauthorized.
+	// The number of menus for which authorization was successfully revoked.
 	//
 	// example:
 	//
 	// 2
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - true: The request was successful.
 	//

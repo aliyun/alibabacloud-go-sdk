@@ -30,7 +30,7 @@ type AddWorksAuthorizationResponseBody struct {
 	//
 	// asdasf8****sda
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

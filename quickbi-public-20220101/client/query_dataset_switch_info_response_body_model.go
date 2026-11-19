@@ -18,19 +18,19 @@ type iQueryDatasetSwitchInfoResponseBody interface {
 }
 
 type QueryDatasetSwitchInfoResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// FAECEFA8-09BB-58AB-BC58-C8ACEFE4D232
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the dataset\\"s row and column permission switches.
+	// The details of the row- and column-level permission switches for the dataset.
 	Result *QueryDatasetSwitchInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -83,27 +83,27 @@ func (s *QueryDatasetSwitchInfoResponseBody) Validate() error {
 }
 
 type QueryDatasetSwitchInfoResponseBodyResult struct {
-	// Dataset ID.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Status of the column-level field permission switch. Possible values:
+	// The status of the column-level field permission switch. Valid values:
 	//
-	// - 1: Enabled
+	// - 1: Enabled.
 	//
-	// - 0: Disabled
+	// - 0: Disabled.
 	//
 	// example:
 	//
 	// 1
 	IsOpenColumnLevelPermission *int32 `json:"IsOpenColumnLevelPermission,omitempty" xml:"IsOpenColumnLevelPermission,omitempty"`
-	// Status of the row-level permission switch.
+	// The status of the row-level permission switch. Valid values:
 	//
-	// - 1: Enabled
+	// - 1: Enabled.
 	//
-	// - 0: Disabled
+	// - 0: Disabled.
 	//
 	// example:
 	//

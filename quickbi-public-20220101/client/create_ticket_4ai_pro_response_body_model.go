@@ -18,14 +18,24 @@ type iCreateTicket4AiProResponseBody interface {
 }
 
 type CreateTicket4AiProResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D787E1A**********DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The embedding ticket.
+	//
 	// example:
 	//
 	// true
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

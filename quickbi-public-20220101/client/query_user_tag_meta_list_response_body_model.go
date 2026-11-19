@@ -18,19 +18,19 @@ type iQueryUserTagMetaListResponseBody interface {
 }
 
 type QueryUserTagMetaListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns a list of user tags in an organization.
+	// The list of user tags in the organization.
 	Result []*QueryUserTagMetaListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -87,19 +87,19 @@ func (s *QueryUserTagMetaListResponseBody) Validate() error {
 }
 
 type QueryUserTagMetaListResponseBodyResult struct {
-	// The description of the tag.
+	// The tag description.
 	//
 	// example:
 	//
-	// Used to distinguish some positions
+	// Used to distinguish certain positions
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	// The ID of the label.
+	// The tag ID.
 	//
 	// example:
 	//
 	// pop_001
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// The name of the tag.
+	// The tag name.
 	//
 	// example:
 	//

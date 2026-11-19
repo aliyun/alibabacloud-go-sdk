@@ -32,13 +32,13 @@ type iQueryAuditLogRequest interface {
 type QueryAuditLogRequest struct {
 	// The access source. Valid values:
 	//
-	// - COMMON: standard access
+	// - COMMON: Regular access.
 	//
-	// - IMBEDDED: embedded report
+	// - IMBEDDED: Embedded report.
 	//
-	// - PUBLIC: public report
+	// - PUBLIC: Public report.
 	//
-	// - IMBEDDED_COMPONENT: embedded card
+	// - IMBEDDED_COMPONENT: Embedded card.
 	//
 	// if can be null:
 	// true
@@ -47,7 +47,7 @@ type QueryAuditLogRequest struct {
 	//
 	// PUBLIC
 	AccessSourceFlag *string `json:"AccessSourceFlag,omitempty" xml:"AccessSourceFlag,omitempty"`
-	// The end date for the query. Use the yyyyMMdd format.
+	// The end date of the query. Format: yyyyMMdd.
 	//
 	// This parameter is required.
 	//
@@ -57,11 +57,11 @@ type QueryAuditLogRequest struct {
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The log type. Valid values:
 	//
-	// - dataView: access logs
+	// - dataView: Access.
 	//
-	// - function: operation logs
+	// - function: Operation.
 	//
-	// - permission: permission logs
+	// - permission: Permission.
 	//
 	// This parameter is required.
 	//
@@ -75,21 +75,19 @@ type QueryAuditLogRequest struct {
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0***
 	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// The permission, access, or operation type. If left empty, all types are queried by default.
-	//
-	// For valid values, see audit log codes. To specify multiple types, separate them with commas.
+	// The permission, access, or operation type. If this parameter is left empty, all types are queried by default. For more information, see the audit log code values. Separate multiple values with commas (,).
 	//
 	// example:
 	//
 	// MODIFY
 	OperatorTypes *string `json:"OperatorTypes,omitempty" xml:"OperatorTypes,omitempty"`
-	// The resource type. For more information, see work types.
+	// The resource type. For more information, see the asset type.
 	//
 	// example:
 	//
 	// cube
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start date for the query. Use the yyyyMMdd format. The date cannot be more than 90 days before the current date.
+	// The start date of the query. Format: yyyyMMdd. The date cannot be more than 90 days before the current date.
 	//
 	// This parameter is required.
 	//
@@ -97,11 +95,11 @@ type QueryAuditLogRequest struct {
 	//
 	// 20240504
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The device used for access. Valid values:
+	// The access device. Valid values:
 	//
-	// - MOBILE: mobile device
+	// - MOBILE: Mobile client.
 	//
-	// - PC: PC
+	// - PC: PC client.
 	//
 	// if can be null:
 	// true
@@ -110,7 +108,7 @@ type QueryAuditLogRequest struct {
 	//
 	// PC
 	UserAccessDevice *string `json:"UserAccessDevice,omitempty" xml:"UserAccessDevice,omitempty"`
-	// The ID of the workspace that contains the logs to query.
+	// The ID of the workspace to which the logs to be queried belong.
 	//
 	// example:
 	//

@@ -18,27 +18,27 @@ type iCancelCollectionResponseBody interface {
 }
 
 type CancelCollectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface is returned. Valid values:
+	// The execution result of the API operation. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The execution succeeded.
 	//
-	// 	- false: The request fails.
+	// - false: The execution failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

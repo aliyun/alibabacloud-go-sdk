@@ -14,7 +14,7 @@ type iQueryReadableResourcesListByUserIdRequest interface {
 }
 
 type QueryReadableResourcesListByUserIdRequest struct {
-	// Quick BI the user ID.
+	// The Quick BI user ID.
 	//
 	// This parameter is required.
 	//

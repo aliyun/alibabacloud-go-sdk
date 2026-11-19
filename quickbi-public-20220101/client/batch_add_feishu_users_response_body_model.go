@@ -24,21 +24,21 @@ type BatchAddFeishuUsersResponseBody struct {
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of adding user group members. Valid values:
+	// Indicates whether the user group members are added. Valid values:
 	//
-	// - true: The users were added.
+	// - true: The user group members are added.
 	//
-	// - false: The users failed to be added.
+	// - false: The user group members fail to be added.
 	//
 	// example:
 	//
 	// True
 	Result *BatchAddFeishuUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ func (s *BatchAddFeishuUsersResponseBody) Validate() error {
 }
 
 type BatchAddFeishuUsersResponseBodyResult struct {
-	// The number of users that failed validation.
+	// The number of failures.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type BatchAddFeishuUsersResponseBodyResult struct {
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	// The details of the failures.
 	FailResults []*BatchAddFeishuUsersResponseBodyResultFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
-	// The number of users that were added.
+	// The number of successes.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ func (s *BatchAddFeishuUsersResponseBodyResult) Validate() error {
 }
 
 type BatchAddFeishuUsersResponseBodyResultFailResults struct {
-	// The error causes.
+	// The causes of the errors.
 	FailInfos []*BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos `json:"FailInfos,omitempty" xml:"FailInfos,omitempty" type:"Repeated"`
 }
 
@@ -197,7 +197,7 @@ type BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos struct {
 	//
 	// ACCOUNT_EXIST
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code description.
+	// The description of the error code.
 	//
 	// example:
 	//

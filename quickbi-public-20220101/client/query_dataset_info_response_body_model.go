@@ -18,11 +18,7 @@ type iQueryDatasetInfoResponseBody interface {
 }
 
 type QueryDatasetInfoResponseBody struct {
-	// Whether the operation is successfully returned. Valid values:
-	//
-	// 	- true: The call is successful.
-	//
-	// 	- false: The call fails.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30,7 +26,11 @@ type QueryDatasetInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The dataset information.
 	Result *QueryDatasetInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The unique ID of the dataset.
+	// Specifies whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -83,117 +83,117 @@ func (s *QueryDatasetInfoResponseBody) Validate() error {
 }
 
 type QueryDatasetInfoResponseBodyResult struct {
-	// The unique ID of the dataset.
+	// The list of tables used by the dataset.
 	CubeTableList []*QueryDatasetInfoResponseBodyResultCubeTableList `json:"CubeTableList,omitempty" xml:"CubeTableList,omitempty" type:"Repeated"`
-	// The unique ID of the workspace to which the dataset belongs.
+	// Specifies whether custom SQL is used. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	CustimzeSql *bool `json:"CustimzeSql,omitempty" xml:"CustimzeSql,omitempty"`
-	// The type of the data source. Valid values:
-	//
-	// 	- mysql
-	//
-	// 	- odps
-	//
-	// 	- oracle
-	//
-	// 	- ... Data source types supported by Quick BI such as
+	// The unique ID of the dataset.
 	//
 	// example:
 	//
 	// a201c85c-******
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The user ID of the dataset owner in the Quick BI.
+	// The dataset name.
 	//
 	// example:
 	//
 	// opds_40
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// A list of all dimensions in the dataset.
+	// The list of all dimensions in the dataset.
 	DimensionList []*QueryDatasetInfoResponseBodyResultDimensionList `json:"DimensionList,omitempty" xml:"DimensionList,omitempty" type:"Repeated"`
-	// The unique ID of the metric.
+	// The folder information of the dataset.
 	Directory *QueryDatasetInfoResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// The name of the data source.
+	// The unique ID of the data source.
 	//
 	// example:
 	//
 	// a201c85c-******
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
-	// The time when the dataset was last modified.
+	// The data source name.
 	//
 	// example:
 	//
 	// odps
 	DsName *string `json:"DsName,omitempty" xml:"DsName,omitempty"`
-	// The point in time when the training dataset was created.
+	// The data source type. Valid values:
+	//
+	// - mysql
+	//
+	// - odps
+	//
+	// - oracle
+	//
+	// - Other data source types supported by Quick BI.
 	//
 	// example:
 	//
 	// odps
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	// Indicates whether to customize SQL statements. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// The time when the dataset was created.
 	//
 	// example:
 	//
 	// 1629450382000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The information about the dataset.
+	// The time when the dataset was last modified.
 	//
 	// example:
 	//
 	// 1629450382000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// A list of all measures for the dataset.
+	// The list of all measures in the dataset.
 	MeasureList []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
-	// Whether to enable extraction acceleration. Valid values:
+	// Specifies whether extract acceleration is enabled. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// false
 	OpenOfflineAcceleration *bool `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
-	// Test Space
+	// The user ID of the dataset owner in Quick BI.
 	//
 	// example:
 	//
 	// b8494aab26124*****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The unique ID of the data source.
+	// The name of the dataset owner.
 	//
 	// example:
 	//
-	// The name of the dataset owner.
+	// Dawa
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The name of the training dataset.
+	// Specifies whether row-level permissions are enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// false
 	RowLevel *bool `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
-	// Whether row-level permissions are enabled. Valid values:
-	//
-	// 	- true: The VIP Netty channel is enabled.
-	//
-	// 	- false: The VIP Netty channel is disabled.
+	// The unique ID of the workspace to which the dataset belongs.
 	//
 	// example:
 	//
 	// 420abef4-a79b-4289-b12****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// Big Baby
+	// The name of the workspace to which the dataset belongs.
 	//
 	// example:
 	//
-	// The name of the workspace in which the dataset resides.
+	// Test workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -404,66 +404,67 @@ func (s *QueryDatasetInfoResponseBodyResult) Validate() error {
 }
 
 type QueryDatasetInfoResponseBodyResultCubeTableList struct {
-	// Indicates whether the data source table is valid. Valid values:
-	//
-	// 	- true: data source table
-	//
-	// 	- false: custom table
+	// The display name of the table.
 	//
 	// example:
 	//
 	// odps_40
-	Caption     *string                                                       `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The actual physical tables used by the merged table.
 	ChildTables []*QueryDatasetInfoResponseBodyResultCubeTableListChildTables `json:"ChildTables,omitempty" xml:"ChildTables,omitempty" type:"Repeated"`
-	// The display name of the table.
+	// Specifies whether the table is a custom SQL table. Valid values:
+	//
+	// - true: The table is a custom SQL table.
+	//
+	// - false: The table is not a custom SQL table.
 	//
 	// example:
 	//
 	// false
 	Customsql *bool `json:"Customsql,omitempty" xml:"Customsql,omitempty"`
-	// The name of the table.
+	// The data source ID.
 	//
 	// example:
 	//
 	// dfefd7f4-fc6e-42c9-b4******
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The ID of the data source.
+	// The data source type. Valid values:
+	//
+	// - mysql
+	//
+	// - odps
+	//
+	// - oracle
+	//
+	// - Other data source types supported by Quick BI.
 	//
 	// example:
 	//
 	// maxcompute
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	// The unique ID of the table.
+	// Specifies whether the table is a data source table. Valid values:
+	//
+	// - true: The table is a data source table.
+	//
+	// - false: The table is a custom table.
 	//
 	// example:
 	//
 	// true
 	FactTable *bool `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
-	// Indicates whether the table is a custom SQL table. Valid values:
-	//
-	// 	- true: custom SQL table
-	//
-	// 	- false: non-custom SQL table
+	// The specific SQL statement when the table is a custom SQL table.
 	//
 	// example:
 	//
 	// select 	- from ****
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The list of tables used by the dataset.
+	// The table name.
 	//
 	// example:
 	//
 	// viewdasb8494aab2612473cb74992159fe****
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The type of the data source. Valid values:
-	//
-	// 	- mysql
-	//
-	// 	- odps
-	//
-	// 	- oracle
-	//
-	// 	- ... and other data source types supported by Quick BI
+	// The unique ID of the table.
 	//
 	// example:
 	//
@@ -574,31 +575,46 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableList) Validate() error {
 }
 
 type QueryDatasetInfoResponseBodyResultCubeTableListChildTables struct {
+	// The display name.
+	//
 	// example:
 	//
 	// 1
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// Specifies whether the table is a custom dataset.
+	//
 	// example:
 	//
-	// test
+	// true
 	Customsql *bool `json:"Customsql,omitempty" xml:"Customsql,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// test
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The data source type.
+	//
 	// example:
 	//
 	// test
-	DsType    *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	FactTable *bool   `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// Specifies whether the table is the primary table.
+	FactTable *bool `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
+	// The SQL statement for the custom SQL dataset.
+	//
 	// example:
 	//
 	// test
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The physical table name.
+	//
 	// example:
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The unique ID.
+	//
 	// example:
 	//
 	// test
@@ -690,37 +706,43 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableListChildTables) Validate() 
 }
 
 type QueryDatasetInfoResponseBodyResultDimensionList struct {
-	// The unique ID of the field that is referenced by the group measure. Non-NULL if and only if the metric is a grouping metric.
+	// The display name of the dimension.
 	//
 	// example:
 	//
 	// city
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// A list of all dimensions in the dataset.
+	// The data type. Valid values:
+	//
+	// - string: String.
+	//
+	// - number: Number.
+	//
+	// - datetime: Datetime.
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The actual physical field.
+	// The dimension type. Valid values:
+	//
+	// - standard_dimension: Standard dimension.
+	//
+	// - calculate_dimension: Calculated dimension.
+	//
+	// - group_dimension: Grouped dimension.
 	//
 	// example:
 	//
 	// group_dimension
 	DimensionType *string `json:"DimensionType,omitempty" xml:"DimensionType,omitempty"`
-	// Data type; value:
-	//
-	// 	- string: character
-	//
-	// 	- number: a number
-	//
-	// 	- datetime: time
+	// The expression for the calculated dimension. This parameter is valid only for calculated dimensions.
 	//
 	// example:
 	//
 	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Expression for the flattened calculation dimensions.
+	// The flattened expression for the calculated dimension.
 	//
 	// if can be null:
 	// true
@@ -729,43 +751,37 @@ type QueryDatasetInfoResponseBodyResultDimensionList struct {
 	//
 	// example_expression
 	ExpressionV2 *string `json:"ExpressionV2,omitempty" xml:"ExpressionV2,omitempty"`
-	// Expression for a calculated dimension; valid only for calculated dimensions.
+	// The actual physical field.
 	//
 	// example:
 	//
 	// city
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
-	// The description of the field.
+	// The field description.
 	//
 	// example:
 	//
 	// hhhh
 	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
-	// The type of the dimension. Valid values:
-	//
-	// 	- standard_dimension: General Dimension
-	//
-	// 	- calculate_dimension: calculating dimensions
-	//
-	// 	- group_dimension: grouping dimensions
+	// The granularity.
 	//
 	// example:
 	//
 	// example_granularity
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The granularity.
+	// The unique ID of the referenced field for a grouped measure. This parameter is not null only when the measure is a grouped measure.
 	//
 	// example:
 	//
 	// 308f7****
 	RefUid *string `json:"RefUid,omitempty" xml:"RefUid,omitempty"`
-	// The ARN.
+	// The unique ID of the table to which the dimension belongs. This corresponds to the UniqueId in CubeTypeList.
 	//
 	// example:
 	//
 	// 7a62530***
 	TableUniqueId *string `json:"TableUniqueId,omitempty" xml:"TableUniqueId,omitempty"`
-	// The display name of the dimension.
+	// The unique ID.
 	//
 	// example:
 	//
@@ -885,29 +901,29 @@ func (s *QueryDatasetInfoResponseBodyResultDimensionList) Validate() error {
 }
 
 type QueryDatasetInfoResponseBodyResultDirectory struct {
-	// Test directory
+	// The folder ID.
 	//
 	// example:
 	//
 	// a3eecab7-618d-4f9f-*****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Test directory
+	// The folder name.
 	//
 	// example:
 	//
-	// The name of the directory.
+	// Test folder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about the directory to which the dataset belongs.
+	// The path of the folder ID, such as aa/bb/cc/dd.
 	//
 	// example:
 	//
 	// 88b680****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// The path of the directory ID, for example, aa/bb/cc/dd.
+	// The path name of the folder ID, such as Level 1 folder/Level 2 folder.
 	//
 	// example:
 	//
-	// The path name of the directory ID, for example, one-level directory /two-level directory.
+	// Test folder
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -960,31 +976,31 @@ func (s *QueryDatasetInfoResponseBodyResultDirectory) Validate() error {
 }
 
 type QueryDatasetInfoResponseBodyResultMeasureList struct {
-	// The actual physical field.
+	// The display name of the measure.
 	//
 	// example:
 	//
 	// profit_amt
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// A list of all measures for the dataset.
+	// The data type. Valid values:
+	//
+	// - string: String.
+	//
+	// - number: Number.
+	//
+	// - datetime: Datetime.
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// Data type; value:
-	//
-	// 	- string: character
-	//
-	// 	- number: a number
-	//
-	// 	- datetime: time
+	// The expression for the calculated measure. This parameter is valid only for calculated measures.
 	//
 	// example:
 	//
 	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Expression for flattened computation metrics.
+	// The flattened expression for the calculated measure.
 	//
 	// if can be null:
 	// true
@@ -993,35 +1009,35 @@ type QueryDatasetInfoResponseBodyResultMeasureList struct {
 	//
 	// example_expression
 	ExpressionV2 *string `json:"ExpressionV2,omitempty" xml:"ExpressionV2,omitempty"`
-	// The type of the measure. Valid values:
-	//
-	// 	- standard_measure: General Metrics
-	//
-	// 	- calculate_measure: Calculating Measures
+	// The actual physical field.
 	//
 	// example:
 	//
 	// profit_amt
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
-	// The description of the field.
+	// The field description.
 	//
 	// example:
 	//
 	// asadsda
 	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
-	// An expression that calculates a measure; valid only for calculated measures.
+	// The metric type. Valid values:
+	//
+	// - standard_measure: Standard measure.
+	//
+	// - calculate_measure: Calculated measure.
 	//
 	// example:
 	//
 	// calculate_measure
 	MeasureType *string `json:"MeasureType,omitempty" xml:"MeasureType,omitempty"`
-	// The display name of the metric.
+	// The unique ID of the table to which the dimension belongs. This corresponds to the UniqueId in CubeTypeList.
 	//
 	// example:
 	//
 	// 7a62530b36
 	TableUniqueId *string `json:"TableUniqueId,omitempty" xml:"TableUniqueId,omitempty"`
-	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
+	// The unique ID of the measure.
 	//
 	// example:
 	//

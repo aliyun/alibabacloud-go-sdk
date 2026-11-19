@@ -18,19 +18,19 @@ type iQueryApprovalInfoResponseBody interface {
 }
 
 type QueryApprovalInfoResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return the result of the interface execution.
+	// The result of the API operation.
 	Result *QueryApprovalInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the API call was successful. Possible values are:
+	// Indicates whether the API operation is successful. Valid values:
 	//
-	// - true: success
+	// - true: The operation is successful.
 	//
-	// - false: failure
+	// - false: The operation fails.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *QueryApprovalInfoResponseBody) Validate() error {
 }
 
 type QueryApprovalInfoResponseBodyResult struct {
-	// Array of approval flow information.
+	// The array of approval flow information.
 	Data []*QueryApprovalInfoResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -91,19 +91,19 @@ type QueryApprovalInfoResponseBodyResult struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records requested per page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 1000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The starting position of the current page.
+	// The start position of the current page.
 	//
 	// example:
 	//
 	// 0
 	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The total number of items.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -193,99 +193,99 @@ func (s *QueryApprovalInfoResponseBodyResult) Validate() error {
 }
 
 type QueryApprovalInfoResponseBodyResultData struct {
-	// Applicant\\"s user ID, qbi user ID.
+	// The QBI user ID of the applicant.
 	//
 	// example:
 	//
 	// 1359508
 	ApplicantId *string `json:"ApplicantId,omitempty" xml:"ApplicantId,omitempty"`
-	// Applicant\\"s nickname.
+	// The nickname of the applicant.
 	//
 	// example:
 	//
 	// Li Fei
 	ApplicantName *string `json:"ApplicantName,omitempty" xml:"ApplicantName,omitempty"`
-	// Application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 64813ef6da58e80eef8ed2f9
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Application reason.
+	// The reason for the application.
 	//
 	// example:
 	//
-	// Development needs
+	// Required for development
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
-	// Approver\\"s user ID, qbi user ID.
+	// The QBI user ID of the approver.
 	//
 	// example:
 	//
 	// sdasascasxasd
 	ApproverId *string `json:"ApproverId,omitempty" xml:"ApproverId,omitempty"`
-	// Approver\\"s nickname.
+	// The nickname of the approver.
 	//
 	// example:
 	//
 	// data_fusion_002
 	ApproverName *string `json:"ApproverName,omitempty" xml:"ApproverName,omitempty"`
-	// Whether the resource has been deleted:
+	// Indicates whether the resource has been deleted. Valid values:
 	//
-	// - true: Deleted
+	// - true: The resource has been deleted.
 	//
-	// - false: Not deleted
+	// - false: The resource has not been deleted.
 	//
 	// example:
 	//
 	// true
 	DeleteFlag *bool `json:"DeleteFlag,omitempty" xml:"DeleteFlag,omitempty"`
-	// Permission expiration date, timestamp.
+	// The expiration time of the permission.
 	//
 	// example:
 	//
 	// 1708568097135
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// Permission approval status:
+	// The approval status of the permission. Valid values:
 	//
-	// - 0: Under review, corresponding to 0 in the request parameters
+	// - 0: Pending approval, which corresponds to 0 in the request parameters.
 	//
-	// - 1: Approved, corresponding to 1 in the request parameters
+	// - 1: Approved, which corresponds to 1 in the request parameters.
 	//
-	// - 2: Rejected, corresponding to 1 in the request parameters
+	// - 2: Rejected, which corresponds to 1 in the request parameters.
 	//
 	// example:
 	//
 	// 0
 	FlagStatus *int32 `json:"FlagStatus,omitempty" xml:"FlagStatus,omitempty"`
-	// Application creation time, timestamp.
+	// The time when the application was created.
 	//
 	// example:
 	//
 	// 1687315758
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Application modification time, timestamp.
+	// The time when the application was modified.
 	//
 	// example:
 	//
 	// 1640595729000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Handling reason.
+	// The reason for handling the application.
 	//
 	// example:
 	//
-	// Development needs
+	// Required for development
 	HandleReason *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
-	// The ID of the resource for which permission is requested.
+	// The ID of the resource for which permissions are requested.
 	//
 	// example:
 	//
 	// acl-ct4t2e4u2x4ej1bzur
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource for which permission is requested (e.g., report name, space name...).
+	// The name of the resource for which permissions are requested, such as the report name or workspace name.
 	//
 	// example:
 	//
-	// Test Resources
+	// Test resource
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource.
 	//
@@ -297,7 +297,7 @@ type QueryApprovalInfoResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// Test Workspace
+	// Test workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 

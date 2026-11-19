@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("quickbi-public")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,11 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds specified users and user groups to a row-level permission rule.
+// Adds selected users and user groups to a specific row-column permission rule.
 //
 // Description:
 //
-// > This API operation supports only the new row-level permission model in Quick BI. If you are using the previous row-level permission model, you must migrate to the new model before you call this operation. To migrate, go to Organization Management > Security Settings > Upgrade Row-level Permissions, and then click **One-click Upgrade**.
+// > Note: This operation supports only the new row-column permission model of Quick BI. If you are still using the legacy row-column permissions, migrate to the new row-column permission model before you call this operation. To migrate to the new row-column permission model, go to **Organization Management*	- > **Security Configuration*	- > **Row-Column Permission Upgrade**, and click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - AddDataLevelPermissionRuleUsersRequest
 //
@@ -106,11 +114,11 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDat
 
 // Summary:
 //
-// Adds specified users and user groups to a row-level permission rule.
+// Adds selected users and user groups to a specific row-column permission rule.
 //
 // Description:
 //
-// > This API operation supports only the new row-level permission model in Quick BI. If you are using the previous row-level permission model, you must migrate to the new model before you call this operation. To migrate, go to Organization Management > Security Settings > Upgrade Row-level Permissions, and then click **One-click Upgrade**.
+// > Note: This operation supports only the new row-column permission model of Quick BI. If you are still using the legacy row-column permissions, migrate to the new row-column permission model before you call this operation. To migrate to the new row-column permission model, go to **Organization Management*	- > **Security Configuration*	- > **Row-Column Permission Upgrade**, and click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - AddDataLevelPermissionRuleUsersRequest
 //
@@ -128,11 +136,11 @@ func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermi
 
 // Summary:
 //
-// Modifies the whitelist for row-level and column-level permissions of a specified dataset.
+// Modifies the whitelist for row and column permissions of a specified dataset.
 //
 // Description:
 //
-// > This API operation supports only the new permission model for row-level and column-level permissions in Quick BI. If you are using the old permission model, you must migrate to the new one before you call this operation. To perform a one-click migration, you can go to Organization Management > Security Configuration > Upgrade to New Row-level and Column-level Permissions and click **One-click Upgrade**.
+// > : This operation only supports the new row and column permission model of Quick BI. If you are still using the legacy row and column permissions, perform a one-click migration to the new row and column permission model before calling this operation. To perform a one-click migration to the new row and column permission model, go to **Organization management*	- > **Security configuration*	- > **Row and column permission upgrade**, and click **One-click upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - AddDataLevelPermissionWhiteListRequest
 //
@@ -192,11 +200,11 @@ func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDat
 
 // Summary:
 //
-// Modifies the whitelist for row-level and column-level permissions of a specified dataset.
+// Modifies the whitelist for row and column permissions of a specified dataset.
 //
 // Description:
 //
-// > This API operation supports only the new permission model for row-level and column-level permissions in Quick BI. If you are using the old permission model, you must migrate to the new one before you call this operation. To perform a one-click migration, you can go to Organization Management > Security Configuration > Upgrade to New Row-level and Column-level Permissions and click **One-click Upgrade**.
+// > : This operation only supports the new row and column permission model of Quick BI. If you are still using the legacy row and column permissions, perform a one-click migration to the new row and column permission model before calling this operation. To perform a one-click migration to the new row and column permission model, go to **Organization management*	- > **Security configuration*	- > **Row and column permission upgrade**, and click **One-click upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - AddDataLevelPermissionWhiteListRequest
 //
@@ -214,7 +222,7 @@ func (client *Client) AddDataLevelPermissionWhiteList(request *AddDataLevelPermi
 
 // Summary:
 //
-// Adds a data source.
+// Creates a data source connection.
 //
 // @param request - AddDataSourceRequest
 //
@@ -258,7 +266,7 @@ func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, ru
 
 // Summary:
 //
-// Adds a data source.
+// Creates a data source connection.
 //
 // @param request - AddDataSourceRequest
 //
@@ -446,7 +454,7 @@ func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse
 
 // Summary:
 //
-// Adds an organization member to a specified user group.
+// Adds organization members to a specified user group.
 //
 // @param request - AddUserGroupMemberRequest
 //
@@ -494,7 +502,7 @@ func (client *Client) AddUserGroupMemberWithOptions(request *AddUserGroupMemberR
 
 // Summary:
 //
-// Adds an organization member to a specified user group.
+// Adds organization members to a specified user group.
 //
 // @param request - AddUserGroupMemberRequest
 //
@@ -512,7 +520,7 @@ func (client *Client) AddUserGroupMember(request *AddUserGroupMemberRequest) (_r
 
 // Summary:
 //
-// Add users to a specified user group at a time.
+// Adds multiple users to a specified user group.
 //
 // @param request - AddUserGroupMembersRequest
 //
@@ -560,7 +568,7 @@ func (client *Client) AddUserGroupMembersWithOptions(request *AddUserGroupMember
 
 // Summary:
 //
-// Add users to a specified user group at a time.
+// Adds multiple users to a specified user group.
 //
 // @param request - AddUserGroupMembersRequest
 //
@@ -578,7 +586,7 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 
 // Summary:
 //
-// Add organization member tag metadata.
+// Creates metadata for an organization member tag.
 //
 // @param request - AddUserTagMetaRequest
 //
@@ -626,7 +634,7 @@ func (client *Client) AddUserTagMetaWithOptions(request *AddUserTagMetaRequest, 
 
 // Summary:
 //
-// Add organization member tag metadata.
+// Creates metadata for an organization member tag.
 //
 // @param request - AddUserTagMetaRequest
 //
@@ -714,7 +722,7 @@ func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_r
 
 // Summary:
 //
-// Adds an authorization for a work.
+// Creates a collaborative authorization record for a resource.
 //
 // @param request - AddWorksAuthorizationRequest
 //
@@ -778,7 +786,7 @@ func (client *Client) AddWorksAuthorizationWithOptions(request *AddWorksAuthoriz
 
 // Summary:
 //
-// Adds an authorization for a work.
+// Creates a collaborative authorization record for a resource.
 //
 // @param request - AddWorksAuthorizationRequest
 //
@@ -866,7 +874,7 @@ func (client *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (_res
 
 // Summary:
 //
-// Trigger the collection acceleration of the Quick engine for datasets.
+// Triggers the extraction acceleration of the Quick engine for a dataset.
 //
 // @param request - AllotDatasetAccelerationTaskRequest
 //
@@ -910,7 +918,7 @@ func (client *Client) AllotDatasetAccelerationTaskWithOptions(request *AllotData
 
 // Summary:
 //
-// Trigger the collection acceleration of the Quick engine for datasets.
+// Triggers the extraction acceleration of the Quick engine for a dataset.
 //
 // @param request - AllotDatasetAccelerationTaskRequest
 //
@@ -928,7 +936,7 @@ func (client *Client) AllotDatasetAccelerationTask(request *AllotDatasetAccelera
 
 // Summary:
 //
-// Batch authorization of BI portal menu will be skipped automatically.
+// Grants batch permissions for data portal menus. Already authorized menus are automatically skipped.
 //
 // @param request - AuthorizeMenuRequest
 //
@@ -988,7 +996,7 @@ func (client *Client) AuthorizeMenuWithOptions(request *AuthorizeMenuRequest, ru
 
 // Summary:
 //
-// Batch authorization of BI portal menu will be skipped automatically.
+// Grants batch permissions for data portal menus. Already authorized menus are automatically skipped.
 //
 // @param request - AuthorizeMenuRequest
 //
@@ -1008,7 +1016,7 @@ func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *Aut
 //
 // Summary:
 //
-// Adds Lark users in batches.
+// Adds multiple Lark users.
 //
 // @param request - BatchAddFeishuUsersRequest
 //
@@ -1070,7 +1078,7 @@ func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUser
 //
 // Summary:
 //
-// Adds Lark users in batches.
+// Adds multiple Lark users.
 //
 // @param request - BatchAddFeishuUsersRequest
 //
@@ -1089,7 +1097,7 @@ func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (
 
 // Summary:
 //
-// Cancel the authorization records for specified users and user groups based on the portal menu ID.
+// Revokes authorization records for specified users and user groups based on portal menu IDs.
 //
 // @param request - CancelAuthorizationMenuRequest
 //
@@ -1145,7 +1153,7 @@ func (client *Client) CancelAuthorizationMenuWithOptions(request *CancelAuthoriz
 
 // Summary:
 //
-// Cancel the authorization records for specified users and user groups based on the portal menu ID.
+// Revokes authorization records for specified users and user groups based on portal menu IDs.
 //
 // @param request - CancelAuthorizationMenuRequest
 //
@@ -1163,7 +1171,7 @@ func (client *Client) CancelAuthorizationMenu(request *CancelAuthorizationMenuRe
 
 // Summary:
 //
-// Cancel the data works from the user\\"s collection.
+// Removes a data work from a user\\"s favorites.
 //
 // @param request - CancelCollectionRequest
 //
@@ -1211,7 +1219,7 @@ func (client *Client) CancelCollectionWithOptions(request *CancelCollectionReque
 
 // Summary:
 //
-// Cancel the data works from the user\\"s collection.
+// Removes a data work from a user\\"s favorites.
 //
 // @param request - CancelCollectionRequest
 //
@@ -1229,7 +1237,7 @@ func (client *Client) CancelCollection(request *CancelCollectionRequest) (_resul
 
 // Summary:
 //
-// Delete a share authorization for a data work.
+// Deletes a sharing authorization for a data work.
 //
 // @param request - CancelReportShareRequest
 //
@@ -1281,7 +1289,7 @@ func (client *Client) CancelReportShareWithOptions(request *CancelReportShareReq
 
 // Summary:
 //
-// Delete a share authorization for a data work.
+// Deletes a sharing authorization for a data work.
 //
 // @param request - CancelReportShareRequest
 //
@@ -1299,7 +1307,7 @@ func (client *Client) CancelReportShare(request *CancelReportShareRequest) (_res
 
 // Summary:
 //
-// Modifies the visibility mode of the BI portal menu and whether the menu is only authorized to be visible.
+// Modifies the visibility of data portal menus and specifies whether the menus are visible only to authorized users.
 //
 // @param request - ChangeVisibilityModelRequest
 //
@@ -1351,7 +1359,7 @@ func (client *Client) ChangeVisibilityModelWithOptions(request *ChangeVisibility
 
 // Summary:
 //
-// Modifies the visibility mode of the BI portal menu and whether the menu is only authorized to be visible.
+// Modifies the visibility of data portal menus and specifies whether the menus are visible only to authorized users.
 //
 // @param request - ChangeVisibilityModelRequest
 //
@@ -1431,7 +1439,7 @@ func (client *Client) CheckDatasetExisted(request *CheckDatasetExistedRequest) (
 
 // Summary:
 //
-// Checks if a user is a member of an organization.
+// Checks whether a user belongs to an organization.
 //
 // @param request - CheckOrganizationMemberRequest
 //
@@ -1475,7 +1483,7 @@ func (client *Client) CheckOrganizationMemberWithOptions(request *CheckOrganizat
 
 // Summary:
 //
-// Checks if a user is a member of an organization.
+// Checks whether a user belongs to an organization.
 //
 // @param request - CheckOrganizationMemberRequest
 //
@@ -1559,7 +1567,7 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 
 // Summary:
 //
-// Deletes the cached tag value for a single configuration.
+// Deletes the tag value cache for a single configuration.
 //
 // @param request - ClearDynamicTagCacheRequest
 //
@@ -1603,7 +1611,7 @@ func (client *Client) ClearDynamicTagCacheWithOptions(request *ClearDynamicTagCa
 
 // Summary:
 //
-// Deletes the cached tag value for a single configuration.
+// Deletes the tag value cache for a single configuration.
 //
 // @param request - ClearDynamicTagCacheRequest
 //
@@ -1891,7 +1899,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// 生成AIPro超级框嵌入ticket
+// Generates an AIPro Super Box embedding ticket.
 //
 // @param request - CreateTicket4AiProRequest
 //
@@ -1963,7 +1971,7 @@ func (client *Client) CreateTicket4AiProWithOptions(request *CreateTicket4AiProR
 
 // Summary:
 //
-// 生成AIPro超级框嵌入ticket
+// Generates an AIPro Super Box embedding ticket.
 //
 // @param request - CreateTicket4AiProRequest
 //
@@ -3369,6 +3377,68 @@ func (client *Client) GetMailTaskStatus(request *GetMailTaskStatusRequest) (_res
 
 // Summary:
 //
+// Retrieves or generates a personal identification number for a user.
+//
+// @param request - GetPersonalICodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPersonalICodeResponse
+func (client *Client) GetPersonalICodeWithOptions(request *GetPersonalICodeRequest, runtime *dara.RuntimeOptions) (_result *GetPersonalICodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QuickBIUserId) {
+		query["QuickBIUserId"] = request.QuickBIUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPersonalICode"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPersonalICodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves or generates a personal identification number for a user.
+//
+// @param request - GetPersonalICodeRequest
+//
+// @return GetPersonalICodeResponse
+func (client *Client) GetPersonalICode(request *GetPersonalICodeRequest) (_result *GetPersonalICodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPersonalICodeResponse{}
+	_body, _err := client.GetPersonalICodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Searches for user group information by user group name keyword.
 //
 // @param request - GetUserGroupInfoRequest
@@ -3735,7 +3805,7 @@ func (client *Client) ListApiDatasource(request *ListApiDatasourceRequest) (_res
 
 // Summary:
 //
-// Queries the collaborative authorization records of a resource.
+// Queries the list of collaborative authorization records for a resource.
 //
 // @param request - ListAuthConfigByResourceRequest
 //
@@ -3795,7 +3865,7 @@ func (client *Client) ListAuthConfigByResourceWithOptions(request *ListAuthConfi
 
 // Summary:
 //
-// Queries the collaborative authorization records of a resource.
+// Queries the list of collaborative authorization records for a resource.
 //
 // @param request - ListAuthConfigByResourceRequest
 //
@@ -5071,7 +5141,7 @@ func (client *Client) ManualRunMailTask(request *ManualRunMailTaskRequest) (_res
 
 // Summary:
 //
-// 修改AI Pro嵌入配置
+// Creates or updates an AIPro embedding configuration.
 //
 // @param request - ModifyAiproEmbedConfigRequest
 //
@@ -5139,7 +5209,7 @@ func (client *Client) ModifyAiproEmbedConfigWithOptions(request *ModifyAiproEmbe
 
 // Summary:
 //
-// 修改AI Pro嵌入配置
+// Creates or updates an AIPro embedding configuration.
 //
 // @param request - ModifyAiproEmbedConfigRequest
 //
@@ -5453,7 +5523,7 @@ func (client *Client) QueryAccelerationLogByCubeId(request *QueryAccelerationLog
 
 // Summary:
 //
-// 概述
+// Retrieves a list of AIPro embed configurations.
 //
 // @param request - QueryAiproEmbedConfigRequest
 //
@@ -5497,7 +5567,7 @@ func (client *Client) QueryAiproEmbedConfigWithOptions(request *QueryAiproEmbedC
 
 // Summary:
 //
-// 概述
+// Retrieves a list of AIPro embed configurations.
 //
 // @param request - QueryAiproEmbedConfigRequest
 //
@@ -5515,7 +5585,7 @@ func (client *Client) QueryAiproEmbedConfig(request *QueryAiproEmbedConfigReques
 
 // Summary:
 //
-// Get approval flow information based on the approver.
+// Retrieves the approval flow information based on the approver.
 //
 // @param request - QueryApprovalInfoRequest
 //
@@ -5571,7 +5641,7 @@ func (client *Client) QueryApprovalInfoWithOptions(request *QueryApprovalInfoReq
 
 // Summary:
 //
-// Get approval flow information based on the approver.
+// Retrieves the approval flow information based on the approver.
 //
 // @param request - QueryApprovalInfoRequest
 //
@@ -5769,7 +5839,7 @@ func (client *Client) QueryComponentPerformance(request *QueryComponentPerforman
 
 // Summary:
 //
-// # Get the List of Configurations for Activating XiaoQ Embedding
+// Retrieves the list of configurations for Xiao Q embedding.
 //
 // @param request - QueryCopilotEmbedConfigRequest
 //
@@ -5813,7 +5883,7 @@ func (client *Client) QueryCopilotEmbedConfigWithOptions(request *QueryCopilotEm
 
 // Summary:
 //
-// # Get the List of Configurations for Activating XiaoQ Embedding
+// Retrieves the list of configurations for Xiao Q embedding.
 //
 // @param request - QueryCopilotEmbedConfigRequest
 //
@@ -5975,7 +6045,7 @@ func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest)
 
 // Summary:
 //
-// Query Dashboard\\"s Question Resource Information
+// Queries the NL2SQL resource information of a dashboard.
 //
 // @param request - QueryDashboardNl2sqlRequest
 //
@@ -6023,7 +6093,7 @@ func (client *Client) QueryDashboardNl2sqlWithOptions(request *QueryDashboardNl2
 
 // Summary:
 //
-// Query Dashboard\\"s Question Resource Information
+// Queries the NL2SQL resource information of a dashboard.
 //
 // @param request - QueryDashboardNl2sqlRequest
 //
@@ -6041,21 +6111,21 @@ func (client *Client) QueryDashboardNl2sql(request *QueryDashboardNl2sqlRequest)
 
 // Summary:
 //
-// Calls a DataService Studio API to query data.
+// Calls an API created in Data Service.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Create an API in [DataService Studio](https://help.aliyun.com/document_detail/144980.html) before calling this operation.
+// You must first create an API in the Data Service of Quick BI. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
 //
 // ### Limits
 //
-// - Requires Quick BI Professional Edition.
+//   - The Data Service feature is available only to Professional Edition users.
 //
-// - API call timeout: 60s. QPS limit per API: 10.
+//   - For Data Service API calls, the timeout period is 60 seconds, and the queries per second (QPS) limit for a single API is 10.
 //
-// - Row-level permissions on the referenced dataset also apply to API calls.
+//   - If row-level permissions are enabled for the dataset referenced by a Data Service API, the row-level access policy also intercepts the request when you make the API call.
 //
 // @param request - QueryDataRequest
 //
@@ -6111,21 +6181,21 @@ func (client *Client) QueryDataWithOptions(request *QueryDataRequest, runtime *d
 
 // Summary:
 //
-// Calls a DataService Studio API to query data.
+// Calls an API created in Data Service.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Create an API in [DataService Studio](https://help.aliyun.com/document_detail/144980.html) before calling this operation.
+// You must first create an API in the Data Service of Quick BI. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
 //
 // ### Limits
 //
-// - Requires Quick BI Professional Edition.
+//   - The Data Service feature is available only to Professional Edition users.
 //
-// - API call timeout: 60s. QPS limit per API: 10.
+//   - For Data Service API calls, the timeout period is 60 seconds, and the queries per second (QPS) limit for a single API is 10.
 //
-// - Row-level permissions on the referenced dataset also apply to API calls.
+//   - If row-level permissions are enabled for the dataset referenced by a Data Service API, the row-level access policy also intercepts the request when you make the API call.
 //
 // @param request - QueryDataRequest
 //
@@ -6143,7 +6213,7 @@ func (client *Client) QueryData(request *QueryDataRequest) (_result *QueryDataRe
 
 // Summary:
 //
-// # Get Data Range Catalog List
+// Retrieves the list of data scope directories for the embedded configuration page.
 //
 // @param request - QueryDataRangeRequest
 //
@@ -6191,7 +6261,7 @@ func (client *Client) QueryDataRangeWithOptions(request *QueryDataRangeRequest, 
 
 // Summary:
 //
-// # Get Data Range Catalog List
+// Retrieves the list of data scope directories for the embedded configuration page.
 //
 // @param request - QueryDataRangeRequest
 //
@@ -6211,21 +6281,21 @@ func (client *Client) QueryDataRange(request *QueryDataRangeRequest) (_result *Q
 //
 // Summary:
 //
-// Invoke an already created API in the data service.
+// Calls an API created in Data Service.
 //
 // Description:
 //
-// #### Prerequisites
+// #### Before you begin
 //
-// You create the data service API through Quick BI\\"s data service. For more details, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+// You have created an API in Data Service of Quick BI. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
 //
-// #### Usage Restrictions
+// #### Limits
 //
-//   - The data service feature is only available to professional edition customers.
+//   - The Data Service feature is available only to Quick BI Professional Edition users.
 //
-//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+//   - When you invoke a Data Service API, the timeout period is 60 seconds, and the queries per second (QPS) limit for a single API is 10.
 //
-//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
+//   - If row-level permissions are enabled for the dataset referenced by a Data Service API, the invocation may be blocked by the row-level access policy.
 //
 // @param request - QueryDataServiceRequest
 //
@@ -6279,21 +6349,21 @@ func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceReque
 //
 // Summary:
 //
-// Invoke an already created API in the data service.
+// Calls an API created in Data Service.
 //
 // Description:
 //
-// #### Prerequisites
+// #### Before you begin
 //
-// You create the data service API through Quick BI\\"s data service. For more details, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+// You have created an API in Data Service of Quick BI. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
 //
-// #### Usage Restrictions
+// #### Limits
 //
-//   - The data service feature is only available to professional edition customers.
+//   - The Data Service feature is available only to Quick BI Professional Edition users.
 //
-//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+//   - When you invoke a Data Service API, the timeout period is 60 seconds, and the queries per second (QPS) limit for a single API is 10.
 //
-//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
+//   - If row-level permissions are enabled for the dataset referenced by a Data Service API, the invocation may be blocked by the row-level access policy.
 //
 // @param request - QueryDataServiceRequest
 //
@@ -6312,7 +6382,7 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 
 // Summary:
 //
-// # Query Data Service API List
+// Queries the list of data service APIs.
 //
 // @param request - QueryDataServiceListRequest
 //
@@ -6368,7 +6438,7 @@ func (client *Client) QueryDataServiceListWithOptions(request *QueryDataServiceL
 
 // Summary:
 //
-// # Query Data Service API List
+// Queries the list of data service APIs.
 //
 // @param request - QueryDataServiceListRequest
 //
@@ -6386,11 +6456,11 @@ func (client *Client) QueryDataServiceList(request *QueryDataServiceListRequest)
 
 // Summary:
 //
-// Retrieves the details of a specified dataset, including its data source, directory, and dataset model.
+// Queries the details of a specified dataset, including the associated data source, folder, and dataset model.
 //
 // Description:
 //
-// The response includes the data source, directory, and a dataset model containing dimensions, measures, physical fields, custom SQL text, and relationships.
+// The details include the associated data source, folder, and dataset model, which contains information such as dimensions, measures, physical fields, custom SQL text, and associations.
 //
 // @param request - QueryDatasetDetailInfoRequest
 //
@@ -6434,11 +6504,11 @@ func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDet
 
 // Summary:
 //
-// Retrieves the details of a specified dataset, including its data source, directory, and dataset model.
+// Queries the details of a specified dataset, including the associated data source, folder, and dataset model.
 //
 // Description:
 //
-// The response includes the data source, directory, and a dataset model containing dimensions, measures, physical fields, custom SQL text, and relationships.
+// The details include the associated data source, folder, and dataset model, which contains information such as dimensions, measures, physical fields, custom SQL text, and associations.
 //
 // @param request - QueryDatasetDetailInfoRequest
 //
@@ -6456,11 +6526,7 @@ func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequ
 
 // Summary:
 //
-// Indicates whether the table is a custom SQL table. Valid values:
-//
-// \\\\	- true: custom SQL table
-//
-// \\\\	- false: non-custom SQL table
+// Queries the information of a specified dataset.
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -6504,11 +6570,7 @@ func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoReque
 
 // Summary:
 //
-// Indicates whether the table is a custom SQL table. Valid values:
-//
-// \\\\	- true: custom SQL table
-//
-// \\\\	- false: non-custom SQL table
+// Queries the information of a specified dataset.
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -6670,11 +6732,11 @@ func (client *Client) QueryDatasetSmartqStatus(request *QueryDatasetSmartqStatus
 
 // Summary:
 //
-// Get the row-level permission switch status for a specified dataset.
+// Retrieves the status of the row-level permission switch for a specified dataset.
 //
 // Description:
 //
-// > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
+// > : This operation supports only the new row- and column-level permission model of Quick BI. If you are still using the legacy row- and column-level permissions, migrate to the new row- and column-level permission model before you call this operation. To migrate to the new model, go to **Organization management*	- > **Security settings*	- > **Upgrade row- and column-level permissions to new version**, and click **One-click upgrade**.
 //
 // @param request - QueryDatasetSwitchInfoRequest
 //
@@ -6718,11 +6780,11 @@ func (client *Client) QueryDatasetSwitchInfoWithOptions(request *QueryDatasetSwi
 
 // Summary:
 //
-// Get the row-level permission switch status for a specified dataset.
+// Retrieves the status of the row-level permission switch for a specified dataset.
 //
 // Description:
 //
-// > This interface only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
+// > : This operation supports only the new row- and column-level permission model of Quick BI. If you are still using the legacy row- and column-level permissions, migrate to the new row- and column-level permission model before you call this operation. To migrate to the new model, go to **Organization management*	- > **Security settings*	- > **Upgrade row- and column-level permissions to new version**, and click **One-click upgrade**.
 //
 // @param request - QueryDatasetSwitchInfoRequest
 //
@@ -6909,7 +6971,7 @@ func (client *Client) QueryLastAccelerationEngineJob(request *QueryLastAccelerat
 
 // Summary:
 //
-// # Check which datasets and analysis themes the user has question authorization for
+// Queries the smart query authorizations for datasets and analysis themes of a user.
 //
 // @param request - QueryLlmCubeWithThemeListByUserIdRequest
 //
@@ -6953,7 +7015,7 @@ func (client *Client) QueryLlmCubeWithThemeListByUserIdWithOptions(request *Quer
 
 // Summary:
 //
-// # Check which datasets and analysis themes the user has question authorization for
+// Queries the smart query authorizations for datasets and analysis themes of a user.
 //
 // @param request - QueryLlmCubeWithThemeListByUserIdRequest
 //
@@ -7109,7 +7171,7 @@ func (client *Client) QueryOrganizationWorkspaceList(request *QueryOrganizationW
 //
 // Summary:
 //
-// Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
+// Queries the list of works that a user has permission to view, including reports in workspaces and those shared through authorization.
 //
 // @param request - QueryReadableResourcesListByUserIdRequest
 //
@@ -7155,7 +7217,7 @@ func (client *Client) QueryReadableResourcesListByUserIdWithOptions(request *Que
 //
 // Summary:
 //
-// Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
+// Queries the list of works that a user has permission to view, including reports in workspaces and those shared through authorization.
 //
 // @param request - QueryReadableResourcesListByUserIdRequest
 //
@@ -7520,7 +7582,7 @@ func (client *Client) QuerySmartqPermissionByCubeId(request *QuerySmartqPermissi
 
 // Summary:
 //
-// Obtains the details of a specified ticket for a report that is not embedded in the report.
+// Retrieves the details of a specified ticket for logon-free embedded reports.
 //
 // @param request - QueryTicketInfoRequest
 //
@@ -7564,7 +7626,7 @@ func (client *Client) QueryTicketInfoWithOptions(request *QueryTicketInfoRequest
 
 // Summary:
 //
-// Obtains the details of a specified ticket for a report that is not embedded in the report.
+// Retrieves the details of a specified ticket for logon-free embedded reports.
 //
 // @param request - QueryTicketInfoRequest
 //
@@ -7582,7 +7644,7 @@ func (client *Client) QueryTicketInfo(request *QueryTicketInfoRequest) (_result 
 
 // Summary:
 //
-// Queries a UserId by the bound third-party account ID.
+// Queries the user ID based on the bound third-party account ID.
 //
 // @param request - QueryUserByMobileAccountRequest
 //
@@ -7630,7 +7692,7 @@ func (client *Client) QueryUserByMobileAccountWithOptions(request *QueryUserByMo
 
 // Summary:
 //
-// Queries a UserId by the bound third-party account ID.
+// Queries the user ID based on the bound third-party account ID.
 //
 // @param request - QueryUserByMobileAccountRequest
 //
@@ -7710,7 +7772,7 @@ func (client *Client) QueryUserGroupListByParentId(request *QueryUserGroupListBy
 
 // Summary:
 //
-// Retrieve the list of members under a user group.
+// Retrieves the list of members in a user group.
 //
 // @param request - QueryUserGroupMemberRequest
 //
@@ -7758,7 +7820,7 @@ func (client *Client) QueryUserGroupMemberWithOptions(request *QueryUserGroupMem
 
 // Summary:
 //
-// Retrieve the list of members under a user group.
+// Retrieves the list of members in a user group.
 //
 // @param request - QueryUserGroupMemberRequest
 //
@@ -8028,7 +8090,7 @@ func (client *Client) QueryUserRoleInfoInWorkspace(request *QueryUserRoleInfoInW
 
 // Summary:
 //
-// Queries the metadata list of member tags in an organization.
+// Queries the list of member tag metadata in an organization.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -8057,7 +8119,7 @@ func (client *Client) QueryUserTagMetaListWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// Queries the metadata list of member tags in an organization.
+// Queries the list of member tag metadata in an organization.
 //
 // @return QueryUserTagMetaListResponse
 func (client *Client) QueryUserTagMetaList() (_result *QueryUserTagMetaListResponse, _err error) {
@@ -8193,7 +8255,7 @@ func (client *Client) QueryWorks(request *QueryWorksRequest) (_result *QueryWork
 
 // Summary:
 //
-// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
+// Retrieves the lineage of a data work, including the datasets referenced by each component and the query field information. Currently, only dashboards, workbooks, and ad hoc queries are supported.
 //
 // @param request - QueryWorksBloodRelationshipRequest
 //
@@ -8237,7 +8299,7 @@ func (client *Client) QueryWorksBloodRelationshipWithOptions(request *QueryWorks
 
 // Summary:
 //
-// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
+// Retrieves the lineage of a data work, including the datasets referenced by each component and the query field information. Currently, only dashboards, workbooks, and ad hoc queries are supported.
 //
 // @param request - QueryWorksBloodRelationshipRequest
 //
@@ -9505,7 +9567,7 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 
 // Summary:
 //
-// 更新数据源基础属性
+// Updates the basic properties of a data source.
 //
 // @param request - UpdateDataSourcePropertiesRequest
 //
@@ -9561,7 +9623,7 @@ func (client *Client) UpdateDataSourcePropertiesWithOptions(request *UpdateDataS
 
 // Summary:
 //
-// 更新数据源基础属性
+// Updates the basic properties of a data source.
 //
 // @param request - UpdateDataSourcePropertiesRequest
 //
@@ -9636,6 +9698,68 @@ func (client *Client) UpdateEmbeddedStatus(request *UpdateEmbeddedStatusRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateEmbeddedStatusResponse{}
 	_body, _err := client.UpdateEmbeddedStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the personal identification number of a user.
+//
+// @param request - UpdatePersonalICodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePersonalICodeResponse
+func (client *Client) UpdatePersonalICodeWithOptions(request *UpdatePersonalICodeRequest, runtime *dara.RuntimeOptions) (_result *UpdatePersonalICodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QuickBIUserId) {
+		query["QuickBIUserId"] = request.QuickBIUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePersonalICode"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePersonalICodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the personal identification number of a user.
+//
+// @param request - UpdatePersonalICodeRequest
+//
+// @return UpdatePersonalICodeResponse
+func (client *Client) UpdatePersonalICode(request *UpdatePersonalICodeRequest) (_result *UpdatePersonalICodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePersonalICodeResponse{}
+	_body, _err := client.UpdatePersonalICodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9871,7 +9995,7 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 
 // Summary:
 //
-// # Used for updating the metadata of organization member tags
+// Updates the metadata of an organization member tag.
 //
 // @param request - UpdateUserTagMetaRequest
 //
@@ -9923,7 +10047,7 @@ func (client *Client) UpdateUserTagMetaWithOptions(request *UpdateUserTagMetaReq
 
 // Summary:
 //
-// # Used for updating the metadata of organization member tags
+// Updates the metadata of an organization member tag.
 //
 // @param request - UpdateUserTagMetaRequest
 //

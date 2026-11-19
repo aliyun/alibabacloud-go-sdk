@@ -18,17 +18,13 @@ type iUpdateUserTagMetaRequest interface {
 }
 
 type UpdateUserTagMetaRequest struct {
-	// The tag description.
-	//
-	// - Format check: Maximum length is 255 characters.
+	// The description of the tag. The maximum length is 255 characters.
 	//
 	// example:
 	//
-	// Job Positions within the Department
+	// Job positions within the department
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	// The specified TagID.
-	//
-	// - Format check: Maximum length is 64 characters.
+	// The specified tag ID. The maximum length is 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +32,13 @@ type UpdateUserTagMetaRequest struct {
 	//
 	// e82f6c6c0333431bad0225b2f85e****
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// The tag name.
-	//
-	// - Format check: Maximum length is 50 characters.
-	//
-	// - Only Chinese, English, numbers, and /\\|[]() symbols are allowed.
+	// The name of the tag. The maximum length is 50 characters. Only letters, digits, and the /, \\, |, [, ], (, and ) symbols are allowed.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Department
+	// Position
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

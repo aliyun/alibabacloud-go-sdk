@@ -16,15 +16,15 @@ type iQueryDataRangeRequest interface {
 }
 
 type QueryDataRangeRequest struct {
-	// Name, for fuzzy search.
+	// The name. Fuzzy search is supported.
 	//
 	// example:
 	//
-	// test
+	// Test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Data range type:
+	// The data scope type. Valid values:
 	//
-	// - llmCube: LlmCube resource.
+	// - llmCube: Data query resource.
 	//
 	// - llmCubeTheme: Analysis theme.
 	//

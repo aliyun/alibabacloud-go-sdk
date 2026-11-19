@@ -16,23 +16,23 @@ type iAddUserTagMetaRequest interface {
 }
 
 type AddUserTagMetaRequest struct {
-	// Tag description. Format check: maximum length of 255 characters.
+	// The tag description. Format requirements: The maximum length is 255 characters.
 	//
 	// example:
 	//
-	// test
+	// Positions within the department
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	// Tag name. Format check:
+	// The tag name. Format requirements:
 	//
-	// - Maximum length of 50 characters.
+	// - The maximum length is 50 characters.
 	//
-	// - Only Chinese, English, numbers, and /\\|[]() symbols are allowed.
+	// - Only Chinese characters, English letters, digits, and the /\\|[]() symbols are allowed.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// Position
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

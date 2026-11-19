@@ -89,7 +89,7 @@ type GetMailTaskListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// null
+	// 0
 	Next *int32 `json:"Next,omitempty" xml:"Next,omitempty"`
 	// The page number.
 	//
@@ -107,7 +107,7 @@ type GetMailTaskListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// null
+	// 0
 	Pre *int32 `json:"Pre,omitempty" xml:"Pre,omitempty"`
 	// The total number of entries.
 	//

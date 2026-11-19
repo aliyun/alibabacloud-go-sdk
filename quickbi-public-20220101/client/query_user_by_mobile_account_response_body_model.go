@@ -26,11 +26,11 @@ type QueryUserByMobileAccountResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The user information bound to the third-party account.
 	Result *QueryUserByMobileAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type QueryUserByMobileAccountResponseBodyResult struct {
 	//
 	// test
 	BoundUserId *string `json:"BoundUserId,omitempty" xml:"BoundUserId,omitempty"`
-	// The mobile account name.
+	// The name of the mobile account.
 	//
 	// example:
 	//

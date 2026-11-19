@@ -14,7 +14,7 @@ type iQueryLlmCubeWithThemeListByUserIdRequest interface {
 }
 
 type QueryLlmCubeWithThemeListByUserIdRequest struct {
-	// User ID.
+	// The user ID.
 	//
 	// This parameter is required.
 	//

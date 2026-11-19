@@ -24,21 +24,21 @@ type AddUserGroupMemberResponseBody struct {
 	//
 	// B6141A5A-A9EF-5F16-BF34-EFB9C1CCE4F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of adding members to a user group is returned. Valid values:
+	// Indicates whether the members were added to the user group. Valid values:
 	//
-	// 	- true: The task is added.
+	// - true: The members were added.
 	//
-	// 	- false: The tag failed to be added.
+	// - false: The members were not added.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

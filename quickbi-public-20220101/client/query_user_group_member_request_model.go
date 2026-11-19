@@ -16,13 +16,13 @@ type iQueryUserGroupMemberRequest interface {
 }
 
 type QueryUserGroupMemberRequest struct {
-	// Keyword for the username or nickname of the user group member.
+	// The keyword used to search for the username or nickname of a user group member.
 	//
 	// example:
 	//
-	// test
+	// Xiao Liu
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// User group ID.
+	// The ID of the user group.
 	//
 	// This parameter is required.
 	//

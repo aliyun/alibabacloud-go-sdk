@@ -18,23 +18,27 @@ type iQueryDataResponseBody interface {
 }
 
 type QueryDataResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// a4d1a221d-41za1-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the API call. Valid values:
+	// The execution result of the API. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: The execution is successful.
 	//
-	// - false: The call failed.
+	// - false: The execution fails.
+	//
+	// example:
+	//
+	// true
 	Result *QueryDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Whether the request succeeded. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -89,16 +93,22 @@ func (s *QueryDataResponseBody) Validate() error {
 type QueryDataResponseBodyResult struct {
 	// The column headers.
 	Headers []*QueryDataResponseBodyResultHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	// The SQL statement for the query.
+	// The SQL statement of the query.
 	//
-	// > The returned SQL includes both the filter conditions from this call and any row-level or column-level permission rules.
+	// > In addition to the parameter conditions of the current API, the filter conditions in the returned SQL statement also include the row-level and column-level permission configurations.
 	//
 	// example:
 	//
 	// SELECT COMPANY_T_1_.`area` AS D_AREA_2_, COMPANY_T_1_.`city` AS D_CITY_3_, SUM(COMPANY_T_1_.`profit_amt`) AS D_PROFIT_4_ FROM `quickbi_test`.`company_sales_record_copy` AS COMPANY_T_1_ WHERE COMPANY_T_1_.`area` LIKE \\"%test%\\" GROUP BY COMPANY_T_1_.`area`, COMPANY_T_1_.`city` HAVING SUM(COMPANY_T_1_.`order_amt`) > 1 LIMIT 0, 10
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The query results.
+	// The returned query results.
+	//
+	// example:
+	//
+	// [{"area":"test","city":"test"},{"area":"test","city":"test"}]
 	Values []map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The returned query results, including the original value fields.
+	ValuesV2 []*QueryDataResponseBodyResultValuesV2 `json:"ValuesV2,omitempty" xml:"ValuesV2,omitempty" type:"Repeated"`
 }
 
 func (s QueryDataResponseBodyResult) String() string {
@@ -121,6 +131,10 @@ func (s *QueryDataResponseBodyResult) GetValues() []map[string]interface{} {
 	return s.Values
 }
 
+func (s *QueryDataResponseBodyResult) GetValuesV2() []*QueryDataResponseBodyResultValuesV2 {
+	return s.ValuesV2
+}
+
 func (s *QueryDataResponseBodyResult) SetHeaders(v []*QueryDataResponseBodyResultHeaders) *QueryDataResponseBodyResult {
 	s.Headers = v
 	return s
@@ -136,9 +150,23 @@ func (s *QueryDataResponseBodyResult) SetValues(v []map[string]interface{}) *Que
 	return s
 }
 
+func (s *QueryDataResponseBodyResult) SetValuesV2(v []*QueryDataResponseBodyResultValuesV2) *QueryDataResponseBodyResult {
+	s.ValuesV2 = v
+	return s
+}
+
 func (s *QueryDataResponseBodyResult) Validate() error {
 	if s.Headers != nil {
 		for _, item := range s.Headers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ValuesV2 != nil {
+		for _, item := range s.ValuesV2 {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -150,71 +178,71 @@ func (s *QueryDataResponseBodyResult) Validate() error {
 }
 
 type QueryDataResponseBodyResultHeaders struct {
-	// The aggregate operator. Returned only for measure fields.
+	// The aggregation operator. This field is available only for measure fields, such as SUM, AVG, and MAX. Valid values:
 	//
-	// - SUM: The sum.
+	// - SUM: Sum.
 	//
-	// - MAX: The maximum value.
+	// - MAX: Maximum value.
 	//
-	// - MIN: The minimum value.
+	// - MIN: Minimum value.
 	//
-	// - AVG: The average value.
+	// - AVG: Average value.
 	//
-	// - COUNT: The count.
+	// - COUNT: Count.
 	//
-	// - COUNTD: The count of unique values.
+	// - COUNTD: Deduplicate count.
 	//
-	// - STDDEV_POP: The population standard deviation.
+	// - STDDEV_POP: Population standard deviation.
 	//
-	// - STDDEV_SAMP: The sample standard deviation.
+	// - STDDEV_SAMP: Sample standard deviation.
 	//
-	// - VAR_POP: The population variance.
+	// - VAR_POP: Population variance.
 	//
-	// - VAR_SAMP: The sample variance.
+	// - VAR_SAMP: Sample variance.
 	//
 	// example:
 	//
 	// SUM
 	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
-	// The physical table field name.
+	// The name of the field, which corresponds to the field name in the physical table.
 	//
 	// example:
 	//
 	// test
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The field data type. Common types:
+	// The data type of the field. Valid values:
 	//
-	// - number
+	// - number: Numeric.
 	//
-	// - string
+	// - string: String.
 	//
-	// - date
+	// - date: Date.
 	//
-	// - time
+	// - time: Time.
 	//
-	// - datetime
+	// - datetime: Date and time.
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The dimension granularity. Returned only for date or geographic dimensions. Valid values:
+	// The granularity of the dimension field. This field is returned only when the requested field is a date dimension or a geographic dimension. Valid values:
 	//
-	// - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
+	// - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), and secRegion (second).
 	//
-	// - Geographic granularity: COUNTRY (country), PROVINCE (province), CITY (city), XIAN (county/district), REGION (region)
+	// - Geographic granularity: COUNTRY (country), PROVINCE (province), CITY (city), XIAN (district/county), and REGION (region).
 	//
 	// example:
 	//
 	// REGION
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The field alias. Used as the key in each Values map entry.
+	// The alias of the field, which is the key of the map data row in the values result parameter.
 	//
 	// example:
 	//
 	// area
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The original field name in the dataset.
+	// The original name of the corresponding field in the dataset.
 	//
 	// if can be null:
 	// true
@@ -223,11 +251,11 @@ type QueryDataResponseBodyResultHeaders struct {
 	//
 	// area
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
-	// Whether the field is a dimension or measure.
+	// The type of the field, which is used to distinguish whether the field is a dimension or a measure. Valid values:
 	//
-	// - Dimension
+	// - Dimension: Dimension.
 	//
-	// - Measure
+	// - Measure: Measure.
 	//
 	// example:
 	//
@@ -307,5 +335,100 @@ func (s *QueryDataResponseBodyResultHeaders) SetType(v string) *QueryDataRespons
 }
 
 func (s *QueryDataResponseBodyResultHeaders) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryDataResponseBodyResultValuesV2 struct {
+	// The row values.
+	RowValue []*QueryDataResponseBodyResultValuesV2RowValue `json:"RowValue,omitempty" xml:"RowValue,omitempty" type:"Repeated"`
+}
+
+func (s QueryDataResponseBodyResultValuesV2) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryDataResponseBodyResultValuesV2) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataResponseBodyResultValuesV2) GetRowValue() []*QueryDataResponseBodyResultValuesV2RowValue {
+	return s.RowValue
+}
+
+func (s *QueryDataResponseBodyResultValuesV2) SetRowValue(v []*QueryDataResponseBodyResultValuesV2RowValue) *QueryDataResponseBodyResultValuesV2 {
+	s.RowValue = v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultValuesV2) Validate() error {
+	if s.RowValue != nil {
+		for _, item := range s.RowValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type QueryDataResponseBodyResultValuesV2RowValue struct {
+	// The field alias set in Data Service.
+	//
+	// example:
+	//
+	// test
+	L *string `json:"L,omitempty" xml:"L,omitempty"`
+	// The original value.
+	//
+	// example:
+	//
+	// 0
+	R *string `json:"R,omitempty" xml:"R,omitempty"`
+	// The display value.
+	//
+	// example:
+	//
+	// 0
+	V *string `json:"V,omitempty" xml:"V,omitempty"`
+}
+
+func (s QueryDataResponseBodyResultValuesV2RowValue) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryDataResponseBodyResultValuesV2RowValue) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) GetL() *string {
+	return s.L
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) GetR() *string {
+	return s.R
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) GetV() *string {
+	return s.V
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) SetL(v string) *QueryDataResponseBodyResultValuesV2RowValue {
+	s.L = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) SetR(v string) *QueryDataResponseBodyResultValuesV2RowValue {
+	s.R = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) SetV(v string) *QueryDataResponseBodyResultValuesV2RowValue {
+	s.V = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultValuesV2RowValue) Validate() error {
 	return dara.Validate(s)
 }

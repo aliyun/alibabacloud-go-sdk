@@ -26,30 +26,62 @@ type iModifyAiproEmbedConfigRequest interface {
 }
 
 type ModifyAiproEmbedConfigRequest struct {
+	// The nickname of the agent. The default value is Intelligent Data Analytics Assistant when you create a configuration.
+	//
 	// example:
 	//
 	// test
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The AIPro configuration ID. If this parameter is not specified or is left empty, a new configuration is created. If this parameter is specified, the existing configuration is updated.
+	//
 	// example:
 	//
 	// test
 	AiProId *string `json:"AiProId,omitempty" xml:"AiProId,omitempty"`
+	// Specifies whether to display the chat history. Valid values:
+	//
+	// - 1: Display.
+	//
+	// - 0: Do not display.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	ChatHistoryStatus *int32 `json:"ChatHistoryStatus,omitempty" xml:"ChatHistoryStatus,omitempty"`
+	// The JSON string of the embedding appearance configuration saved on the frontend.
+	//
 	// example:
 	//
 	// test
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Specifies whether to enable memory. Valid values:
+	//
+	// - 1: Enable.
+	//
+	// - 0: Disable.
+	//
+	// Default value: 0.
+	//
 	// example:
 	//
 	// 1
 	MemoryEnabled *int32 `json:"MemoryEnabled,omitempty" xml:"MemoryEnabled,omitempty"`
+	// The name of the configuration. This parameter is required and must be unique within the organization when you create a configuration. If this parameter is left empty when you update a configuration, the name is not updated.
+	//
 	// example:
 	//
 	// test
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	// Specifies whether to allow file uploads. Valid values:
+	//
+	// - 1: Allow.
+	//
+	// - 0: Do not allow.
+	//
+	// Default value: 0.
+	//
 	// example:
 	//
 	// 1

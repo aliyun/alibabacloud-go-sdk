@@ -18,19 +18,19 @@ type iQueryWorksBloodRelationshipResponseBody interface {
 }
 
 type QueryWorksBloodRelationshipResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of work blood information.
+	// The list of data work lineage information.
 	Result []*QueryWorksBloodRelationshipResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -87,43 +87,43 @@ func (s *QueryWorksBloodRelationshipResponseBody) Validate() error {
 }
 
 type QueryWorksBloodRelationshipResponseBodyResult struct {
-	// The ID of the component that you want to modify.
+	// The component ID.
 	//
 	// example:
 	//
 	// 0696083a-ca72-4d89-8e7a-c017910e0***
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The name of the component.
+	// The component name.
 	//
 	// example:
 	//
-	// Line
+	// Line chart
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// The type of the image component.
+	// The component type.
 	//
 	// example:
 	//
 	// 3
 	ComponentType *int32 `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// Chinese name of the component type
+	// The Chinese name of the component type.
 	//
 	// example:
 	//
-	// ddd
+	// Cross table
 	ComponentTypeCnName *string `json:"ComponentTypeCnName,omitempty" xml:"ComponentTypeCnName,omitempty"`
-	// The name of the component type.
+	// The component type name.
 	//
 	// example:
 	//
 	// LINE
 	ComponentTypeName *string `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
-	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// A list of query parameter reference columns.
+	// The list of columns referenced by query parameters.
 	QueryParams []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
 }
 
@@ -212,59 +212,61 @@ func (s *QueryWorksBloodRelationshipResponseBodyResult) Validate() error {
 }
 
 type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
-	// The ID of the owning location.
+	// The ID of the area.
 	//
 	// example:
 	//
 	// area_column
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The name of the owning location.
+	// The name of the area.
 	//
 	// example:
 	//
 	// Column (Measure)
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	// The display name of the field.
+	// The original name of the field.
 	//
 	// example:
 	//
 	// order_number
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The type of the field. Valid values:
+	// The field type. Valid values:
 	//
-	// 	- string: string type
+	// - string: String type.
 	//
-	// 	- date: a date type that contains only the year, month, and day parts
+	// - date: Date type that includes only the year, month, and day.
 	//
-	// 	- datetime: a common date type
+	// - datetime: General date type.
 	//
-	// 	- time: a date type that contains only hours, minutes, and seconds.
+	// - time: Time type that includes only the hour, minute, and second.
 	//
-	// 	- number: numeric
+	// - number: Numeric type.
 	//
-	// 	- boolean: Boolean type
+	// - boolean: Boolean type.
 	//
-	// 	- geographical: geographical location
+	// - geographic: Geographic location.
 	//
-	// 	- url: string type
+	// - url: URL string type.
 	//
-	// 	- imageUrl: the type of the image link.
+	// - imageUrl: Image URL type.
 	//
-	// 	- multivalue: a multi-value column
+	// - multivalue: Multi-value column.
 	//
 	// example:
 	//
 	// number
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// Calculate field expression.
+	// The expression of the calculated field.
 	//
 	// example:
 	//
-	// BI_DATEADD([date], 100, \\"day\\")
+	// BI_DATEADD([Time], 100, \\"day\\")
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Indices whether the metric. Valid values:
+	// Indicates whether the field is a measure. Valid values:
 	//
-	// true false
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//

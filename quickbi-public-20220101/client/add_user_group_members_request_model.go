@@ -16,7 +16,7 @@ type iAddUserGroupMembersRequest interface {
 }
 
 type AddUserGroupMembersRequest struct {
-	// The IDs of the user groups. Separate the IDs with commas (,). Example: aGroupId,bGroupId,cGroupIds
+	// The IDs of the user groups, separated by commas. Example: aGroupId,bGroupId,cGroupIds.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type AddUserGroupMembersRequest struct {
 	//
 	// 0d5fb19b-****-****-99da-1248fc27ca51
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	// The user ID of the Quick BI.
+	// The user ID in Quick BI.
 	//
 	// This parameter is required.
 	//

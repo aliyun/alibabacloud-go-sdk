@@ -18,15 +18,15 @@ type iAddDataLevelPermissionWhiteListResponseBody interface {
 }
 
 type AddDataLevelPermissionWhiteListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the API operation. Valid values:
+	// The execution result of the operation. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request succeeded.
 	//
 	// - false: The request failed.
 	//
@@ -36,7 +36,7 @@ type AddDataLevelPermissionWhiteListResponseBody struct {
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request succeeded.
 	//
 	// - false: The request failed.
 	//

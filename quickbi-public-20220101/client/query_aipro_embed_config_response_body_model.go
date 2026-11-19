@@ -18,11 +18,20 @@ type iQueryAiproEmbedConfigResponseBody interface {
 }
 
 type QueryAiproEmbedConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D8749***C180FF3B4
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryAiproEmbedConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of AIPro configurations.
+	Result []*QueryAiproEmbedConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -78,34 +87,66 @@ func (s *QueryAiproEmbedConfigResponseBody) Validate() error {
 }
 
 type QueryAiproEmbedConfigResponseBodyResult struct {
+	// The agent nickname.
+	//
 	// example:
 	//
-	// 小Q
+	// Xiao Q
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The embed configuration ID, which is used for CreateTicket4AiPro.
+	//
 	// example:
 	//
 	// 123124
 	AiProId *string `json:"AiProId,omitempty" xml:"AiProId,omitempty"`
+	// Indicates whether chat history is displayed. Valid values:
+	//
+	// - 1: Displayed.
+	//
+	// - 0: Not displayed.
+	//
 	// example:
 	//
 	// 1
 	ChatHistoryStatus *int32 `json:"ChatHistoryStatus,omitempty" xml:"ChatHistoryStatus,omitempty"`
+	// The JSON string of the embed appearance configuration.
+	//
 	// example:
 	//
 	// test
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Specifies whether memory is enabled. Valid values:
+	//
+	// - 1: Enabled.
+	//
+	// - 0: Disabled.
+	//
 	// example:
 	//
 	// 1
 	MemoryEnabled *int32 `json:"MemoryEnabled,omitempty" xml:"MemoryEnabled,omitempty"`
+	// The configuration name.
+	//
 	// example:
 	//
 	// 0327
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	// The status. Valid values:
+	//
+	// - 1: Enabled.
+	//
+	// - 0: Disabled.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether file upload is allowed. Valid values:
+	//
+	// - 1: Allowed.
+	//
+	// - 0: Not allowed.
+	//
 	// example:
 	//
 	// 1

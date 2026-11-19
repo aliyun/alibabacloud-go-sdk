@@ -18,17 +18,17 @@ type iCancelReportShareResponseBody interface {
 }
 
 type CancelReportShareResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface is returned. Valid values:
+	// The execution result of the API operation. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The execution succeeded.
 	//
-	// 	- false: The request fails.
+	// - false: The execution failed.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type CancelReportShareResponseBody struct {
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request succeeded.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

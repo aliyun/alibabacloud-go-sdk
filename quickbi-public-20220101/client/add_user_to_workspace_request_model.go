@@ -18,17 +18,19 @@ type iAddUserToWorkspaceRequest interface {
 }
 
 type AddUserToWorkspaceRequest struct {
-	// The ID of the role in the workspace. Predefined roles:
+	// The workspace role ID. Preset roles:
 	//
-	// - 25: workspace administrator
+	// - 25: Workspace administrator
 	//
-	// - 26: workspace developer
+	// - 26: Workspace developer
 	//
-	// - 27: workspace analyst
+	// - 27: Workspace analyst
 	//
-	// - 30: workspace viewer
+	// - 30: Workspace viewer
 	//
-	// > Custom role IDs are supported in version 6.0.3 and later.
+	// > Custom role IDs are supported since 6.0.3.
+	//
+	// >
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,7 @@ type AddUserToWorkspaceRequest struct {
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The ID of the Quick BI user to be added.
+	// The ID of the Quick BI user to add.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,7 @@ type AddUserToWorkspaceRequest struct {
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

@@ -18,15 +18,15 @@ type iQueryUserGroupMemberResponseBody interface {
 }
 
 type QueryUserGroupMemberResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 48C930FF-DFCF-5986-902B-E24C202E2443
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request for the user group member list.
+	// The query result of the user group member list.
 	Result []*QueryUserGroupMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - true: The request was successful.
 	//
@@ -87,39 +87,39 @@ func (s *QueryUserGroupMemberResponseBody) Validate() error {
 }
 
 type QueryUserGroupMemberResponseBodyResult struct {
-	// ID of the user group or the user group member.
+	// The ID of the user group or the user group member.
 	//
 	// example:
 	//
 	// 3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether it is a user group. Possible values:
+	// Indicates whether the item is a user group. Valid values:
 	//
-	// - true: It is a user group.
+	// - true: The item is a user group.
 	//
-	// - false: It is a user.
+	// - false: The item is a user.
 	//
 	// example:
 	//
 	// true
 	IsUserGroup *bool `json:"IsUserGroup,omitempty" xml:"IsUserGroup,omitempty"`
-	// Name or nickname of the user group or its member.
+	// The name of the user group or the nickname of the user group member.
 	//
 	// example:
 	//
-	// test
+	// Xiao Liu\\"s test user group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// ID of the parent user group.
+	// The ID of the parent user group.
 	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
-	// Name of the parent user group.
+	// The name of the parent user group.
 	//
 	// example:
 	//
-	// test
+	// Finance group
 	ParentUserGroupName *string `json:"ParentUserGroupName,omitempty" xml:"ParentUserGroupName,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iQueryDatasetSwitchInfoRequest interface {
 }
 
 type QueryDatasetSwitchInfoRequest struct {
-	// Dataset ID.
+	// The dataset ID.
 	//
 	// This parameter is required.
 	//

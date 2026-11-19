@@ -18,19 +18,19 @@ type iQueryDataServiceListResponseBody interface {
 }
 
 type QueryDataServiceListResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	Result *QueryDataServiceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Value range:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful
+	// - true: The request is successful.
 	//
-	// - false: The request failed
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -83,27 +83,27 @@ func (s *QueryDataServiceListResponseBody) Validate() error {
 }
 
 type QueryDataServiceListResponseBodyResult struct {
-	// Data service information.
+	// The data service information.
 	Data []*QueryDataServiceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of rows.
+	// The total number of rows.
 	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -180,95 +180,95 @@ func (s *QueryDataServiceListResponseBodyResult) Validate() error {
 type QueryDataServiceListResponseBodyResultData struct {
 	// The model of the data service in JSON format.
 	Content *QueryDataServiceListResponseBodyResultDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 7cb94cd48701
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// Creator\\"s name.
+	// The name of the creator.
 	//
 	// example:
 	//
-	// zhangsan
+	// Zhang Zilong
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// Cube identifier ID.
+	// The cube ID.
 	//
 	// example:
 	//
 	// d14e7448-0eb3-40d3-9375-4afef8de29fd
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
-	// test data source
+	// Test dataset
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
-	// test
+	// For testing
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-05-18 14:00:02.0
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2023-03-21 18:02:36
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Modifier\\"s userId.
+	// The user ID of the modifier.
 	//
 	// example:
 	//
 	// 7cb94cd48701
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// Modifier\\"s name
+	// The name of the modifier.
 	//
 	// example:
 	//
-	// zhangsan
+	// Zhang Zilong
 	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
-	// Data service name.
+	// The service name.
 	//
 	// example:
 	//
-	// test report
+	// Test report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Owner ID
+	// The ID of the owner.
 	//
 	// example:
 	//
 	// 862801339
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Owner\\"s name
+	// The name of the owner.
 	//
 	// example:
 	//
-	// lisi
+	// Li Si
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// Unique ID of the data service.
+	// The unique ID of the data service.
 	//
 	// example:
 	//
 	// dtsuq3i31f5j8v848b
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 7350a155-0e94-4c6c-8620-57bbec38****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// Workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
-	// test workspace
+	// Test workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -434,27 +434,27 @@ func (s *QueryDataServiceListResponseBodyResultData) Validate() error {
 }
 
 type QueryDataServiceListResponseBodyResultDataContent struct {
-	// Cube identifier ID.
+	// The cube ID.
 	//
 	// example:
 	//
 	// 56f9f34a-bdba-496a-91a3-a18b1ff73a80
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	// Dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
-	// test data source
+	// Test dataset
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	// Detail or Summary
+	// The detail or aggregate type.
 	//
 	// example:
 	//
 	// true
 	Detail *bool `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Request parameter information.
+	// The request parameter information.
 	Filter *QueryDataServiceListResponseBodyResultDataContentFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// Return information.
+	// The returned information.
 	ReturnFields []*QueryDataServiceListResponseBodyResultDataContentReturnFields `json:"ReturnFields,omitempty" xml:"ReturnFields,omitempty" type:"Repeated"`
 }
 
@@ -530,23 +530,55 @@ func (s *QueryDataServiceListResponseBodyResultDataContent) Validate() error {
 }
 
 type QueryDataServiceListResponseBodyResultDataContentFilter struct {
-	// Combined conditions.
+	// The combined conditions.
+	//
+	// example:
+	//
+	// [{
+	//
+	// 	"field": {
+	//
+	// 		"fid": "1c1f88cb7d",
+	//
+	// 		"granularity": "yearRegion",
+	//
+	// 		"dataType": "datetime",
+	//
+	// 		"column": "s_date",
+	//
+	// 		"caption": "Date (year)",
+	//
+	// 		"type": "dimension"
+	//
+	// 	},
+	//
+	// 	"defaultValue": ["2024"],
+	//
+	// 	"alias": "s_date",
+	//
+	// 	"type": "basic",
+	//
+	// 	"operator": "equal-to",
+	//
+	// 	"essential": true
+	//
+	// }]
 	Filters []map[string]interface{} `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// Logical relationship between multiple SQL text keywords.
+	// The logical relationship between multiple SQL text keywords.
 	//
-	// - **or**: or
+	// - **or**: OR.
 	//
-	// - **and**: and
+	// - **and**: AND.
 	//
 	// example:
 	//
 	// and
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
-	// Type.
+	// The type.
 	//
-	// - basic: basic
+	// - basic: Basic.
 	//
-	// - combined: complex
+	// - combined: Complex.
 	//
 	// example:
 	//
@@ -594,33 +626,33 @@ func (s *QueryDataServiceListResponseBodyResultDataContentFilter) Validate() err
 }
 
 type QueryDataServiceListResponseBodyResultDataContentReturnFields struct {
-	// Aggregation operator. For example, SUM, AVG, and MAX.
+	// The aggregate operation (aggregation), such as SUM, AVG, and MAX.
 	//
 	// example:
 	//
 	// SUM
 	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
-	// Field parameter name.
+	// The field parameter name.
 	//
 	// example:
 	//
 	// s_number
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Remark for the returned field.
+	// The description of the returned field.
 	//
 	// example:
 	//
-	// Theme Configuration already exists
+	// The theme configuration already exists
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Corresponding cube field information.
+	// The corresponding cube field information.
 	Field *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField `json:"Field,omitempty" xml:"Field,omitempty" type:"Struct"`
-	// Sorting.
+	// The sort order.
 	//
-	// - asc: Ascending
+	// - asc: Ascending.
 	//
-	// - desc: Descending
+	// - desc: Descending.
 	//
-	// - no: No sorting
+	// - no: Unsorted.
 	//
 	// example:
 	//
@@ -691,11 +723,11 @@ func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) Validate
 }
 
 type QueryDataServiceListResponseBodyResultDataContentReturnFieldsField struct {
-	// Display name in the cube model (can be in Chinese or English).
+	// The display name in the cube model, which can be in Chinese or English.
 	//
 	// example:
 	//
-	// date(year)
+	// Date (year)
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The corresponding physical field name.
 	//
@@ -703,51 +735,51 @@ type QueryDataServiceListResponseBodyResultDataContentReturnFieldsField struct {
 	//
 	// shid_star
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// Data type.
+	// The data type.
 	//
-	// - number: numeric
+	// - number: Number.
 	//
-	// - string: string
+	// - string: String.
 	//
-	// - date: date
+	// - date: Date.
 	//
-	// - datetime: datetime
+	// - datetime: Datetime.
 	//
-	// - time: time
+	// - time: Time.
 	//
-	// - geographic: geographic
+	// - geographic: Geographic.
 	//
-	// - boolean: boolean
+	// - boolean: Boolean.
 	//
-	// - url: URL
+	// - url: URL.
 	//
 	// example:
 	//
 	// datetime
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// Unique identifier for the original field.
+	// The unique ID of the original field.
 	//
 	// example:
 	//
 	// 1c1f88cb7d
 	Fid *string `json:"Fid,omitempty" xml:"Fid,omitempty"`
-	// This attribute is included for date and geographic dimensions, indicating the supported granularity.
+	// The supported granularity. This property is included in date and geographic dimensions.
 	//
 	// example:
 	//
 	// yearRegion
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// Unique name of the cube field, mainly used for unique positioning in the returned result.
+	// The unique name of the cube field, which is primarily used to uniquely locate the returned result.
 	//
 	// example:
 	//
 	// sss
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Type.
+	// The type.
 	//
-	// - Dimension: Dimension
+	// - Dimension: Dimension.
 	//
-	// - Measure: Measure
+	// - Measure: Measure.
 	//
 	// example:
 	//

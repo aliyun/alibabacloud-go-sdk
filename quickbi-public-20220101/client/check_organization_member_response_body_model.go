@@ -24,19 +24,19 @@ type CheckOrganizationMemberResponseBody struct {
 	//
 	// D787E1A**********DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call succeeded. Valid values:
+	// The execution result of the operation. Valid values:
 	//
-	// - true: The call succeeded.
+	// - true: The execution succeeded.
 	//
-	// - false: The call failed.
+	// - false: The execution failed.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request succeeded.
 	//
 	// - false: The request failed.
 	//

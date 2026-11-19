@@ -18,14 +18,28 @@ type iModifyAiproEmbedConfigResponseBody interface {
 }
 
 type ModifyAiproEmbedConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 46e53746***70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution result of the operation. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true

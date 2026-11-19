@@ -28,36 +28,62 @@ type iCreateTicket4AiProRequest interface {
 }
 
 type CreateTicket4AiProRequest struct {
+	// The account of the access user to bind. Use this parameter together with AccountType when QuickBIUserId is not specified.
+	//
 	// example:
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account type of the user. Valid values:
+	//
+	// - 1: Alibaba Cloud account.
+	//
+	// - 3: Quick BI custom account.
+	//
+	// - 4: DingTalk.
+	//
+	// - 5: RAM user.
+	//
+	// - 9: WeCom.
+	//
 	// example:
 	//
 	// 1
 	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The ID of the AIPro embedding configuration. The configuration must exist, belong to the current organization, and have a status of 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	AiProId *string `json:"AiProId,omitempty" xml:"AiProId,omitempty"`
+	// The custom pass-through parameter. If specified, it must be a valid JSON string.
+	//
 	// example:
 	//
 	// test
 	CustomParam *string `json:"CustomParam,omitempty" xml:"CustomParam,omitempty"`
+	// The validity period of the ticket, in minutes. Default value: 240. The value must be greater than 0.
+	//
 	// example:
 	//
 	// 22
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The QuickBI user ID of the access user to bind. Specify either this parameter or the combination of AccountName and AccountType.
+	//
 	// example:
 	//
 	// test
 	QuickBIUserId *string `json:"QuickBIUserId,omitempty" xml:"QuickBIUserId,omitempty"`
+	// The custom system identifier. The length must be less than 150 characters.
+	//
 	// example:
 	//
 	// test
 	SystemUid *string `json:"SystemUid,omitempty" xml:"SystemUid,omitempty"`
+	// The number of times the ticket can be used. Default value: 1. Valid values: 1 to 99999.
+	//
 	// example:
 	//
 	// 1

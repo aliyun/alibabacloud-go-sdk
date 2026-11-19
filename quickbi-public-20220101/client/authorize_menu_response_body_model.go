@@ -24,7 +24,7 @@ type AuthorizeMenuResponseBody struct {
 	//
 	// 188F0B12-00EF-41B3-944A-FB7EF06C9F43
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of authorized menus.
+	// The number of menus that are successfully authorized.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type AuthorizeMenuResponseBody struct {
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

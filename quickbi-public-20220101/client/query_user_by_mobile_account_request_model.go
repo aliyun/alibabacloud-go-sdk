@@ -32,13 +32,13 @@ type QueryUserByMobileAccountRequest struct {
 	MobileType *string `json:"MobileType,omitempty" xml:"MobileType,omitempty"`
 	// The bound mobile user ID.
 	//
-	// - DingTalk: The unionId of the DingTalk account.
+	// - DingTalk: the unionId of the DingTalk account.
 	//
-	// - WeCom: The userId of the WeCom account.
+	// - WeCom: the userId of the WeCom account.
 	//
-	// - Lark: The userId of the Lark account.
+	// - Lark: the userId of the Lark account.
 	//
-	// 	Notice: The mobileUserId must be obtained by calling the relevant API operations of DingTalk, WeCom, or Lark.
+	// 	Notice: Developers must call the relevant APIs of DingTalk, WeCom, or Lark to obtain the mobileUserId.</notice>
 	//
 	// This parameter is required.
 	//

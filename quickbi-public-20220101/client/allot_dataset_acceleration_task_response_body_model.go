@@ -24,21 +24,21 @@ type AllotDatasetAccelerationTaskResponseBody struct {
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the IP address whitelist is updated. Valid values:
+	// The execution result. Valid values:
 	//
-	// 	- true: The task is triggered.
+	// - true: The task is triggered successfully.
 	//
-	// 	- false: The task fails to be triggered.
+	// - false: The task fails to be triggered.
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

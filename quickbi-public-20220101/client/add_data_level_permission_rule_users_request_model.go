@@ -16,29 +16,29 @@ type iAddDataLevelPermissionRuleUsersRequest interface {
 type AddDataLevelPermissionRuleUsersRequest struct {
 	// {
 	//
-	// "ruleId": "a5bb24da-***-a891683e14da", // The ID of the row-level permission rule.
+	//     "ruleId": "a5bb24da-***-a891683e14da", // The ID of the row-column permission rule.
 	//
-	// "cubeId": "7c7223ae-***-3c744528014b", // The ID of the dataset.
+	//     "cubeId": "7c7223ae-***-3c744528014b", // The ID of the dataset.
 	//
-	// "addModel": {
+	//     "addModel": {
 	//
-	// "userGroups": [
+	//         "userGroups": [
 	//
-	// "0d5fb19b-***-1248fc27ca51", // The IDs of the user groups to add.
+	//             "0d5fb19b-***-1248fc27ca51", // The ID of the user group to be added.
 	//
-	// "3d2c23d4-***-f6390f325c2d"
+	//             "3d2c23d4-***-f6390f325c2d"
 	//
-	// ],
+	//         ],
 	//
-	// "users": [
+	//         "users": [
 	//
-	// "433&#x34;***358", // The user IDs of the users to add.
+	//             "4334***358", // The ID of the user to be added.
 	//
-	// "Huang***&#x33;fa822"
+	//             "Huang***3fa822"
 	//
-	// ]
+	//         ]
 	//
-	// }
+	//     }
 	//
 	// }
 	//

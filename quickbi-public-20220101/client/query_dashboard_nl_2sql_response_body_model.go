@@ -18,23 +18,23 @@ type iQueryDashboardNl2sqlResponseBody interface {
 }
 
 type QueryDashboardNl2sqlResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 46e537a5****,3dadsu****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result of the API execution. Possible values:
+	// The execution result of the API operation. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request succeeded.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	Result []*QueryDashboardNl2sqlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Possible values:
+	// Specifies whether the request is successful. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request succeeded.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -91,21 +91,21 @@ func (s *QueryDashboardNl2sqlResponseBody) Validate() error {
 }
 
 type QueryDashboardNl2sqlResponseBodyResult struct {
-	// If this parameter has a value and includes "READ", it indicates that the user has read permission for the dashboard question resource.
+	// The permissions on the dashboard NL2SQL resource. If this parameter has a value and contains READ, it indicates that the user has NL2SQL permissions on the dashboard NL2SQL resource.
 	Authorities []*string `json:"Authorities,omitempty" xml:"Authorities,omitempty" type:"Repeated"`
-	// Dashboard name
+	// The name of the dashboard.
 	//
 	// example:
 	//
 	// 612b
 	DashboardName *string `json:"DashboardName,omitempty" xml:"DashboardName,omitempty"`
-	// Dashboard question resource ID
+	// The NL2SQL resource ID of the dashboard.
 	//
 	// example:
 	//
 	// sasdas****sawdau
 	DashboardNl2sqlId *string `json:"DashboardNl2sqlId,omitempty" xml:"DashboardNl2sqlId,omitempty"`
-	// UserID of the dashboard creator
+	// The user ID of the dashboard creator.
 	//
 	// example:
 	//

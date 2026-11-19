@@ -18,23 +18,23 @@ type iAddUserTagMetaResponseBody interface {
 }
 
 type AddUserTagMetaResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns the ID of the successfully added tag.
+	// The ID of the successfully added tag.
 	//
 	// example:
 	//
 	// 0822a7d9-****-****-****-f20163ab9b0d
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Value range:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request succeeded
+	// - true: The request is successful.
 	//
-	// - false: The request failed
+	// - false: The request fails.
 	//
 	// example:
 	//

@@ -18,14 +18,28 @@ type iUpdateDataSourcePropertiesResponseBody interface {
 }
 
 type UpdateDataSourcePropertiesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D787E1*****DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the modification was successful. Valid values:
+	//
+	// - true: The modification was successful.
+	//
+	// - false: The modification failed.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true

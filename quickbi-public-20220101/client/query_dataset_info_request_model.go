@@ -14,7 +14,7 @@ type iQueryDatasetInfoRequest interface {
 }
 
 type QueryDatasetInfoRequest struct {
-	// Queries information about a specified dataset.
+	// The unique ID of the dataset.
 	//
 	// This parameter is required.
 	//

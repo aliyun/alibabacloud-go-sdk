@@ -16,7 +16,7 @@ type iQueryDashboardNl2sqlRequest interface {
 }
 
 type QueryDashboardNl2sqlRequest struct {
-	// User ID.
+	// The user ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type QueryDashboardNl2sqlRequest struct {
 	//
 	// 3d7ebb8***********500078f4
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

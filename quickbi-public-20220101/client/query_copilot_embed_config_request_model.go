@@ -14,7 +14,7 @@ type iQueryCopilotEmbedConfigRequest interface {
 }
 
 type QueryCopilotEmbedConfigRequest struct {
-	// Name of the embedded configuration module, supports fuzzy search.
+	// The name of the embedding configuration module. Fuzzy search is supported.
 	//
 	// example:
 	//

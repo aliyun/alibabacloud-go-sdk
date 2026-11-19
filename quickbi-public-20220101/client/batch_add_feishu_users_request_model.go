@@ -28,11 +28,11 @@ type BatchAddFeishuUsersRequest struct {
 	//
 	// {"ad****fd": "test", "82****5a": "t\\"t"}"
 	FeishuUsers *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
-	// Specifies whether the user is an admin user. Valid values:
+	// Specifies whether the user is an administrator. Valid values:
 	//
-	// - true
+	// - true: Yes.
 	//
-	// - false
+	// - false: No.
 	//
 	// Default value: false.
 	//
@@ -42,9 +42,9 @@ type BatchAddFeishuUsersRequest struct {
 	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
 	// Specifies whether the user is a permission management administrator. Valid values:
 	//
-	// - true
+	// - true: Yes.
 	//
-	// - false
+	// - false: No.
 	//
 	// Default value: false.
 	//
@@ -52,7 +52,7 @@ type BatchAddFeishuUsersRequest struct {
 	//
 	// true
 	IsAuthAdmin *bool `json:"IsAuthAdmin,omitempty" xml:"IsAuthAdmin,omitempty"`
-	// The user groups to which the users belong.
+	// The IDs of the user groups to which the users belong.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type BatchAddFeishuUsersRequest struct {
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
 	// The user type. Valid values:
 	//
-	// - 1: developer
+	// - 1: Developer.
 	//
-	// - 2: visitor
+	// - 2: Visitor.
 	//
-	// - 3: analyst
+	// - 3: Analyst.
 	//
 	// example:
 	//

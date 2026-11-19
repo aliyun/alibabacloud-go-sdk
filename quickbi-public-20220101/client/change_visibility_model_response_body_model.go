@@ -32,9 +32,9 @@ type ChangeVisibilityModelResponseBody struct {
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

@@ -20,20 +20,28 @@ type iUpdateDataSourcePropertiesRequest interface {
 }
 
 type UpdateDataSourcePropertiesRequest struct {
+	// The description.
+	//
 	// example:
 	//
 	// ssss
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7AAB95D-*****-****-*4FC0C976
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// The owner of the data source. Set this parameter to the user ID in Quick BI.
+	//
 	// example:
 	//
 	// sss
 	QuickBIOwnerId *string `json:"QuickBIOwnerId,omitempty" xml:"QuickBIOwnerId,omitempty"`
+	// The display name of the data source.
+	//
 	// example:
 	//
 	// wls

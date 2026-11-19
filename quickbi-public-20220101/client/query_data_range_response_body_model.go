@@ -18,19 +18,19 @@ type iQueryDataRangeResponseBody interface {
 }
 
 type QueryDataRangeResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
-	// D787E1A3-A93C-****-B626-C2B05DF8D885
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Data range object.
+	// The data scope object.
 	Result *QueryDataRangeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -83,9 +83,9 @@ func (s *QueryDataRangeResponseBody) Validate() error {
 }
 
 type QueryDataRangeResponseBodyResult struct {
-	// Array of LlmCube resources.
+	// The array of data query resources.
 	ApiCopilotLlmCubeModels []*QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels `json:"ApiCopilotLlmCubeModels,omitempty" xml:"ApiCopilotLlmCubeModels,omitempty" type:"Repeated"`
-	// Array of analysis themes.
+	// The array of analysis themes.
 	ApiCopilotThemeModels []*QueryDataRangeResponseBodyResultApiCopilotThemeModels `json:"ApiCopilotThemeModels,omitempty" xml:"ApiCopilotThemeModels,omitempty" type:"Repeated"`
 }
 
@@ -138,19 +138,19 @@ func (s *QueryDataRangeResponseBodyResult) Validate() error {
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels struct {
-	// Alias of the LlmCube resource.
+	// The alias of the data query resource.
 	//
 	// example:
 	//
-	// test
+	// Test
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Nickname of the creator.
+	// The nickname of the creator.
 	//
 	// example:
 	//
-	// zhuge
+	// Zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// LlmCube resource ID.
+	// The ID of the data query resource.
 	//
 	// example:
 	//
@@ -198,25 +198,25 @@ func (s *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) Validate() err
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotThemeModels struct {
-	// Array of LlmCube resources.
+	// The array of data query resources.
 	ApiCopilotLlmCubeModels []*QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels `json:"ApiCopilotLlmCubeModels,omitempty" xml:"ApiCopilotLlmCubeModels,omitempty" type:"Repeated"`
-	// Nickname of the creator.
+	// The nickname of the creator.
 	//
 	// example:
 	//
-	// zhuge
+	// Zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// Analysis theme ID.
+	// The ID of the analysis theme.
 	//
 	// example:
 	//
 	// 36631232342312312
 	ThemeId *string `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
-	// Nickname of the analysis theme.
+	// The nickname of the analysis theme.
 	//
 	// example:
 	//
-	// test theme
+	// Test theme
 	ThemeName *string `json:"ThemeName,omitempty" xml:"ThemeName,omitempty"`
 }
 
@@ -278,19 +278,19 @@ func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) Validate() error
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels struct {
-	// Alias of the LLM cube resource.
+	// The alias of the data query resource.
 	//
 	// example:
 	//
-	// test
+	// TestHa
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Nickname of the creator.
+	// The nickname of the creator.
 	//
 	// example:
 	//
-	// zhuge
+	// Zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// LlmCube resource ID.
+	// The ID of the data query resource.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCancelCollectionRequest interface {
 }
 
 type CancelCollectionRequest struct {
-	// The ID of the favorite user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	// The ID of the user who favorited the work. The user ID here refers to the Quick BI user ID, not the Alibaba Cloud UID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CancelCollectionRequest struct {
 	//
 	// 121344444790****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the work to cancel the collection.
+	// The ID of the work to remove from favorites.
 	//
 	// This parameter is required.
 	//

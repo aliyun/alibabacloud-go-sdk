@@ -18,17 +18,17 @@ type iAddUserGroupMembersResponseBody interface {
 }
 
 type AddUserGroupMembersResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface. Valid values:
+	// The operation result. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request succeeded.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type AddUserGroupMembersResponseBody struct {
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request succeeded.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

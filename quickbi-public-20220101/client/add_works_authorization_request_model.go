@@ -24,15 +24,15 @@ type iAddWorksAuthorizationRequest interface {
 }
 
 type AddWorksAuthorizationRequest struct {
-	// The permissions to grant. Valid values:
+	// The type of granted permissions. Valid values:
 	//
-	// `1`: View
+	// - 1: View.
 	//
-	// `3`: View and Export
+	// - 3: View and export.
 	//
-	// `11`: Edit, View, and Export
+	// - 11: Edit, view, and export.
 	//
-	// **Note**: If AuthPoints is set to 11, the authorization is permanent and the ExpireDay parameter is ignored.
+	// Note: When the value is set to 11, the authorization does not expire.
 	//
 	// This parameter is required.
 	//
@@ -40,15 +40,15 @@ type AddWorksAuthorizationRequest struct {
 	//
 	// 1
 	AuthPoints *int32 `json:"AuthPoints,omitempty" xml:"AuthPoints,omitempty"`
-	// The type of the principal. Valid values:
+	// The authorization scope. Valid values:
 	//
-	// - `0`: User. Set AuthorizedId to the user ID.
+	// - 0: User. The AuthorizedId parameter corresponds to the user ID in Quick BI.
 	//
-	// - `1`: User group. Set AuthorizedId to the user group ID.
+	// - 1: User group. The AuthorizedId parameter corresponds to the user group ID in Quick BI.
 	//
-	// - `2`: All members of an organization. Set AuthorizedId to the organization ID.
+	// - 2: All organization members. The AuthorizedId parameter corresponds to the organization ID in Quick BI.
 	//
-	// - `3`: All members of a workspace. Set AuthorizedId to the workspace ID.
+	// - 3: All workspace members. The AuthorizedId parameter corresponds to the workspace ID in Quick BI.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type AddWorksAuthorizationRequest struct {
 	//
 	// 0
 	AuthorizeScope *int32 `json:"AuthorizeScope,omitempty" xml:"AuthorizeScope,omitempty"`
-	// The ID of the principal to be authorized. The AuthorizeScope parameter specifies the type of principal.
+	// The ID of the authorized object. For more information, see the description of AuthorizeScope.
 	//
 	// This parameter is required.
 	//
@@ -64,17 +64,13 @@ type AddWorksAuthorizationRequest struct {
 	//
 	// ASDAS-WDAS****ASDA
 	AuthorizedId *string `json:"AuthorizedId,omitempty" xml:"AuthorizedId,omitempty"`
-	// The expiration date for the permissions.
-	//
-	// Format: `YYYY-MM-DD`.
-	//
-	// **Note**: This parameter is required if AuthPoints is not 11. The authorization must be valid for at least one day after the authorization date.
+	// The expiration date of the authorization. Format: yyyy-MM-dd. Example: 2022-02-16. Note: The authorization period must be at least N+1 days. This parameter is required when the AuthPoints parameter is not set to 11.
 	//
 	// example:
 	//
 	// 2099-12-31
 	ExpireDay *string `json:"ExpireDay,omitempty" xml:"ExpireDay,omitempty"`
-	// The ID of the work.
+	// The resource ID.
 	//
 	// This parameter is required.
 	//
@@ -82,23 +78,23 @@ type AddWorksAuthorizationRequest struct {
 	//
 	// al*************7ufv
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the work. Valid values:
+	// The resource type. Valid values:
 	//
-	// - `dashboard`: A dashboard.
+	// - dashboard: Dashboard.
 	//
-	// - `report`: A report.
+	// - report: Workbook.
 	//
-	// - `dashboardOfflineQuery`: An ad-hoc query.
+	// - dashboardOfflineQuery: Ad hoc query.
 	//
-	// - `cube`: A dataset.
+	// - cube: Dataset.
 	//
-	// - `datasource`: A data source.
+	// - datasource: Data source.
 	//
-	// - `screen`: A data screen.
+	// - screen: Data screen.
 	//
-	// - `ANALYSIS`: An ad-hoc analysis.
+	// - ANALYSIS: Ad hoc analysis.
 	//
-	// - `dataForm`: A data form.
+	// - dataForm: Data entry.
 	//
 	// This parameter is required.
 	//

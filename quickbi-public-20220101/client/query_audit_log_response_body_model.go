@@ -24,13 +24,13 @@ type QueryAuditLogResponseBody struct {
 	//
 	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of log objects.
+	// The log array.
 	Result []*QueryAuditLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -87,13 +87,13 @@ func (s *QueryAuditLogResponseBody) Validate() error {
 }
 
 type QueryAuditLogResponseBodyResult struct {
-	// The time when the log was generated.
+	// The log time.
 	//
 	// example:
 	//
 	// 2024-04-16 13:17:39
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The account name of the operator.
+	// The account of the operator.
 	//
 	// example:
 	//

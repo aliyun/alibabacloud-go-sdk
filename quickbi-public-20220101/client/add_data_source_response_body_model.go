@@ -18,23 +18,23 @@ type iAddDataSourceResponseBody interface {
 }
 
 type AddDataSourceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D787E1********DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 472b241b-c651-****-****-ee719d6faf45
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - `true`: The request succeeded.
+	// - true: The request is successful.
 	//
-	// - `false`: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iQueryLlmCubeWithThemeListByUserIdResponseBody interface {
 }
 
 type QueryLlmCubeWithThemeListByUserIdResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2EE822B***************F-F5B42DDADC12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of datasets and analysis themes.
+	// The list of datasets and analysis themes.
 	Result *QueryLlmCubeWithThemeListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful
+	// - true: The request is successful.
 	//
-	// - false: The request failed
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -83,17 +83,25 @@ func (s *QueryLlmCubeWithThemeListByUserIdResponseBody) Validate() error {
 }
 
 type QueryLlmCubeWithThemeListByUserIdResponseBodyResult struct {
-	// Dataset map.
+	// The dataset map.
 	//
-	// - key - Dataset ID
+	// - key: The dataset ID.
 	//
-	// - value - Dataset name
+	// - value: The dataset name.
+	//
+	// example:
+	//
+	// {"4d93*******0-9614-c97adea37911":"common***value"}
 	CubeIds map[string]*string `json:"CubeIds,omitempty" xml:"CubeIds,omitempty"`
-	// Analysis theme map.
+	// The analysis theme map.
 	//
-	// - key - Analysis theme ID
+	// - key: The analysis theme ID.
 	//
-	// - value - Analysis theme name
+	// - value: The analysis theme name.
+	//
+	// example:
+	//
+	// {"9aefb3************75abecbe":"www*********eeee"}
 	ThemeIds map[string]*string `json:"ThemeIds,omitempty" xml:"ThemeIds,omitempty"`
 }
 

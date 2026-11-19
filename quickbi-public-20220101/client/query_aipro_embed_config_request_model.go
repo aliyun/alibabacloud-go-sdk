@@ -14,6 +14,8 @@ type iQueryAiproEmbedConfigRequest interface {
 }
 
 type QueryAiproEmbedConfigRequest struct {
+	// The keyword used for fuzzy search by showName.
+	//
 	// example:
 	//
 	// test

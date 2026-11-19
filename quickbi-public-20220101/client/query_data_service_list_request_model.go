@@ -20,19 +20,19 @@ type iQueryDataServiceListRequest interface {
 }
 
 type QueryDataServiceListRequest struct {
-	// Data service name.
+	// The service name.
 	//
 	// example:
 	//
-	// test
+	// Test SQL
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Page number. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of items per page in a paginated query:
+	// The number of entries per page for a paged query.
 	//
 	// - Default value: 10
 	//
@@ -42,7 +42,7 @@ type QueryDataServiceListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

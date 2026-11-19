@@ -18,19 +18,19 @@ type iQueryCopilotEmbedConfigResponseBody interface {
 }
 
 type QueryCopilotEmbedConfigResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1FC71085-D5FD-08E0-813A-4D4BD1031BC5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of embedded configurations.
+	// The list of embedding configurations.
 	Result []*QueryCopilotEmbedConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Possible values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -87,45 +87,45 @@ func (s *QueryCopilotEmbedConfigResponseBody) Validate() error {
 }
 
 type QueryCopilotEmbedConfigResponseBodyResult struct {
-	// Robot\\"s nickname.
+	// The nickname of the chatbot.
 	//
 	// example:
 	//
-	// little Q
+	// Xiao Q
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// Embedding ID.
+	// The embedding ID.
 	//
 	// example:
 	//
 	// 9c079710-ddbe-48b3-b495-7c83c8d57cc4
 	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
-	// ID of the creator.
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// qweqw12312423521
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// Nickname of the creator.
+	// The nickname of the creator.
 	//
 	// example:
 	//
-	// zhangsan
+	// Zhuge
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// Data range (analysis themes and question resources).
+	// The data scope, including analysis topics and data query resources.
 	DataRange *QueryCopilotEmbedConfigResponseBodyResultDataRange `json:"DataRange,omitempty" xml:"DataRange,omitempty" type:"Struct"`
-	// ID of the modifier.
+	// The user ID of the modifier.
 	//
 	// example:
 	//
 	// asda1231231dfs
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// Module name.
+	// The module name.
 	//
 	// example:
 	//
-	// little Q
+	// Xiao Q
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	// Name of the embedded module.
+	// The name of the embedding module.
 	//
 	// example:
 	//
@@ -223,21 +223,21 @@ func (s *QueryCopilotEmbedConfigResponseBodyResult) Validate() error {
 }
 
 type QueryCopilotEmbedConfigResponseBodyResultDataRange struct {
-	// Whether all question resources are selected.
+	// Indicates whether all data query resources are selected.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	AllCube *bool `json:"AllCube,omitempty" xml:"AllCube,omitempty"`
-	// Whether all analysis themes are selected.
+	// Indicates whether all analysis topics are selected.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	AllTheme *bool `json:"AllTheme,omitempty" xml:"AllTheme,omitempty"`
-	// Collection of question resource IDs.
+	// The set of data query resource IDs.
 	LlmCubes []*string `json:"LlmCubes,omitempty" xml:"LlmCubes,omitempty" type:"Repeated"`
-	// Collection of analysis theme IDs.
+	// The set of analysis topic IDs.
 	Themes []*string `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
 }
 

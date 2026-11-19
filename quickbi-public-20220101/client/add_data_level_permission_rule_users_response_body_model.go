@@ -24,11 +24,11 @@ type AddDataLevelPermissionRuleUsersResponseBody struct {
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the API operation. Valid values:
+	// The execution result of the operation. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: The request succeeded.
 	//
-	// - false: The request fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type AddDataLevelPermissionRuleUsersResponseBody struct {
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: The request succeeded.
 	//
-	// - false: The request fails.
+	// - false: The request failed.
 	//
 	// example:
 	//

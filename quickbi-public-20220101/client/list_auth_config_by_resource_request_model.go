@@ -22,7 +22,7 @@ type iListAuthConfigByResourceRequest interface {
 }
 
 type ListAuthConfigByResourceRequest struct {
-	// Specifies whether to query only records that have permissions.
+	// Specifies whether to query only the records that have permissions.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListAuthConfigByResourceRequest struct {
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The ID of the resource to authorize.
+	// The ID of the resource to be authorized.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type ListAuthConfigByResourceRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The query granularity. Valid values:
 	//
-	// - 0: user
+	// - 0: User.
 	//
-	// - 1: user group
+	// - 1: User group.
 	//
-	// 	Notice: Authorization records for organizations and workspaces are returned at the user granularity. Datasets and data sources can only be authorized to users.
+	// 	Notice: Authorization records for organizations and workspaces are returned at the user granularity. Datasets and data sources can only be authorized to users.</notice>
 	//
 	// This parameter is required.
 	//
@@ -58,23 +58,23 @@ type ListAuthConfigByResourceRequest struct {
 	//
 	// 0
 	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
-	// The type of the authorization resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// - dashboard: dashboard
+	// - dashboard: Dashboard.
 	//
-	// - screen: data screen
+	// - screen: Data screen.
 	//
-	// - report: electron
+	// - report: Workbook.
 	//
-	// - ANALYSIS: ad hoc analysis
+	// - ANALYSIS: Ad hoc analysis.
 	//
-	// - dashboardOfflineQuery: self-service data retrieval
+	// - dashboardOfflineQuery: Self-service data retrieval.
 	//
-	// - dataForm: data form
+	// - dataForm: Data entry.
 	//
-	// - cube: dataset
+	// - cube: Dataset.
 	//
-	// - datasource: data source
+	// - datasource: Data source.
 	//
 	// This parameter is required.
 	//

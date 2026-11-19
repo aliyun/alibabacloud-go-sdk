@@ -18,7 +18,7 @@ type iQueryTicketInfoResponseBody interface {
 }
 
 type QueryTicketInfoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type QueryTicketInfoResponseBody struct {
 	Result *QueryTicketInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *QueryTicketInfoResponseBody) Validate() error {
 }
 
 type QueryTicketInfoResponseBodyResult struct {
-	// Notes.
+	// The ticket.
 	//
 	// example:
 	//
 	// a27a9aec-****-****-bd40-1a21ea41d7c5
 	AccessTicket *string `json:"AccessTicket,omitempty" xml:"AccessTicket,omitempty"`
-	// The ID of the component in the report.
+	// The component ID in the report.
 	//
 	// example:
 	//
 	// sfdgsds-****-****-a608-mghdgd
 	CmptId *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
-	// Global parameters.
+	// The global parameters.
 	//
 	// example:
 	//
 	// [{&quot;paramKey&quot;:&quot;price&quot;,&quot;joinType&quot;:&quot;and&quot;,&quot;conditionList&quot;:[{&quot;operate&quot;:&quot;&gt;&quot;,&quot;value&quot;:&quot;0&quot;}]},{&quot;paramKey&quot;:&quot;product_type&quot;,&quot;joinType&quot;:&quot;and&quot;,&quot;conditionList&quot;:[{&quot;operate&quot;:&quot;in&quot;,&quot;value&quot;:[&quot;]}]}]\\n
 	GlobalParam *string `json:"GlobalParam,omitempty" xml:"GlobalParam,omitempty"`
-	// Expiration time of the note.
+	// The expiration time of the ticket.
 	//
 	// example:
 	//
 	// 2022-01-30 03:03:49
 	InvalidTime *string `json:"InvalidTime,omitempty" xml:"InvalidTime,omitempty"`
-	// The maximum number of supported bills.
+	// The maximum number of supported tickets.
 	//
 	// example:
 	//
 	// 9999
 	MaxTicketNum *int32 `json:"MaxTicketNum,omitempty" xml:"MaxTicketNum,omitempty"`
-	// The ID of the organization.
+	// The organization ID.
 	//
 	// example:
 	//
@@ -125,25 +125,25 @@ type QueryTicketInfoResponseBodyResult struct {
 	//
 	// 2022-01-09 22:23:49
 	RegisterTime *string `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	// The number of bills that have been consumed.
+	// The number of consumed tickets.
 	//
 	// example:
 	//
 	// 47
 	UsedTicketNum *int32 `json:"UsedTicketNum,omitempty" xml:"UsedTicketNum,omitempty"`
-	// The user ID of the Quick BI.
+	// The Quick BI user ID.
 	//
 	// example:
 	//
 	// 974e50**********9033f46
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Set the watermarking parameters.
+	// The watermark parameters.
 	//
 	// example:
 	//
 	// ticket
 	WatermarkParam *string `json:"WatermarkParam,omitempty" xml:"WatermarkParam,omitempty"`
-	// The ID of the operations report.
+	// The report ID.
 	//
 	// example:
 	//

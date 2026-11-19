@@ -14,7 +14,7 @@ type iQueryTicketInfoRequest interface {
 }
 
 type QueryTicketInfoRequest struct {
-	// The value of the bill.
+	// The ticket value.
 	//
 	// This parameter is required.
 	//

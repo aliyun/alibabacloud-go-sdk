@@ -26,7 +26,7 @@ type ListAuthConfigByResourceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The collection of authorization details.
 	Result []*ListAuthConfigByResourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListAuthConfigByResourceResponseBody) Validate() error {
 }
 
 type ListAuthConfigByResourceResponseBodyResult struct {
-	// The array of permissions granted.
+	// The array of owned permissions.
 	Authorities []*string `json:"Authorities,omitempty" xml:"Authorities,omitempty" type:"Repeated"`
 	// The ID of the authorized user.
 	//
@@ -97,13 +97,13 @@ type ListAuthConfigByResourceResponseBodyResult struct {
 	//
 	// sss
 	AuthorizedName *string `json:"AuthorizedName,omitempty" xml:"AuthorizedName,omitempty"`
-	// The expiration time. This value is a UNIX timestamp in milliseconds.
+	// The expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1788969600000
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The time when the permission record was created, in the yyyy-MM-dd mm:hh:ss format.
+	// The creation time of the permission record. The format is yyyy-MM-dd mm:hh:ss.
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ type ListAuthConfigByResourceResponseBodyResult struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - dashboard: dashboard
+	// - dashboard: Dashboard.
 	//
-	// - screen: data screen
+	// - screen: Data screen.
 	//
-	// - report: electron
+	// - report: Workbook.
 	//
-	// - ANALYSIS: ad hoc analysis
+	// - ANALYSIS: Ad hoc analysis.
 	//
-	// - dashboardOfflineQuery: self-service data retrieval
+	// - dashboardOfflineQuery: Self-service data retrieval.
 	//
-	// - dataForm: data form
+	// - dataForm: Data entry.
 	//
-	// - cube: dataset
+	// - cube: Dataset.
 	//
-	// - datasource: data source
+	// - datasource: Data source.
 	//
 	// example:
 	//
@@ -139,13 +139,13 @@ type ListAuthConfigByResourceResponseBodyResult struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The authorization scope. Valid values:
 	//
-	// - 0: user
+	// - 0: User.
 	//
-	// - 1: user group
+	// - 1: User group.
 	//
-	// - 2: organization
+	// - 2: Organization.
 	//
-	// - 3: workspace
+	// - 3: Workspace.
 	//
 	// example:
 	//
