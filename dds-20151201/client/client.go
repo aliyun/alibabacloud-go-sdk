@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Dds")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":                  dara.String("mongodb.cn-qingdao.aliyuncs.com"),
@@ -806,13 +814,19 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// Creates a read-only shard account for an ApsaraDB for MongoDB sharded cluster instance with cloud disks.
+// Creates a database account for a specified ApsaraDB for MongoDB instance and grants one or more database role permissions to the account.
 //
 // Description:
 //
-// - Shard accounts can be created only for ApsaraDB for MongoDB sharded cluster instances with cloud disks.
+// - Supports **cloud disk*	- and **local disk*	- instances, and supports **replica set*	- and **sharded cluster*	- architectures.
 //
-// - Shard accounts are granted fixed read-only permissions.
+// - Accounts use a non-persistent architecture, and account information is read from the instance in real time. During the transition period before an account is created, the account does not appear in the DescribeAccounts list. After the account is created, it directly appears in the Available state.
+//
+// - The combination of account name and database name (DBName) must be unique within the same instance. Creating a duplicate account is rejected.
+//
+// - The account name cannot use the system reserved name root (case-insensitive) or the reserved prefix __cloud.
+//
+// - The requirement for Roles depends on the instance architecture: it is **required*	- for replica set and sharded cluster ConfigServer (cs) accounts. It is **prohibited*	- for sharded cluster Shard direct connection (db) accounts (passing it returns InvalidRoles.NotSupported).
 //
 // @param request - CreateAccountRequest
 //
@@ -896,13 +910,19 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 // Summary:
 //
-// Creates a read-only shard account for an ApsaraDB for MongoDB sharded cluster instance with cloud disks.
+// Creates a database account for a specified ApsaraDB for MongoDB instance and grants one or more database role permissions to the account.
 //
 // Description:
 //
-// - Shard accounts can be created only for ApsaraDB for MongoDB sharded cluster instances with cloud disks.
+// - Supports **cloud disk*	- and **local disk*	- instances, and supports **replica set*	- and **sharded cluster*	- architectures.
 //
-// - Shard accounts are granted fixed read-only permissions.
+// - Accounts use a non-persistent architecture, and account information is read from the instance in real time. During the transition period before an account is created, the account does not appear in the DescribeAccounts list. After the account is created, it directly appears in the Available state.
+//
+// - The combination of account name and database name (DBName) must be unique within the same instance. Creating a duplicate account is rejected.
+//
+// - The account name cannot use the system reserved name root (case-insensitive) or the reserved prefix __cloud.
+//
+// - The requirement for Roles depends on the instance architecture: it is **required*	- for replica set and sharded cluster ConfigServer (cs) accounts. It is **prohibited*	- for sharded cluster Shard direct connection (db) accounts (passing it returns InvalidRoles.NotSupported).
 //
 // @param request - CreateAccountRequest
 //
@@ -1018,9 +1038,9 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 //
 // Description:
 //
-// Before using this operation, make sure you understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+// Before you call this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
-// For information about instance specifications, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
+// For more information about ApsaraDB for MongoDB instance specifications, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
 //
 // To create a sharded cluster instance, call the [CreateShardingDBInstance](https://help.aliyun.com/document_detail/61884.html) operation.
 //
@@ -1085,6 +1105,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["DatabaseNames"] = request.DatabaseNames
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.Encrypted) {
 		query["Encrypted"] = request.Encrypted
 	}
@@ -1107,6 +1131,14 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !dara.IsNil(request.HiddenZoneId) {
 		query["HiddenZoneId"] = request.HiddenZoneId
+	}
+
+	if !dara.IsNil(request.MaintainEndTime) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !dara.IsNil(request.MaintainStartTime) {
+		query["MaintainStartTime"] = request.MaintainStartTime
 	}
 
 	if !dara.IsNil(request.NetworkType) {
@@ -1185,6 +1217,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["StorageType"] = request.StorageType
 	}
 
+	if !dara.IsNil(request.TTLEnabled) {
+		query["TTLEnabled"] = request.TTLEnabled
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -1230,9 +1266,9 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 //
 // Description:
 //
-// Before using this operation, make sure you understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+// Before you call this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
-// For information about instance specifications, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
+// For more information about ApsaraDB for MongoDB instance specifications, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
 //
 // To create a sharded cluster instance, call the [CreateShardingDBInstance](https://help.aliyun.com/document_detail/61884.html) operation.
 //
@@ -1391,6 +1427,10 @@ func (client *Client) CreateNodeWithOptions(request *CreateNodeRequest, runtime 
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.NodeClass) {
 		query["NodeClass"] = request.NodeClass
 	}
@@ -1488,11 +1528,11 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 
 // Summary:
 //
-// Adds multiple Mongos or shard nodes to an ApsaraDB for MongoDB sharded cluster instance.
+// Adds multiple Mongos and shard nodes to an ApsaraDB for MongoDB sharded cluster instance.
 //
 // Description:
 //
-// Make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+// Before calling this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
 // This operation is applicable only to ApsaraDB for MongoDB sharded cluster instances.
 //
@@ -1535,6 +1575,10 @@ func (client *Client) CreateNodeBatchWithOptions(request *CreateNodeBatchRequest
 
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.FromApp) {
@@ -1590,11 +1634,11 @@ func (client *Client) CreateNodeBatchWithOptions(request *CreateNodeBatchRequest
 
 // Summary:
 //
-// Adds multiple Mongos or shard nodes to an ApsaraDB for MongoDB sharded cluster instance.
+// Adds multiple Mongos and shard nodes to an ApsaraDB for MongoDB sharded cluster instance.
 //
 // Description:
 //
-// Make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+// Before calling this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
 // This operation is applicable only to ApsaraDB for MongoDB sharded cluster instances.
 //
@@ -1751,6 +1795,10 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 		query["DestRegion"] = request.DestRegion
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.Encrypted) {
 		query["Encrypted"] = request.Encrypted
 	}
@@ -1773,6 +1821,14 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 
 	if !dara.IsNil(request.HiddenZoneId) {
 		query["HiddenZoneId"] = request.HiddenZoneId
+	}
+
+	if !dara.IsNil(request.MaintainEndTime) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !dara.IsNil(request.MaintainStartTime) {
+		query["MaintainStartTime"] = request.MaintainStartTime
 	}
 
 	if !dara.IsNil(request.Mongos) {
@@ -1855,6 +1911,10 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 		query["StorageType"] = request.StorageType
 	}
 
+	if !dara.IsNil(request.TTLEnabled) {
+		query["TTLEnabled"] = request.TTLEnabled
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -1930,6 +1990,8 @@ func (client *Client) CreateShardingDBInstance(request *CreateShardingDBInstance
 //
 // Only MongoDB instances with cloud disks are supported.
 //
+// Before calling this operation, you must call the DescribeBackups operation to obtain the list of backup sets and use the returned BackupId (backup set ID) as the input parameter for this operation. The BackupId returned by the CreateBackup operation is a backup task ID and cannot be used in this operation.
+//
 // @param request - DeleteBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2000,6 +2062,8 @@ func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runt
 //
 // Only MongoDB instances with cloud disks are supported.
 //
+// Before calling this operation, you must call the DescribeBackups operation to obtain the list of backup sets and use the returned BackupId (backup set ID) as the input parameter for this operation. The BackupId returned by the CreateBackup operation is a backup task ID and cannot be used in this operation.
+//
 // @param request - DeleteBackupRequest
 //
 // @return DeleteBackupResponse
@@ -2016,17 +2080,17 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 
 // Summary:
 //
-// Releases a pay-as-you-go MongoDB instance.
+// Releases a MongoDB instance.
 //
 // Description:
 //
-// The instance must meet the following conditions:
+// When you invoke this operation, the instance must meet the following conditions:
 //
-// - The instance status is running.
+// - The instance status is Running.
 //
 // - The billing method of the instance is pay-as-you-go.
 //
-// > After an instance is released, its data cannot be recovered. Proceed with caution.
+// > After the instance is released, its data cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -2047,6 +2111,10 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2090,17 +2158,17 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// Releases a pay-as-you-go MongoDB instance.
+// Releases a MongoDB instance.
 //
 // Description:
 //
-// The instance must meet the following conditions:
+// When you invoke this operation, the instance must meet the following conditions:
 //
-// - The instance status is running.
+// - The instance status is Running.
 //
 // - The billing method of the instance is pay-as-you-go.
 //
-// > After an instance is released, its data cannot be recovered. Proceed with caution.
+// > After the instance is released, its data cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -2318,7 +2386,79 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 
 // Summary:
 //
-// Queries the database account information of an ApsaraDB for MongoDB instance.
+// Queries the defined roles, including role names and definition databases, on a specified ApsaraDB for MongoDB instance. This serves as a data source for role selection when creating accounts or modifying account permissions.
+//
+// @param request - DescribeAccountRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountRolesResponse
+func (client *Client) DescribeAccountRolesWithOptions(request *DescribeAccountRolesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DBName) {
+		query["DBName"] = request.DBName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccountRoles"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccountRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the defined roles, including role names and definition databases, on a specified ApsaraDB for MongoDB instance. This serves as a data source for role selection when creating accounts or modifying account permissions.
+//
+// @param request - DescribeAccountRolesRequest
+//
+// @return DescribeAccountRolesResponse
+func (client *Client) DescribeAccountRoles(request *DescribeAccountRolesRequest) (_result *DescribeAccountRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAccountRolesResponse{}
+	_body, _err := client.DescribeAccountRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the accounts of a specified ApsaraDB for MongoDB instance, including the account name, account status, description, account type, associated database, and assigned role permissions.
+//
+// Description:
+//
+// - Accounts use an architecture where information is not stored in a central database, and account information is read from the instance in real time. External accounts (not stored in the central database) are returned through direct connection queries to the instance and displayed in the same way as internal accounts. The response includes the system account `root`.
+//
+// - If `DBName` is specified, only the accounts under this database are returned (filtered by the database to which the account belongs).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2390,7 +2530,13 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 // Summary:
 //
-// Queries the database account information of an ApsaraDB for MongoDB instance.
+// Queries the accounts of a specified ApsaraDB for MongoDB instance, including the account name, account status, description, account type, associated database, and assigned role permissions.
+//
+// Description:
+//
+// - Accounts use an architecture where information is not stored in a central database, and account information is read from the instance in real time. External accounts (not stored in the central database) are returned through direct connection queries to the instance and displayed in the same way as internal accounts. The response includes the system account `root`.
+//
+// - If `DBName` is specified, only the accounts under this database are returned (filtered by the database to which the account belongs).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2408,7 +2554,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// Queries the Operation and Maintenance (O&M) task configuration for a MongoDB instance.
+// Queries the O&M task configuration of a MongoDB instance.
 //
 // @param request - DescribeActiveOperationMaintenanceConfigRequest
 //
@@ -2464,7 +2610,7 @@ func (client *Client) DescribeActiveOperationMaintenanceConfigWithOptions(reques
 
 // Summary:
 //
-// Queries the Operation and Maintenance (O&M) task configuration for a MongoDB instance.
+// Queries the O&M task configuration of a MongoDB instance.
 //
 // @param request - DescribeActiveOperationMaintenanceConfigRequest
 //
@@ -2830,7 +2976,7 @@ func (client *Client) DescribeActiveOperationTaskType(request *DescribeActiveOpe
 
 // Summary:
 //
-// Queries O&M task details for MongoDB instances.
+// Queries the details of scheduled O&M tasks for MongoDB instances.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -2934,7 +3080,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries O&M task details for MongoDB instances.
+// Queries the details of scheduled O&M tasks for MongoDB instances.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3422,11 +3568,11 @@ func (client *Client) DescribeAuditRecords(request *DescribeAuditRecordsRequest)
 
 // Summary:
 //
-// Queries a list of the zones that are supported by an ApsaraDB for MongoDB instance.
+// Queries the zones supported by MongoDB instances.
 //
 // Description:
 //
-// Queries the zones in which an ApsaraDB for MongoDB instance can be deployed under specified purchase conditions. The region ID is required in the purchase condition.
+// Queries the list of supported MongoDB zones based on the specified purchasing conditions. The region ID is required in the purchasing conditions.
 //
 // @param request - DescribeAvailabilityZonesRequest
 //
@@ -3542,11 +3688,11 @@ func (client *Client) DescribeAvailabilityZonesWithOptions(request *DescribeAvai
 
 // Summary:
 //
-// Queries a list of the zones that are supported by an ApsaraDB for MongoDB instance.
+// Queries the zones supported by MongoDB instances.
 //
 // Description:
 //
-// Queries the zones in which an ApsaraDB for MongoDB instance can be deployed under specified purchase conditions. The region ID is required in the purchase condition.
+// Queries the list of supported MongoDB zones based on the specified purchasing conditions. The region ID is required in the purchasing conditions.
 //
 // @param request - DescribeAvailabilityZonesRequest
 //
@@ -4070,7 +4216,7 @@ func (client *Client) DescribeBackupStorage(request *DescribeBackupStorageReques
 
 // Summary:
 //
-// Queries ongoing backup jobs for MongoDB ReplicaSet or sharded cluster instances that use cloud disks.
+// Queries the ongoing backup tasks of ApsaraDB for MongoDB replica set or sharded cluster instances with cloud disks.
 //
 // @param request - DescribeBackupTasksRequest
 //
@@ -4138,7 +4284,7 @@ func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTask
 
 // Summary:
 //
-// Queries ongoing backup jobs for MongoDB ReplicaSet or sharded cluster instances that use cloud disks.
+// Queries the ongoing backup tasks of ApsaraDB for MongoDB replica set or sharded cluster instances with cloud disks.
 //
 // @param request - DescribeBackupTasksRequest
 //
@@ -4392,13 +4538,13 @@ func (client *Client) DescribeBinlogFiles(request *DescribeBinlogFilesRequest) (
 
 // Summary:
 //
-// Queries the cluster backup sets for an ApsaraDB for MongoDB sharded cluster instance that uses cloud disks.
+// Queries the cluster backup sets of an ApsaraDB for MongoDB sharded cluster instance with cloud disks.
 //
 // Description:
 //
-// For sharded cluster instances that use cloud disks and were created before October 19, 2023, you must first call the [TransferClusterBackup](https://help.aliyun.com/document_detail/2587931.html) operation to convert shard backups to cluster backups.
+// For sharded cluster instances with cloud disks created before October 19, 2023, you must call the [TransferClusterBackup](https://help.aliyun.com/document_detail/2587931.html) operation to convert shard backups to cluster backups before calling this operation.
 //
-// Sharded cluster instances that use cloud disks and were created after October 19, 2023 use cluster backups by default.
+// Sharded cluster instances with cloud disks created on or after October 19, 2023 use cluster backups by default.
 //
 // @param request - DescribeClusterBackupsRequest
 //
@@ -4498,13 +4644,13 @@ func (client *Client) DescribeClusterBackupsWithOptions(request *DescribeCluster
 
 // Summary:
 //
-// Queries the cluster backup sets for an ApsaraDB for MongoDB sharded cluster instance that uses cloud disks.
+// Queries the cluster backup sets of an ApsaraDB for MongoDB sharded cluster instance with cloud disks.
 //
 // Description:
 //
-// For sharded cluster instances that use cloud disks and were created before October 19, 2023, you must first call the [TransferClusterBackup](https://help.aliyun.com/document_detail/2587931.html) operation to convert shard backups to cluster backups.
+// For sharded cluster instances with cloud disks created before October 19, 2023, you must call the [TransferClusterBackup](https://help.aliyun.com/document_detail/2587931.html) operation to convert shard backups to cluster backups before calling this operation.
 //
-// Sharded cluster instances that use cloud disks and were created after October 19, 2023 use cluster backups by default.
+// Sharded cluster instances with cloud disks created on or after October 19, 2023 use cluster backups by default.
 //
 // @param request - DescribeClusterBackupsRequest
 //
@@ -4522,13 +4668,13 @@ func (client *Client) DescribeClusterBackups(request *DescribeClusterBackupsRequ
 
 // Summary:
 //
-// Queries the restorable time range of a sharded cluster instance that uses cloud disks in ApsaraDB for MongoDB.
+// Queries the restorable time ranges for ApsaraDB for MongoDB sharded cluster instances that use cloud disks.
 //
 // Description:
 //
-// - The MongoDB instance must be a sharded cluster instance that runs major engine version 4.4 or later and uses standard SSDs as the storage pattern.
+// - The MongoDB instance must be a sharded cluster instance running major engine version 4.4 or later and using ESSD cloud disks.
 //
-// - Only instances created before October 19, 2023 need to invoke the TransferClusterBackup operation to switch to the cluster backup mode. Instances that have been switched to the cluster backup mode or sharded cluster instances with cloud disks created on or after October 19, 2023 can directly invoke this operation.
+// - Only instances created before October 19, 2023, need to call the TransferClusterBackup operation to switch to cluster backup mode. Instances that have already switched to cluster backup mode, or MongoDB sharded cluster instances with cloud disks created on or after October 19, 2023, can directly call this operation.
 //
 // @param request - DescribeClusterRecoverTimeRequest
 //
@@ -4604,13 +4750,13 @@ func (client *Client) DescribeClusterRecoverTimeWithOptions(request *DescribeClu
 
 // Summary:
 //
-// Queries the restorable time range of a sharded cluster instance that uses cloud disks in ApsaraDB for MongoDB.
+// Queries the restorable time ranges for ApsaraDB for MongoDB sharded cluster instances that use cloud disks.
 //
 // Description:
 //
-// - The MongoDB instance must be a sharded cluster instance that runs major engine version 4.4 or later and uses standard SSDs as the storage pattern.
+// - The MongoDB instance must be a sharded cluster instance running major engine version 4.4 or later and using ESSD cloud disks.
 //
-// - Only instances created before October 19, 2023 need to invoke the TransferClusterBackup operation to switch to the cluster backup mode. Instances that have been switched to the cluster backup mode or sharded cluster instances with cloud disks created on or after October 19, 2023 can directly invoke this operation.
+// - Only instances created before October 19, 2023, need to call the TransferClusterBackup operation to switch to cluster backup mode. Instances that have already switched to cluster backup mode, or MongoDB sharded cluster instances with cloud disks created on or after October 19, 2023, can directly call this operation.
 //
 // @param request - DescribeClusterRecoverTimeRequest
 //
@@ -4628,7 +4774,7 @@ func (client *Client) DescribeClusterRecoverTime(request *DescribeClusterRecover
 
 // Summary:
 //
-// Queries the information of an ApsaraDB for MongoDB instance.
+// Queries the details of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -4704,7 +4850,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the information of an ApsaraDB for MongoDB instance.
+// Queries the details of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -4894,7 +5040,7 @@ func (client *Client) DescribeDBInstanceMonitor(request *DescribeDBInstanceMonit
 
 // Summary:
 //
-// Queries the performance data of a MongoDB instance.
+// Queries the performance data of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstancePerformanceRequest
 //
@@ -4986,7 +5132,7 @@ func (client *Client) DescribeDBInstancePerformanceWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the performance data of a MongoDB instance.
+// Queries the performance data of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstancePerformanceRequest
 //
@@ -5188,15 +5334,15 @@ func (client *Client) DescribeDBInstanceSpecInfo(request *DescribeDBInstanceSpec
 
 // Summary:
 //
-// Queries the primary/secondary switching logs of an ApsaraDB for MongoDB instance.
+// Queries the primary/secondary switchover logs of an instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+// When you call this operation, the instance must meet the following conditions:
 //
-// - The instance is a replica set or sharded cluster instance.
+// - The instance is a replica set instance or a sharded cluster instance.
 //
-// - The instance uses local physical disks to store data.
+// - The instance uses local physical disks.
 //
 // @param request - DescribeDBInstanceSwitchLogRequest
 //
@@ -5260,15 +5406,15 @@ func (client *Client) DescribeDBInstanceSwitchLogWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the primary/secondary switching logs of an ApsaraDB for MongoDB instance.
+// Queries the primary/secondary switchover logs of an instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+// When you call this operation, the instance must meet the following conditions:
 //
-// - The instance is a replica set or sharded cluster instance.
+// - The instance is a replica set instance or a sharded cluster instance.
 //
-// - The instance uses local physical disks to store data.
+// - The instance uses local physical disks.
 //
 // @param request - DescribeDBInstanceSwitchLogRequest
 //
@@ -5562,13 +5708,13 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// Queries the overview of one or more ApsaraDB for MongoDB instances.
+// Queries the overview information of one or more ApsaraDB for MongoDB instances.
 //
 // Description:
 //
-// - If you do not specify any instances, the operation returns overview information for all instances in the destination region associated with your Alibaba Cloud account.
+// - If you do not specify the details of an instance, the overview information of all instances in the specified region within the current account is returned.
 //
-// - The results of this operation are not paginated.
+// - The response of this operation is not paginated.
 //
 // @param request - DescribeDBInstancesOverviewRequest
 //
@@ -5676,13 +5822,13 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the overview of one or more ApsaraDB for MongoDB instances.
+// Queries the overview information of one or more ApsaraDB for MongoDB instances.
 //
 // Description:
 //
-// - If you do not specify any instances, the operation returns overview information for all instances in the destination region associated with your Alibaba Cloud account.
+// - If you do not specify the details of an instance, the overview information of all instances in the specified region within the current account is returned.
 //
-// - The results of this operation are not paginated.
+// - The response of this operation is not paginated.
 //
 // @param request - DescribeDBInstancesOverviewRequest
 //
@@ -5691,6 +5837,88 @@ func (client *Client) DescribeDBInstancesOverview(request *DescribeDBInstancesOv
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDBInstancesOverviewResponse{}
 	_body, _err := client.DescribeDBInstancesOverviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the names of all existing databases on a specified ApsaraDB for MongoDB instance.
+//
+// Description:
+//
+// - **Read-only API operation with synchronous responses*	- (not processed asynchronously).
+//
+// - The data source is a direct connection to the instance (`listDatabases`), and no metadata is persisted. The response includes the system databases `admin`, `local`, and `config`, which are returned as-is without filtering. The control plane uses a short-term cache, so repeated calls within a short period may not return real-time results.
+//
+// - Supports cloud disk and local disk instances.
+//
+// - If the `DBName` (the database to which the account belongs) field in the account creation form is implemented as a drop-down list, this API operation serves as the data source. The `local` database must be filtered out from the drop-down list because the backend prohibits creating accounts in the `local` database, whereas the `admin` database can be retained.
+//
+// @param request - DescribeDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatabasesResponse
+func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabases"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the names of all existing databases on a specified ApsaraDB for MongoDB instance.
+//
+// Description:
+//
+// - **Read-only API operation with synchronous responses*	- (not processed asynchronously).
+//
+// - The data source is a direct connection to the instance (`listDatabases`), and no metadata is persisted. The response includes the system databases `admin`, `local`, and `config`, which are returned as-is without filtering. The control plane uses a short-term cache, so repeated calls within a short period may not return real-time results.
+//
+// - Supports cloud disk and local disk instances.
+//
+// - If the `DBName` (the database to which the account belongs) field in the account creation form is implemented as a drop-down list, this API operation serves as the data source. The `local` database must be filtered out from the drop-down list because the backend prohibits creating accounts in the `local` database, whereas the `admin` database can be retained.
+//
+// @param request - DescribeDatabasesRequest
+//
+// @return DescribeDatabasesResponse
+func (client *Client) DescribeDatabases(request *DescribeDatabasesRequest) (_result *DescribeDatabasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDatabasesResponse{}
+	_body, _err := client.DescribeDatabasesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6296,7 +6524,7 @@ func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInst
 
 // Summary:
 //
-// Queries the restorable time ranges of an ApsaraDB for MongoDB replica set instance with cloud disks.
+// Queries the restorable time of an ApsaraDB for MongoDB replica set instance with cloud disks.
 //
 // @param request - DescribeInstanceRecoverTimeRequest
 //
@@ -6376,7 +6604,7 @@ func (client *Client) DescribeInstanceRecoverTimeWithOptions(request *DescribeIn
 
 // Summary:
 //
-// Queries the restorable time ranges of an ApsaraDB for MongoDB replica set instance with cloud disks.
+// Queries the restorable time of an ApsaraDB for MongoDB replica set instance with cloud disks.
 //
 // @param request - DescribeInstanceRecoverTimeRequest
 //
@@ -7404,11 +7632,11 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 
 // Summary:
 //
-// Retrieves the role information and connection details for a MongoDB instance.
+// Queries the role and connection information of a MongoDB instance.
 //
 // Description:
 //
-// This operation applies to replica set instances and single-node instances. It does not apply to sharded cluster instances.
+// This operation is applicable to replica set instances and standalone instances, but not to sharded cluster instances.
 //
 // @param request - DescribeReplicaSetRoleRequest
 //
@@ -7468,11 +7696,11 @@ func (client *Client) DescribeReplicaSetRoleWithOptions(request *DescribeReplica
 
 // Summary:
 //
-// Retrieves the role information and connection details for a MongoDB instance.
+// Queries the role and connection information of a MongoDB instance.
 //
 // Description:
 //
-// This operation applies to replica set instances and single-node instances. It does not apply to sharded cluster instances.
+// This operation is applicable to replica set instances and standalone instances, but not to sharded cluster instances.
 //
 // @param request - DescribeReplicaSetRoleRequest
 //
@@ -8548,21 +8776,21 @@ func (client *Client) DescribeVpcsForMongoDB(request *DescribeVpcsForMongoDBRequ
 
 // Summary:
 //
-// Destroys an ApsaraDB for MongoDB instance.
+// Destroys a MongoDB instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that the instance meets the following requirements:
+// When you call this operation, the instance must meet the following conditions:
 //
-//   - The instance is a replica set instance or a sharded cluster instance that uses local disks.
+// - The billing method cloud disk instance is subscription.
 //
-//   - The billing method of the instance is subscription.
+// - The instance is in the **Locked due to expiration*	- state and has not been released.
 //
-//   - The instance has expired and is in the **Locking*	- state.
+// > If you call this operation on an instance with local disks, the instance is directly destroyed.
 //
-// **
+// If you call this operation on an instance with cloud disks, the instance is deleted, and the backup policy is changed to "Delete all backup sets cloud disk instance immediately upon instance release".
 //
-// **Warning*	- Data cannot be restored after the instance is destroyed. Proceed with caution.
+//	Danger:  Data cannot be recovered after an instance is destroyed. Proceed with caution.
 //
 // @param request - DestroyInstanceRequest
 //
@@ -8583,6 +8811,10 @@ func (client *Client) DestroyInstanceWithOptions(request *DestroyInstanceRequest
 
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -8634,21 +8866,21 @@ func (client *Client) DestroyInstanceWithOptions(request *DestroyInstanceRequest
 
 // Summary:
 //
-// Destroys an ApsaraDB for MongoDB instance.
+// Destroys a MongoDB instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that the instance meets the following requirements:
+// When you call this operation, the instance must meet the following conditions:
 //
-//   - The instance is a replica set instance or a sharded cluster instance that uses local disks.
+// - The billing method cloud disk instance is subscription.
 //
-//   - The billing method of the instance is subscription.
+// - The instance is in the **Locked due to expiration*	- state and has not been released.
 //
-//   - The instance has expired and is in the **Locking*	- state.
+// > If you call this operation on an instance with local disks, the instance is directly destroyed.
 //
-// **
+// If you call this operation on an instance with cloud disks, the instance is deleted, and the backup policy is changed to "Delete all backup sets cloud disk instance immediately upon instance release".
 //
-// **Warning*	- Data cannot be restored after the instance is destroyed. Proceed with caution.
+//	Danger:  Data cannot be recovered after an instance is destroyed. Proceed with caution.
 //
 // @param request - DestroyInstanceRequest
 //
@@ -9114,11 +9346,15 @@ func (client *Client) MigrateToOtherZone(request *MigrateToOtherZoneRequest) (_r
 
 // Summary:
 //
-// Modifies the description of the root account in an ApsaraDB for MongoDB instance.
+// Modifies the description of an account in a specified ApsaraDB for MongoDB instance.
 //
 // Description:
 //
-// This operation is not supported for sharded cluster instances.
+// - **Asynchronous operation**: Returns `RequestId` to indicate that the request is accepted.
+//
+// - System account handling: The description of the `root` account can be modified (it is a database account, and the accounts table is updated, which is a standard online capability). The descriptions of system accounts with prefixes such as `__cloud` cannot be modified, and the `InvalidAccountName.Malformed` error is returned.
+//
+// - If the account does not exist or the `DBName` does not match, the `InvalidAccountName.NotFound` error is returned.
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -9194,11 +9430,15 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 
 // Summary:
 //
-// Modifies the description of the root account in an ApsaraDB for MongoDB instance.
+// Modifies the description of an account in a specified ApsaraDB for MongoDB instance.
 //
 // Description:
 //
-// This operation is not supported for sharded cluster instances.
+// - **Asynchronous operation**: Returns `RequestId` to indicate that the request is accepted.
+//
+// - System account handling: The description of the `root` account can be modified (it is a database account, and the accounts table is updated, which is a standard online capability). The descriptions of system accounts with prefixes such as `__cloud` cannot be modified, and the `InvalidAccountName.Malformed` error is returned.
+//
+// - If the account does not exist or the `DBName` does not match, the `InvalidAccountName.NotFound` error is returned.
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -10218,9 +10458,9 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 //
 // Description:
 //
-// The instance types that support modifying the endpoint and port are as follows:
+// The following instance types support endpoint and port modifications:
 //
-// - You can modify the endpoints of instances with local disks and cloud disks.
+// - You can modify the endpoints of instances that use local disks or cloud disks.
 //
 // - For sharded cluster instances, you can modify only the endpoints of Mongos nodes.
 //
@@ -10314,9 +10554,9 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 //
 // Description:
 //
-// The instance types that support modifying the endpoint and port are as follows:
+// The following instance types support endpoint and port modifications:
 //
-// - You can modify the endpoints of instances with local disks and cloud disks.
+// - You can modify the endpoints of instances that use local disks or cloud disks.
 //
 // - For sharded cluster instances, you can modify only the endpoints of Mongos nodes.
 //
@@ -10426,11 +10666,11 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 //
 // Description:
 //
-// - This feature is not supported for instances with less than 40 GB of disk space.
+// - This feature is not supported if the disk space is less than 40 GB.
 //
-// - You can change the disk type only to an ESSD AutoPL disk (cloud_auto).
+// - Only Upgrade/Downgrade to the cloud_auto cloud disk type is supported.
 //
-// - The interval between two consecutive modifications to the provisioned input/output operations per second (IOPS) of an instance must be longer than one hour. For more information, see [Modify the performance of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
+// - The interval between two modifications of the IOPS provisioned performance for a single instance must exceed one hour. For more information, see [Modify the performance configurations of an ESSD AutoPL cloud disk](https://help.aliyun.com/document_detail/413275.html).
 //
 // @param request - ModifyDBInstanceDiskTypeRequest
 //
@@ -10514,11 +10754,11 @@ func (client *Client) ModifyDBInstanceDiskTypeWithOptions(request *ModifyDBInsta
 //
 // Description:
 //
-// - This feature is not supported for instances with less than 40 GB of disk space.
+// - This feature is not supported if the disk space is less than 40 GB.
 //
-// - You can change the disk type only to an ESSD AutoPL disk (cloud_auto).
+// - Only Upgrade/Downgrade to the cloud_auto cloud disk type is supported.
 //
-// - The interval between two consecutive modifications to the provisioned input/output operations per second (IOPS) of an instance must be longer than one hour. For more information, see [Modify the performance of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
+// - The interval between two modifications of the IOPS provisioned performance for a single instance must exceed one hour. For more information, see [Modify the performance configurations of an ESSD AutoPL cloud disk](https://help.aliyun.com/document_detail/413275.html).
 //
 // @param request - ModifyDBInstanceDiskTypeRequest
 //
@@ -10954,11 +11194,11 @@ func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetwo
 //
 // - The instance is a replica set or sharded cluster instance.
 //
-//   - The MongoDB version of a replica set instance must be 3.4 or later.
+//   - The version of a replica set instance must be 3.4 or later.
 //
-//   - The storage mode of a sharded cluster instance must be ESSD cloud disk.
+//   - The storage mode of a sharded cluster instance must be the ESSD cloud disk edition.
 //
-// > When you enable, update, or disable SSL, the instance restarts once. Perform this operation during off-peak hours.
+// > The instance restarts once when you enable, update, or disable SSL. Perform this operation during off-peak hours.
 //
 // @param request - ModifyDBInstanceSSLRequest
 //
@@ -11040,11 +11280,11 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 //
 // - The instance is a replica set or sharded cluster instance.
 //
-//   - The MongoDB version of a replica set instance must be 3.4 or later.
+//   - The version of a replica set instance must be 3.4 or later.
 //
-//   - The storage mode of a sharded cluster instance must be ESSD cloud disk.
+//   - The storage mode of a sharded cluster instance must be the ESSD cloud disk edition.
 //
-// > When you enable, update, or disable SSL, the instance restarts once. Perform this operation during off-peak hours.
+// > The instance restarts once when you enable, update, or disable SSL. Perform this operation during off-peak hours.
 //
 // @param request - ModifyDBInstanceSSLRequest
 //
@@ -11062,13 +11302,13 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 
 // Summary:
 //
-// Modifies the specifications or storage space of ApsaraDB for MongoDB standalone instances, replica set instances, and serverless instances. Serverless instances are supported only on the Alibaba Cloud China site.
+// Modifies the specifications or storage space of ApsaraDB for MongoDB standalone instances, replica set instances, and serverless instances. Serverless instances are supported only on the China site.
 //
 // Description:
 //
 // Before you call this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
-// This operation is applicable only to ApsaraDB for MongoDB <props="china"><ph>standalone instances, replica set instances, and serverless instances</ph><props="intl"><ph>standalone instances and replica set instances</ph>. To modify the configurations of a sharded cluster instance, call the [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html), [CreateNode](https://help.aliyun.com/document_detail/61911.html), [DeleteNode](https://help.aliyun.com/document_detail/61922.html), or [ModifyNodeSpecBatch](https://help.aliyun.com/document_detail/61816.html) operation based on your business requirements.
+// This operation is applicable only to ApsaraDB for MongoDB <props="china"><ph>standalone instances, replica set instances, and serverless instances</ph><props="intl"><ph>standalone instances and replica set instances</ph>. To modify the configurations of a sharded cluster instance, you can call the [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html), [CreateNode](https://help.aliyun.com/document_detail/61911.html), [DeleteNode](https://help.aliyun.com/document_detail/61922.html), or [ModifyNodeSpecBatch](https://help.aliyun.com/document_detail/61816.html) operation based on your business requirements.
 //
 // @param request - ModifyDBInstanceSpecRequest
 //
@@ -11095,6 +11335,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(request *ModifyDBInstanceS
 		query["BusinessInfo"] = request.BusinessInfo
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.CouponNo) {
 		query["CouponNo"] = request.CouponNo
 	}
@@ -11109,6 +11353,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(request *ModifyDBInstanceS
 
 	if !dara.IsNil(request.DBInstanceStorage) {
 		query["DBInstanceStorage"] = request.DBInstanceStorage
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EffectiveTime) {
@@ -11200,13 +11448,13 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(request *ModifyDBInstanceS
 
 // Summary:
 //
-// Modifies the specifications or storage space of ApsaraDB for MongoDB standalone instances, replica set instances, and serverless instances. Serverless instances are supported only on the Alibaba Cloud China site.
+// Modifies the specifications or storage space of ApsaraDB for MongoDB standalone instances, replica set instances, and serverless instances. Serverless instances are supported only on the China site.
 //
 // Description:
 //
 // Before you call this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
-// This operation is applicable only to ApsaraDB for MongoDB <props="china"><ph>standalone instances, replica set instances, and serverless instances</ph><props="intl"><ph>standalone instances and replica set instances</ph>. To modify the configurations of a sharded cluster instance, call the [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html), [CreateNode](https://help.aliyun.com/document_detail/61911.html), [DeleteNode](https://help.aliyun.com/document_detail/61922.html), or [ModifyNodeSpecBatch](https://help.aliyun.com/document_detail/61816.html) operation based on your business requirements.
+// This operation is applicable only to ApsaraDB for MongoDB <props="china"><ph>standalone instances, replica set instances, and serverless instances</ph><props="intl"><ph>standalone instances and replica set instances</ph>. To modify the configurations of a sharded cluster instance, you can call the [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html), [CreateNode](https://help.aliyun.com/document_detail/61911.html), [DeleteNode](https://help.aliyun.com/document_detail/61922.html), or [ModifyNodeSpecBatch](https://help.aliyun.com/document_detail/61816.html) operation based on your business requirements.
 //
 // @param request - ModifyDBInstanceSpecRequest
 //
@@ -12536,11 +12784,11 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// Modifies the SRV connection address of a MongoDB instance.
+// Modifies the SRV endpoint of a MongoDB instance.
 //
 // Description:
 //
-// This operation applies only to replica set instances and sharded cluster instances that use disks.
+// Applicable only to cloud disk replica set instances and cloud disk sharded cluster instances. Before calling this operation, ensure that an SRV address is assigned to the target instance. For newly created instances, call AllocateDBInstanceSrvNetworkAddress first to assign an SRV address. Also, ensure that the instance is in the Running state. You can verify this by checking the DBInstanceStatus field returned by DescribeDBInstanceAttribute.
 //
 // @param request - ModifySrvNetworkAddressRequest
 //
@@ -12608,11 +12856,11 @@ func (client *Client) ModifySrvNetworkAddressWithOptions(request *ModifySrvNetwo
 
 // Summary:
 //
-// Modifies the SRV connection address of a MongoDB instance.
+// Modifies the SRV endpoint of a MongoDB instance.
 //
 // Description:
 //
-// This operation applies only to replica set instances and sharded cluster instances that use disks.
+// Applicable only to cloud disk replica set instances and cloud disk sharded cluster instances. Before calling this operation, ensure that an SRV address is assigned to the target instance. For newly created instances, call AllocateDBInstanceSrvNetworkAddress first to assign an SRV address. Also, ensure that the instance is in the Running state. You can verify this by checking the DBInstanceStatus field returned by DescribeDBInstanceAttribute.
 //
 // @param request - ModifySrvNetworkAddressRequest
 //
@@ -12630,11 +12878,11 @@ func (client *Client) ModifySrvNetworkAddress(request *ModifySrvNetworkAddressRe
 
 // Summary:
 //
-// Modifies the information of a task in the task center for an ApsaraDB for MongoDB instance.
+// Modifies the task information in the task center.
 //
 // Description:
 //
-// The actions performed by this operation for a task vary based on the current state of the task. The supported actions for a task can be obtained from the value of the actionInfo parameter in the DescribeHistoryTasks operation.
+// Performs Related operations based on the current status of the node. Supported operations are identified based on the actionInfo of the node obtained from the API.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -12702,11 +12950,11 @@ func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, 
 
 // Summary:
 //
-// Modifies the information of a task in the task center for an ApsaraDB for MongoDB instance.
+// Modifies the task information in the task center.
 //
 // Description:
 //
-// The actions performed by this operation for a task vary based on the current state of the task. The supported actions for a task can be obtained from the value of the actionInfo parameter in the DescribeHistoryTasks operation.
+// Performs Related operations based on the current status of the node. Supported operations are identified based on the actionInfo of the node obtained from the API.
 //
 // @param request - ModifyTaskInfoRequest
 //
@@ -12724,13 +12972,15 @@ func (client *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (_result *M
 
 // Summary:
 //
-// Releases the internal endpoint of a shard or Configserver node for a sharded cluster instance.
+// Releases the internal endpoint of a shard or ConfigServer node in a sharded cluster instance.
 //
 // Description:
 //
-// - This operation releases the internal endpoint of a shard or Configserver node for a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](https://help.aliyun.com/document_detail/134067.html).
+// - Releases the internal endpoint of a shard or ConfigServer node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or ConfigServer node](https://help.aliyun.com/document_detail/134067.html).
 //
-// - To release the public endpoint of a shard or Configserver node for a sharded cluster instance, call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
+// - To release the public endpoint of a shard or ConfigServer node in a sharded cluster instance, call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
+//
+// - Prerequisites: The instance must be in the Running state. You can call the DescribeDBInstanceAttribute operation and check the DBInstanceStatus field to confirm the state. After you call an operation that changes the instance state, such as AllocateNodePrivateNetworkAddress, wait until the instance returns to the Running state before you call this operation.
 //
 // @param request - ReleaseNodePrivateNetworkAddressRequest
 //
@@ -12802,13 +13052,15 @@ func (client *Client) ReleaseNodePrivateNetworkAddressWithOptions(request *Relea
 
 // Summary:
 //
-// Releases the internal endpoint of a shard or Configserver node for a sharded cluster instance.
+// Releases the internal endpoint of a shard or ConfigServer node in a sharded cluster instance.
 //
 // Description:
 //
-// - This operation releases the internal endpoint of a shard or Configserver node for a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](https://help.aliyun.com/document_detail/134067.html).
+// - Releases the internal endpoint of a shard or ConfigServer node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or ConfigServer node](https://help.aliyun.com/document_detail/134067.html).
 //
-// - To release the public endpoint of a shard or Configserver node for a sharded cluster instance, call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
+// - To release the public endpoint of a shard or ConfigServer node in a sharded cluster instance, call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
+//
+// - Prerequisites: The instance must be in the Running state. You can call the DescribeDBInstanceAttribute operation and check the DBInstanceStatus field to confirm the state. After you call an operation that changes the instance state, such as AllocateNodePrivateNetworkAddress, wait until the instance returns to the Running state before you call this operation.
 //
 // @param request - ReleaseNodePrivateNetworkAddressRequest
 //
@@ -12912,13 +13164,15 @@ func (client *Client) ReleasePublicNetworkAddress(request *ReleasePublicNetworkA
 
 // Summary:
 //
-// Manually renews an ApsaraDB for MongoDB subscription instance.
+// Renews a subscription ApsaraDB for MongoDB instance.
 //
 // Description:
 //
-// Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+// <props="china">Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
 //
-// This operation is only applicable to instances that use the subscription billing method.
+// <props="intl">Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+//
+// This operation is applicable only to subscription instances.
 //
 // @param request - RenewDBInstanceRequest
 //
@@ -12955,6 +13209,10 @@ func (client *Client) RenewDBInstanceWithOptions(request *RenewDBInstanceRequest
 
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -13002,13 +13260,15 @@ func (client *Client) RenewDBInstanceWithOptions(request *RenewDBInstanceRequest
 
 // Summary:
 //
-// Manually renews an ApsaraDB for MongoDB subscription instance.
+// Renews a subscription ApsaraDB for MongoDB instance.
 //
 // Description:
 //
-// Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+// <props="china">Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
 //
-// This operation is only applicable to instances that use the subscription billing method.
+// <props="intl">Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+//
+// This operation is applicable only to subscription instances.
 //
 // @param request - RenewDBInstanceRequest
 //
@@ -13026,7 +13286,17 @@ func (client *Client) RenewDBInstance(request *RenewDBInstanceRequest) (_result 
 
 // Summary:
 //
-// Resets the password of the root account in an ApsaraDB for MongoDB instance.
+// Resets the password of a database account in an ApsaraDB for MongoDB instance.
+//
+// Description:
+//
+// - **Asynchronous operation**: Returns a `RequestId` to indicate that the request is accepted.
+//
+// - The backend verifies whether the account exists. For accounts in the database, the system queries the accounts table. For accounts outside the database, the system queries the instance directly by using a fail-closed mechanism. If the account does not exist or the `DBName` does not match the actual database where the account resides, `InvalidAccountName.NotFound` is returned.
+//
+// - System account handling: The password of the `root` account can be reset. This is a standard feature, and accounts in the database follow the original path. In scenarios outside the database, requests to reset the password of the `root` account or accounts with the `__cloud` prefix are rejected, and `IncorrectDBInstanceAccountMode` is returned.
+//
+// - For sharded cluster instances, `CharacterType` is **required*	- and must be set to `db` or `cs`. If you set this parameter to `normal` or leave it empty, `InvalidCharacterType` is returned.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -13102,7 +13372,17 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 
 // Summary:
 //
-// Resets the password of the root account in an ApsaraDB for MongoDB instance.
+// Resets the password of a database account in an ApsaraDB for MongoDB instance.
+//
+// Description:
+//
+// - **Asynchronous operation**: Returns a `RequestId` to indicate that the request is accepted.
+//
+// - The backend verifies whether the account exists. For accounts in the database, the system queries the accounts table. For accounts outside the database, the system queries the instance directly by using a fail-closed mechanism. If the account does not exist or the `DBName` does not match the actual database where the account resides, `InvalidAccountName.NotFound` is returned.
+//
+// - System account handling: The password of the `root` account can be reset. This is a standard feature, and accounts in the database follow the original path. In scenarios outside the database, requests to reset the password of the `root` account or accounts with the `__cloud` prefix are rejected, and `IncorrectDBInstanceAccountMode` is returned.
+//
+// - For sharded cluster instances, `CharacterType` is **required*	- and must be set to `db` or `cs`. If you set this parameter to `normal` or leave it empty, `InvalidCharacterType` is returned.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -13124,7 +13404,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 //
 // Description:
 //
-// You can call this operation to restart an instance, or a specific shard or mongos node in a sharded cluster instance.
+// You can call this operation to restart an instance, or to restart a specific shard or mongos node in a sharded cluster instance.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -13204,7 +13484,7 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 //
 // Description:
 //
-// You can call this operation to restart an instance, or a specific shard or mongos node in a sharded cluster instance.
+// You can call this operation to restart an instance, or to restart a specific shard or mongos node in a sharded cluster instance.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -13560,13 +13840,13 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Switches the backup mode of an ApsaraDB for MongoDB sharded cluster instance to the cluster backup mode. After the instance is switched to the cluster backup mode, the instance supports high-frequency backup.
+// Switches the backup mode of an ApsaraDB for MongoDB sharded cluster instance to cluster backup mode. After the switch to cluster backup mode, the instance supports high-frequency backups.
 //
 // Description:
 //
-// - The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
+// - The ApsaraDB for MongoDB database instance must be a sharded cluster instance, run major version 4.4 or later, and use the ESSD standard SSD storage pattern.
 //
-// - You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. Cloud disk-based sharded cluster instances that are created on or after October 19, 2023 are set to the cluster backup mode by default.
+// - Only instances created before October 19, 2023 need to execute this operation to switch to the cluster backup mode. Sharded cluster instances with cloud disks created on or after October 19, 2023 use the cluster backup mode by default.
 //
 // @param request - TransferClusterBackupRequest
 //
@@ -13626,13 +13906,13 @@ func (client *Client) TransferClusterBackupWithOptions(request *TransferClusterB
 
 // Summary:
 //
-// Switches the backup mode of an ApsaraDB for MongoDB sharded cluster instance to the cluster backup mode. After the instance is switched to the cluster backup mode, the instance supports high-frequency backup.
+// Switches the backup mode of an ApsaraDB for MongoDB sharded cluster instance to cluster backup mode. After the switch to cluster backup mode, the instance supports high-frequency backups.
 //
 // Description:
 //
-// - The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
+// - The ApsaraDB for MongoDB database instance must be a sharded cluster instance, run major version 4.4 or later, and use the ESSD standard SSD storage pattern.
 //
-// - You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. Cloud disk-based sharded cluster instances that are created on or after October 19, 2023 are set to the cluster backup mode by default.
+// - Only instances created before October 19, 2023 need to execute this operation to switch to the cluster backup mode. Sharded cluster instances with cloud disks created on or after October 19, 2023 use the cluster backup mode by default.
 //
 // @param request - TransferClusterBackupRequest
 //
@@ -13784,25 +14064,25 @@ func (client *Client) TransformInstanceChargeType(request *TransformInstanceChar
 
 // Summary:
 //
-// Changes the billing method of an ApsaraDB for MongoDB instance from pay-as-you-go to subscription.
+// Converts a pay-as-you-go ApsaraDB for MongoDB instance to a subscription instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+// Before you call this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
-// A subscription instance cannot be changed to a pay-as-you-go instance. To avoid wasting resources, proceed with caution.
+// Subscription instances cannot be converted to pay-as-you-go instances. Proceed with caution to avoid wasting resources.
 //
-// Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+// When you call this operation, the instance must meet the following conditions:
 //
-// - The instance is in the running state.
+// - The instance status is Running.
 //
 // - The billing method of the instance is pay-as-you-go.
 //
-// - The instance has no unpaid subscription orders.
+// - The instance does not have unpaid orders for converting to a subscription instance.
 //
-// - The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+// - The instance type is not a legacy instance type (no longer available for sale). For a list of legacy instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
-// > To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
+// > To convert an instance of a legacy instance type to a subscription instance, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
 //
 // @param request - TransformToPrePaidRequest
 //
@@ -13829,8 +14109,16 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 		query["BusinessInfo"] = request.BusinessInfo
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.CouponNo) {
 		query["CouponNo"] = request.CouponNo
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -13882,25 +14170,25 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 
 // Summary:
 //
-// Changes the billing method of an ApsaraDB for MongoDB instance from pay-as-you-go to subscription.
+// Converts a pay-as-you-go ApsaraDB for MongoDB instance to a subscription instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+// Before you call this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/mongodb/detail)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
 //
-// A subscription instance cannot be changed to a pay-as-you-go instance. To avoid wasting resources, proceed with caution.
+// Subscription instances cannot be converted to pay-as-you-go instances. Proceed with caution to avoid wasting resources.
 //
-// Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+// When you call this operation, the instance must meet the following conditions:
 //
-// - The instance is in the running state.
+// - The instance status is Running.
 //
 // - The billing method of the instance is pay-as-you-go.
 //
-// - The instance has no unpaid subscription orders.
+// - The instance does not have unpaid orders for converting to a subscription instance.
 //
-// - The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+// - The instance type is not a legacy instance type (no longer available for sale). For a list of legacy instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
-// > To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
+// > To convert an instance of a legacy instance type to a subscription instance, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
 //
 // @param request - TransformToPrePaidRequest
 //

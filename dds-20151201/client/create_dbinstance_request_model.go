@@ -33,6 +33,8 @@ type iCreateDBInstanceRequest interface {
 	GetDBInstanceStorage() *int32
 	SetDatabaseNames(v string) *CreateDBInstanceRequest
 	GetDatabaseNames() *string
+	SetDryRun(v bool) *CreateDBInstanceRequest
+	GetDryRun() *bool
 	SetEncrypted(v bool) *CreateDBInstanceRequest
 	GetEncrypted() *bool
 	SetEncryptionKey(v string) *CreateDBInstanceRequest
@@ -45,6 +47,10 @@ type iCreateDBInstanceRequest interface {
 	GetGlobalSecurityGroupIds() *string
 	SetHiddenZoneId(v string) *CreateDBInstanceRequest
 	GetHiddenZoneId() *string
+	SetMaintainEndTime(v string) *CreateDBInstanceRequest
+	GetMaintainEndTime() *string
+	SetMaintainStartTime(v string) *CreateDBInstanceRequest
+	GetMaintainStartTime() *string
 	SetNetworkType(v string) *CreateDBInstanceRequest
 	GetNetworkType() *string
 	SetOwnerAccount(v string) *CreateDBInstanceRequest
@@ -83,6 +89,8 @@ type iCreateDBInstanceRequest interface {
 	GetStorageEngine() *string
 	SetStorageType(v string) *CreateDBInstanceRequest
 	GetStorageType() *string
+	SetTTLEnabled(v bool) *CreateDBInstanceRequest
+	GetTTLEnabled() *bool
 	SetTag(v []*CreateDBInstanceRequestTag) *CreateDBInstanceRequest
 	GetTag() []*CreateDBInstanceRequestTag
 	SetVSwitchId(v string) *CreateDBInstanceRequest
@@ -96,13 +104,13 @@ type iCreateDBInstanceRequest interface {
 type CreateDBInstanceRequest struct {
 	// The password of the root account. The password must meet the following requirements:
 	//
-	// - Must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - Special characters include !@#$%^&*()_+-=.
 	//
-	// - Must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
-	// > For information about how to database connection failures caused by special characters in the password, see [How do I database connection failures caused by special characters in the connection string?](https://help.aliyun.com/document_detail/471568.html).
+	// > For more information about how to resolve the issue where database connection fails due to special characters in the account password in the connection string, see [What do I do if the connection to an ApsaraDB for MongoDB instance fails because the username or password in the connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html).
 	//
 	// example:
 	//
@@ -112,23 +120,23 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **true**: enables auto-renewal.
 	//
-	// - **false**: default value. Disables auto-renewal. You must manually renew the instance.
+	// - **false**: disables auto-renewal. In this case, you must manually renew the instance. This is the default value.
 	//
-	// > This parameter is available and optional when **ChargeType*	- is set to **PrePaid**.
+	// > This parameter is valid and optional only when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The backup ID. You can invoke the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup set ID.
 	//
-	// > This parameter is required only when you invoke this operation to clone a clone instance from a backup point. You must also configure the **SrcDBInstanceId*	- parameter.
+	// > This parameter is required only when you call this operation to clone an instance from a backup set. You must also specify the **SrcDBInstanceId*	- parameter.
 	//
 	// example:
 	//
 	// 32994****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The additional information about the business.
+	// The additional parameter for business information.
 	//
 	// example:
 	//
@@ -136,17 +144,17 @@ type CreateDBInstanceRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PostPaid**: default value. Pay-as-you-go.
+	// - **PostPaid**: pay-as-you-go. This is the default value.
 	//
-	// - **PrePaid**: Subscription.
+	// - **PrePaid**: subscription.
 	//
-	// > If you set this parameter to **PrePaid**, you must also configure the **Period*	- parameter.
+	// > When this parameter is set to **PrePaid**, you must also specify the **Period*	- parameter.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -155,7 +163,7 @@ type CreateDBInstanceRequest struct {
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null*	- (default): uses a coupon.
+	// - **default*	- or **null**: uses a coupon. This is the default value.
 	//
 	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
@@ -171,21 +179,21 @@ type CreateDBInstanceRequest struct {
 	//
 	// dds.mongo.standard
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance name. The name must meet the following requirements:
+	// The name of the instance. The name must meet the following requirements:
 	//
-	// - Must start with a Chinese character or a letter.
+	// - It must start with a letter or a Chinese character.
 	//
-	// - Can contain digits, Chinese characters, letters, underscores (_), periods (.), and hyphens (-).
+	// - It can contain digits, letters, Chinese characters, underscores (_), periods (.), and hyphens (-).
 	//
-	// - Must be 2 to 256 characters in length.
+	// - It must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance storage capacity. Unit: GB.
+	// The instance storage. Unit: GB.
 	//
-	// The valid values depend on the instance type. For details, see [Replica set instance specifications](https://help.aliyun.com/document_detail/311410.html).
+	// The valid values are subject to the instance type. For details, see [Replica set instance types](https://help.aliyun.com/document_detail/311410.html).
 	//
 	// This parameter is required.
 	//
@@ -195,25 +203,31 @@ type CreateDBInstanceRequest struct {
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The name of the database.
 	//
-	// > When you invoke this operation to clone a clone instance, you can specify this parameter to clone specific databases. If you do not specify this parameter, all databases are cloned.
+	// > When you call this operation to clone an instance, you can specify this parameter to specify the databases to be cloned. If you do not specify this parameter, all databases of the instance are cloned.
 	//
 	// example:
 	//
 	// mongodbtest
 	DatabaseNames *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: performs a dry run without calling the operation. The system checks items such as request parameters, request format, business limits, and inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	//
+	// - false (default): sends a normal request. After the check succeeds, the operation is directly executed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable cloud disk encryption.
 	//
 	// example:
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The custom key ID.
+	// The ID of the custom key.
 	//
 	// example:
 	//
 	// 2axxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The database engine. The value is fixed as **MongoDB**.
+	// The database engine. Set the value to **MongoDB**.
 	//
 	// example:
 	//
@@ -235,9 +249,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **4.0**
 	//
-	// > If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
+	// > When you call this operation to clone clone instance or restore clone instance from the recycle bin, the value of this parameter must be the same as that of the source instance.
 	//
-	// 	Warning: Versions 3.4 and earlier are no longer available for purchase.
+	// 	Warning: Versions 3.4 and earlier are no longer available for sale.
 	//
 	// This parameter is required.
 	//
@@ -245,13 +259,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// 4.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The global IP whitelist templates for the instance. Separate multiple templates with commas (,). Duplicate templates are not allowed. (This feature is in canary release.)
+	// The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Duplicate templates are not allowed. This feature is in canary release.
 	//
 	// example:
 	//
 	// g-qxieqf40xjst1ngpr3jz
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
-	// The zone where the hidden node is deployed to implement multi-zone deployment. Valid values:
+	// The zone where the hidden node resides. You can specify this parameter for multi-zone deployment. Valid values:
 	//
 	// - **cn-hangzhou-g**: Hangzhou Zone G.
 	//
@@ -289,17 +303,29 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > - This parameter is available when the instance uses cloud disks.
+	// > - This parameter is active only when the instance uses cloud disks.
 	//
-	// > - The value of this parameter cannot be the same as the values of **ZoneId*	- and **SecondaryZoneId**.
+	// > - The value of this parameter cannot be the same as the value of the **ZoneId*	- or **SecondaryZoneId*	- parameter.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
+	// The end time of the maintenance window.
+	//
+	// example:
+	//
+	// 22:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window.
+	//
+	// example:
+	//
+	// 18:00Z
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// **VPC**: Virtual Private Cloud.
+	// **VPC**: Virtual Private Cloud (VPC).
 	//
 	// example:
 	//
@@ -307,11 +333,11 @@ type CreateDBInstanceRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance. Unit: months.
+	// The subscription duration of the instance. Unit: month.
 	//
 	// Valid values: **1*	- to **9*	- (integers), **12**, **24**, **36**, and **60**.
 	//
-	// > This parameter is available and required when **ChargeType*	- is set to **PrePaid**.
+	// > This parameter is required and valid only when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
@@ -323,7 +349,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 1960
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The **number of read-only nodes*	- in the replica set instance. Valid values: **0*	- to **5*	- (integers). Default value: **0**.
+	// The number of **read-only nodes*	- in the replica set instance. Valid values: **0*	- to **5*	- (integers). Default value: **0**.
 	//
 	// example:
 	//
@@ -331,7 +357,7 @@ type CreateDBInstanceRequest struct {
 	ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
-	// > If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
+	// > When you call this operation to clone clone instance or restore clone instance from the recycle bin, the value of this parameter must be the same as that of the source instance.
 	//
 	// This parameter is required.
 	//
@@ -339,7 +365,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The **number of primary and secondary nodes*	- in the replica set instance. Valid values:
+	// The number of **primary and secondary nodes*	- in the replica set instance. Valid values:
 	//
 	// - **3*	- (default)
 	//
@@ -347,7 +373,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **7**
 	//
-	// 	Notice: This parameter is not required for single-node instances.
+	// 	Notice: You do not need to specify this parameter for a standalone instance.
 	//
 	// example:
 	//
@@ -356,29 +382,29 @@ type CreateDBInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to recover the instance to. You can specify any point in time within the last 7 days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > This parameter is required only when you invoke this operation to clone a clone instance to a point in time. You must also configure the **SrcDBInstanceId*	- parameter.
+	// > This parameter is required only when you call this operation to clone an instance to a specific point in time. You must also specify the **SrcDBInstanceId*	- parameter.
 	//
 	// example:
 	//
 	// 2022-03-13T12:11:14Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The backup restoration type. Valid values:
+	// The backup restoration type of the instance. Valid values:
 	//
-	// - 0: recovers the instance to a specified backup set.
+	// - 0: restores the instance to a specified backup set
 	//
-	// - 1: recovers the instance to a specified point in time.
+	// - 1: restores the instance to a specified point in time
 	//
-	// - 2: recovers a released instance to a specified backup set.
+	// - 2: restores a released instance to a specified backup set
 	//
-	// - 3: recovers the instance to a specified geo-redundancy backup set.
+	// - 3: restores the instance to a specified geo-redundancy backup set
 	//
 	// example:
 	//
 	// 0
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The zone where the secondary node is deployed to implement multi-zone deployment. Valid values:
+	// The zone where the secondary node resides. You can specify this parameter for multi-zone deployment. Valid values:
 	//
 	// - **cn-hangzhou-g**: Hangzhou Zone G.
 	//
@@ -416,25 +442,25 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > - This parameter is available when the instance uses cloud disks.
+	// > - This parameter is active only when the instance uses cloud disks.
 	//
-	// > - The value of this parameter cannot be the same as the values of **ZoneId*	- and **HiddenZoneId**.
+	// > - The value of this parameter cannot be the same as the value of the **ZoneId*	- or **HiddenZoneId*	- parameter.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The IP whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not allowed. The following formats are supported:
+	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not allowed. The following three formats are supported:
 	//
 	// - 0.0.0.0/0
 	//
 	// - IP address format, such as 10.23.12.24.
 	//
-	// - CIDR block format, such as 10.23.12.0/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. The prefix length ranges from 1 to 32.
+	// - CIDR format, such as 10.23.12.0/24. 24 indicates the length of the prefix in the CIDR block, and the valid range is 1 to 32.
 	//
-	// > - Each instance supports a maximum of 1,000 IP addresses or CIDR blocks across all IP whitelist groups.
+	// > - You can add up to 1,000 IP addresses or CIDR blocks to each instance. The total number of IP addresses or CIDR blocks in all IP address whitelist groups cannot exceed 1,000.
 	//
-	// > - 0.0.0.0/0 allows all IP addresses to access the instance database. This is a high-risk setting. Proceed with caution.
+	// > - 0.0.0.0/0 indicates that all IP addresses can access the databases of the instance. This is a high-risk setting. Proceed with caution.
 	//
 	// example:
 	//
@@ -442,7 +468,7 @@ type CreateDBInstanceRequest struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The source instance ID.
 	//
-	// > If you call this operation to clone clone instance, you must configure this parameter along with the **BackupId*	- or **RestoreTime*	- parameter. If you call this operation to restore clone instance from the recycle bin, you only need to configure this parameter. The **BackupId*	- and **RestoreTime*	- parameters are not required.
+	// > When you call this operation to clone an instance, you must specify this parameter and the **BackupId*	- or **RestoreTime*	- parameter. When you call this operation to restore a revoked instance, you only need to specify this parameter, and you do not need to specify the **BackupId*	- or **RestoreTime*	- parameter.
 	//
 	// example:
 	//
@@ -450,17 +476,17 @@ type CreateDBInstanceRequest struct {
 	SrcDBInstanceId *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
 	// The region where the source instance resides.
 	//
-	// > This parameter is required when the restoration type is 2 or 3.
+	// >- This parameter is required when the backup restoration type is 2 or 3.
 	//
 	// example:
 	//
 	// 2
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// The storage engine of the instance. The value is fixed as **WiredTiger**.
+	// The storage engine of the instance. Set the value to **WiredTiger**.
 	//
-	// > - If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
+	// > - When you call this operation to clone clone instance or restore clone instance from the recycle bin, the value of this parameter must be the same as that of the source instance.
 	//
-	// > - For information about the constraints on storage engines and versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+	// > - For more information about the constraints on the selection of storage engines and versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
 	//
 	// example:
 	//
@@ -474,23 +500,25 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **cloud_essd3**: PL3 ESSD.
 	//
-	// - **cloud_auto**: ESSD AutoPL disk.
+	// - **cloud_auto**: ESSD AutoPL cloud disk.
 	//
 	// - **local_ssd**: local SSD.
 	//
-	// > - For single-node instances, if you specify cloud_essd1, the instance uses a cloud_essd disk.
+	// > - If you specify cloud_essd1 when you purchase a standalone instance, the instance actually uses a cloud_essd cloud disk.
 	//
-	// > - ESSD AutoPL disks are currently available only on the China site.
+	// > - ESSD AutoPL cloud disks are supported only on the Alibaba Cloud China site.
 	//
-	// > - For instances running version 4.4 or later, the default value is **cloud_essd1**.
+	// > - The default value for instances of version 4.4 and later is **cloud_essd1**.
 	//
-	// > - For instances running version 4.2 or earlier, the default value is **local_ssd**.
+	// > - The default value for instances of version 4.2 and earlier is **local_ssd**.
 	//
 	// example:
 	//
 	// cloud_essd1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The user-defined tags.
+	// Specifies whether to enable TTL index cleanup for the restored instance. A value of true or an empty value indicates that cleanup is enabled.
+	TTLEnabled *bool `json:"TTLEnabled,omitempty" xml:"TTLEnabled,omitempty"`
+	// The custom tags.
 	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -568,6 +596,10 @@ func (s *CreateDBInstanceRequest) GetDatabaseNames() *string {
 	return s.DatabaseNames
 }
 
+func (s *CreateDBInstanceRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateDBInstanceRequest) GetEncrypted() *bool {
 	return s.Encrypted
 }
@@ -590,6 +622,14 @@ func (s *CreateDBInstanceRequest) GetGlobalSecurityGroupIds() *string {
 
 func (s *CreateDBInstanceRequest) GetHiddenZoneId() *string {
 	return s.HiddenZoneId
+}
+
+func (s *CreateDBInstanceRequest) GetMaintainEndTime() *string {
+	return s.MaintainEndTime
+}
+
+func (s *CreateDBInstanceRequest) GetMaintainStartTime() *string {
+	return s.MaintainStartTime
 }
 
 func (s *CreateDBInstanceRequest) GetNetworkType() *string {
@@ -668,6 +708,10 @@ func (s *CreateDBInstanceRequest) GetStorageType() *string {
 	return s.StorageType
 }
 
+func (s *CreateDBInstanceRequest) GetTTLEnabled() *bool {
+	return s.TTLEnabled
+}
+
 func (s *CreateDBInstanceRequest) GetTag() []*CreateDBInstanceRequestTag {
 	return s.Tag
 }
@@ -744,6 +788,11 @@ func (s *CreateDBInstanceRequest) SetDatabaseNames(v string) *CreateDBInstanceRe
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetDryRun(v bool) *CreateDBInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetEncrypted(v bool) *CreateDBInstanceRequest {
 	s.Encrypted = &v
 	return s
@@ -771,6 +820,16 @@ func (s *CreateDBInstanceRequest) SetGlobalSecurityGroupIds(v string) *CreateDBI
 
 func (s *CreateDBInstanceRequest) SetHiddenZoneId(v string) *CreateDBInstanceRequest {
 	s.HiddenZoneId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetMaintainEndTime(v string) *CreateDBInstanceRequest {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetMaintainStartTime(v string) *CreateDBInstanceRequest {
+	s.MaintainStartTime = &v
 	return s
 }
 
@@ -869,6 +928,11 @@ func (s *CreateDBInstanceRequest) SetStorageType(v string) *CreateDBInstanceRequ
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetTTLEnabled(v bool) *CreateDBInstanceRequest {
+	s.TTLEnabled = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetTag(v []*CreateDBInstanceRequestTag) *CreateDBInstanceRequest {
 	s.Tag = v
 	return s
@@ -903,17 +967,17 @@ func (s *CreateDBInstanceRequest) Validate() error {
 }
 
 type CreateDBInstanceRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
-	// > - **N*	- indicates the sequence number of the tag key. For example, **Tag.1.Key*	- indicates the key of the first tag, and **Tag.2.Key*	- indicates the key of the second tag.
+	// > - **N*	- specifies the sequence number of the tag. For example, **Tag.1.Key*	- specifies the key of the first tag, and **Tag.2.Key*	- specifies the key of the second tag.
 	//
 	// example:
 	//
 	// testdatabase
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
-	// > **N*	- indicates the sequence number of the tag value. For example, **Tag.1.Value*	- indicates the value of the first tag, and **Tag.2.Value*	- indicates the value of the second tag.
+	// > **N*	- specifies the sequence number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// example:
 	//

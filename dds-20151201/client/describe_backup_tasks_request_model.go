@@ -28,7 +28,7 @@ type iDescribeBackupTasksRequest interface {
 type DescribeBackupTasksRequest struct {
 	// The backup job ID.
 	//
-	// > If you call [CreateBackup](https://help.aliyun.com/document_detail/468439.html) to perform a manual backup, you can pass the returned backup ID to query the backup progress.
+	// > If you called [CreateBackup](https://help.aliyun.com/document_detail/468439.html) to perform a manual backup, you can pass the returned backup ID to query the backup progress.
 	//
 	// example:
 	//

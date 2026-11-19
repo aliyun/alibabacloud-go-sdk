@@ -25,6 +25,8 @@ type iCreateShardingDBInstanceRequest interface {
 	GetDBInstanceDescription() *string
 	SetDestRegion(v string) *CreateShardingDBInstanceRequest
 	GetDestRegion() *string
+	SetDryRun(v bool) *CreateShardingDBInstanceRequest
+	GetDryRun() *bool
 	SetEncrypted(v bool) *CreateShardingDBInstanceRequest
 	GetEncrypted() *bool
 	SetEncryptionKey(v string) *CreateShardingDBInstanceRequest
@@ -37,6 +39,10 @@ type iCreateShardingDBInstanceRequest interface {
 	GetGlobalSecurityGroupIds() *string
 	SetHiddenZoneId(v string) *CreateShardingDBInstanceRequest
 	GetHiddenZoneId() *string
+	SetMaintainEndTime(v string) *CreateShardingDBInstanceRequest
+	GetMaintainEndTime() *string
+	SetMaintainStartTime(v string) *CreateShardingDBInstanceRequest
+	GetMaintainStartTime() *string
 	SetMongos(v []*CreateShardingDBInstanceRequestMongos) *CreateShardingDBInstanceRequest
 	GetMongos() []*CreateShardingDBInstanceRequestMongos
 	SetNetworkType(v string) *CreateShardingDBInstanceRequest
@@ -77,6 +83,8 @@ type iCreateShardingDBInstanceRequest interface {
 	GetStorageEngine() *string
 	SetStorageType(v string) *CreateShardingDBInstanceRequest
 	GetStorageType() *string
+	SetTTLEnabled(v bool) *CreateShardingDBInstanceRequest
+	GetTTLEnabled() *bool
 	SetTag(v []*CreateShardingDBInstanceRequestTag) *CreateShardingDBInstanceRequest
 	GetTag() []*CreateShardingDBInstanceRequestTag
 	SetVSwitchId(v string) *CreateShardingDBInstanceRequest
@@ -96,7 +104,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// - It must be 8 to 32 characters in length.
 	//
-	// > For more information about how to troubleshoot connection failures caused by special characters in database connection string, see [What do I do if database connection to an ApsaraDB for MongoDB instance fails because the username or password in database connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html).
+	// > For more information about how to troubleshoot connection failures caused by special characters in database connection string, see [What do I do if a connection failure occurs because the username or password in database connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html).
 	//
 	// example:
 	//
@@ -104,18 +112,17 @@ type CreateShardingDBInstanceRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// - **true**: Enables auto-renewal.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: Disables auto-renewal. You must manually renew the instance. This is the default value.
+	// - **false**: disables auto-renewal. In this case, you must manually renew the instance. This is the default value.
 	//
-	// > This parameter is available and optional only when the **ChargeType*	- parameter is set to **PrePaid**.
+	// > This parameter is valid and optional only when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the cluster backup.
-	//
+	// The cluster backup ID.
 	//
 	// > - This parameter is required only when RestoreType is set to 2 or 3.
 	//
@@ -125,9 +132,9 @@ type CreateShardingDBInstanceRequest struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PostPaid**: Pay-as-you-go. This is the default value.
+	// - **PostPaid**: pay-as-you-go. This is the default value.
 	//
-	// - **PrePaid**: Subscription.
+	// - **PrePaid**: subscription.
 	//
 	// > If you set this parameter to **PrePaid**, you must also specify the **Period*	- parameter.
 	//
@@ -135,21 +142,21 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The information about the ConfigServer nodes.
+	// The information about the Configserver node.
 	//
 	// This parameter is required.
 	ConfigServer []*CreateShardingDBInstanceRequestConfigServer `json:"ConfigServer,omitempty" xml:"ConfigServer,omitempty" type:"Repeated"`
-	// The name of the instance. The name must meet the following requirements:
+	// The instance name. The name must meet the following requirements:
 	//
-	// - It must start with a letter or a Chinese character.
+	// - It must start with a letter.
 	//
-	// - It can contain digits, letters, Chinese characters, underscores (_), periods (.), and hyphens (-).
+	// - It can contain digits, letters, underscores (_), periods (.), and hyphens (-).
 	//
 	// - It must be 2 to 256 characters in length.
 	//
@@ -157,19 +164,25 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The region where the cross-region backup is stored.
+	// The region of the geo-redundant backup.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: performs a dry run without executing the actual request. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the DryRunOperation error code.
+	//
+	// - false: sends a normal request and executes the operation after the request passes the dry run. This is the default value.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable cloud disk encryption.
 	//
 	// example:
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the custom key.
+	// The custom key ID.
 	//
 	// example:
 	//
@@ -183,7 +196,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// MongoDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database version number. Valid values:
+	// The database version. Valid values:
 	//
 	// - **8.0**
 	//
@@ -209,7 +222,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// 4.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Duplicate templates are not supported.
+	// The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Each template must be unique.
 	//
 	// example:
 	//
@@ -253,7 +266,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > - This parameter is available only when the instance uses cloud disks.
+	// > - This parameter is valid only when the instance uses cloud disks.
 	//
 	// > - The value of this parameter cannot be the same as the value of **ZoneId*	- or **SecondaryZoneId**.
 	//
@@ -263,13 +276,25 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// cn-hangzhou-i
 	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
+	// The maintenance end time.
+	//
+	// example:
+	//
+	// 22:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The maintenance start time.
+	//
+	// example:
+	//
+	// 18:00Z
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The information about the mongos nodes.
 	//
 	// This parameter is required.
 	Mongos []*CreateShardingDBInstanceRequestMongos `json:"Mongos,omitempty" xml:"Mongos,omitempty" type:"Repeated"`
 	// The network type of the instance. Valid values:
 	//
-	// - **VPC**: VPC.
+	// **VPC**: VPC.
 	//
 	// example:
 	//
@@ -281,13 +306,13 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// Valid values: **1*	- to **9**, **12**, **24**, **36**, and **60**.
 	//
-	// > This parameter is required and takes effect only when the **ChargeType*	- parameter is set to **PrePaid**.
+	// > This parameter is required and valid only when the **ChargeType*	- parameter is set to **PrePaid**.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The type of the access protocol. Valid values:
+	// The access protocol type. Valid values:
 	//
 	// - **mongodb**: MongoDB protocol.
 	//
@@ -320,7 +345,7 @@ type CreateShardingDBInstanceRequest struct {
 	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > This parameter is required only when you call this operation to clone an instance. You must also specify the **SrcDBInstanceId*	- parameter.
+	// > You must specify this parameter only when you call this operation to clone an instance. You must also specify the **SrcDBInstanceId*	- parameter.
 	//
 	// example:
 	//
@@ -328,11 +353,11 @@ type CreateShardingDBInstanceRequest struct {
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	// The backup restoration type. Valid values:
 	//
-	// - 1: Restore the instance to a specified point in time.
+	// - 1: restore the instance to a specified point in time.
 	//
-	// - 2: Restore a released instance to a specified backup set.
+	// - 2: restore a released instance to a specified backup set.
 	//
-	// - 3: Restore the instance to a specified cross-region backup set.
+	// - 3: restore the instance to a specified geo-redundant backup set.
 	//
 	// example:
 	//
@@ -376,17 +401,17 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// >- This parameter is available only when the instance uses cloud disks.
+	// > - This parameter is valid only when the instance uses cloud disks.
 	//
-	// >- The value of this parameter cannot be the same as the value of **ZoneId*	- or **HiddenZoneId**.
+	// > - The value of this parameter cannot be the same as the value of **ZoneId*	- or **HiddenZoneId**.
 	//
-	// >- For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
+	// > - For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not supported. The following formats are supported:
+	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Each IP address must be unique. The following formats are supported:
 	//
 	// - 0.0.0.0/0
 	//
@@ -394,27 +419,27 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// - CIDR blocks, such as 10.23.12.0/24. 24 indicates the length of the prefix in the CIDR block, and the prefix length ranges from 1 to 32.
 	//
-	// > - You can add up to 1,000 IP addresses or CIDR blocks to the whitelist of an instance. The total number of IP addresses or CIDR blocks in all whitelist groups cannot exceed 1,000.
+	// > - You can add up to 1,000 IP addresses or CIDR blocks to the whitelist of an instance. The total number of IP addresses and CIDR blocks in all whitelist groups cannot exceed 1,000.
 	//
-	// > - 0.0.0.0/0 indicates that all IP addresses can access the instance. This is a high-risk setting. Configure this parameter with caution.
+	// > - 0.0.0.0/0 indicates that all IP addresses can access the databases of the instance. This is a high-risk setting. Configure this setting with caution.
 	//
 	// example:
 	//
 	// 192.168.xx.xx,192.168.xx.xx
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The source instance ID.
+	// The ID of the source instance.
 	//
-	// > This parameter is required only when you call this operation to clone an instance. You must also specify the **RestoreTime*	- parameter.
+	// > You must specify this parameter only when you call this operation to clone an instance. You must also specify the **RestoreTime*	- parameter.
 	//
 	// example:
 	//
 	// dds-bp11483712c1****
 	SrcDBInstanceId *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
-	// The region where the source instance is located.
+	// The region of the source instance.
 	//
-	// >- This parameter is required when the backup restoration type is rebuilding a deleted instance.
+	// > - This parameter is required when the backup restoration type is rebuilding a deleted instance.
 	//
-	// >- This parameter is required when the backup restoration type is cross-region backup cloning.
+	// > - This parameter is required when the backup restoration type is cloning from a geo-redundant backup.
 	//
 	// example:
 	//
@@ -438,16 +463,18 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// - **cloud_essd3**: PL3 ESSD.
 	//
-	// - **local_ssd**: local SSD.
+	// - **local_ssd**: Local SSD.
 	//
-	// > - Instances of version 4.4 and later support only cloud disks. If you do not specify this parameter, **cloud_essd1*	- is selected by default.
+	// > - Instances of version 4.4 or later support only cloud disks. If you do not specify this parameter, **cloud_essd1*	- is selected by default.
 	//
-	// > - Instances of version 4.2 and earlier support only local disks. If you do not specify this parameter, **local_ssd*	- is selected by default.
+	// > - Instances of version 4.2 or earlier support only local disks. If you do not specify this parameter, **local_ssd*	- is selected by default.
 	//
 	// example:
 	//
 	// cloud_essd1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// Specifies whether to enable TTL index cleanup for the restored instance. A value of true or an empty value indicates that cleanup is enabled.
+	TTLEnabled *bool `json:"TTLEnabled,omitempty" xml:"TTLEnabled,omitempty"`
 	// The custom tags.
 	Tag []*CreateShardingDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID.
@@ -510,6 +537,10 @@ func (s *CreateShardingDBInstanceRequest) GetDestRegion() *string {
 	return s.DestRegion
 }
 
+func (s *CreateShardingDBInstanceRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateShardingDBInstanceRequest) GetEncrypted() *bool {
 	return s.Encrypted
 }
@@ -532,6 +563,14 @@ func (s *CreateShardingDBInstanceRequest) GetGlobalSecurityGroupIds() *string {
 
 func (s *CreateShardingDBInstanceRequest) GetHiddenZoneId() *string {
 	return s.HiddenZoneId
+}
+
+func (s *CreateShardingDBInstanceRequest) GetMaintainEndTime() *string {
+	return s.MaintainEndTime
+}
+
+func (s *CreateShardingDBInstanceRequest) GetMaintainStartTime() *string {
+	return s.MaintainStartTime
 }
 
 func (s *CreateShardingDBInstanceRequest) GetMongos() []*CreateShardingDBInstanceRequestMongos {
@@ -614,6 +653,10 @@ func (s *CreateShardingDBInstanceRequest) GetStorageType() *string {
 	return s.StorageType
 }
 
+func (s *CreateShardingDBInstanceRequest) GetTTLEnabled() *bool {
+	return s.TTLEnabled
+}
+
 func (s *CreateShardingDBInstanceRequest) GetTag() []*CreateShardingDBInstanceRequestTag {
 	return s.Tag
 }
@@ -670,6 +713,11 @@ func (s *CreateShardingDBInstanceRequest) SetDestRegion(v string) *CreateShardin
 	return s
 }
 
+func (s *CreateShardingDBInstanceRequest) SetDryRun(v bool) *CreateShardingDBInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateShardingDBInstanceRequest) SetEncrypted(v bool) *CreateShardingDBInstanceRequest {
 	s.Encrypted = &v
 	return s
@@ -697,6 +745,16 @@ func (s *CreateShardingDBInstanceRequest) SetGlobalSecurityGroupIds(v string) *C
 
 func (s *CreateShardingDBInstanceRequest) SetHiddenZoneId(v string) *CreateShardingDBInstanceRequest {
 	s.HiddenZoneId = &v
+	return s
+}
+
+func (s *CreateShardingDBInstanceRequest) SetMaintainEndTime(v string) *CreateShardingDBInstanceRequest {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *CreateShardingDBInstanceRequest) SetMaintainStartTime(v string) *CreateShardingDBInstanceRequest {
+	s.MaintainStartTime = &v
 	return s
 }
 
@@ -800,6 +858,11 @@ func (s *CreateShardingDBInstanceRequest) SetStorageType(v string) *CreateShardi
 	return s
 }
 
+func (s *CreateShardingDBInstanceRequest) SetTTLEnabled(v bool) *CreateShardingDBInstanceRequest {
+	s.TTLEnabled = &v
+	return s
+}
+
 func (s *CreateShardingDBInstanceRequest) SetTag(v []*CreateShardingDBInstanceRequestTag) *CreateShardingDBInstanceRequest {
 	s.Tag = v
 	return s
@@ -861,11 +924,11 @@ func (s *CreateShardingDBInstanceRequest) Validate() error {
 }
 
 type CreateShardingDBInstanceRequestConfigServer struct {
-	// The specifications of the ConfigServer node. Valid values:
+	// The specifications of the Configserver node. Valid values:
 	//
-	// - **mdb.shard.2x.xlarge.d**: 4 cores, 8 GB (dedicated). This specification is supported only for instances of version 4.4 and later.
+	// - **mdb.shard.2x.xlarge.d**: 4 cores, 8 GB (dedicated). This specification is supported only by instances of version 4.4 or later.
 	//
-	// - **dds.cs.mid**: 1 core, 2 GB (general-purpose). This specification is supported only for instances of version 4.2 and earlier.
+	// - **dds.cs.mid**: 1 core, 2 GB (general-purpose). This specification is supported only by instances of version 4.2 or earlier.
 	//
 	// This parameter is required.
 	//
@@ -873,7 +936,7 @@ type CreateShardingDBInstanceRequestConfigServer struct {
 	//
 	// mdb.shard.2x.xlarge.d
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
-	// The storage capacity of the ConfigServer node. Unit: GB.
+	// The storage capacity of the Configserver node. Unit: GB.
 	//
 	// > The valid values are subject to the instance specifications. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
@@ -918,7 +981,7 @@ func (s *CreateShardingDBInstanceRequestConfigServer) Validate() error {
 type CreateShardingDBInstanceRequestMongos struct {
 	// The specifications of the mongos node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
-	// > - **N*	- in the parameter name specifies the sequence number of the mongos node. For example, **Mongos.2.Class*	- specifies the specifications of the second mongos node.
+	// > - **N*	- in the parameter name specifies the Nth mongos node. For example, **Mongos.2.Class*	- specifies the specifications of the second mongos node.
 	//
 	// > - Valid values of **N**: **2*	- to **32**.
 	//
@@ -954,7 +1017,7 @@ func (s *CreateShardingDBInstanceRequestMongos) Validate() error {
 type CreateShardingDBInstanceRequestReplicaSet struct {
 	// The specifications of the shard node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
-	// > - **N*	- in the parameter name specifies the sequence number of the shard node. For example, **ReplicaSet.2.Class*	- specifies the specifications of the second shard node.
+	// > - **N*	- in the parameter name specifies the Nth shard node. For example, **ReplicaSet.2.Class*	- specifies the specifications of the second shard node.
 	//
 	// > - Valid values of **N**: **2*	- to **32**.
 	//
@@ -968,7 +1031,7 @@ type CreateShardingDBInstanceRequestReplicaSet struct {
 	//
 	// Valid values: **0*	- to **5**. Default value: **0**.
 	//
-	// > **N*	- in the parameter name specifies the sequence number of the shard node. For example, **ReplicaSet.2.ReadonlyReplicas*	- specifies the number of read-only nodes in the second shard node.
+	// > **N*	- in the parameter name specifies the Nth shard node. For example, **ReplicaSet.2.ReadonlyReplicas*	- specifies the number of read-only nodes in the second shard node.
 	//
 	// example:
 	//
@@ -978,7 +1041,7 @@ type CreateShardingDBInstanceRequestReplicaSet struct {
 	//
 	// > - The valid values are subject to the instance specifications. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
-	// > - **N*	- in the parameter name specifies the sequence number of the shard node. For example, **ReplicaSet.2.Storage*	- specifies the storage capacity of the second shard node.
+	// > - **N*	- in the parameter name specifies the Nth shard node. For example, **ReplicaSet.2.Storage*	- specifies the storage capacity of the second shard node.
 	//
 	// This parameter is required.
 	//
@@ -1028,17 +1091,17 @@ func (s *CreateShardingDBInstanceRequestReplicaSet) Validate() error {
 }
 
 type CreateShardingDBInstanceRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
-	// > - **N*	- in the parameter name specifies the sequence number of the tag. For example, **Tag.1.Key*	- specifies the key of the first tag, and **Tag.2.Key*	- specifies the key of the second tag.
+	// > **N*	- in the parameter name specifies the Nth tag. For example, **Tag.1.Key*	- specifies the key of the first tag, and **Tag.2.Key*	- specifies the key of the second tag.
 	//
 	// example:
 	//
 	// testdatabase
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
-	// > **N*	- in the parameter name specifies the sequence number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
+	// > **N*	- in the parameter name specifies the Nth tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// example:
 	//

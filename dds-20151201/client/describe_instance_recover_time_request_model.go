@@ -40,16 +40,17 @@ type DescribeInstanceRecoverTimeRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region where the geo-redundancy backup set is stored.
+	// The region where the geo-redundancy backup set is located.
 	//
 	// >
 	//
-	// > - This parameter is required when you query geo-redundancy backups.
+	// > - Required when you query geo-redundancy.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	DestRegion          *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// Specifies whether to query only the restorable time ranges that support database and table restoration. Default value: false.
 	OnlyDbTableRecovery *bool   `json:"OnlyDbTableRecovery,omitempty" xml:"OnlyDbTableRecovery,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -62,11 +63,11 @@ type DescribeInstanceRecoverTimeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The area where the source instance of the geo-redundancy backup resides.
+	// The area where the source instance of the geo-redundancy backup is located.
 	//
 	// >
 	//
-	// > - This parameter is required when you query geo-redundancy backups.
+	// > - Required when you query geo-redundancy.
 	//
 	// example:
 	//

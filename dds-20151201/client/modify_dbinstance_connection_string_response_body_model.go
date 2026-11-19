@@ -16,6 +16,11 @@ type iModifyDBInstanceConnectionStringResponseBody interface {
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
+	// The modified endpoint of the instance.
+	//
+	// example:
+	//
+	// demo-instance-pub.mongodb.rds.aliyuncs.com
 	ModifiedConnectionString *string `json:"ModifiedConnectionString,omitempty" xml:"ModifiedConnectionString,omitempty"`
 	// The request ID.
 	//

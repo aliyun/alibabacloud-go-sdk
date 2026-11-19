@@ -18,19 +18,19 @@ type iCreateNodeBatchResponseBody interface {
 }
 
 type CreateNodeBatchResponseBody struct {
-	// The ID of the added Mongos or shard node.
+	// The ID of the newly added Mongos or shard node.
 	//
 	// example:
 	//
 	// d-bp18f7d6b6a7****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 50179021707****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

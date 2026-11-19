@@ -23,6 +23,8 @@ type iCreateNodeRequest interface {
 	GetCouponNo() *string
 	SetDBInstanceId(v string) *CreateNodeRequest
 	GetDBInstanceId() *string
+	SetDryRun(v bool) *CreateNodeRequest
+	GetDryRun() *bool
 	SetNodeClass(v string) *CreateNodeRequest
 	GetNodeClass() *string
 	SetNodeStorage(v int32) *CreateNodeRequest
@@ -58,7 +60,7 @@ type CreateNodeRequest struct {
 	//
 	// - The username must be 4 to 16 characters in length.
 	//
-	// > - ApsaraDB for MongoDB does not support using keywords as usernames.
+	// > - ApsaraDB for MongoDB does not support keywords as usernames.
 	//
 	// > - The permissions of the account are fixed to read-only.
 	//
@@ -68,7 +70,7 @@ type CreateNodeRequest struct {
 	//
 	// ceshi
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account. Valid values:
+	// The password. Valid values:
 	//
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
@@ -76,7 +78,7 @@ type CreateNodeRequest struct {
 	//
 	// - The password must be 8 to 32 characters in length.
 	//
-	// > ApsaraDB for MongoDB does not support resetting the password of the account for the shard node.
+	// > ApsaraDB for MongoDB does not support resetting the password for the shard node account.
 	//
 	// example:
 	//
@@ -84,7 +86,7 @@ type CreateNodeRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
+	// - **true*	- (default): enables automatic payment. Make sure that your account has sufficient balance.
 	//
 	// <props="china">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Expenses*	- > **Expenses and Costs*	- in the upper-right corner, choose **Subscription Orders*	- > **My Orders*	- in the left-side navigation pane, and then pay for the order on the **Orders*	- tab.
 	//
@@ -96,13 +98,13 @@ type CreateNodeRequest struct {
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The additional parameter that contains business information.
+	// The additional parameter for business information.
 	//
 	// example:
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The value can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -110,7 +112,7 @@ type CreateNodeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null**: uses a coupon. This is the default value.
+	// - **default*	- or **null*	- (default): uses a coupon.
 	//
 	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
@@ -126,7 +128,13 @@ type CreateNodeRequest struct {
 	//
 	// dds-bp11501cd7b5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance type of the shard node or mongos node. For more information about instance types, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: performs a dry run without calling the operation. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// - false (default): sends the request. If the request passes the dry run, the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The instance type of the shard or mongos node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
 	// This parameter is required.
 	//
@@ -138,7 +146,7 @@ type CreateNodeRequest struct {
 	//
 	// The valid values vary based on the storage type. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
-	// > This parameter is required when the node type is **Shard**.
+	// > This parameter is required when the node type is **shard**.
 	//
 	// example:
 	//
@@ -162,22 +170,37 @@ type CreateNodeRequest struct {
 	//
 	// Valid values: **0*	- to **5**. Default value: **0**.
 	//
-	// > This parameter is supported only on the Alibaba Cloud China site.
+	// > This parameter is supported only on the China site.
 	//
 	// example:
 	//
 	// 5
-	ReadonlyReplicas      *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ReadonlyReplicas     *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The instance type of the search node to be added.
+	//
+	// example:
+	//
+	// mdb.shard.4x.large.d
 	SearchDBInstanceClass *string `json:"SearchDBInstanceClass,omitempty" xml:"SearchDBInstanceClass,omitempty"`
-	SearchNodeCount       *int32  `json:"SearchNodeCount,omitempty" xml:"SearchNodeCount,omitempty"`
-	SearchStorage         *int32  `json:"SearchStorage,omitempty" xml:"SearchStorage,omitempty"`
+	// The number of search nodes to be added.
+	//
+	// example:
+	//
+	// 2
+	SearchNodeCount *int32 `json:"SearchNodeCount,omitempty" xml:"SearchNodeCount,omitempty"`
+	// The storage capacity of the search node to be added.
+	//
+	// example:
+	//
+	// 20
+	SearchStorage *int32 `json:"SearchStorage,omitempty" xml:"SearchStorage,omitempty"`
 	// Specifies whether to apply for a direct connection endpoint for the shard node. Valid values:
 	//
 	// - **true**: applies for a direct connection endpoint for the shard node.
 	//
-	// - **false**: does not apply for a direct connection endpoint for the shard node. This is the default value.
+	// - **false*	- (default): does not apply for a direct connection endpoint for the shard node.
 	//
 	// example:
 	//
@@ -219,6 +242,10 @@ func (s *CreateNodeRequest) GetCouponNo() *string {
 
 func (s *CreateNodeRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *CreateNodeRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateNodeRequest) GetNodeClass() *string {
@@ -301,6 +328,11 @@ func (s *CreateNodeRequest) SetCouponNo(v string) *CreateNodeRequest {
 
 func (s *CreateNodeRequest) SetDBInstanceId(v string) *CreateNodeRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateNodeRequest) SetDryRun(v bool) *CreateNodeRequest {
+	s.DryRun = &v
 	return s
 }
 

@@ -16,9 +16,9 @@ type iDescribeAvailabilityZonesResponseBody interface {
 }
 
 type DescribeAvailabilityZonesResponseBody struct {
-	// The details of the zones in which you can create ApsaraDB for MongoDB instances.
+	// The details of the zones where resources are available for purchase.
 	AvailableZones []*DescribeAvailabilityZonesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,29 +66,29 @@ func (s *DescribeAvailabilityZonesResponseBody) Validate() error {
 }
 
 type DescribeAvailabilityZonesResponseBodyAvailableZones struct {
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the latest available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
 	// cn-beijing-f
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone.
+	// The zone name.
 	//
-	// The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
+	// The returned language is determined by the **AcceptLanguage*	- parameter. Take the **cn-hangzhou-h*	- zone as an example:
 	//
-	// - If the value of the **AcceptLanguage*	- parameter is **zh**, **H*	- is returned for the ZoneName parameter.
+	// - If **AcceptLanguage*	- is set to **zh**: 杭州 可用区H
 	//
-	// - If the value of the **AcceptLanguage*	- parameter is **en**, **Hangzhou Zone H*	- is returned for the ZoneName parameter.
+	// - If **AcceptLanguage*	- is set to **en**: Hangzhou Zone H
 	//
 	// example:
 	//
-	// Hangzhou Zone H
+	// 杭州 可用区H
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 

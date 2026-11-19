@@ -22,7 +22,7 @@ type DescribeClusterRecoverTimeResponseBody struct {
 	//
 	// 60EEBD77-227C-5B39-86EA-D89163C5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of cluster backup sets. A cluster backup contains the backup set of each node.
+	// The list of cluster backup sets. A cluster backup contains the backup sets of each node.
 	RestoreRanges []*DescribeClusterRecoverTimeResponseBodyRestoreRanges `json:"RestoreRanges,omitempty" xml:"RestoreRanges,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeClusterRecoverTimeResponseBody) Validate() error {
 }
 
 type DescribeClusterRecoverTimeResponseBodyRestoreRanges struct {
-	// The beginning of the restorable time range.
+	// The start time of the restorable time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-10-16T19:33:20Z
 	RestoreBeginTime *string `json:"RestoreBeginTime,omitempty" xml:"RestoreBeginTime,omitempty"`
-	// The end of the restorable time range.
+	// The end time of the restorable time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

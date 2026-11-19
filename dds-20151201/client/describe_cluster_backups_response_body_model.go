@@ -22,21 +22,21 @@ type iDescribeClusterBackupsResponseBody interface {
 }
 
 type DescribeClusterBackupsResponseBody struct {
-	// The details of the cluster backup sets. A cluster backup contains the backup sets of all nodes.
+	// The cluster backup sets. A cluster backup set contains the backup sets of all nodes.
 	ClusterBackups []*DescribeClusterBackupsResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries returned for the request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
@@ -119,71 +119,70 @@ func (s *DescribeClusterBackupsResponseBody) Validate() error {
 type DescribeClusterBackupsResponseBodyClusterBackups struct {
 	// The status of the attached log backup. Valid values:
 	//
-	// - **Init**: initialization.
+	// - **Init**: The attached log backup is being initialized.
 	//
-	// - **No_Need**: No attached log backup is available.
+	// - **No_Need**: No attached log backup is required.
 	//
 	// - **Running**: The attached log backup is in progress.
 	//
 	// - **Ready**: The attached log backup is complete.
 	//
-	// - **Failed**: The attached log backup failed.
+	// - **Failed**: The attached log backup fails.
 	//
-	// > If the value of the **ClusterBackupStatus*	- parameter is OK, it only indicates that the full backup was successful. For a cluster instance for which log backup is enabled, the attached log backup must be complete before you can perform a point-in-time restore or ensure data consistency.
+	// > When the **ClusterBackupStatus*	- parameter is set to OK, it only indicates that the full backup phase is successful. For cluster instances with log backup enabled, the attached log backup must be complete to perform point-in-time recovery or achieve consistent recovery.
 	//
 	// example:
 	//
 	// Ready
 	AttachLogStatus *string `json:"AttachLogStatus,omitempty" xml:"AttachLogStatus,omitempty"`
-	// The time when the backup expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	// The expire time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
-	// 	Notice:
 	//
-	// A value of "9999-01-01T00:00:00Z" indicates that the backup is permanently retained.
+	// 	Notice: A value of "9999-01-01T00:00:00Z" indicates long-term retention (LTR).</notice>
 	//
 	// example:
 	//
 	// 2025-03-29T03:47:12Z
 	BackupExpireTime *string `json:"BackupExpireTime,omitempty" xml:"BackupExpireTime,omitempty"`
-	// The backup sets of each child node in the cluster backup.
+	// The backup sets of child nodes in a single cluster backup set.
 	Backups []*DescribeClusterBackupsResponseBodyClusterBackupsBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
-	// The time when the cluster backup finished.
+	// The end time of the cluster backup. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-10-16T19:33:20Z
 	ClusterBackupEndTime *string `json:"ClusterBackupEndTime,omitempty" xml:"ClusterBackupEndTime,omitempty"`
-	// The ID of the cluster backup.
+	// The cluster backup set ID.
 	//
 	// example:
 	//
 	// cb-o8c2ugnxo26kx***
 	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
-	// The mode of the cluster backup.
+	// The cluster backup mode.
 	//
 	// example:
 	//
 	// Automated
 	ClusterBackupMode *string `json:"ClusterBackupMode,omitempty" xml:"ClusterBackupMode,omitempty"`
-	// The size of the cluster backup set, in bytes.
+	// The size of the cluster backup set. Unit: bytes.
 	//
 	// example:
 	//
 	// 107374182400
 	ClusterBackupSize *string `json:"ClusterBackupSize,omitempty" xml:"ClusterBackupSize,omitempty"`
-	// The time when the cluster backup started.
+	// The start time of the cluster backup. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-10-16T19:33:20Z
 	ClusterBackupStartTime *string `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
-	// The status of the cluster backup.
+	// The status of the cluster backup set.
 	//
 	// example:
 	//
 	// OK
 	ClusterBackupStatus *string `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
-	// The database engine version of the instance when the backup was created. Valid values:
+	// The instance version at the time of backup. Valid values:
 	//
 	// - **7.0**
 	//
@@ -203,21 +202,21 @@ type DescribeClusterBackupsResponseBodyClusterBackups struct {
 	//
 	// 4.2
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The supplementary information. The value is a JSON-formatted string.
+	// The supplementary information in JSON format.
 	ExtraInfo *DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
 	// Indicates whether the cluster backup set is valid. Valid values:
 	//
 	// - **1**: The cluster backup set is valid.
 	//
-	// - **0**: The backup sets of child nodes are not complete or have failed.
+	// - **0**: The backup sets of the child nodes are incomplete or failed.
 	//
 	// example:
 	//
 	// 1
 	IsAvail *int32 `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	// The backup progress in percentage.
+	// The backup progress. Unit: %.
 	//
-	// This parameter is returned only for backups that are in progress.
+	// The progress is displayed only for running backups.
 	//
 	// example:
 	//
@@ -369,43 +368,43 @@ func (s *DescribeClusterBackupsResponseBodyClusterBackups) Validate() error {
 }
 
 type DescribeClusterBackupsResponseBodyClusterBackupsBackups struct {
-	// The public URL from which you can download the backup file. If the backup file is unavailable for download, an empty string is returned.
+	// The public endpoint used to download the backup file. If the backup file cannot be downloaded, an empty string is returned.
 	//
 	// example:
 	//
 	// http://oss.com/xxx
 	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The time when the backup finished. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	// The end time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-10-16T19:33:20Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The ID of the backup.
+	// The backup ID.
 	//
 	// example:
 	//
 	// 738025367
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The internal URL from which you can download the backup file. If the backup file is unavailable for download, an empty string is returned.
+	// The internal endpoint used to download the backup file. If the backup file cannot be downloaded, a null value is returned.
 	//
 	// example:
 	//
 	// http://oss.com/xxx
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The name of the backup.
+	// The backup name.
 	//
 	// example:
 	//
 	// 12345678.tar.gz
 	BackupName *string `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
-	// The size of the backup file, in bytes.
+	// The size of the backup file. Unit: bytes.
 	//
 	// example:
 	//
 	// 77544597650
 	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The time when the backup started. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	// The start time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -415,15 +414,15 @@ type DescribeClusterBackupsResponseBodyClusterBackupsBackups struct {
 	//
 	// - **Success**: The backup is successful.
 	//
-	// - **Failed**: The backup failed.
+	// - **Failed**: The backup fails.
 	//
 	// example:
 	//
 	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The information about the instance node that is associated with the backup.
+	// The information about the instance node associated with the backup.
 	ExtraInfo *DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	// The name of the shard in the MongoDB cluster.
+	// The name of the MongoDB shard.
 	//
 	// example:
 	//
@@ -431,9 +430,9 @@ type DescribeClusterBackupsResponseBodyClusterBackupsBackups struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Indicates whether the backup set is available. Valid values:
 	//
-	// - **0**: unavailable.
+	// 	- **0**: unavailable.
 	//
-	// - **1**: available.
+	// 	- **1**: available.
 	//
 	// example:
 	//
@@ -558,25 +557,25 @@ func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackups) Validate() err
 }
 
 type DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo struct {
-	// The specifications of the node.
+	// The node specifications.
 	//
 	// example:
 	//
 	// mdb.shard.4x.large.d
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
 	// d-2ze75ab1fa5d****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the node.
+	// The node type.
 	//
 	// example:
 	//
 	// db
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The storage space of the node, in MB.
+	// The storage space of the node. Unit: MB.
 	//
 	// example:
 	//
@@ -633,7 +632,7 @@ func (s *DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo) Valid
 }
 
 type DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo struct {
-	// Indicates whether the backup set was migrated from a historical backup. A value of **1*	- indicates that the backup was migrated.
+	// Indicates whether the backup set is migrated from a historical backup set. A value of **1*	- indicates that the backup set is migrated from a historical backup set.
 	//
 	// example:
 	//

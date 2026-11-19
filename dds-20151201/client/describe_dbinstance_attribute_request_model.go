@@ -46,9 +46,9 @@ type DescribeDBInstanceAttributeRequest struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// Specifies whether the instance is deleted. Valid values:
 	//
-	// - **false**: The instance is running. Queries the information of a running instance.
+	// - **false**: The instance is running. Queries the information of running instances.
 	//
-	// - **true**: The instance is deleted. Queries the information of a deleted instance.
+	// - **true**: The instance is deleted. Queries the information of deleted instances.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeDBInstanceAttributeRequest struct {
 	IsDelete     *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. For more information about resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The resource group ID. For more information about resource groups, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
-	// >This parameter is supported only on the China site.
+	// > This parameter is supported only on the Alibaba Cloud China site.
 	//
 	// example:
 	//

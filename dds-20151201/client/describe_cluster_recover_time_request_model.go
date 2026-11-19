@@ -38,16 +38,21 @@ type DescribeClusterRecoverTimeRequest struct {
 	//
 	// dds-bp18f7d6b6a7****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region where the geo-redundancy backup set resides.
+	// The region where the geo-redundancy backup set is stored.
 	//
 	// >
 	//
-	// > - This parameter is required when you query a geo-redundancy backup.
+	// > - This parameter is required when you query geo-redundancy backups.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	DestRegion          *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// Specifies whether to query only the restorable time ranges that support database and table restoration. Valid values:
+	//
+	// - **true**: returns only the restorable time ranges that support database and table restoration.
+	//
+	// - **false*	- (default): returns all restorable time ranges.
 	OnlyDbTableRecovery *bool   `json:"OnlyDbTableRecovery,omitempty" xml:"OnlyDbTableRecovery,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -59,11 +64,11 @@ type DescribeClusterRecoverTimeRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The region where the source instance of the geo-redundancy backup resides.
+	// The region of the source instance for geo-redundancy backups.
 	//
 	// >
 	//
-	// > - This parameter is required when you query a geo-redundancy backup.
+	// > - This parameter is required when you query geo-redundancy backups.
 	//
 	// example:
 	//

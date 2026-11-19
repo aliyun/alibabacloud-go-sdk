@@ -56,29 +56,29 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// -1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the time can be changed. Valid values:
+	// Specifies whether the execution time can be modified. Valid values:
 	//
 	// - **-1*	- (default): returns all tasks.
 	//
-	// - **0**: returns only tasks whose time cannot be changed.
+	// - **0**: returns only tasks whose execution time cannot be modified.
 	//
-	// - **1**: returns only tasks whose time can be changed.
+	// - **1**: returns only tasks whose execution time can be modified.
 	//
 	// example:
 	//
 	// -1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The level of the task. Valid values:
+	// The change level. Valid values:
 	//
 	// - **all*	- (default): returns all tasks.
 	//
-	// - **S0**: returns tasks for exception fixing.
+	// - **S0**: returns tasks at the exception remediation level.
 	//
-	// - **S1**: returns tasks for system O\\&M.
+	// - **S1**: returns tasks at the system O&M level.
 	//
 	// example:
 	//
-	// ***
+	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
 	// The database type. Default value: **all**.
 	//
@@ -86,7 +86,7 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// mongoDb
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The name of the instance. This parameter is optional. You can specify only one instance name.
+	// The name of the instance. This parameter is optional. If you specify this parameter, you can specify only one instance name.
 	//
 	// example:
 	//
@@ -106,21 +106,21 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product name. For MongoDB instances, set this parameter to **MongoDB**.
+	// The product name. For MongoDB instances, set the value to **MongoDB**.
 	//
 	// example:
 	//
 	// MongoDB
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The ID of the region where the pending event is located. Call the DescribeRegions operation to obtain the region ID.
+	// The ID of the region to which the pending event belongs. You can call the DescribeRegions operation to query the region ID.
 	//
-	// > A value of **all*	- indicates all region IDs.
+	// > A value of **all*	- specifies all region IDs.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -128,19 +128,19 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The task status. This parameter filters the returned tasks.
+	// The task status, which is used to filter the returned tasks. Valid values:
 	//
-	// - **-1**: all tasks.
+	// - **-1**: all tasks
 	//
-	// - **3**: pending tasks.
+	// - **3**: pending tasks
 	//
-	// - **4**: running tasks.
+	// - **4**: in-progress tasks
 	//
-	// - **5**: successfully completed tasks.
+	// - **5**: successfully completed tasks
 	//
-	// - **6**: failed tasks.
+	// - **6**: failed tasks
 	//
-	// - **7**: canceled tasks.
+	// - **7**: canceled tasks
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ type DescribeActiveOperationTasksRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **rds_apsaradb_ha**: primary-secondary node switchover.
+	// - **rds_apsaradb_ha**: primary/secondary node switch
 	//
-	// - **rds_apsaradb_transfer**: instance migration.
+	// - **rds_apsaradb_transfer**: instance migration
 	//
-	// - **rds_apsaradb_upgrade**: minor version upgrade.
+	// - **rds_apsaradb_upgrade**: minor version upgrade
 	//
-	// - **rds_apsaradb_maxscale**: proxy minor version upgrade.
+	// - **rds_apsaradb_maxscale**: proxy minor version upgrade
 	//
-	// - **all**: all task types.
+	// - **all**: all task types
 	//
 	// example:
 	//

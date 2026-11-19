@@ -16,7 +16,7 @@ type iTransferClusterBackupResponseBody interface {
 }
 
 type TransferClusterBackupResponseBody struct {
-	// Indicates whether the instance is switched to the cluster backup mode. If the value of this parameter is **1**, the instance is switched to the cluster backup mode.
+	// Indicates whether the instance has been switched to cluster backup mode. **1*	- indicates that the switch is complete.
 	//
 	// example:
 	//

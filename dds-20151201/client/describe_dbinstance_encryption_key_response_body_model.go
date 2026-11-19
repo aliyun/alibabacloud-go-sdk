@@ -36,7 +36,7 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	//
 	// 123456
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled deletion time of the instance key. If this value is empty, the key is not automatically deleted.
+	// The expected deletion time of the instance key, in the yyyy-MM-ddTHH:mm:ssZ format (UTC). If this value is empty, the key is not automatically deleted.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	//
 	// 2axxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The status of the instance key. Valid values:
+	// The status of the instance key.
 	//
 	// - **Enabled**: The instance key is available.
 	//
@@ -64,7 +64,7 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	//
 	// Enabled
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The purpose of the instance key.
+	// The usage of the instance key.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	//
 	// Aliyun_KMS
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

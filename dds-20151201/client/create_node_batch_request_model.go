@@ -23,6 +23,8 @@ type iCreateNodeBatchRequest interface {
 	GetCouponNo() *string
 	SetDBInstanceId(v string) *CreateNodeBatchRequest
 	GetDBInstanceId() *string
+	SetDryRun(v bool) *CreateNodeBatchRequest
+	GetDryRun() *bool
 	SetFromApp(v string) *CreateNodeBatchRequest
 	GetFromApp() *string
 	SetNodesInfo(v string) *CreateNodeBatchRequest
@@ -40,7 +42,7 @@ type iCreateNodeBatchRequest interface {
 }
 
 type CreateNodeBatchRequest struct {
-	// The name of the account. Valid values:
+	// The username of the account. The name must meet the following requirements:
 	//
 	// - The name must start with a lowercase letter.
 	//
@@ -58,7 +60,7 @@ type CreateNodeBatchRequest struct {
 	//
 	// ceshi
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account. Valid values:
+	// The password of the account. The password must meet the following requirements:
 	//
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
@@ -74,9 +76,9 @@ type CreateNodeBatchRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: (Default) Automatic payment is enabled. Make sure that your account has sufficient balance.
+	// - **true**: Enables automatic payment. Make sure that your account has sufficient balance. This is the default value.
 	//
-	// - **false**: Manual payment is enabled. For more information, see [Manually renew a subscription instance](https://help.aliyun.com/document_detail/85052.html).
+	// - **false**: Disables automatic payment. You must manually pay the order. For more information, see [Manually renew a subscription instance](https://help.aliyun.com/document_detail/85052.html).
 	//
 	// example:
 	//
@@ -88,7 +90,7 @@ type CreateNodeBatchRequest struct {
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. It cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -96,9 +98,9 @@ type CreateNodeBatchRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null**: (Default) A coupon is used.
+	// - **default*	- or **null**: Uses a coupon. This is the default value.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: No coupon is used.
+	// - **youhuiquan_promotion_option_id_for_blank**: Does not use a coupon.
 	//
 	// example:
 	//
@@ -112,11 +114,17 @@ type CreateNodeBatchRequest struct {
 	//
 	// dds-bp18b0934e70****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - true: Performs a dry run without calling the operation. The system checks items such as request parameters, request format, service limits, and inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	//
+	// - false: Sends the request. If the check succeeds, the operation is performed. This is the default value.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The source of the request. Valid values:
 	//
-	// - **OpenApi**: OpenAPI.
+	// - **OpenApi**: The request is sent from OpenAPI Explorer.
 	//
-	// - **mongo_buy**: The console.
+	// - **mongo_buy**: The request is sent from the console.
 	//
 	// example:
 	//
@@ -140,7 +148,7 @@ type CreateNodeBatchRequest struct {
 	//
 	// - **true**: Applies for a direct connection endpoint for the shard node.
 	//
-	// - **false**: (Default) Does not apply for a direct connection endpoint for the shard node.
+	// - **false**: Does not apply for a direct connection endpoint for the shard node. This is the default value.
 	//
 	// example:
 	//
@@ -182,6 +190,10 @@ func (s *CreateNodeBatchRequest) GetCouponNo() *string {
 
 func (s *CreateNodeBatchRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *CreateNodeBatchRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateNodeBatchRequest) GetFromApp() *string {
@@ -244,6 +256,11 @@ func (s *CreateNodeBatchRequest) SetCouponNo(v string) *CreateNodeBatchRequest {
 
 func (s *CreateNodeBatchRequest) SetDBInstanceId(v string) *CreateNodeBatchRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateNodeBatchRequest) SetDryRun(v bool) *CreateNodeBatchRequest {
+	s.DryRun = &v
 	return s
 }
 

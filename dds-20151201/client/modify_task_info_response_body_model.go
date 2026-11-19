@@ -20,13 +20,13 @@ type iModifyTaskInfoResponseBody interface {
 }
 
 type ModifyTaskInfoResponseBody struct {
-	// The error code for the failed task. It is the same as that of the ModifyTaskInfo operation.
+	// The error code for the failure. This is the same as the API error code.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the failed task. The operation returns results after a task fails.
+	// The ID of the failed task. The ID is returned when a failure occurs.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ModifyTaskInfoResponseBody struct {
 	//
 	// 6163731A-XXXX-XXXX-B934-3388DE70C217
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successful tasks.
+	// The number of successful records.
 	//
 	// example:
 	//

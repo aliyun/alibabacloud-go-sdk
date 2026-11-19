@@ -51,9 +51,18 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ForceModifySuffix *bool   `json:"ForceModifySuffix,omitempty" xml:"ForceModifySuffix,omitempty"`
-	// The network type of the connection string when only the port number is modified.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to forcibly modify the suffix of the connection string. If a suffix conflict occurs:
+	//
+	// - true: Forcibly modifies the suffix.
+	//
+	// - false or not specified: Uses the default validation logic.
+	//
+	// example:
+	//
+	// true
+	ForceModifySuffix *bool `json:"ForceModifySuffix,omitempty" xml:"ForceModifySuffix,omitempty"`
+	// The network type of the connection string when only port numbers are modified.
 	//
 	// example:
 	//
@@ -69,13 +78,13 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// - It must be 8 to 63 characters in length.
 	//
-	// > Specify only the prefix of the endpoint. The remaining part cannot be modified.
+	// > You only need to specify the prefix of the endpoint. The suffix cannot be modified.
 	//
 	// example:
 	//
 	// aliyuntest111
 	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
-	// The new port. Valid values: 1000 to 65535.
+	// The new port number. Valid values: 1000 to 65535.
 	//
 	// > This parameter is active only when the **DBInstanceId*	- parameter is set to a cloud disk instance ID.
 	//
@@ -93,7 +102,11 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to modify only port numbers. If you modify only port numbers, batch modification is supported.
+	// Specifies whether to modify only port numbers. Batch modification is supported when only port numbers are modified.
+	//
+	// example:
+	//
+	// true
 	PortModifyOnly       *bool   `json:"PortModifyOnly,omitempty" xml:"PortModifyOnly,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

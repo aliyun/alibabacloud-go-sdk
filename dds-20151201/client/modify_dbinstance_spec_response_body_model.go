@@ -16,13 +16,13 @@ type iModifyDBInstanceSpecResponseBody interface {
 }
 
 type ModifyDBInstanceSpecResponseBody struct {
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 21012408824****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

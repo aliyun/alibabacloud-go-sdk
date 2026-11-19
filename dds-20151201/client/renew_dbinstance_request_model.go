@@ -21,6 +21,8 @@ type iRenewDBInstanceRequest interface {
 	GetCouponNo() *string
 	SetDBInstanceId(v string) *RenewDBInstanceRequest
 	GetDBInstanceId() *string
+	SetDryRun(v bool) *RenewDBInstanceRequest
+	GetDryRun() *bool
 	SetOwnerAccount(v string) *RenewDBInstanceRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *RenewDBInstanceRequest
@@ -36,9 +38,11 @@ type iRenewDBInstanceRequest interface {
 type RenewDBInstanceRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// - **true**: enables automatic payment. Make sure that your account has sufficient balance.
 	//
-	// - **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses*	- and select **User Center*	- from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management*	- > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
+	// <props="china">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Billing*	- > **Expenses and Costs*	- in the upper-right corner, choose **Orders*	- > **My Orders*	- in the left-side navigation pane, and then find the target order on the **Orders*	- tab to complete the payment.
+	//
+	// <props="intl">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Billing*	- > **Expenses and Costs*	- in the upper-right corner, click **Order Management*	- in the left-side navigation pane, and then find the target order on the **Orders*	- page to complete the payment.
 	//
 	// Default value: **true**.
 	//
@@ -48,9 +52,9 @@ type RenewDBInstanceRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**
+	// - **false**: disables auto-renewal.
 	//
 	// Default value: **false**.
 	//
@@ -64,17 +68,17 @@ type RenewDBInstanceRequest struct {
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to use coupons. Default value: null. Valid values:
+	// Specifies whether to use a coupon. Valid values:
 	//
-	// - **default*	- or **null**: uses coupons.
+	// - **default*	- or **null*	- (default): uses a coupon.
 	//
-	// - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
 	//
 	// example:
 	//
@@ -88,9 +92,15 @@ type RenewDBInstanceRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// true: performs a dry run without calling the operation. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// false (default): sends the request. If the request passes the dry run, the operation is performed.
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription period of the instance. Unit: month. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, and 36**.
+	// The renewal duration of the instance. Unit: months. Valid values: **1 to 9, 12, 24, and 36**.
 	//
 	// This parameter is required.
 	//
@@ -132,6 +142,10 @@ func (s *RenewDBInstanceRequest) GetCouponNo() *string {
 
 func (s *RenewDBInstanceRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *RenewDBInstanceRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *RenewDBInstanceRequest) GetOwnerAccount() *string {
@@ -181,6 +195,11 @@ func (s *RenewDBInstanceRequest) SetCouponNo(v string) *RenewDBInstanceRequest {
 
 func (s *RenewDBInstanceRequest) SetDBInstanceId(v string) *RenewDBInstanceRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *RenewDBInstanceRequest) SetDryRun(v bool) *RenewDBInstanceRequest {
+	s.DryRun = &v
 	return s
 }
 

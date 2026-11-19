@@ -40,7 +40,7 @@ type iDescribeDBInstancePerformanceRequest interface {
 type DescribeDBInstancePerformanceRequest struct {
 	// The instance ID.
 	//
-	// > **NodeId*	- is required when specifying a sharded cluster instance ID
+	// > If you specify the ID of a sharded cluster instance for this parameter, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeDBInstancePerformanceRequest struct {
 	//
 	// dds-bp2635****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type DescribeDBInstancePerformanceRequest struct {
 	//
 	// 2022-06-13T11:58Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The data granularity of the performance metrics in seconds. Valid values: 5, 30, 60, 600, 1800, 3600, and 86400.
+	// The data granularity. Valid values: 5, 30, 60, 600, 1800, 3600, and 86400.
 	//
 	// example:
 	//
 	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The performance metrics. For more information, see [Metrics](https://help.aliyun.com/document_detail/216973.html).
+	// The performance metrics. For more information, see [Monitoring metrics](https://help.aliyun.com/document_detail/216973.html).
 	//
 	// > To specify multiple metrics, separate them with commas (,).
 	//
@@ -72,9 +72,9 @@ type DescribeDBInstancePerformanceRequest struct {
 	//
 	// CpuUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of a mongos or shard node in the sharded cluster instance. This parameter lets you query the performance of a single node.
+	// Instance ID of the mongos or shard node in a sharded cluster instance. You can use this parameter to query the performance of a single node.
 	//
-	// > Available only when **DBInstanceId*	- is set to the ID of a sharded cluster instance.
+	// > This parameter is available only when you specify instance ID of a sharded cluster instance for the **DBInstanceId*	- parameter.
 	//
 	// example:
 	//
@@ -82,17 +82,15 @@ type DescribeDBInstancePerformanceRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The role of a node in a standalone or replica set instance. Valid values:
+	// The role of the node in a standalone instance or replica set instance. Valid values:
 	//
 	// - **Primary**: The primary node.
 	//
-	// - **Secondary**: A secondary node.
+	// - **Secondary**: The secondary node.
 	//
-	// > 	- Available only when **DBInstanceId*	- is set to the ID of a standalone or replica set instance.
+	// > - This parameter is available only when you specify instance ID of a standalone instance or replica set instance for the **DBInstanceId*	- parameter.
 	//
-	// >
-	//
-	// > 	- If **DBInstanceId*	- is set to the ID of a standalone instance, this parameter only supports the value **Primary**.
+	// > - When you specify instance ID of a standalone instance for the **DBInstanceId*	- parameter, you can set this parameter only to **Primary**.
 	//
 	// example:
 	//
@@ -100,23 +98,23 @@ type DescribeDBInstancePerformanceRequest struct {
 	ReplicaSetRole       *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The role ID of a node in a standalone or replica set instance. To query the role ID, call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/62134.html) operation.
+	// The instance ID of the node in a standalone instance or replica set instance. You can call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/62134.html) operation to query the instance ID.
 	//
-	// > Available only when **DBInstanceId*	- is set to the ID of a standalone or replica set instance.
+	// > This parameter is available only when you specify the ID of a standalone instance or replica set instance for the **DBInstanceId*	- parameter.
 	//
 	// example:
 	//
 	// 6025****
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The Search node ID.
+	// The ID of the search node.
 	//
-	// > Available only after the Search feature is enabled for the instance.
+	// > - This parameter is available only when the search feature is enabled for the instance.
 	//
 	// example:
 	//
 	// dds-2zec12675c9e****-search
 	SearchId *string `json:"SearchId,omitempty" xml:"SearchId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

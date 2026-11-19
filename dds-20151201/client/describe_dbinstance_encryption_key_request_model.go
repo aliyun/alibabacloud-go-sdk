@@ -34,7 +34,7 @@ type DescribeDBInstanceEncryptionKeyRequest struct {
 	//
 	// dds-bp2235****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The custom encryption key of the instance. You can call [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) to query the custom keys of the instance.
+	// The custom key of the instance. You can call [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) to query the custom keys of the instance.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDescribeReplicaSetRoleResponseBody interface {
 }
 
 type DescribeReplicaSetRoleResponseBody struct {
-	// The domain name suffix for the connection string.
+	// The domain name suffix of the connection string.
 	//
 	// example:
 	//
@@ -31,9 +31,8 @@ type DescribeReplicaSetRoleResponseBody struct {
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Details of the replica set.
-	ReplicaSets *DescribeReplicaSetRoleResponseBodyReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
+	DBInstanceId *string                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ReplicaSets  *DescribeReplicaSetRoleResponseBodyReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -134,9 +133,13 @@ type DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet struct {
 	ConnectionPort   *string `json:"ConnectionPort,omitempty" xml:"ConnectionPort,omitempty"`
 	ConnectionType   *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	ExpiredTime      *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	ReplicaSetRole   *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
-	RoleId           *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// example:
+	//
+	// 10.140.xxx.xx
+	IPAddress      *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NetworkType    *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ReplicaSetRole *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
+	RoleId         *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) String() string {
@@ -161,6 +164,10 @@ func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) GetConnectionT
 
 func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) GetExpiredTime() *string {
 	return s.ExpiredTime
+}
+
+func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) GetIPAddress() *string {
+	return s.IPAddress
 }
 
 func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) GetNetworkType() *string {
@@ -192,6 +199,11 @@ func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) SetConnectionT
 
 func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) SetExpiredTime(v string) *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) SetIPAddress(v string) *DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet {
+	s.IPAddress = &v
 	return s
 }
 

@@ -18,19 +18,19 @@ type iCreateNodeResponseBody interface {
 }
 
 type CreateNodeResponseBody struct {
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
 	// d-bp1b234bf7a4****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 20951063702****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

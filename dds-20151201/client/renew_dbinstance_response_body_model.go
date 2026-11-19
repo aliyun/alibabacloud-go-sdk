@@ -16,13 +16,13 @@ type iRenewDBInstanceResponseBody interface {
 }
 
 type RenewDBInstanceResponseBody struct {
-	// The ID of the order.
+	// The ID of the generated order.
 	//
 	// example:
 	//
 	// 203317xxxxxxxx
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

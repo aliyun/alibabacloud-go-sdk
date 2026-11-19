@@ -32,9 +32,11 @@ type iModifyAccountDescriptionRequest interface {
 type ModifyAccountDescriptionRequest struct {
 	// The description of the account.
 	//
-	// - The description must start with a letter and cannot start with http\\:// or https\\://.
+	// - It cannot start with http:// or https://.
 	//
-	// - The description must be 2 to 256 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+	// - It must start with a letter or a Chinese character.
+	//
+	// - It can contain letters, Chinese characters, underscores (_), hyphens (-), and digits, and must be 2 to 256 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// superadmin
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account whose description is to be modified.
+	// The name of the account whose description you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +52,13 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// root
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The type of the account whose description you can modify. Valid values:
+	// The type of the account whose description you want to modify. Valid values:
 	//
 	// - **db**: shard account
 	//
-	// - **cs**: ConfigServer account
+	// - **cs**: config server account
 	//
-	// - **normal*	- (default): replica set account (available)
-	//
-	// > You can set this parameter only to **normal**.
+	// - **normal**: replica set account (default)
 	//
 	// example:
 	//
@@ -72,6 +72,8 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// dds-bp2356****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database to which the account belongs.
+	//
 	// example:
 	//
 	// admin

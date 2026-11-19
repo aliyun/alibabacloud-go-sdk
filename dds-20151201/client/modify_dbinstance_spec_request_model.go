@@ -15,6 +15,8 @@ type iModifyDBInstanceSpecRequest interface {
 	GetAutoPay() *bool
 	SetBusinessInfo(v string) *ModifyDBInstanceSpecRequest
 	GetBusinessInfo() *string
+	SetClientToken(v string) *ModifyDBInstanceSpecRequest
+	GetClientToken() *string
 	SetCouponNo(v string) *ModifyDBInstanceSpecRequest
 	GetCouponNo() *string
 	SetDBInstanceClass(v string) *ModifyDBInstanceSpecRequest
@@ -23,6 +25,8 @@ type iModifyDBInstanceSpecRequest interface {
 	GetDBInstanceId() *string
 	SetDBInstanceStorage(v string) *ModifyDBInstanceSpecRequest
 	GetDBInstanceStorage() *string
+	SetDryRun(v bool) *ModifyDBInstanceSpecRequest
+	GetDryRun() *bool
 	SetEffectiveTime(v string) *ModifyDBInstanceSpecRequest
 	GetEffectiveTime() *string
 	SetExtraParam(v string) *ModifyDBInstanceSpecRequest
@@ -58,15 +62,15 @@ type iModifyDBInstanceSpecRequest interface {
 }
 
 type ModifyDBInstanceSpecRequest struct {
-	// Specifies whether to automatically align the primary node to the primary zone for a multi-zone instance after operations such as configuration changes. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true (aligned).
+	// Specifies whether to automatically align the primary node to the primary zone after operations such as configuration changes for a multi-zone instance. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true, which indicates that the node is aligned.
 	AlignPrimaryZone *bool `json:"AlignPrimaryZone,omitempty" xml:"AlignPrimaryZone,omitempty"`
 	// Specifies whether to enable automatic payment for the instance. Valid values:
 	//
 	// - **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
 	//
-	// <props="china">- **false**: disables automatic payment. You must manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses*	- > **Expenses and Costs**. In the left-side navigation pane, choose **Orders*	- > **My Orders**. On the **Orders*	- tab, find the order and complete the payment.
+	// <props="china">- **false**: disables automatic payment. You can manually pay for the order in the ApsaraDB for MongoDB console. Log on to the console, choose **Expenses*	- > **Expenses and Costs*	- in the upper-right corner, choose **Purchase Orders*	- > **My Orders*	- in the left-side navigation pane, and then find the target order on the **Product Orders*	- tab to complete the payment.
 	//
-	// <props="intl">- **false**: disables automatic payment. You must manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses*	- > **Expenses and Costs**. In the left-side navigation pane, click **Order Management**. On the **Orders*	- page, find the order and complete the payment.
+	// <props="intl">- **false**: disables automatic payment. You can manually pay for the order in the ApsaraDB for MongoDB console. Log on to the console, choose **Expenses*	- > **Expenses and Costs*	- in the upper-right corner, click **Order Management*	- in the left-side navigation pane, and then find the target order on the **Product Orders*	- page to complete the payment.
 	//
 	// example:
 	//
@@ -78,6 +82,12 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
+	//
+	// example:
+	//
+	// qwertyui1234567
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
 	// - **default*	- or **null**: uses a coupon. This is the default value.
@@ -111,24 +121,30 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// dds-bp1ea17b41ab****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Instance storage space of the instance. <props="intl"><ph>Valid values: 10 to 3000. Unit: GB. The step size is 10 GB. The valid values are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).</ph>
+	// The instance storage. <props="intl"><ph>Valid values: 10 to 3000. Unit: GB. Step size: 10 GB. The valid values are subject to the instance type. For details, see [Instance types](https://help.aliyun.com/document_detail/57141.html).</ph>
 	//
 	// <props="china">
 	//
-	// - For standalone instances and replica set instances, valid values are 10 to 3000. Unit: GB. The step size is 10 GB. The valid values are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// - For standalone instances and replica set instances, valid values are 10 to 3000. Unit: GB. Step size: 10 GB. The valid values are subject to the instance type. For details, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 	//
-	// - For serverless instances, valid values are 1 to 100. Unit: GB. The step size is 1 GB.
+	// - For serverless instances, valid values are 1 to 100. Unit: GB. Step size: 1 GB.
 	//
 	//
-	// > - You must specify at least one of the **DBInstanceStorage*	- and **DBInstanceClass*	- parameters.
+	// > - You must specify at least one of this parameter and the **DBInstanceClass*	- parameter.
 	//
-	// > - You cannot downgrade instance storage space.
+	// > - You cannot decrease the quota of storage space.
 	//
 	// example:
 	//
 	// 50
 	DBInstanceStorage *string `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The time when the configuration change takes effect. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// true: performs a dry run without calling the operation. The system checks the request parameters, request format, business limits, and inventory. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// false: sends the normal request and directly performs the operation after the request passes the check. This is the default value.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The effective period of the configuration change. Valid values:
 	//
 	// - **Immediately**: takes effect immediately. This is the default value.
 	//
@@ -142,19 +158,19 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// - **async**: returns the result after the configuration change order is created.
 	//
-	// - **sync**: returns the result when the configuration change is delivered after the order is created.
+	// - **sync**: returns the result when the configuration change is delivered to the instance after the order is created.
 	//
 	// example:
 	//
 	// async
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
-	// The type of configuration change. Valid values:
+	// The type of the configuration change. Valid values:
 	//
 	// - **UPGRADE**: upgrades the configurations. This is the default value.
 	//
 	// - **DOWNGRADE**: downgrades the configurations.
 	//
-	// > You can specify this parameter only when the instance uses the subscription billing method.
+	// > This parameter is available only when the billing method of the instance is subscription.
 	//
 	// example:
 	//
@@ -164,7 +180,7 @@ type ModifyDBInstanceSpecRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of read-only nodes. Valid values: **0*	- to **5**.
 	//
-	// If the instance is connected only over the **classic network*	- and a **VPC**, you must enable Internet access or release the classic network before you can change the **number of read-only nodes**.
+	// If the network type of the instance includes only the **classic network*	- and **VPC**, you must enable Internet access or release the classic network before you can change the **number of read-only nodes**.
 	//
 	// > You can log on to the ApsaraDB for MongoDB console and view the enabled network types on the **Database Connections*	- page.
 	//
@@ -178,9 +194,9 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// - For a standalone instance, the value is fixed to **1**.
 	//
-	// - For a replica set instance that uses shared storage (supported only on the Alibaba Cloud China site), the value is fixed to **2**.
+	// - For a replica set instance that uses shared storage (supported only on the China site), the value is fixed to **2**.
 	//
-	// > You do not need to specify this parameter for a serverless instance (supported only on the Alibaba Cloud China site).
+	// > You do not need to specify this parameter for a serverless instance (supported only on the China site).
 	//
 	// example:
 	//
@@ -188,7 +204,7 @@ type ModifyDBInstanceSpecRequest struct {
 	ReplicationFactor    *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The specifications of the search node for the configuration change.
+	// The node specifications of the search node for the configuration change.
 	//
 	// example:
 	//
@@ -214,7 +230,7 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// >
 	//
-	// > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
+	// > - You need to specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
 	//
 	// > - This parameter is available only for multi-zone migration.
 	//
@@ -234,7 +250,7 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// >
 	//
-	// > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
+	// > - You need to specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
 	//
 	// > - This parameter is available only for multi-zone migration.
 	//
@@ -252,19 +268,19 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// >
 	//
-	// > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
+	// > - You need to specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
 	//
 	// example:
 	//
 	// vsw-bp1buy0h9myt5i9e7****
 	TargetVswitchId *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
-	// The destination zone for instance migration when you migrate the instance across zones and change its configurations at the same time.
+	// The destination active zone for instance migration during a configuration change across zones.
 	//
 	// 	Notice: This parameter is supported only for cloud disk instances.</notice>
 	//
 	// 	Notice: The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.</notice>
 	//
-	// > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
+	// > - You need to specify this parameter only during a configuration change across zones.
 	//
 	// > - The destination zone and the current zone of the instance must be in the same region.
 	//
@@ -296,6 +312,10 @@ func (s *ModifyDBInstanceSpecRequest) GetBusinessInfo() *string {
 	return s.BusinessInfo
 }
 
+func (s *ModifyDBInstanceSpecRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *ModifyDBInstanceSpecRequest) GetCouponNo() *string {
 	return s.CouponNo
 }
@@ -310,6 +330,10 @@ func (s *ModifyDBInstanceSpecRequest) GetDBInstanceId() *string {
 
 func (s *ModifyDBInstanceSpecRequest) GetDBInstanceStorage() *string {
 	return s.DBInstanceStorage
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifyDBInstanceSpecRequest) GetEffectiveTime() *string {
@@ -391,6 +415,11 @@ func (s *ModifyDBInstanceSpecRequest) SetBusinessInfo(v string) *ModifyDBInstanc
 	return s
 }
 
+func (s *ModifyDBInstanceSpecRequest) SetClientToken(v string) *ModifyDBInstanceSpecRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *ModifyDBInstanceSpecRequest) SetCouponNo(v string) *ModifyDBInstanceSpecRequest {
 	s.CouponNo = &v
 	return s
@@ -408,6 +437,11 @@ func (s *ModifyDBInstanceSpecRequest) SetDBInstanceId(v string) *ModifyDBInstanc
 
 func (s *ModifyDBInstanceSpecRequest) SetDBInstanceStorage(v string) *ModifyDBInstanceSpecRequest {
 	s.DBInstanceStorage = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetDryRun(v bool) *ModifyDBInstanceSpecRequest {
+	s.DryRun = &v
 	return s
 }
 

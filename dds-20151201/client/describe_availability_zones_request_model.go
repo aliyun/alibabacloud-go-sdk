@@ -50,71 +50,71 @@ type iDescribeAvailabilityZonesRequest interface {
 }
 
 type DescribeAvailabilityZonesRequest struct {
-	// The language of the returned **RegionName*	- and **ZoneName*	- parameter values. Valid values:
+	// The language of the **RegionName*	- and **ZoneName*	- response parameters. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh**: Chinese. Default value.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The instance type of the instance.
+	// The instance type.
 	//
 	// example:
 	//
 	// dds.mongo.standard
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The database type of the instance. Valid values:
 	//
-	// - **normal**: replica set instance
+	// - **normal**: replica set instance.
 	//
-	// - **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance.
 	//
 	// example:
 	//
 	// normal
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The secondary zone ID that is excluded from the query results. You can configure the ExcludeZoneId and ExcludeSecondaryZoneId parameters to specify the IDs of multiple zones that are excluded from the query results.
+	// The secondary zone ID to be excluded from the query results in the current region. This parameter is used together with ExcludeZoneId to filter multiple zones.
 	//
 	// example:
 	//
 	// cn-shanghai-b
 	ExcludeSecondaryZoneId *string `json:"ExcludeSecondaryZoneId,omitempty" xml:"ExcludeSecondaryZoneId,omitempty"`
-	// The zone ID that is excluded from the query results.
+	// The zone ID to be excluded from the query results in the current region.
 	//
 	// example:
 	//
 	// cn-shanghai-g
 	ExcludeZoneId *string `json:"ExcludeZoneId,omitempty" xml:"ExcludeZoneId,omitempty"`
-	// The billing method of the product. Valid values:
+	// The billing method. Valid values:
 	//
-	// - **PrePaid**: subscription
+	// - **PrePaid**: subscription. Default value.
 	//
-	// - **PostPaid:*	- pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// - **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance.
 	//
-	// - **replicate**: replica set or standalone instance
+	// - **replicate**: replica set instance or standalone instance.
 	//
 	// example:
 	//
 	// replicate
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The edition of the instance. High-Available Edition and Preview Edition (dbfs) are supported.
+	// The MongoDB edition, such as the high-availability edition or the test edition (dbfs).
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeAvailabilityZonesRequest struct {
 	MongoType    *string `json:"MongoType,omitempty" xml:"MongoType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the latest available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -130,25 +130,15 @@ type DescribeAvailabilityZonesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of nodes in the instance.
+	// The number of nodes.
 	//
-	// > This parameter is available only for replica set instances.
-	//
-	// Valid values:
-	//
-	// - 1
-	//
-	// - 3
-	//
-	// - 5
-	//
-	// - 7
+	// > This parameter is supported only for replica set instances.
 	//
 	// example:
 	//
 	// 3
 	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The ID of the resource group. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The resource group ID. For more information about resource groups, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -158,11 +148,11 @@ type DescribeAvailabilityZonesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - **cloud**: displays only zones available for instances that use cloud disks.
+	// - **cloud**: displays only the zones that support cloud disk instances.
 	//
-	// - **local**: only displays zones available for instances that use local disks instances.
+	// - **local**: displays only the zones that support local disk instances.
 	//
-	// - **default*	- or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
+	// - **default*	- or empty: displays the zones that support both local disk and cloud disk instances.
 	//
 	// example:
 	//
@@ -170,25 +160,23 @@ type DescribeAvailabilityZonesRequest struct {
 	StorageSupport *string `json:"StorageSupport,omitempty" xml:"StorageSupport,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - **cloud_essd1**: PL1 Enterprise SSDs (ESSDs)
+	// - **cloud_essd1**: PL1 ESSD.
 	//
-	// - **cloud_essd2**: PL2 ESSDs
+	// - **cloud_essd2**: PL2 ESSD.
 	//
-	// - **cloud_essd3**: PL3 ESSDs
+	// - **cloud_essd3**: PL3 ESSD.
 	//
-	// - **local_ssd**: local SSDs
+	// - **local_ssd**: local SSD.
 	//
-	// > 	- Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1*	- is used by default.
+	// >- Instances of version 4.4 and later support only cloud disks. If you do not specify this parameter, **cloud_essd1*	- is selected by default.
 	//
-	// >
-	//
-	// > 	- Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd*	- is used by default.
+	// >- Instances of version 4.2 and earlier support only local disks. If you do not specify this parameter, **local_ssd*	- is selected by default.
 	//
 	// example:
 	//
 	// local_ssd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available zones.
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
 	//
 	// example:
 	//

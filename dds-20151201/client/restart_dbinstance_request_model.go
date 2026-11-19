@@ -30,7 +30,7 @@ type iRestartDBInstanceRequest interface {
 }
 
 type RestartDBInstanceRequest struct {
-	// The instance ID.
+	// The instance ID. Before calling this operation, ensure that the instance is in the Running state. You can check the current status of the instance by checking the DBInstanceStatus field returned by the DescribeDBInstanceAttribute operation.
 	//
 	// This parameter is required.
 	//
@@ -40,24 +40,35 @@ type RestartDBInstanceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the shard or mongos node in the sharded cluster instance.
 	//
-	// > If you do not specify this parameter for a sharded cluster instance, the entire sharded cluster instance is restarted.
+	// > If the instance is a sharded cluster instance and this parameter is not specified, the entire sharded cluster instance is restarted.
 	//
 	// example:
 	//
 	// d-bpxxxxxxxx
-	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The type of the node to be restarted in the sharded cluster instance. Valid values:
+	//
+	// - **db**: shard node.
+	//
+	// - **mongos**: mongos node.
+	//
+	// - **cs**: Configserver node.
+	//
+	// example:
+	//
+	// db
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to restart mongos nodes in parallel. This parameter takes effect only when you restart multiple mongos nodes at a time.
+	// Specifies whether to restart mongos nodes in parallel. This parameter takes effect only when multiple mongos nodes are restarted in a batch.
 	ParallelRestartMongos *bool   `json:"ParallelRestartMongos,omitempty" xml:"ParallelRestartMongos,omitempty"`
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The time when the instance is restarted. Valid values:
 	//
-	// - 0: Immediately.
+	// - 0: Restarts the instance immediately.
 	//
-	// - 1: Within the O&M window.
+	// - 1: Restarts the instance within the O&M window.
 	//
 	// example:
 	//

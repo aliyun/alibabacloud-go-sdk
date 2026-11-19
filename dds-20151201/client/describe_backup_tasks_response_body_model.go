@@ -16,7 +16,7 @@ type iDescribeBackupTasksResponseBody interface {
 }
 
 type DescribeBackupTasksResponseBody struct {
-	// The details of the backup jobs.
+	// The backup job details.
 	BackupJobs []*DescribeBackupTasksResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,21 +66,21 @@ func (s *DescribeBackupTasksResponseBody) Validate() error {
 }
 
 type DescribeBackupTasksResponseBodyBackupJobs struct {
-	// The status of the backup job.
+	// The backup job status. Valid values:
 	//
-	// - **Scheduled**: The backup job is scheduled. This includes regular backup jobs that have not started.
+	// 	- **Scheduled**: The backup task is scheduled, including routine backup tasks that have not started.
 	//
-	// - **Checking**: The instance is being checked before the backup.
+	// 	- **Checking**: The instance is being checked before the backup.
 	//
-	// - **Backuping**: The backup is in progress.
+	// 	- **Backuping**: The backup is in progress.
 	//
-	// - **Finished**: The backup is complete.
+	// 	- **Finished**: The backup is completed.
 	//
 	// example:
 	//
 	// Scheduled
 	BackupSetStatus *string `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
-	// The start time of the backup.
+	// The backup start time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -92,17 +92,17 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	//
 	// 170034
 	BackupjobId *string `json:"BackupjobId,omitempty" xml:"BackupjobId,omitempty"`
-	// The backup mode. Valid values:
+	// The backup pattern. Valid values:
 	//
-	// - **Automated**: automatic backup.
+	// 	- **Automated**: Automatic backup.
 	//
-	// - **Manual**: manual backup.
+	// 	- **Manual**: Manual backup.
 	//
 	// example:
 	//
 	// Manual
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The backup progress in percentage. The progress is displayed only for running backup jobs.
+	// The backup progress in percentage. The progress is displayed only for running backups.
 	//
 	// example:
 	//

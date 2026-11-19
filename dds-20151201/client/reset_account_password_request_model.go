@@ -30,7 +30,7 @@ type iResetAccountPasswordRequest interface {
 }
 
 type ResetAccountPasswordRequest struct {
-	// The account whose password needs to be reset. Set the value to **root**.
+	// The name of the account whose password you want to reset. Set the value to **root**.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,11 @@ type ResetAccountPasswordRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The new password.
 	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & 	- ( ) _ + - =`
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@#$%^&*()_+-=`.
 	//
 	// - The password must be 8 to 32 characters in length.
+	//
+	// > For more information about how to handle special characters, see [What do I do if the connection fails because the username or password in the connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html)
 	//
 	// This parameter is required.
 	//
@@ -50,11 +52,11 @@ type ResetAccountPasswordRequest struct {
 	//
 	// Ali!123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The role of the instance.
+	// The role type of the instance.
 	//
 	// - If the instance is a sharded cluster instance, this parameter is required. Valid values: db and cs.
 	//
-	// - If the instance is a replica set instance, you can leave this parameter empty or set the parameter to normal.
+	// - If the instance is a replica set instance, this parameter can be left empty or set to normal.
 	//
 	// example:
 	//
@@ -68,7 +70,11 @@ type ResetAccountPasswordRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// 账号所在库（账号建在/操作于哪个库），缺省 admin；规则：长度1~63，禁 /、\、.、空格、"、$，禁 local
+	// The database to which the account belongs.
+	//
+	// - The name cannot contain the following characters: \\0, /, \\, ., space, ", and $.
+	//
+	// - The name cannot be local.
 	//
 	// example:
 	//
