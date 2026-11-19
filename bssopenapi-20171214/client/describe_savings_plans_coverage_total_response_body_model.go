@@ -42,7 +42,7 @@ type DescribeSavingsPlansCoverageTotalResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage struct {
 	//
 	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
-	// The total offset amount.
+	// The total deducted amount.
 	//
 	// example:
 	//

@@ -127,7 +127,7 @@ type QueryAvailableInstancesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -193,19 +193,19 @@ func (s *QueryAvailableInstancesResponseBodyData) Validate() error {
 }
 
 type QueryAvailableInstancesResponseBodyDataInstanceList struct {
-	// The creation time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The end time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The expected release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The expected release time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type QueryAvailableInstancesResponseBodyDataInstanceList struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The release time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -259,13 +259,13 @@ type QueryAvailableInstancesResponseBodyDataInstanceList struct {
 	//
 	// ManualRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	// The number of auto-renewal epochs.
+	// The number of units for the auto-renewal cycle.
 	//
 	// example:
 	//
 	// 1
 	RenewalDuration *int32 `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
-	// The unit of the auto-renewal epoch. Valid values:
+	// The unit of the auto-renewal cycle. Valid values:
 	//
 	// - M: month.
 	//
@@ -299,7 +299,7 @@ type QueryAvailableInstancesResponseBodyDataInstanceList struct {
 	//
 	// Expired - The service is suspended
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The stop time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The stop time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

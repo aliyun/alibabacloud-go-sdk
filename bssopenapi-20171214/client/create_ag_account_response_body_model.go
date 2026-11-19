@@ -22,7 +22,7 @@ type iCreateAgAccountResponseBody interface {
 }
 
 type CreateAgAccountResponseBody struct {
-	// The level 2 relationship between the master account (MPK) and the member account (PK).
+	// The secondary relationship between the MPK and the PK.
 	AgRelationDto *CreateAgAccountResponseBodyAgRelationDto `json:"AgRelationDto,omitempty" xml:"AgRelationDto,omitempty" type:"Struct"`
 	// The status code.
 	//
@@ -42,7 +42,7 @@ type CreateAgAccountResponseBody struct {
 	//
 	// EAE08A27-386C-579E-966D-8853EC3C5D0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *CreateAgAccountResponseBody) Validate() error {
 }
 
 type CreateAgAccountResponseBodyAgRelationDto struct {
-	// The UID of the master account (MPK).
+	// The MPK (UID).
 	//
 	// example:
 	//
 	// 1785287436011964
 	Mpk *string `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
-	// The UID of the member account (PK) that is managed by the master account (MPK).
+	// The PK (UID) under the MPK.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type CreateAgAccountResponseBodyAgRelationDto struct {
 	//
 	// admin-role
 	RamAdminRoleName *string `json:"RamAdminRoleName,omitempty" xml:"RamAdminRoleName,omitempty"`
-	// The type of the account linking relationship.
+	// The type of the association.
 	//
 	// example:
 	//

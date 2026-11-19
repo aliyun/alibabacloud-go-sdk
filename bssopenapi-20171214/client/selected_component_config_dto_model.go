@@ -18,7 +18,7 @@ type iSelectedComponentConfigDTO interface {
 }
 
 type SelectedComponentConfigDTO struct {
-	// The property configuration list.
+	// The list of property configurations.
 	AttributeConfigs []*SelectedComponentConfigDTOAttributeConfigs `json:"AttributeConfigs,omitempty" xml:"AttributeConfigs,omitempty" type:"Repeated"`
 	// The component code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -75,7 +75,7 @@ func (s *SelectedComponentConfigDTO) Validate() error {
 }
 
 type SelectedComponentConfigDTOAttributeConfigs struct {
-	// The upper and lower bound values, used for bounded properties.
+	// The upper and lower bounds, used for bounded properties.
 	BoundedValue *SelectedComponentConfigDTOAttributeConfigsBoundedValue `json:"BoundedValue,omitempty" xml:"BoundedValue,omitempty" type:"Struct"`
 	// The property code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`

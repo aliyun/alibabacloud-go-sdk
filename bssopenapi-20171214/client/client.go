@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("BssOpenApi")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 dara.String("business.aliyuncs.com"),
@@ -560,13 +568,11 @@ func (client *Client) ChangeResellerConsumeAmount(request *ChangeResellerConsume
 
 // Summary:
 //
-// Confirms an invitation initiated by the main account for a linked account.
+// Confirms a financial association invitation initiated by the primary account.
 //
 // Description:
 //
-// 1. Currently, only financial management linking is supported. The linked account needs to confirm the invitation only when the real-name verification information of the main account and the linked account is inconsistent.
-//
-// 2. The permissions to be confirmed must be exactly the same as the permissions specified in the invitation initiated by the main account for the confirmation to succeed.
+// 1. Currently, secondary account confirmation is required only for financial management associations when the real-name verification information of the primary and secondary accounts is inconsistent. 2. To ensure a successful confirmation, the confirmed permissions must match the permissions specified in the invitation initiated by the primary account.
 //
 // @param request - ConfirmRelationRequest
 //
@@ -634,13 +640,11 @@ func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest
 
 // Summary:
 //
-// Confirms an invitation initiated by the main account for a linked account.
+// Confirms a financial association invitation initiated by the primary account.
 //
 // Description:
 //
-// 1. Currently, only financial management linking is supported. The linked account needs to confirm the invitation only when the real-name verification information of the main account and the linked account is inconsistent.
-//
-// 2. The permissions to be confirmed must be exactly the same as the permissions specified in the invitation initiated by the main account for the confirmation to succeed.
+// 1. Currently, secondary account confirmation is required only for financial management associations when the real-name verification information of the primary and secondary accounts is inconsistent. 2. To ensure a successful confirmation, the confirmed permissions must match the permissions specified in the invitation initiated by the primary account.
 //
 // @param request - ConfirmRelationRequest
 //
@@ -740,11 +744,11 @@ func (client *Client) ConvertChargeType(request *ConvertChargeTypeRequest) (_res
 
 // Summary:
 //
-// Creates an account linking relationship.
+// Creates a financial association.
 //
 // Description:
 //
-// Creates a master-member relationship for financial management.
+// Creates a primary and secondary account relationship for finance trusteeship.
 //
 // @param request - CreateAgAccountRequest
 //
@@ -820,11 +824,11 @@ func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest
 
 // Summary:
 //
-// Creates an account linking relationship.
+// Creates a financial association.
 //
 // Description:
 //
-// Creates a master-member relationship for financial management.
+// Creates a primary and secondary account relationship for finance trusteeship.
 //
 // @param request - CreateAgAccountRequest
 //
@@ -1430,21 +1434,21 @@ func (client *Client) DescribeCostBudgetsSummary(request *DescribeCostBudgetsSum
 
 // Summary:
 //
-// Queries the monthly amortized costs of instances for a specified amortization month.
+// Queries the monthly amortized costs of instances by amortization month.
 //
 // Description:
 //
-// - Amortized costs cannot be used for settlement or reconciliation. They are used to allocate your subscription and pay-as-you-go fees based on specified allocation rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the expenses incurred on the cloud (including upfront and pay-as-you-go expenses) based on specified allocation rules.
 //
-// - The final data for a month is available after 12:00 on the sixth day of the following month. The reason for this delay is that scenarios such as delayed billing, refunds, bill adjustments, and overdue payment write-offs can occur during the month. The data for the current month does not include unsettled pay-as-you-go fees for which bills have not yet been generated.
+// - The final data for the current month is available after 12:00 on the 6th day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, account adjustments, and overdue payment write-offs. The data for the current month does not include unsettled pay-as-you-go data (unbilled or being accumulated).
 //
-// - Amortized cost data from the last 12 months is available.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data for attached resources is reflected in the amortized costs 48 hours after the split bill is generated. To use this feature, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data for items that are not attached resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated. To use the costs of attached resources, activate the [split bill](https://usercenter2.aliyun.com/finance/split-bill) feature in advance. Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs are not updated intra-month. They are updated only after 12:00 on the sixth day of the following month. Consequently, specific costs for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available for these months.
+// - Amortized costs before August 2021 (exclusive) are not updated during the month. They are updated uniformly only after 12:00 on the 6th day of the next amortization month. Specific costs for each attached resource (such as domain names, buckets, and EIPs) of split cloud services (such as CDN, OSS, and Internet Shared Bandwidth) are not provided.
 //
-// - Amortized cost data is available for querying 48 hours after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature.
+// - Amortized cost data is available only after you activate the [amortized costs](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data is available 48 hours after activation.
 //
 // @param request - DescribeInstanceAmortizedCostByAmortizationPeriodRequest
 //
@@ -1528,21 +1532,21 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithOptio
 
 // Summary:
 //
-// Queries the monthly amortized costs of instances for a specified amortization month.
+// Queries the monthly amortized costs of instances by amortization month.
 //
 // Description:
 //
-// - Amortized costs cannot be used for settlement or reconciliation. They are used to allocate your subscription and pay-as-you-go fees based on specified allocation rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the expenses incurred on the cloud (including upfront and pay-as-you-go expenses) based on specified allocation rules.
 //
-// - The final data for a month is available after 12:00 on the sixth day of the following month. The reason for this delay is that scenarios such as delayed billing, refunds, bill adjustments, and overdue payment write-offs can occur during the month. The data for the current month does not include unsettled pay-as-you-go fees for which bills have not yet been generated.
+// - The final data for the current month is available after 12:00 on the 6th day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, account adjustments, and overdue payment write-offs. The data for the current month does not include unsettled pay-as-you-go data (unbilled or being accumulated).
 //
-// - Amortized cost data from the last 12 months is available.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data for attached resources is reflected in the amortized costs 48 hours after the split bill is generated. To use this feature, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data for items that are not attached resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated. To use the costs of attached resources, activate the [split bill](https://usercenter2.aliyun.com/finance/split-bill) feature in advance. Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs are not updated intra-month. They are updated only after 12:00 on the sixth day of the following month. Consequently, specific costs for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available for these months.
+// - Amortized costs before August 2021 (exclusive) are not updated during the month. They are updated uniformly only after 12:00 on the 6th day of the next amortization month. Specific costs for each attached resource (such as domain names, buckets, and EIPs) of split cloud services (such as CDN, OSS, and Internet Shared Bandwidth) are not provided.
 //
-// - Amortized cost data is available for querying 48 hours after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature.
+// - Amortized cost data is available only after you activate the [amortized costs](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data is available 48 hours after activation.
 //
 // @param request - DescribeInstanceAmortizedCostByAmortizationPeriodRequest
 //
@@ -1666,21 +1670,21 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDate(requ
 
 // Summary:
 //
-// Queries the monthly amortized cost of an instance by billing cycle.
+// Queries the monthly amortized costs of instances by billing cycle.
 //
 // Description:
 //
-// - Amortized costs are not used for settlement or reconciliation. They are used to allocate your cloud expenses, including both subscription and pay-as-you-go fees, based on specified allocation rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the costs incurred on the cloud (including subscription and pay-as-you-go costs) according to specified allocation rules.
 //
-// - The final data for a month is available after 12:00 on the sixth day of the following month. This delay accounts for events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs. Data for the current month does not include unsettled pay-as-you-go fees.
+// - The final data for the current month is available after 12:00 on the 6th day of the following month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, account adjustments, and overdue payment write-offs. The data for the current month does not include unsettled (unbilled or accumulating) pay-as-you-go data.
 //
-// - Amortized cost data is available for the past 12 months.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data for attached resources in the amortized costs is updated 48 hours after the split bill is generated. To view the costs of attached resources, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data for other resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated. If you need to use split costs, activate [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) in advance. Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs are not updated mid-month. They are updated only after 12:00 on the sixth day of the following month. In addition, specific costs for attached resources, such as domain names, buckets, and EIPs, of products such as CDN, OSS, and Internet Shared Bandwidth, are not provided for this period.
+// - Amortized costs before August 2021 (exclusive) are not updated during the month. They are updated uniformly after 12:00 on the 6th day of the month following the amortization month. Additionally, specific costs for each attached resource (such as domain names, buckets, and EIPs) of split cloud services (such as CDN, OSS, and Internet Shared Bandwidth) are not supported.
 //
-// - Amortized cost data is available only after you enable the [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data becomes available 48 hours after enablement.
+// - Amortized cost data is available only after you activate [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs). The data is available 48 hours after activation.
 //
 // @param request - DescribeInstanceAmortizedCostByConsumePeriodRequest
 //
@@ -1764,21 +1768,21 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithOptions(re
 
 // Summary:
 //
-// Queries the monthly amortized cost of an instance by billing cycle.
+// Queries the monthly amortized costs of instances by billing cycle.
 //
 // Description:
 //
-// - Amortized costs are not used for settlement or reconciliation. They are used to allocate your cloud expenses, including both subscription and pay-as-you-go fees, based on specified allocation rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the costs incurred on the cloud (including subscription and pay-as-you-go costs) according to specified allocation rules.
 //
-// - The final data for a month is available after 12:00 on the sixth day of the following month. This delay accounts for events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs. Data for the current month does not include unsettled pay-as-you-go fees.
+// - The final data for the current month is available after 12:00 on the 6th day of the following month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, account adjustments, and overdue payment write-offs. The data for the current month does not include unsettled (unbilled or accumulating) pay-as-you-go data.
 //
-// - Amortized cost data is available for the past 12 months.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data for attached resources in the amortized costs is updated 48 hours after the split bill is generated. To view the costs of attached resources, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data for other resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated. If you need to use split costs, activate [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) in advance. Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs are not updated mid-month. They are updated only after 12:00 on the sixth day of the following month. In addition, specific costs for attached resources, such as domain names, buckets, and EIPs, of products such as CDN, OSS, and Internet Shared Bandwidth, are not provided for this period.
+// - Amortized costs before August 2021 (exclusive) are not updated during the month. They are updated uniformly after 12:00 on the 6th day of the month following the amortization month. Additionally, specific costs for each attached resource (such as domain names, buckets, and EIPs) of split cloud services (such as CDN, OSS, and Internet Shared Bandwidth) are not supported.
 //
-// - Amortized cost data is available only after you enable the [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data becomes available 48 hours after enablement.
+// - Amortized cost data is available only after you activate [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs). The data is available 48 hours after activation.
 //
 // @param request - DescribeInstanceAmortizedCostByConsumePeriodRequest
 //
@@ -2114,21 +2118,21 @@ func (client *Client) DescribePricingModule(request *DescribePricingModuleReques
 
 // Summary:
 //
-// Queries the monthly amortized cost of products for a specified month.
+// Queries the monthly amortized costs of products from the perspective of the amortization month.
 //
 // Description:
 //
-// - Amortized costs are for cost allocation purposes only and cannot be used for settlement or reconciliation. This feature allocates your cloud expenses, including both subscription and pay-as-you-go fees, based on specified allocation rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the costs incurred on the cloud (including prepaid and pay-as-you-go costs) based on specified allocation rules.
 //
-// - The final data for a month is available after 12:00 on the sixth day of the following month. Data for the current month is not final. This is because it does not include unsettled pay-as-you-go fees and may change due to events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs.
+// - The final data for the current month is available after 12:00 on the 6th day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, account adjustments, and overdue payment write-offs. The data for the current month does not include unsettled pay-as-you-go data (unbilled or being accumulated).
 //
-// - Amortized cost data for the past 12 months is available.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data for attached resources, which requires you to enable [split bills](https://usercenter2.aliyun.com/finance/split-bill), is updated 48 hours after the split bill is generated. Data for other resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated. If you need to use the costs of attached resources, activate [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) in advance. Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs were not updated during the month. They were updated only after 12:00 on the sixth day of the following month. In addition, cost details for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available for this period.
+// - Amortized costs before August 2021 (exclusive) are not updated during the month. They are updated uniformly only after 12:00 on the 6th day of the next amortization month. Specific costs for each attached resource (such as domain names, buckets, and EIPs) of cloud products that support split billing (such as CDN, OSS, and Internet Shared Bandwidth) are not supported.
 //
-// - Amortized cost data becomes available 48 hours after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature.
+// - Amortized cost data is available only after you activate [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs). The data is available 48 hours after activation.
 //
 // @param request - DescribeProductAmortizedCostByAmortizationPeriodRequest
 //
@@ -2208,21 +2212,21 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithOption
 
 // Summary:
 //
-// Queries the monthly amortized cost of products for a specified month.
+// Queries the monthly amortized costs of products from the perspective of the amortization month.
 //
 // Description:
 //
-// - Amortized costs are for cost allocation purposes only and cannot be used for settlement or reconciliation. This feature allocates your cloud expenses, including both subscription and pay-as-you-go fees, based on specified allocation rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the costs incurred on the cloud (including prepaid and pay-as-you-go costs) based on specified allocation rules.
 //
-// - The final data for a month is available after 12:00 on the sixth day of the following month. Data for the current month is not final. This is because it does not include unsettled pay-as-you-go fees and may change due to events such as delayed billing, refunds, bill adjustments, and overdue payment write-offs.
+// - The final data for the current month is available after 12:00 on the 6th day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, account adjustments, and overdue payment write-offs. The data for the current month does not include unsettled pay-as-you-go data (unbilled or being accumulated).
 //
-// - Amortized cost data for the past 12 months is available.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data for attached resources, which requires you to enable [split bills](https://usercenter2.aliyun.com/finance/split-bill), is updated 48 hours after the split bill is generated. Data for other resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated. If you need to use the costs of attached resources, activate [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) in advance. Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs were not updated during the month. They were updated only after 12:00 on the sixth day of the following month. In addition, cost details for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available for this period.
+// - Amortized costs before August 2021 (exclusive) are not updated during the month. They are updated uniformly only after 12:00 on the 6th day of the next amortization month. Specific costs for each attached resource (such as domain names, buckets, and EIPs) of cloud products that support split billing (such as CDN, OSS, and Internet Shared Bandwidth) are not supported.
 //
-// - Amortized cost data becomes available 48 hours after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature.
+// - Amortized cost data is available only after you activate [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs). The data is available 48 hours after activation.
 //
 // @param request - DescribeProductAmortizedCostByAmortizationPeriodRequest
 //
@@ -2240,21 +2244,21 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriod(request *
 
 // Summary:
 //
-// Queries the monthly amortized cost of a product for a specific billing cycle.
+// Queries the monthly amortized costs of products by billing cycle month.
 //
 // Description:
 //
-// - Amortized costs are used for cost allocation and cannot be used for settlement or reconciliation. This feature allocates your cloud expenses, including both subscription and pay-as-you-go fees, based on specified rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the costs incurred on the cloud (including subscription and pay-as-you-go costs) based on specified allocation rules.
 //
-// - The final data for a given month is available after 12:00 on the sixth day of the following month. This delay ensures that potential mid-month events, such as delayed billing, refunds, bill adjustments, and overdue payment write-offs, are included. Data for the current month does not include unsettled pay-as-you-go fees that have not yet been billed or are still accumulating.
+// - The final data for the current month is available after 12:00 on the 6th day of the following month (a few scenarios may occur during the month, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs). The data for the current month does not include unsettled (unbilled or accumulating) pay-as-you-go data.
 //
-// - Amortized cost data for the past 12 months is available.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data related to attached resources is updated in the amortized costs 48 hours after the corresponding split bill is generated. To view the costs of attached resources, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data that is not related to attached resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated (if you need to use split costs, enable [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) in advance). Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs were not updated mid-month and were only updated after 12:00 on the sixth day of the following month. Additionally, for this period, specific costs for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available.
+// - Amortized cost data before August 2021 (exclusive) is not updated during the month. It is updated uniformly after 12:00 on the 6th day of the month following the amortization month. It also does not support providing specific costs for each attached resource (such as domain names, buckets, and EIPs) of split cloud services (such as CDN, OSS, and Internet Shared Bandwidth).
 //
-// - Amortized cost data is provided only after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data is available 48 hours after you enable it.
+// - Amortized cost data is available only after you enable [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs). It takes 48 hours to take effect after you enable the feature.
 //
 // @param request - DescribeProductAmortizedCostByConsumePeriodRequest
 //
@@ -2334,21 +2338,21 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithOptions(req
 
 // Summary:
 //
-// Queries the monthly amortized cost of a product for a specific billing cycle.
+// Queries the monthly amortized costs of products by billing cycle month.
 //
 // Description:
 //
-// - Amortized costs are used for cost allocation and cannot be used for settlement or reconciliation. This feature allocates your cloud expenses, including both subscription and pay-as-you-go fees, based on specified rules.
+// - Amortized costs are not used as the basis for settlement and reconciliation. Amortized costs provide the cost allocation capability, which allocates the costs incurred on the cloud (including subscription and pay-as-you-go costs) based on specified allocation rules.
 //
-// - The final data for a given month is available after 12:00 on the sixth day of the following month. This delay ensures that potential mid-month events, such as delayed billing, refunds, bill adjustments, and overdue payment write-offs, are included. Data for the current month does not include unsettled pay-as-you-go fees that have not yet been billed or are still accumulating.
+// - The final data for the current month is available after 12:00 on the 6th day of the following month (a few scenarios may occur during the month, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs). The data for the current month does not include unsettled (unbilled or accumulating) pay-as-you-go data.
 //
-// - Amortized cost data for the past 12 months is available.
+// - Amortized cost data is available for the last 12 months.
 //
-// - Data related to attached resources is updated in the amortized costs 48 hours after the corresponding split bill is generated. To view the costs of attached resources, you must first enable [split bills](https://usercenter2.aliyun.com/finance/split-bill). Data that is not related to attached resources is updated 48 hours after the detailed bill is generated.
+// - Data related to attached resources in amortized costs is updated 48 hours after the split bill data is generated (if you need to use split costs, enable [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) in advance). Data not related to attached resources is updated 48 hours after the detailed bill is generated.
 //
-// - For months before August 2021, amortized costs were not updated mid-month and were only updated after 12:00 on the sixth day of the following month. Additionally, for this period, specific costs for attached resources, such as domain names, buckets, and EIPs, for products such as CDN, OSS, and Internet Shared Bandwidth are not available.
+// - Amortized cost data before August 2021 (exclusive) is not updated during the month. It is updated uniformly after 12:00 on the 6th day of the month following the amortization month. It also does not support providing specific costs for each attached resource (such as domain names, buckets, and EIPs) of split cloud services (such as CDN, OSS, and Internet Shared Bandwidth).
 //
-// - Amortized cost data is provided only after you enable the [Amortized Cost](https://usercenter2.aliyun.com/finance/amortized-costs) feature. The data is available 48 hours after you enable it.
+// - Amortized cost data is available only after you enable [Amortized Costs](https://usercenter2.aliyun.com/finance/amortized-costs). It takes 48 hours to take effect after you enable the feature.
 //
 // @param request - DescribeProductAmortizedCostByConsumePeriodRequest
 //
@@ -2558,7 +2562,7 @@ func (client *Client) DescribeResourceCoverageTotal(request *DescribeResourceCov
 
 // Summary:
 //
-// Queries the information about resource plans of an Alibaba Cloud service.
+// Queries the information about a specific resource plan product.
 //
 // @param request - DescribeResourcePackageProductRequest
 //
@@ -2602,7 +2606,7 @@ func (client *Client) DescribeResourcePackageProductWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the information about resource plans of an Alibaba Cloud service.
+// Queries the information about a specific resource plan product.
 //
 // @param request - DescribeResourcePackageProductRequest
 //
@@ -2784,7 +2788,7 @@ func (client *Client) DescribeResourceUsageTotal(request *DescribeResourceUsageT
 
 // Summary:
 //
-// Queries the coverage details of savings plans.
+// Queries the details of savings plan coverage.
 //
 // @param tmpReq - DescribeSavingsPlansCoverageDetailRequest
 //
@@ -2858,7 +2862,7 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(tmpReq *Desc
 
 // Summary:
 //
-// Queries the coverage details of savings plans.
+// Queries the details of savings plan coverage.
 //
 // @param request - DescribeSavingsPlansCoverageDetailRequest
 //
@@ -2876,7 +2880,7 @@ func (client *Client) DescribeSavingsPlansCoverageDetail(request *DescribeSaving
 
 // Summary:
 //
-// Queries the summary of savings plan coverage.
+// Queries the savings plan coverage summary.
 //
 // @param tmpReq - DescribeSavingsPlansCoverageTotalRequest
 //
@@ -2942,7 +2946,7 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(tmpReq *Descr
 
 // Summary:
 //
-// Queries the summary of savings plan coverage.
+// Queries the savings plan coverage summary.
 //
 // @param request - DescribeSavingsPlansCoverageTotalRequest
 //
@@ -3052,7 +3056,7 @@ func (client *Client) DescribeSavingsPlansUsageDetail(request *DescribeSavingsPl
 
 // Summary:
 //
-// Queries the usage summary of savings plans.
+// Queries the savings plan usage summary.
 //
 // @param tmpReq - DescribeSavingsPlansUsageTotalRequest
 //
@@ -3118,7 +3122,7 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(tmpReq *Describe
 
 // Summary:
 //
-// Queries the usage summary of savings plans.
+// Queries the savings plan usage summary.
 //
 // @param request - DescribeSavingsPlansUsageTotalRequest
 //
@@ -3517,17 +3521,17 @@ func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *G
 
 // Summary:
 //
-// Queries the price of a pay-as-you-go product.
+// Queries the prices of pay-as-you-go products.
 //
 // Description:
 //
-// ### Operation description
+// ### API description
 //
 // 1. Call QueryProductList to obtain the product code. For more information, see [Query product information](https://help.aliyun.com/document_detail/95984.html).
 //
-// 2. Call the DescribePricingModule operation to obtain the configuration parameters of a product. For more information, see [Query pricing module information](https://help.aliyun.com/document_detail/96469.html).
+// 2. Call the DescribePricingModule operation to retrieve the configuration parameters of the product. For more information, see [Query product module information](https://help.aliyun.com/document_detail/96469.html).
 //
-// 3. Call this operation with the obtained product configuration parameters to query the price of a pay-as-you-go product.
+// 3. Call this operation to query the prices of pay-as-you-go products based on the retrieved configuration parameters.
 //
 // @param request - GetPayAsYouGoPriceRequest
 //
@@ -3591,17 +3595,17 @@ func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceR
 
 // Summary:
 //
-// Queries the price of a pay-as-you-go product.
+// Queries the prices of pay-as-you-go products.
 //
 // Description:
 //
-// ### Operation description
+// ### API description
 //
 // 1. Call QueryProductList to obtain the product code. For more information, see [Query product information](https://help.aliyun.com/document_detail/95984.html).
 //
-// 2. Call the DescribePricingModule operation to obtain the configuration parameters of a product. For more information, see [Query pricing module information](https://help.aliyun.com/document_detail/96469.html).
+// 2. Call the DescribePricingModule operation to retrieve the configuration parameters of the product. For more information, see [Query product module information](https://help.aliyun.com/document_detail/96469.html).
 //
-// 3. Call this operation with the obtained product configuration parameters to query the price of a pay-as-you-go product.
+// 3. Call this operation to query the prices of pay-as-you-go products based on the retrieved configuration parameters.
 //
 // @param request - GetPayAsYouGoPriceRequest
 //
@@ -4257,7 +4261,7 @@ func (client *Client) PayOrder(request *PayOrderRequest) (_result *PayOrderRespo
 
 // Summary:
 //
-// Queries the user\\"s account balance.
+// Queries the balance information of a user account.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4286,7 +4290,7 @@ func (client *Client) QueryAccountBalanceWithOptions(runtime *dara.RuntimeOption
 
 // Summary:
 //
-// Queries the user\\"s account balance.
+// Queries the balance information of a user account.
 //
 // @return QueryAccountBalanceResponse
 func (client *Client) QueryAccountBalance() (_result *QueryAccountBalanceResponse, _err error) {
@@ -4616,7 +4620,7 @@ func (client *Client) QueryAccountTransactions(request *QueryAccountTransactions
 
 // Summary:
 //
-// Queries the list of available instances for the user.
+// Queries the list of available instances.
 //
 // @param request - QueryAvailableInstancesRequest
 //
@@ -4708,7 +4712,7 @@ func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailable
 
 // Summary:
 //
-// Queries the list of available instances for the user.
+// Queries the list of available instances.
 //
 // @param request - QueryAvailableInstancesRequest
 //
@@ -5303,7 +5307,7 @@ func (client *Client) QueryCustomerAddressList(request *QueryCustomerAddressList
 //
 // Limits:
 //
-// - Only usage records from the past year are supported.
+// - Only usage records for the last year are supported.
 //
 // @param request - QueryDPUtilizationDetailRequest
 //
@@ -5389,7 +5393,7 @@ func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtiliz
 //
 // Limits:
 //
-// - Only usage records from the past year are supported.
+// - Only usage records for the last year are supported.
 //
 // @param request - QueryDPUtilizationDetailRequest
 //
@@ -6235,7 +6239,7 @@ func (client *Client) QueryPriceEntityList(request *QueryPriceEntityListRequest)
 
 // Summary:
 //
-// Queries the list of products available for the current account to order. The response includes the product code, product name, and subscription type (subscription or pay-as-you-go).
+// Queries the list of products available for subscription for the current account and returns information such as the product code, product name, and subscription mode (subscription or pay-as-you-go).
 //
 // @param request - QueryProductListRequest
 //
@@ -6287,7 +6291,7 @@ func (client *Client) QueryProductListWithOptions(request *QueryProductListReque
 
 // Summary:
 //
-// Queries the list of products available for the current account to order. The response includes the product code, product name, and subscription type (subscription or pay-as-you-go).
+// Queries the list of products available for subscription for the current account and returns information such as the product code, product name, and subscription mode (subscription or pay-as-you-go).
 //
 // @param request - QueryProductListRequest
 //
@@ -6453,7 +6457,7 @@ func (client *Client) QueryRedeem(request *QueryRedeemRequest) (_result *QueryRe
 
 // Summary:
 //
-// Queries a list of the relationships of member accounts.
+// Queries the list of member accounts relationships for accounts with master-member relationship permissions.
 //
 // @param request - QueryRelationListRequest
 //
@@ -6509,7 +6513,7 @@ func (client *Client) QueryRelationListWithOptions(request *QueryRelationListReq
 
 // Summary:
 //
-// Queries a list of the relationships of member accounts.
+// Queries the list of member accounts relationships for accounts with master-member relationship permissions.
 //
 // @param request - QueryRelationListRequest
 //
@@ -6527,7 +6531,7 @@ func (client *Client) QueryRelationList(request *QueryRelationListRequest) (_res
 
 // Summary:
 //
-// Queries the available quota for a user in a reseller payment scenario.
+// Queries the current available quota balance for a user in a consolidated billing scenario where a consumption quota is set.
 //
 // @param request - QueryResellerAvailableQuotaRequest
 //
@@ -6575,7 +6579,7 @@ func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResel
 
 // Summary:
 //
-// Queries the available quota for a user in a reseller payment scenario.
+// Queries the current available quota balance for a user in a consolidated billing scenario where a consumption quota is set.
 //
 // @param request - QueryResellerAvailableQuotaRequest
 //
@@ -6591,9 +6595,13 @@ func (client *Client) QueryResellerAvailableQuota(request *QueryResellerAvailabl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the low-balance alert rules for quotas.
+//
 // Description:
 //
-// Queries the alarm thresholds for low quotas.
+// Queries the low-balance alert rules for quotas.
 //
 // @param request - QueryResellerUserAlarmThresholdRequest
 //
@@ -6639,9 +6647,13 @@ func (client *Client) QueryResellerUserAlarmThresholdWithOptions(request *QueryR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the low-balance alert rules for quotas.
+//
 // Description:
 //
-// Queries the alarm thresholds for low quotas.
+// Queries the low-balance alert rules for quotas.
 //
 // @param request - QueryResellerUserAlarmThresholdRequest
 //
@@ -6659,7 +6671,7 @@ func (client *Client) QueryResellerUserAlarmThreshold(request *QueryResellerUser
 
 // Summary:
 //
-// Queries the instances of a specific resource plan for a user. Only valid resource plans are supported.
+// Queries the instances of a resource plan for a user. Only valid resource plans can be queried.
 //
 // @param request - QueryResourcePackageInstancesRequest
 //
@@ -6727,7 +6739,7 @@ func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryRes
 
 // Summary:
 //
-// Queries the instances of a specific resource plan for a user. Only valid resource plans are supported.
+// Queries the instances of a resource plan for a user. Only valid resource plans can be queried.
 //
 // @param request - QueryResourcePackageInstancesRequest
 //
@@ -6983,19 +6995,19 @@ func (client *Client) QuerySavingsPlansInstance(request *QuerySavingsPlansInstan
 
 // Summary:
 //
-// Queries the settlement bills of a user for a specific billing cycle. Supports domestic accounts with more than 50,000 bill entries.
+// Queries the settlement bills of a user within a specific billing cycle. Supports domestic accounts with more than 50,000 bill entries.
 //
 // Description:
 //
-// - The query results for the current month are for reference only and cannot be used for reconciliation. The final bill for the current month is available for viewing or export after 12:00 on the 2nd of the following month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs.
+// - The query results for the current month are for reference only and cannot be used as the basis for reconciliation. The final bill for the current month can be viewed or exported after 12:00 on the 2nd day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs.
 //
-// - Bill data is updated with a 5-hour delay relative to actual cost consumption.
+// - Bill data is updated with a 5-hour delay compared to actual expense consumption.
 //
-// - For bills in the "Unsettled" state in historical billing cycles, the status is updated to settled 5 hours after payment. For bills in the "Unsettled" state in the current month, the status is updated to settled when the bill is generated at 12:00 on the 2nd of the following month.
+// - For bills in the "Uncleared" status from historical billing cycles, the status is updated to "Cleared" 5 hours after repayment. For bills in the "Uncleared" status for the current month, the status is updated to "Cleared" when the bill is generated at 12:00 on the 2nd day of the next month after repayment.
 //
-// - This API supports graceful backoff with a request rate of 600/60(s).
+// - This API supports graceful backoff. The request rate is 600 requests per 60 seconds.
 //
-// - The rate limit per user is 10 requests per second. If a timeout occurs, retry the request.
+// - The rate limit for a single user is 10 requests per second. If a timeout occurs, retry the request.
 //
 // @param request - QuerySettleBillRequest
 //
@@ -7083,19 +7095,19 @@ func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest
 
 // Summary:
 //
-// Queries the settlement bills of a user for a specific billing cycle. Supports domestic accounts with more than 50,000 bill entries.
+// Queries the settlement bills of a user within a specific billing cycle. Supports domestic accounts with more than 50,000 bill entries.
 //
 // Description:
 //
-// - The query results for the current month are for reference only and cannot be used for reconciliation. The final bill for the current month is available for viewing or export after 12:00 on the 2nd of the following month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs.
+// - The query results for the current month are for reference only and cannot be used as the basis for reconciliation. The final bill for the current month can be viewed or exported after 12:00 on the 2nd day of the next month. During the month, a few scenarios may occur, including but not limited to delayed billing, refunds, adjustments, and overdue payment write-offs.
 //
-// - Bill data is updated with a 5-hour delay relative to actual cost consumption.
+// - Bill data is updated with a 5-hour delay compared to actual expense consumption.
 //
-// - For bills in the "Unsettled" state in historical billing cycles, the status is updated to settled 5 hours after payment. For bills in the "Unsettled" state in the current month, the status is updated to settled when the bill is generated at 12:00 on the 2nd of the following month.
+// - For bills in the "Uncleared" status from historical billing cycles, the status is updated to "Cleared" 5 hours after repayment. For bills in the "Uncleared" status for the current month, the status is updated to "Cleared" when the bill is generated at 12:00 on the 2nd day of the next month after repayment.
 //
-// - This API supports graceful backoff with a request rate of 600/60(s).
+// - This API supports graceful backoff. The request rate is 600 requests per 60 seconds.
 //
-// - The rate limit per user is 10 requests per second. If a timeout occurs, retry the request.
+// - The rate limit for a single user is 10 requests per second. If a timeout occurs, retry the request.
 //
 // @param request - QuerySettleBillRequest
 //
@@ -7287,19 +7299,7 @@ func (client *Client) QuerySplitItemBill(request *QuerySplitItemBillRequest) (_r
 
 // Summary:
 //
-// Queries the metering records for the specified cloud service.
-//
-// Description:
-//
-// ## API description
-//
-// - The specified cloud service parameter must be one of the following cloud service codes. The metering data types include hourly and daily.
-//
-// - The time format must comply with the ISO 8601 standard. Time specification constraints:
-//
-//   - Due to delays in data push, the data integrity of hourly metering data is guaranteed for the past 24 hours, and the data integrity of daily metering data is guaranteed for the past 2 days.
-//
-//   - The time span can cover the metering data of the most recent quarter.
+// 用户用量查询
 //
 // @param request - QueryUserOmsDataRequest
 //
@@ -7367,19 +7367,7 @@ func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataReque
 
 // Summary:
 //
-// Queries the metering records for the specified cloud service.
-//
-// Description:
-//
-// ## API description
-//
-// - The specified cloud service parameter must be one of the following cloud service codes. The metering data types include hourly and daily.
-//
-// - The time format must comply with the ISO 8601 standard. Time specification constraints:
-//
-//   - Due to delays in data push, the data integrity of hourly metering data is guaranteed for the past 24 hours, and the data integrity of daily metering data is guaranteed for the past 2 days.
-//
-//   - The time span can cover the metering data of the most recent quarter.
+// 用户用量查询
 //
 // @param request - QueryUserOmsDataRequest
 //
@@ -7486,6 +7474,84 @@ func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *R
 	runtime := &dara.RuntimeOptions{}
 	_result = &RefundInstanceResponse{}
 	_body, _err := client.RefundInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases expired and stopped subscription instances.
+//
+// Description:
+//
+// Releases **upfront*	- instances that have **expired and stopped**. After an instance expires and stops, you can use this operation to release it in advance instead of waiting for the automatic release by the system after the retention period. **The release operation is irreversible. Before you invoke this operation, confirm that you no longer need the instance data or underlying resources.**
+//
+// @param request - ReleaseExpiredPrepaidInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseExpiredPrepaidInstanceResponse
+func (client *Client) ReleaseExpiredPrepaidInstanceWithOptions(request *ReleaseExpiredPrepaidInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseExpiredPrepaidInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleaseExpiredPrepaidInstance"),
+		Version:     dara.String("2017-12-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleaseExpiredPrepaidInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases expired and stopped subscription instances.
+//
+// Description:
+//
+// Releases **upfront*	- instances that have **expired and stopped**. After an instance expires and stops, you can use this operation to release it in advance instead of waiting for the automatic release by the system after the retention period. **The release operation is irreversible. Before you invoke this operation, confirm that you no longer need the instance data or underlying resources.**
+//
+// @param request - ReleaseExpiredPrepaidInstanceRequest
+//
+// @return ReleaseExpiredPrepaidInstanceResponse
+func (client *Client) ReleaseExpiredPrepaidInstance(request *ReleaseExpiredPrepaidInstanceRequest) (_result *ReleaseExpiredPrepaidInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReleaseExpiredPrepaidInstanceResponse{}
+	_body, _err := client.ReleaseExpiredPrepaidInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7835,7 +7901,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 
 // Summary:
 //
-// Renews a resource package instance.
+// Renews a specified resource plan instance.
 //
 // @param request - RenewResourcePackageRequest
 //
@@ -7895,7 +7961,7 @@ func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePack
 
 // Summary:
 //
-// Renews a resource package instance.
+// Renews a specified resource plan instance.
 //
 // @param request - RenewResourcePackageRequest
 //
@@ -7913,7 +7979,7 @@ func (client *Client) RenewResourcePackage(request *RenewResourcePackageRequest)
 
 // Summary:
 //
-// Sets an expiration date for all Elastic Compute Service (ECS) instances.
+// Sets a unified expiration date for renewing ECS instances.
 //
 // @param request - SetAllExpirationDayRequest
 //
@@ -7961,7 +8027,7 @@ func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDa
 
 // Summary:
 //
-// Sets an expiration date for all Elastic Compute Service (ECS) instances.
+// Sets a unified expiration date for renewing ECS instances.
 //
 // @param request - SetAllExpirationDayRequest
 //
@@ -7979,7 +8045,7 @@ func (client *Client) SetAllExpirationDay(request *SetAllExpirationDayRequest) (
 
 // Summary:
 //
-// Enables auto-renewal for an instance.
+// Sets the auto-renewal service for an instance.
 //
 // @param request - SetRenewalRequest
 //
@@ -8051,7 +8117,7 @@ func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime 
 
 // Summary:
 //
-// Enables auto-renewal for an instance.
+// Sets the auto-renewal service for an instance.
 //
 // @param request - SetRenewalRequest
 //
@@ -8149,10 +8215,6 @@ func (client *Client) SetResellerUserAlarmThreshold(request *SetResellerUserAlar
 //
 // Modify the quota ledger and consumption ledger.
 //
-// Description:
-//
-// 设置用户配额账本的Quota额度
-//
 // @param request - SetResellerUserQuotaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8208,10 +8270,6 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 // Summary:
 //
 // Modify the quota ledger and consumption ledger.
-//
-// Description:
-//
-// 设置用户配额账本的Quota额度
 //
 // @param request - SetResellerUserQuotaRequest
 //
@@ -8599,7 +8657,7 @@ func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_r
 
 // Summary:
 //
-// Adds tags to resources.
+// Adds tags to a resource.
 //
 // @param request - TagResourcesRequest
 //
@@ -8651,7 +8709,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds tags to resources.
+// Adds tags to a resource.
 //
 // @param request - TagResourcesRequest
 //

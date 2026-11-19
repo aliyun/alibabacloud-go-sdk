@@ -30,7 +30,7 @@ type iCreateAgAccountRequest interface {
 }
 
 type CreateAgAccountRequest struct {
-	// The properties of the new account. In the console, click Account Properties in the top menu bar to go to the **Security Settings*	- page and view the properties.
+	// The attributes of the new account. To view the attributes, click Account Attributes in the top menu bar of the console to go to the **Security Settings*	- page.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type CreateAgAccountRequest struct {
 	//
 	// example:
 	//
-	// 北京
+	// Beijing
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The name of the enterprise. This is the enterprise name that corresponds to the Unified Social Credit Code.
+	// The name of the enterprise. The name must be the same as the enterprise name associated with the unified social credit code.
 	//
 	// example:
 	//
-	// 阿里云测试有限公司
+	// Alibaba Cloud Test Co., Ltd
 	EnterpriseName *string `json:"EnterpriseName,omitempty" xml:"EnterpriseName,omitempty"`
-	// The first name of the user under the level 1 category.
+	// The name of the first-level category.
 	//
 	// example:
 	//
-	// 志成
+	// Zhicheng
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
 	//
@@ -60,9 +60,9 @@ type CreateAgAccountRequest struct {
 	//
 	// example:
 	//
-	// 吴
+	// Wu
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
-	// The logon email address of the member account.
+	// The logon email address.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateAgAccountRequest struct {
 	//
 	// example:
 	//
-	// 北京
+	// Beijing
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 }
 

@@ -32,17 +32,11 @@ type iDescribeProductAmortizedCostByAmortizationPeriodRequest interface {
 }
 
 type DescribeProductAmortizedCostByAmortizationPeriodRequest struct {
-	// The IDs of resource owners. The resource owner is the account that uses the resources.
-	//
-	// You can specify a maximum of 10 IDs.
+	// The filter condition for the resource ownership account. The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources. Maximum number of elements: 10.
 	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	// The IDs of billable accounts. This parameter is used to filter bills by the RAM user who pays for the resources. If you specify this parameter, you can query the bills of the specified RAM user. If you leave this parameter empty, the bills of the current account and all its RAM users are queried.
-	//
-	// You can specify a maximum of 10 IDs.
+	// The filter condition for the bill purchaser ID. The ID of the RAM user. Specify this parameter to view the bills of RAM users in Finance Cloud. If you do not specify this parameter, the bills of the current caller account and all its RAM users are viewed by default. Maximum number of elements: 10.
 	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	// The amortization month.
-	//
-	// Format: YYYY-MM.
+	// The amortization month. Format: YYYY-MM.
 	//
 	// This parameter is required.
 	//
@@ -50,37 +44,33 @@ type DescribeProductAmortizedCostByAmortizationPeriodRequest struct {
 	//
 	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The filter for billing cycle months.
-	//
-	// You can specify a maximum of 10 elements.
+	// The filter condition for the billing month. Maximum number of elements: 10.
 	ConsumePeriodFilter []*string `json:"ConsumePeriodFilter,omitempty" xml:"ConsumePeriodFilter,omitempty" type:"Repeated"`
-	// The code of the cost center.
+	// The code of the financial unit.
 	//
 	// example:
 	//
 	// 123#
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to return in the current call. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position to start the query. If you leave this parameter empty, the query starts from the beginning. Set this parameter to the value of NextToken that is returned in the last response to query the next page of results.
+	// The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error is reported. An empty value indicates that the reading starts from the beginning.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The product code.
-	//
-	// For more information about how to obtain this parameter, see QueryProductList and DescribeResourcePackageProduct.
+	// The product code. Reference value sources: Call QueryProductList to query product information, or call DescribeResourcePackageProduct to query the information about a specific resource plan product.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The details of the product.
+	// The product detail.
 	//
 	// example:
 	//

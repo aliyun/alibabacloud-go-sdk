@@ -42,7 +42,7 @@ type QueryBillResponseBody struct {
 	//
 	// AE3F4057-DFC9-4B81-8858-F620651010C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -119,13 +119,13 @@ type QueryBillResponseBodyData struct {
 	//
 	// 185xxxxx489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The account name.
+	// The account.
 	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The billing cycle, in the YYYY-MM format.
+	// The billing cycle. Format: YYYY-MM.
 	//
 	// example:
 	//

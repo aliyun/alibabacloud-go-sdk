@@ -26,7 +26,7 @@ type QueryProductListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of records per page. Maximum value: 300. Default value: 20.
+	// The number of entries per page. Maximum value: 300. Default value: 20.
 	//
 	// example:
 	//

@@ -32,13 +32,13 @@ type iQueryAccountTransactionsRequest interface {
 }
 
 type QueryAccountTransactionsRequest struct {
-	// The end time of the creation time range. If not specified, the default value is the current time. Example: 2018-01-01T00:00:00Z.
+	// The end time of the creation time range. If you do not specify this parameter, the default value is the current time. Example: 2018-01-01T00:00:00Z.
 	//
 	// example:
 	//
 	// 2020-03-06T01:55:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The start time of the creation time range. If not specified, the default value is one month before the current time. Example: 2018-01-01T00:00:00Z.
+	// The start time of the creation time range. If you do not specify this parameter, the default value is one month before the current time. Example: 2018-01-01T00:00:00Z.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type QueryAccountTransactionsRequest struct {
 	//
 	// 20200302
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	// The transaction channel. If you specify a transaction channel, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+	// The transaction channel. If you specify a transaction channel, the query returns results of the specified channel. If no results exist, an empty result is returned. If you do not specify this parameter, all channels are returned by default. Valid values:
 	//
-	// - AccountBalance: Account balance.
+	// - AccountBalance: User balance.
 	//
 	// - BankTransfer: Bank transfer.
 	//
@@ -74,7 +74,7 @@ type QueryAccountTransactionsRequest struct {
 	//
 	// - OfflineRemittance: Offline remittance.
 	//
-	// - RegularBankCreditRefund: Credit-based payment refund.
+	// - RegularBankCreditRefund: Credit limit refund.
 	//
 	// - CreditCard: Credit card.
 	//
@@ -94,7 +94,7 @@ type QueryAccountTransactionsRequest struct {
 	//
 	// 12342134
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
-	// The income and expense type. If you specify an income and expense type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+	// The income and expense type. If you specify an income and expense type, the query returns results of the specified type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
 	//
 	// - Income: Income.
 	//
@@ -110,7 +110,7 @@ type QueryAccountTransactionsRequest struct {
 	//
 	// 133314076
 	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
-	// The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+	// The transaction type. If you specify a transaction type, the query returns results of the specified type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
 	//
 	// - Payment: Top-up.
 	//

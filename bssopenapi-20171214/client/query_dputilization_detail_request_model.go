@@ -32,7 +32,7 @@ type iQueryDPUtilizationDetailRequest interface {
 }
 
 type QueryDPUtilizationDetailRequest struct {
-	// The commodity code, such as ecsRi and scu_bag. If this parameter is specified, the ProdCode parameter does not take effect.
+	// The commodity code, such as ecsRi or scu_bag. If this parameter is specified, the ProdCode parameter does not take effect.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type QueryDPUtilizationDetailRequest struct {
 	//
 	// 2019-05-23 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to include the resource plan usage of member accounts in finance trusteeship. Valid values:
+	// Specifies whether to include the resource plan usage of linked accounts in finance trusteeship. Valid values:
 	//
 	// - true: Included.
 	//
@@ -76,7 +76,7 @@ type QueryDPUtilizationDetailRequest struct {
 	//
 	// Instancetyp
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The token that specifies the start position of the query. Set this parameter to null for the first query. For subsequent queries, use the NextToken value returned in the previous response.
+	// The token that specifies the start of the query. Set this parameter to null for the first query. For subsequent queries, use the NextToken value returned in the previous response.
 	//
 	// example:
 	//

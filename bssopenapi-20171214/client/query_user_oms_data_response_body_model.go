@@ -22,32 +22,11 @@ type iQueryUserOmsDataResponseBody interface {
 }
 
 type QueryUserOmsDataResponseBody struct {
-	// The status code.
-	//
-	// example:
-	//
-	// Success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *QueryUserOmsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message.
-	//
-	// example:
-	//
-	// Successful！
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6000EE23-274B-4E07-A697-FF2E999520A4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryUserOmsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserOmsDataResponseBody) String() string {
@@ -113,19 +92,8 @@ func (s *QueryUserOmsDataResponseBody) Validate() error {
 }
 
 type QueryUserOmsDataResponseBodyData struct {
-	// The host ID.
-	//
-	// example:
-	//
-	// cn
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The NextToken field for the start of the next page. If this field is empty or not present, it indicates that no more data is available.
-	//
-	// example:
-	//
-	// NextToken
-	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The OMS data list.
+	HostId  *string                  `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Marker  *string                  `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	OmsData []map[string]interface{} `json:"OmsData,omitempty" xml:"OmsData,omitempty" type:"Repeated"`
 }
 

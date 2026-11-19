@@ -22,7 +22,7 @@ type TagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set the value to instance for savings plan instances.
+	// The resource type. Valid value: instance: savings plan instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type TagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags. You can add 1 to 20 tags at a time.
+	// The list of tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -85,7 +85,7 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. An empty string is allowed.
+	// The tag key. You can specify 1 to 20 tag keys at a time. Empty strings are allowed.
 	//
 	// This parameter is required.
 	//
@@ -93,7 +93,7 @@ type TagResourcesRequestTag struct {
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value. You can specify 1 to 20 tag values at a time.
 	//
 	// This parameter is required.
 	//

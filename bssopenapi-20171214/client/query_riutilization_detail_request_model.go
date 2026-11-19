@@ -34,7 +34,7 @@ type QueryRIUtilizationDetailRequest struct {
 	//
 	// jsdgfsdhgsdjh
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type QueryRIUtilizationDetailRequest struct {
 	//
 	// 2019-05-23 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance type corresponding to the reserved instance.
+	// The instance type of the reserved instance.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type QueryRIUtilizationDetailRequest struct {
 	//
 	// - ecsRi: ECS reserved instances. This is the default value.
 	//
-	// - scu_bag: Storage capacity unit (SCU) plans.
+	// - scu_bag: storage capacity units (SCUs).
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type QueryRIUtilizationDetailRequest struct {
 	//
 	// dsudfgdsjh
 	RIInstanceId *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// This parameter is required.
 	//

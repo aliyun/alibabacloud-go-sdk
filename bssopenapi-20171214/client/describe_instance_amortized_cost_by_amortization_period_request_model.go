@@ -34,21 +34,11 @@ type iDescribeInstanceAmortizedCostByAmortizationPeriodRequest interface {
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
-	// The filter condition for the account to which the resource belongs.
-	//
-	// The resource ownership account is the account that actually uses the resource.
-	//
-	// Maximum number of elements: 10.
+	// The resource ownership account filter. The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources. Maximum number of elements: 10.
 	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	// The filter condition for the ID of the bill owner.
-	//
-	// This parameter specifies the ID of a RAM user. You can set this parameter to query the bills of a RAM user. If you do not set this parameter, the bills of the current account and all RAM users of the current account are queried.
-	//
-	// Maximum number of elements: 10.
+	// The bill purchaser ID filter. The ID of the RAM user. Specify this parameter to view the bills of RAM users. If you do not specify this parameter, the bills of the current caller account and all its RAM users are viewed by default. Maximum number of elements: 10.
 	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	// The amortization month.
-	//
-	// Format: YYYY-MM.
+	// The amortization month. Format: YYYY-MM.
 	//
 	// This parameter is required.
 	//
@@ -56,41 +46,35 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
 	//
 	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The filter condition for the billing cycle.
-	//
-	// Maximum number of elements: 10.
+	// The billing cycle filter. Maximum number of elements: 10.
 	ConsumePeriodFilter []*string `json:"ConsumePeriodFilter,omitempty" xml:"ConsumePeriodFilter,omitempty" type:"Repeated"`
-	// The code of the cost center.
+	// The cost unit code.
 	//
 	// example:
 	//
 	// 123#
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	// The filter condition for the instance ID.
-	//
-	// You can query multiple instances. If you do not set this parameter, all instances are queried.
-	//
-	// Maximum number of elements: 10.
+	// The instance ID filter. You can query multiple instances. If you do not specify this parameter, all instances are queried by default. Maximum number of elements: 10.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// The maximum number of data records to return. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to read in the current call. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which to start reading the current call. The value of this parameter must be empty or the value of NextToken that is returned in the last call. Otherwise, an error is reported. If this parameter is empty, the query starts from the beginning.
+	// The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error occurs. An empty value indicates that the reading starts from the beginning.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The product code. To obtain the value of this parameter, call QueryProductList or DescribeResourcePackageProduct.
+	// The product code. Reference sources for valid values: Call QueryProductList to query product information. Call DescribeResourcePackageProduct to query the information about a specific resource plan product.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The details of the product.
+	// The product detail.
 	//
 	// example:
 	//
@@ -98,9 +82,9 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The subscription type. Valid values:
 	//
-	// - Subscription: subscription.
+	// - Subscription: Upfront.
 	//
-	// - PayAsYouGo: pay-as-you-go.
+	// - PayAsYouGo: Pay-as-you-go.
 	//
 	// example:
 	//

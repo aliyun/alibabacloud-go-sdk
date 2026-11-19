@@ -43,13 +43,13 @@ type GetPayAsYouGoPriceRequest struct {
 	//
 	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region ID of the instance.
+	// The region ID of the instance. If DescribePricingModule returns a region ID, this parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The subscription type. Valid values: PayAsYouGo.
+	// The subscription type. Valid values: PayAsYouGo (pay-as-you-go).
 	//
 	// This parameter is required.
 	//
@@ -135,9 +135,9 @@ func (s *GetPayAsYouGoPriceRequest) Validate() error {
 }
 
 type GetPayAsYouGoPriceRequestModuleList struct {
-	// The configuration of the Nth pricing module. The value of N ranges from 1 to 50. Format: "AA:aa,BB:bb", where AA and BB are the property codes of the pricing module, and aa and bb are the corresponding property values.
+	// The configuration of the Nth pricing module. Valid values of N: 1 to 50. Format: AA:aa,BB:bb, where AA and BB are the identifiers of the pricing module attributes, and aa and bb are the attribute values of the pricing module attributes.
 	//
-	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
+	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to retrieve the Module parameter.
 	//
 	// This parameter is required.
 	//
@@ -145,10 +145,10 @@ type GetPayAsYouGoPriceRequestModuleList struct {
 	//
 	// InstanceType:ecs.g5.xlarge,IoOptimized:IoOptimized,ImageOs:linux
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The module code of the Nth pricing module.
+	// The identifier of the Nth pricing module.
 	//
 	//
-	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
+	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to retrieve the Module parameter.
 	//
 	// This parameter is required.
 	//
@@ -160,13 +160,13 @@ type GetPayAsYouGoPriceRequestModuleList struct {
 	//
 	// - Hour: hourly price.
 	//
-	// - Usage: usage-based price.
+	// - Usage: usage.
 	//
 	// - Month: monthly price.
 	//
 	// - Year: yearly price.
 	//
-	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
+	// > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to retrieve the Module parameter.
 	//
 	// This parameter is required.
 	//

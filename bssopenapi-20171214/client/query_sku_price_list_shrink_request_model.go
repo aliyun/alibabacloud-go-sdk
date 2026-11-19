@@ -61,6 +61,10 @@ type QuerySkuPriceListShrinkRequest struct {
 	// instance_type
 	PriceEntityCode *string `json:"PriceEntityCode,omitempty" xml:"PriceEntityCode,omitempty"`
 	// The collection of pricing factor conditions. You can call the **QueryPriceEntityList*	- operation to query pricing factor codes and pricing factor values.
+	//
+	// example:
+	//
+	// {"vm_region_no":["cn-shiwei-shenshu"]}
 	PriceFactorConditionMapShrink *string `json:"PriceFactorConditionMap,omitempty" xml:"PriceFactorConditionMap,omitempty"`
 }
 

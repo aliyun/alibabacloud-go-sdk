@@ -42,7 +42,7 @@ type QuerySettleBillRequest struct {
 	//
 	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle, in the format of YYYY-MM.
+	// The billing cycle. Format: YYYY-MM.
 	//
 	// This parameter is required.
 	//
@@ -51,23 +51,23 @@ type QuerySettleBillRequest struct {
 	// 2018-07
 	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
-	// Specifies whether to filter based on whether the original price (PretaxGrossAmount) is 0. Default value: false (compatible with existing logic). Valid values:
+	// Specifies whether to filter out records whose original price (PretaxGrossAmount) is 0. Default value: false (for compatibility with existing logic). Valid values:
 	//
-	// - true: Yes.
+	// - true: yes
 	//
-	// - false: No.
+	// - false: no
 	//
 	// example:
 	//
 	// true
 	IsHideZeroCharge *bool `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
-	// The maximum number of data records to read in this request. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to return in the current request. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which the next query starts. Leave this parameter empty to start from the beginning.
+	// The token that specifies the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type QuerySettleBillRequest struct {
 	//
 	// - PayAsYouGo: pay-as-you-go
 	//
-	// >  This parameter must be used together with the ProductCode parameter.
+	// > This parameter must be used together with the ProductCode parameter.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type QuerySettleBillRequest struct {
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The type. Valid values:
 	//
-	// - SubscriptionOrder: prepaid order
+	// - SubscriptionOrder: subscription order
 	//
 	// - PayAsYouGoBill: pay-as-you-go bill
 	//

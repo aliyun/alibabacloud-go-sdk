@@ -50,19 +50,19 @@ type QueryAvailableInstancesRequest struct {
 	//
 	// 2016-05-23T12:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// The end time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
+	// The end time of the end time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// The start time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
+	// The start time of the end time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
 	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	EndTimeStart *string `json:"EndTimeStart,omitempty" xml:"EndTimeStart,omitempty"`
-	// The instance IDs. Separate multiple IDs with commas. You can specify up to 100 IDs.
+	// The instance IDs. Separate multiple IDs with commas. Maximum number of IDs: 100.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ type QueryAvailableInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product code. You can call the **QueryProductList*	- operation to query product codes.
 	//
-	// > If the region is specified, this parameter cannot be empty.
+	// > This parameter cannot be empty when the region is specified.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type QueryAvailableInstancesRequest struct {
 	//
 	// AutoRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	// The subscription type.
+	// The subscription type. Valid values:
 	//
 	// - Subscription: subscription.
 	//

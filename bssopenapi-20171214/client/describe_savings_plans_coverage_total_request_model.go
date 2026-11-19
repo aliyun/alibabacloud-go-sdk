@@ -22,26 +22,27 @@ type iDescribeSavingsPlansCoverageTotalRequest interface {
 }
 
 type DescribeSavingsPlansCoverageTotalRequest struct {
-	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources.
 	//
 	// example:
 	//
 	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// Format: yyyy-MM-dd HH:mm:ss. The query excludes this time. If this parameter is left empty, the query covers data up to the current time.
+	// The end time of the query. Format: yyyy-MM-dd HH:mm:ss. The specified end time is excluded from the query. If this parameter is left empty, the current time is used as the end time.
 	//
 	// example:
 	//
 	// 2021-07-20 00:00:00
-	EndPeriod   *string                                              `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The filter parameters.
 	FilterParam *DescribeSavingsPlansCoverageTotalRequestFilterParam `json:"FilterParam,omitempty" xml:"FilterParam,omitempty" type:"Struct"`
-	// Valid values:
+	// The time granularity. Valid values:
 	//
-	// - MONTH: month granularity.
+	// - MONTH: month
 	//
-	// - DAY: day granularity.
+	// - DAY: day
 	//
-	// - HOUR: hour granularity.
+	// - HOUR: hour
 	//
 	// This parameter is required.
 	//
@@ -49,7 +50,7 @@ type DescribeSavingsPlansCoverageTotalRequest struct {
 	//
 	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// Format: yyyy-MM-dd HH:mm:ss. The query includes this time.
+	// The start time of the query. Format: yyyy-MM-dd HH:mm:ss. The specified start time is included in the query.
 	//
 	// This parameter is required.
 	//
@@ -122,8 +123,10 @@ func (s *DescribeSavingsPlansCoverageTotalRequest) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageTotalRequestFilterParam struct {
+	// The list of dimension filter conditions.
 	Dimensions []*DescribeSavingsPlansCoverageTotalRequestFilterParamDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	Tags       []*DescribeSavingsPlansCoverageTotalRequestFilterParamTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The list of tag filter conditions.
+	Tags []*DescribeSavingsPlansCoverageTotalRequestFilterParamTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSavingsPlansCoverageTotalRequestFilterParam) String() string {
@@ -175,9 +178,20 @@ func (s *DescribeSavingsPlansCoverageTotalRequestFilterParam) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageTotalRequestFilterParamDimensions struct {
-	Code       *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The dimension code.
+	//
+	// example:
+	//
+	// COMMODITY
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The selection method for dimension filtering.
+	//
+	// example:
+	//
+	// IN
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The list of dimension filter values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSavingsPlansCoverageTotalRequestFilterParamDimensions) String() string {
@@ -220,9 +234,12 @@ func (s *DescribeSavingsPlansCoverageTotalRequestFilterParamDimensions) Validate
 }
 
 type DescribeSavingsPlansCoverageTotalRequestFilterParamTags struct {
-	Code       *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The tag code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The selection method for tag filtering.
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The list of tag filter values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSavingsPlansCoverageTotalRequestFilterParamTags) String() string {

@@ -26,7 +26,7 @@ type iConfirmRelationRequest interface {
 }
 
 type ConfirmRelationRequest struct {
-	// The Alibaba Cloud UID of the linked account.
+	// The Alibaba Cloud UID of the secondary account.
 	//
 	// example:
 	//
@@ -34,11 +34,11 @@ type ConfirmRelationRequest struct {
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	// The confirmation action. Valid values:
 	//
-	// - child_agree: The linked account agrees.
+	// - child_agree: The secondary account agrees.
 	//
-	// - child_disagree: The linked account rejects.
+	// - child_disagree: The secondary account rejects.
 	//
-	// - 主账号取消确认: The main account cancels the confirmation.
+	// - parent_cancel: The primary account cancels the confirmation.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type ConfirmRelationRequest struct {
 	//
 	// child_agree
 	ConfirmCode *string `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
-	// The Alibaba Cloud UID of the main account.
+	// The Alibaba Cloud UID of the primary account.
 	//
 	// example:
 	//
 	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// The permissions granted to the linked account. Valid values:
+	// The permissions granted to the secondary account. Valid values:
 	//
-	// - SYNCHRONIZE_FINANCE_IDENTITY: Allows synchronizing the credit-based payment identity to the linked account.
+	// - SYNCHRONIZE_FINANCE_IDENTITY: Allows synchronization of the credit control identity to the linked account.
 	//
-	// - SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: Allows synchronizing discounts to the linked account.
+	// - SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: Allows synchronization of discounts to the linked account.
 	//
-	// - FORBID_WITHDRAW_CASH: Prohibits the linked account from withdrawing cash from the balance.
+	// - FORBID_WITHDRAW_CASH: Prohibits the linked account from withdrawing the balance.
 	//
 	// - FORBID_MANAGE_INVOICE: Prohibits the linked account from managing invoices.
 	//
-	// - CHECK_FINANCE_INFO: Allows requesting to view the account linking information.
+	// - CHECK_FINANCE_INFO: Allows requesting to view account linking information.
 	//
 	// - MANAGE_TARGET_INVOICE: Allows managing invoices of the target account.
 	//
@@ -80,7 +80,7 @@ type ConfirmRelationRequest struct {
 	//
 	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The relationship type. Valid values: enterprise_group.
+	// The relationship type. Valid value: enterprise_group.
 	//
 	// example:
 	//

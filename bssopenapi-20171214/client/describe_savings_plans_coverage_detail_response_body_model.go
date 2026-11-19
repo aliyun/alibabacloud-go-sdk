@@ -30,7 +30,7 @@ type DescribeSavingsPlansCoverageDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned query data.
 	Data *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the API call.
+	// The API call message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeSavingsPlansCoverageDetailResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the API call is successful.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries.
+	// The total number of data entries.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) Validate() error {
 }
 
 type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
-	// The coverage percentage.
+	// The coverage rate.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	//
 	// ecs.sn1ne.3xlarge
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The ID of the owner of the deducted commodity.
+	// The ID of the owner of the deducted product.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	//
 	// 2023-04-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	// The total expenditure.
+	// The total amount.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	//
 	// 1906589291020438
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username.
+	// The account username.
 	//
 	// example:
 	//

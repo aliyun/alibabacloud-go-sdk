@@ -22,19 +22,19 @@ type iQueryResellerAvailableQuotaResponseBody interface {
 }
 
 type QueryResellerAvailableQuotaResponseBody struct {
-	// The error code returned if the call fails. See the "Error codes" section of this topic.
+	// The error code returned when the call fails. For more information, see Error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The available quota balance of the user.
+	// The available quota balance information for the user.
 	//
 	// example:
 	//
 	// 300
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Additional information about the result.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type QueryResellerAvailableQuotaResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of `true` indicates that the call was successful. A value of `false` indicates that the call failed.
+	// Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that an error occurred.
 	//
 	// example:
 	//

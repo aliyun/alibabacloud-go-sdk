@@ -14,7 +14,7 @@ type iDescribeResourcePackageProductRequest interface {
 }
 
 type DescribeResourcePackageProductRequest struct {
-	// The code of the service.
+	// The product type.
 	//
 	// This parameter is required.
 	//

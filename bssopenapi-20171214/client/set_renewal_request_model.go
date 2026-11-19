@@ -28,7 +28,7 @@ type iSetRenewalRequest interface {
 }
 
 type SetRenewalRequest struct {
-	// The ID of the instance. You can enable auto-renewal for up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
+	// The instance IDs. You can specify up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,7 @@ type SetRenewalRequest struct {
 	// rm-askjdhaskfjh
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -45,49 +45,49 @@ type SetRenewalRequest struct {
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service.
+	// The product type.
 	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The auto-renewal period. Valid values:
+	// The auto-renewal period of the instance. Valid values:
 	//
-	// 	- 1
+	// - 1
 	//
-	// 	- 2
+	// - 2
 	//
-	// 	- 3
+	// - 3
 	//
-	// 	- 6
+	// - 6
 	//
-	// 	- 12
+	// - 12
 	//
-	// >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
+	// > This parameter is required when RenewalStatus is set to AutoRenewal.
 	//
 	// example:
 	//
 	// 1
 	RenewalPeriod *int32 `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
-	// The unit of the auto-renewal period. Valid values:
+	// The unit of the auto-renewal cycle. Valid values:
 	//
-	// 	- M: months
+	// - M: month.
 	//
-	// 	- Y: years
+	// - Y: year.
 	//
-	// >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
+	// > This parameter is required when RenewalStatus is set to AutoRenewal.
 	//
 	// example:
 	//
 	// M
 	RenewalPeriodUnit *string `json:"RenewalPeriodUnit,omitempty" xml:"RenewalPeriodUnit,omitempty"`
-	// The status of renewal. Valid values:
+	// The renewal status. Valid values:
 	//
-	// 	- AutoRenewal: The instance is automatically renewed.
+	// - AutoRenewal: auto-renewal.
 	//
-	// 	- ManualRenewal: The instance is manually renewed.
+	// - ManualRenewal: manual renewal.
 	//
-	// 	- NotRenewal: The instance is not renewed.
+	// - NotRenewal: no renewal.
 	//
 	// This parameter is required.
 	//
@@ -95,11 +95,11 @@ type SetRenewalRequest struct {
 	//
 	// AutoRenewal
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
-	// The billing method. Valid values:
+	// The subscription type. Valid values:
 	//
-	// 	- Subscription: subscription
+	// - Subscription: subscription.
 	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
 	// example:
 	//

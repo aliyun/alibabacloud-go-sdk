@@ -269,7 +269,7 @@ type QueryPermissionListResponseBodyDataPermissionList struct {
 	//
 	// example:
 	//
-	// 主账号 子账号共享主账号信控身份
+	// 主帐号允许子帐号共享主帐号信控身份
 	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
 	// The time when the permission takes effect. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
 	//

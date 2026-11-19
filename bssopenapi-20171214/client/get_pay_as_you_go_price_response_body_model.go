@@ -42,7 +42,7 @@ type GetPayAsYouGoPriceResponseBody struct {
 	//
 	// 1537A007-72D7-4165-8A26-8694A38E219A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -115,11 +115,11 @@ func (s *GetPayAsYouGoPriceResponseBody) Validate() error {
 type GetPayAsYouGoPriceResponseBodyData struct {
 	// The currency. Valid values:
 	//
-	// - CNY: Chinese Yuan.
+	// - CNY: Chinese yuan.
 	//
-	// - USD: US Dollar.
+	// - USD: US dollar.
 	//
-	// - JPY: Japanese Yen.
+	// - JPY: Japanese yen.
 	//
 	// example:
 	//

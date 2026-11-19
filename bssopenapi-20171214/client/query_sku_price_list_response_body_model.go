@@ -218,6 +218,10 @@ type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList struct {
 	// 017c15a31507bc6de22aa93777461adc
 	SkuCode *string `json:"SkuCode,omitempty" xml:"SkuCode,omitempty"`
 	// The collection of factor values. Different commodities have their own factors under pricing entities. For example, the instance_type pricing entity of the ECS commodity has factors such as `vm_region_no, iooptimized, vm_os_kind, instance_type`.
+	//
+	// example:
+	//
+	// {"vm_region_no":"cn-zhangjiakou-na62-a01","iooptimized":"optimized","vm_os_kind":"windows","instance_type":"ecs.i1.xlarge"}
 	SkuFactorMap map[string]*string `json:"SkuFactorMap,omitempty" xml:"SkuFactorMap,omitempty"`
 }
 

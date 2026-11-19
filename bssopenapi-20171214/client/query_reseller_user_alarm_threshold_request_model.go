@@ -16,7 +16,7 @@ type iQueryResellerUserAlarmThresholdRequest interface {
 }
 
 type QueryResellerUserAlarmThresholdRequest struct {
-	// The type of alert. This parameter is required. Set the value to quota_low_balance, which indicates a low quota alert.
+	// The alert type. Required. Valid values: quota_low_balance: Quota low-balance alert.
 	//
 	// example:
 	//

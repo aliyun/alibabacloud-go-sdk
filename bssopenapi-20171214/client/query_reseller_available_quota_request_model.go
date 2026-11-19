@@ -16,11 +16,11 @@ type iQueryResellerAvailableQuotaRequest interface {
 }
 
 type QueryResellerAvailableQuotaRequest struct {
-	// You do not need to specify this parameter.
+	// This parameter is not required.
 	//
 	// example:
 	//
-	// 无
+	// None
 	ItemCodes *string `json:"ItemCodes,omitempty" xml:"ItemCodes,omitempty"`
 	// This parameter is required.
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -20,19 +20,19 @@ type iQueryRelationListRequest interface {
 }
 
 type QueryRelationListRequest struct {
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. The default value is 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of relationship statuses. The value is an enumeration of RelationshipStatusEnum. If you do not specify this parameter, only relationships that are in effect are queried.
+	// The list of relationship statuses. The statuses are enumerated values of RelationshipStatusEnum. If you do not specify this parameter, the current effective statuses are queried by default.
 	//
 	// example:
 	//

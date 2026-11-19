@@ -50,7 +50,7 @@ type BaseAttributeInfoDTO struct {
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The value type.
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-	// The property value list.
+	// The list of property values.
 	Values []*AttributeValueInfoDTO `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

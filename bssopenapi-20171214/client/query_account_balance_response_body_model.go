@@ -42,7 +42,7 @@ type QueryAccountBalanceResponseBody struct {
 	//
 	// 16176743-6DC7-4CB3-BB25-A13982D8DFAD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *QueryAccountBalanceResponseBody) Validate() error {
 }
 
 type QueryAccountBalanceResponseBodyData struct {
-	// The available credit.
+	// The available amount.
 	//
 	// example:
 	//
 	// 10000.00
 	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
-	// The available cash balance.
+	// The cash balance.
 	//
 	// example:
 	//
@@ -133,17 +133,17 @@ type QueryAccountBalanceResponseBodyData struct {
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
 	// The currency. Valid values:
 	//
-	// - CNY: Chinese Yuan
+	// - CNY: Chinese yuan
 	//
-	// - USD: US Dollar
+	// - USD: US dollar
 	//
-	// - JPY: Japanese Yen
+	// - JPY: Japanese yen
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The credit limit granted by MYbank.
+	// The MYbank credit limit.
 	//
 	// example:
 	//

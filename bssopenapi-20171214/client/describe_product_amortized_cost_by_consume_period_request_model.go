@@ -32,23 +32,23 @@ type iDescribeProductAmortizedCostByConsumePeriodRequest interface {
 }
 
 type DescribeProductAmortizedCostByConsumePeriodRequest struct {
-	// The filter conditions for the amortization month.
+	// The filter condition for the amortization month.
 	//
 	// Maximum number of elements: 10.
 	AmortizationPeriodFilter []*string `json:"AmortizationPeriodFilter,omitempty" xml:"AmortizationPeriodFilter,omitempty" type:"Repeated"`
-	// The filter conditions for the IDs of resource owners.
+	// The filter condition for the resource ownership account.
 	//
-	// The resource owner is the account that actually uses the resources.
+	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources.
 	//
 	// Maximum number of elements: 10.
 	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	// The filter conditions for the IDs of bill purchasers.
+	// The filter condition for the bill purchaser ID.
 	//
-	// This is the ID of a RAM user. Set this parameter to view the bills of a RAM user. If you do not set this parameter, the bills of the current account and all its RAM users are returned.
+	// The ID of the RAM user. Specify this parameter to view the bills of RAM users in Financial Cloud. If you do not specify this parameter, the bills of the current caller account and all its RAM users are viewed by default.
 	//
 	// Maximum number of elements: 10.
 	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	// The billing cycle.
+	// The billing cycle month.
 	//
 	// Format: YYYY-MM.
 	//
@@ -58,31 +58,37 @@ type DescribeProductAmortizedCostByConsumePeriodRequest struct {
 	//
 	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The code of the cost center.
+	// The code of the financial unit.
 	//
 	// example:
 	//
 	// 123#
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	// The maximum number of data records to return in this call. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to return in the current call. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which to start the query. If you leave this parameter empty, the query starts from the beginning. If you specify this parameter, set it to the value of `NextToken` that is returned in the last call.
+	// The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error occurs. An empty value indicates that the reading starts from the beginning.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The product code. To obtain this value, call the QueryProductList operation to query product information or the DescribeResourcePackageProduct operation to query information about a resource plan.
+	// The product code.
+	//
+	// Reference sources for valid values:
+	//
+	// Call QueryProductList to query product information,
+	//
+	// or call DescribeResourcePackageProduct to query the information about a specific resource plan product.
 	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The details of the product.
+	// The product detail.
 	//
 	// example:
 	//
@@ -90,9 +96,9 @@ type DescribeProductAmortizedCostByConsumePeriodRequest struct {
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The subscription type. Valid values:
 	//
-	// - Subscription: subscription.
+	// - Subscription: subscription
 	//
-	// - PayAsYouGo: pay-as-you-go.
+	// - PayAsYouGo: pay-as-you-go
 	//
 	// example:
 	//

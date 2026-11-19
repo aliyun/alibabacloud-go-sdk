@@ -20,25 +20,25 @@ type iSetAllExpirationDayResponseBody interface {
 }
 
 type SetAllExpirationDayResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The response message.
 	//
 	// example:
 	//
-	// The message that is returned
+	// Response message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// The ID of the request
+	// Request ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

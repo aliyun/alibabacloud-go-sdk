@@ -38,7 +38,7 @@ type RelieveAccountRelationRequest struct {
 	//
 	// example:
 	//
-	// RelationId
+	// 123456
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The relationship type. Only enterprise_group is supported.
 	//

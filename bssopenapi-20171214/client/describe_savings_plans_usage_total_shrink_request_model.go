@@ -22,20 +22,21 @@ type iDescribeSavingsPlansUsageTotalShrinkRequest interface {
 }
 
 type DescribeSavingsPlansUsageTotalShrinkRequest struct {
-	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources.
+	// The ID of the account with resource ownership, which is the account that actually uses the resources.
 	//
 	// example:
 	//
 	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The end of the time range to query. The end time is excluded from the time range. If you do not set this parameter, the end time is the current time. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time of the time range to query. The end time is not included in the time range. If you do not specify this parameter, the end time is the current time. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2021-01-02 00:00:00
-	EndPeriod         *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The filter parameters.
 	FilterParamShrink *string `json:"FilterParam,omitempty" xml:"FilterParam,omitempty"`
-	// The time granularity of the usage summary. Valid values: MONTH, DAY, HOUR.
+	// The time granularity for querying the usage summary. Valid values: MONTH, DAY, and HOUR.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +44,7 @@ type DescribeSavingsPlansUsageTotalShrinkRequest struct {
 	//
 	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The start of the time range to query. The start time is included in the time range. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time of the time range to query. The start time is included in the time range. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// This parameter is required.
 	//

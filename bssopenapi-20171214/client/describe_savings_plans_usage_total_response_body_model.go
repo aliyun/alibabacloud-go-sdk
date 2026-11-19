@@ -30,7 +30,7 @@ type DescribeSavingsPlansUsageTotalResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned query data.
 	Data *DescribeSavingsPlansUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the API call.
+	// The API call message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeSavingsPlansUsageTotalResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the API call is successful.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *DescribeSavingsPlansUsageTotalResponseBody) Validate() error {
 type DescribeSavingsPlansUsageTotalResponseBodyData struct {
 	// The usage data for each time period.
 	PeriodCoverage []*DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage `json:"PeriodCoverage,omitempty" xml:"PeriodCoverage,omitempty" type:"Repeated"`
-	// The total usage overview.
+	// The overview of the total usage rate.
 	TotalUsage *DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty" type:"Struct"`
 }
 
@@ -164,13 +164,13 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyData) Validate() error {
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage struct {
-	// The usage percentage.
+	// The usage rate.
 	//
 	// example:
 	//
 	// 1
 	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The time period to which the data belongs. Format: yyyyMMddHH.
+	// The time period to which the data belongs, in the yyyyMMddHH format.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage) Validate(
 }
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage struct {
-	// The total amount of savings plans.
+	// The total amount of the savings plan.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage struct {
 	//
 	// 100
 	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
-	// The total usage percentage.
+	// The total usage rate.
 	//
 	// example:
 	//

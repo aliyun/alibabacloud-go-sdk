@@ -22,7 +22,7 @@ type iQueryRIUtilizationDetailResponseBody interface {
 }
 
 type QueryRIUtilizationDetailResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
 	// example:
 	//

@@ -34,13 +34,13 @@ type iQueryBillRequest interface {
 }
 
 type QueryBillRequest struct {
-	// The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
+	// The ID of the account with resource ownership. The account with resource ownership is the account that actually uses the resource.
 	//
 	// example:
 	//
 	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The billing cycle, in the YYYY-MM format.
+	// The billing cycle. Format: YYYY-MM.
 	//
 	// This parameter is required.
 	//
@@ -49,11 +49,11 @@ type QueryBillRequest struct {
 	// 2018-07
 	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
-	// Specifies whether to filter out bills with a original price (PretaxGrossAmount) of 0. Default value: false (compatible with existing logic). Valid values:
+	// Specifies whether to filter out bills whose original price (PretaxGrossAmount) is 0. Default value: false (for compatibility with existing logic). Valid values:
 	//
-	// - true: filters out zero-charge bills.
+	// - true: Yes.
 	//
-	// - false: does not filter out zero-charge bills.
+	// - false: No.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iQueryProductListResponseBody interface {
 }
 
 type QueryProductListResponseBody struct {
-	// The response status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type QueryProductListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The Alibaba Cloud product information.
 	Data *QueryProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QueryProductListResponseBody struct {
 	//
 	// 94858229-2758-4663-A7D0-99490D541F15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type QueryProductListResponseBodyData struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of records displayed per page.
+	// The number of entries displayed per page.
 	//
 	// example:
 	//

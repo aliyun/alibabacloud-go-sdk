@@ -42,7 +42,7 @@ type DescribeSavingsPlansUsageDetailResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The amount spent from the savings plan, which is the used commitment.
+	// The deducted amount of the savings plan, which represents the used commitment.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	//
 	// 4.2
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
-	// The net savings amount.
+	// The net savings.
 	//
 	// example:
 	//
@@ -228,21 +228,25 @@ type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	// The current status. Valid values:
 	//
-	// - -1: overdue payment.
+	// - -1: overdue payment
 	//
-	// - 1: active.
+	// - 1: active
 	//
 	// example:
 	//
 	// -1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the savings plan, such as general-purpose or ECS compute.
+	// The type of the savings plan. Valid values:
+	//
+	// - general-purpose
+	//
+	// - ECS compute
 	//
 	// example:
 	//
 	// General-purpose
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage percentage.
+	// The usage rate.
 	//
 	// example:
 	//

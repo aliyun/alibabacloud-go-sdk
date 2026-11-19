@@ -28,15 +28,15 @@ type GetResourcePackagePriceResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetResourcePackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *GetResourcePackagePriceResponseBody) Validate() error {
 }
 
 type GetResourcePackagePriceResponseBodyData struct {
-	// The type of the currency.
+	// The currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discounted amount. Unit: CNY.
+	// The discount price. Unit: CNY.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetResourcePackagePriceResponseBodyData struct {
 	// 1290240
 	OriginalPrice *float32                                           `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	Promotions    *GetResourcePackagePriceResponseBodyDataPromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Struct"`
-	// The price at which the transaction is made. Unit: CNY.
+	// The transaction price. Unit: CNY.
 	//
 	// example:
 	//

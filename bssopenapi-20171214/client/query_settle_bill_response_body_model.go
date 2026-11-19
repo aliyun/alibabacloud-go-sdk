@@ -42,7 +42,7 @@ type QuerySettleBillResponseBody struct {
 	//
 	// AE3F4057-DFC9-4B81-8858-F620651010C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -125,20 +125,20 @@ type QuerySettleBillResponseBodyData struct {
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The billing cycle, in the format of YYYY-MM.
+	// The billing cycle. Format: YYYY-MM.
 	//
 	// example:
 	//
 	// 2020-02
 	BillingCycle *string                               `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        *QuerySettleBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The maximum number of records returned in this request.
+	// The maximum number of records returned in the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that indicates the position where the current call reads to. An empty value indicates that all data has been read.
+	// The token that indicates the position where the current read operation ends. If this parameter is empty, all data has been read.
 	//
 	// example:
 	//

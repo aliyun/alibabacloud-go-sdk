@@ -28,21 +28,21 @@ type QueryRelationListResponseBody struct {
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The message body.
 	Data *QueryRelationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7FC5D662-37FD-40A6-85B1-33442D815184
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -205,19 +205,19 @@ type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {
 	//
 	// caiwuyun_test4
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the account.
+	// The display name of the user.
 	//
 	// example:
 	//
 	// test4
 	AccountNickName *string `json:"AccountNickName,omitempty" xml:"AccountNickName,omitempty"`
-	// The type of the financial account. Valid values: MASTER and MEMBER.
+	// The type of the enterprise financial account. Valid values: MASTER and MEMBER.
 	//
 	// example:
 	//
 	// MEMBER
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The time when the relationship expires. If this parameter is empty, the relationship does not expire.
+	// The time when the relationship expires. An empty value indicates that the relationship does not expire.
 	//
 	// example:
 	//
@@ -229,25 +229,25 @@ type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {
 	//
 	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The relationship type. `FinancialManagement` indicates Financial Management and `FinancialTrusteeship` indicates finance trusteeship.
+	// The relationship policy. A value of FinancialManagement indicates financial management, and a value of FinancialTrusteeship indicates finance trusteeship.
 	//
 	// example:
 	//
 	// FinancialManagement
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The time when the relationship was established. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the relationship is established. The time follows the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z (which is 20:00:00 on May 23, 2016 in UTC+8).
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	SetupTime *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
-	// The time when the relationship takes effect. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The effective period of the relationship. The time follows the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z (which is 20:00:00 on May 23, 2016 in UTC+8).
 	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the relationship. The value is an enumeration of RelationshipStatusEnum.
+	// The relationship status. Valid values are the enumerated values of RelationshipStatusEnum.
 	//
 	// example:
 	//

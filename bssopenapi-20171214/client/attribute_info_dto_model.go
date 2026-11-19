@@ -40,33 +40,33 @@ type iAttributeInfoDTO interface {
 }
 
 type AttributeInfoDTO struct {
-	// The property categories.
+	// The attribute categories.
 	AttributeCategories []*string `json:"AttributeCategories,omitempty" xml:"AttributeCategories,omitempty" type:"Repeated"`
-	// The property source.
+	// The attribute source.
 	AttributeSource *string `json:"AttributeSource,omitempty" xml:"AttributeSource,omitempty"`
-	// The property type.
+	// The attribute type.
 	AttributeType *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
-	// The property code.
+	// The attribute code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The composite properties (basic information).
+	// The composite attributes (basic information).
 	CompositeAttributes []*BaseAttributeInfoDTO `json:"CompositeAttributes,omitempty" xml:"CompositeAttributes,omitempty" type:"Repeated"`
-	// The property description (translated).
+	// The attribute description (translated).
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description properties (basic information).
+	// The description attributes (basic information).
 	DescriptionAttributes []*BaseAttributeInfoDTO `json:"DescriptionAttributes,omitempty" xml:"DescriptionAttributes,omitempty" type:"Repeated"`
-	// The property name (translated).
+	// The attribute name (translated).
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The O&M property configuration.
+	// The O&M attribute configuration.
 	OperationalAttributeConfig *string `json:"OperationalAttributeConfig,omitempty" xml:"OperationalAttributeConfig,omitempty"`
-	// The O&M property type.
+	// The O&M attribute type.
 	OperationalAttributeType *string `json:"OperationalAttributeType,omitempty" xml:"OperationalAttributeType,omitempty"`
-	// The sub-properties (complete information).
+	// The sub-attributes (complete information).
 	SubAttributes []*AttributeInfoDTO `json:"SubAttributes,omitempty" xml:"SubAttributes,omitempty" type:"Repeated"`
 	// The unit.
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The value type.
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-	// The property value list.
+	// The attribute value list.
 	Values []*AttributeValueInfoDTO `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

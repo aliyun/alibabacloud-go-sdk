@@ -26,32 +26,33 @@ type iDescribeSavingsPlansUsageDetailShrinkRequest interface {
 }
 
 type DescribeSavingsPlansUsageDetailShrinkRequest struct {
-	// The ID of the account. If this parameter is left empty, data of the current account and its trusteeship linked accounts is queried. You can specify a trusteeship linked account ID to query data of that account.
+	// The ID of the account whose data you want to query. If this parameter is left empty, the data of the current account and its trusteeship linked accounts is queried. You can specify the ID of a trusteeship linked account to query only the data of that account.
 	//
 	// example:
 	//
 	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	// The end time. Format: yyyy-MM-dd HH:mm:ss. The query excludes data at this time. If this parameter is left empty, the query covers data up to the current time.
+	// The end time of the query. Format: yyyy-MM-dd HH:mm:ss. The specified time is excluded from the query. If this parameter is left empty, the current time is used.
 	//
 	// example:
 	//
 	// 2021-01-02 00:00:00
-	EndPeriod         *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
+	// The filter parameters.
 	FilterParamShrink *string `json:"FilterParam,omitempty" xml:"FilterParam,omitempty"`
-	// The maximum number of data records to return. Default value: 20. Maximum value: 300.
+	// The maximum number of data records to return in the current request. Default value: 20. Maximum value: 300.
 	//
 	// example:
 	//
 	// 300
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The time granularity for querying usage details. Valid values:
+	// The time granularity for querying the usage summary. Valid values:
 	//
-	// - MONTH: monthly granularity.
+	// - MONTH: monthly
 	//
-	// - DAY: daily granularity.
+	// - DAY: daily
 	//
-	// - HOUR: hourly granularity.
+	// - HOUR: hourly
 	//
 	// This parameter is required.
 	//
@@ -59,7 +60,7 @@ type DescribeSavingsPlansUsageDetailShrinkRequest struct {
 	//
 	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The start time. Format: yyyy-MM-dd HH:mm:ss. The query includes data at this time.
+	// The start time of the query. Format: yyyy-MM-dd HH:mm:ss. The specified time is included in the query.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +68,7 @@ type DescribeSavingsPlansUsageDetailShrinkRequest struct {
 	//
 	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
-	// The pagination token. Leave this parameter empty for the first page. The query result returns the token for the next page. If the returned token is empty, all data has been retrieved.
+	// The pagination token. Leave this parameter empty when you query the first page. The token for the next page is returned in the response. If the returned token is empty, all results are returned.
 	//
 	// example:
 	//

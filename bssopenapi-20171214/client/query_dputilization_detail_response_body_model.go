@@ -114,7 +114,7 @@ func (s *QueryDPUtilizationDetailResponseBody) Validate() error {
 
 type QueryDPUtilizationDetailResponseBodyData struct {
 	DetailList *QueryDPUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
-	// The token that specifies the start position of the next query. Pass this value to the LastToken parameter in the next request. If this parameter is returned as null, the query is complete.
+	// The token that specifies the start of the next query. Pass this value to the LastToken parameter in the next request. If this parameter is returned as null, it indicates that the query is complete.
 	//
 	// example:
 	//
