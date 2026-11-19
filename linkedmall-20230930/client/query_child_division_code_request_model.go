@@ -14,7 +14,7 @@ type iQueryChildDivisionCodeRequest interface {
 }
 
 type QueryChildDivisionCodeRequest struct {
-	// The parameters for querying child division codes.
+	// The sub-region code.
 	//
 	// This parameter is required.
 	Body *DivisionQuery `json:"body,omitempty" xml:"body,omitempty"`

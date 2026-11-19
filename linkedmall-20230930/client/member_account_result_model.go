@@ -16,10 +16,14 @@ type iMemberAccountResult interface {
 }
 
 type MemberAccountResult struct {
+	// The signed and bound Alipay auto-debit account (masked).
+	//
 	// example:
 	//
-	// "yue***@newburn.cn"
+	// ["yue***@newburn.cn"]
 	AccountNo []*string `json:"accountNo,omitempty" xml:"accountNo,omitempty" type:"Repeated"`
+	// The store ID.
+	//
 	// example:
 	//
 	// 123

@@ -16,9 +16,9 @@ type iProductSaleInfoListResult interface {
 }
 
 type ProductSaleInfoListResult struct {
-	// Product sales information
+	// The commodity sales information.
 	ProductSaleInfos []*ProductSaleInfo `json:"productSaleInfos,omitempty" xml:"productSaleInfos,omitempty" type:"Repeated"`
-	// The request ID of the API call
+	// The ID of the API request.
 	//
 	// example:
 	//

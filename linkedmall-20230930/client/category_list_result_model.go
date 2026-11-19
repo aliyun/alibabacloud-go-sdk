@@ -16,9 +16,13 @@ type iCategoryListResult interface {
 }
 
 type CategoryListResult struct {
-	// category collection
+	// The category collection.
 	Categories []*Category `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// request ID
+	// The request ID.
+	//
+	// example:
+	//
+	// 4D1FC14F-CE54-1A1F-A322-D6DC87D49AFE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type iQueryOrdersRequest interface {
 }
 
 type QueryOrdersRequest struct {
-	// Queries the list of main orders.
+	// The main order list.
 	//
 	// This parameter is required.
 	Body *OrderPageQuery `json:"body,omitempty" xml:"body,omitempty"`

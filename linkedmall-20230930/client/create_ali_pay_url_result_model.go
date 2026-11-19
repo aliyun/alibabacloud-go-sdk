@@ -18,8 +18,23 @@ type iCreateAliPayUrlResult interface {
 }
 
 type CreateAliPayUrlResult struct {
-	AccountId          *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	MemberId           *string `json:"memberId,omitempty" xml:"memberId,omitempty"`
+	// The LM account ID.
+	//
+	// example:
+	//
+	// 123456789
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The LM member ID.
+	//
+	// example:
+	//
+	// 223456789
+	MemberId *string `json:"memberId,omitempty" xml:"memberId,omitempty"`
+	// The Alipay auto-debit signing URL.
+	//
+	// example:
+	//
+	// https://example.com/withhold/sign
 	ZftWithholdSignUrl *string `json:"zftWithholdSignUrl,omitempty" xml:"zftWithholdSignUrl,omitempty"`
 }
 

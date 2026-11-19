@@ -28,49 +28,49 @@ type iShopPageDataResult interface {
 }
 
 type ShopPageDataResult struct {
-	// Partner shops
+	// The partner shops.
 	//
 	// example:
 	//
-	// 12****01
+	// [{"shopId":"22000019","cooperationCompanyId":"11200003","cooperationShopId":"21000026"}]
 	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
-	// End time
+	// The end time.
 	//
 	// example:
 	//
 	// 2023-09-11T12:22:24.000+08:00
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// Purchaser ID
+	// The purchaser ID.
 	//
 	// example:
 	//
 	// PID56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	// Shop ID
+	// The shop ID.
 	//
 	// example:
 	//
 	// 22****09
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	// Shop name
+	// The shop name.
 	//
 	// example:
 	//
-	// 儿童座椅分销店铺
+	// Child seat distribution shop
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	// Shop type
+	// The shop type.
 	//
 	// example:
 	//
 	// DistributorQYG
 	ShopType *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
-	// Start time
+	// The start time.
 	//
 	// example:
 	//
 	// 2023-09-11T12:22:24.000+08:00
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// Shop status
+	// The shop status.
 	//
 	// example:
 	//

@@ -9,11 +9,11 @@ import (
 
 // Summary:
 //
-// Cancels a refund order.
+// Cancels an after-sales ticket.
 //
 // Description:
 //
-// Cancel a refund order.
+// Cancels an after-sales ticket.
 //
 // @param headers - map
 //
@@ -46,11 +46,11 @@ func (client *Client) CancelRefundOrderWithContext(ctx context.Context, disputeI
 
 // Summary:
 //
-// Confirms the receipt of goods.
+// Confirms receipt.
 //
 // Description:
 //
-// Confirms the receipt of goods.
+// Confirms receipt.
 //
 // @param request - ConfirmDisburseRequest
 //
@@ -92,11 +92,11 @@ func (client *Client) ConfirmDisburseWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Backfill shipping notice information.
+// Backfills the waybill information.
 //
 // Description:
 //
-// Backfill shipping notice information.
+// Backfills the waybill information.
 //
 // @param request - CreateGoodsShippingNoticeRequest
 //
@@ -138,15 +138,15 @@ func (client *Client) CreateGoodsShippingNoticeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates a purchase order and returns the purchase order ID. The specific result of order creation is communicated through messages. After the order is created, you can query the order details associated with the purchase order using the order API.
+// Creates a purchase order and returns the purchase order ID. The order creation result is notified through messages. After the order is created, you can query the orders associated with the purchase order by calling the order API.
 //
 // Description:
 //
-// Creates a purchase order and returns the purchase order ID. Messages communicate the specific result of order creation. After the order is created, you can query the order details associated with the purchase order using the order API.
+// Creates a purchase order and returns the purchase order ID. The order creation result is notified through messages. After the order is created, you can query the orders associated with the purchase order by calling the order API.
 //
-//	Warning: Note: Purchase order creation is an asynchronous task. If a distributor calls this API and receives an abnormal status (such as error code 503), do not immediately process customer refunds. Distributors must wait for and consume the PurchaseOrderCreate message (the purchase order creation result message) to determine the order status—for example, by consuming the order status synchronization message—before proceeding with business logic. This prevents financial losses.
+//	Warning: Because purchase order creation is an asynchronous task, if an error (such as a 503 error code) is returned when a distributor calls this API, do not immediately process consumer refunds on the business side. Wait for and consume the PurchaseOrderCreate message (the purchase order creation result message) to check the order status (for example, consume the order status synchronization message to check the order status) before you process business logic to prevent financial losses.
 //
-//	Notice: Note: If you do not receive the PurchaseOrderCreate message (the purchase order creation result message) after calling the purchase order creation API, submit a ticket to the technical support team to inquire about the cause.
+//	Notice: If you do not receive the PurchaseOrderCreate message (the purchase order creation result message) after you call the purchase order creation API, submit a ticket in the technical integration group to check the cause.
 //
 // @param request - CreatePurchaseOrderRequest
 //
@@ -188,11 +188,11 @@ func (client *Client) CreatePurchaseOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Create a support ticket.
+// Creates an after-sales ticket.
 //
 // Description:
 //
-// Creates a refund order.
+// Creates an after-sales ticket.
 //
 // @param request - CreateRefundOrderRequest
 //
@@ -234,7 +234,7 @@ func (client *Client) CreateRefundOrderWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of an order.
+// Queries the details of the main order.
 //
 // @param headers - map
 //
@@ -267,11 +267,11 @@ func (client *Client) GetOrderWithContext(ctx context.Context, orderId *string, 
 
 // Summary:
 //
-// Retrieve the purchase order status.
+// Retrieves the status of a purchase order.
 //
 // Description:
 //
-// Retrieve the transaction order status.
+// Retrieves the status of a transaction order.
 //
 // @param headers - map
 //
@@ -304,11 +304,11 @@ func (client *Client) GetPurchaseOrderStatusWithContext(ctx context.Context, pur
 
 // Summary:
 //
-// Retrieves the purchaser\\"s shop.
+// Retrieves the purchaser store.
 //
 // Description:
 //
-// Retrieves the purchaser\\"s shop.
+// Retrieves the purchaser store.
 //
 // @param headers - map
 //
@@ -341,11 +341,11 @@ func (client *Client) GetPurchaserShopWithContext(ctx context.Context, purchaser
 
 // Summary:
 //
-// Retrieve details of an after-sales order.
+// Retrieves the details of an after-sales ticket.
 //
 // Description:
 //
-// # Retrieve after-sales order details
+// Retrieves the details of an after-sales ticket.
 //
 // @param headers - map
 //
@@ -378,11 +378,11 @@ func (client *Client) GetRefundOrderWithContext(ctx context.Context, disputeId *
 
 // Summary:
 //
-// Query the details of a product in the selection pool.
+// Queries the details of products in the selection pool.
 //
 // Description:
 //
-// Retrieve product details from the selection pool using the product ID. You can also specify a region code to check regional inventory.
+// Queries the details of products in the selection pool by product ID. You can specify a division code to query the regional inventory of the product.
 //
 // @param request - GetSelectionProductRequest
 //
@@ -433,11 +433,11 @@ func (client *Client) GetSelectionProductWithContext(ctx context.Context, produc
 
 // Summary:
 //
-// Queries sales information for products in the selection pool.
+// Queries the sales information of products in the selection pool.
 //
 // Description:
 //
-// Queries sales information for products in the selection pool. Distributors can call this operation to check product sales details, such as product status. Use the divisionCode input parameter to check whether a product is available for sale in a specific region. We recommend using a five-level administrative division code (township or subdistrict level).
+// Queries the sales information of products in the selection pool. Distributors can call this operation to query product sales information, such as product status. Pass the divisionCode parameter (a level-5 address code for a town or sub-district is recommended) to check whether the product is available for sale in the specified region.
 //
 // @param request - GetSelectionProductSaleInfoRequest
 //
@@ -488,13 +488,11 @@ func (client *Client) GetSelectionProductSaleInfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Lists categories.
+// Queries a list of categories.
 //
 // Description:
 //
-// Retrieves all subcategories for a parent category ID, or the details for a specific category ID.
-//
-// If the parent category ID (parentCategoryId) is 0, the API returns the top-level categories under the root category.
+// Queries all subcategories based on a parent category ID, or queries category details based on a category ID. If the parent category ID (parentCategoryId) is set to 0, the first-level categories under the root category are returned.
 //
 // @param request - ListCategoriesRequest
 //
@@ -536,11 +534,11 @@ func (client *Client) ListCategoriesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Query logistics information for an order.
+// Queries the logistics information of an order.
 //
 // Description:
 //
-// Retrieves logistics information for an order.
+// Queries the logistics information of an order.
 //
 // @param headers - map
 //
@@ -573,11 +571,11 @@ func (client *Client) ListLogisticsOrdersWithContext(ctx context.Context, orderI
 
 // Summary:
 //
-// Lists purchaser shops.
+// Retrieves a list of purchaser shops.
 //
 // Description:
 //
-// Lists purchaser shops.
+// Retrieves a list of purchaser shops.
 //
 // @param request - ListPurchaserShopsRequest
 //
@@ -628,11 +626,11 @@ func (client *Client) ListPurchaserShopsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query product sales information for the selection pool in batches.
+// Queries the sales information of products in the selection pool in batches.
 //
 // Description:
 //
-// You can query product sales information for the selection pool in batches. Distributors can call this operation to retrieve product sales details, such as product status. Use the divisionCode input parameter to check whether products are available for sale in a specific region. We recommend that you pass a five-level address code (town or street level).
+// Queries the sales information of products in the selection pool in batches. Distributors can call this operation to batch query product sales information, such as product status. You can use the divisionCode parameter (we recommend passing a level-5 address code for a town or sub-district) to batch query whether a product is available for sale in a specific region.
 //
 // @param request - ListSelectionProductSaleInfosRequest
 //
@@ -674,7 +672,7 @@ func (client *Client) ListSelectionProductSaleInfosWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves a list of products from a product selection pool.
+// Queries the list of products in the product selection pool.
 //
 // @param request - ListSelectionProductsRequest
 //
@@ -691,6 +689,10 @@ func (client *Client) ListSelectionProductsWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cursor) {
+		query["cursor"] = request.Cursor
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -729,11 +731,11 @@ func (client *Client) ListSelectionProductsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Query SKU sales information for items in the selection pool in batch.
+// Queries the sales information of SKUs in a selection pool in batches.
 //
 // Description:
 //
-// Query SKU sales information for items in the selection pool in batch. Distributors can call this API to retrieve batch details about SKU sales status and other attributes. To determine whether SKUs are sellable in a specific region, use the divisionCode parameter—preferably a five-level administrative division code for townships or subdistricts.
+// Batch query of SKU sales information in a selection pool: Distributors can call this operation to query SKU sales information in batches, such as SKU status. You can use the divisionCode parameter to query whether SKUs are available for sale in a specific region in batches. We recommend that you specify a level-5 division code, such as a town or sub-district code.
 //
 // @param request - ListSelectionSkuSaleInfosRequest
 //
@@ -775,11 +777,11 @@ func (client *Client) ListSelectionSkuSaleInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries child division codes.
+// Queries the sub-region codes.
 //
 // Description:
 //
-// Queries child division codes.
+// Queries the sub-region codes.
 //
 // @param request - QueryChildDivisionCodeRequest
 //
@@ -915,11 +917,11 @@ func (client *Client) RenderPurchaseOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Reverse Single Rendering
+// Renders a reverse order.
 //
 // Description:
 //
-// Renders a refund order.
+// Renders an after-sales order.
 //
 // @param request - RenderRefundOrderRequest
 //
@@ -961,7 +963,11 @@ func (client *Client) RenderRefundOrderWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// The product search API is a paginated interface for searching products based on various criteria.
+// Queries products based on various conditions and returns paginated results.
+//
+// Description:
+//
+// Performs a paged query on the product list based on the page number and paging size.
 //
 // @param request - SearchProductsRequest
 //
@@ -992,6 +998,10 @@ func (client *Client) SearchProductsWithContext(ctx context.Context, request *Se
 
 	if !dara.IsNil(request.CreateStartTime) {
 		body["createStartTime"] = request.CreateStartTime
+	}
+
+	if !dara.IsNil(request.Cursor) {
+		body["cursor"] = request.Cursor
 	}
 
 	if !dara.IsNil(request.DistributionHighPrice) {
@@ -1124,13 +1134,13 @@ func (client *Client) SearchProductsWithContext(ctx context.Context, request *Se
 
 // Summary:
 //
-// The distributor takes delivery of goods.
+// Adds products to the selection pool for a distributor.
 //
 // Description:
 //
-// Distributors use this API to add products to their selection group.
+// Distributors can use this API operation to add products to the selection pool.
 //
-// > We recommend that distributors who onboard on or after January 1, 2025 use this API. For more information about adding products and the related impact, see the [product best practices](https://help.aliyun.com/zh/linkedmall/user-guide/product-interface-best-practices?spm=a2c4g.11186623.help-menu-88587.d_2_2_0_8_0.58122056oN3crP\\&scm=20140722.H_2869668._.OR_help-T_cn~zh-V_1#lFENl).
+// > Integrate this API operation if you are a distributor customer who registered on or after January 1, 2025. For details about the import operations and their impacts, refer to [Product best practices](https://www.alibabacloud.com/help/en/linkedmall/user-guide/product-interface-best-practices#lFENl).
 //
 // @param request - SelectionGroupAddProductRequest
 //
@@ -1181,11 +1191,11 @@ func (client *Client) SelectionGroupAddProductWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Removes products from a distributor\\"s stock.
+// Dispatches products for a distributor.
 //
 // Description:
 //
-// Distributors use this API to remove products from their stock.
+// Allows a distributor to dispatch products.
 //
 // @param request - SelectionGroupRemoveProductRequest
 //

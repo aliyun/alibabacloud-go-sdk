@@ -22,7 +22,7 @@ type ProductSaleInfoListQuery struct {
 	//
 	// example:
 	//
-	// 330106109
+	// 110000
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// Collection of product IDs to query, supporting batch queries of 1 to 10 items
 	//

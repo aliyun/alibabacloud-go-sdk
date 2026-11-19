@@ -14,7 +14,7 @@ type iCreateRefundOrderRequest interface {
 }
 
 type CreateRefundOrderRequest struct {
-	// Create a return order
+	// Creates a reverse ticket.
 	//
 	// This parameter is required.
 	Body *RefundOrderCmd `json:"body,omitempty" xml:"body,omitempty"`

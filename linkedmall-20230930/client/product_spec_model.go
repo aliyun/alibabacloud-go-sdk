@@ -18,19 +18,19 @@ type iProductSpec interface {
 }
 
 type ProductSpec struct {
-	// The name of the specification key.
+	// The specification key name.
 	//
 	// example:
 	//
-	// 颜色分类
+	// Color category
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Specification
+	// The specification.
 	//
 	// example:
 	//
 	// 1000
 	KeyId *int64 `json:"keyId,omitempty" xml:"keyId,omitempty"`
-	// The values of the rule key.
+	// The specification key values.
 	Values []*ProductSpecValue `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

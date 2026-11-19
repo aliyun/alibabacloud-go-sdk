@@ -9,6 +9,8 @@ type iProductPageResult interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNextCursor(v string) *ProductPageResult
+	GetNextCursor() *string
 	SetPageNumber(v int32) *ProductPageResult
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ProductPageResult
@@ -22,7 +24,13 @@ type iProductPageResult interface {
 }
 
 type ProductPageResult struct {
-	// Current page number
+	// The cursor value for the next page.
+	//
+	// example:
+	//
+	// 7091510713
+	NextCursor *string `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +38,7 @@ type ProductPageResult struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size
+	// The page size.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +46,15 @@ type ProductPageResult struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Collection of products
+	// The product collection.
 	Products []*Product `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	// Request ID for the API call
+	// The request ID.
 	//
 	// example:
 	//
 	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total count
+	// The total count.
 	//
 	// This parameter is required.
 	//
@@ -62,6 +70,10 @@ func (s ProductPageResult) String() string {
 
 func (s ProductPageResult) GoString() string {
 	return s.String()
+}
+
+func (s *ProductPageResult) GetNextCursor() *string {
+	return s.NextCursor
 }
 
 func (s *ProductPageResult) GetPageNumber() *int32 {
@@ -82,6 +94,11 @@ func (s *ProductPageResult) GetRequestId() *string {
 
 func (s *ProductPageResult) GetTotal() *int32 {
 	return s.Total
+}
+
+func (s *ProductPageResult) SetNextCursor(v string) *ProductPageResult {
+	s.NextCursor = &v
+	return s
 }
 
 func (s *ProductPageResult) SetPageNumber(v int32) *ProductPageResult {

@@ -14,7 +14,7 @@ type iListCategoriesRequest interface {
 }
 
 type ListCategoriesRequest struct {
-	// Category query parameters
+	// The category query parameters.
 	Body *CategoryListQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 

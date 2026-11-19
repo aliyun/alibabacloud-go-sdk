@@ -14,7 +14,7 @@ type iCreateGoodsShippingNoticeRequest interface {
 }
 
 type CreateGoodsShippingNoticeRequest struct {
-	// Submit shipping notice information.
+	// Submits the waybill information.
 	//
 	// This parameter is required.
 	Body *GoodsShippingNoticeCreateCmd `json:"body,omitempty" xml:"body,omitempty"`

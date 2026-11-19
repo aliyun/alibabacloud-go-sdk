@@ -16,13 +16,13 @@ type iProductProperty interface {
 }
 
 type ProductProperty struct {
-	// The text of the property.
+	// The attribute text.
 	//
 	// example:
 	//
-	// 颜色
+	// Color
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
-	// A collection of property values.
+	// The attribute value set.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

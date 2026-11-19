@@ -9,6 +9,8 @@ type iListSelectionProductsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCursor(v string) *ListSelectionProductsRequest
+	GetCursor() *string
 	SetPageNumber(v int32) *ListSelectionProductsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListSelectionProductsRequest
@@ -18,7 +20,13 @@ type iListSelectionProductsRequest interface {
 }
 
 type ListSelectionProductsRequest struct {
-	// The page number. The value must be 1 or greater.
+	// The cursor.
+	//
+	// example:
+	//
+	// 134412333321
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// The current page number. Pages start from 1.
 	//
 	// This parameter is required.
 	//
@@ -52,6 +60,10 @@ func (s ListSelectionProductsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListSelectionProductsRequest) GetCursor() *string {
+	return s.Cursor
+}
+
 func (s *ListSelectionProductsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -62,6 +74,11 @@ func (s *ListSelectionProductsRequest) GetPageSize() *int32 {
 
 func (s *ListSelectionProductsRequest) GetPurchaserId() *string {
 	return s.PurchaserId
+}
+
+func (s *ListSelectionProductsRequest) SetCursor(v string) *ListSelectionProductsRequest {
+	s.Cursor = &v
+	return s
 }
 
 func (s *ListSelectionProductsRequest) SetPageNumber(v int32) *ListSelectionProductsRequest {

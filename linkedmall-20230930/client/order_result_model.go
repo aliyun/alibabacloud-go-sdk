@@ -34,7 +34,7 @@ type OrderResult struct {
 	//
 	// example:
 	//
-	// 2023-09-11T12:22:24.000+08:00
+	// 2023-09-01T12:00:00.000Z
 	CreateDate *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
 	// The distributor ID.
 	//
@@ -78,7 +78,7 @@ type OrderResult struct {
 	//
 	// example:
 	//
-	// 841471F6-5D61-1331-8C38-2****B55
+	// D12***111
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

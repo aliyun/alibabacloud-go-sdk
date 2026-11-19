@@ -14,6 +14,8 @@ type iShopStatusChangeResult interface {
 }
 
 type ShopStatusChangeResult struct {
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

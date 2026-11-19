@@ -22,22 +22,27 @@ type iRefundRenderResult interface {
 }
 
 type RefundRenderResult struct {
-	// The return methods supported for the order.
+	// The supported order return methods.
 	//
 	// example:
 	//
 	// 1
-	BizClaimType     *int32                    `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// The refund fee.
+	//
+	// example:
+	//
+	// {"minRefundFee":1,"maxRefundFee":100}
 	MaxRefundFeeData *DistributionMaxRefundFee `json:"maxRefundFeeData,omitempty" xml:"maxRefundFeeData,omitempty"`
-	// The ID of the sub-distribution order.
+	// The sub-distribution order ID.
 	//
 	// example:
 	//
 	// 6692****5458
 	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
-	// A collection of refund reasons.
+	// The refund reason list.
 	RefundReasonList []*RefundReason `json:"refundReasonList,omitempty" xml:"refundReasonList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The API request ID.
 	//
 	// example:
 	//

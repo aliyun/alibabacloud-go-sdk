@@ -36,9 +36,9 @@ type Shop struct {
 	//
 	// example:
 	//
-	// 12***01
+	// [{"shopId":"22000019","cooperationCompanyId":"11200003","cooperationShopId":"21000026"}]
 	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
-	// The ID of the distributor.
+	// The distributor ID.
 	//
 	// example:
 	//
@@ -50,31 +50,31 @@ type Shop struct {
 	//
 	// 2023-09-11T12:22:24.000+08:00
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// The ID of the purchaser.
+	// The purchaser ID.
 	//
 	// example:
 	//
 	// PID56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 48A34399-A72C-1E23-8388-7E63****E927
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the shop.
+	// The shop ID.
 	//
 	// example:
 	//
 	// 22****09
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	// The name of the shop.
+	// The shop name.
 	//
 	// example:
 	//
-	// 儿童分销店铺
+	// Children\\"s distribution shop
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	// The type of the shop.
+	// The shop type.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type Shop struct {
 	//
 	// 2023-09-11T12:22:24.000+08:00
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// The status of the shop.
+	// The shop status.
 	//
 	// example:
 	//

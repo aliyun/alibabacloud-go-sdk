@@ -16,13 +16,15 @@ type iSelectionGroupAddProductRequest interface {
 }
 
 type SelectionGroupAddProductRequest struct {
-	// Collection of product IDs to add
+	// The IDs of the products to be added to the selection pool.
 	//
-	// > - You can add up to 30 products per call.
+	// >
+	//
+	// > - A maximum of 30 products can be added in a single call.
 	//
 	// This parameter is required.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
-	// Purchaser ID
+	// The ID of the purchaser.
 	//
 	// This parameter is required.
 	//

@@ -30,7 +30,7 @@ type iRefundOrderCmd interface {
 }
 
 type RefundOrderCmd struct {
-	// Refund reason ID
+	// The refund reason ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type RefundOrderCmd struct {
 	//
 	// 47821
 	ApplyReasonTextId *int64 `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
-	// Refund reason text
+	// The refund reason text.
 	//
 	// example:
 	//
-	// 不想要了
+	// I no longer want it
 	ApplyReasonTips *string `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
-	// Number of items to return
+	// The return quantity.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type RefundOrderCmd struct {
 	//
 	// 1
 	ApplyRefundCount *int32 `json:"applyRefundCount,omitempty" xml:"applyRefundCount,omitempty"`
-	// Refund amount in cents
+	// The requested refund amount in cents.
 	//
 	// This parameter is required.
 	//
@@ -60,11 +60,11 @@ type RefundOrderCmd struct {
 	//
 	// 100
 	ApplyRefundFee *int64 `json:"applyRefundFee,omitempty" xml:"applyRefundFee,omitempty"`
-	// Refund type
+	// The refund type. Valid values:
 	//
-	// 1: Refund only
+	// - 1: Refund only.
 	//
-	// 3: Return and refund
+	// - 3: Return and refund.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type RefundOrderCmd struct {
 	//
 	// 1
 	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
-	// Item status
+	// The goods status. Valid values:
 	//
-	// 4: Not shipped
+	// - 4: Not shipped.
 	//
-	// 1: Not received
+	// - 1: Not received.
 	//
-	// 2: Received
+	// - 2: Received.
 	//
 	// This parameter is required.
 	//
@@ -86,15 +86,15 @@ type RefundOrderCmd struct {
 	//
 	// 1
 	GoodsStatus *int32 `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
-	// Customer message
+	// The message.
 	//
 	// example:
 	//
-	// 不想要了
+	// I no longer want it
 	LeaveMessage *string `json:"leaveMessage,omitempty" xml:"leaveMessage,omitempty"`
-	// Collection of images
+	// The image list.
 	LeavePictureLists []*LeavePictureList `json:"leavePictureLists,omitempty" xml:"leavePictureLists,omitempty" type:"Repeated"`
-	// Sub-distribution order ID
+	// The sub-distribution order ID.
 	//
 	// This parameter is required.
 	//

@@ -36,18 +36,66 @@ type iDistributionProduct interface {
 }
 
 type DistributionProduct struct {
-	CategoryChain         *string            `json:"categoryChain,omitempty" xml:"categoryChain,omitempty"`
-	CategoryLeafId        *int64             `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
-	CategoryLeafName      *string            `json:"categoryLeafName,omitempty" xml:"categoryLeafName,omitempty"`
-	ChannelCode           *string            `json:"channelCode,omitempty" xml:"channelCode,omitempty"`
-	DistributeStatus      *string            `json:"distributeStatus,omitempty" xml:"distributeStatus,omitempty"`
-	PicUrl                *string            `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
-	ProductId             *string            `json:"productId,omitempty" xml:"productId,omitempty"`
-	SellerId              *string            `json:"sellerId,omitempty" xml:"sellerId,omitempty"`
-	ShortTitle            *string            `json:"shortTitle,omitempty" xml:"shortTitle,omitempty"`
-	Skus                  []*DistributionSku `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
-	Title                 *string            `json:"title,omitempty" xml:"title,omitempty"`
-	WhiteBackgroundPicUrl *string            `json:"whiteBackgroundPicUrl,omitempty" xml:"whiteBackgroundPicUrl,omitempty"`
+	// The category chain name.
+	CategoryChain *string `json:"categoryChain,omitempty" xml:"categoryChain,omitempty"`
+	// The leaf category ID.
+	//
+	// example:
+	//
+	// 50016422
+	CategoryLeafId *int64 `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
+	// The leaf category name.
+	//
+	// example:
+	//
+	// 示例类目
+	CategoryLeafName *string `json:"categoryLeafName,omitempty" xml:"categoryLeafName,omitempty"`
+	// The channel ID.
+	//
+	// example:
+	//
+	// LM_DEMO
+	ChannelCode *string `json:"channelCode,omitempty" xml:"channelCode,omitempty"`
+	// The distribution status.
+	DistributeStatus *string `json:"distributeStatus,omitempty" xml:"distributeStatus,omitempty"`
+	// The main image.
+	//
+	// example:
+	//
+	// https://example.com/images/product.png
+	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// The product ID.
+	//
+	// example:
+	//
+	// 660057403063402509
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// The seller ID.
+	//
+	// example:
+	//
+	// 123456789
+	SellerId *string `json:"sellerId,omitempty" xml:"sellerId,omitempty"`
+	// The short product title.
+	//
+	// example:
+	//
+	// 示例商品
+	ShortTitle *string `json:"shortTitle,omitempty" xml:"shortTitle,omitempty"`
+	// The SKU list.
+	Skus []*DistributionSku `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
+	// The long product title.
+	//
+	// example:
+	//
+	// 示例商品名称
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The white background image.
+	//
+	// example:
+	//
+	// https://example.com/images/product-white.png
+	WhiteBackgroundPicUrl *string `json:"whiteBackgroundPicUrl,omitempty" xml:"whiteBackgroundPicUrl,omitempty"`
 }
 
 func (s DistributionProduct) String() string {

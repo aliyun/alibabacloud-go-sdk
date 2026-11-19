@@ -14,7 +14,7 @@ type iCreatePurchaseOrderRequest interface {
 }
 
 type CreatePurchaseOrderRequest struct {
-	// Creates a purchase order.
+	// The request body for creating a purchase order.
 	//
 	// This parameter is required.
 	Body *PurchaseOrderCreateCmd `json:"body,omitempty" xml:"body,omitempty"`

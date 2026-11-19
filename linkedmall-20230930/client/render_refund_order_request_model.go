@@ -14,7 +14,7 @@ type iRenderRefundOrderRequest interface {
 }
 
 type RenderRefundOrderRequest struct {
-	// Refund order rendering
+	// The reverse order rendering.
 	//
 	// This parameter is required.
 	Body *RefundRenderCmd `json:"body,omitempty" xml:"body,omitempty"`

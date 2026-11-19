@@ -40,20 +40,58 @@ type iDistributionSku interface {
 }
 
 type DistributionSku struct {
-	AliasTitle   *string `json:"aliasTitle,omitempty" xml:"aliasTitle,omitempty"`
-	BarCode      *string `json:"barCode,omitempty" xml:"barCode,omitempty"`
-	CreditPeriod *int32  `json:"creditPeriod,omitempty" xml:"creditPeriod,omitempty"`
-	DxPrice      *int64  `json:"dxPrice,omitempty" xml:"dxPrice,omitempty"`
-	HasCredit    *bool   `json:"hasCredit,omitempty" xml:"hasCredit,omitempty"`
-	HasInvoice   *bool   `json:"hasInvoice,omitempty" xml:"hasInvoice,omitempty"`
-	JxPrice      *int64  `json:"jxPrice,omitempty" xml:"jxPrice,omitempty"`
-	PicUrl       *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
-	Quantity     *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	SkuId        *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	SkuStatus    *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
-	TaxCode      *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
-	TaxRate      *int32  `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
-	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The alias.
+	//
+	// example:
+	//
+	// 示例规格
+	AliasTitle *string `json:"aliasTitle,omitempty" xml:"aliasTitle,omitempty"`
+	// The barcode.
+	//
+	// example:
+	//
+	// 6901234567892
+	BarCode *string `json:"barCode,omitempty" xml:"barCode,omitempty"`
+	// The maximum acceptable credit period.
+	CreditPeriod *int32 `json:"creditPeriod,omitempty" xml:"creditPeriod,omitempty"`
+	// The consignment supply price.
+	DxPrice *int64 `json:"dxPrice,omitempty" xml:"dxPrice,omitempty"`
+	// Specifies whether credit periods are supported.
+	HasCredit *bool `json:"hasCredit,omitempty" xml:"hasCredit,omitempty"`
+	// Specifies whether invoicing is supported.
+	HasInvoice *bool `json:"hasInvoice,omitempty" xml:"hasInvoice,omitempty"`
+	// The distribution supply price.
+	JxPrice *int64 `json:"jxPrice,omitempty" xml:"jxPrice,omitempty"`
+	// The image.
+	//
+	// example:
+	//
+	// https://example.com/images/product.png
+	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// The inventory.
+	//
+	// example:
+	//
+	// 100
+	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// sku id
+	//
+	// example:
+	//
+	// 660460842235822082
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// The status.
+	SkuStatus *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	// The tax code.
+	TaxCode *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
+	// The tax rate.
+	TaxRate *int32 `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// 示例商品名称
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s DistributionSku) String() string {

@@ -42,7 +42,7 @@ type AddressInfo struct {
 	//
 	// example:
 	//
-	// 330106
+	// 610102
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// The recipient.
 	//
@@ -64,7 +64,7 @@ type AddressInfo struct {
 	//
 	// example:
 	//
-	// 330106109
+	// 61010212
 	TownDivisionCode *string `json:"townDivisionCode,omitempty" xml:"townDivisionCode,omitempty"`
 }
 

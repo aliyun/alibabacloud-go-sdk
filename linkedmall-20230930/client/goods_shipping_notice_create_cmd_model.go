@@ -40,7 +40,7 @@ type GoodsShippingNoticeCreateCmd struct {
 	//
 	// example:
 	//
-	// SF145****4353
+	// SF145****4351
 	LogisticsNo *string `json:"logisticsNo,omitempty" xml:"logisticsNo,omitempty"`
 }
 

@@ -16,13 +16,13 @@ type iGetSelectionProductRequest interface {
 }
 
 type GetSelectionProductRequest struct {
-	// Region code (use a five-level township or subdistrict address code)
+	// The division code. A fifth-level township or subdistrict address code is recommended.
 	//
 	// example:
 	//
 	// 330106109
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	// Purchaser ID
+	// The purchaser ID.
 	//
 	// This parameter is required.
 	//

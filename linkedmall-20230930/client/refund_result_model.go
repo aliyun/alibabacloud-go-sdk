@@ -78,7 +78,7 @@ type RefundResult struct {
 	//
 	// example:
 	//
-	// 2023-09-15T19:23:59.000+08:00
+	// 2023-09-02T00:00:00.000Z
 	DisputeCreateTime *string `json:"disputeCreateTime,omitempty" xml:"disputeCreateTime,omitempty"`
 	// Reverse request description
 	//
@@ -90,7 +90,7 @@ type RefundResult struct {
 	//
 	// example:
 	//
-	// 2023-09-15T19:23:59.000+08:00
+	// 2023-09-02T12:00:00.000Z
 	DisputeEndTime *string `json:"disputeEndTime,omitempty" xml:"disputeEndTime,omitempty"`
 	// Reverse order ID
 	//

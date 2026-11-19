@@ -23,6 +23,10 @@ type LeavePictureList struct {
 	// 外观破损了。
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
 	// Image of the after-sales Credential	Notice: If the after-sales order rendering API returns that an after-sales image is required, this field is mandatory.</notice>
+	//
+	// example:
+	//
+	// https://
 	Picture *string `json:"picture,omitempty" xml:"picture,omitempty"`
 }
 

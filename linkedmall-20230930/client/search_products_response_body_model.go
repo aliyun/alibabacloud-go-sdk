@@ -9,6 +9,8 @@ type iSearchProductsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNextCursor(v string) *SearchProductsResponseBody
+	GetNextCursor() *string
 	SetProducts(v []*SearchProductsResponseBodyProducts) *SearchProductsResponseBody
 	GetProducts() []*SearchProductsResponseBodyProducts
 	SetTotal(v int32) *SearchProductsResponseBody
@@ -16,9 +18,15 @@ type iSearchProductsResponseBody interface {
 }
 
 type SearchProductsResponseBody struct {
-	// Product collection
+	// The cursor for the next page.
+	//
+	// example:
+	//
+	// 899192313AB192938441CCW
+	NextCursor *string `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
+	// The product collection.
 	Products []*SearchProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	// Total quantity
+	// The total number of items.
 	//
 	// example:
 	//
@@ -34,12 +42,21 @@ func (s SearchProductsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SearchProductsResponseBody) GetNextCursor() *string {
+	return s.NextCursor
+}
+
 func (s *SearchProductsResponseBody) GetProducts() []*SearchProductsResponseBodyProducts {
 	return s.Products
 }
 
 func (s *SearchProductsResponseBody) GetTotal() *int32 {
 	return s.Total
+}
+
+func (s *SearchProductsResponseBody) SetNextCursor(v string) *SearchProductsResponseBody {
+	s.NextCursor = &v
+	return s
 }
 
 func (s *SearchProductsResponseBody) SetProducts(v []*SearchProductsResponseBodyProducts) *SearchProductsResponseBody {
@@ -66,57 +83,57 @@ func (s *SearchProductsResponseBody) Validate() error {
 }
 
 type SearchProductsResponseBodyProducts struct {
-	// Brand name
+	// The brand name.
 	//
 	// example:
 	//
-	// 绿植
+	// Plants
 	BandName *string `json:"bandName,omitempty" xml:"bandName,omitempty"`
-	// Reason for unsellable status
+	// The reason why the product is unavailable for sale.
 	//
 	// example:
 	//
-	// 库存不足
+	// Insufficient inventory
 	CanNotSellReason *string `json:"canNotSellReason,omitempty" xml:"canNotSellReason,omitempty"`
-	// Whether the product is sellable (calculated value)
+	// Indicates whether the product is available for sale. This is a calculated value.
 	//
 	// example:
 	//
 	// true
 	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	// Category
+	// The category chain.
 	CategoryChain []*SearchProductsResponseBodyProductsCategoryChain `json:"categoryChain,omitempty" xml:"categoryChain,omitempty" type:"Repeated"`
-	// Billing cycle
+	// The billing cycle.
 	Credit []*string `json:"credit,omitempty" xml:"credit,omitempty" type:"Repeated"`
-	// Price difference range
+	// The price difference range.
 	//
 	// example:
 	//
 	// ￥-9998.95 ~ ￥-9977.90
 	DiffPrice *string `json:"diffPrice,omitempty" xml:"diffPrice,omitempty"`
-	// Distribution purchase price range
+	// The distribution purchase price range.
 	//
 	// example:
 	//
 	// ￥0.05 ~ ￥21.10
 	DistributionPrice *string `json:"distributionPrice,omitempty" xml:"distributionPrice,omitempty"`
-	// Distribution premium rate range
+	// The distribution premium rate range.
 	//
 	// example:
 	//
 	// -100.00% ~ -99.79%
 	DistributionPriceRatio *string `json:"distributionPriceRatio,omitempty" xml:"distributionPriceRatio,omitempty"`
-	// Source platform
+	// The source platform.
 	//
 	// example:
 	//
-	// Taobao（来源淘宝）
+	// Taobao (sourced from Taobao)
 	//
-	// Tmall（来源天猫）
+	// Tmall (sourced from Tmall)
 	//
-	// Cbu（来源1688分销货盘）
+	// Cbu (sourced from the 1688 distribution platform)
 	ExternalPlatformType *string `json:"externalPlatformType,omitempty" xml:"externalPlatformType,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
@@ -124,7 +141,7 @@ type SearchProductsResponseBodyProducts struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Last modified time.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -132,13 +149,13 @@ type SearchProductsResponseBodyProducts struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Whether the product is in inventory
+	// Specifies whether the product is added to the inventory.
 	//
 	// example:
 	//
 	// true
 	InGroup *bool `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
-	// Inventory time
+	// The time when the product was added to the inventory. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -146,81 +163,81 @@ type SearchProductsResponseBodyProducts struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	InGroupTime *string `json:"inGroupTime,omitempty" xml:"inGroupTime,omitempty"`
-	// Inventory risk level
+	// The inventory risk level.
 	//
 	// example:
 	//
 	// Low
 	InventoryRiskLevel *string `json:"inventoryRiskLevel,omitempty" xml:"inventoryRiskLevel,omitempty"`
-	// Invoice type
+	// The invoice type.
 	//
 	// example:
 	//
 	// HasInvoice
 	InvoiceType *string `json:"invoiceType,omitempty" xml:"invoiceType,omitempty"`
-	// LM product ID
+	// The LM product ID.
 	//
 	// example:
 	//
 	// xxx-xxxxx
 	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
-	// Product main image URL
+	// The main image URL of the product.
 	//
 	// example:
 	//
 	// https://img.alicdn.com/xxx.jpg
 	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
-	// Suggested retail price range
+	// The suggested retail price range.
 	//
 	// example:
 	//
 	// ￥9999.00 ~ ￥9999.00
 	PlatformPrice *string `json:"platformPrice,omitempty" xml:"platformPrice,omitempty"`
-	// Strikethrough price range
+	// The strikethrough price range.
 	//
 	// example:
 	//
 	// ￥9999.00 ~ ￥9999.00
 	PlatformReservePrice *string `json:"platformReservePrice,omitempty" xml:"platformReservePrice,omitempty"`
-	// Product ID
+	// The product ID.
 	//
 	// example:
 	//
 	// xxxxx
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// Product name
+	// The product name.
 	//
 	// example:
 	//
-	// 绿植
+	// Plants
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// Channel store name
+	// The channel store name.
 	//
 	// example:
 	//
 	// xxx
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	// Accumulated sales volume
+	// The cumulative sales volume.
 	//
 	// example:
 	//
 	// 100
 	SoldQuantity *string `json:"soldQuantity,omitempty" xml:"soldQuantity,omitempty"`
-	// Tax code
+	// The tax code.
 	//
 	// example:
 	//
 	// 3040203000000000000
 	TaxCode *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
-	// Tax rate
+	// The tax rate.
 	//
 	// example:
 	//
-	// 600（6%）
+	// 600 (6%)
 	//
-	// -100（免税）
+	// -100 (Tax-exempt)
 	TaxRate *int64 `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
-	// Sales pattern
+	// The sales mode.
 	//
 	// example:
 	//
@@ -484,31 +501,31 @@ func (s *SearchProductsResponseBodyProducts) Validate() error {
 }
 
 type SearchProductsResponseBodyProductsCategoryChain struct {
-	// Category ID
+	// The category ID.
 	//
 	// example:
 	//
 	// 201792301
 	CategoryId *int64 `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	// Is leaf node
+	// Indicates whether the node is a leaf node.
 	//
 	// example:
 	//
 	// false
 	IsLeaf *bool `json:"isLeaf,omitempty" xml:"isLeaf,omitempty"`
-	// Level
+	// The level.
 	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"level,omitempty" xml:"level,omitempty"`
-	// Category name
+	// The category name.
 	//
 	// example:
 	//
-	// 名称测试
+	// Name test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Parent class ID
+	// The parent category ID.
 	//
 	// example:
 	//

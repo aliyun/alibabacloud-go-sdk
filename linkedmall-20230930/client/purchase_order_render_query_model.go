@@ -20,7 +20,7 @@ type iPurchaseOrderRenderQuery interface {
 }
 
 type PurchaseOrderRenderQuery struct {
-	// The ID of the end buyer.	Notice: Assign a unique ID to each buyer.
+	// The actual buyer ID for distribution. <notice>Assign a unique ID to each buyer. Do not use the same ID for different buyers.</notice>
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type PurchaseOrderRenderQuery struct {
 	//
 	// test1234567
 	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
-	// Delivery address information.
+	// The address information.
 	//
 	// This parameter is required.
 	DeliveryAddress *AddressInfo `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
-	// Extended information.
+	// The extension information.
 	//
 	// example:
 	//
 	// {}
 	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	// A collection of products.
+	// The product list.
 	//
-	// > A single purchase order can contain a maximum of 20 SKUs.
+	// > Maximum number of SKUs per purchase order: 20.
 	//
 	// This parameter is required.
 	ProductList []*OrderRenderProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`

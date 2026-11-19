@@ -34,7 +34,7 @@ type OrderRenderProductDTO struct {
 	//
 	// example:
 	//
-	// PID56****2304
+	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 	// Quantity
 	//

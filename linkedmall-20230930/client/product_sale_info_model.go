@@ -36,69 +36,69 @@ type iProductSaleInfo interface {
 }
 
 type ProductSaleInfo struct {
-	// Is sellable, calculated value
+	// The calculated value that indicates whether the product is sellable.
 	//
 	// example:
 	//
 	// true
 	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	// Region code
+	// The division code.
 	//
 	// example:
 	//
 	// 330106109
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	// Fuzzy inventory quantity.
+	// The fuzzy inventory.
 	//
 	// example:
 	//
-	// 有货
+	// In stock
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	// Purchase limit configuration
+	// The purchase limit configuration.
 	LimitRules []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
-	// LM product ID
+	// The LM product ID.
 	//
 	// example:
 	//
 	// 21000017-4580902812
 	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
-	// Product ID
+	// The product ID.
 	//
 	// example:
 	//
 	// 660460842235822080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// Product status
+	// The product status.
 	//
 	// example:
 	//
 	// Online
 	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
-	// Inventory
+	// The inventory.
 	//
 	// example:
 	//
 	// 10
 	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	// API request ID
+	// The API request ID.
 	//
 	// example:
 	//
 	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Channel shop ID
+	// The channel shop ID.
 	//
 	// example:
 	//
 	// 21000017
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	// SKU collection
+	// The SKU collection.
 	Skus []*SkuSaleInfo `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
-	// Title
+	// The title.
 	//
 	// example:
 	//
-	// 发财树
+	// Money tree
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

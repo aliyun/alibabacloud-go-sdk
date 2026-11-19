@@ -56,7 +56,7 @@ type RefundOrderResult struct {
 	//
 	// example:
 	//
-	// 841471F6-5D61-1331-8C38-2****B55
+	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

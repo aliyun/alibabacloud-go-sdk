@@ -18,11 +18,23 @@ type iCooperationShop interface {
 }
 
 type CooperationShop struct {
-	// The partner company ID.
+	// The partner enterprise ID.
+	//
+	// example:
+	//
+	// 11200003
 	CooperationCompanyId *string `json:"cooperationCompanyId,omitempty" xml:"cooperationCompanyId,omitempty"`
-	// The partner shop ID.
+	// The partner store ID.
+	//
+	// example:
+	//
+	// 21000026
 	CooperationShopId *string `json:"cooperationShopId,omitempty" xml:"cooperationShopId,omitempty"`
-	// The shop ID.
+	// The store ID.
+	//
+	// example:
+	//
+	// 22000019
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
 }
 

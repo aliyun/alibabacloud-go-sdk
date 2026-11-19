@@ -16,10 +16,14 @@ type iShopCreateResult interface {
 }
 
 type ShopCreateResult struct {
+	// The store ID.
+	//
 	// example:
 	//
 	// 123
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// The store status.
+	//
 	// example:
 	//
 	// WORKING

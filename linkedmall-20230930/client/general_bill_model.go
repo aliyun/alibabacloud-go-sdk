@@ -32,25 +32,58 @@ type iGeneralBill interface {
 }
 
 type GeneralBill struct {
-	// bill ID
+	// The bill ID.
+	//
+	// example:
+	//
+	// bill_demo_001
 	BillId *string `json:"billId,omitempty" xml:"billId,omitempty"`
-	// billing cycle
+	// The billing cycle.
+	//
+	// example:
+	//
+	// 2022-08
 	BillPeriod *string `json:"billPeriod,omitempty" xml:"billPeriod,omitempty"`
-	// download URL for details
+	// The details download URL.
 	DownloadUrl []*string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty" type:"Repeated"`
-	// billing cycle End Time
+	// The end time of the billing cycle.
+	//
+	// example:
+	//
+	// 2026-01-01 00:00:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// bill Creation Time
+	// The bill creation time.
+	//
+	// example:
+	//
+	// 2026-01-01 00:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// bill Updated At
+	// The bill modification time.
+	//
+	// example:
+	//
+	// 2026-01-01 00:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// shop ID
+	// The shop ID.
+	//
+	// example:
+	//
+	// 21000017
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	// shop Name
+	// The shop name.
+	//
+	// example:
+	//
+	// Children\\"s distribution store
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	// billing cycle Start Time
-	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TotalAmount *Money  `json:"totalAmount,omitempty" xml:"totalAmount,omitempty"`
+	// The start time of the billing cycle.
+	//
+	// example:
+	//
+	// 2026-01-01 00:00:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The bill amount.
+	TotalAmount *Money `json:"totalAmount,omitempty" xml:"totalAmount,omitempty"`
 }
 
 func (s GeneralBill) String() string {

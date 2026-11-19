@@ -16,9 +16,9 @@ type iDivisionPageResult interface {
 }
 
 type DivisionPageResult struct {
-	// Collection of regions
+	// The list of divisions.
 	DivisionList []*Division `json:"divisionList,omitempty" xml:"divisionList,omitempty" type:"Repeated"`
-	// API request ID
+	// The request ID.
 	//
 	// example:
 	//

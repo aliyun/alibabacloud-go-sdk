@@ -16,9 +16,9 @@ type iLogisticsOrderListResult interface {
 }
 
 type LogisticsOrderListResult struct {
-	// Collection of logistics orders
+	// The logistics order list.
 	LogisticsOrderList []*LogisticsOrderResult `json:"logisticsOrderList,omitempty" xml:"logisticsOrderList,omitempty" type:"Repeated"`
-	// Request ID for the API call
+	// The API request ID.
 	//
 	// example:
 	//

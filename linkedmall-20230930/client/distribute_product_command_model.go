@@ -22,13 +22,31 @@ type iDistributeProductCommand interface {
 }
 
 type DistributeProductCommand struct {
-	LmShopId  *string                `json:"lmShopId,omitempty" xml:"lmShopId,omitempty"`
-	Products  []*DistributionProduct `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The LM shop ID.
+	//
+	// example:
+	//
+	// 21000019
+	LmShopId *string `json:"lmShopId,omitempty" xml:"lmShopId,omitempty"`
+	// The distributed products.
+	Products []*DistributionProduct `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 48A34399-A72C-1E23-8388-7E63A1B2E927
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The submission time.
+	//
 	// example:
 	//
 	// 2024-12-01 10:01:00
 	RequestTime *string `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
+	// The submitter.
+	//
+	// example:
+	//
+	// demo_user
 	RequestUser *string `json:"requestUser,omitempty" xml:"requestUser,omitempty"`
 }
 

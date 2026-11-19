@@ -22,7 +22,7 @@ type iOrderRenderResult interface {
 }
 
 type OrderRenderResult struct {
-	// Indicates whether the item can be sold.
+	// Indicates whether the item is sellable.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type OrderRenderResult struct {
 	DeliveryInfoList []*DeliveryInfo `json:"deliveryInfoList,omitempty" xml:"deliveryInfoList,omitempty" type:"Repeated"`
 	// The extension information.
 	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	// The reason why the item is unavailable.
+	// The unsellable reason.
 	//
 	// example:
 	//
-	// 库存为0
+	// Inventory is 0
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The list of products.
+	// The product collection.
 	ProductList []*OrderProductResult `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }
 

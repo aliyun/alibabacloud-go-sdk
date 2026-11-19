@@ -14,7 +14,7 @@ type iSelectionGroupRemoveProductResponseBody interface {
 }
 
 type SelectionGroupRemoveProductResponseBody struct {
-	// A collection of IDs for the products that were successfully removed.
+	// The set of successfully dispatched product IDs.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
 }
 

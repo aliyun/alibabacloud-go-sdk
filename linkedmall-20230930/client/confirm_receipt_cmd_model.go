@@ -14,6 +14,11 @@ type iConfirmReceiptCmd interface {
 }
 
 type ConfirmReceiptCmd struct {
+	// The refund dispute ID.
+	//
+	// example:
+	//
+	// 6693****4352
 	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
 }
 

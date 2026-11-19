@@ -18,15 +18,15 @@ type iOrderListResult interface {
 }
 
 type OrderListResult struct {
-	// Collection of orders
+	// The order list.
 	OrderList []*OrderResult `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
-	// The request ID for the API call
+	// The API request ID.
 	//
 	// example:
 	//
 	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of orders
+	// The total count.
 	//
 	// example:
 	//

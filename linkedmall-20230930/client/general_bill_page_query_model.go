@@ -35,8 +35,16 @@ type GeneralBillPageQuery struct {
 	// asc
 	Asc *bool `json:"asc,omitempty" xml:"asc,omitempty"`
 	// billId
+	//
+	// example:
+	//
+	// bill_demo_001
 	BillId *string `json:"billId,omitempty" xml:"billId,omitempty"`
 	// billPeriod
+	//
+	// example:
+	//
+	// 2022-08
 	BillPeriod *string `json:"billPeriod,omitempty" xml:"billPeriod,omitempty"`
 	// limit
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
@@ -45,10 +53,22 @@ type GeneralBillPageQuery struct {
 	// orderDirection
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
 	// pageNumber
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// pageSize
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// shopId
+	//
+	// example:
+	//
+	// 21000017
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
 	// start
 	Start *int32 `json:"start,omitempty" xml:"start,omitempty"`

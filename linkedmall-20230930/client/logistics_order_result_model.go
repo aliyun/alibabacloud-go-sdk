@@ -26,139 +26,89 @@ type iLogisticsOrderResult interface {
 }
 
 type LogisticsOrderResult struct {
-	// The data provider.
+	// The data source.
 	//
 	// example:
 	//
-	// 菜鸟
+	// Cainiao
 	DataProvider *string `json:"dataProvider,omitempty" xml:"dataProvider,omitempty"`
-	// The display title of the data provider.
+	// The data text.
 	//
 	// example:
 	//
-	// 菜鸟裹裹
+	// Cainiao Guoguo
 	DataProviderTitle *string `json:"dataProviderTitle,omitempty" xml:"dataProviderTitle,omitempty"`
-	// Details of the goods.
+	// The product details.
 	Goods []*Good `json:"goods,omitempty" xml:"goods,omitempty" type:"Repeated"`
 	// The logistics company code.
 	//
 	// > Valid values:
 	//
-	// >
+	// > - ZTKY: China Railway Logistics
 	//
-	// > - `ZTKY` - China Railway Logistics
+	// > - POST: China Post
 	//
-	// >
+	// > - DBKD: Deppon Express
 	//
-	// > - `POST` - China Post
+	// > - JT: J&T Express
 	//
-	// >
+	// > - QFKD: Quanfeng Express
 	//
-	// > - `DBKD` - Deppon Express
+	// > - EYB: China Post E-commerce Express EYB
 	//
-	// >
+	// > - STO: STO Express
 	//
-	// > - `JT` - J\\&T Express
+	// > - SF: SF Express
 	//
-	// >
+	// > - ZTO: ZTO Express
 	//
-	// > - `QFKD` - Quanfeng Express
+	// > - YTO: YTO Express
 	//
-	// >
+	// > - TTKDEX: Tiantian Express
 	//
-	// > - `EYB` - China Post E-commerce Express
+	// > - JDLEx: JD Express
 	//
-	// >
+	// > - ETICKET: Electronic vouchers
 	//
-	// > - `STO` - STO Express
+	// > - HTKY: Best Express
 	//
-	// >
+	// > - SHQ: Huaqiang Logistics
 	//
-	// > - `SF` - SF Express
+	// > - TAOBAO: Taobao Logistics
 	//
-	// >
+	// > - YUNDA: Yunda Express
 	//
-	// > - `ZTO` - ZTO Express
+	// > - ZJS: ZJS Express
 	//
-	// >
+	// > - FEDEX: FedEx
 	//
-	// > - `YTO` - YTO Express
+	// > - EMS: EMS
 	//
-	// >
+	// > - POSTB: China Post Parcel
 	//
-	// > - `TTKDEX` - Tiantian Express
+	// > - OTHER: Other
 	//
-	// >
+	// > - CNDJWL: Cainiao Large Item Logistics
 	//
-	// > - `JDLEx` - JD Express
+	// > - TN: Teneng
 	//
-	// >
-	//
-	// > - `ETICKET` - e-ticket
-	//
-	// >
-	//
-	// > - `HTKY` - Best Express
-	//
-	// >
-	//
-	// > - `SHQ` - Huaqiang Logistics
-	//
-	// >
-	//
-	// > - `TAOBAO` - Taobao Logistics
-	//
-	// >
-	//
-	// > - `YUNDA` - Yunda Express
-	//
-	// >
-	//
-	// > - `ZJS` - ZJS Express
-	//
-	// >
-	//
-	// > - `FEDEX` - FedEx
-	//
-	// >
-	//
-	// > - `EMS` - EMS
-	//
-	// >
-	//
-	// > - `POSTB` - China Post Parcel
-	//
-	// >
-	//
-	// > - `OTHER` - other
-	//
-	// >
-	//
-	// > - `CNDJWL` - Cainiao Heavy Parcel Logistics
-	//
-	// >
-	//
-	// > - `TN` - T-neng Logistics
-	//
-	// >
-	//
-	// > - `ZMKM` - Cainiao Express
+	// > - ZMKM: Cainiao Express
 	//
 	// example:
 	//
 	// SF
 	LogisticsCompanyCode *string `json:"logisticsCompanyCode,omitempty" xml:"logisticsCompanyCode,omitempty"`
-	// The name of the logistics company.
+	// The logistics company name.
 	//
 	// example:
 	//
-	// 顺丰
+	// SF Express
 	LogisticsCompanyName *string `json:"logisticsCompanyName,omitempty" xml:"logisticsCompanyName,omitempty"`
-	// A list of logistics details.
+	// The logistics details.
 	LogisticsDetailList []*LogisticsDetail `json:"logisticsDetailList,omitempty" xml:"logisticsDetailList,omitempty" type:"Repeated"`
-	// The tracking number.
+	// The logistics tracking number.
 	//
-	// > For an e-ticket, the tracking number is a fixed value: \\*
+	// > The logistics tracking number for electronic vouchers is a fixed value: *.
 	//
 	// example:
 	//

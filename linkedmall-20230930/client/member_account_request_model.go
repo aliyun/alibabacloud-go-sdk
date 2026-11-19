@@ -14,6 +14,8 @@ type iMemberAccountRequest interface {
 }
 
 type MemberAccountRequest struct {
+	// The shop ID.
+	//
 	// This parameter is required.
 	//
 	// example:

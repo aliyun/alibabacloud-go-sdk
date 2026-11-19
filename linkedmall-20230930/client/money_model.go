@@ -27,16 +27,28 @@ type iMoney interface {
 
 type Money struct {
 	// amount
+	//
+	// example:
+	//
+	// 128
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// amountAsString
 	AmountAsString *string `json:"amountAsString,omitempty" xml:"amountAsString,omitempty"`
 	// amountString
 	AmountString *string `json:"amountString,omitempty" xml:"amountString,omitempty"`
 	// cent
+	//
+	// example:
+	//
+	// 12800
 	Cent *int64 `json:"cent,omitempty" xml:"cent,omitempty"`
 	// currency
 	Currency *MoneyCurrency `json:"currency,omitempty" xml:"currency,omitempty" type:"Struct"`
 	// currencyCode
+	//
+	// example:
+	//
+	// CNY
 	CurrencyCode *string `json:"currencyCode,omitempty" xml:"currencyCode,omitempty"`
 	// positive
 	Positive *bool `json:"positive,omitempty" xml:"positive,omitempty"`
@@ -124,14 +136,34 @@ func (s *Money) Validate() error {
 
 type MoneyCurrency struct {
 	// currencyCode
+	//
+	// example:
+	//
+	// CNY
 	CurrencyCode *string `json:"currencyCode,omitempty" xml:"currencyCode,omitempty"`
 	// defaultFractionDigits
+	//
+	// example:
+	//
+	// 2
 	DefaultFractionDigits *int32 `json:"defaultFractionDigits,omitempty" xml:"defaultFractionDigits,omitempty"`
 	// displayName
+	//
+	// example:
+	//
+	// CNY
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// numericCode
+	//
+	// example:
+	//
+	// 156
 	NumericCode *int32 `json:"numericCode,omitempty" xml:"numericCode,omitempty"`
 	// symbol
+	//
+	// example:
+	//
+	// ￥
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
 }
 

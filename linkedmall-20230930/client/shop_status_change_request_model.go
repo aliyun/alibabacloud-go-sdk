@@ -16,12 +16,16 @@ type iShopStatusChangeRequest interface {
 }
 
 type ShopStatusChangeRequest struct {
+	// The shop ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// The shop status.
+	//
 	// This parameter is required.
 	//
 	// example:

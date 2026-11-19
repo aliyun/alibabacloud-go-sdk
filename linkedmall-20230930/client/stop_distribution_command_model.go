@@ -22,13 +22,35 @@ type iStopDistributionCommand interface {
 }
 
 type StopDistributionCommand struct {
-	LmShopId  *string `json:"lmShopId,omitempty" xml:"lmShopId,omitempty"`
+	// The LM shop ID.
+	//
+	// example:
+	//
+	// 21000019
+	LmShopId *string `json:"lmShopId,omitempty" xml:"lmShopId,omitempty"`
+	// The product ID.
+	//
+	// example:
+	//
+	// 660057403063402509
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 48A34399-A72C-1E23-8388-7E63A1B2E927
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The submission time.
+	//
 	// example:
 	//
 	// 2024-12-01 10:01:00
 	RequestTime *string `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
+	// The submitter.
+	//
+	// example:
+	//
+	// demo_user
 	RequestUser *string `json:"requestUser,omitempty" xml:"requestUser,omitempty"`
 }
 

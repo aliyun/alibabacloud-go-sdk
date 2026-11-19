@@ -20,7 +20,7 @@ type LogisticsDetail struct {
 	//
 	// example:
 	//
-	// 2023-09-11T12:22:24.000+08:00
+	// 2023-09-01 00:00:00
 	OcurrTimeStr *string `json:"ocurrTimeStr,omitempty" xml:"ocurrTimeStr,omitempty"`
 	// Description of the logistics event
 	//

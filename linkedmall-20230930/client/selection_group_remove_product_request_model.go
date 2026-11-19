@@ -16,13 +16,15 @@ type iSelectionGroupRemoveProductRequest interface {
 }
 
 type SelectionGroupRemoveProductRequest struct {
-	// A list of IDs for the products to be removed from stock.
+	// The list of product IDs to be dispatched.
+	//
+	// >
 	//
 	// > - A single call supports a maximum of 30 products.
 	//
 	// This parameter is required.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
-	// The ID of the purchaser.
+	// The purchaser ID.
 	//
 	// This parameter is required.
 	//

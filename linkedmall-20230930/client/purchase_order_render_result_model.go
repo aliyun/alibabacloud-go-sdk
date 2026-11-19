@@ -26,31 +26,31 @@ type iPurchaseOrderRenderResult interface {
 }
 
 type PurchaseOrderRenderResult struct {
-	// A collection of addresses.
+	// The address list.
 	AddressList []*AddressInfo `json:"addressList,omitempty" xml:"addressList,omitempty" type:"Repeated"`
-	// Indicates whether the item can be sold.
+	// Indicates whether the item is sellable.
 	//
 	// example:
 	//
 	// true
 	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	// Extended information.
+	// The extended information.
 	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	// The reason why the item cannot be sold.
+	// The reason why the item is unsellable.
 	//
 	// example:
 	//
-	// 库存为0
+	// Out of stock
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// A collection of sellable main orders.
+	// The list of sellable primary orders.
 	OrderList []*OrderRenderResult `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A collection of unsellable main orders.
+	// The list of unsellable primary orders.
 	UnsellableOrderList []*OrderRenderResult `json:"unsellableOrderList,omitempty" xml:"unsellableOrderList,omitempty" type:"Repeated"`
 }
 

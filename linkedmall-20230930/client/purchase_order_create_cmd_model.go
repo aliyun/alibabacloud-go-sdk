@@ -22,11 +22,9 @@ type iPurchaseOrderCreateCmd interface {
 }
 
 type PurchaseOrderCreateCmd struct {
-	// User ID in the distributor\\"s business, customized by the distributor.
+	// The user ID in the distributor business, which is defined by the distributor.
 	//
-	// 	Notice:
-	//
-	// Allocate different buyer IDs for different buyers.
+	// 	Notice: Assign different buyerIds to different buyers.</notice>
 	//
 	// This parameter is required.
 	//
@@ -34,13 +32,13 @@ type PurchaseOrderCreateCmd struct {
 	//
 	// buyer123456
 	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
-	// Address information.
+	// The address information.
 	//
 	// This parameter is required.
 	DeliveryAddress *AddressInfo `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
-	// Extension information.
+	// The extended information.
 	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	// Order ID in the distributor\\"s business, customized by the distributor.
+	// The order ID in the distributor business, which is defined by the distributor.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +46,9 @@ type PurchaseOrderCreateCmd struct {
 	//
 	// outer123456
 	OuterPurchaseOrderId *string `json:"outerPurchaseOrderId,omitempty" xml:"outerPurchaseOrderId,omitempty"`
-	// Product collection.
+	// The product list.
 	//
-	// > Maximum number of SKUs per purchase order: 20.
+	// > Maximum number of SKUs per purchase order: 20
 	//
 	// This parameter is required.
 	ProductList []*ProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`

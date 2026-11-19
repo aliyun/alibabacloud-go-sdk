@@ -18,8 +18,19 @@ type iDistributeProductResult interface {
 }
 
 type DistributeProductResult struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The return code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The return message.
+	//
+	// example:
+	//
+	// 操作成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 48A34399-A72C-1E23-8388-7E63A1B2E927
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

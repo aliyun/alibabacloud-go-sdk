@@ -17,6 +17,8 @@ type iSearchProductsRequest interface {
 	GetCreateEndTime() *string
 	SetCreateStartTime(v string) *SearchProductsRequest
 	GetCreateStartTime() *string
+	SetCursor(v string) *SearchProductsRequest
+	GetCursor() *string
 	SetDistributionHighPrice(v int64) *SearchProductsRequest
 	GetDistributionHighPrice() *int64
 	SetDistributionHighPriceRatio(v int64) *SearchProductsRequest
@@ -72,15 +74,15 @@ type iSearchProductsRequest interface {
 }
 
 type SearchProductsRequest struct {
-	// Brand name
+	// The brand name.
 	//
 	// example:
 	//
-	// 绿植
+	// Plants
 	BrandName *string `json:"brandName,omitempty" xml:"brandName,omitempty"`
-	// Collection of category IDs
+	// The list of category IDs.
 	CategoryIds []*string `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
-	// Creation end time
+	// The end time of the creation. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -88,7 +90,7 @@ type SearchProductsRequest struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	CreateEndTime *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
-	// Creation start time
+	// The start time of the creation. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -96,49 +98,55 @@ type SearchProductsRequest struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	CreateStartTime *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
-	// Upper limit of distribution purchase price
+	// The cursor.
 	//
 	// example:
 	//
-	// 100（单位：分）
+	// 899192313AB192938441CCW
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// The maximum distribution purchase price, in cents.
+	//
+	// example:
+	//
+	// 100
 	DistributionHighPrice *int64 `json:"distributionHighPrice,omitempty" xml:"distributionHighPrice,omitempty"`
-	// Upper limit of distribution premium rate
+	// The maximum distribution premium rate. A value of 244 indicates 2.44%.
 	//
 	// example:
 	//
-	// 244（2.44%）
+	// 244
 	DistributionHighPriceRatio *int64 `json:"distributionHighPriceRatio,omitempty" xml:"distributionHighPriceRatio,omitempty"`
-	// Lower limit of distribution purchase price
+	// The minimum distribution purchase price, in cents.
 	//
 	// example:
 	//
-	// 100（单位：分）
+	// 100
 	DistributionLowPrice *int64 `json:"distributionLowPrice,omitempty" xml:"distributionLowPrice,omitempty"`
-	// Lower limit of distribution premium rate
+	// The minimum distribution premium rate. A value of 133 indicates 1.33%.
 	//
 	// example:
 	//
-	// 133（1.33%）
+	// 133
 	DistributionLowPriceRatio *int64 `json:"distributionLowPriceRatio,omitempty" xml:"distributionLowPriceRatio,omitempty"`
-	// Upper limit of strikethrough price
+	// The maximum strikethrough price, in cents.
 	//
 	// example:
 	//
-	// 100（单位：分）
+	// 100
 	HighMarkPrice *int64 `json:"highMarkPrice,omitempty" xml:"highMarkPrice,omitempty"`
-	// Upper limit of suggested retail price
+	// The maximum suggested retail price, in cents.
 	//
 	// example:
 	//
-	// 100（单位：分）
+	// 100
 	HighPrice *int64 `json:"highPrice,omitempty" xml:"highPrice,omitempty"`
-	// Whether the product is in inventory
+	// Specifies whether the product is added to the inventory.
 	//
 	// example:
 	//
 	// true
 	InGroup *bool `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
-	// End time of the product’s entry period.
+	// The end time when the product was added to the inventory. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -146,7 +154,7 @@ type SearchProductsRequest struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	InGroupEndTime *string `json:"inGroupEndTime,omitempty" xml:"inGroupEndTime,omitempty"`
-	// Inventory start time
+	// The start time when the product was added to the inventory. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -154,31 +162,31 @@ type SearchProductsRequest struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	InGroupStartTime *string `json:"inGroupStartTime,omitempty" xml:"inGroupStartTime,omitempty"`
-	// Inventory risk level
+	// The inventory risk level.
 	//
 	// example:
 	//
 	// Low
 	InventoryRiskLevel *string `json:"inventoryRiskLevel,omitempty" xml:"inventoryRiskLevel,omitempty"`
-	// LM product ID
+	// The LM product ID.
 	//
 	// example:
 	//
 	// xxx-xxxxx
 	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
-	// Lower limit of strikethrough price
+	// The minimum strikethrough price, in cents.
 	//
 	// example:
 	//
-	// 100（单位：分）
+	// 100
 	LowMarkPrice *int64 `json:"lowMarkPrice,omitempty" xml:"lowMarkPrice,omitempty"`
-	// Lower limit of suggested retail price
+	// The minimum suggested retail price, in cents.
 	//
 	// example:
 	//
-	// 100（单位：分）
+	// 100
 	LowPrice *int64 `json:"lowPrice,omitempty" xml:"lowPrice,omitempty"`
-	// Modification end time
+	// The end time of the modification. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -186,7 +194,7 @@ type SearchProductsRequest struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	ModifyEndTime *string `json:"modifyEndTime,omitempty" xml:"modifyEndTime,omitempty"`
-	// Modification start time
+	// The start time of the modification. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -194,23 +202,27 @@ type SearchProductsRequest struct {
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	ModifyStartTime *string `json:"modifyStartTime,omitempty" xml:"modifyStartTime,omitempty"`
-	// Sort field
+	// The sort field.
 	//
-	// > - Used in combination with the sort direction field
+	// >
+	//
+	// > - This parameter must be used in combination with the sort direction parameter.
 	//
 	// example:
 	//
-	// soldQuantity（按销量排序，不填默认创建时间倒序)
+	// soldQuantity (sorts by sales volume. If not specified, the default is descending order of creation time)
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// Sort direction
+	// The sort direction.
 	//
-	// > - Used in combination with the sort field
+	// >
+	//
+	// > - This parameter must be used in combination with the sort field parameter.
 	//
 	// example:
 	//
 	// ASC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -218,9 +230,11 @@ type SearchProductsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size
+	// The number of items per page.
 	//
-	// > - Maximum of 20 items per page
+	// >
+	//
+	// > - Maximum value: 20.
 	//
 	// This parameter is required.
 	//
@@ -228,35 +242,35 @@ type SearchProductsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Source platform
+	// The source platform.
 	//
 	// example:
 	//
-	// Taobao（来源淘宝）
+	// Taobao (sourced from Taobao)
 	//
-	// Tmall（来源天猫）
+	// Tmall (sourced from Tmall)
 	//
-	// Cbu（来源1688分销货盘）
+	// Cbu (sourced from the 1688 distribution platform)
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// Product ID
+	// The product ID.
 	//
 	// example:
 	//
 	// xxxxxxx
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// Product name
+	// The product name.
 	//
 	// example:
 	//
-	// 绿植
+	// Plants
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// Product status
+	// The product status.
 	//
 	// example:
 	//
 	// Sellable
 	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
-	// Purchaser ID
+	// The ID of the purchaser.
 	//
 	// This parameter is required.
 	//
@@ -264,19 +278,19 @@ type SearchProductsRequest struct {
 	//
 	// PIDxxxx
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	// Tax rate
-	//
-	// > - Supports combining multiple tax rate enumeration values as request parameters. Use commas to separate them, for example: Rate0,Rate1.
+	// The tax rate.
 	//
 	// >
 	//
-	// > - HasRate cannot be combined with other enumeration values as request parameters.
+	// > - You can combine multiple tax rate enum values. Separate the values with commas (,). Example: Rate0,Rate1.
+	//
+	// > - HasRate cannot be combined with other enum values.
 	//
 	// example:
 	//
 	// Rate0
 	TaxRate *string `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
-	// Sales pattern
+	// The sales mode.
 	//
 	// example:
 	//
@@ -306,6 +320,10 @@ func (s *SearchProductsRequest) GetCreateEndTime() *string {
 
 func (s *SearchProductsRequest) GetCreateStartTime() *string {
 	return s.CreateStartTime
+}
+
+func (s *SearchProductsRequest) GetCursor() *string {
+	return s.Cursor
 }
 
 func (s *SearchProductsRequest) GetDistributionHighPrice() *int64 {
@@ -429,6 +447,11 @@ func (s *SearchProductsRequest) SetCreateEndTime(v string) *SearchProductsReques
 
 func (s *SearchProductsRequest) SetCreateStartTime(v string) *SearchProductsRequest {
 	s.CreateStartTime = &v
+	return s
+}
+
+func (s *SearchProductsRequest) SetCursor(v string) *SearchProductsRequest {
+	s.Cursor = &v
 	return s
 }
 

@@ -22,31 +22,41 @@ type iShopCreateRequest interface {
 }
 
 type ShopCreateRequest struct {
+	// The after-sales DingTalk ID.
+	//
 	// example:
 	//
 	// 12344335
 	AfterSaleDingTalkId *string `json:"afterSaleDingTalkId,omitempty" xml:"afterSaleDingTalkId,omitempty"`
+	// The shop description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 店铺描述
+	// Shop description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The operations DingTalk ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12344335
 	OperatorDingTalkId *string `json:"operatorDingTalkId,omitempty" xml:"operatorDingTalkId,omitempty"`
+	// The pre-sales DingTalk ID.
+	//
 	// example:
 	//
 	// 12344335
 	PreSaleDingTalkId *string `json:"preSaleDingTalkId,omitempty" xml:"preSaleDingTalkId,omitempty"`
+	// The shop name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 店铺名称
+	// Shop name
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
 }
 

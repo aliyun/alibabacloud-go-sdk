@@ -70,9 +70,9 @@ type Product struct {
 	//
 	// example:
 	//
-	// Apple/苹果
+	// Apple
 	BrandName *string `json:"brandName,omitempty" xml:"brandName,omitempty"`
-	// Indicates whether the product is available for sale. This is a calculated value.
+	// The calculated value indicating whether the product is available for sale.
 	//
 	// example:
 	//
@@ -86,29 +86,29 @@ type Product struct {
 	//
 	// 201****501
 	CategoryLeafId *int64 `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
-	// The product description URL.
+	// The product details URL.
 	//
 	// example:
 	//
 	// https://img.alicdn.com/descpath/O1CN01wciRDp22AEU1*******f34
 	DescPath *string `json:"descPath,omitempty" xml:"descPath,omitempty"`
-	// The region code.
+	// The division code.
 	//
 	// example:
 	//
 	// 110000
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	// The product\\"s extended properties.
+	// The extended product properties.
 	ExtendProperties []*ProductExtendProperty `json:"extendProperties,omitempty" xml:"extendProperties,omitempty" type:"Repeated"`
-	// The stock status.
+	// The approximate inventory.
 	//
 	// example:
 	//
-	// 有货
+	// In stock
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	// The product images.
+	// images
 	Images []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// The warehousing status.
+	// The warehousing status of the product.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type Product struct {
 	//
 	// 2100****7-458****812
 	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
-	// The main product image URL.
+	// The product main image.
 	//
 	// example:
 	//
@@ -148,33 +148,35 @@ type Product struct {
 	//
 	// Normal
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	// The product attributes.
+	// The product properties.
 	Properties []*ProductProperty `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
 	// The inventory.
 	//
-	// > - This parameter is fixed at -1 and can be ignored.
+	// >
+	//
+	// > - This field is currently a fixed value of -1 and can be ignored.
 	//
 	// example:
 	//
 	// -1
 	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	// The request ID.
+	// The API request ID.
 	//
 	// example:
 	//
 	// 3239281273******823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The service promises.	Notice:  Suppliers maintain all service promises. If a supplier fails to update this information in a timely manner, the service promise labels for some products may be inaccurate. Distributors should display this information to their customers with caution.
+	// The service commitments.<notice>Service commitments are maintained by suppliers. If suppliers fail to maintain or update them promptly, the service commitment labels for some products may be inaccurate. Distributors should display these commitments to their customers with caution.</notice>
 	ServicePromises []*string `json:"servicePromises,omitempty" xml:"servicePromises,omitempty" type:"Repeated"`
-	// The channel shop ID.
+	// The channel store ID.
 	//
 	// example:
 	//
 	// 210*****7
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	// The product SKUs.
+	// skus
 	Skus []*Sku `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
-	// The quantity sold.
+	// The sales volume.
 	//
 	// example:
 	//
@@ -192,11 +194,11 @@ type Product struct {
 	//
 	// 600
 	TaxRate *int32 `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
-	// The product title.
+	// The title.
 	//
 	// example:
 	//
-	// 发财树
+	// Money tree
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

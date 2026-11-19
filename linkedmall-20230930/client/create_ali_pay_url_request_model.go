@@ -14,6 +14,8 @@ type iCreateAliPayUrlRequest interface {
 }
 
 type CreateAliPayUrlRequest struct {
+	// The ID of the applied shop.
+	//
 	// This parameter is required.
 	//
 	// example:

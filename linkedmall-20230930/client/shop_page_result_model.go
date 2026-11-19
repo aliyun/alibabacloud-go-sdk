@@ -18,15 +18,15 @@ type iShopPageResult interface {
 }
 
 type ShopPageResult struct {
-	// API request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Shop collection
+	// The shop list.
 	ShopList []*ShopPageDataResult `json:"shopList,omitempty" xml:"shopList,omitempty" type:"Repeated"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
