@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("mPaaS")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 dara.String("mpaas.aliyuncs.com"),
@@ -4111,6 +4119,10 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 		body["TargetMsgkey"] = request.TargetMsgkey
 	}
 
+	if !dara.IsNil(request.TargetVendorTemplate) {
+		body["TargetVendorTemplate"] = request.TargetVendorTemplate
+	}
+
 	if !dara.IsNil(request.TaskName) {
 		body["TaskName"] = request.TaskName
 	}
@@ -4139,8 +4151,16 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 		body["Uri"] = request.Uri
 	}
 
+	if !dara.IsNil(request.UseVoip) {
+		body["UseVoip"] = request.UseVoip
+	}
+
 	if !dara.IsNil(request.VendorTemplate) {
 		body["VendorTemplate"] = request.VendorTemplate
+	}
+
+	if !dara.IsNil(request.VoipMap) {
+		body["VoipMap"] = request.VoipMap
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -4275,6 +4295,10 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 		body["TargetMsgkey"] = request.TargetMsgkey
 	}
 
+	if !dara.IsNil(request.TargetVendorTemplate) {
+		body["TargetVendorTemplate"] = request.TargetVendorTemplate
+	}
+
 	if !dara.IsNil(request.TaskName) {
 		body["TaskName"] = request.TaskName
 	}
@@ -4303,8 +4327,16 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 		body["TransparentMessageUrgency"] = request.TransparentMessageUrgency
 	}
 
+	if !dara.IsNil(request.UseVoip) {
+		body["UseVoip"] = request.UseVoip
+	}
+
 	if !dara.IsNil(request.VendorTemplate) {
 		body["VendorTemplate"] = request.VendorTemplate
+	}
+
+	if !dara.IsNil(request.VoipMap) {
+		body["VoipMap"] = request.VoipMap
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

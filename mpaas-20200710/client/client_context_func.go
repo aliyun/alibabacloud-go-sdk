@@ -3334,6 +3334,10 @@ func (client *Client) PushSimpleWithContext(ctx context.Context, tmpReq *PushSim
 		body["TargetMsgkey"] = request.TargetMsgkey
 	}
 
+	if !dara.IsNil(request.TargetVendorTemplate) {
+		body["TargetVendorTemplate"] = request.TargetVendorTemplate
+	}
+
 	if !dara.IsNil(request.TaskName) {
 		body["TaskName"] = request.TaskName
 	}
@@ -3362,8 +3366,16 @@ func (client *Client) PushSimpleWithContext(ctx context.Context, tmpReq *PushSim
 		body["Uri"] = request.Uri
 	}
 
+	if !dara.IsNil(request.UseVoip) {
+		body["UseVoip"] = request.UseVoip
+	}
+
 	if !dara.IsNil(request.VendorTemplate) {
 		body["VendorTemplate"] = request.VendorTemplate
+	}
+
+	if !dara.IsNil(request.VoipMap) {
+		body["VoipMap"] = request.VoipMap
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -3484,6 +3496,10 @@ func (client *Client) PushTemplateWithContext(ctx context.Context, tmpReq *PushT
 		body["TargetMsgkey"] = request.TargetMsgkey
 	}
 
+	if !dara.IsNil(request.TargetVendorTemplate) {
+		body["TargetVendorTemplate"] = request.TargetVendorTemplate
+	}
+
 	if !dara.IsNil(request.TaskName) {
 		body["TaskName"] = request.TaskName
 	}
@@ -3512,8 +3528,16 @@ func (client *Client) PushTemplateWithContext(ctx context.Context, tmpReq *PushT
 		body["TransparentMessageUrgency"] = request.TransparentMessageUrgency
 	}
 
+	if !dara.IsNil(request.UseVoip) {
+		body["UseVoip"] = request.UseVoip
+	}
+
 	if !dara.IsNil(request.VendorTemplate) {
 		body["VendorTemplate"] = request.VendorTemplate
+	}
+
+	if !dara.IsNil(request.VoipMap) {
+		body["VoipMap"] = request.VoipMap
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {

@@ -51,6 +51,8 @@ type iPushSimpleShrinkRequest interface {
 	GetStrategyType() *int32
 	SetTargetMsgkey(v string) *PushSimpleShrinkRequest
 	GetTargetMsgkey() *string
+	SetTargetVendorTemplate(v string) *PushSimpleShrinkRequest
+	GetTargetVendorTemplate() *string
 	SetTaskName(v string) *PushSimpleShrinkRequest
 	GetTaskName() *string
 	SetTenantId(v string) *PushSimpleShrinkRequest
@@ -65,8 +67,12 @@ type iPushSimpleShrinkRequest interface {
 	GetTransparentMessageUrgency() *string
 	SetUri(v string) *PushSimpleShrinkRequest
 	GetUri() *string
+	SetUseVoip(v bool) *PushSimpleShrinkRequest
+	GetUseVoip() *bool
 	SetVendorTemplate(v string) *PushSimpleShrinkRequest
 	GetVendorTemplate() *string
+	SetVoipMap(v string) *PushSimpleShrinkRequest
+	GetVoipMap() *string
 	SetWorkspaceId(v string) *PushSimpleShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -98,6 +104,7 @@ type PushSimpleShrinkRequest struct {
 	StrategyType      *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// This parameter is required.
 	TargetMsgkey               *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TargetVendorTemplate       *string `json:"TargetVendorTemplate,omitempty" xml:"TargetVendorTemplate,omitempty"`
 	TaskName                   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TenantId                   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
@@ -106,7 +113,9 @@ type PushSimpleShrinkRequest struct {
 	TransparentMessagePayload interface{} `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency *string     `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
 	Uri                       *string     `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UseVoip                   *bool       `json:"UseVoip,omitempty" xml:"UseVoip,omitempty"`
 	VendorTemplate            *string     `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
+	VoipMap                   *string     `json:"VoipMap,omitempty" xml:"VoipMap,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -203,6 +212,10 @@ func (s *PushSimpleShrinkRequest) GetTargetMsgkey() *string {
 	return s.TargetMsgkey
 }
 
+func (s *PushSimpleShrinkRequest) GetTargetVendorTemplate() *string {
+	return s.TargetVendorTemplate
+}
+
 func (s *PushSimpleShrinkRequest) GetTaskName() *string {
 	return s.TaskName
 }
@@ -231,8 +244,16 @@ func (s *PushSimpleShrinkRequest) GetUri() *string {
 	return s.Uri
 }
 
+func (s *PushSimpleShrinkRequest) GetUseVoip() *bool {
+	return s.UseVoip
+}
+
 func (s *PushSimpleShrinkRequest) GetVendorTemplate() *string {
 	return s.VendorTemplate
+}
+
+func (s *PushSimpleShrinkRequest) GetVoipMap() *string {
+	return s.VoipMap
 }
 
 func (s *PushSimpleShrinkRequest) GetWorkspaceId() *string {
@@ -344,6 +365,11 @@ func (s *PushSimpleShrinkRequest) SetTargetMsgkey(v string) *PushSimpleShrinkReq
 	return s
 }
 
+func (s *PushSimpleShrinkRequest) SetTargetVendorTemplate(v string) *PushSimpleShrinkRequest {
+	s.TargetVendorTemplate = &v
+	return s
+}
+
 func (s *PushSimpleShrinkRequest) SetTaskName(v string) *PushSimpleShrinkRequest {
 	s.TaskName = &v
 	return s
@@ -379,8 +405,18 @@ func (s *PushSimpleShrinkRequest) SetUri(v string) *PushSimpleShrinkRequest {
 	return s
 }
 
+func (s *PushSimpleShrinkRequest) SetUseVoip(v bool) *PushSimpleShrinkRequest {
+	s.UseVoip = &v
+	return s
+}
+
 func (s *PushSimpleShrinkRequest) SetVendorTemplate(v string) *PushSimpleShrinkRequest {
 	s.VendorTemplate = &v
+	return s
+}
+
+func (s *PushSimpleShrinkRequest) SetVoipMap(v string) *PushSimpleShrinkRequest {
+	s.VoipMap = &v
 	return s
 }
 

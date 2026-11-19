@@ -348,6 +348,7 @@ type PushMultipleShrinkRequestTargetMsg struct {
 	// This parameter is required.
 	Target           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	VendorTemplate   *string `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
 }
 
 func (s PushMultipleShrinkRequestTargetMsg) String() string {
@@ -374,6 +375,10 @@ func (s *PushMultipleShrinkRequestTargetMsg) GetTemplateKeyValue() *string {
 	return s.TemplateKeyValue
 }
 
+func (s *PushMultipleShrinkRequestTargetMsg) GetVendorTemplate() *string {
+	return s.VendorTemplate
+}
+
 func (s *PushMultipleShrinkRequestTargetMsg) SetExtendedParams(v string) *PushMultipleShrinkRequestTargetMsg {
 	s.ExtendedParams = &v
 	return s
@@ -391,6 +396,11 @@ func (s *PushMultipleShrinkRequestTargetMsg) SetTarget(v string) *PushMultipleSh
 
 func (s *PushMultipleShrinkRequestTargetMsg) SetTemplateKeyValue(v string) *PushMultipleShrinkRequestTargetMsg {
 	s.TemplateKeyValue = &v
+	return s
+}
+
+func (s *PushMultipleShrinkRequestTargetMsg) SetVendorTemplate(v string) *PushMultipleShrinkRequestTargetMsg {
+	s.VendorTemplate = &v
 	return s
 }
 
