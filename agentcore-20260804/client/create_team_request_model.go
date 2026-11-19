@@ -62,15 +62,15 @@ func (s *CreateTeamRequest) Validate() error {
 }
 
 type CreateTeamRequestBody struct {
-	// The list of agent members in the team.
+	// The list of agent members in the team. The list must include exactly one LEADER, and the LEADER must be a managed agent. External agents and high-code agents only support the WORKER role. In addition, high-code agents must declare the AG-UI (agui) or OpenAI Chat Completions (openai-chat-completion) protocol in the latest version configuration.
 	Agents []*CreateTeamRequestBodyAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
 	// The team description.
 	//
 	// example:
 	//
-	// Team responsible for intelligent customer service operations
+	// Team responsible for the intelligent customer service business
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+	// The team name. The name can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -155,7 +155,7 @@ type CreateTeamRequestBodyAgents struct {
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The role of the agent in the team. Valid values: LEADER, WORKER.
+	// The role of the agent in the team. Valid values: LEADER and WORKER.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ func (s *CreateTeamRequestBodyAgents) Validate() error {
 }
 
 type CreateTeamRequestBodyUsers struct {
-	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
+	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must include exactly one ADMIN.
 	//
 	// example:
 	//

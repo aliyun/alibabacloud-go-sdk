@@ -30,7 +30,7 @@ type CreateMemoryStoreResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The memory store details.
+	// The details of the memory store.
 	Data *CreateMemoryStoreResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -136,15 +136,27 @@ type CreateMemoryStoreResponseBodyData struct {
 	//
 	// example:
 	//
-	// Used to store long-term user preferences
+	// Used to store the long-term preferences of users
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of events. You can query this value by calling GetMemoryStore.
+	//
+	// example:
+	//
+	// 20
+	EventCount *int64 `json:"eventCount,omitempty" xml:"eventCount,omitempty"`
 	// The custom extraction instructions.
 	//
 	// example:
 	//
-	// Extract only long-term preferences explicitly expressed by the user
+	// Extract only long-term preferences explicitly expressed by users
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The memory store ID.
+	// The number of valid memories. You can query this value by calling GetMemoryStore.
+	//
+	// example:
+	//
+	// 10
+	MemoryCount *int64 `json:"memoryCount,omitempty" xml:"memoryCount,omitempty"`
+	// The ID of the memory store.
 	//
 	// example:
 	//
@@ -156,7 +168,7 @@ type CreateMemoryStoreResponseBodyData struct {
 	//
 	// customer-memory
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The lifecycle state of the memory store.
+	// The lifecycle status of the memory store.
 	//
 	// example:
 	//
@@ -168,7 +180,7 @@ type CreateMemoryStoreResponseBodyData struct {
 	//
 	// 2026-09-23T10:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The AgentCore workspace ID.
+	// The ID of the AgentCore workspace.
 	//
 	// example:
 	//
@@ -192,8 +204,16 @@ func (s *CreateMemoryStoreResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateMemoryStoreResponseBodyData) GetEventCount() *int64 {
+	return s.EventCount
+}
+
 func (s *CreateMemoryStoreResponseBodyData) GetExtractInstructions() *string {
 	return s.ExtractInstructions
+}
+
+func (s *CreateMemoryStoreResponseBodyData) GetMemoryCount() *int64 {
+	return s.MemoryCount
 }
 
 func (s *CreateMemoryStoreResponseBodyData) GetMemoryStoreId() *string {
@@ -226,8 +246,18 @@ func (s *CreateMemoryStoreResponseBodyData) SetDescription(v string) *CreateMemo
 	return s
 }
 
+func (s *CreateMemoryStoreResponseBodyData) SetEventCount(v int64) *CreateMemoryStoreResponseBodyData {
+	s.EventCount = &v
+	return s
+}
+
 func (s *CreateMemoryStoreResponseBodyData) SetExtractInstructions(v string) *CreateMemoryStoreResponseBodyData {
 	s.ExtractInstructions = &v
+	return s
+}
+
+func (s *CreateMemoryStoreResponseBodyData) SetMemoryCount(v int64) *CreateMemoryStoreResponseBodyData {
+	s.MemoryCount = &v
 	return s
 }
 

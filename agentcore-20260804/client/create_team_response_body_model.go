@@ -38,7 +38,7 @@ type CreateTeamResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned when the request fails.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ func (s *CreateTeamResponseBody) Validate() error {
 type CreateTeamResponseBodyData struct {
 	// The list of agent members in the team.
 	Agents []*CreateTeamResponseBodyDataAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// The creation time in RFC 3339 UTC format.
+	// The creation time in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -138,15 +138,15 @@ type CreateTeamResponseBodyData struct {
 	//
 	// example:
 	//
-	// Team responsible for intelligent customer service operations
+	// Team responsible for the intelligent customer service business
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+	// The team name. The name can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
 	// example:
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, Deleted.
+	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type CreateTeamResponseBodyData struct {
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
-	// The last update time in RFC 3339 UTC format.
+	// The last update time in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -292,7 +292,7 @@ type CreateTeamResponseBodyDataAgents struct {
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The role of the agent in the team. Valid values: LEADER, WORKER. Each team must have exactly one LEADER.
+	// The role of the agent in the team. Valid values: LEADER and WORKER. Each team must include exactly one LEADER.
 	//
 	// example:
 	//
@@ -331,7 +331,7 @@ func (s *CreateTeamResponseBodyDataAgents) Validate() error {
 }
 
 type CreateTeamResponseBodyDataUsers struct {
-	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
+	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must include exactly one ADMIN.
 	//
 	// example:
 	//

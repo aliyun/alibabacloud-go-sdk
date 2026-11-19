@@ -1,0 +1,698 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iListEventsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCode(v string) *ListEventsResponseBody
+	GetCode() *string
+	SetHttpStatusCode(v int32) *ListEventsResponseBody
+	GetHttpStatusCode() *int32
+	SetItems(v []*ListEventsResponseBodyItems) *ListEventsResponseBody
+	GetItems() []*ListEventsResponseBodyItems
+	SetMaxResults(v int32) *ListEventsResponseBody
+	GetMaxResults() *int32
+	SetMessage(v string) *ListEventsResponseBody
+	GetMessage() *string
+	SetNextToken(v string) *ListEventsResponseBody
+	GetNextToken() *string
+	SetRequestId(v string) *ListEventsResponseBody
+	GetRequestId() *string
+	SetSuccess(v bool) *ListEventsResponseBody
+	GetSuccess() *bool
+	SetTotalCount(v int64) *ListEventsResponseBody
+	GetTotalCount() *int64
+}
+
+type ListEventsResponseBody struct {
+	// The business result code.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The results on the current page.
+	Items []*ListEventsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of entries per page used in the current request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The request processing message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The next page token. An empty value indicates that all data has been read.
+	//
+	// example:
+	//
+	// eyJvZmZzZXQiOjIwMH0=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID used for troubleshooting.
+	//
+	// example:
+	//
+	// 01A00000-0000-0000-0000-000000000001
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful. For batch operations, you must still check the result of each item.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records. This field is empty if the exact total count is not provided.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListEventsResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBody) GetCode() *string {
+	return s.Code
+}
+
+func (s *ListEventsResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *ListEventsResponseBody) GetItems() []*ListEventsResponseBodyItems {
+	return s.Items
+}
+
+func (s *ListEventsResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListEventsResponseBody) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListEventsResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ListEventsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListEventsResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
+func (s *ListEventsResponseBody) GetTotalCount() *int64 {
+	return s.TotalCount
+}
+
+func (s *ListEventsResponseBody) SetCode(v string) *ListEventsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetHttpStatusCode(v int32) *ListEventsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetItems(v []*ListEventsResponseBodyItems) *ListEventsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetMaxResults(v int32) *ListEventsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetMessage(v string) *ListEventsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetNextToken(v string) *ListEventsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetRequestId(v string) *ListEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetSuccess(v bool) *ListEventsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) SetTotalCount(v int64) *ListEventsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListEventsResponseBody) Validate() error {
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListEventsResponseBodyItems struct {
+	// The event-specific data. Use the corresponding fields based on the type. For conditional requirements, refer to the description of each field.
+	//
+	// This parameter is required.
+	Data *ListEventsResponseBodyItemsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The stable event ID generated by the server. It is used for referencing, locating, and deleting events. It does not represent the business sequence, and no separate messageId is provided.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// evt-2f5f9c5a8d0e4c3b
+	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// The time when the event reaches the server, in Unix milliseconds. It is used for asynchronous processing and not for historical business sorting.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1758614401000
+	ReceivedAt *int64 `json:"receivedAt,omitempty" xml:"receivedAt,omitempty"`
+	// The session to which the event belongs.
+	//
+	// This parameter is required.
+	Scope *ListEventsResponseBodyItemsScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
+	// The actual occurrence time provided by the client, in Unix milliseconds. This is the only source for business sorting. Identical values do not indicate a known sequence, and the array position does not imply a business sequence.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1758614400000
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The event type. This determines the applicable fields and conditional requirements for the data.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// message
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListEventsResponseBodyItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBodyItems) GetData() *ListEventsResponseBodyItemsData {
+	return s.Data
+}
+
+func (s *ListEventsResponseBodyItems) GetEventId() *string {
+	return s.EventId
+}
+
+func (s *ListEventsResponseBodyItems) GetReceivedAt() *int64 {
+	return s.ReceivedAt
+}
+
+func (s *ListEventsResponseBodyItems) GetScope() *ListEventsResponseBodyItemsScope {
+	return s.Scope
+}
+
+func (s *ListEventsResponseBodyItems) GetTimestamp() *int64 {
+	return s.Timestamp
+}
+
+func (s *ListEventsResponseBodyItems) GetType() *string {
+	return s.Type
+}
+
+func (s *ListEventsResponseBodyItems) SetData(v *ListEventsResponseBodyItemsData) *ListEventsResponseBodyItems {
+	s.Data = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItems) SetEventId(v string) *ListEventsResponseBodyItems {
+	s.EventId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItems) SetReceivedAt(v int64) *ListEventsResponseBodyItems {
+	s.ReceivedAt = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItems) SetScope(v *ListEventsResponseBodyItemsScope) *ListEventsResponseBodyItems {
+	s.Scope = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItems) SetTimestamp(v int64) *ListEventsResponseBodyItems {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItems) SetType(v string) *ListEventsResponseBodyItems {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItems) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Scope != nil {
+		if err := s.Scope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListEventsResponseBodyItemsData struct {
+	// The call ID, which is required for tool_call, tool_result, or messages with role=tool. It associates the call intent, actual execution, and feedback.
+	//
+	// example:
+	//
+	// call-001
+	CallId *string `json:"callId,omitempty" xml:"callId,omitempty"`
+	// The ordered content blocks, which are required for message and tool_result events. Use a text block for plain text. This can be an empty array if the tool has no output.
+	Content []*ListEventsResponseBodyItemsDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// The list of visible event IDs referenced by the summary. This list cannot be empty.
+	EventIds []*string `json:"eventIds,omitempty" xml:"eventIds,omitempty" type:"Repeated"`
+	// The parent session anchor, which is required for session_fork events. The child session continues from the valid context at this anchor and does not inherit interactions after the anchor.
+	//
+	// example:
+	//
+	// evt-2f5f9c5a8d0e4c3b
+	ParentEventId *string `json:"parentEventId,omitempty" xml:"parentEventId,omitempty"`
+	// The business positioning of the parent session, which is required for session_fork events. The event is written to the child session, and the requested scope is the child session.
+	ParentScope *ListEventsResponseBodyItemsDataParentScope `json:"parentScope,omitempty" xml:"parentScope,omitempty" type:"Struct"`
+	// The message role, which is required for message events.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The readable summary, which is optional for context_update events.
+	//
+	// example:
+	//
+	// The user plans to go hiking on the weekend
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+}
+
+func (s ListEventsResponseBodyItemsData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventsResponseBodyItemsData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBodyItemsData) GetCallId() *string {
+	return s.CallId
+}
+
+func (s *ListEventsResponseBodyItemsData) GetContent() []*ListEventsResponseBodyItemsDataContent {
+	return s.Content
+}
+
+func (s *ListEventsResponseBodyItemsData) GetEventIds() []*string {
+	return s.EventIds
+}
+
+func (s *ListEventsResponseBodyItemsData) GetParentEventId() *string {
+	return s.ParentEventId
+}
+
+func (s *ListEventsResponseBodyItemsData) GetParentScope() *ListEventsResponseBodyItemsDataParentScope {
+	return s.ParentScope
+}
+
+func (s *ListEventsResponseBodyItemsData) GetRole() *string {
+	return s.Role
+}
+
+func (s *ListEventsResponseBodyItemsData) GetSummary() *string {
+	return s.Summary
+}
+
+func (s *ListEventsResponseBodyItemsData) SetCallId(v string) *ListEventsResponseBodyItemsData {
+	s.CallId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) SetContent(v []*ListEventsResponseBodyItemsDataContent) *ListEventsResponseBodyItemsData {
+	s.Content = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) SetEventIds(v []*string) *ListEventsResponseBodyItemsData {
+	s.EventIds = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) SetParentEventId(v string) *ListEventsResponseBodyItemsData {
+	s.ParentEventId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) SetParentScope(v *ListEventsResponseBodyItemsDataParentScope) *ListEventsResponseBodyItemsData {
+	s.ParentScope = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) SetRole(v string) *ListEventsResponseBodyItemsData {
+	s.Role = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) SetSummary(v string) *ListEventsResponseBodyItemsData {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsData) Validate() error {
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ParentScope != nil {
+		if err := s.ParentScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListEventsResponseBodyItemsDataContent struct {
+	// The JSON parameter values, which are required for tool_call blocks. Unparsed raw strings can be retained.
+	//
+	// example:
+	//
+	// {"city":"Hangzhou"}
+	Arguments interface{} `json:"arguments,omitempty" xml:"arguments,omitempty"`
+	// The logical call ID, which is required for tool_call blocks.
+	//
+	// example:
+	//
+	// call-001
+	CallId *string `json:"callId,omitempty" xml:"callId,omitempty"`
+	// The access format identifier, which is required for opaque blocks. Saving the format does not mean its content can be interpreted or used across platforms.
+	//
+	// example:
+	//
+	// application/json
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The tool name, which is required for tool_call blocks. This content block only expresses the call intent.
+	//
+	// example:
+	//
+	// get_weather
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The actual text, which is required for text and reasoning blocks.
+	//
+	// example:
+	//
+	// The user likes hiking
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The content block type. This field determines the required fields.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The JSON value, which is required for json and opaque blocks. The data field is not used for opaque blocks.
+	//
+	// example:
+	//
+	// {"preference":"hiking"}
+	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListEventsResponseBodyItemsDataContent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventsResponseBodyItemsDataContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetArguments() interface{} {
+	return s.Arguments
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetCallId() *string {
+	return s.CallId
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetFormat() *string {
+	return s.Format
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetName() *string {
+	return s.Name
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetText() *string {
+	return s.Text
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetType() *string {
+	return s.Type
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) GetValue() interface{} {
+	return s.Value
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetArguments(v interface{}) *ListEventsResponseBodyItemsDataContent {
+	s.Arguments = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetCallId(v string) *ListEventsResponseBodyItemsDataContent {
+	s.CallId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetFormat(v string) *ListEventsResponseBodyItemsDataContent {
+	s.Format = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetName(v string) *ListEventsResponseBodyItemsDataContent {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetText(v string) *ListEventsResponseBodyItemsDataContent {
+	s.Text = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetType(v string) *ListEventsResponseBodyItemsDataContent {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) SetValue(v interface{}) *ListEventsResponseBodyItemsDataContent {
+	s.Value = v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataContent) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventsResponseBodyItemsDataParentScope struct {
+	// The business agent ID.
+	//
+	// example:
+	//
+	// agent-001
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The exact session ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// session-001
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The business team ID.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The business user ID. This is not the platform tenant identity.
+	//
+	// example:
+	//
+	// user-001
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ListEventsResponseBodyItemsDataParentScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventsResponseBodyItemsDataParentScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) GetAgentId() *string {
+	return s.AgentId
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) GetSessionId() *string {
+	return s.SessionId
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) GetTeamId() *string {
+	return s.TeamId
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) SetAgentId(v string) *ListEventsResponseBodyItemsDataParentScope {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) SetSessionId(v string) *ListEventsResponseBodyItemsDataParentScope {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) SetTeamId(v string) *ListEventsResponseBodyItemsDataParentScope {
+	s.TeamId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) SetUserId(v string) *ListEventsResponseBodyItemsDataParentScope {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsDataParentScope) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventsResponseBodyItemsScope struct {
+	// The business agent ID.
+	//
+	// example:
+	//
+	// agent-001
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The exact session ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// session-001
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The business team ID.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The business user ID. This is not the platform tenant identity.
+	//
+	// example:
+	//
+	// user-001
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ListEventsResponseBodyItemsScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventsResponseBodyItemsScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventsResponseBodyItemsScope) GetAgentId() *string {
+	return s.AgentId
+}
+
+func (s *ListEventsResponseBodyItemsScope) GetSessionId() *string {
+	return s.SessionId
+}
+
+func (s *ListEventsResponseBodyItemsScope) GetTeamId() *string {
+	return s.TeamId
+}
+
+func (s *ListEventsResponseBodyItemsScope) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *ListEventsResponseBodyItemsScope) SetAgentId(v string) *ListEventsResponseBodyItemsScope {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsScope) SetSessionId(v string) *ListEventsResponseBodyItemsScope {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsScope) SetTeamId(v string) *ListEventsResponseBodyItemsScope {
+	s.TeamId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsScope) SetUserId(v string) *ListEventsResponseBodyItemsScope {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListEventsResponseBodyItemsScope) Validate() error {
+	return dara.Validate(s)
+}

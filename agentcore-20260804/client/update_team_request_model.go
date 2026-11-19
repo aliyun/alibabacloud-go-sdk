@@ -62,15 +62,15 @@ func (s *UpdateTeamRequest) Validate() error {
 }
 
 type UpdateTeamRequestBody struct {
-	// The new list of agent members, which replaces the existing agent members by using full overwrite semantics. If not specified, the agent member list remains unchanged.
+	// The new list of agent members, which replaces the existing agent members based on full overwrite semantics. If not specified, the list remains unchanged. The list must contain exactly one LEADER, and the LEADER must be a managed agent. External agents and high-code agents only support the WORKER role. High-code agents must also declare the AG-UI (agui) or OpenAI Chat Completions (openai-chat-completion) protocol in the latest version configuration.
 	Agents []*UpdateTeamRequestBodyAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
 	// The new description of the team. If not specified, the description remains unchanged.
 	//
 	// example:
 	//
-	// The team responsible for intelligent customer service
+	// Team responsible for intelligent customer service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The new list of user members, which replaces the existing user members by using full overwrite semantics. If this parameter is specified, it must contain exactly one member whose role is ADMIN. If not specified, the user member list remains unchanged.
+	// The new list of user members, which replaces the existing user members based on full overwrite semantics. If this parameter is specified, it must contain exactly one member with the ADMIN role. If not specified, the list remains unchanged.
 	Users []*UpdateTeamRequestBodyUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
@@ -138,7 +138,7 @@ type UpdateTeamRequestBodyAgents struct {
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The role of the agent in the team. Valid values: LEADER and WORKER.
+	// The role of the agent in the team. Valid values: LEADER, WORKER.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ func (s *UpdateTeamRequestBodyAgents) Validate() error {
 }
 
 type UpdateTeamRequestBodyUsers struct {
-	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
 	//
 	// example:
 	//

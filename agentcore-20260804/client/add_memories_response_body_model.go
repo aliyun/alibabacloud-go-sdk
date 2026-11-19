@@ -126,14 +126,16 @@ func (s *AddMemoriesResponseBody) Validate() error {
 }
 
 type AddMemoriesResponseBodyData struct {
-	// The memory references. This parameter is returned only when sync is set to true, and an empty array is allowed. It is not returned together with taskId.
+	// The memory references returned only when sync is set to true. An empty array is allowed. It is not returned together with taskId.
 	Memories []*AddMemoriesResponseBodyDataMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
-	// The task ID. This parameter is returned only when sync is set to false. It is not returned together with memories.
+	// The task ID returned only when sync is set to false. It is not returned together with memories.
 	//
 	// example:
 	//
 	// task-2f5f9c5a8d0e4c3b
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The list of extraction task IDs. Multiple tasks may be returned when multiple rules are enabled. It is not returned for direct writes.
+	TaskIds []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
 }
 
 func (s AddMemoriesResponseBodyData) String() string {
@@ -152,6 +154,10 @@ func (s *AddMemoriesResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *AddMemoriesResponseBodyData) GetTaskIds() []*string {
+	return s.TaskIds
+}
+
 func (s *AddMemoriesResponseBodyData) SetMemories(v []*AddMemoriesResponseBodyDataMemories) *AddMemoriesResponseBodyData {
 	s.Memories = v
 	return s
@@ -159,6 +165,11 @@ func (s *AddMemoriesResponseBodyData) SetMemories(v []*AddMemoriesResponseBodyDa
 
 func (s *AddMemoriesResponseBodyData) SetTaskId(v string) *AddMemoriesResponseBodyData {
 	s.TaskId = &v
+	return s
+}
+
+func (s *AddMemoriesResponseBodyData) SetTaskIds(v []*string) *AddMemoriesResponseBodyData {
+	s.TaskIds = v
 	return s
 }
 
@@ -177,6 +188,8 @@ func (s *AddMemoriesResponseBodyData) Validate() error {
 
 type AddMemoriesResponseBodyDataMemories struct {
 	// The long-term memory ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

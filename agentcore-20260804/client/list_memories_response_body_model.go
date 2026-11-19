@@ -25,6 +25,8 @@ type iListMemoriesResponseBody interface {
 	GetRequestId() *string
 	SetSuccess(v bool) *ListMemoriesResponseBody
 	GetSuccess() *bool
+	SetTotalCount(v int64) *ListMemoriesResponseBody
+	GetTotalCount() *int64
 }
 
 type ListMemoriesResponseBody struct {
@@ -40,7 +42,7 @@ type ListMemoriesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The memory list.
+	// The list of memories.
 	Items []*ListMemoriesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page.
 	//
@@ -68,6 +70,12 @@ type ListMemoriesResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// null
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListMemoriesResponseBody) String() string {
@@ -110,6 +118,10 @@ func (s *ListMemoriesResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
+func (s *ListMemoriesResponseBody) GetTotalCount() *int64 {
+	return s.TotalCount
+}
+
 func (s *ListMemoriesResponseBody) SetCode(v string) *ListMemoriesResponseBody {
 	s.Code = &v
 	return s
@@ -150,6 +162,11 @@ func (s *ListMemoriesResponseBody) SetSuccess(v bool) *ListMemoriesResponseBody 
 	return s
 }
 
+func (s *ListMemoriesResponseBody) SetTotalCount(v int64) *ListMemoriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *ListMemoriesResponseBody) Validate() error {
 	if s.Items != nil {
 		for _, item := range s.Items {
@@ -179,15 +196,47 @@ type ListMemoriesResponseBodyItems struct {
 	// mem-2f5f9c5a8d0e4c3b
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
 	// The memory metadata.
+	//
+	// example:
+	//
+	// {"topic":"hiking"}
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The memory scope.
 	Scope *ListMemoriesResponseBodyItemsScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
+	// The source of the memory. Valid values:
+	//
+	// - session_extraction: Extracted from session events.
+	//
+	// - content_extraction: Extracted from text or messages.
+	//
+	// - direct: Written directly.
+	//
+	// example:
+	//
+	// session_extraction
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The memory content type. Valid values:
+	//
+	// - semantic: Semantic memory.
+	//
+	// - skill: Skill.
+	//
+	// - user_profile: User preference.
+	//
+	// - session_summary: Session summary.
+	//
+	// example:
+	//
+	// semantic
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-09-23T10:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// Indicates whether the memory is valid. A value of false indicates that the memory is revoked and is not included in valid memory retrieval.
+	Valid *bool `json:"valid,omitempty" xml:"valid,omitempty"`
 }
 
 func (s ListMemoriesResponseBodyItems) String() string {
@@ -218,8 +267,20 @@ func (s *ListMemoriesResponseBodyItems) GetScope() *ListMemoriesResponseBodyItem
 	return s.Scope
 }
 
+func (s *ListMemoriesResponseBodyItems) GetSource() *string {
+	return s.Source
+}
+
+func (s *ListMemoriesResponseBodyItems) GetType() *string {
+	return s.Type
+}
+
 func (s *ListMemoriesResponseBodyItems) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *ListMemoriesResponseBodyItems) GetValid() *bool {
+	return s.Valid
 }
 
 func (s *ListMemoriesResponseBodyItems) SetContent(v *ListMemoriesResponseBodyItemsContent) *ListMemoriesResponseBodyItems {
@@ -247,8 +308,23 @@ func (s *ListMemoriesResponseBodyItems) SetScope(v *ListMemoriesResponseBodyItem
 	return s
 }
 
+func (s *ListMemoriesResponseBodyItems) SetSource(v string) *ListMemoriesResponseBodyItems {
+	s.Source = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBodyItems) SetType(v string) *ListMemoriesResponseBodyItems {
+	s.Type = &v
+	return s
+}
+
 func (s *ListMemoriesResponseBodyItems) SetUpdatedAt(v string) *ListMemoriesResponseBodyItems {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBodyItems) SetValid(v bool) *ListMemoriesResponseBodyItems {
+	s.Valid = &v
 	return s
 }
 
@@ -268,6 +344,8 @@ func (s *ListMemoriesResponseBodyItems) Validate() error {
 
 type ListMemoriesResponseBodyItemsContent struct {
 	// The memory text.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -297,19 +375,25 @@ func (s *ListMemoriesResponseBodyItemsContent) Validate() error {
 }
 
 type ListMemoriesResponseBodyItemsScope struct {
-	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
+	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
 	//
 	// example:
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The session ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
+	// The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
+	// The business team ID defined by the caller. This field cannot be empty when provided and can be up to 128 UTF-8 bytes in length.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
 	//
 	// example:
 	//
@@ -333,6 +417,10 @@ func (s *ListMemoriesResponseBodyItemsScope) GetSessionId() *string {
 	return s.SessionId
 }
 
+func (s *ListMemoriesResponseBodyItemsScope) GetTeamId() *string {
+	return s.TeamId
+}
+
 func (s *ListMemoriesResponseBodyItemsScope) GetUserId() *string {
 	return s.UserId
 }
@@ -344,6 +432,11 @@ func (s *ListMemoriesResponseBodyItemsScope) SetAgentId(v string) *ListMemoriesR
 
 func (s *ListMemoriesResponseBodyItemsScope) SetSessionId(v string) *ListMemoriesResponseBodyItemsScope {
 	s.SessionId = &v
+	return s
+}
+
+func (s *ListMemoriesResponseBodyItemsScope) SetTeamId(v string) *ListMemoriesResponseBodyItemsScope {
+	s.TeamId = &v
 	return s
 }
 

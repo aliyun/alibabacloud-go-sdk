@@ -50,7 +50,7 @@ type UpdateWorkspaceResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *UpdateWorkspaceResponseBody) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyData struct {
-	// The OSS storage authorization status.
+	// The authorization status of OSS storage.
 	//
 	// example:
 	//
@@ -281,13 +281,13 @@ func (s *UpdateWorkspaceResponseBodyData) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This setting only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress of all agent endpoints in the workspace is closed. When re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public ingress for all agent endpoints in the workspace is closed, and the original public ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
 	//
 	// example:
 	//

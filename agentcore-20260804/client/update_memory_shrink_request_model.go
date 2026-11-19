@@ -14,7 +14,7 @@ type iUpdateMemoryShrinkRequest interface {
 }
 
 type UpdateMemoryShrinkRequest struct {
-	// The update memory request.
+	// The request to update a memory.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`

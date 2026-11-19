@@ -46,11 +46,11 @@ type ListImageCachesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The records on the current page. An empty array is returned if no matching items are found.
+	// The records on the current page. This is an empty array if no matching items are found.
 	//
 	// This parameter is required.
 	Items []*ListImageCachesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The actual page size used for this request, which is not the number of items on the current page.
+	// The actual page size used for this request, not the number of items on this page.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// opaque-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID, which is used for troubleshooting.
+	// The request ID used for troubleshooting.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records under the current filter conditions. Do not use this value to determine whether the traversal is complete.
+	// The total number of records that match the current filter conditions. This value is not used to determine whether the traversal is complete.
 	//
 	// This parameter is required.
 	//
@@ -211,7 +211,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// cri-example
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The number of agents using the cache.
+	// The number of agents that use the cache.
 	//
 	// This parameter is required.
 	//
@@ -238,7 +238,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The resource creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The resource creation time. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -480,7 +480,7 @@ type ListImageCachesResponseBodyItemsError struct {
 	//
 	// example:
 	//
-	// Image cache creation failed. Try again
+	// Image cache creation failed. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

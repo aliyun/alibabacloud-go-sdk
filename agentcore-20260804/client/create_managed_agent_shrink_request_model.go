@@ -18,7 +18,7 @@ type iCreateManagedAgentShrinkRequest interface {
 type CreateManagedAgentShrinkRequest struct {
 	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The reserved query parameter. The backend currently does not provide idempotency guarantees for deduplication or recovery of the original acceptance result based on this identifier.
+	// A reserved query parameter. The backend currently does not provide idempotency guarantees, such as deduplication or recovery of the original processing result based on this token.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iGetSandboxRebuildOperationResponseBody interface {
 }
 
 type GetSandboxRebuildOperationResponseBody struct {
-	// The result code of the API request. A successful request returns SUCCESS. Query the asynchronous task result separately.
+	// The result code of this API request. SUCCESS is returned for successful requests. Query the asynchronous task result separately.
 	//
 	// example:
 	//
@@ -32,25 +32,25 @@ type GetSandboxRebuildOperationResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The overall result of the rebuild task.
 	Data *GetSandboxRebuildOperationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code of the API request.
+	// The HTTP status code corresponding to this API request.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the API request. This message does not indicate that the asynchronous rebuild task is completed.
+	// The result description of this API request, which does not indicate that the asynchronous rebuild task is completed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID used to trace the API call.
+	// The request ID, which is used to locate this API call.
 	//
 	// example:
 	//
 	// 01A1BE93-46A7-1A2A-BD62-159FCDAA****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API request is successful. A value of true does not indicate that the sandbox rebuild is completed.
+	// Indicates whether this API request is successful. A value of true does not mean that the sandbox rebuild is completed.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *GetSandboxRebuildOperationResponseBody) Validate() error {
 }
 
 type GetSandboxRebuildOperationResponseBodyData struct {
-	// The publicly accessible node error. This error is returned when the node fails, is canceled, or subsequent operations override it. It can be empty in other states.
+	// The publicly displayable task error. Returned when the task fails, is canceled, or an override by subsequent operations occurs. This field can be empty in other states.
 	Error *GetSandboxRebuildOperationResponseBodyDataError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	// The initial rebuild task ID. Use the operationId returned by RebuildSandbox. Always use this ID to query the overall result. You do not need to switch to the ID of a subsequent creation task.
+	// The initial rebuild task ID. Use the operationId returned by RebuildSandbox. Always use this ID to query the overall result subsequently, without switching to the ID of subsequent creation tasks.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetSandboxRebuildOperationResponseBodyData struct {
 	//
 	// - PENDING: Waiting to be processed.
 	//
-	// - RUNNING: execute in progress.
+	// - RUNNING: The task continues to execute.
 	//
 	// - SUCCEEDED: Overall success.
 	//
@@ -152,11 +152,11 @@ type GetSandboxRebuildOperationResponseBodyData struct {
 	//
 	// - CANCELED: Canceled.
 	//
-	// - SUPERSEDED: override by subsequent operations.
+	// - SUPERSEDED: A subsequent operation will override this task.
 	//
-	// - UNKNOWN: Unconfirmed.
+	// - UNKNOWN: Unable to confirm.
 	//
-	// Only SUCCEEDED indicates completion. Do not treat UNKNOWN, missing status, or query exceptions as success, and do not automatically resubmit the rebuild.
+	// Only SUCCEEDED indicates completion. UNKNOWN, missing status, or query exceptions must not be treated as success, and the rebuild must not be automatically resubmitted.
 	//
 	// example:
 	//
@@ -218,13 +218,13 @@ func (s *GetSandboxRebuildOperationResponseBodyData) Validate() error {
 }
 
 type GetSandboxRebuildOperationResponseBodyDataError struct {
-	// The task error code. This code is used to distinguish between rebuild failures, subsequent instance creation failures, cancellations, or supersessions.
+	// The task error code, which is used to distinguish between rebuild failures, subsequent instance creation failures, cancellations, or supersessions.
 	//
 	// example:
 	//
 	// SandboxRebuild.Failed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The publicly accessible task error message. Keep the task ID for troubleshooting.
+	// The publicly displayable task error description. Retain the task ID for troubleshooting.
 	//
 	// example:
 	//

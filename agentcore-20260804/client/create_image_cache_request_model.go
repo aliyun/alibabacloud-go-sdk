@@ -24,7 +24,7 @@ type CreateImageCacheRequest struct {
 	//
 	// This parameter is required.
 	Body *CreateImageCacheRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The non-empty request identifier passed as a query parameter. The current implementation does not guarantee deduplication based on this identifier or recovery of the original acceptance result.
+	// The non-empty request identifier passed as a query parameter. The current implementation does not guarantee deduplication by this identifier or recovery of the original acceptance result.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateImageCacheRequest struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The product entry region. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
+	// The product entry region, passed as a query parameter. It must match the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type CreateImageCacheRequestBody struct {
 	//
 	// team
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the repository under the namespace. Do not repeat the namespace in this field.
+	// The name of the repository under the namespace. Do not include the namespace in the repository name.
 	//
 	// This parameter is required.
 	//

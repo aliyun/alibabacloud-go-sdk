@@ -24,7 +24,7 @@ type iGetManagedAgentResponseBody interface {
 }
 
 type GetManagedAgentResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. A value of SUCCESS indicates success.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GetManagedAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The details of the managed Harness agent.
 	Data *GetManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -148,10 +148,12 @@ type GetManagedAgentResponseBodyData struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The NAS storage mount configuration. Currently, only the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. The total number of NAS mounts and ossMounts cannot exceed 10.
+	// The NAS storage mount configuration. Currently, the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. A maximum of 10 NAS mounts are allowed in total with ossMounts.
 	AgenticFsMounts []*GetManagedAgentResponseBodyDataAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
 	// The explicitly configured skills.
 	ConfiguredSkills []*GetManagedAgentResponseBodyDataConfiguredSkills `json:"configuredSkills,omitempty" xml:"configuredSkills,omitempty" type:"Repeated"`
+	// The target configuration accepted by the managed agent, which does not necessarily mean it has taken effect at runtime. This field is used in the detail responses of CreateManagedAgent, UpdateManagedAgent, and GetManagedAgent. In the configuration of a fixed version, it represents the configuration snapshot saved for that version. A returned object with enabled:false indicates that the configuration is disabled. The absence of the entire object indicates that the response does not provide the configuration.
+	ContextConfiguration *GetManagedAgentResponseBodyDataContextConfiguration `json:"contextConfiguration,omitempty" xml:"contextConfiguration,omitempty" type:"Struct"`
 	// The creation mode.
 	//
 	// example:
@@ -176,11 +178,13 @@ type GetManagedAgentResponseBodyData struct {
 	//
 	// Agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Read-only. This field is provided only by GetManagedAgent when an effective version exists, corresponding to the configuration snapshot of effectiveSpecVersion. It remains the original effective configuration when a new version is being prepared or fails to be released. It is not returned before the first time it takes effect, or in the configuration of CreateManagedAgent, UpdateManagedAgent, and fixed versions. Omission does not indicate that it is disabled, and the client must not automatically supplement it with enabled:false.
+	EffectiveContextConfiguration *GetManagedAgentResponseBodyDataEffectiveContextConfiguration `json:"effectiveContextConfiguration,omitempty" xml:"effectiveContextConfiguration,omitempty" type:"Struct"`
 	// The environment configuration information.
 	Environment *GetManagedAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
 	// The agent runtime framework.
 	Harness *GetManagedAgentResponseBodyDataHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
-	// The agent instruction that guides the behavior of the agent.
+	// The agent instruction used to guide the behavior of the agent.
 	//
 	// example:
 	//
@@ -220,7 +224,7 @@ type GetManagedAgentResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The runtime configuration information.
 	Runtime *GetManagedAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The number of managed Harness agent instances by sandbox phase. Current keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (runtime failure). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic map and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
+	// The instance counts of managed Harness agents by sandbox phase. Current keys: PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed at runtime). Only phases that actually occur are returned, and missing keys are treated as 0. This field is a dynamic mapping and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The list of skill configurations.
 	Skills []*GetManagedAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
@@ -278,6 +282,10 @@ func (s *GetManagedAgentResponseBodyData) GetConfiguredSkills() []*GetManagedAge
 	return s.ConfiguredSkills
 }
 
+func (s *GetManagedAgentResponseBodyData) GetContextConfiguration() *GetManagedAgentResponseBodyDataContextConfiguration {
+	return s.ContextConfiguration
+}
+
 func (s *GetManagedAgentResponseBodyData) GetCreateMode() *string {
 	return s.CreateMode
 }
@@ -292,6 +300,10 @@ func (s *GetManagedAgentResponseBodyData) GetDeployType() *string {
 
 func (s *GetManagedAgentResponseBodyData) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetManagedAgentResponseBodyData) GetEffectiveContextConfiguration() *GetManagedAgentResponseBodyDataEffectiveContextConfiguration {
+	return s.EffectiveContextConfiguration
 }
 
 func (s *GetManagedAgentResponseBodyData) GetEnvironment() *GetManagedAgentResponseBodyDataEnvironment {
@@ -399,6 +411,11 @@ func (s *GetManagedAgentResponseBodyData) SetConfiguredSkills(v []*GetManagedAge
 	return s
 }
 
+func (s *GetManagedAgentResponseBodyData) SetContextConfiguration(v *GetManagedAgentResponseBodyDataContextConfiguration) *GetManagedAgentResponseBodyData {
+	s.ContextConfiguration = v
+	return s
+}
+
 func (s *GetManagedAgentResponseBodyData) SetCreateMode(v string) *GetManagedAgentResponseBodyData {
 	s.CreateMode = &v
 	return s
@@ -416,6 +433,11 @@ func (s *GetManagedAgentResponseBodyData) SetDeployType(v string) *GetManagedAge
 
 func (s *GetManagedAgentResponseBodyData) SetDescription(v string) *GetManagedAgentResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyData) SetEffectiveContextConfiguration(v *GetManagedAgentResponseBodyDataEffectiveContextConfiguration) *GetManagedAgentResponseBodyData {
+	s.EffectiveContextConfiguration = v
 	return s
 }
 
@@ -538,6 +560,16 @@ func (s *GetManagedAgentResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.ContextConfiguration != nil {
+		if err := s.ContextConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EffectiveContextConfiguration != nil {
+		if err := s.EffectiveContextConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Environment != nil {
 		if err := s.Environment.Validate(); err != nil {
 			return err
@@ -623,19 +655,19 @@ type GetManagedAgentResponseBodyDataAgenticFsMounts struct {
 	//
 	// /mnt/agenticfs/data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The existing non-empty relative directory under the access point. This parameter is required and validated by the backend for each mount item. Root directories, absolute paths, and parent directory segments are not allowed.
+	// The existing non-empty relative directory under the access point. This field is required and verified by the backend for each mount item. Root directories, absolute paths, or parent directory segments are not allowed.
 	//
 	// example:
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. If omitted, the default value is false. This is not a read-only policy for a RAM role.
+	// Specifies whether the mount is read-only. If omitted, the default value is false. This is not the read-only policy of the RAM role.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The domain name of the access point. This parameter is required and validated by the backend for each mount item. It must not contain a protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+	// The domain name of the access point. This field is required and verified by the backend for each mount item. It does not include the protocol, port, or path. Use the DomainName from the NAS ListAccessPoints response.
 	//
 	// example:
 	//
@@ -700,19 +732,19 @@ type GetManagedAgentResponseBodyDataConfiguredSkills struct {
 	//
 	// web-search
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type.
+	// The source type of the skill. REFERENCE references the AI Registry, and STATIC is statically provided with the deployment artifact.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// A legacy compatibility field. For new requests, use sourceType and versionSelector.
+	// The legacy compatibility field. New requests use sourceType and versionSelector.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. This selector is not available for STATIC sources.
+	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. STATIC sources do not provide a selector.
 	VersionSelector *GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -770,13 +802,13 @@ func (s *GetManagedAgentResponseBodyDataConfiguredSkills) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector struct {
-	// The version selector type.
+	// The type of the version selector. LABEL selects by tag, and VERSION selects by specific version.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the selector. For LABEL, this is the tag name, such as latest. For VERSION, this is the specific version number.
+	// The value of the selector. For LABEL, it is the tag name (such as latest). For VERSION, it is the specific version number.
 	//
 	// example:
 	//
@@ -811,6 +843,196 @@ func (s *GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) SetValu
 }
 
 func (s *GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetManagedAgentResponseBodyDataContextConfiguration struct {
+	// Read-only resource references. This field may be omitted when no selection is made. A disabled configuration can still retain a non-empty selection. You cannot determine whether the configuration is enabled solely based on whether the array is empty.
+	Bindings []*GetManagedAgentResponseBodyDataContextConfigurationBindings `json:"bindings,omitempty" xml:"bindings,omitempty" type:"Repeated"`
+	// Read-only. When the configuration object is returned, this field indicates the enablement status of the configuration. A value of false indicates that the configuration is disabled. The absence of the entire configuration object indicates that the response does not provide the configuration, which cannot be treated as false.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s GetManagedAgentResponseBodyDataContextConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetManagedAgentResponseBodyDataContextConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfiguration) GetBindings() []*GetManagedAgentResponseBodyDataContextConfigurationBindings {
+	return s.Bindings
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfiguration) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfiguration) SetBindings(v []*GetManagedAgentResponseBodyDataContextConfigurationBindings) *GetManagedAgentResponseBodyDataContextConfiguration {
+	s.Bindings = v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfiguration) SetEnabled(v bool) *GetManagedAgentResponseBodyDataContextConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfiguration) Validate() error {
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetManagedAgentResponseBodyDataContextConfigurationBindings struct {
+	// The ID of the context resource in the current workspace.
+	//
+	// example:
+	//
+	// kb-example
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// Read-only string. The currently known types are KNOWLEDGE_BASE (knowledge base) and DATA_CONNECTOR (data connector). The response may be extended with new types. The client should retain unknown values and should not fail to parse the entire response due to unknown types. The new request types are subject to the actual support scope of the server.
+	//
+	// example:
+	//
+	// KNOWLEDGE_BASE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetManagedAgentResponseBodyDataContextConfigurationBindings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetManagedAgentResponseBodyDataContextConfigurationBindings) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfigurationBindings) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfigurationBindings) GetType() *string {
+	return s.Type
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfigurationBindings) SetResourceId(v string) *GetManagedAgentResponseBodyDataContextConfigurationBindings {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfigurationBindings) SetType(v string) *GetManagedAgentResponseBodyDataContextConfigurationBindings {
+	s.Type = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataContextConfigurationBindings) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetManagedAgentResponseBodyDataEffectiveContextConfiguration struct {
+	// Read-only resource references. This field may be omitted when no selection is made. A disabled configuration can still retain a non-empty selection. You cannot determine whether the configuration is enabled solely based on whether the array is empty.
+	Bindings []*GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings `json:"bindings,omitempty" xml:"bindings,omitempty" type:"Repeated"`
+	// Read-only. When the configuration object is returned, this field indicates the enablement status of the configuration. A value of false indicates that the configuration is disabled. The absence of the entire configuration object indicates that the response does not provide the configuration, which cannot be treated as false.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s GetManagedAgentResponseBodyDataEffectiveContextConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetManagedAgentResponseBodyDataEffectiveContextConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfiguration) GetBindings() []*GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings {
+	return s.Bindings
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfiguration) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfiguration) SetBindings(v []*GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) *GetManagedAgentResponseBodyDataEffectiveContextConfiguration {
+	s.Bindings = v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfiguration) SetEnabled(v bool) *GetManagedAgentResponseBodyDataEffectiveContextConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfiguration) Validate() error {
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings struct {
+	// The ID of the context resource in the current workspace.
+	//
+	// example:
+	//
+	// kb-example
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// Read-only string. The currently known types are KNOWLEDGE_BASE (knowledge base) and DATA_CONNECTOR (data connector). The response may be extended with new types. The client should retain unknown values and should not fail to parse the entire response due to unknown types. The new request types are subject to the actual support scope of the server.
+	//
+	// example:
+	//
+	// KNOWLEDGE_BASE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) GetType() *string {
+	return s.Type
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) SetResourceId(v string) *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) SetType(v string) *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings {
+	s.Type = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataEffectiveContextConfigurationBindings) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1078,15 +1300,15 @@ type GetManagedAgentResponseBodyDataModel struct {
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
-	// The name of the upstream model.
+	// The upstream model name.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration and the quota usage status for the current period. This field is empty if no quota is configured.
+	// The model token quota configuration and usage status for the current period. This field is empty if no quota is configured.
 	Quota *GetManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The thinking level. Valid values: off, low, medium, high, xhigh, and max. If this parameter is not specified, the default thinking level (default) is used. In the response, this field may be missing, null, or an empty string, all of which indicate the default level. The specific effect depends on the support of the selected harness and model.
+	// The thinking level. Valid values: off, low, medium, high, xhigh, and max. If not set, the default thinking level (default) is used. In the response, this field may be missing, null, or an empty string, all of which indicate default. The specific effect depends on the support of the selected Harness and model.
 	//
 	// if can be null:
 	// true
@@ -1163,19 +1385,23 @@ type GetManagedAgentResponseBodyDataModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// Indicates whether the quota is exceeded in the current cycle. This field is read-only and returned by the backend.
+	// Indicates whether the quota is exceeded in the current period. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
-	// The quota statistical period. A value of day indicates daily, and a value of month indicates monthly.
+	// The quota statistical period. Valid values:
+	//
+	// - day: Daily.
+	//
+	// - month: Monthly.
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The status of the gateway quota rule. This field is read-only and returned by the backend.
+	// The gateway quota rule status. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -1187,7 +1413,7 @@ type GetManagedAgentResponseBodyDataModelQuota struct {
 	//
 	// 1000000
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The number of tokens consumed in the current cycle. This field is read-only and returned by the backend.
+	// The number of tokens consumed in the current period. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -1318,7 +1544,7 @@ func (s *GetManagedAgentResponseBodyDataNetwork) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataNetworkAccessInternet struct {
-	// Specifies whether Internet access is allowed.
+	// Indicates whether Internet access is allowed.
 	//
 	// example:
 	//
@@ -1348,7 +1574,7 @@ func (s *GetManagedAgentResponseBodyDataNetworkAccessInternet) Validate() error 
 }
 
 type GetManagedAgentResponseBodyDataNetworkAccessVpc struct {
-	// Specifies whether VPC access is allowed.
+	// Specifies whether access to the VPC is allowed.
 	//
 	// example:
 	//
@@ -1396,7 +1622,7 @@ type GetManagedAgentResponseBodyDataOssMounts struct {
 	//
 	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. If not specified, the default value is false.
+	// Specifies whether to mount as read-only. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1455,13 +1681,13 @@ type GetManagedAgentResponseBodyDataPromptVariables struct {
 	//
 	// default
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// The description of the variable.
+	// The variable description.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -1608,7 +1834,7 @@ func (s *GetManagedAgentResponseBodyDataRuntimeCompute) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataRuntimeHpa struct {
-	// Specifies whether elastic auto scaling is enabled in the current configuration.
+	// Indicates whether elastic auto scaling is enabled in the current configuration.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The maximum number of concurrent sessions per instance in the current configuration.
 	//
@@ -1694,7 +1920,7 @@ func (s *GetManagedAgentResponseBodyDataRuntimeHpa) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataRuntimeSessionPolicy struct {
-	// The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+	// The HTTP header name used for session affinity. This field takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
 	//
 	// example:
 	//
@@ -1741,13 +1967,13 @@ func (s *GetManagedAgentResponseBodyDataRuntimeSessionPolicy) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataSkills struct {
-	// The version applied at runtime. This field is read-only.
+	// The effective version at runtime. This field is read-only.
 	//
 	// example:
 	//
 	// 1.0.0
 	AppliedVersion *string `json:"appliedVersion,omitempty" xml:"appliedVersion,omitempty"`
-	// Indicates whether the skill is from a fixed template. This field is read-only. Items from templates cannot be removed.
+	// Specifies whether it is from a fixed template. This field is read-only, and template items cannot be removed.
 	//
 	// example:
 	//
@@ -1765,19 +1991,19 @@ type GetManagedAgentResponseBodyDataSkills struct {
 	//
 	// 1.0.0
 	ResolvedVersion *string `json:"resolvedVersion,omitempty" xml:"resolvedVersion,omitempty"`
-	// The skill source type.
+	// The source type of the skill. REFERENCE references the AI Registry, and STATIC is statically provided with the deployment artifact.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The current target version for compatibility with legacy clients. New clients use resolvedVersion and determine the effective runtime version based on appliedVersion.
+	// The current target version for compatibility with legacy clients. New clients use resolvedVersion and determine the runtime effective version based on appliedVersion.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. This selector is not available for STATIC sources.
+	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. STATIC sources do not provide a selector.
 	VersionSelector *GetManagedAgentResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -1862,13 +2088,13 @@ func (s *GetManagedAgentResponseBodyDataSkills) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataSkillsVersionSelector struct {
-	// The version selector type.
+	// The type of the version selector. LABEL selects by tag, and VERSION selects by specific version.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the selector. For LABEL, this is the tag name, such as latest. For VERSION, this is the specific version number.
+	// The value of the selector. For LABEL, it is the tag name (such as latest). For VERSION, it is the specific version number.
 	//
 	// example:
 	//

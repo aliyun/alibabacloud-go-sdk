@@ -20,7 +20,7 @@ type CreateMemoryStoreRequest struct {
 	//
 	// This parameter is required.
 	Body *CreateMemoryStoreRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client request token.
+	// The client token.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type CreateMemoryStoreRequestBody struct {
 	//
 	// example:
 	//
-	// Used to store long-term user preferences
+	// Used to store the long-term preferences of users
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The custom extraction instructions. The instructions can be up to 4,096 characters in length.
 	//
 	// example:
 	//
-	// Extract only long-term preferences explicitly expressed by the user
+	// Extract only long-term preferences explicitly expressed by users
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
 	// The name of the memory store. The name must be 1 to 64 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot be modified after creation.
 	//

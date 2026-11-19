@@ -32,7 +32,7 @@ type RetryImageCacheResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result of retrying image cache creation.
+	// The retry image cache result.
 	//
 	// This parameter is required.
 	Data *RetryImageCacheResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -60,7 +60,7 @@ type RetryImageCacheResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
+	// Indicates whether the request is successful. This does not mean that the cache creation is complete.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ func (s *RetryImageCacheResponseBody) Validate() error {
 }
 
 type RetryImageCacheResponseBodyData struct {
-	// The ID of the source ACR instance.
+	// The source ACR instance ID.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +150,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// cri-example
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The number of agents that use the cache.
+	// The number of agents using the cache.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +158,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// 0
 	AgentCount *int64 `json:"agentCount,omitempty" xml:"agentCount,omitempty"`
-	// The size of the cache in bytes.
+	// The cache size in bytes.
 	//
 	// This parameter is required.
 	//
@@ -169,7 +169,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// 1073741824
 	CacheSizeBytes *int64 `json:"cacheSizeBytes,omitempty" xml:"cacheSizeBytes,omitempty"`
-	// Indicates whether the cache can be deleted.
+	// Indicates whether deletion is allowed.
 	//
 	// This parameter is required.
 	//
@@ -177,7 +177,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The time when the resource was created. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The resource creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -185,7 +185,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// 2026-10-10T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The reason why the cache cannot be deleted.
+	// The reason why deletion is blocked.
 	//
 	// This parameter is required.
 	//
@@ -219,7 +219,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// img-example
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	// The domain name of the source image.
+	// The source image domain name.
 	//
 	// This parameter is required.
 	//
@@ -227,7 +227,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// example-registry.cn-hangzhou.cr.aliyuncs.com
 	Registry *string `json:"registry,omitempty" xml:"registry,omitempty"`
-	// The path of the source image repository.
+	// The source image repository path.
 	//
 	// This parameter is required.
 	//
@@ -235,7 +235,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// team/app
 	Repository *string `json:"repository,omitempty" xml:"repository,omitempty"`
-	// The cache status.
+	// The image cache status.
 	//
 	// This parameter is required.
 	//
@@ -243,7 +243,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the source image.
+	// The source image tag.
 	//
 	// This parameter is required.
 	//
@@ -419,7 +419,7 @@ type RetryImageCacheResponseBodyDataError struct {
 	//
 	// example:
 	//
-	// The image cache creation failed. Please try again
+	// Image cache creation failed. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

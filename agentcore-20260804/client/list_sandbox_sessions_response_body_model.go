@@ -68,7 +68,7 @@ type ListSandboxSessionsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the request is successful. A value of true indicates success. A value of false indicates failure.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// The total number of records that meet the query conditions.
 	//
@@ -193,7 +193,7 @@ type ListSandboxSessionsResponseBodyItems struct {
 	//
 	// sess-2
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The source type of the session. A value of API indicates an API call, CONSOLE_DEBUG indicates console debugging, EXTERNAL_CHANNEL indicates an external channel, and UNKNOWN indicates an unknown source.
+	// The source type of the session. A value of API indicates an API call. A value of CONSOLE_DEBUG indicates console debugging. A value of EXTERNAL_CHANNEL indicates an external channel. A value of UNKNOWN indicates an unknown source.
 	//
 	// example:
 	//

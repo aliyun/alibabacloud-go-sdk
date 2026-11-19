@@ -32,7 +32,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The image cache details.
+	// The query result of the image cache details.
 	//
 	// This parameter is required.
 	Data *GetImageCacheResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -52,7 +52,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, used for troubleshooting.
+	// The request ID, which is used for troubleshooting.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. This does not mean that the cache creation is complete.
+	// Indicates whether the request is successful. This does not mean that the cache creation is completed.
 	//
 	// This parameter is required.
 	//
@@ -177,7 +177,7 @@ type GetImageCacheResponseBodyData struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The resource creation time. The format is RFC 3339. The Z at the end of the example indicates the UTC time zone.
+	// The resource creation time. It uses the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -185,7 +185,7 @@ type GetImageCacheResponseBodyData struct {
 	//
 	// 2026-10-10T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The reason for blocking deletion.
+	// The reason why deletion is blocked.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +204,7 @@ type GetImageCacheResponseBodyData struct {
 	//
 	// sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	Digest *string `json:"digest,omitempty" xml:"digest,omitempty"`
-	// The cache failure reason.
+	// The reason for the cache failure.
 	//
 	// This parameter is required.
 	//
@@ -405,7 +405,7 @@ func (s *GetImageCacheResponseBodyData) Validate() error {
 }
 
 type GetImageCacheResponseBodyDataError struct {
-	// The error code for creation failure.
+	// The error code for the creation failure.
 	//
 	// This parameter is required.
 	//
@@ -419,7 +419,7 @@ type GetImageCacheResponseBodyDataError struct {
 	//
 	// example:
 	//
-	// Image cache creation failed. Try again
+	// Image cache creation failed. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

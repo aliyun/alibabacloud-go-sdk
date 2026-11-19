@@ -24,27 +24,27 @@ type iGetIdentityProviderServiceProviderResponseBody interface {
 }
 
 type GetIdentityProviderServiceProviderResponseBody struct {
-	// The business result code. If the request fails, handle the error based on the HTTP status code and the message.
+	// The business result code. If the request fails, troubleshoot the issue based on the HTTP status code and the message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The SP information. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, which does not guarantee that the background task is complete.
+	// The SP information. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is complete.
 	Data *GetIdentityProviderServiceProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The processing status of the current request. This status is not equivalent to the final result of the background task.
+	// The processing status of the current request. This status does not indicate the final result of the background task.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about request acceptance or errors. Check the asynchronous task result by calling the corresponding query operation.
+	// The request acceptance or error message. For asynchronous task results, check them by calling the corresponding query operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. You can use the ID to associate the call with troubleshooting. Keep the ID if the request fails.
+	// The ID of the request. You can use this ID to associate the current call with troubleshooting. Keep this ID if the request fails.
 	//
 	// example:
 	//
@@ -126,19 +126,19 @@ func (s *GetIdentityProviderServiceProviderResponseBody) Validate() error {
 }
 
 type GetIdentityProviderServiceProviderResponseBodyData struct {
-	// The SAML assertion consumer URL of the local SP. Configure it in the external IdP.
+	// The SAML assertion consumer URL of the local SP. Configure this value in the external IdP.
 	//
 	// example:
 	//
 	// https://sp.example.com/saml/acs
 	AcsUrl *string `json:"acsUrl,omitempty" xml:"acsUrl,omitempty"`
-	// The entity identifier of the local SP. Configure it in the external IdP. This is not the Entity ID of the external IdP.
+	// The entity identifier of the local SP. Configure this value in the external IdP. This is not the Entity ID of the external IdP.
 	//
 	// example:
 	//
 	// https://sp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The SP metadata XML of the local SP. Use it for import in the external IdP. Do not submit it as the IdP XML for SAML configuration.
+	// The SP metadata XML of the local SP. Use this file for import in the external IdP. Do not submit this file as the IdP XML for SAML configuration.
 	//
 	// example:
 	//
@@ -150,6 +150,12 @@ type GetIdentityProviderServiceProviderResponseBodyData struct {
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The valid URL returned when protocol is set to OIDC. Configure this value as the callback URL in the external IdP. This field is empty or not returned when SAML is used. The meanings of the original SAML fields remain unchanged.
+	//
+	// example:
+	//
+	// https://signin-cn-hangzhou.aliyunagentid.com/example-pool/sso/oidc/callback
+	RedirectUri *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
 }
 
 func (s GetIdentityProviderServiceProviderResponseBodyData) String() string {
@@ -176,6 +182,10 @@ func (s *GetIdentityProviderServiceProviderResponseBodyData) GetProtocol() *stri
 	return s.Protocol
 }
 
+func (s *GetIdentityProviderServiceProviderResponseBodyData) GetRedirectUri() *string {
+	return s.RedirectUri
+}
+
 func (s *GetIdentityProviderServiceProviderResponseBodyData) SetAcsUrl(v string) *GetIdentityProviderServiceProviderResponseBodyData {
 	s.AcsUrl = &v
 	return s
@@ -193,6 +203,11 @@ func (s *GetIdentityProviderServiceProviderResponseBodyData) SetMetadataXml(v st
 
 func (s *GetIdentityProviderServiceProviderResponseBodyData) SetProtocol(v string) *GetIdentityProviderServiceProviderResponseBodyData {
 	s.Protocol = &v
+	return s
+}
+
+func (s *GetIdentityProviderServiceProviderResponseBodyData) SetRedirectUri(v string) *GetIdentityProviderServiceProviderResponseBodyData {
+	s.RedirectUri = &v
 	return s
 }
 

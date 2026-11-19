@@ -62,13 +62,13 @@ func (s *CreateWorkspaceRequest) Validate() error {
 }
 
 type CreateWorkspaceRequestBody struct {
-	// If specified, the workspace is directly bound to this AgentSpace, and a new one is not created. The CMS workspace to which it belongs is determined by the server reverse lookup result, and CmsWorkspace validation is not required. When the workspace is deleted, it is only unbound, and the AgentSpace is not deleted. The value must match the current account and region, and the reverse lookup must return the associated CMS workspace. Otherwise, InvalidParameter is returned.
+	// If specified, the workspace is directly bound to this AgentSpace, and a new one is not created. The CMS workspace to which it belongs is determined by the server reverse lookup result, and CmsWorkspace does not need to be verified. When the workspace is deleted, it is only unbound, and the AgentSpace is not deleted. It must match the current account and region, and the associated CMS workspace must be found through reverse lookup. Otherwise, InvalidParameter is returned.
 	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// If specified, the workspace is bound to this CMS workspace, and the platform does not create a new one. When the workspace is deleted, it is only unbound, and the CMS workspace is not deleted. The value must match the current account and region. Otherwise, InvalidParameter is returned.
+	// If specified, the workspace is bound to this CMS workspace, and the platform does not create a new one. When the workspace is deleted, it is only unbound, and the CMS workspace is not deleted. The CMS workspace must match the current account and region. Otherwise, InvalidParameter is returned.
 	//
 	// example:
 	//
@@ -84,7 +84,13 @@ type CreateWorkspaceRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceRequestBodyNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The storage type of the workspace. PLATFORM indicates platform-managed storage, and PRIVATE indicates user private OSS storage.
+	// The optional JSON string for the workspace skill security scan policy. If omitted, the existing compatibility behavior is maintained.
+	//
+	// example:
+	//
+	// {"enabled":false,"minBlockRiskLevel":"medium","maxSkipRatio":0.8}
+	ScanPolicy *string `json:"scanPolicy,omitempty" xml:"scanPolicy,omitempty"`
+	// The storage type of the workspace. PLATFORM indicates platform-managed storage. PRIVATE indicates user private OSS storage.
 	//
 	// example:
 	//
@@ -116,6 +122,10 @@ func (s *CreateWorkspaceRequestBody) GetNetworkConfiguration() *CreateWorkspaceR
 	return s.NetworkConfiguration
 }
 
+func (s *CreateWorkspaceRequestBody) GetScanPolicy() *string {
+	return s.ScanPolicy
+}
+
 func (s *CreateWorkspaceRequestBody) GetStorageType() *string {
 	return s.StorageType
 }
@@ -140,6 +150,11 @@ func (s *CreateWorkspaceRequestBody) SetNetworkConfiguration(v *CreateWorkspaceR
 	return s
 }
 
+func (s *CreateWorkspaceRequestBody) SetScanPolicy(v string) *CreateWorkspaceRequestBody {
+	s.ScanPolicy = &v
+	return s
+}
+
 func (s *CreateWorkspaceRequestBody) SetStorageType(v string) *CreateWorkspaceRequestBody {
 	s.StorageType = &v
 	return s
@@ -155,19 +170,19 @@ func (s *CreateWorkspaceRequestBody) Validate() error {
 }
 
 type CreateWorkspaceRequestBodyNetworkConfiguration struct {
-	// Specifies whether to allow public egress access through the platform. If not specified, this feature is enabled by default. This parameter only controls whether the latest versions of managed and custom agents use the platform public egress. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+	// Specifies whether to allow public egress access from the platform. Default value: true. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Specifies whether to allow public ingress access. If not specified, this feature is enabled by default. If disabled, the public ingress endpoints of all agent endpoints in the workspace are closed. If re-enabled, the original public ingress endpoints are restored. INNER_DIRECT and user VPC ingress endpoints are not affected. Collaboration and Element Web ingress endpoints are not controlled by this parameter.
+	// Specifies whether to allow public ingress access. Default value: true. If set to false, the public ingress for all agent endpoints in the workspace is disabled. If set back to true, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter. If this parameter is set to false, the workspace VPC must be enabled.
 	//
 	// example:
 	//
 	// true
 	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
-	// The network configuration of the user VPC.
+	// The VPC network configuration of the user.
 	Vpc *CreateWorkspaceRequestBodyNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 

@@ -32,7 +32,7 @@ type DeleteImageCacheResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The image cache deletion result.
+	// The delete image cache result.
 	//
 	// This parameter is required.
 	Data *DeleteImageCacheResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -60,7 +60,7 @@ type DeleteImageCacheResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. This does not mean that the cache creation is complete.
+	// Indicates whether the request is successful. A successful request does not indicate that the cache creation is complete.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ func (s *DeleteImageCacheResponseBody) Validate() error {
 }
 
 type DeleteImageCacheResponseBodyData struct {
-	// The flag indicating whether deletion is in progress. The current implementation always returns false. To confirm cache visibility, call GetImageCache or ListImageCaches.
+	// Indicates whether the deletion is in progress. The current implementation always returns false. To check the cache visibility, call GetImageCache or ListImageCaches.
 	//
 	// This parameter is required.
 	//

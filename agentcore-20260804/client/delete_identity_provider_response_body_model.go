@@ -30,7 +30,7 @@ type DeleteIdentityProviderResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The external identity provider binding information after the disconnection operation is accepted.
+	// The external identity provider binding information after the unbind operation is accepted.
 	Data *DeleteIdentityProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -134,15 +134,35 @@ type DeleteIdentityProviderResponseBodyData struct {
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// Currently, only SAML is supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
+	// The security summary of the expected configuration. It does not contain credentials. The original SAML fields and meanings are retained.
+	Oidc *DeleteIdentityProviderResponseBodyDataOidc `json:"oidc,omitempty" xml:"oidc,omitempty" type:"Struct"`
+	// Currently, only SAML is supported. This field is not returned when no valid configuration is saved. Initialization with an OIDC placeholder is not supported.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This field can be omitted if not configured.
+	// The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This field can be omitted when not configured.
 	Saml *DeleteIdentityProviderResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
-	// The status. CONFIGURED (the configuration is accepted and waiting for the user pool to be activated), SYNCING (synchronizing organization members), SYNCED (organization member synchronization is complete), READY (the binding is in effect), SYNC_FAILED (organization member synchronization failed), UPDATING (updating the configuration), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
+	// The status. Valid values:
+	//
+	// - CONFIGURED: The configuration is accepted and waiting for the user pool to be activated.
+	//
+	// - SYNCING: Organization members are being synchronized.
+	//
+	// - SYNCED: The synchronization of organization members is complete.
+	//
+	// - READY: The binding is in effect.
+	//
+	// - SYNC_FAILED: The synchronization of organization members failed.
+	//
+	// - UPDATING: The configuration is being updated.
+	//
+	// - UPDATE_FAILED: The configuration update failed.
+	//
+	// - DISCONNECTING: The binding is being disconnected.
+	//
+	// - DISCONNECT_FAILED: The disconnection failed.
 	//
 	// example:
 	//
@@ -172,6 +192,10 @@ func (s *DeleteIdentityProviderResponseBodyData) GetIdentityProviderType() *stri
 	return s.IdentityProviderType
 }
 
+func (s *DeleteIdentityProviderResponseBodyData) GetOidc() *DeleteIdentityProviderResponseBodyDataOidc {
+	return s.Oidc
+}
+
 func (s *DeleteIdentityProviderResponseBodyData) GetProtocol() *string {
 	return s.Protocol
 }
@@ -195,6 +219,11 @@ func (s *DeleteIdentityProviderResponseBodyData) SetConfiguration(v *DeleteIdent
 
 func (s *DeleteIdentityProviderResponseBodyData) SetIdentityProviderType(v string) *DeleteIdentityProviderResponseBodyData {
 	s.IdentityProviderType = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyData) SetOidc(v *DeleteIdentityProviderResponseBodyDataOidc) *DeleteIdentityProviderResponseBodyData {
+	s.Oidc = v
 	return s
 }
 
@@ -224,6 +253,11 @@ func (s *DeleteIdentityProviderResponseBodyData) Validate() error {
 			return err
 		}
 	}
+	if s.Oidc != nil {
+		if err := s.Oidc.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Saml != nil {
 		if err := s.Saml.Validate(); err != nil {
 			return err
@@ -239,7 +273,7 @@ type DeleteIdentityProviderResponseBodyDataConfiguration struct {
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// Required for manual entry. It must be non-empty and up to 2,048 characters in length. It cannot be changed if a configuration already exists. It is different from the local entity ID queried by the SP.
+	// Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be replaced. This is different from the local entity ID queried by the service provider (SP).
 	//
 	// example:
 	//
@@ -251,7 +285,7 @@ type DeleteIdentityProviderResponseBodyDataConfiguration struct {
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The actual switch value, which is Enabled or Disabled. It is not equivalent to the expected loginEnabled value saved by AC.
+	// The actual switch value is Enabled or Disabled, which differs from the expected loginEnabled value saved in the AC.
 	//
 	// example:
 	//
@@ -307,6 +341,186 @@ func (s *DeleteIdentityProviderResponseBodyDataConfiguration) Validate() error {
 	return dara.Validate(s)
 }
 
+type DeleteIdentityProviderResponseBodyDataOidc struct {
+	// The absolute HTTPS URL required in manual entry mode. Do not enter this in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/authorize
+	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty" xml:"authorizationEndpoint,omitempty"`
+	// The default value is client_secret_post. If none is selected, PKCE must be enabled.
+	//
+	// example:
+	//
+	// client_secret_post
+	ClientAuthMethod *string `json:"clientAuthMethod,omitempty" xml:"clientAuthMethod,omitempty"`
+	// The client ID registered in the external IdP, which is different from the Matrix client. In-place replacement is not supported after configuration.
+	//
+	// example:
+	//
+	// example-client
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The absolute HTTPS discovery endpoint. It is mutually exclusive with manually entered endpoints.
+	//
+	// example:
+	//
+	// https://idp.example.com/.well-known/openid-configuration
+	DiscoveryEndpoint *string `json:"discoveryEndpoint,omitempty" xml:"discoveryEndpoint,omitempty"`
+	// The absolute HTTPS issuer of the external IdP. In-place replacement is not supported after configuration.
+	//
+	// example:
+	//
+	// https://idp.example.com
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The absolute HTTPS URL required in manual entry mode. Do not enter this in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/jwks
+	JwksUri *string `json:"jwksUri,omitempty" xml:"jwksUri,omitempty"`
+	// Specifies whether PKCE is enabled. Default value: true. It must be true when client authentication is not used.
+	//
+	// example:
+	//
+	// true
+	PkceRequired *bool `json:"pkceRequired,omitempty" xml:"pkceRequired,omitempty"`
+	// The string array. It must contain openid. The default values are openid, profile, and email.
+	//
+	// example:
+	//
+	// ["openid","profile","email"]
+	Scopes []*string `json:"scopes,omitempty" xml:"scopes,omitempty" type:"Repeated"`
+	// The claim name in the ID token used to match the SCIM externalId. If omitted during the first creation, the default value sub is used. If omitted during an update, the saved value is retained. For Azure, you can enter oid. It must be non-empty and contain no whitespace characters. When queried, oidc returns the saved value, and oidcConfiguration returns the actual upstream value, which may be empty.
+	//
+	// example:
+	//
+	// oid
+	SsoMappingClaim *string `json:"ssoMappingClaim,omitempty" xml:"ssoMappingClaim,omitempty"`
+	// The absolute HTTPS URL required in manual entry mode. Do not enter this in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/token
+	TokenEndpoint *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
+	// The optional absolute HTTPS URL in manual entry mode. Do not enter this in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/userinfo
+	UserinfoEndpoint *string `json:"userinfoEndpoint,omitempty" xml:"userinfoEndpoint,omitempty"`
+}
+
+func (s DeleteIdentityProviderResponseBodyDataOidc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DeleteIdentityProviderResponseBodyDataOidc) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetAuthorizationEndpoint() *string {
+	return s.AuthorizationEndpoint
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetClientAuthMethod() *string {
+	return s.ClientAuthMethod
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetClientId() *string {
+	return s.ClientId
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetDiscoveryEndpoint() *string {
+	return s.DiscoveryEndpoint
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetIssuer() *string {
+	return s.Issuer
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetJwksUri() *string {
+	return s.JwksUri
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetPkceRequired() *bool {
+	return s.PkceRequired
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetScopes() []*string {
+	return s.Scopes
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetSsoMappingClaim() *string {
+	return s.SsoMappingClaim
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetTokenEndpoint() *string {
+	return s.TokenEndpoint
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) GetUserinfoEndpoint() *string {
+	return s.UserinfoEndpoint
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetAuthorizationEndpoint(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetClientAuthMethod(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.ClientAuthMethod = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetClientId(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetDiscoveryEndpoint(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.DiscoveryEndpoint = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetIssuer(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.Issuer = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetJwksUri(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.JwksUri = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetPkceRequired(v bool) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.PkceRequired = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetScopes(v []*string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.Scopes = v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetSsoMappingClaim(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.SsoMappingClaim = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetTokenEndpoint(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) SetUserinfoEndpoint(v string) *DeleteIdentityProviderResponseBodyDataOidc {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponseBodyDataOidc) Validate() error {
+	return dara.Validate(s)
+}
+
 type DeleteIdentityProviderResponseBodyDataSaml struct {
 	// HTTP-Redirect or HTTP-POST. Required for manual entry. Queries return the short name.
 	//
@@ -314,7 +528,7 @@ type DeleteIdentityProviderResponseBodyDataSaml struct {
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// Required for manual entry. It must be non-empty and up to 2,048 characters in length. It cannot be changed if a configuration already exists. It is different from the local entity ID queried by the SP.
+	// Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be replaced. This is different from the local entity ID queried by the service provider (SP).
 	//
 	// example:
 	//
@@ -326,7 +540,7 @@ type DeleteIdentityProviderResponseBodyDataSaml struct {
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// Required for manual entry. It must be a non-empty array using PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
+	// Required for manual entry as a non-empty array. Use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
 	//
 	// example:
 	//

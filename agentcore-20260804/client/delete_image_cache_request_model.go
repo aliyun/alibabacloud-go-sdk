@@ -16,7 +16,7 @@ type iDeleteImageCacheRequest interface {
 }
 
 type DeleteImageCacheRequest struct {
-	// The product entry region. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
+	// The product entry region. This parameter is passed as a query parameter and must be consistent with the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//

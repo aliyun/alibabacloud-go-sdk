@@ -134,22 +134,40 @@ type UpdateMemoryResponseBodyData struct {
 	//
 	// 2026-09-23T10:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The long-term memory ID.
+	// The ID of the long-term memory.
 	//
 	// example:
 	//
 	// mem-2f5f9c5a8d0e4c3b
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
 	// The memory metadata.
+	//
+	// example:
+	//
+	// {"topic":"hiking"}
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The memory scope.
 	Scope *UpdateMemoryResponseBodyDataScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The memory source. Valid values: session_extraction: Extracted from session events. content_extraction: Extracted from text or messages. direct: Written directly.
+	//
+	// example:
+	//
+	// session_extraction
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The memory content type. Valid values: semantic: Semantic memory. skill: Skill. user_profile: User preference. session_summary: Session summary.
+	//
+	// example:
+	//
+	// semantic
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The last updated time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-09-23T10:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// Indicates whether the memory is valid. A value of false indicates that the memory is revoked and is not included in valid memory retrieval.
+	Valid *bool `json:"valid,omitempty" xml:"valid,omitempty"`
 }
 
 func (s UpdateMemoryResponseBodyData) String() string {
@@ -180,8 +198,20 @@ func (s *UpdateMemoryResponseBodyData) GetScope() *UpdateMemoryResponseBodyDataS
 	return s.Scope
 }
 
+func (s *UpdateMemoryResponseBodyData) GetSource() *string {
+	return s.Source
+}
+
+func (s *UpdateMemoryResponseBodyData) GetType() *string {
+	return s.Type
+}
+
 func (s *UpdateMemoryResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *UpdateMemoryResponseBodyData) GetValid() *bool {
+	return s.Valid
 }
 
 func (s *UpdateMemoryResponseBodyData) SetContent(v *UpdateMemoryResponseBodyDataContent) *UpdateMemoryResponseBodyData {
@@ -209,8 +239,23 @@ func (s *UpdateMemoryResponseBodyData) SetScope(v *UpdateMemoryResponseBodyDataS
 	return s
 }
 
+func (s *UpdateMemoryResponseBodyData) SetSource(v string) *UpdateMemoryResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateMemoryResponseBodyData) SetType(v string) *UpdateMemoryResponseBodyData {
+	s.Type = &v
+	return s
+}
+
 func (s *UpdateMemoryResponseBodyData) SetUpdatedAt(v string) *UpdateMemoryResponseBodyData {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *UpdateMemoryResponseBodyData) SetValid(v bool) *UpdateMemoryResponseBodyData {
+	s.Valid = &v
 	return s
 }
 
@@ -230,6 +275,8 @@ func (s *UpdateMemoryResponseBodyData) Validate() error {
 
 type UpdateMemoryResponseBodyDataContent struct {
 	// The memory text.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -271,6 +318,12 @@ type UpdateMemoryResponseBodyDataScope struct {
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The business team ID defined by the caller. It cannot be empty when provided and can be up to 128 UTF-8 bytes in length.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
 	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
 	//
 	// example:
@@ -295,6 +348,10 @@ func (s *UpdateMemoryResponseBodyDataScope) GetSessionId() *string {
 	return s.SessionId
 }
 
+func (s *UpdateMemoryResponseBodyDataScope) GetTeamId() *string {
+	return s.TeamId
+}
+
 func (s *UpdateMemoryResponseBodyDataScope) GetUserId() *string {
 	return s.UserId
 }
@@ -306,6 +363,11 @@ func (s *UpdateMemoryResponseBodyDataScope) SetAgentId(v string) *UpdateMemoryRe
 
 func (s *UpdateMemoryResponseBodyDataScope) SetSessionId(v string) *UpdateMemoryResponseBodyDataScope {
 	s.SessionId = &v
+	return s
+}
+
+func (s *UpdateMemoryResponseBodyDataScope) SetTeamId(v string) *UpdateMemoryResponseBodyDataScope {
+	s.TeamId = &v
 	return s
 }
 

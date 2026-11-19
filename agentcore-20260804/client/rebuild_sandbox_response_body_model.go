@@ -24,7 +24,7 @@ type iRebuildSandboxResponseBody interface {
 }
 
 type RebuildSandboxResponseBody struct {
-	// Task result code of this API request. A successful request returns SUCCESS. Query task result of the asynchronous task separately.
+	// Task result code of the API request. A successful request returns SUCCESS. Query task result of the asynchronous task separately.
 	//
 	// example:
 	//
@@ -32,25 +32,25 @@ type RebuildSandboxResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The acceptance result of the rebuild request.
 	Data *RebuildSandboxResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code corresponding to this API request.
+	// The HTTP status code corresponding to the API request.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result description of this API request. This does not indicate that the asynchronous rebuild task is complete.
+	// The result description of the API request. This does not indicate that the asynchronous rebuild task is complete.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID used to trace this API call.
+	// The request ID, which is used to trace the API call.
 	//
 	// example:
 	//
 	// 01A1BE93-46A7-1A2A-BD62-159FCDAA****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether this API request is successful. A value of true does not indicate that the sandbox rebuild is complete.
+	// Indicates whether the API request is successful. A value of true does not indicate that the sandbox rebuild is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,13 +126,13 @@ func (s *RebuildSandboxResponseBody) Validate() error {
 }
 
 type RebuildSandboxResponseBodyData struct {
-	// The target instance incarnation for this rebuild. The rebuild increases the incarnation. The returned value only indicates that the request is accepted, not that the new instance is ready.
+	// The target instance generation for this rebuild. A rebuild increases the generation. The return of this value only indicates that the request is accepted, not that the new instance is ready.
 	//
 	// example:
 	//
 	// 2
 	Incarnation *int64 `json:"incarnation,omitempty" xml:"incarnation,omitempty"`
-	// The initial rebuild task ID. Use the operationId returned by RebuildSandbox. Always use this ID to query the overall result. You do not need to switch to the IDs of subsequently created tasks.
+	// The ID of the initial rebuild task. Use the operationId returned by RebuildSandbox. Always use this ID to query the overall result subsequently. You do not need to switch to the IDs of subsequently created tasks.
 	//
 	// example:
 	//

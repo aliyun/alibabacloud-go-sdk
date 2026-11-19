@@ -45,25 +45,27 @@ func (s *UpdateIdentityProviderRequest) Validate() error {
 }
 
 type UpdateIdentityProviderRequestBody struct {
-	// Do not pass true during CustomSSO initialization. A valid SAML configuration must be saved before enabling. Disabling does not delete the configuration. In case of asynchronous failure, this expected value does not mean that it has taken effect upstream.
+	// Do not pass true during CustomSSO initialization. A valid SAML configuration must be saved before enabling. Disabling does not delete the configuration. If an asynchronous failure occurs, this expected value does not indicate that it has taken effect upstream.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The provider configuration for DingTalk and Lark supports partial updates. Omitted fields retain the saved values. Submitted values cannot be null, empty strings, or whitespace strings. The complete configuration is verified after merging. CustomSSO updates use protocol and saml, and do not accept this field. The returned value does not contain provider keys.
+	// The provider configurations for DingTalk and Feishu support partial updates. Omitted fields retain their saved values. Submitted values must not be null, empty strings, or blank strings. The complete configuration is verified after merging. CustomSSO updates use protocol and saml, and do not accept this field. The returned value does not contain provider keys.
 	//
 	// example:
 	//
 	// {"appSecret":"example-app-secret"}
 	Metadata *UpdateIdentityProviderRequestBodyMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The logon protocol for CustomSSO. Only SAML is supported. You can pass SAML when saving the SAML configuration. You can omit this field if you only modify loginEnabled. DingTalk and Lark do not accept this field.
+	// Accepted only for CustomSSO and mutually exclusive with SAML. Submit the complete public configuration. Omitting credentials retains the existing values, while new values replace them. Blank and masked values are not accepted as credentials.
+	Oidc *UpdateIdentityProviderRequestBodyOidc `json:"oidc,omitempty" xml:"oidc,omitempty" type:"Struct"`
+	// The login protocol for CustomSSO. Currently, only SAML is supported. You can pass SAML when saving the SAML configuration. You can omit this parameter if you only modify loginEnabled. DingTalk and Feishu do not accept this field.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The SAML configuration for CustomSSO. Choose either metadataXml or the four manual entry fields: entityId, loginUrl, bindingType, and x509Certificates. If not submitted, the existing configuration is retained. DingTalk and Lark do not accept this field.
+	// The SAML configuration for CustomSSO. Choose either metadataXml or the four manually entered fields: entityId, loginUrl, bindingType, and x509Certificates. If not submitted, the existing configuration is retained. DingTalk and Feishu do not accept this field.
 	Saml *UpdateIdentityProviderRequestBodySaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
-	// Specifies whether to enable incremental synchronization for subsequent directory change events of DingTalk or Lark. If not passed, the original value is retained. It does not control the initial synchronization or manual synchronization. CustomSSO does not accept this field. You must use UpdateIdentityProviderSCIM.
+	// Specifies whether to enable incremental synchronization for subsequent address book change events of DingTalk or Feishu. If not passed, the original value is retained. It does not control the initial synchronization or manual synchronization. CustomSSO does not accept this field. You must use UpdateIdentityProviderSCIM.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// Follows the definition of the department-based synchronization scope. If omitted during creation, the default is AllAuthorized. The initial provider synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically execute a full synchronization.
+	// Follows the definition of the department-based synchronization scope. If omitted during creation, the default value is AllAuthorized. The initial provider synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Saving the scope during an update does not automatically trigger a full synchronization.
 	SyncScope *UpdateIdentityProviderRequestBodySyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
 }
 
@@ -81,6 +83,10 @@ func (s *UpdateIdentityProviderRequestBody) GetLoginEnabled() *bool {
 
 func (s *UpdateIdentityProviderRequestBody) GetMetadata() *UpdateIdentityProviderRequestBodyMetadata {
 	return s.Metadata
+}
+
+func (s *UpdateIdentityProviderRequestBody) GetOidc() *UpdateIdentityProviderRequestBodyOidc {
+	return s.Oidc
 }
 
 func (s *UpdateIdentityProviderRequestBody) GetProtocol() *string {
@@ -106,6 +112,11 @@ func (s *UpdateIdentityProviderRequestBody) SetLoginEnabled(v bool) *UpdateIdent
 
 func (s *UpdateIdentityProviderRequestBody) SetMetadata(v *UpdateIdentityProviderRequestBodyMetadata) *UpdateIdentityProviderRequestBody {
 	s.Metadata = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBody) SetOidc(v *UpdateIdentityProviderRequestBodyOidc) *UpdateIdentityProviderRequestBody {
+	s.Oidc = v
 	return s
 }
 
@@ -135,6 +146,11 @@ func (s *UpdateIdentityProviderRequestBody) Validate() error {
 			return err
 		}
 	}
+	if s.Oidc != nil {
+		if err := s.Oidc.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Saml != nil {
 		if err := s.Saml.Validate(); err != nil {
 			return err
@@ -149,7 +165,7 @@ func (s *UpdateIdentityProviderRequestBody) Validate() error {
 }
 
 type UpdateIdentityProviderRequestBodyMetadata struct {
-	// The Lark App ID. It can be omitted during an update to retain the saved value. The merged Lark configuration of the old and new values must contain this item.
+	// The Feishu App ID. It can be omitted during an update to retain the saved value. The merged Feishu configuration of the old and new values must contain this item.
 	//
 	// example:
 	//
@@ -161,7 +177,7 @@ type UpdateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// The provider application secret. If omitted during an update, the saved value is retained. You can submit this field separately to update the secret. The explicit value cannot be empty. It is sensitive input and is not echoed in the response.
+	// The provider application secret. If omitted during an update, the saved value is retained. You can submit this field separately to update the secret. The explicit value must not be empty. This is sensitive input and is not echoed in the response.
 	//
 	// example:
 	//
@@ -173,13 +189,13 @@ type UpdateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// Required when synchronization is enabled for DingTalk and Lark. It is sensitive input and is unrelated to the SCIM token.
+	// Required when synchronization is enabled for DingTalk and Feishu. This is sensitive input and is unrelated to the SCIM token.
 	//
 	// example:
 	//
 	// example-encrypt-key
 	EncryptKey *string `json:"encryptKey,omitempty" xml:"encryptKey,omitempty"`
-	// Required when synchronization is enabled for DingTalk and Lark. It is sensitive input and is unrelated to the SCIM token.
+	// Required when synchronization is enabled for DingTalk and Feishu. This is sensitive input and is unrelated to the SCIM token.
 	//
 	// example:
 	//
@@ -253,6 +269,216 @@ func (s *UpdateIdentityProviderRequestBodyMetadata) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateIdentityProviderRequestBodyOidc struct {
+	// The absolute HTTPS URL required in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/authorize
+	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty" xml:"authorizationEndpoint,omitempty"`
+	// The default value is client_secret_post. If the value is none, PKCE must be enabled.
+	//
+	// example:
+	//
+	// client_secret_post
+	ClientAuthMethod *string `json:"clientAuthMethod,omitempty" xml:"clientAuthMethod,omitempty"`
+	// The client identifier registered in the external IdP, which is different from the Matrix client. This value cannot be changed in place after it is configured.
+	//
+	// example:
+	//
+	// example-client
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The private key required for private_key_jwt authentication. If omitted during an update, the original value is retained. The value is not echoed in the response.
+	//
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----\\nEXAMPLE_ONLY_REPLACE_WITH_YOUR_PKCS8_PRIVATE_KEY\\n-----END PRIVATE KEY-----
+	ClientPrivateKey *string `json:"clientPrivateKey,omitempty" xml:"clientPrivateKey,omitempty"`
+	// Required for post or basic authentication. If omitted during an update, the original value is retained. Blank or fully masked values with asterisks are not accepted. The value is not echoed in the response.
+	//
+	// example:
+	//
+	// example-client-secret-not-for-production
+	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
+	// The absolute HTTPS discovery endpoint URL. This parameter is mutually exclusive with manually specified endpoints.
+	//
+	// example:
+	//
+	// https://idp.example.com/.well-known/openid-configuration
+	DiscoveryEndpoint *string `json:"discoveryEndpoint,omitempty" xml:"discoveryEndpoint,omitempty"`
+	// The absolute HTTPS issuer URL of the external IdP. This value cannot be changed in place after it is configured.
+	//
+	// example:
+	//
+	// https://idp.example.com
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The absolute HTTPS URL required in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/jwks
+	JwksUri *string `json:"jwksUri,omitempty" xml:"jwksUri,omitempty"`
+	// Specifies whether PKCE is enabled. Default value: true. This parameter must be set to true when no client authentication is used.
+	//
+	// example:
+	//
+	// true
+	PkceRequired *bool `json:"pkceRequired,omitempty" xml:"pkceRequired,omitempty"`
+	// The array of scope strings. It must include openid. Default values: openid, profile, and email.
+	//
+	// example:
+	//
+	// ["openid","profile","email"]
+	Scopes []*string `json:"scopes,omitempty" xml:"scopes,omitempty" type:"Repeated"`
+	// The name of the claim in the ID token used to match the SCIM externalId. If omitted during the initial configuration, the default value is sub. If omitted during an update, the saved value is retained. For Azure, you can specify oid. The value must be non-empty and cannot contain whitespace characters. When queried, oidc returns the saved value, while oidcConfiguration returns the actual upstream value, which may be empty.
+	//
+	// example:
+	//
+	// oid
+	SsoMappingClaim *string `json:"ssoMappingClaim,omitempty" xml:"ssoMappingClaim,omitempty"`
+	// The absolute HTTPS URL required in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/token
+	TokenEndpoint *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
+	// The optional absolute HTTPS URL in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/userinfo
+	UserinfoEndpoint *string `json:"userinfoEndpoint,omitempty" xml:"userinfoEndpoint,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestBodyOidc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestBodyOidc) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetAuthorizationEndpoint() *string {
+	return s.AuthorizationEndpoint
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetClientAuthMethod() *string {
+	return s.ClientAuthMethod
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetClientId() *string {
+	return s.ClientId
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetClientPrivateKey() *string {
+	return s.ClientPrivateKey
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetClientSecret() *string {
+	return s.ClientSecret
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetDiscoveryEndpoint() *string {
+	return s.DiscoveryEndpoint
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetIssuer() *string {
+	return s.Issuer
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetJwksUri() *string {
+	return s.JwksUri
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetPkceRequired() *bool {
+	return s.PkceRequired
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetScopes() []*string {
+	return s.Scopes
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetSsoMappingClaim() *string {
+	return s.SsoMappingClaim
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetTokenEndpoint() *string {
+	return s.TokenEndpoint
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) GetUserinfoEndpoint() *string {
+	return s.UserinfoEndpoint
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetAuthorizationEndpoint(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetClientAuthMethod(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.ClientAuthMethod = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetClientId(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.ClientId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetClientPrivateKey(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.ClientPrivateKey = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetClientSecret(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.ClientSecret = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetDiscoveryEndpoint(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.DiscoveryEndpoint = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetIssuer(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetJwksUri(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.JwksUri = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetPkceRequired(v bool) *UpdateIdentityProviderRequestBodyOidc {
+	s.PkceRequired = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetScopes(v []*string) *UpdateIdentityProviderRequestBodyOidc {
+	s.Scopes = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetSsoMappingClaim(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.SsoMappingClaim = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetTokenEndpoint(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) SetUserinfoEndpoint(v string) *UpdateIdentityProviderRequestBodyOidc {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestBodyOidc) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateIdentityProviderRequestBodySaml struct {
 	// HTTP-Redirect or HTTP-POST. Required for manual entry. The query returns the short name.
 	//
@@ -260,19 +486,19 @@ type UpdateIdentityProviderRequestBodySaml struct {
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// Required for manual entry. It must be non-empty and contain up to 2,048 characters. The existing configuration cannot be replaced. It is different from the local entity ID queried by the SP.
+	// Required for manual entry. It must be non-empty and contain up to 2,048 characters. The existing configuration does not support replacement. It is different from the local entity ID returned by the SP query.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// Required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required for manual entry. It must be an absolute HTTPS URL and must not contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The input is the XML text of a single IdP EntityDescriptor. The maximum size is 1 MiB. It cannot be a URL or file path. It is mutually exclusive with the four manual entry fields. DTD and external entities are prohibited. If both SSO bindings are declared at the same time, HTTP-POST takes precedence.
+	// The XML text of a single IdP EntityDescriptor, with a maximum size of 1 MiB. It must not be a URL or file path. It is mutually exclusive with the four manually entered fields. DTD and external entities are prohibited. If both SSO bindings are declared, HTTP-POST takes precedence.
 	//
 	// example:
 	//
@@ -344,13 +570,13 @@ func (s *UpdateIdentityProviderRequestBodySaml) Validate() error {
 }
 
 type UpdateIdentityProviderRequestBodySyncScope struct {
-	// For SelectedDepartments, it must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. For AllAuthorized, pass an empty array or omit it.
+	// When set to SelectedDepartments, it must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When set to AllAuthorized, pass an empty array or omit this parameter.
 	//
 	// example:
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// AllAuthorized: All authorized scopes, subject to application directory authorization restrictions. SelectedDepartments: Selected departments and all sub-departments. When explicitly submitting syncScope, a valid mode must be provided and verified by the backend.
+	// AllAuthorized: the full authorization scope, subject to the application address book authorization limits. SelectedDepartments: the selected departments and all their sub-departments. When explicitly submitting syncScope, a valid mode must be provided and verified by the backend.
 	//
 	// example:
 	//

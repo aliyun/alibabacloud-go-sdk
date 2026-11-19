@@ -25,6 +25,8 @@ type iListMemorySessionsResponseBody interface {
 	GetRequestId() *string
 	SetSuccess(v bool) *ListMemorySessionsResponseBody
 	GetSuccess() *bool
+	SetTotalCount(v int64) *ListMemorySessionsResponseBody
+	GetTotalCount() *int64
 }
 
 type ListMemorySessionsResponseBody struct {
@@ -68,6 +70,12 @@ type ListMemorySessionsResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// null
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListMemorySessionsResponseBody) String() string {
@@ -110,6 +118,10 @@ func (s *ListMemorySessionsResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
+func (s *ListMemorySessionsResponseBody) GetTotalCount() *int64 {
+	return s.TotalCount
+}
+
 func (s *ListMemorySessionsResponseBody) SetCode(v string) *ListMemorySessionsResponseBody {
 	s.Code = &v
 	return s
@@ -150,6 +162,11 @@ func (s *ListMemorySessionsResponseBody) SetSuccess(v bool) *ListMemorySessionsR
 	return s
 }
 
+func (s *ListMemorySessionsResponseBody) SetTotalCount(v int64) *ListMemorySessionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *ListMemorySessionsResponseBody) Validate() error {
 	if s.Items != nil {
 		for _, item := range s.Items {
@@ -170,12 +187,36 @@ type ListMemorySessionsResponseBodyItems struct {
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The creation time in RFC 3339 format with time zone.
+	//
+	// example:
+	//
+	// 2026-09-23T10:00:00Z
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The string key-value tags set by the caller. A maximum of 16 tags are supported. A key can be up to 64 Unicode characters in length, and a value can be up to 1,024 Unicode characters in length. Empty strings are allowed. Nested objects or arrays are not supported.
+	//
+	// example:
+	//
+	// {"topic":"hiking"}
+	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The session ID.
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The business team ID defined by the caller. If specified, the value cannot be empty and can be up to 128 UTF-8 bytes in length.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The session title.
+	//
+	// example:
+	//
+	// Travel plan
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The user ID. This field is not returned if the session is not associated with a user ID.
 	//
 	// example:
@@ -196,8 +237,24 @@ func (s *ListMemorySessionsResponseBodyItems) GetAgentId() *string {
 	return s.AgentId
 }
 
+func (s *ListMemorySessionsResponseBodyItems) GetCreatedAt() *string {
+	return s.CreatedAt
+}
+
+func (s *ListMemorySessionsResponseBodyItems) GetMetadata() map[string]*string {
+	return s.Metadata
+}
+
 func (s *ListMemorySessionsResponseBodyItems) GetSessionId() *string {
 	return s.SessionId
+}
+
+func (s *ListMemorySessionsResponseBodyItems) GetTeamId() *string {
+	return s.TeamId
+}
+
+func (s *ListMemorySessionsResponseBodyItems) GetTitle() *string {
+	return s.Title
 }
 
 func (s *ListMemorySessionsResponseBodyItems) GetUserId() *string {
@@ -209,8 +266,28 @@ func (s *ListMemorySessionsResponseBodyItems) SetAgentId(v string) *ListMemorySe
 	return s
 }
 
+func (s *ListMemorySessionsResponseBodyItems) SetCreatedAt(v string) *ListMemorySessionsResponseBodyItems {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListMemorySessionsResponseBodyItems) SetMetadata(v map[string]*string) *ListMemorySessionsResponseBodyItems {
+	s.Metadata = v
+	return s
+}
+
 func (s *ListMemorySessionsResponseBodyItems) SetSessionId(v string) *ListMemorySessionsResponseBodyItems {
 	s.SessionId = &v
+	return s
+}
+
+func (s *ListMemorySessionsResponseBodyItems) SetTeamId(v string) *ListMemorySessionsResponseBodyItems {
+	s.TeamId = &v
+	return s
+}
+
+func (s *ListMemorySessionsResponseBodyItems) SetTitle(v string) *ListMemorySessionsResponseBodyItems {
+	s.Title = &v
 	return s
 }
 

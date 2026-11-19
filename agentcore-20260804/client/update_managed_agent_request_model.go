@@ -18,7 +18,7 @@ type iUpdateManagedAgentRequest interface {
 type UpdateManagedAgentRequest struct {
 	// The request body.
 	Body *UpdateManagedAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved query parameter. The backend currently does not provide idempotency guarantees for deduplication or restoring original acceptance results based on this identifier.
+	// The reserved query parameter. The backend does not currently provide idempotency guarantees for deduplication or result recovery based on this token.
 	//
 	// example:
 	//
@@ -74,8 +74,13 @@ type UpdateManagedAgentRequestBody struct {
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The NAS storage mount configuration. Currently, only the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. This is the list of AgenticFS directory mounts. The total number of AgenticFS mounts and OSS mounts cannot exceed 10. If omitted or set to `[]` during creation, no mounts are configured. During an update, omitting this field retains the original configuration, and setting it to `[]` clears the mounts. `null` is not accepted.
+	// The NAS storage mount configuration. Currently, the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. The AgenticFS directory mount list can contain up to 10 items in total with ossMounts. Omitting this field or passing [] during creation indicates no mounts. During an update, omitting this field retains the original configuration, and passing [] clears it. Null is not accepted.
 	AgenticFsMounts []*UpdateManagedAgentRequestBodyAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
+	// An optional JSON object. Null, stringified JSON, or the legacy contextSpaceId field is not accepted. Omitting the entire object or passing {} retains the existing configuration. Omitting enabled or bindings within the object retains their original values respectively. Setting enabled to true can reuse existing non-empty selections, while setting enabled to false only disables and retains the selections. If bindings is a non-empty array, it is entirely replaced. If bindings is [], it is cleared only when the final state is disabled. To disable and clear, pass {enabled:false,bindings:[]}. Explicit null at any level is rejected, and default false or empty arrays must not be automatically populated.
+	//
+	// if can be null:
+	// false
+	ContextConfiguration *UpdateManagedAgentRequestBodyContextConfiguration `json:"contextConfiguration,omitempty" xml:"contextConfiguration,omitempty" type:"Struct"`
 	// The description of the managed Harness agent.
 	//
 	// example:
@@ -84,9 +89,9 @@ type UpdateManagedAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration.
 	Environment *UpdateManagedAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The runtime harness object. If omitted, the original harness is retained. If provided, the `type` must be the same as the one specified during creation. You can update the account binding for the same type of harness.
+	// The runtime framework object. If omitted, the original framework is retained. If provided, the type must be the same as that specified during creation. You can update the account binding for the same type of framework.
 	Harness *UpdateManagedAgentRequestBodyHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
-	// The agent instruction, which is used to guide the behavior of the agent.
+	// The agent instructions used to guide the behavior of the agent.
 	//
 	// example:
 	//
@@ -102,15 +107,15 @@ type UpdateManagedAgentRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The runtime network configuration. If provided, both accessInternet.enabled and accessVpc.enabled must be included. Actual access is subject to workspace network restrictions.
 	Network *UpdateManagedAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The OSS directory mount list. A maximum of 10 items in total with agenticFsMounts. The entire list is replaced during an update. Pass [] to clear the list.
+	// The list of OSS directory mounts. A maximum of 10 items in total with agenticFsMounts is allowed. The entire list is replaced during an update. Pass an empty array [] to clear the list.
 	OssMounts []*UpdateManagedAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The prompt variable declarations.
 	PromptVariables []*UpdateManagedAgentRequestBodyPromptVariables `json:"promptVariables,omitempty" xml:"promptVariables,omitempty" type:"Repeated"`
 	// The runtime configuration. If the entire object is omitted, the original configuration is retained. If provided, both compute and sessionPolicy must be specified. Omitted fields in hpa use default values.
 	Runtime *UpdateManagedAgentRequestBodyRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The skill configuration list.
+	// The list of skill configurations.
 	Skills []*UpdateManagedAgentRequestBodySkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
-	// The sub-agent configuration list.
+	// The list of sub-agent configurations.
 	SubAgents []*UpdateManagedAgentRequestBodySubAgents `json:"subAgents,omitempty" xml:"subAgents,omitempty" type:"Repeated"`
 	// The agent template configuration.
 	Template *UpdateManagedAgentRequestBodyTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
@@ -136,6 +141,10 @@ func (s *UpdateManagedAgentRequestBody) GetAccessScope() *string {
 
 func (s *UpdateManagedAgentRequestBody) GetAgenticFsMounts() []*UpdateManagedAgentRequestBodyAgenticFsMounts {
 	return s.AgenticFsMounts
+}
+
+func (s *UpdateManagedAgentRequestBody) GetContextConfiguration() *UpdateManagedAgentRequestBodyContextConfiguration {
+	return s.ContextConfiguration
 }
 
 func (s *UpdateManagedAgentRequestBody) GetDescription() *string {
@@ -206,6 +215,11 @@ func (s *UpdateManagedAgentRequestBody) SetAccessScope(v string) *UpdateManagedA
 
 func (s *UpdateManagedAgentRequestBody) SetAgenticFsMounts(v []*UpdateManagedAgentRequestBodyAgenticFsMounts) *UpdateManagedAgentRequestBody {
 	s.AgenticFsMounts = v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBody) SetContextConfiguration(v *UpdateManagedAgentRequestBodyContextConfiguration) *UpdateManagedAgentRequestBody {
+	s.ContextConfiguration = v
 	return s
 }
 
@@ -289,6 +303,11 @@ func (s *UpdateManagedAgentRequestBody) Validate() error {
 			}
 		}
 	}
+	if s.ContextConfiguration != nil {
+		if err := s.ContextConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Environment != nil {
 		if err := s.Environment.Validate(); err != nil {
 			return err
@@ -368,25 +387,25 @@ func (s *UpdateManagedAgentRequestBody) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyAgenticFsMounts struct {
-	// The absolute mount path in the container, such as `/data/train`. Mount targets cannot be duplicated or form parent-child overwrites, and must avoid platform reserved directories.
+	// The absolute mount path within the container, such as /data/train. Mount targets must not be duplicated or form parent-child overrides, and must avoid platform reserved directories.
 	//
 	// example:
 	//
 	// /mnt/agenticfs/data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// An existing non-empty relative directory under the access point. This field is required and validated by the backend for each mount item. Root directories, absolute paths, and parent directory segments are not allowed.
+	// An existing non-empty relative directory under the AccessPoint. Required and validated by the backend for each mount item. Root directories, absolute paths, or parent directory segments are not allowed.
 	//
 	// example:
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. If omitted, the default value is `false`. This is not a RAM role read-only policy.
+	// Specifies whether to mount as read-only. The default value is false if omitted. This is not a RAM role read-only policy.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The domain name of the access point. This field is required and validated by the backend for each mount item. It must not contain a protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+	// The AccessPoint domain name. Required and validated by the backend for each mount item. It does not contain a protocol, port, or path, and uses the DomainName from the NAS ListAccessPoints response.
 	//
 	// example:
 	//
@@ -442,10 +461,111 @@ func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateManagedAgentRequestBodyContextConfiguration struct {
+	// An optional array. Null or null items are not accepted. Each item only allows type and resourceId. The combination of the same type and normalized resource ID must not be duplicated. Omitting this field during creation indicates no selection. Omitting it during an update retains the original selection, and a non-empty array entirely replaces it. An empty array can only clear the selections when the merged enabled is false. To disable and clear, pass enabled:false and bindings:[] simultaneously. Explicitly submitted non-empty selections validate resource ownership and readiness status, including selections saved when disabled.
+	//
+	// if can be null:
+	// false
+	Bindings []*UpdateManagedAgentRequestBodyContextConfigurationBindings `json:"bindings,omitempty" xml:"bindings,omitempty" type:"Repeated"`
+	// An optional Boolean value. Null is not accepted. If this field is omitted during creation, the default value is false. If omitted during an update, the current value is retained, and the client must not automatically populate it with false. When updated to true, saved bindings can be reused. The merged enabled configuration must contain at least one resource. When updated to false, it only disables and does not clear the original resource selections.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s UpdateManagedAgentRequestBodyContextConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentRequestBodyContextConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfiguration) GetBindings() []*UpdateManagedAgentRequestBodyContextConfigurationBindings {
+	return s.Bindings
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfiguration) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfiguration) SetBindings(v []*UpdateManagedAgentRequestBodyContextConfigurationBindings) *UpdateManagedAgentRequestBodyContextConfiguration {
+	s.Bindings = v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfiguration) SetEnabled(v bool) *UpdateManagedAgentRequestBodyContextConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfiguration) Validate() error {
+	if s.Bindings != nil {
+		for _, item := range s.Bindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateManagedAgentRequestBodyContextConfigurationBindings struct {
+	// Required and validated by the backend for each binding item. Null, blank, or control characters are not accepted. The backend trims leading and trailing spaces first, and then validates that the length is 1 to 128 characters. The first character must be a letter or digit, and the remaining characters can contain letters, digits, periods, hyphens, or underscores. Only resources in the current workspace can be referenced.
+	//
+	// example:
+	//
+	// kb-example
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// Required and validated by the backend for each binding item. Only KNOWLEDGE_BASE (knowledge base) or DATA_CONNECTOR (data connector) is accepted. Case-sensitive. Null or blank values are not accepted.
+	//
+	// example:
+	//
+	// KNOWLEDGE_BASE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateManagedAgentRequestBodyContextConfigurationBindings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentRequestBodyContextConfigurationBindings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfigurationBindings) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfigurationBindings) GetType() *string {
+	return s.Type
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfigurationBindings) SetResourceId(v string) *UpdateManagedAgentRequestBodyContextConfigurationBindings {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfigurationBindings) SetType(v string) *UpdateManagedAgentRequestBodyContextConfigurationBindings {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyContextConfigurationBindings) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateManagedAgentRequestBodyEnvironment struct {
-	// The credential reference list.
+	// The list of credential references.
 	CredentialReferences []*UpdateManagedAgentRequestBodyEnvironmentCredentialReferences `json:"credentialReferences,omitempty" xml:"credentialReferences,omitempty" type:"Repeated"`
-	// The environment variable list.
+	// The list of environment variables.
 	Variables []*UpdateManagedAgentRequestBodyEnvironmentVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
@@ -579,9 +699,9 @@ func (s *UpdateManagedAgentRequestBodyEnvironmentVariables) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyHarness struct {
-	// The runtime harness configuration.
+	// The runtime framework configuration.
 	Configuration *UpdateManagedAgentRequestBodyHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The type of the runtime harness. This field is required when `harness` is provided, and must be consistent with the one specified during creation.
+	// The runtime framework type. Required when harness is provided, and must be consistent with that specified during creation.
 	//
 	// example:
 	//
@@ -625,13 +745,13 @@ func (s *UpdateManagedAgentRequestBodyHarness) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyHarnessConfiguration struct {
-	// The account key record ID in the qodercli connector. You can query it by calling ListConnectors. It is not the original key. This field can be omitted if there is only one record, but must be specified if there are multiple records. Do not specify this field for qwenpaw.
+	// The account key record ID in the qodercli connector. You can query it through ListConnectors. It is not the original key. This field can be omitted if there is only one record, but must be specified if there are multiple records. Do not specify this field for qwenpaw.
 	//
 	// example:
 	//
 	// key-example
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The name of the connector account bound to qodercli. Do not specify this field for qwenpaw.
+	// The connector account name bound to qodercli. Do not specify this field for qwenpaw.
 	//
 	// example:
 	//
@@ -684,9 +804,9 @@ type UpdateManagedAgentRequestBodyModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration. If not provided, no quota is configured.
+	// The model token quota configuration. If not passed, no quota is configured.
 	Quota *UpdateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// Valid values: `off`, `low`, `medium`, `high`, `xhigh`, and `max`. If not provided or set to `null` during creation, `default` is used. When updating and submitting the model configuration, if the thinking level is not provided or is `null`, it reverts to `default`. Except for `off` which is converted to `none`, the value is passed to the runtime harness as-is. The system does not validate model support or automatically downgrade the level. If the model does not support the specified level, adjust the level accordingly.
+	// Valid values: off, low, medium, high, xhigh, and max. If not passed or set to null during creation, default is used. When updating and submitting the model configuration, if the thinking level is not passed or is null, it reverts to default. Except for off which is converted to none, the value is passed to the runtime framework as is. The system does not validate model support or automatically downgrade the level. If the model does not support the specified level, adjust the level accordingly.
 	//
 	// example:
 	//
@@ -748,25 +868,25 @@ func (s *UpdateManagedAgentRequestBodyModel) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable the token quota. If not specified, the default value is `true`. Setting this field to `false` disables the quota and deletes existing quota rules.
+	// Specifies whether to enable the token quota. The default value is true if not specified. Passing false disables the quota and deletes existing quota rules.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The quota limit type. This field is required and validated by the backend when the quota is enabled. Fixed value: `token`.
+	// The quota limit type. Required and validated by the backend when the quota is enabled. Fixed value: token.
 	//
 	// example:
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The statistical period for the quota. This field is required and validated by the backend when the quota is enabled. Valid values: `day` (daily) and `month` (monthly).
+	// The quota statistical period. Required and validated by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens allowed to be consumed in a single period. This field is required and validated by the backend when the quota is enabled. The value must be greater than 0.
+	// The maximum number of tokens allowed to be consumed in a single period. Required and validated by the backend when the quota is enabled. The value must be greater than 0.
 	//
 	// example:
 	//
@@ -870,7 +990,7 @@ func (s *UpdateManagedAgentRequestBodyNetwork) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyNetworkAccessInternet struct {
-	// Specifies whether to allow access to the Internet.
+	// Specifies whether to allow Internet access.
 	//
 	// example:
 	//
@@ -900,7 +1020,7 @@ func (s *UpdateManagedAgentRequestBodyNetworkAccessInternet) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyNetworkAccessVpc struct {
-	// Specifies whether to allow access to the VPC.
+	// Specifies whether to allow VPC access.
 	//
 	// example:
 	//
@@ -930,25 +1050,25 @@ func (s *UpdateManagedAgentRequestBodyNetworkAccessVpc) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyOssMounts struct {
-	// The OSS bucket name. Required and validated by the backend for each mount item.
+	// The name of the OSS bucket. This field is required and validated by the backend for each mount item.
 	//
 	// example:
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path in the container, such as `/data/train`. Mount targets cannot be duplicated or form parent-child overwrites, and must avoid platform reserved directories.
+	// The absolute mount path within the container, such as /data/train. Mount targets must not be duplicated or form parent-child overrides, and must avoid platform reserved directories.
 	//
 	// example:
 	//
 	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The non-empty relative object directory prefix within the bucket. Required for each mount item.
+	// The non-empty relative object directory prefix in the bucket. This field is required for each mount item.
 	//
 	// example:
 	//
 	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether to mount as read-only. Defaults to false if not specified.
+	// Specifies whether the mount is read-only. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1007,13 +1127,13 @@ type UpdateManagedAgentRequestBodyPromptVariables struct {
 	//
 	// default
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// The description of the variable.
+	// The variable description.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -1128,7 +1248,7 @@ func (s *UpdateManagedAgentRequestBodyRuntime) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeCompute struct {
-	// The compute specifications.
+	// The compute specification.
 	//
 	// This parameter is required.
 	//
@@ -1160,27 +1280,27 @@ func (s *UpdateManagedAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether to enable elastic scaling. Defaults to false when omitted.
+	// Specifies whether to enable elastic scaling. Default value: false.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of concurrent sessions allowed per instance. Valid values: 1 to 20. Defaults to 20 when omitted.
+	// The maximum number of concurrent sessions allowed per instance. Valid values: 1 to 20. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The upper limit of the number of instances. Valid values: 0 to 100. Defaults to 10 when omitted. Cannot be less than minSandboxCount.
+	// The maximum number of instances. Valid values: 0 to 100. Default value: 10. The value cannot be less than minSandboxCount.
 	//
 	// example:
 	//
 	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The lower limit of the number of instances. Valid values: 0 to 100. Defaults to 1 when omitted. Cannot be greater than maxSandboxCount.
+	// The minimum number of instances. Valid values: 0 to 100. Default value: 1. The value cannot be greater than maxSandboxCount.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The maximum idle time for a session, in seconds. Valid values: 60 to 86400. Defaults to 600 when omitted.
+	// The maximum idle time for a session, in seconds. Valid values: 60 to 86400. Default value: 600.
 	//
 	// example:
 	//
@@ -1246,7 +1366,7 @@ func (s *UpdateManagedAgentRequestBodyRuntimeHpa) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeSessionPolicy struct {
-	// The name of the request header for session identification. Required when type is ISOLATED_HEADER_FIELD. Must be a valid HTTP request header name. Do not specify for other policies.
+	// The name of the request header for session identification. This parameter is required when type is set to ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Do not specify this parameter for other policies.
 	//
 	// example:
 	//
@@ -1301,19 +1421,19 @@ type UpdateManagedAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. REFERENCE references the AI Registry. STATIC is statically provided with the package.
+	// The skill source type.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The skill version field for legacy request compatibility. For new requests, use sourceType and versionSelector. Do not submit this field in combination with sourceType.
+	// The skill version field for backward compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this field in combination with sourceType.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The skill reference version selector. Supports LABEL for tags and VERSION for specific versions. Defaults to LABEL/latest when omitted. Selectors are not provided for STATIC sources.
+	// The skill reference version selector. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *UpdateManagedAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -1371,13 +1491,13 @@ func (s *UpdateManagedAgentRequestBodySkills) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodySkillsVersionSelector struct {
-	// The version selector type. LABEL selects by tag. VERSION selects by specific version.
+	// The version selector type.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The selector value. For LABEL, it is the tag name (such as latest). For VERSION, it is the specific version number.
+	// The selector value. When the type is LABEL, this is the tag name, such as latest. When the type is VERSION, this is the specific version number.
 	//
 	// example:
 	//
@@ -1422,7 +1542,7 @@ type UpdateManagedAgentRequestBodySubAgents struct {
 	//
 	// example:
 	//
-	// Please review the code
+	// Review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The sub-agent name.
 	//
@@ -1432,7 +1552,7 @@ type UpdateManagedAgentRequestBodySubAgents struct {
 	//
 	// reviewer-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The sub-agent skill list.
+	// The list of sub-agent skills.
 	Skills []*UpdateManagedAgentRequestBodySubAgentsSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
 }
 
@@ -1530,7 +1650,7 @@ func (s *UpdateManagedAgentRequestBodySubAgentsSkills) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyTemplate struct {
-	// The AI registry template configuration.
+	// The AI Registry template configuration.
 	AiRegistry *UpdateManagedAgentRequestBodyTemplateAiRegistry `json:"aiRegistry,omitempty" xml:"aiRegistry,omitempty" type:"Struct"`
 }
 
@@ -1561,7 +1681,7 @@ func (s *UpdateManagedAgentRequestBodyTemplate) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyTemplateAiRegistry struct {
-	// The name of the template in the AI registry.
+	// The name of the template in the AI Registry.
 	//
 	// This parameter is required.
 	//
@@ -1569,7 +1689,7 @@ type UpdateManagedAgentRequestBodyTemplateAiRegistry struct {
 	//
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the template in the AI registry.
+	// The version of the template in the AI Registry.
 	//
 	// example:
 	//
@@ -1608,7 +1728,7 @@ func (s *UpdateManagedAgentRequestBodyTemplateAiRegistry) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyTools struct {
-	// The name of the tool.
+	// The tool name.
 	//
 	// This parameter is required.
 	//
@@ -1616,7 +1736,7 @@ type UpdateManagedAgentRequestBodyTools struct {
 	//
 	// code-reviewer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the tool.
+	// The tool type.
 	//
 	// This parameter is required.
 	//

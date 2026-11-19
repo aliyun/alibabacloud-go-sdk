@@ -18,7 +18,7 @@ type iUpdateExternalAgentRequest interface {
 type UpdateExternalAgentRequest struct {
 	// The request body.
 	Body *UpdateExternalAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved query parameter. The backend does not provide idempotence guarantees for deduplication or recovery of original acceptance results based on this identifier at this time.
+	// The reserved query parameter. The backend does not currently provide idempotence guarantees for deduplication or recovery of original acceptance results based on this identifier.
 	//
 	// example:
 	//
@@ -66,8 +66,10 @@ type UpdateExternalAgentRequestBody struct {
 	//
 	// example:
 	//
-	// Code review agent running in the user environment
+	// A code review agent that runs in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The credential binding configuration. If you do not pass this parameter, the original binding is retained. If you pass an object, you must explicitly provide a non-null credentialReferences list, and the list is replaced in its entirety. If the list is empty or environment is null, the binding is cleared. Empty objects and objects that contain only common environment variables are invalid.
+	Environment *UpdateExternalAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
 	// The agent instruction, which is used to guide the behavior of the agent.
 	//
 	// example:
@@ -76,11 +78,7 @@ type UpdateExternalAgentRequestBody struct {
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
 	Model *UpdateExternalAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be passed at the same time. Valid values:
-	//
-	// - PLATFORM: Platform model.
-	//
-	// - RUNTIME: Runtime model.
+	// The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
 	//
 	// example:
 	//
@@ -110,6 +108,10 @@ func (s UpdateExternalAgentRequestBody) GoString() string {
 
 func (s *UpdateExternalAgentRequestBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdateExternalAgentRequestBody) GetEnvironment() *UpdateExternalAgentRequestBodyEnvironment {
+	return s.Environment
 }
 
 func (s *UpdateExternalAgentRequestBody) GetInstruction() *string {
@@ -142,6 +144,11 @@ func (s *UpdateExternalAgentRequestBody) GetTools() []*UpdateExternalAgentReques
 
 func (s *UpdateExternalAgentRequestBody) SetDescription(v string) *UpdateExternalAgentRequestBody {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBody) SetEnvironment(v *UpdateExternalAgentRequestBodyEnvironment) *UpdateExternalAgentRequestBody {
+	s.Environment = v
 	return s
 }
 
@@ -181,6 +188,11 @@ func (s *UpdateExternalAgentRequestBody) SetTools(v []*UpdateExternalAgentReques
 }
 
 func (s *UpdateExternalAgentRequestBody) Validate() error {
+	if s.Environment != nil {
+		if err := s.Environment.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Model != nil {
 		if err := s.Model.Validate(); err != nil {
 			return err
@@ -212,6 +224,71 @@ func (s *UpdateExternalAgentRequestBody) Validate() error {
 	return nil
 }
 
+type UpdateExternalAgentRequestBodyEnvironment struct {
+	// The list of credential references. You must explicitly provide this list when passing the environment object, and it cannot be null. The list is replaced in its entirety. If you do not pass environment during an update, the original binding is retained. If you pass an empty list or set environment to null, the binding is cleared. Pass only the credential ID, not the actual key.
+	CredentialReferences []*UpdateExternalAgentRequestBodyEnvironmentCredentialReferences `json:"credentialReferences,omitempty" xml:"credentialReferences,omitempty" type:"Repeated"`
+}
+
+func (s UpdateExternalAgentRequestBodyEnvironment) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateExternalAgentRequestBodyEnvironment) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExternalAgentRequestBodyEnvironment) GetCredentialReferences() []*UpdateExternalAgentRequestBodyEnvironmentCredentialReferences {
+	return s.CredentialReferences
+}
+
+func (s *UpdateExternalAgentRequestBodyEnvironment) SetCredentialReferences(v []*UpdateExternalAgentRequestBodyEnvironmentCredentialReferences) *UpdateExternalAgentRequestBodyEnvironment {
+	s.CredentialReferences = v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBodyEnvironment) Validate() error {
+	if s.CredentialReferences != nil {
+		for _, item := range s.CredentialReferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateExternalAgentRequestBodyEnvironmentCredentialReferences struct {
+	// The credential ID. This parameter is required when passing a credential reference item and is verified by the backend.
+	//
+	// example:
+	//
+	// cred-example
+	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+}
+
+func (s UpdateExternalAgentRequestBodyEnvironmentCredentialReferences) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateExternalAgentRequestBodyEnvironmentCredentialReferences) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExternalAgentRequestBodyEnvironmentCredentialReferences) GetCredentialId() *string {
+	return s.CredentialId
+}
+
+func (s *UpdateExternalAgentRequestBodyEnvironmentCredentialReferences) SetCredentialId(v string) *UpdateExternalAgentRequestBodyEnvironmentCredentialReferences {
+	s.CredentialId = &v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBodyEnvironmentCredentialReferences) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateExternalAgentRequestBodyModel struct {
 	// The model connection ID.
 	//
@@ -229,7 +306,7 @@ type UpdateExternalAgentRequestBodyModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration. If this parameter is not passed, no quota is configured.
+	// The model token quota configuration. If you do not pass this parameter, no quota is configured.
 	Quota *UpdateExternalAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -278,7 +355,7 @@ func (s *UpdateExternalAgentRequestBodyModel) Validate() error {
 }
 
 type UpdateExternalAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable the token quota. If this parameter is not specified, the default value is true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
+	// Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
 	//
 	// example:
 	//
@@ -290,17 +367,13 @@ type UpdateExternalAgentRequestBodyModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values:
-	//
-	// - day: Daily.
-	//
-	// - month: Monthly.
+	// The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens allowed to be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
+	// The maximum number of tokens that can be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
 	//
 	// example:
 	//
@@ -365,11 +438,7 @@ type UpdateExternalAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. Valid values:
-	//
-	// - REFERENCE: References AI Registry assets.
-	//
-	// - STATIC: Statically provided with deployment artifacts.
+	// The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
 	//
 	// example:
 	//
@@ -381,7 +450,7 @@ type UpdateExternalAgentRequestBodySkills struct {
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The skill reference version selector, which supports LABEL tags and VERSION specific versions. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+	// The skill reference version selector, which supports LABEL tags and VERSION specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *UpdateExternalAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -439,11 +508,7 @@ func (s *UpdateExternalAgentRequestBodySkills) Validate() error {
 }
 
 type UpdateExternalAgentRequestBodySkillsVersionSelector struct {
-	// The version selector type. Valid values:
-	//
-	// - LABEL: Selects by tag.
-	//
-	// - VERSION: Selects by specific version.
+	// The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
 	//
 	// example:
 	//
@@ -576,9 +641,7 @@ type UpdateExternalAgentRequestBodyTools struct {
 	//
 	// code-reviewer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The tool type. Valid values:
-	//
-	// - MCP: MCP tool.
+	// The tool type. Valid values: MCP (MCP tool).
 	//
 	// This parameter is required.
 	//

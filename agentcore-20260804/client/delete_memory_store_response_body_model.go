@@ -136,15 +136,27 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// example:
 	//
-	// Used to store long-term user preferences
+	// Used to store the long-term preferences of users
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of events. You can query this value by calling GetMemoryStore.
+	//
+	// example:
+	//
+	// 20
+	EventCount *int64 `json:"eventCount,omitempty" xml:"eventCount,omitempty"`
 	// The custom extraction instructions.
 	//
 	// example:
 	//
 	// Extract only long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The MemoryStore ID.
+	// The number of valid memories. You can query this value by calling GetMemoryStore.
+	//
+	// example:
+	//
+	// 10
+	MemoryCount *int64 `json:"memoryCount,omitempty" xml:"memoryCount,omitempty"`
+	// The ID of the MemoryStore.
 	//
 	// example:
 	//
@@ -156,7 +168,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// customer-memory
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The lifecycle state of the MemoryStore.
+	// The lifecycle status of the MemoryStore.
 	//
 	// example:
 	//
@@ -168,7 +180,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// 2026-09-23T10:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The AgentCore workspace ID.
+	// The ID of the AgentCore workspace.
 	//
 	// example:
 	//
@@ -192,8 +204,16 @@ func (s *DeleteMemoryStoreResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DeleteMemoryStoreResponseBodyData) GetEventCount() *int64 {
+	return s.EventCount
+}
+
 func (s *DeleteMemoryStoreResponseBodyData) GetExtractInstructions() *string {
 	return s.ExtractInstructions
+}
+
+func (s *DeleteMemoryStoreResponseBodyData) GetMemoryCount() *int64 {
+	return s.MemoryCount
 }
 
 func (s *DeleteMemoryStoreResponseBodyData) GetMemoryStoreId() *string {
@@ -226,8 +246,18 @@ func (s *DeleteMemoryStoreResponseBodyData) SetDescription(v string) *DeleteMemo
 	return s
 }
 
+func (s *DeleteMemoryStoreResponseBodyData) SetEventCount(v int64) *DeleteMemoryStoreResponseBodyData {
+	s.EventCount = &v
+	return s
+}
+
 func (s *DeleteMemoryStoreResponseBodyData) SetExtractInstructions(v string) *DeleteMemoryStoreResponseBodyData {
 	s.ExtractInstructions = &v
+	return s
+}
+
+func (s *DeleteMemoryStoreResponseBodyData) SetMemoryCount(v int64) *DeleteMemoryStoreResponseBodyData {
+	s.MemoryCount = &v
 	return s
 }
 

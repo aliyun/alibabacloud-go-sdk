@@ -16,9 +16,9 @@ type iListSkillReferencesResponseBody interface {
 }
 
 type ListSkillReferencesResponseBody struct {
-	// The skill reference relationships returned in the paging query.
+	// The skill reference relationship data returned by the paged query.
 	Data *ListSkillReferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID, which is used for troubleshooting.
+	// The request ID, used for troubleshooting.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type ListSkillReferencesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The total number of pages.
+	// The total number of available pages.
 	//
 	// example:
 	//
 	// 5
 	PagesAvailable *int32 `json:"pagesAvailable,omitempty" xml:"pagesAvailable,omitempty"`
-	// The total number of reference relationships that meet the filter conditions.
+	// The total number of reference relationships that meet the conditions.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ func (s *ListSkillReferencesResponseBodyData) Validate() error {
 }
 
 type ListSkillReferencesResponseBodyDataPageItems struct {
-	// The ID of the referencing entity, which identifies the agent or AgentSpec.
+	// The ID of the referencing entity, which is the identifier of the agent or agent spec.
 	//
 	// example:
 	//
 	// agent-1234567890abcdef
 	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	// The type of the referencing entity. Valid values: AGENT and AGENTSPEC.
+	// The type of the referencing entity. Valid values: AGENT, AGENTSPEC.
 	//
 	// example:
 	//
@@ -160,7 +160,13 @@ type ListSkillReferencesResponseBodyDataPageItems struct {
 	//
 	// 1.0.0
 	OwnerVersion *string `json:"ownerVersion,omitempty" xml:"ownerVersion,omitempty"`
-	// The reference selector type. Valid values: LABEL and VERSION.
+	// The reference strength. Valid values: STRONG, WEAK. For legacy data, STRONG is returned.
+	//
+	// example:
+	//
+	// STRONG
+	RefType *string `json:"refType,omitempty" xml:"refType,omitempty"`
+	// The reference selector type. Valid values: LABEL, VERSION.
 	//
 	// example:
 	//
@@ -178,7 +184,19 @@ type ListSkillReferencesResponseBodyDataPageItems struct {
 	//
 	// web-search
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The ID of the workspace to which the reference belongs.
+	// The reference source identifier. For legacy data, agentcore is returned.
+	//
+	// example:
+	//
+	// agentcore
+	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The display name of the reference source. If no name is registered, the source identifier is returned.
+	//
+	// example:
+	//
+	// AgentCore
+	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The workspace ID to which the reference belongs.
 	//
 	// example:
 	//
@@ -206,6 +224,10 @@ func (s *ListSkillReferencesResponseBodyDataPageItems) GetOwnerVersion() *string
 	return s.OwnerVersion
 }
 
+func (s *ListSkillReferencesResponseBodyDataPageItems) GetRefType() *string {
+	return s.RefType
+}
+
 func (s *ListSkillReferencesResponseBodyDataPageItems) GetSelectorType() *string {
 	return s.SelectorType
 }
@@ -216,6 +238,14 @@ func (s *ListSkillReferencesResponseBodyDataPageItems) GetSelectorValue() *strin
 
 func (s *ListSkillReferencesResponseBodyDataPageItems) GetSkillName() *string {
 	return s.SkillName
+}
+
+func (s *ListSkillReferencesResponseBodyDataPageItems) GetSourceId() *string {
+	return s.SourceId
+}
+
+func (s *ListSkillReferencesResponseBodyDataPageItems) GetSourceName() *string {
+	return s.SourceName
 }
 
 func (s *ListSkillReferencesResponseBodyDataPageItems) GetWorkspaceId() *string {
@@ -237,6 +267,11 @@ func (s *ListSkillReferencesResponseBodyDataPageItems) SetOwnerVersion(v string)
 	return s
 }
 
+func (s *ListSkillReferencesResponseBodyDataPageItems) SetRefType(v string) *ListSkillReferencesResponseBodyDataPageItems {
+	s.RefType = &v
+	return s
+}
+
 func (s *ListSkillReferencesResponseBodyDataPageItems) SetSelectorType(v string) *ListSkillReferencesResponseBodyDataPageItems {
 	s.SelectorType = &v
 	return s
@@ -249,6 +284,16 @@ func (s *ListSkillReferencesResponseBodyDataPageItems) SetSelectorValue(v string
 
 func (s *ListSkillReferencesResponseBodyDataPageItems) SetSkillName(v string) *ListSkillReferencesResponseBodyDataPageItems {
 	s.SkillName = &v
+	return s
+}
+
+func (s *ListSkillReferencesResponseBodyDataPageItems) SetSourceId(v string) *ListSkillReferencesResponseBodyDataPageItems {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListSkillReferencesResponseBodyDataPageItems) SetSourceName(v string) *ListSkillReferencesResponseBodyDataPageItems {
+	s.SourceName = &v
 	return s
 }
 

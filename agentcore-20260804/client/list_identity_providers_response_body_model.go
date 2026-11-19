@@ -50,13 +50,13 @@ type ListIdentityProvidersResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. Returns an error description if the request fails.
+	// The response message. Returns an error description when the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. This parameter is empty if no next page exists.
+	// The token for the next page. Empty if there is no next page.
 	//
 	// example:
 	//
@@ -181,15 +181,15 @@ func (s *ListIdentityProvidersResponseBody) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyItems struct {
-	// The actual upstream configuration. The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual received status and URL.
+	// The actual upstream configuration. The actual SAML configuration is read on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
 	Configuration *ListIdentityProvidersResponseBodyItemsConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The creation time in UTC format compliant with RFC 3339.
+	// The creation time in UTC format based on RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The event subscription callback URL. You must configure this URL in the application of the external identity provider to receive organization change events. An empty string is returned if the user pool is not activated.
+	// The event subscription callback URL. You must configure this URL in the application of the external identity provider to receive organization change events. An empty string is returned when the user pool is not activated.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListIdentityProvidersResponseBodyItems struct {
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// The login callback URL. You must configure this URL in the application of the external identity provider. An empty string is returned if the user pool is not activated.
+	// The logon callback URL. You must configure this URL in the application of the external identity provider. An empty string is returned when the user pool is not activated.
 	//
 	// example:
 	//
@@ -211,25 +211,27 @@ type ListIdentityProvidersResponseBodyItems struct {
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
 	// The application configuration of the external identity provider. Application secret configurations are not returned.
 	Metadata *ListIdentityProvidersResponseBodyItemsMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// Currently, only SAML is supported. This parameter may not be returned if no valid configuration is saved. Placeholder initialization with OIDC is not supported.
+	// The security summary of the expected configuration. It does not contain credentials. The original SAML fields and meanings are retained.
+	Oidc *ListIdentityProvidersResponseBodyItemsOidc `json:"oidc,omitempty" xml:"oidc,omitempty" type:"Struct"`
+	// Currently, only SAML is supported. It may not be returned when no valid configuration is saved. OIDC placeholder initialization is not supported.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The input supports either XML or complete manual entry. Queries return standardized configurations and do not echo the original XML. This parameter can be omitted if not configured.
+	// The input supports either XML or complete manual entry. The query returns the standardized configuration and does not echo the original XML. It can be omitted when not configured.
 	Saml *ListIdentityProvidersResponseBodyItemsSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
-	// The binding status. Valid values: CONFIGURED (the configuration is accepted and waiting for the user pool to be activated), SYNCING (synchronizing organization members), SYNCED (organization member synchronization is completed), READY (the binding is in effect), SYNC_FAILED (organization member synchronization failed), UPDATING (updating the configuration), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
+	// The binding status. Valid values: CONFIGURED (the configuration is accepted, waiting for the user pool to be activated), SYNCING (synchronizing organization members), SYNCED (organization member synchronization is completed), READY (the binding is in effect), SYNC_FAILED (organization member synchronization failed), UPDATING (updating the configuration), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies whether organization member synchronization is enabled. If enabled, organization members are synchronized as workspace users by this external identity provider.
+	// Specifies whether organization member synchronization is enabled. When enabled, organization members are synchronized as workspace users from this external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// Follows the department-based synchronization scope definition. If omitted during creation, the default value is AllAuthorized, and the first vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger a full synchronization.
+	// Follows the department-based sync scope definition. If omitted during creation, it defaults to AllAuthorized, and the first vendor sync is determined by syncOnBind. If omitted or null during an update, the original value is retained. Updating and saving the scope does not automatically trigger a full sync.
 	SyncScope *ListIdentityProvidersResponseBodyItemsSyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
-	// The time of the last modification in UTC format compliant with RFC 3339.
+	// The time of the last modification in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -277,6 +279,10 @@ func (s *ListIdentityProvidersResponseBodyItems) GetLoginEnabled() *bool {
 
 func (s *ListIdentityProvidersResponseBodyItems) GetMetadata() *ListIdentityProvidersResponseBodyItemsMetadata {
 	return s.Metadata
+}
+
+func (s *ListIdentityProvidersResponseBodyItems) GetOidc() *ListIdentityProvidersResponseBodyItemsOidc {
+	return s.Oidc
 }
 
 func (s *ListIdentityProvidersResponseBodyItems) GetProtocol() *string {
@@ -342,6 +348,11 @@ func (s *ListIdentityProvidersResponseBodyItems) SetMetadata(v *ListIdentityProv
 	return s
 }
 
+func (s *ListIdentityProvidersResponseBodyItems) SetOidc(v *ListIdentityProvidersResponseBodyItemsOidc) *ListIdentityProvidersResponseBodyItems {
+	s.Oidc = v
+	return s
+}
+
 func (s *ListIdentityProvidersResponseBodyItems) SetProtocol(v string) *ListIdentityProvidersResponseBodyItems {
 	s.Protocol = &v
 	return s
@@ -388,6 +399,11 @@ func (s *ListIdentityProvidersResponseBodyItems) Validate() error {
 			return err
 		}
 	}
+	if s.Oidc != nil {
+		if err := s.Oidc.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Saml != nil {
 		if err := s.Saml.Validate(); err != nil {
 			return err
@@ -402,7 +418,7 @@ func (s *ListIdentityProvidersResponseBodyItems) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyItemsConfiguration struct {
-	// The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required when manually specified. The query returns the short name.
+	// The SAML binding type, such as HTTP-Redirect or HTTP-POST. This parameter is required for manual configuration. The query returns the short name.
 	//
 	// example:
 	//
@@ -414,7 +430,7 @@ type ListIdentityProvidersResponseBodyItemsConfiguration struct {
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// Required when manually filled in. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually filled in. It must be an absolute HTTPS URL without user credentials and fragments.
 	//
 	// example:
 	//
@@ -495,7 +511,7 @@ type ListIdentityProvidersResponseBodyItemsMetadata struct {
 	//
 	// urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
 	Binding *string `json:"binding,omitempty" xml:"binding,omitempty"`
-	// The certificate string in the historical metadata snapshot. Use saml.x509Certificates to edit the configuration and do not submit the old metadata.
+	// The certificate string in the historical metadata snapshot. Use saml.x509Certificates to edit the configuration, and do not submit the old metadata.
 	//
 	// example:
 	//
@@ -513,7 +529,7 @@ type ListIdentityProvidersResponseBodyItemsMetadata struct {
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// Required when manually filled in. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually filled in. It must be an absolute HTTPS URL without user credentials and fragments.
 	//
 	// example:
 	//
@@ -596,8 +612,188 @@ func (s *ListIdentityProvidersResponseBodyItemsMetadata) Validate() error {
 	return dara.Validate(s)
 }
 
+type ListIdentityProvidersResponseBodyItemsOidc struct {
+	// The absolute HTTPS URL required in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/authorize
+	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty" xml:"authorizationEndpoint,omitempty"`
+	// The client authentication method. Default value: client_secret_post. If the value is none, PKCE must be enabled.
+	//
+	// example:
+	//
+	// client_secret_post
+	ClientAuthMethod *string `json:"clientAuthMethod,omitempty" xml:"clientAuthMethod,omitempty"`
+	// The client identifier registered in the external IdP, which is different from the Matrix client. In-place replacement is not supported after configuration.
+	//
+	// example:
+	//
+	// example-client
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The absolute HTTPS discovery endpoint. This parameter is mutually exclusive with manually specified endpoints.
+	//
+	// example:
+	//
+	// https://idp.example.com/.well-known/openid-configuration
+	DiscoveryEndpoint *string `json:"discoveryEndpoint,omitempty" xml:"discoveryEndpoint,omitempty"`
+	// The absolute HTTPS issuer of the external IdP. In-place replacement is not supported after configuration.
+	//
+	// example:
+	//
+	// https://idp.example.com
+	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The absolute HTTPS URL required in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/jwks
+	JwksUri *string `json:"jwksUri,omitempty" xml:"jwksUri,omitempty"`
+	// Specifies whether PKCE is enabled. Default value: true. This parameter must be set to true when no client authentication is used.
+	//
+	// example:
+	//
+	// true
+	PkceRequired *bool `json:"pkceRequired,omitempty" xml:"pkceRequired,omitempty"`
+	// The array of scopes. The array must contain openid. Default values: openid, profile, and email.
+	//
+	// example:
+	//
+	// ["openid","profile","email"]
+	Scopes []*string `json:"scopes,omitempty" xml:"scopes,omitempty" type:"Repeated"`
+	// The claim name in the ID token used to match the SCIM externalId. If omitted during initial configuration, the default value sub is used. If omitted during an update, the saved value is retained. For Azure, you can enter oid. The value must be non-empty and cannot contain whitespace characters. In query results, oidc returns the saved value, and oidcConfiguration returns the actual upstream value, which may be empty.
+	//
+	// example:
+	//
+	// oid
+	SsoMappingClaim *string `json:"ssoMappingClaim,omitempty" xml:"ssoMappingClaim,omitempty"`
+	// The absolute HTTPS URL required in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/token
+	TokenEndpoint *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
+	// The optional absolute HTTPS URL in manual mode. Do not specify this parameter in discovery mode.
+	//
+	// example:
+	//
+	// https://idp.example.com/userinfo
+	UserinfoEndpoint *string `json:"userinfoEndpoint,omitempty" xml:"userinfoEndpoint,omitempty"`
+}
+
+func (s ListIdentityProvidersResponseBodyItemsOidc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListIdentityProvidersResponseBodyItemsOidc) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetAuthorizationEndpoint() *string {
+	return s.AuthorizationEndpoint
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetClientAuthMethod() *string {
+	return s.ClientAuthMethod
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetClientId() *string {
+	return s.ClientId
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetDiscoveryEndpoint() *string {
+	return s.DiscoveryEndpoint
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetIssuer() *string {
+	return s.Issuer
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetJwksUri() *string {
+	return s.JwksUri
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetPkceRequired() *bool {
+	return s.PkceRequired
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetScopes() []*string {
+	return s.Scopes
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetSsoMappingClaim() *string {
+	return s.SsoMappingClaim
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetTokenEndpoint() *string {
+	return s.TokenEndpoint
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) GetUserinfoEndpoint() *string {
+	return s.UserinfoEndpoint
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetAuthorizationEndpoint(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetClientAuthMethod(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.ClientAuthMethod = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetClientId(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.ClientId = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetDiscoveryEndpoint(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.DiscoveryEndpoint = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetIssuer(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetJwksUri(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.JwksUri = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetPkceRequired(v bool) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.PkceRequired = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetScopes(v []*string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.Scopes = v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetSsoMappingClaim(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.SsoMappingClaim = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetTokenEndpoint(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) SetUserinfoEndpoint(v string) *ListIdentityProvidersResponseBodyItemsOidc {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyItemsOidc) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListIdentityProvidersResponseBodyItemsSaml struct {
-	// The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required when manually specified. The query returns the short name.
+	// The SAML binding type, such as HTTP-Redirect or HTTP-POST. This parameter is required for manual configuration. The query returns the short name.
 	//
 	// example:
 	//
@@ -609,13 +805,13 @@ type ListIdentityProvidersResponseBodyItemsSaml struct {
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// Required when manually filled in. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually filled in. It must be an absolute HTTPS URL without user credentials and fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The list of IdP signing certificates. A non-empty array is required when manually specified. Use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
+	// The list of IdP signing certificates. A non-empty array is required for manual configuration. Use PEM X.509 certificate text. The system validates the current validity period. A maximum of two unique certificates are allowed.
 	//
 	// example:
 	//
@@ -672,13 +868,13 @@ func (s *ListIdentityProvidersResponseBodyItemsSaml) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyItemsSyncScope struct {
-	// When the mode is SelectedDepartments, this parameter must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+	// When set to SelectedDepartments, it must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When set to AllAuthorized, pass an empty array or omit this field.
 	//
 	// example:
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// The scope mode. Valid values: AllAuthorized: the full authorization scope, limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. A valid mode must be provided when explicitly submitting syncScope and is verified by the backend.
+	// AllAuthorized: the full authorized scope, limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. A valid mode must be provided and verified by the backend when explicitly submitting syncScope.
 	//
 	// example:
 	//

@@ -138,12 +138,24 @@ type UpdateMemoryStoreResponseBodyData struct {
 	//
 	// Used to save long-term user preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of events. You can query this value by calling the GetMemoryStore operation.
+	//
+	// example:
+	//
+	// 20
+	EventCount *int64 `json:"eventCount,omitempty" xml:"eventCount,omitempty"`
 	// The custom extraction instructions.
 	//
 	// example:
 	//
 	// Extract only long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
+	// The number of valid memories. You can query this value by calling the GetMemoryStore operation.
+	//
+	// example:
+	//
+	// 10
+	MemoryCount *int64 `json:"memoryCount,omitempty" xml:"memoryCount,omitempty"`
 	// The memory store ID.
 	//
 	// example:
@@ -192,8 +204,16 @@ func (s *UpdateMemoryStoreResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateMemoryStoreResponseBodyData) GetEventCount() *int64 {
+	return s.EventCount
+}
+
 func (s *UpdateMemoryStoreResponseBodyData) GetExtractInstructions() *string {
 	return s.ExtractInstructions
+}
+
+func (s *UpdateMemoryStoreResponseBodyData) GetMemoryCount() *int64 {
+	return s.MemoryCount
 }
 
 func (s *UpdateMemoryStoreResponseBodyData) GetMemoryStoreId() *string {
@@ -226,8 +246,18 @@ func (s *UpdateMemoryStoreResponseBodyData) SetDescription(v string) *UpdateMemo
 	return s
 }
 
+func (s *UpdateMemoryStoreResponseBodyData) SetEventCount(v int64) *UpdateMemoryStoreResponseBodyData {
+	s.EventCount = &v
+	return s
+}
+
 func (s *UpdateMemoryStoreResponseBodyData) SetExtractInstructions(v string) *UpdateMemoryStoreResponseBodyData {
 	s.ExtractInstructions = &v
+	return s
+}
+
+func (s *UpdateMemoryStoreResponseBodyData) SetMemoryCount(v int64) *UpdateMemoryStoreResponseBodyData {
+	s.MemoryCount = &v
 	return s
 }
 

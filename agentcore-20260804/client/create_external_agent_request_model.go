@@ -18,7 +18,7 @@ type iCreateExternalAgentRequest interface {
 type CreateExternalAgentRequest struct {
 	// The request body.
 	Body *CreateExternalAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved query parameter. Currently, the backend does not provide idempotency guarantees for deduplication or restoring the original acceptance result based on this identifier.
+	// The reserved query parameter. The backend does not provide idempotency guarantees for deduplication or restoring the original acceptance result based on this identifier at this time.
 	//
 	// example:
 	//
@@ -68,7 +68,9 @@ type CreateExternalAgentRequestBody struct {
 	//
 	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The agent instructions, which are used to guide the behavior of the agent.
+	// Optional. Credentials can be bound to both PLATFORM and RUNTIME model sources. When passing the object, you must explicitly provide a non-null credentialReferences list. Common environment variables are not supported.
+	Environment *CreateExternalAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	// The agent instruction, used to guide the behavior of the agent.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type CreateExternalAgentRequestBody struct {
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The model configuration. Available only when modelSource is PLATFORM.
 	Model *CreateExternalAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
+	// The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
 	//
 	// example:
 	//
@@ -110,6 +112,10 @@ func (s *CreateExternalAgentRequestBody) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateExternalAgentRequestBody) GetEnvironment() *CreateExternalAgentRequestBodyEnvironment {
+	return s.Environment
+}
+
 func (s *CreateExternalAgentRequestBody) GetInstruction() *string {
 	return s.Instruction
 }
@@ -140,6 +146,11 @@ func (s *CreateExternalAgentRequestBody) GetTools() []*CreateExternalAgentReques
 
 func (s *CreateExternalAgentRequestBody) SetDescription(v string) *CreateExternalAgentRequestBody {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateExternalAgentRequestBody) SetEnvironment(v *CreateExternalAgentRequestBodyEnvironment) *CreateExternalAgentRequestBody {
+	s.Environment = v
 	return s
 }
 
@@ -179,6 +190,11 @@ func (s *CreateExternalAgentRequestBody) SetTools(v []*CreateExternalAgentReques
 }
 
 func (s *CreateExternalAgentRequestBody) Validate() error {
+	if s.Environment != nil {
+		if err := s.Environment.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Model != nil {
 		if err := s.Model.Validate(); err != nil {
 			return err
@@ -208,6 +224,71 @@ func (s *CreateExternalAgentRequestBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateExternalAgentRequestBodyEnvironment struct {
+	// This list must be explicitly provided and cannot be null when the environment object is passed. The list is replaced as a whole. If environment is not passed during an update, the original binding is retained. If an empty list is passed or environment is null, the binding is cleared. Only the credential ID is passed, not the actual secret key.
+	CredentialReferences []*CreateExternalAgentRequestBodyEnvironmentCredentialReferences `json:"credentialReferences,omitempty" xml:"credentialReferences,omitempty" type:"Repeated"`
+}
+
+func (s CreateExternalAgentRequestBodyEnvironment) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExternalAgentRequestBodyEnvironment) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalAgentRequestBodyEnvironment) GetCredentialReferences() []*CreateExternalAgentRequestBodyEnvironmentCredentialReferences {
+	return s.CredentialReferences
+}
+
+func (s *CreateExternalAgentRequestBodyEnvironment) SetCredentialReferences(v []*CreateExternalAgentRequestBodyEnvironmentCredentialReferences) *CreateExternalAgentRequestBodyEnvironment {
+	s.CredentialReferences = v
+	return s
+}
+
+func (s *CreateExternalAgentRequestBodyEnvironment) Validate() error {
+	if s.CredentialReferences != nil {
+		for _, item := range s.CredentialReferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateExternalAgentRequestBodyEnvironmentCredentialReferences struct {
+	// Required when a credential reference item is passed. Validated by the backend.
+	//
+	// example:
+	//
+	// cred-example
+	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+}
+
+func (s CreateExternalAgentRequestBodyEnvironmentCredentialReferences) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExternalAgentRequestBodyEnvironmentCredentialReferences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalAgentRequestBodyEnvironmentCredentialReferences) GetCredentialId() *string {
+	return s.CredentialId
+}
+
+func (s *CreateExternalAgentRequestBodyEnvironmentCredentialReferences) SetCredentialId(v string) *CreateExternalAgentRequestBodyEnvironmentCredentialReferences {
+	s.CredentialId = &v
+	return s
+}
+
+func (s *CreateExternalAgentRequestBodyEnvironmentCredentialReferences) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateExternalAgentRequestBodyModel struct {
@@ -276,7 +357,7 @@ func (s *CreateExternalAgentRequestBodyModel) Validate() error {
 }
 
 type CreateExternalAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable the token quota. Default value: true. If set to false, the quota is disabled and existing quota rules are deleted.
+	// Specifies whether to enable the token quota. Defaults to true if not specified. Passing false disables and deletes existing quota rules.
 	//
 	// example:
 	//
@@ -359,19 +440,19 @@ type CreateExternalAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. REFERENCE references AI Registry, and STATIC is statically provided with the package.
+	// The skill source type. REFERENCE references the AI Registry. STATIC is statically provided with the deployment package.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The skill version field for compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this field in combination with sourceType.
+	// The skill version field for compatibility with legacy requests. Use sourceType and versionSelector for new requests. Do not submit it in combination with sourceType.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The skill reference version selector, which supports LABEL tags and VERSION specific versions. If omitted, LABEL/latest is used. STATIC sources do not provide a selector.
+	// The skill reference version selector. Supports LABEL tags and VERSION specific versions. Defaults to LABEL/latest if omitted. Selectors are not provided for STATIC sources.
 	VersionSelector *CreateExternalAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -429,7 +510,7 @@ func (s *CreateExternalAgentRequestBodySkills) Validate() error {
 }
 
 type CreateExternalAgentRequestBodySkillsVersionSelector struct {
-	// The version selector type. LABEL selects by tag, and VERSION selects by specific version.
+	// The version selector type. LABEL selects by tag. VERSION selects by specific version.
 	//
 	// example:
 	//
@@ -505,7 +586,7 @@ func (s *CreateExternalAgentRequestBodyTemplate) Validate() error {
 }
 
 type CreateExternalAgentRequestBodyTemplateAiRegistry struct {
-	// The name of the template in AI Registry.
+	// The name of the template in the AI Registry.
 	//
 	// This parameter is required.
 	//
@@ -513,7 +594,7 @@ type CreateExternalAgentRequestBodyTemplateAiRegistry struct {
 	//
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the template in AI Registry.
+	// The version of the template in the AI Registry.
 	//
 	// This parameter is required.
 	//

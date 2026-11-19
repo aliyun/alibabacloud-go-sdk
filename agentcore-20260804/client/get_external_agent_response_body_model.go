@@ -158,6 +158,8 @@ type GetExternalAgentResponseBodyData struct {
 	//
 	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The credential binding configuration.
+	Environment *GetExternalAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
 	// The runtime status information reported by the managed agent.
 	ExternalAgentStatus *GetExternalAgentResponseBodyDataExternalAgentStatus `json:"externalAgentStatus,omitempty" xml:"externalAgentStatus,omitempty" type:"Struct"`
 	// The agent instruction used to guide the behavior of the agent.
@@ -172,7 +174,7 @@ type GetExternalAgentResponseBodyData struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The processing status of the latest specification version. Valid values: pending, processing, waiting_retry, succeeded, failed, and superseded.
+	// The processing status of the latest specification version. Valid values: pending (pending), processing (processing), waiting_retry (waiting for retry), succeeded (succeeded), failed (failed), and superseded (superseded by a new version).
 	//
 	// example:
 	//
@@ -180,7 +182,7 @@ type GetExternalAgentResponseBodyData struct {
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
 	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
 	Model *GetExternalAgentResponseBodyDataModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The source of the model configuration. A value of PLATFORM indicates that the platform parses and delivers the model configuration. A value of RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be passed at the same time. Valid values: PLATFORM and RUNTIME.
+	// The source of the model configuration. A value of PLATFORM indicates that the platform parses and delivers the model configuration. A value of RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
 	//
 	// example:
 	//
@@ -206,7 +208,7 @@ type GetExternalAgentResponseBodyData struct {
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The list of skill configurations.
 	Skills []*GetExternalAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
-	// The status of the managed agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+	// The status of the managed agent. Valid values: Creating (creating), Running (running), Failed (failed), Updating (updating), Deleting (deleting), and Deleted (deleted).
 	//
 	// example:
 	//
@@ -260,6 +262,10 @@ func (s *GetExternalAgentResponseBodyData) GetDeployType() *string {
 
 func (s *GetExternalAgentResponseBodyData) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetExternalAgentResponseBodyData) GetEnvironment() *GetExternalAgentResponseBodyDataEnvironment {
+	return s.Environment
 }
 
 func (s *GetExternalAgentResponseBodyData) GetExternalAgentStatus() *GetExternalAgentResponseBodyDataExternalAgentStatus {
@@ -352,6 +358,11 @@ func (s *GetExternalAgentResponseBodyData) SetDescription(v string) *GetExternal
 	return s
 }
 
+func (s *GetExternalAgentResponseBodyData) SetEnvironment(v *GetExternalAgentResponseBodyDataEnvironment) *GetExternalAgentResponseBodyData {
+	s.Environment = v
+	return s
+}
+
 func (s *GetExternalAgentResponseBodyData) SetExternalAgentStatus(v *GetExternalAgentResponseBodyDataExternalAgentStatus) *GetExternalAgentResponseBodyData {
 	s.ExternalAgentStatus = v
 	return s
@@ -437,6 +448,11 @@ func (s *GetExternalAgentResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.Environment != nil {
+		if err := s.Environment.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ExternalAgentStatus != nil {
 		if err := s.ExternalAgentStatus.Validate(); err != nil {
 			return err
@@ -482,19 +498,19 @@ type GetExternalAgentResponseBodyDataConfiguredSkills struct {
 	//
 	// web-search
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. A value of REFERENCE indicates that the skill references AI Registry. A value of STATIC indicates that the skill is statically provided with the package.
+	// The skill source type. Valid values: REFERENCE (references AI Registry assets) and STATIC (statically provided with the deployment artifact).
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// A legacy compatibility field. For new requests, use sourceType and versionSelector.
+	// The version. This is a legacy compatibility field. For new requests, use sourceType and versionSelector.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The skill reference version selector. It supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+	// The skill reference version selector, which supports LABEL and VERSION. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *GetExternalAgentResponseBodyDataConfiguredSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -552,13 +568,13 @@ func (s *GetExternalAgentResponseBodyDataConfiguredSkills) Validate() error {
 }
 
 type GetExternalAgentResponseBodyDataConfiguredSkillsVersionSelector struct {
-	// The version selector type. A value of LABEL indicates selection by tag, and a value of VERSION indicates selection by specific version.
+	// The version selector type. A value of LABEL indicates selection by label, and a value of VERSION indicates selection by specific version.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The selector value. When the type is LABEL, this is the label name (such as latest). When the type is VERSION, this is the specific version number.
+	// The value of the selector. If the type is LABEL, the value is a label name such as latest. If the type is VERSION, the value is a specific version number.
 	//
 	// example:
 	//
@@ -596,20 +612,91 @@ func (s *GetExternalAgentResponseBodyDataConfiguredSkillsVersionSelector) Valida
 	return dara.Validate(s)
 }
 
+type GetExternalAgentResponseBodyDataEnvironment struct {
+	// The list of credential references. You must explicitly provide this list when passing the environment object, and it cannot be null. The list is replaced as a whole. If you do not pass the environment object during an update, the original bindings are retained. If you pass an empty list or set environment to null, the bindings are cleared. Pass only the credential ID, not the actual secret.
+	CredentialReferences []*GetExternalAgentResponseBodyDataEnvironmentCredentialReferences `json:"credentialReferences,omitempty" xml:"credentialReferences,omitempty" type:"Repeated"`
+}
+
+func (s GetExternalAgentResponseBodyDataEnvironment) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetExternalAgentResponseBodyDataEnvironment) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalAgentResponseBodyDataEnvironment) GetCredentialReferences() []*GetExternalAgentResponseBodyDataEnvironmentCredentialReferences {
+	return s.CredentialReferences
+}
+
+func (s *GetExternalAgentResponseBodyDataEnvironment) SetCredentialReferences(v []*GetExternalAgentResponseBodyDataEnvironmentCredentialReferences) *GetExternalAgentResponseBodyDataEnvironment {
+	s.CredentialReferences = v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataEnvironment) Validate() error {
+	if s.CredentialReferences != nil {
+		for _, item := range s.CredentialReferences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetExternalAgentResponseBodyDataEnvironmentCredentialReferences struct {
+	// Required when passing a credential reference item. This field is validated by the backend.
+	//
+	// example:
+	//
+	// cred-example
+	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+}
+
+func (s GetExternalAgentResponseBodyDataEnvironmentCredentialReferences) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetExternalAgentResponseBodyDataEnvironmentCredentialReferences) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalAgentResponseBodyDataEnvironmentCredentialReferences) GetCredentialId() *string {
+	return s.CredentialId
+}
+
+func (s *GetExternalAgentResponseBodyDataEnvironmentCredentialReferences) SetCredentialId(v string) *GetExternalAgentResponseBodyDataEnvironmentCredentialReferences {
+	s.CredentialId = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataEnvironmentCredentialReferences) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetExternalAgentResponseBodyDataExternalAgentStatus struct {
-	// The heartbeat status. ONLINE indicates that the latest heartbeat is within the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or the format is invalid. Valid values: ONLINE, STALE, and UNKNOWN.
+	// The heartbeat status. ONLINE indicates that the most recent heartbeat did not exceed the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or the format is invalid. Valid values:
+	//
+	// - ONLINE: Online.
+	//
+	// - STALE: Heartbeat expired.
+	//
+	// - UNKNOWN: Unknown.
 	//
 	// example:
 	//
 	// ONLINE
 	HeartbeatStatus *string `json:"heartbeatStatus,omitempty" xml:"heartbeatStatus,omitempty"`
-	// The last active time of the managed agent, in RFC 3339 format.
+	// The time when the managed agent was last active, in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	LastActiveAt *string `json:"lastActiveAt,omitempty" xml:"lastActiveAt,omitempty"`
-	// The time of the last heartbeat from the managed agent, in RFC 3339 format.
+	// The time of the most recent heartbeat from the managed agent, in RFC 3339 format.
 	//
 	// example:
 	//
@@ -693,13 +780,13 @@ type GetExternalAgentResponseBodyDataModel struct {
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
-	// The name of the upstream model.
+	// The upstream model name.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration and usage status in the current cycle. This parameter is empty if no quota is configured.
+	// The model token quota configuration and usage status in the current cycle. This field is empty if no quota is configured.
 	Quota *GetExternalAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -748,7 +835,7 @@ func (s *GetExternalAgentResponseBodyDataModel) Validate() error {
 }
 
 type GetExternalAgentResponseBodyDataModelQuota struct {
-	// Indicates whether the quota is enabled. This parameter is not returned if no quota is configured.
+	// Indicates whether the quota is enabled. This field is not returned if no quota is configured.
 	//
 	// example:
 	//
@@ -760,7 +847,7 @@ type GetExternalAgentResponseBodyDataModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// Indicates whether the quota is exceeded in the current cycle. This parameter is read-only and returned by the backend.
+	// Indicates whether the quota is exceeded in the current cycle. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -772,7 +859,7 @@ type GetExternalAgentResponseBodyDataModelQuota struct {
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The gateway quota rule status. This parameter is read-only and returned by the backend.
+	// The gateway quota rule status. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -784,7 +871,7 @@ type GetExternalAgentResponseBodyDataModelQuota struct {
 	//
 	// 1000000
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The number of tokens consumed in the current cycle. This parameter is read-only and returned by the backend.
+	// The number of tokens consumed in the current cycle. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -874,13 +961,13 @@ type GetExternalAgentResponseBodyDataSkills struct {
 	//
 	// 1.0.0
 	AppliedVersion *string `json:"appliedVersion,omitempty" xml:"appliedVersion,omitempty"`
-	// Indicates whether the item is from a fixed template. This field is read-only. Items from a template cannot be removed.
+	// Indicates whether the skill is from a fixed template. This field is read-only. Items from a template cannot be removed.
 	//
 	// example:
 	//
 	// false
 	FromTemplate *bool `json:"fromTemplate,omitempty" xml:"fromTemplate,omitempty"`
-	// The name of the skill.
+	// The skill name.
 	//
 	// example:
 	//
@@ -892,7 +979,7 @@ type GetExternalAgentResponseBodyDataSkills struct {
 	//
 	// 1.0.0
 	ResolvedVersion *string `json:"resolvedVersion,omitempty" xml:"resolvedVersion,omitempty"`
-	// The skill source type. A value of REFERENCE indicates that the skill references AI Registry. A value of STATIC indicates that the skill is statically provided with the package.
+	// The skill source type. Valid values: REFERENCE (references AI Registry assets) and STATIC (statically provided with the deployment artifact).
 	//
 	// example:
 	//
@@ -904,7 +991,7 @@ type GetExternalAgentResponseBodyDataSkills struct {
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The skill reference version selector. It supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+	// The skill reference version selector, which supports LABEL and VERSION. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *GetExternalAgentResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -989,13 +1076,13 @@ func (s *GetExternalAgentResponseBodyDataSkills) Validate() error {
 }
 
 type GetExternalAgentResponseBodyDataSkillsVersionSelector struct {
-	// The version selector type. A value of LABEL indicates selection by tag, and a value of VERSION indicates selection by specific version.
+	// The version selector type. A value of LABEL indicates selection by label, and a value of VERSION indicates selection by specific version.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The selector value. When the type is LABEL, this is the label name (such as latest). When the type is VERSION, this is the specific version number.
+	// The value of the selector. If the type is LABEL, the value is a label name such as latest. If the type is VERSION, the value is a specific version number.
 	//
 	// example:
 	//
@@ -1114,7 +1201,7 @@ func (s *GetExternalAgentResponseBodyDataTemplateAiRegistry) Validate() error {
 }
 
 type GetExternalAgentResponseBodyDataTools struct {
-	// The name of the tool.
+	// The tool name.
 	//
 	// This parameter is required.
 	//
@@ -1122,7 +1209,7 @@ type GetExternalAgentResponseBodyDataTools struct {
 	//
 	// code-reviewer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The tool type. Valid values: MCP.
+	// The tool type. Valid values: MCP (MCP tool).
 	//
 	// This parameter is required.
 	//

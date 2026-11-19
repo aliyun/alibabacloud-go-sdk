@@ -30,7 +30,7 @@ type SearchMemoriesResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The search results.
+	// The retrieval result.
 	Data *SearchMemoriesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -126,7 +126,9 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 }
 
 type SearchMemoriesResponseBodyData struct {
-	// The list of search results.
+	// The list of retrieval results.
+	//
+	// This parameter is required.
 	Memories []*SearchMemoriesResponseBodyDataMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
 }
 
@@ -162,14 +164,20 @@ func (s *SearchMemoriesResponseBodyData) Validate() error {
 
 type SearchMemoriesResponseBodyDataMemories struct {
 	// The matched memory.
+	//
+	// This parameter is required.
 	Memory *SearchMemoriesResponseBodyDataMemoriesMemory `json:"memory,omitempty" xml:"memory,omitempty" type:"Struct"`
 	// The relevance score.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.86
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
 	// The vector similarity.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -237,15 +245,33 @@ type SearchMemoriesResponseBodyDataMemoriesMemory struct {
 	// mem-2f5f9c5a8d0e4c3b
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
 	// The memory metadata.
+	//
+	// example:
+	//
+	// {"topic":"hiking"}
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The memory scope.
 	Scope *SearchMemoriesResponseBodyDataMemoriesMemoryScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The memory source. Valid values: session_extraction (extracted from session events), content_extraction (extracted from text or messages), and direct (written directly).
+	//
+	// example:
+	//
+	// session_extraction
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The memory content type. Valid values: semantic (semantic memory), skill (skill), user_profile (user preference), and session_summary (session summary).
+	//
+	// example:
+	//
+	// semantic
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The last updated time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-09-23T10:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// Indicates whether the memory is valid. A value of false indicates that the memory is revoked and is not included in valid memory retrieval.
+	Valid *bool `json:"valid,omitempty" xml:"valid,omitempty"`
 }
 
 func (s SearchMemoriesResponseBodyDataMemoriesMemory) String() string {
@@ -276,8 +302,20 @@ func (s *SearchMemoriesResponseBodyDataMemoriesMemory) GetScope() *SearchMemorie
 	return s.Scope
 }
 
+func (s *SearchMemoriesResponseBodyDataMemoriesMemory) GetSource() *string {
+	return s.Source
+}
+
+func (s *SearchMemoriesResponseBodyDataMemoriesMemory) GetType() *string {
+	return s.Type
+}
+
 func (s *SearchMemoriesResponseBodyDataMemoriesMemory) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *SearchMemoriesResponseBodyDataMemoriesMemory) GetValid() *bool {
+	return s.Valid
 }
 
 func (s *SearchMemoriesResponseBodyDataMemoriesMemory) SetContent(v *SearchMemoriesResponseBodyDataMemoriesMemoryContent) *SearchMemoriesResponseBodyDataMemoriesMemory {
@@ -305,8 +343,23 @@ func (s *SearchMemoriesResponseBodyDataMemoriesMemory) SetScope(v *SearchMemorie
 	return s
 }
 
+func (s *SearchMemoriesResponseBodyDataMemoriesMemory) SetSource(v string) *SearchMemoriesResponseBodyDataMemoriesMemory {
+	s.Source = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBodyDataMemoriesMemory) SetType(v string) *SearchMemoriesResponseBodyDataMemoriesMemory {
+	s.Type = &v
+	return s
+}
+
 func (s *SearchMemoriesResponseBodyDataMemoriesMemory) SetUpdatedAt(v string) *SearchMemoriesResponseBodyDataMemoriesMemory {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBodyDataMemoriesMemory) SetValid(v bool) *SearchMemoriesResponseBodyDataMemoriesMemory {
+	s.Valid = &v
 	return s
 }
 
@@ -326,6 +379,8 @@ func (s *SearchMemoriesResponseBodyDataMemoriesMemory) Validate() error {
 
 type SearchMemoriesResponseBodyDataMemoriesMemoryContent struct {
 	// The memory text.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -367,6 +422,12 @@ type SearchMemoriesResponseBodyDataMemoriesMemoryScope struct {
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The business team ID defined by the caller. If provided, it cannot be empty and can be up to 128 UTF-8 bytes in length.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
 	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
 	//
 	// example:
@@ -391,6 +452,10 @@ func (s *SearchMemoriesResponseBodyDataMemoriesMemoryScope) GetSessionId() *stri
 	return s.SessionId
 }
 
+func (s *SearchMemoriesResponseBodyDataMemoriesMemoryScope) GetTeamId() *string {
+	return s.TeamId
+}
+
 func (s *SearchMemoriesResponseBodyDataMemoriesMemoryScope) GetUserId() *string {
 	return s.UserId
 }
@@ -402,6 +467,11 @@ func (s *SearchMemoriesResponseBodyDataMemoriesMemoryScope) SetAgentId(v string)
 
 func (s *SearchMemoriesResponseBodyDataMemoriesMemoryScope) SetSessionId(v string) *SearchMemoriesResponseBodyDataMemoriesMemoryScope {
 	s.SessionId = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBodyDataMemoriesMemoryScope) SetTeamId(v string) *SearchMemoriesResponseBodyDataMemoriesMemoryScope {
+	s.TeamId = &v
 	return s
 }
 

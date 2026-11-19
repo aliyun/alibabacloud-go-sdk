@@ -15,12 +15,14 @@ type iListMemorySessionsRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListMemorySessionsRequest
 	GetNextToken() *string
+	SetTeamId(v string) *ListMemorySessionsRequest
+	GetTeamId() *string
 	SetUserId(v string) *ListMemorySessionsRequest
 	GetUserId() *string
 }
 
 type ListMemorySessionsRequest struct {
-	// The agent ID. If you do not specify this parameter, all agents are matched. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+	// The agent ID. If you do not specify this parameter, all agents are matched. The value must be 1 to 128 UTF-8 bytes in length and cannot contain a forward slash (/) or an asterisk (*).
 	//
 	// example:
 	//
@@ -38,7 +40,13 @@ type ListMemorySessionsRequest struct {
 	//
 	// eyJvZmZzZXQiOjEwMH0=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The user ID. If you do not specify this parameter, all users are matched. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+	// The business team ID defined by the caller.
+	//
+	// example:
+	//
+	// team-001
+	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The user ID. If you do not specify this parameter, all users are matched. The value must be 1 to 128 UTF-8 bytes in length and cannot contain a forward slash (/) or an asterisk (*).
 	//
 	// example:
 	//
@@ -66,6 +74,10 @@ func (s *ListMemorySessionsRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListMemorySessionsRequest) GetTeamId() *string {
+	return s.TeamId
+}
+
 func (s *ListMemorySessionsRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -82,6 +94,11 @@ func (s *ListMemorySessionsRequest) SetMaxResults(v int32) *ListMemorySessionsRe
 
 func (s *ListMemorySessionsRequest) SetNextToken(v string) *ListMemorySessionsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListMemorySessionsRequest) SetTeamId(v string) *ListMemorySessionsRequest {
+	s.TeamId = &v
 	return s
 }
 
