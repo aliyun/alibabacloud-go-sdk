@@ -28,21 +28,21 @@ type iDescribeAgenticDBPerformanceRequest interface {
 type DescribeAgenticDBPerformanceRequest struct {
 	// The statistical method for alerts. Valid values for different monitoring items:
 	//
-	// - Value: the value of the HTTP status code.
+	// - Value: The value of the HTTP status code.
 	//
-	// - Average: the average HTTP wait time.
+	// - Average: The average HTTP wait time.
 	//
-	// - Value: the value of the TELNET status code.
+	// - Value: The value of the TELNET status code.
 	//
-	// - TelnetLatency: the average TELNET wait time.
+	// - TelnetLatency: The average TELNET wait time.
 	//
-	// - Average: the average PING packet loss rate.
+	// - Average: The average PING packet loss rate.
 	//
 	// example:
 	//
 	// Average
 	Aggregate *bool `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// The ID of the anchor branch. If you do not specify this parameter, the main branch of the project is used by default.
+	// The anchor branch ID. If this parameter is not specified, the main branch of the project is used by default.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeAgenticDBPerformanceRequest struct {
 	//
 	// 2026-01-15T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The granularity of performance data. Valid values:
+	// The data granularity of performance data. Valid values:
 	//
 	// - 5
 	//

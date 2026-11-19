@@ -6276,7 +6276,7 @@ func (client *Client) CreateKnowledgeBaseWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Prerequisites: Before you call this operation, you must activate the PrivateLink service in your current account. If the service is not activated, the API returns the PrivateLinkService.NotOpen (400) error. You can check the activation status of the service in the PrivateLink console. Before creating a knowledge space, you must also prepare the VpcId, VSwitchId, SecurityGroupId, and OSSBucket parameters. You can query VPCs and vSwitches by calling the DescribeVpcs and DescribeVSwitches operations of VPC, query security groups by calling the DescribeSecurityGroups operation of ECS, and query buckets by calling the ListBuckets operation of OSS. If the resources do not exist, create them in the corresponding services first.
+// Prerequisites: You must activate the PrivateLink service in your current account before calling this operation. If the service is not activated, the operation returns the PrivateLinkService.NotOpen (400) error. You can check the service activation status in the PrivateLink console. Before creating a knowledge space, you must also prepare a VpcId, VSwitchId, SecurityGroupId, and OSSBucket. You can query VPCs and vSwitches by calling the VPC DescribeVpcs and DescribeVSwitches operations, query security groups by calling the ECS DescribeSecurityGroups operation, and query buckets by calling the OSS ListBuckets operation. If the resources do not exist, create them in the corresponding services first.
 //
 // @param request - CreateKnowledgeSpaceRequest
 //
@@ -6291,12 +6291,20 @@ func (client *Client) CreateKnowledgeSpaceWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoCreateMcpInstance) {
+		query["AutoCreateMcpInstance"] = request.AutoCreateMcpInstance
+	}
+
 	if !dara.IsNil(request.DBType) {
 		query["DBType"] = request.DBType
 	}
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EmbeddingDimension) {

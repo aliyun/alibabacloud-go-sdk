@@ -20,7 +20,7 @@ type iCreateKnowledgeSpaceResponseBody interface {
 }
 
 type CreateKnowledgeSpaceResponseBody struct {
-	// The PolarDB instance ID for automatic creation.
+	// The ID of the PolarDB instance for automatic creation.
 	//
 	// example:
 	//

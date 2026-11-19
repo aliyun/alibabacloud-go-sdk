@@ -9,10 +9,14 @@ type iCreateKnowledgeSpaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoCreateMcpInstance(v bool) *CreateKnowledgeSpaceRequest
+	GetAutoCreateMcpInstance() *bool
 	SetDBType(v string) *CreateKnowledgeSpaceRequest
 	GetDBType() *string
 	SetDescription(v string) *CreateKnowledgeSpaceRequest
 	GetDescription() *string
+	SetDryRun(v bool) *CreateKnowledgeSpaceRequest
+	GetDryRun() *bool
 	SetEmbeddingDimension(v int32) *CreateKnowledgeSpaceRequest
 	GetEmbeddingDimension() *int32
 	SetEmbeddingModel(v string) *CreateKnowledgeSpaceRequest
@@ -48,6 +52,12 @@ type iCreateKnowledgeSpaceRequest interface {
 }
 
 type CreateKnowledgeSpaceRequest struct {
+	// Specifies whether to automatically activate MCP. The specifications are fixed to polar.app.g2.medium with 2 nodes and the pay-as-you-go billing method. If you set this parameter to true, you must also explicitly set EnforceAcl to true.
+	//
+	// example:
+	//
+	// false
+	AutoCreateMcpInstance *bool `json:"AutoCreateMcpInstance,omitempty" xml:"AutoCreateMcpInstance,omitempty"`
 	// The type of the database engine.
 	//
 	// example:
@@ -60,6 +70,12 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to only validate the creation request without placing an order or creating resources.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The vector dimensions.
 	//
 	// This parameter is required.
@@ -76,7 +92,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// text-embedding-v4
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// Specifies whether to enforce access control list (ACL) authentication for the knowledge space.
+	// Specifies whether to enforce ACL authentication for the knowledge space.
 	//
 	// example:
 	//
@@ -128,7 +144,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the rerank model.
+	// The name of the reranking model.
 	//
 	// example:
 	//
@@ -142,7 +158,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// sg-********************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The shard size, in tokens.
+	// The shard size in tokens.
 	//
 	// This parameter is required.
 	//
@@ -152,9 +168,9 @@ type CreateKnowledgeSpaceRequest struct {
 	ShardingSize *int32 `json:"ShardingSize,omitempty" xml:"ShardingSize,omitempty"`
 	// The sharding strategy. Valid values:
 	//
-	// - hierarchical: hierarchical sharding. This is the default value.
+	// - hierarchical: The default value.
 	//
-	// - hybrid: hybrid sharding.
+	// - hybrid.
 	//
 	// This parameter is required.
 	//
@@ -162,7 +178,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// hierarchical
 	ShardingStrategy *string `json:"ShardingStrategy,omitempty" xml:"ShardingStrategy,omitempty"`
-	// The vSwitch for automatic creation of the database.
+	// The ID of the vSwitch for the automatic creation of the database.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +186,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC for automatic creation of the database.
+	// The ID of the VPC for the automatic creation of the database.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +194,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// vpc-*************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The active zone for automatic creation of the database.
+	// The active zone for the automatic creation of the database.
 	//
 	// This parameter is required.
 	//
@@ -196,12 +212,20 @@ func (s CreateKnowledgeSpaceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateKnowledgeSpaceRequest) GetAutoCreateMcpInstance() *bool {
+	return s.AutoCreateMcpInstance
+}
+
 func (s *CreateKnowledgeSpaceRequest) GetDBType() *string {
 	return s.DBType
 }
 
 func (s *CreateKnowledgeSpaceRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateKnowledgeSpaceRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateKnowledgeSpaceRequest) GetEmbeddingDimension() *int32 {
@@ -268,6 +292,11 @@ func (s *CreateKnowledgeSpaceRequest) GetZoneId() *string {
 	return s.ZoneId
 }
 
+func (s *CreateKnowledgeSpaceRequest) SetAutoCreateMcpInstance(v bool) *CreateKnowledgeSpaceRequest {
+	s.AutoCreateMcpInstance = &v
+	return s
+}
+
 func (s *CreateKnowledgeSpaceRequest) SetDBType(v string) *CreateKnowledgeSpaceRequest {
 	s.DBType = &v
 	return s
@@ -275,6 +304,11 @@ func (s *CreateKnowledgeSpaceRequest) SetDBType(v string) *CreateKnowledgeSpaceR
 
 func (s *CreateKnowledgeSpaceRequest) SetDescription(v string) *CreateKnowledgeSpaceRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateKnowledgeSpaceRequest) SetDryRun(v bool) *CreateKnowledgeSpaceRequest {
+	s.DryRun = &v
 	return s
 }
 

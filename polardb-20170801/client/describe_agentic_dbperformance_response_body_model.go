@@ -41,7 +41,7 @@ type DescribeAgenticDBPerformanceResponseBody struct {
 	//
 	// 2F029645-FED9-4FE8-A6D3-488954******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
 	//
 	// example:
 	//
