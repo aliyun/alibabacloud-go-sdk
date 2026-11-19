@@ -15,10 +15,12 @@ type iQuotaUsage interface {
 	GetInstanceCount() *int64
 	SetMemoryGB(v float64) *QuotaUsage
 	GetMemoryGB() *float64
+	SetScalingCpuCoresPerMinute(v float64) *QuotaUsage
+	GetScalingCpuCoresPerMinute() *float64
 }
 
 type QuotaUsage struct {
-	// The consumed CPU quota in vCPUs, not the CPU utilization.
+	// The consumed CPU quota in vCPUs, which does not represent CPU utilization.
 	//
 	// example:
 	//
@@ -30,12 +32,18 @@ type QuotaUsage struct {
 	//
 	// 1
 	InstanceCount *int64 `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
-	// The consumed memory quota in GB, not the actual memory used by processes.
+	// The consumed memory quota in GB, which does not represent the actual memory used by processes.
 	//
 	// example:
 	//
 	// 1.5
 	MemoryGB *float64 `json:"memoryGB,omitempty" xml:"memoryGB,omitempty"`
+	// The number of cores consumed from the team\\"s exclusive CPU creation quota that have not yet been naturally replenished. This is not the cumulative creation volume over the last minute. This field is omitted when no valid exclusive bucket snapshot is available, and actual zeros and decimals are retained.
+	//
+	// example:
+	//
+	// 19.875
+	ScalingCpuCoresPerMinute *float64 `json:"scalingCpuCoresPerMinute,omitempty" xml:"scalingCpuCoresPerMinute,omitempty"`
 }
 
 func (s QuotaUsage) String() string {
@@ -58,6 +66,10 @@ func (s *QuotaUsage) GetMemoryGB() *float64 {
 	return s.MemoryGB
 }
 
+func (s *QuotaUsage) GetScalingCpuCoresPerMinute() *float64 {
+	return s.ScalingCpuCoresPerMinute
+}
+
 func (s *QuotaUsage) SetCpuCores(v float64) *QuotaUsage {
 	s.CpuCores = &v
 	return s
@@ -70,6 +82,11 @@ func (s *QuotaUsage) SetInstanceCount(v int64) *QuotaUsage {
 
 func (s *QuotaUsage) SetMemoryGB(v float64) *QuotaUsage {
 	s.MemoryGB = &v
+	return s
+}
+
+func (s *QuotaUsage) SetScalingCpuCoresPerMinute(v float64) *QuotaUsage {
+	s.ScalingCpuCoresPerMinute = &v
 	return s
 }
 

@@ -1321,7 +1321,7 @@ func (client *Client) GetCustomDomain(domainName *string, request *GetCustomDoma
 //
 // Description:
 //
-// Views monitoring metrics at a specific point in time or queries trends over a period of time. Supports querying by account, team, template, or sandbox.
+// Retrieves monitoring metrics at a specific point in time or queries metric trends over a period of time. You can filter queries by account, team, template, or sandbox.
 //
 // @param tmpReq - GetMetricDataRequest
 //
@@ -1418,7 +1418,7 @@ func (client *Client) GetMetricDataWithOptions(tmpReq *GetMetricDataRequest, hea
 //
 // Description:
 //
-// Views monitoring metrics at a specific point in time or queries trends over a period of time. Supports querying by account, team, template, or sandbox.
+// Retrieves monitoring metrics at a specific point in time or queries metric trends over a period of time. You can filter queries by account, team, template, or sandbox.
 //
 // @param request - GetMetricDataRequest
 //

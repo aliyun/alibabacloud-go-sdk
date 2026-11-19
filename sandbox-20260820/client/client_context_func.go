@@ -880,7 +880,7 @@ func (client *Client) GetCustomDomainWithContext(ctx context.Context, domainName
 //
 // Description:
 //
-// Views monitoring metrics at a specific point in time or queries trends over a period of time. Supports querying by account, team, template, or sandbox.
+// Retrieves monitoring metrics at a specific point in time or queries metric trends over a period of time. You can filter queries by account, team, template, or sandbox.
 //
 // @param tmpReq - GetMetricDataRequest
 //

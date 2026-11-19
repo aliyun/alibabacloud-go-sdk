@@ -28,7 +28,7 @@ type DescribeQuotaResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. A value of success indicates success.
+	// The response message. A value of success indicates a successful request.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iGetResourceUsageRequest interface {
 }
 
 type GetResourceUsageRequest struct {
-	// The end time of the query. This time is exclusive. Specify the time on the hour in UTC. The latest allowed end time is the start of the current hour. You can query data for a maximum of 7 days at a time. The end time must be later than the start time.
+	// The end time of the query. This time is exclusive. Specify the time on the hour in UTC. The latest allowed time is the start of the current hour. You can query data for a maximum of 7 days at a time. The end time must be later than the start time.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,13 @@ type GetResourceUsageRequest struct {
 	//
 	// 2026-11-05T02:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The granularity at which usage data is aggregated. Set this parameter to All to view the cumulative usage over the entire query interval, to Hour to view the hourly usage, or to Day to aggregate the usage every 24 hours from the start time. The last interval can be less than 24 hours.
+	// The granularity at which usage data is aggregated. Valid values:
+	//
+	// - All: Aggregates the cumulative usage over the entire query period.
+	//
+	// - Hour: Aggregates the usage by hour.
+	//
+	// - Day: Aggregates the usage every 24 hours starting from the startTime. The last period may be less than 24 hours.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +50,7 @@ type GetResourceUsageRequest struct {
 	//
 	// Hour
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	// The grouping keys. You can group the results by any combination of teamID, templateID, and sandboxPlan. Each key can be specified only once. If you do not specify this parameter, the results are aggregated over the entire query scope.
+	// The keys used to group the results. You can specify any combination of teamID, templateID, and sandboxPlan. Each key can be specified only once. If you do not specify this parameter, the results are aggregated over the entire query scope.
 	//
 	// example:
 	//
@@ -76,7 +82,7 @@ type GetResourceUsageRequest struct {
 	//
 	// 4hrtmghh2nzrsdh6yr65
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
-	// The usage items to query. You can query 1 to 6 different usage items at a time. CPU usage items include cpuActive and cpuIdle. Memory usage items include memoryActive and memoryIdle. Disk usage items include disk and diskDeepSleep. The disk item includes the usage of disks in deep sleep mode.
+	// The usage items to query. You can specify 1 to 6 different usage items in a single request. CPU usage items include cpuActive and cpuIdle. Memory usage items include memoryActive and memoryIdle. Disk usage items include disk and diskDeepSleep. The disk item includes the usage of deep sleep disks.
 	//
 	// This parameter is required.
 	//

@@ -20,7 +20,7 @@ type iGetResourceUsageResponseBody interface {
 }
 
 type GetResourceUsageResponseBody struct {
-	// The response code. A value of 200 indicates success. Other values indicate specific error codes.
+	// The response code. The value is 200 if the request is successful. If the request fails, the value is the corresponding error code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetResourceUsageResponseBody struct {
 	//
 	// 12345678-1234-5678-9abc-123456789abc
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The usage results for the query interval and each group.
+	// The usage results for the query period and each group.
 	//
 	// example:
 	//

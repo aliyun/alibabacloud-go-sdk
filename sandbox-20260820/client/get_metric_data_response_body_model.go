@@ -20,13 +20,13 @@ type iGetMetricDataResponseBody interface {
 }
 
 type GetMetricDataResponseBody struct {
-	// The status code. A value of 200 indicates success. If the request fails, the corresponding error code is returned.
+	// The response code. A value of 200 indicates success. If the request fails, the corresponding error code is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The message returned for the request.
+	// The description of the request result.
 	//
 	// example:
 	//
