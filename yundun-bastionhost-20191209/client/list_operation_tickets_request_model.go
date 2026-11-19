@@ -28,11 +28,13 @@ type iListOperationTicketsRequest interface {
 }
 
 type ListOperationTicketsRequest struct {
-	// The approval status. Valid values:
+	// The status of the O&M ticket. Valid values:
 	//
-	// - 1: Pending approval.
+	// - **1**: Pending approval.
 	//
-	// - 2: Processed.
+	// - **2**: Approved.
+	//
+	// > If this parameter is not specified, the default value is 1, and only tickets pending approval are queried.
 	//
 	// example:
 	//
@@ -44,9 +46,9 @@ type ListOperationTicketsRequest struct {
 	//
 	// 10.167.XX.XX
 	AssetAddress *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
-	// The instance ID of the Bastionhost instance.
+	// The instance ID of the Bastionhost.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the parameter value.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +62,7 @@ type ListOperationTicketsRequest struct {
 	//
 	// 1
 	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
-	// The page number for a paged query. Default value: **1**.
+	// The page number of the page to return in a paged query. Default value: **1**.
 	//
 	// example:
 	//
@@ -68,9 +70,9 @@ type ListOperationTicketsRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The maximum number of entries to return on each page in a paged query.
 	//
-	// The maximum value of the PageSize parameter is 1000. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+	// Maximum value of PageSize: 1000. Default value: 20. If PageSize is left empty, 20 entries are returned by default.
 	//
-	// > We recommend that you specify a value for the PageSize parameter.
+	// > Specify a value for PageSize.
 	//
 	// example:
 	//

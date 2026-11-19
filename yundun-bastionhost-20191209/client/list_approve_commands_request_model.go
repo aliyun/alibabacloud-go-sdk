@@ -26,25 +26,27 @@ type iListApproveCommandsRequest interface {
 }
 
 type ListApproveCommandsRequest struct {
-	// The approval status. Valid values:
+	// The status of the approval request. Valid values:
 	//
-	// - 1: Pending.
+	// - **1**: Pending approval.
 	//
-	// - 2: Processed.
+	// - **2**: Approved.
+	//
+	// > If this parameter is not specified, the default value is 1, and only approval requests in the pending approval status are queried.
 	//
 	// example:
 	//
 	// 1
 	ApprovalStatus *int32 `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The ID of the command approval.
+	// The ID of the command approval request.
 	//
 	// example:
 	//
 	// 1
 	ApproveCommandId *string `json:"ApproveCommandId,omitempty" xml:"ApproveCommandId,omitempty"`
-	// The instance ID of the Bastionhost.
+	// The ID of the Bastionhost instance.
 	//
-	// > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
+	// > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,7 @@ type ListApproveCommandsRequest struct {
 	//
 	// bastionhost-cn-zvp2xvysf08
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the current page for a paged query. Default value: **1**.
+	// The page number of the current page in a paging query. Default value: **1**.
 	//
 	// This parameter is required.
 	//
@@ -60,11 +62,11 @@ type ListApproveCommandsRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries to return on each page for a paged query.
+	// The maximum number of entries to return on each page in a paging query.
 	//
-	// The maximum value of the PageSize parameter is 1000. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+	// The maximum value of the PageSize parameter is 1000. The default value is 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > Specify a value for the PageSize parameter.
+	// > Do not leave the PageSize parameter empty.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +82,7 @@ type ListApproveCommandsRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID of the Bastionhost instance.
 	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	// > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//

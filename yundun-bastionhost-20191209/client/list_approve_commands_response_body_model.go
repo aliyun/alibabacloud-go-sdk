@@ -83,11 +83,11 @@ func (s *ListApproveCommandsResponseBody) Validate() error {
 }
 
 type ListApproveCommandsResponseBodyApproveCommands struct {
-	// The approval status. Valid values:
+	// The status of the approval request. Valid values:
 	//
-	// - 1: Pending.
+	// - **1**: Pending approval.
 	//
-	// - 2: Processed.
+	// - **2**: Approved.
 	//
 	// example:
 	//
@@ -99,31 +99,31 @@ type ListApproveCommandsResponseBodyApproveCommands struct {
 	//
 	// 1
 	ApproveCommandId *string `json:"ApproveCommandId,omitempty" xml:"ApproveCommandId,omitempty"`
-	// The name of the asset account used for O&M.
+	// The name of the O&M asset account.
 	//
 	// example:
 	//
 	// root
 	AssetAccountName *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
-	// The IP address of the asset for O&M.
+	// The IP address of the O&M asset.
 	//
 	// example:
 	//
 	// 10.167.XX.XX
 	AssetIp *string `json:"AssetIp,omitempty" xml:"AssetIp,omitempty"`
-	// The name of the asset for O&M.
+	// The name of the O&M asset.
 	//
 	// example:
 	//
 	// poros-test
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The source IP address from which the application is submitted.
+	// The source IP address from which the request was submitted.
 	//
 	// example:
 	//
 	// 172.18.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The Bastionhost user who submitted the application.
+	// The Bastionhost user who submitted the request.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListApproveCommandsResponseBodyApproveCommands struct {
 	//
 	// /bin/bash
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The time when the application was submitted. Unit: seconds. The value is a UNIX timestamp.
+	// The time when the request was submitted. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1679393152
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the protocol used for O&M.
+	// The name of the O&M protocol.
 	//
 	// example:
 	//
@@ -153,9 +153,9 @@ type ListApproveCommandsResponseBodyApproveCommands struct {
 	//
 	// 95f873ab64a76d5b0000000000004d5e
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The approval status. Valid values:
+	// The approval status. Valid value:
 	//
-	// - **Wait**: Pending.
+	// - **Wait**: Pending approval.
 	//
 	// example:
 	//

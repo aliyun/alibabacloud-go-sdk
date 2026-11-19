@@ -1139,6 +1139,58 @@ func (client *Client) AttachReviewersToReviewRuleWithContext(ctx context.Context
 
 // Summary:
 //
+// Withdraws a submitted O&M request.
+//
+// @param request - CancelOperationTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOperationTicketResponse
+func (client *Client) CancelOperationTicketWithContext(ctx context.Context, request *CancelOperationTicketRequest, runtime *dara.RuntimeOptions) (_result *CancelOperationTicketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OperationTicketId) {
+		query["OperationTicketId"] = request.OperationTicketId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelOperationTicket"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelOperationTicketResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the security groups that control inbound and outbound network traffic for a Bastionhost instance.
 //
 // @param request - ConfigInstanceSecurityGroupsRequest
@@ -5903,13 +5955,13 @@ func (client *Client) ImportKMSSecretsForHostWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Retrieves the list of commands that require approval.
+// Queries a list of commands pending approval.
 //
 // Description:
 //
-// This operation allows administrators to retrieve the list of commands that require approval.
+// This operation allows administrators to retrieve a list of commands pending approval.
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
+// The queries per second (QPS) limit for a single user is 10. If this limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - ListApproveCommandsRequest
 //
@@ -7897,13 +7949,13 @@ func (client *Client) ListOperationHostsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the list of O&M tickets pending approval.
+// Retrieves a list of O&M tickets pending approval.
 //
 // Description:
 //
-// This operation is used by administrators to query the list of O&M tickets pending approval.
+// This API operation is used by administrators to retrieve a list of O&M tickets pending approval.
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - ListOperationTicketsRequest
 //

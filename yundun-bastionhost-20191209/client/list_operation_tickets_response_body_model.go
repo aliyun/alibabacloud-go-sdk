@@ -83,23 +83,23 @@ func (s *ListOperationTicketsResponseBody) Validate() error {
 }
 
 type ListOperationTicketsResponseBodyOperationTickets struct {
-	// The ID of the user who submitted the O&M ticket.
+	// The ID of the O&M applicant.
 	//
 	// example:
 	//
 	// 1
 	ApplyUserId *string `json:"ApplyUserId,omitempty" xml:"ApplyUserId,omitempty"`
-	// The username of the user who submitted the O&M ticket.
+	// The username of the O&M applicant.
 	//
 	// example:
 	//
 	// test
 	ApplyUsername *string `json:"ApplyUsername,omitempty" xml:"ApplyUsername,omitempty"`
-	// The approval status. Valid values:
+	// The status of the O&M ticket. Valid values:
 	//
-	// - 1: Pending approval.
+	// - **1**: Pending approval.
 	//
-	// - 2: Processed.
+	// - **2**: Approved.
 	//
 	// example:
 	//
@@ -111,63 +111,63 @@ type ListOperationTicketsResponseBodyOperationTickets struct {
 	//
 	// Comment
 	ApproveComment *string `json:"ApproveComment,omitempty" xml:"ApproveComment,omitempty"`
-	// The ID of the asset account requested for O&M.
+	// The ID of the asset account for which O&M is requested.
 	//
 	// example:
 	//
 	// 1
 	AssetAccountId *string `json:"AssetAccountId,omitempty" xml:"AssetAccountId,omitempty"`
-	// The logon name of the asset account requested for O&M.
+	// The logon name of the asset account for which O&M is requested.
 	//
 	// example:
 	//
 	// root
 	AssetAccountName *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
-	// The address of the asset requested for O&M.
+	// The address of the asset for which O&M is requested.
 	//
 	// example:
 	//
 	// 10.167.XX.XX
 	AssetAddress *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
-	// The ID of the asset requested for O&M.
+	// The ID of the asset for which O&M is requested.
 	//
 	// example:
 	//
 	// 2
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The name of the asset requested for O&M.
+	// The name of the asset for which O&M is requested.
 	//
 	// example:
 	//
 	// poros-test
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The ID of the network domain to which the asset requested for O&M belongs.
+	// The ID of the network domain to which the asset for which O&M is requested belongs.
 	//
 	// example:
 	//
 	// 2
 	AssetNetworkDomainId *string `json:"AssetNetworkDomainId,omitempty" xml:"AssetNetworkDomainId,omitempty"`
-	// The operating system type of the asset requested for O&M.
+	// The operating system type of the asset for which O&M is requested.
 	//
 	// example:
 	//
 	// Linux
 	AssetOs *string `json:"AssetOs,omitempty" xml:"AssetOs,omitempty"`
-	// The name of the asset source to which the asset requested for O&M belongs. Valid values:
+	// The name of the asset source to which the asset for which O&M is requested belongs. Valid values:
 	//
-	// - **Local**: Local host.
+	// - **Local**: Local host
 	//
-	// - **Ecs**: ECS instance.
+	// - **Ecs**: ECS instance
 	//
-	// - **Rds**: ApsaraDB RDS instance.
+	// - **Rds**: RDS instance
 	//
-	// - The name of a third-party asset source.
+	// - The name of a third-party asset source
 	//
 	// example:
 	//
 	// Local
 	AssetSource *string `json:"AssetSource,omitempty" xml:"AssetSource,omitempty"`
-	// The ID of the asset source to which the asset requested for O&M belongs.
+	// The ID of the asset source to which the asset for which O&M is requested belongs.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListOperationTicketsResponseBodyOperationTickets struct {
 	//
 	// 0
 	EffectCount *int32 `json:"EffectCount,omitempty" xml:"EffectCount,omitempty"`
-	// The end time of the O&M session specified by the O&M engineer. The value is a UNIX timestamp in seconds.
+	// The end time of the approved O&M period specified by the O&M engineer. The value is a UNIX timestamp in seconds.
 	//
 	// > A value of 0 indicates that the O&M engineer did not specify an end time when submitting the ticket.
 	//
@@ -197,7 +197,7 @@ type ListOperationTicketsResponseBodyOperationTickets struct {
 	//
 	// 1679393152
 	EffectEndTime *int32 `json:"EffectEndTime,omitempty" xml:"EffectEndTime,omitempty"`
-	// The start time of the O&M session specified by the O&M engineer. The value is a UNIX timestamp in seconds.
+	// The start time of the approved O&M period specified by the O&M engineer. The value is a UNIX timestamp in seconds.
 	//
 	// > A value of 0 indicates that the O&M engineer did not specify a start time when submitting the ticket.
 	//
@@ -211,7 +211,7 @@ type ListOperationTicketsResponseBodyOperationTickets struct {
 	//
 	// 1
 	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
-	// The name of the protocol requested for O&M.
+	// The name of the protocol used for the O&M request.
 	//
 	// example:
 	//
