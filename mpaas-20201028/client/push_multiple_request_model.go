@@ -348,6 +348,7 @@ type PushMultipleRequestTargetMsg struct {
 	// This parameter is required.
 	Target           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	VendorTemplate   *string `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
 }
 
 func (s PushMultipleRequestTargetMsg) String() string {
@@ -374,6 +375,10 @@ func (s *PushMultipleRequestTargetMsg) GetTemplateKeyValue() *string {
 	return s.TemplateKeyValue
 }
 
+func (s *PushMultipleRequestTargetMsg) GetVendorTemplate() *string {
+	return s.VendorTemplate
+}
+
 func (s *PushMultipleRequestTargetMsg) SetExtendedParams(v string) *PushMultipleRequestTargetMsg {
 	s.ExtendedParams = &v
 	return s
@@ -391,6 +396,11 @@ func (s *PushMultipleRequestTargetMsg) SetTarget(v string) *PushMultipleRequestT
 
 func (s *PushMultipleRequestTargetMsg) SetTemplateKeyValue(v string) *PushMultipleRequestTargetMsg {
 	s.TemplateKeyValue = &v
+	return s
+}
+
+func (s *PushMultipleRequestTargetMsg) SetVendorTemplate(v string) *PushMultipleRequestTargetMsg {
+	s.VendorTemplate = &v
 	return s
 }
 

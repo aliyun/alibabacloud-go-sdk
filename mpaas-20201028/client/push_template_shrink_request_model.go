@@ -51,6 +51,8 @@ type iPushTemplateShrinkRequest interface {
 	GetStrategyType() *int32
 	SetTargetMsgkey(v string) *PushTemplateShrinkRequest
 	GetTargetMsgkey() *string
+	SetTargetVendorTemplate(v string) *PushTemplateShrinkRequest
+	GetTargetVendorTemplate() *string
 	SetTaskName(v string) *PushTemplateShrinkRequest
 	GetTaskName() *string
 	SetTemplateKeyValue(v string) *PushTemplateShrinkRequest
@@ -65,8 +67,12 @@ type iPushTemplateShrinkRequest interface {
 	GetTransparentMessagePayload() interface{}
 	SetTransparentMessageUrgency(v string) *PushTemplateShrinkRequest
 	GetTransparentMessageUrgency() *string
+	SetUseVoip(v bool) *PushTemplateShrinkRequest
+	GetUseVoip() *bool
 	SetVendorTemplate(v string) *PushTemplateShrinkRequest
 	GetVendorTemplate() *string
+	SetVoipMap(v string) *PushTemplateShrinkRequest
+	GetVoipMap() *string
 	SetWorkspaceId(v string) *PushTemplateShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -96,16 +102,19 @@ type PushTemplateShrinkRequest struct {
 	StrategyContent   *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
 	StrategyType      *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// This parameter is required.
-	TargetMsgkey     *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
-	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	TargetMsgkey         *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TargetVendorTemplate *string `json:"TargetVendorTemplate,omitempty" xml:"TargetVendorTemplate,omitempty"`
+	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue     *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
 	// This parameter is required.
 	TemplateName               *string     `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TenantId                   *string     `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
 	TransparentMessagePayload  interface{} `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency  *string     `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
+	UseVoip                    *bool       `json:"UseVoip,omitempty" xml:"UseVoip,omitempty"`
 	VendorTemplate             *string     `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
+	VoipMap                    *string     `json:"VoipMap,omitempty" xml:"VoipMap,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -202,6 +211,10 @@ func (s *PushTemplateShrinkRequest) GetTargetMsgkey() *string {
 	return s.TargetMsgkey
 }
 
+func (s *PushTemplateShrinkRequest) GetTargetVendorTemplate() *string {
+	return s.TargetVendorTemplate
+}
+
 func (s *PushTemplateShrinkRequest) GetTaskName() *string {
 	return s.TaskName
 }
@@ -230,8 +243,16 @@ func (s *PushTemplateShrinkRequest) GetTransparentMessageUrgency() *string {
 	return s.TransparentMessageUrgency
 }
 
+func (s *PushTemplateShrinkRequest) GetUseVoip() *bool {
+	return s.UseVoip
+}
+
 func (s *PushTemplateShrinkRequest) GetVendorTemplate() *string {
 	return s.VendorTemplate
+}
+
+func (s *PushTemplateShrinkRequest) GetVoipMap() *string {
+	return s.VoipMap
 }
 
 func (s *PushTemplateShrinkRequest) GetWorkspaceId() *string {
@@ -343,6 +364,11 @@ func (s *PushTemplateShrinkRequest) SetTargetMsgkey(v string) *PushTemplateShrin
 	return s
 }
 
+func (s *PushTemplateShrinkRequest) SetTargetVendorTemplate(v string) *PushTemplateShrinkRequest {
+	s.TargetVendorTemplate = &v
+	return s
+}
+
 func (s *PushTemplateShrinkRequest) SetTaskName(v string) *PushTemplateShrinkRequest {
 	s.TaskName = &v
 	return s
@@ -378,8 +404,18 @@ func (s *PushTemplateShrinkRequest) SetTransparentMessageUrgency(v string) *Push
 	return s
 }
 
+func (s *PushTemplateShrinkRequest) SetUseVoip(v bool) *PushTemplateShrinkRequest {
+	s.UseVoip = &v
+	return s
+}
+
 func (s *PushTemplateShrinkRequest) SetVendorTemplate(v string) *PushTemplateShrinkRequest {
 	s.VendorTemplate = &v
+	return s
+}
+
+func (s *PushTemplateShrinkRequest) SetVoipMap(v string) *PushTemplateShrinkRequest {
+	s.VoipMap = &v
 	return s
 }
 

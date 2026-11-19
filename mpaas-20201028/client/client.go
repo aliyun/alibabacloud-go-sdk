@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("mPaaS")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 dara.String("mpaas.aliyuncs.com"),
@@ -8366,6 +8374,10 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 		body["TargetMsgkey"] = request.TargetMsgkey
 	}
 
+	if !dara.IsNil(request.TargetVendorTemplate) {
+		body["TargetVendorTemplate"] = request.TargetVendorTemplate
+	}
+
 	if !dara.IsNil(request.TaskName) {
 		body["TaskName"] = request.TaskName
 	}
@@ -8394,8 +8406,16 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 		body["Uri"] = request.Uri
 	}
 
+	if !dara.IsNil(request.UseVoip) {
+		body["UseVoip"] = request.UseVoip
+	}
+
 	if !dara.IsNil(request.VendorTemplate) {
 		body["VendorTemplate"] = request.VendorTemplate
+	}
+
+	if !dara.IsNil(request.VoipMap) {
+		body["VoipMap"] = request.VoipMap
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -8550,6 +8570,10 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 		body["TargetMsgkey"] = request.TargetMsgkey
 	}
 
+	if !dara.IsNil(request.TargetVendorTemplate) {
+		body["TargetVendorTemplate"] = request.TargetVendorTemplate
+	}
+
 	if !dara.IsNil(request.TaskName) {
 		body["TaskName"] = request.TaskName
 	}
@@ -8578,8 +8602,16 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 		body["TransparentMessageUrgency"] = request.TransparentMessageUrgency
 	}
 
+	if !dara.IsNil(request.UseVoip) {
+		body["UseVoip"] = request.UseVoip
+	}
+
 	if !dara.IsNil(request.VendorTemplate) {
 		body["VendorTemplate"] = request.VendorTemplate
+	}
+
+	if !dara.IsNil(request.VoipMap) {
+		body["VoipMap"] = request.VoipMap
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -11008,6 +11040,84 @@ func (client *Client) StartUserAppAsyncEnhanceInMsa(request *StartUserAppAsyncEn
 	runtime := &dara.RuntimeOptions{}
 	_result = &StartUserAppAsyncEnhanceInMsaResponse{}
 	_body, _err := client.StartUserAppAsyncEnhanceInMsaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步小游戏实际上线状态
+//
+// @param request - SyncMiniGameOnlineStatusByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncMiniGameOnlineStatusByAppResponse
+func (client *Client) SyncMiniGameOnlineStatusByAppWithOptions(request *SyncMiniGameOnlineStatusByAppRequest, runtime *dara.RuntimeOptions) (_result *SyncMiniGameOnlineStatusByAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.MiniProgramCode) {
+		body["MiniProgramCode"] = request.MiniProgramCode
+	}
+
+	if !dara.IsNil(request.OnlineStatus) {
+		body["OnlineStatus"] = request.OnlineStatus
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncMiniGameOnlineStatusByApp"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncMiniGameOnlineStatusByAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步小游戏实际上线状态
+//
+// @param request - SyncMiniGameOnlineStatusByAppRequest
+//
+// @return SyncMiniGameOnlineStatusByAppResponse
+func (client *Client) SyncMiniGameOnlineStatusByApp(request *SyncMiniGameOnlineStatusByAppRequest) (_result *SyncMiniGameOnlineStatusByAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SyncMiniGameOnlineStatusByAppResponse{}
+	_body, _err := client.SyncMiniGameOnlineStatusByAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

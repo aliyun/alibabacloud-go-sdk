@@ -59,6 +59,8 @@ type iPushSimpleRequest interface {
 	GetStrategyType() *int32
 	SetTargetMsgkey(v string) *PushSimpleRequest
 	GetTargetMsgkey() *string
+	SetTargetVendorTemplate(v string) *PushSimpleRequest
+	GetTargetVendorTemplate() *string
 	SetTaskName(v string) *PushSimpleRequest
 	GetTaskName() *string
 	SetTenantId(v string) *PushSimpleRequest
@@ -73,8 +75,12 @@ type iPushSimpleRequest interface {
 	GetTransparentMessageUrgency() *string
 	SetUri(v string) *PushSimpleRequest
 	GetUri() *string
+	SetUseVoip(v bool) *PushSimpleRequest
+	GetUseVoip() *bool
 	SetVendorTemplate(v string) *PushSimpleRequest
 	GetVendorTemplate() *string
+	SetVoipMap(v string) *PushSimpleRequest
+	GetVoipMap() *string
 	SetWorkspaceId(v string) *PushSimpleRequest
 	GetWorkspaceId() *string
 }
@@ -110,6 +116,7 @@ type PushSimpleRequest struct {
 	StrategyType     *int32                 `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// This parameter is required.
 	TargetMsgkey         *string                `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TargetVendorTemplate *string                `json:"TargetVendorTemplate,omitempty" xml:"TargetVendorTemplate,omitempty"`
 	TaskName             *string                `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TenantId             *string                `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	ThirdChannelCategory map[string]interface{} `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
@@ -118,7 +125,9 @@ type PushSimpleRequest struct {
 	TransparentMessagePayload interface{} `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency *string     `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
 	Uri                       *string     `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UseVoip                   *bool       `json:"UseVoip,omitempty" xml:"UseVoip,omitempty"`
 	VendorTemplate            *string     `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
+	VoipMap                   *string     `json:"VoipMap,omitempty" xml:"VoipMap,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -231,6 +240,10 @@ func (s *PushSimpleRequest) GetTargetMsgkey() *string {
 	return s.TargetMsgkey
 }
 
+func (s *PushSimpleRequest) GetTargetVendorTemplate() *string {
+	return s.TargetVendorTemplate
+}
+
 func (s *PushSimpleRequest) GetTaskName() *string {
 	return s.TaskName
 }
@@ -259,8 +272,16 @@ func (s *PushSimpleRequest) GetUri() *string {
 	return s.Uri
 }
 
+func (s *PushSimpleRequest) GetUseVoip() *bool {
+	return s.UseVoip
+}
+
 func (s *PushSimpleRequest) GetVendorTemplate() *string {
 	return s.VendorTemplate
+}
+
+func (s *PushSimpleRequest) GetVoipMap() *string {
+	return s.VoipMap
 }
 
 func (s *PushSimpleRequest) GetWorkspaceId() *string {
@@ -392,6 +413,11 @@ func (s *PushSimpleRequest) SetTargetMsgkey(v string) *PushSimpleRequest {
 	return s
 }
 
+func (s *PushSimpleRequest) SetTargetVendorTemplate(v string) *PushSimpleRequest {
+	s.TargetVendorTemplate = &v
+	return s
+}
+
 func (s *PushSimpleRequest) SetTaskName(v string) *PushSimpleRequest {
 	s.TaskName = &v
 	return s
@@ -427,8 +453,18 @@ func (s *PushSimpleRequest) SetUri(v string) *PushSimpleRequest {
 	return s
 }
 
+func (s *PushSimpleRequest) SetUseVoip(v bool) *PushSimpleRequest {
+	s.UseVoip = &v
+	return s
+}
+
 func (s *PushSimpleRequest) SetVendorTemplate(v string) *PushSimpleRequest {
 	s.VendorTemplate = &v
+	return s
+}
+
+func (s *PushSimpleRequest) SetVoipMap(v string) *PushSimpleRequest {
+	s.VoipMap = &v
 	return s
 }
 
