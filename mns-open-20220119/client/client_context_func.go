@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds one or more Access Control List (ACL) rules to an endpoint of a specified type.
+// Creates one or more ACL rules for an access point of a specified type.
 //
 // @param tmpReq - AuthorizeEndpointAclRequest
 //
@@ -157,7 +157,7 @@ func (client *Client) CreateEventRuleWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Calls the CreateQueue operation to create a queue.
+// Creates a queue.
 //
 // @param tmpReq - CreateQueueRequest
 //
@@ -267,7 +267,7 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// Calls the CreateTopic operation to create a topic.
+// Creates a topic by calling the CreateTopic operation.
 //
 // @param request - CreateTopicRequest
 //
@@ -393,7 +393,7 @@ func (client *Client) DeleteEventRuleWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Calls the DeleteQueue operation to delete a created queue.
+// Deletes a queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -437,7 +437,7 @@ func (client *Client) DeleteQueueWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// Calls the DeleteTopic operation to delete a topic.
+// Deletes a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -481,7 +481,7 @@ func (client *Client) DeleteTopicWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// This operation disables an endpoint of a specified type, blocking all subsequent requests from the endpoint and returning an error.
+// Disables access points of a specified type. After the access points are disabled, all requests originating from the corresponding access points are intercepted and an error is returned.
 //
 // @param request - DisableEndpointRequest
 //
@@ -525,7 +525,7 @@ func (client *Client) DisableEndpointWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// This operation enables an endpoint of a specified type. After the endpoint is enabled, requests that originate from the endpoint and are on the Access Control List (ACL) whitelist are not blocked.
+// Enables an access point of a specified type. After the access point is enabled, requests from the corresponding access point that are in the ACL whitelist are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -569,7 +569,7 @@ func (client *Client) EnableEndpointWithContext(ctx context.Context, request *En
 
 // Summary:
 //
-// Retrieves the log configuration of a user.
+// Retrieves the user log configuration.
 //
 // @param request - GetAccountAttributesRequest
 //
@@ -650,7 +650,7 @@ func (client *Client) GetEndpointAttributeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves an event notification rule.
+// Retrieves event notification rules.
 //
 // @param request - GetEventRuleRequest
 //
@@ -880,7 +880,7 @@ func (client *Client) GetTopicAttributesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of event notification rules.
+// Queries the list of event notifications.
 //
 // @param tmpReq - ListEventRulesRequest
 //
@@ -1022,7 +1022,7 @@ func (client *Client) ListQueueWithContext(ctx context.Context, request *ListQue
 
 // Summary:
 //
-// You can call the ListSubscriptionByTopic operation to retrieve a paginated list of subscriptions for a topic.
+// Queries a paginated list of subscriptions under a specific topic.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -1146,7 +1146,7 @@ func (client *Client) ListTopicWithContext(ctx context.Context, request *ListTop
 
 // Summary:
 //
-// Revokes one or more Access Control List (ACL) rules for a specified endpoint type.
+// Deletes one or more ACL rules for an endpoint of a specified type.
 //
 // @param tmpReq - RevokeEndpointAclRequest
 //
@@ -1204,7 +1204,7 @@ func (client *Client) RevokeEndpointAclWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Sets the user log configuration.
+// Configures user log settings.
 //
 // @param request - SetAccountAttributesRequest
 //
@@ -1366,7 +1366,7 @@ func (client *Client) SetQueueAttributesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Call the SetSubscriptionAttributes operation to modify a subscription\\"s attributes.
+// Modifies the attributes of a subscription.
 //
 // @param tmpReq - SetSubscriptionAttributesRequest
 //
@@ -1440,7 +1440,7 @@ func (client *Client) SetSubscriptionAttributesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Calls the SetTopicAttributes operation to modify the attributes of a topic.
+// Modifies the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -1508,7 +1508,7 @@ func (client *Client) SetTopicAttributesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Calls the Subscribe operation to create a subscription for a topic.
+// Creates a subscription for a topic.
 //
 // @param tmpReq - SubscribeRequest
 //
@@ -1622,7 +1622,7 @@ func (client *Client) SubscribeWithContext(ctx context.Context, tmpReq *Subscrib
 
 // Summary:
 //
-// You can call Unsubscribe to cancel an existing subscription.
+// Cancels an existing subscription.
 //
 // @param request - UnsubscribeRequest
 //

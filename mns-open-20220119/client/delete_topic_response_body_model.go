@@ -31,6 +31,10 @@ type DeleteTopicResponseBody struct {
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response data.
+	//
+	// example:
+	//
+	// {"code":200,"success":true}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The response message.
 	//
@@ -38,7 +42,7 @@ type DeleteTopicResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -50,7 +54,7 @@ type DeleteTopicResponseBody struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

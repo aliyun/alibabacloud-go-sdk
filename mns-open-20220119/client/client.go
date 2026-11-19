@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Mns-open")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds one or more Access Control List (ACL) rules to an endpoint of a specified type.
+// Creates one or more ACL rules for an access point of a specified type.
 //
 // @param tmpReq - AuthorizeEndpointAclRequest
 //
@@ -116,7 +124,7 @@ func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointA
 
 // Summary:
 //
-// Adds one or more Access Control List (ACL) rules to an endpoint of a specified type.
+// Creates one or more ACL rules for an access point of a specified type.
 //
 // @param request - AuthorizeEndpointAclRequest
 //
@@ -242,7 +250,7 @@ func (client *Client) CreateEventRule(request *CreateEventRuleRequest) (_result 
 
 // Summary:
 //
-// Calls the CreateQueue operation to create a queue.
+// Creates a queue.
 //
 // @param tmpReq - CreateQueueRequest
 //
@@ -352,7 +360,7 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 
 // Summary:
 //
-// Calls the CreateQueue operation to create a queue.
+// Creates a queue.
 //
 // @param request - CreateQueueRequest
 //
@@ -370,7 +378,7 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 
 // Summary:
 //
-// Calls the CreateTopic operation to create a topic.
+// Creates a topic by calling the CreateTopic operation.
 //
 // @param request - CreateTopicRequest
 //
@@ -448,7 +456,7 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 
 // Summary:
 //
-// Calls the CreateTopic operation to create a topic.
+// Creates a topic by calling the CreateTopic operation.
 //
 // @param request - CreateTopicRequest
 //
@@ -532,7 +540,7 @@ func (client *Client) DeleteEventRule(request *DeleteEventRuleRequest) (_result 
 
 // Summary:
 //
-// Calls the DeleteQueue operation to delete a created queue.
+// Deletes a queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -576,7 +584,7 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 
 // Summary:
 //
-// Calls the DeleteQueue operation to delete a created queue.
+// Deletes a queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -594,7 +602,7 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 
 // Summary:
 //
-// Calls the DeleteTopic operation to delete a topic.
+// Deletes a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -638,7 +646,7 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 
 // Summary:
 //
-// Calls the DeleteTopic operation to delete a topic.
+// Deletes a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -656,7 +664,7 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 
 // Summary:
 //
-// This operation disables an endpoint of a specified type, blocking all subsequent requests from the endpoint and returning an error.
+// Disables access points of a specified type. After the access points are disabled, all requests originating from the corresponding access points are intercepted and an error is returned.
 //
 // @param request - DisableEndpointRequest
 //
@@ -700,7 +708,7 @@ func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest
 
 // Summary:
 //
-// This operation disables an endpoint of a specified type, blocking all subsequent requests from the endpoint and returning an error.
+// Disables access points of a specified type. After the access points are disabled, all requests originating from the corresponding access points are intercepted and an error is returned.
 //
 // @param request - DisableEndpointRequest
 //
@@ -718,7 +726,7 @@ func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result 
 
 // Summary:
 //
-// This operation enables an endpoint of a specified type. After the endpoint is enabled, requests that originate from the endpoint and are on the Access Control List (ACL) whitelist are not blocked.
+// Enables an access point of a specified type. After the access point is enabled, requests from the corresponding access point that are in the ACL whitelist are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -762,7 +770,7 @@ func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, 
 
 // Summary:
 //
-// This operation enables an endpoint of a specified type. After the endpoint is enabled, requests that originate from the endpoint and are on the Access Control List (ACL) whitelist are not blocked.
+// Enables an access point of a specified type. After the access point is enabled, requests from the corresponding access point that are in the ACL whitelist are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -780,7 +788,7 @@ func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *E
 
 // Summary:
 //
-// Retrieves the log configuration of a user.
+// Retrieves the user log configuration.
 //
 // @param request - GetAccountAttributesRequest
 //
@@ -817,7 +825,7 @@ func (client *Client) GetAccountAttributesWithOptions(request *GetAccountAttribu
 
 // Summary:
 //
-// Retrieves the log configuration of a user.
+// Retrieves the user log configuration.
 //
 // @param request - GetAccountAttributesRequest
 //
@@ -897,7 +905,7 @@ func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest)
 
 // Summary:
 //
-// Retrieves an event notification rule.
+// Retrieves event notification rules.
 //
 // @param request - GetEventRuleRequest
 //
@@ -945,7 +953,7 @@ func (client *Client) GetEventRuleWithOptions(request *GetEventRuleRequest, runt
 
 // Summary:
 //
-// Retrieves an event notification rule.
+// Retrieves event notification rules.
 //
 // @param request - GetEventRuleRequest
 //
@@ -1237,7 +1245,7 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 
 // Summary:
 //
-// Queries a list of event notification rules.
+// Queries the list of event notifications.
 //
 // @param tmpReq - ListEventRulesRequest
 //
@@ -1319,7 +1327,7 @@ func (client *Client) ListEventRulesWithOptions(tmpReq *ListEventRulesRequest, r
 
 // Summary:
 //
-// Queries a list of event notification rules.
+// Queries the list of event notifications.
 //
 // @param request - ListEventRulesRequest
 //
@@ -1415,7 +1423,7 @@ func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueRe
 
 // Summary:
 //
-// You can call the ListSubscriptionByTopic operation to retrieve a paginated list of subscriptions for a topic.
+// Queries a paginated list of subscriptions under a specific topic.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -1479,7 +1487,7 @@ func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscripti
 
 // Summary:
 //
-// You can call the ListSubscriptionByTopic operation to retrieve a paginated list of subscriptions for a topic.
+// Queries a paginated list of subscriptions under a specific topic.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -1575,7 +1583,7 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 
 // Summary:
 //
-// Revokes one or more Access Control List (ACL) rules for a specified endpoint type.
+// Deletes one or more ACL rules for an endpoint of a specified type.
 //
 // @param tmpReq - RevokeEndpointAclRequest
 //
@@ -1633,7 +1641,7 @@ func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequ
 
 // Summary:
 //
-// Revokes one or more Access Control List (ACL) rules for a specified endpoint type.
+// Deletes one or more ACL rules for an endpoint of a specified type.
 //
 // @param request - RevokeEndpointAclRequest
 //
@@ -1651,7 +1659,7 @@ func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_res
 
 // Summary:
 //
-// Sets the user log configuration.
+// Configures user log settings.
 //
 // @param request - SetAccountAttributesRequest
 //
@@ -1711,7 +1719,7 @@ func (client *Client) SetAccountAttributesWithOptions(request *SetAccountAttribu
 
 // Summary:
 //
-// Sets the user log configuration.
+// Configures user log settings.
 //
 // @param request - SetAccountAttributesRequest
 //
@@ -1849,7 +1857,7 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 
 // Summary:
 //
-// Call the SetSubscriptionAttributes operation to modify a subscription\\"s attributes.
+// Modifies the attributes of a subscription.
 //
 // @param tmpReq - SetSubscriptionAttributesRequest
 //
@@ -1923,7 +1931,7 @@ func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscripti
 
 // Summary:
 //
-// Call the SetSubscriptionAttributes operation to modify a subscription\\"s attributes.
+// Modifies the attributes of a subscription.
 //
 // @param request - SetSubscriptionAttributesRequest
 //
@@ -1941,7 +1949,7 @@ func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttribut
 
 // Summary:
 //
-// Calls the SetTopicAttributes operation to modify the attributes of a topic.
+// Modifies the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -2009,7 +2017,7 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 
 // Summary:
 //
-// Calls the SetTopicAttributes operation to modify the attributes of a topic.
+// Modifies the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -2027,7 +2035,7 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 
 // Summary:
 //
-// Calls the Subscribe operation to create a subscription for a topic.
+// Creates a subscription for a topic.
 //
 // @param tmpReq - SubscribeRequest
 //
@@ -2141,7 +2149,7 @@ func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *da
 
 // Summary:
 //
-// Calls the Subscribe operation to create a subscription for a topic.
+// Creates a subscription for a topic.
 //
 // @param request - SubscribeRequest
 //
@@ -2159,7 +2167,7 @@ func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeRe
 
 // Summary:
 //
-// You can call Unsubscribe to cancel an existing subscription.
+// Cancels an existing subscription.
 //
 // @param request - UnsubscribeRequest
 //
@@ -2207,7 +2215,7 @@ func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtim
 
 // Summary:
 //
-// You can call Unsubscribe to cancel an existing subscription.
+// Cancels an existing subscription.
 //
 // @param request - UnsubscribeRequest
 //

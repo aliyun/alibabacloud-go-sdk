@@ -16,7 +16,7 @@ type iGetEndpointAttributeRequest interface {
 type GetEndpointAttributeRequest struct {
 	// The endpoint type. Valid values:
 	//
-	// - **public**: Internet endpoint. Currently, only public is supported.
+	// - **public**: Internet-facing endpoint. Currently, only public is supported.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iCreateTopicResponseBody interface {
 }
 
 type CreateTopicResponseBody struct {
-	// The response code.
+	// The HTTP status code of the response.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type CreateTopicResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123E62C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *CreateTopicResponseBody) Validate() error {
 }
 
 type CreateTopicResponseBodyData struct {
-	// The response code.
+	// The HTTP status code of the response.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type CreateTopicResponseBodyData struct {
 	//
 	// example:
 	//
-	// 无
+	// N/A
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the request was successful.
 	//

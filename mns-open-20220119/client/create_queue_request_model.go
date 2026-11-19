@@ -42,11 +42,7 @@ type iCreateQueueRequest interface {
 }
 
 type CreateQueueRequest struct {
-	// The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses.
-	//
-	// Valid values: 0 to 604800. Unit: seconds.
-	//
-	// Default value: 0.
+	// The delay time for all messages sent to the queue. A message can be consumed only after the specified delay time elapses from the time it is sent to the queue. Valid values: 0 to 604800. Unit: seconds. Default value: 0.
 	//
 	// example:
 	//
@@ -65,34 +61,28 @@ type CreateQueueRequest struct {
 	// example:
 	//
 	// true
-	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
-	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The maximum size of a message body that can be sent to the queue.
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// Specifies whether log broker encryption is enabled. Valid values: true and false.
+	EnableSSE *bool `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	// The KMS key ID. This parameter is required only when SseType is set to KMS.
 	//
-	// Valid values: 1024 to 65536. Unit: bytes.
+	// example:
 	//
-	// Default value: 65536.
+	// key-xxx
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum size of a message body that can be sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
 	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified duration elapses since a message is sent to the queue, the message is deleted regardless of whether it has been consumed.
-	//
-	// Valid values: 60 to 604800. Unit: seconds.
-	//
-	// Default value: 345600.
+	// The maximum retention period of a message in the queue. After the specified period elapses from the time the message is sent to the queue, the message is deleted regardless of whether it has been received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
 	//
 	// example:
 	//
 	// 345600
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum duration for which a ReceiveMessage request waits when the queue has no messages.
-	//
-	// Valid values: 0 to 30. Unit: seconds.
-	//
-	// Default value: 0.
+	// The maximum wait time for a ReceiveMessage request when no messages are available in the queue. Valid values: 0 to 30. Unit: seconds. Default value: 0.
 	//
 	// example:
 	//
@@ -108,25 +98,31 @@ type CreateQueueRequest struct {
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The type of the queue. Valid values:
 	//
-	//    	- normal: standard queue.
+	//    	- normal: Standard queue.
 	//
 	//    	- fifo: FIFO queue.
 	//
 	// example:
 	//
 	// normal
-	QueueType    *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
+	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
+	// The storage encryption algorithm. AES-256-GCM is supported. If you do not specify this parameter, the default algorithm is used.
+	//
+	// example:
+	//
+	// AES-256-GCM
 	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
-	SseType      *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The storage encryption method. Valid values: SMQ and KMS.
+	//
+	// example:
+	//
+	// KMS
+	SseType *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
 	// The list of resource tags.
 	Tag []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The throttling policy.
 	TenantRateLimitPolicy *CreateQueueRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
-	// The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
-	//
-	// Valid values: 1 to 43200. Unit: seconds.
-	//
-	// Default value: 30.
+	// The duration for which a message remains in the inactive state after it is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
@@ -301,7 +297,7 @@ func (s *CreateQueueRequest) Validate() error {
 }
 
 type CreateQueueRequestDlqPolicy struct {
-	// The target queue to which dead-letter messages are delivered.
+	// The destination queue for dead-letter messages.
 	//
 	// example:
 	//
@@ -313,7 +309,7 @@ type CreateQueueRequestDlqPolicy struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The maximum number of times a message can be delivered.
+	// The maximum number of receive attempts for a message.
 	//
 	// example:
 	//
@@ -361,13 +357,13 @@ func (s *CreateQueueRequestDlqPolicy) Validate() error {
 }
 
 type CreateQueueRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

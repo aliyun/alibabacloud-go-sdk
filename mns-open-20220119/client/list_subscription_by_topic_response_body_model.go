@@ -38,7 +38,7 @@ type ListSubscriptionByTopicResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListSubscriptionByTopicResponseBody struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *ListSubscriptionByTopicResponseBody) Validate() error {
 }
 
 type ListSubscriptionByTopicResponseBodyData struct {
-	// The entries on the current page.
+	// The results returned on the current page.
 	PageData []*ListSubscriptionByTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number of the returned results.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListSubscriptionByTopicResponseBodyData struct {
 	//
 	// 3
 	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -240,35 +240,33 @@ func (s *ListSubscriptionByTopicResponseBodyData) Validate() error {
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageData struct {
-	// The time when the subscription was created, in Unix time format.
+	// The time when the subscription was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
 	//
 	// example:
 	//
 	// 1449554806
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The dead-letter queue policy.
+	// The dead-letter policy.
 	DlqPolicy *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The endpoint of the subscription.
+	// The endpoint address of the subscription.
 	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The tag for message filtering in the subscription. Only messages with the same tag are pushed.
+	// The tag used to filter messages in the subscription. Only messages with matching tags are pushed.
 	//
 	// example:
 	//
 	// important
 	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
-	// The time when the subscription properties were last modified. This value is a UNIX timestamp.
+	// The time when the subscription attributes were last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
 	//
 	// example:
 	//
 	// 1449554806
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The format of the message content pushed to the endpoint.
-	//
-	// Valid values:
+	// The format of the message content pushed to the endpoint. Valid values:
 	//
 	// - XML
 	//
@@ -280,17 +278,17 @@ type ListSubscriptionByTopicResponseBodyDataPageData struct {
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	// The retry policy for message push failures to the endpoint. Valid values:
+	// The retry strategy used when a message fails to be pushed to the endpoint. Valid values:
 	//
-	// - BACKOFF_RETRY: backoff retry.
+	// - BACKOFF_RETRY: backoff retry
 	//
-	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry
 	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	// The subscription name.
+	// The name of the subscription.
 	//
 	// example:
 	//
@@ -302,7 +300,7 @@ type ListSubscriptionByTopicResponseBodyDataPageData struct {
 	//
 	// MyTopic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The AccountId of the owner of the topic to which the subscription belongs.
+	// The account ID of the topic owner to which the subscription belongs.
 	//
 	// example:
 	//
@@ -418,7 +416,7 @@ func (s *ListSubscriptionByTopicResponseBodyDataPageData) Validate() error {
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy struct {
-	// The destination queue for dead-letter messages.
+	// The destination queue for dead-letter message delivery.
 	//
 	// example:
 	//

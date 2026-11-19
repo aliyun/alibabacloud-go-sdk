@@ -22,7 +22,7 @@ type iSetAccountAttributesRequest interface {
 }
 
 type SetAccountAttributesRequest struct {
-	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	// Ensures the idempotence of the request. You can generate the value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see Ensure idempotence.
 	//
 	// example:
 	//

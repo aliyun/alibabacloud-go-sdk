@@ -40,35 +40,35 @@ type iSubscribeShrinkRequest interface {
 type SubscribeShrinkRequest struct {
 	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
-	// The email push attributes. This parameter is required when PushType is set to dm. The value is in JSON format and contains the following fields:
+	// The attributes for Direct Mail push. This parameter is required when the PushType parameter is set to dm. The value is in JSON format and contains the following fields:
 	//
-	// - AccountName: The sender address configured in DirectMail (such as notify@example.com).
+	// - AccountName: the sender address, which is the sender address configured in Direct Mail, such as notify@example.com.
 	//
-	// - Subject: The email subject.
+	// - Subject: the email subject.
 	DmAttributesShrink *string `json:"DmAttributes,omitempty" xml:"DmAttributes,omitempty"`
-	// The SMS push attributes. This parameter is required when PushType is set to alisms. The value is in JSON format and contains the following fields:
+	// The attributes for SMS push. This parameter is required when the PushType parameter is set to alisms. The value is in JSON format and contains the following fields:
 	//
-	// - TemplateCode: The SMS template code, which can be obtained from the Short Message Service console.
+	// - TemplateCode: the code of the SMS template, which can be obtained from the SMS console.
 	//
-	// - SignName: The SMS signature name.
+	// - SignName: the name of the SMS signature.
 	DysmsAttributesShrink *string `json:"DysmsAttributes,omitempty" xml:"DysmsAttributes,omitempty"`
-	// ## Endpoint address for receiving messages
+	// ## Endpoint for receiving messages
 	//
-	// The format varies depending on the value of `PushType`:
+	// The format varies based on the `PushType` parameter:
 	//
-	// - `PushType=http`: An HTTP/HTTPS callback URL, such as `http://example.com/callback` or `https://example.com/callback`.
+	// - `PushType=http`: The HTTP or HTTPS callback URL, such as `http://example.com/callback` or `https://example.com/callback`.
 	//
-	// - `PushType=queue`: The ARN of the destination queue, in the format `acs:mns:{RegionId}:{Alibaba Cloud account ID}:queues/{QueueName}`.
+	// - `PushType=queue`: The ARN of the destination queue, in the format of `acs:mns:{RegionId}:{Alibaba Cloud account ID}:/queues/{QueueName}`.
 	//
-	// - `PushType=dm`: The email push endpoint, in the fixed format `smq-ep:dm:{Alibaba Cloud account ID}:__dynamic`. Replace `{Alibaba Cloud account ID}` with your Alibaba Cloud account ID.
+	// - `PushType=dm`: The Direct Mail push endpoint, in the fixed format of `smq-ep:dm:{Alibaba Cloud account ID}:__dynamic`. Replace `{Alibaba Cloud account ID}` with the ID of your Alibaba Cloud account.
 	//
-	// - `PushType=dysms`: The SMS push endpoint, in the format `smq-ep:dysms:{Alibaba Cloud account ID}:{PhoneNumber}`.
+	// - `PushType=dysms`: The SMS push endpoint, in the format of `smq-ep:dysms:{Alibaba Cloud account ID}:{Phone number}`.
 	//
 	// - `PushType=kafka`: The Kafka push endpoint. The Kafka push type is deprecated.
 	//
-	// - `PushType=fc`: The Function Compute endpoint, in the format `acs:fc:{RegionId}:{Alibaba Cloud account ID}:services/{ServiceName}/functions/{FunctionName}`.
+	// - `PushType=fc`: The Function Compute endpoint, in the format of `acs:fc:{RegionId}:{Alibaba Cloud account ID}:services/{ServiceName}/functions/{FunctionName}`.
 	//
-	// - `PushType=eventbus`: The EventBridge endpoint, in the format `acs:eventbridge:{RegionId}:{Alibaba Cloud account ID}:eventbus/{EventBusName}`.
+	// - `PushType=eventbus`: The EventBridge endpoint, in the format of `acs:eventbridge:{RegionId}:{Alibaba Cloud account ID}:eventbus/{EventBusName}`.
 	//
 	// This parameter is required.
 	//
@@ -78,9 +78,11 @@ type SubscribeShrinkRequest struct {
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The Kafka push type is deprecated.
 	KafkaAttributesShrink *string `json:"KafkaAttributes,omitempty" xml:"KafkaAttributes,omitempty"`
-	// The tag used for message filtering in this subscription. Only messages with a matching tag are pushed. The value is a string of up to 16 characters.
+	// The tag used for message filtering in the subscription. Only messages with a matching tag are pushed.
 	//
-	// By default, no message filtering is applied.
+	// The value must be a string up to 16 characters in length.
+	//
+	// By default, message filtering is not performed.
 	//
 	// example:
 	//
@@ -90,53 +92,53 @@ type SubscribeShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// - `XML`: The message body is pushed in XML format. This is the default value.
+	// - `XML`: XML format (default)
 	//
-	// - `JSON`: The message body is pushed in JSON format.
+	// - `JSON`: JSON format
 	//
-	// - `SIMPLIFIED`: Only the raw message body content is pushed, without SMQ metadata wrapping.
+	// - `SIMPLIFIED`: original message body content without the SMQ metadata wrapper
 	//
 	// example:
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	// The retry strategy when an error occurs while pushing messages to the endpoint. Valid values:
+	// The retry strategy that is used when an error occurs during message pushing to the endpoint. Valid values:
 	//
-	// - BACKOFF_RETRY: backoff retry.
+	// - BACKOFF_RETRY: backoff retry (default)
 	//
-	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry
 	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	// ## Push type of the subscription
+	// ## Push types for subscriptions
 	//
 	// Valid values:
 	//
-	// - `http`: HTTP/HTTPS push. Pushes messages to a specified HTTP or HTTPS callback URL.
+	// - `http`: Pushes messages to the specified HTTP or HTTPS callback URL.
 	//
-	// - `queue`: Queue push. Pushes messages to a specified SMQ queue.
+	// - `queue`: Pushes messages to the specified Simple Message Queue (SMQ) queue.
 	//
-	// - `dm`: Email push. Sends notifications through DirectMail. You must also set the `DmAttributes` and `StsRoleArn` parameters.
+	// - `dm`: Sends notifications by using the Direct Mail service. You must also set the `DmAttributes` and `StsRoleArn` parameters.
 	//
-	// - `dysms`: SMS push. Sends notifications through Alibaba Cloud Short Message Service. You must also set the `DysmsAttributes` parameter.
+	// - `dysms`: Sends notifications by using the Alibaba Cloud SMS service. You must also set the `DysmsAttributes` parameter.
 	//
-	// - `fc`: Function Compute push. Pushes messages to Alibaba Cloud Function Compute (FC).
+	// - `fc`: Pushes messages to Alibaba Cloud Function Compute (FC).
 	//
-	// - `eventbus`: EventBridge push. Pushes messages to an EventBridge event bus.
+	// - `eventbus`: Pushes messages to an EventBridge event bus.
 	//
 	// **Note:**
 	//
-	// The following values are deprecated and are only used for compatibility with legacy subscriptions:
+	// The following values are deprecated and are retained only for compatibility with legacy subscriptions:
 	//
-	// - `mpush`: Mobile push.
+	// - `mpush`: mobile push
 	//
-	// - `alisms`: Legacy SMS.
+	// - `alisms`: legacy SMS
 	//
-	// - `email`: Legacy email. Use `dm` instead.
+	// - `email`: legacy email, use `dm` instead
 	//
-	// - `kafka`: Kafka push type is deprecated.
+	// - `kafka`: deprecated Kafka push type
 	//
 	// This parameter is required.
 	//
@@ -144,13 +146,13 @@ type SubscribeShrinkRequest struct {
 	//
 	// queue
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	// The ARN of the RAM role assumed by the service. The format is acs:ram::{Alibaba Cloud account ID}:role/{RoleName}. Replace {Alibaba Cloud account ID} with the Alibaba Cloud account ID that calls the API operation.
+	// The ARN of the RAM role assumed by the service. The format is acs:ram::{Alibaba Cloud account ID}:role/{RoleName}. Replace {Alibaba Cloud account ID} with the ID of the Alibaba Cloud account that calls the API operation.
 	//
 	// example:
 	//
 	// acs:ram::1234567890:role/AliyunMNSNotificationRole
 	StsRoleArn *string `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
-	// The name of the subscription.
+	// The name of the subscription. The name must be 1 to 255 characters in length. It must start with a letter or a digit, and can contain only letters, digits, and hyphens (-). The name cannot start with mns-reserved-.
 	//
 	// This parameter is required.
 	//
@@ -160,7 +162,7 @@ type SubscribeShrinkRequest struct {
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
 	// The throttling policy.
 	TenantRateLimitPolicyShrink *string `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
-	// The name of the topic.
+	// The name of the topic. The name must be 1 to 255 characters in length. It must start with a letter or a digit, and can contain only letters, digits, and hyphens (-). The name cannot start with mns-reserved-.
 	//
 	// This parameter is required.
 	//

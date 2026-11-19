@@ -18,9 +18,9 @@ type iAuthorizeEndpointAclRequest interface {
 }
 
 type AuthorizeEndpointAclRequest struct {
-	// The access control list (ACL) policy. Valid value:
+	// The ACL policy. Valid values:
 	//
-	// - **allow**: A CIDR whitelist. Only allow is supported.
+	// - **allow**: CIDR whitelist. Currently, only allow is supported.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type AuthorizeEndpointAclRequest struct {
 	//
 	// allow
 	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
-	// A list of CIDR blocks.
+	// The list of CIDR blocks. You must specify at least one CIDR block. Example: 192.168.1.0/24.
 	//
 	// This parameter is required.
 	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
-	// The type of the endpoint. Valid value:
+	// The access point type. Valid values:
 	//
-	// - **public**: An internet endpoint. Only public is supported.
+	// - **public**: Internet-facing access point. Currently, only public is supported.
 	//
 	// This parameter is required.
 	//

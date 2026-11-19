@@ -28,15 +28,13 @@ type iCreateEventRuleRequest interface {
 }
 
 type CreateEventRuleRequest struct {
-	// A client token to ensure the idempotence of the request.
-	//
-	// Generate a unique value for this parameter from your client for each request.
+	// The client token that is used to ensure the idempotence of the request. You can generate a value for this parameter on the client side and ensure that the value is unique across different requests.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This field is deprecated.
 	//
 	// example:
 	//
@@ -44,17 +42,17 @@ type CreateEventRuleRequest struct {
 	DeliveryMode *string `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
 	// The endpoint that receives messages for this subscription.
 	Endpoint *CreateEventRuleRequestEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
-	// This parameter is deprecated. Use Endpoint instead.
+	// **[Deprecated]*	- This field is deprecated. Use the Endpoint parameter instead.
 	Endpoints []*CreateEventRuleRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// A list of event types.
+	// The list of event types. Valid values depend on the selected cloud service. For example, if OSS is selected, common values include ObjectCreated:PutObject and ObjectRemoved:DeleteObject. For more information, see the event notification documentation for each cloud service.
 	//
 	// This parameter is required.
 	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// A list of matching rules. The logical relationship between the rules is OR.
+	// The list of matching rules. A maximum of 10 rules can be specified at the outer level. The rules are connected by the OR operator.
 	//
 	// This parameter is required.
 	MatchRules [][]*EventMatchRule `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
-	// The name of the Alibaba Cloud product for which you want to receive event notifications.
+	// The name of the cloud service for event notification. Currently, only OSS is supported.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +60,7 @@ type CreateEventRuleRequest struct {
 	//
 	// oss
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The name of the event rule.
+	// The name of the event notification rule. This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -171,17 +169,23 @@ func (s *CreateEventRuleRequest) Validate() error {
 }
 
 type CreateEventRuleRequestEndpoint struct {
+	// The ARN of the role for cross-account delivery. This parameter is required when EndpointType is set to queue and EndpointValue is set to the ARN of a cross-account queue, which means the account that owns the queue is different from the current account. Format: acs:ram::<UID of the account that owns the queue>:role/<Role name>. The role must be created by the account that owns the queue. The trust policy must allow the delivery account to assume the role, and the role must be granted permissions to send messages to the destination queue.
+	//
+	// example:
+	//
+	// acs:ram:1234567890:role/CrossAccountQueueRole
+	EndpointRoleName *string `json:"EndpointRoleName,omitempty" xml:"EndpointRoleName,omitempty"`
 	// The endpoint type. Valid values:
 	//
-	// - **topic**: The endpoint is a topic. A topic can deliver messages to multiple subscribers. You can add or remove subscribers later.
+	// - **topic**: Topic type. Topics support delivery to multiple subscription endpoints. You can add or remove subscription endpoints later.
 	//
-	// - **queue**: The endpoint is a queue. Messages are delivered directly to the queue. This simplifies the delivery path, but you cannot add new subscribers later.
+	// - **queue**: Queue type. Messages are delivered directly to the queue. This reduces the routing path, but you cannot add new subscription endpoints later.
 	//
 	// example:
 	//
 	// topic
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The value of the endpoint.
+	// The actual value of the endpoint. If EndpointType is set to topic, this parameter specifies the topic name. If EndpointType is set to queue, this parameter specifies the queue name.
 	//
 	// example:
 	//
@@ -197,12 +201,21 @@ func (s CreateEventRuleRequestEndpoint) GoString() string {
 	return s.String()
 }
 
+func (s *CreateEventRuleRequestEndpoint) GetEndpointRoleName() *string {
+	return s.EndpointRoleName
+}
+
 func (s *CreateEventRuleRequestEndpoint) GetEndpointType() *string {
 	return s.EndpointType
 }
 
 func (s *CreateEventRuleRequestEndpoint) GetEndpointValue() *string {
 	return s.EndpointValue
+}
+
+func (s *CreateEventRuleRequestEndpoint) SetEndpointRoleName(v string) *CreateEventRuleRequestEndpoint {
+	s.EndpointRoleName = &v
+	return s
 }
 
 func (s *CreateEventRuleRequestEndpoint) SetEndpointType(v string) *CreateEventRuleRequestEndpoint {
@@ -220,13 +233,13 @@ func (s *CreateEventRuleRequestEndpoint) Validate() error {
 }
 
 type CreateEventRuleRequestEndpoints struct {
-	// Deprecated. Use Endpoint.EndpointType instead.
+	// **[Deprecated]*	- This field is deprecated. Use Endpoint.EndpointType instead.
 	//
 	// example:
 	//
 	// http
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// Deprecated. Use Endpoint.EndpointValue instead.
+	// **[Deprecated]*	- This field is deprecated. Use Endpoint.EndpointValue instead.
 	//
 	// example:
 	//

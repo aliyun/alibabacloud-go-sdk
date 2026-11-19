@@ -38,19 +38,19 @@ type SetSubscriptionAttributesResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether the request succeeded.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ type SetSubscriptionAttributesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Whether the request succeeded.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

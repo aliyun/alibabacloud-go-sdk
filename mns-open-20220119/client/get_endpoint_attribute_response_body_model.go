@@ -182,7 +182,7 @@ func (s *GetEndpointAttributeResponseBodyData) Validate() error {
 type GetEndpointAttributeResponseBodyDataCidrList struct {
 	// The ACL policy. Valid values:
 	//
-	// - **allow**: The endpoint allows access from the corresponding CIDR block. Currently, only allow is supported.
+	// - **allow**: allows access from the corresponding CIDR block to the current endpoint. Currently, only allow is supported.
 	//
 	// example:
 	//

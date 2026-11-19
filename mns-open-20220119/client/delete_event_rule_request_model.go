@@ -16,7 +16,7 @@ type iDeleteEventRuleRequest interface {
 }
 
 type DeleteEventRuleRequest struct {
-	// The name of the cloud service for the event notification.
+	// The name of the cloud service for event notifications.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteEventRuleRequest struct {
 	//
 	// oss
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The name of the event rule.
+	// The name of the event notification rule.
 	//
 	// This parameter is required.
 	//

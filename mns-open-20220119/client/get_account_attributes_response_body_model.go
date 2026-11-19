@@ -38,7 +38,7 @@ type GetAccountAttributesResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetAccountAttributesResponseBodyData struct {
 	//
 	// test-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// Indicates whether the message trace feature is enabled.
+	// Indicates whether the message tracing feature is enabled.
 	//
 	// example:
 	//

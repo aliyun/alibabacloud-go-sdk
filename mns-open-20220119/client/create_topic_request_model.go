@@ -30,31 +30,51 @@ type iCreateTopicRequest interface {
 }
 
 type CreateTopicRequest struct {
-	// Specifies whether to enable the log management feature. Valid values:
+	// Specifies whether to enable the logging feature. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enables the feature.
 	//
-	// - false: Disabled.
+	// - false: disables the feature.
 	//
 	// Default value: false.
 	//
 	// example:
 	//
 	// true
-	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
-	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The maximum length of the message body sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// Specifies whether to enable server-side encryption for the message body. Valid values: true or false.
+	EnableSSE *bool `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	// The KMS key ID used when KMS encryption is enabled. The key must belong to the same account and region as the topic.
+	//
+	// example:
+	//
+	// key-xxx
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum size of the message body that can be sent to the topic.
+	//
+	// Valid values: 1024 to 65536. Unit: bytes.
+	//
+	// Default value: 65536.
 	//
 	// example:
 	//
 	// 10240
-	MaxMessageSize *int64  `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	SseAlgorithm   *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
-	SseType        *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// The server-side encryption algorithm. Currently, only AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
+	//
+	// example:
+	//
+	// AES-256-GCM
+	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	// The server-side encryption method. Valid values: SMQ (service-hosted key) or KMS (user-managed KMS key).
+	//
+	// example:
+	//
+	// KMS
+	SseType *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
 	// The list of resource tags.
 	Tag []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The name of the topic to create.
+	// The name of the topic. The name can be up to 120 characters in length and must start with a letter. It can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -64,9 +84,9 @@ type CreateTopicRequest struct {
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 	// The type of the topic. Valid values:
 	//
-	//    	- normal: normal topic
+	//    	- normal: standard topic.
 	//
-	//    	- fifo: FIFO topic
+	//    	- fifo: FIFO topic.
 	//
 	// example:
 	//

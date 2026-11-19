@@ -26,16 +26,18 @@ type iSetSubscriptionAttributesShrinkRequest interface {
 type SetSubscriptionAttributesShrinkRequest struct {
 	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
-	// The retry policy for message delivery failures to the endpoint. Valid values:
+	// The retry policy used when an error occurs while pushing messages to the endpoint. Valid values:
 	//
-	// - BACKOFF_RETRY: backoff retry.
+	// - BACKOFF_RETRY: backoff retry
 	//
-	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry
 	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The STS role ARN.
+	//
 	// example:
 	//
 	// acs:ram::1234567890:role/roleName

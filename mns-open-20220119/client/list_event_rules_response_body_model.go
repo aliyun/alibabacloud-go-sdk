@@ -38,19 +38,19 @@ type ListEventRulesResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123E62C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the response.
+	// The response status.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *ListEventRulesResponseBody) Validate() error {
 }
 
 type ListEventRulesResponseBodyData struct {
-	// This parameter is deprecated. The maximum number of entries is based on Total.
+	// **[Deprecated]*	- Use Total for the maximum number of entries in paged queries.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// This parameter is deprecated. Paged queries are based on PageNum.
+	// **[Deprecated]*	- Use PageNum for paging.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListEventRulesResponseBodyData struct {
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type ListEventRulesResponseBodyData struct {
 	//
 	// 3
 	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -270,17 +270,17 @@ func (s *ListEventRulesResponseBodyData) Validate() error {
 }
 
 type ListEventRulesResponseBodyDataPageData struct {
-	// This parameter is deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
 	// --
 	DeliveryMode *string `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
-	// The endpoint of the subscription.
+	// The endpoint address of the subscription.
 	Endpoint *ListEventRulesResponseBodyDataPageDataEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
 	// The list of event types.
 	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// The event matching rules. The rules have an OR relationship.
+	// The event matching rules with an OR relationship.
 	MatchRules [][]*EventMatchRule `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
 	// The name of the event notification rule.
 	//
@@ -288,7 +288,7 @@ type ListEventRulesResponseBodyDataPageData struct {
 	//
 	// rule-xsXDW
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The subscribers. A maximum of 20 entries are returned. If there are more subscribers, see [List Subscriptions](https://help.aliyun.com/document_detail/2804757.html).
+	// The subscription endpoints. A maximum of 20 entries are returned. If the number exceeds 20, use the [subscription list](https://help.aliyun.com/document_detail/2804757.html) to query.
 	Subscriptions []*ListEventRulesResponseBodyDataPageDataSubscriptions `json:"Subscriptions,omitempty" xml:"Subscriptions,omitempty" type:"Repeated"`
 	// The name of the topic.
 	//
@@ -390,15 +390,15 @@ func (s *ListEventRulesResponseBodyDataPageData) Validate() error {
 type ListEventRulesResponseBodyDataPageDataEndpoint struct {
 	// The endpoint type. Valid values:
 	//
-	// - **topic**: A topic can deliver messages to multiple subscribers. You can add or remove subscribers later.
+	// - **topic**: The topic type. A topic supports delivery to multiple subscription endpoints. You can add or remove subscription endpoints later.
 	//
-	// - **queue**: Messages are delivered directly to a queue. This simplifies the delivery path, but you cannot add new subscribers later.
+	// - **queue**: The queue type. Messages are delivered directly to a queue. This reduces the link path, but you cannot add new subscription endpoints later.
 	//
 	// example:
 	//
 	// topic
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The actual value of the endpoint.
+	// The actual value of the receiving endpoint.
 	//
 	// example:
 	//
@@ -443,7 +443,7 @@ type ListEventRulesResponseBodyDataPageDataSubscriptions struct {
 	//
 	// queue
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The actual value of the endpoint.
+	// The actual value of the receiving endpoint.
 	//
 	// example:
 	//
