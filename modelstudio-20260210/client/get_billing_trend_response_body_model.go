@@ -22,7 +22,7 @@ type iGetBillingTrendResponseBody interface {
 }
 
 type GetBillingTrendResponseBody struct {
-	// The request result code.
+	// The result code of the request.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetBillingTrendResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The returned data.
 	Data *GetBillingTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The description of the request result.
+	// The result message of the request.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *GetBillingTrendResponseBody) Validate() error {
 }
 
 type GetBillingTrendResponseBodyData struct {
-	// The total costs within the entire query time range, including the top N items and Other.
+	// The total cost within the entire query time range, including the top N groups and Others.
 	CostTotals *GetBillingTrendResponseBodyDataCostTotals `json:"costTotals,omitempty" xml:"costTotals,omitempty" type:"Struct"`
-	// The total costs of the top N groups and the optional Other group within the period.
+	// The total cost of the top N groups and the optional Others group within the period.
 	GroupByTotal []*GetBillingTrendResponseBodyDataGroupByTotal `json:"groupByTotal,omitempty" xml:"groupByTotal,omitempty" type:"Repeated"`
 	// The historical period data, which is returned when the includeHistoryPeriod input parameter is set to true.
 	HistoryPeriod *GetBillingTrendResponseBodyDataHistoryPeriod `json:"historyPeriod,omitempty" xml:"historyPeriod,omitempty" type:"Struct"`
@@ -365,9 +365,9 @@ func (s *GetBillingTrendResponseBodyDataGroupByTotal) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataHistoryPeriod struct {
-	// The total costs within the historical range, including the top N items and Other.
+	// The total cost within the historical range, including the top N groups and Others.
 	CostTotals *GetBillingTrendResponseBodyDataHistoryPeriodCostTotals `json:"costTotals,omitempty" xml:"costTotals,omitempty" type:"Struct"`
-	// The total costs of the top N groups and the optional Other group within the historical period.
+	// The total cost of the top N groups and the optional Others group within the historical period.
 	GroupByTotal []*GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal `json:"groupByTotal,omitempty" xml:"groupByTotal,omitempty" type:"Repeated"`
 	// The list of cost trends sorted in ascending order by time.
 	ResultByTime []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTime `json:"resultByTime,omitempty" xml:"resultByTime,omitempty" type:"Repeated"`
@@ -517,13 +517,13 @@ type GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal struct {
 	//
 	// 246
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The dimension value of the group. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+	// The dimension value of the group. A null value returns DIMENSION_FILTER_NULL_VALUE.
 	//
 	// example:
 	//
 	// qwen-plus
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+	// The display name of the group, which is affected by the locale parameter. A null value is displayed as a hyphen (-).
 	//
 	// example:
 	//
@@ -609,7 +609,7 @@ type GetBillingTrendResponseBodyDataHistoryPeriodResultByTime struct {
 	Period *string `json:"period,omitempty" xml:"period,omitempty"`
 	// The cost groups that actually exist in the current period.
 	PeriodDetails []*GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails `json:"periodDetails,omitempty" xml:"periodDetails,omitempty" type:"Repeated"`
-	// The total costs of the current period.
+	// The total cost of the current period.
 	Total *GetBillingTrendResponseBodyDataHistoryPeriodResultByTimeTotal `json:"total,omitempty" xml:"total,omitempty" type:"Struct"`
 }
 
@@ -673,19 +673,19 @@ type GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails struc
 	//
 	// 526
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The dimension value of the group. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+	// The dimension value of the group. A null value returns DIMENSION_FILTER_NULL_VALUE.
 	//
 	// example:
 	//
 	// qwen-plus
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+	// The display name of the group, which is affected by the locale parameter. A null value is displayed as a hyphen (-).
 	//
 	// example:
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The percentage of the group amount.
+	// The proportion of the group amount.
 	//
 	// example:
 	//
@@ -855,7 +855,7 @@ type GetBillingTrendResponseBodyDataResultByTime struct {
 	Period *string `json:"period,omitempty" xml:"period,omitempty"`
 	// The cost groups that actually exist in the current period.
 	PeriodDetails []*GetBillingTrendResponseBodyDataResultByTimePeriodDetails `json:"periodDetails,omitempty" xml:"periodDetails,omitempty" type:"Repeated"`
-	// The total costs of the current period.
+	// The total cost of the current period.
 	Total *GetBillingTrendResponseBodyDataResultByTimeTotal `json:"total,omitempty" xml:"total,omitempty" type:"Struct"`
 }
 
@@ -913,13 +913,13 @@ func (s *GetBillingTrendResponseBodyDataResultByTime) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataResultByTimePeriodDetails struct {
-	// The amount of the group in the current period.
+	// The amount of the group within the current period.
 	//
 	// example:
 	//
 	// 20
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The dimension value of the group. For data other than the top N items, DIMENSION_GROUP_OTHERS_VALUE is used.
+	// The dimension value of the group. Data other than the top N uses DIMENSION_GROUP_OTHERS_VALUE.
 	//
 	// example:
 	//
@@ -931,19 +931,19 @@ type GetBillingTrendResponseBodyDataResultByTimePeriodDetails struct {
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ratio of the current group amount to the total amount of the current period.
+	// The proportion of the current group amount to the total amount of the current period.
 	//
 	// example:
 	//
 	// 0.6667
 	Percentage *string `json:"percentage,omitempty" xml:"percentage,omitempty"`
-	// The pretax amount of the group in the current period.
+	// The pretax amount of the group within the current period.
 	//
 	// example:
 	//
 	// 18.87
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
-	// The tax amount of the group in the current period.
+	// The tax amount of the group within the current period.
 	//
 	// example:
 	//
@@ -1024,7 +1024,7 @@ type GetBillingTrendResponseBodyDataResultByTimeTotal struct {
 	//
 	// 30
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The currency of the amount in the current period.
+	// The currency of the amount for the current period.
 	//
 	// example:
 	//

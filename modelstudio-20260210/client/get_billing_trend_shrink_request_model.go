@@ -30,7 +30,7 @@ type iGetBillingTrendShrinkRequest interface {
 }
 
 type GetBillingTrendShrinkRequest struct {
-	// The dimension filter condition.
+	// The dimension filter conditions.
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
 	// The query granularity. This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetBillingTrendShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The time range to query, including the start time and end time. This parameter is required.
+	// The time range for the query, which includes the start time and end time. This parameter is required.
 	TimePeriodShrink *string `json:"timePeriod,omitempty" xml:"timePeriod,omitempty"`
 	// The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Other".
 	//

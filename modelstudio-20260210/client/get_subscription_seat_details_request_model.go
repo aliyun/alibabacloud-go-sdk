@@ -9,6 +9,8 @@ type iGetSubscriptionSeatDetailsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceCode(v string) *GetSubscriptionSeatDetailsRequest
+	GetInstanceCode() *string
 	SetPageNo(v int32) *GetSubscriptionSeatDetailsRequest
 	GetPageNo() *int32
 	SetPageSize(v int32) *GetSubscriptionSeatDetailsRequest
@@ -24,7 +26,13 @@ type iGetSubscriptionSeatDetailsRequest interface {
 }
 
 type GetSubscriptionSeatDetailsRequest struct {
-	// The page number. Default value: 1. Valid values: positive integers.
+	// The instance code of the seat.
+	//
+	// example:
+	//
+	// subs_xxxxx
+	InstanceCode *string `json:"InstanceCode,omitempty" xml:"InstanceCode,omitempty"`
+	// The page number. Default value: 1. Valid values: a positive integer.
 	//
 	// example:
 	//
@@ -36,13 +44,13 @@ type GetSubscriptionSeatDetailsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The filter for the seat assignment status. Valid values:
+	// Specifies whether to filter by seat assignment status. Valid values:
 	//
-	// - true: assigned
+	// - true: Assigned.
 	//
-	// - false: unassigned
+	// - false: Unassigned.
 	//
-	// - null: all
+	// - null: All.
 	//
 	// example:
 	//
@@ -54,13 +62,13 @@ type GetSubscriptionSeatDetailsRequest struct {
 	//
 	// seat-123456
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
-	// The seat type (specType). Valid values:
+	// The seat type. Valid values:
 	//
-	// - standard: standard seat
+	// - standard: Standard seat.
 	//
-	// - pro: advanced seat
+	// - pro: Pro seat.
 	//
-	// - max: premium seat
+	// - max: Premium seat.
 	//
 	// example:
 	//
@@ -76,6 +84,10 @@ func (s GetSubscriptionSeatDetailsRequest) String() string {
 
 func (s GetSubscriptionSeatDetailsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetSubscriptionSeatDetailsRequest) GetInstanceCode() *string {
+	return s.InstanceCode
 }
 
 func (s *GetSubscriptionSeatDetailsRequest) GetPageNo() *int32 {
@@ -100,6 +112,11 @@ func (s *GetSubscriptionSeatDetailsRequest) GetSeatType() *string {
 
 func (s *GetSubscriptionSeatDetailsRequest) GetStatusList() []*string {
 	return s.StatusList
+}
+
+func (s *GetSubscriptionSeatDetailsRequest) SetInstanceCode(v string) *GetSubscriptionSeatDetailsRequest {
+	s.InstanceCode = &v
+	return s
 }
 
 func (s *GetSubscriptionSeatDetailsRequest) SetPageNo(v int32) *GetSubscriptionSeatDetailsRequest {

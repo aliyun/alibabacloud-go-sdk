@@ -32,39 +32,39 @@ type iListModelsRequest interface {
 type ListModelsRequest struct {
 	// The model type. Valid values:
 	//
-	// - Reasoning: Deep thinking.
+	// - Reasoning: Deep thinking
 	//
-	// - VU: Visual understanding.
+	// - VU: Visual understanding
 	//
-	// - IG: Image generation.
+	// - IG: Image generation
 	//
-	// - VG: Video generation.
+	// - VG: Video generation
 	//
-	// - ASR: Speech recognition.
+	// - ASR: Speech recognition
 	//
-	// - TTS: Speech synthesis.
+	// - TTS: Speech synthesis
 	//
-	// - ME: Multimodal embedding.
+	// - ME: Multimodal embedding
 	//
-	// - Realtime-Omni: Real-time omni-modal.
+	// - Realtime-Omni: Real-time omni-modal
 	//
-	// - Multimodal-Omni: Omni-modal.
+	// - Multimodal-Omni: Omni-modal
 	//
-	// - Realtime-Text-to-Speech: Real-time speech synthesis.
+	// - Realtime-Text-to-Speech: Real-time speech synthesis
 	//
-	// - TG: Text generation.
+	// - TG: Text generation
 	//
-	// - TR: Text embedding.
+	// - TR: Text embedding
 	//
-	// - Realtime-ASR: Real-time speech recognition.
+	// - Realtime-ASR: Real-time speech recognition
 	//
-	// - Realtime-Audio-Translate: Real-time audio translation.
+	// - Realtime-Audio-Translate: Real-time audio translation
 	//
-	// - 3D-generation: 3D generation.
+	// - 3D-generation: 3D generation
 	//
-	// - Realtime-Chatting: Real-time voice conversation.
+	// - Realtime-Chatting: Real-time voice conversation
 	Capabilities []*string `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Repeated"`
-	// The context window size used to filter models with a context window smaller than this value.
+	// The context length. Used to filter models with a context length less than this value.
 	//
 	// example:
 	//
@@ -72,27 +72,27 @@ type ListModelsRequest struct {
 	ContextWindow *int64 `json:"contextWindow,omitempty" xml:"contextWindow,omitempty"`
 	// The model capability. Valid values:
 	//
-	// - model-experience: Playground.
+	// - model-experience: Playground
 	//
-	// - function-calling: Function calling.
+	// - function-calling: Function calling
 	//
-	// - structured-outputs: Structured output.
+	// - structured-outputs: Structured output
 	//
-	// - web-search: Web search.
+	// - web-search: Web search
 	//
-	// - prefix-completion: Partial mode.
+	// - prefix-completion: Partial mode
 	//
-	// - cache: Cache.
+	// - cache: Cache
 	//
-	// - batch: Batch inference.
+	// - batch: Batch inference
 	//
-	// - fine-tuning: Model fine-tuning.
+	// - fine-tuning: Model fine-tuning
 	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
 	// The language. Valid values:
 	//
-	// - zh-CN: Chinese.
+	// - zh-CN: Chinese
 	//
-	// - en-US: English.
+	// - en-US: English
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListModelsRequest struct {
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The next token.
+	// The page token.
 	//
 	// example:
 	//
@@ -124,31 +124,31 @@ type ListModelsRequest struct {
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The provider. Valid values:
 	//
-	// - qwen: Alibaba Cloud - Qwen.
+	// - qwen: Alibaba Cloud Qwen
 	//
-	// - zhipu-ai: Zhipu AI.
+	// - zhipu-ai: Zhipu AI
 	//
-	// - wan: Alibaba Cloud - Wan.
+	// - wan: Alibaba Cloud Wan
 	//
-	// - qwen-domain-model: Alibaba Cloud - Domain Model.
+	// - qwen-domain-model: Alibaba Cloud Domain Model
 	//
-	// - mini-max: MiniMax.
+	// - mini-max: MiniMax
 	//
-	// - moonshot-ai: Moonshot AI.
+	// - moonshot-ai: Moonshot AI
 	//
-	// - deepseek: DeepSeek.
+	// - deepseek: DeepSeek
 	//
-	// - happyhorse: Alibaba Cloud - HappyHorse.
+	// - happyhorse: Alibaba Cloud HappyHorse
 	//
-	// - kling: Kling AI.
+	// - kling: Kling AI
 	//
-	// - pixverse: PixVerse.
+	// - pixverse: PixVerse
 	//
-	// - vidu: Vidu.
+	// - vidu: Vidu
 	//
-	// - tripo: Tripo.
+	// - tripo: Tripo
 	//
-	// - xiaomi: Xiaomi MiMo.
+	// - xiaomi: Xiaomi MiMo
 	Providers []*string `json:"providers,omitempty" xml:"providers,omitempty" type:"Repeated"`
 }
 

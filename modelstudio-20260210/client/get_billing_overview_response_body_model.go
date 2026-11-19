@@ -30,7 +30,7 @@ type GetBillingOverviewResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The billing overview data.
 	Data *GetBillingOverviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The description of the request result.
+	// The result message of the request.
 	//
 	// example:
 	//
@@ -216,13 +216,13 @@ type GetBillingOverviewResponseBodyDataGroups struct {
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The list of commodity codes involved in the current group.
 	ArticleCodes []*string `json:"articleCodes,omitempty" xml:"articleCodes,omitempty" type:"Repeated"`
-	// The value of the grouping dimension. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+	// The value of the grouping dimension. If the value is empty, DIMENSION_FILTER_NULL_VALUE is returned.
 	//
 	// example:
 	//
 	// inference
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+	// The display name of the group, which is affected by the locale parameter. If the value is empty, a hyphen (-) is displayed.
 	//
 	// example:
 	//

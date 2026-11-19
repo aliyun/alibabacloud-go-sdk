@@ -44,7 +44,7 @@ type GetBillingOverviewShrinkRequest struct {
 	//
 	// MONTH
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	// The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
+	// The list of grouping conditions. Currently, exactly one grouping dimension must be specified.
 	GroupByShrink *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
 	// The language of the response. Default value: en-US.
 	//
@@ -58,7 +58,7 @@ type GetBillingOverviewShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The query time range, which includes the start and end times. Both the start and end times are included in the query range. The time format must be consistent with the granularity, and the start time cannot be later than the end time.
+	// The query time range, which includes start and end. Both the start time and end time are included in the query range. The time format must be consistent with granularity, and start cannot be later than end.
 	TimePeriodShrink *string `json:"timePeriod,omitempty" xml:"timePeriod,omitempty"`
 	// The number of groups to return. Valid values: 1 to 20. Default value: 20.
 	//

@@ -44,7 +44,7 @@ type GetBillingOverviewRequest struct {
 	//
 	// MONTH
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	// The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
+	// The list of grouping conditions. Currently, exactly one grouping dimension must be specified.
 	GroupBy []*GetBillingOverviewRequestGroupBy `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
 	// The language of the response. Default value: en-US.
 	//
@@ -58,7 +58,7 @@ type GetBillingOverviewRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The query time range, which includes the start and end times. Both the start and end times are included in the query range. The time format must be consistent with the granularity, and the start time cannot be later than the end time.
+	// The query time range, which includes start and end. Both the start time and end time are included in the query range. The time format must be consistent with granularity, and start cannot be later than end.
 	TimePeriod *GetBillingOverviewRequestTimePeriod `json:"timePeriod,omitempty" xml:"timePeriod,omitempty" type:"Struct"`
 	// The number of groups to return. Valid values: 1 to 20. Default value: 20.
 	//
@@ -222,7 +222,7 @@ func (s *GetBillingOverviewRequestFilter) Validate() error {
 }
 
 type GetBillingOverviewRequestFilterDimensions struct {
-	// The filter field. For more information, see the "Additional notes" section below.
+	// The filter field. For more information, see the supplementary notes below.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ func (s *GetBillingOverviewRequestFilterDimensions) Validate() error {
 }
 
 type GetBillingOverviewRequestGroupBy struct {
-	// The code of the grouping dimension. For more information, see the "Additional notes" section below.
+	// The code of the grouping dimension. For more information, see the supplementary notes below.
 	//
 	// example:
 	//
@@ -308,13 +308,13 @@ func (s *GetBillingOverviewRequestGroupBy) Validate() error {
 }
 
 type GetBillingOverviewRequestTimePeriod struct {
-	// The end time of the query. This time point is included in the query range. The format is determined by granularity.
+	// The end time of the query. This time point is included. The format is determined by `granularity`.
 	//
 	// example:
 	//
 	// 202609
 	End *string `json:"end,omitempty" xml:"end,omitempty"`
-	// The start time of the query. This time point is included in the query range. The format is determined by granularity.
+	// The start time of the query. This time point is included. The format is determined by `granularity`.
 	//
 	// example:
 	//

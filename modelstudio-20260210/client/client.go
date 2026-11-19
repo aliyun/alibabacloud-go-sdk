@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("ModelStudio")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -282,7 +290,7 @@ func (client *Client) BatchRevokeSeats(request *BatchRevokeSeatsRequest) (_resul
 
 // Summary:
 //
-// Creates an API key as an authentication credential before using large models or applications in Alibaba Cloud Model Studio.
+// Creates an API key as an authentication credential before you use large models or applications in Alibaba Cloud Model Studio.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -339,7 +347,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, head
 
 // Summary:
 //
-// Creates an API key as an authentication credential before using large models or applications in Alibaba Cloud Model Studio.
+// Creates an API key as an authentication credential before you use large models or applications in Alibaba Cloud Model Studio.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -1028,7 +1036,7 @@ func (client *Client) GetBillingOverview(request *GetBillingOverviewRequest) (_r
 
 // Summary:
 //
-// Queries the billing trends.
+// Queries billing trends.
 //
 // @param tmpReq - GetBillingTrendRequest
 //
@@ -1121,7 +1129,7 @@ func (client *Client) GetBillingTrendWithOptions(tmpReq *GetBillingTrendRequest,
 
 // Summary:
 //
-// Queries the billing trends.
+// Queries billing trends.
 //
 // @param request - GetBillingTrendRequest
 //
@@ -1268,7 +1276,7 @@ func (client *Client) GetOrganizationMemberSeatStats(request *GetOrganizationMem
 
 // Summary:
 //
-// Performs a paging query on seat details.
+// Performs a paged query on seat details with paging.
 //
 // @param request - GetSubscriptionSeatDetailsRequest
 //
@@ -1285,6 +1293,10 @@ func (client *Client) GetSubscriptionSeatDetailsWithOptions(request *GetSubscrip
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceCode) {
+		query["InstanceCode"] = request.InstanceCode
+	}
+
 	if !dara.IsNil(request.PageNo) {
 		query["PageNo"] = request.PageNo
 	}
@@ -1335,7 +1347,7 @@ func (client *Client) GetSubscriptionSeatDetailsWithOptions(request *GetSubscrip
 
 // Summary:
 //
-// Performs a paging query on seat details.
+// Performs a paged query on seat details with paging.
 //
 // @param request - GetSubscriptionSeatDetailsRequest
 //
@@ -1708,7 +1720,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// Queries model throttling for a workspace.
+// Queries the model throttling configurations for a workspace.
 //
 // @param request - ListModelLimitsRequest
 //
@@ -1771,7 +1783,7 @@ func (client *Client) ListModelLimitsWithOptions(request *ListModelLimitsRequest
 
 // Summary:
 //
-// Queries model throttling for a workspace.
+// Queries the model throttling configurations for a workspace.
 //
 // @param request - ListModelLimitsRequest
 //
@@ -2328,7 +2340,7 @@ func (client *Client) RemoveOrganizationMember(request *RemoveOrganizationMember
 //
 // Description:
 //
-// Only the API key value changes. The API key ID remains unchanged.
+// Only the API key changes. The API key ID remains unchanged.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -2373,7 +2385,7 @@ func (client *Client) ResetApiKeyWithOptions(apiKeyId *string, request *ResetApi
 //
 // Description:
 //
-// Only the API key value changes. The API key ID remains unchanged.
+// Only the API key changes. The API key ID remains unchanged.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -2452,7 +2464,7 @@ func (client *Client) RevokeTokenPlanInviteLink(request *RevokeTokenPlanInviteLi
 
 // Summary:
 //
-// Resets a UAC API key.
+// Resets the UAC API key.
 //
 // Description:
 //
@@ -2503,7 +2515,7 @@ func (client *Client) RotateTokenPlanKeyWithOptions(request *RotateTokenPlanKeyR
 
 // Summary:
 //
-// Resets a UAC API key.
+// Resets the UAC API key.
 //
 // Description:
 //

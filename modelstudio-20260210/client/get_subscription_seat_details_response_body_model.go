@@ -34,11 +34,11 @@ type GetSubscriptionSeatDetailsResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: successful
+	// - true: Successful.
 	//
-	// - false: failed
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	//
 	// test@email.com
 	AccountEmail *string `json:"AccountEmail,omitempty" xml:"AccountEmail,omitempty"`
-	// The ID of the attached member accounts.
+	// The ID of the member accounts to attach.
 	//
 	// example:
 	//
@@ -200,9 +200,9 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The assignment status. Valid values:
 	//
-	// - ASSIGNED
+	// - ASSIGNED: Assigned.
 	//
-	// - UNASSIGNED
+	// - UNASSIGNED: Unassigned.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	//
 	// 1781422733
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The active entitlement instances. For the TokenPlan product, this list contains only one active entitlement instance.
+	// The currently active entitlement instances. For the TokenPlan product, this list contains only one active entitlement instance.
 	EquityList []*GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList `json:"EquityList,omitempty" xml:"EquityList,omitempty" type:"Repeated"`
 	// The instance code of the seat.
 	//
@@ -230,11 +230,11 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	SeatId *string `json:"SeatId,omitempty" xml:"SeatId,omitempty"`
 	// The seat type. Valid values:
 	//
-	// - standard: standard seat
+	// - standard: Standard seat.
 	//
-	// - pro: advanced seat
+	// - pro: Pro seat.
 	//
-	// - max: premium seat
+	// - max: Premium seat.
 	//
 	// example:
 	//
@@ -248,17 +248,17 @@ type GetSubscriptionSeatDetailsResponseBodyDataItems struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The seat status. Valid values:
 	//
-	// - CREATING: creating
+	// - CREATING: Creating.
 	//
-	// - NORMAL: valid
+	// - NORMAL: Valid.
 	//
-	// - LIMIT: restricted due to overdue payment
+	// - LIMIT: Restricted due to overdue payment.
 	//
-	// - RELEASE: released upon expiration
+	// - RELEASE: Released upon expiration.
 	//
-	// - STOP: stopped upon expiration
+	// - STOP: Stopped upon expiration.
 	//
-	// - REFUNDED: refunded
+	// - REFUNDED: Refunded.
 	//
 	// example:
 	//
@@ -393,7 +393,7 @@ type GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList struct {
 	//
 	// 1755273600
 	CycleEndTime *int64 `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
-	// The entitlement code (subscription code). Consumption is not required in the credits scenario.
+	// The entitlement code. This is the subscription code and is not required for consumption in the credits scenario.
 	//
 	// example:
 	//

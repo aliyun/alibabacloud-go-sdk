@@ -68,7 +68,7 @@ type ListModelLimitsResponseBody struct {
 	//
 	// 36045E0A-551D-592D-B1BC-4C56596CE59E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call succeeded.
+	// Indicates whether the API call is successful.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ListModelLimitsResponseBodyLimits struct {
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// The model throttling for the current user account.
+	// The model throttling configurations for the current user account.
 	ModelLimit *ListModelLimitsResponseBodyLimitsModelLimit `json:"modelLimit,omitempty" xml:"modelLimit,omitempty" type:"Struct"`
 	// The model name.
 	//
@@ -205,7 +205,7 @@ type ListModelLimitsResponseBodyLimits struct {
 	//
 	// ws_123xxx
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// The custom model throttling for the current workspace.
+	// The custom model throttling configurations for the current workspace.
 	WorkspaceLimit *ListModelLimitsResponseBodyLimitsWorkspaceLimit `json:"workspaceLimit,omitempty" xml:"workspaceLimit,omitempty" type:"Struct"`
 }
 
@@ -277,43 +277,43 @@ func (s *ListModelLimitsResponseBodyLimits) Validate() error {
 }
 
 type ListModelLimitsResponseBodyLimitsModelLimit struct {
-	// The maximum number of concurrent requests.
+	// The maximum concurrency.
 	//
 	// example:
 	//
 	// 10
 	AsyncUserConcurrencyLimit *int64 `json:"asyncUserConcurrencyLimit,omitempty" xml:"asyncUserConcurrencyLimit,omitempty"`
-	// The number of queued requests.
+	// The queue limit.
 	//
 	// example:
 	//
 	// 10
 	AsyncUserQueueLimit *int64 `json:"asyncUserQueueLimit,omitempty" xml:"asyncUserQueueLimit,omitempty"`
-	// The request throttling value.
+	// The request throttling limit.
 	//
 	// example:
 	//
 	// 10
 	RequestLimit *int64 `json:"requestLimit,omitempty" xml:"requestLimit,omitempty"`
-	// The time period for request throttling. Unit: seconds.
+	// The time period for request throttling, in seconds.
 	//
 	// example:
 	//
 	// 1
 	RequestLimitPeriod *int32 `json:"requestLimitPeriod,omitempty" xml:"requestLimitPeriod,omitempty"`
-	// The usage throttling value.
+	// The usage throttling limit.
 	//
 	// example:
 	//
 	// 10
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The usage throttling unit.
+	// The unit for usage throttling.
 	//
 	// example:
 	//
 	// 10
 	UsageLimitField *string `json:"usageLimitField,omitempty" xml:"usageLimitField,omitempty"`
-	// The time period for usage throttling. Unit: seconds.
+	// The time period for usage throttling, in seconds.
 	//
 	// example:
 	//
@@ -397,43 +397,43 @@ func (s *ListModelLimitsResponseBodyLimitsModelLimit) Validate() error {
 }
 
 type ListModelLimitsResponseBodyLimitsWorkspaceLimit struct {
-	// The maximum number of concurrent requests.
+	// The maximum concurrency.
 	//
 	// example:
 	//
 	// 10
 	AsyncUserConcurrencyLimit *int64 `json:"asyncUserConcurrencyLimit,omitempty" xml:"asyncUserConcurrencyLimit,omitempty"`
-	// The number of queued requests.
+	// The queue limit.
 	//
 	// example:
 	//
 	// 10
 	AsyncUserQueueLimit *int64 `json:"asyncUserQueueLimit,omitempty" xml:"asyncUserQueueLimit,omitempty"`
-	// The request throttling value.
+	// The request throttling limit.
 	//
 	// example:
 	//
 	// 10
 	RequestLimit *int64 `json:"requestLimit,omitempty" xml:"requestLimit,omitempty"`
-	// The time period for request throttling. Unit: seconds.
+	// The time period for request throttling, in seconds.
 	//
 	// example:
 	//
 	// 1
 	RequestLimitPeriod *int32 `json:"requestLimitPeriod,omitempty" xml:"requestLimitPeriod,omitempty"`
-	// The usage throttling value.
+	// The usage throttling limit.
 	//
 	// example:
 	//
 	// 10
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The usage throttling unit.
+	// The unit for usage throttling.
 	//
 	// example:
 	//
 	// token
 	UsageLimitField *string `json:"usageLimitField,omitempty" xml:"usageLimitField,omitempty"`
-	// The time period for usage throttling. Unit: seconds.
+	// The time period for usage throttling, in seconds.
 	//
 	// example:
 	//

@@ -30,13 +30,13 @@ type iListModelsResponseBody interface {
 }
 
 type ListModelsResponseBody struct {
-	// The error code. This field is empty when the call is successful.
+	// The error code. This field is empty if the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message. This field is empty when the call is successful.
+	// The error message. This field is empty if the call is successful.
 	//
 	// example:
 	//
@@ -493,7 +493,7 @@ func (s *ListModelsResponseBodyModelsModelInfo) Validate() error {
 type ListModelsResponseBodyModelsPrices struct {
 	// The model pricing.
 	Prices []*ListModelsResponseBodyModelsPricesPrices `json:"prices,omitempty" xml:"prices,omitempty" type:"Repeated"`
-	// The tier name. If tiered pricing is not used, the value is Default.
+	// The name of the pricing tier. If tiered pricing is not used, the value is Default.
 	//
 	// example:
 	//
@@ -541,7 +541,7 @@ func (s *ListModelsResponseBodyModelsPrices) Validate() error {
 }
 
 type ListModelsResponseBodyModelsPricesPrices struct {
-	// The price. The currency unit depends on the account type: ￥ for accounts in the Chinese mainland and $ for international accounts.
+	// The price. The currency depends on the account type: CNY (￥) for accounts in the Chinese mainland and USD ($) for international accounts.
 	//
 	// example:
 	//
@@ -553,7 +553,7 @@ type ListModelsResponseBodyModelsPricesPrices struct {
 	//
 	// input
 	PriceName *string `json:"priceName,omitempty" xml:"priceName,omitempty"`
-	// The billing method.
+	// The pricing unit.
 	//
 	// example:
 	//
@@ -565,7 +565,7 @@ type ListModelsResponseBodyModelsPricesPrices struct {
 	//
 	// - offpeak: Off-peak hours.
 	//
-	// - standard: No time-based tiering.
+	// - standard: No time band distinction.
 	//
 	// example:
 	//

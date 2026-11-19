@@ -176,7 +176,7 @@ func (client *Client) BatchRevokeSeatsWithContext(ctx context.Context, tmpReq *B
 
 // Summary:
 //
-// Creates an API key as an authentication credential before using large models or applications in Alibaba Cloud Model Studio.
+// Creates an API key as an authentication credential before you use large models or applications in Alibaba Cloud Model Studio.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -702,7 +702,7 @@ func (client *Client) GetBillingOverviewWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries the billing trends.
+// Queries billing trends.
 //
 // @param tmpReq - GetBillingTrendRequest
 //
@@ -881,7 +881,7 @@ func (client *Client) GetOrganizationMemberSeatStatsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Performs a paging query on seat details.
+// Performs a paged query on seat details with paging.
 //
 // @param request - GetSubscriptionSeatDetailsRequest
 //
@@ -898,6 +898,10 @@ func (client *Client) GetSubscriptionSeatDetailsWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceCode) {
+		query["InstanceCode"] = request.InstanceCode
+	}
+
 	if !dara.IsNil(request.PageNo) {
 		query["PageNo"] = request.PageNo
 	}
@@ -1195,7 +1199,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// Queries model throttling for a workspace.
+// Queries the model throttling configurations for a workspace.
 //
 // @param request - ListModelLimitsRequest
 //
@@ -1666,7 +1670,7 @@ func (client *Client) RemoveOrganizationMemberWithContext(ctx context.Context, r
 //
 // Description:
 //
-// Only the API key value changes. The API key ID remains unchanged.
+// Only the API key changes. The API key ID remains unchanged.
 //
 // @param request - ResetApiKeyRequest
 //
@@ -1748,7 +1752,7 @@ func (client *Client) RevokeTokenPlanInviteLinkWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Resets a UAC API key.
+// Resets the UAC API key.
 //
 // Description:
 //
