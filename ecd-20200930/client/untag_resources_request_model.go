@@ -28,7 +28,7 @@ type UntagResourcesRequest struct {
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by cloud computers.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,11 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the resources, that is, the IDs of the cloud desktops. You can specify 1 to 50 IDs.
+	// The list of resource IDs, which are the cloud computer IDs. You can specify 1 to 50 IDs.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ecd-ia2zw38bi6cm7****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// This parameter is required.
 	//
@@ -53,10 +49,6 @@ type UntagResourcesRequest struct {
 	// ALIYUN::GWS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys. You can specify 1 to 20 tag keys.
-	//
-	// example:
-	//
-	// TestKey
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

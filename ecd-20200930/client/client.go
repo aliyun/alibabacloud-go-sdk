@@ -29240,7 +29240,7 @@ func (client *Client) UnlockVirtualMFADevice(request *UnlockVirtualMFADeviceRequ
 
 // Summary:
 //
-// Removes tags from cloud desktops. After a tag is removed, if the tag is not added to any cloud desktop, the tag is automatically deleted.
+// Removes tags from cloud computers. If a removed tag is not added to any cloud computer, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -29300,7 +29300,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from cloud desktops. After a tag is removed, if the tag is not added to any cloud desktop, the tag is automatically deleted.
+// Removes tags from cloud computers. If a removed tag is not added to any cloud computer, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
