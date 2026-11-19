@@ -18,7 +18,7 @@ type iUpdateOssCheckResultsUnfreezeResponseBody interface {
 type UpdateOssCheckResultsUnfreezeResponseBody struct {
 	// The returned data.
 	Data *UpdateOssCheckResultsUnfreezeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

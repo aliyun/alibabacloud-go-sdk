@@ -26,19 +26,19 @@ type iModifyAppAgentRequest interface {
 }
 
 type ModifyAppAgentRequest struct {
-	// Agent ID。
+	// The agent ID, which is the unique identifier of the agent and is returned in the response of the AddAppAgent operation.
 	//
 	// example:
 	//
 	// ag.abcxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The agent name.
+	// The name of the agent.
 	//
 	// example:
 	//
-	// Agent1
+	// Agent 1
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// App ID。
+	// The app ID, which is the unique identifier of the application and is returned in the response of the AddAppConfig operation. Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "appId may not be empty".
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModifyAppAgentRequest struct {
 	//
 	// example:
 	//
-	// {"model":"default","scene":"0swLgojx","labelConfig":[{"label":"Abuse","labelDefinition":"Text content in the reviewed text that contains abusive language"}]}
+	// {"model":"default","scene":"0swLgojx","labelConfig":[{"label":"Abuse","labelDefinition":"The moderated text contains abusive content."}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// Specifies whether to enable the agent. Valid values:
 	//
@@ -66,7 +66,7 @@ type ModifyAppAgentRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The resource type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "resourceType may not be empty".
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iConfirmAiAppScanResponseBody interface {
 }
 
 type ConfirmAiAppScanResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

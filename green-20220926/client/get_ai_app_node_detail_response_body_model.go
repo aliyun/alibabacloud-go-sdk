@@ -40,7 +40,7 @@ type GetAiAppNodeDetailResponseBody struct {
 	//
 	// bailian
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The list of event data.
+	// The event data list.
 	EventData []*GetAiAppNodeDetailResponseBodyEventData `json:"EventData,omitempty" xml:"EventData,omitempty" type:"Repeated"`
 	// The node ID.
 	//
@@ -60,7 +60,7 @@ type GetAiAppNodeDetailResponseBody struct {
 	//
 	// TOOL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The request ID, which is assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type GetAiAppNodeDetailResponseBodyEventData struct {
 	//
 	// bailian
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The list of labels.
+	// The label list.
 	Labels []*GetAiAppNodeDetailResponseBodyEventDataLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The name.
 	//
@@ -188,13 +188,13 @@ type GetAiAppNodeDetailResponseBodyEventData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The time when the event occurred. Format: yyyy-MM-dd HH:mm:ss.
+	// The time when the event occurred. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-01-01 16:08:38
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The trace ID, which is used to query the exact call information.
+	// The trace ID, which is used to precisely query trace information.
 	//
 	// example:
 	//

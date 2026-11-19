@@ -18,7 +18,7 @@ type iListCallbackResponseBody interface {
 type ListCallbackResponseBody struct {
 	// The returned data.
 	Data []*ListCallbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListCallbackResponseBodyData struct {
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type ListCallbackResponseBodyData struct {
 	//
 	// example:
 	//
-	// 回调通知
+	// Callback notification
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The result scope.
 	//
@@ -102,13 +102,13 @@ type ListCallbackResponseBodyData struct {
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed。
+	// The seed.
 	//
 	// example:
 	//
 	// cbupVnpBjkgjFxfINMHKkrHS-1zZPUm
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID。
+	// The UID.
 	//
 	// example:
 	//

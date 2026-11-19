@@ -18,17 +18,17 @@ type iAddImages2LibRequest interface {
 }
 
 type AddImages2LibRequest struct {
-	// The image URL.
+	// The URL of the image. This value must be the Key field returned by GetUploadInfo, in the format of image/upload/<hash>. Passing an external image URL returns a 400 image.url.invalid error.
 	//
 	// example:
 	//
-	// upload/ea7a98f9-f8bd-4905-a79b-963c9da419c5.jpg
+	// image/upload/755c31906fc0b0b5007ecead9660c2ab
 	ImgUrl *string `json:"ImgUrl,omitempty" xml:"ImgUrl,omitempty"`
-	// The image library ID.
+	// The ID of the image library.
 	//
 	// example:
 	//
-	// xxx
+	// custom_imglib_001
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	// The region ID.
 	//

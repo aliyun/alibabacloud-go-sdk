@@ -16,7 +16,7 @@ type iGetUploadContentResponseBody interface {
 }
 
 type GetUploadContentResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

@@ -22,9 +22,9 @@ type ConfirmAiAppScanRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// lvwang_guardrail_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The ID of the region where the application resides.
+	// The ID of the region to which the application belongs.
 	//
 	// example:
 	//

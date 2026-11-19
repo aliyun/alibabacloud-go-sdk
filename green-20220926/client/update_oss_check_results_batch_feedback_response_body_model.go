@@ -36,7 +36,7 @@ type UpdateOssCheckResultsBatchFeedbackResponseBody struct {
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type UpdateOssCheckResultsBatchFeedbackResponseBody struct {
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The prompt information.
+	// The prompt message.
 	//
 	// example:
 	//
-	// xxxxx
+	// Feedback failed for some records: duplicate feedback was provided or the corresponding detection records do not exist. Verify the task and resources, and then resubmit
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	// The total count.
 	//

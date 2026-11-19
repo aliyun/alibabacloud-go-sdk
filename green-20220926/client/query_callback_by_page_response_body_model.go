@@ -28,9 +28,9 @@ type QueryCallbackByPageResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data on the current page.
+	// The entries on the current page.
 	Items []*QueryCallbackByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type QueryCallbackByPageResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
-	// 10
+	// 20
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -145,7 +145,7 @@ type QueryCallbackByPageResponseBodyItems struct {
 	//
 	// example:
 	//
-	// callback_name
+	// callback_xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The result scope.
 	//
@@ -153,13 +153,13 @@ type QueryCallbackByPageResponseBodyItems struct {
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed。
+	// The seed.
 	//
 	// example:
 	//
 	// cb6gYS*******x46Mq
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID。
+	// The UID.
 	//
 	// example:
 	//

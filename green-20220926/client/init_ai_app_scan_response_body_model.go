@@ -24,7 +24,7 @@ type iInitAiAppScanResponseBody interface {
 }
 
 type InitAiAppScanResponseBody struct {
-	// The access entry information.
+	// The access endpoint information.
 	AuthInfo *InitAiAppScanResponseBodyAuthInfo `json:"AuthInfo,omitempty" xml:"AuthInfo,omitempty" type:"Struct"`
 	// The access information.
 	AuthInfoConfig map[string]*AuthInfoConfigValue `json:"AuthInfoConfig,omitempty" xml:"AuthInfoConfig,omitempty"`
@@ -46,7 +46,7 @@ type InitAiAppScanResponseBody struct {
 	//
 	// enabled
 	ReadyStatus *string `json:"ReadyStatus,omitempty" xml:"ReadyStatus,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use it to troubleshoot issues.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type InitAiAppScanResponseBodyAuthInfo struct {
 	//
 	// https://xxx
 	PrivateDomain *string `json:"PrivateDomain,omitempty" xml:"PrivateDomain,omitempty"`
-	// The project space.
+	// The project workspace.
 	//
 	// example:
 	//

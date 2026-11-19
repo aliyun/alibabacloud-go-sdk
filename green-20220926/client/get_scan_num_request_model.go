@@ -18,7 +18,7 @@ type iGetScanNumRequest interface {
 }
 
 type GetScanNumRequest struct {
-	// The storage space.
+	// The buckets. Note: This parameter is required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//

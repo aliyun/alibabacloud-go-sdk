@@ -30,13 +30,13 @@ type ListAiAppByPageResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data on the current page.
 	Items []*ListAiAppByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID of the request, which is assigned by the backend to uniquely identify the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListAiAppByPageResponseBody) Validate() error {
 }
 
 type ListAiAppByPageResponseBodyItems struct {
-	// appId。
+	// The ID of the AI application.
 	//
 	// example:
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListAiAppByPageResponseBodyItems struct {
 	//
 	// bailian
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The last active time. Format: YYYY-MM-DD HH:mm:ss.
+	// The last active time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -155,13 +155,15 @@ type ListAiAppByPageResponseBodyItems struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The risk statistics.
+	RiskStats []*ListAiAppByPageResponseBodyItemsRiskStats `json:"RiskStats,omitempty" xml:"RiskStats,omitempty" type:"Repeated"`
 	// The Tracing Analysis status.
 	//
 	// example:
 	//
 	// enable
 	TraceStatus *string `json:"TraceStatus,omitempty" xml:"TraceStatus,omitempty"`
-	// UID。
+	// The UID of the user.
 	//
 	// example:
 	//
@@ -211,6 +213,10 @@ func (s *ListAiAppByPageResponseBodyItems) GetRiskLevel() *string {
 	return s.RiskLevel
 }
 
+func (s *ListAiAppByPageResponseBodyItems) GetRiskStats() []*ListAiAppByPageResponseBodyItemsRiskStats {
+	return s.RiskStats
+}
+
 func (s *ListAiAppByPageResponseBodyItems) GetTraceStatus() *string {
 	return s.TraceStatus
 }
@@ -258,6 +264,11 @@ func (s *ListAiAppByPageResponseBodyItems) SetRiskLevel(v string) *ListAiAppByPa
 	return s
 }
 
+func (s *ListAiAppByPageResponseBodyItems) SetRiskStats(v []*ListAiAppByPageResponseBodyItemsRiskStats) *ListAiAppByPageResponseBodyItems {
+	s.RiskStats = v
+	return s
+}
+
 func (s *ListAiAppByPageResponseBodyItems) SetTraceStatus(v string) *ListAiAppByPageResponseBodyItems {
 	s.TraceStatus = &v
 	return s
@@ -283,11 +294,20 @@ func (s *ListAiAppByPageResponseBodyItems) Validate() error {
 			}
 		}
 	}
+	if s.RiskStats != nil {
+		for _, item := range s.RiskStats {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type ListAiAppByPageResponseBodyItemsRiskEvents struct {
-	// The risk event code.
+	// The code of the risk event.
 	//
 	// example:
 	//
@@ -303,11 +323,11 @@ type ListAiAppByPageResponseBodyItemsRiskEvents struct {
 	EventDescs []*string `json:"EventDescs,omitempty" xml:"EventDescs,omitempty" type:"Repeated"`
 	// The list of risk event IDs.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
-	// The risk event name.
+	// The name of the risk event.
 	//
 	// example:
 	//
-	// xxx
+	// Abuse and personal attacks
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The event status. Valid values:
 	//
@@ -418,7 +438,7 @@ type ListAiAppByPageResponseBodyItemsRiskEventsLabels struct {
 	//
 	// example:
 	//
-	// xxx
+	// The output content contains insulting or discriminatory remarks against others
 	LabelDesc *string `json:"LabelDesc,omitempty" xml:"LabelDesc,omitempty"`
 	// The type.
 	//
@@ -464,5 +484,65 @@ func (s *ListAiAppByPageResponseBodyItemsRiskEventsLabels) SetType(v string) *Li
 }
 
 func (s *ListAiAppByPageResponseBodyItemsRiskEventsLabels) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAiAppByPageResponseBodyItemsRiskStats struct {
+	// The number of requests.
+	//
+	// example:
+	//
+	// 10
+	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	// The number of risks.
+	//
+	// example:
+	//
+	// 1
+	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// content_moderation
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListAiAppByPageResponseBodyItemsRiskStats) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAiAppByPageResponseBodyItemsRiskStats) GoString() string {
+	return s.String()
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) GetRequestCount() *int64 {
+	return s.RequestCount
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) GetRiskCount() *int64 {
+	return s.RiskCount
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) GetType() *string {
+	return s.Type
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) SetRequestCount(v int64) *ListAiAppByPageResponseBodyItemsRiskStats {
+	s.RequestCount = &v
+	return s
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) SetRiskCount(v int64) *ListAiAppByPageResponseBodyItemsRiskStats {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) SetType(v string) *ListAiAppByPageResponseBodyItemsRiskStats {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAiAppByPageResponseBodyItemsRiskStats) Validate() error {
 	return dara.Validate(s)
 }

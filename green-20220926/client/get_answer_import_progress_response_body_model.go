@@ -40,17 +40,17 @@ type GetAnswerImportProgressResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// common.success
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// The list of invalid proxy answers.
+	// The list of invalid fallback answers.
 	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
-	// The number of invalid entries.
+	// The invalid count.
 	//
 	// example:
 	//
 	// 1
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
-	// The proxy answer library ID.
+	// The fallback answer library ID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ type GetAnswerImportProgressResponseBody struct {
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The number of duplicate entries.
+	// The duplicate count.
 	//
 	// example:
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
-	// The list of duplicate proxy answers.
+	// The list of duplicate fallback answers.
 	RepeatSamples []*string `json:"RepeatSamples,omitempty" xml:"RepeatSamples,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successful imports.
+	// The success count.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetAnswerImportProgressResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxx
+	// A total of 10 fallback answers were imported: 8 successful, 1 duplicate, and 1 invalid
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	// The total count.
 	//

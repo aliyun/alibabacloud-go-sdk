@@ -22,31 +22,31 @@ type iGetPromptTestResultRequest interface {
 }
 
 type GetPromptTestResultRequest struct {
-	// The configuration item.
+	// The configuration item. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (config may not be empty).
 	//
 	// example:
 	//
 	// {\\"enable\\":false}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The resource type.
+	// The resource type. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (resourceType may not be empty).
 	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The service code.
+	// The service code. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (serviceCode may not be empty).
 	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The text content.
+	// The text content. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//
-	// 测试文本
+	// Test text
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The business type.
+	// The business type. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//

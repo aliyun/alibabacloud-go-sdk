@@ -40,7 +40,7 @@ type QueryCallbackResponseBody struct {
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// Indicates whether an OSS detection task exists.
+	// Indicates whether an OSS check task exists.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type QueryCallbackResponseBody struct {
 	//
 	// example:
 	//
-	// 回调通知
+	// Callback notification
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type QueryCallbackResponseBody struct {
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed。
+	// The seed.
 	//
 	// example:
 	//
 	// cb2MysbJTAAIf6gB3u4vpIEU-1ySnnf
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID。
+	// The UID.
 	//
 	// example:
 	//

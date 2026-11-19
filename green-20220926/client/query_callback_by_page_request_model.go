@@ -24,7 +24,7 @@ type QueryCallbackByPageRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

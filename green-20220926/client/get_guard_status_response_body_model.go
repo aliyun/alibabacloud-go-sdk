@@ -20,13 +20,13 @@ type iGetGuardStatusResponseBody interface {
 }
 
 type GetGuardStatusResponseBody struct {
-	// The list of log scan statistics.
+	// The list of statistics related to log scanning.
 	LogScanStatus []*GetGuardStatusResponseBodyLogScanStatus `json:"LogScanStatus,omitempty" xml:"LogScanStatus,omitempty" type:"Repeated"`
-	// The list of protection status statistics.
+	// The list of statistics related to protection status.
 	ProtectionStatus []*GetGuardStatusResponseBodyProtectionStatus `json:"ProtectionStatus,omitempty" xml:"ProtectionStatus,omitempty" type:"Repeated"`
-	// The list of real-time protection statistics.
+	// The list of statistics related to real-time protection.
 	RealTimeStatus []*GetGuardStatusResponseBodyRealTimeStatus `json:"RealTimeStatus,omitempty" xml:"RealTimeStatus,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type GetGuardStatusResponseBodyLogScanStatus struct {
 	//
 	// - enabled: Running.
 	//
-	// - disabled: Not accessed.
+	// - disabled: Not connected.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type GetGuardStatusResponseBodyProtectionStatus struct {
 	//
 	// - enabled: Running.
 	//
-	// - disabled: Not accessed.
+	// - disabled: Not connected.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type GetGuardStatusResponseBodyRealTimeStatus struct {
 	//
 	// - enabled: Running.
 	//
-	// - disabled: Not accessed.
+	// - disabled: Not connected.
 	//
 	// example:
 	//

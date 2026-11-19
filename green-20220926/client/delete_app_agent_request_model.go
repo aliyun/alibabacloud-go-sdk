@@ -20,13 +20,13 @@ type iDeleteAppAgentRequest interface {
 }
 
 type DeleteAppAgentRequest struct {
-	// Agent ID。
+	// The agent ID.
 	//
 	// example:
 	//
 	// ag.abcxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//

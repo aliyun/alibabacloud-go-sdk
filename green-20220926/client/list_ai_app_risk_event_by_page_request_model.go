@@ -42,13 +42,13 @@ type ListAiAppRiskEventByPageRequest struct {
 	//
 	// 1a320d468c75e987765861ec6d10f8cd3aea63fac9610c5c
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameter.
+	// The query parameters.
 	//
 	// example:
 	//

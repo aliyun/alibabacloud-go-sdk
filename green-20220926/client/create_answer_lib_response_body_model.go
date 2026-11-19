@@ -20,13 +20,13 @@ type iCreateAnswerLibResponseBody interface {
 }
 
 type CreateAnswerLibResponseBody struct {
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library.
 	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type CreateAnswerLibResponseBodyResult struct {
 	//
 	// example:
 	//
-	// xxx
+	// answer.lib.create.success
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// The list of invalid proxy answers.
+	// The list of invalid fallback answers.
 	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
 	// The number of invalid samples.
 	//
@@ -110,13 +110,13 @@ type CreateAnswerLibResponseBodyResult struct {
 	//
 	// 1
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library.
 	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The task progress percentage.
+	// The progress percentage of the task.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type CreateAnswerLibResponseBodyResult struct {
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
-	// The list of duplicate proxy answers.
+	// The list of duplicate fallback answers.
 	RepeatSamples []*string `json:"RepeatSamples,omitempty" xml:"RepeatSamples,omitempty" type:"Repeated"`
 	// The number of successful samples.
 	//

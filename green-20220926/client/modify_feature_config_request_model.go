@@ -32,17 +32,17 @@ type ModifyFeatureConfigRequest struct {
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The description of the label.
+	// The tag description.
 	//
 	// example:
 	//
-	// 标签2
+	// Tag 2
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label value. This value is user-defined.
+	// The custom tag value. Valid values for Field must be obtained by calling the GetFeatureConfig API, such as labels and __option__.
 	//
 	// example:
 	//
-	// __config__
+	// labels
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
 	// The region ID.
 	//
@@ -62,7 +62,7 @@ type ModifyFeatureConfigRequest struct {
 	//
 	// llm_query_moderation
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The type.
+	// The type. This parameter is actually required. If it is not provided, the API returns the error \\"type may not be empty\\".
 	//
 	// example:
 	//

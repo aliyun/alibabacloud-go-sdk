@@ -20,7 +20,7 @@ type iListAiAppRiskEventRequest interface {
 }
 
 type ListAiAppRiskEventRequest struct {
-	// The application ID. This parameter is required.
+	// The ID of the application. This parameter is required.
 	//
 	// This parameter is required.
 	//

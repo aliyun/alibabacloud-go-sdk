@@ -18,7 +18,7 @@ type iListAppConfigHistoryRequest interface {
 }
 
 type ListAppConfigHistoryRequest struct {
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//

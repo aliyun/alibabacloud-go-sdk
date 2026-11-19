@@ -67,6 +67,10 @@ type GetStockOssCheckTasksListRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"StartTime":"desc"}
 	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//

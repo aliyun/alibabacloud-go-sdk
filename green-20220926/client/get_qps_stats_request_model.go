@@ -16,9 +16,9 @@ type iGetQpsStatsRequest interface {
 }
 
 type GetQpsStatsRequest struct {
-	// The query condition. The value is a string in JSON format.
+	// The query conditions in JSON format.
 	//
-	// >Different query conditions return different protected objects. For more information, see **Query parameter description**.
+	// > The protected objects returned vary based on the query conditions. For more information, see **Query parameter description**.
 	//
 	// example:
 	//

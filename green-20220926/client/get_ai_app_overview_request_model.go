@@ -18,7 +18,7 @@ type iGetAiAppOverviewRequest interface {
 }
 
 type GetAiAppOverviewRequest struct {
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetAiAppOverviewRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

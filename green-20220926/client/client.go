@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Green")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":        dara.String("green.ap-southeast-1.aliyuncs.com"),
@@ -83,7 +91,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a proxy answer.
+// Adds fallback answers.
 //
 // @param request - AddAnswerSampleRequest
 //
@@ -139,7 +147,7 @@ func (client *Client) AddAnswerSampleWithOptions(request *AddAnswerSampleRequest
 
 // Summary:
 //
-// Adds a proxy answer.
+// Adds fallback answers.
 //
 // @param request - AddAnswerSampleRequest
 //
@@ -157,7 +165,7 @@ func (client *Client) AddAnswerSample(request *AddAnswerSampleRequest) (_result 
 
 // Summary:
 //
-// Adds an agent configuration to an app.
+// Adds agent configurations to an application.
 //
 // @param request - AddAppAgentRequest
 //
@@ -221,7 +229,7 @@ func (client *Client) AddAppAgentWithOptions(request *AddAppAgentRequest, runtim
 
 // Summary:
 //
-// Adds an agent configuration to an app.
+// Adds agent configurations to an application.
 //
 // @param request - AddAppAgentRequest
 //
@@ -239,7 +247,7 @@ func (client *Client) AddAppAgent(request *AddAppAgentRequest) (_result *AddAppA
 
 // Summary:
 //
-// Creates an app configuration.
+// Creates an application configuration.
 //
 // @param request - AddAppConfigRequest
 //
@@ -303,7 +311,7 @@ func (client *Client) AddAppConfigWithOptions(request *AddAppConfigRequest, runt
 
 // Summary:
 //
-// Creates an app configuration.
+// Creates an application configuration.
 //
 // @param request - AddAppConfigRequest
 //
@@ -393,7 +401,11 @@ func (client *Client) AddImageLib(request *AddImageLibRequest) (_result *AddImag
 
 // Summary:
 //
-// Adds images in batches.
+// Adds multiple images to an image library.
+//
+// Description:
+//
+// Adds multiple images to an image library. Before calling this operation, call GetUploadInfo to obtain the Object Storage Service (OSS) upload credentials (Host, Policy, Signature, SecurityToken, and Key). Use the credentials to upload images to the returned Host. Finally, pass the Key value returned by GetUploadInfo as the ImgUrl parameter to this operation.
 //
 // @param request - AddImages2LibRequest
 //
@@ -447,7 +459,11 @@ func (client *Client) AddImages2LibWithOptions(request *AddImages2LibRequest, ru
 
 // Summary:
 //
-// Adds images in batches.
+// Adds multiple images to an image library.
+//
+// Description:
+//
+// Adds multiple images to an image library. Before calling this operation, call GetUploadInfo to obtain the Object Storage Service (OSS) upload credentials (Host, Policy, Signature, SecurityToken, and Key). Use the credentials to upload images to the returned Host. Finally, pass the Key value returned by GetUploadInfo as the ImgUrl parameter to this operation.
 //
 // @param request - AddImages2LibRequest
 //
@@ -845,7 +861,7 @@ func (client *Client) ConfirmAiAppScan(request *ConfirmAiAppScanRequest) (_resul
 
 // Summary:
 //
-// Copies an App configuration.
+// Copies the app configuration.
 //
 // @param request - CopyAppConfigRequest
 //
@@ -901,7 +917,7 @@ func (client *Client) CopyAppConfigWithOptions(request *CopyAppConfigRequest, ru
 
 // Summary:
 //
-// Copies an App configuration.
+// Copies the app configuration.
 //
 // @param request - CopyAppConfigRequest
 //
@@ -1173,7 +1189,7 @@ func (client *Client) CreatStockOssCheckTask(request *CreatStockOssCheckTaskRequ
 
 // Summary:
 //
-// Creates a proxy answer library.
+// Creates a fallback answer library.
 //
 // @param request - CreateAnswerLibRequest
 //
@@ -1235,7 +1251,7 @@ func (client *Client) CreateAnswerLibWithOptions(request *CreateAnswerLibRequest
 
 // Summary:
 //
-// Creates a proxy answer library.
+// Creates a fallback answer library.
 //
 // @param request - CreateAnswerLibRequest
 //
@@ -1415,13 +1431,13 @@ func (client *Client) CreateCallback(request *CreateCallbackRequest) (_result *C
 //
 // Description:
 //
-// Before using this operation, complete the following steps:
+// Before you call this operation, make sure that the following conditions are met:
 //
-// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+// 1. You have activated [Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
 //
-// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
+// 2. You fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
 //
-// 3. For more information about API operations and parameters, see [API reference](https://help.aliyun.com/document_detail/467829.html).
+// 3. For more information about how to use the API operation and its parameters, refer to the [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - CreateImageLibRequest
 //
@@ -1479,13 +1495,13 @@ func (client *Client) CreateImageLibWithOptions(request *CreateImageLibRequest, 
 //
 // Description:
 //
-// Before using this operation, complete the following steps:
+// Before you call this operation, make sure that the following conditions are met:
 //
-// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+// 1. You have activated [Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
 //
-// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
+// 2. You fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
 //
-// 3. For more information about API operations and parameters, see [API reference](https://help.aliyun.com/document_detail/467829.html).
+// 3. For more information about how to use the API operation and its parameters, refer to the [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - CreateImageLibRequest
 //
@@ -1577,7 +1593,7 @@ func (client *Client) CreateOnlineTest(request *CreateOnlineTestRequest) (_resul
 
 // Summary:
 //
-// Performs a pre-check before creating an OSS scan task.
+// Performs pre-checks before creating an OSS scan task.
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1679,7 +1695,7 @@ func (client *Client) CreatePreCheckWithOptions(request *CreatePreCheckRequest, 
 
 // Summary:
 //
-// Performs a pre-check before creating an OSS scan task.
+// Performs pre-checks before creating an OSS scan task.
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1835,7 +1851,7 @@ func (client *Client) DeleteAnswerSample(request *DeleteAnswerSampleRequest) (_r
 
 // Summary:
 //
-// Deletes an agent configuration.
+// Deletes the agent configuration.
 //
 // @param request - DeleteAppAgentRequest
 //
@@ -1891,7 +1907,7 @@ func (client *Client) DeleteAppAgentWithOptions(request *DeleteAppAgentRequest, 
 
 // Summary:
 //
-// Deletes an agent configuration.
+// Deletes the agent configuration.
 //
 // @param request - DeleteAppAgentRequest
 //
@@ -2347,7 +2363,7 @@ func (client *Client) DeleteOnlineTest(request *DeleteOnlineTestRequest) (_resul
 
 // Summary:
 //
-// Queries the detection results of online moderation.
+// Queries the online detection results.
 //
 // @param request - DescribeOnlineTestResultRequest
 //
@@ -2399,7 +2415,7 @@ func (client *Client) DescribeOnlineTestResultWithOptions(request *DescribeOnlin
 
 // Summary:
 //
-// Queries the detection results of online moderation.
+// Queries the online detection results.
 //
 // @param request - DescribeOnlineTestResultRequest
 //
@@ -2417,11 +2433,11 @@ func (client *Client) DescribeOnlineTestResult(request *DescribeOnlineTestResult
 
 // Summary:
 //
-// Retrieves OSS moderation results v2.
+// Retrieves OSS results v2.
 //
 // Description:
 //
-// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation details. API operation is free of charge.
+// This API operation must be used in conjunction with the Image Moderation Enhanced Edition API. After calling the Image Moderation Enhanced Edition API, you can call this operation to obtain more detection information. This API operation is free of charge.
 //
 // @param request - DescribeOssV2ResultRequest
 //
@@ -2489,11 +2505,11 @@ func (client *Client) DescribeOssV2ResultWithOptions(request *DescribeOssV2Resul
 
 // Summary:
 //
-// Retrieves OSS moderation results v2.
+// Retrieves OSS results v2.
 //
 // Description:
 //
-// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation details. API operation is free of charge.
+// This API operation must be used in conjunction with the Image Moderation Enhanced Edition API. After calling the Image Moderation Enhanced Edition API, you can call this operation to obtain more detection information. This API operation is free of charge.
 //
 // @param request - DescribeOssV2ResultRequest
 //
@@ -2579,7 +2595,7 @@ func (client *Client) ExportAnswerSample(request *ExportAnswerSampleRequest) (_r
 
 // Summary:
 //
-// Exports call volume.
+// Exports the usage data.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -2665,7 +2681,7 @@ func (client *Client) ExportCipStatsWithOptions(request *ExportCipStatsRequest, 
 
 // Summary:
 //
-// Exports call volume.
+// Exports the usage data.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -2835,7 +2851,7 @@ func (client *Client) ExportOssCheckStat(request *ExportOssCheckStatRequest) (_r
 
 // Summary:
 //
-// Exports OSS scan results.
+// Exports the OSS scan results.
 //
 // @param tmpReq - ExportResultRequest
 //
@@ -2915,7 +2931,7 @@ func (client *Client) ExportResultWithOptions(tmpReq *ExportResultRequest, runti
 
 // Summary:
 //
-// Exports OSS scan results.
+// Exports the OSS scan results.
 //
 // @param request - ExportResultRequest
 //
@@ -2933,7 +2949,7 @@ func (client *Client) ExportResult(request *ExportResultRequest) (_result *Expor
 
 // Summary:
 //
-// Exports call results as an Excel file.
+// Exports the call results to an Excel file.
 //
 // @param tmpReq - ExportScanResultRequest
 //
@@ -3017,7 +3033,7 @@ func (client *Client) ExportScanResultWithOptions(tmpReq *ExportScanResultReques
 
 // Summary:
 //
-// Exports call results as an Excel file.
+// Exports the call results to an Excel file.
 //
 // @param request - ExportScanResultRequest
 //
@@ -3035,7 +3051,7 @@ func (client *Client) ExportScanResult(request *ExportScanResultRequest) (_resul
 
 // Summary:
 //
-// Exports call results as an Excel file.
+// Exports call results to an Excel file.
 //
 // @param tmpReq - ExportTextScanResultRequest
 //
@@ -3099,7 +3115,7 @@ func (client *Client) ExportTextScanResultWithOptions(tmpReq *ExportTextScanResu
 
 // Summary:
 //
-// Exports call results as an Excel file.
+// Exports call results to an Excel file.
 //
 // @param request - ExportTextScanResultRequest
 //
@@ -3136,8 +3152,16 @@ func (client *Client) GetAiAppDetailWithOptions(request *GetAiAppDetailRequest, 
 		query["AppId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3183,7 +3207,7 @@ func (client *Client) GetAiAppDetail(request *GetAiAppDetailRequest) (_result *G
 
 // Summary:
 //
-// Retrieves statistics for the details of an AI application.
+// Retrieves the statistics of an AI application.
 //
 // @param request - GetAiAppDetailStatRequest
 //
@@ -3239,7 +3263,7 @@ func (client *Client) GetAiAppDetailStatWithOptions(request *GetAiAppDetailStatR
 
 // Summary:
 //
-// Retrieves statistics for the details of an AI application.
+// Retrieves the statistics of an AI application.
 //
 // @param request - GetAiAppDetailStatRequest
 //
@@ -3333,7 +3357,11 @@ func (client *Client) GetAiAppDetailTopo(request *GetAiAppDetailTopoRequest) (_r
 
 // Summary:
 //
-// Retrieves the details of an application node in the agent topology.
+// Retrieves the details of an app node.
+//
+// Description:
+//
+// AI applications must be created through the Model Studio or Dify platform. Call chain: ListAiAppByPage (to obtain the AppId) → GetAiAppDetailTopo (to obtain the NodeId, NodeName, and NodeType) → GetAiAppNodeDetail.
 //
 // @param request - GetAiAppNodeDetailRequest
 //
@@ -3401,7 +3429,11 @@ func (client *Client) GetAiAppNodeDetailWithOptions(request *GetAiAppNodeDetailR
 
 // Summary:
 //
-// Retrieves the details of an application node in the agent topology.
+// Retrieves the details of an app node.
+//
+// Description:
+//
+// AI applications must be created through the Model Studio or Dify platform. Call chain: ListAiAppByPage (to obtain the AppId) → GetAiAppDetailTopo (to obtain the NodeId, NodeName, and NodeType) → GetAiAppNodeDetail.
 //
 // @param request - GetAiAppNodeDetailRequest
 //
@@ -3419,7 +3451,7 @@ func (client *Client) GetAiAppNodeDetail(request *GetAiAppNodeDetailRequest) (_r
 
 // Summary:
 //
-// Retrieves the overview information of AI applications.
+// Retrieves the overview of AI applications.
 //
 // @param request - GetAiAppOverviewRequest
 //
@@ -3471,7 +3503,7 @@ func (client *Client) GetAiAppOverviewWithOptions(request *GetAiAppOverviewReque
 
 // Summary:
 //
-// Retrieves the overview information of AI applications.
+// Retrieves the overview of AI applications.
 //
 // @param request - GetAiAppOverviewRequest
 //
@@ -3489,7 +3521,7 @@ func (client *Client) GetAiAppOverview(request *GetAiAppOverviewRequest) (_resul
 
 // Summary:
 //
-// Retrieves statistics for AI application risk reports.
+// Retrieves statistical data for AI applications.
 //
 // @param request - GetAiAppStatsRequest
 //
@@ -3553,7 +3585,7 @@ func (client *Client) GetAiAppStatsWithOptions(request *GetAiAppStatsRequest, ru
 
 // Summary:
 //
-// Retrieves statistics for AI application risk reports.
+// Retrieves statistical data for AI applications.
 //
 // @param request - GetAiAppStatsRequest
 //
@@ -3571,7 +3603,7 @@ func (client *Client) GetAiAppStats(request *GetAiAppStatsRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves the details of an app alert.
+// Retrieves the details of an application alert.
 //
 // @param request - GetAiAppTraceDetailRequest
 //
@@ -3631,7 +3663,7 @@ func (client *Client) GetAiAppTraceDetailWithOptions(request *GetAiAppTraceDetai
 
 // Summary:
 //
-// Retrieves the details of an app alert.
+// Retrieves the details of an application alert.
 //
 // @param request - GetAiAppTraceDetailRequest
 //
@@ -3649,7 +3681,7 @@ func (client *Client) GetAiAppTraceDetail(request *GetAiAppTraceDetailRequest) (
 
 // Summary:
 //
-// Retrieves the import progress of proxy answer samples.
+// Retrieves the import progress of fallback answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
 //
@@ -3697,7 +3729,7 @@ func (client *Client) GetAnswerImportProgressWithOptions(request *GetAnswerImpor
 
 // Summary:
 //
-// Retrieves the import progress of proxy answer samples.
+// Retrieves the import progress of fallback answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
 //
@@ -3715,7 +3747,7 @@ func (client *Client) GetAnswerImportProgress(request *GetAnswerImportProgressRe
 
 // Summary:
 //
-// Queries the details of an App configuration.
+// Queries the details of an application configuration.
 //
 // @param request - GetAppConfigRequest
 //
@@ -3775,7 +3807,7 @@ func (client *Client) GetAppConfigWithOptions(request *GetAppConfigRequest, runt
 
 // Summary:
 //
-// Queries the details of an App configuration.
+// Queries the details of an application configuration.
 //
 // @param request - GetAppConfigRequest
 //
@@ -4049,7 +4081,7 @@ func (client *Client) GetBucketsList(request *GetBucketsListRequest) (_result *G
 
 // Summary:
 //
-// Queries the call volume statistics.
+// Queries the call volume.
 //
 // @param request - GetCipStatsRequest
 //
@@ -4131,7 +4163,7 @@ func (client *Client) GetCipStatsWithOptions(request *GetCipStatsRequest, runtim
 
 // Summary:
 //
-// Queries the call volume statistics.
+// Queries the call volume.
 //
 // @param request - GetCipStatsRequest
 //
@@ -4291,7 +4323,7 @@ func (client *Client) GetFeatureConfig(request *GetFeatureConfigRequest) (_resul
 
 // Summary:
 //
-// Retrieves log statistics for AI security guardrails.
+// Retrieves the statistics of AI security guardrail logs.
 //
 // @param request - GetGuardLogStatsRequest
 //
@@ -4335,7 +4367,7 @@ func (client *Client) GetGuardLogStatsWithOptions(request *GetGuardLogStatsReque
 
 // Summary:
 //
-// Retrieves log statistics for AI security guardrails.
+// Retrieves the statistics of AI security guardrail logs.
 //
 // @param request - GetGuardLogStatsRequest
 //
@@ -4353,7 +4385,7 @@ func (client *Client) GetGuardLogStats(request *GetGuardLogStatsRequest) (_resul
 
 // Summary:
 //
-// Retrieves statistics information on AI application protection data.
+// Retrieves the statistics information on AI application protection data.
 //
 // @param request - GetGuardStatusRequest
 //
@@ -4401,7 +4433,7 @@ func (client *Client) GetGuardStatusWithOptions(request *GetGuardStatusRequest, 
 
 // Summary:
 //
-// Retrieves statistics information on AI application protection data.
+// Retrieves the statistics information on AI application protection data.
 //
 // @param request - GetGuardStatusRequest
 //
@@ -4631,7 +4663,7 @@ func (client *Client) GetJobNameList(request *GetJobNameListRequest) (_result *G
 
 // Summary:
 //
-// Queries the result of a keyword import task.
+// Queries the keyword import results.
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -4681,7 +4713,7 @@ func (client *Client) GetKeywordImportResultWithOptions(request *GetKeywordImpor
 
 // Summary:
 //
-// Queries the result of a keyword import task.
+// Queries the keyword import results.
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -4775,7 +4807,13 @@ func (client *Client) GetKeywordLib(request *GetKeywordLibRequest) (_result *Get
 
 // Summary:
 //
-// Queries the results of OSS scan and freeze operations.
+// Queries the freezing results of OSS detection.
+//
+// Description:
+//
+// Queries the freezing disposal results of OSS detection tasks.
+//
+// Prerequisites: Before calling this operation, you must call CreatStockOssCheckTask to create an OSS inventory detection task and generate freezing results. Then, call GetStockOssCheckTasksList to obtain an available TaskId and pass it as a query parameter to this operation.
 //
 // @param tmpReq - GetOssCheckFreezeResultRequest
 //
@@ -4857,7 +4895,13 @@ func (client *Client) GetOssCheckFreezeResultWithOptions(tmpReq *GetOssCheckFree
 
 // Summary:
 //
-// Queries the results of OSS scan and freeze operations.
+// Queries the freezing results of OSS detection.
+//
+// Description:
+//
+// Queries the freezing disposal results of OSS detection tasks.
+//
+// Prerequisites: Before calling this operation, you must call CreatStockOssCheckTask to create an OSS inventory detection task and generate freezing results. Then, call GetStockOssCheckTasksList to obtain an available TaskId and pass it as a query parameter to this operation.
 //
 // @param request - GetOssCheckFreezeResultRequest
 //
@@ -4875,7 +4919,7 @@ func (client *Client) GetOssCheckFreezeResult(request *GetOssCheckFreezeResultRe
 
 // Summary:
 //
-// Retrieves the detailed information of OSS check results.
+// Retrieves the details of OSS inspection results.
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -4943,7 +4987,7 @@ func (client *Client) GetOssCheckResultDetailWithOptions(request *GetOssCheckRes
 
 // Summary:
 //
-// Retrieves the detailed information of OSS check results.
+// Retrieves the details of OSS inspection results.
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -4961,7 +5005,7 @@ func (client *Client) GetOssCheckResultDetail(request *GetOssCheckResultDetailRe
 
 // Summary:
 //
-// Queries OSS usage statistics.
+// Queries the usage statistics of OSS.
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -5023,7 +5067,7 @@ func (client *Client) GetOssCheckStatWithOptions(request *GetOssCheckStatRequest
 
 // Summary:
 //
-// Queries OSS usage statistics.
+// Queries the usage statistics of OSS.
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -5165,7 +5209,7 @@ func (client *Client) GetOssCheckTaskInfo(request *GetOssCheckTaskInfoRequest) (
 
 // Summary:
 //
-// Tests the attribute configuration.
+// Tests the feature configuration.
 //
 // @param request - GetPromptTestResultRequest
 //
@@ -5225,7 +5269,7 @@ func (client *Client) GetPromptTestResultWithOptions(request *GetPromptTestResul
 
 // Summary:
 //
-// Tests the attribute configuration.
+// Tests the feature configuration.
 //
 // @param request - GetPromptTestResultRequest
 //
@@ -5243,7 +5287,7 @@ func (client *Client) GetPromptTestResult(request *GetPromptTestResultRequest) (
 
 // Summary:
 //
-// Queries QPS statistics information.
+// Queries the queries per second (QPS) statistics information.
 //
 // @param request - GetQpsStatsRequest
 //
@@ -5291,7 +5335,7 @@ func (client *Client) GetQpsStatsWithOptions(request *GetQpsStatsRequest, runtim
 
 // Summary:
 //
-// Queries QPS statistics information.
+// Queries the queries per second (QPS) statistics information.
 //
 // @param request - GetQpsStatsRequest
 //
@@ -5309,7 +5353,7 @@ func (client *Client) GetQpsStats(request *GetQpsStatsRequest) (_result *GetQpsS
 
 // Summary:
 //
-// Queries risk posture statistics.
+// Retrieves risk posture statistics.
 //
 // @param request - GetRiskStatsRequest
 //
@@ -5324,6 +5368,10 @@ func (client *Client) GetRiskStatsWithOptions(request *GetRiskStatsRequest, runt
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.Classify) {
 		query["Classify"] = request.Classify
 	}
@@ -5369,7 +5417,7 @@ func (client *Client) GetRiskStatsWithOptions(request *GetRiskStatsRequest, runt
 
 // Summary:
 //
-// Queries risk posture statistics.
+// Retrieves risk posture statistics.
 //
 // @param request - GetRiskStatsRequest
 //
@@ -5387,7 +5435,7 @@ func (client *Client) GetRiskStats(request *GetRiskStatsRequest) (_result *GetRi
 
 // Summary:
 //
-// Queries the information about files pending detection for a user.
+// Retrieves the pending detection information of the user.
 //
 // @param request - GetScanNumRequest
 //
@@ -5439,7 +5487,7 @@ func (client *Client) GetScanNumWithOptions(request *GetScanNumRequest, runtime 
 
 // Summary:
 //
-// Queries the information about files pending detection for a user.
+// Retrieves the pending detection information of the user.
 //
 // @param request - GetScanNumRequest
 //
@@ -5457,7 +5505,7 @@ func (client *Client) GetScanNum(request *GetScanNumRequest) (_result *GetScanNu
 
 // Summary:
 //
-// Queries the detection results.
+// Queries the call results.
 //
 // @param tmpReq - GetScanResultRequest
 //
@@ -5541,7 +5589,7 @@ func (client *Client) GetScanResultWithOptions(tmpReq *GetScanResultRequest, run
 
 // Summary:
 //
-// Queries the detection results.
+// Queries the call results.
 //
 // @param request - GetScanResultRequest
 //
@@ -5885,7 +5933,7 @@ func (client *Client) GetStockOssCheckTasksList(request *GetStockOssCheckTasksLi
 
 // Summary:
 //
-// Queries the call results.
+// Queries the invocation results.
 //
 // @param tmpReq - GetTextScanResultRequest
 //
@@ -5965,7 +6013,7 @@ func (client *Client) GetTextScanResultWithOptions(tmpReq *GetTextScanResultRequ
 
 // Summary:
 //
-// Queries the call results.
+// Queries the invocation results.
 //
 // @param request - GetTextScanResultRequest
 //
@@ -5983,11 +6031,11 @@ func (client *Client) GetTextScanResult(request *GetTextScanResultRequest) (_res
 
 // Summary:
 //
-// Retrieves tuning suggestions for switch configurations.
+// Retrieves tuning recommendations for switch configurations.
 //
 // Description:
 //
-// API operation is used together with the enhanced image moderation API. After you call the enhanced image moderation API, call API operation to retrieve additional detection information. API operation is free of charge.
+// API operation must be used in conjunction with the enhanced image moderation API. After you call the enhanced image moderation API, you can call API operation to retrieve additional detection information. API operation is free of charge.
 //
 // @param request - GetTuneProposalByIdRequest
 //
@@ -6031,11 +6079,11 @@ func (client *Client) GetTuneProposalByIdWithOptions(request *GetTuneProposalByI
 
 // Summary:
 //
-// Retrieves tuning suggestions for switch configurations.
+// Retrieves tuning recommendations for switch configurations.
 //
 // Description:
 //
-// API operation is used together with the enhanced image moderation API. After you call the enhanced image moderation API, call API operation to retrieve additional detection information. API operation is free of charge.
+// API operation must be used in conjunction with the enhanced image moderation API. After you call the enhanced image moderation API, you can call API operation to retrieve additional detection information. API operation is free of charge.
 //
 // @param request - GetTuneProposalByIdRequest
 //
@@ -6115,7 +6163,7 @@ func (client *Client) GetUploadContent(request *GetUploadContentRequest) (_resul
 
 // Summary:
 //
-// Retrieves the relevant information for file upload.
+// Retrieves the information required for file upload.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -6169,7 +6217,7 @@ func (client *Client) GetUploadInfoWithOptions(request *GetUploadInfoRequest, ru
 
 // Summary:
 //
-// Retrieves the relevant information for file upload.
+// Retrieves the information required for file upload.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -6387,7 +6435,7 @@ func (client *Client) InitAiAppScan(request *InitAiAppScanRequest) (_result *Ini
 
 // Summary:
 //
-// Retrieves a paginated list of AI applications.
+// Queries a paginated list of AI applications.
 //
 // @param request - ListAiAppByPageRequest
 //
@@ -6443,7 +6491,7 @@ func (client *Client) ListAiAppByPageWithOptions(request *ListAiAppByPageRequest
 
 // Summary:
 //
-// Retrieves a paginated list of AI applications.
+// Queries a paginated list of AI applications.
 //
 // @param request - ListAiAppByPageRequest
 //
@@ -6461,7 +6509,7 @@ func (client *Client) ListAiAppByPage(request *ListAiAppByPageRequest) (_result 
 
 // Summary:
 //
-// Retrieves the list of risk events for an AI application.
+// Retrieves a list of risk events for AI applications.
 //
 // @param request - ListAiAppRiskEventRequest
 //
@@ -6517,7 +6565,7 @@ func (client *Client) ListAiAppRiskEventWithOptions(request *ListAiAppRiskEventR
 
 // Summary:
 //
-// Retrieves the list of risk events for an AI application.
+// Retrieves a list of risk events for AI applications.
 //
 // @param request - ListAiAppRiskEventRequest
 //
@@ -6535,7 +6583,7 @@ func (client *Client) ListAiAppRiskEvent(request *ListAiAppRiskEventRequest) (_r
 
 // Summary:
 //
-// Retrieves a paginated list of risk events for AI applications.
+// Queries a paginated list of risk events for AI applications.
 //
 // @param request - ListAiAppRiskEventByPageRequest
 //
@@ -6599,7 +6647,7 @@ func (client *Client) ListAiAppRiskEventByPageWithOptions(request *ListAiAppRisk
 
 // Summary:
 //
-// Retrieves a paginated list of risk events for AI applications.
+// Queries a paginated list of risk events for AI applications.
 //
 // @param request - ListAiAppRiskEventByPageRequest
 //
@@ -6617,7 +6665,7 @@ func (client *Client) ListAiAppRiskEventByPage(request *ListAiAppRiskEventByPage
 
 // Summary:
 //
-// Queries the alert list of an application with pagination.
+// Retrieves a paginated list of application alerts.
 //
 // @param request - ListAiAppWarningByPageRequest
 //
@@ -6677,7 +6725,7 @@ func (client *Client) ListAiAppWarningByPageWithOptions(request *ListAiAppWarnin
 
 // Summary:
 //
-// Queries the alert list of an application with pagination.
+// Retrieves a paginated list of application alerts.
 //
 // @param request - ListAiAppWarningByPageRequest
 //
@@ -6827,7 +6875,7 @@ func (client *Client) ListAppConfigHistory(request *ListAppConfigHistoryRequest)
 
 // Summary:
 //
-// Retrieves the list of app configurations.
+// Retrieves a list of application configurations.
 //
 // @param request - ListAppConfigsRequest
 //
@@ -6879,7 +6927,7 @@ func (client *Client) ListAppConfigsWithOptions(request *ListAppConfigsRequest, 
 
 // Summary:
 //
-// Retrieves the list of app configurations.
+// Retrieves a list of application configurations.
 //
 // @param request - ListAppConfigsRequest
 //
@@ -6959,7 +7007,7 @@ func (client *Client) ListCallback(request *ListCallbackRequest) (_result *ListC
 
 // Summary:
 //
-// Queries the list of image libraries.
+// Queries a list of image libraries.
 //
 // @param request - ListImageLibRequest
 //
@@ -7009,7 +7057,7 @@ func (client *Client) ListImageLibWithOptions(request *ListImageLibRequest, runt
 
 // Summary:
 //
-// Queries the list of image libraries.
+// Queries a list of image libraries.
 //
 // @param request - ListImageLibRequest
 //
@@ -7289,7 +7337,7 @@ func (client *Client) ListKeywords(request *ListKeywordsRequest) (_result *ListK
 
 // Summary:
 //
-// Queries OSS scan results.
+// Queries the OSS scan results.
 //
 // @param tmpReq - ListOssCheckResultRequest
 //
@@ -7371,7 +7419,7 @@ func (client *Client) ListOssCheckResultWithOptions(tmpReq *ListOssCheckResultRe
 
 // Summary:
 //
-// Queries OSS scan results.
+// Queries the OSS scan results.
 //
 // @param request - ListOssCheckResultRequest
 //
@@ -7389,7 +7437,7 @@ func (client *Client) ListOssCheckResult(request *ListOssCheckResultRequest) (_r
 
 // Summary:
 //
-// Retrieves the service list.
+// Retrieves a list of services.
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -7451,7 +7499,7 @@ func (client *Client) ListServiceConfigsWithOptions(request *ListServiceConfigsR
 
 // Summary:
 //
-// Retrieves the service list.
+// Retrieves a list of services.
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -7469,7 +7517,7 @@ func (client *Client) ListServiceConfigs(request *ListServiceConfigsRequest) (_r
 
 // Summary:
 //
-// Calls a large language model in streaming mode using the SSE interface.
+// Invokes a large language model in streaming mode by using the Server-Sent Events (SSE) API.
 //
 // @param request - LlmStreamChatRequest
 //
@@ -7484,7 +7532,7 @@ func (client *Client) LlmStreamChatWithSSE(request *LlmStreamChatRequest, runtim
 
 // Summary:
 //
-// Calls a large language model in streaming mode using the SSE interface.
+// Invokes a large language model in streaming mode by using the Server-Sent Events (SSE) API.
 //
 // @param request - LlmStreamChatRequest
 //
@@ -7544,7 +7592,7 @@ func (client *Client) LlmStreamChatWithOptions(request *LlmStreamChatRequest, ru
 
 // Summary:
 //
-// Calls a large language model in streaming mode using the SSE interface.
+// Invokes a large language model in streaming mode by using the Server-Sent Events (SSE) API.
 //
 // @param request - LlmStreamChatRequest
 //
@@ -7566,7 +7614,7 @@ func (client *Client) LlmStreamChat(request *LlmStreamChatRequest) (_result *Llm
 //
 // Description:
 //
-// This operation is free of charge. Set the query interval to 30 seconds (that is, query results 30 seconds after you submit an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, the results are automatically deleted.
+// This API operation is free of charge. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous detection task). The maximum interval must not exceed 24 hours. Otherwise, the results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -7634,7 +7682,7 @@ func (client *Client) MarkOssV2ResultWithOptions(request *MarkOssV2ResultRequest
 //
 // Description:
 //
-// This operation is free of charge. Set the query interval to 30 seconds (that is, query results 30 seconds after you submit an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, the results are automatically deleted.
+// This API operation is free of charge. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous detection task). The maximum interval must not exceed 24 hours. Otherwise, the results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -7652,7 +7700,7 @@ func (client *Client) MarkOssV2Result(request *MarkOssV2ResultRequest) (_result 
 
 // Summary:
 //
-// Updates a proxy response library.
+// Updates a fallback library.
 //
 // @param request - ModifyAnswerLibRequest
 //
@@ -7704,7 +7752,7 @@ func (client *Client) ModifyAnswerLibWithOptions(request *ModifyAnswerLibRequest
 
 // Summary:
 //
-// Updates a proxy response library.
+// Updates a fallback library.
 //
 // @param request - ModifyAnswerLibRequest
 //
@@ -7722,7 +7770,7 @@ func (client *Client) ModifyAnswerLib(request *ModifyAnswerLibRequest) (_result 
 
 // Summary:
 //
-// Modifies the agent configuration.
+// Modifies the configuration of an agent.
 //
 // @param request - ModifyAppAgentRequest
 //
@@ -7790,7 +7838,7 @@ func (client *Client) ModifyAppAgentWithOptions(request *ModifyAppAgentRequest, 
 
 // Summary:
 //
-// Modifies the agent configuration.
+// Modifies the configuration of an agent.
 //
 // @param request - ModifyAppAgentRequest
 //
@@ -7808,7 +7856,7 @@ func (client *Client) ModifyAppAgent(request *ModifyAppAgentRequest) (_result *M
 
 // Summary:
 //
-// Modifies app information.
+// Modifies the information of an app.
 //
 // @param request - ModifyAppInfoRequest
 //
@@ -7868,7 +7916,7 @@ func (client *Client) ModifyAppInfoWithOptions(request *ModifyAppInfoRequest, ru
 
 // Summary:
 //
-// Modifies app information.
+// Modifies the information of an app.
 //
 // @param request - ModifyAppInfoRequest
 //
@@ -7886,7 +7934,7 @@ func (client *Client) ModifyAppInfo(request *ModifyAppInfoRequest) (_result *Mod
 
 // Summary:
 //
-// Modifies a message notification.
+// Updates message notifications.
 //
 // @param request - ModifyCallbackRequest
 //
@@ -7952,7 +8000,7 @@ func (client *Client) ModifyCallbackWithOptions(request *ModifyCallbackRequest, 
 
 // Summary:
 //
-// Modifies a message notification.
+// Updates message notifications.
 //
 // @param request - ModifyCallbackRequest
 //
@@ -7970,7 +8018,11 @@ func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *M
 
 // Summary:
 //
-// Saves an attribute configuration.
+// Saves the feature configuration.
+//
+// Description:
+//
+// Prerequisites: Before calling ModifyFeatureConfig, call GetFeatureConfig to query valid Type/Field combinations and their corresponding Config structures. Submit modifications based on the query results to avoid configuration update failures caused by invalid combinations.
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -8040,7 +8092,11 @@ func (client *Client) ModifyFeatureConfigWithOptions(request *ModifyFeatureConfi
 
 // Summary:
 //
-// Saves an attribute configuration.
+// Saves the feature configuration.
+//
+// Description:
+//
+// Prerequisites: Before calling ModifyFeatureConfig, call GetFeatureConfig to query valid Type/Field combinations and their corresponding Config structures. Submit modifications based on the query results to avoid configuration update failures caused by invalid combinations.
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -8058,7 +8114,7 @@ func (client *Client) ModifyFeatureConfig(request *ModifyFeatureConfigRequest) (
 
 // Summary:
 //
-// Edits a service.
+// Modifies a service.
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -8120,7 +8176,7 @@ func (client *Client) ModifyServiceInfoWithOptions(request *ModifyServiceInfoReq
 
 // Summary:
 //
-// Edits a service.
+// Modifies a service.
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -8138,7 +8194,7 @@ func (client *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (_res
 
 // Summary:
 //
-// Retrieves the list of OSS detection results.
+// Retrieves a list of OSS scan results.
 //
 // @param tmpReq - OssCheckResultListRequest
 //
@@ -8220,7 +8276,7 @@ func (client *Client) OssCheckResultListWithOptions(tmpReq *OssCheckResultListRe
 
 // Summary:
 //
-// Retrieves the list of OSS detection results.
+// Retrieves a list of OSS scan results.
 //
 // @param request - OssCheckResultListRequest
 //
@@ -8238,7 +8294,7 @@ func (client *Client) OssCheckResultList(request *OssCheckResultListRequest) (_r
 
 // Summary:
 //
-// Saves and publishes app configurations.
+// Saves and publishes the application configuration.
 //
 // @param request - PublishAppConfigRequest
 //
@@ -8306,7 +8362,7 @@ func (client *Client) PublishAppConfigWithOptions(request *PublishAppConfigReque
 
 // Summary:
 //
-// Saves and publishes app configurations.
+// Saves and publishes the application configuration.
 //
 // @param request - PublishAppConfigRequest
 //
@@ -8324,7 +8380,7 @@ func (client *Client) PublishAppConfig(request *PublishAppConfigRequest) (_resul
 
 // Summary:
 //
-// Queries proxy answer samples by paging.
+// Performs a paged query for fallback answer samples with paging.
 //
 // @param tmpReq - QueryAnswerSampleByPageRequest
 //
@@ -8394,7 +8450,7 @@ func (client *Client) QueryAnswerSampleByPageWithOptions(tmpReq *QueryAnswerSamp
 
 // Summary:
 //
-// Queries proxy answer samples by paging.
+// Performs a paged query for fallback answer samples with paging.
 //
 // @param request - QueryAnswerSampleByPageRequest
 //
@@ -8412,7 +8468,7 @@ func (client *Client) QueryAnswerSampleByPage(request *QueryAnswerSampleByPageRe
 
 // Summary:
 //
-// Queries a single callback configuration.
+// Queries a callback configuration.
 //
 // @param request - QueryCallbackRequest
 //
@@ -8466,7 +8522,7 @@ func (client *Client) QueryCallbackWithOptions(request *QueryCallbackRequest, ru
 
 // Summary:
 //
-// Queries a single callback configuration.
+// Queries a callback configuration.
 //
 // @param request - QueryCallbackRequest
 //
@@ -8484,7 +8540,7 @@ func (client *Client) QueryCallback(request *QueryCallbackRequest) (_result *Que
 
 // Summary:
 //
-// Queries the list of message notifications by paging.
+// Queries the message notification list with paging.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -8538,7 +8594,7 @@ func (client *Client) QueryCallbackByPageWithOptions(request *QueryCallbackByPag
 
 // Summary:
 //
-// Queries the list of message notifications by paging.
+// Queries the message notification list with paging.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -8556,7 +8612,7 @@ func (client *Client) QueryCallbackByPage(request *QueryCallbackByPageRequest) (
 
 // Summary:
 //
-// Queries label configurations.
+// Queries the tag configuration.
 //
 // @param request - QueryLabelConfigRequest
 //
@@ -8616,7 +8672,7 @@ func (client *Client) QueryLabelConfigWithOptions(request *QueryLabelConfigReque
 
 // Summary:
 //
-// Queries label configurations.
+// Queries the tag configuration.
 //
 // @param request - QueryLabelConfigRequest
 //
@@ -8634,7 +8690,7 @@ func (client *Client) QueryLabelConfig(request *QueryLabelConfigRequest) (_resul
 
 // Summary:
 //
-// Reverts an app to a historical version.
+// Restores an app to a historical version.
 //
 // @param request - RecoverAppConfigHistoryRequest
 //
@@ -8690,7 +8746,7 @@ func (client *Client) RecoverAppConfigHistoryWithOptions(request *RecoverAppConf
 
 // Summary:
 //
-// Reverts an app to a historical version.
+// Restores an app to a historical version.
 //
 // @param request - RecoverAppConfigHistoryRequest
 //
@@ -8778,7 +8834,7 @@ func (client *Client) StopOnlineTest(request *StopOnlineTestRequest) (_result *S
 
 // Summary:
 //
-// Updates the scan status of AI applications.
+// Updates the scan status of an AI application.
 //
 // @param request - UpdateAiAppScanStatusRequest
 //
@@ -8830,7 +8886,7 @@ func (client *Client) UpdateAiAppScanStatusWithOptions(request *UpdateAiAppScanS
 
 // Summary:
 //
-// Updates the scan status of AI applications.
+// Updates the scan status of an AI application.
 //
 // @param request - UpdateAiAppScanStatusRequest
 //
@@ -8922,7 +8978,7 @@ func (client *Client) UpdateBackupConfig(request *UpdateBackupConfigRequest) (_r
 
 // Summary:
 //
-// Updates the status of risk events.
+// Updates the handling status of risk events for a specified application.
 //
 // @param tmpReq - UpdateEventStatusRequest
 //
@@ -8992,7 +9048,7 @@ func (client *Client) UpdateEventStatusWithOptions(tmpReq *UpdateEventStatusRequ
 
 // Summary:
 //
-// Updates the status of risk events.
+// Updates the handling status of risk events for a specified application.
 //
 // @param request - UpdateEventStatusRequest
 //
@@ -9010,7 +9066,7 @@ func (client *Client) UpdateEventStatus(request *UpdateEventStatusRequest) (_res
 
 // Summary:
 //
-// Edits an image library.
+// Modifies an image library.
 //
 // @param request - UpdateImageLibRequest
 //
@@ -9072,7 +9128,7 @@ func (client *Client) UpdateImageLibWithOptions(request *UpdateImageLibRequest, 
 
 // Summary:
 //
-// Edits an image library.
+// Modifies an image library.
 //
 // @param request - UpdateImageLibRequest
 //
@@ -9090,7 +9146,7 @@ func (client *Client) UpdateImageLib(request *UpdateImageLibRequest) (_result *U
 
 // Summary:
 //
-// Edits the inspection-exempt configuration of an image library.
+// Modifies the inspection exemption configuration for an image library.
 //
 // @param tmpReq - UpdateImageLibFreeInspectionRequest
 //
@@ -9150,7 +9206,7 @@ func (client *Client) UpdateImageLibFreeInspectionWithOptions(tmpReq *UpdateImag
 
 // Summary:
 //
-// Edits the inspection-exempt configuration of an image library.
+// Modifies the inspection exemption configuration for an image library.
 //
 // @param request - UpdateImageLibFreeInspectionRequest
 //
@@ -9244,7 +9300,7 @@ func (client *Client) UpdateKeywordLib(request *UpdateKeywordLibRequest) (_resul
 
 // Summary:
 //
-// Updates Meta log information.
+// Updates the metadata log information.
 //
 // @param request - UpdateMetaLogRequest
 //
@@ -9300,7 +9356,7 @@ func (client *Client) UpdateMetaLogWithOptions(request *UpdateMetaLogRequest, ru
 
 // Summary:
 //
-// Updates Meta log information.
+// Updates the metadata log information.
 //
 // @param request - UpdateMetaLogRequest
 //
@@ -9318,7 +9374,7 @@ func (client *Client) UpdateMetaLog(request *UpdateMetaLogRequest) (_result *Upd
 
 // Summary:
 //
-// Updates OSS detection result feedback in batches.
+// Updates feedback for OSS detection results in batches.
 //
 // @param request - UpdateOssCheckResultsBatchFeedbackRequest
 //
@@ -9370,7 +9426,7 @@ func (client *Client) UpdateOssCheckResultsBatchFeedbackWithOptions(request *Upd
 
 // Summary:
 //
-// Updates OSS detection result feedback in batches.
+// Updates feedback for OSS detection results in batches.
 //
 // @param request - UpdateOssCheckResultsBatchFeedbackRequest
 //

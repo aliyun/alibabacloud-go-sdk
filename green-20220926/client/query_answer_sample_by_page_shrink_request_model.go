@@ -28,7 +28,7 @@ type QueryAnswerSampleByPageShrinkRequest struct {
 	//
 	// example:
 	//
-	// 答案
+	// Answer
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// The current page number.
 	//
@@ -36,7 +36,7 @@ type QueryAnswerSampleByPageShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library. Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error with the message "libId may not be empty".
 	//
 	// example:
 	//
@@ -55,6 +55,10 @@ type QueryAnswerSampleByPageShrinkRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"field":"GmtCreate","order":"desc"}
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 

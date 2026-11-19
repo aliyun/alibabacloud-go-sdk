@@ -16,7 +16,7 @@ type iGetOssCheckStatResponseBody interface {
 }
 
 type GetOssCheckStatResponseBody struct {
-	// The bar chart data.
+	// The bar chart.
 	BarChart *GetOssCheckStatResponseBodyBarChart `json:"BarChart,omitempty" xml:"BarChart,omitempty" type:"Struct"`
 	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//

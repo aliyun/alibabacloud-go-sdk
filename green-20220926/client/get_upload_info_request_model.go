@@ -22,7 +22,7 @@ type GetUploadInfoRequest struct {
 	//
 	// example:
 	//
-	// Test.
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

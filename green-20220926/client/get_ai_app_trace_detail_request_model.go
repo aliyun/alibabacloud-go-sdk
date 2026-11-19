@@ -22,13 +22,13 @@ type iGetAiAppTraceDetailRequest interface {
 }
 
 type GetAiAppTraceDetailRequest struct {
-	// The AI application ID, which identifies a specific AI application instance.
+	// The ID of the AI application.
 	//
 	// example:
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end time of the query. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type GetAiAppTraceDetailRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-01-01 16:08:38
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The trace ID, which is used to track and correlate a specific request chain.
+	// The trace ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xxxxx
+	// 4d3b7c9e2f1a4b8c9d0e1f2a3b4c5d6e
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 

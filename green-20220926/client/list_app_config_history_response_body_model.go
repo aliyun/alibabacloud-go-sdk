@@ -22,7 +22,7 @@ type ListAppConfigHistoryResponseBody struct {
 	History []*ListAppConfigHistoryResponseBodyHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
 	// The published versions.
 	Publish []*ListAppConfigHistoryResponseBodyPublish `json:"Publish,omitempty" xml:"Publish,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify a request. It can be used to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ func (s *ListAppConfigHistoryResponseBody) Validate() error {
 }
 
 type ListAppConfigHistoryResponseBodyHistory struct {
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//
 	// txt_check_agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// **[Deprecated]*	- The categorization.
+	// **[Deprecated]*	- The category.
 	//
 	// example:
 	//
@@ -249,13 +249,13 @@ func (s *ListAppConfigHistoryResponseBodyHistory) Validate() error {
 }
 
 type ListAppConfigHistoryResponseBodyPublish struct {
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//
 	// txt_check_agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// **[Deprecated]*	- The categorization.
+	// **[Deprecated]*	- The category.
 	//
 	// example:
 	//

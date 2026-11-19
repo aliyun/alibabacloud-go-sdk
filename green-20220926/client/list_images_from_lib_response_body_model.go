@@ -50,7 +50,7 @@ type ListImagesFromLibResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The data on the current page.
 	Items []*ListImagesFromLibResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type ListImagesFromLibResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
+	// The request ID, which uniquely identifies the request and can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The success flag.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iAddAnswerSampleResponseBody interface {
 }
 
 type AddAnswerSampleResponseBody struct {
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library.
 	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type AddAnswerSampleResponseBodyResult struct {
 	//
 	// example:
 	//
-	// xxx
+	// common.success
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// The collection of samples whose length is too long or too short.
+	// The collection of samples that are too long or too short.
 	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
 	// The number of invalid records.
 	//
@@ -110,13 +110,13 @@ type AddAnswerSampleResponseBodyResult struct {
 	//
 	// 118
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library.
 	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The progress. For example, 90 indicates 90%.
+	// The progress. A value of 90 indicates 90%.
 	//
 	// example:
 	//

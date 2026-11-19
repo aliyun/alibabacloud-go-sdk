@@ -30,19 +30,19 @@ type GetKeywordImportResultResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetKeywordImportResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The request ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success indicator.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ type GetKeywordImportResultResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// keyword.import.success
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
 	// The list of keywords that are too long or too short.
 	IllegalLengthKeywords []*string `json:"IllegalLengthKeywords,omitempty" xml:"IllegalLengthKeywords,omitempty" type:"Repeated"`
-	// The number of invalid keywords.
+	// The invalid count.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type GetKeywordImportResultResponseBodyData struct {
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The number of duplicate keywords.
+	// The duplicate count.
 	//
 	// example:
 	//
@@ -149,17 +149,17 @@ type GetKeywordImportResultResponseBodyData struct {
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
 	// The list of duplicate keywords.
 	RepeatKeywords []*string `json:"RepeatKeywords,omitempty" xml:"RepeatKeywords,omitempty" type:"Repeated"`
-	// The number of successfully imported keywords.
+	// The success count.
 	//
 	// example:
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The prompt information.
+	// The prompt message.
 	//
 	// example:
 	//
-	// xxx
+	// Keyword import completed. Total: 10, Succeeded: 8, Duplicates: 1, Invalid: 1
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	// The total count.
 	//

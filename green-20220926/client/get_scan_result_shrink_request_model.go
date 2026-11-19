@@ -34,7 +34,7 @@ type GetScanResultShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type GetScanResultShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search condition.
+	// The search conditions.
+	//
+	// example:
+	//
+	// {"RequestId":"1E4A2F01-2B3C-4D5E-6F70-8192A3B4C5D6"}
 	QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The region ID.
 	//
@@ -54,15 +58,19 @@ type GetScanResultShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The resource type. Note: This parameter is required. If it is not specified, the API returns ScanResultQueryFailed (HTTP 400). Valid value: image.
 	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"RequestTime":"desc"}
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type ExportResultResponseBody struct {
   // 
   // https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/console_data/production/scanResult/osscheck/ossCheckResult_aliiGGXhSMvmIvsS7Lrl3LaUZ-1A9%24oZ.xlsx
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The description of the error code.
+  // The detailed description of the error code.
   // 
   // example:
   // 
@@ -46,7 +46,7 @@ type ExportResultResponseBody struct {
   // 
   // AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 

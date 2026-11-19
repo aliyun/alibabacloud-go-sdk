@@ -22,7 +22,7 @@ type iQueryLabelConfigRequest interface {
 }
 
 type QueryLabelConfigRequest struct {
-	// The classification. Separate multiple values with commas.
+	// The category. Separate multiple values with commas.
 	//
 	// example:
 	//

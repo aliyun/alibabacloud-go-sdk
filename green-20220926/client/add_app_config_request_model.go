@@ -48,11 +48,11 @@ type AddAppConfigRequest struct {
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// appId
+	// The system application ID.
 	//
 	// example:
 	//
-	// xxx
+	// txt_check_pro_agent_01
 	SysAppId *string `json:"SysAppId,omitempty" xml:"SysAppId,omitempty"`
 	// The type.
 	//

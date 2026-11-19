@@ -32,7 +32,7 @@ type AuthInfoConfigValue struct {
 	//
 	// https://xxx
 	PrivateDomain *string `json:"PrivateDomain,omitempty" xml:"PrivateDomain,omitempty"`
-	// The project space.
+	// The project workspace.
 	//
 	// example:
 	//

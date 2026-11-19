@@ -121,7 +121,7 @@ type QueryAnswerSampleByPageResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 答案
+	// Answer
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// The creation time.
 	//
@@ -135,13 +135,13 @@ type QueryAnswerSampleByPageResponseBodyItems struct {
 	//
 	// 1666
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library.
 	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// UID。
+	// The UID of the user.
 	//
 	// example:
 	//

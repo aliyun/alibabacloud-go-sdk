@@ -28,11 +28,11 @@ type CreateCallbackRequest struct {
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// The name of the scheme.
+	// The scheme name.
 	//
 	// example:
 	//
-	// 消息通知1
+	// MessageNotification1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//
@@ -40,7 +40,7 @@ type CreateCallbackRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The moderation result.
+	// The moderation results.
 	//
 	// example:
 	//

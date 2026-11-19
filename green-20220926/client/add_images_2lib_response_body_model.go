@@ -38,19 +38,19 @@ type AddImages2LibResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the server to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success flag.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *AddImages2LibResponseBody) Validate() error {
 }
 
 type AddImages2LibResponseBodyData struct {
-	// The image ID.
+	// The ID of the image.
 	//
 	// example:
 	//

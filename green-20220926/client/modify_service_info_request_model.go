@@ -44,13 +44,13 @@ type ModifyServiceInfoRequest struct {
 	//
 	// example:
 	//
-	// 描述
+	// Description
 	ServiceDesc *string `json:"ServiceDesc,omitempty" xml:"ServiceDesc,omitempty"`
 	// The service name.
 	//
 	// example:
 	//
-	// 通用基线检测
+	// General baseline check
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 

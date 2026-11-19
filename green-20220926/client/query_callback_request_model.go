@@ -18,7 +18,7 @@ type iQueryCallbackRequest interface {
 }
 
 type QueryCallbackRequest struct {
-	// Queries data under the OSS detection task.
+	// Specifies whether to query data for OSS check tasks.
 	//
 	// example:
 	//

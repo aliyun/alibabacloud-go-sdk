@@ -22,7 +22,7 @@ type iListServiceConfigsRequest interface {
 }
 
 type ListServiceConfigsRequest struct {
-	// The classification.
+	// The category.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type ListServiceConfigsRequest struct {
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
 	// The protection type. Valid values:
 	//
-	// - modelProtection: model protection.
+	// - modelProtection: model protection
 	//
-	// - agentRealtimeProtection: agent real-time protection.
+	// - agentRealtimeProtection: real-time agent protection
 	//
-	// - agentBehaviorAudit: agent behavior audit.
+	// - agentBehaviorAudit: agent behavior audit
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListServiceConfigsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The resource type. This parameter is required. If you do not specify this parameter, the service returns a 400 error.
 	//
 	// example:
 	//

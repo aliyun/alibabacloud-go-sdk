@@ -30,37 +30,37 @@ type iGetAiAppDetailStatResponseBody interface {
 }
 
 type GetAiAppDetailStatResponseBody struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The average duration of model calls.
+	// The average duration of model invocations.
 	//
 	// example:
 	//
 	// 2.55
 	AvgModelDuration *float32 `json:"AvgModelDuration,omitempty" xml:"AvgModelDuration,omitempty"`
-	// The day-over-day change ratio of average model call duration.
+	// The day-over-day comparison of the average duration of model invocations.
 	//
 	// example:
 	//
 	// 0.05
 	AvgModelDurationDau *float32 `json:"AvgModelDurationDau,omitempty" xml:"AvgModelDurationDau,omitempty"`
-	// The number of model calls.
+	// The number of model invocations.
 	//
 	// example:
 	//
 	// 15
 	ModelCount *int64 `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
-	// The day-over-day change ratio of model call count.
+	// The day-over-day comparison of the number of model invocations.
 	//
 	// example:
 	//
 	// 0.15
 	ModelCountDau *float32 `json:"ModelCountDau,omitempty" xml:"ModelCountDau,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The request ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetAiAppDetailStatResponseBody struct {
 	//
 	// 11000
 	TokenCount *int64 `json:"TokenCount,omitempty" xml:"TokenCount,omitempty"`
-	// The day-over-day change ratio of token consumption count.
+	// The day-over-day comparison of the number of tokens consumed.
 	//
 	// example:
 	//

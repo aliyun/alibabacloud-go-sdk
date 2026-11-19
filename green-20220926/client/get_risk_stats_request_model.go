@@ -9,6 +9,8 @@ type iGetRiskStatsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChannel(v string) *GetRiskStatsRequest
+	GetChannel() *string
 	SetClassify(v string) *GetRiskStatsRequest
 	GetClassify() *string
 	SetEndTime(v string) *GetRiskStatsRequest
@@ -22,7 +24,13 @@ type iGetRiskStatsRequest interface {
 }
 
 type GetRiskStatsRequest struct {
-	// The classification.
+	// The channel identifier.
+	//
+	// example:
+	//
+	// qoder
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The category.
 	//
 	// example:
 	//
@@ -64,6 +72,10 @@ func (s GetRiskStatsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetRiskStatsRequest) GetChannel() *string {
+	return s.Channel
+}
+
 func (s *GetRiskStatsRequest) GetClassify() *string {
 	return s.Classify
 }
@@ -82,6 +94,11 @@ func (s *GetRiskStatsRequest) GetStartTime() *string {
 
 func (s *GetRiskStatsRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *GetRiskStatsRequest) SetChannel(v string) *GetRiskStatsRequest {
+	s.Channel = &v
+	return s
 }
 
 func (s *GetRiskStatsRequest) SetClassify(v string) *GetRiskStatsRequest {

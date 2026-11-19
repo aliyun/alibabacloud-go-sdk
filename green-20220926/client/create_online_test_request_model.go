@@ -24,21 +24,21 @@ type CreateOnlineTestRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxx
+	// 4f27b8cc7c4544cb90b41882a5b36326
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The resource type.
+	// The resource type. Valid values: voice (audio), image (image), file (document), text (text), and video (video).
 	//
 	// example:
 	//
 	// video
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The service code.
+	// The service code. Specify a valid service code. The valid service code for online video testing is videoDetection. VideoModeration is not a valid value and returns a 406 online.test.failed error.
 	//
 	// example:
 	//
-	// VideoModeration
+	// videoDetection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The URL to be detected.
+	// The detection URL.
 	//
 	// example:
 	//

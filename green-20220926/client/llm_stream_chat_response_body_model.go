@@ -38,9 +38,9 @@ type LlmStreamChatResponseBody struct {
 	//
 	// 1750990728
 	Created *int64 `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The fault information content in the streaming response.
+	// The fault message content in the streaming response.
 	Error *LlmStreamChatResponseBodyError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The unique ID of this session.
+	// The unique ID of the current session.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type LlmStreamChatResponseBody struct {
 	//
 	// null
 	SystemFingerprint *string `json:"SystemFingerprint,omitempty" xml:"SystemFingerprint,omitempty"`
-	// The token usage information.
+	// The token usage.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ func (s *LlmStreamChatResponseBody) Validate() error {
 type LlmStreamChatResponseBodyChoices struct {
 	// The incremental content object.
 	Delta *LlmStreamChatResponseBodyChoicesDelta `json:"Delta,omitempty" xml:"Delta,omitempty" type:"Struct"`
-	// During streaming output, this value is null while content is being generated. When generation is complete, the value is stop if the generation ended due to a stop token.
+	// For streaming output, this parameter is null during generation. If the generation ends due to a stop token, the value is stop.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type LlmStreamChatResponseBodyChoicesDelta struct {
 	//
 	// example:
 	//
-	// I am Deepseek-V3. How can I help you?
+	// I am DeepSeek-V3. How can I help you?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The role identifier.
 	//

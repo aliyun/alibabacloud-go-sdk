@@ -22,7 +22,7 @@ type CreateAppConfigResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
 	//
 	// example:
 	//

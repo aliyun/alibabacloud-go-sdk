@@ -34,7 +34,7 @@ type iGetAppConfigResponseBody interface {
 }
 
 type GetAppConfigResponseBody struct {
-	// App ID。
+	// The application ID.
 	//
 	// example:
 	//
@@ -71,8 +71,12 @@ type GetAppConfigResponseBody struct {
 	// Custom text moderation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The preset options.
+	//
+	// example:
+	//
+	// {"models":["qwen3.7-plus","max3.7","deepseek-v4-pro","glm-5.1","glm-5.2"]}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

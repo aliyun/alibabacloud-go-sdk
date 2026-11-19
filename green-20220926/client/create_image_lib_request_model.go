@@ -18,17 +18,17 @@ type iCreateImageLibRequest interface {
 }
 
 type CreateImageLibRequest struct {
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//
-	// Politically sensitive.
+	// Politically sensitive content
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The name of the image library.
 	//
 	// example:
 	//
-	// Malicious ads.
+	// Malicious advertising
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The region ID.
 	//

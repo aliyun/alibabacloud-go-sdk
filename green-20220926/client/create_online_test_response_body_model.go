@@ -32,7 +32,7 @@ type CreateOnlineTestResponseBody struct {
 	//
 	// example:
 	//
-	// VideoModeration
+	// videoDetection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	// The ID of the detection task.
 	//
@@ -46,7 +46,7 @@ type CreateOnlineTestResponseBody struct {
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The URL to be detected.
+	// The detection URL.
 	//
 	// example:
 	//

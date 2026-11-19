@@ -22,11 +22,11 @@ type iCreateAnswerLibRequest interface {
 }
 
 type CreateAnswerLibRequest struct {
-	// The name of the proxy answer library.
+	// The name of the fallback answer library.
 	//
 	// example:
 	//
-	// 测试代答库
+	// Test fallback answer library
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The region ID.
 	//
@@ -34,13 +34,13 @@ type CreateAnswerLibRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the storage space.
+	// The name of the bucket.
 	//
 	// example:
 	//
 	// oss-cip-shanghai
 	SampleBucket *string `json:"SampleBucket,omitempty" xml:"SampleBucket,omitempty"`
-	// The file name of the proxy answer sample to be added.
+	// The name of the file that contains the fallback answer samples to be added.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateAnswerLibRequest struct {
 	//
 	// example:
 	//
-	// 代答答案1\\n代答答案2
+	// Fallback answer 1\\nFallback answer 2
 	Samples *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
 }
 

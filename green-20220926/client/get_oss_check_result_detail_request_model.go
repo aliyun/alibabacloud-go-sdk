@@ -26,19 +26,19 @@ type iGetOssCheckResultDetailRequest interface {
 }
 
 type GetOssCheckResultDetailRequest struct {
-	// The storage bucket.
+	// The bucket. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//
 	// oss-tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The media asset type.
+	// The media asset type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The object name.
+	// The object name. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetOssCheckResultDetailRequest struct {
 	//
 	// P_RZQ66T
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	// The request ID of the query.
+	// The request ID of the query. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type GetOssCheckResultDetailRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service code.
+	// The service code. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//

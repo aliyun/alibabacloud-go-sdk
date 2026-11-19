@@ -38,19 +38,19 @@ type GetFeatureConfigResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message for this request.
+	// The response message for the request.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetFeatureConfigResponseBodyData struct {
 	//
 	// custom_llm_template
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// UID。
+	// The user UID.
 	//
 	// example:
 	//

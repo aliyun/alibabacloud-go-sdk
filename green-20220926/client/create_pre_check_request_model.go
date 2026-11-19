@@ -42,25 +42,25 @@ type iCreatePreCheckRequest interface {
 }
 
 type CreatePreCheckRequest struct {
-	// The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
+	// The filter configuration for each bucket. This parameter can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix and suffix filters and a list of filter characters.
 	//
 	// example:
 	//
 	// "{\\"test-bucket1\\":{\\"prefixFilterType\\":\\"include\\",\\"prefixFilters\\":[\\"test1\\"]},\\"test-bucket2\\":{\\"prefixFilterType\\":\\"exclude\\",\\"prefixFilters\\":[\\"test2\\"]}}"
 	BucketPrefixFilterConfig *string `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
-	// The OSS buckets.
+	// The buckets.
 	//
 	// example:
 	//
 	// [{\\"Bucket\\":\\"bucket01-test\\",\\"Region\\":\\"cn-beijing\\"}]
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// Specifies whether to deduplicate against historically scanned tasks.
+	// Specifies whether to deduplicate historical scan tasks.
 	//
 	// example:
 	//
 	// true
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
-	// The task end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time of the task. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreatePreCheckRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum number of items to scan.
+	// The scan limit.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type CreatePreCheckRequest struct {
 	//
 	// baselineCheck
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	// The task start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time of the task. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type CreatePreCheckRequest struct {
 	//
 	// example:
 	//
-	// 图片任务 20240709101602004
+	// Image task 20240709101602004
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

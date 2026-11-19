@@ -14,7 +14,7 @@ type iGetOssCheckTaskInfoRequest interface {
 }
 
 type GetOssCheckTaskInfoRequest struct {
-	// The parent task ID.
+	// The ID of the parent task.
 	//
 	// example:
 	//

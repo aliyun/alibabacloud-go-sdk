@@ -37,6 +37,10 @@ type GetAiAppOverviewResponseBody struct {
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The distribution of risk events by level.
+	//
+	// example:
+	//
+	// {"high":2,"medium":5,"low":8,"none":85}
 	RiskEventLevelDistribution map[string]interface{} `json:"RiskEventLevelDistribution,omitempty" xml:"RiskEventLevelDistribution,omitempty"`
 	// The total number of resolved risk events.
 	//

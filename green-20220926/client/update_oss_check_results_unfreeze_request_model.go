@@ -22,13 +22,13 @@ type iUpdateOssCheckResultsUnfreezeRequest interface {
 }
 
 type UpdateOssCheckResultsUnfreezeRequest struct {
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//
 	// 2023-10-21 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The frozen items.
+	// The freeze items. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type UpdateOssCheckResultsUnfreezeRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-21 16:08:38
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The task ID.
+	// The task ID. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//

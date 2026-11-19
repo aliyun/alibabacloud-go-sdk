@@ -36,7 +36,7 @@ type ListOssCheckResultResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListOssCheckResultResponseBody) Validate() error {
 }
 
 type ListOssCheckResultResponseBodyItems struct {
-	// The OSS bucket.
+	// The bucket.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListOssCheckResultResponseBodyItems struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The audio and video detection type.
+	// The audio and video moderation type.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type ListOssCheckResultResponseBodyItems struct {
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// The URL of the image.
+	// The image URL.
 	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Indicates whether the task is copied.
+	// Indicates whether the item is copied.
 	//
 	// example:
 	//
@@ -171,9 +171,9 @@ type ListOssCheckResultResponseBodyItems struct {
 	//
 	// dhT20X2310
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The list of labels hit by video frames.
+	// The list of matched labels for video frames.
 	LabelDetails []*ListOssCheckResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// The list of labels hit by video audio.
+	// The list of matched labels for video audio.
 	LabelDetails2 []*ListOssCheckResultResponseBodyItemsLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
 	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
@@ -185,7 +185,7 @@ type ListOssCheckResultResponseBodyItems struct {
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type ListOssCheckResultResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 服务名称
+	// Service name
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The task ID.
 	//
@@ -498,9 +498,9 @@ type ListOssCheckResultResponseBodyItemsLabelDetails struct {
 	//
 	// example:
 	//
-	// 影音娱乐类
+	// Audio and video entertainment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label hit by the video frame.
+	// The matched label for video frames.
 	//
 	// example:
 	//
@@ -543,9 +543,9 @@ type ListOssCheckResultResponseBodyItemsLabelDetails2 struct {
 	//
 	// example:
 	//
-	// 辱骂内容
+	// Abusive content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The label hit by the audio.
+	// The matched label for audio.
 	//
 	// example:
 	//

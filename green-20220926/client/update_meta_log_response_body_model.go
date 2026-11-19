@@ -16,7 +16,7 @@ type iUpdateMetaLogResponseBody interface {
 }
 
 type UpdateMetaLogResponseBody struct {
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

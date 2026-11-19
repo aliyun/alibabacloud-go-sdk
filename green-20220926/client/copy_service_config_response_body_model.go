@@ -22,7 +22,7 @@ type CopyServiceConfigResponseBody struct {
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
 	//
 	// example:
 	//

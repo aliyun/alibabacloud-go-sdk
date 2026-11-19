@@ -30,13 +30,13 @@ type DescribeOssV2ResultResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data on the current page.
 	Items []*DescribeOssV2ResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeOssV2ResultResponseBody) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItems struct {
-	// The OSS bucket.
+	// The bucket.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type DescribeOssV2ResultResponseBodyItems struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The moderation modality type.
+	// The detection modality type.
 	//
 	// example:
 	//
 	// image
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Indicates whether automatic freezing is configured.
+	// Specifies whether automatic freezing is configured.
 	//
 	// example:
 	//
@@ -153,31 +153,31 @@ type DescribeOssV2ResultResponseBodyItems struct {
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// The label details, corresponding to labels.
+	// The label details, which correspond to labels.
 	LabelDetails []*DescribeOssV2ResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// The details of labels2, corresponding to labels2.
+	// The label 2 details, which correspond to labels2.
 	LabelDetails2 []*DescribeOssV2ResultResponseBodyItemsLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
 	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// The manual disposition status.
+	// The manual handling status.
 	//
 	// example:
 	//
 	// FREEZE
 	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	// The disposition time. Format: yyyy-MM-dd HH:mm:ss.
+	// The handling time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-08-09 12:00:00
 	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	// The operator who performed the disposition.
+	// The operator.
 	//
 	// example:
 	//
-	// xx
+	// Sample reviewer
 	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
 	// The MD5 hash of the file.
 	//
@@ -209,7 +209,7 @@ type DescribeOssV2ResultResponseBodyItems struct {
 	//
 	// low
 	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
-	// The audio or text risk level.
+	// The audio and text risk levels.
 	//
 	// example:
 	//
@@ -221,13 +221,13 @@ type DescribeOssV2ResultResponseBodyItems struct {
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	// Service code。
+	// The service code.
 	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The automatic freeze operation performed by the system.
+	// The automatic system freeze operation.
 	//
 	// example:
 	//
@@ -504,7 +504,7 @@ type DescribeOssV2ResultResponseBodyItemsLabelDetails struct {
 	//
 	// example:
 	//
-	// Political sensitivity
+	// Political content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -564,7 +564,7 @@ type DescribeOssV2ResultResponseBodyItemsLabelDetails2 struct {
 	//
 	// example:
 	//
-	// Political sensitivity
+	// Political content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//

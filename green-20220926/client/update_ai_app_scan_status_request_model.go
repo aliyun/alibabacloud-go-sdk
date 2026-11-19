@@ -18,7 +18,7 @@ type iUpdateAiAppScanStatusRequest interface {
 }
 
 type UpdateAiAppScanStatusRequest struct {
-	// The application ID.
+	// The application IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type UpdateAiAppScanStatusRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status. Valid values:
 	//
-	// - enable: enabled
+	// - enable: Enabled.
 	//
-	// - disable: disabled
+	// - disable: Disabled.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type UpdateImageLibFreeInspectionShrinkRequest struct {
 	//
 	// example:
 	//
-	// {\\"2833014490001\\":0}
+	// {"2833014490001":0}
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The region ID.
 	//
@@ -30,7 +30,7 @@ type UpdateImageLibFreeInspectionShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The selected service identifier.
+	// The identifier of the selected service.
 	//
 	// example:
 	//

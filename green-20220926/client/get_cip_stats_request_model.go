@@ -32,17 +32,13 @@ type iGetCipStatsRequest interface {
 }
 
 type GetCipStatsRequest struct {
-	// Specifies whether monthly indexing is supported. Valid values:
-	//
-	// - true: Supported.
-	//
-	// - false: Not supported.
+	// Specifies whether monthly indexing is supported. Valid values: true: Supported. false: Not supported.
 	//
 	// example:
 	//
 	// true
 	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
-	// The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -52,9 +48,9 @@ type GetCipStatsRequest struct {
 	//
 	// example:
 	//
-	// xx
+	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The query condition.
+	// The query conditions.
 	//
 	// example:
 	//
@@ -78,7 +74,7 @@ type GetCipStatsRequest struct {
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -90,7 +86,7 @@ type GetCipStatsRequest struct {
 	//
 	// 253552244990701265
 	SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
-	// The type. Valid values: **cip**: Content Moderation invoke volume statistics. **risk_level**: Content Moderation risk level statistics. **content_moderation**: AI security guardrail content compliance risk level and tag statistics. **sensitive_data**: AI security guardrail sensitive data risk level and tag statistics. **prompt_attack**: AI security guardrail prompt risk level and tag statistics.
+	// The type. Valid values: **cip**: Content Moderation invoke usage statistics. **risk_level**: Content Moderation security risk level statistics. **content_moderation**: content compliance risk level and label statistics for AI security guardrails. **sensitive_data**: sensitive data risk level and label statistics for AI security guardrails. **prompt_attack**: prompt risk level and label statistics for AI security guardrails.
 	//
 	// example:
 	//

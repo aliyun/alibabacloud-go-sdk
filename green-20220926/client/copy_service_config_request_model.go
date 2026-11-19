@@ -44,13 +44,13 @@ type CopyServiceConfigRequest struct {
 	//
 	// example:
 	//
-	// 服务备注
+	// Service remarks
 	ServiceDesc *string `json:"ServiceDesc,omitempty" xml:"ServiceDesc,omitempty"`
 	// The service name.
 	//
 	// example:
 	//
-	// 用户昵称检测
+	// User nickname detection
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 

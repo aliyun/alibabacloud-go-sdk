@@ -18,7 +18,7 @@ type iGetGuardLogStatsResponseBody interface {
 type GetGuardLogStatsResponseBody struct {
 	// The data.
 	Data []*GetGuardLogStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -83,8 +83,12 @@ type GetGuardLogStatsResponseBodyData struct {
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The log analysis configuration.
+	//
+	// example:
+	//
+	// {"sls.region":"cn-shanghai","sls.project":"aliyun-guardrail-log","sls.logstore":"guard-analysis"}
 	LogAnalysisConfig map[string]interface{} `json:"LogAnalysisConfig,omitempty" xml:"LogAnalysisConfig,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The name of the Logstore in Simple Log Service.
 	//
 	// example:
 	//
@@ -102,7 +106,7 @@ type GetGuardLogStatsResponseBodyData struct {
 	//
 	// 1
 	PreserveStorage *int64 `json:"PreserveStorage,omitempty" xml:"PreserveStorage,omitempty"`
-	// The project space.
+	// The workspace.
 	//
 	// example:
 	//
@@ -114,7 +118,7 @@ type GetGuardLogStatsResponseBodyData struct {
 	//
 	// 3
 	TotalStorage *int64 `json:"TotalStorage,omitempty" xml:"TotalStorage,omitempty"`
-	// The number of days for which data is retained.
+	// The data retention period in days.
 	//
 	// example:
 	//
@@ -126,7 +130,7 @@ type GetGuardLogStatsResponseBodyData struct {
 	//
 	// guard_meta_log
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// UID。
+	// The user ID.
 	//
 	// example:
 	//

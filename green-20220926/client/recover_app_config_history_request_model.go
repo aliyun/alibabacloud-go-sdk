@@ -20,7 +20,7 @@ type iRecoverAppConfigHistoryRequest interface {
 }
 
 type RecoverAppConfigHistoryRequest struct {
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//

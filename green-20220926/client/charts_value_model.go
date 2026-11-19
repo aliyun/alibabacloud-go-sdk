@@ -68,7 +68,7 @@ type ChartsValueY struct {
 	//
 	// cn-shanghai
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The QPS at the point in time.
+	// The QPS at each time point.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 

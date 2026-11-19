@@ -40,19 +40,19 @@ type ListImageLibResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The list of image library information.
 	LibList []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
-	// The maximum number of libraries supported.
+	// The maximum number of supported image libraries.
 	//
 	// example:
 	//
 	// 5
 	MaxLibCount *int32 `json:"MaxLibCount,omitempty" xml:"MaxLibCount,omitempty"`
-	// The further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
+	// The request ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -155,9 +155,9 @@ type ListImageLibResponseBodyLibList struct {
 	//
 	// example:
 	//
-	// 备注
+	// Remarks
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The review-free configuration.
+	// The moderation exemption configuration.
 	//
 	// example:
 	//
@@ -169,29 +169,29 @@ type ListImageLibResponseBodyLibList struct {
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The number of images in the library.
+	// The number of images in the image library.
 	//
 	// example:
 	//
 	// 1
 	ImageNum *int64 `json:"ImageNum,omitempty" xml:"ImageNum,omitempty"`
-	// The image library ID.
+	// The ID of the image library.
 	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The image library name.
+	// The name of the image library.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 

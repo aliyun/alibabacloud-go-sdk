@@ -48,13 +48,13 @@ type ExportCipStatsResponseBody struct {
   // 
   // OK
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+  // The ID of the request, which is used to uniquely identify the request. You can use this ID to troubleshoot issues.
   // 
   // example:
   // 
   // AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 

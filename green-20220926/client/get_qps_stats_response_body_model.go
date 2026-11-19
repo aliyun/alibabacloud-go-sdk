@@ -17,8 +17,12 @@ type iGetQpsStatsResponseBody interface {
 
 type GetQpsStatsResponseBody struct {
 	// The chart configurations.
+	//
+	// example:
+	//
+	// {"cn-shanghai":{"X":["20260701"],"Y":[{"Name":"cn-shanghai","Data":[10]}]}}
 	Charts map[string]*ChartsValue `json:"Charts,omitempty" xml:"Charts,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. It can be used to troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//

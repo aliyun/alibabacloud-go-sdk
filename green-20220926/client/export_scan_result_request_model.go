@@ -34,7 +34,7 @@ type ExportScanResultRequest struct {
   // 
   // 1
   CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-  // The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+  // The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
   // 
   // example:
   // 
@@ -47,6 +47,10 @@ type ExportScanResultRequest struct {
   // 20
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
   // The query content.
+  // 
+  // example:
+  // 
+  // {"RequestId":"D83A46FF-9EA6-1477-A0C3-C8FD57C6F572"}
   Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
   // The region ID.
   // 
@@ -61,8 +65,12 @@ type ExportScanResultRequest struct {
   // text
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
   // The sort field.
+  // 
+  // example:
+  // 
+  // {"RequestTime":"desc"}
   Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-  // The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+  // The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
   // 
   // example:
   // 

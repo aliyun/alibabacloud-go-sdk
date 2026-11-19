@@ -36,13 +36,13 @@ type GetOssCheckFreezeResultRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-05-19 10:05:11
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of completed tasks.
+	// The number of completed items.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetOssCheckFreezeResultRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query condition.
+	// The query conditions. Note: This parameter is actually required. You must provide a JSON string that contains the TaskId field, such as {"TaskId":"P_XXX"}. If this parameter is not provided, the API returns a 400 error (oss.check.task.not.exists).
 	//
 	// example:
 	//
@@ -67,8 +67,12 @@ type GetOssCheckFreezeResultRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"GmtCreate":"desc"}
 	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

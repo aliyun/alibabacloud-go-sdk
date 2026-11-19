@@ -38,19 +38,19 @@ type GetCipStatsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success flag.
 	//
 	// example:
 	//
@@ -132,13 +132,17 @@ func (s *GetCipStatsResponseBody) Validate() error {
 type GetCipStatsResponseBodyData struct {
 	// The label usage chart.
 	LabelStatChart []*GetCipStatsResponseBodyDataLabelStatChart `json:"LabelStatChart,omitempty" xml:"LabelStatChart,omitempty" type:"Repeated"`
-	// The total count by category.
+	// The categorized statistics of the total count.
+	//
+	// example:
+	//
+	// {"porn":{"totalCount":10},"ad":{"totalCount":2}}
 	TotalStat map[string]map[string]interface{} `json:"TotalStat,omitempty" xml:"TotalStat,omitempty"`
 	// The list of UIDs.
 	Uids []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
-	// The X value of the coordinate point.
+	// The X-axis value of the coordinate point.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	// The Y value of the coordinate point.
+	// The Y-axis value of the coordinate point.
 	Y []*GetCipStatsResponseBodyDataY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 	// The hit data.
 	Z []*GetCipStatsResponseBodyDataZ `json:"Z,omitempty" xml:"Z,omitempty" type:"Repeated"`
@@ -258,9 +262,9 @@ type GetCipStatsResponseBodyDataLabelStatChart struct {
 	TreeChart []*GetCipStatsResponseBodyDataLabelStatChartTreeChart `json:"TreeChart,omitempty" xml:"TreeChart,omitempty" type:"Repeated"`
 	// The audio tree chart.
 	VoiceTreeChart []*GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart `json:"VoiceTreeChart,omitempty" xml:"VoiceTreeChart,omitempty" type:"Repeated"`
-	// The X value of the coordinate point.
+	// The X-axis value of the coordinate point.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	// The Y value of the coordinate point.
+	// The Y-axis value of the coordinate point.
 	Y []*GetCipStatsResponseBodyDataLabelStatChartY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 

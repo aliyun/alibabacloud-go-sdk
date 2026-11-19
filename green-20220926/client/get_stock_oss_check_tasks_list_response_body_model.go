@@ -117,13 +117,13 @@ func (s *GetStockOssCheckTasksListResponseBody) Validate() error {
 }
 
 type GetStockOssCheckTasksListResponseBodyItems struct {
-	// The storage space.
+	// The buckets.
 	//
 	// example:
 	//
 	// tmp
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// The configuration item.
+	// The configuration.
 	Config *GetStockOssCheckTasksListResponseBodyItemsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
@@ -131,13 +131,13 @@ type GetStockOssCheckTasksListResponseBodyItems struct {
 	//
 	// 2024-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of completed tasks.
+	// The number of completed items.
 	//
 	// example:
 	//
 	// 2
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
-	// Indicates whether the task is a scheduled scan task.
+	// Specifies whether the task is a scheduled scan task.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type GetStockOssCheckTasksListResponseBodyItems struct {
 	//
 	// example:
 	//
-	// video
+	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The last execution time of the scheduled task. Format: HH:mm:ss.
 	//
@@ -195,7 +195,7 @@ type GetStockOssCheckTasksListResponseBodyItems struct {
 	//
 	// example:
 	//
-	// ImageScheduledTask20231205135716797
+	// Image scheduled task 20231205135716797
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task type.
 	//
@@ -376,13 +376,13 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// 2024-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The scheduled execution date of the task. An integer value, such as 1.
+	// The execution date of the scheduled task. The value is an integer, such as 1.
 	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
-	// The scheduled execution time of the task. Format: HH:mm:ss.
+	// The expected execution time of the scheduled task. Format: HH:mm:ss.
 	//
 	// example:
 	//
@@ -400,7 +400,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// true
 	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	// Specifies whether to freeze high-risk audio and text.
+	// Specifies whether to freeze high-risk audio and text files.
 	//
 	// example:
 	//
@@ -412,7 +412,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// true
 	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	// Specifies whether to freeze medium-risk audio and text.
+	// Specifies whether to freeze medium-risk audio and text files.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// all
 	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
-	// The prefix.
+	// The prefixes.
 	PrefixFilters []*string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty" type:"Repeated"`
 	// The priority.
 	//
@@ -444,11 +444,11 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Referer。
+	// The Referer header for hotlink protection.
 	//
 	// example:
 	//
-	// *
+	// https://www.aliyun.com/
 	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
 	// The scan limit.
 	//
@@ -456,7 +456,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
-	// Specifies whether to scan images without file extensions.
+	// Specifies whether to scan images without file name extensions.
 	//
 	// example:
 	//
@@ -468,7 +468,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// 0
 	ScanResourceType *int32 `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
-	// The scan service code.
+	// The code of the scan service.
 	ScanService []*string `json:"ScanService,omitempty" xml:"ScanService,omitempty" type:"Repeated"`
 	// The scan service information.
 	ScanServiceInfos []*GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos `json:"ScanServiceInfos,omitempty" xml:"ScanServiceInfos,omitempty" type:"Repeated"`
@@ -478,7 +478,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
 	//
 	// 2023-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The scheduling cycle. An integer value, such as 1.
+	// The scheduling date. The value is an integer, such as 1.
 	//
 	// example:
 	//
@@ -737,7 +737,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos struct {
 	//
 	// baselineCheck
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Indicates whether the service is copied.
+	// Specifies whether to copy.
 	//
 	// example:
 	//
@@ -753,7 +753,7 @@ type GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos struct {
 	//
 	// example:
 	//
-	// General baseline detection.
+	// General baseline check
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 

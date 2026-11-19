@@ -22,13 +22,13 @@ type iGetAppConfigRequest interface {
 }
 
 type GetAppConfigRequest struct {
-	// Agent ID。
+	// The agent ID.
 	//
 	// example:
 	//
 	// ag.abcxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// App ID。
+	// The application ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetAppConfigRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The resource type. This parameter is required. If it is not provided, the service returns a 400 error.
 	//
 	// example:
 	//

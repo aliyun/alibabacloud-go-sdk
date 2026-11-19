@@ -28,21 +28,21 @@ type GetOssCheckResultDetailResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details data.
+	// The detailed data.
 	Data *GetOssCheckResultDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 62E97001-1255-50A9-8E1E-4FD05473D952
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success flag.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *GetOssCheckResultDetailResponseBody) Validate() error {
 }
 
 type GetOssCheckResultDetailResponseBodyData struct {
-	// The storage bucket.
+	// The bucket.
 	//
 	// example:
 	//
@@ -161,37 +161,37 @@ type GetOssCheckResultDetailResponseBodyData struct {
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// The task name.
+	// The job name.
 	//
 	// example:
 	//
 	// dhT20X2310
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The labels.
+	// The label details.
 	LabelDetails []*GetOssCheckResultDetailResponseBodyDataLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// The labels.
+	// The label details.
 	LabelDetails2 []*GetOssCheckResultDetailResponseBodyDataLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
 	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// The manual disposition status.
+	// The manual action status.
 	//
 	// example:
 	//
 	// FREEZE
 	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	// The disposition time. The format is YYYY-MM-DD HH:mm:ss.
+	// The action time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-08-09 12:00:00
 	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	// The operator who performed the disposition.
+	// The operator.
 	//
 	// example:
 	//
-	// xx
+	// ops_admin_01
 	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
 	// The MD5 hash of the file.
 	//
@@ -199,7 +199,7 @@ type GetOssCheckResultDetailResponseBodyData struct {
 	//
 	// f6e2e1946f06310c8a0cc443a05819f3
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type GetOssCheckResultDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// 服务名称
+	// Service name
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The task ID.
 	//
@@ -555,7 +555,7 @@ func (s *GetOssCheckResultDetailResponseBodyData) Validate() error {
 }
 
 type GetOssCheckResultDetailResponseBodyDataLabelDetails struct {
-	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
+	// The confidence score, which ranges from 0 to 100 and is rounded to two decimal places.
 	//
 	// example:
 	//
@@ -565,9 +565,9 @@ type GetOssCheckResultDetailResponseBodyDataLabelDetails struct {
 	//
 	// example:
 	//
-	// 涉政
+	// Political content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The labels.
+	// The label details.
 	//
 	// example:
 	//
@@ -615,7 +615,7 @@ func (s *GetOssCheckResultDetailResponseBodyDataLabelDetails) Validate() error {
 }
 
 type GetOssCheckResultDetailResponseBodyDataLabelDetails2 struct {
-	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
+	// The confidence score, which ranges from 0 to 100 and is rounded to two decimal places.
 	//
 	// example:
 	//
@@ -625,9 +625,9 @@ type GetOssCheckResultDetailResponseBodyDataLabelDetails2 struct {
 	//
 	// example:
 	//
-	// 涉政
+	// Political content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The labels.
+	// The label details.
 	//
 	// example:
 	//
@@ -697,7 +697,7 @@ type GetOssCheckResultDetailResponseBodyDataScanServiceInfos struct {
 	//
 	// example:
 	//
-	// 服务名称
+	// Service name
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 

@@ -70,43 +70,43 @@ type iCreatStockOssCheckTaskRequest interface {
 }
 
 type CreatStockOssCheckTaskRequest struct {
-	// The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
+	// The filter configuration for each bucket, which can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, including prefix and suffix filters and the list of filter characters.
 	//
 	// example:
 	//
 	// "{\\"test-bucket1\\":{\\"prefixFilterType\\":\\"include\\",\\"prefixFilters\\":[\\"test1\\"]},\\"test-bucket2\\":{\\"prefixFilterType\\":\\"exclude\\",\\"prefixFilters\\":[\\"test2\\"]}}"
 	BucketPrefixFilterConfig *string `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
-	// The storage buckets.
+	// The buckets. The specified buckets must be registered and authorized for the Content Moderation service. You can call the GetBucketsList operation to obtain the list of available buckets. If you specify an unauthorized or non-existent bucket, the bucket.not.found error is returned.
 	//
 	// example:
 	//
 	// [{\\"Bucket\\":\\"bucket01-test\\",\\"Region\\":\\"cn-beijing\\"}]
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// The notification callback ID.
+	// The message notification ID.
 	//
 	// example:
 	//
 	// 1751
 	CallbackId *string `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
-	// Specifies whether to deduplicate against historically scanned tasks.
+	// Specifies whether to deduplicate historical scanned tasks. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (distinctHistoryTasks may not be null).
 	//
 	// example:
 	//
 	// true
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
-	// The task end time. Format: `YYYY-MM-DD HH:mm:ss`.
+	// The end time of the task. Format: `YYYY-MM-DD HH:mm:ss`.
 	//
 	// example:
 	//
 	// 2023-12-18 10:08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution date of the scheduled task. The value is in integer format.
+	// The execution date of the scheduled task. The value is an integer.
 	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
-	// The expected execution time of the scheduled task. Format: `HH:mm:ss-HH:mm:ss`.
+	// The estimated execution time of the scheduled task. Format: `HH:mm:ss-HH:mm:ss`.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// true
 	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	// Specifies whether to freeze high-risk audio and text.
+	// Specifies whether to freeze high-risk audio and text files.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// true
 	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	// Specifies whether to freeze medium-risk audio and text.
+	// Specifies whether to freeze medium-risk audio and text files.
 	//
 	// example:
 	//
 	// true
 	FreezeMediumRisk2 *bool `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
-	// The path to which frozen files are transferred.
+	// The transfer path.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
-	// The media asset type.
+	// The media type.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Referer。
+	// The referer.
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum number of files to scan.
+	// The scan limit.
 	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
-	// Specifies whether to scan images without file extensions.
+	// Specifies whether to scan images without file name extensions.
 	//
 	// example:
 	//
@@ -214,13 +214,13 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// 0
 	ScanResourceType *string `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
-	// The scan service code.
+	// The code of the scan service.
 	//
 	// example:
 	//
 	// baselineCheck
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	// The task start time. Format: `YYYY-MM-DD HH:mm:ss`.
+	// The start time of the task. Format: `YYYY-MM-DD HH:mm:ss`.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type CreatStockOssCheckTaskRequest struct {
 	//
 	// example:
 	//
-	// 图片任务 20240709101602004
+	// Image task 20240709101602004
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The task type.
 	//

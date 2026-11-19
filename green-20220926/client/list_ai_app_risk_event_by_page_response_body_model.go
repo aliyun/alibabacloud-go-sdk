@@ -40,13 +40,13 @@ type ListAiAppRiskEventByPageResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page. An empty value indicates that no more pages exist.
+	// The token for the next page. An empty value indicates that there are no more pages.
 	//
 	// example:
 	//
 	// 1a320d468c75e987f297484532c16e34d0ab6e7e43f8b73d
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -163,85 +163,85 @@ type ListAiAppRiskEventByPageResponseBodyItems struct {
 	//
 	// name-xxx
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The channel source.
+	// The source channel.
 	//
 	// example:
 	//
 	// bailian
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The time when the event was resolved. Format: YYYY-MM-DD HH:mm:ss.
+	// The time when the event processing was completed. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The event code that identifies the type or category of the event.
+	// The code of the event, which identifies the type or category of the event.
 	//
 	// example:
 	//
 	// de_aamexg3015
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The detailed description of the risk event.
+	// The description of the event, which details the content of the risk event.
 	//
 	// example:
 	//
-	// xxx
+	// Sensitive information detected in model output
 	EventDesc *string `json:"EventDesc,omitempty" xml:"EventDesc,omitempty"`
-	// The detailed description of the risk event in English.
+	// The English description of the event, which details the content of the risk event.
 	//
 	// example:
 	//
-	// xxx
+	// Sensitive information detected in model output
 	EventDescEn *string `json:"EventDescEn,omitempty" xml:"EventDescEn,omitempty"`
-	// The event ID that uniquely identifies a risk event.
+	// The ID of the event, which uniquely identifies a risk event.
 	//
 	// example:
 	//
 	// e-a7gvnv3vid536dfxj
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The name that briefly describes the risk event.
+	// The name of the event, which provides a brief description of the risk event.
 	//
 	// example:
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The time when the event was handled. Format: YYYY-MM-DD HH:mm:ss.
+	// The time when the event was processed. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-01-10 11:42:31
 	HandleTime *string `json:"HandleTime,omitempty" xml:"HandleTime,omitempty"`
-	// The label used to tag or categorize the event.
+	// The label used to mark or classify the event.
 	//
 	// example:
 	//
 	// label-03
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The detailed description of the label.
+	// The description of the label, which provides detailed information about the label.
 	//
 	// example:
 	//
-	// xxxx
+	// Sensitive data label
 	LabelDesc *string `json:"LabelDesc,omitempty" xml:"LabelDesc,omitempty"`
-	// The risk level that indicates the severity of the event, such as high, medium, or low.
+	// The risk level, which indicates the severity of the event, such as high, medium, or low.
 	//
 	// example:
 	//
 	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The time when the event occurred. Format: YYYY-MM-DD HH:mm:ss.
+	// The time when the event started. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The event status that indicates the current processing state, such as pending or resolved.
+	// The status of the event, which indicates the processing status of the current event, such as pending or processed.
 	//
 	// example:
 	//
 	// resolved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The event type that indicates the category of the risk event, such as security or performance.
+	// The event type, which indicates the category of the risk event, such as security or performance.
 	//
 	// example:
 	//

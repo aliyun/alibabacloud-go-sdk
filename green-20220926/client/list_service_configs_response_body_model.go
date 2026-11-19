@@ -30,19 +30,19 @@ type ListServiceConfigsResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*ListServiceConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListServiceConfigsResponseBody) Validate() error {
 }
 
 type ListServiceConfigsResponseBodyData struct {
-	// The classification.
+	// The category.
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ type ListServiceConfigsResponseBodyData struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The scene type. Valid values:
 	//
-	// - recommended_scene: recommended scenario.
+	// - recommended_scene: recommended scene
 	//
-	// - all_scene: all scenarios.
+	// - all_scene: all scenes
 	//
 	// example:
 	//
@@ -169,13 +169,13 @@ type ListServiceConfigsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 服务描述
+	// Service description
 	ServiceDesc *string `json:"ServiceDesc,omitempty" xml:"ServiceDesc,omitempty"`
 	// The service name.
 	//
 	// example:
 	//
-	// 服务名称
+	// Service name
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service type.
 	//
@@ -183,7 +183,7 @@ type ListServiceConfigsResponseBodyData struct {
 	//
 	// plus
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// UID。
+	// The user UID.
 	//
 	// example:
 	//
@@ -340,13 +340,13 @@ type ListServiceConfigsResponseBodyDataCustomServiceConf struct {
 	AudioService *string `json:"AudioService,omitempty" xml:"AudioService,omitempty"`
 	// The image service.
 	ImageService []*string `json:"ImageService,omitempty" xml:"ImageService,omitempty" type:"Repeated"`
-	// The ignored keyword library.
+	// The ignored keyword libraries.
 	KeywordFilterLibs []*string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
-	// The hit keyword library.
+	// The matched keyword libraries.
 	KeywordHitLibs []*string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
 	// The service rules.
 	Rules []*ListServiceConfigsResponseBodyDataCustomServiceConfRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The hit similar text library.
+	// The matched similar text libraries.
 	SimilarTextHitLibs []*string `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
 }
 
@@ -428,7 +428,7 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConf) Validate() error {
 type ListServiceConfigsResponseBodyDataCustomServiceConfRules struct {
 	// The image moderation rule.
 	ImageScanRule *ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule `json:"ImageScanRule,omitempty" xml:"ImageScanRule,omitempty" type:"Struct"`
-	// The ordinal number.
+	// The sequence number.
 	//
 	// example:
 	//

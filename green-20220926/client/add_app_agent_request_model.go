@@ -34,9 +34,9 @@ type AddAppAgentRequest struct {
 	//
 	// example:
 	//
-	// Agent1
+	// Agent 1
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//

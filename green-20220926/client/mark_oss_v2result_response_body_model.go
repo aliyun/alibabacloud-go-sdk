@@ -20,7 +20,7 @@ type iMarkOssV2ResultResponseBody interface {
 type MarkOssV2ResultResponseBody struct {
 	// The list of request IDs for failed operations.
 	FailureRequestIds []*string `json:"FailureRequestIds,omitempty" xml:"FailureRequestIds,omitempty" type:"Repeated"`
-	// The request ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

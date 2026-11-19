@@ -28,25 +28,25 @@ type ExportTextScanResultResponseBody struct {
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The export result.
+  // The export results.
   // 
   // example:
   // 
   // https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/portal_data/production/scanResult/text/textScanResult_aliow2MAdWXCakCxlitVY8Lnn-1A9KEw.xlsx
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The description of the error code.
+  // The detailed description of the error code.
   // 
   // example:
   // 
   // OK
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+  // The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
   // 
   // example:
   // 
   // AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // The success indicator.
   // 
   // example:
   // 

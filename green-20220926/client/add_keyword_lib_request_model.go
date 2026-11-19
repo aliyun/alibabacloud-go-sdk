@@ -30,7 +30,7 @@ type AddKeywordLibRequest struct {
 	//
 	// example:
 	//
-	// keyword1\\nkeyword2
+	// Keyword1\\nKeyword2
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The name of the keyword file.
 	//
@@ -42,7 +42,7 @@ type AddKeywordLibRequest struct {
 	//
 	// example:
 	//
-	// TestLibrary.
+	// Test keyword library
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The properties.
 	//
@@ -56,9 +56,9 @@ type AddKeywordLibRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The library code.
+	// The code of the keyword library.
 	//
-	// - desensitize: desensitization library
+	// - desensitize: desensitization keyword library.
 	//
 	// example:
 	//

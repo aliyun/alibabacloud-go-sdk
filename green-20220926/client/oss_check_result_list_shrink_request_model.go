@@ -36,13 +36,13 @@ type OssCheckResultListShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-10-21 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of completed items.
+	// The number of completed tasks.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type OssCheckResultListShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query condition.
+	// The query conditions. Note: This parameter is required. You must specify a valid JSON string that contains at least one key-value pair, such as {"Labels":"porn"}. The scan results cannot be filtered properly without query conditions.
 	//
 	// example:
 	//
@@ -67,8 +67,12 @@ type OssCheckResultListShrinkRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"GmtCreate":"desc"}
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

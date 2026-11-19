@@ -22,19 +22,19 @@ type iModifyAppInfoRequest interface {
 }
 
 type ModifyAppInfoRequest struct {
-	// App ID。
+	// The app ID. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (appId may not be empty).
 	//
 	// example:
 	//
 	// txt_check_agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The sort number.
+	// The custom order number.
 	//
 	// example:
 	//
 	// 1
 	CustomOrderNum *int32 `json:"CustomOrderNum,omitempty" xml:"CustomOrderNum,omitempty"`
-	// The app name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyAppInfoRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The resource type. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (resourceType may not be empty).
 	//
 	// example:
 	//

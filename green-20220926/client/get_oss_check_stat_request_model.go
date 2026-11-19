@@ -28,13 +28,13 @@ type GetOssCheckStatRequest struct {
 	//
 	// true
 	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The parent task ID.
+	// The ID of the parent task.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetOssCheckStatRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

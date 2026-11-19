@@ -20,7 +20,7 @@ type iUpdateAiAppScanStatusResponseBody interface {
 }
 
 type UpdateAiAppScanStatusResponseBody struct {
-	// The list of application IDs that failed.
+	// The list of failed application IDs.
 	FailedAppIds []*string `json:"FailedAppIds,omitempty" xml:"FailedAppIds,omitempty" type:"Repeated"`
 	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
@@ -30,17 +30,17 @@ type UpdateAiAppScanStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status. Valid values:
 	//
-	// - SUCCESS: Succeeded.
+	// - SUCCESS: Success.
 	//
-	// - PARTIAL_SUCCESS: Partially succeeded.
+	// - PARTIAL_SUCCESS: Partial success.
 	//
-	// - FAILED: Failed.
+	// - FAILED: Failure.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of application IDs that succeeded.
+	// The list of successful application IDs.
 	SuccessAppIds []*string `json:"SuccessAppIds,omitempty" xml:"SuccessAppIds,omitempty" type:"Repeated"`
 }
 

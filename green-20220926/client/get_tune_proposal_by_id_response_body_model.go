@@ -26,9 +26,9 @@ type GetTuneProposalByIdResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *GetTuneProposalByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *GetTuneProposalByIdResponseBody) Validate() error {
 }
 
 type GetTuneProposalByIdResponseBodyData struct {
-	// The response data in JSON format.
+	// The returned data in JSON format.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *AddAppConfigResponseBody) Validate() error {
 }
 
 type AddAppConfigResponseBodyData struct {
-	// App ID。
+	// The application ID.
 	//
 	// example:
 	//

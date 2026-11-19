@@ -64,7 +64,7 @@ func (s *AddKeywordsToLibResponseBody) Validate() error {
 type AddKeywordsToLibResponseBodyData struct {
 	// The result.
 	KeywordsResult *AddKeywordsToLibResponseBodyDataKeywordsResult `json:"KeywordsResult,omitempty" xml:"KeywordsResult,omitempty" type:"Struct"`
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
@@ -127,9 +127,9 @@ type AddKeywordsToLibResponseBodyDataKeywordsResult struct {
 	//
 	// example:
 	//
-	// xxx
+	// common.success
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// The list of keywords with illegal length (too long or too short).
+	// The list of keywords that are too long or too short.
 	IllegalLengthKeywords []*string `json:"IllegalLengthKeywords,omitempty" xml:"IllegalLengthKeywords,omitempty" type:"Repeated"`
 	// The number of invalid keywords.
 	//
@@ -139,7 +139,7 @@ type AddKeywordsToLibResponseBodyDataKeywordsResult struct {
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
 	// The list of invalid keywords.
 	InvalidKeywords []*string `json:"InvalidKeywords,omitempty" xml:"InvalidKeywords,omitempty" type:"Repeated"`
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//

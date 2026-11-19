@@ -32,7 +32,7 @@ type ListKeywordsShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ListKeywordsShrinkRequest struct {
 	//
 	// example:
 	//
-	// {\\"GmtCreate\\":\\"desc\\"}
+	// {"GmtCreate":"desc"}
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The keyword library code. Valid values:
+	// The library code.
 	//
-	// - desensitize: desensitization keyword library.
+	// - desensitize desensitization library
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListKeywordsShrinkRequest struct {
 	//
 	// example:
 	//
-	// 测试词
+	// Test word
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 

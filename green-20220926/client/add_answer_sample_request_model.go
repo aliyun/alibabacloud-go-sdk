@@ -20,7 +20,7 @@ type iAddAnswerSampleRequest interface {
 }
 
 type AddAnswerSampleRequest struct {
-	// The ID of the proxy answer library.
+	// The ID of the fallback answer library.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type AddAnswerSampleRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The file name of the proxy answer sample to be added.
+	// The name of the file that contains the fallback answer samples to be added.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type AddAnswerSampleRequest struct {
 	//
 	// example:
 	//
-	// 代答答案1\\n代答答案2
+	// Fallback answer 1\\nFallback answer 2
 	Samples *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
 }
 

@@ -64,7 +64,11 @@ func (s *GetAiAppStatsResponseBody) Validate() error {
 type GetAiAppStatsResponseBodyData struct {
 	// The label usage chart.
 	LabelStatChart []*GetAiAppStatsResponseBodyDataLabelStatChart `json:"LabelStatChart,omitempty" xml:"LabelStatChart,omitempty" type:"Repeated"`
-	// The total count categorized statistics.
+	// The total count statistics by category.
+	//
+	// example:
+	//
+	// {"porn":{"Total":"100","Share":"12.50%"}}
 	TotalStat map[string]*DataTotalStatValue `json:"TotalStat,omitempty" xml:"TotalStat,omitempty"`
 	// The X value of the coordinate point.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`

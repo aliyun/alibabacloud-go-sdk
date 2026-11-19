@@ -42,7 +42,7 @@ type AddImageLibResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AddImageLibResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success flag.
 	//
 	// example:
 	//

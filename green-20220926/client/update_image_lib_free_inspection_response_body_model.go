@@ -24,7 +24,7 @@ type iUpdateImageLibFreeInspectionResponseBody interface {
 }
 
 type UpdateImageLibFreeInspectionResponseBody struct {
-	// The error code, which is the same as the HTTP status code.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateImageLibFreeInspectionResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success flag.
 	//
 	// example:
 	//

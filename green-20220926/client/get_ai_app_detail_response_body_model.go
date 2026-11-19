@@ -13,12 +13,18 @@ type iGetAiAppDetailResponseBody interface {
 	GetAppId() *string
 	SetAppName(v string) *GetAiAppDetailResponseBody
 	GetAppName() *string
+	SetChannel(v string) *GetAiAppDetailResponseBody
+	GetChannel() *string
 	SetChart(v *GetAiAppDetailResponseBodyChart) *GetAiAppDetailResponseBody
 	GetChart() *GetAiAppDetailResponseBodyChart
+	SetProperty(v *GetAiAppDetailResponseBodyProperty) *GetAiAppDetailResponseBody
+	GetProperty() *GetAiAppDetailResponseBodyProperty
 	SetRequestId(v string) *GetAiAppDetailResponseBody
 	GetRequestId() *string
 	SetRiskEvents(v []*GetAiAppDetailResponseBodyRiskEvents) *GetAiAppDetailResponseBody
 	GetRiskEvents() []*GetAiAppDetailResponseBodyRiskEvents
+	SetRiskStats(v []*GetAiAppDetailResponseBodyRiskStats) *GetAiAppDetailResponseBody
+	GetRiskStats() []*GetAiAppDetailResponseBodyRiskStats
 	SetScore(v int32) *GetAiAppDetailResponseBody
 	GetScore() *int32
 	SetUid(v string) *GetAiAppDetailResponseBody
@@ -26,20 +32,28 @@ type iGetAiAppDetailResponseBody interface {
 }
 
 type GetAiAppDetailResponseBody struct {
-	// appId。
+	// The AI application ID.
 	//
 	// example:
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// app-xxx
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The channel information.
+	//
+	// example:
+	//
+	// qoder
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The chart.
 	Chart *GetAiAppDetailResponseBodyChart `json:"Chart,omitempty" xml:"Chart,omitempty" type:"Struct"`
+	// The properties.
+	Property *GetAiAppDetailResponseBodyProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Struct"`
 	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
@@ -48,13 +62,15 @@ type GetAiAppDetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The risk events.
 	RiskEvents []*GetAiAppDetailResponseBodyRiskEvents `json:"RiskEvents,omitempty" xml:"RiskEvents,omitempty" type:"Repeated"`
+	// The risk statistics information.
+	RiskStats []*GetAiAppDetailResponseBodyRiskStats `json:"RiskStats,omitempty" xml:"RiskStats,omitempty" type:"Repeated"`
 	// The score.
 	//
 	// example:
 	//
 	// 100
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// UID。
+	// The UID of the user.
 	//
 	// example:
 	//
@@ -78,8 +94,16 @@ func (s *GetAiAppDetailResponseBody) GetAppName() *string {
 	return s.AppName
 }
 
+func (s *GetAiAppDetailResponseBody) GetChannel() *string {
+	return s.Channel
+}
+
 func (s *GetAiAppDetailResponseBody) GetChart() *GetAiAppDetailResponseBodyChart {
 	return s.Chart
+}
+
+func (s *GetAiAppDetailResponseBody) GetProperty() *GetAiAppDetailResponseBodyProperty {
+	return s.Property
 }
 
 func (s *GetAiAppDetailResponseBody) GetRequestId() *string {
@@ -88,6 +112,10 @@ func (s *GetAiAppDetailResponseBody) GetRequestId() *string {
 
 func (s *GetAiAppDetailResponseBody) GetRiskEvents() []*GetAiAppDetailResponseBodyRiskEvents {
 	return s.RiskEvents
+}
+
+func (s *GetAiAppDetailResponseBody) GetRiskStats() []*GetAiAppDetailResponseBodyRiskStats {
+	return s.RiskStats
 }
 
 func (s *GetAiAppDetailResponseBody) GetScore() *int32 {
@@ -108,8 +136,18 @@ func (s *GetAiAppDetailResponseBody) SetAppName(v string) *GetAiAppDetailRespons
 	return s
 }
 
+func (s *GetAiAppDetailResponseBody) SetChannel(v string) *GetAiAppDetailResponseBody {
+	s.Channel = &v
+	return s
+}
+
 func (s *GetAiAppDetailResponseBody) SetChart(v *GetAiAppDetailResponseBodyChart) *GetAiAppDetailResponseBody {
 	s.Chart = v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBody) SetProperty(v *GetAiAppDetailResponseBodyProperty) *GetAiAppDetailResponseBody {
+	s.Property = v
 	return s
 }
 
@@ -120,6 +158,11 @@ func (s *GetAiAppDetailResponseBody) SetRequestId(v string) *GetAiAppDetailRespo
 
 func (s *GetAiAppDetailResponseBody) SetRiskEvents(v []*GetAiAppDetailResponseBodyRiskEvents) *GetAiAppDetailResponseBody {
 	s.RiskEvents = v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBody) SetRiskStats(v []*GetAiAppDetailResponseBodyRiskStats) *GetAiAppDetailResponseBody {
+	s.RiskStats = v
 	return s
 }
 
@@ -139,8 +182,22 @@ func (s *GetAiAppDetailResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.Property != nil {
+		if err := s.Property.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RiskEvents != nil {
 		for _, item := range s.RiskEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskStats != nil {
+		for _, item := range s.RiskStats {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -152,9 +209,9 @@ func (s *GetAiAppDetailResponseBody) Validate() error {
 }
 
 type GetAiAppDetailResponseBodyChart struct {
-	// The X value of the coordinate point.
+	// The X-coordinate of the data point.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	// The Y value of the coordinate point.
+	// The Y-coordinate of the data point.
 	Y []*GetAiAppDetailResponseBodyChartY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 
@@ -238,8 +295,83 @@ func (s *GetAiAppDetailResponseBodyChartY) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetAiAppDetailResponseBodyProperty struct {
+	// The email address.
+	//
+	// example:
+	//
+	// xx@qoder.alibaba-inc.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The hostname.
+	//
+	// example:
+	//
+	// xx.local
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 1.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The MAC address.
+	//
+	// example:
+	//
+	// xx.xx.xx
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+}
+
+func (s GetAiAppDetailResponseBodyProperty) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAiAppDetailResponseBodyProperty) GoString() string {
+	return s.String()
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) GetEmail() *string {
+	return s.Email
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) GetHostname() *string {
+	return s.Hostname
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) GetIp() *string {
+	return s.Ip
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) GetMac() *string {
+	return s.Mac
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) SetEmail(v string) *GetAiAppDetailResponseBodyProperty {
+	s.Email = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) SetHostname(v string) *GetAiAppDetailResponseBodyProperty {
+	s.Hostname = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) SetIp(v string) *GetAiAppDetailResponseBodyProperty {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) SetMac(v string) *GetAiAppDetailResponseBodyProperty {
+	s.Mac = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyProperty) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetAiAppDetailResponseBodyRiskEvents struct {
-	// The risk event code.
+	// The code of the risk event.
 	//
 	// example:
 	//
@@ -253,17 +385,17 @@ type GetAiAppDetailResponseBodyRiskEvents struct {
 	EventCount *int64 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
 	// The list of risk event IDs.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
-	// The risk event name.
+	// The name of the risk event.
 	//
 	// example:
 	//
-	// xxx
+	// Insults and personal attacks
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The event status. Valid values:
 	//
-	// - **unhandled**: Not handled.
+	// - **unhandled**: unhandled
 	//
-	// - **resolved**: Handled.
+	// - **resolved**: resolved
 	//
 	// example:
 	//
@@ -359,7 +491,7 @@ type GetAiAppDetailResponseBodyRiskEventsLabels struct {
 	//
 	// example:
 	//
-	// xxx
+	// The output content contains insulting or discriminatory remarks
 	LabelDesc *string `json:"LabelDesc,omitempty" xml:"LabelDesc,omitempty"`
 	// The type.
 	//
@@ -405,5 +537,65 @@ func (s *GetAiAppDetailResponseBodyRiskEventsLabels) SetType(v string) *GetAiApp
 }
 
 func (s *GetAiAppDetailResponseBodyRiskEventsLabels) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAiAppDetailResponseBodyRiskStats struct {
+	// The number of requests.
+	//
+	// example:
+	//
+	// 10
+	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	// The number of risks.
+	//
+	// example:
+	//
+	// 1
+	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// The risk statistics type.
+	//
+	// example:
+	//
+	// content_moderation
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetAiAppDetailResponseBodyRiskStats) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAiAppDetailResponseBodyRiskStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) GetRequestCount() *int64 {
+	return s.RequestCount
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) GetRiskCount() *int64 {
+	return s.RiskCount
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) GetType() *string {
+	return s.Type
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) SetRequestCount(v int64) *GetAiAppDetailResponseBodyRiskStats {
+	s.RequestCount = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) SetRiskCount(v int64) *GetAiAppDetailResponseBodyRiskStats {
+	s.RiskCount = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) SetType(v string) *GetAiAppDetailResponseBodyRiskStats {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAiAppDetailResponseBodyRiskStats) Validate() error {
 	return dara.Validate(s)
 }

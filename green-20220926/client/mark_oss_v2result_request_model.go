@@ -24,7 +24,7 @@ type iMarkOssV2ResultRequest interface {
 }
 
 type MarkOssV2ResultRequest struct {
-	// The end time. The time format is YYYY-MM-DD HH:mm:ss.
+	// The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -32,35 +32,35 @@ type MarkOssV2ResultRequest struct {
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The freeze type. This parameter is required when Operation is set to freeze. Valid values:
 	//
-	// - ACL: Modify file permissions.
+	// - ACL: Modifies file permissions.
 	//
-	// - COPY: Move the file directory. Description of the destination directory: 1. The file directory selected when the task was created takes priority. 2. If automatic freezing was not enabled during creation, or ACL freezing was configured, the directory selected during freezing in the console is used. 3. The default directory is alicip_riskfile_backup/.
+	// - COPY: Moves the file directory. Destination directory rules: 1. The file directory selected during task creation takes precedence. 2. If automatic freezing is not enabled during creation, or if ACL freezing is configured, the directory selected in the console during freezing is used. 3. The default directory is alicip_riskfile_backup/.
 	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// The processing operation. Valid values:
+	// The handling operation. Valid values:
 	//
-	// - freeze: Freeze.
+	// - freeze: Freezes the object.
 	//
-	// - unfreeze: Unfreeze.
+	// - unfreeze: Unfreezes the object.
 	//
-	// - misreport: Non-violation false positive.
+	// - misreport: Reports a false positive.
 	//
-	// - missOut: Violation missed.
+	// - missOut: Reports a missed violation.
 	//
 	// example:
 	//
 	// freeze
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The request ID.
+	// The request IDs.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestIds *string `json:"RequestIds,omitempty" xml:"RequestIds,omitempty"`
-	// The start time. The time format is YYYY-MM-DD HH:mm:ss.
+	// The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type MarkOssV2ResultRequest struct {
 	//
 	// example:
 	//
-	// Image stock task 20240914100517757
+	// Image inventory task 20240914100517757
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

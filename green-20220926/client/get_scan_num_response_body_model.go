@@ -22,7 +22,7 @@ type iGetScanNumResponseBody interface {
 }
 
 type GetScanNumResponseBody struct {
-	// The upper limit on the number.
+	// The upper limit.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type ModifyCallbackRequest struct {
 	//
 	// example:
 	//
-	// 回调通知
+	// Callback notification
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

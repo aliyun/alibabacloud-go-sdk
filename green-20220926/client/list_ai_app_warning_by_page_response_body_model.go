@@ -30,9 +30,9 @@ type ListAiAppWarningByPageResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The extension field.
+	// The extended fields.
 	Ext *ListAiAppWarningByPageResponseBodyExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	// The data on the current page.
+	// The entries on the current page.
 	Items []*ListAiAppWarningByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries per page.
 	//
@@ -40,13 +40,13 @@ type ListAiAppWarningByPageResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The ID of the request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -135,7 +135,11 @@ func (s *ListAiAppWarningByPageResponseBody) Validate() error {
 }
 
 type ListAiAppWarningByPageResponseBodyExt struct {
-	// The option.
+	// The options.
+	//
+	// example:
+	//
+	// {"warningLevel":"high"}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
 }
 
@@ -161,13 +165,13 @@ func (s *ListAiAppWarningByPageResponseBodyExt) Validate() error {
 }
 
 type ListAiAppWarningByPageResponseBodyItems struct {
-	// appId。
+	// The application ID.
 	//
 	// example:
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -181,7 +185,7 @@ type ListAiAppWarningByPageResponseBodyItems struct {
 	//
 	// baselineCheck_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The trace ID used to correlate and trace alert events.
+	// The trace ID used to associate and trace alert events.
 	//
 	// example:
 	//
@@ -193,7 +197,7 @@ type ListAiAppWarningByPageResponseBodyItems struct {
 	//
 	// 10
 	WarningCount *int64 `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
-	// The alert time in the format of YYYY-MM-DD HH:mm:ss.
+	// The time when the alert was triggered. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -292,13 +296,13 @@ type ListAiAppWarningByPageResponseBodyItemsLabels struct {
 	//
 	// 20
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The label name.
+	// The name of the label.
 	//
 	// example:
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The label description.
+	// The description of the label.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetFeatureConfigRequest interface {
 }
 
 type GetFeatureConfigRequest struct {
-	// The query condition.
+	// The query conditions.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetFeatureConfigRequest struct {
 	//
 	// llm_query_moderation
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The type.
+	// The type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error (type may not be empty).
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type GetTextScanResultResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetTextScanResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetTextScanResultResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -193,29 +193,29 @@ func (s *GetTextScanResultResponseBodyData) Validate() error {
 }
 
 type GetTextScanResultResponseBodyDataItems struct {
-	// The AccountId passed in by the customer.
+	// The AccountId parameter passed by the customer.
 	//
 	// example:
 	//
 	// accountIdtest123
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Bailian request ID.
+	// The Model Studio request ID.
 	//
 	// example:
 	//
-	// xxx
+	// e1063275-a239-4f0c-8b7b-9c6f0d5e4a21
 	BailianRequestId *string `json:"BailianRequestId,omitempty" xml:"BailianRequestId,omitempty"`
 	// The content.
 	//
 	// example:
 	//
-	// 测试内容
+	// Test content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The DataId passed in by the customer.
+	// The DataId parameter passed by the customer.
 	//
 	// example:
 	//
-	// xxxx
+	// data_id_001
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// The feedback information.
 	//
@@ -223,7 +223,7 @@ type GetTextScanResultResponseBodyDataItems struct {
 	//
 	// miss
 	ExtFeedback *string `json:"ExtFeedback,omitempty" xml:"ExtFeedback,omitempty"`
-	// The reserved parameter.
+	// The extra parameters.
 	//
 	// example:
 	//
@@ -247,25 +247,23 @@ type GetTextScanResultResponseBodyDataItems struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request time. Format: YYYY-MM-DD HH:mm:ss.
+	// The request time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-07-11 14:21:36
 	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	// The detection results.
+	// The moderation result.
 	Result []*GetTextScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The risk level, which is returned based on the configured high and low risk score thresholds. Valid values:
+	// The risk level. The value is returned based on the configured high and low risk scores. Valid values:
 	//
-	// - high: high risk.
+	// - high: High risk.
 	//
-	// - medium: medium risk.
+	// - medium: Medium risk.
 	//
+	// - low: Low risk.
 	//
-	//
-	// - low: low risk.
-	//
-	// - none: no risk detected.
+	// - none: No risk detected.
 	//
 	// example:
 	//
@@ -289,7 +287,7 @@ type GetTextScanResultResponseBodyDataItems struct {
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The suggested action.
+	// The suggestion.
 	//
 	// example:
 	//
@@ -478,7 +476,7 @@ func (s *GetTextScanResultResponseBodyDataItems) Validate() error {
 }
 
 type GetTextScanResultResponseBodyDataItemsResult struct {
-	// The confidence score, ranging from 0 to 100 and rounded to two decimal places.
+	// The confidence score. Valid values: 0 to 100. The score is accurate to two decimal places.
 	//
 	// example:
 	//
@@ -488,7 +486,7 @@ type GetTextScanResultResponseBodyDataItemsResult struct {
 	//
 	// example:
 	//
-	// 疑似色情内容
+	// Suspected pornographic content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The labels.
 	//

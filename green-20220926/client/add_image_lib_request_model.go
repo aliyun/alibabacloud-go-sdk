@@ -18,17 +18,17 @@ type iAddImageLibRequest interface {
 }
 
 type AddImageLibRequest struct {
-	// The remarks of the image library.
+	// The remarks for the image library.
 	//
 	// example:
 	//
-	// 色情内容黑名单图库
+	// Pornographic content blacklist image library
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The name of the image library.
 	//
 	// example:
 	//
-	// 测试图库
+	// Test image library
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The region ID.
 	//

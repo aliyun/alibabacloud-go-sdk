@@ -26,7 +26,11 @@ type ExportTextScanResultRequest struct {
   // 
   // 2024-03-11 10:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-  // The query condition.
+  // The query conditions.
+  // 
+  // example:
+  // 
+  // {"RequestId":"8488665D-32D3-5DD6-8BF1-B4DE21A7C3E9"}
   Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
   // The region ID.
   // 

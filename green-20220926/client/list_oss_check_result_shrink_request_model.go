@@ -42,7 +42,7 @@ type ListOssCheckResultShrinkRequest struct {
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of completed tasks.
+	// The number of completed items.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListOssCheckResultShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search condition.
+	// The search conditions. This parameter is required. You must pass a JSON string that contains a valid TaskId, such as {"TaskId":"P_11TL5T"}. You can obtain the TaskId by calling the GetStockOssCheckTasksList operation. If this parameter is not provided, the API returns a 400 error with the error code oss.check.task.not.exists.
 	//
 	// example:
 	//
@@ -67,6 +67,10 @@ type ListOssCheckResultShrinkRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"StartTime":"desc"}
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//

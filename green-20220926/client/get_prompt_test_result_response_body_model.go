@@ -70,11 +70,11 @@ type GetPromptTestResultResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试文本
+	// Test text
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The labels.
 	LabelDetails []*GetPromptTestResultResponseBodyResultLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// The risk level, which is returned based on the configured high and low risk scores. Valid values:
+	// The risk level. The value is returned based on the configured high and low risk scores. Valid values:
 	//
 	// - high: High risk.
 	//
@@ -84,7 +84,7 @@ type GetPromptTestResultResponseBodyResult struct {
 	//
 	// - low: Low risk.
 	//
-	//  - none: No risk detected.
+	// - none: No risk detected.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type GetPromptTestResultResponseBodyResultLabelDetails struct {
 	//
 	// example:
 	//
-	// 暴恐
+	// Terrorism
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The labels.
 	//
@@ -153,11 +153,11 @@ type GetPromptTestResultResponseBodyResultLabelDetails struct {
 	//
 	// terrorism
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The reason why the model determined this risk level for the text.
+	// The reason why the model determines this risk level for the text.
 	//
 	// example:
 	//
-	// 该文本涉及暴力恐怖信息
+	// The text contains violent and terrorist content
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 

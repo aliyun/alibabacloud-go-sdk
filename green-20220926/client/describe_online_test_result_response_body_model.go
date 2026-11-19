@@ -292,8 +292,12 @@ type DescribeOnlineTestResultResponseBodySummaryList struct {
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The risk level summary.
+	//
+	// example:
+	//
+	// {"high":1,"medium":2,"low":20}
 	RiskLevelSummary map[string]*int64 `json:"RiskLevelSummary,omitempty" xml:"RiskLevelSummary,omitempty"`
-	// The number of shards.
+	// The number of slices.
 	//
 	// example:
 	//

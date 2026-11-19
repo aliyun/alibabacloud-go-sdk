@@ -26,7 +26,7 @@ type iDescribeOssV2ResultRequest interface {
 }
 
 type DescribeOssV2ResultRequest struct {
-	// The OSS bucket.
+	// The OSS bucket of the file server.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeOssV2ResultRequest struct {
 	//
 	// 2024-09-14 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeOssV2ResultRequest struct {
 	//
 	// example:
 	//
-	// Image batch task 20240914100517757
+	// Image inventory task 20240914100517757
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

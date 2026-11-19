@@ -20,17 +20,17 @@ type iCopyAppConfigRequest interface {
 }
 
 type CopyAppConfigRequest struct {
-	// The ID of the source App to copy from.
+	// The ID of the source app.
 	//
 	// example:
 	//
 	// txt_check_agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the new App to be created from the copy.
+	// The name of the new app.
 	//
 	// example:
 	//
-	// CustomTextModeration
+	// Custom text moderation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

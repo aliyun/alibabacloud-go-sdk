@@ -36,7 +36,7 @@ type GetOssCheckFreezeResultResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *GetOssCheckFreezeResultResponseBody) Validate() error {
 }
 
 type GetOssCheckFreezeResultResponseBodyItems struct {
-	// The OSS bucket.
+	// The bucket.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The audio or video scan type.
+	// The audio and video detection type.
 	//
 	// example:
 	//
@@ -141,29 +141,25 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// The feedback. Valid values:
-	//
-	// - misreport: False positive (not a violation).
-	//
-	// - missOut: Missed violation.
+	// The feedback.
 	//
 	// example:
 	//
 	// misreport
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// Indicates whether the object is frozen.
+	// Indicates whether the item is frozen.
 	//
 	// example:
 	//
 	// true
 	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	// The freeze status.
+	// The freezing status.
 	//
 	// example:
 	//
 	// FREEZED
 	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
-	// The freeze type.
+	// The freezing type.
 	//
 	// example:
 	//
@@ -175,7 +171,7 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Indicates whether the task is copied.
+	// Indicates whether the item is copied.
 	//
 	// example:
 	//
@@ -193,27 +189,23 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// The manual action status. Valid values:
-	//
-	// - FREEZE: Frozen.
-	//
-	// - UNFREEZE: Unfrozen.
+	// The manual disposal status.
 	//
 	// example:
 	//
 	// FREEZE
 	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	// The action time. Format: YYYY-MM-DD HH:mm:ss.
+	// The disposal time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-08-09 12:00:00
 	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	// The operator who performed the action.
+	// The operator.
 	//
 	// example:
 	//
-	// xx
+	// John Doe
 	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
 	// The MD5 hash of the file.
 	//
@@ -257,7 +249,7 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	//
 	// none
 	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
-	// The scan result details.
+	// The result details.
 	//
 	// example:
 	//
@@ -273,19 +265,9 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 服务名称
+	// Service name
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The system action status. Valid values:
-	//
-	// - FREEZING: Freezing in progress.
-	//
-	// - FREEZED: Frozen.
-	//
-	// - UNFREEZED: Unfrozen.
-	//
-	// - NONE: No action taken.
-	//
-	// - UNFREEZING: Unfreezing in progress.
+	// The system disposal status.
 	//
 	// example:
 	//
@@ -297,7 +279,7 @@ type GetOssCheckFreezeResultResponseBodyItems struct {
 	//
 	// P_BT3FHS
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task URL.
+	// The URL of the task.
 	//
 	// example:
 	//
@@ -607,7 +589,7 @@ type GetOssCheckFreezeResultResponseBodyItemsLabelDetails struct {
 	//
 	// example:
 	//
-	// 涉政
+	// Political content
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label details.
 	//

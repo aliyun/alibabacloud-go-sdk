@@ -24,7 +24,7 @@ type iUpdateImageLibResponseBody interface {
 }
 
 type UpdateImageLibResponseBody struct {
-	// The error code, which is the same as the HTTP status code.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateImageLibResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateImageLibResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

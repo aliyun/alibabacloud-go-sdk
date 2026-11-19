@@ -18,7 +18,7 @@ type iListAppConfigsRequest interface {
 }
 
 type ListAppConfigsRequest struct {
-	// The classification.
+	// The category.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListAppConfigsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The resource type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error (Code: 400, Message: resourceType may not be empty). Valid values: agent_text | agent_text_image | agent_image.
 	//
 	// example:
 	//

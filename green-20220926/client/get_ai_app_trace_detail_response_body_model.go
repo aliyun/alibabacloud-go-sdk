@@ -32,7 +32,7 @@ type GetAiAppTraceDetailResponseBody struct {
 	//
 	// example:
 	//
-	// xxxx
+	// This request triggered a politically sensitive content risk. The model confidence is high. Manual review is recommended
 	Analysis *string `json:"Analysis,omitempty" xml:"Analysis,omitempty"`
 	// The application ID.
 	//
@@ -40,13 +40,13 @@ type GetAiAppTraceDetailResponseBody struct {
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// appxxx
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application channel.
+	// The channel of the application.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type GetAiAppTraceDetailResponseBody struct {
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The list of labels.
 	Labels []*GetAiAppTraceDetailResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The trace ID, which is used to correlate and track alert events.
+	// The trace ID.
 	//
 	// example:
 	//
 	// 0abb7ee117615311812886711e0a15
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// The alert time. Format: YYYY-MM-DD HH:mm:ss.
+	// The time when the alert was triggered. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -174,17 +174,17 @@ type GetAiAppTraceDetailResponseBodyLabels struct {
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The label name.
+	// The name of the label.
 	//
 	// example:
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The label description.
+	// The description of the label.
 	//
 	// example:
 	//
-	// xxx
+	// Politically sensitive content
 	LabelDesc *string `json:"LabelDesc,omitempty" xml:"LabelDesc,omitempty"`
 	// The type.
 	//

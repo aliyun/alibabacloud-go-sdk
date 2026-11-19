@@ -30,7 +30,7 @@ type ListKeywordsResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ListKeywordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListKeywordsResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success flag.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ type ListKeywordsResponseBodyDataItems struct {
 	//
 	// 112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
 	// custom_xxxx
 	KeywordLibId *string `json:"KeywordLibId,omitempty" xml:"KeywordLibId,omitempty"`
-	// The keyword data ID.
+	// The ID of the keyword data.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type ListKeywordsResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// 测试词
+	// Test word
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
@@ -318,7 +318,7 @@ type ListKeywordsResponseBodyDataItemsProperties struct {
 	//
 	// example:
 	//
-	// xxx
+	// politics
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 }
 

@@ -30,13 +30,13 @@ type AddKeywordsRequest struct {
 	//
 	// Keyword1\\nKeyword2
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	// The keyword file name.
+	// The name of the keyword file.
 	//
 	// example:
 	//
 	// upload/1e5353c0-0d91-40ba-9d41-ae7abd3fe561.txt
 	KeywordsObject *string `json:"KeywordsObject,omitempty" xml:"KeywordsObject,omitempty"`
-	// The keyword library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type AddKeywordsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The library code.
+	// The code of the keyword library.
 	//
-	// - desensitize: masking library
+	// - desensitize: desensitization keyword library.
 	//
 	// example:
 	//

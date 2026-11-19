@@ -32,7 +32,7 @@ type GetTextScanResultShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -44,7 +44,11 @@ type GetTextScanResultShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search condition.
+	// The search conditions.
+	//
+	// example:
+	//
+	// {"DataId":"data-test-001"}
 	QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The region ID.
 	//
@@ -53,8 +57,12 @@ type GetTextScanResultShrinkRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sort field.
+	//
+	// example:
+	//
+	// {"GmtCreate":"desc"}
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

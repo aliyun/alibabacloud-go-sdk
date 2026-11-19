@@ -30,19 +30,19 @@ type AddKeywordLibResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *AddKeywordLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The success identifier.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *AddKeywordLibResponseBody) Validate() error {
 }
 
 type AddKeywordLibResponseBodyData struct {
-	// The result.
+	// The results.
 	KeywordsResult *AddKeywordLibResponseBodyDataKeywordsResult `json:"KeywordsResult,omitempty" xml:"KeywordsResult,omitempty" type:"Struct"`
 	// The ID of the keyword library.
 	//
@@ -178,9 +178,9 @@ type AddKeywordLibResponseBodyDataKeywordsResult struct {
 	//
 	// example:
 	//
-	// xxx
+	// keyword.lib.create.success
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// The list of keywords with invalid length.
+	// The list of keywords that are too long or too short.
 	IllegalLengthKeywords []*string `json:"IllegalLengthKeywords,omitempty" xml:"IllegalLengthKeywords,omitempty" type:"Repeated"`
 	// The number of invalid keywords.
 	//
@@ -210,11 +210,11 @@ type AddKeywordLibResponseBodyDataKeywordsResult struct {
 	//
 	// 278
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The prompt information.
+	// The prompt message.
 	//
 	// example:
 	//
-	// xxx
+	// Keywords added. Duplicate and invalid keywords are automatically skipped
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	// The total count.
 	//

@@ -16,7 +16,7 @@ type iUpdateEventStatusResponseBody interface {
 }
 
 type UpdateEventStatusResponseBody struct {
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

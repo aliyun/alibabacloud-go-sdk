@@ -26,7 +26,7 @@ type CreateAppConfigRequest struct {
 	//
 	// example:
 	//
-	// CustomReview
+	// Custom review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

@@ -66,7 +66,7 @@ func (s *GetAiAppDetailTopoResponseBody) Validate() error {
 }
 
 type GetAiAppDetailTopoResponseBodyData struct {
-	// The node category.
+	// The node category. Valid values:
 	//
 	// - LLM
 	//
@@ -80,13 +80,13 @@ type GetAiAppDetailTopoResponseBodyData struct {
 	//
 	// LLM
 	NodeCategory *string `json:"NodeCategory,omitempty" xml:"NodeCategory,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// idxxx
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//
@@ -94,17 +94,17 @@ type GetAiAppDetailTopoResponseBodyData struct {
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The node type. Valid values:
 	//
-	// - **APP**: end-to-end agent.
+	// - **APP**: The full agent trace.
 	//
-	// - **MODEL**: large language model.
+	// - **MODEL**: The large language model.
 	//
-	// - **TOOL**: tool.
+	// - **TOOL**: The tool.
 	//
 	// example:
 	//
 	// TOOL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The request count.
+	// The number of requests.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type GetAiAppDetailTopoResponseBodyData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The alert count.
+	// The number of alerts.
 	//
 	// example:
 	//

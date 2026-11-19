@@ -26,9 +26,9 @@ type UpdateImageLibRequest struct {
 	//
 	// example:
 	//
-	// 备注
+	// Remarks
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The review-free configuration.
+	// The moderation-free configuration.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UpdateImageLibRequest struct {
 	//
 	// example:
 	//
-	// 测试图库
+	// Test image library
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The region ID.
 	//

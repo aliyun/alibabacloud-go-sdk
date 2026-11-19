@@ -22,7 +22,7 @@ type ListImageLibRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The selected service identifier.
+	// The service identifier.
 	//
 	// example:
 	//

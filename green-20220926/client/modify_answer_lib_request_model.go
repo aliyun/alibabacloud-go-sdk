@@ -18,7 +18,7 @@ type iModifyAnswerLibRequest interface {
 }
 
 type ModifyAnswerLibRequest struct {
-	// The ID of the proxy response library.
+	// The ID of the fallback library.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type ModifyAnswerLibRequest struct {
 	//
 	// example:
 	//
-	// 测试库
+	// Test library
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The region ID.
 	//

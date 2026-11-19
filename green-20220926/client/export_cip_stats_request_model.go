@@ -44,7 +44,7 @@ type ExportCipStatsRequest struct {
   // 
   // true
   ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
-  // The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+  // The end time of the query, in the yyyy-MM-dd HH:mm:ss format.
   // 
   // example:
   // 
@@ -64,9 +64,9 @@ type ExportCipStatsRequest struct {
   // 
   // example:
   // 
-  // xx
+  // politics
   Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-  // The query condition.
+  // The query conditions.
   // 
   // example:
   // 
@@ -90,7 +90,7 @@ type ExportCipStatsRequest struct {
   // 
   // baselineCheck
   ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-  // The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+  // The start time of the query, in the yyyy-MM-dd HH:mm:ss format.
   // 
   // example:
   // 
@@ -104,15 +104,15 @@ type ExportCipStatsRequest struct {
   SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
   // The type. Valid values:
   // 
-  // - **cip**: Content Moderation invoke volume statistics.
+  // - **cip**: Content Moderation usage statistics.
   // 
   // - **risk_level**: Content Moderation security risk level statistics.
   // 
-  // - **content_moderation**: AI Safety Guardrail content compliance risk level and tag statistics.
+  // - **content_moderation**: AI security guardrail content compliance risk level and tag statistics.
   // 
-  // - **sensitive_data**: AI Safety Guardrail sensitive data risk level and tag statistics.
+  // - **sensitive_data**: AI security guardrail sensitive data risk level and tag statistics.
   // 
-  // - **prompt_attack**: AI Safety Guardrail prompt risk level and tag statistics.
+  // - **prompt_attack**: AI security guardrail prompt risk level and tag statistics.
   // 
   // example:
   // 

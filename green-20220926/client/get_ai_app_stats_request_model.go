@@ -36,7 +36,7 @@ type GetAiAppStatsRequest struct {
 	//
 	// 2026-01-02 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The query condition.
+	// The query conditions.
 	//
 	// example:
 	//

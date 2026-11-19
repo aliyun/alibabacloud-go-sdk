@@ -66,13 +66,13 @@ func (s *ListAppConfigsResponseBody) Validate() error {
 }
 
 type ListAppConfigsResponseBodyData struct {
-	// App ID。
+	// The application ID.
 	//
 	// example:
 	//
 	// txt_check_pro_agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The classification.
+	// The category.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListAppConfigsResponseBodyData struct {
 	//
 	// {"agentItemConfigs": "[{\\"agentId\\":\\"ag.abcxxx\\",\\"enable\\":true,\\"name\\":\\"Agent 1\\"}]"}
 	CustomConfig map[string]interface{} `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
-	// The sort number.
+	// The sort order.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListAppConfigsResponseBodyData struct {
 	//
 	// editing
 	DeployStatus *string `json:"DeployStatus,omitempty" xml:"DeployStatus,omitempty"`
-	// The last modified time.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -109,6 +109,10 @@ type ListAppConfigsResponseBodyData struct {
 	// Custom text moderation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The preset options.
+	//
+	// example:
+	//
+	// {"models":["qwen3.7-plus","max3.7","deepseek-v4-pro","glm-5.1","glm-5.2"]}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
 	// The resource type.
 	//

@@ -24,7 +24,7 @@ type iUpdateEventStatusShrinkRequest interface {
 }
 
 type UpdateEventStatusShrinkRequest struct {
-	// The application ID that identifies the application to which the operation belongs.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateEventStatusShrinkRequest struct {
 	//
 	// resolve
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The operation parameters that contain additional parameter information required to execute the operation.
+	// The operation parameters that contain additional information required to perform the operation.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type UpdateEventStatusShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation source that identifies the source system or module that triggered this status update request.
+	// The source of the operation, which identifies the system or module that triggered this status update request.
 	//
 	// example:
 	//
-	// xx
+	// disposal
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 

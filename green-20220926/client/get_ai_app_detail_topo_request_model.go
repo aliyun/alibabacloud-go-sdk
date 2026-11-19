@@ -18,7 +18,7 @@ type iGetAiAppDetailTopoRequest interface {
 }
 
 type GetAiAppDetailTopoRequest struct {
-	// The application ID that identifies a specific AI application.
+	// The ID of the AI application.
 	//
 	// This parameter is required.
 	//

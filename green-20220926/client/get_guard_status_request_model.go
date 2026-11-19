@@ -20,7 +20,7 @@ type GetGuardStatusRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// lvwang_guardrail_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The region ID.
 	//

@@ -16,7 +16,7 @@ type iQueryLabelConfigResponseBody interface {
 }
 
 type QueryLabelConfigResponseBody struct {
-	// The content moderation configuration.
+	// The content compliance.
 	ContentModeration []interface{} `json:"ContentModeration,omitempty" xml:"ContentModeration,omitempty" type:"Repeated"`
 	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//

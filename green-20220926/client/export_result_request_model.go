@@ -28,25 +28,25 @@ type iExportResultRequest interface {
 }
 
 type ExportResultRequest struct {
-  // The page number of the paginated query results. Default value: 1.
+  // The page number. Default value: 1.
   // 
   // example:
   // 
   // 1
   CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-  // The end time. Format: YYYY-MM-DD HH:mm:ss.
+  // The end time. The format is YYYY-MM-DD HH:mm:ss.
   // 
   // example:
   // 
   // 2023-08-24 10:01:55
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-  // The number of entries per page in the paginated query results.
+  // The number of entries to return on each page.
   // 
   // example:
   // 
   // 20
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-  // The query condition.
+  // The query conditions.
   // 
   // example:
   // 
@@ -59,14 +59,18 @@ type ExportResultRequest struct {
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   // The sort field.
+  // 
+  // example:
+  // 
+  // {"GmtCreate":"desc"}
   Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-  // The operation source.
+  // The source of the operation.
   // 
   // example:
   // 
   // disposal
   Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-  // The start time. Format: YYYY-MM-DD HH:mm:ss.
+  // The start time. The format is YYYY-MM-DD HH:mm:ss.
   // 
   // example:
   // 

@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// Adds a proxy answer.
+// Adds fallback answers.
 //
 // @param request - AddAnswerSampleRequest
 //
@@ -66,7 +66,7 @@ func (client *Client) AddAnswerSampleWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Adds an agent configuration to an app.
+// Adds agent configurations to an application.
 //
 // @param request - AddAppAgentRequest
 //
@@ -130,7 +130,7 @@ func (client *Client) AddAppAgentWithContext(ctx context.Context, request *AddAp
 
 // Summary:
 //
-// Creates an app configuration.
+// Creates an application configuration.
 //
 // @param request - AddAppConfigRequest
 //
@@ -248,7 +248,11 @@ func (client *Client) AddImageLibWithContext(ctx context.Context, request *AddIm
 
 // Summary:
 //
-// Adds images in batches.
+// Adds multiple images to an image library.
+//
+// Description:
+//
+// Adds multiple images to an image library. Before calling this operation, call GetUploadInfo to obtain the Object Storage Service (OSS) upload credentials (Host, Policy, Signature, SecurityToken, and Key). Use the credentials to upload images to the returned Host. Finally, pass the Key value returned by GetUploadInfo as the ImgUrl parameter to this operation.
 //
 // @param request - AddImages2LibRequest
 //
@@ -592,7 +596,7 @@ func (client *Client) ConfirmAiAppScanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Copies an App configuration.
+// Copies the app configuration.
 //
 // @param request - CopyAppConfigRequest
 //
@@ -866,7 +870,7 @@ func (client *Client) CreatStockOssCheckTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a proxy answer library.
+// Creates a fallback answer library.
 //
 // @param request - CreateAnswerLibRequest
 //
@@ -1054,13 +1058,13 @@ func (client *Client) CreateCallbackWithContext(ctx context.Context, request *Cr
 //
 // Description:
 //
-// Before using this operation, complete the following steps:
+// Before you call this operation, make sure that the following conditions are met:
 //
-// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+// 1. You have activated [Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
 //
-// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
+// 2. You fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
 //
-// 3. For more information about API operations and parameters, see [API reference](https://help.aliyun.com/document_detail/467829.html).
+// 3. For more information about how to use the API operation and its parameters, refer to the [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - CreateImageLibRequest
 //
@@ -1170,7 +1174,7 @@ func (client *Client) CreateOnlineTestWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Performs a pre-check before creating an OSS scan task.
+// Performs pre-checks before creating an OSS scan task.
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1374,7 +1378,7 @@ func (client *Client) DeleteAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an agent configuration.
+// Deletes the agent configuration.
 //
 // @param request - DeleteAppAgentRequest
 //
@@ -1760,7 +1764,7 @@ func (client *Client) DeleteOnlineTestWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the detection results of online moderation.
+// Queries the online detection results.
 //
 // @param request - DescribeOnlineTestResultRequest
 //
@@ -1812,11 +1816,11 @@ func (client *Client) DescribeOnlineTestResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves OSS moderation results v2.
+// Retrieves OSS results v2.
 //
 // Description:
 //
-// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation details. API operation is free of charge.
+// This API operation must be used in conjunction with the Image Moderation Enhanced Edition API. After calling the Image Moderation Enhanced Edition API, you can call this operation to obtain more detection information. This API operation is free of charge.
 //
 // @param request - DescribeOssV2ResultRequest
 //
@@ -1934,7 +1938,7 @@ func (client *Client) ExportAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Exports call volume.
+// Exports the usage data.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -2136,7 +2140,7 @@ func (client *Client) ExportOssCheckStatWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Exports OSS scan results.
+// Exports the OSS scan results.
 //
 // @param tmpReq - ExportResultRequest
 //
@@ -2216,7 +2220,7 @@ func (client *Client) ExportResultWithContext(ctx context.Context, tmpReq *Expor
 
 // Summary:
 //
-// Exports call results as an Excel file.
+// Exports the call results to an Excel file.
 //
 // @param tmpReq - ExportScanResultRequest
 //
@@ -2300,7 +2304,7 @@ func (client *Client) ExportScanResultWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// Exports call results as an Excel file.
+// Exports call results to an Excel file.
 //
 // @param tmpReq - ExportTextScanResultRequest
 //
@@ -2383,8 +2387,16 @@ func (client *Client) GetAiAppDetailWithContext(ctx context.Context, request *Ge
 		query["AppId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2412,7 +2424,7 @@ func (client *Client) GetAiAppDetailWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves statistics for the details of an AI application.
+// Retrieves the statistics of an AI application.
 //
 // @param request - GetAiAppDetailStatRequest
 //
@@ -2526,7 +2538,11 @@ func (client *Client) GetAiAppDetailTopoWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Retrieves the details of an application node in the agent topology.
+// Retrieves the details of an app node.
+//
+// Description:
+//
+// AI applications must be created through the Model Studio or Dify platform. Call chain: ListAiAppByPage (to obtain the AppId) → GetAiAppDetailTopo (to obtain the NodeId, NodeName, and NodeType) → GetAiAppNodeDetail.
 //
 // @param request - GetAiAppNodeDetailRequest
 //
@@ -2594,7 +2610,7 @@ func (client *Client) GetAiAppNodeDetailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the overview information of AI applications.
+// Retrieves the overview of AI applications.
 //
 // @param request - GetAiAppOverviewRequest
 //
@@ -2646,7 +2662,7 @@ func (client *Client) GetAiAppOverviewWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves statistics for AI application risk reports.
+// Retrieves statistical data for AI applications.
 //
 // @param request - GetAiAppStatsRequest
 //
@@ -2710,7 +2726,7 @@ func (client *Client) GetAiAppStatsWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Retrieves the details of an app alert.
+// Retrieves the details of an application alert.
 //
 // @param request - GetAiAppTraceDetailRequest
 //
@@ -2770,7 +2786,7 @@ func (client *Client) GetAiAppTraceDetailWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the import progress of proxy answer samples.
+// Retrieves the import progress of fallback answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
 //
@@ -2818,7 +2834,7 @@ func (client *Client) GetAnswerImportProgressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of an App configuration.
+// Queries the details of an application configuration.
 //
 // @param request - GetAppConfigRequest
 //
@@ -3062,7 +3078,7 @@ func (client *Client) GetBucketsListWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the call volume statistics.
+// Queries the call volume.
 //
 // @param request - GetCipStatsRequest
 //
@@ -3250,7 +3266,7 @@ func (client *Client) GetFeatureConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves log statistics for AI security guardrails.
+// Retrieves the statistics of AI security guardrail logs.
 //
 // @param request - GetGuardLogStatsRequest
 //
@@ -3294,7 +3310,7 @@ func (client *Client) GetGuardLogStatsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves statistics information on AI application protection data.
+// Retrieves the statistics information on AI application protection data.
 //
 // @param request - GetGuardStatusRequest
 //
@@ -3500,7 +3516,7 @@ func (client *Client) GetJobNameListWithContext(ctx context.Context, tmpReq *Get
 
 // Summary:
 //
-// Queries the result of a keyword import task.
+// Queries the keyword import results.
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -3608,7 +3624,13 @@ func (client *Client) GetKeywordLibWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries the results of OSS scan and freeze operations.
+// Queries the freezing results of OSS detection.
+//
+// Description:
+//
+// Queries the freezing disposal results of OSS detection tasks.
+//
+// Prerequisites: Before calling this operation, you must call CreatStockOssCheckTask to create an OSS inventory detection task and generate freezing results. Then, call GetStockOssCheckTasksList to obtain an available TaskId and pass it as a query parameter to this operation.
 //
 // @param tmpReq - GetOssCheckFreezeResultRequest
 //
@@ -3690,7 +3712,7 @@ func (client *Client) GetOssCheckFreezeResultWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Retrieves the detailed information of OSS check results.
+// Retrieves the details of OSS inspection results.
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -3758,7 +3780,7 @@ func (client *Client) GetOssCheckResultDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries OSS usage statistics.
+// Queries the usage statistics of OSS.
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -3908,7 +3930,7 @@ func (client *Client) GetOssCheckTaskInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Tests the attribute configuration.
+// Tests the feature configuration.
 //
 // @param request - GetPromptTestResultRequest
 //
@@ -3968,7 +3990,7 @@ func (client *Client) GetPromptTestResultWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries QPS statistics information.
+// Queries the queries per second (QPS) statistics information.
 //
 // @param request - GetQpsStatsRequest
 //
@@ -4016,7 +4038,7 @@ func (client *Client) GetQpsStatsWithContext(ctx context.Context, request *GetQp
 
 // Summary:
 //
-// Queries risk posture statistics.
+// Retrieves risk posture statistics.
 //
 // @param request - GetRiskStatsRequest
 //
@@ -4031,6 +4053,10 @@ func (client *Client) GetRiskStatsWithContext(ctx context.Context, request *GetR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.Classify) {
 		query["Classify"] = request.Classify
 	}
@@ -4076,7 +4102,7 @@ func (client *Client) GetRiskStatsWithContext(ctx context.Context, request *GetR
 
 // Summary:
 //
-// Queries the information about files pending detection for a user.
+// Retrieves the pending detection information of the user.
 //
 // @param request - GetScanNumRequest
 //
@@ -4128,7 +4154,7 @@ func (client *Client) GetScanNumWithContext(ctx context.Context, request *GetSca
 
 // Summary:
 //
-// Queries the detection results.
+// Queries the call results.
 //
 // @param tmpReq - GetScanResultRequest
 //
@@ -4466,7 +4492,7 @@ func (client *Client) GetStockOssCheckTasksListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the call results.
+// Queries the invocation results.
 //
 // @param tmpReq - GetTextScanResultRequest
 //
@@ -4546,11 +4572,11 @@ func (client *Client) GetTextScanResultWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Retrieves tuning suggestions for switch configurations.
+// Retrieves tuning recommendations for switch configurations.
 //
 // Description:
 //
-// API operation is used together with the enhanced image moderation API. After you call the enhanced image moderation API, call API operation to retrieve additional detection information. API operation is free of charge.
+// API operation must be used in conjunction with the enhanced image moderation API. After you call the enhanced image moderation API, you can call API operation to retrieve additional detection information. API operation is free of charge.
 //
 // @param request - GetTuneProposalByIdRequest
 //
@@ -4638,7 +4664,7 @@ func (client *Client) GetUploadContentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the relevant information for file upload.
+// Retrieves the information required for file upload.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -4838,7 +4864,7 @@ func (client *Client) InitAiAppScanWithContext(ctx context.Context, request *Ini
 
 // Summary:
 //
-// Retrieves a paginated list of AI applications.
+// Queries a paginated list of AI applications.
 //
 // @param request - ListAiAppByPageRequest
 //
@@ -4894,7 +4920,7 @@ func (client *Client) ListAiAppByPageWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Retrieves the list of risk events for an AI application.
+// Retrieves a list of risk events for AI applications.
 //
 // @param request - ListAiAppRiskEventRequest
 //
@@ -4950,7 +4976,7 @@ func (client *Client) ListAiAppRiskEventWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves a paginated list of risk events for AI applications.
+// Queries a paginated list of risk events for AI applications.
 //
 // @param request - ListAiAppRiskEventByPageRequest
 //
@@ -5014,7 +5040,7 @@ func (client *Client) ListAiAppRiskEventByPageWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the alert list of an application with pagination.
+// Retrieves a paginated list of application alerts.
 //
 // @param request - ListAiAppWarningByPageRequest
 //
@@ -5170,7 +5196,7 @@ func (client *Client) ListAppConfigHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the list of app configurations.
+// Retrieves a list of application configurations.
 //
 // @param request - ListAppConfigsRequest
 //
@@ -5266,7 +5292,7 @@ func (client *Client) ListCallbackWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the list of image libraries.
+// Queries a list of image libraries.
 //
 // @param request - ListImageLibRequest
 //
@@ -5524,7 +5550,7 @@ func (client *Client) ListKeywordsWithContext(ctx context.Context, tmpReq *ListK
 
 // Summary:
 //
-// Queries OSS scan results.
+// Queries the OSS scan results.
 //
 // @param tmpReq - ListOssCheckResultRequest
 //
@@ -5606,7 +5632,7 @@ func (client *Client) ListOssCheckResultWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Retrieves the service list.
+// Retrieves a list of services.
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -5668,7 +5694,7 @@ func (client *Client) ListServiceConfigsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Calls a large language model in streaming mode using the SSE interface.
+// Invokes a large language model in streaming mode by using the Server-Sent Events (SSE) API.
 //
 // @param request - LlmStreamChatRequest
 //
@@ -5683,7 +5709,7 @@ func (client *Client) LlmStreamChatWithSSECtx(ctx context.Context, request *LlmS
 
 // Summary:
 //
-// Calls a large language model in streaming mode using the SSE interface.
+// Invokes a large language model in streaming mode by using the Server-Sent Events (SSE) API.
 //
 // @param request - LlmStreamChatRequest
 //
@@ -5747,7 +5773,7 @@ func (client *Client) LlmStreamChatWithContext(ctx context.Context, request *Llm
 //
 // Description:
 //
-// This operation is free of charge. Set the query interval to 30 seconds (that is, query results 30 seconds after you submit an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, the results are automatically deleted.
+// This API operation is free of charge. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous detection task). The maximum interval must not exceed 24 hours. Otherwise, the results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -5811,7 +5837,7 @@ func (client *Client) MarkOssV2ResultWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Updates a proxy response library.
+// Updates a fallback library.
 //
 // @param request - ModifyAnswerLibRequest
 //
@@ -5863,7 +5889,7 @@ func (client *Client) ModifyAnswerLibWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies the agent configuration.
+// Modifies the configuration of an agent.
 //
 // @param request - ModifyAppAgentRequest
 //
@@ -5931,7 +5957,7 @@ func (client *Client) ModifyAppAgentWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Modifies app information.
+// Modifies the information of an app.
 //
 // @param request - ModifyAppInfoRequest
 //
@@ -5991,7 +6017,7 @@ func (client *Client) ModifyAppInfoWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// Modifies a message notification.
+// Updates message notifications.
 //
 // @param request - ModifyCallbackRequest
 //
@@ -6057,7 +6083,11 @@ func (client *Client) ModifyCallbackWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Saves an attribute configuration.
+// Saves the feature configuration.
+//
+// Description:
+//
+// Prerequisites: Before calling ModifyFeatureConfig, call GetFeatureConfig to query valid Type/Field combinations and their corresponding Config structures. Submit modifications based on the query results to avoid configuration update failures caused by invalid combinations.
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -6127,7 +6157,7 @@ func (client *Client) ModifyFeatureConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Edits a service.
+// Modifies a service.
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -6189,7 +6219,7 @@ func (client *Client) ModifyServiceInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the list of OSS detection results.
+// Retrieves a list of OSS scan results.
 //
 // @param tmpReq - OssCheckResultListRequest
 //
@@ -6271,7 +6301,7 @@ func (client *Client) OssCheckResultListWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Saves and publishes app configurations.
+// Saves and publishes the application configuration.
 //
 // @param request - PublishAppConfigRequest
 //
@@ -6339,7 +6369,7 @@ func (client *Client) PublishAppConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries proxy answer samples by paging.
+// Performs a paged query for fallback answer samples with paging.
 //
 // @param tmpReq - QueryAnswerSampleByPageRequest
 //
@@ -6409,7 +6439,7 @@ func (client *Client) QueryAnswerSampleByPageWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Queries a single callback configuration.
+// Queries a callback configuration.
 //
 // @param request - QueryCallbackRequest
 //
@@ -6463,7 +6493,7 @@ func (client *Client) QueryCallbackWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// Queries the list of message notifications by paging.
+// Queries the message notification list with paging.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -6517,7 +6547,7 @@ func (client *Client) QueryCallbackByPageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries label configurations.
+// Queries the tag configuration.
 //
 // @param request - QueryLabelConfigRequest
 //
@@ -6577,7 +6607,7 @@ func (client *Client) QueryLabelConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Reverts an app to a historical version.
+// Restores an app to a historical version.
 //
 // @param request - RecoverAppConfigHistoryRequest
 //
@@ -6685,7 +6715,7 @@ func (client *Client) StopOnlineTestWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Updates the scan status of AI applications.
+// Updates the scan status of an AI application.
 //
 // @param request - UpdateAiAppScanStatusRequest
 //
@@ -6793,7 +6823,7 @@ func (client *Client) UpdateBackupConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the status of risk events.
+// Updates the handling status of risk events for a specified application.
 //
 // @param tmpReq - UpdateEventStatusRequest
 //
@@ -6863,7 +6893,7 @@ func (client *Client) UpdateEventStatusWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Edits an image library.
+// Modifies an image library.
 //
 // @param request - UpdateImageLibRequest
 //
@@ -6925,7 +6955,7 @@ func (client *Client) UpdateImageLibWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Edits the inspection-exempt configuration of an image library.
+// Modifies the inspection exemption configuration for an image library.
 //
 // @param tmpReq - UpdateImageLibFreeInspectionRequest
 //
@@ -7043,7 +7073,7 @@ func (client *Client) UpdateKeywordLibWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Updates Meta log information.
+// Updates the metadata log information.
 //
 // @param request - UpdateMetaLogRequest
 //
@@ -7099,7 +7129,7 @@ func (client *Client) UpdateMetaLogWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Updates OSS detection result feedback in batches.
+// Updates feedback for OSS detection results in batches.
 //
 // @param request - UpdateOssCheckResultsBatchFeedbackRequest
 //
