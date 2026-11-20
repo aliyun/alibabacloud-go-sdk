@@ -24,23 +24,23 @@ type iPersonalizedtxt2imgQueryInferenceJobInfoResponseBody interface {
 }
 
 type Personalizedtxt2imgQueryInferenceJobInfoResponseBody struct {
-	// The object that contains the query results.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *Personalizedtxt2imgQueryInferenceJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code returned if the request fails.
+	// The fault message encoding.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type Personalizedtxt2imgQueryInferenceJobInfoResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ func (s *Personalizedtxt2imgQueryInferenceJobInfoResponseBody) Validate() error 
 }
 
 type Personalizedtxt2imgQueryInferenceJobInfoResponseBodyData struct {
-	// The time when the inference job was created.
+	// The creation time of the model inference task.
 	//
 	// example:
 	//
 	// 2023-12-25T12:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the inference job.
+	// The ID of the model inference task.
 	//
 	// example:
 	//
 	// 3220
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The status of the inference job.
+	// The status of the model inference task.
 	//
 	// example:
 	//
 	// FINISHED
 	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
-	// The progress of the inference job.
+	// The progress of the model inference task.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type Personalizedtxt2imgQueryInferenceJobInfoResponseBodyData struct {
 	//
 	// modelId-xxxx-xxxx-xxxx
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The ID of the prompt.
+	// promptId
 	//
 	// example:
 	//
 	// promptId-xxxx-xxxx-xxxx
 	PromptId *string `json:"promptId,omitempty" xml:"promptId,omitempty"`
-	// A list of URLs for the generated images.
+	// The list of task results for the model inference node.
 	//
 	// example:
 	//

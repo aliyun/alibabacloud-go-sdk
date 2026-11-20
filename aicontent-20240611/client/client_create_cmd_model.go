@@ -22,25 +22,35 @@ type iClientCreateCmd interface {
 }
 
 type ClientCreateCmd struct {
+	// The company address.
+	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The list of allowed model IDs, separated by commas. An empty value indicates all models.
+	//
 	// example:
 	//
 	// 1,2,3
 	AllowedModels *string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty"`
+	// The contact information.
+	//
 	// example:
 	//
 	// 13800138000
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// The customer name.
+	//
 	// example:
 	//
-	// 我的客户
+	// My customer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
-	// 备注
+	// Remark
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 

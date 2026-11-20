@@ -16,10 +16,14 @@ type iBatchFailedItemDTO interface {
 }
 
 type BatchFailedItemDTO struct {
+	// The reason for failure.
+	//
 	// example:
 	//
-	// Member node missing
+	// Missing member node
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// The user ID of the failed member.
+	//
 	// example:
 	//
 	// 1

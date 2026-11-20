@@ -28,9 +28,9 @@ type ExecuteAITeacherSyncDialogueTranslateResponseBody struct {
   // 
   // example:
   // 
-  // []
+  // {"result":"That\\"s great, thank you for coming, Lily. Do you like eating meat?"}
   Data *ExecuteAITeacherSyncDialogueTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-  // The error code.
+  // The fault message encoding.
   // 
   // example:
   // 
@@ -40,7 +40,7 @@ type ExecuteAITeacherSyncDialogueTranslateResponseBody struct {
   // 
   // example:
   // 
-  // 未知错误
+  // Unknown error
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
   // The HTTP status code.
   // 
@@ -54,7 +54,7 @@ type ExecuteAITeacherSyncDialogueTranslateResponseBody struct {
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 
@@ -138,7 +138,7 @@ type ExecuteAITeacherSyncDialogueTranslateResponseBodyData struct {
   // 
   // example:
   // 
-  // 太好了，谢谢你过来，莉莉。你喜欢吃肉吗？
+  // That\\"s great, thank you for coming, Lily. Do you like eating meat?
   Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 

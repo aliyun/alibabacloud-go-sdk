@@ -14,6 +14,8 @@ type iApiKeyCreateCmd interface {
 }
 
 type ApiKeyCreateCmd struct {
+	// The customer ID. A value of null indicates the default customer.
+	//
 	// example:
 	//
 	// 1

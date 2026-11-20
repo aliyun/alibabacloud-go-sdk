@@ -23,6 +23,8 @@ type iModelRouterQueryCostTrendMetricsRequest interface {
 	GetMaxResults() *int32
 	SetMemberUserIds(v string) *ModelRouterQueryCostTrendMetricsRequest
 	GetMemberUserIds() *string
+	SetModelIds(v string) *ModelRouterQueryCostTrendMetricsRequest
+	GetModelIds() *string
 	SetModelTypes(v string) *ModelRouterQueryCostTrendMetricsRequest
 	GetModelTypes() *string
 	SetNextToken(v string) *ModelRouterQueryCostTrendMetricsRequest
@@ -82,6 +84,10 @@ type ModelRouterQueryCostTrendMetricsRequest struct {
 	//
 	// 30001,30002
 	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
+	// example:
+	//
+	// 123,456
+	ModelIds *string `json:"modelIds,omitempty" xml:"modelIds,omitempty"`
 	// The model types, separated by commas.
 	//
 	// example:
@@ -140,6 +146,10 @@ func (s *ModelRouterQueryCostTrendMetricsRequest) GetMemberUserIds() *string {
 	return s.MemberUserIds
 }
 
+func (s *ModelRouterQueryCostTrendMetricsRequest) GetModelIds() *string {
+	return s.ModelIds
+}
+
 func (s *ModelRouterQueryCostTrendMetricsRequest) GetModelTypes() *string {
 	return s.ModelTypes
 }
@@ -184,6 +194,11 @@ func (s *ModelRouterQueryCostTrendMetricsRequest) SetMaxResults(v int32) *ModelR
 
 func (s *ModelRouterQueryCostTrendMetricsRequest) SetMemberUserIds(v string) *ModelRouterQueryCostTrendMetricsRequest {
 	s.MemberUserIds = &v
+	return s
+}
+
+func (s *ModelRouterQueryCostTrendMetricsRequest) SetModelIds(v string) *ModelRouterQueryCostTrendMetricsRequest {
+	s.ModelIds = &v
 	return s
 }
 

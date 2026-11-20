@@ -20,18 +20,26 @@ type iUserDepartmentDTO interface {
 }
 
 type UserDepartmentDTO struct {
+	// The department ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The department name.
+	//
 	// example:
 	//
 	// R&D Department
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
+	// The role code.
+	//
 	// example:
 	//
 	// member
 	RoleCode *string `json:"roleCode,omitempty" xml:"roleCode,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// Member

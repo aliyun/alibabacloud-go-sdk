@@ -18,14 +18,20 @@ type iBalancePoolSummaryDTO interface {
 }
 
 type BalancePoolSummaryDTO struct {
+	// The balance allocated to users equals the sum of the sub-wallet balances of all members in the department.
+	//
 	// example:
 	//
 	// 40.00
 	Allocated *float64 `json:"allocated,omitempty" xml:"allocated,omitempty"`
+	// The available department balance equals the sub-wallet balance of the department.
+	//
 	// example:
 	//
 	// 60.00
 	Available *float64 `json:"available,omitempty" xml:"available,omitempty"`
+	// The total amount equals the available department balance plus the balance allocated to users.
+	//
 	// example:
 	//
 	// 100.00

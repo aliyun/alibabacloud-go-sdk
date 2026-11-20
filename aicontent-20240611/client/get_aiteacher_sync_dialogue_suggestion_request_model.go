@@ -20,7 +20,7 @@ type iGetAITeacherSyncDialogueSuggestionRequest interface {
 }
 
 type GetAITeacherSyncDialogueSuggestionRequest struct {
-	// A list of dialogue tasks.
+	// The collection of conversation task content.
 	//
 	// This parameter is required.
 	DialogueTasks []*GetAITeacherSyncDialogueSuggestionRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
@@ -30,11 +30,11 @@ type GetAITeacherSyncDialogueSuggestionRequest struct {
 	//
 	// en-gb
 	LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
-	// A list of dialogue records.
+	// The collection of conversation records.
 	//
 	// This parameter is required.
 	Records []*GetAITeacherSyncDialogueSuggestionRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
-	// The unique identifier for the end-user.
+	// The user ID.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +111,7 @@ func (s *GetAITeacherSyncDialogueSuggestionRequest) Validate() error {
 }
 
 type GetAITeacherSyncDialogueSuggestionRequestDialogueTasks struct {
-	// The assistant\\"s message content.
+	// The AI conversation content.
 	//
 	// This parameter is required.
 	//
@@ -119,13 +119,13 @@ type GetAITeacherSyncDialogueSuggestionRequestDialogueTasks struct {
 	//
 	// Why might some people think dog walking is a great job?
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
-	// The translation of the assistant\\"s message.
+	// The translation of the AI conversation content.
 	//
 	// example:
 	//
-	// 为什么有些人认为遛狗是份好差事?
+	// Why do some people think walking dogs is a good job?
 	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
-	// The sequence number of the dialogue task.
+	// The sequence number.
 	//
 	// This parameter is required.
 	//
@@ -133,7 +133,7 @@ type GetAITeacherSyncDialogueSuggestionRequestDialogueTasks struct {
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-	// The user\\"s message content.
+	// The user conversation content.
 	//
 	// This parameter is required.
 	//
@@ -192,7 +192,7 @@ func (s *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) Validate() erro
 }
 
 type GetAITeacherSyncDialogueSuggestionRequestRecords struct {
-	// The message content.
+	// The conversation content.
 	//
 	// This parameter is required.
 	//
@@ -200,19 +200,31 @@ type GetAITeacherSyncDialogueSuggestionRequestRecords struct {
 	//
 	// Ask Mark if he has thought about what his dream job might be.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// A control flag that indicates if a student\\"s response is off-topic. The value is based on the previous turn. If the conversation goes off-topic more than twice, the system sets this value to `true` to force a task switch.
+	// Specifies whether the response is off-topic and applies flow control. This parameter indicates whether the student\\"s response aligns with the conversation task settings. The value is derived from the return results of previous conversation turns. Additionally, this parameter controls the conversation flow. If the response is off-topic more than twice, the value is forcibly set to true to switch the task.
+	//
+	// Valid values:
+	//
+	// - true: Off-topic.
+	//
+	// - false: On-topic.
 	//
 	// example:
 	//
-	// 跑题：true, 不跑题：false
+	// true
 	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
-	// Specifies if the message is on topic. `true` indicates the message is on topic; `false` indicates it is off topic.
+	// Specifies whether the response is on-topic.
+	//
+	// Valid values:
+	//
+	// - true: On-topic.
+	//
+	// - false: Off-topic.
 	//
 	// example:
 	//
-	// 扣题：true, 不扣题：false
+	// true
 	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
-	// The sequence number of the message in the conversation.
+	// The sequence number.
 	//
 	// This parameter is required.
 	//
@@ -220,13 +232,13 @@ type GetAITeacherSyncDialogueSuggestionRequestRecords struct {
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-	// The role of the message author. Valid values: `assistant` (for AI-generated messages) and `user` (for user-provided messages).
+	// The role.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// AI：assistant；用户：user
+	// AI: assistant; User: user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 

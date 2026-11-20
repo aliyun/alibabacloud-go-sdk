@@ -30,7 +30,7 @@ type ModelRouterCreateModelResponseBody struct {
 	//
 	// []
 	Data *ModelDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The encoding of the error message for the fault.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ModelRouterCreateModelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

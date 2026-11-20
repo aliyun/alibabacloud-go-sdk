@@ -58,94 +58,140 @@ type iRequestLogDTO interface {
 }
 
 type RequestLogDTO struct {
+	// API Key ID
+	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The client ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The unique identifier of the client.
+	//
 	// example:
 	//
 	// mt_xxxxxMYTX9
 	ClientUuid *string `json:"clientUuid,omitempty" xml:"clientUuid,omitempty"`
+	// The output tokens.
+	//
 	// example:
 	//
 	// 50
 	CompletionTokens *int32 `json:"completionTokens,omitempty" xml:"completionTokens,omitempty"`
+	// The deletion tag. A value of 0 indicates enabled, and a non-zero value indicates disabled.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// ID
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The model.
+	//
 	// example:
 	//
 	// qwen3-max
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
-	// 通义千问
+	// Qwen
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The input tokens.
+	//
 	// example:
 	//
 	// 100
 	PromptTokens *int32 `json:"promptTokens,omitempty" xml:"promptTokens,omitempty"`
+	// The request body.
+	//
 	// example:
 	//
 	// {}
 	RequestBody *string `json:"requestBody,omitempty" xml:"requestBody,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// req-xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The request time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	RequestTime *string `json:"requestTime,omitempty" xml:"requestTime,omitempty"`
+	// The response body.
+	//
 	// example:
 	//
 	// {}
 	ResponseBody *string `json:"responseBody,omitempty" xml:"responseBody,omitempty"`
+	// The response time in milliseconds.
+	//
 	// example:
 	//
 	// 100
 	ResponseTimeMs *int32 `json:"responseTimeMs,omitempty" xml:"responseTimeMs,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *int32 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	// The tag.
+	//
 	// example:
 	//
 	// qwen
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// The total tokens.
+	//
 	// example:
 	//
 	// 150
 	TotalTokens *int32 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	// The usage statistics.
+	//
 	// example:
 	//
 	// {"prompt_tokens":100,"completion_tokens":50,"total_tokens":150}

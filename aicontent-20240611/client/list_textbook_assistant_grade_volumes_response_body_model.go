@@ -24,7 +24,7 @@ type iListTextbookAssistantGradeVolumesResponseBody interface {
 }
 
 type ListTextbookAssistantGradeVolumesResponseBody struct {
-	// The response data.
+	// The response data object.
 	Data []*ListTextbookAssistantGradeVolumesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -36,7 +36,7 @@ type ListTextbookAssistantGradeVolumesResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -44,13 +44,13 @@ type ListTextbookAssistantGradeVolumesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// F3B1AAF2-3041-5AA7-A352-BD5F998FA465
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *ListTextbookAssistantGradeVolumesResponseBody) Validate() error {
 }
 
 type ListTextbookAssistantGradeVolumesResponseBodyData struct {
-	// The grade and volume information.
+	// The grade and volume data.
 	GradeVolumes []*ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes `json:"gradeVolumes,omitempty" xml:"gradeVolumes,omitempty" type:"Repeated"`
-	// The version of the textbook.
+	// The textbook version.
 	//
 	// example:
 	//
-	// 人教版
+	// PEP edition
 	TextbookVersion *string `json:"textbookVersion,omitempty" xml:"textbookVersion,omitempty"`
 }
 
@@ -184,13 +184,13 @@ func (s *ListTextbookAssistantGradeVolumesResponseBodyData) Validate() error {
 }
 
 type ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes struct {
-	// The grade level. Valid values: 1 to 9.
+	// The grade. Valid values: 1 to 9, corresponding to the grade level.
 	//
 	// example:
 	//
 	// 3
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
-	// The volume. Valid values: `0` (single volume), `1` (Volume 1), and `2` (Volume 2).
+	// The volume. Valid values: 0: full volume, 1: first semester, 2: second semester.
 	//
 	// example:
 	//

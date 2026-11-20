@@ -16,7 +16,10 @@ type iBillingBillSummaryRespDTO interface {
 }
 
 type BillingBillSummaryRespDTO struct {
+	// The list of cost trend data points.
 	Points []*BillingBillSummaryPointDTO `json:"points,omitempty" xml:"points,omitempty" type:"Repeated"`
+	// The total cost within the time range.
+	//
 	// example:
 	//
 	// 123.45

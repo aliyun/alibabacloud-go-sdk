@@ -20,15 +20,22 @@ type iModelListQry interface {
 }
 
 type ModelListQry struct {
+	// The search keyword.
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The status filter.
+	//
 	// example:
 	//
 	// 1

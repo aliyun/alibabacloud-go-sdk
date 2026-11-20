@@ -28,19 +28,19 @@ type ModelRouterSaveFlowConfigRequest struct {
 	//
 	// 607
 	ModelId *int32 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The maximum number of requests per minute (RPM).
+	// The requests per minute (RPM) limit.
 	//
 	// example:
 	//
 	// 100
 	Rpm *int32 `json:"rpm,omitempty" xml:"rpm,omitempty"`
-	// Specifies whether to enable smooth flow control.
+	// Specifies whether smooth rate limiting is enabled.
 	//
 	// example:
 	//
 	// true
 	SmoothFlowEnabled *bool `json:"smoothFlowEnabled,omitempty" xml:"smoothFlowEnabled,omitempty"`
-	// The maximum number of tokens per minute (TPM).
+	// The tokens per minute (TPM) limit.
 	//
 	// example:
 	//

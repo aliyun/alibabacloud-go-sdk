@@ -24,26 +24,38 @@ type iOrgInitResultDTO interface {
 }
 
 type OrgInitResultDTO struct {
+	// The returned plaintext API key, which is visible only once during initialization.
+	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The customer ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The customer unique identifier.
+	//
 	// example:
 	//
 	// st-xxxx
 	ClientUuid *string `json:"clientUuid,omitempty" xml:"clientUuid,omitempty"`
+	// Indicates whether it is newly created. A value of false indicates that it already exists.
+	//
 	// example:
 	//
 	// true
 	IsNew *bool `json:"isNew,omitempty" xml:"isNew,omitempty"`
+	// The enterprise ID.
+	//
 	// example:
 	//
 	// 1
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1

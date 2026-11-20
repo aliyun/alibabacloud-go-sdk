@@ -30,7 +30,7 @@ type ModelRouterConfigureClientBalanceResponseBody struct {
 	//
 	// {}
 	Data *ClientBalanceDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModelRouterConfigureClientBalanceResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

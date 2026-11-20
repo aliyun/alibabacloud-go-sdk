@@ -22,22 +22,32 @@ type iModelMetricsDTO interface {
 }
 
 type ModelMetricsDTO struct {
+	// The average response time (ms).
+	//
 	// example:
 	//
 	// 200.5
 	AvgResponseTime *float64 `json:"avgResponseTime,omitempty" xml:"avgResponseTime,omitempty"`
+	// The total number of input tokens.
+	//
 	// example:
 	//
 	// 500000
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The total number of output tokens.
+	//
 	// example:
 	//
 	// 300000
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The success rate (%).
+	//
 	// example:
 	//
 	// 99.5
 	SuccessRate *float64 `json:"successRate,omitempty" xml:"successRate,omitempty"`
+	// The total number of calls.
+	//
 	// example:
 	//
 	// 1000

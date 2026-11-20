@@ -30,7 +30,7 @@ type ModelRouterQueryNacosProvidersResponseBody struct {
 	//
 	// []
 	Data []*ModelRouterQueryNacosProvidersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The fault message code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type ModelRouterQueryNacosProvidersResponseBodyData struct {
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
 	// The list of models.
 	Models []*ModelRouterQueryNacosProvidersResponseBodyDataModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
-	// The provider name.
+	// The name of the provider.
 	//
 	// example:
 	//
-	// 通义千问
+	// Qwen
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The provider identifier.
+	// The identifier of the provider.
 	//
 	// example:
 	//
@@ -218,15 +218,15 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyData) Validate() error {
 }
 
 type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
-	// The extension configuration parameters of the model, stored as key-value pairs for additional model behavior configuration.
+	// The extension configuration parameters of the model, which store additional model behavior configurations as key-value pairs.
 	Extensions *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Struct"`
-	// The model identifier.
+	// The identifier of the model.
 	//
 	// example:
 	//
 	// ca90f359956e94367470c38676
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// The input type and output type.
+	// The input and output types.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
 	//
 	// 8K
 	OutputToken *string `json:"outputToken,omitempty" xml:"outputToken,omitempty"`
-	// The feature type or capability category of the model.
+	// The function type or capability category of the model.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) Validate() error 
 }
 
 type ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions struct {
-	// The asynchronous call identifier.
+	// The identifier for asynchronous invocation.
 	Async *bool `json:"async,omitempty" xml:"async,omitempty"`
 }
 

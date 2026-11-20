@@ -34,7 +34,7 @@ type ModelRouterQueryCostModelListResponseBody struct {
 	//
 	// []
 	Data *CostQueryModelsDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModelRouterQueryCostModelListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results to return.
+	// The maximum number of results.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModelRouterQueryCostModelListResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

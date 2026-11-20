@@ -24,23 +24,23 @@ type iGetAITeacherSyncDialogueSuggestionResponseBody interface {
 }
 
 type GetAITeacherSyncDialogueSuggestionResponseBody struct {
-	// The object that contains the result of the request.
+	// The data object.
 	//
 	// example:
 	//
-	// []
+	// {"chineseResult":"谢谢莉莉.你喜欢吃肉吗，莉莉？","englishResult":"Thanks, Lily. Do you like meat, Lily?"}
 	Data *GetAITeacherSyncDialogueSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code returned when the request fails.
+	// The fault message encoding.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned when the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,13 +48,13 @@ type GetAITeacherSyncDialogueSuggestionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// A unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *GetAITeacherSyncDialogueSuggestionResponseBody) Validate() error {
 }
 
 type GetAITeacherSyncDialogueSuggestionResponseBodyData struct {
-	// The assistant\\"s suggestion in Chinese.
+	// The Chinese prompt from the assistant.
 	//
 	// example:
 	//
 	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
 	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
-	// The assistant\\"s suggestion in English.
+	// The English prompt from the assistant.
 	//
 	// example:
 	//

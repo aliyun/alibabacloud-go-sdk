@@ -84,7 +84,7 @@ type ExecuteAITeacherEnglishParaphraseChatMessageRequest struct {
   // 
   // example:
   // 
-  // xxxxxxx
+  // demo_user
   UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

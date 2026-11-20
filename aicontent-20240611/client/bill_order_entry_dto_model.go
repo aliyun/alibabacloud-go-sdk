@@ -40,58 +40,86 @@ type iBillOrderEntryDTO interface {
 }
 
 type BillOrderEntryDTO struct {
+	// The change amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The balance after the change.
+	//
 	// example:
 	//
 	// 100.00
 	BalanceAfter *float64 `json:"balanceAfter,omitempty" xml:"balanceAfter,omitempty"`
+	// The balance before the change.
+	//
 	// example:
 	//
 	// 0.00
 	BalanceBefore *float64 `json:"balanceBefore,omitempty" xml:"balanceBefore,omitempty"`
+	// The balance type: permanent/monthly.
+	//
 	// example:
 	//
 	// permanent
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The change direction: in/out.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The model code (available when gateway billing deduction is applied).
+	//
 	// example:
 	//
 	// qwen-max
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 1
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	// The change record ID.
+	//
 	// example:
 	//
 	// ord_xxxxxxxx
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The change type.
+	//
 	// example:
 	//
 	// recharge
 	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
 	// Top-up
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The total balance after the change.
+	//
 	// example:
 	//
 	// 100.00
 	TotalAfter *float64 `json:"totalAfter,omitempty" xml:"totalAfter,omitempty"`
+	// The total balance before the change.
+	//
 	// example:
 	//
 	// 0.00

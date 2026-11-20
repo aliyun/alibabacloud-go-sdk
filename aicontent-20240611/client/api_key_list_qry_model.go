@@ -22,19 +22,28 @@ type iApiKeyListQry interface {
 }
 
 type ApiKeyListQry struct {
+	// The client ID filter.
+	//
 	// example:
 	//
 	// 1
-	ClientId *int64  `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The search keyword.
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The status filter.
+	//
 	// example:
 	//
 	// 1

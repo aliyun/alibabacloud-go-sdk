@@ -24,19 +24,19 @@ type iCreateAccessWarrantRequest interface {
 }
 
 type CreateAccessWarrantRequest struct {
-	// The merchant\\"s application ID.
+	// The AppKey of the project assigned by the merchant.
 	//
 	// example:
 	//
 	// a123
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The signature for the request parameters.
+	// The signature of the authorization API parameters.
 	//
 	// example:
 	//
 	// e32fac43df0b0b0be32fac43df0b0b0b
 	RequestSign *string `json:"requestSign,omitempty" xml:"requestSign,omitempty"`
-	// The 10-digit request timestamp in seconds.
+	// The 10-digit timestamp in seconds when the merchant initiates the authorization request.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type CreateAccessWarrantRequest struct {
 	//
 	// 110.25.23.12
 	UserClientIp *string `json:"userClientIp,omitempty" xml:"userClientIp,omitempty"`
-	// The merchant\\"s user ID.
+	// The ID of the merchant user.
 	//
 	// example:
 	//
 	// sn123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The duration, in seconds, for which the access warrant is valid.
+	// The validity period of the authorization ID, in seconds.
 	//
 	// example:
 	//

@@ -38,19 +38,19 @@ type iModelRouterQueryApiKeyListRequest interface {
 }
 
 type ModelRouterQueryApiKeyListRequest struct {
-	// The client ID used to filter the results.
+	// The client ID used to filter results.
 	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The field by which to group the results.
+	// The field used to group results.
 	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	// Optional. If set to true, the keys of members under the department are also included when filtering by department.
+	// Optional. Specifies whether to include the keys of members under the department when filtering by department.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ModelRouterQueryApiKeyListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Filters by member IDs. Separate multiple member IDs with commas. If this parameter is not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+	// Optional. Filters results by member IDs. Separate multiple IDs with commas. If you do not specify this parameter, the department and all its members are included. If you pass an empty value, only the department is included, excluding its members.
 	//
 	// example:
 	//
 	// 30001,30002
 	MemberUserIds *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
-	// Specifies whether to return the total count.
+	// Specifies whether to return the total count of records.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ModelRouterQueryApiKeyListRequest struct {
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field by which to sort the results.
+	// The field by which to sort results.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ModelRouterQueryApiKeyListRequest struct {
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The status used to filter the results.
+	// The status used to filter results.
 	//
 	// example:
 	//

@@ -40,58 +40,86 @@ type iBalanceOrderDTO interface {
 }
 
 type BalanceOrderDTO struct {
+	// The change amount.
+	//
 	// example:
 	//
 	// 100.00
 	Amount *float64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The pool balance after the change.
+	//
 	// example:
 	//
 	// 600.00
 	BalanceAfter *float64 `json:"balanceAfter,omitempty" xml:"balanceAfter,omitempty"`
+	// The pool balance before the change.
+	//
 	// example:
 	//
 	// 500.00
 	BalanceBefore *float64 `json:"balanceBefore,omitempty" xml:"balanceBefore,omitempty"`
+	// The balance type (permanent: Permanent / monthly: Monthly).
+	//
 	// example:
 	//
 	// permanent
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-07-15T10:30:00+08:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The direction (in: Income / out: Expense).
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The associated model code (available for deduction types).
+	//
 	// example:
 	//
 	// qwen-max
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 12345
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	// The unique identifier of the change record.
+	//
 	// example:
 	//
 	// ord_20240715_abc123
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The change type (recharge: Recharge / periodic_recharge: Periodic recharge / deduct: Deduction / manual_deduct: Manual deduction / transfer_out: Transfer out / transfer_in: Transfer in / return_out: Refund out / return_in: Refund in / write_off: Write-off / monthly_expire: Monthly expiration / deficit_writeoff: Deficit write-off).
+	//
 	// example:
 	//
 	// recharge
 	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	// The remark.
+	//
 	// example:
 	//
-	// Manual top-up by administrator
+	// Manual recharge by administrator
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The source identifier.
+	//
 	// example:
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The total balance after the change (permanent + monthly).
+	//
 	// example:
 	//
 	// 1600.00
 	TotalAfter *float64 `json:"totalAfter,omitempty" xml:"totalAfter,omitempty"`
+	// The total balance before the change (permanent + monthly).
+	//
 	// example:
 	//
 	// 1500.00

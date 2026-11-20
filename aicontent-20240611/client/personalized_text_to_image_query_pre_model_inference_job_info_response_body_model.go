@@ -24,13 +24,13 @@ type iPersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody interface
 }
 
 type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody struct {
-	// The response data object.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) Valid
 }
 
 type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData struct {
-	// The creation time of the inference job.
+	// The creation time of the model inference task.
 	//
 	// example:
 	//
 	// 2023-12-25T12:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The inference job ID.
+	// The model inference task ID.
 	//
 	// example:
 	//
 	// 3220
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The job status.
+	// The model inference task status.
 	//
 	// example:
 	//
 	// FINISHED
 	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
-	// The job progress.
+	// The model inference task progress.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData struct
 	//
 	// modelId-xxxx-xxxx-xxxx
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The ID of the prompt used for the job.
+	// promptId
 	//
 	// example:
 	//
 	// promptId-xxxx-xxxx-xxxx
 	PromptId *string `json:"promptId,omitempty" xml:"promptId,omitempty"`
-	// A list of resource IDs for the generated images.
+	// The list of model inference task results.
 	//
 	// example:
 	//

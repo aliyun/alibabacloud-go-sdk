@@ -24,23 +24,23 @@ type iExecuteAITeacherExpansionDialogueResponseBody interface {
 }
 
 type ExecuteAITeacherExpansionDialogueResponseBody struct {
-  // The response data.
+  // The data object.
   // 
   // example:
   // 
-  // []
+  // {"isFinish":true,"questionIndex":2}
   Data *ExecuteAITeacherExpansionDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-  // The error code returned if the request fails.
+  // The fault message encoding.
   // 
   // example:
   // 
   // UNKNOWN_ERROR
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-  // The error message returned if the request fails.
+  // The error message.
   // 
   // example:
   // 
-  // 未知错误
+  // Unknown error
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
   // The HTTP status code.
   // 
@@ -48,13 +48,13 @@ type ExecuteAITeacherExpansionDialogueResponseBody struct {
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // A unique identifier for the request.
+  // The request ID.
   // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 
@@ -134,19 +134,19 @@ func (s *ExecuteAITeacherExpansionDialogueResponseBody) Validate() error {
 }
 
 type ExecuteAITeacherExpansionDialogueResponseBodyData struct {
-  // The AI teacher\\"s response in Chinese.
+  // The Chinese reply from the AI teacher.
   // 
   // example:
   // 
   // 1
   ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
-  // The AI teacher\\"s response in English.
+  // The English reply from the AI teacher.
   // 
   // example:
   // 
   // 1
   EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
-  // Indicates whether the dialogue is finished.
+  // Indicates whether the conversation is completed.
   // 
   // example:
   // 
@@ -164,7 +164,7 @@ type ExecuteAITeacherExpansionDialogueResponseBodyData struct {
   // 
   // true
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
-  // The index of the current question.
+  // The number of the current question being answered.
   // 
   // example:
   // 

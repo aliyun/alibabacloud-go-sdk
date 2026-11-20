@@ -431,7 +431,7 @@ func (client *Client) CountOralEvaluationStatisticsErrorWithContext(ctx context.
 
 // Summary:
 //
-// Creates an access warrant.
+// Creates authorization credentials in the Alibaba Cloud Management Console.
 //
 // @param request - CreateAccessWarrantRequest
 //
@@ -825,7 +825,7 @@ func (client *Client) ExecuteAITeacherEnglishParaphraseChatMessageWithContext(ct
 
 // Summary:
 //
-// Expansion dialogues are for open-ended conversations. In these conversations, the AI poses open-ended questions, but the user must stay on topic. If a user\\"s response is off-topic, the AI steers the conversation back on topic. If the user gives two consecutive off-topic responses, the AI moves on to the next topic.
+// Conducts extended practice conversations primarily for open-ended communication scenarios. During the practice, although the questions raised by the AI do not have preset answers, the user must still answer within the relevant topic. If the user\\"s answer deviates from the topic, the AI will attempt to guide them back to the topic. If the user goes off-topic twice in a row, the AI will guide them to proceed to the next topic.
 //
 // @param request - ExecuteAITeacherExpansionDialogueRequest
 //
@@ -900,7 +900,7 @@ func (client *Client) ExecuteAITeacherExpansionDialogueWithContext(ctx context.C
 
 // Summary:
 //
-// Uses context to polish the expanded text.
+// Polishes the extension exercise based on the context.
 //
 // @param request - ExecuteAITeacherExpansionDialogueRefineRequest
 //
@@ -975,7 +975,7 @@ func (client *Client) ExecuteAITeacherExpansionDialogueRefineWithContext(ctx con
 
 // Summary:
 //
-// Further Contextual Translation Practice.
+// Translates the context for extended practice.
 //
 // @param request - ExecuteAITeacherExpansionDialogueTranslateRequest
 //
@@ -1097,7 +1097,7 @@ func (client *Client) ExecuteAITeacherGrammarCheckWithContext(ctx context.Contex
 
 // Summary:
 //
-// Practice synchronous dialogue.
+// Conducts a synchronous practice conversation.
 //
 // @param request - ExecuteAITeacherSyncDialogueRequest
 //
@@ -1156,7 +1156,7 @@ func (client *Client) ExecuteAITeacherSyncDialogueWithContext(ctx context.Contex
 
 // Summary:
 //
-// You can practice contextual translation in real-time.
+// Translates context for synchronous practice.
 //
 // @param request - ExecuteAITeacherSyncDialogueTranslateRequest
 //
@@ -1759,7 +1759,7 @@ func (client *Client) ExecuteTextbookAssistantTranslateWithContext(ctx context.C
 
 // Summary:
 //
-// # Supplemental Practice Assistant
+// Retrieves prompts for the extended practice assistant.
 //
 // @param request - GetAITeacherExpansionDialogueSuggestionRequest
 //
@@ -1834,7 +1834,7 @@ func (client *Client) GetAITeacherExpansionDialogueSuggestionWithContext(ctx con
 
 // Summary:
 //
-// # Sync Practice Assistant
+// Retrieves the prompts for the sync practice assistant.
 //
 // @param request - GetAITeacherSyncDialogueSuggestionRequest
 //
@@ -1944,7 +1944,7 @@ func (client *Client) GetTextbookAssistantTokenWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Batch get article details
+// Retrieves the details of multiple articles.
 //
 // @param request - ListTextbookAssistantArticleDetailsRequest
 //
@@ -2172,7 +2172,7 @@ func (client *Client) ListTextbookAssistantBooksWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the available grades and volumes for the Textbook Assistant.
+// Retrieves the list of grades that have English textbook resources.
 //
 // @param request - ListTextbookAssistantGradeVolumesRequest
 //
@@ -2223,7 +2223,7 @@ func (client *Client) ListTextbookAssistantGradeVolumesWithContext(ctx context.C
 
 // Summary:
 //
-// # Get Article Details
+// Retrieves the details of an article.
 //
 // @param request - ListTextbookAssistantSceneDetailsRequest
 //
@@ -2749,7 +2749,7 @@ func (client *Client) ModelRouterChatCompletionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Enables balance-based throttling for a department.
+// Enables department balance throttling.
 //
 // @param request - ModelRouterConfigureClientBalanceRequest
 //
@@ -3372,7 +3372,7 @@ func (client *Client) ModelRouterCreateMemberSubscriptionWithContext(ctx context
 
 // Summary:
 //
-// Performs model creation.
+// Manages model creation.
 //
 // @param request - ModelRouterCreateModelRequest
 //
@@ -4100,7 +4100,7 @@ func (client *Client) ModelRouterGetClientBalanceLogsWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves the balance overview of a department.
+// Retrieves the department balance overview.
 //
 // @param request - ModelRouterGetDeptBalanceSummaryRequest
 //
@@ -4793,7 +4793,7 @@ func (client *Client) ModelRouterQueryApiKeyWithContext(ctx context.Context, id 
 
 // Summary:
 //
-// Retrieves a list of API keys.
+// Queries a list of API keys.
 //
 // @param request - ModelRouterQueryApiKeyListRequest
 //
@@ -5208,7 +5208,7 @@ func (client *Client) ModelRouterQueryClientDiscountLogsWithContext(ctx context.
 
 // Summary:
 //
-// Retrieves a list of clients.
+// Queries a list of customers.
 //
 // @param request - ModelRouterQueryClientListRequest
 //
@@ -5553,7 +5553,7 @@ func (client *Client) ModelRouterQueryCostModelDetailWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves the list of models called for billing management.
+// Retrieves a list of invoked models for billing management.
 //
 // @param request - ModelRouterQueryCostModelListRequest
 //
@@ -5596,6 +5596,10 @@ func (client *Client) ModelRouterQueryCostModelListWithContext(ctx context.Conte
 
 	if !dara.IsNil(request.MemberUserIds) {
 		query["memberUserIds"] = request.MemberUserIds
+	}
+
+	if !dara.IsNil(request.ModelIds) {
+		query["modelIds"] = request.ModelIds
 	}
 
 	if !dara.IsNil(request.ModelTypes) {
@@ -5766,6 +5770,10 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithContext(ctx context.Co
 
 	if !dara.IsNil(request.MemberUserIds) {
 		query["memberUserIds"] = request.MemberUserIds
+	}
+
+	if !dara.IsNil(request.ModelIds) {
+		query["modelIds"] = request.ModelIds
 	}
 
 	if !dara.IsNil(request.ModelTypes) {
@@ -6148,11 +6156,11 @@ func (client *Client) ModelRouterQueryModelGroupUsersWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the bound groups and models by API key.
+// Queries the groups and models bound to an API key.
 //
 // Description:
 //
-// Queries the bound groups and models by API key.
+// Queries the groups and models bound to an API key.
 //
 // @param request - ModelRouterQueryModelGroupsByApiKeyRequest
 //
@@ -6193,7 +6201,7 @@ func (client *Client) ModelRouterQueryModelGroupsByApiKeyWithContext(ctx context
 
 // Summary:
 //
-// Model management/Get model list
+// Retrieves a list of models.
 //
 // @param request - ModelRouterQueryModelListRequest
 //
@@ -6280,7 +6288,7 @@ func (client *Client) ModelRouterQueryModelListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of Nacos service providers through Nacos configuration.
+// Retrieves the Nacos configuration and the list of Nacos service providers.
 //
 // @param request - ModelRouterQueryNacosProvidersRequest
 //
@@ -6355,7 +6363,7 @@ func (client *Client) ModelRouterQueryNacosProvidersWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves a list of tags from Nacos.
+// Queries the list of Nacos tags.
 //
 // @param request - ModelRouterQueryNacosTagsRequest
 //
@@ -6965,7 +6973,7 @@ func (client *Client) ModelRouterResetMemberAuthorizationWithContext(ctx context
 
 // Summary:
 //
-// Flow control management / Save flow control configuration
+// Configures write rate limiting.
 //
 // @param request - ModelRouterSaveFlowConfigRequest
 //
@@ -7173,7 +7181,7 @@ func (client *Client) ModelRouterSetUserRolesWithContext(ctx context.Context, id
 
 // Summary:
 //
-// 组织管理/停止成员订阅
+// Stops a member subscription.
 //
 // @param request - ModelRouterStopMemberSubscriptionRequest
 //
@@ -7893,7 +7901,7 @@ func (client *Client) PersonalizedTextToImageQueryImageAssetWithContext(ctx cont
 
 // Summary:
 //
-// Queries the status of a personalized text-to-image inference job.
+// Queries the status of a preset model inference task for personalized text-to-image generation.
 //
 // @param request - PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
 //
@@ -7940,7 +7948,7 @@ func (client *Client) PersonalizedTextToImageQueryPreModelInferenceJobInfoWithCo
 
 // Summary:
 //
-// Creates an inference job to generate images based on a personalized text-to-image model.
+// Creates an image inference task based on a specified model for personalized text-to-image generation.
 //
 // @param request - Personalizedtxt2imgAddInferenceJobRequest
 //
@@ -8117,7 +8125,7 @@ func (client *Client) Personalizedtxt2imgQueryImageAssetWithContext(ctx context.
 
 // Summary:
 //
-// Retrieves the status and results of a Personalizedtxt2img inference job.
+// Queries the status and results of a personalized text-to-image model inference task.
 //
 // @param request - Personalizedtxt2imgQueryInferenceJobInfoRequest
 //
@@ -8244,7 +8252,7 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainStatusWithContext(ctx co
 
 // Summary:
 //
-// Queries information about an application access ID (appkey).
+// Retrieves the application access identifier (appkey) information from the Alibaba Cloud Management Console.
 //
 // @param request - QueryApplicationAccessIdRequest
 //

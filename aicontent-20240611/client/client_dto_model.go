@@ -46,70 +46,104 @@ type iClientDTO interface {
 }
 
 type ClientDTO struct {
+	// The company address.
+	//
 	// example:
 	//
 	// Hangzhou
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The authorization management configuration in the format of {"model_ids":[...],"group_ids":[...]}. An empty value indicates that group authorization is not used.
+	//
 	// example:
 	//
 	// {"model_ids":[1,2],"group_ids":["mg_xxx"]}
 	AllowedModelGroupConfig *string `json:"allowedModelGroupConfig,omitempty" xml:"allowedModelGroupConfig,omitempty"`
+	// The list of allowed model IDs, separated by commas. An empty value indicates all models.
+	//
 	// example:
 	//
 	// 1,2,3
 	AllowedModels *string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty"`
+	// The customer UUID.
+	//
 	// example:
 	//
 	// st-xxxx
 	ClientUuid *string `json:"clientUuid,omitempty" xml:"clientUuid,omitempty"`
+	// The contact information.
+	//
 	// example:
 	//
 	// 13800138000
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// The status. A value of 0 indicates enabled, and a non-zero value indicates disabled.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The discount factor. A value of 1.0 indicates no discount.
+	//
 	// example:
 	//
 	// 1.0
 	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// ID
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The hierarchy level. Valid values: 1 to 5.
+	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"level,omitempty" xml:"level,omitempty"`
+	// The account type. A value of 0 indicates a main account, and a value of 1 indicates a regular account.
+	//
 	// example:
 	//
 	// 0
 	Main *int32 `json:"main,omitempty" xml:"main,omitempty"`
+	// The customer name.
+	//
 	// example:
 	//
-	// My Customer
+	// My customer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The node type. Valid values: department: Department. user: User node, which is a leaf in the department tree.
+	//
 	// example:
 	//
 	// department
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	// The parent department ID. An empty value indicates the top level.
+	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// Remarks
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The user ID. This field has a value only when the node type is user.
+	//
 	// example:
 	//
 	// 30001

@@ -26,23 +26,23 @@ type iModelRouterQueryModelListResponseBody interface {
 }
 
 type ModelRouterQueryModelListResponseBody struct {
-	// Contains the paginated list of models and pagination metadata.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data *ModelRouterQueryModelListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code. Returned only when the request fails.
+	// The fault message code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message. Returned only when the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -50,19 +50,19 @@ type ModelRouterQueryModelListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of results per page.
+	// maxResults
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -151,33 +151,33 @@ func (s *ModelRouterQueryModelListResponseBody) Validate() error {
 }
 
 type ModelRouterQueryModelListResponseBodyData struct {
-	// An array of model objects.
+	// The list of trajectory query records.
 	List []*ModelDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The maximum number of results per page.
+	// maxResults
 	//
 	// example:
 	//
 	// None
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. An empty value indicates that no more results are available.
+	// nextToken
 	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The current page number.
+	// The requested page.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of models per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of models that meet the filter criteria.
+	// The total number of records.
 	//
 	// example:
 	//

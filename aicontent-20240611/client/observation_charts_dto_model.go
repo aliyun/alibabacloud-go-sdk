@@ -24,12 +24,18 @@ type iObservationChartsDTO interface {
 }
 
 type ObservationChartsDTO struct {
-	CallVolume   []*TimeSeriesPointDTO              `json:"callVolume,omitempty" xml:"callVolume,omitempty" type:"Repeated"`
-	Concurrency  []*TimeSeriesPointDTO              `json:"concurrency,omitempty" xml:"concurrency,omitempty" type:"Repeated"`
-	Qpm          []*TimeSeriesPointDTO              `json:"qpm,omitempty" xml:"qpm,omitempty" type:"Repeated"`
-	ResponseTime []*TimeSeriesPointDTO              `json:"responseTime,omitempty" xml:"responseTime,omitempty" type:"Repeated"`
-	SuccessRate  []*ObservationChartsDTOSuccessRate `json:"successRate,omitempty" xml:"successRate,omitempty" type:"Repeated"`
-	Tpm          []*TimeSeriesPointDTO              `json:"tpm,omitempty" xml:"tpm,omitempty" type:"Repeated"`
+	// The call volume time series.
+	CallVolume []*TimeSeriesPointDTO `json:"callVolume,omitempty" xml:"callVolume,omitempty" type:"Repeated"`
+	// The number of concurrent connections.
+	Concurrency []*TimeSeriesPointDTO `json:"concurrency,omitempty" xml:"concurrency,omitempty" type:"Repeated"`
+	// The QPM time series.
+	Qpm []*TimeSeriesPointDTO `json:"qpm,omitempty" xml:"qpm,omitempty" type:"Repeated"`
+	// The response time time series.
+	ResponseTime []*TimeSeriesPointDTO `json:"responseTime,omitempty" xml:"responseTime,omitempty" type:"Repeated"`
+	// The success rate time series.
+	SuccessRate []*ObservationChartsDTOSuccessRate `json:"successRate,omitempty" xml:"successRate,omitempty" type:"Repeated"`
+	// The TPM time series.
+	Tpm []*TimeSeriesPointDTO `json:"tpm,omitempty" xml:"tpm,omitempty" type:"Repeated"`
 }
 
 func (s ObservationChartsDTO) String() string {
@@ -153,15 +159,24 @@ func (s *ObservationChartsDTO) Validate() error {
 }
 
 type ObservationChartsDTOSuccessRate struct {
+	// The label.
+	//
 	// example:
 	//
 	// series1
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The timestamp (RFC3339).
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
-	Timestamp *string     `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// 62.37
+	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ObservationChartsDTOSuccessRate) String() string {

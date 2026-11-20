@@ -44,7 +44,7 @@ type ModelUpdateCmd struct {
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
 	// example:
 	//
-	// 通义千问大模型
+	// Qwen large language model
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModelUpdateCmd struct {
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
 	// example:
 	//
-	// 通义千问
+	// Qwen
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//

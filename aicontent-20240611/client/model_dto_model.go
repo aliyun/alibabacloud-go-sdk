@@ -52,19 +52,19 @@ type iModelDTO interface {
 }
 
 type ModelDTO struct {
-	// A masked preview of the API key.
+	// The API key preview.
 	//
 	// example:
 	//
 	// sk-xxx****xxx
 	ApiKeyPreview *string `json:"apiKeyPreview,omitempty" xml:"apiKeyPreview,omitempty"`
-	// The base URL for API requests.
+	// Base URL
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	// Indicates the model\\"s status. A value of 0 means enabled, and a non-zero value means disabled.
+	// A value of 0 indicates enabled, and a non-zero value indicates disabled.
 	//
 	// example:
 	//
@@ -74,26 +74,28 @@ type ModelDTO struct {
 	//
 	// example:
 	//
-	// 通义千问大模型
+	// Qwen large language model
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Extensions  *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
-	// The time when the model was created, in ISO 8601 format.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the model was last updated, in ISO 8601 format.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// Indicates whether a billing rule is configured.
+	//
 	// example:
 	//
 	// false
 	HasBillingRule *bool `json:"hasBillingRule,omitempty" xml:"hasBillingRule,omitempty"`
-	// The unique ID of the model.
+	// ID
 	//
 	// example:
 	//
@@ -118,7 +120,7 @@ type ModelDTO struct {
 	//
 	// 2048
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
-	// The model code.
+	// The model identifier.
 	//
 	// example:
 	//
@@ -134,7 +136,7 @@ type ModelDTO struct {
 	//
 	// example:
 	//
-	// 通义千问
+	// Qwen
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The vendor symbol.
 	//
@@ -142,19 +144,19 @@ type ModelDTO struct {
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
-	// The display names for the tags, separated by commas.
+	// The tag display names.
 	//
 	// example:
 	//
-	// 对话,自然语言处理
+	// Conversation, natural language processing
 	TagNames *string `json:"tagNames,omitempty" xml:"tagNames,omitempty"`
-	// A comma-separated list of model tags.
+	// The tags, separated by commas.
 	//
 	// example:
 	//
 	// chat,NLP
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The version number.
+	// The version.
 	//
 	// example:
 	//

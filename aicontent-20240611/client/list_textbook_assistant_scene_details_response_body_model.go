@@ -26,17 +26,17 @@ type iListTextbookAssistantSceneDetailsResponseBody interface {
 type ListTextbookAssistantSceneDetailsResponseBody struct {
 	// The returned data object.
 	Data []*ListTextbookAssistantSceneDetailsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code returned if the request fails.
+	// The error code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -44,17 +44,17 @@ type ListTextbookAssistantSceneDetailsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call succeeded.
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// - **true**: The call succeeded.
+	// - **true**: Successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *ListTextbookAssistantSceneDetailsResponseBody) Validate() error {
 }
 
 type ListTextbookAssistantSceneDetailsResponseBodyData struct {
-	// A list of roles in the scene.
+	// The list of roles.
 	RoleList []*ListTextbookAssistantSceneDetailsResponseBodyDataRoleList `json:"roleList,omitempty" xml:"roleList,omitempty" type:"Repeated"`
 	// The scene description.
 	//
@@ -152,25 +152,24 @@ type ListTextbookAssistantSceneDetailsResponseBodyData struct {
 	//
 	// 38c41b7b509911efbe6e0c42a106bb02
 	SceneId *string `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
-	// A list of image URLs related to the current scene.
+	// The images related to the current scene.
 	SceneImageList []*string `json:"sceneImageList,omitempty" xml:"sceneImageList,omitempty" type:"Repeated"`
-	// The scene task list.
-	SceneTaskList []*ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList `json:"sceneTaskList,omitempty" xml:"sceneTaskList,omitempty" type:"Repeated"`
-	// The translation of the scene description.
-	SceneTranslate *string `json:"sceneTranslate,omitempty" xml:"sceneTranslate,omitempty"`
-	// The sentence list.
+	// The list of scene tasks.
+	SceneTaskList  []*ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList `json:"sceneTaskList,omitempty" xml:"sceneTaskList,omitempty" type:"Repeated"`
+	SceneTranslate *string                                                           `json:"sceneTranslate,omitempty" xml:"sceneTranslate,omitempty"`
+	// The list of sentences.
 	SentenceList []*ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
-	// The practice target.
+	// The practice objective.
 	//
 	// example:
 	//
 	// ""
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The theme details.
+	// The theme information.
 	Theme *ListTextbookAssistantSceneDetailsResponseBodyDataTheme `json:"theme,omitempty" xml:"theme,omitempty" type:"Struct"`
-	// The topic details.
+	// The topic information.
 	Topic *ListTextbookAssistantSceneDetailsResponseBodyDataTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Struct"`
-	// The word list.
+	// The list of words.
 	WordList []*ListTextbookAssistantSceneDetailsResponseBodyDataWordList `json:"wordList,omitempty" xml:"wordList,omitempty" type:"Repeated"`
 }
 
@@ -342,19 +341,19 @@ type ListTextbookAssistantSceneDetailsResponseBodyDataRoleList struct {
 	//
 	// example:
 	//
-	// Carl，一个好奇的男孩
+	// Carl, a curious boy
 	IntroductionTranslate *string `json:"introductionTranslate,omitempty" xml:"introductionTranslate,omitempty"`
-	// The role guidance text.
+	// The role prompt text.
 	//
 	// example:
 	//
 	// Hi Noah, who is that in the photo?
 	Promoting *string `json:"promoting,omitempty" xml:"promoting,omitempty"`
-	// The translation of the role guidance text.
+	// The translation of the role prompt text.
 	//
 	// example:
 	//
-	// 嗨 Noah，照片里的人是谁？
+	// Hi Noah, who is the person in the photo?
 	PromotingTranslate *string `json:"promotingTranslate,omitempty" xml:"promotingTranslate,omitempty"`
 	// The role name.
 	//
@@ -368,7 +367,7 @@ type ListTextbookAssistantSceneDetailsResponseBodyDataRoleList struct {
 	//
 	// Carl
 	RoleNameTranslate *string `json:"roleNameTranslate,omitempty" xml:"roleNameTranslate,omitempty"`
-	// The role type:
+	// The role type. A value of 0 indicates the AI questioner, and a value of 1 indicates the responder.
 	//
 	// example:
 	//
@@ -462,7 +461,7 @@ type ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList struct {
 	//
 	// example:
 	//
-	// 说这是你爸爸的兄弟。
+	// Say this is your father\\"s brother
 	SceneTaskTranslate *string `json:"sceneTaskTranslate,omitempty" xml:"sceneTaskTranslate,omitempty"`
 }
 
@@ -497,11 +496,11 @@ func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) Validat
 }
 
 type ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList struct {
-	// The sentence analysis.
+	// The sentence analysis and explanation.
 	//
 	// example:
 	//
-	// Is + this + your + 家庭成员?
+	// Is + this + your + family member?
 	SentenceAnalysis *string `json:"sentenceAnalysis,omitempty" xml:"sentenceAnalysis,omitempty"`
 	// The sentence ID.
 	//
@@ -557,13 +556,13 @@ func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) Validate
 }
 
 type ListTextbookAssistantSceneDetailsResponseBodyDataTheme struct {
-	// A list of image URLs related to the theme.
+	// The images related to the current theme.
 	ThemeImageList []*string `json:"themeImageList,omitempty" xml:"themeImageList,omitempty" type:"Repeated"`
 	// The theme name.
 	//
 	// example:
 	//
-	// 家庭生活
+	// Family life
 	ThemeName *string `json:"themeName,omitempty" xml:"themeName,omitempty"`
 	// The translation of the theme name.
 	//
@@ -613,15 +612,15 @@ func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTheme) Validate() erro
 }
 
 type ListTextbookAssistantSceneDetailsResponseBodyDataTopic struct {
-	// A list of image URLs related to the topic.
+	// The images related to the current topic.
 	TopicImageList []*string `json:"topicImageList,omitempty" xml:"topicImageList,omitempty" type:"Repeated"`
 	// The topic name.
 	//
 	// example:
 	//
-	// 介绍家人
+	// Introducing family members
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// The translation of the topic name.
+	// The translation of the topic content.
 	//
 	// example:
 	//
@@ -673,7 +672,7 @@ type ListTextbookAssistantSceneDetailsResponseBodyDataWordList struct {
 	//
 	// example:
 	//
-	// 家；家庭
+	// Home; family
 	WordAnalysis *string `json:"wordAnalysis,omitempty" xml:"wordAnalysis,omitempty"`
 	// The word ID.
 	//

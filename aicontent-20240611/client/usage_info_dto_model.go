@@ -24,26 +24,38 @@ type iUsageInfoDTO interface {
 }
 
 type UsageInfoDTO struct {
+	// The output tokens.
+	//
 	// example:
 	//
 	// 50
 	CompletionTokens *int32 `json:"completionTokens,omitempty" xml:"completionTokens,omitempty"`
+	// The number of images.
+	//
 	// example:
 	//
 	// 0
 	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	// The input tokens.
+	//
 	// example:
 	//
 	// 100
 	PromptTokens *int32 `json:"promptTokens,omitempty" xml:"promptTokens,omitempty"`
+	// The total tokens.
+	//
 	// example:
 	//
 	// 150
 	TotalTokens *int32 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	// The number of videos.
+	//
 	// example:
 	//
 	// 0
 	VideoCount *int32 `json:"videoCount,omitempty" xml:"videoCount,omitempty"`
+	// The video duration in seconds.
+	//
 	// example:
 	//
 	// 0

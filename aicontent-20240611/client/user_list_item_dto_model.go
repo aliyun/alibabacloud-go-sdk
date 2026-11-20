@@ -24,26 +24,38 @@ type iUserListItemDTO interface {
 }
 
 type UserListItemDTO struct {
+	// The list of departments and roles to which the user belongs.
+	//
 	// example:
 	//
 	// []
 	Departments []*UserDepartmentDTO `json:"departments,omitempty" xml:"departments,omitempty" type:"Repeated"`
+	// The creation time in the yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2026-07-01 10:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The logon name.
+	//
 	// example:
 	//
 	// zhangsan
 	LoginName *string `json:"loginName,omitempty" xml:"loginName,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// Zhang San
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 13800000000

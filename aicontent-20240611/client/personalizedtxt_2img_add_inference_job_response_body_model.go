@@ -30,7 +30,7 @@ type Personalizedtxt2imgAddInferenceJobResponseBody struct {
 	//
 	// []
 	Data *Personalizedtxt2imgAddInferenceJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type Personalizedtxt2imgAddInferenceJobResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type Personalizedtxt2imgAddInferenceJobResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ func (s *Personalizedtxt2imgAddInferenceJobResponseBody) Validate() error {
 }
 
 type Personalizedtxt2imgAddInferenceJobResponseBodyData struct {
-	// The inference job\\"s creation time.
+	// The creation time of the model inference task.
 	//
 	// example:
 	//
 	// 2023-12-25T12:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The model inference job ID.
+	// The ID of the model inference task.
 	//
 	// example:
 	//
 	// 3220
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The job status.
+	// The status of the model inference task.
 	//
 	// example:
 	//
 	// FINISHED
 	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
-	// The inference job progress.
+	// The progress of the model inference task.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type Personalizedtxt2imgAddInferenceJobResponseBodyData struct {
 	//
 	// modelId-xxxx-xxxx-xxxx
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The prompt ID.
+	// promptId
 	//
 	// example:
 	//
 	// promptId-xxxx-xxxx-xxxx
 	PromptId *string `json:"promptId,omitempty" xml:"promptId,omitempty"`
-	// A list of URLs for the generated images.
+	// The list of results for the model inference task.
 	//
 	// example:
 	//

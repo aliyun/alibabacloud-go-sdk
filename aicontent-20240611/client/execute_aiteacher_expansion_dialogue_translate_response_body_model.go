@@ -24,23 +24,23 @@ type iExecuteAITeacherExpansionDialogueTranslateResponseBody interface {
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateResponseBody struct {
-  // The returned data.
+  // The data object.
   // 
   // example:
   // 
-  // []
+  // {"result":"That\\"s great. Thank you for coming, Lily. Do you like eating meat?"}
   Data *ExecuteAITeacherExpansionDialogueTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-  // The error code returned when the request fails.
+  // The fault message encoding.
   // 
   // example:
   // 
   // UNKNOWN_ERROR
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-  // The error message returned when the request fails.
+  // The error message.
   // 
   // example:
   // 
-  // 未知错误
+  // Unknown error
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
   // The HTTP status code.
   // 
@@ -48,13 +48,13 @@ type ExecuteAITeacherExpansionDialogueTranslateResponseBody struct {
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 
@@ -138,7 +138,7 @@ type ExecuteAITeacherExpansionDialogueTranslateResponseBodyData struct {
   // 
   // example:
   // 
-  // 太好了，谢谢你过来，莉莉。你喜欢吃肉吗？
+  // That\\"s great. Thank you for coming, Lily. Do you like eating meat?
   Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 

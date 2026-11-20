@@ -16,7 +16,7 @@ type iOralEvaluationStatisticsConcurrentCountResponse interface {
 }
 
 type OralEvaluationStatisticsConcurrentCountResponse struct {
-	// Statistical data for the project.
+	// The project statistics data.
 	//
 	// This parameter is required.
 	ProjectData *OralEvaluationStatisticsConcurrentCountResponseProjectData `json:"projectData,omitempty" xml:"projectData,omitempty" type:"Struct"`
@@ -66,7 +66,7 @@ func (s *OralEvaluationStatisticsConcurrentCountResponse) Validate() error {
 }
 
 type OralEvaluationStatisticsConcurrentCountResponseProjectData struct {
-	// A list of application data.
+	// The data list.
 	ApplicationData []*OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData `json:"ApplicationData,omitempty" xml:"ApplicationData,omitempty" type:"Repeated"`
 	// The internal application ID.
 	//
@@ -118,9 +118,9 @@ func (s *OralEvaluationStatisticsConcurrentCountResponseProjectData) Validate() 
 }
 
 type OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData struct {
-	// A list of data nodes.
+	// The data list.
 	Data []*OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The app key.
+	// appkey
 	//
 	// This parameter is required.
 	//
@@ -170,11 +170,15 @@ func (s *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDa
 }
 
 type OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData struct {
-	// The count of the item.
+	// The statistics item count.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The name of the statistical item.
+	// The statistics item name.
 	//
 	// This parameter is required.
 	//

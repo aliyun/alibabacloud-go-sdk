@@ -24,13 +24,13 @@ type iModelRouterQueryClientListResponseBody interface {
 }
 
 type ModelRouterQueryClientListResponseBody struct {
-	// A wrapper object for the paged response data.
+	// The data object.
 	//
 	// example:
 	//
-	// []
+	// {"page":1,"pageSize":10}
 	Data *ModelRouterQueryClientListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterQueryClientListResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ModelRouterQueryClientListResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,18 +134,38 @@ func (s *ModelRouterQueryClientListResponseBody) Validate() error {
 }
 
 type ModelRouterQueryClientListResponseBodyData struct {
+	// The list of items.
 	List []*ClientDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// maxResults
+	//
 	// example:
 	//
 	// 1
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// nextToken
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Page      *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	PageSize  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total     *int32  `json:"total,omitempty" xml:"total,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of records per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records that meet the query conditions.
+	//
+	// example:
+	//
+	// 1
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ModelRouterQueryClientListResponseBodyData) String() string {

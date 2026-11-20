@@ -38,48 +38,72 @@ type iMemberApiKeyDTO interface {
 }
 
 type MemberApiKeyDTO struct {
+	// The parent department information.
 	Client *ClientDTO `json:"client,omitempty" xml:"client,omitempty"`
+	// The ID of the parent department. Member keys are mapped to their parent departments.
+	//
 	// example:
 	//
 	// 438
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The deletion tag. A value of 0 indicates that the key is enabled, and a non-zero value indicates that the key is disabled.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The expiration time. A null value indicates that the key never expires.
+	//
 	// example:
 	//
 	// 2026-12-31T00:00:00Z
 	ExpireAt *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-08-03T18:41:40+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2026-08-03T18:41:40+08:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The API key ID. This ID can be used to query the bound group by API key.
+	//
 	// example:
 	//
 	// 502
-	Id  *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The full key. This field is not returned in the member list and is always empty.
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The masked preview of the API key.
+	//
 	// example:
 	//
 	// sk-us****9876
 	KeyPreview *string `json:"keyPreview,omitempty" xml:"keyPreview,omitempty"`
+	// The ID of the department member to whom the key belongs.
+	//
 	// example:
 	//
 	// 304
 	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
+	// The member name.
+	//
 	// example:
 	//
-	// John
+	// Zhang San
 	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
+	// The API key name.
+	//
 	// example:
 	//
-	// John\\"s Key
+	// Zhang San\\"s key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status. Valid values: active: Enabled. disabled: Disabled.
+	//
 	// example:
 	//
 	// active

@@ -30,7 +30,7 @@ type iModelRouterGetClientBalanceLogsResponseBody interface {
 type ModelRouterGetClientBalanceLogsResponseBody struct {
 	// The response data.
 	Data *ModelRouterGetClientBalanceLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The fault code.
+	// The error message code.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModelRouterGetClientBalanceLogsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of items to return.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ModelRouterGetClientBalanceLogsResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ type ModelRouterGetClientBalanceLogsResponseBodyData struct {
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries.
+	// The total number of items.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iDeptBalanceSummaryDTO interface {
 }
 
 type DeptBalanceSummaryDTO struct {
+	// The monthly balance pool overview.
+	//
 	// example:
 	//
 	// {}
 	Monthly *BalancePoolSummaryDTO `json:"monthly,omitempty" xml:"monthly,omitempty"`
+	// The permanent balance pool overview.
+	//
 	// example:
 	//
 	// {}

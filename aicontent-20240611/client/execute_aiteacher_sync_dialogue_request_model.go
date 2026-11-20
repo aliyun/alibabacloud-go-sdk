@@ -20,19 +20,19 @@ type iExecuteAITeacherSyncDialogueRequest interface {
 }
 
 type ExecuteAITeacherSyncDialogueRequest struct {
-  // An array of dialogue task objects.
+  // The collection of conversation task content.
   // 
   // This parameter is required.
   DialogueTasks []*ExecuteAITeacherSyncDialogueRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
-  // The language and dialect of the dialogue.
+  // The language code.
   // 
   // example:
   // 
   // en-gb
   LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
-  // An array of dialogue record objects.
+  // The collection of conversation records.
   Records []*ExecuteAITeacherSyncDialogueRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
-  // A unique identifier for the user.
+  // The user ID.
   // 
   // This parameter is required.
   // 
@@ -109,7 +109,7 @@ func (s *ExecuteAITeacherSyncDialogueRequest) Validate() error {
 }
 
 type ExecuteAITeacherSyncDialogueRequestDialogueTasks struct {
-  // The assistant\\"s dialogue content.
+  // The AI conversation content.
   // 
   // This parameter is required.
   // 
@@ -117,13 +117,13 @@ type ExecuteAITeacherSyncDialogueRequestDialogueTasks struct {
   // 
   // Why might some people think dog walking is a great job?
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
-  // The translation of the assistant\\"s dialogue content.
+  // The translation of the AI conversation content.
   // 
   // example:
   // 
-  // 为什么有些人认为遛狗是份好差事?
+  // Why do some people think walking dogs is a good job?
   AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
-  // The sequence number of the task.
+  // The sequence number.
   // 
   // This parameter is required.
   // 
@@ -131,7 +131,7 @@ type ExecuteAITeacherSyncDialogueRequestDialogueTasks struct {
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-  // The user\\"s dialogue content.
+  // The user conversation content.
   // 
   // This parameter is required.
   // 
@@ -190,7 +190,7 @@ func (s *ExecuteAITeacherSyncDialogueRequestDialogueTasks) Validate() error {
 }
 
 type ExecuteAITeacherSyncDialogueRequestRecords struct {
-  // The message content.
+  // The conversation content.
   // 
   // This parameter is required.
   // 
@@ -198,19 +198,27 @@ type ExecuteAITeacherSyncDialogueRequestRecords struct {
   // 
   // Ask Mark if he has thought about what his dream job might be.
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
-  // Indicates whether the user\\"s response is off-topic, acting as a flow control mechanism. This value is based on how the user\\"s previous response aligned with the dialogue task. If the user goes off-topic more than twice, the system sets this parameter to `true` to trigger a task switch.
+  // Specifies whether the response is off topic, which also serves as a flow control mechanism. This parameter reflects whether the student\\"s response meets the settings of the conversation task. The value of this parameter is derived from the return results of previous conversation turns. In addition, this parameter serves as a flow control mechanism. If the response is off topic more than twice, the value is forcibly set to true to force a task switch. Valid values:
+  // 
+  // - true: Off topic.
+  // 
+  // - false: On topic.
   // 
   // example:
   // 
-  // 跑题：true, 不跑题：false
+  // true
   IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
-  // Indicates whether the response is on-topic.
+  // Specifies whether the response is on topic. Valid values:
+  // 
+  // - true: On topic.
+  // 
+  // - false: Off topic.
   // 
   // example:
   // 
-  // 扣题：true, 不扣题：false
+  // true
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
-  // The sequence number of the message.
+  // The sequence number.
   // 
   // This parameter is required.
   // 
@@ -218,13 +226,13 @@ type ExecuteAITeacherSyncDialogueRequestRecords struct {
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-  // The role of the message author.
+  // The role identity.
   // 
   // This parameter is required.
   // 
   // example:
   // 
-  // AI：assistant；用户：user
+  // AI: assistant; User: user
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 

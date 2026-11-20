@@ -24,13 +24,13 @@ type iModelRouterQueryNacosTagsResponseBody interface {
 }
 
 type ModelRouterQueryNacosTagsResponseBody struct {
-	// An array of tags.
+	// The data object.
 	//
 	// example:
 	//
 	// []
 	Data []*ModelRouterQueryNacosTagsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The error code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ModelRouterQueryNacosTagsResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type ModelRouterQueryNacosTagsResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -138,12 +138,26 @@ func (s *ModelRouterQueryNacosTagsResponseBody) Validate() error {
 }
 
 type ModelRouterQueryNacosTagsResponseBodyData struct {
+	// The display name of the model type. This parameter is returned when configType is set to model-types.
+	//
 	// example:
 	//
-	// 文本生成
-	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
-	Tag     *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// Text generation
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TXT_GEN
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tag name.
+	//
+	// example:
+	//
+	// Text generation
 	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	// The model type value. This parameter is returned when configType is set to model-types.
+	//
 	// example:
 	//
 	// NLP

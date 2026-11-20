@@ -30,11 +30,13 @@ type iModelRouterQueryNacosTagsRequest interface {
 }
 
 type ModelRouterQueryNacosTagsRequest struct {
+	// Specifies the Nacos configuration type to retrieve.
+	//
 	// example:
 	//
 	// providers
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	// The field by which to group the results.
+	// The grouping field.
 	//
 	// example:
 	//
@@ -46,25 +48,25 @@ type ModelRouterQueryNacosTagsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Specifies whether to return the total count of results.
+	// Specifies whether to return the total count.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The token from a previous response to retrieve the next page of results.
+	// The pagination token. This parameter is empty if there is no next page.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
 	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The sort order.
+	// The sort direction.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type ModelRouterQueryNacosTagsRequest struct {
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of results to return per page.
+	// The number of items per page.
 	//
 	// example:
 	//

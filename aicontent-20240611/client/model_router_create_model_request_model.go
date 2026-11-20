@@ -48,11 +48,11 @@ type ModelRouterCreateModelRequest struct {
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	// The model description.
+	// The description of the model.
 	//
 	// example:
 	//
-	// 通义千问大模型
+	// Qwen large language model
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The extension configuration parameters of the model, stored as a JSON string.
 	//
@@ -78,23 +78,23 @@ type ModelRouterCreateModelRequest struct {
 	//
 	// 8K
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
-	// The model ID.
+	// The ID of the model.
 	//
 	// example:
 	//
 	// qwen-turbo
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The model type.
+	// The type of the model.
 	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
-	// 通义千问
+	// Qwen
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The vendor symbol.
 	//

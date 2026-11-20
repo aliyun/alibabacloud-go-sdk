@@ -36,50 +36,74 @@ type iDeptMemberDTO interface {
 }
 
 type DeptMemberDTO struct {
+	// The comma-separated list of authorized model IDs. This field is valid only when include_authorization is specified. An empty value indicates that the models are inherited or all models are authorized.
+	//
 	// example:
 	//
 	// 1,2
 	AllowedModels *string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty"`
+	// The authorization configuration. Valid values: inherit: Inherited from the department. custom: Customized. This field is valid only when include_authorization is specified.
+	//
 	// example:
 	//
 	// inherit
 	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The member user ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The number of active keys that belong to the member. This field is valid only when include_authorization is specified.
+	//
 	// example:
 	//
 	// 1
 	KeyCount *int32 `json:"keyCount,omitempty" xml:"keyCount,omitempty"`
+	// The logon name.
+	//
 	// example:
 	//
 	// zhangsan
 	LoginName *string `json:"loginName,omitempty" xml:"loginName,omitempty"`
+	// The monthly balance. This field is valid only when include_balance is specified. The value is 0 if the feature is not activated.
+	//
 	// example:
 	//
 	// 10.00
 	MonthlyBalance *float64 `json:"monthlyBalance,omitempty" xml:"monthlyBalance,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// Zhang San
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The permanent balance. This field is valid only when include_balance is specified. The value is 0 if the feature is not activated.
+	//
 	// example:
 	//
 	// 20.00
 	PermanentBalance *float64 `json:"permanentBalance,omitempty" xml:"permanentBalance,omitempty"`
+	// The mobile phone number.
+	//
 	// example:
 	//
 	// 138****0000
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// The role code.
+	//
 	// example:
 	//
 	// member
 	RoleCode *string `json:"roleCode,omitempty" xml:"roleCode,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// Member

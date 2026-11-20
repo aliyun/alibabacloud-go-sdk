@@ -22,19 +22,19 @@ type iModelRouterGetClientBalanceLogsRequest interface {
 }
 
 type ModelRouterGetClientBalanceLogsRequest struct {
-	// The change type filter. Valid values: auto_deduct, deduct, recharge.
+	// The change type filter. Valid values: auto_deduct, deduct, and recharge.
 	//
 	// example:
 	//
 	// recharge
 	ChangeType *string `json:"changeType,omitempty" xml:"changeType,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of items to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next request.
+	// The pagination cursor for the next request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModelRouterGetClientBalanceLogsRequest struct {
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

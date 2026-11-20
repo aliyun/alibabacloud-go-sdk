@@ -14,7 +14,7 @@ type iQueryApplicationAccessIdRequest interface {
 }
 
 type QueryApplicationAccessIdRequest struct {
-	// The application access ID (appkey).
+	// The application access identifier (appkey).
 	//
 	// example:
 	//

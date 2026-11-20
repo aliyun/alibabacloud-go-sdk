@@ -28,7 +28,7 @@ type iModelRouterQueryNacosProvidersRequest interface {
 }
 
 type ModelRouterQueryNacosProvidersRequest struct {
-	// The field by which to group the results.
+	// The field used to group the results.
 	//
 	// example:
 	//
@@ -40,25 +40,25 @@ type ModelRouterQueryNacosProvidersRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Specifies whether the total count is required.
+	// Specifies whether to include the total count of items.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The pagination token used for paginated queries. Specify this parameter to retrieve the next page.
+	// The pagination token used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field by which to sort the results.
+	// The field used to sort the results.
 	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The sort direction.
+	// The sort order.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModelRouterQueryNacosProvidersRequest struct {
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

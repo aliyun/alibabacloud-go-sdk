@@ -30,44 +30,62 @@ type iBatchCreateModelItemDTO interface {
 }
 
 type BatchCreateModelItemDTO struct {
+	// The model description.
+	//
 	// example:
 	//
-	// 通义千问 Max
+	// Qwen Max
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The extension configuration parameters in JSON string format.
+	//
 	// example:
 	//
 	// {}
 	Extensions *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
+	// The supported input and output data types, separated by commas.
+	//
 	// example:
 	//
 	// text
 	InOut *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
+	// The maximum input length in tokens.
+	//
 	// example:
 	//
 	// 128000
 	MaxInputLength *string `json:"maxInputLength,omitempty" xml:"maxInputLength,omitempty"`
+	// The maximum output length in tokens.
+	//
 	// example:
 	//
 	// 8192
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
+	// The model identifier. This parameter is required and corresponds to the model ID on the vendor side. If the identifier is duplicated, the backend automatically increments the version by using v1 or v2.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model type. This parameter is required. Valid values: Chat, Embedding, Rerank, Image, Audio, and Video.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The model name. This parameter is required. If the identifier is duplicated, add -v1 or -v2 to distinguish the models.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen-max
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The tags, separated by commas.
+	//
 	// example:
 	//
 	// chat,NLP

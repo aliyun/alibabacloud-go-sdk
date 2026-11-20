@@ -24,7 +24,7 @@ type iListTextbookAssistantArticleDetailsResponseBody interface {
 }
 
 type ListTextbookAssistantArticleDetailsResponseBody struct {
-	// An array of article detail objects.
+	// The returned data object.
 	Data []*ListTextbookAssistantArticleDetailsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -36,7 +36,7 @@ type ListTextbookAssistantArticleDetailsResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -44,17 +44,17 @@ type ListTextbookAssistantArticleDetailsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates if the API call succeeded.
+	// Indicates whether the API call is successful.
 	//
-	// - **true**: Success
+	// - **true**: Successful.
 	//
-	// - **false**: Failure
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -144,23 +144,23 @@ type ListTextbookAssistantArticleDetailsResponseBodyData struct {
 	//
 	// 0c05700d4d9411efbe6e0c42a106bb02
 	ArticleId *string `json:"articleId,omitempty" xml:"articleId,omitempty"`
-	// A list of Q\\&A objects.
+	// The question and answer data.
 	QuestionList []*ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList `json:"questionList,omitempty" xml:"questionList,omitempty" type:"Repeated"`
-	// A list of scene objects.
+	// The scene list.
 	SceneList []*ListTextbookAssistantArticleDetailsResponseBodyDataSceneList `json:"sceneList,omitempty" xml:"sceneList,omitempty" type:"Repeated"`
-	// A list of sentence objects.
+	// The sentence list.
 	SentenceList []*ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
-	// The learning objectives.
+	// The practice objective.
 	//
 	// example:
 	//
-	// 1.能够在自我介绍时运用句型“What\\"s your name? My name is/I‘m...”进行询问及回答。\\n2.能够和新朋友运用句型“Nice to meet you(too).”进行问候。
+	// 1. Be able to use the sentence pattern "What\\"s your name? My name is/I\\"m..." to ask and answer during self-introductions.\\n2. Be able to use the sentence pattern "Nice to meet you (too)." to greet new friends
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
-	// The theme object.
+	// The theme information.
 	Theme *ListTextbookAssistantArticleDetailsResponseBodyDataTheme `json:"theme,omitempty" xml:"theme,omitempty" type:"Struct"`
-	// The topic object.
+	// The topic information.
 	Topic *ListTextbookAssistantArticleDetailsResponseBodyDataTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Struct"`
-	// A list of word objects.
+	// The word list.
 	WordList []*ListTextbookAssistantArticleDetailsResponseBodyDataWordList `json:"wordList,omitempty" xml:"wordList,omitempty" type:"Repeated"`
 }
 
@@ -295,23 +295,23 @@ func (s *ListTextbookAssistantArticleDetailsResponseBodyData) Validate() error {
 }
 
 type ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList struct {
-	// The answer.
+	// The answer to the question.
 	//
 	// example:
 	//
 	// I\\"m Mike Black
 	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
-	// The question.
+	// The question content.
 	//
 	// example:
 	//
 	// From the book, how does Mike Black introduce himself?
 	Question *string `json:"question,omitempty" xml:"question,omitempty"`
-	// The translated question.
+	// The translation of the question content.
 	//
 	// example:
 	//
-	// 根据文章，迈克·布莱克是如何介绍自己的？
+	// According to the article, how does Mike Black introduce himself?
 	QuestionTranslate *string `json:"questionTranslate,omitempty" xml:"questionTranslate,omitempty"`
 }
 
@@ -367,9 +367,13 @@ type ListTextbookAssistantArticleDetailsResponseBodyDataSceneList struct {
 	//
 	// 38cddd70509911efbe6e0c42a106bb02
 	SceneId *string `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
-	// A list of image URLs for the scene.
+	// The images related to the current scene.
 	SceneImageList []*string `json:"sceneImageList,omitempty" xml:"sceneImageList,omitempty" type:"Repeated"`
-	// The translated scene description.
+	// The translation of the scene description.
+	//
+	// example:
+	//
+	// At a cafe, share the story of how you met your friends
 	SceneTranslate *string `json:"sceneTranslate,omitempty" xml:"sceneTranslate,omitempty"`
 }
 
@@ -422,11 +426,11 @@ func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) Validate(
 }
 
 type ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList struct {
-	// The sentence analysis.
+	// The sentence analysis and explanation.
 	//
 	// example:
 	//
-	// 主语 + be动词（am/is/are） + 姓名.
+	// Subject + be verb (am/is/are) + name
 	SentenceAnalysis *string `json:"sentenceAnalysis,omitempty" xml:"sentenceAnalysis,omitempty"`
 	// The sentence ID.
 	//
@@ -482,15 +486,15 @@ func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) Valida
 }
 
 type ListTextbookAssistantArticleDetailsResponseBodyDataTheme struct {
-	// A list of image URLs for the theme.
+	// The images related to the current theme.
 	ThemeImageList []*string `json:"themeImageList,omitempty" xml:"themeImageList,omitempty" type:"Repeated"`
 	// The theme name.
 	//
 	// example:
 	//
-	// 自我认知与提升
+	// Self-awareness and improvement
 	ThemeName *string `json:"themeName,omitempty" xml:"themeName,omitempty"`
-	// The translated theme name.
+	// The translation of the theme name.
 	//
 	// example:
 	//
@@ -538,15 +542,15 @@ func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTheme) Validate() er
 }
 
 type ListTextbookAssistantArticleDetailsResponseBodyDataTopic struct {
-	// A list of image URLs for the topic.
+	// The images related to the current topic.
 	TopicImageList []*string `json:"topicImageList,omitempty" xml:"topicImageList,omitempty" type:"Repeated"`
 	// The topic name.
 	//
 	// example:
 	//
-	// 打招呼与自我介绍
+	// Greetings and self-introductions
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// The translated topic name.
+	// The translation of the topic content.
 	//
 	// example:
 	//
@@ -594,11 +598,11 @@ func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTopic) Validate() er
 }
 
 type ListTextbookAssistantArticleDetailsResponseBodyDataWordList struct {
-	// The word analysis.
+	// The word definition.
 	//
 	// example:
 	//
-	// 令人愉快的；友好的
+	// Pleasant; friendly
 	WordAnalysis *string `json:"wordAnalysis,omitempty" xml:"wordAnalysis,omitempty"`
 	// The word ID.
 	//

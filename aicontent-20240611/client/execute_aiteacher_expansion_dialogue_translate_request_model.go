@@ -26,7 +26,7 @@ type iExecuteAITeacherExpansionDialogueTranslateRequest interface {
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequest struct {
-  // The background context for the dialogue.
+  // The conversation background description.
   // 
   // This parameter is required.
   // 
@@ -34,23 +34,23 @@ type ExecuteAITeacherExpansionDialogueTranslateRequest struct {
   // 
   // In this dialogue, you will be playing the role of Lily, a young girl. I will be Jane, Lily\\"s mother. We are in the kitchen, where I am preparing dinner. I am asking you about your food preferences, specifically if you like meat, fish, and milk. You like meat and milk, but you don\\"t like fish because of its smell. I explain to you the nutritional benefits of these foods and suggest alternatives for the ones you don\\"t like. Finally, I invite you to start eating.
   Background *string `json:"background,omitempty" xml:"background,omitempty"`
-  // An array of dialogue tasks.
+  // The collection of conversation task content.
   // 
   // This parameter is required.
   DialogueTasks []*ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
-  // An array of dialogue records.
+  // The collection of conversation records.
   Records []*ExecuteAITeacherExpansionDialogueTranslateRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
-  // Role information for the participants.
+  // The role settings.
   // 
   // This parameter is required.
   RoleInfo *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
-  // The opening sentence of the dialogue.
+  // The opening remark.
   // 
   // example:
   // 
   // Hello Lily, could you please come to the kitchen for a moment?
   StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
-  // The topic of the conversation.
+  // The topic.
   // 
   // This parameter is required.
   // 
@@ -167,7 +167,7 @@ func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) Validate() error {
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks struct {
-  // The dialogue content from the assistant.
+  // The AI conversation content.
   // 
   // This parameter is required.
   // 
@@ -175,11 +175,11 @@ type ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks struct {
   // 
   // Why might some people think dog walking is a great job?
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
-  // The translation of the assistant content.
+  // The translation of the AI conversation content.
   // 
   // example:
   // 
-  // 为什么有些人认为遛狗是份好差事?
+  // Why do some people think walking dogs is a good job?
   AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
   // The sequence number.
   // 
@@ -189,7 +189,7 @@ type ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks struct {
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-  // The dialogue content from the user.
+  // The user conversation content.
   // 
   // This parameter is required.
   // 
@@ -248,7 +248,7 @@ func (s *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) Validat
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequestRecords struct {
-  // The dialogue content.
+  // The conversation content.
   // 
   // This parameter is required.
   // 
@@ -256,17 +256,25 @@ type ExecuteAITeacherExpansionDialogueTranslateRequestRecords struct {
   // 
   // Ask Mark if he has thought about what his dream job might be.
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
-  // Controls the conversation flow based on whether the user\\"s response is off-topic. This value is determined by previous turns. If a user provides more than two consecutive off-topic responses, the system sets this parameter to `true` to switch tasks.
+  // Specifies whether the content is off-topic and includes flow control. This parameter reflects whether the student\\"s response meets the settings of the conversation task. The value of this parameter is derived from the return results of previous conversation turns. In addition, this parameter serves the purpose of flow control. If the content is off-topic more than twice, the value is forcibly set to true to force a task switch. Valid values:
+  // 
+  // - true: Off-topic.
+  // 
+  // - false: On-topic.
   // 
   // example:
   // 
-  // 跑题：true, 不跑题：false
+  // true
   IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
-  // Indicates whether the message is on-topic.
+  // Specifies whether the content is on-topic. Valid values:
+  // 
+  // - true: On-topic.
+  // 
+  // - false: Off-topic.
   // 
   // example:
   // 
-  // 扣题：true, 不扣题：false
+  // true
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
   // The sequence number.
   // 
@@ -276,13 +284,13 @@ type ExecuteAITeacherExpansionDialogueTranslateRequestRecords struct {
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-  // The role of the message author. Valid values are `assistant` for the AI and `user` for the user.
+  // The role.
   // 
   // This parameter is required.
   // 
   // example:
   // 
-  // AI：assistant；用户：user
+  // AI: assistant; User: user
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
@@ -344,7 +352,7 @@ func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) Validate() er
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo struct {
-  // The assistant name.
+  // The name of the AI.
   // 
   // This parameter is required.
   // 
@@ -352,7 +360,7 @@ type ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo struct {
   // 
   // Jane, a caring mother
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
-  // The user name.
+  // The name of the user.
   // 
   // This parameter is required.
   // 

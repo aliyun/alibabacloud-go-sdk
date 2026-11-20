@@ -18,14 +18,20 @@ type iBatchModelErrorDTO interface {
 }
 
 type BatchModelErrorDTO struct {
+	// The failure cause.
+	//
 	// example:
 	//
-	// 模型类型不能为空
+	// The model type cannot be empty
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-max
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen-max

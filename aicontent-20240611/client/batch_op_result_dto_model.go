@@ -16,10 +16,14 @@ type iBatchOpResultDTO interface {
 }
 
 type BatchOpResultDTO struct {
+	// The list of failed items.
+	//
 	// example:
 	//
 	// []
 	Failed []*BatchFailedItemDTO `json:"failed,omitempty" xml:"failed,omitempty" type:"Repeated"`
+	// The list of successful member user IDs.
+	//
 	// example:
 	//
 	// []

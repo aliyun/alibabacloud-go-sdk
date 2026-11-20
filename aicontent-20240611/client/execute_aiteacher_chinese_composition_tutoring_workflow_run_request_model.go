@@ -96,7 +96,7 @@ type ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest struct {
   // 
   // example:
   // 
-  // xxxxxxxxx
+  // demo_user
   UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

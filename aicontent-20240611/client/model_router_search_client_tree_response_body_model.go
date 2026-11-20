@@ -134,7 +134,7 @@ func (s *ModelRouterSearchClientTreeResponseBody) Validate() error {
 }
 
 type ModelRouterSearchClientTreeResponseBodyData struct {
-	// The collection of matched department IDs.
+	// The IDs of the matched departments.
 	//
 	// example:
 	//

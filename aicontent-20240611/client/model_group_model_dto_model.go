@@ -24,26 +24,38 @@ type iModelGroupModelDTO interface {
 }
 
 type ModelGroupModelDTO struct {
+	// The numeric ID of the model.
+	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The model identifier.
+	//
 	// example:
 	//
 	// qwen-max
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The name of the model.
+	//
 	// example:
 	//
-	// 通义千问-Max
+	// Qwen-Max
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The platform to which the model belongs.
+	//
 	// example:
 	//
 	// qwen
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// The model version.
+	//
 	// example:
 	//
 	// v0

@@ -14,6 +14,8 @@ type iModelRouterStopMemberSubscriptionRequest interface {
 }
 
 type ModelRouterStopMemberSubscriptionRequest struct {
+	// The balance type. Valid values: permanent, monthly.
+	//
 	// example:
 	//
 	// monthly

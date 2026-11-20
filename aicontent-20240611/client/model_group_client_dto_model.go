@@ -18,17 +18,23 @@ type iModelGroupClientDTO interface {
 }
 
 type ModelGroupClientDTO struct {
+	// The list of API key summaries for the department.
+	//
 	// example:
 	//
 	// []
 	ApiKeys []*ModelGroupClientKeyItemDTO `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// The department ID.
+	//
 	// example:
 	//
 	// 1001
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The department name.
+	//
 	// example:
 	//
-	// UserA-Professional
+	// User A-Professional Edition
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
 }
 

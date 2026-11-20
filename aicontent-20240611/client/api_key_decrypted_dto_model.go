@@ -30,35 +30,52 @@ type iApiKeyDecryptedDTO interface {
 }
 
 type ApiKeyDecryptedDTO struct {
+	// The associated client information.
 	Client *ClientDTO `json:"client,omitempty" xml:"client,omitempty"`
+	// The client ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The deletion tag. A value of 0 indicates enabled, and a non-zero value indicates disabled.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// ID
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The full key.
+	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxxxxxxx
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key preview.
+	//
 	// example:
 	//
 	// sk-xxx****xxx
 	KeyPreview *string `json:"keyPreview,omitempty" xml:"keyPreview,omitempty"`
+	// The key name.
+	//
 	// example:
 	//
 	// MyApiKey

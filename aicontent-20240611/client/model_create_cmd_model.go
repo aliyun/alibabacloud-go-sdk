@@ -32,42 +32,62 @@ type iModelCreateCmd interface {
 }
 
 type ModelCreateCmd struct {
+	// API Key
+	//
 	// example:
 	//
 	// sk-xxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// Base URL
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
+	// The model description.
+	//
 	// example:
 	//
-	// 通义千问大模型
+	// Qwen large language model
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The maximum input length.
+	//
 	// example:
 	//
 	// 8192
 	MaxInputLength *string `json:"maxInputLength,omitempty" xml:"maxInputLength,omitempty"`
+	// The maximum output length.
+	//
 	// example:
 	//
 	// 2048
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-turbo
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
-	// 通义千问
+	// Qwen
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The vendor symbol.
+	//
 	// example:
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// The tags, separated by commas.
+	//
 	// example:
 	//
 	// chat,NLP

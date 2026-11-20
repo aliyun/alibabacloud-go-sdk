@@ -16,9 +16,9 @@ type iListTextbookAssistantArticleDetailsRequest interface {
 }
 
 type ListTextbookAssistantArticleDetailsRequest struct {
-	// A list of article IDs to retrieve.
+	// The list of article IDs.
 	ArticleIdList []*string `json:"articleIdList,omitempty" xml:"articleIdList,omitempty" type:"Repeated"`
-	// The authorization token obtained from the "Get Authorization Token for the English Textbook-Style AI Teacher" API.
+	// The authorization code for API calls. You can obtain this code by calling the operation that retrieves the authorization code for the English textbook-style AI teacher feature.
 	//
 	// This parameter is required.
 	//

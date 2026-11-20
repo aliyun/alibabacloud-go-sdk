@@ -24,19 +24,19 @@ type iModelRouterSaveFlowConfigResponseBody interface {
 }
 
 type ModelRouterSaveFlowConfigResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *ModelRouterSaveFlowConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code returned if the request fails.
+	// The fault message code.
 	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type ModelRouterSaveFlowConfigResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *ModelRouterSaveFlowConfigResponseBody) Validate() error {
 }
 
 type ModelRouterSaveFlowConfigResponseBodyData struct {
-	// The creation time of the configuration.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-04-27T18:28:57.987356+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time of the configuration.
+	// The update time.
 	//
 	// example:
 	//
 	// 2026-04-27T18:28:57.987356+08:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the flow control configuration.
+	// The rate limiting configuration ID.
 	//
 	// example:
 	//
@@ -154,19 +154,19 @@ type ModelRouterSaveFlowConfigResponseBodyData struct {
 	//
 	// 607
 	ModelId *int32 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The configured RPM.
+	// The requests per minute (RPM) limit.
 	//
 	// example:
 	//
 	// 100
 	Rpm *int32 `json:"rpm,omitempty" xml:"rpm,omitempty"`
-	// Indicates whether smooth flow control is enabled.
+	// Specifies whether smooth rate limiting is enabled.
 	//
 	// example:
 	//
 	// true
 	SmoothFlowEnabled *bool `json:"smoothFlowEnabled,omitempty" xml:"smoothFlowEnabled,omitempty"`
-	// The configured TPM.
+	// The tokens per minute (TPM) limit.
 	//
 	// example:
 	//

@@ -34,13 +34,13 @@ type iModelRouterQueryClientListRequest interface {
 }
 
 type ModelRouterQueryClientListRequest struct {
-	// The field to group the results by.
+	// The field used to group the results.
 	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	// The search keyword.
+	// The keyword used for search.
 	//
 	// example:
 	//
@@ -52,47 +52,49 @@ type ModelRouterQueryClientListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Specifies whether to return the total count of entries.
+	// Specifies whether to include the total count of records.
 	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
-	// The token for the next page of results. Set this to the nextToken value from the previous response. Omit for the first page.
+	// The pagination token. An empty value indicates that there are no more pages.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field to sort the results by.
+	// The field used to sort the results.
 	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The sort direction.
+	// The sort order.
 	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
-	// The page number of the results to return. The first page is 1.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of entries to return per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Optional. The ID of the parent department used to filter the results.
+	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// Filters the results by status.
+	// The status used to filter the results.
 	//
 	// example:
 	//

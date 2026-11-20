@@ -69,7 +69,7 @@ type ApiKeyDTO struct {
 	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
 	// example:
 	//
-	// 张三
+	// Zhang San
 	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
 	// example:
 	//

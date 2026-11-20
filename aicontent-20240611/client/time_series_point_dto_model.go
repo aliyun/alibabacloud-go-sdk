@@ -18,15 +18,24 @@ type iTimeSeriesPointDTO interface {
 }
 
 type TimeSeriesPointDTO struct {
+	// The label.
+	//
 	// example:
 	//
 	// series1
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The timestamp (RFC3339).
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
-	Timestamp *string     `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// 42.76
+	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s TimeSeriesPointDTO) String() string {

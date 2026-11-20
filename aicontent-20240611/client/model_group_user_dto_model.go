@@ -18,14 +18,20 @@ type iModelGroupUserDTO interface {
 }
 
 type ModelGroupUserDTO struct {
+	// The list of API key summaries for the user.
+	//
 	// example:
 	//
 	// []
 	ApiKeys []*ModelGroupClientKeyItemDTO `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 30001
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// Zhang San

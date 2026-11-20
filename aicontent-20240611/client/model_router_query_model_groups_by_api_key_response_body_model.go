@@ -26,7 +26,7 @@ type iModelRouterQueryModelGroupsByApiKeyResponseBody interface {
 type ModelRouterQueryModelGroupsByApiKeyResponseBody struct {
 	// The data object.
 	Data *ModelRouterQueryModelGroupsByApiKeyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error message code.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModelRouterQueryModelGroupsByApiKeyResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,11 +130,17 @@ func (s *ModelRouterQueryModelGroupsByApiKeyResponseBody) Validate() error {
 }
 
 type ModelRouterQueryModelGroupsByApiKeyResponseBodyData struct {
+	// The owner type of the key. Valid values:
+	//
+	// - department: Department key (department-level authorization, all keys in the same department return the same result).
+	//
+	// - user: User (department member) key (user-level authorization).
+	//
 	// example:
 	//
 	// department
 	BindType *string `json:"bindType,omitempty" xml:"bindType,omitempty"`
-	// The department ID to which the key belongs.
+	// The ID of the department to which the key belongs.
 	//
 	// example:
 	//

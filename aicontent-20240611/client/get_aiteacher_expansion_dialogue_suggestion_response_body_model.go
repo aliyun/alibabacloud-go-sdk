@@ -24,13 +24,13 @@ type iGetAITeacherExpansionDialogueSuggestionResponseBody interface {
 }
 
 type GetAITeacherExpansionDialogueSuggestionResponseBody struct {
-	// A container for the returned data.
+	// The data object.
 	//
 	// example:
 	//
-	// []
+	// {"chineseResult":"谢谢莉莉.你喜欢吃肉吗，莉莉？","englishResult":"Thanks, Lily. Do you like meat, Lily?"}
 	Data *GetAITeacherExpansionDialogueSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
+	// The fault message code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetAITeacherExpansionDialogueSuggestionResponseBody struct {
 	//
 	// example:
 	//
-	// 未知错误
+	// Unknown error
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -54,7 +54,7 @@ type GetAITeacherExpansionDialogueSuggestionResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) Validate() error {
 }
 
 type GetAITeacherExpansionDialogueSuggestionResponseBodyData struct {
-	// The Chinese translation of the suggested response.
+	// The Chinese prompt of the assistant.
 	//
 	// example:
 	//
 	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
 	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
-	// The suggested response in English.
+	// The English prompt of the assistant.
 	//
 	// example:
 	//

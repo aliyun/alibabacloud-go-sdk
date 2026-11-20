@@ -27,12 +27,8 @@ type iModelRouterQueryApiKeyListResponseBody interface {
 
 type ModelRouterQueryApiKeyListResponseBody struct {
 	// The data object.
-	//
-	// example:
-	//
-	// []
 	Data *ModelRouterQueryApiKeyListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error message code.
+	// The fault message encoding.
 	//
 	// example:
 	//
@@ -62,7 +58,7 @@ type ModelRouterQueryApiKeyListResponseBody struct {
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -151,20 +147,34 @@ func (s *ModelRouterQueryApiKeyListResponseBody) Validate() error {
 }
 
 type ModelRouterQueryApiKeyListResponseBodyData struct {
-	List      []*ApiKeyDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	MaxResult *string      `json:"maxResult,omitempty" xml:"maxResult,omitempty"`
+	// The elements.
+	List []*ApiKeyDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The page size. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResult *string `json:"maxResult,omitempty" xml:"maxResult,omitempty"`
+	// nextToken
+	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 0

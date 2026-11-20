@@ -28,9 +28,9 @@ type ExecuteAITeacherSyncDialogueResponseBody struct {
   // 
   // example:
   // 
-  // []
+  // {"englishResult":"Thanks, Lily. Do you like meat, Lily?","questionIndex":2}
   Data *ExecuteAITeacherSyncDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-  // The error code.
+  // The fault error message encoding.
   // 
   // example:
   // 
@@ -40,7 +40,7 @@ type ExecuteAITeacherSyncDialogueResponseBody struct {
   // 
   // example:
   // 
-  // 未知错误
+  // Unknown error
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
   // The HTTP status code.
   // 
@@ -54,7 +54,7 @@ type ExecuteAITeacherSyncDialogueResponseBody struct {
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // Indicates whether the call was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 
@@ -134,25 +134,25 @@ func (s *ExecuteAITeacherSyncDialogueResponseBody) Validate() error {
 }
 
 type ExecuteAITeacherSyncDialogueResponseBodyData struct {
-  // The English response from the AI teacher.
+  // The English reply from the AI teacher.
   // 
   // example:
   // 
   // Thanks, Lily. Do you like meat, Lily?
   EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
-  // Indicates whether the dialogue is finished.
+  // Indicates whether the conversation is completed.
   // 
   // example:
   // 
   // true
   IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-  // Indicates whether the user\\"s response is on topic.
+  // Indicates whether the response is on topic.
   // 
   // example:
   // 
   // true
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
-  // The index of the current question.
+  // The index of the current question being answered.
   // 
   // example:
   // 

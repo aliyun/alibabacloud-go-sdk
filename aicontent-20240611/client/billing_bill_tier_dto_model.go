@@ -18,14 +18,20 @@ type iBillingBillTierDTO interface {
 }
 
 type BillingBillTierDTO struct {
+	// The dimension key-value mapping, where the key is the dimension column name and the value is the display value.
+	//
 	// example:
 	//
 	// {"context_tier": "0-32k"}
 	DimValues *string `json:"dimValues,omitempty" xml:"dimValues,omitempty"`
+	// The cost of the bucket.
+	//
 	// example:
 	//
 	// 0.05
 	PayableAmount *float32 `json:"payableAmount,omitempty" xml:"payableAmount,omitempty"`
+	// The usage value mapping, where the key is the metric name and the value is the numerical value.
+	//
 	// example:
 	//
 	// {"input_tokens": 1000, "output_tokens": 500}

@@ -18,17 +18,23 @@ type iModelGroupClientKeyItemDTO interface {
 }
 
 type ModelGroupClientKeyItemDTO struct {
+	// The numeric ID of the API key.
+	//
 	// example:
 	//
 	// 501
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The masked preview of the API key.
+	//
 	// example:
 	//
 	// sk-ab****yz
 	KeyPreview *string `json:"keyPreview,omitempty" xml:"keyPreview,omitempty"`
+	// The authorization name (derived from the API key name).
+	//
 	// example:
 	//
-	// Default Key
+	// Default key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

@@ -20,21 +20,29 @@ type iConversationUpdateCmd interface {
 }
 
 type ConversationUpdateCmd struct {
+	// The conversation data in JSON format, containing message records for each model.
+	//
 	// example:
 	//
-	// {"messages":[{"role":"user","content":"你好"}]}
+	// {"messages":[{"role":"user","content":"Hello"}]}
 	ChatData *string `json:"chatData,omitempty" xml:"chatData,omitempty"`
+	// The number of messages.
+	//
 	// example:
 	//
 	// 10
 	MessageCount *int32 `json:"messageCount,omitempty" xml:"messageCount,omitempty"`
+	// The list of model IDs as a JSON array string.
+	//
 	// example:
 	//
 	// [1,2,3]
 	ModelIds *string `json:"modelIds,omitempty" xml:"modelIds,omitempty"`
+	// The conversation title.
+	//
 	// example:
 	//
-	// 我的对话
+	// My conversation
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

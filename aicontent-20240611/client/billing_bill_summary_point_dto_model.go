@@ -16,10 +16,14 @@ type iBillingBillSummaryPointDTO interface {
 }
 
 type BillingBillSummaryPointDTO struct {
+	// The timestamp in UNIX seconds.
+	//
 	// example:
 	//
 	// 1700000000
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The total cost at that point in time.
+	//
 	// example:
 	//
 	// 1.23
