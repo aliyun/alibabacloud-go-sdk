@@ -22,24 +22,39 @@ type iBindXBResponseBody interface {
 }
 
 type BindXBResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
+	// The response status code. Valid values:
+	//
+	// - 0000: Success.
+	//
+	// Other values indicate failure.
 	//
 	// example:
 	//
 	// 0000
-	Code *string                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *BindXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The work number binding result.
 	//
 	// example:
 	//
-	// 成功
+	// {"AuthId":"4353453456","TelX":"18640577897"}
+	Data *BindXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -110,13 +125,13 @@ func (s *BindXBResponseBody) Validate() error {
 }
 
 type BindXBResponseBodyData struct {
-	// 工作号关系绑定的唯一标识
+	// The unique identifier of the work number binding.
 	//
 	// example:
 	//
 	// 4353453456
 	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	// X号码
+	// The work number X.
 	//
 	// example:
 	//

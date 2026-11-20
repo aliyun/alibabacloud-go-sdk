@@ -32,30 +32,34 @@ type iQueryAxnBindFixedLineRequest interface {
 }
 
 type QueryAxnBindFixedLineRequest struct {
-	// 号池id。
+	// The number pool ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// alitest
+	// FC10000016848****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息请求唯一标识
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 123*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A号码，queryType=1时，必传
+	// The A/B phone number. This parameter is required when QueryType is set to 1.
 	//
 	// example:
 	//
-	// 15500001111
+	// 138****6534
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// 查询类型 0：根据绑定id查询 1：根据A号码查询 2：根据X查询
+	// The query type. Valid values:
+	//
+	// - 0: query by binding ID.
+	//
+	// - 1: query by X and A/B phone number.
 	//
 	// This parameter is required.
 	//
@@ -65,25 +69,25 @@ type QueryAxnBindFixedLineRequest struct {
 	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 绑定id queryType=0时，必传
+	// The binding ID. This parameter is required when QueryType is set to 1.
 	//
 	// example:
 	//
-	// GHX0534X202504221531579290029-2-1-aliaxn
+	// A203**************
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// 隐私号码
+	// The X phone number. This parameter is required when QueryType is set to 1.
 	//
 	// example:
 	//
-	// 05718950
+	// 0571******23
 	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
-	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// The business timestamp. Format: yyyyMMddHHmmssSSS. The time is in UTC+8, in 24-hour format, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20250421141723098
+	// 20161114143116123
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 

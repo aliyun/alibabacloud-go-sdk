@@ -28,15 +28,23 @@ type iUnbindSubs700Request interface {
 }
 
 type UnbindSubs700Request struct {
+	// Optional. The Industrial Internet identification code, which has a one-to-one mapping with the OrderID. The code supports characters such as periods (.) and forward slashes (/) to separate code domains. The code must not contain non-printable characters, such as spaces or line feeds. This field is required when the service consumer generates the Industrial Internet identification code.
+	//
 	// example:
 	//
 	// 700.100.1/12345678
 	IndustrialId *string `json:"IndustrialId,omitempty" xml:"IndustrialId,omitempty"`
+	// The order ID. This parameter is required in practice. Encrypt the order ID for reporting to the regulatory platform.
+	//
 	// example:
 	//
 	// 12345678
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number pool key.
+	//
+	// To obtain the **number pool key**, go to the [Number pool management](https://dyplsnext.console.aliyun.com/number-pool) page in the Phone Number Privacy Protection console.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45,12 +53,16 @@ type UnbindSubs700Request struct {
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The number binding ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100000****
 	SubsId *int64 `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The intermediate number X. If the service consumer does not specify number X, the application platform assigns a number from the number pool as number X.
+	//
 	// This parameter is required.
 	//
 	// example:

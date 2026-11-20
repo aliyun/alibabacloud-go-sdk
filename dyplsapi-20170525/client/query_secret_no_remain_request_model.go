@@ -42,7 +42,7 @@ type QuerySecretNoRemainRequest struct {
 	//
 	// example:
 	//
-	// hangzhou
+	// 杭州
 	City                 *string `json:"City,omitempty" xml:"City,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

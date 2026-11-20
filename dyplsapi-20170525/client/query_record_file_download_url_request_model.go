@@ -32,7 +32,7 @@ type QueryRecordFileDownloadUrlRequest struct {
 	//
 	// example:
 	//
-	// abcedf1234
+	// 416*********bd50
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The call initiation time in the call record. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At*	- on the **Call Record Query*	- page, or view the call_time field in the Call Detail Record (CDR) receipt.
 	//
@@ -47,7 +47,7 @@ type QueryRecordFileDownloadUrlRequest struct {
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	// The product type. Valid values:
 	//

@@ -34,7 +34,7 @@ type QueryPhoneNoAByTrackNoResponseBody struct {
 	//
 	// example:
 	//
-	// OK
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The information returned after the phone numbers were bound.
 	Module []*QueryPhoneNoAByTrackNoResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`

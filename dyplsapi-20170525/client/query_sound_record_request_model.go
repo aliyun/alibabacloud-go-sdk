@@ -26,7 +26,7 @@ type iQuerySoundRecordRequest interface {
 }
 
 type QuerySoundRecordRequest struct {
-	// 本次呼叫唯一id
+	// The call ID, which uniquely identifies a call.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type QuerySoundRecordRequest struct {
 	//
 	// ac445343254
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// 客户uid
+	// The customer UID. This parameter is automatically retrieved by the system and does not need to be specified.
 	//
 	// example:
 	//
 	// -
 	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
-	// 号码池key
+	// The number pool key.
 	//
 	// This parameter is required.
 	//
@@ -49,7 +49,7 @@ type QuerySoundRecordRequest struct {
 	// FC5**********************a1a
 	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	// The request deduplication ID. The maximum length is 20 characters. Ensure the atomicity of the request ID.
 	//
 	// This parameter is required.
 	//

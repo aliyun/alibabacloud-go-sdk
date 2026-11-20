@@ -52,10 +52,32 @@ type iBindAxb700Request interface {
 }
 
 type BindAxb700Request struct {
+	// Optional. The ASR model ID. Valid values:
+	//
+	// - General-Phone-Mandarin model ID: 7ee372834d2f4cc7ac0d0ab2d0ae1aac
+	//
+	// - General-Phone-Cantonese model ID: 9b4afe3d224e4fa3bf963697113e2f77
+	//
+	// - General-Phone-Regional Accent model ID: 3655a6cb94764145a1f9a38a3c3b3b4b.
+	//
 	// example:
 	//
 	// 7ee372834d2f4cc7ac0d0ab2d0ae1aac
 	AsrModelId *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	// The audio prompt encoding.
+	//
+	// - ACallX_Apre: The audio prompt encoding played to A before the call is connected when A calls X.
+	//
+	// - ACallX_Ain: The audio prompt encoding played to A after the call is connected when A calls X.
+	//
+	// - ACallX_Bin: The audio prompt encoding played to B after the call is connected when A calls X.
+	//
+	// - BCallX_Bpre: The audio prompt encoding played to B before the call is connected when B calls X.
+	//
+	// - BCallX_Ain: The audio prompt encoding played to A after the call is connected when B calls X.
+	//
+	// - BCallX_Bin: The audio prompt encoding played to B after the call is connected when B calls X.
+	//
 	// example:
 	//
 	// {
@@ -64,14 +86,38 @@ type BindAxb700Request struct {
 	//
 	// }
 	Audio *string `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// The one-way call restriction logic. Valid values:
+	//
+	// - CONTROL_AX_DISABLE: Number A cannot call number X.
+	//
+	// - CONTROL_BX_DISABLE: Number B cannot call number X.
+	//
 	// example:
 	//
 	// CONTROL_AX_DISABLE
 	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	// The sequential ringing duration. Unit: seconds. Valid values: 5 to 20.
+	//
 	// example:
 	//
 	// 10
 	CallTimeout *int64 `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
+	// Optional. The DTMF key configuration for 700AXB number binding. The following items can be configured:
+	//
+	// - endCallIvrPhoneNo: The audio playback target, A or B.
+	//
+	// - waitingDtmfTime: The maximum wait time after the first audio file is played. Maximum value: 30 seconds.
+	//
+	// - maxLoop dtmf: The maximum number of times the first audio file is replayed when a key press does not match. Maximum value: 5.
+	//
+	// - step1File: The name of the first audio file.
+	//
+	// - step2File: The name of the second audio file.
+	//
+	// - validKey: The valid key values, such as 1,2. Only two valid key values can be configured, separated by commas (,).
+	//
+	// - waitingEndCall: The carrier hang-up wait time. Maximum value: 10 seconds.
+	//
 	// example:
 	//
 	// {
@@ -92,61 +138,121 @@ type BindAxb700Request struct {
 	//
 	// }
 	DtmfConfig *string `json:"DtmfConfig,omitempty" xml:"DtmfConfig,omitempty"`
+	// The expiration time of the number binding.
+	//
+	// > - The expiration time must be at least 1 minute later than the current binding time, accurate to the second.
+	//
+	// >- You can manually unbind the number at any time before the binding expires.
+	//
+	// >- If you unbind a number that is in an active call, the current call is not affected.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-09-05 12:00:00
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The industrial Internet identifier code, which has a one-to-one mapping with OrderId.
+	//
+	// The code supports characters such as "." and "/" as domain separators. The code must not contain non-printable characters such as spaces or line breaks.
+	//
+	// This field is required when the caller generates the industrial Internet identifier code independently.
+	//
+	// >
+	//
+	// > - Either OrderId or IndustrialId is required depending on the business scenario.
+	//
 	// example:
 	//
 	// 700.100.1/12345678
 	IndustrialId *string `json:"IndustrialId,omitempty" xml:"IndustrialId,omitempty"`
+	// Specifies whether to enable the ASR service. Valid values:
+	//
+	// - false: Disable (default).
+	//
+	// - true: Enable.
+	//
 	// example:
 	//
 	// false
 	NeedAsr *bool `json:"NeedAsr,omitempty" xml:"NeedAsr,omitempty"`
+	// Specifies whether call recording files are required for all calls made through this number binding. Valid values:
+	//
+	// - true: Enable recording.
+	//
+	// - false: Disable recording (default).
+	//
 	// example:
 	//
 	// true
 	NeedRecord *bool `json:"NeedRecord,omitempty" xml:"NeedRecord,omitempty"`
+	// The business order code.
+	//
+	// - This code has a one-to-one mapping with the actual business order and must be unique.
+	//
+	// - The code supports characters such as "." and "/" as domain separators. The code must not contain non-printable characters such as spaces or line breaks.
+	//
+	// - This field is required when the caller submits a business order code and the platform generates an industrial Internet identifier code.
+	//
+	// >
+	//
+	// > - Either OrderId or IndustrialId is required depending on the business scenario.
+	//
 	// example:
 	//
 	// 12345678
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The external business extension field. This parameter is returned in the call record receipt message.
+	//
 	// example:
 	//
 	// abcdef
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The external business ID.
+	//
 	// example:
 	//
 	// abcdefgh
 	OutOrderId *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the China 700 number pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FC2258****
 	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The recording file format. Valid values: mp3 and wav.
+	//
 	// example:
 	//
 	// mp3
 	RecType              *string `json:"RecType,omitempty" xml:"RecType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The phone number of user A.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 139****0000
 	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// The phone number of user B.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 136****0000
 	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// Optional. The intermediate number X.
+	//
+	// > - If the caller does not specify an X number,
+	//
+	// > - the platform assigns a number from the number pool as the X number.
+	//
 	// example:
 	//
 	// 700********0000

@@ -22,24 +22,39 @@ type iCreateSmsSignResponseBody interface {
 }
 
 type CreateSmsSignResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
+	// The returned status code. Valid values:
+	//
+	// - 0000: The request is successful.
+	//
+	// - Other values: The request failed.
 	//
 	// example:
 	//
 	// 0000
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *CreateSmsSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The text message signature creation result.
 	//
 	// example:
 	//
-	// 成功
+	// {"CalledNoSign":"sign23343466"}
+	Data *CreateSmsSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -110,7 +125,7 @@ func (s *CreateSmsSignResponseBody) Validate() error {
 }
 
 type CreateSmsSignResponseBodyData struct {
-	// 短信接收者号码签名串(加到短信内容中供解析真实被叫号码)
+	// The signature string of the recipient number. Append this string to the text message content to parse the actual called number.
 	//
 	// example:
 	//

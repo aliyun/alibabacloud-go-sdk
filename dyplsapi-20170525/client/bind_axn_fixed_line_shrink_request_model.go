@@ -48,35 +48,43 @@ type iBindAxnFixedLineShrinkRequest interface {
 }
 
 type BindAxnFixedLineShrinkRequest struct {
-	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	// The audio prompt codes for the caller side. The value must include codes for three scenarios. Specify the codes in the order of B->X, A->X, and other numbers->X, separated by commas.
+	//
+	// > For example, 1,2,3 indicates that the audio prompt code for B->X is 1, the code for A->X is 2, and the code for other numbers->X is 3.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10001,10002,10003
+	// 1,2,3
 	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
-	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	// The audio prompt codes for the callee side. The value must include codes for two scenarios. Specify the codes in the order of A as the callee and other numbers as the callee, separated by commas.
+	//
+	// > For example, 1,2 indicates that the audio prompt code when number A answers as the callee is 1, and the code when other numbers answer as the callee is 2.
 	//
 	// example:
 	//
-	// 10001,10002
+	// 1,2
 	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
-	// 号池ID。
+	// The ID of the number pool.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// alitest
+	// FC10000016848****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+	// The area code. You can specify the location of number X (specified city -> provincial capital -> national routing). If you do not specify the location, a number is randomly assigned nationwide.
 	//
 	// example:
 	//
-	// 10
+	// 0571
 	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
-	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	// The binding type. Valid values:
+	//
+	// - mode101: The customer specifies number X.
+	//
+	// - mode102: The platform assigns number X.
 	//
 	// This parameter is required.
 	//
@@ -84,74 +92,89 @@ type BindAxnFixedLineShrinkRequest struct {
 	//
 	// mode101
 	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
-	// 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	// The expiration time. Unit: seconds. Valid values:
+	//
+	// - 0: The binding never expires.
+	//
+	// - Other values: If you specify another value, such as 60, the binding is valid for 60 seconds after number X is successfully assigned. After 60 seconds, the binding is automatically unbound.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 60
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// 扩展参数
+	// The extended parameters.
 	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// 消息请求唯一标识
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12345dkwkd99d
+	// 123*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 接入商自有字段，最大250字符长度
+	// The external business extension field. This parameter is returned in the call record receipt message. The value cannot exceed 100 characters in length.
 	//
 	// example:
 	//
-	// 12444
+	// 19394
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	// The binding time. The format is yyyyMMddHHmmss. The time is in UTC+8 and uses the 24-hour clock.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20250421141723098
+	// 20161114143116
 	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
-	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+	// The audio prompt codes for the caller side after the call is connected. The value must include codes for two scenarios. Specify the codes in the order of A as the callee and other numbers as the callee, separated by commas.
+	//
+	// > For example, 1,2 indicates that the audio prompt code for the caller side when number A is the callee is 1, and the code for the caller side when other numbers are the callee is 2.
 	//
 	// example:
 	//
-	// 10001,10002
+	// 1,2
 	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
-	// A号码
+	// Number A of the fixed-line AXN privacy number.
+	//
+	//
+	// > - Number A can be a mobile phone number or a fixed-line number. A fixed-line number must include the area code, and no hyphen is required between the area code and the number.
+	//
+	// > - If your business requires modifying a bound number, you can call the [UpdateAxnBindFixedLine](https://api.aliyun.com/document/Dyplsapi/2017-05-25/UpdateAxnBindFixedLine) operation to modify it.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 15500001111
+	// Mobile phone number: 182****2371
+	//
+	// Fixed-line number: 0571******36
 	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
-	// N号码
+	// Number N of the fixed-line AXN privacy number.
 	//
 	// example:
 	//
-	// 15500002222
+	// 155****2222
 	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
-	// X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数
+	// Number X of the fixed-line AXN privacy number. Number X is the privacy number that you have purchased in the console.
+	//
+	// > This parameter is required in the mode where the customer specifies number X (that is, the BindType parameter is set to mode101).
 	//
 	// example:
 	//
-	// 0571409312
+	// 0571******23
 	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
-	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// The business timestamp. The format is yyyyMMddHHmmssSSS. The time is in UTC+8 and uses the 24-hour clock, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20250421141723098
+	// 20161114143116123
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 

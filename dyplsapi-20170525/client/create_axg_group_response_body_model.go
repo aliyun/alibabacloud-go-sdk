@@ -34,7 +34,7 @@ type CreateAxgGroupResponseBody struct {
 	//
 	// example:
 	//
-	// 2000000000001
+	// 200001234****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The returned message.
 	//

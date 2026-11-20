@@ -22,19 +22,23 @@ type iDeleteSecretBlacklistRequest interface {
 }
 
 type DeleteSecretBlacklistRequest struct {
-	// The phone numbers in the blacklist. A point-to-point blacklist has a pair of numbers separated by a colon (":"). A number pool blacklist or a platform blacklist has only one single number.
+	// The blacklisted number. The value type is determined by the **BlackType*	- parameter:
+	//
+	// - **Point-to-point blacklist**: a pair of numbers separated by a colon (:)
+	//
+	// - **Number pool blacklist**: a single number
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 18252***383:18252***483
+	// 1825****383:1825****483
 	BlackNo *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
-	// The blacklist type. Valid values:
+	// The type of the blacklist. Valid values:
 	//
-	// 	- **POINT_TO_POINT_BLACK**: point-to-point blacklist
+	// - **POINT_TO_POINT_BLACK**: point-to-point blacklist
 	//
-	// 	- **PARTNER_GLOBAL_NUMBER_BLACK**: number pool blacklist
+	// - **PARTNER_GLOBAL_NUMBER_BLACK**: number pool blacklist
 	//
 	// This parameter is required.
 	//
@@ -42,7 +46,9 @@ type DeleteSecretBlacklistRequest struct {
 	//
 	// POINT_TO_POINT_BLACK
 	BlackType *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
-	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	// The key of the number pool.
+	//
+	// You can obtain the **number pool key*	- on the [Number Pool Management](https://dyplsnext.console.aliyun.com/number-pool) page in the Phone Number Privacy Protection console.
 	//
 	// This parameter is required.
 	//
@@ -50,27 +56,19 @@ type DeleteSecretBlacklistRequest struct {
 	//
 	// FC1232****
 	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	// The remarks for the blacklist.
+	// The remark for the blacklist.
 	//
 	// example:
 	//
-	// fragile
+	// Blacklist remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The control on the call direction.
+	// The call direction control. Valid values:
 	//
-	// 	- **PHONEA_REJECT**: The first phone number in the blacklist can be used to call the second phone number, but the second phone number in the blacklist cannot be used to call the first phone number.
+	// - **PHONEA_REJECT**: The first number in BlackNo can call the second number, but the second number cannot call the first number.
 	//
-	// 	- **PHONEB_REJECT**: The first phone number in the blacklist cannot be used to call the second phone number, but the second phone number in the blacklist can be used to call the first phone number.
+	// - **PHONEB_REJECT**: The first number in BlackNo cannot call the second number, but the second number can call the first number.
 	//
-	// 	- If this parameter is not specified, the two phone numbers in the blacklist cannot be used to call each other.
-	//
-	// Valid values:
-	//
-	// 	- DUPLEX_REJECT
-	//
-	// 	- PHONEA_REJECT
-	//
-	// 	- PHONEB_REJECT
+	// - **Leave empty**: The two numbers in BlackNo cannot call each other.
 	//
 	// example:
 	//

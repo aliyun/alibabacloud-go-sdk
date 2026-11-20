@@ -20,17 +20,17 @@ type iBindAxnResponseBody interface {
 }
 
 type BindAxnResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// 	- A value of OK indicates that the request is successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	// 	- For other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type BindAxnResponseBody struct {
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information returned after the phone numbers were bound.
+	// The struct returned after the number is successfully bound.
 	SecretBindDTO *BindAxnResponseBodySecretBindDTO `json:"SecretBindDTO,omitempty" xml:"SecretBindDTO,omitempty" type:"Struct"`
 }
 
@@ -100,21 +100,21 @@ func (s *BindAxnResponseBody) Validate() error {
 }
 
 type BindAxnResponseBodySecretBindDTO struct {
-	// The extension of the phone number.
+	// The extension number.
 	//
-	// >  The BindAxn operation does not involve an extension. Ignore this parameter.
+	// > The BindAxn operation does not involve extension numbers. Ignore this parameter.
 	//
 	// example:
 	//
 	// 130
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The private number, that is, phone number X.
+	// The privacy number, which is Number X.
 	//
 	// example:
 	//
-	// 139****0000
+	// 139****1111
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	// The binding ID.
+	// The ID of the binding relationship.
 	//
 	// example:
 	//

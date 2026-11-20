@@ -106,13 +106,13 @@ type BindAxgResponseBodySecretBindDTO struct {
 	//
 	// example:
 	//
-	// 139****0000
+	// 130
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The private number, that is, phone number X.
 	//
 	// example:
 	//
-	// 139****0000
+	// 139****1111
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 	// The binding ID.
 	//

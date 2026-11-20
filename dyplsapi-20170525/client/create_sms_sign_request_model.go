@@ -28,7 +28,7 @@ type iCreateSmsSignRequest interface {
 }
 
 type CreateSmsSignRequest struct {
-	// 收信人号码
+	// The recipient number.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type CreateSmsSignRequest struct {
 	//
 	// 178****3614
 	CalledNo *string `json:"CalledNo,omitempty" xml:"CalledNo,omitempty"`
-	// 客户uid
+	// The customer UID. This parameter is automatically obtained by the system and does not need to be specified.
 	//
 	// example:
 	//
 	// -
 	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
-	// 发信人号码
+	// The sender number.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateSmsSignRequest struct {
 	//
 	// 150****6539
 	CallingNo *string `json:"CallingNo,omitempty" xml:"CallingNo,omitempty"`
-	// 号码池key
+	// The number pool key.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type CreateSmsSignRequest struct {
 	// FC5**********************a1a
 	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	// The request deduplication ID. The maximum length is 20 characters. Ensure the atomicity of the request ID.
 	//
 	// This parameter is required.
 	//

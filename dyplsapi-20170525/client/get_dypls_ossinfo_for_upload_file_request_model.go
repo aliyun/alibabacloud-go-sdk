@@ -20,6 +20,8 @@ type iGetDyplsOSSInfoForUploadFileRequest interface {
 }
 
 type GetDyplsOSSInfoForUploadFileRequest struct {
+	// The business type. Default Value: phone_card.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -29,7 +29,7 @@ type ReleaseSecretNoRequest struct {
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -41,7 +41,7 @@ type ReleaseSecretNoRequest struct {
 	//
 	// example:
 	//
-	// 130
+	// 139****0000
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 }
 

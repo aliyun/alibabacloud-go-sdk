@@ -33,7 +33,7 @@ type UnbindSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	// The product type. Fixed value: **AXB_170**.
 	//
@@ -55,7 +55,7 @@ type UnbindSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// 1390000****
+	// 139****1111
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 	// The binding ID.
 	//

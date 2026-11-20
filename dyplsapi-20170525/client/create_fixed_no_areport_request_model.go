@@ -42,7 +42,7 @@ type iCreateFixedNoAReportRequest interface {
 }
 
 type CreateFixedNoAReportRequest struct {
-	// 所属a号码组id
+	// ID of the group to which Number A belongs. On the [Qualification Management](https://dyplsnext.console.aliyun.com/qualification) Page, go to the A-number whitelist section of the relevant qualification and click View Details.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 12
 	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
-	// 姓名
+	// Name.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,19 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 赵**
 	CustName *string `json:"CustName,omitempty" xml:"CustName,omitempty"`
-	// 经办人/法人电话
+	// Phone number of the legal representative or agent.
+	//
+	// >If this qualification includes a Mobile X number, this field is Required; otherwise, the Review will Fail.
 	//
 	// example:
 	//
 	// 130*****8888
 	CustPhoneNo *string `json:"CustPhoneNo,omitempty" xml:"CustPhoneNo,omitempty"`
-	// 固话客户类型 1:法人,2:经办人
+	// Fixed-line customer type. Valid values:
+	//
+	// - 1: Legal representative.
+	//
+	// - 2: Agent.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +78,7 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 1
 	CustType *int64 `json:"CustType,omitempty" xml:"CustType,omitempty"`
-	// 证件号码
+	// Certificate number.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +86,7 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 370*********
 	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	// 证件类型 填写1表示身份证
+	// Certificate type. Enter 1 for ID card.
 	//
 	// This parameter is required.
 	//
@@ -88,13 +94,13 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 1
 	DocumentType *int64 `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
-	// 固话申请时服务大厅工单号
+	// Ticket number from the offline service hall when applying for a fixed-line number.
 	//
 	// example:
 	//
 	// 45***12
 	FixedLineWorkId *string `json:"FixedLineWorkId,omitempty" xml:"FixedLineWorkId,omitempty"`
-	// a号码(固话)
+	// Number A (fixed-line number).
 	//
 	// This parameter is required.
 	//
@@ -102,7 +108,7 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 89*****1234
 	FixedNoA *string `json:"FixedNoA,omitempty" xml:"FixedNoA,omitempty"`
-	// 正面人像照片 OSS 路径地址
+	// OSS path of the front-facing portrait photo.
 	//
 	// This parameter is required.
 	//
@@ -110,20 +116,20 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 123456/test1719383196033.jpg
 	IdCardAlivePhoto *string `json:"IdCardAlivePhoto,omitempty" xml:"IdCardAlivePhoto,omitempty"`
-	// 身份证反面照片oss路径地址
+	// OSS path of the photo of the back (portrait side) of the ID card.
 	//
 	// example:
 	//
 	// 123456/test1719383196032.jpg
 	IdCardBackPhoto *string `json:"IdCardBackPhoto,omitempty" xml:"IdCardBackPhoto,omitempty"`
-	// 身份证正面照片oss路径地址
+	// OSS path of the photo of the front (national emblem side) of the ID card.
 	//
 	// example:
 	//
 	// 123456/test1719383196031.jpg
 	IdCardFrontPhoto *string `json:"IdCardFrontPhoto,omitempty" xml:"IdCardFrontPhoto,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 备注（客户自己的业务备注，可编辑）
+	// Remarks (user-defined business notes).
 	//
 	// example:
 	//

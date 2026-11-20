@@ -22,7 +22,7 @@ type iQuerySecretAPhoneNoToCustRequest interface {
 }
 
 type QuerySecretAPhoneNoToCustRequest struct {
-	// 号码组ID
+	// Number group ID.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type QuerySecretAPhoneNoToCustRequest struct {
 	// 58
 	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
 	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A号码
+	// A number.
 	//
 	// This parameter is required.
 	//

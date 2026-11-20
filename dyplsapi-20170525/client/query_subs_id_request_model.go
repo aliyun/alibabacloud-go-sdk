@@ -29,7 +29,7 @@ type QuerySubsIdRequest struct {
 	//
 	// example:
 	//
-	// 1390000****
+	// 139****1111
 	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 	// The key of the phone number pool.
 	//
@@ -37,7 +37,7 @@ type QuerySubsIdRequest struct {
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

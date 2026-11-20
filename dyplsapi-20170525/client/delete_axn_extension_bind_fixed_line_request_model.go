@@ -26,7 +26,7 @@ type iDeleteAxnExtensionBindFixedLineRequest interface {
 }
 
 type DeleteAxnExtensionBindFixedLineRequest struct {
-	// 号池ID
+	// The business ID identifier assigned by Alibaba Cloud to the customer.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteAxnExtensionBindFixedLineRequest struct {
 	//
 	// alitest
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息请求唯一标识
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type DeleteAxnExtensionBindFixedLineRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 绑定id
+	// The binding ID.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type DeleteAxnExtensionBindFixedLineRequest struct {
 	//
 	// GHX0534X202504221531579290029
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// Format: yyyyMMddHHmmssSSS. The time uses Beijing time in 24-hour format, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//

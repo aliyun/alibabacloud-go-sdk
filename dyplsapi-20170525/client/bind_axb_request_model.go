@@ -88,7 +88,7 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 10秒
 	CallTimeout *int32 `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
 	// Specifies the dual tone multiple frequency (DTMF) key configuration in the AXB binding. The following content can be configured:
 	//
@@ -134,7 +134,7 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// hangzhou
+	// 北京
 	ExpectCity *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
 	// The expiration time of the AXB binding.
 	//
@@ -154,7 +154,7 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// true
+	// false
 	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
 	// The extension field for the external business. This parameter is returned in a call record receipt.
 	//
@@ -185,7 +185,7 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// 139****0000
+	// 136****0000
 	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
 	// Phone number X in the AXB binding.
 	//
@@ -195,7 +195,7 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// 139****0000
+	// 171****1893
 	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 	// The key of the phone number pool.
 	//
@@ -203,7 +203,7 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// FC5526*****
+	// FC10000016848****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -219,7 +219,13 @@ type BindAxbRequest struct {
 	//
 	// example:
 	//
-	// {"AXBRing_B":"1000****1","AXBRing_A":"1000****1"}
+	// {
+	//
+	//       "AXBRing_B": "1000****1",
+	//
+	//       "AXBRing_A": "1000****1"
+	//
+	// }
 	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 

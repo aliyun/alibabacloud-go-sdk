@@ -32,7 +32,7 @@ type AddAxnTrackNoResponseBody struct {
 	//
 	// example:
 	//
-	// OK
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

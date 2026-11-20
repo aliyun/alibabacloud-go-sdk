@@ -20,17 +20,17 @@ type iQuerySecretNoDetailResponseBody interface {
 }
 
 type QuerySecretNoDetailResponseBody struct {
-	// The response code.
+	// The request status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
-	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QuerySecretNoDetailResponseBody struct {
 	//
 	// 066E6E47-04CB-4774-A976-4F73CB76D4A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The attributes of the phone number.
+	// The number properties.
 	SecretNoInfoDTO *QuerySecretNoDetailResponseBodySecretNoInfoDTO `json:"SecretNoInfoDTO,omitempty" xml:"SecretNoInfoDTO,omitempty" type:"Struct"`
 }
 
@@ -100,11 +100,11 @@ func (s *QuerySecretNoDetailResponseBody) Validate() error {
 }
 
 type QuerySecretNoDetailResponseBodySecretNoInfoDTO struct {
-	// The verification status of the phone number. Valid values:
+	// The number verification status. Valid values:
 	//
-	// 	- **0**: The phone number is not verified.
+	// - **0**: Unverified.
 	//
-	// 	- **1**: The phone number is verified.
+	// - **1**: Verified.
 	//
 	// example:
 	//
@@ -114,41 +114,41 @@ type QuerySecretNoDetailResponseBodySecretNoInfoDTO struct {
 	//
 	// example:
 	//
-	// chengdu
+	// Xi\\"an
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The province.
 	//
 	// example:
 	//
-	// sichuan
+	// Shaanxi
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The time when the phone number was purchased.
+	// The purchase time of the number, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2021-12-03 15:19:27
 	PurchaseTime *string `json:"PurchaseTime,omitempty" xml:"PurchaseTime,omitempty"`
-	// The status of the phone number. Valid values:
+	// The number status. Valid values:
 	//
-	// 	- **0**: The phone number is not bound to other phone numbers.
+	// - **0**: Unbound.
 	//
-	// 	- **1**: The phone number is bound to other phone numbers.
+	// - **1**: Bound.
 	//
-	// 	- **2**: The phone number is locked.
+	// - **2**: Locked.
 	//
-	// 	- **3**: The phone number is frozen.
+	// - **3**: Frozen.
 	//
 	// example:
 	//
 	// 0
 	SecretStatus *int64 `json:"SecretStatus,omitempty" xml:"SecretStatus,omitempty"`
-	// The carrier to which the phone number belongs. Valid values:
+	// The carrier. Valid values:
 	//
-	// 	- **1**: China Mobile
+	// - **1**: China Mobile
 	//
-	// 	- **2**: China Unicom
+	// - **2**: China Unicom
 	//
-	// 	- **3**: China Telecom
+	// - **3**: China Telecom
 	//
 	// example:
 	//

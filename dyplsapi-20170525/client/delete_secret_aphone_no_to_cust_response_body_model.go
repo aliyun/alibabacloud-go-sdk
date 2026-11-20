@@ -24,35 +24,45 @@ type iDeleteSecretAPhoneNoToCustResponseBody interface {
 }
 
 type DeleteSecretAPhoneNoToCustResponseBody struct {
+	// Details of denied access.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 请求状态码
+	// The request status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 删除是否成功
+	// Indicates whether the deletion succeeded. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 失败错误提示
+	// Error message for failure.
 	//
 	// example:
 	//
 	// 号码组不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回id
+	// The returned ID.
 	//
 	// example:
 	//
 	// 1D73E648-0978-18A5-B089-3BB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//

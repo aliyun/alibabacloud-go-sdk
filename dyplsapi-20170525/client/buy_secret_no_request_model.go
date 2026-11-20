@@ -40,7 +40,7 @@ type BuySecretNoRequest struct {
 	//
 	// example:
 	//
-	// hangzhou
+	// 杭州
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// Specifies whether to add the phone number to the pool of numbers that will be displayed during calls.
 	//

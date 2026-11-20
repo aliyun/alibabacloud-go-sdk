@@ -28,7 +28,7 @@ type CreatePickUpWaybillPreQueryResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type CreatePickUpWaybillPreQueryResponseBodyData struct {
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about whether the courier company can accept the order.
+	// The list of information about whether courier companies are available for placing orders.
 	CpTimeSelectList []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList `json:"CpTimeSelectList,omitempty" xml:"CpTimeSelectList,omitempty" type:"Repeated"`
 	// The error code.
 	//
 	// example:
 	//
-	// Success
+	// None
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// none
+	// None
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The response content.
 	//
@@ -122,7 +122,7 @@ type CreatePickUpWaybillPreQueryResponseBodyData struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -206,15 +206,15 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyData) Validate() error {
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList struct {
-	// The available time for the scheduled pickup. If the current courier company cannot accept the scheduled pickup, this field is left empty.
+	// The available time options for scheduled orders. If the courier company does not support scheduled orders, this field is empty.
 	AppointTimes []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes `json:"AppointTimes,omitempty" xml:"AppointTimes,omitempty" type:"Repeated"`
-	// The estimated price. Unit: CNY. The value is accurate to two decimal places. The value of this parameter is displayed if an estimated weight is specified.
+	// The estimated price, in CNY, rounded to two decimal places. This field has a value only when the estimated weight is specified in the request parameters.
 	//
 	// example:
 	//
 	// 12.50
 	PrePrice *string `json:"PrePrice,omitempty" xml:"PrePrice,omitempty"`
-	// The information about whether the real-time order can be selected.
+	// The available options for real-time orders.
 	RealTime *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime `json:"RealTime,omitempty" xml:"RealTime,omitempty" type:"Struct"`
 }
 
@@ -272,7 +272,7 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList) Validate()
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes struct {
-	// The date in the YYYY-MM-DD format.
+	// The date string in YYYY-MM-DD format.
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes str
 	//
 	// true
 	DateSelectable *bool `json:"DateSelectable,omitempty" xml:"DateSelectable,omitempty"`
-	// The time range for the scheduled pickup for this date.
+	// The list of available time slots for the day.
 	TimeList []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList `json:"TimeList,omitempty" xml:"TimeList,omitempty" type:"Repeated"`
 }
 
@@ -337,25 +337,25 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList struct {
-	// The end of the time range.
+	// The end time of the time slot, in HH:mm:ss format.
 	//
 	// example:
 	//
 	// 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The tip displayed when the scheduled pickup is not available.
+	// The tip message displayed when the option is not selectable.
 	//
 	// example:
 	//
-	// Appointment Full
+	// Fully booked
 	SelectDisableTip *string `json:"SelectDisableTip,omitempty" xml:"SelectDisableTip,omitempty"`
-	// Indicates whether the time range can be selected for the scheduled pickup.
+	// Indicates whether the scheduled time slot is selectable.
 	//
 	// example:
 	//
 	// true
 	Selectable *bool `json:"Selectable,omitempty" xml:"Selectable,omitempty"`
-	// The beginning of the time range.
+	// The start time of the time slot, in HH:mm:ss format.
 	//
 	// example:
 	//
@@ -412,19 +412,19 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime struct {
-	// The name of the real-time order type.
+	// The service type name for real-time orders.
 	//
 	// example:
 	//
-	// Aliyun
+	// 2-hour pickup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The tip displayed when the real-time order cannot be placed.
+	// The tip message displayed when the option is not selectable.
 	//
 	// example:
 	//
-	// Exceeding the real-time ordering time range.
+	// The real-time order placement time range has been exceeded
 	SelectDisableTip *string `json:"SelectDisableTip,omitempty" xml:"SelectDisableTip,omitempty"`
-	// Indicates whether the real-time order can be placed after the deadline for placing a real-time order is reached.
+	// Indicates whether a real-time order can still be placed after the real-time order placement time has passed.
 	//
 	// example:
 	//

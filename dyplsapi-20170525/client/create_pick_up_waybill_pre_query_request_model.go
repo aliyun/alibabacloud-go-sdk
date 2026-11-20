@@ -24,17 +24,17 @@ type iCreatePickUpWaybillPreQueryRequest interface {
 }
 
 type CreatePickUpWaybillPreQueryRequest struct {
-	// The consignee information.
+	// The recipient information.
 	//
 	// This parameter is required.
 	ConsigneeInfo *CreatePickUpWaybillPreQueryRequestConsigneeInfo `json:"ConsigneeInfo,omitempty" xml:"ConsigneeInfo,omitempty" type:"Struct"`
-	// The code of the courier company. If no courier company is specified, the system allocates a courier company.
+	// The courier company code. If not specified, the system automatically assigns a courier company.
 	//
 	// example:
 	//
 	// YTO
 	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	// The identifier of the external channel source. It cannot contain underscores.
+	// The external channel source identifier. The value cannot contain underscores. The value is agreed upon with the system during integration.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type CreatePickUpWaybillPreQueryRequest struct {
 	//
 	// Test
 	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	// The order number of the access system.
+	// The order number in the caller\\"s system.
 	//
 	// example:
 	//
 	// 787DFHHDS989****
 	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	// The estimated weight. Unit: gram.
+	// The estimated weight, in grams.
 	//
-	// >  If you need to query the estimated price, this parameter is required.
+	// > If you want to query the estimated price, this parameter is required.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ func (s *CreatePickUpWaybillPreQueryRequest) Validate() error {
 }
 
 type CreatePickUpWaybillPreQueryRequestConsigneeInfo struct {
-	// The address of the consignee.
+	// The address information of the recipient.
 	AddressInfo *CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty" type:"Struct"`
-	// The mobile phone number of the consignee.
+	// The mobile phone number of the recipient.
 	//
 	// This parameter is required.
 	//
@@ -149,13 +149,13 @@ type CreatePickUpWaybillPreQueryRequestConsigneeInfo struct {
 	//
 	// 1390000****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The name of the consignee.
+	// The name of the recipient.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Li
+	// Li XX
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -204,31 +204,31 @@ func (s *CreatePickUpWaybillPreQueryRequestConsigneeInfo) Validate() error {
 }
 
 type CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo struct {
-	// The detailed address of the consignee.
+	// The detailed address of the recipient.
 	//
 	// example:
 	//
-	// XX community
+	// XX Community, No. XX
 	AddressDetail *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
-	// The district where the consignee is located.
+	// The district where the recipient is located.
 	//
 	// example:
 	//
-	// chang,an
+	// Chang\\"an District
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	// The city where the consignee is located.
+	// The city where the recipient is located.
 	//
 	// example:
 	//
-	// Xi,an
+	// Xi\\"an
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The province where the consignee is located.
+	// The province where the recipient is located.
 	//
 	// example:
 	//
-	// Shanxi
+	// Shaanxi Province
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	// The street where the consignee is located.
+	// The street where the recipient is located.
 	//
 	// example:
 	//
@@ -294,7 +294,7 @@ func (s *CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo) Validate() 
 }
 
 type CreatePickUpWaybillPreQueryRequestSenderInfo struct {
-	// The address of the sender.
+	// The address information of the sender.
 	AddressInfo *CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty" type:"Struct"`
 	// The mobile phone number of the sender.
 	//
@@ -310,7 +310,7 @@ type CreatePickUpWaybillPreQueryRequestSenderInfo struct {
 	//
 	// example:
 	//
-	// Wang
+	// Wang XX
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -363,25 +363,25 @@ type CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo struct {
 	//
 	// example:
 	//
-	// XX community
+	// XX Community, No. XX
 	AddressDetail *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
 	// The district where the sender is located.
 	//
 	// example:
 	//
-	// xihu
+	// Xihu District
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
 	// The city where the sender is located.
 	//
 	// example:
 	//
-	// hangzhou
+	// Hangzhou
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	// The province where the sender is located.
 	//
 	// example:
 	//
-	// zhejiang
+	// Zhejiang Province
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 	// The street where the sender is located.
 	//

@@ -28,7 +28,7 @@ type CancelPickUpWaybillRequest struct {
 	//
 	// example:
 	//
-	// {\\"action\\":\\"UPDATE_DESC\\",\\"value\\":\\"The courier is unable to pick up the package.\\"}
+	// 不想退货了
 	CancelDesc *string `json:"CancelDesc,omitempty" xml:"CancelDesc,omitempty"`
 	// The ID of the external order.
 	//

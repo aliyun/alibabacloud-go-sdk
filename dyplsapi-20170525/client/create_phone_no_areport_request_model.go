@@ -36,7 +36,7 @@ type iCreatePhoneNoAReportRequest interface {
 }
 
 type CreatePhoneNoAReportRequest struct {
-	// 所属a号码组id
+	// ID of the A-number group. On the [Qualification Management](https://dyplsnext.console.aliyun.com/qualification) page, click View Details in the A-number whitelist section of the relevant qualification.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreatePhoneNoAReportRequest struct {
 	//
 	// 19
 	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
-	// 姓名
+	// Name.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreatePhoneNoAReportRequest struct {
 	//
 	// 赵**
 	CustName *string `json:"CustName,omitempty" xml:"CustName,omitempty"`
-	// 证件号码
+	// Certificate number.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreatePhoneNoAReportRequest struct {
 	//
 	// 370*********
 	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	// 证件类型 填写1表示身份证
+	// Certificate type. Enter 1 for an ID card.
 	//
 	// This parameter is required.
 	//
@@ -68,28 +68,28 @@ type CreatePhoneNoAReportRequest struct {
 	//
 	// 1
 	DocumentType *int64 `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
-	// 半身照oss路径地址
+	// OSS path of the front-facing portrait photo.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456/test1719383196033.jpg示例值
+	// 123456/test1719383196033.jpg
 	IdCardAlivePhoto *string `json:"IdCardAlivePhoto,omitempty" xml:"IdCardAlivePhoto,omitempty"`
-	// 身份证反面照片oss路径地址
+	// OSS path of the photo of the back side (portrait side) of the ID card.
 	//
 	// example:
 	//
 	// 123456/test1719383196032.jpg
 	IdCardBackPhoto *string `json:"IdCardBackPhoto,omitempty" xml:"IdCardBackPhoto,omitempty"`
-	// 身份证正面照片oss路径地址
+	// OSS path of the photo of the front side (national emblem side) of the ID card.
 	//
 	// example:
 	//
 	// 123456/test1719383196031.jpg
 	IdCardFrontPhoto *string `json:"IdCardFrontPhoto,omitempty" xml:"IdCardFrontPhoto,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 手机号
+	// Phone number.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type CreatePhoneNoAReportRequest struct {
 	//
 	// 130*****1234
 	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	// 备注（客户自己的业务备注，可编辑）
+	// Remark (business remark added by the user).
 	//
 	// example:
 	//

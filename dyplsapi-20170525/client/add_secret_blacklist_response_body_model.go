@@ -18,17 +18,17 @@ type iAddSecretBlacklistResponseBody interface {
 }
 
 type AddSecretBlacklistResponseBody struct {
-	// The response code.
+	// The request status code. Valid values:
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - OK: The request was successful.
 	//
-	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//

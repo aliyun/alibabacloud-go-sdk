@@ -24,17 +24,46 @@ type iUnBindAXBResponseBody interface {
 }
 
 type UnBindAXBResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned status code. Valid values:
+	//
+	// - 0000: Success.
+	//
+	// - Other values: Failure.
+	//
 	// example:
 	//
 	// 0000
-	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UnBindAXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of dissociating the AXB call binding.
+	//
+	// example:
+	//
+	// {"Code":"0000","Message":"Success","Success":true}
+	Data *UnBindAXBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4A2568E1-7D83-5491-8DEF-600D8AFF97E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Success.
+	//
+	// - false: Failure.
+	//
 	// example:
 	//
 	// true
@@ -113,19 +142,19 @@ func (s *UnBindAXBResponseBody) Validate() error {
 }
 
 type UnBindAXBResponseBodyData struct {
-	// 返回状态码 0000表示成功 其他表示失败
+	// The returned status code. A value of 0000 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 0000
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 返回信息
+	// The returned message.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//

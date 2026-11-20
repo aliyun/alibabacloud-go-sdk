@@ -27,6 +27,10 @@ type GetSecretAsrDetailResponseBody struct {
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ASR details.
+	//
+	// example:
+	//
+	// {"bizDuration":10944,"businessId":"435ee78c7a019650@!FC100000074672458@!20200615225802","businessKey":"JCGTncltuNaolegJ","code":"21050000","msg":"SUCCESS","requestId":"8d2329d407a83447a83be441681f4872ac74nE","sentences":[{"beginTime":1020,"channelId":0,"emotionValue":"5.7","endTime":1770,"silenceDuration":"0","speechRate":"80","text":"喂"}],"success":true,"type":"asrResult"}
 	Data *GetSecretAsrDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -106,7 +110,7 @@ type GetSecretAsrDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// 435ee78c7a019650@!FC100000074672458@!2020061522****
+	// 435ee78c7a******@!FC100000074******@!2020061522****
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The business keyword.
 	//
@@ -276,7 +280,7 @@ type GetSecretAsrDetailResponseBodyDataSentences struct {
 	//
 	// example:
 	//
-	// Hello
+	// 您好
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

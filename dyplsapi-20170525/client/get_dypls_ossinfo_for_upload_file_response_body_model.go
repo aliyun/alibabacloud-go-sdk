@@ -24,23 +24,42 @@ type iGetDyplsOSSInfoForUploadFileResponseBody interface {
 }
 
 type GetDyplsOSSInfoForUploadFileResponseBody struct {
+	// Details of denied access.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Request status code. Valid values:
+	//
+	// 	- OK: indicates that the request succeeded.
+	//
+	// 	- For other error codes, see [Error Code List](https://help.aliyun.com/document_detail/109196.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetDyplsOSSInfoForUploadFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// E2FD3B2F-5028-16E3-9F83-2F76F99B3873
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - true: indicates success.
+	//
+	// - false: indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,26 +138,38 @@ func (s *GetDyplsOSSInfoForUploadFileResponseBody) Validate() error {
 }
 
 type GetDyplsOSSInfoForUploadFileResponseBodyData struct {
+	// AccessKey ID used for signing.
+	//
 	// example:
 	//
-	// LTAI***pSvPz
+	// YOUR_ACCESS_KEY_ID
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// Expiration Time.
+	//
 	// example:
 	//
 	// 1744613007
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Host address.
+	//
 	// example:
 	//
 	// https://alicom-**********-cn-zhangjiakou.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Signing policy.
+	//
 	// example:
 	//
 	// IjoiMjAyN*****9udGV
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Signature computed from the **AccessKey secret*	- and **policy**. When invoking the OSS API, OSS authenticates this signature to confirm the validity of the POST request.
+	//
 	// example:
 	//
 	// BXwW**********aoZH
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Policy path.
+	//
 	// example:
 	//
 	// 123456

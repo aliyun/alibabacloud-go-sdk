@@ -52,7 +52,7 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// 980abddb908f48e8b987cb2cd303****
+	// 9b4afe3d224e4fa3bf963697113e2f77
 	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
 	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
 	//
@@ -62,7 +62,7 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// False
+	// false
 	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
 	// Re-sets the phone number display logic in the AXG binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
 	//
@@ -90,7 +90,7 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// hangzhou
+	// 北京
 	ExpectCity *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
 	// The expiration time of the AXG binding. The value is accurate to seconds.
 	//
@@ -114,7 +114,7 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// 1234
+	// 200001234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies whether to record all calls made by the bound phone numbers.
 	//
@@ -149,7 +149,7 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// 139****0000
+	// 138****0000
 	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
 	// Phone number X in the AXG binding. If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the **ExpectCity*	- parameter and is used as phone number X.
 	//
@@ -157,13 +157,13 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// 139****0000
+	// 139****1111
 	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -181,7 +181,7 @@ type BindAxgRequest struct {
 	//
 	// example:
 	//
-	// {"AXGRing_AB":"100000001","AXGRing_A":"100000002","AXGRing_G":"100000003"}
+	// {"AXGRing_AB":"1000****1","AXGRing_A":"1000****2","AXGRing_G":"1000****3"}
 	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 

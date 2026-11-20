@@ -30,13 +30,13 @@ type iBindXBRequest interface {
 }
 
 type BindXBRequest struct {
-	// 客户uid
+	// The customer UID. This parameter is automatically obtained by the system and is not required.
 	//
 	// example:
 	//
 	// -
 	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
-	// 号码池key
+	// The number pool key.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type BindXBRequest struct {
 	// FC5**********************a1a
 	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	// The request deduplication ID. The maximum length is 20 characters. Ensure the atomicity of the request ID.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type BindXBRequest struct {
 	ReqId                *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 员工真实号码
+	// The actual phone number of the employee.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +63,7 @@ type BindXBRequest struct {
 	//
 	// 18*******22
 	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
-	// X号码
+	// The work number X.
 	//
 	// This parameter is required.
 	//
@@ -71,7 +71,7 @@ type BindXBRequest struct {
 	//
 	// 17*******22
 	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
-	// 客户自定义参数回调带回
+	// The custom data to be returned in the callback.
 	//
 	// example:
 	//

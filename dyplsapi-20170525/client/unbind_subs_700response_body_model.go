@@ -24,23 +24,46 @@ type iUnbindSubs700ResponseBody interface {
 }
 
 type UnbindSubs700ResponseBody struct {
+	// The details of the permission check failure.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// example:
+	// The status code of the API request. Valid values:
 	//
-	// 200
-	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// - OK: The request is successful.
+	//
+	// - Other error codes. For more information, see [API error codes](https://help.aliyun.com/document_detail/59892.html).
+	//
 	// example:
 	//
 	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The default response format. This parameter has no actual value.
+	//
+	// example:
+	//
+	// {}
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9297B722-A016-43FB-B51A-E54050******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the API call is successful. Valid values:
+	//
+	// - true: The API call is successful.
+	//
+	// - false: The API call fails.
+	//
 	// example:
 	//
 	// true

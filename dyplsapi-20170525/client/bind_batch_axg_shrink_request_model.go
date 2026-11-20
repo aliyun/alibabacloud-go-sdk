@@ -22,9 +22,15 @@ type iBindBatchAxgShrinkRequest interface {
 }
 
 type BindBatchAxgShrinkRequest struct {
+	// The list of AXG bindings.
+	//
 	// This parameter is required.
 	AxgBindListShrink *string `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the number pool.
+	//
+	// You can log on to the Phone Number Protection console and obtain the key on the [Number Pool Management](https://dyplsnext.console.aliyun.com/number-pool) page.
+	//
 	// example:
 	//
 	// FC2235****

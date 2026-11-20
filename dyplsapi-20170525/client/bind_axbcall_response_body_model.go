@@ -22,24 +22,39 @@ type iBindAXBCallResponseBody interface {
 }
 
 type BindAXBCallResponseBody struct {
+	// The details of the access denied error.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
+	// The response status code. Valid values:
+	//
+	// - 0000: Success.
+	//
+	// - Other values: Failure.
 	//
 	// example:
 	//
 	// 0000
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *BindAXBCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The AXB call binding result.
 	//
 	// example:
 	//
-	// 成功
+	// {"BindId":"476567566"}
+	Data *BindAXBCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Success.
+	//
+	// - false: Failure.
 	//
 	// example:
 	//
@@ -110,7 +125,7 @@ func (s *BindAXBCallResponseBody) Validate() error {
 }
 
 type BindAXBCallResponseBodyData struct {
-	// 绑定关系ID
+	// The ID of the binding relationship.
 	//
 	// example:
 	//

@@ -110,9 +110,8 @@ type QuerySecretNoRemainResponseBodySecretRemainDTO struct {
 	//
 	// example:
 	//
-	// hangzhou
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The information about remaining phone numbers available for online purchase.
+	// 杭州
+	City          *string                                                      `json:"City,omitempty" xml:"City,omitempty"`
 	RemainDTOList *QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList `json:"RemainDTOList,omitempty" xml:"RemainDTOList,omitempty" type:"Struct"`
 }
 
@@ -195,18 +194,8 @@ func (s *QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList) Validate()
 }
 
 type QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO struct {
-	// The quantity of remaining phone numbers available for online purchase for the city.
-	//
-	// example:
-	//
-	// 120
-	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The home location of the phone numbers.
-	//
-	// example:
-	//
-	// Wuhan
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	Amount *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	City   *string `json:"City,omitempty" xml:"City,omitempty"`
 }
 
 func (s QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO) String() string {

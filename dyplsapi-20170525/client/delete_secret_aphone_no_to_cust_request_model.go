@@ -22,7 +22,7 @@ type iDeleteSecretAPhoneNoToCustRequest interface {
 }
 
 type DeleteSecretAPhoneNoToCustRequest struct {
-	// A号码组ID
+	// A-number group ID.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DeleteSecretAPhoneNoToCustRequest struct {
 	// 51
 	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
 	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A号码
+	// A-number.
 	//
 	// This parameter is required.
 	//

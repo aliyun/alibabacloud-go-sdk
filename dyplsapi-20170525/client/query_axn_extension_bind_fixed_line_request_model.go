@@ -30,24 +30,28 @@ type iQueryAxnExtensionBindFixedLineRequest interface {
 }
 
 type QueryAxnExtensionBindFixedLineRequest struct {
-	// 号池ID
+	// The ID of the number pool.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// alitest
+	// FC10000016848****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息请求唯一标识。
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12345dkwkd99d
+	// 123*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 查询类型。取值： 0：根据绑定ID查询。1：根据X和A/B号码查询
+	// The query type. Valid values:
+	//
+	// - 0: query by binding ID.
+	//
+	// - 1: query by X and A/B numbers.
 	//
 	// This parameter is required.
 	//
@@ -57,25 +61,25 @@ type QueryAxnExtensionBindFixedLineRequest struct {
 	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 绑定ID。QueryType参数为0时必传。
+	// The binding ID. This parameter is required when QueryType is set to 0.
 	//
 	// example:
 	//
 	// A203**************
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// A号码。QueryType参数为1时必传。
+	// The number A. This parameter is required when QueryType is set to 1.
 	//
 	// example:
 	//
-	// 15500001111
+	// 155****1111
 	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
-	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// The business timestamp. Format: yyyyMMddHHmmssSSS. The time is in UTC+8, in 24-hour format, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20250421141723098
+	// 20161114143116123
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 

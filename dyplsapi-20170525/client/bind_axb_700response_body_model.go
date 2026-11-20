@@ -24,23 +24,42 @@ type iBindAxb700ResponseBody interface {
 }
 
 type BindAxb700ResponseBody struct {
+	// The access denied details.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	//  Other values indicate failure.
+	//
 	// example:
 	//
-	// 200
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *BindAxb700ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9297B722-A016-43FB-B51A-E54050******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -119,10 +138,14 @@ func (s *BindAxb700ResponseBody) Validate() error {
 }
 
 type BindAxb700ResponseBodyData struct {
+	// The purchased 700 private number, which is the X number.
+	//
 	// example:
 	//
 	// 700********0001
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The number binding ID.
+	//
 	// example:
 	//
 	// 123*******

@@ -18,23 +18,23 @@ type iDeleteSecretBlacklistResponseBody interface {
 }
 
 type DeleteSecretBlacklistResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - A value of OK indicates that the request is successful.
 	//
-	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

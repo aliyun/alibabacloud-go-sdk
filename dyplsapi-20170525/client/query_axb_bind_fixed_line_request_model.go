@@ -32,30 +32,34 @@ type iQueryAxbBindFixedLineRequest interface {
 }
 
 type QueryAxbBindFixedLineRequest struct {
-	// 号池ID。
+	// The number pool ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ALPT_1234
+	// FC10000016848****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息请求唯一标识。
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 3ererrrdrrrr
+	// 123*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A/B号码，queryType=1时，必传
+	// The A/B number. Required when QueryType is set to 1.
 	//
 	// example:
 	//
-	// 示例值
+	// 138****6534
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// 查询类型 0：根据绑定id查询 1：根据X和A/B号码查询
+	// The query type. Valid values:
+	//
+	// - 0: Query by binding ID.
+	//
+	// - 1: Query by X and A/B numbers.
 	//
 	// This parameter is required.
 	//
@@ -65,25 +69,25 @@ type QueryAxbBindFixedLineRequest struct {
 	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 绑定id， queryType=0时，必传
+	// The binding ID. Required when QueryType is set to 0.
 	//
 	// example:
 	//
-	// A20304o0200303004j
+	// A203**************
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// x号码，queryType=1时，必传
+	// The X number. Required when QueryType is set to 1.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 0571******23
 	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
-	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// The business timestamp. Format: yyyyMMddHHmmssSSS. The time is in UTC+8, in 24-hour format, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20161114143116001
+	// 20161114143116123
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 

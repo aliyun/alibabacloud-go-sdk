@@ -40,7 +40,7 @@ type BindAxbResponseBody struct {
 	//
 	// example:
 	//
-	// 9297B722-A016-43FB-B51A-E54050D9369D
+	// 9297B722-A016-43FB-B51A-E54050******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information returned after the phone numbers were bound.
 	SecretBindDTO *BindAxbResponseBodySecretBindDTO `json:"SecretBindDTO,omitempty" xml:"SecretBindDTO,omitempty" type:"Struct"`
@@ -112,13 +112,13 @@ type BindAxbResponseBodySecretBindDTO struct {
 	//
 	// example:
 	//
-	// 139****0000
+	// 171****1893
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 	// The binding ID.
 	//
 	// example:
 	//
-	// 1**************3
+	// 100017838816****
 	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 

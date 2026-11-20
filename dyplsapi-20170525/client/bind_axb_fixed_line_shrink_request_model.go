@@ -48,7 +48,9 @@ type iBindAxbFixedLineShrinkRequest interface {
 }
 
 type BindAxbFixedLineShrinkRequest struct {
-	// 主叫侧放音编码，AXB业务时必须设置。  放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	// The caller-side announcement code. This parameter is required for the fixed-line AXB privacy number service. The code must include announcements for three scenarios. Specify the codes in the order of "B->X, A->X, other numbers->X", separated by commas.
+	//
+	// > For example, "1,2,3" indicates that the announcement code for B->X is 1, the announcement code for A->X is 2, and the announcement code for other numbers->X is 3.
 	//
 	// This parameter is required.
 	//
@@ -56,62 +58,72 @@ type BindAxbFixedLineShrinkRequest struct {
 	//
 	// 1,2,3
 	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
-	// 接通后被叫侧放音编码,接通后被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，B号码为被叫侧接听时的放音编号为2。
+	// The callee-side announcement code after the call is connected. The code must include announcements for two scenarios. Specify the codes in the order of "A as callee, B as callee", separated by commas.
+	//
+	// > For example, "1,2" indicates that the announcement code when Number A answers as the callee is 1, and the announcement code when Number B answers as the callee is 2.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 1,2
 	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
-	// 号池ID。
+	// The ID of the number pool.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ALPT_1234
+	// FC10000016848****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 区号,去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费。
+	// The area code. You can specify the location of Number X (specified city -> provincial capital -> national routing). If you do not specify a location, a number is randomly assigned nationwide.
 	//
 	// example:
 	//
-	// 10
+	// 0571
 	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
-	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	// The binding type. Valid values:
+	//
+	// - mode101: The customer specifies Number X.
+	//
+	// - mode102: The platform allocates Number X.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// mode101
 	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
-	// 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	// The expiration time. Unit: seconds. Valid values:
+	//
+	// - 0: The binding never expires.
+	//
+	// - Other values: If you specify another value, such as 60, the binding is valid for 60 seconds after Number X is successfully allocated. After 60 seconds, the binding is automatically unbound.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10
+	// 60
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// 扩展参数
+	// The extended parameters.
 	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// 消息请求唯一标识。
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 15433678436
+	// 123*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 接入商自有字段，最大250字符长度
+	// The external business extension field. This parameter is returned in the call record receipt message. The value cannot exceed 100 characters in length.
 	//
 	// example:
 	//
-	// remark
+	// 19394
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	// The binding time. The format is yyyyMMddHHmmss. The time is in UTC+8 and uses the 24-hour clock.
 	//
 	// This parameter is required.
 	//
@@ -119,41 +131,57 @@ type BindAxbFixedLineShrinkRequest struct {
 	//
 	// 20161114143116
 	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
-	// 接通后主叫侧的放音编码,接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，B号码为被叫时主叫侧的放音编号为2。
+	// The caller-side announcement code after the call is connected. The code must include announcements for two scenarios. Specify the codes in the order of "A as callee, B as callee", separated by commas.
+	//
+	// > For example, "1,2" indicates that the caller-side announcement code when Number A is the callee is 1, and the caller-side announcement code when Number B is the callee is 2.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1,2
 	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
-	// 真实号码
+	// Number A of the fixed-line AXB privacy number.
+	//
+	// > - Number A can be a mobile phone number or a fixed-line number. For a fixed-line number, add the area code. No hyphen is required between the area code and the fixed-line number.
+	//
+	// > - If your business requires modifying a bound number, you can call the [UpdateAxbBindFixedLine](https://api.aliyun.com/document/Dyplsapi/2017-05-25/UpdateAxbBindFixedLine) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 18456713271
+	// Mobile phone number: 182****2371
+	//
+	// Fixed-line number: 0571******36
 	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
-	// 对端号码
+	// Number B of the fixed-line AXB privacy number.
+	//
+	// > - Number B can be a mobile phone number or a fixed-line number. For a fixed-line number, add the area code. No hyphen is required between the area code and the fixed-line number.
+	//
+	// > - If your business requires modifying a bound number, you can call the [UpdateAxbBindFixedLine](https://api.aliyun.com/document/Dyplsapi/2017-05-25/UpdateAxbBindFixedLine) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 18971362645
+	// Mobile phone number: 182****2371
+	//
+	// Fixed-line number: 0571******36
 	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
-	// X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数  格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	// Number X of the fixed-line AXB privacy number. Number X is a privacy number that you have [purchased](https://dyplsnext.console.aliyun.com/numberbuy) in the console.
+	//
+	// > This parameter is required when the customer specifies Number X (that is, the BindType parameter is set to mode101).
 	//
 	// example:
 	//
-	// 19767562345
+	// 0571******23
 	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
-	// 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// The business timestamp. The format is yyyyMMddHHmmssSSS. The time is in UTC+8 and uses the 24-hour clock, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20161114143116001
+	// 20161114143116123
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 

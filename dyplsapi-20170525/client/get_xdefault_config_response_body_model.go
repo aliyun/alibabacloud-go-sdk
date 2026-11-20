@@ -22,24 +22,39 @@ type iGetXDefaultConfigResponseBody interface {
 }
 
 type GetXDefaultConfigResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
+	// The response status code. Valid values:
+	//
+	// - 0000: Success.
+	//
+	// - Other values: Failure.
 	//
 	// example:
 	//
 	// 0000
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetXDefaultConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The default configurations of the work number.
 	//
 	// example:
 	//
-	// 成功
+	// {"CallAbility":"0","GNFlag":"00","SmsAbility":"0","SmsSignMode":"0"}
+	Data *GetXDefaultConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -110,41 +125,41 @@ func (s *GetXDefaultConfigResponseBody) Validate() error {
 }
 
 type GetXDefaultConfigResponseBodyData struct {
-	// 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+	// The status of the call capability. Valid values: 0: disabled. 1: enabled.
 	//
 	// example:
 	//
 	// 0
 	CallAbility *string `json:"CallAbility,omitempty" xml:"CallAbility,omitempty"`
-	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	// Specifies whether to pass through the caller ID to display the real caller. Valid values: 00: non-passthrough. The work number is displayed when calls are made to each other. 10: passthrough. When Customer A is the caller, the caller ID displayed to Employee B is the number of Customer A. When Employee B is the caller, the caller ID displayed to Customer A is the work number. Default value: 00.
 	//
 	// example:
 	//
 	// 00
 	GNFlag *string `json:"GNFlag,omitempty" xml:"GNFlag,omitempty"`
-	// 企业名片规则控制参数
+	// The enterprise business card rule control parameters.
 	ReachJson []*GetXDefaultConfigResponseBodyDataReachJson `json:"ReachJson,omitempty" xml:"ReachJson,omitempty" type:"Repeated"`
-	// 顺振控制参数
+	// The sequential ringing control parameters.
 	SequenceCall []*GetXDefaultConfigResponseBodyDataSequenceCall `json:"SequenceCall,omitempty" xml:"SequenceCall,omitempty" type:"Repeated"`
-	// 顺振结束时间 格式：HH:mm:ss 18:00:00
+	// The end time of sequential ringing. Format: HH:mm:ss, such as 18:00:00.
 	//
 	// example:
 	//
 	// 09:00:00
 	SequenceEndTime *string `json:"SequenceEndTime,omitempty" xml:"SequenceEndTime,omitempty"`
-	// 顺振开启时间 格式：HH:mm:ss 09:00:00
+	// The start time of sequential ringing. Format: HH:mm:ss, such as 09:00:00.
 	//
 	// example:
 	//
 	// 09:00:00
 	SequenceStartTime *string `json:"SequenceStartTime,omitempty" xml:"SequenceStartTime,omitempty"`
-	// 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
+	// The status of the SMS feature. Valid values: 0: disabled. 1: enabled.
 	//
 	// example:
 	//
 	// 0
 	SmsAbility *string `json:"SmsAbility,omitempty" xml:"SmsAbility,omitempty"`
-	// 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+	// Specifies whether to pass through the caller ID to display the real caller. Valid values: 00: non-passthrough. The work number is displayed when calls are made to each other. 10: passthrough. When Customer A is the caller, the caller ID displayed to Employee B is the number of Customer A. When Employee B is the caller, the caller ID displayed to Customer A is the work number. Default value: 00.
 	//
 	// example:
 	//
@@ -255,43 +270,43 @@ func (s *GetXDefaultConfigResponseBodyData) Validate() error {
 }
 
 type GetXDefaultConfigResponseBodyDataReachJson struct {
-	// 呼叫方向 1:员工B呼叫客户A 2:客户A呼叫员工B
+	// The call direction. Valid values: 1: Employee B calls Customer A. 2: Customer A calls Employee B.
 	//
 	// example:
 	//
 	// 1
 	CallDir *string `json:"CallDir,omitempty" xml:"CallDir,omitempty"`
-	// 通话状态 1:通话振铃 2:接通前 3:接通后 4:通话结束 5:已接通6:未接通
+	// The call status. Valid values: 1: ringing. 2: before connection. 3: after connection. 4: call ended. 5: connected. 6: not connected.
 	//
 	// example:
 	//
 	// 1
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 接收方向 1:主叫 2:被叫
+	// The receive direction. Valid values: 1: caller. 2: callee.
 	//
 	// example:
 	//
 	// 1
 	ReceiveDir *string `json:"ReceiveDir,omitempty" xml:"ReceiveDir,omitempty"`
-	// 规则ID
+	// The rule ID.
 	//
 	// example:
 	//
 	// 345
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// 规则名称
+	// The rule name.
 	//
 	// example:
 	//
-	// 企业名片-短信规则
+	// Enterprise business card - SMS rule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 规则类型： 1：企业名片-短信 2：企业名片-闪信 3：企业名片-视频 4：企业名片-音频
+	// The rule type. Valid values: 1: enterprise business card - SMS. 2: enterprise business card - flash SMS. 3: enterprise business card - video. 4: enterprise business card - audio.
 	//
 	// example:
 	//
 	// 1
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// 模板ID
+	// The template ID.
 	//
 	// example:
 	//
@@ -375,23 +390,23 @@ func (s *GetXDefaultConfigResponseBodyDataReachJson) Validate() error {
 }
 
 type GetXDefaultConfigResponseBodyDataSequenceCall struct {
-	// 顺振提示音放音编号，格式如callNoPlayCode
+	// The play code for the sequential ringing prompt tone. The format is the same as callNoPlayCode.
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	SequenceCallNoPlayCode *string `json:"SequenceCallNoPlayCode,omitempty" xml:"SequenceCallNoPlayCode,omitempty"`
-	// 顺振被叫号码
+	// The callee number for sequential ringing.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Sample value sample value sample value
 	SequenceCalledNo *string `json:"SequenceCalledNo,omitempty" xml:"SequenceCalledNo,omitempty"`
-	// 接通后主被叫放音编号，格式如calledPlayCode
+	// The play code for the caller and callee after the call is connected. The format is the same as calledPlayCode.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Sample value sample value sample value
 	SequenceCalledPlayCode *string `json:"SequenceCalledPlayCode,omitempty" xml:"SequenceCalledPlayCode,omitempty"`
 }
 

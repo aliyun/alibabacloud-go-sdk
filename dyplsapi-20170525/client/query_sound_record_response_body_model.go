@@ -22,24 +22,39 @@ type iQuerySoundRecordResponseBody interface {
 }
 
 type QuerySoundRecordResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
+	// The response status code. Valid values:
+	//
+	// - 0000: Success.
+	//
+	// Other values indicate failure.
 	//
 	// example:
 	//
 	// 0000
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QuerySoundRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The call recording query results.
 	//
 	// example:
 	//
-	// 成功
+	// {"FileUrl":"http://www.oss.com/temepl/a.mp3"}
+	Data *QuerySoundRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -110,7 +125,7 @@ func (s *QuerySoundRecordResponseBody) Validate() error {
 }
 
 type QuerySoundRecordResponseBodyData struct {
-	// 通话录音url路径，最大长度1000，有效期1小时
+	// The URL of the call recording. The maximum length is 1,000 characters. The URL is valid for 1 hour.
 	//
 	// example:
 	//

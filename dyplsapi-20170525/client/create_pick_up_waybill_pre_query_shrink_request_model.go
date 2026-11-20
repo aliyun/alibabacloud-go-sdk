@@ -24,17 +24,17 @@ type iCreatePickUpWaybillPreQueryShrinkRequest interface {
 }
 
 type CreatePickUpWaybillPreQueryShrinkRequest struct {
-	// The consignee information.
+	// The recipient information.
 	//
 	// This parameter is required.
 	ConsigneeInfoShrink *string `json:"ConsigneeInfo,omitempty" xml:"ConsigneeInfo,omitempty"`
-	// The code of the courier company. If no courier company is specified, the system allocates a courier company.
+	// The courier company code. If not specified, the system automatically assigns a courier company.
 	//
 	// example:
 	//
 	// YTO
 	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	// The identifier of the external channel source. It cannot contain underscores.
+	// The external channel source identifier. The value cannot contain underscores. The value is agreed upon with the system during integration.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type CreatePickUpWaybillPreQueryShrinkRequest struct {
 	//
 	// Test
 	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	// The order number of the access system.
+	// The order number in the caller\\"s system.
 	//
 	// example:
 	//
 	// 787DFHHDS989****
 	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	// The estimated weight. Unit: gram.
+	// The estimated weight, in grams.
 	//
-	// >  If you need to query the estimated price, this parameter is required.
+	// > If you want to query the estimated price, this parameter is required.
 	//
 	// example:
 	//

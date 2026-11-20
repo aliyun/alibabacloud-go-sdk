@@ -42,7 +42,7 @@ type QuerySubsIdResponseBody struct {
 	//
 	// example:
 	//
-	// 11111111****
+	// 1000******,1000******,1000******
 	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 

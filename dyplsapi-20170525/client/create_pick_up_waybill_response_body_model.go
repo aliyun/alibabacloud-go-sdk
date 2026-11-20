@@ -20,7 +20,7 @@ type iCreatePickUpWaybillResponseBody interface {
 }
 
 type CreatePickUpWaybillResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *CreatePickUpWaybillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -28,7 +28,7 @@ type CreatePickUpWaybillResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The status code description.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreatePickUpWaybillResponseBody) Validate() error {
 }
 
 type CreatePickUpWaybillResponseBodyData struct {
-	// The code of the courier company.
+	// The express delivery company code.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type CreatePickUpWaybillResponseBodyData struct {
 	//
 	// example:
 	//
-	// 200
+	// None
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// none
+	// None
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The pickup code.
 	//
@@ -120,13 +120,13 @@ type CreatePickUpWaybillResponseBodyData struct {
 	//
 	// 3524
 	GotCode *string `json:"GotCode,omitempty" xml:"GotCode,omitempty"`
-	// The order ID.
+	// The waybill number.
 	//
 	// example:
 	//
 	// 77312345629****
 	MailNo *string `json:"MailNo,omitempty" xml:"MailNo,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the API call is successful.
 	//
 	// example:
 	//

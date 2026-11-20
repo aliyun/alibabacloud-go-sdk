@@ -24,26 +24,46 @@ type iUpdateSubs700ResponseBody interface {
 }
 
 type UpdateSubs700ResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the API request. Valid values:
+	//
+	// - OK: The request is successful.
+	//
+	// - Other error codes: For more information, see [API error codes](https://help.aliyun.com/document_detail/59892.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The default response format. This field does not contain an actual value.
+	//
 	// example:
 	//
 	// {}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9297B722-A016-43FB-B51A-E54050******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
+	//
 	// example:
 	//
 	// true

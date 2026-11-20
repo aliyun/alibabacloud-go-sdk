@@ -36,7 +36,7 @@ type CancelPickUpWaybillResponseBody struct {
 	//
 	// example:
 	//
-	// OK
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -104,19 +104,19 @@ type CancelPickUpWaybillResponseBodyData struct {
 	//
 	// example:
 	//
-	// none
+	// 无
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// none
+	// 无
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The cancellation result.
 	//
 	// example:
 	//
-	// OK
+	// 取消成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the cancellation was successful.
 	//

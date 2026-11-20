@@ -40,7 +40,7 @@ type OperateAxgGroupRequest struct {
 	//
 	// example:
 	//
-	// 1234
+	// 200001234****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The phone numbers that you add to number group G. Separate the phone numbers with commas (,). You can add up to 200 phone numbers at a time.
 	//
@@ -77,7 +77,7 @@ type OperateAxgGroupRequest struct {
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

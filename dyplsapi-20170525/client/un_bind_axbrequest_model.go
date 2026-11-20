@@ -26,7 +26,7 @@ type iUnBindAXBRequest interface {
 }
 
 type UnBindAXBRequest struct {
-	// bindId绑定关系AXB唯一id
+	// The unique ID of the AXB binding relationship.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UnBindAXBRequest struct {
 	//
 	// 4534543
 	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
-	// 客户uid
+	// The customer UID. This parameter is automatically obtained by the system and does not need to be specified.
 	//
 	// example:
 	//
 	// -
 	CallerParentId *int64 `json:"CallerParentId,omitempty" xml:"CallerParentId,omitempty"`
-	// 号码池key
+	// The number pool key.
 	//
 	// This parameter is required.
 	//
@@ -49,7 +49,7 @@ type UnBindAXBRequest struct {
 	// FC5**********************a1a
 	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+	// The request deduplication ID. The maximum length is 20 characters. Ensure the atomicity of the request ID.
 	//
 	// This parameter is required.
 	//

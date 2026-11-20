@@ -24,31 +24,37 @@ type iCreateFixedNoAReportResponseBody interface {
 }
 
 type CreateFixedNoAReportResponseBody struct {
+	// Details of denied access.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 请求状态码
+	// Request status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A号码报备结果结构体
+	// The struct of the reporting result for number A.
 	Data *CreateFixedNoAReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 失败错误提示
+	// Error message for failure.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 固话号码***已存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回id
+	// The returned ID.
 	//
 	// example:
 	//
 	// 1D73E648-0978-18A5-B089-3BB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否成功
+	// Indicates whether the request succeeded. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -128,13 +134,19 @@ func (s *CreateFixedNoAReportResponseBody) Validate() error {
 }
 
 type CreateFixedNoAReportResponseBodyData struct {
-	// 创建结果
+	// Creation result.
 	//
 	// example:
 	//
 	// true
 	CreateResult *bool `json:"CreateResult,omitempty" xml:"CreateResult,omitempty"`
-	// 创建类型枚举，1为成功，负数为创建失败
+	// Enumeration of creation types. The value 1 indicates success, and negative numbers indicate creation failure. Valid values:
+	//
+	// - 1: Succeeded.
+	//
+	// - -1: The phone number has already been submitted for reporting; no need to submit again.
+	//
+	// - -2: The phone number has already been successfully reported; no need to report again.
 	//
 	// example:
 	//

@@ -22,24 +22,35 @@ type iListXTelephonesResponseBody interface {
 }
 
 type ListXTelephonesResponseBody struct {
+	// The details of the access denied error.
+	//
 	// example:
 	//
 	// 0
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// 返回状态码 0000表示成功 其他表示失败
+	// The response status code. Valid values:
+	//
+	// - 0000: Success.
+	//
+	// - Other values: Failure.
 	//
 	// example:
 	//
 	// 0000
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data collection.
 	Data *ListXTelephonesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
+	// The response message.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 返回是否成功 true  表示成功 false表示失败
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Success.
+	//
+	// - false: Failure.
 	//
 	// example:
 	//
@@ -110,21 +121,21 @@ func (s *ListXTelephonesResponseBody) Validate() error {
 }
 
 type ListXTelephonesResponseBodyData struct {
-	// 数据集合
+	// The data list.
 	List []*ListXTelephonesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页条数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 符合查询条件的总数量
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -190,61 +201,85 @@ func (s *ListXTelephonesResponseBodyData) Validate() error {
 }
 
 type ListXTelephonesResponseBodyDataList struct {
-	// 绑定失败原因
+	// The reason for binding failure.
 	//
 	// example:
 	//
-	// 绑定失败用户身份证黑名单
+	// Binding failed: user ID card blacklisted
 	AuthMsg *string `json:"AuthMsg,omitempty" xml:"AuthMsg,omitempty"`
-	// 绑定时间
+	// The binding time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-08-29 17:23:58
 	BindTime *string `json:"BindTime,omitempty" xml:"BindTime,omitempty"`
-	// 购买时间
+	// The purchase time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-08-29 17:23:58
 	BuyTime *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
-	// 客户号码池key
+	// The customer number pool key.
 	//
 	// example:
 	//
 	// FC533e6eeb81f4400c87ef3745a21a1a
 	CustomerPoolKey *string `json:"CustomerPoolKey,omitempty" xml:"CustomerPoolKey,omitempty"`
-	// 号码池名称
+	// The number pool name.
 	//
 	// example:
 	//
-	// 测试号码池
+	// Test number pool
 	CustomerPoolName *string `json:"CustomerPoolName,omitempty" xml:"CustomerPoolName,omitempty"`
-	// 释放时间
+	// The release time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-08-29 17:23:58
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// 短信开通状态：0 未开通 1已开通
+	// The SMS activation status. Valid values:
+	//
+	// - 0: Not activated.
+	//
+	// - 1: Activated.
 	//
 	// example:
 	//
 	// 0
 	SmsStatus *string `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
-	// X号码
+	// The X number.
 	//
 	// example:
 	//
 	// 17816876546
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	// 号码状态：0 空闲中 1 调拨完成待购买 2购买完成待认证  3 实名认证中  4 实名认证成功  5 认证失败  6 解绑中 7 解绑失败 8已释放 99 超时释放
+	// The number status. Valid values:
+	//
+	// - 0: Idle.
+	//
+	// - 1: Allocation completed and pending purchase.
+	//
+	// - 2: Purchase completed and pending verification.
+	//
+	// - 3: Real-name verification in progress.
+	//
+	// - 4: Real-name verification succeeded.
+	//
+	// - 5: Verification failed.
+	//
+	// - 6: Unbinding in progress.
+	//
+	// - 7: Unbinding failed.
+	//
+	// - 8: Released.
+	//
+	// - 99: Released due to timeout.
 	//
 	// example:
 	//
 	// 0
 	TelephoneStatus *string `json:"TelephoneStatus,omitempty" xml:"TelephoneStatus,omitempty"`
-	// 解绑时间
+	// The unbinding time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

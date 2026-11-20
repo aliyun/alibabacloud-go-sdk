@@ -32,7 +32,7 @@ type CreateAxgGroupRequest struct {
 	//
 	// example:
 	//
-	// Aliyun
+	// 测试分组
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The phone numbers that you add to number group G. Separate multiple phone numbers with commas (,). A maximum of 200 phone numbers can be added to number group G.
 	//
@@ -47,13 +47,13 @@ type CreateAxgGroupRequest struct {
 	//
 	// example:
 	//
-	// FC123456
+	// FC10000012345****
 	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	// The remarks of number group G. The value must be 0 to 256 characters in length.
 	//
 	// example:
 	//
-	// test
+	// 测试用分组
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

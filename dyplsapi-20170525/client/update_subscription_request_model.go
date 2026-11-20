@@ -54,7 +54,7 @@ type UpdateSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// 980abddb908f48e8b987cb2cd303****
+	// 7ee372834d2f4cc7ac0d0ab2d0ae1aac
 	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
 	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
 	//
@@ -106,7 +106,7 @@ type UpdateSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// 1234
+	// 200001234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Re-sets the recording status in the phone number binding.
 	//
@@ -153,7 +153,7 @@ type UpdateSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// 1390000****
+	// 139****0000
 	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
 	// Phone number B in the phone number binding.
 	//
@@ -161,7 +161,7 @@ type UpdateSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// 1390000****
+	// 138****0000
 	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
 	// Phone number X in the phone number binding.
 	//
@@ -169,7 +169,7 @@ type UpdateSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// 1390000****
+	// 139****1111
 	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 	// The key of the phone number pool.
 	//
@@ -233,7 +233,7 @@ type UpdateSubscriptionRequest struct {
 	//
 	// example:
 	//
-	// {"AXBRing_B":"100000001","AXBRing_A":"100000001"}
+	// {"AXBRing_B":"1000****1","AXBRing_A":"1000****1"}
 	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 	// The binding ID.
 	//

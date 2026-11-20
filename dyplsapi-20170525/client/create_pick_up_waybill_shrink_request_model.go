@@ -44,69 +44,69 @@ type iCreatePickUpWaybillShrinkRequest interface {
 }
 
 type CreatePickUpWaybillShrinkRequest struct {
-	// The end time of the door-to-door pickup in the appointment. The value of **AppointGotEndTime*	- is the value of **EndTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+	// The end time of the scheduled door-to-door pickup, in the YYYY-MM-DD HH:mm:ss format. To obtain the value of **AppointGotEndTime**, obtain the **EndTime*	- value from **AppointTimes*	- in the **CpTimeSelectList*	- response parameter of the [CreatePickUpWaybillPreQuery](https://api.aliyun.com/document/Dyplsapi/2017-05-25/CreatePickUpWaybillPreQuery) operation.
 	//
-	// >  This parameter is required when **BizType*	- is set to **1**.
+	// > Required when **bizType*	- is set to **1**.
 	//
 	// example:
 	//
 	// 2021-01-01 12:00:00
 	AppointGotEndTime *string `json:"AppointGotEndTime,omitempty" xml:"AppointGotEndTime,omitempty"`
-	// The start time of the door-to-door pickup in the appointment. The value of **AppointGotStartTime*	- is the value of **StartTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+	// The start time of the scheduled door-to-door pickup, in the YYYY-MM-DD HH:mm:ss format. To obtain the value of **AppointGotStartTime**, obtain the **StartTime*	- value from **AppointTimes*	- in the **CpTimeSelectList*	- response parameter of the [CreatePickUpWaybillPreQuery](https://api.aliyun.com/document/Dyplsapi/2017-05-25/CreatePickUpWaybillPreQuery) operation.
 	//
-	// >  This parameter is required when **BizType*	- is set to **1**.
+	// > Required when **bizType*	- is set to **1**.
 	//
 	// example:
 	//
 	// 2021-01-01 10:00:00
 	AppointGotStartTime *string `json:"AppointGotStartTime,omitempty" xml:"AppointGotStartTime,omitempty"`
-	// The pickup mode. Valid values:
+	// The delivery mode. Valid values:
 	//
-	// 	- **0*	- (default): real-time order.
+	// - **0**: real-time order (default)
 	//
-	// 	- **1**: appointment order.
+	// - **1**: scheduled order
 	//
 	// example:
 	//
 	// 0
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The address of the consignee.
+	// The address of the recipient.
 	//
 	// This parameter is required.
 	ConsigneeAddressShrink *string `json:"ConsigneeAddress,omitempty" xml:"ConsigneeAddress,omitempty"`
-	// The mobile phone number of the consignee.
+	// The mobile phone number of the recipient.
 	//
-	// >  Either ConsigneeMobile or ConsigneePhone must be set.
+	// > You must specify either ConsigneeMobile or ConsigneePhone.
 	//
 	// example:
 	//
 	// 1580000****
 	ConsigneeMobile *string `json:"ConsigneeMobile,omitempty" xml:"ConsigneeMobile,omitempty"`
-	// The name of the consignee.
+	// The name of the recipient.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Li
+	// Zhang XX
 	ConsigneeName *string `json:"ConsigneeName,omitempty" xml:"ConsigneeName,omitempty"`
-	// The landline phone number of the consignee.
+	// The landline phone number of the recipient.
 	//
-	// >  Either ConsigneeMobile or ConsigneePhone must be set.
+	// > You must specify either ConsigneeMobile or ConsigneePhone.
 	//
 	// example:
 	//
 	// 0570000****
 	ConsigneePhone *string `json:"ConsigneePhone,omitempty" xml:"ConsigneePhone,omitempty"`
-	// The code of the courier company.
+	// The express delivery company code.
 	//
 	// example:
 	//
 	// YTO
 	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	// The items.
+	// The list of goods.
 	GoodsInfosShrink *string `json:"GoodsInfos,omitempty" xml:"GoodsInfos,omitempty"`
-	// The external channel sources.
+	// The external channel source.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type CreatePickUpWaybillShrinkRequest struct {
 	//
 	// YUN_DIAN_SHANG
 	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	// The ID of the external order.
+	// The external order ID.
 	//
 	// This parameter is required.
 	//
@@ -122,11 +122,11 @@ type CreatePickUpWaybillShrinkRequest struct {
 	//
 	// 143234234266****
 	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	// The additional information about the order. The additional information will be printed on the order.
+	// The remark. The remark content printed on the waybill.
 	//
 	// example:
 	//
-	// fragile
+	// Fragile items
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The address of the sender.
 	//
@@ -134,7 +134,7 @@ type CreatePickUpWaybillShrinkRequest struct {
 	SendAddressShrink *string `json:"SendAddress,omitempty" xml:"SendAddress,omitempty"`
 	// The mobile phone number of the sender.
 	//
-	// >  Either SendMobile or SendPhone must be set.
+	// > You must specify either SendMobile or SendPhone.
 	//
 	// example:
 	//
@@ -146,11 +146,11 @@ type CreatePickUpWaybillShrinkRequest struct {
 	//
 	// example:
 	//
-	// Wang
+	// Wang XX
 	SendName *string `json:"SendName,omitempty" xml:"SendName,omitempty"`
 	// The landline phone number of the sender.
 	//
-	// >  Either SendMobile or SendPhone must be set.
+	// > You must specify either SendMobile or SendPhone.
 	//
 	// example:
 	//

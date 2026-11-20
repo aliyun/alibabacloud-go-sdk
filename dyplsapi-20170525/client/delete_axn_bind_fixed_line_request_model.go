@@ -26,40 +26,40 @@ type iDeleteAxnBindFixedLineRequest interface {
 }
 
 type DeleteAxnBindFixedLineRequest struct {
-	// 号池ID。
+	// The number pool ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// alitest
+	// FC10000016848****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 消息请求唯一标识
+	// The unique identifier of the message request.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12345dkwkd99d
+	// 123*******
 	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 绑定id
+	// The binding ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// GHX0534X202504221531579290029-2-1-aliaxn
+	// A93I******
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	// The business timestamp. Format: yyyyMMddHHmmssSSS. The time is in UTC+8, in 24-hour format, accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20250421141723098
+	// 20161114143116123
 	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 
