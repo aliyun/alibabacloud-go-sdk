@@ -24,14 +24,20 @@ type iUpdateInstancePortResponseBody interface {
 }
 
 type UpdateInstancePortResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -42,10 +48,14 @@ type UpdateInstancePortResponseBody struct {
 	//
 	// D1303CD4-AA70-5998-8025-F55B22C50840
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an exception occurred during the request, which is independent of the business result.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
+	//
 	// example:
 	//
 	// true

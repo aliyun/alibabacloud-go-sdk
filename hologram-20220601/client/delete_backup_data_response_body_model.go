@@ -24,18 +24,26 @@ type iDeleteBackupDataResponseBody interface {
 }
 
 type DeleteBackupDataResponseBody struct {
+	// The returned result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type DeleteBackupDataResponseBody struct {
 	//
 	// 1907BA1B-B443-5B39-8113-7F3E260DC20D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

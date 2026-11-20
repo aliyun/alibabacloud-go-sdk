@@ -18,11 +18,13 @@ type iCreateHoloWarehouseRequest interface {
 }
 
 type CreateHoloWarehouseRequest struct {
+	// The number of clusters.
+	//
 	// example:
 	//
 	// 2
 	ClusterCount *int64 `json:"clusterCount,omitempty" xml:"clusterCount,omitempty"`
-	// The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16 CPUs. Minimum value: 16.
+	// The specifications of the compute group. The value must be a multiple of 16, and the minimum value is 16.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +32,7 @@ type CreateHoloWarehouseRequest struct {
 	//
 	// 32
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The name of the virtual warehouse.
+	// The name of the compute group.
 	//
 	// This parameter is required.
 	//

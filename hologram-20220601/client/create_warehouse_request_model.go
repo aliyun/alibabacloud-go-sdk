@@ -32,13 +32,13 @@ type CreateWarehouseRequest struct {
 	//
 	// ""
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The number of vCPUs.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 32
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The name of the virtual warehouse.
+	// The name of the warehouse.
 	//
 	// example:
 	//

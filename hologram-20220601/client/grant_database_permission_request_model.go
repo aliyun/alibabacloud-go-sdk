@@ -18,11 +18,16 @@ type iGrantDatabasePermissionRequest interface {
 }
 
 type GrantDatabasePermissionRequest struct {
+	// The database name.
+	//
 	// example:
 	//
 	// test_db
-	DatabaseName *string   `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	Privileges   []*string `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The list of permissions.
+	Privileges []*string `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
+	// The user ID. For more information, see [Hologres account overview](https://help.aliyun.com/document_detail/130393.html).
+	//
 	// example:
 	//
 	// p4_123444xxx

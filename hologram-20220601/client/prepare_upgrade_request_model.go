@@ -18,14 +18,20 @@ type iPrepareUpgradeRequest interface {
 }
 
 type PrepareUpgradeRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// **[Deprecated]*	- This parameter is deprecated.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The target version. Call ListUpgradeReleaseVersion to check the available target versions.
+	//
 	// example:
 	//
 	// r5.0.0

@@ -16,10 +16,14 @@ type iUpdateMaintenanceWindowRequest interface {
 }
 
 type UpdateMaintenanceWindowRequest struct {
+	// The end time in the HH:mm format (24-hour clock).
+	//
 	// example:
 	//
 	// 02:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start time in the HH:mm format (24-hour clock).
+	//
 	// example:
 	//
 	// 00:00

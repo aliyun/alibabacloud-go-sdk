@@ -16,6 +16,12 @@ type iUpdateWarehouseScheduleTaskResponseBody interface {
 }
 
 type UpdateWarehouseScheduleTaskResponseBody struct {
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true

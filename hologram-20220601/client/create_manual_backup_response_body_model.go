@@ -24,18 +24,26 @@ type iCreateManualBackupResponseBody interface {
 }
 
 type CreateManualBackupResponseBody struct {
+	// The returned result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type CreateManualBackupResponseBody struct {
 	//
 	// 5C11C8CB-9851-504D-8A41-3CF5F4FC0358
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

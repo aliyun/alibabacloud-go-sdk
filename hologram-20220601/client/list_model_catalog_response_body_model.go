@@ -25,8 +25,11 @@ type ListModelCatalogResponseBody struct {
 	// example:
 	//
 	// 50
-	MaxResults *int32                                   `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	ModelList  []*ListModelCatalogResponseBodyModelList `json:"modelList,omitempty" xml:"modelList,omitempty" type:"Repeated"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The list of models.
+	ModelList []*ListModelCatalogResponseBodyModelList `json:"modelList,omitempty" xml:"modelList,omitempty" type:"Repeated"`
+	// The pagination token. Set this parameter to the value of NextToken returned from the previous API call.
+	//
 	// example:
 	//
 	// None
@@ -97,27 +100,96 @@ func (s *ListModelCatalogResponseBody) Validate() error {
 }
 
 type ListModelCatalogResponseBodyModelList struct {
+	// The default parameters.
+	//
 	// example:
 	//
 	// {"timeout": 600, "max_retries": 10, "max_retry_delay": 8, "initial_retry_delay": 0.5}
 	DefaultParams *string `json:"defaultParams,omitempty" xml:"defaultParams,omitempty"`
+	// The additional parameters.
+	//
 	// example:
 	//
 	// {\\"deepThink\\":false,\\"onlineSearch\\":true}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen3.5-plus
-	ModelType     *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The parameter example.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "extra_body": {
+	//
+	//         "translation_options": {
+	//
+	//             "source_lang": "zh",
+	//
+	//             "domains": "The sentence is from Ali Cloud IT domain. ",
+	//
+	//             "terms": [
+	//
+	//                 {
+	//
+	//                     "source": "Biosensor",
+	//
+	//                     "target": "biological sensor"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "source": "Physical health status",
+	//
+	//                     "target": "health status of the body"
+	//
+	//                 }
+	//
+	//             ],
+	//
+	//             "tm_list": [
+	//
+	//                 {
+	//
+	//                     "source": "You can use one of the following methods to view the kernel version information of a cluster:",
+	//
+	//                     "target": "You can use one of the following methods to query the engine version of a cluster:"
+	//
+	//                 }
+	//
+	//             ]
+	//
+	//         }
+	//
+	//     }
+	//
+	// }
 	ParamsExample *string `json:"paramsExample,omitempty" xml:"paramsExample,omitempty"`
+	// The underlying model provider.
+	//
 	// example:
 	//
 	// bailian
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The deployment region.
+	//
 	// example:
 	//
 	// cn-beijing
 	ServiceDeployRegion *string `json:"serviceDeployRegion,omitempty" xml:"serviceDeployRegion,omitempty"`
+	// Specifies whether the model service can be accessed by using an API key.
+	//
+	// example:
+	//
+	// true
+	SupportApiKeyAccess *bool `json:"supportApiKeyAccess,omitempty" xml:"supportApiKeyAccess,omitempty"`
+	// The model purpose.
+	//
 	// example:
 	//
 	// chat/completions
@@ -156,6 +228,10 @@ func (s *ListModelCatalogResponseBodyModelList) GetServiceDeployRegion() *string
 	return s.ServiceDeployRegion
 }
 
+func (s *ListModelCatalogResponseBodyModelList) GetSupportApiKeyAccess() *bool {
+	return s.SupportApiKeyAccess
+}
+
 func (s *ListModelCatalogResponseBodyModelList) GetTaskType() *string {
 	return s.TaskType
 }
@@ -187,6 +263,11 @@ func (s *ListModelCatalogResponseBodyModelList) SetProvider(v string) *ListModel
 
 func (s *ListModelCatalogResponseBodyModelList) SetServiceDeployRegion(v string) *ListModelCatalogResponseBodyModelList {
 	s.ServiceDeployRegion = &v
+	return s
+}
+
+func (s *ListModelCatalogResponseBodyModelList) SetSupportApiKeyAccess(v bool) *ListModelCatalogResponseBodyModelList {
+	s.SupportApiKeyAccess = &v
 	return s
 }
 

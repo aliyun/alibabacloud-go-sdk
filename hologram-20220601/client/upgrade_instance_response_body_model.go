@@ -24,15 +24,22 @@ type iUpgradeInstanceResponseBody interface {
 }
 
 type UpgradeInstanceResponseBody struct {
+	// The returned data.
 	Data *UpgradeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type UpgradeInstanceResponseBody struct {
 	//
 	// EEB0A71E-7AC7-572F-990F-EE51D3FD35B9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an exception occurred during the request.
+	//
 	// example:
 	//
 	// true
@@ -121,14 +130,24 @@ func (s *UpgradeInstanceResponseBody) Validate() error {
 }
 
 type UpgradeInstanceResponseBodyData struct {
+	// The reason for the upgrade failure.
+	//
 	// example:
 	//
 	// null
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// The reason key.
+	//
 	// example:
 	//
 	// null
 	ReasonKey *string `json:"ReasonKey,omitempty" xml:"ReasonKey,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

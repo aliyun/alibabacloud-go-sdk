@@ -24,15 +24,22 @@ type iListUpgradeReleaseVersionsResponseBody interface {
 }
 
 type ListUpgradeReleaseVersionsResponseBody struct {
+	// The returned data.
 	Data []*ListUpgradeReleaseVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type ListUpgradeReleaseVersionsResponseBody struct {
 	//
 	// F6DFB9EA-0E2A-52AC-BFD5-1ADBBFFB6A2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. This parameter is unrelated to the business logic.
+	//
 	// example:
 	//
 	// true
@@ -125,15 +134,22 @@ func (s *ListUpgradeReleaseVersionsResponseBody) Validate() error {
 }
 
 type ListUpgradeReleaseVersionsResponseBodyData struct {
+	// The URL of the release notes.
+	//
 	// example:
 	//
-	// https://help.aliyun.com/zh/hologres/product-overview/release-notes
+	// https://www.alibabacloud.com/help/en/hologres/product-overview/release-notes
 	ReleaseNotesUrl *string `json:"ReleaseNotesUrl,omitempty" xml:"ReleaseNotesUrl,omitempty"`
+	// The version status.
+	//
 	// example:
 	//
 	// Stable
-	Type            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The upgrade strategy.
 	UpgradeStrategy []*string `json:"UpgradeStrategy,omitempty" xml:"UpgradeStrategy,omitempty" type:"Repeated"`
+	// The version number.
+	//
 	// example:
 	//
 	// r2.2.47

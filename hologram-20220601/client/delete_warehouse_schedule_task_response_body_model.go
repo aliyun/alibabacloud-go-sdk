@@ -16,6 +16,12 @@ type iDeleteWarehouseScheduleTaskResponseBody interface {
 }
 
 type DeleteWarehouseScheduleTaskResponseBody struct {
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true

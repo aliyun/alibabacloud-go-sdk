@@ -22,11 +22,16 @@ type iListWarehouseScheduleEventResponseBody interface {
 }
 
 type ListWarehouseScheduleEventResponseBody struct {
+	// The list of events.
 	EventList []*ListWarehouseScheduleEventResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 30. Maximum value: 100.
+	//
 	// example:
 	//
 	// 30
@@ -37,6 +42,8 @@ type ListWarehouseScheduleEventResponseBody struct {
 	//
 	// E16D32D4-DF86-1180-8220-0D39770A5AF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of events.
+	//
 	// example:
 	//
 	// 120
@@ -110,50 +117,74 @@ func (s *ListWarehouseScheduleEventResponseBody) Validate() error {
 }
 
 type ListWarehouseScheduleEventResponseBodyEventList struct {
+	// The number of clusters.
+	//
 	// example:
 	//
 	// 2
 	ClusterCount *int64 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// The cluster specifications.
+	//
 	// example:
 	//
 	// 32
 	ClusterCpu *int64 `json:"ClusterCpu,omitempty" xml:"ClusterCpu,omitempty"`
+	// The number of elastic CPUs.
+	//
 	// example:
 	//
 	// 48
 	ElasticCpu *int64 `json:"ElasticCpu,omitempty" xml:"ElasticCpu,omitempty"`
+	// The elastic scaling type.
+	//
 	// example:
 	//
 	// ScaleUp
 	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	// The event name.
+	//
 	// example:
 	//
 	// AlterWarehouse
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The time when the event occurred (UTC).
+	//
 	// example:
 	//
 	// 2024-07-22T09:43:02.638Z
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The reason for the failure.
+	//
 	// example:
 	//
 	// insufficient resource
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// The number of reserved clusters, which refers to non-elastic clusters.
+	//
 	// example:
 	//
 	// 2
 	InitClusterCount *int64 `json:"InitClusterCount,omitempty" xml:"InitClusterCount,omitempty"`
+	// **[Deprecated]*	- This field is deprecated.
+	//
 	// example:
 	//
 	// 0
 	OriginalElasticCpu *int64 `json:"OriginalElasticCpu,omitempty" xml:"OriginalElasticCpu,omitempty"`
+	// The number of reserved CPUs, which refers to non-elastic CPUs.
+	//
 	// example:
 	//
 	// 64
 	ReservedCpu *int64 `json:"ReservedCpu,omitempty" xml:"ReservedCpu,omitempty"`
+	// The result.
+	//
 	// example:
 	//
 	// success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The name of the compute group.
+	//
 	// example:
 	//
 	// init_warehouse

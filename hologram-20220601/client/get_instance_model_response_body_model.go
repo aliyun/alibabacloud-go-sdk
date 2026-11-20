@@ -50,63 +50,102 @@ type iGetInstanceModelResponseBody interface {
 }
 
 type GetInstanceModelResponseBody struct {
+	// The ID of the AI node instance.
+	//
 	// example:
 	//
 	// hologram_aicombo_public_cn-77xxx
 	AiInstanceId *string `json:"aiInstanceId,omitempty" xml:"aiInstanceId,omitempty"`
+	// Specifies whether auto-renewal is enabled for the resource. Valid values:
+	//
+	// - true: Auto-renewal is enabled. The resource is automatically renewed upon expiration.
+	//
+	// - false: Auto-renewal is disabled. The resource is stopped upon expiration.
+	//
 	// example:
 	//
 	// true
 	AutoRenewal *bool `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - PrePaid: subscription.
+	//
+	// - PostPaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// hologram_aipostpay_public_cn
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// The total CPU of the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 32
 	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The total CPU used by the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 32
 	CpuUsed *int64 `json:"cpuUsed,omitempty" xml:"cpuUsed,omitempty"`
+	// The expiration time in UTC.
+	//
 	// example:
 	//
 	// 2026-01-28T07:44:27.535Z
 	ExpirationTime *string `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	// The total GPU of the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 4
 	Gpu *int64 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The total GPU memory of the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 128
 	GpuMemory *int64 `json:"gpuMemory,omitempty" xml:"gpuMemory,omitempty"`
+	// The total GPU memory used by the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 64
 	GpuMemoryUsed *int64 `json:"gpuMemoryUsed,omitempty" xml:"gpuMemoryUsed,omitempty"`
+	// The total GPU used by the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 2
 	GpuUsed *int64 `json:"gpuUsed,omitempty" xml:"gpuUsed,omitempty"`
+	// The total memory of the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 128
 	Memory *int64 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The total memory used by the node. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 64
-	MemoryUsed       *int64                                          `json:"memoryUsed,omitempty" xml:"memoryUsed,omitempty"`
+	MemoryUsed *int64 `json:"memoryUsed,omitempty" xml:"memoryUsed,omitempty"`
+	// The list of model services.
 	ModelServiceList []*GetInstanceModelResponseBodyModelServiceList `json:"modelServiceList,omitempty" xml:"modelServiceList,omitempty" type:"Repeated"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 2
 	NodeCount *int64 `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -117,10 +156,14 @@ type GetInstanceModelResponseBody struct {
 	//
 	// 819A7F0F-2951-540F-BD94-6A41ECF0281F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// middle
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The node status.
+	//
 	// example:
 	//
 	// ResourceReady
@@ -320,66 +363,104 @@ func (s *GetInstanceModelResponseBody) Validate() error {
 }
 
 type GetInstanceModelResponseBodyModelServiceList struct {
+	// The Model Studio API key. This key is for display purposes only and cannot be used directly.
+	//
 	// example:
 	//
 	// sk-42f6c8xxxxxb
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The CPU occupied by this model service. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 32
 	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The GPU occupied by this model service. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 2
 	Gpu *int64 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The GPU memory occupied by this model service. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 32
 	GpuMemory *int64 `json:"gpuMemory,omitempty" xml:"gpuMemory,omitempty"`
+	// The deployment region of the AI node.
+	//
 	// example:
 	//
 	// cn-beijing
 	InstanceRegion *string `json:"instanceRegion,omitempty" xml:"instanceRegion,omitempty"`
+	// The memory occupied by this model service. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 32
 	Memory *int64 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Failed
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The custom name of the model service.
+	//
 	// example:
 	//
 	// my_model
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model parameters. This parameter is applicable only to Model Studio models.
+	//
 	// example:
 	//
 	// {"timeout":600,"max_retries":10,"max_retry_delay":8,"initial_retry_delay":0.5}
 	ModelParams *string `json:"modelParams,omitempty" xml:"modelParams,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen3.5-plus
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The underlying model provider.
+	//
 	// example:
 	//
 	// bailian
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The number of service replicas. This parameter is applicable only to Hologres AI nodes.
+	//
 	// example:
 	//
 	// 2
 	ServiceCount *int64 `json:"serviceCount,omitempty" xml:"serviceCount,omitempty"`
+	// The deployment region.
+	//
 	// example:
 	//
 	// cn-beijing
 	ServiceDeployRegion *string `json:"serviceDeployRegion,omitempty" xml:"serviceDeployRegion,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Specifies whether the model service supports access through an API key.
+	//
+	// example:
+	//
+	// true
+	SupportApiKeyAccess *bool `json:"supportApiKeyAccess,omitempty" xml:"supportApiKeyAccess,omitempty"`
+	// The model purpose.
+	//
 	// example:
 	//
 	// embedding
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// v1.1
@@ -448,6 +529,10 @@ func (s *GetInstanceModelResponseBodyModelServiceList) GetServiceDeployRegion() 
 
 func (s *GetInstanceModelResponseBodyModelServiceList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetInstanceModelResponseBodyModelServiceList) GetSupportApiKeyAccess() *bool {
+	return s.SupportApiKeyAccess
 }
 
 func (s *GetInstanceModelResponseBodyModelServiceList) GetTaskType() *string {
@@ -525,6 +610,11 @@ func (s *GetInstanceModelResponseBodyModelServiceList) SetServiceDeployRegion(v 
 
 func (s *GetInstanceModelResponseBodyModelServiceList) SetStatus(v string) *GetInstanceModelResponseBodyModelServiceList {
 	s.Status = &v
+	return s
+}
+
+func (s *GetInstanceModelResponseBodyModelServiceList) SetSupportApiKeyAccess(v bool) *GetInstanceModelResponseBodyModelServiceList {
+	s.SupportApiKeyAccess = &v
 	return s
 }
 

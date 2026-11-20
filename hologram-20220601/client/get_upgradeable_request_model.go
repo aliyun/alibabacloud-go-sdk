@@ -14,6 +14,8 @@ type iGetUpgradeableRequest interface {
 }
 
 type GetUpgradeableRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

@@ -20,18 +20,26 @@ type iEnableSupportAccountRequest interface {
 }
 
 type EnableSupportAccountRequest struct {
+  // The region ID.
+  // 
   // example:
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // **[Deprecated]*	- The deprecated parameter.
+  // 
   // example:
   // 
   // true
   Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+  // The expiration time. Format: YYYY-MM-DD HH:mm:ss.
+  // 
   // example:
   // 
   // 2023-03-24 11:19:05
   ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+  // The password.
+  // 
   // example:
   // 
   // xxxx

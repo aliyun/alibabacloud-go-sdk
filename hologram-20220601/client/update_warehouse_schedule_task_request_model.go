@@ -22,22 +22,32 @@ type iUpdateWarehouseScheduleTaskRequest interface {
 }
 
 type UpdateWarehouseScheduleTaskRequest struct {
+	// The number of CPU cores to scale out. The value must be a multiple of 16, greater than or equal to 16, and less than or equal to the specifications of the current compute group.
+	//
 	// example:
 	//
 	// 32
 	ElasticCu *int64 `json:"elasticCu,omitempty" xml:"elasticCu,omitempty"`
+	// The end time. The format is HHmm (four digits, 24-hour clock). The time must be on the hour or half hour, such as 0030, 0100, or 0400. The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 0400
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The elastic plan ID.
+	//
 	// example:
 	//
 	// 1980869072412614657
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The start time. The format is HHmm (four digits, 24-hour clock). The time must be on the hour or half hour, such as 0030, 0100, or 0400.
+	//
 	// example:
 	//
 	// 0200
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The compute group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

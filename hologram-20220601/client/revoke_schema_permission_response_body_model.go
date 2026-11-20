@@ -16,6 +16,12 @@ type iRevokeSchemaPermissionResponseBody interface {
 }
 
 type RevokeSchemaPermissionResponseBody struct {
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

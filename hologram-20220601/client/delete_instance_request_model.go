@@ -14,7 +14,7 @@ type iDeleteInstanceRequest interface {
 }
 
 type DeleteInstanceRequest struct {
-	// The ID of the region in which the Hologres instance resides.
+	// The region ID.
 	//
 	// example:
 	//

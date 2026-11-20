@@ -1,3 +1,10 @@
+2026-11-20 Version: v1.11.1
+- Update API GetInstance: add response parameters Body.Instance.EnableSandbox.
+- Update API GetInstanceModel: add response parameters Body.modelServiceList.$.supportApiKeyAccess.
+- Update API ListModelCatalog: add request parameters provider.
+- Update API ListModelCatalog: add response parameters Body.modelList.$.supportApiKeyAccess.
+
+
 2026-05-21 Version: v1.11.0
 - Support API BindLeaderInstance.
 - Support API CreateManualBackup.

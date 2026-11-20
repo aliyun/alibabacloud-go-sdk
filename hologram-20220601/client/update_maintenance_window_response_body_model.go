@@ -24,18 +24,26 @@ type iUpdateMaintenanceWindowResponseBody interface {
 }
 
 type UpdateMaintenanceWindowResponseBody struct {
+	// Indicates whether the operation is successful. Valid values: true: Success. false: Failure.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type UpdateMaintenanceWindowResponseBody struct {
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result. Indicates whether an exception occurred during the request.
+	//
 	// example:
 	//
 	// true

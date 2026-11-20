@@ -22,15 +22,15 @@ type iScaleInstanceResponseBody interface {
 }
 
 type ScaleInstanceResponseBody struct {
-	// The returned data.
+	// The returned result.
 	Data *ScaleInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -113,17 +113,17 @@ func (s *ScaleInstanceResponseBody) Validate() error {
 }
 
 type ScaleInstanceResponseBodyData struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidScaleType.Unsupported
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error details.
+	// The detailed error message.
 	//
 	// example:
 	//
-	// null
+	// Invalid scale type
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
 	//
@@ -131,25 +131,7 @@ type ScaleInstanceResponseBodyData struct {
 	//
 	// 219183853450000
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Indicates whether the change to specifications was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the specification change was successful.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iSuspendHoloWarehouseRequest interface {
 }
 
 type SuspendHoloWarehouseRequest struct {
-	// The name of the virtual warehouse.
+	// The name of the compute group.
 	//
 	// This parameter is required.
 	//

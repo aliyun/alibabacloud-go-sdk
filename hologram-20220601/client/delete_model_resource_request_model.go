@@ -14,6 +14,8 @@ type iDeleteModelResourceRequest interface {
 }
 
 type DeleteModelResourceRequest struct {
+	// The AI node instance ID.
+	//
 	// example:
 	//
 	// hologram_aicombo_public_cn-yi34cxxxx

@@ -16,10 +16,14 @@ type iListMigrationZonesRequest interface {
 }
 
 type ListMigrationZonesRequest struct {
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 2

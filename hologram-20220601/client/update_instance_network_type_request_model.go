@@ -24,53 +24,37 @@ type iUpdateInstanceNetworkTypeRequest interface {
 }
 
 type UpdateInstanceNetworkTypeRequest struct {
-	// Specifies whether to change the network type from AnyTunnel to SingleTunnel. This parameter is invalid for new instances. For new instances, this parameter is set to null by default.
-	//
-	// Valid values:
-	//
-	// 	- others/null: The network type is not changed from AnyTunnel to SingleTunnel.
-	//
-	// 	- true: The network type is changed from AnyTunnel to SingleTunnel.
+	// Specifies whether to convert AnyTunnel to SingleTunnel. This parameter is invalid for new instances. Set it to null by default.
 	//
 	// example:
 	//
 	// true
 	AnyTunnelToSingleTunnel *string `json:"anyTunnelToSingleTunnel,omitempty" xml:"anyTunnelToSingleTunnel,omitempty"`
-	// A list of network types that you want to enable. The network types are randomly ordered in the list. For example, the Internet, Intranet, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
-	//
-	// Valid values:
-	//
-	// 	- VPCSingleTunnel: virtual private cloud (VPC).
-	//
-	// 	- Intranet: internal network.
-	//
-	// 	- VPCAnyTunnel: compatibility requirements. This value is not supported by new instances.
-	//
-	// 	- Internet: Internet.
+	// The list of network types to enable. Specify a combination of existing network types. The order does not matter. For example, if the Internet, internal network, and VPCSingleTunnel network types are enabled and you want to disable the Internet network type, remove the Internet type and pass "Intranet, VPCSingleTunnel".
 	//
 	// example:
 	//
 	// Internet,VPCSingleTunnel
 	NetworkTypes *string `json:"networkTypes,omitempty" xml:"networkTypes,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-2vccsiymtqr9aavew0vo3
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-t4netc3y5etlondfb5ra7
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The owner ID of the VPC, which is the Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1999365732646672
 	VpcOwnerId *string `json:"vpcOwnerId,omitempty" xml:"vpcOwnerId,omitempty"`
-	// The region in which the VPC resides.
+	// The region ID of the VPC.
 	//
 	// example:
 	//

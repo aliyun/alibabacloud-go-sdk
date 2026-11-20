@@ -16,7 +16,11 @@ type iCreateHoloWarehouseResponseBody interface {
 }
 
 type CreateHoloWarehouseResponseBody struct {
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//

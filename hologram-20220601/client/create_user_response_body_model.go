@@ -24,18 +24,30 @@ type iCreateUserResponseBody interface {
 }
 
 type CreateUserResponseBody struct {
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +58,12 @@ type CreateUserResponseBody struct {
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
+	//
 	// example:
 	//
 	// true

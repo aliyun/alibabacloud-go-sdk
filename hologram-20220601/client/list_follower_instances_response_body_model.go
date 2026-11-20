@@ -24,25 +24,34 @@ type iListFollowerInstancesResponseBody interface {
 }
 
 type ListFollowerInstancesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *string                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceList   []*ListFollowerInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance details.
+	InstanceList []*ListFollowerInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. This parameter is unrelated to business logic.
+	//
 	// example:
 	//
 	// true
@@ -125,39 +134,56 @@ func (s *ListFollowerInstancesResponseBody) Validate() error {
 }
 
 type ListFollowerInstancesResponseBodyInstanceList struct {
+	// The billing method.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The commodity code, which is consistent with the product detail code in the User Center.
+	//
 	// example:
 	//
 	// hologram_postpay_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The creation time. The time is in UTC and follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2022-12-16T02:24:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The expiration time. The time is in UTC and follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2023-05-04T16:00:00.000Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgpostcn-cn-aaab9ad2d8fb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// test_instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// Standard
-	InstanceType *string                                              `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Tags         []*ListFollowerInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The tag details.
+	Tags []*ListFollowerInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListFollowerInstancesResponseBodyInstanceList) String() string {
@@ -263,10 +289,14 @@ func (s *ListFollowerInstancesResponseBodyInstanceList) Validate() error {
 }
 
 type ListFollowerInstancesResponseBodyInstanceListTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// tag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value

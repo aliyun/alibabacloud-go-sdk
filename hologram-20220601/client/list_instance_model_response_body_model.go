@@ -16,6 +16,7 @@ type iListInstanceModelResponseBody interface {
 }
 
 type ListInstanceModelResponseBody struct {
+	// The list of AI resources.
 	InstanceModelList []*ListInstanceModelResponseBodyInstanceModelList `json:"instanceModelList,omitempty" xml:"instanceModelList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,49 +66,122 @@ func (s *ListInstanceModelResponseBody) Validate() error {
 }
 
 type ListInstanceModelResponseBodyInstanceModelList struct {
+	// The ID of the AI node instance.
+	//
 	// example:
 	//
 	// hologram_aicombo_public_cn-77xxx
 	AiInstanceId *string `json:"aiInstanceId,omitempty" xml:"aiInstanceId,omitempty"`
+	// The **AI specifications**.
+	//
 	// example:
 	//
 	// small-8core-30G-24G
-	AiSpec      *string `json:"aiSpec,omitempty" xml:"aiSpec,omitempty"`
-	AutoRenewal *bool   `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
+	AiSpec *string `json:"aiSpec,omitempty" xml:"aiSpec,omitempty"`
+	// Specifies whether **auto-renewal*	- is enabled.
+	AutoRenewal *bool `json:"autoRenewal,omitempty" xml:"autoRenewal,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - PrePaid: subscription.
+	//
+	// - PostPaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// hologram_aipostpay_public_cn
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	Cpu           *int64  `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CpuUsed       *int64  `json:"cpuUsed,omitempty" xml:"cpuUsed,omitempty"`
+	// The CPU specifications. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 7
+	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The total CPU usage of the node. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 7
+	CpuUsed *int64 `json:"cpuUsed,omitempty" xml:"cpuUsed,omitempty"`
+	// The expiration time (UTC).
+	//
 	// example:
 	//
 	// 2026-01-28T07:44:27.535Z
 	ExpirationTime *string `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
-	Gpu            *int64  `json:"gpu,omitempty" xml:"gpu,omitempty"`
-	GpuMemory      *int64  `json:"gpuMemory,omitempty" xml:"gpuMemory,omitempty"`
-	GpuMemoryUsed  *int64  `json:"gpuMemoryUsed,omitempty" xml:"gpuMemoryUsed,omitempty"`
-	GpuUsed        *int64  `json:"gpuUsed,omitempty" xml:"gpuUsed,omitempty"`
+	// The number of GPUs. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 1
+	Gpu *int64 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The GPU memory size. Unit: GB. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 32
+	GpuMemory *int64 `json:"gpuMemory,omitempty" xml:"gpuMemory,omitempty"`
+	// The total GPU memory usage of the node. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 32
+	GpuMemoryUsed *int64 `json:"gpuMemoryUsed,omitempty" xml:"gpuMemoryUsed,omitempty"`
+	// The total GPU usage of the node. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 32
+	GpuUsed *int64 `json:"gpuUsed,omitempty" xml:"gpuUsed,omitempty"`
+	// The **Hologres instance ID**.
+	//
 	// example:
 	//
 	// hgpostcn-cn-yi34hlzdx003
-	HoloInstanceId   *string `json:"holoInstanceId,omitempty" xml:"holoInstanceId,omitempty"`
+	HoloInstanceId *string `json:"holoInstanceId,omitempty" xml:"holoInstanceId,omitempty"`
+	// The **Hologres instance name**.
+	//
+	// example:
+	//
+	// myInstance
 	HoloInstanceName *string `json:"holoInstanceName,omitempty" xml:"holoInstanceName,omitempty"`
-	Memory           *int64  `json:"memory,omitempty" xml:"memory,omitempty"`
-	MemoryUsed       *int64  `json:"memoryUsed,omitempty" xml:"memoryUsed,omitempty"`
-	NodeCount        *int64  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The memory size. Unit: GiB. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 16
+	Memory *int64 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The total memory usage of the node. This parameter applies only to Hologres AI nodes.
+	//
+	// example:
+	//
+	// 32
+	MemoryUsed *int64 `json:"memoryUsed,omitempty" xml:"memoryUsed,omitempty"`
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 2
+	NodeCount *int64 `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// small
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The **status**.
+	//
 	// example:
 	//
 	// ResourceReady

@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,7 +25,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.ProductId = dara.String("Hologram")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 绑定主实例
+// Associates a follower instance.
 //
 // @param request - BindLeaderInstanceRequest
 //
@@ -111,7 +119,7 @@ func (client *Client) BindLeaderInstanceWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 绑定主实例
+// Associates a follower instance.
 //
 // @param request - BindLeaderInstanceRequest
 //
@@ -200,7 +208,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建db
+// Creates a database.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -251,7 +259,7 @@ func (client *Client) CreateDatabaseWithOptions(instanceId *string, request *Cre
 
 // Summary:
 //
-// 创建db
+// Creates a database.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -270,7 +278,7 @@ func (client *Client) CreateDatabase(instanceId *string, request *CreateDatabase
 
 // Summary:
 //
-// 创建外部db
+// Creates an external database.
 //
 // @param request - CreateExternalDatabaseRequest
 //
@@ -333,7 +341,7 @@ func (client *Client) CreateExternalDatabaseWithOptions(instanceId *string, requ
 
 // Summary:
 //
-// 创建外部db
+// Creates an external database.
 //
 // @param request - CreateExternalDatabaseRequest
 //
@@ -352,7 +360,7 @@ func (client *Client) CreateExternalDatabase(instanceId *string, request *Create
 
 // Summary:
 //
-// Creates a virtual warehouse.
+// Creates a compute group.
 //
 // @param request - CreateHoloWarehouseRequest
 //
@@ -407,7 +415,7 @@ func (client *Client) CreateHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// Creates a virtual warehouse.
+// Creates a compute group.
 //
 // @param request - CreateHoloWarehouseRequest
 //
@@ -426,47 +434,55 @@ func (client *Client) CreateHoloWarehouse(instanceId *string, request *CreateHol
 
 // Summary:
 //
-// Creates a Hologres instance.
+// Creates an instance.
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.
 //
-//   - For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+// <props="intl"> - For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-// <!---->
+// - When you create a Hologres instance, you must specify the region and zone where the instance resides. A region may contain multiple zones, as follows:
 //
-//	cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+//	```
 //
-//	   cn-shanghai: cn-shanghai-e, cn-shanghai-f
+//	   cn-hangzhou (Hangzhou): cn-hangzhou-h, cn-hangzhou-j, cn-hangzhou-k
 //
-//	   cn-beijing: cn-beijing-i, cn-beijing-g
+//	   cn-shanghai (Shanghai): cn-shanghai-e, cn-shanghai-f, cn-shanghai-l
 //
-//	   cn-zhangjiakou: cn-zhangjiakou-b
+//	   cn-beijing (Beijing): cn-beijing-i, cn-beijing-g, cn-beijing-l
 //
-//	   cn-shenzhen: cn-shenzhen-e
+//	   cn-zhangjiakou (Zhangjiakou): cn-zhangjiakou-b
 //
-//	   cn-hongkong: cn-hongkong-b
+//	   cn-shenzhen (Shenzhen): cn-shenzhen-d, cn-shenzhen-f, cn-shenzhen-e
 //
-//	   cn-shanghai-finance-1: cn-shanghai-finance-1z
+//	   cn-wulanchabu (Ulanqab): cn-wulanchabu-a
 //
-//	   ap-northeast-1: ap-northeast-1a
+//	   cn-hongkong (Hong Kong): cn-hongkong-b, cn-hongkong-d
 //
-//	   ap-southeast-1: ap-southeast-1c
+//	   cn-shanghai-finance-1 (Shanghai Finance Cloud): cn-shanghai-finance-1z, cn-shanghai-finance-1f
 //
-//	   ap-southeast-3: ap-southeast-3b
+//	   cn-hangzhou-finance (Hangzhou Finance Cloud): cn-hangzhou-finance-k
 //
-//	   ap-southeast-5: ap-southeast-5b
+//	   cn-shenzhen-finance-1 (Shenzhen Finance Cloud): cn-shenzhen-finance-1d
 //
-//	   ap-south-1: ap-south-1b
+//	   ap-northeast-1 (Japan): ap-northeast-1a
 //
-//	   eu-central-1: eu-central-1a
+//	   ap-southeast-1 (Singapore): ap-southeast-1c, ap-southeast-1a
 //
-//	   us-east-1: us-east-1a
+//	   ap-southeast-3 (Kuala Lumpur): ap-southeast-3b
 //
-//	   us-west-1: us-west-1b
+//	   ap-southeast-5 (Jakarta): ap-southeast-5b
+//
+//	   eu-central-1 (Frankfurt): eu-central-1a
+//
+//	   us-east-1 (Silicon Valley): us-east-1a
+//
+//	   us-west-1 (Virginia): us-west-1b
+//
+// ```
 //
 // @param request - CreateInstanceRequest
 //
@@ -589,47 +605,55 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// Creates a Hologres instance.
+// Creates an instance.
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.
 //
-//   - For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+// <props="intl"> - For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-// <!---->
+// - When you create a Hologres instance, you must specify the region and zone where the instance resides. A region may contain multiple zones, as follows:
 //
-//	cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+//	```
 //
-//	   cn-shanghai: cn-shanghai-e, cn-shanghai-f
+//	   cn-hangzhou (Hangzhou): cn-hangzhou-h, cn-hangzhou-j, cn-hangzhou-k
 //
-//	   cn-beijing: cn-beijing-i, cn-beijing-g
+//	   cn-shanghai (Shanghai): cn-shanghai-e, cn-shanghai-f, cn-shanghai-l
 //
-//	   cn-zhangjiakou: cn-zhangjiakou-b
+//	   cn-beijing (Beijing): cn-beijing-i, cn-beijing-g, cn-beijing-l
 //
-//	   cn-shenzhen: cn-shenzhen-e
+//	   cn-zhangjiakou (Zhangjiakou): cn-zhangjiakou-b
 //
-//	   cn-hongkong: cn-hongkong-b
+//	   cn-shenzhen (Shenzhen): cn-shenzhen-d, cn-shenzhen-f, cn-shenzhen-e
 //
-//	   cn-shanghai-finance-1: cn-shanghai-finance-1z
+//	   cn-wulanchabu (Ulanqab): cn-wulanchabu-a
 //
-//	   ap-northeast-1: ap-northeast-1a
+//	   cn-hongkong (Hong Kong): cn-hongkong-b, cn-hongkong-d
 //
-//	   ap-southeast-1: ap-southeast-1c
+//	   cn-shanghai-finance-1 (Shanghai Finance Cloud): cn-shanghai-finance-1z, cn-shanghai-finance-1f
 //
-//	   ap-southeast-3: ap-southeast-3b
+//	   cn-hangzhou-finance (Hangzhou Finance Cloud): cn-hangzhou-finance-k
 //
-//	   ap-southeast-5: ap-southeast-5b
+//	   cn-shenzhen-finance-1 (Shenzhen Finance Cloud): cn-shenzhen-finance-1d
 //
-//	   ap-south-1: ap-south-1b
+//	   ap-northeast-1 (Japan): ap-northeast-1a
 //
-//	   eu-central-1: eu-central-1a
+//	   ap-southeast-1 (Singapore): ap-southeast-1c, ap-southeast-1a
 //
-//	   us-east-1: us-east-1a
+//	   ap-southeast-3 (Kuala Lumpur): ap-southeast-3b
 //
-//	   us-west-1: us-west-1b
+//	   ap-southeast-5 (Jakarta): ap-southeast-5b
+//
+//	   eu-central-1 (Frankfurt): eu-central-1a
+//
+//	   us-east-1 (Silicon Valley): us-east-1a
+//
+//	   us-west-1 (Virginia): us-west-1b
+//
+// ```
 //
 // @param request - CreateInstanceRequest
 //
@@ -648,7 +672,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建手动备份
+// Creates an instance backup.
 //
 // @param request - CreateManualBackupRequest
 //
@@ -701,7 +725,7 @@ func (client *Client) CreateManualBackupWithOptions(request *CreateManualBackupR
 
 // Summary:
 //
-// 创建手动备份
+// Creates an instance backup.
 //
 // @param request - CreateManualBackupRequest
 //
@@ -720,7 +744,11 @@ func (client *Client) CreateManualBackup(request *CreateManualBackupRequest) (_r
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service that enables AI functions to invoke models and supports the creation of two types of models: Alibaba Cloud Model Studio models and Hologres AI nodes. If you use Hologres AI, you must separately purchase AI node resources.
+//
+// Description:
+//
+// Creating a model service requires multiple parameters. For model creation of Alibaba Cloud Model Studio models, invoke ListModelCatalog to query model parameters. For model creation of Hologres AI nodes, invoke GetAvailableModelsResource to query model parameters.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -807,7 +835,11 @@ func (client *Client) CreateModelServiceWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service that enables AI functions to invoke models and supports the creation of two types of models: Alibaba Cloud Model Studio models and Hologres AI nodes. If you use Hologres AI, you must separately purchase AI node resources.
+//
+// Description:
+//
+// Creating a model service requires multiple parameters. For model creation of Alibaba Cloud Model Studio models, invoke ListModelCatalog to query model parameters. For model creation of Hologres AI nodes, invoke GetAvailableModelsResource to query model parameters.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -826,7 +858,7 @@ func (client *Client) CreateModelService(instanceId *string, request *CreateMode
 
 // Summary:
 //
-// 添加用户
+// Adds a RAM user or STS account to a Hologres instance as an instance account. After the account is added, you can log on to the instance by using the RAM or STS identity.
 //
 // @param request - CreateUserRequest
 //
@@ -877,7 +909,7 @@ func (client *Client) CreateUserWithOptions(instanceId *string, request *CreateU
 
 // Summary:
 //
-// 添加用户
+// Adds a RAM user or STS account to a Hologres instance as an instance account. After the account is added, you can log on to the instance by using the RAM or STS identity.
 //
 // @param request - CreateUserRequest
 //
@@ -896,7 +928,7 @@ func (client *Client) CreateUser(instanceId *string, request *CreateUserRequest)
 
 // Summary:
 //
-// 创建warehouse
+// Creates a warehouse.
 //
 // @param request - CreateWarehouseRequest
 //
@@ -957,7 +989,7 @@ func (client *Client) CreateWarehouseWithOptions(instanceId *string, request *Cr
 
 // Summary:
 //
-// 创建warehouse
+// Creates a warehouse.
 //
 // @param request - CreateWarehouseRequest
 //
@@ -976,7 +1008,11 @@ func (client *Client) CreateWarehouse(instanceId *string, request *CreateWarehou
 
 // Summary:
 //
-// 创建分时弹性计划
+// Creates a time-based elastic plan.
+//
+// Description:
+//
+// Creates a time-based elastic plan for a compute group of a specified Hologres instance. Before calling this operation, call ListWarehouses to obtain the compute group ID.
 //
 // @param request - CreateWarehouseScheduleTaskRequest
 //
@@ -1039,7 +1075,11 @@ func (client *Client) CreateWarehouseScheduleTaskWithOptions(instanceId *string,
 
 // Summary:
 //
-// 创建分时弹性计划
+// Creates a time-based elastic plan.
+//
+// Description:
+//
+// Creates a time-based elastic plan for a compute group of a specified Hologres instance. Before calling this operation, call ListWarehouses to obtain the compute group ID.
 //
 // @param request - CreateWarehouseScheduleTaskRequest
 //
@@ -1058,7 +1098,7 @@ func (client *Client) CreateWarehouseScheduleTask(instanceId *string, request *C
 
 // Summary:
 //
-// 删除备份
+// Deletes a backup.
 //
 // @param request - DeleteBackupDataRequest
 //
@@ -1105,7 +1145,7 @@ func (client *Client) DeleteBackupDataWithOptions(id *string, request *DeleteBac
 
 // Summary:
 //
-// 删除备份
+// Deletes a backup.
 //
 // @param request - DeleteBackupDataRequest
 //
@@ -1124,7 +1164,7 @@ func (client *Client) DeleteBackupData(id *string, request *DeleteBackupDataRequ
 
 // Summary:
 //
-// Deletes a virtual warehouse.
+// Deletes a compute group.
 //
 // @param request - DeleteHoloWarehouseRequest
 //
@@ -1171,7 +1211,7 @@ func (client *Client) DeleteHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// Deletes a virtual warehouse.
+// Deletes a compute group.
 //
 // @param request - DeleteHoloWarehouseRequest
 //
@@ -1190,15 +1230,19 @@ func (client *Client) DeleteHoloWarehouse(instanceId *string, request *DeleteHol
 
 // Summary:
 //
-// Deletes a Hologres instance.
+// Releases an instance.
 //
 // Description:
 //
-// > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+//	Warning: Before calling this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.</warning>
 //
-//   - After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+// <props="china">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - You can delete only pay-as-you-go instances.
+// <props="intl">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+//
+// - Only pay-as-you-go instances can be released.
+//
+// <props="china">- To unsubscribe from a subscription instance, go to the Unsubscription page in the Alibaba Cloud Management Console. For more information, see [Unsubscribe from subscription instances](https://www.alibabacloud.com/help/en/hologres/product-overview/subscription).
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1245,15 +1289,19 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *Del
 
 // Summary:
 //
-// Deletes a Hologres instance.
+// Releases an instance.
 //
 // Description:
 //
-// > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+//	Warning: Before calling this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.</warning>
 //
-//   - After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+// <props="china">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - You can delete only pay-as-you-go instances.
+// <props="intl">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+//
+// - Only pay-as-you-go instances can be released.
+//
+// <props="china">- To unsubscribe from a subscription instance, go to the Unsubscription page in the Alibaba Cloud Management Console. For more information, see [Unsubscribe from subscription instances](https://www.alibabacloud.com/help/en/hologres/product-overview/subscription).
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1272,7 +1320,7 @@ func (client *Client) DeleteInstance(instanceId *string, request *DeleteInstance
 
 // Summary:
 //
-// 删除模型资源
+// Deletes node resources. All models deployed on the node will be deleted and cannot be recovered.
 //
 // @param request - DeleteModelResourceRequest
 //
@@ -1319,7 +1367,7 @@ func (client *Client) DeleteModelResourceWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 删除模型资源
+// Deletes node resources. All models deployed on the node will be deleted and cannot be recovered.
 //
 // @param request - DeleteModelResourceRequest
 //
@@ -1338,7 +1386,7 @@ func (client *Client) DeleteModelResource(instanceId *string, request *DeleteMod
 
 // Summary:
 //
-// 创建模型服务
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -1385,7 +1433,7 @@ func (client *Client) DeleteModelServiceWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 创建模型服务
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -1404,7 +1452,19 @@ func (client *Client) DeleteModelService(instanceId *string, request *DeleteMode
 
 // Summary:
 //
-// 删除计算组弹性计划
+// Deletes an elastic plan for a compute group.
+//
+// Description:
+//
+//	Warning: Before calling this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
+//
+// <props="china">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+//
+// <props="intl">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+//
+// - Only pay-as-you-go instances can be released.
+//
+// <props="china">- To unsubscribe from a subscription instance, go to the Unsubscription Management page in the Alibaba Cloud Management Console. For more information, see [Unsubscribe from a subscription instance](https://www.alibabacloud.com/help/en/hologres/product-overview/subscription).
 //
 // @param request - DeleteWarehouseScheduleTaskRequest
 //
@@ -1455,7 +1515,19 @@ func (client *Client) DeleteWarehouseScheduleTaskWithOptions(instanceId *string,
 
 // Summary:
 //
-// 删除计算组弹性计划
+// Deletes an elastic plan for a compute group.
+//
+// Description:
+//
+//	Warning: Before calling this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
+//
+// <props="china">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+//
+// <props="intl">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+//
+// - Only pay-as-you-go instances can be released.
+//
+// <props="china">- To unsubscribe from a subscription instance, go to the Unsubscription Management page in the Alibaba Cloud Management Console. For more information, see [Unsubscribe from a subscription instance](https://www.alibabacloud.com/help/en/hologres/product-overview/subscription).
 //
 // @param request - DeleteWarehouseScheduleTaskRequest
 //
@@ -1474,7 +1546,7 @@ func (client *Client) DeleteWarehouseScheduleTask(instanceId *string, request *D
 
 // Summary:
 //
-// 暂停实例
+// Lists all tags.
 //
 // @param request - DescribeTagsRequest
 //
@@ -1525,7 +1597,7 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, head
 
 // Summary:
 //
-// 暂停实例
+// Lists all tags.
 //
 // @param request - DescribeTagsRequest
 //
@@ -1544,7 +1616,11 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// 关闭OpenAPI执行SQL功能
+// Shuts down the ExecuteStatement API access for a specified Hologres instance.
+//
+// Description:
+//
+// Disables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is disabled, all ExecuteStatement calls return an error. You can call EnableExecuteStatement to re-enable it.
 //
 // @param request - DisableExecuteStatementRequest
 //
@@ -1585,7 +1661,11 @@ func (client *Client) DisableExecuteStatementWithOptions(instanceId *string, req
 
 // Summary:
 //
-// 关闭OpenAPI执行SQL功能
+// Shuts down the ExecuteStatement API access for a specified Hologres instance.
+//
+// Description:
+//
+// Disables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is disabled, all ExecuteStatement calls return an error. You can call EnableExecuteStatement to re-enable it.
 //
 // @param request - DisableExecuteStatementRequest
 //
@@ -1670,7 +1750,7 @@ func (client *Client) DisableHiveAccess(instanceId *string, request *DisableHive
 
 // Summary:
 //
-// 取消执行计划
+// Disables O&M logs.
 //
 // @param request - DisableOperationEventRequest
 //
@@ -1717,7 +1797,7 @@ func (client *Client) DisableOperationEventWithOptions(instanceId *string, reque
 
 // Summary:
 //
-// 取消执行计划
+// Disables O&M logs.
 //
 // @param request - DisableOperationEventRequest
 //
@@ -1736,7 +1816,7 @@ func (client *Client) DisableOperationEvent(instanceId *string, request *Disable
 
 // Summary:
 //
-// 关闭SSL
+// Disables SSL.
 //
 // @param headers - map
 //
@@ -1769,7 +1849,7 @@ func (client *Client) DisableSSLWithOptions(instanceId *string, headers map[stri
 
 // Summary:
 //
-// 关闭SSL
+// Disables SSL.
 //
 // @return DisableSSLResponse
 func (client *Client) DisableSSL(instanceId *string) (_result *DisableSSLResponse, _err error) {
@@ -1786,7 +1866,11 @@ func (client *Client) DisableSSL(instanceId *string) (_result *DisableSSLRespons
 
 // Summary:
 //
-// 关闭服务账号
+// Disables the service account.
+//
+// Description:
+//
+// Disables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is disabled, all ExecuteStatement calls return an error. You can call EnableExecuteStatement to re-enable it.
 //
 // @param request - DisableSupportAccountRequest
 //
@@ -1833,7 +1917,11 @@ func (client *Client) DisableSupportAccountWithOptions(instanceId *string, reque
 
 // Summary:
 //
-// 关闭服务账号
+// Disables the service account.
+//
+// Description:
+//
+// Disables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is disabled, all ExecuteStatement calls return an error. You can call EnableExecuteStatement to re-enable it.
 //
 // @param request - DisableSupportAccountRequest
 //
@@ -1852,7 +1940,7 @@ func (client *Client) DisableSupportAccount(instanceId *string, request *Disable
 
 // Summary:
 //
-// 关闭自动弹性
+// Disables automatic elastic scaling.
 //
 // @param request - DisableWarehouseAutoScaleRequest
 //
@@ -1899,7 +1987,7 @@ func (client *Client) DisableWarehouseAutoScaleWithOptions(instanceId *string, r
 
 // Summary:
 //
-// 关闭自动弹性
+// Disables automatic elastic scaling.
 //
 // @param request - DisableWarehouseAutoScaleRequest
 //
@@ -1918,7 +2006,7 @@ func (client *Client) DisableWarehouseAutoScale(instanceId *string, request *Dis
 
 // Summary:
 //
-// 取消升级
+// Cancels an upgrade. The cancel upgrade button is enabled only for tasks that have not started or are in the pre_check state. Once a task enters the backup state or a subsequent state, the upgrade cannot be canceled.
 //
 // @param request - DiscardUpgradeRequest
 //
@@ -1965,7 +2053,7 @@ func (client *Client) DiscardUpgradeWithOptions(instanceId *string, request *Dis
 
 // Summary:
 //
-// 取消升级
+// Cancels an upgrade. The cancel upgrade button is enabled only for tasks that have not started or are in the pre_check state. Once a task enters the backup state or a subsequent state, the upgrade cannot be canceled.
 //
 // @param request - DiscardUpgradeRequest
 //
@@ -1984,7 +2072,11 @@ func (client *Client) DiscardUpgrade(instanceId *string, request *DiscardUpgrade
 
 // Summary:
 //
-// 删除用户
+// Deletes a RAM user or STS account from the Hologres account system. After deletion, the RAM user or STS account can no longer log on to the instance. To log on to the instance, call the CreateUser operation to add the user again.
+//
+// Description:
+//
+// 删除实例内的用户。删除后该用户不能再登录实例，如需恢复请通过 CreateUser 重新添加。删除前需确认 userName：当前没有列举用户的 OpenAPI 接口，可通过 ExecuteStatement 执行 SELECT rolname FROM pg_roles 查询实例内已有角色，且不能删除当前发起调用的账号自身。
 //
 // @param request - DropUserRequest
 //
@@ -2035,7 +2127,11 @@ func (client *Client) DropUserWithOptions(instanceId *string, request *DropUserR
 
 // Summary:
 //
-// 删除用户
+// Deletes a RAM user or STS account from the Hologres account system. After deletion, the RAM user or STS account can no longer log on to the instance. To log on to the instance, call the CreateUser operation to add the user again.
+//
+// Description:
+//
+// 删除实例内的用户。删除后该用户不能再登录实例，如需恢复请通过 CreateUser 重新添加。删除前需确认 userName：当前没有列举用户的 OpenAPI 接口，可通过 ExecuteStatement 执行 SELECT rolname FROM pg_roles 查询实例内已有角色，且不能删除当前发起调用的账号自身。
 //
 // @param request - DropUserRequest
 //
@@ -2054,7 +2150,11 @@ func (client *Client) DropUser(instanceId *string, request *DropUserRequest) (_r
 
 // Summary:
 //
-// 开启或关闭OpenAPI执行SQL功能
+// Enables SQL execution via OpenAPI for a specified Hologres instance.
+//
+// Description:
+//
+// Enables SQL execution via OpenAPI for a specified Hologres instance. Once enabled, RAM accounts with the `hologram:ExecuteStatement` permission can execute SQL statements by calling the `ExecuteStatement` API. To query the current status, call the `GetExecuteStatementEnabled` API. To disable the feature, call the `DisableExecuteStatement` API.
 //
 // @param request - EnableExecuteStatementRequest
 //
@@ -2095,7 +2195,11 @@ func (client *Client) EnableExecuteStatementWithOptions(instanceId *string, requ
 
 // Summary:
 //
-// 开启或关闭OpenAPI执行SQL功能
+// Enables SQL execution via OpenAPI for a specified Hologres instance.
+//
+// Description:
+//
+// Enables SQL execution via OpenAPI for a specified Hologres instance. Once enabled, RAM accounts with the `hologram:ExecuteStatement` permission can execute SQL statements by calling the `ExecuteStatement` API. To query the current status, call the `GetExecuteStatementEnabled` API. To disable the feature, call the `DisableExecuteStatement` API.
 //
 // @param request - EnableExecuteStatementRequest
 //
@@ -2180,7 +2284,7 @@ func (client *Client) EnableHiveAccess(instanceId *string, request *EnableHiveAc
 
 // Summary:
 //
-// 打开SSL
+// Enables SSL.
 //
 // @param headers - map
 //
@@ -2213,7 +2317,7 @@ func (client *Client) EnableSSLWithOptions(instanceId *string, headers map[strin
 
 // Summary:
 //
-// 打开SSL
+// Enables SSL.
 //
 // @return EnableSSLResponse
 func (client *Client) EnableSSL(instanceId *string) (_result *EnableSSLResponse, _err error) {
@@ -2230,7 +2334,11 @@ func (client *Client) EnableSSL(instanceId *string) (_result *EnableSSLResponse,
 
 // Summary:
 //
-// 打开服务账号
+// Enables the service account.
+//
+// Description:
+//
+// Enables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is enabled, RAM users that have the hologram:ExecuteStatement permission can execute SQL statements by calling the ExecuteStatement operation. You can call the GetExecuteStatementEnabled operation to query the current status and call the DisableExecuteStatement operation to disable the feature.
 //
 // @param request - EnableSupportAccountRequest
 //
@@ -2291,7 +2399,11 @@ func (client *Client) EnableSupportAccountWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// 打开服务账号
+// Enables the service account.
+//
+// Description:
+//
+// Enables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is enabled, RAM users that have the hologram:ExecuteStatement permission can execute SQL statements by calling the ExecuteStatement operation. You can call the GetExecuteStatementEnabled operation to query the current status and call the DisableExecuteStatement operation to disable the feature.
 //
 // @param request - EnableSupportAccountRequest
 //
@@ -2310,7 +2422,7 @@ func (client *Client) EnableSupportAccount(instanceId *string, request *EnableSu
 
 // Summary:
 //
-// 开启自动弹性
+// Enables automatic elastic scaling.
 //
 // @param request - EnableWarehouseAutoScaleRequest
 //
@@ -2361,7 +2473,7 @@ func (client *Client) EnableWarehouseAutoScaleWithOptions(instanceId *string, re
 
 // Summary:
 //
-// 开启自动弹性
+// Enables automatic elastic scaling.
 //
 // @param request - EnableWarehouseAutoScaleRequest
 //
@@ -2380,7 +2492,19 @@ func (client *Client) EnableWarehouseAutoScale(instanceId *string, request *Enab
 
 // Summary:
 //
-// # SQL执行
+// Executes an SQL statement on a specified database by using OpenAPI and returns the result.
+//
+// Description:
+//
+// This API is used to securely execute SQL statements on a Hologres instance by using OpenAPI.
+//
+//	Before you begin, meet the following conditions:
+//
+//	1. On the instance details page in the console, turn on the Allow SQL Execution by Using OpenAPI switch in the Data Security section.
+//
+//	2. The RAM user used to invoke the API has been granted the hologram:ExecuteStatement permission.
+//
+//	Statements such as SELECT, DDL, and DML are supported. The parameterized query feature with placeholders such as $1 and $2 is supported to prevent SQL injection. By default, a query returns a maximum of 200 rows (up to 1,000 rows) and 10 MB of data. Excess data is truncated, and the truncated field indicates the truncation. The timeout period for a single execution is 30 seconds.
 //
 // @param request - ExecuteStatementRequest
 //
@@ -2447,7 +2571,19 @@ func (client *Client) ExecuteStatementWithOptions(instanceId *string, request *E
 
 // Summary:
 //
-// # SQL执行
+// Executes an SQL statement on a specified database by using OpenAPI and returns the result.
+//
+// Description:
+//
+// This API is used to securely execute SQL statements on a Hologres instance by using OpenAPI.
+//
+//	Before you begin, meet the following conditions:
+//
+//	1. On the instance details page in the console, turn on the Allow SQL Execution by Using OpenAPI switch in the Data Security section.
+//
+//	2. The RAM user used to invoke the API has been granted the hologram:ExecuteStatement permission.
+//
+//	Statements such as SELECT, DDL, and DML are supported. The parameterized query feature with placeholders such as $1 and $2 is supported to prevent SQL injection. By default, a query returns a maximum of 200 rows (up to 1,000 rows) and 10 MB of data. Excess data is truncated, and the truncated field indicates the truncation. The timeout period for a single execution is 30 seconds.
 //
 // @param request - ExecuteStatementRequest
 //
@@ -2466,7 +2602,7 @@ func (client *Client) ExecuteStatement(instanceId *string, request *ExecuteState
 
 // Summary:
 //
-// 获得证书信息
+// Retrieves certificate information.
 //
 // @param headers - map
 //
@@ -2499,7 +2635,7 @@ func (client *Client) GetCertificateAttributeWithOptions(instanceId *string, hea
 
 // Summary:
 //
-// 获得证书信息
+// Retrieves certificate information.
 //
 // @return GetCertificateAttributeResponse
 func (client *Client) GetCertificateAttribute(instanceId *string) (_result *GetCertificateAttributeResponse, _err error) {
@@ -2516,7 +2652,11 @@ func (client *Client) GetCertificateAttribute(instanceId *string) (_result *GetC
 
 // Summary:
 //
-// 查询实例是否已开启OpenAPI执行SQL功能
+// Checks whether a specified Hologres instance allows SQL execution through OpenAPI.
+//
+// Description:
+//
+// This operation checks if the "Allow SQL execution through OpenAPI" feature is enabled for a specified Hologres instance. Returns `true` if the feature is enabled, and `false` otherwise. If enabled, you can call the `ExecuteStatement` operation to execute SQL statements.
 //
 // @param request - GetExecuteStatementEnabledRequest
 //
@@ -2557,7 +2697,11 @@ func (client *Client) GetExecuteStatementEnabledWithOptions(instanceId *string, 
 
 // Summary:
 //
-// 查询实例是否已开启OpenAPI执行SQL功能
+// Checks whether a specified Hologres instance allows SQL execution through OpenAPI.
+//
+// Description:
+//
+// This operation checks if the "Allow SQL execution through OpenAPI" feature is enabled for a specified Hologres instance. Returns `true` if the feature is enabled, and `false` otherwise. If enabled, you can call the `ExecuteStatement` operation to execute SQL statements.
 //
 // @param request - GetExecuteStatementEnabledRequest
 //
@@ -2576,7 +2720,11 @@ func (client *Client) GetExecuteStatementEnabled(instanceId *string, request *Ge
 
 // Summary:
 //
-// 获取holoweb登陆权限
+// Queries the HoloWeb logon permissions.
+//
+// Description:
+//
+// Queries whether the feature that allows SQL execution through OpenAPI is enabled for a specified Hologres instance. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled. After the feature is enabled, you can execute SQL statements by calling the ExecuteStatement operation.
 //
 // @param request - GetHoloWebLoginSettingRequest
 //
@@ -2623,7 +2771,11 @@ func (client *Client) GetHoloWebLoginSettingWithOptions(instanceId *string, requ
 
 // Summary:
 //
-// 获取holoweb登陆权限
+// Queries the HoloWeb logon permissions.
+//
+// Description:
+//
+// Queries whether the feature that allows SQL execution through OpenAPI is enabled for a specified Hologres instance. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled. After the feature is enabled, you can execute SQL statements by calling the ExecuteStatement operation.
 //
 // @param request - GetHoloWebLoginSettingRequest
 //
@@ -2642,7 +2794,7 @@ func (client *Client) GetHoloWebLoginSetting(instanceId *string, request *GetHol
 
 // Summary:
 //
-// Obtains the details of an instance.
+// Retrieves the details of an instance.
 //
 // @param headers - map
 //
@@ -2675,7 +2827,7 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 
 // Summary:
 //
-// Obtains the details of an instance.
+// Retrieves the details of an instance.
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
@@ -2692,7 +2844,7 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 
 // Summary:
 //
-// 模型信息
+// Queries the list of large model services bound to a Hologres instance.
 //
 // @param request - GetInstanceModelRequest
 //
@@ -2733,7 +2885,7 @@ func (client *Client) GetInstanceModelWithOptions(instanceId *string, request *G
 
 // Summary:
 //
-// 模型信息
+// Queries the list of large model services bound to a Hologres instance.
 //
 // @param request - GetInstanceModelRequest
 //
@@ -2752,7 +2904,7 @@ func (client *Client) GetInstanceModel(instanceId *string, request *GetInstanceM
 
 // Summary:
 //
-// 获取上次升级历史
+// Retrieves the last upgrade history.
 //
 // @param request - GetLastUpgradeRecordRequest
 //
@@ -2793,7 +2945,7 @@ func (client *Client) GetLastUpgradeRecordWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// 获取上次升级历史
+// Retrieves the last upgrade history.
 //
 // @param request - GetLastUpgradeRecordRequest
 //
@@ -2812,7 +2964,7 @@ func (client *Client) GetLastUpgradeRecord(instanceId *string, request *GetLastU
 
 // Summary:
 //
-// 获得根证书
+// Retrieves the root certificate.
 //
 // @param headers - map
 //
@@ -2845,7 +2997,7 @@ func (client *Client) GetRootCertificateWithOptions(instanceId *string, headers 
 
 // Summary:
 //
-// 获得根证书
+// Retrieves the root certificate.
 //
 // @return GetRootCertificateResponse
 func (client *Client) GetRootCertificate(instanceId *string) (_result *GetRootCertificateResponse, _err error) {
@@ -2862,7 +3014,7 @@ func (client *Client) GetRootCertificate(instanceId *string) (_result *GetRootCe
 
 // Summary:
 //
-// 获取周期备份配置
+// Retrieves the backup configuration.
 //
 // @param request - GetScheduledBackupConfigRequest
 //
@@ -2917,7 +3069,7 @@ func (client *Client) GetScheduledBackupConfigWithOptions(request *GetScheduledB
 
 // Summary:
 //
-// 获取周期备份配置
+// Retrieves the backup configuration.
 //
 // @param request - GetScheduledBackupConfigRequest
 //
@@ -2936,7 +3088,7 @@ func (client *Client) GetScheduledBackupConfig(request *GetScheduledBackupConfig
 
 // Summary:
 //
-// 获取升级状态
+// Queries the upgrade status.
 //
 // @param request - GetUpgradeStatusRequest
 //
@@ -2983,7 +3135,7 @@ func (client *Client) GetUpgradeStatusWithOptions(instanceId *string, request *G
 
 // Summary:
 //
-// 获取升级状态
+// Queries the upgrade status.
 //
 // @param request - GetUpgradeStatusRequest
 //
@@ -3002,7 +3154,7 @@ func (client *Client) GetUpgradeStatus(instanceId *string, request *GetUpgradeSt
 
 // Summary:
 //
-// 是否可升级
+// Queries whether an instance can be upgraded.
 //
 // @param request - GetUpgradeableRequest
 //
@@ -3049,7 +3201,7 @@ func (client *Client) GetUpgradeableWithOptions(instanceId *string, request *Get
 
 // Summary:
 //
-// 是否可升级
+// Queries whether an instance can be upgraded.
 //
 // @param request - GetUpgradeableRequest
 //
@@ -3068,7 +3220,7 @@ func (client *Client) GetUpgradeable(instanceId *string, request *GetUpgradeable
 
 // Summary:
 //
-// Queries details of a virtual warehouse instance.
+// Queries the details of a compute group.
 //
 // @param headers - map
 //
@@ -3101,7 +3253,7 @@ func (client *Client) GetWarehouseDetailWithOptions(instanceId *string, headers 
 
 // Summary:
 //
-// Queries details of a virtual warehouse instance.
+// Queries the details of a compute group.
 //
 // @return GetWarehouseDetailResponse
 func (client *Client) GetWarehouseDetail(instanceId *string) (_result *GetWarehouseDetailResponse, _err error) {
@@ -3118,7 +3270,7 @@ func (client *Client) GetWarehouseDetail(instanceId *string) (_result *GetWareho
 
 // Summary:
 //
-// # DB授权
+// Grants database permissions.
 //
 // @param request - GrantDatabasePermissionRequest
 //
@@ -3173,7 +3325,7 @@ func (client *Client) GrantDatabasePermissionWithOptions(instanceId *string, req
 
 // Summary:
 //
-// # DB授权
+// Grants database permissions.
 //
 // @param request - GrantDatabasePermissionRequest
 //
@@ -3192,7 +3344,7 @@ func (client *Client) GrantDatabasePermission(instanceId *string, request *Grant
 
 // Summary:
 //
-// # DB授权
+// Grants permissions on a database.
 //
 // @param request - GrantSchemaPermissionRequest
 //
@@ -3251,7 +3403,7 @@ func (client *Client) GrantSchemaPermissionWithOptions(instanceId *string, reque
 
 // Summary:
 //
-// # DB授权
+// Grants permissions on a database.
 //
 // @param request - GrantSchemaPermissionRequest
 //
@@ -3270,7 +3422,7 @@ func (client *Client) GrantSchemaPermission(instanceId *string, request *GrantSc
 
 // Summary:
 //
-// # DB授权
+// Grants table permissions to a specified user.
 //
 // @param request - GrantTablePermissionRequest
 //
@@ -3341,7 +3493,7 @@ func (client *Client) GrantTablePermissionWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// # DB授权
+// Grants table permissions to a specified user.
 //
 // @param request - GrantTablePermissionRequest
 //
@@ -3360,7 +3512,7 @@ func (client *Client) GrantTablePermission(instanceId *string, request *GrantTab
 
 // Summary:
 //
-// Queries a list of backups. A backup is a full data snapshot of an instance at the end of the snapshot time. You can purchase another instance to completely restore the original data.
+// Queries a list of backups. A backup is a full data snapshot of an instance up to the snapshot time. You can fully restore the original data by purchasing a new instance.
 //
 // @param request - ListBackupDataRequest
 //
@@ -3411,7 +3563,7 @@ func (client *Client) ListBackupDataWithOptions(request *ListBackupDataRequest, 
 
 // Summary:
 //
-// Queries a list of backups. A backup is a full data snapshot of an instance at the end of the snapshot time. You can purchase another instance to completely restore the original data.
+// Queries a list of backups. A backup is a full data snapshot of an instance up to the snapshot time. You can fully restore the original data by purchasing a new instance.
 //
 // @param request - ListBackupDataRequest
 //
@@ -3430,7 +3582,7 @@ func (client *Client) ListBackupData(request *ListBackupDataRequest) (_result *L
 
 // Summary:
 //
-// 获取DB列表
+// Retrieves a list of databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -3477,7 +3629,7 @@ func (client *Client) ListDatabasesWithOptions(instanceId *string, request *List
 
 // Summary:
 //
-// 获取DB列表
+// Retrieves a list of databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -3496,7 +3648,11 @@ func (client *Client) ListDatabases(instanceId *string, request *ListDatabasesRe
 
 // Summary:
 //
-// 获取只读从实例
+// Retrieves the read-only secondary instances.
+//
+// Description:
+//
+// Retrieves a list of read-only secondary instances bound to a specified Hologres primary instance. instanceId is a path parameter and must be provided when you call this operation.
 //
 // @param request - ListFollowerInstancesRequest
 //
@@ -3543,7 +3699,11 @@ func (client *Client) ListFollowerInstancesWithOptions(instanceId *string, reque
 
 // Summary:
 //
-// 获取只读从实例
+// Retrieves the read-only secondary instances.
+//
+// Description:
+//
+// Retrieves a list of read-only secondary instances bound to a specified Hologres primary instance. instanceId is a path parameter and must be provided when you call this operation.
 //
 // @param request - ListFollowerInstancesRequest
 //
@@ -3562,7 +3722,19 @@ func (client *Client) ListFollowerInstances(instanceId *string, request *ListFol
 
 // Summary:
 //
-// # AI资源列表
+// Queries the list of AI node resources.
+//
+// Description:
+//
+// ## Request description
+//
+// - Retrieves information about deployed model services on a specific Hologres instance, including but not limited to resource usage such as CPU, GPU, and memory.
+//
+// - The `instanceId` parameter is optional. If not provided, the information of all related instances is returned by default.
+//
+// - This operation applies to Hologres AI nodes. Some parameters may be invalid or inapplicable for non-AI nodes.
+//
+// - Make sure that you fully understand the [billing methods and pricing of Alibaba Cloud Hologres](https://help.aliyun.com/document_detail/113666.html) before you call this operation.
 //
 // @param request - ListInstanceModelRequest
 //
@@ -3603,7 +3775,19 @@ func (client *Client) ListInstanceModelWithOptions(request *ListInstanceModelReq
 
 // Summary:
 //
-// # AI资源列表
+// Queries the list of AI node resources.
+//
+// Description:
+//
+// ## Request description
+//
+// - Retrieves information about deployed model services on a specific Hologres instance, including but not limited to resource usage such as CPU, GPU, and memory.
+//
+// - The `instanceId` parameter is optional. If not provided, the information of all related instances is returned by default.
+//
+// - This operation applies to Hologres AI nodes. Some parameters may be invalid or inapplicable for non-AI nodes.
+//
+// - Make sure that you fully understand the [billing methods and pricing of Alibaba Cloud Hologres](https://help.aliyun.com/document_detail/113666.html) before you call this operation.
 //
 // @param request - ListInstanceModelRequest
 //
@@ -3622,7 +3806,7 @@ func (client *Client) ListInstanceModel(request *ListInstanceModelRequest) (_res
 
 // Summary:
 //
-// Queries a list of instances.
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -3677,7 +3861,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 // Summary:
 //
-// Queries a list of instances.
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -3696,7 +3880,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取主实例
+// Retrieves a list of available primary instance IDs.
+//
+// Description:
+//
+// Retrieves a list of primary instances that can be bound to a specified Hologres secondary instance. The `instanceId` parameter is a path parameter and is required.
 //
 // @param request - ListLeaderInstancesRequest
 //
@@ -3743,7 +3931,11 @@ func (client *Client) ListLeaderInstancesWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 获取主实例
+// Retrieves a list of available primary instance IDs.
+//
+// Description:
+//
+// Retrieves a list of primary instances that can be bound to a specified Hologres secondary instance. The `instanceId` parameter is a path parameter and is required.
 //
 // @param request - ListLeaderInstancesRequest
 //
@@ -3762,7 +3954,7 @@ func (client *Client) ListLeaderInstances(instanceId *string, request *ListLeade
 
 // Summary:
 //
-// 实例可迁移可用区列表
+// Queries the zones to which an instance can be migrated. Three-zone instances support self-service migration between zones.
 //
 // @param request - ListMigrationZonesRequest
 //
@@ -3813,7 +4005,7 @@ func (client *Client) ListMigrationZonesWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 实例可迁移可用区列表
+// Queries the zones to which an instance can be migrated. Three-zone instances support self-service migration between zones.
 //
 // @param request - ListMigrationZonesRequest
 //
@@ -3832,7 +4024,7 @@ func (client *Client) ListMigrationZones(instanceId *string, request *ListMigrat
 
 // Summary:
 //
-// 列出模型列表
+// Lists models.
 //
 // @param request - ListModelCatalogRequest
 //
@@ -3855,6 +4047,10 @@ func (client *Client) ListModelCatalogWithOptions(instanceId *string, request *L
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3883,7 +4079,7 @@ func (client *Client) ListModelCatalogWithOptions(instanceId *string, request *L
 
 // Summary:
 //
-// 列出模型列表
+// Lists models.
 //
 // @param request - ListModelCatalogRequest
 //
@@ -3902,7 +4098,7 @@ func (client *Client) ListModelCatalog(instanceId *string, request *ListModelCat
 
 // Summary:
 //
-// 运维事件列表
+// Queries a list of operation events based on specified conditions, supporting pagination and sorting.
 //
 // @param request - ListOperationEventsRequest
 //
@@ -3977,7 +4173,7 @@ func (client *Client) ListOperationEventsWithOptions(request *ListOperationEvent
 
 // Summary:
 //
-// 运维事件列表
+// Queries a list of operation events based on specified conditions, supporting pagination and sorting.
 //
 // @param request - ListOperationEventsRequest
 //
@@ -3996,7 +4192,7 @@ func (client *Client) ListOperationEvents(request *ListOperationEventsRequest) (
 
 // Summary:
 //
-// holoapp共有云所有开服的region
+// Queries the list of all Hologres regions.
 //
 // @param request - ListRegionsRequest
 //
@@ -4037,7 +4233,7 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, header
 
 // Summary:
 //
-// holoapp共有云所有开服的region
+// Queries the list of all Hologres regions.
 //
 // @param request - ListRegionsRequest
 //
@@ -4056,7 +4252,7 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 
 // Summary:
 //
-// 获取版本列表
+// Retrieves the list of upgradable versions.
 //
 // @param request - ListUpgradeReleaseVersionsRequest
 //
@@ -4103,7 +4299,7 @@ func (client *Client) ListUpgradeReleaseVersionsWithOptions(instanceId *string, 
 
 // Summary:
 //
-// 获取版本列表
+// Retrieves the list of upgradable versions.
 //
 // @param request - ListUpgradeReleaseVersionsRequest
 //
@@ -4122,7 +4318,19 @@ func (client *Client) ListUpgradeReleaseVersions(instanceId *string, request *Li
 
 // Summary:
 //
-// 分时弹性日志
+// Queries the elastic scheduling events of a specified instance within a given time range.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation retrieves a list of elastic scaling events for compute groups of a specified instance.
+//
+// - The `startTime` and `endTime` parameters specify the time range for the query. The default values are three days ago and the current time, respectively.
+//
+// - The `pageSize` and `pageNumber` parameters are used for paging control. The maximum value of `pageSize` is 100.
+//
+// - If the `elasticType` parameter is not provided, elastic scaling events of all types are returned.
 //
 // @param request - ListWarehouseScheduleEventRequest
 //
@@ -4185,7 +4393,19 @@ func (client *Client) ListWarehouseScheduleEventWithOptions(instanceId *string, 
 
 // Summary:
 //
-// 分时弹性日志
+// Queries the elastic scheduling events of a specified instance within a given time range.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation retrieves a list of elastic scaling events for compute groups of a specified instance.
+//
+// - The `startTime` and `endTime` parameters specify the time range for the query. The default values are three days ago and the current time, respectively.
+//
+// - The `pageSize` and `pageNumber` parameters are used for paging control. The maximum value of `pageSize` is 100.
+//
+// - If the `elasticType` parameter is not provided, elastic scaling events of all types are returned.
 //
 // @param request - ListWarehouseScheduleEventRequest
 //
@@ -4204,7 +4424,7 @@ func (client *Client) ListWarehouseScheduleEvent(instanceId *string, request *Li
 
 // Summary:
 //
-// 计算分时弹性计划列表
+// Retrieves the list of time-based elastic plan tasks for all compute groups in a specified instance.
 //
 // @param request - ListWarehouseScheduleTaskRequest
 //
@@ -4245,7 +4465,7 @@ func (client *Client) ListWarehouseScheduleTaskWithOptions(instanceId *string, r
 
 // Summary:
 //
-// 计算分时弹性计划列表
+// Retrieves the list of time-based elastic plan tasks for all compute groups in a specified instance.
 //
 // @param request - ListWarehouseScheduleTaskRequest
 //
@@ -4264,7 +4484,11 @@ func (client *Client) ListWarehouseScheduleTask(instanceId *string, request *Lis
 
 // Summary:
 //
-// Queries the list of virtual warehouse instances.
+// Retrieves a list of compute groups.
+//
+// Description:
+//
+// 获取指定计算组型实例下的计算组列表。instanceId 需为计算组型（InstanceType 为 Warehouse）实例，可通过 ListInstances 查询获取。返回结果中的 Name 为计算组名称、Status 为计算组状态（如 kRunning 表示运行中），可用于 RestartHoloWarehouse、SuspendHoloWarehouse 等接口。
 //
 // @param headers - map
 //
@@ -4297,7 +4521,11 @@ func (client *Client) ListWarehousesWithOptions(instanceId *string, headers map[
 
 // Summary:
 //
-// Queries the list of virtual warehouse instances.
+// Retrieves a list of compute groups.
+//
+// Description:
+//
+// 获取指定计算组型实例下的计算组列表。instanceId 需为计算组型（InstanceType 为 Warehouse）实例，可通过 ListInstances 查询获取。返回结果中的 Name 为计算组名称、Status 为计算组状态（如 kRunning 表示运行中），可用于 RestartHoloWarehouse、SuspendHoloWarehouse 等接口。
 //
 // @return ListWarehousesResponse
 func (client *Client) ListWarehouses(instanceId *string) (_result *ListWarehousesResponse, _err error) {
@@ -4314,7 +4542,7 @@ func (client *Client) ListWarehouses(instanceId *string) (_result *ListWarehouse
 
 // Summary:
 //
-// 实例迁移
+// Migrates an instance to the destination zone. Only three-zone instances are supported. Storage migration is not required, and the instance is started directly in the destination zone in approximately 5 minutes.
 //
 // @param request - MigrateInstanceZoneRequest
 //
@@ -4361,7 +4589,7 @@ func (client *Client) MigrateInstanceZoneWithOptions(instanceId *string, request
 
 // Summary:
 //
-// 实例迁移
+// Migrates an instance to the destination zone. Only three-zone instances are supported. Storage migration is not required, and the instance is started directly in the destination zone in approximately 5 minutes.
 //
 // @param request - MigrateInstanceZoneRequest
 //
@@ -4380,7 +4608,7 @@ func (client *Client) MigrateInstanceZone(instanceId *string, request *MigrateIn
 
 // Summary:
 //
-// 准备升级
+// Initiates pre-upgrade preparations. An evaluation is required before the upgrade. If the evaluation passes, the upgrade can proceed. Otherwise, contact technical support for a manual upgrade.
 //
 // @param request - PrepareUpgradeRequest
 //
@@ -4437,7 +4665,7 @@ func (client *Client) PrepareUpgradeWithOptions(instanceId *string, request *Pre
 
 // Summary:
 //
-// 准备升级
+// Initiates pre-upgrade preparations. An evaluation is required before the upgrade. If the evaluation passes, the upgrade can proceed. Otherwise, contact technical support for a manual upgrade.
 //
 // @param request - PrepareUpgradeRequest
 //
@@ -4456,7 +4684,7 @@ func (client *Client) PrepareUpgrade(instanceId *string, request *PrepareUpgrade
 
 // Summary:
 //
-// Triggers shard rebalancing for a virtual warehouse.
+// Balances the shards of a compute group.
 //
 // @param request - RebalanceHoloWarehouseRequest
 //
@@ -4503,7 +4731,7 @@ func (client *Client) RebalanceHoloWarehouseWithOptions(instanceId *string, requ
 
 // Summary:
 //
-// Triggers shard rebalancing for a virtual warehouse.
+// Balances the shards of a compute group.
 //
 // @param request - RebalanceHoloWarehouseRequest
 //
@@ -4522,7 +4750,7 @@ func (client *Client) RebalanceHoloWarehouse(instanceId *string, request *Rebala
 
 // Summary:
 //
-// Renames a virtual warehouse.
+// Renames a compute group.
 //
 // @param request - RenameHoloWarehouseRequest
 //
@@ -4573,7 +4801,7 @@ func (client *Client) RenameHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// Renames a virtual warehouse.
+// Renames a compute group.
 //
 // @param request - RenameHoloWarehouseRequest
 //
@@ -4592,17 +4820,21 @@ func (client *Client) RenameHoloWarehouse(instanceId *string, request *RenameHol
 
 // Summary:
 //
-// Manually renews a Hologres instance. You can enable monthly auto-renewal when you renew a Hologres instance.
+// Renews an instance manually. You can also enable monthly auto-renewal during the renewal.
 //
 // Description:
 //
-// >  Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.</warning>
 //
-//   - For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
+// <props="intl">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-//   - You can renew only subscription instances.
+// <props="china">- For more information about Hologres renewal, see [Renewal management](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals).
+//
+// <props="intl">- For more information about Hologres renewal, see [Renewal management](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
+//
+// - Renewal applies only to subscription (PrePaid) instances.
 //
 // @param request - RenewInstanceRequest
 //
@@ -4653,17 +4885,21 @@ func (client *Client) RenewInstanceWithOptions(instanceId *string, request *Rene
 
 // Summary:
 //
-// Manually renews a Hologres instance. You can enable monthly auto-renewal when you renew a Hologres instance.
+// Renews an instance manually. You can also enable monthly auto-renewal during the renewal.
 //
 // Description:
 //
-// >  Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.</warning>
 //
-//   - For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
+// <props="intl">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-//   - You can renew only subscription instances.
+// <props="china">- For more information about Hologres renewal, see [Renewal management](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals).
+//
+// <props="intl">- For more information about Hologres renewal, see [Renewal management](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
+//
+// - Renewal applies only to subscription (PrePaid) instances.
 //
 // @param request - RenewInstanceRequest
 //
@@ -4682,7 +4918,7 @@ func (client *Client) RenewInstance(instanceId *string, request *RenewInstanceRe
 
 // Summary:
 //
-// 更新证书
+// Updates an SSL certificate.
 //
 // @param headers - map
 //
@@ -4715,7 +4951,7 @@ func (client *Client) RenewSSLCertificateWithOptions(instanceId *string, headers
 
 // Summary:
 //
-// 更新证书
+// Updates an SSL certificate.
 //
 // @return RenewSSLCertificateResponse
 func (client *Client) RenewSSLCertificate(instanceId *string) (_result *RenewSSLCertificateResponse, _err error) {
@@ -4732,7 +4968,11 @@ func (client *Client) RenewSSLCertificate(instanceId *string) (_result *RenewSSL
 
 // Summary:
 //
-// Restarts a virtual warehouse.
+// Restarts a compute group.
+//
+// Description:
+//
+// 重启指定计算组。前置条件：实例处于运行中（Running）状态，可通过 GetInstance 查询 InstanceStatus；计算组处于运行中状态（kRunning），可通过 ListWarehouses 查询 Status 获取计算组名称和当前状态。调用需要实例的 Superuser 权限，重启为异步操作，调用后可再次通过 ListWarehouses 轮询 Status 确认是否完成。
 //
 // @param request - RestartHoloWarehouseRequest
 //
@@ -4779,7 +5019,11 @@ func (client *Client) RestartHoloWarehouseWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// Restarts a virtual warehouse.
+// Restarts a compute group.
+//
+// Description:
+//
+// 重启指定计算组。前置条件：实例处于运行中（Running）状态，可通过 GetInstance 查询 InstanceStatus；计算组处于运行中状态（kRunning），可通过 ListWarehouses 查询 Status 获取计算组名称和当前状态。调用需要实例的 Superuser 权限，重启为异步操作，调用后可再次通过 ListWarehouses 轮询 Status 确认是否完成。
 //
 // @param request - RestartHoloWarehouseRequest
 //
@@ -4798,7 +5042,7 @@ func (client *Client) RestartHoloWarehouse(instanceId *string, request *RestartH
 
 // Summary:
 //
-// Restarts an instance.
+// Restarts a Hologres instance.
 //
 // @param headers - map
 //
@@ -4831,7 +5075,7 @@ func (client *Client) RestartInstanceWithOptions(instanceId *string, headers map
 
 // Summary:
 //
-// Restarts an instance.
+// Restarts a Hologres instance.
 //
 // @return RestartInstanceResponse
 func (client *Client) RestartInstance(instanceId *string) (_result *RestartInstanceResponse, _err error) {
@@ -4848,7 +5092,7 @@ func (client *Client) RestartInstance(instanceId *string) (_result *RestartInsta
 
 // Summary:
 //
-// Resumes a virtual warehouse.
+// Resumes a compute group from the stopped state to the normal state.
 //
 // @param request - ResumeHoloWarehouseRequest
 //
@@ -4895,7 +5139,7 @@ func (client *Client) ResumeHoloWarehouseWithOptions(instanceId *string, request
 
 // Summary:
 //
-// Resumes a virtual warehouse.
+// Resumes a compute group from the stopped state to the normal state.
 //
 // @param request - ResumeHoloWarehouseRequest
 //
@@ -4914,7 +5158,7 @@ func (client *Client) ResumeHoloWarehouse(instanceId *string, request *ResumeHol
 
 // Summary:
 //
-// Resumes an instance.
+// Resumes a paused instance.
 //
 // @param headers - map
 //
@@ -4947,7 +5191,7 @@ func (client *Client) ResumeInstanceWithOptions(instanceId *string, headers map[
 
 // Summary:
 //
-// Resumes an instance.
+// Resumes a paused instance.
 //
 // @return ResumeInstanceResponse
 func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanceResponse, _err error) {
@@ -4964,7 +5208,7 @@ func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanc
 
 // Summary:
 //
-// 取消DB授权
+// Revokes database authorization.
 //
 // @param request - RevokeDatabasePermissionRequest
 //
@@ -5019,7 +5263,7 @@ func (client *Client) RevokeDatabasePermissionWithOptions(instanceId *string, re
 
 // Summary:
 //
-// 取消DB授权
+// Revokes database authorization.
 //
 // @param request - RevokeDatabasePermissionRequest
 //
@@ -5038,7 +5282,7 @@ func (client *Client) RevokeDatabasePermission(instanceId *string, request *Revo
 
 // Summary:
 //
-// 取消Schema授权
+// Revokes schema authorization.
 //
 // @param request - RevokeSchemaPermissionRequest
 //
@@ -5097,7 +5341,7 @@ func (client *Client) RevokeSchemaPermissionWithOptions(instanceId *string, requ
 
 // Summary:
 //
-// 取消Schema授权
+// Revokes schema authorization.
 //
 // @param request - RevokeSchemaPermissionRequest
 //
@@ -5116,7 +5360,7 @@ func (client *Client) RevokeSchemaPermission(instanceId *string, request *Revoke
 
 // Summary:
 //
-// 取消表授权
+// Revokes table permissions.
 //
 // @param request - RevokeTablePermissionRequest
 //
@@ -5187,7 +5431,7 @@ func (client *Client) RevokeTablePermissionWithOptions(instanceId *string, reque
 
 // Summary:
 //
-// 取消表授权
+// Revokes table permissions.
 //
 // @param request - RevokeTablePermissionRequest
 //
@@ -5206,7 +5450,7 @@ func (client *Client) RevokeTablePermission(instanceId *string, request *RevokeT
 
 // Summary:
 //
-// Scales in or out a virtual warehouse.
+// Scales a compute group.
 //
 // @param request - ScaleHoloWarehouseRequest
 //
@@ -5261,7 +5505,7 @@ func (client *Client) ScaleHoloWarehouseWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// Scales in or out a virtual warehouse.
+// Scales a compute group.
 //
 // @param request - ScaleHoloWarehouseRequest
 //
@@ -5280,15 +5524,19 @@ func (client *Client) ScaleHoloWarehouse(instanceId *string, request *ScaleHoloW
 
 // Summary:
 //
-// Changes the specifications and storage space of a Hologres instance.
+// Modifies the specifications and storage space of an instance.
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.
 //
-//   - For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+// <props="intl">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+//
+// <props="china">- The instance is unavailable while its compute resources are being changed. Changing instance storage resources of the instance does not affect its normal use. Do not change instance specifications frequently. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+//
+// <props="intl">- The instance is unavailable while its compute resources are being changed. Changing instance storage resources of the instance does not affect its normal use. Do not change instance specifications frequently. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/zh/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
 //
 // @param request - ScaleInstanceRequest
 //
@@ -5355,15 +5603,19 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 
 // Summary:
 //
-// Changes the specifications and storage space of a Hologres instance.
+// Modifies the specifications and storage space of an instance.
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.
 //
-//   - For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+// <props="intl">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+//
+// <props="china">- The instance is unavailable while its compute resources are being changed. Changing instance storage resources of the instance does not affect its normal use. Do not change instance specifications frequently. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+//
+// <props="intl">- The instance is unavailable while its compute resources are being changed. Changing instance storage resources of the instance does not affect its normal use. Do not change instance specifications frequently. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/zh/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
 //
 // @param request - ScaleInstanceRequest
 //
@@ -5382,7 +5634,7 @@ func (client *Client) ScaleInstance(instanceId *string, request *ScaleInstanceRe
 
 // Summary:
 //
-// Stops an instance.
+// Pauses an instance.
 //
 // @param headers - map
 //
@@ -5415,7 +5667,7 @@ func (client *Client) StopInstanceWithOptions(instanceId *string, headers map[st
 
 // Summary:
 //
-// Stops an instance.
+// Pauses an instance.
 //
 // @return StopInstanceResponse
 func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceResponse, _err error) {
@@ -5432,7 +5684,11 @@ func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceRes
 
 // Summary:
 //
-// Suspends a virtual warehouse.
+// Stops a compute group.
+//
+// Description:
+//
+// 停止指定计算组。前置条件：instanceId 为计算组型（InstanceType 为 Warehouse）且处于运行中状态的实例，可通过 ListInstances 获取；name 为 ListWarehouses 返回的计算组名称，该计算组需处于运行中状态（kRunning）。若该计算组是 Table Group 的主计算组且存在从计算组，则无法停止。调用需要实例的 Superuser 权限，停止为异步操作。
 //
 // @param request - SuspendHoloWarehouseRequest
 //
@@ -5479,7 +5735,11 @@ func (client *Client) SuspendHoloWarehouseWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// Suspends a virtual warehouse.
+// Stops a compute group.
+//
+// Description:
+//
+// 停止指定计算组。前置条件：instanceId 为计算组型（InstanceType 为 Warehouse）且处于运行中状态的实例，可通过 ListInstances 获取；name 为 ListWarehouses 返回的计算组名称，该计算组需处于运行中状态（kRunning）。若该计算组是 Table Group 的主计算组且存在从计算组，则无法停止。调用需要实例的 Superuser 权限，停止为异步操作。
 //
 // @param request - SuspendHoloWarehouseRequest
 //
@@ -5498,7 +5758,7 @@ func (client *Client) SuspendHoloWarehouse(instanceId *string, request *SuspendH
 
 // Summary:
 //
-// 新增tag
+// Adds a tag.
 //
 // @param request - TagResourcesRequest
 //
@@ -5567,7 +5827,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// 新增tag
+// Adds a tag.
 //
 // @param request - TagResourcesRequest
 //
@@ -5586,7 +5846,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 解除绑定主实例
+// Dissociates a primary instance from a secondary instance.
 //
 // @param request - UnBindLeaderInstanceRequest
 //
@@ -5633,7 +5893,7 @@ func (client *Client) UnBindLeaderInstanceWithOptions(instanceId *string, reques
 
 // Summary:
 //
-// 解除绑定主实例
+// Dissociates a primary instance from a secondary instance.
 //
 // @param request - UnBindLeaderInstanceRequest
 //
@@ -5652,7 +5912,7 @@ func (client *Client) UnBindLeaderInstance(instanceId *string, request *UnBindLe
 
 // Summary:
 //
-// 删除tag
+// Deletes instance tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -5721,7 +5981,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 删除tag
+// Deletes instance tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -5740,7 +6000,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改小版本自动升级开关
+// Enables automatic minor version upgrades. After this feature is enabled, the instance is automatically upgraded during the time window.
 //
 // @param request - UpdateAutoUpgradeRequest
 //
@@ -5787,7 +6047,7 @@ func (client *Client) UpdateAutoUpgradeWithOptions(instanceId *string, request *
 
 // Summary:
 //
-// 修改小版本自动升级开关
+// Enables automatic minor version upgrades. After this feature is enabled, the instance is automatically upgraded during the time window.
 //
 // @param request - UpdateAutoUpgradeRequest
 //
@@ -5806,7 +6066,7 @@ func (client *Client) UpdateAutoUpgrade(instanceId *string, request *UpdateAutoU
 
 // Summary:
 //
-// 更新备份描述
+// Updates the description of a backup.
 //
 // @param request - UpdateBackupDataDescRequest
 //
@@ -5863,7 +6123,7 @@ func (client *Client) UpdateBackupDataDescWithOptions(id *string, request *Updat
 
 // Summary:
 //
-// 更新备份描述
+// Updates the description of a backup.
 //
 // @param request - UpdateBackupDataDescRequest
 //
@@ -5882,7 +6142,11 @@ func (client *Client) UpdateBackupDataDesc(id *string, request *UpdateBackupData
 
 // Summary:
 //
-// 修改holoweb登陆权限
+// Modifies the HoloWeb logon permissions.
+//
+// Description:
+//
+// Model creation for a model service requires a large number of parameters. If you are performing model creation for a Model Studio model, invoke ListModelCatalog to query model parameters. If you are using a Hologres AI node, invoke GetAvailableModelsResource to query model parameters.
 //
 // @param request - UpdateHoloWebLoginSettingRequest
 //
@@ -5935,7 +6199,11 @@ func (client *Client) UpdateHoloWebLoginSettingWithOptions(instanceId *string, r
 
 // Summary:
 //
-// 修改holoweb登陆权限
+// Modifies the HoloWeb logon permissions.
+//
+// Description:
+//
+// Model creation for a model service requires a large number of parameters. If you are performing model creation for a Model Studio model, invoke ListModelCatalog to query model parameters. If you are using a Hologres AI node, invoke GetAvailableModelsResource to query model parameters.
 //
 // @param request - UpdateHoloWebLoginSettingRequest
 //
@@ -5954,7 +6222,7 @@ func (client *Client) UpdateHoloWebLoginSetting(instanceId *string, request *Upd
 
 // Summary:
 //
-// Changes the name of an instance.
+// Modifies the name of an instance.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -6001,7 +6269,7 @@ func (client *Client) UpdateInstanceNameWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// Changes the name of an instance.
+// Modifies the name of an instance.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -6020,7 +6288,7 @@ func (client *Client) UpdateInstanceName(instanceId *string, request *UpdateInst
 
 // Summary:
 //
-// Modifies the network configuration of an instance.
+// Modifies the network type of an instance.
 //
 // @param request - UpdateInstanceNetworkTypeRequest
 //
@@ -6087,7 +6355,7 @@ func (client *Client) UpdateInstanceNetworkTypeWithOptions(instanceId *string, r
 
 // Summary:
 //
-// Modifies the network configuration of an instance.
+// Modifies the network type of an instance.
 //
 // @param request - UpdateInstanceNetworkTypeRequest
 //
@@ -6106,7 +6374,7 @@ func (client *Client) UpdateInstanceNetworkType(instanceId *string, request *Upd
 
 // Summary:
 //
-// 修改端口号
+// Modifies the port number.
 //
 // @param request - UpdateInstancePortRequest
 //
@@ -6153,7 +6421,7 @@ func (client *Client) UpdateInstancePortWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 修改端口号
+// Modifies the port number.
 //
 // @param request - UpdateInstancePortRequest
 //
@@ -6172,7 +6440,7 @@ func (client *Client) UpdateInstancePort(instanceId *string, request *UpdateInst
 
 // Summary:
 //
-// 修改可维护时间窗口
+// Sets the maintenance window for an instance to perform system maintenance.
 //
 // @param request - UpdateMaintenanceWindowRequest
 //
@@ -6223,7 +6491,7 @@ func (client *Client) UpdateMaintenanceWindowWithOptions(instanceId *string, req
 
 // Summary:
 //
-// 修改可维护时间窗口
+// Sets the maintenance window for an instance to perform system maintenance.
 //
 // @param request - UpdateMaintenanceWindowRequest
 //
@@ -6242,7 +6510,7 @@ func (client *Client) UpdateMaintenanceWindow(instanceId *string, request *Updat
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model creation service. This operation applies only to Hologres AI.
 //
 // @param request - UpdateModelServiceRequest
 //
@@ -6309,7 +6577,7 @@ func (client *Client) UpdateModelServiceWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model creation service. This operation applies only to Hologres AI.
 //
 // @param request - UpdateModelServiceRequest
 //
@@ -6328,7 +6596,7 @@ func (client *Client) UpdateModelService(instanceId *string, request *UpdateMode
 
 // Summary:
 //
-// 修改运维事件执行时间
+// Updates the execution time of an O&M event.
 //
 // @param request - UpdateOperationEventScheduleTimeRequest
 //
@@ -6379,7 +6647,7 @@ func (client *Client) UpdateOperationEventScheduleTimeWithOptions(instanceId *st
 
 // Summary:
 //
-// 修改运维事件执行时间
+// Updates the execution time of an O&M event.
 //
 // @param request - UpdateOperationEventScheduleTimeRequest
 //
@@ -6398,7 +6666,7 @@ func (client *Client) UpdateOperationEventScheduleTime(instanceId *string, reque
 
 // Summary:
 //
-// 配置周期备份
+// Configures the backup policy. You can specify multiple fixed days of the week to start instance backups on a weekly cycle, such as Monday, Wednesday, and Friday at 20:00:00. You can also configure the number of completed backups to retain. Expired backups are automatically deleted.
 //
 // @param request - UpdateScheduledBackupConfigRequest
 //
@@ -6483,7 +6751,7 @@ func (client *Client) UpdateScheduledBackupConfigWithOptions(request *UpdateSche
 
 // Summary:
 //
-// 配置周期备份
+// Configures the backup policy. You can specify multiple fixed days of the week to start instance backups on a weekly cycle, such as Monday, Wednesday, and Friday at 20:00:00. You can also configure the number of completed backups to retain. Expired backups are automatically deleted.
 //
 // @param request - UpdateScheduledBackupConfigRequest
 //
@@ -6502,7 +6770,11 @@ func (client *Client) UpdateScheduledBackupConfig(request *UpdateScheduledBackup
 
 // Summary:
 //
-// 创建分时弹性计划
+// Updates the time-based elastic plan for a compute group.
+//
+// Description:
+//
+// 更新计算组分时弹性计划。前置条件：instanceId 对应实例需处于运行中（Running）状态，可通过 GetInstance 查询 InstanceStatus；warehouseId 可通过 ListWarehouses 查询返回的 Id 获取。
 //
 // @param request - UpdateWarehouseScheduleTaskRequest
 //
@@ -6565,7 +6837,11 @@ func (client *Client) UpdateWarehouseScheduleTaskWithOptions(instanceId *string,
 
 // Summary:
 //
-// 创建分时弹性计划
+// Updates the time-based elastic plan for a compute group.
+//
+// Description:
+//
+// 更新计算组分时弹性计划。前置条件：instanceId 对应实例需处于运行中（Running）状态，可通过 GetInstance 查询 InstanceStatus；warehouseId 可通过 ListWarehouses 查询返回的 Id 获取。
 //
 // @param request - UpdateWarehouseScheduleTaskRequest
 //
@@ -6584,7 +6860,7 @@ func (client *Client) UpdateWarehouseScheduleTask(instanceId *string, request *U
 
 // Summary:
 //
-// 开始升级
+// Upgrades an instance. If the preparation succeeds, the instance can start the upgrade immediately.
 //
 // @param request - UpgradeInstanceRequest
 //
@@ -6639,7 +6915,7 @@ func (client *Client) UpgradeInstanceWithOptions(instanceId *string, request *Up
 
 // Summary:
 //
-// 开始升级
+// Upgrades an instance. If the preparation succeeds, the instance can start the upgrade immediately.
 //
 // @param request - UpgradeInstanceRequest
 //

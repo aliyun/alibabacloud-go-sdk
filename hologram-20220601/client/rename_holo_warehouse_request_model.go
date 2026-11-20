@@ -16,7 +16,7 @@ type iRenameHoloWarehouseRequest interface {
 }
 
 type RenameHoloWarehouseRequest struct {
-	// The original name of the virtual warehouse.
+	// The original name of the compute group.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type RenameHoloWarehouseRequest struct {
 	//
 	// my_warehouse
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The new name of the virtual warehouse.
+	// The new name of the compute group.
 	//
 	// This parameter is required.
 	//

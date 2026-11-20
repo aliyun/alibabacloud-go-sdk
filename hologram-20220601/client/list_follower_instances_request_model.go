@@ -14,6 +14,8 @@ type iListFollowerInstancesRequest interface {
 }
 
 type ListFollowerInstancesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

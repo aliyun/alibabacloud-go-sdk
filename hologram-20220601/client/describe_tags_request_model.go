@@ -16,10 +16,14 @@ type iDescribeTagsRequest interface {
 }
 
 type DescribeTagsRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to display tags.
+	//
 	// example:
 	//
 	// true

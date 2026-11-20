@@ -22,7 +22,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// hgprecn-cn-zvp25ysv3006
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// new resource group id
+	// The ID of the new resource group.
 	//
 	// example:
 	//

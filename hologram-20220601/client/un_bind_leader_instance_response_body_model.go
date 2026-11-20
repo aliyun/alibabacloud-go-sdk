@@ -24,18 +24,26 @@ type iUnBindLeaderInstanceResponseBody interface {
 }
 
 type UnBindLeaderInstanceResponseBody struct {
+	// Indicates whether the dissociation was successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type UnBindLeaderInstanceResponseBody struct {
 	//
 	// 288D934D-3F25-5BA6-9B50-7ABB3017A134
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. This is independent of the business result.
+	//
 	// example:
 	//
 	// true

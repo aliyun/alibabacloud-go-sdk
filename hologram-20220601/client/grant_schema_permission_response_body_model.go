@@ -24,18 +24,30 @@ type iGrantSchemaPermissionResponseBody interface {
 }
 
 type GrantSchemaPermissionResponseBody struct {
+	// Indicates whether the operation succeeded. Valid values:
+	//
+	// - true: The operation succeeded.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +58,8 @@ type GrantSchemaPermissionResponseBody struct {
 	//
 	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an exception occurred during the request. This is independent of the business logic.
+	//
 	// example:
 	//
 	// true

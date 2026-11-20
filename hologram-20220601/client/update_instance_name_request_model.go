@@ -14,7 +14,7 @@ type iUpdateInstanceNameRequest interface {
 }
 
 type UpdateInstanceNameRequest struct {
-	// The new name of the instance. The name must be 2 to 64 characters in length.
+	// The new instance name. The name must be 2 to 64 characters in length. Each Chinese character or letter counts as one character.
 	//
 	// example:
 	//

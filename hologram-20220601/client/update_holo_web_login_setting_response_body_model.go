@@ -24,18 +24,26 @@ type iUpdateHoloWebLoginSettingResponseBody interface {
 }
 
 type UpdateHoloWebLoginSettingResponseBody struct {
+	// Indicates whether the operation is successful. Valid values: true (successful) and false (failed).
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type UpdateHoloWebLoginSettingResponseBody struct {
 	//
 	// CB13FFDD-2DF8-5396-A848-2D6A31245B6D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful. Valid values: true (successful) and false (failed).
+	//
 	// example:
 	//
 	// true

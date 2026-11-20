@@ -34,50 +34,72 @@ type iCreateModelServiceRequest interface {
 }
 
 type CreateModelServiceRequest struct {
+	// The API key for Alibaba Cloud Model Studio. Log on to the Model Studio console or use the API to obtain the key. This parameter is required only for Alibaba Cloud Model Studio models.
+	//
 	// example:
 	//
 	// api-key-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The CPU specifications. This parameter is required only for Hologres AI nodes.
+	//
 	// example:
 	//
 	// 16
 	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The GPU specifications. This parameter is required only for Hologres AI nodes.
+	//
 	// example:
 	//
 	// 1
 	Gpu *int64 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The GPU memory specifications. This parameter is required only for Hologres AI nodes.
+	//
 	// example:
 	//
 	// 64
 	GpuMemory *int64 `json:"gpuMemory,omitempty" xml:"gpuMemory,omitempty"`
+	// The memory specifications. This parameter is required only for Hologres AI nodes.
+	//
 	// example:
 	//
 	// 64
 	Memory *int64 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The model parameters. Refer to the default parameters returned by ListModelCatalog. You can pass the parameters directly or modify them as needed before passing. This parameter is required only for Alibaba Cloud Model Studio models.
+	//
 	// example:
 	//
 	// {"timeout":600,"max_retries":10,"max_retry_delay":8,"initial_retry_delay":0.5}
 	ModelParams *string `json:"modelParams,omitempty" xml:"modelParams,omitempty"`
+	// The custom service name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my_model
 	ModelServiceName *string `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
+	// The model name. To query Alibaba Cloud Model Studio models, call ListModelCatalog. To query Hologres AI nodes, call GetAvailableModelsResource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen3.5-plus
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The underlying model provider.
+	//
 	// example:
 	//
 	// bailian
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The number of service replicas. This parameter is required only for Hologres AI nodes.
+	//
 	// example:
 	//
 	// 2
 	ServiceCount *int64 `json:"serviceCount,omitempty" xml:"serviceCount,omitempty"`
+	// The model type, such as chat/completions or embedding. Refer to the types returned by ListModelCatalog and create the model as needed.
+	//
 	// example:
 	//
 	// embedding

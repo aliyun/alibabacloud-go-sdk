@@ -24,17 +24,17 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
-	// 404
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
-	// Internal server error.
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -42,7 +42,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The instances.
+	// The list of instances.
 	InstanceList []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type ListInstancesResponseBody struct {
 	//
 	// D1303CD4-AA70-5998-8025-F55B22C50840
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the API call is successful.
 	//
 	// example:
 	//
@@ -134,82 +134,39 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstanceList struct {
-	// The commodity code, which is the same as that on the Billing Management page.
+	// The commodity code, which is consistent with the product detail code in the User Center.
 	//
 	// example:
 	//
 	// hologram_postpay_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The time when the cluster was created.
+	// The creation time. The time is displayed in UTC and formatted according to ISO 8601.
 	//
 	// example:
 	//
 	// 2022-12-16T02:24:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether lakehouse acceleration is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Specifies whether data lakehouse acceleration is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
-	EnableSSL        *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// Specifies whether SSL is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableSSL *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	// The list of endpoints.
 	Endpoints []*ListInstancesResponseBodyInstanceListEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The time when the cluster expires.
+	// The expiration time. The time is displayed in UTC and formatted according to ISO 8601.
 	//
 	// example:
 	//
 	// 2023-05-04T16:00:00.000Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// Valid values:
-	//
-	// 	- PostPaid
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     pay-as-you-go
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- PrePaid
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     subscription
-	//
-	//     <!-- -->
-	//
-	//     .
+	// The billing method of the instance.
 	//
 	// example:
 	//
@@ -221,94 +178,32 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// hgpostcn-cn-aaab9ad2d8fb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// test_instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The status of the instance.
-	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Suspended
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Allocating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The type of the instance.
-	//
-	// Valid values:
-	//
-	// 	- Follower
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     read-only secondary instance
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Standard
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     normal instance
-	//
-	//     <!-- -->
-	//
-	//     .
+	// The instance type.
 	//
 	// example:
 	//
 	// Standard
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the primary instance.
+	// The leader instance ID.
 	//
 	// example:
 	//
 	// hgprecn-cn-2r42sqvxm006
 	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -319,21 +214,32 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// rg-acfmvscak73zmby
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StorageType     *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The reason for the suspension.
+	// The storage type. Valid values:
+	//
+	// 	- redundant: 3AZ
+	//
+	// 	- local: 1AZ
+	//
+	// example:
+	//
+	// redundant
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The reason for suspension.
 	//
 	// example:
 	//
 	// Manual
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
-	// The tags that are added to the resource.
+	// The list of tags.
 	Tags []*ListInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The version of the cluster.
+	// The instance version.
 	//
 	// example:
 	//
 	// 1.3.37
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -542,25 +448,7 @@ func (s *ListInstancesResponseBodyInstanceList) Validate() error {
 }
 
 type ListInstancesResponseBodyInstanceListEndpoints struct {
-	// Indicates whether the endpoint is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Specifies whether the endpoint is enabled.
 	//
 	// example:
 	//
@@ -573,60 +461,6 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	// hgpostcn-cn-aaab9ad2d8fb-cn-hangzhou-internal.hologres.aliyuncs.com:80
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The network type.
-	//
-	// Valid values:
-	//
-	// 	- VPCSingleTunnel
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     virtual private cloud (VPC)
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Intranet
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     internal network
-	//
-	//     <!-- -->
-	//
-	// 	- VPCAnyTunnel
-	//
-	//     <!-- -->
-	//
-	//     : This value is not supported by new instances
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Internet
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     Internet
-	//
-	//     <!-- -->
-	//
-	//     .
 	//
 	// example:
 	//
@@ -644,7 +478,7 @@ type ListInstancesResponseBodyInstanceListEndpoints struct {
 	//
 	// vpc-uf6mrahzyu7uorlqqpz5f
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the VPC to which the instance belongs.
+	// The ID of the VPC-connected instance.
 	//
 	// example:
 	//

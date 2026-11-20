@@ -16,6 +16,7 @@ type iGetLastUpgradeRecordResponseBody interface {
 }
 
 type GetLastUpgradeRecordResponseBody struct {
+	// The returned data.
 	Data *GetLastUpgradeRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,18 +62,26 @@ func (s *GetLastUpgradeRecordResponseBody) Validate() error {
 }
 
 type GetLastUpgradeRecordResponseBodyData struct {
+	// The initial version.
+	//
 	// example:
 	//
 	// r3.2.11
 	FromVersion *string `json:"fromVersion,omitempty" xml:"fromVersion,omitempty"`
+	// The start time of the read-only state. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-09-24 17:29:57
 	StartReadonlyTime *string `json:"startReadonlyTime,omitempty" xml:"startReadonlyTime,omitempty"`
+	// The end time of the read-only state. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-09-24 18:23:22
 	StopReadonlyTime *string `json:"stopReadonlyTime,omitempty" xml:"stopReadonlyTime,omitempty"`
+	// The target version.
+	//
 	// example:
 	//
 	// r4.0.2

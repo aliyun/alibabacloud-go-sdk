@@ -14,6 +14,8 @@ type iUpdateInstancePortRequest interface {
 }
 
 type UpdateInstancePortRequest struct {
+	// The port number.
+	//
 	// example:
 	//
 	// 443

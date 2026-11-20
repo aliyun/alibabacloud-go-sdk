@@ -14,6 +14,8 @@ type iMigrateInstanceZoneRequest interface {
 }
 
 type MigrateInstanceZoneRequest struct {
+	// The destination zone. Call ListMigrationZones to verify that the destination zone meets the migration conditions.
+	//
 	// example:
 	//
 	// cn-hangzhou-h

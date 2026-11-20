@@ -14,6 +14,8 @@ type iGetHoloWebLoginSettingRequest interface {
 }
 
 type GetHoloWebLoginSettingRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

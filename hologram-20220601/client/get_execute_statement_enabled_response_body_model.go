@@ -24,28 +24,42 @@ type iGetExecuteStatementEnabledResponseBody interface {
 }
 
 type GetExecuteStatementEnabledResponseBody struct {
+	// Indicates whether SQL execution through OpenAPI is allowed (`true`) or not (`false`).
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// - The error code that is returned if the request fails (when `success` is `false`).
+	//
+	// - This parameter is empty if the request is successful (when `success` is `true`).
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - The error message that is returned if the request fails (when `success` is `false`).
+	//
+	// - This parameter is empty if the request is successful (when `success` is `true`).
+	//
 	// example:
 	//
 	// ok
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2C2ECDC1-FBAD-14A5-AA4A-96BC787FBDBC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

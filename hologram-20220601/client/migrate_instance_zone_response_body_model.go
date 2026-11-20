@@ -16,6 +16,12 @@ type iMigrateInstanceZoneResponseBody interface {
 }
 
 type MigrateInstanceZoneResponseBody struct {
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: The operation is successful.
+	//
+	// - false: The operation fails.
+	//
 	// example:
 	//
 	// true

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 绑定主实例
+// Associates a follower instance.
 //
 // @param request - BindLeaderInstanceRequest
 //
@@ -113,7 +113,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建db
+// Creates a database.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -164,7 +164,7 @@ func (client *Client) CreateDatabaseWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// 创建外部db
+// Creates an external database.
 //
 // @param request - CreateExternalDatabaseRequest
 //
@@ -227,7 +227,7 @@ func (client *Client) CreateExternalDatabaseWithContext(ctx context.Context, ins
 
 // Summary:
 //
-// Creates a virtual warehouse.
+// Creates a compute group.
 //
 // @param request - CreateHoloWarehouseRequest
 //
@@ -282,47 +282,55 @@ func (client *Client) CreateHoloWarehouseWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// Creates a Hologres instance.
+// Creates an instance.
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.
 //
-//   - For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+// <props="intl"> - For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-// <!---->
+// - When you create a Hologres instance, you must specify the region and zone where the instance resides. A region may contain multiple zones, as follows:
 //
-//	cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+//	```
 //
-//	   cn-shanghai: cn-shanghai-e, cn-shanghai-f
+//	   cn-hangzhou (Hangzhou): cn-hangzhou-h, cn-hangzhou-j, cn-hangzhou-k
 //
-//	   cn-beijing: cn-beijing-i, cn-beijing-g
+//	   cn-shanghai (Shanghai): cn-shanghai-e, cn-shanghai-f, cn-shanghai-l
 //
-//	   cn-zhangjiakou: cn-zhangjiakou-b
+//	   cn-beijing (Beijing): cn-beijing-i, cn-beijing-g, cn-beijing-l
 //
-//	   cn-shenzhen: cn-shenzhen-e
+//	   cn-zhangjiakou (Zhangjiakou): cn-zhangjiakou-b
 //
-//	   cn-hongkong: cn-hongkong-b
+//	   cn-shenzhen (Shenzhen): cn-shenzhen-d, cn-shenzhen-f, cn-shenzhen-e
 //
-//	   cn-shanghai-finance-1: cn-shanghai-finance-1z
+//	   cn-wulanchabu (Ulanqab): cn-wulanchabu-a
 //
-//	   ap-northeast-1: ap-northeast-1a
+//	   cn-hongkong (Hong Kong): cn-hongkong-b, cn-hongkong-d
 //
-//	   ap-southeast-1: ap-southeast-1c
+//	   cn-shanghai-finance-1 (Shanghai Finance Cloud): cn-shanghai-finance-1z, cn-shanghai-finance-1f
 //
-//	   ap-southeast-3: ap-southeast-3b
+//	   cn-hangzhou-finance (Hangzhou Finance Cloud): cn-hangzhou-finance-k
 //
-//	   ap-southeast-5: ap-southeast-5b
+//	   cn-shenzhen-finance-1 (Shenzhen Finance Cloud): cn-shenzhen-finance-1d
 //
-//	   ap-south-1: ap-south-1b
+//	   ap-northeast-1 (Japan): ap-northeast-1a
 //
-//	   eu-central-1: eu-central-1a
+//	   ap-southeast-1 (Singapore): ap-southeast-1c, ap-southeast-1a
 //
-//	   us-east-1: us-east-1a
+//	   ap-southeast-3 (Kuala Lumpur): ap-southeast-3b
 //
-//	   us-west-1: us-west-1b
+//	   ap-southeast-5 (Jakarta): ap-southeast-5b
+//
+//	   eu-central-1 (Frankfurt): eu-central-1a
+//
+//	   us-east-1 (Silicon Valley): us-east-1a
+//
+//	   us-west-1 (Virginia): us-west-1b
+//
+// ```
 //
 // @param request - CreateInstanceRequest
 //
@@ -445,7 +453,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建手动备份
+// Creates an instance backup.
 //
 // @param request - CreateManualBackupRequest
 //
@@ -498,7 +506,11 @@ func (client *Client) CreateManualBackupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model service that enables AI functions to invoke models and supports the creation of two types of models: Alibaba Cloud Model Studio models and Hologres AI nodes. If you use Hologres AI, you must separately purchase AI node resources.
+//
+// Description:
+//
+// Creating a model service requires multiple parameters. For model creation of Alibaba Cloud Model Studio models, invoke ListModelCatalog to query model parameters. For model creation of Hologres AI nodes, invoke GetAvailableModelsResource to query model parameters.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -585,7 +597,7 @@ func (client *Client) CreateModelServiceWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 添加用户
+// Adds a RAM user or STS account to a Hologres instance as an instance account. After the account is added, you can log on to the instance by using the RAM or STS identity.
 //
 // @param request - CreateUserRequest
 //
@@ -636,7 +648,7 @@ func (client *Client) CreateUserWithContext(ctx context.Context, instanceId *str
 
 // Summary:
 //
-// 创建warehouse
+// Creates a warehouse.
 //
 // @param request - CreateWarehouseRequest
 //
@@ -697,7 +709,11 @@ func (client *Client) CreateWarehouseWithContext(ctx context.Context, instanceId
 
 // Summary:
 //
-// 创建分时弹性计划
+// Creates a time-based elastic plan.
+//
+// Description:
+//
+// Creates a time-based elastic plan for a compute group of a specified Hologres instance. Before calling this operation, call ListWarehouses to obtain the compute group ID.
 //
 // @param request - CreateWarehouseScheduleTaskRequest
 //
@@ -760,7 +776,7 @@ func (client *Client) CreateWarehouseScheduleTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除备份
+// Deletes a backup.
 //
 // @param request - DeleteBackupDataRequest
 //
@@ -807,7 +823,7 @@ func (client *Client) DeleteBackupDataWithContext(ctx context.Context, id *strin
 
 // Summary:
 //
-// Deletes a virtual warehouse.
+// Deletes a compute group.
 //
 // @param request - DeleteHoloWarehouseRequest
 //
@@ -854,15 +870,19 @@ func (client *Client) DeleteHoloWarehouseWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// Deletes a Hologres instance.
+// Releases an instance.
 //
 // Description:
 //
-// > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+//	Warning: Before calling this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.</warning>
 //
-//   - After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+// <props="china">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - You can delete only pay-as-you-go instances.
+// <props="intl">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+//
+// - Only pay-as-you-go instances can be released.
+//
+// <props="china">- To unsubscribe from a subscription instance, go to the Unsubscription page in the Alibaba Cloud Management Console. For more information, see [Unsubscribe from subscription instances](https://www.alibabacloud.com/help/en/hologres/product-overview/subscription).
 //
 // @param request - DeleteInstanceRequest
 //
@@ -909,7 +929,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// 删除模型资源
+// Deletes node resources. All models deployed on the node will be deleted and cannot be recovered.
 //
 // @param request - DeleteModelResourceRequest
 //
@@ -956,7 +976,7 @@ func (client *Client) DeleteModelResourceWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// 创建模型服务
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -1003,7 +1023,19 @@ func (client *Client) DeleteModelServiceWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 删除计算组弹性计划
+// Deletes an elastic plan for a compute group.
+//
+// Description:
+//
+//	Warning: Before calling this operation, read the feature documentation to ensure that you fully understand the prerequisites and impacts.
+//
+// <props="china">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+//
+// <props="intl">- After a Hologres instance is released, the data and objects in the instance cannot be recovered. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
+//
+// - Only pay-as-you-go instances can be released.
+//
+// <props="china">- To unsubscribe from a subscription instance, go to the Unsubscription Management page in the Alibaba Cloud Management Console. For more information, see [Unsubscribe from a subscription instance](https://www.alibabacloud.com/help/en/hologres/product-overview/subscription).
 //
 // @param request - DeleteWarehouseScheduleTaskRequest
 //
@@ -1054,7 +1086,7 @@ func (client *Client) DeleteWarehouseScheduleTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 暂停实例
+// Lists all tags.
 //
 // @param request - DescribeTagsRequest
 //
@@ -1105,7 +1137,11 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// 关闭OpenAPI执行SQL功能
+// Shuts down the ExecuteStatement API access for a specified Hologres instance.
+//
+// Description:
+//
+// Disables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is disabled, all ExecuteStatement calls return an error. You can call EnableExecuteStatement to re-enable it.
 //
 // @param request - DisableExecuteStatementRequest
 //
@@ -1193,7 +1229,7 @@ func (client *Client) DisableHiveAccessWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// 取消执行计划
+// Disables O&M logs.
 //
 // @param request - DisableOperationEventRequest
 //
@@ -1240,7 +1276,7 @@ func (client *Client) DisableOperationEventWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// 关闭SSL
+// Disables SSL.
 //
 // @param headers - map
 //
@@ -1273,7 +1309,11 @@ func (client *Client) DisableSSLWithContext(ctx context.Context, instanceId *str
 
 // Summary:
 //
-// 关闭服务账号
+// Disables the service account.
+//
+// Description:
+//
+// Disables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is disabled, all ExecuteStatement calls return an error. You can call EnableExecuteStatement to re-enable it.
 //
 // @param request - DisableSupportAccountRequest
 //
@@ -1320,7 +1360,7 @@ func (client *Client) DisableSupportAccountWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// 关闭自动弹性
+// Disables automatic elastic scaling.
 //
 // @param request - DisableWarehouseAutoScaleRequest
 //
@@ -1367,7 +1407,7 @@ func (client *Client) DisableWarehouseAutoScaleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 取消升级
+// Cancels an upgrade. The cancel upgrade button is enabled only for tasks that have not started or are in the pre_check state. Once a task enters the backup state or a subsequent state, the upgrade cannot be canceled.
 //
 // @param request - DiscardUpgradeRequest
 //
@@ -1414,7 +1454,11 @@ func (client *Client) DiscardUpgradeWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// 删除用户
+// Deletes a RAM user or STS account from the Hologres account system. After deletion, the RAM user or STS account can no longer log on to the instance. To log on to the instance, call the CreateUser operation to add the user again.
+//
+// Description:
+//
+// 删除实例内的用户。删除后该用户不能再登录实例，如需恢复请通过 CreateUser 重新添加。删除前需确认 userName：当前没有列举用户的 OpenAPI 接口，可通过 ExecuteStatement 执行 SELECT rolname FROM pg_roles 查询实例内已有角色，且不能删除当前发起调用的账号自身。
 //
 // @param request - DropUserRequest
 //
@@ -1465,7 +1509,11 @@ func (client *Client) DropUserWithContext(ctx context.Context, instanceId *strin
 
 // Summary:
 //
-// 开启或关闭OpenAPI执行SQL功能
+// Enables SQL execution via OpenAPI for a specified Hologres instance.
+//
+// Description:
+//
+// Enables SQL execution via OpenAPI for a specified Hologres instance. Once enabled, RAM accounts with the `hologram:ExecuteStatement` permission can execute SQL statements by calling the `ExecuteStatement` API. To query the current status, call the `GetExecuteStatementEnabled` API. To disable the feature, call the `DisableExecuteStatement` API.
 //
 // @param request - EnableExecuteStatementRequest
 //
@@ -1553,7 +1601,7 @@ func (client *Client) EnableHiveAccessWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// 打开SSL
+// Enables SSL.
 //
 // @param headers - map
 //
@@ -1586,7 +1634,11 @@ func (client *Client) EnableSSLWithContext(ctx context.Context, instanceId *stri
 
 // Summary:
 //
-// 打开服务账号
+// Enables the service account.
+//
+// Description:
+//
+// Enables the OpenAPI SQL execution feature for a specified Hologres instance. After the feature is enabled, RAM users that have the hologram:ExecuteStatement permission can execute SQL statements by calling the ExecuteStatement operation. You can call the GetExecuteStatementEnabled operation to query the current status and call the DisableExecuteStatement operation to disable the feature.
 //
 // @param request - EnableSupportAccountRequest
 //
@@ -1647,7 +1699,7 @@ func (client *Client) EnableSupportAccountWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// 开启自动弹性
+// Enables automatic elastic scaling.
 //
 // @param request - EnableWarehouseAutoScaleRequest
 //
@@ -1698,7 +1750,19 @@ func (client *Client) EnableWarehouseAutoScaleWithContext(ctx context.Context, i
 
 // Summary:
 //
-// # SQL执行
+// Executes an SQL statement on a specified database by using OpenAPI and returns the result.
+//
+// Description:
+//
+// This API is used to securely execute SQL statements on a Hologres instance by using OpenAPI.
+//
+//	Before you begin, meet the following conditions:
+//
+//	1. On the instance details page in the console, turn on the Allow SQL Execution by Using OpenAPI switch in the Data Security section.
+//
+//	2. The RAM user used to invoke the API has been granted the hologram:ExecuteStatement permission.
+//
+//	Statements such as SELECT, DDL, and DML are supported. The parameterized query feature with placeholders such as $1 and $2 is supported to prevent SQL injection. By default, a query returns a maximum of 200 rows (up to 1,000 rows) and 10 MB of data. Excess data is truncated, and the truncated field indicates the truncation. The timeout period for a single execution is 30 seconds.
 //
 // @param request - ExecuteStatementRequest
 //
@@ -1765,7 +1829,7 @@ func (client *Client) ExecuteStatementWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// 获得证书信息
+// Retrieves certificate information.
 //
 // @param headers - map
 //
@@ -1798,7 +1862,11 @@ func (client *Client) GetCertificateAttributeWithContext(ctx context.Context, in
 
 // Summary:
 //
-// 查询实例是否已开启OpenAPI执行SQL功能
+// Checks whether a specified Hologres instance allows SQL execution through OpenAPI.
+//
+// Description:
+//
+// This operation checks if the "Allow SQL execution through OpenAPI" feature is enabled for a specified Hologres instance. Returns `true` if the feature is enabled, and `false` otherwise. If enabled, you can call the `ExecuteStatement` operation to execute SQL statements.
 //
 // @param request - GetExecuteStatementEnabledRequest
 //
@@ -1839,7 +1907,11 @@ func (client *Client) GetExecuteStatementEnabledWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取holoweb登陆权限
+// Queries the HoloWeb logon permissions.
+//
+// Description:
+//
+// Queries whether the feature that allows SQL execution through OpenAPI is enabled for a specified Hologres instance. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled. After the feature is enabled, you can execute SQL statements by calling the ExecuteStatement operation.
 //
 // @param request - GetHoloWebLoginSettingRequest
 //
@@ -1886,7 +1958,7 @@ func (client *Client) GetHoloWebLoginSettingWithContext(ctx context.Context, ins
 
 // Summary:
 //
-// Obtains the details of an instance.
+// Retrieves the details of an instance.
 //
 // @param headers - map
 //
@@ -1919,7 +1991,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
-// 模型信息
+// Queries the list of large model services bound to a Hologres instance.
 //
 // @param request - GetInstanceModelRequest
 //
@@ -1960,7 +2032,7 @@ func (client *Client) GetInstanceModelWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// 获取上次升级历史
+// Retrieves the last upgrade history.
 //
 // @param request - GetLastUpgradeRecordRequest
 //
@@ -2001,7 +2073,7 @@ func (client *Client) GetLastUpgradeRecordWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// 获得根证书
+// Retrieves the root certificate.
 //
 // @param headers - map
 //
@@ -2034,7 +2106,7 @@ func (client *Client) GetRootCertificateWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 获取周期备份配置
+// Retrieves the backup configuration.
 //
 // @param request - GetScheduledBackupConfigRequest
 //
@@ -2089,7 +2161,7 @@ func (client *Client) GetScheduledBackupConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取升级状态
+// Queries the upgrade status.
 //
 // @param request - GetUpgradeStatusRequest
 //
@@ -2136,7 +2208,7 @@ func (client *Client) GetUpgradeStatusWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// 是否可升级
+// Queries whether an instance can be upgraded.
 //
 // @param request - GetUpgradeableRequest
 //
@@ -2183,7 +2255,7 @@ func (client *Client) GetUpgradeableWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// Queries details of a virtual warehouse instance.
+// Queries the details of a compute group.
 //
 // @param headers - map
 //
@@ -2216,7 +2288,7 @@ func (client *Client) GetWarehouseDetailWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// # DB授权
+// Grants database permissions.
 //
 // @param request - GrantDatabasePermissionRequest
 //
@@ -2271,7 +2343,7 @@ func (client *Client) GrantDatabasePermissionWithContext(ctx context.Context, in
 
 // Summary:
 //
-// # DB授权
+// Grants permissions on a database.
 //
 // @param request - GrantSchemaPermissionRequest
 //
@@ -2330,7 +2402,7 @@ func (client *Client) GrantSchemaPermissionWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// # DB授权
+// Grants table permissions to a specified user.
 //
 // @param request - GrantTablePermissionRequest
 //
@@ -2401,7 +2473,7 @@ func (client *Client) GrantTablePermissionWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// Queries a list of backups. A backup is a full data snapshot of an instance at the end of the snapshot time. You can purchase another instance to completely restore the original data.
+// Queries a list of backups. A backup is a full data snapshot of an instance up to the snapshot time. You can fully restore the original data by purchasing a new instance.
 //
 // @param request - ListBackupDataRequest
 //
@@ -2452,7 +2524,7 @@ func (client *Client) ListBackupDataWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取DB列表
+// Retrieves a list of databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -2499,7 +2571,11 @@ func (client *Client) ListDatabasesWithContext(ctx context.Context, instanceId *
 
 // Summary:
 //
-// 获取只读从实例
+// Retrieves the read-only secondary instances.
+//
+// Description:
+//
+// Retrieves a list of read-only secondary instances bound to a specified Hologres primary instance. instanceId is a path parameter and must be provided when you call this operation.
 //
 // @param request - ListFollowerInstancesRequest
 //
@@ -2546,7 +2622,19 @@ func (client *Client) ListFollowerInstancesWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// # AI资源列表
+// Queries the list of AI node resources.
+//
+// Description:
+//
+// ## Request description
+//
+// - Retrieves information about deployed model services on a specific Hologres instance, including but not limited to resource usage such as CPU, GPU, and memory.
+//
+// - The `instanceId` parameter is optional. If not provided, the information of all related instances is returned by default.
+//
+// - This operation applies to Hologres AI nodes. Some parameters may be invalid or inapplicable for non-AI nodes.
+//
+// - Make sure that you fully understand the [billing methods and pricing of Alibaba Cloud Hologres](https://help.aliyun.com/document_detail/113666.html) before you call this operation.
 //
 // @param request - ListInstanceModelRequest
 //
@@ -2587,7 +2675,7 @@ func (client *Client) ListInstanceModelWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of instances.
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -2642,7 +2730,11 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取主实例
+// Retrieves a list of available primary instance IDs.
+//
+// Description:
+//
+// Retrieves a list of primary instances that can be bound to a specified Hologres secondary instance. The `instanceId` parameter is a path parameter and is required.
 //
 // @param request - ListLeaderInstancesRequest
 //
@@ -2689,7 +2781,7 @@ func (client *Client) ListLeaderInstancesWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// 实例可迁移可用区列表
+// Queries the zones to which an instance can be migrated. Three-zone instances support self-service migration between zones.
 //
 // @param request - ListMigrationZonesRequest
 //
@@ -2740,7 +2832,7 @@ func (client *Client) ListMigrationZonesWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 列出模型列表
+// Lists models.
 //
 // @param request - ListModelCatalogRequest
 //
@@ -2763,6 +2855,10 @@ func (client *Client) ListModelCatalogWithContext(ctx context.Context, instanceI
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2791,7 +2887,7 @@ func (client *Client) ListModelCatalogWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
-// 运维事件列表
+// Queries a list of operation events based on specified conditions, supporting pagination and sorting.
 //
 // @param request - ListOperationEventsRequest
 //
@@ -2866,7 +2962,7 @@ func (client *Client) ListOperationEventsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// holoapp共有云所有开服的region
+// Queries the list of all Hologres regions.
 //
 // @param request - ListRegionsRequest
 //
@@ -2907,7 +3003,7 @@ func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListR
 
 // Summary:
 //
-// 获取版本列表
+// Retrieves the list of upgradable versions.
 //
 // @param request - ListUpgradeReleaseVersionsRequest
 //
@@ -2954,7 +3050,19 @@ func (client *Client) ListUpgradeReleaseVersionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 分时弹性日志
+// Queries the elastic scheduling events of a specified instance within a given time range.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation retrieves a list of elastic scaling events for compute groups of a specified instance.
+//
+// - The `startTime` and `endTime` parameters specify the time range for the query. The default values are three days ago and the current time, respectively.
+//
+// - The `pageSize` and `pageNumber` parameters are used for paging control. The maximum value of `pageSize` is 100.
+//
+// - If the `elasticType` parameter is not provided, elastic scaling events of all types are returned.
 //
 // @param request - ListWarehouseScheduleEventRequest
 //
@@ -3017,7 +3125,7 @@ func (client *Client) ListWarehouseScheduleEventWithContext(ctx context.Context,
 
 // Summary:
 //
-// 计算分时弹性计划列表
+// Retrieves the list of time-based elastic plan tasks for all compute groups in a specified instance.
 //
 // @param request - ListWarehouseScheduleTaskRequest
 //
@@ -3058,7 +3166,11 @@ func (client *Client) ListWarehouseScheduleTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of virtual warehouse instances.
+// Retrieves a list of compute groups.
+//
+// Description:
+//
+// 获取指定计算组型实例下的计算组列表。instanceId 需为计算组型（InstanceType 为 Warehouse）实例，可通过 ListInstances 查询获取。返回结果中的 Name 为计算组名称、Status 为计算组状态（如 kRunning 表示运行中），可用于 RestartHoloWarehouse、SuspendHoloWarehouse 等接口。
 //
 // @param headers - map
 //
@@ -3091,7 +3203,7 @@ func (client *Client) ListWarehousesWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// 实例迁移
+// Migrates an instance to the destination zone. Only three-zone instances are supported. Storage migration is not required, and the instance is started directly in the destination zone in approximately 5 minutes.
 //
 // @param request - MigrateInstanceZoneRequest
 //
@@ -3138,7 +3250,7 @@ func (client *Client) MigrateInstanceZoneWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// 准备升级
+// Initiates pre-upgrade preparations. An evaluation is required before the upgrade. If the evaluation passes, the upgrade can proceed. Otherwise, contact technical support for a manual upgrade.
 //
 // @param request - PrepareUpgradeRequest
 //
@@ -3195,7 +3307,7 @@ func (client *Client) PrepareUpgradeWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// Triggers shard rebalancing for a virtual warehouse.
+// Balances the shards of a compute group.
 //
 // @param request - RebalanceHoloWarehouseRequest
 //
@@ -3242,7 +3354,7 @@ func (client *Client) RebalanceHoloWarehouseWithContext(ctx context.Context, ins
 
 // Summary:
 //
-// Renames a virtual warehouse.
+// Renames a compute group.
 //
 // @param request - RenameHoloWarehouseRequest
 //
@@ -3293,17 +3405,21 @@ func (client *Client) RenameHoloWarehouseWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// Manually renews a Hologres instance. You can enable monthly auto-renewal when you renew a Hologres instance.
+// Renews an instance manually. You can also enable monthly auto-renewal during the renewal.
 //
 // Description:
 //
-// >  Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.</warning>
 //
-//   - For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
+// <props="intl">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-//   - You can renew only subscription instances.
+// <props="china">- For more information about Hologres renewal, see [Renewal management](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals).
+//
+// <props="intl">- For more information about Hologres renewal, see [Renewal management](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
+//
+// - Renewal applies only to subscription (PrePaid) instances.
 //
 // @param request - RenewInstanceRequest
 //
@@ -3354,7 +3470,7 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, instanceId *
 
 // Summary:
 //
-// 更新证书
+// Updates an SSL certificate.
 //
 // @param headers - map
 //
@@ -3387,7 +3503,11 @@ func (client *Client) RenewSSLCertificateWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// Restarts a virtual warehouse.
+// Restarts a compute group.
+//
+// Description:
+//
+// 重启指定计算组。前置条件：实例处于运行中（Running）状态，可通过 GetInstance 查询 InstanceStatus；计算组处于运行中状态（kRunning），可通过 ListWarehouses 查询 Status 获取计算组名称和当前状态。调用需要实例的 Superuser 权限，重启为异步操作，调用后可再次通过 ListWarehouses 轮询 Status 确认是否完成。
 //
 // @param request - RestartHoloWarehouseRequest
 //
@@ -3434,7 +3554,7 @@ func (client *Client) RestartHoloWarehouseWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// Restarts an instance.
+// Restarts a Hologres instance.
 //
 // @param headers - map
 //
@@ -3467,7 +3587,7 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, instanceId
 
 // Summary:
 //
-// Resumes a virtual warehouse.
+// Resumes a compute group from the stopped state to the normal state.
 //
 // @param request - ResumeHoloWarehouseRequest
 //
@@ -3514,7 +3634,7 @@ func (client *Client) ResumeHoloWarehouseWithContext(ctx context.Context, instan
 
 // Summary:
 //
-// Resumes an instance.
+// Resumes a paused instance.
 //
 // @param headers - map
 //
@@ -3547,7 +3667,7 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, instanceId 
 
 // Summary:
 //
-// 取消DB授权
+// Revokes database authorization.
 //
 // @param request - RevokeDatabasePermissionRequest
 //
@@ -3602,7 +3722,7 @@ func (client *Client) RevokeDatabasePermissionWithContext(ctx context.Context, i
 
 // Summary:
 //
-// 取消Schema授权
+// Revokes schema authorization.
 //
 // @param request - RevokeSchemaPermissionRequest
 //
@@ -3661,7 +3781,7 @@ func (client *Client) RevokeSchemaPermissionWithContext(ctx context.Context, ins
 
 // Summary:
 //
-// 取消表授权
+// Revokes table permissions.
 //
 // @param request - RevokeTablePermissionRequest
 //
@@ -3732,7 +3852,7 @@ func (client *Client) RevokeTablePermissionWithContext(ctx context.Context, inst
 
 // Summary:
 //
-// Scales in or out a virtual warehouse.
+// Scales a compute group.
 //
 // @param request - ScaleHoloWarehouseRequest
 //
@@ -3787,15 +3907,19 @@ func (client *Client) ScaleHoloWarehouseWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// Changes the specifications and storage space of a Hologres instance.
+// Modifies the specifications and storage space of an instance.
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+//	Warning: This API operation incurs fees. Make sure that you fully understand the billing methods and pricing of Hologres before you call this operation.
 //
-//   - For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+// <props="china">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
 //
-//   - During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resource specifications of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+// <props="intl">- For more information about Hologres billing, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
+//
+// <props="china">- The instance is unavailable while its compute resources are being changed. Changing instance storage resources of the instance does not affect its normal use. Do not change instance specifications frequently. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
+//
+// <props="intl">- The instance is unavailable while its compute resources are being changed. Changing instance storage resources of the instance does not affect its normal use. Do not change instance specifications frequently. For more information, see [Upgrade or downgrade instance specifications](https://www.alibabacloud.com/help/zh/hologres/product-overview/upgrade-or-downgrade-instance-specifications).
 //
 // @param request - ScaleInstanceRequest
 //
@@ -3862,7 +3986,7 @@ func (client *Client) ScaleInstanceWithContext(ctx context.Context, instanceId *
 
 // Summary:
 //
-// Stops an instance.
+// Pauses an instance.
 //
 // @param headers - map
 //
@@ -3895,7 +4019,11 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, instanceId *s
 
 // Summary:
 //
-// Suspends a virtual warehouse.
+// Stops a compute group.
+//
+// Description:
+//
+// 停止指定计算组。前置条件：instanceId 为计算组型（InstanceType 为 Warehouse）且处于运行中状态的实例，可通过 ListInstances 获取；name 为 ListWarehouses 返回的计算组名称，该计算组需处于运行中状态（kRunning）。若该计算组是 Table Group 的主计算组且存在从计算组，则无法停止。调用需要实例的 Superuser 权限，停止为异步操作。
 //
 // @param request - SuspendHoloWarehouseRequest
 //
@@ -3942,7 +4070,7 @@ func (client *Client) SuspendHoloWarehouseWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// 新增tag
+// Adds a tag.
 //
 // @param request - TagResourcesRequest
 //
@@ -4011,7 +4139,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 解除绑定主实例
+// Dissociates a primary instance from a secondary instance.
 //
 // @param request - UnBindLeaderInstanceRequest
 //
@@ -4058,7 +4186,7 @@ func (client *Client) UnBindLeaderInstanceWithContext(ctx context.Context, insta
 
 // Summary:
 //
-// 删除tag
+// Deletes instance tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -4127,7 +4255,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 修改小版本自动升级开关
+// Enables automatic minor version upgrades. After this feature is enabled, the instance is automatically upgraded during the time window.
 //
 // @param request - UpdateAutoUpgradeRequest
 //
@@ -4174,7 +4302,7 @@ func (client *Client) UpdateAutoUpgradeWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// 更新备份描述
+// Updates the description of a backup.
 //
 // @param request - UpdateBackupDataDescRequest
 //
@@ -4231,7 +4359,11 @@ func (client *Client) UpdateBackupDataDescWithContext(ctx context.Context, id *s
 
 // Summary:
 //
-// 修改holoweb登陆权限
+// Modifies the HoloWeb logon permissions.
+//
+// Description:
+//
+// Model creation for a model service requires a large number of parameters. If you are performing model creation for a Model Studio model, invoke ListModelCatalog to query model parameters. If you are using a Hologres AI node, invoke GetAvailableModelsResource to query model parameters.
 //
 // @param request - UpdateHoloWebLoginSettingRequest
 //
@@ -4284,7 +4416,7 @@ func (client *Client) UpdateHoloWebLoginSettingWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Changes the name of an instance.
+// Modifies the name of an instance.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -4331,7 +4463,7 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// Modifies the network configuration of an instance.
+// Modifies the network type of an instance.
 //
 // @param request - UpdateInstanceNetworkTypeRequest
 //
@@ -4398,7 +4530,7 @@ func (client *Client) UpdateInstanceNetworkTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改端口号
+// Modifies the port number.
 //
 // @param request - UpdateInstancePortRequest
 //
@@ -4445,7 +4577,7 @@ func (client *Client) UpdateInstancePortWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 修改可维护时间窗口
+// Sets the maintenance window for an instance to perform system maintenance.
 //
 // @param request - UpdateMaintenanceWindowRequest
 //
@@ -4496,7 +4628,7 @@ func (client *Client) UpdateMaintenanceWindowWithContext(ctx context.Context, in
 
 // Summary:
 //
-// 创建模型服务
+// Creates a model creation service. This operation applies only to Hologres AI.
 //
 // @param request - UpdateModelServiceRequest
 //
@@ -4563,7 +4695,7 @@ func (client *Client) UpdateModelServiceWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// 修改运维事件执行时间
+// Updates the execution time of an O&M event.
 //
 // @param request - UpdateOperationEventScheduleTimeRequest
 //
@@ -4614,7 +4746,7 @@ func (client *Client) UpdateOperationEventScheduleTimeWithContext(ctx context.Co
 
 // Summary:
 //
-// 配置周期备份
+// Configures the backup policy. You can specify multiple fixed days of the week to start instance backups on a weekly cycle, such as Monday, Wednesday, and Friday at 20:00:00. You can also configure the number of completed backups to retain. Expired backups are automatically deleted.
 //
 // @param request - UpdateScheduledBackupConfigRequest
 //
@@ -4699,7 +4831,11 @@ func (client *Client) UpdateScheduledBackupConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建分时弹性计划
+// Updates the time-based elastic plan for a compute group.
+//
+// Description:
+//
+// 更新计算组分时弹性计划。前置条件：instanceId 对应实例需处于运行中（Running）状态，可通过 GetInstance 查询 InstanceStatus；warehouseId 可通过 ListWarehouses 查询返回的 Id 获取。
 //
 // @param request - UpdateWarehouseScheduleTaskRequest
 //
@@ -4762,7 +4898,7 @@ func (client *Client) UpdateWarehouseScheduleTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 开始升级
+// Upgrades an instance. If the preparation succeeds, the instance can start the upgrade immediately.
 //
 // @param request - UpgradeInstanceRequest
 //

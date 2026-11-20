@@ -16,12 +16,16 @@ type iUpdateOperationEventScheduleTimeRequest interface {
 }
 
 type UpdateOperationEventScheduleTimeRequest struct {
+	// The ID of the event.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2034449120420339713
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The scheduled execution time. The format is YYYY-MM-DD HH:mm:ss, and the time zone is UTC+8.
+	//
 	// This parameter is required.
 	//
 	// example:

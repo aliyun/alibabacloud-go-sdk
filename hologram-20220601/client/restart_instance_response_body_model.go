@@ -24,25 +24,7 @@ type iRestartInstanceResponseBody interface {
 }
 
 type RestartInstanceResponseBody struct {
-	// Indicates whether the operation was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -52,13 +34,13 @@ type RestartInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 404
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// Internal server error.
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -66,13 +48,13 @@ type RestartInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 36291497-CDB0-53DC-8CD7-762E054F57A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result, which indicates whether the request was successful.
+	// The request result. Indicates whether an exception occurred during the request, which is independent of the business logic.
 	//
 	// example:
 	//

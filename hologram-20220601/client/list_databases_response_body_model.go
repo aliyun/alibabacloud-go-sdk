@@ -24,15 +24,22 @@ type iListDatabasesResponseBody interface {
 }
 
 type ListDatabasesResponseBody struct {
+	// The list of databases.
 	DatabaseList []*ListDatabasesResponseBodyDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type ListDatabasesResponseBody struct {
 	//
 	// 0C4935F5-6217-569A-902F-931B2F3E28BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -125,18 +134,26 @@ func (s *ListDatabasesResponseBody) Validate() error {
 }
 
 type ListDatabasesResponseBodyDatabaseList struct {
+	// Indicates whether the table is a foreign table. Valid values: true: yes, false: no.
+	//
 	// example:
 	//
 	// false
 	External *bool `json:"External,omitempty" xml:"External,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// my_db
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The permission model. For more information, see [Hologres permission models](https://help.aliyun.com/document_detail/198734.html).
+	//
 	// example:
 	//
 	// SPM
 	PermissionModel *string `json:"PermissionModel,omitempty" xml:"PermissionModel,omitempty"`
+	// The permissions.
+	//
 	// example:
 	//
 	// developer

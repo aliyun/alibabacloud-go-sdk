@@ -18,6 +18,22 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// The CloudMonitor instance type. Valid values:
+	//
+	// - standard
+	//
+	// - follower
+	//
+	// - mc-acceleration
+	//
+	// - warehouse
+	//
+	// - high-memory
+	//
+	// - serverless
+	//
+	// > This is CloudMonitor.
+	//
 	// example:
 	//
 	// standard
@@ -28,7 +44,7 @@ type ListInstancesRequest struct {
 	//
 	// rg-acfmvscak73zmby
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tags to add to the resource.
+	// The instance label.
 	Tag []*ListInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 

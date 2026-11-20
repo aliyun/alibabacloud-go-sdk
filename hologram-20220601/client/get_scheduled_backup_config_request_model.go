@@ -18,14 +18,20 @@ type iGetScheduledBackupConfigRequest interface {
 }
 
 type GetScheduledBackupConfigRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgprecn-cn-9lb3bjg1n003
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The backup type. By default, periodic and manual backup configurations are returned. To return the remote backup configuration, set this parameter to remote.
+	//
 	// example:
 	//
 	// remote

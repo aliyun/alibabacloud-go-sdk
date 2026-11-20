@@ -24,15 +24,22 @@ type iGetUpgradeableResponseBody interface {
 }
 
 type GetUpgradeableResponseBody struct {
+	// The response data.
 	Data []*GetUpgradeableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type GetUpgradeableResponseBody struct {
 	//
 	// B8E7613D-E09F-59D3-B35A-FBB7680DCE8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. This parameter indicates whether an exception occurred during the request and is independent of the business logic.
+	//
 	// example:
 	//
 	// true
@@ -125,14 +134,24 @@ func (s *GetUpgradeableResponseBody) Validate() error {
 }
 
 type GetUpgradeableResponseBodyData struct {
+	// The reason for the upgrade failure.
+	//
 	// example:
 	//
 	// null
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// The key of the upgrade reason.
+	//
 	// example:
 	//
 	// null
 	ReasonKey *string `json:"ReasonKey,omitempty" xml:"ReasonKey,omitempty"`
+	// Indicates whether the instance can be upgraded. Valid values:
+	//
+	// - true: The instance can be upgraded.
+	//
+	// - false: The instance cannot be upgraded because it is already running the latest version.
+	//
 	// example:
 	//
 	// true

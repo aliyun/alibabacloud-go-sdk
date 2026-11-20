@@ -24,23 +24,38 @@ type iGetCertificateAttributeResponseBody interface {
 }
 
 type GetCertificateAttributeResponseBody struct {
+	// The certificate attributes.
 	CertificateAttributeDto *GetCertificateAttributeResponseBodyCertificateAttributeDto `json:"CertificateAttributeDto,omitempty" xml:"CertificateAttributeDto,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 819A7F0F-2951-540F-BD94-6A41ECF0281F
@@ -119,14 +134,24 @@ func (s *GetCertificateAttributeResponseBody) Validate() error {
 }
 
 type GetCertificateAttributeResponseBodyCertificateAttributeDto struct {
+	// Specifies whether SSL is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// true
 	EnableSSL *bool `json:"enableSSL,omitempty" xml:"enableSSL,omitempty"`
+	// The expiration timestamp of the certificate.
+	//
 	// example:
 	//
 	// 1790583135000
 	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// effective

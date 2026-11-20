@@ -14,6 +14,8 @@ type iDeleteBackupDataRequest interface {
 }
 
 type DeleteBackupDataRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

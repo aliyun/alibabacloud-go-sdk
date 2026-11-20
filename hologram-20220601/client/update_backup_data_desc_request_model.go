@@ -18,14 +18,20 @@ type iUpdateBackupDataDescRequest interface {
 }
 
 type UpdateBackupDataDescRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The backup description.
+	//
 	// example:
 	//
 	// back up test
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgpostcn-cn-721344a2z001

@@ -14,6 +14,8 @@ type iDeleteModelServiceRequest interface {
 }
 
 type DeleteModelServiceRequest struct {
+	// The custom service name.
+	//
 	// example:
 	//
 	// model-qwen

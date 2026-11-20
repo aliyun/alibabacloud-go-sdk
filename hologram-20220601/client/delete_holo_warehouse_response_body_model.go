@@ -16,13 +16,13 @@ type iDeleteHoloWarehouseResponseBody interface {
 }
 
 type DeleteHoloWarehouseResponseBody struct {
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the operation is successful. Valid values: true: Successful. false: Failed.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

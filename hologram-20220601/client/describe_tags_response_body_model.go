@@ -24,14 +24,20 @@ type iDescribeTagsResponseBody interface {
 }
 
 type DescribeTagsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -42,10 +48,13 @@ type DescribeTagsResponseBody struct {
 	//
 	// 14E2358E-0499-509E-8E22-CA30EC474A9A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful, regardless of the business result.
+	//
 	// example:
 	//
 	// true
-	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The resource collection.
 	TagResources []*DescribeTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -125,18 +134,25 @@ func (s *DescribeTagsResponseBody) Validate() error {
 }
 
 type DescribeTagsResponseBodyTagResources struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgprecn-cn-0ju2uaanj001
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// acs:rm:rgId
-	TagKey   *string   `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The collection of all tag values under the same tag key.
 	TagValue []*string `json:"TagValue,omitempty" xml:"TagValue,omitempty" type:"Repeated"`
 }
 

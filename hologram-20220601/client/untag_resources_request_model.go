@@ -24,20 +24,32 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource category.
+	//
 	// example:
 	//
 	// Custom
-	Category    *string   `json:"category,omitempty" xml:"category,omitempty"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The instance IDs.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// example:
 	//
 	// INSTANCe
-	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	TagKeys      []*string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty" type:"Repeated"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The tag keys.
+	//
+	// To delete tags, provide the corresponding tag keys.
+	TagKeys []*string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty" type:"Repeated"`
+	// The account ID of the tag owner.
+	//
 	// example:
 	//
 	// 1062017779051424

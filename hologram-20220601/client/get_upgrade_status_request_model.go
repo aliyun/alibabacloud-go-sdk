@@ -14,6 +14,8 @@ type iGetUpgradeStatusRequest interface {
 }
 
 type GetUpgradeStatusRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

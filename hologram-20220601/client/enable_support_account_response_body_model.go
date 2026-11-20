@@ -24,18 +24,26 @@ type iEnableSupportAccountResponseBody interface {
 }
 
 type EnableSupportAccountResponseBody struct {
+  // The returned result.
+  // 
   // example:
   // 
   // true
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The error code.
+  // 
   // example:
   // 
   // null
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // null
   ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
@@ -46,6 +54,8 @@ type EnableSupportAccountResponseBody struct {
   // 
   // AB71198A-2DB1-511B-AE4D-690BAA97F076
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request is successful. This parameter indicates whether an exception occurred during the request and is independent of the business logic.
+  // 
   // example:
   // 
   // true

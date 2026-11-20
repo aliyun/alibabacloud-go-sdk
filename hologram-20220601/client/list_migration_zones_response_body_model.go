@@ -20,10 +20,14 @@ type iListMigrationZonesResponseBody interface {
 }
 
 type ListMigrationZonesResponseBody struct {
+	// The maximum number of results returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 11
@@ -33,8 +37,9 @@ type ListMigrationZonesResponseBody struct {
 	// example:
 	//
 	// 819A7F0F-2951-540F-BD94-6A41ECF0281F
-	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ZoneList  []*ListMigrationZonesResponseBodyZoneList `json:"zoneList,omitempty" xml:"zoneList,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of zones.
+	ZoneList []*ListMigrationZonesResponseBodyZoneList `json:"zoneList,omitempty" xml:"zoneList,omitempty" type:"Repeated"`
 }
 
 func (s ListMigrationZonesResponseBody) String() string {
@@ -95,10 +100,18 @@ func (s *ListMigrationZonesResponseBody) Validate() error {
 }
 
 type ListMigrationZonesResponseBodyZoneList struct {
+	// Indicates whether the instance can be migrated to the zone. Valid values:
+	//
+	// - true: The instance can be migrated to the zone.
+	//
+	// - false: The instance cannot be migrated to the zone because the migration conditions are not met.
+	//
 	// example:
 	//
 	// true
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-i

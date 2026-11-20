@@ -28,34 +28,50 @@ type iListOperationEventsRequest interface {
 }
 
 type ListOperationEventsRequest struct {
+	// The event name filter.
+	//
 	// example:
 	//
 	// COLD_UPGRADE
 	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	// Specifies whether to sort the results in descending order of event name.
+	//
 	// example:
 	//
 	// true
 	EventNameDesc *bool `json:"eventNameDesc,omitempty" xml:"eventNameDesc,omitempty"`
+	// The event type filter.
+	//
 	// example:
 	//
 	// SYSTEM_MAINTENANCE
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgpost-cn-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Specifies whether to sort the results in descending order of scheduled time.
+	//
 	// example:
 	//
 	// true
 	ScheduleTimeDesc *bool `json:"scheduleTimeDesc,omitempty" xml:"scheduleTimeDesc,omitempty"`
+	// The state filter.
+	//
 	// example:
 	//
 	// success

@@ -16,6 +16,7 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
+	// The list of regions.
 	Regions []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,6 +66,8 @@ func (s *ListRegionsResponseBody) Validate() error {
 }
 
 type ListRegionsResponseBodyRegions struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

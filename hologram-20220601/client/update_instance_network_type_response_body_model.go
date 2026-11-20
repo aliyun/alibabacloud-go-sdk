@@ -24,25 +24,7 @@ type iUpdateInstanceNetworkTypeResponseBody interface {
 }
 
 type UpdateInstanceNetworkTypeResponseBody struct {
-	// The returned result, which indicates whether the operation was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The returned result.
 	//
 	// example:
 	//
@@ -52,13 +34,13 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	// example:
 	//
-	// 404
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// Internal server error.
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -66,19 +48,13 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 9CC37B9F-F4B4-5FF1-939B-AEE78DC70130
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// The request result.
 	//
 	// example:
 	//

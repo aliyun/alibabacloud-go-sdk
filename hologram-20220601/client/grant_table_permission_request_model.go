@@ -26,24 +26,36 @@ type iGrantTablePermissionRequest interface {
 }
 
 type GrantTablePermissionRequest struct {
+	// Specifies whether to grant permissions on all existing tables.
+	//
 	// example:
 	//
 	// true
-	AllTable    *bool     `json:"allTable,omitempty" xml:"allTable,omitempty"`
+	AllTable *bool `json:"allTable,omitempty" xml:"allTable,omitempty"`
+	// The list of column names to grant permissions on.
 	ColumnNames []*string `json:"columnNames,omitempty" xml:"columnNames,omitempty" type:"Repeated"`
+	// The database name.
+	//
 	// example:
 	//
 	// my_db
-	DatabaseName *string   `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	Privileges   []*string `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The list of permissions.
+	Privileges []*string `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
+	// The schema name.
+	//
 	// example:
 	//
 	// my_schema
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// orders_pay
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The user ID. For more information, see [Hologres account overview](https://help.aliyun.com/document_detail/130393.html).
+	//
 	// example:
 	//
 	// p4_1234xxxx

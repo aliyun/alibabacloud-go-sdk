@@ -24,25 +24,25 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
-	// The error code that is returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
-	// 404
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// Internal server error.
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The information about the instance.
+	// The instance information.
 	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type GetInstanceResponseBody struct {
 	//
 	// 865A02C2-B374-5DD4-9B34-0CA15DA1AEBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result, which indicates whether the request was successful.
+	// The request result. This parameter indicates whether an exception occurred during the request and is independent of the business logic.
 	//
 	// example:
 	//
@@ -132,29 +132,15 @@ func (s *GetInstanceResponseBody) Validate() error {
 type GetInstanceResponseBodyInstance struct {
 	// Indicates whether auto-renewal is enabled.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// true
 	AutoRenewal *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The cold storage capacity of the instance. Unit: GB. Standard SSD is used for hot storage, and HDD is used for cold storage.
+	// The cold storage capacity.
+	//
+	// Unit: GB.
+	//
+	// SSD is equivalent to hot storage, which is also standard storage. HDD is equivalent to cold storage.
 	//
 	// example:
 	//
@@ -162,121 +148,13 @@ type GetInstanceResponseBodyInstance struct {
 	ColdStorage *int64 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	// The commodity code.
 	//
-	// Valid values:
-	//
-	// 	- hologram_maxcomputeAccelerate_public_cn
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     China site/Lakehouse Acceleration Edition
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- hologram_combo_public_cn
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     China site/Subscription
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- hologram_prepay_public_intl
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     International site/Subscription
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- hologram_storage_dp_cn
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     China site/Storage plan
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- hologram_postpay_public_cn
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     China site/Pay-as-you-go
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- hologram_postpay_public_intl
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     International site/Pay-as-you-go
-	//
-	//     <!-- -->
-	//
-	// 	- hologram_maxcomputeAccelerate_public_intl
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     International site/Lakehouse Acceleration Edition
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- hologram_cu_dp_cn
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     China site/Compute plan
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// hologram_combo_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The number of compute nodes. In a typical configuration, a node has 16 CPU cores and 32 GB of memory.
+	// The number of compute nodes.
+	//
+	// A typical configuration for a node is 16 vCPUs and 32 GB of memory.
 	//
 	// example:
 	//
@@ -288,13 +166,15 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// 32
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the instance was created.
+	// The creation time. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2021-02-03T13:06:06Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The amount of data that can be stored in the disk of the Standard storage class. Unit: GB.
+	// The standard storage size.
+	//
+	// Unit: GB.
 	//
 	// example:
 	//
@@ -306,8 +186,15 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
-	EnableSSL        *bool   `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	// EnableServerless
+	// Indicates whether SSL is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// Indicates whether the instance sandbox feature is enabled.
+	EnableSandbox *bool `json:"EnableSandbox,omitempty" xml:"EnableSandbox,omitempty"`
+	// Indicates whether Serverless Computing is enabled.
 	//
 	// example:
 	//
@@ -315,7 +202,9 @@ type GetInstanceResponseBodyInstance struct {
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// The list of endpoints.
 	Endpoints []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The expiration time. This parameter is invalid for pay-as-you-go instances.
+	// The expiration time. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard.
+	//
+	// Pay-as-you-go instances do not have an expiration time.
 	//
 	// example:
 	//
@@ -327,49 +216,23 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// 2
 	GatewayCount *int64 `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
-	// The number of CPU cores of the gateway. Unit: core.
+	// The CPU resources of the gateway.
+	//
+	// Unit: Cores.
 	//
 	// example:
 	//
 	// 4
 	GatewayCpu *int64 `json:"GatewayCpu,omitempty" xml:"GatewayCpu,omitempty"`
-	// The size of memory resources of the gateway. Unit: GB.
+	// The memory resources of the gateway.
+	//
+	// Unit: GB.
 	//
 	// example:
 	//
 	// 16
 	GatewayMemory *int64 `json:"GatewayMemory,omitempty" xml:"GatewayMemory,omitempty"`
 	// The billing method of the instance.
-	//
-	// Valid values:
-	//
-	// 	- PostPaid
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     pay-as-you-go
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- PrePaid
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     subscription
-	//
-	//     <!-- -->
-	//
-	//     .
 	//
 	// example:
 	//
@@ -381,191 +244,87 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// hgpostcn-cn-tl32s6cgw00b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name. The instance name must be 2 to 64 characters in length.
+	// The instance name.
+	//
+	// The name must be 2 to 64 characters in length.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The owner of the instance.
+	// The instance owner.
 	//
 	// example:
 	//
 	// 12345678900000
 	InstanceOwner *string `json:"InstanceOwner,omitempty" xml:"InstanceOwner,omitempty"`
-	// The status of the instance.
-	//
-	// Valid values:
-	//
-	// 	- Creating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Suspended
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Allocating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The type of the instance.
-	//
-	// Valid values:
-	//
-	// 	- Follower
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     read-only secondary instance
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Standard
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     normal instance
-	//
-	//     <!-- -->
-	//
-	//     .
+	// The instance type.
 	//
 	// example:
 	//
 	// Standard
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the primary instance.
+	// The primary instance ID.
 	//
 	// example:
 	//
 	// hgpostcn-cn-i7m2ncd6w002
 	LeaderInstanceId *string `json:"LeaderInstanceId,omitempty" xml:"LeaderInstanceId,omitempty"`
-	// The memory size. Unit: GB.
+	// The memory size.
+	//
+	// Unit: GB.
 	//
 	// example:
 	//
 	// 128
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Disaster recovery instance role.
+	// The role of the disaster recovery instance.
 	//
-	// 	- Active: Primary disaster recovery instance.
+	// Active: The primary disaster recovery instance.
 	//
-	// 	- Passive: Disaster tolerance instance.
+	// Passive: The secondary disaster recovery instance.
 	//
-	// 	- PreActive: Primary disaster recovery instance not yet in final state.
+	// PreActive: The primary disaster recovery instance that has not reached the desired state.
 	//
 	// example:
 	//
 	// Active
 	ReplicaRole *string `json:"ReplicaRole,omitempty" xml:"ReplicaRole,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzuq7hpybze2i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The storage type.
+	// The storage type. Valid values:
 	//
-	// 	- redundant: 3 copies
+	// 	- redundant: 3AZ.
 	//
-	// 	- local: single copy
+	// 	- local: 1AZ.
 	//
 	// example:
 	//
 	// redundant
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The reason for the suspension.
-	//
-	// Valid values:
-	//
-	// 	- Indebet
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instance has an overdue payment
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Manual
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instance is manually suspended
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Overdue
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The instance has expired
-	//
-	//     <!-- -->
-	//
-	//     .
+	// The reason for suspension.
 	//
 	// example:
 	//
 	// Manual
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
-	// The instance tag.
+	// The instance tags.
 	Tags []*GetInstanceResponseBodyInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The instance version.
 	//
@@ -573,7 +332,7 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// r1.3.37
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The ID of the zone where the instance resides.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -623,6 +382,10 @@ func (s *GetInstanceResponseBodyInstance) GetEnableHiveAccess() *string {
 
 func (s *GetInstanceResponseBodyInstance) GetEnableSSL() *bool {
 	return s.EnableSSL
+}
+
+func (s *GetInstanceResponseBodyInstance) GetEnableSandbox() *bool {
+	return s.EnableSandbox
 }
 
 func (s *GetInstanceResponseBodyInstance) GetEnableServerless() *bool {
@@ -755,6 +518,11 @@ func (s *GetInstanceResponseBodyInstance) SetEnableHiveAccess(v string) *GetInst
 
 func (s *GetInstanceResponseBodyInstance) SetEnableSSL(v bool) *GetInstanceResponseBodyInstance {
 	s.EnableSSL = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetEnableSandbox(v bool) *GetInstanceResponseBodyInstance {
+	s.EnableSandbox = &v
 	return s
 }
 
@@ -891,31 +659,13 @@ func (s *GetInstanceResponseBodyInstance) Validate() error {
 }
 
 type GetInstanceResponseBodyInstanceEndpoints struct {
-	// The endpoint. This parameter is returned if both the AnyTunnel and SingleTunnel modes are enabled for an instance, and the instance is switched from the AnyTunnel mode to the SingleTunnel mode. In this case, two endpoints are returned.
+	// Some legacy instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints for both are retained. Therefore, an additional field is required to store the endpoints.
 	//
 	// example:
 	//
 	// hgprecn-cn-uqm362o1b001-cn-hangzhou-internal.hologres.aliyuncs.com:80
 	AlternativeEndpoints *string `json:"AlternativeEndpoints,omitempty" xml:"AlternativeEndpoints,omitempty"`
 	// Indicates whether the network is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -929,79 +679,23 @@ type GetInstanceResponseBodyInstanceEndpoints struct {
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The network type.
 	//
-	// Valid values:
-	//
-	// 	- VPCSingleTunnel
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     virtual private cloud (VPC)
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- Intranet
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     internal network
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- VPCAnyTunnel
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     not supported by new instances
-	//
-	//     <!-- -->
-	//
-	// 	- Internet
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     Internet
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
 	// example:
 	//
 	// Internet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1jqwp2ys6kp7tc9t983
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the instance belongs.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-uf66jjber3hgvwhki3wna
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the instance that is deployed in the VPC.
+	// The VPC instance ID.
 	//
 	// example:
 	//
@@ -1085,13 +779,13 @@ func (s *GetInstanceResponseBodyInstanceEndpoints) Validate() error {
 }
 
 type GetInstanceResponseBodyInstanceTags struct {
-	// The key of tag N.
+	// The tag key.
 	//
 	// example:
 	//
 	// tag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
 	// example:
 	//

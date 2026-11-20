@@ -24,18 +24,26 @@ type iBindLeaderInstanceResponseBody interface {
 }
 
 type BindLeaderInstanceResponseBody struct {
+	// Indicates whether the association is successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type BindLeaderInstanceResponseBody struct {
 	//
 	// 6FF2EDFD-3154-5C3E-8CFA-8F7E366BCF9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. This parameter is independent of the business result.
+	//
 	// example:
 	//
 	// true

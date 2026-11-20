@@ -16,6 +16,12 @@ type iEnableWarehouseAutoScaleResponseBody interface {
 }
 
 type EnableWarehouseAutoScaleResponseBody struct {
+  // Indicates whether the operation is successful. Valid values:
+  // 
+  // - true: Successful.
+  // 
+  // - false: Failed.
+  // 
   // example:
   // 
   // true

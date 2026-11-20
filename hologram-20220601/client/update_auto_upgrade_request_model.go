@@ -14,6 +14,12 @@ type iUpdateAutoUpgradeRequest interface {
 }
 
 type UpdateAutoUpgradeRequest struct {
+	// The upgrade type. Valid values:
+	//
+	// - auto: Enables automatic minor version upgrades.
+	//
+	// - manual: Manual upgrade.
+	//
 	// example:
 	//
 	// auto

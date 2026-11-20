@@ -14,6 +14,8 @@ type iDisableSupportAccountRequest interface {
 }
 
 type DisableSupportAccountRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

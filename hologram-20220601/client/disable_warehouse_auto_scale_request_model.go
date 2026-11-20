@@ -14,6 +14,8 @@ type iDisableWarehouseAutoScaleRequest interface {
 }
 
 type DisableWarehouseAutoScaleRequest struct {
+	// The name of the compute group.
+	//
 	// example:
 	//
 	// my_warehouse

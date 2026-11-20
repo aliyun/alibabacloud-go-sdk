@@ -22,19 +22,28 @@ type iCreateExternalDatabaseRequest interface {
 }
 
 type CreateExternalDatabaseRequest struct {
+	// The comment.
+	//
 	// example:
 	//
 	// for log stat
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// my_db
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// Specifies whether to use user mapping.
+	//
 	// example:
 	//
 	// true
-	DefaultUserMapping *string                                        `json:"defaultUserMapping,omitempty" xml:"defaultUserMapping,omitempty"`
-	ExternalConfig     []*CreateExternalDatabaseRequestExternalConfig `json:"externalConfig,omitempty" xml:"externalConfig,omitempty" type:"Repeated"`
+	DefaultUserMapping *string `json:"defaultUserMapping,omitempty" xml:"defaultUserMapping,omitempty"`
+	// The configuration parameters. For more information, see [CREATE EXTERNAL DATABASE](https://www.alibabacloud.com/help/en/hologres/developer-reference/create-external-database).
+	ExternalConfig []*CreateExternalDatabaseRequestExternalConfig `json:"externalConfig,omitempty" xml:"externalConfig,omitempty" type:"Repeated"`
+	// The metastore type, such as MaxCompute.
+	//
 	// example:
 	//
 	// maxcompute
@@ -108,10 +117,14 @@ func (s *CreateExternalDatabaseRequest) Validate() error {
 }
 
 type CreateExternalDatabaseRequestExternalConfig struct {
+	// The configuration field name.
+	//
 	// example:
 	//
 	// mc_project
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The configuration field value.
+	//
 	// example:
 	//
 	// log_sum

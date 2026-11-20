@@ -24,15 +24,22 @@ type iGetScheduledBackupConfigResponseBody interface {
 }
 
 type GetScheduledBackupConfigResponseBody struct {
+	// The returned data.
 	Data *GetScheduledBackupConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type GetScheduledBackupConfigResponseBody struct {
 	//
 	// 623EF0B6-A6C1-5764-82CC-0BC176654CB9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -121,14 +130,20 @@ func (s *GetScheduledBackupConfigResponseBody) Validate() error {
 }
 
 type GetScheduledBackupConfigResponseBodyData struct {
+	// Indicates whether the configuration is effective. Valid values: - **true**: Effective. - **false**: Not effective.
+	//
 	// example:
 	//
 	// true
 	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The task parameter.
+	//
 	// example:
 	//
 	// {"schedule":"0 10 	- 	- 1,2","instance_id":"hgprecn-cn-lbj3dfgog004","week":"1,2","hour":10,"data_keep_quantity":3,"type":"periodical","enabled":true}
 	TaskParameter *string `json:"TaskParameter,omitempty" xml:"TaskParameter,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// backup

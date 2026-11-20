@@ -16,6 +16,12 @@ type iUpdateOperationEventScheduleTimeResponseBody interface {
 }
 
 type UpdateOperationEventScheduleTimeResponseBody struct {
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

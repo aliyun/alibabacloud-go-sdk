@@ -16,6 +16,12 @@ type iRevokeDatabasePermissionResponseBody interface {
 }
 
 type RevokeDatabasePermissionResponseBody struct {
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true

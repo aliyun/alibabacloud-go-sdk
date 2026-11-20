@@ -24,18 +24,34 @@ type iDisableExecuteStatementResponseBody interface {
 }
 
 type DisableExecuteStatementResponseBody struct {
+	// Valid values: true: Successful. false: Failed.
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// **The error code. This parameter is empty if the request is successful.**
+	//
 	// example:
 	//
 	// InvalidParameterValue
-	ErrorCode      *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage   *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message. This parameter is empty if the request is successful.
+	//
+	// example:
+	//
+	// Invalid parameter value.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// **The request ID.**
+	//
 	// example:
 	//
 	// E3F4B2A7-1234-5678-9ABC-DEF012345678
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// **Indicates whether the request is successful.**
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DisableExecuteStatementResponseBody) String() string {

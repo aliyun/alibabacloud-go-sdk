@@ -16,10 +16,14 @@ type iCreateDatabaseRequest interface {
 }
 
 type CreateDatabaseRequest struct {
+	// The name of the database.
+	//
 	// example:
 	//
 	// my_db
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The permission model. For more information, see [Hologres permission model](https://www.alibabacloud.com/help/en/hologres/security-and-compliance/hologres-permission-model/). Default value: Standard.
+	//
 	// example:
 	//
 	// SPM

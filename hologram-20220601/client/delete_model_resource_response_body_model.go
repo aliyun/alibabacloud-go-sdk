@@ -16,6 +16,8 @@ type iDeleteModelResourceResponseBody interface {
 }
 
 type DeleteModelResourceResponseBody struct {
+	// Indicates whether the operation is successful. Valid values: true (success) and false (failure).
+	//
 	// example:
 	//
 	// true

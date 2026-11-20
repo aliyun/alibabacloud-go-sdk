@@ -16,10 +16,14 @@ type iUpdateHoloWebLoginSettingRequest interface {
 }
 
 type UpdateHoloWebLoginSettingRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether external accounts are allowed to log on. Valid values: true (allowed) and false (not allowed).
+	//
 	// example:
 	//
 	// true

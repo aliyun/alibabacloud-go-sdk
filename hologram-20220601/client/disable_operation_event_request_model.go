@@ -14,6 +14,8 @@ type iDisableOperationEventRequest interface {
 }
 
 type DisableOperationEventRequest struct {
+	// The event ID.
+	//
 	// This parameter is required.
 	//
 	// example:

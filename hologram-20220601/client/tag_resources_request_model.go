@@ -24,24 +24,34 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Custom
-	Category    *string   `json:"category,omitempty" xml:"category,omitempty"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The instance IDs.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The account ID of the tag owner.
+	//
 	// example:
 	//
 	// 1062017779051424
-	TagOwnerUid *int64                     `json:"tagOwnerUid,omitempty" xml:"tagOwnerUid,omitempty"`
-	Tags        []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TagOwnerUid *int64 `json:"tagOwnerUid,omitempty" xml:"tagOwnerUid,omitempty"`
+	// The new tags to add.
+	Tags []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -120,10 +130,14 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// any_string
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// any_string

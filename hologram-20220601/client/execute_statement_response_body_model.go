@@ -24,12 +24,25 @@ type iExecuteStatementResponseBody interface {
 }
 
 type ExecuteStatementResponseBody struct {
+  // Specifies whether OpenAPI SQL execution is allowed. Valid values: true: Allowed. false: Not allowed.
   Data *ExecuteStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code. This field is empty if the request is successful.
+  // 
   // example:
   // 
   // InvalidParameterValue
   ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+  // The error message. This field is empty if the request is successful.
+  // 
+  // example:
+  // 
+  // Invalid parameter value, such as an empty or excessively long SQL statement
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+  // The HTTP status code.
+  // 
+  // example:
+  // 
+  // 200
   HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
   // Id of the request
   // 
@@ -37,6 +50,11 @@ type ExecuteStatementResponseBody struct {
   // 
   // 819A7F0F-2951-540F-BD94-6A41ECF0281F
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request is successful.
+  // 
+  // example:
+  // 
+  // True
   Success *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -112,12 +130,21 @@ func (s *ExecuteStatementResponseBody) Validate() error {
 }
 
 type ExecuteStatementResponseBodyData struct {
+  // The error code. This field is empty if the request is successful.
+  // 
   // example:
   // 
   // InvalidParameterValue
   ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+  // The error message. This field is empty if the request is successful.
+  // 
+  // example:
+  // 
+  // Invalid parameter value, such as an empty or excessively long SQL statement
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+  // The list of execution results. The length is currently fixed to 1. If multiple SELECT queries are executed, only the result of the last SELECT query is returned.
   Results []*ExecuteStatementResponseBodyDataResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+  // Indicates whether the request is successful.
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -179,9 +206,25 @@ func (s *ExecuteStatementResponseBodyData) Validate() error {
 }
 
 type ExecuteStatementResponseBodyDataResults struct {
+  // The **column metadata**.
   ColumnMetadata []*ExecuteStatementResponseBodyDataResultsColumnMetadata `json:"columnMetadata,omitempty" xml:"columnMetadata,omitempty" type:"Repeated"`
+  // The number of rows returned.
+  // 
+  // example:
+  // 
+  // 25
   Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+  // The error code for the SQL statement.
+  // 
+  // example:
+  // 
+  // SQL_ERROR
   ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+  // The error message for the SQL statement.
+  // 
+  // example:
+  // 
+  // ERROR: relation \\"non_existent_table\\" does not exist\\n  Position: 15
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
   // **Query ID**
   // 
@@ -189,10 +232,27 @@ type ExecuteStatementResponseBodyDataResults struct {
   // 
   // E3F4B2A7-1234-5678-9ABC-DEF012345678
   QueryId *string `json:"queryId,omitempty" xml:"queryId,omitempty"`
+  // The set of query result rows. Each row is an array of strings. All values are serialized as strings, and NULL values are represented as \\N.
   Records [][]*string `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+  // The SQL statement that is actually executed.
+  // 
+  // example:
+  // 
+  // select 	- from test_table limit 10;
   Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
+  // Indicates whether the request is successful.
+  // 
+  // example:
+  // 
+  // True
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // Indicates whether the result is truncated. The value is true if the result exceeds MaxResults.
   Truncated *bool `json:"truncated,omitempty" xml:"truncated,omitempty"`
+  // The number of rows affected by the INSERT, UPDATE, or DELETE statement.
+  // 
+  // example:
+  // 
+  // 10
   UpdateCount *int32 `json:"updateCount,omitempty" xml:"updateCount,omitempty"`
 }
 
@@ -308,11 +368,16 @@ func (s *ExecuteStatementResponseBodyDataResults) Validate() error {
 }
 
 type ExecuteStatementResponseBodyDataResultsColumnMetadata struct {
+  // The **column name**.
+  // 
   // example:
   // 
   // id
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // Indicates whether the column is nullable.
   Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
+  // The data type, such as int4, text, or bool.
+  // 
   // example:
   // 
   // int4

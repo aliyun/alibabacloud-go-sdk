@@ -24,17 +24,33 @@ type iEnableExecuteStatementResponseBody interface {
 }
 
 type EnableExecuteStatementResponseBody struct {
+  // The result of the operation, where `true` indicates success and `false` indicates failure.
   Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+  // The error code returned if the request fails.
+  // 
   // example:
   // 
   // InvalidParameterValue
   ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+  // The error message returned if the request fails.
+  // 
+  // example:
+  // 
+  // 错误信息示例
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+  // The HTTP status code.
+  // 
+  // example:
+  // 
+  // 200
   HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // E3F4B2A7-1234-5678-9ABC-DEF012345678
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the API call was successful.
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

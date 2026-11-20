@@ -16,11 +16,13 @@ type iCreateWarehouseScheduleTaskResponseBody interface {
 }
 
 type CreateWarehouseScheduleTaskResponseBody struct {
+	// The creation result. true indicates success, and false indicates failure.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

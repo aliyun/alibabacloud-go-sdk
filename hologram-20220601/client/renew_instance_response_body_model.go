@@ -24,15 +24,15 @@ type iRenewInstanceResponseBody interface {
 }
 
 type RenewInstanceResponseBody struct {
-	// The returned data.
+	// The returned result.
 	Data *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type RenewInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result, which indicates whether the request was successful.
+	// Indicates whether the request was successful. This parameter indicates whether an exception occurred during the request and is unrelated to the business logic.
 	//
 	// example:
 	//
@@ -130,29 +130,29 @@ func (s *RenewInstanceResponseBody) Validate() error {
 }
 
 type RenewInstanceResponseBodyData struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidChargeType.UnRenewable
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error details.
+	// The detailed error message.
 	//
 	// example:
 	//
-	// InvalidChargeType.UnRenewable
+	// Invalid charge type
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 221625608580893
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Indicates whether the renewal was successful.
+	// Indicates whether the renewal was successful. Valid values:
 	//
-	// 	- true
+	// - true: The renewal was successful.
 	//
-	// 	- false
+	// - false: The renewal failed.
 	//
 	// example:
 	//

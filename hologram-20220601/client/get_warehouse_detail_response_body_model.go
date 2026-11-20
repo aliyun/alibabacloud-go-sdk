@@ -16,13 +16,13 @@ type iGetWarehouseDetailResponseBody interface {
 }
 
 type GetWarehouseDetailResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned values.
+	// The return value.
 	WarehouseDetail *GetWarehouseDetailResponseBodyWarehouseDetail `json:"WarehouseDetail,omitempty" xml:"WarehouseDetail,omitempty" type:"Struct"`
 }
 
@@ -62,21 +62,31 @@ func (s *GetWarehouseDetailResponseBody) Validate() error {
 }
 
 type GetWarehouseDetailResponseBodyWarehouseDetail struct {
+	// The total auto-scaling elastic compute resources of the compute group.
+	//
+	// example:
+	//
+	// 32
 	AutoElasticCpu *string `json:"AutoElasticCpu,omitempty" xml:"AutoElasticCpu,omitempty"`
-	// The remaining unallocated computing resources of the virtual warehouse instance.
+	// The unallocated compute resources. The remaining unallocated compute resources for compute groups in the instance.
 	//
 	// example:
 	//
 	// 32
 	RemainingCpu *string `json:"RemainingCpu,omitempty" xml:"RemainingCpu,omitempty"`
-	// The reserved computing resources. The amount of computing resources in all running virtual warehouses in an instance cannot exceed the amount of reserved computing resources in the virtual warehouses.
+	// The reserved compute resources. The total compute resources of all running compute groups in the instance cannot exceed the reserved compute resources of the compute group.
 	//
 	// example:
 	//
 	// 64
-	ReservedCpu     *string `json:"ReservedCpu,omitempty" xml:"ReservedCpu,omitempty"`
+	ReservedCpu *string `json:"ReservedCpu,omitempty" xml:"ReservedCpu,omitempty"`
+	// The total time-based elastic compute resources of the compute group.
+	//
+	// example:
+	//
+	// 64
 	TimedElasticCpu *string `json:"TimedElasticCpu,omitempty" xml:"TimedElasticCpu,omitempty"`
-	// The list of virtual warehouses.
+	// The warehouse list.
 	WarehouseList []*GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList `json:"WarehouseList,omitempty" xml:"WarehouseList,omitempty" type:"Repeated"`
 }
 
@@ -147,51 +157,73 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetail) Validate() error {
 }
 
 type GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList struct {
+	// The auto-scaling type.
+	//
 	// example:
 	//
 	// Standard
 	AutoScaleType *string `json:"AutoScaleType,omitempty" xml:"AutoScaleType,omitempty"`
+	// The number of clusters.
+	//
 	// example:
 	//
 	// 2
 	ClusterCount *string `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// The cluster specifications.
+	//
 	// example:
 	//
 	// 32
 	ClusterCpu *string `json:"ClusterCpu,omitempty" xml:"ClusterCpu,omitempty"`
-	// The number of CPU cores.
+	// cpu
 	//
 	// example:
 	//
 	// 32
-	Cpu              *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	DefaultWarehouse *bool  `json:"DefaultWarehouse,omitempty" xml:"DefaultWarehouse,omitempty"`
-	ElasticCpu       *int64 `json:"ElasticCpu,omitempty" xml:"ElasticCpu,omitempty"`
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// Indicates whether the compute group is the default compute group.
+	//
+	// example:
+	//
+	// true
+	DefaultWarehouse *bool `json:"DefaultWarehouse,omitempty" xml:"DefaultWarehouse,omitempty"`
+	// The elastic compute resources.
+	//
+	// example:
+	//
+	// 32
+	ElasticCpu *int64 `json:"ElasticCpu,omitempty" xml:"ElasticCpu,omitempty"`
+	// The elastic type.
+	//
 	// example:
 	//
 	// auto
 	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	// The ID.
+	// id
 	//
 	// example:
 	//
 	// 2
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of reserved clusters.
+	//
 	// example:
 	//
 	// 2
 	InitClusterCount *string `json:"InitClusterCount,omitempty" xml:"InitClusterCount,omitempty"`
+	// The maximum number of clusters.
+	//
 	// example:
 	//
 	// 4
 	MaxClusterCount *string `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The memory capacity.
+	// The memory.
 	//
 	// example:
 	//
 	// 128
 	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The name of the virtual warehouse instance.
+	// The name of the compute group.
 	//
 	// example:
 	//
@@ -202,51 +234,14 @@ type GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList struct {
 	// example:
 	//
 	// 2
-	NodeCount       *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The rebalance status of the compute group.
+	//
+	// example:
+	//
+	// DONE
 	RebalanceStatus *string `json:"RebalanceStatus,omitempty" xml:"RebalanceStatus,omitempty"`
 	// The status.
-	//
-	// Valid values:
-	//
-	// 	- kRunning
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kSuspended
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kInit
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kFailed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kAllocating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

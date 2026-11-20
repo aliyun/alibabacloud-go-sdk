@@ -16,19 +16,19 @@ type iRenewInstanceRequest interface {
 }
 
 type RenewInstanceRequest struct {
-	// Specifies whether to enable monthly auto-renewal. The default value is false. Valid values:
+	// Specifies whether to enable monthly auto-renewal. By default, monthly auto-renewal is disabled. Valid values:
 	//
-	// 	- true
+	// - true: enables monthly auto-renewal.
 	//
-	// 	- false
+	// - false: does not enable monthly auto-renewal.
 	//
-	// >  If you enable auto-renewal for an instance for which auto-renewal is enabled, an error is reported.
+	// > If you enable auto-renewal for an instance that already has auto-renewal enabled, an error is reported.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The renewal duration. Unit: month.
+	// The renewal period. Unit: months.
 	//
 	// This parameter is required.
 	//

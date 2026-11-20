@@ -24,25 +24,7 @@ type iUpdateInstanceNameResponseBody interface {
 }
 
 type UpdateInstanceNameResponseBody struct {
-	// The returned result, which indicates whether the operation was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -52,13 +34,13 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	// example:
 	//
-	// 404
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// Internal server error.
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -66,31 +48,13 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// C6B55032-D41A-5FE0-9C07-8BD81C88422E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result, which indicates whether the request was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether an exception occurred during the request.
 	//
 	// example:
 	//

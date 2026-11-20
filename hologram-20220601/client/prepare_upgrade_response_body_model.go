@@ -24,15 +24,22 @@ type iPrepareUpgradeResponseBody interface {
 }
 
 type PrepareUpgradeResponseBody struct {
+	// The response parameters.
 	Data *PrepareUpgradeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type PrepareUpgradeResponseBody struct {
 	//
 	// 77B97AFB-7C9D-50FF-A72D-F13FD73E49D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result, which is independent of the business logic.
+	//
 	// example:
 	//
 	// true
@@ -121,14 +130,20 @@ func (s *PrepareUpgradeResponseBody) Validate() error {
 }
 
 type PrepareUpgradeResponseBodyData struct {
+	// The reason for the upgrade failure.
+	//
 	// example:
 	//
 	// null
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// The upgrade target key.
+	//
 	// example:
 	//
 	// null
 	ReasonKey *string `json:"ReasonKey,omitempty" xml:"ReasonKey,omitempty"`
+	// Indicates whether the pre-upgrade preparation task was started successfully.
+	//
 	// example:
 	//
 	// true

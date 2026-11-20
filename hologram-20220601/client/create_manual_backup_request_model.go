@@ -16,10 +16,14 @@ type iCreateManualBackupRequest interface {
 }
 
 type CreateManualBackupRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgpostcn-cn-721344a2z001

@@ -24,18 +24,26 @@ type iDisableSupportAccountResponseBody interface {
 }
 
 type DisableSupportAccountResponseBody struct {
+	// Indicates whether the request is successful. Valid values: true (success) and false (failure).
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -46,6 +54,8 @@ type DisableSupportAccountResponseBody struct {
 	//
 	// 2A8DEF6E-067E-5DB0-BAE1-2894266E6C6A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// true

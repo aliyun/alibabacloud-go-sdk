@@ -16,10 +16,14 @@ type iEnableWarehouseAutoScaleRequest interface {
 }
 
 type EnableWarehouseAutoScaleRequest struct {
+  // The maximum number of clusters. The value must be greater than the number of reserved clusters and less than or equal to 4.
+  // 
   // example:
   // 
   // 3
   MaxClusterCount *string `json:"maxClusterCount,omitempty" xml:"maxClusterCount,omitempty"`
+  // The name of the compute group.
+  // 
   // example:
   // 
   // my_warehouse

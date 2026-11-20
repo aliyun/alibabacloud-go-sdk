@@ -16,7 +16,11 @@ type iScaleHoloWarehouseResponseBody interface {
 }
 
 type ScaleHoloWarehouseResponseBody struct {
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//

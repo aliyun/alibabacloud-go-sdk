@@ -22,15 +22,15 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The returned data.
+	// The returned result.
 	Data *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyData struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -125,11 +125,11 @@ type CreateInstanceResponseBodyData struct {
 	//
 	// hgpostcn-cn-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The error details.
+	// The detailed error message.
 	//
 	// example:
 	//
-	// Vpc is not available
+	// InvalidVpcOrVSwitch.NotAvailable
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The order ID.
 	//
@@ -137,11 +137,11 @@ type CreateInstanceResponseBodyData struct {
 	//
 	// 217523224780172
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Indicates whether the instance was created.
+	// Indicates whether the instance was created. Valid values:
 	//
-	// 	- true
+	// - true: The instance was created.
 	//
-	// 	- false
+	// - false: The instance failed to be created.
 	//
 	// example:
 	//

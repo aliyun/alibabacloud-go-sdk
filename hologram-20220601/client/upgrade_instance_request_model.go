@@ -18,14 +18,20 @@ type iUpgradeInstanceRequest interface {
 }
 
 type UpgradeInstanceRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The upgrade type.
+	//
 	// example:
 	//
 	// hot
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The upgrade time. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2025-02-11 10:00:01

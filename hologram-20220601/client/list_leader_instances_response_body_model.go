@@ -24,25 +24,34 @@ type iListLeaderInstancesResponseBody interface {
 }
 
 type ListLeaderInstancesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *string                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceList   []*ListLeaderInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The list of instances.
+	InstanceList []*ListLeaderInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 5600196E-78E2-50F2-B2A1-C44D3B665438
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. This parameter is unrelated to the business logic.
+	//
 	// example:
 	//
 	// true
@@ -125,43 +134,62 @@ func (s *ListLeaderInstancesResponseBody) Validate() error {
 }
 
 type ListLeaderInstancesResponseBodyInstanceList struct {
+	// The match level between the primary and secondary instances. A value of 0 indicates a perfect match, and other values indicate a mismatch.
+	//
 	// example:
 	//
 	// 0
 	BindingCode *string `json:"BindingCode,omitempty" xml:"BindingCode,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// hologram_combo_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The creation time in UTC formatted according to ISO 8601.
+	//
 	// example:
 	//
 	// 2022-07-25T02:15:35Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The expiration time. Pay-as-you-go instances do not have an expiration time. The time is displayed in UTC and formatted in accordance with ISO 8601.
+	//
 	// example:
 	//
 	// 2022-07-25T02:15:35Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgpostcn-cn-tl32vsdir00h
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// user_defined_name
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// Standard
-	InstanceType *string                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Tags         []*ListLeaderInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The list of tags.
+	Tags []*ListLeaderInstancesResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListLeaderInstancesResponseBodyInstanceList) String() string {
@@ -276,10 +304,14 @@ func (s *ListLeaderInstancesResponseBodyInstanceList) Validate() error {
 }
 
 type ListLeaderInstancesResponseBodyInstanceListTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// tagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value

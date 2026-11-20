@@ -16,10 +16,14 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
+	// Specifies whether the user is a superuser.
+	//
 	// example:
 	//
 	// false
 	SuperUser *bool `json:"superUser,omitempty" xml:"superUser,omitempty"`
+	// The username. Only RAM users and STS accounts are supported. If the account is a RAM user, the name must be prefixed with p4_, such as p4_234253434. If the account is an STS account, the name must be prefixed with v4_, such as v4_3234134.
+	//
 	// example:
 	//
 	// p4_2346134

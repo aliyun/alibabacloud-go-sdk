@@ -16,11 +16,17 @@ type iRevokeTablePermissionResponseBody interface {
 }
 
 type RevokeTablePermissionResponseBody struct {
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iListWarehousesResponseBody interface {
 }
 
 type ListWarehousesResponseBody struct {
-	// The list of virtual warehouse instances.
+	// The list of compute groups.
 	WarehouseList []*ListWarehousesResponseBodyWarehouseList `json:"WarehouseList,omitempty" xml:"WarehouseList,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ func (s *ListWarehousesResponseBody) Validate() error {
 }
 
 type ListWarehousesResponseBodyWarehouseList struct {
-	// The number of CPU cores.
+	// cpu
 	//
 	// example:
 	//
 	// 32
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The ID.
+	// id
 	//
 	// example:
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The memory capacity.
+	// The memory.
 	//
 	// example:
 	//
 	// 128
 	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The name of the virtual warehouse instance.
+	// The name of the compute group.
 	//
 	// example:
 	//
@@ -97,48 +97,6 @@ type ListWarehousesResponseBodyWarehouseList struct {
 	// 2
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	// The status.
-	//
-	// Valid values:
-	//
-	// 	- kRunning
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kSuspended
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kInit
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kFailed
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- kAllocating
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

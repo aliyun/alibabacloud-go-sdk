@@ -14,7 +14,7 @@ type iDeleteHoloWarehouseRequest interface {
 }
 
 type DeleteHoloWarehouseRequest struct {
-	// The name of the virtual warehouse.
+	// The name of the compute group.
 	//
 	// This parameter is required.
 	//

@@ -14,6 +14,8 @@ type iListUpgradeReleaseVersionsRequest interface {
 }
 
 type ListUpgradeReleaseVersionsRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen

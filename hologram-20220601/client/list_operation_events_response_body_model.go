@@ -22,11 +22,16 @@ type iListOperationEventsResponseBody interface {
 }
 
 type ListOperationEventsResponseBody struct {
+	// The list of events.
 	Data []*ListOperationEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 3
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 30
@@ -37,6 +42,8 @@ type ListOperationEventsResponseBody struct {
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 120
@@ -110,26 +117,37 @@ func (s *ListOperationEventsResponseBody) Validate() error {
 }
 
 type ListOperationEventsResponseBodyData struct {
+	// Indicates whether the event can be canceled.
+	//
 	// example:
 	//
 	// true
 	Cancelable *bool `json:"Cancelable,omitempty" xml:"Cancelable,omitempty"`
+	// Indicates whether the event schedule can be modified.
+	//
 	// example:
 	//
 	// true
 	ChangeScheduleTime *bool `json:"ChangeScheduleTime,omitempty" xml:"ChangeScheduleTime,omitempty"`
+	// The event details.
+	//
 	// example:
 	//
 	// {}
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The event name filter.
+	//
 	// example:
 	//
 	// HOT_UPGRADE
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The event type filter.
+	//
 	// example:
 	//
 	// UPGRADE_ON_CUSTOMERS_BEHALF
-	EventType         *string                                                 `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The list of follower instances.
 	FollowerInstances []*ListOperationEventsResponseBodyDataFollowerInstances `json:"FollowerInstances,omitempty" xml:"FollowerInstances,omitempty" type:"Repeated"`
 	// Id
 	//
@@ -137,14 +155,20 @@ type ListOperationEventsResponseBodyData struct {
 	//
 	// 1826503661244379138
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// haha
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The maintenance time window.
+	//
 	// example:
 	//
 	// 21:00-22:00
 	MaintainWindow *string `json:"MaintainWindow,omitempty" xml:"MaintainWindow,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// hgpost-cn-sxfsdfsd
@@ -161,6 +185,8 @@ type ListOperationEventsResponseBodyData struct {
 	//
 	// queued
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-k
@@ -306,10 +332,14 @@ func (s *ListOperationEventsResponseBodyData) Validate() error {
 }
 
 type ListOperationEventsResponseBodyDataFollowerInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// hi

@@ -14,6 +14,8 @@ type iListLeaderInstancesRequest interface {
 }
 
 type ListLeaderInstancesRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

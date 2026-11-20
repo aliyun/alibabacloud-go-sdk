@@ -24,37 +24,19 @@ type iEnableHiveAccessResponseBody interface {
 }
 
 type EnableHiveAccessResponseBody struct {
-  // The returned data.
-  // 
-  // Valid values:
-  // 
-  // 	- true
-  // 
-  //     <!-- -->
-  // 
-  //     <!-- -->
-  // 
-  //     <!-- -->
-  // 
-  // 	- false
-  // 
-  //     <!-- -->
-  // 
-  //     <!-- -->
-  // 
-  //     <!-- -->
+  // The returned result.
   // 
   // example:
   // 
   // true
   Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The error code returned if the request failed.
+  // The error code.
   // 
   // example:
   // 
   // 404
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-  // The error message returned.
+  // The error message.
   // 
   // example:
   // 
@@ -66,13 +48,13 @@ type EnableHiveAccessResponseBody struct {
   // 
   // 200
   HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-  // The request ID.
+  // Id of the request
   // 
   // example:
   // 
   // EA8F0084-5831-5907-BB31-BD05D2617844
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the operation is successful.
   // 
   // example:
   // 

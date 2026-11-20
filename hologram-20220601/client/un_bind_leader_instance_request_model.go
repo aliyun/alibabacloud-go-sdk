@@ -14,6 +14,8 @@ type iUnBindLeaderInstanceRequest interface {
 }
 
 type UnBindLeaderInstanceRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

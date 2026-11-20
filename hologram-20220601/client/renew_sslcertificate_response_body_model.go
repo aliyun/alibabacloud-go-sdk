@@ -24,26 +24,38 @@ type iRenewSSLCertificateResponseBody interface {
 }
 
 type RenewSSLCertificateResponseBody struct {
+	// true: Success. false: Failure.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values: true: Success. false: Failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 819A7F0F-2951-540F-BD94-6A41ECF0281F

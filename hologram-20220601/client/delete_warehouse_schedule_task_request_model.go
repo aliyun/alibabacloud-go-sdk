@@ -16,12 +16,16 @@ type iDeleteWarehouseScheduleTaskRequest interface {
 }
 
 type DeleteWarehouseScheduleTaskRequest struct {
+	// The ID of the time-based elastic plan.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2034449120420339713
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The compute group ID.
+	//
 	// example:
 	//
 	// 1

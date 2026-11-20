@@ -14,6 +14,8 @@ type iListDatabasesRequest interface {
 }
 
 type ListDatabasesRequest struct {
+	// Specifies whether to list foreign tables separately. Valid values: true: yes, false or null: no.
+	//
 	// example:
 	//
 	// false

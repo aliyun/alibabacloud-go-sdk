@@ -20,15 +20,22 @@ type iRevokeSchemaPermissionRequest interface {
 }
 
 type RevokeSchemaPermissionRequest struct {
+	// The database name.
+	//
 	// example:
 	//
 	// test_db
-	DatabaseName *string   `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	Privileges   []*string `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The list of permissions.
+	Privileges []*string `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
+	// The schema name.
+	//
 	// example:
 	//
 	// my_schema
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The user ID. For more information, see [Hologres account overview](https://help.aliyun.com/document_detail/130393.html).
+	//
 	// example:
 	//
 	// p4_1234xxxx

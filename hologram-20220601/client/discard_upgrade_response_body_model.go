@@ -24,15 +24,22 @@ type iDiscardUpgradeResponseBody interface {
 }
 
 type DiscardUpgradeResponseBody struct {
+	// The returned results.
 	Data []*DiscardUpgradeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type DiscardUpgradeResponseBody struct {
 	//
 	// A47D57BE-59D1-51A6-9CC3-080C07852C4E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. This parameter indicates whether an exception occurred during the request and is independent of the business logic.
+	//
 	// example:
 	//
 	// true
@@ -125,14 +134,20 @@ func (s *DiscardUpgradeResponseBody) Validate() error {
 }
 
 type DiscardUpgradeResponseBodyData struct {
+	// The reason for the upgrade failure.
+	//
 	// example:
 	//
 	// null
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// The reason key.
+	//
 	// example:
 	//
 	// null
 	ReasonKey *string `json:"ReasonKey,omitempty" xml:"ReasonKey,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

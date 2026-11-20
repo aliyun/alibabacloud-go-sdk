@@ -14,6 +14,8 @@ type iDiscardUpgradeRequest interface {
 }
 
 type DiscardUpgradeRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen

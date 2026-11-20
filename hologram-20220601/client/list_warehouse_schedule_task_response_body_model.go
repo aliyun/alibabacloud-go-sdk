@@ -16,10 +16,13 @@ type iListWarehouseScheduleTaskResponseBody interface {
 }
 
 type ListWarehouseScheduleTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A0A16C46-5B56-1F9B-AA37-4C3EAD95AAA8
-	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of time-based elastic plans.
 	ScheduleTaskList []*ListWarehouseScheduleTaskResponseBodyScheduleTaskList `json:"ScheduleTaskList,omitempty" xml:"ScheduleTaskList,omitempty" type:"Repeated"`
 }
 
@@ -63,23 +66,34 @@ func (s *ListWarehouseScheduleTaskResponseBody) Validate() error {
 }
 
 type ListWarehouseScheduleTaskResponseBodyScheduleTaskList struct {
+	// The elastic type.
+	//
 	// example:
 	//
 	// timed
-	ElasticType *string                                                       `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	Plans       []*ListWarehouseScheduleTaskResponseBodyScheduleTaskListPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	// The list of elastic plans for a single compute group.
+	Plans []*ListWarehouseScheduleTaskResponseBodyScheduleTaskListPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
+	// The reserved resources of the compute group.
+	//
 	// example:
 	//
 	// 32
 	ReservedCpu *int64 `json:"ReservedCpu,omitempty" xml:"ReservedCpu,omitempty"`
+	// The status of the compute group.
+	//
 	// example:
 	//
 	// kRunning
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The compute group ID.
+	//
 	// example:
 	//
 	// 1
 	WarehouseId *string `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+	// The compute group name.
+	//
 	// example:
 	//
 	// init_warehouse
@@ -162,22 +176,32 @@ func (s *ListWarehouseScheduleTaskResponseBodyScheduleTaskList) Validate() error
 }
 
 type ListWarehouseScheduleTaskResponseBodyScheduleTaskListPlans struct {
+	// The description of the elastic plan.
+	//
 	// example:
 	//
 	// bill stat
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The elastic resources. The value must be a multiple of 16, greater than or equal to 16, and less than or equal to the compute group specifications.
+	//
 	// example:
 	//
 	// 32
 	ElasticCu *int64 `json:"ElasticCu,omitempty" xml:"ElasticCu,omitempty"`
+	// The end time. Only full hours and half hours are supported. The format is HHmm (four digits, 24-hour clock).
+	//
 	// example:
 	//
 	// 0400
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The elastic plan ID.
+	//
 	// example:
 	//
 	// 1802985780260052993
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The start time. Only full hours and half hours are supported, such as 0100 for 1:00 AM. The format is HHmm (four digits, 24-hour clock).
+	//
 	// example:
 	//
 	// 0100

@@ -24,28 +24,40 @@ type iUpdateModelServiceRequest interface {
 }
 
 type UpdateModelServiceRequest struct {
+	// The CPU specifications.
+	//
 	// example:
 	//
 	// 32
 	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The GPU specifications.
+	//
 	// example:
 	//
 	// 1
 	Gpu *int64 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The memory specifications.
+	//
 	// example:
 	//
 	// 60
 	Memory *int64 `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The custom service name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// model-qwen
 	ModelServiceName *string `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// Qwen/Qwen2.5-VL-32B-Instruct
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The number of service replicas.
+	//
 	// example:
 	//
 	// 2

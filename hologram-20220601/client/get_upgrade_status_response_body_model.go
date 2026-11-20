@@ -24,15 +24,22 @@ type iGetUpgradeStatusResponseBody interface {
 }
 
 type GetUpgradeStatusResponseBody struct {
+	// The response data.
 	Data []*GetUpgradeStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Internal server error.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
@@ -43,6 +50,8 @@ type GetUpgradeStatusResponseBody struct {
 	//
 	// D73E42D0-AA72-5880-B96F-548B43C84736
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. This parameter is unrelated to the business logic.
+	//
 	// example:
 	//
 	// true
@@ -125,22 +134,32 @@ func (s *GetUpgradeStatusResponseBody) Validate() error {
 }
 
 type GetUpgradeStatusResponseBodyData struct {
+	// The details.
+	//
 	// example:
 	//
 	// {"UpgradePhase":"Upgrade","StatusCode":"LeaderRestartFailed","FlightingReport":{"SQLResultStat":{"TotalExecuted":9000"Exceptions":0,"Incorrect":1,"Slow":1,"DQLSpeedup":2}"SegmentFormatStat":[{"Database":"test_db","TableUsingSegmentCount":5},{"Database":"user_order","TableUsingSegmentCount":7}],"EstimatedUpgradeTime":{"StopInstance":30,"BackupData":120,"UpgradeInstance":600},"ReadPermissionCheckStat":[{"db":"tst0","user":"v4_300433463265624129","schema":"dim_db","table":"it_rpt_org_tree_info_partition_all"},{"db":"tst1","user":"v4_300433463265624129","schema":"dim_db","table":"it_rpt_org_tree_info_partition_all_2"},]},"UpgradingSteps":{"Stop":{"Status":"Success","StartTime":"2023-05-09T06:48:28.843Z","StopTime":"2023-05-09T06:48:28.843Z"},"Backup":{"Status":"Success","StartTime":"2023-05-09T06:48:28.843Z","StopTime":"2023-05-09T06:48:28.843Z"},"DoUpgrade":{"Status":"Success","StartTime":"2023-05-09T06:48:28.843Z","StopTime":"2023-05-09T06:48:28.843Z"},"Rollback":{"Status":"Success","StartTime":"2023-05-09T06:48:28.843Z","StopTime":"2023-05-09T06:48:28.843Z"}},"Instances":{"LeaderInstanceId":"hgxxx","LeaderInstanceName":"ERP instance","LeaderInstanceStatus":"Running","FollowerInstances":[{"InstanceId":"hgxxx","InstanceName":"TMSinstance","Status":"Running"},{"InstanceId":"hxxx""InstanceName":"WMS readonly","Status":"Unavailable"}]}}
 	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// The current version.
+	//
 	// example:
 	//
 	// 1.3.23
 	FromVersion *string `json:"FromVersion,omitempty" xml:"FromVersion,omitempty"`
+	// The time when the preparation is completed. The time is in UTC and formatted in accordance with ISO 8601.
+	//
 	// example:
 	//
 	// 2023-05-09T06:48:28.843Z
 	PrepareFinishTime *string `json:"PrepareFinishTime,omitempty" xml:"PrepareFinishTime,omitempty"`
+	// The status of the Airflow DAG used for the instance upgrade.
+	//
 	// example:
 	//
 	// archived
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The target version.
+	//
 	// example:
 	//
 	// 1.3.24

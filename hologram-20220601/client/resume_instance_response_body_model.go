@@ -24,7 +24,7 @@ type iResumeInstanceResponseBody interface {
 }
 
 type ResumeInstanceResponseBody struct {
-	// The returned result, which indicates whether the operation was successful.
+	// The returned result, which indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type ResumeInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 404
+	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// Internal server error.
+	// null
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,13 +48,13 @@ type ResumeInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result, which indicates whether the request was successful.
+	// The request result, which indicates whether an exception occurred during the request and is independent of the business logic.
 	//
 	// example:
 	//
