@@ -42,7 +42,7 @@ type ListContactsResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type ListContactsResponseBodyContacts struct {
 	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
 	// The alert contact groups to which the alert contact belongs.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
-	// The mapping of IM user IDs. Multiple instant messaging tools are supported.
+	// The mapping of instant messaging (IM) user IDs. Multiple IM tools are supported.
 	//
 	// example:
 	//

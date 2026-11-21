@@ -24,7 +24,7 @@ type iListBizTracesResponseBody interface {
 type ListBizTracesResponseBody struct {
 	// The list of business links.
 	Items []*BizTraceConfig `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of results to return. Maximum value: 100.
+	// The maximum number of results to return. The maximum value is 100.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListBizTracesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of items.
 	//
 	// example:
 	//

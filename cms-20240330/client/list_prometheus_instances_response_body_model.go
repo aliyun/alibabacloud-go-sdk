@@ -35,7 +35,7 @@ type ListPrometheusInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// 11a111111111a1111a1111aaaa1a1aa1aa11aa111aa11a1111a1a111aa1a1111a1a111a1a111111111111111111111aa
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The list of Prometheus instances.
 	PrometheusInstances []*ListPrometheusInstancesResponseBodyPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
@@ -122,17 +122,17 @@ func (s *ListPrometheusInstancesResponseBody) Validate() error {
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	// The access type. Valid values:
 	//
-	// - readWrite
+	// - readWrite: Read and write.
 	//
-	// - readOnly
+	// - readOnly: Read-only.
 	//
-	// - httpReadOnly
+	// - httpReadOnly: HTTP read-only.
 	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The time when the instance was created. The time is displayed in UTC+0 and formatted as yyyy-MM-ddTHH:mmZ.
+	// The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// arms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// rw-63549e054ff596a4149927961dff
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// cn-nanjing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

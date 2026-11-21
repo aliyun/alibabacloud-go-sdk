@@ -14,7 +14,7 @@ type iUpdatePrometheusUserSettingRequest interface {
 }
 
 type UpdatePrometheusUserSettingRequest struct {
-	// The value of the user setting.
+	// The user configuration setting value.
 	//
 	// This parameter is required.
 	//

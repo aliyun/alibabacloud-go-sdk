@@ -24,7 +24,7 @@ type iCreateContextStoreRequest interface {
 type CreateContextStoreRequest struct {
 	// The configuration information.
 	Config *CreateContextStoreRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The name of the context store.
+	// The name of the context library.
 	//
 	// This parameter is required.
 	//

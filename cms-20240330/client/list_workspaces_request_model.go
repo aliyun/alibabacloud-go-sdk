@@ -44,7 +44,7 @@ type ListWorkspacesRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// aAaAAAA1aAAA1a1a1AaaAAa1A11aaaa1AA-aAA1Aaaa1aaAaAaaAaAaa1AAAaa1A
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The region.
 	//
@@ -63,7 +63,7 @@ type ListWorkspacesRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The tags.
 	Tags []*ListWorkspacesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace name. Fuzzy match is supported.
+	// The name of the workspace. Fuzzy match is supported.
 	//
 	// example:
 	//

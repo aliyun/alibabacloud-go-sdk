@@ -139,13 +139,13 @@ func (s *UpdateContextStoreRequestConfig) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigSource struct {
-	// The name of the Simple Log Service Logstore.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the project.
 	//
 	// example:
 	//

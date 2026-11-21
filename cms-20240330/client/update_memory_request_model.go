@@ -16,13 +16,13 @@ type iUpdateMemoryRequest interface {
 }
 
 type UpdateMemoryRequest struct {
-	// The metadata of the Memory.
+	// The metadata.
 	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The new text for the Memory.
+	// The updated text content of the memory.
 	//
 	// example:
 	//

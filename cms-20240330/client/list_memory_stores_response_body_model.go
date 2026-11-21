@@ -34,7 +34,7 @@ type ListMemoryStoresResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// Y3iar1wjfpVIs8Krllea2QKM7-ND__****Iar1wjf9vi8SkRl_EAWqkM7l9Dl-pl
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The request ID.
 	//

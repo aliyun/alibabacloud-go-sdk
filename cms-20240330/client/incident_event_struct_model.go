@@ -50,9 +50,9 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// The CPU utilization of the user-service instance i-abc123 reached 95%, triggering an alert
+	// The CPU usage of the user-service instance i-abc123 reached 95%, triggering an alert
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The statistical count.
+	// The count.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type IncidentEventStruct struct {
 	//
 	// 1741234567890
 	RecoverTime *int64 `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
-	// The information about the resources associated with the event.
+	// The resource information associated with the event.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// Running
+	// 1
 	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
 	// The time.
 	//
@@ -116,7 +116,7 @@ type IncidentEventStruct struct {
 	//
 	// example:
 	//
-	// High CPU utilization of the user service
+	// High CPU usage in the user service
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The user ID.
 	//

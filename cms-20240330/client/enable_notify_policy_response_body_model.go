@@ -24,7 +24,7 @@ type EnableNotifyPolicyResponseBody struct {
   // 
   // 0CEC5375-C554-562B-A65F-***
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
   // The unique identifier of the notification policy.
   // 

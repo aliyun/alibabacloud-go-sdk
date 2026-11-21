@@ -26,7 +26,7 @@ type iListAlertNotifyTemplatesRequest interface {
 type ListAlertNotifyTemplatesRequest struct {
 	// The list of notification template IDs.
 	AlertNotifyTemplateIds []*string `json:"alertNotifyTemplateIds,omitempty" xml:"alertNotifyTemplateIds,omitempty" type:"Repeated"`
-	// The name of the notification template.
+	// The notification template name.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListAlertNotifyTemplatesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

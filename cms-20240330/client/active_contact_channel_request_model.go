@@ -22,7 +22,7 @@ type ActiveContactChannelRequest struct {
 	//
 	// 0b9377d9c56b5c2ea8a41a2b3c4d5e6f
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The site. Valid values: cn_hangzhou (China site) and ap_southeast_1 (International site). Default value: cn_hangzhou.
+	// The site. Valid values: cn_hangzhou (Alibaba Cloud China Website) and ap_southeast_1 (Alibaba Cloud International Website). Default value: cn_hangzhou.
 	//
 	// example:
 	//

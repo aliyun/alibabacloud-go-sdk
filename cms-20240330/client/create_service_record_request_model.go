@@ -16,7 +16,7 @@ type iCreateServiceRecordRequest interface {
 }
 
 type CreateServiceRecordRequest struct {
-	// The content of the entry in JSON string format. The format may vary based on the recordType.
+	// The content of the entry. The value is a JSON string. The format varies based on the recordType.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,9 @@ type CreateServiceRecordRequest struct {
 	//
 	// }
 	RecordContent *string `json:"recordContent,omitempty" xml:"recordContent,omitempty"`
-	// The type of the association entry. Valid values: logCorrelation, which indicates application log association.
+	// The type of the association entry. Valid values:
+	//
+	// - logCorrelation: Application log association.
 	//
 	// This parameter is required.
 	//

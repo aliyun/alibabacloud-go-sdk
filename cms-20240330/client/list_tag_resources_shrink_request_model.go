@@ -28,11 +28,11 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next query.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The list of resource IDs.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
@@ -44,9 +44,9 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The labels. Used as filter conditions for the query.
+	// The tags. The filter conditions for the query.
 	//
-	// You can specify up to 20 labels.
+	// You can specify up to 20 tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

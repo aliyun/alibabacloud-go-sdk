@@ -58,7 +58,7 @@ type GetMemoryResponseBody struct {
 	//
 	// 1751595283143
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The expiration time.
+	// The expiration date.
 	//
 	// example:
 	//

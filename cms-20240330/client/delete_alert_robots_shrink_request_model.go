@@ -16,11 +16,11 @@ type iDeleteAlertRobotsShrinkRequest interface {
 }
 
 type DeleteAlertRobotsShrinkRequest struct {
-	// The chatbot IDs.
+	// The IDs of the chatbots.
 	//
 	// This parameter is required.
 	RobotIdsShrink *string `json:"robotIds,omitempty" xml:"robotIds,omitempty"`
-	// The chatbot type.
+	// The type of the chatbot.
 	//
 	// example:
 	//

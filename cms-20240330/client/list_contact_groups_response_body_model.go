@@ -36,7 +36,7 @@ type ListContactGroupsResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The unique request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type ListContactGroupsResponseBodyContactGroups struct {
 	//
 	// test
 	ContactGroupId *string `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
-	// The contact IDs.
+	// The IDs of the contacts.
 	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
-	// The contact name.
+	// The name of the contact.
 	//
 	// example:
 	//

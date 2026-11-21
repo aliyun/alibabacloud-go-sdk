@@ -98,7 +98,7 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The time when the latest version was created. The time follows the ISO 8601 standard and includes a UTC identifier or time zone offset.
+	// The time of the latest release. The time follows the ISO 8601 standard and includes a UTC identifier or time zone offset.
 	//
 	// example:
 	//
@@ -110,23 +110,23 @@ type ListAddonsResponseBodyAddons struct {
 	//
 	// rum_api_dashboard_explorer_link_metric_set
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether the component can be installed only once.
+	// Specifies whether the add-on can be installed only once.
 	//
 	// example:
 	//
 	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
-	// The scenario of the component.
+	// The component scenario.
 	//
 	// example:
 	//
 	// middleware
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//
-	// *
+	// 1.2.32
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// The display weight of the integration component.
 	//
@@ -383,7 +383,7 @@ type ListAddonsResponseBodyAddonsEnvironments struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The integration policy configurations.
 	Policies *ListAddonsResponseBodyAddonsEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
-	// The policy type of the integration center.
+	// The Integration Center policy type.
 	//
 	// example:
 	//
@@ -598,7 +598,7 @@ type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Specifies whether to install the component by default.
+	// Specifies whether the add-on is installed by default.
 	//
 	// example:
 	//
@@ -612,7 +612,7 @@ type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
+	// Specifies whether to trigger the pod restart process immediately after the plug-in is installed during integration.
 	//
 	// example:
 	//
@@ -744,7 +744,7 @@ func (s *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule) Valida
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols struct {
-	// The description of the protocol.
+	// The protocol description.
 	//
 	// example:
 	//
@@ -762,7 +762,7 @@ type ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols struct {
 	//
 	// OpenTelemetry
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the protocol.
+	// The protocol name.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListSubscriptionsResponseBody interface {
 }
 
 type ListSubscriptionsResponseBody struct {
-	// The maximum number of records returned for the current request.
+	// The maximum number of records returned in the current request.
 	//
 	// example:
 	//

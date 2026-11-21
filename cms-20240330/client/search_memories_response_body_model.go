@@ -26,7 +26,7 @@ type SearchMemoriesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return values.
+	// The returned results.
 	Results []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -166,7 +166,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// 1762773128968
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The hash value of the memory.
+	// The memory hash value.
 	//
 	// example:
 	//

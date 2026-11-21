@@ -34,7 +34,7 @@ type ListMemoryStoresRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxxxx
+	// H8low6kptuLKf7Sttrso6EOE0-JV__****Low6kpt0lk3XsTt_SOYeoE0c7Vb-le
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 

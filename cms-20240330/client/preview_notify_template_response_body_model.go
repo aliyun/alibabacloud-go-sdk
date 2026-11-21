@@ -20,7 +20,7 @@ type iPreviewNotifyTemplateResponseBody interface {
 }
 
 type PreviewNotifyTemplateResponseBody struct {
-	// The rendering result object, which contains two mappings: success for successfully rendered items and failed for items that failed to render.
+	// The rendering result object. This object includes two mappings: success for successfully rendered items and failed for failed rendering items.
 	Data *PreviewNotifyTemplateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The processing result message. The value is success if the request is successful, or an error message if the request fails.
 	//
@@ -34,11 +34,11 @@ type PreviewNotifyTemplateResponseBody struct {
 	//
 	// 452faed9-ab3b-4340-8a92-bc7d9b98f17a
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Specifies whether the request is successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: Successful.
 	//
-	// - false: The request fails.
+	// - false: Failed.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

@@ -378,13 +378,13 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments struct {
 	//
 	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the environment is enabled.
+	// Specifies whether it is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The display name of the environment.
+	// The environment display name.
 	//
 	// example:
 	//
@@ -477,7 +477,7 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments) Validate() e
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies struct {
-	// The dependencies on cluster types.
+	// The cluster type dependencies.
 	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
 	// The dependencies on probes.
 	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
@@ -525,13 +525,13 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies) 
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies struct {
-	// The enabled status of the default alert rule policy.
+	// The enabling status of the default alert rule policy.
 	//
 	// example:
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Specifies whether the add-on is installed by default.
+	// Specifies whether it is installed by default.
 	//
 	// example:
 	//
@@ -553,7 +553,7 @@ type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies struct {
 	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
 	// The protocols.
 	Protocols []*ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// The name of the target add-on.
+	// The target add-on name.
 	//
 	// example:
 	//

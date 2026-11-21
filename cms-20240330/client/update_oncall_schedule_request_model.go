@@ -28,7 +28,7 @@ type UpdateOncallScheduleRequest struct {
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
 	// The list of rotations.
 	Rotations []*UpdateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the shift reminder bot.
+	// The ID of the shift reminder chatbot.
 	//
 	// example:
 	//
@@ -105,11 +105,11 @@ func (s *UpdateOncallScheduleRequest) Validate() error {
 }
 
 type UpdateOncallScheduleRequestRotations struct {
-	// The days of the week when the rotation takes effect.
+	// The days of the week when the rotation is active.
 	//
 	// This parameter is required.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	// The IDs of the contacts.
+	// The contact ID.
 	//
 	// This parameter is required.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
@@ -137,13 +137,13 @@ type UpdateOncallScheduleRequestRotations struct {
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 3 days.
+	// The length of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every 3 days.
 	//
 	// example:
 	//
 	// 3
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 1 week.
+	// The unit of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every week.
 	//
 	// This parameter is required.
 	//
@@ -159,7 +159,7 @@ type UpdateOncallScheduleRequestRotations struct {
 	//
 	// 2024-04-04
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// The time zone name, which uses the IANA Time Zone Database standard. Example: Asia/Shanghai.
+	// The name of the time zone based on the IANA Time Zone Database standard. Example: Asia/Shanghai.
 	//
 	// This parameter is required.
 	//
@@ -275,7 +275,7 @@ type UpdateOncallScheduleRequestSubstitudes struct {
 	//
 	// 2024-10-15 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The contact ID of the replaced person.
+	// The contact ID of the replaced contact.
 	//
 	// example:
 	//

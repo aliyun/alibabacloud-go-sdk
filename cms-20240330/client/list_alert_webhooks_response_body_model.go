@@ -28,7 +28,7 @@ type ListAlertWebhooksResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListAlertWebhooksResponseBodyWebhooks struct {
 	//
 	// example:
 	//
-	// key
+	// {"X-Total-Count":"0"}
 	Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The language. Valid values:
 	//
@@ -159,19 +159,19 @@ type ListAlertWebhooksResponseBodyWebhooks struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL of the alert callback.
+	// The alert callback URL.
 	//
 	// example:
 	//
 	// http://aliyun.com/test
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-	// The unique ID of the webhook.
+	// The unique identifiers of the webhooks.
 	//
 	// example:
 	//
 	// test
 	WebhookId *string `json:"webhookId,omitempty" xml:"webhookId,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

@@ -30,25 +30,25 @@ type iIncidentMemberStruct interface {
 }
 
 type IncidentMemberStruct struct {
-	// The structure of the confirmation information.
+	// The acknowledgment information struct.
 	Acknowledge *IncidentMemberStructAcknowledge `json:"acknowledge,omitempty" xml:"acknowledge,omitempty" type:"Struct"`
-	// The ID of the contact.
+	// The contact ID.
 	//
 	// example:
 	//
 	// user-12345
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// A list of contacts.
+	// The contact list.
 	Contacts []*IncidentMemberStructContacts `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// Information about the escalation stage.
+	// The escalation stage information.
 	Escalation *IncidentMemberStructEscalation `json:"escalation,omitempty" xml:"escalation,omitempty" type:"Struct"`
-	// The ID of the event.
+	// The incident ID.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// The ID of the event member.
+	// The incident member ID.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type IncidentMemberStruct struct {
 	//
 	// example:
 	//
-	// 2025-10-08 10:18:58
+	// 1794984221885
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
 	// The user ID.
 	//
@@ -188,7 +188,7 @@ func (s *IncidentMemberStruct) Validate() error {
 }
 
 type IncidentMemberStructAcknowledge struct {
-	// The confirmation level.
+	// The acknowledgment level.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type IncidentMemberStructContacts struct {
 	//
 	// dingtalk
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The masked ID of the contact.
+	// The contact ID (masked).
 	//
 	// example:
 	//
@@ -282,9 +282,9 @@ type IncidentMemberStructEscalation struct {
 	//
 	// example:
 	//
-	// Notify the operations team.
+	// Notify the O&M team
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the event escalation.
+	// The incident escalation ID.
 	//
 	// example:
 	//
@@ -294,9 +294,9 @@ type IncidentMemberStructEscalation struct {
 	//
 	// example:
 	//
-	// Phase one.
+	// Stage 1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The index of the escalation stage.
+	// The escalation stage index.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type IncidentMemberStructEscalation struct {
 	//
 	// example:
 	//
-	// Alert escalated to the operations team.
+	// Alert escalated to the O&M team
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -368,7 +368,7 @@ func (s *IncidentMemberStructEscalation) Validate() error {
 }
 
 type IncidentMemberStructScheduleGroup struct {
-	// The ID of the contact.
+	// The contact ID.
 	//
 	// example:
 	//
@@ -378,7 +378,7 @@ type IncidentMemberStructScheduleGroup struct {
 	//
 	// example:
 	//
-	// Night shift duty team.
+	// Night on-call group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

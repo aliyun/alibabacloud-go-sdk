@@ -100,31 +100,31 @@ func (s *ListIntegrationPolicyServiceMonitorsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors struct {
-	// The addon name.
+	// The name of the add-on.
 	//
 	// example:
 	//
 	// cloud-acs-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The addon release name.
+	// The name of the add-on release.
 	//
 	// example:
 	//
 	// release-1234567
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The addon version.
+	// The version of the add-on.
 	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The configuration YAML.
+	// The YAML configuration.
 	//
 	// example:
 	//
 	// apiVersion: xxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
-	// The enabling status.
+	// The enabled status.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors struct {
 	//
 	// example:
 	//
-	// YXBpVmVyc2lvbjogeHh4eHgK
+	// true
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
 	// The list of endpoints.
 	Endpoints []*ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
@@ -144,13 +144,13 @@ type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors struct {
 	//
 	// 50
 	MatchedServiceCount *int64 `json:"matchedServiceCount,omitempty" xml:"matchedServiceCount,omitempty"`
-	// The ServiceMonitor name.
+	// The name of the ServiceMonitor.
 	//
 	// example:
 	//
 	// 62a526c5-f6ca-4cfb-b5a4-b76974cffe51
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace.
+	// The name of the project workspace.
 	//
 	// example:
 	//
@@ -282,7 +282,7 @@ type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints st
 	//
 	// 65
 	MatchedTargetCount *int64 `json:"matchedTargetCount,omitempty" xml:"matchedTargetCount,omitempty"`
-	// The sampling path.
+	// The collection path.
 	//
 	// example:
 	//

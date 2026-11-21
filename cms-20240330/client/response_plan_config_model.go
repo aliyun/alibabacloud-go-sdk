@@ -20,7 +20,7 @@ type iResponsePlanConfig interface {
 }
 
 type ResponsePlanConfig struct {
-	// The number of seconds for automatic recovery. If no new trigger occurs within this duration, the event is automatically recovered.
+	// The auto-recovery time in seconds. The incident automatically recovers if no new triggers occur within this duration.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ func (s *ResponsePlanConfig) Validate() error {
 }
 
 type ResponsePlanConfigPushingSetting struct {
-	// The list of action integration IDs triggered by alerts.
+	// The list of alert-triggered action integration IDs.
 	//
 	// example:
 	//
 	// ["action-uuid-xxx"]
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// The list of action integration IDs triggered by recovery.
+	// The list of recovery-triggered action integration IDs.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ func (s *ResponsePlanConfigPushingSetting) Validate() error {
 }
 
 type ResponsePlanConfigRepeatNotifySetting struct {
-	// The target incident status at which repeat notifications stop.
+	// The target incident state for stopping repeat notifications.
 	//
 	// example:
 	//
 	// RECOVERED
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
-	// The repeat notification interval, in seconds.
+	// The repeat notification interval in seconds.
 	//
 	// example:
 	//

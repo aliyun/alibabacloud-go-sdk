@@ -38,7 +38,7 @@ type CreateAlertWebhookRequest struct {
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The collection of HTTP request headers.
+	// The HTTP request headers.
 	//
 	// example:
 	//

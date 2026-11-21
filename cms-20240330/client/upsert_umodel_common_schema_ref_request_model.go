@@ -9,6 +9,8 @@ type iUpsertUmodelCommonSchemaRefRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *UpsertUmodelCommonSchemaRefRequest
+	GetDryRun() *bool
 	SetGroup(v string) *UpsertUmodelCommonSchemaRefRequest
 	GetGroup() *string
 	SetVersion(v string) *UpsertUmodelCommonSchemaRefRequest
@@ -16,6 +18,14 @@ type iUpsertUmodelCommonSchemaRefRequest interface {
 }
 
 type UpsertUmodelCommonSchemaRefRequest struct {
+	// Specifies whether to perform a dry run for this request. Valid values:
+	//
+	// - true: Sends a check request without performing actual changes.
+	//
+	// - false: Sends a normal request.
+	//
+	// Default value: false.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// The public Umodel schema group.
 	//
 	// This parameter is required.
@@ -42,12 +52,21 @@ func (s UpsertUmodelCommonSchemaRefRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpsertUmodelCommonSchemaRefRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *UpsertUmodelCommonSchemaRefRequest) GetGroup() *string {
 	return s.Group
 }
 
 func (s *UpsertUmodelCommonSchemaRefRequest) GetVersion() *string {
 	return s.Version
+}
+
+func (s *UpsertUmodelCommonSchemaRefRequest) SetDryRun(v bool) *UpsertUmodelCommonSchemaRefRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *UpsertUmodelCommonSchemaRefRequest) SetGroup(v string) *UpsertUmodelCommonSchemaRefRequest {

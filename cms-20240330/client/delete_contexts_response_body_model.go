@@ -16,7 +16,7 @@ type iDeleteContextsResponseBody interface {
 }
 
 type DeleteContextsResponseBody struct {
-	// The number of deleted contexts.
+	// The number of successfully deleted contexts.
 	//
 	// example:
 	//

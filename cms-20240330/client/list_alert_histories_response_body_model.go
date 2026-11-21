@@ -179,13 +179,13 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// managed_service_for_prometheus
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	// The cumulative number of alert events during the alert duration.
+	// The cumulative number of alerts (alert events) during the alert duration.
 	//
 	// example:
 	//
 	// 200
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The end time of the alert, which is the recovery time. This field has a value only when the alert history enters the OK state. The value is a UNIX timestamp in milliseconds.
+	// The end time (recovery time) of the alert. This field has a value only when the alert history record enters the OK state. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// {"datasourceInfo":{"type":"SLS_MULTI_DS"}}
 	InstanceDetail map[string]*string `json:"instanceDetail,omitempty" xml:"instanceDetail,omitempty"`
-	// The unique key value (instanceKey) that identifies the alert object instance.
+	// The unique key value used to identify the alert object instance, which is the instanceKey.
 	//
 	// example:
 	//
@@ -237,21 +237,21 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// example:
 	//
-	// The number of zombie child processes of the process {{$tags.comm}} running on the instance {{$tags.instanceId}} is greater than 128
+	// The number of zombie child processes of the process {{$tags.comm}} running on instance {{$tags.instanceId}} is greater than 128
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Indicates whether the observed object is in the global scope. This value is copied from the rule when the alert history record is created.
+	// Indicates whether the observed object is in the global scope. This value is copied from the rule upon creation.
 	//
 	// example:
 	//
 	// false
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// The serialized string of the observed object list. This value is copied from the rule when the alert history record is created.
+	// The serialized string of the observed object list. This value is copied from the rule upon creation.
 	//
 	// example:
 	//
 	// [{"resourceId":"i-bp1234567890abcdef","resourceType":"ACS::ECS::Instance"}]
 	ObserveResourceList *string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
-	// The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. This value is copied from the rule when the alert history record is created.
+	// The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. This value is copied from the rule upon creation.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetNotifyPolicyResponseBody interface {
 }
 
 type GetNotifyPolicyResponseBody struct {
-	// The notification policy object details, including the policy UUID, name, description, enabled status, and sub-entities such as notification policies (noise reduction, notification routing, and channels), subscriptions (event filtering, cross-workspace routing, and legacy product event subscriptions), and response plans (escalation, repeated notifications, automatic recovery, and action integration).
+	// The details of the notification policy object, including the policy UUID, name, description, and enabled status, as well as sub-entities such as the notification policy (grouping and merging, notification routing, and channels), subscription (event filtering, cross-workspace routing, and legacy product event subscription), and response plan (escalation, repeated notification, automatic recovery, and action integration).
 	NotifyPolicy *NotifyPolicy `json:"notifyPolicy,omitempty" xml:"notifyPolicy,omitempty"`
 	// Id of the request
 	//

@@ -38,7 +38,7 @@ type SubscriptionForModify struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// The UUID of the notification strategy.
+	// The notification policy UUID.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type SubscriptionForModify struct {
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// The push settings.
 	PushingSetting *SubscriptionForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribe. false or null: Do not subscribe.
+	// Specifies whether to subscribe to legacy product events (CloudMonitor 1.0, ARMS, or SLS events where workspace is null). Valid values:
+	//
+	// - true: Subscribes to the events.
+	//
+	// - false or null: Does not subscribe to the events.
 	//
 	// example:
 	//
@@ -58,7 +62,7 @@ type SubscriptionForModify struct {
 	//
 	// example:
 	//
-	// TestSubscription
+	// 测试订阅
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	// The workspace filter settings.
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
@@ -219,7 +223,7 @@ func (s *SubscriptionForModifyAgentConfig) Validate() error {
 }
 
 type SubscriptionForModifyPushingSetting struct {
-	// The list of action plan IDs for alert push.
+	// The list of alert push action plan IDs.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
 	// The action plan ID.
 	//
@@ -227,9 +231,9 @@ type SubscriptionForModifyPushingSetting struct {
 	//
 	// 123123123
 	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// The list of action integration plan IDs for recovery push.
+	// The list of action integration plan IDs.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// The UUID of the template.
+	// The template UUID.
 	//
 	// example:
 	//

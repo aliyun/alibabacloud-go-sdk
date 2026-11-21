@@ -82,7 +82,7 @@ type GetAlertActionResponseBodyAlertActions struct {
 	Fc3Param *GetAlertActionResponseBodyAlertActionsFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
 	// The Function Compute parameters.
 	FcParam *GetAlertActionResponseBodyAlertActionsFcParam `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
-	// The Simple Message Queue (formerly MNS) parameters.
+	// The Simple Message Queue (formerly MNS) (MSMQ) parameters.
 	MnsParam *GetAlertActionResponseBodyAlertActionsMnsParam `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
 	// The PagerDuty parameters.
 	PagerDutyParam *GetAlertActionResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
@@ -505,7 +505,7 @@ func (s *GetAlertActionResponseBodyAlertActionsFcParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsMnsParam struct {
-	// The Simple Message Queue (formerly MNS) resource type.
+	// The Simple Message Queue (formerly MNS) (MSMQ) resource type.
 	//
 	// example:
 	//
@@ -569,13 +569,13 @@ func (s *GetAlertActionResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsPagerDutyParam struct {
-	// The integration key for PagerDuty.
+	// The integration key of PagerDuty.
 	//
 	// example:
 	//
 	// EWR4WR4T4GREG4ET453T5Y
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The PagerDuty integration webhook. Versions 1 and 2 are supported.
+	// The integration webhook of PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -692,7 +692,7 @@ type GetAlertActionResponseBodyAlertActionsWebhookParam struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The URL for the alert callback.
+	// The URL of the alert callback.
 	//
 	// example:
 	//

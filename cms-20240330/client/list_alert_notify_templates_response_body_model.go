@@ -30,7 +30,7 @@ type ListAlertNotifyTemplatesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListAlertNotifyTemplatesResponseBody) Validate() error {
 }
 
 type ListAlertNotifyTemplatesResponseBodyAlertNotifyTemplates struct {
-	// The ID of the notification template.
+	// The notification template ID.
 	//
 	// example:
 	//
 	// template-abc123
 	AlertNotifyTemplateId *string `json:"alertNotifyTemplateId,omitempty" xml:"alertNotifyTemplateId,omitempty"`
-	// The name of the notification template.
+	// The notification template name.
 	//
 	// example:
 	//
-	// High-availability alert template
+	// High availability alert template
 	AlertNotifyTemplateName *string `json:"alertNotifyTemplateName,omitempty" xml:"alertNotifyTemplateName,omitempty"`
-	// Filters by template syntax type. The current template syntax is fixed to GO and uses Go template syntax.
+	// The template syntax type. Currently, the template syntax is fixed to GO and uses the Go template syntax.
 	//
 	// example:
 	//

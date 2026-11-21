@@ -30,21 +30,21 @@ type IncidentResourceStruct struct {
 	//
 	// example:
 	//
-	// Production environment web server.
+	// Production web server
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The event ID.
+	// The incident ID.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// The unique ID of the resource in the event.
+	// The unique ID of the resource in the incident.
 	//
 	// example:
 	//
 	// res-001
 	IncidentResourceId *string `json:"incidentResourceId,omitempty" xml:"incidentResourceId,omitempty"`
-	// The details object for the event resource.
+	// The incident resource details object.
 	Resource *IncidentResourceDetail `json:"resource,omitempty" xml:"resource,omitempty"`
 	// The source.
 	//
@@ -62,7 +62,7 @@ type IncidentResourceStruct struct {
 	//
 	// example:
 	//
-	// user-12345
+	// 123456
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

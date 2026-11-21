@@ -56,7 +56,7 @@ type AddMemoriesRequest struct {
 	//
 	// Your custom instructions here
 	CustomInstructions *string `json:"customInstructions,omitempty" xml:"customInstructions,omitempty"`
-	// The inference setting.
+	// Specifies whether to enable inference.
 	//
 	// example:
 	//

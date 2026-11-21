@@ -22,7 +22,7 @@ type CreateServiceTaskResponseBody struct {
 	//
 	// A1B2C3D4-E5F6-7890-ABCD-EF1234567890
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the created task. Use this ID for subsequent query or deletion operations.
+	// The ID of the created task. You can use this ID for subsequent queries or deletions.
 	//
 	// example:
 	//

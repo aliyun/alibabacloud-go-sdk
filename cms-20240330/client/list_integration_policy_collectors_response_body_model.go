@@ -68,21 +68,21 @@ func (s *ListIntegrationPolicyCollectorsResponseBody) Validate() error {
 type ListIntegrationPolicyCollectorsResponseBodyCollectors struct {
 	// The add-on details.
 	AddonMeta *AddonMeta `json:"addonMeta,omitempty" xml:"addonMeta,omitempty"`
-	// The collector name.
+	// The name of the collector.
 	//
 	// example:
 	//
 	// collector-kkxx
 	CollectorName *string `json:"collectorName,omitempty" xml:"collectorName,omitempty"`
-	// The collector type.
+	// The type of the collector.
 	//
 	// example:
 	//
 	// Exporter
 	CollectorType *string `json:"collectorType,omitempty" xml:"collectorType,omitempty"`
-	// The phase status.
+	// The conditions.
 	Conditions []*ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// Indicates whether the component is a managed component.
+	// Indicates whether the component is managed.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type ListIntegrationPolicyCollectorsResponseBodyCollectors struct {
 	//
 	// ecs-loong-collector-i-f8z1176fg57rlwmc1rfi
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The collector status.
+	// The state of the collector.
 	//
 	// example:
 	//
-	// xx
+	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//
@@ -227,19 +227,19 @@ func (s *ListIntegrationPolicyCollectorsResponseBodyCollectors) Validate() error
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions struct {
-	// The time of the first transition.
+	// The time of the first transition, in ISO 8601 format, including the UTC identifier or time zone offset.
 	//
 	// example:
 	//
 	// 2024-08-27T13:59:23+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The time of the last transition.
+	// The time of the last transition, in ISO 8601 format, including the UTC identifier or time zone offset.
 	//
 	// example:
 	//
 	// 2024-08-27T13:59:23+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// The details.
+	// The condition details.
 	//
 	// example:
 	//
@@ -251,13 +251,13 @@ type ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions struct {
 	//
 	// Probe
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// The phase status.
+	// The conditions.
 	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The phase type.
+	// The type of the condition.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ func (s *ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions) Valida
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads struct {
-	// The host IP address.
+	// The IP address of the host.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads struct {
 	//
 	// 11.193.82.198
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// Indicates whether the component is a managed component.
+	// Indicates whether the component is managed.
 	//
 	// example:
 	//
@@ -352,37 +352,37 @@ type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads struct {
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
 	// The policy management information.
 	ManagedInfo *ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo `json:"managedInfo,omitempty" xml:"managedInfo,omitempty" type:"Struct"`
-	// The details.
+	// The condition details.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The workload name.
+	// The name of the workload.
 	//
 	// example:
 	//
 	// exporter-xxx
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The workload namespace.
+	// The namespace of the workload.
 	//
 	// example:
 	//
 	// prod-db
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The kind of the parent reference.
+	// The kind of the owner reference.
 	//
 	// example:
 	//
 	// Deployment
 	OwnerReferenceKind *string `json:"ownerReferenceKind,omitempty" xml:"ownerReferenceKind,omitempty"`
-	// The name of the parent reference.
+	// The name of the owner reference.
 	//
 	// example:
 	//
 	// exporter
 	OwnerReferenceName *string `json:"ownerReferenceName,omitempty" xml:"ownerReferenceName,omitempty"`
-	// The start time.
+	// The start time, in ISO 8601 format, including the UTC identifier or time zone offset.
 	//
 	// example:
 	//
@@ -394,7 +394,7 @@ type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads struct {
 	//
 	// {}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The workload version.
+	// The version of the workload.
 	//
 	// example:
 	//
@@ -528,13 +528,13 @@ func (s *ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads) Validat
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo struct {
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-xxxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

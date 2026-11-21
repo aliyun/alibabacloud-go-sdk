@@ -129,7 +129,7 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The creation time in UTC format based on the ISO 8601 standard. Example: 2026-08-10T05:00:00Z.
+	// The creation time. The time is in UTC and follows the ISO 8601 standard, for example, 2026-08-10T05:00:00Z.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -155,7 +155,7 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time in UTC format based on the ISO 8601 standard. Example: 2026-08-10T05:10:00Z.
+	// The update time. The time is in UTC and follows the ISO 8601 standard, for example, 2026-08-10T05:10:00Z.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//

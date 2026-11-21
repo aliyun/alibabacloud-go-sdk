@@ -14,7 +14,7 @@ type iDisableNotifyPolicyRequest interface {
 }
 
 type DisableNotifyPolicyRequest struct {
-	// The workspace ID. Used to isolate notification policy resources across different business spaces.
+	// The workspace ID, which is used to isolate notification policy resources across different business workspaces.
 	//
 	// This parameter is required.
 	//

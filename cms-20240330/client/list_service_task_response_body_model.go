@@ -22,13 +22,13 @@ type iListServiceTaskResponseBody interface {
 }
 
 type ListServiceTaskResponseBody struct {
-	// The maxResults value of the current request.
+	// The maxResults value for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. An encrypted hexadecimal string is returned when a next page exists. An empty value or absence of this field indicates no more data. Pass this value as-is in the nextToken parameter for the next page request.
+	// The token for the next page. An encrypted hexadecimal string is returned if a next page exists. An empty value or the absence of this field indicates that no more data is available. Pass this value as is in the nextToken parameter for the next request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListServiceTaskResponseBody struct {
 	//
 	// [{"taskId":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","taskType":"live_debug_log_probe"}]
 	ServiceTasks []map[string]interface{} `json:"serviceTasks,omitempty" xml:"serviceTasks,omitempty" type:"Repeated"`
-	// The total number of entries that match the conditions.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//

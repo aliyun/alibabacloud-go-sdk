@@ -18,7 +18,7 @@ type iGetAddonCodeTemplateRequest interface {
 }
 
 type GetAddonCodeTemplateRequest struct {
-	// The locale. Default value: zh. Valid values: zh, en.
+	// The locale. Default value: zh. Valid values: zh and en.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetAddonResponseBody interface {
 }
 
 type GetAddonResponseBody struct {
-	// The data list corresponding to the request header.
+	// The list of data corresponding to the request.
 	Data *GetAddonResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -122,7 +122,7 @@ type GetAddonResponseBodyData struct {
 	//
 	// example:
 	//
-	// *
+	// 0.1.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// The weight value.
 	//
@@ -351,7 +351,7 @@ func (s *GetAddonResponseBodyDataDashboards) Validate() error {
 type GetAddonResponseBodyDataEnvironments struct {
 	// The list of associated common schemas.
 	CommonSchemaRefs []*GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
-	// The additional dependency files.
+	// The additional dependencies.
 	Dependencies *GetAddonResponseBodyDataEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -359,7 +359,7 @@ type GetAddonResponseBodyDataEnvironments struct {
 	//
 	// Observability integration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether the environment is enabled.
+	// Indicates whether the environment is enabled.
 	//
 	// example:
 	//
@@ -608,7 +608,7 @@ type GetAddonResponseBodyDataEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Specifies whether the pod restart guide is triggered immediately after the add-on is installed during integration.
+	// Specifies whether to initiate a pod restart guide immediately after the add-on is installed during integration.
 	//
 	// example:
 	//
@@ -714,7 +714,7 @@ func (s *GetAddonResponseBodyDataEnvironmentsPolicies) Validate() error {
 }
 
 type GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule struct {
-	// The data check rule after installation.
+	// The data check rule applied after installation.
 	PromQL []*string `json:"promQL,omitempty" xml:"promQL,omitempty" type:"Repeated"`
 }
 

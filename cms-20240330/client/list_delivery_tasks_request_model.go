@@ -34,7 +34,7 @@ type ListDeliveryTasksRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned from the previous request.
+	// The pagination token. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned in the previous response.
 	//
 	// example:
 	//

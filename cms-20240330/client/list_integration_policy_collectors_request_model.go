@@ -24,7 +24,7 @@ type ListIntegrationPolicyCollectorsRequest struct {
 	//
 	// release-1234567
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The collector type.
+	// The type of the collector.
 	//
 	// This parameter is required.
 	//

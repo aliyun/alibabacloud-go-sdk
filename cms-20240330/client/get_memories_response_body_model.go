@@ -196,7 +196,7 @@ type GetMemoriesResponseBodyResults struct {
 	//
 	// {"__strategy_type__":"Fact"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The role of the message initiator.
+	// The role that initiated the message.
 	//
 	// example:
 	//

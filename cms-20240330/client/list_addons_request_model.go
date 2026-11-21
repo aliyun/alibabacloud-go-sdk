@@ -22,7 +22,7 @@ type iListAddonsRequest interface {
 }
 
 type ListAddonsRequest struct {
-	// The language environment. Valid values: zh and en. Default value: zh.
+	// The locale. Valid values: zh and en. Default value: zh.
 	//
 	// example:
 	//

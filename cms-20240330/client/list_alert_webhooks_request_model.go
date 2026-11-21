@@ -34,15 +34,15 @@ type ListAlertWebhooksRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The unique ID of the webhook.
+	// The unique identifiers of the webhooks.
 	WebhookIds []*string `json:"webhookIds,omitempty" xml:"webhookIds,omitempty" type:"Repeated"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

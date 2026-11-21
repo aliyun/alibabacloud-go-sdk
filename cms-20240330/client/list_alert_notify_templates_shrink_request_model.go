@@ -26,7 +26,7 @@ type iListAlertNotifyTemplatesShrinkRequest interface {
 type ListAlertNotifyTemplatesShrinkRequest struct {
 	// The list of notification template IDs.
 	AlertNotifyTemplateIdsShrink *string `json:"alertNotifyTemplateIds,omitempty" xml:"alertNotifyTemplateIds,omitempty"`
-	// The name of the notification template.
+	// The notification template name.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListAlertNotifyTemplatesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

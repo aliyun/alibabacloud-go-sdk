@@ -36,7 +36,7 @@ type iListSubscriptionsRequest interface {
 }
 
 type ListSubscriptionsRequest struct {
-	// The UUID of the AI agent. This parameter is used to filter subscriptions for a specified AI agent.
+	// The UUID of the AI agent. This parameter is used to filter subscriptions of a specific AI agent.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ListSubscriptionsRequest struct {
 	AgentUuid *string `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
 	// The sort order of the returned versions. Valid values:
 	//
-	// - asc: Ascending order.
+	// - asc: ascending order
 	//
-	// - desc: Descending order.
+	// - desc: descending order
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListSubscriptionsRequest struct {
 	//
 	// 2-3408-4595-9d80-****
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The UUID of the notification policy. This parameter is used to filter subscriptions that are bound to a specified notification policy. The value is a 32-character string.
+	// The UUID of the notification policy. This parameter is used to filter subscriptions that are bound to a specific notification policy. The value is a 32-character string.
 	//
 	// example:
 	//
@@ -94,7 +94,11 @@ type ListSubscriptionsRequest struct {
 	//
 	// Test subscription
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
-	// The type of the subscription. Valid values: NORMAL (standard subscription) and AI_AGENT (AI agent subscription).
+	// The type of the subscription. Valid values:
+	//
+	// - NORMAL: standard subscription
+	//
+	// - AI_AGENT: AI agent subscription
 	//
 	// example:
 	//
@@ -102,7 +106,7 @@ type ListSubscriptionsRequest struct {
 	SubscriptionType *string `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- This is an internal reserved parameter. Do not use it.
+	// **[Deprecated]*	- This is an internal reserved parameter. Do not use this parameter.
 	//
 	// example:
 	//

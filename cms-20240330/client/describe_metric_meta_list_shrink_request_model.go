@@ -36,7 +36,7 @@ type DescribeMetricMetaListShrinkRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The directory.
+	// The category.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeMetricMetaListShrinkRequest struct {
 	//
 	// Instance theory
 	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
-	// Filters resources by label. The existing labels are described as follows:
+	// Filters resources by label. Existing labels are described as follows:
 	//
 	// - metricCategory: the category description of the metric.
 	//
@@ -60,21 +60,21 @@ type DescribeMetricMetaListShrinkRequest struct {
 	//
 	// - minAlertPeriod: the minimum alert period.
 	//
-	// - productCategory: the product category.
+	// - productCategory: the cloud service category.
 	LabelsShrink *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The metadata source. Valid values: CMS for CloudMonitor Basic monitoring metrics, and PROM_BASIC for Prometheus CloudMonitor basic monitoring metrics.
+	// The source of metadata. Valid values: CMS for CloudMonitor Basic monitoring metrics, and PROM_BASIC for basic monitoring metrics of Managed Service for Prometheus.
 	//
 	// example:
 	//
 	// CMS
 	MetaFormat *string `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
 	// CPUUtilization
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// The namespace used to distinguish products.
+	// The namespace used to distinguish cloud services.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type AddContextsResponseBody struct {
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return values.
+	// The results.
 	Results []*AddContextsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 

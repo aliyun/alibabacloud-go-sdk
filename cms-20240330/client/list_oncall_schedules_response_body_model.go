@@ -20,7 +20,7 @@ type iListOncallSchedulesResponseBody interface {
 type ListOncallSchedulesResponseBody struct {
 	// The list of on-call schedules.
 	OncallSchedules []*ListOncallSchedulesResponseBodyOncallSchedules `json:"oncallSchedules,omitempty" xml:"oncallSchedules,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type ListOncallSchedulesResponseBodyOncallSchedules struct {
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
 	// The list of rotations.
 	Rotations []*ListOncallSchedulesResponseBodyOncallSchedulesRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the robot that sends shift change reminders.
+	// The ID of the chatbot that sends shift reminders.
 	//
 	// example:
 	//
@@ -220,13 +220,13 @@ type ListOncallSchedulesResponseBodyOncallSchedulesRotations struct {
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift cycle. This parameter is used together with shiftRecurrenceFrequency. For example, a value of 3 indicates that the on-call personnel changes every 3 days.
+	// The length of the shift recurrence. This parameter is used together with shiftRecurrenceFrequency. For example, you can set this parameter to 3 and shiftRecurrenceFrequency to Day to rotate the on-call personnel every 3 days.
 	//
 	// example:
 	//
 	// 3
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift cycle. This parameter is used together with shiftLength. For example, a value of Week indicates that the on-call personnel changes every week.
+	// The unit of the shift recurrence frequency. This parameter is used together with shiftLength. For example, you can set this parameter to Week to rotate the on-call personnel every week.
 	//
 	// example:
 	//

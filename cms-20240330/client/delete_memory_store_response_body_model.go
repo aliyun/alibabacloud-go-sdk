@@ -14,7 +14,7 @@ type iDeleteMemoryStoreResponseBody interface {
 }
 
 type DeleteMemoryStoreResponseBody struct {
-	// The Request ID.
+	// The request ID.
 	//
 	// example:
 	//

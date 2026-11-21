@@ -66,9 +66,9 @@ func (s *ListIntegrationPolicyStorageRequirementsResponseBody) Validate() error 
 }
 
 type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements struct {
-	// The collection of add-on releases.
+	// The collection of AddonReleases.
 	AddonReleaseNames []*string `json:"addonReleaseNames,omitempty" xml:"addonReleaseNames,omitempty" type:"Repeated"`
-	// The API version.
+	// The version number.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements str
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
 	// The metadata.
 	Metadata *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The resource specification.
+	// The specification of the resource.
 	Spec *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec `json:"spec,omitempty" xml:"spec,omitempty" type:"Struct"`
 	// The storage requirement status.
 	Status *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
@@ -245,7 +245,7 @@ func (s *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
 }
 
 type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec struct {
-	// The instance ID. Specify this parameter to narrow down the scope to the instance level. This depends on the data in EntityStore.
+	// The instance ID. Specify this parameter to narrow the scope to the instance level. This parameter depends on the data in the EntityStore.
 	//
 	// example:
 	//
@@ -287,13 +287,13 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec
 	//
 	// Prometheus
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The tags to be added to the destination storage. These tags are injected as system tags.
+	// The tags to be added to the target storage, injected as system tags.
 	//
 	// example:
 	//
 	// {"system-key":"value"}
 	SystemTags map[string]*string `json:"systemTags,omitempty" xml:"systemTags,omitempty"`
-	// The tags to be added to the destination storage. These tags are injected as regular tags.
+	// The tags to be added to the target storage, injected as regular tags.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStat
 	//
 	// example:
 	//
-	// xxxx
+	// aliyun-prom-ca9d365990bf
 	PromMetricStore *string `json:"promMetricStore,omitempty" xml:"promMetricStore,omitempty"`
 	// The region.
 	//

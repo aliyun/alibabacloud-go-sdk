@@ -16,7 +16,7 @@ type iDeleteNotifyPolicyRequest interface {
 }
 
 type DeleteNotifyPolicyRequest struct {
-	// The unique identifier of the notification policy, returned by the creation operation.
+	// The unique identifier of the notification policy, which is returned by the create operation.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteNotifyPolicyRequest struct {
 	//
 	// np-12345678-1234-1234-1234-123456789012
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// The workspace ID. Used to isolate notification policy resources across different business spaces.
+	// The workspace ID, which is used to isolate notification policy resources across different business workspaces.
 	//
 	// This parameter is required.
 	//

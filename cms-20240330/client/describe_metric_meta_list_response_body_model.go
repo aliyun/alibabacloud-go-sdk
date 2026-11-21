@@ -28,7 +28,7 @@ type DescribeMetricMetaListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeMetricMetaListResponseBody struct {
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The configuration information of the metrics in the resource.
+	// The configuration information of the metrics for the resource.
 	Resources []*DescribeMetricMetaListResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -133,7 +133,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// {"DefaultTemplate":"false","alertDefault":"80","alertUnit":"%","is_alarm":"true","metricCategory":"instanceId","minAlertPeriod":"60","productCategory":"ecs","unitFactor":"1"}
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The metadata source. CMS indicates CloudMonitor Basic monitoring metrics, and PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
+	// The source of metadata. Valid values: CMS for CloudMonitor Basic monitoring metrics, and PROM_BASIC for basic monitoring metrics of Managed Service for Prometheus.
 	//
 	// Example value:
 	//
@@ -149,7 +149,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// PROM_BASIC
 	MetaFormat *string `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// 60
 	Periods *string `json:"periods,omitempty" xml:"periods,omitempty"`
-	// The statistical method of the metric. Example values:
+	// The statistical method of the metric. Valid values:
 	//
 	// - Maximum: the maximum value.
 	//
@@ -179,7 +179,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// Maximum
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	// The metric type.
+	// The type of the metric.
 	//
 	// example:
 	//

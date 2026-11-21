@@ -18,7 +18,7 @@ type iExecuteQueryResponseBody interface {
 }
 
 type ExecuteQueryResponseBody struct {
-  // The log data array. Each element corresponds to a log entry.
+  // The log data array, where each element corresponds to a log entry.
   Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
   // The metadata.
   Meta *ExecuteQueryResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
@@ -93,7 +93,7 @@ type ExecuteQueryResponseBodyMeta struct {
   // 
   // 1231243
   ElapsedMillisecond *int64 `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
-  // Indicates whether the query results are complete.
+  // Indicates whether the query result is complete.
   // 
   // example:
   // 

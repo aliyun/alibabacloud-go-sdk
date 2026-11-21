@@ -127,7 +127,7 @@ type GetAddonSchemaResponseBodyFields struct {
 	//
 	// host
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The input prompt.
+	// The placeholder text.
 	//
 	// example:
 	//
@@ -303,7 +303,7 @@ type GetAddonSchemaResponseBodyFieldsConditions struct {
 	//
 	// ==
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// The target value for the condition.
+	// The target value.
 	//
 	// example:
 	//
@@ -362,7 +362,7 @@ func (s *GetAddonSchemaResponseBodyFieldsConditions) Validate() error {
 type GetAddonSchemaResponseBodyFieldsProps struct {
 	// The data source information.
 	DataSource []*GetAddonSchemaResponseBodyFieldsPropsDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Repeated"`
-	// The related data collection.
+	// The related data set.
 	Related []*string `json:"related,omitempty" xml:"related,omitempty" type:"Repeated"`
 	// The selection mode.
 	//

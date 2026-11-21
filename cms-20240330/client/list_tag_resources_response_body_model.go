@@ -26,11 +26,11 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next query.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The request ID.
 	//
@@ -38,7 +38,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The label list.
+	// The list of tagged resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
 }
 
@@ -112,13 +112,13 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The label key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The label value.
+	// The tag value.
 	//
 	// example:
 	//

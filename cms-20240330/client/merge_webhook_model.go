@@ -54,11 +54,11 @@ type MergeWebhook struct {
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last modified time.
 	//
 	// example:
 	//
-	// 2025-03-11T08:21:58.789Z
+	// {"time": "2025-03-11T08:21:58.789Z"}
 	GmtModified map[string]interface{} `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The request header information.
 	//
@@ -84,7 +84,7 @@ type MergeWebhook struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The name of the webhook.
+	// The webhook name.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type MergeWebhook struct {
 	//
 	// dingtalk
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The webhook type, which indicates its target platform.
+	// The webhook type, which indicates the target platform.
 	//
 	// example:
 	//
 	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook address used to send requests.
+	// The webhook URL used to send requests.
 	//
 	// example:
 	//

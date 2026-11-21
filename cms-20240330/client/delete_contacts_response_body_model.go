@@ -22,7 +22,7 @@ type DeleteContactsResponseBody struct {
 	//
 	// 0
 	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

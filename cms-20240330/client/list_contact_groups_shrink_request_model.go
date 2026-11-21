@@ -22,9 +22,9 @@ type iListContactGroupsShrinkRequest interface {
 }
 
 type ListContactGroupsShrinkRequest struct {
-	// The contact group IDs.
+	// The IDs of the contact groups.
 	ContactGroupIdsShrink *string `json:"contactGroupIds,omitempty" xml:"contactGroupIds,omitempty"`
-	// The contact name.
+	// The name of the contact.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListContactGroupsShrinkRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

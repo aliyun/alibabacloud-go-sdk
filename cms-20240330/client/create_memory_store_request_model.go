@@ -52,13 +52,13 @@ type CreateMemoryStoreRequest struct {
 	//
 	// 10
 	ShortTermTtl *int32 `json:"shortTermTtl,omitempty" xml:"shortTermTtl,omitempty"`
-	// The source of the memory.
+	// The memory source.
 	//
 	// example:
 	//
 	// None/Trace
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The configuration when the sourceType is Trace.
+	// The configuration when the sourceType is set to Trace.
 	TraceSourceConfig *CreateMemoryStoreRequestTraceSourceConfig `json:"traceSourceConfig,omitempty" xml:"traceSourceConfig,omitempty" type:"Struct"`
 }
 

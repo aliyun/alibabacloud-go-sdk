@@ -9,6 +9,8 @@ type iPutWorkspaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *PutWorkspaceRequest
+	GetDryRun() *bool
 	SetDescription(v string) *PutWorkspaceRequest
 	GetDescription() *string
 	SetDisplayName(v string) *PutWorkspaceRequest
@@ -22,7 +24,9 @@ type iPutWorkspaceRequest interface {
 }
 
 type PutWorkspaceRequest struct {
-	// The workspace description.
+	// Specifies whether to perform a dry run of the request. Valid values: true: sends a check request without making actual changes. false (default): sends a normal request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of the workspace.
 	//
 	// example:
 	//
@@ -34,13 +38,13 @@ type PutWorkspaceRequest struct {
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// This parameter is required.
 	//
@@ -58,6 +62,10 @@ func (s PutWorkspaceRequest) String() string {
 
 func (s PutWorkspaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PutWorkspaceRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *PutWorkspaceRequest) GetDescription() *string {
@@ -78,6 +86,11 @@ func (s *PutWorkspaceRequest) GetSlsProject() *string {
 
 func (s *PutWorkspaceRequest) GetTags() []*PutWorkspaceRequestTags {
 	return s.Tags
+}
+
+func (s *PutWorkspaceRequest) SetDryRun(v bool) *PutWorkspaceRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *PutWorkspaceRequest) SetDescription(v string) *PutWorkspaceRequest {

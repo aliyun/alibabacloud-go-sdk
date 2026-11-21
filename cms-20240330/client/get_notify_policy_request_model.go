@@ -16,7 +16,7 @@ type iGetNotifyPolicyRequest interface {
 }
 
 type GetNotifyPolicyRequest struct {
-	// The unique identifier of the notification policy, returned by the create operation.
+	// The unique identifier of the notification policy, which is returned by the create operation.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetNotifyPolicyRequest struct {
 	//
 	// a1b2c3d4-e5f6-7890-abcd-ef1234567890
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// The workspace ID. Used to isolate notification policy resources across different business spaces. Example: `default-cms-xxxx-ap-southeast-1`.
+	// The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
 	//
 	// This parameter is required.
 	//

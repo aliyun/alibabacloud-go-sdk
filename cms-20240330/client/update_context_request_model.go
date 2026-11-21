@@ -22,7 +22,7 @@ type iUpdateContextRequest interface {
 }
 
 type UpdateContextRequest struct {
-	// The updated long-term memory text.
+	// The long-term memory text to update.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateContextRequest struct {
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The updated payload.
+	// The payload to update.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type UpdateContextRequest struct {
 	//
 	//   }
 	Payload map[string]interface{} `json:"payload,omitempty" xml:"payload,omitempty"`
-	// The trigger condition.
+	// The cause.
 	//
 	// example:
 	//

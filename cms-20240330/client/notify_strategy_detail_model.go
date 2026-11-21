@@ -36,7 +36,7 @@ type NotifyStrategyDetail struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The grouping and merging settings.
 	GroupingSetting *NotifyStrategyDetailGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	// Specifies whether to ignore notifications for recovery events. A value of true indicates that recovery notifications are not sent.
+	// Specifies whether to ignore notifications for recovery events. If set to true, recovery notifications are not sent.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ func (s *NotifyStrategyDetailCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyDetailGroupingSetting struct {
-	// The event fields used for grouping and merging. Events in the same group are merged into a single notification. An empty array indicates that no grouping is applied.
+	// The event fields used for grouping and merging. Events with the same values for these fields are merged into a single notification. An empty array indicates that no grouping is applied.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type NotifyStrategyDetailGroupingSetting struct {
 	//
 	// 0
 	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// The mute period in seconds.
+	// The silence period in seconds.
 	//
 	// example:
 	//
@@ -341,7 +341,7 @@ func (s *NotifyStrategyDetailRoutes) Validate() error {
 }
 
 type NotifyStrategyDetailRoutesChannels struct {
-	// The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
+	// The channel type. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
 	//
 	// example:
 	//
@@ -401,7 +401,7 @@ func (s *NotifyStrategyDetailRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyDetailRoutesEffectTimeRange struct {
-	// The days of the week when the policy takes effect. Valid values: 0 to 6. 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
+	// The effective days of the week. Valid values: 0 to 6. A value of 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
 	//
 	// example:
 	//

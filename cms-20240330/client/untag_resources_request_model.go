@@ -20,11 +20,13 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to unbind all labels from the specified resource. Valid values:
+	// Specifies whether to unbind all tags from the specified resource. Valid values:
 	//
-	// - false (default): No.
+	// - true: Unbinds all tags.
 	//
-	// - true: Yes.
+	// - false: Does not unbind all tags.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -42,9 +44,7 @@ type UntagResourcesRequest struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The label key.
-	//
-	// You can unbind up to 20 label keys at a time.
+	// The tag keys. You can unbind up to 20 tag keys.
 	TagKey []*string `json:"tagKey,omitempty" xml:"tagKey,omitempty" type:"Repeated"`
 }
 

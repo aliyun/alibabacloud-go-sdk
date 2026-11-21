@@ -40,15 +40,15 @@ type ListWorkspacesResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// A1111AAAA1A1AaaA1Aa1aaAaa1AAaaAAa1AaAaaa1aA1Aa1aaaa1aaa-AAaaa1aa
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total count.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The update time.
+	// The last modification time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//

@@ -16,7 +16,7 @@ type iDeleteServiceRecordRequest interface {
 type DeleteServiceRecordRequest struct {
 	// The type of the association entry. Valid values:
 	//
-	// logCorrelation: application log association
+	// - logCorrelation: application log association
 	//
 	// This parameter is required.
 	//

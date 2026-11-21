@@ -18,7 +18,7 @@ type iGetPrometheusInstanceResponseBody interface {
 type GetPrometheusInstanceResponseBody struct {
 	// The Prometheus instance details.
 	PrometheusInstance *GetPrometheusInstanceResponseBodyPrometheusInstance `json:"prometheusInstance,omitempty" xml:"prometheusInstance,omitempty" type:"Struct"`
-	// The unique identifier of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,21 @@ func (s *GetPrometheusInstanceResponseBody) Validate() error {
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
-	// The access type. Valid values: readWrite, readOnly, and httpReadOnly.
+	// The access type. Valid values:
+	//
+	// readWrite, readOnly, httpReadOnly
 	//
 	// example:
 	//
 	// readOnly
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The number of days to automatically archive data after the storage expires. A value of 0 indicates that data is not archived. A value of 3650 indicates permanent retention.
+	// The number of days to automatically archive and retain data after the storage expires. A value of 0 indicates that data is not archived, and a value of 3650 indicates permanent retention.
 	//
 	// example:
 	//
 	// 90
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The auth-free read policy. IP CIDR blocks and VPC IDs are supported.
+	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -98,7 +100,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// The auth-free write policy. IP CIDR blocks and VPC IDs are supported.
+	// The authentication-free write policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -122,7 +124,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// The auth token.
+	// The authentication token string.
 	//
 	// example:
 	//
@@ -134,13 +136,13 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Specifies whether auth-free read is enabled.
+	// Specifies whether authentication-free read is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether auth-free write is enabled.
+	// Specifies whether authentication-free write is enabled.
 	//
 	// example:
 	//
@@ -153,8 +155,12 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	ExtraInfo map[string]*string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
-	// The URL of the dashboard folder.
+	// The URL of the visualization dashboard directory.
 	//
 	// example:
 	//
@@ -170,7 +176,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// example:
 	//
-	// Shared edition
+	// Shared Edition
 	GrafanaInstanceName *string `json:"grafanaInstanceName,omitempty" xml:"grafanaInstanceName,omitempty"`
 	// The public HTTP endpoint.
 	//
@@ -198,15 +204,15 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: Pay-as-you-go based on the volume of reported metrics.
+	// POSTPAY: Pay-as-you-go based on the number of reported metrics.
 	//
-	// - POSTPAY_GB: Pay-as-you-go based on the volume of written metrics.
+	// POSTPAY_GB: Pay-as-you-go based on the volume of written metrics.
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The time when the billing method of the instance was updated (UTC format).
+	// The time when the billing method of the instance was updated. The time is in UTC format.
 	//
 	// example:
 	//

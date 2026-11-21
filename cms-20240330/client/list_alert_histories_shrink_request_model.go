@@ -64,19 +64,19 @@ type iListAlertHistoriesShrinkRequest interface {
 }
 
 type ListAlertHistoriesShrinkRequest struct {
-	// The unique identifier (transId) of an alert history record.
+	// The unique identifier of an alert history record, which is the transId.
 	//
 	// example:
 	//
 	// lme6hk5qih5o769m379jjuo5i1
 	AlertHistoryId *string `json:"alertHistoryId,omitempty" xml:"alertHistoryId,omitempty"`
-	// Filters the history records of a specified alert rule. Specify the unique identifier (ruleUuid) of the alert rule.
+	// The unique identifier of the alert rule used to filter the history records of a specific alert rule. Pass the ruleUuid of the alert rule.
 	//
 	// example:
 	//
 	// mig_prom_v2_11308451
 	AlertRuleId *string `json:"alertRuleId,omitempty" xml:"alertRuleId,omitempty"`
-	// Specifies the business source of the alert history. For example, managed_service_for_prometheus indicates the managed type of the Prometheus integration center. Default value: empty. Leave this parameter empty if you are unsure how to specify it.
+	// The business source of the alert history. For example, `managed_service_for_prometheus` indicates the managed type of the Prometheus integration center. Default value: empty. Leave this parameter empty if you are unsure about the value.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type ListAlertHistoriesShrinkRequest struct {
 	//
 	// rds
 	CmsProductCategory *string `json:"cmsProductCategory,omitempty" xml:"cmsProductCategory,omitempty"`
-	// Filters the records by performing fuzzy matching on the keywords in the display name of the alert rule.
+	// The keyword used for fuzzy match filtering based on the display name of the alert rule.
 	//
 	// example:
 	//
 	// keyword
 	DisplayNameKeyWord *string `json:"displayNameKeyWord,omitempty" xml:"displayNameKeyWord,omitempty"`
-	// The unique key value (instanceKey) that identifies the alert object instance.
+	// The unique key value used to identify the alert object instance, which is the instanceKey.
 	//
 	// example:
 	//
@@ -108,37 +108,37 @@ type ListAlertHistoriesShrinkRequest struct {
 	InstanceKey *string `json:"instanceKey,omitempty" xml:"instanceKey,omitempty"`
 	// The filter condition for rule labels. The value is a JSON-formatted string that supports filtering by label key-value pairs.
 	LabelFilterShrink *string `json:"labelFilter,omitempty" xml:"labelFilter,omitempty"`
-	// The level of the most recent alert during the alert duration. Valid values: CRITICAL (critical), WARN (warning), and INFO (info).
+	// The level of the most recent alert during the alert duration. Valid values: CRITICAL, WARN, and INFO.
 	//
 	// example:
 	//
 	// CRITICAL
 	LatestLevel *string `json:"latestLevel,omitempty" xml:"latestLevel,omitempty"`
-	// The highest alert level reached during the alert duration. Valid values: CRITICAL (critical), WARN (warning), and INFO (info).
+	// The highest alert level reached during the alert duration. Valid values: CRITICAL, WARN, and INFO.
 	//
 	// example:
 	//
 	// CRITICAL
 	MaxLevel *string `json:"maxLevel,omitempty" xml:"maxLevel,omitempty"`
-	// The maximum number of results returned per page in a paged query. This parameter is not supported. Use pageSize and pageNumber for paged queries.
+	// The maximum number of results to return on each page during paging for a paged query. This parameter is not supported. Use pageSize and pageNumber for a paged query.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The migration status value of the alert history.
+	// The migration status of the alert history.
 	//
 	// example:
 	//
 	// 0
 	MigrationStatus *int32 `json:"migrationStatus,omitempty" xml:"migrationStatus,omitempty"`
-	// The paging token for querying the next page. This parameter is not supported. Use pageSize and pageNumber for a paging query.
+	// The paging token used to query the next page. This parameter is not supported. Use pageSize and pageNumber for a paged query.
 	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters alert rules that contain specified notification recipients. Only rules that contain any notification recipient specified in notifyTargets are returned in the result list.
+	// The filter used to filter alert rules that contain specific notification recipients. Only rules that contain at least one notification recipient specified in notifyTargets are returned in the result list.
 	NotificationFilterShrink *string `json:"notificationFilter,omitempty" xml:"notificationFilter,omitempty"`
 	// The relation type of the observed object, such as GROUP, INSTANCE, and TAG.
 	//
@@ -146,7 +146,7 @@ type ListAlertHistoriesShrinkRequest struct {
 	//
 	// INSTANCE
 	ObserveRelationType *string `json:"observeRelationType,omitempty" xml:"observeRelationType,omitempty"`
-	// The dimension column (domain) of the observed object.
+	// The domain of the observed object.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListAlertHistoriesShrinkRequest struct {
 	//
 	// false
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// Filters the alert history by resource instance ID.
+	// The resource instance ID used to filter the alert history.
 	//
 	// example:
 	//
@@ -170,43 +170,43 @@ type ListAlertHistoriesShrinkRequest struct {
 	//
 	// PROMETHEUS
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	// The page number for a paged query. Default value: 1.
+	// The page number for paging in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of alert history records returned per page in a paged query. Default value: 10.
+	// The number of alert history records to return on each page during paging for a paged query. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The key value used for data partitioning. Typically, you do not need to specify this parameter.
+	// The key value used for data partitioning. You do not need to specify this parameter in most cases.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	// The start timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is 30 days ago.
+	// The start timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If you do not specify this parameter, the default value is the timestamp 30 days ago.
 	//
 	// example:
 	//
 	// 1739866071668
 	StartTimeFrom *int64 `json:"startTimeFrom,omitempty" xml:"startTimeFrom,omitempty"`
-	// The end timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is the current time.
+	// The end timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If you do not specify this parameter, the default value is the current timestamp.
 	//
 	// example:
 	//
 	// 1739866071668
 	StartTimeTo *int64 `json:"startTimeTo,omitempty" xml:"startTimeTo,omitempty"`
-	// The current status of the alert history. Valid values: OK (recovered) and ALARM (alerting).
+	// The current status of the alert history. Valid values: OK and ALARM.
 	//
 	// example:
 	//
 	// ALARM
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The identifier of the workspace to which the alert history belongs. If not specified, the default workspace is used.
+	// The identifier of the workspace to which the alert history belongs. If you do not specify this parameter, the default workspace is used.
 	//
 	// example:
 	//

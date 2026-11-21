@@ -16,13 +16,13 @@ type iDeleteContextsRequest interface {
 }
 
 type DeleteContextsRequest struct {
-	// A comma-separated list of context IDs.
+	// A comma-separated list of context IDs. This parameter can only be specified as a query parameter.
 	//
 	// example:
 	//
 	// mem_long_01,mem_long_02
 	ContextIds *string `json:"contextIds,omitempty" xml:"contextIds,omitempty"`
-	// The filter condition, specified as a JSON string in the query. The syntax is the same as the `filter` parameter of the `SearchContext` operation.
+	// The filter conditions. The syntax is the same as that of SearchContext.filter. This parameter is passed as a JSON string in the query.
 	//
 	// example:
 	//

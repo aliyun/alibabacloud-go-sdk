@@ -20,9 +20,13 @@ type iListAddonReleasesResponseBody interface {
 }
 
 type ListAddonReleasesResponseBody struct {
-	// The token for the next page.
+	// The token used to query the next page.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The collection of integrated component information.
+	// The collection of onboarded component information.
 	Releases []*ListAddonReleasesResponseBodyReleases `json:"releases,omitempty" xml:"releases,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -30,7 +34,7 @@ type ListAddonReleasesResponseBody struct {
 	//
 	// CD8BA7D6-995D-578D-9941-78B0FECD14B5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The number of components.
+	// The total number of components.
 	//
 	// example:
 	//
@@ -114,7 +118,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 2023-03-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The installation phase information.
+	// The installation phase conditions.
 	Conditions []*ListAddonReleasesResponseBodyReleasesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The configuration information of the component.
 	//
@@ -122,7 +126,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The integration time.
+	// The onboarding time.
 	//
 	// example:
 	//
@@ -148,19 +152,19 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// policy-xxxxxxxxxxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The number of plugins.
+	// The number of plug-ins.
 	//
 	// example:
 	//
 	// 2
 	ExporterCount *int64 `json:"exporterCount,omitempty" xml:"exporterCount,omitempty"`
-	// Indicates whether configurations exist.
+	// Indicates whether a configuration exists.
 	//
 	// example:
 	//
 	// true
 	HaveConfig *bool `json:"haveConfig,omitempty" xml:"haveConfig,omitempty"`
-	// The ID of the integration user.
+	// The ID of the onboarding user.
 	//
 	// example:
 	//
@@ -172,7 +176,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Indicates whether the component is a managed component.
+	// Indicates whether the component is managed.
 	//
 	// example:
 	//
@@ -234,7 +238,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 2024-11-04T16:10:23+08:00
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the owner user.
+	// The ID of the associated user.
 	//
 	// example:
 	//
@@ -634,7 +638,7 @@ type ListAddonReleasesResponseBodyReleasesSubAddonRelease struct {
 	//
 	// 2
 	Ready *int32 `json:"ready,omitempty" xml:"ready,omitempty"`
-	// The number of sub-releases.
+	// The total number of sub-releases.
 	//
 	// example:
 	//

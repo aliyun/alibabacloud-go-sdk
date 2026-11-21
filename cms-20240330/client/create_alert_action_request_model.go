@@ -48,7 +48,7 @@ type CreateAlertActionRequest struct {
 	//
 	// testName
 	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	// The event bus parameters.
+	// The event bus.
 	EbParam *CreateAlertActionRequestEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
 	// The elastic scaling parameters.
 	EssParam *CreateAlertActionRequestEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
@@ -551,7 +551,7 @@ type CreateAlertActionRequestPagerDutyParam struct {
 	//
 	// fds3wr54rvcxfr4543t6435
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
+	// The integration webhook for PagerDuty. V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -658,13 +658,13 @@ type CreateAlertActionRequestWebhookParam struct {
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// The request header information.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The HTTP method for the webhook request.
+	// The webhook request method.
 	//
 	// example:
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The alert callback URL.
+	// The URL for the alert callback.
 	//
 	// example:
 	//

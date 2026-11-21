@@ -25,8 +25,12 @@ type iEvaluator interface {
 
 type Evaluator struct {
   // The evaluator configuration parameters.
+  // 
+  // example:
+  // 
+  // {"size":7}
   Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-  // The evaluation filter conditions.
+  // The evaluation filters.
   Filters map[string]*string `json:"filters,omitempty" xml:"filters,omitempty"`
   // The evaluator name.
   // 
@@ -46,7 +50,7 @@ type Evaluator struct {
   // 
   // score
   ResultType *string `json:"resultType,omitempty" xml:"resultType,omitempty"`
-  // The evaluation variable mapping.
+  // The evaluation variable mappings.
   VariableMapping map[string]*string `json:"variableMapping,omitempty" xml:"variableMapping,omitempty"`
 }
 

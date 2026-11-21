@@ -30,7 +30,7 @@ type UpdateContactRequest struct {
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The instant messaging (IM) user ID mappings. Multiple IM tools are supported.
+	// The mapping of instant messaging (IM) user IDs. Multiple IM tools are supported.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type UpdateContactRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The mobile phone number of the contact. Only Chinese mobile phone numbers are supported.
+	// The mobile phone number of the contact. Currently, only mobile phone numbers in China are supported.
 	//
 	// example:
 	//
 	// 150123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// The country code for the mobile phone number, typically +86 for China.
+	// The country code of the mobile phone number, which is typically +86 for China.
 	//
 	// example:
 	//

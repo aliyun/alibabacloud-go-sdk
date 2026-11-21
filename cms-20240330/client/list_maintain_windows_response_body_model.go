@@ -20,21 +20,21 @@ type iListMaintainWindowsResponseBody interface {
 }
 
 type ListMaintainWindowsResponseBody struct {
-	// The list of silence policies. An empty list is returned when no items match. The list items do not include workspaceFilterSetting.
+	// The list of silence policies. An empty list is returned if no matches are found. List items do not include workspaceFilterSetting.
 	MaintainWindowList []*MaintainWindowForView `json:"maintainWindowList,omitempty" xml:"maintainWindowList,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this request.
+	// The maximum number of records returned for this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. A non-empty value indicates that more results may be available, but the next page may still be empty. An empty value indicates the end of pagination.
+	// The starting cursor for the next page. If this value is not empty, you can continue to query, but the next page may still be empty. An empty value indicates the end of pagination.
 	//
 	// example:
 	//
 	// Y21zRXZlbnRCYXNlUGFnZT0y
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique ID of this request, used for troubleshooting and ticket tracking.
+	// The unique ID of the request, which is used for troubleshooting and ticket tracking.
 	//
 	// example:
 	//

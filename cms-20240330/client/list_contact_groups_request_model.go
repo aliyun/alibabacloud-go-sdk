@@ -22,9 +22,9 @@ type iListContactGroupsRequest interface {
 }
 
 type ListContactGroupsRequest struct {
-	// The contact group IDs.
+	// The IDs of the contact groups.
 	ContactGroupIds []*string `json:"contactGroupIds,omitempty" xml:"contactGroupIds,omitempty" type:"Repeated"`
-	// The contact name.
+	// The name of the contact.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListContactGroupsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

@@ -38,9 +38,9 @@ type CreateDeliveryTaskRequest struct {
 	//
 	// rw-xxxxxx
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
+	// The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// The metric filtering conditions. This parameter is used together with labelFiltersType. The key is the metric label name, and the value is the match value.
+	// The metric filtering conditions used in conjunction with labelFiltersType. The key is the metric label name and the value is the match value.
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
 	// The metric filtering mode.
 	//
@@ -58,7 +58,7 @@ type CreateDeliveryTaskRequest struct {
 	//
 	// This parameter is required.
 	SinkList []*CreateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
-	// The tags of the resource.
+	// The resource tags.
 	Tags []*CreateDeliveryTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The description of the task.
 	//

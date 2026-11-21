@@ -16,13 +16,13 @@ type iSearchContextResponseBody interface {
 }
 
 type SearchContextResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 123-0F43-23423-AC43-34234
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return value
+	// The results.
 	Results []map[string]interface{} `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 

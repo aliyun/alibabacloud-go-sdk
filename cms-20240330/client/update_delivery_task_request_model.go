@@ -30,19 +30,19 @@ type iUpdateDeliveryTaskRequest interface {
 }
 
 type UpdateDeliveryTaskRequest struct {
-	// The data source ID, which is the Prometheus instance ID.
+	// The data source ID (Prometheus instance ID).
 	//
 	// example:
 	//
 	// rw-5f2b4sc7es4d66
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// The additional labels appended to all shipped metrics. The key is the label name, and the value is the label value.
+	// The additional labels appended to all delivered metrics. The key is the label name, and the value is the label value.
 	//
 	// example:
 	//
 	// {"region":"cn-hangzhou"}
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// The metric filtering conditions. The existing conditions are entirely replaced rather than incrementally merged.
+	// The metric filtering conditions. The existing conditions are entirely replaced without incremental merging.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type UpdateDeliveryTaskRequest struct {
 	//
 	// rg-aekzoiafjtr7zyq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The list of shipping destinations.
+	// The list of delivery destinations.
 	SinkList []*UpdateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
 	// The task status, which is used to start or stop the task. Valid values:
 	//
@@ -191,13 +191,13 @@ func (s *UpdateDeliveryTaskRequest) Validate() error {
 }
 
 type UpdateDeliveryTaskRequestSinkList struct {
-	// The detailed configuration of the shipping destination. The meanings of keys and values vary based on the sink type.
+	// The detailed configuration of the delivery destination. The meanings of keys and values vary based on the sinkType.
 	//
 	// example:
 	//
 	// {"Url":"https://example.com/api/v1/write","Network":"PublicNetwork","AuthType":"None"}
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The type of the shipping destination.
+	// The type of the delivery destination.
 	//
 	// if can be null:
 	// true

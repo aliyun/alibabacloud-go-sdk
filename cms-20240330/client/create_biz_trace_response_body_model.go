@@ -16,7 +16,7 @@ type iCreateBizTraceResponseBody interface {
 }
 
 type CreateBizTraceResponseBody struct {
-	// The ID of the business trace.
+	// The ID of the business link.
 	//
 	// example:
 	//

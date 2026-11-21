@@ -18,15 +18,15 @@ type iDisableNotifyPolicyResponseBody interface {
 }
 
 type DisableNotifyPolicyResponseBody struct {
-	// The unique ID of the request. Used for troubleshooting and ticket tracking.
+	// The unique ID of the request, which is used for troubleshooting and ticket tracking.
 	//
 	// example:
 	//
 	// 70D52620-2609-1802-9788-6BC592C83F03
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The uuid of the notification policy that was operated on.
+	// The UUID of the notification policy on which the operation was performed.
 	//
 	// example:
 	//

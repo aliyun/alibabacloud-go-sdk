@@ -40,25 +40,25 @@ type CreateAlertRobotRequest struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the robot.
+	// The name of the chatbot.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The unique ID of the robot.
+	// The unique ID of the chatbot.
 	//
 	// example:
 	//
 	// test
 	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
-	// The signing key of the robot.
+	// The signing key of the chatbot.
 	//
 	// example:
 	//
 	// abc123
 	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
-	// The type of the robot.
+	// The type of the chatbot.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateAlertRobotRequest struct {
 	//
 	// DING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook URL of the robot.
+	// The webhook URL of the chatbot.
 	//
 	// example:
 	//

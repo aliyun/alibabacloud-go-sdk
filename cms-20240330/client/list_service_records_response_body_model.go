@@ -22,7 +22,7 @@ type iListServiceRecordsResponseBody interface {
 }
 
 type ListServiceRecordsResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of results returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListServiceRecordsResponseBody struct {
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of operation records.
+	// The list of ticket operation records.
 	Records []*ListServiceRecordsResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -117,7 +117,7 @@ func (s *ListServiceRecordsResponseBody) Validate() error {
 }
 
 type ListServiceRecordsResponseBodyRecords struct {
-	// The entry content in JSON string format. The format varies depending on the recordType.
+	// The content of the entry in JSON string format. The format varies based on the recordType.
 	//
 	// example:
 	//
@@ -135,9 +135,7 @@ type ListServiceRecordsResponseBodyRecords struct {
 	//
 	// }
 	RecordContent *string `json:"recordContent,omitempty" xml:"recordContent,omitempty"`
-	// The type of the linked entry. Currently supported:
-	//
-	// logCorrelation, which indicates application log association.
+	// The type of the association entry. Valid values: logCorrelation: application log association.
 	//
 	// example:
 	//

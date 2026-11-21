@@ -40,7 +40,7 @@ type CreatePipelineRequest struct {
 	//
 	// pipeline-name-1
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The sink.
+	// The destination.
 	Sink *CreatePipelineRequestSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 	// The data source.
 	Source *CreatePipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -382,7 +382,7 @@ func (s *CreatePipelineRequestPipelineNodes) Validate() error {
 type CreatePipelineRequestSink struct {
 	// The dataset information.
 	Dataset *CreatePipelineRequestSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The sink type.
+	// The destination type.
 	//
 	// example:
 	//
@@ -471,7 +471,7 @@ func (s *CreatePipelineRequestSinkDataset) Validate() error {
 }
 
 type CreatePipelineRequestSource struct {
-	// The Simple Log Service Logstore information.
+	// The Logstore information.
 	Logstore *CreatePipelineRequestSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
 	// The data source type.
 	//
@@ -517,13 +517,13 @@ func (s *CreatePipelineRequestSource) Validate() error {
 }
 
 type CreatePipelineRequestSourceLogstore struct {
-	// The name of the Simple Log Service Logstore.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the project.
 	//
 	// example:
 	//

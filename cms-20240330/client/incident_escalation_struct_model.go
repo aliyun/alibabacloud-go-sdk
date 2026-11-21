@@ -28,35 +28,35 @@ type iIncidentEscalationStruct interface {
 }
 
 type IncidentEscalationStruct struct {
-	// The time when the event escalation was created.
+	// The creation time.
 	//
 	// example:
 	//
-	// 2025-03-11T08:21:58Z
+	// 1794984055029
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The description.
 	//
 	// example:
 	//
-	// When an alert is not acknowledged, notify the operations team, on-duty manager, and CTO sequentially.
+	// Notify the O&M team, on-call manager, and CTO sequentially when an alert is not responded to
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the event escalation.
+	// The incident escalation ID.
 	//
 	// example:
 	//
 	// 52631388567
 	IncidentEscalationId *string `json:"incidentEscalationId,omitempty" xml:"incidentEscalationId,omitempty"`
-	// The time when the event escalation was last modified.
+	// The modification time.
 	//
 	// example:
 	//
-	// 2025-03-11T08:21:58Z
+	// 1794984055029
 	ModifyTime *int64 `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
 	// The name.
 	//
 	// example:
 	//
-	// Production Environment Alert Escalation Policy.
+	// Production environment alert escalation policy
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The region ID.
 	//
@@ -64,7 +64,7 @@ type IncidentEscalationStruct struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The stages.
+	// The stage.
 	Stage []*IncidentEscalationStageStruct `json:"stage,omitempty" xml:"stage,omitempty" type:"Repeated"`
 	// The workspace.
 	//

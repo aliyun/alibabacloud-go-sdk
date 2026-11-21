@@ -46,7 +46,7 @@ type GetOncallScheduleResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The list of rotations.
 	Rotations []*GetOncallScheduleResponseBodyRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the robot for shift change reminders.
+	// The ID of the shift reminder chatbot.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ func (s *GetOncallScheduleResponseBody) Validate() error {
 }
 
 type GetOncallScheduleResponseBodyRotations struct {
-	// The days of the week when the rotation takes effect.
+	// The days of the week when the rotation is active.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	// The IDs of the contacts.
+	// The contact IDs.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
 	// The end time of the rotation. Format: HH:mm.
 	//
@@ -178,13 +178,13 @@ type GetOncallScheduleResponseBodyRotations struct {
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift recurrence period. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 3 days.
+	// The length of the shift recurrence. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every 3 days.
 	//
 	// example:
 	//
 	// 4
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 1 week.
+	// The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every week.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type GetOncallScheduleResponseBodyRotations struct {
 	//
 	// 2024-10-10
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// The name of the time zone. Uses the IANA Time Zone Database standard, such as Asia/Shanghai.
+	// The name of the time zone. The IANA Time Zone Database standard is used, for example, Asia/Shanghai.
 	//
 	// example:
 	//

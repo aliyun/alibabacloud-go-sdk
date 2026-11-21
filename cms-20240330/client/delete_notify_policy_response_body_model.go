@@ -18,7 +18,7 @@ type iDeleteNotifyPolicyResponseBody interface {
 }
 
 type DeleteNotifyPolicyResponseBody struct {
-	// The unique ID of the request. Used for troubleshooting and ticket tracking.
+	// The unique ID of the request, which is used for troubleshooting and ticket tracking.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type DeleteNotifyPolicyResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the operation is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The uuid of the notification policy that was operated on.
+	// The UUID of the notification policy.
 	//
 	// example:
 	//

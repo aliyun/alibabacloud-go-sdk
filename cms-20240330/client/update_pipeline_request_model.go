@@ -32,7 +32,7 @@ type UpdatePipelineRequest struct {
 	ExecutePolicy *UpdatePipelineRequestExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
 	// The pipeline configuration.
 	Pipeline *UpdatePipelineRequestPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
-	// The data sink.
+	// The sink.
 	Sink *UpdatePipelineRequestSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 	// The data source.
 	Source *UpdatePipelineRequestSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -122,7 +122,7 @@ type UpdatePipelineRequestExecutePolicy struct {
 	//
 	// runOnce
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The configuration for one-time execution.
+	// The configuration for a single execution.
 	RunOnce *UpdatePipelineRequestExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
 	// The configuration for scheduled execution.
 	Scheduled *UpdatePipelineRequestExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
@@ -365,7 +365,7 @@ func (s *UpdatePipelineRequestPipelineNodes) Validate() error {
 type UpdatePipelineRequestSink struct {
 	// The dataset.
 	Dataset *UpdatePipelineRequestSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The data sink type.
+	// The sink type.
 	//
 	// example:
 	//

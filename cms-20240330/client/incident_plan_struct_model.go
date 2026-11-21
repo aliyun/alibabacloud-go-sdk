@@ -46,29 +46,29 @@ type IncidentPlanStruct struct {
 	//
 	// 3600
 	AutoRecoverSeconds *int32 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	// The timeout period for closing an event.
+	// The timeout period for closing the incident.
 	//
 	// example:
 	//
 	// 86400000
 	CloseExpire *int64 `json:"closeExpire,omitempty" xml:"closeExpire,omitempty"`
-	// A list of collaborating teams or roles.
+	// The list of teams or roles involved in the collaboration.
 	Corporation []*IncidentPlanCorporationStruct `json:"corporation,omitempty" xml:"corporation,omitempty" type:"Repeated"`
-	// The description of the plan.
+	// The plan description.
 	//
 	// example:
 	//
-	// Emergency response plan for excessively high database connection count.
+	// Emergency response plan for excessive database connections
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A list of escalation policy IDs.
+	// The list of escalation policy IDs.
 	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	// The time when the plan was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1741234567890
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the plan was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type IncidentPlanStruct struct {
 	//
 	// plan-001
 	IncidentPlanId *string `json:"incidentPlanId,omitempty" xml:"incidentPlanId,omitempty"`
-	// The name of the plan.
+	// The plan name.
 	//
 	// example:
 	//
-	// Database connection count alert contingency plan.
+	// Incident plan for database connection alerts
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// A list of resource field mapping paths.
+	// The list of resource field mapping paths.
 	ResourceFiled []*IncidentPlanFieldPath `json:"resourceFiled,omitempty" xml:"resourceFiled,omitempty" type:"Repeated"`
 	// The status.
 	//
@@ -100,9 +100,9 @@ type IncidentPlanStruct struct {
 	//
 	// example:
 	//
-	// uesr-12345
+	// 123456
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

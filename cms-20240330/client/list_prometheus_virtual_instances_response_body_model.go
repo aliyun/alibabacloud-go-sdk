@@ -31,6 +31,10 @@ type ListPrometheusVirtualInstancesResponseBody struct {
 	// 100
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The next token for pagination. It is empty when all results are returned.
+	//
+	// example:
+	//
+	// a1b2c3d4e5f60718293a4b5c6d7e****8f9a0b1c2d3e4f508f9a0b1c2d3e4f508f9a0b1c2d3e4f50
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// Id of the request
 	//

@@ -18,7 +18,7 @@ type iListBizTracesRequest interface {
 }
 
 type ListBizTracesRequest struct {
-	// The maximum number of results to return. Maximum value: 100.
+	// The maximum number of results to return. The maximum value is 100.
 	//
 	// example:
 	//

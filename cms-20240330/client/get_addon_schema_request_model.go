@@ -20,7 +20,7 @@ type iGetAddonSchemaRequest interface {
 }
 
 type GetAddonSchemaRequest struct {
-	// The language environment. Default value: zh. Valid values: zh, en.
+	// The language. Default value: zh. Valid values: zh, en.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetAddonSchemaRequest struct {
 	//
 	// v2
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The environment type. Valid values: CS (container), ECS.
+	// The environment type. Valid values: CS, ECS.
 	//
 	// example:
 	//
 	// CS
 	EnvironmentType *string `json:"environmentType,omitempty" xml:"environmentType,omitempty"`
-	// The component version.
+	// The add-on version.
 	//
 	// example:
 	//

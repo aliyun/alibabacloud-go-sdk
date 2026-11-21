@@ -24,37 +24,37 @@ type iListNotifyPoliciesRequest interface {
 }
 
 type ListNotifyPoliciesRequest struct {
-	// The maximum number of records to return for this request.
+	// The maximum number of entries to return for this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The fuzzy filter for the policy name.
+	// The keyword for fuzzy filtering by policy name.
 	//
 	// example:
 	//
 	// prod-alert
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token. Leave empty for the first page. For subsequent pages, pass the nextToken returned from the previous page.
+	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass the nextToken value returned from the previous response.
 	//
 	// example:
 	//
 	// eyJjdXJzb3IiOjEwfQ==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field to sort by. Valid values include createTime, updateTime, and name.
+	// The field by which to sort the results. Valid values: createTime, updateTime, and name.
 	//
 	// example:
 	//
 	// createTime
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// Specifies whether to sort in descending order. Set to true for descending order, or false for ascending order.
+	// Specifies whether to sort the results in descending order. A value of true indicates descending order, and a value of false indicates ascending order.
 	//
 	// example:
 	//
 	// true
 	OrderDesc *string `json:"orderDesc,omitempty" xml:"orderDesc,omitempty"`
-	// The workspace ID, used to isolate notification policy resources for different business workspaces.
+	// The workspace ID, which is used to isolate notification policy resources across different business workspaces.
 	//
 	// This parameter is required.
 	//

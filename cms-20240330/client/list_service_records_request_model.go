@@ -20,7 +20,7 @@ type iListServiceRecordsRequest interface {
 }
 
 type ListServiceRecordsRequest struct {
-	// The maximum number of entries to return. Maximum value: 200.
+	// The maximum number of results to return. Maximum value: 200.
 	//
 	// example:
 	//
@@ -30,11 +30,9 @@ type ListServiceRecordsRequest struct {
 	//
 	// example:
 	//
-	// xxxxx
+	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The type of the linked entry. Currently supported:
-	//
-	// logCorrelation, which indicates application log association.
+	// The type of the association entry. Valid values: logCorrelation: application log association.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +40,7 @@ type ListServiceRecordsRequest struct {
 	//
 	// logCorrelation
 	RecordType *string `json:"recordType,omitempty" xml:"recordType,omitempty"`
-	// The filter information for service-linked entries.
+	// The filter information for service association entries.
 	//
 	// example:
 	//

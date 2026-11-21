@@ -59,7 +59,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// 11a111111111a1111a1111aaaa1a1aa1aa11aa111aa11a1111a1a111aa1a111111111a11a1aa1111a111aa11a11aa1a1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The list of instance IDs, separated by commas.
 	//
@@ -70,7 +70,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// rw-00001,rw-00002,rw-00003
 	PrometheusInstanceIds *string `json:"prometheusInstanceIds,omitempty" xml:"prometheusInstanceIds,omitempty"`
-	// The instance name. Partial match is supported.
+	// The name of the instance. Partial match is supported.
 	//
 	// if can be null:
 	// true
@@ -79,7 +79,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	//
 	// test
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListPrometheusInstancesShrinkRequest struct {
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The instance version.
+	// The version of the instance.
 	//
 	// if can be null:
 	// true

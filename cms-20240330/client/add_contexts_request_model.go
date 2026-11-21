@@ -133,7 +133,7 @@ type AddContextsRequestItems struct {
 	//
 	// 1731231212334396
 	ExpirationDate *string `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
-	// The mutability.
+	// The immutable attribute.
 	//
 	// example:
 	//

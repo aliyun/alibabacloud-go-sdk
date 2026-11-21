@@ -33,6 +33,10 @@ type ListAddonReleasesRequest struct {
 	// 10
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The next token for pagination.
+	//
+	// example:
+	//
+	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The parent add-on release ID.
 	//

@@ -54,9 +54,9 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The extraction strategies. Valid values: Episodic, Summary, and Fact.
+	// The supported extraction strategies: Episodic, Summary, and Fact.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
-	// The memory store name.
+	// The name of the memory store.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetMemoryStoreResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The short-term memory storage.
 	ShortTermStorage *GetMemoryStoreResponseBodyShortTermStorage `json:"shortTermStorage,omitempty" xml:"shortTermStorage,omitempty" type:"Struct"`
-	// The retention period of short-term memory.
+	// The retention period for short-term memory.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// Trace
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The configuration used when sourceType is set to Trace.
+	// The configuration when the sourceType is Trace.
 	TraceSourceConfig *GetMemoryStoreResponseBodyTraceSourceConfig `json:"traceSourceConfig,omitempty" xml:"traceSourceConfig,omitempty" type:"Struct"`
 	// The update time.
 	//
@@ -98,7 +98,7 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// 1764556182850
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -255,13 +255,13 @@ func (s *GetMemoryStoreResponseBody) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyShortTermStorage struct {
-	// The Simple Log Service Logstore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// memory-store
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ func (s *GetMemoryStoreResponseBodyShortTermStorage) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyTraceSourceConfig struct {
-	// Specifies whether to include LLM output in memory extraction.
+	// Specifies whether to include the LLM output in memory extraction.
 	IncludeOutput *bool `json:"includeOutput,omitempty" xml:"includeOutput,omitempty"`
 	// The Simple Log Service query statement used to filter traces.
 	//
@@ -308,7 +308,7 @@ type GetMemoryStoreResponseBodyTraceSourceConfig struct {
 	//
 	// (serviceName : "langchain-rag" or serviceName : "agentscope-code-correction") and hostname = frontend-proxy-999c48c8d-hvk6c
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The workspace where the trace resides.
+	// The workspace where the trace is located.
 	//
 	// example:
 	//

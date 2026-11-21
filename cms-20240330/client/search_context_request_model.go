@@ -24,21 +24,25 @@ type iSearchContextRequest interface {
 }
 
 type SearchContextRequest struct {
-	// Filter conditions
+	// The filter conditions.
+	//
+	// example:
+	//
+	// {"metadata.serviceName":"sls-sop-daily","metadata.taskType":{"in":["troubleshooting","knowledge_retrieval"]}}
 	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
-	// Whether to format
+	// Specifies whether to format the output.
 	//
 	// example:
 	//
 	// true
 	Formatted *bool `json:"formatted,omitempty" xml:"formatted,omitempty"`
-	// Limit the number of items returned
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Query content
+	// The query content.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +50,13 @@ type SearchContextRequest struct {
 	//
 	// How is the cost for consuming SLS logs in Flink calculated?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Retrieval option
+	// The retrieval options.
 	//
 	// example:
 	//
 	// reranker,llm_rank
 	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
-	// Similarity threshold
+	// The similarity threshold.
 	//
 	// example:
 	//

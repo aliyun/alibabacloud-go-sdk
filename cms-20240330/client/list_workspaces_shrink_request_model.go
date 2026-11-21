@@ -44,7 +44,7 @@ type ListWorkspacesShrinkRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxx
+	// aAaAAAA1aAAA1a1a1AaaAAa1A11aaaa1AA-aAA1Aaaa1aaAaAaaAaAaa1AAAaa1A
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The region.
 	//
@@ -63,7 +63,7 @@ type ListWorkspacesShrinkRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The workspace name. Fuzzy match is supported.
+	// The name of the workspace. Fuzzy match is supported.
 	//
 	// example:
 	//

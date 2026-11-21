@@ -54,13 +54,13 @@ type SearchMemoriesRequest struct {
 	//
 	// What I like
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The reranking option.
+	// Specifies whether to rerank.
 	//
 	// example:
 	//
 	// true
 	Rerank *bool `json:"rerank,omitempty" xml:"rerank,omitempty"`
-	// The retrieval option.
+	// The retrieval options.
 	//
 	// example:
 	//

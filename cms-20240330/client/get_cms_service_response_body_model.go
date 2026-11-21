@@ -24,13 +24,19 @@ type GetCmsServiceResponseBody struct {
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// PROM_NOT_OPEN: Prometheus is not activated.SLS_NOT_OPEN: Simple Log Service (SLS), a dependency of Prometheus, is not activated.CMS_SLR_NOT_EXIST: The service-linked role (SLR) for CloudMonitor does not exist.SLS_SLR_NOT_EXIST: The SLR for SLS does not exist.
+	// PROM_NOT_OPEN: Prometheus is not activated.
+	//
+	// SLS_NOT_OPEN: Simple Log Service, which Prometheus depends on, is not activated.
+	//
+	// CMS_SLR_NOT_EXIST: The CloudMonitor service-linked role is not created.
+	//
+	// SLS_SLR_NOT_EXIST: The Simple Log Service service-linked role is not created.
 	//
 	// example:
 	//
 	// PROM_NOT_OPEN
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

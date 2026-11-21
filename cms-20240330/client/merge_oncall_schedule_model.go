@@ -26,7 +26,71 @@ type iMergeOncallSchedule interface {
 }
 
 type MergeOncallSchedule struct {
-	// The extension details.
+	// The extended details.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "oncallScheduleId": "testId",
+	//
+	//   "oncallScheduleName": "testName",
+	//
+	//   "rotations": [
+	//
+	//     {
+	//
+	//       "activeDays": [
+	//
+	//         1
+	//
+	//       ],
+	//
+	//       "contacts": [
+	//
+	//         "testId"
+	//
+	//       ],
+	//
+	//       "rotationEndTime": "24:00",
+	//
+	//       "rotationName": "testName",
+	//
+	//       "rotationStartTime": "00:00",
+	//
+	//       "shiftRecurrenceFrequency": "WEEKLY",
+	//
+	//       "startDate": "2024-01-01",
+	//
+	//       "timeZone": "Asia/Shanghai",
+	//
+	//       "shiftLength": 3
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "shiftRobotId": "testId",
+	//
+	//   "substitudes": [
+	//
+	//     {
+	//
+	//       "startTime": "2024-10-10 09:00",
+	//
+	//       "endTime": "2024-10-15 18:00",
+	//
+	//       "replacedContactId": "testId",
+	//
+	//       "contactId": "testId"
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "workspace": "default-cms-5884500827389836-cn-hangzhou"
+	//
+	// }
 	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
 	// The creation time.
 	//
@@ -34,7 +98,7 @@ type MergeOncallSchedule struct {
 	//
 	// 1700000000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modified time.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -44,25 +108,25 @@ type MergeOncallSchedule struct {
 	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// The schedule name.
+	// The name of the schedule.
 	//
 	// example:
 	//
-	// SampleName
+	// Sample name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source.
 	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The workspace.
 	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

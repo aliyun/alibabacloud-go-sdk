@@ -32,7 +32,7 @@ type iUpdateAlertActionRequest interface {
 }
 
 type UpdateAlertActionRequest struct {
-	// The name of the action integration.
+	// The name of the alert action integration.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type UpdateAlertActionRequest struct {
 	Fc3Param *UpdateAlertActionRequestFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
 	// The Function Compute parameters.
 	FcParam *UpdateAlertActionRequestFcParam `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
-	// The Simple Message Queue (formerly MNS) parameters.
+	// The Simple Message Queue (formerly MNS) (MSMQ) parameters.
 	MnsParam *UpdateAlertActionRequestMnsParam `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
 	// The PagerDuty parameters.
 	PagerDutyParam *UpdateAlertActionRequestPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *UpdateAlertActionRequestSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The action integration type.
+	// The alert action integration type.
 	//
 	// example:
 	//
@@ -460,7 +460,7 @@ func (s *UpdateAlertActionRequestFcParam) Validate() error {
 }
 
 type UpdateAlertActionRequestMnsParam struct {
-	// The Simple Message Queue (formerly MNS) resource type.
+	// The resource type of Simple Message Queue (formerly MNS) (MSMQ).
 	//
 	// example:
 	//
@@ -647,7 +647,7 @@ type UpdateAlertActionRequestWebhookParam struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The URL for the alert callback.
+	// The URL of the alert callback.
 	//
 	// example:
 	//

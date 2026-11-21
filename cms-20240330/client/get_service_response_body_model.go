@@ -16,7 +16,7 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetServiceResponseBodyService struct {
 	//
 	// Demo application
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ARMS application ID for backward compatibility.
+	// The legacy ARMS application ID for backward compatibility.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type GetServiceResponseBodyService struct {
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekxxzuad5zzzz
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
@@ -116,21 +116,21 @@ type GetServiceResponseBodyService struct {
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The service status. This parameter is valid only when serviceType is set to RUM.
+	// The status of the service. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// Running
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	// The service type.
+	// The type of the service.
 	//
 	// example:
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// The tags.
+	// The array of tags.
 	Tags []*GetServiceResponseBodyServiceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -277,13 +277,13 @@ func (s *GetServiceResponseBodyService) Validate() error {
 }
 
 type GetServiceResponseBodyServiceTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

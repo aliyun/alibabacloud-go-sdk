@@ -34,21 +34,21 @@ type iGetContextStoreResponseBody interface {
 }
 
 type GetContextStoreResponseBody struct {
-	// The configuration of the context store.
+	// The configuration information.
 	Config *GetContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The context store name.
+	// The name of the context store.
 	//
 	// example:
 	//
 	// test-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
-	// The type of the context store.
+	// The context type.
 	//
 	// example:
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The creation time of the context store. This value is a Unix timestamp in seconds.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -56,9 +56,9 @@ type GetContextStoreResponseBody struct {
 	//
 	// 1695090077
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Information about the associated dataset.
+	// The dataset information.
 	Dataset *GetContextStoreResponseBodyDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
-	// The description of the context store.
+	// The description.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type GetContextStoreResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The status of the context store.
+	// The status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time of the context store. This value is a Unix timestamp in seconds.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -222,7 +222,7 @@ func (s *GetContextStoreResponseBody) Validate() error {
 type GetContextStoreResponseBodyConfig struct {
 	// The internal source.
 	InnerSource *GetContextStoreResponseBodyConfigInnerSource `json:"innerSource,omitempty" xml:"innerSource,omitempty" type:"Struct"`
-	// The metadata fields.
+	// The metadata field.
 	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
 	// The configuration source.
 	Source *GetContextStoreResponseBodyConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
@@ -278,13 +278,13 @@ func (s *GetContextStoreResponseBodyConfig) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigInnerSource struct {
-	// The name of the Log Service logstore.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Log Service project.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -323,19 +323,19 @@ func (s *GetContextStoreResponseBodyConfigInnerSource) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigSource struct {
-	// The name of the Log Service logstore.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Log Service project.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
 	// sls-test-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The time when the configuration takes effect. This value is a Unix timestamp in milliseconds.
+	// The effective start time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//

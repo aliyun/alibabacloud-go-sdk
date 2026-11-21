@@ -135,6 +135,12 @@ func (s *NotifyStrategyConfig) Validate() error {
 }
 
 type NotifyStrategyConfigCustomTemplateEntries struct {
+	// This parameter is optional. You can configure at most one template for each notification type.
+	//
+	// example:
+	//
+	// SMS
+	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
 	// The UUID of the notification template.
 	//
 	// example:
@@ -151,8 +157,17 @@ func (s NotifyStrategyConfigCustomTemplateEntries) GoString() string {
 	return s.String()
 }
 
+func (s *NotifyStrategyConfigCustomTemplateEntries) GetTargetType() *string {
+	return s.TargetType
+}
+
 func (s *NotifyStrategyConfigCustomTemplateEntries) GetTemplateUuid() *string {
 	return s.TemplateUuid
+}
+
+func (s *NotifyStrategyConfigCustomTemplateEntries) SetTargetType(v string) *NotifyStrategyConfigCustomTemplateEntries {
+	s.TargetType = &v
+	return s
 }
 
 func (s *NotifyStrategyConfigCustomTemplateEntries) SetTemplateUuid(v string) *NotifyStrategyConfigCustomTemplateEntries {
@@ -171,19 +186,19 @@ type NotifyStrategyConfigGroupingSetting struct {
 	//
 	// ["alertname"]
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
-	// This parameter does not take effect for this API operation and does not need to be set.
+	// This parameter does not take effect for this API operation and does not need to be configured.
 	//
 	// example:
 	//
 	// 0
 	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// This parameter does not take effect for this API operation and does not need to be set.
+	// This parameter does not take effect for this API operation and does not need to be configured.
 	//
 	// example:
 	//
 	// 0
 	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	// This parameter does not take effect for this API operation and does not need to be set.
+	// This parameter does not take effect for this API operation and does not need to be configured.
 	//
 	// example:
 	//
@@ -254,7 +269,7 @@ type NotifyStrategyConfigRoutes struct {
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The effective time range.
 	EffectTimeRange *NotifyStrategyConfigRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Specifies whether to enable Root Cause Analysis (RCA).
+	// Specifies whether to enable root cause analysis (RCA).
 	//
 	// example:
 	//
@@ -345,7 +360,7 @@ func (s *NotifyStrategyConfigRoutes) Validate() error {
 }
 
 type NotifyStrategyConfigRoutesChannels struct {
-	// The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. The values must be in uppercase. Lowercase values are not supported. For email, text messages, and voice calls, use CONTACT with enabledSubChannels.
+	// The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. The values must be in uppercase. Lowercase values are not supported. For email, text message, and voice call, use CONTACT and configure enabledSubChannels.
 	//
 	// This parameter is required.
 	//
@@ -353,13 +368,13 @@ type NotifyStrategyConfigRoutesChannels struct {
 	//
 	// DING
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// Required only for CONTACT, GROUP, and DUTY. Valid values for sub-channels: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK. The values must be in uppercase.
+	// This parameter is required only when the channel type is CONTACT, GROUP, or DUTY. Valid values for sub-channels: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK. The values must be in uppercase.
 	//
 	// example:
 	//
 	// ["EMAIL","SMS"]
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	// The list of receiver identifiers. At least one receiver is required. For WEBHOOK, specify the webhook UUID. For a chatbot, specify the chatbot UUID. For CONTACT, specify the contact ID.
+	// The list of recipient identifiers. At least one identifier is required. For WEBHOOK, specify the webhook UUID. For a chatbot, specify the chatbot UUID. For CONTACT, specify the contact ID.
 	//
 	// This parameter is required.
 	//

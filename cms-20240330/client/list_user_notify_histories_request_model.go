@@ -60,7 +60,7 @@ type iListUserNotifyHistoriesRequest interface {
 }
 
 type ListUserNotifyHistoriesRequest struct {
-	// The notification batch ID. Used to filter the notification history for notifications sent in the same batch.
+	// The notification batch ID. Used to filter the notification history for the same delivery batch.
 	//
 	// example:
 	//
@@ -76,45 +76,45 @@ type ListUserNotifyHistoriesRequest struct {
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
 	// The notification channel. Valid values:
 	//
-	// - ALI_YUNGE_SMS: text message
+	// - ALI_YUNGE_SMS: Text message.
 	//
-	// - ALI_YUNGE_CALL: phone call
+	// - ALI_YUNGE_CALL: Voice call.
 	//
-	// - ALI_YUNGE_MAIL: email
+	// - ALI_YUNGE_MAIL: Email.
 	//
-	// - ALI_YUNGE_ALIUID: internal message
+	// - ALI_YUNGE_ALIUID: Internal message.
 	//
-	// - DING: DingTalk
+	// - DING: DingTalk.
 	//
-	// - DING_COOL_APP: DingTalk cool app
+	// - DING_COOL_APP: DingTalk Cool App.
 	//
-	// - FEISHU: Lark
+	// - FEISHU: Lark.
 	//
-	// - WEIXIN: WeCom
+	// - WEIXIN: WeCom.
 	//
-	// - SLACK: Slack
+	// - SLACK: Slack.
 	//
-	// - TEAMS: Teams
+	// - TEAMS: Teams.
 	//
-	// - PAGERDUTY: PagerDuty
+	// - PAGERDUTY: PagerDuty.
 	//
-	// - WEBHOOK: custom webhook
+	// - WEBHOOK: Custom webhook.
 	//
-	// - ALIYUN_SLS: Simple Log Service
+	// - ALIYUN_SLS: Simple Log Service.
 	//
-	// - ALIYUN_FC: Function Compute
+	// - ALIYUN_FC: Function Compute.
 	//
-	// - ALIYUN_FC3: Function Compute 3.0
+	// - ALIYUN_FC3: Function Compute 3.0.
 	//
-	// - ALIYUN_MNS: Message Service
+	// - ALIYUN_MNS: Message Service.
 	//
-	// - ALIYUN_OOS: CloudOps Orchestration Service
+	// - ALIYUN_OOS: CloudOps Orchestration Service.
 	//
-	// - ALIYUN_ESS: elastic scaling
+	// - ALIYUN_ESS: Elastic scaling.
 	//
-	// - ALIYUN_EB: event bus
+	// - ALIYUN_EB: Event bus.
 	//
-	// - ALIYUN_OPENAPI: OpenAPI
+	// - ALIYUN_OPENAPI: OpenAPI.
 	//
 	// example:
 	//
@@ -122,9 +122,9 @@ type ListUserNotifyHistoriesRequest struct {
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	// The channel category. Valid values:
 	//
-	// - WEBHOOK: webhook channels, such as DingTalk, Lark, WeCom, Slack, Teams, and custom webhooks.
+	// - WEBHOOK: Webhook channels, such as DingTalk, Lark, WeCom, Slack, Teams, and custom webhooks.
 	//
-	// - YUNGE: communication channels, such as text messages, phone calls, and emails.
+	// - YUNGE: Yunge communication channels, such as text messages, voice calls, and emails.
 	//
 	// example:
 	//
@@ -148,23 +148,23 @@ type ListUserNotifyHistoriesRequest struct {
 	//
 	// 5d41402abc4b2a76b9719d911017c592
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// Specifies whether to include notification records that have no actual delivery channel. Valid values:
+	// Specifies whether to include notification records without an actual delivery channel. Valid values:
 	//
-	// - true: includes the records.
+	// - true: Includes the records.
 	//
-	// - false: excludes the records and returns only records that were actually sent through a channel.
+	// - false: Excludes the records and returns only records with an actual delivery channel.
 	//
 	// Default value: true.
 	IncludeNoChannel *bool `json:"includeNoChannel,omitempty" xml:"includeNoChannel,omitempty"`
 	// Specifies whether to sort the results in descending order of time. Valid values:
 	//
-	// - true: descending order, with the latest records first.
+	// - true: Sorts the results in descending order, with the latest records first.
 	//
-	// - false: ascending order.
+	// - false: Sorts the results in ascending order.
 	//
 	// Default value: true.
 	IsDesc *bool `json:"isDesc,omitempty" xml:"isDesc,omitempty"`
-	// The maximum number of entries to return per page. Default value: 20.
+	// The maximum number of records to return per page. Default value: 20.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type ListUserNotifyHistoriesRequest struct {
 	//
 	// 13800138000
 	Receiver *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
-	// The alert rule ID. Used to filter the notification history triggered by a specified alert rule. Exact match is used.
+	// The alert rule ID. Used to filter the notification history triggered by a specified alert rule with exact match.
 	//
 	// example:
 	//
@@ -216,11 +216,11 @@ type ListUserNotifyHistoriesRequest struct {
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// The notification delivery type. Valid values:
 	//
-	// - SUBSCRIBE: subscription notifications
+	// - SUBSCRIBE: Subscription notification.
 	//
-	// - DIRECT: direct event notifications
+	// - DIRECT: Direct event notification.
 	//
-	// - ITSM: ticket or action notifications
+	// - ITSM: Ticket or action notification.
 	//
 	// example:
 	//
@@ -228,13 +228,13 @@ type ListUserNotifyHistoriesRequest struct {
 	SendType *string `json:"sendType,omitempty" xml:"sendType,omitempty"`
 	// The alert severity. Valid values:
 	//
-	// - CRITICAL: critical
+	// - CRITICAL: Critical.
 	//
-	// - ERROR: error
+	// - ERROR: Error.
 	//
-	// - WARNING: warning
+	// - WARNING: Warning.
 	//
-	// - INFO: info
+	// - INFO: Info.
 	//
 	// example:
 	//
@@ -254,9 +254,9 @@ type ListUserNotifyHistoriesRequest struct {
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	// Specifies whether to filter by delivery result. Valid values:
 	//
-	// - true: returns only successfully delivered records.
+	// - true: Returns only successfully delivered records.
 	//
-	// - false: returns only failed delivery records.
+	// - false: Returns only failed delivery records.
 	//
 	// If you do not specify this parameter, the results are not filtered by delivery result.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
@@ -266,7 +266,7 @@ type ListUserNotifyHistoriesRequest struct {
 	//
 	// 1729421600
 	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
-	// The workspace identifier.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

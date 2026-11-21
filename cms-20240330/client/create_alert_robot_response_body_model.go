@@ -16,7 +16,7 @@ type iCreateAlertRobotResponseBody interface {
 }
 
 type CreateAlertRobotResponseBody struct {
-	// The ID of the alert robot.
+	// The chatbot ID.
 	//
 	// example:
 	//

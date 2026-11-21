@@ -16,7 +16,7 @@ type iGetServiceRecordResponseBody interface {
 }
 
 type GetServiceRecordResponseBody struct {
-	// The record.
+	// The number of records.
 	Record *GetServiceRecordResponseBodyRecord `json:"record,omitempty" xml:"record,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,15 +62,15 @@ func (s *GetServiceRecordResponseBody) Validate() error {
 }
 
 type GetServiceRecordResponseBodyRecord struct {
-	// The entry content in JSON string format. The returned content varies depending on the recordType.
+	// The content of the entry in JSON string format. The returned content varies based on the recordType.
 	//
 	// example:
 	//
 	// {"project":"proj-xtrace-16c988dcfe21fcb73c5e6f234927d998-cn-hangzhou","storeName":"app-biz-log","regionId":"cn-hangzhou","bindType":"logstore","traceIdRelateField":""}
 	RecordContent *string `json:"recordContent,omitempty" xml:"recordContent,omitempty"`
-	// The type of the linked entry. Currently supported values:
+	// The type of the association entry. Valid values:
 	//
-	// logCorrelation: indicates application log association.
+	// logCorrelation: application log association.
 	//
 	// example:
 	//

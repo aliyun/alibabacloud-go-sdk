@@ -14,7 +14,7 @@ type iUpdateAlertNotifyTemplateResponseBody interface {
 }
 
 type UpdateAlertNotifyTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

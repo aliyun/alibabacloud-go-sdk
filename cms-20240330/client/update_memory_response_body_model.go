@@ -14,7 +14,7 @@ type iUpdateMemoryResponseBody interface {
 }
 
 type UpdateMemoryResponseBody struct {
-	// The unique ID of the request.
+	// The ID of the request.
 	//
 	// example:
 	//

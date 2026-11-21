@@ -73,7 +73,7 @@ type NotifyRouteForSubscriptionChannels struct {
 	//
 	// default
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The list of enabled subchannels.
+	// The list of enabled sub-channels.
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
 	// The list of receivers.
 	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
@@ -119,15 +119,15 @@ func (s *NotifyRouteForSubscriptionChannels) Validate() error {
 }
 
 type NotifyRouteForSubscriptionEffectTimeRange struct {
-	// The effective days of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday).
+	// The valid days of the week. Valid values: 0 to 6, where 0 indicates Sunday and 6 indicates Saturday.
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// The end time of the day, in minutes from 0:00.
+	// The end time of the day in minutes, calculated from 00:00.
 	//
 	// example:
 	//
 	// 1
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// The start time of the day, in minutes from 0:00.
+	// The start time of the day in minutes, calculated from 00:00.
 	//
 	// example:
 	//
