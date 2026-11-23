@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("marketing_event")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -615,6 +623,10 @@ func (client *Client) MosCheckInWithOptions(request *MosCheckInRequest, runtime 
 		body["ActivityId"] = request.ActivityId
 	}
 
+	if !dara.IsNil(request.CheckinPoint) {
+		body["CheckinPoint"] = request.CheckinPoint
+	}
+
 	if !dara.IsNil(request.ExtParam) {
 		body["ExtParam"] = request.ExtParam
 	}
@@ -664,6 +676,68 @@ func (client *Client) MosCheckIn(request *MosCheckInRequest) (_result *MosCheckI
 	return _result, _err
 }
 
+// Summary:
+//
+// # MOS活动报名查询
+//
+// @param request - MosQueryRegistrationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MosQueryRegistrationInfoResponse
+func (client *Client) MosQueryRegistrationInfoWithOptions(request *MosQueryRegistrationInfoRequest, runtime *dara.RuntimeOptions) (_result *MosQueryRegistrationInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MosQueryRegistrationInfo"),
+		Version:     dara.String("2021-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MosQueryRegistrationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # MOS活动报名查询
+//
+// @param request - MosQueryRegistrationInfoRequest
+//
+// @return MosQueryRegistrationInfoResponse
+func (client *Client) MosQueryRegistrationInfo(request *MosQueryRegistrationInfoRequest) (_result *MosQueryRegistrationInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MosQueryRegistrationInfoResponse{}
+	_body, _err := client.MosQueryRegistrationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过活动id查询所有审核通过的报名信息
+//
 // @param request - QueryAllActivityInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -700,6 +774,10 @@ func (client *Client) QueryAllActivityInfoWithOptions(request *QueryAllActivityI
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过活动id查询所有审核通过的报名信息
+//
 // @param request - QueryAllActivityInfoRequest
 //
 // @return QueryAllActivityInfoResponse
@@ -1078,6 +1156,10 @@ func (client *Client) QuerySignInRecordPop(request *QuerySignInRecordPopRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过活动id, 参会人名称等查询单个审核通过的报名信息
+//
 // @param request - QuerySingleActivityInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1114,6 +1196,10 @@ func (client *Client) QuerySingleActivityInfoWithOptions(request *QuerySingleAct
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过活动id, 参会人名称等查询单个审核通过的报名信息
+//
 // @param request - QuerySingleActivityInfoRequest
 //
 // @return QuerySingleActivityInfoResponse
@@ -1128,6 +1214,10 @@ func (client *Client) QuerySingleActivityInfo(request *QuerySingleActivityInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 签到处理
+//
 // @param request - SyncSignInInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1164,6 +1254,10 @@ func (client *Client) SyncSignInInfoWithOptions(request *SyncSignInInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 签到处理
+//
 // @param request - SyncSignInInfoRequest
 //
 // @return SyncSignInInfoResponse
@@ -1393,6 +1487,72 @@ func (client *Client) UpdateTicketRecordByticketCodePop(request *UpdateTicketRec
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateTicketRecordByticketCodePopResponse{}
 	_body, _err := client.UpdateTicketRecordByticketCodePopWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 核验指定活动当天的入场权限
+//
+// @param request - VerifyActivityAdmissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyActivityAdmissionResponse
+func (client *Client) VerifyActivityAdmissionWithOptions(request *VerifyActivityAdmissionRequest, runtime *dara.RuntimeOptions) (_result *VerifyActivityAdmissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityId) {
+		body["ActivityId"] = request.ActivityId
+	}
+
+	if !dara.IsNil(request.IdCardNo) {
+		body["IdCardNo"] = request.IdCardNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyActivityAdmission"),
+		Version:     dara.String("2021-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyActivityAdmissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 核验指定活动当天的入场权限
+//
+// @param request - VerifyActivityAdmissionRequest
+//
+// @return VerifyActivityAdmissionResponse
+func (client *Client) VerifyActivityAdmission(request *VerifyActivityAdmissionRequest) (_result *VerifyActivityAdmissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &VerifyActivityAdmissionResponse{}
+	_body, _err := client.VerifyActivityAdmissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

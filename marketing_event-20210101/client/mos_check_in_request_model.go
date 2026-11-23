@@ -11,6 +11,8 @@ type iMosCheckInRequest interface {
 	GoString() string
 	SetActivityId(v string) *MosCheckInRequest
 	GetActivityId() *string
+	SetCheckinPoint(v string) *MosCheckInRequest
+	GetCheckinPoint() *string
 	SetExtParam(v string) *MosCheckInRequest
 	GetExtParam() *string
 	SetQrCode(v string) *MosCheckInRequest
@@ -25,7 +27,8 @@ type MosCheckInRequest struct {
 	// example:
 	//
 	// {}
-	ExtParam *string `json:"ExtParam,omitempty" xml:"ExtParam,omitempty"`
+	CheckinPoint *string `json:"CheckinPoint,omitempty" xml:"CheckinPoint,omitempty"`
+	ExtParam     *string `json:"ExtParam,omitempty" xml:"ExtParam,omitempty"`
 	// example:
 	//
 	// abc12345
@@ -44,6 +47,10 @@ func (s *MosCheckInRequest) GetActivityId() *string {
 	return s.ActivityId
 }
 
+func (s *MosCheckInRequest) GetCheckinPoint() *string {
+	return s.CheckinPoint
+}
+
 func (s *MosCheckInRequest) GetExtParam() *string {
 	return s.ExtParam
 }
@@ -54,6 +61,11 @@ func (s *MosCheckInRequest) GetQrCode() *string {
 
 func (s *MosCheckInRequest) SetActivityId(v string) *MosCheckInRequest {
 	s.ActivityId = &v
+	return s
+}
+
+func (s *MosCheckInRequest) SetCheckinPoint(v string) *MosCheckInRequest {
+	s.CheckinPoint = &v
 	return s
 }
 
