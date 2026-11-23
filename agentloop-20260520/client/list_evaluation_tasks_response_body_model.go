@@ -28,13 +28,13 @@ type ListEvaluationTasksResponseBody struct {
 	//
 	// [{"taskId":"eval-task-8b36f2e2b1f94f9c91ce7a4b0f6d9c25","taskName":"trace_task_completion_eval","taskMode":"batch","dataType":"trace","status":"Running"}]
 	EvaluationTasks []*ListEvaluationTasksResponseBodyEvaluationTasks `json:"evaluationTasks,omitempty" xml:"evaluationTasks,omitempty" type:"Repeated"`
-	// The number of entries per page used in this request.
+	// The number of entries per page used for this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. An empty value indicates that no more pages are available.
+	// The pagination token for the next page. An empty value indicates that there is no next page.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListEvaluationTasksResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of records. The total count is calculated only on the first page. This value may be empty on subsequent pages.
+	// The total number of records. The backend queries the total count only on the first page, so this field may be empty on subsequent pages.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type ListEvaluationTasksResponseBodyEvaluationTasks struct {
 	//
 	// {"storeName":"logstore-tracing","dataScope":"trace"}
 	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	// The creation time, in seconds-level UNIX timestamp.
+	// The creation time, represented as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -139,19 +139,19 @@ type ListEvaluationTasksResponseBodyEvaluationTasks struct {
 	//
 	// trace
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// The description of the evaluation task.
+	// The evaluation task description.
 	//
 	// example:
 	//
-	// Evaluate the task completion of the online Agent trace
+	// Evaluate the completion rate of online agent trace tasks
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The evaluator configuration summary, in JSON string format.
+	// The evaluator configuration summary, as a JSON string.
 	//
 	// example:
 	//
 	// [{"evaluatorRef":"Builtin.agent_task_completion"}]
 	Evaluators *string `json:"evaluators,omitempty" xml:"evaluators,omitempty"`
-	// The structured run strategy configuration, including the parsed backfill strategy and continuous evaluation strategy.
+	// The structured configuration of the run strategy, including the parsed backfill strategy and continuous evaluation strategy.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListEvaluationTasksResponseBodyEvaluationTasks struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The key-value pairs of task tags. This parameter is empty if no tags are set.
+	// The key-value pairs of task tags. Empty if not set.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListEvaluationTasksResponseBodyEvaluationTasks struct {
 	//
 	// trace_task_completion_eval
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The last update time, in seconds-level UNIX timestamp.
+	// The last update time, represented as a UNIX timestamp in seconds.
 	//
 	// example:
 	//

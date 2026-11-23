@@ -85,6 +85,10 @@ type GetExperimentPlanResponseBody struct {
 	// {"question": "How do I get a refund?"}
 	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
 	// The name of the associated data processing pipeline. This field is empty if no pipeline is associated.
+	//
+	// example:
+	//
+	// dify-log
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The ID of the experiment plan.
 	//

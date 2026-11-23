@@ -28,25 +28,25 @@ type iListEvaluationTasksRequest interface {
 }
 
 type ListEvaluationTasksRequest struct {
-	// The AgentSpace name.
+	// The name of the AgentSpace.
 	//
 	// example:
 	//
 	// prod-agentspace
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The filter condition for the task source. If this parameter is not specified, tasks from the default source are queried.
+	// The filter condition for the task source. If not specified, tasks from the default source are queried.
 	//
 	// example:
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The data source type of the evaluation object. Set this parameter to `trace` for trace-based evaluation.
+	// The data source type of the evaluation object. Use trace for trace evaluation.
 	//
 	// example:
 	//
 	// trace
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// The number of entries per page. Default value: 20. Maximum value: 100.
+	// The number of entries to return per page. The default value is 20, and the maximum value is 100.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ListEvaluationTasksRequest struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The evaluation task mode. If this parameter is not specified, the default value is `batch`.
+	// The mode of the evaluation task. If not specified, the backend defaults to batch.
 	//
 	// example:
 	//
 	// batch
 	TaskMode *string `json:"taskMode,omitempty" xml:"taskMode,omitempty"`
-	// The fuzzy match condition for the task name.
+	// The fuzzy search condition for the task name.
 	//
 	// example:
 	//
