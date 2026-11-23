@@ -26,7 +26,7 @@ type iDescribeInstanceAuthInfoResponseBody interface {
 type DescribeInstanceAuthInfoResponseBody struct {
 	// The API keys.
 	ApiKeys *DescribeInstanceAuthInfoResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Struct"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -135,14 +135,19 @@ func (s *DescribeInstanceAuthInfoResponseBody) Validate() error {
 }
 
 type DescribeInstanceAuthInfoResponseBodyApiKeys struct {
-	// The ANON_KEY of Supabase.
+	// The Supabase ANON_KEY.
 	//
 	// example:
 	//
 	// eyJ0eXAiOiJKV1QiLCJhbGciOiJIUz****J9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU1Nzg1ODc1LCJleHAiOjEzMjY2NDI1ODc1fQ.EGNFdeWRZBsdB051EzQsBwvDJveC9IMEXWUCDLX****
-	AnonKey   *string `json:"AnonKey,omitempty" xml:"AnonKey,omitempty"`
+	AnonKey *string `json:"AnonKey,omitempty" xml:"AnonKey,omitempty"`
+	// The API key used to access E2B-compatible sandbox APIs. This parameter is returned when the sandbox is enabled and a service key exists.
+	//
+	// example:
+	//
+	// e2b_65794a30655841694f694a4b563151694c434a68624763694f694a49557a49314e694a392e65794a7063334d694f694a7a64584268596d467a5a534973496e4a76624755694f694a7a5a584a3261574e6c58334a766247556****34a70595851694f6a45334f5451314d6a67774d444173496d5634634349364d544d7a4d4455784e6a67774d4442392e41414543417751464267634943516f4c4441304f4478415245684d554652595847426b6147787764486838
 	E2bApiKey *string `json:"E2bApiKey,omitempty" xml:"E2bApiKey,omitempty"`
-	// The SERVICE_ROLE_KEY of Supabase.
+	// The Supabase SERVICE_ROLE_KEY.
 	//
 	// example:
 	//
@@ -192,7 +197,7 @@ func (s *DescribeInstanceAuthInfoResponseBodyApiKeys) Validate() error {
 type DescribeInstanceAuthInfoResponseBodyConfigList struct {
 	// The name of the configuration item. Valid values:
 	//
-	// - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether external emails are allowed.
+	// - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether to allow external emails.
 	//
 	// - **GOTRUE_SITE_URL**: The website URL displayed when the AI application sends emails.
 	//
@@ -208,7 +213,7 @@ type DescribeInstanceAuthInfoResponseBodyConfigList struct {
 	//
 	// - **GOTRUE_SMTP_HOST**: The host address of the SMTP service provider.
 	//
-	// - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether automatic confirmation is enabled.
+	// - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether to enable automatic confirmation.
 	//
 	// - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
 	//

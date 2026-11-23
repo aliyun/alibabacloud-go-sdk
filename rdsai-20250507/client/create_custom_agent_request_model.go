@@ -28,7 +28,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The name of the custom agent.
+	// The name of the dedicated agent.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// I am your custom agent for querying the instance list
+	// I am your dedicated agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`

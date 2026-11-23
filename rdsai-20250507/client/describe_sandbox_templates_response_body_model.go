@@ -32,7 +32,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
+	// The position from which the read operation starts. An empty value indicates that the read operation starts from the beginning.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of sandbox templates.
 	SandboxTemplates []*DescribeSandboxTemplatesResponseBodySandboxTemplates `json:"SandboxTemplates,omitempty" xml:"SandboxTemplates,omitempty" type:"Repeated"`
-	// The total number of data entries that meet the current request conditions.
+	// The total number of entries that meet the request conditions.
 	//
 	// example:
 	//
@@ -151,6 +151,11 @@ func (s *DescribeSandboxTemplatesResponseBody) Validate() error {
 }
 
 type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
+	// The source that created the sandbox template. Valid values: user (created by a user) and system (created by the system).
+	//
+	// example:
+	//
+	// user
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The number of CPUs allocated to the sandbox created by using this template.
 	//
@@ -170,22 +175,33 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	//
 	// code-interpreter-vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the sandbox created by using this template can access resources in the VPC where Supabase is deployed.
+	// Indicates whether the sandbox created by using this template can access resources in the VPC where Supabase resides.
 	//
 	// example:
 	//
 	// true
 	EnableVpcAccess *string `json:"EnableVpcAccess,omitempty" xml:"EnableVpcAccess,omitempty"`
-	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The container image used by the sandbox template.
+	//
+	// example:
+	//
+	// registry.example.com/example/sandbox:1.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The name of the sandbox template.
 	//
 	// example:
 	//
 	// code-interpreter
-	Name     *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the sandbox template. Specify this ID when you use the template to create a sandbox.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of replicas for the sandbox template.
+	//
+	// example:
+	//
+	// 1
+	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The custom tags of the sandbox template. A key represents a tag name, and a value represents a tag value.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the sandbox template. Specify this ID when creating a sandbox by using this template.
 	//
 	// example:
 	//

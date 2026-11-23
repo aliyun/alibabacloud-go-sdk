@@ -42,7 +42,7 @@ type UpdateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// Query instance list agent
+	// Instance list query agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of associated skill IDs.
 	SkillIdsShrink *string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty"`

@@ -90,7 +90,7 @@ type ListCustomAgentToolsResponseBodyData struct {
 	//
 	// 查詢 RDS 實例清單
 	Tc *string `json:"Tc,omitempty" xml:"Tc,omitempty"`
-	// The read/write type of the tool.
+	// The tool read/write type.
 	//
 	// example:
 	//

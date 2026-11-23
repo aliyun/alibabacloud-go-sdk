@@ -56,11 +56,11 @@ type CreateApiKeyRequest struct {
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
 	// The quota limit type. Valid values:
 	//
-	// - ratio: Percentage-based.
+	// - ratio: percentage.
 	//
-	// - fixed: Fixed value.
+	// - fixed: fixed value.
 	//
-	// - auto: Automatic allocation.
+	// - auto: automatic allocation.
 	//
 	// example:
 	//
@@ -71,8 +71,18 @@ type CreateApiKeyRequest struct {
 	// example:
 	//
 	// 1
-	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The ARN of the RAM role bound to the API key. The account to which the role belongs must be the same as the caller account.
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/example-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The name of the RAM role bound to the API key.
+	//
+	// example:
+	//
+	// example-role
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The token quota for the current key.
 	//

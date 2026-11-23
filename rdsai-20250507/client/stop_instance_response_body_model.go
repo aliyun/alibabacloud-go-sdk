@@ -18,6 +18,11 @@ type iStopInstanceResponseBody interface {
 }
 
 type StopInstanceResponseBody struct {
+	// The name of the branch specified for this operation.
+	//
+	// example:
+	//
+	// ra-branch-123456789012abcd
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//

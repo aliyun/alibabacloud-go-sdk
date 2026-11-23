@@ -36,7 +36,7 @@ type ListSkillResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -117,9 +117,13 @@ func (s *ListSkillResponseBody) Validate() error {
 }
 
 type ListSkillResponseBodyData struct {
-	// The currently active skill version information.
+	// The information about the currently active skill version.
+	//
+	// example:
+	//
+	// {"id":"12345678-1234-4234-8234-123456789012","skill_id":"23456789-1234-4234-8234-123456789012","version":"1.0.0","status":"ACTIVE","package_size":1024,"credential_required":false}
 	ActiveVersion map[string]interface{} `json:"ActiveVersion,omitempty" xml:"ActiveVersion,omitempty"`
-	// The currently active version ID.
+	// The ID of the currently active version.
 	//
 	// example:
 	//
@@ -149,15 +153,15 @@ type ListSkillResponseBodyData struct {
 	//
 	// example:
 	//
-	// SQL Review Expert: Comprehensively reviews SQL for security, performance, and compliance, identifies risks, and provides optimization suggestions. Activated immediately when a user submits SQL or asks about "SQL review", "SQL Review", "any risks", or "how to optimize"
+	// SQL Review Expert: Comprehensively reviews SQL statements for security, performance, and compliance, identifies risks, and provides optimization recommendations. Activated immediately when a user submits SQL or asks questions such as "SQL review", "SQL Review", "Are there any risks?", or "How to optimize?".
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The skill display name.
+	// The display name of the skill.
 	//
 	// example:
 	//
 	// Example Skill
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The public HTTPS URL of the current icon. Empty if not configured.
+	// The public HTTPS URL of the current icon. This parameter is empty if no icon is configured.
 	//
 	// if can be null:
 	// true
@@ -180,7 +184,7 @@ type ListSkillResponseBodyData struct {
 	//
 	// sql-review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The skill visibility scope.
+	// The visibility scope of the skill.
 	//
 	// example:
 	//
@@ -192,7 +196,7 @@ type ListSkillResponseBodyData struct {
 	//
 	// system
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
-	// The skill stable identifier.
+	// The stable identifier of the skill.
 	//
 	// example:
 	//
@@ -204,7 +208,7 @@ type ListSkillResponseBodyData struct {
 	//
 	// 2026-02-04T21:14:45Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	// The skill visibility for the current user.
+	// The visibility of the skill to the current user.
 	//
 	// example:
 	//

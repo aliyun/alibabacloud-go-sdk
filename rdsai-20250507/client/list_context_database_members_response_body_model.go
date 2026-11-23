@@ -100,7 +100,7 @@ func (s *ListContextDatabaseMembersResponseBody) Validate() error {
 }
 
 type ListContextDatabaseMembersResponseBodyMembers struct {
-	// The time when the member was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ListContextDatabaseMembersResponseBodyMembers) Validate() error {
 }
 
 type ListContextDatabaseMembersResponseBodyMembersKeys struct {
-	// The time when the member was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type ListContextDatabaseMembersResponseBodyMembersKeys struct {
 	//
 	// (null)
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
-	// The suffix of the API key.
+	// The display suffix of the API key.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type ListContextDatabaseMembersResponseBodyMembersKeys struct {
 	//
 	// ctxdb-
 	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
-	// The time when the key was last used. This field is populated after the key has been authenticated and used. This field is empty for keys that have not been used.
+	// The time when the key was last used. This field is populated after the key is used for authentication and is empty for unused keys.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iDescribeInstanceAuthInfoRequest interface {
 }
 
 type DescribeInstanceAuthInfoRequest struct {
-	// Reserved parameter.
+	// A reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The instance ID of the AI application.
+	// The ID of the AI application instance.
 	//
 	// example:
 	//

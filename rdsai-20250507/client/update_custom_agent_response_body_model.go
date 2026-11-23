@@ -42,7 +42,7 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// Query instance list agent
+	// Instance list query agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -147,7 +147,7 @@ func (s *UpdateCustomAgentResponseBody) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodySkills struct {
-	// The skill description.
+	// The description of the skill.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type UpdateCustomAgentResponseBodySkills struct {
 	//
 	// 82cf3d62-0add-47bd-869f-877131f7****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The skill name.
+	// The name of the skill.
 	//
 	// example:
 	//
 	// query-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The skill type.
+	// The type of the skill.
 	//
 	// example:
 	//

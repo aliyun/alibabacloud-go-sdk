@@ -46,7 +46,7 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the custom agent.
+	// The name of the dedicated agent.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// I am your custom agent for querying the instance list
+	// I am your dedicated agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
@@ -164,7 +164,7 @@ func (s *CreateCustomAgentResponseBody) Validate() error {
 }
 
 type CreateCustomAgentResponseBodySkills struct {
-	// The skill description.
+	// The description of the skill.
 	//
 	// example:
 	//

@@ -20,8 +20,24 @@ type iStopInstanceRequest interface {
 }
 
 type StopInstanceRequest struct {
+	// The name of the branch to operate on. If this parameter is not specified, the operation is performed on the original instance.
+	//
+	// example:
+	//
+	// ra-branch-123456789012abcd
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcibly stop the instance. Valid values:
+	//
+	// - true: Forcibly stops the instance.
+	//
+	// - false: Normally stops the instance.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// This parameter is required.

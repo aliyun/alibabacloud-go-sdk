@@ -34,7 +34,7 @@ type CreateApiKeyResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -187,17 +187,22 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
 	// The quota limit type. Valid values:
 	//
-	// - **fixed**: Fixed value.
+	// - **fixed**: fixed value.
 	//
-	// - **ratio**: Percentage-based.
+	// - **ratio**: percentage.
 	//
-	// - **auto**: Automatic allocation.
+	// - **auto**: automatic allocation.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	RoleArn   *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The ARN of the RAM role bound to the custom API key.
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/example-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// The token quota for the current key.
 	//
 	// example:

@@ -61,7 +61,12 @@ type DescribeInstanceSSLResponseBody struct {
 	// example:
 	//
 	// 1
-	SSLEnabled     *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// The expiration time of the custom SSL certificate. The time is in the yyyy-MM-dd HH:mm:ss format and in the UTC+8 time zone.
+	//
+	// example:
+	//
+	// 2027-12-31 23:59:59
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 	// The content of the custom certificate.
 	//

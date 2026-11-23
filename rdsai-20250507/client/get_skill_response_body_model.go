@@ -72,19 +72,19 @@ type iGetSkillResponseBody interface {
 }
 
 type GetSkillResponseBody struct {
-	// The current active version ID.
+	// The ID of the currently active version.
 	//
 	// example:
 	//
 	// version-example
 	ActiveVersionId *string `json:"ActiveVersionId,omitempty" xml:"ActiveVersionId,omitempty"`
-	// The content digest of the current skill bundle.
+	// The content digest of the current skill package.
 	//
 	// example:
 	//
 	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 	BundleHash *string `json:"BundleHash,omitempty" xml:"BundleHash,omitempty"`
-	// The size of the current skill bundle, in bytes.
+	// The size of the current skill package, in bytes.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetSkillResponseBody struct {
 	BundleSizeBytes *int64 `json:"BundleSizeBytes,omitempty" xml:"BundleSizeBytes,omitempty"`
 	// The skill operations that the current user can perform.
 	Capabilities *GetSkillResponseBodyCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Struct"`
-	// The skill category.
+	// The category of the skill.
 	//
 	// example:
 	//
@@ -112,11 +112,11 @@ type GetSkillResponseBody struct {
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	// The list of database types.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	// The skill description. The description can be up to 1000 characters in length.
+	// The description of the skill. The description can be up to 1,000 characters in length.
 	//
 	// example:
 	//
-	// SQL Review Expert: Comprehensively reviews SQL for security, performance, and compliance, identifies risks, and provides optimization suggestions. Activated immediately when a user submits SQL or asks about "SQL review", "SQL Review", "any risks", or "how to optimize"
+	// SQL Review Expert: Comprehensively reviews the security, performance, and compliance of SQL statements, identifies risks, and provides optimization suggestions. This skill is immediately activated when a user submits SQL statements or asks questions such as "SQL review", "Are there any risks?", or "How to optimize?"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the skill.
 	//
@@ -124,7 +124,7 @@ type GetSkillResponseBody struct {
 	//
 	// Example Skill
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The temporary download URL of the skill bundle.
+	// The temporary download URL for the skill package.
 	//
 	// example:
 	//
@@ -136,13 +136,21 @@ type GetSkillResponseBody struct {
 	//
 	// 2026-09-15T11:00:00Z
 	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
-	// The file in the bundle that is read based on the specified path.
+	// The file in the package specified by path.
+	//
+	// example:
+	//
+	// {"path":"README.md","size_bytes":15,"text":"# Example Skill","reason":null}
 	File map[string]interface{} `json:"File,omitempty" xml:"File,omitempty"`
-	// The list of files in the current skill bundle.
+	// The list of files in the current skill package.
 	Files []map[string]interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// The metadata fields of SKILL.md.
+	//
+	// example:
+	//
+	// {"name":"example-skill","description":"Example skill","version":"1.0.0"}
 	Frontmatter map[string]interface{} `json:"Frontmatter,omitempty" xml:"Frontmatter,omitempty"`
-	// The public HTTPS URL of the current icon. This value is empty if no icon is configured.
+	// The public HTTPS URL of the current icon. This field is empty if no icon is configured.
 	//
 	// if can be null:
 	// true
@@ -159,13 +167,13 @@ type GetSkillResponseBody struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the skill is deleted.
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The skill name. The name can contain only lowercase letters, digits, and hyphens.
+	// The name of the skill. The name can contain only lowercase letters, digits, and hyphens.
 	//
 	// example:
 	//
 	// sql-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unique request identifier.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -183,19 +191,19 @@ type GetSkillResponseBody struct {
 	//
 	// skill-example
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The full Markdown content of SKILL.md.
+	// The full SKILL.md Markdown content.
 	//
 	// example:
 	//
 	// # Example Skill
 	SkillMarkdown *string `json:"SkillMarkdown,omitempty" xml:"SkillMarkdown,omitempty"`
-	// The skill type.
+	// The type of the skill.
 	//
 	// example:
 	//
 	// user
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
-	// The stable identifier of the private skill.
+	// The stable identifier for the private skill.
 	//
 	// example:
 	//
@@ -207,7 +215,7 @@ type GetSkillResponseBody struct {
 	//
 	// 2026-02-04T21:14:45Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	// The current skill version number.
+	// The current version number of the skill.
 	//
 	// example:
 	//
@@ -528,7 +536,7 @@ func (s *GetSkillResponseBody) Validate() error {
 type GetSkillResponseBodyCapabilities struct {
 	// Indicates whether the skill can be deleted.
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// Indicates whether the skill bundle can be downloaded.
+	// Indicates whether the skill package can be downloaded.
 	Download *bool `json:"Download,omitempty" xml:"Download,omitempty"`
 	// Indicates whether the skill can be edited.
 	Edit *bool `json:"Edit,omitempty" xml:"Edit,omitempty"`
@@ -607,45 +615,45 @@ func (s *GetSkillResponseBodyCapabilities) Validate() error {
 }
 
 type GetSkillResponseBodyVersions struct {
-	// The activation time of the skill version.
+	// The time when the skill version was activated.
 	//
 	// example:
 	//
 	// 2026-09-15T10:00:00Z
 	ActivatedAt *string `json:"ActivatedAt,omitempty" xml:"ActivatedAt,omitempty"`
-	// The creation time of the skill version.
+	// The time when the skill version was created.
 	//
 	// example:
 	//
 	// 2026-09-15T10:00:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// Indicates whether the skill requires a credential.
+	// Indicates whether the skill requires credentials.
 	CredentialRequired *bool `json:"CredentialRequired,omitempty" xml:"CredentialRequired,omitempty"`
-	// The number of files in the skill bundle.
+	// The number of files in the skill package.
 	//
 	// example:
 	//
 	// 1
 	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	// The skill version ID.
+	// The ID of the skill version.
 	//
 	// example:
 	//
 	// version-example
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The size of the skill bundle, in bytes.
+	// The size of the skill package, in bytes.
 	//
 	// example:
 	//
 	// 1024
 	PackageSize *int64 `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
-	// The reason for revoking the skill version.
+	// The reason why the skill version was revoked.
 	//
 	// example:
 	//
 	// Replaced by a newer version
 	RevokeReason *string `json:"RevokeReason,omitempty" xml:"RevokeReason,omitempty"`
-	// The revocation time of the skill version.
+	// The time when the skill version was revoked.
 	//
 	// example:
 	//
@@ -657,7 +665,7 @@ type GetSkillResponseBodyVersions struct {
 	//
 	// 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
-	// The ID of the skill to which the version belongs.
+	// The ID of the parent skill.
 	//
 	// example:
 	//
@@ -681,7 +689,7 @@ type GetSkillResponseBodyVersions struct {
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update note for the version.
+	// The update notes for the version.
 	//
 	// example:
 	//

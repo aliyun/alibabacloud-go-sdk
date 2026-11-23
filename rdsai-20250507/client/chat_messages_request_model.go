@@ -30,14 +30,15 @@ type ChatMessagesRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of the event = message response. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool calling invoke events, child node events, and document events are unified into the answer field of the event = message. When set to separate, tool calling invoke events, child node events, and document events have their own respective events.
 	//
 	// example:
 	//
 	// inline
-	EventMode *string                     `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
-	Files     []*ChatMessagesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The task inputs.
+	EventMode *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	// The list of attachments included in the current conversation round. References uploaded files by using UploadFileId.
+	Files []*ChatMessagesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The task input.
 	Inputs *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The parent message ID.
 	//
@@ -49,7 +50,7 @@ type ChatMessagesRequest struct {
 	//
 	// example:
 	//
-	// Check the disk usage of instance rm-bp14as9914vd3***	- and whether storage expansion is needed
+	// Instance rm-bp14as9914vd3***	- disk usage, and whether capacity expansion is required
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -134,9 +135,30 @@ func (s *ChatMessagesRequest) Validate() error {
 }
 
 type ChatMessagesRequestFiles struct {
+	// The file transfer method. Set this parameter to local_file when referencing an uploaded file, and provide the UploadFileId at the same time.
+	//
+	// example:
+	//
+	// local_file
 	TransferMethod *string `json:"TransferMethod,omitempty" xml:"TransferMethod,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UploadFileId   *string `json:"UploadFileId,omitempty" xml:"UploadFileId,omitempty"`
+	// The attachment type. A value of image indicates an image. The actual supported types are determined by the file upload configuration of the application.
+	//
+	// example:
+	//
+	// image
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The identifier of the uploaded file. The ContextDB management agent can use the UploadFileId returned by the current workspace knowledge base.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	UploadFileId *string `json:"UploadFileId,omitempty" xml:"UploadFileId,omitempty"`
+	// The image URL.
+	//
+	// example:
+	//
+	// https://other-general-huadong1.oss-cn-hangzhou.aliyuncs.com/uploadWidget/BirthCertification_0.jpeg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ChatMessagesRequestFiles) String() string {
@@ -159,6 +181,10 @@ func (s *ChatMessagesRequestFiles) GetUploadFileId() *string {
 	return s.UploadFileId
 }
 
+func (s *ChatMessagesRequestFiles) GetUrl() *string {
+	return s.Url
+}
+
 func (s *ChatMessagesRequestFiles) SetTransferMethod(v string) *ChatMessagesRequestFiles {
 	s.TransferMethod = &v
 	return s
@@ -174,6 +200,11 @@ func (s *ChatMessagesRequestFiles) SetUploadFileId(v string) *ChatMessagesReques
 	return s
 }
 
+func (s *ChatMessagesRequestFiles) SetUrl(v string) *ChatMessagesRequestFiles {
+	s.Url = &v
+	return s
+}
+
 func (s *ChatMessagesRequestFiles) Validate() error {
 	return dara.Validate(s)
 }
@@ -185,7 +216,7 @@ type ChatMessagesRequestInputs struct {
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// Specifies whether to enable deep thinking mode.
+	// Specifies whether to enable the deep thinking mode.
 	//
 	// example:
 	//
@@ -209,7 +240,7 @@ type ChatMessagesRequestInputs struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tool approval call ID for resuming execution. Pass this parameter after all decisions in the current approval round are completed in the console to continue the interrupted ChatMessage Loop. Do not pass this parameter for regular conversations.
+	// The tool approval call ID for resuming execution. Pass this parameter after the console completes all decisions for the current approval round to continue the interrupted ChatMessage loop. Do not pass this parameter for regular conversations.
 	//
 	// example:
 	//
@@ -227,7 +258,7 @@ type ChatMessagesRequestInputs struct {
 	//
 	// UTC
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The tool approval mode for the current conversation. Valid values: read_only (read-only, write tools are rejected), manual (write tools require manual approval), and auto (the approval sub-agent automatically determines the action. If the result is needs_human, the request is escalated to manual approval). When this parameter is passed, the approval mode of the current conversation is updated.
+	// The tool approval mode for the current conversation. Valid values: read_only (read-only, rejects write tools), manual (write tools require manual approval), and auto (automatically determined by the approval sub-agent; escalated to manual approval when needs_human is returned). Passing this parameter updates the approval mode for the current conversation.
 	//
 	// example:
 	//

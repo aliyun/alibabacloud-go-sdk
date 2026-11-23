@@ -20,7 +20,7 @@ type iModifyInstanceAuthConfigShrinkRequest interface {
 }
 
 type ModifyInstanceAuthConfigShrinkRequest struct {
-	// The reserved parameter.
+	// A reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The list of authentication configurations.
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`

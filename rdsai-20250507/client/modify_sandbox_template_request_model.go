@@ -28,19 +28,24 @@ type iModifySandboxTemplateRequest interface {
 }
 
 type ModifySandboxTemplateRequest struct {
-	// The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
+	// The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
 	//
 	// example:
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The memory size of sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+	// The memory size for sandboxes created by using this template. Unit: GiB. Valid values: 1 to 8.
 	//
 	// example:
 	//
 	// 1Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
-	Image         *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The container image used for the sandbox template. Format: `[registry/]<repo>[:tag][@sha256:digest]`.
+	//
+	// example:
+	//
+	// registry.example.com/example/sandbox:1.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// This parameter is required.
@@ -60,9 +65,10 @@ type ModifySandboxTemplateRequest struct {
 	// example:
 	//
 	// 2
-	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The sandbox template ID.
+	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The custom tags of the sandbox template. The key is the tag name, and the value is the tag value. You cannot use the system-reserved tag createdBy or the system-reserved tag hidden.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the sandbox template.
 	//
 	// This parameter is required.
 	//

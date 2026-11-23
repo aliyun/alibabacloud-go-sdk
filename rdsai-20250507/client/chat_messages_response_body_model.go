@@ -46,15 +46,15 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and storage expansion is not needed at this time. If you need to view the detailed configuration, performance monitoring, or perform other operations for a specific instance, let me know your specific requirements!
+	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, so capacity expansion is not required at this time. If you need to view detailed configurations, performance monitoring, or perform other operations for a specific instance, let me know your specific requirements
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The tool invocation approval status.
+	// The tool calling invoke approval status.
 	//
 	// example:
 	//
 	// pending
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The tool invocation ID.
+	// The tool calling invoke ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// 1763986004
 	CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The tool invocation description.
+	// The tool calling invoke description.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// This field will be deprecated and can be ignored
+	// This will be deprecated in the future and can be ignored
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The request ID.
 	//
@@ -120,7 +120,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// 01c3d43d-9466-4bd5-8196-4cbbce08****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The tool invocation parameters.
+	// The tool calling invoke parameters.
 	ToolArguments map[string]interface{} `json:"ToolArguments,omitempty" xml:"ToolArguments,omitempty"`
 	// The tool name.
 	//

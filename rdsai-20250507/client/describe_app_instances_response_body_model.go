@@ -26,7 +26,7 @@ type iDescribeAppInstancesResponseBody interface {
 type DescribeAppInstancesResponseBody struct {
 	// The list of instances.
 	Instances []*DescribeAppInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// A reserved parameter. You can ignore it.
+	// A reserved parameter. You can ignore this parameter.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeAppInstancesResponseBody struct {
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The internal endpoint of the AI application.
+	// The internal network connection endpoint of the AI application.
 	//
 	// example:
 	//
@@ -335,8 +335,16 @@ func (s *DescribeAppInstancesResponseBodyInstances) Validate() error {
 
 type DescribeAppInstancesResponseBodyInstancesComponents struct {
 	// The component status.
+	//
+	// example:
+	//
+	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The component type.
+	//
+	// example:
+	//
+	// supabase
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -30,21 +30,31 @@ type RenameApiKeyRequest struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The API key name.
+	// The name of the API key.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api-*****
-	KeyName  *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The ARN of the RAM role associated with the API key. The account to which the role belongs must be the same as the account of the caller.
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/example-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The name of the RAM role associated with the API key.
+	//
+	// example:
+	//
+	// example-role
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 

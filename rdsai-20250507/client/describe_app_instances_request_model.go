@@ -28,19 +28,19 @@ type DescribeAppInstancesRequest struct {
 	//
 	// supabase
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The instance ID of the RDS PostgreSQL database to which the AI application is connected. If you specify this parameter, the API queries the AI application instances associated with the specified RDS PostgreSQL instance.
+	// The instance ID of the RDS PostgreSQL database to which the AI application is connected. If you specify this parameter, the system queries the AI application instances associated with the specified RDS PostgreSQL instance.
 	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The page number. Valid values: integers greater than 0 and up to the maximum value of the Integer type.
+	// The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer type.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **50**.
+	// The number of entries per page. Valid values: **1 to 50**.
 	//
 	// example:
 	//

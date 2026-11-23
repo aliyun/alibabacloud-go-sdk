@@ -20,8 +20,13 @@ type iDescribeInstanceIpWhitelistRequest interface {
 }
 
 type DescribeInstanceIpWhitelistRequest struct {
+	// The name of the branch to be operated on. If this parameter is not specified, the operation is performed on the original instance.
+	//
+	// example:
+	//
+	// ra-branch-123456789012abcd
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The group name.
+	// The name of the group.
 	//
 	// example:
 	//
@@ -33,7 +38,7 @@ type DescribeInstanceIpWhitelistRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//

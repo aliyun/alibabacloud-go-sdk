@@ -18,7 +18,7 @@ type iListApiKeysRequest interface {
 }
 
 type ListApiKeysRequest struct {
-	// The instance ID.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListApiKeysRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

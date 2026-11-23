@@ -24,9 +24,9 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
-	// Specifies whether to obtain a temporary download URL for the specified version. Default value: false.
+	// Specifies whether to obtain the temporary download URL of the specified version. Default value: false.
 	Download *bool `json:"Download,omitempty" xml:"Download,omitempty"`
-	// The supported language. Valid values:
+	// The supported languages. Valid values:
 	//
 	// 	- zh-CN: Simplified Chinese
 	//
@@ -40,7 +40,7 @@ type GetSkillRequest struct {
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The file path within the package, such as SKILL.md. The body is in File.text, and the full Markdown is in SkillMarkdown.
+	// The file path in the package, such as SKILL.md. For the body text, see File.text. For the complete Markdown content, see SkillMarkdown.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetSkillRequest struct {
 	//
 	// 550e8400-e29b-41d4-a716-44665544****
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The version UUID (Versions[].Id), not a version number such as 1.0.0. If omitted, the currently active version is read.
+	// The version UUID (Versions[].Id), which is not a version number such as 1.0.0. If this parameter is omitted, the current active version is read.
 	//
 	// example:
 	//

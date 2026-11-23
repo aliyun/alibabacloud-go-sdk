@@ -487,7 +487,7 @@ func (client *Client) ChatMessagesTaskStop(request *ChatMessagesTaskStopRequest)
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -569,7 +569,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, runt
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -1305,7 +1305,7 @@ func (client *Client) CreateContextDatabaseWorkspace(request *CreateContextDatab
 
 // Summary:
 //
-// Creates a custom agent.
+// Creates a dedicated agent.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -1375,7 +1375,7 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 // Summary:
 //
-// Creates a custom agent.
+// Creates a dedicated agent.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -1585,7 +1585,7 @@ func (client *Client) CreateMOUsageDetailExport(request *CreateMOUsageDetailExpo
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS Supabase
 //
@@ -1677,7 +1677,7 @@ func (client *Client) CreateSandboxTemplateWithOptions(tmpReq *CreateSandboxTemp
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS Supabase
 //
@@ -2867,7 +2867,7 @@ func (client *Client) DescribeAppInstanceAttribute(request *DescribeAppInstanceA
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -2937,7 +2937,7 @@ func (client *Client) DescribeAppInstancesWithOptions(request *DescribeAppInstan
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3137,7 +3137,7 @@ func (client *Client) DescribeEventsList(request *DescribeEventsListRequest) (_r
 //
 // # RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3199,7 +3199,7 @@ func (client *Client) DescribeInstanceAuthInfoWithOptions(request *DescribeInsta
 //
 // # RDS PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3309,11 +3309,11 @@ func (client *Client) DescribeInstanceEndpoints(request *DescribeInstanceEndpoin
 
 // Summary:
 //
-// Queries the IP whitelist of an RDS AI application instance.
+// Queries the IP address whitelist of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -3375,11 +3375,11 @@ func (client *Client) DescribeInstanceIpWhitelistWithOptions(request *DescribeIn
 
 // Summary:
 //
-// Queries the IP whitelist of an RDS AI application instance.
+// Queries the IP address whitelist of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -3481,9 +3481,9 @@ func (client *Client) DescribeInstanceRAGConfig(request *DescribeInstanceRAGConf
 //
 // # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// [ApsaraDB RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeInstanceSSLRequest
 //
@@ -3543,9 +3543,9 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 //
 // # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// [ApsaraDB RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - DescribeInstanceSSLRequest
 //
@@ -4117,15 +4117,15 @@ func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (
 
 // Summary:
 //
-// Queries a list of sandbox templates for creating Supabase sandboxes.
+// Queries a list of sandbox templates used to create Supabase sandboxes.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // # RDS Supabase
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4199,15 +4199,15 @@ func (client *Client) DescribeSandboxTemplatesWithOptions(request *DescribeSandb
 
 // Summary:
 //
-// Queries a list of sandbox templates for creating Supabase sandboxes.
+// Queries a list of sandbox templates used to create Supabase sandboxes.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // # RDS Supabase
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4613,6 +4613,194 @@ func (client *Client) GetChatModel(request *GetChatModelRequest) (_result *GetCh
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetChatModelResponse{}
 	_body, _err := client.GetChatModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the credit consumption trend and total amount for the caller account within a specified time range. If WorkspaceId is specified, the statistics apply to a single workspace. If omitted, the statistics aggregate all workspaces under the account. Results are bucketed by hour or day, billing item, and applicable context evolution sub-item. MemberId only filters records and does not split buckets by member. To obtain only the total amount for the range, you can omit Interval and read TotalCredits. To rank by member, call GetContextDatabaseCreditUsageSummaryByMember.
+//
+// Description:
+//
+// Queries the credit consumption of the caller account within a specified UTC time range, bucketed by hour or day and by billing item. When WorkspaceId is provided, the query is at the workspace dimension (ownership is verified, and locked workspaces can still be queried). When omitted, the query aggregates all workspaces at the account (primary account UID) dimension. Buckets are sorted by BucketStart, Item, and SubItem. Unpriced records are not included in Credits. Note that member filtering does not split buckets. To view details by member, use ListContextDatabaseCreditUsageRecords or GetContextDatabaseCreditUsageSummaryByMember. Credit is represented as a decimal string (1 credit = 1 CNY, up to 6 decimal places).
+//
+// @param request - GetContextDatabaseCreditUsageSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseCreditUsageSummaryResponse
+func (client *Client) GetContextDatabaseCreditUsageSummaryWithOptions(request *GetContextDatabaseCreditUsageSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseCreditUsageSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Item) {
+		query["Item"] = request.Item
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SubItem) {
+		query["SubItem"] = request.SubItem
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseCreditUsageSummary"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseCreditUsageSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the credit consumption trend and total amount for the caller account within a specified time range. If WorkspaceId is specified, the statistics apply to a single workspace. If omitted, the statistics aggregate all workspaces under the account. Results are bucketed by hour or day, billing item, and applicable context evolution sub-item. MemberId only filters records and does not split buckets by member. To obtain only the total amount for the range, you can omit Interval and read TotalCredits. To rank by member, call GetContextDatabaseCreditUsageSummaryByMember.
+//
+// Description:
+//
+// Queries the credit consumption of the caller account within a specified UTC time range, bucketed by hour or day and by billing item. When WorkspaceId is provided, the query is at the workspace dimension (ownership is verified, and locked workspaces can still be queried). When omitted, the query aggregates all workspaces at the account (primary account UID) dimension. Buckets are sorted by BucketStart, Item, and SubItem. Unpriced records are not included in Credits. Note that member filtering does not split buckets. To view details by member, use ListContextDatabaseCreditUsageRecords or GetContextDatabaseCreditUsageSummaryByMember. Credit is represented as a decimal string (1 credit = 1 CNY, up to 6 decimal places).
+//
+// @param request - GetContextDatabaseCreditUsageSummaryRequest
+//
+// @return GetContextDatabaseCreditUsageSummaryResponse
+func (client *Client) GetContextDatabaseCreditUsageSummary(request *GetContextDatabaseCreditUsageSummaryRequest) (_result *GetContextDatabaseCreditUsageSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetContextDatabaseCreditUsageSummaryResponse{}
+	_body, _err := client.GetContextDatabaseCreditUsageSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ranking of member credit consumption for a single workspace within the caller\\"s account over a specified time range. Returns one aggregated record per member covering the entire range, paginated and sorted in descending order of total credits, without hourly or daily bucketing. The total count for pagination is the number of members matching the filter criteria, not the number of metering records. To view individual records, call ListContextDatabaseCreditUsageRecords.
+//
+// Description:
+//
+// Aggregates and ranks the credit consumption of a single workspace by member within a specified UTC time range, with one row per member. This operation uses a fixed workspace dimension: WorkspaceId is required and its ownership is verified (locked workspaces can still be queried), and there are no Dimension, Interval, or sorting input parameters. Members are returned in descending order of aggregated credits. Pagination and ranking are handled by the upstream service. This layer does not re-sort, re-price, or drop rows, so Total represents the number of filtered members rather than the number of records. Credits are represented as decimal strings (1 credit = 1 CNY, up to 6 decimal places) and are null for members without priced records.
+//
+// @param request - GetContextDatabaseCreditUsageSummaryByMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseCreditUsageSummaryByMemberResponse
+func (client *Client) GetContextDatabaseCreditUsageSummaryByMemberWithOptions(request *GetContextDatabaseCreditUsageSummaryByMemberRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseCreditUsageSummaryByMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Item) {
+		query["Item"] = request.Item
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseCreditUsageSummaryByMember"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseCreditUsageSummaryByMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ranking of member credit consumption for a single workspace within the caller\\"s account over a specified time range. Returns one aggregated record per member covering the entire range, paginated and sorted in descending order of total credits, without hourly or daily bucketing. The total count for pagination is the number of members matching the filter criteria, not the number of metering records. To view individual records, call ListContextDatabaseCreditUsageRecords.
+//
+// Description:
+//
+// Aggregates and ranks the credit consumption of a single workspace by member within a specified UTC time range, with one row per member. This operation uses a fixed workspace dimension: WorkspaceId is required and its ownership is verified (locked workspaces can still be queried), and there are no Dimension, Interval, or sorting input parameters. Members are returned in descending order of aggregated credits. Pagination and ranking are handled by the upstream service. This layer does not re-sort, re-price, or drop rows, so Total represents the number of filtered members rather than the number of records. Credits are represented as decimal strings (1 credit = 1 CNY, up to 6 decimal places) and are null for members without priced records.
+//
+// @param request - GetContextDatabaseCreditUsageSummaryByMemberRequest
+//
+// @return GetContextDatabaseCreditUsageSummaryByMemberResponse
+func (client *Client) GetContextDatabaseCreditUsageSummaryByMember(request *GetContextDatabaseCreditUsageSummaryByMemberRequest) (_result *GetContextDatabaseCreditUsageSummaryByMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetContextDatabaseCreditUsageSummaryByMemberResponse{}
+	_body, _err := client.GetContextDatabaseCreditUsageSummaryByMemberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5279,6 +5467,84 @@ func (client *Client) GetContextDatabaseSyncSourceSelection(request *GetContextD
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetContextDatabaseSyncSourceSelectionResponse{}
 	_body, _err := client.GetContextDatabaseSyncSourceSelectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the context database usage of the caller account within a specified time range. If WorkspaceId is specified, queries a single workspace. If omitted, aggregates all workspaces under the account. Returns fixed metering items with their units and quantities, filling zero for items with no data. This operation does not return a separate credit amount field. To query amounts, call ListContextDatabaseCreditUsageRecords or GetContextDatabaseCreditUsageSummary.
+//
+// Description:
+//
+// Queries the context database usage (invocation count, token consumption, and storage usage) of the caller account within a UTC time window, excluding any amounts. If WorkspaceId is provided, the query is at the workspace level. If omitted, the query aggregates all workspaces at the account (primary account UID) level. Returns all billing catalog items and fills zero for missing quantities, so the length of Items is fixed. The account identity is obtained from POP common parameters and cannot be specified by input parameters.
+//
+// @param request - GetContextDatabaseUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContextDatabaseUsageResponse
+func (client *Client) GetContextDatabaseUsageWithOptions(request *GetContextDatabaseUsageRequest, runtime *dara.RuntimeOptions) (_result *GetContextDatabaseUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContextDatabaseUsage"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContextDatabaseUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the context database usage of the caller account within a specified time range. If WorkspaceId is specified, queries a single workspace. If omitted, aggregates all workspaces under the account. Returns fixed metering items with their units and quantities, filling zero for items with no data. This operation does not return a separate credit amount field. To query amounts, call ListContextDatabaseCreditUsageRecords or GetContextDatabaseCreditUsageSummary.
+//
+// Description:
+//
+// Queries the context database usage (invocation count, token consumption, and storage usage) of the caller account within a UTC time window, excluding any amounts. If WorkspaceId is provided, the query is at the workspace level. If omitted, the query aggregates all workspaces at the account (primary account UID) level. Returns all billing catalog items and fills zero for missing quantities, so the length of Items is fixed. The account identity is obtained from POP common parameters and cannot be specified by input parameters.
+//
+// @param request - GetContextDatabaseUsageRequest
+//
+// @return GetContextDatabaseUsageResponse
+func (client *Client) GetContextDatabaseUsage(request *GetContextDatabaseUsageRequest) (_result *GetContextDatabaseUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetContextDatabaseUsageResponse{}
+	_body, _err := client.GetContextDatabaseUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5958,11 +6224,11 @@ func (client *Client) GetStandAloneReports(request *GetStandAloneReportsRequest)
 
 // Summary:
 //
-// Queries custom API keys.
+// Retrieves custom API keys.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -6016,11 +6282,11 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, runtim
 
 // Summary:
 //
-// Queries custom API keys.
+// Retrieves custom API keys.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -6122,11 +6388,117 @@ func (client *Client) ListContextDatabaseApiKeys(request *ListContextDatabaseApi
 
 // Summary:
 //
-// Lists context database members.
+// Performs a paging query for the credit consumption of the caller account within a specified time range, where each result corresponds to a metering record. You can query a single workspace or all workspaces under the account, excluding storage items that do not consume credits. By default, the results are in descending order of request time, but sorting by credit amount is supported. Metering records are written asynchronously, so recent usage may not be displayed. To view time trends, invoke `GetContextDatabaseCreditUsageSummary`.
 //
 // Description:
 //
-// Lists all members in a specified workspace. Each member includes a list of API keys (plaintext values are not returned).
+// Queries the credit consumption details of the caller account within a specified UTC time range in a paginated manner. Each record corresponds to a metered read or write request for a knowledge base or memory base, or a write operation for a knowledge base. The credit amount is frozen at the time of metering and does not change afterward. By default, the records are sorted in descending order of request time, and can be sorted by credit amount. Sorting only changes the order within the page and does not change the total count or the record set. If WorkspaceId is provided, paged query is at the workspace dimension, verifying ownership, and locked workspaces can still be queried. If omitted, paged query aggregates all workspaces under the account dimension, identified by the primary account UID. Storage billing items do not consume credits and do not appear in the details. The credit amount is a decimal string, where 1 credit equals 1 CNY, with up to 6 decimal places. Records that cannot be priced are returned as null and are not included in the aggregated amount.
+//
+// @param request - ListContextDatabaseCreditUsageRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContextDatabaseCreditUsageRecordsResponse
+func (client *Client) ListContextDatabaseCreditUsageRecordsWithOptions(request *ListContextDatabaseCreditUsageRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListContextDatabaseCreditUsageRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Item) {
+		query["Item"] = request.Item
+	}
+
+	if !dara.IsNil(request.MemberId) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["Page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SubItem) {
+		query["SubItem"] = request.SubItem
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContextDatabaseCreditUsageRecords"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContextDatabaseCreditUsageRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query for the credit consumption of the caller account within a specified time range, where each result corresponds to a metering record. You can query a single workspace or all workspaces under the account, excluding storage items that do not consume credits. By default, the results are in descending order of request time, but sorting by credit amount is supported. Metering records are written asynchronously, so recent usage may not be displayed. To view time trends, invoke `GetContextDatabaseCreditUsageSummary`.
+//
+// Description:
+//
+// Queries the credit consumption details of the caller account within a specified UTC time range in a paginated manner. Each record corresponds to a metered read or write request for a knowledge base or memory base, or a write operation for a knowledge base. The credit amount is frozen at the time of metering and does not change afterward. By default, the records are sorted in descending order of request time, and can be sorted by credit amount. Sorting only changes the order within the page and does not change the total count or the record set. If WorkspaceId is provided, paged query is at the workspace dimension, verifying ownership, and locked workspaces can still be queried. If omitted, paged query aggregates all workspaces under the account dimension, identified by the primary account UID. Storage billing items do not consume credits and do not appear in the details. The credit amount is a decimal string, where 1 credit equals 1 CNY, with up to 6 decimal places. Records that cannot be priced are returned as null and are not included in the aggregated amount.
+//
+// @param request - ListContextDatabaseCreditUsageRecordsRequest
+//
+// @return ListContextDatabaseCreditUsageRecordsResponse
+func (client *Client) ListContextDatabaseCreditUsageRecords(request *ListContextDatabaseCreditUsageRecordsRequest) (_result *ListContextDatabaseCreditUsageRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListContextDatabaseCreditUsageRecordsResponse{}
+	_body, _err := client.ListContextDatabaseCreditUsageRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists ContextDB members.
+//
+// Description:
+//
+// Lists all members in a specified workspace, along with a list of API keys for each member. Plaintext keys are not returned.
 //
 // @param request - ListContextDatabaseMembersRequest
 //
@@ -6178,11 +6550,11 @@ func (client *Client) ListContextDatabaseMembersWithOptions(request *ListContext
 
 // Summary:
 //
-// Lists context database members.
+// Lists ContextDB members.
 //
 // Description:
 //
-// Lists all members in a specified workspace. Each member includes a list of API keys (plaintext values are not returned).
+// Lists all members in a specified workspace, along with a list of API keys for each member. Plaintext keys are not returned.
 //
 // @param request - ListContextDatabaseMembersRequest
 //
@@ -7164,7 +7536,7 @@ func (client *Client) ListCustomAgent(request *ListCustomAgentRequest) (_result 
 
 // Summary:
 //
-// Queries the list of Agent tools for a user.
+// Queries the list of user agent tools.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7193,7 +7565,7 @@ func (client *Client) ListCustomAgentToolsWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// Queries the list of Agent tools for a user.
+// Queries the list of user agent tools.
 //
 // @return ListCustomAgentToolsResponse
 func (client *Client) ListCustomAgentTools() (_result *ListCustomAgentToolsResponse, _err error) {
@@ -7579,13 +7951,13 @@ func (client *Client) ModifyAppInstance(request *ModifyAppInstanceRequest) (_res
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
 // # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// [ApsaraDB RDS for Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param tmpReq - ModifyInstanceAuthConfigRequest
 //
@@ -7651,13 +8023,13 @@ func (client *Client) ModifyInstanceAuthConfigWithOptions(tmpReq *ModifyInstance
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
 // # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
-// [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
+// [ApsaraDB RDS for Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
 // @param request - ModifyInstanceAuthConfigRequest
 //
@@ -7955,7 +8327,7 @@ func (client *Client) ModifyInstanceRAGConfig(request *ModifyInstanceRAGConfigRe
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -8033,7 +8405,7 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -8057,19 +8429,19 @@ func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_res
 
 // Summary:
 //
-// Modifies the storage configuration of an RDS AI application instance.
+// Modifies the storage configuration of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
 // ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// > Currently, only Object Storage Service (OSS) is supported.
+// > Only Object Storage Service (OSS) is supported.
 //
 // @param tmpReq - ModifyInstanceStorageConfigRequest
 //
@@ -8135,19 +8507,19 @@ func (client *Client) ModifyInstanceStorageConfigWithOptions(tmpReq *ModifyInsta
 
 // Summary:
 //
-// Modifies the storage configuration of an RDS AI application instance.
+// Modifies the storage configuration of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
 // ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// > Currently, only Object Storage Service (OSS) is supported.
+// > Only Object Storage Service (OSS) is supported.
 //
 // @param request - ModifyInstanceStorageConfigRequest
 //
@@ -8165,13 +8537,13 @@ func (client *Client) ModifyInstanceStorageConfig(request *ModifyInstanceStorage
 
 // Summary:
 //
-// Batch modifies the SSL configurations of RDS AI application instances.
+// Modifies the SSL configurations of multiple ApsaraDB RDS AI application instances in batches.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
@@ -8245,13 +8617,13 @@ func (client *Client) ModifyInstancesSSLWithOptions(tmpReq *ModifyInstancesSSLRe
 
 // Summary:
 //
-// Batch modifies the SSL configurations of RDS AI application instances.
+// Modifies the SSL configurations of multiple ApsaraDB RDS AI application instances in batches.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
@@ -8351,7 +8723,7 @@ func (client *Client) ModifyMessagesFeedbacks(request *ModifyMessagesFeedbacksRe
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS Supabase
 //
@@ -8439,7 +8811,7 @@ func (client *Client) ModifySandboxTemplateWithOptions(tmpReq *ModifySandboxTemp
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS Supabase
 //
@@ -8725,7 +9097,7 @@ func (client *Client) RemoveContextDatabaseSyncJobExclusion(request *RemoveConte
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -8791,7 +9163,7 @@ func (client *Client) RenameApiKeyWithOptions(request *RenameApiKeyRequest, runt
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -9573,15 +9945,15 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 
 // Summary:
 //
-// Pauses an RDS AI application instance that is in the Running state.
+// Pauses an ApsaraDB RDS AI application instance that is in the Running state.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -9639,15 +10011,15 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 
 // Summary:
 //
-// Pauses an RDS AI application instance that is in the Running state.
+// Pauses an ApsaraDB RDS AI application instance that is in the Running state.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //

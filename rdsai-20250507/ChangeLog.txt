@@ -1,3 +1,10 @@
+2026-11-23 Version: v3.11.0
+- Support API GetContextDatabaseCreditUsageSummary.
+- Support API GetContextDatabaseCreditUsageSummaryByMember.
+- Support API GetContextDatabaseUsage.
+- Support API ListContextDatabaseCreditUsageRecords.
+
+
 2026-11-12 Version: v3.10.3
 - Generated golang 2025-05-07 for RdsAi.
 

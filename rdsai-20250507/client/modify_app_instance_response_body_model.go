@@ -22,7 +22,7 @@ type iModifyAppInstanceResponseBody interface {
 }
 
 type ModifyAppInstanceResponseBody struct {
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyAppInstanceResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//

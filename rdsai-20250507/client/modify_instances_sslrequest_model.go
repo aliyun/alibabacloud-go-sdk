@@ -24,7 +24,7 @@ type iModifyInstancesSSLRequest interface {
 }
 
 type ModifyInstancesSSLRequest struct {
-	// The certificate type. Currently, only **custom*	- is supported, which indicates a custom certificate.
+	// The certificate type. Only **custom*	- is supported, which indicates that a custom certificate is used.
 	//
 	// > This parameter is required when **SSLEnabled*	- is set to **1**.
 	//
@@ -32,7 +32,7 @@ type ModifyInstancesSSLRequest struct {
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The list of instance IDs of AI applications. A maximum of 10 instance IDs can be specified.
+	// The IDs of the ApsaraDB RDS AI application instances. You can specify up to 10 instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type ModifyInstancesSSLRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable or disable SSL. Valid values:
+	// Specifies whether to enable SSL. Valid values:
 	//
-	// 	- **1**: Enable.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: Disable.
+	// 	- **0**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ModifyInstancesSSLRequest struct {
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The custom certificate content.
+	// The content of the custom certificate.
 	//
 	// > This parameter is required when **CAType*	- is set to **custom**.
 	//

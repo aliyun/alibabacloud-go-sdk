@@ -18,7 +18,7 @@ type iModifyInstancesSSLResponseBody interface {
 }
 
 type ModifyInstancesSSLResponseBody struct {
-	// The list of instance IDs of AI applications that were successfully modified.
+	// The list of instance IDs of the AI applications that were successfully modified.
 	//
 	// example:
 	//
@@ -35,7 +35,12 @@ type ModifyInstancesSSLResponseBody struct {
 	// example:
 	//
 	// 32DEFB4A-xxxx-ADD5-918E4FD7AB8C
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The expiration time of the custom SSL certificate. The time is in the yyyy-MM-dd HH:mm:ss format and in the UTC+8 time zone.
+	//
+	// example:
+	//
+	// 2027-12-31 23:59:59
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 

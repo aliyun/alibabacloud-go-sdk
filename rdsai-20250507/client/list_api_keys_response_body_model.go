@@ -22,7 +22,7 @@ type iListApiKeysResponseBody interface {
 type ListApiKeysResponseBody struct {
 	// The query result.
 	Data *ListApiKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListApiKeysResponseBody) Validate() error {
 }
 
 type ListApiKeysResponseBodyData struct {
-	// The URL for model calls.
+	// The URL for model invocation.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ListApiKeysResponseBodyData struct {
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
 	// The list of custom API keys.
 	CustomKeyList []*ListApiKeysResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
-	// The daily throttling quota for the system API key.
+	// The daily token quota of the system API key.
 	//
 	// example:
 	//
 	// 100000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// Indicates whether the key is throttled.
+	// Indicates whether the API key is throttled.
 	//
 	// example:
 	//
@@ -122,25 +122,25 @@ type ListApiKeysResponseBodyData struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The system-generated key.
+	// The system-generated API key.
 	//
 	// example:
 	//
 	// sk-rds-xxx
 	SystemApiKey *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
-	// The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+	// The alert threshold percentage for the system API key. A value of 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
 	//
 	// example:
 	//
 	// 80
 	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -257,31 +257,31 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The daily throttling quota.
+	// The daily token quota.
 	//
 	// example:
 	//
 	// 100000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// Indicates whether the key is throttled.
+	// Indicates whether the API key is throttled.
 	//
 	// example:
 	//
 	// false
 	IsRateLimited *bool `json:"IsRateLimited,omitempty" xml:"IsRateLimited,omitempty"`
-	// The API key name.
+	// The name of the API key.
 	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The quota ratio.
+	// The quota limit percentage.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota limit type. Valid values:
 	//
 	// - **fixed**: Fixed value.
 	//
@@ -293,14 +293,19 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	RoleArn   *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+	// The ARN of the RAM role bound to the custom API key.
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/example-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The alert threshold percentage. A value of 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
 	//
 	// example:
 	//
 	// 80
 	ThresholdPercent *int32 `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
-	// The quota of the current key.
+	// The token quota of the current API key.
 	//
 	// example:
 	//

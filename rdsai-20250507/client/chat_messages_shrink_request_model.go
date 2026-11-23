@@ -30,14 +30,15 @@ type ChatMessagesShrinkRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of the event = message response. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool calling invoke events, child node events, and document events are unified into the answer field of the event = message. When set to separate, tool calling invoke events, child node events, and document events have their own respective events.
 	//
 	// example:
 	//
 	// inline
-	EventMode   *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	EventMode *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	// The list of attachments included in the current conversation round. References uploaded files by using UploadFileId.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	// The task inputs.
+	// The task input.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	// The parent message ID.
 	//
@@ -49,7 +50,7 @@ type ChatMessagesShrinkRequest struct {
 	//
 	// example:
 	//
-	// Check the disk usage of instance rm-bp14as9914vd3***	- and whether storage expansion is needed
+	// Instance rm-bp14as9914vd3***	- disk usage, and whether capacity expansion is required
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 

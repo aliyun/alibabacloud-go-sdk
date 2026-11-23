@@ -30,25 +30,30 @@ type iCreateSandboxTemplateRequest interface {
 }
 
 type CreateSandboxTemplateRequest struct {
-	// The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
+	// The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
 	//
 	// example:
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The memory size for sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+	// The memory size of sandboxes created by using this template. Unit: GiB. Valid values: 1 to 8.
 	//
 	// example:
 	//
 	// 1Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
-	// The description of the sandbox template. The description must be unique within the VPC.
+	// The description of the sandbox template. It must be unique within the VPC.
 	//
 	// example:
 	//
 	// code-interpreter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Image       *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The container image used for the sandbox template. Format: `[registry/]<repo>[:tag][@sha256:digest]`. This parameter is required when you use a non-generic template name.
+	//
+	// example:
+	//
+	// registry.example.com/example/sandbox:1.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// This parameter is required.
@@ -63,13 +68,14 @@ type CreateSandboxTemplateRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of prewarmed sandboxes. Valid values: 1 to 1000.
+	// The number of pre-warmed sandboxes. Valid values: 1 to 1000.
 	//
 	// example:
 	//
 	// 1
-	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The custom tags of the sandbox template. The key is the tag name and the value is the tag value. You cannot use the system-reserved tag createdBy. You cannot use the system-reserved tag hidden.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the sandbox template.
 	//
 	// This parameter is required.

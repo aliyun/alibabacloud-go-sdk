@@ -42,7 +42,7 @@ type UpdateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// Query instance list agent
+	// Instance list query agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of associated skill IDs.
 	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`

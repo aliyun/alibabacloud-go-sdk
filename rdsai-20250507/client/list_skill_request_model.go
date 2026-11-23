@@ -54,7 +54,7 @@ type ListSkillRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search parameter for skill name or description. This filter is not currently enabled in the ContextDB management console.
+	// The search parameter for the skill name or description. This filter is currently disabled in the ContextDB management portal.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ListSkillRequest struct {
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sort parameter for skills. This sorting is not currently enabled in the ContextDB management console.
+	// The sort parameter for skills. This sorting option is currently disabled in the ContextDB management portal.
 	//
 	// example:
 	//
 	// updated_at_desc
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The filter parameter for skill source. This filter is not currently enabled in the ContextDB management console.
+	// The filter parameter for the skill source. This filter is currently disabled in the ContextDB management portal.
 	//
 	// example:
 	//

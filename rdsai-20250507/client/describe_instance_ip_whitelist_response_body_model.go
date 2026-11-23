@@ -22,7 +22,13 @@ type iDescribeInstanceIpWhitelistResponseBody interface {
 }
 
 type DescribeInstanceIpWhitelistResponseBody struct {
-	BranchName          *string                                                       `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The name of the branch specified for this operation.
+	//
+	// example:
+	//
+	// ra-branch-123456789012abcd
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The list of IP address whitelist groups for the PostgreSQL database instance associated with the branch.
 	DbIpWhiteListGroups []*DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups `json:"DbIpWhiteListGroups,omitempty" xml:"DbIpWhiteListGroups,omitempty" type:"Repeated"`
 	// The instance ID of the AI application.
 	//
@@ -30,7 +36,7 @@ type DescribeInstanceIpWhitelistResponseBody struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The IP whitelist groups.
+	// The list of IP address whitelist groups.
 	IpWhiteListGroups []*DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups `json:"IpWhiteListGroups,omitempty" xml:"IpWhiteListGroups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -116,7 +122,17 @@ func (s *DescribeInstanceIpWhitelistResponseBody) Validate() error {
 }
 
 type DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups struct {
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the IP address whitelist group.
+	//
+	// example:
+	//
+	// default
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The list of addresses in the IP address whitelist.
+	//
+	// example:
+	//
+	// 192.0.2.0/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
 }
 
@@ -151,7 +167,7 @@ func (s *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) Validate() 
 }
 
 type DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups struct {
-	// The group name.
+	// The name of the group.
 	//
 	// example:
 	//

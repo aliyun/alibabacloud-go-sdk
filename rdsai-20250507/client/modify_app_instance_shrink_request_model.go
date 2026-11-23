@@ -28,13 +28,13 @@ type iModifyAppInstanceShrinkRequest interface {
 }
 
 type ModifyAppInstanceShrinkRequest struct {
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The idempotency parameter.
+	// The client token used to ensure idempotence.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyAppInstanceShrinkRequest struct {
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The instance type. Only **rdsai.supabase.basic*	- is supported.
+	// The instance type. Currently, only **rdsai.supabase.basic*	- is supported.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyAppInstanceShrinkRequest struct {
 	//
 	// ra-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
