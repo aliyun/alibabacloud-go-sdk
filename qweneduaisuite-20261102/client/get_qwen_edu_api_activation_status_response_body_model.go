@@ -20,15 +20,25 @@ type iGetQwenEduApiActivationStatusResponseBody interface {
 }
 
 type GetQwenEduApiActivationStatusResponseBody struct {
+	// The API status or POP error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The activation result.
 	Data *GetQwenEduApiActivationStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request error message.
+	//
 	// example:
 	//
 	// success
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The **POP request ID**. This field is not returned if signature verification or identity authentication fails.
+	//
+	// example:
+	//
+	// 5C5E3F0A-2B0E-4F7B-9C55-0E1A6A0E2F11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -86,8 +96,26 @@ func (s *GetQwenEduApiActivationStatusResponseBody) Validate() error {
 }
 
 type GetQwenEduApiActivationStatusResponseBodyData struct {
-	FailCode    *string `json:"failCode,omitempty" xml:"failCode,omitempty"`
+	// The **failure code**. For more information, see 3.4.
+	//
+	// example:
+	//
+	// ACTIVATION_FAILED
+	FailCode *string `json:"failCode,omitempty" xml:"failCode,omitempty"`
+	// The **failure description**.
+	//
+	// example:
+	//
+	// Service activation failed. Try again later
 	FailMessage *string `json:"failMessage,omitempty" xml:"failMessage,omitempty"`
+	// The activation status. Valid values:
+	//
+	// - ACTIVE: Activated.
+	//
+	// - ACTIVATING: Activating.
+	//
+	// - FAILED: Activation failed.
+	//
 	// example:
 	//
 	// ACTIVE

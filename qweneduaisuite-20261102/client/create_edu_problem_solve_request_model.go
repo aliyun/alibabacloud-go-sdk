@@ -16,8 +16,10 @@ type iCreateEduProblemSolveRequest interface {
 }
 
 type CreateEduProblemSolveRequest struct {
-	// This parameter is required.
+	// **The question image container.**
 	Query *CreateEduProblemSolveRequestQuery `json:"query,omitempty" xml:"query,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 019F593F-D6EE-5F44-819A-6CDA127D1637
@@ -60,6 +62,7 @@ func (s *CreateEduProblemSolveRequest) Validate() error {
 }
 
 type CreateEduProblemSolveRequestQuery struct {
+	// **The image information.**
 	Image *CreateEduProblemSolveRequestQueryImage `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
 }
 
@@ -90,10 +93,26 @@ func (s *CreateEduProblemSolveRequestQuery) Validate() error {
 }
 
 type CreateEduProblemSolveRequestQueryImage struct {
+	// **The Base64-encoded image**. If both this parameter and the URL are provided, this parameter takes precedence.
+	//
+	// example:
+	//
+	// iVBORw0KGgoAAAANSUhEUgAAAAUA...
 	Base64 *string `json:"base64,omitempty" xml:"base64,omitempty"`
+	// **The image format**: jpg, jpeg, or png. The value must match the actual file format.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// jpg
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
+	// The URL of a single question image.
+	//
+	// example:
+	//
+	// https://your-cdn.example.com/question.jpg
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s CreateEduProblemSolveRequestQueryImage) String() string {

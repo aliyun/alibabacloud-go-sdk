@@ -14,6 +14,11 @@ type iGetEduHomeworkCorrectionResultRequest interface {
 }
 
 type GetEduHomeworkCorrectionResultRequest struct {
+	// The task ID.
+	//
+	// example:
+	//
+	// b18eabc4-5d84-40b0-ae20-e0eb2f585781
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

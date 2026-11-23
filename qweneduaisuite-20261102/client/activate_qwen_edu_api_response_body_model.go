@@ -20,15 +20,25 @@ type iActivateQwenEduApiResponseBody interface {
 }
 
 type ActivateQwenEduApiResponseBody struct {
+	// The API status or POP error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The activation result. This parameter is null when an error occurs.
 	Data *ActivateQwenEduApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request error message.
+	//
 	// example:
 	//
 	// success
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The POP request ID. This parameter is not returned when signature or identity verification fails.
+	//
+	// example:
+	//
+	// 5C5E3F0A-2B0E-4F7B-9C55-0E1A6A0E2F11
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -86,7 +96,20 @@ func (s *ActivateQwenEduApiResponseBody) Validate() error {
 }
 
 type ActivateQwenEduApiResponseBodyData struct {
+	// The failure description.
+	//
+	// example:
+	//
+	// Service activation failed. Try again later
 	FailMessage *string `json:"failMessage,omitempty" xml:"failMessage,omitempty"`
+	// The activation status. Valid values:
+	//
+	// - ACTIVE: Activated.
+	//
+	// - ACTIVATING: Activating.
+	//
+	// - FAILED: Activation failed.
+	//
 	// example:
 	//
 	// ACTIVE

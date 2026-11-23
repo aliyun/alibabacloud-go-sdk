@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/qweneduaisuite-20261102
+module github.com/alibabacloud-go/qweneduaisuite-20261102/v2
 
 go 1.14
 

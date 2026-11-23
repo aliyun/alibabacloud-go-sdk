@@ -10,11 +10,23 @@ import (
 
 // Summary:
 //
-// 开通千问教育API权限
+// Activates the learning capability for the current Alibaba Cloud account and supports querying the activation status.
 //
 // Description:
 //
-// 开通千问教育API权限
+// ## Request description
+//
+// - This operation activates the Qwen learning AI suite capability for the current Alibaba Cloud account.
+//
+// - You must call this operation first. You can call business API operations such as problem solving and grading only after `ACTIVE` is returned.
+//
+// ### Precautions
+//
+// - Both Alibaba Cloud accounts and RAM users can call this operation.
+//
+// - When a RAM user calls this operation, ensure that the RAM user has the required RAM permissions. The service is activated for the Alibaba Cloud account to which the RAM user belongs.
+//
+// - This operation is idempotent based on the Alibaba Cloud account ID. Repeated calls do not result in multiple activations.
 //
 // @param request - ActivateQwenEduApiRequest
 //
@@ -55,25 +67,23 @@ func (client *Client) ActivateQwenEduApiWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 提交单页作业图片，返回任务ID及初步检测结果。
+// Submits a single-page homework image and asynchronously retrieves the grading results.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于提交单页作业图片进行批改，支持通过图片URL或Base64编码的图片数据。
+// - This operation submits a homework image to the server for question segmentation, recognition, and grading.
 //
-// - 提交后会立即返回任务ID、矫正图及题目检测结果，但不包含具体的批改结论。
+// - You can submit the image by using `imageBase64` or `imageUrl`. `imageBase64` takes precedence.
 //
-// - 需要通过查询接口轮询获取最终的批改结果。
+// - The optional `dewarp` parameter specifies whether to correct the image distortion. Default value: `true`.
 //
-// - 支持对图片进行透视矫正，默认开启。
+// - Provide `requestId` to facilitate troubleshooting and reconciliation.
 //
-// - 图片要求：支持多种格式（JPEG, PNG, GIF等），推荐体积不超过1MB，最大支持15MB（Base64编码后）。
+// - Image size limit: The Base64-encoded image size cannot exceed 15 MB.
 //
-// - 每次请求仅处理一张图片，多张图片需分别提交。
-//
-// - `request_id`字段建议由调用方生成并传递，以便于问题排查和对账。
+// - All requests and responses use the JSON format.
 //
 // @param request - CreateEduHomeworkCorrectSubmitRequest
 //
@@ -132,27 +142,33 @@ func (client *Client) CreateEduHomeworkCorrectSubmitWithContext(ctx context.Cont
 
 // Summary:
 //
-// 通过图片URL或Base64编码接收题目，返回解题过程和结果。
+// Provides question resolution services by using image URLs or Base64 encoding.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口支持通过单张题目图片的URL或Base64编码进行解题请求。
+// - This API supports obtaining question resolution results by providing the URL or Base64 encoding of a question image.
 //
-// - 支持处理JPEG、JPG、PNG格式的图片，且图片大小不超过10MB，像素总数不超过260万。
+// - Supports processing a single image. The image format must be JPG, JPEG, or PNG.
 //
-// - 请求必须携带`request_id`字段，用于链路关联和对账；建议使用UUID以保证唯一性。
+// - The image must be clear and complete. Avoid tilted, obscured, or irrelevant content.
 //
-// - `Authorization`头部需包含有效的`appKey`，采用`Bearer <appKey>`格式。
+// - Each request can process only one image. Multi-image or plain text requests are not supported.
 //
-// - 接口响应为SSE流式数据，客户端应逐事件读取并解析，不得等待连接关闭后整体读取。
+// - The recommended image size is up to 1 MB, with a maximum of 10 MB. The image width and height must not exceed 8,000 pixels, and the total pixel count must not exceed 2.6 million.
 //
-// - 成功响应包括`message`（过程态全量解题快照）和`complete`（最终完整结果）两种事件类型。
+// - You must use the HTTPS protocol to call the API and provide image URLs.
 //
-// - 错误处理分为建流前与建流后两个阶段，根据错误码及`retryable`字段决定是否重试。
+// - The user_id parameter must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
 //
-// - 客户端超时设置建议不低于3分钟，并确保代理层不会缓存SSE响应或提前关闭长连接。
+// - The API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response. The client must read the response event by event, rather than waiting for the connection to close to read the entire response.
+//
+// - A successful response returns the question resolution process through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
+//
+// - For retryable errors such as TOO_MANY_ACTIVE_STREAMS, use an exponential backoff strategy to retry the request.
+//
+// - Set a reasonable timeout period of at least 3 minutes on the client, and ensure that the proxy layer does not cache SSE responses.
 //
 // @param tmpReq - CreateEduProblemSolveRequest
 //
@@ -169,27 +185,33 @@ func (client *Client) CreateEduProblemSolveWithSSECtx(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 通过图片URL或Base64编码接收题目，返回解题过程和结果。
+// Provides question resolution services by using image URLs or Base64 encoding.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口支持通过单张题目图片的URL或Base64编码进行解题请求。
+// - This API supports obtaining question resolution results by providing the URL or Base64 encoding of a question image.
 //
-// - 支持处理JPEG、JPG、PNG格式的图片，且图片大小不超过10MB，像素总数不超过260万。
+// - Supports processing a single image. The image format must be JPG, JPEG, or PNG.
 //
-// - 请求必须携带`request_id`字段，用于链路关联和对账；建议使用UUID以保证唯一性。
+// - The image must be clear and complete. Avoid tilted, obscured, or irrelevant content.
 //
-// - `Authorization`头部需包含有效的`appKey`，采用`Bearer <appKey>`格式。
+// - Each request can process only one image. Multi-image or plain text requests are not supported.
 //
-// - 接口响应为SSE流式数据，客户端应逐事件读取并解析，不得等待连接关闭后整体读取。
+// - The recommended image size is up to 1 MB, with a maximum of 10 MB. The image width and height must not exceed 8,000 pixels, and the total pixel count must not exceed 2.6 million.
 //
-// - 成功响应包括`message`（过程态全量解题快照）和`complete`（最终完整结果）两种事件类型。
+// - You must use the HTTPS protocol to call the API and provide image URLs.
 //
-// - 错误处理分为建流前与建流后两个阶段，根据错误码及`retryable`字段决定是否重试。
+// - The user_id parameter must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
 //
-// - 客户端超时设置建议不低于3分钟，并确保代理层不会缓存SSE响应或提前关闭长连接。
+// - The API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response. The client must read the response event by event, rather than waiting for the connection to close to read the entire response.
+//
+// - A successful response returns the question resolution process through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
+//
+// - For retryable errors such as TOO_MANY_ACTIVE_STREAMS, use an exponential backoff strategy to retry the request.
+//
+// - Set a reasonable timeout period of at least 3 minutes on the client, and ensure that the proxy layer does not cache SSE responses.
 //
 // @param tmpReq - CreateEduProblemSolveRequest
 //
@@ -246,7 +268,21 @@ func (client *Client) CreateEduProblemSolveWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询批改进度、增量结果、终态结果及 Token 用量
+// Queries the progress and final results of homework grading based on the task ID.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation queries the status and detailed results of single-page homework grading by using the `taskId` returned when the task is submitted.
+//
+// - The caller should poll this operation at an interval of 1 to 2 seconds until the task status changes to `finished` or `failed`.
+//
+// - When the task status is `finished`, the response contains complete grading information, including question recognition, grading conclusions, dewarped images, and rendered images.
+//
+// - If the task fails (the status is `failed`), check the `message` field in the response or the specific fault information in `data`.
+//
+// - All requests and responses are in JSON format.
 //
 // @param request - GetEduHomeworkCorrectionResultRequest
 //
@@ -293,7 +329,25 @@ func (client *Client) GetEduHomeworkCorrectionResultWithContext(ctx context.Cont
 
 // Summary:
 //
-// 千问教育API开通状态查询
+// Queries whether the current account has activated Qwen education-related services.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation queries whether a specified Alibaba Cloud account or RAM user has successfully activated the Qwen learning AI suite. Before calling any business API operations, you must use this operation to confirm that the service status is `ACTIVE`. If the service is not activated, perform the corresponding operations based on the returned status information, such as waiting for a period of time and retrying.
+//
+// ### Precautions
+//
+// - This operation supports calls from Alibaba Cloud accounts and RAM users.
+//
+// - When a RAM user calls this operation, make sure that the RAM user has the required RAM permissions. The service is activated for the Alibaba Cloud account to which the RAM user belongs.
+//
+// - This operation is idempotent based on the Alibaba Cloud account ID. Repeated calls do not result in multiple activations.
+//
+// - If the status is `ACTIVATING`, retry the query after the time interval recommended by the returned `retry_after_seconds` field.
+//
+// - If a failure occurs (`FAILED`), refer to the specific error code, take corresponding measures, and then try again.
 //
 // @param request - GetQwenEduApiActivationStatusRequest
 //

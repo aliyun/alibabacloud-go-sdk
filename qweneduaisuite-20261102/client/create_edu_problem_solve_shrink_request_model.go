@@ -16,8 +16,10 @@ type iCreateEduProblemSolveShrinkRequest interface {
 }
 
 type CreateEduProblemSolveShrinkRequest struct {
-	// This parameter is required.
+	// **The question image container.**
 	QueryShrink *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 019F593F-D6EE-5F44-819A-6CDA127D1637

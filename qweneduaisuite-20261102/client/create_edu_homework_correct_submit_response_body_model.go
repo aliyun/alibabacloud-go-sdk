@@ -20,15 +20,25 @@ type iCreateEduHomeworkCorrectSubmitResponseBody interface {
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBody struct {
+	// The API status.
+	//
 	// example:
 	//
-	// OK
-	Code *string                                         `json:"code,omitempty" xml:"code,omitempty"`
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The import command.
 	Data *CreateEduHomeworkCorrectSubmitResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request error message.
+	//
 	// example:
 	//
 	// success
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID on the caller side.
+	//
+	// example:
+	//
+	// req-20261116-0001
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -86,13 +96,31 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBody) Validate() error {
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyData struct {
-	Angle           *int64                                                           `json:"angle,omitempty" xml:"angle,omitempty"`
-	DewarpUrl       *string                                                          `json:"dewarpUrl,omitempty" xml:"dewarpUrl,omitempty"`
-	QuestionResults []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults `json:"questionResults,omitempty" xml:"questionResults,omitempty" type:"Repeated"`
+	// The clockwise rotation angle of the image, in degrees.
+	//
 	// example:
 	//
-	// OK
+	// 0
+	Angle *int64 `json:"angle,omitempty" xml:"angle,omitempty"`
+	// The URL of the corrected image. If `dewarp` is set to `false`, the URL of the original image is returned.
+	//
+	// example:
+	//
+	// https://example.com/dewarp.jpg
+	DewarpUrl *string `json:"dewarpUrl,omitempty" xml:"dewarpUrl,omitempty"`
+	// The array of question recognition and grading results.
+	QuestionResults []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults `json:"questionResults,omitempty" xml:"questionResults,omitempty" type:"Repeated"`
+	// The task status.
+	//
+	// example:
+	//
+	// Examples: submitted, processing, finished, or failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The unique identifier of the task. You must include this ID in subsequent queries.
+	//
+	// example:
+	//
+	// task-20261116-abc123
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
@@ -163,18 +191,47 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyData) Validate() error {
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults struct {
+	// The array of answering and grading results for the question.
 	AnswerResults []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResults `json:"answerResults,omitempty" xml:"answerResults,omitempty" type:"Repeated"`
+	// Specifies whether the task is completed:
+	//
+	// - **true**: The task is completed.
+	//
+	// - **false**: The task is not completed.
+	//
 	// example:
 	//
-	// True
-	Finish          *bool                                                                            `json:"finish,omitempty" xml:"finish,omitempty"`
-	QuestionContent *string                                                                          `json:"questionContent,omitempty" xml:"questionContent,omitempty"`
-	QuestionId      *string                                                                          `json:"questionId,omitempty" xml:"questionId,omitempty"`
-	QuestionPoints  [][]*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsQuestionPoints `json:"questionPoints,omitempty" xml:"questionPoints,omitempty" type:"Repeated"`
-	QuestionType    *string                                                                          `json:"questionType,omitempty" xml:"questionType,omitempty"`
+	// true
+	Finish *bool `json:"finish,omitempty" xml:"finish,omitempty"`
+	// The text content of the question.
+	//
 	// example:
 	//
-	// 已处理：接口耗时已恢复低于阈值（09:53后分钟平均约1.8s～3.3s）
+	// 1 + 1 = ?
+	QuestionContent *string `json:"questionContent,omitempty" xml:"questionContent,omitempty"`
+	// The question ID.
+	//
+	// example:
+	//
+	// q-001
+	QuestionId *string `json:"questionId,omitempty" xml:"questionId,omitempty"`
+	// The coordinate group of the question area. It generally contains four vertex coordinates arranged in the order of top-left, top-right, bottom-right, and bottom-left.
+	//
+	// example:
+	//
+	// Formatted as `[[{"x": 0, "y": 0}, ...]]`
+	QuestionPoints [][]*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsQuestionPoints `json:"questionPoints,omitempty" xml:"questionPoints,omitempty" type:"Repeated"`
+	// The question type.
+	//
+	// example:
+	//
+	// choice
+	QuestionType *string `json:"questionType,omitempty" xml:"questionType,omitempty"`
+	// The question analysis and solution.
+	//
+	// example:
+	//
+	// The question analysis and solution
 	Solution *string `json:"solution,omitempty" xml:"solution,omitempty"`
 }
 
@@ -263,11 +320,28 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults) Validate
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResults struct {
-	AnswerPoints   []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsAnswerPoints `json:"answerPoints,omitempty" xml:"answerPoints,omitempty" type:"Repeated"`
-	CheckPoint     *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsCheckPoint     `json:"checkPoint,omitempty" xml:"checkPoint,omitempty" type:"Struct"`
-	CheckResult    *string                                                                                   `json:"checkResult,omitempty" xml:"checkResult,omitempty"`
-	StandardAnswer *string                                                                                   `json:"standardAnswer,omitempty" xml:"standardAnswer,omitempty"`
-	UserAnswer     *string                                                                                   `json:"userAnswer,omitempty" xml:"userAnswer,omitempty"`
+	// The coordinate group of the user\\"s answering area. It generally contains four vertex coordinates arranged in the order of top-left, top-right, bottom-right, and bottom-left, formatted as `[{"x": ..., "y": ...}, ...]`.
+	AnswerPoints []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsAnswerPoints `json:"answerPoints,omitempty" xml:"answerPoints,omitempty" type:"Repeated"`
+	// The coordinates of the grading mark point, formatted as `{ "x": ..., "y": ... }`.
+	CheckPoint *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsCheckPoint `json:"checkPoint,omitempty" xml:"checkPoint,omitempty" type:"Struct"`
+	// The grading conclusion, such as `correct`, `wrong`, or `partial`.
+	//
+	// example:
+	//
+	// correct
+	CheckResult *string `json:"checkResult,omitempty" xml:"checkResult,omitempty"`
+	// The ground truth.
+	//
+	// example:
+	//
+	// 2
+	StandardAnswer *string `json:"standardAnswer,omitempty" xml:"standardAnswer,omitempty"`
+	// The student\\"s answer.
+	//
+	// example:
+	//
+	// 2
+	UserAnswer *string `json:"userAnswer,omitempty" xml:"userAnswer,omitempty"`
 }
 
 func (s CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResults) String() string {
@@ -342,13 +416,17 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResu
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsAnswerPoints struct {
+	// The X-axis coordinate value.
+	//
 	// example:
 	//
-	// 0.0
+	// 120
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The Y-axis coordinate value.
+	//
 	// example:
 	//
-	// 0.03
+	// 980
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -383,13 +461,17 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResu
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsCheckPoint struct {
+	// The X-axis coordinate.
+	//
 	// example:
 	//
-	// 0.0
+	// 120
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The Y-axis coordinate.
+	//
 	// example:
 	//
-	// 0.90
+	// 980
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -424,13 +506,17 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResu
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsQuestionPoints struct {
+	// The X-axis coordinate value.
+	//
 	// example:
 	//
-	// 0.0
+	// 120
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The Y-axis coordinate value.
+	//
 	// example:
 	//
-	// 0.0
+	// 980
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
