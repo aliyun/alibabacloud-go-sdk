@@ -18,7 +18,7 @@ type iUpdateDatasetFileMetasResponseBody interface {
 }
 
 type UpdateDatasetFileMetasResponseBody struct {
-	// A list of file metadata that failed to be updated.
+	// The list of file metadata that failed to be updated.
 	FailedDetails []*DatasetFileMetaResponse `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type UpdateDatasetFileMetasResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the batch metadata update. A value of \\`true\\` indicates that all updates succeeded. If the value is \\`false\\`, check the \\`FailedDetails\\` parameter.
+	// The status of the metadata update result for the current batch. A value of true indicates that all updates succeeded. If the value is false, check FailedDetails.
 	//
 	// example:
 	//

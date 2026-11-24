@@ -16,13 +16,21 @@ type iRunParam interface {
 }
 
 type RunParam struct {
-	// The run parameter\\"s key.
+	// The parameter name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// learning_rate
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The run parameter\\"s value.
+	// The parameter value.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.001
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

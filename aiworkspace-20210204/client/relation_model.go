@@ -19,6 +19,10 @@ type iRelation interface {
 
 type Relation struct {
 	// ErrMsg
+	//
+	// example:
+	//
+	// Failed to create lineage relation.
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	// LineageRelation
 	LineageRelation *LineageRelation `json:"LineageRelation,omitempty" xml:"LineageRelation,omitempty"`

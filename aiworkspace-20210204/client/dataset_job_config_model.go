@@ -26,7 +26,7 @@ type iDatasetJobConfig interface {
 }
 
 type DatasetJobConfig struct {
-	// The content of the dataset job configuration, in JSON format.
+	// The content of the dataset job configuration in JSON format.
 	//
 	// example:
 	//
@@ -38,20 +38,25 @@ type DatasetJobConfig struct {
 	//
 	// MultimodalIntelligentTag
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The creation time of the dataset job configuration.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-01-14T01:37:37Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The unique ID for the dataset job configuration.
+	// The ID of the dataset job configuration.
 	//
 	// example:
 	//
 	// dscfg-xxxxxxxxxxxx
 	DatasetJobConfigId *string `json:"DatasetJobConfigId,omitempty" xml:"DatasetJobConfigId,omitempty"`
-	DatasetVersion     *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The last modification time of the dataset job configuration.
+	// The name of the dataset version.
+	//
+	// example:
+	//
+	// v1
+	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The modification time.
 	//
 	// example:
 	//

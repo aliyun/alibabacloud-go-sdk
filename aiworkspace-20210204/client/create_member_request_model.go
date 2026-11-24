@@ -55,7 +55,7 @@ type CreateMemberRequestMembers struct {
 	//
 	// This parameter is required.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The member IDs. Use commas (,) to separate multiple IDs. For more information, see [ListMembers](https://help.aliyun.com/document_detail/449135.html).
+	// The list of member IDs. Separate multiple member IDs with commas (,). For information about how to obtain a member ID, see [ListMembers](https://help.aliyun.com/document_detail/449135.html).
 	//
 	// This parameter is required.
 	//

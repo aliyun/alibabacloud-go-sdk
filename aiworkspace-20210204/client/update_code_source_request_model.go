@@ -32,15 +32,15 @@ type iUpdateCodeSourceRequest interface {
 type UpdateCodeSourceRequest struct {
 	// The clone mode. Valid values:
 	//
-	// - 0 (default): creates a new subdirectory.
+	// - 0 (default): Create a subdirectory.
 	//
-	// - 1: tiles to the current directory.
+	// - 1: Tile to the current directory.
 	//
 	// example:
 	//
 	// 0
 	CloneType *int32 `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
-	// The branch name of the code.
+	// The name of the code branch.
 	//
 	// example:
 	//
@@ -58,25 +58,25 @@ type UpdateCodeSourceRequest struct {
 	//
 	// https://code.aliyun.com/******
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
-	// The access token associated with the username.
+	// The access token corresponding to the username.
 	//
 	// example:
 	//
 	// ***
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	// The username used to access the access code repository.
+	// The username used to access the code repository.
 	//
 	// example:
 	//
 	// demo-user
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	// The description of the code source configuration.
+	// The description of the code configuration.
 	//
 	// example:
 	//
-	// 用于XX的训练代码
+	// Training code for XX
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the code source configuration.
+	// The name of the code configuration.
 	//
 	// example:
 	//

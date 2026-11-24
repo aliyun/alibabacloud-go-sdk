@@ -30,29 +30,29 @@ type iListWorkspaceRolesRequest interface {
 }
 
 type ListWorkspaceRolesRequest struct {
-	// The sort order for the specified sort field. Valid values:
+	// The sorting order for the specified sorting field in paging. Valid values:
 	//
-	// - `ASC` (default): Ascending order.
+	// - ASC: Ascending order. Default value.
 	//
-	// - `DESC`: Descending order.
+	// - DESC: Descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Pages start from 1. The default value is 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A comma-separated list of role IDs.
+	// The list of role IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -64,41 +64,31 @@ type ListWorkspaceRolesRequest struct {
 	//
 	// dev-test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The role type.
+	// The role type. Valid values:
 	//
-	// - `custom`: A custom role.
+	// - custom: custom role.
 	//
 	// example:
 	//
 	// custom
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The sort field for paginated queries. Valid values:
+	// The sorting field for paging. Valid values:
 	//
-	// - `GmtCreateTime` (default): Sorts by creation time.
+	// - GmtCreateTime: Sort by creation time. Default value.
 	//
-	// - `GmtModifiedTime`: Sorts by modification time.
+	// - GmtModifiedTime: Sort by modification time.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The status. Valid values:
-	//
-	// - `Creating`
-	//
-	// - `Updating`
-	//
-	// - `Deleting`
-	//
-	// - `Succeeded`: A terminal state.
-	//
-	// - `Failed`: A terminal state.
+	// **[Deprecated]*	- The status.
 	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A comma-separated list of fields to return. Currently, only `ModulePermissions` is supported, which returns the permission configuration of the role.
+	// The comma-separated list of fields to return. Currently, only ModulePermissions is supported, which indicates whether to return the permission configurations of the role.
 	//
 	// example:
 	//

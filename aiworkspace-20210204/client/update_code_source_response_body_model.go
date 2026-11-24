@@ -16,13 +16,13 @@ type iUpdateCodeSourceResponseBody interface {
 }
 
 type UpdateCodeSourceResponseBody struct {
-	// The ID of the code source configuration.
+	// The ID of the code configuration.
 	//
 	// example:
 	//
 	// code-20********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The request ID. Alibaba Cloud generates a unique identifier for the request.
+	// The ID of the request.
 	//
 	// example:
 	//

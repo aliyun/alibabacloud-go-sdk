@@ -22,7 +22,7 @@ type UpdateWorkspaceResourceResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of IDs for the resources that were updated.
+	// The collection of resource IDs updated in this request.
 	//
 	// example:
 	//

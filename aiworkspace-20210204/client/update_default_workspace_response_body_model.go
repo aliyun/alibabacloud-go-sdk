@@ -14,7 +14,7 @@ type iUpdateDefaultWorkspaceResponseBody interface {
 }
 
 type UpdateDefaultWorkspaceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

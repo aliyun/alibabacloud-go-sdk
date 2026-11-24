@@ -17,8 +17,16 @@ type iUserMetricsEndpoint interface {
 
 type UserMetricsEndpoint struct {
 	// The HTTP path of the metric collection API.
+	//
+	// example:
+	//
+	// /metrics
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port number on which the metric collection service listens.
+	//
+	// example:
+	//
+	// 40002
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 

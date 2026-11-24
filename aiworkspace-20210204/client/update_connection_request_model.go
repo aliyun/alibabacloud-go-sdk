@@ -20,17 +20,17 @@ type iUpdateConnectionRequest interface {
 }
 
 type UpdateConnectionRequest struct {
-	// The configuration of the connection, specified as key-value pairs. The keys in the Configs parameter vary based on the connection type. For more information, see the request parameters in the CreateConnection topic.
+	// The configuration information of the connection. The configurations are in key-value pairs. The keys in the Config parameter vary based on the connection type. For more information, see the supplementary description of the request parameters for the CreateConnection operation.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
 	// The description of the connection.
 	//
 	// example:
 	//
-	// Connection for data labeling.
+	// Connection used for annotation
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A list of model information.
+	// The list of model information.
 	Models []*UpdateConnectionRequestModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	// Key-value pairs that require encryption, such as database logon passwords and keys for model connections.
+	// The key-value configurations that need to be encrypted, such as the database logon password and the key for the model connection.
 	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
 }
 
@@ -116,11 +116,11 @@ type UpdateConnectionRequestModels struct {
 	//
 	// LLM
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// Indicates whether tool calling is supported. Valid values:
+	// Specifies whether tool calling is supported. Valid values:
 	//
-	// - true: Tool calling is supported.
+	// - true: Supported.
 	//
-	// - false: Tool calling is not supported.
+	// - false: Not supported.
 	//
 	// example:
 	//

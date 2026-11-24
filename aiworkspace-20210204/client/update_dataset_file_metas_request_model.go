@@ -20,7 +20,7 @@ type iUpdateDatasetFileMetasRequest interface {
 }
 
 type UpdateDatasetFileMetasRequest struct {
-	// A list of dataset file metadata to update.
+	// The list of dataset file metadata to be updated.
 	//
 	// This parameter is required.
 	DatasetFileMetas []*DatasetFileMetaConentUpdate `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
@@ -30,13 +30,13 @@ type UpdateDatasetFileMetasRequest struct {
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The ID of the tagging job for updating metadata tags.
+	// The ID of the tagging task associated with updating the tags in the dataset file metadata.
 	//
 	// example:
 	//
 	// dsjob-hv0b1****u8taig3y
 	TagJobId *string `json:"TagJobId,omitempty" xml:"TagJobId,omitempty"`
-	// The ID of the workspace that contains the dataset. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The ID of the workspace to which the dataset belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

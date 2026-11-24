@@ -18,11 +18,23 @@ type iLineageRelation interface {
 }
 
 type LineageRelation struct {
-	// The unique qualified name of the destination data lineage entity.
+	// The unique qualified name of the destination lineage entity.
+	//
+	// example:
+	//
+	// maxcompute-table.demo_project.training_output
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	// The globally unique identifier of the data lineage relationship.
+	// The globally unique identifier of the lineage relationship.
+	//
+	// example:
+	//
+	// 0f94c587-e926-48c8-9efe-bf9f8d9aa5c2
 	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
-	// The unique qualified name of the source data lineage entity.
+	// The unique qualified name of the source lineage entity.
+	//
+	// example:
+	//
+	// maxcompute-table.demo_project.training_data
 	SrcEntityQualifiedName *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
 }
 

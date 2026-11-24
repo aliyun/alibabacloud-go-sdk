@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("AIWorkSpace")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("aiworkspace.aliyuncs.com"),
@@ -287,6 +295,12 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 //
 // Adds labels to a specified image.
 //
+// Description:
+//
+// 为自定义镜像添加标签。
+//
+// 前置条件：仅支持为自定义镜像添加标签。请先调用 AddImage 将自定义镜像添加到工作空间，再使用其返回的 ImageId 调用本接口；传入官方镜像会返回错误码 201200010（Can\\"t update official images）。
+//
 // @param request - AddImageLabelsRequest
 //
 // @param headers - map
@@ -334,6 +348,12 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 //
 // Adds labels to a specified image.
 //
+// Description:
+//
+// 为自定义镜像添加标签。
+//
+// 前置条件：仅支持为自定义镜像添加标签。请先调用 AddImage 将自定义镜像添加到工作空间，再使用其返回的 ImageId 调用本接口；传入官方镜像会返回错误码 201200010（Can\\"t update official images）。
+//
 // @param request - AddImageLabelsRequest
 //
 // @return AddImageLabelsResponse
@@ -351,7 +371,7 @@ func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsReq
 
 // Summary:
 //
-// Assigns a role to a member in a workspace, granting that member the role\\"s permissions.
+// Assigns a role to a member in a workspace to grant the permissions associated with the role.
 //
 // @param request - AddMemberRoleRequest
 //
@@ -392,7 +412,7 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 
 // Summary:
 //
-// Assigns a role to a member in a workspace, granting that member the role\\"s permissions.
+// Assigns a role to a member in a workspace to grant the permissions associated with the role.
 //
 // @param request - AddMemberRoleRequest
 //
@@ -863,7 +883,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// Creates file metadata records in a dataset in batches.
+// Creates file metadata records for a dataset in batches.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -918,7 +938,7 @@ func (client *Client) CreateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Creates file metadata records in a dataset in batches.
+// Creates file metadata records for a dataset in batches.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -1457,11 +1477,11 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 
 // Summary:
 //
-// Builds a custom image based on the specified configuration. After the image is successfully built, it is added to the list of custom images in the current workspace.
+// Builds a custom image based on the specified configurations. After the build succeeds, the image is added to the custom images of the current workspace.
 //
 // Description:
 //
-// ## Description
+// ## Request description.
 //
 // @param request - CreateImageBuildRequest
 //
@@ -1550,11 +1570,11 @@ func (client *Client) CreateImageBuildWithOptions(request *CreateImageBuildReque
 
 // Summary:
 //
-// Builds a custom image based on the specified configuration. After the image is successfully built, it is added to the list of custom images in the current workspace.
+// Builds a custom image based on the specified configurations. After the build succeeds, the image is added to the custom images of the current workspace.
 //
 // Description:
 //
-// ## Description
+// ## Request description.
 //
 // @param request - CreateImageBuildRequest
 //
@@ -1573,7 +1593,7 @@ func (client *Client) CreateImageBuild(request *CreateImageBuildRequest) (_resul
 
 // Summary:
 //
-// Adds one or more users to a workspace.
+// Adds one or more users to a workspace as members.
 //
 // @param request - CreateMemberRequest
 //
@@ -1620,7 +1640,7 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// Adds one or more users to a workspace.
+// Adds one or more users to a workspace as members.
 //
 // @param request - CreateMemberRequest
 //
@@ -2421,7 +2441,7 @@ func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// Adds a role to a workspace.
+// Adds a workspace role.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -2480,7 +2500,7 @@ func (client *Client) CreateWorkspaceRoleWithOptions(WorkspaceId *string, reques
 
 // Summary:
 //
-// Adds a role to a workspace.
+// Adds a workspace role.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -3583,9 +3603,9 @@ func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *str
 //
 // Description:
 //
-// When calling this operation, note the following:
+// When you call this operation, note the following items:
 //
-// - Tag keys and values are non-empty strings and cannot exceed 128 characters in length.
+// - Tag keys and values must be non-empty strings and cannot exceed 128 characters in length.
 //
 // - Tag keys cannot start with aliyun, acs, http://, or https://.
 //
@@ -3638,9 +3658,9 @@ func (client *Client) DeletePromptWithOptions(PromptId *string, request *DeleteP
 //
 // Description:
 //
-// When calling this operation, note the following:
+// When you call this operation, note the following items:
 //
-// - Tag keys and values are non-empty strings and cannot exceed 128 characters in length.
+// - Tag keys and values must be non-empty strings and cannot exceed 128 characters in length.
 //
 // - Tag keys cannot start with aliyun, acs, http://, or https://.
 //
@@ -3911,7 +3931,7 @@ func (client *Client) DeleteWorkspace(WorkspaceId *string, request *DeleteWorksp
 
 // Summary:
 //
-// Detaches a resource from a workspace. This operation does not delete the underlying resource.
+// Deletes references to resources from a workspace without deleting the underlying resources.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -3978,7 +3998,7 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// Detaches a resource from a workspace. This operation does not delete the underlying resource.
+// Deletes references to resources from a workspace without deleting the underlying resources.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -3997,7 +4017,7 @@ func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *Dele
 
 // Summary:
 //
-// Deletes one or more roles from a workspace.
+// Deletes workspace roles in batches.
 //
 // @param request - DeleteWorkspaceRolesRequest
 //
@@ -4044,7 +4064,7 @@ func (client *Client) DeleteWorkspaceRolesWithOptions(WorkspaceId *string, reque
 
 // Summary:
 //
-// Deletes one or more roles from a workspace.
+// Deletes workspace roles in batches.
 //
 // @param request - DeleteWorkspaceRolesRequest
 //
@@ -4873,7 +4893,13 @@ func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_resu
 
 // Summary:
 //
-// Gets the details of a job.
+// Retrieves a task.
+//
+// Description:
+//
+// 查询异步任务（InstanceJobId）的执行状态和结果。
+//
+// InstanceJobId 由 CreateWorkspaceRole、UpdateWorkspaceRole 等异步接口在响应字段 InstanceJobId 中返回，对应的任务类型见响应字段 Type。
 //
 // @param request - GetInstanceJobRequest
 //
@@ -4914,7 +4940,13 @@ func (client *Client) GetInstanceJobWithOptions(InstanceJobId *string, request *
 
 // Summary:
 //
-// Gets the details of a job.
+// Retrieves a task.
+//
+// Description:
+//
+// 查询异步任务（InstanceJobId）的执行状态和结果。
+//
+// InstanceJobId 由 CreateWorkspaceRole、UpdateWorkspaceRole 等异步接口在响应字段 InstanceJobId 中返回，对应的任务类型见响应字段 Type。
 //
 // @param request - GetInstanceJobRequest
 //
@@ -5433,7 +5465,7 @@ func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceReq
 
 // Summary:
 //
-// Gets information about a specific role within a workspace.
+// Retrieves workspace roles.
 //
 // @param request - GetWorkspaceRoleRequest
 //
@@ -5474,7 +5506,7 @@ func (client *Client) GetWorkspaceRoleWithOptions(WorkspaceId *string, RoleId *s
 
 // Summary:
 //
-// Gets information about a specific role within a workspace.
+// Retrieves workspace roles.
 //
 // @param request - GetWorkspaceRoleRequest
 //
@@ -7573,7 +7605,7 @@ func (client *Client) ListRunMetrics(RunId *string, request *ListRunMetricsReque
 
 // Summary:
 //
-// Queries a list of runs.
+// Retrieves a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -7676,7 +7708,7 @@ func (client *Client) ListRunsWithOptions(request *ListRunsRequest, headers map[
 
 // Summary:
 //
-// Queries a list of runs.
+// Retrieves a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -7765,7 +7797,7 @@ func (client *Client) ListUserConfigs(request *ListUserConfigsRequest) (_result 
 
 // Summary:
 //
-// Lists the roles in a specified workspace.
+// Lists workspace roles.
 //
 // @param request - ListWorkspaceRolesRequest
 //
@@ -7844,7 +7876,7 @@ func (client *Client) ListWorkspaceRolesWithOptions(WorkspaceId *string, request
 
 // Summary:
 //
-// Lists the roles in a specified workspace.
+// Lists workspace roles.
 //
 // @param request - ListWorkspaceRolesRequest
 //
@@ -8055,7 +8087,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// Records the metrics of a run in a batch.
+// Records metrics for a run in batches.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -8102,7 +8134,7 @@ func (client *Client) LogRunMetricsWithOptions(RunId *string, request *LogRunMet
 
 // Summary:
 //
-// Records the metrics of a run in a batch.
+// Records metrics for a run in batches.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -8243,6 +8275,14 @@ func (client *Client) PublishDataset(DatasetId *string, request *PublishDatasetR
 //
 // Publishes an image and changes its visibility from PRIVATE to PUBLIC.
 //
+// Description:
+//
+// 将镜像的可见性从 PRIVATE 改为 PUBLIC。
+//
+// - 仅支持对可见性为 PRIVATE 的镜像调用；已是 PUBLIC 的镜像无需再次发布，直接调用会返回 400 错误。
+//
+// - 若当前工作空间没有 PRIVATE 镜像，请先调用 AddImage 添加自定义镜像（Accessibility 设为 PRIVATE），再使用其返回的 ImageId 调用本接口。
+//
 // @param request - PublishImageRequest
 //
 // @param headers - map
@@ -8284,6 +8324,14 @@ func (client *Client) PublishImageWithOptions(ImageId *string, request *PublishI
 //
 // Publishes an image and changes its visibility from PRIVATE to PUBLIC.
 //
+// Description:
+//
+// 将镜像的可见性从 PRIVATE 改为 PUBLIC。
+//
+// - 仅支持对可见性为 PRIVATE 的镜像调用；已是 PUBLIC 的镜像无需再次发布，直接调用会返回 400 错误。
+//
+// - 若当前工作空间没有 PRIVATE 镜像，请先调用 AddImage 添加自定义镜像（Accessibility 设为 PRIVATE），再使用其返回的 ImageId 调用本接口。
+//
 // @param request - PublishImageRequest
 //
 // @return PublishImageResponse
@@ -8302,6 +8350,14 @@ func (client *Client) PublishImage(ImageId *string, request *PublishImageRequest
 // Summary:
 //
 // Deletes an image.
+//
+// Description:
+//
+// 删除镜像。
+//
+// - 仅支持删除用户自建（自定义）镜像，传入官方镜像会返回错误码 201200013。
+//
+// - 若账号下尚无自建镜像，需先调用 AddImage 创建自定义镜像，再使用其返回的 ImageId 调用本接口。
 //
 // @param request - RemoveImageRequest
 //
@@ -8343,6 +8399,14 @@ func (client *Client) RemoveImageWithOptions(ImageId *string, request *RemoveIma
 // Summary:
 //
 // Deletes an image.
+//
+// Description:
+//
+// 删除镜像。
+//
+// - 仅支持删除用户自建（自定义）镜像，传入官方镜像会返回错误码 201200013。
+//
+// - 若账号下尚无自建镜像，需先调用 AddImage 创建自定义镜像，再使用其返回的 ImageId 调用本接口。
 //
 // @param request - RemoveImageRequest
 //
@@ -8421,7 +8485,7 @@ func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string, reque
 
 // Summary:
 //
-// Removes a role from a member.
+// Deletes a member role.
 //
 // @param request - RemoveMemberRoleRequest
 //
@@ -8462,7 +8526,7 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 
 // Summary:
 //
-// Removes a role from a member.
+// Deletes a member role.
 //
 // @param request - RemoveMemberRoleRequest
 //
@@ -8683,7 +8747,7 @@ func (client *Client) StopDatasetJob(DatasetId *string, DatasetJobId *string, re
 
 // Summary:
 //
-// Updates a code source configuration.
+// Updates the code configuration.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -8762,7 +8826,7 @@ func (client *Client) UpdateCodeSourceWithOptions(CodeSourceId *string, request 
 
 // Summary:
 //
-// Updates a code source configuration.
+// Updates the code configuration.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -8925,7 +8989,7 @@ func (client *Client) UpdateConfigs(WorkspaceId *string, request *UpdateConfigsR
 
 // Summary:
 //
-// Updates a connection configuration.
+// Updates the connection configuration.
 //
 // @param request - UpdateConnectionRequest
 //
@@ -8984,7 +9048,7 @@ func (client *Client) UpdateConnectionWithOptions(ConnectionId *string, request 
 
 // Summary:
 //
-// Updates a connection configuration.
+// Updates the connection configuration.
 //
 // @param request - UpdateConnectionRequest
 //
@@ -9097,7 +9161,7 @@ func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetReq
 
 // Summary:
 //
-// Updates multiple file metadata records in a dataset.
+// Updates the file metadata records of a dataset in batches.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -9156,7 +9220,7 @@ func (client *Client) UpdateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Updates multiple file metadata records in a dataset.
+// Updates the file metadata records of a dataset in batches.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -9417,7 +9481,7 @@ func (client *Client) UpdateDatasetVersion(DatasetId *string, VersionName *strin
 
 // Summary:
 //
-// Sets a workspace as the default.
+// Sets a workspace as the default workspace.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -9464,7 +9528,7 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 
 // Summary:
 //
-// Sets a workspace as the default.
+// Sets a workspace as the default workspace.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -9769,11 +9833,11 @@ func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, r
 
 // Summary:
 //
-// Updates the prompt of a dataset.
+// # Update a prompt
 //
 // Description:
 //
-// ## Request description.
+// ## Request description
 //
 // @param request - UpdatePromptRequest
 //
@@ -9832,11 +9896,11 @@ func (client *Client) UpdatePromptWithOptions(PromptId *string, request *UpdateP
 
 // Summary:
 //
-// Updates the prompt of a dataset.
+// # Update a prompt
 //
 // Description:
 //
-// ## Request description.
+// ## Request description
 //
 // @param request - UpdatePromptRequest
 //
@@ -9999,7 +10063,7 @@ func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorksp
 
 // Summary:
 //
-// Updates resources in a workspace.
+// Updates the resources of a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
@@ -10070,7 +10134,7 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// Updates resources in a workspace.
+// Updates the resources of a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
@@ -10089,7 +10153,7 @@ func (client *Client) UpdateWorkspaceResource(WorkspaceId *string, request *Upda
 
 // Summary:
 //
-// Updates a role in a workspace.
+// Updates the workspace role.
 //
 // @param request - UpdateWorkspaceRoleRequest
 //
@@ -10140,7 +10204,7 @@ func (client *Client) UpdateWorkspaceRoleWithOptions(WorkspaceId *string, RoleId
 
 // Summary:
 //
-// Updates a role in a workspace.
+// Updates the workspace role.
 //
 // @param request - UpdateWorkspaceRoleRequest
 //

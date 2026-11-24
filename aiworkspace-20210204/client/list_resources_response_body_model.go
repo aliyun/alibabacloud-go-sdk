@@ -167,7 +167,7 @@ type ListResourcesResponseBodyResources struct {
 	//
 	// example:
 	//
-	// 对于MaxCompute {"Endpoint": "odps.alibaba-inc.com", "Project": "mignshi"}
+	// {"Endpoint":"odps.alibaba-inc.com","Project":"mignshi"}
 	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The ID of the workspace to which the resource belongs.
 	//

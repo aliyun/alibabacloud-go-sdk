@@ -14,7 +14,7 @@ type iDeleteWorkspaceRolesRequest interface {
 }
 
 type DeleteWorkspaceRolesRequest struct {
-	// The IDs of the roles to delete.
+	// (Required) The list of role IDs.
 	RoleIds []*string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty" type:"Repeated"`
 }
 

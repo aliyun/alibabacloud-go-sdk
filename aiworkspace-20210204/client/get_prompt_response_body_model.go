@@ -30,15 +30,15 @@ type iGetPromptResponseBody interface {
 type GetPromptResponseBody struct {
 	// The access type. Valid values:
 	//
-	// - PUBLIC: All members in the current workspace can access the prompt.
+	// - PUBLIC: Accessible to all members in the current workspace.
 	//
-	// - PRIVATE: Only the creator can access the prompt.
+	// - PRIVATE: Accessible only to the creator.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The creation time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ in the ISO 8601 standard.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetPromptResponseBody struct {
 	//
 	// example:
 	//
-	// This is an information extraction prompt for autonomous driving highway scenarios, focusing on extracting lane and weather information
+	// This is an information extraction prompt for autonomous driving highway scenarios, focusing on extracting lanes, weather, and other details
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The content of the prompt.
 	//
@@ -56,13 +56,13 @@ type GetPromptResponseBody struct {
 	//
 	// {
 	//
-	//   "context":"You are an experienced driver with ten years of driving experience. Please analyze and make judgments about the following image scenario.",
+	//   "context":"You are an experienced driver with ten years of driving experience. Please analyze and judge the following image scenario.",
 	//
 	//   "inputData":"{
 	//
-	//     \\"Reflective strips\\": \\"Usually yellow or yellow-black alternating, attached to permanent protruding obstacles such as wall corners to remind drivers to avoid them. They are strip-shaped, not cones, not ground locks, not water barriers!\\",
+	//     \\"Reflective tape\\": \\"Usually yellow or yellow-and-black striped, attached to permanent protruding obstacles such as wall corners to remind drivers to avoid them. It is strip-shaped, not a traffic cone, not a parking lock, and not a water barrier!\\",
 	//
-	//     \\"Ground lock\\": \\"Also called a parking space lock, it can prevent a parking space from being occupied when raised. When a ground lock is present, you must indicate whether it is in the raised or lowered state. It is in the raised state when there is a raised frame, otherwise it is in the lowered state.\\",
+	//     \\"Parking lock\\": \\"Also known as a parking space lock, it prevents the parking space from being occupied when raised. If a parking lock is present, make sure to output whether it is in the raised or lowered state. It is in the raised state if the lifting frame is up; otherwise, it is in the lowered state.\\"
 	//
 	//   }"
 	//
@@ -74,7 +74,7 @@ type GetPromptResponseBody struct {
 	//
 	// ICIO
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// The modification time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ in the ISO 8601 standard.
+	// The update time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

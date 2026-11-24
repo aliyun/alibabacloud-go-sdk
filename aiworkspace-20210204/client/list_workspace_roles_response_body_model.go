@@ -26,7 +26,7 @@ type ListWorkspaceRolesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of custom roles.
 	Roles []*ListWorkspaceRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The total count of matching entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListWorkspaceRolesResponseBody) Validate() error {
 }
 
 type ListWorkspaceRolesResponseBodyRoles struct {
-	// The Alibaba Cloud account UID of the creator.
+	// The UID of the Alibaba Cloud account of the creator.
 	//
 	// example:
 	//
 	// 2680******4103
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creation time, in UTC and ISO 8601 format.
+	// The creation time. The time is in UTC and formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2025-09-14T07:40:01.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time, in UTC and ISO 8601 format.
+	// The modification time. The time is in UTC and formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2026-04-15T02:29:52Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The permission configuration of the role.
+	// The permission configurations of the role.
 	ModulePermissions []*ListWorkspaceRolesResponseBodyRolesModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
 	// The ID of the custom role.
 	//

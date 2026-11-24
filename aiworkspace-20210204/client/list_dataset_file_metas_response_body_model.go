@@ -42,13 +42,13 @@ type ListDatasetFileMetasResponseBody struct {
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The maximum number of results returned per request when using NextToken-based pagination.
+	// The maximum number of results to return per query when NextToken is used.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. If the number of results that match the query conditions exceeds the page size, this pagination token is returned. To retrieve the next page of data, pass the returned token value as a request parameter until no token value is returned, which indicates that all data has been retrieved.
+	// The pagination cursor. If the number of returned results that match the query conditions exceeds the page size, this pagination cursor is returned. To obtain the next page of data, use the returned cursor value as a request parameter until no cursor value is returned, which indicates that all data is retrieved.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListDatasetFileMetasResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Deprecated
 	//
-	// The current page size.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//

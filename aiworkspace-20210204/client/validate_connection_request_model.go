@@ -24,39 +24,39 @@ type iValidateConnectionRequest interface {
 }
 
 type ValidateConnectionRequest struct {
-	// The configuration of the connection, specified as key-value pairs. The configuration keys vary by connection type. For more information, see the supplementary information about the request parameters of the CreateConnection operation.
+	// The configuration information of the connection. The information is configured in key-value pairs. The keys in the configuration vary based on the connection type. For more information, see the supplementary description of request parameters for the CreateConnection operation.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// The connection ID. For more information about how to obtain the connection ID, see [ListConnections](url).
+	// The connection ID. For more information about how to obtain the connection ID, see [ListConnections](~~ListConnections~~).
 	//
 	// example:
 	//
 	// conn-x2wz5zvvbyf2420fi9
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	// The connection type. Only connection types that support public network access are available. Valid values:
+	// The type of the connection. You can specify a connection type that supports public network access. Valid values:
 	//
-	// - DashScopeConnection: a service connection for Alibaba Cloud Model Studio.
+	// - DashScopeConnection: The Model Studio connection.
 	//
-	// - DeepSeekConnection: a service connection for DeepSeek.
+	// - DeepSeekConnection: The DeepSeek connection.
 	//
-	// - FunctionAIMCPConnection: a connection for Function AI MCP.
+	// - FunctionAIMCPConnection: The Function AI MCP connection.
 	//
-	// - CustomMCPConnection: a custom MCP connection.
+	// - CustomMCPConnection: The custom MCP connection.
 	//
 	// example:
 	//
 	// DashScopeConnection
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The key-value pairs to encrypt, such as a database logon password or a model connection key.
+	// The key-value configurations that require encryption, such as the database logon password and the key for the model connection.
 	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
-	// The validation type. Set the value to:
+	// The validation type. Valid values:
 	//
-	// - Connectivity: a connectivity test
+	// - Connectivity: The connectivity test.
 	//
 	// example:
 	//
 	// Connectivity
 	ValidateType *string `json:"ValidateType,omitempty" xml:"ValidateType,omitempty"`
-	// The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The workspace ID. You can obtain the workspace ID by calling the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation.
 	//
 	// This parameter is required.
 	//

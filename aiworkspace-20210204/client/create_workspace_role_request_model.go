@@ -20,15 +20,15 @@ type iCreateWorkspaceRoleRequest interface {
 }
 
 type CreateWorkspaceRoleRequest struct {
-	// (Required) The role permission configurations.
+	// (Required) The permission configuration of the role.
 	ModulePermissions []*CreateWorkspaceRoleRequestModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// (Required) The custom role name. The name must be unique within the same workspace. The name can contain letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters in length.
+	// (Required) The name of the custom role. The name must be unique within the same workspace. The name can contain letters, digits, underscores (_), and hyphens (-), and can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// dev-test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The role type. Valid values: custom: custom role. Only custom roles are supported. This is the default value.
+	// The role type. Valid values: custom (custom role). Only custom roles are supported. This is the default value.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iLogRunMetricsResponseBody interface {
 }
 
 type LogRunMetricsResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

@@ -21,12 +21,28 @@ type iLineageEntity interface {
 
 type LineageEntity struct {
 	// Attributes
+	//
+	// example:
+	//
+	// {"Bucket":"example-bucket","Path":"training/data/","ResourceType":"dataset","ResourceUse":"train","RegionId":"cn-hangzhou"}
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The type of the data lineage entity.
+	//
+	// example:
+	//
+	// oss-file
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The name of the data lineage entity.
+	//
+	// example:
+	//
+	// training-dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The unique qualified name of the data lineage entity.
+	//
+	// example:
+	//
+	// maxcompute-table.demo_project.training_data
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
 }
 

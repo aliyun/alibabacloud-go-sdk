@@ -16,9 +16,9 @@ type iUpdateWorkspaceRoleRequest interface {
 }
 
 type UpdateWorkspaceRoleRequest struct {
-	// The permission settings for the role.
+	// The permission configuration of the role.
 	ModulePermissions []*UpdateWorkspaceRoleRequestModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// The name of the custom role. The name must be unique within the workspace. It can be up to 64 characters long and can contain letters, digits, underscores (_), and hyphens (-).
+	// The name of the custom role. The name must be unique within the same workspace. The name can contain letters, digits, underscores (_), and hyphens (-), and can be up to 64 characters in length.
 	//
 	// example:
 	//

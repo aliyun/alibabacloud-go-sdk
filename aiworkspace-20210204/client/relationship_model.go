@@ -25,6 +25,10 @@ type Relationship struct {
 	// The data channel to which the lineage relationship belongs.
 	DataChannel *string `json:"DataChannel,omitempty" xml:"DataChannel,omitempty"`
 	// The globally unique identifier of the lineage relationship.
+	//
+	// example:
+	//
+	// 0f94c587-e926-48c8-9efe-bf9f8d9aa5c2
 	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
 	// The type of the lineage relationship.
 	RelationshipType *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`

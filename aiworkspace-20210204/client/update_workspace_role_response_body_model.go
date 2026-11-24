@@ -16,7 +16,7 @@ type iUpdateWorkspaceRoleResponseBody interface {
 }
 
 type UpdateWorkspaceRoleResponseBody struct {
-	// The task ID.
+	// The ID of the task corresponding to the request.
 	//
 	// example:
 	//

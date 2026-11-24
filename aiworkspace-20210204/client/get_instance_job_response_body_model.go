@@ -26,25 +26,25 @@ type iGetInstanceJobResponseBody interface {
 }
 
 type GetInstanceJobResponseBody struct {
-	// The creation time in UTC, in ISO 8601 format.
+	// The creation time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The instance ID. For example, if a job creates a custom role, this parameter returns the corresponding role ID.
+	// Instance ID of the task instance. For example, in a task that creates a custom role, this is instance ID of the generated role.
 	//
 	// example:
 	//
 	// *****12qb3*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// CreateWorkspaceCustomRole-role-***abc*******
 	InstanceJobId *string `json:"InstanceJobId,omitempty" xml:"InstanceJobId,omitempty"`
-	// A message providing details about the job.
+	// The detailed description of the task.
 	//
 	// example:
 	//
@@ -56,23 +56,23 @@ type GetInstanceJobResponseBody struct {
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the job. Valid values:
+	// The task status. Valid values:
 	//
-	// - Creating: The job is being created.
+	// - Creating: The task is being created.
 	//
-	// - Updating: The job is being updated.
+	// - Updating: The task is being updated.
 	//
-	// - Deleting: The job is being deleted.
+	// - Deleting: The task is being deleted.
 	//
-	// - Successful: The job completed successfully (a final state).
+	// - Successful: The task succeeded. This is a desired state.
 	//
-	// - Failed: The job failed (a final state).
+	// - Failed: The task failed. This is a desired state.
 	//
 	// example:
 	//
 	// Successful
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The job type. Valid values:
+	// The task type. Valid values:
 	//
 	// - CreateWorkspaceCustomRole
 	//

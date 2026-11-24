@@ -22,7 +22,7 @@ type CreateImageBuildResponseBody struct {
 	//
 	// build-****ks92
 	ImageBuildId *string `json:"ImageBuildId,omitempty" xml:"ImageBuildId,omitempty"`
-	// The build task ID.
+	// The build job ID.
 	//
 	// example:
 	//

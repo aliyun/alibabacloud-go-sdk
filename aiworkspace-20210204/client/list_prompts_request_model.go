@@ -24,45 +24,45 @@ type iListPromptsRequest interface {
 }
 
 type ListPromptsRequest struct {
-	// The prompt template framework type.
+	// The framework type of the prompt template.
 	//
 	// example:
 	//
 	// ICIO
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// The sorting order for the specified field during paging. Default value: ASC.
+	// The sorting order for the specified field during paging in a paged query. Default value: ASC. Valid values:
 	//
-	// - ASC: ascending order.
+	// - ASC: Ascending order.
 	//
-	// - DESC: descending order.
+	// - DESC: Descending order.
 	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field used for sorting. Valid values:
+	// The name of the field used for sorting. Valid values:
 	//
-	// - Name: the run name.
+	// - Name: the name of the Run
 	//
-	// - GmtCreateTime (default): the run creation time.
+	// - GmtCreateTime: the creation time of the Run (default)
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The workspace ID. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// This parameter is required.
 	//

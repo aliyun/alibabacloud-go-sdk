@@ -28,25 +28,25 @@ type iGetWorkspaceRoleResponseBody interface {
 }
 
 type GetWorkspaceRoleResponseBody struct {
-	// The Alibaba Cloud account UID of the creator.
+	// The UID of the Alibaba Cloud account of the creator.
 	//
 	// example:
 	//
 	// 2680******4103
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The time when the role was created. It is specified in UTC and formatted in ISO 8601.
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2025-06-11T08:58:35.438Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the role was last modified. It is specified in UTC and formatted in ISO 8601.
+	// The modification time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-03-27T02:26:33.872Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The permission configuration of the role.
+	// The permission configurations of the role.
 	ModulePermissions []*GetWorkspaceRoleResponseBodyModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -54,13 +54,13 @@ type GetWorkspaceRoleResponseBody struct {
 	//
 	// A519F77D-28A0-52F5-AB82-5********8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The role ID.
+	// The ID of the role.
 	//
 	// example:
 	//
 	// role-dhg*******
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The role name.
+	// The name of the role.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type GetWorkspaceRoleResponseBody struct {
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The task status. Valid values:
 	//
-	// - `Creating`: The role is being created.
+	// - Creating: creating
 	//
-	// - `Updating`: The role is being updated.
+	// - Updating: updating
 	//
-	// - `Deleting`: The role is being deleted.
+	// - Deleting: deleting
 	//
-	// - `Succeeded`: The task succeeded.
+	// - Successful: succeeded (final state)
 	//
-	// - `Failed`: The task failed.
+	// - Failed: failed (final state)
 	//
 	// example:
 	//

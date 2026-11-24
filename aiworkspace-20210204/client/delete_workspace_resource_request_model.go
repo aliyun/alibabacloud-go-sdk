@@ -24,13 +24,13 @@ type iDeleteWorkspaceResourceRequest interface {
 }
 
 type DeleteWorkspaceResourceRequest struct {
-	// The resource group name. To get the resource group name, see [ListResources](https://help.aliyun.com/document_detail/449143.html).
+	// The name of the resource group. To obtain the name of the resource group, see [ListResources](https://help.aliyun.com/document_detail/449143.html).
 	//
 	// example:
 	//
 	// group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// A comma-separated list of labels.
+	// The list of tags, separated by commas.
 	//
 	// example:
 	//
@@ -38,43 +38,43 @@ type DeleteWorkspaceResourceRequest struct {
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The deletion behavior. Valid values:
 	//
-	// - `DetachAndDelete` (default): Detaches the resource from the workspace and deletes the resource.
+	// - DetachAndDelete: Unbinds the resources from the workspace and deletes the resources. This is the default value.
 	//
-	// - `Detach`: Detaches the resource from the workspace.
+	// - Detach: Unbinds the resources from the workspace.
 	//
 	// example:
 	//
 	// DetachAndDelete
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// **This parameter is deprecated and will be removed. Use the `ResourceType` parameter instead.**
+	// **[Deprecated]*	- This field is deprecated and will be retired. Use the ResourceType field.
 	//
 	// example:
 	//
 	// DLC
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// A comma-separated list of resource IDs. All specified resources must belong to the same `GroupName`. You must specify a value for at least one of the `GroupName` or `ResourceIds` parameters.
+	// The IDs of the resources, separated by commas. The GroupName of these resource IDs must be the same. GroupName and ResourceIds cannot be empty at the same time, but both can be specified.
 	//
 	// example:
 	//
 	// Resource-dks******jkf,Resource-adf******dss
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The resource type. Valid values:
+	// The list of resource types. Valid values:
 	//
-	// - `ECS`: general-purpose computing resources
+	// - ECS: general computing resources
 	//
-	// - `Lingjun`: Lingjun intelligent computing resources
+	// - Lingjun: Lingjun AI computing resources
 	//
-	// - `ACS`: ACS computing resources
+	// - ACS: ACS computing resources
 	//
-	// - `Flink`: Flink resources.
+	// - FLINK: Flink resources
 	//
-	// - `MaxCompute`: MaxCompute resources. For this resource type, the `Option` parameter can only be set to `Detach`.
+	// - MaxCompute: MaxCompute resources. Only the Detach option is supported. The DetachAndDelete option is not supported.
 	//
-	// - `SelfManagedAckPro`: AckPro unified management cluster resources
+	// - SelfManagedAckPro: ACK Pro unified management cluster resources
 	//
-	// - `SelfManagedAckLingjun`: AckLinjun unified management cluster resources
+	// - SelfManagedAckLingjun: ACK Lingjun unified management cluster resources
 	//
-	// - `SelfManagedASI`: ASI unified management cluster resources (third-party cloud)
+	// - SelfManagedASI: ASI unified management cluster resources (third-party cloud)
 	//
 	// example:
 	//

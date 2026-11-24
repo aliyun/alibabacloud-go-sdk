@@ -28,13 +28,25 @@ type RunMetric struct {
 	//
 	// loss
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The step count at which the metric is generated.
+	// The step at which the metric is generated.
+	//
+	// example:
+	//
+	// 10
 	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The timestamp at which the metric is generated.
+	// The timestamp when the metric is generated.
+	//
+	// example:
+	//
+	// 1793248584453
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The metric value.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.25
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
