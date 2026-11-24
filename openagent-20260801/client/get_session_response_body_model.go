@@ -20,13 +20,13 @@ type iGetSessionResponseBody interface {
 type GetSessionResponseBody struct {
 	// The returned data.
 	Data *GetSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 00000000-0000-4000-8000-000000000001
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ type GetSessionResponseBodyData struct {
 	//
 	// run_example_001
 	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
-	// The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), `REJECTED` (rejected).
+	// The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
 	//
 	// example:
 	//
@@ -103,24 +103,30 @@ type GetSessionResponseBodyData struct {
 	//
 	// false
 	Pinned *bool `json:"pinned,omitempty" xml:"pinned,omitempty"`
-	// The session ID.
+	// The ID of the session.
 	//
 	// example:
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), `CLOSED` (closed).
+	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
 	//
 	// example:
 	//
 	// IDLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The session title.
+	// The title of the session.
 	//
 	// example:
 	//
 	// Cloud resource inspection example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Indicates whether session UI enhancement is enabled. Valid values: true (enabled) and false (disabled). This feature is supported only for common sessions. If this field is not returned, the feature is considered disabled.
+	//
+	// example:
+	//
+	// true
+	UiEnabled *bool `json:"uiEnabled,omitempty" xml:"uiEnabled,omitempty"`
 	// The time when the session was last updated, in ISO 8601 format.
 	//
 	// example:
@@ -165,6 +171,10 @@ func (s *GetSessionResponseBodyData) GetTitle() *string {
 	return s.Title
 }
 
+func (s *GetSessionResponseBodyData) GetUiEnabled() *bool {
+	return s.UiEnabled
+}
+
 func (s *GetSessionResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
@@ -201,6 +211,11 @@ func (s *GetSessionResponseBodyData) SetStatus(v string) *GetSessionResponseBody
 
 func (s *GetSessionResponseBodyData) SetTitle(v string) *GetSessionResponseBodyData {
 	s.Title = &v
+	return s
+}
+
+func (s *GetSessionResponseBodyData) SetUiEnabled(v bool) *GetSessionResponseBodyData {
+	s.UiEnabled = &v
 	return s
 }
 

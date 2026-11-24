@@ -24,13 +24,13 @@ type ListMessagesRequest struct {
 	//
 	// 20
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Do not specify this parameter in the first request. For subsequent requests, use the value returned from the previous response.
+	// The pagination token. Do not pass this parameter in the first request. For subsequent requests, use the value returned from the previous page.
 	//
 	// example:
 	//
 	// example-next-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters messages by a specified run ID.
+	// Filters messages by the specified run ID.
 	//
 	// example:
 	//

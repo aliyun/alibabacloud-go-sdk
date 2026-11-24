@@ -156,7 +156,7 @@ type ListSessionsResponseBodyDataSessions struct {
 	//
 	// run_example_001
 	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
-	// The status of the most recent run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interruption handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
+	// The status of the most recent run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ListSessionsResponseBodyDataSessions struct {
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
+	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user approval), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
 	//
 	// example:
 	//
@@ -186,6 +186,12 @@ type ListSessionsResponseBodyDataSessions struct {
 	//
 	// Cloud resource inspection example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Indicates whether session UI enhancement is enabled. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled. This feature is supported only for regular sessions. If this field is not returned, the feature is considered disabled.
+	//
+	// example:
+	//
+	// true
+	UiEnabled *bool `json:"uiEnabled,omitempty" xml:"uiEnabled,omitempty"`
 	// The time when the session was last updated, in RFC 3339 format.
 	//
 	// example:
@@ -230,6 +236,10 @@ func (s *ListSessionsResponseBodyDataSessions) GetTitle() *string {
 	return s.Title
 }
 
+func (s *ListSessionsResponseBodyDataSessions) GetUiEnabled() *bool {
+	return s.UiEnabled
+}
+
 func (s *ListSessionsResponseBodyDataSessions) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
@@ -266,6 +276,11 @@ func (s *ListSessionsResponseBodyDataSessions) SetStatus(v string) *ListSessions
 
 func (s *ListSessionsResponseBodyDataSessions) SetTitle(v string) *ListSessionsResponseBodyDataSessions {
 	s.Title = &v
+	return s
+}
+
+func (s *ListSessionsResponseBodyDataSessions) SetUiEnabled(v bool) *ListSessionsResponseBodyDataSessions {
+	s.UiEnabled = &v
 	return s
 }
 

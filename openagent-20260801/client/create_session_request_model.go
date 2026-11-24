@@ -11,6 +11,8 @@ type iCreateSessionRequest interface {
 	GoString() string
 	SetTitle(v string) *CreateSessionRequest
 	GetTitle() *string
+	SetUiEnabled(v bool) *CreateSessionRequest
+	GetUiEnabled() *bool
 }
 
 type CreateSessionRequest struct {
@@ -20,6 +22,8 @@ type CreateSessionRequest struct {
 	//
 	// Cloud resource inspection example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Specifies whether to enable session UI enhancement. Only common sessions support this feature.
+	UiEnabled *bool `json:"uiEnabled,omitempty" xml:"uiEnabled,omitempty"`
 }
 
 func (s CreateSessionRequest) String() string {
@@ -34,8 +38,17 @@ func (s *CreateSessionRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *CreateSessionRequest) GetUiEnabled() *bool {
+	return s.UiEnabled
+}
+
 func (s *CreateSessionRequest) SetTitle(v string) *CreateSessionRequest {
 	s.Title = &v
+	return s
+}
+
+func (s *CreateSessionRequest) SetUiEnabled(v bool) *CreateSessionRequest {
+	s.UiEnabled = &v
 	return s
 }
 

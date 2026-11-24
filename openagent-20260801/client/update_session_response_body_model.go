@@ -20,7 +20,7 @@ type iUpdateSessionResponseBody interface {
 type UpdateSessionResponseBody struct {
 	// The session information.
 	Data *UpdateSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to locate and troubleshoot issues.
+	// The request ID, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -91,21 +91,7 @@ type UpdateSessionResponseBodyData struct {
 	//
 	// run_example_001
 	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
-	// The status of the last run. Valid values:
-	//
-	// - `PENDING`: pending
-	//
-	// - `RUNNING`: running
-	//
-	// - `WAITING_USER`: waiting for interrupt handling
-	//
-	// - `COMPLETED`: completed
-	//
-	// - `FAILED`: failed
-	//
-	// - `CANCELLED`: cancelled
-	//
-	// - `REJECTED`: rejected
+	// The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
 	//
 	// example:
 	//
@@ -117,36 +103,30 @@ type UpdateSessionResponseBodyData struct {
 	//
 	// false
 	Pinned *bool `json:"pinned,omitempty" xml:"pinned,omitempty"`
-	// The ID of the session.
+	// The session ID.
 	//
 	// example:
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The status of the session. Valid values:
-	//
-	// - `IDLE`: idle
-	//
-	// - `ACTIVE`: running
-	//
-	// - `WAITING_USER_INPUT`: waiting for user input
-	//
-	// - `WAITING_APPROVAL`: waiting for user confirmation
-	//
-	// - `WAITING_OUT_OF_BAND_APPROVAL`: waiting for out-of-band approval
-	//
-	// - `CLOSED`: closed
+	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
 	//
 	// example:
 	//
 	// IDLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The title of the session.
+	// The session title.
 	//
 	// example:
 	//
 	// Cloud resource inspection example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Indicates whether session UI enhancement is enabled. A value of true indicates that the feature is enabled, and a value of false indicates that the feature is disabled. This feature is supported only for common sessions. If this field is not returned, the feature is considered disabled.
+	//
+	// example:
+	//
+	// true
+	UiEnabled *bool `json:"uiEnabled,omitempty" xml:"uiEnabled,omitempty"`
 	// The time when the session was last updated. The time is in RFC 3339 format.
 	//
 	// example:
@@ -191,6 +171,10 @@ func (s *UpdateSessionResponseBodyData) GetTitle() *string {
 	return s.Title
 }
 
+func (s *UpdateSessionResponseBodyData) GetUiEnabled() *bool {
+	return s.UiEnabled
+}
+
 func (s *UpdateSessionResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
@@ -227,6 +211,11 @@ func (s *UpdateSessionResponseBodyData) SetStatus(v string) *UpdateSessionRespon
 
 func (s *UpdateSessionResponseBodyData) SetTitle(v string) *UpdateSessionResponseBodyData {
 	s.Title = &v
+	return s
+}
+
+func (s *UpdateSessionResponseBodyData) SetUiEnabled(v bool) *UpdateSessionResponseBodyData {
+	s.UiEnabled = &v
 	return s
 }
 

@@ -153,7 +153,7 @@ func (client *Client) CancelRun(sessionId *string, runId *string, request *Cance
 //
 // Description:
 //
-// Creates a session and returns the session information. Use the returned sessionId for subsequent operations such as sending messages, querying records, and updating the session.
+// Creates a session and returns the session information. Use the returned sessionId when sending messages, querying records, and updating the session.
 //
 // @param request - CreateSessionRequest
 //
@@ -172,6 +172,10 @@ func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, he
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Title) {
 		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UiEnabled) {
+		body["uiEnabled"] = request.UiEnabled
 	}
 
 	realHeaders := make(map[string]*string)
@@ -213,7 +217,7 @@ func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, he
 //
 // Description:
 //
-// Creates a session and returns the session information. Use the returned sessionId for subsequent operations such as sending messages, querying records, and updating the session.
+// Creates a session and returns the session information. Use the returned sessionId when sending messages, querying records, and updating the session.
 //
 // @param request - CreateSessionRequest
 //
@@ -313,7 +317,7 @@ func (client *Client) DeleteSession(sessionId *string, request *DeleteSessionReq
 //
 // Description:
 //
-// Queries the read-only mode switch of the current account. It is enabled by default if not configured.
+// Queries the read-only mode switch for the current account. The read-only mode is enabled by default if not configured.
 //
 // @param request - GetReadonlyModeRequest
 //
@@ -358,7 +362,7 @@ func (client *Client) GetReadonlyModeWithOptions(request *GetReadonlyModeRequest
 //
 // Description:
 //
-// Queries the read-only mode switch of the current account. It is enabled by default if not configured.
+// Queries the read-only mode switch for the current account. The read-only mode is enabled by default if not configured.
 //
 // @param request - GetReadonlyModeRequest
 //
@@ -449,7 +453,7 @@ func (client *Client) GetRun(sessionId *string, runId *string, request *GetRunRe
 //
 // Description:
 //
-// Queries the title, status, and pinned state of a specified session, along with the ID and status of its last run.
+// Queries the title, status, and pinned status of a specified session, as well as the ID and status of its last run.
 //
 // @param request - GetSessionRequest
 //
@@ -494,7 +498,7 @@ func (client *Client) GetSessionWithOptions(sessionId *string, request *GetSessi
 //
 // Description:
 //
-// Queries the title, status, and pinned state of a specified session, along with the ID and status of its last run.
+// Queries the title, status, and pinned status of a specified session, as well as the ID and status of its last run.
 //
 // @param request - GetSessionRequest
 //
@@ -517,7 +521,7 @@ func (client *Client) GetSession(sessionId *string, request *GetSessionRequest) 
 //
 // Description:
 //
-// Queries the message timeline of a specified session in pages. Use the returned nextToken to retrieve the next page.
+// Performs a paged query on the message timeline of a specified session. Use the returned nextToken for paging.
 //
 // @param request - ListMessagesRequest
 //
@@ -576,7 +580,7 @@ func (client *Client) ListMessagesWithOptions(sessionId *string, request *ListMe
 //
 // Description:
 //
-// Queries the message timeline of a specified session in pages. Use the returned nextToken to retrieve the next page.
+// Performs a paged query on the message timeline of a specified session. Use the returned nextToken for paging.
 //
 // @param request - ListMessagesRequest
 //
@@ -599,7 +603,7 @@ func (client *Client) ListMessages(sessionId *string, request *ListMessagesReque
 //
 // Description:
 //
-// Performs a paging query for the list of sessions accessible to the current invoke identity. Use the returned nextToken to retrieve the next page.
+// Performs a paging query for the list of sessions accessible to the current identity used to invoke. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListSessionsRequest
 //
@@ -654,7 +658,7 @@ func (client *Client) ListSessionsWithOptions(request *ListSessionsRequest, head
 //
 // Description:
 //
-// Performs a paging query for the list of sessions accessible to the current invoke identity. Use the returned nextToken to retrieve the next page.
+// Performs a paging query for the list of sessions accessible to the current identity used to invoke. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListSessionsRequest
 //
@@ -677,7 +681,7 @@ func (client *Client) ListSessions(request *ListSessionsRequest) (_result *ListS
 //
 // Description:
 //
-// Sends a message to a specified session, submits interrupt handling results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
+// Sends a message to a specified session, submits interrupt processing results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
 //
 // @param request - SendMessageRequest
 //
@@ -698,7 +702,7 @@ func (client *Client) SendMessageWithSSE(sessionId *string, request *SendMessage
 //
 // Description:
 //
-// Sends a message to a specified session, submits interrupt handling results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
+// Sends a message to a specified session, submits interrupt processing results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
 //
 // @param request - SendMessageRequest
 //
@@ -717,6 +721,10 @@ func (client *Client) SendMessageWithOptions(sessionId *string, request *SendMes
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attachments) {
 		body["attachments"] = request.Attachments
+	}
+
+	if !dara.IsNil(request.Commands) {
+		body["commands"] = request.Commands
 	}
 
 	if !dara.IsNil(request.Content) {
@@ -774,7 +782,7 @@ func (client *Client) SendMessageWithOptions(sessionId *string, request *SendMes
 //
 // Description:
 //
-// Sends a message to a specified session, submits interrupt handling results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
+// Sends a message to a specified session, submits interrupt processing results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
 //
 // @param request - SendMessageRequest
 //
@@ -867,7 +875,7 @@ func (client *Client) UpdateReadonlyMode(request *UpdateReadonlyModeRequest) (_r
 
 // Summary:
 //
-// Updates the title or pinned status of a session.
+// Updates a session.
 //
 // Description:
 //
@@ -894,6 +902,10 @@ func (client *Client) UpdateSessionWithOptions(sessionId *string, request *Updat
 
 	if !dara.IsNil(request.Title) {
 		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UiEnabled) {
+		body["uiEnabled"] = request.UiEnabled
 	}
 
 	realHeaders := make(map[string]*string)
@@ -931,7 +943,7 @@ func (client *Client) UpdateSessionWithOptions(sessionId *string, request *Updat
 
 // Summary:
 //
-// Updates the title or pinned status of a session.
+// Updates a session.
 //
 // Description:
 //
@@ -963,6 +975,10 @@ func (client *Client) sendMessageWithSSE_opYieldFunc(_yield chan *SendMessageRes
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attachments) {
 		body["attachments"] = request.Attachments
+	}
+
+	if !dara.IsNil(request.Commands) {
+		body["commands"] = request.Commands
 	}
 
 	if !dara.IsNil(request.Content) {

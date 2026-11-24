@@ -13,6 +13,8 @@ type iUpdateSessionRequest interface {
 	GetPinned() *bool
 	SetTitle(v string) *UpdateSessionRequest
 	GetTitle() *string
+	SetUiEnabled(v bool) *UpdateSessionRequest
+	GetUiEnabled() *bool
 }
 
 type UpdateSessionRequest struct {
@@ -22,12 +24,14 @@ type UpdateSessionRequest struct {
 	//
 	// true
 	Pinned *bool `json:"pinned,omitempty" xml:"pinned,omitempty"`
-	// The updated title of the session. If you do not need to update the title, you can leave this parameter empty.
+	// The updated session title. You can leave this parameter empty if no update is required.
 	//
 	// example:
 	//
 	// Updated inspection session
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Specifies whether to enable session UI enhancement. This feature is supported only for common sessions.
+	UiEnabled *bool `json:"uiEnabled,omitempty" xml:"uiEnabled,omitempty"`
 }
 
 func (s UpdateSessionRequest) String() string {
@@ -46,6 +50,10 @@ func (s *UpdateSessionRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *UpdateSessionRequest) GetUiEnabled() *bool {
+	return s.UiEnabled
+}
+
 func (s *UpdateSessionRequest) SetPinned(v bool) *UpdateSessionRequest {
 	s.Pinned = &v
 	return s
@@ -53,6 +61,11 @@ func (s *UpdateSessionRequest) SetPinned(v bool) *UpdateSessionRequest {
 
 func (s *UpdateSessionRequest) SetTitle(v string) *UpdateSessionRequest {
 	s.Title = &v
+	return s
+}
+
+func (s *UpdateSessionRequest) SetUiEnabled(v bool) *UpdateSessionRequest {
+	s.UiEnabled = &v
 	return s
 }
 

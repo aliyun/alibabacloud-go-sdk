@@ -79,7 +79,7 @@ func (s *UpdateReadonlyModeResponseBody) Validate() error {
 }
 
 type UpdateReadonlyModeResponseBodyData struct {
-	// The configuration name. The value is fixed to readonly.
+	// The configuration name. The value is fixed as readonly.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type UpdateReadonlyModeResponseBodyData struct {
 	//
 	// true
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// The type of the configuration value. The value is BOOL for this operation.
+	// The type of the configuration value. For this operation, the value is BOOL.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateSessionResponseBody interface {
 }
 
 type CreateSessionResponseBody struct {
-	// The session information of the created session.
+	// The created session information.
 	Data *CreateSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -97,12 +97,18 @@ type CreateSessionResponseBodyData struct {
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status. The value is fixed to `IDLE` upon successful creation.
+	// The session status. The value is fixed to `IDLE` when the session is successfully created.
 	//
 	// example:
 	//
 	// IDLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether session UI enhancement is enabled. A value of true indicates that it is enabled, and a value of false indicates that it is disabled. Only common sessions support this feature. If this field is not returned, it is considered disabled.
+	//
+	// example:
+	//
+	// true
+	UiEnabled *bool `json:"uiEnabled,omitempty" xml:"uiEnabled,omitempty"`
 	// The time when the session was last updated, in ISO 8601 format.
 	//
 	// example:
@@ -135,6 +141,10 @@ func (s *CreateSessionResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
+func (s *CreateSessionResponseBodyData) GetUiEnabled() *bool {
+	return s.UiEnabled
+}
+
 func (s *CreateSessionResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
@@ -156,6 +166,11 @@ func (s *CreateSessionResponseBodyData) SetSessionId(v string) *CreateSessionRes
 
 func (s *CreateSessionResponseBodyData) SetStatus(v string) *CreateSessionResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *CreateSessionResponseBodyData) SetUiEnabled(v bool) *CreateSessionResponseBodyData {
+	s.UiEnabled = &v
 	return s
 }
 

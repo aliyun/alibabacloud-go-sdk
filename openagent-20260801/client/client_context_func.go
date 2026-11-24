@@ -74,7 +74,7 @@ func (client *Client) CancelRunWithContext(ctx context.Context, sessionId *strin
 //
 // Description:
 //
-// Creates a session and returns the session information. Use the returned sessionId for subsequent operations such as sending messages, querying records, and updating the session.
+// Creates a session and returns the session information. Use the returned sessionId when sending messages, querying records, and updating the session.
 //
 // @param request - CreateSessionRequest
 //
@@ -93,6 +93,10 @@ func (client *Client) CreateSessionWithContext(ctx context.Context, request *Cre
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Title) {
 		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UiEnabled) {
+		body["uiEnabled"] = request.UiEnabled
 	}
 
 	realHeaders := make(map[string]*string)
@@ -188,7 +192,7 @@ func (client *Client) DeleteSessionWithContext(ctx context.Context, sessionId *s
 //
 // Description:
 //
-// Queries the read-only mode switch of the current account. It is enabled by default if not configured.
+// Queries the read-only mode switch for the current account. The read-only mode is enabled by default if not configured.
 //
 // @param request - GetReadonlyModeRequest
 //
@@ -278,7 +282,7 @@ func (client *Client) GetRunWithContext(ctx context.Context, sessionId *string, 
 //
 // Description:
 //
-// Queries the title, status, and pinned state of a specified session, along with the ID and status of its last run.
+// Queries the title, status, and pinned status of a specified session, as well as the ID and status of its last run.
 //
 // @param request - GetSessionRequest
 //
@@ -323,7 +327,7 @@ func (client *Client) GetSessionWithContext(ctx context.Context, sessionId *stri
 //
 // Description:
 //
-// Queries the message timeline of a specified session in pages. Use the returned nextToken to retrieve the next page.
+// Performs a paged query on the message timeline of a specified session. Use the returned nextToken for paging.
 //
 // @param request - ListMessagesRequest
 //
@@ -382,7 +386,7 @@ func (client *Client) ListMessagesWithContext(ctx context.Context, sessionId *st
 //
 // Description:
 //
-// Performs a paging query for the list of sessions accessible to the current invoke identity. Use the returned nextToken to retrieve the next page.
+// Performs a paging query for the list of sessions accessible to the current identity used to invoke. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListSessionsRequest
 //
@@ -437,7 +441,7 @@ func (client *Client) ListSessionsWithContext(ctx context.Context, request *List
 //
 // Description:
 //
-// Sends a message to a specified session, submits interrupt handling results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
+// Sends a message to a specified session, submits interrupt processing results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
 //
 // @param request - SendMessageRequest
 //
@@ -458,7 +462,7 @@ func (client *Client) SendMessageWithSSECtx(ctx context.Context, sessionId *stri
 //
 // Description:
 //
-// Sends a message to a specified session, submits interrupt handling results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
+// Sends a message to a specified session, submits interrupt processing results, or reconnects to a specified run. Returns the run progress and results through a Server-Sent Events (SSE) event stream.
 //
 // @param request - SendMessageRequest
 //
@@ -477,6 +481,10 @@ func (client *Client) SendMessageWithContext(ctx context.Context, sessionId *str
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attachments) {
 		body["attachments"] = request.Attachments
+	}
+
+	if !dara.IsNil(request.Commands) {
+		body["commands"] = request.Commands
 	}
 
 	if !dara.IsNil(request.Content) {
@@ -581,7 +589,7 @@ func (client *Client) UpdateReadonlyModeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the title or pinned status of a session.
+// Updates a session.
 //
 // Description:
 //
@@ -608,6 +616,10 @@ func (client *Client) UpdateSessionWithContext(ctx context.Context, sessionId *s
 
 	if !dara.IsNil(request.Title) {
 		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UiEnabled) {
+		body["uiEnabled"] = request.UiEnabled
 	}
 
 	realHeaders := make(map[string]*string)
@@ -654,6 +666,10 @@ func (client *Client) sendMessageWithSSECtx_opYieldFunc(_yield chan *SendMessage
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attachments) {
 		body["attachments"] = request.Attachments
+	}
+
+	if !dara.IsNil(request.Commands) {
+		body["commands"] = request.Commands
 	}
 
 	if !dara.IsNil(request.Content) {

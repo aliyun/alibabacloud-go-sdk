@@ -17,7 +17,7 @@ type iCreateSessionHeaders interface {
 
 type CreateSessionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The request idempotency key. Use the same value and the same business parameters when retrying the same request.
+	// The idempotency key of the request. Use the same value and the same business parameters when you retry the request.
 	//
 	// example:
 	//

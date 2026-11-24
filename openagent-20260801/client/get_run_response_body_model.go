@@ -79,7 +79,7 @@ func (s *GetRunResponseBody) Validate() error {
 }
 
 type GetRunResponseBodyData struct {
-	// The run creation time in ISO 8601 format.
+	// The creation time of the run, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -101,25 +101,25 @@ type GetRunResponseBodyData struct {
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	// The run status. Valid values:
 	//
-	// - `PENDING`: pending execution
+	// - `PENDING`: Pending execution.
 	//
-	// - `RUNNING`: running
+	// - `RUNNING`: Running.
 	//
-	// - `WAITING_USER`: waiting for interrupt handling
+	// - `WAITING_USER`: Waiting for interrupt handling.
 	//
-	// - `COMPLETED`: completed
+	// - `COMPLETED`: Completed.
 	//
-	// - `FAILED`: failed
+	// - `FAILED`: Failed.
 	//
-	// - `CANCELLED`: canceled
+	// - `CANCELLED`: Canceled.
 	//
-	// - `REJECTED`: rejected
+	// - `REJECTED`: Rejected.
 	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time of the run in ISO 8601 format.
+	// The last update time of the run, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -199,13 +199,13 @@ func (s *GetRunResponseBodyData) Validate() error {
 }
 
 type GetRunResponseBodyDataOutcome struct {
-	// The interrupt list.
+	// The list of interrupts.
 	Interrupts []*GetRunResponseBodyDataOutcomeInterrupts `json:"interrupts,omitempty" xml:"interrupts,omitempty" type:"Repeated"`
-	// The result type. Valid values:
+	// The outcome type. Valid values:
 	//
-	// - `success`: successfully completed
+	// - `success`: Successfully completed.
 	//
-	// - `interrupt`: waiting for interrupt handling
+	// - `interrupt`: Waiting for interrupt handling.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ func (s *GetRunResponseBodyDataOutcome) Validate() error {
 type GetRunResponseBodyDataOutcomeInterrupts struct {
 	// The interrupt data.
 	Data *GetRunResponseBodyDataOutcomeInterruptsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The interrupt expiration time in ISO 8601 format.
+	// The expiration time of the interrupt, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -281,19 +281,19 @@ type GetRunResponseBodyDataOutcomeInterrupts struct {
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The interrupt reason. Valid values:
 	//
-	// - `tool_call`: tool invocation requires handling
+	// - `tool_call`: Tool invocation requires handling.
 	//
-	// - `input_required`: user input is required
+	// - `input_required`: User input is required.
 	//
-	// - `confirmation`: confirmation is required
+	// - `confirmation`: Confirmation is required.
 	//
-	// - `out_of_band_approval`: waiting for out-of-band approval
+	// - `out_of_band_approval`: Waiting for out-of-band approval.
 	//
 	// example:
 	//
 	// input_required
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// The JSON schema that the payload must comply with when resuming this interrupt.
+	// The JSON schema that the payload must conform to when resuming this interrupt.
 	//
 	// example:
 	//
@@ -517,7 +517,7 @@ type GetRunResponseBodyDataOutcomeInterruptsDataApiCalls struct {
 	//
 	// example:
 	//
-	// Perform changes on the sample resource
+	// Apply changes to the sample resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
