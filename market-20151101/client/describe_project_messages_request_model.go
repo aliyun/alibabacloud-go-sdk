@@ -16,12 +16,16 @@ type iDescribeProjectMessagesRequest interface {
 }
 
 type DescribeProjectMessagesRequest struct {
+	// The instance ID of the Alibaba Cloud Marketplace business.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Each page returns 20 entries.
+	//
 	// example:
 	//
 	// 1

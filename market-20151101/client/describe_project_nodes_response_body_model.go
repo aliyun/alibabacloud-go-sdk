@@ -18,11 +18,16 @@ type iDescribeProjectNodesResponseBody interface {
 }
 
 type DescribeProjectNodesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 937fee1f-26bb-4b6e-8def-977a6bdaa1e5
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeProjectNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// None.
+	Result []*DescribeProjectNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The success status identifier.
+	//
 	// example:
 	//
 	// true
@@ -78,63 +83,115 @@ func (s *DescribeProjectNodesResponseBody) Validate() error {
 }
 
 type DescribeProjectNodesResponseBodyResult struct {
+	// Indicates whether rollback to the previous flow node is allowed.
+	//
 	// example:
 	//
 	// false
 	AllowRollbackNode *bool `json:"AllowRollbackNode,omitempty" xml:"AllowRollbackNode,omitempty"`
+	// Indicates whether the node automatically completes upon timeout.
+	//
 	// example:
 	//
 	// false
 	AutoFinishNode *bool `json:"AutoFinishNode,omitempty" xml:"AutoFinishNode,omitempty"`
+	// The sequence number of the final flow node.
+	//
 	// example:
 	//
 	// 4
 	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// The timeout time of the flow node (UNIX timestamp).
+	//
 	// example:
 	//
 	// 1588834325000
 	GmtExpired *int64 `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// The completion time of the flow node (UNIX timestamp).
+	//
 	// example:
 	//
 	// 1588834325000
 	GmtFinished *int64 `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
+	// The start time of the flow node (UNIX timestamp).
+	//
 	// example:
 	//
 	// 1588834325000
 	GmtStart *int64 `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// Indicates whether uploading an attachment is mandatory.
+	//
 	// example:
 	//
 	// false
 	NeedAttachment *bool `json:"NeedAttachment,omitempty" xml:"NeedAttachment,omitempty"`
+	// The ID of the next flow node.
+	//
 	// example:
 	//
 	// 8472
 	NextNodeId *int64 `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
+	// The flow node ID.
+	//
 	// example:
 	//
 	// 8471
-	NodeId   *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node name.
+	//
+	// example:
+	//
+	// Assign service provider node
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The execution status of the node. Valid values:
+	//
+	// - NotStart: not started.
+	//
+	// - Starting: in progress.
+	//
+	// - Cancel: canceled.
+	//
+	// - Finish: completed.
+	//
 	// example:
 	//
 	// Finish
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The role of the operator. Valid values:
+	//
+	// - System: system.
+	//
+	// - Custom: customer.
+	//
+	// - Provider: service provider.
+	//
 	// example:
 	//
 	// System
 	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// The ID of the parent flow node.
+	//
 	// example:
 	//
 	// 0
 	ParentNodeId *int64 `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
+	// The ID of the previous flow node.
+	//
 	// example:
 	//
 	// 8470
 	PreviousNodeId *int64 `json:"PreviousNodeId,omitempty" xml:"PreviousNodeId,omitempty"`
+	// The sequence number of the flow node.
+	//
 	// example:
 	//
 	// 2
-	StepNo       *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	StepNo *int32 `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	// The form content of the flow node.
+	//
+	// example:
+	//
+	// [ {"fieldKey": "TFD0","isRequired": true,"maxLength": 50, "placeHolder": "Name","stepNum": 0,"title": "Consignee name","type": "text" },{ "fieldKey": "TFD1","isRequired": true,"maxLength": 50,"placeHolder": "Phone number","stepNum": 1,"title": "Consignee phone number","type": "text"},{"fieldKey": "TFD2","isRequired": true,"maxLength": 50,"placeHolder": "Province, city, district, street, and house number","stepNum": 2,"title": "Detailed shipping address","type": "textarea"}]
 	TemplateForm *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
 }
 

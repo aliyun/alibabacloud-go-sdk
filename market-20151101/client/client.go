@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Market")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":           dara.String("market.aliyuncs.com"),
@@ -83,7 +91,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 增加STS支持
+// Activates an authorization code by calling ActivateLicense.
 //
 // @param request - ActivateLicenseRequest
 //
@@ -131,7 +139,7 @@ func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest
 
 // Summary:
 //
-// 增加STS支持
+// Activates an authorization code by calling ActivateLicense.
 //
 // @param request - ActivateLicenseRequest
 //
@@ -149,7 +157,7 @@ func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result 
 
 // Summary:
 //
-// 设置自动续费
+// Sets auto-renewal.
 //
 // @param request - AutoRenewInstanceRequest
 //
@@ -209,7 +217,7 @@ func (client *Client) AutoRenewInstanceWithOptions(request *AutoRenewInstanceReq
 
 // Summary:
 //
-// 设置自动续费
+// Sets auto-renewal.
 //
 // @param request - AutoRenewInstanceRequest
 //
@@ -227,7 +235,13 @@ func (client *Client) AutoRenewInstance(request *AutoRenewInstanceRequest) (_res
 
 // Summary:
 //
-// 确认查收订阅通知
+// Confirms that the merchant has received and processed a notification message. After this call, the message will no longer be returned in subsequent queries.
+//
+// Description:
+//
+// Confirms the receipt of a subscription notification failure message.
+//
+// - After a successful call, the message will no longer be returned in subsequent queries. The platform considers that the merchant has correctly processed the message.
 //
 // @param request - ConfirmNotificationRequest
 //
@@ -271,7 +285,13 @@ func (client *Client) ConfirmNotificationWithOptions(request *ConfirmNotificatio
 
 // Summary:
 //
-// 确认查收订阅通知
+// Confirms that the merchant has received and processed a notification message. After this call, the message will no longer be returned in subsequent queries.
+//
+// Description:
+//
+// Confirms the receipt of a subscription notification failure message.
+//
+// - After a successful call, the message will no longer be returned in subsequent queries. The platform considers that the merchant has correctly processed the message.
 //
 // @param request - ConfirmNotificationRequest
 //
@@ -289,7 +309,17 @@ func (client *Client) ConfirmNotification(request *ConfirmNotificationRequest) (
 
 // Summary:
 //
-// 创建订单
+// Calls the CreateOrder operation to create an order.
+//
+// Before calling this operation, make sure that you fully understand the billing method and pricing of Alibaba Cloud Marketplace products.
+//
+// To create an order for a commercial image, refer to [CreateInstance](https://help.aliyun.com/document_detail/25499.html).
+//
+// Description:
+//
+// Before calling this operation, make sure that you fully understand the billing method and [pricing](https://market.aliyun.com/) of Alibaba Cloud Marketplace products.
+//
+// To create an order for a commercial image, refer to [CreateInstance](https://help.aliyun.com/document_detail/25499.html).
 //
 // @param request - CreateOrderRequest
 //
@@ -353,7 +383,17 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtim
 
 // Summary:
 //
-// 创建订单
+// Calls the CreateOrder operation to create an order.
+//
+// Before calling this operation, make sure that you fully understand the billing method and pricing of Alibaba Cloud Marketplace products.
+//
+// To create an order for a commercial image, refer to [CreateInstance](https://help.aliyun.com/document_detail/25499.html).
+//
+// Description:
+//
+// Before calling this operation, make sure that you fully understand the billing method and [pricing](https://market.aliyun.com/) of Alibaba Cloud Marketplace products.
+//
+// To create an order for a commercial image, refer to [CreateInstance](https://help.aliyun.com/document_detail/25499.html).
 //
 // @param request - CreateOrderRequest
 //
@@ -371,7 +411,7 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 
 // Summary:
 //
-// 跨账号角色授权，根据token获取用户信息
+// Query cross-account role authorization information, including the authorized user\\"s Alibaba Cloud account UID, name, authorization time, and authorized role name.
 //
 // @param request - CrossAccountVerifyTokenRequest
 //
@@ -415,7 +455,7 @@ func (client *Client) CrossAccountVerifyTokenWithOptions(request *CrossAccountVe
 
 // Summary:
 //
-// 跨账号角色授权，根据token获取用户信息
+// Query cross-account role authorization information, including the authorized user\\"s Alibaba Cloud account UID, name, authorization time, and authorized role name.
 //
 // @param request - CrossAccountVerifyTokenRequest
 //
@@ -433,7 +473,11 @@ func (client *Client) CrossAccountVerifyToken(request *CrossAccountVerifyTokenRe
 
 // Summary:
 //
-// 查询API用量
+// Retrieves the API quota, total capacity, and usage data of a user.
+//
+// Description:
+//
+// ### **Note: This API operation supports Alibaba Cloud accounts and RAM users in retrieving API quota, total capacity, and usage information.**
 //
 // @param request - DescribeApiMeteringRequest
 //
@@ -473,7 +517,11 @@ func (client *Client) DescribeApiMeteringWithOptions(request *DescribeApiMeterin
 
 // Summary:
 //
-// 查询API用量
+// Retrieves the API quota, total capacity, and usage data of a user.
+//
+// Description:
+//
+// ### **Note: This API operation supports Alibaba Cloud accounts and RAM users in retrieving API quota, total capacity, and usage information.**
 //
 // @param request - DescribeApiMeteringRequest
 //
@@ -491,7 +539,13 @@ func (client *Client) DescribeApiMetering(request *DescribeApiMeteringRequest) (
 
 // Summary:
 //
-// 工作流当前节点信息
+// Calls DescribeCurrentNodeInfo to retrieve the process information of the current node.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - DescribeCurrentNodeInfoRequest
 //
@@ -535,7 +589,13 @@ func (client *Client) DescribeCurrentNodeInfoWithOptions(request *DescribeCurren
 
 // Summary:
 //
-// 工作流当前节点信息
+// Calls DescribeCurrentNodeInfo to retrieve the process information of the current node.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - DescribeCurrentNodeInfoRequest
 //
@@ -553,7 +613,11 @@ func (client *Client) DescribeCurrentNodeInfo(request *DescribeCurrentNodeInfoRe
 
 // Summary:
 //
-// 分页获取推广商品
+// Retrieves a paginated list of promotional products with detailed information.
+//
+// Description:
+//
+// Call this operation by using a promotion service provider account.
 //
 // @param request - DescribeDistributionProductsRequest
 //
@@ -593,7 +657,11 @@ func (client *Client) DescribeDistributionProductsWithOptions(request *DescribeD
 
 // Summary:
 //
-// 分页获取推广商品
+// Retrieves a paginated list of promotional products with detailed information.
+//
+// Description:
+//
+// Call this operation by using a promotion service provider account.
 //
 // @param request - DescribeDistributionProductsRequest
 //
@@ -611,7 +679,11 @@ func (client *Client) DescribeDistributionProducts(request *DescribeDistribution
 
 // Summary:
 //
-// 获取并生成推广商品-链接
+// Retrieves promotion links for promoted products.
+//
+// Description:
+//
+// Call this operation by using a promotion service provider account. Calls from non-promotion service provider accounts will fail.
 //
 // @param tmpReq - DescribeDistributionProductsLinkRequest
 //
@@ -661,7 +733,11 @@ func (client *Client) DescribeDistributionProductsLinkWithOptions(tmpReq *Descri
 
 // Summary:
 //
-// 获取并生成推广商品-链接
+// Retrieves promotion links for promoted products.
+//
+// Description:
+//
+// Call this operation by using a promotion service provider account. Calls from non-promotion service provider accounts will fail.
 //
 // @param request - DescribeDistributionProductsLinkRequest
 //
@@ -679,7 +755,13 @@ func (client *Client) DescribeDistributionProductsLink(request *DescribeDistribu
 
 // Summary:
 //
-// 查询订阅通知失败列表
+// Queries the list of failed subscription notifications. After Alibaba Cloud Marketplace fails to call a service provider\\"s message SPI, the service provider can use this operation to proactively query the failed notification information.
+//
+// Description:
+//
+// Queries the information about failed subscription notifications for a service provider.
+//
+// - If no unconfirmed failed notifications exist, TotalCount returns 0.
 //
 // @param request - DescribeFailedNotificationsRequest
 //
@@ -727,7 +809,13 @@ func (client *Client) DescribeFailedNotificationsWithOptions(request *DescribeFa
 
 // Summary:
 //
-// 查询订阅通知失败列表
+// Queries the list of failed subscription notifications. After Alibaba Cloud Marketplace fails to call a service provider\\"s message SPI, the service provider can use this operation to proactively query the failed notification information.
+//
+// Description:
+//
+// Queries the information about failed subscription notifications for a service provider.
+//
+// - If no unconfirmed failed notifications exist, TotalCount returns 0.
 //
 // @param request - DescribeFailedNotificationsRequest
 //
@@ -811,7 +899,7 @@ func (client *Client) DescribeImageInstanceForIsv(request *DescribeImageInstance
 
 // Summary:
 //
-// 查询实例
+// Calls the DescribeInstance operation to query instance information.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -863,7 +951,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// 查询实例
+// Calls the DescribeInstance operation to query instance information.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -881,7 +969,7 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 
 // Summary:
 //
-// 服务商侧查询实例信息
+// Queries instance information from the service provider side.
 //
 // @param request - DescribeInstanceForIsvRequest
 //
@@ -925,7 +1013,7 @@ func (client *Client) DescribeInstanceForIsvWithOptions(request *DescribeInstanc
 
 // Summary:
 //
-// 服务商侧查询实例信息
+// Queries instance information from the service provider side.
 //
 // @param request - DescribeInstanceForIsvRequest
 //
@@ -943,7 +1031,7 @@ func (client *Client) DescribeInstanceForIsv(request *DescribeInstanceForIsvRequ
 
 // Summary:
 //
-// 查询实例列表
+// Queries the list of services purchased by the user.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -1003,7 +1091,7 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 // Summary:
 //
-// 查询实例列表
+// Queries the list of services purchased by the user.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -1021,7 +1109,15 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 
 // Summary:
 //
-// 查询供应商下的发票信息
+// Queries the invoice information of a Cloud Marketplace vendor store.
+//
+// Description:
+//
+// Queries business information based on an authorization code and first verifies whether the authorization code is valid.
+//
+// - If the authorization code is invalid, an error message is returned.
+//
+// - If the authorization code is valid, the authorization information is returned.
 //
 // @param request - DescribeInvoiceForIsvRequest
 //
@@ -1101,7 +1197,15 @@ func (client *Client) DescribeInvoiceForIsvWithOptions(request *DescribeInvoiceF
 
 // Summary:
 //
-// 查询供应商下的发票信息
+// Queries the invoice information of a Cloud Marketplace vendor store.
+//
+// Description:
+//
+// Queries business information based on an authorization code and first verifies whether the authorization code is valid.
+//
+// - If the authorization code is invalid, an error message is returned.
+//
+// - If the authorization code is valid, the authorization information is returned.
 //
 // @param request - DescribeInvoiceForIsvRequest
 //
@@ -1119,7 +1223,7 @@ func (client *Client) DescribeInvoiceForIsv(request *DescribeInvoiceForIsvReques
 
 // Summary:
 //
-// 获取License
+// Calls DescribeLicense to query license information.
 //
 // @param request - DescribeLicenseRequest
 //
@@ -1163,7 +1267,7 @@ func (client *Client) DescribeLicenseWithOptions(request *DescribeLicenseRequest
 
 // Summary:
 //
-// 获取License
+// Calls DescribeLicense to query license information.
 //
 // @param request - DescribeLicenseRequest
 //
@@ -1181,7 +1285,7 @@ func (client *Client) DescribeLicense(request *DescribeLicenseRequest) (_result 
 
 // Summary:
 //
-// 查询订单
+// Queries the details of a specified order.
 //
 // @param request - DescribeOrderRequest
 //
@@ -1225,7 +1329,7 @@ func (client *Client) DescribeOrderWithOptions(request *DescribeOrderRequest, ru
 
 // Summary:
 //
-// 查询订单
+// Queries the details of a specified order.
 //
 // @param request - DescribeOrderRequest
 //
@@ -1243,7 +1347,7 @@ func (client *Client) DescribeOrder(request *DescribeOrderRequest) (_result *Des
 
 // Summary:
 //
-// 服务商侧查询订单详情
+// Queries order details from the service provider side.
 //
 // @param request - DescribeOrderForIsvRequest
 //
@@ -1287,7 +1391,7 @@ func (client *Client) DescribeOrderForIsvWithOptions(request *DescribeOrderForIs
 
 // Summary:
 //
-// 服务商侧查询订单详情
+// Queries order details from the service provider side.
 //
 // @param request - DescribeOrderForIsvRequest
 //
@@ -1305,7 +1409,7 @@ func (client *Client) DescribeOrderForIsv(request *DescribeOrderForIsvRequest) (
 
 // Summary:
 //
-// 查询价格
+// Calls DescribePrice to query the price information of the corresponding product.
 //
 // @param request - DescribePriceRequest
 //
@@ -1353,7 +1457,7 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 
 // Summary:
 //
-// 查询价格
+// Calls DescribePrice to query the price information of the corresponding product.
 //
 // @param request - DescribePriceRequest
 //
@@ -1369,6 +1473,10 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified product.
+//
 // @param request - DescribeProductRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1417,6 +1525,10 @@ func (client *Client) DescribeProductWithOptions(request *DescribeProductRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified product.
+//
 // @param request - DescribeProductRequest
 //
 // @return DescribeProductResponse
@@ -1431,6 +1543,10 @@ func (client *Client) DescribeProduct(request *DescribeProductRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of products that meet the specified conditions along with their details.
+//
 // @param request - DescribeProductsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1483,6 +1599,10 @@ func (client *Client) DescribeProductsWithOptions(request *DescribeProductsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of products that meet the specified conditions along with their details.
+//
 // @param request - DescribeProductsRequest
 //
 // @return DescribeProductsResponse
@@ -1499,7 +1619,7 @@ func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_resul
 
 // Summary:
 //
-// 附件信息
+// Queries a list of project attachments.
 //
 // @param request - DescribeProjectAttachmentsRequest
 //
@@ -1543,7 +1663,7 @@ func (client *Client) DescribeProjectAttachmentsWithOptions(request *DescribePro
 
 // Summary:
 //
-// 附件信息
+// Queries a list of project attachments.
 //
 // @param request - DescribeProjectAttachmentsRequest
 //
@@ -1561,7 +1681,7 @@ func (client *Client) DescribeProjectAttachments(request *DescribeProjectAttachm
 
 // Summary:
 //
-// 项目信息
+// Calls DescribeProjectInfo to query project information.
 //
 // @param request - DescribeProjectInfoRequest
 //
@@ -1605,7 +1725,7 @@ func (client *Client) DescribeProjectInfoWithOptions(request *DescribeProjectInf
 
 // Summary:
 //
-// 项目信息
+// Calls DescribeProjectInfo to query project information.
 //
 // @param request - DescribeProjectInfoRequest
 //
@@ -1623,7 +1743,7 @@ func (client *Client) DescribeProjectInfo(request *DescribeProjectInfoRequest) (
 
 // Summary:
 //
-// 查询项目留言信息
+// Queries the list of messages for a project workflow.
 //
 // @param request - DescribeProjectMessagesRequest
 //
@@ -1671,7 +1791,7 @@ func (client *Client) DescribeProjectMessagesWithOptions(request *DescribeProjec
 
 // Summary:
 //
-// 查询项目留言信息
+// Queries the list of messages for a project workflow.
 //
 // @param request - DescribeProjectMessagesRequest
 //
@@ -1689,13 +1809,13 @@ func (client *Client) DescribeProjectMessages(request *DescribeProjectMessagesRe
 
 // Summary:
 //
-// 查询项目流程节点list
+// Queries the list of project flow nodes by calling DescribeProjectNodes.
 //
 // Description:
 //
 // *
 //
-// **
+// **.
 //
 // @param request - DescribeProjectNodesRequest
 //
@@ -1739,13 +1859,13 @@ func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNo
 
 // Summary:
 //
-// 查询项目流程节点list
+// Queries the list of project flow nodes by calling DescribeProjectNodes.
 //
 // Description:
 //
 // *
 //
-// **
+// **.
 //
 // @param request - DescribeProjectNodesRequest
 //
@@ -1763,7 +1883,13 @@ func (client *Client) DescribeProjectNodes(request *DescribeProjectNodesRequest)
 
 // Summary:
 //
-// 查询项目操作记录列表
+// Calls DescribeProjectOperateLogs to retrieve the operation logs of a project flow.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - DescribeProjectOperateLogsRequest
 //
@@ -1807,7 +1933,13 @@ func (client *Client) DescribeProjectOperateLogsWithOptions(request *DescribePro
 
 // Summary:
 //
-// 查询项目操作记录列表
+// Calls DescribeProjectOperateLogs to retrieve the operation logs of a project flow.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - DescribeProjectOperateLogsRequest
 //
@@ -1825,7 +1957,13 @@ func (client *Client) DescribeProjectOperateLogs(request *DescribeProjectOperate
 
 // Summary:
 //
-// 完成当前流程节点
+// Completes the current process by calling FinishCurrentProjectNode.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - FinishCurrentProjectNodeRequest
 //
@@ -1881,7 +2019,13 @@ func (client *Client) FinishCurrentProjectNodeWithOptions(request *FinishCurrent
 
 // Summary:
 //
-// 完成当前流程节点
+// Completes the current process by calling FinishCurrentProjectNode.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - FinishCurrentProjectNodeRequest
 //
@@ -1899,7 +2043,13 @@ func (client *Client) FinishCurrentProjectNode(request *FinishCurrentProjectNode
 
 // Summary:
 //
-// 发票受理接口
+// Processes invoice acceptance requests.
+//
+// Description:
+//
+// Queries information about failed subscription notifications for merchants.
+//
+// - If no unconfirmed notification failure information exists, TotalCount returns 0.
 //
 // @param request - ModifyInvoiceForIsvRequest
 //
@@ -1963,7 +2113,13 @@ func (client *Client) ModifyInvoiceForIsvWithOptions(request *ModifyInvoiceForIs
 
 // Summary:
 //
-// 发票受理接口
+// Processes invoice acceptance requests.
+//
+// Description:
+//
+// Queries information about failed subscription notifications for merchants.
+//
+// - If no unconfirmed notification failure information exists, TotalCount returns 0.
 //
 // @param request - ModifyInvoiceForIsvRequest
 //
@@ -1981,7 +2137,13 @@ func (client *Client) ModifyInvoiceForIsv(request *ModifyInvoiceForIsvRequest) (
 
 // Summary:
 //
-// 暂停项目
+// Calls PauseProject to pause a project.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - PauseProjectRequest
 //
@@ -2033,7 +2195,13 @@ func (client *Client) PauseProjectWithOptions(request *PauseProjectRequest, runt
 
 // Summary:
 //
-// 暂停项目
+// Calls PauseProject to pause a project.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - PauseProjectRequest
 //
@@ -2051,7 +2219,47 @@ func (client *Client) PauseProject(request *PauseProjectRequest) (_result *Pause
 
 // Summary:
 //
-// 云市场计量推送接口
+// Pushes metering data.
+//
+// Description:
+//
+// ### Encoding and format requirements
+//
+// - All request parameters must be URL-encoded.
+//
+// - Ensure that the Metering field in the parameters is submitted strictly according to the examples in the documentation. In the past, many submissions were not valid JSON fields. You can use a JSON formatting tool to check the field before submission. Otherwise, the API call will fail.
+//
+// ### Request frequency and single write volume limits
+//
+// - For hourly or daily metering: Alibaba Cloud Marketplace limits requests to once every 60 seconds per InstanceId, and each request supports writing up to 100 metering data records.
+//
+// - For real-time metering (for large model scenarios): Alibaba Cloud Marketplace has no frequency limit for requests per InstanceId, and each request supports writing up to 10 metering data records.
+//
+// ### Limits on batch pushing of metering data
+//
+// - Batch pushing across InstanceIds of different products is not supported. When pushing in batches, ensure that all InstanceIds belong to the same product.
+//
+// - When pushing metering data in batches, the InstanceId attribute must belong to instances generated by the same product. Pushing instances of multiple products at the same time is not supported.
+//
+// ### Time requirements for pushing metering data
+//
+// - For products billed hourly, the billing cutoff time is the next hour, and metering data must be pushed on time. For example, if the metering data is for 08:10 to 08:20, it must be pushed before 09:59. Otherwise, no bill will be generated. The rule for daily billing is similar: the data for the previous day must be pushed before 01:59 the next day. Otherwise, an error will be reported when pushing the metering data, and no bill will be generated.
+//
+// - For products billed by the minute, real-time pushed data is aggregated by the minute, and bills are generated by the minute.
+//
+// - If a product is set to real-time billing, StartTime and EndTime can be of any time width, but EndTime must be greater than StartTime.
+//
+// - If a product is set to non-real-time billing (such as hourly or daily), the interval between StartTime and EndTime must be greater than 5 minutes.
+//
+// ### Timeliness of pushing data and billing
+//
+// - If the instance status is expired, metering data pushed after the expiration will not be billed. For example, if an instance expires at 2025-07-09 12:20:00, the metering data pushed for the hour from 2025-07-09 13:00:00 to 2025-07-09 14:00:00 will not be billed. However, the metering data for the hour from 2025-07-09 12:00:00 to 2025-07-09 13:00:00 can still be billed normally.
+//
+// - After metering data is pushed, bills are not generated immediately. For hourly billing, the bill is generated in the next time interval. For example, the bill for 08:00 to 09:00 is generated after 10:00. For daily billing, the bill is generated the next day. After the bill is generated, customers can view it in [Alibaba Cloud Bill Details](https://billing-cost.console.aliyun.com/finance/expense-report/expense-detail-by-instance).
+//
+// ### Rounding down of amounts
+//
+// - If the bill amount is too small and a single bill amount is less than 0.01 CNY, the bill amount for the buyer is 0. For example, if the unit price of a product is 0.001 CNY per time and it is billed by the minute, and 9 times are consumed every minute, the bill amount per minute is 0. If it is billed hourly and the bill amount for a single hour is less than 0.01 CNY, the bill amount for the buyer is 0. The probability of rounding down to zero for minute-level billing may be higher than that for hourly billing.
 //
 // @param request - PushMeteringDataRequest
 //
@@ -2095,7 +2303,47 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 
 // Summary:
 //
-// 云市场计量推送接口
+// Pushes metering data.
+//
+// Description:
+//
+// ### Encoding and format requirements
+//
+// - All request parameters must be URL-encoded.
+//
+// - Ensure that the Metering field in the parameters is submitted strictly according to the examples in the documentation. In the past, many submissions were not valid JSON fields. You can use a JSON formatting tool to check the field before submission. Otherwise, the API call will fail.
+//
+// ### Request frequency and single write volume limits
+//
+// - For hourly or daily metering: Alibaba Cloud Marketplace limits requests to once every 60 seconds per InstanceId, and each request supports writing up to 100 metering data records.
+//
+// - For real-time metering (for large model scenarios): Alibaba Cloud Marketplace has no frequency limit for requests per InstanceId, and each request supports writing up to 10 metering data records.
+//
+// ### Limits on batch pushing of metering data
+//
+// - Batch pushing across InstanceIds of different products is not supported. When pushing in batches, ensure that all InstanceIds belong to the same product.
+//
+// - When pushing metering data in batches, the InstanceId attribute must belong to instances generated by the same product. Pushing instances of multiple products at the same time is not supported.
+//
+// ### Time requirements for pushing metering data
+//
+// - For products billed hourly, the billing cutoff time is the next hour, and metering data must be pushed on time. For example, if the metering data is for 08:10 to 08:20, it must be pushed before 09:59. Otherwise, no bill will be generated. The rule for daily billing is similar: the data for the previous day must be pushed before 01:59 the next day. Otherwise, an error will be reported when pushing the metering data, and no bill will be generated.
+//
+// - For products billed by the minute, real-time pushed data is aggregated by the minute, and bills are generated by the minute.
+//
+// - If a product is set to real-time billing, StartTime and EndTime can be of any time width, but EndTime must be greater than StartTime.
+//
+// - If a product is set to non-real-time billing (such as hourly or daily), the interval between StartTime and EndTime must be greater than 5 minutes.
+//
+// ### Timeliness of pushing data and billing
+//
+// - If the instance status is expired, metering data pushed after the expiration will not be billed. For example, if an instance expires at 2025-07-09 12:20:00, the metering data pushed for the hour from 2025-07-09 13:00:00 to 2025-07-09 14:00:00 will not be billed. However, the metering data for the hour from 2025-07-09 12:00:00 to 2025-07-09 13:00:00 can still be billed normally.
+//
+// - After metering data is pushed, bills are not generated immediately. For hourly billing, the bill is generated in the next time interval. For example, the bill for 08:00 to 09:00 is generated after 10:00. For daily billing, the bill is generated the next day. After the bill is generated, customers can view it in [Alibaba Cloud Bill Details](https://billing-cost.console.aliyun.com/finance/expense-report/expense-detail-by-instance).
+//
+// ### Rounding down of amounts
+//
+// - If the bill amount is too small and a single bill amount is less than 0.01 CNY, the bill amount for the buyer is 0. For example, if the unit price of a product is 0.001 CNY per time and it is billed by the minute, and 9 times are consumed every minute, the bill amount per minute is 0. If it is billed hourly and the bill amount for a single hour is less than 0.01 CNY, the bill amount for the buyer is 0. The probability of rounding down to zero for minute-level billing may be higher than that for hourly billing.
 //
 // @param request - PushMeteringDataRequest
 //
@@ -2113,7 +2361,29 @@ func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_resul
 
 // Summary:
 //
-// 按次售卖按量计费
+// Pushes usage deductions for prepaid pay-per-use products to Alibaba Cloud Marketplace.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation applies to prepaid pay-per-use products. Service providers can use this operation to push user usage deductions to Alibaba Cloud Marketplace.
+//
+// - This operation uses a forced update mode to directly deduct the specified number of uses. The caller must determine whether the user\\"s usage exceeds the limit.
+//
+// - All request parameters must be URL-encoded.
+//
+// - Use the `ClientToken` parameter to ensure idempotence. The same `ClientToken` cannot be submitted repeatedly within 24 hours.
+//
+// - Retries for the same deduction operation must use the same `ClientToken`. New operations must use a new `ClientToken`.
+//
+// - If the previous request succeeded, even if no response was received due to a gateway timeout, a retry with the same `ClientToken` returns a success response idempotently without duplicate deductions.
+//
+// - If the result of the previous request is undetermined and the request is in the PROCESSING state, a retry with the same `ClientToken` returns a `DuplicateClientToken` error. Retry later or contact Alibaba Cloud Marketplace to confirm the push status.
+//
+// - Only one operation can be executed for the same `InstanceId` at a time. Concurrent requests return a `Throttling` error. Retry later.
+//
+// - You can directly call this operation in [OpenAPI Explorer](https://api.aliyun.com/#product=Market&api=PushTimesUsage&type=RPC&version=2015-11-01) without the need to manually calculate the signature.
 //
 // @param request - PushTimesUsageRequest
 //
@@ -2128,12 +2398,24 @@ func (client *Client) PushTimesUsageWithOptions(request *PushTimesUsageRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Adjust) {
+		query["Adjust"] = request.Adjust
+	}
+
+	if !dara.IsNil(request.AdjustDate) {
+		query["AdjustDate"] = request.AdjustDate
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Mark) {
+		query["Mark"] = request.Mark
 	}
 
 	if !dara.IsNil(request.Times) {
@@ -2165,7 +2447,29 @@ func (client *Client) PushTimesUsageWithOptions(request *PushTimesUsageRequest, 
 
 // Summary:
 //
-// 按次售卖按量计费
+// Pushes usage deductions for prepaid pay-per-use products to Alibaba Cloud Marketplace.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation applies to prepaid pay-per-use products. Service providers can use this operation to push user usage deductions to Alibaba Cloud Marketplace.
+//
+// - This operation uses a forced update mode to directly deduct the specified number of uses. The caller must determine whether the user\\"s usage exceeds the limit.
+//
+// - All request parameters must be URL-encoded.
+//
+// - Use the `ClientToken` parameter to ensure idempotence. The same `ClientToken` cannot be submitted repeatedly within 24 hours.
+//
+// - Retries for the same deduction operation must use the same `ClientToken`. New operations must use a new `ClientToken`.
+//
+// - If the previous request succeeded, even if no response was received due to a gateway timeout, a retry with the same `ClientToken` returns a success response idempotently without duplicate deductions.
+//
+// - If the result of the previous request is undetermined and the request is in the PROCESSING state, a retry with the same `ClientToken` returns a `DuplicateClientToken` error. Retry later or contact Alibaba Cloud Marketplace to confirm the push status.
+//
+// - Only one operation can be executed for the same `InstanceId` at a time. Concurrent requests return a `Throttling` error. Retry later.
+//
+// - You can directly call this operation in [OpenAPI Explorer](https://api.aliyun.com/#product=Market&api=PushTimesUsage&type=RPC&version=2015-11-01) without the need to manually calculate the signature.
 //
 // @param request - PushTimesUsageRequest
 //
@@ -2183,7 +2487,13 @@ func (client *Client) PushTimesUsage(request *PushTimesUsageRequest) (_result *P
 
 // Summary:
 //
-// 恢复已暂停的项目
+// Calls ResumeProject to resume a paused project.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - ResumeProjectRequest
 //
@@ -2235,7 +2545,13 @@ func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, ru
 
 // Summary:
 //
-// 恢复已暂停的项目
+// Calls ResumeProject to resume a paused project.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - ResumeProjectRequest
 //
@@ -2253,7 +2569,13 @@ func (client *Client) ResumeProject(request *ResumeProjectRequest) (_result *Res
 
 // Summary:
 //
-// 当前流程节点回滚到上一步
+// Triggers a rejection of the current process node by calling RollbackCurrentProjectNode.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - RollbackCurrentProjectNodeRequest
 //
@@ -2305,7 +2627,13 @@ func (client *Client) RollbackCurrentProjectNodeWithOptions(request *RollbackCur
 
 // Summary:
 //
-// 当前流程节点回滚到上一步
+// Triggers a rejection of the current process node by calling RollbackCurrentProjectNode.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - RollbackCurrentProjectNodeRequest
 //

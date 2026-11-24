@@ -16,7 +16,10 @@ type iDescribeLicenseResponseBody interface {
 }
 
 type DescribeLicenseResponseBody struct {
+	// The license object.
 	License *DescribeLicenseResponseBodyLicense `json:"License,omitempty" xml:"License,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
@@ -59,41 +62,72 @@ func (s *DescribeLicenseResponseBody) Validate() error {
 }
 
 type DescribeLicenseResponseBodyLicense struct {
+	// The activation time.
+	//
 	// example:
 	//
 	// 2019-05-25 09:00:00
 	ActivateTime *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2019-05-25 09:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2019-06-25 09:00:00
 	ExpiredTime *string                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	ExtendArray *DescribeLicenseResponseBodyLicenseExtendArray `json:"ExtendArray,omitempty" xml:"ExtendArray,omitempty" type:"Struct"`
-	ExtendInfo  *DescribeLicenseResponseBodyLicenseExtendInfo  `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty" type:"Struct"`
+	// The extended information.
+	ExtendInfo *DescribeLicenseResponseBodyLicenseExtendInfo `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty" type:"Struct"`
+	// The business instance ID.
+	//
 	// example:
 	//
 	// 1551111111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The activation code.
+	//
 	// example:
 	//
 	// -
 	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// The license status.
+	//
+	// - ACTIVATED
+	//
+	// - INACTIVATED
+	//
 	// example:
 	//
 	// ACTIVATED
 	LicenseStatus *string `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// cmgj02****
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// LNMP环境
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The product SKU ID.
+	//
 	// example:
 	//
 	// cmgj02****-prepay
 	ProductSkuId *string `json:"ProductSkuId,omitempty" xml:"ProductSkuId,omitempty"`
+	// The supplier name.
+	//
+	// example:
+	//
+	// **科技股份有限公司
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 }
 
@@ -297,18 +331,26 @@ func (s *DescribeLicenseResponseBodyLicenseExtendArrayLicenseAttribute) Validate
 }
 
 type DescribeLicenseResponseBodyLicenseExtendInfo struct {
+	// The account information.
+	//
 	// example:
 	//
 	// -
 	AccountQuantity *int64 `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
+	// The Alibaba Cloud UID.
+	//
 	// example:
 	//
 	// 190311111111****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// id***@**.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number.
+	//
 	// example:
 	//
 	// 129****1111

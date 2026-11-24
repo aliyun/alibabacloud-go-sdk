@@ -32,33 +32,70 @@ type iDescribeInvoiceForIsvRequest interface {
 }
 
 type DescribeInvoiceForIsvRequest struct {
+	// The end time. By default, 23:59:59 is appended to the date.
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start time. By default, 00:00:00 is appended to the date.
+	//
 	// example:
 	//
 	// 2025-01-31 23:59:59
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The ID of the invoice application. This corresponds to the Result.Id field in the response of the DescribeInvoiceForIsv operation.
+	//
 	// example:
 	//
 	// 4072040****
-	InvoiceId  *int64  `json:"InvoiceId,omitempty" xml:"InvoiceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	InvoiceId *int64 `json:"InvoiceId,omitempty" xml:"InvoiceId,omitempty"`
+	// The maximum number of entries per page in a paging query. Maximum value: 50. Default value: 10. (This parameter is not enabled.)
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token returned by the current call. This parameter is not enabled.
+	//
+	// example:
+	//
+	// 3v3mzZN1QdVsTPNiT0OkD9v+MeV8LSqSQDSuTTVFCUMMWShmnj/LXRMScqm242bB
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The current invoice status. Valid values:
+	//
+	// - 0: Applying.
+	//
+	// - 1: Completed.
+	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The invoice type. If this parameter is left empty, all types are queried by default. Valid values:
+	//
+	// - 2: Digital electronic ordinary invoice.
+	//
+	// - 3: Digital electronic special invoice.
+	//
+	// example:
+	//
+	// 2
+	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The Alibaba Cloud user ID of the customer.
+	//
 	// example:
 	//
 	// 174452687724****

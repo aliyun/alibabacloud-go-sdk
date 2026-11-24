@@ -14,6 +14,8 @@ type iDescribeProjectAttachmentsRequest interface {
 }
 
 type DescribeProjectAttachmentsRequest struct {
+	// The instance ID of the Alibaba Cloud Marketplace business.
+	//
 	// This parameter is required.
 	//
 	// example:

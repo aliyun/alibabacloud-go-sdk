@@ -52,74 +52,168 @@ type iDescribeOrderForIsvResponseBody interface {
 }
 
 type DescribeOrderForIsvResponseBody struct {
+	// The number of accounts.
+	//
 	// example:
 	//
 	// 0
 	AccountQuantity *int64 `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
+	// The unique identifier of the Alibaba Cloud user (aliyunPK).
+	//
 	// example:
 	//
 	// 190311111111****
-	AliUid     *int64      `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The order module information. The metric description for the parameters in the example is as follows:
+	//
+	// - package_quantity: the number of usage times (a module specific to API products)
+	//
+	// - package_version: the version
+	//
+	// - ord_time: the duration
+	//
+	// - order_num: the quantity
+	//
+	// - code: the module code
+	//
+	// - globarKey: the module key
+	//
+	// - name: the module name
+	//
+	// - value: the module value.
+	//
+	// example:
+	//
+	// {"package_version":{"code":"package_version","globarKey":"cmgj0******8_package_version_package_version_yuncode4176*****1","name":"0.01","value":"yuncode4176*****1"},"ord_time":{"code":"ord_time","globarKey":"cmgj0******8_ord_time_ord_time_1:Month","name":"1 month","value":"1:Month"},"order_num":{"code":"order_num","globarKey":"cmgj0******8_order_num_order_num_1","name":"1","value":"1"}}
 	Components interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	// The amount of vouchers used, in CNY.
+	//
 	// example:
 	//
 	// 0.0
 	CouponPrice *float32 `json:"CouponPrice,omitempty" xml:"CouponPrice,omitempty"`
+	// The time when the order was placed.
+	//
 	// example:
 	//
 	// 1531191564000
 	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
 	// List
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 202211111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order status. Valid values:
+	//
+	// - NORMAL: Normal.
+	//
+	// - REFUND: Refunded.
+	//
+	// - DELETE: Voided.
+	//
 	// example:
 	//
 	// NORMAL
 	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// The order type. Valid values:
+	//
+	// - NEW: New purchase order.
+	//
+	// - RENEW: Renewal order.
+	//
+	// - TRIAL: Trial order.
+	//
+	// - UPGRADE: Upgrade order.
+	//
+	// - DOWNGRADE: Downgrade order.
+	//
+	// - PURCHASE: Conversion order.
+	//
 	// example:
 	//
 	// NEW
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The original price of the order, in CNY.
+	//
 	// example:
 	//
 	// 10.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The payment time.
+	//
 	// example:
 	//
 	// 1531191675000
 	PaidOn *int64 `json:"PaidOn,omitempty" xml:"PaidOn,omitempty"`
+	// The payment status. Valid values:
+	//
+	// - PAID: Paid.
+	//
+	// - UNPAID: Unpaid.
+	//
 	// example:
 	//
 	// PAID
 	PayStatus *string `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// The actual payment amount, in CNY.
+	//
 	// example:
 	//
 	// 0.0
 	PaymentPrice *float32 `json:"PaymentPrice,omitempty" xml:"PaymentPrice,omitempty"`
+	// The time unit for prepaid orders. Valid values:
+	//
+	// - MONTH: one month
+	//
+	// - SEASON: one quarter
+	//
+	// - HALFYEAR: half a year
+	//
+	// - YEAR: one year
+	//
+	// - TWOYEARS: two years
+	//
+	// - ONCE: one-time.
+	//
 	// example:
 	//
 	// MONTH
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// cmgj02****
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the subscribed product.
+	//
+	// example:
+	//
+	// SaaS service product
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The SKU code of the subscribed product.
+	//
 	// example:
 	//
 	// cmgj02****-prepay
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// The quantity of the order.
+	//
 	// example:
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The request ID. This ID is used for troubleshooting when an error occurs.
+	//
 	// example:
 	//
 	// 6EF60BEC-****-****-****-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total receivable amount of the order, in CNY.
+	//
 	// example:
 	//
 	// 0.0

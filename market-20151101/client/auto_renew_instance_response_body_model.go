@@ -18,7 +18,10 @@ type iAutoRenewInstanceResponseBody interface {
 }
 
 type AutoRenewInstanceResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2D29E31F-73C7-4E82-8A44-035E39DCB601
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }

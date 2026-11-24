@@ -18,13 +18,18 @@ type iDescribeDistributionProductsRequest interface {
 }
 
 type DescribeDistributionProductsRequest struct {
+	// The list of filter conditions.
 	Filter []*DescribeDistributionProductsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of promotional products per page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -82,12 +87,28 @@ func (s *DescribeDistributionProductsRequest) Validate() error {
 }
 
 type DescribeDistributionProductsRequestFilter struct {
+	// The search label category. Valid values:
+	//
+	// - code: the commodity code of the promotional product
+	//
+	// - name: the name of the promotional product
+	//
+	// - supplierName: the name of the promotion service provider.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// supplierName
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The search tag value:
+	//
+	// - code: the product code to search for
+	//
+	// - name: the product name to search for
+	//
+	// - supplierName: the supplier name to search for.
+	//
 	// This parameter is required.
 	//
 	// example:

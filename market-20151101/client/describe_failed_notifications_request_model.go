@@ -16,12 +16,16 @@ type iDescribeFailedNotificationsRequest interface {
 }
 
 type DescribeFailedNotificationsRequest struct {
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of instances per page.
+	//
 	// This parameter is required.
 	//
 	// example:

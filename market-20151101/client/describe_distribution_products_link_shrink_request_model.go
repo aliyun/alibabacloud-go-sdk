@@ -14,6 +14,8 @@ type iDescribeDistributionProductsLinkShrinkRequest interface {
 }
 
 type DescribeDistributionProductsLinkShrinkRequest struct {
+	// The collection of product codes. The collection cannot be empty and can contain up to 50 entries.
+	//
 	// This parameter is required.
 	CodesShrink *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
 }

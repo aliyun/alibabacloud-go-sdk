@@ -16,10 +16,14 @@ type iPushMeteringDataResponseBody interface {
 }
 
 type PushMeteringDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The success status identifier.
+	//
 	// example:
 	//
 	// true

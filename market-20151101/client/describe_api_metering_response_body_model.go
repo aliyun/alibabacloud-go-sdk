@@ -32,10 +32,14 @@ type iDescribeApiMeteringResponseBody interface {
 }
 
 type DescribeApiMeteringResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 100
@@ -45,25 +49,41 @@ type DescribeApiMeteringResponseBody struct {
 	// example:
 	//
 	// false
-	Fatal   *bool   `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
+	Fatal *bool `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// "Success"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 62FC432C55A1A63534A6CB34
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeApiMeteringResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of return values.
+	Result []*DescribeApiMeteringResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The result indicator.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// 1.0
@@ -182,25 +202,48 @@ func (s *DescribeApiMeteringResponseBody) Validate() error {
 }
 
 type DescribeApiMeteringResponseBodyResult struct {
+	// The Alibaba Cloud PK.
+	//
 	// example:
 	//
 	// 102277855749****
 	AliyunPk *int64 `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// cmapi0004****
-	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	TotalCapacity *int64  `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The commodity name.
+	//
+	// example:
+	//
+	// ID card real-name authentication - ID card real-name
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The total API capacity.
+	//
+	// example:
+	//
+	// 100
+	TotalCapacity *int64 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	// The remaining quota.
+	//
 	// example:
 	//
 	// 98
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	// The usage.
+	//
 	// example:
 	//
 	// 220
-	TotalUsage *int64  `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
-	Unit       *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	TotalUsage *int64 `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
+	// The unit.
+	//
+	// example:
+	//
+	// Calls
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeApiMeteringResponseBodyResult) String() string {

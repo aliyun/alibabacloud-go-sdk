@@ -18,11 +18,16 @@ type iDescribeCurrentNodeInfoResponseBody interface {
 }
 
 type DescribeCurrentNodeInfoResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 00eb4de1-6cff-4f56-833e-7b1e070e398d
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeCurrentNodeInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The process node information returned upon success.
+	Result *DescribeCurrentNodeInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,63 +79,117 @@ func (s *DescribeCurrentNodeInfoResponseBody) Validate() error {
 }
 
 type DescribeCurrentNodeInfoResponseBodyResult struct {
+	// Indicates whether rollback to the previous process node is allowed.
+	//
 	// example:
 	//
 	// false
 	AllowRollbackNode *bool `json:"AllowRollbackNode,omitempty" xml:"AllowRollbackNode,omitempty"`
+	// Indicates whether the node is automatically completed.
+	//
 	// example:
 	//
 	// false
 	AutoFinishNode *bool `json:"AutoFinishNode,omitempty" xml:"AutoFinishNode,omitempty"`
+	// The sequence number of the last node.
+	//
 	// example:
 	//
 	// 4
 	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// The timeout of the process node. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1588920725000
 	GmtExpired *int64 `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// The completion time of the process node. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1588920725000
 	GmtFinished *int64 `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
+	// The start time of the process node. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1588834325000
 	GmtStart *int64 `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// Indicates whether uploading an attachment is mandatory.
+	//
 	// example:
 	//
 	// false
 	NeedAttachment *bool `json:"NeedAttachment,omitempty" xml:"NeedAttachment,omitempty"`
+	// The ID of the next process node.
+	//
 	// example:
 	//
 	// 8473
 	NextNodeId *int64 `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
+	// The ID of the process node.
+	//
 	// example:
 	//
 	// 8472
-	NodeId   *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	//
+	// example:
+	//
+	// Waiting for service activation
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The execution status of the node. Valid values:
+	//
+	// - NotStart: not started.
+	//
+	// - Starting: in progress.
+	//
+	// - Cancel: canceled.
+	//
+	// - Finish: completed.
+	//
 	// example:
 	//
 	// Starting
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The role of the operator for the process node. Valid values:
+	//
+	// - system: system.
+	//
+	// - custom: user.
+	//
 	// example:
 	//
 	// Provider
 	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// The ID of the parent process node.
+	//
 	// example:
 	//
 	// 0
 	ParentNodeId *int64 `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
+	// The ID of the previous process node.
+	//
 	// example:
 	//
 	// 8471
 	PreviousNodeId *int64 `json:"PreviousNodeId,omitempty" xml:"PreviousNodeId,omitempty"`
+	// The sequence number of the process node.
+	//
 	// example:
 	//
 	// 3
-	StepNo       *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	StepNo *int32 `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	// The form content of the process node in JSON format.
+	//
+	// Sample code:
+	//
+	// `[ { "fieldKey": "TFD0", //form key "isRequired": true, //whether the field is required "maxLength": 50, //maximum length "placeHolder": "Name", //form value description "stepNum": 0, //sort value (ascending) "title": "Consignee name", //form title "type": "text" //form type }, { "fieldKey": "TFD1", "isRequired": true, "maxLength": 50, "placeHolder": "Phone number", "stepNum": 1, "title": "Consignee phone number", "type": "text" }, { "fieldKey": "TFD2", "isRequired": true, "maxLength": 50, "placeHolder": "Province, city, district, street, and house number", "stepNum": 2, "title": "Detailed shipping address", "type": "textarea" } ]`.
+	//
+	// example:
+	//
+	// [ {"fieldKey": "TFD0","isRequired": true,"maxLength": 50, "placeHolder": "Name","stepNum": 0,"title": "Consignee name","type": "text" },{ "fieldKey": "TFD1","isRequired": true,"maxLength": 50,"placeHolder": "Phone number","stepNum": 1,"title": "Consignee phone number","type": "text"},{"fieldKey": "TFD2","isRequired": true,"maxLength": 50,"placeHolder": "Province, city, district, street, and house number","stepNum": 2,"title": "Detailed shipping address","type": "textarea"}]
 	TemplateForm *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
 }
 

@@ -22,6 +22,8 @@ type ConfirmNotificationResponseBody struct {
 	//
 	// A077D99E-0C4D-421E-A5D4-F533F6657817
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

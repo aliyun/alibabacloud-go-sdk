@@ -18,11 +18,16 @@ type iDescribeProjectInfoResponseBody interface {
 }
 
 type DescribeProjectInfoResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ee3e1b3b-6c38-4bcf-be40-5a946cfda761
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeProjectInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribeProjectInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,64 +79,122 @@ func (s *DescribeProjectInfoResponseBody) Validate() error {
 }
 
 type DescribeProjectInfoResponseBodyResult struct {
+	// The current step in the process.
+	//
 	// example:
 	//
 	// 3
 	CurrentStepNo *int32 `json:"CurrentStepNo,omitempty" xml:"CurrentStepNo,omitempty"`
+	// The Alibaba Cloud UID of the customer.
+	//
 	// example:
 	//
 	// 27291111****
 	CustomerAliUid *int64 `json:"CustomerAliUid,omitempty" xml:"CustomerAliUid,omitempty"`
+	// The sequence number of the last step.
+	//
 	// example:
 	//
 	// 4
 	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// The completion method of the project. Valid values:
+	//
+	// - null: The default value for unfinished projects.
+	//
+	// - CustomerConfirm: Manually confirmed by the customer.
+	//
+	// - SystemAutoConfirm: Automatically confirmed by the system due to timeout.
+	//
 	// example:
 	//
 	// null
 	FinishType *string `json:"FinishType,omitempty" xml:"FinishType,omitempty"`
+	// The creation time of the project. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1588834324000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The expiration time of the project. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1620403200000
 	GmtExpired *int64 `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// The completion time of the project. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1620403200000
 	GmtFinished *int64 `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
+	// The business instance ID in Cloud Marketplace.
+	//
 	// example:
 	//
 	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2059111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// cmgj***055
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the Cloud Marketplace product.
+	//
+	// example:
+	//
+	// Gongsibao***	- accounting
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The code of the Cloud Marketplace product SKU.
+	//
 	// example:
 	//
 	// yuncode****500001
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// The name of the Cloud Marketplace product SKU.
+	//
+	// example:
+	//
+	// Small**	- taxpayer
 	ProductSkuName *string `json:"ProductSkuName,omitempty" xml:"ProductSkuName,omitempty"`
+	// The execution status of the project. Valid values:
+	//
+	// - Starting: In progress.
+	//
+	// - Cancel: Canceled.
+	//
+	// - Pause: Paused.
+	//
+	// - Finish: Completed.
+	//
 	// example:
 	//
 	// Starting
 	ProjectStatus *string `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
+	// The UID of the supplier to which the project belongs.
+	//
 	// example:
 	//
 	// 45121111****
 	SupplierAliUid *int64 `json:"SupplierAliUid,omitempty" xml:"SupplierAliUid,omitempty"`
+	// The ID of the process template to which the project belongs.
+	//
 	// example:
 	//
 	// 410
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type of the project. Valid values:
+	//
+	// - Public: Public template.
+	//
+	// - Private: Private template.
+	//
 	// example:
 	//
 	// Public

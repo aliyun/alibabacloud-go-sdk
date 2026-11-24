@@ -18,14 +18,20 @@ type iFinishCurrentProjectNodeResponseBody interface {
 }
 
 type FinishCurrentProjectNodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ee69a00f-189b-400f-9fd2-af89749fb50f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response result.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true

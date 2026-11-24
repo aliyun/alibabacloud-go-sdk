@@ -18,11 +18,16 @@ type iDescribeProjectOperateLogsResponseBody interface {
 }
 
 type DescribeProjectOperateLogsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// e6037e86-657f-4194-bb6a-7b26973aec8d
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeProjectOperateLogsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*DescribeProjectOperateLogsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -78,16 +83,38 @@ func (s *DescribeProjectOperateLogsResponseBody) Validate() error {
 }
 
 type DescribeProjectOperateLogsResponseBodyResult struct {
+	// The description of the operation.
+	//
+	// example:
+	//
+	// Entered the service provider assignment step
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The operation time (UNIX timestamp).
+	//
 	// example:
 	//
 	// 1587624497000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The Alibaba Cloud UID of the operator.
+	//
 	// example:
 	//
 	// 0
-	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator *int64 `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The name of the operator.
+	//
+	// example:
+	//
+	// System
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The role of the operator. Valid values:
+	//
+	// - System: system.
+	//
+	// - Custom: customer.
+	//
+	// - Provider: service provider.
+	//
 	// example:
 	//
 	// System

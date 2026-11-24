@@ -14,6 +14,8 @@ type iDescribeInstanceForIsvRequest interface {
 }
 
 type DescribeInstanceForIsvRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -57,68 +57,178 @@ type iDescribeInstanceResponseBody interface {
 
 type DescribeInstanceResponseBody struct {
 	ActiveAddress *string `json:"ActiveAddress,omitempty" xml:"ActiveAddress,omitempty"`
+	// The application information. The metric description of the parameters in the example is as follows:
+	//
+	// - username: the username.
+	//
+	// - passowrd: the password.
+	//
+	// - frontEndUrl: the frontend URL.
+	//
+	// - adminUrl: the management URL.
+	//
 	// example:
 	//
 	// {"frontEndUrl":"https://****.aliyundoc.com","password":"Sjtv***","adminUrl":"https://****.aliyundoc.com","username":"aliyun***"}
 	AppJson     *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
 	AutoRenewal *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The time when the instance was activated (timestamp).
+	//
 	// example:
 	//
 	// 1570634021000
 	BeganOn *int64 `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
+	// The business module.
+	//
+	// The metric description of the parameters in the example is as follows:
+	//
+	// - package_version: the version.
+	//
 	// example:
 	//
 	// {"package_version":"yuncode000111"}
 	ComponentJson *string `json:"ComponentJson,omitempty" xml:"ComponentJson,omitempty"`
+	// This parameter is deprecated.
+	//
 	// example:
 	//
 	// {}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The creation time (timestamp).
+	//
 	// example:
 	//
 	// 1570634018000
 	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	// The expiration time (timestamp).
+	//
 	// example:
 	//
 	// 1602259200000
-	EndOn      *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
+	EndOn *int64 `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
+	// The extended information.
+	//
+	// example:
+	//
+	// {"description": "If you have any problems, contact us..."}
 	ExtendJson *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
+	// The host information. The metric description of the parameters in the example is as follows:
+	//
+	// - username: the username.
+	//
+	// - passowrd: the password.
+	//
+	// - ip: the host IP address.
+	//
+	// - innerIp: the internal network IP address of the host.
+	//
 	// example:
 	//
 	// {"password":"***","ip":"118.31.***.41","innerIp":"118.31.***.41","region":"","username":"***","beianInfo":""}
 	HostJson *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1551111111
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the instance is a trial instance.
+	//
 	// example:
 	//
 	// true
 	IsTrial     *bool                                `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
 	LicenseCode *string                              `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
 	Modules     *DescribeInstanceResponseBodyModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 204211111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// cmgj00**11
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// ***Collaborative Office
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The SKU code.
+	//
 	// example:
 	//
 	// cmgj00**11-prepay
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// The product type. Valid values:
+	//
+	// - APP: application.
+	//
+	// - SERVIC: service.
+	//
+	// - MIRROR: image.
+	//
+	// - DOWNLOAD: download.
+	//
+	// - API_SERVICE: API.
+	//
+	// - DOCKER: Docker.
+	//
 	// example:
 	//
 	// APP
-	ProductType    *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The relational information.
 	RelationalData *DescribeInstanceResponseBodyRelationalData `json:"RelationalData,omitempty" xml:"RelationalData,omitempty" type:"Struct"`
+	// The business status. The value varies based on the product type.
+	//
+	// If ProductType is set to MIRROR:
+	//
+	// - PRODUCE: being provisioned.
+	//
+	// - USING: in use.
+	//
+	// - UNUSED: not used.
+	//
+	// - EXPIRED: expired.
+	//
+	// - CLOSED: released.
+	//
+	// If ProductType is set to SERVICE:
+	//
+	// - READYING: not started.
+	//
+	// - STARTED: in service.
+	//
+	// - CONFIRM: completed.
+	//
+	// - EXPIRED: expired.
+	//
+	// - CLOSED: released.
+	//
+	// If ProductType is set to APP, DOWNLOAD, API_SERVICE, or DOCKER:
+	//
+	// - OPENING: being activated.
+	//
+	// - OPENED: activated.
+	//
+	// - EXPIRED: expired.
+	//
+	// - CLOSED: released.
+	//
 	// example:
 	//
 	// OPENED
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The service provider name.
+	//
+	// example:
+	//
+	// ****	- Co., Ltd.
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 }
 
@@ -660,6 +770,18 @@ func (s *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValu
 }
 
 type DescribeInstanceResponseBodyRelationalData struct {
+	// The service status. Valid values:
+	//
+	// - READYING: not started.
+	//
+	// - STARTED: in service.
+	//
+	// - CONFIRM: completed.
+	//
+	// - EXPIRED: expired.
+	//
+	// - CLOSED: released.
+	//
 	// example:
 	//
 	// STARTED

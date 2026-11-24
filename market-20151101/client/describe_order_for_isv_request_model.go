@@ -14,6 +14,8 @@ type iDescribeOrderForIsvRequest interface {
 }
 
 type DescribeOrderForIsvRequest struct {
+	// The order ID.
+	//
 	// This parameter is required.
 	//
 	// example:

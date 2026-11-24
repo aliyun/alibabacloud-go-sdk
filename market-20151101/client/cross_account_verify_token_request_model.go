@@ -14,6 +14,8 @@ type iCrossAccountVerifyTokenRequest interface {
 }
 
 type CrossAccountVerifyTokenRequest struct {
+	// Token returned upon successful cross-account role authorization.
+	//
 	// example:
 	//
 	// C19D103FEA2D50A584410267CE9FBA56

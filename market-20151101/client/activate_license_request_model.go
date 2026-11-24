@@ -16,10 +16,14 @@ type iActivateLicenseRequest interface {
 }
 
 type ActivateLicenseRequest struct {
+	// The identity information for activation. Set this parameter to the Alibaba Cloud account ID (aliyunUid) of the user.
+	//
 	// example:
 	//
 	// 129****1111
 	Identification *string `json:"Identification,omitempty" xml:"Identification,omitempty"`
+	// The authorization code.
+	//
 	// This parameter is required.
 	//
 	// example:

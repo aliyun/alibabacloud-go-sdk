@@ -14,6 +14,8 @@ type iDescribeCurrentNodeInfoRequest interface {
 }
 
 type DescribeCurrentNodeInfoRequest struct {
+	// The instance ID of the Alibaba Cloud Marketplace order.
+	//
 	// This parameter is required.
 	//
 	// example:

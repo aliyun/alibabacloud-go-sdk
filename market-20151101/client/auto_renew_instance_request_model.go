@@ -22,12 +22,38 @@ type iAutoRenewInstanceRequest interface {
 }
 
 type AutoRenewInstanceRequest struct {
-	AutoRenewCycle    *string `json:"AutoRenewCycle,omitempty" xml:"AutoRenewCycle,omitempty"`
-	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	// The cycle unit. This parameter is required when enabling auto-renewal. Valid values:
+	//
+	// - Day: day.
+	//
+	// - Month: month.
+	//
+	// - Year: year.
+	//
+	// example:
+	//
+	// Month
+	AutoRenewCycle *string `json:"AutoRenewCycle,omitempty" xml:"AutoRenewCycle,omitempty"`
+	// The renewal cycle. This parameter is required when enabling auto-renewal.
+	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	// The Alibaba Cloud Marketplace instance ID. This parameter is required.
+	//
 	// This parameter is required.
 	OrderBizId *int64 `json:"OrderBizId,omitempty" xml:"OrderBizId,omitempty"`
 	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The operation type. Valid values:
+	//
+	// - open: enables auto-renewal.
+	//
+	// - close: disables auto-renewal.
+	//
 	// This parameter is required.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// open
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

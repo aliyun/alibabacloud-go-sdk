@@ -14,6 +14,8 @@ type iConfirmNotificationRequest interface {
 }
 
 type ConfirmNotificationRequest struct {
+	// The notification request ID.
+	//
 	// This parameter is required.
 	//
 	// example:

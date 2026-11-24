@@ -18,18 +18,27 @@ type iRollbackCurrentProjectNodeRequest interface {
 }
 
 type RollbackCurrentProjectNodeRequest struct {
+	// The instance ID of the Alibaba Cloud Marketplace order.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the current process node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1925
-	NodeId *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The remarks for the rejection reason.
+	//
+	// example:
+	//
+	// Dear customer, the shipping address you submitted matches multiple records. Check the address and submit it again.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

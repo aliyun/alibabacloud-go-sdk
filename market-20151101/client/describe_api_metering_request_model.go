@@ -18,16 +18,22 @@ type iDescribeApiMeteringRequest interface {
 }
 
 type DescribeApiMeteringRequest struct {
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// cmapi0004****
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// The type. Valid values: 1: package. 2: resource plan.
+	//
 	// example:
 	//
 	// 1

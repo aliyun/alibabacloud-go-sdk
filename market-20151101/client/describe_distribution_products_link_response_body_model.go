@@ -25,15 +25,20 @@ type DescribeDistributionProductsLinkResponseBody struct {
 	// example:
 	//
 	// 5BD09171-BF4D-18D8-890E-C70C067527BE
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeDistributionProductsLinkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The promotion link information for the promoted products.
+	Result []*DescribeDistributionProductsLinkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The success status indicator.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of promoted products.
+	//
 	// example:
 	//
-	// 50
+	// 51
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -95,9 +100,24 @@ func (s *DescribeDistributionProductsLinkResponseBody) Validate() error {
 }
 
 type DescribeDistributionProductsLinkResponseBodyResult struct {
+	// The code of the promoted product.
+	//
+	// example:
+	//
+	// cmapi000****
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the promoted product.
+	//
+	// example:
+	//
+	// Test product
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The promotion link for the product. Note: The sample link is a test product link.
+	//
+	// example:
+	//
+	// https://market.aliyun.com/ad/adClick?param=QN%2BgAHA8mY%2BV1vSDtkNqyWG9G5uUX2Q8%2BJrC8wTzBo5YK7tTmm4Zdiz6nmmyLHMC5REAsq2viyeJYjBjVHno1HydPvHrVarNXQTMEzEmR8TRZaG2FsnzpszXKK2cMA69CUmF9qQpHqU%3D
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeDistributionProductsLinkResponseBodyResult) String() string {

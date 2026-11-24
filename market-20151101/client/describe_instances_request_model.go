@@ -22,26 +22,52 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
+	// The commodity codes. Separate multiple codes with commas (,).
+	//
 	// example:
 	//
 	// cmgj000112,cmgj000113
 	Codes *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
+	// The commodity codes to exclude. This parameter cannot be specified together with the Codes parameter. Separate multiple codes with commas (,).
+	//
 	// example:
 	//
 	// cmgj000114,cmgj000115
 	ExceptCodes *string `json:"ExceptCodes,omitempty" xml:"ExceptCodes,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The commodity type. Valid values:
+	//
+	// - APP: application
+	//
+	// - SERVICE: service
+	//
+	// - MIRROR: image
+	//
+	// - DOWNLOAD: download
+	//
+	// - API_SERVICE: API
+	//
+	// - ROS: resource orchestration
+	//
+	// - DOCKER: container
+	//
+	// - IOT: IoT.
+	//
 	// example:
 	//
 	// 1

@@ -24,12 +24,16 @@ type DescribeProductRequest struct {
 	//
 	// 190********569
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The product code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cmjj01**45
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Specifies whether to query the product draft. Typically, you do not need to query the product draft. Product drafts are used for queries before a product is officially listed for sale.
+	//
 	// example:
 	//
 	// false

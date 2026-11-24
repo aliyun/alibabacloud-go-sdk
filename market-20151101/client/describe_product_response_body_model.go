@@ -52,61 +52,134 @@ type iDescribeProductResponseBody interface {
 }
 
 type DescribeProductResponseBody struct {
+	// The reason for the audit failure. This parameter is returned when QueryDraft is set to true.
+	//
+	// example:
+	//
+	// Feature acceptance failed
 	AuditFailMsg *string `json:"AuditFailMsg,omitempty" xml:"AuditFailMsg,omitempty"`
+	// The audit status. This parameter is returned when QueryDraft is set to true. Valid values:
+	//
+	// - draft: Not submitted.
+	//
+	// - security_ing: Under security audit.
+	//
+	// - security_fail: Security audit failed.
+	//
+	// - function_ing: Under feature audit.
+	//
+	// - function_fail: Feature audit failed.
+	//
+	// - info_ing: Under product information audit.
+	//
+	// - info_fail: Product information audit failed.
+	//
+	// - success: Succeeded.
+	//
 	// example:
 	//
 	// function_fail
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The audit time. This parameter is returned when QueryDraft is set to true.
+	//
 	// example:
 	//
 	// 1581609600000
 	AuditTime *int64 `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// cmjj01**45
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed description of the product. HTML is supported.
+	//
+	// example:
+	//
+	// <div>Installed from the source code based on the Alibaba Cloud (Ubuntu 16.04 64-bit) system. Secure, stable, and efficient!</div>
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The category ID of the product.
+	//
 	// example:
 	//
 	// 523617212
 	FrontCategoryId *int64 `json:"FrontCategoryId,omitempty" xml:"FrontCategoryId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1578931200000
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1578931200000
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// LNMP Environment (Ubuntu 16.04 Nginx PHP 5.3)
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The URL of the product image.
+	//
 	// example:
 	//
 	// https://oss.aliyuncs.com/photogallery/photo/1930532890589852/6245/495d5f19-03e4-4c2e-9c4e-bef9ab6af1e1.png
 	PicUrl        *string                                   `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
 	ProductExtras *DescribeProductResponseBodyProductExtras `json:"ProductExtras,omitempty" xml:"ProductExtras,omitempty" type:"Struct"`
 	ProductSkus   *DescribeProductResponseBodyProductSkus   `json:"ProductSkus,omitempty" xml:"ProductSkus,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The product score.
+	//
 	// example:
 	//
 	// 5.0
-	Score            *float32                             `json:"Score,omitempty" xml:"Score,omitempty"`
-	ShopInfo         *DescribeProductResponseBodyShopInfo `json:"ShopInfo,omitempty" xml:"ShopInfo,omitempty" type:"Struct"`
-	ShortDescription *string                              `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The shop information.
+	ShopInfo *DescribeProductResponseBodyShopInfo `json:"ShopInfo,omitempty" xml:"ShopInfo,omitempty" type:"Struct"`
+	// The short description of the product.
+	//
+	// example:
+	//
+	// This image is LNMP (Ubuntu 16.04 64-bit + Nginx + MySQL 5.6 + PHP 5.3)
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// **[Deprecated]**
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UID of the service provider.
+	//
 	// example:
 	//
 	// 1526111111****
 	SupplierPk *int64 `json:"SupplierPk,omitempty" xml:"SupplierPk,omitempty"`
+	// The product type. Valid values:
+	//
+	// 	- APP: Application.
+	//
+	// 	- DOWNLOAD: Download.
+	//
+	// 	- MIRROR: Image.
+	//
+	// 	- SERVICE: Service.
+	//
+	// 	- API_SERVICE: API service.
+	//
 	// example:
 	//
 	// MIRROR
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage count.
+	//
 	// example:
 	//
 	// 10
@@ -935,14 +1008,23 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuOrderPeriodsOrderPeriod
 }
 
 type DescribeProductResponseBodyShopInfo struct {
+	// The email addresses.
+	//
 	// example:
 	//
 	// 46**41@example.com
 	Emails *string `json:"Emails,omitempty" xml:"Emails,omitempty"`
+	// The shop ID.
+	//
 	// example:
 	//
 	// 123
-	Id         *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The shop name.
+	//
+	// example:
+	//
+	// **Science Company
 	Name       *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	Telephones *DescribeProductResponseBodyShopInfoTelephones `json:"Telephones,omitempty" xml:"Telephones,omitempty" type:"Struct"`
 	WangWangs  *DescribeProductResponseBodyShopInfoWangWangs  `json:"WangWangs,omitempty" xml:"WangWangs,omitempty" type:"Struct"`

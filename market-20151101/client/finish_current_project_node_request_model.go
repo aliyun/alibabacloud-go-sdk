@@ -20,19 +20,33 @@ type iFinishCurrentProjectNodeRequest interface {
 }
 
 type FinishCurrentProjectNodeRequest struct {
+	// The instance ID of the Alibaba Cloud Marketplace order.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the process node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1924
-	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// The shipping address has been submitted. Arrange delivery as soon as possible.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The form content to submit, in JSON format. Example: {"TFD0":"mr.go","TFD1":"1330010xxxx","TFD2":"Chaoyang District, Wangjing Street, Block x, No. y"}.
+	//
+	// example:
+	//
+	// {"TFD0": "Mr.Go","TFD1": "1330010xxxx","TFD2": "Wangjing Street, Block X, No. Y, Chaoyang District, Beijing" }
 	TemplateForm *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
 }
 

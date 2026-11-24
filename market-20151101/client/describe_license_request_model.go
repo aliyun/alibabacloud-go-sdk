@@ -14,6 +14,8 @@ type iDescribeLicenseRequest interface {
 }
 
 type DescribeLicenseRequest struct {
+	// The activation code.
+	//
 	// This parameter is required.
 	//
 	// example:

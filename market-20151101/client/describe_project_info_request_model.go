@@ -14,6 +14,8 @@ type iDescribeProjectInfoRequest interface {
 }
 
 type DescribeProjectInfoRequest struct {
+	// The business instance ID in Cloud Marketplace.
+	//
 	// This parameter is required.
 	//
 	// example:

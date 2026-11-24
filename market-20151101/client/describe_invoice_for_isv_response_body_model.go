@@ -30,35 +30,52 @@ type iDescribeInvoiceForIsvResponseBody interface {
 }
 
 type DescribeInvoiceForIsvResponseBody struct {
+	// The product code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 100
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The maximum number of entries per page for a paged query. Maximum value: 50. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token returned by this call.
+	//
 	// example:
 	//
 	// 3v3mzZN1QdVsTPNiT0OkD36LC9I+AJHU9z2oXBmJJOyy4nQl7MIUZUYG6fdbYBk+
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeInvoiceForIsvResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the successful flow node.
+	Result []*DescribeInvoiceForIsvResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -168,47 +185,106 @@ func (s *DescribeInvoiceForIsvResponseBody) Validate() error {
 }
 
 type DescribeInvoiceForIsvResponseBodyResult struct {
+	// The Alibaba Cloud user ID of the customer.
+	//
 	// example:
 	//
 	// 102277855749****
-	AliyunPk      *string                                                `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	CheckNotice   *string                                                `json:"CheckNotice,omitempty" xml:"CheckNotice,omitempty"`
-	CreateTimeStr *string                                                `json:"CreateTimeStr,omitempty" xml:"CreateTimeStr,omitempty"`
-	EvaluateList  []*DescribeInvoiceForIsvResponseBodyResultEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Repeated"`
+	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// The service provider invoice remarks.
+	//
 	// example:
 	//
-	// 58050005
-	Id          *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	InvoiceId   *string                                               `json:"InvoiceId,omitempty" xml:"InvoiceId,omitempty"`
+	// None
+	CheckNotice *string `json:"CheckNotice,omitempty" xml:"CheckNotice,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-01-01 00:00:00
+	CreateTimeStr *string `json:"CreateTimeStr,omitempty" xml:"CreateTimeStr,omitempty"`
+	// The order, bill, or contract number.
+	EvaluateList []*DescribeInvoiceForIsvResponseBodyResultEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Repeated"`
+	// The ID of the invoice application. This corresponds to the InvoiceId parameter when you call the ModifyInvoiceForIsv operation.
+	//
+	// example:
+	//
+	// 4072040****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the invoice object.
+	//
+	// example:
+	//
+	// 4072040****
+	InvoiceId *string `json:"InvoiceId,omitempty" xml:"InvoiceId,omitempty"`
+	// **[Deprecated]*	- The invoice sub-collection.
 	InvoiceList []*DescribeInvoiceForIsvResponseBodyResultInvoiceList `json:"InvoiceList,omitempty" xml:"InvoiceList,omitempty" type:"Repeated"`
+	// The relationship between the invoice title and the customer real-name information. Valid values: `REAL_NAME_MATCH` (The real-name information is consistent), `PERSONAL_APPLY_ENTERPRISE_TITLE` (An individual applies for an enterprise title), `ENTERPRISE_MULTI_TITLE` (Multiple titles for an enterprise), `MASTER_ACCOUNT_OPERATION` (Operated by the main account), and `OTHER` (Other). If not provided, the value is null.
+	//
+	// example:
+	//
+	// REAL_NAME_MATCH
+	InvoiceTitleRelation *string `json:"InvoiceTitleRelation,omitempty" xml:"InvoiceTitleRelation,omitempty"`
+	// The invoice issuance type. Valid values:
+	//
+	// - 0: Paper.
+	//
+	// - 1: Electronic.
+	//
 	// example:
 	//
 	// 1
 	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
+	// The time when the order status was modified. The time is displayed in GMT.
+	//
 	// example:
 	//
 	// 2025-03-04T09:43:18+08:00
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The time when the invoice was modified.
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	ModifiedTimeStr *string `json:"ModifiedTimeStr,omitempty" xml:"ModifiedTimeStr,omitempty"`
+	// The total invoice amount. Unit: CNY.
+	//
 	// example:
 	//
 	// 99.99
-	Price              *string                                                    `json:"Price,omitempty" xml:"Price,omitempty"`
+	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
+	// The user information of the invoice applicant.
 	ReceiptUserInfoDto *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto `json:"ReceiptUserInfoDto,omitempty" xml:"ReceiptUserInfoDto,omitempty" type:"Struct"`
+	// The invoice status. Valid values: 0: Pending. 1: Invoiced.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The invoice title.
+	//
+	// example:
+	//
+	// Alibaba Cloud Computing Ltd
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The invoice type. Valid values:
+	//
+	// - 2: Digital electronic general invoice.
+	//
+	// - 3: Digital electronic special invoice.
+	//
 	// example:
 	//
 	// 2
-	Type           *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The address information.
 	UserAddressDto *DescribeInvoiceForIsvResponseBodyResultUserAddressDto `json:"UserAddressDto,omitempty" xml:"UserAddressDto,omitempty" type:"Struct"`
-	UserNotice     *string                                                `json:"UserNotice,omitempty" xml:"UserNotice,omitempty"`
+	// The user invoice remarks.
+	//
+	// example:
+	//
+	// None
+	UserNotice *string `json:"UserNotice,omitempty" xml:"UserNotice,omitempty"`
 }
 
 func (s DescribeInvoiceForIsvResponseBodyResult) String() string {
@@ -245,6 +321,10 @@ func (s *DescribeInvoiceForIsvResponseBodyResult) GetInvoiceId() *string {
 
 func (s *DescribeInvoiceForIsvResponseBodyResult) GetInvoiceList() []*DescribeInvoiceForIsvResponseBodyResultInvoiceList {
 	return s.InvoiceList
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResult) GetInvoiceTitleRelation() *string {
+	return s.InvoiceTitleRelation
 }
 
 func (s *DescribeInvoiceForIsvResponseBodyResult) GetMaterialType() *string {
@@ -319,6 +399,11 @@ func (s *DescribeInvoiceForIsvResponseBodyResult) SetInvoiceId(v string) *Descri
 
 func (s *DescribeInvoiceForIsvResponseBodyResult) SetInvoiceList(v []*DescribeInvoiceForIsvResponseBodyResultInvoiceList) *DescribeInvoiceForIsvResponseBodyResult {
 	s.InvoiceList = v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResult) SetInvoiceTitleRelation(v string) *DescribeInvoiceForIsvResponseBodyResult {
+	s.InvoiceTitleRelation = &v
 	return s
 }
 
@@ -405,33 +490,66 @@ func (s *DescribeInvoiceForIsvResponseBodyResult) Validate() error {
 }
 
 type DescribeInvoiceForIsvResponseBodyResultEvaluateList struct {
+	// Specifies whether proxy invoicing is used.
+	//
 	// example:
 	//
 	// false
 	Agent *bool `json:"Agent,omitempty" xml:"Agent,omitempty"`
+	// The amount. Unit: CNY.
+	//
 	// example:
 	//
 	// 1
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The time when the transaction occurred.
+	//
 	// example:
 	//
 	// 2025-01-01 00:00:00
 	BizTimeStr *string `json:"BizTimeStr,omitempty" xml:"BizTimeStr,omitempty"`
+	// The ID of the invoicing object.
+	//
 	// example:
 	//
 	// 9540765
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the order or bill. Valid values:
+	//
+	// - 0: Order.
+	//
+	// - 1: Bill.
+	//
 	// example:
 	//
 	// 0
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 2024091610072000****
-	OutBizId     *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
-	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	// The commodity code.
+	//
+	// example:
+	//
+	// cmapi00067***
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// **[Deprecated]*	- The product name.
+	//
+	// example:
+	//
+	// Image recognition OCR***
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The account ID.
+	//
+	// example:
+	//
+	// example@alibaba-inc.com
 	RealAliyunId *string `json:"RealAliyunId,omitempty" xml:"RealAliyunId,omitempty"`
+	// The account to which the order belongs.
+	//
 	// example:
 	//
 	// 102277855749****
@@ -541,10 +659,14 @@ func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) Validate() error {
 }
 
 type DescribeInvoiceForIsvResponseBodyResultInvoiceList struct {
+	// The ID of the invoice object.
+	//
 	// example:
 	//
-	// 50000018
+	// 4072040****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The applied invoicing amount. Unit: CNY.
+	//
 	// example:
 	//
 	// 99.99
@@ -582,6 +704,35 @@ func (s *DescribeInvoiceForIsvResponseBodyResultInvoiceList) Validate() error {
 }
 
 type DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto struct {
+	// The bank account.
+	//
+	// example:
+	//
+	// 000000
+	BankAccount *string `json:"BankAccount,omitempty" xml:"BankAccount,omitempty"`
+	// The name of the bank.
+	//
+	// example:
+	//
+	// 111111
+	BankName *string `json:"BankName,omitempty" xml:"BankName,omitempty"`
+	// The registered address.
+	//
+	// example:
+	//
+	// Hangzhou ****
+	RegAddress *string `json:"RegAddress,omitempty" xml:"RegAddress,omitempty"`
+	// The registered landline number.
+	//
+	// example:
+	//
+	// 0571-****
+	RegPhone *string `json:"RegPhone,omitempty" xml:"RegPhone,omitempty"`
+	// The unified social credit code of the enterprise.
+	//
+	// example:
+	//
+	// 91420100MA49L5****
 	TaxNumber *string `json:"TaxNumber,omitempty" xml:"TaxNumber,omitempty"`
 }
 
@@ -593,8 +744,44 @@ func (s DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) GoString() st
 	return s.String()
 }
 
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) GetBankAccount() *string {
+	return s.BankAccount
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) GetBankName() *string {
+	return s.BankName
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) GetRegAddress() *string {
+	return s.RegAddress
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) GetRegPhone() *string {
+	return s.RegPhone
+}
+
 func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) GetTaxNumber() *string {
 	return s.TaxNumber
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) SetBankAccount(v string) *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto {
+	s.BankAccount = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) SetBankName(v string) *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto {
+	s.BankName = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) SetRegAddress(v string) *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto {
+	s.RegAddress = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) SetRegPhone(v string) *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto {
+	s.RegPhone = &v
+	return s
 }
 
 func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) SetTaxNumber(v string) *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto {
@@ -607,13 +794,48 @@ func (s *DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto) Validate() e
 }
 
 type DescribeInvoiceForIsvResponseBodyResultUserAddressDto struct {
-	Addressee       *string `json:"Addressee,omitempty" xml:"Addressee,omitempty"`
-	AliyunPk        *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The recipient.
+	//
+	// example:
+	//
+	// Zhang San
+	Addressee *string `json:"Addressee,omitempty" xml:"Addressee,omitempty"`
+	// The Alibaba Cloud user ID of the customer.
+	//
+	// example:
+	//
+	// 174452687724****
+	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// ******
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The delivery address.
+	//
+	// example:
+	//
+	// Hangzhou ****
 	DeliveryAddress *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
-	Emails          *string `json:"Emails,omitempty" xml:"Emails,omitempty"`
-	Phone           *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	PostalCode      *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// The email address.
+	//
+	// example:
+	//
+	// demo@example.com
+	Emails *string `json:"Emails,omitempty" xml:"Emails,omitempty"`
+	// The phone number.
+	//
+	// example:
+	//
+	// 130********
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The postal code.
+	//
+	// example:
+	//
+	// ******
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
 }
 
 func (s DescribeInvoiceForIsvResponseBodyResultUserAddressDto) String() string {

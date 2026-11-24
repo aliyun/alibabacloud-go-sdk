@@ -22,19 +22,27 @@ type iDescribeProductsResponseBody interface {
 }
 
 type DescribeProductsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of products displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductItems *DescribeProductsResponseBodyProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A077D99E-0C4D-421E-A5D4-F533F6657817
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of products that match the search conditions.
+	//
 	// example:
 	//
 	// 75

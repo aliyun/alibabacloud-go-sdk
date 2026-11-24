@@ -28,31 +28,46 @@ type iPushTimesUsageResponseBody interface {
 }
 
 type PushTimesUsageResponseBody struct {
+	// The authentication error details.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ForceFatal *bool   `json:"ForceFatal,omitempty" xml:"ForceFatal,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The fatal error.
+	ForceFatal *bool `json:"ForceFatal,omitempty" xml:"ForceFatal,omitempty"`
+	// The HTTP status code of the request.
+	//
 	// example:
 	//
 	// 200
 	HttpStateCode *string `json:"HttpStateCode,omitempty" xml:"HttpStateCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

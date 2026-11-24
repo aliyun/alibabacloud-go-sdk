@@ -20,15 +20,22 @@ type iDescribeProjectMessagesResponseBody interface {
 }
 
 type DescribeProjectMessagesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 00eb4de1-6cff-4f56-833e-7b1e070e398d
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeProjectMessagesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of project messages.
+	Result []*DescribeProjectMessagesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of messages.
+	//
 	// example:
 	//
 	// 28
@@ -93,16 +100,38 @@ func (s *DescribeProjectMessagesResponseBody) Validate() error {
 }
 
 type DescribeProjectMessagesResponseBodyResult struct {
+	// The content of the message.
+	//
+	// example:
+	//
+	// Dear customer, we have uploaded the solution for you. Please review it and provide your feedback as soon as possible
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the message was created. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1589015560000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The Alibaba Cloud UID of the message sender.
+	//
 	// example:
 	//
 	// 452611111****
-	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator *int64 `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The name of the message sender.
+	//
+	// example:
+	//
+	// **	- Technology Co., Ltd
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The role of the operator. Valid values:
+	//
+	// - System: The system.
+	//
+	// - Custom: The customer.
+	//
+	// - Provider: The service provider.
+	//
 	// example:
 	//
 	// Provider

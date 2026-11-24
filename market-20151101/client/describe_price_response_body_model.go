@@ -39,41 +39,81 @@ type iDescribePriceResponseBody interface {
 
 type DescribePriceResponseBody struct {
 	Coupons *DescribePriceResponseBodyCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	// Currency
+	//
+	// CNY: Chinese Yuan
+	//
+	// USD: US Dollar
+	//
+	// JPY: Japanese Yen
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Indicates whether a promotion is available
+	//
 	// example:
 	//
 	// true
 	Cuxiao *bool `json:"Cuxiao,omitempty" xml:"Cuxiao,omitempty"`
+	// Cycle unit
+	//
+	// DAY: Day
+	//
+	// MONTH: Month
+	//
+	// YEAR: Year
+	//
 	// example:
 	//
 	// MONTH
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// Discount amount (original price minus trade price), in CNY
+	//
 	// example:
 	//
 	// 178.20
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// Number of cycles, such as 1, 2, 3...
+	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Purchase restriction code
+	//
 	// example:
 	//
 	// ORDER.NO_REAL_NAME_AUTHENTICATION
-	ExpressionCode    *string `json:"ExpressionCode,omitempty" xml:"ExpressionCode,omitempty"`
+	ExpressionCode *string `json:"ExpressionCode,omitempty" xml:"ExpressionCode,omitempty"`
+	// Purchase restriction description
+	//
+	// example:
+	//
+	// 企业用户才能购买
 	ExpressionMessage *string `json:"ExpressionMessage,omitempty" xml:"ExpressionMessage,omitempty"`
-	InfoTitle         *string `json:"InfoTitle,omitempty" xml:"InfoTitle,omitempty"`
+	// Promotion name
+	//
+	// example:
+	//
+	// 新年特惠
+	InfoTitle *string `json:"InfoTitle,omitempty" xml:"InfoTitle,omitempty"`
+	// Original price, in CNY
+	//
 	// example:
 	//
 	// 198.00
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// Product code
+	//
 	// example:
 	//
 	// cmgj01****
 	ProductCode    *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	PromotionRules *DescribePriceResponseBodyPromotionRules `json:"PromotionRules,omitempty" xml:"PromotionRules,omitempty" type:"Struct"`
+	// Trade price (actual price), in CNY
+	//
 	// example:
 	//
 	// 19.80

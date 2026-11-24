@@ -22,19 +22,28 @@ type iDescribeDistributionProductsResponseBody interface {
 }
 
 type DescribeDistributionProductsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of promotional products per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5BD09171-MB74-18D8-890E-C70C067527BE
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*DescribeDistributionProductsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The promotional product information.
+	Results []*DescribeDistributionProductsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The total number of promotional products that match the search conditions.
+	//
 	// example:
 	//
 	// 50
@@ -108,40 +117,134 @@ func (s *DescribeDistributionProductsResponseBody) Validate() error {
 }
 
 type DescribeDistributionProductsResponseBodyResults struct {
+	// The product code.
+	//
 	// example:
 	//
 	// cmap*****
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The first-level category name of the product.
+	//
+	// example:
+	//
+	// API Marketplace
 	FirstCategoryName *string `json:"FirstCategoryName,omitempty" xml:"FirstCategoryName,omitempty"`
+	// The URL of the product main image.
+	//
 	// example:
 	//
 	// //photogallery.oss-cn-hangzhou.aliyuncs.com/photo/1744526877246715/09605255-87fd-44d1-8143-96ebc8019d46.jpeg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// Mobile phone number online status query
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The price of the default product specification. For example, 100 indicates CNY 100.
+	//
 	// example:
 	//
 	// 100
 	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
+	// The user rating of the product.
+	//
 	// example:
 	//
 	// 5
-	Score              *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The second-level category name of the product.
+	//
+	// example:
+	//
+	// Life services
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
-	ShortDescription   *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The brief description of the product.
+	//
+	// example:
+	//
+	// Carrier phone number status query] Provides accurate and real-time detection of empty numbers. You can query the online status of phone numbers, and statuses such as normal, empty, in-call, online but unavailable, powered off, call forwarding, suspected power-off, number portability, wrong number, and suspended are returned.
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The commission rebate ratio for the product. For example, 30 indicates 30%.
+	//
 	// example:
 	//
 	// 30
 	SubmissionRadio *string `json:"SubmissionRadio,omitempty" xml:"SubmissionRadio,omitempty"`
-	SupplierName    *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The name of the promotion service provider.
+	//
+	// example:
+	//
+	// Shenzhen ***	- Co., Ltd.
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The Alibaba Cloud UID of the promotion service provider (product supplier).
+	//
 	// example:
 	//
 	// 1911534921******
 	SupplierUId *string `json:"SupplierUId,omitempty" xml:"SupplierUId,omitempty"`
+	// The number of transactions for the product in the last 180 days.
+	//
 	// example:
 	//
 	// 109
 	TradeCount *string `json:"TradeCount,omitempty" xml:"TradeCount,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The product type. Valid values:
+	//
+	//         APP: application
+	//
+	//         SERVICE: service
+	//
+	//         CHENGPIN_SITE: ready-made website
+	//
+	//         SITE_CUSTOM_SERVICE: custom website
+	//
+	//         SITE_PROMOTION_RUN: website promotion and operations
+	//
+	//         ENT_APP_SOFT: application software
+	//
+	//         CLOUD_SERVICE: cloud service
+	//
+	//         EIF: enterprise information
+	//
+	//         BASIC_TOOLS: basic tools
+	//
+	//         BASIC_SERVICES: basic services
+	//
+	//         JIANZHAN_XITONG: website building system
+	//
+	//         APP_COUPLES: application companion
+	//
+	//         MIRRORS_MARKET: image marketplace
+	//
+	//         MIRRORS_MARKET_BASIC_ENVIRONMENT: basic environment
+	//
+	//         MIRRORS_MARKET_APPLICATION_SOFTWARE: application software
+	//
+	//         MIRROR: image
+	//
+	//         DINGDING: DingTalk
+	//
+	//         DOWNLOAD: download
+	//
+	//         EXTENDED: unknown
+	//
+	//         API_SERVICE: API
+	//
+	//         ROS: resource orchestration
+	//
+	//         DOCKER: container
+	//
+	//         LICENSE: license key
+	//
+	//         SAAS_WUYING: application software - Wuying application.
+	//
+	// example:
+	//
+	// API
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of buyer comments for the product.
+	//
 	// example:
 	//
 	// 55

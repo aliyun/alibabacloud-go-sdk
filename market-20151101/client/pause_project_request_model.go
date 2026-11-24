@@ -18,18 +18,27 @@ type iPauseProjectRequest interface {
 }
 
 type PauseProjectRequest struct {
+	// The instance ID of the Alibaba Cloud Marketplace order.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the current operation flow node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1922
-	NodeId *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The reason for the remark.
+	//
+	// example:
+	//
+	// Waiting for the warehouse to confirm the inventory. The inventory is displayed as abnormal.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

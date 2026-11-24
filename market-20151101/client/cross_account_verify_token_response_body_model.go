@@ -22,21 +22,28 @@ type iCrossAccountVerifyTokenResponseBody interface {
 }
 
 type CrossAccountVerifyTokenResponseBody struct {
+	// Status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// RequestId
+	// Request ID.
 	//
 	// example:
 	//
 	// C19D103F-EA2D-50A5-8441-0267CE9FBA56
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CrossAccountVerifyTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response result object.
+	Result *CrossAccountVerifyTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
@@ -106,15 +113,22 @@ func (s *CrossAccountVerifyTokenResponseBody) Validate() error {
 }
 
 type CrossAccountVerifyTokenResponseBodyResult struct {
+	// Authorized roles.
 	AuthRoles []*string `json:"AuthRoles,omitempty" xml:"AuthRoles,omitempty" type:"Repeated"`
+	// Authorization time.
+	//
 	// example:
 	//
 	// 1676974108866
 	AuthTime *int64 `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+	// User display name.
+	//
 	// example:
 	//
 	// marketplace_wangxiao_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// User Alibaba Cloud UID.
+	//
 	// example:
 	//
 	// 1744526877246715

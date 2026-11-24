@@ -18,11 +18,16 @@ type iDescribeProjectAttachmentsResponseBody interface {
 }
 
 type DescribeProjectAttachmentsResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// e03a9f78-7b40-4fb3-a015-350913e37e3f
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeProjectAttachmentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of project attachments.
+	Result []*DescribeProjectAttachmentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -78,53 +83,92 @@ func (s *DescribeProjectAttachmentsResponseBody) Validate() error {
 }
 
 type DescribeProjectAttachmentsResponseBodyResult struct {
+	// The MD5 hash of the attachment.
+	//
 	// example:
 	//
 	// Mzc4NDAtODQ3MjY4MzI=
 	AttachmentToken *string `json:"AttachmentToken,omitempty" xml:"AttachmentToken,omitempty"`
+	// The type of the attachment.
+	//
 	// example:
 	//
 	// File
 	AttachmentType *string `json:"AttachmentType,omitempty" xml:"AttachmentType,omitempty"`
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content text.
+	//
+	// example:
+	//
+	// None
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The access URL of the file.
+	//
 	// example:
 	//
 	// http://delivery-center.oss-cn-shanghai.aliyuncs.com/6a8****0e2/e0a***f3.jpg?Expires=1589334682&OSSAccessKeyId=wI2r*********&Signature=JWB39pUxs7RCqrcw58qXPEGu6M0%3D
 	FileLink *string `json:"FileLink,omitempty" xml:"FileLink,omitempty"`
+	// The expiration time of the file URL (UNIX timestamp).
+	//
 	// example:
 	//
 	// 1589334682404
 	FileLinkGmtExpired *int64 `json:"FileLinkGmtExpired,omitempty" xml:"FileLinkGmtExpired,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// f8-test-perview.jpeg
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The size of the file (in bytes).
+	//
 	// example:
 	//
 	// 109124
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file name extension.
+	//
 	// example:
 	//
 	// jpg
 	FileSuffix *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
+	// The time when the attachment was uploaded (UNIX timestamp).
+	//
 	// example:
 	//
 	// 1587968858000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the flow node where the attachment was uploaded.
+	//
 	// example:
 	//
 	// 8472
-	NodeId   *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	//
+	// example:
+	//
+	// Waiting for service activation
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The Alibaba Cloud UID of the operator.
+	//
 	// example:
 	//
 	// 45261111****
-	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Operator *int64 `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The name of the operator.
+	//
+	// example:
+	//
+	// *	- Technology Co., Ltd
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The role of the operator.
+	//
 	// example:
 	//
 	// Provider
 	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// The sequence number of the flow node.
+	//
 	// example:
 	//
 	// 3

@@ -56,75 +56,168 @@ type iDescribeOrderResponseBody interface {
 }
 
 type DescribeOrderResponseBody struct {
+	// The number of accounts.
+	//
 	// example:
 	//
 	// 0
 	AccountQuantity *int64 `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
+	// The unique identifier of the Alibaba Cloud user (aliyunPK).
+	//
 	// example:
 	//
 	// 190311111111****
-	AliUid     *int64                 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The order component information. The metric description for the parameters in the example is as follows:
+	//
+	// - package_quantity: the number of usage times (a component specific to API products)
+	//
+	// - package_version: the version
+	//
+	// - ord_time: the duration
+	//
+	// - order_num: the quantity
+	//
+	// - code: the component code
+	//
+	// - globarKey: the component key
+	//
+	// - name: the component name
+	//
+	// - value: the component value.
+	//
+	// example:
+	//
+	// { "package_quantity": { "code": "package_quantity", "globarKey": "cmapi014302_package_quantity_package_quantity_10000", "name": "10,000 times", "value": "10000" }, "package_version": { "code": "package_version", "globarKey": "cmapi014302_package_version_package_version_yuncode830200000", "name": "0 yuan/10,000 times", "value": "yuncode830200000" }, "ord_time": { "code": "ord_time", "globarKey": "cmapi014302_ord_time_ord_time_6:Month", "name": "6 months", "value": "6:Month" }, "order_num": { "code": "order_num", "globarKey": "cmapi014302_order_num_order_num_1", "name": "1", "value": "1" } }
 	Components map[string]interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	// The amount of vouchers used, in CNY.
+	//
 	// example:
 	//
 	// 0.0
 	CouponPrice *float32 `json:"CouponPrice,omitempty" xml:"CouponPrice,omitempty"`
+	// The time when the order was placed.
+	//
 	// example:
 	//
 	// 1531191564000
 	CreatedOn   *int64                                `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
 	InstanceIds *DescribeOrderResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 202211111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order status. Valid values:
+	//
+	// - NORMAL: Normal.
+	//
+	// - REFUND: Refunded.
+	//
+	// - DELETE: Voided.
+	//
 	// example:
 	//
 	// NORMAL
 	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// The order type. Valid values:
+	//
+	// - NEW: New purchase order.
+	//
+	// - RENEW: Renewal order.
+	//
+	// - TRIAL: Trial order.
+	//
 	// example:
 	//
 	// NEW
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The original price of the order, in CNY.
+	//
 	// example:
 	//
 	// 10.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The payment time.
+	//
 	// example:
 	//
 	// 1531191675000
 	PaidOn *int64 `json:"PaidOn,omitempty" xml:"PaidOn,omitempty"`
+	// The payment status. Valid values:
+	//
+	// - PAID: Paid.
+	//
+	// - UNPAID: Unpaid.
+	//
 	// example:
 	//
 	// PAID
 	PayStatus *string `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// The actual payment amount, in CNY.
+	//
 	// example:
 	//
 	// 0.0
 	PaymentPrice *float32 `json:"PaymentPrice,omitempty" xml:"PaymentPrice,omitempty"`
+	// The time unit for prepaid orders. Valid values:
+	//
+	// - MONTH: one month
+	//
+	// - SEASON: one quarter
+	//
+	// - HALFYEAR: half a year
+	//
+	// - YEAR: one year
+	//
+	// - TWOYEARS: two years
+	//
+	// - ONCE: one-time.
+	//
 	// example:
 	//
 	// MONTH
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// cmgj02****
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the subscribed product.
+	//
+	// example:
+	//
+	// SaaS service product
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The specification code of the subscribed product.
+	//
 	// example:
 	//
 	// cmgj02****-prepay
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// The quantity of the subscribed product.
+	//
 	// example:
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
-	RequestId           *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The company name of the seller.
+	//
+	// example:
+	//
+	// *	- Technology Co., Ltd.
 	SupplierCompanyName *string                                      `json:"SupplierCompanyName,omitempty" xml:"SupplierCompanyName,omitempty"`
 	SupplierTelephones  *DescribeOrderResponseBodySupplierTelephones `json:"SupplierTelephones,omitempty" xml:"SupplierTelephones,omitempty" type:"Struct"`
+	// The total payable amount of the order, in CNY.
+	//
 	// example:
 	//
 	// 0.0

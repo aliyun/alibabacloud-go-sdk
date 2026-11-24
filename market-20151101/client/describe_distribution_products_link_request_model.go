@@ -14,6 +14,8 @@ type iDescribeDistributionProductsLinkRequest interface {
 }
 
 type DescribeDistributionProductsLinkRequest struct {
+	// The collection of product codes. The collection cannot be empty and can contain up to 50 entries.
+	//
 	// This parameter is required.
 	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
 }

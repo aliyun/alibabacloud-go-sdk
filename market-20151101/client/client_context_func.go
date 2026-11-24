@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 增加STS支持
+// Activates an authorization code by calling ActivateLicense.
 //
 // @param request - ActivateLicenseRequest
 //
@@ -57,7 +57,7 @@ func (client *Client) ActivateLicenseWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// 设置自动续费
+// Sets auto-renewal.
 //
 // @param request - AutoRenewInstanceRequest
 //
@@ -117,7 +117,13 @@ func (client *Client) AutoRenewInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 确认查收订阅通知
+// Confirms that the merchant has received and processed a notification message. After this call, the message will no longer be returned in subsequent queries.
+//
+// Description:
+//
+// Confirms the receipt of a subscription notification failure message.
+//
+// - After a successful call, the message will no longer be returned in subsequent queries. The platform considers that the merchant has correctly processed the message.
 //
 // @param request - ConfirmNotificationRequest
 //
@@ -161,7 +167,17 @@ func (client *Client) ConfirmNotificationWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建订单
+// Calls the CreateOrder operation to create an order.
+//
+// Before calling this operation, make sure that you fully understand the billing method and pricing of Alibaba Cloud Marketplace products.
+//
+// To create an order for a commercial image, refer to [CreateInstance](https://help.aliyun.com/document_detail/25499.html).
+//
+// Description:
+//
+// Before calling this operation, make sure that you fully understand the billing method and [pricing](https://market.aliyun.com/) of Alibaba Cloud Marketplace products.
+//
+// To create an order for a commercial image, refer to [CreateInstance](https://help.aliyun.com/document_detail/25499.html).
 //
 // @param request - CreateOrderRequest
 //
@@ -225,7 +241,7 @@ func (client *Client) CreateOrderWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 跨账号角色授权，根据token获取用户信息
+// Query cross-account role authorization information, including the authorized user\\"s Alibaba Cloud account UID, name, authorization time, and authorized role name.
 //
 // @param request - CrossAccountVerifyTokenRequest
 //
@@ -269,7 +285,11 @@ func (client *Client) CrossAccountVerifyTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询API用量
+// Retrieves the API quota, total capacity, and usage data of a user.
+//
+// Description:
+//
+// ### **Note: This API operation supports Alibaba Cloud accounts and RAM users in retrieving API quota, total capacity, and usage information.**
 //
 // @param request - DescribeApiMeteringRequest
 //
@@ -309,7 +329,13 @@ func (client *Client) DescribeApiMeteringWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 工作流当前节点信息
+// Calls DescribeCurrentNodeInfo to retrieve the process information of the current node.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - DescribeCurrentNodeInfoRequest
 //
@@ -353,7 +379,11 @@ func (client *Client) DescribeCurrentNodeInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 分页获取推广商品
+// Retrieves a paginated list of promotional products with detailed information.
+//
+// Description:
+//
+// Call this operation by using a promotion service provider account.
 //
 // @param request - DescribeDistributionProductsRequest
 //
@@ -393,7 +423,11 @@ func (client *Client) DescribeDistributionProductsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取并生成推广商品-链接
+// Retrieves promotion links for promoted products.
+//
+// Description:
+//
+// Call this operation by using a promotion service provider account. Calls from non-promotion service provider accounts will fail.
 //
 // @param tmpReq - DescribeDistributionProductsLinkRequest
 //
@@ -443,7 +477,13 @@ func (client *Client) DescribeDistributionProductsLinkWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询订阅通知失败列表
+// Queries the list of failed subscription notifications. After Alibaba Cloud Marketplace fails to call a service provider\\"s message SPI, the service provider can use this operation to proactively query the failed notification information.
+//
+// Description:
+//
+// Queries the information about failed subscription notifications for a service provider.
+//
+// - If no unconfirmed failed notifications exist, TotalCount returns 0.
 //
 // @param request - DescribeFailedNotificationsRequest
 //
@@ -539,7 +579,7 @@ func (client *Client) DescribeImageInstanceForIsvWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询实例
+// Calls the DescribeInstance operation to query instance information.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -591,7 +631,7 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 服务商侧查询实例信息
+// Queries instance information from the service provider side.
 //
 // @param request - DescribeInstanceForIsvRequest
 //
@@ -635,7 +675,7 @@ func (client *Client) DescribeInstanceForIsvWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询实例列表
+// Queries the list of services purchased by the user.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -695,7 +735,15 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询供应商下的发票信息
+// Queries the invoice information of a Cloud Marketplace vendor store.
+//
+// Description:
+//
+// Queries business information based on an authorization code and first verifies whether the authorization code is valid.
+//
+// - If the authorization code is invalid, an error message is returned.
+//
+// - If the authorization code is valid, the authorization information is returned.
 //
 // @param request - DescribeInvoiceForIsvRequest
 //
@@ -775,7 +823,7 @@ func (client *Client) DescribeInvoiceForIsvWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取License
+// Calls DescribeLicense to query license information.
 //
 // @param request - DescribeLicenseRequest
 //
@@ -819,7 +867,7 @@ func (client *Client) DescribeLicenseWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 查询订单
+// Queries the details of a specified order.
 //
 // @param request - DescribeOrderRequest
 //
@@ -863,7 +911,7 @@ func (client *Client) DescribeOrderWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// 服务商侧查询订单详情
+// Queries order details from the service provider side.
 //
 // @param request - DescribeOrderForIsvRequest
 //
@@ -907,7 +955,7 @@ func (client *Client) DescribeOrderForIsvWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询价格
+// Calls DescribePrice to query the price information of the corresponding product.
 //
 // @param request - DescribePriceRequest
 //
@@ -953,6 +1001,10 @@ func (client *Client) DescribePriceWithContext(ctx context.Context, request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified product.
+//
 // @param request - DescribeProductRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1001,6 +1053,10 @@ func (client *Client) DescribeProductWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of products that meet the specified conditions along with their details.
+//
 // @param request - DescribeProductsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1055,7 +1111,7 @@ func (client *Client) DescribeProductsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 附件信息
+// Queries a list of project attachments.
 //
 // @param request - DescribeProjectAttachmentsRequest
 //
@@ -1099,7 +1155,7 @@ func (client *Client) DescribeProjectAttachmentsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 项目信息
+// Calls DescribeProjectInfo to query project information.
 //
 // @param request - DescribeProjectInfoRequest
 //
@@ -1143,7 +1199,7 @@ func (client *Client) DescribeProjectInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询项目留言信息
+// Queries the list of messages for a project workflow.
 //
 // @param request - DescribeProjectMessagesRequest
 //
@@ -1191,13 +1247,13 @@ func (client *Client) DescribeProjectMessagesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询项目流程节点list
+// Queries the list of project flow nodes by calling DescribeProjectNodes.
 //
 // Description:
 //
 // *
 //
-// **
+// **.
 //
 // @param request - DescribeProjectNodesRequest
 //
@@ -1241,7 +1297,13 @@ func (client *Client) DescribeProjectNodesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询项目操作记录列表
+// Calls DescribeProjectOperateLogs to retrieve the operation logs of a project flow.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - DescribeProjectOperateLogsRequest
 //
@@ -1285,7 +1347,13 @@ func (client *Client) DescribeProjectOperateLogsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 完成当前流程节点
+// Completes the current process by calling FinishCurrentProjectNode.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - FinishCurrentProjectNodeRequest
 //
@@ -1341,7 +1409,13 @@ func (client *Client) FinishCurrentProjectNodeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 发票受理接口
+// Processes invoice acceptance requests.
+//
+// Description:
+//
+// Queries information about failed subscription notifications for merchants.
+//
+// - If no unconfirmed notification failure information exists, TotalCount returns 0.
 //
 // @param request - ModifyInvoiceForIsvRequest
 //
@@ -1405,7 +1479,13 @@ func (client *Client) ModifyInvoiceForIsvWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 暂停项目
+// Calls PauseProject to pause a project.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - PauseProjectRequest
 //
@@ -1457,7 +1537,47 @@ func (client *Client) PauseProjectWithContext(ctx context.Context, request *Paus
 
 // Summary:
 //
-// 云市场计量推送接口
+// Pushes metering data.
+//
+// Description:
+//
+// ### Encoding and format requirements
+//
+// - All request parameters must be URL-encoded.
+//
+// - Ensure that the Metering field in the parameters is submitted strictly according to the examples in the documentation. In the past, many submissions were not valid JSON fields. You can use a JSON formatting tool to check the field before submission. Otherwise, the API call will fail.
+//
+// ### Request frequency and single write volume limits
+//
+// - For hourly or daily metering: Alibaba Cloud Marketplace limits requests to once every 60 seconds per InstanceId, and each request supports writing up to 100 metering data records.
+//
+// - For real-time metering (for large model scenarios): Alibaba Cloud Marketplace has no frequency limit for requests per InstanceId, and each request supports writing up to 10 metering data records.
+//
+// ### Limits on batch pushing of metering data
+//
+// - Batch pushing across InstanceIds of different products is not supported. When pushing in batches, ensure that all InstanceIds belong to the same product.
+//
+// - When pushing metering data in batches, the InstanceId attribute must belong to instances generated by the same product. Pushing instances of multiple products at the same time is not supported.
+//
+// ### Time requirements for pushing metering data
+//
+// - For products billed hourly, the billing cutoff time is the next hour, and metering data must be pushed on time. For example, if the metering data is for 08:10 to 08:20, it must be pushed before 09:59. Otherwise, no bill will be generated. The rule for daily billing is similar: the data for the previous day must be pushed before 01:59 the next day. Otherwise, an error will be reported when pushing the metering data, and no bill will be generated.
+//
+// - For products billed by the minute, real-time pushed data is aggregated by the minute, and bills are generated by the minute.
+//
+// - If a product is set to real-time billing, StartTime and EndTime can be of any time width, but EndTime must be greater than StartTime.
+//
+// - If a product is set to non-real-time billing (such as hourly or daily), the interval between StartTime and EndTime must be greater than 5 minutes.
+//
+// ### Timeliness of pushing data and billing
+//
+// - If the instance status is expired, metering data pushed after the expiration will not be billed. For example, if an instance expires at 2025-07-09 12:20:00, the metering data pushed for the hour from 2025-07-09 13:00:00 to 2025-07-09 14:00:00 will not be billed. However, the metering data for the hour from 2025-07-09 12:00:00 to 2025-07-09 13:00:00 can still be billed normally.
+//
+// - After metering data is pushed, bills are not generated immediately. For hourly billing, the bill is generated in the next time interval. For example, the bill for 08:00 to 09:00 is generated after 10:00. For daily billing, the bill is generated the next day. After the bill is generated, customers can view it in [Alibaba Cloud Bill Details](https://billing-cost.console.aliyun.com/finance/expense-report/expense-detail-by-instance).
+//
+// ### Rounding down of amounts
+//
+// - If the bill amount is too small and a single bill amount is less than 0.01 CNY, the bill amount for the buyer is 0. For example, if the unit price of a product is 0.001 CNY per time and it is billed by the minute, and 9 times are consumed every minute, the bill amount per minute is 0. If it is billed hourly and the bill amount for a single hour is less than 0.01 CNY, the bill amount for the buyer is 0. The probability of rounding down to zero for minute-level billing may be higher than that for hourly billing.
 //
 // @param request - PushMeteringDataRequest
 //
@@ -1501,7 +1621,29 @@ func (client *Client) PushMeteringDataWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 按次售卖按量计费
+// Pushes usage deductions for prepaid pay-per-use products to Alibaba Cloud Marketplace.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation applies to prepaid pay-per-use products. Service providers can use this operation to push user usage deductions to Alibaba Cloud Marketplace.
+//
+// - This operation uses a forced update mode to directly deduct the specified number of uses. The caller must determine whether the user\\"s usage exceeds the limit.
+//
+// - All request parameters must be URL-encoded.
+//
+// - Use the `ClientToken` parameter to ensure idempotence. The same `ClientToken` cannot be submitted repeatedly within 24 hours.
+//
+// - Retries for the same deduction operation must use the same `ClientToken`. New operations must use a new `ClientToken`.
+//
+// - If the previous request succeeded, even if no response was received due to a gateway timeout, a retry with the same `ClientToken` returns a success response idempotently without duplicate deductions.
+//
+// - If the result of the previous request is undetermined and the request is in the PROCESSING state, a retry with the same `ClientToken` returns a `DuplicateClientToken` error. Retry later or contact Alibaba Cloud Marketplace to confirm the push status.
+//
+// - Only one operation can be executed for the same `InstanceId` at a time. Concurrent requests return a `Throttling` error. Retry later.
+//
+// - You can directly call this operation in [OpenAPI Explorer](https://api.aliyun.com/#product=Market&api=PushTimesUsage&type=RPC&version=2015-11-01) without the need to manually calculate the signature.
 //
 // @param request - PushTimesUsageRequest
 //
@@ -1516,12 +1658,24 @@ func (client *Client) PushTimesUsageWithContext(ctx context.Context, request *Pu
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Adjust) {
+		query["Adjust"] = request.Adjust
+	}
+
+	if !dara.IsNil(request.AdjustDate) {
+		query["AdjustDate"] = request.AdjustDate
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Mark) {
+		query["Mark"] = request.Mark
 	}
 
 	if !dara.IsNil(request.Times) {
@@ -1553,7 +1707,13 @@ func (client *Client) PushTimesUsageWithContext(ctx context.Context, request *Pu
 
 // Summary:
 //
-// 恢复已暂停的项目
+// Calls ResumeProject to resume a paused project.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - ResumeProjectRequest
 //
@@ -1605,7 +1765,13 @@ func (client *Client) ResumeProjectWithContext(ctx context.Context, request *Res
 
 // Summary:
 //
-// 当前流程节点回滚到上一步
+// Triggers a rejection of the current process node by calling RollbackCurrentProjectNode.
+//
+// Description:
+//
+// *
+//
+// **.
 //
 // @param request - RollbackCurrentProjectNodeRequest
 //

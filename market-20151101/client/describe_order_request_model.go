@@ -14,6 +14,8 @@ type iDescribeOrderRequest interface {
 }
 
 type DescribeOrderRequest struct {
+	// The order ID.
+	//
 	// This parameter is required.
 	//
 	// example:
