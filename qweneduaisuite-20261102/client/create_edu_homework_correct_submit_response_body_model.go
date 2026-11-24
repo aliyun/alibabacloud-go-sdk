@@ -34,7 +34,7 @@ type CreateEduHomeworkCorrectSubmitResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID on the caller side.
+	// The request ID of the caller.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBody) Validate() error {
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyData struct {
-	// The clockwise rotation angle of the image, in degrees.
+	// The rotation angle of the image in the clockwise direction, in degrees.
 	//
 	// example:
 	//
 	// 0
 	Angle *int64 `json:"angle,omitempty" xml:"angle,omitempty"`
-	// The URL of the corrected image. If `dewarp` is set to `false`, the URL of the original image is returned.
+	// The URL of the corrected image. If `dewarp` is set to `false`, the original image is returned.
 	//
 	// example:
 	//
@@ -114,9 +114,9 @@ type CreateEduHomeworkCorrectSubmitResponseBodyData struct {
 	//
 	// example:
 	//
-	// Examples: submitted, processing, finished, or failed
+	// Examples: submitted, processing, finished, and failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The unique identifier of the task. You must include this ID in subsequent queries.
+	// The unique identifier of the task, which must be included in subsequent queries.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyData) Validate() error {
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults struct {
 	// The array of answering and grading results for the question.
 	AnswerResults []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResults `json:"answerResults,omitempty" xml:"answerResults,omitempty" type:"Repeated"`
-	// Specifies whether the task is completed:
+	// Specifies whether the task is completed. Valid values:
 	//
 	// - **true**: The task is completed.
 	//
@@ -215,11 +215,11 @@ type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults struct {
 	//
 	// q-001
 	QuestionId *string `json:"questionId,omitempty" xml:"questionId,omitempty"`
-	// The coordinate group of the question area. It generally contains four vertex coordinates arranged in the order of top-left, top-right, bottom-right, and bottom-left.
+	// The coordinate group of the question area. It generally contains four vertex coordinates, arranged in the order of top-left, top-right, bottom-right, and bottom-left.
 	//
 	// example:
 	//
-	// Formatted as `[[{"x": 0, "y": 0}, ...]]`
+	// Example: `[[{"x": 0, "y": 0}, ...]]`
 	QuestionPoints [][]*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsQuestionPoints `json:"questionPoints,omitempty" xml:"questionPoints,omitempty" type:"Repeated"`
 	// The question type.
 	//
@@ -231,7 +231,7 @@ type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults struct {
 	//
 	// example:
 	//
-	// The question analysis and solution
+	// Question analysis and solution
 	Solution *string `json:"solution,omitempty" xml:"solution,omitempty"`
 }
 
@@ -320,9 +320,9 @@ func (s *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults) Validate
 }
 
 type CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResults struct {
-	// The coordinate group of the user\\"s answering area. It generally contains four vertex coordinates arranged in the order of top-left, top-right, bottom-right, and bottom-left, formatted as `[{"x": ..., "y": ...}, ...]`.
+	// The coordinate group of the user\\"s answering area. It generally contains four vertex coordinates, arranged in the order of top-left, top-right, bottom-right, and bottom-left, such as `[{"x": ..., "y": ...}, ...]`.
 	AnswerPoints []*CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsAnswerPoints `json:"answerPoints,omitempty" xml:"answerPoints,omitempty" type:"Repeated"`
-	// The coordinates of the grading mark point, formatted as `{ "x": ..., "y": ... }`.
+	// The coordinates of the grading mark point, such as `{ "x": ..., "y": ... }`.
 	CheckPoint *CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResultsCheckPoint `json:"checkPoint,omitempty" xml:"checkPoint,omitempty" type:"Struct"`
 	// The grading conclusion, such as `correct`, `wrong`, or `partial`.
 	//

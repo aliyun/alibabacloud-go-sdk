@@ -34,11 +34,11 @@ type CreateEduProblemSolveResponseBody struct {
 	//
 	// change_batch
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Specifies whether this is the final full snapshot. The value is fixed to true in the complete event.
+	// Specifies whether the response is the final full snapshot. This value is fixed to true in the complete event.
 	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
 	// The current list of complete question results.
 	Items []*CreateEduProblemSolveResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The actual response message of the request.
+	// The actual message returned by the request.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type CreateEduProblemSolveResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The type of the question resolution result. Valid values:
 	//
-	// 	- single: Single question.
+	// - single: A single question.
 	//
-	// 	- multiple: Multiple questions.
+	// - multiple: Multiple questions.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateEduProblemSolveResponseBody struct {
 	ResultType *string `json:"resultType,omitempty" xml:"resultType,omitempty"`
 	// Specifies whether the error is retryable. Default value: true.
 	Retryable *bool `json:"retryable,omitempty" xml:"retryable,omitempty"`
-	// The token usage. Only the complete event carries the final value. The message event does not return this field.
+	// The token usage. Only the complete event carries the final value. This field is not returned in message events.
 	Usage *CreateEduProblemSolveResponseBodyUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
@@ -165,7 +165,7 @@ func (s *CreateEduProblemSolveResponseBody) Validate() error {
 }
 
 type CreateEduProblemSolveResponseBodyItems struct {
-	// The complete Markdown content of the question resolution, including the deduction process and the final result.
+	// The complete question resolution content in Markdown format, including the deduction process and the final result.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type CreateEduProblemSolveResponseBodyItems struct {
 	//
 	// https://xxx.jpg
 	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
-	// The question identifier. The value is the question title, such as Question 1. The server does not return a separate title field. If the downstream service does not provide a question title, which is always the case for single-question scenarios, titles such as Question 1 and Question 2 are generated in the order of the questions.
+	// The question identifier. The value is the question title, such as Question 1. The server does not return a separate title field. If the downstream service does not provide a question title, which is always the case in single-question scenarios, titles such as Question 1 and Question 2 are generated in the order of the questions.
 	//
 	// example:
 	//
@@ -185,15 +185,15 @@ type CreateEduProblemSolveResponseBodyItems struct {
 	QuestionId *string `json:"questionId,omitempty" xml:"questionId,omitempty"`
 	// The current question status. Valid values:
 	//
-	// 	- processing: Processing.
+	// - processing: The question is being processed.
 	//
-	// 	- complete: Complete.
+	// - complete: The question processing is complete.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The thinking process. This field is returned only when result_type is single, and is not returned for multiple questions.
+	// The thinking process. This field is returned only when result_type is single. It is not returned for multiple questions.
 	Thinking *CreateEduProblemSolveResponseBodyItemsThinking `json:"thinking,omitempty" xml:"thinking,omitempty" type:"Struct"`
 }
 
@@ -268,9 +268,9 @@ type CreateEduProblemSolveResponseBodyItemsThinking struct {
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The thinking status. Valid values:
 	//
-	// 	- processing: Processing.
+	// - processing: The thinking process is in progress.
 	//
-	// 	- complete: Complete.
+	// - complete: The thinking process is complete.
 	//
 	// example:
 	//

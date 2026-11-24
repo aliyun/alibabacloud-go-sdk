@@ -164,17 +164,17 @@ func (client *Client) ActivateQwenEduApi(request *ActivateQwenEduApiRequest) (_r
 //
 // ## Request description
 //
-// - This operation submits a homework image to the server for question segmentation, recognition, and grading.
+// - This operation is used to submit a homework image to the server for question segmentation, recognition, and grading.
 //
-// - You can submit the image by using `imageBase64` or `imageUrl`. `imageBase64` takes precedence.
+// - You can submit the image by using `imageBase64` or `imageUrl`. `imageBase64` is preferred.
 //
-// - The optional `dewarp` parameter specifies whether to correct the image distortion. Default value: `true`.
+// - The optional parameter `dewarp` specifies whether to correct the image distortion. Default value: `true`.
 //
 // - Provide `requestId` to facilitate troubleshooting and reconciliation.
 //
-// - Image size limit: The Base64-encoded image size cannot exceed 15 MB.
+// - Image size limit: The Base64-encoded image cannot exceed 15 MB.
 //
-// - All requests and responses use the JSON format.
+// - All requests and responses are in JSON format.
 //
 // @param request - CreateEduHomeworkCorrectSubmitRequest
 //
@@ -219,7 +219,7 @@ func (client *Client) CreateEduHomeworkCorrectSubmitWithOptions(request *CreateE
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("formData"),
+		ReqBodyType: dara.String("json"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEduHomeworkCorrectSubmitResponse{}
@@ -239,17 +239,17 @@ func (client *Client) CreateEduHomeworkCorrectSubmitWithOptions(request *CreateE
 //
 // ## Request description
 //
-// - This operation submits a homework image to the server for question segmentation, recognition, and grading.
+// - This operation is used to submit a homework image to the server for question segmentation, recognition, and grading.
 //
-// - You can submit the image by using `imageBase64` or `imageUrl`. `imageBase64` takes precedence.
+// - You can submit the image by using `imageBase64` or `imageUrl`. `imageBase64` is preferred.
 //
-// - The optional `dewarp` parameter specifies whether to correct the image distortion. Default value: `true`.
+// - The optional parameter `dewarp` specifies whether to correct the image distortion. Default value: `true`.
 //
 // - Provide `requestId` to facilitate troubleshooting and reconciliation.
 //
-// - Image size limit: The Base64-encoded image size cannot exceed 15 MB.
+// - Image size limit: The Base64-encoded image cannot exceed 15 MB.
 //
-// - All requests and responses use the JSON format.
+// - All requests and responses are in JSON format.
 //
 // @param request - CreateEduHomeworkCorrectSubmitRequest
 //
@@ -272,40 +272,40 @@ func (client *Client) CreateEduHomeworkCorrectSubmit(request *CreateEduHomeworkC
 //
 // Description:
 //
-// ## Request description
+// ## Request instructions
 //
-// - This API supports obtaining question resolution results by providing the URL or Base64 encoding of a question image.
+// - This API retrieves question resolution results by using the URL or Base64 encoding of a question image.
 //
-// - Supports processing a single image. The image format must be JPG, JPEG, or PNG.
+// - Only a single image is supported per request, and the image format must be JPG, JPEG, or PNG.
 //
 // - The image must be clear and complete. Avoid tilted, obscured, or irrelevant content.
 //
 // - Each request can process only one image. Multi-image or plain text requests are not supported.
 //
-// - The recommended image size is up to 1 MB, with a maximum of 10 MB. The image width and height must not exceed 8,000 pixels, and the total pixel count must not exceed 2.6 million.
+// - The recommended image size is up to 1 MB, with a maximum limit of 10 MB. The width and height of the image must not exceed 8,000 pixels, and the total number of pixels must not exceed 2.6 million.
 //
-// - You must use the HTTPS protocol to call the API and provide image URLs.
+// - Use the HTTPS protocol to call the API and provide image URLs.
 //
-// - The user_id parameter must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
+// - The user_id must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
 //
-// - The API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response. The client must read the response event by event, rather than waiting for the connection to close to read the entire response.
+// - This API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response technology. The client must read the response event by event and must not wait for the connection to close before reading the entire response.
 //
-// - A successful response returns the question resolution process through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
+// - A successful response returns the question resolution process step by step through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
 //
 // - For retryable errors such as TOO_MANY_ACTIVE_STREAMS, use an exponential backoff strategy to retry the request.
 //
-// - Set a reasonable timeout period of at least 3 minutes on the client, and ensure that the proxy layer does not cache SSE responses.
+// - Set a reasonable timeout period for the client, which must be at least 3 minutes, and ensure that the proxy layer does not cache SSE responses.
 //
-// @param tmpReq - CreateEduProblemSolveRequest
+// @param request - CreateEduProblemSolveRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEduProblemSolveResponse
-func (client *Client) CreateEduProblemSolveWithSSE(tmpReq *CreateEduProblemSolveRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *CreateEduProblemSolveResponse, _yieldErr chan error) {
+func (client *Client) CreateEduProblemSolveWithSSE(request *CreateEduProblemSolveRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *CreateEduProblemSolveResponse, _yieldErr chan error) {
 	defer close(_yield)
-	client.createEduProblemSolveWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, headers, runtime)
+	client.createEduProblemSolveWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
 	return
 }
 
@@ -315,53 +315,47 @@ func (client *Client) CreateEduProblemSolveWithSSE(tmpReq *CreateEduProblemSolve
 //
 // Description:
 //
-// ## Request description
+// ## Request instructions
 //
-// - This API supports obtaining question resolution results by providing the URL or Base64 encoding of a question image.
+// - This API retrieves question resolution results by using the URL or Base64 encoding of a question image.
 //
-// - Supports processing a single image. The image format must be JPG, JPEG, or PNG.
+// - Only a single image is supported per request, and the image format must be JPG, JPEG, or PNG.
 //
 // - The image must be clear and complete. Avoid tilted, obscured, or irrelevant content.
 //
 // - Each request can process only one image. Multi-image or plain text requests are not supported.
 //
-// - The recommended image size is up to 1 MB, with a maximum of 10 MB. The image width and height must not exceed 8,000 pixels, and the total pixel count must not exceed 2.6 million.
+// - The recommended image size is up to 1 MB, with a maximum limit of 10 MB. The width and height of the image must not exceed 8,000 pixels, and the total number of pixels must not exceed 2.6 million.
 //
-// - You must use the HTTPS protocol to call the API and provide image URLs.
+// - Use the HTTPS protocol to call the API and provide image URLs.
 //
-// - The user_id parameter must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
+// - The user_id must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
 //
-// - The API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response. The client must read the response event by event, rather than waiting for the connection to close to read the entire response.
+// - This API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response technology. The client must read the response event by event and must not wait for the connection to close before reading the entire response.
 //
-// - A successful response returns the question resolution process through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
+// - A successful response returns the question resolution process step by step through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
 //
 // - For retryable errors such as TOO_MANY_ACTIVE_STREAMS, use an exponential backoff strategy to retry the request.
 //
-// - Set a reasonable timeout period of at least 3 minutes on the client, and ensure that the proxy layer does not cache SSE responses.
+// - Set a reasonable timeout period for the client, which must be at least 3 minutes, and ensure that the proxy layer does not cache SSE responses.
 //
-// @param tmpReq - CreateEduProblemSolveRequest
+// @param request - CreateEduProblemSolveRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEduProblemSolveResponse
-func (client *Client) CreateEduProblemSolveWithOptions(tmpReq *CreateEduProblemSolveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEduProblemSolveResponse, _err error) {
+func (client *Client) CreateEduProblemSolveWithOptions(request *CreateEduProblemSolveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEduProblemSolveResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
+		_err = request.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
-	request := &CreateEduProblemSolveShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.Query) {
-		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Query, dara.String("query"), dara.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !dara.IsNil(request.QueryShrink) {
-		body["query"] = request.QueryShrink
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
 	}
 
 	if !dara.IsNil(request.RequestId) {
@@ -380,7 +374,7 @@ func (client *Client) CreateEduProblemSolveWithOptions(tmpReq *CreateEduProblemS
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("formData"),
+		ReqBodyType: dara.String("json"),
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEduProblemSolveResponse{}
@@ -398,29 +392,29 @@ func (client *Client) CreateEduProblemSolveWithOptions(tmpReq *CreateEduProblemS
 //
 // Description:
 //
-// ## Request description
+// ## Request instructions
 //
-// - This API supports obtaining question resolution results by providing the URL or Base64 encoding of a question image.
+// - This API retrieves question resolution results by using the URL or Base64 encoding of a question image.
 //
-// - Supports processing a single image. The image format must be JPG, JPEG, or PNG.
+// - Only a single image is supported per request, and the image format must be JPG, JPEG, or PNG.
 //
 // - The image must be clear and complete. Avoid tilted, obscured, or irrelevant content.
 //
 // - Each request can process only one image. Multi-image or plain text requests are not supported.
 //
-// - The recommended image size is up to 1 MB, with a maximum of 10 MB. The image width and height must not exceed 8,000 pixels, and the total pixel count must not exceed 2.6 million.
+// - The recommended image size is up to 1 MB, with a maximum limit of 10 MB. The width and height of the image must not exceed 8,000 pixels, and the total number of pixels must not exceed 2.6 million.
 //
-// - You must use the HTTPS protocol to call the API and provide image URLs.
+// - Use the HTTPS protocol to call the API and provide image URLs.
 //
-// - The user_id parameter must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
+// - The user_id must be an anonymized identifier. Do not pass direct identity information such as names or phone numbers.
 //
-// - The API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response. The client must read the response event by event, rather than waiting for the connection to close to read the entire response.
+// - This API uses the HTTP POST method combined with Server-Sent Events (SSE) streaming response technology. The client must read the response event by event and must not wait for the connection to close before reading the entire response.
 //
-// - A successful response returns the question resolution process through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
+// - A successful response returns the question resolution process step by step through a series of message events and ends with a complete event. If an error occurs, an error event is returned.
 //
 // - For retryable errors such as TOO_MANY_ACTIVE_STREAMS, use an exponential backoff strategy to retry the request.
 //
-// - Set a reasonable timeout period of at least 3 minutes on the client, and ensure that the proxy layer does not cache SSE responses.
+// - Set a reasonable timeout period for the client, which must be at least 3 minutes, and ensure that the proxy layer does not cache SSE responses.
 //
 // @param request - CreateEduProblemSolveRequest
 //
@@ -627,23 +621,17 @@ func (client *Client) GetQwenEduApiActivationStatus(request *GetQwenEduApiActiva
 	return _result, _err
 }
 
-func (client *Client) createEduProblemSolveWithSSE_opYieldFunc(_yield chan *CreateEduProblemSolveResponse, _yieldErr chan error, tmpReq *CreateEduProblemSolveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+func (client *Client) createEduProblemSolveWithSSE_opYieldFunc(_yield chan *CreateEduProblemSolveResponse, _yieldErr chan error, request *CreateEduProblemSolveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err := tmpReq.Validate()
+		_err := request.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
 	}
-	request := &CreateEduProblemSolveShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.Query) {
-		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Query, dara.String("query"), dara.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !dara.IsNil(request.QueryShrink) {
-		body["query"] = request.QueryShrink
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
 	}
 
 	if !dara.IsNil(request.RequestId) {
@@ -662,7 +650,7 @@ func (client *Client) createEduProblemSolveWithSSE_opYieldFunc(_yield chan *Crea
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("formData"),
+		ReqBodyType: dara.String("json"),
 		BodyType:    dara.String("json"),
 	}
 	sseResp := make(chan *openapi.SSEResponse, 1)
