@@ -38,6 +38,7 @@ type EditWorkspaceQueueRequest struct {
   Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
   // The list of GPU instance types.
   GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+  // The ID of the subscription GPU quota instance.
   InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
   // The resource specifications.
   ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
@@ -169,7 +170,7 @@ type EditWorkspaceQueueRequestResourceSpec struct {
   // 
   // example:
   // 
-  // 0.5
+  // 2
   MaxCu *int64 `json:"maxCu,omitempty" xml:"maxCu,omitempty"`
 }
 

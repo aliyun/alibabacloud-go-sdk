@@ -16,7 +16,7 @@ type iGetCuHoursRequest interface {
 }
 
 type GetCuHoursRequest struct {
-	// The end time of the query time range.
+	// The end time of the query range.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCuHoursRequest struct {
 	//
 	// 2024-01-08 00:00:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time of the query time range.
+	// The start time of the query range.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iUpdateLivyComputeResponseBody interface {
 }
 
 type UpdateLivyComputeResponseBody struct {
-	// The response code. A value of 1000000 indicates that the request is successful. Other values indicate that the request failed. For details about the error, see the message.
+	// The response code. A value of 1000000 indicates that the request is successful. Any other value indicates that the request failed. For more information about the cause of the failure, see the message parameter.
 	//
 	// example:
 	//

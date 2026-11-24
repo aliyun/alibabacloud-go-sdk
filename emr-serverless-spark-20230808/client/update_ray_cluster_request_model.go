@@ -40,20 +40,21 @@ type UpdateRayClusterRequest struct {
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Ray DPI engine version.
+	// The database engine version of the Ray DPI engine.
 	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	EnableMetricsUpload   *bool   `json:"enableMetricsUpload,omitempty" xml:"enableMetricsUpload,omitempty"`
+	// Specifies whether to upload metrics.
+	EnableMetricsUpload *bool `json:"enableMetricsUpload,omitempty" xml:"enableMetricsUpload,omitempty"`
 	// The extra parameters. The value must be in JSON format.
 	//
 	// example:
 	//
 	// {}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The head node information for the Ray cluster.
+	// The head node information of the Ray cluster.
 	HeadSpec *UpdateRayClusterRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
 	// The name of the Ray cluster. The name must be 1 to 64 characters in length.
 	//
@@ -61,23 +62,27 @@ type UpdateRayClusterRequest struct {
 	//
 	// myRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connection name.
+	// The name of the network connectivity.
 	//
 	// example:
 	//
 	// vpc
 	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	// The SLS Logstore used to upload metrics.
+	//
 	// example:
 	//
 	// myLogStore
 	SlsLogStore *string `json:"slsLogStore,omitempty" xml:"slsLogStore,omitempty"`
+	// The Simple Log Service (SLS) project used to upload metrics.
+	//
 	// example:
 	//
 	// myproject
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The list of managed directory IDs to mount.
+	// The IDs of the managed directories to mount.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The worker node information for the Ray cluster. A maximum of 50 worker groups are supported.
+	// The worker node information of the Ray cluster. A maximum of 50 worker groups are supported.
 	WorkerSpec []*UpdateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -213,7 +218,7 @@ type UpdateRayClusterRequestHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The Ray DPI engine version.
+	// The database engine version of the Ray DPI engine.
 	//
 	// example:
 	//
@@ -238,6 +243,8 @@ type UpdateRayClusterRequestHeadSpec struct {
 	// if can be null:
 	// true
 	GftEnabled *bool `json:"gftEnabled,omitempty" xml:"gftEnabled,omitempty"`
+	// The GPU driver version.
+	//
 	// example:
 	//
 	// 550
@@ -254,13 +261,13 @@ type UpdateRayClusterRequestHeadSpec struct {
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size. Unit: GiB.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//
@@ -406,7 +413,7 @@ type UpdateRayClusterRequestHeadSpecGftConfig struct {
 	//
 	// 123456
 	RedisPassword *string `json:"redisPassword,omitempty" xml:"redisPassword,omitempty"`
-	// The Redis address.
+	// The Redis endpoint.
 	//
 	// example:
 	//
@@ -466,7 +473,7 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The DPI engine version.
+	// The database engine version of the DPI engine.
 	//
 	// example:
 	//
@@ -478,6 +485,8 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// MY_ENV=123456
 	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// The GPU driver version.
+	//
 	// example:
 	//
 	// 550
@@ -488,7 +497,7 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The worker group name.
+	// The name of the worker group.
 	//
 	// example:
 	//
@@ -500,7 +509,7 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size. Unit: GiB.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
@@ -512,7 +521,7 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
-	// The queue name.
+	// The name of the queue.
 	//
 	// example:
 	//

@@ -56,7 +56,7 @@ type UpdateLivyComputeRequest struct {
 	AutoStartConfiguration *UpdateLivyComputeRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The auto-stop configuration.
 	AutoStopConfiguration *UpdateLivyComputeRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
-	// The number of CPU cores for the Livy server.
+	// The number of CPU cores for the Livy server. Valid values:
 	//
 	// - 1
 	//
@@ -68,7 +68,7 @@ type UpdateLivyComputeRequest struct {
 	//
 	// 1
 	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
-	// The Spark DPI engine database engine version number.
+	// The Spark DPI engine version number.
 	//
 	// example:
 	//
@@ -88,6 +88,8 @@ type UpdateLivyComputeRequest struct {
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The Livy DPI engine version. This is a new parameter used to replace livyVersion.
+	//
 	// example:
 	//
 	// 0.9.0
@@ -122,7 +124,7 @@ type UpdateLivyComputeRequest struct {
 	//
 	// 0.8.0
 	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
-	// The memory size of the Livy server.
+	// The memory size of the Livy server. Valid values:
 	//
 	// - 4Gi
 	//
@@ -140,7 +142,7 @@ type UpdateLivyComputeRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network connectivity name.
+	// The network connection name.
 	//
 	// example:
 	//
@@ -152,7 +154,7 @@ type UpdateLivyComputeRequest struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// **[Deprecated]*	- The Spark DPI engine database engine version number. Use displayReleaseVersion instead.
+	// **[Deprecated]*	- The Spark DPI engine version number. Use displayReleaseVersion instead.
 	//
 	// example:
 	//
@@ -342,7 +344,7 @@ func (s *UpdateLivyComputeRequest) Validate() error {
 }
 
 type UpdateLivyComputeRequestAutoStartConfiguration struct {
-	// Specifies whether to automatically start the gateway after creation.
+	// Specifies whether to automatically start the gateway after creation. Valid values:
 	//
 	// - true: Yes.
 	//
@@ -376,7 +378,7 @@ func (s *UpdateLivyComputeRequestAutoStartConfiguration) Validate() error {
 }
 
 type UpdateLivyComputeRequestAutoStopConfiguration struct {
-	// Specifies whether to allow automatic stopping.
+	// Specifies whether to allow automatic stopping. Valid values:
 	//
 	// - true: Yes.
 	//
